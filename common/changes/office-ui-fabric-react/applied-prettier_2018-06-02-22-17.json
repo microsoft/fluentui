@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Prevent invalid empty ARIA values from being output.",
+      "comment": "Added Prettier",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "jagore@microsoft.com"
+  "email": "mark@thedutchies.com"
 }

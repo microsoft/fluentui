@@ -1,26 +1,9 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  IRectangle,
-  assign,
-  css,
-  createRef
-} from '../../Utilities';
-import {
-  IGroupedList,
-  IGroupedListProps,
-  IGroup
-} from './GroupedList.types';
-import {
-  GroupedListSection
-} from './GroupedListSection';
-import {
-  List,
-  ScrollToMode
-} from '../../List';
-import {
-  SelectionMode
-} from '../../utilities/selection/index';
+import { BaseComponent, IRectangle, assign, css, createRef } from '../../Utilities';
+import { IGroupedList, IGroupedListProps, IGroup } from './GroupedList.types';
+import { GroupedListSection } from './GroupedListSection';
+import { List, ScrollToMode } from '../../List';
+import { SelectionMode } from '../../utilities/selection/index';
 import * as stylesImport from './GroupedList.scss';
 const styles: any = stylesImport;
 
@@ -38,7 +21,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
   };
 
   public refs: {
-    [key: string]: React.ReactInstance,
+    [key: string]: React.ReactInstance;
   };
 
   private _list = createRef<List>();
@@ -63,10 +46,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
   }
 
   public componentWillReceiveProps(newProps: IGroupedListProps): void {
-    const {
-      groups,
-      selectionMode
-    } = this.props;
+    const { groups, selectionMode } = this.props;
     let shouldForceUpdates = false;
 
     if (newProps.groups !== groups) {
@@ -84,35 +64,29 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
   }
 
   public render(): JSX.Element {
-    const {
-      className,
-      usePageCache,
-      onShouldVirtualize
-    } = this.props;
-    const {
-      groups
-    } = this.state;
+    const { className, usePageCache, onShouldVirtualize } = this.props;
+    const { groups } = this.state;
 
     return (
       <div
-        className={ css('ms-GroupedList', styles.root, className) }
-        data-automationid='GroupedList'
-        data-is-scrollable='false'
-        role='presentation'
+        className={css('ms-GroupedList', styles.root, className)}
+        data-automationid="GroupedList"
+        data-is-scrollable="false"
+        role="presentation"
       >
-        { !groups ?
-          this._renderGroup(null, 0) : (
-            <List
-              ref={ this._list }
-              items={ groups }
-              onRenderCell={ this._renderGroup }
-              getItemCountForPage={ this._returnOne }
-              getPageSpecification={ this._getPageSpecification }
-              usePageCache={ usePageCache }
-              onShouldVirtualize={ onShouldVirtualize }
-            />
-          )
-        }
+        {!groups ? (
+          this._renderGroup(null, 0)
+        ) : (
+          <List
+            ref={this._list}
+            items={groups}
+            onRenderCell={this._renderGroup}
+            getItemCountForPage={this._returnOne}
+            getPageSpecification={this._getPageSpecification}
+            usePageCache={usePageCache}
+            onShouldVirtualize={onShouldVirtualize}
+          />
+        )}
       </div>
     );
   }
@@ -175,38 +149,38 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
 
     return (
       <GroupedListSection
-        ref={ 'group_' + groupIndex }
-        key={ this._getGroupKey(group, groupIndex) }
-        dragDropEvents={ dragDropEvents }
-        dragDropHelper={ dragDropHelper }
-        eventsToRegister={ eventsToRegister }
-        footerProps={ footerProps }
-        getGroupItemLimit={ groupProps && groupProps.getGroupItemLimit }
-        group={ group }
-        groupIndex={ groupIndex }
-        groupNestingDepth={ groupNestingDepth }
-        headerProps={ headerProps }
-        listProps={ listProps }
-        items={ items }
-        onRenderCell={ onRenderCell }
-        onRenderGroupHeader={ groupProps!.onRenderHeader }
-        onRenderGroupShowAll={ groupProps!.onRenderShowAll }
-        onRenderGroupFooter={ groupProps!.onRenderFooter }
-        selectionMode={ selectionMode }
-        selection={ selection }
-        showAllProps={ showAllProps }
-        viewport={ viewport }
-        onShouldVirtualize={ onShouldVirtualize }
+        ref={'group_' + groupIndex}
+        key={this._getGroupKey(group, groupIndex)}
+        dragDropEvents={dragDropEvents}
+        dragDropHelper={dragDropHelper}
+        eventsToRegister={eventsToRegister}
+        footerProps={footerProps}
+        getGroupItemLimit={groupProps && groupProps.getGroupItemLimit}
+        group={group}
+        groupIndex={groupIndex}
+        groupNestingDepth={groupNestingDepth}
+        headerProps={headerProps}
+        listProps={listProps}
+        items={items}
+        onRenderCell={onRenderCell}
+        onRenderGroupHeader={groupProps!.onRenderHeader}
+        onRenderGroupShowAll={groupProps!.onRenderShowAll}
+        onRenderGroupFooter={groupProps!.onRenderFooter}
+        selectionMode={selectionMode}
+        selection={selection}
+        showAllProps={showAllProps}
+        viewport={viewport}
+        onShouldVirtualize={onShouldVirtualize}
       />
     );
-  }
+  };
 
   private _returnOne(): number {
     return 1;
   }
 
   private _getGroupKey(group: IGroup, index: number): string {
-    return 'group-' + ((group && group.key) ? group.key : String(index));
+    return 'group-' + (group && group.key ? group.key : String(index));
   }
 
   private _getGroupNestingDepth(): number {
@@ -235,13 +209,13 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
       this._updateIsSomeGroupExpanded();
       this.forceUpdate();
     }
-  }
+  };
 
   private _onToggleSelectGroup = (group: IGroup): void => {
     if (group) {
       this.props.selection!.toggleRangeSelected(group.startIndex, group.count);
     }
-  }
+  };
 
   private _forceListUpdates(groups?: IGroup[]): void {
     groups = groups || this.state.groups;
@@ -278,9 +252,12 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
 
       this.forceUpdate();
     }
-  }
+  };
 
-  private _getPageSpecification = (itemIndex: number, visibleRect: IRectangle): {
+  private _getPageSpecification = (
+    itemIndex: number,
+    visibleRect: IRectangle
+  ): {
     key?: string;
   } => {
     const groups = this.state.groups;
@@ -288,10 +265,13 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
     return {
       key: pageGroup && pageGroup.name
     };
-  }
+  };
 
   private _computeIsSomeGroupExpanded(groups: IGroup[] | undefined): boolean {
-    return !!(groups && groups.some(group => group.children ? this._computeIsSomeGroupExpanded(group.children) : !group.isCollapsed));
+    return !!(
+      groups &&
+      groups.some(group => (group.children ? this._computeIsSomeGroupExpanded(group.children) : !group.isCollapsed))
+    );
   }
 
   private _updateIsSomeGroupExpanded(): void {

@@ -2,6 +2,151 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.4.0",
+      "tag": "office-ui-fabric-react_v6.4.0",
+      "date": "Mon, 04 Jun 2018 18:50:06 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "471bf4a404b2732ca1e83e7e64158957aa178413",
+            "comment": "Revert PR 4897"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.3.0",
+      "tag": "office-ui-fabric-react_v6.3.0",
+      "date": "Mon, 04 Jun 2018 10:16:13 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "e87289bebda6cf31f7ddbc38888daec68de168c9",
+            "comment": "Coachmark: Fix positioning bugs and add in support for different Coachmark directions."
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "43a1c5e692a30d8ceba399a1191fe2ac23829c69",
+            "comment": "DetailsList: adjusting aria labels and exporting more ariaLabels in `IColumn` to allow for better narrator reading and table scanning."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "93484257a7563195d43a6b33db246c2a96ed9c00",
+            "comment": "Dropdown: Allow `title` to be provided as an item property."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "e76d9c0789753dbb83cc131a61d47348979b0b17",
+            "comment": "Icons top level import was exporting a file path, should be exporting a package path."
+          },
+          {
+            "author": "Abdelmoumen BOUABDALLAH <sos.ini@gmail.com>",
+            "commit": "6b6b54b1ab53dfc66f94c151c6c438daa1007c82",
+            "comment": "GroupedList: Added multiple customization entry-points including custom indent spacing and header customization."
+          },
+          {
+            "author": "Kelsey Young <kelseyyoung4@gmail.com>",
+            "commit": "3bebe7b58d1914dcf6390a5d31c8f8843e9a22af",
+            "comment": "Allow for more control over event handling for keytips"
+          }
+        ],
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "03e7004358f64936dd8115dcc763b407343140fc",
+            "comment": "Callout: fix dismissing events to attach to the documentElement, not body."
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "8c8d8fbc3e25fafaac712b7381a4743c86f1400f",
+            "comment": "SplitButton: Hook up aria-roledescription to splitButtons so that they can leverage that markup if it gets passed in to the component."
+          },
+          {
+            "author": "Roel <roelvb@roelvb.nl>",
+            "commit": "54f09ca0455b28a611ea2e90739a18e0bd33c37e",
+            "comment": "SpinButton: addressing onValidate, onIncrement, and onDecrement callbacks to be called correctly."
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "323b89e0b33be5ffac70f055ffbf551e5ebc8b10",
+            "comment": "MessageBar: New color for dismiss / expand button in hc mode for better visibility."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "4e1cd119bbf0f75e0432b0f92bad342714b57bef",
+            "comment": "Updating react typings."
+          },
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "758d210836ab509a8e33d6b99990223cc7245f2a",
+            "comment": "Updated test snapshots"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.0.0 <7.0.0` to `>=6.0.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.0.1 <7.0.0` to `>=6.0.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.0.3 <7.0.0` to `>=6.0.4 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=5.2.2 <6.0.0` to `>=5.2.3 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.0.0 <7.0.0` to `>=6.0.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.2.0",
+      "tag": "office-ui-fabric-react_v6.2.0",
+      "date": "Fri, 01 Jun 2018 10:18:43 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "35398c51487202e02e42d594c88ec2d8d2b6f6a6",
+            "comment": "Fix ComboBox ARIA attributes."
+          },
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "75bfc52e1da9ba136b20507ba89f8c916228defd",
+            "comment": "Prevent invalid empty ARIA values from being output."
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "f3af01799dd3dca310bb9d604422f49cce1c249d",
+            "comment":
+              "ComboBox: Fix the value that is checked when submitting a pending value to take into account if the aria-label is used as text. This line was missed in the initial change"
+          },
+          {
+            "author": "Kelsey Young <kelseyyoung4@gmail.com>",
+            "commit": "0b16eefd15a299f9364ba7090b54be263ca9603f",
+            "comment": "Add support for pointerup to dismiss keytips"
+          }
+        ],
+        "minor": [
+          {
+            "author": "bworline <35072931+bworline@users.noreply.github.com>",
+            "commit": "23824ba12bc3d68fcbfe2a6dd3d9094d8f2f7d53",
+            "comment":
+              "Added FocusTrapZone capability: When the FTZ is focused, it will pass focus to a descendant element.  The new prop 'focusPreviouslyFocusedInnerElement' controls the descendant-choosing behavior."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.0.2 <7.0.0` to `>=6.0.3 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.1.2",
       "tag": "office-ui-fabric-react_v6.1.2",
       "date": "Thu, 31 May 2018 10:18:58 GMT",
@@ -41,7 +186,8 @@
             "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.0.1 <7.0.0` to `>=6.0.2 <7.0.0`"
           },
           {
-            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=5.2.1 <6.0.0` to `>=5.2.2 <6.0.0`"
+            "comment":
+              "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=5.2.1 <6.0.0` to `>=5.2.2 <6.0.0`"
           }
         ]
       }
@@ -97,7 +243,8 @@
           {
             "author": "kkjeer <kkjeer@wellesley.edu>",
             "commit": "d4dd4999529894171265795aef6ab900fe184226",
-            "comment": "Checkbox: replaced optional properties of the `ICheckboxStyles` interface, removed `styles` and `getClassNames` from the `ICheckboxProps` interface, made the checkmark visible on hover, added high contrast styles."
+            "comment":
+              "Checkbox: replaced optional properties of the `ICheckboxStyles` interface, removed `styles` and `getClassNames` from the `ICheckboxProps` interface, made the checkmark visible on hover, added high contrast styles."
           },
           {
             "author": "Jason Gore <jagore@microsoft.com>",
@@ -122,14 +269,16 @@
           {
             "author": "Jason Gore <jagore@microsoft.com>",
             "commit": "b9640336b7edee707439f5fd3e272bb31d7d5854",
-            "comment": "Label and Toggle now support javascript styling. Improvements to Label and Toggle interfaces. Added Toggle and Label root aliasing."
+            "comment":
+              "Label and Toggle now support javascript styling. Improvements to Label and Toggle interfaces. Added Toggle and Label root aliasing."
           }
         ],
         "minor": [
           {
             "author": "Jason Gore <jagore@microsoft.com>",
             "commit": "d0edbe9d58738d825177d520cc1f2ef8b8f54ebf",
-            "comment": "ChoiceGroup: now supports customizable theming. Various bug fixes, cleanup within. Tests updated to use enzyme."
+            "comment":
+              "ChoiceGroup: now supports customizable theming. Various bug fixes, cleanup within. Tests updated to use enzyme."
           },
           {
             "author": "Jason Gore <jagore@microsoft.com>",
@@ -144,7 +293,8 @@
           {
             "author": "Cliff Koh <cliff.koh@microsoft.com>",
             "commit": "c3f5de208d7276b287af433a74e8961e74dd9cfd",
-            "comment": "All `getStyles` properties accept either a function to return a style object, or a static style object"
+            "comment":
+              "All `getStyles` properties accept either a function to return a style object, or a static style object"
           }
         ],
         "none": [
@@ -184,12 +334,14 @@
           {
             "author": "lynamemi <lynam.emily@gmail.com>",
             "commit": "6b2296457551d147a2dc671aca7c80d8fe1ab4cd",
-            "comment": "CommandBar Example: More specific selector for text color to override the link styles we get from msgraph on the website."
+            "comment":
+              "CommandBar Example: More specific selector for text color to override the link styles we get from msgraph on the website."
           },
           {
             "author": "jspurlin <jspurlin@microsoft.com>",
             "commit": "5f5c3f83d91509045b265c78bb84d636884db50c",
-            "comment": "ComboBox: Update styling so that the \"selected\" item does not get the \"selected\" look when navigating through the potential options."
+            "comment":
+              "ComboBox: Update styling so that the \"selected\" item does not get the \"selected\" look when navigating through the potential options."
           },
           {
             "author": "Karthik Balasubramanian <karthikb87@gmail.com>",
@@ -265,7 +417,8 @@
           {
             "author": "Thomas Michon <thomas@michon.com>",
             "commit": "413d0313f9187644ab40b773b116262bf464e465",
-            "comment": "Pass SelectionZone props through DetailsList and add alternate data-selection-auto-selection attribute name"
+            "comment":
+              "Pass SelectionZone props through DetailsList and add alternate data-selection-auto-selection attribute name"
           },
           {
             "author": "Philip Kuo <phkuo@microsoft.com>",
@@ -289,7 +442,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "17547b3778676a5b721f3f7dacf86fbd9621f67e",
-            "comment": "ChoiceGroup: Reverting the updates to ChoiceGroup styling. We found some breaking changes in it, so we'd like to minimize partner impact by moving this to the 6.0 (next) release. Sorry for the trouble."
+            "comment":
+              "ChoiceGroup: Reverting the updates to ChoiceGroup styling. We found some breaking changes in it, so we'd like to minimize partner impact by moving this to the 6.0 (next) release. Sorry for the trouble."
           }
         ],
         "dependency": [
@@ -308,7 +462,8 @@
           {
             "author": "Alicia Drummond <adrum@microsoft.com>",
             "commit": "d152bb75e06b2b47fced0f5219e018cce2aabd97",
-            "comment": "ChoiceGroup: now supports customizable theming. Various bug fixes, cleanup within. Tests updated to use enzyme."
+            "comment":
+              "ChoiceGroup: now supports customizable theming. Various bug fixes, cleanup within. Tests updated to use enzyme."
           },
           {
             "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
@@ -386,24 +541,28 @@
           {
             "author": "Jon Schectman <joschect@microsoft.com>",
             "commit": "da831117bc4a1561da0a9648450fe44b774689ab",
-            "comment": "Callout/Positioning: Fix a bug where max-height would be incorrectly calculated if covertarget was set"
+            "comment":
+              "Callout/Positioning: Fix a bug where max-height would be incorrectly calculated if covertarget was set"
           }
         ],
         "patch": [
           {
             "author": "veloiya <30428533+veloiya@users.noreply.github.com>",
             "commit": "b0350207df6e4663e2464f3f6cdced56b816d743",
-            "comment": "Added an addtional prop in IPickerItemProps for allowing focus on tagItem when picker is disabled"
+            "comment":
+              "Added an addtional prop in IPickerItemProps for allowing focus on tagItem when picker is disabled"
           },
           {
             "author": "Brian Garland <v-brgarl@microsoft.com>",
             "commit": "233262889fb2de740cd051df2b7c08d7e944b366",
-            "comment": "Moved best design practices write up in SearchBoxes Overview to Best Practices for clarity that these are not included features"
+            "comment":
+              "Moved best design practices write up in SearchBoxes Overview to Best Practices for clarity that these are not included features"
           }
         ],
         "dependency": [
           {
-            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=5.2.0 <6.0.0` to `>=5.2.1 <6.0.0`"
+            "comment":
+              "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=5.2.0 <6.0.0` to `>=5.2.1 <6.0.0`"
           }
         ]
       }
@@ -490,14 +649,16 @@
           {
             "author": "Josh Chang <coralbue@gmail.com>",
             "commit": "9afc622e632197b13bc55ba6ea85f13d12ea5604",
-            "comment": "ContextualMenuSplitButton: Adding the correct attributes for screen readers to read the button correctly"
+            "comment":
+              "ContextualMenuSplitButton: Adding the correct attributes for screen readers to read the button correctly"
           }
         ],
         "patch": [
           {
             "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
             "commit": "d01ce314a35af59f3516e4d793498c067f21fcc6",
-            "comment": "TextField: Invoke custom description render function if provided even if no description text provided."
+            "comment":
+              "TextField: Invoke custom description render function if provided even if no description text provided."
           }
         ],
         "dependency": [
@@ -529,7 +690,8 @@
           {
             "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
             "commit": "7183e967f5dc38ec572ca35c55f344e00a082892",
-            "comment": "Fix detailslist custom group header example by invoking correct onClick for select and collapse toggles."
+            "comment":
+              "Fix detailslist custom group header example by invoking correct onClick for select and collapse toggles."
           },
           {
             "author": "Ian Craig <ian-craig@outlook.com>",
@@ -615,12 +777,14 @@
           {
             "author": "Nabeelah Ali <nabeelah@gmail.com>",
             "commit": "c6a335ff1f2507af975a9fd687acec79c2e8f852",
-            "comment": "Ensure subMenuHoverDelay is respected by the ContextualMenu for expanding and dismissing submenus"
+            "comment":
+              "Ensure subMenuHoverDelay is respected by the ContextualMenu for expanding and dismissing submenus"
           },
           {
             "author": "rebeccaballantyne <rebeccaballantyne@gmail.com>",
             "commit": "32ab5c16784fedbd36ed66d42ad6095f368e00e6",
-            "comment": "Fixes issue where expanding sub menu via arrow keys was broken, and adds aria label of \"menu\" to item when keyboarded"
+            "comment":
+              "Fixes issue where expanding sub menu via arrow keys was broken, and adds aria label of \"menu\" to item when keyboarded"
           }
         ]
       }
@@ -691,7 +855,8 @@
           {
             "author": "kysedate <35615581+kysedate@users.noreply.github.com>",
             "commit": "76e7918dd9f2585a2356efc98b172f61a22408de",
-            "comment": "Even if a ComboBoxOptionWrapper component doesn't update (shouldComponentUpdate returns false), children functions are still being executed unnecessarily, which can cause performance issues. This can be avoided by passing in a reference to a function that returns the children elements, instead of returning the elements themselves."
+            "comment":
+              "Even if a ComboBoxOptionWrapper component doesn't update (shouldComponentUpdate returns false), children functions are still being executed unnecessarily, which can cause performance issues. This can be avoided by passing in a reference to a function that returns the children elements, instead of returning the elements themselves."
           },
           {
             "author": "Thomas Michon <thomas@michon.com>",
@@ -727,7 +892,8 @@
           {
             "author": "jspurlin <jspurlin@microsoft.com>",
             "commit": "42c097e2e29c34c1a6a03e44f07d4ffad75c98aa",
-            "comment": "FocusZone: Add a prop to allow a FocusZone to not let focus events propagate outside of the FocusZone"
+            "comment":
+              "FocusZone: Add a prop to allow a FocusZone to not let focus events propagate outside of the FocusZone"
           },
           {
             "author": "Ivan <ivan.dijan@gmail.com>",
@@ -760,7 +926,8 @@
           {
             "author": "lynamemi <lynam.emily@gmail.com>",
             "commit": "494ed863f267a642d00e6f982f38d6971a6a59f9",
-            "comment": "ActivityItem: Fix a previous breaking change in getStyles. Passing specific props at the end instead of general props at the beginning."
+            "comment":
+              "ActivityItem: Fix a previous breaking change in getStyles. Passing specific props at the end instead of general props at the beginning."
           }
         ],
         "minor": [
@@ -772,7 +939,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "2220e7507f7d32a73c270409457c5681ca505e3b",
-            "comment": "Icon: undoing breaking change with regards to making `IIconStyles.root` required, adding tests to ensure backwards compatibility."
+            "comment":
+              "Icon: undoing breaking change with regards to making `IIconStyles.root` required, adding tests to ensure backwards compatibility."
           },
           {
             "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
@@ -828,7 +996,8 @@
           {
             "author": "lynamemi <lynam.emily@gmail.com>",
             "commit": "7a6b18c3d7d1edcdf32e16b8c182201e6218d2ed",
-            "comment": "High contrast hover states: Breadcrumb, Button, ComboBox, Link, Nav, Pivot, SearchBox, SpinButton, Toggle."
+            "comment":
+              "High contrast hover states: Breadcrumb, Button, ComboBox, Link, Nav, Pivot, SearchBox, SpinButton, Toggle."
           },
           {
             "author": "jspurlin <jspurlin@microsoft.com>",
@@ -843,7 +1012,8 @@
           {
             "author": "Brian Garland <v-brgarl@microsoft.com>",
             "commit": "2ea373d0f35d2ebba56084455987f829e6e72188",
-            "comment": "In the TextField component, The code setting the 'errorMessage' state to an empty string in the _onInputChange member function was removed do to causing the message to flicker."
+            "comment":
+              "In the TextField component, The code setting the 'errorMessage' state to an empty string in the _onInputChange member function was removed do to causing the message to flicker."
           }
         ]
       }
@@ -857,7 +1027,8 @@
           {
             "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
             "commit": "5404c2eed65ab753a4c4c28909de58bbababeba2",
-            "comment": "Fix ensureSuggestionModel null ref, get rid of unneeded FocusZone in BaseExtendedPicker, remove requirement in BaseExtendedPicker that suggestions are shown when input is focused (only clicked)"
+            "comment":
+              "Fix ensureSuggestionModel null ref, get rid of unneeded FocusZone in BaseExtendedPicker, remove requirement in BaseExtendedPicker that suggestions are shown when input is focused (only clicked)"
           },
           {
             "author": "Jon Schectman <joschect@microsoft.com>",
@@ -877,14 +1048,16 @@
           {
             "author": "kysedate <35615581+kysedate@users.noreply.github.com>",
             "commit": "2aee0d6d6f2e7a2734920ebaec2ad22f13e0fc37",
-            "comment": "Using the proper preview text to set the aria label on combobox options. I previously had this change, but I accidentally reverted it during a merge. "
+            "comment":
+              "Using the proper preview text to set the aria label on combobox options. I previously had this change, but I accidentally reverted it during a merge. "
           }
         ],
         "minor": [
           {
             "author": "Eddie Liu <leddie24@gmail.com>",
             "commit": "34683b19a79bd2bd7b7bf83a196a2e83313780c0",
-            "comment": "ScrollablePane: Optimizations on how component functions.  Change positioning from inheriting height/maxHeight of parent element to use position: absolute"
+            "comment":
+              "ScrollablePane: Optimizations on how component functions.  Change positioning from inheriting height/maxHeight of parent element to use position: absolute"
           },
           {
             "author": "David Zearing <dzearing@microsoft.com>",
@@ -931,7 +1104,8 @@
           {
             "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
             "commit": "0f0a9fa47e601c3018cb1b484c5267f5df046c0d",
-            "comment": "If firstFocus on HoverCard is set then propagate it to setInitialFocus in ExpandingCard. This enables focusing the card on render."
+            "comment":
+              "If firstFocus on HoverCard is set then propagate it to setInitialFocus in ExpandingCard. This enables focusing the card on render."
           },
           {
             "author": "kkjeer <kkjeer@wellesley.edu>",
@@ -1002,7 +1176,8 @@
           {
             "author": "Brian Garland <v-brgarl@microsoft.com>",
             "commit": "8626a66beaa9f357336c489f0e31890d6c5ce102",
-            "comment": "Added onClick handler to rating star in the Rating component that calls _onFocus redundently for support with Firefox & Safari on OSX."
+            "comment":
+              "Added onClick handler to rating star in the Rating component that calls _onFocus redundently for support with Firefox & Safari on OSX."
           },
           {
             "author": "kanupriya28 <priya.kanu95@gmail.com>",
@@ -1100,14 +1275,16 @@
           {
             "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
             "commit": "0ee2136ddb49447faa1e0a5cdb0211ea68fe068b",
-            "comment": "Gate calendar month, year, and today keydowns for only ENTER as onClick handles space with button nodes to fix double date change regression."
+            "comment":
+              "Gate calendar month, year, and today keydowns for only ENTER as onClick handles space with button nodes to fix double date change regression."
           }
         ],
         "minor": [
           {
             "author": "Jordan Janzen <jordancjanzen@gmail.com>",
             "commit": "b9f6e845720daf7536a299a84be96ec4793ae57a",
-            "comment": "Complete ProgressIndicator conversion to mergeStyles. Add `barHeight` to enable changing height of progress bar."
+            "comment":
+              "Complete ProgressIndicator conversion to mergeStyles. Add `barHeight` to enable changing height of progress bar."
           },
           {
             "author": "Jon Schectman <joschect@microsoft.com>",
@@ -1131,7 +1308,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "6bfddc1c44aa7afcdf053467985490027eb5edcd",
-            "comment": "Fabric: the isFocusVisible class is no added to the Fabric component again, to preserve backwards compatibility. Also fixing index file to export the types."
+            "comment":
+              "Fabric: the isFocusVisible class is no added to the Fabric component again, to preserve backwards compatibility. Also fixing index file to export the types."
           },
           {
             "author": "Thomas Michon <thomas@michon.com>",
@@ -1141,7 +1319,8 @@
           {
             "author": "Brian Garland <v-brgarl@microsoft.com>",
             "commit": "127d4d9deeca7e38a4ae6df6bd4d92ea5a978432",
-            "comment": "Enabled native props (aria-* and data-*) on OverflowSet even when the doNotContainWithinFocusZone prop is false"
+            "comment":
+              "Enabled native props (aria-* and data-*) on OverflowSet even when the doNotContainWithinFocusZone prop is false"
           }
         ],
         "dependency": [
@@ -1192,7 +1371,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "57d14eb7535d07348628c034bff03646c0851bd2",
-            "comment": "ContextualMenu: in item root styling, replaced `font: inherit` with the appropriate font style from the theme."
+            "comment":
+              "ContextualMenu: in item root styling, replaced `font: inherit` with the appropriate font style from the theme."
           },
           {
             "author": "David Zearing <dzearing@microsoft.com>",
@@ -1202,7 +1382,8 @@
           {
             "author": "John Lorenz <lorejoh12@gmail.com>",
             "commit": "af62e60a594673e79f50acd1db0c27c5b7be32a0",
-            "comment": "Adding check to focusTrapZone to only restore focus on close if focus was still inside the focusTrapZone"
+            "comment":
+              "Adding check to focusTrapZone to only restore focus on close if focus was still inside the focusTrapZone"
           },
           {
             "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
@@ -1214,7 +1395,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "2bbc7950bd9f10ea1e792dcb1155c625aa8e8f4f",
-            "comment": "Updating the focus styling to use the generalized `ms-Fabric--isFocusVisible` classname. This is one step closer towards removing the `Fabric` component wrapper requirement."
+            "comment":
+              "Updating the focus styling to use the generalized `ms-Fabric--isFocusVisible` classname. This is one step closer towards removing the `Fabric` component wrapper requirement."
           },
           {
             "author": "Thomas Michon <thomas@michon.com>",
@@ -1233,7 +1415,8 @@
             "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.26.0 <6.0.0` to `>=5.27.0 <6.0.0`"
           },
           {
-            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=5.1.0 <6.0.0` to `>=5.2.0 <6.0.0`"
+            "comment":
+              "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=5.1.0 <6.0.0` to `>=5.2.0 <6.0.0`"
           },
           {
             "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.10.2 <6.0.0` to `>=5.11.0 <6.0.0`"
@@ -1262,12 +1445,14 @@
           {
             "author": "Brian Garland <v-brgarl@microsoft.com>",
             "commit": "bcfcbd31d10874a8c560273be82d4a7087d37aa4",
-            "comment": "Added support for zero star situations in the Rating component.  Before it would write out a star for  the number zero showing 6 stars when there should be 5."
+            "comment":
+              "Added support for zero star situations in the Rating component.  Before it would write out a star for  the number zero showing 6 stars when there should be 5."
           },
           {
             "author": "Yimin Wu <yimwu@microsoft.com>",
             "commit": "d8c8e6fc0be8766ce6625aefc4a512e0abfe4e7f",
-            "comment": "Add onRenderIcon prop to IContextualMenuItem to allow override icon render for contextualMenuItem."
+            "comment":
+              "Add onRenderIcon prop to IContextualMenuItem to allow override icon render for contextualMenuItem."
           }
         ],
         "dependency": [
@@ -1286,7 +1471,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "b6c5fde0d4ede388e05014b2f1f480610b8aef17",
-            "comment": "DetailsRow: applying `flex-shrink:0` to the check cell to prevent it from squishing in the flex layout."
+            "comment":
+              "DetailsRow: applying `flex-shrink:0` to the check cell to prevent it from squishing in the flex layout."
           },
           {
             "author": "Jordan Janzen <jordancjanzen@gmail.com>",
@@ -1313,7 +1499,8 @@
           {
             "author": "Brian Garland <v-brgarl@microsoft.com>",
             "commit": "f2dc9cbc3b00abe1af545917f9908ce7e08a5b9b",
-            "comment": "Added headerButtonProps prop to PivotItem to allow passing native props (data-* & aria-*) to the header/link/CommandButton element. Also depricated linkText and added headerText for semantic purposes."
+            "comment":
+              "Added headerButtonProps prop to PivotItem to allow passing native props (data-* & aria-*) to the header/link/CommandButton element. Also depricated linkText and added headerText for semantic purposes."
           }
         ]
       }
@@ -1400,7 +1587,8 @@
           {
             "author": "rebeccaballantyne <rebeccaballantyne@gmail.com>",
             "commit": "9686b87ca379e171f773e6765bde8c0f012d1c5e",
-            "comment": "Updates aria-owns on BasePicker (and snapshot tests) so its only set when suggestions are rendered"
+            "comment":
+              "Updates aria-owns on BasePicker (and snapshot tests) so its only set when suggestions are rendered"
           }
         ],
         "dependency": [
@@ -1419,7 +1607,8 @@
           {
             "author": "jspurlin <jspurlin@microsoft.com>",
             "commit": "9cc47f548636e7b952aed80cb75e2adce39a2a32",
-            "comment": "ContextualMenu: Update mousemove to only do anything if there is not another pending mouse enter/move/leave to improve the snappiness of the updates"
+            "comment":
+              "ContextualMenu: Update mousemove to only do anything if there is not another pending mouse enter/move/leave to improve the snappiness of the updates"
           }
         ]
       }
@@ -1528,12 +1717,14 @@
           {
             "author": "kysedate <35615581+kysedate@users.noreply.github.com>",
             "commit": "8ef07e5a6fe206a89cbd3291bcecc3c721510e06",
-            "comment": "Handling the scenario where embedded text is passed in as the option's text. In This case, the ariaLabel prop will be displayed in the input and used for autocomplete matching. The value rendered in the menu will not change."
+            "comment":
+              "Handling the scenario where embedded text is passed in as the option's text. In This case, the ariaLabel prop will be displayed in the input and used for autocomplete matching. The value rendered in the menu will not change."
           },
           {
             "author": "kysedate <35615581+kysedate@users.noreply.github.com>",
             "commit": "589eb521fa6ec57b6c9b61744b2e81d6f17e7be2",
-            "comment": "Wrapping combobox options in an internal component which only performs an update if the props have changed. We are currently updating every option on every mouse or keyboard event. This gives awful performance in comboboxes with many elements. "
+            "comment":
+              "Wrapping combobox options in an internal component which only performs an update if the props have changed. We are currently updating every option on every mouse or keyboard event. This gives awful performance in comboboxes with many elements. "
           },
           {
             "author": "Mark Polak <mark@thedutchies.com>",
@@ -1548,12 +1739,14 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "1e2afca81ae952207f798d11c66cb935c847cdbb",
-            "comment": "FocusZone: redoing the \"reset alignment on mouse down\" change in a less intrusive manner, with test coverage."
+            "comment":
+              "FocusZone: redoing the \"reset alignment on mouse down\" change in a less intrusive manner, with test coverage."
           },
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "4b856fc9e1734edd3986c28f25e9211a3edf96d4",
-            "comment": "Removing module entry until we change `lib` to output es6 modules in 6.0. If you would like tree shaking to work, please use webpack aliasing to alias `{packageName}/lib` to `{packageName}/lib-es2015`. In 6.0, we will change `lib` to be es6, so that current partners will just get tree shaking out of the box without aliasing."
+            "comment":
+              "Removing module entry until we change `lib` to output es6 modules in 6.0. If you would like tree shaking to work, please use webpack aliasing to alias `{packageName}/lib` to `{packageName}/lib-es2015`. In 6.0, we will change `lib` to be es6, so that current partners will just get tree shaking out of the box without aliasing."
           },
           {
             "author": "Thomas Michon <thomas@michon.com>",
@@ -1568,7 +1761,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "c3d5683deb1309f464e04218a952439e8eb207d8",
-            "comment": "FocusZone: undoing the \"click\" change, which was causing non-focusable targets to be tracked as the \"active\" element. This created side-effects such as elements becoming focusable upon clicking them more than once, leaving behind unexpected focus outlines."
+            "comment":
+              "FocusZone: undoing the \"click\" change, which was causing non-focusable targets to be tracked as the \"active\" element. This created side-effects such as elements becoming focusable upon clicking them more than once, leaving behind unexpected focus outlines."
           },
           {
             "author": "David Zearing <dzearing@microsoft.com>",
@@ -1578,7 +1772,8 @@
           {
             "author": "Preet Sai Mutneja <preetsaimutneja@gmail.com>",
             "commit": "0803ee2b1dd00b67b7ec61f902f0ebb609c92faf",
-            "comment": "DetailsList: Starting aria-rowIndex from 1 instead of 0 as mentioned in https://www.w3.org/TR/wai-aria-1.1/#aria-rowindex"
+            "comment":
+              "DetailsList: Starting aria-rowIndex from 1 instead of 0 as mentioned in https://www.w3.org/TR/wai-aria-1.1/#aria-rowindex"
           },
           {
             "author": "wutonghao <38301383+wutonghao@users.noreply.github.com>",
@@ -1615,12 +1810,14 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "0c830b2d32319e5455c2c652765b9d4d6cda8268",
-            "comment": "Fabric component: all logic that was in the component has moved to a helper which is initialized within BaseComponent. This ensures that focus rectangles show up even if you don't use the Fabric wrapper."
+            "comment":
+              "Fabric component: all logic that was in the component has moved to a helper which is initialized within BaseComponent. This ensures that focus rectangles show up even if you don't use the Fabric wrapper."
           },
           {
             "author": "Brian Garland <v-brgarl@microsoft.com>",
             "commit": "0e488caa96a9ca0d8b48567aa2b87cc04c415e76",
-            "comment": "Set Panel's FocusTrapZone prop isClickableOutsideFocusTrap to true by default to allow click interactions while panel is open"
+            "comment":
+              "Set Panel's FocusTrapZone prop isClickableOutsideFocusTrap to true by default to allow click interactions while panel is open"
           },
           {
             "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
@@ -1685,12 +1882,14 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "a5eea239e21a0d41bf31e850e23d112aaf2890da",
-            "comment": "Updating various `componentRef` values to refer to the component public interfaces, rather than to the components themselves."
+            "comment":
+              "Updating various `componentRef` values to refer to the component public interfaces, rather than to the components themselves."
           },
           {
             "author": "lynamemi <lynam.emily@gmail.com>",
             "commit": "f1dfd3e38c2521f5f75c4f415181dec1348837ec",
-            "comment": "SearchBox: Fix padding left and add padding top and bottom to fix the field overlapping the border."
+            "comment":
+              "SearchBox: Fix padding left and add padding top and bottom to fix the field overlapping the border."
           }
         ],
         "minor": [
@@ -1721,7 +1920,8 @@
           {
             "author": "Josh Chang <coralbue@gmail.com>",
             "commit": "2a0183327766e9cb7c9d81b652650ab1e56028bf",
-            "comment": "Contexual Menu: Move SplitButtonContainer to be defined in the constructor instead of ComponentDidMount"
+            "comment":
+              "Contexual Menu: Move SplitButtonContainer to be defined in the constructor instead of ComponentDidMount"
           },
           {
             "author": "natalieethell <yummyraspberries@gmail.com>",
@@ -1768,7 +1968,8 @@
           {
             "author": "Jordan Janzen <jordancjanzen@gmail.com>",
             "commit": "3e514375dff844cdb8182daf53178d3056411b8c",
-            "comment": "Convert Persona and PersonaCoin and PersonaPresence to  mergeStyles. Create IPersonaSharedProps for props that apply to Persona and PersonaCoin and PersonaPresence. Other refactors."
+            "comment":
+              "Convert Persona and PersonaCoin and PersonaPresence to  mergeStyles. Create IPersonaSharedProps for props that apply to Persona and PersonaCoin and PersonaPresence. Other refactors."
           }
         ],
         "none": [
@@ -1843,7 +2044,8 @@
           {
             "author": "Brian Garland <brian@efelle.com>",
             "commit": "bb506d48b28c2bd0bd0be5c11ab1d4f847e6f359",
-            "comment": "Added dividerAs prop to Breadcrumb component allowing the user to pass a custom icon to be used as the trail divider icon."
+            "comment":
+              "Added dividerAs prop to Breadcrumb component allowing the user to pass a custom icon to be used as the trail divider icon."
           },
           {
             "author": "joeuy <jchiarino@gmail.com>",
@@ -1888,14 +2090,16 @@
           {
             "author": "kysedate <35615581+kysedate@users.noreply.github.com>",
             "commit": "8745677f91b986616eb2e37130767c5ce0ca2101",
-            "comment": "Adding a longer delay as an option to the tooltip comonent. Before there was only a medium (300ms) or zero (0ms) delay."
+            "comment":
+              "Adding a longer delay as an option to the tooltip comonent. Before there was only a medium (300ms) or zero (0ms) delay."
           }
         ],
         "minor": [
           {
             "author": "Vitalie Braga <vitaliebraga@gmail.com>",
             "commit": "0771cc20e7f8a3379444ff32355488946d8f9332",
-            "comment": "Brings changes to DetailsList, DetailsRow and DetailsRowFields to enable use of a basic Shimmer."
+            "comment":
+              "Brings changes to DetailsList, DetailsRow and DetailsRowFields to enable use of a basic Shimmer."
           }
         ]
       }
@@ -1935,7 +2139,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "41711f7788981cf4d84495d147d93a74b979113c",
-            "comment": "We need to temporarily remove `sideEffects: false` flag from package.json which will disable webpack 4 tree shaking until we can identify a good fix for it to not shake out the scss files."
+            "comment":
+              "We need to temporarily remove `sideEffects: false` flag from package.json which will disable webpack 4 tree shaking until we can identify a good fix for it to not shake out the scss files."
           },
           {
             "author": "natalieethell <yummyraspberries@gmail.com>",
@@ -2010,7 +2215,8 @@
           {
             "author": "Josh Chang <coralbue@gmail.com>",
             "commit": "bb7193052a77747ad3564d14fe1e347394a94570",
-            "comment": "ContextualMenu: SplitButtons in ContextualMenus are incorrectly using the menuLauncher portion of the splitButton for the tagrate when the  menuLauncher portion is  activated. This can lead to weird overhangs of the parent menu even if  directionalHintFixed is not true (e.g. it will overlap the primary portion of the  splitButton and potentially other items in the parent menu)"
+            "comment":
+              "ContextualMenu: SplitButtons in ContextualMenus are incorrectly using the menuLauncher portion of the splitButton for the tagrate when the  menuLauncher portion is  activated. This can lead to weird overhangs of the parent menu even if  directionalHintFixed is not true (e.g. it will overlap the primary portion of the  splitButton and potentially other items in the parent menu)"
           }
         ],
         "dependency": [
@@ -2085,7 +2291,8 @@
           {
             "author": "Shadowglen Elf <shadowglen@outlook.com>",
             "commit": "6be1f812174c293a1cb3938bd8ea261787c30e65",
-            "comment": "In Panel component, isClickableOutsideFocusTrap should not be overriden back to false if it's already set to true in focusTrapZoneProps."
+            "comment":
+              "In Panel component, isClickableOutsideFocusTrap should not be overriden back to false if it's already set to true in focusTrapZoneProps."
           },
           {
             "author": "lynamemi <lynam.emily@gmail.com>",
@@ -2138,7 +2345,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "38089072c6e7f877d572cd2248b8d67adfefb963",
-            "comment": "Updating to webpack 4 for producting bundles. Adding appropriate `module` and `sideEffects` flags on all applicable packages."
+            "comment":
+              "Updating to webpack 4 for producting bundles. Adding appropriate `module` and `sideEffects` flags on all applicable packages."
           }
         ],
         "dependency": [
@@ -2169,7 +2377,8 @@
           {
             "author": "Aditi Mandal <aditima@microsoft.com>",
             "commit": "4293e416922981422628c31f175359fcfc6eca4b",
-            "comment": "DetailsList: reset focusedItemIndex after setKey changes to fix scrolling after folder navigation"
+            "comment":
+              "DetailsList: reset focusedItemIndex after setKey changes to fix scrolling after folder navigation"
           },
           {
             "author": "David Zearing <dzearing@microsoft.com>",
@@ -2246,12 +2455,14 @@
           {
             "author": "Brian Garland <brian@efelle.com>",
             "commit": "3bfe9498f8cfa0cccc1129d10bd49744c8a152f5",
-            "comment": "Reordered the logic in CommandBar that decides to render an anchor or button tag so that the anchor tag can have both an href and onclick attribute."
+            "comment":
+              "Reordered the logic in CommandBar that decides to render an anchor or button tag so that the anchor tag can have both an href and onclick attribute."
           },
           {
             "author": "SayaliS <sayalis@microsoft.com>",
             "commit": "d1feb088557c62359dc5f6a55b0b460dc8c63fd1",
-            "comment": "Add `hasFocus` api in `SearchBox` that returns a flag indicating whether `SearchBox` has focus or not."
+            "comment":
+              "Add `hasFocus` api in `SearchBox` that returns a flag indicating whether `SearchBox` has focus or not."
           }
         ],
         "patch": [
@@ -2302,19 +2513,22 @@
           {
             "author": "petdun2519 <peterdunlop2519@gmail.com>",
             "commit": "1d69b5db81dca397760cf22bfc2d73c297bdf666",
-            "comment": "CommandBar changed the title attribute to render as tooltip and added readonly state (visitable by keyboard, functionally disabled)"
+            "comment":
+              "CommandBar changed the title attribute to render as tooltip and added readonly state (visitable by keyboard, functionally disabled)"
           }
         ],
         "patch": [
           {
             "author": "SayaliS <sayalis@microsoft.com>",
             "commit": "da374c8f7e9391968ca7c2aaefe85817018e37af",
-            "comment": "Add shouldInputLoseFocusOnArrowKey callback for scenario to determine if input should loose focus when arrow key is present when Tabbing is enabled on All elements or Input elements"
+            "comment":
+              "Add shouldInputLoseFocusOnArrowKey callback for scenario to determine if input should loose focus when arrow key is present when Tabbing is enabled on All elements or Input elements"
           },
           {
             "author": "SayaliS <sayalis@microsoft.com>",
             "commit": "da374c8f7e9391968ca7c2aaefe85817018e37af",
-            "comment": "FocusZone: adding `shouldInputLoseFocusOnArrowKey` optional callback for scenarios where user press an arrow key on an input element and want it to loose focus when FocusZone disables moving focus away in case when FocusZoneTabbableElements is set to All or none"
+            "comment":
+              "FocusZone: adding `shouldInputLoseFocusOnArrowKey` optional callback for scenarios where user press an arrow key on an input element and want it to loose focus when FocusZone disables moving focus away in case when FocusZoneTabbableElements is set to All or none"
           },
           {
             "author": "dmarcey <demarcey@microsoft.com>",
@@ -2380,7 +2594,8 @@
           {
             "author": "Micah Godbolt <micahgodbolt@gmail.com>",
             "commit": "552fef5879cc776b66aa09135dbbeacfb6e7d578",
-            "comment": "Button: fixed bug causes by onRenderDescription pulling from this.props instead of passed in props"
+            "comment":
+              "Button: fixed bug causes by onRenderDescription pulling from this.props instead of passed in props"
           },
           {
             "author": "David Zearing <dzearing@microsoft.com>",
@@ -2438,7 +2653,8 @@
           {
             "author": "Brian Garland <brian@efelle.com>",
             "commit": "d1b3d356374e2c5887566df9f6e7645c932529bd",
-            "comment": "Targeted the aria-labelledby on ChoiceGroup's input field to the span tag inside the span tag inside label ( option.labelId ) instead of thelabel itself ( option.id ). "
+            "comment":
+              "Targeted the aria-labelledby on ChoiceGroup's input field to the span tag inside the span tag inside label ( option.labelId ) instead of thelabel itself ( option.id ). "
           }
         ],
         "dependency": [
@@ -2471,7 +2687,8 @@
           {
             "author": "Brian Garland <brian@efelle.com>",
             "commit": "7a6c2bda4918fb262600609f2169a337c2613328",
-            "comment": "Added an is-open class to the DatePicker root element to indicate when the datepicker is being shown based on the IDatePickerState.isDatePickerShown state property."
+            "comment":
+              "Added an is-open class to the DatePicker root element to indicate when the datepicker is being shown based on the IDatePickerState.isDatePickerShown state property."
           },
           {
             "author": "Brian Garland <brian@efelle.com>",
@@ -2507,12 +2724,14 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "7251c2dc69071e97fccbeb18971736f4e65cf301",
-            "comment": "ComoboBox and SpinButton: Removing excess margins and padding to make them consistent with TextField."
+            "comment":
+              "ComoboBox and SpinButton: Removing excess margins and padding to make them consistent with TextField."
           },
           {
             "author": "Matt Lind <matthewtlind@hotmail.com>",
             "commit": "327e1e350ab4bb9909d449e66b7ec9ef8ca879e4",
-            "comment": "Facepile: Added `overflowPersonas` option to better control what personas go into the overflow personas vs show up as a persona coin. Also adjusted Facepile back to showing a Persona control if there is only one persona to be shown with no overflow."
+            "comment":
+              "Facepile: Added `overflowPersonas` option to better control what personas go into the overflow personas vs show up as a persona coin. Also adjusted Facepile back to showing a Persona control if there is only one persona to be shown with no overflow."
           },
           {
             "author": "Brian Garland <brian@efelle.com>",
@@ -2534,7 +2753,8 @@
           {
             "author": "Spencer Lynn <sllynn8907@gmail.com>",
             "commit": "699fa697ae829e756108ce2b6725084d27e93f7e",
-            "comment": "Updating a test to ensure that focus is trapped in a FocusTrapZone when it has a FocusZone as the last element"
+            "comment":
+              "Updating a test to ensure that focus is trapped in a FocusTrapZone when it has a FocusZone as the last element"
           },
           {
             "author": "Hlynur Tryggvason <hlynur.tryggvason@officeatwork.com>",
@@ -2633,7 +2853,8 @@
           {
             "author": "lynamemi <lynam.emily@gmail.com>",
             "commit": "2cf6fefa3c6aa497e2e6e1e748b4bf57abc1b480",
-            "comment": "MessageBar: Aria label for truncated text overflow button and added aria labels for buttons in examples."
+            "comment":
+              "MessageBar: Aria label for truncated text overflow button and added aria labels for buttons in examples."
           }
         ],
         "dependency": [
@@ -2697,7 +2918,8 @@
           {
             "author": "Brian Garland <brian@efelle.com>",
             "commit": "68b0c8b7ae1c1ef5a9932ea786f37df71ce06e7b",
-            "comment": "Temporarily commented out @customizable decorator in Image component to restore usage of static functions and variables."
+            "comment":
+              "Temporarily commented out @customizable decorator in Image component to restore usage of static functions and variables."
           }
         ],
         "dependency": [
@@ -2877,7 +3099,8 @@
           {
             "author": "Brian Garland <brian@efelle.com>",
             "commit": "1e766db267dcc15e44b671952ade61151e93d331",
-            "comment": "Added index import for base files in Layer, Nav, Image, ScrollablePane, ResizeGroup, and Rating components so unstyled component can be used."
+            "comment":
+              "Added index import for base files in Layer, Nav, Image, ScrollablePane, ResizeGroup, and Rating components so unstyled component can be used."
           },
           {
             "author": "Brian Garland <brian@efelle.com>",
@@ -2930,7 +3153,8 @@
           {
             "author": "jspurlin <jspurlin@microsoft.com>",
             "commit": "9c45eeb414025b84b4cb91555e6d42a2a14110f0",
-            "comment": "SplitButton: ENTER/SPACE should execute the primary button when focus is on the whole splitButton"
+            "comment":
+              "SplitButton: ENTER/SPACE should execute the primary button when focus is on the whole splitButton"
           }
         ],
         "minor": [
@@ -2961,7 +3185,8 @@
           {
             "author": "lynamemi <lynam.emily@gmail.com>",
             "commit": "c468751e4eb75df1fab7e320a559f8a28953bc70",
-            "comment": "ComboBox: Shortened and centered the input field to account for overlap that appears at some resolutions."
+            "comment":
+              "ComboBox: Shortened and centered the input field to account for overlap that appears at some resolutions."
           },
           {
             "author": "natalieethell <yummyraspberries@gmail.com>",
@@ -3005,7 +3230,8 @@
           {
             "author": "Drew Brough <drew-brough@users.noreply.github.com>",
             "commit": "9b2f25a818c7db0e98b4dd9ece25e8506c619d31",
-            "comment": "DatePicker calls onDateSelected then AfterMenuDismissed to follow the same pattern as BaseButton"
+            "comment":
+              "DatePicker calls onDateSelected then AfterMenuDismissed to follow the same pattern as BaseButton"
           },
           {
             "author": "Lambert Wang <lambert.ww@gmail.com>",
@@ -3083,7 +3309,8 @@
           {
             "author": "Mark Polak <mark@thedutchies.com>",
             "commit": "6d0c968d9bda5581da65e6c63138c243355dddfe",
-            "comment": "SelectionZone: deprecating `layout` as it is no longer in use. Removing `SelectionLayout` as it is not required."
+            "comment":
+              "SelectionZone: deprecating `layout` as it is no longer in use. Removing `SelectionLayout` as it is not required."
           }
         ],
         "patch": [
@@ -3114,7 +3341,8 @@
           {
             "author": "davsm <36288536+davsm@users.noreply.github.com>",
             "commit": "a40160db28a702c2bacb1cb7c147b150c59b7a9c",
-            "comment": "Fix Scrollable-Pane getComputedStyle error - changing timeouts to use this._async.setTimeout to ensure this.refs isn't used after componentWillUnmount"
+            "comment":
+              "Fix Scrollable-Pane getComputedStyle error - changing timeouts to use this._async.setTimeout to ensure this.refs isn't used after componentWillUnmount"
           },
           {
             "author": "jspurlin <jspurlin@microsoft.com>",
@@ -3252,7 +3480,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "51d47a80898d9834d40205274268e60730f306a1",
-            "comment": "Buttons: moving className lower in the merge list so that it has more precedence than default rules."
+            "comment":
+              "Buttons: moving className lower in the merge list so that it has more precedence than default rules."
           },
           {
             "author": "David Zearing <dzearing@microsoft.com>",
@@ -3333,12 +3562,14 @@
           {
             "author": "John Miller <rubixws@gmail.com>",
             "commit": "44b167af31b9b6dd079359209f101f1af10762a5",
-            "comment": "Migrating Coachmark to main office-ui-fabrc-react package and adding a beak compoentn as well as updating  the experimental component PositioningContainer to reflect some of the latest bits in  Callout"
+            "comment":
+              "Migrating Coachmark to main office-ui-fabrc-react package and adding a beak compoentn as well as updating  the experimental component PositioningContainer to reflect some of the latest bits in  Callout"
           },
           {
             "author": "Cody Hoover <hoovercj@users.noreply.github.com>",
             "commit": "7b7abfa12cec76632570dad7c2524901e4580ab1",
-            "comment": "FocusZone.Focus now respects forceIntoFirstChild parameter and  IFocusZone.ts has been updated to reflect this"
+            "comment":
+              "FocusZone.Focus now respects forceIntoFirstChild parameter and  IFocusZone.ts has been updated to reflect this"
           },
           {
             "author": "Mike Wheaton <miwhea@microsoft.com>",
@@ -3350,12 +3581,14 @@
           {
             "author": "Manish Garg <manishga@microsoft.com>",
             "commit": "e1643ddc1862e030bd1f1908c148e778867a23f8",
-            "comment": "Fix bug: '#3942 Fixed controlled TextField with multiline and autoAdjustHeight does not adjust when setting value via state'"
+            "comment":
+              "Fix bug: '#3942 Fixed controlled TextField with multiline and autoAdjustHeight does not adjust when setting value via state'"
           },
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "fbbbbeb54e4f0e42ad15ccff1a031fa65f5433c5",
-            "comment": "SearchBox: adding unit test and tweaking how the value is read from ev rather than the element itself."
+            "comment":
+              "SearchBox: adding unit test and tweaking how the value is read from ev rather than the element itself."
           }
         ],
         "dependency": [
@@ -3377,17 +3610,20 @@
           {
             "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
             "commit": "cdd6bafa27a6514e51ffe816ebb89b8a71b63a94",
-            "comment": "Add \"use current input command\" and remove need to explicity call focus when moving between suggestions and commands"
+            "comment":
+              "Add \"use current input command\" and remove need to explicity call focus when moving between suggestions and commands"
           },
           {
             "author": "Cody Hoover <hoovercj@users.noreply.github.com>",
             "commit": "45f36ccd4e4954d54d3008a09aef5f0adb24fb16",
-            "comment": "Add clearButtonProps prop to SearchBox.types.ts with the IButtonPropsType. This is passed to the icon button in SearchBox.base.tsx"
+            "comment":
+              "Add clearButtonProps prop to SearchBox.types.ts with the IButtonPropsType. This is passed to the icon button in SearchBox.base.tsx"
           },
           {
             "author": "Micah Godbolt <micahgodbolt@gmail.com>",
             "commit": "27e230cd7f368d471e0dfceb5e4b11a9ab10354b",
-            "comment": "SearchBox: Fixed getStyles interface to be using ISearchBoxStyleProps instead of ISearchBoxProps"
+            "comment":
+              "SearchBox: Fixed getStyles interface to be using ISearchBoxStyleProps instead of ISearchBoxProps"
           }
         ],
         "patch": [
@@ -3439,7 +3675,8 @@
           {
             "author": "Trevor Gau <trevorsg@gmail.com>",
             "commit": "f57acaa79994e796b1219ed4cbe61904c4948e5b",
-            "comment": "Fix aria-owns in contextual menu items, and add appropriate aria properties to CommandBar items."
+            "comment":
+              "Fix aria-owns in contextual menu items, and add appropriate aria properties to CommandBar items."
           }
         ],
         "dependency": [
@@ -3464,7 +3701,8 @@
           {
             "author": "chang47 <coralbue@gmail.com>",
             "commit": "8dc2a79a815874d6bb26d867a49b9f46809397e1",
-            "comment": "Contextual Menu - adding support for aria-setsize and aria-posinset for rendering menu items that relies on the menu item's own rendering"
+            "comment":
+              "Contextual Menu - adding support for aria-setsize and aria-posinset for rendering menu items that relies on the menu item's own rendering"
           },
           {
             "author": "Joe Martella <martellaj@live.com>",
@@ -3665,7 +3903,8 @@
           {
             "author": "lynamemi <lynam.emily@gmail.com>",
             "commit": "5c71bd92894505214a9a6df8c4fb9d8e43472d98",
-            "comment": "ComboBox, Dropdown, TextField: Improved high contrast in focus state. Layout changes for ComboBox to allow for border-box sizing."
+            "comment":
+              "ComboBox, Dropdown, TextField: Improved high contrast in focus state. Layout changes for ComboBox to allow for border-box sizing."
           }
         ],
         "minor": [
@@ -3705,7 +3944,8 @@
           {
             "author": "Jordan Janzen <jordancjanzen@gmail.com>",
             "commit": "b17a45fe057f50aa489be21d3e517d783b40b9e1",
-            "comment": "Adds the _isControlled flag to the TextField component that disabled onChange if the value prop is set, which follows developer expectations with React inputs."
+            "comment":
+              "Adds the _isControlled flag to the TextField component that disabled onChange if the value prop is set, which follows developer expectations with React inputs."
           },
           {
             "author": "Philip Kuo <phkuo@microsoft.com>",
@@ -3720,7 +3960,8 @@
           {
             "author": "Brian Garland <brian@efelle.com>",
             "commit": "ddc544059e61523a8294b16275ae2e8706241e4f",
-            "comment": "added return default when reaching the html tag in while loop inside _getBackground() inside Sticky component."
+            "comment":
+              "added return default when reaching the html tag in while loop inside _getBackground() inside Sticky component."
           }
         ],
         "dependency": [
@@ -3749,17 +3990,20 @@
           {
             "author": "John Lorenz <jcl47@duke.edu>",
             "commit": "7df5be25f84af0d634cc2c428026b0a98000703b",
-            "comment": "updating willReceiveProps of date picker to not run validation unless the props actually changed"
+            "comment":
+              "updating willReceiveProps of date picker to not run validation unless the props actually changed"
           },
           {
             "author": "jspurlin <jspurlin@microsoft.com>",
             "commit": "e6136d1726d59c4766b58af9dd0bd40a3936952b",
-            "comment": "ComboBox: ComboBoxes were changed to always expand which is incorrect behavior, fixing to align with the correct design"
+            "comment":
+              "ComboBox: ComboBoxes were changed to always expand which is incorrect behavior, fixing to align with the correct design"
           },
           {
             "author": "jspurlin <jspurlin@microsoft.com>",
             "commit": "b6a301e8164b5120d9c25049942ef112628f067d",
-            "comment": "ContextualMenu: Remove the list in the menu and move the aria-label/labelledby to the correct element"
+            "comment":
+              "ContextualMenu: Remove the list in the menu and move the aria-label/labelledby to the correct element"
           },
           {
             "author": "Scott Balentine <sbalentine88@gmail.com>",
@@ -3809,7 +4053,8 @@
           {
             "author": "chang47 <coralbue@gmail.com>",
             "commit": "58615e57bf5698dc425d8c825163697b26303243",
-            "comment": "Combox box: added accessibility changes added a title and changed activedescendant to use focused element"
+            "comment":
+              "Combox box: added accessibility changes added a title and changed activedescendant to use focused element"
           },
           {
             "author": "Jon Schectman <joschect@microsoft.com>",
@@ -3944,17 +4189,20 @@
           {
             "author": "Jon Schectman <joschect@microsoft.com>",
             "commit": "09c29d1e2c1d6fc541fb13eacf535fca82f868ba",
-            "comment": "BaseAutoFill: Fixed a bug where baseautofill would not work with composed languages like Japanese"
+            "comment":
+              "BaseAutoFill: Fixed a bug where baseautofill would not work with composed languages like Japanese"
           },
           {
             "author": "lynamemi <lynam.emily@gmail.com>",
             "commit": "f2dcf91ae4e484ce483b52c35b012c90d28fd89e",
-            "comment": "Dropdown: Align error message styling to TextField. TextField & ComboBox: Updated invalid input border color to be red in all states."
+            "comment":
+              "Dropdown: Align error message styling to TextField. TextField & ComboBox: Updated invalid input border color to be red in all states."
           },
           {
             "author": "lynamemi <lynam.emily@gmail.com>",
             "commit": "b31132497466cd88b1887badfef8c05833e35784",
-            "comment": "TextField and SearchBox: Specified placeholder text color to be more consistent across browsers."
+            "comment":
+              "TextField and SearchBox: Specified placeholder text color to be more consistent across browsers."
           },
           {
             "author": "manueldosal <manuel_dosal32@hotmail.com>",
@@ -3995,7 +4243,8 @@
           {
             "author": "Sohan Fernando <ohritz@users.noreply.github.com>",
             "commit": "e49507cddc72a273449a01aa56d9496787134427",
-            "comment": "Fixed SuggestionsController method convertSuggestionsToSuggestionItems to handle BasePicker createGenericItem correctly"
+            "comment":
+              "Fixed SuggestionsController method convertSuggestionsToSuggestionItems to handle BasePicker createGenericItem correctly"
           }
         ]
       }
@@ -4050,7 +4299,8 @@
           {
             "author": "Bryan Watts <brwatt@microsoft.com>",
             "commit": "3918313795cd6f12b7405aa94b559e68c7d71652",
-            "comment": "Add a context value under ResizeGroup to allow child components to detect whether they are being used only for measurement."
+            "comment":
+              "Add a context value under ResizeGroup to allow child components to detect whether they are being used only for measurement."
           },
           {
             "author": "lynamemi <lynam.emily@gmail.com>",
@@ -4085,7 +4335,8 @@
           {
             "author": "Jordan Janzen <jordancjanzen@gmail.com>",
             "commit": "b1f94259d8358ba55cdc4a69cda4eecf32df6528",
-            "comment": "Add classNames and style the hidden input inside the ChoiceGroup image and icon variants so the Narrator highlights it correctly. "
+            "comment":
+              "Add classNames and style the hidden input inside the ChoiceGroup image and icon variants so the Narrator highlights it correctly. "
           },
           {
             "author": "erichdev <a.erich@gmail.com>",
@@ -4153,7 +4404,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "3879310a7378c6ad1fa2144dedab8730eb9f9953",
-            "comment": "Icon: the `ms-Icon` class name, despite being unused, is causing conflicts with fabric-core usage inadvertently. There isn't a great way to deal with this other than to avoid re-using the `ms-Icon` class name."
+            "comment":
+              "Icon: the `ms-Icon` class name, despite being unused, is causing conflicts with fabric-core usage inadvertently. There isn't a great way to deal with this other than to avoid re-using the `ms-Icon` class name."
           },
           {
             "author": "Kris Brown <kristoferbrown@users.noreply.github.com>",
@@ -4208,7 +4460,8 @@
           {
             "author": "Jon Schectman <joschect@microsoft.com>",
             "commit": "c017cea5cb68d62a39efc0dc0afead9cd32e5cd1",
-            "comment": "Callout/Positioning: Fix a bug where callouts would position incorrectly if the target was  an HTMLImg element"
+            "comment":
+              "Callout/Positioning: Fix a bug where callouts would position incorrectly if the target was  an HTMLImg element"
           }
         ],
         "minor": [
@@ -4291,7 +4544,8 @@
           {
             "author": "Marius Tennøe <mariust@outlook.com>",
             "commit": "57763c505a6ebdf04577a3db70a521add6735cf4",
-            "comment": "Added optional callback for getting image load state change events from personacoin through Persona component"
+            "comment":
+              "Added optional callback for getting image load state change events from personacoin through Persona component"
           }
         ],
         "dependency": [
@@ -4445,7 +4699,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "08e59c871894c8ff443d48dbe5b0dd3316eb4331",
-            "comment": "Updated build to newest React version and typings. Updated tests and made various tweaks to the code to remove React warnings and keep Enzyme happy."
+            "comment":
+              "Updated build to newest React version and typings. Updated tests and made various tweaks to the code to remove React warnings and keep Enzyme happy."
           }
         ],
         "dependency": [
@@ -4459,7 +4714,8 @@
             "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.5.0 <6.0.0` to `>=5.6.0 <6.0.0`"
           },
           {
-            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=5.0.1 <6.0.0` to `>=5.1.0 <6.0.0`"
+            "comment":
+              "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=5.0.1 <6.0.0` to `>=5.1.0 <6.0.0`"
           },
           {
             "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.1.2 <6.0.0` to `>=5.2.0 <6.0.0`"
@@ -4576,7 +4832,8 @@
           {
             "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
             "commit": "05fe90c2295e04ed07c61cefefc5892e89926e71",
-            "comment": "BaseButton: Explicitly dismiss the menu when the contextual menu is dismissed rather than calling toggleMEnu"
+            "comment":
+              "BaseButton: Explicitly dismiss the menu when the contextual menu is dismissed rather than calling toggleMEnu"
           }
         ]
       }
@@ -4635,7 +4892,8 @@
           {
             "author": "jspurlin <jspurlin@microsoft.com>",
             "commit": "b5a02b69fcc8a16f112c5f57cb7fb28240ee8d0f",
-            "comment": "ComboBox: change when focus is set back to the input to make sure it doesn't  steal focus from somewhere else"
+            "comment":
+              "ComboBox: change when focus is set back to the input to make sure it doesn't  steal focus from somewhere else"
           },
           {
             "author": "Ridlsan <riddlesan@yandex.ru>",
@@ -4645,7 +4903,8 @@
           {
             "author": "Michael Loughry <miclo@microsoft.com>",
             "commit": "4e7e80e3205a9ca25dd00993c006faf7b9e50be6",
-            "comment": "ContextualMenu: properly observe deprecated `isDisabled` property (until we remove the property)"
+            "comment":
+              "ContextualMenu: properly observe deprecated `isDisabled` property (until we remove the property)"
           }
         ]
       }
@@ -4797,7 +5056,8 @@
           {
             "author": "lynamemi <lynam.emily@gmail.com>",
             "commit": "2207c10859801f04a37b682f14f83d67267022ed",
-            "comment": "PersonaPresence: Scale the presence and presence icon proportionally to the specified coinSize up to a max size."
+            "comment":
+              "PersonaPresence: Scale the presence and presence icon proportionally to the specified coinSize up to a max size."
           }
         ],
         "minor": [
@@ -4836,12 +5096,14 @@
           {
             "author": "Jon Schectman <joschect@microsoft.com>",
             "commit": "70276089a58cdf49a4136097788d74ef3d089674",
-            "comment": "Positioning/Callout: made significant changes to help prepare for when positioning and calloutpositioning separate."
+            "comment":
+              "Positioning/Callout: made significant changes to help prepare for when positioning and calloutpositioning separate."
           },
           {
             "author": "jspurlin <jspurlin@microsoft.com>",
             "commit": "52bce08e9e3c61aa1f40d6b56ca8d32e25ac44e9",
-            "comment": "ComboBox/Dropdown/ContextualMenu: Update how the focus gets updated for hover so that 1) we aren't blasting mouseMoves and 2) so we get rid of weirdness around  hover and scroll"
+            "comment":
+              "ComboBox/Dropdown/ContextualMenu: Update how the focus gets updated for hover so that 1) we aren't blasting mouseMoves and 2) so we get rid of weirdness around  hover and scroll"
           }
         ],
         "patch": [
@@ -4862,7 +5124,8 @@
           {
             "author": "lynamemi <lynam.emily@gmail.com>",
             "commit": "7d322b1de493bd49f1a93a26bc09cdf67e574b25",
-            "comment": "SelectableOption: New disabled prop for options. ComboBox: Updated styling per design spec, including new rootPressed prop, color updates, and className updates."
+            "comment":
+              "SelectableOption: New disabled prop for options. ComboBox: Updated styling per design spec, including new rootPressed prop, color updates, and className updates."
           },
           {
             "author": "Montse Lozano Dieck <malozano@microsoft.com>",
@@ -4944,7 +5207,8 @@
           {
             "author": "Kushal Yarlagadda <whykushal93@gmail.com>",
             "commit": "eb978924c0bdce2d9bc9b82719a4b31f55ee3f52",
-            "comment": "Combo box only updates the pending values in arrow keypresses, whether  its menu is open or  closed"
+            "comment":
+              "Combo box only updates the pending values in arrow keypresses, whether  its menu is open or  closed"
           },
           {
             "author": "lynamemi <lynam.emily@gmail.com>",
@@ -4959,7 +5223,8 @@
           {
             "author": "staylo8 <33881401+staylo8@users.noreply.github.com>",
             "commit": "d6b160b67456101362c1b241b4c4ee6d11850fdb",
-            "comment": "Apply props.className in ResizeGroup. Add snapshot for ResizeGroup. Pass className from experiments CommandBarTests. Update experiments CommandBar snapshot"
+            "comment":
+              "Apply props.className in ResizeGroup. Add snapshot for ResizeGroup. Pass className from experiments CommandBarTests. Update experiments CommandBar snapshot"
           },
           {
             "author": "lynamemi <lynam.emily@gmail.com>",
@@ -5036,7 +5301,8 @@
           {
             "author": "Eddie Liu <leddie24@gmail.com>",
             "commit": "67466325ed0ff6b89f82fa152860f968d8d740a0",
-            "comment": "Edit HoverCardPage, OverflowSetPage, ScrollablePanePage, TeachingBubblePage to use IComponentDemoPageProps"
+            "comment":
+              "Edit HoverCardPage, OverflowSetPage, ScrollablePanePage, TeachingBubblePage to use IComponentDemoPageProps"
           }
         ],
         "minor": [
@@ -5062,17 +5328,20 @@
           {
             "author": "v-jaebey <v-jaebey@microsoft.com>",
             "commit": "a94240dd097b611997300ea1837f34d496b2d162",
-            "comment": "Nav: Added `onLinkExpandClick` callback for getting a callback when an item expanded state is toggled"
+            "comment":
+              "Nav: Added `onLinkExpandClick` callback for getting a callback when an item expanded state is toggled"
           },
           {
             "author": "lynamemi <lynam.emily@gmail.com>",
             "commit": "5a5c4bc9fa2528b3e9ed3521ec2e43d70aa3b48f",
-            "comment": "PersonaCoin: For non-latin characters, if initials return an empty string, use the Contact icon instead of the empty string."
+            "comment":
+              "PersonaCoin: For non-latin characters, if initials return an empty string, use the Contact icon instead of the empty string."
           },
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "48766c08ef17a1ec9a1d020836820bbb47a7b4dd",
-            "comment": "Rating control implementation using button, Half star support and ReadOnly rating control support"
+            "comment":
+              "Rating control implementation using button, Half star support and ReadOnly rating control support"
           }
         ],
         "patch": [
@@ -5094,7 +5363,8 @@
           {
             "author": "Eddie Liu <leddie24@gmail.com>",
             "commit": "a879a83f4ba55a12eb5d9fe247dfa7208637433a",
-            "comment": "ScrollablePane: Fix sortStickies function to sort elements by their true offsetTop in respect to scrollablePane's root"
+            "comment":
+              "ScrollablePane: Fix sortStickies function to sort elements by their true offsetTop in respect to scrollablePane's root"
           },
           {
             "author": "Kris Brown <kristoferbrown@users.noreply.github.com>",
@@ -5135,7 +5405,8 @@
           {
             "author": "Yimin Wu <yimwu@microsoft.com>",
             "commit": "27b3e985fe437ad6b1dfcda1924eb6f13191f509",
-            "comment": "Dropdown: Update dropdown interface to allow open dropdown after focus and remove extra focus border for dropdown option."
+            "comment":
+              "Dropdown: Update dropdown interface to allow open dropdown after focus and remove extra focus border for dropdown option."
           }
         ],
         "dependency": [
@@ -5209,12 +5480,14 @@
           {
             "author": "lynamemi <lynam.emily@gmail.com>",
             "commit": "360d694fc21bc5ea7fa8b44b45fa44426c0f5068",
-            "comment": "TextField: Moved required asterisk to be outside of fieldGroup when no label is present. No longer a need for special styles when icons are present."
+            "comment":
+              "TextField: Moved required asterisk to be outside of fieldGroup when no label is present. No longer a need for special styles when icons are present."
           },
           {
             "author": "lynamemi <lynam.emily@gmail.com>",
             "commit": "a54a302ccca174804aa60d1d39e6dd48f7767020",
-            "comment": "TextField: Updated field width for all examples to be more legible. Replaced ms- with docs- prefix for example scss."
+            "comment":
+              "TextField: Updated field width for all examples to be more legible. Replaced ms- with docs- prefix for example scss."
           }
         ],
         "dependency": [
@@ -5244,7 +5517,8 @@
           {
             "author": "lynamemi <lynam.emily@gmail.com>",
             "commit": "e30b47ff60bbbfe6a09d336224797606275b3c26",
-            "comment": "Persona: DirectionalHint for Tooltip location, polished example spacing and documentation on PersonaPage."
+            "comment":
+              "Persona: DirectionalHint for Tooltip location, polished example spacing and documentation on PersonaPage."
           },
           {
             "author": "Spencer Elliott <me@elliottsj.com>",
@@ -5273,7 +5547,8 @@
           {
             "author": "lejimsft <32402358+lejimsft@users.noreply.github.com>",
             "commit": "d93bec6b7e866a697ef4a108289c861becacb7ad",
-            "comment": "added aira0expanded property to contextMenu item so that narrator will announce expand/collapse state of a menu item if it has submenu items."
+            "comment":
+              "added aira0expanded property to contextMenu item so that narrator will announce expand/collapse state of a menu item if it has submenu items."
           }
         ]
       }
@@ -5429,7 +5704,8 @@
           {
             "author": "Montse Lozano Dieck <malozano@microsoft.com>",
             "commit": "eba1cc63e2c3474031a51e0f849936402c21e7dd",
-            "comment": "Split Button in Menu: add vertical divider component and hook to customize splitbutton in menu div classname"
+            "comment":
+              "Split Button in Menu: add vertical divider component and hook to customize splitbutton in menu div classname"
           },
           {
             "author": "lynamemi <lynam.emily@gmail.com>",
@@ -5489,7 +5765,8 @@
           {
             "author": "Marius Tennøe <mariust@outlook.com>",
             "commit": "7f4ece990b065b1d43ec71cd4d4615b5ede0d082",
-            "comment": "Make red a reserved color for the PersonaCoin so it can only be used if you override the personacoin color"
+            "comment":
+              "Make red a reserved color for the PersonaCoin so it can only be used if you override the personacoin color"
           }
         ],
         "dependency": [
@@ -5525,7 +5802,8 @@
           {
             "author": "Micah Godbolt <micahgodbolt@gmail.com>",
             "commit": "02f5ef74858d988b0e5f48a32a688ea65c93b7d2",
-            "comment": "Panel: changed navigation layout to use flexbox, and pass overrides directly into button to avoid load order issues"
+            "comment":
+              "Panel: changed navigation layout to use flexbox, and pass overrides directly into button to avoid load order issues"
           },
           {
             "author": "Philip Kuo <phkuo@microsoft.com>",
@@ -5566,7 +5844,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "b6ba83e0c27830b87824a8062d97ded3540a7ba7",
-            "comment": "Removing the `initializeIcons` call from the top level import. The bundle in the dist folder used in codepens will still continue to have it, so that codepens don't stop rendering icons."
+            "comment":
+              "Removing the `initializeIcons` call from the top level import. The bundle in the dist folder used in codepens will still continue to have it, so that codepens don't stop rendering icons."
           }
         ],
         "dependency": [
@@ -5585,7 +5864,8 @@
           {
             "author": "Amund Kronen Johansen <32198837+amkronen@users.noreply.github.com>",
             "commit": "a3760c014672dd40b073fb6dd8eec4bdda7471ea",
-            "comment": "Panel: Added possibility of using a custom function to handle clicks outside the panel when using isLightDismiss=true"
+            "comment":
+              "Panel: Added possibility of using a custom function to handle clicks outside the panel when using isLightDismiss=true"
           },
           {
             "author": "kellygorr <kegorr@microsoft.com>",
@@ -5663,7 +5943,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "6fc8b90efd2d0edc978167c1bfd1d6d3c2e7f64c",
-            "comment": "Layer: exposing `setDefaultTarget(selector)` static method to set a default target element where layered content should render by default."
+            "comment":
+              "Layer: exposing `setDefaultTarget(selector)` static method to set a default target element where layered content should render by default."
           }
         ],
         "dependency": [
@@ -5674,7 +5955,8 @@
             "comment": "Updating dependency \"@uifabric/styling\" from `>=5.4.0 <6.0.0` to `>=5.4.1 <6.0.0`"
           },
           {
-            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=5.0.0 <6.0.0` to `>=5.0.1 <6.0.0`"
+            "comment":
+              "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=5.0.0 <6.0.0` to `>=5.0.1 <6.0.0`"
           }
         ]
       }
@@ -5705,7 +5987,8 @@
           {
             "author": "Fabio Pintos <fabio.pintos@outlook.com>",
             "commit": "ee9cd4b760b1b0de70890f035a36058cc67e70d7",
-            "comment": "DatePicker will not try to parse a string if the formatted string of the selected date is the same as the string to be parsed."
+            "comment":
+              "DatePicker will not try to parse a string if the formatted string of the selected date is the same as the string to be parsed."
           }
         ]
       }
@@ -5729,7 +6012,8 @@
           {
             "author": "Spencer Lynn <sllynn8907@gmail.com>",
             "commit": "b2fd8a79c7376328a80497ff8ddb3be97b0814cf",
-            "comment": "ColorPicker: Adding hex/red/green/blue/alpha label props so applications can provide localized strings. Also turns off spell check for corresponding text fields."
+            "comment":
+              "ColorPicker: Adding hex/red/green/blue/alpha label props so applications can provide localized strings. Also turns off spell check for corresponding text fields."
           },
           {
             "author": "Thomas Michon <thomas@michon.com>",
@@ -5856,7 +6140,8 @@
           {
             "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
             "commit": "44391e1f9fc8724a690e74ea9ea2ea34ab1c0047",
-            "comment": "ContextualMenu: Pass in a menu dismiss function into onRender to allow custom rendered menu items to dismiss the menu"
+            "comment":
+              "ContextualMenu: Pass in a menu dismiss function into onRender to allow custom rendered menu items to dismiss the menu"
           }
         ],
         "dependency": [
@@ -5987,7 +6272,8 @@
           {
             "author": "Ian VanSchooten <ian.vanschooten@gmail.com>",
             "commit": "f0362588a14a3df75b94f2fe21ceb114ce07c7e1",
-            "comment": "ComboBox: Updated typing and documentation for `autoComplete` to only allow 'on' or 'off' (following html standards) rather than a boolean."
+            "comment":
+              "ComboBox: Updated typing and documentation for `autoComplete` to only allow 'on' or 'off' (following html standards) rather than a boolean."
           },
           {
             "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
@@ -6004,7 +6290,8 @@
           {
             "author": "joeuy <jchiarino@gmail.com>",
             "commit": "bc54e30967bd66cdad34df2aad81df031ba3bccb",
-            "comment": "Dropdown: add onDismiss callback. Example multi select dropdown with filters, we want to apply filters after user has dismissed the dropdown. "
+            "comment":
+              "Dropdown: add onDismiss callback. Example multi select dropdown with filters, we want to apply filters after user has dismissed the dropdown. "
           },
           {
             "author": "jspurlin <jspurlin@microsoft.com>",
@@ -6019,7 +6306,8 @@
           {
             "author": "kellygorr <kegorr@microsoft.com>",
             "commit": "379611dd5fe516ab5230b1447c6a1d325cf6a625",
-            "comment": "ComboBox: added selectedIndex prop and inputFieldText prop for more control over comboBox behavior"
+            "comment":
+              "ComboBox: added selectedIndex prop and inputFieldText prop for more control over comboBox behavior"
           },
           {
             "author": "Montse Lozano Dieck <malozano@microsoft.com>",
@@ -6154,7 +6442,8 @@
           {
             "author": "Jon Schectman <joschect@microsoft.com>",
             "commit": "8e1dcc66cda8334653a8b5ccbde02bf6275e0b23",
-            "comment": "TSConfig: update to use preserveConstEnums so that certain builds systems don't break when importing const enums"
+            "comment":
+              "TSConfig: update to use preserveConstEnums so that certain builds systems don't break when importing const enums"
           },
           {
             "author": "lynamemi <lynam.emily@gmail.com>",
@@ -6166,7 +6455,8 @@
           {
             "author": "Max Vaysburd <max@angrykitten.com>",
             "commit": "25b9997aad2db7ca530283fb1bfb0b72e96955f7",
-            "comment": "Style ms-Button-menuIcon according to root styles for the following states - hovered, pressed, expanded  ande expandedHovered."
+            "comment":
+              "Style ms-Button-menuIcon according to root styles for the following states - hovered, pressed, expanded  ande expandedHovered."
           }
         ],
         "dependency": [
@@ -6247,12 +6537,14 @@
           {
             "author": "Michael Loughry <miclo@microsoft.com>",
             "commit": "36e1182f5f4f9a268d93377d3bea12c493fb4e17",
-            "comment": "TooltipHost: Specifying a className will no longer prevent innate Tooltip classes from being properly applied"
+            "comment":
+              "TooltipHost: Specifying a className will no longer prevent innate Tooltip classes from being properly applied"
           },
           {
             "author": "Andres Camargo <andrescb@microsoft.com>",
             "commit": "7f7200ea84ca73ef5dfd370ae1ac5986a8f24c56",
-            "comment": "DatePicker - make onSelectDate callback execute as part of SetState instead of after it. This ensures that selected date changes occur in the expected order"
+            "comment":
+              "DatePicker - make onSelectDate callback execute as part of SetState instead of after it. This ensures that selected date changes occur in the expected order"
           },
           {
             "author": "Micah Godbolt <micahgodbolt@gmail.com>",
@@ -6262,7 +6554,8 @@
           {
             "author": "lynamemi <lynam.emily@gmail.com>",
             "commit": "ca3473a1d65c8124901173ee0aeb7c7af5b220ef",
-            "comment": "General bug fixes: Updated ResourcePage text, Reordered TextField page to give priority to design guidance examples, improved padding and spacing for TextField and ComboBox examples, and various website pages. Synced ComboBox error message spacing to be like TextField and per design specs."
+            "comment":
+              "General bug fixes: Updated ResourcePage text, Reordered TextField page to give priority to design guidance examples, improved padding and spacing for TextField and ComboBox examples, and various website pages. Synced ComboBox error message spacing to be like TextField and per design specs."
           },
           {
             "author": "lynamemi <lynam.emily@gmail.com>",
@@ -6272,7 +6565,8 @@
           {
             "author": "lynamemi <lynam.emily@gmail.com>",
             "commit": "d8a8001fd24c3e2ae2ea1e0754acac98f80d4492",
-            "comment": "Added new inline prop for SearchBox and corresonding new example. Adjested the SearchBoxPage to better reflect the current toolkit documentation."
+            "comment":
+              "Added new inline prop for SearchBox and corresonding new example. Adjested the SearchBoxPage to better reflect the current toolkit documentation."
           },
           {
             "author": "lynamemi <lynam.emily@gmail.com>",
@@ -6299,12 +6593,14 @@
           {
             "author": "kellygorr <kegorr@microsoft.com>",
             "commit": "de1162806fc4d1ff50c2d6d82e453d1fb1bc0b25",
-            "comment": "ComboBox: when options are scrollable, added prop to scroll selected item to top when callout is opened."
+            "comment":
+              "ComboBox: when options are scrollable, added prop to scroll selected item to top when callout is opened."
           },
           {
             "author": "Montse Lozano Dieck <malozano@microsoft.com>",
             "commit": "75ce32c363d1415c4d5bf28ac29c38df9dddea1f",
-            "comment": "\"Buttons: adding `primaryDisabled` flag for disabling only the primary action of the split button, leaving the menu enabled.\""
+            "comment":
+              "\"Buttons: adding `primaryDisabled` flag for disabling only the primary action of the split button, leaving the menu enabled.\""
           }
         ],
         "major": [
@@ -6485,12 +6781,14 @@
           {
             "author": "Joe Martella <martellaj@live.com>",
             "commit": "13c14c4be9191e29a5cb9e3aafa3aa101442abbd",
-            "comment": "PeoplePicker: adjusting aria/role attributes to improve the Narrator experience when reading out suggestions."
+            "comment":
+              "PeoplePicker: adjusting aria/role attributes to improve the Narrator experience when reading out suggestions."
           },
           {
             "author": "petdun2519 <peterdunlop2519@gmail.com>",
             "commit": "446359f9402335458c80521d93fb6f5506cdb199",
-            "comment": "TextField: Moved aria live attribute onto the actual text of an error message for text field component so that it is read aloud by narrator."
+            "comment":
+              "TextField: Moved aria live attribute onto the actual text of an error message for text field component so that it is read aloud by narrator."
           },
           {
             "author": "Micah Godbolt <micahgodbolt@gmail.com>",
@@ -6595,7 +6893,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "27237524ac78279420c93e0e07d65b44dc5547da",
-            "comment": "Icon: Removed a recently added prop `onClicked` as it is redundant with `onClick`. Updated DatePicker to use `onClick`."
+            "comment":
+              "Icon: Removed a recently added prop `onClicked` as it is redundant with `onClick`. Updated DatePicker to use `onClick`."
           },
           {
             "author": "Philip Kuo <phkuo@microsoft.com>",
@@ -6741,7 +7040,8 @@
           {
             "author": "John Miller <rubixws@gmail.com>",
             "commit": "219d6cb38f1c2af59d5d463ceabe576ecfe682e8",
-            "comment": "Cleaned up Default Dialogue to more cleanly represent the default state. Reformated exampleStyles imports to work towards more modularity. Typo and language fixes."
+            "comment":
+              "Cleaned up Default Dialogue to more cleanly represent the default state. Reformated exampleStyles imports to work towards more modularity. Typo and language fixes."
           },
           {
             "author": "Micah Godbolt <micahgodbolt@gmail.com>",
@@ -6751,7 +7051,8 @@
           {
             "author": "John Miller <rubixws@gmail.com>",
             "commit": "726a015a94fb23c229784649926901665c3d9d8f",
-            "comment": "Added shared styling to accommodate shared spacing between common elements in example components on the website. Also began to add consistency in the language."
+            "comment":
+              "Added shared styling to accommodate shared spacing between common elements in example components on the website. Also began to add consistency in the language."
           },
           {
             "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
@@ -6842,12 +7143,14 @@
           {
             "author": "Jon Schectman <joschect@microsoft.com>",
             "commit": "e438cfa78495bab7de5653ae661b1d50555d5861",
-            "comment": "Callout: Made updatePosition async. Contextualmenu: Fixed a bug where sometimes a submenu would have a beak."
+            "comment":
+              "Callout: Made updatePosition async. Contextualmenu: Fixed a bug where sometimes a submenu would have a beak."
           },
           {
             "author": "erichdev <a.erich@gmail.com>",
             "commit": "bd33f70885615750558e10dfb9aca8eabe12ca1b",
-            "comment": "Refactor `Persona` to extract `PersonaCoin` and `PersonaPresence` so image/status can be rendered alone without Tooltip. Added `PersonaCoin` to top level exports"
+            "comment":
+              "Refactor `Persona` to extract `PersonaCoin` and `PersonaPresence` so image/status can be rendered alone without Tooltip. Added `PersonaCoin` to top level exports"
           }
         ]
       }
@@ -6883,7 +7186,8 @@
           {
             "author": "kellygorr <kegorr@microsoft.com>",
             "commit": "f49723ef1425284a918fc79cf8e6db8f9ed3964e",
-            "comment": "Calendar:  Updating accessibility, fixing headers aria box, fixing selected/unselected state in day and month picker, updating aria-label for next/previous buttons, fixing arial label for months in month picker."
+            "comment":
+              "Calendar:  Updating accessibility, fixing headers aria box, fixing selected/unselected state in day and month picker, updating aria-label for next/previous buttons, fixing arial label for months in month picker."
           },
           {
             "author": "David Zearing <dzearing@microsoft.com>",
@@ -6939,7 +7243,8 @@
           {
             "author": "kellygorr <kegorr@microsoft.com>",
             "commit": "bb12bfd38b0ecd888f8ca3093b189441a0f25d59",
-            "comment": "Calendar: Arrows (when month picker only) do not navigate correctly.  Fixed this and fixed position."
+            "comment":
+              "Calendar: Arrows (when month picker only) do not navigate correctly.  Fixed this and fixed position."
           }
         ],
         "patch": [
@@ -6951,7 +7256,8 @@
           {
             "author": "Jon Schectman <joschect@microsoft.com>",
             "commit": "50f32d1f57ddc19896859706988532d802e58c21",
-            "comment": "Pickers: Fixed a bug where suggestionsHeaderText would not display, also fixed backspace event propagating even when it was handled."
+            "comment":
+              "Pickers: Fixed a bug where suggestionsHeaderText would not display, also fixed backspace event propagating even when it was handled."
           },
           {
             "author": "Su Su <s@warmsea.net>",
@@ -6966,7 +7272,8 @@
           {
             "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
             "commit": "1b885ff4a5b392b121d8251ccf2601d667e2e946",
-            "comment": "SplitButton: Update the menu launcher target for a split button to be the entire control instead of just the menu launching portion"
+            "comment":
+              "SplitButton: Update the menu launcher target for a split button to be the entire control instead of just the menu launching portion"
           },
           {
             "author": "Christopher Schleiden <cschleiden@live.de>",
@@ -6985,14 +7292,16 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "eca3d17992576760e7b6b55d74f2d7a2b85e3a21",
-            "comment": "Icon: tweaked `iconName` to take in a string, rather than IconCode. The type safety can't be enforced in Fabric 5 which will support whatever subsets the customer registers."
+            "comment":
+              "Icon: tweaked `iconName` to take in a string, rather than IconCode. The type safety can't be enforced in Fabric 5 which will support whatever subsets the customer registers."
           }
         ],
         "patch": [
           {
             "author": "Serkan Inci <serkan.inci@hotmail.com>",
             "commit": "59f40046748c54c5e82257f5639bd46a6ca4ce32",
-            "comment": "CommandBar: Fixing wrong positioning for overflow menu, when overflow menu open and CommandBar is updated"
+            "comment":
+              "CommandBar: Fixing wrong positioning for overflow menu, when overflow menu open and CommandBar is updated"
           }
         ],
         "dependency": [
@@ -7051,7 +7360,8 @@
           {
             "author": "Max Vaysburd <max@angrykitten.com>",
             "commit": "88fce95c6a4369a57affdcd4f81bd4d060c39daf",
-            "comment": "Added rootExpandedHovered and iconExpandedHovered to IButtonStyles interface.  These entries are for specifying on hover style for expanded state."
+            "comment":
+              "Added rootExpandedHovered and iconExpandedHovered to IButtonStyles interface.  These entries are for specifying on hover style for expanded state."
           },
           {
             "author": "David Wilson (VSNC) <dawilson@microsoft.com>",
@@ -7165,7 +7475,8 @@
           {
             "author": "Jon Schectman <joschect@microsoft.com>",
             "commit": "fded8a25de72a6469ac2a3419e7d687e766a4ae3",
-            "comment": "SwatchColorPicker: Fixed so it will deselect the current items if there is a selected id passed in that does not exist in the color list"
+            "comment":
+              "SwatchColorPicker: Fixed so it will deselect the current items if there is a selected id passed in that does not exist in the color list"
           }
         ],
         "minor": [
@@ -7216,7 +7527,8 @@
           {
             "author": "kellygorr <kegorr@microsoft.com>",
             "commit": "0e28d77ec626cac7a3b4b923fe4411879fae5225",
-            "comment": "Updating goToToday to include onSelectDate function if defined so that this button behaves like a date has been picked"
+            "comment":
+              "Updating goToToday to include onSelectDate function if defined so that this button behaves like a date has been picked"
           },
           {
             "author": "Micah Godbolt <micahgodbolt@gmail.com>",
@@ -7324,7 +7636,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "6746103da3c35f95afb1cde1b304a756c550deff",
-            "comment": "Adding back sourcemap content to .map files, which should alleviate \"../src/* missing\" issues when using webpack."
+            "comment":
+              "Adding back sourcemap content to .map files, which should alleviate \"../src/* missing\" issues when using webpack."
           }
         ],
         "dependency": [
@@ -7378,7 +7691,8 @@
           {
             "author": "jspurlin <jspurlin@microsoft.com>",
             "commit": "8c44eb11c83b26cba83a170b8f757a774ec2109f",
-            "comment": "ComboBox - Fix so the component doesn't cause it's children to rebuild and fix up the  the updating of the value  accordingly"
+            "comment":
+              "ComboBox - Fix so the component doesn't cause it's children to rebuild and fix up the  the updating of the value  accordingly"
           }
         ],
         "dependency": [
@@ -7416,12 +7730,14 @@
           {
             "author": "Sohan Fernando <ohritz@users.noreply.github.com>",
             "commit": "cd5b68bacd924f438829c16d9e824cfa5bf9b632",
-            "comment": "BasePicker: added itemLimit property, which will allow preventing adding more items than set limit."
+            "comment":
+              "BasePicker: added itemLimit property, which will allow preventing adding more items than set limit."
           },
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "f641204ac5537dfaed6787fbece6d512e6e29439",
-            "comment": "Selection: now takes in a selectionMode, which DetailsList and others can read from. This does not break any existing SelectionMode passed into DetailsList currently but allows you to move the setting to the Selection object."
+            "comment":
+              "Selection: now takes in a selectionMode, which DetailsList and others can read from. This does not break any existing SelectionMode passed into DetailsList currently but allows you to move the setting to the Selection object."
           },
           {
             "author": "David Zearing <dzearing@microsoft.com>",
@@ -7431,7 +7747,8 @@
           {
             "author": "jijizz <liu_zhi8@hotmail.com>",
             "commit": "0d1a498dbb1fb2456db97592c553fbe05572930a",
-            "comment": "withViewport: adding the ability to disable measures to improve performance of rendering the DetailsList in fixed mode."
+            "comment":
+              "withViewport: adding the ability to disable measures to improve performance of rendering the DetailsList in fixed mode."
           }
         ],
         "patch": [
@@ -7584,7 +7901,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "860ca7ed4743647c6740e39ec2e21b060884a23a",
-            "comment": "FocusZone: presssing home/end inside of an input/textarea element should respect cursor location."
+            "comment":
+              "FocusZone: presssing home/end inside of an input/textarea element should respect cursor location."
           },
           {
             "author": "Thomas Michon <thomas@michon.com>",
@@ -7594,7 +7912,8 @@
           {
             "author": "Jon Schectman <joschect@microsoft.com>",
             "commit": "66cfd860da0296f9c4cd583ae1112059eb23d887",
-            "comment": "Pickers: Fixed an issue where a loop would sometimes occur if values were resolved when input had an empty value."
+            "comment":
+              "Pickers: Fixed an issue where a loop would sometimes occur if values were resolved when input had an empty value."
           },
           {
             "author": "David Zearing <dzearing@microsoft.com>",
@@ -7628,12 +7947,14 @@
           {
             "author": "kellygorr <kegorr@microsoft.com>",
             "commit": "408bddf8bc49210e6a904dd9607fc522370ff6a8",
-            "comment": "Enhancing the calendar component.  Created option to have month picker overlayed on top of calendar so that the calendar remains in one column and switches between the two.  Added accessibility in new overlay to mimi OWA calendar.  Fixed issue: When the month picker is the only calendar, and screen is small, calendar would disappear when it should be visible."
+            "comment":
+              "Enhancing the calendar component.  Created option to have month picker overlayed on top of calendar so that the calendar remains in one column and switches between the two.  Added accessibility in new overlay to mimi OWA calendar.  Fixed issue: When the month picker is the only calendar, and screen is small, calendar would disappear when it should be visible."
           },
           {
             "author": "kellygorr <kegorr@microsoft.com>",
             "commit": "d67af9b7cb454b35931c33fb8f0e9f9f65330876",
-            "comment": "Calendar had extra 30px margin at the bottom of the component.  It interfered with the layout below the component.  The 30px margin is only necessary when the 'go to today' button is visible."
+            "comment":
+              "Calendar had extra 30px margin at the bottom of the component.  It interfered with the layout below the component.  The 30px margin is only necessary when the 'go to today' button is visible."
           },
           {
             "author": "Thomas Michon <thomas@michon.com>",
@@ -7652,7 +7973,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "1cdf83594ca2e1bdd844b5cb99a13c01ea23bdb2",
-            "comment": "Dropdown: no longer scrolls body when arrowing up down at the start/end of the menu. Also added `multSelectDelimiter` for tweaking how the title is rendered in a multi-select scenario."
+            "comment":
+              "Dropdown: no longer scrolls body when arrowing up down at the start/end of the menu. Also added `multSelectDelimiter` for tweaking how the title is rendered in a multi-select scenario."
           },
           {
             "author": "Kris Brown <kristoferbrown@users.noreply.github.com>",
@@ -7703,7 +8025,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "50b608ee4ee1ad5c948073121fd92f0fbaed81d5",
-            "comment": "FocusZone: adjusting initialization logic to remove a potential memory leak in server rendered scenarios."
+            "comment":
+              "FocusZone: adjusting initialization logic to remove a potential memory leak in server rendered scenarios."
           },
           {
             "author": "jspurlin <jspurlin@microsoft.com>",
@@ -7760,7 +8083,8 @@
           {
             "author": "Stanley Yao <stanley.yao@microsoft.com>",
             "commit": "741bf74775697aa459121b4b1b81af7e44138991",
-            "comment": "Add onFocus and onBlur for Pickers, SpinButton, SearchBox, and Rating. Add IBasePicker with focus()."
+            "comment":
+              "Add onFocus and onBlur for Pickers, SpinButton, SearchBox, and Rating. Add IBasePicker with focus()."
           }
         ],
         "dependency": [
@@ -7806,7 +8130,8 @@
           {
             "author": "thomabr <thomabr@microsoft.com>",
             "commit": "5e07c6d8d3518ef0301b1d1655dc467f4f7a0d3b",
-            "comment": "GridCell: Add a component to handle the shared logic managing selection and navigation of cells within all consumers of the Grid class. This change also updates the SwatchColorPicker to  use the GridCell component and removes  most of the logic now contained in the GridCell component."
+            "comment":
+              "GridCell: Add a component to handle the shared logic managing selection and navigation of cells within all consumers of the Grid class. This change also updates the SwatchColorPicker to  use the GridCell component and removes  most of the logic now contained in the GridCell component."
           },
           {
             "author": "Yimin Wu <yimwu@microsoft.com>",
@@ -7830,7 +8155,8 @@
           {
             "author": "Jon Schectman <joschect@microsoft.com>",
             "commit": "b0b4d93a4375433f03885fbbebc9a715aa4ec34d",
-            "comment": "Callout: Fix positioning comparision so it correctly repositions if the beak left/right position has changed\""
+            "comment":
+              "Callout: Fix positioning comparision so it correctly repositions if the beak left/right position has changed\""
           },
           {
             "author": "Manish Dahamiwal <mdhamiwal@gmail.com>",
@@ -7845,7 +8171,8 @@
           {
             "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
             "commit": "36ce1d12e6ba50ee97860100d1560365c193e3dd",
-            "comment": "ResizeGroup: Prevent rendering to the hidden div on prop updates that has an initial data that is in the cache"
+            "comment":
+              "ResizeGroup: Prevent rendering to the hidden div on prop updates that has an initial data that is in the cache"
           },
           {
             "author": "Micah Godbolt <micahgodbolt@gmail.com>",
@@ -7896,7 +8223,8 @@
           {
             "author": "ycoco <ycocococo6256@gmail.com>",
             "commit": "b7b031bb833cf4ce042a951228a3c6a63a7386fa",
-            "comment": "Dropdown: added `multiSelect` attribute, which controls multi-item selection. Added `selectedKeys` to `IDropdown` which provides access to all selected keys, in addition to `defaultSelectedKeys` and `selectedKeys` props."
+            "comment":
+              "Dropdown: added `multiSelect` attribute, which controls multi-item selection. Added `selectedKeys` to `IDropdown` which provides access to all selected keys, in addition to `defaultSelectedKeys` and `selectedKeys` props."
           },
           {
             "author": "Eddie Liu <leddie24@gmail.com>",
@@ -8003,7 +8331,8 @@
           {
             "author": "jspurlin <jspurlin@microsoft.com>",
             "commit": "75b8690920938e69cdefd2d92363ccd3c6eabdef",
-            "comment": "SwatchColorPicker: Simplify component to remove the menu button and header/divider aspects that were built in to the component. Now the SwatchColorPicker only renders the grid portion and is more streamlined"
+            "comment":
+              "SwatchColorPicker: Simplify component to remove the menu button and header/divider aspects that were built in to the component. Now the SwatchColorPicker only renders the grid portion and is more streamlined"
           },
           {
             "author": "Micah Godbolt <micahgodbolt@gmail.com>",
@@ -8039,7 +8368,8 @@
           {
             "author": "Jon Schectman <joschect@microsoft.com>",
             "commit": "4b850dd2d9555fc5ab453d96c34670800cc78954",
-            "comment": "BasePicker: Add in the ability for it to be used as a controlled component with the property selectedItems"
+            "comment":
+              "BasePicker: Add in the ability for it to be used as a controlled component with the property selectedItems"
           }
         ],
         "patch": [
@@ -8070,7 +8400,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "d2fdce1bdb3bec646721cf9dc0ec0cbc33622235",
-            "comment": "Checkbox: Adjusting the default text color to not use default button color, removing click behavior for disabled checkboxes, fixing an rtl margin issue."
+            "comment":
+              "Checkbox: Adjusting the default text color to not use default button color, removing click behavior for disabled checkboxes, fixing an rtl margin issue."
           },
           {
             "author": "daweffe <daweffe@microsoft.com>",
@@ -8181,7 +8512,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "1fa13c6d69f2da24b26e429b009498ecb2e39037",
-            "comment": "TextField: multiline variant font now correct, assuming the Fabric component wraps the application. A new selector was added which will force TEXTAREA elements to inherit the font."
+            "comment":
+              "TextField: multiline variant font now correct, assuming the Fabric component wraps the application. A new selector was added which will force TEXTAREA elements to inherit the font."
           },
           {
             "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
@@ -8249,7 +8581,8 @@
           {
             "author": "Michael Loughry <miclo@microsoft.com>",
             "commit": "f24070ef5b3a3173cfde2ee25cdb7b150a668ca7",
-            "comment": "Callout/ContextualMenu/Tooltip: we now mirror DirectionalHints in RTL layouts by default. To override this behavior, specify `directionalHintForRtl`"
+            "comment":
+              "Callout/ContextualMenu/Tooltip: we now mirror DirectionalHints in RTL layouts by default. To override this behavior, specify `directionalHintForRtl`"
           }
         ],
         "dependency": [
@@ -8310,7 +8643,8 @@
           {
             "author": "jspurlin <jspurlin@microsoft.com>",
             "commit": "85bd583f0009bdbc395702dc7c61f6cccad36e92",
-            "comment": "SwatchColorPicker: Fix a recent regression in box-sizing seen on the external site for the swatchColorPicker"
+            "comment":
+              "SwatchColorPicker: Fix a recent regression in box-sizing seen on the external site for the swatchColorPicker"
           },
           {
             "author": "Philip Kuo <phkuo@microsoft.com>",
@@ -8381,7 +8715,8 @@
           {
             "author": "Joe Martella <martellaj@live.com>",
             "commit": "267ed2d0b9466d29c173982bcfc897c92ef72525",
-            "comment": "BasePicker: Removes onBlur to fix onSuggestionClick prevention and adds onBlur functionality to dismissSuggestions."
+            "comment":
+              "BasePicker: Removes onBlur to fix onSuggestionClick prevention and adds onBlur functionality to dismissSuggestions."
           }
         ],
         "dependency": [
@@ -8400,14 +8735,16 @@
           {
             "author": "ycoco <ycocococo6256@gmail.com>",
             "commit": "21c744979934285a8759d93ce8cd8748a16053a5",
-            "comment": "ComboBox: props have been adjusted to inherit from HTMLAttributes to allow fo props like onBlur to be mixed in. Note that this has forced the `autoComplete` prop to be changed to a string."
+            "comment":
+              "ComboBox: props have been adjusted to inherit from HTMLAttributes to allow fo props like onBlur to be mixed in. Note that this has forced the `autoComplete` prop to be changed to a string."
           }
         ],
         "patch": [
           {
             "author": "jspurlin <jspurlin@microsoft.com>",
             "commit": "adaee4e1abe3a0ee70a4bdc01804aaca57f1d0c4",
-            "comment": "ComboBox: Fix a keyboard scrolling issue where the pending option would not be scrolled into view"
+            "comment":
+              "ComboBox: Fix a keyboard scrolling issue where the pending option would not be scrolled into view"
           },
           {
             "author": "Ryan Delaney <rrdelaney@outlook.com>",
@@ -8417,7 +8754,8 @@
           {
             "author": "John Lorenz <jcl47@duke.edu>",
             "commit": "241b0d25bbbedb8702ac7ae3ec995cbe9767bd54",
-            "comment": "Last pull request added the option to display the month picker by itself without the day picker, but selecting the month picker was not calling selectDate. This should fix that."
+            "comment":
+              "Last pull request added the option to display the month picker by itself without the day picker, but selecting the month picker was not calling selectDate. This should fix that."
           }
         ],
         "dependency": [
@@ -8448,7 +8786,8 @@
           {
             "author": "Eddie Liu <leddie24@gmail.com>",
             "commit": "1200d471c740de9b9a3c8b1e1257048f1cbcfb3f",
-            "comment": "DetailsList: Add compact mode to component, add column padding, fix styling and Check component sizing"
+            "comment":
+              "DetailsList: Add compact mode to component, add column padding, fix styling and Check component sizing"
           }
         ],
         "dependency": [
@@ -8472,7 +8811,8 @@
           {
             "author": "aadhars <adhargithub@gmail.com>",
             "commit": "f6dbb240e3b716c9c1cc3f649fed403d1552c2b9",
-            "comment": "Fixing null reference exception caused if user does not specify imageSize along with imageSrc in choiceGroup"
+            "comment":
+              "Fixing null reference exception caused if user does not specify imageSize along with imageSrc in choiceGroup"
           },
           {
             "author": "Christopher Schleiden <cschleiden@live.de>",
@@ -8597,7 +8937,8 @@
           {
             "author": "Micah Godbolt <micahgodbolt@gmail.com>",
             "commit": "ab075c152e4acf2a6458889ba1f093ecff221c06",
-            "comment": "ChoiceGroup: Allow image/icon labels to truncate when larger than parent. Provided onRenderLabel to add Tooltip or other decorations"
+            "comment":
+              "ChoiceGroup: Allow image/icon labels to truncate when larger than parent. Provided onRenderLabel to add Tooltip or other decorations"
           }
         ],
         "dependency": [
@@ -8660,14 +9001,16 @@
           {
             "author": "aadhars <adhargithub@gmail.com>",
             "commit": "739afaec20093f1bb14ceb844c859a881cba6dd0",
-            "comment": "Buttons: disabled buttons with hrefs now render as BUTTON elements instead of A tags, since BUTTON can support the disabled flag."
+            "comment":
+              "Buttons: disabled buttons with hrefs now render as BUTTON elements instead of A tags, since BUTTON can support the disabled flag."
           }
         ],
         "minor": [
           {
             "author": "CmonsterC <CmonsterC@users.noreply.github.com>",
             "commit": "dae9df0a1345d7ddc4e92c04037bec52ab2cace1",
-            "comment": "GroupedList: Add a new prop to ignore the collapse button on the column name bar when there's custom group header"
+            "comment":
+              "GroupedList: Add a new prop to ignore the collapse button on the column name bar when there's custom group header"
           }
         ],
         "dependency": [
@@ -8756,7 +9099,8 @@
           {
             "author": "Nick Kirchem <nkirchem@users.noreply.github.com>",
             "commit": "75d138c97dc9cc06d648cb7c6f9314f7c7c1cea4",
-            "comment": "GroupedList: Fixes a bug causing Toggle and other button elements within a GroupedList to not render correctly."
+            "comment":
+              "GroupedList: Fixes a bug causing Toggle and other button elements within a GroupedList to not render correctly."
           }
         ],
         "dependency": [
@@ -8802,7 +9146,8 @@
           {
             "author": "Ben Truelove <betrue@microsoft.com>",
             "commit": "24a19bde23ec4ee1dc68c129e347ed5caa3589fa",
-            "comment": "Fixed spacing and vertical position of expand arrow, Added space between title and count, Changed to use flex box, Updated interactive state colors to use proper semantic slots"
+            "comment":
+              "Fixed spacing and vertical position of expand arrow, Added space between title and count, Changed to use flex box, Updated interactive state colors to use proper semantic slots"
           },
           {
             "author": "Michael Loughry <miclo@microsoft.com>",
@@ -8880,7 +9225,8 @@
           {
             "author": "Boris Emorine <boris.emorine@gmail.com>",
             "commit": "31758bdedec783d4f74194713b2e0102529b70dd",
-            "comment": "-SpinButton: Fix crash when not providing value nor defaultValue. - SpinButton: Add initial delay of 400ms when holding the up or down arrow before spinning"
+            "comment":
+              "-SpinButton: Fix crash when not providing value nor defaultValue. - SpinButton: Add initial delay of 400ms when holding the up or down arrow before spinning"
           },
           {
             "author": "Joe Martella <martellaj@live.com>",
@@ -8890,7 +9236,8 @@
           {
             "author": "jspurlin <jspurlin@microsoft.com>",
             "commit": "21689eaf74f8513ae51854a7e1dadb90821ae9d8",
-            "comment": "Fix: Combobox: text move its position in Edge during up/down arrow #2020: https://github.com/OfficeDev/office-ui-fabric-react/issues/2020"
+            "comment":
+              "Fix: Combobox: text move its position in Edge during up/down arrow #2020: https://github.com/OfficeDev/office-ui-fabric-react/issues/2020"
           },
           {
             "author": "P.J. Swesey <swese44@gmail.com>",
@@ -8958,7 +9305,8 @@
           {
             "author": "John Lorenz <jcl47@duke.edu>",
             "commit": "b00a2c9dfa0ac1c3f0f6dcb17cc72b783bede3cf",
-            "comment": "Enhancing the calendar component to allow for turning off the day picker and highlighting the \"today\" month in the month picker. This will match the behavior of the Timestrip component in today's JSMVVM OWA Calendar."
+            "comment":
+              "Enhancing the calendar component to allow for turning off the day picker and highlighting the \"today\" month in the month picker. This will match the behavior of the Timestrip component in today's JSMVVM OWA Calendar."
           }
         ],
         "patch": [
@@ -9024,7 +9372,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "cf27c419d98df14d8974764d2e5798fcb6233ec1",
-            "comment": "DetailsList: Fixing regression in DetailsRow, and adding check in Image which was causing nullrefs."
+            "comment":
+              "DetailsList: Fixing regression in DetailsRow, and adding check in Image which was causing nullrefs."
           },
           {
             "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
@@ -9055,7 +9404,8 @@
           {
             "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
             "commit": "0d7e76729e12cf7983cf6ce25df9da8630ac1f4d",
-            "comment": "ResizeGroup: Add dataDidRender prop that can be used to know what is actually rendered by a resizeGroup"
+            "comment":
+              "ResizeGroup: Add dataDidRender prop that can be used to know what is actually rendered by a resizeGroup"
           },
           {
             "author": "Thomas Michon <thomas@michon.com>",
@@ -9322,7 +9672,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "057d6526f255d23b185c4d4618d63939b2ba8290",
-            "comment": "Dropdown: adding aria attribute `aria-readonly=true` and adjusting `aria-owns` to only show in cases where it is opened."
+            "comment":
+              "Dropdown: adding aria attribute `aria-readonly=true` and adjusting `aria-owns` to only show in cases where it is opened."
           },
           {
             "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
@@ -9379,7 +9730,8 @@
           {
             "author": "Aditya <adimittal91@gmail.com>",
             "commit": "b0ee1f6c9e5f0d9b31c060d92998e0c43af504d4",
-            "comment": "withResponsiveMode: Adding error handling around the case where window.innerWidth throws an exception."
+            "comment":
+              "withResponsiveMode: Adding error handling around the case where window.innerWidth throws an exception."
           }
         ],
         "dependency": [
@@ -9603,7 +9955,8 @@
           {
             "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
             "commit": "62299239afdb7a082c9abd7c984d5f587b998abb",
-            "comment": "Styling: Add support for overriding the styles on the checked hovered, checked pressed, and checked disabled states"
+            "comment":
+              "Styling: Add support for overriding the styles on the checked hovered, checked pressed, and checked disabled states"
           },
           {
             "author": "zoarif <zoarif@microsoft.com>",
@@ -9630,7 +9983,8 @@
           {
             "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
             "commit": "c6b411ecbac8c9c678c551565021a37978a82356",
-            "comment": "ResizeGroup: Make sure that it renders contents when there are no more scaling steps and it doesn't fit"
+            "comment":
+              "ResizeGroup: Make sure that it renders contents when there are no more scaling steps and it doesn't fit"
           }
         ],
         "dependency": [
@@ -9709,7 +10063,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "3a198d4811b76f491acce31efa358c9c95740a63",
-            "comment": "The styling package is now a dependency of fabric-react, which brings in the initial steps towards offering consumers a much better way to customize components to meet their requirements. The Button components and Toggle components have so far been converted to use the styling utilities. We will be ellaborating more on this as we refine our patterns towards customization and refine the documentation."
+            "comment":
+              "The styling package is now a dependency of fabric-react, which brings in the initial steps towards offering consumers a much better way to customize components to meet their requirements. The Button components and Toggle components have so far been converted to use the styling utilities. We will be ellaborating more on this as we refine our patterns towards customization and refine the documentation."
           }
         ],
         "patch": [
@@ -9721,7 +10076,8 @@
           {
             "author": "Aaron Zhou <aaronyzhou88@gmail.com>",
             "commit": "8424c7680a618013d5cb4d320e7f6ed798cb317b",
-            "comment": "SelectionZone: Update behavior to fix using up/down arrows to navigate between groups in a GroupedList."
+            "comment":
+              "SelectionZone: Update behavior to fix using up/down arrows to navigate between groups in a GroupedList."
           },
           {
             "author": "Ryo Miyake <ryo.studiom@gmail.com>",
@@ -9828,7 +10184,8 @@
           {
             "author": "SayaliS <sayalis@microsoft.com>",
             "commit": "7f0384f5070942f876f50d19dd3ac11c7bc14664",
-            "comment": "ContextMenu: added `useTargetWidth` property to match the width of the anchor element when true the context menu will apply target element's width to it"
+            "comment":
+              "ContextMenu: added `useTargetWidth` property to match the width of the anchor element when true the context menu will apply target element's width to it"
           },
           {
             "author": "Manish Dahamiwal <mdhamiwal@gmail.com>",
@@ -9840,7 +10197,8 @@
           {
             "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
             "commit": "352ed68433ce19f2bfd99a4512fc2e98984d7d16",
-            "comment": "Fixes bug where ResizeGroup gets stuck in an infinite render loop when subsequent calls to onReduceData does nothing."
+            "comment":
+              "Fixes bug where ResizeGroup gets stuck in an infinite render loop when subsequent calls to onReduceData does nothing."
           },
           {
             "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
@@ -9874,7 +10232,8 @@
           {
             "author": "moyali <moyali@microsoft.com>",
             "commit": "e71c3915f7dcb7ea37e332c06ee1461c7ca1387a",
-            "comment": "Dialog: created a new component (DialogContent) that contains the content of the Modal inside the Dialog"
+            "comment":
+              "Dialog: created a new component (DialogContent) that contains the content of the Modal inside the Dialog"
           }
         ],
         "patch": [
@@ -9920,7 +10279,8 @@
           {
             "author": "petdun2519 <peterdunlop2519@gmail.com>",
             "commit": "30c5299c56f4c44cfc3cd16ff66c36b31a31b78b",
-            "comment": "Breadcrumb component now follows aria guidelines for roles and structure and added example for accessible breadcrumb\""
+            "comment":
+              "Breadcrumb component now follows aria guidelines for roles and structure and added example for accessible breadcrumb\""
           }
         ]
       }
@@ -9944,7 +10304,8 @@
           {
             "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
             "commit": "049f7c1288015ec9b45f75d9ef47c75a6fe8b371",
-            "comment": "Stop setting a height on the menu items inside of a ContextualMenu to better support onRender overrides on MenuItems"
+            "comment":
+              "Stop setting a height on the menu items inside of a ContextualMenu to better support onRender overrides on MenuItems"
           }
         ],
         "dependency": [
@@ -10080,7 +10441,8 @@
           {
             "author": "Jon Schectman <joschect@microsoft.com>",
             "commit": "452c924de862a5877ce77f2fca5831997fd9453a",
-            "comment": "ContextualMenu: Fixed an issue where submenu items wouldn't update properly when new props were passed own"
+            "comment":
+              "ContextualMenu: Fixed an issue where submenu items wouldn't update properly when new props were passed own"
           },
           {
             "author": "Philip Kuo <phkuo@microsoft.com>",
@@ -10217,7 +10579,8 @@
           {
             "author": "Micah Godbolt <micahgodbolt@gmail.com>",
             "commit": "ecacf126f0ded67018d9e9aa5a16426798cbd810",
-            "comment": "Dropdown: New placeHolder text feature allows dropdown to act more like a traditional input field"
+            "comment":
+              "Dropdown: New placeHolder text feature allows dropdown to act more like a traditional input field"
           },
           {
             "author": "gitjain <alreut@yahoo.com>",
@@ -10234,17 +10597,20 @@
           {
             "author": "Micah Godbolt <micahgodbolt@gmail.com>",
             "commit": "ecacf126f0ded67018d9e9aa5a16426798cbd810",
-            "comment": "OverflowSet: New Overflow Set componet to create sets of elements with overflow showing in callout"
+            "comment":
+              "OverflowSet: New Overflow Set componet to create sets of elements with overflow showing in callout"
           },
           {
             "author": "Philip Kuo <phkuo@microsoft.com>",
             "commit": "b551a5b817ad77f63dec7c38ec7d39c8966fcbed",
-            "comment": "ContextMenu: fix a potential bug. All foreground colors need to be slots in the same category because the category has its own background color, in order to insure accessibility."
+            "comment":
+              "ContextMenu: fix a potential bug. All foreground colors need to be slots in the same category because the category has its own background color, in order to insure accessibility."
           },
           {
             "author": "petdun2519 <peterdunlop2519@gmail.com>",
             "commit": "0f0129b31370297c4674ec7f36d3cf106168b4f2",
-            "comment": "DetailsList: Added aria properties `aria-colindex`, `aria-rowindex`, `aria-colcount` and `aria-rowcount` to appropriate sub elements."
+            "comment":
+              "DetailsList: Added aria properties `aria-colindex`, `aria-rowindex`, `aria-colcount` and `aria-rowcount` to appropriate sub elements."
           },
           {
             "author": "petdun2519 <peterdunlop2519@gmail.com>",
@@ -10416,7 +10782,8 @@
           {
             "author": "Trevor Gau <trevorsg@gmail.com>",
             "commit": "965cd8ce54aff8d8db8dbed924ae5bcfc17cc22e",
-            "comment": "Don't break intra-word in tooltips UNLESS required for overflow by using CSS overflow-wrap property. Fixes #1627."
+            "comment":
+              "Don't break intra-word in tooltips UNLESS required for overflow by using CSS overflow-wrap property. Fixes #1627."
           },
           {
             "author": "Kris Brown <kristoferbrown@users.noreply.github.com>",
@@ -10474,7 +10841,8 @@
           {
             "author": "jijizz <liu_zhi8@hotmail.com>",
             "commit": "cf11f2e8e739eb64c295048289f03ea2834d7902",
-            "comment": "DetailsList: when initial focus needs to be set to a row, we do so asynchronously, after page layout is completed, which reduces observed cost of the focus call from 30ms to 3ms. This should improve glass rendering performance."
+            "comment":
+              "DetailsList: when initial focus needs to be set to a row, we do so asynchronously, after page layout is completed, which reduces observed cost of the focus call from 30ms to 3ms. This should improve glass rendering performance."
           }
         ],
         "minor": [
@@ -10512,7 +10880,8 @@
           {
             "author": "Yimin Wu <yimwu@microsoft.com>",
             "commit": "d1e1971cb41dee63534e453c440083ef9b34ecdf",
-            "comment": "DocumentCard: Change persona size from extraExtraSmall to extraSmall and update compact layout title font size to m-plus according to new design."
+            "comment":
+              "DocumentCard: Change persona size from extraExtraSmall to extraSmall and update compact layout title font size to m-plus according to new design."
           }
         ],
         "dependency": [
@@ -10549,7 +10918,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "4d2ef75edb41b60f6d88bbf901e229ce2b04b3cd",
-            "comment": "References to @uifabric/utilities have been updated to refer to the root Utilities.ts export, which is more AMD friendly than the package import."
+            "comment":
+              "References to @uifabric/utilities have been updated to refer to the root Utilities.ts export, which is more AMD friendly than the package import."
           }
         ]
       }
@@ -10580,7 +10950,8 @@
           {
             "author": "REDMOND\\miclo <miclo@microsoft.com>",
             "commit": "eec55b92622113be356952337b4795127a9c5239",
-            "comment": "Added new Modal control, for hosting content in a Dialog-style modal popup without any inner chrome"
+            "comment":
+              "Added new Modal control, for hosting content in a Dialog-style modal popup without any inner chrome"
           }
         ]
       }
@@ -10608,12 +10979,14 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "22990d309da88985a840f92eb36eac0a96f95a67",
-            "comment": "Button: `icon` deprecated in favor of `iconProps`. `menuIconName` deprecated in favor of `menuIconProps`. All Buttons now modeled as HOCs around BaseButton, as apposed to subclassing which is a less ideal way of modeling buttons."
+            "comment":
+              "Button: `icon` deprecated in favor of `iconProps`. `menuIconName` deprecated in favor of `menuIconProps`. All Buttons now modeled as HOCs around BaseButton, as apposed to subclassing which is a less ideal way of modeling buttons."
           },
           {
             "author": "Otto Streifel <ottost@microsoft.com>",
             "commit": "97e4d139784faa34320195da84834f803b883de8",
-            "comment": "DetailsList: added `minimumPixelsForDrag` setting to allow the user to override the minimum drag distance before starting a drag operation."
+            "comment":
+              "DetailsList: added `minimumPixelsForDrag` setting to allow the user to override the minimum drag distance before starting a drag operation."
           },
           {
             "author": "Eddie Liu <leddie24@gmail.com>",
@@ -10625,7 +10998,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "fadb41026a14afaaa17dffc2edfd3db2c0a0bbd9",
-            "comment": "DetailsList: header now stretches correctly, group headers stretch correctly, column width calculations respect newProps rather than current props."
+            "comment":
+              "DetailsList: header now stretches correctly, group headers stretch correctly, column width calculations respect newProps rather than current props."
           },
           {
             "author": "Micah Godbolt <micahgodbolt@gmail.com>",
@@ -10635,7 +11009,8 @@
           {
             "author": "Micah Godbolt <micahgodbolt@gmail.com>",
             "commit": "81b0badf6911c2f39682127eefec4bdf8b314195",
-            "comment": "SelectionZone: Spacebar and Enter key presses within selectionzone button/a/input will work properly"
+            "comment":
+              "SelectionZone: Spacebar and Enter key presses within selectionzone button/a/input will work properly"
           }
         ],
         "dependency": [
@@ -10664,7 +11039,8 @@
           {
             "author": "Michael Loughry <miclo@microsoft.com>",
             "commit": "453ab215119f7d78d7f22fa2c7b552320c99163b",
-            "comment": "CommandBar: Render items with submenus as interactive buttons, even if they don't have an onClick handler"
+            "comment":
+              "CommandBar: Render items with submenus as interactive buttons, even if they don't have an onClick handler"
           },
           {
             "author": "gitjain <alreut@yahoo.com>",
@@ -10760,7 +11136,8 @@
           {
             "author": "Philip Kuo <phkuo@microsoft.com>",
             "commit": "bd808aefb9961001a6af12daa6f5731c68046682",
-            "comment": "PeoplePicker: Have the suggestions list follow the cursor instead of always being aligned left to input box"
+            "comment":
+              "PeoplePicker: Have the suggestions list follow the cursor instead of always being aligned left to input box"
           },
           {
             "author": "Michael Loughry <miclo@microsoft.com>",
@@ -10797,7 +11174,8 @@
           {
             "author": "Matt Lind <revelationmedia@gmail.com>",
             "commit": "388c6a201d4c792830b64832a16c574d91c230ad",
-            "comment": "Improved keyboard and screen reader support for the Facepile control.  Added aria-describedby to FocusZone control."
+            "comment":
+              "Improved keyboard and screen reader support for the Facepile control.  Added aria-describedby to FocusZone control."
           },
           {
             "author": "Clemens Wolff <clemens.wolff+git@gmail.com>",
@@ -10830,7 +11208,8 @@
           {
             "author": "Jon Schectman <joschect@microsoft.com>",
             "commit": "9190dbb70379f355c4f9fdbaf87c8d638adc8a1f",
-            "comment": "VisualTesting: Fixed npm start by moving visual test page from index.html to visualtestindex.html"
+            "comment":
+              "VisualTesting: Fixed npm start by moving visual test page from index.html to visualtestindex.html"
           }
         ]
       }
@@ -10880,7 +11259,8 @@
           {
             "author": "Jon Schectman <joschect@microsoft.com>",
             "commit": "f4d9e369cbc592971e3a2c4355af1cc931800a9e",
-            "comment": "BasePicker: `componentWillReceiveProps` method was incorrectly assuming the wrong parameters. Changed method to `componentWillUpdate` as intended. Also addressing some focus issues by moving the `FocusZone` to be hosted outside of the `SelectionZone`."
+            "comment":
+              "BasePicker: `componentWillReceiveProps` method was incorrectly assuming the wrong parameters. Changed method to `componentWillUpdate` as intended. Also addressing some focus issues by moving the `FocusZone` to be hosted outside of the `SelectionZone`."
           },
           {
             "author": "Christopher Schleiden <cschleiden@live.de>",
@@ -10932,7 +11312,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "086833bf4ae9f8672c83a2d5e85e07eaf22138ed",
-            "comment": "In components which expose a public API such as `Dropdown` which implements `IDropdown`, to access the exact interface we've exposed a `componentRef` property on all components. This property replaces typical `ref={ c => this._component = c }` usage, as componentRef is guaranteed to access the public contract of the component regardless of the higher-order component or decorator wrapping it. If you are accessing the public API of a component, replace your `ref` usage with `componentRef`."
+            "comment":
+              "In components which expose a public API such as `Dropdown` which implements `IDropdown`, to access the exact interface we've exposed a `componentRef` property on all components. This property replaces typical `ref={ c => this._component = c }` usage, as componentRef is guaranteed to access the public contract of the component regardless of the higher-order component or decorator wrapping it. If you are accessing the public API of a component, replace your `ref` usage with `componentRef`."
           }
         ],
         "dependency": [
@@ -11036,7 +11417,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "fc7cd7df4a12ca6a7f6f4f64a984a971b324262d",
-            "comment": "Chaning scss imports to use typescript `import` instead of `require` so that lib-amd build actually imports via AMD require and not commonjs require."
+            "comment":
+              "Chaning scss imports to use typescript `import` instead of `require` so that lib-amd build actually imports via AMD require and not commonjs require."
           },
           {
             "author": "gitjain <alreut@yahoo.com>",
@@ -11074,7 +11456,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "59341f74c11434ded725c28ea25be5dcc4fb0be9",
-            "comment": "ChoiceGroup: adding `selectedKey` and `defaultSelectedKey` to provide a way to control selection, other than to micromanage the `checked` boolean in individual options."
+            "comment":
+              "ChoiceGroup: adding `selectedKey` and `defaultSelectedKey` to provide a way to control selection, other than to micromanage the `checked` boolean in individual options."
           },
           {
             "author": "lju <lydiautkin@outlook.com>",
@@ -11121,7 +11504,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "5a2830ed3708407da8d66e4ec9a47bd1af338e8e",
-            "comment": "Router: tweaked some of the logic to render component as a fallback if getComponent doesn't immediately return a value."
+            "comment":
+              "Router: tweaked some of the logic to render component as a fallback if getComponent doesn't immediately return a value."
           },
           {
             "author": "Ross Brodbeck <hross@users.noreply.github.com>",
@@ -11145,7 +11529,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "fa84d8e842ae3efdfbc98d1172eb4701c4a15baf",
-            "comment": "Recreated npm publish. It seems that the current published bits are not reflecting the focus mixin, which is busting some focus css styling. Trying to pinpoint why some machines seems to produce `border: 1px solid color` vs others that leave off the `px` in the unit."
+            "comment":
+              "Recreated npm publish. It seems that the current published bits are not reflecting the focus mixin, which is busting some focus css styling. Trying to pinpoint why some machines seems to produce `border: 1px solid color` vs others that leave off the `px` in the unit."
           }
         ]
       }
@@ -11195,12 +11580,14 @@
           {
             "author": "Micah Godbolt <micahgodbolt@gmail.com>",
             "commit": "e2b1706bc8160beacb560959d4756f0689dbe447",
-            "comment": "Button: Updated props to include contextualProps so that contextual menu could be passed to button"
+            "comment":
+              "Button: Updated props to include contextualProps so that contextual menu could be passed to button"
           },
           {
             "author": "Johanna Hawkins <jo.hawkins@hotmail.com>",
             "commit": "7fa3b9649c1b46e136c8781eda79149577699f1d",
-            "comment": "Calendar: Adding support for date ranges: day, week, month so when a user selects a date, the corresponding range is auto-selected. Adding a new prop to hide the today link. Adding a new prop to auto navigate to to the next/previous month if the user selects a date that falls outside the current month. Also fixing some minor styling issues around focused date so it plays nicely with range selection."
+            "comment":
+              "Calendar: Adding support for date ranges: day, week, month so when a user selects a date, the corresponding range is auto-selected. Adding a new prop to hide the today link. Adding a new prop to auto navigate to to the next/previous month if the user selects a date that falls outside the current month. Also fixing some minor styling issues around focused date so it plays nicely with range selection."
           }
         ],
         "patch": [
@@ -11241,7 +11628,8 @@
           {
             "author": "gitjain <alreut@yahoo.com>",
             "commit": "ff321a620a59bf659fc4ad1e51490d984372813b",
-            "comment": "Dropdown: Added class to dropdown label and dropdown container so that they can be targeted with css"
+            "comment":
+              "Dropdown: Added class to dropdown label and dropdown container so that they can be targeted with css"
           },
           {
             "author": "Eddie Liu <leddie24@gmail.com>",
@@ -11260,12 +11648,14 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "03d8caef8ff28f90b923ea3a1f0722690ddc4748",
-            "comment": "Nav: Fixing an issue where the default expand state for a group was not initialized correctly, resulting in having to click multiple times to collapse a group."
+            "comment":
+              "Nav: Fixing an issue where the default expand state for a group was not initialized correctly, resulting in having to click multiple times to collapse a group."
           },
           {
             "author": "Ricky Patel <rickyp@microsoft.com>",
             "commit": "fa2a1be1f95cc5e570bb5341cab66fed15a554bb",
-            "comment": "Facepile has an excess margin of 4px below it which needs to be removed. It also uses float's which is pretty retro!"
+            "comment":
+              "Facepile has an excess margin of 4px below it which needs to be removed. It also uses float's which is pretty retro!"
           }
         ]
       }
@@ -11279,7 +11669,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "e5082c7ae68eb6ece9ccf91021593b66a86a5a89",
-            "comment": "DetailsList: header sizing fixed (was a css selector tweak that caused the issue.) Also added `iconName` to IColumn to specify an iconName like \"Mail\". The `iconClassName` property is still preserved, but is piped into the className of the Icon component."
+            "comment":
+              "DetailsList: header sizing fixed (was a css selector tweak that caused the issue.) Also added `iconName` to IColumn to specify an iconName like \"Mail\". The `iconClassName` property is still preserved, but is piped into the className of the Icon component."
           }
         ]
       }
@@ -11293,7 +11684,8 @@
           {
             "author": "Aleksandr Gembinski <v-algemb@microsoft.com>",
             "commit": "ebb27cf662f98a7d8781229964ddc8eb1aa272d4",
-            "comment": "ChoiceGroup component: Distinguishes HC border from focus border, removes double stroke, refactors to use common mixin"
+            "comment":
+              "ChoiceGroup component: Distinguishes HC border from focus border, removes double stroke, refactors to use common mixin"
           },
           {
             "author": "Ross Brodbeck <hross@users.noreply.github.com>",
@@ -11317,19 +11709,22 @@
           {
             "author": "Micah Godbolt <micahgodbolt@gmail.com>",
             "commit": "5ebbc0f87cca003458cd3029d8a2c09f64326752",
-            "comment": "Panel: Added sticky footer section and broke each panel region into seperate onRender fucntion. "
+            "comment":
+              "Panel: Added sticky footer section and broke each panel region into seperate onRender fucntion. "
           }
         ],
         "patch": [
           {
             "author": "Micah Godbolt <micahgodbolt@gmail.com>",
             "commit": "067bea2f02ca01e17de12b1fc810a9ccf77a7da7",
-            "comment": "FocusZone: Spacebar no longer scrolls page when in focuszone or selectionzone, and acts as selecting action"
+            "comment":
+              "FocusZone: Spacebar no longer scrolls page when in focuszone or selectionzone, and acts as selecting action"
           },
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "fc25dec84003547a08c8ef368a1badfca0b93e93",
-            "comment": "DetailsList: headers now have the correct font applied and use a transparent background to fix the IE11 styling, which doesn't like \"inherit\"."
+            "comment":
+              "DetailsList: headers now have the correct font applied and use a transparent background to fix the IE11 styling, which doesn't like \"inherit\"."
           },
           {
             "author": "Manish Dahamiwal <mdhamiwal@gmail.com>",
@@ -11402,7 +11797,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "eca0148b5e6e69cae5eea5e121cf0d5be45b3339",
-            "comment": "Adjusting React peer dependency to include v16.0.0-0 in the acceptable range for testing with v16."
+            "comment":
+              "Adjusting React peer dependency to include v16.0.0-0 in the acceptable range for testing with v16."
           }
         ],
         "dependency": [
@@ -11487,19 +11883,22 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "716bc451fdd0f90a05b8b3de12898312b17b4efe",
-            "comment": "IMPORTANT: \n\nThis pull request converts ALL components over to use module css. What does this mean?\n\n* All classnames, such as ms-Button, will now be obfuscated to be unique.\n* Pages that host multiple versions of the same component will not stomp on each other and will be safe.\n* All existing class names are left intact, so current customizations should not break.\n\nGoing forward, we will adhere to using local scoped module rules specifically to avoid breaking ourselves when multiple versions. Additionally we are evaluating a much more robust and contractual way of defining our styles.\n\nProblems that still exist:\n\n1. You must rely on class names to customize, and if those class names change, your customizations are broken.\n2. Specificity of our rules is an implicit contract that is easy to break. It is often unclear and partners usually give up early fighting the specificity war and use `!important` to stomp on it, which is not ideal. If a partner does use \"more specific\" rules today, tomorrow they many not be specific enough.\n3. RTL rules in particular are very specific. When something that was once not RTL specific is changed to RTL, it becomes implicitly more specific, and thus breaks specificity contract.\n4. The bundles themselves have a lot of duplicate css. Because we generate rtl rules and theme tokens at build time rather than at runtime, we must download extra code, which bulks up the download size.\n5. Fabric core rules, which we implicitly rely on, are a hard thing to chase. If your page depends on core 6, and you're also using react components, you will find bugs. We'd like to eliminate this dependency so that it is reliable and contractual to use components. If you use a `ContextualMenu`, it should animate without depending on fabric-core css to be loaded.\n\nWe are planning to address these and evaluating library options. Issue being tracked here: #983 \n"
+            "comment":
+              "IMPORTANT: \n\nThis pull request converts ALL components over to use module css. What does this mean?\n\n* All classnames, such as ms-Button, will now be obfuscated to be unique.\n* Pages that host multiple versions of the same component will not stomp on each other and will be safe.\n* All existing class names are left intact, so current customizations should not break.\n\nGoing forward, we will adhere to using local scoped module rules specifically to avoid breaking ourselves when multiple versions. Additionally we are evaluating a much more robust and contractual way of defining our styles.\n\nProblems that still exist:\n\n1. You must rely on class names to customize, and if those class names change, your customizations are broken.\n2. Specificity of our rules is an implicit contract that is easy to break. It is often unclear and partners usually give up early fighting the specificity war and use `!important` to stomp on it, which is not ideal. If a partner does use \"more specific\" rules today, tomorrow they many not be specific enough.\n3. RTL rules in particular are very specific. When something that was once not RTL specific is changed to RTL, it becomes implicitly more specific, and thus breaks specificity contract.\n4. The bundles themselves have a lot of duplicate css. Because we generate rtl rules and theme tokens at build time rather than at runtime, we must download extra code, which bulks up the download size.\n5. Fabric core rules, which we implicitly rely on, are a hard thing to chase. If your page depends on core 6, and you're also using react components, you will find bugs. We'd like to eliminate this dependency so that it is reliable and contractual to use components. If you use a `ContextualMenu`, it should animate without depending on fabric-core css to be loaded.\n\nWe are planning to address these and evaluating library options. Issue being tracked here: #983 \n"
           }
         ],
         "minor": [
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "716bc451fdd0f90a05b8b3de12898312b17b4efe",
-            "comment": "Button: the `label` property used to be meant to render text within the button, but it overlaps with the html `label` attribute. While `label` will still exist, it will now push content into the button label attribute, and we've added a `text` property  to allow for a formal way of defining the textual content displayed within the button. Passing in a child string to the button will still work, but `text` wil"
+            "comment":
+              "Button: the `label` property used to be meant to render text within the button, but it overlaps with the html `label` attribute. While `label` will still exist, it will now push content into the button label attribute, and we've added a `text` property  to allow for a formal way of defining the textual content displayed within the button. Passing in a child string to the button will still work, but `text` wil"
           },
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "716bc451fdd0f90a05b8b3de12898312b17b4efe",
-            "comment": "IContextualMenuItemProps: the `styles` property can now be passed through to apply styling to menu items."
+            "comment":
+              "IContextualMenuItemProps: the `styles` property can now be passed through to apply styling to menu items."
           }
         ]
       }
@@ -11513,7 +11912,8 @@
           {
             "author": "Micah Godbolt <micahgodbolt@gmail.com>",
             "commit": "3e8bacae1f1bea04ea982c754ca009686ac1e1f5",
-            "comment": "BaseButton: `rootProps` is now correctly mixed in with `props`. Please note that `rootProps` is deprecated and should not be used, but this fix simply ensures that the deprecated backwards compatibility works."
+            "comment":
+              "BaseButton: `rootProps` is now correctly mixed in with `props`. Please note that `rootProps` is deprecated and should not be used, but this fix simply ensures that the deprecated backwards compatibility works."
           },
           {
             "author": "Liaoliang Ye <supersingerman@126.com>",
@@ -11601,7 +12001,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "2e5f13d7ad7c31a228b0382e741df6a159fdd8f7",
-            "comment": "Persona: previous published version was referring to an old utilities library without the getInitials utility function. Updating to this build will pull the correct utilities version which should fix the build error."
+            "comment":
+              "Persona: previous published version was referring to an old utilities library without the getInitials utility function. Updating to this build will pull the correct utilities version which should fix the build error."
           },
           {
             "author": "Manish Dahamiwal <mdhamiwal@gmail.com>",
@@ -11682,7 +12083,8 @@
           {
             "author": "Micah Godbolt <micahgodbolt@gmail.com>",
             "commit": "ba119691af45af153959e08f62c6e28f0f177162",
-            "comment": "Dropdown: Updated dropdown component to be composed of several onRender functions, and  for render container to use panel under medium breakpoint"
+            "comment":
+              "Dropdown: Updated dropdown component to be composed of several onRender functions, and  for render container to use panel under medium breakpoint"
           }
         ],
         "patch": [
@@ -11708,7 +12110,8 @@
           {
             "author": "Micah Godbolt <micahgodbolt@gmail.com>",
             "commit": "f54a87dc2bd11888df49e73dd06b12836c86d167",
-            "comment": "Return suggested items to original padding values, add display block to fix following space due to inline-block"
+            "comment":
+              "Return suggested items to original padding values, add display block to fix following space due to inline-block"
           },
           {
             "author": "Manish Dahamiwal <mdhamiwal@gmail.com>",
@@ -11725,7 +12128,8 @@
           {
             "author": "William Do <do.william@yahoo.com>",
             "commit": "d8084249e91b0d60e7fc42551b69bfefe692aedb",
-            "comment": "Deprecation of SpinnerType in favor of more semantic SpinnerSize. Extra small, small and medium variants added."
+            "comment":
+              "Deprecation of SpinnerType in favor of more semantic SpinnerSize. Extra small, small and medium variants added."
           }
         ]
       }
@@ -11786,7 +12190,8 @@
           {
             "author": "zhenguang66 <wo8888@hotmail.com>",
             "commit": "e077d26efca3f29e83fc8ada2ed5b0e947e19fff",
-            "comment": "GroupedList: Added `hasMoreData` flag to `IGroup` for rendering a plus character for groups that have indeterminate counts."
+            "comment":
+              "GroupedList: Added `hasMoreData` flag to `IGroup` for rendering a plus character for groups that have indeterminate counts."
           }
         ]
       }
@@ -11800,7 +12205,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "ce40bf76b9f22b8454855115a04745854169ac64",
-            "comment": "In order to protect customers that bundle 2 different versions of the same component on the page, we are moving the rules defined by fabric components to CSS modules. This first change only affects the `Toggle` and `Label` components, which have been updated to scope their rules inside of hash-safe class names. No existing class names (`ms-Toggle` for example) have been removed, so any customer customizations should continue to work as expected. This means if you render an old v1 Toggle with a new v2 Toggle compoennt, their class definitions will not conflict."
+            "comment":
+              "In order to protect customers that bundle 2 different versions of the same component on the page, we are moving the rules defined by fabric components to CSS modules. This first change only affects the `Toggle` and `Label` components, which have been updated to scope their rules inside of hash-safe class names. No existing class names (`ms-Toggle` for example) have been removed, so any customer customizations should continue to work as expected. This means if you render an old v1 Toggle with a new v2 Toggle compoennt, their class definitions will not conflict."
           }
         ]
       }
@@ -11814,7 +12220,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "2783d9aa2292a8287a8d318925fa8a7acbf2d7d1",
-            "comment": "Dropdown: uncontrolled dropdowns now correctly set the selected item as expected. Test coverage added."
+            "comment":
+              "Dropdown: uncontrolled dropdowns now correctly set the selected item as expected. Test coverage added."
           }
         ]
       }
@@ -11914,7 +12321,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "82a1b7ec536b607fefc0067111e7a9d23dfc4ca6",
-            "comment": "Moved all examples from this package into a separate app, so that we can fix imports in the code examples to be the correct imports."
+            "comment":
+              "Moved all examples from this package into a separate app, so that we can fix imports in the code examples to be the correct imports."
           }
         ]
       }
@@ -11961,7 +12369,8 @@
           {
             "author": "joschect <joschect@microsoft.com>",
             "commit": "829e6fd25fc7452d51dcccc56242da3c0f0ab24d",
-            "comment": "Pickers and Popup: Fixed a bug where having a picker in a dialog could cause the dialog to be dismissed on escape press"
+            "comment":
+              "Pickers and Popup: Fixed a bug where having a picker in a dialog could cause the dialog to be dismissed on escape press"
           }
         ]
       }
@@ -12037,7 +12446,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "0859b57d68263004fd6ffc3c035520c7d98b9dd6",
-            "comment": "Button: major css cleanup, refactoring out BaseButton so that variants are cheap to build from bytes perspective."
+            "comment":
+              "Button: major css cleanup, refactoring out BaseButton so that variants are cheap to build from bytes perspective."
           },
           {
             "author": "Bharadwaj <bharay@users.noreply.github.com>",
@@ -12052,7 +12462,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "beebc6e81d2c13cbeb3253f2d7b3dabc863fd5cb",
-            "comment": "Router: adding support for asynchronously loading components via the `getComponent` prop in the `<Route>` component."
+            "comment":
+              "Router: adding support for asynchronously loading components via the `getComponent` prop in the `<Route>` component."
           },
           {
             "author": "scriby <scriby@gmail.com>",
@@ -12138,7 +12549,8 @@
           {
             "author": "Michael Loughry <miclo@microsoft.com>",
             "commit": "98d218881c0a0e8e277225ed3a4af83c2ec63eb6",
-            "comment": "Command Bar: context menus stay open after update if the open menu is still in the new props. Also, propagates most properties from subMenuProps to opened ContextualMenus"
+            "comment":
+              "Command Bar: context menus stay open after update if the open menu is still in the new props. Also, propagates most properties from subMenuProps to opened ContextualMenus"
           }
         ]
       }
@@ -12176,27 +12588,32 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "ddd4bdad577841eb53034d67608691d9daa9922d",
-            "comment": "ColorPicker: now is AMD friendly and uses local typesafe utilities that will be built with the rest of the code."
+            "comment":
+              "ColorPicker: now is AMD friendly and uses local typesafe utilities that will be built with the rest of the code."
           },
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "f8ba2dee6abc3d5e743288ea3889d1734429c63c",
-            "comment": "ContextualMenu: keydown events now call preventDefault to prevent the browser from doing unnecessary things."
+            "comment":
+              "ContextualMenu: keydown events now call preventDefault to prevent the browser from doing unnecessary things."
           },
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "c74e900ed4c936c556d8a81a2aab29ab5f1560c0",
-            "comment": "SelectionZone: clicking in a non-interactive area clears selection only within the scrollable parent area. This refines the clear behavior slightly."
+            "comment":
+              "SelectionZone: clicking in a non-interactive area clears selection only within the scrollable parent area. This refines the clear behavior slightly."
           },
           {
             "author": "gggjtgxing <xingwa@microsoft.com>",
             "commit": "31a35399dfbd0216452f0ac97725d7b2cdc917ff",
-            "comment": "Dropdown: screen reader now will read out the current selected option on first focus of dropdown with an option selected."
+            "comment":
+              "Dropdown: screen reader now will read out the current selected option on first focus of dropdown with an option selected."
           },
           {
             "author": "gggjtgxing <xingwa@microsoft.com>",
             "commit": "a497ebc9b33fafd1305abf29f7df39f567bf5032",
-            "comment": "Pivot: state updates may be asynchronous, and it should not rely on this.state for calculating the next state."
+            "comment":
+              "Pivot: state updates may be asynchronous, and it should not rely on this.state for calculating the next state."
           }
         ]
       }
@@ -12210,7 +12627,8 @@
           {
             "author": "Micah Godbolt <micahgodbolt@gmail.com>",
             "commit": "294164389bfd4bf47f8de61ddce6ad781d52ba3e",
-            "comment": "Button: Restored Hero variant and added normal button as an alias of default. Fixes issues introduced in #811"
+            "comment":
+              "Button: Restored Hero variant and added normal button as an alias of default. Fixes issues introduced in #811"
           }
         ]
       }
@@ -12303,7 +12721,8 @@
           {
             "author": "Jon Schectman <joschect@microsoft.com>",
             "commit": "bb43bf3c0c2b378c0ceb8566318ab30e95ac9aa9",
-            "comment": "Suggestions: Fixed an error which would occur if noResultsFound string was not passed to suggestions\""
+            "comment":
+              "Suggestions: Fixed an error which would occur if noResultsFound string was not passed to suggestions\""
           }
         ]
       }
@@ -12331,7 +12750,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "632cc4a9dfeb4c91f670f602635b8af3ae219e87",
-            "comment": "DetailsList: adding `selectionPreservedOnEmptyClick` attribute for overriding the default behavior of clearing selection when clicks occur on non-focusable targets (body, spans, etc)."
+            "comment":
+              "DetailsList: adding `selectionPreservedOnEmptyClick` attribute for overriding the default behavior of clearing selection when clicks occur on non-focusable targets (body, spans, etc)."
           }
         ]
       }
@@ -12364,12 +12784,14 @@
           {
             "author": "joschect <joschect@microsoft.com>",
             "commit": "67f2ab7c3bcc35350f78337b2b2b202b29abba76",
-            "comment": "Icon: -BREAKING CHANGE- Change IconName from an enum to type to greatly reduce file size. Any component that is currently consuming the icon enum will break."
+            "comment":
+              "Icon: -BREAKING CHANGE- Change IconName from an enum to type to greatly reduce file size. Any component that is currently consuming the icon enum will break."
           },
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "24d41e3383bb3cfe3ee8a557665e6d5976c40f8d",
-            "comment": "Most utilities have moved to `@uifabric/utilities`. If you refer directly to things like `/lib/utilities/autobind` you will now need to pull them directly from that package, or from the `office-ui-fabric-react/lib/Utilities` top-level import which should continue to work as expected. We are planning to split up more chunks of Fabric into smaller packages that can imported separately, but will also continue to maintain the `office-ui-fabric-react` package and its top-level imports."
+            "comment":
+              "Most utilities have moved to `@uifabric/utilities`. If you refer directly to things like `/lib/utilities/autobind` you will now need to pull them directly from that package, or from the `office-ui-fabric-react/lib/Utilities` top-level import which should continue to work as expected. We are planning to split up more chunks of Fabric into smaller packages that can imported separately, but will also continue to maintain the `office-ui-fabric-react` package and its top-level imports."
           }
         ],
         "minor": [
@@ -12383,7 +12805,8 @@
           {
             "author": "Eddie Liu <leddie24@gmail.com>",
             "commit": "59349d39f11f039f5d2c74d6757afe84143fc2f9",
-            "comment": "DetailsRow: Change width to 100% to fix GroupedList component not extending to parent container's width"
+            "comment":
+              "DetailsRow: Change width to 100% to fix GroupedList component not extending to parent container's width"
           }
         ],
         "dependency": [
@@ -12414,7 +12837,8 @@
           {
             "author": "REDMOND\\miclo <miclo@microsoft.com>",
             "commit": "f0b5b50dd631219a3511899e6f6cf2259bddb091",
-            "comment": "Added defined width to ms-Persona-imageArea so that the DOM width of the control reflects the true width of the content"
+            "comment":
+              "Added defined width to ms-Persona-imageArea so that the DOM width of the control reflects the true width of the content"
           }
         ]
       }
@@ -12474,7 +12898,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "ee59343410e10b924e1b57e789f62df9a292ae70",
-            "comment": "DetailsList: when adding new items in a grouped DetailsList scenario, the group is no longer recreated."
+            "comment":
+              "DetailsList: when adding new items in a grouped DetailsList scenario, the group is no longer recreated."
           },
           {
             "author": "David Zearing <dzearing@microsoft.com>",
@@ -12546,7 +12971,8 @@
           {
             "author": "Mike Wheaton <miwhea@microsoft.com>",
             "commit": "603bc228198dd2a32633b45f16b1d3cc52b6d4f1",
-            "comment": "Image: Add a prop to fit the image's frame to the parent element. Recompute the cover style when image changes, even if no width or height is provided."
+            "comment":
+              "Image: Add a prop to fit the image's frame to the parent element. Recompute the cover style when image changes, even if no width or height is provided."
           }
         ]
       }
@@ -12565,7 +12991,8 @@
           {
             "author": "joschect <joschect@microsoft.com>",
             "commit": "8d83c728866e4c061f247e3a9d172781fd168e07",
-            "comment": "ContextualMenu: Now returns null if no items are provided rather than rendering an empty callout"
+            "comment":
+              "ContextualMenu: Now returns null if no items are provided rather than rendering an empty callout"
           },
           {
             "author": "joschect <joschect@microsoft.com>",
@@ -12709,7 +13136,8 @@
           {
             "author": "Mike Wheaton <miwhea@microsoft.com>",
             "commit": "6c63fd193c321b6c216dde30a58fecbeb7ed9926",
-            "comment": "When computing a cover style for the Image component, if the width and height props aren't provided it will now measure the element. The Image component now extends from BaseComponent to more safely handle refs."
+            "comment":
+              "When computing a cover style for the Image component, if the width and height props aren't provided it will now measure the element. The Image component now extends from BaseComponent to more safely handle refs."
           },
           {
             "author": "William Do <willdo@microsoft.com>",
@@ -12738,7 +13166,8 @@
           {
             "author": "William Do <do.william@yahoo.com>",
             "commit": "7c15d59f502d4ef87dde5cfc25e444919fd4e353",
-            "comment": "Fixed an issue where the tooltip would quickly remove itself if the tooltip target was entered from the direction of the tooltip's position"
+            "comment":
+              "Fixed an issue where the tooltip would quickly remove itself if the tooltip target was entered from the direction of the tooltip's position"
           }
         ]
       }
@@ -12767,7 +13196,8 @@
           {
             "author": "joschect <joschect@microsoft.com>",
             "commit": "a5e64397ad87649484a5f93a64c731540bb68acc",
-            "comment": "Layer used node/element.remove() which is not present in ie. This change has it use parentnode.removeChild(childnode) instead"
+            "comment":
+              "Layer used node/element.remove() which is not present in ie. This change has it use parentnode.removeChild(childnode) instead"
           }
         ]
       }
@@ -12824,7 +13254,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "075d877c6434633c4d016b9d2a3cd97e1bdcdf00",
-            "comment": "Dropdown: The `data-is-focusable` attribute now gets set correctly on the .ms-Dropdown div container."
+            "comment":
+              "Dropdown: The `data-is-focusable` attribute now gets set correctly on the .ms-Dropdown div container."
           },
           {
             "author": "David Zearing <dzearing@microsoft.com>",
@@ -12836,7 +13267,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "a86981aceb790e9d616bd04f0727432c6c1e36af",
-            "comment": "Layer/LayerHost: Now supports React context passing through. Also all Layers not nested within a LayerHost will be positioned fixed as currently, but will not be if nested within a LayerHost."
+            "comment":
+              "Layer/LayerHost: Now supports React context passing through. Also all Layers not nested within a LayerHost will be positioned fixed as currently, but will not be if nested within a LayerHost."
           }
         ]
       }
@@ -12850,7 +13282,8 @@
           {
             "author": "Christopher Schleiden <cschleiden@live.de>",
             "commit": "75814e03401c0d76b78d623fe9c783bbefe3990d",
-            "comment": "Pivot: Add space between text and count (if used) for PivotItem. Also fixes rtl display of text and count."
+            "comment":
+              "Pivot: Add space between text and count (if used) for PivotItem. Also fixes rtl display of text and count."
           },
           {
             "author": "REDMOND\\miclo <miclo@microsoft.com>",
@@ -12869,7 +13302,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "e38afa74d5affb3f93f6a04f9c03c6c25a65c788",
-            "comment": "DetailsList/SelectionZone: selection is no longer cleared when clicking on DIVs that have `tabIndex >= 0` or `role=button`."
+            "comment":
+              "DetailsList/SelectionZone: selection is no longer cleared when clicking on DIVs that have `tabIndex >= 0` or `role=button`."
           }
         ]
       }
@@ -12929,7 +13363,8 @@
             "comment": "ContextualMenu: the `items` property has been deprecated in favor of providing `subMenuProps`."
           },
           {
-            "comment": "SelectionZone: now supports data-selection-disabled flag to disable selection event handling at a particular place in the DOM."
+            "comment":
+              "SelectionZone: now supports data-selection-disabled flag to disable selection event handling at a particular place in the DOM."
           }
         ],
         "patch": [
@@ -13020,7 +13455,8 @@
       "comments": {
         "patch": [
           {
-            "comment": "LayerHost: Changing default LayerHost to render on a fixed position high zindex surface. Fixing a bug in the logic of determining if focus moves should cause Callout to dismiss (it shouldn't if the focused element is the callout target.) Removing max height from Dropdown ul/li.LayerHost: default host now renders on fixed high z-index surface."
+            "comment":
+              "LayerHost: Changing default LayerHost to render on a fixed position high zindex surface. Fixing a bug in the logic of determining if focus moves should cause Callout to dismiss (it shouldn't if the focused element is the callout target.) Removing max height from Dropdown ul/li.LayerHost: default host now renders on fixed high z-index surface."
           }
         ]
       }
@@ -13031,7 +13467,8 @@
       "comments": {
         "minor": [
           {
-            "comment": "DatePicker: factored out a Calendar component and moved the picker portion to render in a Callout."
+            "comment":
+              "DatePicker: factored out a Calendar component and moved the picker portion to render in a Callout."
           }
         ],
         "patch": [
@@ -13050,7 +13487,8 @@
       "comments": {
         "minor": [
           {
-            "comment": "Toggle: `label` property is now optional, and the labels within the toggle will not render if no text is provided."
+            "comment":
+              "Toggle: `label` property is now optional, and the labels within the toggle will not render if no text is provided."
           }
         ]
       }
@@ -13061,7 +13499,8 @@
       "comments": {
         "minor": [
           {
-            "comment": "Callout: Deprecate `targetElement` in favor of `target`, which takes an Element, a MouseEvent, or a string selector. This makes it a lot easier to use Callout for pointing to a target without setting up refs and potentially having timing issues."
+            "comment":
+              "Callout: Deprecate `targetElement` in favor of `target`, which takes an Element, a MouseEvent, or a string selector. This makes it a lot easier to use Callout for pointing to a target without setting up refs and potentially having timing issues."
           }
         ],
         "patch": [
@@ -13083,7 +13522,8 @@
             "comment": "Icon: Adding `None` value to `IconName` to support custom icons."
           },
           {
-            "comment": "Slider: `type='button'` now added by the default to thumb button. Also added thumbButtonProps for mixing in settings on the thumb button."
+            "comment":
+              "Slider: `type='button'` now added by the default to thumb button. Also added thumbButtonProps for mixing in settings on the thumb button."
           }
         ],
         "patch": [

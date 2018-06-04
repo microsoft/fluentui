@@ -2,6 +2,39 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.0.4",
+      "tag": "@uifabric/utilities_v6.0.4",
+      "date": "Mon, 04 Jun 2018 10:16:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "4e1cd119bbf0f75e0432b0f92bad342714b57bef",
+            "comment": "Updating react typings."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.0.0 <7.0.0` to `>=6.0.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.3",
+      "tag": "@uifabric/utilities_v6.0.3",
+      "date": "Fri, 01 Jun 2018 10:18:43 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "75bfc52e1da9ba136b20507ba89f8c916228defd",
+            "comment": "Add utility function to help merge ARIA attributes."
+          }
+        ]
+      }
+    },
+    {
       "version": "6.0.2",
       "tag": "@uifabric/utilities_v6.0.2",
       "date": "Wed, 30 May 2018 22:05:04 GMT",
@@ -41,7 +74,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "17547b3778676a5b721f3f7dacf86fbd9621f67e",
-            "comment": "Reverting the ChoiceGroup styling update along with updates to utilities to avoid potentially breaking changes."
+            "comment":
+              "Reverting the ChoiceGroup styling update along with updates to utilities to avoid potentially breaking changes."
           }
         ]
       }
@@ -166,7 +200,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "2bbc7950bd9f10ea1e792dcb1155c625aa8e8f4f",
-            "comment": "The focus styling no longer adds \"ms-Fabric\" classname to body. Instead a very specific class for controlling focus rects is added, which should not impact any existing code."
+            "comment":
+              "The focus styling no longer adds \"ms-Fabric\" classname to body. Instead a very specific class for controlling focus rects is added, which should not impact any existing code."
           }
         ],
         "dependency": [
@@ -213,7 +248,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "0c830b2d32319e5455c2c652765b9d4d6cda8268",
-            "comment": "Adding some helpers which ensure that `ms-Fabric.is-focusVisible` class name is added to the document body when focus rectangles should be fixible. Also ensuring that the `documentElement` has a `dir` attribute."
+            "comment":
+              "Adding some helpers which ensure that `ms-Fabric.is-focusVisible` class name is added to the document body when focus rectangles should be fixible. Also ensuring that the `documentElement` has a `dir` attribute."
           },
           {
             "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
@@ -263,7 +299,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "0df6c75d24895ffbfa6136409aae6656a6751892",
-            "comment": "asyncFocus: passing a component which has a focus method, but no `ownerDocument`, should still call focus."
+            "comment":
+              "asyncFocus: passing a component which has a focus method, but no `ownerDocument`, should still call focus."
           }
         ]
       }
@@ -277,7 +314,8 @@
           {
             "author": "Kristian Halle <khalle@microsoft.com>",
             "commit": "130511930f8994e0010039781da6e1fdb2968e45",
-            "comment": "The initials logic used in calculating Persona initials now takes in a `allowPhoneInitials` param to allow for translating phone text to initials."
+            "comment":
+              "The initials logic used in calculating Persona initials now takes in a `allowPhoneInitials` param to allow for translating phone text to initials."
           }
         ]
       }
@@ -399,7 +437,8 @@
           {
             "author": "Spencer Lynn <sllynn8907@gmail.com>",
             "commit": "699fa697ae829e756108ce2b6725084d27e93f7e",
-            "comment": "Focus utility getPreviousElement did not correctly consider the tabbable argument when considering the current node. This can affect how FocusZones are processed, since only one element in a zone will have tab index set. This, in turn, affects how FocusTrapZone traps focus, since getPreviousElement is used during trapping focus."
+            "comment":
+              "Focus utility getPreviousElement did not correctly consider the tabbable argument when considering the current node. This can affect how FocusZones are processed, since only one element in a zone will have tab index set. This, in turn, affects how FocusTrapZone traps focus, since getPreviousElement is used during trapping focus."
           },
           {
             "author": "erichdev <a.erich@gmail.com>",
@@ -411,7 +450,8 @@
           {
             "author": "Brian Garland <brian@efelle.com>",
             "commit": "494d1258ce23505c8e5a4d1565ff5a2451048162",
-            "comment": "added hoistStatics function for use with decorators to fix broken statics issue, and added the fuction to the customizable decorator"
+            "comment":
+              "added hoistStatics function for use with decorators to fix broken statics issue, and added the fuction to the customizable decorator"
           }
         ]
       }
@@ -425,7 +465,8 @@
           {
             "author": "jspurlin <jspurlin@microsoft.com>",
             "commit": "4fc956a30e82d90fe405def0f9434ffdb0d407ab",
-            "comment": "Focus: Update getPreviousElement to traverse a potential childMatch's parent siblings  (which was previously being skipped)"
+            "comment":
+              "Focus: Update getPreviousElement to traverse a potential childMatch's parent siblings  (which was previously being skipped)"
           }
         ]
       }
@@ -519,7 +560,8 @@
           {
             "author": "jspurlin <jspurlin@microsoft.com>",
             "commit": "b0550145231d18adea954f56be47967ab04cb19d",
-            "comment": "Focus/DOM: add the ability to find if an element (or any ancestor) contains a given attribute. Also, add a shouldrWapFocus function to the focus utility (which leverages the fild element attribute just described) which returns true if the given no wrap data attribute (data-no-vertical-wrap OR data-no-horizontal-wrap) exists and is set to true"
+            "comment":
+              "Focus/DOM: add the ability to find if an element (or any ancestor) contains a given attribute. Also, add a shouldrWapFocus function to the focus utility (which leverages the fild element attribute just described) which returns true if the given no wrap data attribute (data-no-vertical-wrap OR data-no-horizontal-wrap) exists and is set to true"
           }
         ]
       }
@@ -559,7 +601,8 @@
           {
             "author": "jspurlin <jspurlin@microsoft.com>",
             "commit": "f0c4c5cfd1d20ea16af3378bf68e05269653d321",
-            "comment": "Focus: Fix getPreviousElement to correctly walk across previous siblings if a potential child match was found"
+            "comment":
+              "Focus: Fix getPreviousElement to correctly walk across previous siblings if a potential child match was found"
           }
         ],
         "dependency": [
@@ -578,7 +621,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "69854e90a1bc2eb447087df89f5276c166a9d766",
-            "comment": "BaseComponent.onError default implementation removed, exceptions now simply bubble out which lets partners use React 16 error handling."
+            "comment":
+              "BaseComponent.onError default implementation removed, exceptions now simply bubble out which lets partners use React 16 error handling."
           }
         ],
         "dependency": [
@@ -658,7 +702,8 @@
           {
             "author": "John Lorenz <jcl47@duke.edu>",
             "commit": "c91e28996fc74eff98bbb3c59426e8f6f159e64f",
-            "comment": "Add work week date range type and update date math getDateRangeArray to consume it, add unit tests"
+            "comment":
+              "Add work week date range type and update date math getDateRangeArray to consume it, add unit tests"
           }
         ]
       }
@@ -733,7 +778,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "08e59c871894c8ff443d48dbe5b0dd3316eb4331",
-            "comment": "Updated build to newest React version and typings. Updated tests and made various tweaks to the code to remove React warnings and keep Enzyme"
+            "comment":
+              "Updated build to newest React version and typings. Updated tests and made various tweaks to the code to remove React warnings and keep Enzyme"
           }
         ],
         "dependency": [
@@ -794,7 +840,8 @@
           {
             "author": "Cody Hoover <hoovercj@users.noreply.github.com>",
             "commit": "07ff9612172861245b7cf01ffa38f9c5167e5d3a",
-            "comment": "This PR addresses #3226 by removing the automatic call to `setPeriodicReset`. Now it is only called when `measure` is called. This prevents unnecessary resets from occurring before measure is even called. Additionally, `reset` no longer calls `setPeriodicReset`, and instead waits again for the next `measure` to set the timeout."
+            "comment":
+              "This PR addresses #3226 by removing the automatic call to `setPeriodicReset`. Now it is only called when `measure` is called. This prevents unnecessary resets from occurring before measure is even called. Additionally, `reset` no longer calls `setPeriodicReset`, and instead waits again for the next `measure` to set the timeout."
           }
         ]
       }
@@ -836,7 +883,8 @@
           {
             "author": "Jon Schectman <joschect@microsoft.com>",
             "commit": "8e1dcc66cda8334653a8b5ccbde02bf6275e0b23",
-            "comment": "TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums"
+            "comment":
+              "TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums"
           }
         ]
       }
@@ -925,7 +973,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "724a69333e9c1b0833ef6f48c0fd6b49a2bf3a3a",
-            "comment": "Updating Customizer to support `scopedSettings` prop. Adding a `Customizations` object for applying global and scoped customizations in non-React environments."
+            "comment":
+              "Updating Customizer to support `scopedSettings` prop. Adding a `Customizations` object for applying global and scoped customizations in non-React environments."
           }
         ]
       }
@@ -967,7 +1016,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "71304a1b3d4b1d36a02ea5ebc74e78b52765b8bb",
-            "comment": "getLanguage: Use localStorage wrapper helpers to avoid exceptions thrown by the browser when accessing localStorage."
+            "comment":
+              "getLanguage: Use localStorage wrapper helpers to avoid exceptions thrown by the browser when accessing localStorage."
           }
         ]
       }
@@ -1065,7 +1115,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "6746103da3c35f95afb1cde1b304a756c550deff",
-            "comment": "Adding back sourcemap content to .map files, which should alleviate \"../src/* missing\" issues when using webpack."
+            "comment":
+              "Adding back sourcemap content to .map files, which should alleviate \"../src/* missing\" issues when using webpack."
           }
         ]
       }
@@ -1098,7 +1149,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "dcd93b4058e9e68632c8b373de733601dab574c5",
-            "comment": "createArray: reverting previous change to make getItem optional, cleaning up so that the return value is correct."
+            "comment":
+              "createArray: reverting previous change to make getItem optional, cleaning up so that the return value is correct."
           },
           {
             "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
@@ -1215,7 +1267,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "8729d1e873367ac7a0f541a05878e0ef711927af",
-            "comment": "Customizer `setDefault` method moved to GlobalSettings `setValue` helper. This patches the customization code in 2 ways: 1. Multiple copies of the Customizer on the page will no longer create script errors complaining about missing themes, and 2. React is no longer pulled into the styling graph."
+            "comment":
+              "Customizer `setDefault` method moved to GlobalSettings `setValue` helper. This patches the customization code in 2 ways: 1. Multiple copies of the Customizer on the page will no longer create script errors complaining about missing themes, and 2. React is no longer pulled into the styling graph."
           }
         ]
       }
@@ -1285,7 +1338,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "74c01f80ee4fb502a45c77ac0ad135148b2146d9",
-            "comment": "isTabbableElement: fixed edge cases with identifying focusable elements that have tabIndex assigned."
+            "comment":
+              "isTabbableElement: fixed edge cases with identifying focusable elements that have tabIndex assigned."
           },
           {
             "author": "Chad Sheets <cjsheets@gmail.com>",
@@ -1353,7 +1407,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "8024225d8a3936ccddbcfb9688727260827dfe09",
-            "comment": "Customizer/customizable: adjusting to take in fields, rather than a single string representing the thing to customize."
+            "comment":
+              "Customizer/customizable: adjusting to take in fields, rather than a single string representing the thing to customize."
           }
         ],
         "patch": [
@@ -1374,7 +1429,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "262f85869f3c6b60fc403ab720e95f6687f8e0e0",
-            "comment": "getDocument/getWindow: now checks for doc/win undefined before accessing, making them ssr happy."
+            "comment":
+              "getDocument/getWindow: now checks for doc/win undefined before accessing, making them ssr happy."
           },
           {
             "author": "Thomas Michon <thomas@michon.com>",
@@ -1400,12 +1456,14 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "3a198d4811b76f491acce31efa358c9c95740a63",
-            "comment": "memoize/memoizeFunction: memoize converted to a decorator, memoizeFunction is now for memoizing functions."
+            "comment":
+              "memoize/memoizeFunction: memoize converted to a decorator, memoizeFunction is now for memoizing functions."
           },
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "3a198d4811b76f491acce31efa358c9c95740a63",
-            "comment": "getLangauge/setLanguage: new apis added for getting/setting the language normally specified on the html lang attribute."
+            "comment":
+              "getLangauge/setLanguage: new apis added for getting/setting the language normally specified on the html lang attribute."
           }
         ]
       }
@@ -1419,7 +1477,8 @@
           {
             "author": "Kristian Halle <khalle@microsoft.com>",
             "commit": "a564ac9adcc0b2fdbcdf00ac97b797e81ab4ebbe",
-            "comment": "Utilities: Fixed incorrect calculation of initials. Properly remove unwanted ASCII characters, and do not calculate initials for Arabic and CJK based languages. "
+            "comment":
+              "Utilities: Fixed incorrect calculation of initials. Properly remove unwanted ASCII characters, and do not calculate initials for Arabic and CJK based languages. "
           }
         ]
       }
@@ -1447,7 +1506,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "40f7131f031ed5b4b7bcf0cc6b3ace39e5f5dde4",
-            "comment": "warn: Making ISettingsMap have optionals so that the warn utilities can be used for Prop interfaces containing required params."
+            "comment":
+              "warn: Making ISettingsMap have optionals so that the warn utilities can be used for Prop interfaces containing required params."
           }
         ]
       }
@@ -1461,7 +1521,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "a0783284d6ad0eca368a4a10a16ffd30e4af16c5",
-            "comment": "Adding memoize utility. Updating css to handle serializable objects. Updating rtl helper to respect a localStorage setting."
+            "comment":
+              "Adding memoize utility. Updating css to handle serializable objects. Updating rtl helper to respect a localStorage setting."
           }
         ]
       }
@@ -1503,7 +1564,8 @@
           {
             "author": "jostrick <jostrick@microsoft.com>",
             "commit": "411134b785946165fc09358e734100d07409946a",
-            "comment": "withViewport: Preserving the `forceUpdate` parameter when asynchronously re-resolving the viewport size."
+            "comment":
+              "withViewport: Preserving the `forceUpdate` parameter when asynchronously re-resolving the viewport size."
           }
         ]
       }
@@ -1517,7 +1579,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "d7352294b40e5643400d889b1d78c2ea9aefedd9",
-            "comment": "Updating setRTL to write isRTL to local storage. This allows the setting to persist across sessions."
+            "comment":
+              "Updating setRTL to write isRTL to local storage. This allows the setting to persist across sessions."
           }
         ]
       }
@@ -1573,7 +1636,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "086833bf4ae9f8672c83a2d5e85e07eaf22138ed",
-            "comment": "BaseComponent: added support for resolving `componentRef` automatically. Also added `_warnDeprecations` and `_warnMutualExclusion` helpers for warning on misuse."
+            "comment":
+              "BaseComponent: added support for resolving `componentRef` automatically. Also added `_warnDeprecations` and `_warnMutualExclusion` helpers for warning on misuse."
           }
         ]
       }
@@ -1587,7 +1651,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "99589edbaff0a68e9c3c6097a3b7be8d058d7c18",
-            "comment": "Adding `setBodyScroll` method to enable/disable body scrolling. Useful for Overlay scenarios where you would want to disable the scrolling behind the overlay."
+            "comment":
+              "Adding `setBodyScroll` method to enable/disable body scrolling. Useful for Overlay scenarios where you would want to disable the scrolling behind the overlay."
           }
         ]
       }
@@ -1601,7 +1666,8 @@
           {
             "author": "Johanna Hawkins <jo.hawkins@hotmail.com>",
             "commit": "7fa3b9649c1b46e136c8781eda79149577699f1d",
-            "comment": "Adding some utility functions to handle date range calculations and determining if a date falls within a date range."
+            "comment":
+              "Adding some utility functions to handle date range calculations and determining if a date falls within a date range."
           }
         ]
       }
@@ -1685,7 +1751,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "24d41e3383bb3cfe3ee8a557665e6d5976c40f8d",
-            "comment": "Introducing a new package to contain all baseline utilities that are commonly used amongst Fabric components."
+            "comment":
+              "Introducing a new package to contain all baseline utilities that are commonly used amongst Fabric components."
           }
         ]
       }

@@ -213,6 +213,10 @@
     height: 12px;
     line-height: 12px;
     color: $warningTextColor;
+
+    @include high-contrast {
+      color: WindowText;
+    }
   }
 }
 

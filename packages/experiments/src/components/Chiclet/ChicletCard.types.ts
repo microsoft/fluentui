@@ -3,9 +3,7 @@ import { ChicletCardBase } from './ChicletCard.base';
 import { ITheme, IStyle } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
 
-export interface IChicletCard {
-
-}
+export interface IChicletCard {}
 
 export interface IChicletCardStyles {
   /**

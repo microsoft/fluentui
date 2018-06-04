@@ -92,8 +92,8 @@ export interface ISliderProps extends React.Props<SliderBase> {
   disabled?: boolean;
 
   /**
-  * Optional className to attach to the slider root element.
-  */
+   * Optional className to attach to the slider root element.
+   */
   className?: string;
 
   /**

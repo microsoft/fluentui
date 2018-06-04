@@ -1,6 +1,13 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Wed, 30 May 2018 20:28:33 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Jun 2018 10:16:13 GMT and should not be manually modified.
+
+## 0.7.1
+Mon, 04 Jun 2018 10:16:13 GMT
+
+### Patches
+
+- Updating react typings.
 
 ## 0.7.0
 Wed, 30 May 2018 20:28:33 GMT

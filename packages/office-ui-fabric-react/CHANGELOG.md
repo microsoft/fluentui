@@ -1,6 +1,48 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 31 May 2018 10:18:58 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Jun 2018 18:50:06 GMT and should not be manually modified.
+
+## 6.4.0
+Mon, 04 Jun 2018 18:50:06 GMT
+
+### Minor changes
+
+- Revert PR 4897
+
+## 6.3.0
+Mon, 04 Jun 2018 10:16:13 GMT
+
+### Minor changes
+
+- Coachmark: Fix positioning bugs and add in support for different Coachmark directions.
+- DetailsList: adjusting aria labels and exporting more ariaLabels in `IColumn` to allow for better narrator reading and table scanning.
+- Dropdown: Allow `title` to be provided as an item property.
+- Icons top level import was exporting a file path, should be exporting a package path.
+- GroupedList: Added multiple customization entry-points including custom indent spacing and header customization.
+- Allow for more control over event handling for keytips
+
+### Patches
+
+- Callout: fix dismissing events to attach to the documentElement, not body.
+- SplitButton: Hook up aria-roledescription to splitButtons so that they can leverage that markup if it gets passed in to the component.
+- SpinButton: addressing onValidate, onIncrement, and onDecrement callbacks to be called correctly.
+- MessageBar: New color for dismiss / expand button in hc mode for better visibility.
+- Updating react typings.
+- Updated test snapshots
+
+## 6.2.0
+Fri, 01 Jun 2018 10:18:43 GMT
+
+### Minor changes
+
+- Added FocusTrapZone capability: When the FTZ is focused, it will pass focus to a descendant element.  The new prop 'focusPreviouslyFocusedInnerElement' controls the descendant-choosing behavior.
+
+### Patches
+
+- Fix ComboBox ARIA attributes.
+- Prevent invalid empty ARIA values from being output.
+- ComboBox: Fix the value that is checked when submitting a pending value to take into account if the aria-label is used as text. This line was missed in the initial change
+- Add support for pointerup to dismiss keytips
 
 ## 6.1.2
 Thu, 31 May 2018 10:18:58 GMT

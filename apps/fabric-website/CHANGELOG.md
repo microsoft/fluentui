@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 31 May 2018 10:18:58 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Jun 2018 10:16:13 GMT and should not be manually modified.
+
+## 6.0.2
+Mon, 04 Jun 2018 10:16:13 GMT
+
+### Patches
+
+- Updating react typings.
 
 ## 6.0.1
 Thu, 31 May 2018 10:18:58 GMT

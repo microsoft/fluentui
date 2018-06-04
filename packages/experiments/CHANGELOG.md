@@ -1,6 +1,22 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 30 May 2018 20:28:33 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Jun 2018 10:16:13 GMT and should not be manually modified.
+
+## 6.1.1
+Mon, 04 Jun 2018 10:16:13 GMT
+
+### Patches
+
+- Updating react typings.
+- Fixed tests to be compatible with jest 23
+
+## 6.1.0
+Fri, 01 Jun 2018 10:18:43 GMT
+
+### Minor changes
+
+- Experiments/Nav component: display "show more" link only if there is atleast one hidden link
+- Shimmer: Shimmer refactor to use new props and deprecate others. Build more examples of Shimmer use.
 
 ## 6.0.0
 Wed, 30 May 2018 20:28:33 GMT

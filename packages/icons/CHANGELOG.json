@@ -189,7 +189,8 @@
           {
             "author": "Jon Schectman <joschect@microsoft.com>",
             "commit": "8e1dcc66cda8334653a8b5ccbde02bf6275e0b23",
-            "comment": "TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums"
+            "comment":
+              "TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums"
           }
         ],
         "dependency": [

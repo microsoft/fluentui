@@ -1,5 +1,1 @@
-export {
-  getNeutralVariant,
-  getSoftVariant,
-  getStrongVariant
-} from './variants';
+export { getNeutralVariant, getSoftVariant, getStrongVariant } from './variants';

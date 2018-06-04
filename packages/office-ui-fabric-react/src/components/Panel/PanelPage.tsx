@@ -40,84 +40,76 @@ export class PanelPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='Panel'
-        componentName='PanelExample'
-        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Panel'
-        allowNativeProps={ true }
+        title="Panel"
+        componentName="PanelExample"
+        componentUrl="https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Panel"
+        allowNativeProps={true}
         exampleCards={
           <div>
-            <ExampleCard title='Panel - Small Panel, Anchored Right, Fixed Width' code={ PanelSmallRightExampleCode }>
+            <ExampleCard title="Panel - Small Panel, Anchored Right, Fixed Width" code={PanelSmallRightExampleCode}>
               <PanelSmallRightExample />
             </ExampleCard>
-            <ExampleCard title='Panel - Small Panel, Anchored Left, Fixed Width' code={ PanelSmallLeftExampleCode }>
+            <ExampleCard title="Panel - Small Panel, Anchored Left, Fixed Width" code={PanelSmallLeftExampleCode}>
               <PanelSmallLeftExample />
             </ExampleCard>
-            <ExampleCard title='Panel - Small Panel, Full Screen, Fluid Width' code={ PanelSmallFluidExampleCode }>
+            <ExampleCard title="Panel - Small Panel, Full Screen, Fluid Width" code={PanelSmallFluidExampleCode}>
               <PanelSmallFluidExample />
             </ExampleCard>
-            <ExampleCard title='Panel - Medium' code={ PanelMediumExampleCode }>
+            <ExampleCard title="Panel - Medium" code={PanelMediumExampleCode}>
               <PanelMediumExample />
             </ExampleCard>
-            <ExampleCard title='Panel - Large' code={ PanelLargeExampleCode }>
+            <ExampleCard title="Panel - Large" code={PanelLargeExampleCode}>
               <PanelLargeExample />
             </ExampleCard>
-            <ExampleCard title='Panel - LargeFixed' code={ PanelLargeFixedExampleCode }>
+            <ExampleCard title="Panel - LargeFixed" code={PanelLargeFixedExampleCode}>
               <PanelLargeFixedExample />
             </ExampleCard>
-            <ExampleCard title='Panel - Extra Large' code={ PanelExtraLargeExampleCode }>
+            <ExampleCard title="Panel - Extra Large" code={PanelExtraLargeExampleCode}>
               <PanelExtraLargeExample />
             </ExampleCard>
-            <ExampleCard title='Panel - Custom' code={ PanelCustomExampleCode }>
+            <ExampleCard title="Panel - Custom" code={PanelCustomExampleCode}>
               <PanelCustomExample />
             </ExampleCard>
-            <ExampleCard title='Panel - Hidden on Dismiss' code={ PanelHiddenOnDismissExampleCode }>
+            <ExampleCard title="Panel - Hidden on Dismiss" code={PanelHiddenOnDismissExampleCode}>
               <PanelHiddenOnDismissExample />
             </ExampleCard>
-            <ExampleCard title='Panel - Light Dismiss' code={ PanelLightDismissExampleCode }>
+            <ExampleCard title="Panel - Light Dismiss" code={PanelLightDismissExampleCode}>
               <PanelLightDismissExample />
             </ExampleCard>
-            <ExampleCard title='Panel - Custom Light Dismiss' code={ PanelLightDismissCustomExampleCode }>
+            <ExampleCard title="Panel - Custom Light Dismiss" code={PanelLightDismissCustomExampleCode}>
               <PanelLightDismissCustomExample />
             </ExampleCard>
-            <ExampleCard title='Panel - Non-Modal' code={ PanelNonModalExampleCode }>
+            <ExampleCard title="Panel - Non-Modal" code={PanelNonModalExampleCode}>
               <PanelNonModalExample />
             </ExampleCard>
-            <ExampleCard title='Panel - Footer' code={ PanelFooterExampleCode }>
+            <ExampleCard title="Panel - Footer" code={PanelFooterExampleCode}>
               <PanelFooterExample />
             </ExampleCard>
           </div>
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/Panel.types.ts')
-            ] }
+            sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/Panel.types.ts')]}
           />
         }
         overview={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/docs/PanelOverview.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/docs/PanelOverview.md')}
           </PageMarkdown>
         }
-        bestPractices={
-          <div />
-        }
+        bestPractices={<div />}
         dos={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/docs/PanelDos.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/docs/PanelDos.md')}
           </PageMarkdown>
         }
         donts={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/docs/PanelDonts.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/docs/PanelDonts.md')}
           </PageMarkdown>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }
-        componentStatus={
-          <ComponentStatus
-            { ...PanelStatus }
-          />
-        }
+        isHeaderVisible={this.props.isHeaderVisible}
+        componentStatus={<ComponentStatus {...PanelStatus} />}
       />
     );
   }

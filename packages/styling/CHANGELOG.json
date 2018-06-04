@@ -2,6 +2,28 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "6.0.2",
+      "tag": "@uifabric/styling_v6.0.2",
+      "date": "Mon, 04 Jun 2018 10:16:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "4e1cd119bbf0f75e0432b0f92bad342714b57bef",
+            "comment": "Updating react typings."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.0.3 <7.0.0` to `>=6.0.4 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.0.0 <7.0.0` to `>=6.0.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.0.1",
       "tag": "@uifabric/styling_v6.0.1",
       "date": "Wed, 30 May 2018 22:05:04 GMT",
@@ -189,7 +211,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "2bbc7950bd9f10ea1e792dcb1155c625aa8e8f4f",
-            "comment": "The getFocusStyle helper has been adjusted to use the `ms-Fabric--isFocusEnabled` class name, rather than `ms-Fabric.is-focusEnabled`."
+            "comment":
+              "The getFocusStyle helper has been adjusted to use the `ms-Fabric--isFocusEnabled` class name, rather than `ms-Fabric.is-focusEnabled`."
           }
         ],
         "dependency": [
@@ -406,7 +429,8 @@
           {
             "author": "Mark Polak <mark@thedutchies.com>",
             "commit": "8b573a64f3d9f4e3dbd17b1f90788ab8fffd6185",
-            "comment": "Adjusting IColorClassNames and IFontStyles to remove the optional part for the members, to make the interfaces easier to consume."
+            "comment":
+              "Adjusting IColorClassNames and IFontStyles to remove the optional part for the members, to make the interfaces easier to consume."
           }
         ],
         "dependency": [
@@ -521,7 +545,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "08e59c871894c8ff443d48dbe5b0dd3316eb4331",
-            "comment": "Updated build to newest React version and typings. Updated tests and made various tweaks to the code to remove React warnings and keep Enzyme"
+            "comment":
+              "Updated build to newest React version and typings. Updated tests and made various tweaks to the code to remove React warnings and keep Enzyme"
           }
         ],
         "dependency": [
@@ -675,7 +700,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "360596259b7e047fd6987cc05aafdc4f88d878d3",
-            "comment": "Updating `getIconClassName` to return display: inline-block to be consistent with the styled used by `ms-Icon ms-Icon--*`."
+            "comment":
+              "Updating `getIconClassName` to return display: inline-block to be consistent with the styled used by `ms-Icon ms-Icon--*`."
           }
         ],
         "dependency": [
@@ -758,7 +784,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "a360af7a689c30f406ff7cb2346fafb3a972ab1a",
-            "comment": "Adjusting the `registerIcons` code to allow for icons to map to JSX.Elements or icon code strings."
+            "comment":
+              "Adjusting the `registerIcons` code to allow for icons to map to JSX.Elements or icon code strings."
           }
         ],
         "dependency": [
@@ -791,7 +818,8 @@
           {
             "author": "Jon Schectman <joschect@microsoft.com>",
             "commit": "8e1dcc66cda8334653a8b5ccbde02bf6275e0b23",
-            "comment": "TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums"
+            "comment":
+              "TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums"
           }
         ],
         "dependency": [
@@ -863,7 +891,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "8a8c240b39c3ba12effab2c6c8e7021c3bc9cea9",
-            "comment": "The 5.0 Fabric release. See the [the wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Fabric-5.0:-What's-new) for a full list of changes and how to work with the new bits."
+            "comment":
+              "The 5.0 Fabric release. See the [the wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Fabric-5.0:-What's-new) for a full list of changes and how to work with the new bits."
           }
         ],
         "dependency": [
@@ -953,7 +982,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "eca3d17992576760e7b6b55d74f2d7a2b85e3a21",
-            "comment": "Adding the `getIconClassName` function, which will provide a way for partners to generate a given icon class name. This replaces the implicit `ms-Icon--*` pattern being used now, as well as using IconClassNames, which will go away in Fabric 5."
+            "comment":
+              "Adding the `getIconClassName` function, which will provide a way for partners to generate a given icon class name. This replaces the implicit `ms-Icon--*` pattern being used now, as well as using IconClassNames, which will go away in Fabric 5."
           }
         ]
       }
@@ -1045,7 +1075,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "6746103da3c35f95afb1cde1b304a756c550deff",
-            "comment": "Adding back sourcemap content to .map files, which should alleviate \"../src/* missing\" issues when using webpack."
+            "comment":
+              "Adding back sourcemap content to .map files, which should alleviate \"../src/* missing\" issues when using webpack."
           }
         ],
         "dependency": [
@@ -1224,7 +1255,8 @@
           {
             "author": "Philip Kuo <phkuo@microsoft.com>",
             "commit": "fd03731e7523f372438853eccbc13f59d0f2d9d7",
-            "comment": "Theming: add settings to the interface so we can track whether the current theme is inverted or not"
+            "comment":
+              "Theming: add settings to the interface so we can track whether the current theme is inverted or not"
           }
         ]
       }
@@ -1294,7 +1326,8 @@
           {
             "author": "Eddie Liu <leddie24@gmail.com>",
             "commit": "d21643832d11a6a6e2a7484a53de72a99665ad67",
-            "comment": "Add statusCircleCheckmark to IconCodes.ts.  Add font file version to icon url in DefaultFontStyles.ts."
+            "comment":
+              "Add statusCircleCheckmark to IconCodes.ts.  Add font file version to icon url in DefaultFontStyles.ts."
           }
         ],
         "dependency": [
@@ -1331,7 +1364,8 @@
           {
             "author": "Michael Loughry <miclo@microsoft.com>",
             "commit": "8ac8f0da64e88b10c1036296cf798da1e5657a9b",
-            "comment": "Only initialize the default theme once, even if multiple instances of @uifabric/styling are executed."
+            "comment":
+              "Only initialize the default theme once, even if multiple instances of @uifabric/styling are executed."
           }
         ]
       }
@@ -1413,7 +1447,8 @@
           {
             "author": "Philip Kuo <phkuo@microsoft.com>",
             "commit": "8739efafc90df5f7c51da305189b2cdc131c66e0",
-            "comment": "Styling package: remove optionals from interfaces, since consumers can now use partial interfaces to define overrides."
+            "comment":
+              "Styling package: remove optionals from interfaces, since consumers can now use partial interfaces to define overrides."
           }
         ],
         "patch": [
@@ -1582,7 +1617,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "135c06a013468eb717fddab4ccabd6d63274fe4b",
-            "comment": "General class exports now register on demand, resulting in less unneeded evaluation of classnames."
+            "comment":
+              "General class exports now register on demand, resulting in less unneeded evaluation of classnames."
           },
           {
             "author": "dmarcey <demarcey@microsoft.com>",
@@ -1673,7 +1709,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "f962234cf5c1231976331cfabc06680a762cd516",
-            "comment": "Updating FabricConfig support to allow themes to be providable at bundle load time without weird race conditions."
+            "comment":
+              "Updating FabricConfig support to allow themes to be providable at bundle load time without weird race conditions."
           },
           {
             "author": "Mike Wheaton <miwhea@microsoft.com>",
@@ -1810,7 +1847,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "8024225d8a3936ccddbcfb9688727260827dfe09",
-            "comment": "Styling: loadTheme now updates both legacy theme as well as current global theming. All theme objects provided by customizable will get updated correctly."
+            "comment":
+              "Styling: loadTheme now updates both legacy theme as well as current global theming. All theme objects provided by customizable will get updated correctly."
           }
         ],
         "dependency": [
@@ -1847,7 +1885,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "ee2ea2da473875f48afc28b4270bc658eaa49f92",
-            "comment": "Icon classes: adjusting how they are registered so that we merge raw styles together to form the icon classes."
+            "comment":
+              "Icon classes: adjusting how they are registered so that we merge raw styles together to form the icon classes."
           }
         ]
       }
@@ -1861,7 +1900,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "494141224cddf73bf46e21addb9c2d8354148f67",
-            "comment": "Adding support for specifying `window.FabricConfig.fontBaseUrl` in order to customize where the font resources are pulled from. Leaving it blank will avoid fontface definitions from being registered."
+            "comment":
+              "Adding support for specifying `window.FabricConfig.fontBaseUrl` in order to customize where the font resources are pulled from. Leaving it blank will avoid fontface definitions from being registered."
           }
         ]
       }
@@ -1875,7 +1915,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "3a198d4811b76f491acce31efa358c9c95740a63",
-            "comment": "Major updates to mergeStyles and other various utilities. Updating fonts to follow latest fabric-core language fallbacks."
+            "comment":
+              "Major updates to mergeStyles and other various utilities. Updating fonts to follow latest fabric-core language fallbacks."
           }
         ],
         "dependency": [
@@ -1894,7 +1935,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "c8882eeaf56477aa6ce1077f4cd1617e60c8af3e",
-            "comment": "Various casing changes for exported members. Added `mergeStyles` helper for merging style sets. Moving content around in the project."
+            "comment":
+              "Various casing changes for exported members. Added `mergeStyles` helper for merging style sets. Moving content around in the project."
           }
         ],
         "dependency": [
@@ -1916,7 +1958,8 @@
           {
             "author": "Srikanth Deshpande <srideshpande@users.noreply.github.com>",
             "commit": "a03d36bb13c70579f5f3f17653bef8bce5ebd603",
-            "comment": "Change the build rig in @uifabric/styling to one that enables the creation of a bundle safe for consumption by SharePoint partners. This should have no effect on the output of the modules."
+            "comment":
+              "Change the build rig in @uifabric/styling to one that enables the creation of a bundle safe for consumption by SharePoint partners. This should have no effect on the output of the modules."
           }
         ]
       }
@@ -1930,7 +1973,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "d7352294b40e5643400d889b1d78c2ea9aefedd9",
-            "comment": "Adding the initial styling package. Initial checkin, not meant to be consumed until we release a 1.0.0."
+            "comment":
+              "Adding the initial styling package. Initial checkin, not meant to be consumed until we release a 1.0.0."
           }
         ],
         "dependency": [

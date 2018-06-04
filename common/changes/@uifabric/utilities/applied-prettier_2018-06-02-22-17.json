@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/utilities",
-      "comment": "Add utility function to help merge ARIA attributes.",
+      "comment": "Added Prettier",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/utilities",
-  "email": "jagore@microsoft.com"
+  "email": "mark@thedutchies.com"
 }

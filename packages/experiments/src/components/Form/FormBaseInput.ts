@@ -8,10 +8,7 @@ import { IFormBaseInputProps } from './FormBaseInput.types';
 export { IFormBaseInputProps };
 
 // Components
-import {
-  BaseComponent,
-  ICancelable
-} from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent, ICancelable } from 'office-ui-fabric-react/lib/Utilities';
 
 export const DEFAULT_DEBOUNCE = 250;
 
@@ -33,7 +30,11 @@ export type GenericFormInput = FormBaseInput<any, IFormBaseInputProps<any>, IFor
  * The base class that all simple form inputs should inherit from
  * The T generic should be the type of value this input accepts. For example, a TextBox would probably define T as string
  */
-export abstract class FormBaseInput<T, P extends IFormBaseInputProps<T>, S extends IFormBaseInputState<T>> extends BaseComponent<P, S> {
+export abstract class FormBaseInput<
+  T,
+  P extends IFormBaseInputProps<T>,
+  S extends IFormBaseInputState<T>
+> extends BaseComponent<P, S> {
   public static contextTypes: React.ValidationMap<IFormContext> = {
     isFormValid: PropTypes.func.isRequired,
     mountInput: PropTypes.func.isRequired,
@@ -64,13 +65,13 @@ export abstract class FormBaseInput<T, P extends IFormBaseInputProps<T>, S exten
     this.formContext = context;
     this.debouncedSubmitValue = this._async.debounce(
       this.formContext.submitValue,
-      (
-        (this.props.debounceInterval !== null && this.props.debounceInterval !== undefined) ?
-          this.props.debounceInterval : DEFAULT_DEBOUNCE
-      ),
+      this.props.debounceInterval !== null && this.props.debounceInterval !== undefined
+        ? this.props.debounceInterval
+        : DEFAULT_DEBOUNCE,
       {
-        leading: (leadingDebounce === null || leadingDebounce === undefined ? true : leadingDebounce)
-      });
+        leading: leadingDebounce === null || leadingDebounce === undefined ? true : leadingDebounce
+      }
+    );
     this._validateProps(props);
   }
 
@@ -103,16 +104,14 @@ export abstract class FormBaseInput<T, P extends IFormBaseInputProps<T>, S exten
    * Validate the input. By default, this function will run through all the validators and ensure they pass
    */
   public doValidate(): IFormValidationResult {
-    const {
-      validators = []
-    } = this.props;
+    const { validators = [] } = this.props;
 
     const validationResult: IFormValidationResult = {
       isValid: true,
       component: this
     };
 
-    for (const validator of (validators as any)) {
+    for (const validator of validators as any) {
       const error: string = validator(this.state.currentValue);
       if (error) {
         validationResult.isValid = false;

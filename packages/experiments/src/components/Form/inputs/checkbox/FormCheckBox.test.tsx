@@ -33,20 +33,24 @@ describe('FormCheckBox Unit Tests', () => {
     });
 
     it('Null name throws error', () => {
+      const consoleMock = jest.spyOn(console, 'error');
+      consoleMock.mockImplementation(() => undefined);
+
       const errorFunction = () => {
         ReactTestUtils.renderIntoDocument(
-          <Form
-            onSubmit={ undefined }
-          >
-            <FormCheckBox
-              inputKey={ null as any }
-              value={ undefined }
-            />
+          <Form onSubmit={undefined}>
+            <FormCheckBox inputKey={null as any} value={undefined} />
           </Form>
         );
       };
 
       expect(errorFunction).toThrow();
+      expect(console.error).toHaveBeenCalledTimes(2);
+      expect((consoleMock as jest.MockInstance<{}>).mock.calls[0][0]).toMatch(
+        'Uncaught [Error: FormBaseInput: name must defined on all form inputs]'
+      );
+
+      consoleMock.mockRestore();
 
       (renderedForm as any) = {};
       (renderedInput as any) = {};
@@ -54,14 +58,8 @@ describe('FormCheckBox Unit Tests', () => {
 
     it('Null props still render', () => {
       renderedForm = ReactTestUtils.renderIntoDocument(
-        <Form
-          onSubmit={ undefined }
-        >
-          <FormCheckBox
-            inputKey='name'
-            value={ undefined }
-            validators={ undefined }
-          />
+        <Form onSubmit={undefined}>
+          <FormCheckBox inputKey="name" value={undefined} validators={undefined} />
         </Form>
       ) as Form;
 
@@ -72,17 +70,19 @@ describe('FormCheckBox Unit Tests', () => {
       let result: any;
       renderedForm = ReactTestUtils.renderIntoDocument(
         <Form
-          onSubmit={ (value: any) => { result = value; } }
+          onSubmit={(value: any) => {
+            result = value;
+          }}
         >
-          <FormCheckBox
-            inputKey='name'
-            value={ true }
-          />
+          <FormCheckBox inputKey="name" value={true} />
         </Form>
       ) as Form;
 
       renderedInput = ReactTestUtils.findRenderedDOMComponentWithClass(renderedForm, 'ms-Checkbox') as HTMLElement;
-      const form: HTMLFormElement = ReactTestUtils.findRenderedDOMComponentWithTag(renderedForm, 'form') as HTMLFormElement;
+      const form: HTMLFormElement = ReactTestUtils.findRenderedDOMComponentWithTag(
+        renderedForm,
+        'form'
+      ) as HTMLFormElement;
       ReactTestUtils.Simulate.submit(form);
 
       expect(result['name']).toBeTruthy();
@@ -104,13 +104,8 @@ describe('FormCheckBox Unit Tests', () => {
     it('Checkbox is leading and trailing debounced', () => {
       const updateStub: sinon.SinonStub = sandbox.stub();
       const renderedForm = ReactTestUtils.renderIntoDocument(
-        <Form
-          onUpdated={ updateStub }
-        >
-          <ExtendsCheckbox
-            inputKey='name'
-            value={ true }
-          />
+        <Form onUpdated={updateStub}>
+          <ExtendsCheckbox inputKey="name" value={true} />
         </Form>
       ) as Form;
 

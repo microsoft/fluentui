@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add support for pointerup to dismiss keytips",
+      "comment": "CommandBarPage: Remove fabric js reference.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "keyou@microsoft.com"
+  "email": "lynam.emily@gmail.com"
 }
