@@ -20,7 +20,8 @@ import {
   divProperties,
   getFirstFocusable,
   getLastFocusable,
-  createRef
+  createRef,
+  mergeAriaAttributeValues
 } from '../../Utilities';
 import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 import * as stylesImport from './Dropdown.scss';
@@ -168,7 +169,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
               role='listbox'
               aria-live={ disabled || isOpen ? 'off' : 'assertive' }
               aria-label={ ariaLabel }
-              aria-describedby={ describedBy + (keytipAttributes['aria-describedby'] || '') }
+              aria-describedby={ mergeAriaAttributeValues(describedBy, keytipAttributes['aria-describedby']) }
               aria-activedescendant={ isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0 ? (this._id + '-list' + selectedIndices[0]) : undefined }
               aria-disabled={ disabled }
               aria-owns={ isOpen ? id + '-list' : undefined }
@@ -510,6 +511,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             role='option'
             aria-selected={ isItemSelected ? 'true' : 'false' }
             ariaLabel={ item.ariaLabel || item.text }
+            title={ item.title }
           >
             { onRenderOption(item, this._onRenderOption) }
           </CommandButton>
@@ -527,6 +529,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
               onMouseMove: this._onItemMouseMove.bind(this, item)
             } }
             label={ item.text }
+            title={ item.title }
             onRenderLabel={ this._onRenderLabel.bind(this, item) }
             className={ css(
               'ms-ColumnManagementPanel-checkbox',

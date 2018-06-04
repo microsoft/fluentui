@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   BaseComponent,
   classNamesFunction,
+  customizable
 } from '../../../Utilities';
 import {
   IShimmerCircleProps,
@@ -11,6 +12,7 @@ import {
 
 const getClassNames = classNamesFunction<IShimmerCircleStyleProps, IShimmerCircleStyles>();
 
+@customizable('ShimmerCircle', ['theme'])
 export class ShimmerCircleBase extends BaseComponent<IShimmerCircleProps, {}> {
   private _classNames: { [key in keyof IShimmerCircleStyles]: string };
 
@@ -19,8 +21,17 @@ export class ShimmerCircleBase extends BaseComponent<IShimmerCircleProps, {}> {
   }
 
   public render(): JSX.Element {
-    const { height, styles, borderStyle } = this.props;
-    this._classNames = getClassNames(styles!, { height, borderStyle });
+    const {
+      height,
+      styles,
+      borderStyle,
+      theme
+    } = this.props;
+    this._classNames = getClassNames(styles!, {
+      theme: theme!,
+      height,
+      borderStyle
+    });
 
     return (
       <div className={ this._classNames.root }>

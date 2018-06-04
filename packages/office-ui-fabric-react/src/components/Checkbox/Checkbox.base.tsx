@@ -4,7 +4,8 @@ import {
   getId,
   createRef,
   customizable,
-  classNamesFunction
+  classNamesFunction,
+  mergeAriaAttributeValues
 } from '../../Utilities';
 import { Icon } from '../../Icon';
 import {
@@ -115,7 +116,7 @@ export class CheckboxBase extends BaseComponent<ICheckboxProps, ICheckboxState> 
             aria-disabled={ disabled }
             aria-label={ ariaLabel }
             aria-labelledby={ ariaLabelledBy }
-            aria-describedby={ (ariaDescribedBy || '') + (keytipAttributes['aria-describedby'] || '') }
+            aria-describedby={ mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby']) }
             aria-posinset={ ariaPositionInSet }
             aria-setsize={ ariaSetSize }
           >

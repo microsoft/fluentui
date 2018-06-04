@@ -150,9 +150,9 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
           }
     >
       <button
-        aria-describedby={null}
+        aria-describedby={undefined}
         aria-label={undefined}
-        aria-labelledby={null}
+        aria-labelledby={undefined}
         aria-pressed={false}
         checked={false}
         className=
@@ -273,9 +273,9 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
         </div>
       </button>
       <button
-        aria-describedby={null}
+        aria-describedby={undefined}
         aria-label={undefined}
-        aria-labelledby={null}
+        aria-labelledby={undefined}
         aria-pressed={false}
         checked={false}
         className=

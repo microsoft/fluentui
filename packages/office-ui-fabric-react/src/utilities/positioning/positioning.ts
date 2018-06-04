@@ -765,3 +765,10 @@ export function getMaxHeight(target: Element | MouseEvent | IPoint, targetEdge: 
 
   return _getMaxHeightFromTargetRectangle(targetRect, targetEdge, gapSpace, boundingRectangle, coverTarget);
 }
+
+/**
+ * Returns the opposite edge of the given RectangleEdge.
+ */
+export function getOppositeEdge(edge: RectangleEdge): RectangleEdge {
+  return edge * -1;
+}
