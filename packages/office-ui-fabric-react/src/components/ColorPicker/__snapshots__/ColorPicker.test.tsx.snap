@@ -113,7 +113,6 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
               right: 0px;
               top: 0px;
             }
-        id="sliderOverlay"
         style={undefined}
       />
       <div
@@ -167,7 +166,6 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
               right: 0px;
               top: 0px;
             }
-        id="sliderOverlay"
         style={
           Object {
             "background": "linear-gradient(to right, transparent 0, #FFFFFF 100%)",

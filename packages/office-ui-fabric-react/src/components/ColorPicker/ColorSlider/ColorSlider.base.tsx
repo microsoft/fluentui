@@ -72,7 +72,7 @@ export class ColorSliderBase extends BaseComponent<IColorSliderProps, IColorSlid
         onMouseDown={ this._onMouseDown }
         style={ sliderStyle }
       >
-        <div id="sliderOverlay" className={ classNames.sliderOverlay } style={ overlayStyle } />
+        <div className={ classNames.sliderOverlay } style={ overlayStyle } />
         <div className={ classNames.sliderThumb } style={ { left: currentPercentage + '%' } } />
       </div>
     );

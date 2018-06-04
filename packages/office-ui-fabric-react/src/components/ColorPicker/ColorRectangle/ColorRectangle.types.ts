@@ -23,11 +23,6 @@ export interface IColorRectangleProps {
   minSize?: number;
 
   /**
-   * Callback for when the color changes.
-   */
-  onSVChanged?(s: number, v: number): void;
-
-  /**
    * Additional CSS class(es) to apply to the ColorRectangle.
    */
   className?: string;
@@ -41,6 +36,11 @@ export interface IColorRectangleProps {
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   getStyles?: IStyleFunction<IColorRectangleStyleProps, IColorRectangleStyles>;
+
+  /**
+   * Callback for when the color changes.
+   */
+  onSVChanged?(s: number, v: number): void;
 }
 
 export interface IColorRectangleStyleProps {
