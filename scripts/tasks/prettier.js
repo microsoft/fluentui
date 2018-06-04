@@ -8,7 +8,7 @@ module.exports = function(options) {
   const projectPath = path.resolve(process.cwd());
   const sourcePath = path.join(process.cwd(), '**', '*.{ts,tsx,json,js}');
   const prettierPath = 'node ' + path.resolve(__dirname, '../node_modules/prettier/bin-prettier.js');
-  const prettierIgnorePath = path.resolve(__dirname, '..', '.prettierignore');
+  const prettierIgnorePath = path.resolve(path.join(__dirname, '..', '..', '.prettierignore'));
 
   const prettierConfigPath = path.join(
     process.cwd(),
