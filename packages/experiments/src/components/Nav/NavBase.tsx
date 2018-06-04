@@ -5,6 +5,8 @@ import * as React from 'react';
 /* tslint:enable */
 
 export class NavBase extends React.Component<INavProps, INavState> implements INav {
+  protected _hasAtleastOneHiddenLink = false;
+
   constructor(props: INavProps) {
     super(props);
   }
@@ -57,9 +59,9 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
       return undefined;
     }
 
-    if (link.isShowMoreLink && !showMore && link.showMoreText) {
+    if (link.isShowMoreLink && !showMore && link.alternateText) {
       // if the link is show more/less link, based on the showMore state; return "Show more" localized text
-      return link.showMoreText;
+      return link.alternateText;
     }
 
     return link.name;

@@ -125,6 +125,7 @@
 }
 
 .footer {
+  display: flex;
   :global(.ms-Button):not(:first-child) {
     @include margin-left(20px);
   }
@@ -159,9 +160,10 @@
 }
 
 //Primary button style override
-.primaryButton {
+.bodyContent .primaryButton {
   background-color: $ms-color-white;
   border-color: $ms-color-white;
+  white-space: nowrap;
 
   :global(.ms-Button-label) {
     @include ms-font-m;
@@ -185,9 +187,10 @@
 }
 
 //Secondary button style override
-.secondaryButton {
+.bodyContent .secondaryButton {
   background-color: $ms-color-themePrimary;
   border-color: $ms-color-white;
+  white-space: nowrap;
 
   :global(.ms-Button-label) {
     @include ms-font-m;

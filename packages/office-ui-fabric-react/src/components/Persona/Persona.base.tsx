@@ -22,12 +22,11 @@ const getClassNames = classNamesFunction<IPersonaStyleProps, IPersonaStyles>();
 
 /**
  * Persona with no default styles.
- * [Use the `getStyles` API to add your own styles.](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Styling)
+ * [Use the `styles` API to add your own styles.](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Styling)
  */
 @customizable('Persona', ['theme'])
 export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
   public static defaultProps: IPersonaProps = {
-    primaryText: '',
     size: PersonaSize.size48,
     presence: PersonaPresenceEnum.none,
     imageAlt: ''
@@ -35,6 +34,8 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
 
   constructor(props: IPersonaProps) {
     super(props);
+
+    this._warnDeprecations({ 'primaryText': 'text' });
   }
 
   public render(): JSX.Element {
@@ -54,7 +55,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       coinProps,
       showUnknownPersonaCoin,
       coinSize,
-      getStyles,
+      styles,
       imageAlt,
       imageInitials,
       imageShouldFadeIn,
@@ -65,7 +66,6 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       onRenderCoin,
       onRenderInitials,
       presence,
-      primaryText,
       showSecondaryText,
       theme,
     } = this.props;
@@ -85,11 +85,11 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       onRenderCoin,
       onRenderInitials,
       presence,
-      primaryText,
       size,
+      text: this._getText()
     };
 
-    const classNames = getClassNames(getStyles, {
+    const classNames = getClassNames(styles, {
       theme: theme!,
       className,
       showSecondaryText,
@@ -101,7 +101,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
     const personaDetails = (
       <div className={ classNames.details }>
         { this._renderElement(
-          this.props.primaryText,
+          this._getText(),
           classNames.primaryText,
           onRenderPrimaryText) }
         { this._renderElement(
@@ -130,6 +130,13 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
         { (!hidePersonaDetails || (size === PersonaSize.size10 || size === PersonaSize.tiny)) && personaDetails }
       </div>
     );
+  }
+
+  /**
+   * Deprecation helper for getting text.
+   */
+  private _getText(): string {
+    return this.props.text || this.props.primaryText || '';
   }
 
   private _renderElement = (text: string | undefined, className: string, render?: IRenderFunction<IPersonaProps>): JSX.Element => {

@@ -20,7 +20,8 @@ import {
   divProperties,
   getFirstFocusable,
   getLastFocusable,
-  createRef
+  createRef,
+  mergeAriaAttributeValues
 } from '../../Utilities';
 import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 import * as stylesImport from './Dropdown.scss';
@@ -166,10 +167,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
               tabIndex={ disabled ? -1 : 0 }
               aria-expanded={ isOpen ? 'true' : 'false' }
               role='listbox'
-              aria-autocomplete='none'
               aria-live={ disabled || isOpen ? 'off' : 'assertive' }
               aria-label={ ariaLabel }
-              aria-describedby={ describedBy + (keytipAttributes['aria-describedby'] || '') }
+              aria-describedby={ mergeAriaAttributeValues(describedBy, keytipAttributes['aria-describedby']) }
               aria-activedescendant={ isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0 ? (this._id + '-list' + selectedIndices[0]) : undefined }
               aria-disabled={ disabled }
               aria-owns={ isOpen ? id + '-list' : undefined }
@@ -197,7 +197,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
                 }
                 aria-atomic={ true }
                 role='listbox'
-                aria-readonly='true'
               >
                 { // If option is selected render title, otherwise render the placeholder text
                   selectedOptions.length ? (
@@ -481,7 +480,13 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     const { selectedIndices = [] } = this.state;
     const id = this._id;
     const isItemSelected = item.index !== undefined && selectedIndices ? selectedIndices.indexOf(item.index) > -1 : false;
-    const checkboxStyles = getCheckboxStyles(getTheme());
+    const checkboxStyles = () => {
+      return getCheckboxStyles({
+        theme: getTheme(),
+        checked: isItemSelected,
+        disabled: item.disabled
+      });
+    };
 
     return (
       !this.props.multiSelect ?
@@ -506,13 +511,13 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             role='option'
             aria-selected={ isItemSelected ? 'true' : 'false' }
             ariaLabel={ item.ariaLabel || item.text }
+            title={ item.title }
           >
             { onRenderOption(item, this._onRenderOption) }
           </CommandButton>
         ) : (
           <Checkbox
             id={ id + '-list' + item.index }
-            ref={ Dropdown.Option + item.index }
             key={ item.key }
             data-index={ item.index }
             data-is-focusable={ !item.disabled }
@@ -524,6 +529,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
               onMouseMove: this._onItemMouseMove.bind(this, item)
             } }
             label={ item.text }
+            title={ item.title }
             onRenderLabel={ this._onRenderLabel.bind(this, item) }
             className={ css(
               'ms-ColumnManagementPanel-checkbox',
@@ -538,11 +544,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             checked={ isItemSelected }
             // Hover is being handled by focus styles
             // so clear out the explicit hover styles
-            styles={ {
-              checkboxHovered: checkboxStyles.checkbox,
-              checkboxCheckedHovered: checkboxStyles.checkboxChecked,
-              textHovered: checkboxStyles.text
-            } }
+            styles={ checkboxStyles }
           />
         )
     );

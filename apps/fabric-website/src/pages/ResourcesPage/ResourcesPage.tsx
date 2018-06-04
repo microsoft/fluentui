@@ -53,13 +53,14 @@ export class ResourcesPage extends React.Component<any, any> {
                 <h3>SharePoint Design Toolkit</h3>
                 <p>The SharePoint design toolkit provides everything you need to design your web parts. The toolkit contains page grids for Team and Communication sites, outlines for columns on the grid to help you make your design responsive, and a sample web part.</p>
                 <ul>
-                  <li><a className={ styles.relatedLink } href='https://static2.sharepointonline.com/files/fabric/fabric-website/files/sharepoint_toolkit.zip'>SharePoint XD Toolkit</a></li>
+                  <li><a className={ styles.relatedLink } href='https://aka.ms/sharepoint-toolkit'>SharePoint XD Toolkit</a></li>
                 </ul>
 
                 <h3>Office Add-ins Design Toolkit</h3>
                 <p>The Add-ins design toolkit provides layouts for interface elements and commonly used UX patterns in Word, Excel, and PowerPoint. Use it together with the Fabric design toolkit to create an add-in that fits seamlessly with Office.</p>
                 <ul>
                   <li><a className={ styles.relatedLink } href='https://aka.ms/addins_toolkit'>Add-ins XD Toolkit</a></li>
+                  <li><a className={ styles.relatedLink } href='https://aka.ms/addins_sketch_toolkit'>Add-ins Sketch Toolkit</a></li>
                 </ul>
 
                 <h3>Fonts</h3>

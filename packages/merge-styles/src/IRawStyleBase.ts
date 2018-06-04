@@ -344,6 +344,11 @@ export interface IRawStyleBase extends IRawFontStyle {
   backgroundRepeat?: ICSSRule | string;
 
   /**
+   * Sets the size of background images
+   */
+  backgroundSize?: ICSSRule | string;
+
+  /**
    * Shorthand property that defines the different properties of all four sides of an
    * element's border in a single declaration. It can be used to set border-width,
    * border-style and border-color, or a subset of these.

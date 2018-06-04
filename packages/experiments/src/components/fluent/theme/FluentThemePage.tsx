@@ -5,7 +5,8 @@ import {
   ExampleCard
 } from '@uifabric/example-app-base';
 
-import { FluentThemeBasicExample } from '@uifabric/experiments/lib/components/fluent/theme/examples/FluentTheme.Basic.Example';
+import { FluentThemeBasicExample } from './examples/FluentTheme.Basic.Example';
+
 const FluentThemeBasicExampleCode =
   require('!raw-loader!@uifabric/experiments/src/components/fluent/theme/examples/FluentTheme.Basic.Example.tsx') as string;
 

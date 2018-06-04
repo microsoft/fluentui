@@ -66,7 +66,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     directionalHint: DirectionalHint.bottomAutoEdge
   };
 
-  private _classNames: {[key in keyof ICalloutContentStyles]: string };
+  private _classNames: { [key in keyof ICalloutContentStyles]: string };
   private _didSetInitialFocus: boolean;
   private _hostElement = createRef<HTMLDivElement>();
   private _calloutElement = createRef<HTMLDivElement>();
@@ -80,8 +80,6 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
 
   constructor(props: ICalloutProps) {
     super(props);
-
-    this._warnDeprecations({ 'beakStyle': 'beakWidth' });
 
     this._didSetInitialFocus = false;
     this.state = {
@@ -134,6 +132,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
         positions: undefined
       });
     }
+
   }
 
   public componentDidMount(): void {
@@ -151,14 +150,13 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
       target
     } = this.props;
     const {
-      getStyles,
+      styles,
       role,
       ariaLabel,
       ariaDescribedBy,
       ariaLabelledBy,
       className,
       isBeakVisible,
-      beakStyle,
       children,
       beakWidth,
       calloutWidth,
@@ -176,7 +174,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
 
     const beakVisible = isBeakVisible && (!!target);
     this._classNames = getClassNames(
-      getStyles!,
+      styles!,
       {
         theme: this.props.theme!,
         className,
@@ -184,8 +182,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
         calloutWidth,
         positions,
         beakWidth,
-        backgroundColor,
-        beakStyle
+        backgroundColor
       }
     );
 
@@ -290,8 +287,8 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     this._async.setTimeout(() => {
       this._events.on(this._targetWindow, 'scroll', this._dismissOnScroll, true);
       this._events.on(this._targetWindow, 'resize', this.dismiss, true);
-      this._events.on(this._targetWindow.document.body, 'focus', this._dismissOnLostFocus, true);
-      this._events.on(this._targetWindow.document.body, 'click', this._dismissOnLostFocus, true);
+      this._events.on(this._targetWindow.document.documentElement, 'focus', this._dismissOnLostFocus, true);
+      this._events.on(this._targetWindow.document.documentElement, 'click', this._dismissOnLostFocus, true);
       this._hasListeners = true;
     }, 0);
   }
@@ -299,8 +296,8 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   private _removeListeners() {
     this._events.off(this._targetWindow, 'scroll', this._dismissOnScroll, true);
     this._events.off(this._targetWindow, 'resize', this.dismiss, true);
-    this._events.off(this._targetWindow.document.body, 'focus', this._dismissOnLostFocus, true);
-    this._events.off(this._targetWindow.document.body, 'click', this._dismissOnLostFocus, true);
+    this._events.off(this._targetWindow.document.documentElement, 'focus', this._dismissOnLostFocus, true);
+    this._events.off(this._targetWindow.document.documentElement, 'click', this._dismissOnLostFocus, true);
     this._hasListeners = false;
   }
 
@@ -323,18 +320,11 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   }
 
   private _updatePosition(): void {
-    // Try to update the target, page might have changed
-    this._setTargetWindowAndElement(this._getTarget());
-
     const { positions } = this.state;
     const hostElement: HTMLElement | null = this._hostElement.current;
     const calloutElement: HTMLElement | null = this._calloutElement.current;
 
-    // If we expect a target element to position against, we need to wait until `this._target` is resolved. Otherwise
-    // we can try to position.
-    const expectsTarget = !!this.props.target;
-
-    if (hostElement && calloutElement && (!expectsTarget || this._target)) {
+    if (hostElement && calloutElement) {
       let currentProps: IPositionProps | undefined;
       currentProps = assign(currentProps, this.props);
       currentProps!.bounds = this._getBounds();
@@ -392,7 +382,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
         const totalGap = gapSpace + beakWidth! + BORDER_WIDTH * 2;
         this._async.requestAnimationFrame(() => {
           if (this._target) {
-            this._maxHeight = getMaxHeight(this._target, this.props.directionalHint!, totalGap, this._getBounds());
+            this._maxHeight = getMaxHeight(this._target, this.props.directionalHint!, totalGap, this._getBounds(), this.props.coverTarget);
             this.forceUpdate();
           }
         });
@@ -477,7 +467,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   }
 
   private _getTarget(props: ICalloutProps = this.props): Element | string | MouseEvent | IPoint | null {
-    const { useTargetPoint, targetPoint, target } = props;
-    return useTargetPoint ? targetPoint! : target!;
+    const { target } = props;
+    return target!;
   }
 }

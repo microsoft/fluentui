@@ -19,11 +19,11 @@ export class ContextualMenuCustomizationExample extends React.Component<{}, {}> 
               [
                 {
                   key: 'newItem',
-                  name: 'New'
+                  text: 'New'
                 },
                 {
                   key: 'upload',
-                  name: 'Upload'
+                  text: 'Upload'
                 },
                 {
                   key: 'divider_1',
@@ -31,96 +31,96 @@ export class ContextualMenuCustomizationExample extends React.Component<{}, {}> 
                 },
                 {
                   key: 'charm',
-                  name: 'Charm',
+                  text: 'Charm',
                   className: 'Charm-List',
                   subMenuProps: {
-                    arrowDirection: FocusZoneDirection.bidirectional,
+                    focusZoneProps: { direction: FocusZoneDirection.bidirectional },
                     items: [
                       {
                         key: 'none',
-                        name: 'None'
+                        text: 'None'
                       },
                       {
                         key: 'bulb',
-                        name: 'Lightbulb',
+                        text: 'Lightbulb',
                         onRender: this._renderCharmMenuItem,
                         className: 'ms-ContextualMenu-customizationExample-item'
                       },
                       {
                         key: 'run',
-                        name: 'Running',
+                        text: 'Running',
                         onRender: this._renderCharmMenuItem,
                         className: 'ms-ContextualMenu-customizationExample-item'
                       },
                       {
                         key: 'plane',
-                        name: 'Airplane',
+                        text: 'Airplane',
                         onRender: this._renderCharmMenuItem,
                         className: 'ms-ContextualMenu-customizationExample-item'
                       },
                       {
                         key: 'page',
-                        name: 'Page',
+                        text: 'Page',
                         onRender: this._renderCharmMenuItem,
                         className: 'ms-ContextualMenu-customizationExample-item'
                       },
                       {
                         key: 'cake',
-                        name: 'Cake',
+                        text: 'Cake',
                         onRender: this._renderCharmMenuItem,
                         className: 'ms-ContextualMenu-customizationExample-item'
                       },
                       {
                         key: 'soccer',
-                        name: 'Soccer',
+                        text: 'Soccer',
                         onRender: this._renderCharmMenuItem,
                         className: 'ms-ContextualMenu-customizationExample-item'
                       },
                       {
                         key: 'home',
-                        name: 'Home',
+                        text: 'Home',
                         onRender: this._renderCharmMenuItem,
                         className: 'ms-ContextualMenu-customizationExample-item'
                       },
                       {
                         key: 'emoji',
-                        name: 'Emoji2',
+                        text: 'Emoji2',
                         onRender: this._renderCharmMenuItem,
                         className: 'ms-ContextualMenu-customizationExample-item'
                       },
                       {
                         key: 'work',
-                        name: 'Work',
+                        text: 'Work',
                         onRender: this._renderCharmMenuItem,
                         className: 'ms-ContextualMenu-customizationExample-item'
                       },
                       {
                         key: 'coffee',
-                        name: 'Coffee',
+                        text: 'Coffee',
                         onRender: this._renderCharmMenuItem,
                         className: 'ms-ContextualMenu-customizationExample-item'
                       },
                       {
                         key: 'people',
-                        name: 'People',
+                        text: 'People',
                         onRender: this._renderCharmMenuItem,
                         className: 'ms-ContextualMenu-customizationExample-item'
                       },
                       {
                         key: 'stopwatch',
-                        name: 'Stopwatch',
+                        text: 'Stopwatch',
                         onRender: this._renderCharmMenuItem,
                         className: 'ms-ContextualMenu-customizationExample-item'
                       },
                       {
                         key: 'music',
-                        name: 'MusicInCollectionFill',
+                        text: 'MusicInCollectionFill',
                         onRender: this._renderCharmMenuItem,
                         className: 'ms-ContextualMenu-customizationExample-item'
                       },
                       {
                         key: 'lock',
-                        name: 'Lock',
+                        text: 'Lock',
                         onRender: this._renderCharmMenuItem,
                         className: 'ms-ContextualMenu-customizationExample-item'
                       }
@@ -129,12 +129,12 @@ export class ContextualMenuCustomizationExample extends React.Component<{}, {}> 
                 },
                 {
                   key: 'categories',
-                  name: 'Categorize',
+                  text: 'Categorize',
                   subMenuProps: {
                     items: [
                       {
                         key: 'categories',
-                        name: 'categories',
+                        text: 'categories',
                         categoryList: [
                           {
                             name: 'Personal',
@@ -169,11 +169,11 @@ export class ContextualMenuCustomizationExample extends React.Component<{}, {}> 
                       },
                       {
                         key: 'clear',
-                        name: 'Clear categories'
+                        text: 'Clear categories'
                       },
                       {
                         key: 'manage',
-                        name: 'Manage categories'
+                        text: 'Manage categories'
                       }
                     ]
                   },

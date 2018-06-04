@@ -1,4 +1,4 @@
-  // Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
+// Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
 
 // tslint:disable:max-line-length
 
@@ -6,7 +6,7 @@ import {
   IIconOptions,
   IIconSubset,
   registerIcons
-} from '@uifabric/styling/lib/index';
+} from '@uifabric/styling';
 
 export function initializeIcons(
   baseUrl: string = '',
@@ -22,9 +22,14 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-5"`,
-      src: `url('${baseUrl}fabric-icons-5-5a61f6fb.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-5-f6547654.woff') format('woff')`
     },
     icons: {
+      'Crown': '\uED01',
+      'Diamond': '\uED02',
+      'ScaleUp': '\uED09',
+      'Feedback': '\uED15',
+      'SharepointLogoInverse': '\uED18',
       'YammerLogo': '\uED19',
       'Hide': '\uED1A',
       'Uneditable': '\uED1D',
@@ -119,12 +124,7 @@ export function initializeIcons(
       'CaretLeft8': '\uEDD5',
       'CaretRight8': '\uEDD6',
       'CaretUp8': '\uEDD7',
-      'CaretDown8': '\uEDD8',
-      'CaretLeftSolid8': '\uEDD9',
-      'CaretRightSolid8': '\uEDDA',
-      'CaretUpSolid8': '\uEDDB',
-      'CaretDownSolid8': '\uEDDC',
-      'ClearFormatting': '\uEDDD'
+      'CaretDown8': '\uEDD8'
     }
   };
 

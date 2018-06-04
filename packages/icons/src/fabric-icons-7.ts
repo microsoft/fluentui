@@ -1,4 +1,4 @@
-  // Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
+// Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
 
 // tslint:disable:max-line-length
 
@@ -6,7 +6,7 @@ import {
   IIconOptions,
   IIconSubset,
   registerIcons
-} from '@uifabric/styling/lib/index';
+} from '@uifabric/styling';
 
 export function initializeIcons(
   baseUrl: string = '',
@@ -22,9 +22,16 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-7"`,
-      src: `url('${baseUrl}fabric-icons-7-3ac670e6.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-7-02107cf8.woff') format('woff')`
     },
     icons: {
+      'InboxCheck': '\uEF64',
+      'FolderSearch': '\uEF65',
+      'CollapseMenu': '\uEF66',
+      'ExpandMenu': '\uEF67',
+      'Boards': '\uEF68',
+      'SunAdd': '\uEF69',
+      'SunQuestionMark': '\uEF6A',
       'LandscapeOrientation': '\uEF6B',
       'DocumentSearch': '\uEF6C',
       'PublicCalendar': '\uEF6D',
@@ -117,14 +124,7 @@ export function initializeIcons(
       'FolderHorizontal': '\uF12B',
       'MicrosoftStaffhubLogo': '\uF130',
       'GiftboxOpen': '\uF133',
-      'StatusCircleOuter': '\uF136',
-      'StatusCircleInner': '\uF137',
-      'StatusCircleRing': '\uF138',
-      'StatusTriangleOuter': '\uF139',
-      'StatusTriangleInner': '\uF13A',
-      'StatusTriangleExclamation': '\uF13B',
-      'StatusCircleExclamation': '\uF13C',
-      'StatusCircleErrorX': '\uF13D'
+      'StatusCircleOuter': '\uF136'
     }
   };
 

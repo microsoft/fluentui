@@ -2,7 +2,7 @@ import * as React from 'react';
 import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import { MarqueeSelection } from './MarqueeSelection';
-import { Selection } from 'office-ui-fabric-react/lib/MarqueeSelection';
+import { Selection } from '../../utilities/selection/index';
 
 describe('MarqueeSelection', () => {
   it('renders MarqueeSelection correctly', () => {

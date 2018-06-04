@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {
   IPersonaProps,
+  IPersonaSharedProps,
   Persona,
   PersonaSize,
   PersonaPresence
@@ -10,10 +11,10 @@ import './PersonaExample.scss';
 import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
 const exampleStyles: any = exampleStylesImport;
 
-const examplePersona = {
+const examplePersona: IPersonaSharedProps = {
   imageUrl: TestImages.personaMale,
   imageInitials: 'TR',
-  primaryText: 'Ted Randall',
+  text: 'Ted Randall',
   secondaryText: 'Project Manager',
   optionalText: 'Available at 4:00pm'
 };
