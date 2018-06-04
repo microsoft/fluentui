@@ -175,9 +175,7 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
 
   private _onLabelWrapperRef(element: HTMLDivElement | null): void {
     if (element) {
-      const labelWrapperElement = createRef<HTMLDivElement>();
-      labelWrapperElement.current = element;
-      this._labelWrapperElementList.push(labelWrapperElement.current);
+      this._labelWrapperElementList.push(element);
     }
   }
 
@@ -188,6 +186,7 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
     for (let labelListIndex = 0; labelListIndex < this._labelWrapperElementList.length; labelListIndex++) {
       const labelElement = this._labelWrapperElementList[labelListIndex];
       if (labelElement && hasOverflow(labelElement)) {
+        // Append ellipsis node to the labelWrapper if text is overflowing
         const node = document.createElement('span');
         const textNode = document.createTextNode('...');
         node.appendChild(textNode);
