@@ -29,7 +29,9 @@ describe('Slider', () => {
     const onChange = (val: any) => {
       changedValue = val;
     };
-    const component = ReactTestUtils.renderIntoDocument<SliderBase>(<SliderBase styles={getStyles} onChange={onChange} />);
+    const component = ReactTestUtils.renderIntoDocument<SliderBase>(
+      <SliderBase styles={getStyles} onChange={onChange} />
+    );
 
     const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
     const sliderLine = renderedDOM.querySelector('.ms-Slider-line') as HTMLElement;
