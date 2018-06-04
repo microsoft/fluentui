@@ -310,7 +310,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * Validate function to use if one is not passed in
    */
   private _defaultOnValidate = (value: string) => {
-    if (isNaN(Number(value))) {
+    if (value == null || value.trim().length === 0 || isNaN(Number(value))) {
       return this._lastValidValue;
     }
     const newValue = Math.min(this.props.max as number, Math.max(this.props.min as number, Number(value)));
