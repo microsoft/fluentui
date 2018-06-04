@@ -96,15 +96,12 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
       suggestionsVisible: true,
     });
 
-    // Update the suggestions if updateValue == true AND
-    //  The input value is empty
-    //  OR suggestionsVisible is undefined (first time the suggestions is set to visble) or the inputElement value is different than the query string
+    // Update the suggestions if updateValue == true
     if (updateValue) {
       const value = this.props.inputElement ? this.props.inputElement.value : '';
       if (value === '') {
         this.updateSuggestionWithZeroState();
-      } else if (this.state.suggestionsVisible === undefined
-        || (this.props.inputElement && this.props.inputElement.value !== this.state.queryString)) {
+      } else {
         this.updateValue(value);
       }
     }
@@ -143,7 +140,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     return (
       <div
         ref={ this.root }
-        className={ css('ms-BasePicker', className ? className : '') }
+        className={ css('ms-BaseFloatingPicker', className ? className : '') }
       >
         { this.renderSuggestions() }
       </div>

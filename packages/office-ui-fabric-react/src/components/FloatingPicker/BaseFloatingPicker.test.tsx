@@ -81,9 +81,11 @@ describe('Pickers', () => {
         root
       ) as TypedBaseFloatingPicker;
 
+      input.value = 'a';
       picker.onQueryStringChanged('a');
 
       // Change input to be empty string
+      input.value = '';
       picker.onQueryStringChanged('');
 
       expect(picker.suggestions.length).toEqual(4);
@@ -107,6 +109,7 @@ describe('Pickers', () => {
         root
       ) as TypedBaseFloatingPicker;
 
+      input.value = 'b';
       picker.onQueryStringChanged('b');
 
       expect(picker.suggestions.length).toEqual(3);
