@@ -5,13 +5,13 @@ import {
   customizable,
   classNamesFunction,
   IStyleFunction,
+  IPropsWithStyles
   styled
 } from 'office-ui-fabric-react/lib/Utilities';
 import {
   ITheme,
-  IStyle
+  IStyle,
 } from 'office-ui-fabric-react/lib/Styling';
-
 /**
  * The getStyles props contract.
  */
@@ -63,7 +63,7 @@ export class PageHeaderBase extends BaseComponent<IPageHeaderProps, {}> {
  */
 export const PageHeader = styled(
   // export const PageHeader = createStyled(
-  PageHeaderBase as React.ComponentClass<IPageHeaderProps>,
+  PageHeaderBase as React.ComponentClass<IPropsWithStyles<{}, {}>>,
   (props: IPageHeaderStyleProps): Partial<IPageHeaderStyles> => ({
     root: [
       props.theme.fonts.large,
