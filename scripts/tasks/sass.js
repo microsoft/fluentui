@@ -13,7 +13,6 @@ module.exports = function (options) {
     const files = glob.sync(path.resolve(process.cwd(), 'src/**/*.scss'));
 
     if (files.length) {
-      const execSync = require('../exec-sync');
       const sass = require('node-sass');
       const fs = require('fs');
       const postcss = require('postcss');

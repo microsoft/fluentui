@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.0.1",
+      "tag": "@uifabric/merge-styles_v6.0.1",
+      "date": "Mon, 04 Jun 2018 10:16:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "4e1cd119bbf0f75e0432b0f92bad342714b57bef",
+            "comment": "Updating react typings."
+          }
+        ]
+      }
+    },
+    {
       "version": "6.0.0",
       "tag": "@uifabric/merge-styles_v6.0.0",
       "date": "Wed, 30 May 2018 22:05:03 GMT",

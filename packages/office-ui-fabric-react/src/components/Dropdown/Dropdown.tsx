@@ -511,6 +511,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             role='option'
             aria-selected={ isItemSelected ? 'true' : 'false' }
             ariaLabel={ item.ariaLabel || item.text }
+            title={ item.title }
           >
             { onRenderOption(item, this._onRenderOption) }
           </CommandButton>
@@ -528,6 +529,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
               onMouseMove: this._onItemMouseMove.bind(this, item)
             } }
             label={ item.text }
+            title={ item.title }
             onRenderLabel={ this._onRenderLabel.bind(this, item) }
             className={ css(
               'ms-ColumnManagementPanel-checkbox',

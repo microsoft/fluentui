@@ -45,6 +45,7 @@ export interface IDetailsRowProps extends React.Props<DetailsRow> {
   dragDropEvents?: IDragDropEvents;
   dragDropHelper?: IDragDropHelper;
   groupNestingDepth?: number;
+  indentWidth?: number;
   viewport?: IViewport;
   checkboxVisibility?: CheckboxVisibility;
   collapseAllVisibility?: CollapseAllVisibility;
@@ -189,6 +190,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
       /** Alias rowFieldsAs as RowFields and default to DetailsRowFields if rowFieldsAs does not exist */
       rowFieldsAs: RowFields = DetailsRowFields,
       selection,
+      indentWidth,
       shimmer,
       compact
     } = this.props;
@@ -263,7 +265,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
         { showCheckbox && (
           <div
             role='gridcell'
-            aria-colindex={ 0 }
+            aria-colindex={ 1 }
             data-selection-toggle={ true }
             className={ css('ms-DetailsRow-cell', 'ms-DetailsRow-cellCheck', checkStyles.owner, styles.cell, styles.checkCell, checkboxCellClassName) }
           >
@@ -276,7 +278,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
           </div>
         ) }
 
-        { GroupSpacer({ count: groupNestingDepth! - (this.props.collapseAllVisibility === CollapseAllVisibility.hidden ? 1 : 0) }) }
+        <GroupSpacer indentWidth={ indentWidth } count={ groupNestingDepth! - (this.props.collapseAllVisibility === CollapseAllVisibility.hidden ? 1 : 0) } />
 
         { item && rowFields }
         { columnMeasureInfo && (

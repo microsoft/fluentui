@@ -541,6 +541,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
             data-is-focusable={ true }
             onClick={ !disabled && !primaryDisabled ? this._onSplitButtonPrimaryClick : undefined }
             tabIndex={ !disabled ? 0 : undefined }
+            aria-roledescription={ buttonProps['aria-roledescription'] }
           >
             <span
               style={ { 'display': 'flex' } }
