@@ -11,10 +11,12 @@ import {
 import {
   getStyles as getSplitButtonStyles
 } from '../SplitButton/SplitButton.styles';
+import { primaryStyles } from '../ButtonThemes';
 
 export const getStyles = memoizeFunction((
   theme: ITheme,
-  customStyles?: IButtonStyles
+  customStyles?: IButtonStyles,
+  primary: boolean = false
 ): IButtonStyles => {
   const baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
   const splitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
@@ -58,5 +60,11 @@ export const getStyles = memoizeFunction((
     }
   };
 
-  return concatStyleSets(baseButtonStyles, iconButtonStyles, splitButtonStyles, customStyles)!;
+  return concatStyleSets(
+    baseButtonStyles,
+    iconButtonStyles,
+    primary ? primaryStyles(theme) : undefined,
+    splitButtonStyles,
+    customStyles
+  )!;
 });
