@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PersonaInitialsExample } from './examples/Persona.Initials.Example';
-import { DemoPage } from "../../demo/components/DemoPage";
-import { IDemoPageProps } from "../../demo/components/DemoPage.types";
+import { DemoPage } from '../../demo/components/DemoPage';
+import { IDemoPageProps } from '../../demo/components/DemoPage.types';
 import { PersonaBasicExample } from './examples/Persona.Basic.Example';
 import { PersonaAlternateExample } from './examples/Persona.Alternate.Example';
 import { PersonaCustomRenderExample } from './examples/Persona.CustomRender.Example';
@@ -19,42 +19,59 @@ const UnknownPersonaExampleCode = require('!raw-loader!office-ui-fabric-react/sr
 export const PersonaPageProps: IDemoPageProps = {
   title: 'Persona',
   componentName: 'Persona',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Persona',
+  componentUrl:
+    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Persona',
   componentStatus: PersonaStatus,
-  examples: [{
-    "title": "Persona in various sizes",
-    "code": PersonaBasicExampleCode,
-    "view": <PersonaBasicExample />
-}, {
-    "title": "Alternative small personas",
-    "code": PersonaAlternateExampleCode,
-    "view": <PersonaAlternateExample />
-}, {
-    "title": "Persona with initials",
-    "code": PersonaInitialsExampleCode,
-    "view": <PersonaInitialsExample />
-}, {
-    "title": "Rendering custom persona text",
-    "code": PersonaCustomRenderExampleCode,
-    "view": <PersonaCustomRenderExample />
-}, {
-    "title": "Rendering custom coin",
-    "code": PersonaCustomCoinRenderExampleCode,
-    "view": <PersonaCustomCoinRenderExample />
-}, {
-    "title": "Rendering unknown persona coin",
-    "code": UnknownPersonaExampleCode,
-    "view": <UnknownPersonaExample />
-}],
+  examples: [
+    {
+      title: 'Persona in various sizes',
+      code: PersonaBasicExampleCode,
+      view: <PersonaBasicExample />
+    },
+    {
+      title: 'Alternative small personas',
+      code: PersonaAlternateExampleCode,
+      view: <PersonaAlternateExample />
+    },
+    {
+      title: 'Persona with initials',
+      code: PersonaInitialsExampleCode,
+      view: <PersonaInitialsExample />
+    },
+    {
+      title: 'Rendering custom persona text',
+      code: PersonaCustomRenderExampleCode,
+      view: <PersonaCustomRenderExample />
+    },
+    {
+      title: 'Rendering custom coin',
+      code: PersonaCustomCoinRenderExampleCode,
+      view: <PersonaCustomCoinRenderExample />
+    },
+    {
+      title: 'Rendering unknown persona coin',
+      code: UnknownPersonaExampleCode,
+      view: <UnknownPersonaExample />
+    }
+  ],
   propertiesTablesSources: [
-  require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/Persona.types.ts')
-],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/docs/PersonaOverview.md'),
-  bestPractices: "",
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/docs/PersonaDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/docs/PersonaDonts.md'),
+    require<
+      string
+    >('!raw-loader!office-ui-fabric-react/src/components/Persona/Persona.types.ts')
+  ],
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/Persona/docs/PersonaOverview.md'),
+  bestPractices: '',
+  dos: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/Persona/docs/PersonaDos.md'),
+  donts: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/Persona/docs/PersonaDonts.md'),
   isHeaderVisible: true,
-  allowNativeProps: true,
+  allowNativeProps: true
 };
 
-export const PersonaPage = (props: { isHeaderVisible: boolean }) => (<DemoPage { ...{ ...PersonaPageProps, ...props } } />);
+export const PersonaPage = (props: { isHeaderVisible: boolean }) =>
+  <DemoPage {...{ ...PersonaPageProps, ...props }} />;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PivotBasicExample } from './examples/Pivot.Basic.Example';
-import { DemoPage } from "../../demo/components/DemoPage";
-import { IDemoPageProps } from "../../demo/components/DemoPage.types";
+import { DemoPage } from '../../demo/components/DemoPage';
+import { IDemoPageProps } from '../../demo/components/DemoPage.types';
 import { PivotIconCountExample } from './examples/Pivot.IconCount.Example';
 import { PivotLargeExample } from './examples/Pivot.Large.Example';
 import { PivotTabsExample } from './examples/Pivot.Tabs.Example';
@@ -27,59 +27,82 @@ const PivotSeparateExampleCode = require('!raw-loader!office-ui-fabric-react/src
 export const PivotPageProps: IDemoPageProps = {
   title: 'Pivot',
   componentName: 'Pivot',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Pivot',
+  componentUrl:
+    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Pivot',
   componentStatus: PivotStatus,
-  examples: [{
-    "title": "Default Pivot",
-    "code": PivotBasicExampleCode,
-    "view": <PivotBasicExample />
-}, {
-    "title": "Count and Icon",
-    "code": PivotIconCountExampleCode,
-    "view": <PivotIconCountExample />
-}, {
-    "title": "Large link size",
-    "code": PivotLargeExampleCode,
-    "view": <PivotLargeExample />
-}, {
-    "title": "Links of tab style",
-    "code": PivotTabsExampleCode,
-    "view": <PivotTabsExample />
-}, {
-    "title": "Links of large tab style",
-    "code": PivotTabsLargesExampleCode,
-    "view": <PivotTabsLargeExample />
-}, {
-    "title": "Trigger onchange event",
-    "code": PivotOnChangeExampleCode,
-    "view": <PivotOnChangeExample />
-}, {
-    "title": "Rendering nested components within the Pivot",
-    "code": PivotFabricExampleCode,
-    "view": <PivotFabricExample />
-}, {
-    "title": "Show/Hide pivot item",
-    "code": PivotRemoveExampleCode,
-    "view": <PivotRemoveExample />
-}, {
-    "title": "Override selected item",
-    "code": PivotOverrideExampleCode,
-    "view": <PivotOverrideExample />
-}, {
-    "title": "Render content separately",
-    "code": PivotSeparateExampleCode,
-    "view": <PivotSeparateExample />
-}],
+  examples: [
+    {
+      title: 'Default Pivot',
+      code: PivotBasicExampleCode,
+      view: <PivotBasicExample />
+    },
+    {
+      title: 'Count and Icon',
+      code: PivotIconCountExampleCode,
+      view: <PivotIconCountExample />
+    },
+    {
+      title: 'Large link size',
+      code: PivotLargeExampleCode,
+      view: <PivotLargeExample />
+    },
+    {
+      title: 'Links of tab style',
+      code: PivotTabsExampleCode,
+      view: <PivotTabsExample />
+    },
+    {
+      title: 'Links of large tab style',
+      code: PivotTabsLargesExampleCode,
+      view: <PivotTabsLargeExample />
+    },
+    {
+      title: 'Trigger onchange event',
+      code: PivotOnChangeExampleCode,
+      view: <PivotOnChangeExample />
+    },
+    {
+      title: 'Rendering nested components within the Pivot',
+      code: PivotFabricExampleCode,
+      view: <PivotFabricExample />
+    },
+    {
+      title: 'Show/Hide pivot item',
+      code: PivotRemoveExampleCode,
+      view: <PivotRemoveExample />
+    },
+    {
+      title: 'Override selected item',
+      code: PivotOverrideExampleCode,
+      view: <PivotOverrideExample />
+    },
+    {
+      title: 'Render content separately',
+      code: PivotSeparateExampleCode,
+      view: <PivotSeparateExample />
+    }
+  ],
   propertiesTablesSources: [
-  require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/Pivot.types.ts'),
-  require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/PivotItem.types.ts')
-],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotOverview.md'),
-  bestPractices: "",
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotDonts.md'),
+    require<
+      string
+    >('!raw-loader!office-ui-fabric-react/src/components/Pivot/Pivot.types.ts'),
+    require<
+      string
+    >('!raw-loader!office-ui-fabric-react/src/components/Pivot/PivotItem.types.ts')
+  ],
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotOverview.md'),
+  bestPractices: '',
+  dos: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotDos.md'),
+  donts: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotDonts.md'),
   isHeaderVisible: true,
-  allowNativeProps: "PivotItem",
+  allowNativeProps: 'PivotItem'
 };
 
-export const PivotPage = (props: { isHeaderVisible: boolean }) => (<DemoPage { ...{ ...PivotPageProps, ...props } } />);
+export const PivotPage = (props: { isHeaderVisible: boolean }) =>
+  <DemoPage {...{ ...PivotPageProps, ...props }} />;

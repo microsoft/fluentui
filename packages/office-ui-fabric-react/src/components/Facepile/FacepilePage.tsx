@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FacepileAddFaceExample } from './examples/Facepile.AddFace.Example';
-import { DemoPage } from "../../demo/components/DemoPage";
-import { IDemoPageProps } from "../../demo/components/DemoPage.types";
+import { DemoPage } from '../../demo/components/DemoPage';
+import { IDemoPageProps } from '../../demo/components/DemoPage.types';
 import { FacepileBasicExample } from './examples/Facepile.Basic.Example';
 import { FacepileOverflowExample } from './examples/Facepile.Overflow.Example';
 import { FacepileStatus } from './Facepile.checklist';
@@ -13,29 +13,43 @@ const FacepileOverflowExampleCode = require('!raw-loader!office-ui-fabric-react/
 export const FacepilePageProps: IDemoPageProps = {
   title: 'Facepile',
   componentName: 'Facepile',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Facepile',
+  componentUrl:
+    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Facepile',
   componentStatus: FacepileStatus,
-  examples: [{
-    "title": "Facepile with size and fade in options",
-    "code": FacepileBasicExampleCode,
-    "view": <FacepileBasicExample />
-}, {
-    "title": "Facepile with overflow buttons",
-    "code": FacepileOverflowExampleCode,
-    "view": <FacepileOverflowExample />
-}, {
-    "title": "Facepile with face adding functionality",
-    "code": FacepileAddFaceExampleCode,
-    "view": <FacepileAddFaceExample />
-}],
+  examples: [
+    {
+      title: 'Facepile with size and fade in options',
+      code: FacepileBasicExampleCode,
+      view: <FacepileBasicExample />
+    },
+    {
+      title: 'Facepile with overflow buttons',
+      code: FacepileOverflowExampleCode,
+      view: <FacepileOverflowExample />
+    },
+    {
+      title: 'Facepile with face adding functionality',
+      code: FacepileAddFaceExampleCode,
+      view: <FacepileAddFaceExample />
+    }
+  ],
   propertiesTablesSources: [
-  require<string>('!raw-loader!office-ui-fabric-react/src/components/Facepile/Facepile.types.ts')
-],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Facepile/docs/FacepileOverview.md'),
-  bestPractices: "",
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Facepile/docs/FacepileDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Facepile/docs/FacepileDonts.md'),
-  isHeaderVisible: true,
+    require<
+      string
+    >('!raw-loader!office-ui-fabric-react/src/components/Facepile/Facepile.types.ts')
+  ],
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/Facepile/docs/FacepileOverview.md'),
+  bestPractices: '',
+  dos: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/Facepile/docs/FacepileDos.md'),
+  donts: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/Facepile/docs/FacepileDonts.md'),
+  isHeaderVisible: true
 };
 
-export const FacepilePage = (props: { isHeaderVisible: boolean }) => (<DemoPage { ...{ ...FacepilePageProps, ...props } } />);
+export const FacepilePage = (props: { isHeaderVisible: boolean }) =>
+  <DemoPage {...{ ...FacepilePageProps, ...props }} />;

@@ -1,66 +1,40 @@
 import * as React from 'react';
-import {
-  ExampleCard,
-  ComponentPage,
-  IComponentDemoPageProps,
-  PropertiesTableSet
-} from '@uifabric/example-app-base';
 import { FloatingPeoplePickerTypesExample } from '../PeoplePicker/examples/FloatingPeoplePicker.Basic.Example';
 
-const FloatingPeoplePickerBasicExampleCode = require(
-  '!raw-loader!office-ui-fabric-react/src/components/FloatingPicker/PeoplePicker/examples/FloatingPeoplePicker.Basic.Example.tsx'
-) as string;
+import { DemoPage } from '../../../demo/components/DemoPage';
+import { IDemoPageProps } from '../../../demo/components/DemoPage.types';
 
-export class FloatingPeoplePickerPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render(): JSX.Element {
-    return (
-      <ComponentPage
-        title='FloatingPeoplePicker'
-        componentName='FloatingPeoplePickerExample'
-        exampleCards={
-          <div>
-            <ExampleCard title='Floating People Picker' code={ FloatingPeoplePickerBasicExampleCode }>
-              <FloatingPeoplePickerTypesExample />
-            </ExampleCard>
-          </div>
-        }
-        propertiesTables={
-          <PropertiesTableSet
-            sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/FloatingPicker/BaseFloatingPicker.types.ts')
-            ] }
-          />
-        }
-        overview={
-          <div>
-            <span> FloatingPeoplePicker are used to pick recipients but do not need a well or necessarily keep track of selected
-              people</span>
-          </div>
-        }
-        isHeaderVisible={ this.props.isHeaderVisible }
-        bestPractices={
-          <div>The FloatingPeoplePicker is used to select one or more entities, such as people or groups. Entry points for PeoplePickers
-            are typically specialized TextField-like input fields known as a "well", which are used to search for recipients from a list.
-            When a recipient is selected from the list, it is added to the well as a specialized Persona that can be interacted with or
-            removed. Clicking on a Persona from the well should invoke a PersonaCard or open a profile pane for that recipient.</div>
-        }
-        dos={
-          <div>
-            <ul>
-              <li>Use the FloatingPeoplePicker to quickly search for a few people</li>
-            </ul>
-          </div>
-        }
-        donts={
-          <div>
-            <ul>
-              <li>Use the FloatingPeoplePicker to select something other than people</li>
-              <li>Use the FloatingPeoplePicker without sufficient space</li>
-            </ul>
-          </div>
-        }
-      />
-    );
-  }
+const FloatingPeoplePickerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/FloatingPicker/PeoplePicker/examples/FloatingPeoplePicker.Basic.Example.tsx') as string;
+export const FloatingPeoplePickerPageProps: IDemoPageProps = {
+  title: 'FloatingPeoplePicker',
+  componentName: 'FloatingPeoplePicker',
+  componentUrl:
+    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/FloatingPeoplePicker',
+  examples: [
+    {
+      title: 'Floating People Picker',
+      code: FloatingPeoplePickerBasicExampleCode,
+      view: <FloatingPeoplePickerTypesExample />,
+    },
+  ],
+  propertiesTablesSources: [
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/FloatingPicker/BaseFloatingPicker.types.ts'),
+  ],
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/FloatingPicker/PeoplePicker/docs/FloatingPeoplePickerOverview.md'),
+  bestPractices: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/FloatingPicker/PeoplePicker/docs/FloatingPeoplePickerBestPractices.md'),
+  dos: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/FloatingPicker/PeoplePicker/docs/FloatingPeoplePickerDos.md'),
+  donts: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/FloatingPicker/PeoplePicker/docs/FloatingPeoplePickerDonts.md'),
+  isHeaderVisible: true,
+};
 
-}
+export const FloatingPeoplePickerPage = (props: { isHeaderVisible: boolean }) => (
+  <DemoPage {...{ ...FloatingPeoplePickerPageProps, ...props }} />
+);

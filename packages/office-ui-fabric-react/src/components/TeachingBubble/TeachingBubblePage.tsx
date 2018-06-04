@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { LayerHost } from 'office-ui-fabric-react/lib/Layer';
 import { TeachingBubbleBasicExample } from './examples/TeachingBubble.Basic.Example';
-import { DemoPage } from "../../demo/components/DemoPage";
-import { IDemoPageProps } from "../../demo/components/DemoPage.types";
+import { DemoPage } from '../../demo/components/DemoPage';
+import { IDemoPageProps } from '../../demo/components/DemoPage.types';
 import { TeachingBubbleCondensedExample } from './examples/TeachingBubble.Condensed.Example';
 import { TeachingBubbleIllustrationExample } from './examples/TeachingBubble.Illustration.Example';
 import { TeachingBubbleWideIllustrationExample } from './examples/TeachingBubble.WideIllustration.Example';
@@ -18,34 +18,46 @@ const TeachingBubbleSmallHeadlineExampleCode = require('!raw-loader!office-ui-fa
 export const TeachingBubblePageProps: IDemoPageProps = {
   title: 'TeachingBubble',
   componentName: 'TeachingBubble',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/TeachingBubble',
+  componentUrl:
+    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/TeachingBubble',
   componentStatus: TeachingBubbleStatus,
-  examples: [{
-    "title": "TeachingBubble",
-    "code": TeachingBubbleBasicExampleCode,
-    "view": <TeachingBubbleBasicExample />
-  }, {
-    "title": "TeachingBubble Condensed",
-    "code": TeachingBubbleCondensedExampleCode,
-    "view": <TeachingBubbleCondensedExample />
-  }, {
-    "title": "TeachingBubble with Illustration",
-    "code": TeachingBubbleIllustrationExampleCode,
-    "view": <TeachingBubbleIllustrationExample />
-  }, {
-    "title": "TeachingBubble wide with Illustration",
-    "code": TeachingBubbleWideIllustrationExampleCode,
-    "view": <TeachingBubbleWideIllustrationExample />
-  }, {
-    "title": "TeachingBubble with small headline",
-    "code": TeachingBubbleSmallHeadlineExampleCode,
-    "view": <TeachingBubbleSmallHeadlineExample />
-  }],
-  propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/TeachingBubble.types.ts')
+  examples: [
+    {
+      title: 'TeachingBubble',
+      code: TeachingBubbleBasicExampleCode,
+      view: <TeachingBubbleBasicExample />
+    },
+    {
+      title: 'TeachingBubble Condensed',
+      code: TeachingBubbleCondensedExampleCode,
+      view: <TeachingBubbleCondensedExample />
+    },
+    {
+      title: 'TeachingBubble with Illustration',
+      code: TeachingBubbleIllustrationExampleCode,
+      view: <TeachingBubbleIllustrationExample />
+    },
+    {
+      title: 'TeachingBubble wide with Illustration',
+      code: TeachingBubbleWideIllustrationExampleCode,
+      view: <TeachingBubbleWideIllustrationExample />
+    },
+    {
+      title: 'TeachingBubble with small headline',
+      code: TeachingBubbleSmallHeadlineExampleCode,
+      view: <TeachingBubbleSmallHeadlineExample />
+    }
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/docs/TeachingBubbleOverview.md'),
-  isHeaderVisible: true,
+  propertiesTablesSources: [
+    require<
+      string
+    >('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/TeachingBubble.types.ts')
+  ],
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/docs/TeachingBubbleOverview.md'),
+  isHeaderVisible: true
 };
 
-export const TeachingBubblePage = (props: { isHeaderVisible: boolean }) => (<DemoPage { ...{ ...TeachingBubblePageProps, ...props } } />);
+export const TeachingBubblePage = (props: { isHeaderVisible: boolean }) =>
+  <DemoPage {...{ ...TeachingBubblePageProps, ...props }} />;

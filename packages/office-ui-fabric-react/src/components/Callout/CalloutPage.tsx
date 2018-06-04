@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { items } from '../CommandBar/examples/data';
 
-import { DemoPage } from "../../demo/components/DemoPage";
-import { IDemoPageProps } from "../../demo/components/DemoPage.types";
+import { DemoPage } from '../../demo/components/DemoPage';
+import { IDemoPageProps } from '../../demo/components/DemoPage.types';
 
 import { CalloutBasicExample } from './examples/Callout.Basic.Example';
 import { CalloutNestedExample } from './examples/Callout.Nested.Example';
@@ -20,33 +20,48 @@ const cmdBarParamsTextAndIcons: any = { items: items, farItems: null };
 export const CalloutPageProps: IDemoPageProps = {
   title: 'Callout',
   componentName: 'Callout',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Callout',
+  componentUrl:
+    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Callout',
   componentStatus: CalloutStatus,
-  examples: [{
-    "title": "Default Callout",
-    "code": CalloutBasicExampleCode,
-    "view": <CalloutBasicExample />
-  }, {
-    "title": "Nested Callout... Callout with a commandbar with a sub menu",
-    "code": CalloutNestedExampleCode,
-    "view": <CalloutNestedExample { ...cmdBarParamsTextAndIcons } />
-  }, {
-    "title": "Callout with directional hint",
-    "code": CalloutDirectionalExampleCode,
-    "view": <CalloutDirectionalExample />
-  }, {
-    "title": "Callout with cover",
-    "code": CalloutCoverExampleCode,
-    "view": <CalloutCoverExample />
-  }],
-  propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/Callout.types.ts')
+  examples: [
+    {
+      title: 'Default Callout',
+      code: CalloutBasicExampleCode,
+      view: <CalloutBasicExample />
+    },
+    {
+      title: 'Nested Callout... Callout with a commandbar with a sub menu',
+      code: CalloutNestedExampleCode,
+      view: <CalloutNestedExample {...cmdBarParamsTextAndIcons} />
+    },
+    {
+      title: 'Callout with directional hint',
+      code: CalloutDirectionalExampleCode,
+      view: <CalloutDirectionalExample />
+    },
+    {
+      title: 'Callout with cover',
+      code: CalloutCoverExampleCode,
+      view: <CalloutCoverExample />
+    }
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/docs/CalloutOverview.md'),
-  bestPractices: "",
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/docs/CalloutDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/docs/CalloutDonts.md'),
-  isHeaderVisible: true,
+  propertiesTablesSources: [
+    require<
+      string
+    >('!raw-loader!office-ui-fabric-react/src/components/Callout/Callout.types.ts')
+  ],
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/Callout/docs/CalloutOverview.md'),
+  bestPractices: '',
+  dos: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/Callout/docs/CalloutDos.md'),
+  donts: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/Callout/docs/CalloutDonts.md'),
+  isHeaderVisible: true
 };
 
-export const CalloutPage = (props: { isHeaderVisible: boolean }) => (<DemoPage { ...{ ...CalloutPageProps, ...props } } />);
+export const CalloutPage = (props: { isHeaderVisible: boolean }) =>
+  <DemoPage {...{ ...CalloutPageProps, ...props }} />;

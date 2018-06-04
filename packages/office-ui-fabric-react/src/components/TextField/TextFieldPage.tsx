@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { DemoPage } from "../../demo/components/DemoPage";
-import { IDemoPageProps } from "../../demo/components/DemoPage.types";
+import { DemoPage } from '../../demo/components/DemoPage';
+import { IDemoPageProps } from '../../demo/components/DemoPage.types';
 import { TextFieldBasicExample } from './examples/TextField.Basic.Example';
 import { TextFieldBorderlessExample } from './examples/TextField.Borderless.Example';
 import { TextFieldCustomRenderExample } from './examples/TextField.CustomRender.Example';
@@ -33,72 +33,97 @@ const TextFieldOnRenderDescriptionExampleCode = require('!raw-loader!office-ui-f
 export const TextFieldPageProps: IDemoPageProps = {
   title: 'TextField',
   componentName: 'TextField',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/TextField',
+  componentUrl:
+    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/TextField',
   componentStatus: TextFieldStatus,
-  examples: [{
-    "title": "Default TextField with Label",
-    "code": TextFieldBasicExampleCode,
-    "view": <TextFieldBasicExample />
-}, {
-    "title": "TextField with Placeholder",
-    "code": TextFieldPlaceholderExampleCode,
-    "view": <TextFieldPlaceholderExample />
-}, {
-    "title": "Multiline TextField",
-    "code": TextFieldMultilineExampleCode,
-    "view": <TextFieldMultilineExample />
-}, {
-    "title": "Underlined TextField",
-    "code": TextFieldUnderlinedExampleCode,
-    "view": <TextFieldUnderlinedExample />
-}, {
-    "title": "Borderless TextField",
-    "code": TextFieldBorderlessExampleCode,
-    "view": <TextFieldBorderlessExample />
-}, {
-    "title": "TextField with browser AutoComplete",
-    "code": TextFieldAutoCompleteExampleCode,
-    "view": <TextFieldAutoCompleteExample />
-}],
-implementationExamples: [{
-    "title": "Textfield with a prefix",
-    "code": TextFieldPrefixExampleCode,
-    "view": <TextFieldPrefixExample />
-}, {
-    "title": "Textfield with a suffix",
-    "code": TextFieldSuffixExampleCode,
-    "view": <TextFieldSuffixExample />
-}, {
-    "title": "Textfield with a prefix and a suffix",
-    "code": TextFieldPrefixAndSuffixExampleCode,
-    "view": <TextFieldPrefixAndSuffixExample />
-}, {
-    "title": "TextField with an icon",
-    "code": TextFieldIconExampleCode,
-    "view": <TextFieldIconExample />
-}, {
-    "title": "TextField with custom Label",
-    "code": TextFieldCustomRenderExampleCode,
-    "view": <TextFieldCustomRenderExample />
-}, {
-    "title": "TextField with custom description",
-    "code": TextFieldOnRenderDescriptionExampleCode,
-    "view": <TextFieldOnRenderDescriptionExample />
-}, {
-    "title": "TextField error message variations",
-    "code": TextFieldErrorMessageExampleCode,
-    "view": <TextFieldErrorMessageExample />
-}],
+  examples: [
+    {
+      title: 'Default TextField with Label',
+      code: TextFieldBasicExampleCode,
+      view: <TextFieldBasicExample />
+    },
+    {
+      title: 'TextField with Placeholder',
+      code: TextFieldPlaceholderExampleCode,
+      view: <TextFieldPlaceholderExample />
+    },
+    {
+      title: 'Multiline TextField',
+      code: TextFieldMultilineExampleCode,
+      view: <TextFieldMultilineExample />
+    },
+    {
+      title: 'Underlined TextField',
+      code: TextFieldUnderlinedExampleCode,
+      view: <TextFieldUnderlinedExample />
+    },
+    {
+      title: 'Borderless TextField',
+      code: TextFieldBorderlessExampleCode,
+      view: <TextFieldBorderlessExample />
+    },
+    {
+      title: 'TextField with browser AutoComplete',
+      code: TextFieldAutoCompleteExampleCode,
+      view: <TextFieldAutoCompleteExample />
+    }
+  ],
+  implementationExamples: [
+    {
+      title: 'Textfield with a prefix',
+      code: TextFieldPrefixExampleCode,
+      view: <TextFieldPrefixExample />
+    },
+    {
+      title: 'Textfield with a suffix',
+      code: TextFieldSuffixExampleCode,
+      view: <TextFieldSuffixExample />
+    },
+    {
+      title: 'Textfield with a prefix and a suffix',
+      code: TextFieldPrefixAndSuffixExampleCode,
+      view: <TextFieldPrefixAndSuffixExample />
+    },
+    {
+      title: 'TextField with an icon',
+      code: TextFieldIconExampleCode,
+      view: <TextFieldIconExample />
+    },
+    {
+      title: 'TextField with custom Label',
+      code: TextFieldCustomRenderExampleCode,
+      view: <TextFieldCustomRenderExample />
+    },
+    {
+      title: 'TextField with custom description',
+      code: TextFieldOnRenderDescriptionExampleCode,
+      view: <TextFieldOnRenderDescriptionExample />
+    },
+    {
+      title: 'TextField error message variations',
+      code: TextFieldErrorMessageExampleCode,
+      view: <TextFieldErrorMessageExample />
+    }
+  ],
   propertiesTablesSources: [
-  require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/TextField.types.ts')
-],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/docs/TextFieldOverview.md'),
-  bestPractices: "",
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/docs/TextFieldDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/docs/TextFieldDonts.md'),
+    require<
+      string
+    >('!raw-loader!office-ui-fabric-react/src/components/TextField/TextField.types.ts')
+  ],
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/TextField/docs/TextFieldOverview.md'),
+  bestPractices: '',
+  dos: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/TextField/docs/TextFieldDos.md'),
+  donts: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/TextField/docs/TextFieldDonts.md'),
   isHeaderVisible: true,
   allowNativeProps: true,
-  nativePropsElement: ['input', 'textarea'],
+  nativePropsElement: ['input', 'textarea']
 };
 
-export const TextFieldPage = (props: { isHeaderVisible: boolean }) => (<DemoPage { ...{ ...TextFieldPageProps, ...props } } />);
+export const TextFieldPage = (props: { isHeaderVisible: boolean }) =>
+  <DemoPage {...{ ...TextFieldPageProps, ...props }} />;

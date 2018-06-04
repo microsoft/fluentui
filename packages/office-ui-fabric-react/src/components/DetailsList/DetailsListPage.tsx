@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { DemoPage } from "../../demo/components/DemoPage";
-import { IDemoPageProps } from "../../demo/components/DemoPage.types";
+import { DemoPage } from '../../demo/components/DemoPage';
+import { IDemoPageProps } from '../../demo/components/DemoPage.types';
 import { DetailsListStatus } from './DetailsList.checklist';
 
 import { DetailsListBasicExample } from './examples/DetailsList.Basic.Example';
@@ -36,57 +36,80 @@ const DetailsListNavigatingFocusExampleCode = require('!raw-loader!office-ui-fab
 export const DetailsListPageProps: IDemoPageProps = {
   title: 'DetailsList',
   componentName: 'DetailsList',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList',
+  componentUrl:
+    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList',
   componentStatus: DetailsListStatus,
-  examples: [{
-    "title": "Document DetailsList with 500 items, sorting, filtering, marquee selection, justified columns",
-    "code": DetailsListDocumentsExampleCode,
-    "view": <DetailsListDocumentsExample />
-}, {
-    "title": "Simple DetailsList with 500 items, filtering, marquee selection",
-    "code": DetailsListBasicExampleCode,
-    "view": <DetailsListBasicExample />
-}, {
-    "title": "Compact DetailsList with 500 items, filtering, marquee selection",
-    "code": DetailsListCompactExampleCode,
-    "view": <DetailsListCompactExample />
-}, {
-    "title": "Simple Grouped DetailsList",
-    "code": DetailsListGroupedExampleCode,
-    "view": <DetailsListGroupedExample />
-}, {
-    "title": "Rendering custom item columns with sorting",
-    "code": DetailsListCustomColumnsExampleCode,
-    "view": <DetailsListCustomColumnsExample />
-}, {
-    "title": "Rendering custom item rows",
-    "code": DetailsListCustomRowsExampleCode,
-    "view": <DetailsListCustomRowsExample />
-}, {
-    "title": "Rendering custom group headers",
-    "code": DetailsListCustomGroupHeadersExampleCode,
-    "view": <DetailsListCustomGroupHeadersExample />
-}, {
-    "title": "Advanced DetailsList of 5000 items, variable row heights",
-    "code": DetailsListAdvancedExampleCode,
-    "view": <DetailsListAdvancedExample />
-}, {
-    "title": "Drag and Drop DetailsList with 10 items",
-    "code": DetailsListDragDropExampleCode,
-    "view": <DetailsListDragDropExample />
-}, {
-    "title": "Navigating to new content preserving keyboard focus with initialFocusedIndex",
-    "code": DetailsListNavigatingFocusExampleCode,
-    "view": <DetailsListNavigatingFocusExample />
-}],
+  examples: [
+    {
+      title:
+        'Document DetailsList with 500 items, sorting, filtering, marquee selection, justified columns',
+      code: DetailsListDocumentsExampleCode,
+      view: <DetailsListDocumentsExample />
+    },
+    {
+      title: 'Simple DetailsList with 500 items, filtering, marquee selection',
+      code: DetailsListBasicExampleCode,
+      view: <DetailsListBasicExample />
+    },
+    {
+      title: 'Compact DetailsList with 500 items, filtering, marquee selection',
+      code: DetailsListCompactExampleCode,
+      view: <DetailsListCompactExample />
+    },
+    {
+      title: 'Simple Grouped DetailsList',
+      code: DetailsListGroupedExampleCode,
+      view: <DetailsListGroupedExample />
+    },
+    {
+      title: 'Rendering custom item columns with sorting',
+      code: DetailsListCustomColumnsExampleCode,
+      view: <DetailsListCustomColumnsExample />
+    },
+    {
+      title: 'Rendering custom item rows',
+      code: DetailsListCustomRowsExampleCode,
+      view: <DetailsListCustomRowsExample />
+    },
+    {
+      title: 'Rendering custom group headers',
+      code: DetailsListCustomGroupHeadersExampleCode,
+      view: <DetailsListCustomGroupHeadersExample />
+    },
+    {
+      title: 'Advanced DetailsList of 5000 items, variable row heights',
+      code: DetailsListAdvancedExampleCode,
+      view: <DetailsListAdvancedExample />
+    },
+    {
+      title: 'Drag and Drop DetailsList with 10 items',
+      code: DetailsListDragDropExampleCode,
+      view: <DetailsListDragDropExample />
+    },
+    {
+      title:
+        'Navigating to new content preserving keyboard focus with initialFocusedIndex',
+      code: DetailsListNavigatingFocusExampleCode,
+      view: <DetailsListNavigatingFocusExample />
+    }
+  ],
   propertiesTablesSources: [
-  require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/DetailsList.types.ts')
-],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/docs/DetailsListOverview.md'),
-  bestPractices: "",
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/docs/DetailsListDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/docs/DetailsListDonts.md'),
-  isHeaderVisible: true,
+    require<
+      string
+    >('!raw-loader!office-ui-fabric-react/src/components/DetailsList/DetailsList.types.ts')
+  ],
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/DetailsList/docs/DetailsListOverview.md'),
+  bestPractices: '',
+  dos: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/DetailsList/docs/DetailsListDos.md'),
+  donts: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/DetailsList/docs/DetailsListDonts.md'),
+  isHeaderVisible: true
 };
 
-export const DetailsListPage = (props: { isHeaderVisible: boolean }) => (<DemoPage { ...{ ...DetailsListPageProps, ...props } } />);
+export const DetailsListPage = (props: { isHeaderVisible: boolean }) =>
+  <DemoPage {...{ ...DetailsListPageProps, ...props }} />;

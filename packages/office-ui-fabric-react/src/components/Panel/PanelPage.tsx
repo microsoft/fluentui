@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PanelSmallRightExample } from './examples/Panel.SmallRight.Example';
-import { DemoPage } from "../../demo/components/DemoPage";
-import { IDemoPageProps } from "../../demo/components/DemoPage.types";
+import { DemoPage } from '../../demo/components/DemoPage';
+import { IDemoPageProps } from '../../demo/components/DemoPage.types';
 import { PanelSmallLeftExample } from './examples/Panel.SmallLeft.Example';
 import { PanelSmallFluidExample } from './examples/Panel.SmallFluid.Example';
 import { PanelMediumExample } from './examples/Panel.Medium.Example';
@@ -33,70 +33,94 @@ const PanelFooterExampleCode = require('!raw-loader!office-ui-fabric-react/src/c
 export const PanelPageProps: IDemoPageProps = {
   title: 'Panel',
   componentName: 'Panel',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Panel',
+  componentUrl:
+    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Panel',
   componentStatus: PanelStatus,
-  examples: [{
-    "title": "Panel - Small Panel, Anchored Right, Fixed Width",
-    "code": PanelSmallRightExampleCode,
-    "view": <PanelSmallRightExample />
-}, {
-    "title": "Panel - Small Panel, Anchored Left, Fixed Width",
-    "code": PanelSmallLeftExampleCode,
-    "view": <PanelSmallLeftExample />
-}, {
-    "title": "Panel - Small Panel, Full Screen, Fluid Width",
-    "code": PanelSmallFluidExampleCode,
-    "view": <PanelSmallFluidExample />
-}, {
-    "title": "Panel - Medium",
-    "code": PanelMediumExampleCode,
-    "view": <PanelMediumExample />
-}, {
-    "title": "Panel - Large",
-    "code": PanelLargeExampleCode,
-    "view": <PanelLargeExample />
-}, {
-    "title": "Panel - LargeFixed",
-    "code": PanelLargeFixedExampleCode,
-    "view": <PanelLargeFixedExample />
-}, {
-    "title": "Panel - Extra Large",
-    "code": PanelExtraLargeExampleCode,
-    "view": <PanelExtraLargeExample />
-}, {
-    "title": "Panel - Custom",
-    "code": PanelCustomExampleCode,
-    "view": <PanelCustomExample />
-}, {
-    "title": "Panel - Hidden on Dismiss",
-    "code": PanelHiddenOnDismissExampleCode,
-    "view": <PanelHiddenOnDismissExample />
-}, {
-    "title": "Panel - Light Dismiss",
-    "code": PanelLightDismissExampleCode,
-    "view": <PanelLightDismissExample />
-}, {
-    "title": "Panel - Custom Light Dismiss",
-    "code": PanelLightDismissCustomExampleCode,
-    "view": <PanelLightDismissCustomExample />
-}, {
-    "title": "Panel - Non-Modal",
-    "code": PanelNonModalExampleCode,
-    "view": <PanelNonModalExample />
-}, {
-    "title": "Panel - Footer",
-    "code": PanelFooterExampleCode,
-    "view": <PanelFooterExample />
-}],
+  examples: [
+    {
+      title: 'Panel - Small Panel, Anchored Right, Fixed Width',
+      code: PanelSmallRightExampleCode,
+      view: <PanelSmallRightExample />
+    },
+    {
+      title: 'Panel - Small Panel, Anchored Left, Fixed Width',
+      code: PanelSmallLeftExampleCode,
+      view: <PanelSmallLeftExample />
+    },
+    {
+      title: 'Panel - Small Panel, Full Screen, Fluid Width',
+      code: PanelSmallFluidExampleCode,
+      view: <PanelSmallFluidExample />
+    },
+    {
+      title: 'Panel - Medium',
+      code: PanelMediumExampleCode,
+      view: <PanelMediumExample />
+    },
+    {
+      title: 'Panel - Large',
+      code: PanelLargeExampleCode,
+      view: <PanelLargeExample />
+    },
+    {
+      title: 'Panel - LargeFixed',
+      code: PanelLargeFixedExampleCode,
+      view: <PanelLargeFixedExample />
+    },
+    {
+      title: 'Panel - Extra Large',
+      code: PanelExtraLargeExampleCode,
+      view: <PanelExtraLargeExample />
+    },
+    {
+      title: 'Panel - Custom',
+      code: PanelCustomExampleCode,
+      view: <PanelCustomExample />
+    },
+    {
+      title: 'Panel - Hidden on Dismiss',
+      code: PanelHiddenOnDismissExampleCode,
+      view: <PanelHiddenOnDismissExample />
+    },
+    {
+      title: 'Panel - Light Dismiss',
+      code: PanelLightDismissExampleCode,
+      view: <PanelLightDismissExample />
+    },
+    {
+      title: 'Panel - Custom Light Dismiss',
+      code: PanelLightDismissCustomExampleCode,
+      view: <PanelLightDismissCustomExample />
+    },
+    {
+      title: 'Panel - Non-Modal',
+      code: PanelNonModalExampleCode,
+      view: <PanelNonModalExample />
+    },
+    {
+      title: 'Panel - Footer',
+      code: PanelFooterExampleCode,
+      view: <PanelFooterExample />
+    }
+  ],
   propertiesTablesSources: [
-  require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/Panel.types.ts')
-],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/docs/PanelOverview.md'),
-  bestPractices: "",
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/docs/PanelDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/docs/PanelDonts.md'),
+    require<
+      string
+    >('!raw-loader!office-ui-fabric-react/src/components/Panel/Panel.types.ts')
+  ],
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/Panel/docs/PanelOverview.md'),
+  bestPractices: '',
+  dos: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/Panel/docs/PanelDos.md'),
+  donts: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/Panel/docs/PanelDonts.md'),
   isHeaderVisible: true,
-  allowNativeProps: true,
+  allowNativeProps: true
 };
 
-export const PanelPage = (props: { isHeaderVisible: boolean }) => (<DemoPage { ...{ ...PanelPageProps, ...props } } />);
+export const PanelPage = (props: { isHeaderVisible: boolean }) =>
+  <DemoPage {...{ ...PanelPageProps, ...props }} />;
