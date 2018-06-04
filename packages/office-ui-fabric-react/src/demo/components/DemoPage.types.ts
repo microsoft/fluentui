@@ -44,13 +44,13 @@ export interface IDemoPageProps {
   overview: string;
 
   /** DO's blurb as markdown string */
-  dos: string;
+  dos?: string;
 
   /** DON'Ts blurb as markdown string */
-  donts: string;
+  donts?: string;
 
   /** Best practice as markdown string */
-  bestPractices: string;
+  bestPractices?: string;
 
   /** Passed through header visibility flag from the demo component page component */
   isHeaderVisible: boolean;
