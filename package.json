@@ -36,8 +36,11 @@
     "lint-staged": "^7.0.5"
   },
   "lint-staged": {
-    "*.{ts,tsx}": [
+    "*.{ts,tsx,js,json}": [
       "node ./scripts/lint-staged/prettier",
+      "git add"
+    ],
+    "*.{ts,tsx}": [
       "node ./scripts/lint-staged/tslint",
       "git add"
     ]

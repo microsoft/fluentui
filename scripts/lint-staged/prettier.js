@@ -7,30 +7,10 @@ const files = process.argv.slice(2);
 runPrettierOnStagedFiles(files);
 
 /**
- * Creates a function that checks if the file is formatted
- * according to the passed prettier config.
- *
- * @param {PrettierConfig} prettierConfig
- */
-function fileNeedsFormatting(prettierConfig) {
-  return function (fileName) {
-    return prettier.check(fileName, prettierConfig) === false;
-  }
-}
-
-/**
  *  Gets the prettier config path from the tslint package
  */
-async function getPrettierConfigPath() {
+function getPrettierConfigPath() {
   return path.join(process.cwd(), 'packages', 'office-ui-fabric-react-tslint', 'prettier.config.js');
-}
-
-/**
- * Resolve the config for the passed configPath
- * @param {string} configPath
- */
-async function getPrettierConfig(configPath) {
-  return await prettier.resolveConfig(configPath);
 }
 
 /**
@@ -39,14 +19,15 @@ async function getPrettierConfig(configPath) {
  *
  * @param {string[]} files Staged files passed in by lint-staged
  */
-async function runPrettierOnStagedFiles(files) {
-  const prettierPath = 'node ' + path.resolve(path.join(__dirname, 'node_modules', 'prettier', 'bin-prettier.js'));
+function runPrettierOnStagedFiles(files) {
+  const prettierPath =
+    'node ' + path.resolve(path.join(__dirname, '..', 'node_modules', 'prettier', 'bin-prettier.js'));
+  const prettierIgnorePath = path.resolve(path.join(__dirname, '..', '..', '.prettierignore'));
 
   // Get the config from office-ui-fabric-react-tslint
   const prettierConfigPath = getPrettierConfigPath();
-  const prettierConfig = await getPrettierConfig(prettierConfigPath);
 
-  const filesToFormat = files.filter(fileNeedsFormatting(prettierConfig));
-
-  execSync(`${prettierPath} --config ${prettierConfigPath} --write ${filesToFormat.join(' ')}`);
+  execSync(
+    `${prettierPath} --config ${prettierConfigPath} --ignore-path "${prettierIgnorePath}" --write ${files.join(' ')}`
+  );
 }
