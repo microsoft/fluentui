@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.4.0",
+      "tag": "office-ui-fabric-react_v6.4.0",
+      "date": "Mon, 04 Jun 2018 18:50:06 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "471bf4a404b2732ca1e83e7e64158957aa178413",
+            "comment": "Revert PR 4897"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.3.0",
       "tag": "office-ui-fabric-react_v6.3.0",
       "date": "Mon, 04 Jun 2018 10:16:13 GMT",
