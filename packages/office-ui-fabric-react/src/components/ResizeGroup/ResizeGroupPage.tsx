@@ -31,21 +31,21 @@ export const ResizeGroupPageProps: IDemoPageProps = {
   propertiesTablesSources: [
     require<
       string
-    >('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/ResizeGroup.types.ts')
+      >('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/ResizeGroup.types.ts')
   ],
   overview: require<
     string
-  >('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/docs/ResizeGroupOverview.md'),
+    >('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/docs/ResizeGroupOverview.md'),
   bestPractices: '',
   dos: require<
     string
-  >('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/docs/ResizeGroupDos.md'),
+    >('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/docs/ResizeGroupDos.md'),
   donts: require<
     string
-  >('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/docs/ResizeGroupDonts.md'),
+    >('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/docs/ResizeGroupDonts.md'),
   isHeaderVisible: true,
   allowNativeProps: true
 };
 
 export const ResizeGroupPage = (props: { isHeaderVisible: boolean }) =>
-  <DemoPage {...{ ...ResizeGroupPageProps, ...props }} />;
+  <LayerHost><DemoPage { ...{ ...ResizeGroupPageProps, ...props } } /></LayerHost>;

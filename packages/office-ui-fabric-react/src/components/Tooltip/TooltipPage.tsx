@@ -46,17 +46,17 @@ export const TooltipPageProps: IDemoPageProps = {
   propertiesTablesSources: [
     require<
       string
-    >('!raw-loader!office-ui-fabric-react/src/components/Tooltip/Tooltip.types.ts'),
+      >('!raw-loader!office-ui-fabric-react/src/components/Tooltip/Tooltip.types.ts'),
     require<
       string
-    >('!raw-loader!office-ui-fabric-react/src/components/Tooltip/TooltipHost.types.ts')
+      >('!raw-loader!office-ui-fabric-react/src/components/Tooltip/TooltipHost.types.ts')
   ],
   overview: require<
     string
-  >('!raw-loader!office-ui-fabric-react/src/components/Tooltip/docs/TooltipOverview.md'),
+    >('!raw-loader!office-ui-fabric-react/src/components/Tooltip/docs/TooltipOverview.md'),
   isHeaderVisible: true,
   allowNativeProps: true
 };
 
 export const TooltipPage = (props: { isHeaderVisible: boolean }) =>
-  <DemoPage {...{ ...TooltipPageProps, ...props }} />;
+  <LayerHost><DemoPage { ...{ ...TooltipPageProps, ...props } } /></LayerHost>;

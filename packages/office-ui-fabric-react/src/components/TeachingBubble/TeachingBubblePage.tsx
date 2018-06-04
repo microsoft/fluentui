@@ -51,13 +51,13 @@ export const TeachingBubblePageProps: IDemoPageProps = {
   propertiesTablesSources: [
     require<
       string
-    >('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/TeachingBubble.types.ts')
+      >('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/TeachingBubble.types.ts')
   ],
   overview: require<
     string
-  >('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/docs/TeachingBubbleOverview.md'),
+    >('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/docs/TeachingBubbleOverview.md'),
   isHeaderVisible: true
 };
 
 export const TeachingBubblePage = (props: { isHeaderVisible: boolean }) =>
-  <DemoPage {...{ ...TeachingBubblePageProps, ...props }} />;
+  <LayerHost><DemoPage { ...{ ...TeachingBubblePageProps, ...props } } /></LayerHost>;

@@ -56,21 +56,21 @@ export const DialogPageProps: IDemoPageProps = {
   propertiesTablesSources: [
     require<
       string
-    >('!raw-loader!office-ui-fabric-react/src/components/Dialog/Dialog.types.ts'),
+      >('!raw-loader!office-ui-fabric-react/src/components/Dialog/Dialog.types.ts'),
   ],
   overview: require<
     string
-  >('!raw-loader!office-ui-fabric-react/src/components/Dialog/docs/DialogOverview.md'),
+    >('!raw-loader!office-ui-fabric-react/src/components/Dialog/docs/DialogOverview.md'),
   bestPractices: '',
   dos: require<
     string
-  >('!raw-loader!office-ui-fabric-react/src/components/Dialog/docs/DialogDos.md'),
+    >('!raw-loader!office-ui-fabric-react/src/components/Dialog/docs/DialogDos.md'),
   donts: require<
     string
-  >('!raw-loader!office-ui-fabric-react/src/components/Dialog/docs/DialogDonts.md'),
+    >('!raw-loader!office-ui-fabric-react/src/components/Dialog/docs/DialogDonts.md'),
   isHeaderVisible: true,
 };
 
 export const DialogPage = (props: { isHeaderVisible: boolean }) => (
-  <DemoPage {...{ ...DialogPageProps, ...props }} />
+  <DemoPage { ...{ ...DialogPageProps, ...props } } />
 );

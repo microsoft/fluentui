@@ -32,17 +32,17 @@ export const HoverCardPageProps: IDemoPageProps = {
   propertiesTablesSources: [
     require<
       string
-    >('!raw-loader!office-ui-fabric-react/src/components/HoverCard/HoverCard.types.ts'),
+      >('!raw-loader!office-ui-fabric-react/src/components/HoverCard/HoverCard.types.ts'),
     require<
       string
-    >('!raw-loader!office-ui-fabric-react/src/components/HoverCard/ExpandingCard.types.ts')
+      >('!raw-loader!office-ui-fabric-react/src/components/HoverCard/ExpandingCard.types.ts')
   ],
   overview: require<
     string
-  >('!raw-loader!office-ui-fabric-react/src/components/HoverCard/docs/HoverCardOverview.md'),
+    >('!raw-loader!office-ui-fabric-react/src/components/HoverCard/docs/HoverCardOverview.md'),
   isHeaderVisible: true,
   allowNativeProps: true
 };
 
 export const HoverCardPage = (props: { isHeaderVisible: boolean }) =>
-  <DemoPage {...{ ...HoverCardPageProps, ...props }} />;
+  <LayerHost><DemoPage { ...{ ...HoverCardPageProps, ...props } } /></LayerHost>;

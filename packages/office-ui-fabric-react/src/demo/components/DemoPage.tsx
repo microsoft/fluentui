@@ -38,26 +38,30 @@ export const DemoPage: React.StatelessComponent<IDemoPageProps> = (componentPage
           { componentPageProps.overview }
         </PageMarkdown>
       }
-      bestPractices={
+      bestPractices={ componentPageProps.bestPractices ? (
         <PageMarkdown>
           { componentPageProps.bestPractices }
         </PageMarkdown>
+      ) : undefined
       }
-      dos={
+      dos={ componentPageProps.dos ? (
         <PageMarkdown>
           { componentPageProps.dos }
         </PageMarkdown>
+      ) : undefined
       }
-      donts={
+      donts={ componentPageProps.donts ? (
         <PageMarkdown>
           { componentPageProps.donts }
         </PageMarkdown>
+      ) : undefined
       }
       isHeaderVisible={ componentPageProps.isHeaderVisible }
-      componentStatus={
+      componentStatus={ componentPageProps.componentStatus ? (
         <ComponentStatus
           { ...componentPageProps.componentStatus }
         />
+      ) : undefined
       }
     />
   );
