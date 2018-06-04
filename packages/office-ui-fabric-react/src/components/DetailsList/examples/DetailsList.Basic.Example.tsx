@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import {
-  DetailsList,
-  DetailsListLayoutMode,
-  Selection,
-  IColumn
-} from 'office-ui-fabric-react/lib/DetailsList';
+import { DetailsList, DetailsListLayoutMode, Selection, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 
 const _items: any[] = [];
@@ -28,13 +23,16 @@ const _columns: IColumn[] = [
     maxWidth: 200,
     isResizable: true,
     ariaLabel: 'Operations for value'
-  },
+  }
 ];
 
-export class DetailsListBasicExample extends React.Component<{}, {
-  items: {}[];
-  selectionDetails: {};
-}> {
+export class DetailsListBasicExample extends React.Component<
+  {},
+  {
+    items: {}[];
+    selectionDetails: {};
+  }
+> {
   private _selection: Selection;
 
   constructor(props: {}) {
@@ -66,22 +64,19 @@ export class DetailsListBasicExample extends React.Component<{}, {
 
     return (
       <div>
-        <div>{ selectionDetails }</div>
-        <TextField
-          label='Filter by name:'
-          onChanged={ this._onChanged }
-        />
-        <MarqueeSelection selection={ this._selection }>
+        <div>{selectionDetails}</div>
+        <TextField label="Filter by name:" onChanged={this._onChanged} />
+        <MarqueeSelection selection={this._selection}>
           <DetailsList
-            items={ items }
-            columns={ _columns }
-            setKey='set'
-            layoutMode={ DetailsListLayoutMode.fixedColumns }
-            selection={ this._selection }
-            selectionPreservedOnEmptyClick={ true }
-            ariaLabelForSelectionColumn='Toggle selection'
-            ariaLabelForSelectAllCheckbox='Toggle selection for all items'
-            onItemInvoked={ this._onItemInvoked }
+            items={items}
+            columns={_columns}
+            setKey="set"
+            layoutMode={DetailsListLayoutMode.fixedColumns}
+            selection={this._selection}
+            selectionPreservedOnEmptyClick={true}
+            ariaLabelForSelectionColumn="Toggle selection"
+            ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+            onItemInvoked={this._onItemInvoked}
           />
         </MarqueeSelection>
       </div>
@@ -103,10 +98,9 @@ export class DetailsListBasicExample extends React.Component<{}, {
 
   private _onChanged = (text: any): void => {
     this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items });
-  }
+  };
 
   private _onItemInvoked(item: any): void {
     alert(`Item invoked: ${item.name}`);
   }
-
 }

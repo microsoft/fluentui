@@ -20,53 +20,45 @@ export class FacepilePage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='Facepile'
-        componentName='FacepileExample'
-        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Facepile'
+        title="Facepile"
+        componentName="FacepileExample"
+        componentUrl="https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Facepile"
         exampleCards={
           <div>
-            <ExampleCard title='Facepile with size and fade in options' code={ FacepileBasicExampleCode }>
+            <ExampleCard title="Facepile with size and fade in options" code={FacepileBasicExampleCode}>
               <FacepileBasicExample />
             </ExampleCard>
-            <ExampleCard title='Facepile with overflow buttons' code={ FacepileOverflowExampleCode }>
+            <ExampleCard title="Facepile with overflow buttons" code={FacepileOverflowExampleCode}>
               <FacepileOverflowExample />
             </ExampleCard>
-            <ExampleCard title='Facepile with face adding functionality' code={ FacepileAddFaceExampleCode }>
+            <ExampleCard title="Facepile with face adding functionality" code={FacepileAddFaceExampleCode}>
               <FacepileAddFaceExample />
             </ExampleCard>
           </div>
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Facepile/Facepile.types.ts')
-            ] }
+            sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/Facepile/Facepile.types.ts')]}
           />
         }
         overview={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Facepile/docs/FacepileOverview.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Facepile/docs/FacepileOverview.md')}
           </PageMarkdown>
         }
-        bestPractices={
-          <div />
-        }
+        bestPractices={<div />}
         dos={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Facepile/docs/FacepileDos.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Facepile/docs/FacepileDos.md')}
           </PageMarkdown>
         }
         donts={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Facepile/docs/FacepileDonts.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Facepile/docs/FacepileDonts.md')}
           </PageMarkdown>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }
-        componentStatus={
-          <ComponentStatus
-            { ...FacepileStatus }
-          />
-        }
+        isHeaderVisible={this.props.isHeaderVisible}
+        componentStatus={<ComponentStatus {...FacepileStatus} />}
       />
     );
   }

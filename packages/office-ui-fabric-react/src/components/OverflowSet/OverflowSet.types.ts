@@ -35,29 +35,29 @@ export interface IOverflowSetProps extends React.Props<OverflowSet> {
 
   /**
    * An array of items to be rendered by your onRenderItem function in the primary content area
-  */
+   */
   items?: IOverflowSetItemProps[];
 
   /**
    * Change item layout direction to vertical/stacked.
    * @default false
-  */
+   */
   vertical?: boolean;
 
   /**
    * An array of items to be passed to overflow contextual menu
-  */
+   */
   overflowItems?: IOverflowSetItemProps[];
 
   /**
    * Method to call when trying to render an item.
-  */
+   */
   onRenderItem: (item: IOverflowSetItemProps) => any;
 
   /**
    * Rendering method for overflow button and contextual menu. The argument to the function is
    * the overflowItems passed in as props to this function.
-  */
+   */
   onRenderOverflowButton: IRenderFunction<any[]>;
 
   /**

@@ -4,15 +4,9 @@ import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
 
 import { IButtonProps } from '../Button/index';
-import {
-  IPersonaSharedProps,
-  PersonaInitialsColor,
-  PersonaSize
-} from '../Persona/index';
+import { IPersonaSharedProps, PersonaInitialsColor, PersonaSize } from '../Persona/index';
 
-export interface IFacepile {
-
-}
+export interface IFacepile {}
 
 export interface IFacepileProps extends React.Props<FacepileBase> {
   /**
@@ -76,7 +70,6 @@ export interface IFacepileProps extends React.Props<FacepileBase> {
 
   /** Method to access properties on the underlying Persona control */
   getPersonaProps?: (persona: IFacepilePersona) => IPersonaSharedProps;
-
 }
 
 export interface IFacepilePersona extends React.ButtonHTMLAttributes<HTMLButtonElement | HTMLDivElement> {

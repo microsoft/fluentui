@@ -4,7 +4,7 @@ import {
   IComponentDemoPageProps,
   ComponentPage,
   PropertiesTableSet,
-  PageMarkdown,
+  PageMarkdown
 } from '@uifabric/example-app-base';
 import { ChoiceGroupBasicExample } from './examples/ChoiceGroup.Basic.Example';
 import { ChoiceGroupCustomExample } from './examples/ChoiceGroup.Custom.Example';
@@ -22,58 +22,54 @@ export class ChoiceGroupPage extends React.Component<IComponentDemoPageProps, {}
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='ChoiceGroup'
-        componentName='ChoiceGroupExample'
-        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ChoiceGroup'
+        title="ChoiceGroup"
+        componentName="ChoiceGroupExample"
+        componentUrl="https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ChoiceGroup"
         exampleCards={
           <div>
-            <ExampleCard title='Default ChoiceGroup' code={ ChoiceGroupBasicExampleCode }>
+            <ExampleCard title="Default ChoiceGroup" code={ChoiceGroupBasicExampleCode}>
               <ChoiceGroupBasicExample />
             </ExampleCard>
-            <ExampleCard title='ChoiceGroup with dropdown' code={ ChoiceGroupCustomExampleCode }>
+            <ExampleCard title="ChoiceGroup with dropdown" code={ChoiceGroupCustomExampleCode}>
               <ChoiceGroupCustomExample />
             </ExampleCard>
-            <ExampleCard title='ChoiceGroups with images' code={ ChoiceGroupImageExampleCode }>
+            <ExampleCard title="ChoiceGroups with images" code={ChoiceGroupImageExampleCode}>
               <ChoiceGroupImageExample />
             </ExampleCard>
-            <ExampleCard title='ChoiceGroup with icons' code={ ChoiceGroupIconExampleCode }>
+            <ExampleCard title="ChoiceGroup with icons" code={ChoiceGroupIconExampleCode}>
               <ChoiceGroupIconExample />
             </ExampleCard>
           </div>
         }
-        allowNativeProps={ true }
-        nativePropsElement={ 'input' }
+        allowNativeProps={true}
+        nativePropsElement={'input'}
         propertiesTables={
           <PropertiesTableSet
-            sources={ [
+            sources={[
               require<string>('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/ChoiceGroup.types.ts')
-            ] }
+            ]}
           />
         }
         overview={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/docs/ChoiceGroupOverview.md') }
+            {require<
+              string
+            >('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/docs/ChoiceGroupOverview.md')}
           </PageMarkdown>
         }
-        bestPractices={
-          <div />
-        }
+        bestPractices={<div />}
         dos={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/docs/ChoiceGroupDos.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/docs/ChoiceGroupDos.md')}
           </PageMarkdown>
         }
         donts={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/docs/ChoiceGroupDonts.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/docs/ChoiceGroupDonts.md')}
           </PageMarkdown>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }
-        componentStatus={
-          <ComponentStatus
-            { ...ChoiceGroupStatus }
-          />
-        }
+        isHeaderVisible={this.props.isHeaderVisible}
+        componentStatus={<ComponentStatus {...ChoiceGroupStatus} />}
       />
     );
   }

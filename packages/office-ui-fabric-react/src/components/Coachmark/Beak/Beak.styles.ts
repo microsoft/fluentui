@@ -23,8 +23,7 @@ export function getStyles(props: IBeakStylesProps): IBeakStyles {
         left: props.left,
         top: props.top,
         right: props.right,
-        bottom: props.bottom,
-
+        bottom: props.bottom
       }
     ],
     beak: {

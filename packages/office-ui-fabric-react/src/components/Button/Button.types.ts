@@ -26,7 +26,8 @@ export interface IButton {
   openMenu: () => void;
 }
 
-export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement | BaseButton | Button> {
+export interface IButtonProps
+  extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement | BaseButton | Button> {
   /**
    * Optional callback to access the IButton interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -98,8 +99,8 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   ariaHidden?: boolean;
 
   /**
-  * Text to render button label. If text is supplied, it will override any string in button children. Other children components will be passed through after the text.
-  */
+   * Text to render button label. If text is supplied, it will override any string in button children. Other children components will be passed through after the text.
+   */
   text?: string;
 
   /**
@@ -169,8 +170,8 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   onRenderMenuIcon?: IRenderFunction<IButtonProps>;
 
   /**
-  * Custom render function for button menu
-  */
+   * Custom render function for button menu
+   */
   onRenderMenu?: IRenderFunction<IContextualMenuProps>;
 
   /**
@@ -200,17 +201,18 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   toggled?: boolean;
 
   /**
- * Any custom data the developer wishes to associate with the menu item.
- */
+   * Any custom data the developer wishes to associate with the menu item.
+   */
   data?: any;
 
   /**
-  * Method to provide the classnames to style a button.
-  * The default value for this prop is the getClassnames func
-  * defined in BaseButton.classnames.
-  * @default getBaseButtonClassNames
-  */
-  getClassNames?: (theme: ITheme,
+   * Method to provide the classnames to style a button.
+   * The default value for this prop is the getClassnames func
+   * defined in BaseButton.classnames.
+   * @default getBaseButtonClassNames
+   */
+  getClassNames?: (
+    theme: ITheme,
     className: string,
     variantClassName: string,
     iconClassName: string | undefined,
@@ -218,22 +220,21 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
     disabled: boolean,
     checked: boolean,
     expanded: boolean,
-    isSplit: boolean | undefined) => IButtonClassNames;
+    isSplit: boolean | undefined
+  ) => IButtonClassNames;
 
   /**
-  * Method to provide the classnames to style a button.
-  * The default value for this prop is the getClassnames func
-  * defined in BaseButton.classnames.
-  * @default getBaseSplitButtonClassNames
-  */
-  getSplitButtonClassNames?: (disabled: boolean,
-    expanded: boolean,
-    checked: boolean) => ISplitButtonClassNames;
+   * Method to provide the classnames to style a button.
+   * The default value for this prop is the getClassnames func
+   * defined in BaseButton.classnames.
+   * @default getBaseSplitButtonClassNames
+   */
+  getSplitButtonClassNames?: (disabled: boolean, expanded: boolean, checked: boolean) => ISplitButtonClassNames;
 
   /**
-  * Provides a custom KeyCode that can be used to open the button menu.
-  * The default KeyCode is the down arrow. A value of null can be provided to disable the key codes for opening the button menu.
-  */
+   * Provides a custom KeyCode that can be used to open the button menu.
+   * The default KeyCode is the down arrow. A value of null can be provided to disable the key codes for opening the button menu.
+   */
   menuTriggerKeyCode?: KeyCodes | null;
 
   /**
@@ -321,13 +322,13 @@ export interface IButtonStyles {
   rootCheckedPressed?: IStyle;
 
   /**
-  * Style override applied to the root on hover in a checked, disabled state
-  */
+   * Style override applied to the root on hover in a checked, disabled state
+   */
   rootCheckedDisabled?: IStyle;
 
   /**
-* Style override applied to the root on hover in a expanded state on hover
-*/
+   * Style override applied to the root on hover in a expanded state on hover
+   */
   rootExpandedHovered?: IStyle;
 
   /**
@@ -361,8 +362,8 @@ export interface IButtonStyles {
   iconExpanded?: IStyle;
 
   /**
- * Style for the icon on the near side of the label when expanded and hovered.
- */
+   * Style for the icon on the near side of the label when expanded and hovered.
+   */
   iconExpandedHovered?: IStyle;
 
   /**
@@ -411,8 +412,8 @@ export interface IButtonStyles {
   menuIconExpanded?: IStyle;
 
   /**
- * Style for the menu chevron when expanded and hovered.
- */
+   * Style for the menu chevron when expanded and hovered.
+   */
   menuIconExpandedHovered?: IStyle;
 
   /**
@@ -476,8 +477,8 @@ export interface IButtonStyles {
   splitButtonContainerFocused?: IStyle;
 
   /**
-  * Style for container div around a SplitButton element when the button is checked.
-  */
+   * Style for container div around a SplitButton element when the button is checked.
+   */
   splitButtonContainerChecked?: IStyle;
 
   /**

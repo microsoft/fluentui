@@ -17,6 +17,8 @@ describe('getGlobalClassNames', () => {
   it('works for multiple global classes', () => {
     const theme = createTheme({ disableGlobalClassNames: false });
 
-    expect(getGlobalClassNames({ root: 'ms-Link my-other-global' }, theme)).toEqual({ root: 'ms-Link my-other-global' });
+    expect(getGlobalClassNames({ root: 'ms-Link my-other-global' }, theme)).toEqual({
+      root: 'ms-Link my-other-global'
+    });
   });
 });

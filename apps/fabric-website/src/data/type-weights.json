@@ -1,9 +1,5 @@
 {
-  "headers": [
-    "Class",
-    "Example",
-    "Weight"
-  ],
+  "headers": ["Class", "Example", "Weight"],
   "data": [
     [
       {

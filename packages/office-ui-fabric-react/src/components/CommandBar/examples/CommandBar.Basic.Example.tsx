@@ -3,7 +3,6 @@ import * as React from 'react';
 import { CommandBar, ICommandBarProps } from 'office-ui-fabric-react/lib/CommandBar';
 
 export class CommandBarBasicExample extends React.Component<ICommandBarProps, {}> {
-
   constructor(props: ICommandBarProps) {
     super(props);
     this.state = {
@@ -18,10 +17,10 @@ export class CommandBarBasicExample extends React.Component<ICommandBarProps, {}
     return (
       <div>
         <CommandBar
-          items={ items }
-          overflowItems={ overflowItems }
-          farItems={ farItems }
-          ariaLabel={ 'Use left and right arrow keys to navigate between commands' }
+          items={items}
+          overflowItems={overflowItems}
+          farItems={farItems}
+          ariaLabel={'Use left and right arrow keys to navigate between commands'}
         />
       </div>
     );
