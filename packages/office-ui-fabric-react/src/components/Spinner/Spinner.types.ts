@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ITheme, IStyle } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IStyleFunctionOrObject } from '../../Utilities';
 
 export interface ISpinner {
 
@@ -55,7 +55,7 @@ export interface ISpinnerProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunction<ISpinnerStyleProps, ISpinnerStyles>;
+  styles?: IStyleFunctionOrObject<ISpinnerStyleProps, ISpinnerStyles>;
 }
 
 export enum SpinnerSize {

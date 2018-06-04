@@ -42,8 +42,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     const yAxis = this._createYAxis();
     const bars = isNumeric ? this._createNumericBars() : this._createStringBars();
 
-    const { theme, className, getStyles } = this.props;
-    this._classNames = getClassNames(getStyles!, {
+    const { theme, className, styles } = this.props;
+    this._classNames = getClassNames(styles!, {
       theme: theme!,
       width: this._width,
       height: this._height,

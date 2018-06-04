@@ -2,6 +2,51 @@
   "name": "@uifabric/jest-serializer-merge-styles",
   "entries": [
     {
+      "version": "5.2.3",
+      "tag": "@uifabric/jest-serializer-merge-styles_v5.2.3",
+      "date": "Mon, 04 Jun 2018 10:16:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "4e1cd119bbf0f75e0432b0f92bad342714b57bef",
+            "comment": "Updating react typings."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.0.0 <7.0.0` to `>=6.0.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.2.2",
+      "tag": "@uifabric/jest-serializer-merge-styles_v5.2.2",
+      "date": "Wed, 30 May 2018 22:05:03 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.17.1 <6.0.0` to `>=6.0.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.2.1",
+      "tag": "@uifabric/jest-serializer-merge-styles_v5.2.1",
+      "date": "Mon, 21 May 2018 10:29:16 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "5497192f34671da230477426f25542b38ac65f6b",
+            "comment": "The `animation-name` values reference class names which should be expanded if there is a comma delimited list of them."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.2.0",
       "tag": "@uifabric/jest-serializer-merge-styles_v5.2.0",
       "date": "Mon, 23 Apr 2018 10:24:54 GMT",

@@ -1,6 +1,34 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 08 May 2018 16:02:16 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Jun 2018 10:16:13 GMT and should not be manually modified.
+
+## 6.0.2
+Mon, 04 Jun 2018 10:16:13 GMT
+
+### Patches
+
+- Updating react typings.
+
+## 6.0.1
+Thu, 31 May 2018 10:18:58 GMT
+
+### Patches
+
+- made sure the deps are resolved by package rather than relative paths
+
+## 6.0.0
+Wed, 30 May 2018 20:28:33 GMT
+
+### Breaking changes
+
+- Bump to 6.0 alongside office-ui-fabric-react 6.0 release.
+
+## 5.7.5
+Thu, 17 May 2018 10:28:07 GMT
+
+### Patches
+
+- Get rid of App-nav container in mobile, it was blocking interation.
 
 ## 5.7.4
 Tue, 08 May 2018 16:02:16 GMT

@@ -47,7 +47,12 @@ export const getStyles = memoizeFunction((
 
     rootHovered: {
       backgroundColor: theme.palette.neutralLight,
-      color: theme.palette.neutralDark
+      color: theme.palette.neutralDark,
+      selectors: {
+        [HighContrastSelector]: {
+          color: 'Highlight'
+        }
+      }
     },
 
     rootPressed: {
@@ -68,6 +73,74 @@ export const getStyles = memoizeFunction((
     rootCheckedHovered: {
       backgroundColor: theme.palette.neutralQuaternary,
       color: theme.palette.black,
+    },
+
+    // Split button styles
+    splitButtonContainer: {
+      selectors: {
+        [HighContrastSelector]: {
+          border: 'none'
+        }
+      }
+    },
+
+    splitButtonDivider: {
+      backgroundColor: theme.palette.neutralTertiaryAlt,
+      marginTop: 4,
+      marginBottom: 4
+    },
+
+    splitButtonMenuButton: {
+      backgroundColor: theme.palette.neutralLighter,
+      color: theme.palette.neutralPrimary,
+      selectors: {
+        ':hover': {
+          backgroundColor: theme.palette.neutralLight,
+          color: theme.palette.neutralDark,
+          selectors: {
+            [HighContrastSelector]: {
+              color: 'Highlight'
+            }
+          }
+        }
+      },
+    },
+
+    splitButtonMenuButtonDisabled: {
+      backgroundColor: theme.palette.neutralLighter,
+      selectors: {
+        ':hover': {
+          backgroundColor: theme.palette.neutralLighter,
+        }
+      }
+    },
+
+    splitButtonMenuButtonChecked: {
+      backgroundColor: theme.palette.neutralQuaternaryAlt,
+      color: theme.palette.black,
+      selectors: {
+        ':hover': {
+          backgroundColor: theme.palette.neutralQuaternaryAlt,
+        }
+      }
+    },
+
+    splitButtonMenuButtonExpanded: {
+      backgroundColor: theme.palette.neutralQuaternaryAlt,
+      color: theme.palette.black,
+      selectors: {
+        ':hover': {
+          backgroundColor: theme.palette.neutralQuaternaryAlt,
+        }
+      }
+    },
+
+    splitButtonMenuIcon: {
+      color: theme.palette.neutralPrimary
+    },
+
+    splitButtonMenuIconDisabled: {
+      color: theme.palette.neutralTertiary
     },
 
     label: {

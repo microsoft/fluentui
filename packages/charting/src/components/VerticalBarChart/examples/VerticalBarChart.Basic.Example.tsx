@@ -108,7 +108,7 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         height={ 400 }
         barWidth={ 20 }
         yAxisTickCount={ 6 }
-        getStyles={ customStyles }
+        styles={ customStyles }
         colors={ customColors }
         chartLabel={ 'Chart with Axis Labels and Custom Styles' }
       />);

@@ -1,5 +1,5 @@
 import { IAnimationStyles, IAnimationVariables } from '../interfaces/index';
-import { IRawStyle, keyframes } from '@uifabric/merge-styles/lib/index';
+import { IRawStyle, keyframes } from '@uifabric/merge-styles';
 
 /* Register the keyframes */
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
-import { IRenderFunction, IStyleFunction } from '../../Utilities';
+import { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IIconProps } from '../Icon/Icon.types';
 
 export interface INav {
@@ -23,7 +23,7 @@ export interface INavProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
-  getStyles?: IStyleFunction<INavStyleProps, INavStyles>;
+  styles?: IStyleFunctionOrObject<INavStyleProps, INavStyles>;
 
   /**
    * Theme provided by HOC.

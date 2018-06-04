@@ -15,7 +15,7 @@ import { DropdownMenuItemType, IDropdownOption } from './Dropdown.types';
 const DEFAULT_OPTIONS: IDropdownOption[] = [
   { key: 'Header1', text: 'Header 1', itemType: DropdownMenuItemType.Header },
   { key: '1', text: '1' },
-  { key: '2', text: '2' },
+  { key: '2', text: '2', title: 'test' },
   { key: '3', text: '3' },
   { key: 'Divider1', text: '-', itemType: DropdownMenuItemType.Divider },
   { key: 'Header2', text: 'Header 2', itemType: DropdownMenuItemType.Header },
@@ -191,6 +191,9 @@ describe('Dropdown', () => {
         ReactTestUtils.Simulate.click(dropdownRoot);
 
         const secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"]') as HTMLElement;
+
+        expect(secondItemElement.getAttribute('title')).toEqual('test');
+
         ReactTestUtils.Simulate.click(secondItemElement);
       }
       finally {

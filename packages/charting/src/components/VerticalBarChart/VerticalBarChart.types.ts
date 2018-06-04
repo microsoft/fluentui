@@ -1,5 +1,5 @@
 import { ITheme, IStyle } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IStyleFunctionOrObject } from '../../Utilities';
 
 export interface IVerticalBarChart {
 
@@ -68,7 +68,7 @@ export interface IVerticalBarChartProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunction<IVerticalBarChartStyleProps, IVerticalBarChartStyles>;
+  styles?: IStyleFunctionOrObject<IVerticalBarChartStyleProps, IVerticalBarChartStyles>;
 }
 
 export interface IVerticalBarChartStyleProps {

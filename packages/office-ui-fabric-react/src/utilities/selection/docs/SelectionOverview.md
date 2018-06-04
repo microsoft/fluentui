@@ -13,3 +13,4 @@ Available attributes:
 - **data-selection-toggle:** this boolean flag would be set on the element which should handle toggles.This could be a checkbox or a div.
 - **data-selection-toggle-all:** this boolean flag indicates that clicking it should toggle all selection.
 - **data-selection-disabled:** allows a branch of the DOM to be marked to ignore input events that alter selections.
+- **data-selection-select:** allows a branch of the DOM to ensure that the current item is selected upon interaction

@@ -1,23 +1,25 @@
 module.exports = function (options) {
   const path = require('path');
   const exec = require('../exec');
-  const typescriptPath = 'node ' + path.resolve(__dirname, '../node_modules/typescript/lib/tsc');
+  const resolve = require('resolve');
+  const typescriptPath = 'node ' + require.resolve('typescript/lib/tsc');
   const libPath = path.resolve(process.cwd(), 'lib');
   const srcPath = path.resolve(process.cwd(), 'src');
   const extraParams = '--pretty' + (options.isProduction ? ` --inlineSources --sourceRoot ${path.relative(libPath, srcPath)}` : '');
-
-  // We wait for all compilations to be done to report success
-  return Promise.all([
-    runTscFor('lib', 'commonjs', extraParams),
-    runTscFor('lib-es2015', 'es2015', extraParams),
-    options.isProduction ? runTscFor('lib-amd', 'amd', extraParams) : Promise.resolve()
-  ]);
 
   // Flag to keep track of if we already logged errors.
   // Since we run the ts builds in parallel, we do not want
   // to flood the user with the same error messages for
   // each process.
   let hasLoggedErrors = false;
+
+  // We wait for all compilations to be done to report success
+  return Promise.all([
+    runTscFor('lib-commonjs', 'commonjs', extraParams),
+    runTscFor('lib', 'es2015', extraParams),
+  ]);
+
+
   function logFirstStdOutAndRethrow(process) {
     if (!hasLoggedErrors) {
       hasLoggedErrors = true;
