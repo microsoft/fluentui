@@ -5,9 +5,9 @@ import {
   createRef
 } from '../../../Utilities';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
-import { KeytipData } from '../../KeytipData';
+import { KeytipData } from '../../../KeytipData';
 import { getIsChecked, isItemDisabled, hasSubmenu } from '../../../utilities/contextualMenu/index';
-import { ContextualMenuItem } from '../../ContextualMenu';
+import { ContextualMenuItem } from '../ContextualMenuItem';
 
 export class ContextualMenuButton extends ContextualMenuItemWrapper {
   private _btn = createRef<HTMLButtonElement>();
@@ -31,13 +31,7 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
     } = this.props;
 
     const subMenuId = this._getSubMenuId(item);
-    let ariaLabel = '';
-
-    if (item.ariaLabel) {
-      ariaLabel = item.ariaLabel;
-    } else if (item.name) {
-      ariaLabel = item.name;
-    }
+    const ariaLabel = item.ariaLabel || item.text || item.name || '';
 
     const isChecked: boolean | null | undefined = getIsChecked(item);
     const canCheck: boolean = isChecked !== null;

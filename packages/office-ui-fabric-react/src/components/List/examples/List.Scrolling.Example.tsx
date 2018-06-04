@@ -94,11 +94,11 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
     return h;
   }
 
-  private _onChangeText(value: any): void {
+  private _onChangeText = (value: any): void => {
     this._scroll(parseInt(value, 10) || 0, this.state.scrollToMode);
   }
 
-  private _onDropdownChanged(option: IDropdownOption) {
+  private _onDropdownChanged = (option: IDropdownOption) => {
     let scrollMode = this.state.scrollToMode;
     switch (option.key) {
       case 'auto':
@@ -117,7 +117,7 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
     this._scroll(this.state.selectedIndex, scrollMode);
   }
 
-  private _onRenderCell(item: any, index: number): JSX.Element {
+  private _onRenderCell = (item: any, index: number): JSX.Element => {
     return (
       <div className='ms-ListScrollingExample-itemCell' data-is-focusable={ true }>
         <div
@@ -133,13 +133,13 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
     );
   }
 
-  private _scrollRelative(delta: number): () => void {
+  private _scrollRelative = (delta: number): () => void => {
     return (): void => {
       this._scroll(this.state.selectedIndex + delta, this.state.scrollToMode);
     };
   }
 
-  private _scroll(index: number, scrollToMode: ScrollToMode) {
+  private _scroll = (index: number, scrollToMode: ScrollToMode): void => {
     const updatedSelectedIndex = Math.min(Math.max(index, 0), this.props.items.length - 1);
 
     this.setState({

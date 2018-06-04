@@ -11,10 +11,10 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
-          component: require<any>('../components/CommandBar/CommandBarPage').CommandBarPage,
-          key: 'CommandBar',
-          name: 'CommandBar',
-          url: '#/examples/commandbar'
+          component: require<any>('../components/Chiclet/ChicletPage').ChicletPage,
+          key: 'Chiclet',
+          name: 'Chiclet',
+          url: '#/examples/chiclet'
         },
         {
           component: require<any>('../components/FolderCover/FolderCoverPage').FolderCoverPage,

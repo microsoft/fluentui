@@ -3,8 +3,8 @@ import { css } from 'office-ui-fabric-react/lib/Utilities';
 import * as stylesImport from './HomePage.module.scss';
 const styles: any = stylesImport;
 
-const corePackageData = require('../../../node_modules/office-ui-fabric-core/package.json');
-const reactPackageData = require('../../../node_modules/office-ui-fabric-react/package.json');
+const corePackageData = require('office-ui-fabric-core/package.json');
+const reactPackageData = require('office-ui-fabric-react/package.json');
 
 export class HomePage extends React.Component<any, any> {
   public render(): JSX.Element {
