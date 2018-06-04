@@ -369,7 +369,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   private _validate = (event: React.FocusEvent<HTMLInputElement>): void => {
     const element: HTMLInputElement = event.target as HTMLInputElement;
     const value: string = element.value;
-    if (this.state.value) {
+    if (this.state.value !== undefined) {
       const newValue = this._onValidate!(value);
       if (newValue) {
         this._lastValidValue = newValue;
