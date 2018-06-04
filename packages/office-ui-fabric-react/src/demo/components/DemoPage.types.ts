@@ -11,7 +11,7 @@ export interface IDemoPageProps {
   componentUrl: string;
 
   /** Status of the component; e.g. keyboard accessible */
-  componentStatus: IComponentStatusProps;
+  componentStatus?: IComponentStatusProps;
 
   /** Array of examples, displayed in the order defined */
   examples: {
