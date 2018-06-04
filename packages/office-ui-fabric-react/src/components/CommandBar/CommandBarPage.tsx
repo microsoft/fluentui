@@ -68,9 +68,6 @@ export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}>
             { require<string>('!raw-loader!office-ui-fabric-react/src/components/CommandBar/docs/CommandBarDonts.md') }
           </PageMarkdown>
         }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/CommandBar/CommandBar.html'>Fabric JS</a>
-        }
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
