@@ -1,5 +1,8 @@
 import * as React from 'react';
-import { BaseComponent, css } from '../../Utilities';
+import {
+  BaseComponent,
+  css
+} from '../../Utilities';
 import { Link } from '../../Link';
 import { IGroupDividerProps } from './GroupedList.types';
 import { GroupSpacer } from './GroupSpacer';
@@ -8,9 +11,9 @@ const styles: any = stylesImport;
 
 export interface IGroupDividerProps {
   /**
-   * The Show All link text.
-   * @default 'Show All'
-   */
+ * The Show All link text.
+ * @default 'Show All'
+ */
   showAllLinkText: string;
 }
 
@@ -24,9 +27,9 @@ export class GroupShowAll extends BaseComponent<IGroupDividerProps, {}> {
 
     if (group) {
       return (
-        <div className={css('ms-groupFooter', styles.root)}>
-          {GroupSpacer({ count: groupLevel! })}
-          <Link onClick={this._onSummarizeClick}>{showAllLinkText}</Link>
+        <div className={ css('ms-groupFooter', styles.root) }>
+          { GroupSpacer({ count: groupLevel! }) }
+          <Link onClick={ this._onSummarizeClick }>{ showAllLinkText }</Link>
         </div>
       );
     }
@@ -38,5 +41,5 @@ export class GroupShowAll extends BaseComponent<IGroupDividerProps, {}> {
 
     ev.stopPropagation();
     ev.preventDefault();
-  };
+  }
 }

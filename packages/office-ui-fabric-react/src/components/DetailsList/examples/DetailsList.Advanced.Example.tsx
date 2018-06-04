@@ -6,7 +6,7 @@ import {
   IContextualMenuProps,
   IContextualMenuItem,
   DirectionalHint,
-  ContextualMenu
+  ContextualMenu,
 } from 'office-ui-fabric-react/lib/ContextualMenu';
 import {
   CheckboxVisibility,
@@ -70,15 +70,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
       selectionMode: SelectionMode.multiple,
       canResizeColumns: true,
       checkboxVisibility: CheckboxVisibility.onHover,
-      columns: this._buildColumns(
-        _items,
-        true,
-        this._onColumnClick,
-        '',
-        undefined,
-        undefined,
-        this._onColumnContextMenu
-      ),
+      columns: this._buildColumns(_items, true, this._onColumnClick, '', undefined, undefined, this._onColumnContextMenu),
       contextualMenuProps: undefined,
       sortedColumnKey: 'name',
       isSortedDescending: false,
@@ -116,32 +108,38 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     };
 
     return (
-      <div className="ms-DetailsListAdvancedExample">
-        <CommandBar items={this._getCommandItems()} />
+      <div className='ms-DetailsListAdvancedExample'>
+        <CommandBar items={ this._getCommandItems() } />
 
-        {isGrouped ? <TextField label="Group Item Limit" onChanged={this._onItemLimitChanged} /> : null}
+        {
+          (isGrouped) ?
+            <TextField label='Group Item Limit' onChanged={ this._onItemLimitChanged } /> :
+            (null)
+        }
 
         <DetailsList
-          setKey="items"
-          items={items as any[]}
-          groups={groups}
-          columns={columns}
-          checkboxVisibility={checkboxVisibility}
-          layoutMode={layoutMode}
-          isHeaderVisible={isHeaderVisible}
-          selectionMode={selectionMode}
-          constrainMode={constrainMode}
-          groupProps={groupProps}
-          enterModalSelectionOnTouch={true}
-          onItemInvoked={this._onItemInvoked}
-          onItemContextMenu={this._onItemContextMenu}
-          ariaLabelForListHeader="Column headers. Use menus to perform column operations like sort and filter"
-          ariaLabelForSelectAllCheckbox="Toggle selection for all items"
-          ariaLabelForSelectionColumn="Toggle selection"
-          onRenderMissingItem={this._onRenderMissingItem}
+          setKey='items'
+          items={ items as any[] }
+          groups={ groups }
+          columns={ columns }
+          checkboxVisibility={ checkboxVisibility }
+          layoutMode={ layoutMode }
+          isHeaderVisible={ isHeaderVisible }
+          selectionMode={ selectionMode }
+          constrainMode={ constrainMode }
+          groupProps={ groupProps }
+          enterModalSelectionOnTouch={ true }
+          onItemInvoked={ this._onItemInvoked }
+          onItemContextMenu={ this._onItemContextMenu }
+          ariaLabelForListHeader='Column headers. Use menus to perform column operations like sort and filter'
+          ariaLabelForSelectAllCheckbox='Toggle selection for all items'
+          ariaLabelForSelectionColumn='Toggle selection'
+          onRenderMissingItem={ this._onRenderMissingItem }
         />
 
-        {contextualMenuProps && <ContextualMenu {...contextualMenuProps} />}
+        { contextualMenuProps && (
+          <ContextualMenu { ...contextualMenuProps } />
+        ) }
       </div>
     );
   }
@@ -150,6 +148,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     index = Math.floor(index / PAGING_SIZE) * PAGING_SIZE;
 
     if (!this._isFetchingItems) {
+
       this._isFetchingItems = true;
 
       setTimeout(() => {
@@ -168,7 +167,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
   private _onRenderMissingItem = (index: number): null => {
     this._onDataMiss(index as number);
     return null;
-  };
+  }
 
   private _onToggleLazyLoad = (): void => {
     let { isLazyLoaded } = this.state;
@@ -179,7 +178,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
       isLazyLoaded: isLazyLoaded,
       items: isLazyLoaded ? _items.slice(0, PAGING_SIZE).concat(new Array(ITEMS_COUNT - PAGING_SIZE)) : _items
     });
-  };
+  }
 
   private _onToggleResizing = (): void => {
     const { items, sortedColumnKey, isSortedDescending } = this.state;
@@ -189,33 +188,27 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
 
     this.setState({
       canResizeColumns: canResizeColumns,
-      columns: this._buildColumns(
-        items as any[],
-        canResizeColumns,
-        this._onColumnClick,
-        sortedColumnKey,
-        isSortedDescending
-      )
+      columns: this._buildColumns(items as any[], canResizeColumns, this._onColumnClick, sortedColumnKey, isSortedDescending)
     });
-  };
+  }
 
   private _onLayoutChanged = (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem): void => {
     this.setState({
       layoutMode: menuItem.data
     });
-  };
+  }
 
   private _onConstrainModeChanged = (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem): void => {
     this.setState({
       constrainMode: menuItem.data
     });
-  };
+  }
 
   private _onSelectionChanged = (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem): void => {
     this.setState({
       selectionMode: menuItem.data
     });
-  };
+  }
 
   private _onItemLimitChanged = (value: string): void => {
     let newValue = parseInt(value, 10);
@@ -225,7 +218,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     this.setState({
       groupItemLimit: newValue
     });
-  };
+  }
 
   private _getCommandItems = (): IContextualMenuItem[] => {
     const {
@@ -307,7 +300,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
                     canCheck: true,
                     isChecked: checkboxVisibility === CheckboxVisibility.hidden,
                     onClick: () => this.setState({ checkboxVisibility: CheckboxVisibility.hidden })
-                  }
+                  },
                 ]
               }
             },
@@ -347,6 +340,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
                     checked: selectionMode === SelectionMode.none,
                     onClick: this._onSelectionChanged,
                     data: SelectionMode.none
+
                   },
                   {
                     key: SelectionMode[SelectionMode.single],
@@ -363,7 +357,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
                     checked: selectionMode === SelectionMode.multiple,
                     onClick: this._onSelectionChanged,
                     data: SelectionMode.multiple
-                  }
+                  },
                 ]
               }
             },
@@ -395,7 +389,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
         }
       }
     ];
-  };
+  }
 
   private _getContextualMenuProps(ev: React.MouseEvent<HTMLElement>, column: IColumn): IContextualMenuProps {
     const items = [
@@ -438,7 +432,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
 
   private _onItemInvoked = (item: any, index: number): void => {
     console.log('Item invoked', item, index);
-  };
+  }
 
   private _onItemContextMenu = (item: any, index: number, ev: MouseEvent): boolean => {
     if ((ev.target as HTMLElement).nodeName === 'A') {
@@ -446,7 +440,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     }
     console.log('Item context menu invoked', item, index);
     return false;
-  };
+  }
 
   private _onColumnClick = (ev: React.MouseEvent<HTMLElement>, column: IColumn): void => {
     if (column.columnActionsMode !== ColumnActionsMode.disabled) {
@@ -454,7 +448,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
         contextualMenuProps: this._getContextualMenuProps(ev, column)
       });
     }
-  };
+  }
 
   private _onColumnContextMenu = (column: IColumn, ev: React.MouseEvent<HTMLElement>): void => {
     if (column.columnActionsMode !== ColumnActionsMode.disabled) {
@@ -462,18 +456,16 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
         contextualMenuProps: this._getContextualMenuProps(ev, column)
       });
     }
-  };
+  }
 
   private _onContextualMenuDismissed = (): void => {
     this.setState({
       contextualMenuProps: undefined
     });
-  };
+  }
 
   private _onSortColumn = (key: string, isSortedDescending: boolean): void => {
-    const sortedItems = _items
-      .slice(0)
-      .sort((a: any, b: any) => ((isSortedDescending ? a[key] < b[key] : a[key] > b[key]) ? 1 : -1));
+    const sortedItems = _items.slice(0).sort((a: any, b: any) => (isSortedDescending ? a[key] < b[key] : a[key] > b[key]) ? 1 : -1);
 
     this.setState({
       items: sortedItems,
@@ -485,19 +477,17 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
         key,
         isSortedDescending,
         undefined,
-        this._onColumnContextMenu
-      ),
+        this._onColumnContextMenu),
       isSortedDescending: isSortedDescending,
       sortedColumnKey: key
     });
-  };
+  }
 
   private _onGroupByColumn = (column: IColumn): void => {
     const { key, isGrouped } = column;
     const { sortedColumnKey, isSortedDescending, groups, items, columns } = this.state;
 
-    if (isGrouped) {
-      // ungroup
+    if (isGrouped) { // ungroup
       this._onSortColumn(sortedColumnKey as string, !!isSortedDescending);
     } else {
       let groupedItems = [];
@@ -520,7 +510,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
         groups: newGroups
       });
     }
-  };
+  }
 
   private _groupByKey(groups: IGroup[], items: any[], key: string): any[] {
     let groupedItems: any[] = [];
@@ -541,7 +531,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
   }
 
   private _groupItems(items: any[], columnKey: string): any[] {
-    return items.slice(0).sort((a, b) => (a[columnKey] < b[columnKey] ? -1 : 1));
+    return items.slice(0).sort((a, b) => ((a[columnKey] < b[columnKey]) ? -1 : 1));
   }
 
   private _getGroups(groupedItems: any[], key: string, parentGroup?: IGroup): IGroup[] {
@@ -549,7 +539,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     const groups = groupedItems.reduce((current, item, index) => {
       const currentGroup = current[current.length - 1];
 
-      if (!currentGroup || this._getLeafGroupKey(currentGroup.key, separator) !== item[key]) {
+      if (!currentGroup || (this._getLeafGroupKey(currentGroup.key, separator) !== item[key])) {
         current.push({
           key: (parentGroup ? parentGroup.key + separator : '') + item[key],
           name: key + ': ' + item[key],
@@ -579,13 +569,13 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     this.setState({
       items: createListItems(1).concat(this.state.items)
     });
-  };
+  }
 
   private _onDeleteRow = (): void => {
     this.setState({
       items: this.state.items!.slice(1)
     });
-  };
+  }
 
   private _buildColumns(
     items: any[],
@@ -594,16 +584,8 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     sortedColumnKey?: string,
     isSortedDescending?: boolean,
     groupedColumnKey?: string,
-    onColumnContextMenu?: (column: IColumn, ev: React.MouseEvent<HTMLElement>) => any
-  ) {
-    const columns = buildColumns(
-      items,
-      canResizeColumns,
-      onColumnClick,
-      sortedColumnKey,
-      isSortedDescending,
-      groupedColumnKey
-    );
+    onColumnContextMenu?: (column: IColumn, ev: React.MouseEvent<HTMLElement>) => any) {
+    const columns = buildColumns(items, canResizeColumns, onColumnClick, sortedColumnKey, isSortedDescending, groupedColumnKey);
 
     columns.forEach(column => {
       column.onColumnContextMenu = onColumnContextMenu;
@@ -615,13 +597,13 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
         column.isMultiline = true;
         column.minWidth = 200;
       } else if (column.key === 'name') {
-        column.onRender = item => <Link data-selection-invoke={true}>{item.name}</Link>;
+        column.onRender = (item) => (
+          <Link data-selection-invoke={ true }>{ item.name }</Link>
+        );
       } else if (column.key === 'key') {
         column.columnActionsMode = ColumnActionsMode.disabled;
-        column.onRender = item => (
-          <Link href="https://microsoft.com" target="_blank" rel="noopener">
-            {item.key}
-          </Link>
+        column.onRender = (item) => (
+          <Link href='https://microsoft.com' target='_blank' rel='noopener'>{ item.key }</Link>
         );
         column.minWidth = 90;
         column.maxWidth = 90;

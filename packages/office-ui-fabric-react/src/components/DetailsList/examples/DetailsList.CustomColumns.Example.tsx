@@ -2,7 +2,11 @@ import * as React from 'react';
 import { createListItems } from '@uifabric/example-app-base';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
-import { DetailsList, buildColumns, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
+import {
+  DetailsList,
+  buildColumns,
+  IColumn
+} from 'office-ui-fabric-react/lib/DetailsList';
 
 let _items: any[];
 
@@ -12,6 +16,7 @@ export interface IDetailsListCustomColumnsExampleState {
 }
 
 export class DetailsListCustomColumnsExample extends React.Component<{}, IDetailsListCustomColumnsExampleState> {
+
   constructor(props: {}) {
     super(props);
 
@@ -28,13 +33,13 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
 
     return (
       <DetailsList
-        items={sortedItems as any[]}
-        setKey="set"
-        columns={columns}
-        onRenderItemColumn={_renderItemColumn}
-        onColumnHeaderClick={this._onColumnClick}
-        onItemInvoked={this._onItemInvoked}
-        onColumnHeaderContextMenu={this._onColumnHeaderContextMenu}
+        items={ sortedItems as any[] }
+        setKey='set'
+        columns={ columns }
+        onRenderItemColumn={ _renderItemColumn }
+        onColumnHeaderClick={ this._onColumnClick }
+        onItemInvoked={ this._onItemInvoked }
+        onColumnHeaderContextMenu={ this._onColumnHeaderContextMenu }
       />
     );
   }
@@ -65,7 +70,7 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
     this.setState({
       sortedItems: sortedItems,
       columns: columns!.map(col => {
-        col.isSorted = col.key === column.key;
+        col.isSorted = (col.key === column.key);
 
         if (col.isSorted) {
           col.isSortedDescending = isSortedDescending;
@@ -74,7 +79,7 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
         return col;
       })
     });
-  };
+  }
 
   private _onColumnHeaderContextMenu(column: IColumn | undefined, ev: React.MouseEvent<HTMLElement> | undefined): void {
     console.log(`column ${column!.key} contextmenu opened.`);
@@ -102,19 +107,15 @@ function _renderItemColumn(item: any, index: number, column: IColumn) {
 
   switch (column.key) {
     case 'thumbnail':
-      return <Image src={fieldContent} width={50} height={50} imageFit={ImageFit.cover} />;
+      return <Image src={ fieldContent } width={ 50 } height={ 50 } imageFit={ ImageFit.cover } />;
 
     case 'name':
-      return <Link href="#">{fieldContent}</Link>;
+      return <Link href='#'>{ fieldContent }</Link>;
 
     case 'color':
-      return (
-        <span data-selection-disabled={true} style={{ color: fieldContent, height: '100%', display: 'block' }}>
-          {fieldContent}
-        </span>
-      );
+      return <span data-selection-disabled={ true } style={ { color: fieldContent, height: '100%', display: 'block' } }>{ fieldContent }</span>;
 
     default:
-      return <span>{fieldContent}</span>;
+      return <span>{ fieldContent }</span>;
   }
 }

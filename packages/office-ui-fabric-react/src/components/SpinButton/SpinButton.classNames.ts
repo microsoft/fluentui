@@ -14,52 +14,64 @@ export interface ISpinButtonClassNames {
   arrowBox: string;
 }
 
-export const getClassNames = memoizeFunction(
-  (
-    styles: ISpinButtonStyles,
-    disabled: boolean,
-    isFocused: boolean,
-    keyboardSpinDirection: KeyboardSpinDirection,
-    labelPosition: Position = Position.start
-  ): ISpinButtonClassNames => {
-    return {
-      root: mergeStyles(styles.root),
-      labelWrapper: mergeStyles(styles.labelWrapper, _getStyleForLabelBasedOnPosition(labelPosition, styles)),
-      icon: mergeStyles(styles.icon, disabled && styles.iconDisabled),
-      label: mergeStyles(styles.label, disabled && styles.labelDisabled),
-      spinButtonWrapper: mergeStyles(
-        styles.spinButtonWrapper,
-        _getStyleForRootBasedOnPosition(labelPosition, styles),
-        !disabled && [
-          {
-            selectors: {
-              ':hover': styles.spinButtonWrapperHovered
-            }
-          },
-          isFocused && {
-            // This is to increase the specifity of the focus styles
-            // and make it equal to that of the hover styles.
-            selectors: {
-              '&&': styles.spinButtonWrapperFocused
-            }
-          }
-        ],
-        disabled && styles.spinButtonWrapperDisabled
-      ),
-      input: mergeStyles(
-        'ms-spinButton-input',
-        styles.input,
-        !disabled && {
+export const getClassNames = memoizeFunction((
+  styles: ISpinButtonStyles,
+  disabled: boolean,
+  isFocused: boolean,
+  keyboardSpinDirection: KeyboardSpinDirection,
+  labelPosition: Position = Position.start
+): ISpinButtonClassNames => {
+  return {
+    root: mergeStyles(
+      styles.root
+    ),
+    labelWrapper: mergeStyles(
+      styles.labelWrapper,
+      _getStyleForLabelBasedOnPosition(labelPosition, styles)
+    ),
+    icon: mergeStyles(
+      styles.icon,
+      disabled && styles.iconDisabled
+    ),
+    label: mergeStyles(
+      styles.label,
+      disabled && styles.labelDisabled
+    ),
+    spinButtonWrapper: mergeStyles(
+      styles.spinButtonWrapper,
+      _getStyleForRootBasedOnPosition(labelPosition, styles),
+      !disabled && [
+        {
           selectors: {
-            '::selection': styles.inputTextSelected
+            ':hover': styles.spinButtonWrapperHovered
           }
         },
-        disabled && styles.inputDisabled
-      ),
-      arrowBox: mergeStyles(styles.arrowButtonsContainer, disabled && styles.arrowButtonsContainerDisabled)
-    };
-  }
-);
+        isFocused && {
+          // This is to increase the specifity of the focus styles
+          // and make it equal to that of the hover styles.
+          selectors: {
+            '&&': styles.spinButtonWrapperFocused
+          }
+        }
+      ],
+      disabled && styles.spinButtonWrapperDisabled
+    ),
+    input: mergeStyles(
+      'ms-spinButton-input',
+      styles.input,
+      !disabled && {
+        selectors: {
+          '::selection': styles.inputTextSelected
+        }
+      },
+      disabled && styles.inputDisabled,
+    ),
+    arrowBox: mergeStyles(
+      styles.arrowButtonsContainer,
+      disabled && styles.arrowButtonsContainerDisabled
+    ),
+  };
+});
 
 /**
  * Returns the Style corresponding to the label position
@@ -86,6 +98,8 @@ function _getStyleForRootBasedOnPosition(labelPosition: Position, styles: ISpinB
     case Position.bottom:
       return styles.spinButtonWrapperTopBottom;
     default:
-      return {};
+      return {
+
+      };
   }
 }

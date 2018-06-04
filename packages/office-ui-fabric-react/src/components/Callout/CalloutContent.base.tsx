@@ -277,8 +277,8 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     this._async.setTimeout(() => {
       this._events.on(this._targetWindow, 'scroll', this._dismissOnScroll, true);
       this._events.on(this._targetWindow, 'resize', this.dismiss, true);
-      this._events.on(this._targetWindow.document.body, 'focus', this._dismissOnLostFocus, true);
-      this._events.on(this._targetWindow.document.body, 'click', this._dismissOnLostFocus, true);
+      this._events.on(this._targetWindow.document.documentElement, 'focus', this._dismissOnLostFocus, true);
+      this._events.on(this._targetWindow.document.documentElement, 'click', this._dismissOnLostFocus, true);
       this._hasListeners = true;
     }, 0);
   }
@@ -286,8 +286,8 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   private _removeListeners() {
     this._events.off(this._targetWindow, 'scroll', this._dismissOnScroll, true);
     this._events.off(this._targetWindow, 'resize', this.dismiss, true);
-    this._events.off(this._targetWindow.document.body, 'focus', this._dismissOnLostFocus, true);
-    this._events.off(this._targetWindow.document.body, 'click', this._dismissOnLostFocus, true);
+    this._events.off(this._targetWindow.document.documentElement, 'focus', this._dismissOnLostFocus, true);
+    this._events.off(this._targetWindow.document.documentElement, 'click', this._dismissOnLostFocus, true);
     this._hasListeners = false;
   }
 

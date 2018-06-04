@@ -2,6 +2,39 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.1.1",
+      "tag": "@uifabric/experiments_v6.1.1",
+      "date": "Mon, 04 Jun 2018 10:16:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "4e1cd119bbf0f75e0432b0f92bad342714b57bef",
+            "comment": "Updating react typings."
+          },
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "758d210836ab509a8e33d6b99990223cc7245f2a",
+            "comment": "Fixed tests to be compatible with jest 23"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.2.0 <7.0.0` to `>=6.3.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.0.0 <7.0.0` to `>=6.0.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `>=0.7.0 <1.0.0` to `>=0.7.1 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=5.2.2 <6.0.0` to `>=5.2.3 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.1.0",
       "tag": "@uifabric/experiments_v6.1.0",
       "date": "Fri, 01 Jun 2018 10:18:43 GMT",
