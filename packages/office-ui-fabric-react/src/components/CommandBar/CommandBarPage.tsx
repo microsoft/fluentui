@@ -28,39 +28,34 @@ export const CommandBarPageProps: IDemoPageProps = {
     {
       title: 'CommandBar with overflowing menu items',
       code: CommandBarBasicExampleCode,
-      view: <CommandBarBasicExample {...cmdBarParamsTextAndIcons} />
+      view: <CommandBarBasicExample { ...cmdBarParamsTextAndIcons } />
     },
     {
       title: 'CommandBar custom buttons',
       code: CommandBarButtonAsExampleCode,
-      view: <CommandBarButtonAsExample {...cmdBarParamsTextAndIcons} />
+      view: <CommandBarButtonAsExample { ...cmdBarParamsTextAndIcons } />
     }
   ],
   propertiesTablesSources: [
     require<
       string
-    >('!raw-loader!office-ui-fabric-react/src/components/CommandBar/CommandBar.types.ts'),
+      >('!raw-loader!office-ui-fabric-react/src/components/CommandBar/CommandBar.types.ts'),
     require<
       string
-    >('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/ContextualMenu.types.ts')
+      >('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/ContextualMenu.types.ts')
   ],
   overview: require<
     string
-  >('!raw-loader!office-ui-fabric-react/src/components/CommandBar/docs/CommandBarOverview.md'),
+    >('!raw-loader!office-ui-fabric-react/src/components/CommandBar/docs/CommandBarOverview.md'),
   bestPractices: '',
   dos: require<
     string
-  >('!raw-loader!office-ui-fabric-react/src/components/CommandBar/docs/CommandBarDos.md'),
+    >('!raw-loader!office-ui-fabric-react/src/components/CommandBar/docs/CommandBarDos.md'),
   donts: require<
     string
-  >('!raw-loader!office-ui-fabric-react/src/components/CommandBar/docs/CommandBarDonts.md'),
-  isHeaderVisible: true,
-  related: (
-    <a href='https://dev.office.com/fabric-js/Components/CommandBar/CommandBar.html'>
-      Fabric JS
-    </a>
-  )
+    >('!raw-loader!office-ui-fabric-react/src/components/CommandBar/docs/CommandBarDonts.md'),
+  isHeaderVisible: true
 };
 
 export const CommandBarPage = (props: { isHeaderVisible: boolean }) =>
-  <DemoPage {...{ ...CommandBarPageProps, ...props }} />;
+  <DemoPage { ...{ ...CommandBarPageProps, ...props } } />;
