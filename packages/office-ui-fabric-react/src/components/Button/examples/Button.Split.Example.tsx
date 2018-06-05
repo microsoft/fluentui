@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css, classNamesFunction, DATA_IS_SCROLLABLE_ATTRIBUTE } from '../../../Utilities';
+import { css, classNamesFunction } from '../../../Utilities';
 import { getStyles, IButtonBasicExampleStyleProps, IButtonBasicExampleStyles } from './Button.Basic.Example.styles';
 import { DefaultButton, IconButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { Label } from 'office-ui-fabric-react/lib/Label';

@@ -542,7 +542,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     classNames: ISplitButtonClassNames | undefined,
     keytipAttributes: any
   ): JSX.Element {
-    let { allowDisabledFocus, checked, disabled, menuIconProps } = this.props;
+    const { allowDisabledFocus, checked, disabled } = this.props;
+    let menuIconProps = this.props.menuIconProps;
 
     const { splitButtonAriaLabel } = this.props;
 
