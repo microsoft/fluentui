@@ -51,6 +51,7 @@ export interface ICalloutState {
 @customizable('CalloutContent', ['theme'])
 export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutState> {
   public static defaultProps = {
+    preventDismissOnLostFocus: false,
     preventDismissOnScroll: false,
     isBeakVisible: true,
     beakWidth: 16,
@@ -234,13 +235,15 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   protected _dismissOnLostFocus(ev: Event) {
     const target = ev.target as HTMLElement;
     const clickedOutsideCallout = this._hostElement.current && !elementContains(this._hostElement.current, target);
+    const { preventDismissOnLostFocus } = this.props;
 
     if (
-      (!this._target && clickedOutsideCallout) ||
-      (ev.target !== this._targetWindow &&
-        clickedOutsideCallout &&
-        ((this._target as MouseEvent).stopPropagation ||
-          (!this._target || (target !== this._target && !elementContains(this._target as HTMLElement, target)))))
+      !preventDismissOnLostFocus &&
+      ((!this._target && clickedOutsideCallout) ||
+        (ev.target !== this._targetWindow &&
+          clickedOutsideCallout &&
+          ((this._target as MouseEvent).stopPropagation ||
+            (!this._target || (target !== this._target && !elementContains(this._target as HTMLElement, target))))))
     ) {
       this.dismiss(ev);
     }

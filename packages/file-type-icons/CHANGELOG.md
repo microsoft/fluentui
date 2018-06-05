@@ -1,6 +1,13 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Mon, 04 Jun 2018 10:16:13 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Jun 2018 00:44:30 GMT and should not be manually modified.
+
+## 0.7.2
+Tue, 05 Jun 2018 00:44:30 GMT
+
+### Patches
+
+- Added Prettier
 
 ## 0.7.1
 Mon, 04 Jun 2018 10:16:13 GMT
