@@ -260,18 +260,6 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     }
   }
 
-  protected _dismissOnBlur(ev: Event) {
-    const target = ev.target as HTMLElement;
-    const clickedOutsideCallout = this._hostElement.current && !elementContains(this._hostElement.current, target);
-
-    if (
-      (!this._target && clickedOutsideCallout) ||
-      clickedOutsideCallout &&
-      (!this._target || (target !== this._target && !elementContains(this._target as HTMLElement, target)))) {
-      this.dismiss(ev);
-    }
-  }
-
   protected _setInitialFocus = (): void => {
     if (this.props.setInitialFocus && !this._didSetInitialFocus && this.state.positions && this._calloutElement.current) {
       this._didSetInitialFocus = true;
@@ -299,7 +287,6 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     this._async.setTimeout(() => {
       this._events.on(this._targetWindow, 'scroll', this._dismissOnScroll, true);
       this._events.on(this._targetWindow, 'resize', this.dismiss, true);
-      this._events.on(this._targetWindow, 'blur', this._dismissOnBlur, true);
       this._events.on(this._targetWindow.document.documentElement, 'focus', this._dismissOnLostFocus, true);
       this._events.on(this._targetWindow.document.documentElement, 'click', this._dismissOnLostFocus, true);
       this._hasListeners = true;
@@ -309,7 +296,6 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   private _removeListeners() {
     this._events.off(this._targetWindow, 'scroll', this._dismissOnScroll, true);
     this._events.off(this._targetWindow, 'resize', this.dismiss, true);
-    this._events.on(this._targetWindow, 'blur', this._dismissOnBlur, true);
     this._events.off(this._targetWindow.document.documentElement, 'focus', this._dismissOnLostFocus, true);
     this._events.off(this._targetWindow.document.documentElement, 'click', this._dismissOnLostFocus, true);
     this._hasListeners = false;
