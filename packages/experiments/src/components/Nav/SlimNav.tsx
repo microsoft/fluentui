@@ -44,9 +44,9 @@ class SlimNavComponent extends NavBase {
 
     return (
       <nav role="navigation">
-        {this.props.groups.map((group: ICustomNavLinkGroup, groupIndex: number) => {
+        { this.props.groups.map((group: ICustomNavLinkGroup, groupIndex: number) => {
           return this._renderGroup(group, groupIndex);
-        })}
+        }) }
       </nav>
     );
   }
@@ -162,19 +162,19 @@ class SlimNavComponent extends NavBase {
 
     return (
       <NavLink
-        id={link.key}
-        content={linkText}
-        href={link.url}
-        target={link.target}
-        dataHint={dataHint}
-        dataValue={link.key}
-        ariaLabel={linkText}
+        id={ link.key }
+        content={ linkText }
+        href={ link.url }
+        target={ link.target }
+        dataHint={ dataHint }
+        dataValue={ link.key }
+        ariaLabel={ linkText }
         role="menu"
-        onClick={this._onLinkClicked.bind(this, link)}
-        rootClassName={classNames.navFloatingItemRoot}
-        rightIconName={rightIconName}
-        textClassName={classNames.navItemNameColumn}
-        iconClassName={classNames.navItemIconColumn}
+        onClick={ this._onLinkClicked.bind(this, link) }
+        rootClassName={ classNames.navFloatingItemRoot }
+        rightIconName={ rightIconName }
+        textClassName={ classNames.navItemNameColumn }
+        iconClassName={ classNames.navItemIconColumn }
       />
     );
   }
@@ -187,11 +187,11 @@ class SlimNavComponent extends NavBase {
     const linkText = this.getLinkText(link, this.props.showMore);
 
     return (
-      <li role="listitem" key={link.key || linkIndex} title={linkText}>
-        {this._renderCompositeLink(link, linkIndex, nestingLevel)}
+      <li role="listitem" key={ link.key || linkIndex } title={ linkText }>
+        { this._renderCompositeLink(link, linkIndex, nestingLevel) }
         {// show child links
-        // 1. only for the first level
-        nestingLevel == 0 ? <div>{this._renderFloatingLinks(link.links as INavLink[], ++nestingLevel)}</div> : null}
+          // 1. only for the first level
+          nestingLevel == 0 ? <div>{ this._renderFloatingLinks(link.links as INavLink[], ++nestingLevel) }</div> : null }
       </li>
     );
   }
@@ -203,9 +203,9 @@ class SlimNavComponent extends NavBase {
 
     return (
       <ul role="list">
-        {links.map((link: INavLink, linkIndex: number) => {
+        { links.map((link: INavLink, linkIndex: number) => {
           return this._renderFloatingLink(link, linkIndex, nestingLevel);
-        })}
+        }) }
       </ul>
     );
   }
@@ -220,8 +220,8 @@ class SlimNavComponent extends NavBase {
     const classNames = getClassNames(styles!, { hasChildren, scrollTop: link.scrollTop });
 
     return (
-      <div className={classNames.navFloatingRoot} data-floating-nav>
-        {this._renderFloatingLinks([link], 0 /* nestingLevel */)}
+      <div className={ classNames.navFloatingRoot } data-floating-nav>
+        { this._renderFloatingLinks([link], 0 /* nestingLevel */) }
       </div>
     );
   }
@@ -242,27 +242,27 @@ class SlimNavComponent extends NavBase {
     return (
       <li
         role="listitem"
-        key={link.key || linkIndex}
-        onMouseEnter={this._onLinkMouseEnterOrLeave.bind(this, link)}
-        onMouseLeave={this._onLinkMouseEnterOrLeave.bind(this, link)}
-        onKeyDown={this._onKeyDown.bind(this, link)}
-        title={linkText}
-        className={classNames.navSlimItemRoot}
+        key={ link.key || linkIndex }
+        onMouseEnter={ this._onLinkMouseEnterOrLeave.bind(this, link) }
+        onMouseLeave={ this._onLinkMouseEnterOrLeave.bind(this, link) }
+        onKeyDown={ this._onKeyDown.bind(this, link) }
+        title={ linkText }
+        className={ classNames.navSlimItemRoot }
       >
         <NavLink
-          id={link.key}
-          href={link.url}
-          target={link.target}
-          dataHint={dataHint}
-          dataValue={link.key}
-          ariaLabel={linkText}
+          id={ link.key }
+          href={ link.url }
+          target={ link.target }
+          dataHint={ dataHint }
+          dataValue={ link.key }
+          ariaLabel={ linkText }
           role="menu"
-          onClick={onClickHandler}
-          rootClassName={classNames.navItemRoot}
-          leftIconName={link.icon}
-          iconClassName={classNames.navItemIconColumn}
+          onClick={ onClickHandler }
+          rootClassName={ classNames.navItemRoot }
+          leftIconName={ link.icon }
+          iconClassName={ classNames.navItemIconColumn }
         />
-        {this._renderFloatingNav(link, linkIndex)}
+        { this._renderFloatingNav(link, linkIndex) }
       </li>
     );
   }
@@ -276,7 +276,7 @@ class SlimNavComponent extends NavBase {
 
     return (
       <ul role="list">
-        {links.map((link: INavLink, linkIndex: number) => {
+        { links.map((link: INavLink, linkIndex: number) => {
           if (enableCustomization && link.isHidden && !showMore) {
             // atleast one link is hidden
             this._hasAtleastOneHiddenLink = true;
@@ -289,7 +289,7 @@ class SlimNavComponent extends NavBase {
           } else {
             return this._renderLink(link, linkIndex, nestingLevel);
           }
-        })}
+        }) }
       </ul>
     );
   }
@@ -308,15 +308,23 @@ class SlimNavComponent extends NavBase {
 
     const classNames = getClassNames(styles!, {});
 
+
+    let isGroupHeaderVisible = false;
+
+    // first group header is hidden by default, display group header for other groups only if there are visible links
+    if (groupIndex > 0) {
+      isGroupHeaderVisible = this.hasAtleastOneVisibleLink(group.links);
+    }
+
     return (
-      <div key={groupIndex}>
+      <div key={ groupIndex }>
         {// do not render group header for the first group
-        groupIndex > 0 ? (
-          <div className={classNames.navGroupSeparatorRoot}>
-            <div className={classNames.navGroupSeparatorHrLine} />
-          </div>
-        ) : null}
-        {this._renderLinks(group.links, 0 /* nestingLevel */)}
+          isGroupHeaderVisible ? (
+            <div className={ classNames.navGroupSeparatorRoot }>
+              <div className={ classNames.navGroupSeparatorHrLine } />
+            </div>
+          ) : null }
+        { this._renderLinks(group.links, 0 /* nestingLevel */) }
       </div>
     );
   }
