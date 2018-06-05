@@ -29,13 +29,8 @@ describe('FormDropdown Unit Tests', () => {
 
       const errorFunction = () => {
         ReactTestUtils.renderIntoDocument(
-          <Form
-            onSubmit={ undefined }
-          >
-            <FormDropdown
-              inputKey={ null as any }
-              value={ undefined }
-            />
+          <Form onSubmit={undefined}>
+            <FormDropdown inputKey={null as any} value={undefined} />
           </Form>
         );
       };
@@ -54,13 +49,8 @@ describe('FormDropdown Unit Tests', () => {
 
     it('Null props still render', () => {
       renderedForm = ReactTestUtils.renderIntoDocument(
-        <Form
-          onSubmit={ undefined }
-        >
-          <FormDropdown
-            inputKey='name'
-            value={ undefined }
-          />
+        <Form onSubmit={undefined}>
+          <FormDropdown inputKey="name" value={undefined} />
         </Form>
       ) as Form;
 
@@ -71,24 +61,25 @@ describe('FormDropdown Unit Tests', () => {
       let result: any;
       renderedForm = ReactTestUtils.renderIntoDocument(
         <Form
-          onSubmit={ (value: any) => { result = value; } }
+          onSubmit={(value: any) => {
+            result = value;
+          }}
         >
           <FormDropdown
-            inputKey='name'
-            dropdownProps={ {
-              options: [
-                { key: 1, text: 'Option 1' },
-                { key: 0, text: 'Option 2' },
-                { key: 2, text: 'Option 3' }
-              ]
-            } }
-            value={ 0 }
+            inputKey="name"
+            dropdownProps={{
+              options: [{ key: 1, text: 'Option 1' }, { key: 0, text: 'Option 2' }, { key: 2, text: 'Option 3' }]
+            }}
+            value={0}
           />
         </Form>
       ) as Form;
 
       renderedInput = ReactTestUtils.findRenderedDOMComponentWithClass(renderedForm, 'ms-Dropdown') as HTMLElement;
-      const form: HTMLFormElement = ReactTestUtils.findRenderedDOMComponentWithTag(renderedForm, 'form') as HTMLFormElement;
+      const form: HTMLFormElement = ReactTestUtils.findRenderedDOMComponentWithTag(
+        renderedForm,
+        'form'
+      ) as HTMLFormElement;
       ReactTestUtils.Simulate.submit(form);
 
       expect(result['name']).toEqual(0);
@@ -114,13 +105,11 @@ describe('FormDropdown Unit Tests', () => {
     it('Dropdown is leading and trailing debounced', () => {
       const updateStub: sinon.SinonStub = sinon.stub();
       const renderedForm = ReactTestUtils.renderIntoDocument(
-        <Form
-          onUpdated={ updateStub }
-        >
+        <Form onUpdated={updateStub}>
           <ExtendsDropdown
-            inputKey='name'
-            value={ 0 }
-            dropdownProps={ {
+            inputKey="name"
+            value={0}
+            dropdownProps={{
               options: [
                 {
                   key: 0,
@@ -131,7 +120,7 @@ describe('FormDropdown Unit Tests', () => {
                   text: ''
                 }
               ]
-            } }
+            }}
           />
         </Form>
       ) as Form;

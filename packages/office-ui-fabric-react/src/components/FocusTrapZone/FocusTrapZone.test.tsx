@@ -1,17 +1,17 @@
 import * as React from 'react';
+
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import { KeyCodes, createRef } from '../../Utilities';
+import { KeyCodes } from '../../Utilities';
+
 import { FocusZone, FocusZoneDirection } from '../FocusZone';
 import { FocusTrapZone } from './FocusTrapZone';
 
 // rAF does not exist in node - let's mock it
 window.requestAnimationFrame = (callback: FrameRequestCallback) => {
-  const r = window.setTimeout(callback, 16);
-  jest.runAllTimers();
-  return r;
+  return window.setTimeout(callback, 16);
 };
-const animationFrame = () => new Promise(resolve => window.requestAnimationFrame(resolve));
+
 jest.useFakeTimers();
 
 describe('FocusTrapZone', () => {
@@ -20,10 +20,12 @@ describe('FocusTrapZone', () => {
     lastFocusedElement = ev.target;
   }
 
-  function setupElement(element: HTMLElement, {
-    clientRect,
-    isVisible = true
-  }: {
+  function setupElement(
+    element: HTMLElement,
+    {
+      clientRect,
+      isVisible = true
+    }: {
       clientRect: {
         top: number;
         left: number;
@@ -31,7 +33,8 @@ describe('FocusTrapZone', () => {
         right: number;
       };
       isVisible?: boolean;
-    }): void {
+    }
+  ): void {
     element.getBoundingClientRect = () => ({
       top: clientRect.top,
       left: clientRect.left,
@@ -52,25 +55,25 @@ describe('FocusTrapZone', () => {
 
   it('can tab across FocusZones with different button structures', () => {
     const component = ReactTestUtils.renderIntoDocument(
-      <div { ...{ onFocusCapture: _onFocus } }>
-        <FocusTrapZone forceFocusInsideTrap={ false }>
-          <FocusZone direction={ FocusZoneDirection.horizontal } data-is-visible={ true }>
-            <div data-is-visible={ true }>
-              <button className='a'>a</button>
+      <div {...{ onFocusCapture: _onFocus }}>
+        <FocusTrapZone forceFocusInsideTrap={false}>
+          <FocusZone direction={FocusZoneDirection.horizontal} data-is-visible={true}>
+            <div data-is-visible={true}>
+              <button className="a">a</button>
             </div>
-            <div data-is-visible={ true }>
-              <button className='b'>b</button>
+            <div data-is-visible={true}>
+              <button className="b">b</button>
             </div>
-            <div data-is-visible={ true }>
-              <button className='c'>c</button>
+            <div data-is-visible={true}>
+              <button className="c">c</button>
             </div>
           </FocusZone>
-          <FocusZone direction={ FocusZoneDirection.horizontal } data-is-visible={ true }>
-            <div data-is-visible={ true }>
-              <div data-is-visible={ true }>
-                <button className='d'>d</button>
-                <button className='e'>e</button>
-                <button className='f'>f</button>
+          <FocusZone direction={FocusZoneDirection.horizontal} data-is-visible={true}>
+            <div data-is-visible={true}>
+              <div data-is-visible={true}>
+                <button className="d">d</button>
+                <button className="e">e</button>
+                <button className="f">f</button>
               </div>
             </div>
           </FocusZone>
@@ -165,20 +168,20 @@ describe('FocusTrapZone', () => {
 
   it('can tab across a FocusZone with different button structures', () => {
     const component = ReactTestUtils.renderIntoDocument(
-      <div { ...{ onFocusCapture: _onFocus } }>
-        <FocusTrapZone forceFocusInsideTrap={ false }>
-          <div data-is-visible={ true }>
-            <button className='x'>x</button>
+      <div {...{ onFocusCapture: _onFocus }}>
+        <FocusTrapZone forceFocusInsideTrap={false}>
+          <div data-is-visible={true}>
+            <button className="x">x</button>
           </div>
-          <FocusZone direction={ FocusZoneDirection.horizontal } data-is-visible={ true }>
-            <div data-is-visible={ true }>
-              <button className='a'>a</button>
+          <FocusZone direction={FocusZoneDirection.horizontal} data-is-visible={true}>
+            <div data-is-visible={true}>
+              <button className="a">a</button>
             </div>
-            <div data-is-visible={ true }>
-              <div data-is-visible={ true }>
-                <button className='b'>b</button>
-                <button className='c'>c</button>
-                <button className='d'>d</button>
+            <div data-is-visible={true}>
+              <div data-is-visible={true}>
+                <button className="b">b</button>
+                <button className="c">c</button>
+                <button className="d">d</button>
               </div>
             </div>
           </FocusZone>
@@ -259,96 +262,5 @@ describe('FocusTrapZone', () => {
     });
 
     jest.runAllTimers();
-  });
-
-  describe('Focusing the FTZ', () => {
-    function setupTest(focusPreviouslyFocusedInnerElement: boolean) {
-      const focusTrapZoneRef = createRef<FocusTrapZone>();
-      const topLevelDiv = ReactTestUtils.renderIntoDocument(
-        <div onFocusCapture={ _onFocus }>
-          <FocusTrapZone
-            forceFocusInsideTrap={ false }
-            focusPreviouslyFocusedInnerElement={ focusPreviouslyFocusedInnerElement }
-            data-is-focusable={ true }
-            ref={ focusTrapZoneRef }
-          >
-            <button className={ 'f' }>f</button>
-            <FocusZone>
-              <button className={ 'a' }>a</button>
-              <button className={ 'b' }>b</button>
-            </FocusZone>
-          </FocusTrapZone>
-          <button className={ 'z' }>z</button>
-        </div>
-      ) as HTMLElement;
-
-      const focusTrapZone = ReactDOM.findDOMNode(focusTrapZoneRef.current!) as Element;
-      const buttonF = topLevelDiv.querySelector('.f') as HTMLElement;
-      const buttonA = topLevelDiv.querySelector('.a') as HTMLElement;
-      const buttonB = topLevelDiv.querySelector('.b') as HTMLElement;
-      const buttonZ = topLevelDiv.querySelector('.z') as HTMLElement;
-
-      // Assign bounding locations to buttons.
-      setupElement(buttonF, { clientRect: { top: 0, bottom: 10, left: 0, right: 10 } });
-      setupElement(buttonA, { clientRect: { top: 10, bottom: 20, left: 0, right: 10 } });
-      setupElement(buttonB, { clientRect: { top: 20, bottom: 30, left: 0, right: 10 } });
-      setupElement(buttonZ, { clientRect: { top: 30, bottom: 40, left: 0, right: 10 } });
-
-      return { focusTrapZone, buttonF, buttonA, buttonB, buttonZ };
-    }
-
-    it('goes to previously focused element when focusing the FTZ', async () => {
-      expect.assertions(4);
-
-      const { focusTrapZone, buttonF, buttonB, buttonZ } = setupTest(true /*focusPreviouslyFocusedInnerElement*/);
-
-      // Manually focusing FTZ when FTZ has never
-      // had focus within should go to 1st focusable inner element.
-      ReactTestUtils.Simulate.focus(focusTrapZone);
-      await animationFrame();
-      expect(lastFocusedElement).toBe(buttonF);
-
-      // Focus inside the trap zone, not the first element.
-      ReactTestUtils.Simulate.focus(buttonB);
-      await animationFrame();
-      expect(lastFocusedElement).toBe(buttonB);
-
-      // Focus outside the trap zone
-      ReactTestUtils.Simulate.focus(buttonZ);
-      await animationFrame();
-      expect(lastFocusedElement).toBe(buttonZ);
-
-      // Manually focusing FTZ should return to originally focused inner element.
-      ReactTestUtils.Simulate.focus(focusTrapZone);
-      await animationFrame();
-      expect(lastFocusedElement).toBe(buttonB);
-    });
-
-    it('goes to first focusable element when focusing the FTZ', async () => {
-      expect.assertions(4);
-
-      const { focusTrapZone, buttonF, buttonB, buttonZ } = setupTest(false /*focusPreviouslyFocusedInnerElement*/);
-
-      // Manually focusing FTZ when FTZ has never
-      // had focus within should go to 1st focusable inner element.
-      ReactTestUtils.Simulate.focus(focusTrapZone);
-      await animationFrame();
-      expect(lastFocusedElement).toBe(buttonF);
-
-      // Focus inside the trap zone, not the first element.
-      ReactTestUtils.Simulate.focus(buttonB);
-      await animationFrame();
-      expect(lastFocusedElement).toBe(buttonB);
-
-      // Focus outside the trap zone
-      ReactTestUtils.Simulate.focus(buttonZ);
-      await animationFrame();
-      expect(lastFocusedElement).toBe(buttonZ);
-
-      // Manually focusing FTZ should go to the first focusable element.
-      ReactTestUtils.Simulate.focus(focusTrapZone);
-      await animationFrame();
-      expect(lastFocusedElement).toBe(buttonF);
-    });
   });
 });

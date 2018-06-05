@@ -12,7 +12,7 @@ declare class WeakMap {
 let _resetCounter = 0;
 const _emptyObject = { empty: true };
 const _dictionary: any = {};
-let _weakMap = (typeof WeakMap === 'undefined') ? null : WeakMap;
+let _weakMap = typeof WeakMap === 'undefined' ? null : WeakMap;
 
 interface IMemoizeNode {
   map: WeakMap | null;
@@ -45,11 +45,11 @@ export function resetMemoizations(): void {
 export function memoize<T extends Function>(
   target: any,
   key: string,
-  descriptor: TypedPropertyDescriptor<T>): {
+  descriptor: TypedPropertyDescriptor<T>
+): {
     configurable: boolean;
     get(): T;
   } {
-
   // We bind to "null" to prevent people from inadvertently pulling values from "this",
   // rather than passing them in as input values which can be memoized.
   let fn = memoizeFunction(descriptor.value && descriptor.value.bind(null));

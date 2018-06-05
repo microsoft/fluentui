@@ -1,8 +1,4 @@
-import {
-  BaseComponent,
-  IRenderComponent,
-  mergeAriaAttributeValues
-} from '../../Utilities';
+import { BaseComponent, IRenderComponent, mergeAriaAttributeValues } from '../../Utilities';
 import { IKeytipDataProps } from './KeytipData.types';
 import { IKeytipProps } from '../../Keytip';
 import { KeytipManager } from '../../utilities/keytips/KeytipManager';
@@ -48,7 +44,7 @@ export class KeytipData extends BaseComponent<IKeytipDataProps & IRenderComponen
   private _getKtpProps(): IKeytipProps {
     return {
       disabled: this.props.disabled,
-      ...this.props.keytipProps!,
+      ...this.props.keytipProps!
     };
   }
 

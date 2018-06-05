@@ -26,63 +26,55 @@ export class PersonaPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='Persona'
-        componentName='PersonaExample'
-        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Persona'
+        title="Persona"
+        componentName="PersonaExample"
+        componentUrl="https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Persona"
         exampleCards={
           <div>
-            <ExampleCard title='Persona in various sizes' code={ PersonaBasicExampleCode }>
+            <ExampleCard title="Persona in various sizes" code={PersonaBasicExampleCode}>
               <PersonaBasicExample />
             </ExampleCard>
-            <ExampleCard title='Alternative small personas' code={ PersonaAlternateExampleCode }>
+            <ExampleCard title="Alternative small personas" code={PersonaAlternateExampleCode}>
               <PersonaAlternateExample />
             </ExampleCard>
-            <ExampleCard title='Persona with initials' code={ PersonaInitialsExampleCode }>
+            <ExampleCard title="Persona with initials" code={PersonaInitialsExampleCode}>
               <PersonaInitialsExample />
             </ExampleCard>
-            <ExampleCard title='Rendering custom persona text' code={ PersonaCustomRenderExampleCode }>
+            <ExampleCard title="Rendering custom persona text" code={PersonaCustomRenderExampleCode}>
               <PersonaCustomRenderExample />
             </ExampleCard>
-            <ExampleCard title='Rendering custom coin' code={ PersonaCustomCoinRenderExampleCode }>
+            <ExampleCard title="Rendering custom coin" code={PersonaCustomCoinRenderExampleCode}>
               <PersonaCustomCoinRenderExample />
             </ExampleCard>
-            <ExampleCard title='Rendering unknown persona coin' code={ UnknownPersonaExampleCode }>
+            <ExampleCard title="Rendering unknown persona coin" code={UnknownPersonaExampleCode}>
               <UnknownPersonaExample />
             </ExampleCard>
           </div>
         }
-        allowNativeProps={ true }
+        allowNativeProps={true}
         propertiesTables={
           <PropertiesTableSet
-            sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/Persona.types.ts')
-            ] }
+            sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/Persona.types.ts')]}
           />
         }
         overview={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/docs/PersonaOverview.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/docs/PersonaOverview.md')}
           </PageMarkdown>
         }
-        bestPractices={
-          <div />
-        }
+        bestPractices={<div />}
         dos={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/docs/PersonaDos.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/docs/PersonaDos.md')}
           </PageMarkdown>
         }
         donts={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/docs/PersonaDonts.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/docs/PersonaDonts.md')}
           </PageMarkdown>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }
-        componentStatus={
-          <ComponentStatus
-            { ...PersonaStatus }
-          />
-        }
+        isHeaderVisible={this.props.isHeaderVisible}
+        componentStatus={<ComponentStatus {...PersonaStatus} />}
       />
     );
   }

@@ -5,13 +5,14 @@
   "scripts": {
     "clean": "",
     "build": "node -v",
+    "code-style": "node -v",
     "bundlesize": "bundlesize --debug"
   },
   "devDependencies": {
     "@microsoft/api-extractor": "^4.2.6",
     "@microsoft/load-themed-styles": "^1.7.60",
     "@microsoft/loader-load-themed-styles": "^1.6.0",
-    "@uifabric/merge-styles": ">=6.0.0 <7.0.0",
+    "@uifabric/merge-styles": ">=6.0.2 <7.0.0",
     "autoprefixer": "^7.1.5",
     "bundlesize": "^0.15.2",
     "chalk": "^2.1.0",
@@ -30,6 +31,7 @@
     "postcss": "^6.0.9",
     "postcss-loader": "^2.0.9",
     "postcss-modules": "^0.8.0",
+    "prettier": "^1.12.1",
     "raf": "^3.4.0",
     "raw-loader": "^0.5.1",
     "resolve": "^1.7.1",

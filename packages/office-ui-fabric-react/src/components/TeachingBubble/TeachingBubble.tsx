@@ -23,7 +23,7 @@ export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachin
       gapSpace: 0,
       setInitialFocus: true,
       doNotLayer: false,
-      directionalHint: DirectionalHint.rightCenter,
+      directionalHint: DirectionalHint.rightCenter
     }
   };
 
@@ -33,15 +33,14 @@ export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachin
   constructor(props: ITeachingBubbleProps) {
     super(props);
 
-    this.state = {
-    };
+    this.state = {};
 
     this._defaultCalloutProps = {
       beakWidth: 16,
       gapSpace: 0,
       setInitialFocus: true,
       doNotLayer: false,
-      directionalHint: DirectionalHint.rightCenter,
+      directionalHint: DirectionalHint.rightCenter
     };
   }
 
@@ -51,12 +50,17 @@ export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachin
 
     return (
       <Callout
-        target={ targetElement }
-        onDismiss={ onDismiss }
-        { ...calloutProps }
-        className={ css('ms-TeachingBubble', styles.root, this.props.isWide ? styles.wideCallout : null, calloutProps ? calloutProps.className : undefined) }
+        target={targetElement}
+        onDismiss={onDismiss}
+        {...calloutProps}
+        className={css(
+          'ms-TeachingBubble',
+          styles.root,
+          this.props.isWide ? styles.wideCallout : null,
+          calloutProps ? calloutProps.className : undefined
+        )}
       >
-        <TeachingBubbleContent { ...this.props } />
+        <TeachingBubbleContent {...this.props} />
       </Callout>
     );
   }

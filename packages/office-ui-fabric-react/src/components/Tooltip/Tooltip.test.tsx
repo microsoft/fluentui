@@ -52,17 +52,15 @@ describe('Tooltip', () => {
 
     const component = mount(
       <TooltipBase
-        calloutProps={ calloutProps }
-        content={ content }
-        directionalHint={ directionalHint }
-        directionalHintForRTL={ directionalHintForRTL }
-        onRenderContent={
-          () => {
-            onRenderCalled = true;
-            return null;
-          }
-        }
-        targetElement={ targetElement }
+        calloutProps={calloutProps}
+        content={content}
+        directionalHint={directionalHint}
+        directionalHintForRTL={directionalHintForRTL}
+        onRenderContent={() => {
+          onRenderCalled = true;
+          return null;
+        }}
+        targetElement={targetElement}
       />
     );
 
@@ -70,7 +68,7 @@ describe('Tooltip', () => {
 
     const callout = component.find('Callout');
 
-    Object.keys(calloutProps).forEach((key: (keyof ICalloutProps)) => {
+    Object.keys(calloutProps).forEach((key: keyof ICalloutProps) => {
       expect(callout.prop(key)).toEqual(calloutProps[key]);
     });
 

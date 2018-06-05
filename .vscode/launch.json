@@ -8,14 +8,9 @@
       "program": "${workspaceRoot}/scripts/debug-test.js",
       "cwd": "${fileDirname}",
       "stopOnEntry": false,
-      "args": [
-        "-i"
-      ],
+      "args": ["-i"],
       "runtimeExecutable": null,
-      "runtimeArgs": [
-        "--nolazy",
-        "--debug"
-      ],
+      "runtimeArgs": ["--nolazy", "--debug"],
       "env": {
         "NODE_ENV": "development"
       },
@@ -48,14 +43,9 @@
       "program": "${workspaceRoot}/scripts/build.js",
       "cwd": "${workspaceRoot}/packages/office-ui-fabric-react",
       "stopOnEntry": false,
-      "args": [
-        "ts"
-      ],
+      "args": ["ts"],
       "runtimeExecutable": null,
-      "runtimeArgs": [
-        "--nolazy",
-        "--debug"
-      ],
+      "runtimeArgs": ["--nolazy", "--debug"],
       "env": {
         "NODE_ENV": "development"
       },
@@ -67,17 +57,10 @@
       "request": "launch",
       "program": "${workspaceRoot}/scripts/build.js",
       "stopOnEntry": false,
-      "args": [
-        "webpack",
-        "--",
-        "--production"
-      ],
+      "args": ["webpack", "--", "--production"],
       "cwd": "${workspaceRoot}/apps/fabric-website",
       "runtimeExecutable": null,
-      "runtimeArgs": [
-        "--nolazy",
-        "--debug"
-      ],
+      "runtimeArgs": ["--nolazy", "--debug"],
       "env": {
         "NODE_ENV": "development"
       }
@@ -88,18 +71,10 @@
       "request": "launch",
       "program": "${workspaceRoot}/scripts/build.js",
       "stopOnEntry": false,
-      "args": [
-        "webpack",
-        "--",
-        "--production",
-        "--dogfood"
-      ],
+      "args": ["webpack", "--", "--production", "--dogfood"],
       "cwd": "${workspaceRoot}/apps/fabric-website",
       "runtimeExecutable": null,
-      "runtimeArgs": [
-        "--nolazy",
-        "--debug"
-      ],
+      "runtimeArgs": ["--nolazy", "--debug"],
       "env": {
         "NODE_ENV": "development"
       }
@@ -110,16 +85,10 @@
       "request": "launch",
       "program": "${workspaceRoot}/apps/ssr-tests/node_modules/mocha/bin/_mocha",
       "stopOnEntry": true,
-      "args": [
-        "--debug",
-        "dist/test-bundle.js"
-      ],
+      "args": ["--debug", "dist/test-bundle.js"],
       "cwd": "${workspaceRoot}/apps/ssr-tests",
       "runtimeExecutable": null,
-      "runtimeArgs": [
-        "--nolazy",
-        "--debug"
-      ],
+      "runtimeArgs": ["--nolazy", "--debug"],
       "env": {
         "NODE_ENV": "development"
       },
@@ -132,15 +101,9 @@
       "program": "${workspaceRoot}/scripts/create-component.js",
       "cwd": "${workspaceRoot}",
       "stopOnEntry": false,
-      "args": [
-        "--name",
-        "TestComponentName"
-      ],
+      "args": ["--name", "TestComponentName"],
       "runtimeExecutable": null,
-      "runtimeArgs": [
-        "--nolazy",
-        "--debug"
-      ],
+      "runtimeArgs": ["--nolazy", "--debug"],
       "env": {
         "NODE_ENV": "development"
       },

@@ -108,5 +108,4 @@ export class GlobalSettings {
   public static removeChangeListener(cb: IChangeEventCallback): void {
     delete _callbacks[cb.__id__ as string];
   }
-
 }

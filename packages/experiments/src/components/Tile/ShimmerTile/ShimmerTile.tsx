@@ -1,9 +1,5 @@
 import { styled } from '../../../Utilities';
-import {
-  IShimmerTileProps,
-  IShimmerTileStyleProps,
-  IShimmerTileStyles
-} from './ShimmerTile.types';
+import { IShimmerTileProps, IShimmerTileStyleProps, IShimmerTileStyles } from './ShimmerTile.types';
 import { ShimmerTileBase } from './ShimmerTile.base';
 import { getStyles } from './ShimmerTile.styles';
 

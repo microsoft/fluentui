@@ -1,16 +1,7 @@
 import { Customizations } from '@uifabric/utilities';
-import {
-  IPalette,
-  ISemanticColors,
-  ITheme,
-  IPartialTheme
-} from '../interfaces/index';
-import {
-  DefaultFontStyles
-} from './DefaultFontStyles';
-import {
-  DefaultPalette
-} from './DefaultPalette';
+import { IPalette, ISemanticColors, ITheme, IPartialTheme } from '../interfaces/index';
+import { DefaultFontStyles } from './DefaultFontStyles';
+import { DefaultPalette } from './DefaultPalette';
 import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
 
 let _theme: ITheme = {
@@ -18,7 +9,7 @@ let _theme: ITheme = {
   semanticColors: _makeSemanticColorsFromPalette(DefaultPalette, false, false),
   fonts: DefaultFontStyles,
   isInverted: false,
-  disableGlobalClassNames: false,
+  disableGlobalClassNames: false
 };
 let _onThemeChangeCallbacks: Array<(theme: ITheme) => void> = [];
 
@@ -109,7 +100,10 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
   }
 
   // mix in custom overrides with good slots first, since custom overrides might be used in fixing deprecated slots
-  let newSemanticColors = { ..._makeSemanticColorsFromPalette(newPalette, !!theme.isInverted, depComments), ...theme.semanticColors };
+  let newSemanticColors = {
+    ..._makeSemanticColorsFromPalette(newPalette, !!theme.isInverted, depComments),
+    ...theme.semanticColors
+  };
 
   return {
     palette: newPalette,
@@ -119,7 +113,7 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
     },
     semanticColors: newSemanticColors,
     isInverted: !!theme.isInverted,
-    disableGlobalClassNames: !!theme.disableGlobalClassNames,
+    disableGlobalClassNames: !!theme.disableGlobalClassNames
   };
 }
 

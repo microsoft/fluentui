@@ -43,15 +43,16 @@ function _onLoad(): void {
 
   ReactDOM.render(
     <Fabric>
-      <Router onNewRouteLoaded={ _scrollAnchorLink }>
-        { _getRoutes() }
-      </Router>
+      <Router onNewRouteLoaded={_scrollAnchorLink}>{_getRoutes()}</Router>
     </Fabric>,
-    rootElement);
+    rootElement
+  );
 }
 
 function _getRoutes(): JSX.Element[] {
-  const routes = AppDefinition.testPages.map((page: IAppLink) => <Route key={ page.key } path={ page.url } component={ page.component } />);
+  const routes = AppDefinition.testPages.map((page: IAppLink) => (
+    <Route key={page.key} path={page.url} component={page.component} />
+  ));
   const appRoutes: JSX.Element[] = [];
 
   AppDefinition.examplePages.forEach((group: IAppLinkGroup) => {
@@ -60,24 +61,16 @@ function _getRoutes(): JSX.Element[] {
       .forEach((link: IAppLink, linkIndex: number) => {
         const { component, getComponent } = link;
 
-        appRoutes.push(
-          <Route
-            key={ link.key }
-            path={ link.url }
-            component={ component }
-            getComponent={ getComponent }
-          />);
+        appRoutes.push(<Route key={link.key} path={link.url} component={component} getComponent={getComponent} />);
       });
   });
 
   // Default route.
-  appRoutes.push(
-    <Route key='gettingstarted' component={ GettingStartedPage } />
-  );
+  appRoutes.push(<Route key="gettingstarted" component={GettingStartedPage} />);
 
   routes.push(
-    <Route key='app' component={ App }>
-      { appRoutes }
+    <Route key="app" component={App}>
+      {appRoutes}
     </Route>
   );
 
