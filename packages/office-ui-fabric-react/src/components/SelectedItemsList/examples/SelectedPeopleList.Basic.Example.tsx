@@ -1,13 +1,15 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-import {
-  BaseComponent
-} from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { people, groupOne, groupTwo } from '../../ExtendedPicker';
 import 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/examples/PeoplePicker.Types.Example.scss';
-import { IExtendedPersonaProps, SelectedPeopleList, ISelectedPeopleItemProps } from '../SelectedPeopleList/SelectedPeopleList';
+import {
+  IExtendedPersonaProps,
+  SelectedPeopleList,
+  ISelectedPeopleItemProps
+} from '../SelectedPeopleList/SelectedPeopleList';
 import { ExtendedSelectedItem } from '../SelectedPeopleList/Items/ExtendedSelectedItem';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
 
@@ -22,10 +24,7 @@ export class PeopleSelectedItemsListExample extends BaseComponent<{}, {}> {
   public render(): JSX.Element {
     return (
       <div className={ 'ms-BasePicker-text' }>
-        <PrimaryButton
-          text='Add another item'
-          onClick={ this._onAddItemButtonClicked }
-        />
+        <PrimaryButton text="Add another item" onClick={ this._onAddItemButtonClicked } />
         { this._renderExtendedPicker() }
       </div>
     );
@@ -51,16 +50,12 @@ export class PeopleSelectedItemsListExample extends BaseComponent<{}, {}> {
   }
 
   private _onRenderItem = (props: ISelectedPeopleItemProps): JSX.Element => {
-    return (
-      <ExtendedSelectedItem
-        { ...props }
-      />
-    );
+    return <ExtendedSelectedItem { ...props } />;
   }
 
   private _setComponentRef = (component: SelectedPeopleList): void => {
     this._selectionList = component;
-  }
+  };
 
   private _onAddItemButtonClicked = (): void => {
     if (this._selectionList) {
@@ -70,12 +65,12 @@ export class PeopleSelectedItemsListExample extends BaseComponent<{}, {}> {
       this._selectionList.addItems([people[this.index]]);
       this.index++;
     }
-  }
+  };
 
   private _onExpandItem = (item: IExtendedPersonaProps): void => {
     // tslint:disable-next-line:no-any
     this._selectionList.replaceItem(item, this._getExpandedGroupItems(item as any));
-  }
+  };
 
   private _onSelectionChange(): void {
     this.forceUpdate();

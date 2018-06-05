@@ -14,11 +14,13 @@ import { CompoundButton } from './CompoundButton/CompoundButton';
 import { KeyCodes } from '../../Utilities';
 // import { IconButton } from "src";
 
-const alertClicked = (): void => { /*noop*/ };
+const alertClicked = (): void => {
+  /*noop*/
+};
 
 describe('Button', () => {
   it('renders DefaultButton correctly', () => {
-    const component = renderer.create(<DefaultButton text='Button' />);
+    const component = renderer.create(<DefaultButton text="Button" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -34,7 +36,7 @@ describe('Button', () => {
       content: 'A',
       keySequences: ['a']
     };
-    const component = renderer.create(<DefaultButton text='Button' keytipProps={ keytipProps } />);
+    const component = renderer.create(<DefaultButton text="Button" keytipProps={keytipProps} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -42,43 +44,40 @@ describe('Button', () => {
   it('renders CommandBarButton correctly', () => {
     const component = renderer.create(
       <CommandBarButton
-        iconProps={ { iconName: 'Add' } }
-        text='Create account'
-        menuProps={ {
+        iconProps={{ iconName: 'Add' }}
+        text="Create account"
+        menuProps={{
           items: [
             {
               key: 'emailMessage',
-              name: 'Email message',
-              icon: 'Mail'
+              text: 'Email message',
+              iconProps: { iconName: 'Mail' }
             },
             {
               key: 'calendarEvent',
-              name: 'Calendar event',
-              icon: 'Calendar'
+              text: 'Calendar event',
+              iconProps: { iconName: 'Calendar' }
             }
           ]
-        } }
-      />);
+        }}
+      />
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders CompoundButton correctly', () => {
     const component = renderer.create(
-      <CompoundButton secondaryText='You can create a new account here.'>
-        Create account
-    </CompoundButton>);
+      <CompoundButton secondaryText="You can create a new account here.">Create account</CompoundButton>
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders IconButton correctly', () => {
     const component = renderer.create(
-      <IconButton
-        iconProps={ { iconName: 'Emoji2' } }
-        title='Emoji'
-        ariaLabel='Emoji'
-      />);
+      <IconButton iconProps={{ iconName: 'Emoji2' }} title="Emoji" ariaLabel="Emoji" />
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -91,9 +90,7 @@ describe('Button', () => {
     }
 
     it('can render without an onClick.', () => {
-      const button = ReactTestUtils.renderIntoDocument<any>(
-        <DefaultButton>Hello</DefaultButton>
-      );
+      const button = ReactTestUtils.renderIntoDocument<any>(<DefaultButton>Hello</DefaultButton>);
       const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
       expect(renderedDOM.tagName).toEqual('BUTTON');
     });
@@ -101,16 +98,16 @@ describe('Button', () => {
     it('can render with an onClick.', () => {
       const onClick: () => null = () => null;
 
-      const button = ReactTestUtils.renderIntoDocument<any>(
-        <DefaultButton onClick={ onClick }>Hello</DefaultButton>
-      );
+      const button = ReactTestUtils.renderIntoDocument<any>(<DefaultButton onClick={onClick}>Hello</DefaultButton>);
       const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
       expect(renderedDOM.tagName).toEqual('BUTTON');
     });
 
     it('can render with an href', () => {
       const button = ReactTestUtils.renderIntoDocument<any>(
-        <DefaultButton href='http://www.microsoft.com' target='_blank'>Hello</DefaultButton>
+        <DefaultButton href="http://www.microsoft.com" target="_blank">
+          Hello
+        </DefaultButton>
       );
       const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
       expect(renderedDOM.tagName).toEqual('A');
@@ -121,10 +118,7 @@ describe('Button', () => {
       let renderedDOM: any;
 
       button = ReactTestUtils.renderIntoDocument<any>(
-        <DefaultButton
-          href='http://www.microsoft.com'
-          target='_blank'
-        >
+        <DefaultButton href="http://www.microsoft.com" target="_blank">
           Hello
         </DefaultButton>
       );
@@ -134,11 +128,7 @@ describe('Button', () => {
       expect(renderedDOM.getAttribute('aria-describedby') === null);
 
       button = ReactTestUtils.renderIntoDocument<any>(
-        <DefaultButton
-          href='http://www.microsoft.com'
-          target='_blank'
-          aria-label='MyLabel'
-        >
+        <DefaultButton href="http://www.microsoft.com" target="_blank" aria-label="MyLabel">
           Hello
         </DefaultButton>
       );
@@ -148,11 +138,7 @@ describe('Button', () => {
       expect(renderedDOM.getAttribute('aria-describedby') === null);
 
       button = ReactTestUtils.renderIntoDocument<any>(
-        <DefaultButton
-          href='http://www.microsoft.com'
-          target='_blank'
-          aria-labelledby='someid'
-        >
+        <DefaultButton href="http://www.microsoft.com" target="_blank" aria-labelledby="someid">
           Hello
         </DefaultButton>
       );
@@ -163,10 +149,10 @@ describe('Button', () => {
 
       button = ReactTestUtils.renderIntoDocument<any>(
         <DefaultButton
-          href='http://www.microsoft.com'
-          target='_blank'
-          ariaDescription='This description is not visible'
-          styles={ { screenReaderText: 'some-screenreader-class' } }
+          href="http://www.microsoft.com"
+          target="_blank"
+          ariaDescription="This description is not visible"
+          styles={{ screenReaderText: 'some-screenreader-class' }}
         >
           Hello
         </DefaultButton>
@@ -178,9 +164,9 @@ describe('Button', () => {
 
       button = ReactTestUtils.renderIntoDocument<any>(
         <IconButton
-          iconProps={ { iconName: 'Emoji2' } }
-          ariaDescription='Description on icon button'
-          styles={ { screenReaderText: 'some-screenreader-class' } }
+          iconProps={{ iconName: 'Emoji2' }}
+          ariaDescription="Description on icon button"
+          styles={{ screenReaderText: 'some-screenreader-class' }}
         />
       );
       renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
@@ -189,10 +175,7 @@ describe('Button', () => {
       expect(renderedDOM.getAttribute('aria-describedby') === renderedDOM.querySelector('.some-screenreader-class').id);
 
       button = ReactTestUtils.renderIntoDocument<any>(
-        <CompoundButton
-          secondaryText='Some awesome description'
-          ariaDescription='Description on icon button'
-        >
+        <CompoundButton secondaryText="Some awesome description" ariaDescription="Description on icon button">
           And this is the label
         </CompoundButton>
       );
@@ -207,7 +190,7 @@ describe('Button', () => {
 
       beforeAll(() => {
         const wrapper = ReactTestUtils.renderIntoDocument<any>(
-          <DefaultButton menuProps={ { items: [{ key: 'item', name: 'Item' }] } }>Hello</DefaultButton>
+          <DefaultButton menuProps={{ items: [{ key: 'item', text: 'Item' }] }}>Hello</DefaultButton>
         ) as DefaultButton;
         button = ReactTestUtils.findRenderedDOMComponentWithTag(wrapper, 'button');
       });
@@ -221,9 +204,7 @@ describe('Button', () => {
       let button: Element;
 
       beforeAll(() => {
-        const wrapper = ReactTestUtils.renderIntoDocument<any>(
-          <DefaultButton>Hello</DefaultButton>
-        ) as DefaultButton;
+        const wrapper = ReactTestUtils.renderIntoDocument<any>(<DefaultButton>Hello</DefaultButton>) as DefaultButton;
         button = ReactTestUtils.findRenderedDOMComponentWithTag(wrapper, 'button');
       });
 
@@ -237,7 +218,7 @@ describe('Button', () => {
 
       beforeAll(() => {
         const wrapper = ReactTestUtils.renderIntoDocument<any>(
-          <DefaultButton menuIconProps={ { iconName: 'fontColor' } }>Hello</DefaultButton>
+          <DefaultButton menuIconProps={{ iconName: 'fontColor' }}>Hello</DefaultButton>
         ) as DefaultButton;
         button = ReactTestUtils.findRenderedDOMComponentWithTag(wrapper, 'button');
       });
@@ -250,23 +231,23 @@ describe('Button', () => {
     it('Providing onClick and menuProps does not render a SplitButton', () => {
       const button = ReactTestUtils.renderIntoDocument<any>(
         <DefaultButton
-          data-automation-id='test'
-          text='Create account'
-          onClick={ alertClicked }
-          menuProps={ {
+          data-automation-id="test"
+          text="Create account"
+          onClick={alertClicked}
+          menuProps={{
             items: [
               {
                 key: 'emailMessage',
-                name: 'Email message',
-                icon: 'Mail'
+                text: 'Email message',
+                iconProps: { iconName: 'Mail' }
               },
               {
                 key: 'calendarEvent',
-                name: 'Calendar event',
-                icon: 'Calendar'
+                text: 'Calendar event',
+                iconProps: { iconName: 'Calendar' }
               }
             ]
-          } }
+          }}
         />
       );
       const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
@@ -278,23 +259,23 @@ describe('Button', () => {
 
       const button = ReactTestUtils.renderIntoDocument<any>(
         <DefaultButton
-          data-automation-id='test'
-          text='Create account'
-          onKeyDown={ keyDownSpy }
-          menuProps={ {
+          data-automation-id="test"
+          text="Create account"
+          onKeyDown={keyDownSpy}
+          menuProps={{
             items: [
               {
                 key: 'emailMessage',
-                name: 'Email message',
-                icon: 'Mail'
+                text: 'Email message',
+                iconProps: { iconName: 'Mail' }
               },
               {
                 key: 'calendarEvent',
-                name: 'Calendar event',
-                icon: 'Calendar'
+                text: 'Calendar event',
+                iconProps: { iconName: 'Calendar' }
               }
             ]
-          } }
+          }}
         />
       );
       const menuButtonDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
@@ -309,25 +290,25 @@ describe('Button', () => {
 
       const button = ReactTestUtils.renderIntoDocument<any>(
         <DefaultButton
-          data-automation-id='test'
-          text='Create account'
-          onKeyDown={ keyDownSpy }
-          split={ true }
-          onClick={ alertClicked }
-          menuProps={ {
+          data-automation-id="test"
+          text="Create account"
+          onKeyDown={keyDownSpy}
+          split={true}
+          onClick={alertClicked}
+          menuProps={{
             items: [
               {
                 key: 'emailMessage',
-                name: 'Email message',
-                icon: 'Mail'
+                text: 'Email message',
+                iconProps: { iconName: 'Mail' }
               },
               {
                 key: 'calendarEvent',
-                name: 'Calendar event',
-                icon: 'Calendar'
+                text: 'Calendar event',
+                iconProps: { iconName: 'Calendar' }
               }
             ]
-          } }
+          }}
         />
       );
       const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
@@ -341,24 +322,24 @@ describe('Button', () => {
     it('Providing onClick, menuProps and setting splitButton to true renders a SplitButton', () => {
       const button = ReactTestUtils.renderIntoDocument<any>(
         <DefaultButton
-          data-automation-id='test'
-          text='Create account'
-          split={ true }
-          onClick={ alertClicked }
-          menuProps={ {
+          data-automation-id="test"
+          text="Create account"
+          split={true}
+          onClick={alertClicked}
+          menuProps={{
             items: [
               {
                 key: 'emailMessage',
-                name: 'Email message',
-                icon: 'Mail'
+                text: 'Email message',
+                iconProps: { iconName: 'Mail' }
               },
               {
                 key: 'calendarEvent',
-                name: 'Calendar event',
-                icon: 'Calendar'
+                text: 'Calendar event',
+                iconProps: { iconName: 'Calendar' }
               }
             ]
-          } }
+          }}
         />
       );
       const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
@@ -368,24 +349,24 @@ describe('Button', () => {
     it('Tapping menu button of SplitButton expands menu', () => {
       const button = ReactTestUtils.renderIntoDocument<any>(
         <DefaultButton
-          data-automation-id='test'
-          text='Create account'
-          split={ true }
-          onClick={ alertClicked }
-          menuProps={ {
+          data-automation-id="test"
+          text="Create account"
+          split={true}
+          onClick={alertClicked}
+          menuProps={{
             items: [
               {
                 key: 'emailMessage',
-                name: 'Email message',
-                icon: 'Mail'
+                text: 'Email message',
+                iconProps: { iconName: 'Mail' }
               },
               {
                 key: 'calendarEvent',
-                name: 'Calendar event',
-                icon: 'Calendar'
+                text: 'Calendar event',
+                iconProps: { iconName: 'Calendar' }
               }
             ]
-          } }
+          }}
         />
       );
       const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
@@ -397,24 +378,24 @@ describe('Button', () => {
     it('Touch Start on primary button of SplitButton expands menu', () => {
       const button = ReactTestUtils.renderIntoDocument<any>(
         <DefaultButton
-          data-automation-id='test'
-          text='Create account'
-          split={ true }
-          onClick={ alertClicked }
-          menuProps={ {
+          data-automation-id="test"
+          text="Create account"
+          split={true}
+          onClick={alertClicked}
+          menuProps={{
             items: [
               {
                 key: 'emailMessage',
-                name: 'Email message',
-                icon: 'Mail'
+                text: 'Email message',
+                iconProps: { iconName: 'Mail' }
               },
               {
                 key: 'calendarEvent',
-                name: 'Calendar event',
-                icon: 'Calendar'
+                text: 'Calendar event',
+                iconProps: { iconName: 'Calendar' }
               }
             ]
-          } }
+          }}
         />
       );
       const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
@@ -431,68 +412,65 @@ describe('Button', () => {
     it('If menu trigger is disabled, pressing down does not trigger menu', () => {
       const button = ReactTestUtils.renderIntoDocument<any>(
         <DefaultButton
-          data-automation-id='test'
-          text='Create account'
-          menuTriggerKeyCode={ null }
-          menuProps={ {
+          data-automation-id="test"
+          text="Create account"
+          menuTriggerKeyCode={null}
+          menuProps={{
             items: [
               {
                 key: 'emailMessage',
-                name: 'Email message',
-                icon: 'Mail'
+                text: 'Email message',
+                iconProps: { iconName: 'Mail' }
               },
               {
                 key: 'calendarEvent',
-                name: 'Calendar event',
-                icon: 'Calendar'
+                text: 'Calendar event',
+                iconProps: { iconName: 'Calendar' }
               }
             ]
-          } }
+          }}
         />
       );
       const menuButtonDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
 
-      ReactTestUtils.Simulate.keyDown(menuButtonDOM,
-        {
-          which: KeyCodes.down
-        });
+      ReactTestUtils.Simulate.keyDown(menuButtonDOM, {
+        which: KeyCodes.down
+      });
       expect(menuButtonDOM.getAttribute('aria-expanded')).toEqual('false');
     });
 
     it('If menu trigger is specified, default key is overridden', () => {
       const button = ReactTestUtils.renderIntoDocument<any>(
         <DefaultButton
-          data-automation-id='test'
-          text='Create account'
-          menuTriggerKeyCode={ KeyCodes.right }
-          menuProps={ {
+          data-automation-id="test"
+          text="Create account"
+          menuTriggerKeyCode={KeyCodes.right}
+          menuProps={{
             items: [
               {
                 key: 'emailMessage',
-                name: 'Email message',
-                icon: 'Mail'
+                text: 'Email message',
+                iconProps: { iconName: 'Mail' }
               },
               {
                 key: 'calendarEvent',
-                name: 'Calendar event',
-                icon: 'Calendar'
+                text: 'Calendar event',
+                iconProps: { iconName: 'Calendar' }
               }
             ]
-          } }
+          }}
         />
       );
       const menuButtonDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
 
-      ReactTestUtils.Simulate.keyDown(menuButtonDOM,
-        {
-          which: KeyCodes.down
-        });
+      ReactTestUtils.Simulate.keyDown(menuButtonDOM, {
+        which: KeyCodes.down
+      });
       expect(menuButtonDOM.getAttribute('aria-expanded')).toEqual('false');
 
-      ReactTestUtils.Simulate.keyDown(menuButtonDOM,
-        {
-          which: KeyCodes.right
-        });
+      ReactTestUtils.Simulate.keyDown(menuButtonDOM, {
+        which: KeyCodes.right
+      });
       expect(menuButtonDOM.getAttribute('aria-expanded')).toEqual('true');
     });
 
@@ -509,24 +487,24 @@ describe('Button', () => {
       it('Clicking SplitButton button triggers action', () => {
         const renderedDOM: HTMLElement = renderIntoDocument(
           <DefaultButton
-            data-automation-id='test'
-            text='Create account'
-            split={ true }
-            onClick={ setTrue }
-            menuProps={ {
+            data-automation-id="test"
+            text="Create account"
+            split={true}
+            onClick={setTrue}
+            menuProps={{
               items: [
                 {
                   key: 'emailMessage',
-                  name: 'Email message',
-                  icon: 'Mail'
+                  text: 'Email message',
+                  iconProps: { iconName: 'Mail' }
                 },
                 {
                   key: 'calendarEvent',
-                  name: 'Calendar event',
-                  icon: 'Calendar'
+                  text: 'Calendar event',
+                  iconProps: { iconName: 'Calendar' }
                 }
               ]
-            } }
+            }}
           />
         );
         const menuButtonDOM: HTMLButtonElement = renderedDOM.querySelectorAll('button')[0];
@@ -538,62 +516,60 @@ describe('Button', () => {
       it('Pressing alt + down on SplitButton triggers menu', () => {
         const renderedDOM: HTMLElement = renderIntoDocument(
           <DefaultButton
-            data-automation-id='test'
-            text='Create account'
-            split={ true }
-            onClick={ setTrue }
-            menuProps={ {
+            data-automation-id="test"
+            text="Create account"
+            split={true}
+            onClick={setTrue}
+            menuProps={{
               items: [
                 {
                   key: 'emailMessage',
-                  name: 'Email message',
-                  icon: 'Mail'
+                  text: 'Email message',
+                  iconProps: { iconName: 'Mail' }
                 },
                 {
                   key: 'calendarEvent',
-                  name: 'Calendar event',
-                  icon: 'Calendar'
+                  text: 'Calendar event',
+                  iconProps: { iconName: 'Calendar' }
                 }
               ]
-            } }
+            }}
           />
         );
 
         const menuButtonElement = renderedDOM.querySelectorAll('button')[1];
 
-        ReactTestUtils.Simulate.keyDown(menuButtonElement,
-          {
-            which: KeyCodes.down,
-            altKey: true
-          });
+        ReactTestUtils.Simulate.keyDown(menuButtonElement, {
+          which: KeyCodes.down,
+          altKey: true
+        });
         expect(renderedDOM.getAttribute('aria-expanded')).toEqual('true');
       });
 
       it('Click on button opens the menu, a second click closes the menu and calls onAfterMenuDismiss', () => {
-
         const callbackMock = jest.fn();
 
         const renderedDOM: HTMLElement = renderIntoDocument(
           <DefaultButton
-            data-automation-id='test'
-            text='Create account'
-            split={ true }
-            onClick={ setTrue }
-            onAfterMenuDismiss={ callbackMock }
-            menuProps={ {
+            data-automation-id="test"
+            text="Create account"
+            split={true}
+            onClick={setTrue}
+            onAfterMenuDismiss={callbackMock}
+            menuProps={{
               items: [
                 {
                   key: 'emailMessage',
-                  name: 'Email message',
-                  icon: 'Mail'
+                  text: 'Email message',
+                  iconProps: { iconName: 'Mail' }
                 },
                 {
                   key: 'calendarEvent',
-                  name: 'Calendar event',
-                  icon: 'Calendar'
+                  text: 'Calendar event',
+                  iconProps: { iconName: 'Calendar' }
                 }
               ]
-            } }
+            }}
           />
         );
 
@@ -610,25 +586,25 @@ describe('Button', () => {
       it('A disabled SplitButton does not respond to clicks', () => {
         const renderedDOM: HTMLElement = renderIntoDocument(
           <DefaultButton
-            disabled={ true }
-            data-automation-id='test'
-            text='Create account'
-            split={ true }
-            onClick={ setTrue }
-            menuProps={ {
+            disabled={true}
+            data-automation-id="test"
+            text="Create account"
+            split={true}
+            onClick={setTrue}
+            menuProps={{
               items: [
                 {
                   key: 'emailMessage',
-                  name: 'Email message',
-                  icon: 'Mail'
+                  text: 'Email message',
+                  iconProps: { iconName: 'Mail' }
                 },
                 {
                   key: 'calendarEvent',
-                  name: 'Calendar event',
-                  icon: 'Calendar'
+                  text: 'Calendar event',
+                  iconProps: { iconName: 'Calendar' }
                 }
               ]
-            } }
+            }}
           />
         );
         const buttonElement = renderedDOM.querySelectorAll('button')[0];
@@ -639,15 +615,19 @@ describe('Button', () => {
     });
 
     describe('with contextual menu', () => {
-      function buildRenderAndClickButtonAndReturnContextualMenuDOMElement(menuPropsPatch?: any, text?: string, textAsChildElement: boolean = false): HTMLElement {
+      function buildRenderAndClickButtonAndReturnContextualMenuDOMElement(
+        menuPropsPatch?: any,
+        text?: string,
+        textAsChildElement: boolean = false
+      ): HTMLElement {
         const menuProps = { items: [{ key: 'item', name: 'Item' }], ...menuPropsPatch };
         const element: React.ReactElement<any> = (
           <DefaultButton
-            iconProps={ { iconName: 'Add' } }
-            text={ !textAsChildElement && text ? text : undefined }
-            menuProps={ ...menuProps }
+            iconProps={{ iconName: 'Add' }}
+            text={!textAsChildElement && text ? text : undefined}
+            menuProps={menuProps}
           >
-            { textAsChildElement && text ? text : null }
+            {textAsChildElement && text ? text : null}
           </DefaultButton>
         );
 
@@ -676,7 +656,11 @@ describe('Button', () => {
       });
 
       it('If button has a text child, contextual menu has aria-labelledBy attribute set', () => {
-        const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement(null, 'Button Text', true);
+        const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement(
+          null,
+          'Button Text',
+          true
+        );
 
         expect(contextualMenuElement).not.toBeNull();
         expect(contextualMenuElement.getAttribute('aria-label') === null);
@@ -693,7 +677,10 @@ describe('Button', () => {
 
       it('If button has text but ariaLabel provided in menuProps, contextual menu has aria-label set', () => {
         const explicitLabel = 'ExplicitLabel';
-        const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement({ ariaLabel: explicitLabel }, 'Button Text');
+        const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement(
+          { ariaLabel: explicitLabel },
+          'Button Text'
+        );
 
         expect(contextualMenuElement).not.toBeNull();
         expect(contextualMenuElement.getAttribute('aria-label') === explicitLabel);
@@ -702,7 +689,10 @@ describe('Button', () => {
 
       it('If button has text but labelElementId provided in menuProps, contextual menu has aria-labelledBy reflecting labelElementId', () => {
         const explicitLabelElementId = 'id_ExplicitLabel';
-        const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement({ labelElementId: explicitLabelElementId }, 'Button Text');
+        const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement(
+          { labelElementId: explicitLabelElementId },
+          'Button Text'
+        );
 
         expect(contextualMenuElement).not.toBeNull();
         expect(contextualMenuElement.getAttribute('aria-label') === null);

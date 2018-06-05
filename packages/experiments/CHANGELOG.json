@@ -2,6 +2,151 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.2.0",
+      "tag": "@uifabric/experiments_v6.2.0",
+      "date": "Tue, 05 Jun 2018 10:23:03 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Sivaraman Krishnan <12967315+sikrishn@users.noreply.github.com>",
+            "commit": "872a3ef4078310860b8d110f78390215f7a4542d",
+            "comment": "Experiment/Nav component: hide nav group header if the links under it are hidden"
+          },
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "f5658e61929f6e30efee7ff7142e91f11b9138a6",
+            "comment": "ShimmerTile: Moves ShimmerTile to Tile component as it's only purpose is create a mock for a tile and itself alone never renders a Shimmer animation."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.4.1 <7.0.0` to `>=6.5.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.1.2",
+      "tag": "@uifabric/experiments_v6.1.2",
+      "date": "Tue, 05 Jun 2018 00:44:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "cfa7a19ec1d6f98c13f822a828e0751f64507dbd",
+            "comment": "Added Prettier"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.4.0 <7.0.0` to `>=6.4.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=6.0.0 <7.0.0` to `>=6.0.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.0.1 <7.0.0` to `>=6.0.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `>=0.7.1 <1.0.0` to `>=0.7.2 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=5.2.3 <6.0.0` to `>=6.0.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.1.1",
+      "tag": "@uifabric/experiments_v6.1.1",
+      "date": "Mon, 04 Jun 2018 10:16:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "4e1cd119bbf0f75e0432b0f92bad342714b57bef",
+            "comment": "Updating react typings."
+          },
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "758d210836ab509a8e33d6b99990223cc7245f2a",
+            "comment": "Fixed tests to be compatible with jest 23"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.2.0 <7.0.0` to `>=6.3.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.0.0 <7.0.0` to `>=6.0.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `>=0.7.0 <1.0.0` to `>=0.7.1 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=5.2.2 <6.0.0` to `>=5.2.3 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.1.0",
+      "tag": "@uifabric/experiments_v6.1.0",
+      "date": "Fri, 01 Jun 2018 10:18:43 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Sivaraman Krishnan <12967315+sikrishn@users.noreply.github.com>",
+            "commit": "da8b4e77263fb23a8ef344b3e017a279890473aa",
+            "comment": "Experiments/Nav component: display \"show more\" link only if there is atleast one hidden link"
+          },
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "a269865d17ff20983a46f2dfb49841afed569c07",
+            "comment": "Shimmer: Shimmer refactor to use new props and deprecate others. Build more examples of Shimmer use."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.1.2 <7.0.0` to `>=6.2.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.0",
+      "tag": "@uifabric/experiments_v6.0.0",
+      "date": "Wed, 30 May 2018 20:28:33 GMT",
+      "comments": {
+        "major": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "860bb5f4a8ee32c3cba0dd07b8b7379fb4766a7a",
+            "comment": "Command Bar: Promoted to main office-ui-fabric-react package."
+          },
+          {
+            "author": "Cliff Koh <zihankoh@microsoft.com>",
+            "commit": "937364830cb4f1d6c38a319e61f6388eab2fbe32",
+            "comment": "Minimum React version is now 16.3.2."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.112.0 <6.0.0` to `>=6.0.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=5.8.0 <6.0.0` to `>=6.0.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.11.5 <6.0.0` to `>=6.0.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `>=0.6.2 <1.0.0` to `>=0.7.0 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.44.0",
       "tag": "@uifabric/experiments_v5.44.0",
       "date": "Mon, 28 May 2018 10:23:24 GMT",

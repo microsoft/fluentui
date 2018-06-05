@@ -3,9 +3,7 @@ import { ISelection } from '../../utilities/selection/interfaces';
 import { ITheme, IStyle } from '../../Styling';
 import { IStyleFunction } from '../../Utilities';
 
-export interface IMarqueeSelection {
-
-}
+export interface IMarqueeSelection {}
 
 export interface IMarqueeSelectionProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
@@ -59,7 +57,7 @@ export interface IMarqueeSelectionProps extends React.HTMLAttributes<HTMLDivElem
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunction<IMarqueeSelectionStyleProps, IMarqueeSelectionStyles>;
+  styles?: IStyleFunction<IMarqueeSelectionStyleProps, IMarqueeSelectionStyles>;
 }
 
 export interface IMarqueeSelectionStyleProps {

@@ -1,16 +1,6 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  classNamesFunction,
-  customizable,
-  DelayedRender
-} from '../../Utilities';
-import {
-  IShimmerProps,
-  IShimmerStyleProps,
-  IShimmerStyles,
-  IShimmerElement,
-} from './Shimmer.types';
+import { BaseComponent, classNamesFunction, customizable, DelayedRender } from '../../Utilities';
+import { IShimmerProps, IShimmerStyleProps, IShimmerStyles, IShimmerElement } from './Shimmer.types';
 import { ShimmerElementsGroup } from './ShimmerElementsGroup/ShimmerElementsGroup';
 
 export interface IShimmerState {
@@ -42,14 +32,14 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
     };
 
     this._warnDeprecations({
-      'isBaseStyle': 'customElementsGroup',
-      'width': 'widthInPercentage or widthInPixel',
-      'lineElements': 'shimmerElements'
+      isBaseStyle: 'customElementsGroup',
+      width: 'widthInPercentage or widthInPixel',
+      lineElements: 'shimmerElements'
     });
 
     this._warnMutuallyExclusive({
-      'lineElements': 'shimmerElements',
-      'customElementsGroup': 'lineElements'
+      lineElements: 'shimmerElements',
+      customElementsGroup: 'lineElements'
     });
   }
 
@@ -76,7 +66,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
 
   public render(): JSX.Element {
     const {
-      getStyles,
+      styles,
       width,
       lineElements,
       shimmerElements,
@@ -96,7 +86,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
     // lineElements is a deprecated prop so need to check which one was used.
     const elements: IShimmerElement[] | undefined = shimmerElements || lineElements;
 
-    this._classNames = getClassNames(getStyles!, {
+    this._classNames = getClassNames(styles!, {
       theme: theme!,
       width,
       isDataLoaded,
@@ -107,29 +97,28 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
     });
 
     return (
-      <div className={ this._classNames.root }>
-        { !contentLoaded &&
-          <div className={ this._classNames.shimmerWrapper }>
-            { isBaseStyle ? children : // isBaseStyle prop is deprecated and this check needs to be removed in the future
-              customElementsGroup ? customElementsGroup :
-                <ShimmerElementsGroup
-                  shimmerElements={ elements }
-                />
-            }
+      <div className={this._classNames.root}>
+        {!contentLoaded && (
+          <div className={this._classNames.shimmerWrapper}>
+            {isBaseStyle ? (
+              children // isBaseStyle prop is deprecated and this check needs to be removed in the future
+            ) : customElementsGroup ? (
+              customElementsGroup
+            ) : (
+              <ShimmerElementsGroup shimmerElements={elements} />
+            )}
           </div>
-        }
-        { !isBaseStyle && children && // isBaseStyle prop is deprecated and needs to be removed in the future
-          <div className={ this._classNames.dataWrapper }>
-            { children }
-          </div>
-        }
-        { ariaLabel && !isDataLoaded &&
-          <div role='status' aria-live='polite'>
-            <DelayedRender>
-              <div className={ this._classNames.screenReaderText }>{ ariaLabel }</div>
-            </DelayedRender>
-          </div>
-        }
+        )}
+        {// isBaseStyle prop is deprecated and needs to be removed in the future
+        !isBaseStyle && children && <div className={this._classNames.dataWrapper}>{children}</div>}
+        {ariaLabel &&
+          !isDataLoaded && (
+            <div role="status" aria-live="polite">
+              <DelayedRender>
+                <div className={this._classNames.screenReaderText}>{ariaLabel}</div>
+              </DelayedRender>
+            </div>
+          )}
       </div>
     );
   }

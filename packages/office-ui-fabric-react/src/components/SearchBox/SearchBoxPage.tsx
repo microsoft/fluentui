@@ -22,70 +22,56 @@ export class SearchBoxPage extends React.Component<IComponentDemoPageProps, {}> 
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='SearchBox'
-        componentName='SearchBoxExample'
-        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/SearchBox'
+        title="SearchBox"
+        componentName="SearchBoxExample"
+        componentUrl="https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/SearchBox"
         exampleCards={
           <div>
-            <ExampleCard
-              title='Default SearchBox'
-              code={ SearchBoxFullSizeExampleCode }
-            >
+            <ExampleCard title="Default SearchBox" code={SearchBoxFullSizeExampleCode}>
               <SearchBoxFullSizeExample />
             </ExampleCard>
-            <ExampleCard
-              title='Underlined SearchBox'
-              code={ SearchBoxUnderlinedExampleCode }
-            >
+            <ExampleCard title="Underlined SearchBox" code={SearchBoxUnderlinedExampleCode}>
               <SearchBoxUnderlinedExample />
             </ExampleCard>
-            <ExampleCard
-              title='Disabled SearchBoxes'
-              code={ SearchBoxDisabledExampleCode }
-            >
+            <ExampleCard title="Disabled SearchBoxes" code={SearchBoxDisabledExampleCode}>
               <SearchBoxDisabledExample />
             </ExampleCard>
-            <ExampleCard
-              title='SearchBox with fixed width and custom event handling'
-              code={ SearchBoxSmallExampleCode }
-            >
+            <ExampleCard title="SearchBox with fixed width and custom event handling" code={SearchBoxSmallExampleCode}>
               <SearchBoxSmallExample />
             </ExampleCard>
           </div>
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={ [
+            sources={[
               require<string>('!raw-loader!office-ui-fabric-react/src/components/SearchBox/SearchBox.types.ts')
-            ] }
+            ]}
           />
         }
         overview={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/SearchBox/docs/SearchBoxOverview.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/SearchBox/docs/SearchBoxOverview.md')}
           </PageMarkdown>
         }
         bestPractices={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/SearchBox/docs/SearchBoxBestPractices.md') }
+            {require<
+              string
+            >('!raw-loader!office-ui-fabric-react/src/components/SearchBox/docs/SearchBoxBestPractices.md')}
           </PageMarkdown>
         }
         dos={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/SearchBox/docs/SearchBoxDos.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/SearchBox/docs/SearchBoxDos.md')}
           </PageMarkdown>
         }
         donts={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/SearchBox/docs/SearchBoxDonts.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/SearchBox/docs/SearchBoxDonts.md')}
           </PageMarkdown>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }
-        componentStatus={
-          <ComponentStatus
-            { ...SearchBoxStatus }
-          />
-        }
+        isHeaderVisible={this.props.isHeaderVisible}
+        componentStatus={<ComponentStatus {...SearchBoxStatus} />}
       />
     );
   }

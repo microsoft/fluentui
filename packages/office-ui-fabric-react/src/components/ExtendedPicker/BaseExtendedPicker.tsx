@@ -1,10 +1,5 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  KeyCodes,
-  css,
-  createRef
-} from '../../Utilities';
+import { BaseComponent, KeyCodes, css, createRef } from '../../Utilities';
 import { Autofill } from '../../Autofill';
 import { IInputProps } from '../../Pickers';
 import * as stylesImport from './BaseExtendedPicker.scss';
@@ -16,7 +11,8 @@ import { Selection, SelectionMode, SelectionZone } from '../../Selection';
 // tslint:disable-next-line:no-any
 const styles: any = stylesImport;
 
-export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends BaseComponent<P, {}>
+export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
+  extends BaseComponent<P, {}>
   implements IBaseExtendedPicker<T> {
   public floatingPicker = createRef<BaseFloatingPicker<T, IBaseFloatingPickerProps<T>>>();
   public selectedItemsList = createRef<BaseSelectedItemsList<T, IBaseSelectedItemsListProps<T>>>();
@@ -34,6 +30,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
 
     this.state = {
       items: this.props.selectedItemsListProps.selectedItems ? this.props.selectedItemsListProps.selectedItems : [],
+      suggestedDisplayValue: ''
     };
 
     this.floatingPickerProps = this.props.floatingPickerProps;
@@ -47,6 +44,16 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
 
   public componentDidMount(): void {
     this.forceUpdate();
+  }
+
+  public componentWillReceiveProps(newProps: P): void {
+    if (newProps.floatingPickerProps) {
+      this.floatingPickerProps = newProps.floatingPickerProps;
+    }
+
+    if (newProps.selectedItemsListProps) {
+      this.selectedItemsListProps = newProps.selectedItemsListProps;
+    }
   }
 
   public focus(): void {
@@ -66,11 +73,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   }
 
   public render(): JSX.Element {
-    const {
-      className,
-      inputProps,
-      disabled
-    } = this.props;
+    const { className, inputProps, disabled } = this.props;
 
     return (
       <div
@@ -116,7 +119,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
 
   protected onSelectionChange = (): void => {
     this.forceUpdate();
-  }
+  };
 
   protected canAddItems(): boolean {
     const { itemLimit } = this.props;
@@ -125,29 +128,29 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
 
   protected renderSuggestions(): JSX.Element {
     const onRenderFloatingPicker = this.props.onRenderFloatingPicker;
-    return (onRenderFloatingPicker({
+    return onRenderFloatingPicker({
       componentRef: this.floatingPicker,
       onChange: this._onSuggestionSelected,
       inputElement: this.input.current ? this.input.current.inputElement : undefined,
       selectedItems: this.selectedItemsList.current ? this.selectedItemsList.current.items : [],
       ...this.floatingPickerProps
-    }));
+    });
   }
 
   protected renderSelectedItemsList(): JSX.Element {
     const onRenderSelectedItems = this.props.onRenderSelectedItems;
-    return (onRenderSelectedItems({
+    return onRenderSelectedItems({
       componentRef: this.selectedItemsList,
       selection: this.selection,
       ...this.selectedItemsListProps
-    }));
+    });
   }
 
   protected onInputChange = (value: string): void => {
     if (this.floatingPicker.current) {
       this.floatingPicker.current.onQueryStringChanged(value);
     }
-  }
+  };
 
   protected onInputFocus = (ev: React.FocusEvent<HTMLInputElement | Autofill>): void => {
     if (this.selectedItemsList.current) {
@@ -157,7 +160,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     if (this.props.inputProps && this.props.inputProps.onFocus) {
       this.props.inputProps.onFocus(ev as React.FocusEvent<HTMLInputElement>);
     }
-  }
+  };
 
   protected onInputClick = (ev: React.MouseEvent<HTMLInputElement | Autofill>): void => {
     if (this.selectedItemsList.current) {
@@ -169,7 +172,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
       const shoudUpdateValue = this.inputElement.value === '' || this.inputElement.value !== this.floatingPicker.current.inputText;
       this.floatingPicker.current.showPicker(shoudUpdateValue);
     }
-  }
+  };
 
   // This is protected because we may expect the backspace key to work differently in a different kind of picker.
   // This lets the subclass override it and provide it's own onBackspace. For an example see the BasePickerListBelow
@@ -189,14 +192,14 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
         this._onSelectedItemsChanged();
       }
     }
-  }
+  };
 
   protected onCopy = (ev: React.ClipboardEvent<HTMLElement>): void => {
     if (this.selectedItemsList.current) {
       // Pass it down into the selected items list
       this.selectedItemsList.current.onCopy(ev);
     }
-  }
+  };
 
   protected onPaste = (ev: React.ClipboardEvent<Autofill | HTMLInputElement>): void => {
     if (this.props.onPaste) {
@@ -204,7 +207,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
       ev.preventDefault();
       this.props.onPaste(inputText);
     }
-  }
+  };
 
   protected _onSuggestionSelected = (item: T): void => {
     if (this.selectedItemsList.current) {
@@ -224,9 +227,9 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     }
 
     this.focus();
-  }
+  };
 
   protected _onSelectedItemsChanged = (): void => {
     this.focus();
-  }
+  };
 }

@@ -1,14 +1,9 @@
 import * as React from 'react';
 import { ChicletBase } from './Chiclet.base';
-import { IStyleFunction } from '../../Utilities';
-import {
-  IStyle,
-  ITheme
-} from '../../Styling';
+import { IStyleFunctionOrObject } from '../../Utilities';
+import { IStyle, ITheme } from '../../Styling';
 
-export interface IChiclet {
-
-}
+export interface IChiclet {}
 
 export interface IChicletProps extends React.Props<ChicletBase> {
   /**
@@ -20,7 +15,7 @@ export interface IChicletProps extends React.Props<ChicletBase> {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunction<IChicletStyleProps, IChicletStyles>;
+  styles?: IStyleFunctionOrObject<IChicletStyleProps, IChicletStyles>;
 
   /**
    * Optional class for chiclet.

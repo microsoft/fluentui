@@ -1,13 +1,9 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  classNamesFunction,
-  customizable,
-} from '../../Utilities';
+import { BaseComponent, classNamesFunction, customizable } from '../../Utilities';
 import {
   IProgressIndicatorProps,
   IProgressIndicatorStyleProps,
-  IProgressIndicatorStyles,
+  IProgressIndicatorStyles
 } from './ProgressIndicator.types';
 
 const getClassNames = classNamesFunction<IProgressIndicatorStyleProps, IProgressIndicatorStyles>();
@@ -17,9 +13,9 @@ const getClassNames = classNamesFunction<IProgressIndicatorStyleProps, IProgress
 const ZERO_THRESHOLD = 0.01;
 
 /**
-* ProgressIndicator with no default styles.
-* [Use the `getStyles` API to add your own styles.](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Styling)
-*/
+ * ProgressIndicator with no default styles.
+ * [Use the `styles` API to add your own styles.](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Styling)
+ */
 @customizable('ProgressIndicator', ['theme'])
 export class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps, {}> {
   public static defaultProps = {
@@ -42,68 +38,59 @@ export class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps
       className,
       label = this.props.title, // Fall back to deprecated value.
       description,
-      getStyles,
+      styles,
       theme,
       progressHidden,
       onRenderProgress = this._onRenderProgress
     } = this.props;
 
-    const percentComplete = typeof this.props.percentComplete === 'number' ?
-      Math.min(100, Math.max(0, this.props.percentComplete * 100)) :
-      undefined;
+    const percentComplete =
+      typeof this.props.percentComplete === 'number'
+        ? Math.min(100, Math.max(0, this.props.percentComplete * 100))
+        : undefined;
 
-    const classNames = getClassNames(getStyles, {
+    const classNames = getClassNames(styles, {
       theme: theme!,
       className,
       barHeight,
-      indeterminate: percentComplete === undefined ? true : false,
+      indeterminate: percentComplete === undefined ? true : false
     });
 
     return (
-      <div className={ classNames.root }>
-        {
-          label ? (
-            <div className={ classNames.itemName }>{ label }</div>
-          ) : null
-        }
-        {
-          !progressHidden ? onRenderProgress({
-            ...(this.props as IProgressIndicatorProps),
-            percentComplete: percentComplete
-          }, this._onRenderProgress) : null
-        }
-        {
-          description ? (
-            <div className={ classNames.itemDescription }>{ description }</div>
-          ) : null
-        }
+      <div className={classNames.root}>
+        {label ? <div className={classNames.itemName}>{label}</div> : null}
+        {!progressHidden
+          ? onRenderProgress(
+              {
+                ...(this.props as IProgressIndicatorProps),
+                percentComplete: percentComplete
+              },
+              this._onRenderProgress
+            )
+          : null}
+        {description ? <div className={classNames.itemDescription}>{description}</div> : null}
       </div>
     );
   }
 
   private _onRenderProgress = (props: IProgressIndicatorProps): JSX.Element => {
-    const {
-      ariaValueText,
-      barHeight,
-      className,
-      getStyles,
-      theme,
-    } = this.props;
+    const { ariaValueText, barHeight, className, styles, theme } = this.props;
 
-    const percentComplete = typeof this.props.percentComplete === 'number' ?
-      Math.min(100, Math.max(0, this.props.percentComplete * 100)) :
-      undefined;
+    const percentComplete =
+      typeof this.props.percentComplete === 'number'
+        ? Math.min(100, Math.max(0, this.props.percentComplete * 100))
+        : undefined;
 
-    const classNames = getClassNames(getStyles, {
+    const classNames = getClassNames(styles, {
       theme: theme!,
       className,
       barHeight,
-      indeterminate: percentComplete === undefined ? true : false,
+      indeterminate: percentComplete === undefined ? true : false
     });
 
     const progressBarStyles = {
       width: percentComplete !== undefined ? percentComplete + '%' : undefined,
-      transition: (percentComplete !== undefined && percentComplete < ZERO_THRESHOLD) ? 'none' : undefined,
+      transition: percentComplete !== undefined && percentComplete < ZERO_THRESHOLD ? 'none' : undefined
     };
 
     const ariaValueMin = percentComplete !== undefined ? 0 : undefined;
@@ -111,18 +98,18 @@ export class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps
     const ariaValueNow = percentComplete !== undefined ? Math.floor(percentComplete!) : undefined;
 
     return (
-      <div className={ classNames.itemProgress }>
-        <div className={ classNames.progressTrack } />
+      <div className={classNames.itemProgress}>
+        <div className={classNames.progressTrack} />
         <div
-          className={ classNames.progressBar }
-          style={ progressBarStyles }
-          role='progressbar'
-          aria-valuemin={ ariaValueMin }
-          aria-valuemax={ ariaValueMax }
-          aria-valuenow={ ariaValueNow }
-          aria-valuetext={ ariaValueText }
+          className={classNames.progressBar}
+          style={progressBarStyles}
+          role="progressbar"
+          aria-valuemin={ariaValueMin}
+          aria-valuemax={ariaValueMax}
+          aria-valuenow={ariaValueNow}
+          aria-valuetext={ariaValueText}
         />
       </div>
     );
-  }
+  };
 }

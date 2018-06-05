@@ -1,6 +1,122 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 25 May 2018 21:30:43 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Jun 2018 10:23:03 GMT and should not be manually modified.
+
+## 6.5.0
+Tue, 05 Jun 2018 10:23:03 GMT
+
+### Minor changes
+
+- Callout: Add `preventDismissOnLostFocus` prop.
+
+## 6.4.1
+Tue, 05 Jun 2018 00:44:30 GMT
+
+### Patches
+
+- Added Prettier
+- CommandBarPage: Remove fabric js reference.
+- _onValidate should only skip validation on text entry if state.value is undefined (it was skipping when text entry was empty string)
+
+## 6.4.0
+Mon, 04 Jun 2018 18:50:06 GMT
+
+### Minor changes
+
+- Revert PR 4897
+
+## 6.3.0
+Mon, 04 Jun 2018 10:16:13 GMT
+
+### Minor changes
+
+- Coachmark: Fix positioning bugs and add in support for different Coachmark directions.
+- DetailsList: adjusting aria labels and exporting more ariaLabels in `IColumn` to allow for better narrator reading and table scanning.
+- Dropdown: Allow `title` to be provided as an item property.
+- Icons top level import was exporting a file path, should be exporting a package path.
+- GroupedList: Added multiple customization entry-points including custom indent spacing and header customization.
+- Allow for more control over event handling for keytips
+
+### Patches
+
+- Callout: fix dismissing events to attach to the documentElement, not body.
+- SplitButton: Hook up aria-roledescription to splitButtons so that they can leverage that markup if it gets passed in to the component.
+- SpinButton: addressing onValidate, onIncrement, and onDecrement callbacks to be called correctly.
+- MessageBar: New color for dismiss / expand button in hc mode for better visibility.
+- Updating react typings.
+- Updated test snapshots
+
+## 6.2.0
+Fri, 01 Jun 2018 10:18:43 GMT
+
+### Minor changes
+
+- Added FocusTrapZone capability: When the FTZ is focused, it will pass focus to a descendant element.  The new prop 'focusPreviouslyFocusedInnerElement' controls the descendant-choosing behavior.
+
+### Patches
+
+- Fix ComboBox ARIA attributes.
+- Prevent invalid empty ARIA values from being output.
+- ComboBox: Fix the value that is checked when submitting a pending value to take into account if the aria-label is used as text. This line was missed in the initial change
+- Add support for pointerup to dismiss keytips
+
+## 6.1.2
+Thu, 31 May 2018 10:18:58 GMT
+
+### Patches
+
+- MessageBar: fix color for X close button so that it is accessible
+- Theming: generate a more accessible themeLighter and more accessibility pairs
+- HoverCard: example fix for keyboard navigation to HoverCard target.
+
+## 6.1.1
+Wed, 30 May 2018 22:05:03 GMT
+
+*Version update only*
+
+## 6.1.0
+Wed, 30 May 2018 20:28:34 GMT
+
+### Breaking changes
+
+- Selection utility: getSelectedIndices is now a mandatory member of the `ISelection` interface.
+- CommandBar component has been replaced with the one from the experiments package.
+- Checkbox: replaced optional properties of the `ICheckboxStyles` interface, removed `styles` and `getClassNames` from the `ICheckboxProps` interface, made the checkmark visible on hover, added high contrast styles.
+- CommandBarButton: Supports custom styling and button aliasing. Interface improvements.
+- ContextualMenu: Remove deprecated since v0.69 `icon` prop of ContextualMenu component.
+- Positioning/Callout/ContextualMenu: Remove all deprecated props
+- Minimum React version is now 16.3.2.
+- Label and Toggle now support javascript styling. Improvements to Label and Toggle interfaces. Added Toggle and Label root aliasing.
+
+### Minor changes
+
+- ChoiceGroup: now supports customizable theming. Various bug fixes, cleanup within. Tests updated to use enzyme.
+- Deprecate ContextualMenu's name prop in favor of new text prop.
+- DetailsList: fieldName is now an optional field of IColumn.
+- All `getStyles` properties accept either a function to return a style object, or a static style object
+
+### Patches
+
+- BaseButton: Make adjustment so that customclass names has precedence.
+- CommandBarButton: High contrast hover state.
+- CommandBar: Removed unnecessary endAligned styleprops and styles
+- Port CommandBar accessibility fixes (PR #4686) to 6.0
+- Positioning: correctly positon callout without beak
+- Suggestions: Fix a bug where arrow keys would not scroll correctly
+
+## 5.112.0
+Wed, 30 May 2018 00:35:36 GMT
+
+### Minor changes
+
+- FocusZone: Added onFocusNotification API to notify creators of focus
+
+### Patches
+
+- Update local properties in BaseExtenededPicker on receiving new props
+- CommandBar Example: More specific selector for text color to override the link styles we get from msgraph on the website.
+- ComboBox: Update styling so that the "selected" item does not get the "selected" look when navigating through the potential options.
+- Fix passing onclick from props for contextual anchor item
 
 ## 5.111.2
 Fri, 25 May 2018 21:30:43 GMT

@@ -9,42 +9,50 @@ const alertClicked = (): void => {
 };
 
 export const FocusZoneTabbableExample = () => (
-  <div className='ms-FocusZoneTabbableExample'>
-    <div className='ms-Row'>
-      <FocusZone direction={ FocusZoneDirection.horizontal } handleTabKey={ FocusZoneTabbableElements.all } isCircularNavigation={ true }>
+  <div className="ms-FocusZoneTabbableExample">
+    <div className="ms-Row">
+      <FocusZone
+        direction={FocusZoneDirection.horizontal}
+        handleTabKey={FocusZoneTabbableElements.all}
+        isCircularNavigation={true}
+      >
         <span>Circular Tabbable FocusZone: </span>
         <DefaultButton>Button 1</DefaultButton>
         <DefaultButton>Button 2</DefaultButton>
-        <TextField value='FocusZone TextField' className='ms-FocusZoneTabbableExample-textField' />
+        <TextField value="FocusZone TextField" className="ms-FocusZoneTabbableExample-textField" />
         <DefaultButton>Button 3</DefaultButton>
         <DefaultButton
-          text='Create account'
-          split={ true }
-          onClick={ alertClicked }
-          splitButtonAriaLabel={ 'See 2 sample options' }
-          menuProps={ {
+          text="Create account"
+          split={true}
+          onClick={alertClicked}
+          splitButtonAriaLabel={'See 2 sample options'}
+          menuProps={{
             items: [
               {
                 key: 'emailMessage',
-                name: 'Email message',
-                icon: 'Mail'
+                text: 'Email message',
+                iconProps: { iconName: 'Mail' }
               },
               {
                 key: 'calendarEvent',
-                name: 'Calendar event',
-                icon: 'Calendar'
+                text: 'Calendar event',
+                iconProps: { iconName: 'Calendar' }
               }
             ]
-          } }
+          }}
         />
       </FocusZone>
     </div>
-    <div className='ms-Row'>
-      <FocusZone direction={ FocusZoneDirection.horizontal } handleTabKey={ FocusZoneTabbableElements.inputOnly } isCircularNavigation={ false }>
+    <div className="ms-Row">
+      <FocusZone
+        direction={FocusZoneDirection.horizontal}
+        handleTabKey={FocusZoneTabbableElements.inputOnly}
+        isCircularNavigation={false}
+      >
         <span>Input Only FocusZone: </span>
         <DefaultButton>Button 1</DefaultButton>
         <DefaultButton>Button 2</DefaultButton>
-        <TextField value='FocusZone TextField' className='ms-FocusZoneTabbableExample-textField' />
+        <TextField value="FocusZone TextField" className="ms-FocusZoneTabbableExample-textField" />
         <DefaultButton>Button 3</DefaultButton>
       </FocusZone>
     </div>

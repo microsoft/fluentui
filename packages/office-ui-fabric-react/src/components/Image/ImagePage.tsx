@@ -27,64 +27,56 @@ export class ImagePage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='Image'
-        componentName='ImageExample'
-        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Image'
+        title="Image"
+        componentName="ImageExample"
+        componentUrl="https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Image"
         exampleCards={
           <div>
-            <ExampleCard title='ImageFit: Not specified' code={ ImageDefaultExampleCode }>
+            <ExampleCard title="ImageFit: Not specified" code={ImageDefaultExampleCode}>
               <ImageDefaultExample />
             </ExampleCard>
-            <ExampleCard title='ImageFit: None' code={ ImageNoneExampleCode }>
+            <ExampleCard title="ImageFit: None" code={ImageNoneExampleCode}>
               <ImageNoneExample />
             </ExampleCard>
-            <ExampleCard title='ImageFit: Center' code={ ImageCenterExampleCode }>
+            <ExampleCard title="ImageFit: Center" code={ImageCenterExampleCode}>
               <ImageCenterExample />
             </ExampleCard>
-            <ExampleCard title='ImageFit: Contain' code={ ImageContainExampleCode }>
+            <ExampleCard title="ImageFit: Contain" code={ImageContainExampleCode}>
               <ImageContainExample />
             </ExampleCard>
-            <ExampleCard title='ImageFit: Cover' code={ ImageCoverExampleCode }>
+            <ExampleCard title="ImageFit: Cover" code={ImageCoverExampleCode}>
               <ImageCoverExample />
             </ExampleCard>
-            <ExampleCard title='Maximizing the image frame' code={ ImageMaximizeFrameExampleCode }>
+            <ExampleCard title="Maximizing the image frame" code={ImageMaximizeFrameExampleCode}>
               <ImageMaximizeFrameExample />
             </ExampleCard>
           </div>
         }
-        allowNativeProps={ true }
-        nativePropsElement={ 'img' }
+        allowNativeProps={true}
+        nativePropsElement={'img'}
         propertiesTables={
           <PropertiesTableSet
-            sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Image/Image.types.ts')
-            ] }
+            sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/Image/Image.types.ts')]}
           />
         }
         overview={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Image/docs/ImageOverview.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Image/docs/ImageOverview.md')}
           </PageMarkdown>
         }
-        bestPractices={
-          <div />
-        }
+        bestPractices={<div />}
         dos={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Image/docs/ImageDos.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Image/docs/ImageDos.md')}
           </PageMarkdown>
         }
         donts={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Image/docs/ImageDonts.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Image/docs/ImageDonts.md')}
           </PageMarkdown>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }
-        componentStatus={
-          <ComponentStatus
-            { ...ImageStatus }
-          />
-        }
+        isHeaderVisible={this.props.isHeaderVisible}
+        componentStatus={<ComponentStatus {...ImageStatus} />}
       />
     );
   }

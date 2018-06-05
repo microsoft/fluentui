@@ -16,10 +16,10 @@ export class CommandBarButton extends BaseComponent<IButtonProps, {}> {
 
     return (
       <BaseButton
-        { ...this.props }
-        variantClassName='ms-Button--commandBar'
-        styles={ getStyles(theme!, styles) }
-        onRenderDescription={ nullRender }
+        {...this.props}
+        variantClassName="ms-Button--commandBar"
+        styles={getStyles(theme!, styles)}
+        onRenderDescription={nullRender}
       />
     );
   }

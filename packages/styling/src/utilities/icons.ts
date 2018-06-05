@@ -1,15 +1,5 @@
-import {
-  warn
-} from '@uifabric/utilities/lib/warn';
-import {
-  GlobalSettings
-} from '@uifabric/utilities/lib/GlobalSettings';
-import {
-  IRawStyle,
-  IFontFace,
-  fontFace,
-  mergeStyles
-} from '@uifabric/merge-styles/lib/index';
+import { GlobalSettings, warn } from '@uifabric/utilities';
+import { IRawStyle, IFontFace, fontFace, mergeStyles } from '@uifabric/merge-styles';
 
 export interface IIconSubset {
   fontFace?: IFontFace;
@@ -137,19 +127,19 @@ export function getIcon(name?: string): IIconRecord | undefined {
         fontFace(subset.fontFace);
 
         // Generate a base class name for the given font.
-        subset.className = mergeStyles(
-          subset.style,
-          {
-            fontFamily: subset.fontFace.fontFamily,
-            fontWeight: subset.fontFace.fontWeight || 'normal',
-            fontStyle: subset.fontFace.fontStyle || 'normal'
-          }).toString();
+        subset.className = mergeStyles(subset.style, {
+          fontFamily: subset.fontFace.fontFamily,
+          fontWeight: subset.fontFace.fontWeight || 'normal',
+          fontStyle: subset.fontFace.fontStyle || 'normal'
+        }).toString();
 
         subset.isRegistered = true;
       }
     } else {
       if (!options.disableWarnings && options.warnOnMissingIcons) {
-        warn(`The icon "${name}" was used but not registered. See http://aka.ms/fabric-icon-usage for more information.`);
+        warn(
+          `The icon "${name}" was used but not registered. See http://aka.ms/fabric-icon-usage for more information.`
+        );
       }
     }
   }

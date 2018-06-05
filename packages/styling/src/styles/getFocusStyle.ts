@@ -1,7 +1,7 @@
-import { IRawStyle } from '@uifabric/merge-styles/lib/index';
+import { IRawStyle } from '@uifabric/merge-styles';
 import { ITheme } from '../interfaces/index';
 import { HighContrastSelector } from './CommonStyles';
-import { IsFocusVisibleClassName } from '@uifabric/utilities/lib/initializeFocusRects';
+import { IsFocusVisibleClassName } from '@uifabric/utilities';
 import { ZIndexes } from './zIndexes';
 
 /**
@@ -26,7 +26,6 @@ export function getFocusStyle(
     position,
 
     selectors: {
-
       '::-moz-focus-inner': {
         border: '0'
       },
@@ -45,7 +44,6 @@ export function getFocusStyle(
           [HighContrastSelector]: highContrastStyle
         }
       }
-
     }
   };
 }

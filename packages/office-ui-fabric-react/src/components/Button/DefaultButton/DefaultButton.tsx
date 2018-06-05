@@ -16,10 +16,10 @@ export class DefaultButton extends BaseComponent<IButtonProps, {}> {
 
     return (
       <BaseButton
-        { ...this.props }
-        variantClassName={ primary ? 'ms-Button--primary' : 'ms-Button--default' }
-        styles={ getStyles(theme!, styles, primary) }
-        onRenderDescription={ nullRender }
+        {...this.props}
+        variantClassName={primary ? 'ms-Button--primary' : 'ms-Button--default'}
+        styles={getStyles(theme!, styles, primary)}
+        onRenderDescription={nullRender}
       />
     );
   }
