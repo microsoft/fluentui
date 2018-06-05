@@ -13,7 +13,8 @@ const ActivityItemCompactExampleCode = require('!raw-loader!office-ui-fabric-rea
 export const ActivityItemPageProps: IDemoPageProps = {
   title: 'ActivityItem',
   componentName: 'ActivityItem',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ActivityItem',
+  componentUrl:
+    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ActivityItem',
   componentStatus: ActivityItemStatus,
   examples: [
     {
@@ -32,12 +33,18 @@ export const ActivityItemPageProps: IDemoPageProps = {
       view: <ActivityItemCompactExample />
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/ActivityItem.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/docs/ActivityItemOverview.md'),
+  propertiesTablesSources: [
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/ActivityItem.types.ts')
+  ],
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/docs/ActivityItemOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/docs/ActivityItemDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/docs/ActivityItemDonts.md'),
-  isHeaderVisible: true,
+  isHeaderVisible: true
 };
 
-export const ActivityItemPage = (props: { isHeaderVisible: boolean }) => (<DemoPage { ...{ ...ActivityItemPageProps, ...props } } />);
+export const ActivityItemPage = (props: { isHeaderVisible: boolean }) => (
+  <DemoPage {...{ ...ActivityItemPageProps, ...props }} />
+);

@@ -2,6 +2,37 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.1.2",
+      "tag": "@uifabric/experiments_v6.1.2",
+      "date": "Tue, 05 Jun 2018 00:44:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "cfa7a19ec1d6f98c13f822a828e0751f64507dbd",
+            "comment": "Added Prettier"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.4.0 <7.0.0` to `>=6.4.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=6.0.0 <7.0.0` to `>=6.0.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.0.1 <7.0.0` to `>=6.0.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `>=0.7.1 <1.0.0` to `>=0.7.2 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=5.2.3 <6.0.0` to `>=6.0.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.1.1",
       "tag": "@uifabric/experiments_v6.1.1",
       "date": "Mon, 04 Jun 2018 10:16:13 GMT",

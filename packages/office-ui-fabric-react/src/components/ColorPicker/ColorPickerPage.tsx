@@ -4,7 +4,7 @@ import {
   IComponentDemoPageProps,
   ComponentPage,
   PropertiesTableSet,
-  PageMarkdown,
+  PageMarkdown
 } from '@uifabric/example-app-base';
 import { ColorPickerBasicExample } from './examples/ColorPicker.Basic.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
@@ -16,35 +16,30 @@ export class ColorPickerPage extends React.Component<IComponentDemoPageProps, {}
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='ColorPicker'
-        componentName='ColorPickerExample'
-        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ColorPicker'
+        title="ColorPicker"
+        componentName="ColorPickerExample"
+        componentUrl="https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ColorPicker"
         exampleCards={
-          <ExampleCard
-            title='Default ColorPicker'
-            code={ ColorPickerBasicExampleCode }
-          >
+          <ExampleCard title="Default ColorPicker" code={ColorPickerBasicExampleCode}>
             <ColorPickerBasicExample />
           </ExampleCard>
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={ [
+            sources={[
               require<string>('!raw-loader!office-ui-fabric-react/src/components/ColorPicker/ColorPicker.types.ts')
-            ] }
+            ]}
           />
         }
         overview={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/ColorPicker/docs/ColorPickerOverview.md') }
+            {require<
+              string
+            >('!raw-loader!office-ui-fabric-react/src/components/ColorPicker/docs/ColorPickerOverview.md')}
           </PageMarkdown>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }
-        componentStatus={
-          <ComponentStatus
-            { ...ColorPickerStatus }
-          />
-        }
+        isHeaderVisible={this.props.isHeaderVisible}
+        componentStatus={<ComponentStatus {...ColorPickerStatus} />}
       />
     );
   }

@@ -2,8 +2,7 @@ import { ICalloutProps } from '../../Callout';
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunctionOrObject, IPoint } from '../../Utilities';
 
-export interface IKeytip {
-}
+export interface IKeytip {}
 
 export interface IKeytipProps {
   /**
@@ -116,7 +115,6 @@ export interface IKeytipProps {
  * Props to style Keytip component
  */
 export interface IKeytipStyleProps {
-
   /**
    * The theme for the keytip.
    *
@@ -140,7 +138,6 @@ export interface IKeytipStyleProps {
 }
 
 export interface IKeytipStyles {
-
   /**
    * Style for the div container surrounding the keytip content.
    *

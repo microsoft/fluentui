@@ -18,58 +18,47 @@ export class TogglePage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='Toggle'
-        componentName='ToggleExample'
-        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Toggle'
+        title="Toggle"
+        componentName="ToggleExample"
+        componentUrl="https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Toggle"
         exampleCards={
           <div>
-            <ExampleCard
-              title='Default Toggles'
-              code={ ToggleBasicExampleCode }
-            >
+            <ExampleCard title="Default Toggles" code={ToggleBasicExampleCode}>
               <ToggleBasicExample />
             </ExampleCard>
             <ExampleCard
-              title='Toggle with specialized aria labels for the screen-reader to announce when the toggle is on and off'
-              code={ ToggleAriaLabelExampleCode }
+              title="Toggle with specialized aria labels for the screen-reader to announce when the toggle is on and off"
+              code={ToggleAriaLabelExampleCode}
             >
               <ToggleAriaLabelExample />
             </ExampleCard>
           </div>
         }
-        allowNativeProps={ true }
-        nativePropsElement={ 'input' }
+        allowNativeProps={true}
+        nativePropsElement={'input'}
         propertiesTables={
           <PropertiesTableSet
-            sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/Toggle.types.ts')
-            ] }
+            sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/Toggle.types.ts')]}
           />
         }
         overview={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleOverview.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleOverview.md')}
           </PageMarkdown>
         }
-        bestPractices={
-          <div />
-        }
+        bestPractices={<div />}
         dos={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleDos.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleDos.md')}
           </PageMarkdown>
         }
         donts={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleDonts.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleDonts.md')}
           </PageMarkdown>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }
-        componentStatus={
-          <ComponentStatus
-            { ...ToggleStatus }
-          />
-        }
+        isHeaderVisible={this.props.isHeaderVisible}
+        componentStatus={<ComponentStatus {...ToggleStatus} />}
       />
     );
   }

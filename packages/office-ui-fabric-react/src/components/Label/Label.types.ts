@@ -1,14 +1,9 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import {
-  ITheme,
-  IStyle,
-} from '../../Styling';
+import { ITheme, IStyle } from '../../Styling';
 import { IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
 
-export interface ILabel {
-
-}
+export interface ILabel {}
 
 export interface ILabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   /**

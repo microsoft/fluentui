@@ -7,26 +7,27 @@ const pageStyles: any = require('../PageStyles.module.scss');
 export class ComboBoxComponentPage extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
-      <div className={ pageStyles.basePage }>
+      <div className={pageStyles.basePage}>
         <ComponentPage>
-          <PageHeader pageTitle='ComboBox' backgroundColor='#038387'
-            links={
-              [
-                {
-                  'text': 'Overview',
-                  'location': 'Overview'
-                },
-                {
-                  'text': 'Variants',
-                  'location': 'Variants'
-                },
-                {
-                  'text': 'Implementation',
-                  'location': 'Implementation'
-                }
-              ]
-            } />
-          <ComboBoxPage isHeaderVisible={ false } />
+          <PageHeader
+            pageTitle="ComboBox"
+            backgroundColor="#038387"
+            links={[
+              {
+                text: 'Overview',
+                location: 'Overview'
+              },
+              {
+                text: 'Variants',
+                location: 'Variants'
+              },
+              {
+                text: 'Implementation',
+                location: 'Implementation'
+              }
+            ]}
+          />
+          <ComboBoxPage isHeaderVisible={false} />
         </ComponentPage>
       </div>
     );

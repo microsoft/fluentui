@@ -1,20 +1,15 @@
-import {
-  IPalette,
-  ISemanticColors,
-  ITheme,
-  IPartialTheme,
-  createTheme
-} from 'office-ui-fabric-react/lib/Styling';
+import { IPalette, ISemanticColors, ITheme, IPartialTheme, createTheme } from 'office-ui-fabric-react/lib/Styling';
 
 function makeThemeFromPartials(
   originalTheme: IPartialTheme,
   partialPalette: Partial<IPalette>,
-  partialSemantic: Partial<ISemanticColors>): ITheme {
+  partialSemantic: Partial<ISemanticColors>
+): ITheme {
   return createTheme({
     ...originalTheme,
     ...{
       palette: { ...originalTheme.palette, ...partialPalette },
-      semanticColors: { ...originalTheme.semanticColors, ...partialSemantic },
+      semanticColors: { ...originalTheme.semanticColors, ...partialSemantic }
     }
   });
 }
@@ -123,7 +118,7 @@ export function getSoftVariant(theme: IPartialTheme): ITheme {
     inputBackground: p.themeLighter,
     // inputBackgroundChecked: p.themePrimary,
     // inputBackgroundCheckedHovered: p.themeDarkAlt,
-    inputForegroundChecked: p.themeLighter,
+    inputForegroundChecked: p.themeLighter
     // inputFocusBorderAlt: p.themePrimary,
   };
 
@@ -191,7 +186,7 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
     inputBackground: p.themeDark,
     inputBackgroundChecked: p.white,
     // inputBackgroundCheckedHovered: p.themePrimary,
-    inputForegroundChecked: p.themeDark,
+    inputForegroundChecked: p.themeDark
     // inputFocusBorderAlt: p.themePrimary,
   };
 

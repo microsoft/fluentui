@@ -6,6 +6,7 @@
   "scripts": {
     "build": "",
     "clean": "",
+    "code-style": "node -v",
     "screener": "screener-storybook --conf screener.config.js",
     "screener:local": "screener-storybook --conf screener.local.config.js --debug",
     "start": "start-storybook --port 5555"
@@ -28,7 +29,7 @@
     "storybook-readme": "=3.0.6"
   },
   "dependencies": {
-    "office-ui-fabric-react": ">=6.3.0 <7.0.0",
+    "office-ui-fabric-react": ">=6.4.1 <7.0.0",
     "react": ">=16.3.2-0 <17.0.0",
     "react-dom": ">=16.3.2-0 <17.0.0",
     "typescript": "2.8.1",

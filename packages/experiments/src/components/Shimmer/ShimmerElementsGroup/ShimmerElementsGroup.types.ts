@@ -3,8 +3,7 @@ import { IStyle, ITheme } from '../../../Styling';
 import { IStyleFunctionOrObject } from '../../../Utilities';
 import { IShimmerElement } from '../Shimmer.types';
 
-export interface IShimmerElementsGroup {
-}
+export interface IShimmerElementsGroup {}
 
 /**
  * ShimmerElementsGroup component props.
@@ -38,8 +37,8 @@ export interface IShimmerElementsGroupProps extends React.AllHTMLAttributes<HTML
   width?: string;
 
   /**
-  * Theme provided by High-Order Component.
-  */
+   * Theme provided by High-Order Component.
+   */
   theme?: ITheme;
 
   /**

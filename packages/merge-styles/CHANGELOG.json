@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.0.2",
+      "tag": "@uifabric/merge-styles_v6.0.2",
+      "date": "Tue, 05 Jun 2018 00:44:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "cfa7a19ec1d6f98c13f822a828e0751f64507dbd",
+            "comment": "Added Prettier"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.0.1",
       "tag": "@uifabric/merge-styles_v6.0.1",
       "date": "Mon, 04 Jun 2018 10:16:13 GMT",
