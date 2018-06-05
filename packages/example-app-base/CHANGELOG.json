@@ -440,7 +440,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "08e59c871894c8ff443d48dbe5b0dd3316eb4331",
-            "comment": "Updated build to newest React version and typings. Updated tests and made various tweaks to the code to remove React warnings and keep Enzyme"
+            "comment":
+              "Updated build to newest React version and typings. Updated tests and made various tweaks to the code to remove React warnings and keep Enzyme"
           }
         ],
         "dependency": [
@@ -476,7 +477,8 @@
           {
             "author": "Jon Schectman <joschect@microsoft.com>",
             "commit": "8e1dcc66cda8334653a8b5ccbde02bf6275e0b23",
-            "comment": "TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums"
+            "comment":
+              "TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums"
           }
         ],
         "dependency": [
@@ -652,7 +654,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "6746103da3c35f95afb1cde1b304a756c550deff",
-            "comment": "Adding back sourcemap content to .map files, which should alleviate \"../src/* missing\" issues when using webpack."
+            "comment":
+              "Adding back sourcemap content to .map files, which should alleviate \"../src/* missing\" issues when using webpack."
           }
         ],
         "dependency": [
@@ -1190,7 +1193,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "fc7cd7df4a12ca6a7f6f4f64a984a971b324262d",
-            "comment": "Chaning scss imports to use typescript `import` instead of `require` so that lib-amd build actually imports via AMD require and not commonjs require."
+            "comment":
+              "Chaning scss imports to use typescript `import` instead of `require` so that lib-amd build actually imports via AMD require and not commonjs require."
           }
         ]
       }
@@ -1248,7 +1252,8 @@
           {
             "author": "Johanna Hawkins <jo.hawkins@hotmail.com>",
             "commit": "7fa3b9649c1b46e136c8781eda79149577699f1d",
-            "comment": "Modified existing calendar examples to include examples of the new props for date range selection, auto month navigation and hiding the today link."
+            "comment":
+              "Modified existing calendar examples to include examples of the new props for date range selection, auto month navigation and hiding the today link."
           }
         ],
         "dependency": [
@@ -1412,7 +1417,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "82a1b7ec536b607fefc0067111e7a9d23dfc4ca6",
-            "comment": "Adding new package to host all example app base code, which allows us to share common doc website code across many projects."
+            "comment":
+              "Adding new package to host all example app base code, which allows us to share common doc website code across many projects."
           }
         ],
         "dependency": [

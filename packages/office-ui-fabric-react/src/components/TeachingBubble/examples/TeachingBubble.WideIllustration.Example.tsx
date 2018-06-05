@@ -9,7 +9,10 @@ export interface ITeachingBubbleWideIllustrationExampleState {
   isTeachingBubbleVisible?: boolean;
 }
 
-export class TeachingBubbleWideIllustrationExample extends React.Component<{}, ITeachingBubbleWideIllustrationExampleState> {
+export class TeachingBubbleWideIllustrationExample extends React.Component<
+  {},
+  ITeachingBubbleWideIllustrationExampleState
+> {
   private _menuButtonElement: HTMLElement;
 
   constructor(props: {}) {
@@ -18,7 +21,7 @@ export class TeachingBubbleWideIllustrationExample extends React.Component<{}, I
     this._onDismiss = this._onDismiss.bind(this);
 
     this.state = {
-      isTeachingBubbleVisible: false,
+      isTeachingBubbleVisible: false
     };
   }
 
@@ -26,7 +29,7 @@ export class TeachingBubbleWideIllustrationExample extends React.Component<{}, I
     const { isTeachingBubbleVisible } = this.state;
     const exampleImageProps: IImageProps = { src: 'http://placehold.it/364x140' };
     const examplePrimaryButton: IButtonProps = {
-      children: 'Try it out',
+      children: 'Try it out'
     };
     const exampleSecondaryButtonProps: IButtonProps = {
       children: 'May be later',
@@ -34,31 +37,35 @@ export class TeachingBubbleWideIllustrationExample extends React.Component<{}, I
     };
 
     return (
-      <div className='ms-TeachingBubbleExample'>
-        <span className='ms-TeachingBubbleBasicExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton! }>
+      <div className="ms-TeachingBubbleExample">
+        <span
+          className="ms-TeachingBubbleBasicExample-buttonArea"
+          ref={menuButton => (this._menuButtonElement = menuButton!)}
+        >
           <DefaultButton
-            onClick={ this._onDismiss }
-            text={ isTeachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble' }
+            onClick={this._onDismiss}
+            text={isTeachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble'}
           />
         </span>
-        { isTeachingBubbleVisible ? (
+        {isTeachingBubbleVisible ? (
           <div>
             <TeachingBubble
-              illustrationImage={ exampleImageProps }
-              calloutProps={ { directionalHint: DirectionalHint.bottomCenter } }
-              isWide={ true }
-              hasSmallHeadline={ true }
-              hasCloseIcon={ true }
-              targetElement={ this._menuButtonElement }
-              primaryButtonProps={ examplePrimaryButton }
-              secondaryButtonProps={ exampleSecondaryButtonProps }
-              onDismiss={ this._onDismiss }
-              headline='Discover what’s trending around you'
+              illustrationImage={exampleImageProps}
+              calloutProps={{ directionalHint: DirectionalHint.bottomCenter }}
+              isWide={true}
+              hasSmallHeadline={true}
+              hasCloseIcon={true}
+              targetElement={this._menuButtonElement}
+              primaryButtonProps={examplePrimaryButton}
+              secondaryButtonProps={exampleSecondaryButtonProps}
+              onDismiss={this._onDismiss}
+              headline="Discover what’s trending around you"
             >
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni harum non?
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam
+              magni harum non?
             </TeachingBubble>
           </div>
-        ) : (null) }
+        ) : null}
       </div>
     );
   }

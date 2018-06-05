@@ -7,12 +7,10 @@ export class FluentThemeBasicExample extends React.Component<{}, {}> {
     return (
       <div>
         <h2>Current theme</h2>
-        { this._renderComponents() }
+        {this._renderComponents()}
 
         <h2>Fluent theme</h2>
-        <Customizer settings={ { theme: FluentTheme } }>
-          { this._renderComponents() }
-        </Customizer>
+        <Customizer settings={{ theme: FluentTheme }}>{this._renderComponents()}</Customizer>
       </div>
     );
   }
@@ -20,14 +18,14 @@ export class FluentThemeBasicExample extends React.Component<{}, {}> {
   private _renderComponents(): JSX.Element {
     return (
       <div>
-        <Link disabled={ true }>Disabled link</Link>
+        <Link disabled={true}>Disabled link</Link>
         <Breadcrumb
-          items={ [
+          items={[
             { text: 'Files', key: 'Files' },
             { text: 'This is folder 1', key: 'f1' },
             { text: 'This is folder 2', key: 'f2' },
             { text: 'This is folder 3', key: 'f3', isCurrentItem: true }
-          ] }
+          ]}
         />
       </div>
     );

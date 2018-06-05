@@ -2,9 +2,7 @@ import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
 
-export interface IShimmer {
-
-}
+export interface IShimmer {}
 
 /**
  * Shimmer component props.
@@ -60,8 +58,8 @@ export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
   className?: string;
 
   /**
-  * Theme provided by High-Order Component.
-  */
+   * Theme provided by High-Order Component.
+   */
   theme?: ITheme;
 
   /**

@@ -1,9 +1,4 @@
-import {
-  getFocusStyle,
-  hiddenContentStyle,
-  HighContrastSelector,
-  getGlobalClassNames,
-} from '../../Styling';
+import { getFocusStyle, hiddenContentStyle, HighContrastSelector, getGlobalClassNames } from '../../Styling';
 import { IRatingStyleProps, IRatingStyles } from './Rating.types';
 
 const GlobalClassNames = {
@@ -17,7 +12,7 @@ const GlobalClassNames = {
   ratingStarIsSmall: 'ms-Rating--small',
   ratingStartIsLarge: 'ms-Rating--large',
   labelText: 'ms-Rating-labelText',
-  ratingFocusZone: 'ms-Rating-focuszone',
+  ratingFocusZone: 'ms-Rating-focuszone'
 };
 
 function _getColorWithHighContrast(color: string, highContrastColor: string) {
@@ -32,16 +27,9 @@ function _getColorWithHighContrast(color: string, highContrastColor: string) {
 }
 
 export function getStyles(props: IRatingStyleProps): IRatingStyles {
-  const {
-    disabled,
-    readOnly,
-    theme
-  } = props;
+  const { disabled, readOnly, theme } = props;
 
-  const {
-    semanticColors,
-    palette
-  } = theme;
+  const { semanticColors, palette } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -58,27 +46,28 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
   return {
     root: [
       classNames.root,
-      !disabled && !readOnly && {
-        selectors: {
-          // This is part 1 of highlighting all stars up to the one the user is hovering over
-          '&:hover': {
-            selectors: {
-              '.ms-RatingStar-back': _getColorWithHighContrast(ratingStarCheckedColor, 'Highlight'),
+      !disabled &&
+        !readOnly && {
+          selectors: {
+            // This is part 1 of highlighting all stars up to the one the user is hovering over
+            '&:hover': {
+              selectors: {
+                '.ms-RatingStar-back': _getColorWithHighContrast(ratingStarCheckedColor, 'Highlight')
+              }
             }
           }
         }
-      }
     ],
     rootIsSmall: [
       classNames.rootIsSmall,
       {
-        height: ratingSmallIconSize + (ratingPadding * 2) + 'px'
+        height: ratingSmallIconSize + ratingPadding * 2 + 'px'
       }
     ],
     rootIsLarge: [
       classNames.rootIsLarge,
       {
-        height: ratingLargeIconSize + (ratingPadding * 2) + 'px'
+        height: ratingLargeIconSize + ratingPadding * 2 + 'px'
       }
     ],
     ratingStar: [
@@ -106,7 +95,7 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
         top: '0',
         textAlign: 'center',
         verticalAlign: 'middle',
-        overflow: 'hidden',
+        overflow: 'hidden'
       },
       _getColorWithHighContrast(ratingStarCheckedColor, 'Highlight')
     ],
@@ -128,30 +117,31 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
           }
         }
       },
-      !disabled && !readOnly && {
-        selectors: {
-          // This is part 2 of highlighting all stars up to the one the user is hovering over
-          '&:hover ~ .ms-Rating-button': {
-            selectors: {
-              '.ms-RatingStar-back': _getColorWithHighContrast(ratingStarUncheckedColor, 'WindowText'),
-              '.ms-RatingStar-front': _getColorWithHighContrast(ratingStarUncheckedColor, 'WindowText'),
-            }
-          },
-          '&:hover': {
-            selectors: {
-              '.ms-RatingStar-back': {
-                color: ratingStarUncheckedHoverColor
-              },
-              '.ms-RatingStar-front': {
-                color: ratingStarUncheckedHoverSelectedColor
+      !disabled &&
+        !readOnly && {
+          selectors: {
+            // This is part 2 of highlighting all stars up to the one the user is hovering over
+            '&:hover ~ .ms-Rating-button': {
+              selectors: {
+                '.ms-RatingStar-back': _getColorWithHighContrast(ratingStarUncheckedColor, 'WindowText'),
+                '.ms-RatingStar-front': _getColorWithHighContrast(ratingStarUncheckedColor, 'WindowText')
+              }
+            },
+            '&:hover': {
+              selectors: {
+                '.ms-RatingStar-back': {
+                  color: ratingStarUncheckedHoverColor
+                },
+                '.ms-RatingStar-front': {
+                  color: ratingStarUncheckedHoverSelectedColor
+                }
               }
             }
           }
-        }
-      },
+        },
       disabled && {
         cursor: 'default'
-      },
+      }
     ],
     ratingStarIsSmall: [
       classNames.ratingStarIsSmall,
@@ -167,10 +157,7 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
         lineHeight: ratingLargeIconSize + 'px'
       }
     ],
-    labelText: [
-      classNames.labelText,
-      hiddenContentStyle
-    ],
+    labelText: [classNames.labelText, hiddenContentStyle],
     ratingFocusZone: [
       classNames.ratingFocusZone,
       {

@@ -2,12 +2,12 @@ import * as React from 'react';
 import { Beak } from './Beak';
 import { RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
 
-export interface IBeak { }
+export interface IBeak {}
 
 export interface IBeakProps extends React.Props<Beak> {
   /**
-  * All props for your component are to be defined here.
-  */
+   * All props for your component are to be defined here.
+   */
   componentRef?: (component: IBeak | null) => void;
 
   /**

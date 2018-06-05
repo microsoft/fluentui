@@ -1,16 +1,8 @@
 import { HighContrastSelector } from '../../Styling';
-import {
-  ILabelStyleProps,
-  ILabelStyles
-} from './Label.types';
+import { ILabelStyleProps, ILabelStyles } from './Label.types';
 
 export const getStyles = (props: ILabelStyleProps): ILabelStyles => {
-  const {
-    theme,
-    className,
-    disabled,
-    required
-  } = props;
+  const { theme, className, disabled, required } = props;
 
   return {
     root: [
@@ -23,7 +15,7 @@ export const getStyles = (props: ILabelStyleProps): ILabelStyles => {
         display: 'block',
         padding: '5px 0',
         wordWrap: 'break-word',
-        overflowWrap: 'break-word',
+        overflowWrap: 'break-word'
       },
       disabled && {
         color: theme.semanticColors.disabledBodyText,
