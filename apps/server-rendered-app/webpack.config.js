@@ -8,8 +8,11 @@ module.exports = resources.createConfig(
   BUNDLE_NAME,
   IS_PRODUCTION,
   {
+    mode: 'production',
+
     entry: {
       [BUNDLE_NAME]: './lib/index.js'
     }
-  }
+  },
+  true
 );

@@ -51,6 +51,7 @@ export const getStyles = (
   return ({
     coin: [
       classNames.coin,
+      theme.fonts.medium,
       size.isSize10 && classNames.size10,
       size.isSize16 && classNames.size16,
       size.isSize24 && classNames.size24,

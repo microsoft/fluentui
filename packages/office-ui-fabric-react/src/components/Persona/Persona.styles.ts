@@ -70,6 +70,7 @@ export const getStyles = (
   return ({
     root: [
       classNames.root,
+      theme.fonts.medium,
       normalize,
       {
         color: palette.neutralPrimary,

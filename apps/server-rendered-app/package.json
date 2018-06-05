@@ -8,6 +8,9 @@
     "clean": "node ../../scripts/clean.js",
     "start": "node ../../scripts/start.js"
   },
+  "disabledTasks": [
+    "tslint"
+  ],
   "devDependencies": {
     "@types/es6-promise": "0.0.32",
     "@types/react": "16.3.16",

@@ -28,9 +28,25 @@ app.get('/', (req, res) => {
   });
 
   res.send(
+    `<!doctype html>` +
+    `<head>` +
+    `<title>Server side rendering test</title>` +
     `<style>${css}</style>` +
+    `</head>` +
+    `<body>` +
     `<div id='content'>${html}</div>` +
-    `<script type='text/javascript' src='test-app.min.js'></script>`
+    `<button id='rehydrate'>Rehydrate!</button>` +
+    `<script type='text/javascript'>` +
+    `var rehydrate = document.querySelector('#rehydrate');` +
+    `rehydrate.addEventListener('click', function() {` +
+    `var script = document.createElement('script');` +
+    `script.setAttribute('type', 'text/javascript');` +
+    `script.setAttribute('src', 'test-app.min.js');` +
+    `document.head.appendChild(script);` +
+    `});` +
+    `</script>` +
+    `</body>` +
+    `</head>`
   );
 });
 
