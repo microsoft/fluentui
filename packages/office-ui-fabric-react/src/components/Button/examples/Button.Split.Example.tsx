@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css, classNamesFunction } from '../../../Utilities';
+import { css, classNamesFunction, DATA_IS_SCROLLABLE_ATTRIBUTE } from '../../../Utilities';
 import {
   getStyles,
   IButtonBasicExampleStyleProps,
@@ -118,6 +118,11 @@ export class ButtonSplitExample extends React.Component<IButtonProps> {
             checked={ checked }
             text='Create account'
             onClick={ alertClicked }
+            onKeyPress={ alertClicked }
+            onKeyDown={ alertClicked }
+            onKeyUp={ alertClicked }
+            onMouseDown={ alertClicked }
+            onMouseUp={ alertClicked }
             split={ true }
             aria-roledescription={ 'split button' }
             style={ { height: '35px' } }

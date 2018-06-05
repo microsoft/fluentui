@@ -181,6 +181,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         'aria-label': ariaLabel,
         'aria-labelledby': ariaLabelledBy,
         'aria-describedby': ariaDescribedBy,
+        'aria-disabled': isPrimaryButtonDisabled,
         'data-is-focusable': dataIsFocusable,
         'aria-pressed': checked
       }
@@ -547,7 +548,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
             ref={ this._splitButtonContainer }
             data-is-focusable={ true }
             onClick={ !disabled && !primaryDisabled ? this._onSplitButtonPrimaryClick : undefined }
-            tabIndex={ !disabled ? 0 : undefined }
+            tabIndex={ (!disabled || allowDisabledFocus) ? 0 : undefined }
             aria-roledescription={ buttonProps['aria-roledescription'] }
           >
             <span
@@ -584,6 +585,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   private _onRenderSplitButtonMenuButton(classNames: ISplitButtonClassNames | undefined, keytipAttributes: any): JSX.Element {
     let {
+      allowDisabledFocus,
+      checked,
+      disabled,
       menuIconProps
     } = this.props;
 
@@ -599,9 +603,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
     const splitButtonProps = {
       'styles': classNames,
-      'checked': this.props.checked,
-      'disabled': this.props.disabled,
-      'allowDisabledFocus': this.props.allowDisabledFocus,
+      'checked': checked,
+      'disabled': !allowDisabledFocus && disabled,
+      'allowDisabledFocus': allowDisabledFocus,
       'onClick': this._onMenuClick,
       'menuProps': undefined,
       'iconProps': menuIconProps,
@@ -617,7 +621,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         { ...splitButtonProps }
         data-ktp-execute-target={ keytipAttributes['data-ktp-execute-target'] }
         onMouseDown={ this._onMouseDown }
-        tabIndex={ 0 }
+        tabIndex={ -1 }
       />
     );
 

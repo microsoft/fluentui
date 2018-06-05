@@ -297,6 +297,7 @@ describe('Button', () => {
           } }
         />
       );
+
       const menuButtonDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
 
       ReactTestUtils.Simulate.keyDown(menuButtonDOM, { which: KeyCodes.enter });
@@ -607,7 +608,7 @@ describe('Button', () => {
         expect(callbackMock.mock.calls.length).toBe(1);
       });
 
-      it('A disabled SplitButton does not respond to clicks', () => {
+      it('A disabled SplitButton does not respond to input events', () => {
         const renderedDOM: HTMLElement = renderIntoDocument(
           <DefaultButton
             disabled={ true }
@@ -615,6 +616,12 @@ describe('Button', () => {
             text='Create account'
             split={ true }
             onClick={ setTrue }
+            onKeyPress={ setTrue }
+            onKeyUp={ setTrue }
+            onKeyDown={ setTrue }
+            onMouseDown={ setTrue }
+            onMouseUp={ setTrue }
+
             menuProps={ {
               items: [
                 {
@@ -631,9 +638,36 @@ describe('Button', () => {
             } }
           />
         );
-        const buttonElement = renderedDOM.querySelectorAll('button')[0];
 
-        ReactTestUtils.Simulate.click(buttonElement);
+        ReactTestUtils.Simulate.click(renderedDOM);
+        ReactTestUtils.Simulate.keyDown(renderedDOM,
+          {
+            which: KeyCodes.down,
+            altKey: true
+          });
+        ReactTestUtils.Simulate.keyUp(renderedDOM,
+          {
+            which: KeyCodes.down,
+            altKey: true
+          });
+        ReactTestUtils.Simulate.keyPress(renderedDOM,
+          {
+            which: KeyCodes.down,
+            altKey: true
+          });
+        ReactTestUtils.Simulate.mouseDown(renderedDOM,
+          {
+            type: 'mousedown',
+            clientX: 0,
+            clientY: 0
+          });
+
+        ReactTestUtils.Simulate.mouseUp(renderedDOM,
+          {
+            type: 'mouseup',
+            clientX: 0,
+            clientY: 0
+          });
         expect(didClick).toEqual(false);
       });
     });

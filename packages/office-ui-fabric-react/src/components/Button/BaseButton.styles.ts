@@ -1,6 +1,7 @@
 import { IButtonStyles } from './Button.types';
 import { memoizeFunction } from '../../Utilities';
 import {
+  HighContrastSelector,
   ITheme,
   IRawStyle,
   getFocusStyle,
@@ -71,7 +72,10 @@ export const getStyles = memoizeFunction((
         pointerEvents: 'none',
         selectors: {
           ':hover': noOutline,
-          ':focus': noOutline
+          ':focus': noOutline,
+          [HighContrastSelector]: {
+            color: 'grayText'
+          }
         }
       }
     ],

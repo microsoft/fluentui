@@ -96,7 +96,6 @@ export const getStyles = memoizeFunction((
       selectors: {
         [HighContrastSelector]: {
           color: 'Window',
-          backgroundColor: 'WindowText',
           MsHighContrastAdjust: 'none'
         }
       }
@@ -108,7 +107,6 @@ export const getStyles = memoizeFunction((
       selectors: {
         [HighContrastSelector]: {
           color: 'Window',
-          backgroundColor: 'Highlight',
           MsHighContrastAdjust: 'none'
         }
       }
@@ -123,7 +121,12 @@ export const getStyles = memoizeFunction((
     },
 
     descriptionDisabled: {
-      color: 'inherit'
+      color: 'inherit',
+      selectors: {
+        [HighContrastSelector]: {
+          color: 'inherit'
+        }
+      }
     }
   };
 
