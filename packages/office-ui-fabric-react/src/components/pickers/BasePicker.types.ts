@@ -146,8 +146,8 @@ export interface IBasePickerProps<T> extends React.Props<any> {
 
 export interface IBasePickerSuggestionsProps {
   /**
-  * Function that specifies what to render when no results are found.
-  */
+   * Function that specifies what to render when no results are found.
+   */
   onRenderNoResultFound?: IRenderFunction<void>;
   /**
    * The text that should appear at the top of the suggestion box.
@@ -232,5 +232,4 @@ export interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement>
    * text persists until deleted or changed.
    */
   defaultVisibleValue?: string;
-
 }

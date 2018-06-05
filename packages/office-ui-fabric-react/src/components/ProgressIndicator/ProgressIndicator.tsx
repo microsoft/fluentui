@@ -8,9 +8,10 @@ import { ProgressIndicatorBase } from './ProgressIndicator.base';
 import { getStyles } from './ProgressIndicator.styles';
 
 /**
-* ProgressIndicator description
-*/
-export const ProgressIndicator = styled<IProgressIndicatorProps, IProgressIndicatorStyleProps, IProgressIndicatorStyles>(
-  ProgressIndicatorBase,
-  getStyles
-);
+ * ProgressIndicator description
+ */
+export const ProgressIndicator = styled<
+  IProgressIndicatorProps,
+  IProgressIndicatorStyleProps,
+  IProgressIndicatorStyles
+>(ProgressIndicatorBase, getStyles);

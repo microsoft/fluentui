@@ -1,16 +1,6 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  divProperties,
-  getNativeProps,
-  getId,
-  KeyCodes,
-  getDocument,
-  createRef
-} from '../../Utilities';
-import {
-  mergeStyles
-} from '../../Styling';
+import { BaseComponent, divProperties, getNativeProps, getId, KeyCodes, getDocument, createRef } from '../../Utilities';
+import { mergeStyles } from '../../Styling';
 
 import { IHoverCardProps, IHoverCardStyles } from './HoverCard.types';
 import { ExpandingCard } from './ExpandingCard';
@@ -89,13 +79,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
 
   // Render
   public render(): JSX.Element {
-    const {
-      expandingCardProps,
-      children,
-      id,
-      setAriaDescribedBy = true,
-      styles: customStyles
-    } = this.props;
+    const { expandingCardProps, children, id, setAriaDescribedBy = true, styles: customStyles } = this.props;
     const { isHoverCardVisible, mode, openMode } = this.state;
     const hoverCardId = id || getId('hoverCard');
 
@@ -103,24 +87,24 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
 
     return (
       <div
-        className={ mergeStyles(this._styles.host) }
-        ref={ this._hoverCard }
-        aria-describedby={ setAriaDescribedBy && isHoverCardVisible ? hoverCardId : undefined }
+        className={mergeStyles(this._styles.host)}
+        ref={this._hoverCard}
+        aria-describedby={setAriaDescribedBy && isHoverCardVisible ? hoverCardId : undefined}
       >
-        { children }
-        { isHoverCardVisible &&
+        {children}
+        {isHoverCardVisible && (
           <ExpandingCard
-            { ...getNativeProps(this.props, divProperties) }
-            id={ hoverCardId }
-            trapFocus={ !!this.props.trapFocus }
-            firstFocus={ openMode === OpenCardMode.hotKey || openMode === OpenCardMode.hover }
-            targetElement={ this._getTargetElement() }
-            onEnter={ this._cardOpen }
-            onLeave={ this._executeCardDimiss }
-            mode={ mode }
-            { ...expandingCardProps }
+            {...getNativeProps(this.props, divProperties)}
+            id={hoverCardId}
+            trapFocus={!!this.props.trapFocus}
+            firstFocus={openMode === OpenCardMode.hotKey || openMode === OpenCardMode.hover}
+            targetElement={this._getTargetElement()}
+            onEnter={this._cardOpen}
+            onLeave={this._executeCardDimiss}
+            mode={mode}
+            {...expandingCardProps}
           />
-        }
+        )}
       </div>
     );
   }
@@ -155,36 +139,36 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
     }
 
     this._executeCardOpen(ev);
-  }
+  };
 
   private _executeCardOpen = (ev: MouseEvent): void => {
     this._async.clearTimeout(this._openTimerId);
     this._openTimerId = this._async.setTimeout(() => {
       this.setState((prevState: IHoverCardState) => {
         if (!prevState.isHoverCardVisible) {
-          return ({
+          return {
             isHoverCardVisible: true,
             mode: ExpandingCardMode.compact,
             openMode: ev.type === 'keydown' ? OpenCardMode.hotKey : OpenCardMode.hover
-          });
+          };
         }
 
         return prevState;
       });
     }, this.props.cardOpenDelay!);
-  }
+  };
 
   // Hide HoverCard
   private _cardDismiss = (ev: MouseEvent) => {
-    if (ev.type === 'keydown' && (ev.which !== KeyCodes.escape)) {
+    if (ev.type === 'keydown' && ev.which !== KeyCodes.escape) {
       return;
     }
 
     // Dismiss if not sticky and currentTarget is the same element that mouse last entered
-    if (!this.props.sticky && (this._currentMouseTarget === ev.currentTarget || (ev.which === KeyCodes.escape))) {
+    if (!this.props.sticky && (this._currentMouseTarget === ev.currentTarget || ev.which === KeyCodes.escape)) {
       this._executeCardDimiss();
     }
-  }
+  };
 
   private _executeCardDimiss = (): void => {
     this._async.clearTimeout(this._openTimerId);
@@ -196,7 +180,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
         openMode: OpenCardMode.hover
       });
     }, this.props.cardDismissDelay!);
-  }
+  };
 
   private _instantOpenAsExpanded = (ev: React.MouseEvent<HTMLDivElement>): void => {
     this._async.clearTimeout(this._dismissTimerId);
@@ -211,5 +195,5 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
 
       return prevState;
     });
-  }
+  };
 }

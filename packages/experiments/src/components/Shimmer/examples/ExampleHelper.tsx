@@ -4,5 +4,5 @@ export const PersonaDetails = {
   imageUrl: baseProductionCdnUrl + 'persona-female.png',
   imageInitials: 'AL',
   primaryText: 'Annie Lindqvist',
-  secondaryText: 'Software Engineer',
+  secondaryText: 'Software Engineer'
 };

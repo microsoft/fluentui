@@ -1,14 +1,9 @@
-
 import * as React from 'react';
 import { ILayoutGroupProps } from './LayoutGroup.types';
 import { IRawStyle, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-import {
-  getNativeProps,
-  divProperties
-} from 'office-ui-fabric-react/lib/Utilities';
+import { getNativeProps, divProperties } from 'office-ui-fabric-react/lib/Utilities';
 
 export class LayoutGroup extends React.Component<ILayoutGroupProps, {}> {
-
   public static defaultProps: ILayoutGroupProps = {
     layoutGap: 8,
     direction: 'vertical',
@@ -16,12 +11,7 @@ export class LayoutGroup extends React.Component<ILayoutGroupProps, {}> {
   };
 
   public render(): JSX.Element | null {
-    const {
-      children,
-      direction,
-      layoutGap,
-      justify,
-    } = this.props;
+    const { children, direction, layoutGap, justify } = this.props;
 
     const divProps = getNativeProps(this.props, divProperties);
 
@@ -33,24 +23,23 @@ export class LayoutGroup extends React.Component<ILayoutGroupProps, {}> {
       // Render individual item
       return (
         <div
-          className={
-            mergeStyles(
-              'ms-LayoutGroup-item',
-              direction === 'horizontal' && !isLastChild && {
+          className={mergeStyles(
+            'ms-LayoutGroup-item',
+            direction === 'horizontal' &&
+              !isLastChild && {
                 marginRight: layoutGap + 'px'
               },
-              direction === 'vertical' && !isLastChild && {
+            direction === 'vertical' &&
+              !isLastChild && {
                 marginBottom: layoutGap + 'px'
               },
-              justify === 'fill' && {
-                flexBasis: '0',
-                flexGrow: 1
-              }
-
-            )
-          }
+            justify === 'fill' && {
+              flexBasis: '0',
+              flexGrow: 1
+            }
+          )}
         >
-          { child }
+          {child}
         </div>
       );
     });
@@ -58,19 +47,14 @@ export class LayoutGroup extends React.Component<ILayoutGroupProps, {}> {
     // Render all items
     return (
       <div
-        { ...divProps }
-        className={
-          mergeStyles(
-            'ms-LayoutGroup',
-            {
-              display: 'flex',
-              flexDirection: direction === 'horizontal' ? 'row' : 'column',
-              justifyContent: this._getJustify(justify)
-            } as IRawStyle
-          )
-        }
+        {...divProps}
+        className={mergeStyles('ms-LayoutGroup', {
+          display: 'flex',
+          flexDirection: direction === 'horizontal' ? 'row' : 'column',
+          justifyContent: this._getJustify(justify)
+        } as IRawStyle)}
       >
-        { group }
+        {group}
       </div>
     );
   }
@@ -83,5 +67,5 @@ export class LayoutGroup extends React.Component<ILayoutGroupProps, {}> {
     } else {
       return 'flex-start';
     }
-  }
+  };
 }

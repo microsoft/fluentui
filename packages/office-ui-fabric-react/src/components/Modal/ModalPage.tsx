@@ -16,47 +16,39 @@ export class ModalPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='Modal'
-        componentName='ModalExample'
-        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Modal'
+        title="Modal"
+        componentName="ModalExample"
+        componentUrl="https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Modal"
         exampleCards={
           <div>
-            <ExampleCard title='Modal' code={ ModalBasicExampleCode }>
+            <ExampleCard title="Modal" code={ModalBasicExampleCode}>
               <ModalBasicExample />
             </ExampleCard>
           </div>
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/Modal.types.ts')
-            ] }
+            sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/Modal.types.ts')]}
           />
         }
         overview={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/docs/ModalOverview.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/docs/ModalOverview.md')}
           </PageMarkdown>
         }
-        bestPractices={
-          <div />
-        }
+        bestPractices={<div />}
         dos={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/docs/ModalDos.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/docs/ModalDos.md')}
           </PageMarkdown>
         }
         donts={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/docs/ModalDonts.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/docs/ModalDonts.md')}
           </PageMarkdown>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }
-        componentStatus={
-          <ComponentStatus
-            { ...ModalStatus }
-          />
-        }
+        isHeaderVisible={this.props.isHeaderVisible}
+        componentStatus={<ComponentStatus {...ModalStatus} />}
       />
     );
   }

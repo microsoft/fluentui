@@ -1,14 +1,6 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  classNamesFunction,
-  customizable,
-} from '../../Utilities';
-import {
-  ICheckProps,
-  ICheckStyleProps,
-  ICheckStyles
-} from './Check.types';
+import { BaseComponent, classNamesFunction, customizable } from '../../Utilities';
+import { ICheckProps, ICheckStyleProps, ICheckStyles } from './Check.types';
 import { Icon } from '../../Icon';
 import { getStyles } from './Check.styles';
 
@@ -25,18 +17,14 @@ export class CheckBase extends BaseComponent<ICheckProps, {}> {
   }
 
   public render(): JSX.Element {
-    const {
-      checked,
-      className,
-      theme
-    } = this.props;
+    const { checked, className, theme } = this.props;
 
     const classNames = getClassNames(getStyles!, { theme: theme!, className, checked });
 
     return (
-      <div className={ classNames.root } >
-        <Icon iconName='CircleRing' className={ classNames.circle } />
-        <Icon iconName='StatusCircleCheckmark' className={ classNames.check } />
+      <div className={classNames.root}>
+        <Icon iconName="CircleRing" className={classNames.circle} />
+        <Icon iconName="StatusCircleCheckmark" className={classNames.check} />
       </div>
     );
   }
