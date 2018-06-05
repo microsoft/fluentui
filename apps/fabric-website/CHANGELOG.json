@@ -2,6 +2,25 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.0.3",
+      "tag": "@uifabric/fabric-website_v6.0.3",
+      "date": "Tue, 05 Jun 2018 00:44:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "cfa7a19ec1d6f98c13f822a828e0751f64507dbd",
+            "comment": "Added Prettier"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.4.0 <7.0.0` to `>=6.4.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.0.2",
       "tag": "@uifabric/fabric-website_v6.0.2",
       "date": "Mon, 04 Jun 2018 10:16:13 GMT",
@@ -105,8 +124,7 @@
           {
             "author": "lynamemi <lynam.emily@gmail.com>",
             "commit": "d3a85ba759d58bd74e4a1741ab73b729c96fa637",
-            "comment":
-              "When navigating to a new page, the page will now be scrolled to the top instead of whatever position of the page you were on."
+            "comment": "When navigating to a new page, the page will now be scrolled to the top instead of whatever position of the page you were on."
           }
         ]
       }
@@ -362,8 +380,7 @@
           {
             "author": "lynamemi <lynam.emily@gmail.com>",
             "commit": "8370f6f5c822189fbd84e13fb285df83b102a308",
-            "comment":
-              "Improved left nav scroll behavior and added fix to webpack so that we can load component pages from our local machines with the UHF."
+            "comment": "Improved left nav scroll behavior and added fix to webpack so that we can load component pages from our local machines with the UHF."
           }
         ],
         "dependency": [
@@ -401,8 +418,7 @@
           {
             "author": "lynamemi <lynam.emily@gmail.com>",
             "commit": "a9d0f70495f315998a5dad78699ffd2349436420",
-            "comment":
-              "Adding left nav scroll functionality, including fixing the left nav with the header. Other layout refactoring to accommodate."
+            "comment": "Adding left nav scroll functionality, including fixing the left nav with the header. Other layout refactoring to accommodate."
           }
         ],
         "dependency": [
@@ -447,8 +463,7 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "08e59c871894c8ff443d48dbe5b0dd3316eb4331",
-            "comment":
-              "Updated build to newest React version and typings. Updated tests and made various tweaks to the code to remove React warnings and keep Enzyme"
+            "comment": "Updated build to newest React version and typings. Updated tests and made various tweaks to the code to remove React warnings and keep Enzyme"
           }
         ],
         "dependency": [
@@ -524,8 +539,7 @@
           {
             "author": "Eddie Liu <leddie24@gmail.com>",
             "commit": "67466325ed0ff6b89f82fa152860f968d8d740a0",
-            "comment":
-              "Add ActivityItem, Calendar, HoverCard, OverflowSet, ScrollablePane, TeachingBubble to fabric-website"
+            "comment": "Add ActivityItem, Calendar, HoverCard, OverflowSet, ScrollablePane, TeachingBubble to fabric-website"
           }
         ],
         "dependency": [
@@ -692,8 +706,7 @@
           {
             "author": "lynamemi <lynam.emily@gmail.com>",
             "commit": "9a399cc9187ec81611acec92655e3393878e28e1",
-            "comment":
-              "Added/removed Best Practices links for component pages that had/didn't have a Best Practices section."
+            "comment": "Added/removed Best Practices links for component pages that had/didn't have a Best Practices section."
           },
           {
             "author": "lynamemi <lynam.emily@gmail.com>",
@@ -717,8 +730,7 @@
           {
             "author": "Jon Schectman <joschect@microsoft.com>",
             "commit": "8e1dcc66cda8334653a8b5ccbde02bf6275e0b23",
-            "comment":
-              "TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums"
+            "comment": "TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums"
           }
         ],
         "dependency": [
@@ -878,8 +890,7 @@
           {
             "author": "John Miller <rubixws@gmail.com>",
             "commit": "40e1ef1d6ac5ee498888e7200fd15af754d7b665",
-            "comment":
-              "Switched some font colors on theme and neutral color swatches from white to black to achieve minimum contrast requirement of 4.5:1 for accessibility."
+            "comment": "Switched some font colors on theme and neutral color swatches from white to black to achieve minimum contrast requirement of 4.5:1 for accessibility."
           },
           {
             "author": "lynamemi <lynam.emily@gmail.com>",
@@ -894,8 +905,7 @@
           {
             "author": "John Miller <rubixws@gmail.com>",
             "commit": "40e1ef1d6ac5ee498888e7200fd15af754d7b665",
-            "comment":
-              "Changed where Fabric Core and Fabric React versions were drawing from so that they would appear as a number instead of a range."
+            "comment": "Changed where Fabric Core and Fabric React versions were drawing from so that they would appear as a number instead of a range."
           },
           {
             "author": "lynamemi <lynam.emily@gmail.com>",
@@ -905,8 +915,7 @@
           {
             "author": "lynamemi <lynam.emily@gmail.com>",
             "commit": "faef37358c373a6848b8eab6ef4e3df05b5e9697",
-            "comment":
-              "Added section in ResourcePage for XD Toolkits and other assets, includes references on other pages, too."
+            "comment": "Added section in ResourcePage for XD Toolkits and other assets, includes references on other pages, too."
           }
         ],
         "dependency": [
@@ -961,8 +970,7 @@
           {
             "author": "John Miller <rubixws@gmail.com>",
             "commit": "055dd03c8ad9d74843f2bc3445d529a3c1fd8cb5",
-            "comment":
-              "Major site revisions, component updates, removal of dev office header and footer, infrastructure updates and improvements, webpack config updates."
+            "comment": "Major site revisions, component updates, removal of dev office header and footer, infrastructure updates and improvements, webpack config updates."
           }
         ],
         "dependency": [
@@ -1057,8 +1065,7 @@
           {
             "author": "lynamemi <lynam.emily@gmail.com>",
             "commit": "2d179149380245f586834535299b5832094bee6d",
-            "comment":
-              "Updated the CDN link on the \"Get Started\" page and section to an updated version of Fabric Core, 7.2.0"
+            "comment": "Updated the CDN link on the \"Get Started\" page and section to an updated version of Fabric Core, 7.2.0"
           }
         ],
         "dependency": [
@@ -1118,8 +1125,7 @@
           {
             "author": "John Miller <rubixws@gmail.com>",
             "commit": "16591f25f5ee2502e13e2ba1d764b4198e04d8ee",
-            "comment":
-              "Updated fabric build system to use webpack dev server, removed the explicit !json loader in require statements."
+            "comment": "Updated fabric build system to use webpack dev server, removed the explicit !json loader in require statements."
           }
         ],
         "dependency": [
