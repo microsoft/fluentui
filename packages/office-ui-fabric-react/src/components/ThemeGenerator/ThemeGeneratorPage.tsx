@@ -180,15 +180,15 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
         </div>
         <br />
 
-        <h2 id='Samples'>Samples</h2>
-        <div style={ { display: 'flex', flexDirection: 'row' } }>
-          <div className='ms-themer-example'>
+        <h2 id="Samples">Samples</h2>
+        <div style={{ display: 'flex', flexDirection: 'row' }}>
+          <div className="ms-themer-example">
             <TextFieldBasicExample />
           </div>
-          <div className='ms-themer-example'>
+          <div className="ms-themer-example">
             <ToggleBasicExample />
             <ChoiceGroup
-              options={ [
+              options={[
                 {
                   key: 'A',
                   text: 'Option A'
@@ -197,12 +197,13 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
                   key: 'B',
                   text: 'Option B',
                   checked: true
-                }] }
-              label='Pick one'
-              required={ true }
+                }
+              ]}
+              label="Pick one"
+              required={true}
             />
             <ChoiceGroup
-              options={ [
+              options={[
                 {
                   key: 'C',
                   text: 'Option C',
@@ -213,12 +214,13 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
                   text: 'Option D',
                   checked: true,
                   disabled: true
-                }] }
-              label='Pick one'
-              required={ true }
+                }
+              ]}
+              label="Pick one"
+              required={true}
             />
           </div>
-          <div className='ms-themer-example'>
+          <div className="ms-themer-example">
             <TeachingBubbleBasicExample />
             <br />
             <ProgressIndicatorBasicExample />
@@ -233,20 +235,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
             <td>Contrast ratio</td>
             <td>Slot pair</td>
           </thead>
-<<<<<<< HEAD
-          { this._accessibilityTableBody() }
-=======
-          <tbody>
-            {[
-              this._accessibilityRow(FabricSlots.neutralPrimary, FabricSlots.white),
-              this._accessibilityRow(FabricSlots.white, FabricSlots.themePrimary),
-              this._accessibilityRow(FabricSlots.neutralPrimary, FabricSlots.themeLighter),
-              this._accessibilityRow(FabricSlots.themeDarkAlt, FabricSlots.themeLighter),
-              this._accessibilityRow(FabricSlots.neutralPrimary, FabricSlots.neutralLighter),
-              this._accessibilityRow(FabricSlots.themeDark, FabricSlots.neutralLighter)
-            ]}
-          </tbody>
->>>>>>> master
+          {this._accessibilityTableBody()}
         </table>
       </div>
     );
@@ -347,12 +336,13 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
   };
 
   private _accessibilityTableBody = (): JSX.Element => {
-    const accessibilityRows: JSX.Element[] =
-      [this._accessibilityRow(FabricSlots.neutralPrimary, FabricSlots.white), // default
+    const accessibilityRows: JSX.Element[] = [
+      this._accessibilityRow(FabricSlots.neutralPrimary, FabricSlots.white), // default
       // primary color also needs to be accessible, this is also strong variant default
       this._accessibilityRow(FabricSlots.white, FabricSlots.themePrimary),
       this._accessibilityRow(FabricSlots.neutralPrimary, FabricSlots.neutralLighter), // neutral variant default
-      this._accessibilityRow(FabricSlots.themeDark, FabricSlots.neutralLighter)]; // neutral variant with primary color
+      this._accessibilityRow(FabricSlots.themeDark, FabricSlots.neutralLighter)
+    ]; // neutral variant with primary color
 
     // these are the text and primary colors on top of the soft variant, whose bg depends on invertedness of original theme
     if (!isDark(this.state.themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)) {
@@ -369,8 +359,8 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
       );
     }
 
-    return (<tbody>{ accessibilityRows }</tbody>);
-  }
+    return <tbody>{accessibilityRows}</tbody>;
+  };
 
   private _outputSection = (): JSX.Element => {
     const themeRules = this.state.themeRules;
