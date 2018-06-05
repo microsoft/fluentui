@@ -73,10 +73,16 @@ export interface ICalloutProps {
   isBeakVisible?: boolean;
 
   /**
-   * If true then the onClose will not not dismiss on scroll
+   * If true then the callout will not dismiss on scroll
    * @default false
    */
   preventDismissOnScroll?: boolean;
+
+  /**
+   * If true then the callout will not dismiss when it loses focus
+   * @default false
+   */
+  preventDismissOnLostFocus?: boolean;
 
   /**
    * If true the position returned will have the menu element cover the target.
