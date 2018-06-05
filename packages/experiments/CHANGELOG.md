@@ -1,6 +1,14 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 05 Jun 2018 00:44:30 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Jun 2018 10:23:03 GMT and should not be manually modified.
+
+## 6.2.0
+Tue, 05 Jun 2018 10:23:03 GMT
+
+### Minor changes
+
+- Experiment/Nav component: hide nav group header if the links under it are hidden
+- ShimmerTile: Moves ShimmerTile to Tile component as it's only purpose is create a mock for a tile and itself alone never renders a Shimmer animation.
 
 ## 6.1.2
 Tue, 05 Jun 2018 00:44:30 GMT
