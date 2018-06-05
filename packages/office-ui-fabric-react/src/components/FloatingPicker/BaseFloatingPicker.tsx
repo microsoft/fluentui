@@ -140,7 +140,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     return (
       <div
         ref={ this.root }
-        className={ css('ms-BaseFloatingPicker', className ? className : '') }
+        className={ css('ms-BasePicker ms-BaseFloatingPicker', className ? className : '') }
       >
         { this.renderSuggestions() }
       </div>

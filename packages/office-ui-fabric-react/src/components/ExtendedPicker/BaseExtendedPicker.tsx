@@ -76,7 +76,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
       <div
         ref={ this.root }
         className={ css(
-          'ms-BasePicker',
+          'ms-BasePicker ms-BaseExtendedPicker',
           className ? className : '') }
         onKeyDown={ this.onBackspace }
         onCopy={ this.onCopy }

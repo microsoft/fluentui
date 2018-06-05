@@ -35,7 +35,6 @@ export class PeopleSelectedItemsListExample extends BaseComponent<{}, {}> {
     return (
       <div className={ styles.container }>
         <SelectedPeopleList
-          className={ 'ms-PeoplePicker' }
           key={ 'normal' }
           removeButtonAriaLabel={ 'Remove' }
           defaultSelectedItems={ [people[40]] }

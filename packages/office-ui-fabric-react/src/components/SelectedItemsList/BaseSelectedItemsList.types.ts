@@ -40,10 +40,6 @@ export interface IBaseSelectedItemsListProps<T> extends React.Props<any> {
    */
   onChange?: (items?: T[]) => void;
   /**
-   * ClassName for the picker.
-   */
-  className?: string;
-  /**
    * Function that specifies how arbitrary text entered into the well is handled.
    */
   createGenericItem?: (input: string, ValidationState: ValidationState) => ISuggestionModel<T>;

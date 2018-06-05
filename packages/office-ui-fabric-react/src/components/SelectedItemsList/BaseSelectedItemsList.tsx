@@ -159,11 +159,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
 
   // tslint:disable-next-line:no-any
   public render(): any {
-    return (
-      <div className={ this.props.className }>
-        { this.renderItems() }
-      </div>
-    );
+    return this.renderItems();
   }
 
   protected renderItems = (): JSX.Element[] => {

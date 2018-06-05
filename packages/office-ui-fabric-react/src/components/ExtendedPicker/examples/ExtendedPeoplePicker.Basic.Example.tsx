@@ -122,7 +122,6 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
       getEditingItemText: this._getEditingItemText,
       onRenderFloatingPicker: this._onRenderFloatingPicker,
       floatingPickerProps: this._floatingPickerProps,
-      className: styles.selectedItemsList
     };
   }
 
