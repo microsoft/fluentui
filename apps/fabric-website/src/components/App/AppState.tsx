@@ -511,7 +511,7 @@ export const AppState: IAppState = {
         {
           title: 'Shimmer',
           url: '#/components/shimmer',
-          component: () => <LoadingComponent title='Shimmer' />,
+          component: () => <LoadingComponent title="Shimmer" />,
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/ShimmerComponentPage').ShimmerComponentPage))
         },
         {

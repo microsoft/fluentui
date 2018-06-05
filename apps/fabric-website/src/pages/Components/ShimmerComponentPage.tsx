@@ -9,7 +9,7 @@ export class ShimmerComponentPage extends React.Component<any, any> {
     return (
       <div className={ pageStyles.basePage }>
         <ComponentPage>
-          <PageHeader pageTitle='Shimmer' backgroundColor='#038387'
+          <PageHeader pageTitle="Shimmer" backgroundColor="#038387"
             links={
               [
                 {
