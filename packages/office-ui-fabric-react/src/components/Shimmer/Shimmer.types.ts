@@ -15,16 +15,10 @@ export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
   componentRef?: (component: IShimmer | null) => void;
 
   /**
-   * Sets the width of the shimmer wave wrapper in percentages relative to the containig parent element.
+   * Sets the width value of the shimmer wave wrapper.
    * @default 100%
    */
-  widthInPercentage?: number;
-
-  /**
-   * Sets the width of the shimmer wave wrapper to an exact value in pixels.
-   * If none of the widths provided, it defaults to 100%.
-   */
-  widthInPixel?: number;
+  width?: number | string;
 
   /**
    * Controls when the shimmer is swapped with actual data through an animated transition.
@@ -79,16 +73,10 @@ export interface IShimmerElement {
   height?: number;
 
   /**
-   * The width of the element (ILine, IGap) in pixels.
+   * The width value of the element (ILine, IGap) in pixels.
    * Read more details for each specific element.
    */
-  widthInPixel?: number;
-
-  /**
-   * The width of the element (ILine, IGap) in pixels.
-   * Read more details for each specific element.
-   */
-  widthInPercentage?: number;
+  width?: number | string;
 
   /**
    * The vertical alignemt of the element (ICircle, ILine).
@@ -105,16 +93,10 @@ export interface ILine extends IShimmerElement {
   height?: number;
 
   /**
-   * The value provided will represent the width as '%' relative to shimmer wrapper.
+   * Line width value.
    * @default 100%
    */
-  widthInPercentage?: number;
-
-  /**
-   * Sets the width of the Line to an exact value in pixels.
-   * If none of the widths provided, it defaults to 100%.
-   */
-  widthInPixel?: number;
+  width?: number | string;
 }
 
 export interface ICircle extends IShimmerElement {
@@ -132,22 +114,15 @@ export interface IGap extends IShimmerElement {
    * @default 16px
    */
   height?: number;
-  /**
-   * The value provided will represent the width as '%' relative to shimmer wrapper.
-   * If none of the widths provided, it defaults to 10px.
-   */
-  widthInPercentage?: number;
 
   /**
-   * Sets the width of the Gap to an exact value in pixels.
+   * Gap width value.
    * @default 10px
    */
-  widthInPixel?: number;
+  width?: number | string;
 }
 
 export interface IShimmerStyleProps {
-  widthInPercentage?: number;
-  widthInPixel?: number;
   isDataLoaded?: boolean;
   className?: string;
   theme: ITheme;

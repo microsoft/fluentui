@@ -10,10 +10,10 @@ describe('Shimmer', () => {
   it('renders Shimmer correctly', () => {
     const component = renderer.create(
       <Shimmer
-        widthInPercentage={50}
+        width={'50%'}
         shimmerElements={[
           { type: ElemType.circle, height: 30 },
-          { type: ElemType.gap, widthInPercentage: 2 },
+          { type: ElemType.gap, width: '2%' },
           { type: ElemType.line, height: 20 }
         ]}
       />
@@ -30,22 +30,22 @@ describe('Shimmer', () => {
       >
         <ShimmerElementsGroup
           shimmerElements={[
-            { type: ElemType.line, widthInPixel: 40, height: 40 },
-            { type: ElemType.gap, widthInPixel: 10, height: 40 }
+            { type: ElemType.line, width: 40, height: 40 },
+            { type: ElemType.gap, width: 10, height: 40 }
           ]}
         />
         <ShimmerElementsGroup
           flexWrap={true}
           shimmerElements={[
-            { type: ElemType.line, widthInPixel: 300, height: 10 },
-            { type: ElemType.line, widthInPixel: 200, height: 10 },
-            { type: ElemType.gap, widthInPixel: 100, height: 20 }
+            { type: ElemType.line, width: 300, height: 10 },
+            { type: ElemType.line, width: 200, height: 10 },
+            { type: ElemType.gap, width: 100, height: 20 }
           ]}
         />
       </div>
     );
 
-    const component = renderer.create(<Shimmer customElementsGroup={customElements} widthInPixel={350} />);
+    const component = renderer.create(<Shimmer customElementsGroup={customElements} width={350} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

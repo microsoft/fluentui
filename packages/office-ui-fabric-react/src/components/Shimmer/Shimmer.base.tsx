@@ -58,8 +58,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
       shimmerElements,
       children,
       isDataLoaded,
-      widthInPercentage,
-      widthInPixel,
+      width,
       className,
       customElementsGroup,
       theme,
@@ -71,8 +70,6 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
     this._classNames = getClassNames(styles!, {
       theme: theme!,
       isDataLoaded,
-      widthInPercentage,
-      widthInPixel,
       className,
       transitionAnimationInterval: TRANSITION_ANIMATION_INTERVAL
     });
@@ -80,7 +77,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
     return (
       <div className={this._classNames.root}>
         {!contentLoaded && (
-          <div className={this._classNames.shimmerWrapper}>
+          <div style={{ width: width ? width : '100%' }} className={this._classNames.shimmerWrapper}>
             {customElementsGroup ? customElementsGroup : <ShimmerElementsGroup shimmerElements={shimmerElements} />}
           </div>
         )}

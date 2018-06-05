@@ -6,13 +6,12 @@ const GlobalClassNames = {
 };
 
 export function getStyles(props: IShimmerGapStyleProps): IShimmerGapStyles {
-  const { height, widthInPercentage, widthInPixel, borderStyle, theme } = props;
+  const { height, borderStyle, theme } = props;
 
   const { palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const styles: IStyleSet = !!borderStyle ? borderStyle : {};
-  const ACTUAL_WIDTH = widthInPercentage ? widthInPercentage + '%' : widthInPixel ? widthInPixel + 'px' : '10px';
 
   return {
     root: [
@@ -20,8 +19,6 @@ export function getStyles(props: IShimmerGapStyleProps): IShimmerGapStyles {
       styles,
       {
         backgroundColor: palette.white,
-        width: ACTUAL_WIDTH,
-        minWidth: widthInPixel ? ACTUAL_WIDTH : 'auto', // Fix for IE11 flex items
         height: `${height}px`,
         boxSizing: 'content-box',
         borderTopStyle: 'solid',

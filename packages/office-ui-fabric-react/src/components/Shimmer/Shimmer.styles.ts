@@ -29,14 +29,12 @@ const shimmerAnimationRTL: string = keyframes({
 });
 
 export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
-  const { isDataLoaded, widthInPercentage, widthInPixel, className, theme, transitionAnimationInterval } = props;
+  const { isDataLoaded, className, theme, transitionAnimationInterval } = props;
 
   const { palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const isRTL = getRTL();
-
-  const ACTUAL_WIDTH = widthInPercentage ? widthInPercentage + '%' : widthInPixel ? widthInPixel + 'px' : '100%';
 
   return {
     root: [
@@ -50,7 +48,6 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
     shimmerWrapper: [
       classNames.shimmerWrapper,
       {
-        width: ACTUAL_WIDTH,
         background: `${palette.neutralLighter}
                     linear-gradient(
                       to right,

@@ -21,16 +21,10 @@ export interface IShimmerGapProps extends React.AllHTMLAttributes<HTMLElement> {
   height?: number;
 
   /**
-   * Sets width of the element in percentages.
-   * @default 100%
+   * Sets width value of the gap.
+   * @default 10px
    */
-  widthInPercentage?: number;
-
-  /**
-   * Sets width of the element in pixels.
-   * @default 50px
-   */
-  widthInPixel?: number;
+  width?: number | string;
 
   /**
    * Sets custom styling of the gap.
@@ -50,8 +44,6 @@ export interface IShimmerGapProps extends React.AllHTMLAttributes<HTMLElement> {
 
 export interface IShimmerGapStyleProps {
   height?: number;
-  widthInPercentage?: number;
-  widthInPixel?: number;
   borderStyle?: IStyleSet;
   theme: ITheme;
 }

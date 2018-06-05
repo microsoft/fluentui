@@ -30,13 +30,17 @@ export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGrou
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
-      flexWrap,
-      width
+      flexWrap
     });
 
     const height = rowHeight ? rowHeight : this._findMaxElementHeight(shimmerElements ? shimmerElements : []);
 
-    return <div className={this._classNames.root}>{this._getRenderedElements(shimmerElements, height)}</div>;
+    return (
+      // tslint:disable-next-line:jsx-ban-props
+      <div style={{ width: width ? width : 'auto' }} className={this._classNames.root}>
+        {this._getRenderedElements(shimmerElements, height)}
+      </div>
+    );
   }
 
   private _getRenderedElements = (shimmerElements?: IShimmerElement[], rowHeight?: number): React.ReactNode => {

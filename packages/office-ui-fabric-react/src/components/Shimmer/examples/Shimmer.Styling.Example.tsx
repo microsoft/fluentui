@@ -12,11 +12,11 @@ export class ShimmerStylingExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
       <div className="shimmerBasicExample-container">
-        <Shimmer widthInPercentage={75} styles={this._getShimmerStyles} />
-        <Shimmer widthInPercentage={75} styles={this._getShimmerStyles} />
-        <Shimmer widthInPercentage={75} styles={this._getShimmerStyles} />
-        <Shimmer widthInPercentage={75} styles={this._getShimmerStyles} />
-        <Shimmer widthInPercentage={75} styles={this._getShimmerStyles} />
+        <Shimmer width={'75%'} styles={this._getShimmerStyles} />
+        <Shimmer width={'75%'} styles={this._getShimmerStyles} />
+        <Shimmer width={'75%'} styles={this._getShimmerStyles} />
+        <Shimmer width={'75%'} styles={this._getShimmerStyles} />
+        <Shimmer width={'75%'} styles={this._getShimmerStyles} />
       </div>
     );
   }

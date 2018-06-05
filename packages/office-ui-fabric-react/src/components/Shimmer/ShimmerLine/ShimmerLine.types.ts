@@ -21,16 +21,10 @@ export interface IShimmerLineProps extends React.AllHTMLAttributes<HTMLElement> 
   height?: number;
 
   /**
-   * Sets width of the element in percentages.
+   * Sets width value of the line.
    * @default 100%
    */
-  widthInPercentage?: number;
-
-  /**
-   * Sets width of the element in pixels.
-   * @default 50px
-   */
-  widthInPixel?: number;
+  width?: number | string;
 
   /**
    * Sets custom styling of the rectangle.
@@ -50,8 +44,6 @@ export interface IShimmerLineProps extends React.AllHTMLAttributes<HTMLElement> 
 
 export interface IShimmerLineStyleProps {
   height?: number;
-  widthInPercentage?: number;
-  widthInPixel?: number;
   borderStyle?: IStyleSet;
   theme: ITheme;
 }

@@ -14,40 +14,36 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
       <div className="shimmerBasicExample-container">
         Basic Shimmer with no elements provided. It defaults to a line of 16px height.
         <Shimmer />
-        <Shimmer widthInPercentage={75} />
-        <Shimmer widthInPercentage={50} />
+        <Shimmer width={'75%'} />
+        <Shimmer width={'50%'} />
         Basic Shimmer with elements provided.
         <Shimmer
-          shimmerElements={[
-            { type: ElemType.circle },
-            { type: ElemType.gap, widthInPercentage: 2 },
-            { type: ElemType.line }
-          ]}
+          shimmerElements={[{ type: ElemType.circle }, { type: ElemType.gap, width: '2%' }, { type: ElemType.line }]}
         />
         <Shimmer
           shimmerElements={[
             { type: ElemType.circle, height: 24 },
-            { type: ElemType.gap, widthInPercentage: 2 },
-            { type: ElemType.line, height: 16, widthInPercentage: 20 },
-            { type: ElemType.gap, widthInPercentage: 5 },
-            { type: ElemType.line, height: 16, widthInPercentage: 20 },
-            { type: ElemType.gap, widthInPercentage: 10 },
-            { type: ElemType.line, height: 16, widthInPercentage: 15 },
-            { type: ElemType.gap, widthInPercentage: 10 },
+            { type: ElemType.gap, width: '2%' },
+            { type: ElemType.line, height: 16, width: '20%' },
+            { type: ElemType.gap, width: '5%' },
+            { type: ElemType.line, height: 16, width: '20%' },
+            { type: ElemType.gap, width: '10%' },
+            { type: ElemType.line, height: 16, width: '15%' },
+            { type: ElemType.gap, width: '10%' },
             { type: ElemType.line, height: 16 }
           ]}
         />
         <Shimmer
-          widthInPercentage={70}
+          width={'70%'}
           shimmerElements={[
             { type: ElemType.circle, height: 24 },
-            { type: ElemType.gap, widthInPercentage: 2 },
-            { type: ElemType.line, height: 16, widthInPercentage: 20 },
-            { type: ElemType.gap, widthInPercentage: 5 },
-            { type: ElemType.line, height: 16, widthInPercentage: 20 },
-            { type: ElemType.gap, widthInPercentage: 10 },
-            { type: ElemType.line, height: 16, widthInPercentage: 15 },
-            { type: ElemType.gap, widthInPercentage: 10 },
+            { type: ElemType.gap, width: '2%' },
+            { type: ElemType.line, height: 16, width: '20%' },
+            { type: ElemType.gap, width: '5%' },
+            { type: ElemType.line, height: 16, width: '20%' },
+            { type: ElemType.gap, width: '10%' },
+            { type: ElemType.line, height: 16, width: '15%' },
+            { type: ElemType.gap, width: '10%' },
             { type: ElemType.line, height: 16 }
           ]}
         />
@@ -55,15 +51,15 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
         <Shimmer
           shimmerElements={[
             { type: ElemType.circle },
-            { type: ElemType.gap, widthInPercentage: 2 },
+            { type: ElemType.gap, width: '2%' },
             { type: ElemType.circle, height: 15, verticalAlign: 'top' },
-            { type: ElemType.gap, widthInPercentage: 2 },
-            { type: ElemType.line, verticalAlign: 'bottom', widthInPercentage: 20 },
-            { type: ElemType.gap, widthInPercentage: 2 },
-            { type: ElemType.line, height: 5, verticalAlign: 'top', widthInPercentage: 20 },
-            { type: ElemType.gap, widthInPercentage: 2 },
-            { type: ElemType.line, height: 16, widthInPercentage: 15 },
-            { type: ElemType.gap, widthInPercentage: 2 },
+            { type: ElemType.gap, width: '2%' },
+            { type: ElemType.line, verticalAlign: 'bottom', width: '20%' },
+            { type: ElemType.gap, width: '2%' },
+            { type: ElemType.line, height: 5, verticalAlign: 'top', width: '20%' },
+            { type: ElemType.gap, width: '2%' },
+            { type: ElemType.line, height: 16, width: '15%' },
+            { type: ElemType.gap, width: '2%' },
             { type: ElemType.line, height: 10, verticalAlign: 'bottom' }
           ]}
         />

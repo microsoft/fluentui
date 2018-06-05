@@ -55,7 +55,7 @@ export class ShimmerLoadDataExample extends React.Component<{}, IShimmerLoadData
           onText="Toggle to show shimmer"
           offText="Toggle to load content"
         />
-        <Shimmer customElementsGroup={this._getCustomElements()} widthInPixel={300} isDataLoaded={isDataLoadedTwo}>
+        <Shimmer customElementsGroup={this._getCustomElements()} width={300} isDataLoaded={isDataLoadedTwo}>
           <Persona {...examplePersona} size={PersonaSize.size40} presence={PersonaPresence.away} />
         </Shimmer>
       </div>
@@ -85,18 +85,15 @@ export class ShimmerLoadDataExample extends React.Component<{}, IShimmerLoadData
         style={{ display: 'flex' }}
       >
         <ShimmerElementsGroup
-          shimmerElements={[
-            { type: ElemType.circle, height: 40 },
-            { type: ElemType.gap, widthInPixel: 16, height: 40 }
-          ]}
+          shimmerElements={[{ type: ElemType.circle, height: 40 }, { type: ElemType.gap, width: 16, height: 40 }]}
         />
         <ShimmerElementsGroup
           flexWrap={true}
           width={'100%'}
           shimmerElements={[
-            { type: ElemType.line, widthInPercentage: 100, height: 10, verticalAlign: 'bottom' },
-            { type: ElemType.line, widthInPercentage: 90, height: 8 },
-            { type: ElemType.gap, widthInPercentage: 10, height: 20 }
+            { type: ElemType.line, width: '100%', height: 10, verticalAlign: 'bottom' },
+            { type: ElemType.line, width: '90%', height: 8 },
+            { type: ElemType.gap, width: '10%', height: 20 }
           ]}
         />
       </div>

@@ -6,7 +6,7 @@ const GlobalClassNames = {
 };
 
 export function getStyles(props: IShimmerElementsGroupStyleProps): IShimmerElementsGroupStyles {
-  const { width, flexWrap, theme } = props;
+  const { flexWrap, theme } = props;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -16,8 +16,7 @@ export function getStyles(props: IShimmerElementsGroupStyleProps): IShimmerEleme
       {
         display: 'flex',
         alignItems: 'center',
-        flexWrap: flexWrap ? 'wrap' : 'nowrap',
-        width: width ? width : 'auto'
+        flexWrap: flexWrap ? 'wrap' : 'nowrap'
       }
     ]
   };

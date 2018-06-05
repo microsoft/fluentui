@@ -13,18 +13,19 @@ export class ShimmerLineBase extends BaseComponent<IShimmerLineProps, {}> {
   }
 
   public render(): JSX.Element {
-    const { height, styles, widthInPercentage, widthInPixel, borderStyle, theme } = this.props;
+    const { height, styles, width, borderStyle, theme } = this.props;
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
       height,
-      widthInPixel,
-      widthInPercentage,
       borderStyle
     });
 
     return (
-      <div className={this._classNames.root}>
+      <div
+        style={{ width: width ? width : '100%', minWidth: typeof width === 'number' ? `${width}px` : 'auto' }}
+        className={this._classNames.root}
+      >
         <svg width="2" height="2" className={this._classNames.topLeftCorner}>
           <path d="M0 2 A 2 2, 0, 0, 1, 2 0 L 0 0 Z" />
         </svg>
