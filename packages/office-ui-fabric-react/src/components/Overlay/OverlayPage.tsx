@@ -18,53 +18,44 @@ export class OverlayPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='Overlay'
-        componentName='OverlayExample'
-        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Overlay'
+        title="Overlay"
+        componentName="OverlayExample"
+        componentUrl="https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Overlay"
         exampleCards={
           <div>
-            <ExampleCard title='Light' code={ OverlayLightExampleCode }>
+            <ExampleCard title="Light" code={OverlayLightExampleCode}>
               <OverlayLightExample />
             </ExampleCard>
-            <ExampleCard title='Dark' code={ OverlayDarkExampleCode }>
+            <ExampleCard title="Dark" code={OverlayDarkExampleCode}>
               <OverlayDarkExample />
             </ExampleCard>
           </div>
         }
-        allowNativeProps={ true }
+        allowNativeProps={true}
         propertiesTables={
           <PropertiesTableSet
-            sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Overlay/Overlay.types.ts')
-            ] }
+            sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/Overlay/Overlay.types.ts')]}
           />
         }
         overview={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Overlay/docs/OverlayOverview.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Overlay/docs/OverlayOverview.md')}
           </PageMarkdown>
         }
-        bestPractices={
-          <div />
-        }
+        bestPractices={<div />}
         dos={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Overlay/docs/OverlayDos.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Overlay/docs/OverlayDos.md')}
           </PageMarkdown>
         }
         donts={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Overlay/docs/OverlayDonts.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Overlay/docs/OverlayDonts.md')}
           </PageMarkdown>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }
-        componentStatus={
-          <ComponentStatus
-            { ...OverlayStatus }
-          />
-        }
+        isHeaderVisible={this.props.isHeaderVisible}
+        componentStatus={<ComponentStatus {...OverlayStatus} />}
       />
     );
   }
-
 }

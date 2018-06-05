@@ -10,9 +10,7 @@ import { IColorPicker } from './ColorPicker.types';
 
 describe('ColorPicker', () => {
   it('renders ColorPicker correctly', () => {
-    const component = renderer.create(
-      <ColorPicker color='#FFFFFF' />
-    );
+    const component = renderer.create(<ColorPicker color="#FFFFFF" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -23,11 +21,7 @@ describe('ColorPicker', () => {
       colorPickerComponent = ref;
     };
 
-    mount(
-      <ColorPicker
-        color='#FFFFFF'
-        componentRef={ setRef }
-      />);
+    mount(<ColorPicker color="#FFFFFF" componentRef={setRef} />);
 
     expect(colorPickerComponent.state.color.hex).toEqual('ffffff');
   });
@@ -38,11 +32,7 @@ describe('ColorPicker', () => {
       colorPickerComponent = ref;
     };
 
-    mount(
-      <ColorPicker
-        color='#FFFFFF'
-        componentRef={ setRef }
-      />);
+    mount(<ColorPicker color="#FFFFFF" componentRef={setRef} />);
 
     const component = colorPickerComponent;
     colorPickerComponent.componentWillReceiveProps({ color: '#AEAEAE' });
@@ -60,12 +50,7 @@ describe('ColorPicker', () => {
       colorPickerComponent = ref;
     };
 
-    mount(
-      <ColorPicker
-        color={ color }
-        componentRef={ setRef }
-        onColorChanged={ onColorChanged }
-      />);
+    mount(<ColorPicker color={color} componentRef={setRef} onColorChanged={onColorChanged} />);
 
     const newColor = '#AEAEAE';
     const component = colorPickerComponent;
@@ -76,29 +61,22 @@ describe('ColorPicker', () => {
   });
 
   it('Hides alpha control slider', () => {
-    const wrapper = mount(
-      <ColorPicker
-        color='#FFFFFF'
-        alphaSliderHidden={ true }
-      />);
+    const wrapper = mount(<ColorPicker color="#FFFFFF" alphaSliderHidden={true} />);
 
     const alphaSlider = wrapper.find('.is-alpha');
     const tableHeaders = wrapper.find('.ms-ColorPicker-table > thead > tr > td');
-    const tableInputs = wrapper.find('.ms-ColorPicker-table > tbody > tr > td');
+    const tableInputs = wrapper.find('.ms-ColorPicker-table > tbody> tr > td');
 
     // There should only be table headers and inputs for hex, red, green, and blue (no alpha)
     const expectedTableComponents = 4;
 
     expect(alphaSlider.exists()).toBe(false);
-    expect(tableHeaders.length).toBe(expectedTableComponents);
-    expect(tableInputs.length).toBe(expectedTableComponents);
+    expect(tableHeaders).toHaveLength(expectedTableComponents);
+    expect(tableInputs).toHaveLength(expectedTableComponents);
   });
 
   it('Renders default RGBA/Hex strings', () => {
-    const wrapper = mount(
-      <ColorPicker
-        color='#FFFFFF'
-      />);
+    const wrapper = mount(<ColorPicker color="#FFFFFF" />);
 
     const tableHeaders = wrapper.find('.ms-ColorPicker-table > thead > tr > td');
     const textHeaders = [
@@ -115,23 +93,18 @@ describe('ColorPicker', () => {
   });
 
   it('Renders custom RGBA/Hex strings', () => {
-    const textHeaders = [
-      'Custom Hex',
-      'Custom Red',
-      'Custom Green',
-      'Custom Blue',
-      'Custom Alpha'
-    ];
+    const textHeaders = ['Custom Hex', 'Custom Red', 'Custom Green', 'Custom Blue', 'Custom Alpha'];
 
     const wrapper = mount(
       <ColorPicker
-        color='#FFFFFF'
-        hexLabel={ textHeaders[0] }
-        redLabel={ textHeaders[1] }
-        greenLabel={ textHeaders[2] }
-        blueLabel={ textHeaders[3] }
-        alphaLabel={ textHeaders[4] }
-      />);
+        color="#FFFFFF"
+        hexLabel={textHeaders[0]}
+        redLabel={textHeaders[1]}
+        greenLabel={textHeaders[2]}
+        blueLabel={textHeaders[3]}
+        alphaLabel={textHeaders[4]}
+      />
+    );
 
     const tableHeaders = wrapper.find('.ms-ColorPicker-table > thead > tr > td');
     tableHeaders.forEach((node, index) => {

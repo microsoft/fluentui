@@ -13,46 +13,18 @@ const GlobalClassNames = {
 };
 
 export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
-
   const { className, theme } = props;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  return ({
-    root: [
-      classNames.root,
-      {},
-      className
-    ],
-    container: [
-      classNames.container,
-      {}
-    ],
-    slideBox: [
-      classNames.slideBox,
-      {}
-    ],
-    line: [
-      classNames.line,
-      {}
-    ],
-    thumb: [
-      classNames.thumb,
-      {}
-    ],
-    lineContainer: [
-      {}
-    ],
-    activeSection: [
-      classNames.activeSection,
-      {}
-    ],
-    inactiveSection: [
-      classNames.inactiveSection,
-      {}
-    ],
-    valueLabel: [
-      classNames.valueLabel,
-      {}
-    ]
-  });
+  return {
+    root: [classNames.root, {}, className],
+    container: [classNames.container, {}],
+    slideBox: [classNames.slideBox, {}],
+    line: [classNames.line, {}],
+    thumb: [classNames.thumb, {}],
+    lineContainer: [{}],
+    activeSection: [classNames.activeSection, {}],
+    inactiveSection: [classNames.inactiveSection, {}],
+    valueLabel: [classNames.valueLabel, {}]
+  };
 };

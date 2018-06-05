@@ -23,7 +23,7 @@ const DIRECTION_OPTIONS = [
   { key: DirectionalHint.leftBottomEdge, text: 'Left Bottom Edge' },
   { key: DirectionalHint.rightTopEdge, text: 'Right Top Edge' },
   { key: DirectionalHint.rightCenter, text: 'Right Center' },
-  { key: DirectionalHint.rightBottomEdge, text: 'Right Bottom Edge' },
+  { key: DirectionalHint.rightBottomEdge, text: 'Right Bottom Edge' }
 ];
 
 export class CalloutCoverExample extends React.Component<{}, ICalloutCoverExampleState> {
@@ -46,46 +46,38 @@ export class CalloutCoverExample extends React.Component<{}, ICalloutCoverExampl
     const { isCalloutVisible, directionalHint } = this.state;
     // ms-Callout-smallbeak is used in this directional example to reflect all the positions. Large beak will disable some position to avoid beak over the callout edge.
     return (
-      <div className='ms-CalloutExample'>
-        <div className='ms-CalloutExample-configArea'>
+      <div className="ms-CalloutExample">
+        <div className="ms-CalloutExample-configArea">
           <Dropdown
-            label='Directional hint'
-            selectedKey={ directionalHint! }
-            options={ DIRECTION_OPTIONS }
-            onChanged={ this._onDirectionalChanged }
+            label="Directional hint"
+            selectedKey={directionalHint!}
+            options={DIRECTION_OPTIONS}
+            onChanged={this._onDirectionalChanged}
           />
         </div>
-        <div className='ms-CalloutCoverExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton }>
-          <DefaultButton
-            text={ isCalloutVisible ? 'Hide callout' : 'Show callout' }
-            onClick={ this._onShowMenuClicked }
-          />
+        <div className="ms-CalloutCoverExample-buttonArea" ref={menuButton => (this._menuButtonElement = menuButton)}>
+          <DefaultButton text={isCalloutVisible ? 'Hide callout' : 'Show callout'} onClick={this._onShowMenuClicked} />
         </div>
-        { isCalloutVisible ? (
+        {isCalloutVisible ? (
           <Callout
-            className='ms-CalloutExample-callout'
-            onDismiss={ this._onDismiss }
-            target={ this._menuButtonElement }
-            directionalHint={ directionalHint }
-            coverTarget={ true }
-            isBeakVisible={ false }
-            gapSpace={ 0 }
+            className="ms-CalloutExample-callout"
+            onDismiss={this._onDismiss}
+            target={this._menuButtonElement}
+            directionalHint={directionalHint}
+            coverTarget={true}
+            isBeakVisible={false}
+            gapSpace={0}
           >
-            <div className='ms-CalloutExample-header'>
-              <p className='ms-CalloutExample-title'>
-                I'm covering the target!
-              </p>
+            <div className="ms-CalloutExample-header">
+              <p className="ms-CalloutExample-title">I'm covering the target!</p>
             </div>
-            <div className='ms-CalloutExample-inner'>
-              <div className='ms-CalloutExample-content'>
-                <DefaultButton
-                  onClick={ this._onShowMenuClicked }
-                  text='Click to dismiss'
-                />
+            <div className="ms-CalloutExample-inner">
+              <div className="ms-CalloutExample-content">
+                <DefaultButton onClick={this._onShowMenuClicked} text="Click to dismiss" />
               </div>
             </div>
           </Callout>
-        ) : (null) }
+        ) : null}
       </div>
     );
   }

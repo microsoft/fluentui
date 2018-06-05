@@ -50,8 +50,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     }
 
     // check if the link or any of the child link is selected
-    return link.key === selectedKey ||
-      (includeChildren && this.isChildLinkSelected(link));
+    return link.key === selectedKey || (includeChildren && this.isChildLinkSelected(link));
   }
 
   protected getLinkText(link: INavLink, showMore?: boolean): string | undefined {
@@ -65,5 +64,17 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     }
 
     return link.name;
+  }
+
+  protected hasAtleastOneVisibleLink(links: INavLink[]): boolean {
+    if (!links || links.length === 0) {
+      return false;
+    }
+
+    return links.some(
+      (link: INavLink): boolean => {
+        return !link.isHidden;
+      }
+    );
   }
 }

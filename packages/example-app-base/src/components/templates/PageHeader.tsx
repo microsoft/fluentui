@@ -7,10 +7,7 @@ import {
   IStyleFunction,
   styled
 } from 'office-ui-fabric-react/lib/Utilities';
-import {
-  ITheme,
-  IStyle
-} from 'office-ui-fabric-react/lib/Styling';
+import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 
 /**
  * The getStyles props contract.
@@ -43,18 +40,11 @@ const getClassNames = classNamesFunction<IPageHeaderStyleProps, IPageHeaderStyle
 @customizable('PageHeader', ['theme'])
 export class PageHeaderBase extends BaseComponent<IPageHeaderProps, {}> {
   public render(): JSX.Element {
-    const {
-      as: RootType = 'h1',
-      theme,
-      children,
-      getStyles
-    } = this.props;
+    const { as: RootType = 'h1', theme, children, getStyles } = this.props;
 
     const classNames = getClassNames(getStyles, { theme: theme!, as: RootType });
 
-    return (
-      <RootType className={ classNames.root }>{ children }</RootType>
-    );
+    return <RootType className={classNames.root}>{children}</RootType>;
   }
 }
 
@@ -69,24 +59,22 @@ export const PageHeader = styled(
       props.theme.fonts.large,
       {
         margin: 0,
-        padding: '8px 0 4px',
-
+        padding: '8px 0 4px'
       },
       props.as === 'h1' && [
         props.theme.fonts.xxLarge,
         {
           margin: 0,
-          padding: '16px 0 4px',
+          padding: '16px 0 4px'
         }
       ],
       props.as === 'h2' && [
         props.theme.fonts.xLarge,
         {
           margin: 0,
-          padding: '12px 0 4px',
-
+          padding: '12px 0 4px'
         }
-      ],
+      ]
     ]
   })
 );

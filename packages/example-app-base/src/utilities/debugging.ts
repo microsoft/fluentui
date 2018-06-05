@@ -5,7 +5,7 @@ export function instrumentMethod(target: any, methodName: string): void {
   const originalMethod = target[methodName];
 
   // tslint:disable-next-line:no-any
-  target[methodName] = function (): any {
+  target[methodName] = function(): any {
     beep();
 
     let startTime = performance.now();
@@ -32,8 +32,7 @@ export function getStackTrace(): string {
   };
 
   const captureStackTrace = (Error as {
-    captureStackTrace?: (obj: { stack: string; },
-      getStackTrace: () => {}) => void;
+    captureStackTrace?: (obj: { stack: string }, getStackTrace: () => {}) => void;
   }).captureStackTrace;
 
   if (captureStackTrace) {

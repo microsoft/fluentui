@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  classNamesFunction,
-  customizable,
-  createRef,
-  assign
-} from '../../../Utilities';
+import { BaseComponent, assign, createRef, classNamesFunction, customizable } from '../../../Utilities';
 import {
   IColor,
   MAX_COLOR_SATURATION,
@@ -19,7 +13,7 @@ const getClassNames = classNamesFunction<IColorRectangleStyleProps, IColorRectan
 
 export interface IColorRectangleState {
   isAdjusting?: boolean;
-  origin?: { x: number, y: number, color: IColor };
+  origin?: { x: number; y: number; color: IColor };
   color?: IColor;
   fullColorString?: string;
 }
@@ -68,10 +62,18 @@ export class ColorRectangleBase extends BaseComponent<IColorRectangleProps, ICol
     });
 
     return (
-      <div ref={ this._root } className={ classNames.root } style={ { minWidth: minSize, minHeight: minSize, backgroundColor: fullColorString } } onMouseDown={ this._onMouseDown }>
-        <div className={ classNames.light } />
-        <div className={ classNames.dark } />
-        <div className={ classNames.thumb } style={ { left: color!.s + '%', top: (MAX_COLOR_VALUE - color!.v) + '%', backgroundColor: color!.str } } />
+      <div
+        ref={this._root}
+        className={classNames.root}
+        style={{ minWidth: minSize, minHeight: minSize, backgroundColor: fullColorString }}
+        onMouseDown={this._onMouseDown}
+      >
+        <div className={classNames.light} />
+        <div className={classNames.dark} />
+        <div
+          className={classNames.thumb}
+          style={{ left: color!.s + '%', top: MAX_COLOR_VALUE - color!.v + '%', backgroundColor: color!.str }}
+        />
       </div>
     );
   }
@@ -81,7 +83,7 @@ export class ColorRectangleBase extends BaseComponent<IColorRectangleProps, ICol
     this._events.on(window, 'mouseup', this._onMouseUp, true);
 
     this._onMouseMove(ev);
-  }
+  };
 
   private _onMouseMove = (ev: React.MouseEvent<HTMLElement>): void => {
     const { color, onSVChanged } = this.props;
@@ -97,11 +99,14 @@ export class ColorRectangleBase extends BaseComponent<IColorRectangleProps, ICol
 
     const newColor = assign({}, color, {
       s: Math.min(MAX_COLOR_SATURATION, Math.max(0, sPercentage * MAX_COLOR_SATURATION)),
-      v: Math.min(MAX_COLOR_VALUE, Math.max(0, MAX_COLOR_VALUE - (vPercentage * MAX_COLOR_VALUE))),
+      v: Math.min(MAX_COLOR_VALUE, Math.max(0, MAX_COLOR_VALUE - vPercentage * MAX_COLOR_VALUE))
     });
 
     newColor.hex = hsv2hex(newColor.h, newColor.s, newColor.v);
-    newColor.str = newColor.a === 100 ? '#' + newColor.hex : `rgba(${newColor.r}, ${newColor.g}, ${newColor.b}, ${newColor.a / 100})`;
+    newColor.str =
+      newColor.a === 100
+        ? '#' + newColor.hex
+        : `rgba(${newColor.r}, ${newColor.g}, ${newColor.b}, ${newColor.a / 100})`;
 
     this.setState({
       isAdjusting: true,
@@ -113,7 +118,7 @@ export class ColorRectangleBase extends BaseComponent<IColorRectangleProps, ICol
     }
     ev.preventDefault();
     ev.stopPropagation();
-  }
+  };
 
   private _onMouseUp = (ev: React.MouseEvent<HTMLElement>): void => {
     this._events.off();
@@ -122,5 +127,5 @@ export class ColorRectangleBase extends BaseComponent<IColorRectangleProps, ICol
       isAdjusting: false,
       origin: undefined
     });
-  }
+  };
 }
