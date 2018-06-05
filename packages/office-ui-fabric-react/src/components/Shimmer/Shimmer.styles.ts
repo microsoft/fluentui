@@ -1,10 +1,5 @@
 import { IShimmerStyleProps, IShimmerStyles } from './Shimmer.types';
-import {
-  keyframes,
-  getGlobalClassNames,
-  hiddenContentStyle,
-  HighContrastSelector
-} from '../../Styling';
+import { keyframes, getGlobalClassNames, hiddenContentStyle, HighContrastSelector } from '../../Styling';
 import { getRTL } from '../../Utilities';
 
 const GlobalClassNames = {
@@ -34,23 +29,14 @@ const shimmerAnimationRTL: string = keyframes({
 });
 
 export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
-  const {
-    isDataLoaded,
-    widthInPercentage,
-    widthInPixel,
-    className,
-    theme,
-    transitionAnimationInterval
-  } = props;
+  const { isDataLoaded, widthInPercentage, widthInPixel, className, theme, transitionAnimationInterval } = props;
 
   const { palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const isRTL = getRTL();
 
-  const ACTUAL_WIDTH =
-    widthInPercentage ? widthInPercentage + '%' :
-      widthInPixel ? widthInPixel + 'px' : '100%';
+  const ACTUAL_WIDTH = widthInPercentage ? widthInPercentage + '%' : widthInPixel ? widthInPixel + 'px' : '100%';
 
   return {
     root: [
@@ -98,7 +84,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         top: '0',
         bottom: '0',
         left: '0',
-        right: '0',
+        right: '0'
       }
     ],
     dataWrapper: [

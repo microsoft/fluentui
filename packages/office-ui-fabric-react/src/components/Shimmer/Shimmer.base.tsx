@@ -1,15 +1,6 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  classNamesFunction,
-  customizable,
-  DelayedRender
-} from '../../Utilities';
-import {
-  IShimmerProps,
-  IShimmerStyleProps,
-  IShimmerStyles
-} from './Shimmer.types';
+import { BaseComponent, classNamesFunction, customizable, DelayedRender } from '../../Utilities';
+import { IShimmerProps, IShimmerStyleProps, IShimmerStyles } from './Shimmer.types';
 import { ShimmerElementsGroup } from './ShimmerElementsGroup/ShimmerElementsGroup';
 
 export interface IShimmerState {
@@ -87,28 +78,21 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
     });
 
     return (
-      <div className={ this._classNames.root }>
-        { !contentLoaded &&
-          <div className={ this._classNames.shimmerWrapper }>
-            { customElementsGroup ? customElementsGroup :
-              <ShimmerElementsGroup
-                shimmerElements={ shimmerElements }
-              />
-            }
+      <div className={this._classNames.root}>
+        {!contentLoaded && (
+          <div className={this._classNames.shimmerWrapper}>
+            {customElementsGroup ? customElementsGroup : <ShimmerElementsGroup shimmerElements={shimmerElements} />}
           </div>
-        }
-        { children &&
-          <div className={ this._classNames.dataWrapper }>
-            { children }
-          </div>
-        }
-        { ariaLabel && !isDataLoaded &&
-          <div role='status' aria-live='polite'>
-            <DelayedRender>
-              <div className={ this._classNames.screenReaderText }>{ ariaLabel }</div>
-            </DelayedRender>
-          </div>
-        }
+        )}
+        {children && <div className={this._classNames.dataWrapper}>{children}</div>}
+        {ariaLabel &&
+          !isDataLoaded && (
+            <div role="status" aria-live="polite">
+              <DelayedRender>
+                <div className={this._classNames.screenReaderText}>{ariaLabel}</div>
+              </DelayedRender>
+            </div>
+          )}
       </div>
     );
   }

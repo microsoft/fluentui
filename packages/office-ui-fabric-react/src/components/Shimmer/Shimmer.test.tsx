@@ -10,12 +10,12 @@ describe('Shimmer', () => {
   it('renders Shimmer correctly', () => {
     const component = renderer.create(
       <Shimmer
-        widthInPercentage={ 50 }
-        shimmerElements={ [
+        widthInPercentage={50}
+        shimmerElements={[
           { type: ElemType.circle, height: 30 },
           { type: ElemType.gap, widthInPercentage: 2 },
-          { type: ElemType.line, height: 20 },
-        ] }
+          { type: ElemType.line, height: 20 }
+        ]}
       />
     );
     const tree = component.toJSON();
@@ -26,31 +26,26 @@ describe('Shimmer', () => {
     const customElements: JSX.Element = (
       <div
         // tslint:disable-next-line:jsx-ban-props
-        style={ { display: 'flex' } }
+        style={{ display: 'flex' }}
       >
         <ShimmerElementsGroup
-          shimmerElements={ [
+          shimmerElements={[
             { type: ElemType.line, widthInPixel: 40, height: 40 },
             { type: ElemType.gap, widthInPixel: 10, height: 40 }
-          ] }
+          ]}
         />
         <ShimmerElementsGroup
-          flexWrap={ true }
-          shimmerElements={ [
+          flexWrap={true}
+          shimmerElements={[
             { type: ElemType.line, widthInPixel: 300, height: 10 },
             { type: ElemType.line, widthInPixel: 200, height: 10 },
             { type: ElemType.gap, widthInPixel: 100, height: 20 }
-          ] }
+          ]}
         />
       </div>
     );
 
-    const component = renderer.create(
-      <Shimmer
-        customElementsGroup={ customElements }
-        widthInPixel={ 350 }
-      />
-    );
+    const component = renderer.create(<Shimmer customElementsGroup={customElements} widthInPixel={350} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -59,10 +54,10 @@ describe('Shimmer', () => {
     let component: any;
     const shimmer = mount(
       <Shimmer
-        isDataLoaded={ false }
-        ariaLabel={ 'Shimmer component' }
+        isDataLoaded={false}
+        ariaLabel={'Shimmer component'}
         // tslint:disable-next-line:jsx-no-lambda
-        componentRef={ ref => component = ref }
+        componentRef={ref => (component = ref)}
       >
         <div>TEST DATA</div>
       </Shimmer>
