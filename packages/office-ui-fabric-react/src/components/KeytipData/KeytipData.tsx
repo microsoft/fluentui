@@ -1,7 +1,4 @@
-import {
-  BaseComponent,
-  IRenderComponent,
-} from '../../Utilities';
+import { BaseComponent, IRenderComponent, mergeAriaAttributeValues } from '../../Utilities';
 import { IKeytipDataProps } from './KeytipData.types';
 import { IKeytipProps } from '../../Keytip';
 import { KeytipManager } from '../../utilities/keytips/KeytipManager';
@@ -47,7 +44,7 @@ export class KeytipData extends BaseComponent<IKeytipDataProps & IRenderComponen
   private _getKtpProps(): IKeytipProps {
     return {
       disabled: this.props.disabled,
-      ...this.props.keytipProps!,
+      ...this.props.keytipProps!
     };
   }
 
@@ -70,7 +67,7 @@ export class KeytipData extends BaseComponent<IKeytipDataProps & IRenderComponen
       const ktpId = sequencesToID(keySequences);
 
       return {
-        'aria-describedby': (describedByPrepend || '') + ariaDescribedBy,
+        'aria-describedby': mergeAriaAttributeValues(describedByPrepend, ariaDescribedBy),
         'data-ktp-target': ktpId,
         'data-ktp-execute-target': ktpId
       };

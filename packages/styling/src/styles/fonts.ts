@@ -1,10 +1,5 @@
-import {
-  IRawStyle,
-  IFontWeight
-} from '@uifabric/merge-styles';
-import {
-  IFontStyles
-} from '../interfaces/index';
+import { IRawStyle, IFontWeight } from '@uifabric/merge-styles';
+import { IFontStyles } from '../interfaces/index';
 
 // Fallback fonts, if specified system or web fonts are unavailable.
 const FontFamilyFallbacks = `'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif`;
@@ -46,30 +41,30 @@ const defaultFontFamily = `'Segoe UI', '${LocalizedFontNames.WestEuropean}'`;
 
 // Mapping of language prefix to to font family.
 const LanguageToFontMap = {
-  'ar': LocalizedFontFamilies.Arabic,
-  'bg': LocalizedFontFamilies.Cyrillic,
-  'cs': LocalizedFontFamilies.EastEuropean,
-  'el': LocalizedFontFamilies.Greek,
-  'et': LocalizedFontFamilies.EastEuropean,
-  'he': LocalizedFontFamilies.Hebrew,
-  'hi': LocalizedFontFamilies.Hindi,
-  'hr': LocalizedFontFamilies.EastEuropean,
-  'hu': LocalizedFontFamilies.EastEuropean,
-  'ja': LocalizedFontFamilies.Japanese,
-  'kk': LocalizedFontFamilies.EastEuropean,
-  'ko': LocalizedFontFamilies.Korean,
-  'lt': LocalizedFontFamilies.EastEuropean,
-  'lv': LocalizedFontFamilies.EastEuropean,
-  'pl': LocalizedFontFamilies.EastEuropean,
-  'ru': LocalizedFontFamilies.Cyrillic,
-  'sk': LocalizedFontFamilies.EastEuropean,
+  ar: LocalizedFontFamilies.Arabic,
+  bg: LocalizedFontFamilies.Cyrillic,
+  cs: LocalizedFontFamilies.EastEuropean,
+  el: LocalizedFontFamilies.Greek,
+  et: LocalizedFontFamilies.EastEuropean,
+  he: LocalizedFontFamilies.Hebrew,
+  hi: LocalizedFontFamilies.Hindi,
+  hr: LocalizedFontFamilies.EastEuropean,
+  hu: LocalizedFontFamilies.EastEuropean,
+  ja: LocalizedFontFamilies.Japanese,
+  kk: LocalizedFontFamilies.EastEuropean,
+  ko: LocalizedFontFamilies.Korean,
+  lt: LocalizedFontFamilies.EastEuropean,
+  lv: LocalizedFontFamilies.EastEuropean,
+  pl: LocalizedFontFamilies.EastEuropean,
+  ru: LocalizedFontFamilies.Cyrillic,
+  sk: LocalizedFontFamilies.EastEuropean,
   'sr-latn': LocalizedFontFamilies.EastEuropean,
-  'th': LocalizedFontFamilies.Thai,
-  'tr': LocalizedFontFamilies.EastEuropean,
-  'uk': LocalizedFontFamilies.Cyrillic,
-  'vi': LocalizedFontFamilies.Vietnamese,
+  th: LocalizedFontFamilies.Thai,
+  tr: LocalizedFontFamilies.EastEuropean,
+  uk: LocalizedFontFamilies.Cyrillic,
+  vi: LocalizedFontFamilies.Vietnamese,
   'zh-hans': LocalizedFontFamilies.ChineseSimplified,
-  'zh-hant': LocalizedFontFamilies.ChineseTraditional,
+  'zh-hant': LocalizedFontFamilies.ChineseTraditional
 };
 
 // Standard font sizes.

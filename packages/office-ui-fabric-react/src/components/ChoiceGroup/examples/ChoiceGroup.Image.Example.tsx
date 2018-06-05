@@ -26,9 +26,9 @@ export class ChoiceGroupImageExample extends React.Component<{}, IChoiceGroupIma
     return (
       <div>
         <ChoiceGroup
-          label='Pick one image'
-          selectedKey={ selectedKey }
-          options={ [
+          label="Pick one image"
+          selectedKey={selectedKey}
+          options={[
             {
               key: 'bar',
               imageSrc: TestImages.choiceGroupBarUnselected,
@@ -44,8 +44,8 @@ export class ChoiceGroupImageExample extends React.Component<{}, IChoiceGroupIma
               imageSize: { width: 32, height: 32 },
               text: 'Pie chart'
             }
-          ] }
-          onChange={ this._onImageChoiceGroupChange }
+          ]}
+          onChange={this._onImageChoiceGroupChange}
         />
       </div>
     );

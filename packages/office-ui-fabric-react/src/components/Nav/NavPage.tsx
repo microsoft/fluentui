@@ -22,58 +22,49 @@ export class NavPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='Nav'
-        componentName='NavExample'
-        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Nav'
+        title="Nav"
+        componentName="NavExample"
+        componentUrl="https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Nav"
         exampleCards={
           <div>
-            <ExampleCard title='Basic Nav bar with sample links' code={ NavBasicExampleCode }>
+            <ExampleCard title="Basic Nav bar with sample links" code={NavBasicExampleCode}>
               <NavBasicExample />
             </ExampleCard>
-            <ExampleCard title='Navigation menu used in this Fabric React demo app' code={ NavFabricDemoAppExampleCode }>
+            <ExampleCard title="Navigation menu used in this Fabric React demo app" code={NavFabricDemoAppExampleCode}>
               <NavFabricDemoAppExample />
             </ExampleCard>
-            <ExampleCard title='Nested navigation menu (without group header)' code={ NavNestedExampleCode }>
+            <ExampleCard title="Nested navigation menu (without group header)" code={NavNestedExampleCode}>
               <NavNestedExample />
             </ExampleCard>
-            <ExampleCard title='Nav bar of links each with unique keys and empty urls' code={ NavByKeysExampleCode }>
+            <ExampleCard title="Nav bar of links each with unique keys and empty urls" code={NavByKeysExampleCode}>
               <NavByKeysExample />
             </ExampleCard>
           </div>
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Nav/Nav.types.ts')
-            ] }
+            sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/Nav/Nav.types.ts')]}
           />
         }
         overview={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Nav/docs/NavOverview.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Nav/docs/NavOverview.md')}
           </PageMarkdown>
         }
-        bestPractices={
-          <div />
-        }
+        bestPractices={<div />}
         dos={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Nav/docs/NavDos.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Nav/docs/NavDos.md')}
           </PageMarkdown>
         }
         donts={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Nav/docs/NavDonts.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Nav/docs/NavDonts.md')}
           </PageMarkdown>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }
-        componentStatus={
-          <ComponentStatus
-            { ...NavStatus }
-          />
-        }
+        isHeaderVisible={this.props.isHeaderVisible}
+        componentStatus={<ComponentStatus {...NavStatus} />}
       />
     );
   }
-
 }

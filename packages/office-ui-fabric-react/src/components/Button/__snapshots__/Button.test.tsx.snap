@@ -2,9 +2,9 @@
 
 exports[`Button renders ActionButton correctly 1`] = `
 <button
-  aria-describedby={null}
+  aria-describedby={undefined}
   aria-label={undefined}
-  aria-labelledby={null}
+  aria-labelledby={undefined}
   aria-pressed={undefined}
   className=
       ms-Button
@@ -116,11 +116,11 @@ exports[`Button renders ActionButton correctly 1`] = `
 
 exports[`Button renders CommandBarButton correctly 1`] = `
 <button
-  aria-describedby={null}
+  aria-describedby={undefined}
   aria-expanded={false}
   aria-haspopup={true}
   aria-label={undefined}
-  aria-labelledby={null}
+  aria-labelledby={undefined}
   aria-owns={null}
   aria-pressed={undefined}
   className=
@@ -293,7 +293,7 @@ exports[`Button renders CompoundButton correctly 1`] = `
 <button
   aria-describedby="id__14"
   aria-label={undefined}
-  aria-labelledby={null}
+  aria-labelledby={undefined}
   aria-pressed={undefined}
   className=
       ms-Button
@@ -432,9 +432,9 @@ exports[`Button renders CompoundButton correctly 1`] = `
 
 exports[`Button renders DefaultButton correctly 1`] = `
 <button
-  aria-describedby={null}
+  aria-describedby={undefined}
   aria-label={undefined}
-  aria-labelledby={null}
+  aria-labelledby={undefined}
   aria-pressed={undefined}
   className=
       ms-Button
@@ -543,9 +543,9 @@ exports[`Button renders DefaultButton correctly 1`] = `
 
 exports[`Button renders IconButton correctly 1`] = `
 <button
-  aria-describedby={null}
+  aria-describedby={undefined}
   aria-label="Emoji"
-  aria-labelledby={null}
+  aria-labelledby={undefined}
   aria-pressed={undefined}
   className=
       ms-Button
@@ -659,7 +659,7 @@ exports[`Button renders a DefaultButton with a keytip correctly 1`] = `
 <button
   aria-describedby=" ktp-layer-id ktp-a"
   aria-label={undefined}
-  aria-labelledby={null}
+  aria-labelledby={undefined}
   aria-pressed={undefined}
   className=
       ms-Button

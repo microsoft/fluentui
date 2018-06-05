@@ -1,21 +1,9 @@
 import * as React from 'react';
-import {
-  GroupedList
-} from './GroupedList';
-import {
-  IList,
-  IListProps
-} from '../../List';
+import { GroupedList } from './GroupedList';
+import { IList, IListProps } from '../../List';
 import { IRenderFunction } from '../../Utilities';
-import {
-  IDragDropContext,
-  IDragDropEvents,
-  IDragDropHelper
-} from '../../utilities/dragdrop/index';
-import {
-  ISelection,
-  SelectionMode
-} from '../../utilities/selection/index';
+import { IDragDropContext, IDragDropEvents, IDragDropHelper } from '../../utilities/dragdrop/index';
+import { ISelection, SelectionMode } from '../../utilities/selection/index';
 import { IViewport } from '../../utilities/decorators/withViewport';
 
 export enum CollapseAllVisibility {
@@ -54,7 +42,7 @@ export interface IGroupedListProps extends React.Props<GroupedList> {
   dragDropHelper?: IDragDropHelper;
 
   /** Event names and corresponding callbacks that will be registered to groups and rendered elements */
-  eventsToRegister?: { eventName: string, callback: (context: IDragDropContext, event?: any) => void }[];
+  eventsToRegister?: { eventName: string; callback: (context: IDragDropContext, event?: any) => void }[];
 
   /** Optional override properties to render groups. */
   groupProps?: IGroupRenderProps;
@@ -69,11 +57,7 @@ export interface IGroupedListProps extends React.Props<GroupedList> {
   listProps?: IListProps;
 
   /** Rendering callback to render the group items. */
-  onRenderCell: (
-    nestingDepth?: number,
-    item?: any,
-    index?: number
-  ) => React.ReactNode;
+  onRenderCell: (nestingDepth?: number, item?: any, index?: number) => React.ReactNode;
 
   /** Optional selection model to track selection state.  */
   selection?: ISelection;
@@ -173,7 +157,6 @@ export interface IGroup {
 }
 
 export interface IGroupRenderProps {
-
   /** Boolean indicating if all groups are in collapsed state. */
   isAllGroupsCollapsed?: boolean;
 
@@ -221,7 +204,6 @@ export interface IGroupRenderProps {
 }
 
 export interface IGroupDividerProps {
-
   componentRef?: () => void;
 
   /** Callback to determine if a group has missing items and needs to load them from the server. */
@@ -238,6 +220,9 @@ export interface IGroupDividerProps {
 
   /** The indent level of the group. */
   groupLevel?: number;
+
+  /** Width corresponding to a single level. This is multiplied by the groupLevel to get the full spacer width for the group. */
+  indentWidth?: number;
 
   /** If all items in the group are selected. */
   selected?: boolean;
@@ -274,4 +259,7 @@ export interface IGroupDividerProps {
 
   /** Determines if the group selection check box is shown for collapsed groups. */
   isCollapsedGroupSelectVisible?: boolean;
+
+  /** Override which allows the caller to provider a custom title. */
+  onRenderTitle?: IRenderFunction<IGroupDividerProps>;
 }
