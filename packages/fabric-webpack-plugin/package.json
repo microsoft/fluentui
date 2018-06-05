@@ -1,0 +1,9 @@
+{
+  "name": "fabric-webpack-plugin",
+  "version": "1.0.0",
+  "description": "Webpack that gives Fabric super powers like async loading",
+  "main": "LoadableLoader.js",
+  "keywords": [],
+  "author": "",
+  "license": "MIT"
+}
