@@ -252,10 +252,8 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   protected _dismissOnBlur(ev: Event) {
     const target = ev.target as HTMLElement;
     const clickedOutsideCallout = this._hostElement.current && !elementContains(this._hostElement.current, target);
-    const { preventDismissOnLostFocus } = this.props;
 
     if (
-      !preventDismissOnLostFocus &&
       (!this._target && clickedOutsideCallout) ||
       clickedOutsideCallout &&
       (!this._target || (target !== this._target && !elementContains(this._target as HTMLElement, target)))
