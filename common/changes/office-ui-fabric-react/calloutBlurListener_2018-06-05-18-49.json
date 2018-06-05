@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "add blur listener to Callout",
+      "comment": "Callout: add blur listener and dismiss on blur functionality to Callout",
       "type": "patch"
     }
   ],
