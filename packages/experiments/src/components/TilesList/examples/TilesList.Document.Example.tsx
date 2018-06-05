@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TilesList, ITilesGridItem, ITilesGridSegment } from '@uifabric/experiments/lib/TilesList';
-import { Tile } from '@uifabric/experiments/lib/Tile';
+import { Tile, ShimmerTile } from '@uifabric/experiments/lib/Tile';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { Selection, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
@@ -14,7 +14,7 @@ import {
   createShimmerGroups
 } from './ExampleHelpers';
 import { ISize } from '@uifabric/experiments/lib/Utilities';
-import { ShimmerTile, ShimmerElementType as ElemType, ShimmerElementsGroup } from '@uifabric/experiments/lib/Shimmer';
+import { ShimmerElementType as ElemType, ShimmerElementsGroup } from '@uifabric/experiments/lib/Shimmer';
 
 const HEADER_VERTICAL_PADDING = 13;
 const HEADER_FONT_SIZE = 18;

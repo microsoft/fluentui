@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { BaseComponent, classNamesFunction } from '../../../Utilities';
 import { IShimmerTileProps, IShimmerTileStyleProps, IShimmerTileStyles } from './ShimmerTile.types';
-import { TileLayoutSizes, TileSize } from '../../../Tile';
-import { ShimmerGap } from '../ShimmerGap/ShimmerGap';
-import { ShimmerElementsGroup } from '../ShimmerElementsGroup/ShimmerElementsGroup';
-import { ShimmerElementType as ElemType } from '../Shimmer.types';
+import { TileSize } from '../Tile.types';
+import { TileLayoutSizes } from '../Tile';
+import { ShimmerGap } from '../../Shimmer/ShimmerGap/ShimmerGap';
+import { ShimmerElementsGroup } from '../../Shimmer/ShimmerElementsGroup/ShimmerElementsGroup';
+import { ShimmerElementType as ElemType } from '../../Shimmer/Shimmer.types';
 
 const enum ShimmerTileLayoutValues {
   largeSquareWidth = 96,
