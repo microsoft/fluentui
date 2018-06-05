@@ -1,11 +1,11 @@
 {
   "changes": [
     {
-      "comment": "",
       "packageName": "office-ui-fabric-react",
-      "type": "none"
+      "comment": "CommandBarPage: Remove fabric js reference.",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "mark@thedutchies.com"
+  "email": "lynam.emily@gmail.com"
 }
