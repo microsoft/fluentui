@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add preventDismissOnLostFocus prop to Callout",
+      "comment": "Callout: Add `preventDismissOnLostFocus` prop.",
       "type": "minor"
     }
   ],
