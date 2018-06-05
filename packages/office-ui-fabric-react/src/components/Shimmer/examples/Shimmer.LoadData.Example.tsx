@@ -1,10 +1,5 @@
 import * as React from 'react';
-import {
-  Shimmer,
-  ShimmerElementsGroup,
-  ShimmerElementType as ElemType,
-  ShimmerElementVerticalAlign as ElemVerticalAlign
-} from 'office-ui-fabric-react/lib/Shimmer';
+import { Shimmer, ShimmerElementsGroup, ShimmerElementType as ElemType } from 'office-ui-fabric-react/lib/Shimmer';
 import { Persona, PersonaSize, PersonaPresence, IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { PersonaDetails } from './ExampleHelper';
@@ -99,7 +94,7 @@ export class ShimmerLoadDataExample extends React.Component<{}, IShimmerLoadData
           flexWrap={true}
           width={'100%'}
           shimmerElements={[
-            { type: ElemType.line, widthInPercentage: 100, height: 10, verticalAlign: ElemVerticalAlign.bottom },
+            { type: ElemType.line, widthInPercentage: 100, height: 10, verticalAlign: 'bottom' },
             { type: ElemType.line, widthInPercentage: 90, height: 8 },
             { type: ElemType.gap, widthInPercentage: 10, height: 20 }
           ]}

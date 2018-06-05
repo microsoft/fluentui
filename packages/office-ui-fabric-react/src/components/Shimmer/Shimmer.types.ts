@@ -94,7 +94,7 @@ export interface IShimmerElement {
    * The vertical alignemt of the element (ICircle, ILine).
    * @default center
    */
-  verticalAlign?: ShimmerElementVerticalAlign;
+  verticalAlign?: 'top' | 'center' | 'bottom';
 }
 
 export interface ILine extends IShimmerElement {
@@ -176,23 +176,6 @@ export enum ShimmerElementType {
    * Gap element type
    */
   gap = 3
-}
-
-export enum ShimmerElementVerticalAlign {
-  /**
-   * Positions the element vertically in center
-   */
-  center = 1,
-
-  /**
-   * Positions the element vertically at the bottom
-   */
-  bottom = 2,
-
-  /**
-   * Positions the element vertically at the top
-   */
-  top = 3
 }
 
 export enum ShimmerElementsDefaultHeights {

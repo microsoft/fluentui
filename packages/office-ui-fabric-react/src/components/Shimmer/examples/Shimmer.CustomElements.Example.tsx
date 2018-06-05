@@ -1,11 +1,6 @@
 import * as React from 'react';
 
-import {
-  Shimmer,
-  ShimmerElementsGroup,
-  ShimmerElementType as ElemType,
-  ShimmerElementVerticalAlign as ElemVerticalAlign
-} from 'office-ui-fabric-react/lib/Shimmer';
+import { Shimmer, ShimmerElementsGroup, ShimmerElementType as ElemType } from 'office-ui-fabric-react/lib/Shimmer';
 
 import './Shimmer.Example.scss';
 
@@ -109,11 +104,11 @@ export class ShimmerCustomElementsExample extends React.Component<{}, {}> {
             flexWrap={true}
             width={'100%'}
             shimmerElements={[
-              { type: ElemType.line, widthInPercentage: 80, height: 10, verticalAlign: ElemVerticalAlign.bottom },
+              { type: ElemType.line, widthInPercentage: 80, height: 10, verticalAlign: 'bottom' },
               { type: ElemType.gap, widthInPercentage: 20, height: 20 },
-              { type: ElemType.line, widthInPercentage: 40, height: 10, verticalAlign: ElemVerticalAlign.bottom },
+              { type: ElemType.line, widthInPercentage: 40, height: 10, verticalAlign: 'bottom' },
               { type: ElemType.gap, widthInPercentage: 2, height: 20 },
-              { type: ElemType.line, widthInPercentage: 58, height: 10, verticalAlign: ElemVerticalAlign.bottom }
+              { type: ElemType.line, widthInPercentage: 58, height: 10, verticalAlign: 'bottom' }
             ]}
           />
         </div>

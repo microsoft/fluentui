@@ -1,10 +1,6 @@
 import * as React from 'react';
 
-import {
-  Shimmer,
-  ShimmerElementType as ElemType,
-  ShimmerElementVerticalAlign as ElemVerticalAlign
-} from 'office-ui-fabric-react/lib/Shimmer';
+import { Shimmer, ShimmerElementType as ElemType } from 'office-ui-fabric-react/lib/Shimmer';
 
 import './Shimmer.Example.scss';
 
@@ -60,15 +56,15 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
           shimmerElements={[
             { type: ElemType.circle },
             { type: ElemType.gap, widthInPercentage: 2 },
-            { type: ElemType.circle, height: 15, verticalAlign: ElemVerticalAlign.top },
+            { type: ElemType.circle, height: 15, verticalAlign: 'top' },
             { type: ElemType.gap, widthInPercentage: 2 },
-            { type: ElemType.line, verticalAlign: ElemVerticalAlign.bottom, widthInPercentage: 20 },
+            { type: ElemType.line, verticalAlign: 'bottom', widthInPercentage: 20 },
             { type: ElemType.gap, widthInPercentage: 2 },
-            { type: ElemType.line, height: 5, verticalAlign: ElemVerticalAlign.top, widthInPercentage: 20 },
+            { type: ElemType.line, height: 5, verticalAlign: 'top', widthInPercentage: 20 },
             { type: ElemType.gap, widthInPercentage: 2 },
             { type: ElemType.line, height: 16, widthInPercentage: 15 },
             { type: ElemType.gap, widthInPercentage: 2 },
-            { type: ElemType.line, height: 10, verticalAlign: ElemVerticalAlign.bottom }
+            { type: ElemType.line, height: 10, verticalAlign: 'bottom' }
           ]}
         />
       </div>

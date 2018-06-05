@@ -6,12 +6,7 @@ import {
   IShimmerElementsGroupStyles
 } from './ShimmerElementsGroup.types';
 import { IStyleSet } from '../../../Styling';
-import {
-  ShimmerElementType,
-  ShimmerElementVerticalAlign,
-  ShimmerElementsDefaultHeights,
-  IShimmerElement
-} from '../Shimmer.types';
+import { ShimmerElementType, ShimmerElementsDefaultHeights, IShimmerElement } from '../Shimmer.types';
 import { ShimmerLine } from '../ShimmerLine/ShimmerLine';
 import { ShimmerGap } from '../ShimmerGap/ShimmerGap';
 import { ShimmerCircle } from '../ShimmerCircle/ShimmerCircle';
@@ -74,17 +69,17 @@ export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGrou
 
     let borderStyle: IStyleSet | undefined;
 
-    if (!elem.verticalAlign || elem.verticalAlign === ShimmerElementVerticalAlign.center) {
+    if (!elem.verticalAlign || elem.verticalAlign === 'center') {
       borderStyle = {
         borderBottomWidth: `${dif ? Math.floor(dif / 2) : 0}px`,
         borderTopWidth: `${dif ? Math.ceil(dif / 2) : 0}px`
       };
-    } else if (elem.verticalAlign && elem.verticalAlign === ShimmerElementVerticalAlign.top) {
+    } else if (elem.verticalAlign && elem.verticalAlign === 'top') {
       borderStyle = {
         borderBottomWidth: `${dif ? dif : 0}px`,
         borderTopWidth: `0px`
       };
-    } else if (elem.verticalAlign && elem.verticalAlign === ShimmerElementVerticalAlign.bottom) {
+    } else if (elem.verticalAlign && elem.verticalAlign === 'bottom') {
       borderStyle = {
         borderBottomWidth: `0px`,
         borderTopWidth: `${dif ? dif : 0}px`
