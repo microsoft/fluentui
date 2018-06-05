@@ -58,11 +58,11 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
         {
           renderItem: () => {
             return (
-              <div className={ styles.headerItem }>
-                Use this address:{ ' ' }
-                { this._picker && this._picker.inputElement && this._picker.inputElement
+              <div className={styles.headerItem}>
+                Use this address:{' '}
+                {this._picker && this._picker.inputElement && this._picker.inputElement
                   ? this._picker.inputElement.value
-                  : '' }
+                  : ''}
               </div>
             );
           },
@@ -82,7 +82,7 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
         },
         {
           renderItem: () => {
-            return <div className={ styles.headerItem }>Suggested Contacts</div>;
+            return <div className={styles.headerItem}>Suggested Contacts</div>;
           },
           shouldShow: this._shouldShowSuggestedContacts
         }
@@ -90,7 +90,7 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
       footerItemsProps: [
         {
           renderItem: () => {
-            return <div className={ styles.footerItem }>No results</div>;
+            return <div className={styles.footerItem}>No results</div>;
           },
           shouldShow: () => {
             return (
@@ -103,7 +103,7 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
         },
         {
           renderItem: () => {
-            return <div className={ styles.footerItem }>Search for more</div>;
+            return <div className={styles.footerItem}>Search for more</div>;
           },
           onExecute: () => {
             this.setState({ searchMoreAvailable: false });
@@ -153,8 +153,8 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
   public render(): JSX.Element {
     return (
       <div>
-        { this._renderExtendedPicker() }
-        <PrimaryButton text="Set focus" onClick={ this._onSetFocusButtonClicked } />
+        {this._renderExtendedPicker()}
+        <PrimaryButton text="Set focus" onClick={this._onSetFocusButtonClicked} />
       </div>
     );
   }
@@ -162,19 +162,19 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
   private _renderExtendedPicker(): JSX.Element {
     return (
       <ExtendedPeoplePicker
-        floatingPickerProps={ this._floatingPickerProps }
-        selectedItemsListProps={ this._selectedItemsListProps }
-        onRenderFloatingPicker={ this._onRenderFloatingPicker }
-        onRenderSelectedItems={ this._onRenderSelectedItems }
-        className={ 'ms-PeoplePicker' }
-        key={ 'normal' }
-        inputProps={ {
+        floatingPickerProps={this._floatingPickerProps}
+        selectedItemsListProps={this._selectedItemsListProps}
+        onRenderFloatingPicker={this._onRenderFloatingPicker}
+        onRenderSelectedItems={this._onRenderSelectedItems}
+        className={'ms-PeoplePicker'}
+        key={'normal'}
+        inputProps={{
           onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
           onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
           'aria-label': 'People Picker'
-        } }
-        componentRef={ this._setComponentRef }
-        headerComponent={ this._renderHeader() }
+        }}
+        componentRef={this._setComponentRef}
+        headerComponent={this._renderHeader()}
       />
     );
   }
@@ -184,13 +184,11 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
   }
 
   private _onRenderFloatingPicker(props: IBaseFloatingPickerProps<IPersonaProps>): JSX.Element {
-    return <FloatingPeoplePicker { ...props
-    } />;
+    return <FloatingPeoplePicker {...props} />;
   }
 
   private _onRenderSelectedItems(props: IBaseSelectedItemsListProps<IExtendedPersonaProps>): JSX.Element {
-    return <SelectedPeopleList { ...props
-    } />;
+    return <SelectedPeopleList {...props} />;
   }
 
   private _getEditingItemText(item: IExtendedPersonaProps): string {
@@ -275,8 +273,8 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
   private _shouldShowForceResolve = (): boolean => {
     return Boolean(
       this._picker.floatingPicker.current &&
-      this._validateInput(this._picker.floatingPicker.current.inputText) &&
-      this._picker.floatingPicker.current.suggestions.length === 0
+        this._validateInput(this._picker.floatingPicker.current.inputText) &&
+        this._picker.floatingPicker.current.suggestions.length === 0
     );
   };
 

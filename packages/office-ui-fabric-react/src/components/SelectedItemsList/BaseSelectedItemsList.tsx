@@ -196,7 +196,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     if (items) {
       this.selection.setItems(items);
     }
-  };
+  }
 
   protected onItemChange = (changedItem: T, index: number): void => {
     const { items } = this.state;

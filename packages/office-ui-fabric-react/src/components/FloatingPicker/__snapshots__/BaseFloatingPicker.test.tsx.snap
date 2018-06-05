@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Pickers BasePicker renders BaseFloatingPicker correctly 1`] = `
+exports[`Pickers BaseFloatingPicker renders BaseFloatingPicker correctly 1`] = `
 <div
   className="ms-BasePicker ms-BaseFloatingPicker"
 />

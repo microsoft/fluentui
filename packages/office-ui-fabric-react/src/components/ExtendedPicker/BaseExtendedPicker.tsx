@@ -11,8 +11,7 @@ import { Selection, SelectionMode, SelectionZone } from '../../Selection';
 // tslint:disable-next-line:no-any
 const styles: any = stylesImport;
 
-export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
-  extends BaseComponent<P, {}>
+export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends BaseComponent<P, {}>
   implements IBaseExtendedPicker<T> {
   public floatingPicker = createRef<BaseFloatingPicker<T, IBaseFloatingPickerProps<T>>>();
   public selectedItemsList = createRef<BaseSelectedItemsList<T, IBaseSelectedItemsListProps<T>>>();
@@ -77,42 +76,40 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
 
     return (
       <div
-        ref={ this.root }
-        className={ css(
-          'ms-BasePicker ms-BaseExtendedPicker',
-          className ? className : '') }
-        onKeyDown={ this.onBackspace }
-        onCopy={ this.onCopy }
+        ref={this.root}
+        className={css('ms-BasePicker ms-BaseExtendedPicker', className ? className : '')}
+        onKeyDown={this.onBackspace}
+        onCopy={this.onCopy}
       >
-        <FocusZone
-          direction={ FocusZoneDirection.bidirectional }
-        >
-          <SelectionZone selection={ this.selection } selectionMode={ SelectionMode.multiple }>
-            <div className={ css('ms-BasePicker-text', styles.pickerText) } role={ 'list' }>
-              { this.props.headerComponent }
-              { this.renderSelectedItemsList() }
-              { this.canAddItems() && (<Autofill
-                { ...inputProps as IInputProps }
-                className={ css('ms-BasePicker-input', styles.pickerInput) }
-                ref={ this.input }
-                onFocus={ this.onInputFocus }
-                onClick={ this.onInputClick }
-                onInputValueChange={ this.onInputChange }
-                aria-activedescendant={ 'sug-' + this.items.length }
-                aria-owns='suggestion-list'
-                aria-expanded='true'
-                aria-haspopup='true'
-                autoCapitalize='off'
-                autoComplete='off'
-                role='combobox'
-                disabled={ disabled }
-                aria-controls='selected-suggestion-alert'
-                onPaste={ this.onPaste }
-              />) }
+        <FocusZone direction={FocusZoneDirection.bidirectional}>
+          <SelectionZone selection={this.selection} selectionMode={SelectionMode.multiple}>
+            <div className={css('ms-BasePicker-text', styles.pickerText)} role={'list'}>
+              {this.props.headerComponent}
+              {this.renderSelectedItemsList()}
+              {this.canAddItems() && (
+                <Autofill
+                  {...inputProps as IInputProps}
+                  className={css('ms-BasePicker-input', styles.pickerInput)}
+                  ref={this.input}
+                  onFocus={this.onInputFocus}
+                  onClick={this.onInputClick}
+                  onInputValueChange={this.onInputChange}
+                  aria-activedescendant={'sug-' + this.items.length}
+                  aria-owns="suggestion-list"
+                  aria-expanded="true"
+                  aria-haspopup="true"
+                  autoCapitalize="off"
+                  autoComplete="off"
+                  role="combobox"
+                  disabled={disabled}
+                  aria-controls="selected-suggestion-alert"
+                  onPaste={this.onPaste}
+                />
+              )}
             </div>
           </SelectionZone>
         </FocusZone>
-        { this.renderSuggestions() }
+        {this.renderSuggestions()}
       </div>
     );
   }
@@ -169,7 +166,8 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
 
     if (this.floatingPicker.current && this.inputElement) {
       // Update the value if the input value is empty or it is different than the current inputText from the floatingPicker
-      const shoudUpdateValue = this.inputElement.value === '' || this.inputElement.value !== this.floatingPicker.current.inputText;
+      const shoudUpdateValue =
+        this.inputElement.value === '' || this.inputElement.value !== this.floatingPicker.current.inputText;
       this.floatingPicker.current.showPicker(shoudUpdateValue);
     }
   };
@@ -182,7 +180,12 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
     }
 
     if (this.selectedItemsList.current && this.items.length) {
-      if (this.input.current && !this.input.current.isValueSelected && this.input.current.inputElement === document.activeElement && (this.input.current as Autofill).cursorLocation === 0) {
+      if (
+        this.input.current &&
+        !this.input.current.isValueSelected &&
+        this.input.current.inputElement === document.activeElement &&
+        (this.input.current as Autofill).cursorLocation === 0
+      ) {
         ev.preventDefault();
         this.selectedItemsList.current.removeItemAt(this.items.length - 1);
         this._onSelectedItemsChanged();

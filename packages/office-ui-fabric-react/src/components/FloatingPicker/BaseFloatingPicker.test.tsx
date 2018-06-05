@@ -46,7 +46,7 @@ export interface ISimple {
 export type TypedBaseFloatingPicker = BaseFloatingPicker<ISimple, IBaseFloatingPickerProps<ISimple>>;
 
 describe('Pickers', () => {
-  describe('BasePicker', () => {
+  describe('BaseFloatingPicker', () => {
     const BaseFloatingPickerWithType = BaseFloatingPicker as new (
       props: IBaseFloatingPickerProps<ISimple>
     ) => BaseFloatingPicker<ISimple, IBaseFloatingPickerProps<ISimple>>;

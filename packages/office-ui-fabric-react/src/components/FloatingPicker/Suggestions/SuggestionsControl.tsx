@@ -30,19 +30,19 @@ export class SuggestionsHeaderFooterItem extends BaseComponent<ISuggestionsHeade
     const { renderItem, onExecute, isSelected, id } = this.props;
     return onExecute ? (
       <button
-        id={ id }
-        onClick={ onExecute }
-        className={ css('ms-Suggestions-sectionButton', styles.actionButton, {
+        id={id}
+        onClick={onExecute}
+        className={css('ms-Suggestions-sectionButton', styles.actionButton, {
           ['is-selected ' + styles.buttonSelected]: isSelected
-        }) }
+        })}
       >
-        { renderItem() }
+        {renderItem()}
       </button>
     ) : (
-        <div id={ id } className={ css('ms-Suggestions-section', styles.suggestionsTitle) }>
-          { renderItem() }
-        </div>
-      );
+      <div id={id} className={css('ms-Suggestions-section', styles.suggestionsTitle)}>
+        {renderItem()}
+      </div>
+    );
   }
 }
 
@@ -56,7 +56,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
   protected _suggestions: SuggestionsCore<T>;
   private SuggestionsOfProperType: new (props: ISuggestionsCoreProps<T>) => SuggestionsCore<
     T
-    > = SuggestionsCore as new (props: ISuggestionsCoreProps<T>) => SuggestionsCore<T>;
+  > = SuggestionsCore as new (props: ISuggestionsCoreProps<T>) => SuggestionsCore<T>;
 
   constructor(suggestionsProps: ISuggestionsControlProps<T>) {
     super(suggestionsProps);
@@ -87,13 +87,13 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
     const { className, headerItemsProps, footerItemsProps } = this.props;
 
     return (
-      <div className={ css('ms-Suggestions', className ? className : '', styles.root) }>
-        <div className={ styles.screenReaderOnly } role='alert' id='selected-suggestion-alert' aria-live='assertive'>
-          { this._getAriaLabel }
+      <div className={css('ms-Suggestions', className ? className : '', styles.root)}>
+        <div className={styles.screenReaderOnly} role="alert" id="selected-suggestion-alert" aria-live="assertive">
+          {this._getAriaLabel()}
         </div>
-        { headerItemsProps && this.renderHeaderItems() }
-        { this._renderSuggestions() }
-        { footerItemsProps && this.renderFooterItems() }
+        {headerItemsProps && this.renderHeaderItems()}
+        {this._renderSuggestions()}
+        {footerItemsProps && this.renderFooterItems()}
       </div>
     );
   }
@@ -190,30 +190,31 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
 
     return headerItemsProps ? (
       <div
-        className={ css('ms-Suggestions-headerContainer', styles.suggestionsContainer) }
+        className={css('ms-Suggestions-headerContainer', styles.suggestionsContainer)}
         id="suggestionHeader-list"
         role="list"
-        aria-label={ suggestionsHeaderContainerAriaLabel }
+        aria-label={suggestionsHeaderContainerAriaLabel}
       >
-        { headerItemsProps.map((headerItemProps: ISuggestionsHeaderFooterProps, index: number) => {
+        {headerItemsProps.map((headerItemProps: ISuggestionsHeaderFooterProps, index: number) => {
           const isSelected = selectedHeaderIndex !== -1 && selectedHeaderIndex === index;
           return headerItemProps.shouldShow() ? (
             <div
-              ref={ this._resolveRef(isSelected ? '_selectedElement' : '') }
-              id={ 'sug-header' + index }
+              ref={this._resolveRef(isSelected ? '_selectedElement' : '')}
+              id={'sug-header' + index}
+              key={'sug-header' + index}
               role="listitem"
-              aria-label={ headerItemProps.ariaLabel }
+              aria-label={headerItemProps.ariaLabel}
             >
               <SuggestionsHeaderFooterItem
-                id={ 'sug-header-item' + index }
-                isSelected={ isSelected }
-                renderItem={ headerItemProps.renderItem }
-                onExecute={ headerItemProps.onExecute }
-                className={ headerItemProps.className }
+                id={'sug-header-item' + index}
+                isSelected={isSelected}
+                renderItem={headerItemProps.renderItem}
+                onExecute={headerItemProps.onExecute}
+                className={headerItemProps.className}
               />
             </div>
           ) : null;
-        }) }
+        })}
       </div>
     ) : null;
   }
@@ -223,30 +224,31 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
     const { selectedFooterIndex } = this.state;
     return footerItemsProps ? (
       <div
-        className={ css('ms-Suggestions-footerContainer', styles.suggestionsContainer) }
+        className={css('ms-Suggestions-footerContainer', styles.suggestionsContainer)}
         id="suggestionFooter-list"
         role="list"
-        aria-label={ suggestionsFooterContainerAriaLabel }
+        aria-label={suggestionsFooterContainerAriaLabel}
       >
-        { footerItemsProps.map((footerItemProps: ISuggestionsHeaderFooterProps, index: number) => {
+        {footerItemsProps.map((footerItemProps: ISuggestionsHeaderFooterProps, index: number) => {
           const isSelected = selectedFooterIndex !== -1 && selectedFooterIndex === index;
           return footerItemProps.shouldShow() ? (
             <div
-              ref={ this._resolveRef(isSelected ? '_selectedElement' : '') }
-              id={ 'sug-footer' + index }
+              ref={this._resolveRef(isSelected ? '_selectedElement' : '')}
+              id={'sug-footer' + index}
+              key={'sug-footer' + index}
               role="listitem"
-              aria-label={ footerItemProps.ariaLabel }
+              aria-label={footerItemProps.ariaLabel}
             >
               <SuggestionsHeaderFooterItem
-                id={ 'sug-footer-item' + index }
-                isSelected={ isSelected }
-                renderItem={ footerItemProps.renderItem }
-                onExecute={ footerItemProps.onExecute }
-                className={ footerItemProps.className }
+                id={'sug-footer-item' + index}
+                isSelected={isSelected}
+                renderItem={footerItemProps.renderItem}
+                onExecute={footerItemProps.onExecute}
+                className={footerItemProps.className}
               />
             </div>
           ) : null;
-        }) }
+        })}
       </div>
     ) : null;
   }
@@ -254,7 +256,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
   protected _renderSuggestions(): JSX.Element {
     const TypedSuggestions = this.SuggestionsOfProperType;
 
-    return <TypedSuggestions ref={ this._resolveRef('_suggestions') } { ...this.props as ISuggestionsCoreProps<T> } />;
+    return <TypedSuggestions ref={this._resolveRef('_suggestions')} {...this.props as ISuggestionsCoreProps<T>} />;
   }
 
   /**
