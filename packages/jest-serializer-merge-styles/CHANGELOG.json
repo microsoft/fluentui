@@ -2,6 +2,32 @@
   "name": "@uifabric/jest-serializer-merge-styles",
   "entries": [
     {
+      "version": "6.0.0",
+      "tag": "@uifabric/jest-serializer-merge-styles_v6.0.0",
+      "date": "Tue, 05 Jun 2018 00:44:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "cfa7a19ec1d6f98c13f822a828e0751f64507dbd",
+            "comment": "Added Prettier"
+          }
+        ],
+        "major": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "bfe72a8860c3057a25f548b98f285de5c011fd1e",
+            "comment": "Major bump to 6.0 to be in line with rest of OUFR v6 packages."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.0.1 <7.0.0` to `>=6.0.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.2.3",
       "tag": "@uifabric/jest-serializer-merge-styles_v5.2.3",
       "date": "Mon, 04 Jun 2018 10:16:13 GMT",
@@ -41,8 +67,7 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "5497192f34671da230477426f25542b38ac65f6b",
-            "comment":
-              "The `animation-name` values reference class names which should be expanded if there is a comma delimited list of them."
+            "comment": "The `animation-name` values reference class names which should be expanded if there is a comma delimited list of them."
           }
         ]
       }
@@ -75,8 +100,7 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "08e59c871894c8ff443d48dbe5b0dd3316eb4331",
-            "comment":
-              "Updated build to newest React version and typings. Updated tests and made various tweaks to the code to remove React warnings and keep Enzyme"
+            "comment": "Updated build to newest React version and typings. Updated tests and made various tweaks to the code to remove React warnings and keep Enzyme"
           }
         ],
         "dependency": [
