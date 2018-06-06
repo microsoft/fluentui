@@ -48,16 +48,16 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
 
   private _ariaDescriptionId: string;
 
+  private _classNames = getClassNames(this.props.styles, {
+    theme: this.props.theme!,
+    className: this.props.className,
+  });
+
   constructor(props: IFacepileProps) {
     super(props);
 
     this._ariaDescriptionId = getId();
   }
-
-  private _classNames = getClassNames(this.props.styles, {
-    theme: this.props.theme!,
-    className: this.props.className,
-  });
 
   public render(): JSX.Element {
     let { overflowButtonProps } = this.props;
