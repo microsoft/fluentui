@@ -15,7 +15,6 @@ configureLoadStyles((styles) => {
   _allStyles += styles;
 });
 
-
 const app = express();
 
 const TodoApp = require('../lib-commonjs/TodoApp').default;
