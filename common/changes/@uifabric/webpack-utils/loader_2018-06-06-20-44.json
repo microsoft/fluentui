@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/webpack-utils",
+      "comment": "Creates a new webpack-utils package",
+      "type": "major"
+    }
+  ],
+  "packageName": "@uifabric/webpack-utils",
+  "email": "kchau@microsoft.com"
+}
