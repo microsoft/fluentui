@@ -1,7 +1,9 @@
 import { ITheme, IStyle } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
 
-export interface IVerticalBarChart {}
+export interface IVerticalBarChart {
+
+}
 
 export interface IDataPoint {
   /**

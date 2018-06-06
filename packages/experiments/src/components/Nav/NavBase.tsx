@@ -71,10 +71,8 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
       return false;
     }
 
-    return links.some(
-      (link: INavLink): boolean => {
-        return !link.isHidden;
-      }
-    );
+    return links.some((link: INavLink): boolean => {
+      return !link.isHidden;
+    });
   }
 }

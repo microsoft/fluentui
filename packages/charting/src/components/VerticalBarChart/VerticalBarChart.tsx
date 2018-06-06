@@ -1,5 +1,9 @@
 import { styled } from '../../Utilities';
-import { IVerticalBarChartProps, IVerticalBarChartStyleProps, IVerticalBarChartStyles } from './VerticalBarChart.types';
+import {
+  IVerticalBarChartProps,
+  IVerticalBarChartStyleProps,
+  IVerticalBarChartStyles
+} from './VerticalBarChart.types';
 import { VerticalBarChartBase } from './VerticalBarChart.base';
 import { getStyles } from './VerticalBarChart.styles';
 
