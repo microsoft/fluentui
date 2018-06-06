@@ -25,9 +25,16 @@ const prettierConfigPath = path.join(
   'prettier.config.js'
 );
 
-function runPrettierForFile(filePath) {
+function runPrettierForFiles(filePaths) {
+  if (filePaths.length === 0) {
+    return Promise.resolve();
+  }
+
+  console.log(`Running for ${filePaths.length} files!`);
+
+  const sources = filePaths.join(' ');
   return exec(
-    `node ${prettierPath} --config ${prettierConfigPath} --ignore-path ${prettierIgnorePath} --write ${filePath}`,
+    `node ${prettierPath} --config ${prettierConfigPath} --ignore-path ${prettierIgnorePath} --write ${sources}`,
     undefined,
     undefined,
     process
@@ -45,11 +52,7 @@ filesChangedSinceLastRun.forEach((fileName, index) => {
 });
 
 const allQueues = queues.map(queue => {
-  return queue.reduce((next, fileName) => {
-    return next.then(() => {
-      return runPrettierForFile(fileName);
-    });
-  }, Promise.resolve());
+  return runPrettierForFiles(queue);
 });
 
 Promise.all(allQueues)
