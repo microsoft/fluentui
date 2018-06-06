@@ -11,7 +11,7 @@ export class ShimmerStylingExample extends React.Component<{}, {}> {
 
   public render(): JSX.Element {
     return (
-      <div className={ShimmerExampleStyles.shimmerBasicExampleContainer}>
+      <div className={ShimmerExampleStyles.shimmerExampleContainer}>
         <Shimmer width={'75%'} styles={this._getShimmerStyles} />
         <Shimmer width={'75%'} styles={this._getShimmerStyles} />
         <Shimmer width={'75%'} styles={this._getShimmerStyles} />

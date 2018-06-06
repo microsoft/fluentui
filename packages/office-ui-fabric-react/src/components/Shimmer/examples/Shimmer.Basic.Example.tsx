@@ -11,7 +11,7 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
 
   public render(): JSX.Element {
     return (
-      <div className={ShimmerExampleStyles.shimmerBasicExampleContainer}>
+      <div className={ShimmerExampleStyles.shimmerExampleContainer}>
         Basic Shimmer with no elements provided. It defaults to a line of 16px height.
         <Shimmer />
         <Shimmer width={'75%'} />

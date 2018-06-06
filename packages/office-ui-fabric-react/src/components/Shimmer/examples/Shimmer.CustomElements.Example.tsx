@@ -11,7 +11,7 @@ export class ShimmerCustomElementsExample extends React.Component<{}, {}> {
 
   public render(): JSX.Element {
     return (
-      <div className={ShimmerExampleStyles.shimmerBasicExampleContainer}>
+      <div className={ShimmerExampleStyles.shimmerExampleContainer}>
         Using ShimmerElementsGroup component to build complex structures of the placeholder you need.
         <Shimmer customElementsGroup={this._getCustomElementsExampleOne()} width={350} />
         <Shimmer customElementsGroup={this._getCustomElementsExampleTwo()} width={550} />

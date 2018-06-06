@@ -28,7 +28,7 @@ export class ShimmerLoadDataExample extends React.Component<{}, IShimmerLoadData
     const { isDataLoadedOne, isDataLoadedTwo, contentOne, examplePersona } = this.state;
 
     return (
-      <div className={ShimmerExampleStyles.shimmerBasicExampleContainer}>
+      <div className={ShimmerExampleStyles.shimmerExampleContainer}>
         <Toggle
           checked={isDataLoadedOne}
           onChanged={this._getContentOne}
