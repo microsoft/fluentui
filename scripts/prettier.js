@@ -3,7 +3,7 @@ const exec = require('./exec');
 const path = require('path');
 const { EOL, cpus } = require('os');
 
-const prettierIntroductionCommit = 'cfa7a19ec';
+const prettierIntroductionCommit = 'HEAD~1';
 const passedDiffTarget = process.argv.slice(2).length ? process.argv.slice(2)[0] : prettierIntroductionCommit;
 
 const projectPath = path.resolve(path.join(__dirname, '..'));
