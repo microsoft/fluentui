@@ -5,7 +5,8 @@ import { App as AppBase, IAppDefinition, IAppProps } from '@uifabric/example-app
 export const AppDefinition: IAppDefinition = {
   appTitle: 'Fabric - React',
 
-  testPages: [],
+  testPages: [
+  ],
   examplePages: [
     {
       links: [
@@ -32,6 +33,7 @@ export const AppDefinition: IAppDefinition = {
       url: 'http://www.github.com/officedev'
     }
   ]
+
 };
 
-export const App = (props: IAppProps) => <AppBase appDefinition={AppDefinition} {...props} />;
+export const App = (props: IAppProps) => <AppBase appDefinition={ AppDefinition } { ...props } />;
