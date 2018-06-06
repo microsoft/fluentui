@@ -12,9 +12,9 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
   public render(): JSX.Element {
     return (
       <div>
-        {this._basicExample()}
+        { this._basicExample() }
         <hr />
-        {this._styledExample()}
+        { this._styledExample() }
       </div>
     );
   }
@@ -39,7 +39,7 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
       { x: 100, y: 19 }
     ];
 
-    return <VerticalBarChart data={points} chartLabel={'Basic Chart with Numeric Axes'} />;
+    return <VerticalBarChart data={ points } chartLabel={ 'Basic Chart with Numeric Axes' } />;
   }
 
   private _styledExample(): JSX.Element {
@@ -103,15 +103,14 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
 
     return (
       <VerticalBarChart
-        data={points}
-        width={800}
-        height={400}
-        barWidth={20}
-        yAxisTickCount={6}
-        styles={customStyles}
-        colors={customColors}
-        chartLabel={'Chart with Axis Labels and Custom Styles'}
-      />
-    );
+        data={ points }
+        width={ 800 }
+        height={ 400 }
+        barWidth={ 20 }
+        yAxisTickCount={ 6 }
+        styles={ customStyles }
+        colors={ customColors }
+        chartLabel={ 'Chart with Axis Labels and Custom Styles' }
+      />);
   }
 }
