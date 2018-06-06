@@ -123,7 +123,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       isSizing: false,
       isDropping: false,
       isCollapsed: props.groupProps && props.groupProps.isAllGroupsCollapsed,
-      isSomeGroupExpanded: props.groupProps && !props.groupProps.isAllGroupsCollapsed,
+      isSomeGroupExpanded: props.groupProps && !props.groupProps.isAllGroupsCollapsed
     };
 
     this._selection = props.selection || new Selection({ onSelectionChanged: undefined, getKey: props.getKey });
@@ -858,7 +858,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
   private _onBlur(event: React.FocusEvent<HTMLElement>): void {
     this.setState({
-      focusedItemIndex: -1,
+      focusedItemIndex: -1
     });
   }
 
