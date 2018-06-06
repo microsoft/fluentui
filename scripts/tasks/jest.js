@@ -1,7 +1,7 @@
 module.exports = function (options) {
   const path = require('path');
   const fs = require('fs');
-  const exec = require('../exec');
+  const exec = require('../exec-sync');
   const findConfig = require('../find-config');
   const jestConfigPath = findConfig('jest.config.js');
   const resolve = require('resolve');
