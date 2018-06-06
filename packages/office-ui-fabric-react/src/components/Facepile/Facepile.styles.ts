@@ -1,6 +1,5 @@
 import { IFacepileStyleProps, IFacepileStyles } from './Facepile.types';
 
-<<<<<<< HEAD
 import {
   IStyle,
   hiddenContentStyle,
@@ -54,19 +53,12 @@ export const styles = (
   };
 
   return ({
-=======
-export const getStyles = (props: IFacepileStyleProps): IFacepileStyles => {
-  const { className } = props;
-
-  return {
->>>>>>> 0d91de6a0a15de3bdde6819751eff3cdca870ec0
     root: [
       classNames.root,
       {
         width: 'auto'
       },
       className
-<<<<<<< HEAD
     ],
     addButton: [
       classNames.addButton,
@@ -160,10 +152,3 @@ export const getStyles = (props: IFacepileStyleProps): IFacepileStyles => {
     screenReaderOnly: hiddenContentStyle
   });
 };
-=======
-    ]
-
-    // Insert className styles
-  };
-};
->>>>>>> 0d91de6a0a15de3bdde6819751eff3cdca870ec0
