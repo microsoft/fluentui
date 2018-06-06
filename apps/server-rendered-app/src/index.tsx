@@ -11,9 +11,8 @@ function start(): void {
 
   _rootDiv = document.querySelector('#content');
 
-  ReactDOM.render(
+  ReactDOM.hydrate(
     <TodoApp />,
-
     _rootDiv);
 }
 

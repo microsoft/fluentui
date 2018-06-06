@@ -39,7 +39,7 @@
     "write-file-webpack-plugin": "^4.1.0"
   },
   "dependencies": {
-    "@microsoft/load-themed-styles": "^1.7.60",
+    "@microsoft/load-themed-styles": "^1.7.13",
     "@uifabric/icons": ">=6.0.0 <7.0.0",
     "color-functions": "1.1.0",
     "json-loader": "^0.5.7",

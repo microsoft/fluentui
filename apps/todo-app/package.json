@@ -17,7 +17,7 @@
     "office-ui-fabric-react-tslint": ">=6.0.0 <7.0.0"
   },
   "dependencies": {
-    "@microsoft/load-themed-styles": "^1.7.60",
+    "@microsoft/load-themed-styles": "^1.7.13",
     "es6-promise": "^4.1.0",
     "immutability-helper": "^2.6.4",
     "office-ui-fabric-react": ">=6.4.1 <7.0.0",

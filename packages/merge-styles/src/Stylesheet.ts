@@ -119,9 +119,9 @@ export class Stylesheet {
    * @param displayName - Optional value to use as a prefix.
    */
   public getClassName(displayName?: string): string {
-    const prefix = displayName || this._config.defaultPrefix;
+    const { defaultPrefix } = this._config;
 
-    return `${prefix}-${this._counter++}`;
+    return `${(defaultPrefix || '') + (displayName || '')}-${this._counter++}`;
   }
 
   /**
