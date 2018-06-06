@@ -5,12 +5,12 @@ export const getStyles = (props: IColorPickerStyleProps): IColorPickerStyles => 
 
   return {
     root: [
-      className,
       'ms-ColorPicker',
       {
         position: 'relative',
         maxWidth: 300
-      }
+      },
+      className
     ],
     panel: [
       'ms-ColorPicker-panel',

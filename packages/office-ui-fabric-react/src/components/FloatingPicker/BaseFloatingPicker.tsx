@@ -30,7 +30,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
   protected suggestionsControl: SuggestionsControl<T>;
   protected SuggestionsControlOfProperType: new (props: ISuggestionsControlProps<T>) => SuggestionsControl<
     T
-    > = SuggestionsControl as new (props: ISuggestionsControlProps<T>) => SuggestionsControl<T>;
+  > = SuggestionsControl as new (props: ISuggestionsControlProps<T>) => SuggestionsControl<T>;
   protected loadingTimer: number | undefined;
   // tslint:disable-next-line:no-any
   protected currentPromise: PromiseLike<any>;
@@ -41,7 +41,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
     this.suggestionStore = basePickerProps.suggestionsStore;
     this.state = {
       queryString: '',
-      didBind: false,
+      didBind: false
     };
   }
 
@@ -137,8 +137,8 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
   public render(): JSX.Element {
     const { className } = this.props;
     return (
-      <div ref={ this.root } className={ css('ms-BasePicker ms-BaseFloatingPicker', className ? className : '') } >
-        { this.renderSuggestions() }
+      <div ref={this.root} className={css('ms-BasePicker ms-BaseFloatingPicker', className ? className : '')}>
+        {this.renderSuggestions()}
       </div>
     );
   }
@@ -147,23 +147,23 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
     const TypedSuggestionsControl = this.SuggestionsControlOfProperType;
     return this.state.suggestionsVisible ? (
       <Callout
-        className={ styles.callout }
-        isBeakVisible={ false }
-        gapSpace={ 5 }
-        target={ this.props.inputElement }
-        onDismiss={ this.hidePicker }
-        directionalHint={ getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge }
-        calloutWidth={ this.props.calloutWidth ? this.props.calloutWidth : 0 }
+        className={styles.callout}
+        isBeakVisible={false}
+        gapSpace={5}
+        target={this.props.inputElement}
+        onDismiss={this.hidePicker}
+        directionalHint={getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge}
+        calloutWidth={this.props.calloutWidth ? this.props.calloutWidth : 0}
       >
         <TypedSuggestionsControl
-          onRenderSuggestion={ this.props.onRenderSuggestionsItem }
-          onSuggestionClick={ this.onSuggestionClick }
-          onSuggestionRemove={ this.onSuggestionRemove }
-          suggestions={ this.suggestionStore.getSuggestions() }
-          ref={ this._resolveRef('suggestionsControl') }
-          completeSuggestion={ this.completeSuggestion }
-          shouldLoopSelection={ false }
-          { ...this.props.pickerSuggestionsProps as IBaseFloatingPickerSuggestionProps }
+          onRenderSuggestion={this.props.onRenderSuggestionsItem}
+          onSuggestionClick={this.onSuggestionClick}
+          onSuggestionRemove={this.onSuggestionRemove}
+          suggestions={this.suggestionStore.getSuggestions()}
+          ref={this._resolveRef('suggestionsControl')}
+          completeSuggestion={this.completeSuggestion}
+          shouldLoopSelection={false}
+          {...this.props.pickerSuggestionsProps as IBaseFloatingPickerSuggestionProps}
         />
       </Callout>
     ) : null;
@@ -204,7 +204,6 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
         this.updateSuggestions(suggestionsArray, true /*forceUpdate*/);
       }
     } else if (suggestionsPromiseLike && suggestionsPromiseLike.then) {
-
       this._updateSuggestionsVisible(updatedValue !== undefined && updatedValue !== '');
 
       // Ensure that the promise will only use the callback if it was the most recent one.

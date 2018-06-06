@@ -86,8 +86,8 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
     </div>
     <div
       className=
-          is-hue
           ms-ColorPicker-slider
+          is-hue
           {
             border: 1px solid #eaeaea;
             box-sizing: border-box;
@@ -139,8 +139,8 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
     </div>
     <div
       className=
-          is-alpha
           ms-ColorPicker-slider
+          is-alpha
           {
             border: 1px solid #eaeaea;
             box-sizing: border-box;
