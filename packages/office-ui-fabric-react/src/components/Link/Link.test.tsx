@@ -51,6 +51,16 @@ describe('Link', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('supports non button/anchor html attributes when "as=" is used', () => {
+    const component = renderer.create(
+      <Link as="blockquote" cite={'hi'} className="customClassName">
+        I'm a blockquote
+      </Link>
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('renders Link with "as=Route" a Route element', () => {
     class Route extends React.Component {
       public render() {

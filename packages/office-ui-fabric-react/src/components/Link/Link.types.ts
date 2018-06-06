@@ -10,8 +10,36 @@ export interface ILink {
   focus(): void;
 }
 
+export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
+  // Shared
+  type?: string;
+
+  // Anchor
+  download?: any;
+  href?: string;
+  hrefLang?: string;
+  media?: string;
+  rel?: string;
+  target?: string;
+
+  // Button
+  autoFocus?: boolean;
+  disabled?: boolean;
+  form?: string;
+  formAction?: string;
+  formEncType?: string;
+  formMethod?: string;
+  formNoValidate?: boolean;
+  formTarget?: string;
+  name?: string;
+  value?: string | string[] | number;
+
+  // Any other props supported by HTMLElements
+  [index: string]: any;
+}
+
 export interface ILinkProps
-  extends React.AnchorHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement | LinkBase> {
+  extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement | LinkBase> {
   /**
    * Optional callback to access the ILink interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
