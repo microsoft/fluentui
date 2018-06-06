@@ -19,7 +19,6 @@ import { css } from 'office-ui-fabric-react/lib/Utilities';
  * DatePicker input for Form
  */
 export class FormDatePicker extends FormBaseInput<Date, IFormDatePickerProps, IFormBaseInputState<Date>> {
-
   constructor(props: IFormDatePickerProps, context: IFormContext) {
     super(props, context);
     this.state = {
@@ -36,31 +35,31 @@ export class FormDatePicker extends FormBaseInput<Date, IFormDatePickerProps, IF
    */
   public render(): JSX.Element {
     return (
-      <div className={ css('form-date-picker', DatePickerStyles.formDatePicker) }>
+      <div className={css('form-date-picker', DatePickerStyles.formDatePicker)}>
         <DatePicker
-          { ...this.props.datePickerProps }
+          {...this.props.datePickerProps}
           // These props cannot be overridden
-          key={ this.props.inputKey }
-          value={ this.state.currentValue }
-          onSelectDate={ this._onDateChanged }
+          key={this.props.inputKey}
+          value={this.state.currentValue}
+          onSelectDate={this._onDateChanged}
         />
-        { this.state.currentError && this._renderError() }
+        {this.state.currentError && this._renderError()}
       </div>
     );
   }
 
   private _renderError(): JSX.Element {
     return (
-      <div className={ css('input-error', DatePickerStyles.inputError) }>
-        <Icon iconName='Error' />
-        { this.state.currentError }
+      <div className={css('input-error', DatePickerStyles.inputError)}>
+        <Icon iconName="Error" />
+        {this.state.currentError}
       </div>
     );
   }
 
   private _onDateChanged = (date: Date): void => {
     this.setValue(date);
-  }
+  };
 
   private _validateDatePickerProps(props?: IDatePickerProps): void {
     if (props) {

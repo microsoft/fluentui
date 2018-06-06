@@ -2,6 +2,166 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.5.0",
+      "tag": "office-ui-fabric-react_v6.5.0",
+      "date": "Tue, 05 Jun 2018 10:23:03 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "jetao-msft <39922934+jetao-msft@users.noreply.github.com>",
+            "commit": "0ee4b7e453be52025873ae7466dea4b2646a1a34",
+            "comment": "Callout: Add `preventDismissOnLostFocus` prop."
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.4.1",
+      "tag": "office-ui-fabric-react_v6.4.1",
+      "date": "Tue, 05 Jun 2018 00:44:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "cfa7a19ec1d6f98c13f822a828e0751f64507dbd",
+            "comment": "Added Prettier"
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "4cb8f290e4b35a8566f4d568c6aa2b556d9d726d",
+            "comment": "CommandBarPage: Remove fabric js reference."
+          },
+          {
+            "author": "Ryan Psenski <rpsenski@microsoft.com>",
+            "commit": "f6a08f7f146cf76db9a3cde0d643e7bd54d505f2",
+            "comment": "_onValidate should only skip validation on text entry if state.value is undefined (it was skipping when text entry was empty string)"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=6.0.0 <7.0.0` to `>=6.0.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.0.1 <7.0.0` to `>=6.0.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.0.2 <7.0.0` to `>=6.0.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.0.4 <7.0.0` to `>=6.0.5 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=5.2.3 <6.0.0` to `>=6.0.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.0.1 <7.0.0` to `>=6.0.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.4.0",
+      "tag": "office-ui-fabric-react_v6.4.0",
+      "date": "Mon, 04 Jun 2018 18:50:06 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "471bf4a404b2732ca1e83e7e64158957aa178413",
+            "comment": "Revert PR 4897"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.3.0",
+      "tag": "office-ui-fabric-react_v6.3.0",
+      "date": "Mon, 04 Jun 2018 10:16:13 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "e87289bebda6cf31f7ddbc38888daec68de168c9",
+            "comment": "Coachmark: Fix positioning bugs and add in support for different Coachmark directions."
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "43a1c5e692a30d8ceba399a1191fe2ac23829c69",
+            "comment": "DetailsList: adjusting aria labels and exporting more ariaLabels in `IColumn` to allow for better narrator reading and table scanning."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "93484257a7563195d43a6b33db246c2a96ed9c00",
+            "comment": "Dropdown: Allow `title` to be provided as an item property."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "e76d9c0789753dbb83cc131a61d47348979b0b17",
+            "comment": "Icons top level import was exporting a file path, should be exporting a package path."
+          },
+          {
+            "author": "Abdelmoumen BOUABDALLAH <sos.ini@gmail.com>",
+            "commit": "6b6b54b1ab53dfc66f94c151c6c438daa1007c82",
+            "comment": "GroupedList: Added multiple customization entry-points including custom indent spacing and header customization."
+          },
+          {
+            "author": "Kelsey Young <kelseyyoung4@gmail.com>",
+            "commit": "3bebe7b58d1914dcf6390a5d31c8f8843e9a22af",
+            "comment": "Allow for more control over event handling for keytips"
+          }
+        ],
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "03e7004358f64936dd8115dcc763b407343140fc",
+            "comment": "Callout: fix dismissing events to attach to the documentElement, not body."
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "8c8d8fbc3e25fafaac712b7381a4743c86f1400f",
+            "comment": "SplitButton: Hook up aria-roledescription to splitButtons so that they can leverage that markup if it gets passed in to the component."
+          },
+          {
+            "author": "Roel <roelvb@roelvb.nl>",
+            "commit": "54f09ca0455b28a611ea2e90739a18e0bd33c37e",
+            "comment": "SpinButton: addressing onValidate, onIncrement, and onDecrement callbacks to be called correctly."
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "323b89e0b33be5ffac70f055ffbf551e5ebc8b10",
+            "comment": "MessageBar: New color for dismiss / expand button in hc mode for better visibility."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "4e1cd119bbf0f75e0432b0f92bad342714b57bef",
+            "comment": "Updating react typings."
+          },
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "758d210836ab509a8e33d6b99990223cc7245f2a",
+            "comment": "Updated test snapshots"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.0.0 <7.0.0` to `>=6.0.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.0.1 <7.0.0` to `>=6.0.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.0.3 <7.0.0` to `>=6.0.4 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=5.2.2 <6.0.0` to `>=5.2.3 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.0.0 <7.0.0` to `>=6.0.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.2.0",
       "tag": "office-ui-fabric-react_v6.2.0",
       "date": "Fri, 01 Jun 2018 10:18:43 GMT",

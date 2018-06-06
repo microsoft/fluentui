@@ -11,18 +11,9 @@ export interface IGroupSpacerProps {
 const SPACER_WIDTH = 36;
 
 export const GroupSpacer = (props: IGroupSpacerProps) => {
-  const {
-    count,
-    indentWidth = SPACER_WIDTH
-  } = props;
+  const { count, indentWidth = SPACER_WIDTH } = props;
 
   return count > 0 ? (
-    <span
-      className={ css(
-        'ms-GroupSpacer',
-        styles.root
-      ) }
-      style={ { width: count * indentWidth } }
-    />
+    <span className={css('ms-GroupSpacer', styles.root)} style={{ width: count * indentWidth }} />
   ) : null;
 };

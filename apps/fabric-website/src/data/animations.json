@@ -1,11 +1,5 @@
 {
-  "headers": [
-    "Name",
-    "Class",
-    "Bezier",
-    "Duration",
-    "Animation"
-  ],
+  "headers": ["Name", "Class", "Bezier", "Duration", "Animation"],
   "data": [
     [
       {

@@ -1,6 +1,20 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 01 Jun 2018 10:18:43 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Jun 2018 00:44:30 GMT and should not be manually modified.
+
+## 6.0.5
+Tue, 05 Jun 2018 00:44:30 GMT
+
+### Patches
+
+- Added Prettier
+
+## 6.0.4
+Mon, 04 Jun 2018 10:16:13 GMT
+
+### Patches
+
+- Updating react typings.
 
 ## 6.0.3
 Fri, 01 Jun 2018 10:18:43 GMT

@@ -1,14 +1,9 @@
 import * as React from 'react';
 import { ChicletBase } from './Chiclet.base';
 import { IStyleFunctionOrObject } from '../../Utilities';
-import {
-  IStyle,
-  ITheme
-} from '../../Styling';
+import { IStyle, ITheme } from '../../Styling';
 
-export interface IChiclet {
-
-}
+export interface IChiclet {}
 
 export interface IChicletProps extends React.Props<ChicletBase> {
   /**

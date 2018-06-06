@@ -15,7 +15,7 @@ if (_global[CURRENT_ID_PROPERTY] === undefined) {
 function checkProperties(a: any, b: any): boolean {
   for (let propName in a) {
     if (a.hasOwnProperty(propName)) {
-      if (!b.hasOwnProperty(propName) || (b[propName] !== a[propName])) {
+      if (!b.hasOwnProperty(propName) || b[propName] !== a[propName]) {
         return false;
       }
     }
@@ -67,10 +67,7 @@ export function filteredAssign(isAllowed: (propName: string) => boolean, target:
   for (let sourceObject of args) {
     if (sourceObject) {
       for (let propName in sourceObject) {
-        if (
-          sourceObject.hasOwnProperty(propName) &&
-          (!isAllowed || isAllowed(propName))
-        ) {
+        if (sourceObject.hasOwnProperty(propName) && (!isAllowed || isAllowed(propName))) {
           target[propName] = sourceObject[propName];
         }
       }
@@ -110,12 +107,15 @@ export function mapEnumByName<T>(
   callback: (name?: string, value?: string | number) => T | undefined
 ): (T | undefined)[] | undefined {
   // map<any> to satisfy compiler since it doesn't realize we strip out undefineds in the .filter() call
-  return Object.keys(theEnum).map<T | undefined>(
-    (p: string | number) => { // map on each property name as a string
-      if (String(Number(p)) !== p) { // if the property is not just a number (because enums in TypeScript will map both ways)
+  return Object.keys(theEnum)
+    .map<T | undefined>((p: string | number) => {
+      // map on each property name as a string
+      if (String(Number(p)) !== p) {
+        // if the property is not just a number (because enums in TypeScript will map both ways)
         return callback(p as string, theEnum[p]);
       }
-    }).filter((v: T | undefined) => !!v); // only return elements with values
+    })
+    .filter((v: T | undefined) => !!v); // only return elements with values
 }
 
 /**

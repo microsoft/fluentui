@@ -29,32 +29,30 @@ export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> imple
   public render(): JSX.Element {
     return (
       <ComboBox
-        { ...this.props }
-        componentRef={ this._comboBox }
-        onRenderList={ this._onRenderList }
-        onScrollToItem={ this._onScrollToItem }
+        {...this.props}
+        componentRef={this._comboBox}
+        onRenderList={this._onRenderList}
+        onScrollToItem={this._onScrollToItem}
       />
     );
   }
 
   protected _onRenderList = (props: IComboBoxProps): JSX.Element => {
-    const {
-      onRenderItem
-    } = props;
+    const { onRenderItem } = props;
 
     // Render virtualized list
     return (
       <List
-        componentRef={ this._list }
-        role='listbox'
-        items={ props.options }
-        onRenderCell={ onRenderItem ? (item: ISelectableOption) => onRenderItem(item) : () => null }
+        componentRef={this._list}
+        role="listbox"
+        items={props.options}
+        onRenderCell={onRenderItem ? (item: ISelectableOption) => onRenderItem(item) : () => null}
       />
     );
-  }
+  };
 
   protected _onScrollToItem = (itemIndex: number): void => {
     // We are using the List component, call scrollToIndex
     this._list.current && this._list.current.scrollToIndex(itemIndex);
-  }
+  };
 }

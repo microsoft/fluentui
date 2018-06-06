@@ -1,16 +1,6 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  classNamesFunction,
-  customizable,
-  createRef
-} from '../../Utilities';
-import {
-  ILink,
-  ILinkProps,
-  ILinkStyleProps,
-  ILinkStyles,
-} from './Link.types';
+import { BaseComponent, classNamesFunction, customizable, createRef } from '../../Utilities';
+import { ILink, ILinkProps, ILinkStyleProps, ILinkStyles } from './Link.types';
 import { KeytipData } from '../../KeytipData';
 
 const getClassNames = classNamesFunction<ILinkStyleProps, ILinkStyles>();
@@ -33,22 +23,22 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
 
     return (
       <KeytipData
-        keytipProps={ keytipProps }
-        ariaDescribedBy={ (this.props as { 'aria-describedby': string })['aria-describedby'] }
-        disabled={ disabled }
+        keytipProps={keytipProps}
+        ariaDescribedBy={(this.props as { 'aria-describedby': string })['aria-describedby']}
+        disabled={disabled}
       >
-        { (keytipAttributes: any): JSX.Element => (
+        {(keytipAttributes: any): JSX.Element => (
           <RootType
-            { ...keytipAttributes }
-            { ...this._removeInvalidPropsForRootType(RootType, this.props) }
-            className={ classNames.root }
-            onClick={ this._onClick }
-            ref={ this._link }
-            aria-disabled={ disabled }
+            {...keytipAttributes}
+            {...this._removeInvalidPropsForRootType(RootType, this.props)}
+            className={classNames.root}
+            onClick={this._onClick}
+            ref={this._link}
+            aria-disabled={disabled}
           >
-            { children }
+            {children}
           </RootType>
-        ) }
+        )}
       </KeytipData>
     );
   }
@@ -67,23 +57,16 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
     } else if (onClick) {
       onClick(ev);
     }
-  }
+  };
 
-  private _removeInvalidPropsForRootType(RootType: string | React.ComponentClass | React.StatelessComponent, props: ILinkProps & { getStyles?: any }): Partial<ILinkProps> {
+  private _removeInvalidPropsForRootType(
+    RootType: string | React.ComponentClass | React.StatelessComponent,
+    props: ILinkProps & { getStyles?: any }
+  ): Partial<ILinkProps> {
     // Deconstruct the props so we remove props like `as`, `theme` and `styles`
     // as those will always be removed. We also take some props that are optional
     // based on the RootType.
-    const {
-      children,
-      as,
-      disabled,
-      target,
-      href,
-      theme,
-      getStyles,
-      styles,
-      ...restProps
-    } = props;
+    const { children, as, disabled, target, href, theme, getStyles, styles, ...restProps } = props;
 
     // RootType will be a string if we're dealing with an html component
     if (typeof RootType === 'string') {
@@ -92,7 +75,7 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
         return {
           target,
           href,
-          ...restProps,
+          ...restProps
         };
       }
 
