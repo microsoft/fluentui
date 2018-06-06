@@ -1,6 +1,7 @@
-const execSync = require('child_process').execSync;
+const { execSync } = require('child_process');
+const exec = require('./exec');
 const path = require('path');
-const { EOL } = require('os');
+const { EOL, cpus } = require('os');
 
 const projectPath = path.resolve(path.join(__dirname, '..'));
 const cmd = 'git --no-pager diff cfa7a19ec --diff-filter=AM --name-only --stat-name-width=0';
@@ -9,9 +10,8 @@ const gitDiffOutput = execSync(cmd, { cwd: projectPath });
 const filesChangedSinceLastRun = gitDiffOutput
   .toString('utf8')
   .split(EOL)
-  .filter(fileName => /\.ts$/.test(fileName));
+  .filter(fileName => /\.(ts|tsx|js)$/.test(fileName));
 
-const sourcePath = path.join(__dirname, '**', '*.{ts,tsx,json,js}');
 const prettierPath = path.resolve(__dirname, './node_modules/prettier/bin-prettier.js');
 const prettierIgnorePath = path.resolve(path.join(__dirname, '..', '.prettierignore'));
 const prettierConfigPath = path.join(
@@ -22,12 +22,39 @@ const prettierConfigPath = path.join(
   'prettier.config.js'
 );
 
-console.log([sourcePath, prettierPath, prettierIgnorePath]);
+function runPrettierForFile(filePath) {
+  return exec(
+    `node ${prettierPath} --config ${prettierConfigPath} --ignore-path ${prettierIgnorePath} --write ${filePath}`,
+    undefined,
+    undefined,
+    process
+  );
+}
 
-const filesToRun = execSync(
-  `node ${prettierPath} --config ${prettierConfigPath} --ignore-path ${prettierIgnorePath} ${sourcePath} --write`,
-  {
-    cmd: projectPath
-  }
-);
-console.log(filesToRun.toString('utf8'));
+const numberOfCpus = cpus().length / 2;
+console.log(`Running prettier on changed files (on ${numberOfCpus} processes):`);
+const queues = new Array(numberOfCpus).fill(undefined).map(() => []);
+
+filesChangedSinceLastRun.forEach((fileName, index) => {
+  const queueNumber = index % numberOfCpus;
+
+  queues[queueNumber].push(fileName);
+});
+
+const allQueues = queues.map(queue => {
+  return queue.reduce((next, fileName) => {
+    return next.then(() => {
+      return runPrettierForFile(fileName);
+    });
+  }, Promise.resolve());
+});
+
+Promise.all(allQueues)
+  .then(() => {
+    console.log('🙌 All done! 🙌');
+  })
+  .catch(error => {
+    console.error(error);
+  });
+
+// filesChangedSinceLastRun.forEach(runPrettierForFile);
