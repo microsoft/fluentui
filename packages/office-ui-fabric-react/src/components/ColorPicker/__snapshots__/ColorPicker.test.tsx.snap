@@ -2,13 +2,33 @@
 
 exports[`ColorPicker renders ColorPicker correctly 1`] = `
 <div
-  className="ms-ColorPicker"
+  className=
+      ms-ColorPicker
+      {
+        max-width: 300px;
+        position: relative;
+      }
 >
   <div
-    className="ms-ColorPicker-panel"
+    className=
+        ms-ColorPicker-panel
+        {
+          padding-bottom: 16px;
+          padding-left: 16px;
+          padding-right: 16px;
+          padding-top: 16px;
+        }
   >
     <div
-      className="ms-ColorPicker-colorRect"
+      className=
+          ms-ColorPicker-colorRect
+          {
+            margin-bottom: 10px;
+            position: relative;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            -ms-high-contrast-adjust: none;
+          }
       onMouseDown={[Function]}
       style={
         Object {
@@ -19,13 +39,42 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
       }
     >
       <div
-        className="ms-ColorPicker-light"
+        className=
+            ms-ColorPicker-light
+            {
+              background: linear-gradient(to right, white 0%, transparent 100%);
+              bottom: 0px;
+              left: 0px;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+            }
       />
       <div
-        className="ms-ColorPicker-dark"
+        className=
+            ms-ColorPicker-dark
+            {
+              background: linear-gradient(to bottom, transparent 0, #000 100%);
+              bottom: 0px;
+              left: 0px;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+            }
       />
       <div
-        className="ms-ColorPicker-thumb"
+        className=
+            ms-ColorPicker-thumb
+            {
+              background: white;
+              border-radius: 50%;
+              border: 1px solid rgba(255,255,255,.8);
+              box-shadow: 0 0 15px -5px black;
+              height: 20px;
+              position: absolute;
+              transform: translate(-50%, -50%);
+              width: 20px;
+            }
         style={
           Object {
             "backgroundColor": "#FFFFFF",
@@ -36,15 +85,51 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
       />
     </div>
     <div
-      className="ms-ColorPicker-slider is-hue"
+      className=
+          is-hue
+          ms-ColorPicker-slider
+          {
+            border: 1px solid #eaeaea;
+            box-sizing: border-box;
+            height: 20px;
+            margin-bottom: 5px;
+            position: relative;
+          }
       onMouseDown={[Function]}
+      style={
+        Object {
+          "background": "linear-gradient(to left,red 0,#f09 10%,#cd00ff 20%,#3200ff 30%,#06f 40%,#00fffd 50%,#0f6 60%,#35ff00 70%,#cdff00 80%,#f90 90%,red 100%)",
+        }
+      }
     >
       <div
-        className="ms-ColorPicker-sliderOverlay"
+        className=
+            ms-ColorPicker-sliderOverlay
+            {
+              bottom: 0px;
+              content: ;
+              left: 0px;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+            }
         style={undefined}
       />
       <div
-        className="ms-ColorPicker-thumb is-slider"
+        className=
+            ms-ColorPicker-thumb
+            is-slider
+            {
+              background: white;
+              border-radius: 50%;
+              border: 1px solid rgba(255,255,255,.8);
+              box-shadow: 0 0 15px -5px black;
+              height: 20px;
+              position: absolute;
+              top: 50%;
+              transform: translate(-50%, -50%);
+              width: 20px;
+            }
         style={
           Object {
             "left": "0%",
@@ -53,11 +138,34 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
       />
     </div>
     <div
-      className="ms-ColorPicker-slider is-alpha"
+      className=
+          is-alpha
+          ms-ColorPicker-slider
+          {
+            border: 1px solid #eaeaea;
+            box-sizing: border-box;
+            height: 20px;
+            margin-bottom: 5px;
+            position: relative;
+          }
       onMouseDown={[Function]}
+      style={
+        Object {
+          "backgroundImage": "url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJUlEQVQYV2N89erVfwY0ICYmxoguxjgUFKI7GsTH5m4M3w1ChQC1/Ca8i2n1WgAAAABJRU5ErkJggg==)",
+        }
+      }
     >
       <div
-        className="ms-ColorPicker-sliderOverlay"
+        className=
+            ms-ColorPicker-sliderOverlay
+            {
+              bottom: 0px;
+              content: ;
+              left: 0px;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+            }
         style={
           Object {
             "background": "linear-gradient(to right, transparent 0, #FFFFFF 100%)",
@@ -65,7 +173,20 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
         }
       />
       <div
-        className="ms-ColorPicker-thumb is-slider"
+        className=
+            ms-ColorPicker-thumb
+            is-slider
+            {
+              background: white;
+              border-radius: 50%;
+              border: 1px solid rgba(255,255,255,.8);
+              box-shadow: 0 0 15px -5px black;
+              height: 20px;
+              position: absolute;
+              top: 50%;
+              transform: translate(-50%, -50%);
+              width: 20px;
+            }
         style={
           Object {
             "left": "100%",
@@ -76,7 +197,12 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
     <table
       cellPadding="0"
       cellSpacing="0"
-      className="ms-ColorPicker-table"
+      className=
+          ms-ColorPicker-table
+          {
+            table-layout: fixed;
+            width: 100%;
+          }
     >
       <thead>
         <tr
@@ -91,7 +217,11 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
               }
         >
           <td
-            className={undefined}
+            className=
+
+                {
+                  width: 25%;
+                }
           >
             Hex
           </td>
@@ -113,7 +243,26 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
         <tr>
           <td>
             <div
-              className="ms-TextField ms-ColorPicker-input"
+              className=
+                  ms-TextField
+                  ms-ColorPicker-input
+                  {
+                    border: none;
+                    box-sizing: border-box;
+                    height: 30px;
+                    width: 100%;
+                  }
+                  &.ms-TextField {
+                    padding-right: 2px;
+                  }
+                  & .ms-TextField-field {
+                    min-width: auto;
+                    padding-bottom: 5px;
+                    padding-left: 5px;
+                    padding-right: 5px;
+                    padding-top: 5px;
+                    text-overflow: clip;
+                  }
             >
               <div
                 className="ms-TextField-wrapper"
@@ -147,7 +296,26 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
             }
           >
             <div
-              className="ms-TextField ms-ColorPicker-input"
+              className=
+                  ms-TextField
+                  ms-ColorPicker-input
+                  {
+                    border: none;
+                    box-sizing: border-box;
+                    height: 30px;
+                    width: 100%;
+                  }
+                  &.ms-TextField {
+                    padding-right: 2px;
+                  }
+                  & .ms-TextField-field {
+                    min-width: auto;
+                    padding-bottom: 5px;
+                    padding-left: 5px;
+                    padding-right: 5px;
+                    padding-top: 5px;
+                    text-overflow: clip;
+                  }
             >
               <div
                 className="ms-TextField-wrapper"
@@ -181,7 +349,26 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
             }
           >
             <div
-              className="ms-TextField ms-ColorPicker-input"
+              className=
+                  ms-TextField
+                  ms-ColorPicker-input
+                  {
+                    border: none;
+                    box-sizing: border-box;
+                    height: 30px;
+                    width: 100%;
+                  }
+                  &.ms-TextField {
+                    padding-right: 2px;
+                  }
+                  & .ms-TextField-field {
+                    min-width: auto;
+                    padding-bottom: 5px;
+                    padding-left: 5px;
+                    padding-right: 5px;
+                    padding-top: 5px;
+                    text-overflow: clip;
+                  }
             >
               <div
                 className="ms-TextField-wrapper"
@@ -215,7 +402,26 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
             }
           >
             <div
-              className="ms-TextField ms-ColorPicker-input"
+              className=
+                  ms-TextField
+                  ms-ColorPicker-input
+                  {
+                    border: none;
+                    box-sizing: border-box;
+                    height: 30px;
+                    width: 100%;
+                  }
+                  &.ms-TextField {
+                    padding-right: 2px;
+                  }
+                  & .ms-TextField-field {
+                    min-width: auto;
+                    padding-bottom: 5px;
+                    padding-left: 5px;
+                    padding-right: 5px;
+                    padding-top: 5px;
+                    text-overflow: clip;
+                  }
             >
               <div
                 className="ms-TextField-wrapper"
@@ -249,7 +455,26 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
             }
           >
             <div
-              className="ms-TextField ms-ColorPicker-input"
+              className=
+                  ms-TextField
+                  ms-ColorPicker-input
+                  {
+                    border: none;
+                    box-sizing: border-box;
+                    height: 30px;
+                    width: 100%;
+                  }
+                  &.ms-TextField {
+                    padding-right: 2px;
+                  }
+                  & .ms-TextField-field {
+                    min-width: auto;
+                    padding-bottom: 5px;
+                    padding-left: 5px;
+                    padding-right: 5px;
+                    padding-top: 5px;
+                    text-overflow: clip;
+                  }
             >
               <div
                 className="ms-TextField-wrapper"

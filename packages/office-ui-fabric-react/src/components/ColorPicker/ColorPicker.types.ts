@@ -1,8 +1,15 @@
+import { ITheme, IStyle } from '../../Styling';
+import { IStyleFunctionOrObject } from '../../Utilities';
+
+export interface IColorPicker {
+
+}
+
 export interface IColorPickerProps {
   /**
    * Gets the component ref.
    */
-  componentRef?: () => void;
+  componentRef?: (component: IColorPicker | null) => void;
 
   /**
    * The CSS-compatible string to describe the initial color
@@ -48,4 +55,33 @@ export interface IColorPickerProps {
    * @default Alpha
    */
   alphaLabel?: string;
+
+  /**
+   * Additional CSS class(es) to apply to the ColorPicker.
+   */
+  className?: string;
+
+  /**
+   * Theme (provided through customization);
+   */
+  theme?: ITheme;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  styles?: IStyleFunctionOrObject<IColorPickerStyleProps, IColorPickerStyles>;
+}
+
+export interface IColorPickerStyleProps {
+  theme: ITheme;
+  className?: string;
+}
+
+export interface IColorPickerStyles {
+  root?: IStyle;
+  panel?: IStyle;
+  table?: IStyle;
+  tableHeader?: IStyle;
+  tableHexCell?: IStyle;
+  input?: IStyle;
 }
