@@ -1,8 +1,5 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  css
-} from '../../Utilities';
+import { BaseComponent, css } from '../../Utilities';
 import { IColorPickerProps } from './ColorPicker.types';
 import { TextField } from '../../TextField';
 import { ColorRectangle } from './ColorRectangle';
@@ -76,16 +73,16 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
               maxValue={ 100 }
               value={ color.a }
               onChanged={ this._onAChanged }
-            />) }
-          <table className={ css('ms-ColorPicker-table', styles.table) } cellPadding='0' cellSpacing='0'>
+            />
+          ) }
+          <table className={ css('ms-ColorPicker-table', styles.table) } cellPadding="0" cellSpacing="0">
             <thead>
               <tr className={ FontClassNames.small }>
                 <td className={ styles.tableHexCell }>{ this.props.hexLabel }</td>
                 <td>{ this.props.redLabel }</td>
                 <td>{ this.props.greenLabel }</td>
                 <td>{ this.props.blueLabel }</td>
-                { !this.props.alphaSliderHidden && (
-                  <td>{ this.props.alphaLabel }</td>) }
+                { !this.props.alphaSliderHidden && <td>{ this.props.alphaLabel }</td> }
               </tr>
             </thead>
             <tbody>
@@ -94,7 +91,7 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
                   <TextField
                     className={ css('ms-ColorPicker-input', styles.input) }
                     value={ color.hex }
-                    ref={ (ref) => this.hexText = ref! }
+                    ref={ ref => (this.hexText = ref!) }
                     onBlur={ this._onHexChanged }
                     spellCheck={ false }
                   />
@@ -104,7 +101,7 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
                     className={ css('ms-ColorPicker-input', styles.input) }
                     onBlur={ this._onRGBAChanged }
                     value={ String(color.r) }
-                    ref={ (ref) => this.rText = ref! }
+                    ref={ ref => (this.rText = ref!) }
                     spellCheck={ false }
                   />
                 </td>
@@ -113,16 +110,16 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
                     className={ css('ms-ColorPicker-input', styles.input) }
                     onBlur={ this._onRGBAChanged }
                     value={ String(color.g) }
-                    ref={ (ref) => this.gText = ref! }
+                    ref={ ref => (this.gText = ref!) }
                     spellCheck={ false }
                   />
                 </td>
-                <td style={ { width: '18%' } }>
+                <td style={ { width: '18%' } } >
                   <TextField
                     className={ css('ms-ColorPicker-input', styles.input) }
                     onBlur={ this._onRGBAChanged }
                     value={ String(color.b) }
-                    ref={ (ref) => this.bText = ref! }
+                    ref={ ref => (this.bText = ref!) }
                     spellCheck={ false }
                   />
                 </td>
@@ -132,7 +129,7 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
                       className={ css('ms-ColorPicker-input', styles.input) }
                       onBlur={ this._onRGBAChanged }
                       value={ String(color.a) }
-                      ref={ (ref) => this.aText = ref! }
+                      ref={ ref => (this.aText = ref!) }
                       spellCheck={ false }
                     />
                   </td>
@@ -147,28 +144,30 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
 
   private _onSVChanged = (s: number, v: number): void => {
     this._updateColor(updateSV(this.state.color, s, v));
-  }
+  };
 
   private _onHChanged = (h: number): void => {
     this._updateColor(updateH(this.state.color, h));
-  }
+  };
 
   private _onAChanged = (a: number): void => {
     this._updateColor(updateA(this.state.color, a));
-  }
+  };
 
   private _onHexChanged = (): void => {
     this._updateColor(getColorFromString('#' + this.hexText.value));
-  }
+  };
 
   private _onRGBAChanged = (): void => {
-    this._updateColor(getColorFromRGBA({
-      r: Number(this.rText.value),
-      g: Number(this.gText.value),
-      b: Number(this.bText.value),
-      a: Number((this.aText && this.aText.value) || 100)
-    }));
-  }
+    this._updateColor(
+      getColorFromRGBA({
+        r: Number(this.rText.value),
+        g: Number(this.gText.value),
+        b: Number(this.bText.value),
+        a: Number((this.aText && this.aText.value) || 100)
+      })
+    );
+  };
 
   private _updateColor(newColor?: IColor): void {
     if (!newColor) {
@@ -178,13 +177,16 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
     const { onColorChanged } = this.props;
 
     if (newColor.str !== this.state.color.str) {
-      this.setState({
-        color: newColor
-      } as IColorPickerState, () => {
-        if (onColorChanged) {
-          onColorChanged(newColor.str);
+      this.setState(
+        {
+          color: newColor
+        } as IColorPickerState,
+        () => {
+          if (onColorChanged) {
+            onColorChanged(newColor.str);
+          }
         }
-      });
+      );
     }
   }
 }

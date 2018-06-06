@@ -185,9 +185,12 @@ export class KeytipTree {
    */
   public getNode(id: string): IKeytipTreeNode | undefined {
     const nodeMapValues = values<IKeytipTreeNode>(this.nodeMap);
-    return find(nodeMapValues, (node: IKeytipTreeNode): boolean => {
-      return node.id === id;
-    });
+    return find(
+      nodeMapValues,
+      (node: IKeytipTreeNode): boolean => {
+        return node.id === id;
+      }
+    );
   }
 
   /**
@@ -241,8 +244,17 @@ export class KeytipTree {
     parentId: string,
     children: string[],
     keytipProps: IKeytipProps,
-    persisted?: boolean): IKeytipTreeNode {
-    const { keySequences, hasDynamicChildren, overflowSetSequence, hasMenu, onExecute, onReturn, disabled } = keytipProps;
+    persisted?: boolean
+  ): IKeytipTreeNode {
+    const {
+      keySequences,
+      hasDynamicChildren,
+      overflowSetSequence,
+      hasMenu,
+      onExecute,
+      onReturn,
+      disabled
+    } = keytipProps;
     const node = {
       id,
       keySequences,

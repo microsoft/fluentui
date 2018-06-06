@@ -1,6 +1,24 @@
 # Change Log - @uifabric/jest-serializer-merge-styles
 
-This log was last generated on Wed, 30 May 2018 22:05:03 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Jun 2018 00:44:30 GMT and should not be manually modified.
+
+## 6.0.0
+Tue, 05 Jun 2018 00:44:30 GMT
+
+### Breaking changes
+
+- Major bump to 6.0 to be in line with rest of OUFR v6 packages.
+
+### Patches
+
+- Added Prettier
+
+## 5.2.3
+Mon, 04 Jun 2018 10:16:13 GMT
+
+### Patches
+
+- Updating react typings.
 
 ## 5.2.2
 Wed, 30 May 2018 22:05:03 GMT

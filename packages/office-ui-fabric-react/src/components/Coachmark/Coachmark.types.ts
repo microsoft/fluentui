@@ -4,8 +4,7 @@ import { ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.styles';
 import { IPositioningContainerTypes } from './PositioningContainer/PositioningContainer.types';
 import { IStyleFunctionOrObject } from '../../Utilities';
 
-export interface ICoachmark {
-}
+export interface ICoachmark {}
 
 export interface ICoachmarkTypes extends React.Props<Coachmark> {
   /**
@@ -37,10 +36,10 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
   isPositionForced?: boolean;
 
   /**
- * The starting collapsed state for the Coachmark.  Use isCollapsed instead.
- * @default true
- * @deprecated
- */
+   * The starting collapsed state for the Coachmark.  Use isCollapsed instead.
+   * @default true
+   * @deprecated
+   */
   collapsed?: boolean;
 
   /**
@@ -67,9 +66,9 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
   onAnimationOpenEnd?: () => void;
 
   /**
- * The width of the Beak component.
- * @deprecated
- */
+   * The width of the Beak component.
+   * @deprecated
+   */
   beakWidth?: number;
 
   /**
