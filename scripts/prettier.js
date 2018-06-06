@@ -59,5 +59,3 @@ Promise.all(allQueues)
   .catch(error => {
     console.error(error);
   });
-
-// filesChangedSinceLastRun.forEach(runPrettierForFile);

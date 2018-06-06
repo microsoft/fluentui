@@ -42,7 +42,7 @@
       "node ./scripts/lint-staged/tslint",
       "git add"
     ],
-    "*.{js}": [
+    "*.js": [
       "node ./scripts/lint-staged/prettier",
       "git add"
     ]
