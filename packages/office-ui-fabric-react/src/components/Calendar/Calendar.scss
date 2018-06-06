@@ -57,6 +57,7 @@ $Calendar-dayPicker-margin: 10px;
   min-height: 212px;
   padding: 12px;
   display: flex;
+  box-sizing: content-box;
 }
 
 // Wrapper containing the calendar view to pick a specific date.
