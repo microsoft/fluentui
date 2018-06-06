@@ -1,9 +1,7 @@
 import { ITheme, IStyle } from '../../../Styling';
 import { IStyleFunctionOrObject } from '../../../Utilities';
 
-export interface IColorSlider {
-
-}
+export interface IColorSlider {}
 
 export interface IColorSliderProps {
   /**
@@ -11,12 +9,40 @@ export interface IColorSliderProps {
    */
   componentRef?: (component: IColorSlider | null) => void;
 
+  /**
+   * Minimum value of the slider.
+   */
   minValue?: number;
+
+  /**
+   * Maximum value of the slider.
+   */
   maxValue?: number;
+
+  /**
+   * Current value of the slider.
+   */
   value?: number;
+
+  /**
+   * CSS-compatible string for the color of the thumb element.
+   */
   thumbColor?: string;
+
+  /**
+   * Custom style for the overlay element.
+   */
   overlayStyle?: any;
+
+  /**
+   * Callback issued when the value changes.
+   */
   onChanged?: (newValue: number) => void;
+
+  /**
+   * If true, the slider represents an alpha slider.
+   * Otherwise, the slider represents a hue slider.
+   */
   isAlpha?: boolean;
 
   /**
@@ -25,7 +51,7 @@ export interface IColorSliderProps {
   className?: string;
 
   /**
-   * Theme (provided through customization);
+   * Theme (provided through customization).
    */
   theme?: ITheme;
 
@@ -36,12 +62,30 @@ export interface IColorSliderProps {
 }
 
 export interface IColorSliderStyleProps {
+  /**
+   * Theme (provided through customization).
+   */
   theme: ITheme;
+
+  /**
+   * Additional CSS class(es) to apply to the ColorSlider.
+   */
   className?: string;
 }
 
 export interface IColorSliderStyles {
+  /**
+   * Style set for the root element.
+   */
   root?: IStyle;
+
+  /**
+   * Style set for the draggable thumb element.
+   */
   sliderThumb?: IStyle;
+
+  /**
+   * Style set for the overlay element.
+   */
   sliderOverlay?: IStyle;
 }

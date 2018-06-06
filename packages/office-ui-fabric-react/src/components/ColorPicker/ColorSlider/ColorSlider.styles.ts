@@ -6,7 +6,6 @@ export const getStyles = (props: IColorSliderStyleProps): IColorSliderStyles => 
 
   return {
     root: [
-      className,
       'ms-ColorPicker-slider',
       {
         position: 'relative',
@@ -14,7 +13,8 @@ export const getStyles = (props: IColorSliderStyleProps): IColorSliderStyles => 
         marginBottom: 5,
         border: `1px solid ${palette.neutralLight}`,
         boxSizing: 'border-box'
-      }
+      },
+      className
     ],
     sliderOverlay: [
       'ms-ColorPicker-sliderOverlay',
@@ -24,7 +24,7 @@ export const getStyles = (props: IColorSliderStyleProps): IColorSliderStyles => 
         left: 0,
         right: 0,
         top: 0,
-        bottom: 0,
+        bottom: 0
       }
     ],
     sliderThumb: [

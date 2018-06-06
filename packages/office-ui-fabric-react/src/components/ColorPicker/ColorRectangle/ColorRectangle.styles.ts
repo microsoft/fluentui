@@ -6,7 +6,6 @@ export const getStyles = (props: IColorRectangleStyleProps): IColorRectangleStyl
 
   return {
     root: [
-      className,
       'ms-ColorPicker-colorRect',
       {
         position: 'relative',
@@ -16,7 +15,8 @@ export const getStyles = (props: IColorRectangleStyleProps): IColorRectangleStyl
             MsHighContrastAdjust: 'none'
           }
         }
-      }
+      },
+      className
     ],
     light: [
       'ms-ColorPicker-light',
