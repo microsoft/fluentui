@@ -8,7 +8,6 @@ import * as stylesImport from './TeachingBubble.scss';
 const styles: any = stylesImport;
 
 export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, ITeachingBubbleState> {
-
   // Specify default props values
   public static defaultProps = {
     hasCondensedHeadline: false,
@@ -22,12 +21,22 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
   constructor(props: ITeachingBubbleProps) {
     super(props);
 
-    this.state = {
-    };
+    this.state = {};
   }
 
   public render(): JSX.Element {
-    const { illustrationImage, primaryButtonProps, secondaryButtonProps, headline, hasCondensedHeadline, hasCloseIcon, onDismiss, closeButtonAriaLabel, hasSmallHeadline, children } = this.props;
+    const {
+      children,
+      illustrationImage,
+      primaryButtonProps,
+      secondaryButtonProps,
+      headline,
+      hasCondensedHeadline,
+      hasCloseIcon,
+      onDismiss,
+      closeButtonAriaLabel,
+      hasSmallHeadline
+    } = this.props;
 
     let imageContent;
     let headerContent;
@@ -48,16 +57,14 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
         <div
           className={ css(
             'ms-TeachingBubble-header',
-            hasCondensedHeadline ?
-              'ms-TeachingBubble-header--condensed ' + styles.headerIsCondensed
+            hasCondensedHeadline
+              ? 'ms-TeachingBubble-header--condensed ' + styles.headerIsCondensed
               : hasSmallHeadline
                 ? 'ms-TeachingBubble-header--small ' + styles.headerIsSmall
                 : 'ms-TeachingBubble-header--large ' + styles.headerIsLarge
           ) }
         >
-          <p className={ css('ms-TeachingBubble-headline', styles.headline) } >
-            { headline }
-          </p>
+          <p className={ css('ms-TeachingBubble-headline', styles.headline) }>{ headline }</p>
         </div>
       );
     }
@@ -65,9 +72,7 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
     if (children) {
       bodyContent = (
         <div className={ css('ms-TeachingBubble-body', styles.body) }>
-          <p className={ css('ms-TeachingBubble-subText', styles.subText) }>
-            { children }
-          </p>
+          <p className={ css('ms-TeachingBubble-subText', styles.subText) }>{ children }</p>
         </div>
       );
     }
@@ -84,7 +89,11 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
           { secondaryButtonProps && (
             <DefaultButton
               { ...secondaryButtonProps }
-              className={ css('ms-TeachingBubble-secondaryButton', styles.secondaryButton, secondaryButtonProps.className) }
+              className={ css(
+                'ms-TeachingBubble-secondaryButton',
+                styles.secondaryButton,
+                secondaryButtonProps.className
+              ) }
             />
           ) }
         </div>

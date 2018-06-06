@@ -22,61 +22,54 @@ export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps
   }
 
   public render(): JSX.Element {
-    const {
-      item,
-      onExpandItem,
-      onRemoveItem,
-      removeButtonAriaLabel,
-      index,
-      selected
-    } = this.props;
+    const { item, onExpandItem, onRemoveItem, removeButtonAriaLabel, index, selected } = this.props;
     const itemId = getId();
     return (
       <div
-        ref={ this.persona }
-        className={ css(
+        ref={this.persona}
+        className={css(
           'ms-PickerPersona-container',
           styles.personaContainer,
           { ['is-selected ' + styles.personaContainerIsSelected]: selected },
           { ['is-invalid ' + styles.validationError]: !item.isValid }
-        ) }
-        data-is-focusable={ true }
-        data-is-sub-focuszone={ true }
-        data-selection-index={ index }
-        role={ 'listitem' }
-        aria-labelledby={ 'selectedItemPersona-' + itemId }
+        )}
+        data-is-focusable={true}
+        data-is-sub-focuszone={true}
+        data-selection-index={index}
+        role={'listitem'}
+        aria-labelledby={'selectedItemPersona-' + itemId}
       >
-        <div hidden={ !item.canExpand || onExpandItem === undefined }>
+        <div hidden={!item.canExpand || onExpandItem === undefined}>
           <IconButton
-            onClick={ this._onClickIconButton(onExpandItem) }
-            iconProps={ { iconName: 'Add', style: { fontSize: '14px' } } }
-            className={ css('ms-PickerItem-removeButton', styles.expandButton, styles.actionButton) }
-            ariaLabel={ removeButtonAriaLabel }
+            onClick={this._onClickIconButton(onExpandItem)}
+            iconProps={{ iconName: 'Add', style: { fontSize: '14px' } }}
+            className={css('ms-PickerItem-removeButton', styles.expandButton, styles.actionButton)}
+            ariaLabel={removeButtonAriaLabel}
           />
         </div>
-        <div className={ css(styles.personaWrapper) }>
-          <div
-            className={ css('ms-PickerItem-content', styles.itemContent) }
-            id={ 'selectedItemPersona-' + itemId }
-          >
+        <div className={css(styles.personaWrapper)}>
+          <div className={css('ms-PickerItem-content', styles.itemContent)} id={'selectedItemPersona-' + itemId}>
             <Persona
-              { ...item }
-              onRenderCoin={ this.props.renderPersonaCoin }
-              onRenderPrimaryText={ this.props.renderPrimaryText }
-              size={ PersonaSize.size32 }
+              {...item}
+              onRenderCoin={this.props.renderPersonaCoin}
+              onRenderPrimaryText={this.props.renderPrimaryText}
+              size={PersonaSize.size32}
             />
           </div>
           <IconButton
-            onClick={ this._onClickIconButton(onRemoveItem) }
-            iconProps={ { iconName: 'Cancel', style: { fontSize: '14px' } } }
-            className={ css('ms-PickerItem-removeButton', styles.removeButton, styles.actionButton) }
-            ariaLabel={ removeButtonAriaLabel }
+            onClick={this._onClickIconButton(onRemoveItem)}
+            iconProps={{ iconName: 'Cancel', style: { fontSize: '14px' } }}
+            className={css('ms-PickerItem-removeButton', styles.removeButton, styles.actionButton)}
+            ariaLabel={removeButtonAriaLabel}
           />
-        </div >
-      </div >);
+        </div>
+      </div>
+    );
   }
 
-  private _onClickIconButton(action: (() => void) | undefined): (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void {
+  private _onClickIconButton(
+    action: (() => void) | undefined
+  ): (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void {
     return (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>): void => {
       ev.stopPropagation();
       ev.preventDefault();

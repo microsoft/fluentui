@@ -4,17 +4,13 @@ const webpack = resources.webpack;
 
 const BUNDLE_NAME = 'merge-styles';
 
-module.exports = resources.createConfig(
-  BUNDLE_NAME,
-  true,
-  {
-    entry: {
-      [BUNDLE_NAME]: './lib/index.js'
-    },
+module.exports = resources.createConfig(BUNDLE_NAME, true, {
+  entry: {
+    [BUNDLE_NAME]: './lib/index.js'
+  },
 
-    output: {
-      libraryTarget: 'var',
-      library: 'MergeStyles'
-    }
+  output: {
+    libraryTarget: 'var',
+    library: 'MergeStyles'
   }
-);
+});

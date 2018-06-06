@@ -2,6 +2,64 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.5.0",
+      "tag": "office-ui-fabric-react_v6.5.0",
+      "date": "Tue, 05 Jun 2018 10:23:03 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "jetao-msft <39922934+jetao-msft@users.noreply.github.com>",
+            "commit": "0ee4b7e453be52025873ae7466dea4b2646a1a34",
+            "comment": "Callout: Add `preventDismissOnLostFocus` prop."
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.4.1",
+      "tag": "office-ui-fabric-react_v6.4.1",
+      "date": "Tue, 05 Jun 2018 00:44:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "cfa7a19ec1d6f98c13f822a828e0751f64507dbd",
+            "comment": "Added Prettier"
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "4cb8f290e4b35a8566f4d568c6aa2b556d9d726d",
+            "comment": "CommandBarPage: Remove fabric js reference."
+          },
+          {
+            "author": "Ryan Psenski <rpsenski@microsoft.com>",
+            "commit": "f6a08f7f146cf76db9a3cde0d643e7bd54d505f2",
+            "comment": "_onValidate should only skip validation on text entry if state.value is undefined (it was skipping when text entry was empty string)"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=6.0.0 <7.0.0` to `>=6.0.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.0.1 <7.0.0` to `>=6.0.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.0.2 <7.0.0` to `>=6.0.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.0.4 <7.0.0` to `>=6.0.5 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=5.2.3 <6.0.0` to `>=6.0.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.0.1 <7.0.0` to `>=6.0.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.4.0",
       "tag": "office-ui-fabric-react_v6.4.0",
       "date": "Mon, 04 Jun 2018 18:50:06 GMT",

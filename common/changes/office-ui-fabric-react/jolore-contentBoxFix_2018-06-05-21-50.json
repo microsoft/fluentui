@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "CommandBarPage: Remove fabric js reference.",
+      "comment": "adding css fix to remove unnecessary scroll bars on calendar and datepicker components",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "lynam.emily@gmail.com"
+  "email": "jolore@microsoft.com"
 }

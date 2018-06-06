@@ -6,6 +6,7 @@
   "scripts": {
     "build": "node ../../scripts/build.js",
     "clean": "node ../../scripts/clean.js",
+    "code-style": "node ../../scripts/code-style.js",
     "start": "node ../../scripts/start.js"
   },
   "devDependencies": {
@@ -19,7 +20,7 @@
     "@microsoft/load-themed-styles": "^1.7.13",
     "es6-promise": "^4.1.0",
     "immutability-helper": "^2.6.4",
-    "office-ui-fabric-react": ">=6.4.0 <7.0.0",
+    "office-ui-fabric-react": ">=6.5.0 <7.0.0",
     "react": ">=16.3.2-0 <17.0.0",
     "react-dom": ">=16.3.2-0 <17.0.0",
     "typescript": "2.8.1",

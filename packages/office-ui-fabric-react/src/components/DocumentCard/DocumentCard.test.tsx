@@ -10,19 +10,11 @@ describe('DocumentCard', () => {
   it('renders DocumentCard correctly', () => {
     const component = renderer.create(
       <DocumentCard>
-        <DocumentCardPreview previewImages={ [] } />
-        <DocumentCardTitle
-          title=''
-        />
-        <DocumentCardActivity
-          activity=''
-          people={
-            [
-              { name: '', profileImageSrc: '' }
-            ]
-          }
-        />
-      </DocumentCard>);
+        <DocumentCardPreview previewImages={[]} />
+        <DocumentCardTitle title="" />
+        <DocumentCardActivity activity="" people={[{ name: '', profileImageSrc: '' }]} />
+      </DocumentCard>
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

@@ -1,6 +1,22 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 04 Jun 2018 18:50:06 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Jun 2018 10:23:03 GMT and should not be manually modified.
+
+## 6.5.0
+Tue, 05 Jun 2018 10:23:03 GMT
+
+### Minor changes
+
+- Callout: Add `preventDismissOnLostFocus` prop.
+
+## 6.4.1
+Tue, 05 Jun 2018 00:44:30 GMT
+
+### Patches
+
+- Added Prettier
+- CommandBarPage: Remove fabric js reference.
+- _onValidate should only skip validation on text entry if state.value is undefined (it was skipping when text entry was empty string)
 
 ## 6.4.0
 Mon, 04 Jun 2018 18:50:06 GMT

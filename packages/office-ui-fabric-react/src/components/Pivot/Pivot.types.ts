@@ -127,7 +127,6 @@ export enum PivotLinkFormat {
 }
 
 export enum PivotLinkSize {
-
   /**
    * Display Link using normal font size
    */

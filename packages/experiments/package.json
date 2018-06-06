@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/experiments",
-  "version": "6.1.1",
+  "version": "6.2.0",
   "description": "Experimental React components for building experiences for Office 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -14,6 +14,7 @@
   "scripts": {
     "build": "node ../../scripts/build.js",
     "clean": "node ../../scripts/clean.js",
+    "code-style": "node ../../scripts/code-style.js",
     "start": "node ../../scripts/start.js",
     "start-test": "node ../../scripts/start-test.js",
     "update-snapshots": "node ../../scripts/build.js jest -u"
@@ -31,9 +32,9 @@
     "@types/enzyme": "3.1.5",
     "@types/enzyme-adapter-react-16": "1.0.1",
     "@types/webpack-env": "1.13.0",
-    "@uifabric/example-app-base": ">=6.0.1 <7.0.0",
-    "@uifabric/file-type-icons": ">=0.7.1 <1.0.0",
-    "@uifabric/jest-serializer-merge-styles": ">=5.2.3 <6.0.0",
+    "@uifabric/example-app-base": ">=6.0.2 <7.0.0",
+    "@uifabric/file-type-icons": ">=0.7.2 <1.0.0",
+    "@uifabric/jest-serializer-merge-styles": ">=6.0.0 <7.0.0",
     "es6-weak-map": "^2.0.2",
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.0",
@@ -46,8 +47,8 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
-    "office-ui-fabric-react": ">=6.4.0 <7.0.0",
-    "@uifabric/icons": ">=6.0.0 <7.0.0",
+    "office-ui-fabric-react": ">=6.5.0 <7.0.0",
+    "@uifabric/icons": ">=6.0.1 <7.0.0",
     "prop-types": "^15.5.10",
     "tslib": "^1.7.1"
   },
