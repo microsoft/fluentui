@@ -70,13 +70,13 @@ const _iconSettings = GlobalSettings.getValue<IIconRecords>(ICON_SETTING_NAME, {
 });
 
 // Reset icon registration on stylesheet resets.
-// Stylesheet.getInstance().onReset(() => {
-//   for (const name in _iconSettings) {
-//     if (_iconSettings.hasOwnProperty(name) && !!(_iconSettings[name] as IIconRecord).subset) {
-//       (_iconSettings[name] as IIconRecord).subset.isRegistered = false;
-//     }
-//   }
-// });
+Stylesheet.getInstance().onReset(() => {
+  for (const name in _iconSettings) {
+    if (_iconSettings.hasOwnProperty(name) && !!(_iconSettings[name] as IIconRecord).subset) {
+      (_iconSettings[name] as IIconRecord).subset.className = undefined;
+    }
+  }
+});
 
 /**
  * Registers a given subset of icons.
@@ -146,14 +146,16 @@ export function getIcon(name?: string): IIconRecord | undefined {
           subset.isRegistered = true;
         }
 
-        subset.className = mergeStyles(
-          subset.style,
-          {
-            fontFamily: subset.fontFace.fontFamily,
-            fontWeight: subset.fontFace.fontWeight || 'normal',
-            fontStyle: subset.fontFace.fontStyle || 'normal'
-          }
-        );
+        if (!subset.className) {
+          subset.className = mergeStyles(
+            subset.style,
+            {
+              fontFamily: subset.fontFace.fontFamily,
+              fontWeight: subset.fontFace.fontWeight || 'normal',
+              fontStyle: subset.fontFace.fontStyle || 'normal'
+            }
+          );
+        }
       }
     } else {
       if (!options.disableWarnings && options.warnOnMissingIcons) {
