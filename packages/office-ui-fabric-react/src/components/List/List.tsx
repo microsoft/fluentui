@@ -29,6 +29,8 @@ const DEFAULT_ITEMS_PER_PAGE = 10;
 const DEFAULT_PAGE_HEIGHT = 30;
 const DEFAULT_RENDERED_WINDOWS_BEHIND = 2;
 const DEFAULT_RENDERED_WINDOWS_AHEAD = 2;
+const PAGE_KEY_PREFIX = 'page-';
+const SPACER_KEY_PREFIX = 'spacer-';
 
 export interface IListState {
   pages?: IPage[];
@@ -279,6 +281,25 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
 
       scrollTop += pageHeight;
     }
+  }
+
+  public getStartItemIndexInView(): number {
+    const pages = this.state.pages || [];
+    for (const page of pages) {
+      const isPageVisible = (page.key && !page.key.startsWith(SPACER_KEY_PREFIX)) &&
+        ((this._scrollTop || 0) >= page.top) && ((this._scrollTop || 0) <= (page.top + page.height));
+      if (isPageVisible) {
+        const startIndexStr = page.key.replace(PAGE_KEY_PREFIX, '');
+        const startIndexInPage = Number(startIndexStr);
+        if (isNaN(startIndexInPage)) {
+          continue;
+        }
+        // Without calculating the exact row height, estimate the row height assuming having same height
+        let rowHeight = Math.floor(page.height / page.itemCount);
+        return startIndexInPage + Math.floor((this._scrollTop - page.top) / rowHeight)
+      }
+    }
+    return 0;
   }
 
   public componentDidMount(): void {
@@ -820,7 +841,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
 
       } else {
         if (!currentSpacer) {
-          currentSpacer = this._createPage('spacer-' + itemIndex, undefined, itemIndex, 0, undefined, pageData);
+          currentSpacer = this._createPage(SPACER_KEY_PREFIX + itemIndex, undefined, itemIndex, 0, undefined, pageData);
         }
         currentSpacer.height = (currentSpacer.height || 0) + (pageBottom - pageTop) + 1;
         currentSpacer.itemCount += itemsPerPage;
@@ -835,7 +856,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     }
 
     if (currentSpacer) {
-      currentSpacer.key = 'spacer-end';
+      currentSpacer.key = SPACER_KEY_PREFIX + 'end';
       pages.push(currentSpacer);
     }
 
@@ -906,7 +927,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   }
 
   private _createPage(pageKey: string | undefined, items: any[] | undefined, startIndex: number = -1, count: number = items ? items.length : 0, style: any = {}, data: any = undefined): IPage {
-    pageKey = pageKey || ('page-' + startIndex);
+    pageKey = pageKey || (PAGE_KEY_PREFIX + startIndex);
     const cachedPage = this._pageCache[pageKey];
     if (cachedPage && cachedPage.page) {
       return cachedPage.page;

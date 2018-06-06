@@ -40,6 +40,11 @@ export interface IList {
    *  Note: The scrollToMode requires the measureItem callback is provided to function.
    */
   scrollToIndex: (index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode) => void;
+
+  /**
+   * Get the start index of the page that is currently in view
+   */
+  getStartItemIndexInView: () => number;
 }
 
 export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> {

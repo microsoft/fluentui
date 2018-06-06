@@ -62,6 +62,10 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
     }
   }
 
+  public getStartItemIndexInView(): number {
+    return this._list.current!.getStartItemIndexInView() || 0;
+  }
+
   public componentWillReceiveProps(newProps: IGroupedListProps): void {
     const {
       groups,
