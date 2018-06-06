@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { Shimmer, ShimmerElementsGroup, ShimmerElementType as ElemType } from 'office-ui-fabric-react/lib/Shimmer';
 
-import './Shimmer.Example.scss';
+import * as ShimmerExampleStyles from './Shimmer.Example.scss';
 
 export class ShimmerCustomElementsExample extends React.Component<{}, {}> {
   constructor(props: {}) {
@@ -11,7 +11,7 @@ export class ShimmerCustomElementsExample extends React.Component<{}, {}> {
 
   public render(): JSX.Element {
     return (
-      <div className="shimmerBasicExample-container">
+      <div className={ShimmerExampleStyles.shimmerBasicExampleContainer}>
         Using ShimmerElementsGroup component to build complex structures of the placeholder you need.
         <Shimmer customElementsGroup={this._getCustomElementsExampleOne()} width={350} />
         <Shimmer customElementsGroup={this._getCustomElementsExampleTwo()} width={550} />

@@ -13,7 +13,8 @@ import {
   DetailsRow
 } from 'office-ui-fabric-react/lib/index';
 import { Shimmer } from 'office-ui-fabric-react/lib/Shimmer';
-import './Shimmer.Example.scss';
+
+import * as ShimmerExampleStyles from './Shimmer.Example.scss';
 
 export interface IItem {
   [index: string]: string | number;
@@ -90,32 +91,30 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
 
     return (
       <div>
-        <div className="shimmerExample-toggleButtons">
-          <div className="shimmerExample-flexGroup">
-            <Toggle
-              label="Enable Modal Selection"
-              checked={isModalSelection}
-              onChanged={this._onChangeModalSelection}
-              onText="Modal"
-              offText="Normal"
-            />
-            <Toggle
-              label="Enable Compact Mode"
-              checked={isCompactMode}
-              onChanged={this._onChangeCompactMode}
-              onText="Compact"
-              offText="Normal"
-            />
-            <Toggle
-              label="Enable content loading"
-              checked={isDataLoaded}
-              onChanged={this._onLoadData}
-              onText="Content"
-              offText="Shimmer"
-            />
-          </div>
+        <div className={ShimmerExampleStyles.shimmerExampleFlexGroup}>
+          <Toggle
+            label="Enable Modal Selection"
+            checked={isModalSelection}
+            onChanged={this._onChangeModalSelection}
+            onText="Modal"
+            offText="Normal"
+          />
+          <Toggle
+            label="Enable Compact Mode"
+            checked={isCompactMode}
+            onChanged={this._onChangeCompactMode}
+            onText="Compact"
+            offText="Normal"
+          />
+          <Toggle
+            label="Enable content loading"
+            checked={isDataLoaded}
+            onChanged={this._onLoadData}
+            onText="Content"
+            offText="Shimmer"
+          />
         </div>
-        <div className="shimmerExample-application">
+        <div>
           <DetailsList
             setKey="items"
             items={items!}

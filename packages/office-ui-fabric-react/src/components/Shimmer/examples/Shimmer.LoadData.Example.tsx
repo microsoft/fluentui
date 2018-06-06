@@ -4,6 +4,8 @@ import { Persona, PersonaSize, PersonaPresence, IPersonaProps } from 'office-ui-
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { PersonaDetails } from './ExampleHelper';
 
+import * as ShimmerExampleStyles from './Shimmer.Example.scss';
+
 export interface IShimmerLoadDataExampleState {
   isDataLoadedOne?: boolean;
   isDataLoadedTwo?: boolean;
@@ -26,7 +28,7 @@ export class ShimmerLoadDataExample extends React.Component<{}, IShimmerLoadData
     const { isDataLoadedOne, isDataLoadedTwo, contentOne, examplePersona } = this.state;
 
     return (
-      <div className="shimmerBasicExample-container">
+      <div className={ShimmerExampleStyles.shimmerBasicExampleContainer}>
         <Toggle
           checked={isDataLoadedOne}
           onChanged={this._getContentOne}

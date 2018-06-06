@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { Shimmer, ShimmerElementType as ElemType } from 'office-ui-fabric-react/lib/Shimmer';
 
-import './Shimmer.Example.scss';
+import * as ShimmerExampleStyles from './Shimmer.Example.scss';
 
 export class ShimmerBasicExample extends React.Component<{}, {}> {
   constructor(props: {}) {
@@ -11,7 +11,7 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
 
   public render(): JSX.Element {
     return (
-      <div className="shimmerBasicExample-container">
+      <div className={ShimmerExampleStyles.shimmerBasicExampleContainer}>
         Basic Shimmer with no elements provided. It defaults to a line of 16px height.
         <Shimmer />
         <Shimmer width={'75%'} />

@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { Shimmer, IShimmerStyleProps, IShimmerStyles } from 'office-ui-fabric-react/lib/Shimmer';
 
-import './Shimmer.Example.scss';
+import * as ShimmerExampleStyles from './Shimmer.Example.scss';
 
 export class ShimmerStylingExample extends React.Component<{}, {}> {
   constructor(props: {}) {
@@ -11,7 +11,7 @@ export class ShimmerStylingExample extends React.Component<{}, {}> {
 
   public render(): JSX.Element {
     return (
-      <div className="shimmerBasicExample-container">
+      <div className={ShimmerExampleStyles.shimmerBasicExampleContainer}>
         <Shimmer width={'75%'} styles={this._getShimmerStyles} />
         <Shimmer width={'75%'} styles={this._getShimmerStyles} />
         <Shimmer width={'75%'} styles={this._getShimmerStyles} />

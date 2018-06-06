@@ -1,17 +1,15 @@
-:global {
-  .shimmerBasicExample-container {
-    padding: 2px;
+.shimmerBasicExampleContainer {
+  padding: 2px;
 
-    .ms-Shimmer-container {
-      margin: 10px 0;
-    }
+  & > * {
+    margin: 10px 0;
   }
+}
 
-  .shimmerExample-flexGroup {
-    display: flex;
+.shimmerExampleFlexGroup {
+  display: flex;
 
-    .ms-Toggle {
-      margin-right: 30px;
-    }
+  & > * {
+    margin-right: 30px;
   }
 }
