@@ -11,10 +11,22 @@ export interface IDemoPageProps {
   componentUrl: string;
 
   /** Status of the component; e.g. keyboard accessible */
-  componentStatus: IComponentStatusProps;
+  componentStatus?: IComponentStatusProps;
 
   /** Array of examples, displayed in the order defined */
   examples: {
+    /** Title of the example */
+    title: string;
+
+    /** Raw source code of the example */
+    code: string;
+
+    /** Working example of the example */
+    view: JSX.Element;
+  }[];
+
+  /** Array of implementation examples, displayed in the order defined */
+  implementationExamples?: {
     /** Title of the example */
     title: string;
 
@@ -32,14 +44,23 @@ export interface IDemoPageProps {
   overview: string;
 
   /** DO's blurb as markdown string */
-  dos: string;
+  dos?: string;
 
   /** DON'Ts blurb as markdown string */
-  donts: string;
+  donts?: string;
 
   /** Best practice as markdown string */
-  bestPractices: string;
+  bestPractices?: string;
 
   /** Passed through header visibility flag from the demo component page component */
   isHeaderVisible: boolean;
+
+  /** Allows native props */
+  allowNativeProps?: boolean | string;
+
+  /** Native props root element */
+  nativePropsElement?: string | string[];
+
+  /** Related link */
+  related?: JSX.Element;
 }
