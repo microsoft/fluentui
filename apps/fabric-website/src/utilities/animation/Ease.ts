@@ -4,7 +4,6 @@
 const CUBIC_BEZIER = 'cubic-bezier';
 
 export class Ease {
-
   public static QUAD_EASE_IN: string = CUBIC_BEZIER + '(0.550, 0.085, 0.680, 0.530)';
   public static CUBIC_EASE_IN: string = CUBIC_BEZIER + '(0.550, 0.055, 0.675, 0.190)';
   public static QUART_EASE_IN: string = CUBIC_BEZIER + '(0.895, 0.030, 0.685, 0.220)';

@@ -10,8 +10,8 @@ export class DocumentCardLogo extends BaseComponent<IDocumentCardLogoProps, any>
     const { logoIcon } = this.props;
 
     return (
-      <div className={ css('ms-DocumentCardLogo', styles.logo) }>
-        <Icon iconName={ logoIcon } />
+      <div className={css('ms-DocumentCardLogo', styles.logo)}>
+        <Icon iconName={logoIcon} />
       </div>
     );
   }

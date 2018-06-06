@@ -15,9 +15,9 @@ export class CompoundButton extends BaseComponent<IButtonProps, {}> {
     const { primary = false, styles, theme } = this.props;
     return (
       <BaseButton
-        { ...this.props }
-        variantClassName={ primary ? 'ms-Button--compoundPrimary' : 'ms-Button--compound' }
-        styles={ getStyles(theme!, styles, primary) }
+        {...this.props}
+        variantClassName={primary ? 'ms-Button--compoundPrimary' : 'ms-Button--compound'}
+        styles={getStyles(theme!, styles, primary)}
       />
     );
   }
