@@ -4,6 +4,7 @@ import { RefObject } from 'office-ui-fabric-react';
 import { TViewProps } from '../../utilities/createComponent';
 
 export interface ICollapsibleSectionViewOnlyProps {
+  collapsed: boolean;
   titleElementRef?: RefObject<HTMLElement>;
   onKeyDown?: (ev: React.KeyboardEvent<Element>) => void;
   onToggleCollapse?: () => void;
@@ -11,26 +12,25 @@ export interface ICollapsibleSectionViewOnlyProps {
 }
 
 // TODO: consolidate in createComponent to automatically take in parent / HOC props?
-export type ICollapsibleSectionViewProps =
-  TViewProps<ICollapsibleSectionProps & ICollapsibleSectionViewOnlyProps, ICollapsibleSectionStyles>;
+export type ICollapsibleSectionViewProps = TViewProps<
+  ICollapsibleSectionProps & ICollapsibleSectionViewOnlyProps,
+  ICollapsibleSectionStyles
+>;
 
-export const CollapsibleSectionView = (
-  props: ICollapsibleSectionViewProps
-) => {
+export const CollapsibleSectionView = (props: ICollapsibleSectionViewProps) => {
   const { collapsed, titleAs: TitleType, titleProps, children } = props;
 
   return (
-    <div onKeyDown={ props.onRootKeyDown } >
+    <div onKeyDown={props.onRootKeyDown}>
       <TitleType
-        { ...titleProps }
-        focusElementRef={ props.titleElementRef }
-        collapsed={ props.collapsed }
-        onToggleCollapse={ props.onToggleCollapse }
-        onKeyDown={ props.onKeyDown }
+        {...titleProps}
+        collapsed={props.collapsed}
+        focusElementRef={props.titleElementRef}
+        defaultCollapsed={true}
+        onToggleCollapse={props.onToggleCollapse}
+        onKeyDown={props.onKeyDown}
       />
-      <div className={ props.styles.child }>
-        { !collapsed && children }
-      </div>
+      <div className={props.styles.body}>{!collapsed && children}</div>
     </div>
   );
 };

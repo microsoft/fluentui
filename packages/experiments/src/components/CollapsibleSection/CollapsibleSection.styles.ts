@@ -5,11 +5,11 @@ export const getStyles = (props: ICollapsibleSectionProps & { theme: ITheme }): 
   const { theme } = props;
 
   return {
-    child: [
+    body: [
       {
-        paddingLeft: 30,
+        paddingLeft: 30
       },
       theme.fonts.small
-    ],
+    ]
   };
 };

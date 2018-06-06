@@ -90,7 +90,7 @@ module.exports = {
           extensions: ['.ts', '.tsx', '.js']
         },
 
-        devtool: 'source-map',
+        devtool: 'eval',
 
         module: {
           rules: [

@@ -11,30 +11,30 @@ export interface IFileItem {
 const _folderItems: string[] = [];
 const _fileItems: IFileItem[] = [];
 
-const fileIcons: { name: string; }[] = [
-  { 'name': 'accdb' },
-  { 'name': 'csv' },
-  { 'name': 'docx' },
-  { 'name': 'dotx' },
-  { 'name': 'mpp' },
-  { 'name': 'mpt' },
-  { 'name': 'odp' },
-  { 'name': 'ods' },
-  { 'name': 'odt' },
-  { 'name': 'one' },
-  { 'name': 'onepkg' },
-  { 'name': 'onetoc' },
-  { 'name': 'potx' },
-  { 'name': 'ppsx' },
-  { 'name': 'pptx' },
-  { 'name': 'pub' },
-  { 'name': 'vsdx' },
-  { 'name': 'vssx' },
-  { 'name': 'vstx' },
-  { 'name': 'xls' },
-  { 'name': 'xlsx' },
-  { 'name': 'xltx' },
-  { 'name': 'xsn' }
+const fileIcons: { name: string }[] = [
+  { name: 'accdb' },
+  { name: 'csv' },
+  { name: 'docx' },
+  { name: 'dotx' },
+  { name: 'mpp' },
+  { name: 'mpt' },
+  { name: 'odp' },
+  { name: 'ods' },
+  { name: 'odt' },
+  { name: 'one' },
+  { name: 'onepkg' },
+  { name: 'onetoc' },
+  { name: 'potx' },
+  { name: 'ppsx' },
+  { name: 'pptx' },
+  { name: 'pub' },
+  { name: 'vsdx' },
+  { name: 'vssx' },
+  { name: 'vstx' },
+  { name: 'xls' },
+  { name: 'xlsx' },
+  { name: 'xltx' },
+  { name: 'xsn' }
 ];
 
 /**
@@ -48,12 +48,9 @@ interface IExampleFileProps {
 /* tslint:disable:jsx-ban-props */
 const ExampleFile = (props: IExampleFileProps) => {
   return (
-    <div style={ { display: 'flex', alignItems: 'center', height: 24 } }>
-      <img
-        src={ props.iconSource }
-        style={ { maxWidth: 16, padding: 6 } }
-      />
-      { props.filename }
+    <div style={{ display: 'flex', alignItems: 'center', height: 24 }}>
+      <img src={props.iconSource} style={{ maxWidth: 16, padding: 6 }} />
+      {props.filename}
     </div>
   );
 };
@@ -69,11 +66,8 @@ class CollapsibleSectionFolder extends React.Component<{}, {}> {
     for (let i = 0; i < randomFileCount; i++) {
       const randomFile = Math.floor(Math.random() * _fileItems.length);
       files.push(
-        <ExampleFile
-          key={ i }
-          iconSource={ _fileItems[randomFile].iconName }
-          filename={ _fileItems[randomFile].name }
-        />);
+        <ExampleFile key={i} iconSource={_fileItems[randomFile].iconName} filename={_fileItems[randomFile].name} />
+      );
     }
 
     // Generate random folders
@@ -83,23 +77,20 @@ class CollapsibleSectionFolder extends React.Component<{}, {}> {
       const randomFolder = Math.floor(Math.random() * _folderItems.length);
       folders.push(
         <CollapsibleSection
-          key={ i }
-          collapsed={ true }
-          titleAs={ CollapsibleSectionTitle }
-          titleProps={ {
-            text: _folderItems[randomFolder],
-          } }
+          key={i}
+          defaultCollapsed={true}
+          titleAs={CollapsibleSectionTitle}
+          titleProps={{
+            text: _folderItems[randomFolder]
+          }}
         >
           <CollapsibleSectionFolder />
-          { files }
+          {files}
         </CollapsibleSection>
       );
     }
 
-    return (
-      <div>
-        { folders }
-      </div >);
+    return <div>{folders}</div>;
   }
 }
 
@@ -116,7 +107,8 @@ export class CollapsibleSectionRecursiveExample extends React.Component<{}, {}> 
 
         const randomFileType = this._randomFileIcon();
         let randomFileName: string = lorem(2).replace(/\W/g, '');
-        randomFileName = randomFileName.charAt(0).toUpperCase() + randomFileName.slice(1).concat(`.${randomFileType.docType}`);
+        randomFileName =
+          randomFileName.charAt(0).toUpperCase() + randomFileName.slice(1).concat(`.${randomFileType.docType}`);
         _fileItems.push({ name: randomFileName, iconName: randomFileType.url });
       }
     }
@@ -132,7 +124,7 @@ export class CollapsibleSectionRecursiveExample extends React.Component<{}, {}> 
     );
   }
 
-  private _randomFileIcon(): { docType: string; url: string; } {
+  private _randomFileIcon(): { docType: string; url: string } {
     const docType: string = fileIcons[Math.floor(Math.random() * fileIcons.length) + 0].name;
     return {
       docType,

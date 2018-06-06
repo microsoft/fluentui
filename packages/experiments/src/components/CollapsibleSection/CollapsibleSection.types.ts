@@ -9,12 +9,28 @@ import { ICollapsibleSectionTitleProps } from './CollapsibleSectionTitle.types';
 export interface ICollapsibleSectionProps extends React.Props<{}> {
   // TODO: how to incorporate className into createComponent?
   className?: string;
+
+  /**
+   * Default and initial collapsed state if collapsed prop is not provided.
+   * @default true
+   */
   defaultCollapsed?: boolean;
-  collapsed?: boolean;
+
+  /**
+   * Component to use for CollapsibleSection title.
+   */
+  // TODO: make optional and use CollapsibleSectionTitle by default
   titleAs: React.ReactType<ICollapsibleSectionTitleProps>;
+
+  /**
+   * Optional title props to pass onto title component.
+   */
   titleProps?: ICollapsibleSectionTitleProps;
 }
 
 export interface ICollapsibleSectionStyles {
-  child: IStyle;
+  /**
+   * Styling for the body content.
+   */
+  body: IStyle;
 }
