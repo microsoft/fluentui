@@ -70,7 +70,7 @@ export const styles = (
             fontSize: fonts.medium.fontSize,
             color: palette.white,
             backgroundColor: palette.themePrimary,
-            marginLeft: spacingAroundItemButton * 2 + 'px',
+            marginRight: spacingAroundItemButton * 2 + 'px',
             selectors: {
               '&:hover': {
                 backgroundColor: palette.themeDark,
