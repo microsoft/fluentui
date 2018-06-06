@@ -34,7 +34,7 @@ export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
   name?: string;
   value?: string | string[] | number;
 
-  // Any other props supported by HTMLElements
+  // Any other props for HTMLElements or a React component passed to as=
   [index: string]: any;
 }
 
