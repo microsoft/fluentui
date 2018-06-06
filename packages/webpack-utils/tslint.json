@@ -1,7 +1,8 @@
 {
-  "extends": ["office-ui-fabric-react-tslint"],
+  "extends": [
+    "office-ui-fabric-react-tslint"
+  ],
   "rules": {
-    "deprecation": false,
-    "prefer-const": false
+    "deprecation": false
   }
 }
