@@ -8,7 +8,7 @@ import { TooltipInteractiveExample } from './examples/Tooltip.Interactive.Exampl
 import { TooltipOverflowExample } from './examples/Tooltip.Overflow.Example';
 import { TooltipStatus } from './Tooltip.checklist';
 
-import './TooltipPage.scss';
+import './TooltipPage.global.scss';
 
 const TooltipBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Basic.Example.tsx') as string;
 const TooltipCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Custom.Example.tsx') as string;

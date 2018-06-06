@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './ImagePage.scss';
+import './ImagePage.global.scss';
 import { DemoPage } from '../../demo/components/DemoPage';
 import { IDemoPageProps } from '../../demo/components/DemoPage.types';
 import { ImageDefaultExample } from './examples/Image.Default.Example';

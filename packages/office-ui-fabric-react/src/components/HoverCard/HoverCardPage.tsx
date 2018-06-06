@@ -6,7 +6,7 @@ import { IDemoPageProps } from '../../demo/components/DemoPage.types';
 import { HoverCardTargetExample } from './examples/HoverCard.Target.Example';
 import { HoverCardStatus } from './HoverCard.checklist';
 
-import './HoverCardPage.scss';
+import './HoverCardPage.global.scss';
 
 const HoverCardBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/HoverCard/examples/HoverCard.Basic.Example.tsx') as string;
 const HoverCardTargetExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/HoverCard/examples/HoverCard.Target.Example.tsx') as string;
