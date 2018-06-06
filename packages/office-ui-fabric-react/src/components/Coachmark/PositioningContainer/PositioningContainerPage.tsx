@@ -1,49 +1,32 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 
 import { PositioningContainerBasicExample } from './examples/PositioningContainer.Basic.Example';
+import { DemoPage } from '../../../demo/components/DemoPage';
+import { IDemoPageProps } from '../../../demo/components/DemoPage.types';
 const CoachmarkBasicExampleCode = require('!raw-loader!experiments/src/components/PositioningContainer/examples/PositioningContainer.Basic.Example.tsx') as string;
 
-export class PositioningContainerPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render(): JSX.Element {
-    return (
-      <ComponentPage
-        title="Positioning Container"
-        componentName="PositioningContainer"
-        exampleCards={
-          <div>
-            <ExampleCard title="Positioning Container Basic" isOptIn={true} code={CoachmarkBasicExampleCode}>
-              <PositioningContainerBasicExample />
-            </ExampleCard>
-          </div>
-        }
-        propertiesTables={
-          <PropertiesTableSet
-            sources={[
-              require<
-                string
-              >('!raw-loader!experiments/src/components/PositioningContainer/PositioningContainer.types.ts')
-            ]}
-          />
-        }
-        overview={<div />}
-        bestPractices={<div />}
-        dos={
-          <div>
-            <ul>
-              <li>@TODO Add dos</li>
-            </ul>
-          </div>
-        }
-        donts={
-          <div>
-            <ul>
-              <li>@TODO Add dos</li>
-            </ul>
-          </div>
-        }
-        isHeaderVisible={this.props.isHeaderVisible}
-      />
-    );
-  }
-}
+export const PositioningContainerPageProps: IDemoPageProps = {
+  title: 'PositioningContainer',
+  componentName: 'PositioningContainer',
+  componentUrl:
+    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/PositioningContainer',
+  examples: [
+    {
+      title: 'Positioning Container Basic',
+      code: CoachmarkBasicExampleCode,
+      view: <PositioningContainerBasicExample />
+    }
+  ],
+  propertiesTablesSources: [
+    require<string>('!raw-loader!experiments/src/components/PositioningContainer/PositioningContainer.types.ts')
+  ],
+  overview: '',
+  bestPractices: '',
+  dos: '',
+  donts: '',
+  isHeaderVisible: true
+};
+
+export const PositioningContainerPage = (props: { isHeaderVisible: boolean }) => (
+  <DemoPage {...{ ...PositioningContainerPageProps, ...props }} />
+);
