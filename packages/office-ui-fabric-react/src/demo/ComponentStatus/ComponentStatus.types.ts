@@ -1,5 +1,4 @@
 export interface IComponentStatusProps {
-
   /**
    * Components should be fully usable with the keyboard. For this badge to pass, all of the functionalities of
    * a component needs to be accessible via the keyboard.

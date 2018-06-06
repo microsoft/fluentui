@@ -13,7 +13,7 @@ import WindowWidthUtility from './utilities/WindowWidthUtility';
 import './styles/styles.scss';
 import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
 const corePackageData = require('../node_modules/office-ui-fabric-core/package.json');
-const corePackageVersion: string = corePackageData && corePackageData.version || '9.2.0';
+const corePackageVersion: string = (corePackageData && corePackageData.version) || '9.2.0';
 
 initializeIcons();
 
@@ -48,7 +48,7 @@ function _getBreakpoint(): void {
 
 function _setScrollDistance(): number {
   switch (currentBreakpoint) {
-    case ('LG'):
+    case 'LG':
       return 240;
     default:
       return 200;
@@ -61,7 +61,7 @@ function _hasAnchorLink(path: string): boolean {
 
 function _extractAnchorLink(path): string {
   let split = path.split('#');
-  let cleanedSplit = split.filter((value) => {
+  let cleanedSplit = split.filter(value => {
     if (value === '') {
       return false;
     } else {
@@ -72,20 +72,18 @@ function _extractAnchorLink(path): string {
 }
 
 function _onLoad(): void {
-
   // Load the app into this element.
   rootElement = rootElement || document.getElementById('main');
   _getBreakpoint();
 
   ReactDOM.render(
     <Fabric>
-      <Router onNewRouteLoaded={ _routerDidMount }>
-        <Route component={ App }>
-          { _getAppRoutes() }
-        </Route>
+      <Router onNewRouteLoaded={_routerDidMount}>
+        <Route component={App}>{_getAppRoutes()}</Route>
       </Router>
     </Fabric>,
-    rootElement);
+    rootElement
+  );
 }
 
 function _createRoutes(pages: {}[]): {}[] {
@@ -93,14 +91,7 @@ function _createRoutes(pages: {}[]): {}[] {
 
   // tslint:disable-next-line:no-any
   pages.forEach((page: any, pageIndex: number) => {
-    routes.push(
-      <Route
-        key={ pageIndex }
-        path={ page.url }
-        component={ page.component }
-        getComponent={ page.getComponent }
-      />
-    );
+    routes.push(<Route key={pageIndex} path={page.url} component={page.component} getComponent={page.getComponent} />);
     if (page.pages) {
       routes = routes.concat(_createRoutes(page.pages));
     }
@@ -113,9 +104,7 @@ function _getAppRoutes() {
   routes = _createRoutes(AppState.pages);
 
   // Add the default route
-  routes.push(
-    <Route key='home' component={ HomePage } />
-  );
+  routes.push(<Route key="home" component={HomePage} />);
 
   return routes;
 }
@@ -146,4 +135,8 @@ function addCSSToHeader(fileName: string): void {
   headEl.appendChild(linkEl);
 }
 
-addCSSToHeader('https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/' + corePackageVersion + '/css/fabric.min.css');
+addCSSToHeader(
+  'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/' +
+    corePackageVersion +
+    '/css/fabric.min.css'
+);

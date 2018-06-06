@@ -15,9 +15,12 @@ import { IFabricProps, IFabricStyleProps, IFabricStyles } from './Fabric.types';
 const getClassNames = classNamesFunction<IFabricStyleProps, IFabricStyles>();
 
 @customizable('Fabric', ['theme'])
-export class Fabric extends BaseComponent<IFabricProps, {
-  isFocusVisible: boolean;
-}> {
+export class Fabric extends BaseComponent<
+  IFabricProps,
+  {
+    isFocusVisible: boolean;
+  }
+> {
   private _rootElement = createRef<HTMLDivElement>();
 
   constructor(props: IFabricProps) {
@@ -26,20 +29,13 @@ export class Fabric extends BaseComponent<IFabricProps, {
   }
 
   public render() {
-    const classNames = getClassNames(getStyles,
-      {
-        ...this.props as IFabricStyleProps,
-        ...this.state
-      });
+    const classNames = getClassNames(getStyles, {
+      ...(this.props as IFabricStyleProps),
+      ...this.state
+    });
     const divProps = getNativeProps(this.props, divProperties);
 
-    return (
-      <div
-        { ...divProps }
-        className={ classNames.root }
-        ref={ this._rootElement }
-      />
-    );
+    return <div {...divProps} className={classNames.root} ref={this._rootElement} />;
   }
 
   public componentDidMount(): void {
@@ -53,11 +49,11 @@ export class Fabric extends BaseComponent<IFabricProps, {
 
   private _onMouseDown = (ev: MouseEvent): void => {
     this.setState({ isFocusVisible: false });
-  }
+  };
 
   private _onKeyDown = (ev: KeyboardEvent): void => {
     if (isDirectionalKeyCode(ev.which)) {
       this.setState({ isFocusVisible: true });
     }
-  }
+  };
 }

@@ -10,14 +10,9 @@ import {
   INavStyles,
   NavGroupType
 } from './Nav.types';
-import {
-  getStyles
-} from './Nav.styles';
+import { getStyles } from './Nav.styles';
 import { NavBase } from './NavBase';
-import {
-  styled,
-  classNamesFunction
-} from 'office-ui-fabric-react/lib/Utilities';
+import { styled, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { NavLink } from './NavLink';
 
 const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();
@@ -37,13 +32,15 @@ class NavComponent extends NavBase {
       return null;
     }
 
+    // reset the flag
+    // on render link, find if there is atleast one hidden link to display "Show more" link
+    this._hasAtleastOneHiddenLink = false;
+
     return (
-      <nav role='navigation'>
-        {
-          this.props.groups.map((group: ICustomNavLinkGroup, groupIndex: number) => {
-            return this._renderGroup(group, groupIndex);
-          })
-        }
+      <nav role="navigation">
+        {this.props.groups.map((group: ICustomNavLinkGroup, groupIndex: number) => {
+          return this._renderGroup(group, groupIndex);
+        })}
       </nav>
     );
   }
@@ -62,8 +59,7 @@ class NavComponent extends NavBase {
       link.disableAutoExpand = true;
 
       nextState.isLinkExpandStateChanged = true;
-    }
-    else if (link.onClick) {
+    } else if (link.onClick) {
       // if there is a onClick defined, call it
       link.onClick(ev, link);
     }
@@ -92,9 +88,8 @@ class NavComponent extends NavBase {
 
       ariaProps = {
         ariaExpanded: !!link.isExpanded
-      }
-    }
-    else if (link.url && link.target && link.target === '_blank') {
+      };
+    } else if (link.url && link.target && link.target === '_blank') {
       // for external links, show an icon
       rightIconName = 'OpenInNewWindow';
     }
@@ -105,36 +100,30 @@ class NavComponent extends NavBase {
     const isChildLinkSelected = this.isChildLinkSelected(link);
     const hasChildren = !!link.links && link.links.length > 0;
     const isSelected = (isLinkSelected && !hasChildren) || (isChildLinkSelected && !link.isExpanded);
-    const {
-      styles,
-      showMore,
-      onShowMoreLinkClicked,
-      dataHint
-    } = this.props;
+    const { styles, showMore, onShowMoreLinkClicked, dataHint } = this.props;
     const classNames = getClassNames(styles!, { isSelected, nestingLevel });
     const linkText = this.getLinkText(link, showMore);
-    const onClickHandler = link.isShowMoreLink && onShowMoreLinkClicked ? onShowMoreLinkClicked : this._onLinkClicked.bind(this, link);
+    const onClickHandler =
+      link.isShowMoreLink && onShowMoreLinkClicked ? onShowMoreLinkClicked : this._onLinkClicked.bind(this, link);
 
     return (
       <NavLink
-        id={ link.key }
-        content={ linkText }
-        href={ link.url }
-        target={ link.target }
-        onClick={ onClickHandler }
-        dataHint={ dataHint }
-        dataValue={ link.key }
-        ariaLabel={ linkText }
-        {
-        ...ariaProps
-        }
+        id={link.key}
+        content={linkText}
+        href={link.url}
+        target={link.target}
+        onClick={onClickHandler}
+        dataHint={dataHint}
+        dataValue={link.key}
+        ariaLabel={linkText}
+        {...ariaProps}
         role="menu"
-        rootClassName={ classNames.navItemRoot }
-        leftIconName={ leftIconName }
-        rightIconName={ rightIconName }
-        textClassName={ classNames.navItemNameColumn }
-        iconClassName={ classNames.navItemIconColumn }>
-      </NavLink>
+        rootClassName={classNames.navItemRoot}
+        leftIconName={leftIconName}
+        rightIconName={rightIconName}
+        textClassName={classNames.navItemNameColumn}
+        iconClassName={classNames.navItemIconColumn}
+      />
     );
   }
 
@@ -153,25 +142,16 @@ class NavComponent extends NavBase {
     link.disableAutoExpand = false;
 
     return (
-      <li
-        role='listitem'
-        key={ link.key || linkIndex }
-        title={ linkText }>
-        {
-          this._renderCompositeLink(link, linkIndex, nestingLevel)
-        }
-        {
-          // show child links
-          // 1. only for the first level and
-          // 2. if the link is expanded
-          nestingLevel == 0 && link.isExpanded ?
-            <div className={ AnimationClassNames.slideDownIn20 }>
-              {
-                this._renderLinks(link.links as INavLink[], ++nestingLevel)
-              }
-            </div>
-            : null
-        }
+      <li role="listitem" key={link.key || linkIndex} title={linkText}>
+        {this._renderCompositeLink(link, linkIndex, nestingLevel)}
+        {// show child links
+        // 1. only for the first level and
+        // 2. if the link is expanded
+        nestingLevel == 0 && link.isExpanded ? (
+          <div className={AnimationClassNames.slideDownIn20}>
+            {this._renderLinks(link.links as INavLink[], ++nestingLevel)}
+          </div>
+        ) : null}
       </li>
     );
   }
@@ -181,24 +161,24 @@ class NavComponent extends NavBase {
       return null;
     }
 
-    const {
-      enableCustomization,
-      showMore
-    } = this.props;
+    const { enableCustomization, showMore } = this.props;
 
     return (
-      <ul role='list'>
-        {
-          links.map((link: INavLink, linkIndex: number) => {
-            if (enableCustomization && link.isHidden && !showMore) {
-              // "Show more" overrides isHidden property
-              return null;
-            }
-            else {
-              return this._renderLink(link, linkIndex, nestingLevel);
-            }
-          })
-        }
+      <ul role="list">
+        {links.map((link: INavLink, linkIndex: number) => {
+          if (enableCustomization && link.isHidden && !showMore) {
+            // atleast one link is hidden
+            this._hasAtleastOneHiddenLink = true;
+
+            // "Show more" overrides isHidden property
+            return null;
+          } else if (link.isShowMoreLink && !this._hasAtleastOneHiddenLink && !showMore) {
+            // there is no hidden link, hide "Show more" link
+            return null;
+          } else {
+            return this._renderLink(link, linkIndex, nestingLevel);
+          }
+        })}
       </ul>
     );
   }
@@ -208,10 +188,7 @@ class NavComponent extends NavBase {
       return null;
     }
 
-    const {
-      styles,
-      enableCustomization
-    } = this.props;
+    const { styles, enableCustomization } = this.props;
 
     // skip customization group if customization is not enabled
     if (!enableCustomization && group.groupType === NavGroupType.CustomizationGroup) {
@@ -220,33 +197,28 @@ class NavComponent extends NavBase {
 
     const classNames = getClassNames(styles!, {});
 
+    let isGroupHeaderVisible = false;
+
+    // first group header is hidden by default, display group header for other groups only if there are visible links
+    if (groupIndex > 0) {
+      isGroupHeaderVisible = this.hasAtleastOneVisibleLink(group.links);
+    }
+
     return (
-      <div key={ groupIndex }>
-        {
-          groupIndex > 0 ?
-            <div className={ classNames.navGroupSeparatorRoot }>
-              <div className={ classNames.navGroupSeparatorHrLine }>
-                {
-                  group.name ?
-                    <span className={ classNames.navGroupSeparatorGroupName }>
-                      {
-                        group.name
-                      }
-                    </span>
-                    : null
-                }
-              </div>
-            </div> : null
-        }
-        { this._renderLinks(group.links, 0 /* nestingLevel */) }
+      <div key={groupIndex}>
+        {isGroupHeaderVisible ? (
+          <div className={classNames.navGroupSeparatorRoot}>
+            <div className={classNames.navGroupSeparatorHrLine}>
+              {group.name ? <span className={classNames.navGroupSeparatorGroupName}>{group.name}</span> : null}
+            </div>
+          </div>
+        ) : null}
+        {this._renderLinks(group.links, 0 /* nestingLevel */)}
       </div>
     );
   }
 }
 
-export const Nav = styled<INavProps, INavStyleProps, INavStyles>(
-  NavComponent,
-  getStyles
-);
+export const Nav = styled<INavProps, INavStyleProps, INavStyles>(NavComponent, getStyles);
 
 /* tslint:enable */

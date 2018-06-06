@@ -15,10 +15,11 @@
   "scripts": {
     "build": "node ../../scripts/build.js",
     "clean": "node ../../scripts/clean.js",
+    "code-style": "node ../../scripts/code-style.js",
     "start": "node ../../scripts/start.js"
   },
   "devDependencies": {
-    "@types/react": "16.3.13",
+    "@types/react": "16.3.16",
     "@types/react-dom": "16.0.5",
     "@types/webpack-env": "1.13.0",
     "@types/prop-types": "15.5.2",
@@ -27,7 +28,7 @@
   "dependencies": {
     "react": ">=16.3.2-0 <17.0.0",
     "react-dom": ">=16.3.2-0 <17.0.0",
-    "office-ui-fabric-react": ">=6.1.2 <7.0.0",
+    "office-ui-fabric-react": ">=6.5.0 <7.0.0",
     "tslib": "^1.7.1"
   }
 }
