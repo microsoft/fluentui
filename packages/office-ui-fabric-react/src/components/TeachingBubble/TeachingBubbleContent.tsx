@@ -27,7 +27,7 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
   }
 
   public render(): JSX.Element {
-    const { illustrationImage, primaryButtonProps, secondaryButtonProps, headline, hasCondensedHeadline, hasCloseIcon, onDismiss, closeButtonAriaLabel, hasSmallHeadline } = this.props;
+    const { illustrationImage, primaryButtonProps, secondaryButtonProps, headline, hasCondensedHeadline, hasCloseIcon, onDismiss, closeButtonAriaLabel, hasSmallHeadline, children } = this.props;
 
     let imageContent;
     let headerContent;
@@ -62,11 +62,11 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
       );
     }
 
-    if (this.props.children) {
+    if (children) {
       bodyContent = (
         <div className={ css('ms-TeachingBubble-body', styles.body) }>
           <p className={ css('ms-TeachingBubble-subText', styles.subText) }>
-            { this.props.children }
+            { children }
           </p>
         </div>
       );
@@ -106,12 +106,12 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
     return (
       <div className={ css('ms-TeachingBubble-content', styles.root) }>
         { imageContent }
-        { closeButton }
         <div className={ css('ms-TeachingBubble-bodycontent', styles.bodyContent) }>
           { headerContent }
           { bodyContent }
           { footerContent }
         </div>
+        { closeButton }
       </div>
     );
   }

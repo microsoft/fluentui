@@ -60,15 +60,13 @@
   max-width: 364px;
   border: 0;
   box-shadow: none !important;
+  padding: 20px;
+  width: calc(100% + 1px);
 
   animation-name: (bounceAnimation, opacityFadeIn);
   animation-duration: 2000ms;
   animation-timing-function: linear;
   animation-fill-mode: both;
-}
-
-.bodyContent {
-  padding: 20px;
 }
 
 .headerIsLarge:not(:last-child) {
