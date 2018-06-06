@@ -1,14 +1,7 @@
 import * as React from 'react';
 import { css, classNamesFunction } from '../../../Utilities';
-import {
-  getStyles,
-  IButtonBasicExampleStyleProps,
-  IButtonBasicExampleStyles
-} from './Button.Basic.Example.styles';
-import {
-  IButtonProps,
-  DefaultButton
-} from 'office-ui-fabric-react/lib/Button';
+import { getStyles, IButtonBasicExampleStyleProps, IButtonBasicExampleStyles } from './Button.Basic.Example.styles';
+import { IButtonProps, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
 export class ButtonAnchorExample extends React.Component<IButtonProps> {
   public render(): JSX.Element {
@@ -18,18 +11,18 @@ export class ButtonAnchorExample extends React.Component<IButtonProps> {
     const classNames = getClassNames(getStyles);
 
     return (
-      <div className={ css(classNames.example) }>
+      <div className={css(classNames.example)}>
         <DefaultButton
-          data-automation-id='test'
-          disabled={ disabled }
-          checked={ checked }
-          href='http://bing.com'
-          target='_blank'
-          title='let us bing!'
+          data-automation-id="test"
+          disabled={disabled}
+          checked={checked}
+          href="http://bing.com"
+          target="_blank"
+          title="let us bing!"
         >
           Bing
         </DefaultButton>
-      </div >
+      </div>
     );
   }
 }

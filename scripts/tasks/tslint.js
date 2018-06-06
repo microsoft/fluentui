@@ -1,5 +1,5 @@
 module.exports = function (options) {
-  const execSync = require('../exec-sync');
+  const exec = require('../exec');
   const path = require('path');
   const fs = require('fs');
   const resolve = require('resolve');
@@ -9,5 +9,5 @@ module.exports = function (options) {
   const sourcePath = path.resolve(process.cwd(), 'src/**/*.ts*');
   const tslintPath = 'node ' + resolve.sync('tslint/lib/tslint-cli');
 
-  execSync(`${tslintPath} --project ${projectPath} -t stylish -r ${rulesPath}`);
+  return exec(`${tslintPath} --project ${projectPath} -t stylish -r ${rulesPath}`, undefined, undefined, process);
 };

@@ -2,14 +2,9 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 
-import {
-  DetailsList
-} from './DetailsList';
+import { DetailsList } from './DetailsList';
 
-import {
-  IDetailsList,
-  IColumn
-} from './DetailsList.types';
+import { IDetailsList, IColumn } from './DetailsList.types';
 
 // Populate mock items for testing
 function mockItems(count: number): any {
@@ -32,12 +27,12 @@ describe('DetailsList', () => {
 
     const component = renderer.create(
       <DetailsList
-        items={ mockItems(5) }
+        items={mockItems(5)}
         // tslint:disable-next-line:jsx-no-lambda
-        onRenderRow={ () => null }
-        skipViewportMeasures={ true }
+        onRenderRow={() => null}
+        skipViewportMeasures={true}
         // tslint:disable-next-line:jsx-no-lambda
-        onShouldVirtualize={ () => false }
+        onShouldVirtualize={() => false}
       />
     );
     const tree = component.toJSON();
@@ -50,20 +45,19 @@ describe('DetailsList', () => {
     let component: any;
     mount(
       <DetailsList
-        items={ mockItems(5) }
+        items={mockItems(5)}
         // tslint:disable-next-line:jsx-no-lambda
-        componentRef={ ref => component = ref }
-        skipViewportMeasures={ true }
+        componentRef={ref => (component = ref)}
+        skipViewportMeasures={true}
         // tslint:disable-next-line:jsx-no-lambda
-        onShouldVirtualize={ () => false }
-      />);
+        onShouldVirtualize={() => false}
+      />
+    );
 
     expect(component).toBeDefined();
     (component as IDetailsList).focusIndex(2);
     setTimeout(() => {
-      expect(
-        document.activeElement.querySelector('[data-automationid=DetailsRowCell]')!.textContent
-      ).toEqual('2');
+      expect(document.activeElement.querySelector('[data-automationid=DetailsRowCell]')!.textContent).toEqual('2');
       expect(document.activeElement.className.split(' ')).toContain('ms-DetailsRow');
     }, 0);
     jest.runOnlyPendingTimers();
@@ -71,13 +65,13 @@ describe('DetailsList', () => {
 
   it('focuses into row element', () => {
     const onRenderColumn = (item: any, index: number, column: IColumn) => {
-      let value = (item && column && column.fieldName) ? item[column.fieldName] : '';
+      let value = item && column && column.fieldName ? item[column.fieldName] : '';
       if (value === null || value === undefined) {
         value = '';
       }
       return (
-        <div className={ 'test-column' } data-is-focusable={ true } >
-          { value }
+        <div className={'test-column'} data-is-focusable={true}>
+          {value}
         </div>
       );
     };
@@ -87,21 +81,20 @@ describe('DetailsList', () => {
     let component: any;
     mount(
       <DetailsList
-        items={ mockItems(5) }
+        items={mockItems(5)}
         // tslint:disable-next-line:jsx-no-lambda
-        componentRef={ ref => component = ref }
-        skipViewportMeasures={ true }
+        componentRef={ref => (component = ref)}
+        skipViewportMeasures={true}
         // tslint:disable-next-line:jsx-no-lambda
-        onShouldVirtualize={ () => false }
-        onRenderItemColumn={ onRenderColumn }
-      />);
+        onShouldVirtualize={() => false}
+        onRenderItemColumn={onRenderColumn}
+      />
+    );
 
     expect(component).toBeDefined();
     (component as IDetailsList).focusIndex(3);
     setTimeout(() => {
-      expect(
-        document.activeElement.querySelector('[data-automationid=DetailsRowCell]')!.textContent
-      ).toEqual('3');
+      expect(document.activeElement.querySelector('[data-automationid=DetailsRowCell]')!.textContent).toEqual('3');
       expect(document.activeElement.className.split(' ')).toContain('ms-DetailsRow');
     }, 0);
     jest.runOnlyPendingTimers();
@@ -129,15 +122,16 @@ describe('DetailsList', () => {
     let component: any;
     const detailsList = mount(
       <DetailsList
-        items={ mockItems(5) }
-        setKey={ 'key1' }
-        initialFocusedIndex={ 0 }
+        items={mockItems(5)}
+        setKey={'key1'}
+        initialFocusedIndex={0}
         // tslint:disable-next-line:jsx-no-lambda
-        componentRef={ ref => component = ref }
-        skipViewportMeasures={ true }
+        componentRef={ref => (component = ref)}
+        skipViewportMeasures={true}
         // tslint:disable-next-line:jsx-no-lambda
-        onShouldVirtualize={ () => false }
-      />);
+        onShouldVirtualize={() => false}
+      />
+    );
 
     expect(component).toBeDefined();
     component.setState({ focusedItemIndex: 3 });
@@ -154,9 +148,7 @@ describe('DetailsList', () => {
     // verify that focusedItemIndex is reset to 0 and 0th row is focused
     setTimeout(() => {
       expect(component.state.focusedItemIndex).toEqual(0);
-      expect(
-        document.activeElement.querySelector('[data-automationid=DetailsRowCell]')!.textContent
-      ).toEqual('0');
+      expect(document.activeElement.querySelector('[data-automationid=DetailsRowCell]')!.textContent).toEqual('0');
       expect(document.activeElement.className.split(' ')).toContain('ms-DetailsRow');
     }, 0);
     jest.runOnlyPendingTimers();

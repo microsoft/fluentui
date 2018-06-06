@@ -2,9 +2,7 @@ import * as React from 'react';
 import { IStyle, IStyleSet, ITheme } from '../../../Styling';
 import { IStyleFunctionOrObject } from '../../../Utilities';
 
-export interface IShimmerCircle {
-
-}
+export interface IShimmerCircle {}
 
 /**
  * ShimmerCircle component props.
@@ -28,8 +26,8 @@ export interface IShimmerCircleProps extends React.AllHTMLAttributes<HTMLElement
   borderStyle?: IStyleSet;
 
   /**
-  * Theme provided by High-Order Component.
-  */
+   * Theme provided by High-Order Component.
+   */
   theme?: ITheme;
 
   /**

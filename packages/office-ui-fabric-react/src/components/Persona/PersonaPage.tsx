@@ -1,18 +1,12 @@
 import * as React from 'react';
-import {
-  ExampleCard,
-  ComponentPage,
-  IComponentDemoPageProps,
-  PageMarkdown,
-  PropertiesTableSet
-} from '@uifabric/example-app-base';
 import { PersonaInitialsExample } from './examples/Persona.Initials.Example';
+import { DemoPage } from '../../demo/components/DemoPage';
+import { IDemoPageProps } from '../../demo/components/DemoPage.types';
 import { PersonaBasicExample } from './examples/Persona.Basic.Example';
 import { PersonaAlternateExample } from './examples/Persona.Alternate.Example';
 import { PersonaCustomRenderExample } from './examples/Persona.CustomRender.Example';
 import { PersonaCustomCoinRenderExample } from './examples/Persona.CustomCoinRender.Example';
 import { UnknownPersonaExample } from './examples/Persona.UnknownPersona.Example';
-import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { PersonaStatus } from './Persona.checklist';
 
 const PersonaInitialsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Persona/examples/Persona.Initials.Example.tsx') as string;
@@ -22,68 +16,53 @@ const PersonaCustomRenderExampleCode = require('!raw-loader!office-ui-fabric-rea
 const PersonaCustomCoinRenderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Persona/examples/Persona.CustomCoinRender.Example.tsx') as string;
 const UnknownPersonaExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Persona/examples/Persona.UnknownPersona.Example.tsx') as string;
 
-export class PersonaPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render(): JSX.Element {
-    return (
-      <ComponentPage
-        title='Persona'
-        componentName='PersonaExample'
-        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Persona'
-        exampleCards={
-          <div>
-            <ExampleCard title='Persona in various sizes' code={ PersonaBasicExampleCode }>
-              <PersonaBasicExample />
-            </ExampleCard>
-            <ExampleCard title='Alternative small personas' code={ PersonaAlternateExampleCode }>
-              <PersonaAlternateExample />
-            </ExampleCard>
-            <ExampleCard title='Persona with initials' code={ PersonaInitialsExampleCode }>
-              <PersonaInitialsExample />
-            </ExampleCard>
-            <ExampleCard title='Rendering custom persona text' code={ PersonaCustomRenderExampleCode }>
-              <PersonaCustomRenderExample />
-            </ExampleCard>
-            <ExampleCard title='Rendering custom coin' code={ PersonaCustomCoinRenderExampleCode }>
-              <PersonaCustomCoinRenderExample />
-            </ExampleCard>
-            <ExampleCard title='Rendering unknown persona coin' code={ UnknownPersonaExampleCode }>
-              <UnknownPersonaExample />
-            </ExampleCard>
-          </div>
-        }
-        allowNativeProps={ true }
-        propertiesTables={
-          <PropertiesTableSet
-            sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/Persona.types.ts')
-            ] }
-          />
-        }
-        overview={
-          <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/docs/PersonaOverview.md') }
-          </PageMarkdown>
-        }
-        bestPractices={
-          <div />
-        }
-        dos={
-          <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/docs/PersonaDos.md') }
-          </PageMarkdown>
-        }
-        donts={
-          <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/docs/PersonaDonts.md') }
-          </PageMarkdown>
-        }
-        isHeaderVisible={ this.props.isHeaderVisible }
-        componentStatus={
-          <ComponentStatus
-            { ...PersonaStatus }
-          />
-        }
-      />
-    );
-  }
-}
+export const PersonaPageProps: IDemoPageProps = {
+  title: 'Persona',
+  componentName: 'Persona',
+  componentUrl:
+    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Persona',
+  componentStatus: PersonaStatus,
+  examples: [
+    {
+      title: 'Persona in various sizes',
+      code: PersonaBasicExampleCode,
+      view: <PersonaBasicExample />
+    },
+    {
+      title: 'Alternative small personas',
+      code: PersonaAlternateExampleCode,
+      view: <PersonaAlternateExample />
+    },
+    {
+      title: 'Persona with initials',
+      code: PersonaInitialsExampleCode,
+      view: <PersonaInitialsExample />
+    },
+    {
+      title: 'Rendering custom persona text',
+      code: PersonaCustomRenderExampleCode,
+      view: <PersonaCustomRenderExample />
+    },
+    {
+      title: 'Rendering custom coin',
+      code: PersonaCustomCoinRenderExampleCode,
+      view: <PersonaCustomCoinRenderExample />
+    },
+    {
+      title: 'Rendering unknown persona coin',
+      code: UnknownPersonaExampleCode,
+      view: <UnknownPersonaExample />
+    }
+  ],
+  propertiesTablesSources: [
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/Persona.types.ts')
+  ],
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/docs/PersonaOverview.md'),
+  bestPractices: '',
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/docs/PersonaDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/docs/PersonaDonts.md'),
+  isHeaderVisible: true,
+  allowNativeProps: true
+};
+
+export const PersonaPage = (props: { isHeaderVisible: boolean }) => <DemoPage {...{ ...PersonaPageProps, ...props }} />;
