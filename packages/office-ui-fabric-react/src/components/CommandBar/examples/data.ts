@@ -1,7 +1,7 @@
 export const items = [
   {
     key: 'newItem',
-    text: 'New',
+    name: 'New',
     cacheKey: 'myCacheKey',
     iconProps: {
       iconName: 'Add'
@@ -12,7 +12,7 @@ export const items = [
       items: [
         {
           key: 'emailMessage',
-          text: 'Email message',
+          name: 'Email message',
           iconProps: {
             iconName: 'Mail'
           },
@@ -20,7 +20,7 @@ export const items = [
         },
         {
           key: 'calendarEvent',
-          text: 'Calendar event',
+          name: 'Calendar event',
           iconProps: {
             iconName: 'Calendar'
           }
@@ -30,7 +30,7 @@ export const items = [
   },
   {
     key: 'upload',
-    text: 'Upload',
+    name: 'Upload',
     iconProps: {
       iconName: 'Upload'
     },
@@ -39,7 +39,7 @@ export const items = [
   },
   {
     key: 'share',
-    text: 'Share',
+    name: 'Share',
     iconProps: {
       iconName: 'Share'
     },
@@ -47,7 +47,7 @@ export const items = [
   },
   {
     key: 'download',
-    text: 'Download',
+    name: 'Download',
     iconProps: {
       iconName: 'Download'
     },
@@ -58,21 +58,21 @@ export const items = [
 export const overflowItems = [
   {
     key: 'move',
-    text: 'Move to...',
+    name: 'Move to...',
     iconProps: {
       iconName: 'MoveToFolder'
     }
   },
   {
     key: 'copy',
-    text: 'Copy to...',
+    name: 'Copy to...',
     iconProps: {
       iconName: 'Copy'
     }
   },
   {
     key: 'rename',
-    text: 'Rename...',
+    name: 'Rename...',
     iconProps: {
       iconName: 'Edit'
     }
@@ -82,7 +82,7 @@ export const overflowItems = [
 export const farItems = [
   {
     key: 'sort',
-    text: 'Sort',
+    name: 'Sort',
     iconProps: {
       iconName: 'SortLines'
     },
@@ -90,7 +90,7 @@ export const farItems = [
   },
   {
     key: 'tile',
-    text: 'Grid view',
+    name: 'Grid view',
     iconProps: {
       iconName: 'Tiles'
     },
@@ -99,7 +99,7 @@ export const farItems = [
   },
   {
     key: 'info',
-    text: 'Info',
+    name: 'Info',
     iconProps: {
       iconName: 'Info'
     },
