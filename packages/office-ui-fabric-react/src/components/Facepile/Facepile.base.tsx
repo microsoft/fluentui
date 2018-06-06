@@ -36,6 +36,7 @@ import {
 } from '../../PersonaCoin';
 
 const getClassNames = classNamesFunction<IFacepileStyleProps, IFacepileStyles>();
+
 @customizable('Facepile', ['theme'])
 export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
   public static defaultProps: IFacepileProps = {
@@ -53,19 +54,23 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
     this._ariaDescriptionId = getId();
   }
 
+  private _classNames = getClassNames(this.props.styles, {
+    theme: this.props.theme!,
+    className: this.props.className,
+  });
+
   public render(): JSX.Element {
     let { overflowButtonProps } = this.props;
     const {
       ariaDescription,
       chevronButtonProps,
       maxDisplayablePersonas,
-      className,
       personas,
       overflowPersonas,
-      showAddButton,
-      styles,
-      theme
+      showAddButton
     } = this.props;
+
+    const { _classNames } = this;
 
     const numPersonasToShow: number = Math.min(personas.length, maxDisplayablePersonas || personas.length);
 
@@ -78,20 +83,15 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
     const personasPrimary: IFacepilePersona[] = hasOverflowPersonas ? personas : personas.slice(0, numPersonasToShow);
     const personasOverflow: IFacepilePersona[] = (hasOverflowPersonas ? overflowPersonas : personas.slice(numPersonasToShow)) || [];
 
-    const classNames = getClassNames(styles, {
-      theme: theme!,
-      className,
-    });
-
     return (
-      <div className={ classNames.root } >
+      <div className={ _classNames.root } >
         { this.onRenderAriaDescription() }
-        <div className={ classNames.itemContainer } >
+        <div className={ _classNames.itemContainer } >
           { showAddButton ? this._getAddNewElement() : null }
           <FocusZone
             ariaDescribedBy={ ariaDescription && this._ariaDescriptionId }
             role='listbox'
-            className={ classNames.members }
+            className={ _classNames.members }
             direction={ FocusZoneDirection.horizontal }
           >
             { this._onRenderVisiblePersonas(personasPrimary, personasOverflow.length === 0 && personas.length === 1) }
@@ -105,19 +105,12 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
   protected onRenderAriaDescription() {
     const { ariaDescription } = this.props;
 
-    const {
-      styles,
-      theme
-    } = this.props;
-
-    const classNames = getClassNames(styles, {
-      theme: theme!,
-    });
+    const { _classNames } = this;
 
     // If ariaDescription is given, descriptionId will be assigned to ariaDescriptionSpan,
     // otherwise it will be assigned to descriptionSpan.
     return ariaDescription && (
-      <span className={ classNames.screenReaderOnly } id={ this._ariaDescriptionId }>{ ariaDescription }</span>
+      <span className={ _classNames.screenReaderOnly } id={ this._ariaDescriptionId }>{ ariaDescription }</span>
     );
   }
 
@@ -191,15 +184,13 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
   }
 
   private _getElementProps(persona: IFacepilePersona, index: number): { key: React.Key, ['data-is-focusable']: boolean } & React.HTMLAttributes<HTMLDivElement> {
-    const classNames = getClassNames(this.props.styles, {
-      theme: this.props.theme!
-    });
+    const { _classNames } = this;
 
     return {
       key: (!!persona.imageUrl ? 'i' : '') + index,
       'data-is-focusable': true,
       role: 'option',
-      className: classNames.itemButton,
+      className: _classNames.itemButton,
       title: persona.personaName,
       onMouseMove: this._onPersonaMouseMove.bind(this, persona),
       onMouseOut: this._onPersonaMouseOut.bind(this, persona)
@@ -227,20 +218,13 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
     const personaNames: string = personasOverflow.map((p: IFacepilePersona) => p.personaName).join(', ');
     const numPersonasNotPictured: number = Math.max(personasOverflow.length, 0);
 
-    const {
-      styles,
-      theme
-    } = this.props;
-
-    const classNames = getClassNames(styles, {
-      theme: theme!
-    });
+    const { _classNames } = this;
 
     return (
       <FacepileButton
         { ...overflowButtonProps }
         ariaDescription={ personaNames }
-        className={ classNames.descriptiveOverflowButton }
+        className={ _classNames.descriptiveOverflowButton }
       >
         <PersonaCoin
           title={ personaNames }
@@ -256,19 +240,12 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
     const { overflowButtonProps, personaSize } = this.props;
     const overflowInitialsIcon = true;
 
-    const {
-      styles,
-      theme
-    } = this.props;
-
-    const classNames = getClassNames(styles, {
-      theme: theme!
-    });
+    const { _classNames } = this;
 
     return (
       <FacepileButton
         { ...overflowButtonProps }
-        className={ classNames.overflowButton }
+        className={ _classNames.overflowButton }
       >
         <PersonaCoin
           size={ personaSize }
@@ -281,19 +258,15 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
   private _getAddNewElement(): JSX.Element {
     const {
       addButtonProps,
-      personaSize,
-      styles,
-      theme
+      personaSize
     } = this.props;
 
-    const classNames = getClassNames(styles, {
-      theme: theme!
-    });
+    const { _classNames } = this;
 
     return (
       <FacepileButton
         { ...addButtonProps }
-        className={ classNames.addButton }
+        className={ _classNames.addButton }
       >
         <PersonaCoin
           size={ personaSize }
@@ -322,39 +295,25 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
   }
 
   private _renderInitials(iconName: string, overflowButton?: boolean): () => JSX.Element {
-    const {
-      styles,
-      theme
-    } = this.props;
-
-    const classNames = getClassNames(styles, {
-      theme: theme!
-    });
+    const { _classNames } = this;
 
     return (): JSX.Element => {
       return (
         <Icon
           iconName={ iconName }
-          className={ overflowButton ? classNames.overflowInitialsIcon : '' }
+          className={ overflowButton ? _classNames.overflowInitialsIcon : '' }
         />
       );
     };
   }
 
   private _renderInitialsNotPictured(numPersonasNotPictured: number): () => JSX.Element {
-    const {
-      styles,
-      theme
-    } = this.props;
-
-    const classNames = getClassNames(styles, {
-      theme: theme!
-    });
+    const { _classNames } = this;
 
     return (): JSX.Element => {
       return (
         <span
-          className={ classNames.overflowInitialsIcon }
+          className={ _classNames.overflowInitialsIcon }
         >
           { '+' + numPersonasNotPictured }
         </span>
