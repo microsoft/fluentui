@@ -325,10 +325,10 @@ describe('SpinButton', () => {
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <SpinButton
-        label={exampleLabelValue}
-        min={exampleMinValue}
-        max={exampleMaxValue}
-        defaultValue={exampleDefaultValue}
+        label={ exampleLabelValue }
+        min={ exampleMinValue }
+        max={ exampleMaxValue }
+        defaultValue={ exampleDefaultValue }
       />
     );
 
