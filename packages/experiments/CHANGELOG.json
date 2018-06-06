@@ -2,6 +2,30 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.2.0",
+      "tag": "@uifabric/experiments_v6.2.0",
+      "date": "Tue, 05 Jun 2018 10:23:03 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Sivaraman Krishnan <12967315+sikrishn@users.noreply.github.com>",
+            "commit": "872a3ef4078310860b8d110f78390215f7a4542d",
+            "comment": "Experiment/Nav component: hide nav group header if the links under it are hidden"
+          },
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "f5658e61929f6e30efee7ff7142e91f11b9138a6",
+            "comment": "ShimmerTile: Moves ShimmerTile to Tile component as it's only purpose is create a mock for a tile and itself alone never renders a Shimmer animation."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.4.1 <7.0.0` to `>=6.5.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.1.2",
       "tag": "@uifabric/experiments_v6.1.2",
       "date": "Tue, 05 Jun 2018 00:44:30 GMT",

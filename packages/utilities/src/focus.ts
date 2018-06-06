@@ -17,7 +17,8 @@ export function getFirstFocusable(
   currentElement: HTMLElement,
   includeElementsInFocusZones?: boolean
 ): HTMLElement | null {
-  return getNextElement(rootElement, currentElement, true, false, false, includeElementsInFocusZones);
+  return getNextElement(rootElement, currentElement, true /*checkNode*/, false /*suppressParentTraversal*/,
+    false /*suppressChildTraversal*/, includeElementsInFocusZones);
 }
 
 /**
@@ -30,12 +31,35 @@ export function getLastFocusable(
   currentElement: HTMLElement,
   includeElementsInFocusZones?: boolean
 ): HTMLElement | null {
-  return getPreviousElement(rootElement, currentElement, true, false, true, includeElementsInFocusZones);
+  return getPreviousElement(rootElement, currentElement, true /*checkNode*/, false /*suppressParentTraversal*/,
+    true /*traverseChildren*/, includeElementsInFocusZones);
+}
+
+/**
+ * Gets the first tabbable element.
+ * The difference between focusable and tabbable is that tabbable elements are focusable elements that also have tabIndex != -1.
+ * @param rootElement The parent element to search beneath.
+ * @param currentElement The descendant of rootElement to start the search at.  This element is the first one checked,
+ * and iteration continues forward.  Typical use passes rootElement.firstChild.
+ * @param includeElementsInFocusZones true if traversal should go into FocusZone descendants.
+ * @public
+ */
+export function getFirstTabbable(
+  rootElement: HTMLElement,
+  currentElement: HTMLElement,
+  includeElementsInFocusZones?: boolean): HTMLElement | null {
+
+  return getNextElement(rootElement, currentElement, true /*checkNode*/, false /*suppressParentTraversal*/,
+    false /*suppressChildTraversal*/, includeElementsInFocusZones, false /*allowFocusRoot*/, true /*tabbable*/);
 }
 
 /**
  * Gets the last tabbable element.
- *
+ * The difference between focusable and tabbable is that tabbable elements are focusable elements that also have tabIndex != -1.
+ * @param rootElement The parent element to search beneath.
+ * @param currentElement The descendant of rootElement to start the search at.  This element is the first one checked,
+ * and iteration continues in reverse.  Typical use passes rootElement.lastChild.
+ * @param includeElementsInFocusZones true if traversal should go into FocusZone descendants.
  * @public
  */
 export function getLastTabbable(
@@ -43,7 +67,8 @@ export function getLastTabbable(
   currentElement: HTMLElement,
   includeElementsInFocusZones?: boolean
 ): HTMLElement | null {
-  return getPreviousElement(rootElement, currentElement, true, false, true, includeElementsInFocusZones, false, true);
+  return getPreviousElement(rootElement, currentElement, true /*checkNode*/, false /*suppressParentTraversal*/,
+    true /*traverseChildren*/, includeElementsInFocusZones, false /*allowFocusRoot*/, true /*tabbable*/);
 }
 
 /**
@@ -65,6 +90,7 @@ export function focusFirstChild(rootElement: HTMLElement): boolean {
 
 /**
  * Traverse to find the previous element.
+ * If tabbable is true, the element must have tabIndex != -1.
  *
  * @public
  */
@@ -187,6 +213,7 @@ export function getPreviousElement(
 
 /**
  * Traverse to find the next focusable element.
+ * If tabbable is true, the element must have tabIndex != -1.
  *
  * @public
  */
@@ -197,7 +224,8 @@ export function getNextElement(
   suppressParentTraversal?: boolean,
   suppressChildTraversal?: boolean,
   includeElementsInFocusZones?: boolean,
-  allowFocusRoot?: boolean
+  allowFocusRoot?: boolean,
+  tabbable?: boolean
 ): HTMLElement | null {
   if (!currentElement || (currentElement === rootElement && suppressChildTraversal && !allowFocusRoot)) {
     return null;
@@ -206,7 +234,7 @@ export function getNextElement(
   let isCurrentElementVisible = isElementVisible(currentElement);
 
   // Check the current node, if it's not the first traversal.
-  if (checkNode && isCurrentElementVisible && isElementTabbable(currentElement)) {
+  if (checkNode && isCurrentElementVisible && isElementTabbable(currentElement, tabbable)) {
     return currentElement;
   }
 
@@ -223,7 +251,8 @@ export function getNextElement(
       true,
       false,
       includeElementsInFocusZones,
-      allowFocusRoot
+      allowFocusRoot,
+      tabbable
     );
 
     if (childMatch) {
@@ -243,7 +272,8 @@ export function getNextElement(
     true,
     false,
     includeElementsInFocusZones,
-    allowFocusRoot
+    allowFocusRoot,
+    tabbable
   );
 
   if (siblingMatch) {
@@ -258,7 +288,8 @@ export function getNextElement(
       false,
       true,
       includeElementsInFocusZones,
-      allowFocusRoot
+      allowFocusRoot,
+      tabbable
     );
   }
 
@@ -293,7 +324,8 @@ export function isElementVisible(element: HTMLElement | undefined | null): boole
 }
 
 /**
- * Determines if an element can receive focus.
+ * Determines if an element can receive focus programmatically or via a mouse click.
+ * If checkTabIndex is true, additionally checks to ensure the element can be focused with the tab key, meaning tabIndex != -1.
  *
  * @public
  */
