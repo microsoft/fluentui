@@ -1,70 +1,47 @@
 import * as React from 'react';
-import {
-  ExampleCard,
-  ComponentPage,
-  IComponentDemoPageProps,
-  PageMarkdown,
-  PropertiesTableSet
-} from '@uifabric/example-app-base';
 import { ProgressIndicatorBasicExample } from './examples/ProgressIndicator.Basic.Example';
+import { DemoPage } from '../../demo/components/DemoPage';
+import { IDemoPageProps } from '../../demo/components/DemoPage.types';
 import { ProgressIndicatorIndeterminateExample } from './examples/ProgressIndicator.Indeterminate.Example';
-import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { ProgressIndicatorStatus } from './ProgressIndicator.checklist';
 
 const ProgressIndicatorBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/examples/ProgressIndicator.Basic.Example.tsx') as string;
 const ProgressIndicatorIndeterminateExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/examples/ProgressIndicator.Indeterminate.Example.tsx') as string;
 
-export class ProgressIndicatorPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render(): JSX.Element {
-    return (
-      <ComponentPage
-        title="ProgressIndicator"
-        componentName="ProgressIndicatorExample"
-        componentUrl="https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ProgressIndicator"
-        exampleCards={
-          <div>
-            <ExampleCard title="Default ProgressIndicator" code={ProgressIndicatorBasicExampleCode}>
-              <ProgressIndicatorBasicExample />
-            </ExampleCard>
-            <ExampleCard title="Indeterminate ProgressIndicator" code={ProgressIndicatorIndeterminateExampleCode}>
-              <ProgressIndicatorIndeterminateExample />
-            </ExampleCard>
-          </div>
-        }
-        propertiesTables={
-          <PropertiesTableSet
-            sources={[
-              require<
-                string
-              >('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/ProgressIndicator.types.ts')
-            ]}
-          />
-        }
-        overview={
-          <PageMarkdown>
-            {require<
-              string
-            >('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/docs/ProgressIndicatorOverview.md')}
-          </PageMarkdown>
-        }
-        bestPractices={<div />}
-        dos={
-          <PageMarkdown>
-            {require<
-              string
-            >('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/docs/ProgressIndicatorDos.md')}
-          </PageMarkdown>
-        }
-        donts={
-          <PageMarkdown>
-            {require<
-              string
-            >('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/docs/ProgressIndicatorDonts.md')}
-          </PageMarkdown>
-        }
-        isHeaderVisible={this.props.isHeaderVisible}
-        componentStatus={<ComponentStatus {...ProgressIndicatorStatus} />}
-      />
-    );
-  }
-}
+export const ProgressIndicatorPageProps: IDemoPageProps = {
+  title: 'ProgressIndicator',
+  componentName: 'ProgressIndicator',
+  componentUrl:
+    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ProgressIndicator',
+  componentStatus: ProgressIndicatorStatus,
+  examples: [
+    {
+      title: 'Default ProgressIndicator',
+      code: ProgressIndicatorBasicExampleCode,
+      view: <ProgressIndicatorBasicExample />
+    },
+    {
+      title: 'Indeterminate ProgressIndicator',
+      code: ProgressIndicatorIndeterminateExampleCode,
+      view: <ProgressIndicatorIndeterminateExample />
+    }
+  ],
+  propertiesTablesSources: [
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/ProgressIndicator.types.ts')
+  ],
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/docs/ProgressIndicatorOverview.md'),
+  bestPractices: '',
+  dos: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/docs/ProgressIndicatorDos.md'),
+  donts: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/docs/ProgressIndicatorDonts.md'),
+  isHeaderVisible: true
+};
+
+export const ProgressIndicatorPage = (props: { isHeaderVisible: boolean }) => (
+  <DemoPage {...{ ...ProgressIndicatorPageProps, ...props }} />
+);
