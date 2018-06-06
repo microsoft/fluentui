@@ -21,8 +21,10 @@ runTsLintOnFilesGroupedPerPackage(groupFilesByPackage(files));
 function groupFilesByPackage(files) {
   const rootDirectory = path.join(path.resolve(__dirname, '..', '..'), path.sep);
 
+
+
   return files
-    .map(fileName => {
+    .map((fileName) => {
       const parts = fileName.replace(rootDirectory, '').split(path.sep);
       const packageRoot = [parts[0], parts[1]].join(path.sep);
 
