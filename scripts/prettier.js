@@ -3,8 +3,11 @@ const exec = require('./exec');
 const path = require('path');
 const { EOL, cpus } = require('os');
 
+const prettierIntroductionCommit = 'cfa7a19ec';
+const passedDiffTarget = process.argv.slice(2).length ? process.argv.slice(2)[0] : prettierIntroductionCommit;
+
 const projectPath = path.resolve(path.join(__dirname, '..'));
-const cmd = 'git --no-pager diff cfa7a19ec --diff-filter=AM --name-only --stat-name-width=0';
+const cmd = `git --no-pager diff ${passedDiffTarget} --diff-filter=AM --name-only --stat-name-width=0`;
 
 const gitDiffOutput = execSync(cmd, { cwd: projectPath });
 const filesChangedSinceLastRun = gitDiffOutput
