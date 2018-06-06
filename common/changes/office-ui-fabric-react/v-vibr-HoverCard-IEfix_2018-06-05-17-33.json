@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "CommandBarPage: Remove fabric js reference.",
+      "comment": "HoverCard: Removing unnecessary animation class causing a visual bug in IE browser.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "lynam.emily@gmail.com"
+  "email": "v-vibr@microsoft.com"
 }

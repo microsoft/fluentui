@@ -1,53 +1,32 @@
 import * as React from 'react';
-import {
-  ExampleCard,
-  IComponentDemoPageProps,
-  ComponentPage,
-  PageMarkdown,
-  PropertiesTableSet
-} from '@uifabric/example-app-base';
 import { SpinnerBasicExample } from './examples/Spinner.Basic.Example';
-import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { DemoPage } from '../../demo/components/DemoPage';
+import { IDemoPageProps } from '../../demo/components/DemoPage.types';
 import { SpinnerStatus } from './Spinner.checklist';
 
 const SpinnerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Spinner/examples/Spinner.Basic.Example.tsx') as string;
 
-export class SpinnerPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render(): JSX.Element {
-    return (
-      <ComponentPage
-        title="Spinner"
-        componentName="SpinnerExample"
-        componentUrl="https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Spinner"
-        exampleCards={
-          <ExampleCard title="Various Spinner Types" code={SpinnerBasicExampleCode}>
-            <SpinnerBasicExample />
-          </ExampleCard>
-        }
-        propertiesTables={
-          <PropertiesTableSet
-            sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/Spinner.types.ts')]}
-          />
-        }
-        overview={
-          <PageMarkdown>
-            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/docs/SpinnerOverview.md')}
-          </PageMarkdown>
-        }
-        bestPractices={<div />}
-        dos={
-          <PageMarkdown>
-            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/docs/SpinnerDos.md')}
-          </PageMarkdown>
-        }
-        donts={
-          <PageMarkdown>
-            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/docs/SpinnerDonts.md')}
-          </PageMarkdown>
-        }
-        isHeaderVisible={this.props.isHeaderVisible}
-        componentStatus={<ComponentStatus {...SpinnerStatus} />}
-      />
-    );
-  }
-}
+export const SpinnerPageProps: IDemoPageProps = {
+  title: 'Spinner',
+  componentName: 'Spinner',
+  componentUrl:
+    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Spinner',
+  componentStatus: SpinnerStatus,
+  examples: [
+    {
+      title: 'Various Spinner Types',
+      code: SpinnerBasicExampleCode,
+      view: <SpinnerBasicExample />
+    }
+  ],
+  propertiesTablesSources: [
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/Spinner.types.ts')
+  ],
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/docs/SpinnerOverview.md'),
+  bestPractices: '',
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/docs/SpinnerDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/docs/SpinnerDonts.md'),
+  isHeaderVisible: true
+};
+
+export const SpinnerPage = (props: { isHeaderVisible: boolean }) => <DemoPage {...{ ...SpinnerPageProps, ...props }} />;
