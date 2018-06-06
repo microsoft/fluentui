@@ -48,6 +48,11 @@ export interface IDetailsList extends IList {
     measureItem?: (itemIndex: number) => number,
     scrollToMode?: ScrollToMode
   ) => void;
+
+  /**
+   * Get the start index of the page that is currently in view
+   */
+  getStartItemIndexInView: () => number;
 }
 
 export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewportProps {
@@ -245,11 +250,6 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
    * Whether or not the selection zone should enter modal state on touch.
    */
   enterModalSelectionOnTouch?: boolean;
-
-  /**
-   * Callback when the list is unmounted. Useful to send back certain properties and state of the list
-   */
-  onWillUnmount?: (detailsList?: DetailsList) => void;
 }
 
 export interface IColumn {

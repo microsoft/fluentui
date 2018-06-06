@@ -295,8 +295,8 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
           continue;
         }
         // Without calculating the exact row height, estimate the row height assuming having same height
-        let rowHeight = Math.floor(page.height / page.itemCount);
-        return startIndexInPage + Math.floor((this._scrollTop - page.top) / rowHeight)
+        const rowHeight = Math.floor(page.height / page.itemCount);
+        return startIndexInPage + Math.floor((this._scrollTop - page.top) / rowHeight);
       }
     }
     return 0;

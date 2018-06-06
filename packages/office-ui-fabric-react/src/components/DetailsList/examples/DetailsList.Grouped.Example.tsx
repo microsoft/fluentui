@@ -6,6 +6,7 @@ import {
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { IDetailsList, DetailsList, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
+import { Checkbox } from '../../..';
 import './DetailsList.Grouped.Example.scss';
 
 const _columns = [
@@ -55,6 +56,7 @@ const _items = [
 
 export class DetailsListGroupedExample extends BaseComponent<{}, {
   items: {}[];
+  showItemIndexInView: boolean;
 }> {
   private _root = createRef<IDetailsList>();
 
@@ -62,8 +64,16 @@ export class DetailsListGroupedExample extends BaseComponent<{}, {
     super(props);
 
     this.state = {
-      items: _items
+      items: _items,
+      showItemIndexInView: false
     };
+  }
+
+  public componentWillUnmount() {
+    if (this.state.showItemIndexInView) {
+      const itemIndexInView = this._root!.current!.getStartItemIndexInView();
+      alert('unmounting, getting first item index that was in view: ' + itemIndexInView);
+    }
   }
 
   public render() {
@@ -71,6 +81,13 @@ export class DetailsListGroupedExample extends BaseComponent<{}, {
 
     return (
       <Fabric className='DetailsList-grouped-example'>
+        <div>
+          <Checkbox
+            label='Show index of the first item in view when unmounting'
+            checked={ this.state.showItemIndexInView }
+            onChange={ this._onShowItemIndexInViewChanged }
+          />
+        </div>
         <DefaultButton
           onClick={ this._addItem }
           text='Add an item'
@@ -141,5 +158,11 @@ export class DetailsListGroupedExample extends BaseComponent<{}, {
         { value }
       </div>
     );
+  }
+
+  private _onShowItemIndexInViewChanged = (event: React.FormEvent<HTMLInputElement>, checked: boolean): void => {
+    this.setState({
+      showItemIndexInView: checked
+    });
   }
 }
