@@ -15,6 +15,13 @@ Before you get started, make sure you have [node.js](https://nodejs.org/), [gulp
 
 **Note**: Were any steps missing? Could the instructions be made clearer for the next person? Update the instructions above and submit a pull request!
 
+## Test serving minified files locally
+1. `npm install -g http-server`
+2. In index.html, change `'/fabric-sitev5.js'` to `'./dist/fabric-sitev5.min.js'` (see comment in code).
+3. In webpack.config.js, change `let publicPath =` from  `'https://static2.sharepointonline.com/files/fabric/fabric-website/dist/'` to `'/dist/'` (see comment in code).
+4. In the fabric-website directory, run `npm run production` to build your minified files. They should be in the dist folder.
+5. In the same directory, run `http-server`. This should serve the website for you to test the website as it runs on your new minified files.
+
 ## Licenses
 
 All files on the Office UI Fabric React GitHub repository are subject to the MIT license. Please read the License file at the root of the project.
