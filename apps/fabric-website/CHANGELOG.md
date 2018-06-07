@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 05 Jun 2018 00:44:30 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Jun 2018 16:35:34 GMT and should not be manually modified.
+
+## 6.0.4
+Thu, 07 Jun 2018 16:35:34 GMT
+
+### Patches
+
+- Tweaked the lint rules.
 
 ## 6.0.3
 Tue, 05 Jun 2018 00:44:30 GMT

@@ -48,6 +48,7 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
   return {
     root: [
       classNames.root,
+      theme.fonts.medium,
       normalize,
       {
         color: palette.neutralPrimary,

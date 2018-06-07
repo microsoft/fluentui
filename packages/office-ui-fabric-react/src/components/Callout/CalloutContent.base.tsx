@@ -185,31 +185,31 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     const visibilityStyle: React.CSSProperties | undefined = this.props.hidden ? { visibility: 'hidden' } : undefined;
     // React.CSSProperties does not understand IRawStyle, so the inline animations will need to be cast as any for now.
     const content = (
-      <div ref={ this._hostElement } className={ this._classNames.container } style={ visibilityStyle }>
+      <div ref={this._hostElement} className={this._classNames.container} style={visibilityStyle}>
         <div
-          className={ css(this._classNames.root, positions && positions.targetEdge && ANIMATIONS[positions.targetEdge!]) }
-          style={ positions ? positions.elementPosition : OFF_SCREEN_STYLE }
-          tabIndex={ -1 } // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
+          className={css(this._classNames.root, positions && positions.targetEdge && ANIMATIONS[positions.targetEdge!])}
+          style={positions ? positions.elementPosition : OFF_SCREEN_STYLE}
+          tabIndex={-1} // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
           // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
-          ref={ this._calloutElement }
+          ref={this._calloutElement}
         >
-          { beakVisible && <div className={ this._classNames.beak } style={ this._getBeakPosition() } /> }
-          { beakVisible && <div className={ this._classNames.beakCurtain } /> }
-          { !this.props.hidden && (
+          {beakVisible && <div className={this._classNames.beak} style={this._getBeakPosition()} />}
+          {beakVisible && <div className={this._classNames.beakCurtain} />}
+          {!this.props.hidden && (
             <Popup
-              role={ role }
-              ariaLabel={ ariaLabel }
-              ariaDescribedBy={ ariaDescribedBy }
-              ariaLabelledBy={ ariaLabelledBy }
-              className={ this._classNames.calloutMain }
-              onDismiss={ this.dismiss }
-              onScroll={ onScroll }
-              shouldRestoreFocus={ true }
-              style={ overflowStyle }
+              role={role}
+              ariaLabel={ariaLabel}
+              ariaDescribedBy={ariaDescribedBy}
+              ariaLabelledBy={ariaLabelledBy}
+              className={this._classNames.calloutMain}
+              onDismiss={this.dismiss}
+              onScroll={onScroll}
+              shouldRestoreFocus={true}
+              style={overflowStyle}
             >
-              { children }
+              {children}
             </Popup>
-          ) }
+          )}
         </div>
       </div>
     );
@@ -255,8 +255,8 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
 
     if (
       (!this._target && clickedOutsideCallout) ||
-      clickedOutsideCallout &&
-      (!this._target || (target !== this._target && !elementContains(this._target as HTMLElement, target)))
+      (clickedOutsideCallout &&
+        (!this._target || (target !== this._target && !elementContains(this._target as HTMLElement, target))))
     ) {
       this.dismiss(ev);
     }

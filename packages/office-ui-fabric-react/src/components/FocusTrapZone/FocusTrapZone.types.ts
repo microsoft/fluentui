@@ -2,7 +2,8 @@ import * as React from 'react';
 
 export interface IFocusTrapZone {
   /**
-   * Sets focus on the first focusable, or configured, child in focus trap zone
+   * Sets focus to a descendant in the Trap Zone.
+   * See firstFocusableSelector and focusPreviouslyFocusedInnerElement for details.
    */
   focus: () => void;
 }
@@ -44,7 +45,7 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
   forceFocusInsideTrap?: boolean;
 
   /**
-   * Indicates the selector for first focusable item
+   * Indicates the selector for first focusable item.  Only applies if focusPreviouslyFocusedInnerElement == false.
    */
   firstFocusableSelector?: string | (() => string);
 
@@ -55,7 +56,11 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
   disableFirstFocus?: boolean;
 
   /**
-   * Optional, onKeyDown event handler
+   * Specifies the algorithm used to determine which descendant element to focus when focus() is called.
+   * If false, the first focusable descendant, filtered by the firstFocusableSelector property if present, is chosen.
+   * If true, the element that was focused when the Trap Zone last had a focused descendant is chosen.
+   * If it has never had a focused descendant before, behavior falls back to the first focused descendant.
+   * @default false
    */
-  onKeyDown?: (ev: React.KeyboardEvent<HTMLElement>) => void;
+  focusPreviouslyFocusedInnerElement?: boolean;
 }
