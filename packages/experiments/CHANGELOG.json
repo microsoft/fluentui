@@ -2,6 +2,40 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.3.0",
+      "tag": "@uifabric/experiments_v6.3.0",
+      "date": "Thu, 07 Jun 2018 16:35:34 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "829aa92bb11ce2ae4f356ea1f66d6cb50cd3e512",
+            "comment": "Create CollapsibleSection component and createComponent utility."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "58b0ef8cd0468cbd5cfab04267f2f4143444f919",
+            "comment": "Tweaked the lint rules."
+          }
+        ],
+        "patch": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "b4f2af74a5848963981c439ba3831766299071bc",
+            "comment": "Code format changes"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.5.0 <7.0.0` to `>=6.6.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.0.2 <7.0.0` to `>=6.1.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.2.0",
       "tag": "@uifabric/experiments_v6.2.0",
       "date": "Tue, 05 Jun 2018 10:23:03 GMT",

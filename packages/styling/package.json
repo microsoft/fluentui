@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/styling",
-  "version": "6.0.3",
+  "version": "6.2.0",
   "description": "Defines the core Office UI Fabric styles through a JavaScript interface.",
   "repository": {
     "type": "git",
@@ -31,8 +31,8 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
-    "@uifabric/utilities": ">=6.0.5 <7.0.0",
-    "@uifabric/merge-styles": ">=6.0.2 <7.0.0",
+    "@uifabric/utilities": ">=6.2.0 <7.0.0",
+    "@uifabric/merge-styles": ">=6.2.0 <7.0.0",
     "tslib": "^1.7.1"
   }
 }
