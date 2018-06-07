@@ -47,9 +47,9 @@ export function memoize<T extends Function>(
   key: string,
   descriptor: TypedPropertyDescriptor<T>
 ): {
-    configurable: boolean;
-    get(): T;
-  } {
+  configurable: boolean;
+  get(): T;
+} {
   // We bind to "null" to prevent people from inadvertently pulling values from "this",
   // rather than passing them in as input values which can be memoized.
   let fn = memoizeFunction(descriptor.value && descriptor.value.bind(null));
@@ -95,7 +95,11 @@ export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE
   return function memoizedFunction(...args: any[]): RET_TYPE {
     let currentNode: any = rootNode;
 
-    if (rootNode === undefined || (localResetCounter !== _resetCounter) || (maxCacheSize > 0 && cacheSize > maxCacheSize)) {
+    if (
+      rootNode === undefined ||
+      localResetCounter !== _resetCounter ||
+      (maxCacheSize > 0 && cacheSize > maxCacheSize)
+    ) {
       rootNode = _createNode();
       cacheSize = 0;
       localResetCounter = _resetCounter;

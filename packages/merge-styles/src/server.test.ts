@@ -18,18 +18,15 @@ describe('staticRender', () => {
   });
 
   it('can namespace things', () => {
-    const { html, css } = renderStatic(
-      () => {
-        const classNames: { root: string } = mergeStyleSets({
-          root: {
-            background: 'red'
-          }
-        });
+    const { html, css } = renderStatic(() => {
+      const classNames: { root: string } = mergeStyleSets({
+        root: {
+          background: 'red'
+        }
+      });
 
-        return `<div class="${classNames.root}">Hello!</div>`;
-      },
-      'test'
-    );
+      return `<div class="${classNames.root}">Hello!</div>`;
+    }, 'test');
 
     expect(html).toEqual(`<div class="test-root-0">Hello!</div>`);
     expect(css).toEqual(`.test-root-0{background:red;}`);
