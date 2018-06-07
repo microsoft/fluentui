@@ -181,53 +181,51 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
         <br />
 
         <h2 id="Samples">Samples</h2>
-        {
-          <div style={{ display: 'flex', flexDirection: 'row' }}>
-            <div className="ms-themer-example">
-              <TextFieldBasicExample />
-            </div>
-            <div className="ms-themer-example">
-              <ToggleBasicExample />
-              <ChoiceGroup
-                options={[
-                  {
-                    key: 'A',
-                    text: 'Option A'
-                  },
-                  {
-                    key: 'B',
-                    text: 'Option B',
-                    checked: true
-                  }
-                ]}
-                label="Pick one"
-                required={true}
-              />
-              <ChoiceGroup
-                options={[
-                  {
-                    key: 'C',
-                    text: 'Option C',
-                    disabled: true
-                  },
-                  {
-                    key: 'D',
-                    text: 'Option D',
-                    checked: true,
-                    disabled: true
-                  }
-                ]}
-                label="Pick one"
-                required={true}
-              />
-            </div>
-            <div className="ms-themer-example">
-              <TeachingBubbleBasicExample />
-              <br />
-              <ProgressIndicatorBasicExample />
-            </div>
+        <div style={{ display: 'flex', flexDirection: 'row' }}>
+          <div className="ms-themer-example">
+            <TextFieldBasicExample />
           </div>
-        }
+          <div className="ms-themer-example">
+            <ToggleBasicExample />
+            <ChoiceGroup
+              options={[
+                {
+                  key: 'A',
+                  text: 'Option A'
+                },
+                {
+                  key: 'B',
+                  text: 'Option B',
+                  checked: true
+                }
+              ]}
+              label="Pick one"
+              required={true}
+            />
+            <ChoiceGroup
+              options={[
+                {
+                  key: 'C',
+                  text: 'Option C',
+                  disabled: true
+                },
+                {
+                  key: 'D',
+                  text: 'Option D',
+                  checked: true,
+                  disabled: true
+                }
+              ]}
+              label="Pick one"
+              required={true}
+            />
+          </div>
+          <div className="ms-themer-example">
+            <TeachingBubbleBasicExample />
+            <br />
+            <ProgressIndicatorBasicExample />
+          </div>
+        </div>
 
         <h2 id="Accessibility">Accessibility</h2>
         <p>Each pair of colors below should produce legible text and have a minimum contrast ratio of 4.5.</p>
@@ -237,16 +235,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
             <td>Contrast ratio</td>
             <td>Slot pair</td>
           </thead>
-          <tbody>
-            {[
-              this._accessibilityRow(FabricSlots.neutralPrimary, FabricSlots.white),
-              this._accessibilityRow(FabricSlots.white, FabricSlots.themePrimary),
-              this._accessibilityRow(FabricSlots.neutralPrimary, FabricSlots.themeLighter),
-              this._accessibilityRow(FabricSlots.themeDarkAlt, FabricSlots.themeLighter),
-              this._accessibilityRow(FabricSlots.neutralPrimary, FabricSlots.neutralLighter),
-              this._accessibilityRow(FabricSlots.themeDark, FabricSlots.neutralLighter)
-            ]}
-          </tbody>
+          {this._accessibilityTableBody()}
         </table>
       </div>
     );
@@ -344,6 +333,33 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
         <td>{FabricSlots[foreground] + ' + ' + FabricSlots[background]}</td>
       </tr>
     );
+  };
+
+  private _accessibilityTableBody = (): JSX.Element => {
+    const accessibilityRows: JSX.Element[] = [
+      this._accessibilityRow(FabricSlots.neutralPrimary, FabricSlots.white), // default
+      // primary color also needs to be accessible, this is also strong variant default
+      this._accessibilityRow(FabricSlots.white, FabricSlots.themePrimary),
+      this._accessibilityRow(FabricSlots.neutralPrimary, FabricSlots.neutralLighter), // neutral variant default
+      this._accessibilityRow(FabricSlots.themeDark, FabricSlots.neutralLighter)
+    ]; // neutral variant with primary color
+
+    // these are the text and primary colors on top of the soft variant, whose bg depends on invertedness of original theme
+    if (!isDark(this.state.themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)) {
+      // is not inverted
+      accessibilityRows.push(
+        this._accessibilityRow(FabricSlots.neutralPrimary, FabricSlots.themeLighterAlt),
+        this._accessibilityRow(FabricSlots.themeDarkAlt, FabricSlots.themeLighterAlt)
+      );
+    } else {
+      // is inverted
+      accessibilityRows.push(
+        this._accessibilityRow(FabricSlots.neutralPrimary, FabricSlots.themeLight),
+        this._accessibilityRow(FabricSlots.themeDarkAlt, FabricSlots.themeLight)
+      );
+    }
+
+    return <tbody>{accessibilityRows}</tbody>;
   };
 
   private _outputSection = (): JSX.Element => {
