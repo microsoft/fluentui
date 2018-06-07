@@ -11,9 +11,7 @@ function start(): void {
 
   _rootDiv = document.querySelector('#content');
 
-  ReactDOM.hydrate(
-    <TodoApp />,
-    _rootDiv);
+  ReactDOM.hydrate(<TodoApp />, _rootDiv);
 }
 
 // Start the application.

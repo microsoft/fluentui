@@ -77,14 +77,15 @@ export class Stylesheet {
   private _onResetCallbacks: (() => void)[] = [];
 
   // tslint:disable-next-line:no-any
-  private _classNameToArgs: { [key: string]: { args: any, rules: string[] } } = {};
+  private _classNameToArgs: { [key: string]: { args: any; rules: string[] } } = {};
 
   /**
    * Gets the singleton instance.
    */
   public static getInstance(): Stylesheet {
     // tslint:disable-next-line:no-any
-    const global: any = typeof window !== 'undefined' ? window : typeof process !== 'undefined' ? process : _fileScopedGlobal;
+    const global: any =
+      typeof window !== 'undefined' ? window : typeof process !== 'undefined' ? process : _fileScopedGlobal;
     _stylesheet = global[STYLESHEET_SETTING] as Stylesheet;
 
     if (!_stylesheet) {
@@ -141,12 +142,7 @@ export class Stylesheet {
    * Used internally to cache information about a class which was
    * registered with the stylesheet.
    */
-  public cacheClassName(
-    className: string,
-    key: string,
-    args: IStyle[],
-    rules: string[]
-  ): void {
+  public cacheClassName(className: string, key: string, args: IStyle[], rules: string[]): void {
     this._keyToClassName[key] = className;
     this._classNameToArgs[className] = {
       args,
@@ -169,27 +165,24 @@ export class Stylesheet {
   public argsFromClassName(className: string): IStyle[] | undefined {
     const entry = this._classNameToArgs[className];
 
-    return (entry && entry.args);
+    return entry && entry.args;
   }
 
   /**
- * Gets the arguments associated with a given classname which was
- * previously registered using cacheClassName.
- */
+   * Gets the arguments associated with a given classname which was
+   * previously registered using cacheClassName.
+   */
   public insertedRulesFromClassName(className: string): string[] | undefined {
     const entry = this._classNameToArgs[className];
 
-    return (entry && entry.rules);
+    return entry && entry.rules;
   }
 
   /**
    * Inserts a css rule into the stylesheet.
    * @param preserve - Preserves the rule beyond a reset boundary.
    */
-  public insertRule(
-    rule: string,
-    preserve?: boolean
-  ): void {
+  public insertRule(rule: string, preserve?: boolean): void {
     const { injectionMode } = this._config;
     const element = injectionMode !== InjectionMode.none ? this._getStyleElement() : undefined;
 
@@ -229,7 +222,9 @@ export class Stylesheet {
    * using InsertionMode.none.
    */
   public getRules(includePreservedRules?: boolean): string {
-    return (includePreservedRules ? this._preservedRules.join('') : '') + this._rules.join('') + this._rulesToInsert.join('');
+    return (
+      (includePreservedRules ? this._preservedRules.join('') : '') + this._rules.join('') + this._rulesToInsert.join('')
+    );
   }
 
   /**
@@ -278,5 +273,4 @@ export class Stylesheet {
 
     return styleElement;
   }
-
 }
