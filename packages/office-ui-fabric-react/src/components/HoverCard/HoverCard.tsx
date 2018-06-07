@@ -18,7 +18,8 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
     cardOpenDelay: 500,
     cardDismissDelay: 100,
     expandedCardOpenDelay: 1500,
-    instantOpenOnClick: false
+    instantOpenOnClick: false,
+    defaultFirstFocus: true
   };
 
   // The wrapping div that gets the hover events
@@ -97,7 +98,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
             {...getNativeProps(this.props, divProperties)}
             id={hoverCardId}
             trapFocus={!!this.props.trapFocus}
-            firstFocus={openMode === OpenCardMode.hotKey || openMode === OpenCardMode.hover}
+            firstFocus={openMode === (!!this.props.defaultFirstFocus || OpenCardMode.hotKey)}
             targetElement={this._getTargetElement()}
             onEnter={this._cardOpen}
             onLeave={this._executeCardDimiss}
