@@ -22,7 +22,7 @@ module.exports = {
       {
         test: /\.(jsx?|tsx?)$/,
         include: [/office-ui-fabric-react\/lib(-commonjs)?\/components\/ContextualMenu\/ContextualMenu.js/],
-        loader: '@uifabric/webpack-utils/lib/FabricAsyncLoader.js'
+        loader: '@uifabric/webpack-utils/lib/fabricAsyncLoader.js'
       },
     ...
   }
