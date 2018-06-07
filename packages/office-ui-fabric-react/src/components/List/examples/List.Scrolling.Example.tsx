@@ -31,7 +31,7 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
     this.state = {
       selectedIndex: 0,
       scrollToMode: ScrollToMode.auto,
-      showItemIndexInView: false,
+      showItemIndexInView: false
     };
   }
 
@@ -39,44 +39,44 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
     const { items } = this.props;
 
     return (
-      <FocusZone direction={ FocusZoneDirection.vertical }>
+      <FocusZone direction={FocusZoneDirection.vertical}>
         <div>
-          <DefaultButton onClick={ this._scrollRelative(-10) }>-10</DefaultButton>
-          <DefaultButton onClick={ this._scrollRelative(-1) }>-1</DefaultButton>
-          <DefaultButton onClick={ this._scrollRelative(1) }>+1</DefaultButton>
-          <DefaultButton onClick={ this._scrollRelative(10) }>+10</DefaultButton>
+          <DefaultButton onClick={this._scrollRelative(-10)}>-10</DefaultButton>
+          <DefaultButton onClick={this._scrollRelative(-1)}>-1</DefaultButton>
+          <DefaultButton onClick={this._scrollRelative(1)}>+1</DefaultButton>
+          <DefaultButton onClick={this._scrollRelative(10)}>+10</DefaultButton>
         </div>
         <Dropdown
           placeHolder="Select an Option"
           label="Scroll To Mode:"
           id="Scrolldrop1"
           ariaLabel="Scroll To Mode"
-          defaultSelectedKey={ 'auto' }
-          options={ [
+          defaultSelectedKey={'auto'}
+          options={[
             { key: 'auto', text: 'Auto' },
             { key: 'top', text: 'Top' },
             { key: 'bottom', text: 'Bottom' },
             { key: 'center', text: 'Center' }
-          ] }
-          onChanged={ this._onDropdownChanged }
+          ]}
+          onChanged={this._onDropdownChanged}
         />
         <div>
           Scroll item index:
-          <TextField value={ this.state.selectedIndex.toString(10) } onChanged={ this._onChangeText } />
+          <TextField value={this.state.selectedIndex.toString(10)} onChanged={this._onChangeText} />
         </div>
         <div>
           <Checkbox
-            label='Show index of the first item in view when unmounting'
-            checked={ this.state.showItemIndexInView }
-            onChange={ this._onShowItemIndexInViewChanged }
+            label="Show index of the first item in view when unmounting"
+            checked={this.state.showItemIndexInView}
+            onChange={this._onShowItemIndexInViewChanged}
           />
         </div>
-        <div className="ms-ListScrollingExample-container" data-is-scrollable={ true }>
+        <div className="ms-ListScrollingExample-container" data-is-scrollable={true}>
           <List
-            ref={ this._resolveList }
-            items={ items }
-            getPageHeight={ this._getPageHeight }
-            onRenderCell={ this._onRenderCell }
+            ref={this._resolveList}
+            items={items}
+            getPageHeight={this._getPageHeight}
+            onRenderCell={this._onRenderCell}
           />
         </div>
       </FocusZone>
@@ -125,15 +125,15 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
 
   private _onRenderCell = (item: any, index: number): JSX.Element => {
     return (
-      <div className="ms-ListScrollingExample-itemCell" data-is-focusable={ true }>
+      <div className="ms-ListScrollingExample-itemCell" data-is-focusable={true}>
         <div
-          className={ css(
+          className={css(
             'ms-ListScrollingExample-itemContent',
             index % 2 === 0 && 'ms-ListScrollingExample-itemContent-even',
             index % 2 === 1 && 'ms-ListScrollingExample-itemContent-odd'
-          ) }
+          )}
         >
-          { index } &nbsp; { item.name }
+          {index} &nbsp; {item.name}
         </div>
       </div>
     );

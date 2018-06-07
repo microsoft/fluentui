@@ -57,7 +57,7 @@ export class DetailsListGroupedExample extends BaseComponent<
     items: {}[];
     showItemIndexInView: boolean;
   }
-  > {
+> {
   private _root = createRef<IDetailsList>();
 
   constructor(props: {}) {
@@ -83,16 +83,16 @@ export class DetailsListGroupedExample extends BaseComponent<
       <Fabric className="DetailsList-grouped-example">
         <div>
           <Checkbox
-            label='Show index of the first item in view when unmounting'
-            checked={ this.state.showItemIndexInView }
-            onChange={ this._onShowItemIndexInViewChanged }
+            label="Show index of the first item in view when unmounting"
+            checked={this.state.showItemIndexInView}
+            onChange={this._onShowItemIndexInViewChanged}
           />
         </div>
-        <DefaultButton onClick={ this._addItem } text="Add an item" />
+        <DefaultButton onClick={this._addItem} text="Add an item" />
         <DetailsList
-          componentRef={ this._root }
-          items={ items }
-          groups={ [
+          componentRef={this._root}
+          items={items}
+          groups={[
             {
               key: 'groupred0',
               name: 'By "red"',
@@ -111,14 +111,14 @@ export class DetailsListGroupedExample extends BaseComponent<
               startIndex: 2,
               count: items.length - 2
             }
-          ] }
-          columns={ _columns }
+          ]}
+          columns={_columns}
           ariaLabelForSelectAllCheckbox="Toggle selection for all items"
           ariaLabelForSelectionColumn="Toggle selection"
-          groupProps={ {
+          groupProps={{
             showEmptyGroups: true
-          } }
-          onRenderItemColumn={ this._onRenderColumn }
+          }}
+          onRenderItemColumn={this._onRenderColumn}
         />
       </Fabric>
     );
@@ -153,8 +153,8 @@ export class DetailsListGroupedExample extends BaseComponent<
     }
 
     return (
-      <div className={ 'grouped-example-column' } data-is-focusable={ true }>
-        { value }
+      <div className={'grouped-example-column'} data-is-focusable={true}>
+        {value}
       </div>
     );
   }
@@ -163,5 +163,5 @@ export class DetailsListGroupedExample extends BaseComponent<
     this.setState({
       showItemIndexInView: checked
     });
-  }
+  };
 }
