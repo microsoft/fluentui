@@ -13,7 +13,7 @@ export interface IChoiceGroupState {
   keyFocused?: string | number;
 }
 
-@customizable('ChoiceGroup', ['theme'])
+@customizable('ChoiceGroup', ['theme', 'styles'])
 export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGroupState> {
   public static defaultProps: IChoiceGroupProps = {
     options: []

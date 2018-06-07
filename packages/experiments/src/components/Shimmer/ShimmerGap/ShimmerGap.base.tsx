@@ -4,7 +4,7 @@ import { IShimmerGapProps, IShimmerGapStyleProps, IShimmerGapStyles } from './Sh
 
 const getClassNames = classNamesFunction<IShimmerGapStyleProps, IShimmerGapStyles>();
 
-@customizable('ShimmerGap', ['theme'])
+@customizable('ShimmerGap', ['theme', 'styles'])
 export class ShimmerGapBase extends BaseComponent<IShimmerGapProps, {}> {
   private _classNames: { [key in keyof IShimmerGapStyles]: string };
 

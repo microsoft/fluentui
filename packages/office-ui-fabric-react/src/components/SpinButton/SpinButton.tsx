@@ -46,7 +46,7 @@ export interface ISpinButtonState {
   precision: number;
 }
 
-@customizable('SpinButton', ['theme'])
+@customizable('SpinButton', ['theme', 'styles'])
 export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
   public static defaultProps: ISpinButtonProps = {
     step: 1,

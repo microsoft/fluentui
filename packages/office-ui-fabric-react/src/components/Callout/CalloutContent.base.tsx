@@ -48,7 +48,7 @@ export interface ICalloutState {
   heightOffset?: number;
 }
 
-@customizable('CalloutContent', ['theme'])
+@customizable('CalloutContent', ['theme', 'styles'])
 export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutState> {
   public static defaultProps = {
     preventDismissOnLostFocus: false,

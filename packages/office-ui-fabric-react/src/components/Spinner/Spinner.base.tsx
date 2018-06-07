@@ -11,7 +11,7 @@ import {
 
 const getClassNames = classNamesFunction<ISpinnerStyleProps, ISpinnerStyles>();
 
-@customizable('Spinner', ['theme'])
+@customizable('Spinner', ['theme', 'styles'])
 export class SpinnerBase extends BaseComponent<ISpinnerProps, any> {
   public static defaultProps: ISpinnerProps = {
     size: SpinnerSize.medium,

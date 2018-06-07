@@ -70,7 +70,7 @@ export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean {
 
 const NavigationIdleDelay = 250 /* ms */;
 
-@customizable('ContextualMenu', ['theme'])
+@customizable('ContextualMenu', ['theme', 'styles'])
 @withResponsiveMode
 export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContextualMenuState> {
   // The default ContextualMenu properties have no items and beak, the default submenu direction is right and top.

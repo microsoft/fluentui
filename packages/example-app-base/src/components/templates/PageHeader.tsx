@@ -37,7 +37,7 @@ export interface IPageHeaderProps extends IBaseProps {
 
 const getClassNames = classNamesFunction<IPageHeaderStyleProps, IPageHeaderStyles>();
 
-@customizable('PageHeader', ['theme'])
+@customizable('PageHeader', ['theme', 'styles'])
 export class PageHeaderBase extends BaseComponent<IPageHeaderProps, {}> {
   public render(): JSX.Element {
     const { as: RootType = 'h1', theme, children, getStyles } = this.props;
