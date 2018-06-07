@@ -3,7 +3,7 @@
     {
       "packageName": "@uifabric/webpack-utils",
       "comment": "Creates a new webpack-utils package",
-      "type": "major"
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/webpack-utils",
