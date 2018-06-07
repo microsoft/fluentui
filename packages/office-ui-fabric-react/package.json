@@ -5,9 +5,9 @@
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "sideEffects": [
-    "*.global.js",
-    "*Examples.js",
-    "*Example.js"
+    "*.global.*",
+    "*Examples.*",
+    "*Example.*"
   ],
   "typings": "lib/index.d.ts",
   "repository": {
