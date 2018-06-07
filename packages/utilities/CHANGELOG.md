@@ -1,6 +1,18 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 05 Jun 2018 00:44:30 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Jun 2018 16:35:34 GMT and should not be manually modified.
+
+## 6.2.0
+Thu, 07 Jun 2018 16:35:34 GMT
+
+### Minor changes
+
+- Added getFirstTabbable, Updated getNextElement to take tabbable param like getPreviousElement.
+- Minor changes to improve server side rendering.
+
+### Patches
+
+- Code format changes
 
 ## 6.0.5
 Tue, 05 Jun 2018 00:44:30 GMT
