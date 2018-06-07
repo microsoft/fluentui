@@ -242,7 +242,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         this._focusInputAfterClose &&
         focused &&
         this._autofill.current &&
-        document.activeElement !== this._autofill.current.inputElement)) {
+        document.activeElement !== this._autofill.current.inputElement)
+    ) {
       this.focus(undefined /*shouldOpenOnFocus*/, true /*useFocusAsync*/);
     }
 
