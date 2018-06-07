@@ -9,7 +9,7 @@ export class FluentThemeBasicExample extends React.Component<{}, {}> {
         <h2>Current theme</h2>
         {this._renderComponents()}
 
-        <h2>Fluent theme</h2>
+        <h2>Fluent color theme</h2>
         <Customizer settings={{ theme: FluentTheme }}>{this._renderComponents()}</Customizer>
       </div>
     );
