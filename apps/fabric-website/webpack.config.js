@@ -9,7 +9,6 @@ module.exports = function(argv) {
   // Production defaults
   let minFileNamePart = '';
   let entryPointName = 'fabric-sitev5';
-  // To serve minified files locally for testing purposes, change public path to '/dist/'
   let publicPath = 'https://static2.sharepointonline.com/files/fabric/fabric-website/dist/';
 
   // Dogfood overrides
