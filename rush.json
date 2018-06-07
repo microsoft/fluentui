@@ -1,5 +1,5 @@
 {
-  "npmVersion": "5.3.0",
+  "npmVersion": "5.4.0",
   "rushVersion": "4.3.0",
   "repository": {
     "url": "https://github.com/OfficeDev/office-ui-fabric-react.git"
@@ -11,6 +11,11 @@
       "projectFolder": "packages/office-ui-fabric-react",
       "versionPolicyName": "lockedMajor",
       "shouldPublish": true
+    },
+    {
+      "packageName": "@uifabric/webpack-utils",
+      "projectFolder": "packages/webpack-utils",
+      "shouldPublish": false
     },
     {
       "packageName": "@uifabric/experiments",
@@ -46,14 +51,19 @@
       "packageName": "@uifabric/example-app-base",
       "projectFolder": "packages/example-app-base",
       "versionPolicyName": "lockedMajor",
-      "cyclicDependencyProjects": ["office-ui-fabric-react"],
+      "cyclicDependencyProjects": [
+        "office-ui-fabric-react"
+      ],
       "shouldPublish": true
     },
     {
       "packageName": "@uifabric/styling",
       "projectFolder": "packages/styling",
       "versionPolicyName": "lockedMajor",
-      "cyclicDependencyProjects": ["office-ui-fabric-react", "@uifabric/example-app-base"],
+      "cyclicDependencyProjects": [
+        "office-ui-fabric-react",
+        "@uifabric/example-app-base"
+      ],
       "shouldPublish": true
     },
     {

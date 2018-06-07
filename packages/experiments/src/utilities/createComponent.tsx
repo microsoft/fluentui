@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { mergeStyleSets, getTheme } from 'office-ui-fabric-react';
 
-export type IStyleFunction<TStylesProps, TStyles> = (
-  props: TStylesProps
-) => Partial<TStyles>;
+export type IStyleFunction<TStylesProps, TStyles> = (props: TStylesProps) => Partial<TStyles>;
 
 export type TStateProps<TProps> = TProps & { view: (props: TProps) => JSX.Element };
 export type TStylesProp<TProps, TStyles> = IStyleFunction<TProps, TStyles> | Partial<TStyles>;
@@ -18,10 +16,7 @@ export interface IAugmentations<TUserProps, TStyles> {
 const _augmentations: IAugmentations<any, any> = {};
 
 // TODO: which of these options do we really want to be optional? view? styles?
-export interface IComponentOptions<
-  TUserProps,
-  TStyles
-  > {
+export interface IComponentOptions<TUserProps, TStyles> {
   scope: string;
   state?: React.ComponentType<TStateProps<TUserProps>>;
   styles?: TStylesProp<TUserProps, TStyles>;
@@ -41,8 +36,7 @@ export function createComponent<TProps, TStyles>(
     const getStyles: any = augmented.styles || options.styles;
     const theme = getTheme();
 
-    ViewComponent.displayName =
-      ViewComponent.displayName || options.scope + 'View';
+    ViewComponent.displayName = ViewComponent.displayName || options.scope + 'View';
     const content = (processedProps: TProps) => {
       let styles: TStyles | undefined = undefined;
 
@@ -59,19 +53,10 @@ export function createComponent<TProps, TStyles>(
           break;
       }
 
-      return (
-        <ViewComponent
-          { ...processedProps }
-          styles={ mergeStyleSets<keyof TStyles>(styles) }
-        />
-      );
+      return <ViewComponent {...processedProps} styles={mergeStyleSets<keyof TStyles>(styles)} />;
     };
 
-    return !!StateComponent ? (
-      <StateComponent { ...userProps } view={ content } />
-    ) : (
-        content(userProps)
-      );
+    return !!StateComponent ? <StateComponent {...userProps} view={content} /> : content(userProps);
   };
 
   result.displayName = options.scope;
@@ -80,9 +65,7 @@ export function createComponent<TProps, TStyles>(
 }
 
 // Helper function to augment existing components that have been created.
-export function augmentComponent<TProps, TStyles>(
-  options: IComponentOptions<TProps, TStyles>
-): void {
+export function augmentComponent<TProps, TStyles>(options: IComponentOptions<TProps, TStyles>): void {
   _augmentations[options.scope] = {
     ..._augmentations[options.scope],
     ...options
