@@ -1,7 +1,7 @@
-module.exports = function (options) {
+module.exports = function(options) {
   const path = require('path');
   const fs = require('fs');
-  const exec = require('../exec');
+  const exec = require('../exec-sync');
   const findConfig = require('../find-config');
   const jestConfigPath = findConfig('jest.config.js');
   const resolve = require('resolve');
@@ -21,20 +21,20 @@ module.exports = function (options) {
       // Forces test results output highlighting even if stdout is not a TTY.
       '--colors',
 
-      // Run tests in serial (parallel builds seem to hang rush.)
-      // On Windows, this is occasionally an issue: https://github.com/facebook/jest/issues/4444
-      // Temporarily run sequentially on Windows until jest is upgraded.
-      process.env.TRAVIS || process.platform === 'win32' ? `--runInBand` : undefined,
+      // On Travis, run tests in serial as supposedly, the free Travis build terminates if multiple processes are spun up.
+      process.env.TRAVIS ? `--runInBand` : undefined,
 
       // In production builds, produce coverage information.
       options.isProduction && '--coverage',
 
       // If the -u flag is passed, pass it through.
-      (options.argv && options.argv.indexOf('-u') >= 0) ? '-u' : '',
+      options.argv && options.argv.indexOf('-u') >= 0 ? '-u' : '',
 
       // Pass in custom arguments.
       options.args
-    ].filter(arg => !!arg).join(' ');
+    ]
+      .filter(arg => !!arg)
+      .join(' ');
 
     const command = `node ${jestPath} ${args}`;
 

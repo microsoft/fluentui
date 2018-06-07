@@ -3,6 +3,7 @@
     "office-ui-fabric-react-tslint"
   ],
   "rules": {
+    "deprecation": false,
     "no-any": false,
     "no-inferrable-types": false,
     "typedef": [

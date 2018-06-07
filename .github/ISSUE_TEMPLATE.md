@@ -4,7 +4,6 @@
 
 - __Package version(s)__: (fill this out)
 - __Browser and OS versions__: (fill this out if relevant)
-- __Microsoft Alias__: (if you are a Microsoft employee)
 
 #### Priorities and help requested (not applicable if asking question):
 

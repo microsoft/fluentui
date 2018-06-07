@@ -11,17 +11,24 @@ const GLOBAL_SETTINGS_PROP_NAME = '__globalSettings__';
 const CALLBACK_STATE_PROP_NAME = '__callbacks__';
 
 // tslint:disable-next-line:no-any
-let _globalSettings: { [key: string]: any } = {};
+let _global: { [key: string]: any };
 let _counter = 0;
 
 if (typeof window !== 'undefined') {
-  // tslint:disable-next-line:no-any
-  let win = window as any;
+  _global = window;
+} else if (typeof global !== 'undefined') {
+  _global = global;
+} else {
+  _global = {};
+}
 
-  _globalSettings = win[GLOBAL_SETTINGS_PROP_NAME] = win[GLOBAL_SETTINGS_PROP_NAME] || {
+// tslint:disable-next-line:no-any
+let _globalSettings: { [key: string]: any } =
+  _global[GLOBAL_SETTINGS_PROP_NAME] =
+  _global[GLOBAL_SETTINGS_PROP_NAME] ||
+  {
     [CALLBACK_STATE_PROP_NAME]: {}
   };
-}
 
 const _callbacks = _globalSettings[CALLBACK_STATE_PROP_NAME];
 
@@ -101,5 +108,4 @@ export class GlobalSettings {
   public static removeChangeListener(cb: IChangeEventCallback): void {
     delete _callbacks[cb.__id__ as string];
   }
-
 }

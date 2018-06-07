@@ -6,7 +6,8 @@ import {
   IRawStyle,
   IFontFace,
   fontFace,
-  mergeStyles
+  mergeStyles,
+  Stylesheet
 } from '@uifabric/merge-styles';
 
 export interface IIconSubset {
@@ -66,6 +67,15 @@ const _iconSettings = GlobalSettings.getValue<IIconRecords>(ICON_SETTING_NAME, {
     warnOnMissingIcons: true
   },
   __remapped: {}
+});
+
+// Reset icon registration on stylesheet resets.
+Stylesheet.getInstance().onReset(() => {
+  for (const name in _iconSettings) {
+    if (_iconSettings.hasOwnProperty(name) && !!(_iconSettings[name] as IIconRecord).subset) {
+      (_iconSettings[name] as IIconRecord).subset.className = undefined;
+    }
+  }
 });
 
 /**
@@ -129,25 +139,29 @@ export function getIcon(name?: string): IIconRecord | undefined {
 
     if (icon) {
       let { subset } = icon;
+      if (subset && subset.fontFace) {
 
-      if (subset.fontFace && !subset.isRegistered) {
-        // Register font face for given icons.
-        fontFace(subset.fontFace);
+        if (!subset.isRegistered) {
+          fontFace(subset.fontFace);
+          subset.isRegistered = true;
+        }
 
-        // Generate a base class name for the given font.
-        subset.className = mergeStyles(
-          subset.style,
-          {
-            fontFamily: subset.fontFace.fontFamily,
-            fontWeight: subset.fontFace.fontWeight || 'normal',
-            fontStyle: subset.fontFace.fontStyle || 'normal'
-          }).toString();
-
-        subset.isRegistered = true;
+        if (!subset.className) {
+          subset.className = mergeStyles(
+            subset.style,
+            {
+              fontFamily: subset.fontFace.fontFamily,
+              fontWeight: subset.fontFace.fontWeight || 'normal',
+              fontStyle: subset.fontFace.fontStyle || 'normal'
+            }
+          );
+        }
       }
     } else {
       if (!options.disableWarnings && options.warnOnMissingIcons) {
-        warn(`The icon "${name}" was used but not registered. See http://aka.ms/fabric-icon-usage for more information.`);
+        warn(
+          `The icon "${name}" was used but not registered. See http://aka.ms/fabric-icon-usage for more information.`
+        );
       }
     }
   }

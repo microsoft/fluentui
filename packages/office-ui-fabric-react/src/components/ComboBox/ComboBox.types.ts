@@ -9,8 +9,8 @@ import { IKeytipProps } from '../../Keytip';
 
 export interface IComboBox {
   /**
-  * If there is a menu open this will dismiss the menu
-  */
+   * If there is a menu open this will dismiss the menu
+   */
   dismissMenu: () => void;
 
   /**
@@ -153,8 +153,8 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   onRenderLowerContent?: IRenderFunction<IComboBoxProps>;
 
   /**
-  * Custom width for dropdown (unless useComboBoxAsMenuWidth is undefined or false)
-  */
+   * Custom width for dropdown (unless useComboBoxAsMenuWidth is undefined or false)
+   */
   dropdownWidth?: number;
 
   /**
@@ -262,8 +262,8 @@ export interface IComboBoxStyles {
   callout: IStyle;
 
   /**
-  * Styles for the optionsContainerWrapper.
-  */
+   * Styles for the optionsContainerWrapper.
+   */
   optionsContainerWrapper: IStyle;
 
   /**
@@ -273,8 +273,8 @@ export interface IComboBoxStyles {
   optionsContainer: IStyle;
 
   /**
- * Styles for a header in the options.
- */
+   * Styles for a header in the options.
+   */
   header: IStyle;
 
   /**
@@ -284,7 +284,6 @@ export interface IComboBoxStyles {
 }
 
 export interface IComboBoxOptionStyles extends IButtonStyles {
-
   /**
    * Styles for the text inside the comboBox option.
    * This should be used instead of the description
