@@ -264,6 +264,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
           this._addProximityHandler(this.props.mouseProximityOffset);
         }, this.props.delayBeforeMouseOpen!);
 
+        // SetTimeout is hacky solution.  ARIA text doesn't read aloud unless it is appended or changed after the component
+        // is mounted
         if (this.props.ariaAlertText) {
           this._async.setTimeout(() => {
             if (this._ariaAlertContainer.current && this.props.ariaAlertText) {
@@ -426,6 +428,13 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       this._entityInnerHostElement.current.addEventListener(
         'transitionend',
         (): void => {
+          // Need setTimeout to trigger narrator
+          this._async.setTimeout(() => {
+            if (this.props.teachingBubbleRef && this.props.teachingBubbleRef.current) {
+              this.props.teachingBubbleRef.current.focus();
+            }
+          }, 0);
+
           if (this.props.onAnimationOpenEnd) {
             this.props.onAnimationOpenEnd();
           }

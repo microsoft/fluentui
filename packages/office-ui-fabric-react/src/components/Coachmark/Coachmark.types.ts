@@ -3,6 +3,7 @@ import { Coachmark } from './Coachmark';
 import { ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.styles';
 import { IPositioningContainerTypes } from './PositioningContainer/PositioningContainer.types';
 import { IStyleFunctionOrObject } from '../../Utilities';
+import { ITeachingBubble } from '../../TeachingBubble';
 
 export interface ICoachmark {}
 
@@ -119,4 +120,14 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
    * Text to announce to screen reader / narrator when Coachmark is displayed
    */
   ariaAlertText?: string;
+
+  /**
+   * Ref for TeachingBubble
+   * @todo Fix interface here
+   */
+  teachingBubbleRef?: {
+    (component: ITeachingBubble | null): void;
+    current: ITeachingBubble | null;
+    value: ITeachingBubble | null;
+  };
 }

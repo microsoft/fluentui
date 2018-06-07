@@ -1,13 +1,14 @@
 import * as React from 'react';
-import { BaseComponent, css } from '../../Utilities';
-import { ITeachingBubbleProps } from './TeachingBubble.types';
+import { BaseComponent, css, createRef } from '../../Utilities';
+import { ITeachingBubbleProps, ITeachingBubble } from './TeachingBubble.types';
 import { ITeachingBubbleState } from './TeachingBubble';
 import { PrimaryButton, DefaultButton, IconButton } from '../../Button';
 import { Image, ImageFit } from '../../Image';
 import * as stylesImport from './TeachingBubble.scss';
 const styles: any = stylesImport;
 
-export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, ITeachingBubbleState> {
+export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, ITeachingBubbleState>
+  implements ITeachingBubble {
   // Specify default props values
   public static defaultProps = {
     hasCondensedHeadline: false,
@@ -18,10 +19,18 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
     }
   };
 
+  private _rootElement = createRef<HTMLDivElement>();
+
   constructor(props: ITeachingBubbleProps) {
     super(props);
 
     this.state = {};
+  }
+
+  public focus(): void {
+    if (this._rootElement.current) {
+      this._rootElement.current.focus();
+    }
   }
 
   public render(): JSX.Element {
@@ -34,7 +43,10 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
       hasCloseIcon,
       onDismiss,
       closeButtonAriaLabel,
-      hasSmallHeadline
+      hasSmallHeadline,
+      children,
+      ariaDescribedBy,
+      ariaLabelledBy
     } = this.props;
 
     let imageContent;
@@ -63,15 +75,19 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
                 : 'ms-TeachingBubble-header--large ' + styles.headerIsLarge
           )}
         >
-          <p className={css('ms-TeachingBubble-headline', styles.headline)}>{headline}</p>
+          <p className={css('ms-TeachingBubble-headline', styles.headline)} id={ariaLabelledBy}>
+            {headline}
+          </p>
         </div>
       );
     }
 
-    if (this.props.children) {
+    if (children) {
       bodyContent = (
         <div className={css('ms-TeachingBubble-body', styles.body)}>
-          <p className={css('ms-TeachingBubble-subText', styles.subText)}>{this.props.children}</p>
+          <p className={css('ms-TeachingBubble-subText', styles.subText)} id={ariaDescribedBy}>
+            {this.props.children}
+          </p>
         </div>
       );
     }
@@ -112,7 +128,14 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
     }
 
     return (
-      <div className={css('ms-TeachingBubble-content', styles.root)}>
+      <div
+        ref={this._rootElement}
+        className={css('ms-TeachingBubble-content', styles.root)}
+        role={'dialog'}
+        tabIndex={-1}
+        aria-labelledby={ariaLabelledBy}
+        aria-describedby={ariaDescribedBy}
+      >
         {imageContent}
         {closeButton}
         <div className={css('ms-TeachingBubble-bodycontent', styles.bodyContent)}>

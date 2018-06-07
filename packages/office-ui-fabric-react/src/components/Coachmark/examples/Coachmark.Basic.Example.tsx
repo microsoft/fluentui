@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Coachmark } from '../Coachmark';
-import { TeachingBubbleContent } from 'office-ui-fabric-react/lib/TeachingBubble';
+import { ITeachingBubble, TeachingBubbleContent } from 'office-ui-fabric-react/lib/TeachingBubble';
 import { DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 import { IStyle } from '../../../Styling';
@@ -31,6 +31,7 @@ export interface ICoachmarkBasicExampleStyles {
 
 export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExampleState> {
   private _targetButton = createRef<HTMLDivElement>();
+  private _teachingBubbleContent = createRef<ITeachingBubble>();
 
   public constructor(props: {}) {
     super(props);
@@ -105,14 +106,18 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
               directionalHint: this.state.coachmarkPosition
             }}
             ariaAlertText="A Coachmark has appeared"
+            teachingBubbleRef={this._teachingBubbleContent}
           >
             <TeachingBubbleContent
+              componentRef={this._teachingBubbleContent}
               headline="Example Title"
               hasCloseIcon={true}
               closeButtonAriaLabel="Close"
               primaryButtonProps={buttonProps}
               secondaryButtonProps={buttonProps2}
               onDismiss={this._onDismiss}
+              ariaDescribedBy={'example-description1'}
+              ariaLabelledBy={'example-label1'}
             >
               Welcome to the land of Coachmarks!
             </TeachingBubbleContent>
