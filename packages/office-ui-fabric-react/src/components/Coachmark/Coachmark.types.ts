@@ -114,4 +114,9 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
    * Beacon color two.
    */
   beaconColorTwo?: string;
+
+  /**
+   * Text to announce to screen reader / narrator when Coachmark is displayed
+   */
+  ariaAlertText?: string;
 }

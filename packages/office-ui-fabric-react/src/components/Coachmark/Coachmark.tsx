@@ -115,6 +115,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
    */
   private _entityInnerHostElement = createRef<HTMLDivElement>();
   private _translateAnimationContainer = createRef<HTMLDivElement>();
+  private _ariaAlertContainer = createRef<HTMLDivElement>();
   private _positioningContainer = createRef<IPositioningContainer>();
 
   /**
@@ -188,6 +189,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
         {...positioningContainerProps}
       >
         <div className={classNames.root}>
+          <div className={classNames.ariaAlert} aria-live="assertive" ref={this._ariaAlertContainer} />
           <div className={classNames.pulsingBeacon} />
           <div className={classNames.translateAnimationContainer} ref={this._translateAnimationContainer}>
             <div className={classNames.scaleAnimationLayer}>
@@ -259,6 +261,14 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
         this._async.setTimeout(() => {
           this._addProximityHandler(this.props.mouseProximityOffset);
         }, this.props.delayBeforeMouseOpen!);
+
+        if (this.props.ariaAlertText) {
+          this._async.setTimeout(() => {
+            if (this._ariaAlertContainer.current && this.props.ariaAlertText) {
+              this._ariaAlertContainer.current.innerText = this.props.ariaAlertText;
+            }
+          }, 2000);
+        }
       }
     );
   }

@@ -104,6 +104,7 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
             positioningContainerProps={{
               directionalHint: this.state.coachmarkPosition
             }}
+            ariaAlertText="A Coachmark has appeared"
           >
             <TeachingBubbleContent
               headline="Example Title"
