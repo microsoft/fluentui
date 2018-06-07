@@ -1,12 +1,7 @@
 import * as React from 'react';
-import {
-  ExampleCard,
-  IComponentDemoPageProps,
-  ComponentPage,
-  PageMarkdown,
-  PropertiesTableSet
-} from '@uifabric/example-app-base';
 import FocusTrapZoneBoxExample from './examples/FocusTrapZone.Box.Example';
+import { DemoPage } from '../../demo/components/DemoPage';
+import { IDemoPageProps } from '../../demo/components/DemoPage.types';
 const FocusTrapZoneBoxExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/examples/FocusTrapZone.Box.Example.tsx') as string;
 
 import FocusTrapZoneBoxExampleWithFocusableItem from './examples/FocusTrapZone.Box.FocusOnCustomElement.Example';
@@ -18,44 +13,46 @@ const FocusTrapZoneBoxClickExampleCode = require('!raw-loader!office-ui-fabric-r
 import FocusTrapZoneNestedExample from './examples/FocusTrapZone.Nested.Example';
 const FocusTrapZoneNestedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/examples/FocusTrapZone.Nested.Example.tsx') as string;
 
-export class FocusTrapZonePage extends React.Component<IComponentDemoPageProps, {}> {
-  public render(): JSX.Element {
-    return (
-      <ComponentPage
-        title='FocusTrapZone'
-        componentName='FocusTrapZoneExample'
-        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/FocusTrapZone'
-        exampleCards={
-          <div>
-            <ExampleCard title='Simple Box' code={ FocusTrapZoneBoxExampleCode }>
-              <FocusTrapZoneBoxExample />
-            </ExampleCard>
-            <ExampleCard title='Simple Box with focus on custom focusable element' code={ FocusTrapZoneBoxExampleWithFocusableItemCode }>
-              <FocusTrapZoneBoxExampleWithFocusableItem />
-            </ExampleCard>
-            <ExampleCard title='Simple Box with Clicking outside Trap Zone enabled' code={ FocusTrapZoneBoxClickExampleCode }>
-              <FocusTrapZoneBoxClickExample />
-            </ExampleCard>
-            <ExampleCard title='Multiple Nest FocusTrapZones' code={ FocusTrapZoneNestedExampleCode }>
-              <FocusTrapZoneNestedExample />
-            </ExampleCard>
-          </div>
-        }
-        allowNativeProps={ true }
-        propertiesTables={
-          <PropertiesTableSet
-            sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/FocusTrapZone.types.ts')
-            ] }
-          />
-        }
-        overview={
-          <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/docs/FocusTrapZoneOverview.md') }
-          </PageMarkdown>
-        }
-        isHeaderVisible={ this.props.isHeaderVisible }
-      />
-    );
-  }
-}
+export const FocusTrapZonePageProps: IDemoPageProps = {
+  title: 'FocusTrapZone',
+  componentName: 'FocusTrapZone',
+  componentUrl:
+    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/FocusTrapZone',
+  examples: [
+    {
+      title: 'Simple Box',
+      code: FocusTrapZoneBoxExampleCode,
+      view: <FocusTrapZoneBoxExample />
+    },
+    {
+      title: 'Simple Box with focus on custom focusable element',
+      code: FocusTrapZoneBoxExampleWithFocusableItemCode,
+      view: <FocusTrapZoneBoxExampleWithFocusableItem />
+    },
+    {
+      title: 'Simple Box with Clicking outside Trap Zone enabled',
+      code: FocusTrapZoneBoxClickExampleCode,
+      view: <FocusTrapZoneBoxClickExample />
+    },
+    {
+      title: 'Multiple Nest FocusTrapZones',
+      code: FocusTrapZoneNestedExampleCode,
+      view: <FocusTrapZoneNestedExample />
+    }
+  ],
+  propertiesTablesSources: [
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/FocusTrapZone.types.ts')
+  ],
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/docs/FocusTrapZoneOverview.md'),
+  bestPractices: '',
+  dos: '',
+  donts: '',
+  isHeaderVisible: true,
+  allowNativeProps: true
+};
+
+export const FocusTrapZonePage = (props: { isHeaderVisible: boolean }) => (
+  <DemoPage {...{ ...FocusTrapZonePageProps, ...props }} />
+);

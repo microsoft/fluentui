@@ -7,26 +7,27 @@ const pageStyles: any = require('../PageStyles.module.scss');
 export class MarqueeSelectionUtilityPage extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
-      <div className={ pageStyles.basePage }>
+      <div className={pageStyles.basePage}>
         <ComponentPage>
-          <PageHeader pageTitle='MarqueeSelection' backgroundColor='#038387'
-            links={
-              [
-                {
-                  'text': 'Overview',
-                  'location': 'Overview'
-                },
-                {
-                  'text': 'Variants',
-                  'location': 'Variants'
-                },
-                {
-                  'text': 'Implementation',
-                  'location': 'Implementation'
-                }
-              ]
-            } />
-          <MarqueeSelectionPage isHeaderVisible={ false } />
+          <PageHeader
+            pageTitle="MarqueeSelection"
+            backgroundColor="#038387"
+            links={[
+              {
+                text: 'Overview',
+                location: 'Overview'
+              },
+              {
+                text: 'Variants',
+                location: 'Variants'
+              },
+              {
+                text: 'Implementation',
+                location: 'Implementation'
+              }
+            ]}
+          />
+          <MarqueeSelectionPage isHeaderVisible={false} />
         </ComponentPage>
       </div>
     );

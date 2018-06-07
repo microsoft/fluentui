@@ -15,10 +15,7 @@ export const getStyles = (props: ISpinnerStyleProps): ISpinnerStyles => {
   const { palette } = theme;
 
   return {
-    root: [
-      'ms-Spinner',
-      className
-    ],
+    root: ['ms-Spinner', className],
     circle: [
       'ms-Spinner-circle',
       {
@@ -37,7 +34,7 @@ export const getStyles = (props: ISpinnerStyleProps): ISpinnerStyles => {
           [HighContrastSelector]: {
             borderTopColor: 'Highlight'
           }
-        },
+        }
       },
       size === SpinnerSize.xSmall && [
         'ms-Spinner--xSmall',

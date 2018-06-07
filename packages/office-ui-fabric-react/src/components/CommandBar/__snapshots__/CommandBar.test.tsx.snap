@@ -56,9 +56,9 @@ exports[`CommandBar renders commands correctly 1`] = `
           className="ms-OverflowSet-item"
         >
           <button
-            aria-describedby={null}
+            aria-describedby={undefined}
             aria-label={undefined}
-            aria-labelledby={null}
+            aria-labelledby={undefined}
             aria-posinset={1}
             aria-pressed={undefined}
             aria-setsize={2}
@@ -173,9 +173,9 @@ exports[`CommandBar renders commands correctly 1`] = `
           className="ms-OverflowSet-item"
         >
           <button
-            aria-describedby={null}
+            aria-describedby={undefined}
             aria-label={undefined}
-            aria-labelledby={null}
+            aria-labelledby={undefined}
             aria-posinset={2}
             aria-pressed={undefined}
             aria-setsize={2}

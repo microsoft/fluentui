@@ -1,8 +1,5 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  createRef
-} from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent, createRef } from 'office-ui-fabric-react/lib/Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { IDetailsList, DetailsList, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
@@ -54,10 +51,13 @@ const _items = [
   }
 ];
 
-export class DetailsListGroupedExample extends BaseComponent<{}, {
-  items: {}[];
-  showItemIndexInView: boolean;
-}> {
+export class DetailsListGroupedExample extends BaseComponent<
+  {},
+  {
+    items: {}[];
+    showItemIndexInView: boolean;
+  }
+  > {
   private _root = createRef<IDetailsList>();
 
   constructor(props: {}) {
@@ -80,7 +80,7 @@ export class DetailsListGroupedExample extends BaseComponent<{}, {
     const { items } = this.state;
 
     return (
-      <Fabric className='DetailsList-grouped-example'>
+      <Fabric className="DetailsList-grouped-example">
         <div>
           <Checkbox
             label='Show index of the first item in view when unmounting'
@@ -88,10 +88,7 @@ export class DetailsListGroupedExample extends BaseComponent<{}, {
             onChange={ this._onShowItemIndexInViewChanged }
           />
         </div>
-        <DefaultButton
-          onClick={ this._addItem }
-          text='Add an item'
-        />
+        <DefaultButton onClick={ this._addItem } text="Add an item" />
         <DetailsList
           componentRef={ this._root }
           items={ items }
@@ -116,8 +113,8 @@ export class DetailsListGroupedExample extends BaseComponent<{}, {
             }
           ] }
           columns={ _columns }
-          ariaLabelForSelectAllCheckbox='Toggle selection for all items'
-          ariaLabelForSelectionColumn='Toggle selection'
+          ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+          ariaLabelForSelectionColumn="Toggle selection"
           groupProps={ {
             showEmptyGroups: true
           } }
@@ -130,31 +127,33 @@ export class DetailsListGroupedExample extends BaseComponent<{}, {
   private _addItem = (): void => {
     const items = this.state.items;
 
-    this.setState({
-      items: items.concat([{
-        key: 'item-' + items.length,
-        name: 'New item ' + items.length,
-        color: 'blue'
-      }])
-    }, () => {
-      if (this._root.current) {
-        this._root.current.focusIndex(items.length, true);
+    this.setState(
+      {
+        items: items.concat([
+          {
+            key: 'item-' + items.length,
+            name: 'New item ' + items.length,
+            color: 'blue'
+          }
+        ])
+      },
+      () => {
+        if (this._root.current) {
+          this._root.current.focusIndex(items.length, true);
+        }
       }
-    });
-  }
+    );
+  };
 
   private _onRenderColumn(item: any, index: number, column: IColumn) {
-    let value = (item && column && column.fieldName) ? item[column.fieldName] : '';
+    let value = item && column && column.fieldName ? item[column.fieldName] : '';
 
     if (value === null || value === undefined) {
       value = '';
     }
 
     return (
-      <div
-        className={ 'grouped-example-column' }
-        data-is-focusable={ true }
-      >
+      <div className={ 'grouped-example-column' } data-is-focusable={ true }>
         { value }
       </div>
     );

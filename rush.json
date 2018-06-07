@@ -19,6 +19,12 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@uifabric/charting",
+      "projectFolder": "packages/charting",
+      "versionPolicyName": "lockedMajor",
+      "shouldPublish": false
+    },
+    {
       "packageName": "@uifabric/merge-styles",
       "projectFolder": "packages/merge-styles",
       "versionPolicyName": "lockedMajor",
@@ -40,19 +46,14 @@
       "packageName": "@uifabric/example-app-base",
       "projectFolder": "packages/example-app-base",
       "versionPolicyName": "lockedMajor",
-      "cyclicDependencyProjects": [
-        "office-ui-fabric-react"
-      ],
+      "cyclicDependencyProjects": ["office-ui-fabric-react"],
       "shouldPublish": true
     },
     {
       "packageName": "@uifabric/styling",
       "projectFolder": "packages/styling",
       "versionPolicyName": "lockedMajor",
-      "cyclicDependencyProjects": [
-        "office-ui-fabric-react",
-        "@uifabric/example-app-base"
-      ],
+      "cyclicDependencyProjects": ["office-ui-fabric-react", "@uifabric/example-app-base"],
       "shouldPublish": true
     },
     {

@@ -11,12 +11,6 @@ export class PrimaryButton extends BaseComponent<IButtonProps, {}> {
   protected _shouldUpdateComponentRef = false;
 
   public render(): JSX.Element {
-    return (
-      <DefaultButton
-        { ...this.props }
-        primary={ true }
-        onRenderDescription={ nullRender }
-      />
-    );
+    return <DefaultButton {...this.props} primary={true} onRenderDescription={nullRender} />;
   }
 }

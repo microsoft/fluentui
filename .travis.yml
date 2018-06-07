@@ -8,3 +8,4 @@ script:
   - npm run buildfast
   - npm run bundlesize
   - npm run vrtest
+  - npm run check-for-changed-files
