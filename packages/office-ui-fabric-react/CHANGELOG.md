@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 07 Jun 2018 16:35:34 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Jun 2018 17:40:07 GMT and should not be manually modified.
+
+## 6.6.1
+Thu, 07 Jun 2018 17:40:07 GMT
+
+### Patches
+
+- SplitButton: apply button props to the focusable element for split buttons
 
 ## 6.6.0
 Thu, 07 Jun 2018 16:35:34 GMT

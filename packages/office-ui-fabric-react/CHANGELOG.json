@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.6.1",
+      "tag": "office-ui-fabric-react_v6.6.1",
+      "date": "Thu, 07 Jun 2018 17:40:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "f899e4dd055d8cd797d18bc84a6494344e4403b9",
+            "comment": "SplitButton: apply button props to the focusable element for split buttons"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.6.0",
       "tag": "office-ui-fabric-react_v6.6.0",
       "date": "Thu, 07 Jun 2018 16:35:34 GMT",

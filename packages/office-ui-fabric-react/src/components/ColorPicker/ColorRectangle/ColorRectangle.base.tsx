@@ -1,31 +1,25 @@
 import * as React from 'react';
-import { BaseComponent, assign, css, createRef } from '../../Utilities';
+import { BaseComponent, assign, createRef, classNamesFunction, customizable } from '../../../Utilities';
 import {
   IColor,
   MAX_COLOR_SATURATION,
   MAX_COLOR_VALUE,
   getFullColorString,
   hsv2hex
-} from '../../utilities/color/colors';
-import * as stylesImport from './ColorPicker.scss';
-const styles: any = stylesImport;
+} from '../../../utilities/color/colors';
+import { IColorRectangleProps, IColorRectangleStyleProps, IColorRectangleStyles } from './ColorRectangle.types';
 
-export interface IColorRectangleProps {
-  componentRef?: () => void;
-  color: IColor;
-  minSize?: number;
+const getClassNames = classNamesFunction<IColorRectangleStyleProps, IColorRectangleStyles>();
 
-  onSVChanged?(s: number, v: number): void;
-}
-
-export interface IColorPickerState {
+export interface IColorRectangleState {
   isAdjusting?: boolean;
   origin?: { x: number; y: number; color: IColor };
   color?: IColor;
   fullColorString?: string;
 }
 
-export class ColorRectangle extends BaseComponent<IColorRectangleProps, IColorPickerState> {
+@customizable('ColorRectangle', ['theme'])
+export class ColorRectangleBase extends BaseComponent<IColorRectangleProps, IColorRectangleState> {
   public static defaultProps = {
     minSize: 220
   };
@@ -59,20 +53,25 @@ export class ColorRectangle extends BaseComponent<IColorRectangleProps, IColorPi
   }
 
   public render(): JSX.Element {
-    const { minSize } = this.props;
+    const { minSize, theme, className, styles } = this.props;
     const { color, fullColorString } = this.state;
+
+    const classNames = getClassNames(styles!, {
+      theme: theme!,
+      className
+    });
 
     return (
       <div
         ref={this._root}
-        className={css('ms-ColorPicker-colorRect', styles.colorRect)}
+        className={classNames.root}
         style={{ minWidth: minSize, minHeight: minSize, backgroundColor: fullColorString }}
         onMouseDown={this._onMouseDown}
       >
-        <div className={css('ms-ColorPicker-light', styles.light)} />
-        <div className={css('ms-ColorPicker-dark', styles.dark)} />
+        <div className={classNames.light} />
+        <div className={classNames.dark} />
         <div
-          className={css('ms-ColorPicker-thumb', styles.thumb)}
+          className={classNames.thumb}
           style={{ left: color!.s + '%', top: MAX_COLOR_VALUE - color!.v + '%', backgroundColor: color!.str }}
         />
       </div>
