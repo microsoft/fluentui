@@ -15,7 +15,7 @@ const getClassNames = classNamesFunction<IVerticalBarChartStyleProps, IVerticalB
 type numericAxis = D3Axis<number | { valueOf(): number }>;
 type stringAxis = D3Axis<string>;
 
-@customizable('VerticalBarChart', ['theme'])
+@customizable('VerticalBarChart', ['theme', 'styles'])
 export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps, {}> {
   private _points: IDataPoint[];
   private _width: number;

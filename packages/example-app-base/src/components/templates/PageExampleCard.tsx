@@ -65,7 +65,7 @@ const getSubHeaderStyles = () => ({
   root: { flexGrow: 1 }
 });
 
-@customizable('PageExampleCard', ['theme'])
+@customizable('PageExampleCard', ['theme', 'styles'])
 export class PageExampleCard extends BaseComponent<IPageExampleCardProps, IPageExampleCardState> {
   constructor(props: IPageExampleCardProps) {
     super(props);
