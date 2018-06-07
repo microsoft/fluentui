@@ -16,8 +16,8 @@ let _counter = 0;
 
 if (typeof window !== 'undefined') {
   _global = window;
-} else if (typeof process !== 'undefined') {
-  _global = process;
+} else if (typeof global !== 'undefined') {
+  _global = global;
 } else {
   _global = {};
 }
