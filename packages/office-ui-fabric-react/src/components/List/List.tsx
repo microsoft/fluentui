@@ -83,7 +83,7 @@ const _measureScrollRect = _measurePageRect;
 export class List extends BaseComponent<IListProps, IListState> implements IList {
   public static defaultProps = {
     startIndex: 0,
-    onRenderCell: (item: any, index: number, containsFocus: boolean) => <div>{ (item && item.name) || '' }</div>,
+    onRenderCell: (item: any, index: number, containsFocus: boolean) => <div>{(item && item.name) || ''}</div>,
     renderedWindowsAhead: DEFAULT_RENDERED_WINDOWS_AHEAD,
     renderedWindowsBehind: DEFAULT_RENDERED_WINDOWS_BEHIND
   };
@@ -273,8 +273,11 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   public getStartItemIndexInView(): number {
     const pages = this.state.pages || [];
     for (const page of pages) {
-      const isPageVisible = (page.key && !page.key.startsWith(SPACER_KEY_PREFIX)) &&
-        ((this._scrollTop || 0) >= page.top) && ((this._scrollTop || 0) <= (page.top + page.height));
+      const isPageVisible =
+        page.key &&
+        !page.key.startsWith(SPACER_KEY_PREFIX) &&
+        (this._scrollTop || 0) >= page.top &&
+        (this._scrollTop || 0) <= page.top + page.height;
       if (isPageVisible) {
         const startIndexStr = page.key.replace(PAGE_KEY_PREFIX, '');
         const startIndexInPage = Number(startIndexStr);
@@ -370,13 +373,13 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
 
     return (
       <div
-        ref={ this._root }
-        { ...divProps }
-        role={ role === undefined ? 'list' : role }
-        className={ css('ms-List', className) }
+        ref={this._root}
+        {...divProps}
+        role={role === undefined ? 'list' : role}
+        className={css('ms-List', className)}
       >
-        <div ref={ this._surface } className={ css('ms-List-surface') } role="presentation">
-          { pageElements }
+        <div ref={this._surface} className={css('ms-List-surface')} role="presentation">
+          {pageElements}
         </div>
       </div>
     );
@@ -442,8 +445,8 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       ...(getPageStyle ? getPageStyle(page) : {}),
       ...(!page.items
         ? {
-          height: page.height
-        }
+            height: page.height
+          }
         : {})
     };
   }
@@ -470,18 +473,18 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
 
       return (
         <div
-          role={ cellRole }
-          className={ css('ms-List-cell') }
-          key={ itemKey }
-          data-list-index={ index }
+          role={cellRole}
+          className={css('ms-List-cell')}
+          key={itemKey}
+          data-list-index={index}
           data-automationid="ListCell"
         >
-          { onRenderCell && onRenderCell(item, index, this.state.isScrolling) }
+          {onRenderCell && onRenderCell(item, index, this.state.isScrolling)}
         </div>
       );
     });
 
-    return <div { ...divProps }>{ cells }</div>;
+    return <div {...divProps}>{cells}</div>;
   };
 
   /** Track the last item index focused so that we ensure we keep it rendered. */
@@ -842,12 +845,12 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     itemIndex: number,
     visibleRect: IRectangle
   ): {
-      // These return values are now no longer optional.
-      itemCount: number;
-      height: number;
-      data?: any;
-      key?: string;
-    } {
+    // These return values are now no longer optional.
+    itemCount: number;
+    height: number;
+    data?: any;
+    key?: string;
+  } {
     const { getPageSpecification } = this.props;
     if (getPageSpecification) {
       const pageData = getPageSpecification(itemIndex, visibleRect);
@@ -902,7 +905,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     style: any = {},
     data: any = undefined
   ): IPage {
-    pageKey = pageKey || (PAGE_KEY_PREFIX + startIndex);
+    pageKey = pageKey || PAGE_KEY_PREFIX + startIndex;
     const cachedPage = this._pageCache[pageKey];
     if (cachedPage && cachedPage.page) {
       return cachedPage.page;
