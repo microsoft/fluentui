@@ -1,10 +1,5 @@
 import * as React from 'react';
-import {
-  ExampleCard,
-  IComponentDemoPageProps,
-  ComponentPage,
-  PropertiesTableSet
-} from '@uifabric/example-app-base';
+import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 
 import { CollapsibleSectionRecursiveExample } from './examples/CollapsibleSection.Recursive.Example';
 const CollapsibleSectionRecursiveExampleCode =
@@ -15,28 +10,30 @@ export class CollapsibleSectionPage extends React.Component<IComponentDemoPagePr
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='CollapsibleSection'
-        componentName='CollapsibleSection'
+        title="CollapsibleSection"
+        componentName="CollapsibleSection"
         exampleCards={
           <div>
-            <ExampleCard title='Recursive Collapsible Section' isOptIn={ true } code={ CollapsibleSectionRecursiveExampleCode }>
+            <ExampleCard
+              title="Recursive Collapsible Section"
+              isOptIn={true}
+              code={CollapsibleSectionRecursiveExampleCode}
+            >
               <CollapsibleSectionRecursiveExample />
             </ExampleCard>
           </div>
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={ [
-              require<string>('!raw-loader!@uifabric/experiments/src/components/CollapsibleSection/CollapsibleSection.types.ts')
-            ] }
+            sources={[
+              require<
+                string
+              >('!raw-loader!@uifabric/experiments/src/components/CollapsibleSection/CollapsibleSection.types.ts')
+            ]}
           />
         }
-        overview={
-          <div />
-        }
-        bestPractices={
-          <div />
-        }
+        overview={<div />}
+        bestPractices={<div />}
         dos={
           <div>
             <ul>
@@ -44,14 +41,15 @@ export class CollapsibleSectionPage extends React.Component<IComponentDemoPagePr
             </ul>
           </div>
         }
-        donts={ // @todo: fill in description
+        donts={
+          // @todo: fill in description
           <div>
             <ul>
               <li />
             </ul>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }
+        isHeaderVisible={this.props.isHeaderVisible}
       />
     );
   }
