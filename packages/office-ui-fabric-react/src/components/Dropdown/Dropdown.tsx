@@ -171,7 +171,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
               aria-activedescendant={
                 isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0
                   ? this._id + '-list' + selectedIndices[0]
-                  : undefined
+                  : id + '-option'
               }
               aria-disabled={disabled}
               aria-owns={isOpen ? id + '-list' : undefined}
@@ -200,6 +200,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
                 )}
                 aria-atomic={true}
                 role="listbox"
+                aria-label={selectedOptions.length ? selectedOptions[0].text : this.props.placeHolder}
               >
                 {// If option is selected render title, otherwise render the placeholder text
                 selectedOptions.length
