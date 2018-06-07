@@ -30,7 +30,7 @@ const TASKS_WITH_PREREQUISITES = [
   ['ts', 'sass'],
   ['tslint', 'sass'],
   ['jest', 'sass'],
-  ['webpack', 'ts'],
+  ['webpack', 'ts']
 ];
 
 /**
@@ -51,43 +51,46 @@ const disabledTasks = getDisabledTasks(process, package.disabledTasks);
 const firstTasks = getNextTasks(null, disabledTasks);
 
 // Start executing tasks, executeTasks will call itself recursively until all tasks are done
-executeTasks(firstTasks)
-  .then(() => {
-    if (hasFailures) {
-      process.exitCode = 1;
-    }
-    logEndBuild(packageName, !hasFailures, buildStartTime);
-  });
+executeTasks(firstTasks).then(() => {
+  if (hasFailures) {
+    process.exitCode = 1;
+  }
+  logEndBuild(packageName, !hasFailures, buildStartTime);
+});
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //// Build helper functions
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function executeTasks(tasks) {
-  return Promise.all(tasks.map((task) => {
-    return runTask(task)
-      .then(() => {
+  return Promise.all(
+    tasks.map(task => {
+      return runTask(task).then(() => {
         const nextTasks = getNextTasks(task, disabledTasks);
         if (nextTasks.length) {
           return executeTasks(nextTasks);
         }
         return Promise.resolve();
       });
-  }));
+    })
+  );
 }
 
 function runTask(task) {
   let taskStartTime = new Date().getTime();
 
-  return Promise.resolve()
-    .then(() => !hasFailures && Promise.resolve()
-      .then(() => logStartTask(packageName, task))
-      .then(() => taskMap[task]({ isProduction, argv: process.argv }))
-      .then(() => logEndTask(packageName, task, taskStartTime))
-      .catch((e) => {
-        hasFailures = true;
-        logEndTask(packageName, task, taskStartTime, e);
-      }));
+  return Promise.resolve().then(
+    () =>
+      !hasFailures &&
+      Promise.resolve()
+        .then(() => logStartTask(packageName, task))
+        .then(() => taskMap[task]({ isProduction, argv: process.argv }))
+        .then(() => logEndTask(packageName, task, taskStartTime))
+        .catch(e => {
+          hasFailures = true;
+          logEndTask(packageName, task, taskStartTime, e);
+        })
+  );
 }
 
 function getPackage() {
@@ -101,11 +104,10 @@ function getPackage() {
 }
 
 function loadTaskFunctions(tasks) {
-  return tasks
-    .reduce((acc, taskName) => {
-      acc[taskName] = require('./tasks/' + taskName);
-      return acc;
-    }, {});
+  return tasks.reduce((acc, taskName) => {
+    acc[taskName] = require('./tasks/' + taskName);
+    return acc;
+  }, {});
 }
 
 function flatten(list) {
@@ -126,7 +128,7 @@ function getTasksWithPrerequisites() {
 }
 
 function isEqualTo(a) {
-  return (b) => a === b;
+  return b => a === b;
 }
 
 function removePrerequisitesThatMatch(disabledTasks) {
@@ -137,22 +139,20 @@ function removePrerequisitesThatMatch(disabledTasks) {
     }
 
     return [taskName, prerequisite];
-  }
+  };
 }
 
 function removeDisabledTasks(tasks, disabledTasks) {
   return tasks
     .filter(([taskName, prerequisite]) => !disabledTasks.some(isEqualTo(taskName)))
-    .map(removePrerequisitesThatMatch(disabledTasks))
+    .map(removePrerequisitesThatMatch(disabledTasks));
 }
 
 function getNextTasks(currentTask, disabledTasks) {
-  const wherePrerequisite = (task) => ([_, prerequisite]) => prerequisite === task;
+  const wherePrerequisite = task => ([_, prerequisite]) => prerequisite === task;
   const tasks = removeDisabledTasks(getTasksWithPrerequisites(), disabledTasks);
 
-  return tasks
-    .filter(wherePrerequisite(currentTask))
-    .map(([task]) => task);
+  return tasks.filter(wherePrerequisite(currentTask)).map(([task]) => task);
 }
 
 function first(values) {

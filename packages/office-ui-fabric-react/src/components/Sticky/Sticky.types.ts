@@ -9,12 +9,12 @@ export interface IStickyProps extends React.Props<Sticky> {
 
   /**
    * Class name to apply to the sticky element if component is sticky.
-  */
+   */
   stickyClassName?: string;
 
   /**
    * color to apply as 'background-color' style for sticky element.
-  */
+   */
   stickyBackgroundColor?: string;
 
   /**

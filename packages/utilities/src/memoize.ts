@@ -1,3 +1,7 @@
+import { Stylesheet } from '@uifabric/merge-styles';
+
+Stylesheet.getInstance().onReset(resetMemoizations);
+
 // tslint:disable:no-any
 declare class WeakMap {
   public get(key: any): any;
@@ -5,9 +9,10 @@ declare class WeakMap {
   public has(key: any): boolean;
 }
 
+let _resetCounter = 0;
 const _emptyObject = { empty: true };
 const _dictionary: any = {};
-let _weakMap = (typeof WeakMap === 'undefined') ? null : WeakMap;
+let _weakMap = typeof WeakMap === 'undefined' ? null : WeakMap;
 
 interface IMemoizeNode {
   map: WeakMap | null;
@@ -24,6 +29,13 @@ export function setMemoizeWeakMap(weakMap: any): void {
 }
 
 /**
+ * Reset memoizations.
+ */
+export function resetMemoizations(): void {
+  _resetCounter++;
+}
+
+/**
  * Memoize decorator to be used on class methods. Note that the "this" reference
  * will be inaccessible within a memoized method, given that a cached method's this
  * would not be instance specific.
@@ -33,11 +45,11 @@ export function setMemoizeWeakMap(weakMap: any): void {
 export function memoize<T extends Function>(
   target: any,
   key: string,
-  descriptor: TypedPropertyDescriptor<T>): {
-    configurable: boolean;
-    get(): T;
-  } {
-
+  descriptor: TypedPropertyDescriptor<T>
+): {
+  configurable: boolean;
+  get(): T;
+} {
   // We bind to "null" to prevent people from inadvertently pulling values from "this",
   // rather than passing them in as input values which can be memoized.
   let fn = memoizeFunction(descriptor.value && descriptor.value.bind(null));
@@ -70,22 +82,27 @@ export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE
   cb: T,
   maxCacheSize: number = 100
 ): T {
-
-  let rootNode: any;
-  let cacheSize = 0;
-
   // Avoid breaking scenarios which don't have weak map.
   if (!_weakMap) {
     return cb;
   }
 
+  let rootNode: any;
+  let cacheSize = 0;
+  let localResetCounter = _resetCounter;
+
   // tslint:disable-next-line:no-function-expression
   return function memoizedFunction(...args: any[]): RET_TYPE {
     let currentNode: any = rootNode;
 
-    if (rootNode === undefined || (maxCacheSize > 0 && cacheSize > maxCacheSize)) {
+    if (
+      rootNode === undefined ||
+      localResetCounter !== _resetCounter ||
+      (maxCacheSize > 0 && cacheSize > maxCacheSize)
+    ) {
       rootNode = _createNode();
       cacheSize = 0;
+      localResetCounter = _resetCounter;
     }
 
     currentNode = rootNode;

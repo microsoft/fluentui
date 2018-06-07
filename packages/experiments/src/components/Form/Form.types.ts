@@ -1,8 +1,7 @@
 /* tslint:disable:no-any */
 import * as React from 'react';
 
-export interface IForm {
-}
+export interface IForm {}
 
 /**
  * The props for Form

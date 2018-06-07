@@ -21,7 +21,7 @@ import {
 const getClassNames = classNamesFunction<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>();
 const defaultImageSize = 32;
 
-@customizable('ChoiceGroupOption', ['theme'])
+@customizable('ChoiceGroupOption', ['theme', 'styles'])
 export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps, any> {
   private _inputElement = createRef<HTMLInputElement>();
   private _classNames: IClassNames<IChoiceGroupOptionStyles>;
@@ -49,7 +49,7 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
       labelId,
       styles,
       name,
-      onRenderField = this._onRenderField,
+      onRenderField = this._onRenderField
     } = this.props;
 
     this._classNames = getClassNames(styles!, {
@@ -63,24 +63,24 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
     });
 
     return (
-      <div className={ this._classNames.root }>
-        <div className={ this._classNames.choiceFieldWrapper }>
+      <div className={this._classNames.root}>
+        <div className={this._classNames.choiceFieldWrapper}>
           <input
-            ref={ this._inputElement }
-            id={ id }
-            className={ this._classNames.input }
-            type='radio'
-            name={ name }
-            disabled={ disabled }
-            checked={ checked }
-            required={ required }
-            onChange={ this._onChange.bind(this, this.props) }
-            onFocus={ this._onFocus.bind(this, this.props) }
-            onBlur={ this._onBlur.bind(this, this.props) }
-            aria-labelledby={ labelId }
-            { ...getNativeProps(this.props, inputProperties) }
+            ref={this._inputElement}
+            id={id}
+            className={this._classNames.input}
+            type="radio"
+            name={name}
+            disabled={disabled}
+            checked={checked}
+            required={required}
+            onChange={this._onChange.bind(this, this.props)}
+            onFocus={this._onFocus.bind(this, this.props)}
+            onBlur={this._onBlur.bind(this, this.props)}
+            aria-labelledby={labelId}
+            {...getNativeProps(this.props, inputProperties)}
           />
-          { onRenderField(this.props, this._onRenderField) }
+          {onRenderField(this.props, this._onRenderField)}
         </div>
       </div>
     );
@@ -108,14 +108,7 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
   }
 
   private _onRenderField = (props: IChoiceGroupOptionProps): JSX.Element => {
-    const {
-      onRenderLabel = this._onRenderLabel,
-      id,
-      imageSrc,
-      imageAlt,
-      selectedImageSrc,
-      iconProps,
-    } = props;
+    const { onRenderLabel = this._onRenderLabel, id, imageSrc, imageAlt, selectedImageSrc, iconProps } = props;
 
     const imageSize = props.imageSize ? props.imageSize : { width: defaultImageSize, height: defaultImageSize };
     // We want to size the labelWrapper in relation to the imageSize width.
@@ -124,54 +117,50 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
     const labelWrapperMaxWidth = imageSize.width * 2 + 8;
 
     return (
-      <label htmlFor={ id } className={ this._classNames.field }>
-        { imageSrc && (
-          <div
-            className={ this._classNames.innerField }
-            style={ { height: imageSize.height, width: imageSize.width } }
-          >
-            <div className={ this._classNames.imageWrapper }>
-              <Image
-                src={ imageSrc }
-                alt={ imageAlt ? imageAlt : '' }
-                width={ imageSize.width }
-                height={ imageSize.height }
-              />
+      <label htmlFor={id} className={this._classNames.field}>
+        {imageSrc && (
+          <div className={this._classNames.innerField} style={{ height: imageSize.height, width: imageSize.width }}>
+            <div className={this._classNames.imageWrapper}>
+              <Image src={imageSrc} alt={imageAlt ? imageAlt : ''} width={imageSize.width} height={imageSize.height} />
             </div>
-            <div className={ this._classNames.selectedImageWrapper }>
+            <div className={this._classNames.selectedImageWrapper}>
               <Image
-                src={ selectedImageSrc }
-                alt={ imageAlt ? imageAlt : '' }
-                width={ imageSize.width }
-                height={ imageSize.height }
+                src={selectedImageSrc}
+                alt={imageAlt ? imageAlt : ''}
+                width={imageSize.width}
+                height={imageSize.height}
               />
             </div>
           </div>
-        ) }
-        { iconProps ? (
-          <div className={ this._classNames.innerField }>
-            <div className={ this._classNames.iconWrapper }>
-              <Icon { ...iconProps } />
+        )}
+        {iconProps ? (
+          <div className={this._classNames.innerField}>
+            <div className={this._classNames.iconWrapper}>
+              <Icon {...iconProps} />
             </div>
           </div>
-        ) : null }
-        { imageSrc || iconProps ? (
+        ) : null}
+        {imageSrc || iconProps ? (
           <div
-            className={ this._classNames.labelWrapper }
-            style={ {
+            className={this._classNames.labelWrapper}
+            style={{
               maxWidth: labelWrapperMaxWidth
-            } }
+            }}
           >
-            <div ref={ (el) => { this._onLabelWrapperRef(el); } }>
-              { onRenderLabel!(props) }
+            <div
+              ref={el => {
+                this._onLabelWrapperRef(el);
+              }}
+            >
+              {onRenderLabel!(props)}
             </div>
           </div>
         ) : (
-            onRenderLabel!(props)
-          ) }
+          onRenderLabel!(props)
+        )}
       </label>
     );
-  }
+  };
 
   private _onLabelWrapperRef(element: HTMLDivElement | null): void {
     if (element) {
@@ -194,23 +183,19 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
         labelElement.insertAdjacentElement('afterend', node);
       }
     }
-  }
+  };
 
   private _onRenderLabel = (props: IChoiceGroupOptionProps): JSX.Element => {
     const imageSize = props.imageSize;
     const paddingBorderTop = 28; // includes padding, border, margin from styles
-    let gapSpace = ((imageSize && imageSize.height) ? imageSize.height : defaultImageSize) + paddingBorderTop;
+    let gapSpace = (imageSize && imageSize.height ? imageSize.height : defaultImageSize) + paddingBorderTop;
 
     return (
-      <TooltipHost
-        overflowMode={ TooltipOverflowMode.Parent }
-        calloutProps={ { gapSpace: gapSpace } }
-        content={ props.text }
-      >
-        <span id={ props.labelId } className='ms-Label'>
-          { props.text }
+      <TooltipHost overflowMode={TooltipOverflowMode.Parent} calloutProps={{ gapSpace: gapSpace }} content={props.text}>
+        <span id={props.labelId} className="ms-Label">
+          {props.text}
         </span>
       </TooltipHost>
     );
-  }
+  };
 }

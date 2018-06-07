@@ -1,10 +1,7 @@
 import * as React from 'react';
 import { LinkBase } from './Link.base';
 
-import {
-  IStyle,
-  ITheme
-} from '../../Styling';
+import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
 
@@ -13,7 +10,8 @@ export interface ILink {
   focus(): void;
 }
 
-export interface ILinkProps extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement | LinkBase> {
+export interface ILinkProps
+  extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement | LinkBase> {
   /**
    * Optional callback to access the ILink interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

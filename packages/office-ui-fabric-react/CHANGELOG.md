@@ -1,6 +1,58 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 04 Jun 2018 10:16:13 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Jun 2018 17:40:07 GMT and should not be manually modified.
+
+## 6.6.1
+Thu, 07 Jun 2018 17:40:07 GMT
+
+### Patches
+
+- SplitButton: apply button props to the focusable element for split buttons
+
+## 6.6.0
+Thu, 07 Jun 2018 16:35:34 GMT
+
+### Minor changes
+
+- Add canRemoveItem callback
+- FocusTrapZone: Added new capability. When `FTZ.focus()` is called, it will pass focus to a descendant element.  The new prop `focusPreviouslyFocusedInnerElement` controls the descendant-choosing behavior.
+- Minor changes to improve server side rendering.
+
+### Patches
+
+- "Add selection zone for BaseExtendedPicker, and add screen reader support for suggestions"
+- Update Coachmark basic example and fix TeachingBubble SCSS selectors
+- Fix Detials column header hit targets
+- Add global name to scss files using global selector to tag in sideEffects.
+- Fixed FocusTrapZone bug: If first child in the FTZ is a FocusZone and that FZ's last focused child is not the first focusable child, shift-tab would break out of the FTZ.
+- adding css fix to remove unnecessary scroll bars on calendar and datepicker components
+- Theme Generator Page: update accessibility section to account for new logic for variants
+- Theme Generator: untheme correctly when leaving theme generator
+- Code format changes
+- HoverCard: Removing unnecessary animation class causing a visual bug in IE browser.
+
+## 6.5.0
+Tue, 05 Jun 2018 10:23:03 GMT
+
+### Minor changes
+
+- Callout: Add `preventDismissOnLostFocus` prop.
+
+## 6.4.1
+Tue, 05 Jun 2018 00:44:30 GMT
+
+### Patches
+
+- Added Prettier
+- CommandBarPage: Remove fabric js reference.
+- _onValidate should only skip validation on text entry if state.value is undefined (it was skipping when text entry was empty string)
+
+## 6.4.0
+Mon, 04 Jun 2018 18:50:06 GMT
+
+### Minor changes
+
+- Revert PR 4897
 
 ## 6.3.0
 Mon, 04 Jun 2018 10:16:13 GMT

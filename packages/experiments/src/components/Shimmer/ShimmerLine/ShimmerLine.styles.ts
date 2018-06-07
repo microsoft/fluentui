@@ -1,12 +1,5 @@
-import {
-  IShimmerLineStyleProps,
-  IShimmerLineStyles
-} from './ShimmerLine.types';
-import {
-  IStyleSet,
-  getGlobalClassNames,
-  HighContrastSelector
-} from '../../../Styling';
+import { IShimmerLineStyleProps, IShimmerLineStyles } from './ShimmerLine.types';
+import { IStyleSet, getGlobalClassNames, HighContrastSelector } from '../../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-ShimmerLine-root',
@@ -17,13 +10,7 @@ const GlobalClassNames = {
 };
 
 export function getStyles(props: IShimmerLineStyleProps): IShimmerLineStyles {
-  const {
-    height,
-    widthInPercentage,
-    widthInPixel,
-    borderStyle,
-    theme
-  } = props;
+  const { height, widthInPercentage, widthInPixel, borderStyle, theme } = props;
 
   const { palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);

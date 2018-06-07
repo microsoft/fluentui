@@ -1,12 +1,7 @@
 import * as React from 'react';
-import {
-  ExampleCard,
-  ComponentPage,
-  IComponentDemoPageProps,
-  PageMarkdown,
-  PropertiesTableSet
-} from '@uifabric/example-app-base';
 import { PanelSmallRightExample } from './examples/Panel.SmallRight.Example';
+import { DemoPage } from '../../demo/components/DemoPage';
+import { IDemoPageProps } from '../../demo/components/DemoPage.types';
 import { PanelSmallLeftExample } from './examples/Panel.SmallLeft.Example';
 import { PanelSmallFluidExample } from './examples/Panel.SmallFluid.Example';
 import { PanelMediumExample } from './examples/Panel.Medium.Example';
@@ -19,7 +14,6 @@ import { PanelLightDismissExample } from './examples/Panel.LightDismiss.Example'
 import { PanelLightDismissCustomExample } from './examples/Panel.LightDismissCustom.Example';
 import { PanelNonModalExample } from './examples/Panel.NonModal.Example';
 import { PanelFooterExample } from './examples/Panel.Footer.Example';
-import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { PanelStatus } from './Panel.checklist';
 
 const PanelSmallRightExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.SmallRight.Example.tsx') as string;
@@ -36,89 +30,86 @@ const PanelLightDismissCustomExampleCode = require('!raw-loader!office-ui-fabric
 const PanelNonModalExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.NonModal.Example.tsx') as string;
 const PanelFooterExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.Footer.Example.tsx') as string;
 
-export class PanelPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render(): JSX.Element {
-    return (
-      <ComponentPage
-        title='Panel'
-        componentName='PanelExample'
-        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Panel'
-        allowNativeProps={ true }
-        exampleCards={
-          <div>
-            <ExampleCard title='Panel - Small Panel, Anchored Right, Fixed Width' code={ PanelSmallRightExampleCode }>
-              <PanelSmallRightExample />
-            </ExampleCard>
-            <ExampleCard title='Panel - Small Panel, Anchored Left, Fixed Width' code={ PanelSmallLeftExampleCode }>
-              <PanelSmallLeftExample />
-            </ExampleCard>
-            <ExampleCard title='Panel - Small Panel, Full Screen, Fluid Width' code={ PanelSmallFluidExampleCode }>
-              <PanelSmallFluidExample />
-            </ExampleCard>
-            <ExampleCard title='Panel - Medium' code={ PanelMediumExampleCode }>
-              <PanelMediumExample />
-            </ExampleCard>
-            <ExampleCard title='Panel - Large' code={ PanelLargeExampleCode }>
-              <PanelLargeExample />
-            </ExampleCard>
-            <ExampleCard title='Panel - LargeFixed' code={ PanelLargeFixedExampleCode }>
-              <PanelLargeFixedExample />
-            </ExampleCard>
-            <ExampleCard title='Panel - Extra Large' code={ PanelExtraLargeExampleCode }>
-              <PanelExtraLargeExample />
-            </ExampleCard>
-            <ExampleCard title='Panel - Custom' code={ PanelCustomExampleCode }>
-              <PanelCustomExample />
-            </ExampleCard>
-            <ExampleCard title='Panel - Hidden on Dismiss' code={ PanelHiddenOnDismissExampleCode }>
-              <PanelHiddenOnDismissExample />
-            </ExampleCard>
-            <ExampleCard title='Panel - Light Dismiss' code={ PanelLightDismissExampleCode }>
-              <PanelLightDismissExample />
-            </ExampleCard>
-            <ExampleCard title='Panel - Custom Light Dismiss' code={ PanelLightDismissCustomExampleCode }>
-              <PanelLightDismissCustomExample />
-            </ExampleCard>
-            <ExampleCard title='Panel - Non-Modal' code={ PanelNonModalExampleCode }>
-              <PanelNonModalExample />
-            </ExampleCard>
-            <ExampleCard title='Panel - Footer' code={ PanelFooterExampleCode }>
-              <PanelFooterExample />
-            </ExampleCard>
-          </div>
-        }
-        propertiesTables={
-          <PropertiesTableSet
-            sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/Panel.types.ts')
-            ] }
-          />
-        }
-        overview={
-          <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/docs/PanelOverview.md') }
-          </PageMarkdown>
-        }
-        bestPractices={
-          <div />
-        }
-        dos={
-          <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/docs/PanelDos.md') }
-          </PageMarkdown>
-        }
-        donts={
-          <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/docs/PanelDonts.md') }
-          </PageMarkdown>
-        }
-        isHeaderVisible={ this.props.isHeaderVisible }
-        componentStatus={
-          <ComponentStatus
-            { ...PanelStatus }
-          />
-        }
-      />
-    );
-  }
-}
+export const PanelPageProps: IDemoPageProps = {
+  title: 'Panel',
+  componentName: 'Panel',
+  componentUrl:
+    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Panel',
+  componentStatus: PanelStatus,
+  examples: [
+    {
+      title: 'Panel - Small Panel, Anchored Right, Fixed Width',
+      code: PanelSmallRightExampleCode,
+      view: <PanelSmallRightExample />
+    },
+    {
+      title: 'Panel - Small Panel, Anchored Left, Fixed Width',
+      code: PanelSmallLeftExampleCode,
+      view: <PanelSmallLeftExample />
+    },
+    {
+      title: 'Panel - Small Panel, Full Screen, Fluid Width',
+      code: PanelSmallFluidExampleCode,
+      view: <PanelSmallFluidExample />
+    },
+    {
+      title: 'Panel - Medium',
+      code: PanelMediumExampleCode,
+      view: <PanelMediumExample />
+    },
+    {
+      title: 'Panel - Large',
+      code: PanelLargeExampleCode,
+      view: <PanelLargeExample />
+    },
+    {
+      title: 'Panel - LargeFixed',
+      code: PanelLargeFixedExampleCode,
+      view: <PanelLargeFixedExample />
+    },
+    {
+      title: 'Panel - Extra Large',
+      code: PanelExtraLargeExampleCode,
+      view: <PanelExtraLargeExample />
+    },
+    {
+      title: 'Panel - Custom',
+      code: PanelCustomExampleCode,
+      view: <PanelCustomExample />
+    },
+    {
+      title: 'Panel - Hidden on Dismiss',
+      code: PanelHiddenOnDismissExampleCode,
+      view: <PanelHiddenOnDismissExample />
+    },
+    {
+      title: 'Panel - Light Dismiss',
+      code: PanelLightDismissExampleCode,
+      view: <PanelLightDismissExample />
+    },
+    {
+      title: 'Panel - Custom Light Dismiss',
+      code: PanelLightDismissCustomExampleCode,
+      view: <PanelLightDismissCustomExample />
+    },
+    {
+      title: 'Panel - Non-Modal',
+      code: PanelNonModalExampleCode,
+      view: <PanelNonModalExample />
+    },
+    {
+      title: 'Panel - Footer',
+      code: PanelFooterExampleCode,
+      view: <PanelFooterExample />
+    }
+  ],
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/Panel.types.ts')],
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/docs/PanelOverview.md'),
+  bestPractices: '',
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/docs/PanelDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/docs/PanelDonts.md'),
+  isHeaderVisible: true,
+  allowNativeProps: true
+};
+
+export const PanelPage = (props: { isHeaderVisible: boolean }) => <DemoPage {...{ ...PanelPageProps, ...props }} />;

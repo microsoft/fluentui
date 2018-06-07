@@ -13,10 +13,21 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@uifabric/webpack-utils",
+      "projectFolder": "packages/webpack-utils",
+      "shouldPublish": false
+    },
+    {
       "packageName": "@uifabric/experiments",
       "projectFolder": "packages/experiments",
       "versionPolicyName": "lockedMajor",
       "shouldPublish": true
+    },
+    {
+      "packageName": "@uifabric/charting",
+      "projectFolder": "packages/charting",
+      "versionPolicyName": "lockedMajor",
+      "shouldPublish": false
     },
     {
       "packageName": "@uifabric/merge-styles",
@@ -97,6 +108,11 @@
     {
       "packageName": "todo-app",
       "projectFolder": "apps/todo-app",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "server-rendered-app",
+      "projectFolder": "apps/server-rendered-app",
       "shouldPublish": false
     },
     {

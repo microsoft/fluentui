@@ -5,9 +5,7 @@ import { ImageLoadState } from '../../Image';
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
 
-export interface IPersona {
-
-}
+export interface IPersona {}
 
 export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
   /**
@@ -389,5 +387,5 @@ export enum PersonaInitialsColor {
    * Transparent is not intended to be used with typical initials due to accessibility issues.
    * Its primary use is for overflow buttons, so it is considered a reserved color and can only be set with overrides.
    */
-  transparent = 15,
+  transparent = 15
 }

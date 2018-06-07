@@ -3,8 +3,14 @@ import { ITheme, IStyle } from '../../../Styling';
 import { IStyleFunctionOrObject } from '../../../Utilities';
 import { IChoiceGroupOption } from '../../ChoiceGroup/ChoiceGroup.types';
 
-export type OnFocusCallback = (ev?: React.FocusEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void | undefined;
-export type OnChangeCallback = (evt?: React.FormEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void;
+export type OnFocusCallback = (
+  ev?: React.FocusEvent<HTMLElement | HTMLInputElement>,
+  props?: IChoiceGroupOption
+) => void | undefined;
+export type OnChangeCallback = (
+  evt?: React.FormEvent<HTMLElement | HTMLInputElement>,
+  props?: IChoiceGroupOption
+) => void;
 
 export interface IChoiceGroupOptionProps extends IChoiceGroupOption {
   /**
@@ -26,10 +32,7 @@ export interface IChoiceGroupOptionProps extends IChoiceGroupOption {
   /**
    * A callback for receiving a notification when the choice has lost focus.
    */
-  onBlur?: (
-    ev: React.FocusEvent<HTMLElement>,
-    props?: IChoiceGroupOption
-  ) => void;
+  onBlur?: (ev: React.FocusEvent<HTMLElement>, props?: IChoiceGroupOption) => void;
 
   /**
    * Indicates if the ChoiceGroupOption should appear focused, visually

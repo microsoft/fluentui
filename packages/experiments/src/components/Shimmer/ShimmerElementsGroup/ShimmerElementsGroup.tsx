@@ -7,7 +7,8 @@ import {
 import { ShimmerElementsGroupBase } from './ShimmerElementsGroup.base';
 import { getStyles } from './ShimmerElementsGroup.styles';
 
-export const ShimmerElementsGroup = styled<IShimmerElementsGroupProps, IShimmerElementsGroupStyleProps, IShimmerElementsGroupStyles>(
-  ShimmerElementsGroupBase,
-  getStyles
-);
+export const ShimmerElementsGroup = styled<
+  IShimmerElementsGroupProps,
+  IShimmerElementsGroupStyleProps,
+  IShimmerElementsGroupStyles
+>(ShimmerElementsGroupBase, getStyles);
