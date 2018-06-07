@@ -88,6 +88,9 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
 
     return (
       <div className={css('ms-Suggestions', className ? className : '', styles.root)}>
+        <div className={styles.screenReaderOnly} role="alert" id="selected-suggestion-alert" aria-live="assertive">
+          {this._getAriaLabel()}
+        </div>
         {headerItemsProps && this.renderHeaderItems()}
         {this._renderSuggestions()}
         {footerItemsProps && this.renderFooterItems()}
@@ -96,11 +99,11 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
   }
 
   public get currentSuggestion(): ISuggestionModel<T> {
-    return this._suggestions.getCurrentItem();
+    return this._suggestions && this._suggestions.getCurrentItem();
   }
 
   public hasSuggestionSelected(): boolean {
-    return this._suggestions.hasSuggestionSelected();
+    return this._suggestions && this._suggestions.hasSuggestionSelected();
   }
 
   public hasSelection(): boolean {
@@ -198,6 +201,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
             <div
               ref={this._resolveRef(isSelected ? '_selectedElement' : '')}
               id={'sug-header' + index}
+              key={'sug-header' + index}
               role="listitem"
               aria-label={headerItemProps.ariaLabel}
             >
@@ -231,6 +235,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
             <div
               ref={this._resolveRef(isSelected ? '_selectedElement' : '')}
               id={'sug-footer' + index}
+              key={'sug-footer' + index}
               role="listitem"
               aria-label={footerItemProps.ariaLabel}
             >
@@ -449,6 +454,18 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
         return SuggestionItemType.header;
       case SuggestionItemType.footer:
         return SuggestionItemType.suggestion;
+    }
+  }
+
+  private _getAriaLabel(): string | undefined {
+    const { selectedHeaderIndex, selectedFooterIndex } = this.state;
+    const { headerItemsProps, footerItemsProps } = this.props;
+    if (headerItemsProps && selectedHeaderIndex !== -1) {
+      return headerItemsProps[selectedHeaderIndex].ariaLabel;
+    } else if (this.hasSuggestionSelected()) {
+      return this.currentSuggestion.ariaLabel;
+    } else if (footerItemsProps && selectedFooterIndex !== -1) {
+      return footerItemsProps[selectedFooterIndex].ariaLabel;
     }
   }
 }

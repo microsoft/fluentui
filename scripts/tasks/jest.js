@@ -1,7 +1,7 @@
-module.exports = function (options) {
+module.exports = function(options) {
   const path = require('path');
   const fs = require('fs');
-  const exec = require('../exec');
+  const exec = require('../exec-sync');
   const findConfig = require('../find-config');
   const jestConfigPath = findConfig('jest.config.js');
   const resolve = require('resolve');
@@ -28,11 +28,13 @@ module.exports = function (options) {
       options.isProduction && '--coverage',
 
       // If the -u flag is passed, pass it through.
-      (options.argv && options.argv.indexOf('-u') >= 0) ? '-u' : '',
+      options.argv && options.argv.indexOf('-u') >= 0 ? '-u' : '',
 
       // Pass in custom arguments.
       options.args
-    ].filter(arg => !!arg).join(' ');
+    ]
+      .filter(arg => !!arg)
+      .join(' ');
 
     const command = `node ${jestPath} ${args}`;
 

@@ -1,8 +1,7 @@
 #### Pull request checklist
 
-- Addresses an existing issue: Fixes #0000
-- Include a change request file using `$ npm run change`
-- Microsoft Alias (if you have one): 
+[ ] Addresses an existing issue: Fixes #0000
+[ ] Include a change request file using `$ npm run change`
 
 #### Description of changes
 

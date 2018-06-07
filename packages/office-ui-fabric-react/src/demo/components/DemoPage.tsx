@@ -9,6 +9,20 @@ export const DemoPage: React.StatelessComponent<IDemoPageProps> = componentPageP
       title={componentPageProps.title}
       componentName={componentPageProps.componentName}
       componentUrl={componentPageProps.componentUrl}
+      implementationExampleCards={
+        componentPageProps.implementationExamples ? (
+          <div>
+            {componentPageProps.implementationExamples.map(example => (
+              <ExampleCard title={example.title} code={example.code} key={example.title}>
+                {example.view}
+              </ExampleCard>
+            ))}
+          </div>
+        ) : (
+          undefined
+        )
+      }
+      related={componentPageProps.related || undefined}
       exampleCards={
         <div>
           {componentPageProps.examples.map(example => (
@@ -20,11 +34,15 @@ export const DemoPage: React.StatelessComponent<IDemoPageProps> = componentPageP
       }
       propertiesTables={<PropertiesTableSet sources={componentPageProps.propertiesTablesSources} />}
       overview={<PageMarkdown>{componentPageProps.overview}</PageMarkdown>}
-      bestPractices={<PageMarkdown>{componentPageProps.bestPractices}</PageMarkdown>}
-      dos={<PageMarkdown>{componentPageProps.dos}</PageMarkdown>}
-      donts={<PageMarkdown>{componentPageProps.donts}</PageMarkdown>}
+      bestPractices={
+        componentPageProps.bestPractices ? <PageMarkdown>{componentPageProps.bestPractices}</PageMarkdown> : undefined
+      }
+      dos={componentPageProps.dos ? <PageMarkdown>{componentPageProps.dos}</PageMarkdown> : undefined}
+      donts={componentPageProps.donts ? <PageMarkdown>{componentPageProps.donts}</PageMarkdown> : undefined}
       isHeaderVisible={componentPageProps.isHeaderVisible}
-      componentStatus={<ComponentStatus {...componentPageProps.componentStatus} />}
+      componentStatus={
+        componentPageProps.componentStatus ? <ComponentStatus {...componentPageProps.componentStatus} /> : undefined
+      }
     />
   );
 };

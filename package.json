@@ -27,7 +27,8 @@
     "checkchange": "node node_modules/@microsoft/rush/bin/rush change -v",
     "update-snapshots": "cd packages/office-ui-fabric-react && npm run update-snapshots",
     "precommit": "lint-staged",
-    "check-for-changed-files": "node ./scripts/check-for-modified-files.js"
+    "check-for-changed-files": "node ./scripts/check-for-modified-files.js",
+    "prettier": "node scripts/prettier.js"
   },
   "license": "MIT",
   "devDependencies": {
@@ -36,12 +37,13 @@
     "lint-staged": "^7.0.5"
   },
   "lint-staged": {
-    "*.{ts,tsx,js,json}": [
+    "*.{ts,tsx}": [
       "node ./scripts/lint-staged/prettier",
+      "node ./scripts/lint-staged/tslint",
       "git add"
     ],
-    "*.{ts,tsx}": [
-      "node ./scripts/lint-staged/tslint",
+    "*.js": [
+      "node ./scripts/lint-staged/prettier",
       "git add"
     ]
   }

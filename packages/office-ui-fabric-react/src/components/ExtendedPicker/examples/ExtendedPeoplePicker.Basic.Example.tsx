@@ -77,7 +77,8 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
             if (this._picker.floatingPicker.current !== null) {
               this._picker.floatingPicker.current.forceResolveSuggestion();
             }
-          }
+          },
+          ariaLabel: 'Use the typed address'
         },
         {
           renderItem: () => {
@@ -109,7 +110,8 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
           },
           shouldShow: () => {
             return this.state.searchMoreAvailable && !this._shouldShowSuggestedContacts();
-          }
+          },
+          ariaLabel: 'Search more'
         }
       ],
       shouldSelectFirstItem: () => {
