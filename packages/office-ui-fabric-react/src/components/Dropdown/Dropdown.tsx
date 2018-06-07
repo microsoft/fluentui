@@ -166,7 +166,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
               aria-expanded={isOpen ? 'true' : 'false'}
               role="listbox"
               aria-live={disabled || isOpen ? 'off' : 'assertive'}
-              aria-label={ariaLabel}
+              aria-label={selectedOptions.length ? selectedOptions[0].text : ariaLabel}
               aria-describedby={mergeAriaAttributeValues(describedBy, keytipAttributes['aria-describedby'])}
               aria-activedescendant={
                 isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0
