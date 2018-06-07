@@ -58,9 +58,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     document.body.style.color = '';
 
     // and apply the default theme to overwrite any existing custom theme
-    const themeRules = themeRulesStandardCreator();
-    ThemeGenerator.insureSlots(themeRules, false);
-    loadTheme({ palette: themeRules });
+    loadTheme({});
   }
 
   public render(): JSX.Element {
