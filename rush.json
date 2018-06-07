@@ -101,6 +101,11 @@
       "shouldPublish": false
     },
     {
+      "packageName": "server-rendered-app",
+      "projectFolder": "apps/server-rendered-app",
+      "shouldPublish": false
+    },
+    {
       "packageName": "test-bundle-button",
       "projectFolder": "apps/test-bundle-button",
       "shouldPublish": false

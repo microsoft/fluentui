@@ -4,7 +4,12 @@ import { axisLeft as d3AxisLeft, axisBottom as d3AxisBottom, Axis as D3Axis } fr
 import { scaleBand as d3ScaleBand, scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
 import { classNamesFunction, customizable, IClassNames } from '../../Utilities';
-import { IVerticalBarChartProps, IVerticalBarChartStyleProps, IVerticalBarChartStyles, IDataPoint } from './VerticalBarChart.types';
+import {
+  IVerticalBarChartProps,
+  IVerticalBarChartStyleProps,
+  IVerticalBarChartStyles,
+  IDataPoint
+} from './VerticalBarChart.types';
 
 const getClassNames = classNamesFunction<IVerticalBarChartStyleProps, IVerticalBarChartStyles>();
 type numericAxis = D3Axis<number | { valueOf(): number }>;
@@ -51,14 +56,12 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     });
 
     return (
-      <div className={ this._classNames.root }>
-        { this.props.chartLabel && <p className={ this._classNames.chartLabel }>{ this.props.chartLabel }</p> }
-        <svg className={ this._classNames.chart }>
-          <g ref={ (node: SVGGElement | null) => this._setXAxis(node, xAxis) } className={ this._classNames.xAxis } />
-          <g ref={ (node: SVGGElement | null) => this._setYAxis(node, yAxis) } className={ this._classNames.yAxis } />
-          <g className={ this._classNames.bars }>
-            { bars }
-          </g>
+      <div className={this._classNames.root}>
+        {this.props.chartLabel && <p className={this._classNames.chartLabel}>{this.props.chartLabel}</p>}
+        <svg className={this._classNames.chart}>
+          <g ref={(node: SVGGElement | null) => this._setXAxis(node, xAxis)} className={this._classNames.xAxis} />
+          <g ref={(node: SVGGElement | null) => this._setYAxis(node, yAxis)} className={this._classNames.yAxis} />
+          <g className={this._classNames.bars}>{bars}</g>
         </svg>
       </div>
     );
@@ -85,43 +88,53 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   }
 
   private _createNumericXAxis(): numericAxis {
-    const xMax = (d3Max(this._points, (point: IDataPoint) => point.x as number))!;
-    const xAxisScale = d3ScaleLinear().domain([0, xMax]).range([0, this._width]);
+    const xMax = d3Max(this._points, (point: IDataPoint) => point.x as number)!;
+    const xAxisScale = d3ScaleLinear()
+      .domain([0, xMax])
+      .range([0, this._width]);
     const xAxis = d3AxisBottom(xAxisScale).ticks(10);
     return xAxis;
   }
 
   private _createStringXAxis(): stringAxis {
-    const xAxisScale = d3ScaleBand().domain(this._points.map((point: IDataPoint) => point.x as string)).range([0, this._width]);
+    const xAxisScale = d3ScaleBand()
+      .domain(this._points.map((point: IDataPoint) => point.x as string))
+      .range([0, this._width]);
     const xAxis = d3AxisBottom(xAxisScale).tickFormat((x: string, index: number) => this._points[index].x as string);
     return xAxis;
   }
 
   private _createYAxis(): numericAxis {
-    const yMax = (d3Max(this._points, (point: IDataPoint) => point.y))!;
-    const yAxisScale = d3ScaleLinear().domain([0, yMax]).range([this._height, 0]);
+    const yMax = d3Max(this._points, (point: IDataPoint) => point.y)!;
+    const yAxisScale = d3ScaleLinear()
+      .domain([0, yMax])
+      .range([this._height, 0]);
     const yAxis = d3AxisLeft(yAxisScale).ticks(this._yAxisTickCount);
     return yAxis;
   }
 
   private _createNumericBars(): JSX.Element[] {
-    const xMax = (d3Max(this._points, (point: IDataPoint) => point.x as number))!;
-    const yMax = (d3Max(this._points, (point: IDataPoint) => point.y))!;
+    const xMax = d3Max(this._points, (point: IDataPoint) => point.x as number)!;
+    const yMax = d3Max(this._points, (point: IDataPoint) => point.y)!;
 
-    const xBarScale = d3ScaleLinear().domain([0, xMax]).range([0, this._width - this._barWidth]);
-    const yBarScale = d3ScaleLinear().domain([0, yMax]).range([0, this._height]);
+    const xBarScale = d3ScaleLinear()
+      .domain([0, xMax])
+      .range([0, this._width - this._barWidth]);
+    const yBarScale = d3ScaleLinear()
+      .domain([0, yMax])
+      .range([0, this._height]);
 
     const colorScale = this._createColors(yMax);
 
     const bars = this._points.map((point: IDataPoint, index: number) => {
       return (
         <rect
-          key={ point.x }
-          x={ xBarScale(point.x as number) }
-          y={ this._height - yBarScale(point.y) }
-          width={ this._barWidth }
-          height={ yBarScale(point.y) }
-          fill={ colorScale(point.y) }
+          key={point.x}
+          x={xBarScale(point.x as number)}
+          y={this._height - yBarScale(point.y)}
+          width={this._barWidth}
+          height={yBarScale(point.y)}
+          fill={colorScale(point.y)}
         />
       );
     });
@@ -130,25 +143,27 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   }
 
   private _createStringBars(): JSX.Element[] {
-    const yMax = (d3Max(this._points, (point: IDataPoint) => point.y))!;
+    const yMax = d3Max(this._points, (point: IDataPoint) => point.y)!;
 
     const endpointDistance = 0.5 * (this._width / this._points.length);
     const xBarScale = d3ScaleLinear()
       .domain([0, this._points.length - 1])
       .range([endpointDistance - 0.5 * this._barWidth, this._width - endpointDistance - 0.5 * this._barWidth]);
-    const yBarScale = d3ScaleLinear().domain([0, yMax]).range([0, this._height]);
+    const yBarScale = d3ScaleLinear()
+      .domain([0, yMax])
+      .range([0, this._height]);
 
     const colorScale = this._createColors(yMax);
 
     const bars = this._points.map((point: IDataPoint, index: number) => {
       return (
         <rect
-          key={ point.x }
-          x={ xBarScale(index) }
-          y={ this._height - yBarScale(point.y) }
-          width={ this._barWidth }
-          height={ yBarScale(point.y) }
-          fill={ colorScale(point.y) }
+          key={point.x}
+          x={xBarScale(index)}
+          y={this._height - yBarScale(point.y)}
+          width={this._barWidth}
+          height={yBarScale(point.y)}
+          fill={colorScale(point.y)}
         />
       );
     });
@@ -162,7 +177,9 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     for (let i = 0; i < this._colors.length; i++) {
       domainValues.push(increment * i * yMax);
     }
-    const colorScale = d3ScaleLinear<string>().domain(domainValues).range(this._colors);
+    const colorScale = d3ScaleLinear<string>()
+      .domain(domainValues)
+      .range(this._colors);
     return colorScale;
   }
 }
