@@ -23,35 +23,35 @@ export class PeopleSelectedItemsListExample extends BaseComponent<{}, {}> {
 
   public render(): JSX.Element {
     return (
-      <div className={ 'ms-BasePicker-text' }>
-        <PrimaryButton text="Add another item" onClick={ this._onAddItemButtonClicked } />
-        { this._renderExtendedPicker() }
+      <div className={'ms-BasePicker-text'}>
+        <PrimaryButton text="Add another item" onClick={this._onAddItemButtonClicked} />
+        {this._renderExtendedPicker()}
       </div>
     );
   }
 
   private _renderExtendedPicker(): JSX.Element {
     return (
-      <div className={ styles.container }>
+      <div className={styles.container}>
         <SelectedPeopleList
-          key={ 'normal' }
-          removeButtonAriaLabel={ 'Remove' }
-          defaultSelectedItems={ [people[40]] }
-          componentRef={ this._setComponentRef }
-          onCopyItems={ this._onCopyItems }
-          onExpandGroup={ this._onExpandItem }
-          copyMenuItemText={ 'Copy' }
-          removeMenuItemText={ 'Remove' }
-          selection={ this.selection }
-          onRenderItem={ this._onRenderItem }
+          key={'normal'}
+          removeButtonAriaLabel={'Remove'}
+          defaultSelectedItems={[people[40]]}
+          componentRef={this._setComponentRef}
+          onCopyItems={this._onCopyItems}
+          onExpandGroup={this._onExpandItem}
+          copyMenuItemText={'Copy'}
+          removeMenuItemText={'Remove'}
+          selection={this.selection}
+          onRenderItem={this._onRenderItem}
         />
-      </ div>
+      </div>
     );
   }
 
   private _onRenderItem = (props: ISelectedPeopleItemProps): JSX.Element => {
-    return <ExtendedSelectedItem { ...props } />;
-  }
+    return <ExtendedSelectedItem {...props} />;
+  };
 
   private _setComponentRef = (component: SelectedPeopleList): void => {
     this._selectionList = component;

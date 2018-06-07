@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './ThemeGeneratorPage.scss';
+import './ThemeGeneratorPage.global.scss';
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 
 import { loadTheme } from 'office-ui-fabric-react/lib/Styling';
