@@ -1,6 +1,6 @@
 // Utilities
 import * as React from 'react';
-import { BaseComponent, IRectangle, classNamesFunction, createRef, shallowCompare } from '../../Utilities';
+import { BaseComponent, classNamesFunction, createRef, IRectangle, KeyCodes, shallowCompare } from '../../Utilities';
 import { DefaultPalette } from '../../Styling';
 import { IPositionedData, RectangleEdge, getOppositeEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
 
@@ -257,6 +257,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
           this.forceUpdate();
         }
 
+        document.addEventListener('keydown', this._onKeyDown, true);
+
         // We dont want to the user to immediatley trigger the coachmark when it's opened
         this._async.setTimeout(() => {
           this._addProximityHandler(this.props.mouseProximityOffset);
@@ -272,6 +274,17 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       }
     );
   }
+
+  public componentWillUnmount(): void {
+    document.removeEventListener('keydown', this._onKeyDown);
+  }
+
+  private _onKeyDown = (e: KeyboardEvent): void => {
+    // Open coachmark if user presses ALT + C (arbitrary keypress for now, will change later)
+    if (e.altKey && e.which === KeyCodes.c) {
+      this._onFocusHandler();
+    }
+  };
 
   private _onFocusHandler = (): void => {
     if (this.state.isCollapsed) {
