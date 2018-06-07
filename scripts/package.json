@@ -12,7 +12,7 @@
     "@microsoft/api-extractor": "^4.2.6",
     "@microsoft/load-themed-styles": "^1.7.13",
     "@microsoft/loader-load-themed-styles": "^1.6.0",
-    "@uifabric/merge-styles": ">=6.0.2 <7.0.0",
+    "@uifabric/merge-styles": ">=6.2.0 <7.0.0",
     "autoprefixer": "^7.1.5",
     "bundlesize": "^0.15.2",
     "chalk": "^2.1.0",

@@ -69,7 +69,12 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
             ms-Persona--size16
             ms-ActivityItem-activityPersona
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               display: inline-block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               min-width: 8px;
               overflow: visible;
               width: 8px;
@@ -391,7 +396,12 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
             ms-Persona--size16
             ms-ActivityItem-activityPersona
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               display: inline-block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               min-width: 8px;
               overflow: visible;
               width: 8px;
@@ -596,7 +606,12 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
             ms-Persona--size16
             ms-ActivityItem-activityPersona
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               display: inline-block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               min-width: 8px;
               overflow: visible;
               width: 8px;
@@ -704,7 +719,12 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
             ms-Persona--size16
             ms-ActivityItem-activityPersona
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               display: inline-block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               min-width: 8px;
               overflow: visible;
               width: 8px;
@@ -786,7 +806,12 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
             ms-Persona--size16
             ms-ActivityItem-activityPersona
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               display: inline-block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               min-width: 8px;
               overflow: visible;
               width: 8px;
@@ -965,7 +990,12 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
             ms-Persona--size32
             ms-ActivityItem-activityPersona
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
             }
         size={11}
         style={undefined}
@@ -1253,7 +1283,12 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
             ms-Persona--size16
             ms-ActivityItem-activityPersona
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
             }
         size={8}
         style={undefined}
@@ -1351,7 +1386,12 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
             ms-Persona--size16
             ms-ActivityItem-activityPersona
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
             }
         size={8}
         style={undefined}
@@ -1423,7 +1463,12 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
             ms-Persona--size16
             ms-ActivityItem-activityPersona
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
             }
         size={8}
         style={undefined}
@@ -1521,7 +1566,12 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
             ms-Persona--size16
             ms-ActivityItem-activityPersona
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
             }
         size={8}
         style={undefined}
