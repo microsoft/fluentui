@@ -287,7 +287,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
               page.top + totalRowHeight <= this._scrollTop &&
               this._scrollTop < page.top + totalRowHeight + rowHeight
             ) {
-              return page.startIndex + itemIndex;
+              return itemIndex;
             } else {
               totalRowHeight += rowHeight;
             }
