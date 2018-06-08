@@ -15,7 +15,7 @@
     {
       "packageName": "@uifabric/webpack-utils",
       "projectFolder": "packages/webpack-utils",
-      "shouldPublish": false
+      "shouldPublish": true
     },
     {
       "packageName": "@uifabric/experiments",
