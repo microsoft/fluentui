@@ -331,7 +331,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     const { multiSelectDelimiter = ', ' } = this.props;
 
     const displayTxt = item.map(i => i.text).join(multiSelectDelimiter);
-    return displayTxt as any;
+    return <span>{displayTxt}</span>;
   };
 
   // Render placeHolder text in dropdown input
@@ -339,7 +339,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     if (!props.placeHolder) {
       return null;
     }
-    return props.placeHolder as any;
+    return <span>{props.placeHolder}</span>;
   };
 
   // Render Callout or Panel container and pass in list
