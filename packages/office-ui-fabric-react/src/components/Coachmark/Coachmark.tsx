@@ -307,10 +307,6 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
             if (this._ariaAlertContainer.current && this.props.ariaAlertText) {
               this._ariaAlertContainer.current.innerText = this.props.ariaAlertText;
             }
-
-            if (this._entityInnerHostElement.current) {
-              this._entityInnerHostElement.current.parentElement!.focus();
-            }
           }, 2000);
         }
       }
@@ -460,8 +456,6 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       isCollapsed: false
     });
 
-    console.log(document.activeElement);
-
     if (this.props.onAnimationOpenStart) {
       this.props.onAnimationOpenStart();
     }
@@ -474,7 +468,6 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
           this._async.setTimeout(() => {
             if (this.props.teachingBubbleRef && this.props.teachingBubbleRef.current) {
               this.props.teachingBubbleRef.current.focus();
-              console.log(document.activeElement);
             }
           }, 500);
 
