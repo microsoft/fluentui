@@ -161,6 +161,7 @@ export interface IPage {
   top: number;
   height: number;
   data?: any;
+  isSpacer?: boolean;
 }
 
 export interface IPageProps extends React.HTMLAttributes<HTMLDivElement>, React.Props<HTMLDivElement> {

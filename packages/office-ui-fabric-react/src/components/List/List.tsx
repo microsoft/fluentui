@@ -274,10 +274,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     const pages = this.state.pages || [];
     for (const page of pages) {
       const isPageVisible =
-        page.key &&
-        !page.key.startsWith(SPACER_KEY_PREFIX) &&
-        (this._scrollTop || 0) >= page.top &&
-        (this._scrollTop || 0) <= page.top + page.height;
+        !page.isSpacer && (this._scrollTop || 0) >= page.top && (this._scrollTop || 0) <= page.top + page.height;
       if (isPageVisible) {
         if (!measureItem) {
           const rowHeight = Math.floor(page.height / page.itemCount);
@@ -822,7 +819,15 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
         }
       } else {
         if (!currentSpacer) {
-          currentSpacer = this._createPage(SPACER_KEY_PREFIX + itemIndex, undefined, itemIndex, 0, undefined, pageData);
+          currentSpacer = this._createPage(
+            SPACER_KEY_PREFIX + itemIndex,
+            undefined,
+            itemIndex,
+            0,
+            undefined,
+            pageData,
+            true /*isSpacer*/
+          );
         }
         currentSpacer.height = (currentSpacer.height || 0) + (pageBottom - pageTop) + 1;
         currentSpacer.itemCount += itemsPerPage;
@@ -912,7 +917,8 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     startIndex: number = -1,
     count: number = items ? items.length : 0,
     style: any = {},
-    data: any = undefined
+    data: any = undefined,
+    isSpacer?: boolean
   ): IPage {
     pageKey = pageKey || PAGE_KEY_PREFIX + startIndex;
     const cachedPage = this._pageCache[pageKey];
@@ -935,7 +941,8 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       style: style || {},
       top: 0,
       height: 0,
-      data: data
+      data: data,
+      isSpacer: isSpacer || false
     };
   }
 
