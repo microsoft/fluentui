@@ -4,13 +4,14 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
 <div
   className="ms-Dropdown-container"
 >
-  <div
+  <button
     aria-activedescendant="Dropdown94-option"
     aria-describedby="Dropdown94-option"
     aria-disabled={undefined}
     aria-expanded="false"
+    aria-haspopup="listbox"
     aria-label={undefined}
-    aria-live="assertive"
+    aria-labelledby="Dropdown94-label"
     aria-owns={undefined}
     className="ms-Dropdown"
     data-is-focusable={true}
@@ -19,11 +20,9 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
     onClick={[Function]}
     onKeyDown={[Function]}
     onKeyUp={[Function]}
-    role="listbox"
     tabIndex={0}
   >
     <span
-      aria-atomic={true}
       aria-label={undefined}
       className="ms-Dropdown-title ms-Dropdown-titleIsPlaceHolder"
       id="Dropdown94-option"
@@ -51,7 +50,10 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
         
       </i>
     </span>
-  </div>
+  </button>
+  <span
+    className="ms-Layer"
+  />
 </div>
 `;
 
@@ -59,13 +61,14 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
 <div
   className="ms-Dropdown-container"
 >
-  <div
+  <button
     aria-activedescendant="Dropdown0-option"
     aria-describedby="Dropdown0-option"
     aria-disabled={undefined}
     aria-expanded="false"
+    aria-haspopup="listbox"
     aria-label={undefined}
-    aria-live="assertive"
+    aria-labelledby="Dropdown0-label"
     aria-owns={undefined}
     className="ms-Dropdown"
     data-is-focusable={true}
@@ -74,11 +77,9 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
     onClick={[Function]}
     onKeyDown={[Function]}
     onKeyUp={[Function]}
-    role="listbox"
     tabIndex={0}
   >
     <span
-      aria-atomic={true}
       aria-label={undefined}
       className="ms-Dropdown-title ms-Dropdown-titleIsPlaceHolder"
       id="Dropdown0-option"
@@ -106,6 +107,9 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
         
       </i>
     </span>
-  </div>
+  </button>
+  <span
+    className="ms-Layer"
+  />
 </div>
 `;
