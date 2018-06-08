@@ -199,7 +199,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
                   !selectedOptions.length && styles.titleIsPlaceHolder,
                   errorMessage && errorMessage.length > 0 ? styles.titleIsError : null
                 )}
-                aria-atomic={true}
                 role="listbox"
                 aria-label={selectedOptions.length ? selectedOptions[0].text : this.props.placeHolder}
               >
