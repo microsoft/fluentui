@@ -425,7 +425,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   /**
-   * Set focus on the input
+   * @inheritdoc
    */
   public focus = (shouldOpenOnFocus?: boolean, useFocusAsync?: boolean): void => {
     if (this._autofill.current) {
