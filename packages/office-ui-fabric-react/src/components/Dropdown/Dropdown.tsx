@@ -146,28 +146,28 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     if (isDisabled !== undefined) {
       disabled = isDisabled;
     }
-    const describedBy = id + '-option';
+    const describedby = id + '-option';
+    const labelledby = id + '-label';
 
     return (
       <div className={css('ms-Dropdown-container')}>
         {label && (
-          <Label className={css('ms-Dropdown-label')} id={id + '-label'} htmlFor={id} required={required}>
+          <Label className={css('ms-Dropdown-label')} id={labelledby} htmlFor={id} required={required}>
             {label}
           </Label>
         )}
         <KeytipData keytipProps={keytipProps} disabled={disabled}>
           {(keytipAttributes: any): JSX.Element => (
-            <div
+            <button
               {...keytipAttributes}
               data-is-focusable={!disabled}
               ref={this._dropDown}
               id={id}
               tabIndex={disabled ? -1 : 0}
               aria-expanded={isOpen ? 'true' : 'false'}
-              role="listbox"
-              aria-live={disabled || isOpen ? 'off' : 'assertive'}
               aria-label={ariaLabel}
-              aria-describedby={mergeAriaAttributeValues(describedBy, keytipAttributes['aria-describedby'])}
+              aria-labelledby={`${mergeAriaAttributeValues(labelledby, keytipAttributes['aria-labeledby'])}`}
+              aria-describedby={`${mergeAriaAttributeValues(describedby, keytipAttributes['aria-describedby'])}`}
               aria-activedescendant={
                 isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0
                   ? this._id + '-list' + selectedIndices[0]
@@ -175,6 +175,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
               }
               aria-disabled={disabled}
               aria-owns={isOpen ? id + '-list' : undefined}
+              aria-haspopup="listbox"
               {...divProps}
               className={css(
                 'ms-Dropdown',
@@ -210,10 +211,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
               <span className={css('ms-Dropdown-caretDownWrapper', styles.caretDownWrapper)}>
                 {onRenderCaretDown(this.props, this._onRenderCaretDown)}
               </span>
-            </div>
+            </button>
           )}
         </KeytipData>
-        {isOpen && onRenderContainer(this.props, this._onRenderContainer)}
+        {onRenderContainer(this.props, this._onRenderContainer)}
         {errorMessage && <div className={css(styles.errorMessage)}>{errorMessage}</div>}
       </div>
     );
@@ -331,7 +332,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     const { multiSelectDelimiter = ', ' } = this.props;
 
     const displayTxt = item.map(i => i.text).join(multiSelectDelimiter);
-    return <span>{displayTxt}</span>;
+    return displayTxt as any;
   };
 
   // Render placeHolder text in dropdown input
@@ -339,7 +340,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     if (!props.placeHolder) {
       return null;
     }
-    return <span>{props.placeHolder}</span>;
+    return props.placeHolder as any;
   };
 
   // Render Callout or Panel container and pass in list
@@ -366,6 +367,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         doNotLayer={false}
         directionalHintFixed={true}
         directionalHint={DirectionalHint.bottomLeftEdge}
+        hidden={!this.state.isOpen}
         {...calloutProps}
         className={css('ms-Dropdown-callout', styles.callout, !!calloutProps && calloutProps.className)}
         target={this._dropDown.current}
@@ -391,12 +393,15 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     const id = this._id;
     const { selectedIndices = [] } = this.state;
 
+    const activeElement = selectedIndices[0] !== undefined ? `${id}-list${selectedIndices[0]}` : undefined;
+
     return (
       <div className={styles.listWrapper} onKeyDown={this._onZoneKeyDown} ref={this._host} tabIndex={0}>
         <FocusZone
           ref={this._focusZone}
           direction={FocusZoneDirection.vertical}
-          defaultActiveElement={selectedIndices[0] !== undefined ? `#${id}-list${selectedIndices[0]}` : undefined}
+          defaultActiveElement={'#' + activeElement}
+          aria-activedescendant={activeElement}
           id={id + '-list'}
           className={css('ms-Dropdown-items', styles.items)}
           aria-labelledby={id + '-label'}
