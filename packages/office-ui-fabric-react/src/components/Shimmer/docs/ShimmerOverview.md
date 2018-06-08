@@ -1,0 +1,5 @@
+Shimmer is a temporary animation placeholder for when data from the service call takes time to get back and we don't want to block rendering the rest of the UI.
+
+When Shimmer is not wrapping the actual component to be rendered while data is fetching, `shimmerElements` or `customElementsGroup` props should be used, and later just replace the Shimmer UI with the intended content. Otherwise, if smooth transition from Shimmer UI to content is wanted, wrap the content node with Shimmer tags and use `isDataLoaded` prop to trigger the transition. For reference use the examples provided below.
+
+For cases when your application supports theming, Shimmer component is equiped with everything you need to just load the custom theme to the application, and as long as the color palette you provide has an overried for the two <a href='https://developer.microsoft.com/en-us/fabric#/styles/colors'>Fabric colors</a> used in Shimmer, everything should be ok. If no theming is supported, then follow the example showing the use of the `styles` prop.

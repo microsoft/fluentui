@@ -1,0 +1,15 @@
+.shimmerExampleContainer {
+  padding: 2px;
+
+  & > * {
+    margin: 10px 0;
+  }
+}
+
+.shimmerExampleFlexGroup {
+  display: flex;
+
+  & > * {
+    margin-right: 30px;
+  }
+}
