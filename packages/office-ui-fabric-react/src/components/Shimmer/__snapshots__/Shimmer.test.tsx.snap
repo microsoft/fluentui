@@ -8,6 +8,7 @@ exports[`Shimmer renders Shimmer correctly 1`] = `
         height: auto;
         position: relative;
       }
+  width="50%"
 >
   <div
     className=
@@ -223,6 +224,7 @@ exports[`Shimmer renders Shimmer with custom elements correctly 1`] = `
         height: auto;
         position: relative;
       }
+  width={350}
 >
   <div
     className=
