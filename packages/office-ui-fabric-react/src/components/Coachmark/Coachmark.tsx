@@ -18,7 +18,7 @@ import {
   ICoachmarkStyles,
   ICoachmarkStyleProps
 } from './Coachmark.styles';
-import { FocusZone } from '../../FocusZone';
+import { FocusTrapZone } from '../../FocusTrapZone';
 
 const getClassNames = classNamesFunction<ICoachmarkStyleProps, ICoachmarkStyles>();
 
@@ -189,7 +189,12 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
         {...positioningContainerProps}
       >
         <div className={classNames.root}>
-          <div className={classNames.ariaAlert} aria-live="assertive" ref={this._ariaAlertContainer} />
+          <div
+            className={classNames.ariaAlert}
+            aria-live="assertive"
+            ref={this._ariaAlertContainer}
+            aria-hidden={isCollapsed ? 'false' : 'true'}
+          />
           <div className={classNames.pulsingBeacon} />
           <div className={classNames.translateAnimationContainer} ref={this._translateAnimationContainer}>
             <div className={classNames.scaleAnimationLayer}>
@@ -204,13 +209,13 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
                     color={color}
                   />
                 )}
-                <FocusZone>
+                <FocusTrapZone>
                   <div className={classNames.entityHost} data-is-focusable={true} onFocus={this._onFocusHandler}>
                     <div className={classNames.entityInnerHost} ref={this._entityInnerHostElement}>
                       {children}
                     </div>
                   </div>
-                </FocusZone>
+                </FocusTrapZone>
               </div>
             </div>
           </div>
