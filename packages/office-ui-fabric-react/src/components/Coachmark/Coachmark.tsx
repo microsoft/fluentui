@@ -158,7 +158,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       ariaDescribedBy,
       ariaDescribedByText,
       ariaLabelledBy,
-      ariaLabelledByText
+      ariaLabelledByText,
+      ariaAlertText
     } = this.props;
 
     const {
@@ -198,12 +199,14 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
         {...positioningContainerProps}
       >
         <div className={classNames.root}>
-          <div
-            className={classNames.ariaContainer}
-            aria-live="assertive"
-            ref={this._ariaAlertContainer}
-            aria-hidden={!isCollapsed}
-          />
+          {ariaAlertText && (
+            <div
+              className={classNames.ariaContainer}
+              aria-live="assertive"
+              ref={this._ariaAlertContainer}
+              aria-hidden={!isCollapsed}
+            />
+          )}
           <div className={classNames.pulsingBeacon} />
           <div className={classNames.translateAnimationContainer} ref={this._translateAnimationContainer}>
             <div className={classNames.scaleAnimationLayer}>
@@ -228,16 +231,18 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
                     aria-labelledby={ariaLabelledBy}
                     aria-describedby={ariaDescribedBy}
                   >
-                    {isCollapsed && (
-                      <h1 id={ariaLabelledBy} className={classNames.ariaContainer}>
-                        {ariaLabelledByText}
-                      </h1>
-                    )}
-                    {isCollapsed && (
-                      <p id={ariaDescribedBy} className={classNames.ariaContainer}>
-                        {ariaDescribedByText}
-                      </p>
-                    )}
+                    {isCollapsed &&
+                      ariaLabelledBy && (
+                        <h1 id={ariaLabelledBy} className={classNames.ariaContainer}>
+                          {ariaLabelledByText}
+                        </h1>
+                      )}
+                    {isCollapsed &&
+                      ariaDescribedBy && (
+                        <p id={ariaDescribedBy} className={classNames.ariaContainer}>
+                          {ariaDescribedByText}
+                        </p>
+                      )}
                     <div
                       className={classNames.entityInnerHost}
                       ref={this._entityInnerHostElement}
