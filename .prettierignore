@@ -7,5 +7,6 @@ packages/*/package.json
 **/lib/**/*.js
 **/lib-commonjs/**/*.js
 **/dist/*.js
+**/common/changes/**/*.*
 
 **/CHANGELOG.json

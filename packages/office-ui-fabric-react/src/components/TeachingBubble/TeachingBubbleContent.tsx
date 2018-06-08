@@ -26,6 +26,7 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
 
   public render(): JSX.Element {
     const {
+      children,
       illustrationImage,
       primaryButtonProps,
       secondaryButtonProps,
@@ -34,7 +35,8 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
       hasCloseIcon,
       onDismiss,
       closeButtonAriaLabel,
-      hasSmallHeadline
+      hasSmallHeadline,
+      isWide
     } = this.props;
 
     let imageContent;
@@ -68,10 +70,10 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
       );
     }
 
-    if (this.props.children) {
+    if (children) {
       bodyContent = (
         <div className={css('ms-TeachingBubble-body', styles.body)}>
-          <p className={css('ms-TeachingBubble-subText', styles.subText)}>{this.props.children}</p>
+          <p className={css('ms-TeachingBubble-subText', styles.subText)}>{children}</p>
         </div>
       );
     }
@@ -112,14 +114,14 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
     }
 
     return (
-      <div className={css('ms-TeachingBubble-content', styles.root)}>
+      <div className={css('ms-TeachingBubble-content', styles.root, isWide ? styles.wideCallout : null)}>
         {imageContent}
-        {closeButton}
         <div className={css('ms-TeachingBubble-bodycontent', styles.bodyContent)}>
           {headerContent}
           {bodyContent}
           {footerContent}
         </div>
+        {closeButton}
       </div>
     );
   }

@@ -308,10 +308,17 @@ class SlimNavComponent extends NavBase {
 
     const classNames = getClassNames(styles!, {});
 
+    let isGroupHeaderVisible = false;
+
+    // first group header is hidden by default, display group header for other groups only if there are visible links
+    if (groupIndex > 0) {
+      isGroupHeaderVisible = this.hasAtleastOneVisibleLink(group.links);
+    }
+
     return (
       <div key={groupIndex}>
         {// do not render group header for the first group
-        groupIndex > 0 ? (
+        isGroupHeaderVisible ? (
           <div className={classNames.navGroupSeparatorRoot}>
             <div className={classNames.navGroupSeparatorHrLine} />
           </div>

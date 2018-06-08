@@ -3,7 +3,7 @@ import { BaseComponent, getNativeProps, divProperties, customizable, KeyCodes, c
 import { IExpandingCardProps, IExpandingCardStyles, ExpandingCardMode } from './ExpandingCard.types';
 import { Callout, ICallout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { AnimationStyles, mergeStyles } from '../../Styling';
+import { mergeStyles } from '../../Styling';
 import { FocusTrapZone } from '../../FocusTrapZone';
 import { getStyles } from './ExpandingCard.styles';
 
@@ -12,7 +12,7 @@ export interface IExpandingCardState {
   needsScroll: boolean;
 }
 
-@customizable('ExpandingCard', ['theme'])
+@customizable('ExpandingCard', ['theme', 'styles'])
 export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpandingCardState> {
   public static defaultProps = {
     compactCardHeight: 156,
@@ -67,7 +67,7 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
       <Callout
         {...getNativeProps(this.props, divProperties)}
         componentRef={this._callout}
-        className={mergeStyles(AnimationStyles.scaleUpIn100, this._styles.root)}
+        className={mergeStyles(this._styles.root)}
         target={targetElement}
         isBeakVisible={false}
         directionalHint={this.props.directionalHint}

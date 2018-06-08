@@ -1,60 +1,39 @@
 import * as React from 'react';
-import {
-  ExampleCard,
-  ComponentPage,
-  IComponentDemoPageProps,
-  PageMarkdown,
-  PropertiesTableSet
-} from '@uifabric/example-app-base';
 import { RatingBasicExample } from './examples/Rating.Basic.Example';
+import { DemoPage } from '../../demo/components/DemoPage';
+import { IDemoPageProps } from '../../demo/components/DemoPage.types';
 import { RatingButtonControlledExample } from './examples/Rating.ButtonControlled.Example';
-import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { RatingStatus } from './Rating.checklist';
 
 const RatingBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Rating/examples/Rating.Basic.Example.tsx') as string;
 const RatingButtonControlledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Rating/examples/Rating.ButtonControlled.Example.tsx') as string;
 
-export class RatingPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render(): JSX.Element {
-    return (
-      <ComponentPage
-        title="Rating"
-        componentName="RatingExample"
-        componentUrl="https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Rating"
-        exampleCards={
-          <div>
-            <ExampleCard title="Rating" code={RatingBasicExampleCode}>
-              <RatingBasicExample />
-            </ExampleCard>
-            <ExampleCard title="Button Controlled Rating" code={RatingButtonControlledExampleCode}>
-              <RatingButtonControlledExample />
-            </ExampleCard>
-          </div>
-        }
-        propertiesTables={
-          <PropertiesTableSet
-            sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/Rating/Rating.types.ts')]}
-          />
-        }
-        overview={
-          <PageMarkdown>
-            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Rating/docs/RatingOverview.md')}
-          </PageMarkdown>
-        }
-        bestPractices={<div />}
-        dos={
-          <PageMarkdown>
-            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Rating/docs/RatingDos.md')}
-          </PageMarkdown>
-        }
-        donts={
-          <PageMarkdown>
-            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Rating/docs/RatingDonts.md')}
-          </PageMarkdown>
-        }
-        isHeaderVisible={this.props.isHeaderVisible}
-        componentStatus={<ComponentStatus {...RatingStatus} />}
-      />
-    );
-  }
-}
+export const RatingPageProps: IDemoPageProps = {
+  title: 'Rating',
+  componentName: 'Rating',
+  componentUrl:
+    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Rating',
+  componentStatus: RatingStatus,
+  examples: [
+    {
+      title: 'Rating',
+      code: RatingBasicExampleCode,
+      view: <RatingBasicExample />
+    },
+    {
+      title: 'Button Controlled Rating',
+      code: RatingButtonControlledExampleCode,
+      view: <RatingButtonControlledExample />
+    }
+  ],
+  propertiesTablesSources: [
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/Rating/Rating.types.ts')
+  ],
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Rating/docs/RatingOverview.md'),
+  bestPractices: '',
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Rating/docs/RatingDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Rating/docs/RatingDonts.md'),
+  isHeaderVisible: true
+};
+
+export const RatingPage = (props: { isHeaderVisible: boolean }) => <DemoPage {...{ ...RatingPageProps, ...props }} />;

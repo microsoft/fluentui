@@ -65,4 +65,16 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
 
     return link.name;
   }
+
+  protected hasAtleastOneVisibleLink(links: INavLink[]): boolean {
+    if (!links || links.length === 0) {
+      return false;
+    }
+
+    return links.some(
+      (link: INavLink): boolean => {
+        return !link.isHidden;
+      }
+    );
+  }
 }

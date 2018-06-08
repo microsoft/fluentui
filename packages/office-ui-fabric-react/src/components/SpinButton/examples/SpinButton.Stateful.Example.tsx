@@ -13,7 +13,7 @@ export class SpinButtonStatefulExample extends React.Component<any, any> {
           value={'7' + suffix}
           onValidate={(value: string) => {
             value = this._removeSuffix(value, suffix);
-            if (isNaN(+value)) {
+            if (value.trim().length === 0 || isNaN(+value)) {
               return '0' + suffix;
             }
 

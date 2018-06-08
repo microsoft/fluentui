@@ -491,9 +491,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       <KeytipData keytipProps={keytipProps} disabled={disabled}>
         {(keytipAttributes: any): JSX.Element => (
           <div
+            {...buttonProps}
             data-ktp-target={keytipAttributes['data-ktp-target']}
             role={'button'}
-            aria-labelledby={buttonProps.ariaLabel}
             aria-disabled={disabled}
             aria-haspopup={true}
             aria-expanded={this._isExpanded}
@@ -505,7 +505,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
             ref={this._splitButtonContainer}
             data-is-focusable={true}
             onClick={!disabled && !primaryDisabled ? this._onSplitButtonPrimaryClick : undefined}
-            tabIndex={!disabled || allowDisabledFocus ? 0 : undefined}
+            tabIndex={(!disabled || allowDisabledFocus) ? 0 : undefined}
             aria-roledescription={buttonProps['aria-roledescription']}
           >
             <span style={{ display: 'flex' }}>

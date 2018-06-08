@@ -30,7 +30,13 @@ exports[`Facepile renders Facepile correctly 1`] = `
           className=
               ms-Persona-coin
               ms-Persona--size32
-
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+              }
           size={11}
         >
           <div
@@ -108,7 +114,13 @@ exports[`Facepile renders Facepile correctly 1`] = `
           className=
               ms-Persona-coin
               ms-Persona--size32
-
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+              }
           size={11}
         >
           <div
@@ -252,7 +264,13 @@ exports[`Facepile renders Facepile correctly 1`] = `
             className=
                 ms-Persona-coin
                 ms-Persona--size32
-
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
             size={11}
           >
             <div

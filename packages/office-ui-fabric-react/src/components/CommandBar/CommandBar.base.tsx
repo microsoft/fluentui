@@ -41,7 +41,7 @@ export interface ICommandBarData {
   cacheKey: string;
 }
 
-@customizable('CommandBar', ['theme'])
+@customizable('CommandBar', ['theme', 'styles'])
 export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implements ICommandBar {
   public static defaultProps: ICommandBarProps = {
     items: [],

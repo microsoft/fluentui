@@ -197,9 +197,16 @@ class NavComponent extends NavBase {
 
     const classNames = getClassNames(styles!, {});
 
+    let isGroupHeaderVisible = false;
+
+    // first group header is hidden by default, display group header for other groups only if there are visible links
+    if (groupIndex > 0) {
+      isGroupHeaderVisible = this.hasAtleastOneVisibleLink(group.links);
+    }
+
     return (
       <div key={groupIndex}>
-        {groupIndex > 0 ? (
+        {isGroupHeaderVisible ? (
           <div className={classNames.navGroupSeparatorRoot}>
             <div className={classNames.navGroupSeparatorHrLine}>
               {group.name ? <span className={classNames.navGroupSeparatorGroupName}>{group.name}</span> : null}

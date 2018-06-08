@@ -1,48 +1,38 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 
 import { PeopleSelectedItemsListExample } from '../examples/SelectedPeopleList.Basic.Example';
+import { DemoPage } from '../../../demo/components/DemoPage';
+import { IDemoPageProps } from '../../../demo/components/DemoPage.types';
 const PeopleSelectedItemsListExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SelectedItemsList/examples/SelectedPeopleList.Basic.Example.tsx') as string;
 
-export class SelectedPeopleListPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render(): JSX.Element {
-    return (
-      <ComponentPage
-        title="SelectedPeopleList"
-        componentName="SelectedPeopleList"
-        exampleCards={
-          <div>
-            <ExampleCard title="Selected People List" code={PeopleSelectedItemsListExampleCode}>
-              <PeopleSelectedItemsListExample />
-            </ExampleCard>
-          </div>
-        }
-        propertiesTables={
-          <PropertiesTableSet
-            sources={[
-              require<
-                string
-              >('!raw-loader!office-ui-fabric-react/src/components/SelectedItemsList/BaseSelectedItemsList.types.ts')
-            ]}
-          />
-        }
-        overview={<div />}
-        bestPractices={<div />}
-        dos={
-          <div>
-            <ul>
-              <li>Use them to represent list of selected people.</li>
-            </ul>
-          </div>
-        }
-        donts={
-          <div>
-            <ul>
-              <li>Use for other items besides selected people</li>
-            </ul>
-          </div>
-        }
-      />
-    );
-  }
-}
+export const SelectedPeopleListPageProps: IDemoPageProps = {
+  title: 'SelectedPeopleList',
+  componentName: 'SelectedPeopleList',
+  componentUrl:
+    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/SelectedPeopleList',
+  examples: [
+    {
+      title: 'Selected People List',
+      code: PeopleSelectedItemsListExampleCode,
+      view: <PeopleSelectedItemsListExample />
+    }
+  ],
+  propertiesTablesSources: [
+    require<
+      string
+    >('!raw-loader!office-ui-fabric-react/src/components/SelectedItemsList/BaseSelectedItemsList.types.ts')
+  ],
+  overview: '',
+  bestPractices: '',
+  dos: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/SelectedItemsList/docs/SelectedPeopleListDos.md'),
+  donts: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/SelectedItemsList/docs/SelectedPeopleListDonts.md'),
+  isHeaderVisible: true
+};
+
+export const SelectedPeopleListPage = (props: { isHeaderVisible: boolean }) => (
+  <DemoPage {...{ ...SelectedPeopleListPageProps, ...props }} />
+);

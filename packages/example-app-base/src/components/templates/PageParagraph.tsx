@@ -28,7 +28,7 @@ const getDefaultStyles = (props: IPageParagraphStyleProps): IPageParagraphStyles
   ]
 });
 
-@customizable('PageParagraph', ['theme'])
+@customizable('PageParagraph', ['theme', 'styles'])
 export class PageParagraph extends BaseComponent<IPageParagraphProps, {}> {
   public render(): JSX.Element {
     const { children, theme } = this.props;

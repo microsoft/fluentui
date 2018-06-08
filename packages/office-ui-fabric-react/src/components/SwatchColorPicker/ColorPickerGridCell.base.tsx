@@ -18,7 +18,7 @@ const getClassNames = classNamesFunction<IColorPickerGridCellStyleProps, IColorP
 
 class ColorCell extends GridCell<IColorCellProps, IGridCellProps<IColorCellProps>> {}
 
-@customizable('ColorPickerGridCell', ['theme'])
+@customizable('ColorPickerGridCell', ['theme', 'styles'])
 export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCellProps, {}> {
   public static defaultProps = {
     circle: true,
