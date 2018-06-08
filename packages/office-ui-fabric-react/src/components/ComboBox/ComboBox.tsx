@@ -1164,7 +1164,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         >
           {onRenderOption(item, this._onRenderOptionContent)}
         </Checkbox>
-        );
+      );
     };
 
     return (
