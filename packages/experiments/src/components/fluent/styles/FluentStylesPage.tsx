@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IComponentDemoPageProps, ComponentPage } from '@uifabric/example-app-base';
+import { IComponentDemoPageProps, ComponentPage, ExampleCard } from '@uifabric/example-app-base';
 
 import { FluentStylesBasicExample } from './examples/FluentStyles.Basic.Examples';
 
@@ -17,7 +17,9 @@ export class FluentStylesPage extends React.Component<IComponentDemoPageProps, {
         isHeaderVisible={this.props.isHeaderVisible}
         exampleCards={
           <div>
-            <FluentStylesBasicExample />
+            <ExampleCard title="Using Customizer to theme components">
+              <FluentStylesBasicExample />
+            </ExampleCard>
           </div>
         }
       />
