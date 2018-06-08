@@ -102,6 +102,10 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
     return this._suggestions && this._suggestions.getCurrentItem();
   }
 
+  public get currentSuggestionIndex(): number {
+    return this._suggestions && this._suggestions.currentIndex;
+  }
+
   public hasSuggestionSelected(): boolean {
     return this._suggestions && this._suggestions.hasSuggestionSelected();
   }

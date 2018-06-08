@@ -11,7 +11,12 @@ import { Selection, SelectionMode, SelectionZone } from '../../Selection';
 // tslint:disable-next-line:no-any
 const styles: any = stylesImport;
 
-export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends BaseComponent<P, {}>
+export interface IBaseExtendedPickerState<T> {
+  selectedItems: T[] | null;
+}
+
+export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
+  extends BaseComponent<P, IBaseExtendedPickerState<T>>
   implements IBaseExtendedPicker<T> {
   public floatingPicker = createRef<BaseFloatingPicker<T, IBaseFloatingPickerProps<T>>>();
   public selectedItemsList = createRef<BaseSelectedItemsList<T, IBaseSelectedItemsListProps<T>>>();
@@ -28,8 +33,11 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     this.selection = new Selection({ onSelectionChanged: () => this.onSelectionChange() });
 
     this.state = {
-      items: this.props.selectedItemsListProps.selectedItems ? this.props.selectedItemsListProps.selectedItems : [],
-      suggestedDisplayValue: ''
+      selectedItems: this.props.defaultSelectedItems
+        ? (this.props.defaultSelectedItems as T[])
+        : this.props.selectedItems
+          ? (this.props.selectedItems as T[])
+          : null
     };
 
     this.floatingPickerProps = this.props.floatingPickerProps;
@@ -38,7 +46,11 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
 
   // tslint:disable-next-line:no-any
   public get items(): any {
-    return this.selectedItemsList.current ? this.selectedItemsList.current.items : [];
+    return this.state.selectedItems
+      ? this.state.selectedItems
+      : this.selectedItemsList.current
+        ? this.selectedItemsList.current.items
+        : null;
   }
 
   public componentDidMount(): void {
@@ -52,6 +64,10 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
 
     if (newProps.selectedItemsListProps) {
       this.selectedItemsListProps = newProps.selectedItemsListProps;
+    }
+
+    if (newProps.selectedItems) {
+      this.setState({ selectedItems: newProps.selectedItems });
     }
   }
 
@@ -73,6 +89,10 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
 
   public render(): JSX.Element {
     const { className, inputProps, disabled } = this.props;
+    const activeDescendant =
+      this.floatingPicker.current && this.floatingPicker.current
+        ? 'sug-' + this.floatingPicker.current.currentSelectedSuggestionIndex
+        : undefined;
 
     return (
       <div
@@ -94,7 +114,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
                   onFocus={this.onInputFocus}
                   onClick={this.onInputClick}
                   onInputValueChange={this.onInputChange}
-                  aria-activedescendant={'sug-' + this.items.length}
+                  aria-activedescendant={activeDescendant}
                   aria-owns="suggestion-list"
                   aria-expanded="true"
                   aria-haspopup="true"
@@ -129,7 +149,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
       componentRef: this.floatingPicker,
       onChange: this._onSuggestionSelected,
       inputElement: this.input.current ? this.input.current.inputElement : undefined,
-      selectedItems: this.selectedItemsList.current ? this.selectedItemsList.current.items : [],
+      selectedItems: this.items,
       ...this.floatingPickerProps
     });
   }
@@ -139,6 +159,8 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     return onRenderSelectedItems({
       componentRef: this.selectedItemsList,
       selection: this.selection,
+      selectedItems: this.state.selectedItems ? this.state.selectedItems : undefined,
+      onItemsDeleted: this.props.selectedItems ? this.props.onItemsRemoved : undefined,
       ...this.selectedItemsListProps
     });
   }
@@ -186,10 +208,16 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
         this.input.current.inputElement === document.activeElement &&
         (this.input.current as Autofill).cursorLocation === 0
       ) {
+        if (this.floatingPicker.current) {
+          this.floatingPicker.current.hidePicker();
+        }
         ev.preventDefault();
         this.selectedItemsList.current.removeItemAt(this.items.length - 1);
         this._onSelectedItemsChanged();
       } else if (this.selectedItemsList.current.hasSelectedItems()) {
+        if (this.floatingPicker.current) {
+          this.floatingPicker.current.hidePicker();
+        }
         ev.preventDefault();
         this.selectedItemsList.current.removeSelectedItems();
         this._onSelectedItemsChanged();
@@ -213,12 +241,42 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   };
 
   protected _onSuggestionSelected = (item: T): void => {
-    if (this.selectedItemsList.current) {
-      this.selectedItemsList.current.addItems([item]);
+    const processedItem: T | PromiseLike<T> | null = this.props.onItemSelected
+      ? (this.props.onItemSelected as any)(item)
+      : item;
+
+    if (processedItem === null) {
+      return;
     }
 
-    if (this.props.onItemSelected) {
-      this.props.onItemSelected(item);
+    const processedItemObject: T = processedItem as T;
+    const processedItemPromiseLike: PromiseLike<T> = processedItem as PromiseLike<T>;
+
+    let newItem: T;
+    if (processedItemPromiseLike && processedItemPromiseLike.then) {
+      processedItemPromiseLike.then((resolvedProcessedItem: T) => {
+        newItem = resolvedProcessedItem;
+        this._addProcessedItem(newItem);
+      });
+    } else {
+      newItem = processedItemObject;
+      this._addProcessedItem(newItem);
+    }
+  };
+
+  protected _onSelectedItemsChanged = (): void => {
+    this.focus();
+  };
+
+  private _addProcessedItem(newItem: T) {
+    // If this is a controlled component, call the on item selected callback
+    // Otherwise add it to the selectedItemsList
+    if (this.props.onItemAdded) {
+      this.props.onItemAdded(newItem);
+    }
+
+    if (this.selectedItemsList.current) {
+      this.selectedItemsList.current.addItems([newItem]);
     }
 
     if (this.input.current) {
@@ -230,9 +288,5 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     }
 
     this.focus();
-  };
-
-  protected _onSelectedItemsChanged = (): void => {
-    this.focus();
-  };
+  }
 }

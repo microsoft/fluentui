@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, getRTL, createRef } from '../../Utilities';
+import { BaseComponent, KeyCodes, css, createRef } from '../../Utilities';
 import { Callout, DirectionalHint } from '../../Callout';
 import { ISuggestionModel } from '../../Pickers';
 import {
@@ -60,6 +60,10 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
     } else {
       this._onValidateInput();
     }
+  }
+
+  public get currentSelectedSuggestionIndex(): number {
+    return this.suggestionsControl && this.suggestionsControl.currentSuggestionIndex;
   }
 
   public get isSuggestionsShown(): boolean {
@@ -152,7 +156,8 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
         gapSpace={5}
         target={this.props.inputElement}
         onDismiss={this.hidePicker}
-        directionalHint={getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge}
+        directionalHint={DirectionalHint.bottomLeftEdge}
+        directionalHintForRTL={DirectionalHint.bottomRightEdge}
         calloutWidth={this.props.calloutWidth ? this.props.calloutWidth : 0}
       >
         <TypedSuggestionsControl
