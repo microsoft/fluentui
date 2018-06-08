@@ -86,6 +86,7 @@ export class DetailsListBasicExample extends React.Component<
         <TextField label="Filter by name:" onChanged={this._onChanged} />
         <MarqueeSelection selection={this._selection}>
           <DetailsList
+            componentRef={this._detailsList}
             items={items}
             columns={_columns}
             setKey="set"

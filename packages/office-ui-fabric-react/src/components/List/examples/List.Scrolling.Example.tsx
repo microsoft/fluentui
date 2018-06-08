@@ -85,7 +85,9 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
 
   public componentWillUnmount() {
     if (this.state.showItemIndexInView) {
-      const itemIndexInView = this._list!.getStartItemIndexInView();
+      const itemIndexInView = this._list!.getStartItemIndexInView(
+        idx => (idx % 2 === 0 ? evenItemHeight : oddItemHeight) /* measureItem */
+      );
       alert('unmounting, getting first item index that was in view: ' + itemIndexInView);
     }
   }

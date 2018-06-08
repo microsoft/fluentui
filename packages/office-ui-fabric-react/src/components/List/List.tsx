@@ -270,7 +270,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     }
   }
 
-  public getStartItemIndexInView(): number {
+  public getStartItemIndexInView(measureItem?: (itemIndex: number) => number): number {
     const pages = this.state.pages || [];
     for (const page of pages) {
       const isPageVisible =
@@ -279,8 +279,23 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
         (this._scrollTop || 0) >= page.top &&
         (this._scrollTop || 0) <= page.top + page.height;
       if (isPageVisible) {
-        const rowHeight = Math.floor(page.height / page.itemCount);
-        return page.startIndex + Math.floor((this._scrollTop - page.top) / rowHeight);
+        if (!measureItem) {
+          const rowHeight = Math.floor(page.height / page.itemCount);
+          return page.startIndex + Math.floor((this._scrollTop - page.top) / rowHeight);
+        } else {
+          let totalRowHeight = 0;
+          for (let itemIndex = page.startIndex; itemIndex < page.startIndex + page.itemCount; itemIndex++) {
+            const rowHeight = measureItem(itemIndex);
+            if (
+              page.top + totalRowHeight <= this._scrollTop &&
+              this._scrollTop < page.top + totalRowHeight + rowHeight
+            ) {
+              return page.startIndex + itemIndex;
+            } else {
+              totalRowHeight += rowHeight;
+            }
+          }
+        }
       }
     }
     return 0;
