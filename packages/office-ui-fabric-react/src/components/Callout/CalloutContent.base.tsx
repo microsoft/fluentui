@@ -48,7 +48,7 @@ export interface ICalloutState {
   heightOffset?: number;
 }
 
-@customizable('CalloutContent', ['theme'])
+@customizable('CalloutContent', ['theme', 'styles'])
 export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutState> {
   public static defaultProps = {
     preventDismissOnLostFocus: false,
@@ -240,10 +240,10 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     if (
       !preventDismissOnLostFocus &&
       ((!this._target && clickedOutsideCallout) ||
-      (ev.target !== this._targetWindow &&
-        clickedOutsideCallout &&
-        ((this._target as MouseEvent).stopPropagation ||
-          (!this._target || (target !== this._target && !elementContains(this._target as HTMLElement, target))))))
+        (ev.target !== this._targetWindow &&
+          clickedOutsideCallout &&
+          ((this._target as MouseEvent).stopPropagation ||
+            (!this._target || (target !== this._target && !elementContains(this._target as HTMLElement, target))))))
     ) {
       this.dismiss(ev);
     }

@@ -13,7 +13,7 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 
 const getClassNames = classNamesFunction<ITooltipStyleProps, ITooltipStyles>();
 
-@customizable('Tooltip', ['theme'])
+@customizable('Tooltip', ['theme', 'styles'])
 export class TooltipBase extends BaseComponent<ITooltipProps, any> {
   // Specify default props values
   public static defaultProps: Partial<ITooltipProps> = {

@@ -2,6 +2,25 @@
   "name": "@uifabric/variants",
   "entries": [
     {
+      "version": "6.0.3",
+      "tag": "@uifabric/variants_v6.0.3",
+      "date": "Thu, 07 Jun 2018 16:35:34 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "c729050693c8f1496a5155b10be79812a3407db3",
+            "comment": "Variant Theming: update soft variant logic for better accessibility"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.5.0 <7.0.0` to `>=6.6.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.0.2",
       "tag": "@uifabric/variants_v6.0.2",
       "date": "Tue, 05 Jun 2018 00:44:30 GMT",
