@@ -28,7 +28,7 @@ export interface INavState {
   selectedKey?: string;
 }
 
-@customizable('Nav', ['theme'])
+@customizable('Nav', ['theme', 'styles'])
 export class NavBase extends BaseComponent<INavProps, INavState> implements INav {
   public static defaultProps: INavProps = {
     groups: null

@@ -11,7 +11,7 @@ initializeIcons();
 let _allStyles = '';
 
 // Push styles into variables for injecting later.
-configureLoadStyles((styles) => {
+configureLoadStyles(styles => {
   _allStyles += styles;
 });
 
@@ -21,31 +21,30 @@ const TodoApp = require('../lib-commonjs/TodoApp').default;
 
 app.use(express.static('./dist'));
 app.get('/', (req, res) => {
-
   const { html, css } = renderStatic(() => {
     return ReactDOMServer.renderToString(React.createElement(TodoApp, {}));
   });
 
   res.send(
     `<!doctype html>` +
-    `<head>` +
-    `<title>Server side rendering test</title>` +
-    `<style>${css}</style>` +
-    `</head>` +
-    `<body>` +
-    `<div id='content'>${html}</div>` +
-    `<button id='rehydrate'>Rehydrate!</button>` +
-    `<script type='text/javascript'>` +
-    `var rehydrate = document.querySelector('#rehydrate');` +
-    `rehydrate.addEventListener('click', function() {` +
-    `var script = document.createElement('script');` +
-    `script.setAttribute('type', 'text/javascript');` +
-    `script.setAttribute('src', 'test-app.min.js');` +
-    `document.head.appendChild(script);` +
-    `});` +
-    `</script>` +
-    `</body>` +
-    `</head>`
+      `<head>` +
+      `<title>Server side rendering test</title>` +
+      `<style>${css}</style>` +
+      `</head>` +
+      `<body>` +
+      `<div id='content'>${html}</div>` +
+      `<button id='rehydrate'>Rehydrate!</button>` +
+      `<script type='text/javascript'>` +
+      `var rehydrate = document.querySelector('#rehydrate');` +
+      `rehydrate.addEventListener('click', function() {` +
+      `var script = document.createElement('script');` +
+      `script.setAttribute('type', 'text/javascript');` +
+      `script.setAttribute('src', 'test-app.min.js');` +
+      `document.head.appendChild(script);` +
+      `});` +
+      `</script>` +
+      `</body>` +
+      `</head>`
   );
 });
 

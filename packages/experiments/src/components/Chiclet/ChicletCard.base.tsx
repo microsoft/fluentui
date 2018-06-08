@@ -11,7 +11,7 @@ const ASSET_CDN_BASE_URL = 'https://static2.sharepointonline.com/files/fabric/as
 const PREVIEW_IMAGE_WIDTH = '198px';
 const PREVIEW_IMAGE_HEIGHT = '122px';
 
-@customizable('ChicletCardBase', ['theme'])
+@customizable('ChicletCardBase', ['theme', 'styles'])
 export class ChicletCardBase extends BaseComponent<IChicletCardProps, {}> {
   public static defaultProps: IChicletCardProps = {
     imageWidth: PREVIEW_IMAGE_WIDTH,

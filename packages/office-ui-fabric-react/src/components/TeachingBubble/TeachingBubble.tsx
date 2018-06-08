@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, css } from '../../Utilities';
+import { BaseComponent, css, createRef } from '../../Utilities';
 import { TeachingBubbleContent } from './TeachingBubbleContent';
 import { ITeachingBubbleProps } from './TeachingBubble.types';
 import { Callout, ICalloutProps } from '../../Callout';
@@ -27,6 +27,7 @@ export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachin
     }
   };
 
+  public rootElement = createRef<HTMLDivElement>();
   private _defaultCalloutProps: ICalloutProps;
 
   // Constructor
@@ -44,8 +45,14 @@ export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachin
     };
   }
 
+  public focus(): void {
+    if (this.rootElement.current) {
+      this.rootElement.current.focus();
+    }
+  }
+
   public render(): JSX.Element {
-    const { calloutProps: setCalloutProps, targetElement, onDismiss } = this.props;
+    const { calloutProps: setCalloutProps, targetElement, onDismiss, isWide } = this.props;
     const calloutProps = { ...this._defaultCalloutProps, ...setCalloutProps };
 
     return (
@@ -56,11 +63,13 @@ export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachin
         className={css(
           'ms-TeachingBubble',
           styles.root,
-          this.props.isWide ? styles.wideCallout : null,
+          isWide ? styles.wideCallout : null,
           calloutProps ? calloutProps.className : undefined
         )}
       >
-        <TeachingBubbleContent {...this.props} />
+        <div ref={this.rootElement}>
+          <TeachingBubbleContent {...this.props} />
+        </div>
       </Callout>
     );
   }

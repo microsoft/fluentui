@@ -1,6 +1,29 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 07 Jun 2018 16:35:34 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Jun 2018 18:34:17 GMT and should not be manually modified.
+
+## 6.8.0
+Fri, 08 Jun 2018 18:34:17 GMT
+
+### Minor changes
+
+- ColorPicker: use getStyles
+- add style arg to customize
+- Shimmer: Adds new Shimmer component to office-ui-fabric-react
+
+### Patches
+
+- TeachingBubble: Fix content from wrapping to next line unncessarily
+- Dropdown: Add aria-label to option and option to aria-activedescendant
+- Package: Fix sideEffects array to target scss files using global.
+- ContextualMenu: Remove the ability for click to close a submenu. This aligns with windows behavior
+
+## 6.6.1
+Thu, 07 Jun 2018 17:40:07 GMT
+
+### Patches
+
+- SplitButton: apply button props to the focusable element for split buttons
 
 ## 6.6.0
 Thu, 07 Jun 2018 16:35:34 GMT

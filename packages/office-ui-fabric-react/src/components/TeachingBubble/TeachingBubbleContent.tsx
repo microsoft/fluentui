@@ -19,7 +19,7 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
     }
   };
 
-  private _rootElement = createRef<HTMLDivElement>();
+  public rootElement = createRef<HTMLDivElement>();
 
   constructor(props: ITeachingBubbleProps) {
     super(props);
@@ -28,13 +28,14 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
   }
 
   public focus(): void {
-    if (this._rootElement.current) {
-      this._rootElement.current.focus();
+    if (this.rootElement.current) {
+      this.rootElement.current.focus();
     }
   }
 
   public render(): JSX.Element {
     const {
+      children,
       illustrationImage,
       primaryButtonProps,
       secondaryButtonProps,
@@ -44,9 +45,9 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
       onDismiss,
       closeButtonAriaLabel,
       hasSmallHeadline,
-      children,
       ariaDescribedBy,
-      ariaLabelledBy
+      ariaLabelledBy,
+      isWide
     } = this.props;
 
     let imageContent;
@@ -86,7 +87,7 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
       bodyContent = (
         <div className={css('ms-TeachingBubble-body', styles.body)}>
           <p className={css('ms-TeachingBubble-subText', styles.subText)} id={ariaDescribedBy}>
-            {this.props.children}
+            {children}
           </p>
         </div>
       );
@@ -129,20 +130,20 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
 
     return (
       <div
-        ref={this._rootElement}
-        className={css('ms-TeachingBubble-content', styles.root)}
+        ref={this.rootElement}
+        className={css('ms-TeachingBubble-content', styles.root, isWide ? styles.wideCallout : null)}
         role={'dialog'}
         tabIndex={-1}
         aria-labelledby={ariaLabelledBy}
         aria-describedby={ariaDescribedBy}
       >
         {imageContent}
-        {closeButton}
         <div className={css('ms-TeachingBubble-bodycontent', styles.bodyContent)}>
           {headerContent}
           {bodyContent}
           {footerContent}
         </div>
+        {closeButton}
       </div>
     );
   }

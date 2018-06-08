@@ -27,7 +27,7 @@ export interface IScrollablePaneState {
 
 const getClassNames = classNamesFunction<IScrollablePaneStyleProps, IScrollablePaneStyles>();
 
-@customizable('ScrollablePane', ['theme'])
+@customizable('ScrollablePane', ['theme', 'styles'])
 export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScrollablePaneState>
   implements IScrollablePane {
   public static childContextTypes: React.ValidationMap<IScrollablePaneContext> = {

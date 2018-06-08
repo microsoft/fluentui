@@ -60,6 +60,7 @@
   max-width: 364px;
   border: 0;
   box-shadow: none !important;
+  width: calc(100% + 1px);
 
   animation-name: (bounceAnimation, opacityFadeIn);
   animation-duration: 2000ms;
