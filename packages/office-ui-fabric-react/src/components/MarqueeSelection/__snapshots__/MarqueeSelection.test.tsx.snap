@@ -23,7 +23,6 @@ exports[`MarqueeSelection renders MarqueeSelection correctly 1`] = `
   }
 >
   <CustomizedMarqueeSelection
-    getStyles={[Function]}
     isEnabled={true}
     rootProps={Object {}}
     rootTagName="div"
@@ -46,9 +45,9 @@ exports[`MarqueeSelection renders MarqueeSelection correctly 1`] = `
         "mode": 2,
       }
     }
+    styles={[Function]}
   >
     <MarqueeSelectionBase
-      getStyles={[Function]}
       isEnabled={true}
       rootProps={Object {}}
       rootTagName="div"
@@ -71,6 +70,7 @@ exports[`MarqueeSelection renders MarqueeSelection correctly 1`] = `
           "mode": 2,
         }
       }
+      styles={[Function]}
       theme={
         Object {
           "disableGlobalClassNames": false,
@@ -208,6 +208,7 @@ exports[`MarqueeSelection renders MarqueeSelection correctly 1`] = `
             "blockingBackground": "rgba(234, 67, 0, .2)",
             "bodyBackground": "#ffffff",
             "bodyDivider": "#c8c8c8",
+            "bodyFrameBackground": "#ffffff",
             "bodySubtext": "#666666",
             "bodyText": "#333333",
             "bodyTextChecked": "#000000",

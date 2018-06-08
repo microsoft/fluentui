@@ -2,6 +2,60 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.2.0",
+      "tag": "@uifabric/merge-styles_v6.2.0",
+      "date": "Thu, 07 Jun 2018 16:35:34 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "58b0ef8cd0468cbd5cfab04267f2f4143444f919",
+            "comment": "Minor changes to improve server side rendering."
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.2",
+      "tag": "@uifabric/merge-styles_v6.0.2",
+      "date": "Tue, 05 Jun 2018 00:44:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "cfa7a19ec1d6f98c13f822a828e0751f64507dbd",
+            "comment": "Added Prettier"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.1",
+      "tag": "@uifabric/merge-styles_v6.0.1",
+      "date": "Mon, 04 Jun 2018 10:16:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "4e1cd119bbf0f75e0432b0f92bad342714b57bef",
+            "comment": "Updating react typings."
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.0",
+      "tag": "@uifabric/merge-styles_v6.0.0",
+      "date": "Wed, 30 May 2018 22:05:03 GMT",
+      "comments": {
+        "major": [
+          {
+            "comment": "v6 release - see office-ui-fabric-react@6.1.0 for all up v6 release notes."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.17.1",
       "tag": "@uifabric/merge-styles_v5.17.1",
       "date": "Wed, 23 May 2018 10:28:50 GMT",

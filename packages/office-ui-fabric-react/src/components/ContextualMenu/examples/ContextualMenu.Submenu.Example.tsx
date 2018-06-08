@@ -8,7 +8,6 @@ export interface IContextualMenuSubmenuExampleState {
 }
 
 export class ContextualMenuSubmenuExample extends React.Component<any, IContextualMenuSubmenuExampleState> {
-
   constructor(props: any) {
     super(props);
 
@@ -20,11 +19,11 @@ export class ContextualMenuSubmenuExample extends React.Component<any, IContextu
   public render(): JSX.Element {
     return (
       <div>
-        <TextField value={ String(this.state.hoverDelay) } onChanged={ this._onHoverDelayChanged } />
+        <TextField value={String(this.state.hoverDelay)} onChanged={this._onHoverDelayChanged} />
         <DefaultButton
-          id='ContextualMenuButton2'
-          text='Click for ContextualMenu'
-          menuProps={ {
+          id="ContextualMenuButton2"
+          text="Click for ContextualMenu"
+          menuProps={{
             shouldFocusOnMount: true,
             subMenuHoverDelay: this.state.hoverDelay,
             items: [
@@ -34,18 +33,18 @@ export class ContextualMenuSubmenuExample extends React.Component<any, IContextu
                   items: [
                     {
                       key: 'emailMessage',
-                      name: 'Email message',
+                      text: 'Email message',
                       title: 'Create an email'
                     },
                     {
                       key: 'calendarEvent',
-                      name: 'Calendar event',
-                      title: 'Create a calendar event',
+                      text: 'Calendar event',
+                      title: 'Create a calendar event'
                     }
-                  ],
+                  ]
                 },
                 href: 'https://bing.com',
-                name: 'New'
+                text: 'New'
               },
               {
                 key: 'share',
@@ -53,73 +52,73 @@ export class ContextualMenuSubmenuExample extends React.Component<any, IContextu
                   items: [
                     {
                       key: 'sharetotwitter',
-                      name: 'Share to Twitter',
+                      text: 'Share to Twitter'
                     },
                     {
                       key: 'sharetofacebook',
-                      name: 'Share to Facebook',
+                      text: 'Share to Facebook'
                     },
                     {
                       key: 'sharetoemail',
-                      name: 'Share to Email',
+                      text: 'Share to Email',
                       subMenuProps: {
                         items: [
                           {
                             key: 'sharetooutlook_1',
-                            name: 'Share to Outlook',
-                            title: 'Share to Outlook',
+                            text: 'Share to Outlook',
+                            title: 'Share to Outlook'
                           },
                           {
                             key: 'sharetogmail_1',
-                            name: 'Share to Gmail',
-                            title: 'Share to Gmail',
+                            text: 'Share to Gmail',
+                            title: 'Share to Gmail'
                           }
-                        ],
-                      },
-                    },
-                  ],
+                        ]
+                      }
+                    }
+                  ]
                 },
-                name: 'Share'
+                text: 'Share'
               },
               {
                 key: 'shareSplit',
                 onClick: () => alert('Split buttons!'),
                 split: true,
+                'aria-roledescription': 'split button',
                 subMenuProps: {
                   items: [
                     {
                       key: 'sharetotwittersplit',
-                      name: 'Share to Twitter',
+                      text: 'Share to Twitter'
                     },
                     {
                       key: 'sharetofacebooksplit',
-                      name: 'Share to Facebook',
+                      text: 'Share to Facebook'
                     },
                     {
                       key: 'sharetoemailsplit',
-                      name: 'Share to Email',
+                      text: 'Share to Email',
                       subMenuProps: {
                         items: [
                           {
                             key: 'sharetooutlooksplit_1',
-                            name: 'Share to Outlook',
-                            title: 'Share to Outlook',
+                            text: 'Share to Outlook',
+                            title: 'Share to Outlook'
                           },
                           {
                             key: 'sharetogmailsplit_1',
-                            name: 'Share to Gmail',
-                            title: 'Share to Gmail',
+                            text: 'Share to Gmail',
+                            title: 'Share to Gmail'
                           }
-                        ],
-                      },
-                    },
-                  ],
+                        ]
+                      }
+                    }
+                  ]
                 },
-                name: 'Share w/ Split'
+                text: 'Share w/ Split'
               }
             ]
-          }
-          }
+          }}
         />
       </div>
     );
@@ -129,5 +128,5 @@ export class ContextualMenuSubmenuExample extends React.Component<any, IContextu
     this.setState({
       hoverDelay: +newValue
     });
-  }
+  };
 }

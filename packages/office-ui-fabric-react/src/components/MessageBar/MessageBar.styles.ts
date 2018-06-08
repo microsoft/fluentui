@@ -5,18 +5,18 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
   const { palette, fonts } = theme;
 
   const errorStyles = {
-    background: '#fde7e9',
+    background: 'rgba(232,17,35,.2)',
     selectors: {
-      '& i': {
+      '& .icon': {
         color: palette.redDark
       }
     }
   };
 
   const blockedStyles = {
-    background: '#fde7e9',
+    background: 'rgba(232,17,35,.2)',
     selectors: {
-      '& i': {
+      '& .icon': {
         color: palette.redDark
       }
     }
@@ -25,7 +25,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
   const severeWarningStyles = {
     background: '#fed9cc',
     selectors: {
-      '& i': {
+      '& .icon': {
         color: palette.redDark
       }
     }
@@ -34,7 +34,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
   const successStyles = {
     background: '#dff6dd',
     selectors: {
-      '& i': {
+      '& .icon': {
         color: palette.green
       }
     }
@@ -50,7 +50,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
       {
         background: palette.neutralLighter,
         color: palette.neutralPrimary,
-        minHeight: '32px',
+        minHeight: 32,
         width: '100%',
         boxSizing: 'border-box',
         display: 'flex',
@@ -78,15 +78,16 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
       }
     ],
     icon: [
+      'icon',
       {
-        fontSize: '16px',
-        minWidth: '16px',
-        minHeight: '16px',
+        fontSize: 16,
+        minWidth: 16,
+        minHeight: 16,
         display: 'flex',
         color: palette.neutralSecondary,
         flexShrink: 0,
-        margin: '16px',
-        marginRight: '0px'
+        margin: 16,
+        marginRight: 0
       }
     ],
     text: [
@@ -100,12 +101,12 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
     ],
     innerText: [
       {
-        lineHeight: '16px',
+        lineHeight: 16,
         selectors: {
           '& span': {
             selectors: {
               '& a': {
-                paddingLeft: '4px'
+                paddingLeft: 4
               }
             }
           }
@@ -115,13 +116,13 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
     dismissal: [
       {
         flexShrink: 0,
-        margin: '8px',
-        marginLeft: '0px',
+        margin: 8,
+        marginLeft: 0,
         selectors: {
-          '& i': {
-            fontSize: '12px',
-            height: '12px',
-            lineHeight: '12px',
+          '& .icon': {
+            fontSize: 12,
+            height: 12,
+            lineHeight: 12,
             color: palette.neutralSecondary
           },
           '&::-moz-focus-inner': {
@@ -152,10 +153,10 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
       {
         display: 'flex',
         selectors: {
-          '& i': {
-            fontSize: '12px',
-            height: '12px',
-            lineHeight: '12px',
+          '& .icon': {
+            fontSize: 12,
+            height: 12,
+            lineHeight: 12,
             color: palette.neutralSecondary
           }
         }

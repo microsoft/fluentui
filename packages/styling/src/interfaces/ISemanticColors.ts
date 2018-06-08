@@ -57,6 +57,13 @@ export interface ISemanticColors {
   bodyBackground: string;
 
   /**
+   * A special semantic slot that will always be the same or darker (not necessarily stronger) than the bodyBackground slot, even in
+   * an inverted theme. This is used for zones near the edge of the page, to provide a vignetting effect. This is especially effective
+   * with zones near the edge of the page in stronger themes or if it uses a variant theme.
+   */
+  bodyFrameBackground: string;
+
+  /**
    * The default color for text.
    */
   bodyText: string;
@@ -150,8 +157,8 @@ export interface ISemanticColors {
   inputBorder: string;
 
   /** The border of a small input control in its resting unchecked state; e.g. the box of an unchecked checkbox.
-  *
-  */
+   *
+   */
   smallInputBorder: string;
 
   /**

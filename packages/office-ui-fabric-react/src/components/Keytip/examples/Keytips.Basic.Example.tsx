@@ -12,7 +12,7 @@ export class KeytipsBasicExample extends React.Component<{}> {
   private _sampleOptions = [
     { key: 'A', text: 'Option 1' },
     { key: 'B', text: 'Option 2' },
-    { key: 'C', text: 'Option 3' },
+    { key: 'C', text: 'Option 3' }
   ];
 
   /* tslint:disable:jsx-ban-props jsx-no-lambda */
@@ -20,28 +20,22 @@ export class KeytipsBasicExample extends React.Component<{}> {
     return (
       <div>
         <Pivot>
-          <PivotItem linkText='Pivot 1' keytipProps={ keytipMap.Pivot1Keytip } style={ { height: 150, width: 500 } }>
-            <SpinButton label={ 'Spin Button' } keytipProps={ keytipMap.SpinButtonKeytip } />
-            <Toggle keytipProps={ keytipMap.ToggleKeytip } onText={ 'Yes' } offText={ 'No' } />
-            <p>Go to <Link keytipProps={ keytipMap.LinkKeytip } href={ 'http://www.bing.com' } target='_blank'>Bing</Link></p>
+          <PivotItem linkText="Pivot 1" keytipProps={keytipMap.Pivot1Keytip} style={{ height: 150, width: 500 }}>
+            <SpinButton label={'Spin Button'} keytipProps={keytipMap.SpinButtonKeytip} />
+            <Toggle keytipProps={keytipMap.ToggleKeytip} onText={'Yes'} offText={'No'} />
+            <p>
+              Go to{' '}
+              <Link keytipProps={keytipMap.LinkKeytip} href={'http://www.bing.com'} target="_blank">
+                Bing
+              </Link>
+            </p>
           </PivotItem>
-          <PivotItem linkText='Pivot 2' keytipProps={ keytipMap.Pivot2Keytip } style={ { height: 150, width: 500 } }>
-            <Checkbox
-              keytipProps={ keytipMap.CheckboxKeytip }
-              label={ 'Checkbox' }
-            />
-            <Dropdown
-              label={ 'Dropdown' }
-              keytipProps={ keytipMap.DropdownKeytip }
-              options={ this._sampleOptions }
-            />
+          <PivotItem linkText="Pivot 2" keytipProps={keytipMap.Pivot2Keytip} style={{ height: 150, width: 500 }}>
+            <Checkbox keytipProps={keytipMap.CheckboxKeytip} label={'Checkbox'} />
+            <Dropdown label={'Dropdown'} keytipProps={keytipMap.DropdownKeytip} options={this._sampleOptions} />
           </PivotItem>
-          <PivotItem linkText='Pivot 3' keytipProps={ keytipMap.Pivot3Keytip } style={ { height: 150, width: 500 } }>
-            <ComboBox
-              label={ 'Combo Box' }
-              options={ this._sampleOptions }
-              keytipProps={ keytipMap.ComboBoxKeytip }
-            />
+          <PivotItem linkText="Pivot 3" keytipProps={keytipMap.Pivot3Keytip} style={{ height: 150, width: 500 }}>
+            <ComboBox label={'Combo Box'} options={this._sampleOptions} keytipProps={keytipMap.ComboBoxKeytip} />
           </PivotItem>
         </Pivot>
       </div>

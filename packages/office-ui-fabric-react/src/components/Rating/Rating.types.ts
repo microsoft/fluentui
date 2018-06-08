@@ -1,13 +1,8 @@
 import * as React from 'react';
-import {
-  IStyle,
-  ITheme
-} from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IStyle, ITheme } from '../../Styling';
+import { IStyleFunctionOrObject } from '../../Utilities';
 
-export interface IRating {
-
-}
+export interface IRating {}
 
 /**
  * Rating component props.
@@ -81,7 +76,7 @@ export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunction<IRatingStyleProps, IRatingStyles>;
+  styles?: IStyleFunctionOrObject<IRatingStyleProps, IRatingStyles>;
 
   /**
    * Theme (provided through customization.)

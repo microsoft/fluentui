@@ -5,16 +5,15 @@ import { App as AppBase, IAppDefinition, IAppProps } from '@uifabric/example-app
 export const AppDefinition: IAppDefinition = {
   appTitle: 'Fabric - React',
 
-  testPages: [
-  ],
+  testPages: [],
   examplePages: [
     {
       links: [
         {
-          component: require<any>('../components/CommandBar/CommandBarPage').CommandBarPage,
-          key: 'CommandBar',
-          name: 'CommandBar',
-          url: '#/examples/commandbar'
+          component: require<any>('../components/CollapsibleSection/CollapsibleSectionPage').CollapsibleSectionPage,
+          key: 'CollapsibleSection',
+          name: 'CollapsibleSection',
+          url: '#/examples/collapsiblesection'
         },
         {
           component: require<any>('../components/Chiclet/ChicletPage').ChicletPage,
@@ -111,7 +110,6 @@ export const AppDefinition: IAppDefinition = {
       url: 'http://www.github.com/officedev'
     }
   ]
-
 };
 
-export const App = (props: IAppProps) => <AppBase appDefinition={ AppDefinition } { ...props } />;
+export const App = (props: IAppProps) => <AppBase appDefinition={AppDefinition} {...props} />;

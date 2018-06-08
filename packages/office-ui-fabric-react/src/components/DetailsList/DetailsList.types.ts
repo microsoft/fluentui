@@ -1,26 +1,13 @@
 import * as React from 'react';
 import { DetailsList } from './DetailsList';
-import {
-  ISelection,
-  SelectionMode
-} from '../../utilities/selection/index';
+import { ISelection, SelectionMode, ISelectionZoneProps } from '../../utilities/selection/index';
 import { IRenderFunction } from '../../Utilities';
-import {
-  IDragDropEvents,
-  IDragDropContext,
-} from './../../utilities/dragdrop/index';
-import {
-  IGroup,
-  IGroupRenderProps
-} from '../GroupedList/index';
+import { IDragDropEvents, IDragDropContext } from './../../utilities/dragdrop/index';
+import { IGroup, IGroupRenderProps } from '../GroupedList/index';
 import { IDetailsRowProps } from '../DetailsList/DetailsRow';
 import { IDetailsHeaderProps } from './DetailsHeader';
 import { IWithViewportProps, IViewport } from '../../utilities/decorators/withViewport';
-import {
-  IList,
-  IListProps,
-  ScrollToMode
-} from '../List/index';
+import { IList, IListProps, ScrollToMode } from '../List/index';
 
 export { IDetailsHeaderProps };
 
@@ -92,6 +79,11 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
    **/
   selectionPreservedOnEmptyClick?: boolean;
 
+  /**
+   * Addition props to pass through to the selection zone created by default.
+   */
+  selectionZoneProps?: ISelectionZoneProps;
+
   /** Controls how the columns are adjusted. */
   layoutMode?: DetailsListLayoutMode;
 
@@ -114,7 +106,7 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
   constrainMode?: ConstrainMode;
 
   /** Event names and corresponding callbacks that will be registered to rendered row elements. */
-  rowElementEventMap?: { eventName: string, callback: (context: IDragDropContext, event?: any) => void }[];
+  rowElementEventMap?: { eventName: string; callback: (context: IDragDropContext, event?: any) => void }[];
 
   /** Callback for when the details list has been updated. Useful for telemetry tracking externally. */
   onDidUpdate?: (detailsList?: DetailsList) => any;
@@ -216,10 +208,10 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
   compact?: boolean;
 
   /**
-  * Boolean value to enable render page caching. This is an experimental performance optimization
-  * that is off by default.
-  * @defaultValue false
-  */
+   * Boolean value to enable render page caching. This is an experimental performance optimization
+   * that is off by default.
+   * @defaultValue false
+   */
   usePageCache?: boolean;
 
   /**
@@ -256,7 +248,7 @@ export interface IColumn {
    * The field to pull the text value from for the column. This can be null if a custom
    * onRender method is provided.
    */
-  fieldName: string;
+  fieldName?: string;
 
   /**
    * An optional class name to stick on the column cell within each row.
@@ -380,9 +372,26 @@ export interface IColumn {
   headerClassName?: string;
 
   /**
-  * If set, will add additional LTR padding-right to column and cells.
-  */
+   * If set, will add additional LTR padding-right to column and cells.
+   */
   isPadded?: boolean;
+
+  /**
+   * ARIA label for the sort order of this column when sorted ascending.
+   */
+  sortAscendingAriaLabel?: string;
+  /**
+   * ARIA label for the sort order of this column when sorted descending.
+   */
+  sortDescendingAriaLabel?: string;
+  /**
+   * ARIA label for the status of this column when grouped.
+   */
+  groupAriaLabel?: string;
+  /**
+   * ARIA label for the status of this column when filtered.
+   */
+  filterAriaLabel?: string;
 }
 
 /**

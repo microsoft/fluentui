@@ -1,11 +1,12 @@
 {
   "name": "vr-tests",
   "description": "Visual Regression Tests for Office UI Fabric React",
-  "version": "5.0.1",
+  "version": "6.0.0",
   "private": true,
   "scripts": {
     "build": "",
     "clean": "",
+    "code-style": "node -v",
     "screener": "screener-storybook --conf screener.config.js",
     "screener:local": "screener-storybook --conf screener.local.config.js --debug",
     "start": "start-storybook --port 5555"
@@ -13,7 +14,7 @@
   "devDependencies": {
     "@storybook/addon-options": "=3.2.3",
     "@storybook/react": "^3.2.3",
-    "@types/react": "16.3.13",
+    "@types/react": "16.3.16",
     "@types/react-dom": "16.0.5",
     "@types/storybook__react": "3.0.5",
     "css-loader": "^0.28.7",
@@ -22,15 +23,15 @@
     "raw-loader": "^0.5.1",
     "style-loader": "^0.19.0",
     "awesome-typescript-loader": "^3.2.3",
-    "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0",
+    "office-ui-fabric-react-tslint": ">=6.0.0 <7.0.0",
     "screener-storybook": "^0.12.5",
     "screener-runner": "^0.6.19",
     "storybook-readme": "=3.0.6"
   },
   "dependencies": {
-    "office-ui-fabric-react": ">=5.110.0 <6.0.0",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
+    "office-ui-fabric-react": ">=6.6.1 <7.0.0",
+    "react": ">=16.3.2-0 <17.0.0",
+    "react-dom": ">=16.3.2-0 <17.0.0",
     "typescript": "2.8.1",
     "tslib": "^1.7.1"
   }

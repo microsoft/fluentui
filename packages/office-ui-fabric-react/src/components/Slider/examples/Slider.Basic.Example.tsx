@@ -2,9 +2,12 @@ import * as React from 'react';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import './Slider.Basic.Example.scss';
 
-export class SliderBasicExample extends React.Component<{}, {
-  value: number
-}> {
+export class SliderBasicExample extends React.Component<
+  {},
+  {
+    value: number;
+  }
+> {
   constructor(props: {}) {
     super(props);
 
@@ -15,70 +18,64 @@ export class SliderBasicExample extends React.Component<{}, {
 
   public render(): JSX.Element {
     return (
-      <div className='ms-basicSlider'>
-        <div className='ms-SliderBasicExample'>
-
+      <div className="ms-basicSlider">
+        <div className="ms-SliderBasicExample">
           <Slider
-            label='Basic example:'
-            min={ 1 }
-            max={ 3 }
-            step={ 1 }
-            defaultValue={ 2 }
-            showValue={ true }
+            label="Basic example:"
+            min={1}
+            max={3}
+            step={1}
+            defaultValue={2}
+            showValue={true}
             // tslint:disable-next-line:jsx-no-lambda
-            onChange={ (value) => console.log(value) }
+            onChange={(value: any) => console.log(value)}
           />
           <Slider
-            label='Disabled example:'
-            min={ 50 }
-            max={ 500 }
-            step={ 50 }
-            defaultValue={ 300 }
-            showValue={ true }
-            disabled={ true }
+            label="Disabled example:"
+            min={50}
+            max={500}
+            step={50}
+            defaultValue={300}
+            showValue={true}
+            disabled={true}
           />
           <Slider
-            label='Controlled example:'
-            max={ 10 }
-            value={ this.state.value }
+            label="Controlled example:"
+            max={10}
+            value={this.state.value}
             // tslint:disable-next-line:jsx-no-lambda
-            onChange={ value => this.setState({ value }) }
-            showValue={ true }
+            onChange={(value: any) => this.setState({ value })}
+            showValue={true}
           />
         </div>
-        <div className='ms-SliderVertical '>
-          <div className='ms-verticalBox'>
+        <div className="ms-SliderVertical ">
+          <div className="ms-verticalBox">
             <Slider
-              label='Basic example:'
-              min={ 1 }
-              max={ 3 }
-              step={ 1 }
-              defaultValue={ 2 }
-              showValue={ true }
-              vertical={ true }
+              label="Basic example:"
+              min={1}
+              max={3}
+              step={1}
+              defaultValue={2}
+              showValue={true}
+              vertical={true}
               // tslint:disable-next-line:jsx-no-lambda
-              onChange={ (value) => console.log(value) }
+              onChange={(value: any) => console.log(value)}
             />
           </div>
-          <div className='ms-verticalBox'>
+          <div className="ms-verticalBox">
             <Slider
-              label='Disabled example:'
-              min={ 50 }
-              max={ 500 }
-              step={ 50 }
-              defaultValue={ 300 }
-              showValue={ true }
-              vertical={ true }
-              disabled={ true }
+              label="Disabled example:"
+              min={50}
+              max={500}
+              step={50}
+              defaultValue={300}
+              showValue={true}
+              vertical={true}
+              disabled={true}
             />
           </div>
-          <div className='ms-verticalBox'>
-            <Slider
-              label='Controlled example:'
-              max={ 10 }
-              vertical={ true }
-              showValue={ true }
-            />
+          <div className="ms-verticalBox">
+            <Slider label="Controlled example:" max={10} vertical={true} showValue={true} />
           </div>
         </div>
       </div>

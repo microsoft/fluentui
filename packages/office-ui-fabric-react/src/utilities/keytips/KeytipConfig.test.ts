@@ -38,7 +38,7 @@ describe('KeytipConfig', () => {
                   content: 'X0',
                   optionalProps: {
                     onReturn: jest.fn()
-                  },
+                  }
                 },
                 {
                   id: 'keytip7',
@@ -47,7 +47,7 @@ describe('KeytipConfig', () => {
                     {
                       id: 'keytip8',
                       content: 'R'
-                    },
+                    }
                   ]
                 }
               ]

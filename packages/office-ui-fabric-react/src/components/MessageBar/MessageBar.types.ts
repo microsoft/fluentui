@@ -1,11 +1,9 @@
 import * as React from 'react';
 import { BaseButton, Button } from '../../Button';
 import { ITheme, IStyle } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IStyleFunctionOrObject } from '../../Utilities';
 
-export interface IMessageBar {
-
-}
+export interface IMessageBar {}
 
 export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
   /**
@@ -35,7 +33,9 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
    * If null, we don't show a dismiss button.
    * @defaultvalue null
    */
-  onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement | BaseButton | HTMLAnchorElement | HTMLDivElement | Button>) => any;
+  onDismiss?: (
+    ev?: React.MouseEvent<HTMLButtonElement | BaseButton | HTMLAnchorElement | HTMLDivElement | Button>
+  ) => any;
 
   /**
    * Determines if the message bar is multi lined.
@@ -45,21 +45,21 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
   isMultiline?: boolean;
 
   /**
-  * Aria label on dismiss button if onDismiss is defined.
-  */
+   * Aria label on dismiss button if onDismiss is defined.
+   */
   dismissButtonAriaLabel?: string;
 
   /**
-  * Determines if the message bar text is truncated.
-  * If true, a button will render to toggle between a single line view and multiline view.
-  * This prop is for single line message bars with no buttons only in a limited space scenario.
-  * @defaultvalue false
-  */
+   * Determines if the message bar text is truncated.
+   * If true, a button will render to toggle between a single line view and multiline view.
+   * This prop is for single line message bars with no buttons only in a limited space scenario.
+   * @defaultvalue false
+   */
   truncated?: boolean;
 
   /**
-  * Aria label on overflow button if truncated is defined.
-  */
+   * Aria label on overflow button if truncated is defined.
+   */
   overflowButtonAriaLabel?: string;
 
   /**
@@ -75,7 +75,7 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunction<IMessageBarStyleProps, IMessageBarStyles>;
+  styles?: IStyleFunctionOrObject<IMessageBarStyleProps, IMessageBarStyles>;
 
   // Temporary for debugging
   useNewStyles?: boolean;

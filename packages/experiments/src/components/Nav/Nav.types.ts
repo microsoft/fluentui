@@ -1,10 +1,7 @@
 ﻿/* tslint:disable */
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { IStyleFunction } from 'office-ui-fabric-react/lib/Utilities';
-import {
-  INavLink,
-  INavLinkGroup
-} from 'office-ui-fabric-react/lib/components/Nav';
+import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+import { INavLink, INavLinkGroup } from 'office-ui-fabric-react/lib/components/Nav';
 import { INavState } from 'office-ui-fabric-react/lib/components/Nav/Nav.base';
 /* tslint:enable */
 
@@ -44,7 +41,7 @@ export interface INavProps {
   /**
    * (Optional) Call to provide customized styling that will layer on top of the variant rules
    */
-  getStyles?: IStyleFunction<INavStyleProps, INavStyles>;
+  styles?: IStyleFunctionOrObject<INavStyleProps, INavStyles>;
 
   /**
    * (Optional) Used for telemetry
@@ -110,6 +107,11 @@ export interface INavLink extends INavLink {
    * provide internal implementation to show/hide nav links based on isHidden property.
    */
   isShowMoreLink?: boolean;
+
+  /**
+   * (Optional) Provides an ability to toggle auto expand when the selectedKey prop is one of the child of this link
+   */
+  disableAutoExpand?: boolean;
 }
 
 export interface ICustomNavLinkGroup extends INavLinkGroup {

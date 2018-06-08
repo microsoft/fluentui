@@ -22,11 +22,11 @@ describe('ContextMenuItemChildren', () => {
 
       wrapper = shallow(
         <ContextualMenuItem
-          item={ menuItem }
-          classNames={ menuClassNames }
-          index={ 1 }
-          hasIcons={ undefined }
-          onCheckmarkClick={ onCheckmarkClick }
+          item={menuItem}
+          classNames={menuClassNames}
+          index={1}
+          hasIcons={undefined}
+          onCheckmarkClick={onCheckmarkClick}
         />
       );
     });
@@ -55,17 +55,10 @@ describe('ContextMenuItemChildren', () => {
       let wrapper: ShallowWrapper<IContextualMenuItemProps, {}>;
 
       beforeEach(() => {
-        menuItem = { key: '123', icon: 'itemIcon', name: 'menuItem' };
+        menuItem = { key: '123', iconProps: { iconName: 'itemIcon' }, text: 'menuItem' };
         menuClassNames = getMenuItemClassNames();
 
-        wrapper = shallow(
-          <ContextualMenuItem
-            item={ menuItem }
-            classNames={ menuClassNames }
-            index={ 1 }
-            hasIcons={ true }
-          />
-        );
+        wrapper = shallow(<ContextualMenuItem item={menuItem} classNames={menuClassNames} index={1} hasIcons={true} />);
       });
 
       it('renders the icon', () => {
@@ -82,14 +75,7 @@ describe('ContextMenuItemChildren', () => {
         menuItem = { key: '123', iconProps: {} };
         menuClassNames = getMenuItemClassNames();
 
-        wrapper = shallow(
-          <ContextualMenuItem
-            item={ menuItem }
-            classNames={ menuClassNames }
-            index={ 1 }
-            hasIcons={ true }
-          />
-        );
+        wrapper = shallow(<ContextualMenuItem item={menuItem} classNames={menuClassNames} index={1} hasIcons={true} />);
       });
 
       it('renders the icon with iconName', () => {
@@ -108,14 +94,7 @@ describe('ContextMenuItemChildren', () => {
       menuItem = { key: '123', iconProps: {}, submenuIconProps: {} };
       menuClassNames = getMenuItemClassNames();
 
-      wrapper = shallow(
-        <ContextualMenuItem
-          item={ menuItem }
-          classNames={ menuClassNames }
-          index={ 1 }
-          hasIcons={ true }
-        />
-      );
+      wrapper = shallow(<ContextualMenuItem item={menuItem} classNames={menuClassNames} index={1} hasIcons={true} />);
     });
 
     it('renders the menu icon', () => {
@@ -138,6 +117,6 @@ function getMenuItemClassNames(): IMenuItemClassNames {
     splitContainer: 'splitContainer',
     splitPrimary: 'splitPrimary',
     splitMenu: 'splitMenu',
-    linkContentMenu: 'linkContentMenu',
+    linkContentMenu: 'linkContentMenu'
   };
 }
