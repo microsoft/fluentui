@@ -279,14 +279,8 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
         (this._scrollTop || 0) >= page.top &&
         (this._scrollTop || 0) <= page.top + page.height;
       if (isPageVisible) {
-        const startIndexStr = page.key.replace(PAGE_KEY_PREFIX, '');
-        const startIndexInPage = Number(startIndexStr);
-        if (isNaN(startIndexInPage)) {
-          continue;
-        }
-        // Without calculating the exact row height, estimate the row height assuming having same height
         const rowHeight = Math.floor(page.height / page.itemCount);
-        return startIndexInPage + Math.floor((this._scrollTop - page.top) / rowHeight);
+        return page.startIndex + Math.floor((this._scrollTop - page.top) / rowHeight);
       }
     }
     return 0;
