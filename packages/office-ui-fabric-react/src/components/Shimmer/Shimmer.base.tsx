@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, customizable, DelayedRender } from '../../Utilities';
+import {
+  BaseComponent,
+  classNamesFunction,
+  customizable,
+  DelayedRender,
+  getNativeProps,
+  divProperties
+} from '../../Utilities';
 import { IShimmerProps, IShimmerStyleProps, IShimmerStyles } from './Shimmer.types';
 import { ShimmerElementsGroup } from './ShimmerElementsGroup/ShimmerElementsGroup';
 
@@ -74,8 +81,10 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
       transitionAnimationInterval: TRANSITION_ANIMATION_INTERVAL
     });
 
+    const divProps = getNativeProps(this.props, divProperties);
+
     return (
-      <div className={this._classNames.root}>
+      <div {...divProps} className={this._classNames.root}>
         {!contentLoaded && (
           <div style={{ width: width ? width : '100%' }} className={this._classNames.shimmerWrapper}>
             {customElementsGroup ? customElementsGroup : <ShimmerElementsGroup shimmerElements={shimmerElements} />}
