@@ -136,6 +136,7 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
         tabIndex={-1}
         aria-labelledby={ariaLabelledBy}
         aria-describedby={ariaDescribedBy}
+        data-is-focusable={true}
       >
         {imageContent}
         <div className={css('ms-TeachingBubble-bodycontent', styles.bodyContent)}>

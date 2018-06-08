@@ -80,12 +80,12 @@ export interface ITeachingBubbleProps
   hasSmallHeadline?: boolean;
 
   /**
-   *  Defines the element id referencing the element containing label text for callout.
+   *  Defines the element id referencing the element containing label text for TeachingBubble.
    */
   ariaLabelledBy?: string;
 
   /**
-   * Defines the element id referencing the element containing the description for the callout.
+   * Defines the element id referencing the element containing the description for the TeachingBubble.
    */
   ariaDescribedBy?: string;
 }

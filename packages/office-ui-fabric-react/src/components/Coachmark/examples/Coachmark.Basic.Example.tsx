@@ -107,6 +107,10 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
             }}
             ariaAlertText="A Coachmark has appeared"
             teachingBubbleRef={this._teachingBubbleContent}
+            ariaDescribedBy={'coachmark-desc1'}
+            ariaLabelledBy={'coachmark-label1'}
+            ariaDescribedByText={'Press enter for more information'}
+            ariaLabelledByText={'Coachmark notification'}
           >
             <TeachingBubbleContent
               componentRef={this._teachingBubbleContent}

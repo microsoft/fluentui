@@ -130,4 +130,24 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
     current: ITeachingBubble | null;
     value: ITeachingBubble | null;
   };
+
+  /**
+   *  Defines the element id referencing the element containing label text for Coachmark.
+   */
+  ariaLabelledBy?: string;
+
+  /**
+   * Defines the element id referencing the element containing the description for the Coachmark.
+   */
+  ariaDescribedBy?: string;
+
+  /**
+   *  Defines the text content for the ariaLabelledBy element
+   */
+  ariaLabelledByText?: string;
+
+  /**
+   * Defines the text content for the ariaDescribedBy element
+   */
+  ariaDescribedByText?: string;
 }

@@ -8,6 +8,7 @@ import { IPositionedData, RectangleEdge, getOppositeEdge } from 'office-ui-fabri
 import { PositioningContainer, IPositioningContainer } from './PositioningContainer/index';
 import { Beak, BEAK_HEIGHT, BEAK_WIDTH } from './Beak/Beak';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
+import { FocusZone } from '../../FocusZone';
 
 // Coachmark
 import { ICoachmarkTypes } from './Coachmark.types';
@@ -18,7 +19,6 @@ import {
   ICoachmarkStyles,
   ICoachmarkStyleProps
 } from './Coachmark.styles';
-import { FocusTrapZone } from '../../FocusTrapZone';
 
 const getClassNames = classNamesFunction<ICoachmarkStyleProps, ICoachmarkStyles>();
 
@@ -150,7 +150,16 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   }
 
   public render(): JSX.Element {
-    const { children, target, color, positioningContainerProps } = this.props;
+    const {
+      children,
+      target,
+      color,
+      positioningContainerProps,
+      ariaDescribedBy,
+      ariaDescribedByText,
+      ariaLabelledBy,
+      ariaLabelledByText
+    } = this.props;
 
     const {
       beakLeft,
@@ -190,10 +199,10 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       >
         <div className={classNames.root}>
           <div
-            className={classNames.ariaAlert}
+            className={classNames.ariaContainer}
             aria-live="assertive"
             ref={this._ariaAlertContainer}
-            aria-hidden={isCollapsed ? 'false' : 'true'}
+            aria-hidden={!isCollapsed}
           />
           <div className={classNames.pulsingBeacon} />
           <div className={classNames.translateAnimationContainer} ref={this._translateAnimationContainer}>
@@ -209,13 +218,35 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
                     color={color}
                   />
                 )}
-                <FocusTrapZone>
-                  <div className={classNames.entityHost} data-is-focusable={true} onFocus={this._onFocusHandler}>
-                    <div className={classNames.entityInnerHost} ref={this._entityInnerHostElement}>
+                <FocusZone>
+                  <div
+                    className={classNames.entityHost}
+                    tabIndex={-1}
+                    data-is-focusable={true}
+                    onClick={this._onFocusHandler}
+                    role="dialog"
+                    aria-labelledby={ariaLabelledBy}
+                    aria-describedby={ariaDescribedBy}
+                  >
+                    {isCollapsed && (
+                      <h1 id={ariaLabelledBy} className={classNames.ariaContainer}>
+                        {ariaLabelledByText}
+                      </h1>
+                    )}
+                    {isCollapsed && (
+                      <p id={ariaDescribedBy} className={classNames.ariaContainer}>
+                        {ariaDescribedByText}
+                      </p>
+                    )}
+                    <div
+                      className={classNames.entityInnerHost}
+                      ref={this._entityInnerHostElement}
+                      aria-hidden={isCollapsed}
+                    >
                       {children}
                     </div>
                   </div>
-                </FocusTrapZone>
+                </FocusZone>
               </div>
             </div>
           </div>
@@ -275,6 +306,10 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
           this._async.setTimeout(() => {
             if (this._ariaAlertContainer.current && this.props.ariaAlertText) {
               this._ariaAlertContainer.current.innerText = this.props.ariaAlertText;
+            }
+
+            if (this._entityInnerHostElement.current) {
+              this._entityInnerHostElement.current.parentElement!.focus();
             }
           }, 2000);
         }
@@ -425,6 +460,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       isCollapsed: false
     });
 
+    console.log(document.activeElement);
+
     if (this.props.onAnimationOpenStart) {
       this.props.onAnimationOpenStart();
     }
@@ -437,8 +474,9 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
           this._async.setTimeout(() => {
             if (this.props.teachingBubbleRef && this.props.teachingBubbleRef.current) {
               this.props.teachingBubbleRef.current.focus();
+              console.log(document.activeElement);
             }
-          }, 0);
+          }, 500);
 
           if (this.props.onAnimationOpenEnd) {
             this.props.onAnimationOpenEnd();

@@ -112,9 +112,9 @@ export interface ICoachmarkStyles {
   collapsed?: IStyle;
 
   /**
-   * The styles applied to the aria alert container
+   * The styles applied to the ARIA attribute container
    */
-  ariaAlert?: IStyle;
+  ariaContainer?: IStyle;
 }
 
 export const translateOne: string = keyframes({
@@ -359,7 +359,7 @@ export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(
         visibility: 'visible'
       }
     ],
-    ariaAlert: {
+    ariaContainer: {
       position: 'fixed',
       opacity: 0
     }
