@@ -4,7 +4,7 @@ import { BaseComponent, classNamesFunction, customizable, IClassNames } from '..
 
 const getClassNames = classNamesFunction<IDialogFooterStyleProps, IDialogFooterStyles>();
 
-@customizable('DialogFooter', ['theme'])
+@customizable('DialogFooter', ['theme', 'styles'])
 export class DialogFooterBase extends BaseComponent<IDialogFooterProps, {}> {
   private _classNames: IClassNames<IDialogFooterStyles>;
 
