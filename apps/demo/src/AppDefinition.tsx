@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { App as AppBase, IAppDefinition, IAppProps } from '@uifabric/example-app-base';
-import { DetailsListBasicExample } from '../components/DetailsList/examples/DetailsList.Basic.Example';
+import { DetailsListBasicExample } from 'office-ui-fabric-react/lib/components/DetailsList/examples/DetailsList.Basic.Example';
 
 export const AppDefinition: IAppDefinition = {
   appTitle: 'Fabric - React',

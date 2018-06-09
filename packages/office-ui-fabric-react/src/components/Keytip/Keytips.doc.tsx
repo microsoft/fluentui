@@ -1,4 +1,3 @@
-import { KeytipLayer } from 'office-ui-fabric-react/lib/KeytipLayer';
 import * as React from 'react';
 
 import { IDocPageProps } from '../../common/DocPage.types';
