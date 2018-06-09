@@ -16,13 +16,13 @@ export class ButtonPage extends React.Component<IDocPageProps, IButtonDemoPageSt
     this.setState({
       areButtonsDisabled: disabled
     });
-  }
+  };
 
   private _onToggledChanged = (ev: React.MouseEvent<HTMLElement>, toggled: boolean): void => {
     this.setState({
       areButtonsChecked: toggled
     });
-  }
+  };
 
   constructor(props: IDocPageProps) {
     super(props);
