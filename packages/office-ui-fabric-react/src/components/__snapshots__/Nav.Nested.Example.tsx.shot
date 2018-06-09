@@ -1,0 +1,156 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
+<div
+  aria-describedby={undefined}
+  aria-labelledby={undefined}
+  className="ms-FocusZone"
+  data-focuszone-id="FocusZone0"
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseDownCapture={[Function]}
+  role="presentation"
+>
+  <nav
+    aria-label={undefined}
+    className="ms-Nav root-369"
+    role="navigation"
+  >
+    <div
+      className="ms-Nav-group is-expanded group-377"
+    >
+      <div
+        className="ms-Nav-groupContent groupContent-378"
+      >
+        <ul
+          className="ms-Nav-navItems navItems-376"
+          role="list"
+        >
+          <li
+            className="ms-Nav-navItem navItem-375"
+            role="listitem"
+          >
+            <div
+              className="ms-Nav-compositeLink compositeLink-371"
+              name="Parent link"
+            >
+              <button
+                aria-expanded="false"
+                aria-label={undefined}
+                className="ms-Nav-chevronButton chevronButton-382"
+                onClick={[Function]}
+              >
+                <i
+                  aria-hidden={true}
+                  className="ms-Nav-chevron chevronIcon-401"
+                  data-icon-name="ChevronDown"
+                  role="presentation"
+                >
+                  
+                </i>
+              </button>
+              <a
+                aria-describedby="id__3"
+                aria-label={undefined}
+                aria-labelledby={undefined}
+                aria-pressed={undefined}
+                className="ms-Button ms-Button--action ms-Button--command ms-Nav-link link-394"
+                data-is-focusable={true}
+                disabled={undefined}
+                href="http://example.com"
+                onClick={[Function]}
+                rel={undefined}
+                target={undefined}
+                title="Parent link"
+              >
+                <div
+                  className="ms-Button-flexContainer flexContainer-114"
+                >
+                  <i
+                    aria-hidden={true}
+                    className="ms-Icon-placeHolder ms-Button-icon icon-397"
+                    data-icon-name=""
+                    role="presentation"
+                  />
+                  <span
+                    className="ms-Button-screenReaderText screenReaderText-108"
+                    id="id__3"
+                  >
+                    Parent link
+                  </span>
+                  <div
+                    className="ms-Nav-linkText linkText-370"
+                  >
+                    Parent link
+                  </div>
+                </div>
+              </a>
+            </div>
+          </li>
+          <li
+            className="ms-Nav-navItem navItem-375"
+            role="listitem"
+          >
+            <div
+              className="ms-Nav-compositeLink compositeLink-371"
+              name="Parent link"
+            >
+              <button
+                aria-expanded="false"
+                aria-label={undefined}
+                className="ms-Nav-chevronButton chevronButton-382"
+                onClick={[Function]}
+              >
+                <i
+                  aria-hidden={true}
+                  className="ms-Nav-chevron chevronIcon-401"
+                  data-icon-name="ChevronDown"
+                  role="presentation"
+                >
+                  
+                </i>
+              </button>
+              <a
+                aria-describedby="id__6"
+                aria-label={undefined}
+                aria-labelledby={undefined}
+                aria-pressed={undefined}
+                className="ms-Button ms-Button--action ms-Button--command ms-Nav-link link-394"
+                data-is-focusable={true}
+                disabled={undefined}
+                href="http://example.com"
+                onClick={[Function]}
+                rel={undefined}
+                target={undefined}
+                title="Parent link"
+              >
+                <div
+                  className="ms-Button-flexContainer flexContainer-114"
+                >
+                  <i
+                    aria-hidden={true}
+                    className="ms-Icon-placeHolder ms-Button-icon icon-397"
+                    data-icon-name=""
+                    role="presentation"
+                  />
+                  <span
+                    className="ms-Button-screenReaderText screenReaderText-108"
+                    id="id__6"
+                  >
+                    Parent link
+                  </span>
+                  <div
+                    className="ms-Nav-linkText linkText-370"
+                  >
+                    Parent link
+                  </div>
+                </div>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+`;

@@ -1,0 +1,316 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
+<div>
+  <p>
+    Keytips on the same level starting with the same characters will get filtered out as you hit those keys
+  </p>
+  <button
+    aria-describedby=" ktp-layer-id ktp-1-a"
+    aria-label={undefined}
+    aria-labelledby={undefined}
+    aria-pressed={undefined}
+    className="ms-Button ms-Button--default root-119"
+    data-is-focusable={true}
+    data-ktp-execute-target="ktp-1-a"
+    data-ktp-target="ktp-1-a"
+    disabled={undefined}
+    onClick={[Function]}
+    type="button"
+  >
+    <div
+      className="ms-Button-flexContainer flexContainer-102"
+    >
+      <div
+        className="ms-Button-textContainer textContainer-103"
+      >
+        <div
+          className="ms-Button-label label-120"
+          id="id__0"
+        >
+          Button
+        </div>
+      </div>
+    </div>
+  </button>
+  <button
+    aria-describedby="id__4 ktp-layer-id ktp-1-b"
+    aria-label={undefined}
+    aria-labelledby="id__3"
+    aria-pressed={undefined}
+    className="ms-Button ms-Button--compound root-135"
+    data-is-focusable={true}
+    data-ktp-execute-target="ktp-1-b"
+    data-ktp-target="ktp-1-b"
+    disabled={undefined}
+    onClick={[Function]}
+    type="button"
+  >
+    <div
+      className="ms-Button-flexContainer flexContainer-136"
+    >
+      <div
+        className="ms-Button-textContainer textContainer-137"
+      >
+        <div
+          className="ms-Button-label label-139"
+          id="id__3"
+        >
+          Compound Button
+        </div>
+        <div
+          className="ms-Button-description description-140"
+          id="id__4"
+        >
+          With a Keytip
+        </div>
+      </div>
+    </div>
+  </button>
+  <button
+    aria-describedby=" ktp-layer-id ktp-2-a"
+    aria-expanded={false}
+    aria-haspopup={true}
+    aria-label={undefined}
+    aria-labelledby={undefined}
+    aria-owns={null}
+    aria-pressed={undefined}
+    className="ms-Button ms-Button--default root-119"
+    data-is-focusable={true}
+    data-ktp-execute-target="ktp-2-a"
+    data-ktp-target="ktp-2-a"
+    disabled={undefined}
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    type="button"
+  >
+    <div
+      className="ms-Button-flexContainer flexContainer-102"
+    >
+      <div
+        className="ms-Button-textContainer textContainer-103"
+      >
+        <div
+          className="ms-Button-label label-120"
+          id="id__6"
+        >
+          Button with Menu
+        </div>
+      </div>
+      <i
+        aria-hidden={true}
+        className="ms-Button-menuIcon menuIcon-143"
+        data-icon-name="ChevronDown"
+        role="presentation"
+      >
+        
+      </i>
+    </div>
+  </button>
+  <div
+    aria-describedby=" ktp-layer-id ktp-2-b"
+    aria-disabled={undefined}
+    aria-expanded={false}
+    aria-haspopup={true}
+    aria-label={undefined}
+    aria-labelledby={undefined}
+    aria-pressed={undefined}
+    className="css-125"
+    data-is-focusable={true}
+    data-ktp-target="ktp-2-b"
+    disabled={undefined}
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    onTouchStart={[Function]}
+    role="button"
+    tabIndex={0}
+    type="button"
+  >
+    <span
+      style={
+        Object {
+          "display": "flex",
+        }
+      }
+    >
+      <button
+        aria-describedby={undefined}
+        aria-label={undefined}
+        aria-labelledby={undefined}
+        aria-pressed={undefined}
+        className="ms-Button ms-Button--default root-119"
+        data-is-focusable={false}
+        disabled={undefined}
+        onClick={undefined}
+        tabIndex={-1}
+        type="button"
+      >
+        <div
+          className="ms-Button-flexContainer flexContainer-102"
+        >
+          <div
+            className="ms-Button-textContainer textContainer-103"
+          >
+            <div
+              className="ms-Button-label label-120"
+              id="id__9"
+            >
+              Split Button
+            </div>
+          </div>
+        </div>
+      </button>
+      <button
+        aria-describedby={undefined}
+        aria-expanded={false}
+        aria-haspopup={true}
+        aria-label={undefined}
+        aria-labelledby={undefined}
+        aria-pressed={undefined}
+        checked={undefined}
+        className="ms-Button root-150"
+        data-is-focusable={false}
+        data-ktp-execute-target="ktp-2-b"
+        disabled={undefined}
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        tabIndex={-1}
+        type="button"
+      >
+        <div
+          className="ms-Button-flexContainer flexContainer-102"
+        >
+          <i
+            aria-hidden={true}
+            className="ms-Button-icon icon-134"
+            data-icon-name="ChevronDown"
+            role="presentation"
+          >
+            
+          </i>
+        </div>
+      </button>
+      <span
+        className="css-149"
+      />
+    </span>
+  </div>
+  <button
+    aria-describedby={undefined}
+    aria-label={undefined}
+    aria-labelledby={undefined}
+    aria-pressed={undefined}
+    className="ms-Button ms-Button--default root-119"
+    data-is-focusable={true}
+    disabled={undefined}
+    type="button"
+  >
+    <div
+      className="ms-Button-flexContainer flexContainer-102"
+    >
+      <div
+        className="ms-Button-textContainer textContainer-103"
+      >
+        <div
+          className="ms-Button-label label-120"
+          id="id__15"
+        >
+          I do not have a keytip
+        </div>
+      </div>
+    </div>
+  </button>
+  <p>
+    A keytip can have an 'offset' prop which will position the keytip starting from the top-left corner of the element
+  </p>
+  <button
+    aria-describedby=" ktp-layer-id ktp-0-0"
+    aria-label={undefined}
+    aria-labelledby={undefined}
+    aria-pressed={undefined}
+    className="ms-Button ms-Button--default root-119"
+    data-is-focusable={true}
+    data-ktp-execute-target="ktp-0-0"
+    data-ktp-target="ktp-0-0"
+    disabled={undefined}
+    onClick={[Function]}
+    type="button"
+  >
+    <div
+      className="ms-Button-flexContainer flexContainer-102"
+    >
+      <div
+        className="ms-Button-textContainer textContainer-103"
+      >
+        <div
+          className="ms-Button-label label-120"
+          id="id__18"
+        >
+          Button keytip offset 10x10
+        </div>
+      </div>
+    </div>
+  </button>
+  <p>
+    A keytip will become disabled when its corresponding component becomes disabled. A disabled keytip will be visible but cannot be triggered
+  </p>
+  <div
+    className="ms-Toggle is-checked is-enabled root-285"
+  >
+    <div
+      className="ms-Toggle-innerContainer container-286"
+    >
+      <button
+        aria-disabled={undefined}
+        aria-label={undefined}
+        aria-pressed={true}
+        className="ms-Toggle-background pill-356"
+        data-is-focusable={true}
+        disabled={undefined}
+        id="Toggle21"
+        onChange={[Function]}
+        onClick={[Function]}
+        type="button"
+      >
+        <div
+          className="ms-Toggle-thumb thumb-357"
+        />
+      </button>
+      <label
+        className="ms-Label ms-Toggle-stateText text-290"
+        htmlFor="Toggle21"
+      >
+        Enabled
+      </label>
+    </div>
+  </div>
+  <button
+    aria-describedby=" ktp-layer-id ktp-0-1"
+    aria-label={undefined}
+    aria-labelledby={undefined}
+    aria-pressed={undefined}
+    className="ms-Button ms-Button--default root-119"
+    data-is-focusable={true}
+    data-ktp-execute-target="ktp-0-1"
+    data-ktp-target="ktp-0-1"
+    disabled={undefined}
+    onClick={[Function]}
+    type="button"
+  >
+    <div
+      className="ms-Button-flexContainer flexContainer-102"
+    >
+      <div
+        className="ms-Button-textContainer textContainer-103"
+      >
+        <div
+          className="ms-Button-label label-120"
+          id="id__22"
+        >
+          Enabled Button
+        </div>
+      </div>
+    </div>
+  </button>
+</div>
+`;

@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders TextField.AutoComplete.Example.tsx correctly 1`] = `
+<form
+  action=""
+  className="docs-TextFieldExample"
+>
+  <div
+    className="ms-TextField"
+  >
+    <div
+      className="ms-TextField-wrapper"
+    >
+      <label
+        className="ms-Label root-89"
+        htmlFor="TextField0"
+      >
+        Fill in and submit this form. The page will reload and autocomplete suggestions will appear.
+      </label>
+      <div
+        className="ms-TextField-fieldGroup"
+      >
+        <input
+          aria-describedby={undefined}
+          aria-invalid={false}
+          aria-label={undefined}
+          autoComplete="on"
+          className="ms-TextField-field"
+          id="TextField0"
+          name="example"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onInput={[Function]}
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+  </div>
+  <button
+    aria-describedby={undefined}
+    aria-label={undefined}
+    aria-labelledby={undefined}
+    aria-pressed={undefined}
+    className="ms-Button ms-Button--primary root-144"
+    data-is-focusable={true}
+    disabled={undefined}
+    type="submit"
+  >
+    <div
+      className="ms-Button-flexContainer flexContainer-102"
+    >
+      <div
+        className="ms-Button-textContainer textContainer-103"
+      >
+        <div
+          className="ms-Button-label label-120"
+          id="id__2"
+        >
+          Submit
+        </div>
+      </div>
+    </div>
+  </button>
+</form>
+`;

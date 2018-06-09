@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders Image.Center.Example.tsx correctly 1`] = `
+<div>
+  <p>
+    Setting the imageFit property to "center" behaves the same as "none", while centering the image within the frame.
+  </p>
+  <label
+    className="ms-Label root-89"
+  >
+    The image is larger than the frame, so all sides are cropped to center the image.
+  </label>
+  <div
+    className="ms-Image root-300"
+    style={
+      Object {
+        "height": 150,
+        "width": 350,
+      }
+    }
+  >
+    <img
+      alt="Example implementation of the property image fit using the center value on an image larger than the frame."
+      className="ms-Image-image ms-Image-image--center ms-Image-image--portrait is-notLoaded is-fadeIn image-340"
+      onError={[Function]}
+      onLoad={[Function]}
+      role={undefined}
+      src="http://placehold.it/800x300"
+    />
+  </div>
+  <br />
+  <label
+    className="ms-Label root-89"
+  >
+    The image is smaller than the frame, so there is empty space within the frame. The image is centered in the available space.
+  </label>
+  <div
+    className="ms-Image root-300"
+    style={
+      Object {
+        "height": 150,
+        "width": 350,
+      }
+    }
+  >
+    <img
+      alt="Example implementation of the property image fit using the center value on an image smaller than the frame."
+      className="ms-Image-image ms-Image-image--center ms-Image-image--portrait is-notLoaded is-fadeIn image-340"
+      onError={[Function]}
+      onLoad={[Function]}
+      role={undefined}
+      src="http://placehold.it/100x100"
+    />
+  </div>
+</div>
+`;

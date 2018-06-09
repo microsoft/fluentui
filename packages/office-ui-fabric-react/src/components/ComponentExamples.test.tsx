@@ -5,7 +5,35 @@ import { resetIds } from '../Utilities';
 
 import * as DataUtil from '@uifabric/example-app-base/lib-commonjs/utilities/data';
 
-const excludedFiles: string[] = [
+// Extend Jest Expect to allow us to map each component example to its own snapshot file.
+const snapshotsStateMap = new Map();
+const jestSnapshot = require('jest-snapshot');
+
+expect.extend({
+  toMatchSpecificSnapshot(received, snapshotFile) {
+    // Append .shot to prevent jest failure when it finds .snaps without associated tests.
+    const absoluteSnapshotFile = process.cwd() + '/src/components/__snapshots__/' + snapshotFile + '.shot';
+
+    // let's try to retrieve the state from the map - maybe there was already a test that created it
+    let snapshotState = snapshotsStateMap.get(absoluteSnapshotFile);
+
+    if (!snapshotState) {
+      // if this is a first test that want to use this snapshot, let's create it
+      snapshotState = new jestSnapshot.SnapshotState(absoluteSnapshotFile, { snapshotPath: absoluteSnapshotFile });
+      // without this, jest-snapshot will not save new snapshots.
+      snapshotState._updateSnapshot = 'new';
+      // and save it to the map for tracking
+      snapshotsStateMap.set(absoluteSnapshotFile, snapshotState);
+    }
+
+    const newThis = Object.assign({}, this, { snapshotState });
+    const patchedToMatchSnapshot = jestSnapshot.toMatchSnapshot.bind(newThis);
+
+    return patchedToMatchSnapshot(received);
+  }
+});
+
+const excludedExampleFiles: string[] = [
   // NOTE: Please consider modifying your component example to work with this test instead
   //        of adding it to the exclusion list as this will make regression harder to detect.
 
@@ -36,7 +64,7 @@ declare const global: any;
  *    here are some options:
  *    1) Does your test have a random or time element that causes its output to change every time?
  *       If so, you can mock the random/time function for consistent output, remove random/time element
- *       from the example, or add your component to the excluded list above.
+ *       from the example, or add your component to the exclusion list above.
  *    2) If there is some other run-time issue you can either modify the example or add your component
  *       to the exclusion list above.
  *
@@ -81,11 +109,14 @@ describe('Component Examples', () => {
   afterAll(() => {
     jest.restoreAllMocks();
     global.Date = realDate;
+    snapshotsStateMap.forEach(snapshotState => {
+      snapshotState.save();
+    });
   });
 
   files
     .filter((componentFile: string) => {
-      return excludedFiles.find(excludedFile => componentFile.endsWith(excludedFile)) === undefined;
+      return excludedExampleFiles.find(excludedFile => componentFile.endsWith(excludedFile)) === undefined;
     })
     .forEach((componentFile: string) => {
       const componentFileName = componentFile.substring(componentFile.lastIndexOf('/') + 1);
@@ -96,7 +127,7 @@ describe('Component Examples', () => {
             const ComponentUnderTest: React.ComponentClass = ExampleFile[key];
             const component = renderer.create(<ComponentUnderTest />);
             const tree = component.toJSON();
-            expect(tree).toMatchSnapshot();
+            (expect(tree) as any).toMatchSpecificSnapshot(componentFileName);
           });
         } catch (e) {
           console.warn(

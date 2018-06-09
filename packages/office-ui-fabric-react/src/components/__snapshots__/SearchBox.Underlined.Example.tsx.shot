@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders SearchBox.Underlined.Example.tsx correctly 1`] = `
+<div
+  className="ms-SearchBox is-underlined root-524"
+  onFocusCapture={[Function]}
+>
+  <div
+    className="ms-SearchBox-iconContainer iconContainer-319"
+    onClick={[Function]}
+  >
+    <i
+      aria-hidden={true}
+      className="ms-SearchBox-icon icon-323"
+      data-icon-name="Search"
+      role="presentation"
+    >
+      
+    </i>
+  </div>
+  <input
+    aria-label="Search"
+    className="ms-SearchBox-field field-322"
+    disabled={undefined}
+    id="SearchBox0"
+    onChange={[Function]}
+    onInput={[Function]}
+    onKeyDown={[Function]}
+    placeholder="Search"
+    value=""
+  />
+</div>
+`;

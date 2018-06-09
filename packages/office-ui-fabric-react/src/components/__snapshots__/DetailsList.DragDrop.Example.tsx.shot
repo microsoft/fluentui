@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1`] = `
+<div
+  className="detailsListDragDropExample"
+>
+  <div />
+  <div
+    className="root-281"
+  >
+    <div
+      className="ms-Viewport"
+      style={
+        Object {
+          "minHeight": 1,
+          "minWidth": 1,
+        }
+      }
+    />
+  </div>
+</div>
+`;
