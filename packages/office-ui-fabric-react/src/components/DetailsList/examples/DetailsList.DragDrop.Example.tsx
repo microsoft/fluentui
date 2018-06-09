@@ -4,7 +4,7 @@ import { DetailsList, Selection } from 'office-ui-fabric-react/lib/DetailsList';
 import { IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { IDragDropEvents, IDragDropContext } from 'office-ui-fabric-react/lib/utilities/dragdrop/interfaces';
-import { createListItems } from '@uifabric/example-app-base';
+import { createListItems } from '../../../utilities/exampleData';
 import './DetailsList.DragDrop.Example.scss';
 
 let _draggedItem: any = null;
@@ -16,7 +16,7 @@ export class DetailsListDragDropExample extends React.Component<
     items: {}[];
     selectionDetails?: string;
   }
-> {
+  > {
   private _selection: Selection;
 
   constructor(props: {}) {

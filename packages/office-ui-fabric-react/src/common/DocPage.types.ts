@@ -58,7 +58,7 @@ export interface IDocPageProps {
   componentStatus?: IComponentStatusProps;
 
   /** Array of examples, displayed in the order defined */
-  examples: {
+  examples?: {
     /** Title of the example */
     title: string;
 
@@ -82,7 +82,7 @@ export interface IDocPageProps {
   }[];
 
   /** Properties table(s) as markdown string */
-  propertiesTablesSources: string[];
+  propertiesTablesSources?: string[];
 
   /** Overview of the component as markdown string */
   overview: string;
