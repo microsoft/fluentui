@@ -23,7 +23,7 @@ const AppDefinition = {
           key: 'Button',
           name: 'Button',
           url: '#/examples/button'
-        },
+        }
       ],
       name: 'Basic components'
     },
@@ -47,7 +47,7 @@ const AppDefinition = {
           key: 'GroupedList',
           name: 'GroupedList',
           url: '#examples/groupedlist'
-        },
+        }
       ],
       name: 'Extended components'
     },
@@ -70,13 +70,12 @@ const AppDefinition = {
           key: 'MarqueeSelection',
           name: 'MarqueeSelection',
           url: '#examples/marqueeselection'
-        },
+        }
       ],
       name: 'Utilities'
     }
   ]
 };
-
 
 export class NavFabricDemoAppExample extends React.Component<any, any> {
   public render(): JSX.Element {

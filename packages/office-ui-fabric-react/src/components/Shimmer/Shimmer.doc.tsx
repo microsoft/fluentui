@@ -18,36 +18,41 @@ const ShimmerLoadDataExampleCode = require('!raw-loader!office-ui-fabric-react/s
 const ShimmerApplicationExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Shimmer/examples/Shimmer.Application.Example.tsx') as string;
 
 export const ShimmerPageProps: IDocPageProps = {
-  title: "Shimmer",
-  componentName: "ShimmerExample",
-  componentUrl: "https://githubcom/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Shimmer",
-  examples: [{
-    title: "Shimmer with basic elements using the 'shimmerElements' prop",
-    code: ShimmerBasicExampleCode,
-    view: <ShimmerBasicExample />
-  },
-  {
-    title: "Shimmer with custom elements using the 'customElementsGroup' prop",
-    code: ShimmerCustomExampleCode,
-    view: <ShimmerCustomElementsExample />
-  },
-  {
-    title: "Shimmer swapping with the content it replaces",
-    code: ShimmerLoadDataExampleCode,
-    view: <ShimmerLoadDataExample />
-  },
-  {
-    title: "Details List with 500 items simulating loading data in async manner and having Shimmer enabled.",
-    code: ShimmerApplicationExampleCode,
-    view: <ShimmerApplicationExample />,
-  },
-  {
-    title: "Style override of shimmering wave using 'styles' prop",
-    code: ShimmerStylingExampleCode,
-    view: <ShimmerStylingExample />
-  }],
+  title: 'Shimmer',
+  componentName: 'ShimmerExample',
+  componentUrl:
+    'https://githubcom/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Shimmer',
+  examples: [
+    {
+      title: "Shimmer with basic elements using the 'shimmerElements' prop",
+      code: ShimmerBasicExampleCode,
+      view: <ShimmerBasicExample />
+    },
+    {
+      title: "Shimmer with custom elements using the 'customElementsGroup' prop",
+      code: ShimmerCustomExampleCode,
+      view: <ShimmerCustomElementsExample />
+    },
+    {
+      title: 'Shimmer swapping with the content it replaces',
+      code: ShimmerLoadDataExampleCode,
+      view: <ShimmerLoadDataExample />
+    },
+    {
+      title: 'Details List with 500 items simulating loading data in async manner and having Shimmer enabled.',
+      code: ShimmerApplicationExampleCode,
+      view: <ShimmerApplicationExample />
+    },
+    {
+      title: "Style override of shimmering wave using 'styles' prop",
+      code: ShimmerStylingExampleCode,
+      view: <ShimmerStylingExample />
+    }
+  ],
 
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Shimmer/Shimmer.types.ts')],
+  propertiesTablesSources: [
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/Shimmer/Shimmer.types.ts')
+  ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Shimmer/docs/ShimmerOverview.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Shimmer/docs/ShimmerDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Shimmer/docs/ShimmerDonts.md'),
