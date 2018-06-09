@@ -1,0 +1,166 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] = `
+<div
+  style={
+    Object {
+      "display": "inline-block",
+    }
+  }
+>
+  <div
+    className="ms-ResizeGroup root-98"
+  >
+    <div
+      style={
+        Object {
+          "position": "fixed",
+          "visibility": "hidden",
+        }
+      }
+    >
+      <div
+        aria-label="Website breadcrumb"
+        className="ms-Breadcrumb root-90"
+        role="navigation"
+      >
+        <div
+          aria-describedby={undefined}
+          aria-labelledby={undefined}
+          className="ms-FocusZone"
+          data-focuszone-id="FocusZone0"
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onMouseDownCapture={[Function]}
+          role="presentation"
+        >
+          <ol
+            className="ms-Breadcrumb-list list-91"
+          >
+            <li
+              className="ms-Breadcrumb-overflow overflow-94"
+            >
+              <button
+                aria-describedby={undefined}
+                aria-expanded={false}
+                aria-haspopup={true}
+                aria-label={undefined}
+                aria-labelledby={undefined}
+                aria-owns={null}
+                aria-pressed={undefined}
+                className="ms-Button ms-Button--icon ms-Breadcrumb-overflowButton overflowButton-101"
+                data-is-focusable={true}
+                disabled={undefined}
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="button"
+                type="button"
+              >
+                <div
+                  className="ms-Button-flexContainer flexContainer-102"
+                >
+                  <i
+                    aria-hidden={true}
+                    className="ms-Button-icon icon-109"
+                    data-icon-name="More"
+                    role="presentation"
+                  >
+                    
+                  </i>
+                </div>
+              </button>
+              <i
+                aria-hidden={true}
+                className="ms-Breadcrumb-chevron chevron-100"
+                data-icon-name="ChevronRight"
+                role="presentation"
+              >
+                
+              </i>
+            </li>
+            <li
+              className="ms-Breadcrumb-listItem listItem-92"
+            >
+              <button
+                aria-current={undefined}
+                aria-disabled={undefined}
+                className="ms-Link ms-Breadcrumb-itemLink itemLink-99"
+                onClick={[Function]}
+              >
+                <div
+                  aria-describedby={undefined}
+                  className="ms-TooltipHost"
+                  onBlurCapture={[Function]}
+                  onFocusCapture={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                >
+                  This is folder 3
+                </div>
+              </button>
+              <i
+                aria-hidden={true}
+                className="ms-Breadcrumb-chevron chevron-100"
+                data-icon-name="ChevronRight"
+                role="presentation"
+              >
+                
+              </i>
+            </li>
+            <li
+              className="ms-Breadcrumb-listItem listItem-92"
+            >
+              <button
+                aria-current={undefined}
+                aria-disabled={undefined}
+                className="ms-Link ms-Breadcrumb-itemLink itemLink-99"
+                onClick={[Function]}
+              >
+                <div
+                  aria-describedby={undefined}
+                  className="ms-TooltipHost"
+                  onBlurCapture={[Function]}
+                  onFocusCapture={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                >
+                  This is folder 4
+                </div>
+              </button>
+              <i
+                aria-hidden={true}
+                className="ms-Breadcrumb-chevron chevron-100"
+                data-icon-name="ChevronRight"
+                role="presentation"
+              >
+                
+              </i>
+            </li>
+            <li
+              className="ms-Breadcrumb-listItem listItem-92"
+            >
+              <button
+                aria-current="page"
+                aria-disabled={undefined}
+                className="ms-Link ms-Breadcrumb-itemLink itemLink-99"
+                onClick={[Function]}
+              >
+                <div
+                  aria-describedby={undefined}
+                  className="ms-TooltipHost"
+                  onBlurCapture={[Function]}
+                  onFocusCapture={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                >
+                  This is folder 5
+                </div>
+              </button>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

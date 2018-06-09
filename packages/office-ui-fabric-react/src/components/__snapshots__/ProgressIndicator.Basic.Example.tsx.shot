@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders ProgressIndicator.Basic.Example.tsx correctly 1`] = `
+<div
+  className="ms-ProgressIndicator root-487"
+>
+  <div
+    className="ms-ProgressIndicator-itemName itemName-488"
+  >
+    Example title
+  </div>
+  <div
+    className="ms-ProgressIndicator-itemProgress itemProgress-490"
+  >
+    <div
+      className="ms-ProgressIndicator-progressTrack progressTrack-491"
+    />
+    <div
+      aria-valuemax={100}
+      aria-valuemin={0}
+      aria-valuenow={0}
+      aria-valuetext={undefined}
+      className="ms-ProgressIndicator-progressBar progressBar-492"
+      role="progressbar"
+      style={
+        Object {
+          "transition": "none",
+          "width": "0%",
+        }
+      }
+    />
+  </div>
+  <div
+    className="ms-ProgressIndicator-itemDescription itemDescription-489"
+  >
+    Example description
+  </div>
+</div>
+`;

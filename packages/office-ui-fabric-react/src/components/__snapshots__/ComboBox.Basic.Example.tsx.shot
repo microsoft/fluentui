@@ -1,0 +1,868 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
+<div
+  className="ms-ComboBoxBasicExample"
+>
+  <div
+    autoComplete="on"
+    className="ms-ComboBox-container "
+    id="Basicdrop1"
+    onBlur={[Function]}
+    onFocus={[Function]}
+  >
+    <label
+      className="ms-Label root-89"
+      htmlFor="Basicdrop1-input"
+      id="Basicdrop1-label"
+      required={undefined}
+    >
+      Basic uncontrolled example (allowFreeform: T, AutoComplete: T):
+    </label>
+    <div
+      className="ms-ComboBox css-259"
+      data-ktp-target={undefined}
+      id="Basicdrop1wrapper"
+    >
+      <input
+        aria-activedescendant={undefined}
+        aria-autocomplete="inline"
+        aria-describedby={undefined}
+        aria-disabled={undefined}
+        aria-expanded={false}
+        aria-label={undefined}
+        aria-labelledby="Basicdrop1-label"
+        aria-owns={undefined}
+        autoCapitalize="off"
+        autoComplete="off"
+        className="ms-ComboBox-Input css-260"
+        data-is-interactable={true}
+        data-ktp-execute-target={undefined}
+        data-lpignore={true}
+        id="Basicdrop1-input"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onCompositionEnd={[Function]}
+        onCompositionStart={[Function]}
+        onFocus={[Function]}
+        onInput={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onTouchStart={[Function]}
+        readOnly={false}
+        role="combobox"
+        spellCheck={false}
+        title={undefined}
+        type="text"
+        value="Comic Sans MS"
+      />
+      <button
+        aria-describedby={undefined}
+        aria-hidden={true}
+        aria-label={undefined}
+        aria-labelledby={undefined}
+        aria-pressed={false}
+        checked={false}
+        className="ms-Button ms-Button--icon ms-ComboBox-CaretDown-button root-265"
+        data-is-focusable={false}
+        disabled={undefined}
+        onClick={[Function]}
+        role="presentation"
+        tabIndex={-1}
+        type="button"
+      >
+        <div
+          className="ms-Button-flexContainer flexContainer-102"
+        >
+          <i
+            aria-hidden={true}
+            className="ms-Button-icon icon-267"
+            data-icon-name="ChevronDown"
+            role="presentation"
+          >
+            
+          </i>
+        </div>
+      </button>
+    </div>
+  </div>
+  <button
+    aria-describedby={undefined}
+    aria-label={undefined}
+    aria-labelledby={undefined}
+    aria-pressed={undefined}
+    className="ms-Button ms-Button--primary root-144"
+    data-is-focusable={true}
+    disabled={undefined}
+    onClick={[Function]}
+    type="button"
+  >
+    <div
+      className="ms-Button-flexContainer flexContainer-102"
+    >
+      <div
+        className="ms-Button-textContainer textContainer-103"
+      >
+        <div
+          className="ms-Button-label label-120"
+          id="id__3"
+        >
+          Set focus
+        </div>
+      </div>
+    </div>
+  </button>
+  <div
+    autoComplete="on"
+    className="ms-ComboBox-container "
+    id="Basicdrop11"
+    onBlur={[Function]}
+    onFocus={[Function]}
+  >
+    <label
+      className="ms-Label root-89"
+      htmlFor="Basicdrop11-input"
+      id="Basicdrop11-label"
+      required={undefined}
+    >
+      Basic uncontrolled multi select example (allowFreeform: T, AutoComplete: T):
+    </label>
+    <div
+      className="ms-ComboBox css-259"
+      data-ktp-target={undefined}
+      id="Basicdrop11wrapper"
+    >
+      <input
+        aria-activedescendant={undefined}
+        aria-autocomplete="inline"
+        aria-describedby={undefined}
+        aria-disabled={undefined}
+        aria-expanded={false}
+        aria-label={undefined}
+        aria-labelledby="Basicdrop11-label"
+        aria-owns={undefined}
+        autoCapitalize="off"
+        autoComplete="off"
+        className="ms-ComboBox-Input css-260"
+        data-is-interactable={true}
+        data-ktp-execute-target={undefined}
+        data-lpignore={true}
+        id="Basicdrop11-input"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onCompositionEnd={[Function]}
+        onCompositionStart={[Function]}
+        onFocus={[Function]}
+        onInput={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onTouchStart={[Function]}
+        readOnly={false}
+        role="combobox"
+        spellCheck={false}
+        title={undefined}
+        type="text"
+        value="Comic Sans MS, Option e"
+      />
+      <button
+        aria-describedby={undefined}
+        aria-hidden={true}
+        aria-label={undefined}
+        aria-labelledby={undefined}
+        aria-pressed={false}
+        checked={false}
+        className="ms-Button ms-Button--icon ms-ComboBox-CaretDown-button root-265"
+        data-is-focusable={false}
+        disabled={undefined}
+        onClick={[Function]}
+        role="presentation"
+        tabIndex={-1}
+        type="button"
+      >
+        <div
+          className="ms-Button-flexContainer flexContainer-102"
+        >
+          <i
+            aria-hidden={true}
+            className="ms-Button-icon icon-267"
+            data-icon-name="ChevronDown"
+            role="presentation"
+          >
+            
+          </i>
+        </div>
+      </button>
+    </div>
+  </div>
+  <div
+    autoComplete="off"
+    className="ms-ComboBox-container "
+    id="Basicdrop2"
+    onBlur={[Function]}
+    onFocus={[Function]}
+  >
+    <label
+      className="ms-Label root-89"
+      htmlFor="Basicdrop2-input"
+      id="Basicdrop2-label"
+      required={undefined}
+    >
+      Basic uncontrolled example (allowFreeform: T, AutoComplete: F):
+    </label>
+    <div
+      className="ms-ComboBox css-259"
+      data-ktp-target={undefined}
+      id="Basicdrop2wrapper"
+    >
+      <input
+        aria-activedescendant={undefined}
+        aria-autocomplete="none"
+        aria-describedby={undefined}
+        aria-disabled={undefined}
+        aria-expanded={false}
+        aria-label={undefined}
+        aria-labelledby="Basicdrop2-label"
+        aria-owns={undefined}
+        autoCapitalize="off"
+        autoComplete="off"
+        className="ms-ComboBox-Input css-260"
+        data-is-interactable={true}
+        data-ktp-execute-target={undefined}
+        data-lpignore={true}
+        id="Basicdrop2-input"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onCompositionEnd={[Function]}
+        onCompositionStart={[Function]}
+        onFocus={[Function]}
+        onInput={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onTouchStart={[Function]}
+        readOnly={false}
+        role="combobox"
+        spellCheck={false}
+        title={undefined}
+        type="text"
+        value="Comic Sans MS"
+      />
+      <button
+        aria-describedby={undefined}
+        aria-hidden={true}
+        aria-label={undefined}
+        aria-labelledby={undefined}
+        aria-pressed={false}
+        checked={false}
+        className="ms-Button ms-Button--icon ms-ComboBox-CaretDown-button root-265"
+        data-is-focusable={false}
+        disabled={undefined}
+        onClick={[Function]}
+        role="presentation"
+        tabIndex={-1}
+        type="button"
+      >
+        <div
+          className="ms-Button-flexContainer flexContainer-102"
+        >
+          <i
+            aria-hidden={true}
+            className="ms-Button-icon icon-267"
+            data-icon-name="ChevronDown"
+            role="presentation"
+          >
+            
+          </i>
+        </div>
+      </button>
+    </div>
+  </div>
+  <div
+    autoComplete="on"
+    className="ms-ComboBox-container "
+    id="Basicdrop3"
+    onBlur={[Function]}
+    onFocus={[Function]}
+  >
+    <label
+      className="ms-Label root-89"
+      htmlFor="Basicdrop3-input"
+      id="Basicdrop3-label"
+      required={undefined}
+    >
+      Basic uncontrolled example (allowFreeform: F, AutoComplete: T):
+    </label>
+    <div
+      className="ms-ComboBox css-259"
+      data-ktp-target={undefined}
+      id="Basicdrop3wrapper"
+    >
+      <input
+        aria-activedescendant={undefined}
+        aria-autocomplete="both"
+        aria-describedby={undefined}
+        aria-disabled={undefined}
+        aria-expanded={false}
+        aria-label={undefined}
+        aria-labelledby="Basicdrop3-label"
+        aria-owns={undefined}
+        autoCapitalize="off"
+        autoComplete="off"
+        className="ms-ComboBox-Input css-260"
+        data-is-interactable={true}
+        data-ktp-execute-target={undefined}
+        data-lpignore={true}
+        id="Basicdrop3-input"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onCompositionEnd={[Function]}
+        onCompositionStart={[Function]}
+        onFocus={[Function]}
+        onInput={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onTouchStart={[Function]}
+        readOnly={true}
+        role="combobox"
+        spellCheck={false}
+        title={undefined}
+        type="text"
+        value="Comic Sans MS"
+      />
+      <button
+        aria-describedby={undefined}
+        aria-hidden={true}
+        aria-label={undefined}
+        aria-labelledby={undefined}
+        aria-pressed={false}
+        checked={false}
+        className="ms-Button ms-Button--icon ms-ComboBox-CaretDown-button root-265"
+        data-is-focusable={false}
+        disabled={undefined}
+        onClick={[Function]}
+        role="presentation"
+        tabIndex={-1}
+        type="button"
+      >
+        <div
+          className="ms-Button-flexContainer flexContainer-102"
+        >
+          <i
+            aria-hidden={true}
+            className="ms-Button-icon icon-267"
+            data-icon-name="ChevronDown"
+            role="presentation"
+          >
+            
+          </i>
+        </div>
+      </button>
+    </div>
+  </div>
+  <div
+    autoComplete="on"
+    className="ms-ComboBox-container "
+    id="Basicdrop1"
+    onBlur={[Function]}
+    onFocus={[Function]}
+  >
+    <label
+      className="ms-Label root-89"
+      htmlFor="Basicdrop1-input"
+      id="Basicdrop1-label"
+      required={undefined}
+    >
+      Scaled example with 1000 items (allowFreeform: T, AutoComplete: T):
+    </label>
+    <div
+      className="ms-ComboBox css-259"
+      data-ktp-target={undefined}
+      id="Basicdrop1wrapper"
+    >
+      <input
+        aria-activedescendant={undefined}
+        aria-autocomplete="inline"
+        aria-describedby={undefined}
+        aria-disabled={undefined}
+        aria-expanded={false}
+        aria-label={undefined}
+        aria-labelledby="Basicdrop1-label"
+        aria-owns={undefined}
+        autoCapitalize="off"
+        autoComplete="off"
+        className="ms-ComboBox-Input css-260"
+        data-is-interactable={true}
+        data-ktp-execute-target={undefined}
+        data-lpignore={true}
+        id="Basicdrop1-input"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onCompositionEnd={[Function]}
+        onCompositionStart={[Function]}
+        onFocus={[Function]}
+        onInput={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onTouchStart={[Function]}
+        readOnly={false}
+        role="combobox"
+        spellCheck={false}
+        title={undefined}
+        type="text"
+        value=""
+      />
+      <button
+        aria-describedby={undefined}
+        aria-hidden={true}
+        aria-label={undefined}
+        aria-labelledby={undefined}
+        aria-pressed={false}
+        checked={false}
+        className="ms-Button ms-Button--icon ms-ComboBox-CaretDown-button root-265"
+        data-is-focusable={false}
+        disabled={undefined}
+        onClick={[Function]}
+        role="presentation"
+        tabIndex={-1}
+        type="button"
+      >
+        <div
+          className="ms-Button-flexContainer flexContainer-102"
+        >
+          <i
+            aria-hidden={true}
+            className="ms-Button-icon icon-267"
+            data-icon-name="ChevronDown"
+            role="presentation"
+          >
+            
+          </i>
+        </div>
+      </button>
+    </div>
+  </div>
+  <div
+    autoComplete="off"
+    className="ms-ComboBox-container "
+    id="Basicdrop4"
+    onBlur={[Function]}
+    onFocus={[Function]}
+  >
+    <label
+      className="ms-Label root-89"
+      htmlFor="Basicdrop4-input"
+      id="Basicdrop4-label"
+      required={undefined}
+    >
+      Basic uncontrolled example (allowFreeform: F, AutoComplete: F):
+    </label>
+    <div
+      className="ms-ComboBox css-259"
+      data-ktp-target={undefined}
+      id="Basicdrop4wrapper"
+    >
+      <input
+        aria-activedescendant={undefined}
+        aria-autocomplete="none"
+        aria-describedby={undefined}
+        aria-disabled={undefined}
+        aria-expanded={false}
+        aria-label={undefined}
+        aria-labelledby="Basicdrop4-label"
+        aria-owns={undefined}
+        autoCapitalize="off"
+        autoComplete="off"
+        className="ms-ComboBox-Input css-260"
+        data-is-interactable={true}
+        data-ktp-execute-target={undefined}
+        data-lpignore={true}
+        id="Basicdrop4-input"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onCompositionEnd={[Function]}
+        onCompositionStart={[Function]}
+        onFocus={[Function]}
+        onInput={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onTouchStart={[Function]}
+        readOnly={true}
+        role="combobox"
+        spellCheck={false}
+        title={undefined}
+        type="text"
+        value="Comic Sans MS"
+      />
+      <button
+        aria-describedby={undefined}
+        aria-hidden={true}
+        aria-label={undefined}
+        aria-labelledby={undefined}
+        aria-pressed={false}
+        checked={false}
+        className="ms-Button ms-Button--icon ms-ComboBox-CaretDown-button root-265"
+        data-is-focusable={false}
+        disabled={undefined}
+        onClick={[Function]}
+        role="presentation"
+        tabIndex={-1}
+        type="button"
+      >
+        <div
+          className="ms-Button-flexContainer flexContainer-102"
+        >
+          <i
+            aria-hidden={true}
+            className="ms-Button-icon icon-267"
+            data-icon-name="ChevronDown"
+            role="presentation"
+          >
+            
+          </i>
+        </div>
+      </button>
+    </div>
+  </div>
+  <div
+    autoComplete="on"
+    className="ms-ComboBox-container "
+    id="Basicdrop5"
+    onBlur={[Function]}
+    onFocus={[Function]}
+  >
+    <label
+      className="ms-Label root-89"
+      htmlFor="Basicdrop5-input"
+      id="Basicdrop5-label"
+      required={undefined}
+    >
+      Basic uncontrolled example:
+    </label>
+    <div
+      className="ms-ComboBox css-268"
+      data-ktp-target={undefined}
+      id="Basicdrop5wrapper"
+    >
+      <input
+        aria-activedescendant={undefined}
+        aria-autocomplete="both"
+        aria-describedby={undefined}
+        aria-disabled={undefined}
+        aria-expanded={false}
+        aria-label={undefined}
+        aria-labelledby="Basicdrop5-label"
+        aria-owns={undefined}
+        autoCapitalize="off"
+        autoComplete="off"
+        className="ms-ComboBox-Input css-260"
+        data-is-interactable={true}
+        data-ktp-execute-target={undefined}
+        data-lpignore={true}
+        id="Basicdrop5-input"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onCompositionEnd={[Function]}
+        onCompositionStart={[Function]}
+        onFocus={[Function]}
+        onInput={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onTouchStart={[Function]}
+        readOnly={true}
+        role="combobox"
+        spellCheck={false}
+        title={undefined}
+        type="text"
+        value=""
+      />
+      <button
+        aria-describedby={undefined}
+        aria-hidden={true}
+        aria-label={undefined}
+        aria-labelledby={undefined}
+        aria-pressed={false}
+        checked={false}
+        className="ms-Button ms-Button--icon ms-ComboBox-CaretDown-button root-265"
+        data-is-focusable={false}
+        disabled={undefined}
+        onClick={[Function]}
+        role="presentation"
+        tabIndex={-1}
+        type="button"
+      >
+        <div
+          className="ms-Button-flexContainer flexContainer-102"
+        >
+          <i
+            aria-hidden={true}
+            className="ms-Button-icon icon-267"
+            data-icon-name="ChevronDown"
+            role="presentation"
+          >
+            
+          </i>
+        </div>
+      </button>
+    </div>
+    <div
+      className="css-261"
+    >
+      Error! Here is some text!
+    </div>
+  </div>
+  <div
+    autoComplete="on"
+    className="ms-ComboBox-container "
+    onBlur={[Function]}
+    onFocus={[Function]}
+  >
+    <label
+      className="ms-Label root-271"
+      htmlFor="ComboBox24-input"
+      id="ComboBox24-label"
+      required={undefined}
+    >
+      Disabled uncontrolled example with defaultSelectedKey:
+    </label>
+    <div
+      className="ms-ComboBox is-disabled css-269"
+      data-ktp-target={undefined}
+      id="ComboBox24wrapper"
+    >
+      <input
+        aria-activedescendant={undefined}
+        aria-autocomplete="none"
+        aria-describedby={undefined}
+        aria-disabled={true}
+        aria-expanded={false}
+        aria-label={undefined}
+        aria-labelledby="ComboBox24-label"
+        aria-owns={undefined}
+        autoCapitalize="off"
+        autoComplete="off"
+        className="ms-ComboBox-Input css-270"
+        data-is-interactable={false}
+        data-ktp-execute-target={undefined}
+        data-lpignore={true}
+        id="ComboBox24-input"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onCompositionEnd={[Function]}
+        onCompositionStart={[Function]}
+        onFocus={[Function]}
+        onInput={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onTouchStart={[Function]}
+        readOnly={true}
+        role="combobox"
+        spellCheck={false}
+        title={undefined}
+        type="text"
+        value="Option d"
+      />
+      <button
+        aria-describedby={undefined}
+        aria-hidden={true}
+        aria-label={undefined}
+        aria-labelledby={undefined}
+        aria-pressed={false}
+        checked={false}
+        className="ms-Button ms-Button--icon is-disabled ms-ComboBox-CaretDown-button root-272"
+        data-is-focusable={false}
+        disabled={true}
+        onClick={[Function]}
+        role="presentation"
+        tabIndex={-1}
+        type="button"
+      >
+        <div
+          className="ms-Button-flexContainer flexContainer-102"
+        >
+          <i
+            aria-hidden={true}
+            className="ms-Button-icon icon-274"
+            data-icon-name="ChevronDown"
+            role="presentation"
+          >
+            
+          </i>
+        </div>
+      </button>
+    </div>
+  </div>
+  <div
+    autoComplete="on"
+    className="ms-ComboBox-container "
+    id="Basicdrop5"
+    onBlur={[Function]}
+    onFocus={[Function]}
+  >
+    <label
+      className="ms-Label root-89"
+      htmlFor="Basicdrop5-input"
+      id="Basicdrop5-label"
+      required={undefined}
+    >
+      Basic controlled example:
+    </label>
+    <div
+      className="ms-ComboBox css-259"
+      data-ktp-target={undefined}
+      id="Basicdrop5wrapper"
+    >
+      <input
+        aria-activedescendant={undefined}
+        aria-autocomplete="inline"
+        aria-describedby={undefined}
+        aria-disabled={undefined}
+        aria-expanded={false}
+        aria-label={undefined}
+        aria-labelledby="Basicdrop5-label"
+        aria-owns={undefined}
+        autoCapitalize="off"
+        autoComplete="off"
+        className="ms-ComboBox-Input css-260"
+        data-is-interactable={true}
+        data-ktp-execute-target={undefined}
+        data-lpignore={true}
+        id="Basicdrop5-input"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onCompositionEnd={[Function]}
+        onCompositionStart={[Function]}
+        onFocus={[Function]}
+        onInput={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onTouchStart={[Function]}
+        readOnly={false}
+        role="combobox"
+        spellCheck={false}
+        title={undefined}
+        type="text"
+        value="Calibri"
+      />
+      <button
+        aria-describedby={undefined}
+        aria-hidden={true}
+        aria-label={undefined}
+        aria-labelledby={undefined}
+        aria-pressed={false}
+        checked={false}
+        className="ms-Button ms-Button--icon ms-ComboBox-CaretDown-button root-265"
+        data-is-focusable={false}
+        disabled={undefined}
+        onClick={[Function]}
+        role="presentation"
+        tabIndex={-1}
+        type="button"
+      >
+        <div
+          className="ms-Button-flexContainer flexContainer-102"
+        >
+          <i
+            aria-hidden={true}
+            className="ms-Button-icon icon-267"
+            data-icon-name="ChevronDown"
+            role="presentation"
+          >
+            
+          </i>
+        </div>
+      </button>
+    </div>
+  </div>
+  <div
+    autoComplete="on"
+    className="ms-ComboBox-container "
+    id="Basicdrop5"
+    onBlur={[Function]}
+    onFocus={[Function]}
+  >
+    <label
+      className="ms-Label root-89"
+      htmlFor="Basicdrop5-input"
+      id="Basicdrop5-label"
+      required={undefined}
+    >
+      Basic controlled ComboBox multi-select example:
+    </label>
+    <div
+      className="ms-ComboBox css-259"
+      data-ktp-target={undefined}
+      id="Basicdrop5wrapper"
+    >
+      <input
+        aria-activedescendant={undefined}
+        aria-autocomplete="inline"
+        aria-describedby={undefined}
+        aria-disabled={undefined}
+        aria-expanded={false}
+        aria-label={undefined}
+        aria-labelledby="Basicdrop5-label"
+        aria-owns={undefined}
+        autoCapitalize="off"
+        autoComplete="off"
+        className="ms-ComboBox-Input css-260"
+        data-is-interactable={true}
+        data-ktp-execute-target={undefined}
+        data-lpignore={true}
+        id="Basicdrop5-input"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onCompositionEnd={[Function]}
+        onCompositionStart={[Function]}
+        onFocus={[Function]}
+        onInput={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onTouchStart={[Function]}
+        readOnly={false}
+        role="combobox"
+        spellCheck={false}
+        title={undefined}
+        type="text"
+        value=""
+      />
+      <button
+        aria-describedby={undefined}
+        aria-hidden={true}
+        aria-label={undefined}
+        aria-labelledby={undefined}
+        aria-pressed={false}
+        checked={false}
+        className="ms-Button ms-Button--icon ms-ComboBox-CaretDown-button root-265"
+        data-is-focusable={false}
+        disabled={undefined}
+        onClick={[Function]}
+        role="presentation"
+        tabIndex={-1}
+        type="button"
+      >
+        <div
+          className="ms-Button-flexContainer flexContainer-102"
+        >
+          <i
+            aria-hidden={true}
+            className="ms-Button-icon icon-267"
+            data-icon-name="ChevronDown"
+            role="presentation"
+          >
+            
+          </i>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+`;

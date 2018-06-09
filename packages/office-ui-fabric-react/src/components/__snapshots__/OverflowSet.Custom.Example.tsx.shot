@@ -1,0 +1,204 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`] = `
+<div
+  aria-describedby={undefined}
+  aria-labelledby={undefined}
+  className="ms-FocusZone ms-OverflowSet"
+  data-focuszone-id="FocusZone0"
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseDownCapture={[Function]}
+  role="menubar"
+>
+  <div
+    className="ms-OverflowSet-item"
+  >
+    <div
+      className="ms-SearchBox root-318"
+      onFocusCapture={[Function]}
+    >
+      <div
+        className="ms-SearchBox-iconContainer iconContainer-319"
+        onClick={[Function]}
+      >
+        <i
+          aria-hidden={true}
+          className="ms-SearchBox-icon icon-323"
+          data-icon-name="Search"
+          role="presentation"
+        >
+          
+        </i>
+      </div>
+      <input
+        aria-label="Search"
+        className="ms-SearchBox-field field-322"
+        disabled={undefined}
+        id="SearchBox1"
+        onChange={[Function]}
+        onInput={[Function]}
+        onKeyDown={[Function]}
+        placeholder="Search"
+        value=""
+      />
+    </div>
+  </div>
+  <div
+    className="ms-OverflowSet-item"
+  >
+    <button
+      aria-describedby={undefined}
+      aria-expanded={false}
+      aria-haspopup={true}
+      aria-label={undefined}
+      aria-labelledby={undefined}
+      aria-owns={null}
+      aria-pressed={undefined}
+      className="ms-Button ms-Button--default root-119"
+      data-is-focusable={true}
+      disabled={undefined}
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      type="button"
+    >
+      <div
+        className="ms-Button-flexContainer flexContainer-102"
+      >
+        <i
+          aria-hidden={true}
+          className="ms-Button-icon icon-109"
+          data-icon-name="Add"
+          role="presentation"
+        >
+          
+        </i>
+        <div
+          className="ms-Button-textContainer textContainer-103"
+        >
+          <div
+            className="ms-Button-label label-120"
+            id="id__2"
+          >
+            New
+          </div>
+        </div>
+        <i
+          aria-hidden={true}
+          className="ms-Button-menuIcon menuIcon-143"
+          data-icon-name="ChevronDown"
+          role="presentation"
+        >
+          
+        </i>
+      </div>
+    </button>
+  </div>
+  <div
+    className="ms-OverflowSet-item"
+  >
+    <button
+      aria-describedby={undefined}
+      aria-label={undefined}
+      aria-labelledby={undefined}
+      aria-pressed={undefined}
+      className="ms-Button ms-Button--default root-119"
+      data-is-focusable={true}
+      disabled={undefined}
+      type="button"
+    >
+      <div
+        className="ms-Button-flexContainer flexContainer-102"
+      >
+        <i
+          aria-hidden={true}
+          className="ms-Button-icon icon-109"
+          data-icon-name="Upload"
+          role="presentation"
+        >
+          
+        </i>
+        <div
+          className="ms-Button-textContainer textContainer-103"
+        >
+          <div
+            className="ms-Button-label label-120"
+            id="id__5"
+          >
+            Upload
+          </div>
+        </div>
+      </div>
+    </button>
+  </div>
+  <div
+    className="ms-OverflowSet-item"
+  >
+    <button
+      aria-describedby={undefined}
+      aria-label={undefined}
+      aria-labelledby={undefined}
+      aria-pressed={undefined}
+      className="ms-Button ms-Button--default root-119"
+      data-is-focusable={true}
+      disabled={undefined}
+      type="button"
+    >
+      <div
+        className="ms-Button-flexContainer flexContainer-102"
+      >
+        <i
+          aria-hidden={true}
+          className="ms-Button-icon icon-109"
+          data-icon-name="Share"
+          role="presentation"
+        >
+          
+        </i>
+        <div
+          className="ms-Button-textContainer textContainer-103"
+        >
+          <div
+            className="ms-Button-label label-120"
+            id="id__8"
+          >
+            Share
+          </div>
+        </div>
+      </div>
+    </button>
+  </div>
+  <div
+    className="ms-OverflowSet-overflowButton"
+  >
+    <button
+      aria-describedby={undefined}
+      aria-expanded={false}
+      aria-haspopup={true}
+      aria-label={undefined}
+      aria-labelledby={undefined}
+      aria-owns={null}
+      aria-pressed={undefined}
+      className="ms-Button ms-Button--default root-119"
+      data-is-focusable={true}
+      disabled={undefined}
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      type="button"
+    >
+      <div
+        className="ms-Button-flexContainer flexContainer-102"
+      >
+        <i
+          aria-hidden={true}
+          className="ms-Button-menuIcon menuIcon-143"
+          data-icon-name="More"
+          role="presentation"
+        >
+          
+        </i>
+      </div>
+    </button>
+  </div>
+</div>
+`;

@@ -1,0 +1,1264 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] = `
+<div
+  className="ms-PersonaExample"
+>
+  <div
+    className="ms-Persona ms-Persona--size48 root-439"
+    size={13}
+    style={undefined}
+  >
+    <div
+      className="ms-Persona-coin ms-Persona--size48 coin-72"
+      size={13}
+    >
+      <div
+        className="ms-Persona-imageArea imageArea-441"
+        style={undefined}
+      >
+        <div
+          aria-hidden="true"
+          className="ms-Persona-initials initials-472"
+          style={undefined}
+        >
+          <span>
+            KL
+          </span>
+        </div>
+        <div
+          className="ms-Image ms-Persona-image image-443"
+          style={
+            Object {
+              "height": 48,
+              "width": 48,
+            }
+          }
+        >
+          <img
+            alt=""
+            className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+            onError={[Function]}
+            onLoad={[Function]}
+            role={undefined}
+            src={undefined}
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="ms-Persona-details details-206"
+    >
+      <div
+        className="ms-Persona-primaryText primaryText-440"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          Kat Larrson
+        </div>
+      </div>
+      <div
+        className="ms-Persona-secondaryText secondaryText-431"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          Designer
+        </div>
+      </div>
+      <div
+        className="ms-Persona-tertiaryText tertiaryText-209"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          In a meeting
+        </div>
+      </div>
+      <div
+        className="ms-Persona-optionalText optionalText-210"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          Available at 4:00pm
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="ms-Persona ms-Persona--size48 root-439"
+    size={13}
+    style={undefined}
+  >
+    <div
+      className="ms-Persona-coin ms-Persona--size48 coin-72"
+      size={13}
+    >
+      <div
+        className="ms-Persona-imageArea imageArea-441"
+        style={undefined}
+      >
+        <div
+          aria-hidden="true"
+          className="ms-Persona-initials initials-474"
+          style={undefined}
+        >
+          <span>
+            A
+          </span>
+        </div>
+        <div
+          className="ms-Image ms-Persona-image image-443"
+          style={
+            Object {
+              "height": 48,
+              "width": 48,
+            }
+          }
+        >
+          <img
+            alt=""
+            className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+            onError={[Function]}
+            onLoad={[Function]}
+            role={undefined}
+            src={undefined}
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="ms-Persona-details details-206"
+    >
+      <div
+        className="ms-Persona-primaryText primaryText-440"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          Annie
+        </div>
+      </div>
+      <div
+        className="ms-Persona-secondaryText secondaryText-431"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          Designer
+        </div>
+      </div>
+      <div
+        className="ms-Persona-tertiaryText tertiaryText-209"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          In a meeting
+        </div>
+      </div>
+      <div
+        className="ms-Persona-optionalText optionalText-210"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          Available at 4:00pm
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="ms-Persona ms-Persona--size48 root-439"
+    size={13}
+    style={undefined}
+  >
+    <div
+      className="ms-Persona-coin ms-Persona--size48 coin-72"
+      size={13}
+    >
+      <div
+        className="ms-Persona-imageArea imageArea-441"
+        style={undefined}
+      >
+        <div
+          aria-hidden="true"
+          className="ms-Persona-initials initials-474"
+          style={undefined}
+        >
+          <span>
+            AL
+          </span>
+        </div>
+        <div
+          className="ms-Image ms-Persona-image image-443"
+          style={
+            Object {
+              "height": 48,
+              "width": 48,
+            }
+          }
+        >
+          <img
+            alt=""
+            className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+            onError={[Function]}
+            onLoad={[Function]}
+            role={undefined}
+            src={undefined}
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="ms-Persona-details details-206"
+    >
+      <div
+        className="ms-Persona-primaryText primaryText-440"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          Annie Lindqvist
+        </div>
+      </div>
+      <div
+        className="ms-Persona-secondaryText secondaryText-431"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          Designer
+        </div>
+      </div>
+      <div
+        className="ms-Persona-tertiaryText tertiaryText-209"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          In a meeting
+        </div>
+      </div>
+      <div
+        className="ms-Persona-optionalText optionalText-210"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          Available at 4:00pm
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="ms-Persona ms-Persona--size48 root-439"
+    size={13}
+    style={undefined}
+  >
+    <div
+      className="ms-Persona-coin ms-Persona--size48 coin-72"
+      size={13}
+    >
+      <div
+        className="ms-Persona-imageArea imageArea-441"
+        style={undefined}
+      >
+        <div
+          aria-hidden="true"
+          className="ms-Persona-initials initials-474"
+          style={undefined}
+        >
+          <span>
+            AL
+          </span>
+        </div>
+        <div
+          className="ms-Image ms-Persona-image image-443"
+          style={
+            Object {
+              "height": 48,
+              "width": 48,
+            }
+          }
+        >
+          <img
+            alt=""
+            className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+            onError={[Function]}
+            onLoad={[Function]}
+            role={undefined}
+            src={undefined}
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="ms-Persona-details details-206"
+    >
+      <div
+        className="ms-Persona-primaryText primaryText-440"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          Annie Boyl Lindqvist
+        </div>
+      </div>
+      <div
+        className="ms-Persona-secondaryText secondaryText-431"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          Designer
+        </div>
+      </div>
+      <div
+        className="ms-Persona-tertiaryText tertiaryText-209"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          In a meeting
+        </div>
+      </div>
+      <div
+        className="ms-Persona-optionalText optionalText-210"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          Available at 4:00pm
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="ms-Persona ms-Persona--size48 root-439"
+    size={13}
+    style={undefined}
+  >
+    <div
+      className="ms-Persona-coin ms-Persona--size48 coin-72"
+      size={13}
+    >
+      <div
+        className="ms-Persona-imageArea imageArea-441"
+        style={undefined}
+      >
+        <div
+          aria-hidden="true"
+          className="ms-Persona-initials initials-475"
+          style={undefined}
+        >
+          <span>
+            A
+          </span>
+        </div>
+        <div
+          className="ms-Image ms-Persona-image image-443"
+          style={
+            Object {
+              "height": 48,
+              "width": 48,
+            }
+          }
+        >
+          <img
+            alt=""
+            className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+            onError={[Function]}
+            onLoad={[Function]}
+            role={undefined}
+            src={undefined}
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="ms-Persona-details details-206"
+    >
+      <div
+        className="ms-Persona-primaryText primaryText-440"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          Annie Boyl Carrie Lindqvist
+        </div>
+      </div>
+      <div
+        className="ms-Persona-secondaryText secondaryText-431"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          Designer
+        </div>
+      </div>
+      <div
+        className="ms-Persona-tertiaryText tertiaryText-209"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          In a meeting
+        </div>
+      </div>
+      <div
+        className="ms-Persona-optionalText optionalText-210"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          Available at 4:00pm
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="ms-Persona ms-Persona--size48 root-439"
+    size={13}
+    style={undefined}
+  >
+    <div
+      className="ms-Persona-coin ms-Persona--size48 coin-72"
+      size={13}
+    >
+      <div
+        className="ms-Persona-imageArea imageArea-441"
+        style={undefined}
+      >
+        <div
+          aria-hidden="true"
+          className="ms-Persona-initials initials-476"
+          style={undefined}
+        >
+          <i
+            aria-hidden={true}
+            className="root-366"
+            data-icon-name="Contact"
+            role="presentation"
+          >
+            
+          </i>
+        </div>
+        <div
+          className="ms-Image ms-Persona-image image-443"
+          style={
+            Object {
+              "height": 48,
+              "width": 48,
+            }
+          }
+        >
+          <img
+            alt=""
+            className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+            onError={[Function]}
+            onLoad={[Function]}
+            role={undefined}
+            src={undefined}
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="ms-Persona-details details-206"
+    >
+      <div
+        className="ms-Persona-primaryText primaryText-440"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          +1 (555) 123-4567 X4567
+        </div>
+      </div>
+      <div
+        className="ms-Persona-secondaryText secondaryText-431"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          Designer
+        </div>
+      </div>
+      <div
+        className="ms-Persona-tertiaryText tertiaryText-209"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          In a meeting
+        </div>
+      </div>
+      <div
+        className="ms-Persona-optionalText optionalText-210"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          Available at 4:00pm
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="ms-Persona ms-Persona--size48 root-439"
+    size={13}
+    style={undefined}
+  >
+    <div
+      className="ms-Persona-coin ms-Persona--size48 coin-72"
+      size={13}
+    >
+      <div
+        className="ms-Persona-imageArea imageArea-441"
+        style={undefined}
+      >
+        <div
+          aria-hidden="true"
+          className="ms-Persona-initials initials-476"
+          style={undefined}
+        >
+          <span>
+            1X
+          </span>
+        </div>
+        <div
+          className="ms-Image ms-Persona-image image-443"
+          style={
+            Object {
+              "height": 48,
+              "width": 48,
+            }
+          }
+        >
+          <img
+            alt=""
+            className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+            onError={[Function]}
+            onLoad={[Function]}
+            role={undefined}
+            src={undefined}
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="ms-Persona-details details-206"
+    >
+      <div
+        className="ms-Persona-primaryText primaryText-440"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          +1 (555) 123-4567 X4567
+        </div>
+      </div>
+      <div
+        className="ms-Persona-secondaryText secondaryText-431"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          Designer
+        </div>
+      </div>
+      <div
+        className="ms-Persona-tertiaryText tertiaryText-209"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          In a meeting
+        </div>
+      </div>
+      <div
+        className="ms-Persona-optionalText optionalText-210"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          Available at 4:00pm
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="ms-Persona ms-Persona--size48 root-439"
+    size={13}
+    style={undefined}
+  >
+    <div
+      className="ms-Persona-coin ms-Persona--size48 coin-72"
+      size={13}
+    >
+      <div
+        className="ms-Persona-imageArea imageArea-441"
+        style={undefined}
+      >
+        <div
+          aria-hidden="true"
+          className="ms-Persona-initials initials-477"
+          style={undefined}
+        >
+          <i
+            aria-hidden={true}
+            className="root-366"
+            data-icon-name="Contact"
+            role="presentation"
+          >
+            
+          </i>
+        </div>
+        <div
+          className="ms-Image ms-Persona-image image-443"
+          style={
+            Object {
+              "height": 48,
+              "width": 48,
+            }
+          }
+        >
+          <img
+            alt=""
+            className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+            onError={[Function]}
+            onLoad={[Function]}
+            role={undefined}
+            src={undefined}
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="ms-Persona-details details-206"
+    >
+      <div
+        className="ms-Persona-primaryText primaryText-440"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          宋智洋
+        </div>
+      </div>
+      <div
+        className="ms-Persona-secondaryText secondaryText-431"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          Designer
+        </div>
+      </div>
+      <div
+        className="ms-Persona-tertiaryText tertiaryText-209"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          In a meeting
+        </div>
+      </div>
+      <div
+        className="ms-Persona-optionalText optionalText-210"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          Available at 4:00pm
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="ms-Persona ms-Persona--size48 root-439"
+    size={13}
+    style={undefined}
+  >
+    <div
+      className="ms-Persona-coin ms-Persona--size48 coin-72"
+      size={13}
+    >
+      <div
+        className="ms-Persona-imageArea imageArea-441"
+        style={undefined}
+      >
+        <div
+          aria-hidden="true"
+          className="ms-Persona-initials initials-478"
+          style={undefined}
+        >
+          <i
+            aria-hidden={true}
+            className="root-366"
+            data-icon-name="Contact"
+            role="presentation"
+          >
+            
+          </i>
+        </div>
+        <div
+          className="ms-Image ms-Persona-image image-443"
+          style={
+            Object {
+              "height": 48,
+              "width": 48,
+            }
+          }
+        >
+          <img
+            alt=""
+            className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+            onError={[Function]}
+            onLoad={[Function]}
+            role={undefined}
+            src={undefined}
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="ms-Persona-details details-206"
+    >
+      <div
+        className="ms-Persona-primaryText primaryText-440"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          남궁 성종
+        </div>
+      </div>
+      <div
+        className="ms-Persona-secondaryText secondaryText-431"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          Designer
+        </div>
+      </div>
+      <div
+        className="ms-Persona-tertiaryText tertiaryText-209"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          In a meeting
+        </div>
+      </div>
+      <div
+        className="ms-Persona-optionalText optionalText-210"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          Available at 4:00pm
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="ms-Persona ms-Persona--size48 root-439"
+    size={13}
+    style={undefined}
+  >
+    <div
+      className="ms-Persona-coin ms-Persona--size48 coin-72"
+      size={13}
+    >
+      <div
+        className="ms-Persona-imageArea imageArea-441"
+        style={undefined}
+      >
+        <div
+          aria-hidden="true"
+          className="ms-Persona-initials initials-479"
+          style={undefined}
+        >
+          <i
+            aria-hidden={true}
+            className="root-366"
+            data-icon-name="Contact"
+            role="presentation"
+          >
+            
+          </i>
+        </div>
+        <div
+          className="ms-Image ms-Persona-image image-443"
+          style={
+            Object {
+              "height": 48,
+              "width": 48,
+            }
+          }
+        >
+          <img
+            alt=""
+            className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+            onError={[Function]}
+            onLoad={[Function]}
+            role={undefined}
+            src={undefined}
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="ms-Persona-details details-206"
+    >
+      <div
+        className="ms-Persona-primaryText primaryText-440"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          خسرو رحیمی
+        </div>
+      </div>
+      <div
+        className="ms-Persona-secondaryText secondaryText-431"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          Designer
+        </div>
+      </div>
+      <div
+        className="ms-Persona-tertiaryText tertiaryText-209"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          In a meeting
+        </div>
+      </div>
+      <div
+        className="ms-Persona-optionalText optionalText-210"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          Available at 4:00pm
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="ms-Persona ms-Persona--size48 root-439"
+    size={13}
+    style={undefined}
+  >
+    <div
+      className="ms-Persona-coin ms-Persona--size48 coin-72"
+      size={13}
+    >
+      <div
+        className="ms-Persona-imageArea imageArea-441"
+        style={undefined}
+      >
+        <div
+          aria-hidden="true"
+          className="ms-Persona-initials initials-480"
+          style={undefined}
+        >
+          <span>
+            MS
+          </span>
+        </div>
+        <div
+          className="ms-Image ms-Persona-image image-443"
+          style={
+            Object {
+              "height": 48,
+              "width": 48,
+            }
+          }
+        >
+          <img
+            alt=""
+            className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+            onError={[Function]}
+            onLoad={[Function]}
+            role={undefined}
+            src={undefined}
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="ms-Persona-details details-206"
+    >
+      <div
+        className="ms-Persona-primaryText primaryText-440"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          Maor Sharett
+        </div>
+      </div>
+      <div
+        className="ms-Persona-secondaryText secondaryText-431"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          Designer
+        </div>
+      </div>
+      <div
+        className="ms-Persona-tertiaryText tertiaryText-209"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          In a meeting
+        </div>
+      </div>
+      <div
+        className="ms-Persona-optionalText optionalText-210"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          Available at 4:00pm
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="ms-Persona ms-Persona--size48 root-439"
+    size={13}
+    style={undefined}
+  >
+    <div
+      className="ms-Persona-coin ms-Persona--size48 coin-72"
+      size={13}
+    >
+      <div
+        className="ms-Persona-imageArea imageArea-441"
+        style={undefined}
+      >
+        <div
+          aria-hidden="true"
+          className="ms-Persona-initials initials-481"
+          style={undefined}
+        >
+          <span>
+            MS
+          </span>
+        </div>
+        <div
+          className="ms-Image ms-Persona-image image-443"
+          style={
+            Object {
+              "height": 48,
+              "width": 48,
+            }
+          }
+        >
+          <img
+            alt=""
+            className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+            onError={[Function]}
+            onLoad={[Function]}
+            role={undefined}
+            src={undefined}
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="ms-Persona-details details-206"
+    >
+      <div
+        className="ms-Persona-primaryText primaryText-440"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          Maor Sharett
+        </div>
+      </div>
+      <div
+        className="ms-Persona-secondaryText secondaryText-431"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          Designer
+        </div>
+      </div>
+      <div
+        className="ms-Persona-tertiaryText tertiaryText-209"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          In a meeting
+        </div>
+      </div>
+      <div
+        className="ms-Persona-optionalText optionalText-210"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          Available at 4:00pm
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

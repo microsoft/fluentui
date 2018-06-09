@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders SearchBox.Disabled.Example.tsx correctly 1`] = `
+<div
+  className="ms-SearchBoxExample"
+>
+  <div
+    className="ms-SearchBox is-disabled root-517"
+    onFocusCapture={[Function]}
+  >
+    <div
+      className="ms-SearchBox-iconContainer iconContainer-518"
+      onClick={[Function]}
+    >
+      <i
+        aria-hidden={true}
+        className="ms-SearchBox-icon icon-323"
+        data-icon-name="Search"
+        role="presentation"
+      >
+        
+      </i>
+    </div>
+    <input
+      aria-label="Search"
+      className="ms-SearchBox-field field-519"
+      disabled={true}
+      id="SearchBox0"
+      onChange={[Function]}
+      onInput={[Function]}
+      onKeyDown={[Function]}
+      placeholder="Search"
+      value=""
+    />
+  </div>
+  <div
+    className="ms-SearchBox is-disabled is-underlined root-520"
+    onFocusCapture={[Function]}
+  >
+    <div
+      className="ms-SearchBox-iconContainer iconContainer-518"
+      onClick={[Function]}
+    >
+      <i
+        aria-hidden={true}
+        className="ms-SearchBox-icon icon-323"
+        data-icon-name="Search"
+        role="presentation"
+      >
+        
+      </i>
+    </div>
+    <input
+      aria-label="Search"
+      className="ms-SearchBox-field field-519"
+      disabled={true}
+      id="SearchBox1"
+      onChange={[Function]}
+      onInput={[Function]}
+      onKeyDown={[Function]}
+      placeholder="Search"
+      value=""
+    />
+  </div>
+</div>
+`;

@@ -1,0 +1,122 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correctly 1`] = `
+<div
+  className="ms-PersonaExample"
+>
+  <div
+    className={undefined}
+  >
+    Custom functional element in place of persona coin's image
+  </div>
+  <div
+    className="ms-Persona ms-Persona--size72 ms-Persona--online root-446"
+    size={14}
+    style={
+      Object {
+        "height": 72,
+        "minWidth": 72,
+      }
+    }
+  >
+    <div
+      className="ms-Persona-coin ms-Persona--size72 coin-72"
+      size={14}
+    >
+      <div
+        className="ms-Persona-imageArea imageArea-450"
+        style={
+          Object {
+            "height": 72,
+            "width": 72,
+          }
+        }
+      >
+        <div
+          className="customExampleCoin"
+        >
+          <img
+            alt="Custom Coin Image"
+            height={72}
+            src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-male.png"
+            width={72}
+          />
+        </div>
+        <div
+          className="ms-Persona-presence presence-467"
+          style={
+            Object {
+              "height": "24px",
+              "width": "24px",
+            }
+          }
+        >
+          <i
+            aria-hidden={true}
+            className="ms-Persona-presenceIcon presenceIcon-456"
+            data-icon-name="SkypeCheck"
+            role="presentation"
+            style={
+              Object {
+                "fontSize": "12px",
+                "lineHeight": "24px",
+              }
+            }
+          >
+            
+          </i>
+        </div>
+      </div>
+    </div>
+    <div
+      className="ms-Persona-details details-206"
+    >
+      <div
+        className="ms-Persona-primaryText primaryText-447"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          Ted Randall
+        </div>
+      </div>
+      <div
+        className="ms-Persona-secondaryText secondaryText-448"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          Project Manager
+        </div>
+      </div>
+      <div
+        className="ms-Persona-tertiaryText tertiaryText-449"
+      />
+      <div
+        className="ms-Persona-optionalText optionalText-210"
+      >
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          Available at 4:00pm
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

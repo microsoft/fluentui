@@ -1,0 +1,129 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
+<div>
+  <div
+    aria-labelledby="ShapeColorPivot_rectangleRed"
+    role="tabitem"
+    style={
+      Object {
+        "background": "red",
+        "float": "left",
+        "height": 200,
+        "width": 100,
+      }
+    }
+  />
+  <div>
+    <div
+      aria-describedby={undefined}
+      aria-labelledby={undefined}
+      className="ms-FocusZone"
+      data-focuszone-id="FocusZone1"
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onMouseDownCapture={[Function]}
+      role="presentation"
+    >
+      <ul
+        className="ms-Pivot"
+        role="tablist"
+      >
+        <button
+          aria-describedby={undefined}
+          aria-label={undefined}
+          aria-labelledby={undefined}
+          aria-pressed={undefined}
+          aria-selected={true}
+          className="ms-Button ms-Button--action ms-Button--command ms-Pivot-link is-selected undefined root-113"
+          data-is-focusable={true}
+          disabled={undefined}
+          id="ShapeColorPivot_rectangleRed"
+          name="Rectangle red"
+          onClick={[Function]}
+          onKeyPress={[Function]}
+          role="tab"
+          type="button"
+        >
+          <div
+            className="ms-Button-flexContainer flexContainer-114"
+          >
+            <span
+              className="ms-Pivot-link-content"
+            >
+              <span
+                className="ms-Pivot-text"
+              >
+                 
+                Rectangle red
+              </span>
+            </span>
+          </div>
+        </button>
+        <button
+          aria-describedby={undefined}
+          aria-label={undefined}
+          aria-labelledby={undefined}
+          aria-pressed={undefined}
+          aria-selected={false}
+          className="ms-Button ms-Button--action ms-Button--command ms-Pivot-link root-113"
+          data-is-focusable={true}
+          disabled={undefined}
+          id="ShapeColorPivot_squareRed"
+          name="Square red"
+          onClick={[Function]}
+          onKeyPress={[Function]}
+          role="tab"
+          type="button"
+        >
+          <div
+            className="ms-Button-flexContainer flexContainer-114"
+          >
+            <span
+              className="ms-Pivot-link-content"
+            >
+              <span
+                className="ms-Pivot-text"
+              >
+                 
+                Square red
+              </span>
+            </span>
+          </div>
+        </button>
+        <button
+          aria-describedby={undefined}
+          aria-label={undefined}
+          aria-labelledby={undefined}
+          aria-pressed={undefined}
+          aria-selected={false}
+          className="ms-Button ms-Button--action ms-Button--command ms-Pivot-link root-113"
+          data-is-focusable={true}
+          disabled={undefined}
+          id="ShapeColorPivot_rectangleGreen"
+          name="Rectangle green"
+          onClick={[Function]}
+          onKeyPress={[Function]}
+          role="tab"
+          type="button"
+        >
+          <div
+            className="ms-Button-flexContainer flexContainer-114"
+          >
+            <span
+              className="ms-Pivot-link-content"
+            >
+              <span
+                className="ms-Pivot-text"
+              >
+                 
+                Rectangle green
+              </span>
+            </span>
+          </div>
+        </button>
+      </ul>
+    </div>
+  </div>
+</div>
+`;

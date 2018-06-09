@@ -1,0 +1,849 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 1`] = `
+<div>
+  <div
+    className="ms-DocumentCard ms-DocumentCard--actionable undefined"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    role="button"
+    style={undefined}
+    tabIndex={0}
+  >
+    <div
+      className="ms-DocumentCardPreview is-fileList undefined"
+      style={undefined}
+    >
+      <div>
+        <ul
+          className="ms-DocumentCardPreview-fileList"
+        >
+          <li>
+            <div
+              className="ms-Image ms-DocumentCardPreview-fileListIcon root-239"
+              style={
+                Object {
+                  "height": "16px",
+                  "width": "16px",
+                }
+              }
+            >
+              <img
+                alt=""
+                className="ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-240"
+                onError={[Function]}
+                onLoad={[Function]}
+                role="presentation"
+                src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/icon-ppt.png"
+              />
+            </div>
+            <a
+              href="http://bing.com"
+            >
+              2016 Conference Presentation
+            </a>
+          </li>
+          <li>
+            <div
+              className="ms-Image ms-DocumentCardPreview-fileListIcon root-239"
+              style={
+                Object {
+                  "height": "16px",
+                  "width": "16px",
+                }
+              }
+            >
+              <img
+                alt=""
+                className="ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-240"
+                onError={[Function]}
+                onLoad={[Function]}
+                role="presentation"
+                src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/icon-ppt.png"
+              />
+            </div>
+            <a
+              href="http://bing.com"
+            >
+              New Contoso Collaboration for Conference Presentation Draft
+            </a>
+          </li>
+          <li>
+            <div
+              className="ms-Image ms-DocumentCardPreview-fileListIcon root-239"
+              style={
+                Object {
+                  "height": "16px",
+                  "width": "16px",
+                }
+              }
+            >
+              <img
+                alt=""
+                className="ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-240"
+                onError={[Function]}
+                onLoad={[Function]}
+                role="presentation"
+                src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/icon-ppt.png"
+              />
+            </div>
+            <a
+              href="http://bing.com"
+            >
+              Spec Sheet for design
+            </a>
+          </li>
+        </ul>
+        <span
+          className="ms-DocumentCardPreview-fileListMore"
+        >
+          +3 more
+        </span>
+      </div>
+    </div>
+    <a
+      aria-label="Location, Marketing Documents"
+      className="ms-DocumentCardLocation"
+      href="http://microsoft.com"
+      onClick={undefined}
+    >
+      Marketing Documents
+    </a>
+    <div
+      className="ms-DocumentCardTitle"
+      title="6 files were uploaded"
+    >
+      6 files were uploaded
+    </div>
+    <div
+      className="ms-DocumentCardActivity ms-DocumentCardActivity--multiplePeople undefined"
+    >
+      <div
+        className="ms-DocumentCardActivity-avatars"
+      >
+        <div
+          className="ms-DocumentCardActivity-avatar"
+        >
+          <div
+            className="ms-Persona-coin ms-Persona--size32 coin-72"
+            role="persentation"
+            size={11}
+          >
+            <div
+              className="ms-Persona-imageArea imageArea-80"
+              style={undefined}
+            >
+              <div
+                aria-hidden="true"
+                className="ms-Persona-initials initials-306"
+                style={undefined}
+              >
+                <span>
+                  JH
+                </span>
+              </div>
+              <div
+                className="ms-Image ms-Persona-image image-83"
+                style={
+                  Object {
+                    "height": 32,
+                    "width": 32,
+                  }
+                }
+              >
+                <img
+                  alt=""
+                  className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+                  onError={[Function]}
+                  onLoad={[Function]}
+                  role={undefined}
+                  src=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="ms-DocumentCardActivity-avatar"
+        >
+          <div
+            className="ms-Persona-coin ms-Persona--size32 coin-72"
+            role="persentation"
+            size={11}
+          >
+            <div
+              className="ms-Persona-imageArea imageArea-80"
+              style={undefined}
+            >
+              <div
+                className="ms-Image ms-Persona-image image-83"
+                style={
+                  Object {
+                    "height": 32,
+                    "width": 32,
+                  }
+                }
+              >
+                <img
+                  alt=""
+                  className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+                  onError={[Function]}
+                  onLoad={[Function]}
+                  role={undefined}
+                  src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="ms-DocumentCardActivity-details"
+      >
+        <span
+          className="ms-DocumentCardActivity-name"
+        >
+          Annie Lindqvist +2
+        </span>
+        <span
+          className="ms-DocumentCardActivity-activity"
+        >
+          Created Feb 23, 2016
+        </span>
+      </div>
+    </div>
+    <div
+      className="ms-DocumentCardActions"
+    >
+      <div
+        className="ms-DocumentCardActions-action"
+      >
+        <button
+          aria-describedby={undefined}
+          aria-label="share action"
+          aria-labelledby={undefined}
+          aria-pressed={undefined}
+          className="ms-Button ms-Button--icon root-145"
+          data-is-focusable={true}
+          disabled={undefined}
+          onClick={[Function]}
+          type="button"
+        >
+          <div
+            className="ms-Button-flexContainer flexContainer-102"
+          >
+            <i
+              aria-hidden={true}
+              className="ms-Button-icon icon-109"
+              data-icon-name="Share"
+              role="presentation"
+            >
+              
+            </i>
+          </div>
+        </button>
+      </div>
+      <div
+        className="ms-DocumentCardActions-action"
+      >
+        <button
+          aria-describedby={undefined}
+          aria-label="pin action"
+          aria-labelledby={undefined}
+          aria-pressed={undefined}
+          className="ms-Button ms-Button--icon root-145"
+          data-is-focusable={true}
+          disabled={undefined}
+          onClick={[Function]}
+          type="button"
+        >
+          <div
+            className="ms-Button-flexContainer flexContainer-102"
+          >
+            <i
+              aria-hidden={true}
+              className="ms-Button-icon icon-147"
+              data-icon-name="Pin"
+              role="presentation"
+            >
+              
+            </i>
+          </div>
+        </button>
+      </div>
+      <div
+        className="ms-DocumentCardActions-action"
+      >
+        <button
+          aria-describedby={undefined}
+          aria-label="ringer action"
+          aria-labelledby={undefined}
+          aria-pressed={undefined}
+          className="ms-Button ms-Button--icon root-145"
+          data-is-focusable={true}
+          disabled={undefined}
+          onClick={[Function]}
+          type="button"
+        >
+          <div
+            className="ms-Button-flexContainer flexContainer-102"
+          >
+            <i
+              aria-hidden={true}
+              className="ms-Button-icon icon-308"
+              data-icon-name="Ringer"
+              role="presentation"
+            >
+              
+            </i>
+          </div>
+        </button>
+      </div>
+      <div
+        className="ms-DocumentCardActions-views"
+      >
+        <i
+          aria-hidden={true}
+          className="root-55"
+          data-icon-name="View"
+          role="presentation"
+        >
+          
+        </i>
+        432
+      </div>
+    </div>
+  </div>
+  <p />
+  Card Logo, Text Preview CardStatus are used on below examples.
+  <p />
+  <div
+    className="ms-DocumentCard ms-DocumentCard--actionable undefined"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    role="link"
+    style={undefined}
+    tabIndex={0}
+  >
+    <div
+      className="ms-DocumentCardLogo"
+    >
+      <i
+        aria-hidden={true}
+        className="root-309"
+        data-icon-name="OutlookLogo"
+        role="presentation"
+      >
+        
+      </i>
+    </div>
+    <div
+      className="ms-ConversationTile-TitlePreviewArea"
+    >
+      <div
+        className="ms-DocumentCardTitle"
+        title="Conversation about anual report a very long long name, Title should be truncated on the long name."
+      >
+        Conversation about anual report a very long long name, Title should be truncated on the long name.
+      </div>
+      <div
+        className="ms-DocumentCardTitle"
+        title="This is the email content preview, please feel free to give feedback. SharePoint Site Acitivity add conversation card! This is the last."
+      >
+        This is the email content preview, please feel free to give feedback. SharePoint Site Acitivity add conversation card! This is the last.
+      </div>
+      <div
+        className="ms-DocumentCardStatus"
+      >
+        <i
+          aria-hidden={true}
+          className="root-310"
+          data-icon-name="attach"
+          role="presentation"
+        >
+          
+        </i>
+         3 Attachments
+      </div>
+    </div>
+    <div
+      className="ms-DocumentCardActivity ms-DocumentCardActivity--multiplePeople undefined"
+    >
+      <div
+        className="ms-DocumentCardActivity-avatars"
+      >
+        <div
+          className="ms-DocumentCardActivity-avatar"
+        >
+          <div
+            className="ms-Persona-coin ms-Persona--size32 coin-72"
+            role="persentation"
+            size={11}
+          >
+            <div
+              className="ms-Persona-imageArea imageArea-80"
+              style={undefined}
+            >
+              <div
+                aria-hidden="true"
+                className="ms-Persona-initials initials-306"
+                style={undefined}
+              >
+                <span>
+                  JH
+                </span>
+              </div>
+              <div
+                className="ms-Image ms-Persona-image image-83"
+                style={
+                  Object {
+                    "height": 32,
+                    "width": 32,
+                  }
+                }
+              >
+                <img
+                  alt=""
+                  className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+                  onError={[Function]}
+                  onLoad={[Function]}
+                  role={undefined}
+                  src=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="ms-DocumentCardActivity-avatar"
+        >
+          <div
+            className="ms-Persona-coin ms-Persona--size32 coin-72"
+            role="persentation"
+            size={11}
+          >
+            <div
+              className="ms-Persona-imageArea imageArea-80"
+              style={undefined}
+            >
+              <div
+                className="ms-Image ms-Persona-image image-83"
+                style={
+                  Object {
+                    "height": 32,
+                    "width": 32,
+                  }
+                }
+              >
+                <img
+                  alt=""
+                  className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+                  onError={[Function]}
+                  onLoad={[Function]}
+                  role={undefined}
+                  src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="ms-DocumentCardActivity-details"
+      >
+        <span
+          className="ms-DocumentCardActivity-name"
+        >
+          Annie Lindqvist +2
+        </span>
+        <span
+          className="ms-DocumentCardActivity-activity"
+        >
+          Sent March 13, 2018
+        </span>
+      </div>
+    </div>
+  </div>
+  <p />
+  <div
+    className="ms-DocumentCard ms-DocumentCard--actionable undefined"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    role="link"
+    style={undefined}
+    tabIndex={0}
+  >
+    <div
+      className="ms-DocumentCardLogo"
+    >
+      <i
+        aria-hidden={true}
+        className="root-309"
+        data-icon-name="OutlookLogo"
+        role="presentation"
+      >
+        
+      </i>
+    </div>
+    <div
+      className="ms-ConversationTile-TitlePreviewArea"
+    >
+      <div
+        className="ms-DocumentCardTitle"
+        title="Conversation about anual Report"
+      >
+        Conversation about anual Report
+      </div>
+      <div
+        className="ms-DocumentCardTitle"
+        title="This is the email content preview, help."
+      >
+        This is the email content preview, help.
+      </div>
+      <div
+        className="ms-DocumentCardStatus"
+      >
+        <i
+          aria-hidden={true}
+          className="root-310"
+          data-icon-name="attach"
+          role="presentation"
+        >
+          
+        </i>
+         3 Attachments
+      </div>
+    </div>
+    <div
+      className="ms-DocumentCardActivity ms-DocumentCardActivity--multiplePeople undefined"
+    >
+      <div
+        className="ms-DocumentCardActivity-avatars"
+      >
+        <div
+          className="ms-DocumentCardActivity-avatar"
+        >
+          <div
+            className="ms-Persona-coin ms-Persona--size32 coin-72"
+            role="persentation"
+            size={11}
+          >
+            <div
+              className="ms-Persona-imageArea imageArea-80"
+              style={undefined}
+            >
+              <div
+                aria-hidden="true"
+                className="ms-Persona-initials initials-306"
+                style={undefined}
+              >
+                <span>
+                  JH
+                </span>
+              </div>
+              <div
+                className="ms-Image ms-Persona-image image-83"
+                style={
+                  Object {
+                    "height": 32,
+                    "width": 32,
+                  }
+                }
+              >
+                <img
+                  alt=""
+                  className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+                  onError={[Function]}
+                  onLoad={[Function]}
+                  role={undefined}
+                  src=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="ms-DocumentCardActivity-avatar"
+        >
+          <div
+            className="ms-Persona-coin ms-Persona--size32 coin-72"
+            role="persentation"
+            size={11}
+          >
+            <div
+              className="ms-Persona-imageArea imageArea-80"
+              style={undefined}
+            >
+              <div
+                className="ms-Image ms-Persona-image image-83"
+                style={
+                  Object {
+                    "height": 32,
+                    "width": 32,
+                  }
+                }
+              >
+                <img
+                  alt=""
+                  className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+                  onError={[Function]}
+                  onLoad={[Function]}
+                  role={undefined}
+                  src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="ms-DocumentCardActivity-details"
+      >
+        <span
+          className="ms-DocumentCardActivity-name"
+        >
+          Annie Lindqvist +2
+        </span>
+        <span
+          className="ms-DocumentCardActivity-activity"
+        >
+          Sent March 13, 2018
+        </span>
+      </div>
+    </div>
+  </div>
+  <p />
+  <div
+    className="ms-DocumentCard ms-DocumentCard--actionable undefined"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    role="link"
+    style={undefined}
+    tabIndex={0}
+  >
+    <div
+      className="ms-DocumentCardLogo"
+    >
+      <i
+        aria-hidden={true}
+        className="root-309"
+        data-icon-name="OutlookLogo"
+        role="presentation"
+      >
+        
+      </i>
+    </div>
+    <div
+      className="ms-ConversationTile-TitlePreviewArea"
+    >
+      <div
+        className="ms-DocumentCardTitle"
+        title="Conversation about anual report"
+      >
+        Conversation about anual report
+      </div>
+      <div
+        className="ms-DocumentCardTitle"
+        title="This is the email content preview, please feel free to give!"
+      >
+        This is the email content preview, please feel free to give!
+      </div>
+    </div>
+    <div
+      className="ms-DocumentCardActivity ms-DocumentCardActivity--multiplePeople undefined"
+    >
+      <div
+        className="ms-DocumentCardActivity-avatars"
+      >
+        <div
+          className="ms-DocumentCardActivity-avatar"
+        >
+          <div
+            className="ms-Persona-coin ms-Persona--size32 coin-72"
+            role="persentation"
+            size={11}
+          >
+            <div
+              className="ms-Persona-imageArea imageArea-80"
+              style={undefined}
+            >
+              <div
+                aria-hidden="true"
+                className="ms-Persona-initials initials-306"
+                style={undefined}
+              >
+                <span>
+                  JH
+                </span>
+              </div>
+              <div
+                className="ms-Image ms-Persona-image image-83"
+                style={
+                  Object {
+                    "height": 32,
+                    "width": 32,
+                  }
+                }
+              >
+                <img
+                  alt=""
+                  className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+                  onError={[Function]}
+                  onLoad={[Function]}
+                  role={undefined}
+                  src=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="ms-DocumentCardActivity-avatar"
+        >
+          <div
+            className="ms-Persona-coin ms-Persona--size32 coin-72"
+            role="persentation"
+            size={11}
+          >
+            <div
+              className="ms-Persona-imageArea imageArea-80"
+              style={undefined}
+            >
+              <div
+                className="ms-Image ms-Persona-image image-83"
+                style={
+                  Object {
+                    "height": 32,
+                    "width": 32,
+                  }
+                }
+              >
+                <img
+                  alt=""
+                  className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+                  onError={[Function]}
+                  onLoad={[Function]}
+                  role={undefined}
+                  src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="ms-DocumentCardActivity-details"
+      >
+        <span
+          className="ms-DocumentCardActivity-name"
+        >
+          Annie Lindqvist +2
+        </span>
+        <span
+          className="ms-DocumentCardActivity-activity"
+        >
+          Sent March 13, 2018
+        </span>
+      </div>
+    </div>
+  </div>
+  <p />
+  <div
+    className="ms-DocumentCard ms-DocumentCard--actionable undefined"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    role="link"
+    style={undefined}
+    tabIndex={0}
+  >
+    <div
+      className="ms-DocumentCardPreview"
+      style={undefined}
+    >
+      <div
+        className="ms-DocumentCardPreview-iconContainer"
+        style={
+          Object {
+            "height": 196,
+            "width": 318,
+          }
+        }
+      >
+        <i
+          aria-hidden={true}
+          className="root-303"
+          data-icon-name="OpenFile"
+          role="presentation"
+        >
+          
+        </i>
+      </div>
+    </div>
+    <div
+      className="ms-DocumentCard-details"
+    >
+      <div
+        className="ms-DocumentCardTitle"
+        title="View and share files"
+      >
+        View and share files
+      </div>
+      <div
+        className="ms-DocumentCardActivity"
+      >
+        <div
+          className="ms-DocumentCardActivity-avatars"
+        >
+          <div
+            className="ms-DocumentCardActivity-avatar"
+          >
+            <div
+              className="ms-Persona-coin ms-Persona--size32 coin-72"
+              role="persentation"
+              size={11}
+            >
+              <div
+                className="ms-Persona-imageArea imageArea-80"
+                style={undefined}
+              >
+                <div
+                  className="ms-Image ms-Persona-image image-83"
+                  style={
+                    Object {
+                      "height": 32,
+                      "width": 32,
+                    }
+                  }
+                >
+                  <img
+                    alt=""
+                    className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+                    onError={[Function]}
+                    onLoad={[Function]}
+                    role={undefined}
+                    src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="ms-DocumentCardActivity-details"
+        >
+          <span
+            className="ms-DocumentCardActivity-name"
+          >
+            Kat Larrson
+          </span>
+          <span
+            className="ms-DocumentCardActivity-activity"
+          >
+            Created a few minutes ago
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

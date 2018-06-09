@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] = `
+<div
+  aria-describedby={undefined}
+  aria-labelledby={undefined}
+  className="ms-FocusZone ms-OverflowSet"
+  data-focuszone-id="FocusZone0"
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseDownCapture={[Function]}
+  role="menubar"
+>
+  <div
+    className="ms-OverflowSet-item"
+  >
+    <button
+      aria-disabled={undefined}
+      className="ms-Link root-324"
+      onClick={[Function]}
+    >
+      Link 1
+    </button>
+  </div>
+  <div
+    className="ms-OverflowSet-item"
+  >
+    <button
+      aria-disabled={undefined}
+      className="ms-Link root-324"
+      onClick={[Function]}
+    >
+      Link 2
+    </button>
+  </div>
+  <div
+    className="ms-OverflowSet-item"
+  >
+    <button
+      aria-disabled={undefined}
+      className="ms-Link root-324"
+      onClick={[Function]}
+    >
+      Link 3
+    </button>
+  </div>
+  <div
+    className="ms-OverflowSet-overflowButton"
+  >
+    <button
+      aria-describedby={undefined}
+      aria-expanded={false}
+      aria-haspopup={true}
+      aria-label={undefined}
+      aria-labelledby={undefined}
+      aria-owns={null}
+      aria-pressed={undefined}
+      className="ms-Button ms-Button--icon root-145"
+      data-is-focusable={true}
+      disabled={undefined}
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      type="button"
+    >
+      <div
+        className="ms-Button-flexContainer flexContainer-102"
+      >
+        <i
+          aria-hidden={true}
+          className="ms-Button-menuIcon menuIcon-143"
+          data-icon-name="More"
+          role="presentation"
+        >
+          
+        </i>
+      </div>
+    </button>
+  </div>
+</div>
+`;
