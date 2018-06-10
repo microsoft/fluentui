@@ -8,6 +8,8 @@
       "./src/common/_semanticSlots.scss",
       "./src/common/_themeOverrides.scss"
     ],
-    "dist/css": ["office-ui-fabric-core/dist/css/**/*"]
+    "dist/css": ["office-ui-fabric-core/dist/css/**/*"],
+    "lib": ["./src/**/docs/*", "./src/docs/*"],
+    "lib-commonjs": ["./src/**/docs/*", "./src/docs/*"]
   }
 }

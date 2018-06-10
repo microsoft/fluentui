@@ -33,7 +33,11 @@ export const DemoPage: React.StatelessComponent<IDemoPageProps> = componentPageP
             ))}
         </div>
       }
-      propertiesTables={<PropertiesTableSet sources={componentPageProps.propertiesTablesSources} />}
+      propertiesTables={
+        componentPageProps.propertiesTablesSources && (
+          <PropertiesTableSet sources={componentPageProps.propertiesTablesSources} />
+        )
+      }
       overview={<PageMarkdown>{componentPageProps.overview}</PageMarkdown>}
       bestPractices={
         componentPageProps.bestPractices ? <PageMarkdown>{componentPageProps.bestPractices}</PageMarkdown> : undefined
