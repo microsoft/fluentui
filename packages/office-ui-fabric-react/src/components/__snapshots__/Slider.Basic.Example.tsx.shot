@@ -11,7 +11,24 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
       className="ms-Slider ms-Slider-enabled undefined ms-Slider-row undefined"
     >
       <label
-        className="ms-Label root-89"
+        className=
+            ms-Label
+            {
+              box-shadow: none;
+              box-sizing: border-box;
+              color: #333333;
+              display: block;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              overflow-wrap: break-word;
+              padding-bottom: 5px;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 5px;
+              word-wrap: break-word;
+            }
         htmlFor="Slider0"
       >
         Basic example:
@@ -64,7 +81,25 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
           </div>
         </button>
         <label
-          className="ms-Label ms-Slider-value root-89"
+          className=
+              ms-Label
+              ms-Slider-value
+              {
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #333333;
+                display: block;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                overflow-wrap: break-word;
+                padding-bottom: 5px;
+                padding-left: 0;
+                padding-right: 0;
+                padding-top: 5px;
+                word-wrap: break-word;
+              }
         >
           2
         </label>
@@ -74,7 +109,24 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
       className="ms-Slider ms-Slider-disabled undefined ms-Slider-row undefined"
     >
       <label
-        className="ms-Label root-89"
+        className=
+            ms-Label
+            {
+              box-shadow: none;
+              box-sizing: border-box;
+              color: #333333;
+              display: block;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              overflow-wrap: break-word;
+              padding-bottom: 5px;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 5px;
+              word-wrap: break-word;
+            }
         htmlFor="Slider1"
       >
         Disabled example:
@@ -124,7 +176,25 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
           </div>
         </button>
         <label
-          className="ms-Label ms-Slider-value root-89"
+          className=
+              ms-Label
+              ms-Slider-value
+              {
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #333333;
+                display: block;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                overflow-wrap: break-word;
+                padding-bottom: 5px;
+                padding-left: 0;
+                padding-right: 0;
+                padding-top: 5px;
+                word-wrap: break-word;
+              }
         >
           300
         </label>
@@ -134,7 +204,24 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
       className="ms-Slider ms-Slider-enabled undefined ms-Slider-row undefined"
     >
       <label
-        className="ms-Label root-89"
+        className=
+            ms-Label
+            {
+              box-shadow: none;
+              box-sizing: border-box;
+              color: #333333;
+              display: block;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              overflow-wrap: break-word;
+              padding-bottom: 5px;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 5px;
+              word-wrap: break-word;
+            }
         htmlFor="Slider2"
       >
         Controlled example:
@@ -187,7 +274,25 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
           </div>
         </button>
         <label
-          className="ms-Label ms-Slider-value root-89"
+          className=
+              ms-Label
+              ms-Slider-value
+              {
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #333333;
+                display: block;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                overflow-wrap: break-word;
+                padding-bottom: 5px;
+                padding-left: 0;
+                padding-right: 0;
+                padding-top: 5px;
+                word-wrap: break-word;
+              }
         >
           0
         </label>
@@ -204,7 +309,24 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
         className="ms-Slider ms-Slider-enabled undefined ms-Slider-column undefined"
       >
         <label
-          className="ms-Label root-89"
+          className=
+              ms-Label
+              {
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #333333;
+                display: block;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                overflow-wrap: break-word;
+                padding-bottom: 5px;
+                padding-left: 0;
+                padding-right: 0;
+                padding-top: 5px;
+                word-wrap: break-word;
+              }
           htmlFor="Slider3"
         >
           Basic example:
@@ -257,7 +379,25 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
             </div>
           </button>
           <label
-            className="ms-Label ms-Slider-value root-89"
+            className=
+                ms-Label
+                ms-Slider-value
+                {
+                  box-shadow: none;
+                  box-sizing: border-box;
+                  color: #333333;
+                  display: block;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  overflow-wrap: break-word;
+                  padding-bottom: 5px;
+                  padding-left: 0;
+                  padding-right: 0;
+                  padding-top: 5px;
+                  word-wrap: break-word;
+                }
           >
             2
           </label>
@@ -271,7 +411,24 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
         className="ms-Slider ms-Slider-disabled undefined ms-Slider-column undefined"
       >
         <label
-          className="ms-Label root-89"
+          className=
+              ms-Label
+              {
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #333333;
+                display: block;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                overflow-wrap: break-word;
+                padding-bottom: 5px;
+                padding-left: 0;
+                padding-right: 0;
+                padding-top: 5px;
+                word-wrap: break-word;
+              }
           htmlFor="Slider4"
         >
           Disabled example:
@@ -321,7 +478,25 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
             </div>
           </button>
           <label
-            className="ms-Label ms-Slider-value root-89"
+            className=
+                ms-Label
+                ms-Slider-value
+                {
+                  box-shadow: none;
+                  box-sizing: border-box;
+                  color: #333333;
+                  display: block;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  overflow-wrap: break-word;
+                  padding-bottom: 5px;
+                  padding-left: 0;
+                  padding-right: 0;
+                  padding-top: 5px;
+                  word-wrap: break-word;
+                }
           >
             300
           </label>
@@ -335,7 +510,24 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
         className="ms-Slider ms-Slider-enabled undefined ms-Slider-column undefined"
       >
         <label
-          className="ms-Label root-89"
+          className=
+              ms-Label
+              {
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #333333;
+                display: block;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                overflow-wrap: break-word;
+                padding-bottom: 5px;
+                padding-left: 0;
+                padding-right: 0;
+                padding-top: 5px;
+                word-wrap: break-word;
+              }
           htmlFor="Slider5"
         >
           Controlled example:
@@ -388,7 +580,25 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
             </div>
           </button>
           <label
-            className="ms-Label ms-Slider-value root-89"
+            className=
+                ms-Label
+                ms-Slider-value
+                {
+                  box-shadow: none;
+                  box-sizing: border-box;
+                  color: #333333;
+                  display: block;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  overflow-wrap: break-word;
+                  padding-bottom: 5px;
+                  padding-left: 0;
+                  padding-right: 0;
+                  padding-top: 5px;
+                  word-wrap: break-word;
+                }
           >
             0
           </label>

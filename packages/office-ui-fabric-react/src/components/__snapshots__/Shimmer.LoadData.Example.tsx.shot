@@ -5,17 +5,77 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
   className={undefined}
 >
   <div
-    className="ms-Toggle is-enabled root-285"
+    className=
+        ms-Toggle
+        is-enabled
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 8px;
+        }
   >
     <div
-      className="ms-Toggle-innerContainer container-286"
+      className=
+          ms-Toggle-innerContainer
+          {
+            display: inline-flex;
+            position: relative;
+          }
     >
       <button
         aria-disabled={undefined}
         aria-label={undefined}
         aria-pressed={false}
         checked={false}
-        className="ms-Toggle-background pill-287"
+        className=
+            ms-Toggle-background
+            {
+              align-items: center;
+              background: #ffffff;
+              border-color: #666666;
+              border-radius: 1em;
+              border-style: solid;
+              border-width: 1px;
+              box-sizing: border-box;
+              cursor: pointer;
+              display: flex;
+              font-size: 20px;
+              height: 1em;
+              outline: transparent;
+              padding-bottom: 0;
+              padding-left: .2em;
+              padding-right: .2em;
+              padding-top: 0;
+              position: relative;
+              transition: all 0.1s ease;
+              width: 2.2em;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: -2px;
+              content: "";
+              left: -2px;
+              outline: 1px solid #666666;
+              position: absolute;
+              right: -2px;
+              top: -2px;
+              z-index: 1;
+            }
+            &:hover {
+              border-color: #212121;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+              border-color: Highlight;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+            }
         data-is-focusable={true}
         disabled={undefined}
         id="Toggle0"
@@ -24,11 +84,52 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
         type="button"
       >
         <div
-          className="ms-Toggle-thumb thumb-288"
+          className=
+              ms-Toggle-thumb
+              {
+                background-color: #212121;
+                border-color: transparent;
+                border-radius: .5em;
+                border-style: solid;
+                border-width: .28em;
+                box-sizing: border-box;
+                height: .5em;
+                transition: all 0.1s ease;
+                width: .5em;
+              }
         />
       </button>
       <label
-        className="ms-Label ms-Toggle-stateText text-290"
+        className=
+            ms-Label
+            ms-Toggle-stateText
+            {
+              box-shadow: none;
+              box-sizing: border-box;
+              color: #333333;
+              display: block;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              overflow-wrap: break-word;
+              padding-bottom: 5px;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 5px;
+              word-wrap: break-word;
+            }
+            && {
+              margin-bottom: 0;
+              margin-left: 10px;
+              margin-right: 10px;
+              margin-top: 0;
+              padding-bottom: 0;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 0;
+              user-select: none;
+            }
         htmlFor="Toggle0"
       >
         Toggle to load content
@@ -36,10 +137,42 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
     </div>
   </div>
   <div
-    className="ms-Shimmer-container root-527"
+    className=
+        ms-Shimmer-container
+        {
+          height: auto;
+          position: relative;
+        }
   >
     <div
-      className="ms-Shimmer-shimmerWrapper shimmerWrapper-528"
+      className=
+          ms-Shimmer-shimmerWrapper
+          {
+            animation-direction: normal;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
+            animation-timing-function: ease-in-out;
+            background: #f4f4f4
+                              linear-gradient(
+                                to right,
+                                #f4f4f4 0%,
+                                #eaeaea 50%,
+                                #f4f4f4 100%)
+                              0 0 / 90% 100%
+                              no-repeat;
+            transition: opacity 200ms;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            background: WindowText
+                                  linear-gradient(
+                                    to right,
+                                    transparent 0%,
+                                    Window 50%,
+                                    transparent 100%)
+                                  0 0 / 90% 100%
+                                  no-repeat;
+          }
       style={
         Object {
           "width": "100%",
@@ -47,7 +180,13 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
       }
     >
       <div
-        className="ms-ShimmerElementsGroup-root root-530"
+        className=
+            ms-ShimmerElementsGroup-root
+            {
+              align-items: center;
+              display: flex;
+              flex-wrap: nowrap;
+            }
         style={
           Object {
             "width": "auto",
@@ -55,7 +194,23 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
         }
       >
         <div
-          className="ms-ShimmerLine-root root-531"
+          className=
+              ms-ShimmerLine-root
+              {
+                border-bottom-style: solid;
+                border-color: #ffffff;
+                border-top-style: solid;
+                border-width: 0px;
+                box-sizing: content-box;
+                height: 16px;
+                position: relative;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+              }
+              @media screen and (-ms-high-contrast: active){& > * {
+                fill: Window;
+              }
           style={
             Object {
               "minWidth": "auto",
@@ -64,7 +219,14 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
           }
         >
           <svg
-            className="ms-ShimmerLine-topLeftCorner topLeftCorner-532"
+            className=
+                ms-ShimmerLine-topLeftCorner
+                {
+                  fill: #ffffff;
+                  left: 0;
+                  position: absolute;
+                  top: 0;
+                }
             height="2"
             width="2"
           >
@@ -73,7 +235,14 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
             />
           </svg>
           <svg
-            className="ms-ShimmerLine-topRightCorner topRightCorner-533"
+            className=
+                ms-ShimmerLine-topRightCorner
+                {
+                  fill: #ffffff;
+                  position: absolute;
+                  right: 0;
+                  top: 0;
+                }
             height="2"
             width="2"
           >
@@ -82,7 +251,14 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
             />
           </svg>
           <svg
-            className="ms-ShimmerLine-bottomRightCorner bottomRightCorner-534"
+            className=
+                ms-ShimmerLine-bottomRightCorner
+                {
+                  bottom: 0;
+                  fill: #ffffff;
+                  position: absolute;
+                  right: 0;
+                }
             height="2"
             width="2"
           >
@@ -91,7 +267,14 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
             />
           </svg>
           <svg
-            className="ms-ShimmerLine-bottomLeftCorner bottomLeftCorner-535"
+            className=
+                ms-ShimmerLine-bottomLeftCorner
+                {
+                  bottom: 0;
+                  fill: #ffffff;
+                  left: 0;
+                  position: absolute;
+                }
             height="2"
             width="2"
           >
@@ -103,7 +286,20 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
       </div>
     </div>
     <div
-      className="ms-Shimmer-dataWrapper dataWrapper-529"
+      className=
+          ms-Shimmer-dataWrapper
+          {
+            background-color: transparent;
+            background: none;
+            border: none;
+            bottom: 0;
+            left: 0;
+            opacity: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transition: opacity 200ms;
+          }
     >
       <div
         style={
@@ -127,17 +323,77 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
     />
   </div>
   <div
-    className="ms-Toggle is-enabled root-285"
+    className=
+        ms-Toggle
+        is-enabled
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 8px;
+        }
   >
     <div
-      className="ms-Toggle-innerContainer container-286"
+      className=
+          ms-Toggle-innerContainer
+          {
+            display: inline-flex;
+            position: relative;
+          }
     >
       <button
         aria-disabled={undefined}
         aria-label={undefined}
         aria-pressed={false}
         checked={false}
-        className="ms-Toggle-background pill-287"
+        className=
+            ms-Toggle-background
+            {
+              align-items: center;
+              background: #ffffff;
+              border-color: #666666;
+              border-radius: 1em;
+              border-style: solid;
+              border-width: 1px;
+              box-sizing: border-box;
+              cursor: pointer;
+              display: flex;
+              font-size: 20px;
+              height: 1em;
+              outline: transparent;
+              padding-bottom: 0;
+              padding-left: .2em;
+              padding-right: .2em;
+              padding-top: 0;
+              position: relative;
+              transition: all 0.1s ease;
+              width: 2.2em;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: -2px;
+              content: "";
+              left: -2px;
+              outline: 1px solid #666666;
+              position: absolute;
+              right: -2px;
+              top: -2px;
+              z-index: 1;
+            }
+            &:hover {
+              border-color: #212121;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+              border-color: Highlight;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+            }
         data-is-focusable={true}
         disabled={undefined}
         id="Toggle1"
@@ -146,11 +402,52 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
         type="button"
       >
         <div
-          className="ms-Toggle-thumb thumb-288"
+          className=
+              ms-Toggle-thumb
+              {
+                background-color: #212121;
+                border-color: transparent;
+                border-radius: .5em;
+                border-style: solid;
+                border-width: .28em;
+                box-sizing: border-box;
+                height: .5em;
+                transition: all 0.1s ease;
+                width: .5em;
+              }
         />
       </button>
       <label
-        className="ms-Label ms-Toggle-stateText text-290"
+        className=
+            ms-Label
+            ms-Toggle-stateText
+            {
+              box-shadow: none;
+              box-sizing: border-box;
+              color: #333333;
+              display: block;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              overflow-wrap: break-word;
+              padding-bottom: 5px;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 5px;
+              word-wrap: break-word;
+            }
+            && {
+              margin-bottom: 0;
+              margin-left: 10px;
+              margin-right: 10px;
+              margin-top: 0;
+              padding-bottom: 0;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 0;
+              user-select: none;
+            }
         htmlFor="Toggle1"
       >
         Toggle to load content
@@ -158,11 +455,43 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
     </div>
   </div>
   <div
-    className="ms-Shimmer-container root-527"
+    className=
+        ms-Shimmer-container
+        {
+          height: auto;
+          position: relative;
+        }
     width={300}
   >
     <div
-      className="ms-Shimmer-shimmerWrapper shimmerWrapper-528"
+      className=
+          ms-Shimmer-shimmerWrapper
+          {
+            animation-direction: normal;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
+            animation-timing-function: ease-in-out;
+            background: #f4f4f4
+                              linear-gradient(
+                                to right,
+                                #f4f4f4 0%,
+                                #eaeaea 50%,
+                                #f4f4f4 100%)
+                              0 0 / 90% 100%
+                              no-repeat;
+            transition: opacity 200ms;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            background: WindowText
+                                  linear-gradient(
+                                    to right,
+                                    transparent 0%,
+                                    Window 50%,
+                                    transparent 100%)
+                                  0 0 / 90% 100%
+                                  no-repeat;
+          }
       style={
         Object {
           "width": 300,
@@ -177,7 +506,13 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
         }
       >
         <div
-          className="ms-ShimmerElementsGroup-root root-530"
+          className=
+              ms-ShimmerElementsGroup-root
+              {
+                align-items: center;
+                display: flex;
+                flex-wrap: nowrap;
+              }
           style={
             Object {
               "width": "auto",
@@ -185,10 +520,33 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
           }
         >
           <div
-            className="ms-ShimmerCircle-root root-549"
+            className=
+                ms-ShimmerCircle-root
+                {
+                  border-bottom-style: solid;
+                  border-bottom-width: 0px;
+                  border-color: #ffffff;
+                  border-top-style: solid;
+                  border-top-width: 0px;
+                  box-sizing: content-box;
+                  height: 40px;
+                  min-width: 40px;
+                  width: 40px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-color: Window;
+                }
           >
             <svg
-              className="ms-ShimmerCircle-svg svg-537"
+              className=
+                  ms-ShimmerCircle-svg
+                  {
+                    display: block;
+                    fill: #ffffff;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    fill: Window;
+                  }
               height={40}
               viewBox="0 0 10 10"
               width={40}
@@ -199,7 +557,22 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
             </svg>
           </div>
           <div
-            className="ms-ShimmerGap-root root-545"
+            className=
+                ms-ShimmerGap-root
+                {
+                  background-color: #ffffff;
+                  border-bottom-style: solid;
+                  border-bottom-width: 0px;
+                  border-color: #ffffff;
+                  border-top-style: solid;
+                  border-top-width: 0px;
+                  box-sizing: content-box;
+                  height: 40px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  background-color: Window;
+                  border-color: Window;
+                }
             style={
               Object {
                 "minWidth": "16px",
@@ -209,7 +582,13 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
           />
         </div>
         <div
-          className="ms-ShimmerElementsGroup-root root-546"
+          className=
+              ms-ShimmerElementsGroup-root
+              {
+                align-items: center;
+                display: flex;
+                flex-wrap: wrap;
+              }
           style={
             Object {
               "width": "100%",
@@ -217,7 +596,24 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
           }
         >
           <div
-            className="ms-ShimmerLine-root root-552"
+            className=
+                ms-ShimmerLine-root
+                {
+                  border-bottom-style: solid;
+                  border-bottom-width: 0px;
+                  border-color: #ffffff;
+                  border-top-style: solid;
+                  border-top-width: 10px;
+                  box-sizing: content-box;
+                  height: 10px;
+                  position: relative;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-color: Window;
+                }
+                @media screen and (-ms-high-contrast: active){& > * {
+                  fill: Window;
+                }
             style={
               Object {
                 "minWidth": "auto",
@@ -226,7 +622,14 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
             }
           >
             <svg
-              className="ms-ShimmerLine-topLeftCorner topLeftCorner-532"
+              className=
+                  ms-ShimmerLine-topLeftCorner
+                  {
+                    fill: #ffffff;
+                    left: 0;
+                    position: absolute;
+                    top: 0;
+                  }
               height="2"
               width="2"
             >
@@ -235,7 +638,14 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
               />
             </svg>
             <svg
-              className="ms-ShimmerLine-topRightCorner topRightCorner-533"
+              className=
+                  ms-ShimmerLine-topRightCorner
+                  {
+                    fill: #ffffff;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                  }
               height="2"
               width="2"
             >
@@ -244,7 +654,14 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
               />
             </svg>
             <svg
-              className="ms-ShimmerLine-bottomRightCorner bottomRightCorner-534"
+              className=
+                  ms-ShimmerLine-bottomRightCorner
+                  {
+                    bottom: 0;
+                    fill: #ffffff;
+                    position: absolute;
+                    right: 0;
+                  }
               height="2"
               width="2"
             >
@@ -253,7 +670,14 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
               />
             </svg>
             <svg
-              className="ms-ShimmerLine-bottomLeftCorner bottomLeftCorner-535"
+              className=
+                  ms-ShimmerLine-bottomLeftCorner
+                  {
+                    bottom: 0;
+                    fill: #ffffff;
+                    left: 0;
+                    position: absolute;
+                  }
               height="2"
               width="2"
             >
@@ -263,7 +687,24 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
             </svg>
           </div>
           <div
-            className="ms-ShimmerLine-root root-553"
+            className=
+                ms-ShimmerLine-root
+                {
+                  border-bottom-style: solid;
+                  border-bottom-width: 6px;
+                  border-color: #ffffff;
+                  border-top-style: solid;
+                  border-top-width: 6px;
+                  box-sizing: content-box;
+                  height: 8px;
+                  position: relative;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-color: Window;
+                }
+                @media screen and (-ms-high-contrast: active){& > * {
+                  fill: Window;
+                }
             style={
               Object {
                 "minWidth": "auto",
@@ -272,7 +713,14 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
             }
           >
             <svg
-              className="ms-ShimmerLine-topLeftCorner topLeftCorner-532"
+              className=
+                  ms-ShimmerLine-topLeftCorner
+                  {
+                    fill: #ffffff;
+                    left: 0;
+                    position: absolute;
+                    top: 0;
+                  }
               height="2"
               width="2"
             >
@@ -281,7 +729,14 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
               />
             </svg>
             <svg
-              className="ms-ShimmerLine-topRightCorner topRightCorner-533"
+              className=
+                  ms-ShimmerLine-topRightCorner
+                  {
+                    fill: #ffffff;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                  }
               height="2"
               width="2"
             >
@@ -290,7 +745,14 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
               />
             </svg>
             <svg
-              className="ms-ShimmerLine-bottomRightCorner bottomRightCorner-534"
+              className=
+                  ms-ShimmerLine-bottomRightCorner
+                  {
+                    bottom: 0;
+                    fill: #ffffff;
+                    position: absolute;
+                    right: 0;
+                  }
               height="2"
               width="2"
             >
@@ -299,7 +761,14 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
               />
             </svg>
             <svg
-              className="ms-ShimmerLine-bottomLeftCorner bottomLeftCorner-535"
+              className=
+                  ms-ShimmerLine-bottomLeftCorner
+                  {
+                    bottom: 0;
+                    fill: #ffffff;
+                    left: 0;
+                    position: absolute;
+                  }
               height="2"
               width="2"
             >
@@ -309,7 +778,22 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
             </svg>
           </div>
           <div
-            className="ms-ShimmerGap-root root-548"
+            className=
+                ms-ShimmerGap-root
+                {
+                  background-color: #ffffff;
+                  border-bottom-style: solid;
+                  border-bottom-width: 0px;
+                  border-color: #ffffff;
+                  border-top-style: solid;
+                  border-top-width: 0px;
+                  box-sizing: content-box;
+                  height: 20px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  background-color: Window;
+                  border-color: Window;
+                }
             style={
               Object {
                 "minWidth": "auto",
@@ -321,29 +805,118 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
       </div>
     </div>
     <div
-      className="ms-Shimmer-dataWrapper dataWrapper-529"
+      className=
+          ms-Shimmer-dataWrapper
+          {
+            background-color: transparent;
+            background: none;
+            border: none;
+            bottom: 0;
+            left: 0;
+            opacity: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transition: opacity 200ms;
+          }
     >
       <div
-        className="ms-Persona ms-Persona--size40 ms-Persona--away root-430"
+        className=
+            ms-Persona
+            ms-Persona--size40
+            ms-Persona--away
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              align-items: center;
+              box-shadow: none;
+              box-sizing: border-box;
+              color: #333333;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              height: 40px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              min-width: 40px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+            }
+            & .contextualHost {
+              display: none;
+            }
+            &:hover $primaryText {
+              color: #212121;
+            }
         size={12}
         style={undefined}
       >
         <div
-          className="ms-Persona-coin ms-Persona--size40 coin-72"
+          className=
+              ms-Persona-coin
+              ms-Persona--size40
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+              }
           size={12}
         >
           <div
-            className="ms-Persona-imageArea imageArea-432"
+            className=
+                ms-Persona-imageArea
+                {
+                  flex: 0 0 auto;
+                  height: 40px;
+                  position: relative;
+                  text-align: center;
+                  width: 40px;
+                }
             style={undefined}
           >
             <div
               aria-hidden="true"
-              className="ms-Persona-initials initials-554"
+              className=
+                  ms-Persona-initials
+                  {
+                    background-color: #2D89EF;
+                    border-radius: 50%;
+                    color: #ffffff;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 40px;
+                    line-height: 40px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    -ms-high-contrast-adjust: none;
+                    background-color: Window !important;
+                    border: 1px solid WindowText;
+                    box-sizing: border-box;
+                    color: WindowText;
+                  }
               style={undefined}
             >
               <i
                 aria-hidden={true}
-                className="root-366"
+                className=
+
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      display: inline-block;
+                      font-family: "FabricMDL2Icons-0";
+                      font-style: normal;
+                      font-weight: normal;
+                      speak: none;
+                    }
                 data-icon-name="Contact"
                 role="presentation"
               >
@@ -351,7 +924,21 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
               </i>
             </div>
             <div
-              className="ms-Image ms-Persona-image image-435"
+              className=
+                  ms-Image
+                  ms-Persona-image
+                  {
+                    border-radius: 50%;
+                    border: 0px;
+                    height: 40px;
+                    left: 0px;
+                    margin-right: 10px;
+                    overflow: hidden;
+                    perspective: 1px;
+                    position: absolute;
+                    top: 0px;
+                    width: 40px;
+                  }
               style={
                 Object {
                   "height": 40,
@@ -361,7 +948,22 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
             >
               <img
                 alt=""
-                className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+                className=
+                    ms-Image-image
+                    ms-Image-image--cover
+                    ms-Image-image--portrait
+                    is-notLoaded
+                    is-fadeIn
+                    {
+                      display: block;
+                      height: auto;
+                      left: 50% /* @noflip */;
+                      opacity: 0;
+                      position: absolute;
+                      top: 50%;
+                      transform: translate(-50%,-50%);
+                      width: 100%;
+                    }
                 onError={[Function]}
                 onLoad={[Function]}
                 role={undefined}
@@ -369,12 +971,51 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
               />
             </div>
             <div
-              className="ms-Persona-presence presence-436"
+              className=
+                  ms-Persona-presence
+                  {
+                    -ms-high-contrast-adjust: none;
+                    background-clip: content-box;
+                    background-color: #FCD116;
+                    border-radius: 50%;
+                    border: 2px solid #ffffff;
+                    bottom: -2px;
+                    box-sizing: content-box;
+                    height: 12px;
+                    position: absolute;
+                    right: -2px;
+                    text-align: center;
+                    top: auto;
+                    width: 12px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    background-color: WindowText;
+                    border-color: Window;
+                  }
               style={undefined}
             >
               <i
                 aria-hidden={true}
-                className="ms-Persona-presenceIcon presenceIcon-438"
+                className=
+                    ms-Persona-presenceIcon
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #ffffff;
+                      display: inline-block;
+                      font-family: "FabricMDL2Icons";
+                      font-size: 6px;
+                      font-style: normal;
+                      font-weight: normal;
+                      left: 1px;
+                      line-height: 12px;
+                      position: relative;
+                      speak: none;
+                      vertical-align: top;
+                    }
+                    @media screen and (-ms-high-contrast: active){& {
+                      color: Window;
+                    }
                 data-icon-name="SkypeClock"
                 role="presentation"
                 style={undefined}
@@ -385,21 +1026,72 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
           </div>
         </div>
         <div
-          className="ms-Persona-details details-206"
+          className=
+              ms-Persona-details
+              {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                min-width: 0px;
+                padding-bottom: 0;
+                padding-left: 16px;
+                padding-right: 24px;
+                padding-top: 0;
+                text-align: left;
+                width: 100%;
+              }
         >
           <div
-            className="ms-Persona-primaryText primaryText-207"
+            className=
+                ms-Persona-primaryText
+                {
+                  color: #333333;
+                  font-size: 14px;
+                  font-weight: 400;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
           >
             
           </div>
           <div
-            className="ms-Persona-secondaryText secondaryText-431"
+            className=
+                ms-Persona-secondaryText
+                {
+                  color: #666666;
+                  font-size: 12px;
+                  font-weight: 400;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
           />
           <div
-            className="ms-Persona-tertiaryText tertiaryText-209"
+            className=
+                ms-Persona-tertiaryText
+                {
+                  color: #666666;
+                  display: none;
+                  font-size: 12px;
+                  font-weight: 400;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
           />
           <div
-            className="ms-Persona-optionalText optionalText-210"
+            className=
+                ms-Persona-optionalText
+                {
+                  color: #666666;
+                  display: none;
+                  font-size: 12px;
+                  font-weight: 400;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
           />
         </div>
       </div>

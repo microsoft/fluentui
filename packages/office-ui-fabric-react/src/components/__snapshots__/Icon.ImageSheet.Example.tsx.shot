@@ -4,12 +4,23 @@ exports[`Component Examples renders Icon.ImageSheet.Example.tsx correctly 1`] = 
 <div>
   <div
     aria-hidden={true}
-    className="ms-Icon-imageContainer ms-IconImageSheetExample-one root-334"
+    className=
+        ms-Icon-imageContainer
+        ms-IconImageSheetExample-one
+        {
+          display: inline-block;
+          overflow: hidden;
+        }
     data-icon-name={undefined}
     role="presentation"
   >
     <div
-      className="ms-Image ms-IconImageSheetExample-one-image root-239"
+      className=
+          ms-Image
+          ms-IconImageSheetExample-one-image
+          {
+            overflow: hidden;
+          }
       style={
         Object {
           "height": undefined,
@@ -19,7 +30,15 @@ exports[`Component Examples renders Icon.ImageSheet.Example.tsx correctly 1`] = 
     >
       <img
         alt={undefined}
-        className="ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-301"
+        className=
+            ms-Image-image
+            ms-Image-image--portrait
+            is-notLoaded
+            is-fadeIn
+            {
+              display: block;
+              opacity: 0;
+            }
         onError={[Function]}
         onLoad={[Function]}
         role={undefined}
@@ -29,12 +48,23 @@ exports[`Component Examples renders Icon.ImageSheet.Example.tsx correctly 1`] = 
   </div>
   <div
     aria-hidden={true}
-    className="ms-Icon-imageContainer ms-IconImageSheetExample-check root-334"
+    className=
+        ms-Icon-imageContainer
+        ms-IconImageSheetExample-check
+        {
+          display: inline-block;
+          overflow: hidden;
+        }
     data-icon-name={undefined}
     role="presentation"
   >
     <div
-      className="ms-Image ms-IconImageSheetExample-check-image root-239"
+      className=
+          ms-Image
+          ms-IconImageSheetExample-check-image
+          {
+            overflow: hidden;
+          }
       style={
         Object {
           "height": undefined,
@@ -44,7 +74,15 @@ exports[`Component Examples renders Icon.ImageSheet.Example.tsx correctly 1`] = 
     >
       <img
         alt={undefined}
-        className="ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-301"
+        className=
+            ms-Image-image
+            ms-Image-image--portrait
+            is-notLoaded
+            is-fadeIn
+            {
+              display: block;
+              opacity: 0;
+            }
         onError={[Function]}
         onLoad={[Function]}
         role={undefined}
@@ -54,12 +92,23 @@ exports[`Component Examples renders Icon.ImageSheet.Example.tsx correctly 1`] = 
   </div>
   <div
     aria-hidden={true}
-    className="ms-Icon-imageContainer ms-IconImageSheetExample-lock root-334"
+    className=
+        ms-Icon-imageContainer
+        ms-IconImageSheetExample-lock
+        {
+          display: inline-block;
+          overflow: hidden;
+        }
     data-icon-name={undefined}
     role="presentation"
   >
     <div
-      className="ms-Image ms-IconImageSheetExample-lock-image root-239"
+      className=
+          ms-Image
+          ms-IconImageSheetExample-lock-image
+          {
+            overflow: hidden;
+          }
       style={
         Object {
           "height": undefined,
@@ -69,7 +118,15 @@ exports[`Component Examples renders Icon.ImageSheet.Example.tsx correctly 1`] = 
     >
       <img
         alt={undefined}
-        className="ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-301"
+        className=
+            ms-Image-image
+            ms-Image-image--portrait
+            is-notLoaded
+            is-fadeIn
+            {
+              display: block;
+              opacity: 0;
+            }
         onError={[Function]}
         onLoad={[Function]}
         role={undefined}

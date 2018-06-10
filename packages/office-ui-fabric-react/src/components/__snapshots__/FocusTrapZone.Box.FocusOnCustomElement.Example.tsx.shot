@@ -7,20 +7,103 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
     aria-label={undefined}
     aria-labelledby={undefined}
     aria-pressed={undefined}
-    className="ms-Button ms-Button--default root-119"
+    className=
+        ms-Button
+        ms-Button--default
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          background-color: #f4f4f4;
+          border-radius: 0px;
+          border: 1px solid transparent;
+          box-sizing: border-box;
+          color: #333333;
+          cursor: pointer;
+          display: inline-block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: 32px;
+          min-width: 80px;
+          outline: transparent;
+          padding-bottom: 0;
+          padding-left: 16px;
+          padding-right: 16px;
+          padding-top: 0;
+          position: relative;
+          text-align: center;
+          text-decoration: none;
+          user-select: none;
+          vertical-align: top;
+        }
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: 0px;
+          content: "";
+          left: 0px;
+          outline: 1px solid #666666;
+          position: absolute;
+          right: 0px;
+          top: 0px;
+          z-index: 1;
+        }
+        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          border: none;
+          bottom: -2px;
+          left: -2px;
+          outline-color: ButtonText;
+          right: -2px;
+          top: -2px;
+        }
+        &:hover {
+          background-color: #eaeaea;
+          color: #000000;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover {
+          border-color: Highlight;
+          color: Highlight;
+        }
+        &:active {
+          background-color: #c8c8c8;
+          color: #212121;
+        }
     data-is-focusable={true}
     disabled={undefined}
     onClick={[Function]}
     type="button"
   >
     <div
-      className="ms-Button-flexContainer flexContainer-102"
+      className=
+          ms-Button-flexContainer
+          {
+            align-items: center;
+            display: flex;
+            flex-wrap: nowrap;
+            height: 100%;
+            justify-content: center;
+          }
     >
       <div
-        className="ms-Button-textContainer textContainer-103"
+        className=
+            ms-Button-textContainer
+            {
+              flex-grow: 1;
+            }
       >
         <div
-          className="ms-Button-label label-120"
+          className=
+              ms-Button-label
+              {
+                font-weight: 600;
+                line-height: 100%;
+                margin-bottom: 0;
+                margin-left: 4px;
+                margin-right: 4px;
+                margin-top: 0;
+              }
           id="id__0"
         >
           Go to Trap Zone
@@ -39,7 +122,24 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
           className="ms-TextField-wrapper"
         >
           <label
-            className="ms-Label root-89"
+            className=
+                ms-Label
+                {
+                  box-shadow: none;
+                  box-sizing: border-box;
+                  color: #333333;
+                  display: block;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  overflow-wrap: break-word;
+                  padding-bottom: 5px;
+                  padding-left: 0;
+                  padding-right: 0;
+                  padding-top: 5px;
+                  word-wrap: break-word;
+                }
             htmlFor="TextField3"
           >
             Default TextField
@@ -66,7 +166,54 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
       </div>
       <button
         aria-disabled={undefined}
-        className="ms-Link root-324"
+        className=
+            ms-Link
+            {
+              background-color: transparent;
+              background: none;
+              border: none;
+              color: #0078d4;
+              cursor: pointer;
+              display: inline;
+              font-size: inherit;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              outline: transparent;
+              overflow: inherit;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+              text-align: left;
+              text-overflow: inherit;
+              user-select: text;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: 1px;
+              content: "";
+              left: 1px;
+              outline: 1px solid #666666;
+              position: absolute;
+              right: 1px;
+              top: 1px;
+              z-index: 1;
+            }
+            &:active, &:hover, &:active:hover {
+              color: #004578;
+            }
+            @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+              text-decoration: underline;
+            }
+            &:focus {
+              color: #0078d4;
+            }
         onClick={[Function]}
       >
         Hyperlink inside FocusTrapZone
@@ -77,23 +224,101 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
         className="shouldFocus input"
       >
         <div
-          className="ms-Toggle is-enabled root-285"
+          className=
+              ms-Toggle
+              is-enabled
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                margin-bottom: 8px;
+              }
         >
           <label
-            className="ms-Label ms-Toggle-label label-230"
+            className=
+                ms-Label
+                ms-Toggle-label
+                {
+                  box-shadow: none;
+                  box-sizing: border-box;
+                  color: #333333;
+                  display: block;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  overflow-wrap: break-word;
+                  padding-bottom: 5px;
+                  padding-left: 0;
+                  padding-right: 0;
+                  padding-top: 5px;
+                  word-wrap: break-word;
+                }
             htmlFor="Toggle5"
           >
             Focus Trap Zone
           </label>
           <div
-            className="ms-Toggle-innerContainer container-286"
+            className=
+                ms-Toggle-innerContainer
+                {
+                  display: inline-flex;
+                  position: relative;
+                }
           >
             <button
               aria-disabled={undefined}
               aria-label="Focus Trap Zone"
               aria-pressed={false}
               checked={false}
-              className="ms-Toggle-background pill-287"
+              className=
+                  ms-Toggle-background
+                  {
+                    align-items: center;
+                    background: #ffffff;
+                    border-color: #666666;
+                    border-radius: 1em;
+                    border-style: solid;
+                    border-width: 1px;
+                    box-sizing: border-box;
+                    cursor: pointer;
+                    display: flex;
+                    font-size: 20px;
+                    height: 1em;
+                    outline: transparent;
+                    padding-bottom: 0;
+                    padding-left: .2em;
+                    padding-right: .2em;
+                    padding-top: 0;
+                    position: relative;
+                    transition: all 0.1s ease;
+                    width: 2.2em;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: -2px;
+                    content: "";
+                    left: -2px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: -2px;
+                    top: -2px;
+                    z-index: 1;
+                  }
+                  &:hover {
+                    border-color: #212121;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+                    border-color: Highlight;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                  }
               data-is-focusable={true}
               disabled={undefined}
               id="Toggle5"
@@ -102,11 +327,52 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
               type="button"
             >
               <div
-                className="ms-Toggle-thumb thumb-288"
+                className=
+                    ms-Toggle-thumb
+                    {
+                      background-color: #212121;
+                      border-color: transparent;
+                      border-radius: .5em;
+                      border-style: solid;
+                      border-width: .28em;
+                      box-sizing: border-box;
+                      height: .5em;
+                      transition: all 0.1s ease;
+                      width: .5em;
+                    }
               />
             </button>
             <label
-              className="ms-Label ms-Toggle-stateText text-290"
+              className=
+                  ms-Label
+                  ms-Toggle-stateText
+                  {
+                    box-shadow: none;
+                    box-sizing: border-box;
+                    color: #333333;
+                    display: block;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    overflow-wrap: break-word;
+                    padding-bottom: 5px;
+                    padding-left: 0;
+                    padding-right: 0;
+                    padding-top: 5px;
+                    word-wrap: break-word;
+                  }
+                  && {
+                    margin-bottom: 0;
+                    margin-left: 10px;
+                    margin-right: 10px;
+                    margin-top: 0;
+                    padding-bottom: 0;
+                    padding-left: 0;
+                    padding-right: 0;
+                    padding-top: 0;
+                    user-select: none;
+                  }
               htmlFor="Toggle5"
             >
               Off

@@ -4,10 +4,14 @@ import * as renderer from 'react-test-renderer';
 import { resetIds } from '../Utilities';
 
 import * as DataUtil from '../utilities/exampleData';
+import * as mergeStylesSerializer from '@uifabric/jest-serializer-merge-styles';
 
 // Extend Jest Expect to allow us to map each component example to its own snapshot file.
 const snapshotsStateMap = new Map();
 const jestSnapshot = require('jest-snapshot');
+
+// Using this serializer makes sure we capture styling in snapshot output
+jestSnapshot.addSerializer(mergeStylesSerializer);
 
 expect.extend({
   toMatchSpecificSnapshot(received, snapshotFile) {

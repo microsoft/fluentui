@@ -6,7 +6,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
 >
   <div
     aria-label="Resize Group with an Overflow Set"
-    className="ms-ResizeGroup root-98"
+    className=
+        ms-ResizeGroup
+        {
+          display: block;
+          position: relative;
+        }
     role="tabpanel"
   >
     <div
@@ -36,28 +41,131 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-labelledby={undefined}
             aria-pressed={false}
             checked={false}
-            className="ms-Button ms-Button--default root-119"
+            className=
+                ms-Button
+                ms-Button--default
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  background-color: #f4f4f4;
+                  border-radius: 0px;
+                  border: 1px solid transparent;
+                  box-sizing: border-box;
+                  color: #333333;
+                  cursor: pointer;
+                  display: inline-block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  height: 32px;
+                  min-width: 80px;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 16px;
+                  padding-right: 16px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: top;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 0px;
+                  content: "";
+                  left: 0px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: 0px;
+                  top: 0px;
+                  z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  border: none;
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
+                }
+                &:hover {
+                  background-color: #eaeaea;
+                  color: #000000;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #c8c8c8;
+                  color: #212121;
+                }
             data-is-focusable={true}
             disabled={undefined}
             onClick={undefined}
             type="button"
           >
             <div
-              className="ms-Button-flexContainer flexContainer-102"
+              className=
+                  ms-Button-flexContainer
+                  {
+                    align-items: center;
+                    display: flex;
+                    flex-wrap: nowrap;
+                    height: 100%;
+                    justify-content: center;
+                  }
             >
               <i
                 aria-hidden={true}
-                className="ms-Button-icon icon-109"
+                className=
+                    ms-Button-icon
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      display: inline-block;
+                      flex-shrink: 0;
+                      font-family: "FabricMDL2Icons";
+                      font-size: 16px;
+                      font-style: normal;
+                      font-weight: normal;
+                      height: 16px;
+                      line-height: 16px;
+                      margin-bottom: 0;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                      margin-top: 0;
+                      speak: none;
+                      text-align: center;
+                      vertical-align: middle;
+                    }
                 data-icon-name="Add"
                 role="presentation"
               >
                 
               </i>
               <div
-                className="ms-Button-textContainer textContainer-103"
+                className=
+                    ms-Button-textContainer
+                    {
+                      flex-grow: 1;
+                    }
               >
                 <div
-                  className="ms-Button-label label-120"
+                  className=
+                      ms-Button-label
+                      {
+                        font-weight: 600;
+                        line-height: 100%;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                      }
                   id="id__1"
                 >
                   Item 0
@@ -75,28 +183,131 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-labelledby={undefined}
             aria-pressed={false}
             checked={false}
-            className="ms-Button ms-Button--default root-119"
+            className=
+                ms-Button
+                ms-Button--default
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  background-color: #f4f4f4;
+                  border-radius: 0px;
+                  border: 1px solid transparent;
+                  box-sizing: border-box;
+                  color: #333333;
+                  cursor: pointer;
+                  display: inline-block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  height: 32px;
+                  min-width: 80px;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 16px;
+                  padding-right: 16px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: top;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 0px;
+                  content: "";
+                  left: 0px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: 0px;
+                  top: 0px;
+                  z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  border: none;
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
+                }
+                &:hover {
+                  background-color: #eaeaea;
+                  color: #000000;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #c8c8c8;
+                  color: #212121;
+                }
             data-is-focusable={true}
             disabled={undefined}
             onClick={undefined}
             type="button"
           >
             <div
-              className="ms-Button-flexContainer flexContainer-102"
+              className=
+                  ms-Button-flexContainer
+                  {
+                    align-items: center;
+                    display: flex;
+                    flex-wrap: nowrap;
+                    height: 100%;
+                    justify-content: center;
+                  }
             >
               <i
                 aria-hidden={true}
-                className="ms-Button-icon icon-109"
+                className=
+                    ms-Button-icon
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      display: inline-block;
+                      flex-shrink: 0;
+                      font-family: "FabricMDL2Icons";
+                      font-size: 16px;
+                      font-style: normal;
+                      font-weight: normal;
+                      height: 16px;
+                      line-height: 16px;
+                      margin-bottom: 0;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                      margin-top: 0;
+                      speak: none;
+                      text-align: center;
+                      vertical-align: middle;
+                    }
                 data-icon-name="Share"
                 role="presentation"
               >
                 
               </i>
               <div
-                className="ms-Button-textContainer textContainer-103"
+                className=
+                    ms-Button-textContainer
+                    {
+                      flex-grow: 1;
+                    }
               >
                 <div
-                  className="ms-Button-label label-120"
+                  className=
+                      ms-Button-label
+                      {
+                        font-weight: 600;
+                        line-height: 100%;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                      }
                   id="id__4"
                 >
                   Item 1
@@ -114,28 +325,131 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-labelledby={undefined}
             aria-pressed={false}
             checked={false}
-            className="ms-Button ms-Button--default root-119"
+            className=
+                ms-Button
+                ms-Button--default
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  background-color: #f4f4f4;
+                  border-radius: 0px;
+                  border: 1px solid transparent;
+                  box-sizing: border-box;
+                  color: #333333;
+                  cursor: pointer;
+                  display: inline-block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  height: 32px;
+                  min-width: 80px;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 16px;
+                  padding-right: 16px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: top;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 0px;
+                  content: "";
+                  left: 0px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: 0px;
+                  top: 0px;
+                  z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  border: none;
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
+                }
+                &:hover {
+                  background-color: #eaeaea;
+                  color: #000000;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #c8c8c8;
+                  color: #212121;
+                }
             data-is-focusable={true}
             disabled={undefined}
             onClick={undefined}
             type="button"
           >
             <div
-              className="ms-Button-flexContainer flexContainer-102"
+              className=
+                  ms-Button-flexContainer
+                  {
+                    align-items: center;
+                    display: flex;
+                    flex-wrap: nowrap;
+                    height: 100%;
+                    justify-content: center;
+                  }
             >
               <i
                 aria-hidden={true}
-                className="ms-Button-icon icon-109"
+                className=
+                    ms-Button-icon
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      display: inline-block;
+                      flex-shrink: 0;
+                      font-family: "FabricMDL2Icons";
+                      font-size: 16px;
+                      font-style: normal;
+                      font-weight: normal;
+                      height: 16px;
+                      line-height: 16px;
+                      margin-bottom: 0;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                      margin-top: 0;
+                      speak: none;
+                      text-align: center;
+                      vertical-align: middle;
+                    }
                 data-icon-name="Upload"
                 role="presentation"
               >
                 
               </i>
               <div
-                className="ms-Button-textContainer textContainer-103"
+                className=
+                    ms-Button-textContainer
+                    {
+                      flex-grow: 1;
+                    }
               >
                 <div
-                  className="ms-Button-label label-120"
+                  className=
+                      ms-Button-label
+                      {
+                        font-weight: 600;
+                        line-height: 100%;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                      }
                   id="id__7"
                 >
                   Item 2
@@ -153,28 +467,131 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-labelledby={undefined}
             aria-pressed={false}
             checked={false}
-            className="ms-Button ms-Button--default root-119"
+            className=
+                ms-Button
+                ms-Button--default
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  background-color: #f4f4f4;
+                  border-radius: 0px;
+                  border: 1px solid transparent;
+                  box-sizing: border-box;
+                  color: #333333;
+                  cursor: pointer;
+                  display: inline-block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  height: 32px;
+                  min-width: 80px;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 16px;
+                  padding-right: 16px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: top;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 0px;
+                  content: "";
+                  left: 0px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: 0px;
+                  top: 0px;
+                  z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  border: none;
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
+                }
+                &:hover {
+                  background-color: #eaeaea;
+                  color: #000000;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #c8c8c8;
+                  color: #212121;
+                }
             data-is-focusable={true}
             disabled={undefined}
             onClick={undefined}
             type="button"
           >
             <div
-              className="ms-Button-flexContainer flexContainer-102"
+              className=
+                  ms-Button-flexContainer
+                  {
+                    align-items: center;
+                    display: flex;
+                    flex-wrap: nowrap;
+                    height: 100%;
+                    justify-content: center;
+                  }
             >
               <i
                 aria-hidden={true}
-                className="ms-Button-icon icon-109"
+                className=
+                    ms-Button-icon
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      display: inline-block;
+                      flex-shrink: 0;
+                      font-family: "FabricMDL2Icons";
+                      font-size: 16px;
+                      font-style: normal;
+                      font-weight: normal;
+                      height: 16px;
+                      line-height: 16px;
+                      margin-bottom: 0;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                      margin-top: 0;
+                      speak: none;
+                      text-align: center;
+                      vertical-align: middle;
+                    }
                 data-icon-name="Add"
                 role="presentation"
               >
                 
               </i>
               <div
-                className="ms-Button-textContainer textContainer-103"
+                className=
+                    ms-Button-textContainer
+                    {
+                      flex-grow: 1;
+                    }
               >
                 <div
-                  className="ms-Button-label label-120"
+                  className=
+                      ms-Button-label
+                      {
+                        font-weight: 600;
+                        line-height: 100%;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                      }
                   id="id__10"
                 >
                   Item 3
@@ -192,28 +609,131 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-labelledby={undefined}
             aria-pressed={false}
             checked={false}
-            className="ms-Button ms-Button--default root-119"
+            className=
+                ms-Button
+                ms-Button--default
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  background-color: #f4f4f4;
+                  border-radius: 0px;
+                  border: 1px solid transparent;
+                  box-sizing: border-box;
+                  color: #333333;
+                  cursor: pointer;
+                  display: inline-block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  height: 32px;
+                  min-width: 80px;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 16px;
+                  padding-right: 16px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: top;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 0px;
+                  content: "";
+                  left: 0px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: 0px;
+                  top: 0px;
+                  z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  border: none;
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
+                }
+                &:hover {
+                  background-color: #eaeaea;
+                  color: #000000;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #c8c8c8;
+                  color: #212121;
+                }
             data-is-focusable={true}
             disabled={undefined}
             onClick={undefined}
             type="button"
           >
             <div
-              className="ms-Button-flexContainer flexContainer-102"
+              className=
+                  ms-Button-flexContainer
+                  {
+                    align-items: center;
+                    display: flex;
+                    flex-wrap: nowrap;
+                    height: 100%;
+                    justify-content: center;
+                  }
             >
               <i
                 aria-hidden={true}
-                className="ms-Button-icon icon-109"
+                className=
+                    ms-Button-icon
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      display: inline-block;
+                      flex-shrink: 0;
+                      font-family: "FabricMDL2Icons";
+                      font-size: 16px;
+                      font-style: normal;
+                      font-weight: normal;
+                      height: 16px;
+                      line-height: 16px;
+                      margin-bottom: 0;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                      margin-top: 0;
+                      speak: none;
+                      text-align: center;
+                      vertical-align: middle;
+                    }
                 data-icon-name="Share"
                 role="presentation"
               >
                 
               </i>
               <div
-                className="ms-Button-textContainer textContainer-103"
+                className=
+                    ms-Button-textContainer
+                    {
+                      flex-grow: 1;
+                    }
               >
                 <div
-                  className="ms-Button-label label-120"
+                  className=
+                      ms-Button-label
+                      {
+                        font-weight: 600;
+                        line-height: 100%;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                      }
                   id="id__13"
                 >
                   Item 4
@@ -231,28 +751,131 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-labelledby={undefined}
             aria-pressed={false}
             checked={false}
-            className="ms-Button ms-Button--default root-119"
+            className=
+                ms-Button
+                ms-Button--default
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  background-color: #f4f4f4;
+                  border-radius: 0px;
+                  border: 1px solid transparent;
+                  box-sizing: border-box;
+                  color: #333333;
+                  cursor: pointer;
+                  display: inline-block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  height: 32px;
+                  min-width: 80px;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 16px;
+                  padding-right: 16px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: top;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 0px;
+                  content: "";
+                  left: 0px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: 0px;
+                  top: 0px;
+                  z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  border: none;
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
+                }
+                &:hover {
+                  background-color: #eaeaea;
+                  color: #000000;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #c8c8c8;
+                  color: #212121;
+                }
             data-is-focusable={true}
             disabled={undefined}
             onClick={undefined}
             type="button"
           >
             <div
-              className="ms-Button-flexContainer flexContainer-102"
+              className=
+                  ms-Button-flexContainer
+                  {
+                    align-items: center;
+                    display: flex;
+                    flex-wrap: nowrap;
+                    height: 100%;
+                    justify-content: center;
+                  }
             >
               <i
                 aria-hidden={true}
-                className="ms-Button-icon icon-109"
+                className=
+                    ms-Button-icon
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      display: inline-block;
+                      flex-shrink: 0;
+                      font-family: "FabricMDL2Icons";
+                      font-size: 16px;
+                      font-style: normal;
+                      font-weight: normal;
+                      height: 16px;
+                      line-height: 16px;
+                      margin-bottom: 0;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                      margin-top: 0;
+                      speak: none;
+                      text-align: center;
+                      vertical-align: middle;
+                    }
                 data-icon-name="Upload"
                 role="presentation"
               >
                 
               </i>
               <div
-                className="ms-Button-textContainer textContainer-103"
+                className=
+                    ms-Button-textContainer
+                    {
+                      flex-grow: 1;
+                    }
               >
                 <div
-                  className="ms-Button-label label-120"
+                  className=
+                      ms-Button-label
+                      {
+                        font-weight: 600;
+                        line-height: 100%;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                      }
                   id="id__16"
                 >
                   Item 5
@@ -270,28 +893,131 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-labelledby={undefined}
             aria-pressed={false}
             checked={false}
-            className="ms-Button ms-Button--default root-119"
+            className=
+                ms-Button
+                ms-Button--default
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  background-color: #f4f4f4;
+                  border-radius: 0px;
+                  border: 1px solid transparent;
+                  box-sizing: border-box;
+                  color: #333333;
+                  cursor: pointer;
+                  display: inline-block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  height: 32px;
+                  min-width: 80px;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 16px;
+                  padding-right: 16px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: top;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 0px;
+                  content: "";
+                  left: 0px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: 0px;
+                  top: 0px;
+                  z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  border: none;
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
+                }
+                &:hover {
+                  background-color: #eaeaea;
+                  color: #000000;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #c8c8c8;
+                  color: #212121;
+                }
             data-is-focusable={true}
             disabled={undefined}
             onClick={undefined}
             type="button"
           >
             <div
-              className="ms-Button-flexContainer flexContainer-102"
+              className=
+                  ms-Button-flexContainer
+                  {
+                    align-items: center;
+                    display: flex;
+                    flex-wrap: nowrap;
+                    height: 100%;
+                    justify-content: center;
+                  }
             >
               <i
                 aria-hidden={true}
-                className="ms-Button-icon icon-109"
+                className=
+                    ms-Button-icon
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      display: inline-block;
+                      flex-shrink: 0;
+                      font-family: "FabricMDL2Icons";
+                      font-size: 16px;
+                      font-style: normal;
+                      font-weight: normal;
+                      height: 16px;
+                      line-height: 16px;
+                      margin-bottom: 0;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                      margin-top: 0;
+                      speak: none;
+                      text-align: center;
+                      vertical-align: middle;
+                    }
                 data-icon-name="Add"
                 role="presentation"
               >
                 
               </i>
               <div
-                className="ms-Button-textContainer textContainer-103"
+                className=
+                    ms-Button-textContainer
+                    {
+                      flex-grow: 1;
+                    }
               >
                 <div
-                  className="ms-Button-label label-120"
+                  className=
+                      ms-Button-label
+                      {
+                        font-weight: 600;
+                        line-height: 100%;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                      }
                   id="id__19"
                 >
                   Item 6
@@ -309,28 +1035,131 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-labelledby={undefined}
             aria-pressed={false}
             checked={false}
-            className="ms-Button ms-Button--default root-119"
+            className=
+                ms-Button
+                ms-Button--default
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  background-color: #f4f4f4;
+                  border-radius: 0px;
+                  border: 1px solid transparent;
+                  box-sizing: border-box;
+                  color: #333333;
+                  cursor: pointer;
+                  display: inline-block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  height: 32px;
+                  min-width: 80px;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 16px;
+                  padding-right: 16px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: top;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 0px;
+                  content: "";
+                  left: 0px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: 0px;
+                  top: 0px;
+                  z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  border: none;
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
+                }
+                &:hover {
+                  background-color: #eaeaea;
+                  color: #000000;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #c8c8c8;
+                  color: #212121;
+                }
             data-is-focusable={true}
             disabled={undefined}
             onClick={undefined}
             type="button"
           >
             <div
-              className="ms-Button-flexContainer flexContainer-102"
+              className=
+                  ms-Button-flexContainer
+                  {
+                    align-items: center;
+                    display: flex;
+                    flex-wrap: nowrap;
+                    height: 100%;
+                    justify-content: center;
+                  }
             >
               <i
                 aria-hidden={true}
-                className="ms-Button-icon icon-109"
+                className=
+                    ms-Button-icon
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      display: inline-block;
+                      flex-shrink: 0;
+                      font-family: "FabricMDL2Icons";
+                      font-size: 16px;
+                      font-style: normal;
+                      font-weight: normal;
+                      height: 16px;
+                      line-height: 16px;
+                      margin-bottom: 0;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                      margin-top: 0;
+                      speak: none;
+                      text-align: center;
+                      vertical-align: middle;
+                    }
                 data-icon-name="Share"
                 role="presentation"
               >
                 
               </i>
               <div
-                className="ms-Button-textContainer textContainer-103"
+                className=
+                    ms-Button-textContainer
+                    {
+                      flex-grow: 1;
+                    }
               >
                 <div
-                  className="ms-Button-label label-120"
+                  className=
+                      ms-Button-label
+                      {
+                        font-weight: 600;
+                        line-height: 100%;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                      }
                   id="id__22"
                 >
                   Item 7
@@ -348,28 +1177,131 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-labelledby={undefined}
             aria-pressed={false}
             checked={false}
-            className="ms-Button ms-Button--default root-119"
+            className=
+                ms-Button
+                ms-Button--default
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  background-color: #f4f4f4;
+                  border-radius: 0px;
+                  border: 1px solid transparent;
+                  box-sizing: border-box;
+                  color: #333333;
+                  cursor: pointer;
+                  display: inline-block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  height: 32px;
+                  min-width: 80px;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 16px;
+                  padding-right: 16px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: top;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 0px;
+                  content: "";
+                  left: 0px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: 0px;
+                  top: 0px;
+                  z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  border: none;
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
+                }
+                &:hover {
+                  background-color: #eaeaea;
+                  color: #000000;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #c8c8c8;
+                  color: #212121;
+                }
             data-is-focusable={true}
             disabled={undefined}
             onClick={undefined}
             type="button"
           >
             <div
-              className="ms-Button-flexContainer flexContainer-102"
+              className=
+                  ms-Button-flexContainer
+                  {
+                    align-items: center;
+                    display: flex;
+                    flex-wrap: nowrap;
+                    height: 100%;
+                    justify-content: center;
+                  }
             >
               <i
                 aria-hidden={true}
-                className="ms-Button-icon icon-109"
+                className=
+                    ms-Button-icon
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      display: inline-block;
+                      flex-shrink: 0;
+                      font-family: "FabricMDL2Icons";
+                      font-size: 16px;
+                      font-style: normal;
+                      font-weight: normal;
+                      height: 16px;
+                      line-height: 16px;
+                      margin-bottom: 0;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                      margin-top: 0;
+                      speak: none;
+                      text-align: center;
+                      vertical-align: middle;
+                    }
                 data-icon-name="Upload"
                 role="presentation"
               >
                 
               </i>
               <div
-                className="ms-Button-textContainer textContainer-103"
+                className=
+                    ms-Button-textContainer
+                    {
+                      flex-grow: 1;
+                    }
               >
                 <div
-                  className="ms-Button-label label-120"
+                  className=
+                      ms-Button-label
+                      {
+                        font-weight: 600;
+                        line-height: 100%;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                      }
                   id="id__25"
                 >
                   Item 8
@@ -387,28 +1319,131 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-labelledby={undefined}
             aria-pressed={false}
             checked={false}
-            className="ms-Button ms-Button--default root-119"
+            className=
+                ms-Button
+                ms-Button--default
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  background-color: #f4f4f4;
+                  border-radius: 0px;
+                  border: 1px solid transparent;
+                  box-sizing: border-box;
+                  color: #333333;
+                  cursor: pointer;
+                  display: inline-block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  height: 32px;
+                  min-width: 80px;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 16px;
+                  padding-right: 16px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: top;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 0px;
+                  content: "";
+                  left: 0px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: 0px;
+                  top: 0px;
+                  z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  border: none;
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
+                }
+                &:hover {
+                  background-color: #eaeaea;
+                  color: #000000;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #c8c8c8;
+                  color: #212121;
+                }
             data-is-focusable={true}
             disabled={undefined}
             onClick={undefined}
             type="button"
           >
             <div
-              className="ms-Button-flexContainer flexContainer-102"
+              className=
+                  ms-Button-flexContainer
+                  {
+                    align-items: center;
+                    display: flex;
+                    flex-wrap: nowrap;
+                    height: 100%;
+                    justify-content: center;
+                  }
             >
               <i
                 aria-hidden={true}
-                className="ms-Button-icon icon-109"
+                className=
+                    ms-Button-icon
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      display: inline-block;
+                      flex-shrink: 0;
+                      font-family: "FabricMDL2Icons";
+                      font-size: 16px;
+                      font-style: normal;
+                      font-weight: normal;
+                      height: 16px;
+                      line-height: 16px;
+                      margin-bottom: 0;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                      margin-top: 0;
+                      speak: none;
+                      text-align: center;
+                      vertical-align: middle;
+                    }
                 data-icon-name="Add"
                 role="presentation"
               >
                 
               </i>
               <div
-                className="ms-Button-textContainer textContainer-103"
+                className=
+                    ms-Button-textContainer
+                    {
+                      flex-grow: 1;
+                    }
               >
                 <div
-                  className="ms-Button-label label-120"
+                  className=
+                      ms-Button-label
+                      {
+                        font-weight: 600;
+                        line-height: 100%;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                      }
                   id="id__28"
                 >
                   Item 9
@@ -426,28 +1461,131 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-labelledby={undefined}
             aria-pressed={false}
             checked={false}
-            className="ms-Button ms-Button--default root-119"
+            className=
+                ms-Button
+                ms-Button--default
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  background-color: #f4f4f4;
+                  border-radius: 0px;
+                  border: 1px solid transparent;
+                  box-sizing: border-box;
+                  color: #333333;
+                  cursor: pointer;
+                  display: inline-block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  height: 32px;
+                  min-width: 80px;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 16px;
+                  padding-right: 16px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: top;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 0px;
+                  content: "";
+                  left: 0px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: 0px;
+                  top: 0px;
+                  z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  border: none;
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
+                }
+                &:hover {
+                  background-color: #eaeaea;
+                  color: #000000;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #c8c8c8;
+                  color: #212121;
+                }
             data-is-focusable={true}
             disabled={undefined}
             onClick={undefined}
             type="button"
           >
             <div
-              className="ms-Button-flexContainer flexContainer-102"
+              className=
+                  ms-Button-flexContainer
+                  {
+                    align-items: center;
+                    display: flex;
+                    flex-wrap: nowrap;
+                    height: 100%;
+                    justify-content: center;
+                  }
             >
               <i
                 aria-hidden={true}
-                className="ms-Button-icon icon-109"
+                className=
+                    ms-Button-icon
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      display: inline-block;
+                      flex-shrink: 0;
+                      font-family: "FabricMDL2Icons";
+                      font-size: 16px;
+                      font-style: normal;
+                      font-weight: normal;
+                      height: 16px;
+                      line-height: 16px;
+                      margin-bottom: 0;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                      margin-top: 0;
+                      speak: none;
+                      text-align: center;
+                      vertical-align: middle;
+                    }
                 data-icon-name="Share"
                 role="presentation"
               >
                 
               </i>
               <div
-                className="ms-Button-textContainer textContainer-103"
+                className=
+                    ms-Button-textContainer
+                    {
+                      flex-grow: 1;
+                    }
               >
                 <div
-                  className="ms-Button-label label-120"
+                  className=
+                      ms-Button-label
+                      {
+                        font-weight: 600;
+                        line-height: 100%;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                      }
                   id="id__31"
                 >
                   Item 10
@@ -465,28 +1603,131 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-labelledby={undefined}
             aria-pressed={false}
             checked={false}
-            className="ms-Button ms-Button--default root-119"
+            className=
+                ms-Button
+                ms-Button--default
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  background-color: #f4f4f4;
+                  border-radius: 0px;
+                  border: 1px solid transparent;
+                  box-sizing: border-box;
+                  color: #333333;
+                  cursor: pointer;
+                  display: inline-block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  height: 32px;
+                  min-width: 80px;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 16px;
+                  padding-right: 16px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: top;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 0px;
+                  content: "";
+                  left: 0px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: 0px;
+                  top: 0px;
+                  z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  border: none;
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
+                }
+                &:hover {
+                  background-color: #eaeaea;
+                  color: #000000;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #c8c8c8;
+                  color: #212121;
+                }
             data-is-focusable={true}
             disabled={undefined}
             onClick={undefined}
             type="button"
           >
             <div
-              className="ms-Button-flexContainer flexContainer-102"
+              className=
+                  ms-Button-flexContainer
+                  {
+                    align-items: center;
+                    display: flex;
+                    flex-wrap: nowrap;
+                    height: 100%;
+                    justify-content: center;
+                  }
             >
               <i
                 aria-hidden={true}
-                className="ms-Button-icon icon-109"
+                className=
+                    ms-Button-icon
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      display: inline-block;
+                      flex-shrink: 0;
+                      font-family: "FabricMDL2Icons";
+                      font-size: 16px;
+                      font-style: normal;
+                      font-weight: normal;
+                      height: 16px;
+                      line-height: 16px;
+                      margin-bottom: 0;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                      margin-top: 0;
+                      speak: none;
+                      text-align: center;
+                      vertical-align: middle;
+                    }
                 data-icon-name="Upload"
                 role="presentation"
               >
                 
               </i>
               <div
-                className="ms-Button-textContainer textContainer-103"
+                className=
+                    ms-Button-textContainer
+                    {
+                      flex-grow: 1;
+                    }
               >
                 <div
-                  className="ms-Button-label label-120"
+                  className=
+                      ms-Button-label
+                      {
+                        font-weight: 600;
+                        line-height: 100%;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                      }
                   id="id__34"
                 >
                   Item 11
@@ -504,28 +1745,131 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-labelledby={undefined}
             aria-pressed={false}
             checked={false}
-            className="ms-Button ms-Button--default root-119"
+            className=
+                ms-Button
+                ms-Button--default
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  background-color: #f4f4f4;
+                  border-radius: 0px;
+                  border: 1px solid transparent;
+                  box-sizing: border-box;
+                  color: #333333;
+                  cursor: pointer;
+                  display: inline-block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  height: 32px;
+                  min-width: 80px;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 16px;
+                  padding-right: 16px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: top;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 0px;
+                  content: "";
+                  left: 0px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: 0px;
+                  top: 0px;
+                  z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  border: none;
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
+                }
+                &:hover {
+                  background-color: #eaeaea;
+                  color: #000000;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #c8c8c8;
+                  color: #212121;
+                }
             data-is-focusable={true}
             disabled={undefined}
             onClick={undefined}
             type="button"
           >
             <div
-              className="ms-Button-flexContainer flexContainer-102"
+              className=
+                  ms-Button-flexContainer
+                  {
+                    align-items: center;
+                    display: flex;
+                    flex-wrap: nowrap;
+                    height: 100%;
+                    justify-content: center;
+                  }
             >
               <i
                 aria-hidden={true}
-                className="ms-Button-icon icon-109"
+                className=
+                    ms-Button-icon
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      display: inline-block;
+                      flex-shrink: 0;
+                      font-family: "FabricMDL2Icons";
+                      font-size: 16px;
+                      font-style: normal;
+                      font-weight: normal;
+                      height: 16px;
+                      line-height: 16px;
+                      margin-bottom: 0;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                      margin-top: 0;
+                      speak: none;
+                      text-align: center;
+                      vertical-align: middle;
+                    }
                 data-icon-name="Add"
                 role="presentation"
               >
                 
               </i>
               <div
-                className="ms-Button-textContainer textContainer-103"
+                className=
+                    ms-Button-textContainer
+                    {
+                      flex-grow: 1;
+                    }
               >
                 <div
-                  className="ms-Button-label label-120"
+                  className=
+                      ms-Button-label
+                      {
+                        font-weight: 600;
+                        line-height: 100%;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                      }
                   id="id__37"
                 >
                   Item 12
@@ -543,28 +1887,131 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-labelledby={undefined}
             aria-pressed={false}
             checked={false}
-            className="ms-Button ms-Button--default root-119"
+            className=
+                ms-Button
+                ms-Button--default
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  background-color: #f4f4f4;
+                  border-radius: 0px;
+                  border: 1px solid transparent;
+                  box-sizing: border-box;
+                  color: #333333;
+                  cursor: pointer;
+                  display: inline-block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  height: 32px;
+                  min-width: 80px;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 16px;
+                  padding-right: 16px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: top;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 0px;
+                  content: "";
+                  left: 0px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: 0px;
+                  top: 0px;
+                  z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  border: none;
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
+                }
+                &:hover {
+                  background-color: #eaeaea;
+                  color: #000000;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #c8c8c8;
+                  color: #212121;
+                }
             data-is-focusable={true}
             disabled={undefined}
             onClick={undefined}
             type="button"
           >
             <div
-              className="ms-Button-flexContainer flexContainer-102"
+              className=
+                  ms-Button-flexContainer
+                  {
+                    align-items: center;
+                    display: flex;
+                    flex-wrap: nowrap;
+                    height: 100%;
+                    justify-content: center;
+                  }
             >
               <i
                 aria-hidden={true}
-                className="ms-Button-icon icon-109"
+                className=
+                    ms-Button-icon
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      display: inline-block;
+                      flex-shrink: 0;
+                      font-family: "FabricMDL2Icons";
+                      font-size: 16px;
+                      font-style: normal;
+                      font-weight: normal;
+                      height: 16px;
+                      line-height: 16px;
+                      margin-bottom: 0;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                      margin-top: 0;
+                      speak: none;
+                      text-align: center;
+                      vertical-align: middle;
+                    }
                 data-icon-name="Share"
                 role="presentation"
               >
                 
               </i>
               <div
-                className="ms-Button-textContainer textContainer-103"
+                className=
+                    ms-Button-textContainer
+                    {
+                      flex-grow: 1;
+                    }
               >
                 <div
-                  className="ms-Button-label label-120"
+                  className=
+                      ms-Button-label
+                      {
+                        font-weight: 600;
+                        line-height: 100%;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                      }
                   id="id__40"
                 >
                   Item 13
@@ -582,28 +2029,131 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-labelledby={undefined}
             aria-pressed={false}
             checked={false}
-            className="ms-Button ms-Button--default root-119"
+            className=
+                ms-Button
+                ms-Button--default
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  background-color: #f4f4f4;
+                  border-radius: 0px;
+                  border: 1px solid transparent;
+                  box-sizing: border-box;
+                  color: #333333;
+                  cursor: pointer;
+                  display: inline-block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  height: 32px;
+                  min-width: 80px;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 16px;
+                  padding-right: 16px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: top;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 0px;
+                  content: "";
+                  left: 0px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: 0px;
+                  top: 0px;
+                  z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  border: none;
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
+                }
+                &:hover {
+                  background-color: #eaeaea;
+                  color: #000000;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #c8c8c8;
+                  color: #212121;
+                }
             data-is-focusable={true}
             disabled={undefined}
             onClick={undefined}
             type="button"
           >
             <div
-              className="ms-Button-flexContainer flexContainer-102"
+              className=
+                  ms-Button-flexContainer
+                  {
+                    align-items: center;
+                    display: flex;
+                    flex-wrap: nowrap;
+                    height: 100%;
+                    justify-content: center;
+                  }
             >
               <i
                 aria-hidden={true}
-                className="ms-Button-icon icon-109"
+                className=
+                    ms-Button-icon
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      display: inline-block;
+                      flex-shrink: 0;
+                      font-family: "FabricMDL2Icons";
+                      font-size: 16px;
+                      font-style: normal;
+                      font-weight: normal;
+                      height: 16px;
+                      line-height: 16px;
+                      margin-bottom: 0;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                      margin-top: 0;
+                      speak: none;
+                      text-align: center;
+                      vertical-align: middle;
+                    }
                 data-icon-name="Upload"
                 role="presentation"
               >
                 
               </i>
               <div
-                className="ms-Button-textContainer textContainer-103"
+                className=
+                    ms-Button-textContainer
+                    {
+                      flex-grow: 1;
+                    }
               >
                 <div
-                  className="ms-Button-label label-120"
+                  className=
+                      ms-Button-label
+                      {
+                        font-weight: 600;
+                        line-height: 100%;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                      }
                   id="id__43"
                 >
                   Item 14
@@ -621,28 +2171,131 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-labelledby={undefined}
             aria-pressed={false}
             checked={false}
-            className="ms-Button ms-Button--default root-119"
+            className=
+                ms-Button
+                ms-Button--default
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  background-color: #f4f4f4;
+                  border-radius: 0px;
+                  border: 1px solid transparent;
+                  box-sizing: border-box;
+                  color: #333333;
+                  cursor: pointer;
+                  display: inline-block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  height: 32px;
+                  min-width: 80px;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 16px;
+                  padding-right: 16px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: top;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 0px;
+                  content: "";
+                  left: 0px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: 0px;
+                  top: 0px;
+                  z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  border: none;
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
+                }
+                &:hover {
+                  background-color: #eaeaea;
+                  color: #000000;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #c8c8c8;
+                  color: #212121;
+                }
             data-is-focusable={true}
             disabled={undefined}
             onClick={undefined}
             type="button"
           >
             <div
-              className="ms-Button-flexContainer flexContainer-102"
+              className=
+                  ms-Button-flexContainer
+                  {
+                    align-items: center;
+                    display: flex;
+                    flex-wrap: nowrap;
+                    height: 100%;
+                    justify-content: center;
+                  }
             >
               <i
                 aria-hidden={true}
-                className="ms-Button-icon icon-109"
+                className=
+                    ms-Button-icon
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      display: inline-block;
+                      flex-shrink: 0;
+                      font-family: "FabricMDL2Icons";
+                      font-size: 16px;
+                      font-style: normal;
+                      font-weight: normal;
+                      height: 16px;
+                      line-height: 16px;
+                      margin-bottom: 0;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                      margin-top: 0;
+                      speak: none;
+                      text-align: center;
+                      vertical-align: middle;
+                    }
                 data-icon-name="Add"
                 role="presentation"
               >
                 
               </i>
               <div
-                className="ms-Button-textContainer textContainer-103"
+                className=
+                    ms-Button-textContainer
+                    {
+                      flex-grow: 1;
+                    }
               >
                 <div
-                  className="ms-Button-label label-120"
+                  className=
+                      ms-Button-label
+                      {
+                        font-weight: 600;
+                        line-height: 100%;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                      }
                   id="id__46"
                 >
                   Item 15
@@ -660,28 +2313,131 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-labelledby={undefined}
             aria-pressed={false}
             checked={false}
-            className="ms-Button ms-Button--default root-119"
+            className=
+                ms-Button
+                ms-Button--default
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  background-color: #f4f4f4;
+                  border-radius: 0px;
+                  border: 1px solid transparent;
+                  box-sizing: border-box;
+                  color: #333333;
+                  cursor: pointer;
+                  display: inline-block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  height: 32px;
+                  min-width: 80px;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 16px;
+                  padding-right: 16px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: top;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 0px;
+                  content: "";
+                  left: 0px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: 0px;
+                  top: 0px;
+                  z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  border: none;
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
+                }
+                &:hover {
+                  background-color: #eaeaea;
+                  color: #000000;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #c8c8c8;
+                  color: #212121;
+                }
             data-is-focusable={true}
             disabled={undefined}
             onClick={undefined}
             type="button"
           >
             <div
-              className="ms-Button-flexContainer flexContainer-102"
+              className=
+                  ms-Button-flexContainer
+                  {
+                    align-items: center;
+                    display: flex;
+                    flex-wrap: nowrap;
+                    height: 100%;
+                    justify-content: center;
+                  }
             >
               <i
                 aria-hidden={true}
-                className="ms-Button-icon icon-109"
+                className=
+                    ms-Button-icon
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      display: inline-block;
+                      flex-shrink: 0;
+                      font-family: "FabricMDL2Icons";
+                      font-size: 16px;
+                      font-style: normal;
+                      font-weight: normal;
+                      height: 16px;
+                      line-height: 16px;
+                      margin-bottom: 0;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                      margin-top: 0;
+                      speak: none;
+                      text-align: center;
+                      vertical-align: middle;
+                    }
                 data-icon-name="Share"
                 role="presentation"
               >
                 
               </i>
               <div
-                className="ms-Button-textContainer textContainer-103"
+                className=
+                    ms-Button-textContainer
+                    {
+                      flex-grow: 1;
+                    }
               >
                 <div
-                  className="ms-Button-label label-120"
+                  className=
+                      ms-Button-label
+                      {
+                        font-weight: 600;
+                        line-height: 100%;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                      }
                   id="id__49"
                 >
                   Item 16
@@ -699,28 +2455,131 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-labelledby={undefined}
             aria-pressed={false}
             checked={false}
-            className="ms-Button ms-Button--default root-119"
+            className=
+                ms-Button
+                ms-Button--default
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  background-color: #f4f4f4;
+                  border-radius: 0px;
+                  border: 1px solid transparent;
+                  box-sizing: border-box;
+                  color: #333333;
+                  cursor: pointer;
+                  display: inline-block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  height: 32px;
+                  min-width: 80px;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 16px;
+                  padding-right: 16px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: top;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 0px;
+                  content: "";
+                  left: 0px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: 0px;
+                  top: 0px;
+                  z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  border: none;
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
+                }
+                &:hover {
+                  background-color: #eaeaea;
+                  color: #000000;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #c8c8c8;
+                  color: #212121;
+                }
             data-is-focusable={true}
             disabled={undefined}
             onClick={undefined}
             type="button"
           >
             <div
-              className="ms-Button-flexContainer flexContainer-102"
+              className=
+                  ms-Button-flexContainer
+                  {
+                    align-items: center;
+                    display: flex;
+                    flex-wrap: nowrap;
+                    height: 100%;
+                    justify-content: center;
+                  }
             >
               <i
                 aria-hidden={true}
-                className="ms-Button-icon icon-109"
+                className=
+                    ms-Button-icon
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      display: inline-block;
+                      flex-shrink: 0;
+                      font-family: "FabricMDL2Icons";
+                      font-size: 16px;
+                      font-style: normal;
+                      font-weight: normal;
+                      height: 16px;
+                      line-height: 16px;
+                      margin-bottom: 0;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                      margin-top: 0;
+                      speak: none;
+                      text-align: center;
+                      vertical-align: middle;
+                    }
                 data-icon-name="Upload"
                 role="presentation"
               >
                 
               </i>
               <div
-                className="ms-Button-textContainer textContainer-103"
+                className=
+                    ms-Button-textContainer
+                    {
+                      flex-grow: 1;
+                    }
               >
                 <div
-                  className="ms-Button-label label-120"
+                  className=
+                      ms-Button-label
+                      {
+                        font-weight: 600;
+                        line-height: 100%;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                      }
                   id="id__52"
                 >
                   Item 17
@@ -738,28 +2597,131 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-labelledby={undefined}
             aria-pressed={false}
             checked={false}
-            className="ms-Button ms-Button--default root-119"
+            className=
+                ms-Button
+                ms-Button--default
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  background-color: #f4f4f4;
+                  border-radius: 0px;
+                  border: 1px solid transparent;
+                  box-sizing: border-box;
+                  color: #333333;
+                  cursor: pointer;
+                  display: inline-block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  height: 32px;
+                  min-width: 80px;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 16px;
+                  padding-right: 16px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: top;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 0px;
+                  content: "";
+                  left: 0px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: 0px;
+                  top: 0px;
+                  z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  border: none;
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
+                }
+                &:hover {
+                  background-color: #eaeaea;
+                  color: #000000;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #c8c8c8;
+                  color: #212121;
+                }
             data-is-focusable={true}
             disabled={undefined}
             onClick={undefined}
             type="button"
           >
             <div
-              className="ms-Button-flexContainer flexContainer-102"
+              className=
+                  ms-Button-flexContainer
+                  {
+                    align-items: center;
+                    display: flex;
+                    flex-wrap: nowrap;
+                    height: 100%;
+                    justify-content: center;
+                  }
             >
               <i
                 aria-hidden={true}
-                className="ms-Button-icon icon-109"
+                className=
+                    ms-Button-icon
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      display: inline-block;
+                      flex-shrink: 0;
+                      font-family: "FabricMDL2Icons";
+                      font-size: 16px;
+                      font-style: normal;
+                      font-weight: normal;
+                      height: 16px;
+                      line-height: 16px;
+                      margin-bottom: 0;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                      margin-top: 0;
+                      speak: none;
+                      text-align: center;
+                      vertical-align: middle;
+                    }
                 data-icon-name="Add"
                 role="presentation"
               >
                 
               </i>
               <div
-                className="ms-Button-textContainer textContainer-103"
+                className=
+                    ms-Button-textContainer
+                    {
+                      flex-grow: 1;
+                    }
               >
                 <div
-                  className="ms-Button-label label-120"
+                  className=
+                      ms-Button-label
+                      {
+                        font-weight: 600;
+                        line-height: 100%;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                      }
                   id="id__55"
                 >
                   Item 18
@@ -777,28 +2739,131 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-labelledby={undefined}
             aria-pressed={false}
             checked={false}
-            className="ms-Button ms-Button--default root-119"
+            className=
+                ms-Button
+                ms-Button--default
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  background-color: #f4f4f4;
+                  border-radius: 0px;
+                  border: 1px solid transparent;
+                  box-sizing: border-box;
+                  color: #333333;
+                  cursor: pointer;
+                  display: inline-block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  height: 32px;
+                  min-width: 80px;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 16px;
+                  padding-right: 16px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: top;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 0px;
+                  content: "";
+                  left: 0px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: 0px;
+                  top: 0px;
+                  z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  border: none;
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
+                }
+                &:hover {
+                  background-color: #eaeaea;
+                  color: #000000;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #c8c8c8;
+                  color: #212121;
+                }
             data-is-focusable={true}
             disabled={undefined}
             onClick={undefined}
             type="button"
           >
             <div
-              className="ms-Button-flexContainer flexContainer-102"
+              className=
+                  ms-Button-flexContainer
+                  {
+                    align-items: center;
+                    display: flex;
+                    flex-wrap: nowrap;
+                    height: 100%;
+                    justify-content: center;
+                  }
             >
               <i
                 aria-hidden={true}
-                className="ms-Button-icon icon-109"
+                className=
+                    ms-Button-icon
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      display: inline-block;
+                      flex-shrink: 0;
+                      font-family: "FabricMDL2Icons";
+                      font-size: 16px;
+                      font-style: normal;
+                      font-weight: normal;
+                      height: 16px;
+                      line-height: 16px;
+                      margin-bottom: 0;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                      margin-top: 0;
+                      speak: none;
+                      text-align: center;
+                      vertical-align: middle;
+                    }
                 data-icon-name="Share"
                 role="presentation"
               >
                 
               </i>
               <div
-                className="ms-Button-textContainer textContainer-103"
+                className=
+                    ms-Button-textContainer
+                    {
+                      flex-grow: 1;
+                    }
               >
                 <div
-                  className="ms-Button-label label-120"
+                  className=
+                      ms-Button-label
+                      {
+                        font-weight: 600;
+                        line-height: 100%;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                      }
                   id="id__58"
                 >
                   Item 19
@@ -822,7 +2887,60 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
       aria-posinset={undefined}
       aria-setsize={undefined}
       checked={false}
-      className="ms-Checkbox is-enabled root-189"
+      className=
+          ms-Checkbox
+          is-enabled
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 0;
+            margin-left: 0;
+            margin-right: 0;
+            margin-top: 0;
+            outline: none;
+            padding-bottom: 0;
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 0;
+            position: relative;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: -2px;
+            content: "";
+            left: -2px;
+            outline: 1px solid #666666;
+            position: absolute;
+            right: -2px;
+            top: -2px;
+            z-index: 1;
+          }
+          &:hover .ms-Checkbox-checkbox {
+            border-color: #212121;
+          }
+          &:focus .ms-Checkbox-checkbox {
+            border-color: #212121;
+          }
+          &:hover .ms-Checkbox-checkmark {
+            color: #a6a6a6;
+            opacity: 1;
+          }
+          &:hover .ms-Checkbox-text {
+            color: #333333;
+          }
+          &:focus .ms-Checkbox-text {
+            color: #333333;
+          }
       data-ktp-execute-target={undefined}
       disabled={undefined}
       id="checkbox-61"
@@ -834,16 +2952,66 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
       type="button"
     >
       <label
-        className="ms-Checkbox-label label-184"
+        className=
+            ms-Checkbox-label
+            {
+              align-items: center;
+              cursor: pointer;
+              display: inline-flex;
+              margin-bottom: 0;
+              margin-left: -4px;
+              margin-right: -4px;
+              margin-top: 0;
+              position: relative;
+              text-align: left;
+              user-select: none;
+            }
         htmlFor="checkbox-61"
       >
         <div
-          className="ms-Checkbox-checkbox checkbox-190"
+          className=
+              ms-Checkbox-checkbox
+              {
+                align-items: center;
+                border-color: #666666;
+                border-style: solid;
+                border-width: 1px;
+                box-sizing: border-box;
+                display: flex;
+                flex-shrink: 0;
+                height: 20px;
+                justify-content: center;
+                margin-bottom: 0;
+                margin-left: 4px;
+                margin-right: 4px;
+                margin-top: 0;
+                overflow: hidden;
+                transition-duration: 200ms;
+                transition-property: background, border, border-color;
+                transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                width: 20px;
+              }
           data-ktp-target={undefined}
         >
           <i
             aria-hidden={true}
-            className="ms-Checkbox-checkmark checkmark-192"
+            className=
+                ms-Checkbox-checkmark
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #ffffff;
+                  display: inline-block;
+                  font-family: "FabricMDL2Icons";
+                  font-style: normal;
+                  font-weight: normal;
+                  opacity: 0;
+                  speak: none;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                  color: Window;
+                }
             data-icon-name="CheckMark"
             role="presentation"
           >
@@ -851,7 +3019,16 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           </i>
         </div>
         <span
-          className="ms-Checkbox-text text-187"
+          className=
+              ms-Checkbox-text
+              {
+                color: #333333;
+                font-size: 14px;
+                margin-bottom: 0;
+                margin-left: 4px;
+                margin-right: 4px;
+                margin-top: 0;
+              }
         >
           Enable caching
         </span>
@@ -866,7 +3043,60 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
       aria-posinset={undefined}
       aria-setsize={undefined}
       checked={false}
-      className="ms-Checkbox is-enabled root-189"
+      className=
+          ms-Checkbox
+          is-enabled
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 0;
+            margin-left: 0;
+            margin-right: 0;
+            margin-top: 0;
+            outline: none;
+            padding-bottom: 0;
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 0;
+            position: relative;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: -2px;
+            content: "";
+            left: -2px;
+            outline: 1px solid #666666;
+            position: absolute;
+            right: -2px;
+            top: -2px;
+            z-index: 1;
+          }
+          &:hover .ms-Checkbox-checkbox {
+            border-color: #212121;
+          }
+          &:focus .ms-Checkbox-checkbox {
+            border-color: #212121;
+          }
+          &:hover .ms-Checkbox-checkmark {
+            color: #a6a6a6;
+            opacity: 1;
+          }
+          &:hover .ms-Checkbox-text {
+            color: #333333;
+          }
+          &:focus .ms-Checkbox-text {
+            color: #333333;
+          }
       data-ktp-execute-target={undefined}
       disabled={undefined}
       id="checkbox-62"
@@ -878,16 +3108,66 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
       type="button"
     >
       <label
-        className="ms-Checkbox-label label-184"
+        className=
+            ms-Checkbox-label
+            {
+              align-items: center;
+              cursor: pointer;
+              display: inline-flex;
+              margin-bottom: 0;
+              margin-left: -4px;
+              margin-right: -4px;
+              margin-top: 0;
+              position: relative;
+              text-align: left;
+              user-select: none;
+            }
         htmlFor="checkbox-62"
       >
         <div
-          className="ms-Checkbox-checkbox checkbox-190"
+          className=
+              ms-Checkbox-checkbox
+              {
+                align-items: center;
+                border-color: #666666;
+                border-style: solid;
+                border-width: 1px;
+                box-sizing: border-box;
+                display: flex;
+                flex-shrink: 0;
+                height: 20px;
+                justify-content: center;
+                margin-bottom: 0;
+                margin-left: 4px;
+                margin-right: 4px;
+                margin-top: 0;
+                overflow: hidden;
+                transition-duration: 200ms;
+                transition-property: background, border, border-color;
+                transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                width: 20px;
+              }
           data-ktp-target={undefined}
         >
           <i
             aria-hidden={true}
-            className="ms-Checkbox-checkmark checkmark-192"
+            className=
+                ms-Checkbox-checkmark
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #ffffff;
+                  display: inline-block;
+                  font-family: "FabricMDL2Icons";
+                  font-style: normal;
+                  font-weight: normal;
+                  opacity: 0;
+                  speak: none;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                  color: Window;
+                }
             data-icon-name="CheckMark"
             role="presentation"
           >
@@ -895,7 +3175,16 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           </i>
         </div>
         <span
-          className="ms-Checkbox-text text-187"
+          className=
+              ms-Checkbox-text
+              {
+                color: #333333;
+                font-size: 14px;
+                margin-bottom: 0;
+                margin-left: 4px;
+                margin-right: 4px;
+                margin-top: 0;
+              }
         >
           Set onGrowData
         </span>
@@ -910,7 +3199,60 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
       aria-posinset={undefined}
       aria-setsize={undefined}
       checked={false}
-      className="ms-Checkbox is-enabled root-189"
+      className=
+          ms-Checkbox
+          is-enabled
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 0;
+            margin-left: 0;
+            margin-right: 0;
+            margin-top: 0;
+            outline: none;
+            padding-bottom: 0;
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 0;
+            position: relative;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: -2px;
+            content: "";
+            left: -2px;
+            outline: 1px solid #666666;
+            position: absolute;
+            right: -2px;
+            top: -2px;
+            z-index: 1;
+          }
+          &:hover .ms-Checkbox-checkbox {
+            border-color: #212121;
+          }
+          &:focus .ms-Checkbox-checkbox {
+            border-color: #212121;
+          }
+          &:hover .ms-Checkbox-checkmark {
+            color: #a6a6a6;
+            opacity: 1;
+          }
+          &:hover .ms-Checkbox-text {
+            color: #333333;
+          }
+          &:focus .ms-Checkbox-text {
+            color: #333333;
+          }
       data-ktp-execute-target={undefined}
       disabled={undefined}
       id="checkbox-63"
@@ -922,16 +3264,66 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
       type="button"
     >
       <label
-        className="ms-Checkbox-label label-184"
+        className=
+            ms-Checkbox-label
+            {
+              align-items: center;
+              cursor: pointer;
+              display: inline-flex;
+              margin-bottom: 0;
+              margin-left: -4px;
+              margin-right: -4px;
+              margin-top: 0;
+              position: relative;
+              text-align: left;
+              user-select: none;
+            }
         htmlFor="checkbox-63"
       >
         <div
-          className="ms-Checkbox-checkbox checkbox-190"
+          className=
+              ms-Checkbox-checkbox
+              {
+                align-items: center;
+                border-color: #666666;
+                border-style: solid;
+                border-width: 1px;
+                box-sizing: border-box;
+                display: flex;
+                flex-shrink: 0;
+                height: 20px;
+                justify-content: center;
+                margin-bottom: 0;
+                margin-left: 4px;
+                margin-right: 4px;
+                margin-top: 0;
+                overflow: hidden;
+                transition-duration: 200ms;
+                transition-property: background, border, border-color;
+                transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                width: 20px;
+              }
           data-ktp-target={undefined}
         >
           <i
             aria-hidden={true}
-            className="ms-Checkbox-checkmark checkmark-192"
+            className=
+                ms-Checkbox-checkmark
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #ffffff;
+                  display: inline-block;
+                  font-family: "FabricMDL2Icons";
+                  font-style: normal;
+                  font-weight: normal;
+                  opacity: 0;
+                  speak: none;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                  color: Window;
+                }
             data-icon-name="CheckMark"
             role="presentation"
           >
@@ -939,7 +3331,16 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           </i>
         </div>
         <span
-          className="ms-Checkbox-text text-187"
+          className=
+              ms-Checkbox-text
+              {
+                color: #333333;
+                font-size: 14px;
+                margin-bottom: 0;
+                margin-left: 4px;
+                margin-right: 4px;
+                margin-top: 0;
+              }
         >
           Buttons checked
         </span>
@@ -952,7 +3353,25 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
         className="ms-Dropdown-container"
       >
         <label
-          className="ms-Label ms-Dropdown-label root-89"
+          className=
+              ms-Label
+              ms-Dropdown-label
+              {
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #333333;
+                display: block;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                overflow-wrap: break-word;
+                padding-bottom: 5px;
+                padding-left: 0;
+                padding-right: 0;
+                padding-top: 5px;
+                word-wrap: break-word;
+              }
           htmlFor="Dropdown64"
           id="Dropdown64-label"
           required={undefined}
@@ -993,7 +3412,17 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           >
             <i
               aria-hidden={true}
-              className="ms-Dropdown-caretDown root-55"
+              className=
+                  ms-Dropdown-caretDown
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    display: inline-block;
+                    font-family: "FabricMDL2Icons";
+                    font-style: normal;
+                    font-weight: normal;
+                    speak: none;
+                  }
               data-icon-name="ChevronDown"
               role="presentation"
             >

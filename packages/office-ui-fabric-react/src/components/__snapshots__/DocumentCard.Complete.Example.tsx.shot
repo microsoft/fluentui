@@ -20,7 +20,12 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
         >
           <li>
             <div
-              className="ms-Image ms-DocumentCardPreview-fileListIcon root-239"
+              className=
+                  ms-Image
+                  ms-DocumentCardPreview-fileListIcon
+                  {
+                    overflow: hidden;
+                  }
               style={
                 Object {
                   "height": "16px",
@@ -30,7 +35,17 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
             >
               <img
                 alt=""
-                className="ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-240"
+                className=
+                    ms-Image-image
+                    ms-Image-image--portrait
+                    is-notLoaded
+                    is-fadeIn
+                    {
+                      display: block;
+                      height: 100%;
+                      opacity: 0;
+                      width: 100%;
+                    }
                 onError={[Function]}
                 onLoad={[Function]}
                 role="presentation"
@@ -45,7 +60,12 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           </li>
           <li>
             <div
-              className="ms-Image ms-DocumentCardPreview-fileListIcon root-239"
+              className=
+                  ms-Image
+                  ms-DocumentCardPreview-fileListIcon
+                  {
+                    overflow: hidden;
+                  }
               style={
                 Object {
                   "height": "16px",
@@ -55,7 +75,17 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
             >
               <img
                 alt=""
-                className="ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-240"
+                className=
+                    ms-Image-image
+                    ms-Image-image--portrait
+                    is-notLoaded
+                    is-fadeIn
+                    {
+                      display: block;
+                      height: 100%;
+                      opacity: 0;
+                      width: 100%;
+                    }
                 onError={[Function]}
                 onLoad={[Function]}
                 role="presentation"
@@ -70,7 +100,12 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           </li>
           <li>
             <div
-              className="ms-Image ms-DocumentCardPreview-fileListIcon root-239"
+              className=
+                  ms-Image
+                  ms-DocumentCardPreview-fileListIcon
+                  {
+                    overflow: hidden;
+                  }
               style={
                 Object {
                   "height": "16px",
@@ -80,7 +115,17 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
             >
               <img
                 alt=""
-                className="ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-240"
+                className=
+                    ms-Image-image
+                    ms-Image-image--portrait
+                    is-notLoaded
+                    is-fadeIn
+                    {
+                      display: block;
+                      height: 100%;
+                      opacity: 0;
+                      width: 100%;
+                    }
                 onError={[Function]}
                 onLoad={[Function]}
                 role="presentation"
@@ -125,17 +170,51 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           className="ms-DocumentCardActivity-avatar"
         >
           <div
-            className="ms-Persona-coin ms-Persona--size32 coin-72"
+            className=
+                ms-Persona-coin
+                ms-Persona--size32
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
             role="persentation"
             size={11}
           >
             <div
-              className="ms-Persona-imageArea imageArea-80"
+              className=
+                  ms-Persona-imageArea
+                  {
+                    flex: 0 0 auto;
+                    height: 32px;
+                    position: relative;
+                    text-align: center;
+                    width: 32px;
+                  }
               style={undefined}
             >
               <div
                 aria-hidden="true"
-                className="ms-Persona-initials initials-306"
+                className=
+                    ms-Persona-initials
+                    {
+                      background-color: #00ABA9;
+                      border-radius: 50%;
+                      color: #ffffff;
+                      font-size: 14px;
+                      font-weight: 400;
+                      height: 32px;
+                      line-height: 32px;
+                    }
+                    @media screen and (-ms-high-contrast: active){& {
+                      -ms-high-contrast-adjust: none;
+                      background-color: Window !important;
+                      border: 1px solid WindowText;
+                      box-sizing: border-box;
+                      color: WindowText;
+                    }
                 style={undefined}
               >
                 <span>
@@ -143,7 +222,21 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 </span>
               </div>
               <div
-                className="ms-Image ms-Persona-image image-83"
+                className=
+                    ms-Image
+                    ms-Persona-image
+                    {
+                      border-radius: 50%;
+                      border: 0px;
+                      height: 32px;
+                      left: 0px;
+                      margin-right: 10px;
+                      overflow: hidden;
+                      perspective: 1px;
+                      position: absolute;
+                      top: 0px;
+                      width: 32px;
+                    }
                 style={
                   Object {
                     "height": 32,
@@ -153,7 +246,22 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               >
                 <img
                   alt=""
-                  className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+                  className=
+                      ms-Image-image
+                      ms-Image-image--cover
+                      ms-Image-image--portrait
+                      is-notLoaded
+                      is-fadeIn
+                      {
+                        display: block;
+                        height: auto;
+                        left: 50% /* @noflip */;
+                        opacity: 0;
+                        position: absolute;
+                        top: 50%;
+                        transform: translate(-50%,-50%);
+                        width: 100%;
+                      }
                   onError={[Function]}
                   onLoad={[Function]}
                   role={undefined}
@@ -167,16 +275,47 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           className="ms-DocumentCardActivity-avatar"
         >
           <div
-            className="ms-Persona-coin ms-Persona--size32 coin-72"
+            className=
+                ms-Persona-coin
+                ms-Persona--size32
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
             role="persentation"
             size={11}
           >
             <div
-              className="ms-Persona-imageArea imageArea-80"
+              className=
+                  ms-Persona-imageArea
+                  {
+                    flex: 0 0 auto;
+                    height: 32px;
+                    position: relative;
+                    text-align: center;
+                    width: 32px;
+                  }
               style={undefined}
             >
               <div
-                className="ms-Image ms-Persona-image image-83"
+                className=
+                    ms-Image
+                    ms-Persona-image
+                    {
+                      border-radius: 50%;
+                      border: 0px;
+                      height: 32px;
+                      left: 0px;
+                      margin-right: 10px;
+                      overflow: hidden;
+                      perspective: 1px;
+                      position: absolute;
+                      top: 0px;
+                      width: 32px;
+                    }
                 style={
                   Object {
                     "height": 32,
@@ -186,7 +325,22 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               >
                 <img
                   alt=""
-                  className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+                  className=
+                      ms-Image-image
+                      ms-Image-image--cover
+                      ms-Image-image--portrait
+                      is-notLoaded
+                      is-fadeIn
+                      {
+                        display: block;
+                        height: auto;
+                        left: 50% /* @noflip */;
+                        opacity: 0;
+                        position: absolute;
+                        top: 50%;
+                        transform: translate(-50%,-50%);
+                        width: 100%;
+                      }
                   onError={[Function]}
                   onLoad={[Function]}
                   role={undefined}
@@ -223,18 +377,105 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           aria-label="share action"
           aria-labelledby={undefined}
           aria-pressed={undefined}
-          className="ms-Button ms-Button--icon root-145"
+          className=
+              ms-Button
+              ms-Button--icon
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                background-color: transparent;
+                border-radius: 0px;
+                border: 1px solid transparent;
+                box-sizing: border-box;
+                cursor: pointer;
+                display: inline-block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                height: 32px;
+                outline: transparent;
+                padding-bottom: 0;
+                padding-left: 4px;
+                padding-right: 4px;
+                padding-top: 0;
+                position: relative;
+                text-align: center;
+                text-decoration: none;
+                user-select: none;
+                vertical-align: top;
+                width: 32px;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 0px;
+                content: "";
+                left: 0px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+                z-index: 1;
+              }
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                border: none;
+                bottom: -2px;
+                left: -2px;
+                outline-color: ButtonText;
+                right: -2px;
+                top: -2px;
+              }
+              &:hover {
+                color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
+              }
+              &:active {
+                color: #0078d4;
+              }
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
           type="button"
         >
           <div
-            className="ms-Button-flexContainer flexContainer-102"
+            className=
+                ms-Button-flexContainer
+                {
+                  align-items: center;
+                  display: flex;
+                  flex-wrap: nowrap;
+                  height: 100%;
+                  justify-content: center;
+                }
           >
             <i
               aria-hidden={true}
-              className="ms-Button-icon icon-109"
+              className=
+                  ms-Button-icon
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    display: inline-block;
+                    flex-shrink: 0;
+                    font-family: "FabricMDL2Icons";
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: normal;
+                    height: 16px;
+                    line-height: 16px;
+                    margin-bottom: 0;
+                    margin-left: 4px;
+                    margin-right: 4px;
+                    margin-top: 0;
+                    speak: none;
+                    text-align: center;
+                    vertical-align: middle;
+                  }
               data-icon-name="Share"
               role="presentation"
             >
@@ -251,18 +492,105 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           aria-label="pin action"
           aria-labelledby={undefined}
           aria-pressed={undefined}
-          className="ms-Button ms-Button--icon root-145"
+          className=
+              ms-Button
+              ms-Button--icon
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                background-color: transparent;
+                border-radius: 0px;
+                border: 1px solid transparent;
+                box-sizing: border-box;
+                cursor: pointer;
+                display: inline-block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                height: 32px;
+                outline: transparent;
+                padding-bottom: 0;
+                padding-left: 4px;
+                padding-right: 4px;
+                padding-top: 0;
+                position: relative;
+                text-align: center;
+                text-decoration: none;
+                user-select: none;
+                vertical-align: top;
+                width: 32px;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 0px;
+                content: "";
+                left: 0px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+                z-index: 1;
+              }
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                border: none;
+                bottom: -2px;
+                left: -2px;
+                outline-color: ButtonText;
+                right: -2px;
+                top: -2px;
+              }
+              &:hover {
+                color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
+              }
+              &:active {
+                color: #0078d4;
+              }
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
           type="button"
         >
           <div
-            className="ms-Button-flexContainer flexContainer-102"
+            className=
+                ms-Button-flexContainer
+                {
+                  align-items: center;
+                  display: flex;
+                  flex-wrap: nowrap;
+                  height: 100%;
+                  justify-content: center;
+                }
           >
             <i
               aria-hidden={true}
-              className="ms-Button-icon icon-147"
+              className=
+                  ms-Button-icon
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    display: inline-block;
+                    flex-shrink: 0;
+                    font-family: "FabricMDL2Icons-0";
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: normal;
+                    height: 16px;
+                    line-height: 16px;
+                    margin-bottom: 0;
+                    margin-left: 4px;
+                    margin-right: 4px;
+                    margin-top: 0;
+                    speak: none;
+                    text-align: center;
+                    vertical-align: middle;
+                  }
               data-icon-name="Pin"
               role="presentation"
             >
@@ -279,18 +607,105 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           aria-label="ringer action"
           aria-labelledby={undefined}
           aria-pressed={undefined}
-          className="ms-Button ms-Button--icon root-145"
+          className=
+              ms-Button
+              ms-Button--icon
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                background-color: transparent;
+                border-radius: 0px;
+                border: 1px solid transparent;
+                box-sizing: border-box;
+                cursor: pointer;
+                display: inline-block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                height: 32px;
+                outline: transparent;
+                padding-bottom: 0;
+                padding-left: 4px;
+                padding-right: 4px;
+                padding-top: 0;
+                position: relative;
+                text-align: center;
+                text-decoration: none;
+                user-select: none;
+                vertical-align: top;
+                width: 32px;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 0px;
+                content: "";
+                left: 0px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+                z-index: 1;
+              }
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                border: none;
+                bottom: -2px;
+                left: -2px;
+                outline-color: ButtonText;
+                right: -2px;
+                top: -2px;
+              }
+              &:hover {
+                color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
+              }
+              &:active {
+                color: #0078d4;
+              }
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
           type="button"
         >
           <div
-            className="ms-Button-flexContainer flexContainer-102"
+            className=
+                ms-Button-flexContainer
+                {
+                  align-items: center;
+                  display: flex;
+                  flex-wrap: nowrap;
+                  height: 100%;
+                  justify-content: center;
+                }
           >
             <i
               aria-hidden={true}
-              className="ms-Button-icon icon-308"
+              className=
+                  ms-Button-icon
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    display: inline-block;
+                    flex-shrink: 0;
+                    font-family: "FabricMDL2Icons-3";
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: normal;
+                    height: 16px;
+                    line-height: 16px;
+                    margin-bottom: 0;
+                    margin-left: 4px;
+                    margin-right: 4px;
+                    margin-top: 0;
+                    speak: none;
+                    text-align: center;
+                    vertical-align: middle;
+                  }
               data-icon-name="Ringer"
               role="presentation"
             >
@@ -304,7 +719,17 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
       >
         <i
           aria-hidden={true}
-          className="root-55"
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                speak: none;
+              }
           data-icon-name="View"
           role="presentation"
         >
@@ -330,7 +755,17 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
     >
       <i
         aria-hidden={true}
-        className="root-309"
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              display: inline-block;
+              font-family: "FabricMDL2Icons-8";
+              font-style: normal;
+              font-weight: normal;
+              speak: none;
+            }
         data-icon-name="OutlookLogo"
         role="presentation"
       >
@@ -357,7 +792,21 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
       >
         <i
           aria-hidden={true}
-          className="root-310"
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: inline-block;
+                font-family: "FabricMDL2Icons-0";
+                font-style: normal;
+                font-weight: normal;
+                padding-bottom: 8px;
+                padding-left: 8px;
+                padding-right: 8px;
+                padding-top: 8px;
+                speak: none;
+              }
           data-icon-name="attach"
           role="presentation"
         >
@@ -376,17 +825,51 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           className="ms-DocumentCardActivity-avatar"
         >
           <div
-            className="ms-Persona-coin ms-Persona--size32 coin-72"
+            className=
+                ms-Persona-coin
+                ms-Persona--size32
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
             role="persentation"
             size={11}
           >
             <div
-              className="ms-Persona-imageArea imageArea-80"
+              className=
+                  ms-Persona-imageArea
+                  {
+                    flex: 0 0 auto;
+                    height: 32px;
+                    position: relative;
+                    text-align: center;
+                    width: 32px;
+                  }
               style={undefined}
             >
               <div
                 aria-hidden="true"
-                className="ms-Persona-initials initials-306"
+                className=
+                    ms-Persona-initials
+                    {
+                      background-color: #00ABA9;
+                      border-radius: 50%;
+                      color: #ffffff;
+                      font-size: 14px;
+                      font-weight: 400;
+                      height: 32px;
+                      line-height: 32px;
+                    }
+                    @media screen and (-ms-high-contrast: active){& {
+                      -ms-high-contrast-adjust: none;
+                      background-color: Window !important;
+                      border: 1px solid WindowText;
+                      box-sizing: border-box;
+                      color: WindowText;
+                    }
                 style={undefined}
               >
                 <span>
@@ -394,7 +877,21 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 </span>
               </div>
               <div
-                className="ms-Image ms-Persona-image image-83"
+                className=
+                    ms-Image
+                    ms-Persona-image
+                    {
+                      border-radius: 50%;
+                      border: 0px;
+                      height: 32px;
+                      left: 0px;
+                      margin-right: 10px;
+                      overflow: hidden;
+                      perspective: 1px;
+                      position: absolute;
+                      top: 0px;
+                      width: 32px;
+                    }
                 style={
                   Object {
                     "height": 32,
@@ -404,7 +901,22 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               >
                 <img
                   alt=""
-                  className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+                  className=
+                      ms-Image-image
+                      ms-Image-image--cover
+                      ms-Image-image--portrait
+                      is-notLoaded
+                      is-fadeIn
+                      {
+                        display: block;
+                        height: auto;
+                        left: 50% /* @noflip */;
+                        opacity: 0;
+                        position: absolute;
+                        top: 50%;
+                        transform: translate(-50%,-50%);
+                        width: 100%;
+                      }
                   onError={[Function]}
                   onLoad={[Function]}
                   role={undefined}
@@ -418,16 +930,47 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           className="ms-DocumentCardActivity-avatar"
         >
           <div
-            className="ms-Persona-coin ms-Persona--size32 coin-72"
+            className=
+                ms-Persona-coin
+                ms-Persona--size32
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
             role="persentation"
             size={11}
           >
             <div
-              className="ms-Persona-imageArea imageArea-80"
+              className=
+                  ms-Persona-imageArea
+                  {
+                    flex: 0 0 auto;
+                    height: 32px;
+                    position: relative;
+                    text-align: center;
+                    width: 32px;
+                  }
               style={undefined}
             >
               <div
-                className="ms-Image ms-Persona-image image-83"
+                className=
+                    ms-Image
+                    ms-Persona-image
+                    {
+                      border-radius: 50%;
+                      border: 0px;
+                      height: 32px;
+                      left: 0px;
+                      margin-right: 10px;
+                      overflow: hidden;
+                      perspective: 1px;
+                      position: absolute;
+                      top: 0px;
+                      width: 32px;
+                    }
                 style={
                   Object {
                     "height": 32,
@@ -437,7 +980,22 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               >
                 <img
                   alt=""
-                  className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+                  className=
+                      ms-Image-image
+                      ms-Image-image--cover
+                      ms-Image-image--portrait
+                      is-notLoaded
+                      is-fadeIn
+                      {
+                        display: block;
+                        height: auto;
+                        left: 50% /* @noflip */;
+                        opacity: 0;
+                        position: absolute;
+                        top: 50%;
+                        transform: translate(-50%,-50%);
+                        width: 100%;
+                      }
                   onError={[Function]}
                   onLoad={[Function]}
                   role={undefined}
@@ -478,7 +1036,17 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
     >
       <i
         aria-hidden={true}
-        className="root-309"
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              display: inline-block;
+              font-family: "FabricMDL2Icons-8";
+              font-style: normal;
+              font-weight: normal;
+              speak: none;
+            }
         data-icon-name="OutlookLogo"
         role="presentation"
       >
@@ -505,7 +1073,21 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
       >
         <i
           aria-hidden={true}
-          className="root-310"
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: inline-block;
+                font-family: "FabricMDL2Icons-0";
+                font-style: normal;
+                font-weight: normal;
+                padding-bottom: 8px;
+                padding-left: 8px;
+                padding-right: 8px;
+                padding-top: 8px;
+                speak: none;
+              }
           data-icon-name="attach"
           role="presentation"
         >
@@ -524,17 +1106,51 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           className="ms-DocumentCardActivity-avatar"
         >
           <div
-            className="ms-Persona-coin ms-Persona--size32 coin-72"
+            className=
+                ms-Persona-coin
+                ms-Persona--size32
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
             role="persentation"
             size={11}
           >
             <div
-              className="ms-Persona-imageArea imageArea-80"
+              className=
+                  ms-Persona-imageArea
+                  {
+                    flex: 0 0 auto;
+                    height: 32px;
+                    position: relative;
+                    text-align: center;
+                    width: 32px;
+                  }
               style={undefined}
             >
               <div
                 aria-hidden="true"
-                className="ms-Persona-initials initials-306"
+                className=
+                    ms-Persona-initials
+                    {
+                      background-color: #00ABA9;
+                      border-radius: 50%;
+                      color: #ffffff;
+                      font-size: 14px;
+                      font-weight: 400;
+                      height: 32px;
+                      line-height: 32px;
+                    }
+                    @media screen and (-ms-high-contrast: active){& {
+                      -ms-high-contrast-adjust: none;
+                      background-color: Window !important;
+                      border: 1px solid WindowText;
+                      box-sizing: border-box;
+                      color: WindowText;
+                    }
                 style={undefined}
               >
                 <span>
@@ -542,7 +1158,21 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 </span>
               </div>
               <div
-                className="ms-Image ms-Persona-image image-83"
+                className=
+                    ms-Image
+                    ms-Persona-image
+                    {
+                      border-radius: 50%;
+                      border: 0px;
+                      height: 32px;
+                      left: 0px;
+                      margin-right: 10px;
+                      overflow: hidden;
+                      perspective: 1px;
+                      position: absolute;
+                      top: 0px;
+                      width: 32px;
+                    }
                 style={
                   Object {
                     "height": 32,
@@ -552,7 +1182,22 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               >
                 <img
                   alt=""
-                  className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+                  className=
+                      ms-Image-image
+                      ms-Image-image--cover
+                      ms-Image-image--portrait
+                      is-notLoaded
+                      is-fadeIn
+                      {
+                        display: block;
+                        height: auto;
+                        left: 50% /* @noflip */;
+                        opacity: 0;
+                        position: absolute;
+                        top: 50%;
+                        transform: translate(-50%,-50%);
+                        width: 100%;
+                      }
                   onError={[Function]}
                   onLoad={[Function]}
                   role={undefined}
@@ -566,16 +1211,47 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           className="ms-DocumentCardActivity-avatar"
         >
           <div
-            className="ms-Persona-coin ms-Persona--size32 coin-72"
+            className=
+                ms-Persona-coin
+                ms-Persona--size32
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
             role="persentation"
             size={11}
           >
             <div
-              className="ms-Persona-imageArea imageArea-80"
+              className=
+                  ms-Persona-imageArea
+                  {
+                    flex: 0 0 auto;
+                    height: 32px;
+                    position: relative;
+                    text-align: center;
+                    width: 32px;
+                  }
               style={undefined}
             >
               <div
-                className="ms-Image ms-Persona-image image-83"
+                className=
+                    ms-Image
+                    ms-Persona-image
+                    {
+                      border-radius: 50%;
+                      border: 0px;
+                      height: 32px;
+                      left: 0px;
+                      margin-right: 10px;
+                      overflow: hidden;
+                      perspective: 1px;
+                      position: absolute;
+                      top: 0px;
+                      width: 32px;
+                    }
                 style={
                   Object {
                     "height": 32,
@@ -585,7 +1261,22 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               >
                 <img
                   alt=""
-                  className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+                  className=
+                      ms-Image-image
+                      ms-Image-image--cover
+                      ms-Image-image--portrait
+                      is-notLoaded
+                      is-fadeIn
+                      {
+                        display: block;
+                        height: auto;
+                        left: 50% /* @noflip */;
+                        opacity: 0;
+                        position: absolute;
+                        top: 50%;
+                        transform: translate(-50%,-50%);
+                        width: 100%;
+                      }
                   onError={[Function]}
                   onLoad={[Function]}
                   role={undefined}
@@ -626,7 +1317,17 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
     >
       <i
         aria-hidden={true}
-        className="root-309"
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              display: inline-block;
+              font-family: "FabricMDL2Icons-8";
+              font-style: normal;
+              font-weight: normal;
+              speak: none;
+            }
         data-icon-name="OutlookLogo"
         role="presentation"
       >
@@ -659,17 +1360,51 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           className="ms-DocumentCardActivity-avatar"
         >
           <div
-            className="ms-Persona-coin ms-Persona--size32 coin-72"
+            className=
+                ms-Persona-coin
+                ms-Persona--size32
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
             role="persentation"
             size={11}
           >
             <div
-              className="ms-Persona-imageArea imageArea-80"
+              className=
+                  ms-Persona-imageArea
+                  {
+                    flex: 0 0 auto;
+                    height: 32px;
+                    position: relative;
+                    text-align: center;
+                    width: 32px;
+                  }
               style={undefined}
             >
               <div
                 aria-hidden="true"
-                className="ms-Persona-initials initials-306"
+                className=
+                    ms-Persona-initials
+                    {
+                      background-color: #00ABA9;
+                      border-radius: 50%;
+                      color: #ffffff;
+                      font-size: 14px;
+                      font-weight: 400;
+                      height: 32px;
+                      line-height: 32px;
+                    }
+                    @media screen and (-ms-high-contrast: active){& {
+                      -ms-high-contrast-adjust: none;
+                      background-color: Window !important;
+                      border: 1px solid WindowText;
+                      box-sizing: border-box;
+                      color: WindowText;
+                    }
                 style={undefined}
               >
                 <span>
@@ -677,7 +1412,21 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 </span>
               </div>
               <div
-                className="ms-Image ms-Persona-image image-83"
+                className=
+                    ms-Image
+                    ms-Persona-image
+                    {
+                      border-radius: 50%;
+                      border: 0px;
+                      height: 32px;
+                      left: 0px;
+                      margin-right: 10px;
+                      overflow: hidden;
+                      perspective: 1px;
+                      position: absolute;
+                      top: 0px;
+                      width: 32px;
+                    }
                 style={
                   Object {
                     "height": 32,
@@ -687,7 +1436,22 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               >
                 <img
                   alt=""
-                  className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+                  className=
+                      ms-Image-image
+                      ms-Image-image--cover
+                      ms-Image-image--portrait
+                      is-notLoaded
+                      is-fadeIn
+                      {
+                        display: block;
+                        height: auto;
+                        left: 50% /* @noflip */;
+                        opacity: 0;
+                        position: absolute;
+                        top: 50%;
+                        transform: translate(-50%,-50%);
+                        width: 100%;
+                      }
                   onError={[Function]}
                   onLoad={[Function]}
                   role={undefined}
@@ -701,16 +1465,47 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           className="ms-DocumentCardActivity-avatar"
         >
           <div
-            className="ms-Persona-coin ms-Persona--size32 coin-72"
+            className=
+                ms-Persona-coin
+                ms-Persona--size32
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
             role="persentation"
             size={11}
           >
             <div
-              className="ms-Persona-imageArea imageArea-80"
+              className=
+                  ms-Persona-imageArea
+                  {
+                    flex: 0 0 auto;
+                    height: 32px;
+                    position: relative;
+                    text-align: center;
+                    width: 32px;
+                  }
               style={undefined}
             >
               <div
-                className="ms-Image ms-Persona-image image-83"
+                className=
+                    ms-Image
+                    ms-Persona-image
+                    {
+                      border-radius: 50%;
+                      border: 0px;
+                      height: 32px;
+                      left: 0px;
+                      margin-right: 10px;
+                      overflow: hidden;
+                      perspective: 1px;
+                      position: absolute;
+                      top: 0px;
+                      width: 32px;
+                    }
                 style={
                   Object {
                     "height": 32,
@@ -720,7 +1515,22 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               >
                 <img
                   alt=""
-                  className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+                  className=
+                      ms-Image-image
+                      ms-Image-image--cover
+                      ms-Image-image--portrait
+                      is-notLoaded
+                      is-fadeIn
+                      {
+                        display: block;
+                        height: auto;
+                        left: 50% /* @noflip */;
+                        opacity: 0;
+                        position: absolute;
+                        top: 50%;
+                        transform: translate(-50%,-50%);
+                        width: 100%;
+                      }
                   onError={[Function]}
                   onLoad={[Function]}
                   role={undefined}
@@ -771,7 +1581,19 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
       >
         <i
           aria-hidden={true}
-          className="root-303"
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #ffffff;
+                display: inline-block;
+                font-family: "FabricMDL2Icons-1";
+                font-size: 42px;
+                font-style: normal;
+                font-weight: normal;
+                speak: none;
+              }
           data-icon-name="OpenFile"
           role="presentation"
         >
@@ -798,16 +1620,47 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
             className="ms-DocumentCardActivity-avatar"
           >
             <div
-              className="ms-Persona-coin ms-Persona--size32 coin-72"
+              className=
+                  ms-Persona-coin
+                  ms-Persona--size32
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                  }
               role="persentation"
               size={11}
             >
               <div
-                className="ms-Persona-imageArea imageArea-80"
+                className=
+                    ms-Persona-imageArea
+                    {
+                      flex: 0 0 auto;
+                      height: 32px;
+                      position: relative;
+                      text-align: center;
+                      width: 32px;
+                    }
                 style={undefined}
               >
                 <div
-                  className="ms-Image ms-Persona-image image-83"
+                  className=
+                      ms-Image
+                      ms-Persona-image
+                      {
+                        border-radius: 50%;
+                        border: 0px;
+                        height: 32px;
+                        left: 0px;
+                        margin-right: 10px;
+                        overflow: hidden;
+                        perspective: 1px;
+                        position: absolute;
+                        top: 0px;
+                        width: 32px;
+                      }
                   style={
                     Object {
                       "height": 32,
@@ -817,7 +1670,22 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 >
                   <img
                     alt=""
-                    className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+                    className=
+                        ms-Image-image
+                        ms-Image-image--cover
+                        ms-Image-image--portrait
+                        is-notLoaded
+                        is-fadeIn
+                        {
+                          display: block;
+                          height: auto;
+                          left: 50% /* @noflip */;
+                          opacity: 0;
+                          position: absolute;
+                          top: 50%;
+                          transform: translate(-50%,-50%);
+                          width: 100%;
+                        }
                     onError={[Function]}
                     onLoad={[Function]}
                     role={undefined}

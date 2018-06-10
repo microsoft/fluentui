@@ -3,7 +3,12 @@
 exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`] = `
 <div>
   <div
-    className="ms-ResizeGroup root-98"
+    className=
+        ms-ResizeGroup
+        {
+          display: block;
+          position: relative;
+        }
   >
     <div
       style={
@@ -17,7 +22,18 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
         aria-describedby={undefined}
         aria-label="Use left and right arrow keys to navigate between commands"
         aria-labelledby={undefined}
-        className="ms-FocusZone ms-CommandBar root-276"
+        className=
+            ms-FocusZone
+            ms-CommandBar
+            {
+              background-color: #f4f4f4;
+              display: flex;
+              height: 40px;
+              padding-bottom: 0;
+              padding-left: 16px;
+              padding-right: 16px;
+              padding-top: 0;
+            }
         data-focuszone-id="FocusZone0"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -25,7 +41,14 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
         role="menubar"
       >
         <div
-          className="ms-OverflowSet ms-CommandBar-primaryCommand primarySet-277"
+          className=
+              ms-OverflowSet
+              ms-CommandBar-primaryCommand
+              {
+                align-items: stretch;
+                display: flex;
+                flex-grow: 1;
+              }
           role="presentation"
         />
       </div>

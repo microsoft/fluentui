@@ -8,7 +8,25 @@ exports[`Component Examples renders Dropdown.Error.Example.tsx correctly 1`] = `
     className="ms-Dropdown-container"
   >
     <label
-      className="ms-Label ms-Dropdown-label root-89"
+      className=
+          ms-Label
+          ms-Dropdown-label
+          {
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #333333;
+            display: block;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            overflow-wrap: break-word;
+            padding-bottom: 5px;
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 5px;
+            word-wrap: break-word;
+          }
       htmlFor="Errormessagedrop1"
       id="Errormessagedrop1-label"
       required={undefined}
@@ -49,7 +67,17 @@ exports[`Component Examples renders Dropdown.Error.Example.tsx correctly 1`] = `
       >
         <i
           aria-hidden={true}
-          className="ms-Dropdown-caretDown root-55"
+          className=
+              ms-Dropdown-caretDown
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                speak: none;
+              }
           data-icon-name="ChevronDown"
           role="presentation"
         >
