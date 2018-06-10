@@ -10,7 +10,60 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
     aria-labelledby={undefined}
     aria-posinset={undefined}
     aria-setsize={undefined}
-    className="ms-Checkbox is-enabled root-193"
+    className=
+        ms-Checkbox
+        is-enabled
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          background: none;
+          border: none;
+          cursor: pointer;
+          display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 0;
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: 10px;
+          outline: none;
+          padding-bottom: 0;
+          padding-left: 0;
+          padding-right: 0;
+          padding-top: 0;
+          position: relative;
+        }
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: -2px;
+          content: "";
+          left: -2px;
+          outline: 1px solid #666666;
+          position: absolute;
+          right: -2px;
+          top: -2px;
+          z-index: 1;
+        }
+        &:hover .ms-Checkbox-checkbox {
+          border-color: #212121;
+        }
+        &:focus .ms-Checkbox-checkbox {
+          border-color: #212121;
+        }
+        &:hover .ms-Checkbox-checkmark {
+          color: #a6a6a6;
+          opacity: 1;
+        }
+        &:hover .ms-Checkbox-text {
+          color: #333333;
+        }
+        &:focus .ms-Checkbox-text {
+          color: #333333;
+        }
     data-ktp-execute-target={undefined}
     disabled={undefined}
     id="checkbox-0"
@@ -22,16 +75,66 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
     type="button"
   >
     <label
-      className="ms-Checkbox-label label-184"
+      className=
+          ms-Checkbox-label
+          {
+            align-items: center;
+            cursor: pointer;
+            display: inline-flex;
+            margin-bottom: 0;
+            margin-left: -4px;
+            margin-right: -4px;
+            margin-top: 0;
+            position: relative;
+            text-align: left;
+            user-select: none;
+          }
       htmlFor="checkbox-0"
     >
       <div
-        className="ms-Checkbox-checkbox checkbox-190"
+        className=
+            ms-Checkbox-checkbox
+            {
+              align-items: center;
+              border-color: #666666;
+              border-style: solid;
+              border-width: 1px;
+              box-sizing: border-box;
+              display: flex;
+              flex-shrink: 0;
+              height: 20px;
+              justify-content: center;
+              margin-bottom: 0;
+              margin-left: 4px;
+              margin-right: 4px;
+              margin-top: 0;
+              overflow: hidden;
+              transition-duration: 200ms;
+              transition-property: background, border, border-color;
+              transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+              width: 20px;
+            }
         data-ktp-target={undefined}
       >
         <i
           aria-hidden={true}
-          className="ms-Checkbox-checkmark checkmark-192"
+          className=
+              ms-Checkbox-checkmark
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #ffffff;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                opacity: 0;
+                speak: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                color: Window;
+              }
           data-icon-name="CheckMark"
           role="presentation"
         >
@@ -39,7 +142,16 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
         </i>
       </div>
       <span
-        className="ms-Checkbox-text text-187"
+        className=
+            ms-Checkbox-text
+            {
+              color: #333333;
+              font-size: 14px;
+              margin-bottom: 0;
+              margin-left: 4px;
+              margin-right: 4px;
+              margin-top: 0;
+            }
       >
         Uncontrolled checkbox
       </span>
@@ -59,7 +171,67 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
     aria-labelledby={undefined}
     aria-posinset={undefined}
     aria-setsize={undefined}
-    className="ms-Checkbox is-checked is-enabled root-194"
+    className=
+        ms-Checkbox
+        is-checked
+        is-enabled
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          background: none;
+          border: none;
+          cursor: pointer;
+          display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 0;
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: 10px;
+          outline: none;
+          padding-bottom: 0;
+          padding-left: 0;
+          padding-right: 0;
+          padding-top: 0;
+          position: relative;
+        }
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: -2px;
+          content: "";
+          left: -2px;
+          outline: 1px solid #666666;
+          position: absolute;
+          right: -2px;
+          top: -2px;
+          z-index: 1;
+        }
+        &:hover .ms-Checkbox-checkbox {
+          background: #106ebe;
+          border-color: #106ebe;
+        }
+        &:focus .ms-Checkbox-checkbox {
+          background: #106ebe;
+          border-color: #106ebe;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+          background: WindowText;
+          border-color: WindowText;
+        }
+        @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-checkbox {
+          background: WindowText;
+          border-color: WindowText;
+        }
+        &:hover .ms-Checkbox-text {
+          color: #333333;
+        }
+        &:focus .ms-Checkbox-text {
+          color: #333333;
+        }
     data-ktp-execute-target={undefined}
     defaultChecked={true}
     disabled={undefined}
@@ -72,16 +244,71 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
     type="button"
   >
     <label
-      className="ms-Checkbox-label label-184"
+      className=
+          ms-Checkbox-label
+          {
+            align-items: center;
+            cursor: pointer;
+            display: inline-flex;
+            margin-bottom: 0;
+            margin-left: -4px;
+            margin-right: -4px;
+            margin-top: 0;
+            position: relative;
+            text-align: left;
+            user-select: none;
+          }
       htmlFor="checkbox-1"
     >
       <div
-        className="ms-Checkbox-checkbox checkbox-185"
+        className=
+            ms-Checkbox-checkbox
+            {
+              align-items: center;
+              background: #0078d4;
+              border-color: #0078d4;
+              border-style: solid;
+              border-width: 1px;
+              box-sizing: border-box;
+              display: flex;
+              flex-shrink: 0;
+              height: 20px;
+              justify-content: center;
+              margin-bottom: 0;
+              margin-left: 4px;
+              margin-right: 4px;
+              margin-top: 0;
+              overflow: hidden;
+              transition-duration: 200ms;
+              transition-property: background, border, border-color;
+              transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+              width: 20px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              background: WindowText;
+              border-color: WindowText;
+            }
         data-ktp-target={undefined}
       >
         <i
           aria-hidden={true}
-          className="ms-Checkbox-checkmark checkmark-188"
+          className=
+              ms-Checkbox-checkmark
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #ffffff;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                opacity: 1;
+                speak: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                color: Window;
+              }
           data-icon-name="CheckMark"
           role="presentation"
         >
@@ -89,7 +316,16 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
         </i>
       </div>
       <span
-        className="ms-Checkbox-text text-187"
+        className=
+            ms-Checkbox-text
+            {
+              color: #333333;
+              font-size: 14px;
+              margin-bottom: 0;
+              margin-left: 4px;
+              margin-right: 4px;
+              margin-top: 0;
+            }
       >
         Uncontrolled checkbox with defaultChecked true
       </span>
@@ -103,7 +339,44 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
     aria-labelledby={undefined}
     aria-posinset={undefined}
     aria-setsize={undefined}
-    className="ms-Checkbox is-disabled root-195"
+    className=
+        ms-Checkbox
+        is-disabled
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          background: none;
+          border: none;
+          cursor: pointer;
+          display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 0;
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: 10px;
+          outline: none;
+          padding-bottom: 0;
+          padding-left: 0;
+          padding-right: 0;
+          padding-top: 0;
+          position: relative;
+        }
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: -2px;
+          content: "";
+          left: -2px;
+          outline: 1px solid #666666;
+          position: absolute;
+          right: -2px;
+          top: -2px;
+          z-index: 1;
+        }
     data-ktp-execute-target={undefined}
     disabled={true}
     id="checkbox-2"
@@ -115,16 +388,66 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
     type="button"
   >
     <label
-      className="ms-Checkbox-label label-196"
+      className=
+          ms-Checkbox-label
+          {
+            align-items: center;
+            cursor: default;
+            display: inline-flex;
+            margin-bottom: 0;
+            margin-left: -4px;
+            margin-right: -4px;
+            margin-top: 0;
+            position: relative;
+            text-align: left;
+            user-select: none;
+          }
       htmlFor="checkbox-2"
     >
       <div
-        className="ms-Checkbox-checkbox checkbox-197"
+        className=
+            ms-Checkbox-checkbox
+            {
+              align-items: center;
+              border-color: #c8c8c8;
+              border-style: solid;
+              border-width: 1px;
+              box-sizing: border-box;
+              display: flex;
+              flex-shrink: 0;
+              height: 20px;
+              justify-content: center;
+              margin-bottom: 0;
+              margin-left: 4px;
+              margin-right: 4px;
+              margin-top: 0;
+              overflow: hidden;
+              transition-duration: 200ms;
+              transition-property: background, border, border-color;
+              transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+              width: 20px;
+            }
         data-ktp-target={undefined}
       >
         <i
           aria-hidden={true}
-          className="ms-Checkbox-checkmark checkmark-200"
+          className=
+              ms-Checkbox-checkmark
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #ffffff;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                opacity: 0;
+                speak: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                color: InactiveBorder;
+              }
           data-icon-name="CheckMark"
           role="presentation"
         >
@@ -132,7 +455,16 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
         </i>
       </div>
       <span
-        className="ms-Checkbox-text text-199"
+        className=
+            ms-Checkbox-text
+            {
+              color: #a6a6a6;
+              font-size: 14px;
+              margin-bottom: 0;
+              margin-left: 4px;
+              margin-right: 4px;
+              margin-top: 0;
+            }
       >
         Disabled uncontrolled checkbox
       </span>
@@ -146,7 +478,45 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
     aria-labelledby={undefined}
     aria-posinset={undefined}
     aria-setsize={undefined}
-    className="ms-Checkbox is-checked is-disabled root-195"
+    className=
+        ms-Checkbox
+        is-checked
+        is-disabled
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          background: none;
+          border: none;
+          cursor: pointer;
+          display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 0;
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: 10px;
+          outline: none;
+          padding-bottom: 0;
+          padding-left: 0;
+          padding-right: 0;
+          padding-top: 0;
+          position: relative;
+        }
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: -2px;
+          content: "";
+          left: -2px;
+          outline: 1px solid #666666;
+          position: absolute;
+          right: -2px;
+          top: -2px;
+          z-index: 1;
+        }
     data-ktp-execute-target={undefined}
     defaultChecked={true}
     disabled={true}
@@ -159,16 +529,67 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
     type="button"
   >
     <label
-      className="ms-Checkbox-label label-196"
+      className=
+          ms-Checkbox-label
+          {
+            align-items: center;
+            cursor: default;
+            display: inline-flex;
+            margin-bottom: 0;
+            margin-left: -4px;
+            margin-right: -4px;
+            margin-top: 0;
+            position: relative;
+            text-align: left;
+            user-select: none;
+          }
       htmlFor="checkbox-3"
     >
       <div
-        className="ms-Checkbox-checkbox checkbox-201"
+        className=
+            ms-Checkbox-checkbox
+            {
+              align-items: center;
+              background: #c8c8c8;
+              border-color: #c8c8c8;
+              border-style: solid;
+              border-width: 1px;
+              box-sizing: border-box;
+              display: flex;
+              flex-shrink: 0;
+              height: 20px;
+              justify-content: center;
+              margin-bottom: 0;
+              margin-left: 4px;
+              margin-right: 4px;
+              margin-top: 0;
+              overflow: hidden;
+              transition-duration: 200ms;
+              transition-property: background, border, border-color;
+              transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+              width: 20px;
+            }
         data-ktp-target={undefined}
       >
         <i
           aria-hidden={true}
-          className="ms-Checkbox-checkmark checkmark-203"
+          className=
+              ms-Checkbox-checkmark
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #f4f4f4;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                opacity: 1;
+                speak: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                color: InactiveBorder;
+              }
           data-icon-name="CheckMark"
           role="presentation"
         >
@@ -176,7 +597,16 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
         </i>
       </div>
       <span
-        className="ms-Checkbox-text text-199"
+        className=
+            ms-Checkbox-text
+            {
+              color: #a6a6a6;
+              font-size: 14px;
+              margin-bottom: 0;
+              margin-left: 4px;
+              margin-right: 4px;
+              margin-top: 0;
+            }
       >
         Disabled uncontrolled checkbox with defaultChecked true
       </span>
@@ -191,7 +621,60 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
     aria-posinset={undefined}
     aria-setsize={undefined}
     checked={false}
-    className="ms-Checkbox is-enabled root-193"
+    className=
+        ms-Checkbox
+        is-enabled
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          background: none;
+          border: none;
+          cursor: pointer;
+          display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 0;
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: 10px;
+          outline: none;
+          padding-bottom: 0;
+          padding-left: 0;
+          padding-right: 0;
+          padding-top: 0;
+          position: relative;
+        }
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: -2px;
+          content: "";
+          left: -2px;
+          outline: 1px solid #666666;
+          position: absolute;
+          right: -2px;
+          top: -2px;
+          z-index: 1;
+        }
+        &:hover .ms-Checkbox-checkbox {
+          border-color: #212121;
+        }
+        &:focus .ms-Checkbox-checkbox {
+          border-color: #212121;
+        }
+        &:hover .ms-Checkbox-checkmark {
+          color: #a6a6a6;
+          opacity: 1;
+        }
+        &:hover .ms-Checkbox-text {
+          color: #333333;
+        }
+        &:focus .ms-Checkbox-text {
+          color: #333333;
+        }
     data-ktp-execute-target={undefined}
     disabled={undefined}
     id="checkbox-4"
@@ -203,16 +686,66 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
     type="button"
   >
     <label
-      className="ms-Checkbox-label label-184"
+      className=
+          ms-Checkbox-label
+          {
+            align-items: center;
+            cursor: pointer;
+            display: inline-flex;
+            margin-bottom: 0;
+            margin-left: -4px;
+            margin-right: -4px;
+            margin-top: 0;
+            position: relative;
+            text-align: left;
+            user-select: none;
+          }
       htmlFor="checkbox-4"
     >
       <div
-        className="ms-Checkbox-checkbox checkbox-190"
+        className=
+            ms-Checkbox-checkbox
+            {
+              align-items: center;
+              border-color: #666666;
+              border-style: solid;
+              border-width: 1px;
+              box-sizing: border-box;
+              display: flex;
+              flex-shrink: 0;
+              height: 20px;
+              justify-content: center;
+              margin-bottom: 0;
+              margin-left: 4px;
+              margin-right: 4px;
+              margin-top: 0;
+              overflow: hidden;
+              transition-duration: 200ms;
+              transition-property: background, border, border-color;
+              transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+              width: 20px;
+            }
         data-ktp-target={undefined}
       >
         <i
           aria-hidden={true}
-          className="ms-Checkbox-checkmark checkmark-192"
+          className=
+              ms-Checkbox-checkmark
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #ffffff;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                opacity: 0;
+                speak: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                color: Window;
+              }
           data-icon-name="CheckMark"
           role="presentation"
         >
@@ -220,7 +753,16 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
         </i>
       </div>
       <span
-        className="ms-Checkbox-text text-187"
+        className=
+            ms-Checkbox-text
+            {
+              color: #333333;
+              font-size: 14px;
+              margin-bottom: 0;
+              margin-left: 4px;
+              margin-right: 4px;
+              margin-top: 0;
+            }
       >
         Controlled checkbox
       </span>
@@ -234,7 +776,61 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
     aria-labelledby={undefined}
     aria-posinset={undefined}
     aria-setsize={undefined}
-    className="ms-Checkbox reversed is-enabled root-193"
+    className=
+        ms-Checkbox
+        reversed
+        is-enabled
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          background: none;
+          border: none;
+          cursor: pointer;
+          display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 0;
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: 10px;
+          outline: none;
+          padding-bottom: 0;
+          padding-left: 0;
+          padding-right: 0;
+          padding-top: 0;
+          position: relative;
+        }
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: -2px;
+          content: "";
+          left: -2px;
+          outline: 1px solid #666666;
+          position: absolute;
+          right: -2px;
+          top: -2px;
+          z-index: 1;
+        }
+        &:hover .ms-Checkbox-checkbox {
+          border-color: #212121;
+        }
+        &:focus .ms-Checkbox-checkbox {
+          border-color: #212121;
+        }
+        &:hover .ms-Checkbox-checkmark {
+          color: #a6a6a6;
+          opacity: 1;
+        }
+        &:hover .ms-Checkbox-text {
+          color: #333333;
+        }
+        &:focus .ms-Checkbox-text {
+          color: #333333;
+        }
     data-ktp-execute-target={undefined}
     disabled={undefined}
     id="checkbox-5"
@@ -246,16 +842,68 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
     type="button"
   >
     <label
-      className="ms-Checkbox-label label-204"
+      className=
+          ms-Checkbox-label
+          {
+            align-items: center;
+            cursor: pointer;
+            display: inline-flex;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+            margin-bottom: 0;
+            margin-left: -4px;
+            margin-right: -4px;
+            margin-top: 0;
+            position: relative;
+            text-align: left;
+            user-select: none;
+          }
       htmlFor="checkbox-5"
     >
       <div
-        className="ms-Checkbox-checkbox checkbox-190"
+        className=
+            ms-Checkbox-checkbox
+            {
+              align-items: center;
+              border-color: #666666;
+              border-style: solid;
+              border-width: 1px;
+              box-sizing: border-box;
+              display: flex;
+              flex-shrink: 0;
+              height: 20px;
+              justify-content: center;
+              margin-bottom: 0;
+              margin-left: 4px;
+              margin-right: 4px;
+              margin-top: 0;
+              overflow: hidden;
+              transition-duration: 200ms;
+              transition-property: background, border, border-color;
+              transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+              width: 20px;
+            }
         data-ktp-target={undefined}
       >
         <i
           aria-hidden={true}
-          className="ms-Checkbox-checkmark checkmark-192"
+          className=
+              ms-Checkbox-checkmark
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #ffffff;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                opacity: 0;
+                speak: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                color: Window;
+              }
           data-icon-name="CheckMark"
           role="presentation"
         >
@@ -263,7 +911,16 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
         </i>
       </div>
       <span
-        className="ms-Checkbox-text text-187"
+        className=
+            ms-Checkbox-text
+            {
+              color: #333333;
+              font-size: 14px;
+              margin-bottom: 0;
+              margin-left: 4px;
+              margin-right: 4px;
+              margin-top: 0;
+            }
       >
         Checkbox rendered with boxSide "end"
       </span>
@@ -277,7 +934,60 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
     aria-labelledby={undefined}
     aria-posinset={undefined}
     aria-setsize={undefined}
-    className="ms-Checkbox is-enabled root-193"
+    className=
+        ms-Checkbox
+        is-enabled
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          background: none;
+          border: none;
+          cursor: pointer;
+          display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 0;
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: 10px;
+          outline: none;
+          padding-bottom: 0;
+          padding-left: 0;
+          padding-right: 0;
+          padding-top: 0;
+          position: relative;
+        }
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: -2px;
+          content: "";
+          left: -2px;
+          outline: 1px solid #666666;
+          position: absolute;
+          right: -2px;
+          top: -2px;
+          z-index: 1;
+        }
+        &:hover .ms-Checkbox-checkbox {
+          border-color: #212121;
+        }
+        &:focus .ms-Checkbox-checkbox {
+          border-color: #212121;
+        }
+        &:hover .ms-Checkbox-checkmark {
+          color: #a6a6a6;
+          opacity: 1;
+        }
+        &:hover .ms-Checkbox-text {
+          color: #333333;
+        }
+        &:focus .ms-Checkbox-text {
+          color: #333333;
+        }
     data-ktp-execute-target={undefined}
     disabled={undefined}
     id="checkbox-6"
@@ -289,16 +999,66 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
     type="button"
   >
     <label
-      className="ms-Checkbox-label label-184"
+      className=
+          ms-Checkbox-label
+          {
+            align-items: center;
+            cursor: pointer;
+            display: inline-flex;
+            margin-bottom: 0;
+            margin-left: -4px;
+            margin-right: -4px;
+            margin-top: 0;
+            position: relative;
+            text-align: left;
+            user-select: none;
+          }
       htmlFor="checkbox-6"
     >
       <div
-        className="ms-Checkbox-checkbox checkbox-190"
+        className=
+            ms-Checkbox-checkbox
+            {
+              align-items: center;
+              border-color: #666666;
+              border-style: solid;
+              border-width: 1px;
+              box-sizing: border-box;
+              display: flex;
+              flex-shrink: 0;
+              height: 20px;
+              justify-content: center;
+              margin-bottom: 0;
+              margin-left: 4px;
+              margin-right: 4px;
+              margin-top: 0;
+              overflow: hidden;
+              transition-duration: 200ms;
+              transition-property: background, border, border-color;
+              transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+              width: 20px;
+            }
         data-ktp-target={undefined}
       >
         <i
           aria-hidden={true}
-          className="ms-Checkbox-checkmark checkmark-192"
+          className=
+              ms-Checkbox-checkmark
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #ffffff;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                opacity: 0;
+                speak: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                color: Window;
+              }
           data-icon-name="CheckMark"
           role="presentation"
         >
@@ -306,20 +1066,82 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
         </i>
       </div>
       <div
-        className="ms-Persona ms-Persona--size32 root-205"
+        className=
+            ms-Persona
+            ms-Persona--size32
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              align-items: center;
+              box-shadow: none;
+              box-sizing: border-box;
+              color: #333333;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              height: 32px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              min-width: 32px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+            }
+            & .contextualHost {
+              display: none;
+            }
+            &:hover $primaryText {
+              color: #212121;
+            }
         size={11}
         style={undefined}
       >
         <div
-          className="ms-Persona-coin ms-Persona--size32 coin-72"
+          className=
+              ms-Persona-coin
+              ms-Persona--size32
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+              }
           size={11}
         >
           <div
-            className="ms-Persona-imageArea imageArea-80"
+            className=
+                ms-Persona-imageArea
+                {
+                  flex: 0 0 auto;
+                  height: 32px;
+                  position: relative;
+                  text-align: center;
+                  width: 32px;
+                }
             style={undefined}
           >
             <div
-              className="ms-Image ms-Persona-image image-83"
+              className=
+                  ms-Image
+                  ms-Persona-image
+                  {
+                    border-radius: 50%;
+                    border: 0px;
+                    height: 32px;
+                    left: 0px;
+                    margin-right: 10px;
+                    overflow: hidden;
+                    perspective: 1px;
+                    position: absolute;
+                    top: 0px;
+                    width: 32px;
+                  }
               style={
                 Object {
                   "height": 32,
@@ -329,7 +1151,22 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
             >
               <img
                 alt=""
-                className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+                className=
+                    ms-Image-image
+                    ms-Image-image--cover
+                    ms-Image-image--portrait
+                    is-notLoaded
+                    is-fadeIn
+                    {
+                      display: block;
+                      height: auto;
+                      left: 50% /* @noflip */;
+                      opacity: 0;
+                      position: absolute;
+                      top: 50%;
+                      transform: translate(-50%,-50%);
+                      width: 100%;
+                    }
                 onError={[Function]}
                 onLoad={[Function]}
                 role={undefined}
@@ -339,10 +1176,32 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
           </div>
         </div>
         <div
-          className="ms-Persona-details details-206"
+          className=
+              ms-Persona-details
+              {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                min-width: 0px;
+                padding-bottom: 0;
+                padding-left: 16px;
+                padding-right: 24px;
+                padding-top: 0;
+                text-align: left;
+                width: 100%;
+              }
         >
           <div
-            className="ms-Persona-primaryText primaryText-207"
+            className=
+                ms-Persona-primaryText
+                {
+                  color: #333333;
+                  font-size: 14px;
+                  font-weight: 400;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
           >
             <div
               aria-describedby={undefined}
@@ -356,13 +1215,43 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
             </div>
           </div>
           <div
-            className="ms-Persona-secondaryText secondaryText-208"
+            className=
+                ms-Persona-secondaryText
+                {
+                  color: #666666;
+                  display: none;
+                  font-size: 12px;
+                  font-weight: 400;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
           />
           <div
-            className="ms-Persona-tertiaryText tertiaryText-209"
+            className=
+                ms-Persona-tertiaryText
+                {
+                  color: #666666;
+                  display: none;
+                  font-size: 12px;
+                  font-weight: 400;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
           />
           <div
-            className="ms-Persona-optionalText optionalText-210"
+            className=
+                ms-Persona-optionalText
+                {
+                  color: #666666;
+                  display: none;
+                  font-size: 12px;
+                  font-weight: 400;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
           />
         </div>
       </div>

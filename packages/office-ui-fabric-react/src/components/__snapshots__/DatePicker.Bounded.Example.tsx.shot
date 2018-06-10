@@ -44,7 +44,17 @@ exports[`Component Examples renders DatePicker.Bounded.Example.tsx correctly 1`]
             />
             <i
               aria-hidden={true}
-              className="ms-DatePicker-event--without-label root-55"
+              className=
+                  ms-DatePicker-event--without-label
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    display: inline-block;
+                    font-family: "FabricMDL2Icons";
+                    font-style: normal;
+                    font-weight: normal;
+                    speak: none;
+                  }
               data-icon-name="Calendar"
               onClick={[Function]}
               role="presentation"

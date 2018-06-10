@@ -5,11 +5,45 @@ exports[`Component Examples renders Shimmer.Styling.Example.tsx correctly 1`] = 
   className={undefined}
 >
   <div
-    className="ms-Shimmer-container root-527"
+    className=
+        ms-Shimmer-container
+        {
+          height: auto;
+          position: relative;
+        }
     width="75%"
   >
     <div
-      className="ms-Shimmer-shimmerWrapper shimmerWrapper-555"
+      className=
+          ms-Shimmer-shimmerWrapper
+          {
+            animation-direction: normal;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
+            animation-timing-function: ease-in-out;
+            background-color: #deecf9;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #c7e0f4 50%, rgba(255, 255, 255, 0) 100%);
+            background: #f4f4f4
+                              linear-gradient(
+                                to right,
+                                #f4f4f4 0%,
+                                #eaeaea 50%,
+                                #f4f4f4 100%)
+                              0 0 / 90% 100%
+                              no-repeat;
+            transition: opacity 200ms;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            background: WindowText
+                                  linear-gradient(
+                                    to right,
+                                    transparent 0%,
+                                    Window 50%,
+                                    transparent 100%)
+                                  0 0 / 90% 100%
+                                  no-repeat;
+          }
       style={
         Object {
           "width": "75%",
@@ -17,7 +51,13 @@ exports[`Component Examples renders Shimmer.Styling.Example.tsx correctly 1`] = 
       }
     >
       <div
-        className="ms-ShimmerElementsGroup-root root-530"
+        className=
+            ms-ShimmerElementsGroup-root
+            {
+              align-items: center;
+              display: flex;
+              flex-wrap: nowrap;
+            }
         style={
           Object {
             "width": "auto",
@@ -25,7 +65,23 @@ exports[`Component Examples renders Shimmer.Styling.Example.tsx correctly 1`] = 
         }
       >
         <div
-          className="ms-ShimmerLine-root root-531"
+          className=
+              ms-ShimmerLine-root
+              {
+                border-bottom-style: solid;
+                border-color: #ffffff;
+                border-top-style: solid;
+                border-width: 0px;
+                box-sizing: content-box;
+                height: 16px;
+                position: relative;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+              }
+              @media screen and (-ms-high-contrast: active){& > * {
+                fill: Window;
+              }
           style={
             Object {
               "minWidth": "auto",
@@ -34,7 +90,14 @@ exports[`Component Examples renders Shimmer.Styling.Example.tsx correctly 1`] = 
           }
         >
           <svg
-            className="ms-ShimmerLine-topLeftCorner topLeftCorner-532"
+            className=
+                ms-ShimmerLine-topLeftCorner
+                {
+                  fill: #ffffff;
+                  left: 0;
+                  position: absolute;
+                  top: 0;
+                }
             height="2"
             width="2"
           >
@@ -43,7 +106,14 @@ exports[`Component Examples renders Shimmer.Styling.Example.tsx correctly 1`] = 
             />
           </svg>
           <svg
-            className="ms-ShimmerLine-topRightCorner topRightCorner-533"
+            className=
+                ms-ShimmerLine-topRightCorner
+                {
+                  fill: #ffffff;
+                  position: absolute;
+                  right: 0;
+                  top: 0;
+                }
             height="2"
             width="2"
           >
@@ -52,7 +122,14 @@ exports[`Component Examples renders Shimmer.Styling.Example.tsx correctly 1`] = 
             />
           </svg>
           <svg
-            className="ms-ShimmerLine-bottomRightCorner bottomRightCorner-534"
+            className=
+                ms-ShimmerLine-bottomRightCorner
+                {
+                  bottom: 0;
+                  fill: #ffffff;
+                  position: absolute;
+                  right: 0;
+                }
             height="2"
             width="2"
           >
@@ -61,7 +138,14 @@ exports[`Component Examples renders Shimmer.Styling.Example.tsx correctly 1`] = 
             />
           </svg>
           <svg
-            className="ms-ShimmerLine-bottomLeftCorner bottomLeftCorner-535"
+            className=
+                ms-ShimmerLine-bottomLeftCorner
+                {
+                  bottom: 0;
+                  fill: #ffffff;
+                  left: 0;
+                  position: absolute;
+                }
             height="2"
             width="2"
           >
@@ -74,11 +158,45 @@ exports[`Component Examples renders Shimmer.Styling.Example.tsx correctly 1`] = 
     </div>
   </div>
   <div
-    className="ms-Shimmer-container root-527"
+    className=
+        ms-Shimmer-container
+        {
+          height: auto;
+          position: relative;
+        }
     width="75%"
   >
     <div
-      className="ms-Shimmer-shimmerWrapper shimmerWrapper-555"
+      className=
+          ms-Shimmer-shimmerWrapper
+          {
+            animation-direction: normal;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
+            animation-timing-function: ease-in-out;
+            background-color: #deecf9;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #c7e0f4 50%, rgba(255, 255, 255, 0) 100%);
+            background: #f4f4f4
+                              linear-gradient(
+                                to right,
+                                #f4f4f4 0%,
+                                #eaeaea 50%,
+                                #f4f4f4 100%)
+                              0 0 / 90% 100%
+                              no-repeat;
+            transition: opacity 200ms;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            background: WindowText
+                                  linear-gradient(
+                                    to right,
+                                    transparent 0%,
+                                    Window 50%,
+                                    transparent 100%)
+                                  0 0 / 90% 100%
+                                  no-repeat;
+          }
       style={
         Object {
           "width": "75%",
@@ -86,7 +204,13 @@ exports[`Component Examples renders Shimmer.Styling.Example.tsx correctly 1`] = 
       }
     >
       <div
-        className="ms-ShimmerElementsGroup-root root-530"
+        className=
+            ms-ShimmerElementsGroup-root
+            {
+              align-items: center;
+              display: flex;
+              flex-wrap: nowrap;
+            }
         style={
           Object {
             "width": "auto",
@@ -94,7 +218,23 @@ exports[`Component Examples renders Shimmer.Styling.Example.tsx correctly 1`] = 
         }
       >
         <div
-          className="ms-ShimmerLine-root root-531"
+          className=
+              ms-ShimmerLine-root
+              {
+                border-bottom-style: solid;
+                border-color: #ffffff;
+                border-top-style: solid;
+                border-width: 0px;
+                box-sizing: content-box;
+                height: 16px;
+                position: relative;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+              }
+              @media screen and (-ms-high-contrast: active){& > * {
+                fill: Window;
+              }
           style={
             Object {
               "minWidth": "auto",
@@ -103,7 +243,14 @@ exports[`Component Examples renders Shimmer.Styling.Example.tsx correctly 1`] = 
           }
         >
           <svg
-            className="ms-ShimmerLine-topLeftCorner topLeftCorner-532"
+            className=
+                ms-ShimmerLine-topLeftCorner
+                {
+                  fill: #ffffff;
+                  left: 0;
+                  position: absolute;
+                  top: 0;
+                }
             height="2"
             width="2"
           >
@@ -112,7 +259,14 @@ exports[`Component Examples renders Shimmer.Styling.Example.tsx correctly 1`] = 
             />
           </svg>
           <svg
-            className="ms-ShimmerLine-topRightCorner topRightCorner-533"
+            className=
+                ms-ShimmerLine-topRightCorner
+                {
+                  fill: #ffffff;
+                  position: absolute;
+                  right: 0;
+                  top: 0;
+                }
             height="2"
             width="2"
           >
@@ -121,7 +275,14 @@ exports[`Component Examples renders Shimmer.Styling.Example.tsx correctly 1`] = 
             />
           </svg>
           <svg
-            className="ms-ShimmerLine-bottomRightCorner bottomRightCorner-534"
+            className=
+                ms-ShimmerLine-bottomRightCorner
+                {
+                  bottom: 0;
+                  fill: #ffffff;
+                  position: absolute;
+                  right: 0;
+                }
             height="2"
             width="2"
           >
@@ -130,7 +291,14 @@ exports[`Component Examples renders Shimmer.Styling.Example.tsx correctly 1`] = 
             />
           </svg>
           <svg
-            className="ms-ShimmerLine-bottomLeftCorner bottomLeftCorner-535"
+            className=
+                ms-ShimmerLine-bottomLeftCorner
+                {
+                  bottom: 0;
+                  fill: #ffffff;
+                  left: 0;
+                  position: absolute;
+                }
             height="2"
             width="2"
           >
@@ -143,11 +311,45 @@ exports[`Component Examples renders Shimmer.Styling.Example.tsx correctly 1`] = 
     </div>
   </div>
   <div
-    className="ms-Shimmer-container root-527"
+    className=
+        ms-Shimmer-container
+        {
+          height: auto;
+          position: relative;
+        }
     width="75%"
   >
     <div
-      className="ms-Shimmer-shimmerWrapper shimmerWrapper-555"
+      className=
+          ms-Shimmer-shimmerWrapper
+          {
+            animation-direction: normal;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
+            animation-timing-function: ease-in-out;
+            background-color: #deecf9;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #c7e0f4 50%, rgba(255, 255, 255, 0) 100%);
+            background: #f4f4f4
+                              linear-gradient(
+                                to right,
+                                #f4f4f4 0%,
+                                #eaeaea 50%,
+                                #f4f4f4 100%)
+                              0 0 / 90% 100%
+                              no-repeat;
+            transition: opacity 200ms;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            background: WindowText
+                                  linear-gradient(
+                                    to right,
+                                    transparent 0%,
+                                    Window 50%,
+                                    transparent 100%)
+                                  0 0 / 90% 100%
+                                  no-repeat;
+          }
       style={
         Object {
           "width": "75%",
@@ -155,7 +357,13 @@ exports[`Component Examples renders Shimmer.Styling.Example.tsx correctly 1`] = 
       }
     >
       <div
-        className="ms-ShimmerElementsGroup-root root-530"
+        className=
+            ms-ShimmerElementsGroup-root
+            {
+              align-items: center;
+              display: flex;
+              flex-wrap: nowrap;
+            }
         style={
           Object {
             "width": "auto",
@@ -163,7 +371,23 @@ exports[`Component Examples renders Shimmer.Styling.Example.tsx correctly 1`] = 
         }
       >
         <div
-          className="ms-ShimmerLine-root root-531"
+          className=
+              ms-ShimmerLine-root
+              {
+                border-bottom-style: solid;
+                border-color: #ffffff;
+                border-top-style: solid;
+                border-width: 0px;
+                box-sizing: content-box;
+                height: 16px;
+                position: relative;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+              }
+              @media screen and (-ms-high-contrast: active){& > * {
+                fill: Window;
+              }
           style={
             Object {
               "minWidth": "auto",
@@ -172,7 +396,14 @@ exports[`Component Examples renders Shimmer.Styling.Example.tsx correctly 1`] = 
           }
         >
           <svg
-            className="ms-ShimmerLine-topLeftCorner topLeftCorner-532"
+            className=
+                ms-ShimmerLine-topLeftCorner
+                {
+                  fill: #ffffff;
+                  left: 0;
+                  position: absolute;
+                  top: 0;
+                }
             height="2"
             width="2"
           >
@@ -181,7 +412,14 @@ exports[`Component Examples renders Shimmer.Styling.Example.tsx correctly 1`] = 
             />
           </svg>
           <svg
-            className="ms-ShimmerLine-topRightCorner topRightCorner-533"
+            className=
+                ms-ShimmerLine-topRightCorner
+                {
+                  fill: #ffffff;
+                  position: absolute;
+                  right: 0;
+                  top: 0;
+                }
             height="2"
             width="2"
           >
@@ -190,7 +428,14 @@ exports[`Component Examples renders Shimmer.Styling.Example.tsx correctly 1`] = 
             />
           </svg>
           <svg
-            className="ms-ShimmerLine-bottomRightCorner bottomRightCorner-534"
+            className=
+                ms-ShimmerLine-bottomRightCorner
+                {
+                  bottom: 0;
+                  fill: #ffffff;
+                  position: absolute;
+                  right: 0;
+                }
             height="2"
             width="2"
           >
@@ -199,7 +444,14 @@ exports[`Component Examples renders Shimmer.Styling.Example.tsx correctly 1`] = 
             />
           </svg>
           <svg
-            className="ms-ShimmerLine-bottomLeftCorner bottomLeftCorner-535"
+            className=
+                ms-ShimmerLine-bottomLeftCorner
+                {
+                  bottom: 0;
+                  fill: #ffffff;
+                  left: 0;
+                  position: absolute;
+                }
             height="2"
             width="2"
           >
@@ -212,11 +464,45 @@ exports[`Component Examples renders Shimmer.Styling.Example.tsx correctly 1`] = 
     </div>
   </div>
   <div
-    className="ms-Shimmer-container root-527"
+    className=
+        ms-Shimmer-container
+        {
+          height: auto;
+          position: relative;
+        }
     width="75%"
   >
     <div
-      className="ms-Shimmer-shimmerWrapper shimmerWrapper-555"
+      className=
+          ms-Shimmer-shimmerWrapper
+          {
+            animation-direction: normal;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
+            animation-timing-function: ease-in-out;
+            background-color: #deecf9;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #c7e0f4 50%, rgba(255, 255, 255, 0) 100%);
+            background: #f4f4f4
+                              linear-gradient(
+                                to right,
+                                #f4f4f4 0%,
+                                #eaeaea 50%,
+                                #f4f4f4 100%)
+                              0 0 / 90% 100%
+                              no-repeat;
+            transition: opacity 200ms;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            background: WindowText
+                                  linear-gradient(
+                                    to right,
+                                    transparent 0%,
+                                    Window 50%,
+                                    transparent 100%)
+                                  0 0 / 90% 100%
+                                  no-repeat;
+          }
       style={
         Object {
           "width": "75%",
@@ -224,7 +510,13 @@ exports[`Component Examples renders Shimmer.Styling.Example.tsx correctly 1`] = 
       }
     >
       <div
-        className="ms-ShimmerElementsGroup-root root-530"
+        className=
+            ms-ShimmerElementsGroup-root
+            {
+              align-items: center;
+              display: flex;
+              flex-wrap: nowrap;
+            }
         style={
           Object {
             "width": "auto",
@@ -232,7 +524,23 @@ exports[`Component Examples renders Shimmer.Styling.Example.tsx correctly 1`] = 
         }
       >
         <div
-          className="ms-ShimmerLine-root root-531"
+          className=
+              ms-ShimmerLine-root
+              {
+                border-bottom-style: solid;
+                border-color: #ffffff;
+                border-top-style: solid;
+                border-width: 0px;
+                box-sizing: content-box;
+                height: 16px;
+                position: relative;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+              }
+              @media screen and (-ms-high-contrast: active){& > * {
+                fill: Window;
+              }
           style={
             Object {
               "minWidth": "auto",
@@ -241,7 +549,14 @@ exports[`Component Examples renders Shimmer.Styling.Example.tsx correctly 1`] = 
           }
         >
           <svg
-            className="ms-ShimmerLine-topLeftCorner topLeftCorner-532"
+            className=
+                ms-ShimmerLine-topLeftCorner
+                {
+                  fill: #ffffff;
+                  left: 0;
+                  position: absolute;
+                  top: 0;
+                }
             height="2"
             width="2"
           >
@@ -250,7 +565,14 @@ exports[`Component Examples renders Shimmer.Styling.Example.tsx correctly 1`] = 
             />
           </svg>
           <svg
-            className="ms-ShimmerLine-topRightCorner topRightCorner-533"
+            className=
+                ms-ShimmerLine-topRightCorner
+                {
+                  fill: #ffffff;
+                  position: absolute;
+                  right: 0;
+                  top: 0;
+                }
             height="2"
             width="2"
           >
@@ -259,7 +581,14 @@ exports[`Component Examples renders Shimmer.Styling.Example.tsx correctly 1`] = 
             />
           </svg>
           <svg
-            className="ms-ShimmerLine-bottomRightCorner bottomRightCorner-534"
+            className=
+                ms-ShimmerLine-bottomRightCorner
+                {
+                  bottom: 0;
+                  fill: #ffffff;
+                  position: absolute;
+                  right: 0;
+                }
             height="2"
             width="2"
           >
@@ -268,7 +597,14 @@ exports[`Component Examples renders Shimmer.Styling.Example.tsx correctly 1`] = 
             />
           </svg>
           <svg
-            className="ms-ShimmerLine-bottomLeftCorner bottomLeftCorner-535"
+            className=
+                ms-ShimmerLine-bottomLeftCorner
+                {
+                  bottom: 0;
+                  fill: #ffffff;
+                  left: 0;
+                  position: absolute;
+                }
             height="2"
             width="2"
           >
@@ -281,11 +617,45 @@ exports[`Component Examples renders Shimmer.Styling.Example.tsx correctly 1`] = 
     </div>
   </div>
   <div
-    className="ms-Shimmer-container root-527"
+    className=
+        ms-Shimmer-container
+        {
+          height: auto;
+          position: relative;
+        }
     width="75%"
   >
     <div
-      className="ms-Shimmer-shimmerWrapper shimmerWrapper-555"
+      className=
+          ms-Shimmer-shimmerWrapper
+          {
+            animation-direction: normal;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
+            animation-timing-function: ease-in-out;
+            background-color: #deecf9;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #c7e0f4 50%, rgba(255, 255, 255, 0) 100%);
+            background: #f4f4f4
+                              linear-gradient(
+                                to right,
+                                #f4f4f4 0%,
+                                #eaeaea 50%,
+                                #f4f4f4 100%)
+                              0 0 / 90% 100%
+                              no-repeat;
+            transition: opacity 200ms;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            background: WindowText
+                                  linear-gradient(
+                                    to right,
+                                    transparent 0%,
+                                    Window 50%,
+                                    transparent 100%)
+                                  0 0 / 90% 100%
+                                  no-repeat;
+          }
       style={
         Object {
           "width": "75%",
@@ -293,7 +663,13 @@ exports[`Component Examples renders Shimmer.Styling.Example.tsx correctly 1`] = 
       }
     >
       <div
-        className="ms-ShimmerElementsGroup-root root-530"
+        className=
+            ms-ShimmerElementsGroup-root
+            {
+              align-items: center;
+              display: flex;
+              flex-wrap: nowrap;
+            }
         style={
           Object {
             "width": "auto",
@@ -301,7 +677,23 @@ exports[`Component Examples renders Shimmer.Styling.Example.tsx correctly 1`] = 
         }
       >
         <div
-          className="ms-ShimmerLine-root root-531"
+          className=
+              ms-ShimmerLine-root
+              {
+                border-bottom-style: solid;
+                border-color: #ffffff;
+                border-top-style: solid;
+                border-width: 0px;
+                box-sizing: content-box;
+                height: 16px;
+                position: relative;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+              }
+              @media screen and (-ms-high-contrast: active){& > * {
+                fill: Window;
+              }
           style={
             Object {
               "minWidth": "auto",
@@ -310,7 +702,14 @@ exports[`Component Examples renders Shimmer.Styling.Example.tsx correctly 1`] = 
           }
         >
           <svg
-            className="ms-ShimmerLine-topLeftCorner topLeftCorner-532"
+            className=
+                ms-ShimmerLine-topLeftCorner
+                {
+                  fill: #ffffff;
+                  left: 0;
+                  position: absolute;
+                  top: 0;
+                }
             height="2"
             width="2"
           >
@@ -319,7 +718,14 @@ exports[`Component Examples renders Shimmer.Styling.Example.tsx correctly 1`] = 
             />
           </svg>
           <svg
-            className="ms-ShimmerLine-topRightCorner topRightCorner-533"
+            className=
+                ms-ShimmerLine-topRightCorner
+                {
+                  fill: #ffffff;
+                  position: absolute;
+                  right: 0;
+                  top: 0;
+                }
             height="2"
             width="2"
           >
@@ -328,7 +734,14 @@ exports[`Component Examples renders Shimmer.Styling.Example.tsx correctly 1`] = 
             />
           </svg>
           <svg
-            className="ms-ShimmerLine-bottomRightCorner bottomRightCorner-534"
+            className=
+                ms-ShimmerLine-bottomRightCorner
+                {
+                  bottom: 0;
+                  fill: #ffffff;
+                  position: absolute;
+                  right: 0;
+                }
             height="2"
             width="2"
           >
@@ -337,7 +750,14 @@ exports[`Component Examples renders Shimmer.Styling.Example.tsx correctly 1`] = 
             />
           </svg>
           <svg
-            className="ms-ShimmerLine-bottomLeftCorner bottomLeftCorner-535"
+            className=
+                ms-ShimmerLine-bottomLeftCorner
+                {
+                  bottom: 0;
+                  fill: #ffffff;
+                  left: 0;
+                  position: absolute;
+                }
             height="2"
             width="2"
           >

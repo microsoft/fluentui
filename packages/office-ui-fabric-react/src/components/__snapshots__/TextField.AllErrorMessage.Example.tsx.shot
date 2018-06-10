@@ -11,7 +11,24 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
       className="ms-TextField-wrapper"
     >
       <label
-        className="ms-Label root-89"
+        className=
+            ms-Label
+            {
+              box-shadow: none;
+              box-sizing: border-box;
+              color: #333333;
+              display: block;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              overflow-wrap: break-word;
+              padding-bottom: 5px;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 5px;
+              word-wrap: break-word;
+            }
         htmlFor="TextField0"
       >
         Default with error message
@@ -82,7 +99,24 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
       className="ms-TextField-wrapper"
     >
       <label
-        className="ms-Label root-89"
+        className=
+            ms-Label
+            {
+              box-shadow: none;
+              box-sizing: border-box;
+              color: #333333;
+              display: block;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              overflow-wrap: break-word;
+              padding-bottom: 5px;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 5px;
+              word-wrap: break-word;
+            }
         htmlFor="TextField4"
       >
         Underlined with error message:
@@ -120,7 +154,24 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
       className="ms-TextField-wrapper"
     >
       <label
-        className="ms-Label root-89"
+        className=
+            ms-Label
+            {
+              box-shadow: none;
+              box-sizing: border-box;
+              color: #333333;
+              display: block;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              overflow-wrap: break-word;
+              padding-bottom: 5px;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 5px;
+              word-wrap: break-word;
+            }
         htmlFor="TextField6"
       >
         Multiline with error message
