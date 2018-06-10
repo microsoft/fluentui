@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders Spinner.Basic.Example.tsx correctly 1`] = `
+<div
+  className="ms-BasicSpinnersExample"
+>
+  <label
+    className="ms-Label root-89"
+  >
+    Extra Small Spinner
+  </label>
+  <div
+    className="ms-Spinner root-292"
+  >
+    <div
+      className="ms-Spinner-circle ms-Spinner--xSmall circle-571"
+    />
+  </div>
+  <label
+    className="ms-Label root-89"
+  >
+    Small Spinner
+  </label>
+  <div
+    className="ms-Spinner root-292"
+  >
+    <div
+      className="ms-Spinner-circle ms-Spinner--small circle-573"
+    />
+  </div>
+  <label
+    className="ms-Label root-89"
+  >
+    Medium Spinner
+  </label>
+  <div
+    className="ms-Spinner root-292"
+  >
+    <div
+      className="ms-Spinner-circle ms-Spinner--medium circle-574"
+    />
+  </div>
+  <label
+    className="ms-Label root-89"
+  >
+    Large Spinner
+  </label>
+  <div
+    className="ms-Spinner root-292"
+  >
+    <div
+      className="ms-Spinner-circle ms-Spinner--large circle-575"
+    />
+  </div>
+  <label
+    className="ms-Label root-89"
+  >
+    Spinner With Label
+  </label>
+  <div
+    className="ms-Spinner root-292"
+  >
+    <div
+      className="ms-Spinner-circle ms-Spinner--medium circle-574"
+    />
+    <div
+      className="ms-Spinner-label label-572"
+    >
+      I am definitely loading...
+    </div>
+    <div
+      aria-live="polite"
+      role="status"
+    />
+  </div>
+  <label
+    className="ms-Label root-89"
+  >
+    Large Spinner With Label
+  </label>
+  <div
+    className="ms-Spinner root-292"
+  >
+    <div
+      className="ms-Spinner-circle ms-Spinner--large circle-575"
+    />
+    <div
+      className="ms-Spinner-label label-572"
+    >
+      Seriously, still loading...
+    </div>
+    <div
+      aria-live="assertive"
+      role="status"
+    />
+  </div>
+</div>
+`;

@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders Checkbox.Basic.Example.tsx correctly 1`] = `
+<div>
+  <button
+    aria-checked={false}
+    aria-describedby="descriptionID"
+    aria-disabled={undefined}
+    aria-label={undefined}
+    aria-labelledby={undefined}
+    aria-posinset={undefined}
+    aria-setsize={undefined}
+    className="ms-Checkbox is-enabled root-189"
+    data-ktp-execute-target={undefined}
+    disabled={undefined}
+    id="checkbox-0"
+    name={undefined}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    role="checkbox"
+    type="button"
+  >
+    <label
+      className="ms-Checkbox-label label-184"
+      htmlFor="checkbox-0"
+    >
+      <div
+        className="ms-Checkbox-checkbox checkbox-190"
+        data-ktp-target={undefined}
+      >
+        <i
+          aria-hidden={true}
+          className="ms-Checkbox-checkmark checkmark-192"
+          data-icon-name="CheckMark"
+          role="presentation"
+        >
+          
+        </i>
+      </div>
+      <span
+        className="ms-Checkbox-text text-187"
+      >
+        Standard checkbox
+      </span>
+    </label>
+  </button>
+</div>
+`;

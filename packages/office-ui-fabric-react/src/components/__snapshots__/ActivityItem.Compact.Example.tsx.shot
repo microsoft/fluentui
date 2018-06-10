@@ -1,0 +1,298 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1`] = `
+<div>
+  <div
+    className="ms-ActivityItem exampleRoot-61"
+    style={undefined}
+  >
+    <div
+      className="ms-ActivityItem-activityTypeIcon css-64"
+    >
+      <div
+        className="ms-ActivityItem-personaContainer css-62"
+      >
+        <div
+          className="ms-Persona-coin ms-Persona--size16 ms-ActivityItem-activityPersona coin-67"
+          size={8}
+          style={
+            Object {
+              "display": "inline-block",
+              "minWidth": "10px",
+              "overflow": "visible",
+              "width": "10px",
+            }
+          }
+        >
+          <div
+            className="ms-Persona-imageArea imageArea-69"
+            style={undefined}
+          >
+            <div
+              className="ms-Image ms-Persona-image image-73"
+              style={
+                Object {
+                  "height": undefined,
+                  "width": undefined,
+                }
+              }
+            >
+              <img
+                alt=""
+                className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+                onError={[Function]}
+                onLoad={[Function]}
+                role={undefined}
+                src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="ms-ActivityItem-activityContent css-65"
+    >
+      <span
+        className="ms-ActivityItem-activityText css-48"
+      >
+        <span
+          className="nameText-38"
+        >
+          Tahlia Whittle
+        </span>
+        <span>
+           edited this file
+        </span>
+      </span>
+    </div>
+  </div>
+  <div
+    className="ms-ActivityItem exampleRoot-61"
+    style={undefined}
+  >
+    <div
+      className="ms-ActivityItem-activityTypeIcon css-64"
+    >
+      <div
+        className="ms-ActivityItem-personaContainer css-62"
+      >
+        <div
+          className="ms-Persona-coin ms-Persona--size16 ms-ActivityItem-activityPersona coin-67"
+          size={8}
+          style={
+            Object {
+              "display": "inline-block",
+              "minWidth": "10px",
+              "overflow": "visible",
+              "width": "10px",
+            }
+          }
+        >
+          <div
+            className="ms-Persona-imageArea imageArea-69"
+            style={undefined}
+          >
+            <div
+              aria-hidden="true"
+              className="ms-Persona-initials initials-77"
+              style={undefined}
+            >
+              <span>
+                PT
+              </span>
+            </div>
+            <div
+              className="ms-Image ms-Persona-image image-73"
+              style={
+                Object {
+                  "height": undefined,
+                  "width": undefined,
+                }
+              }
+            >
+              <img
+                alt=""
+                className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+                onError={[Function]}
+                onLoad={[Function]}
+                role={undefined}
+                src={undefined}
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          className="ms-Persona-coin ms-Persona--size16 ms-ActivityItem-activityPersona coin-67"
+          size={8}
+          style={
+            Object {
+              "display": "inline-block",
+              "minWidth": "10px",
+              "overflow": "visible",
+              "width": "10px",
+            }
+          }
+        >
+          <div
+            className="ms-Persona-imageArea imageArea-69"
+            style={undefined}
+          >
+            <div
+              className="ms-Image ms-Persona-image image-73"
+              style={
+                Object {
+                  "height": undefined,
+                  "width": undefined,
+                }
+              }
+            >
+              <img
+                alt=""
+                className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+                onError={[Function]}
+                onLoad={[Function]}
+                role={undefined}
+                src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-male.png"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          className="ms-Persona-coin ms-Persona--size16 ms-ActivityItem-activityPersona coin-67"
+          size={8}
+          style={
+            Object {
+              "display": "inline-block",
+              "minWidth": "10px",
+              "overflow": "visible",
+              "width": "10px",
+            }
+          }
+        >
+          <div
+            className="ms-Persona-imageArea imageArea-69"
+            style={undefined}
+          >
+            <div
+              aria-hidden="true"
+              className="ms-Persona-initials initials-78"
+              style={undefined}
+            >
+              <span>
+                EC
+              </span>
+            </div>
+            <div
+              className="ms-Image ms-Persona-image image-73"
+              style={
+                Object {
+                  "height": undefined,
+                  "width": undefined,
+                }
+              }
+            >
+              <img
+                alt=""
+                className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+                onError={[Function]}
+                onLoad={[Function]}
+                role={undefined}
+                src={undefined}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="ms-ActivityItem-activityContent css-65"
+    >
+      <span
+        className="ms-ActivityItem-activityText css-48"
+      >
+        <span
+          className="nameText-38"
+        >
+          Patrick Loton
+        </span>
+        <span>
+           and 
+        </span>
+        <span
+          className="nameText-38"
+        >
+           
+          6 others
+        </span>
+      </span>
+    </div>
+  </div>
+  <div
+    className="ms-ActivityItem exampleRoot-61"
+    style={undefined}
+  >
+    <div
+      className="ms-ActivityItem-activityTypeIcon css-64"
+    >
+      <i
+        aria-hidden={true}
+        className="root-55"
+        data-icon-name="Add"
+        role="presentation"
+      >
+        
+      </i>
+    </div>
+    <div
+      className="ms-ActivityItem-activityContent css-65"
+    >
+      <span
+        className="ms-ActivityItem-activityText css-48"
+      >
+        <span
+          className="nameText-38"
+        >
+          Sabrina De Luca
+        </span>
+        <span>
+           added this file
+        </span>
+      </span>
+    </div>
+  </div>
+  <div
+    className="ms-ActivityItem exampleRoot-61"
+    style={undefined}
+  >
+    <div
+      className="ms-ActivityItem-activityTypeIcon css-64"
+    >
+      <i
+        aria-hidden={true}
+        className="root-55"
+        data-icon-name="Share"
+        role="presentation"
+      >
+        
+      </i>
+    </div>
+    <div
+      className="ms-ActivityItem-activityContent css-65"
+    >
+      <span
+        className="ms-ActivityItem-activityText css-48"
+      >
+        <span
+          className="nameText-38"
+        >
+          Chuan Rojumanong
+        </span>
+        <span>
+           shared this file
+        </span>
+      </span>
+    </div>
+  </div>
+</div>
+`;

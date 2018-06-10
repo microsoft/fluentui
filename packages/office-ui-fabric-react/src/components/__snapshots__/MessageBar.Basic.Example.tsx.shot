@@ -1,0 +1,594 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] = `
+<div
+  className="ms-BasicMessageBarsExample"
+>
+  <label
+    className="ms-Label root-89"
+  >
+    Info/Default MessageBar
+  </label>
+  <div
+    aria-live="polite"
+    className="ms-MessageBar ms-MessageBar undefined ms-MessageBar-multiline"
+    role="status"
+  >
+    <div
+      className="ms-MessageBar-content"
+    >
+      <div
+        className="ms-MessageBar-icon"
+      >
+        <i
+          aria-hidden={true}
+          className="root-55"
+          data-icon-name="Info"
+          role="presentation"
+        >
+          
+        </i>
+      </div>
+      <div
+        className="ms-MessageBar-text"
+        id="MessageBar0"
+      >
+        <span
+          aria-live="polite"
+          className="ms-MessageBar-innerText undefined"
+          role="status"
+        />
+      </div>
+    </div>
+  </div>
+  <label
+    className="ms-Label root-89"
+  >
+    Error MessageBar - single line, with dismiss button
+  </label>
+  <div
+    className="ms-MessageBar ms-MessageBar--error undefined ms-MessageBar-singleline ms-MessageBar-dismissalSingleLine"
+  >
+    <div
+      className="ms-MessageBar-content"
+    >
+      <div
+        className="ms-MessageBar-icon"
+      >
+        <i
+          aria-hidden={true}
+          className="root-313"
+          data-icon-name="ErrorBadge"
+          role="presentation"
+        >
+          
+        </i>
+      </div>
+      <div
+        className="ms-MessageBar-text"
+        id="MessageBar1"
+      >
+        <span
+          aria-live="assertive"
+          className="ms-MessageBar-innerText undefined"
+          role="status"
+        />
+      </div>
+      <div
+        className="ms-MessageBar-dismissSingleLine"
+      >
+        <button
+          aria-describedby={undefined}
+          aria-label="Close"
+          aria-labelledby={undefined}
+          aria-pressed={undefined}
+          className="ms-Button ms-Button--icon ms-MessageBar-dismissal root-145"
+          data-is-focusable={true}
+          disabled={undefined}
+          onClick={[Function]}
+          type="button"
+        >
+          <div
+            className="ms-Button-flexContainer flexContainer-102"
+          >
+            <i
+              aria-hidden={true}
+              className="ms-Button-icon icon-109"
+              data-icon-name="Clear"
+              role="presentation"
+            >
+              
+            </i>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+  <label
+    className="ms-Label root-89"
+  >
+    Blocked MessageBar - single line, with dismiss button and truncated text. Truncation is not available if you use action buttons or multiline and should be used sparingly.
+  </label>
+  <div
+    className="ms-MessageBar ms-MessageBar--blocked undefined ms-MessageBar-singleline ms-MessageBar-dismissalSingleLine ms-MessageBar-expandingSingleLine"
+  >
+    <div
+      className="ms-MessageBar-content"
+    >
+      <div
+        className="ms-MessageBar-icon"
+      >
+        <i
+          aria-hidden={true}
+          className="root-312"
+          data-icon-name="Blocked2"
+          role="presentation"
+        >
+          
+        </i>
+      </div>
+      <div
+        className="ms-MessageBar-text"
+        id="MessageBar5"
+      >
+        <span
+          aria-live="assertive"
+          className="ms-MessageBar-innerText undefined"
+          role="status"
+        />
+      </div>
+      <div
+        className="ms-MessageBar-expandSingleLine"
+      >
+        <button
+          aria-describedby={undefined}
+          aria-label="Overflow"
+          aria-labelledby={undefined}
+          aria-pressed={undefined}
+          className="ms-Button ms-Button--icon ms-MessageBar-expand root-145"
+          data-is-focusable={true}
+          disabled={undefined}
+          onClick={[Function]}
+          type="button"
+        >
+          <div
+            className="ms-Button-flexContainer flexContainer-102"
+          >
+            <i
+              aria-hidden={true}
+              className="ms-Button-icon icon-365"
+              data-icon-name="DoubleChevronDown"
+              role="presentation"
+            >
+              
+            </i>
+          </div>
+        </button>
+      </div>
+      <div
+        className="ms-MessageBar-dismissSingleLine"
+      >
+        <button
+          aria-describedby={undefined}
+          aria-label="Close"
+          aria-labelledby={undefined}
+          aria-pressed={undefined}
+          className="ms-Button ms-Button--icon ms-MessageBar-dismissal root-145"
+          data-is-focusable={true}
+          disabled={undefined}
+          onClick={[Function]}
+          type="button"
+        >
+          <div
+            className="ms-Button-flexContainer flexContainer-102"
+          >
+            <i
+              aria-hidden={true}
+              className="ms-Button-icon icon-109"
+              data-icon-name="Clear"
+              role="presentation"
+            >
+              
+            </i>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+  <label
+    className="ms-Label root-89"
+  >
+    SevereWarning MessageBar - defaults to multiline, with action buttons
+  </label>
+  <div
+    aria-live="assertive"
+    className="ms-MessageBar ms-MessageBar--severeWarning undefined ms-MessageBar-multiline"
+    role="status"
+  >
+    <div
+      className="ms-MessageBar-content"
+    >
+      <div
+        className="ms-MessageBar-icon"
+      >
+        <i
+          aria-hidden={true}
+          className="root-366"
+          data-icon-name="Warning"
+          role="presentation"
+        >
+          
+        </i>
+      </div>
+      <div
+        className="ms-MessageBar-text"
+        id="MessageBar12"
+      >
+        <span
+          aria-live="assertive"
+          className="ms-MessageBar-innerText undefined"
+          role="status"
+        />
+      </div>
+    </div>
+    <div
+      className="ms-MessageBar-actions undefined"
+    >
+      <div>
+        <button
+          aria-describedby={undefined}
+          aria-label={undefined}
+          aria-labelledby={undefined}
+          aria-pressed={undefined}
+          className="ms-Button ms-Button--default root-367"
+          data-is-focusable={true}
+          disabled={undefined}
+          type="button"
+        >
+          <div
+            className="ms-Button-flexContainer flexContainer-102"
+          >
+            <div
+              className="ms-Button-textContainer textContainer-103"
+            >
+              <div
+                className="ms-Button-label label-120"
+                id="id__13"
+              >
+                Yes
+              </div>
+            </div>
+          </div>
+        </button>
+        <button
+          aria-describedby={undefined}
+          aria-label={undefined}
+          aria-labelledby={undefined}
+          aria-pressed={undefined}
+          className="ms-Button ms-Button--default root-367"
+          data-is-focusable={true}
+          disabled={undefined}
+          type="button"
+        >
+          <div
+            className="ms-Button-flexContainer flexContainer-102"
+          >
+            <div
+              className="ms-Button-textContainer textContainer-103"
+            >
+              <div
+                className="ms-Button-label label-120"
+                id="id__16"
+              >
+                No
+              </div>
+            </div>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+  <label
+    className="ms-Label root-89"
+  >
+    Success MessageBar - single line, with action buttons
+  </label>
+  <div
+    className="ms-MessageBar ms-MessageBar--success undefined ms-MessageBar-singleline"
+  >
+    <div
+      className="ms-MessageBar-content"
+    >
+      <div
+        className="ms-MessageBar-icon"
+      >
+        <i
+          aria-hidden={true}
+          className="root-333"
+          data-icon-name="Completed"
+          role="presentation"
+        >
+          
+        </i>
+      </div>
+      <div
+        className="ms-MessageBar-text"
+        id="MessageBar19"
+      >
+        <span
+          aria-live="polite"
+          className="ms-MessageBar-innerText undefined"
+          role="status"
+        />
+      </div>
+      <div
+        className="ms-MessageBar-actionsSingleLine undefined"
+      >
+        <div>
+          <button
+            aria-describedby={undefined}
+            aria-label={undefined}
+            aria-labelledby={undefined}
+            aria-pressed={undefined}
+            className="ms-Button ms-Button--default root-367"
+            data-is-focusable={true}
+            disabled={undefined}
+            type="button"
+          >
+            <div
+              className="ms-Button-flexContainer flexContainer-102"
+            >
+              <div
+                className="ms-Button-textContainer textContainer-103"
+              >
+                <div
+                  className="ms-Button-label label-120"
+                  id="id__20"
+                >
+                  Yes
+                </div>
+              </div>
+            </div>
+          </button>
+          <button
+            aria-describedby={undefined}
+            aria-label={undefined}
+            aria-labelledby={undefined}
+            aria-pressed={undefined}
+            className="ms-Button ms-Button--default root-367"
+            data-is-focusable={true}
+            disabled={undefined}
+            type="button"
+          >
+            <div
+              className="ms-Button-flexContainer flexContainer-102"
+            >
+              <div
+                className="ms-Button-textContainer textContainer-103"
+              >
+                <div
+                  className="ms-Button-label label-120"
+                  id="id__23"
+                >
+                  No
+                </div>
+              </div>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <label
+    className="ms-Label root-89"
+  >
+    Warning MessageBar - single line, with dismiss and action buttons
+  </label>
+  <div
+    className="ms-MessageBar ms-MessageBar--warning undefined ms-MessageBar-singleline ms-MessageBar-dismissalSingleLine"
+  >
+    <div
+      className="ms-MessageBar-content"
+    >
+      <div
+        className="ms-MessageBar-icon"
+      >
+        <i
+          aria-hidden={true}
+          className="root-55"
+          data-icon-name="Info"
+          role="presentation"
+        >
+          
+        </i>
+      </div>
+      <div
+        className="ms-MessageBar-text"
+        id="MessageBar26"
+      >
+        <span
+          aria-live="polite"
+          className="ms-MessageBar-innerText undefined"
+          role="status"
+        />
+      </div>
+      <div
+        className="ms-MessageBar-actionsSingleLine undefined"
+      >
+        <div>
+          <button
+            aria-describedby={undefined}
+            aria-label={undefined}
+            aria-labelledby={undefined}
+            aria-pressed={undefined}
+            className="ms-Button ms-Button--default root-367"
+            data-is-focusable={true}
+            disabled={undefined}
+            type="button"
+          >
+            <div
+              className="ms-Button-flexContainer flexContainer-102"
+            >
+              <div
+                className="ms-Button-textContainer textContainer-103"
+              >
+                <div
+                  className="ms-Button-label label-120"
+                  id="id__27"
+                >
+                  Action
+                </div>
+              </div>
+            </div>
+          </button>
+        </div>
+      </div>
+      <div
+        className="ms-MessageBar-dismissSingleLine"
+      >
+        <button
+          aria-describedby={undefined}
+          aria-label="Close"
+          aria-labelledby={undefined}
+          aria-pressed={undefined}
+          className="ms-Button ms-Button--icon ms-MessageBar-dismissal root-145"
+          data-is-focusable={true}
+          disabled={undefined}
+          onClick={[Function]}
+          type="button"
+        >
+          <div
+            className="ms-Button-flexContainer flexContainer-102"
+          >
+            <i
+              aria-hidden={true}
+              className="ms-Button-icon icon-109"
+              data-icon-name="Clear"
+              role="presentation"
+            >
+              
+            </i>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+  <label
+    className="ms-Label root-89"
+  >
+    Warning MessageBar - defaults to multiline, with dismiss and action buttons
+  </label>
+  <div
+    aria-live="polite"
+    className="ms-MessageBar ms-MessageBar--warning undefined ms-MessageBar-multiline"
+    role="status"
+  >
+    <div
+      className="ms-MessageBar-content"
+    >
+      <div
+        className="ms-MessageBar-icon"
+      >
+        <i
+          aria-hidden={true}
+          className="root-55"
+          data-icon-name="Info"
+          role="presentation"
+        >
+          
+        </i>
+      </div>
+      <div
+        className="ms-MessageBar-text"
+        id="MessageBar33"
+      >
+        <span
+          aria-live="polite"
+          className="ms-MessageBar-innerText undefined"
+          role="status"
+        />
+      </div>
+      <button
+        aria-describedby={undefined}
+        aria-label="Close"
+        aria-labelledby={undefined}
+        aria-pressed={undefined}
+        className="ms-Button ms-Button--icon ms-MessageBar-dismissal root-145"
+        data-is-focusable={true}
+        disabled={undefined}
+        onClick={[Function]}
+        type="button"
+      >
+        <div
+          className="ms-Button-flexContainer flexContainer-102"
+        >
+          <i
+            aria-hidden={true}
+            className="ms-Button-icon icon-109"
+            data-icon-name="Clear"
+            role="presentation"
+          >
+            
+          </i>
+        </div>
+      </button>
+    </div>
+    <div
+      className="ms-MessageBar-actions undefined"
+    >
+      <div>
+        <button
+          aria-describedby={undefined}
+          aria-label={undefined}
+          aria-labelledby={undefined}
+          aria-pressed={undefined}
+          className="ms-Button ms-Button--default root-367"
+          data-is-focusable={true}
+          disabled={undefined}
+          type="button"
+        >
+          <div
+            className="ms-Button-flexContainer flexContainer-102"
+          >
+            <div
+              className="ms-Button-textContainer textContainer-103"
+            >
+              <div
+                className="ms-Button-label label-120"
+                id="id__37"
+              >
+                Yes
+              </div>
+            </div>
+          </div>
+        </button>
+        <button
+          aria-describedby={undefined}
+          aria-label={undefined}
+          aria-labelledby={undefined}
+          aria-pressed={undefined}
+          className="ms-Button ms-Button--default root-367"
+          data-is-focusable={true}
+          disabled={undefined}
+          type="button"
+        >
+          <div
+            className="ms-Button-flexContainer flexContainer-102"
+          >
+            <div
+              className="ms-Button-textContainer textContainer-103"
+            >
+              <div
+                className="ms-Button-label label-120"
+                id="id__40"
+              >
+                No
+              </div>
+            </div>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
