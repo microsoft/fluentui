@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TooltipPage } from 'office-ui-fabric-react/lib/components/Tooltip/TooltipPage';
+import { TooltipPage } from '@uifabric/demo/lib/components/pages/TooltipPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 const pageStyles: any = require('../PageStyles.module.scss');
