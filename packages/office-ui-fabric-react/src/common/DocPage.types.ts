@@ -57,6 +57,9 @@ export interface IDocPageProps {
   /** Status of the component; e.g. keyboard accessible */
   componentStatus?: IComponentStatusProps;
 
+  /** Knobs that applies to all the examples */
+  exampleKnobs?: JSX.Element;
+
   /** Array of examples, displayed in the order defined */
   examples?: {
     /** Title of the example */
