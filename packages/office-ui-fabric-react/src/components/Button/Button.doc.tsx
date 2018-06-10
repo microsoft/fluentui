@@ -10,7 +10,8 @@ import { ButtonAnchorExample } from './examples/Button.Anchor.Example';
 import { ButtonScreenReaderExample } from './examples/Button.ScreenReader.Example';
 import { ButtonSwapExample } from './examples/Button.Swap.Example';
 import { ButtonSplitExample, ButtonSplitCustomExample } from './examples/Button.Split.Example';
-import { IDocPageProps } from '../../common/DocPage.types';
+import { IDocPageProps, ChecklistStatus } from '../../common/DocPage.types';
+export { ChecklistStatus };
 
 const ButtonDefaultExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Default.Example.tsx') as string;
 const ButtonCompoundExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Compound.Example.tsx') as string;
@@ -23,12 +24,12 @@ const ButtonContextualMenuExampleCode = require('!raw-loader!office-ui-fabric-re
 const ButtonSwapExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Swap.Example.tsx') as string;
 const ButtonSplitExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Split.Example.tsx') as string;
 
-export interface IButtonDocPageProps extends IDocPageProps {
+export interface IButtonDocPageProps {
   areButtonsDisabled: boolean;
   areButtonsChecked: boolean;
 }
 
-export const ButtonPageProps = (props: IButtonDocPageProps) => ({
+export const ButtonPageProps = (props: IButtonDocPageProps): IDocPageProps => ({
   title: 'Button',
   componentName: 'ButtonExample',
   componentUrl:

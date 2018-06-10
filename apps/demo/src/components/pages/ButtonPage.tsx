@@ -7,8 +7,8 @@ import * as exampleStylesImport from 'office-ui-fabric-react/lib/common/_example
 const exampleStyles: any = exampleStylesImport;
 
 export interface IButtonDemoPageState {
-  areButtonsDisabled?: boolean;
-  areButtonsChecked?: boolean;
+  areButtonsDisabled: boolean;
+  areButtonsChecked: boolean;
 }
 
 export class ButtonPage extends React.Component<IDocPageProps, IButtonDemoPageState> {
