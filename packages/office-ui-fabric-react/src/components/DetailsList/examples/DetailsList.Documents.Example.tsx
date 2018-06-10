@@ -14,30 +14,30 @@ import './DetailsListExample.scss';
 
 let _items: IDocument[] = [];
 
-const fileIcons: { name: string; }[] = [
-  { 'name': 'accdb' },
-  { 'name': 'csv' },
-  { 'name': 'docx' },
-  { 'name': 'dotx' },
-  { 'name': 'mpp' },
-  { 'name': 'mpt' },
-  { 'name': 'odp' },
-  { 'name': 'ods' },
-  { 'name': 'odt' },
-  { 'name': 'one' },
-  { 'name': 'onepkg' },
-  { 'name': 'onetoc' },
-  { 'name': 'potx' },
-  { 'name': 'ppsx' },
-  { 'name': 'pptx' },
-  { 'name': 'pub' },
-  { 'name': 'vsdx' },
-  { 'name': 'vssx' },
-  { 'name': 'vstx' },
-  { 'name': 'xls' },
-  { 'name': 'xlsx' },
-  { 'name': 'xltx' },
-  { 'name': 'xsn' }
+const fileIcons: { name: string }[] = [
+  { name: 'accdb' },
+  { name: 'csv' },
+  { name: 'docx' },
+  { name: 'dotx' },
+  { name: 'mpp' },
+  { name: 'mpt' },
+  { name: 'odp' },
+  { name: 'ods' },
+  { name: 'odt' },
+  { name: 'one' },
+  { name: 'onepkg' },
+  { name: 'onetoc' },
+  { name: 'potx' },
+  { name: 'ppsx' },
+  { name: 'pptx' },
+  { name: 'pub' },
+  { name: 'vsdx' },
+  { name: 'vssx' },
+  { name: 'vstx' },
+  { name: 'xls' },
+  { name: 'xlsx' },
+  { name: 'xltx' },
+  { name: 'xsn' }
 ];
 
 export interface IDetailsListDocumentsExampleState {
@@ -75,7 +75,10 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         let fileName: string = lorem(2).replace(/\W/g, '');
         let userName: string = lorem(2).replace(/[^a-zA-Z ]/g, '');
         fileName = fileName.charAt(0).toUpperCase() + fileName.slice(1).concat(`.${randomFileType.docType}`);
-        userName = userName.split(' ').map((name: string) => name.charAt(0).toUpperCase() + name.slice(1)).join(' ');
+        userName = userName
+          .split(' ')
+          .map((name: string) => name.charAt(0).toUpperCase() + name.slice(1))
+          .join(' ');
         _items.push({
           name: fileName,
           value: fileName,
@@ -104,12 +107,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         maxWidth: 16,
         onColumnClick: this._onColumnClick,
         onRender: (item: IDocument) => {
-          return (
-            <img
-              src={ item.iconName }
-              className={ 'DetailsListExample-documentIconImage' }
-            />
-          );
+          return <img src={item.iconName} className={'DetailsListExample-documentIconImage'} />;
         }
       },
       {
@@ -136,11 +134,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         onColumnClick: this._onColumnClick,
         data: 'number',
         onRender: (item: IDocument) => {
-          return (
-            <span>
-              { item.dateModified }
-            </span>
-          );
+          return <span>{item.dateModified}</span>;
         },
         isPadded: true
       },
@@ -155,11 +149,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         data: 'string',
         onColumnClick: this._onColumnClick,
         onRender: (item: IDocument) => {
-          return (
-            <span>
-              { item.modifiedBy }
-            </span>
-          );
+          return <span>{item.modifiedBy}</span>;
         },
         isPadded: true
       },
@@ -174,13 +164,9 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         data: 'number',
         onColumnClick: this._onColumnClick,
         onRender: (item: IDocument) => {
-          return (
-            <span>
-              { item.fileSize }
-            </span>
-          );
+          return <span>{item.fileSize}</span>;
         }
-      },
+      }
     ];
 
     this._selection = new Selection({
@@ -207,37 +193,34 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
     return (
       <div>
         <Toggle
-          label='Enable Compact Mode'
-          checked={ isCompactMode }
-          onChanged={ this._onChangeCompactMode }
-          onText='Compact'
-          offText='Normal'
+          label="Enable Compact Mode"
+          checked={isCompactMode}
+          onChanged={this._onChangeCompactMode}
+          onText="Compact"
+          offText="Normal"
         />
         <Toggle
-          label='Enable Modal Selection'
-          checked={ this.state.isModalSelection }
-          onChanged={ this._onChangeModalSelection }
-          onText='Modal'
-          offText='Normal'
+          label="Enable Modal Selection"
+          checked={this.state.isModalSelection}
+          onChanged={this._onChangeModalSelection}
+          onText="Modal"
+          offText="Normal"
         />
-        <div>{ selectionDetails }</div>
-        <TextField
-          label='Filter by name:'
-          onChanged={ this._onChangeText }
-        />
-        <MarqueeSelection selection={ this._selection }>
+        <div>{selectionDetails}</div>
+        <TextField label="Filter by name:" onChanged={this._onChangeText} />
+        <MarqueeSelection selection={this._selection}>
           <DetailsList
-            items={ items }
-            compact={ isCompactMode }
-            columns={ columns }
-            selectionMode={ this.state.isModalSelection ? SelectionMode.multiple : SelectionMode.none }
-            setKey='set'
-            layoutMode={ DetailsListLayoutMode.justified }
-            isHeaderVisible={ true }
-            selection={ this._selection }
-            selectionPreservedOnEmptyClick={ true }
-            onItemInvoked={ this._onItemInvoked }
-            enterModalSelectionOnTouch={ true }
+            items={items}
+            compact={isCompactMode}
+            columns={columns}
+            selectionMode={this.state.isModalSelection ? SelectionMode.multiple : SelectionMode.none}
+            setKey="set"
+            layoutMode={DetailsListLayoutMode.justified}
+            isHeaderVisible={true}
+            selection={this._selection}
+            selectionPreservedOnEmptyClick={true}
+            onItemInvoked={this._onItemInvoked}
+            enterModalSelectionOnTouch={true}
             useReducedRowRenderer={true}
           />
         </MarqueeSelection>
@@ -253,21 +236,21 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
 
   private _onChangeCompactMode = (checked: boolean): void => {
     this.setState({ isCompactMode: checked });
-  }
+  };
 
   private _onChangeModalSelection = (checked: boolean): void => {
     this.setState({ isModalSelection: checked });
-  }
+  };
 
   private _onChangeText = (text: any): void => {
     this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items });
-  }
+  };
 
   private _onItemInvoked(item: any): void {
     alert(`Item invoked: ${item.name}`);
   }
 
-  private _randomDate(start: Date, end: Date): { value: number; dateFormatted: string; } {
+  private _randomDate(start: Date, end: Date): { value: number; dateFormatted: string } {
     const date: Date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
     const dateData = {
       value: date.valueOf(),
@@ -276,7 +259,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
     return dateData;
   }
 
-  private _randomFileIcon(): { docType: string; url: string; } {
+  private _randomFileIcon(): { docType: string; url: string } {
     const docType: string = fileIcons[Math.floor(Math.random() * fileIcons.length) + 0].name;
     return {
       docType,
@@ -284,7 +267,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
     };
   }
 
-  private _randomFileSize(): { value: string; rawSize: number; } {
+  private _randomFileSize(): { value: string; rawSize: number } {
     const fileSize: number = Math.floor(Math.random() * 100) + 30;
     return {
       value: `${fileSize} KB`,
@@ -321,12 +304,12 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         newCol.isSortedDescending = true;
       }
     });
-    newItems = this._sortItems(newItems, currColumn.fieldName, currColumn.isSortedDescending);
+    newItems = this._sortItems(newItems, currColumn.fieldName || '', currColumn.isSortedDescending);
     this.setState({
       columns: newColumns,
       items: newItems
     });
-  }
+  };
 
   private _sortItems = (items: IDocument[], sortBy: string, descending = false): IDocument[] => {
     if (descending) {
@@ -350,5 +333,5 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         return 0;
       });
     }
-  }
+  };
 }
