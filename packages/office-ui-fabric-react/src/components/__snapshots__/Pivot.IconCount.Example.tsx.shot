@@ -23,7 +23,76 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
           aria-labelledby={undefined}
           aria-pressed={undefined}
           aria-selected={true}
-          className="ms-Button ms-Button--action ms-Button--command ms-Pivot-link is-selected undefined root-113"
+          className=
+              ms-Button
+              ms-Button--action
+              ms-Button--command
+              ms-Pivot-link
+              is-selected
+              undefined
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                background-color: transparent;
+                border-radius: 0px;
+                border: 1px solid transparent;
+                box-sizing: border-box;
+                color: #333333;
+                cursor: pointer;
+                display: inline-block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                height: 40px;
+                outline: transparent;
+                padding-bottom: 0;
+                padding-left: 4px;
+                padding-right: 4px;
+                padding-top: 0;
+                position: relative;
+                text-align: center;
+                text-decoration: none;
+                user-select: none;
+                vertical-align: top;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 0px;
+                content: "";
+                left: 0px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+                z-index: 1;
+              }
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                border: none;
+                bottom: -2px;
+                left: -2px;
+                outline-color: ButtonText;
+                right: -2px;
+                top: -2px;
+              }
+              &:hover {
+                color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
+              }
+              &:hover .ms-Button-icon {
+                color: #0078d4;
+              }
+              &:active {
+                color: #000000;
+              }
+              &:active .ms-Button-icon {
+                color: #004578;
+              }
           data-is-focusable={true}
           disabled={undefined}
           id="Pivot0-Tab0"
@@ -34,7 +103,15 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
           type="button"
         >
           <div
-            className="ms-Button-flexContainer flexContainer-114"
+            className=
+                ms-Button-flexContainer
+                {
+                  align-items: center;
+                  display: flex;
+                  flex-wrap: nowrap;
+                  height: 100%;
+                  justify-content: flex-start;
+                }
           >
             <span
               className="ms-Pivot-link-content"
@@ -44,7 +121,17 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
               >
                 <i
                   aria-hidden={true}
-                  className="root-366"
+                  className=
+
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        display: inline-block;
+                        font-family: "FabricMDL2Icons-0";
+                        font-style: normal;
+                        font-weight: normal;
+                        speak: none;
+                      }
                   data-icon-name="Emoji2"
                   role="presentation"
                 >
@@ -73,7 +160,74 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
           aria-labelledby={undefined}
           aria-pressed={undefined}
           aria-selected={false}
-          className="ms-Button ms-Button--action ms-Button--command ms-Pivot-link root-113"
+          className=
+              ms-Button
+              ms-Button--action
+              ms-Button--command
+              ms-Pivot-link
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                background-color: transparent;
+                border-radius: 0px;
+                border: 1px solid transparent;
+                box-sizing: border-box;
+                color: #333333;
+                cursor: pointer;
+                display: inline-block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                height: 40px;
+                outline: transparent;
+                padding-bottom: 0;
+                padding-left: 4px;
+                padding-right: 4px;
+                padding-top: 0;
+                position: relative;
+                text-align: center;
+                text-decoration: none;
+                user-select: none;
+                vertical-align: top;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 0px;
+                content: "";
+                left: 0px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+                z-index: 1;
+              }
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                border: none;
+                bottom: -2px;
+                left: -2px;
+                outline-color: ButtonText;
+                right: -2px;
+                top: -2px;
+              }
+              &:hover {
+                color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
+              }
+              &:hover .ms-Button-icon {
+                color: #0078d4;
+              }
+              &:active {
+                color: #000000;
+              }
+              &:active .ms-Button-icon {
+                color: #004578;
+              }
           data-is-focusable={true}
           disabled={undefined}
           id="Pivot0-Tab1"
@@ -84,7 +238,15 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
           type="button"
         >
           <div
-            className="ms-Button-flexContainer flexContainer-114"
+            className=
+                ms-Button-flexContainer
+                {
+                  align-items: center;
+                  display: flex;
+                  flex-wrap: nowrap;
+                  height: 100%;
+                  justify-content: flex-start;
+                }
           >
             <span
               className="ms-Pivot-link-content"
@@ -94,7 +256,17 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
               >
                 <i
                   aria-hidden={true}
-                  className="root-52"
+                  className=
+
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        display: inline-block;
+                        font-family: "FabricMDL2Icons-1";
+                        font-style: normal;
+                        font-weight: normal;
+                        speak: none;
+                      }
                   data-icon-name="Recent"
                   role="presentation"
                 >
@@ -117,7 +289,74 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
           aria-labelledby={undefined}
           aria-pressed={undefined}
           aria-selected={false}
-          className="ms-Button ms-Button--action ms-Button--command ms-Pivot-link root-113"
+          className=
+              ms-Button
+              ms-Button--action
+              ms-Button--command
+              ms-Pivot-link
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                background-color: transparent;
+                border-radius: 0px;
+                border: 1px solid transparent;
+                box-sizing: border-box;
+                color: #333333;
+                cursor: pointer;
+                display: inline-block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                height: 40px;
+                outline: transparent;
+                padding-bottom: 0;
+                padding-left: 4px;
+                padding-right: 4px;
+                padding-top: 0;
+                position: relative;
+                text-align: center;
+                text-decoration: none;
+                user-select: none;
+                vertical-align: top;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 0px;
+                content: "";
+                left: 0px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+                z-index: 1;
+              }
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                border: none;
+                bottom: -2px;
+                left: -2px;
+                outline-color: ButtonText;
+                right: -2px;
+                top: -2px;
+              }
+              &:hover {
+                color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
+              }
+              &:hover .ms-Button-icon {
+                color: #0078d4;
+              }
+              &:active {
+                color: #000000;
+              }
+              &:active .ms-Button-icon {
+                color: #004578;
+              }
           data-is-focusable={true}
           disabled={undefined}
           id="Pivot0-Tab2"
@@ -128,7 +367,15 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
           type="button"
         >
           <div
-            className="ms-Button-flexContainer flexContainer-114"
+            className=
+                ms-Button-flexContainer
+                {
+                  align-items: center;
+                  display: flex;
+                  flex-wrap: nowrap;
+                  height: 100%;
+                  justify-content: flex-start;
+                }
           >
             <span
               className="ms-Pivot-link-content"
@@ -138,7 +385,17 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
               >
                 <i
                   aria-hidden={true}
-                  className="root-366"
+                  className=
+
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        display: inline-block;
+                        font-family: "FabricMDL2Icons-0";
+                        font-style: normal;
+                        font-weight: normal;
+                        speak: none;
+                      }
                   data-icon-name="Globe"
                   role="presentation"
                 >
@@ -154,7 +411,74 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
           aria-labelledby={undefined}
           aria-pressed={undefined}
           aria-selected={false}
-          className="ms-Button ms-Button--action ms-Button--command ms-Pivot-link root-113"
+          className=
+              ms-Button
+              ms-Button--action
+              ms-Button--command
+              ms-Pivot-link
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                background-color: transparent;
+                border-radius: 0px;
+                border: 1px solid transparent;
+                box-sizing: border-box;
+                color: #333333;
+                cursor: pointer;
+                display: inline-block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                height: 40px;
+                outline: transparent;
+                padding-bottom: 0;
+                padding-left: 4px;
+                padding-right: 4px;
+                padding-top: 0;
+                position: relative;
+                text-align: center;
+                text-decoration: none;
+                user-select: none;
+                vertical-align: top;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 0px;
+                content: "";
+                left: 0px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+                z-index: 1;
+              }
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                border: none;
+                bottom: -2px;
+                left: -2px;
+                outline-color: ButtonText;
+                right: -2px;
+                top: -2px;
+              }
+              &:hover {
+                color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
+              }
+              &:hover .ms-Button-icon {
+                color: #0078d4;
+              }
+              &:active {
+                color: #000000;
+              }
+              &:active .ms-Button-icon {
+                color: #004578;
+              }
           data-is-focusable={true}
           disabled={undefined}
           id="Pivot0-Tab3"
@@ -165,7 +489,15 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
           type="button"
         >
           <div
-            className="ms-Button-flexContainer flexContainer-114"
+            className=
+                ms-Button-flexContainer
+                {
+                  align-items: center;
+                  display: flex;
+                  flex-wrap: nowrap;
+                  height: 100%;
+                  justify-content: flex-start;
+                }
           >
             <span
               className="ms-Pivot-link-content"
@@ -175,7 +507,17 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
               >
                 <i
                   aria-hidden={true}
-                  className="root-313"
+                  className=
+
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        display: inline-block;
+                        font-family: "FabricMDL2Icons-3";
+                        font-style: normal;
+                        font-weight: normal;
+                        speak: none;
+                      }
                   data-icon-name="Ringer"
                   role="presentation"
                 >
@@ -204,7 +546,74 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
           aria-labelledby={undefined}
           aria-pressed={undefined}
           aria-selected={false}
-          className="ms-Button ms-Button--action ms-Button--command ms-Pivot-link root-113"
+          className=
+              ms-Button
+              ms-Button--action
+              ms-Button--command
+              ms-Pivot-link
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                background-color: transparent;
+                border-radius: 0px;
+                border: 1px solid transparent;
+                box-sizing: border-box;
+                color: #333333;
+                cursor: pointer;
+                display: inline-block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                height: 40px;
+                outline: transparent;
+                padding-bottom: 0;
+                padding-left: 4px;
+                padding-right: 4px;
+                padding-top: 0;
+                position: relative;
+                text-align: center;
+                text-decoration: none;
+                user-select: none;
+                vertical-align: top;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 0px;
+                content: "";
+                left: 0px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+                z-index: 1;
+              }
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                border: none;
+                bottom: -2px;
+                left: -2px;
+                outline-color: ButtonText;
+                right: -2px;
+                top: -2px;
+              }
+              &:hover {
+                color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
+              }
+              &:hover .ms-Button-icon {
+                color: #0078d4;
+              }
+              &:active {
+                color: #000000;
+              }
+              &:active .ms-Button-icon {
+                color: #004578;
+              }
           data-is-focusable={true}
           disabled={undefined}
           id="Pivot0-Tab4"
@@ -215,7 +624,15 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
           type="button"
         >
           <div
-            className="ms-Button-flexContainer flexContainer-114"
+            className=
+                ms-Button-flexContainer
+                {
+                  align-items: center;
+                  display: flex;
+                  flex-wrap: nowrap;
+                  height: 100%;
+                  justify-content: flex-start;
+                }
           >
             <span>
               <span
@@ -226,7 +643,17 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                 >
                   <i
                     aria-hidden={true}
-                    className="root-366"
+                    className=
+
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          display: inline-block;
+                          font-family: "FabricMDL2Icons-0";
+                          font-style: normal;
+                          font-weight: normal;
+                          speak: none;
+                        }
                     data-icon-name="Globe"
                     role="presentation"
                   >
@@ -249,7 +676,17 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
               </span>
               <i
                 aria-hidden={true}
-                className="root-366"
+                className=
+
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      display: inline-block;
+                      font-family: "FabricMDL2Icons-0";
+                      font-style: normal;
+                      font-weight: normal;
+                      speak: none;
+                    }
                 data-icon-name="Airplane"
                 role="presentation"
                 style={
@@ -271,7 +708,24 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
     >
       <div>
         <label
-          className="ms-Label root-89"
+          className=
+              ms-Label
+              {
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #333333;
+                display: block;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                overflow-wrap: break-word;
+                padding-bottom: 5px;
+                padding-left: 0;
+                padding-right: 0;
+                padding-top: 5px;
+                word-wrap: break-word;
+              }
         >
           Pivot #1
         </label>

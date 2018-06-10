@@ -6,7 +6,24 @@ exports[`Component Examples renders Image.MaximizeFrame.Example.tsx correctly 1`
     Where the exact width and height of the image's frame is not known, such as when sizing an image as a percentage of its parent, you can use the "maximizeFrame" prop to expand the frame to fill the parent element.
   </p>
   <label
-    className="ms-Label root-89"
+    className=
+        ms-Label
+        {
+          box-shadow: none;
+          box-sizing: border-box;
+          color: #333333;
+          display: block;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          overflow-wrap: break-word;
+          padding-bottom: 5px;
+          padding-left: 0;
+          padding-right: 0;
+          padding-top: 5px;
+          word-wrap: break-word;
+        }
   >
     The image is placed within a landscape container.
   </label>
@@ -19,7 +36,15 @@ exports[`Component Examples renders Image.MaximizeFrame.Example.tsx correctly 1`
     }
   >
     <div
-      className="ms-Image ms-Image--maximizeFrame root-343"
+      className=
+          ms-Image
+          ms-Image--maximizeFrame
+          {
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+          }
       style={
         Object {
           "height": undefined,
@@ -29,7 +54,22 @@ exports[`Component Examples renders Image.MaximizeFrame.Example.tsx correctly 1`
     >
       <img
         alt="Example implementation of the property maximize frame with a landscape container."
-        className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+        className=
+            ms-Image-image
+            ms-Image-image--cover
+            ms-Image-image--portrait
+            is-notLoaded
+            is-fadeIn
+            {
+              display: block;
+              height: auto;
+              left: 50% /* @noflip */;
+              opacity: 0;
+              position: absolute;
+              top: 50%;
+              transform: translate(-50%,-50%);
+              width: 100%;
+            }
         onError={[Function]}
         onLoad={[Function]}
         role={undefined}
@@ -39,7 +79,24 @@ exports[`Component Examples renders Image.MaximizeFrame.Example.tsx correctly 1`
   </div>
   <br />
   <label
-    className="ms-Label root-89"
+    className=
+        ms-Label
+        {
+          box-shadow: none;
+          box-sizing: border-box;
+          color: #333333;
+          display: block;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          overflow-wrap: break-word;
+          padding-bottom: 5px;
+          padding-left: 0;
+          padding-right: 0;
+          padding-top: 5px;
+          word-wrap: break-word;
+        }
   >
     The image is placed within a portrait container.
   </label>
@@ -52,7 +109,15 @@ exports[`Component Examples renders Image.MaximizeFrame.Example.tsx correctly 1`
     }
   >
     <div
-      className="ms-Image ms-Image--maximizeFrame root-343"
+      className=
+          ms-Image
+          ms-Image--maximizeFrame
+          {
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+          }
       style={
         Object {
           "height": undefined,
@@ -62,7 +127,22 @@ exports[`Component Examples renders Image.MaximizeFrame.Example.tsx correctly 1`
     >
       <img
         alt="Example implementation of the property maximize frame with a portrait container"
-        className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+        className=
+            ms-Image-image
+            ms-Image-image--cover
+            ms-Image-image--portrait
+            is-notLoaded
+            is-fadeIn
+            {
+              display: block;
+              height: auto;
+              left: 50% /* @noflip */;
+              opacity: 0;
+              position: absolute;
+              top: 50%;
+              transform: translate(-50%,-50%);
+              width: 100%;
+            }
         onError={[Function]}
         onLoad={[Function]}
         role={undefined}

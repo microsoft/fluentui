@@ -3,15 +3,47 @@
 exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`] = `
 <div>
   <div
-    className="ms-ActivityItem exampleRoot-42"
+    className=
+        ms-ActivityItem
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          align-items: flex-start;
+          box-sizing: border-box;
+          color: #666666;
+          display: flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 12px;
+          font-weight: 400;
+          justify-content: flex-start;
+          line-height: 17px;
+          margin-top: 20px;
+        }
     style={undefined}
   >
     <div
-      className="ms-ActivityItem-activityTypeIcon css-46"
+      className=
+          ms-ActivityItem-activityTypeIcon
+          {
+            font-size: 16px;
+            height: 32px;
+            line-height: 16px;
+            margin-top: 3px;
+          }
     >
       <i
         aria-hidden={true}
-        className="root-52"
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              display: inline-block;
+              font-family: "FabricMDL2Icons-1";
+              font-style: normal;
+              font-weight: normal;
+              speak: none;
+            }
         data-icon-name="Message"
         role="presentation"
       >
@@ -19,14 +51,73 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
       </i>
     </div>
     <div
-      className="ms-ActivityItem-activityContent css-47"
+      className=
+          ms-ActivityItem-activityContent
+          {
+            padding-bottom: 0;
+            padding-left: 8px;
+            padding-right: 8px;
+            padding-top: 0;
+          }
     >
       <span
-        className="ms-ActivityItem-activityText css-48"
+        className=
+            ms-ActivityItem-activityText
+            {
+              display: inline;
+            }
       >
         <button
           aria-disabled={undefined}
-          className="ms-Link nameText-53"
+          className=
+              ms-Link
+              {
+                background-color: transparent;
+                background: none;
+                border: none;
+                color: #0078d4;
+                cursor: pointer;
+                display: inline;
+                font-size: inherit;
+                font-weight: bold;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                outline: transparent;
+                overflow: inherit;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+                position: relative;
+                text-align: left;
+                text-overflow: inherit;
+                user-select: text;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 1px;
+                content: "";
+                left: 1px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+                z-index: 1;
+              }
+              &:active, &:hover, &:active:hover {
+                color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                text-decoration: underline;
+              }
+              &:focus {
+                color: #0078d4;
+              }
           onClick={[Function]}
         >
           Philippe Lampros
@@ -36,14 +127,66 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
         </span>
       </span>
       <div
-        className="ms-ActivityItem-commentText css-49"
+        className=
+            ms-ActivityItem-commentText
+            {
+              color: #333333;
+            }
       >
         <span>
           Hello! I am making a comment and mentioning 
         </span>
         <button
           aria-disabled={undefined}
-          className="ms-Link nameText-53"
+          className=
+              ms-Link
+              {
+                background-color: transparent;
+                background: none;
+                border: none;
+                color: #0078d4;
+                cursor: pointer;
+                display: inline;
+                font-size: inherit;
+                font-weight: bold;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                outline: transparent;
+                overflow: inherit;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+                position: relative;
+                text-align: left;
+                text-overflow: inherit;
+                user-select: text;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 1px;
+                content: "";
+                left: 1px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+                z-index: 1;
+              }
+              &:active, &:hover, &:active:hover {
+                color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                text-decoration: underline;
+              }
+              &:focus {
+                color: #0078d4;
+              }
           onClick={[Function]}
         >
           @Anđela Debeljak
@@ -53,22 +196,63 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
         </span>
       </div>
       <div
-        className="ms-ActivityItem-timeStamp css-50"
+        className=
+            ms-ActivityItem-timeStamp
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #666666;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 10px;
+              font-weight: 400;
+            }
       >
         Just now
       </div>
     </div>
   </div>
   <div
-    className="ms-ActivityItem exampleRoot-42"
+    className=
+        ms-ActivityItem
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          align-items: flex-start;
+          box-sizing: border-box;
+          color: #666666;
+          display: flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 12px;
+          font-weight: 400;
+          justify-content: flex-start;
+          line-height: 17px;
+          margin-top: 20px;
+        }
     style={undefined}
   >
     <div
-      className="ms-ActivityItem-activityTypeIcon css-46"
+      className=
+          ms-ActivityItem-activityTypeIcon
+          {
+            font-size: 16px;
+            height: 32px;
+            line-height: 16px;
+            margin-top: 3px;
+          }
     >
       <i
         aria-hidden={true}
-        className="root-55"
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              display: inline-block;
+              font-family: "FabricMDL2Icons";
+              font-style: normal;
+              font-weight: normal;
+              speak: none;
+            }
         data-icon-name="Trash"
         role="presentation"
       >
@@ -76,14 +260,73 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
       </i>
     </div>
     <div
-      className="ms-ActivityItem-activityContent css-47"
+      className=
+          ms-ActivityItem-activityContent
+          {
+            padding-bottom: 0;
+            padding-left: 8px;
+            padding-right: 8px;
+            padding-top: 0;
+          }
     >
       <span
-        className="ms-ActivityItem-activityText css-48"
+        className=
+            ms-ActivityItem-activityText
+            {
+              display: inline;
+            }
       >
         <button
           aria-disabled={undefined}
-          className="ms-Link nameText-53"
+          className=
+              ms-Link
+              {
+                background-color: transparent;
+                background: none;
+                border: none;
+                color: #0078d4;
+                cursor: pointer;
+                display: inline;
+                font-size: inherit;
+                font-weight: bold;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                outline: transparent;
+                overflow: inherit;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+                position: relative;
+                text-align: left;
+                text-overflow: inherit;
+                user-select: text;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 1px;
+                content: "";
+                left: 1px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+                z-index: 1;
+              }
+              &:active, &:hover, &:active:hover {
+                color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                text-decoration: underline;
+              }
+              &:focus {
+                color: #0078d4;
+              }
           onClick={[Function]}
         >
           Lisha Refai
@@ -92,28 +335,73 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
            deleted 
         </span>
         <span
-          className="nameText-38"
+          className=
+
+              {
+                font-weight: bold;
+              }
         >
           DocumentTitle.docx
         </span>
       </span>
       <div
-        className="ms-ActivityItem-timeStamp css-50"
+        className=
+            ms-ActivityItem-timeStamp
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #666666;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 10px;
+              font-weight: 400;
+            }
       >
         2 hours ago
       </div>
     </div>
   </div>
   <div
-    className="ms-ActivityItem exampleRoot-42"
+    className=
+        ms-ActivityItem
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          align-items: flex-start;
+          box-sizing: border-box;
+          color: #666666;
+          display: flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 12px;
+          font-weight: 400;
+          justify-content: flex-start;
+          line-height: 17px;
+          margin-top: 20px;
+        }
     style={undefined}
   >
     <div
-      className="ms-ActivityItem-activityTypeIcon css-46"
+      className=
+          ms-ActivityItem-activityTypeIcon
+          {
+            font-size: 16px;
+            height: 32px;
+            line-height: 16px;
+            margin-top: 3px;
+          }
     >
       <i
         aria-hidden={true}
-        className="root-57"
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              display: inline-block;
+              font-family: "FabricMDL2Icons-7";
+              font-style: normal;
+              font-weight: normal;
+              speak: none;
+            }
         data-icon-name="FabricMovetoFolder"
         role="presentation"
       >
@@ -121,14 +409,73 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
       </i>
     </div>
     <div
-      className="ms-ActivityItem-activityContent css-47"
+      className=
+          ms-ActivityItem-activityContent
+          {
+            padding-bottom: 0;
+            padding-left: 8px;
+            padding-right: 8px;
+            padding-top: 0;
+          }
     >
       <span
-        className="ms-ActivityItem-activityText css-48"
+        className=
+            ms-ActivityItem-activityText
+            {
+              display: inline;
+            }
       >
         <button
           aria-disabled={undefined}
-          className="ms-Link nameText-53"
+          className=
+              ms-Link
+              {
+                background-color: transparent;
+                background: none;
+                border: none;
+                color: #0078d4;
+                cursor: pointer;
+                display: inline;
+                font-size: inherit;
+                font-weight: bold;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                outline: transparent;
+                overflow: inherit;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+                position: relative;
+                text-align: left;
+                text-overflow: inherit;
+                user-select: text;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 1px;
+                content: "";
+                left: 1px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+                z-index: 1;
+              }
+              &:active, &:hover, &:active:hover {
+                color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                text-decoration: underline;
+              }
+              &:focus {
+                color: #0078d4;
+              }
           onClick={[Function]}
         >
           Julian Arvidsson
@@ -138,7 +485,55 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
         </span>
         <button
           aria-disabled={undefined}
-          className="ms-Link nameText-53"
+          className=
+              ms-Link
+              {
+                background-color: transparent;
+                background: none;
+                border: none;
+                color: #0078d4;
+                cursor: pointer;
+                display: inline;
+                font-size: inherit;
+                font-weight: bold;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                outline: transparent;
+                overflow: inherit;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+                position: relative;
+                text-align: left;
+                text-overflow: inherit;
+                user-select: text;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 1px;
+                content: "";
+                left: 1px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+                z-index: 1;
+              }
+              &:active, &:hover, &:active:hover {
+                color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                text-decoration: underline;
+              }
+              &:focus {
+                color: #0078d4;
+              }
           onClick={[Function]}
         >
           PresentationTitle.pptx
@@ -148,14 +543,71 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
         </span>
         <button
           aria-disabled={undefined}
-          className="ms-Link nameText-53"
+          className=
+              ms-Link
+              {
+                background-color: transparent;
+                background: none;
+                border: none;
+                color: #0078d4;
+                cursor: pointer;
+                display: inline;
+                font-size: inherit;
+                font-weight: bold;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                outline: transparent;
+                overflow: inherit;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+                position: relative;
+                text-align: left;
+                text-overflow: inherit;
+                user-select: text;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 1px;
+                content: "";
+                left: 1px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+                z-index: 1;
+              }
+              &:active, &:hover, &:active:hover {
+                color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                text-decoration: underline;
+              }
+              &:focus {
+                color: #0078d4;
+              }
           onClick={[Function]}
         >
           Destination Folder
         </button>
       </span>
       <div
-        className="ms-ActivityItem-timeStamp css-50"
+        className=
+            ms-ActivityItem-timeStamp
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #666666;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 10px;
+              font-weight: 400;
+            }
       >
         Yesterday
       </div>

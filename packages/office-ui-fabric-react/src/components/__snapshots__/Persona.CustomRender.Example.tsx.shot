@@ -10,20 +10,83 @@ exports[`Component Examples renders Persona.CustomRender.Example.tsx correctly 1
     Custom icon in secondary text
   </div>
   <div
-    className="ms-Persona ms-Persona--size72 ms-Persona--offline root-446"
+    className=
+        ms-Persona
+        ms-Persona--size72
+        ms-Persona--offline
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          align-items: center;
+          box-shadow: none;
+          box-sizing: border-box;
+          color: #333333;
+          display: flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: 72px;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          min-width: 72px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+        }
+        & .contextualHost {
+          display: none;
+        }
+        &:hover $primaryText {
+          color: #212121;
+        }
     size={14}
     style={undefined}
   >
     <div
-      className="ms-Persona-coin ms-Persona--size72 coin-72"
+      className=
+          ms-Persona-coin
+          ms-Persona--size72
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+          }
       size={14}
     >
       <div
-        className="ms-Persona-imageArea imageArea-450"
+        className=
+            ms-Persona-imageArea
+            {
+              flex: 0 0 auto;
+              height: 72px;
+              position: relative;
+              text-align: center;
+              width: 72px;
+            }
         style={undefined}
       >
         <div
-          className="ms-Image ms-Persona-image image-453"
+          className=
+              ms-Image
+              ms-Persona-image
+              {
+                border-radius: 50%;
+                border: 0px;
+                height: 72px;
+                left: 0px;
+                margin-right: 10px;
+                overflow: hidden;
+                perspective: 1px;
+                position: absolute;
+                top: 0px;
+                width: 72px;
+              }
           style={
             Object {
               "height": 72,
@@ -33,7 +96,22 @@ exports[`Component Examples renders Persona.CustomRender.Example.tsx correctly 1
         >
           <img
             alt=""
-            className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+            className=
+                ms-Image-image
+                ms-Image-image--cover
+                ms-Image-image--portrait
+                is-notLoaded
+                is-fadeIn
+                {
+                  display: block;
+                  height: auto;
+                  left: 50% /* @noflip */;
+                  opacity: 0;
+                  position: absolute;
+                  top: 50%;
+                  transform: translate(-50%,-50%);
+                  width: 100%;
+                }
             onError={[Function]}
             onLoad={[Function]}
             role={undefined}
@@ -41,12 +119,45 @@ exports[`Component Examples renders Persona.CustomRender.Example.tsx correctly 1
           />
         </div>
         <div
-          className="ms-Persona-presence presence-468"
+          className=
+              ms-Persona-presence
+              {
+                -ms-high-contrast-adjust: none;
+                background-clip: content-box;
+                background-color: #93ABBD;
+                border-radius: 50%;
+                border: 2px solid #ffffff;
+                bottom: -2px;
+                box-sizing: content-box;
+                height: 20px;
+                position: absolute;
+                right: -2px;
+                text-align: center;
+                top: auto;
+                width: 20px;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                background-color: WindowText;
+                border-color: Window;
+              }
           style={undefined}
         >
           <i
             aria-hidden={true}
-            className="ms-Icon-placeHolder ms-Persona-presenceIcon presenceIcon-469"
+            className=
+                ms-Icon-placeHolder
+                ms-Persona-presenceIcon
+                {
+                  color: #ffffff;
+                  display: inline-block;
+                  font-size: 12px;
+                  line-height: 20px;
+                  vertical-align: top;
+                  width: 1em;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  color: Window;
+                }
             data-icon-name=""
             role="presentation"
             style={undefined}
@@ -55,10 +166,32 @@ exports[`Component Examples renders Persona.CustomRender.Example.tsx correctly 1
       </div>
     </div>
     <div
-      className="ms-Persona-details details-206"
+      className=
+          ms-Persona-details
+          {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            min-width: 0px;
+            padding-bottom: 0;
+            padding-left: 16px;
+            padding-right: 24px;
+            padding-top: 0;
+            text-align: left;
+            width: 100%;
+          }
     >
       <div
-        className="ms-Persona-primaryText primaryText-447"
+        className=
+            ms-Persona-primaryText
+            {
+              color: #333333;
+              font-size: 21px;
+              font-weight: 400;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
       >
         <div
           aria-describedby={undefined}
@@ -72,12 +205,31 @@ exports[`Component Examples renders Persona.CustomRender.Example.tsx correctly 1
         </div>
       </div>
       <div
-        className="ms-Persona-secondaryText secondaryText-448"
+        className=
+            ms-Persona-secondaryText
+            {
+              color: #666666;
+              font-size: 14px;
+              font-weight: 400;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
       >
         <div>
           <i
             aria-hidden={true}
-            className="ms-JobIconExample root-471"
+            className=
+                ms-JobIconExample
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  display: inline-block;
+                  font-family: "FabricMDL2Icons-5";
+                  font-style: normal;
+                  font-weight: normal;
+                  speak: none;
+                }
             data-icon-name="Suitcase"
             role="presentation"
           >
@@ -87,7 +239,17 @@ exports[`Component Examples renders Persona.CustomRender.Example.tsx correctly 1
         </div>
       </div>
       <div
-        className="ms-Persona-tertiaryText tertiaryText-449"
+        className=
+            ms-Persona-tertiaryText
+            {
+              color: #666666;
+              display: block;
+              font-size: 12px;
+              font-weight: 400;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
       >
         <div
           aria-describedby={undefined}
@@ -101,7 +263,17 @@ exports[`Component Examples renders Persona.CustomRender.Example.tsx correctly 1
         </div>
       </div>
       <div
-        className="ms-Persona-optionalText optionalText-210"
+        className=
+            ms-Persona-optionalText
+            {
+              color: #666666;
+              display: none;
+              font-size: 12px;
+              font-weight: 400;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
       >
         <div
           aria-describedby={undefined}

@@ -17,7 +17,15 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     aria-labelledby={undefined}
     aria-rowindex={1}
     aria-selected={false}
-    className="ms-FocusZone ms-DetailsRow css-325"
+    className=
+        ms-FocusZone
+        ms-DetailsRow
+        {
+          animation-duration: 0.367s;
+          animation-fill-mode: both;
+          animation-name: keyframes from{opacity:0;}to{opacity:1;};
+          animation-timing-function: cubic-bezier(.1,.25,.75,.9);
+        }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone1"
     data-is-draggable={false}
@@ -50,11 +58,56 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         title={undefined}
       >
         <div
-          className="ms-Check root-326"
+          className=
+              ms-Check
+              {
+                height: 18px;
+                line-height: 1;
+                position: relative;
+                user-select: none;
+                vertical-align: top;
+                width: 18px;
+              }
+              &:before {
+                background: #ffffff;
+                border-radius: 50%;
+                bottom: 1px;
+                content: "";
+                left: 1px;
+                opacity: 1;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+              }
+              .checkHost:hover &, .checkHost:focus &, &:hover, &:focus {
+                opacity: 1;
+              }
         >
           <i
             aria-hidden={true}
-            className="ms-Check-circle circle-329"
+            className=
+                ms-Check-circle
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #c8c8c8;
+                  display: inline-block;
+                  font-family: "FabricMDL2Icons";
+                  font-size: 18px;
+                  font-style: normal;
+                  font-weight: normal;
+                  height: 18px;
+                  left: 0px;
+                  position: absolute;
+                  speak: none;
+                  text-align: center;
+                  top: 0px;
+                  vertical-align: middle;
+                  width: 18px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  color: WindowText;
+                }
             data-icon-name="CircleRing"
             role="presentation"
           >
@@ -62,7 +115,33 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           </i>
           <i
             aria-hidden={true}
-            className="ms-Check-check check-330"
+            className=
+                ms-Check-check
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #c8c8c8;
+                  display: inline-block;
+                  font-family: "FabricMDL2Icons";
+                  font-size: 16px;
+                  font-style: normal;
+                  font-weight: normal;
+                  height: 18px;
+                  left: .5px;
+                  opacity: 0;
+                  position: absolute;
+                  speak: none;
+                  text-align: center;
+                  top: 0px;
+                  vertical-align: middle;
+                  width: 18px;
+                }
+                &:hover {
+                  opacity: 1;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                }
             data-icon-name="StatusCircleCheckmark"
             role="presentation"
           >
@@ -104,7 +183,37 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       >
         <a
           aria-disabled={undefined}
-          className="ms-Link root-331"
+          className=
+              ms-Link
+              {
+                color: #0078d4;
+                outline: transparent;
+                position: relative;
+                text-decoration: none;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 1px;
+                content: "";
+                left: 1px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+                z-index: 1;
+              }
+              &:active, &:hover, &:active:hover {
+                color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                text-decoration: underline;
+              }
+              &:focus {
+                color: #0078d4;
+              }
           href="http://placehold.it/100x200"
           onClick={[Function]}
           target={undefined}
@@ -129,19 +238,102 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
-          className="ms-Button ms-Button--default root-119"
+          className=
+              ms-Button
+              ms-Button--default
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                background-color: #f4f4f4;
+                border-radius: 0px;
+                border: 1px solid transparent;
+                box-sizing: border-box;
+                color: #333333;
+                cursor: pointer;
+                display: inline-block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                height: 32px;
+                min-width: 80px;
+                outline: transparent;
+                padding-bottom: 0;
+                padding-left: 16px;
+                padding-right: 16px;
+                padding-top: 0;
+                position: relative;
+                text-align: center;
+                text-decoration: none;
+                user-select: none;
+                vertical-align: top;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 0px;
+                content: "";
+                left: 0px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+                z-index: 1;
+              }
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                border: none;
+                bottom: -2px;
+                left: -2px;
+                outline-color: ButtonText;
+                right: -2px;
+                top: -2px;
+              }
+              &:hover {
+                background-color: #eaeaea;
+                color: #000000;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
+              }
+              &:active {
+                background-color: #c8c8c8;
+                color: #212121;
+              }
           data-is-focusable={true}
           disabled={undefined}
           type="button"
         >
           <div
-            className="ms-Button-flexContainer flexContainer-102"
+            className=
+                ms-Button-flexContainer
+                {
+                  align-items: center;
+                  display: flex;
+                  flex-wrap: nowrap;
+                  height: 100%;
+                  justify-content: center;
+                }
           >
             <div
-              className="ms-Button-textContainer textContainer-103"
+              className=
+                  ms-Button-textContainer
+                  {
+                    flex-grow: 1;
+                  }
             >
               <div
-                className="ms-Button-label label-120"
+                className=
+                    ms-Button-label
+                    {
+                      font-weight: 600;
+                      line-height: 100%;
+                      margin-bottom: 0;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                      margin-top: 0;
+                    }
                 id="id__2"
               >
                 http://placehold.it/100x200
@@ -164,7 +356,15 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     aria-labelledby={undefined}
     aria-rowindex={2}
     aria-selected={false}
-    className="ms-FocusZone ms-DetailsRow css-325"
+    className=
+        ms-FocusZone
+        ms-DetailsRow
+        {
+          animation-duration: 0.367s;
+          animation-fill-mode: both;
+          animation-name: keyframes from{opacity:0;}to{opacity:1;};
+          animation-timing-function: cubic-bezier(.1,.25,.75,.9);
+        }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone5"
     data-is-draggable={false}
@@ -197,11 +397,56 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         title={undefined}
       >
         <div
-          className="ms-Check root-326"
+          className=
+              ms-Check
+              {
+                height: 18px;
+                line-height: 1;
+                position: relative;
+                user-select: none;
+                vertical-align: top;
+                width: 18px;
+              }
+              &:before {
+                background: #ffffff;
+                border-radius: 50%;
+                bottom: 1px;
+                content: "";
+                left: 1px;
+                opacity: 1;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+              }
+              .checkHost:hover &, .checkHost:focus &, &:hover, &:focus {
+                opacity: 1;
+              }
         >
           <i
             aria-hidden={true}
-            className="ms-Check-circle circle-329"
+            className=
+                ms-Check-circle
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #c8c8c8;
+                  display: inline-block;
+                  font-family: "FabricMDL2Icons";
+                  font-size: 18px;
+                  font-style: normal;
+                  font-weight: normal;
+                  height: 18px;
+                  left: 0px;
+                  position: absolute;
+                  speak: none;
+                  text-align: center;
+                  top: 0px;
+                  vertical-align: middle;
+                  width: 18px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  color: WindowText;
+                }
             data-icon-name="CircleRing"
             role="presentation"
           >
@@ -209,7 +454,33 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           </i>
           <i
             aria-hidden={true}
-            className="ms-Check-check check-330"
+            className=
+                ms-Check-check
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #c8c8c8;
+                  display: inline-block;
+                  font-family: "FabricMDL2Icons";
+                  font-size: 16px;
+                  font-style: normal;
+                  font-weight: normal;
+                  height: 18px;
+                  left: .5px;
+                  opacity: 0;
+                  position: absolute;
+                  speak: none;
+                  text-align: center;
+                  top: 0px;
+                  vertical-align: middle;
+                  width: 18px;
+                }
+                &:hover {
+                  opacity: 1;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                }
             data-icon-name="StatusCircleCheckmark"
             role="presentation"
           >
@@ -251,7 +522,37 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       >
         <a
           aria-disabled={undefined}
-          className="ms-Link root-331"
+          className=
+              ms-Link
+              {
+                color: #0078d4;
+                outline: transparent;
+                position: relative;
+                text-decoration: none;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 1px;
+                content: "";
+                left: 1px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+                z-index: 1;
+              }
+              &:active, &:hover, &:active:hover {
+                color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                text-decoration: underline;
+              }
+              &:focus {
+                color: #0078d4;
+              }
           href="http://placehold.it/100x201"
           onClick={[Function]}
           target={undefined}
@@ -276,19 +577,102 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
-          className="ms-Button ms-Button--default root-119"
+          className=
+              ms-Button
+              ms-Button--default
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                background-color: #f4f4f4;
+                border-radius: 0px;
+                border: 1px solid transparent;
+                box-sizing: border-box;
+                color: #333333;
+                cursor: pointer;
+                display: inline-block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                height: 32px;
+                min-width: 80px;
+                outline: transparent;
+                padding-bottom: 0;
+                padding-left: 16px;
+                padding-right: 16px;
+                padding-top: 0;
+                position: relative;
+                text-align: center;
+                text-decoration: none;
+                user-select: none;
+                vertical-align: top;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 0px;
+                content: "";
+                left: 0px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+                z-index: 1;
+              }
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                border: none;
+                bottom: -2px;
+                left: -2px;
+                outline-color: ButtonText;
+                right: -2px;
+                top: -2px;
+              }
+              &:hover {
+                background-color: #eaeaea;
+                color: #000000;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
+              }
+              &:active {
+                background-color: #c8c8c8;
+                color: #212121;
+              }
           data-is-focusable={true}
           disabled={undefined}
           type="button"
         >
           <div
-            className="ms-Button-flexContainer flexContainer-102"
+            className=
+                ms-Button-flexContainer
+                {
+                  align-items: center;
+                  display: flex;
+                  flex-wrap: nowrap;
+                  height: 100%;
+                  justify-content: center;
+                }
           >
             <div
-              className="ms-Button-textContainer textContainer-103"
+              className=
+                  ms-Button-textContainer
+                  {
+                    flex-grow: 1;
+                  }
             >
               <div
-                className="ms-Button-label label-120"
+                className=
+                    ms-Button-label
+                    {
+                      font-weight: 600;
+                      line-height: 100%;
+                      margin-bottom: 0;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                      margin-top: 0;
+                    }
                 id="id__6"
               >
                 http://placehold.it/100x201
@@ -311,7 +695,15 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     aria-labelledby={undefined}
     aria-rowindex={3}
     aria-selected={false}
-    className="ms-FocusZone ms-DetailsRow css-325"
+    className=
+        ms-FocusZone
+        ms-DetailsRow
+        {
+          animation-duration: 0.367s;
+          animation-fill-mode: both;
+          animation-name: keyframes from{opacity:0;}to{opacity:1;};
+          animation-timing-function: cubic-bezier(.1,.25,.75,.9);
+        }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone9"
     data-is-draggable={false}
@@ -344,11 +736,56 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         title={undefined}
       >
         <div
-          className="ms-Check root-326"
+          className=
+              ms-Check
+              {
+                height: 18px;
+                line-height: 1;
+                position: relative;
+                user-select: none;
+                vertical-align: top;
+                width: 18px;
+              }
+              &:before {
+                background: #ffffff;
+                border-radius: 50%;
+                bottom: 1px;
+                content: "";
+                left: 1px;
+                opacity: 1;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+              }
+              .checkHost:hover &, .checkHost:focus &, &:hover, &:focus {
+                opacity: 1;
+              }
         >
           <i
             aria-hidden={true}
-            className="ms-Check-circle circle-329"
+            className=
+                ms-Check-circle
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #c8c8c8;
+                  display: inline-block;
+                  font-family: "FabricMDL2Icons";
+                  font-size: 18px;
+                  font-style: normal;
+                  font-weight: normal;
+                  height: 18px;
+                  left: 0px;
+                  position: absolute;
+                  speak: none;
+                  text-align: center;
+                  top: 0px;
+                  vertical-align: middle;
+                  width: 18px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  color: WindowText;
+                }
             data-icon-name="CircleRing"
             role="presentation"
           >
@@ -356,7 +793,33 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           </i>
           <i
             aria-hidden={true}
-            className="ms-Check-check check-330"
+            className=
+                ms-Check-check
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #c8c8c8;
+                  display: inline-block;
+                  font-family: "FabricMDL2Icons";
+                  font-size: 16px;
+                  font-style: normal;
+                  font-weight: normal;
+                  height: 18px;
+                  left: .5px;
+                  opacity: 0;
+                  position: absolute;
+                  speak: none;
+                  text-align: center;
+                  top: 0px;
+                  vertical-align: middle;
+                  width: 18px;
+                }
+                &:hover {
+                  opacity: 1;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                }
             data-icon-name="StatusCircleCheckmark"
             role="presentation"
           >
@@ -398,7 +861,37 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       >
         <a
           aria-disabled={undefined}
-          className="ms-Link root-331"
+          className=
+              ms-Link
+              {
+                color: #0078d4;
+                outline: transparent;
+                position: relative;
+                text-decoration: none;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 1px;
+                content: "";
+                left: 1px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+                z-index: 1;
+              }
+              &:active, &:hover, &:active:hover {
+                color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                text-decoration: underline;
+              }
+              &:focus {
+                color: #0078d4;
+              }
           href="http://placehold.it/100x202"
           onClick={[Function]}
           target={undefined}
@@ -423,19 +916,102 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
-          className="ms-Button ms-Button--default root-119"
+          className=
+              ms-Button
+              ms-Button--default
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                background-color: #f4f4f4;
+                border-radius: 0px;
+                border: 1px solid transparent;
+                box-sizing: border-box;
+                color: #333333;
+                cursor: pointer;
+                display: inline-block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                height: 32px;
+                min-width: 80px;
+                outline: transparent;
+                padding-bottom: 0;
+                padding-left: 16px;
+                padding-right: 16px;
+                padding-top: 0;
+                position: relative;
+                text-align: center;
+                text-decoration: none;
+                user-select: none;
+                vertical-align: top;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 0px;
+                content: "";
+                left: 0px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+                z-index: 1;
+              }
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                border: none;
+                bottom: -2px;
+                left: -2px;
+                outline-color: ButtonText;
+                right: -2px;
+                top: -2px;
+              }
+              &:hover {
+                background-color: #eaeaea;
+                color: #000000;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
+              }
+              &:active {
+                background-color: #c8c8c8;
+                color: #212121;
+              }
           data-is-focusable={true}
           disabled={undefined}
           type="button"
         >
           <div
-            className="ms-Button-flexContainer flexContainer-102"
+            className=
+                ms-Button-flexContainer
+                {
+                  align-items: center;
+                  display: flex;
+                  flex-wrap: nowrap;
+                  height: 100%;
+                  justify-content: center;
+                }
           >
             <div
-              className="ms-Button-textContainer textContainer-103"
+              className=
+                  ms-Button-textContainer
+                  {
+                    flex-grow: 1;
+                  }
             >
               <div
-                className="ms-Button-label label-120"
+                className=
+                    ms-Button-label
+                    {
+                      font-weight: 600;
+                      line-height: 100%;
+                      margin-bottom: 0;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                      margin-top: 0;
+                    }
                 id="id__10"
               >
                 http://placehold.it/100x202
@@ -458,7 +1034,15 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     aria-labelledby={undefined}
     aria-rowindex={4}
     aria-selected={false}
-    className="ms-FocusZone ms-DetailsRow css-325"
+    className=
+        ms-FocusZone
+        ms-DetailsRow
+        {
+          animation-duration: 0.367s;
+          animation-fill-mode: both;
+          animation-name: keyframes from{opacity:0;}to{opacity:1;};
+          animation-timing-function: cubic-bezier(.1,.25,.75,.9);
+        }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone13"
     data-is-draggable={false}
@@ -491,11 +1075,56 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         title={undefined}
       >
         <div
-          className="ms-Check root-326"
+          className=
+              ms-Check
+              {
+                height: 18px;
+                line-height: 1;
+                position: relative;
+                user-select: none;
+                vertical-align: top;
+                width: 18px;
+              }
+              &:before {
+                background: #ffffff;
+                border-radius: 50%;
+                bottom: 1px;
+                content: "";
+                left: 1px;
+                opacity: 1;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+              }
+              .checkHost:hover &, .checkHost:focus &, &:hover, &:focus {
+                opacity: 1;
+              }
         >
           <i
             aria-hidden={true}
-            className="ms-Check-circle circle-329"
+            className=
+                ms-Check-circle
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #c8c8c8;
+                  display: inline-block;
+                  font-family: "FabricMDL2Icons";
+                  font-size: 18px;
+                  font-style: normal;
+                  font-weight: normal;
+                  height: 18px;
+                  left: 0px;
+                  position: absolute;
+                  speak: none;
+                  text-align: center;
+                  top: 0px;
+                  vertical-align: middle;
+                  width: 18px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  color: WindowText;
+                }
             data-icon-name="CircleRing"
             role="presentation"
           >
@@ -503,7 +1132,33 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           </i>
           <i
             aria-hidden={true}
-            className="ms-Check-check check-330"
+            className=
+                ms-Check-check
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #c8c8c8;
+                  display: inline-block;
+                  font-family: "FabricMDL2Icons";
+                  font-size: 16px;
+                  font-style: normal;
+                  font-weight: normal;
+                  height: 18px;
+                  left: .5px;
+                  opacity: 0;
+                  position: absolute;
+                  speak: none;
+                  text-align: center;
+                  top: 0px;
+                  vertical-align: middle;
+                  width: 18px;
+                }
+                &:hover {
+                  opacity: 1;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                }
             data-icon-name="StatusCircleCheckmark"
             role="presentation"
           >
@@ -545,7 +1200,37 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       >
         <a
           aria-disabled={undefined}
-          className="ms-Link root-331"
+          className=
+              ms-Link
+              {
+                color: #0078d4;
+                outline: transparent;
+                position: relative;
+                text-decoration: none;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 1px;
+                content: "";
+                left: 1px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+                z-index: 1;
+              }
+              &:active, &:hover, &:active:hover {
+                color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                text-decoration: underline;
+              }
+              &:focus {
+                color: #0078d4;
+              }
           href="http://placehold.it/100x203"
           onClick={[Function]}
           target={undefined}
@@ -570,19 +1255,102 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
-          className="ms-Button ms-Button--default root-119"
+          className=
+              ms-Button
+              ms-Button--default
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                background-color: #f4f4f4;
+                border-radius: 0px;
+                border: 1px solid transparent;
+                box-sizing: border-box;
+                color: #333333;
+                cursor: pointer;
+                display: inline-block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                height: 32px;
+                min-width: 80px;
+                outline: transparent;
+                padding-bottom: 0;
+                padding-left: 16px;
+                padding-right: 16px;
+                padding-top: 0;
+                position: relative;
+                text-align: center;
+                text-decoration: none;
+                user-select: none;
+                vertical-align: top;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 0px;
+                content: "";
+                left: 0px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+                z-index: 1;
+              }
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                border: none;
+                bottom: -2px;
+                left: -2px;
+                outline-color: ButtonText;
+                right: -2px;
+                top: -2px;
+              }
+              &:hover {
+                background-color: #eaeaea;
+                color: #000000;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
+              }
+              &:active {
+                background-color: #c8c8c8;
+                color: #212121;
+              }
           data-is-focusable={true}
           disabled={undefined}
           type="button"
         >
           <div
-            className="ms-Button-flexContainer flexContainer-102"
+            className=
+                ms-Button-flexContainer
+                {
+                  align-items: center;
+                  display: flex;
+                  flex-wrap: nowrap;
+                  height: 100%;
+                  justify-content: center;
+                }
           >
             <div
-              className="ms-Button-textContainer textContainer-103"
+              className=
+                  ms-Button-textContainer
+                  {
+                    flex-grow: 1;
+                  }
             >
               <div
-                className="ms-Button-label label-120"
+                className=
+                    ms-Button-label
+                    {
+                      font-weight: 600;
+                      line-height: 100%;
+                      margin-bottom: 0;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                      margin-top: 0;
+                    }
                 id="id__14"
               >
                 http://placehold.it/100x203
@@ -605,7 +1373,15 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     aria-labelledby={undefined}
     aria-rowindex={5}
     aria-selected={false}
-    className="ms-FocusZone ms-DetailsRow css-325"
+    className=
+        ms-FocusZone
+        ms-DetailsRow
+        {
+          animation-duration: 0.367s;
+          animation-fill-mode: both;
+          animation-name: keyframes from{opacity:0;}to{opacity:1;};
+          animation-timing-function: cubic-bezier(.1,.25,.75,.9);
+        }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone17"
     data-is-draggable={false}
@@ -638,11 +1414,56 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         title={undefined}
       >
         <div
-          className="ms-Check root-326"
+          className=
+              ms-Check
+              {
+                height: 18px;
+                line-height: 1;
+                position: relative;
+                user-select: none;
+                vertical-align: top;
+                width: 18px;
+              }
+              &:before {
+                background: #ffffff;
+                border-radius: 50%;
+                bottom: 1px;
+                content: "";
+                left: 1px;
+                opacity: 1;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+              }
+              .checkHost:hover &, .checkHost:focus &, &:hover, &:focus {
+                opacity: 1;
+              }
         >
           <i
             aria-hidden={true}
-            className="ms-Check-circle circle-329"
+            className=
+                ms-Check-circle
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #c8c8c8;
+                  display: inline-block;
+                  font-family: "FabricMDL2Icons";
+                  font-size: 18px;
+                  font-style: normal;
+                  font-weight: normal;
+                  height: 18px;
+                  left: 0px;
+                  position: absolute;
+                  speak: none;
+                  text-align: center;
+                  top: 0px;
+                  vertical-align: middle;
+                  width: 18px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  color: WindowText;
+                }
             data-icon-name="CircleRing"
             role="presentation"
           >
@@ -650,7 +1471,33 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           </i>
           <i
             aria-hidden={true}
-            className="ms-Check-check check-330"
+            className=
+                ms-Check-check
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #c8c8c8;
+                  display: inline-block;
+                  font-family: "FabricMDL2Icons";
+                  font-size: 16px;
+                  font-style: normal;
+                  font-weight: normal;
+                  height: 18px;
+                  left: .5px;
+                  opacity: 0;
+                  position: absolute;
+                  speak: none;
+                  text-align: center;
+                  top: 0px;
+                  vertical-align: middle;
+                  width: 18px;
+                }
+                &:hover {
+                  opacity: 1;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                }
             data-icon-name="StatusCircleCheckmark"
             role="presentation"
           >
@@ -692,7 +1539,37 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       >
         <a
           aria-disabled={undefined}
-          className="ms-Link root-331"
+          className=
+              ms-Link
+              {
+                color: #0078d4;
+                outline: transparent;
+                position: relative;
+                text-decoration: none;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 1px;
+                content: "";
+                left: 1px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+                z-index: 1;
+              }
+              &:active, &:hover, &:active:hover {
+                color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                text-decoration: underline;
+              }
+              &:focus {
+                color: #0078d4;
+              }
           href="http://placehold.it/100x204"
           onClick={[Function]}
           target={undefined}
@@ -717,19 +1594,102 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
-          className="ms-Button ms-Button--default root-119"
+          className=
+              ms-Button
+              ms-Button--default
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                background-color: #f4f4f4;
+                border-radius: 0px;
+                border: 1px solid transparent;
+                box-sizing: border-box;
+                color: #333333;
+                cursor: pointer;
+                display: inline-block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                height: 32px;
+                min-width: 80px;
+                outline: transparent;
+                padding-bottom: 0;
+                padding-left: 16px;
+                padding-right: 16px;
+                padding-top: 0;
+                position: relative;
+                text-align: center;
+                text-decoration: none;
+                user-select: none;
+                vertical-align: top;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 0px;
+                content: "";
+                left: 0px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+                z-index: 1;
+              }
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                border: none;
+                bottom: -2px;
+                left: -2px;
+                outline-color: ButtonText;
+                right: -2px;
+                top: -2px;
+              }
+              &:hover {
+                background-color: #eaeaea;
+                color: #000000;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
+              }
+              &:active {
+                background-color: #c8c8c8;
+                color: #212121;
+              }
           data-is-focusable={true}
           disabled={undefined}
           type="button"
         >
           <div
-            className="ms-Button-flexContainer flexContainer-102"
+            className=
+                ms-Button-flexContainer
+                {
+                  align-items: center;
+                  display: flex;
+                  flex-wrap: nowrap;
+                  height: 100%;
+                  justify-content: center;
+                }
           >
             <div
-              className="ms-Button-textContainer textContainer-103"
+              className=
+                  ms-Button-textContainer
+                  {
+                    flex-grow: 1;
+                  }
             >
               <div
-                className="ms-Button-label label-120"
+                className=
+                    ms-Button-label
+                    {
+                      font-weight: 600;
+                      line-height: 100%;
+                      margin-bottom: 0;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                      margin-top: 0;
+                    }
                 id="id__18"
               >
                 http://placehold.it/100x204
@@ -752,7 +1712,15 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     aria-labelledby={undefined}
     aria-rowindex={6}
     aria-selected={false}
-    className="ms-FocusZone ms-DetailsRow css-325"
+    className=
+        ms-FocusZone
+        ms-DetailsRow
+        {
+          animation-duration: 0.367s;
+          animation-fill-mode: both;
+          animation-name: keyframes from{opacity:0;}to{opacity:1;};
+          animation-timing-function: cubic-bezier(.1,.25,.75,.9);
+        }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone21"
     data-is-draggable={false}
@@ -785,11 +1753,56 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         title={undefined}
       >
         <div
-          className="ms-Check root-326"
+          className=
+              ms-Check
+              {
+                height: 18px;
+                line-height: 1;
+                position: relative;
+                user-select: none;
+                vertical-align: top;
+                width: 18px;
+              }
+              &:before {
+                background: #ffffff;
+                border-radius: 50%;
+                bottom: 1px;
+                content: "";
+                left: 1px;
+                opacity: 1;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+              }
+              .checkHost:hover &, .checkHost:focus &, &:hover, &:focus {
+                opacity: 1;
+              }
         >
           <i
             aria-hidden={true}
-            className="ms-Check-circle circle-329"
+            className=
+                ms-Check-circle
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #c8c8c8;
+                  display: inline-block;
+                  font-family: "FabricMDL2Icons";
+                  font-size: 18px;
+                  font-style: normal;
+                  font-weight: normal;
+                  height: 18px;
+                  left: 0px;
+                  position: absolute;
+                  speak: none;
+                  text-align: center;
+                  top: 0px;
+                  vertical-align: middle;
+                  width: 18px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  color: WindowText;
+                }
             data-icon-name="CircleRing"
             role="presentation"
           >
@@ -797,7 +1810,33 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           </i>
           <i
             aria-hidden={true}
-            className="ms-Check-check check-330"
+            className=
+                ms-Check-check
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #c8c8c8;
+                  display: inline-block;
+                  font-family: "FabricMDL2Icons";
+                  font-size: 16px;
+                  font-style: normal;
+                  font-weight: normal;
+                  height: 18px;
+                  left: .5px;
+                  opacity: 0;
+                  position: absolute;
+                  speak: none;
+                  text-align: center;
+                  top: 0px;
+                  vertical-align: middle;
+                  width: 18px;
+                }
+                &:hover {
+                  opacity: 1;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                }
             data-icon-name="StatusCircleCheckmark"
             role="presentation"
           >
@@ -839,7 +1878,37 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       >
         <a
           aria-disabled={undefined}
-          className="ms-Link root-331"
+          className=
+              ms-Link
+              {
+                color: #0078d4;
+                outline: transparent;
+                position: relative;
+                text-decoration: none;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 1px;
+                content: "";
+                left: 1px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+                z-index: 1;
+              }
+              &:active, &:hover, &:active:hover {
+                color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                text-decoration: underline;
+              }
+              &:focus {
+                color: #0078d4;
+              }
           href="http://placehold.it/100x205"
           onClick={[Function]}
           target={undefined}
@@ -864,19 +1933,102 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
-          className="ms-Button ms-Button--default root-119"
+          className=
+              ms-Button
+              ms-Button--default
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                background-color: #f4f4f4;
+                border-radius: 0px;
+                border: 1px solid transparent;
+                box-sizing: border-box;
+                color: #333333;
+                cursor: pointer;
+                display: inline-block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                height: 32px;
+                min-width: 80px;
+                outline: transparent;
+                padding-bottom: 0;
+                padding-left: 16px;
+                padding-right: 16px;
+                padding-top: 0;
+                position: relative;
+                text-align: center;
+                text-decoration: none;
+                user-select: none;
+                vertical-align: top;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 0px;
+                content: "";
+                left: 0px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+                z-index: 1;
+              }
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                border: none;
+                bottom: -2px;
+                left: -2px;
+                outline-color: ButtonText;
+                right: -2px;
+                top: -2px;
+              }
+              &:hover {
+                background-color: #eaeaea;
+                color: #000000;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
+              }
+              &:active {
+                background-color: #c8c8c8;
+                color: #212121;
+              }
           data-is-focusable={true}
           disabled={undefined}
           type="button"
         >
           <div
-            className="ms-Button-flexContainer flexContainer-102"
+            className=
+                ms-Button-flexContainer
+                {
+                  align-items: center;
+                  display: flex;
+                  flex-wrap: nowrap;
+                  height: 100%;
+                  justify-content: center;
+                }
           >
             <div
-              className="ms-Button-textContainer textContainer-103"
+              className=
+                  ms-Button-textContainer
+                  {
+                    flex-grow: 1;
+                  }
             >
               <div
-                className="ms-Button-label label-120"
+                className=
+                    ms-Button-label
+                    {
+                      font-weight: 600;
+                      line-height: 100%;
+                      margin-bottom: 0;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                      margin-top: 0;
+                    }
                 id="id__22"
               >
                 http://placehold.it/100x205
@@ -899,7 +2051,15 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     aria-labelledby={undefined}
     aria-rowindex={7}
     aria-selected={false}
-    className="ms-FocusZone ms-DetailsRow css-325"
+    className=
+        ms-FocusZone
+        ms-DetailsRow
+        {
+          animation-duration: 0.367s;
+          animation-fill-mode: both;
+          animation-name: keyframes from{opacity:0;}to{opacity:1;};
+          animation-timing-function: cubic-bezier(.1,.25,.75,.9);
+        }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone25"
     data-is-draggable={false}
@@ -932,11 +2092,56 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         title={undefined}
       >
         <div
-          className="ms-Check root-326"
+          className=
+              ms-Check
+              {
+                height: 18px;
+                line-height: 1;
+                position: relative;
+                user-select: none;
+                vertical-align: top;
+                width: 18px;
+              }
+              &:before {
+                background: #ffffff;
+                border-radius: 50%;
+                bottom: 1px;
+                content: "";
+                left: 1px;
+                opacity: 1;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+              }
+              .checkHost:hover &, .checkHost:focus &, &:hover, &:focus {
+                opacity: 1;
+              }
         >
           <i
             aria-hidden={true}
-            className="ms-Check-circle circle-329"
+            className=
+                ms-Check-circle
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #c8c8c8;
+                  display: inline-block;
+                  font-family: "FabricMDL2Icons";
+                  font-size: 18px;
+                  font-style: normal;
+                  font-weight: normal;
+                  height: 18px;
+                  left: 0px;
+                  position: absolute;
+                  speak: none;
+                  text-align: center;
+                  top: 0px;
+                  vertical-align: middle;
+                  width: 18px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  color: WindowText;
+                }
             data-icon-name="CircleRing"
             role="presentation"
           >
@@ -944,7 +2149,33 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           </i>
           <i
             aria-hidden={true}
-            className="ms-Check-check check-330"
+            className=
+                ms-Check-check
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #c8c8c8;
+                  display: inline-block;
+                  font-family: "FabricMDL2Icons";
+                  font-size: 16px;
+                  font-style: normal;
+                  font-weight: normal;
+                  height: 18px;
+                  left: .5px;
+                  opacity: 0;
+                  position: absolute;
+                  speak: none;
+                  text-align: center;
+                  top: 0px;
+                  vertical-align: middle;
+                  width: 18px;
+                }
+                &:hover {
+                  opacity: 1;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                }
             data-icon-name="StatusCircleCheckmark"
             role="presentation"
           >
@@ -986,7 +2217,37 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       >
         <a
           aria-disabled={undefined}
-          className="ms-Link root-331"
+          className=
+              ms-Link
+              {
+                color: #0078d4;
+                outline: transparent;
+                position: relative;
+                text-decoration: none;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 1px;
+                content: "";
+                left: 1px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+                z-index: 1;
+              }
+              &:active, &:hover, &:active:hover {
+                color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                text-decoration: underline;
+              }
+              &:focus {
+                color: #0078d4;
+              }
           href="http://placehold.it/100x206"
           onClick={[Function]}
           target={undefined}
@@ -1011,19 +2272,102 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
-          className="ms-Button ms-Button--default root-119"
+          className=
+              ms-Button
+              ms-Button--default
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                background-color: #f4f4f4;
+                border-radius: 0px;
+                border: 1px solid transparent;
+                box-sizing: border-box;
+                color: #333333;
+                cursor: pointer;
+                display: inline-block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                height: 32px;
+                min-width: 80px;
+                outline: transparent;
+                padding-bottom: 0;
+                padding-left: 16px;
+                padding-right: 16px;
+                padding-top: 0;
+                position: relative;
+                text-align: center;
+                text-decoration: none;
+                user-select: none;
+                vertical-align: top;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 0px;
+                content: "";
+                left: 0px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+                z-index: 1;
+              }
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                border: none;
+                bottom: -2px;
+                left: -2px;
+                outline-color: ButtonText;
+                right: -2px;
+                top: -2px;
+              }
+              &:hover {
+                background-color: #eaeaea;
+                color: #000000;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
+              }
+              &:active {
+                background-color: #c8c8c8;
+                color: #212121;
+              }
           data-is-focusable={true}
           disabled={undefined}
           type="button"
         >
           <div
-            className="ms-Button-flexContainer flexContainer-102"
+            className=
+                ms-Button-flexContainer
+                {
+                  align-items: center;
+                  display: flex;
+                  flex-wrap: nowrap;
+                  height: 100%;
+                  justify-content: center;
+                }
           >
             <div
-              className="ms-Button-textContainer textContainer-103"
+              className=
+                  ms-Button-textContainer
+                  {
+                    flex-grow: 1;
+                  }
             >
               <div
-                className="ms-Button-label label-120"
+                className=
+                    ms-Button-label
+                    {
+                      font-weight: 600;
+                      line-height: 100%;
+                      margin-bottom: 0;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                      margin-top: 0;
+                    }
                 id="id__26"
               >
                 http://placehold.it/100x206
@@ -1046,7 +2390,15 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     aria-labelledby={undefined}
     aria-rowindex={8}
     aria-selected={false}
-    className="ms-FocusZone ms-DetailsRow css-325"
+    className=
+        ms-FocusZone
+        ms-DetailsRow
+        {
+          animation-duration: 0.367s;
+          animation-fill-mode: both;
+          animation-name: keyframes from{opacity:0;}to{opacity:1;};
+          animation-timing-function: cubic-bezier(.1,.25,.75,.9);
+        }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone29"
     data-is-draggable={false}
@@ -1079,11 +2431,56 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         title={undefined}
       >
         <div
-          className="ms-Check root-326"
+          className=
+              ms-Check
+              {
+                height: 18px;
+                line-height: 1;
+                position: relative;
+                user-select: none;
+                vertical-align: top;
+                width: 18px;
+              }
+              &:before {
+                background: #ffffff;
+                border-radius: 50%;
+                bottom: 1px;
+                content: "";
+                left: 1px;
+                opacity: 1;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+              }
+              .checkHost:hover &, .checkHost:focus &, &:hover, &:focus {
+                opacity: 1;
+              }
         >
           <i
             aria-hidden={true}
-            className="ms-Check-circle circle-329"
+            className=
+                ms-Check-circle
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #c8c8c8;
+                  display: inline-block;
+                  font-family: "FabricMDL2Icons";
+                  font-size: 18px;
+                  font-style: normal;
+                  font-weight: normal;
+                  height: 18px;
+                  left: 0px;
+                  position: absolute;
+                  speak: none;
+                  text-align: center;
+                  top: 0px;
+                  vertical-align: middle;
+                  width: 18px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  color: WindowText;
+                }
             data-icon-name="CircleRing"
             role="presentation"
           >
@@ -1091,7 +2488,33 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           </i>
           <i
             aria-hidden={true}
-            className="ms-Check-check check-330"
+            className=
+                ms-Check-check
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #c8c8c8;
+                  display: inline-block;
+                  font-family: "FabricMDL2Icons";
+                  font-size: 16px;
+                  font-style: normal;
+                  font-weight: normal;
+                  height: 18px;
+                  left: .5px;
+                  opacity: 0;
+                  position: absolute;
+                  speak: none;
+                  text-align: center;
+                  top: 0px;
+                  vertical-align: middle;
+                  width: 18px;
+                }
+                &:hover {
+                  opacity: 1;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                }
             data-icon-name="StatusCircleCheckmark"
             role="presentation"
           >
@@ -1133,7 +2556,37 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       >
         <a
           aria-disabled={undefined}
-          className="ms-Link root-331"
+          className=
+              ms-Link
+              {
+                color: #0078d4;
+                outline: transparent;
+                position: relative;
+                text-decoration: none;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 1px;
+                content: "";
+                left: 1px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+                z-index: 1;
+              }
+              &:active, &:hover, &:active:hover {
+                color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                text-decoration: underline;
+              }
+              &:focus {
+                color: #0078d4;
+              }
           href="http://placehold.it/100x207"
           onClick={[Function]}
           target={undefined}
@@ -1158,19 +2611,102 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
-          className="ms-Button ms-Button--default root-119"
+          className=
+              ms-Button
+              ms-Button--default
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                background-color: #f4f4f4;
+                border-radius: 0px;
+                border: 1px solid transparent;
+                box-sizing: border-box;
+                color: #333333;
+                cursor: pointer;
+                display: inline-block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                height: 32px;
+                min-width: 80px;
+                outline: transparent;
+                padding-bottom: 0;
+                padding-left: 16px;
+                padding-right: 16px;
+                padding-top: 0;
+                position: relative;
+                text-align: center;
+                text-decoration: none;
+                user-select: none;
+                vertical-align: top;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 0px;
+                content: "";
+                left: 0px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+                z-index: 1;
+              }
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                border: none;
+                bottom: -2px;
+                left: -2px;
+                outline-color: ButtonText;
+                right: -2px;
+                top: -2px;
+              }
+              &:hover {
+                background-color: #eaeaea;
+                color: #000000;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
+              }
+              &:active {
+                background-color: #c8c8c8;
+                color: #212121;
+              }
           data-is-focusable={true}
           disabled={undefined}
           type="button"
         >
           <div
-            className="ms-Button-flexContainer flexContainer-102"
+            className=
+                ms-Button-flexContainer
+                {
+                  align-items: center;
+                  display: flex;
+                  flex-wrap: nowrap;
+                  height: 100%;
+                  justify-content: center;
+                }
           >
             <div
-              className="ms-Button-textContainer textContainer-103"
+              className=
+                  ms-Button-textContainer
+                  {
+                    flex-grow: 1;
+                  }
             >
               <div
-                className="ms-Button-label label-120"
+                className=
+                    ms-Button-label
+                    {
+                      font-weight: 600;
+                      line-height: 100%;
+                      margin-bottom: 0;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                      margin-top: 0;
+                    }
                 id="id__30"
               >
                 http://placehold.it/100x207
@@ -1193,7 +2729,15 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     aria-labelledby={undefined}
     aria-rowindex={9}
     aria-selected={false}
-    className="ms-FocusZone ms-DetailsRow css-325"
+    className=
+        ms-FocusZone
+        ms-DetailsRow
+        {
+          animation-duration: 0.367s;
+          animation-fill-mode: both;
+          animation-name: keyframes from{opacity:0;}to{opacity:1;};
+          animation-timing-function: cubic-bezier(.1,.25,.75,.9);
+        }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone33"
     data-is-draggable={false}
@@ -1226,11 +2770,56 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         title={undefined}
       >
         <div
-          className="ms-Check root-326"
+          className=
+              ms-Check
+              {
+                height: 18px;
+                line-height: 1;
+                position: relative;
+                user-select: none;
+                vertical-align: top;
+                width: 18px;
+              }
+              &:before {
+                background: #ffffff;
+                border-radius: 50%;
+                bottom: 1px;
+                content: "";
+                left: 1px;
+                opacity: 1;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+              }
+              .checkHost:hover &, .checkHost:focus &, &:hover, &:focus {
+                opacity: 1;
+              }
         >
           <i
             aria-hidden={true}
-            className="ms-Check-circle circle-329"
+            className=
+                ms-Check-circle
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #c8c8c8;
+                  display: inline-block;
+                  font-family: "FabricMDL2Icons";
+                  font-size: 18px;
+                  font-style: normal;
+                  font-weight: normal;
+                  height: 18px;
+                  left: 0px;
+                  position: absolute;
+                  speak: none;
+                  text-align: center;
+                  top: 0px;
+                  vertical-align: middle;
+                  width: 18px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  color: WindowText;
+                }
             data-icon-name="CircleRing"
             role="presentation"
           >
@@ -1238,7 +2827,33 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           </i>
           <i
             aria-hidden={true}
-            className="ms-Check-check check-330"
+            className=
+                ms-Check-check
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #c8c8c8;
+                  display: inline-block;
+                  font-family: "FabricMDL2Icons";
+                  font-size: 16px;
+                  font-style: normal;
+                  font-weight: normal;
+                  height: 18px;
+                  left: .5px;
+                  opacity: 0;
+                  position: absolute;
+                  speak: none;
+                  text-align: center;
+                  top: 0px;
+                  vertical-align: middle;
+                  width: 18px;
+                }
+                &:hover {
+                  opacity: 1;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                }
             data-icon-name="StatusCircleCheckmark"
             role="presentation"
           >
@@ -1280,7 +2895,37 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       >
         <a
           aria-disabled={undefined}
-          className="ms-Link root-331"
+          className=
+              ms-Link
+              {
+                color: #0078d4;
+                outline: transparent;
+                position: relative;
+                text-decoration: none;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 1px;
+                content: "";
+                left: 1px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+                z-index: 1;
+              }
+              &:active, &:hover, &:active:hover {
+                color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                text-decoration: underline;
+              }
+              &:focus {
+                color: #0078d4;
+              }
           href="http://placehold.it/100x208"
           onClick={[Function]}
           target={undefined}
@@ -1305,19 +2950,102 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
-          className="ms-Button ms-Button--default root-119"
+          className=
+              ms-Button
+              ms-Button--default
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                background-color: #f4f4f4;
+                border-radius: 0px;
+                border: 1px solid transparent;
+                box-sizing: border-box;
+                color: #333333;
+                cursor: pointer;
+                display: inline-block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                height: 32px;
+                min-width: 80px;
+                outline: transparent;
+                padding-bottom: 0;
+                padding-left: 16px;
+                padding-right: 16px;
+                padding-top: 0;
+                position: relative;
+                text-align: center;
+                text-decoration: none;
+                user-select: none;
+                vertical-align: top;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 0px;
+                content: "";
+                left: 0px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+                z-index: 1;
+              }
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                border: none;
+                bottom: -2px;
+                left: -2px;
+                outline-color: ButtonText;
+                right: -2px;
+                top: -2px;
+              }
+              &:hover {
+                background-color: #eaeaea;
+                color: #000000;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
+              }
+              &:active {
+                background-color: #c8c8c8;
+                color: #212121;
+              }
           data-is-focusable={true}
           disabled={undefined}
           type="button"
         >
           <div
-            className="ms-Button-flexContainer flexContainer-102"
+            className=
+                ms-Button-flexContainer
+                {
+                  align-items: center;
+                  display: flex;
+                  flex-wrap: nowrap;
+                  height: 100%;
+                  justify-content: center;
+                }
           >
             <div
-              className="ms-Button-textContainer textContainer-103"
+              className=
+                  ms-Button-textContainer
+                  {
+                    flex-grow: 1;
+                  }
             >
               <div
-                className="ms-Button-label label-120"
+                className=
+                    ms-Button-label
+                    {
+                      font-weight: 600;
+                      line-height: 100%;
+                      margin-bottom: 0;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                      margin-top: 0;
+                    }
                 id="id__34"
               >
                 http://placehold.it/100x208
@@ -1340,7 +3068,15 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     aria-labelledby={undefined}
     aria-rowindex={10}
     aria-selected={false}
-    className="ms-FocusZone ms-DetailsRow css-325"
+    className=
+        ms-FocusZone
+        ms-DetailsRow
+        {
+          animation-duration: 0.367s;
+          animation-fill-mode: both;
+          animation-name: keyframes from{opacity:0;}to{opacity:1;};
+          animation-timing-function: cubic-bezier(.1,.25,.75,.9);
+        }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone37"
     data-is-draggable={false}
@@ -1373,11 +3109,56 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         title={undefined}
       >
         <div
-          className="ms-Check root-326"
+          className=
+              ms-Check
+              {
+                height: 18px;
+                line-height: 1;
+                position: relative;
+                user-select: none;
+                vertical-align: top;
+                width: 18px;
+              }
+              &:before {
+                background: #ffffff;
+                border-radius: 50%;
+                bottom: 1px;
+                content: "";
+                left: 1px;
+                opacity: 1;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+              }
+              .checkHost:hover &, .checkHost:focus &, &:hover, &:focus {
+                opacity: 1;
+              }
         >
           <i
             aria-hidden={true}
-            className="ms-Check-circle circle-329"
+            className=
+                ms-Check-circle
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #c8c8c8;
+                  display: inline-block;
+                  font-family: "FabricMDL2Icons";
+                  font-size: 18px;
+                  font-style: normal;
+                  font-weight: normal;
+                  height: 18px;
+                  left: 0px;
+                  position: absolute;
+                  speak: none;
+                  text-align: center;
+                  top: 0px;
+                  vertical-align: middle;
+                  width: 18px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  color: WindowText;
+                }
             data-icon-name="CircleRing"
             role="presentation"
           >
@@ -1385,7 +3166,33 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           </i>
           <i
             aria-hidden={true}
-            className="ms-Check-check check-330"
+            className=
+                ms-Check-check
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #c8c8c8;
+                  display: inline-block;
+                  font-family: "FabricMDL2Icons";
+                  font-size: 16px;
+                  font-style: normal;
+                  font-weight: normal;
+                  height: 18px;
+                  left: .5px;
+                  opacity: 0;
+                  position: absolute;
+                  speak: none;
+                  text-align: center;
+                  top: 0px;
+                  vertical-align: middle;
+                  width: 18px;
+                }
+                &:hover {
+                  opacity: 1;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                }
             data-icon-name="StatusCircleCheckmark"
             role="presentation"
           >
@@ -1427,7 +3234,37 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       >
         <a
           aria-disabled={undefined}
-          className="ms-Link root-331"
+          className=
+              ms-Link
+              {
+                color: #0078d4;
+                outline: transparent;
+                position: relative;
+                text-decoration: none;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 1px;
+                content: "";
+                left: 1px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+                z-index: 1;
+              }
+              &:active, &:hover, &:active:hover {
+                color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                text-decoration: underline;
+              }
+              &:focus {
+                color: #0078d4;
+              }
           href="http://placehold.it/100x209"
           onClick={[Function]}
           target={undefined}
@@ -1452,19 +3289,102 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
-          className="ms-Button ms-Button--default root-119"
+          className=
+              ms-Button
+              ms-Button--default
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                background-color: #f4f4f4;
+                border-radius: 0px;
+                border: 1px solid transparent;
+                box-sizing: border-box;
+                color: #333333;
+                cursor: pointer;
+                display: inline-block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                height: 32px;
+                min-width: 80px;
+                outline: transparent;
+                padding-bottom: 0;
+                padding-left: 16px;
+                padding-right: 16px;
+                padding-top: 0;
+                position: relative;
+                text-align: center;
+                text-decoration: none;
+                user-select: none;
+                vertical-align: top;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 0px;
+                content: "";
+                left: 0px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+                z-index: 1;
+              }
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                border: none;
+                bottom: -2px;
+                left: -2px;
+                outline-color: ButtonText;
+                right: -2px;
+                top: -2px;
+              }
+              &:hover {
+                background-color: #eaeaea;
+                color: #000000;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
+              }
+              &:active {
+                background-color: #c8c8c8;
+                color: #212121;
+              }
           data-is-focusable={true}
           disabled={undefined}
           type="button"
         >
           <div
-            className="ms-Button-flexContainer flexContainer-102"
+            className=
+                ms-Button-flexContainer
+                {
+                  align-items: center;
+                  display: flex;
+                  flex-wrap: nowrap;
+                  height: 100%;
+                  justify-content: center;
+                }
           >
             <div
-              className="ms-Button-textContainer textContainer-103"
+              className=
+                  ms-Button-textContainer
+                  {
+                    flex-grow: 1;
+                  }
             >
               <div
-                className="ms-Button-label label-120"
+                className=
+                    ms-Button-label
+                    {
+                      font-weight: 600;
+                      line-height: 100%;
+                      margin-bottom: 0;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                      margin-top: 0;
+                    }
                 id="id__38"
               >
                 http://placehold.it/100x209

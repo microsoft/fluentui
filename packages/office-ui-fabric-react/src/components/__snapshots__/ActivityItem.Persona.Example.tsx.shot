@@ -3,26 +3,89 @@
 exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1`] = `
 <div>
   <div
-    className="ms-ActivityItem exampleRoot-42"
+    className=
+        ms-ActivityItem
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          align-items: flex-start;
+          box-sizing: border-box;
+          color: #666666;
+          display: flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 12px;
+          font-weight: 400;
+          justify-content: flex-start;
+          line-height: 17px;
+          margin-top: 20px;
+        }
     style={undefined}
   >
     <div
-      className="ms-ActivityItem-activityTypeIcon css-46"
+      className=
+          ms-ActivityItem-activityTypeIcon
+          {
+            font-size: 16px;
+            height: 32px;
+            line-height: 16px;
+            margin-top: 3px;
+          }
     >
       <div
-        className="ms-ActivityItem-personaContainer css-44"
+        className=
+            ms-ActivityItem-personaContainer
+            {
+              display: flex;
+              flex-wrap: wrap;
+              height: 32px;
+              min-width: 32px;
+              width: 32px;
+            }
       >
         <div
-          className="ms-Persona-coin ms-Persona--size32 ms-ActivityItem-activityPersona coin-79"
+          className=
+              ms-Persona-coin
+              ms-Persona--size32
+              ms-ActivityItem-activityPersona
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+              }
           size={11}
           style={undefined}
         >
           <div
-            className="ms-Persona-imageArea imageArea-80"
+            className=
+                ms-Persona-imageArea
+                {
+                  flex: 0 0 auto;
+                  height: 32px;
+                  position: relative;
+                  text-align: center;
+                  width: 32px;
+                }
             style={undefined}
           >
             <div
-              className="ms-Image ms-Persona-image image-83"
+              className=
+                  ms-Image
+                  ms-Persona-image
+                  {
+                    border-radius: 50%;
+                    border: 0px;
+                    height: 32px;
+                    left: 0px;
+                    margin-right: 10px;
+                    overflow: hidden;
+                    perspective: 1px;
+                    position: absolute;
+                    top: 0px;
+                    width: 32px;
+                  }
               style={
                 Object {
                   "height": 32,
@@ -32,7 +95,22 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
             >
               <img
                 alt=""
-                className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+                className=
+                    ms-Image-image
+                    ms-Image-image--cover
+                    ms-Image-image--portrait
+                    is-notLoaded
+                    is-fadeIn
+                    {
+                      display: block;
+                      height: auto;
+                      left: 50% /* @noflip */;
+                      opacity: 0;
+                      position: absolute;
+                      top: 50%;
+                      transform: translate(-50%,-50%);
+                      width: 100%;
+                    }
                 onError={[Function]}
                 onLoad={[Function]}
                 role={undefined}
@@ -44,14 +122,73 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
       </div>
     </div>
     <div
-      className="ms-ActivityItem-activityContent css-47"
+      className=
+          ms-ActivityItem-activityContent
+          {
+            padding-bottom: 0;
+            padding-left: 8px;
+            padding-right: 8px;
+            padding-top: 0;
+          }
     >
       <span
-        className="ms-ActivityItem-activityText css-48"
+        className=
+            ms-ActivityItem-activityText
+            {
+              display: inline;
+            }
       >
         <button
           aria-disabled={undefined}
-          className="ms-Link nameText-53"
+          className=
+              ms-Link
+              {
+                background-color: transparent;
+                background: none;
+                border: none;
+                color: #0078d4;
+                cursor: pointer;
+                display: inline;
+                font-size: inherit;
+                font-weight: bold;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                outline: transparent;
+                overflow: inherit;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+                position: relative;
+                text-align: left;
+                text-overflow: inherit;
+                user-select: text;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 1px;
+                content: "";
+                left: 1px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+                z-index: 1;
+              }
+              &:active, &:hover, &:active:hover {
+                color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                text-decoration: underline;
+              }
+              &:focus {
+                color: #0078d4;
+              }
           onClick={[Function]}
         >
           Jack Howden
@@ -60,45 +197,131 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
            renamed 
         </span>
         <span
-          className="nameText-38"
+          className=
+
+              {
+                font-weight: bold;
+              }
         >
           DocumentTitle.docx
         </span>
       </span>
       <div
-        className="ms-ActivityItem-commentText css-49"
+        className=
+            ms-ActivityItem-commentText
+            {
+              color: #333333;
+            }
       >
         Hello, this is the text of my basic comment!
       </div>
       <div
-        className="ms-ActivityItem-timeStamp css-50"
+        className=
+            ms-ActivityItem-timeStamp
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #666666;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 10px;
+              font-weight: 400;
+            }
       >
         23m ago
       </div>
     </div>
   </div>
   <div
-    className="ms-ActivityItem exampleRoot-42"
+    className=
+        ms-ActivityItem
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          align-items: flex-start;
+          box-sizing: border-box;
+          color: #666666;
+          display: flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 12px;
+          font-weight: 400;
+          justify-content: flex-start;
+          line-height: 17px;
+          margin-top: 20px;
+        }
     style={undefined}
   >
     <div
-      className="ms-ActivityItem-activityTypeIcon css-46"
+      className=
+          ms-ActivityItem-activityTypeIcon
+          {
+            font-size: 16px;
+            height: 32px;
+            line-height: 16px;
+            margin-top: 3px;
+          }
     >
       <div
-        className="ms-ActivityItem-personaContainer css-44"
+        className=
+            ms-ActivityItem-personaContainer
+            {
+              display: flex;
+              flex-wrap: wrap;
+              height: 32px;
+              min-width: 32px;
+              width: 32px;
+            }
       >
         <div
-          className="ms-Persona-coin ms-Persona--size16 ms-ActivityItem-activityPersona coin-86"
+          className=
+              ms-Persona-coin
+              ms-Persona--size16
+              ms-ActivityItem-activityPersona
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+              }
+              &:first-child {
+                align-self: flex-end;
+              }
           size={8}
           style={undefined}
         >
           <div
-            className="ms-Persona-imageArea imageArea-69"
+            className=
+                ms-Persona-imageArea
+                {
+                  flex: 0 0 auto;
+                  height: 16px;
+                  position: relative;
+                  text-align: center;
+                  width: 16px;
+                }
             style={undefined}
           >
             <div
               aria-hidden="true"
-              className="ms-Persona-initials initials-87"
+              className=
+                  ms-Persona-initials
+                  {
+                    background-color: #B91D47;
+                    border-radius: 50%;
+                    color: #ffffff;
+                    font-size: 11px;
+                    font-weight: 400;
+                    height: 16px;
+                    line-height: 16px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    -ms-high-contrast-adjust: none;
+                    background-color: Window !important;
+                    border: 1px solid WindowText;
+                    box-sizing: border-box;
+                    color: WindowText;
+                  }
               style={undefined}
             >
               <span>
@@ -106,7 +329,21 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               </span>
             </div>
             <div
-              className="ms-Image ms-Persona-image image-73"
+              className=
+                  ms-Image
+                  ms-Persona-image
+                  {
+                    border-radius: 50%;
+                    border: 0px;
+                    height: 16px;
+                    left: 0px;
+                    margin-right: 10px;
+                    overflow: hidden;
+                    perspective: 1px;
+                    position: absolute;
+                    top: 0px;
+                    width: 16px;
+                  }
               style={
                 Object {
                   "height": undefined,
@@ -116,7 +353,22 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
             >
               <img
                 alt=""
-                className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+                className=
+                    ms-Image-image
+                    ms-Image-image--cover
+                    ms-Image-image--portrait
+                    is-notLoaded
+                    is-fadeIn
+                    {
+                      display: block;
+                      height: auto;
+                      left: 50% /* @noflip */;
+                      opacity: 0;
+                      position: absolute;
+                      top: 50%;
+                      transform: translate(-50%,-50%);
+                      width: 100%;
+                    }
                 onError={[Function]}
                 onLoad={[Function]}
                 role={undefined}
@@ -126,16 +378,52 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
           </div>
         </div>
         <div
-          className="ms-Persona-coin ms-Persona--size16 ms-ActivityItem-activityPersona coin-86"
+          className=
+              ms-Persona-coin
+              ms-Persona--size16
+              ms-ActivityItem-activityPersona
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+              }
+              &:first-child {
+                align-self: flex-end;
+              }
           size={8}
           style={undefined}
         >
           <div
-            className="ms-Persona-imageArea imageArea-69"
+            className=
+                ms-Persona-imageArea
+                {
+                  flex: 0 0 auto;
+                  height: 16px;
+                  position: relative;
+                  text-align: center;
+                  width: 16px;
+                }
             style={undefined}
           >
             <div
-              className="ms-Image ms-Persona-image image-73"
+              className=
+                  ms-Image
+                  ms-Persona-image
+                  {
+                    border-radius: 50%;
+                    border: 0px;
+                    height: 16px;
+                    left: 0px;
+                    margin-right: 10px;
+                    overflow: hidden;
+                    perspective: 1px;
+                    position: absolute;
+                    top: 0px;
+                    width: 16px;
+                  }
               style={
                 Object {
                   "height": undefined,
@@ -145,7 +433,22 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
             >
               <img
                 alt=""
-                className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+                className=
+                    ms-Image-image
+                    ms-Image-image--cover
+                    ms-Image-image--portrait
+                    is-notLoaded
+                    is-fadeIn
+                    {
+                      display: block;
+                      height: auto;
+                      left: 50% /* @noflip */;
+                      opacity: 0;
+                      position: absolute;
+                      top: 50%;
+                      transform: translate(-50%,-50%);
+                      width: 100%;
+                    }
                 onError={[Function]}
                 onLoad={[Function]}
                 role={undefined}
@@ -157,14 +460,73 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
       </div>
     </div>
     <div
-      className="ms-ActivityItem-activityContent css-47"
+      className=
+          ms-ActivityItem-activityContent
+          {
+            padding-bottom: 0;
+            padding-left: 8px;
+            padding-right: 8px;
+            padding-top: 0;
+          }
     >
       <span
-        className="ms-ActivityItem-activityText css-48"
+        className=
+            ms-ActivityItem-activityText
+            {
+              display: inline;
+            }
       >
         <button
           aria-disabled={undefined}
-          className="ms-Link nameText-53"
+          className=
+              ms-Link
+              {
+                background-color: transparent;
+                background: none;
+                border: none;
+                color: #0078d4;
+                cursor: pointer;
+                display: inline;
+                font-size: inherit;
+                font-weight: bold;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                outline: transparent;
+                overflow: inherit;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+                position: relative;
+                text-align: left;
+                text-overflow: inherit;
+                user-select: text;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 1px;
+                content: "";
+                left: 1px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+                z-index: 1;
+              }
+              &:active, &:hover, &:active:hover {
+                color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                text-decoration: underline;
+              }
+              &:focus {
+                color: #0078d4;
+              }
           onClick={[Function]}
         >
           Javiera Márquez
@@ -174,7 +536,55 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
         </span>
         <button
           aria-disabled={undefined}
-          className="ms-Link nameText-53"
+          className=
+              ms-Link
+              {
+                background-color: transparent;
+                background: none;
+                border: none;
+                color: #0078d4;
+                cursor: pointer;
+                display: inline;
+                font-size: inherit;
+                font-weight: bold;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                outline: transparent;
+                overflow: inherit;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+                position: relative;
+                text-align: left;
+                text-overflow: inherit;
+                user-select: text;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 1px;
+                content: "";
+                left: 1px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+                z-index: 1;
+              }
+              &:active, &:hover, &:active:hover {
+                color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                text-decoration: underline;
+              }
+              &:focus {
+                color: #0078d4;
+              }
           onClick={[Function]}
         >
           Amelia Povalіy
@@ -184,41 +594,164 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
         </span>
         <button
           aria-disabled={undefined}
-          className="ms-Link nameText-53"
+          className=
+              ms-Link
+              {
+                background-color: transparent;
+                background: none;
+                border: none;
+                color: #0078d4;
+                cursor: pointer;
+                display: inline;
+                font-size: inherit;
+                font-weight: bold;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                outline: transparent;
+                overflow: inherit;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+                position: relative;
+                text-align: left;
+                text-overflow: inherit;
+                user-select: text;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 1px;
+                content: "";
+                left: 1px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+                z-index: 1;
+              }
+              &:active, &:hover, &:active:hover {
+                color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                text-decoration: underline;
+              }
+              &:focus {
+                color: #0078d4;
+              }
           onClick={[Function]}
         >
           SpreadsheetTitle.xlsx
         </button>
       </span>
       <div
-        className="ms-ActivityItem-timeStamp css-50"
+        className=
+            ms-ActivityItem-timeStamp
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #666666;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 10px;
+              font-weight: 400;
+            }
       >
         9:27 am
       </div>
     </div>
   </div>
   <div
-    className="ms-ActivityItem exampleRoot-42"
+    className=
+        ms-ActivityItem
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          align-items: flex-start;
+          box-sizing: border-box;
+          color: #666666;
+          display: flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 12px;
+          font-weight: 400;
+          justify-content: flex-start;
+          line-height: 17px;
+          margin-top: 20px;
+        }
     style={undefined}
   >
     <div
-      className="ms-ActivityItem-activityTypeIcon css-46"
+      className=
+          ms-ActivityItem-activityTypeIcon
+          {
+            font-size: 16px;
+            height: 32px;
+            line-height: 16px;
+            margin-top: 3px;
+          }
     >
       <div
-        className="ms-ActivityItem-personaContainer css-44"
+        className=
+            ms-ActivityItem-personaContainer
+            {
+              display: flex;
+              flex-wrap: wrap;
+              height: 32px;
+              min-width: 32px;
+              width: 32px;
+            }
       >
         <div
-          className="ms-Persona-coin ms-Persona--size16 ms-ActivityItem-activityPersona coin-79"
+          className=
+              ms-Persona-coin
+              ms-Persona--size16
+              ms-ActivityItem-activityPersona
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+              }
           size={8}
           style={undefined}
         >
           <div
-            className="ms-Persona-imageArea imageArea-69"
+            className=
+                ms-Persona-imageArea
+                {
+                  flex: 0 0 auto;
+                  height: 16px;
+                  position: relative;
+                  text-align: center;
+                  width: 16px;
+                }
             style={undefined}
           >
             <div
               aria-hidden="true"
-              className="ms-Persona-initials initials-77"
+              className=
+                  ms-Persona-initials
+                  {
+                    background-color: #00A300;
+                    border-radius: 50%;
+                    color: #ffffff;
+                    font-size: 11px;
+                    font-weight: 400;
+                    height: 16px;
+                    line-height: 16px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    -ms-high-contrast-adjust: none;
+                    background-color: Window !important;
+                    border: 1px solid WindowText;
+                    box-sizing: border-box;
+                    color: WindowText;
+                  }
               style={undefined}
             >
               <span>
@@ -226,7 +759,21 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               </span>
             </div>
             <div
-              className="ms-Image ms-Persona-image image-73"
+              className=
+                  ms-Image
+                  ms-Persona-image
+                  {
+                    border-radius: 50%;
+                    border: 0px;
+                    height: 16px;
+                    left: 0px;
+                    margin-right: 10px;
+                    overflow: hidden;
+                    perspective: 1px;
+                    position: absolute;
+                    top: 0px;
+                    width: 16px;
+                  }
               style={
                 Object {
                   "height": undefined,
@@ -236,7 +783,22 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
             >
               <img
                 alt=""
-                className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+                className=
+                    ms-Image-image
+                    ms-Image-image--cover
+                    ms-Image-image--portrait
+                    is-notLoaded
+                    is-fadeIn
+                    {
+                      display: block;
+                      height: auto;
+                      left: 50% /* @noflip */;
+                      opacity: 0;
+                      position: absolute;
+                      top: 50%;
+                      transform: translate(-50%,-50%);
+                      width: 100%;
+                    }
                 onError={[Function]}
                 onLoad={[Function]}
                 role={undefined}
@@ -246,16 +808,49 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
           </div>
         </div>
         <div
-          className="ms-Persona-coin ms-Persona--size16 ms-ActivityItem-activityPersona coin-79"
+          className=
+              ms-Persona-coin
+              ms-Persona--size16
+              ms-ActivityItem-activityPersona
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+              }
           size={8}
           style={undefined}
         >
           <div
-            className="ms-Persona-imageArea imageArea-69"
+            className=
+                ms-Persona-imageArea
+                {
+                  flex: 0 0 auto;
+                  height: 16px;
+                  position: relative;
+                  text-align: center;
+                  width: 16px;
+                }
             style={undefined}
           >
             <div
-              className="ms-Image ms-Persona-image image-73"
+              className=
+                  ms-Image
+                  ms-Persona-image
+                  {
+                    border-radius: 50%;
+                    border: 0px;
+                    height: 16px;
+                    left: 0px;
+                    margin-right: 10px;
+                    overflow: hidden;
+                    perspective: 1px;
+                    position: absolute;
+                    top: 0px;
+                    width: 16px;
+                  }
               style={
                 Object {
                   "height": undefined,
@@ -265,7 +860,22 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
             >
               <img
                 alt=""
-                className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+                className=
+                    ms-Image-image
+                    ms-Image-image--cover
+                    ms-Image-image--portrait
+                    is-notLoaded
+                    is-fadeIn
+                    {
+                      display: block;
+                      height: auto;
+                      left: 50% /* @noflip */;
+                      opacity: 0;
+                      position: absolute;
+                      top: 50%;
+                      transform: translate(-50%,-50%);
+                      width: 100%;
+                    }
                 onError={[Function]}
                 onLoad={[Function]}
                 role={undefined}
@@ -275,16 +885,49 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
           </div>
         </div>
         <div
-          className="ms-Persona-coin ms-Persona--size16 ms-ActivityItem-activityPersona coin-79"
+          className=
+              ms-Persona-coin
+              ms-Persona--size16
+              ms-ActivityItem-activityPersona
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+              }
           size={8}
           style={undefined}
         >
           <div
-            className="ms-Persona-imageArea imageArea-69"
+            className=
+                ms-Persona-imageArea
+                {
+                  flex: 0 0 auto;
+                  height: 16px;
+                  position: relative;
+                  text-align: center;
+                  width: 16px;
+                }
             style={undefined}
           >
             <div
-              className="ms-Image ms-Persona-image image-73"
+              className=
+                  ms-Image
+                  ms-Persona-image
+                  {
+                    border-radius: 50%;
+                    border: 0px;
+                    height: 16px;
+                    left: 0px;
+                    margin-right: 10px;
+                    overflow: hidden;
+                    perspective: 1px;
+                    position: absolute;
+                    top: 0px;
+                    width: 16px;
+                  }
               style={
                 Object {
                   "height": undefined,
@@ -294,7 +937,22 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
             >
               <img
                 alt=""
-                className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+                className=
+                    ms-Image-image
+                    ms-Image-image--cover
+                    ms-Image-image--portrait
+                    is-notLoaded
+                    is-fadeIn
+                    {
+                      display: block;
+                      height: auto;
+                      left: 50% /* @noflip */;
+                      opacity: 0;
+                      position: absolute;
+                      top: 50%;
+                      transform: translate(-50%,-50%);
+                      width: 100%;
+                    }
                 onError={[Function]}
                 onLoad={[Function]}
                 role={undefined}
@@ -306,14 +964,73 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
       </div>
     </div>
     <div
-      className="ms-ActivityItem-activityContent css-47"
+      className=
+          ms-ActivityItem-activityContent
+          {
+            padding-bottom: 0;
+            padding-left: 8px;
+            padding-right: 8px;
+            padding-top: 0;
+          }
     >
       <span
-        className="ms-ActivityItem-activityText css-48"
+        className=
+            ms-ActivityItem-activityText
+            {
+              display: inline;
+            }
       >
         <button
           aria-disabled={undefined}
-          className="ms-Link nameText-53"
+          className=
+              ms-Link
+              {
+                background-color: transparent;
+                background: none;
+                border: none;
+                color: #0078d4;
+                cursor: pointer;
+                display: inline;
+                font-size: inherit;
+                font-weight: bold;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                outline: transparent;
+                overflow: inherit;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+                position: relative;
+                text-align: left;
+                text-overflow: inherit;
+                user-select: text;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 1px;
+                content: "";
+                left: 1px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+                z-index: 1;
+              }
+              &:active, &:hover, &:active:hover {
+                color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                text-decoration: underline;
+              }
+              &:focus {
+                color: #0078d4;
+              }
           onClick={[Function]}
         >
           Robert Larsson
@@ -323,7 +1040,55 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
         </span>
         <button
           aria-disabled={undefined}
-          className="ms-Link nameText-53"
+          className=
+              ms-Link
+              {
+                background-color: transparent;
+                background: none;
+                border: none;
+                color: #0078d4;
+                cursor: pointer;
+                display: inline;
+                font-size: inherit;
+                font-weight: bold;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                outline: transparent;
+                overflow: inherit;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+                position: relative;
+                text-align: left;
+                text-overflow: inherit;
+                user-select: text;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 1px;
+                content: "";
+                left: 1px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+                z-index: 1;
+              }
+              &:active, &:hover, &:active:hover {
+                color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                text-decoration: underline;
+              }
+              &:focus {
+                color: #0078d4;
+              }
           onClick={[Function]}
         >
           2 others
@@ -333,34 +1098,109 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
         </span>
       </span>
       <div
-        className="ms-ActivityItem-timeStamp css-50"
+        className=
+            ms-ActivityItem-timeStamp
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #666666;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 10px;
+              font-weight: 400;
+            }
       >
         3 days ago
       </div>
     </div>
   </div>
   <div
-    className="ms-ActivityItem exampleRoot-42"
+    className=
+        ms-ActivityItem
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          align-items: flex-start;
+          box-sizing: border-box;
+          color: #666666;
+          display: flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 12px;
+          font-weight: 400;
+          justify-content: flex-start;
+          line-height: 17px;
+          margin-top: 20px;
+        }
     style={undefined}
   >
     <div
-      className="ms-ActivityItem-activityTypeIcon css-46"
+      className=
+          ms-ActivityItem-activityTypeIcon
+          {
+            font-size: 16px;
+            height: 32px;
+            line-height: 16px;
+            margin-top: 3px;
+          }
     >
       <div
-        className="ms-ActivityItem-personaContainer css-44"
+        className=
+            ms-ActivityItem-personaContainer
+            {
+              display: flex;
+              flex-wrap: wrap;
+              height: 32px;
+              min-width: 32px;
+              width: 32px;
+            }
       >
         <div
-          className="ms-Persona-coin ms-Persona--size16 ms-ActivityItem-activityPersona coin-79"
+          className=
+              ms-Persona-coin
+              ms-Persona--size16
+              ms-ActivityItem-activityPersona
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+              }
           size={8}
           style={undefined}
         >
           <div
-            className="ms-Persona-imageArea imageArea-69"
+            className=
+                ms-Persona-imageArea
+                {
+                  flex: 0 0 auto;
+                  height: 16px;
+                  position: relative;
+                  text-align: center;
+                  width: 16px;
+                }
             style={undefined}
           >
             <div
               aria-hidden="true"
-              className="ms-Persona-initials initials-88"
+              className=
+                  ms-Persona-initials
+                  {
+                    background-color: #1E7145;
+                    border-radius: 50%;
+                    color: #ffffff;
+                    font-size: 11px;
+                    font-weight: 400;
+                    height: 16px;
+                    line-height: 16px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    -ms-high-contrast-adjust: none;
+                    background-color: Window !important;
+                    border: 1px solid WindowText;
+                    box-sizing: border-box;
+                    color: WindowText;
+                  }
               style={undefined}
             >
               <span>
@@ -368,7 +1208,21 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               </span>
             </div>
             <div
-              className="ms-Image ms-Persona-image image-73"
+              className=
+                  ms-Image
+                  ms-Persona-image
+                  {
+                    border-radius: 50%;
+                    border: 0px;
+                    height: 16px;
+                    left: 0px;
+                    margin-right: 10px;
+                    overflow: hidden;
+                    perspective: 1px;
+                    position: absolute;
+                    top: 0px;
+                    width: 16px;
+                  }
               style={
                 Object {
                   "height": undefined,
@@ -378,7 +1232,22 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
             >
               <img
                 alt=""
-                className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+                className=
+                    ms-Image-image
+                    ms-Image-image--cover
+                    ms-Image-image--portrait
+                    is-notLoaded
+                    is-fadeIn
+                    {
+                      display: block;
+                      height: auto;
+                      left: 50% /* @noflip */;
+                      opacity: 0;
+                      position: absolute;
+                      top: 50%;
+                      transform: translate(-50%,-50%);
+                      width: 100%;
+                    }
                 onError={[Function]}
                 onLoad={[Function]}
                 role={undefined}
@@ -388,16 +1257,49 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
           </div>
         </div>
         <div
-          className="ms-Persona-coin ms-Persona--size16 ms-ActivityItem-activityPersona coin-79"
+          className=
+              ms-Persona-coin
+              ms-Persona--size16
+              ms-ActivityItem-activityPersona
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+              }
           size={8}
           style={undefined}
         >
           <div
-            className="ms-Persona-imageArea imageArea-69"
+            className=
+                ms-Persona-imageArea
+                {
+                  flex: 0 0 auto;
+                  height: 16px;
+                  position: relative;
+                  text-align: center;
+                  width: 16px;
+                }
             style={undefined}
           >
             <div
-              className="ms-Image ms-Persona-image image-73"
+              className=
+                  ms-Image
+                  ms-Persona-image
+                  {
+                    border-radius: 50%;
+                    border: 0px;
+                    height: 16px;
+                    left: 0px;
+                    margin-right: 10px;
+                    overflow: hidden;
+                    perspective: 1px;
+                    position: absolute;
+                    top: 0px;
+                    width: 16px;
+                  }
               style={
                 Object {
                   "height": undefined,
@@ -407,7 +1309,22 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
             >
               <img
                 alt=""
-                className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+                className=
+                    ms-Image-image
+                    ms-Image-image--cover
+                    ms-Image-image--portrait
+                    is-notLoaded
+                    is-fadeIn
+                    {
+                      display: block;
+                      height: auto;
+                      left: 50% /* @noflip */;
+                      opacity: 0;
+                      position: absolute;
+                      top: 50%;
+                      transform: translate(-50%,-50%);
+                      width: 100%;
+                    }
                 onError={[Function]}
                 onLoad={[Function]}
                 role={undefined}
@@ -417,17 +1334,53 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
           </div>
         </div>
         <div
-          className="ms-Persona-coin ms-Persona--size16 ms-ActivityItem-activityPersona coin-79"
+          className=
+              ms-Persona-coin
+              ms-Persona--size16
+              ms-ActivityItem-activityPersona
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+              }
           size={8}
           style={undefined}
         >
           <div
-            className="ms-Persona-imageArea imageArea-69"
+            className=
+                ms-Persona-imageArea
+                {
+                  flex: 0 0 auto;
+                  height: 16px;
+                  position: relative;
+                  text-align: center;
+                  width: 16px;
+                }
             style={undefined}
           >
             <div
               aria-hidden="true"
-              className="ms-Persona-initials initials-77"
+              className=
+                  ms-Persona-initials
+                  {
+                    background-color: #00A300;
+                    border-radius: 50%;
+                    color: #ffffff;
+                    font-size: 11px;
+                    font-weight: 400;
+                    height: 16px;
+                    line-height: 16px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    -ms-high-contrast-adjust: none;
+                    background-color: Window !important;
+                    border: 1px solid WindowText;
+                    box-sizing: border-box;
+                    color: WindowText;
+                  }
               style={undefined}
             >
               <span>
@@ -435,7 +1388,21 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               </span>
             </div>
             <div
-              className="ms-Image ms-Persona-image image-73"
+              className=
+                  ms-Image
+                  ms-Persona-image
+                  {
+                    border-radius: 50%;
+                    border: 0px;
+                    height: 16px;
+                    left: 0px;
+                    margin-right: 10px;
+                    overflow: hidden;
+                    perspective: 1px;
+                    position: absolute;
+                    top: 0px;
+                    width: 16px;
+                  }
               style={
                 Object {
                   "height": undefined,
@@ -445,7 +1412,22 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
             >
               <img
                 alt=""
-                className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+                className=
+                    ms-Image-image
+                    ms-Image-image--cover
+                    ms-Image-image--portrait
+                    is-notLoaded
+                    is-fadeIn
+                    {
+                      display: block;
+                      height: auto;
+                      left: 50% /* @noflip */;
+                      opacity: 0;
+                      position: absolute;
+                      top: 50%;
+                      transform: translate(-50%,-50%);
+                      width: 100%;
+                    }
                 onError={[Function]}
                 onLoad={[Function]}
                 role={undefined}
@@ -455,16 +1437,49 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
           </div>
         </div>
         <div
-          className="ms-Persona-coin ms-Persona--size16 ms-ActivityItem-activityPersona coin-79"
+          className=
+              ms-Persona-coin
+              ms-Persona--size16
+              ms-ActivityItem-activityPersona
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+              }
           size={8}
           style={undefined}
         >
           <div
-            className="ms-Persona-imageArea imageArea-69"
+            className=
+                ms-Persona-imageArea
+                {
+                  flex: 0 0 auto;
+                  height: 16px;
+                  position: relative;
+                  text-align: center;
+                  width: 16px;
+                }
             style={undefined}
           >
             <div
-              className="ms-Image ms-Persona-image image-73"
+              className=
+                  ms-Image
+                  ms-Persona-image
+                  {
+                    border-radius: 50%;
+                    border: 0px;
+                    height: 16px;
+                    left: 0px;
+                    margin-right: 10px;
+                    overflow: hidden;
+                    perspective: 1px;
+                    position: absolute;
+                    top: 0px;
+                    width: 16px;
+                  }
               style={
                 Object {
                   "height": undefined,
@@ -474,7 +1489,22 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
             >
               <img
                 alt=""
-                className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-74"
+                className=
+                    ms-Image-image
+                    ms-Image-image--cover
+                    ms-Image-image--portrait
+                    is-notLoaded
+                    is-fadeIn
+                    {
+                      display: block;
+                      height: auto;
+                      left: 50% /* @noflip */;
+                      opacity: 0;
+                      position: absolute;
+                      top: 50%;
+                      transform: translate(-50%,-50%);
+                      width: 100%;
+                    }
                 onError={[Function]}
                 onLoad={[Function]}
                 role={undefined}
@@ -486,14 +1516,73 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
       </div>
     </div>
     <div
-      className="ms-ActivityItem-activityContent css-47"
+      className=
+          ms-ActivityItem-activityContent
+          {
+            padding-bottom: 0;
+            padding-left: 8px;
+            padding-right: 8px;
+            padding-top: 0;
+          }
     >
       <span
-        className="ms-ActivityItem-activityText css-48"
+        className=
+            ms-ActivityItem-activityText
+            {
+              display: inline;
+            }
       >
         <button
           aria-disabled={undefined}
-          className="ms-Link nameText-53"
+          className=
+              ms-Link
+              {
+                background-color: transparent;
+                background: none;
+                border: none;
+                color: #0078d4;
+                cursor: pointer;
+                display: inline;
+                font-size: inherit;
+                font-weight: bold;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                outline: transparent;
+                overflow: inherit;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+                position: relative;
+                text-align: left;
+                text-overflow: inherit;
+                user-select: text;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 1px;
+                content: "";
+                left: 1px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+                z-index: 1;
+              }
+              &:active, &:hover, &:active:hover {
+                color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                text-decoration: underline;
+              }
+              &:focus {
+                color: #0078d4;
+              }
           onClick={[Function]}
         >
           Jin Cheng
@@ -503,7 +1592,55 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
         </span>
         <button
           aria-disabled={undefined}
-          className="ms-Link nameText-53"
+          className=
+              ms-Link
+              {
+                background-color: transparent;
+                background: none;
+                border: none;
+                color: #0078d4;
+                cursor: pointer;
+                display: inline;
+                font-size: inherit;
+                font-weight: bold;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                outline: transparent;
+                overflow: inherit;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+                position: relative;
+                text-align: left;
+                text-overflow: inherit;
+                user-select: text;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 1px;
+                content: "";
+                left: 1px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+                z-index: 1;
+              }
+              &:active, &:hover, &:active:hover {
+                color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                text-decoration: underline;
+              }
+              &:focus {
+                color: #0078d4;
+              }
           onClick={[Function]}
         >
           5 others
@@ -513,7 +1650,16 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
         </span>
       </span>
       <div
-        className="ms-ActivityItem-timeStamp css-50"
+        className=
+            ms-ActivityItem-timeStamp
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #666666;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 10px;
+              font-weight: 400;
+            }
       >
         August 3, 2017
       </div>
