@@ -1,14 +1,18 @@
 import * as React from 'react';
-import { classNamesFunction } from '../../Utilities';
-import { IPalette, ISemanticColors, loadTheme } from '../../Styling';
+import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { IPalette, ISemanticColors, loadTheme } from 'office-ui-fabric-react/lib/Styling';
 import { ComponentPage, IComponentDemoPageProps, PageMarkdown } from '@uifabric/example-app-base';
-import { IThemePageStyleProps, IThemePageStyles, IThemePageState } from './ThemePage.types';
-import { defaultPalette, defaultSemanticColors } from './defaultTheme';
-import { getStyles } from './ThemePage.styles';
-import { Callout } from '../Callout';
-import { DetailsList, DetailsListLayoutMode } from '../../DetailsList';
-import { SelectionMode } from '../../Selection';
-import { ColorPicker } from '../ColorPicker';
+import {
+  IThemePageStyleProps,
+  IThemePageStyles,
+  IThemePageState
+} from 'office-ui-fabric-react/lib/components/Theme/ThemePage.types';
+import { defaultPalette, defaultSemanticColors } from 'office-ui-fabric-react/lib/components/Theme/defaultTheme';
+import { getStyles } from 'office-ui-fabric-react/lib/components/Theme/ThemePage.styles';
+import { Callout } from 'office-ui-fabric-react/lib/Callout';
+import { DetailsList, DetailsListLayoutMode } from 'office-ui-fabric-react/lib/DetailsList';
+import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
+import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
 
 const getClassNames = classNamesFunction<IThemePageStyleProps, IThemePageStyles>();
 
