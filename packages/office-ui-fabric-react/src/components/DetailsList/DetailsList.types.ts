@@ -248,6 +248,7 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
 
   /**
    * Rerender DetailsRow only when props changed. Might cause regression when depending on external updates.
+   * @default false
    */
   useReducedRowRenderer?: boolean;
 }
