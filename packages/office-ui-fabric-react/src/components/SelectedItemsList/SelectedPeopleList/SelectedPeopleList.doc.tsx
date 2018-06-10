@@ -19,15 +19,15 @@ export const SelectedPeopleListPageProps: IDocPageProps = {
   propertiesTablesSources: [
     require<
       string
-      >('!raw-loader!office-ui-fabric-react/src/components/SelectedItemsList/BaseSelectedItemsList.types.ts')
+    >('!raw-loader!office-ui-fabric-react/src/components/SelectedItemsList/BaseSelectedItemsList.types.ts')
   ],
   overview: '',
   bestPractices: '',
   dos: require<
     string
-    >('!raw-loader!office-ui-fabric-react/src/components/SelectedItemsList/docs/SelectedPeopleListDos.md'),
+  >('!raw-loader!office-ui-fabric-react/src/components/SelectedItemsList/docs/SelectedPeopleListDos.md'),
   donts: require<
     string
-    >('!raw-loader!office-ui-fabric-react/src/components/SelectedItemsList/docs/SelectedPeopleListDonts.md'),
+  >('!raw-loader!office-ui-fabric-react/src/components/SelectedItemsList/docs/SelectedPeopleListDonts.md'),
   isHeaderVisible: true
 };

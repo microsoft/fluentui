@@ -12,6 +12,14 @@ export interface IButtonDemoPageState {
 }
 
 export class ButtonPage extends React.Component<IDocPageProps, IButtonDemoPageState> {
+  constructor(props: IDocPageProps) {
+    super(props);
+    this.state = {
+      areButtonsDisabled: false,
+      areButtonsChecked: false
+    };
+  }
+
   private _onDisabledChanged = (ev: React.MouseEvent<HTMLElement>, disabled: boolean): void => {
     this.setState({
       areButtonsDisabled: disabled
@@ -23,14 +31,6 @@ export class ButtonPage extends React.Component<IDocPageProps, IButtonDemoPageSt
       areButtonsChecked: toggled
     });
   };
-
-  constructor(props: IDocPageProps) {
-    super(props);
-    this.state = {
-      areButtonsDisabled: false,
-      areButtonsChecked: false
-    };
-  }
 
   render() {
     return (

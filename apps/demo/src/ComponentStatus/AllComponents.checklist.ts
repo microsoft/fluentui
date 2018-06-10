@@ -1,57 +1,68 @@
-import { IComponentStatusProps } from './ComponentStatus.types';
+import { IComponentStatusProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
 export interface IComponentStatusState {
   [key: string]: IComponentStatusProps;
 }
 export const AllComponentsStatus: IComponentStatusState = {
-  ActivityItem: require<any>('../../components/ActivityItem/ActivityItem.checklist').ActivityItemStatus,
-  Breadcrumb: require<any>('../../components/Breadcrumb/Breadcrumb.checklist').BreadcrumbStatus,
-  Button: require<any>('../../components/Button/Button.checklist').ButtonStatus,
-  Calendar: require<any>('../../components/Calendar/Calendar.checklist').CalendarStatus,
-  Callout: require<any>('../../components/Callout/Callout.checklist').CalloutStatus,
-  Checkbox: require<any>('../../components/Checkbox/Checkbox.checklist').CheckboxStatus,
-  ChoiceGroup: require<any>('../../components/ChoiceGroup/ChoiceGroup.checklist').ChoiceGroupStatus,
-  ColorPicker: require<any>('../../components/ColorPicker/ColorPicker.checklist').ColorPickerStatus,
-  ComboBox: require<any>('../../components/ComboBox/ComboBox.checklist').ComboBoxStatus,
-  CommandBar: require<any>('../../components/CommandBar/CommandBar.checklist').CommandBarStatus,
-  ContextualMenu: require<any>('../../components/ContextualMenu/ContextualMenu.checklist').ContextualMenuStatus,
-  DatePicker: require<any>('../../components/DatePicker/DatePicker.checklist').DatePickerStatus,
-  DetailsList: require<any>('../../components/DetailsList/DetailsList.checklist').DetailsListStatus,
-  Dialog: require<any>('../../components/Dialog/Dialog.checklist').DialogStatus,
-  DocumentCard: require<any>('../../components/Calendar/Calendar.checklist').CalendarStatus,
-  Dropdown: require<any>('../../components/Dropdown/Dropdown.checklist').DropdownStatus,
-  Facepile: require<any>('../../components/Facepile/Facepile.checklist').FacepileStatus,
-  GroupedList: require<any>('../../components/GroupedList/GroupedList.checklist').GroupedListStatus,
-  HoverCard: require<any>('../../components/HoverCard/HoverCard.checklist').HoverCardStatus,
-  Icon: require<any>('../../components/Icon/Icon.checklist').IconStatus,
-  Image: require<any>('../../components/Image/Image.checklist').ImageStatus,
-  Label: require<any>('../../components/Label/Label.checklist').LabelStatus,
-  Layer: require<any>('../../components/Layer/Layer.checklist').LayerStatus,
-  Link: require<any>('../../components/Link/Link.checklist').LinkStatus,
-  List: require<any>('../../components/List/List.checklist').ListStatus,
-  MessageBar: require<any>('../../components/MessageBar/MessageBar.checklist').MessageBarStatus,
-  Modal: require<any>('../../components/Modal/Modal.checklist').ModalStatus,
-  Nav: require<any>('../../components/Nav/Nav.checklist').NavStatus,
-  Overlay: require<any>('../../components/Overlay/Overlay.checklist').OverlayStatus,
-  OverflowSet: require<any>('../../components/OverflowSet/OverflowSet.checklist').OverflowSetStatus,
-  Panel: require<any>('../../components/Panel/Panel.checklist').PanelStatus,
-  Persona: require<any>('../../components/Persona/Persona.checklist').PersonaStatus,
-  Pickers: require<any>('../../components/pickers/Pickers.checklist').PickersStatus,
-  PeoplePicker: require<any>('../../components/pickers/PeoplePicker/PeoplePicker.checklist').PeoplePickerStatus,
-  Pivot: require<any>('../../components/Pivot/Pivot.checklist').PivotStatus,
-  ProgressIndicator: require<any>('../../components/ProgressIndicator/ProgressIndicator.checklist')
+  ActivityItem: require<any>('office-ui-fabric-react/lib/components/ActivityItem/ActivityItem.checklist')
+    .ActivityItemStatus,
+  Breadcrumb: require<any>('office-ui-fabric-react/lib/components/Breadcrumb/Breadcrumb.checklist').BreadcrumbStatus,
+  Button: require<any>('office-ui-fabric-react/lib/components/Button/Button.checklist').ButtonStatus,
+  Calendar: require<any>('office-ui-fabric-react/lib/components/Calendar/Calendar.checklist').CalendarStatus,
+  Callout: require<any>('office-ui-fabric-react/lib/components/Callout/Callout.checklist').CalloutStatus,
+  Checkbox: require<any>('office-ui-fabric-react/lib/components/Checkbox/Checkbox.checklist').CheckboxStatus,
+  ChoiceGroup: require<any>('office-ui-fabric-react/lib/components/ChoiceGroup/ChoiceGroup.checklist')
+    .ChoiceGroupStatus,
+  ColorPicker: require<any>('office-ui-fabric-react/lib/components/ColorPicker/ColorPicker.checklist')
+    .ColorPickerStatus,
+  ComboBox: require<any>('office-ui-fabric-react/lib/components/ComboBox/ComboBox.checklist').ComboBoxStatus,
+  CommandBar: require<any>('office-ui-fabric-react/lib/components/CommandBar/CommandBar.checklist').CommandBarStatus,
+  ContextualMenu: require<any>('office-ui-fabric-react/lib/components/ContextualMenu/ContextualMenu.checklist')
+    .ContextualMenuStatus,
+  DatePicker: require<any>('office-ui-fabric-react/lib/components/DatePicker/DatePicker.checklist').DatePickerStatus,
+  DetailsList: require<any>('office-ui-fabric-react/lib/components/DetailsList/DetailsList.checklist')
+    .DetailsListStatus,
+  Dialog: require<any>('office-ui-fabric-react/lib/components/Dialog/Dialog.checklist').DialogStatus,
+  DocumentCard: require<any>('office-ui-fabric-react/lib/components/Calendar/Calendar.checklist').CalendarStatus,
+  Dropdown: require<any>('office-ui-fabric-react/lib/components/Dropdown/Dropdown.checklist').DropdownStatus,
+  Facepile: require<any>('office-ui-fabric-react/lib/components/Facepile/Facepile.checklist').FacepileStatus,
+  GroupedList: require<any>('office-ui-fabric-react/lib/components/GroupedList/GroupedList.checklist')
+    .GroupedListStatus,
+  HoverCard: require<any>('office-ui-fabric-react/lib/components/HoverCard/HoverCard.checklist').HoverCardStatus,
+  Icon: require<any>('office-ui-fabric-react/lib/components/Icon/Icon.checklist').IconStatus,
+  Image: require<any>('office-ui-fabric-react/lib/components/Image/Image.checklist').ImageStatus,
+  Label: require<any>('office-ui-fabric-react/lib/components/Label/Label.checklist').LabelStatus,
+  Layer: require<any>('office-ui-fabric-react/lib/components/Layer/Layer.checklist').LayerStatus,
+  Link: require<any>('office-ui-fabric-react/lib/components/Link/Link.checklist').LinkStatus,
+  List: require<any>('office-ui-fabric-react/lib/components/List/List.checklist').ListStatus,
+  MessageBar: require<any>('office-ui-fabric-react/lib/components/MessageBar/MessageBar.checklist').MessageBarStatus,
+  Modal: require<any>('office-ui-fabric-react/lib/components/Modal/Modal.checklist').ModalStatus,
+  Nav: require<any>('office-ui-fabric-react/lib/components/Nav/Nav.checklist').NavStatus,
+  Overlay: require<any>('office-ui-fabric-react/lib/components/Overlay/Overlay.checklist').OverlayStatus,
+  OverflowSet: require<any>('office-ui-fabric-react/lib/components/OverflowSet/OverflowSet.checklist')
+    .OverflowSetStatus,
+  Panel: require<any>('office-ui-fabric-react/lib/components/Panel/Panel.checklist').PanelStatus,
+  Persona: require<any>('office-ui-fabric-react/lib/components/Persona/Persona.checklist').PersonaStatus,
+  Pickers: require<any>('office-ui-fabric-react/lib/components/pickers/Pickers.checklist').PickersStatus,
+  PeoplePicker: require<any>('office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePicker.checklist')
+    .PeoplePickerStatus,
+  Pivot: require<any>('office-ui-fabric-react/lib/components/Pivot/Pivot.checklist').PivotStatus,
+  ProgressIndicator: require<any>('office-ui-fabric-react/lib/components/ProgressIndicator/ProgressIndicator.checklist')
     .ProgressIndicatorStatus,
-  Rating: require<any>('../../components/Rating/Rating.checklist').RatingStatus,
-  ResizeGroup: require<any>('../../components/ResizeGroup/ResizeGroup.checklist').ResizeGroupStatus,
-  ScrollablePane: require<any>('../../components/ScrollablePane/ScrollablePane.checklist').ScrollablePaneStatus,
-  SearchBox: require<any>('../../components/SearchBox/SearchBox.checklist').SearchBoxStatus,
-  Shimmer: require<any>('../../components/Shimmer/Shimmer.checklist').ShimmerStatus,
-  Slider: require<any>('../../components/Slider/Slider.checklist').SliderStatus,
-  Spinner: require<any>('../../components/Spinner/Spinner.checklist').SpinnerStatus,
-  SpinButton: require<any>('../../components/SpinButton/SpinButton.checklist').SpinButtonStatus,
-  SwatchColorPicker: require<any>('../../components/SwatchColorPicker/SwatchColorPicker.checklist')
+  Rating: require<any>('office-ui-fabric-react/lib/components/Rating/Rating.checklist').RatingStatus,
+  ResizeGroup: require<any>('office-ui-fabric-react/lib/components/ResizeGroup/ResizeGroup.checklist')
+    .ResizeGroupStatus,
+  ScrollablePane: require<any>('office-ui-fabric-react/lib/components/ScrollablePane/ScrollablePane.checklist')
+    .ScrollablePaneStatus,
+  SearchBox: require<any>('office-ui-fabric-react/lib/components/SearchBox/SearchBox.checklist').SearchBoxStatus,
+  Shimmer: require<any>('office-ui-fabric-react/lib/components/Shimmer/Shimmer.checklist').ShimmerStatus,
+  Slider: require<any>('office-ui-fabric-react/lib/components/Slider/Slider.checklist').SliderStatus,
+  Spinner: require<any>('office-ui-fabric-react/lib/components/Spinner/Spinner.checklist').SpinnerStatus,
+  SpinButton: require<any>('office-ui-fabric-react/lib/components/SpinButton/SpinButton.checklist').SpinButtonStatus,
+  SwatchColorPicker: require<any>('office-ui-fabric-react/lib/components/SwatchColorPicker/SwatchColorPicker.checklist')
     .SwatchColorPickerStatus,
-  TeachingBubble: require<any>('../../components/TeachingBubble/TeachingBubble.checklist').TeachingBubbleStatus,
-  TextField: require<any>('../../components/TextField/TextField.checklist').TextFieldStatus,
-  Toggle: require<any>('../../components/Toggle/Toggle.checklist').ToggleStatus,
-  Tooltip: require<any>('../../components/Tooltip/Tooltip.checklist').TooltipStatus
+  TeachingBubble: require<any>('office-ui-fabric-react/lib/components/TeachingBubble/TeachingBubble.checklist')
+    .TeachingBubbleStatus,
+  TextField: require<any>('office-ui-fabric-react/lib/components/TextField/TextField.checklist').TextFieldStatus,
+  Toggle: require<any>('office-ui-fabric-react/lib/components/Toggle/Toggle.checklist').ToggleStatus,
+  Tooltip: require<any>('office-ui-fabric-react/lib/components/Tooltip/Tooltip.checklist').TooltipStatus
 };

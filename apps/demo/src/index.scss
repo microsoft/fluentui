@@ -1,7 +1,8 @@
-@import '../common/common';
+@import '~office-ui-fabric-react/src/common/common.scss';
 
 :global {
-  html, body {
+  html,
+  body {
     -webkit-tap-highlight-color: transparent;
   }
 }

@@ -1,41 +1,6 @@
 import * as React from 'react';
-import { ToggleBasicExample } from 'office-ui-fabric-react/lib/components/Toggle/examples/Toggle.Basic.Example';
 import { DemoPage } from '../DemoPage';
-import { IDemoPageProps } from '../DemoPage.types';
-import { ToggleAriaLabelExample } from 'office-ui-fabric-react/lib/components/Toggle/examples/Toggle.AriaLabel.Example';
-import { ToggleStatus } from 'office-ui-fabric-react/lib/components/Toggle/Toggle.checklist';
 
-const ToggleBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Toggle/examples/Toggle.Basic.Example.tsx') as string;
-const ToggleAriaLabelExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Toggle/examples/Toggle.AriaLabel.Example.tsx') as string;
-
-export const TogglePageProps: IDemoPageProps = {
-  title: 'Toggle',
-  componentName: 'Toggle',
-  componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Toggle',
-  componentStatus: ToggleStatus,
-  examples: [
-    {
-      title: 'Default Toggles',
-      code: ToggleBasicExampleCode,
-      view: <ToggleBasicExample />
-    },
-    {
-      title: 'Toggle with specialized aria labels for the screen-reader to announce when the toggle is on and off',
-      code: ToggleAriaLabelExampleCode,
-      view: <ToggleAriaLabelExample />
-    }
-  ],
-  propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/Toggle.types.ts')
-  ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleOverview.md'),
-  bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleDonts.md'),
-  isHeaderVisible: true,
-  allowNativeProps: true,
-  nativePropsElement: 'input'
-};
+import { TogglePageProps } from 'office-ui-fabric-react/lib/components/Toggle/Toggle.doc';
 
 export const TogglePage = (props: { isHeaderVisible: boolean }) => <DemoPage {...{ ...TogglePageProps, ...props }} />;

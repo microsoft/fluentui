@@ -32,8 +32,8 @@ module.exports = resources.createConfig(BUNDLE_NAME, IS_PRODUCTION, {
 
   resolve: {
     alias: {
-      'office-ui-fabric-react/src': path.join(__dirname, 'src'),
-      'office-ui-fabric-react/lib': path.join(__dirname, 'lib'),
+      'office-ui-fabric-react/src': path.resolve(__dirname, '../../package/office-ui-fabric-react/src'),
+      'office-ui-fabric-react/lib': path.resolve(__dirname, '../../package/office-ui-fabric-react/src'),
       'Props.ts.js': 'Props',
       'Example.tsx.js': 'Example'
     }

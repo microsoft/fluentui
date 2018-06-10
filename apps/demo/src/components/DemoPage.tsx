@@ -25,11 +25,12 @@ export const DemoPage: React.StatelessComponent<IDemoPageProps> = componentPageP
       related={componentPageProps.related || undefined}
       exampleCards={
         <div>
-          {componentPageProps.examples.map(example => (
-            <ExampleCard title={example.title} code={example.code} key={example.title}>
-              {example.view}
-            </ExampleCard>
-          ))}
+          {componentPageProps.examples &&
+            componentPageProps.examples.map(example => (
+              <ExampleCard title={example.title} code={example.code} key={example.title}>
+                {example.view}
+              </ExampleCard>
+            ))}
         </div>
       }
       propertiesTables={<PropertiesTableSet sources={componentPageProps.propertiesTablesSources} />}
