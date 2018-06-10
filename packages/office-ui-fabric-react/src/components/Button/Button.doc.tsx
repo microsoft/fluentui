@@ -29,6 +29,10 @@ export interface IButtonDocPageProps {
   areButtonsChecked: boolean;
 }
 
+/**
+ * Exports a function because the documentation of this page requires some interactivity that is passed in here as a prop
+ * @param props Props that are specific to generating page props for ButtonPage
+ */
 export const ButtonPageProps = (props: IButtonDocPageProps): IDocPageProps => ({
   title: 'Button',
   componentName: 'ButtonExample',

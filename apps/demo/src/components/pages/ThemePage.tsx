@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IPalette, ISemanticColors, loadTheme } from 'office-ui-fabric-react/lib/Styling';
-import { ComponentPage, IComponentDemoPageProps, PageMarkdown } from '@uifabric/example-app-base';
+import { DemoPage } from '../DemoPage';
+import { ThemePageProps } from 'office-ui-fabric-react/lib/components/Theme/Theme.doc';
 import {
   IThemePageStyleProps,
   IThemePageStyles,
@@ -16,8 +17,12 @@ import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
 
 const getClassNames = classNamesFunction<IThemePageStyleProps, IThemePageStyles>();
 
-export class ThemePage extends React.Component<IComponentDemoPageProps, IThemePageState> {
-  constructor(props: IComponentDemoPageProps) {
+export interface IThemePageProps {
+  isHeaderVisible?: boolean;
+}
+
+export class ThemePage extends React.Component<IThemePageProps, IThemePageState> {
+  constructor(props: IThemePageProps) {
     super(props);
 
     this._onPickerDismiss = this._onPickerDismiss.bind(this);
@@ -33,26 +38,21 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, IThemePa
     const palette = [...this.state.palette];
     const semanticColors = [...this.state.semanticColors];
     return (
-      <ComponentPage
-        title="Themes"
-        componentName="ThemeExample"
-        componentUrl="https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Theme"
-        overview={
-          <PageMarkdown>
-            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Theme/docs/ThemesOverview.md')}
-          </PageMarkdown>
-        }
-        otherSections={[
-          {
-            title: 'Default Palette',
-            section: this._colorList(palette, 'palette')
-          },
-          {
-            title: 'Default Semantic Colors',
-            section: this._colorList(semanticColors, 'semanticColors')
-          }
-        ]}
-        isHeaderVisible={this.props.isHeaderVisible}
+      <DemoPage
+        {...{
+          ...ThemePageProps,
+          ...this.props,
+          otherSections: [
+            {
+              title: 'Default Palette',
+              section: this._colorList(palette, 'palette')
+            },
+            {
+              title: 'Default Semantic Colors',
+              section: this._colorList(semanticColors, 'semanticColors')
+            }
+          ]
+        }}
       />
     );
   }

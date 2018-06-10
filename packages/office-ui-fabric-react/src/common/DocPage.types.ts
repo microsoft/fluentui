@@ -110,4 +110,10 @@ export interface IDocPageProps {
 
   /** Related link */
   related?: JSX.Element;
+
+  /** Pass through other sections for ComponentPage */
+  otherSections?: {
+    title: string;
+    section: JSX.Element;
+  }[];
 }
