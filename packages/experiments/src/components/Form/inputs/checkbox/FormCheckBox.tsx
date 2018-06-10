@@ -10,6 +10,7 @@ import { IFormContext } from '../../Form';
  * Checkbox input for the Form. Displays a boolean value as a checkbox
  */
 export class FormCheckBox extends FormBaseInput<boolean, IFormCheckBoxProps, IFormBaseInputState<boolean>> {
+
   constructor(props: IFormCheckBoxProps, context: IFormContext) {
     super(props, context);
     this.state = {
@@ -27,17 +28,17 @@ export class FormCheckBox extends FormBaseInput<boolean, IFormCheckBoxProps, IFo
   public render(): JSX.Element {
     return (
       <Checkbox
-        {...this.props.checkboxProps}
-        key={this.props.inputKey}
-        onChange={this._onChange}
-        checked={this.state.currentValue}
+        { ...this.props.checkboxProps }
+        key={ this.props.inputKey }
+        onChange={ this._onChange }
+        checked={ this.state.currentValue }
       />
     );
   }
 
   private _onChange = (event: React.FormEvent<HTMLElement>, isChecked: boolean): void => {
     this.setValue(isChecked);
-  };
+  }
 
   private _validateCheckboxProps(props?: ICheckboxProps): void {
     if (props) {

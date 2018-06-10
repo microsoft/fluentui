@@ -7,13 +7,18 @@ import {
   getNativeProps,
   IClassNames
 } from '../../Utilities';
-import { ITooltipProps, ITooltipStyleProps, ITooltipStyles, TooltipDelay } from './Tooltip.types';
+import {
+  ITooltipProps,
+  ITooltipStyleProps,
+  ITooltipStyles,
+  TooltipDelay
+} from './Tooltip.types';
 import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 
 const getClassNames = classNamesFunction<ITooltipStyleProps, ITooltipStyles>();
 
-@customizable('Tooltip', ['theme', 'styles'])
+@customizable('Tooltip', ['theme'])
 export class TooltipBase extends BaseComponent<ITooltipProps, any> {
   // Specify default props values
   public static defaultProps: Partial<ITooltipProps> = {
@@ -38,7 +43,7 @@ export class TooltipBase extends BaseComponent<ITooltipProps, any> {
       delay,
       directionalHint,
       directionalHintForRTL,
-      styles,
+      getStyles,
       id,
       maxWidth,
       onRenderContent = this._onRenderContent,
@@ -46,7 +51,7 @@ export class TooltipBase extends BaseComponent<ITooltipProps, any> {
       theme
     } = this.props;
 
-    this._classNames = getClassNames(styles!, {
+    this._classNames = getClassNames(getStyles!, {
       theme: theme!,
       className: className || (calloutProps && calloutProps.className),
       delay: delay!,
@@ -55,27 +60,31 @@ export class TooltipBase extends BaseComponent<ITooltipProps, any> {
 
     return (
       <Callout
-        target={targetElement}
-        directionalHint={directionalHint}
-        directionalHintForRTL={directionalHintForRTL}
-        {...calloutProps}
-        {...getNativeProps(this.props, divProperties)}
-        className={this._classNames.root}
+        target={ targetElement }
+        directionalHint={ directionalHint }
+        directionalHintForRTL={ directionalHintForRTL }
+        { ...calloutProps }
+        { ...getNativeProps(this.props, divProperties) }
+        className={ this._classNames.root }
       >
         <div
-          className={this._classNames.content}
-          id={id}
-          role="tooltip"
-          onMouseEnter={this.props.onMouseEnter}
-          onMouseLeave={this.props.onMouseLeave}
+          className={ this._classNames.content }
+          id={ id }
+          role='tooltip'
+          onMouseEnter={ this.props.onMouseEnter }
+          onMouseLeave={ this.props.onMouseLeave }
         >
-          {onRenderContent(this.props, this._onRenderContent)}
+          { onRenderContent(this.props, this._onRenderContent) }
         </div>
-      </Callout>
+      </Callout >
     );
   }
 
   private _onRenderContent = (props: ITooltipProps): JSX.Element => {
-    return <p className={this._classNames.subText}>{props.content}</p>;
-  };
+    return (
+      <p className={ this._classNames.subText }>
+        { props.content }
+      </p>
+    );
+  }
 }

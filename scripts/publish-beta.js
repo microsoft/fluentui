@@ -6,13 +6,18 @@ const execSync = require('./exec-sync');
 const newVersion = process.argv[2];
 const newDep = process.argv[3] || newVersion;
 
-const rushPackages = JSON.parse(fs.readFileSync('../rush.json', 'utf8'));
-
-const packages = rushPackages.projects.filter(project => project.shouldPublish);
+const packages = [
+  'utilities',
+  'merge-styles',
+  'icons',
+  'styling',
+  'office-ui-fabric-react',
+  'experiments'
+];
 
 for (const package of packages) {
-  const packagePath = path.resolve('..', package.projectFolder);
+  let packagePath = path.resolve('../packages', package);
 
-  console.log(`Publishing ${chalk.magenta(package.packageName)} in ${packagePath}`);
-  //  execSync('npm publish --tag beta', undefined, packagePath);
+  console.log(`Publishing ${chalk.magenta(package)} in ${packagePath}`);
+  execSync('npm publish --tag beta', undefined, packagePath);
 }

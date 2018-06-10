@@ -48,16 +48,18 @@ describe('TooltipHost', () => {
     //        https://github.com/OfficeDev/office-ui-fabric-react/issues/4715
     const component = mount(
       <TooltipHost
-        calloutProps={assign({}, calloutProps)}
-        content={content}
-        delay={delay}
-        directionalHint={directionalHint}
-        directionalHintForRTL={directionalHintForRTL}
-        onTooltipToggle={() => {
-          onTooltipToggleCalled = true;
-          return null;
-        }}
-        tooltipProps={tooltipProps}
+        calloutProps={ assign({}, calloutProps) }
+        content={ content }
+        delay={ delay }
+        directionalHint={ directionalHint }
+        directionalHintForRTL={ directionalHintForRTL }
+        onTooltipToggle={
+          () => {
+            onTooltipToggleCalled = true;
+            return null;
+          }
+        }
+        tooltipProps={ tooltipProps }
       />
     );
 
@@ -73,7 +75,7 @@ describe('TooltipHost', () => {
     expect(tooltip.prop('directionalHint')).toEqual(directionalHint);
     expect(tooltip.prop('directionalHintForRTL')).toEqual(directionalHintForRTL);
 
-    Object.keys(tooltipProps).forEach((key: keyof ITooltipProps) => {
+    Object.keys(tooltipProps).forEach((key: (keyof ITooltipProps)) => {
       expect(tooltip.prop(key)).toEqual(tooltipProps[key]);
     });
   });
@@ -93,12 +95,14 @@ describe('TooltipHost', () => {
 
     const component = mount(
       <TooltipHost
-        calloutProps={calloutProps}
-        content={content}
-        onTooltipToggle={() => {
-          onTooltipToggleCalled = true;
-          return null;
-        }}
+        calloutProps={ calloutProps }
+        content={ content }
+        onTooltipToggle={
+          () => {
+            onTooltipToggleCalled = true;
+            return null;
+          }
+        }
       />
     );
 

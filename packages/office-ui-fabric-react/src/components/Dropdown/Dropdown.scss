@@ -77,10 +77,7 @@ $DropDown-item-height: 32px;
       @include highContrastItemAndTitleState();
     }
     .caretDown {
-      @include high-contrast {
-        color: HighlightText;
-      }
-
+      color: HighlightText;
       @include highContrastAdjust();
     }
     .titleIsError {

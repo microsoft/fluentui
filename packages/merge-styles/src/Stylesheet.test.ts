@@ -1,4 +1,7 @@
-import { InjectionMode, Stylesheet } from './Stylesheet';
+import {
+  InjectionMode,
+  Stylesheet
+} from './Stylesheet';
 
 import { styleToClassName } from './styleToClassName';
 

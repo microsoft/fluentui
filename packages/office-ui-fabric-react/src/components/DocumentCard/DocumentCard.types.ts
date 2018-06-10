@@ -12,7 +12,9 @@ import { ImageFit } from '../../Image';
 import { IButtonProps } from '../../Button';
 import { IIconProps } from '../../Icon';
 
-export interface IDocumentCard {}
+export interface IDocumentCard {
+
+}
 
 export interface IDocumentCardProps extends React.Props<DocumentCard> {
   /**
@@ -22,9 +24,9 @@ export interface IDocumentCardProps extends React.Props<DocumentCard> {
   componentRef?: (component: IDocumentCard | null) => void;
 
   /**
-   * The type of DocumentCard to display.
-   * @default DocumentCardType.normal
-   */
+  * The type of DocumentCard to display.
+  * @default DocumentCardType.normal
+  */
   type?: DocumentCardType;
 
   /**

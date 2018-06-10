@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IStyleFunction } from '../../Utilities';
 
-export interface IOverlay {}
+export interface IOverlay {
+
+}
 
 export interface IOverlayProps extends React.HTMLAttributes<HTMLElement> {
   /**
@@ -13,7 +15,7 @@ export interface IOverlayProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
-  styles?: IStyleFunctionOrObject<IOverlayStyleProps, IOverlayStyles>;
+  getStyles?: IStyleFunction<IOverlayStyleProps, IOverlayStyles>;
 
   /**
    * Theme provided by HOC.

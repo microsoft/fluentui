@@ -1,3 +1,4 @@
+
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { IPoint } from './positioning.types';
 import { IRectangle } from '../../Utilities';
@@ -27,9 +28,19 @@ export interface IPositionProps {
   /** The gap between the callout and the target */
   gapSpace?: number;
   /**
+  * @deprecated this will be removed in 6.0 and will only be available in ICalloutPositionProps.
+  * The width of the beak.
+  */
+  beakWidth?: number;
+  /**
    * The bounding rectangle for which  the contextual menu can appear in.
    */
   bounds?: IRectangle;
+  /**
+   * @deprecated this will be removed in 6.0 and will only be available in ICalloutPositionProps.
+   * If true then the beak is visible. If false it will not be shown.
+   */
+  isBeakVisible?: boolean;
   /**
    * If true the position returned will have the menu element cover the target.
    * If false then it will position next to the target;
@@ -45,12 +56,12 @@ export interface IPositionProps {
 
 export interface ICalloutPositionProps extends IPositionProps {
   /**
-   * The width of the beak.
-   */
+  * The width of the beak.
+  */
   beakWidth?: number;
-
   /**
-   * Whether or not the beak is visible
+   * @deprecated this will be removed in 6.0 and will only be available in ICalloutPositionProps.
+   * If true then the beak is visible. If false it will not be shown.
    */
   isBeakVisible?: boolean;
 }
@@ -95,6 +106,13 @@ export interface IPosition {
   [key: string]: number | undefined;
 }
 
+/**
+ * @deprecated use IPosition instead.
+ * This will be removed in 6.0
+ */
+export interface ICalloutPositon extends IPosition {
+}
+
 export interface IPoint {
   x: number;
   y: number;
@@ -106,9 +124,17 @@ export interface IPositionDirectionalHintData {
   isAuto?: boolean;
 }
 
+/**
+ * @deprecated Do not use this will be removed in 6.0.
+ * Use IPositionDirectionalHintData instead
+ */
+export interface IPositionedData extends IPositionDirectionalHintData {
+
+}
+
 export interface IRelativePositions {
-  calloutPosition: IPosition;
-  beakPosition: { position: IPosition | undefined; display: 'block' };
+  calloutPosition: ICalloutPositon;
+  beakPosition: { position: IPosition | undefined, display: 'block' };
   directionalClassName: string;
   submenuDirection: DirectionalHint;
 }

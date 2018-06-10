@@ -18,7 +18,7 @@ export const IsFocusVisibleClassName = 'ms-Fabric--isFocusVisible';
  * @param window
  */
 export function initializeFocusRects(window?: Window): void {
-  const win = (window || getWindow()) as Window & { __hasInitializeFocusRects__: boolean };
+  const win = (window || getWindow()) as (Window & { __hasInitializeFocusRects__: boolean });
 
   if (win && !win.__hasInitializeFocusRects__) {
     win.__hasInitializeFocusRects__ = true;

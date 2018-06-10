@@ -1,9 +1,15 @@
 import { IStyle, ITheme } from '../../Styling';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { IPoint, IRectangle, IStyleFunctionOrObject } from '../../Utilities';
+import {
+  IPoint,
+  IRectangle
+} from '../../Utilities';
 import { ICalloutPositionedInfo } from '../../utilities/positioning';
+import { IStyleFunction } from '../../Utilities';
 
-export interface ICallout {}
+export interface ICallout {
+
+}
 
 export interface ICalloutProps {
   /**
@@ -67,22 +73,29 @@ export interface ICalloutProps {
   minPagePadding?: number;
 
   /**
+   * If true use a point rather than rectangle to position the Callout.
+   * For example it can be used to position based on a click.
+   * @deprecated Use 'target' instead
+   */
+  useTargetPoint?: boolean;
+
+  /**
+   * Point used to position the Callout
+   * @deprecated Use 'target' instead
+   */
+  targetPoint?: IPoint;
+
+  /**
    * If true then the beak is visible. If false it will not be shown.
    * @default true
    */
   isBeakVisible?: boolean;
 
   /**
-   * If true then the callout will not dismiss on scroll
+   * If true then the onClose will not not dismiss on scroll
    * @default false
    */
   preventDismissOnScroll?: boolean;
-
-  /**
-   * If true then the callout will not dismiss when it loses focus
-   * @default false
-   */
-  preventDismissOnLostFocus?: boolean;
 
   /**
    * If true the position returned will have the menu element cover the target.
@@ -163,6 +176,12 @@ export interface ICalloutProps {
   setInitialFocus?: boolean;
 
   /**
+    * Deprecated at v0.59.1, to be removed at >= v1.0.0. Pass in a beakWidth to dictate size.
+    * @deprecated
+    */
+  beakStyle?: string;
+
+  /**
    * Set max height of callout
    * When not set the callout will expand with contents up to the bottom of the screen
    */
@@ -181,7 +200,7 @@ export interface ICalloutProps {
   /**
    * Optional styles for the component.
    */
-  styles?: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
+  getStyles?: IStyleFunction<ICalloutContentStyleProps, ICalloutContentStyles>;
 
   /**
    * If specified, renders the Callout in a hidden state.
@@ -205,8 +224,8 @@ export interface ICalloutContentStyleProps {
   calloutWidth?: number;
 
   /**
-   * CSS class to apply to the callout.
-   */
+ * CSS class to apply to the callout.
+ */
   className?: string;
 
   /**
@@ -221,6 +240,12 @@ export interface ICalloutContentStyleProps {
   overflowYHidden?: boolean;
 
   /**
+   * @deprecated will be removed in v6. Do not use.
+   * Max height applied to the content of a callout.
+   */
+  contentMaxHeight?: number;
+
+  /**
    * Background color for the beak and callout.
    */
   backgroundColor?: string;
@@ -229,6 +254,12 @@ export interface ICalloutContentStyleProps {
    * Width of Callout beak
    */
   beakWidth?: number;
+
+  /**
+    * Deprecated at v0.59.1, to be removed at >= v1.0.0. Pass in a beakWidth to dictate size.
+    * @deprecated
+    */
+  beakStyle?: string;
 }
 
 export interface ICalloutContentStyles {
@@ -238,22 +269,22 @@ export interface ICalloutContentStyles {
   container: IStyle;
 
   /**
-   * Style for callout container root element.
-   */
+  * Style for callout container root element.
+  */
   root: IStyle;
 
   /**
-   * Style for callout beak.
-   */
+  * Style for callout beak.
+  */
   beak: IStyle;
 
   /**
-   * Style for callout beak curtain.
-   */
+  * Style for callout beak curtain.
+  */
   beakCurtain: IStyle;
 
   /**
-   * Style for content component of the callout.
-   */
+  * Style for content component of the callout.
+  */
   calloutMain: IStyle;
 }

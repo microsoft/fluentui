@@ -21,14 +21,14 @@ const commandProps: IButtonProps = {
     items: [
       {
         key: 'emailMessage',
-        text: 'Email message',
+        name: 'Email message',
         iconProps: {
           iconName: 'Mail'
         }
       },
       {
         key: 'calendarEvent',
-        text: 'Calendar event',
+        name: 'Calendar event',
         iconProps: {
           iconName: 'Calendar'
         }

@@ -1,4 +1,4 @@
-import { IRawStyle } from '@uifabric/merge-styles';
+import { IRawStyle } from '@uifabric/merge-styles/lib/index';
 
 export const hiddenContentStyle: IRawStyle = {
   position: 'absolute',

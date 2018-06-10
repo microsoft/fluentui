@@ -1,7 +1,14 @@
 import * as React from 'react';
 import { TextField } from '../TextField';
-import { ITextField, ITextFieldProps } from '../TextField.types';
-import { autobind, BaseComponent, KeyCodes } from '../../../Utilities';
+import {
+  ITextField,
+  ITextFieldProps
+} from '../TextField.types';
+import {
+  autobind,
+  BaseComponent,
+  KeyCodes,
+} from '../../../Utilities';
 
 import {
   clearNext,
@@ -14,7 +21,7 @@ import {
   IMaskValue,
   insertString,
   parseMask
-} from './inputMask';
+} from '@uifabric/utilities/lib/inputMask';
 
 /**
  * props.mask:
@@ -58,7 +65,7 @@ enum inputChangeType {
 export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextFieldState> implements ITextField {
   public static defaultProps: ITextFieldProps = {
     maskChar: DEFAULT_MASK_CHAR,
-    maskFormat: DEFAULT_MASK_FORMAT_CHARS
+    maskFormat: DEFAULT_MASK_FORMAT_CHARS,
   };
   /**
    * Tell BaseComponent to bypass resolution of componentRef.
@@ -74,9 +81,9 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
 
   // The stored selection data prior to input change events.
   private _changeSelectionData: {
-    changeType: inputChangeType;
-    selectionStart: number;
-    selectionEnd: number;
+    changeType: inputChangeType
+    selectionStart: number,
+    selectionEnd: number
   } | null;
 
   constructor(props: ITextFieldProps) {
@@ -91,7 +98,10 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
     this._moveCursorOnMouseUp = false;
 
     this.state = {
-      displayValue: getMaskDisplay(props.mask, this._maskCharData, props.maskChar)
+      displayValue: getMaskDisplay(
+        props.mask,
+        this._maskCharData,
+        props.maskChar),
     };
   }
 
@@ -99,7 +109,10 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
     if (newProps.mask !== this.props.mask) {
       this._maskCharData = parseMask(newProps.mask, newProps.maskFormat);
       this.state = {
-        displayValue: getMaskDisplay(newProps.mask, this._maskCharData, newProps.maskChar)
+        displayValue: getMaskDisplay(
+          newProps.mask,
+          this._maskCharData,
+          newProps.maskChar),
       };
     }
   }
@@ -114,17 +127,17 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
   public render() {
     return (
       <TextField
-        {...this.props}
-        onFocus={this._onFocus}
-        onBlur={this._onBlur}
-        onMouseDown={this._onMouseDown}
-        onMouseUp={this._onMouseUp}
-        onChanged={this._onInputChange}
-        onBeforeChange={this._onBeforeChange}
-        onKeyDown={this._onKeyDown}
-        onPaste={this._onPaste}
-        value={this.state.displayValue}
-        ref={this._resolveRef('_textField')}
+        { ...this.props }
+        onFocus={ this._onFocus }
+        onBlur={ this._onBlur }
+        onMouseDown={ this._onMouseDown }
+        onMouseUp={ this._onMouseUp }
+        onChanged={ this._onInputChange }
+        onBeforeChange={ this._onBeforeChange }
+        onKeyDown={ this._onKeyDown }
+        onPaste={ this._onPaste }
+        value={ this.state.displayValue }
+        ref={ this._resolveRef('_textField') }
       />
     );
   }
@@ -151,7 +164,8 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
     let valueIndex = 0,
       charDataIndex = 0;
 
-    while (valueIndex < newValue.length && charDataIndex < this._maskCharData.length) {
+    while (valueIndex < newValue.length &&
+      charDataIndex < this._maskCharData.length) {
       // Test if the next character in the new value fits the next format character
       const testVal = newValue[valueIndex];
       if (this._maskCharData[charDataIndex].format.test(testVal)) {
@@ -192,13 +206,17 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
 
   @autobind
   private _onFocus(event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) {
-    if (this.props.onFocus) {
-      this.props.onFocus(event);
+    const {
+      onFocus
+    } = this.props;
+
+    if (onFocus) {
+      onFocus(event);
     }
 
     this._isFocused = true;
 
-    // Move the cursor position to the leftmost unfilled position
+    // Move the cursor position to the rightmost unfilled position
     for (let i = 0; i < this._maskCharData.length; i++) {
       if (!this._maskCharData[i].value) {
         this.setState({
@@ -211,8 +229,12 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
 
   @autobind
   private _onBlur(event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) {
-    if (this.props.onBlur) {
-      this.props.onBlur(event);
+    const {
+      onBlur
+    } = this.props;
+
+    if (onBlur) {
+      onBlur(event);
     }
 
     this._isFocused = false;
@@ -221,10 +243,6 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
 
   @autobind
   private _onMouseDown(event: React.MouseEvent<HTMLInputElement>) {
-    if (this.props.onMouseDown) {
-      this.props.onMouseDown(event);
-    }
-
     if (!this._isFocused) {
       this._moveCursorOnMouseUp = true;
     }
@@ -232,10 +250,6 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
 
   @autobind
   private _onMouseUp(event: React.MouseEvent<HTMLInputElement>) {
-    if (this.props.onMouseUp) {
-      this.props.onMouseUp(event);
-    }
-
     // Move the cursor on mouseUp after focusing the textField
     if (this._moveCursorOnMouseUp) {
       this._moveCursorOnMouseUp = false;
@@ -253,10 +267,6 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
 
   @autobind
   private _onBeforeChange(value: String) {
-    if (this.props.onBeforeChange) {
-      this.props.onBeforeChange(value);
-    }
-
     if (this._changeSelectionData === null) {
       this._changeSelectionData = {
         changeType: inputChangeType.default,
@@ -268,10 +278,6 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
 
   @autobind
   private _onInputChange(value: string) {
-    if (this.props.onChanged) {
-      this.props.onChanged(value);
-    }
-
     if (!this._changeSelectionData) {
       return;
     }
@@ -280,7 +286,11 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
 
     // The initial value of cursorPos does not matter
     let cursorPos = 0;
-    const { changeType, selectionStart, selectionEnd } = this._changeSelectionData;
+    const {
+      changeType,
+      selectionStart,
+      selectionEnd
+    } = this._changeSelectionData;
 
     if (changeType === inputChangeType.textPasted) {
       const charsSelected = selectionEnd - selectionStart,
@@ -293,17 +303,16 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
         this._maskCharData = clearRange(this._maskCharData, selectionStart, charsSelected);
       }
       cursorPos = insertString(this._maskCharData, startPos, pastedString);
-    } else if (changeType === inputChangeType.delete || changeType === inputChangeType.backspace) {
+    } else if (changeType === inputChangeType.delete ||
+      changeType === inputChangeType.backspace) {
       // isDel is true If the characters are removed LTR, otherwise RTL
       const isDel = changeType === inputChangeType.delete,
         charCount = selectionEnd - selectionStart;
 
-      if (charCount) {
-        // charCount is > 0 if range was deleted
+      if (charCount) { // charCount is > 0 if range was deleted
         this._maskCharData = clearRange(this._maskCharData, selectionStart, charCount);
         cursorPos = getRightFormatIndex(this._maskCharData, selectionStart);
-      } else {
-        // If charCount === 0, there was no selection and a single character was deleted
+      } else { // If charCount === 0, there was no selection and a single character was deleted
         if (isDel) {
           this._maskCharData = clearNext(this._maskCharData, selectionStart);
           cursorPos = getRightFormatIndex(this._maskCharData, selectionStart);
@@ -338,20 +347,23 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
     this._changeSelectionData = null;
 
     this.setState({
-      displayValue: getMaskDisplay(this.props.mask, this._maskCharData, this.props.maskChar),
+      displayValue: getMaskDisplay(
+        this.props.mask,
+        this._maskCharData,
+        this.props.maskChar),
       maskCursorPosition: cursorPos
     });
   }
 
   @autobind
   private _onKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
-    if (this.props.onKeyDown) {
-      this.props.onKeyDown(event);
-    }
-
     this._changeSelectionData = null;
     if (this._textField.value) {
-      const { keyCode, ctrlKey, metaKey } = event;
+      const {
+        keyCode,
+        ctrlKey,
+        metaKey
+      } = event;
 
       // Ignore ctrl and meta keydown
       if (ctrlKey || metaKey) {
@@ -364,15 +376,15 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
           selectionEnd = (event.target as HTMLInputElement).selectionEnd;
 
         // Check if backspace or delete press is valid.
-        if (
-          !(keyCode === KeyCodes.backspace && selectionEnd && selectionEnd > 0) &&
-          !(keyCode === KeyCodes.del && selectionStart !== null && selectionStart < this._textField.value.length)
-        ) {
+        if (!(keyCode === KeyCodes.backspace && selectionEnd && selectionEnd > 0)
+          && !(keyCode === KeyCodes.del && selectionStart !== null && selectionStart < this._textField.value.length)) {
           return;
         }
 
         this._changeSelectionData = {
-          changeType: keyCode === KeyCodes.backspace ? inputChangeType.backspace : inputChangeType.delete,
+          changeType: keyCode === KeyCodes.backspace ?
+            inputChangeType.backspace :
+            inputChangeType.delete,
           selectionStart: selectionStart !== null ? selectionStart : -1,
           selectionEnd: selectionEnd !== null ? selectionEnd : -1
         };
@@ -382,10 +394,6 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
 
   @autobind
   private _onPaste(event: React.ClipboardEvent<HTMLInputElement>) {
-    if (this.props.onPaste) {
-      this.props.onPaste(event);
-    }
-
     const selectionStart = (event.target as HTMLInputElement).selectionStart,
       selectionEnd = (event.target as HTMLInputElement).selectionEnd;
     // Store the paste selection range

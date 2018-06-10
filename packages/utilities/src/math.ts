@@ -68,7 +68,12 @@ export interface IFitContentToBoundsOptions {
  * @param options the options for the bounds fit operation
  */
 export function fitContentToBounds(options: IFitContentToBoundsOptions): ISize {
-  const { contentSize, boundsSize, mode = 'contain', maxScale = 1 } = options;
+  const {
+    contentSize,
+    boundsSize,
+    mode = 'contain',
+    maxScale = 1
+  } = options;
 
   const contentAspectRatio = contentSize.width / contentSize.height;
   const boundsAspectRatio = boundsSize.width / boundsSize.height;

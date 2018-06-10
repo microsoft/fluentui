@@ -6,8 +6,7 @@ const path = require('path');
   'temp',
   'dist',
   'lib-amd',
-  'lib-commonjs',
-  'lib-es2015', // Keep this in clean for actually cleaning up legacy content.
+  'lib-es2015',
   'coverage',
   'src/**/*.scss.ts'
 ].forEach(folder => {

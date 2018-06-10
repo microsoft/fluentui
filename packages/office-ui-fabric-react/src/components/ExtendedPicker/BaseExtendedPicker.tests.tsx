@@ -28,30 +28,25 @@ function onResolveSuggestions(text: string): ISimple[] {
     'violet',
     'white',
     'yellow'
-  ]
-    .filter((tag: string) => tag.toLowerCase().indexOf(text.toLowerCase()) === 0)
-    .map((item: string) => ({ key: item, name: item }));
+  ].filter((tag: string) => tag.toLowerCase().indexOf(text.toLowerCase()) === 0).map(((item: string) => ({ key: item, name: item })));
 }
 
-const BasePickerWithType = BaseFloatingPicker as new (props: IBaseFloatingPickerProps<ISimple>) => BaseFloatingPicker<
-  ISimple,
-  IBaseFloatingPickerProps<ISimple>
->;
+const BasePickerWithType = BaseFloatingPicker as new (props: IBaseFloatingPickerProps<ISimple>)
+  => BaseFloatingPicker<ISimple, IBaseFloatingPickerProps<ISimple>>;
 
-const BaseSelectedItemsListWithType = BaseSelectedItemsList as new (
-  props: IBaseSelectedItemsListProps<ISimple>
-) => BaseSelectedItemsList<ISimple, IBaseSelectedItemsListProps<ISimple>>;
+const BaseSelectedItemsListWithType = BaseSelectedItemsList as new (props: IBaseSelectedItemsListProps<ISimple>)
+  => BaseSelectedItemsList<ISimple, IBaseSelectedItemsListProps<ISimple>>;
 
 const basicSuggestionRenderer = (props: ISimple) => {
-  return <div> {props.name} </div>;
+  return <div> { props.name } </div>;
 };
 
 const basicItemRenderer = (props: ISelectedItemProps<ISimple>) => {
-  return <div> {props.name} </div>;
+  return <div> { props.name } </div>;
 };
 
 const basicRenderFloatingPicker = (props: IBaseFloatingPickerProps<ISimple>) => {
-  return <BasePickerWithType {...props} />;
+  return <BasePickerWithType { ...props } />;
 };
 
 const basicRenderSelectedItemsList = (props: IBaseSelectedItemsListProps<ISimple>) => {
@@ -77,17 +72,16 @@ export type TypedBaseExtendedPicker = BaseExtendedPicker<ISimple, IBaseExtendedP
 
 describe('Pickers', () => {
   describe('BasePicker', () => {
-    const BaseExtendedPickerWithType = BaseExtendedPicker as new (
-      props: IBaseExtendedPickerProps<ISimple>
-    ) => BaseExtendedPicker<ISimple, IBaseExtendedPickerProps<ISimple>>;
+    const BaseExtendedPickerWithType = BaseExtendedPicker as new (props: IBaseExtendedPickerProps<ISimple>)
+      => BaseExtendedPicker<ISimple, IBaseExtendedPickerProps<ISimple>>;
 
     it('renders BaseExtendedPicker correctly', () => {
       const component = renderer.create(
         <BaseExtendedPickerWithType
-          floatingPickerProps={floatingPickerProps}
-          selectedItemsListProps={selectedItemsListProps}
-          onRenderSelectedItems={basicRenderSelectedItemsList}
-          onRenderFloatingPicker={basicRenderFloatingPicker}
+          floatingPickerProps={ floatingPickerProps }
+          selectedItemsListProps={ selectedItemsListProps }
+          onRenderSelectedItems={ basicRenderSelectedItemsList }
+          onRenderFloatingPicker={ basicRenderFloatingPicker }
         />
       );
       const tree = component.toJSON();
@@ -100,10 +94,10 @@ describe('Pickers', () => {
 
       const picker: TypedBaseExtendedPicker = ReactDOM.render(
         <BaseExtendedPickerWithType
-          floatingPickerProps={floatingPickerProps}
-          selectedItemsListProps={selectedItemsListProps}
-          onRenderSelectedItems={basicRenderSelectedItemsList}
-          onRenderFloatingPicker={basicRenderFloatingPicker}
+          floatingPickerProps={ floatingPickerProps }
+          selectedItemsListProps={ selectedItemsListProps }
+          onRenderSelectedItems={ basicRenderSelectedItemsList }
+          onRenderFloatingPicker={ basicRenderFloatingPicker }
         />,
         root
       ) as TypedBaseExtendedPicker;
@@ -129,10 +123,10 @@ describe('Pickers', () => {
 
       const picker: TypedBaseExtendedPicker = ReactDOM.render(
         <BaseExtendedPickerWithType
-          floatingPickerProps={floatingPickerProps}
-          selectedItemsListProps={selectedItemsListProps}
-          onRenderSelectedItems={basicRenderSelectedItemsList}
-          onRenderFloatingPicker={basicRenderFloatingPicker}
+          floatingPickerProps={ floatingPickerProps }
+          selectedItemsListProps={ selectedItemsListProps }
+          onRenderSelectedItems={ basicRenderSelectedItemsList }
+          onRenderFloatingPicker={ basicRenderFloatingPicker }
         />,
         root
       ) as TypedBaseExtendedPicker;
@@ -156,10 +150,10 @@ describe('Pickers', () => {
 
       const picker: TypedBaseExtendedPicker = ReactDOM.render(
         <BaseExtendedPickerWithType
-          floatingPickerProps={floatingPickerProps}
-          selectedItemsListProps={selectedItemsListProps}
-          onRenderSelectedItems={basicRenderSelectedItemsList}
-          onRenderFloatingPicker={basicRenderFloatingPicker}
+          floatingPickerProps={ floatingPickerProps }
+          selectedItemsListProps={ selectedItemsListProps }
+          onRenderSelectedItems={ basicRenderSelectedItemsList }
+          onRenderFloatingPicker={ basicRenderFloatingPicker }
         />,
         root
       ) as TypedBaseExtendedPicker;

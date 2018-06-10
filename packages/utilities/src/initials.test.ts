@@ -38,7 +38,7 @@ describe('getInitials', () => {
   });
 
   it('calculates an expected initials in LTR with multiple parentheses, extra spaces, and unwanted characters', () => {
-    let result = getInitials(' !@#$%^&*()=+ (Alpha) David   (The man) `~<>,./?[]{}|   Goff   (Gamma)    ', false);
+    let result = getInitials(' !@#$%^&*()=+ (Alpha) David   (The man) `~<>,./?[]{}|\   Goff   (Gamma)    ', false);
     expect(result).toEqual('DG');
   });
 

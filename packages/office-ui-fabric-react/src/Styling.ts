@@ -1,1 +1,1 @@
-export * from '@uifabric/styling';
+export * from '@uifabric/styling/lib/index';

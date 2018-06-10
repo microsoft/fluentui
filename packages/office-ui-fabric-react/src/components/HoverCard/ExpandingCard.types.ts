@@ -4,7 +4,9 @@ import { IRenderFunction } from '../../Utilities';
 import { IStyle, ITheme } from '../../Styling';
 import { DirectionalHint } from '../../common/DirectionalHint';
 
-export interface IExpandingCard {}
+export interface IExpandingCard {
+
+}
 
 /**
  * ExpandingCard component props.

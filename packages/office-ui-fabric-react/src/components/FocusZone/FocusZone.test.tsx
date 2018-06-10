@@ -13,12 +13,10 @@ describe('FocusZone', () => {
     lastFocusedElement = ev.target;
   }
 
-  function setupElement(
-    element: HTMLElement,
-    {
-      clientRect,
-      isVisible = true
-    }: {
+  function setupElement(element: HTMLElement, {
+    clientRect,
+    isVisible = true
+  }: {
       clientRect: {
         top: number;
         left: number;
@@ -26,8 +24,7 @@ describe('FocusZone', () => {
         right: number;
       };
       isVisible?: boolean;
-    }
-  ): void {
+    }): void {
     element.getBoundingClientRect = () => ({
       top: clientRect.top,
       left: clientRect.left,
@@ -48,11 +45,11 @@ describe('FocusZone', () => {
 
   it('can use arrows vertically', () => {
     const component = ReactTestUtils.renderIntoDocument(
-      <div {...{ onFocusCapture: _onFocus }}>
-        <FocusZone direction={FocusZoneDirection.vertical}>
-          <button className="a">a</button>
-          <button className="b">b</button>
-          <button className="c">c</button>
+      <div { ...{ onFocusCapture: _onFocus } }>
+        <FocusZone direction={ FocusZoneDirection.vertical }>
+          <button className='a'>a</button>
+          <button className='b'>b</button>
+          <button className='c'>c</button>
         </FocusZone>
       </div>
     );
@@ -145,10 +142,10 @@ describe('FocusZone', () => {
 
   it('can ignore arrowing if default is prevented', () => {
     const component = ReactTestUtils.renderIntoDocument(
-      <div {...{ onFocusCapture: _onFocus }}>
-        <FocusZone direction={FocusZoneDirection.vertical}>
-          <button className="a">a</button>
-          <button className="b">b</button>
+      <div { ...{ onFocusCapture: _onFocus } }>
+        <FocusZone direction={ FocusZoneDirection.vertical }>
+          <button className='a'>a</button>
+          <button className='b'>b</button>
         </FocusZone>
       </div>
     );
@@ -188,11 +185,11 @@ describe('FocusZone', () => {
 
   it('can use arrows horizontally', () => {
     const component = ReactTestUtils.renderIntoDocument(
-      <div {...{ onFocusCapture: _onFocus }}>
-        <FocusZone direction={FocusZoneDirection.horizontal}>
-          <button className="a">a</button>
-          <button className="b">b</button>
-          <button className="c">c</button>
+      <div { ...{ onFocusCapture: _onFocus } }>
+        <FocusZone direction={ FocusZoneDirection.horizontal }>
+          <button className='a'>a</button>
+          <button className='b'>b</button>
+          <button className='c'>c</button>
         </FocusZone>
       </div>
     );
@@ -284,14 +281,14 @@ describe('FocusZone', () => {
 
   it('can use arrows bidirectionally', () => {
     const component = ReactTestUtils.renderIntoDocument(
-      <div {...{ onFocusCapture: _onFocus }}>
+      <div { ...{ onFocusCapture: _onFocus } }>
         <FocusZone>
-          <button className="a">a</button>
-          <button className="b">b</button>
-          <button className="c">c</button>
-          <button className="hidden">hidden</button>
-          <button className="d">d</button>
-          <button className="e">e</button>
+          <button className='a'>a</button>
+          <button className='b'>b</button>
+          <button className='c'>c</button>
+          <button className='hidden'>hidden</button>
+          <button className='d'>d</button>
+          <button className='e'>e</button>
         </FocusZone>
       </div>
     );
@@ -398,12 +395,12 @@ describe('FocusZone', () => {
 
   it('can use arrows bidirectionally with data-no-vertical-wrap', () => {
     const component = ReactTestUtils.renderIntoDocument(
-      <div {...{ onFocusCapture: _onFocus }}>
-        <FocusZone checkForNoWrap={true} data-no-vertical-wrap={true}>
-          <button className="a">a</button>
-          <button className="b">b</button>
-          <button className="c">c</button>
-          <button className="d">d</button>
+      <div { ...{ onFocusCapture: _onFocus } }>
+        <FocusZone checkForNoWrap={ true } data-no-vertical-wrap={ true }>
+          <button className='a'>a</button>
+          <button className='b'>b</button>
+          <button className='c'>c</button>
+          <button className='d'>d</button>
         </FocusZone>
       </div>
     );
@@ -504,12 +501,12 @@ describe('FocusZone', () => {
 
   it('can use arrows bidirectionally with data-no-horizontal-wrap', () => {
     const component = ReactTestUtils.renderIntoDocument(
-      <div {...{ onFocusCapture: _onFocus }}>
-        <FocusZone checkForNoWrap={true} data-no-horizontal-wrap={true}>
-          <button className="a">a</button>
-          <button className="b">b</button>
-          <button className="c">c</button>
-          <button className="d">d</button>
+      <div { ...{ onFocusCapture: _onFocus } }>
+        <FocusZone checkForNoWrap={ true } data-no-horizontal-wrap={ true }>
+          <button className='a'>a</button>
+          <button className='b'>b</button>
+          <button className='c'>c</button>
+          <button className='d'>d</button>
         </FocusZone>
       </div>
     );
@@ -622,12 +619,12 @@ describe('FocusZone', () => {
 
   it('can reset alignment on mouse down', () => {
     const component = ReactTestUtils.renderIntoDocument(
-      <div {...{ onFocusCapture: _onFocus }}>
+      <div { ...{ onFocusCapture: _onFocus } }>
         <FocusZone>
-          <button className="a">a</button>
-          <button className="b">b</button>
-          <button className="c">c</button>
-          <button className="d">d</button>
+          <button className='a'>a</button>
+          <button className='b'>b</button>
+          <button className='c'>c</button>
+          <button className='d'>d</button>
         </FocusZone>
       </div>
     );
@@ -707,12 +704,12 @@ describe('FocusZone', () => {
 
   it('can use arrows bidirectionally with data-no-horizontal-wrap and data-no-vertical-wrap', () => {
     const component = ReactTestUtils.renderIntoDocument(
-      <div {...{ onFocusCapture: _onFocus }}>
-        <FocusZone checkForNoWrap={true} data-no-horizontal-wrap={true} data-no-vertical-wrap={true}>
-          <button className="a">a</button>
-          <button className="b">b</button>
-          <button className="c">c</button>
-          <button className="d">d</button>
+      <div { ...{ onFocusCapture: _onFocus } }>
+        <FocusZone checkForNoWrap={ true } data-no-horizontal-wrap={ true } data-no-vertical-wrap={ true }>
+          <button className='a'>a</button>
+          <button className='b'>b</button>
+          <button className='c'>c</button>
+          <button className='d'>d</button>
         </FocusZone>
       </div>
     );
@@ -817,13 +814,11 @@ describe('FocusZone', () => {
 
   it('correctly skips data-not-focusable elements', () => {
     const component = ReactTestUtils.renderIntoDocument(
-      <div {...{ onFocusCapture: _onFocus }}>
+      <div { ...{ onFocusCapture: _onFocus } }>
         <FocusZone>
-          <button className="a">a</button>
-          <button className="b" data-not-focusable={false}>
-            b
-          </button>
-          <button className="c">c</button>
+          <button className='a'>a</button>
+          <button className='b' data-not-focusable={ false }>b</button>
+          <button className='c'>c</button>
         </FocusZone>
       </div>
     );
@@ -881,16 +876,24 @@ describe('FocusZone', () => {
   });
 
   it('skips subzone elements until manually entered', () => {
-    const isInnerZoneKeystroke = (e: React.KeyboardEvent<HTMLElement>): boolean => e.which === KeyCodes.enter;
+    const isInnerZoneKeystroke = (e: React.KeyboardEvent<HTMLElement>): boolean =>
+      e.which === KeyCodes.enter;
 
     const component = ReactTestUtils.renderIntoDocument(
-      <div {...{ onFocusCapture: _onFocus }}>
-        <FocusZone direction={FocusZoneDirection.horizontal} isInnerZoneKeystroke={isInnerZoneKeystroke}>
-          <button className="a">a</button>
-          <div className="b" data-is-focusable={true} data-is-sub-focuszone={true}>
-            <button className="bsub">bsub</button>
+      <div { ...{ onFocusCapture: _onFocus } }>
+        <FocusZone
+          direction={ FocusZoneDirection.horizontal }
+          isInnerZoneKeystroke={ isInnerZoneKeystroke }
+        >
+          <button className='a'>a</button>
+          <div
+            className='b'
+            data-is-focusable={ true }
+            data-is-sub-focuszone={ true }
+          >
+            <button className='bsub'>bsub</button>
           </div>
-          <button className="c">c</button>
+          <button className='c'>c</button>
         </FocusZone>
       </div>
     );
@@ -963,16 +966,24 @@ describe('FocusZone', () => {
   });
 
   it('skips child focusZone elements until manually entered', () => {
-    const isInnerZoneKeystroke = (e: React.KeyboardEvent<HTMLElement>): boolean => e.which === KeyCodes.enter;
+    const isInnerZoneKeystroke = (e: React.KeyboardEvent<HTMLElement>): boolean =>
+      e.which === KeyCodes.enter;
 
     const component = ReactTestUtils.renderIntoDocument(
-      <div {...{ onFocusCapture: _onFocus }}>
-        <FocusZone direction={FocusZoneDirection.horizontal} isInnerZoneKeystroke={isInnerZoneKeystroke}>
-          <button className="a">a</button>
-          <FocusZone direction={FocusZoneDirection.horizontal} className="b" data-is-focusable={true}>
-            <button className="bsub">bsub</button>
+      <div { ...{ onFocusCapture: _onFocus } }>
+        <FocusZone
+          direction={ FocusZoneDirection.horizontal }
+          isInnerZoneKeystroke={ isInnerZoneKeystroke }
+        >
+          <button className='a'>a</button>
+          <FocusZone
+            direction={ FocusZoneDirection.horizontal }
+            className='b'
+            data-is-focusable={ true }
+          >
+            <button className='bsub'>bsub</button>
           </FocusZone>
-          <button className="c">c</button>
+          <button className='c'>c</button>
         </FocusZone>
       </div>
     );
@@ -1049,29 +1060,11 @@ describe('FocusZone', () => {
     let buttonA: any;
     let buttonB: any;
     const component = ReactTestUtils.renderIntoDocument(
-      <div {...{ onFocusCapture: _onFocus }}>
-        <textarea className="t" />
-        <FocusZone
-          ref={focus => {
-            focusZone = focus;
-          }}
-        >
-          <button
-            className="a"
-            ref={button => {
-              buttonA = button;
-            }}
-          >
-            a
-          </button>
-          <button
-            className="b"
-            ref={button => {
-              buttonB = button;
-            }}
-          >
-            b
-          </button>
+      <div { ...{ onFocusCapture: _onFocus } }>
+        <textarea className='t' />
+        <FocusZone ref={ (focus) => { focusZone = focus; } }>
+          <button className='a' ref={ (button) => { buttonA = button; } }>a</button>
+          <button className='b' ref={ (button) => { buttonB = button; } }>b</button>
         </FocusZone>
       </div>
     );
@@ -1117,28 +1110,10 @@ describe('FocusZone', () => {
     let buttonA: HTMLButtonElement | null = null;
     let buttonB: HTMLButtonElement | null = null;
     const component = ReactTestUtils.renderIntoDocument(
-      <div {...{ onFocusCapture: _onFocus }}>
-        <FocusZone
-          ref={focus => {
-            focusZone = focus;
-          }}
-        >
-          <button
-            className="a"
-            ref={button => {
-              buttonA = button;
-            }}
-          >
-            a
-          </button>
-          <button
-            className="b"
-            ref={button => {
-              buttonB = button;
-            }}
-          >
-            b
-          </button>
+      <div { ...{ onFocusCapture: _onFocus } }>
+        <FocusZone ref={ (focus) => { focusZone = focus; } }>
+          <button className='a' ref={ (button) => { buttonA = button; } }>a</button>
+          <button className='b' ref={ (button) => { buttonB = button; } }>b</button>
         </FocusZone>
       </div>
     );
@@ -1196,13 +1171,13 @@ describe('FocusZone', () => {
   it('Changes our focus to the next button when we hit tab when focus zone allow tabbing', () => {
     const tabDownListener = jest.fn();
     const component = ReactTestUtils.renderIntoDocument(
-      <div {...{ onFocusCapture: _onFocus, onKeyDown: tabDownListener }}>
-        <FocusZone {...{ handleTabKey: FocusZoneTabbableElements.all, isCircularNavigation: true }}>
-          <button className="a">a</button>
-          <button className="b">b</button>
-          <button className="c">c</button>
+      <div { ...{ onFocusCapture: _onFocus, onKeyDown: tabDownListener } }>
+        <FocusZone { ...{ handleTabKey: FocusZoneTabbableElements.all, isCircularNavigation: true } }>
+          <button className='a'>a</button>
+          <button className='b'>b</button>
+          <button className='c'>c</button>
         </FocusZone>
-      </div>
+      </div >
     );
 
     const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance)!.firstChild as Element;
@@ -1278,11 +1253,11 @@ describe('FocusZone', () => {
     const tabDownListener = jest.fn();
 
     const component = ReactTestUtils.renderIntoDocument(
-      <div {...{ onFocusCapture: _onFocus, onKeyDown: tabDownListener }}>
+      <div { ...{ onFocusCapture: _onFocus, onKeyDown: tabDownListener } }>
         <FocusZone>
-          <button className="a">a</button>
+          <button className='a'>a</button>
         </FocusZone>
-      </div>
+      </div >
     );
 
     const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance)!.firstChild as Element;
@@ -1313,12 +1288,12 @@ describe('FocusZone', () => {
   it('should stay in input box with arrow keys and exit with tab', () => {
     const tabDownListener = jest.fn();
     const component = ReactTestUtils.renderIntoDocument(
-      <div {...{ onFocusCapture: _onFocus, onKeyDown: tabDownListener }}>
-        <FocusZone {...{ handleTabKey: FocusZoneTabbableElements.inputOnly, isCircularNavigation: false }}>
-          <input type="text" className="a" />
-          <button className="b">b</button>
+      <div { ...{ onFocusCapture: _onFocus, onKeyDown: tabDownListener } }>
+        <FocusZone { ...{ handleTabKey: FocusZoneTabbableElements.inputOnly, isCircularNavigation: false } }>
+          <input type='text' className='a' />
+          <button className='b'>b</button>
         </FocusZone>
-      </div>
+      </div >
     );
 
     const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance)!.firstChild as Element;
@@ -1371,20 +1346,12 @@ describe('FocusZone', () => {
   it('focus should leave input box when arrow keys are pressed when tabbing is supported but shouldInputLoseFocusOnArrowKey callback method return true', () => {
     const tabDownListener = jest.fn();
     const component = ReactTestUtils.renderIntoDocument(
-      <div {...{ onFocusCapture: _onFocus, onKeyDown: tabDownListener }}>
-        <FocusZone
-          {...{
-            handleTabKey: FocusZoneTabbableElements.all,
-            isCircularNavigation: false,
-            shouldInputLoseFocusOnArrowKey: element => {
-              return true;
-            }
-          }}
-        >
-          <input type="text" className="a" />
-          <button className="b">b</button>
+      <div { ...{ onFocusCapture: _onFocus, onKeyDown: tabDownListener } }>
+        <FocusZone { ...{ handleTabKey: FocusZoneTabbableElements.all, isCircularNavigation: false, shouldInputLoseFocusOnArrowKey: (element) => { return true; } } }>
+          <input type='text' className='a' />
+          <button className='b'>b</button>
         </FocusZone>
-      </div>
+      </div >
     );
 
     const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance)!.firstChild as Element;

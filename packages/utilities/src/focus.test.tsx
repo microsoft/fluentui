@@ -17,12 +17,12 @@ function renderIntoDocument(element: React.ReactElement<{}>): HTMLElement {
 
 function _initialize(): void {
   _hiddenElement = renderIntoDocument(
-    <div data-is-visible={false}>
+    <div data-is-visible={ false }>
       <button />
     </div>
   ) as HTMLElement;
   _visibleElement = renderIntoDocument(
-    <div data-is-visible={true}>
+    <div data-is-visible={ true }>
       <button />
     </div>
   ) as HTMLElement;
@@ -48,9 +48,11 @@ describe('isElementVisible', () => {
   it('returns true if data-is-visible is undefined but element is visible', () => {
     expect(isElementVisible(_element)).toEqual(true);
   });
+
 });
 
 describe('isElementTabbable', () => {
+
   it('returns false on null', () => {
     expect(isElementVisible(null)).toEqual(false);
   });
@@ -67,6 +69,7 @@ describe('isElementTabbable', () => {
     button.setAttribute('disabled', 'true');
 
     expect(isElementTabbable(button)).toEqual(false);
+
   });
 
   it('returns true on buttons', () => {
@@ -117,6 +120,7 @@ describe('isElementTabbable', () => {
 
     expect(isElementTabbable(button)).toEqual(false);
   });
+
 });
 
 describe('focusAsync', () => {
@@ -130,9 +134,9 @@ describe('focusAsync', () => {
   it('focuses on an item on the next frame', () => {
     const component = renderIntoDocument(
       <div>
-        <button className="a">a</button>
-        <button className="b">b</button>
-        <button className="c">c</button>
+        <button className='a'>a</button>
+        <button className='b'>b</button>
+        <button className='c'>c</button>
       </div>
     );
 
@@ -160,7 +164,7 @@ describe('focusAsync', () => {
   it('can focus a component which implements focus()', () => {
     let calledFocus = false;
     const fakeComponent = {
-      focus: () => (calledFocus = true)
+      focus: () => calledFocus = true
     };
 
     focusAsync(fakeComponent);

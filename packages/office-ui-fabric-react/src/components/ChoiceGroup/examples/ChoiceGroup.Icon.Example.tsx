@@ -5,8 +5,8 @@ export class ChoiceGroupIconExample extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
       <ChoiceGroup
-        label="Pick one icon"
-        options={[
+        label='Pick one icon'
+        options={ [
           {
             key: 'day',
             iconProps: { iconName: 'CalendarDay' },
@@ -23,7 +23,7 @@ export class ChoiceGroupIconExample extends React.Component<any, any> {
             text: 'Month',
             disabled: true
           }
-        ]}
+        ] }
       />
     );
   }

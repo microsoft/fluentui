@@ -4,7 +4,9 @@ import { TooltipDelay, ITooltipProps } from './Tooltip.types';
 import { ICalloutProps } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 
-export interface ITooltipHost {}
+export interface ITooltipHost {
+
+}
 
 export enum TooltipOverflowMode {
   /** Only show tooltip if parent DOM element is overflowing */

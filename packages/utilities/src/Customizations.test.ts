@@ -1,4 +1,6 @@
-import { Customizations } from './Customizations';
+import {
+  Customizations
+} from './Customizations';
 
 describe('Customizations', () => {
   beforeEach(() => {

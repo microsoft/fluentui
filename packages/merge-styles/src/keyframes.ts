@@ -19,9 +19,14 @@ export function keyframes(timeline: { [key: string]: {} }): string {
   }
   const rules = rulesArray.join('');
 
-  stylesheet.insertRule(`@keyframes ${name}{${rules}}`, true);
+  stylesheet.insertRule(`@keyframes ${name}{${rules}}`);
 
-  stylesheet.cacheClassName(name, rules, [], ['keyframes', rules]);
+  stylesheet.cacheClassName(
+    name,
+    rules,
+    [],
+    ['keyframes', rules]
+  );
 
   return name;
 }

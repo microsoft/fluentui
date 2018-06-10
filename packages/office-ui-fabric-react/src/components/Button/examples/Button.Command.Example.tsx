@@ -7,34 +7,34 @@ export class ButtonCommandExample extends React.Component<IButtonProps, {}> {
 
     return (
       <div>
-        <div style={{ display: 'flex', alignItems: 'stretch', height: '40px' }}>
+        <div style={ { display: 'flex', alignItems: 'stretch', height: '40px' } }>
           <CommandButton
-            data-automation-id="test"
-            disabled={disabled}
-            checked={checked}
-            iconProps={{ iconName: 'Add' }}
-            text="Create account"
-            menuProps={{
+            data-automation-id='test'
+            disabled={ disabled }
+            checked={ checked }
+            iconProps={ { iconName: 'Add' } }
+            text='Create account'
+            menuProps={ {
               items: [
                 {
                   key: 'emailMessage',
-                  text: 'Email message',
-                  iconProps: { iconName: 'Mail' }
+                  name: 'Email message',
+                  icon: 'Mail'
                 },
                 {
                   key: 'calendarEvent',
-                  text: 'Calendar event',
-                  iconProps: { iconName: 'Calendar' }
+                  name: 'Calendar event',
+                  icon: 'Calendar'
                 }
               ]
-            }}
+            } }
           />
           <CommandButton
-            data-automation-id="test2"
-            disabled={disabled}
-            checked={checked}
-            iconProps={{ iconName: 'Mail' }}
-            text="Send Mail"
+            data-automation-id='test2'
+            disabled={ disabled }
+            checked={ checked }
+            iconProps={ { iconName: 'Mail' } }
+            text='Send Mail'
           />
         </div>
       </div>

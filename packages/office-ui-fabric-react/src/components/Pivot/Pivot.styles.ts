@@ -1,12 +1,21 @@
 import { IPivotStyleProps, IPivotStyles } from './Pivot.types';
-import { normalize, FontSizes, FontWeights } from '../../Styling';
+import {
+  normalize,
+  FontSizes,
+  FontWeights,
+} from '../../Styling';
 
-export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
-  const { className, theme } = props;
+export const getStyles = (
+  props: IPivotStyleProps
+): IPivotStyles => {
+  const {
+    className,
+    theme,
+  } = props;
 
   const { palette } = theme;
 
-  return {
+  return ({
     root: [
       'ms-Pivot',
       normalize,
@@ -15,21 +24,40 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
         fontWeight: FontWeights.regular,
         position: 'relative',
         color: palette.themePrimary,
-        whiteSpace: 'nowrap'
+        whiteSpace: 'nowrap',
       },
       className
     ],
 
-    links: ['ms-Pivot-links', {}],
+    links: [
+      'ms-Pivot-links',
+      {}
+    ],
 
-    link: ['ms-Pivot-link', {}],
+    link: [
+      'ms-Pivot-link',
+      {}
+    ],
 
-    text: ['ms-Pivot-text', {}],
+    text: [
+      'ms-Pivot-text',
+      {}
+    ],
 
-    count: ['ms-Pivot-count', {}],
+    count: [
+      'ms-Pivot-count',
+      {}
+    ],
 
-    icon: ['ms-Pivot-icon', {}],
+    icon: [
+      'ms-Pivot-icon',
+      {}
+    ],
 
-    ellipsis: ['ms-Pivot-ellipsis', {}]
-  };
+    ellipsis: [
+      'ms-Pivot-ellipsis',
+      {}
+    ],
+
+  });
 };

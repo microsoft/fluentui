@@ -1,5 +1,5 @@
 {
-  "npmVersion": "5.4.0",
+  "npmVersion": "5.3.0",
   "rushVersion": "4.3.0",
   "repository": {
     "url": "https://github.com/OfficeDev/office-ui-fabric-react.git"
@@ -13,21 +13,10 @@
       "shouldPublish": true
     },
     {
-      "packageName": "@uifabric/webpack-utils",
-      "projectFolder": "packages/webpack-utils",
-      "shouldPublish": true
-    },
-    {
       "packageName": "@uifabric/experiments",
       "projectFolder": "packages/experiments",
       "versionPolicyName": "lockedMajor",
       "shouldPublish": true
-    },
-    {
-      "packageName": "@uifabric/charting",
-      "projectFolder": "packages/charting",
-      "versionPolicyName": "lockedMajor",
-      "shouldPublish": false
     },
     {
       "packageName": "@uifabric/merge-styles",
@@ -108,11 +97,6 @@
     {
       "packageName": "todo-app",
       "projectFolder": "apps/todo-app",
-      "shouldPublish": false
-    },
-    {
-      "packageName": "server-rendered-app",
-      "projectFolder": "apps/server-rendered-app",
       "shouldPublish": false
     },
     {

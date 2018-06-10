@@ -25,9 +25,7 @@ export default class DataProvider implements IDataProvider {
   /**
    * The items store in the local. It only contains the data recently fetched from server.
    */
-  public get items(): Array<ITodoItem> {
-    return this._items;
-  }
+  public get items(): Array<ITodoItem> { return this._items; }
   public set items(value: Array<ITodoItem>) {
     this._items = value;
     this._emitChange();
@@ -36,9 +34,7 @@ export default class DataProvider implements IDataProvider {
   /**
    * Whether there is unfinished server request currently.
    */
-  public get isLoading(): boolean {
-    return this._isLoading;
-  }
+  public get isLoading(): boolean { return this._isLoading; }
   public set isLoading(value: boolean) {
     this._isLoading = value;
     this._emitChange();
@@ -81,7 +77,7 @@ export default class DataProvider implements IDataProvider {
   public createItem(title: string): Promise<ITodoItem[]> {
     this.isLoading = true;
 
-    return new Promise<ITodoItem[]>(resolve => {
+    return new Promise<ITodoItem[]>((resolve) => {
       const newItem: ITodoItem = {
         id: this._generateGuid(),
         title: title,
@@ -100,8 +96,9 @@ export default class DataProvider implements IDataProvider {
    * Delete a item from the list through data provider.
    */
   public deleteItem(delItem: ITodoItem): Promise<ITodoItem[]> {
-    return new Promise<ITodoItem[]>(resolve => {
-      this.items = this.items.filter((item: ITodoItem) => item.id !== delItem.id);
+    return new Promise<ITodoItem[]>((resolve) => {
+      this.items =
+        this.items.filter((item: ITodoItem) => item.id !== delItem.id);
       resolve(this.items);
     });
   }
@@ -118,7 +115,11 @@ export default class DataProvider implements IDataProvider {
     });
 
     return new Promise<ITodoItem[]>((resolve, reject) => {
-      const index: number = findIndex(this.items, (current: ITodoItem) => current.id === newItem.id);
+      const index: number =
+        findIndex(
+          this.items,
+          (current: ITodoItem) => current.id === newItem.id
+        );
       if (index !== -1) {
         this.items[index] = newItem;
         this.items = this.items.slice(0);
@@ -158,13 +159,15 @@ export default class DataProvider implements IDataProvider {
   }
 
   private _generateGuid(): string {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
-      // tslint:disable-next-line:no-bitwise
-      const r = (Math.random() * 16) | 0;
-      // tslint:disable-next-line:no-bitwise
-      const v = c === 'x' ? r : (r & 0x3) | 0x8;
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(
+      /[xy]/g,
+      (c) => {
+        // tslint:disable-next-line:no-bitwise
+        const r = Math.random() * 16 | 0;
+        // tslint:disable-next-line:no-bitwise
+        const v = c === 'x' ? r : (r & 0x3 | 0x8);
 
-      return v.toString(16);
-    });
+        return v.toString(16);
+      });
   }
 }

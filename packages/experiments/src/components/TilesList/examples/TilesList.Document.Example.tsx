@@ -1,6 +1,13 @@
+
 import * as React from 'react';
-import { TilesList, ITilesGridItem, ITilesGridSegment } from '@uifabric/experiments/lib/TilesList';
-import { Tile, ShimmerTile } from '@uifabric/experiments/lib/Tile';
+import {
+  TilesList,
+  ITilesGridItem,
+  ITilesGridSegment
+} from '@uifabric/experiments/lib/TilesList';
+import {
+  Tile
+} from '@uifabric/experiments/lib/Tile';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { Selection, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
@@ -14,7 +21,11 @@ import {
   createShimmerGroups
 } from './ExampleHelpers';
 import { ISize } from '@uifabric/experiments/lib/Utilities';
-import { ShimmerElementType as ElemType, ShimmerElementsGroup } from '@uifabric/experiments/lib/Shimmer';
+import {
+  ShimmerTile,
+  ShimmerElementType as ElemType,
+  getRenderedElements
+} from '@uifabric/experiments/lib/Shimmer';
 
 const HEADER_VERTICAL_PADDING = 13;
 const HEADER_FONT_SIZE = 18;
@@ -39,9 +50,9 @@ const GROUPS = createGroups();
 
 const SHIMMER_GROUPS = createShimmerGroups('document', 0);
 
-const ITEMS = ([] as IExampleItem[]).concat(...GROUPS.map((group: { items: IExampleItem[] }) => group.items));
+const ITEMS = ([] as IExampleItem[]).concat(...GROUPS.map((group: { items: IExampleItem[]; }) => group.items));
 
-declare class TilesListClass extends TilesList<IExampleItem> {}
+declare class TilesListClass extends TilesList<IExampleItem> { }
 
 const TilesListType: typeof TilesListClass = TilesList;
 
@@ -55,10 +66,7 @@ export interface ITilesListDocumentExampleProps {
   tileSize: 'large' | 'small';
 }
 
-export class TilesListDocumentExample extends React.Component<
-  ITilesListDocumentExampleProps,
-  ITilesListDocumentExampleState
-> {
+export class TilesListDocumentExample extends React.Component<ITilesListDocumentExampleProps, ITilesListDocumentExampleState> {
   private _selection: Selection;
 
   constructor(props: ITilesListDocumentExampleProps) {
@@ -110,24 +118,31 @@ export class TilesListDocumentExample extends React.Component<
   public render(): JSX.Element {
     return (
       // tslint:disable-next-line:jsx-ban-props
-      <div style={{ padding: '4px' }}>
+      <div style={ { padding: '4px' } }>
         <Toggle
-          label="Enable Modal Selection"
-          checked={this.state.isModalSelection}
-          onChanged={this._onToggleIsModalSelection}
-          onText="Modal"
-          offText="Normal"
+          label='Enable Modal Selection'
+          checked={ this.state.isModalSelection }
+          onChanged={ this._onToggleIsModalSelection }
+          onText='Modal'
+          offText='Normal'
         />
         <Toggle
-          label="Load Data Switch"
-          checked={this.state.isDataLoaded}
-          onChanged={this._onToggleIsDataLoaded}
-          onText="Loaded"
-          offText="Loading..."
+          label='Load Data Switch'
+          checked={ this.state.isDataLoaded }
+          onChanged={ this._onToggleIsDataLoaded }
+          onText='Loaded'
+          offText='Loading...'
         />
-        <MarqueeSelection selection={this._selection}>
-          <SelectionZone selection={this._selection} onItemInvoked={this._onItemInvoked} enterModalOnTouch={true}>
-            <TilesListType role="list" items={this.state.cells} />
+        <MarqueeSelection selection={ this._selection }>
+          <SelectionZone
+            selection={ this._selection }
+            onItemInvoked={ this._onItemInvoked }
+            enterModalOnTouch={ true }
+          >
+            <TilesListType
+              role='list'
+              items={ this.state.cells }
+            />
           </SelectionZone>
         </MarqueeSelection>
       </div>
@@ -136,7 +151,7 @@ export class TilesListDocumentExample extends React.Component<
 
   private _onToggleIsModalSelection = (checked: boolean): void => {
     this._selection.setModal(checked);
-  };
+  }
 
   private _onToggleIsDataLoaded = (checked: boolean): void => {
     const { tileSize } = this.props;
@@ -160,22 +175,22 @@ export class TilesListDocumentExample extends React.Component<
 
     this.setState({
       isDataLoaded: !isDataLoaded,
-      cells: cells
+      cells: cells,
     });
-  };
+  }
 
   private _onSelectionChange = (): void => {
     this.setState({
       isModalSelection: this._selection.isModal()
     });
-  };
+  }
 
   private _onItemInvoked = (item: IExampleItem, index: number, event: Event): void => {
     event.stopPropagation();
     event.preventDefault();
 
     alert(`Invoked item '${item.name}'`);
-  };
+  }
 
   private _onRenderDocumentCell = (item: IExampleItem): JSX.Element => {
     const { tileSize } = this.props;
@@ -183,71 +198,81 @@ export class TilesListDocumentExample extends React.Component<
 
     return (
       <Tile
-        role="listitem"
-        aria-setsize={ITEMS.length}
-        aria-posinset={item.index}
-        className={AnimationClassNames.fadeIn400}
-        selection={this._selection}
-        selectionIndex={item.index}
-        invokeSelection={true}
+        role='listitem'
+        aria-setsize={ ITEMS.length }
+        aria-posinset={ item.index }
+        className={ AnimationClassNames.fadeIn400 }
+        selection={ this._selection }
+        selectionIndex={ item.index }
+        invokeSelection={ true }
         foreground={
           <img
-            src={`https://spoprod-a.akamaihd.net/files/odsp-next-prod_2018-04-06_20180406.004/odsp-media/images/itemtypes/${imgSize}/docx.png`}
-            style={{
-              display: 'block',
-              width: `${imgSize}px`,
-              height: `${imgSize}px`,
-              margin: tileSize === 'large' ? '16px' : '7px'
-            }}
+            src={
+              `https://spoprod-a.akamaihd.net/files/odsp-next-prod_2018-04-06_20180406.004/odsp-media/images/itemtypes/${imgSize}/docx.png`
+            }
+            style={
+              {
+                display: 'block',
+                width: `${imgSize}px`,
+                height: `${imgSize}px`,
+                margin: tileSize === 'large' ? '16px' : '7px'
+              }
+            }
           />
         }
-        showForegroundFrame={true}
-        itemName={item.name}
-        itemActivity={item.key}
-        tileSize={tileSize}
+        showForegroundFrame={ true }
+        itemName={ item.name }
+        itemActivity={ item.key }
+        tileSize={ tileSize }
       />
     );
-  };
+  }
 
   private _onRenderShimmerCell = (item: IExampleItem, finalSize: ISize): JSX.Element => {
     const { tileSize } = this.props;
 
     return (
       <ShimmerTile
-        contentSize={finalSize}
-        itemName={true}
-        itemActivity={true}
-        itemThumbnail={true}
-        tileSize={tileSize}
+        contentSize={ finalSize }
+        itemName={ true }
+        itemActivity={ true }
+        itemThumbnail={ true }
+        tileSize={ tileSize }
       />
     );
-  };
+  }
 
   private _onRenderHeader = (item: IExampleItem): JSX.Element => {
     return (
       <div
-        role="presentation"
+        role='presentation'
         // tslint:disable-next-line:jsx-ban-props
-        style={{
-          padding: `${HEADER_VERTICAL_PADDING}px 0`,
-          fontSize: `${HEADER_FONT_SIZE}px`,
-          fontWeight: 700,
-          lineHeight: `${HEADER_FONT_SIZE}px`
-        }}
+        style={
+          {
+            padding: `${HEADER_VERTICAL_PADDING}px 0`,
+            fontSize: `${HEADER_FONT_SIZE}px`,
+            fontWeight: 700,
+            lineHeight: `${HEADER_FONT_SIZE}px`
+          }
+        }
       >
-        {item.name}
+        { item.name }
       </div>
     );
-  };
+  }
 
   private _onRenderShimmerHeader = (item: IExampleItem): JSX.Element => {
     return (
-      <ShimmerElementsGroup
-        shimmerElements={[
-          { type: ElemType.line, height: HEADER_FONT_SIZE, widthInPercentage: 100 }, // gap is given to maintain height
-          { type: ElemType.gap, height: HEADER_VERTICAL_PADDING * 2 + HEADER_FONT_SIZE, widthInPixel: 0 }
-        ]}
-      />
+      <div>
+        {
+          getRenderedElements(
+            [
+              { type: ElemType.line, height: HEADER_FONT_SIZE, widthInPercentage: 100 },
+            ],
+            HEADER_VERTICAL_PADDING * 2 + HEADER_FONT_SIZE
+          )
+        }
+      </div>
     );
-  };
+  }
 }

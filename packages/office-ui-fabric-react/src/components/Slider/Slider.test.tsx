@@ -10,6 +10,7 @@ import { getStyles } from './Slider.styles';
 import { ISlider } from './Slider.types';
 
 describe('Slider', () => {
+
   it('renders Slider correctly', () => {
     const component = renderer.create(<Slider />);
     const tree = component.toJSON();
@@ -17,7 +18,9 @@ describe('Slider', () => {
   });
 
   it('renders a slider', () => {
-    const component = ReactTestUtils.renderIntoDocument<SliderBase>(<SliderBase styles={getStyles} label="slider" />);
+    const component = ReactTestUtils.renderIntoDocument<SliderBase>(
+      <SliderBase getStyles={ getStyles } label='slider' />
+    );
     const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
     const labelElement = renderedDOM.querySelector('.ms-Label') as HTMLElement;
 
@@ -30,7 +33,10 @@ describe('Slider', () => {
       changedValue = val;
     };
     const component = ReactTestUtils.renderIntoDocument<SliderBase>(
-      <SliderBase styles={getStyles} onChange={onChange} />
+      <SliderBase
+        getStyles={ getStyles }
+        onChange={ onChange }
+      />
     );
 
     const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
@@ -66,7 +72,9 @@ describe('Slider', () => {
   });
 
   it('has type=button on all buttons', () => {
-    const component = ReactTestUtils.renderIntoDocument<SliderBase>(<SliderBase styles={getStyles} />);
+    const component = ReactTestUtils.renderIntoDocument<SliderBase>(
+      <SliderBase getStyles={ getStyles } />
+    );
 
     const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
     const allButtons = renderedDOM.querySelectorAll('button');
@@ -82,21 +90,16 @@ describe('Slider', () => {
     let slider: ISlider | null;
 
     ReactTestUtils.renderIntoDocument<SliderBase>(
-      <SliderBase
-        styles={getStyles}
-        label="slider"
-        defaultValue={12}
-        min={0}
-        max={100}
-        // tslint:disable-next-line:jsx-no-lambda
-        componentRef={s => (slider = s)}
-      />
+      // tslint:disable-next-line:jsx-no-lambda
+      <SliderBase getStyles={ getStyles } label='slider' defaultValue={ 12 } min={ 0 } max={ 100 } componentRef={ s => slider = s } />
     );
     expect(slider!.value).toEqual(12);
   });
 
   it('renders correct aria-valuetext', () => {
-    let component = ReactTestUtils.renderIntoDocument<SliderBase>(<SliderBase styles={getStyles} />);
+    let component = ReactTestUtils.renderIntoDocument<SliderBase>(
+      <SliderBase getStyles={ getStyles } />
+    );
     let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
     let button = renderedDOM.querySelector('.ms-Slider-slideBox') as HTMLElement;
     let ariaValueText = button.getAttribute('aria-valuetext');
@@ -108,7 +111,11 @@ describe('Slider', () => {
     const getTextValue = (value: number) => values[value];
 
     component = ReactTestUtils.renderIntoDocument<SliderBase>(
-      <SliderBase styles={getStyles} value={selected} ariaValueText={getTextValue} />
+      <SliderBase
+        getStyles={ getStyles }
+        value={ selected }
+        ariaValueText={ getTextValue }
+      />
     );
     renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
     button = renderedDOM.querySelector('.ms-Slider-slideBox') as HTMLElement;

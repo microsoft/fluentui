@@ -1,4 +1,6 @@
-import { styled } from '../../Utilities';
+import {
+  styled
+} from '../../Utilities';
 import { ColorPickerGridCellBase } from './ColorPickerGridCell.base';
 import { IColorPickerGridCellProps } from './ColorPickerGridCell.types';
 import { getStyles } from './ColorPickerGridCell.styles';

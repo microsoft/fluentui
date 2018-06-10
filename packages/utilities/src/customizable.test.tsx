@@ -4,9 +4,9 @@ import { customizable } from './customizable';
 import { Customizations } from './Customizations';
 
 @customizable('Foo', ['field'])
-class Foo extends React.Component<{ field?: string }, {}> {
+class Foo extends React.Component<{ field?: string; }, {}> {
   public render(): JSX.Element {
-    return <div>{this.props.field}</div>;
+    return <div>{ this.props.field }</div>;
   }
 }
 
@@ -35,6 +35,7 @@ describe('customizable', () => {
   it('can accept props over global/scoped values', () => {
     Customizations.applySettings({ field: 'globalName' });
     Customizations.applyScopedSettings('Foo', { field: 'scopedName' });
-    expect(ReactDOM.renderToStaticMarkup(<Foo field="name" />)).toEqual('<div>name</div>');
+    expect(ReactDOM.renderToStaticMarkup(<Foo field='name' />)).toEqual('<div>name</div>');
   });
+
 });

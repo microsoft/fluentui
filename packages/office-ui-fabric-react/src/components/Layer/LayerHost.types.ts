@@ -1,6 +1,8 @@
 import * as React from 'react';
 
-export interface ILayerHost {}
+export interface ILayerHost {
+
+}
 
 export interface ILayerHostProps extends React.HTMLAttributes<HTMLElement> {
   /**

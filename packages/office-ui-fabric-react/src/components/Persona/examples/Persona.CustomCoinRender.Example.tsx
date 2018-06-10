@@ -20,29 +20,34 @@ const examplePersona: IPersonaSharedProps = {
 };
 
 export class PersonaCustomCoinRenderExample extends React.Component {
+
   public render(): JSX.Element {
     return (
-      <div className="ms-PersonaExample">
-        <div className={exampleStyles.exampleLabel}>Custom functional element in place of persona coin's image</div>
+      <div className='ms-PersonaExample'>
+        <div className={ exampleStyles.exampleLabel }>Custom functional element in place of persona coin's image</div>
         <Persona
-          {...examplePersona}
-          size={PersonaSize.size72}
-          presence={PersonaPresence.online}
-          onRenderCoin={this._onRenderCoin}
-          imageAlt={'Custom Coin Image'}
-          coinSize={72}
+          { ...examplePersona }
+          size={ PersonaSize.size72 }
+          presence={ PersonaPresence.online }
+          onRenderCoin={ this._onRenderCoin }
+          imageAlt={ 'Custom Coin Image' }
+          coinSize={ 72 }
         />
       </div>
     );
   }
 
   private _onRenderCoin = (props: IPersonaProps): JSX.Element => {
-    const { coinSize, imageUrl, imageAlt } = props;
+    const {
+      coinSize,
+      imageUrl,
+      imageAlt,
+    } = props;
 
     return (
-      <div className="customExampleCoin">
-        <img src={imageUrl} alt={imageAlt} width={coinSize} height={coinSize} />
+      <div className='customExampleCoin'>
+        <img src={ imageUrl } alt={ imageAlt } width={ coinSize } height={ coinSize } />
       </div>
     );
-  };
+  }
 }

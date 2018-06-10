@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { SliderBase } from './Slider.base';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IStyleFunction } from '../../Utilities';
 
 export interface ISlider {
   value: number | undefined;
@@ -19,7 +19,7 @@ export interface ISliderProps extends React.Props<SliderBase> {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: IStyleFunctionOrObject<ISliderStyleProps, ISliderStyles>;
+  getStyles?: IStyleFunction<ISliderStyleProps, ISliderStyles>;
 
   /**
    * Theme provided by High-Order Component.
@@ -92,8 +92,8 @@ export interface ISliderProps extends React.Props<SliderBase> {
   disabled?: boolean;
 
   /**
-   * Optional className to attach to the slider root element.
-   */
+  * Optional className to attach to the slider root element.
+  */
   className?: string;
 
   /**

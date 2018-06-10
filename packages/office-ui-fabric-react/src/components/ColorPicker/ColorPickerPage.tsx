@@ -1,39 +1,51 @@
 import * as React from 'react';
+import {
+  ExampleCard,
+  IComponentDemoPageProps,
+  ComponentPage,
+  PropertiesTableSet,
+  PageMarkdown,
+} from '@uifabric/example-app-base';
 import { ColorPickerBasicExample } from './examples/ColorPicker.Basic.Example';
-import { DemoPage } from '../../demo/components/DemoPage';
-import { IDemoPageProps } from '../../demo/components/DemoPage.types';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { ColorPickerStatus } from './ColorPicker.checklist';
 
 const ColorPickerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ColorPicker/examples/ColorPicker.Basic.Example.tsx') as string;
-export const ColorPickerPageProps: IDemoPageProps = {
-  title: 'ColorPicker',
-  componentName: 'ColorPicker',
-  componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ColorPicker',
-  componentStatus: ColorPickerStatus,
-  examples: [
-    {
-      title: 'Default ColorPicker',
-      code: ColorPickerBasicExampleCode,
-      view: <ColorPickerBasicExample />
-    }
-  ],
-  propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/ColorPicker/ColorPicker.types.ts'),
-    require<
-      string
-    >('!raw-loader!office-ui-fabric-react/src/components/ColorPicker/ColorRectangle/ColorRectangle.types.ts'),
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/ColorPicker/ColorSlider/ColorSlider.types.ts')
-  ],
-  overview: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/ColorPicker/docs/ColorPickerOverview.md'),
-  bestPractices: '',
-  dos: '',
-  donts: '',
-  isHeaderVisible: true
-};
 
-export const ColorPickerPage = (props: { isHeaderVisible: boolean }) => (
-  <DemoPage {...{ ...ColorPickerPageProps, ...props }} />
-);
+export class ColorPickerPage extends React.Component<IComponentDemoPageProps, {}> {
+  public render(): JSX.Element {
+    return (
+      <ComponentPage
+        title='ColorPicker'
+        componentName='ColorPickerExample'
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ColorPicker'
+        exampleCards={
+          <ExampleCard
+            title='Default ColorPicker'
+            code={ ColorPickerBasicExampleCode }
+          >
+            <ColorPickerBasicExample />
+          </ExampleCard>
+        }
+        propertiesTables={
+          <PropertiesTableSet
+            sources={ [
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/ColorPicker/ColorPicker.types.ts')
+            ] }
+          />
+        }
+        overview={
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/ColorPicker/docs/ColorPickerOverview.md') }
+          </PageMarkdown>
+        }
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            { ...ColorPickerStatus }
+          />
+        }
+      />
+    );
+  }
+}

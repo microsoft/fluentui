@@ -1,4 +1,4 @@
-import { IRawStyle } from '@uifabric/merge-styles';
+import { IRawStyle } from '@uifabric/merge-styles/lib/index';
 
 /**
  * All Fabric standard animations, exposed as json objects referencing predefined

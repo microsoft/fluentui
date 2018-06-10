@@ -10,9 +10,9 @@ export class BlogPage extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
       <div>
-        <PageHeader pageTitle="Blog" backgroundColor="#73aa24" />
-        <div className={styles.angle} />
-        {this._getBlogItems()}
+        <PageHeader pageTitle='Blog' backgroundColor='#73aa24' />
+        <div className={ styles.angle } />
+        { this._getBlogItems() }
       </div>
     );
   }
@@ -23,14 +23,13 @@ export class BlogPage extends React.Component<any, any> {
     for (let i = 0; i < blogData.length; i++) {
       array.push(
         <BlogItem
-          title={blogData[i].title}
-          author={blogData[i].author}
-          previewDescription={blogData[i].previewDescription}
-          monthPublished={blogData[i].monthPublished}
-          dayPublished={blogData[i].dayPublished}
-          yearPublished={blogData[i].yearPublished}
-          id={i}
-        />
+          title={ blogData[i].title }
+          author={ blogData[i].author }
+          previewDescription={ blogData[i].previewDescription }
+          monthPublished={ blogData[i].monthPublished }
+          dayPublished={ blogData[i].dayPublished }
+          yearPublished={ blogData[i].yearPublished }
+          id={ i } />
       );
     }
     return array;

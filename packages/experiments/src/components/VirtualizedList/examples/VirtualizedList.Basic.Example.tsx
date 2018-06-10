@@ -15,6 +15,7 @@ type ExampleList = new () => VirtualizedList<IItem>;
 const ExampleList: ExampleList = VirtualizedList as any;
 
 export class VirtualizedListBasicExample extends React.Component {
+
   constructor(props: {}) {
     super(props);
 
@@ -31,8 +32,12 @@ export class VirtualizedListBasicExample extends React.Component {
   public render(): JSX.Element {
     return (
       <div>
-        <ScrollContainer className={VirtualizedListExampleStylesModule.fixedHeight}>
-          <ExampleList items={items} itemHeight={30} onRenderItem={this._renderItem} />
+        <ScrollContainer className={ VirtualizedListExampleStylesModule.fixedHeight }>
+          <ExampleList
+            items={ items }
+            itemHeight={ 30 }
+            onRenderItem={ this._renderItem }
+          />
         </ScrollContainer>
       </div>
     );
@@ -41,9 +46,9 @@ export class VirtualizedListBasicExample extends React.Component {
   private _renderItem = (item: IItem, itemIndex: number): JSX.Element => {
     return (
       // tslint:disable-next-line:jsx-ban-props
-      <div key={item.key} style={{ height: 30 }}>
-        {item.key}
+      <div key={ item.key } style={ { height: 30 } }>
+        { item.key }
       </div>
     );
-  };
+  }
 }

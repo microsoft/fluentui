@@ -27,5 +27,4 @@ Products/sites affected: (if applicable)
 
 ### If applicable, please provide a codepen repro:
 
-<!-- See https://codepen.io/FabricReact/ for a starting template -->
 <!-- See http://codepen.io/dzearing/pens/public/?grid_type=list for a variety of examples -->

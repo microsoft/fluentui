@@ -16,6 +16,7 @@ describe('Layer', () => {
   });
 
   it('can render in a targeted LayerHost and pass context through', () => {
+
     class Child extends React.Component<{}, {}> {
       public static contextTypes = {
         foo: PropTypes.string.isRequired
@@ -24,7 +25,9 @@ describe('Layer', () => {
       public context: any;
 
       public render(): JSX.Element {
-        return <div id="child">{this.context.foo}</div>;
+        return (
+          <div id='child'>{ this.context.foo }</div>
+        );
       }
     }
 
@@ -41,8 +44,8 @@ describe('Layer', () => {
 
       public render(): JSX.Element {
         return (
-          <div id="parent">
-            <Layer hostId="foo">
+          <div id='parent'>
+            <Layer hostId='foo'>
               <Child />
             </Layer>
           </div>
@@ -51,11 +54,12 @@ describe('Layer', () => {
     }
 
     class App extends React.Component<{}, {}> {
+
       public render(): JSX.Element {
         return (
-          <div id="app">
+          <div id='app'>
             <Parent />
-            <LayerHost id="foo" />
+            <LayerHost id='foo' />
           </div>
         );
       }
@@ -80,4 +84,5 @@ describe('Layer', () => {
       appElement.remove();
     }
   });
+
 });

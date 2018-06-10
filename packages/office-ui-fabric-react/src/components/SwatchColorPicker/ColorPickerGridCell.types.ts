@@ -1,5 +1,5 @@
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IStyleFunction } from '../../Utilities';
 
 export interface IColorPickerGridCellProps {
   /**
@@ -8,8 +8,8 @@ export interface IColorPickerGridCellProps {
   item: IColorCellProps;
 
   /**
-   * Arbitrary unique string associated with this option
-   */
+ * Arbitrary unique string associated with this option
+ */
   id: string;
 
   /**
@@ -55,8 +55,8 @@ export interface IColorPickerGridCellProps {
   onClick?: (item: IColorCellProps) => void;
 
   /**
-   * Optional, the onHover handler
-   */
+ * Optional, the onHover handler
+ */
   onHover?: (item?: IColorCellProps) => void;
 
   /**
@@ -65,9 +65,9 @@ export interface IColorPickerGridCellProps {
   onFocus?: (item: IColorCellProps) => void;
 
   /**
-   * Optional styles for the component.
-   */
-  styles?: IStyleFunctionOrObject<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>;
+  * Optional styles for the component.
+  */
+  getStyles?: IStyleFunction<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>;
 
   /**
    * Optional, mouseEnter handler.
@@ -98,9 +98,10 @@ export interface IColorPickerGridCellProps {
 }
 
 export interface IColorCellProps {
+
   /**
-   * Arbitrary unique string associated with this option
-   */
+  * Arbitrary unique string associated with this option
+  */
   id: string;
 
   /**

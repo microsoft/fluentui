@@ -1,3 +1,4 @@
+
 import * as React from 'react';
 import { IBaseProps, ISize } from 'office-ui-fabric-react/lib/Utilities';
 import { TilesList } from './TilesList';
@@ -17,7 +18,7 @@ export interface ITilesGridItem<TItem> {
    * The desired dimensions of the item, used to compute aspect ratio.
    * If not provided, this is assumed to be a square equivalent to the current row height.
    */
-  desiredSize?: { width: number; height: number };
+  desiredSize?: { width: number; height: number; };
   /**
    * Set to true if the item is intended to be a placeholder
    */
@@ -26,7 +27,7 @@ export interface ITilesGridItem<TItem> {
    * Invoked to render the virtual DOM for the item.
    * This content will be rendered inside the cell allocated for the item.
    */
-  onRender: (content: TItem, finalSize?: ISize) => React.ReactNode | React.ReactNode[];
+  onRender: (content: TItem, finalSize?: ISize) => (React.ReactNode | React.ReactNode[]);
 }
 
 export const enum TilesGridMode {
@@ -99,10 +100,7 @@ export interface ITilesGridSegment<TItem> {
 
 export { ISize as ITileSize };
 
-export interface ITilesListProps<TItem>
-  extends IBaseProps,
-    React.Props<TilesList<TItem>>,
-    React.HTMLAttributes<HTMLDivElement> {
+export interface ITilesListProps<TItem> extends IBaseProps, React.Props<TilesList<TItem>>, React.HTMLAttributes<HTMLDivElement> {
   /**
    * An array of items to assign to the list.
    * This should be complete and not contain any holes.

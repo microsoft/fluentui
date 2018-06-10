@@ -1,7 +1,12 @@
-import { fontFace, IFontWeight } from '@uifabric/merge-styles';
-import { IFontStyles } from '../interfaces/index';
+import {
+  fontFace,
+  IFontWeight
+} from '@uifabric/merge-styles/lib/index';
+import {
+  IFontStyles
+} from '../interfaces/index';
 import { createFontStyles, FontWeights, LocalizedFontFamilies, LocalizedFontNames } from './fonts';
-import { getLanguage } from '@uifabric/utilities';
+import { getLanguage } from '@uifabric/utilities/lib/language';
 import { IFabricConfig } from '../interfaces/IFabricConfig';
 
 // Default urls.
@@ -10,14 +15,22 @@ const DefaultBaseUrl = 'https://static2.sharepointonline.com/files/fabric/assets
 // Standard font styling.
 export const DefaultFontStyles: IFontStyles = createFontStyles(getLanguage());
 
-function _registerFontFace(fontFamily: string, url: string, fontWeight?: IFontWeight, localFontName?: string): void {
+function _registerFontFace(
+  fontFamily: string,
+  url: string,
+  fontWeight?: IFontWeight,
+  localFontName?: string
+): void {
   fontFamily = `'${fontFamily}'`;
 
   const localFontSrc = localFontName !== undefined ? `local('${localFontName}'),` : '';
 
   fontFace({
     fontFamily,
-    src: localFontSrc + `url('${url}.woff2') format('woff2'),` + `url('${url}.woff') format('woff')`,
+    src:
+      localFontSrc +
+      `url('${url}.woff2') format('woff2'),` +
+      `url('${url}.woff') format('woff')`,
     fontWeight,
     fontStyle: 'normal'
   });
@@ -33,19 +46,9 @@ function _registerFontFaceSet(
   const urlBase = `${baseUrl}/${cdnFolder}/${cdnFontName}`;
 
   _registerFontFace(fontFamily, urlBase + '-light', FontWeights.light, localFontName && localFontName + ' Light');
-  _registerFontFace(
-    fontFamily,
-    urlBase + '-semilight',
-    FontWeights.semilight,
-    localFontName && localFontName + ' SemiLight'
-  );
+  _registerFontFace(fontFamily, urlBase + '-semilight', FontWeights.semilight, localFontName && localFontName + ' SemiLight');
   _registerFontFace(fontFamily, urlBase + '-regular', FontWeights.regular, localFontName);
-  _registerFontFace(
-    fontFamily,
-    urlBase + '-semibold',
-    FontWeights.semibold,
-    localFontName && localFontName + ' SemiBold'
-  );
+  _registerFontFace(fontFamily, urlBase + '-semibold', FontWeights.semibold, localFontName && localFontName + ' SemiBold');
 }
 
 export function registerDefaultFontFaces(baseUrl: string): void {
@@ -82,7 +85,7 @@ function _getFontBaseUrl(): string {
   // tslint:disable-next-line:no-string-literal no-any
   let fabricConfig: IFabricConfig = win ? win['FabricConfig'] : undefined;
 
-  return fabricConfig && fabricConfig.fontBaseUrl !== undefined ? fabricConfig.fontBaseUrl : DefaultBaseUrl;
+  return (fabricConfig && fabricConfig.fontBaseUrl !== undefined) ? fabricConfig.fontBaseUrl : DefaultBaseUrl;
 }
 
 /**

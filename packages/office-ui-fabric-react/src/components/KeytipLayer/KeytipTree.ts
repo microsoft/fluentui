@@ -34,6 +34,7 @@ export class KeytipTree {
    * @param persisted - T/F if this keytip should be marked as persisted
    */
   public addNode(keytipProps: IKeytipProps, uniqueID: string, persisted?: boolean): void {
+    const { keySequences, hasDynamicChildren, overflowSetSequence, hasMenu, onExecute, onReturn, disabled } = keytipProps;
     const fullSequence = this._getFullSequence(keytipProps);
     const nodeID = sequencesToID(fullSequence);
 
@@ -43,7 +44,8 @@ export class KeytipTree {
     const parentID = this._getParentID(fullSequence);
 
     // Create node and add to map
-    const node = this._createNode(nodeID, parentID, [], keytipProps, persisted);
+    const node = this._createNode(nodeID, keySequences, parentID, [], hasDynamicChildren, overflowSetSequence, hasMenu,
+      onExecute, onReturn, disabled, persisted);
     this.nodeMap[uniqueID] = node;
 
     // Try to add self to parents children, if they exist
@@ -185,12 +187,9 @@ export class KeytipTree {
    */
   public getNode(id: string): IKeytipTreeNode | undefined {
     const nodeMapValues = values<IKeytipTreeNode>(this.nodeMap);
-    return find(
-      nodeMapValues,
-      (node: IKeytipTreeNode): boolean => {
-        return node.id === id;
-      }
-    );
+    return find(nodeMapValues, (node: IKeytipTreeNode): boolean => {
+      return node.id === id;
+    });
   }
 
   /**
@@ -241,20 +240,16 @@ export class KeytipTree {
 
   private _createNode(
     id: string,
+    keySequences: string[],
     parentId: string,
     children: string[],
-    keytipProps: IKeytipProps,
-    persisted?: boolean
-  ): IKeytipTreeNode {
-    const {
-      keySequences,
-      hasDynamicChildren,
-      overflowSetSequence,
-      hasMenu,
-      onExecute,
-      onReturn,
-      disabled
-    } = keytipProps;
+    hasDynamicChildren?: boolean,
+    overflowSetSequence?: string[],
+    hasMenu?: boolean,
+    onExecute?: (el: HTMLElement) => void,
+    onReturn?: (el: HTMLElement) => void,
+    disabled?: boolean,
+    persisted?: boolean): IKeytipTreeNode {
     const node = {
       id,
       keySequences,

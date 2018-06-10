@@ -16,13 +16,7 @@ interface ITestValues {
 function positionCalloutTest(testValues: ITestValues, alignment: DirectionalHint, validate: ITestValidation): void {
   const { callout, target, bounds, beakWidth } = testValues;
   const gap: number = __positioningTestPackage._calculateActualBeakWidthInPixels(beakWidth) / 2;
-  const result: IElementPosition = __positioningTestPackage._positionElementWithinBounds(
-    callout,
-    target,
-    bounds,
-    __positioningTestPackage._getPositionData(alignment),
-    gap
-  );
+  const result: IElementPosition = __positioningTestPackage._positionElementWithinBounds(callout, target, bounds, __positioningTestPackage._getPositionData(alignment), gap);
 
   const beak = __positioningTestPackage._positionBeak(beakWidth, { ...result, targetRectangle: target });
 
@@ -40,24 +34,19 @@ function positionCalloutTest(testValues: ITestValues, alignment: DirectionalHint
 
 function validateNoBeakTest(testValues: ITestValues, alignment: DirectionalHint, validate: ITestValidation): void {
   const { callout, target, bounds, beakWidth } = testValues;
-  const result: IElementPosition = __positioningTestPackage._positionElementWithinBounds(
-    callout,
-    target,
-    bounds,
-    __positioningTestPackage._getPositionData(alignment),
-    beakWidth
-  );
+  const result: IElementPosition = __positioningTestPackage._positionElementWithinBounds(callout, target, bounds, __positioningTestPackage._getPositionData(alignment), beakWidth);
 
   expect(result.elementRectangle).toEqual(validate.callout);
 }
 
 describe('Callout Positioning', () => {
   it('Correctly positions the callout without beak', () => {
+
     const noBeakTestCase: ITestValues = {
       callout: new Rectangle(0, 300, 0, 300),
       target: new Rectangle(400, 800, 400, 800),
       bounds: new Rectangle(0, 1600, 0, 1600),
-      beakWidth: 0
+      beakWidth: 0,
     };
 
     const validateNoBeakBottomLeft: ITestValidation = {
@@ -83,40 +72,26 @@ describe('Callout Positioning', () => {
   });
 
   it('Correctly positions the callout with the beak', () => {
+
     const basicTestCase: ITestValues = {
       callout: new Rectangle(0, 300, 0, 300),
       target: new Rectangle(400, 800, 400, 800),
       bounds: new Rectangle(0, 1600, 0, 1600),
-      beakWidth: 16
+      beakWidth: 16,
     };
 
     const validateBottomLeft: ITestValidation = {
-      callout: new Rectangle(
-        400,
-        700,
-        800 + __positioningTestPackage._calculateActualBeakWidthInPixels(8),
-        1100 + __positioningTestPackage._calculateActualBeakWidthInPixels(8)
-      ),
+      callout: new Rectangle(400, 700, 800 + __positioningTestPackage._calculateActualBeakWidthInPixels(8), 1100 + __positioningTestPackage._calculateActualBeakWidthInPixels(8)),
       beak: new Rectangle(192, 208, -8, 8)
     };
 
     const validateBottomCenter: ITestValidation = {
-      callout: new Rectangle(
-        450,
-        750,
-        800 + __positioningTestPackage._calculateActualBeakWidthInPixels(8),
-        1100 + __positioningTestPackage._calculateActualBeakWidthInPixels(8)
-      ),
+      callout: new Rectangle(450, 750, 800 + __positioningTestPackage._calculateActualBeakWidthInPixels(8), 1100 + __positioningTestPackage._calculateActualBeakWidthInPixels(8)),
       beak: new Rectangle(142, 158, -8, 8)
     };
 
     const validateBottomRight: ITestValidation = {
-      callout: new Rectangle(
-        500,
-        800,
-        800 + __positioningTestPackage._calculateActualBeakWidthInPixels(8),
-        1100 + __positioningTestPackage._calculateActualBeakWidthInPixels(8)
-      ),
+      callout: new Rectangle(500, 800, 800 + __positioningTestPackage._calculateActualBeakWidthInPixels(8), 1100 + __positioningTestPackage._calculateActualBeakWidthInPixels(8)),
       beak: new Rectangle(92, 108, -8, 8)
     };
 
@@ -131,8 +106,8 @@ describe('Callout Positioning', () => {
     const getMaxHeight = __positioningTestPackage._getMaxHeightFromTargetRectangle;
     let targetTop;
     let targetBot;
-    const targetRight = (targetBot = 20);
-    const targetLeft = (targetTop = 10);
+    const targetRight = targetBot = 20;
+    const targetLeft = targetTop = 10;
     const targetRectangle = new Rectangle(targetLeft, targetRight, targetTop, targetBot);
     const bounds = new Rectangle(0, 1000, 0, 1000);
 
@@ -153,8 +128,8 @@ describe('Callout Positioning', () => {
     const getMaxHeight = __positioningTestPackage._getMaxHeightFromTargetRectangle;
     let targetTop;
     let targetBot;
-    const targetRight = (targetBot = 200);
-    const targetLeft = (targetTop = 100);
+    const targetRight = targetBot = 200;
+    const targetLeft = targetTop = 100;
     const targetRectangle = new Rectangle(targetLeft, targetRight, targetTop, targetBot);
     const bounds = new Rectangle(0, 1000, 0, 1000);
     const gapSpace = 10;

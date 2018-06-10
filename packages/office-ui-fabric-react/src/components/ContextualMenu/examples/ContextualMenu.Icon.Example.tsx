@@ -9,6 +9,7 @@ import * as stylesImport from './ContextualMenuExample.scss';
 const styles: any = stylesImport;
 
 export class ContextualMenuIconExample extends React.Component<{}, { showCallout: boolean }> {
+
   constructor(props: {}) {
     super(props);
     this.state = {
@@ -22,19 +23,19 @@ export class ContextualMenuIconExample extends React.Component<{}, { showCallout
     return (
       <div>
         <DefaultButton
-          id="ContextualMenuButton2"
-          text="Click for ContextualMenu"
-          menuProps={{
+          id='ContextualMenuButton2'
+          text='Click for ContextualMenu'
+          menuProps={ {
             shouldFocusOnMount: true,
             items: [
               {
                 key: 'openInWord',
-                text: 'Open in Word',
+                iconName: 'Open in Word',
                 onRenderIcon: (props: IContextualMenuItemProps) => {
                   return (
-                    <span className={styles.iconContainer}>
-                      <Icon iconName={'WordLogoFill16'} className={styles.logoFillIcon} />
-                      <Icon iconName={'WordLogo16'} className={styles.logoIcon} />
+                    <span className={ styles.iconContainer }>
+                      <Icon iconName={ 'WordLogoFill16' } className={ styles.logoFillIcon } />
+                      <Icon iconName={ 'WordLogo16' } className={ styles.logoIcon } />
                     </span>
                   );
                 }
@@ -44,7 +45,7 @@ export class ContextualMenuIconExample extends React.Component<{}, { showCallout
                 iconProps: {
                   iconName: 'Add'
                 },
-                text: 'New'
+                iconName: 'New'
               },
               {
                 key: 'upload',
@@ -57,7 +58,7 @@ export class ContextualMenuIconExample extends React.Component<{}, { showCallout
                     color: 'salmon'
                   }
                 },
-                text: 'Upload (Click for popup)',
+                iconName: 'Upload (Click for popup)',
                 title: 'Upload a file'
               },
               {
@@ -69,38 +70,39 @@ export class ContextualMenuIconExample extends React.Component<{}, { showCallout
                 iconProps: {
                   iconName: 'Share'
                 },
-                text: 'Share'
+                iconName: 'Share'
               },
               {
                 key: 'print',
                 iconProps: {
                   iconName: 'Print'
                 },
-                text: 'Print'
+                iconName: 'Print'
               },
               {
                 key: 'music',
                 iconProps: {
                   iconName: 'MusicInCollectionFill'
                 },
-                text: 'Music'
+                iconName: 'Music',
               }
             ]
-          }}
+          }
+          }
         />
-        {showCallout && (
+        { showCallout && (
           <Callout
-            setInitialFocus={true}
+            setInitialFocus={ true }
             // tslint:disable-next-line:jsx-no-lambda
-            onDismiss={() => this.setState({ showCallout: false })}
+            onDismiss={ () => this.setState({ showCallout: false }) }
           >
             <DefaultButton
               // tslint:disable-next-line:jsx-no-lambda
-              onClick={() => this.setState({ showCallout: false })}
-              text="Hello Popup"
+              onClick={ () => this.setState({ showCallout: false }) }
+              text='Hello Popup'
             />
           </Callout>
-        )}
+        ) }
       </div>
     );
   }

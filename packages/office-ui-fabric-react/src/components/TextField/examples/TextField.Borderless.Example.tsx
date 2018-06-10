@@ -5,15 +5,19 @@ import './TextField.Examples.scss';
 export class TextFieldBorderlessExample extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
-      <div className="docs-TextFieldExample">
+      <div className='docs-TextFieldExample'>
         <TextField
-          label="Borderless Multiline TextField"
+          label='Borderless Multiline TextField'
           multiline
-          rows={4}
+          rows={ 4 }
           borderless
-          placeholder="No borders here, folks."
+          placeholder='No borders here, folks.'
         />
-        <TextField label="Borderless Standard TextField" borderless placeholder="No borders here, folks." />
+        <TextField
+          label='Borderless Standard TextField'
+          borderless
+          placeholder='No borders here, folks.'
+        />
       </div>
     );
   }

@@ -1,6 +1,9 @@
 /* tslint:disable */
 import { IStyle, AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
-import { INavStyleProps, INavStyles } from './Nav.types';
+import {
+  INavStyleProps,
+  INavStyles
+} from './Nav.types';
 
 export type INavItemStyle = {
   root?: IStyle;
@@ -26,10 +29,18 @@ const navItemWithChildBgColor = '#505050';
 const navItemSelectedColor = '#666666';
 const navItemIndentSize = 50;
 
-export const getStyles = (props: INavStyleProps): INavStyles => {
-  const { isSelected, hasChildren, nestingLevel, isCollapsed, scrollTop } = props;
+export const getStyles = (
+  props: INavStyleProps
+): INavStyles => {
+  const {
+    isSelected,
+    hasChildren,
+    nestingLevel,
+    isCollapsed,
+    scrollTop
+  } = props;
 
-  return {
+  return ({
     root: {
       width: isCollapsed ? navCollapsedWidth : navWidth,
       backgroundColor: navBackgroundColor,
@@ -41,8 +52,16 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
           margin: 0,
           fontSize: navFontSize,
           selectors: {
-            'li:hover >div': {
-              display: 'block'
+            li: {
+              selectors: {
+                ':hover': {
+                  selectors: {
+                    '>div[class*=ms-Nav-FloatingNav]': {
+                      visibility: 'visible'
+                    }
+                  }
+                }
+              }
             }
           }
         },
@@ -92,7 +111,9 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
     },
     navFloatingRoot: [
       {
-        display: 'none',
+        displayName: 'ms-Nav-FloatingNav',
+        display: 'block',
+        visibility: 'hidden',
         position: 'absolute',
         marginLeft: navCollapsedWidth,
         marginTop: -navItemHeight - (!!scrollTop && scrollTop > 0 ? scrollTop : 0),
@@ -145,7 +166,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
       },
       textAlign: 'right'
     }
-  };
+  });
 };
 
 /* tslint:enable */

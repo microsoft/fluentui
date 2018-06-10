@@ -1,9 +1,24 @@
 import * as React from 'react';
 import { classNamesFunction } from '../../Utilities';
-import { IPalette, ISemanticColors, loadTheme } from '../../Styling';
-import { ComponentPage, IComponentDemoPageProps, PageMarkdown } from '@uifabric/example-app-base';
-import { IThemePageStyleProps, IThemePageStyles, IThemePageState } from './ThemePage.types';
-import { defaultPalette, defaultSemanticColors } from './defaultTheme';
+import {
+  IPalette,
+  ISemanticColors,
+  loadTheme,
+} from '../../Styling';
+import {
+  ComponentPage,
+  IComponentDemoPageProps,
+  PageMarkdown,
+} from '@uifabric/example-app-base';
+import {
+  IThemePageStyleProps,
+  IThemePageStyles,
+  IThemePageState,
+} from './ThemePage.types';
+import {
+  defaultPalette,
+  defaultSemanticColors,
+} from './defaultTheme';
 import { getStyles } from './ThemePage.styles';
 import { Callout } from '../Callout';
 import { DetailsList, DetailsListLayoutMode } from '../../DetailsList';
@@ -20,7 +35,7 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, IThemePa
 
     this.state = {
       palette: defaultPalette,
-      semanticColors: defaultSemanticColors
+      semanticColors: defaultSemanticColors,
     };
   }
 
@@ -30,15 +45,15 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, IThemePa
     const semanticColors = [...this.state.semanticColors];
     return (
       <ComponentPage
-        title="Themes"
-        componentName="ThemeExample"
-        componentUrl="https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Theme"
+        title='Themes'
+        componentName='ThemeExample'
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Theme'
         overview={
           <PageMarkdown>
-            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Theme/docs/ThemesOverview.md')}
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Theme/docs/ThemesOverview.md') }
           </PageMarkdown>
         }
-        otherSections={[
+        otherSections={ [
           {
             title: 'Default Palette',
             section: this._colorList(palette, 'palette')
@@ -46,9 +61,9 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, IThemePa
           {
             title: 'Default Semantic Colors',
             section: this._colorList(semanticColors, 'semanticColors')
-          }
-        ]}
-        isHeaderVisible={this.props.isHeaderVisible}
+          },
+        ] }
+        isHeaderVisible={ this.props.isHeaderVisible }
       />
     );
   }
@@ -59,10 +74,10 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, IThemePa
     return (
       <div>
         <DetailsList
-          items={colors}
-          selectionMode={SelectionMode.none}
-          layoutMode={DetailsListLayoutMode.fixedColumns}
-          columns={[
+          items={ colors }
+          selectionMode={ SelectionMode.none }
+          layoutMode={ DetailsListLayoutMode.fixedColumns }
+          columns={ [
             {
               key: 'name',
               name: 'Name',
@@ -77,12 +92,15 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, IThemePa
               minWidth: 200,
               onRender: (item, index) => (
                 <div
-                  className={classNames.colorSwatch}
-                  data-is-focusable="true"
-                  onClick={this._onSwatchClicked.bind(this, item, index, list)}
+                  className={ classNames.colorSwatch }
+                  data-is-focusable='true'
+                  onClick={ this._onSwatchClicked.bind(this, item, index, list) }
                 >
-                  <span className={classNames.swatch} style={{ backgroundColor: item.value }} />
-                  <span className={classNames.colorValue}>{item.value}</span>
+                  <span
+                    className={ classNames.swatch }
+                    style={ { backgroundColor: item.value } }
+                  />
+                  <span className={ classNames.colorValue }>{ item.value }</span>
                 </div>
               )
             },
@@ -92,32 +110,35 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, IThemePa
               fieldName: 'description',
               minWidth: 90
             }
-          ]}
+          ] }
         />
 
-        {colorPickerProps && (
+        { colorPickerProps && (
           <Callout
-            isBeakVisible={false}
-            gapSpace={10}
-            target={colorPickerProps.targetElement}
-            onDismiss={this._onPickerDismiss}
+            isBeakVisible={ false }
+            gapSpace={ 10 }
+            target={ colorPickerProps.targetElement }
+            onDismiss={ this._onPickerDismiss }
           >
+
             <ColorPicker
-              color={colorPickerProps.value}
-              onColorChanged={this._onColorChanged.bind(this, colorPickerProps.index)}
+              color={ colorPickerProps.value }
+              onColorChanged={ this._onColorChanged.bind(this, colorPickerProps.index) }
             />
+
           </Callout>
-        )}
+        ) }
+
       </div>
     );
-  };
+  }
 
   private _onSwatchClicked(item: any, index: number, list: string, ev: React.MouseEvent<HTMLElement>): void {
     this.setState({
       colorPickerProps: {
         targetElement: (ev.currentTarget as HTMLElement).children[0] as HTMLElement,
         value: item.value,
-        index: index
+        index: index,
       },
       activeList: list
     });

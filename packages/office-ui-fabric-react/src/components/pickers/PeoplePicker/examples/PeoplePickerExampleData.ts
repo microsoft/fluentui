@@ -111,6 +111,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     presence: PersonaPresence.none
+
   },
   {
     key: 12,

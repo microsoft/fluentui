@@ -1,5 +1,8 @@
 {
-  "headers": ["Type", "Example"],
+  "headers": [
+    "Type",
+    "Example"
+  ],
   "data": [
     [
       {

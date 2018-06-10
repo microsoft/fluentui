@@ -40,13 +40,7 @@ export function shallowUntilTarget<P, S>(
 
   let root = shallow<P, S>(componentInstance, shallowOptions);
 
-  if (
-    typeof root.type() === 'string' ||
-    root
-      .type()
-      .toString()
-      .includes(TargetComponent)
-  ) {
+  if (typeof root.type() === 'string' || root.type().toString().includes(TargetComponent)) {
     // Default shallow()
     // If type() is a string then it's a DOM Node.
     // If it were wrapped, it would be a React component.
@@ -56,12 +50,7 @@ export function shallowUntilTarget<P, S>(
   for (let tries = 1; tries <= maxTries; tries++) {
     // Check for target as a string to avoid conflicts
     // with decoratored components name
-    if (
-      root
-        .type()
-        .toString()
-        .includes(TargetComponent)
-    ) {
+    if (root.type().toString().includes(TargetComponent)) {
       // Now that we found the target component, render it.
       return root.first().shallow(shallowOptions);
     }

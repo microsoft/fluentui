@@ -1,5 +1,9 @@
-import { GlobalSettings } from './GlobalSettings';
-import { EventGroup } from './EventGroup';
+import {
+  GlobalSettings
+} from './GlobalSettings';
+import {
+  EventGroup
+} from './EventGroup';
 
 // tslint:disable-next-line:no-any
 export type Settings = { [key: string]: any };
@@ -50,11 +54,12 @@ export class Customizations {
     const globalScopedSettings = (scopeName && _allSettings.scopedSettings[scopeName]) || {};
 
     for (let property of properties) {
-      settings[property] =
+      settings[property] = (
         localScopedSettings[property] ||
         localSettings.settings[property] ||
         globalScopedSettings[property] ||
-        _allSettings.settings[property];
+        _allSettings.settings[property]
+      );
     }
 
     return settings;

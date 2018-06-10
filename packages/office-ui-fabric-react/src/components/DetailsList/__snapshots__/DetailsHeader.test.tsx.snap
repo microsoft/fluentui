@@ -15,7 +15,7 @@ exports[`DetailsHeader can render 1`] = `
   role="row"
 >
   <div
-    aria-colindex={1}
+    aria-colindex={0}
     aria-labelledby="header0-check"
     className="ms-DetailsHeader-cell ms-DetailsHeader-cellIsCheck"
     onClick={[Function]}
@@ -130,7 +130,7 @@ exports[`DetailsHeader can render 1`] = `
     </span>
   </div>
   <div
-    aria-colindex={2}
+    aria-colindex={1}
     aria-disabled={false}
     aria-sort="none"
     className="ms-DetailsHeader-cell is-actionable undefined"
@@ -178,7 +178,7 @@ exports[`DetailsHeader can render 1`] = `
     role="button"
   />
   <div
-    aria-colindex={3}
+    aria-colindex={2}
     aria-disabled={false}
     aria-sort="none"
     className="ms-DetailsHeader-cell is-actionable undefined"

@@ -1,6 +1,7 @@
 import { setRTL, rtlifyRules } from './rtlifyRules';
 
 describe('rtlifyRules', () => {
+
   beforeAll(() => {
     setRTL(true);
   });

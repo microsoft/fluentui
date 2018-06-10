@@ -8,8 +8,7 @@ export const VerticalDivider = (props: IVerticalDividerProps) => {
   const classNames = props.getClassNames ? props.getClassNames(theme) : getDividerClassNames(theme);
 
   return (
-    <span className={classNames.wrapper}>
-      <span className={classNames.divider} />
-    </span>
-  );
+    <span className={ classNames.wrapper }>
+      <span className={ classNames.divider } />
+    </span>);
 };

@@ -11,17 +11,14 @@ export interface IBoxNoClickExampleExampleState {
   isToggled: boolean;
 }
 
-export default class BoxNoClickExample extends React.Component<
-  React.HTMLAttributes<HTMLDivElement>,
-  IBoxNoClickExampleExampleState
-> {
+export default class BoxNoClickExample extends React.Component<React.HTMLAttributes<HTMLDivElement>, IBoxNoClickExampleExampleState> {
   private _toggle: IToggle;
 
   constructor(props: React.HTMLAttributes<HTMLDivElement>) {
     super(props);
 
     this.state = {
-      isToggled: false
+      isToggled: false,
     };
   }
 
@@ -31,22 +28,26 @@ export default class BoxNoClickExample extends React.Component<
     return (
       <div>
         <DefaultButton
-          secondaryText="Focuses inside the FocusTrapZone"
-          onClick={this._onButtonClickHandler}
-          text="Go to Trap Zone"
+          secondaryText='Focuses inside the FocusTrapZone'
+          onClick={ this._onButtonClickHandler }
+          text='Go to Trap Zone'
         />
 
-        {(() => {
+        { (() => {
           if (isToggled) {
             return (
-              <FocusTrapZone isClickableOutsideFocusTrap={true} forceFocusInsideTrap={false}>
-                {this._internalContents()}
+              <FocusTrapZone isClickableOutsideFocusTrap={ true } forceFocusInsideTrap={ false }>
+                { this._internalContents() }
               </FocusTrapZone>
             );
           } else {
-            return <div>{this._internalContents()}</div>;
+            return (
+              <div>
+                { this._internalContents() }
+              </div>
+            );
           }
-        })()}
+        })() }
       </div>
     );
   }
@@ -55,32 +56,28 @@ export default class BoxNoClickExample extends React.Component<
     const { isToggled } = this.state;
 
     return (
-      <div className="ms-FocusTrapZoneBoxExample">
-        <TextField label="Default TextField" placeholder="Input inside Focus Trap Zone" className="" />
-        <Link href="" className="">
-          Hyperlink inside FocusTrapZone
-        </Link>
-        <br />
-        <br />
+      <div className='ms-FocusTrapZoneBoxExample'>
+        <TextField label='Default TextField' placeholder='Input inside Focus Trap Zone' className='' />
+        <Link href='' className='' >Hyperlink inside FocusTrapZone</Link><br /><br />
         <Toggle
-          componentRef={this._setRef}
-          checked={isToggled}
-          onChanged={this._onFocusTrapZoneToggleChanged}
-          label="Focus Trap Zone"
-          onText="On"
-          offText="Off"
+          componentRef={ this._setRef }
+          checked={ isToggled }
+          onChanged={ this._onFocusTrapZoneToggleChanged }
+          label='Focus Trap Zone'
+          onText='On'
+          offText='Off'
         />
-        {(() => {
+        { (() => {
           if (isToggled) {
             return (
               <DefaultButton
-                secondaryText="Exit Focus Trap Zone"
-                onClick={this._onExitButtonClickHandler}
-                text="Exit Focus Trap Zone"
+                secondaryText='Exit Focus Trap Zone'
+                onClick={ this._onExitButtonClickHandler }
+                text='Exit Focus Trap Zone'
               />
             );
           }
-        })()}
+        })() }
       </div>
     );
   }
@@ -89,24 +86,21 @@ export default class BoxNoClickExample extends React.Component<
     this.setState({
       isToggled: true
     });
-  };
+  }
 
   private _onExitButtonClickHandler = (): void => {
     this.setState({
       isToggled: false
     });
-  };
+  }
 
   private _onFocusTrapZoneToggleChanged = (isToggled: boolean): void => {
-    this.setState(
-      {
-        isToggled: isToggled
-      },
-      () => this._toggle.focus()
-    );
-  };
+    this.setState({
+      isToggled: isToggled
+    }, () => this._toggle.focus());
+  }
 
   private _setRef = (toggle: IToggle): void => {
     this._toggle = toggle;
-  };
+  }
 }

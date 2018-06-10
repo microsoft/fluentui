@@ -1,4 +1,4 @@
-import { IRawStyle, keyframes } from '@uifabric/merge-styles';
+import { IRawStyle, keyframes } from '@uifabric/merge-styles/lib/index';
 
 const DEFAULT_DURATION = '14s';
 const DEFAULT_DELAY = '2s';
@@ -89,7 +89,9 @@ function _continuousPulseAnimationSingle(
   });
 }
 
-function _createDefaultAnimation(animationName: string): IRawStyle {
+function _createDefaultAnimation(
+  animationName: string
+): IRawStyle {
   return {
     animationName,
     animationIterationCount: DEFAULT_ITERATION_COUNT,
@@ -101,5 +103,5 @@ function _createDefaultAnimation(animationName: string): IRawStyle {
 export const PulsingBeaconAnimationStyles = {
   continuousPulseAnimationDouble: _continuousPulseAnimationDouble,
   continuousPulseAnimationSingle: _continuousPulseAnimationSingle,
-  createDefaultAnimation: _createDefaultAnimation
+  createDefaultAnimation: _createDefaultAnimation,
 };

@@ -4,7 +4,7 @@ import { BaseComponent, customizable, nullRender } from '../../../Utilities';
 import { IButtonProps } from '../Button.types';
 import { getStyles } from './IconButton.styles';
 
-@customizable('IconButton', ['theme', 'styles'])
+@customizable('IconButton', ['theme'])
 export class IconButton extends BaseComponent<IButtonProps, {}> {
   /**
    * Tell BaseComponent to bypass resolution of componentRef.
@@ -16,11 +16,11 @@ export class IconButton extends BaseComponent<IButtonProps, {}> {
 
     return (
       <BaseButton
-        {...this.props}
-        variantClassName="ms-Button--icon"
-        styles={getStyles(theme!, styles)}
-        onRenderText={nullRender}
-        onRenderDescription={nullRender}
+        { ...this.props }
+        variantClassName='ms-Button--icon'
+        styles={ getStyles(theme!, styles) }
+        onRenderText={ nullRender }
+        onRenderDescription={ nullRender }
       />
     );
   }

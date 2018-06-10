@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { ChicletCardBase } from './ChicletCard.base';
 import { ITheme, IStyle } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IStyleFunction } from '../../Utilities';
 
-export interface IChicletCard {}
+export interface IChicletCard {
+
+}
 
 export interface IChicletCardStyles {
   /**
@@ -47,7 +49,7 @@ export interface IChicletCardProps extends React.Props<ChicletCardBase> {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: IStyleFunctionOrObject<IChicletCardStyleProps, IChicletCardStyles>;
+  getStyles?: IStyleFunction<IChicletCardStyleProps, IChicletCardStyles>;
 
   /**
    * Optional class for ChicletCard.

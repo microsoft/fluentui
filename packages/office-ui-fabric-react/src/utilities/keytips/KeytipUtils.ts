@@ -1,4 +1,10 @@
-import { KTP_SEPARATOR, KTP_PREFIX, DATAKTP_TARGET, DATAKTP_EXECUTE_TARGET, KTP_LAYER_ID } from './KeytipConstants';
+import {
+  KTP_SEPARATOR,
+  KTP_PREFIX,
+  DATAKTP_TARGET,
+  DATAKTP_EXECUTE_TARGET,
+  KTP_LAYER_ID
+} from './KeytipConstants';
 import { addElementAtIndex } from '../../Utilities';
 
 /**

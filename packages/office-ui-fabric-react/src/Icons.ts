@@ -1,1 +1,1 @@
-export * from '@uifabric/icons';
+export * from '@uifabric/icons/lib/index';

@@ -9,22 +9,32 @@ import { IKeytipProps, IKeytipStyleProps, IKeytipStyles } from './Keytip.types';
  * @class KeytipContent
  * @extends {BaseComponent<IKeytipProps>}
  */
-@customizable('KeytipContent', ['theme', 'styles'])
+@customizable('KeytipContent', ['theme'])
 export class KeytipContentBase extends BaseComponent<IKeytipProps, {}> {
-  public render(): JSX.Element {
-    const { content, styles, theme, disabled, visible } = this.props;
 
-    const getClassNames = classNamesFunction<IKeytipStyleProps, IKeytipStyles>();
-    const classNames = getClassNames(styles!, {
-      theme: theme!,
+  public render(): JSX.Element {
+    const {
+      content,
+      getStyles,
+      theme,
       disabled,
       visible
-    });
+    } = this.props;
+
+    const getClassNames = classNamesFunction<IKeytipStyleProps, IKeytipStyles>();
+    const classNames = getClassNames(
+      getStyles!,
+      {
+        theme: theme!,
+        disabled,
+        visible
+      }
+    );
 
     return (
-      <div className={classNames.container}>
-        <span className={classNames.root}>{content}</span>
-      </div>
+      <div className={ classNames.container } >
+        <span className={ classNames.root }>{ content }</span>
+      </div >
     );
   }
 }

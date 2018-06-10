@@ -23,6 +23,7 @@ export interface ITodoItem {
  * The props for TodoItem component.
  */
 export interface ITodoItemProps {
+
   /**
    * The current Todo item to be rendered.
    */

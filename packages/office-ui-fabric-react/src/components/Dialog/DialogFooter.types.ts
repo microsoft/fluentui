@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DialogFooterBase } from './DialogFooter.base';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IStyleFunction } from '../../Utilities';
 
 export interface IDialogFooterProps extends React.Props<DialogFooterBase> {
   /**
@@ -12,7 +12,7 @@ export interface IDialogFooterProps extends React.Props<DialogFooterBase> {
   /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
-  styles?: IStyleFunctionOrObject<IDialogFooterStyleProps, IDialogFooterStyles>;
+  getStyles?: IStyleFunction<IDialogFooterStyleProps, IDialogFooterStyles>;
 
   /**
    * Theme provided by HOC.
@@ -20,8 +20,8 @@ export interface IDialogFooterProps extends React.Props<DialogFooterBase> {
   theme?: ITheme;
 
   /**
-   * Optional override class name
-   */
+  * Optional override class name
+  */
   className?: string;
 }
 
@@ -32,8 +32,8 @@ export interface IDialogFooterStyleProps {
   theme: ITheme;
 
   /**
-   * Optional override class name
-   */
+  * Optional override class name
+  */
   className?: string;
 }
 

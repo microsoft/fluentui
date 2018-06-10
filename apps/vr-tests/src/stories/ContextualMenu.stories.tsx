@@ -3,12 +3,12 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { ContextualMenu, ContextualMenuItemType, IContextualMenuItem } from 'office-ui-fabric-react';
+import { ContextualMenu, ContextualMenuItemType } from 'office-ui-fabric-react';
 
-const items: IContextualMenuItem[] = [
+const items = [
   {
     key: 'newItem',
-    text: 'New'
+    name: 'New'
   },
   {
     key: 'divider_1',
@@ -16,35 +16,35 @@ const items: IContextualMenuItem[] = [
   },
   {
     key: 'rename',
-    text: 'Rename'
+    name: 'Rename'
   },
   {
     key: 'edit',
-    text: 'Edit'
+    name: 'Edit'
   },
   {
     key: 'properties',
-    text: 'Properties'
+    name: 'Properties'
   },
   {
     key: 'disabled',
-    text: 'Disabled item',
+    name: 'Disabled item',
     disabled: true
   },
   {
     key: 'isDisabled',
-    text: 'isDisabled item',
+    name: 'isDisabled item',
     isDisabled: true
   }
 ];
 
-const itemsWithIcons: IContextualMenuItem[] = [
+const itemsWithIcons = [
   {
     key: 'newItem',
     iconProps: {
       iconName: 'Add'
     },
-    text: 'New'
+    name: 'New'
   },
   {
     key: 'upload',
@@ -54,7 +54,7 @@ const itemsWithIcons: IContextualMenuItem[] = [
         color: 'salmon'
       }
     },
-    text: 'Upload',
+    name: 'Upload',
     title: 'Upload a file'
   },
   {
@@ -66,31 +66,31 @@ const itemsWithIcons: IContextualMenuItem[] = [
     iconProps: {
       iconName: 'Share'
     },
-    text: 'Share'
+    name: 'Share'
   },
   {
     key: 'print',
     iconProps: {
       iconName: 'Print'
     },
-    text: 'Print'
+    name: 'Print'
   },
   {
     key: 'music',
     iconProps: {
       iconName: 'MusicInCollectionFill'
     },
-    text: 'Music',
+    name: 'Music',
   }
 ];
 
-const itemsWithSecondaryText: IContextualMenuItem[] = [
+const itemsWithSecondaryText = [
   {
     key: 'Later Today',
     iconProps: {
       iconName: 'Clock'
     },
-    text: 'Later Today',
+    name: 'Later Today',
     secondaryText: '7:00 PM'
   },
   {
@@ -98,7 +98,7 @@ const itemsWithSecondaryText: IContextualMenuItem[] = [
     iconProps: {
       iconName: 'Coffeescript'
     },
-    text: 'Tomorrow',
+    name: 'Tomorrow',
     secondaryText: 'Thu. 8:00 AM'
   },
   {
@@ -106,7 +106,7 @@ const itemsWithSecondaryText: IContextualMenuItem[] = [
     iconProps: {
       iconName: 'Vacation'
     },
-    text: 'This Weekend',
+    name: 'This Weekend',
     secondaryText: 'Sat. 10:00 AM'
   },
   {
@@ -114,29 +114,29 @@ const itemsWithSecondaryText: IContextualMenuItem[] = [
     iconProps: {
       iconName: 'Suitcase'
     },
-    text: 'Next Week',
+    name: 'Next Week',
     secondaryText: 'Mon. 8:00 AM'
   }
 ];
 
-const itemsWithSubmenu: IContextualMenuItem[] = [
+const itemsWithSubmenu = [
   {
     key: 'newItem',
     subMenuProps: {
       items: [
         {
           key: 'emailMessage',
-          text: 'Email message',
+          name: 'Email message',
           title: 'Create an email'
         },
         {
           key: 'calendarEvent',
-          text: 'Calendar event',
+          name: 'Calendar event',
           title: 'Create a calendar event',
         }
       ],
     },
-    text: 'New'
+    name: 'New'
   },
   {
     key: 'share',
@@ -144,25 +144,25 @@ const itemsWithSubmenu: IContextualMenuItem[] = [
       items: [
         {
           key: 'sharetotwitter',
-          text: 'Share to Twitter',
+          name: 'Share to Twitter',
         },
         {
           key: 'sharetofacebook',
-          text: 'Share to Facebook',
+          name: 'Share to Facebook',
         },
         {
           key: 'sharetoemail',
-          text: 'Share to Email',
+          name: 'Share to Email',
           subMenuProps: {
             items: [
               {
                 key: 'sharetooutlook_1',
-                text: 'Share to Outlook',
+                name: 'Share to Outlook',
                 title: 'Share to Outlook',
               },
               {
                 key: 'sharetogmail_1',
-                text: 'Share to Gmail',
+                name: 'Share to Gmail',
                 title: 'Share to Gmail',
               }
             ],
@@ -170,11 +170,11 @@ const itemsWithSubmenu: IContextualMenuItem[] = [
         },
       ],
     },
-    text: 'Share'
+    name: 'Share'
   }
 ];
 
-const itemsWithHeaders: IContextualMenuItem[] = [
+const itemsWithHeaders = [
   {
     key: 'section',
     itemType: ContextualMenuItemType.Section,
@@ -185,11 +185,11 @@ const itemsWithHeaders: IContextualMenuItem[] = [
       items: [
         {
           key: 'newItem',
-          text: 'New',
+          name: 'New',
         },
         {
           key: 'deleteItem',
-          text: 'Delete',
+          name: 'Delete',
         }
       ]
     }
@@ -202,18 +202,18 @@ const itemsWithHeaders: IContextualMenuItem[] = [
       items: [
         {
           key: 'share',
-          text: 'Share'
+          name: 'Share'
         },
         {
           key: 'print',
-          text: 'Print'
+          name: 'Print'
         }
       ]
     }
   }
 ];
 
-const itemsWithSplitButtonSubmenu: IContextualMenuItem[] = [
+const itemsWithSplitButtonSubmenu = [
   {
     key: 'share',
     split: true,
@@ -222,27 +222,27 @@ const itemsWithSplitButtonSubmenu: IContextualMenuItem[] = [
       items: [
         {
           key: 'sharetotwitter',
-          text: 'Share to Twitter',
+          name: 'Share to Twitter',
         },
         {
           key: 'sharetofacebook',
-          text: 'Share to Facebook',
+          name: 'Share to Facebook',
         },
         {
           key: 'sharetoemail',
           split: true,
           onClick: () => { },
-          text: 'Share to Email',
+          name: 'Share to Email',
           subMenuProps: {
             items: [
               {
                 key: 'sharetooutlook_1',
-                text: 'Share to Outlook',
+                name: 'Share to Outlook',
                 title: 'Share to Outlook',
               },
               {
                 key: 'sharetogmail_1',
-                text: 'Share to Gmail',
+                name: 'Share to Gmail',
                 title: 'Share to Gmail',
               }
             ],
@@ -250,7 +250,7 @@ const itemsWithSplitButtonSubmenu: IContextualMenuItem[] = [
         },
       ],
     },
-    text: 'Share'
+    name: 'Share'
   }
 ];
 

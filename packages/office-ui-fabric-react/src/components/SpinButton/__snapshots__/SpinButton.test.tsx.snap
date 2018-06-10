@@ -150,15 +150,15 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
           }
     >
       <button
-        aria-describedby={undefined}
+        aria-describedby={null}
         aria-label={undefined}
-        aria-labelledby={undefined}
+        aria-labelledby={null}
         aria-pressed={false}
         checked={false}
         className=
             ms-Button
-            ms-Button--icon
             ms-UpButton
+            ms-Button--icon
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -273,15 +273,15 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
         </div>
       </button>
       <button
-        aria-describedby={undefined}
+        aria-describedby={null}
         aria-label={undefined}
-        aria-labelledby={undefined}
+        aria-labelledby={null}
         aria-pressed={false}
         checked={false}
         className=
             ms-Button
-            ms-Button--icon
             ms-DownButton
+            ms-Button--icon
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;

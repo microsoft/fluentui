@@ -42,7 +42,6 @@ node_modules
 temp
 lib
 lib-amd
-lib-commonjs
 lib-es2015
 coverage
 dist

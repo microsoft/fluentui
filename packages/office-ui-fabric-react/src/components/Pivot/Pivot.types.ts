@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PivotBase } from './Pivot.base';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IStyleFunction } from '../../Utilities';
 import { PivotItem } from './PivotItem';
 
 export interface IPivot {
@@ -21,7 +21,7 @@ export interface IPivotProps extends React.Props<PivotBase> {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: IStyleFunctionOrObject<IPivotStyleProps, IPivotStyles>;
+  getStyles?: IStyleFunction<IPivotStyleProps, IPivotStyles>;
 
   /**
    * Theme provided by High-Order Component.
@@ -127,6 +127,7 @@ export enum PivotLinkFormat {
 }
 
 export enum PivotLinkSize {
+
   /**
    * Display Link using normal font size
    */

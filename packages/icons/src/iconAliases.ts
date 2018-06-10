@@ -1,6 +1,4 @@
-import { registerIconAlias } from '@uifabric/styling';
+import { registerIconAlias } from '@uifabric/styling/lib/index';
 
-export const registerIconAliases = () => {
-  registerIconAlias('trash', 'delete');
-  registerIconAlias('onedrive', 'onedrivelogo');
-};
+registerIconAlias('trash', 'delete');
+registerIconAlias('onedrive', 'onedrivelogo');

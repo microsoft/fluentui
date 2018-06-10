@@ -1,5 +1,8 @@
 import { mergeStyles } from './mergeStyles';
-import { Stylesheet, InjectionMode } from './Stylesheet';
+import {
+  Stylesheet,
+  InjectionMode
+} from './Stylesheet';
 import { setRTL } from './transforms/rtlifyRules';
 
 const _stylesheet: Stylesheet = Stylesheet.getInstance();
@@ -64,7 +67,8 @@ describe('mergeStyles', () => {
     expect(className).toEqual('css-0');
     expect(newClassName).toEqual('css-1');
     expect(_stylesheet.getRules()).toEqual(
-      '.css-0{background:red;color:black;}' + '.css-1{background:red;color:white;}'
+      '.css-0{background:red;color:black;}' +
+      '.css-1{background:red;color:white;}'
     );
   });
 
@@ -80,7 +84,10 @@ describe('mergeStyles', () => {
     const classes2 = mergeStyles(classes1, { background: 'green' });
 
     expect(classes2).toEqual('ms-Foo css-1');
-    expect(_stylesheet.getRules()).toEqual('.css-0{background:red;}' + '.css-1{background:green;}');
+    expect(_stylesheet.getRules()).toEqual(
+      '.css-0{background:red;}' +
+      '.css-1{background:green;}'
+    );
   });
 
   it('can register media queries', () => {
@@ -94,7 +101,9 @@ describe('mergeStyles', () => {
     });
 
     expect(_stylesheet.getRules()).toEqual(
-      '.css-0{background:red;}' + '@media screen and (max-width: 100px){.css-0{background:green;}}'
+      '.css-0{background:red;}' +
+      '@media screen and (max-width: 100px){.css-0{background:green;}}'
     );
   });
+
 });

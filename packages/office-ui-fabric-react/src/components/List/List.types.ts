@@ -120,10 +120,10 @@ export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> 
   renderCount?: number;
 
   /**
-   * Boolean value to enable render page caching. This is an experimental performance optimization
-   * that is off by default.
-   * @defaultValue false
-   */
+  * Boolean value to enable render page caching. This is an experimental performance optimization
+  * that is off by default.
+  * @defaultValue false
+  */
   usePageCache?: boolean;
 
   /**

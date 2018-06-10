@@ -17,12 +17,12 @@ export interface IKeytipTreeNode {
   /**
    * Control's execute function for when keytip is invoked, passed from the component to the Manager in the IKeytipProps
    */
-  onExecute?: (executeTarget: HTMLElement | null, target: HTMLElement | null) => void;
+  onExecute?: (el: HTMLElement | null) => void;
 
   /**
    * Function to execute when we return to this keytip
    */
-  onReturn?: (executeTarget: HTMLElement | null, target: HTMLElement | null) => void;
+  onReturn?: (el: HTMLElement | null) => void;
 
   /**
    * List of keytip IDs that should become visible when this keytip is pressed, can be empty

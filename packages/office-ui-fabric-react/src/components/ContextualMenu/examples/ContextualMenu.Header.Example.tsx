@@ -3,87 +3,90 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import './ContextualMenuExample.scss';
 
 export class ContextualMenuHeaderExample extends React.Component<{}, {}> {
+
   public render(): JSX.Element {
+
     return (
       <DefaultButton
-        id="ContextualMenuButton1"
-        text="Click for ContextualMenu"
-        menuProps={{
-          shouldFocusOnMount: true,
-          items: [
-            {
-              key: 'Actions',
-              itemType: 2,
-              text: 'Actions'
-            },
-            {
-              key: 'upload',
-              iconProps: {
-                iconName: 'Upload',
-                style: {
-                  color: 'salmon'
-                }
+        id='ContextualMenuButton1'
+        text='Click for ContextualMenu'
+        menuProps={
+          {
+            shouldFocusOnMount: true,
+            items: [
+              {
+                key: 'Actions',
+                itemType: 2,
+                name: 'Actions'
               },
-              text: 'Upload',
-              title: 'Upload a file'
-            },
-            {
-              key: 'rename',
-              text: 'Rename'
-            },
-            {
-              key: 'share',
-              iconProps: {
-                iconName: 'Share'
-              },
-              subMenuProps: {
-                items: [
-                  {
-                    key: 'sharetoemail',
-                    text: 'Share to Email',
-                    iconProps: {
-                      iconName: 'Mail'
-                    }
-                  },
-                  {
-                    key: 'sharetofacebook',
-                    text: 'Share to Facebook'
-                  },
-                  {
-                    key: 'sharetotwitter',
-                    text: 'Share to Twitter',
-                    iconProps: {
-                      iconName: 'Share'
-                    }
+              {
+                key: 'upload',
+                iconProps: {
+                  iconName: 'Upload',
+                  style: {
+                    color: 'salmon'
                   }
-                ]
+                },
+                name: 'Upload',
+                title: 'Upload a file'
               },
-              text: 'Sharing'
-            },
-            {
-              key: 'navigation',
-              itemType: 2,
-              text: 'Navigation'
-            },
-            {
-              key: 'properties',
-              text: 'Properties'
-            },
-            {
-              key: 'print',
-              iconProps: {
-                iconName: 'Print'
+              {
+                key: 'rename',
+                name: 'Rename'
               },
-              text: 'Print'
-            },
+              {
+                key: 'share',
+                iconProps: {
+                  iconName: 'Share'
+                },
+                subMenuProps: {
+                  items: [
+                    {
+                      key: 'sharetoemail',
+                      name: 'Share to Email',
+                      iconProps: {
+                        iconName: 'Mail'
+                      },
+                    },
+                    {
+                      key: 'sharetofacebook',
+                      name: 'Share to Facebook',
+                    },
+                    {
+                      key: 'sharetotwitter',
+                      name: 'Share to Twitter',
+                      iconProps: {
+                        iconName: 'Share'
+                      },
+                    },
+                  ],
+                },
+                name: 'Sharing'
+              },
+              {
+                key: 'navigation',
+                itemType: 2,
+                name: 'Navigation'
+              },
+              {
+                key: 'properties',
+                name: 'Properties'
+              },
+              {
+                key: 'print',
+                iconProps: {
+                  iconName: 'Print'
+                },
+                name: 'Print'
+              },
 
-            {
-              key: 'Bing',
-              text: 'Go to Bing',
-              href: 'http://www.bing.com'
-            }
-          ]
-        }}
+              {
+                key: 'Bing',
+                name: 'Go to Bing',
+                href: 'http://www.bing.com'
+              },
+            ]
+          } }
       />
     );
   }

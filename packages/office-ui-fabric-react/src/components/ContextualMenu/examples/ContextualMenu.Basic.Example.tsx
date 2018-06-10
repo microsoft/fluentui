@@ -4,6 +4,7 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import './ContextualMenuExample.scss';
 
 export class ContextualMenuBasicExample extends React.Component {
+
   constructor(props: {}) {
     super(props);
     this.state = {
@@ -15,14 +16,14 @@ export class ContextualMenuBasicExample extends React.Component {
     return (
       <div>
         <DefaultButton
-          id="ContextualMenuButton1"
-          text="Click for ContextualMenu"
-          menuProps={{
+          id='ContextualMenuButton1'
+          text='Click for ContextualMenu'
+          menuProps={ {
             shouldFocusOnMount: true,
             items: [
               {
                 key: 'newItem',
-                text: 'New',
+                name: 'New',
                 onClick: () => console.log('New clicked')
               },
               {
@@ -31,48 +32,38 @@ export class ContextualMenuBasicExample extends React.Component {
               },
               {
                 key: 'rename',
-                text: 'Rename',
+                name: 'Rename',
                 onClick: () => console.log('Rename clicked')
               },
               {
                 key: 'edit',
-                text: 'Edit',
+                name: 'Edit',
                 onClick: () => console.log('Edit clicked')
               },
               {
                 key: 'properties',
-                text: 'Properties',
+                name: 'Properties',
                 onClick: () => console.log('Properties clicked')
               },
               {
                 key: 'linkNoTarget',
-                text: 'Link same window',
+                name: 'Link same window',
                 href: 'http://bing.com'
               },
               {
                 key: 'linkWithTarget',
-                text: 'Link new window',
+                name: 'Link new window',
                 href: 'http://bing.com',
-                target: '_blank'
-              },
-              {
-                key: 'linkWithOnClick',
-                name: 'Link click',
-                href: 'http://bing.com',
-                onClick: (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
-                  alert('Link clicked');
-                  ev.preventDefault();
-                },
                 target: '_blank'
               },
               {
                 key: 'disabled',
-                text: 'Disabled item',
+                name: 'Disabled item',
                 disabled: true,
                 onClick: () => console.error('Disabled item should not be clickable.')
               }
             ]
-          }}
+          } }
         />
       </div>
     );

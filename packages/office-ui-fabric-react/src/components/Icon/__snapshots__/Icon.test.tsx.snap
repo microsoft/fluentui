@@ -46,6 +46,7 @@ exports[`Icon renders Icon with custom styles 1`] = `
   aria-hidden={true}
   className=
       root
+      imageContainer
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;

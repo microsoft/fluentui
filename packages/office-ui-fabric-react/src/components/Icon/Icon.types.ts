@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { IImageProps } from '../Image/Image.types';
 import { IStyle } from '../../Styling';
-import { IBaseProps, IStyleFunctionOrObject } from '../../Utilities';
+import { IBaseProps, IStyleFunction } from '../../Utilities';
 
 // Please keep alphabetized
 export enum IconType {
+
   /**
    * Render using the fabric icon font.
    */
@@ -63,7 +64,13 @@ export interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement
   /**
    * Gets the styles for an Icon.
    */
-  styles?: IStyleFunctionOrObject<IIconStyleProps, IIconStyles>;
+  getStyles?: IStyleFunction<IIconStyleProps, IIconStyles>;
+
+  /**
+   * Deprecated: use getStyles.
+   * @deprecated
+   */
+  styles?: IIconStyles;
 }
 
 export interface IIconStyleProps {

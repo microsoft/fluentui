@@ -12,10 +12,17 @@
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
-    "types": ["node", "webpack-env"],
+    "types": [
+      "node",
+      "webpack-env"
+    ],
     "paths": {
-      "office-ui-fabric-react/lib/*": ["node_modules/office-ui-fabric-react/lib/*"]
+      "office-ui-fabric-react/lib/*": [
+        "node_modules/office-ui-fabric-react/lib/*"
+      ]
     }
   },
-  "include": ["src"]
+  "include": [
+    "src"
+  ]
 }

@@ -13,4 +13,5 @@ describe('rtl', () => {
 
     setSSR(false);
   });
+
 });

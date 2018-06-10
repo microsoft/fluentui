@@ -7,16 +7,26 @@ import {
   Selection,
   IColumn
 } from 'office-ui-fabric-react/lib/DetailsList';
-import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { TooltipHost, ITooltipHostProps } from 'office-ui-fabric-react/lib/Tooltip';
-import { ScrollablePane } from 'office-ui-fabric-react/lib/ScrollablePane';
-import { Sticky, StickyPositionType } from 'office-ui-fabric-react/lib/Sticky';
+import {
+  IRenderFunction
+} from 'office-ui-fabric-react/lib/Utilities';
+import {
+  TooltipHost,
+  ITooltipHostProps
+} from 'office-ui-fabric-react/lib/Tooltip';
+import {
+  ScrollablePane
+} from 'office-ui-fabric-react/lib/ScrollablePane';
+import {
+  Sticky,
+  StickyPositionType
+} from 'office-ui-fabric-react/lib/Sticky';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 
 const _items: {
-  key: number;
-  name: string;
-  value: number;
+  key: number,
+  name: string,
+  value: number
 }[] = [];
 
 const _columns: IColumn[] = [
@@ -37,16 +47,13 @@ const _columns: IColumn[] = [
     maxWidth: 200,
     isResizable: true,
     ariaLabel: 'Operations for value'
-  }
+  },
 ];
 
-export class ScrollablePaneDetailsListExample extends React.Component<
-  {},
-  {
-    items: {}[];
-    selectionDetails: string;
-  }
-> {
+export class ScrollablePaneDetailsListExample extends React.Component<{}, {
+  items: {}[];
+  selectionDetails: string;
+}> {
   private _selection: Selection;
 
   constructor(props: {}) {
@@ -78,49 +85,44 @@ export class ScrollablePaneDetailsListExample extends React.Component<
 
     return (
       <div
-        style={{
+        style={ {
           height: '10000px',
           position: 'relative',
           maxHeight: 'inherit'
-        }}
+        } }
       >
         <ScrollablePane>
-          <Sticky stickyPosition={StickyPositionType.Header}>{selectionDetails}</Sticky>
+          <Sticky stickyPosition={ StickyPositionType.Header }>{ selectionDetails }</Sticky>
           <TextField
-            label="Filter by name:"
+            label='Filter by name:'
             // tslint:disable-next-line:jsx-no-lambda
-            onChanged={text =>
-              this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items })
-            }
+            onChanged={ text => this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items }) }
           />
-          <Sticky stickyPosition={StickyPositionType.Header}>
-            <h1 style={{ margin: '0px' }}>Item List</h1>
+          <Sticky stickyPosition={ StickyPositionType.Header }>
+            <h1 style={ { margin: '0px' } }>Item List</h1>
           </Sticky>
-          <MarqueeSelection selection={this._selection}>
+          <MarqueeSelection selection={ this._selection }>
             <DetailsList
-              items={items}
-              columns={_columns}
-              setKey="set"
-              layoutMode={DetailsListLayoutMode.fixedColumns}
+              items={ items }
+              columns={ _columns }
+              setKey='set'
+              layoutMode={ DetailsListLayoutMode.fixedColumns }
               onRenderDetailsHeader={
                 // tslint:disable-next-line:jsx-no-lambda
                 (detailsHeaderProps: IDetailsHeaderProps, defaultRender: IRenderFunction<IDetailsHeaderProps>) => (
-                  <Sticky stickyPosition={StickyPositionType.Header}>
-                    {defaultRender({
+                  <Sticky stickyPosition={ StickyPositionType.Header }>
+                    { defaultRender({
                       ...detailsHeaderProps,
-                      onRenderColumnHeaderTooltip: (tooltipHostProps: ITooltipHostProps) => (
-                        <TooltipHost {...tooltipHostProps} />
-                      )
-                    })}
+                      onRenderColumnHeaderTooltip: (tooltipHostProps: ITooltipHostProps) => <TooltipHost { ...tooltipHostProps } />
+                    }) }
                   </Sticky>
-                )
-              }
-              selection={this._selection}
-              selectionPreservedOnEmptyClick={true}
-              ariaLabelForSelectionColumn="Toggle selection"
-              ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+                ) }
+              selection={ this._selection }
+              selectionPreservedOnEmptyClick={ true }
+              ariaLabelForSelectionColumn='Toggle selection'
+              ariaLabelForSelectAllCheckbox='Toggle selection for all items'
               // tslint:disable-next-line:jsx-no-lambda
-              onItemInvoked={item => alert(`Item invoked: ${item.name}`)}
+              onItemInvoked={ (item) => alert(`Item invoked: ${item.name}`) }
             />
           </MarqueeSelection>
         </ScrollablePane>

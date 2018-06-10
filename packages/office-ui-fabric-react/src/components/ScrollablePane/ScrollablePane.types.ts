@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ScrollablePaneBase } from './ScrollablePane.base';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IStyleFunction } from '../../Utilities';
 
 export interface IScrollablePane {
   /** Triggers a layout update for the pane. */
@@ -21,7 +21,7 @@ export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement |
   /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
-  styles?: IStyleFunctionOrObject<IScrollablePaneStyleProps, IScrollablePaneStyles>;
+  getStyles?: IStyleFunction<IScrollablePaneStyleProps, IScrollablePaneStyles>;
 
   /**
    * Theme provided by HOC.
@@ -52,6 +52,7 @@ export interface IScrollablePaneStyleProps {
   className?: string;
 
   // Insert ScrollablePane style props below
+
 }
 
 export interface IScrollablePaneStyles {

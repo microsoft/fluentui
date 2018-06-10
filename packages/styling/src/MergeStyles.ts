@@ -12,4 +12,4 @@ export {
   keyframes,
   mergeStyleSets,
   mergeStyles
-} from '@uifabric/merge-styles';
+} from '@uifabric/merge-styles/lib/index';

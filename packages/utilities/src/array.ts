@@ -61,17 +61,14 @@ export function createArray<T>(size: number, getItem: (index: number) => T): T[]
  * @returns {any[][]} - A matrix of items
  */
 export function toMatrix<T>(items: T[], columnCount: number): T[][] {
-  return items.reduce(
-    (rows: T[][], currentValue: T, index: number) => {
-      if (index % columnCount === 0) {
-        rows.push([currentValue]);
-      } else {
-        rows[rows.length - 1].push(currentValue);
-      }
-      return rows;
-    },
-    [] as T[][]
-  );
+  return items.reduce((rows: T[][], currentValue: T, index: number) => {
+    if (index % columnCount === 0) {
+      rows.push([currentValue]);
+    } else {
+      rows[rows.length - 1].push(currentValue);
+    }
+    return rows;
+  }, [] as T[][]);
 }
 
 /**

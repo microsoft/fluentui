@@ -102,7 +102,10 @@ export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
   /**
    * Function that specifies how arbitrary text entered into the well is handled.
    */
-  createGenericItem?: (input: string, isValid: boolean) => ISuggestionModel<T>;
+  createGenericItem?: (
+    input: string,
+    isValid: boolean
+  ) => ISuggestionModel<T>;
 
   /**
    * The callback that should be called to see if the force resolve command should be shown
@@ -143,8 +146,8 @@ export interface IBaseFloatingPickerSuggestionProps {
   shouldSelectFirstItem?: () => boolean;
 
   /**
-   * The header items props
-   */
+ * The header items props
+ */
   headerItemsProps?: ISuggestionsHeaderFooterProps[];
   /**
    * The footer items props

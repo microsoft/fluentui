@@ -3,6 +3,7 @@ import { IComponentStatusProps, ChecklistStatus } from './ComponentStatus.types'
 import './ComponentStatus.scss';
 
 export class ComponentStatus extends React.Component<IComponentStatusProps, {}> {
+
   public static defaultProps: IComponentStatusProps = {
     keyboardAccessibilitySupport: ChecklistStatus.fail,
     markupSupport: ChecklistStatus.fail,
@@ -19,13 +20,13 @@ export class ComponentStatus extends React.Component<IComponentStatusProps, {}> 
     const testCoverageSubject = 'Test Coverage';
 
     return (
-      <div className="ComponentStatus-div">
-        {this._definebadgeAnchor(keyboardAccessibilitySubject, this.props.keyboardAccessibilitySupport)}
-        {this._definebadgeAnchor(markupSubject, this.props.markupSupport)}
-        {this._definebadgeAnchor(highContrastSupportSubject, this.props.highContrastSupport)}
-        {this._definebadgeAnchor(rtlSubject, this.props.rtlSupport)}
-        {this._definebadgeAnchor(testCoverageSubject, this.props.testCoverage)}
-      </div>
+      <div className='ComponentStatus-div'>
+        { this._definebadgeAnchor(keyboardAccessibilitySubject, this.props.keyboardAccessibilitySupport) }
+        { this._definebadgeAnchor(markupSubject, this.props.markupSupport) }
+        { this._definebadgeAnchor(highContrastSupportSubject, this.props.highContrastSupport) }
+        { this._definebadgeAnchor(rtlSubject, this.props.rtlSupport) }
+        { this._definebadgeAnchor(testCoverageSubject, this.props.testCoverage) }
+      </div >
     );
   }
 
@@ -37,8 +38,14 @@ export class ComponentStatus extends React.Component<IComponentStatusProps, {}> 
 
   private _badgeAnchor(ariaLabel: string, color: string, subject: string, status: string): JSX.Element {
     return (
-      <a aria-label={ariaLabel} href="#/components-status" className="ComponentStatus-badge">
-        <img src={this._badgeURL(color, subject, status)} />
+      <a
+        aria-label={ ariaLabel }
+        href='#/components-status'
+        className='ComponentStatus-badge'
+      >
+        <img
+          src={ this._badgeURL(color, subject, status) }
+        />
       </a>
     );
   }
@@ -68,4 +75,5 @@ export class ComponentStatus extends React.Component<IComponentStatusProps, {}> 
 
     return 'red';
   }
+
 }

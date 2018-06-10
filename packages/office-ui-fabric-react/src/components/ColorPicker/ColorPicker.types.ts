@@ -1,21 +1,16 @@
-import { ITheme, IStyle } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
-
-export interface IColorPicker {}
-
 export interface IColorPickerProps {
   /**
    * Gets the component ref.
    */
-  componentRef?: (component: IColorPicker | null) => void;
+  componentRef?: () => void;
 
   /**
-   * CSS-compatible string to describe the initial color.
+   * The CSS-compatible string to describe the initial color
    */
   color: string;
 
   /**
-   * Callback issued when the user changes the color.
+   * Callback issued when the user changes the color
    */
   onColorChanged?: (color: string) => void;
 
@@ -31,85 +26,26 @@ export interface IColorPickerProps {
   hexLabel?: string;
 
   /**
-   * Label for the red textfield.
+   * Label for the red textfield
    * @default Red
    */
   redLabel?: string;
 
   /**
-   * Label for the green textfield.
+   * Label for the green textfield
    * @default Green
    */
   greenLabel?: string;
 
   /**
-   * Label for the blue textfield.
+   * Label for the blue textfield
    * @default Blue
    */
   blueLabel?: string;
 
   /**
-   * Label for the alpha textfield.
+   * Label for the alpha textfield
    * @default Alpha
    */
   alphaLabel?: string;
-
-  /**
-   * Additional CSS class(es) to apply to the ColorPicker.
-   */
-  className?: string;
-
-  /**
-   * Theme (provided through customization).
-   */
-  theme?: ITheme;
-
-  /**
-   * Call to provide customized styling that will layer on top of the variant rules.
-   */
-  styles?: IStyleFunctionOrObject<IColorPickerStyleProps, IColorPickerStyles>;
-}
-
-export interface IColorPickerStyleProps {
-  /**
-   * Theme (provided through customization).
-   */
-  theme: ITheme;
-
-  /**
-   * Additional CSS class(es) to apply to the ColorPicker.
-   */
-  className?: string;
-}
-
-export interface IColorPickerStyles {
-  /**
-   * Style set for the root element.
-   */
-  root?: IStyle;
-
-  /**
-   * Style set for the panel element that contains the color rectangle.
-   */
-  panel?: IStyle;
-
-  /**
-   * Style set for the table element that contains the color sliders and inputs.
-   */
-  table?: IStyle;
-
-  /**
-   * Style set for the table header that contains the labels.
-   */
-  tableHeader?: IStyle;
-
-  /**
-   * Style set for the table cell that contains the hex label.
-   */
-  tableHexCell?: IStyle;
-
-  /**
-   * Style set for each text field input.
-   */
-  input?: IStyle;
 }

@@ -26,23 +26,27 @@ export class NumberTextField extends React.Component<INumberTextFieldProps, INum
 
   public render(): JSX.Element {
     return (
-      <div className="NumberTextField">
+      <div className='NumberTextField'>
         <TextField
-          className="NumberTextField-textField"
-          label={this.props.label}
-          value={this.state.value}
-          onChanged={this._onChanged}
-          onGetErrorMessage={this._validateNumber}
+          className='NumberTextField-textField'
+          label={ this.props.label }
+          value={ this.state.value }
+          onChanged={ this._onChanged }
+          onGetErrorMessage={ this._validateNumber }
         />
-        <div className="NumberTextField-restoreButton">
-          <DefaultButton onClick={this._restore}>Restore</DefaultButton>
+        <div className='NumberTextField-restoreButton'>
+          <DefaultButton onClick={ this._restore }>
+            Restore
+          </DefaultButton>
         </div>
       </div>
     );
   }
 
   private _validateNumber(value: string): string {
-    return isNaN(Number(value)) ? `The value should be a number, actual is ${value}.` : '';
+    return isNaN(Number(value))
+      ? `The value should be a number, actual is ${value}.`
+      : '';
   }
 
   private _onChanged(value: string): void {

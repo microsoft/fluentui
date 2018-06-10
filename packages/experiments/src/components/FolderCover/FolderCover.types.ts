@@ -2,9 +2,13 @@ import * as React from 'react';
 import { IBaseProps } from '../../Utilities';
 import { FolderCover } from './FolderCover';
 
-export type FolderCoverSize = 'small' | 'large';
+export type FolderCoverSize =
+  'small' |
+  'large';
 
-export type FolderCoverType = 'default' | 'media';
+export type FolderCoverType =
+  'default' |
+  'media';
 
 export interface IFolderCoverProps extends IBaseProps, React.Props<FolderCover>, React.HTMLAttributes<HTMLDivElement> {
   /**

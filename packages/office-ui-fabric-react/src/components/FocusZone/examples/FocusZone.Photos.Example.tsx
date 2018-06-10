@@ -20,19 +20,22 @@ const log = (): void => {
 };
 
 export const FocusZonePhotosExample = () => (
-  <FocusZone elementType="ul" className="ms-FocusZoneExamples-photoList">
-    {PHOTOS.map((photo, index) => (
+  <FocusZone
+    elementType='ul'
+    className='ms-FocusZoneExamples-photoList'
+  >
+    { PHOTOS.map((photo, index) => (
       <li
-        key={index}
-        className="ms-FocusZoneExamples-photoCell"
-        aria-posinset={index + 1}
-        aria-setsize={PHOTOS.length}
-        aria-label="Photo"
-        data-is-focusable={true}
-        onClick={log}
+        key={ index }
+        className='ms-FocusZoneExamples-photoCell'
+        aria-posinset={ index + 1 }
+        aria-setsize={ PHOTOS.length }
+        aria-label='Photo'
+        data-is-focusable={ true }
+        onClick={ log }
       >
-        <Image src={photo.url} width={photo.width} height={photo.height} />
+        <Image src={ photo.url } width={ photo.width } height={ photo.height } />
       </li>
-    ))}
+    )) }
   </FocusZone>
 );

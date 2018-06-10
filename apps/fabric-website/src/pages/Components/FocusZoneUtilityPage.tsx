@@ -7,27 +7,26 @@ const pageStyles: any = require('../PageStyles.module.scss');
 export class FocusZoneUtilityPage extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
-      <div className={pageStyles.basePage}>
+      <div className={ pageStyles.basePage }>
         <ComponentPage>
-          <PageHeader
-            pageTitle="FocusZone"
-            backgroundColor="#038387"
-            links={[
-              {
-                text: 'Overview',
-                location: 'Overview'
-              },
-              {
-                text: 'Variants',
-                location: 'Variants'
-              },
-              {
-                text: 'Implementation',
-                location: 'Implementation'
-              }
-            ]}
-          />
-          <FocusZonePage isHeaderVisible={false} />
+          <PageHeader pageTitle='FocusZone' backgroundColor='#038387'
+            links={
+              [
+                {
+                  'text': 'Overview',
+                  'location': 'Overview'
+                },
+                {
+                  'text': 'Variants',
+                  'location': 'Variants'
+                },
+                {
+                  'text': 'Implementation',
+                  'location': 'Implementation'
+                }
+              ]
+            } />
+          <FocusZonePage isHeaderVisible={ false } />
         </ComponentPage>
       </div>
     );

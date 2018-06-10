@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IStyleFunction } from '../../Utilities';
 import { IStyle } from '../../Styling';
 import { IKeytipTransitionKey } from '../../utilities/keytips/IKeytipTransitionKey';
 
-export interface IKeytipLayer {}
+export interface IKeytipLayer {
+}
 
 export interface IKeytipLayerProps extends React.Props<IKeytipLayer> {
   /**
@@ -21,10 +22,10 @@ export interface IKeytipLayerProps extends React.Props<IKeytipLayer> {
   content: string;
 
   /**
-   * List of key sequences that will start keytips mode
-   *
-   * @type {KeySequence}
-   */
+  * List of key sequences that will start keytips mode
+  *
+  * @type {KeySequence}
+  */
   keytipStartSequences?: IKeytipTransitionKey[];
 
   /**
@@ -42,12 +43,11 @@ export interface IKeytipLayerProps extends React.Props<IKeytipLayer> {
   keytipExitSequences?: IKeytipTransitionKey[];
 
   /**
-   * Callback function triggered when keytip mode is exited.
-   * ev is the Mouse or Keyboard Event that triggered the exit, if any.
+   * Callback function triggered when keytip mode is exited
    *
    * @type {() => void}
    */
-  onExitKeytipMode?: (ev?: React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement>) => void;
+  onExitKeytipMode?: () => void;
 
   /**
    * Callback function triggered when keytip mode is entered
@@ -57,13 +57,14 @@ export interface IKeytipLayerProps extends React.Props<IKeytipLayer> {
   onEnterKeytipMode?: () => void;
 
   /**
-   * (Optional) Call to provide customized styling.
+   * getStyles function for KeytipLayer
    */
-  styles?: IStyleFunctionOrObject<IKeytipLayerStyleProps, IKeytipLayerStyles>;
+  getStyles?: IStyleFunction<IKeytipLayerStyleProps, IKeytipLayerStyles>;
 }
 
 export interface IKeytipLayerStyles {
   innerContent: IStyle;
 }
 
-export interface IKeytipLayerStyleProps {}
+export interface IKeytipLayerStyleProps {
+}

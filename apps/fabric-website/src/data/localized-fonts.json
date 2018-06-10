@@ -1,5 +1,9 @@
 {
-  "headers": ["Language", "Code", "Font Stack"],
+  "headers": [
+    "Language",
+    "Code",
+    "Font Stack"
+  ],
   "data": [
     [
       {

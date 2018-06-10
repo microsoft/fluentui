@@ -4,24 +4,26 @@ import './SearchBox.Examples.scss';
 
 // tslint:disable:jsx-no-lambda
 export class SearchBoxDisabledExample extends React.Component<any, any> {
+
   public render(): JSX.Element {
     return (
-      <div className="ms-SearchBoxExample">
+      <div className='ms-SearchBoxExample'>
         <SearchBox
-          placeholder="Search"
-          onFocus={() => console.log('onFocus called')}
-          onBlur={() => console.log('onBlur called')}
+          placeholder='Search'
+          onFocus={ () => console.log('onFocus called') }
+          onBlur={ () => console.log('onBlur called') }
           disabled
         />
 
         <SearchBox
-          placeholder="Search"
-          onFocus={() => console.log('onFocus called')}
-          onBlur={() => console.log('onBlur called')}
-          underlined={true}
+          placeholder='Search'
+          onFocus={ () => console.log('onFocus called') }
+          onBlur={ () => console.log('onBlur called') }
+          underlined={ true }
           disabled
         />
       </div>
     );
   }
+
 }

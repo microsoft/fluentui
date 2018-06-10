@@ -1,5 +1,13 @@
 {
-  "headers": ["Class", "SM", "MD", "LG", "XL", "XXL", "XXXL"],
+  "headers": [
+    "Class",
+    "SM",
+    "MD",
+    "LG",
+    "XL",
+    "XXL",
+    "XXXL"
+  ],
   "data": [
     [
       {

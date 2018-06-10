@@ -22,7 +22,7 @@
   "search.exclude": {
     "**/node_modules": true,
     "**/lib": true,
-    "**/lib-commonjs": true,
+    "**/lib-es2015": true,
     "**/lib-amd": true,
     "**/dist": true,
     "**/*.scss.ts": true

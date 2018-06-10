@@ -1,25 +1,32 @@
 import * as React from 'react';
-import { Pivot, PivotItem, PivotLinkFormat, PivotLinkSize } from 'office-ui-fabric-react/lib/Pivot';
+import {
+  Pivot,
+  PivotItem,
+  PivotLinkFormat,
+  PivotLinkSize
+} from 'office-ui-fabric-react/lib/Pivot';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 
 export class PivotOnChangeExample extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
       <div>
-        <Pivot linkSize={PivotLinkSize.large} linkFormat={PivotLinkFormat.tabs} onLinkClick={this.onLinkClick}>
-          <PivotItem linkText="Foo">
+        <Pivot linkSize={ PivotLinkSize.large } linkFormat={ PivotLinkFormat.tabs } onLinkClick={ this.onLinkClick }>
+          <PivotItem linkText='Foo'>
             <Label>Pivot #1</Label>
           </PivotItem>
-          <PivotItem linkText="Bar">
+          <PivotItem linkText='Bar'>
             <Label>Pivot #2</Label>
           </PivotItem>
-          <PivotItem linkText="Bas">
+          <PivotItem linkText='Bas'>
             <Label>Pivot #3</Label>
           </PivotItem>
-          <PivotItem linkText="Biz">
+          <PivotItem linkText='Biz'>
             <Label>Pivot #4</Label>
           </PivotItem>
-          <div>content not in a PivotItem</div>
+          <div>
+            content not in a PivotItem
+            </div>
         </Pivot>
       </div>
     );

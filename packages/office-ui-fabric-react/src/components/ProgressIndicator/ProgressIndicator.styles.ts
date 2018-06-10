@@ -8,7 +8,10 @@ import {
   IRawStyle
 } from '../../Styling';
 import { getRTL } from '../../Utilities';
-import { IProgressIndicatorStyleProps, IProgressIndicatorStyles } from './ProgressIndicator.types';
+import {
+  IProgressIndicatorStyleProps,
+  IProgressIndicatorStyles,
+} from './ProgressIndicator.types';
 
 const GlobalClassNames = {
   root: 'ms-ProgressIndicator',
@@ -16,29 +19,36 @@ const GlobalClassNames = {
   itemDescription: 'ms-ProgressIndicator-itemDescription',
   itemProgress: 'ms-ProgressIndicator-itemProgress',
   progressTrack: 'ms-ProgressIndicator-progressTrack',
-  progressBar: 'ms-ProgressIndicator-progressBar'
+  progressBar: 'ms-ProgressIndicator-progressBar',
 };
 
 const IndeterminateProgress = keyframes({
   '0%': {
-    left: '-30%'
+    left: '-30%',
   },
   '100%': {
-    left: '100%'
+    left: '100%',
   }
 });
 const IndeterminateProgressRTL = keyframes({
   '100%': {
-    right: '-30%'
+    right: '-30%',
   },
   '0%': {
-    right: '100%'
+    right: '100%',
   }
 });
 
-export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicatorStyles => {
+export const getStyles = (
+  props: IProgressIndicatorStyleProps
+): IProgressIndicatorStyles => {
   const isRTL = getRTL();
-  const { className, indeterminate, theme, barHeight = 2 } = props;
+  const {
+    className,
+    indeterminate,
+    theme,
+    barHeight = 2,
+  } = props;
 
   const { palette, semanticColors } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
@@ -46,11 +56,11 @@ export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicat
   const marginBetweenText = 8;
   const textHeight = 18;
 
-  return {
+  return ({
     root: [
       classNames.root,
       {
-        fontWeight: FontWeights.regular
+        fontWeight: FontWeights.regular,
       },
       className
     ],
@@ -62,7 +72,7 @@ export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicat
         color: semanticColors.bodyText,
         fontSize: FontSizes.medium,
         paddingTop: marginBetweenText / 2,
-        lineHeight: textHeight + 2
+        lineHeight: textHeight + 2,
       }
     ],
 
@@ -71,7 +81,7 @@ export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicat
       {
         color: semanticColors.bodySubtext,
         fontSize: FontSizes.xSmall,
-        lineHeight: textHeight
+        lineHeight: textHeight,
       }
     ],
 
@@ -81,7 +91,7 @@ export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicat
         position: 'relative',
         overflow: 'hidden',
         height: barHeight,
-        padding: `${marginBetweenText}px 0`
+        padding: `${marginBetweenText}px 0`,
       }
     ],
 
@@ -95,7 +105,7 @@ export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicat
 
         selectors: {
           [HighContrastSelector]: {
-            borderBottom: '1px solid WindowText'
+            borderBottom: '1px solid WindowText',
           }
         }
       }
@@ -111,22 +121,20 @@ export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicat
 
         selectors: {
           [HighContrastSelector]: {
-            backgroundColor: 'WindowText'
+            backgroundColor: 'WindowText',
           }
         }
       },
 
-      indeterminate
-        ? ({
-            position: 'absolute',
-            minWidth: '33%',
-            background: `linear-gradient(to right, transparent 0%, ${palette.themePrimary} 50%, transparent 100%)`,
-            animation: `${isRTL ? IndeterminateProgressRTL : IndeterminateProgress} 3s infinite`
-          } as IRawStyle)
-        : ({
-            transition: 'width .15s linear'
-          } as IRawStyle),
-      classNames.progressBar
-    ]
-  };
+      indeterminate ? {
+        position: 'absolute',
+        minWidth: '33%',
+        background: `linear-gradient(to right, transparent 0%, ${palette.themePrimary} 50%, transparent 100%)`,
+        animation: `${isRTL ? IndeterminateProgressRTL : IndeterminateProgress} 3s infinite`,
+      } as IRawStyle : {
+        transition: 'width .15s linear'
+      } as IRawStyle,
+      classNames.progressBar,
+    ],
+  });
 };

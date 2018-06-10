@@ -3,12 +3,8 @@
  * so that they can be used in scenarios that simply require a function callback.
  * @deprecated This has been deprecated in favor of using arrow function properties
  */
-export function autobind<T extends Function>(
-  // tslint:disable-next-line:no-any
-  target: any,
-  key: string,
-  descriptor: TypedPropertyDescriptor<T>
-): {
+// tslint:disable-next-line:no-any
+export function autobind<T extends Function>(target: any, key: string, descriptor: TypedPropertyDescriptor<T>): {
   configurable: boolean;
   get(): T;
   // tslint:disable-next-line:no-any

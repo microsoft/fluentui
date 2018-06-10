@@ -10,18 +10,16 @@ describe('Nav', () => {
   it('renders Nav correctly', () => {
     const component = renderer.create(
       <Nav
-        groups={[
+        groups={ [
           {
             links: [
               {
                 name: '',
                 url: ''
-              }
-            ]
+              }]
           }
-        ]}
-      />
-    );
+        ] }
+      />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -30,7 +28,7 @@ describe('Nav', () => {
     const handler = jest.fn();
     const nav = mount<NavBase>(
       <NavBase
-        groups={[
+        groups={ [
           {
             links: [
               {
@@ -40,7 +38,7 @@ describe('Nav', () => {
               }
             ]
           }
-        ]}
+        ] }
       />
     );
 
@@ -51,7 +49,11 @@ describe('Nav', () => {
 
   it('sets ARIA label on the nav element', () => {
     const label = 'The navigation label';
-    const nav = mount<NavBase>(<Nav ariaLabel={label} groups={[]} />);
+    const nav = mount<NavBase>(
+      <Nav
+        ariaLabel={ label }
+        groups={ [] }
+      />);
     expect(nav.find('[role="navigation"]').prop('aria-label')).toEqual(label);
   });
 });

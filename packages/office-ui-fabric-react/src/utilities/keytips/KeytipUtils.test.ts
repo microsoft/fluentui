@@ -1,4 +1,8 @@
-import { sequencesToID, mergeOverflows, getAriaDescribedBy } from './KeytipUtils';
+import {
+  sequencesToID,
+  mergeOverflows,
+  getAriaDescribedBy
+} from './KeytipUtils';
 import { KTP_FULL_PREFIX, KTP_SEPARATOR, KTP_LAYER_ID } from './KeytipConstants';
 import { arraysEqual } from '../../Utilities';
 
@@ -25,7 +29,9 @@ describe('KeytipUtils', () => {
     it('for multiple complex key sequences', () => {
       const complexKeySequences: string[] = ['an', 'cb'];
       const keytipID = sequencesToID(complexKeySequences);
-      expect(keytipID).toEqual(KTP_FULL_PREFIX + 'a' + KTP_SEPARATOR + 'n' + KTP_SEPARATOR + 'c' + KTP_SEPARATOR + 'b');
+      expect(keytipID).toEqual(KTP_FULL_PREFIX + 'a' +
+        KTP_SEPARATOR + 'n' + KTP_SEPARATOR +
+        'c' + KTP_SEPARATOR + 'b');
     });
   });
 
@@ -41,7 +47,8 @@ describe('KeytipUtils', () => {
       const overflowSequence = ['h', '01'];
       const keySequences = ['h', 'x', 'c'];
       const newKeySequence = mergeOverflows(keySequences, overflowSequence);
-      expect(arraysEqual(newKeySequence, ['h', '01', 'x', 'c'])).toEqual(true);
+      expect(arraysEqual(newKeySequence,
+        ['h', '01', 'x', 'c'])).toEqual(true);
     });
   });
   describe('getAriaDescribedBy', () => {

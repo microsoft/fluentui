@@ -1,5 +1,9 @@
 import { styled } from '../../Utilities';
-import { IPivotProps, IPivotStyleProps, IPivotStyles } from './Pivot.types';
+import {
+  IPivotProps,
+  IPivotStyleProps,
+  IPivotStyles
+} from './Pivot.types';
 import { PivotBase } from './Pivot.base';
 import { getStyles } from './Pivot.styles';
 
@@ -8,4 +12,7 @@ import { getStyles } from './Pivot.styles';
  * distinct content categories. Pivots allow for navigation between two or more content
  * views and relies on text headers to articulate the different sections of content.
  */
-export const Pivot = styled<IPivotProps, IPivotStyleProps, IPivotStyles>(PivotBase, getStyles);
+export const Pivot = styled<IPivotProps, IPivotStyleProps, IPivotStyles>(
+  PivotBase,
+  getStyles
+);

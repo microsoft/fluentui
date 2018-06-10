@@ -1,4 +1,8 @@
-import { HighContrastSelector, AnimationVariables, normalize } from '../../Styling';
+import {
+  HighContrastSelector,
+  AnimationVariables,
+  normalize
+} from '../../Styling';
 import { ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
 
 export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
@@ -43,7 +47,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
           borderColor: palette.themePrimary,
           selectors: {
             ':hover': {
-              borderColor: palette.themePrimary
+              borderColor: palette.themePrimary,
             },
             [HighContrastSelector]: {
               borderColor: 'Highlight'
@@ -68,10 +72,9 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
           padding: '1px 0 1px 8px'
         }
       ],
-      underlined &&
-        disabled && {
-          backgroundColor: 'transparent'
-        },
+      underlined && disabled && {
+        backgroundColor: 'transparent'
+      },
       hasInput && 'can-clear',
       className
     ],
@@ -101,7 +104,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
     icon: [
       'ms-SearchBox-icon',
       {
-        opacity: 1
+        opacity: 1,
       },
       hasFocus && {
         opacity: 0

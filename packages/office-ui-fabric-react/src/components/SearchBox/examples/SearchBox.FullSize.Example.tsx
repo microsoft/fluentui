@@ -7,21 +7,22 @@ import './SearchBox.Examples.scss';
 export class SearchBoxFullSizeExample extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
-      <div className="ms-SearchBoxExample">
+      <div className='ms-SearchBoxExample'>
         <SearchBox
-          placeholder="Search"
-          onFocus={() => console.log('onFocus called')}
-          onBlur={() => console.log('onBlur called')}
-          onChange={() => console.log('onChange called')}
+          placeholder='Search'
+          onFocus={ () => console.log('onFocus called') }
+          onBlur={ () => console.log('onBlur called') }
+          onChange={ () => console.log('onChange called') }
         />
         <SearchBox
-          placeholder="Search with no animation"
-          onFocus={() => console.log('onFocus called')}
-          onBlur={() => console.log('onBlur called')}
-          onChange={() => console.log('onChange called')}
+          placeholder='Search with no animation'
+          onFocus={ () => console.log('onFocus called') }
+          onBlur={ () => console.log('onBlur called') }
+          onChange={ () => console.log('onChange called') }
           disableAnimation
         />
       </div>
     );
   }
+
 }

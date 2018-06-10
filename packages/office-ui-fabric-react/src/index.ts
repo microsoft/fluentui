@@ -53,7 +53,6 @@ export * from './ResizeGroup';
 export * from './ScrollablePane';
 export * from './SearchBox';
 export * from './SelectedItemsList';
-export * from './Shimmer';
 export * from './Slider';
 export * from './SpinButton';
 export * from './Spinner';

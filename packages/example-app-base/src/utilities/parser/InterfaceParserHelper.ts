@@ -10,9 +10,7 @@ const JSDOC_DEPRECATED = '@deprecated';
  * Supporting enum for the parser, used internally within the parser only.
  */
 enum ParseState {
-  default,
-  comment,
-  declaration
+  default, comment, declaration
 }
 
 /**
@@ -118,6 +116,7 @@ export class InterfaceParserHelper extends BaseParser {
             if (this.eat(':')) {
               tmp = this.eatUntil(/\;/);
               type = tmp;
+
             } else {
               // encountered semicolon or =
               type = 'unspecified';
@@ -126,11 +125,8 @@ export class InterfaceParserHelper extends BaseParser {
             this.eat(';'); // actually eat the semicolon
 
             let isOptional = identifierName[identifierName.length - 1] === '?';
-            let propType = isDeprecated
-              ? InterfacePropertyType.deprecated
-              : isOptional
-                ? InterfacePropertyType.optional
-                : InterfacePropertyType.required;
+            let propType = isDeprecated ? InterfacePropertyType.deprecated :
+              (isOptional ? InterfacePropertyType.optional : InterfacePropertyType.required);
 
             if (isOptional) {
               identifierName = identifierName.substr(0, identifierName.length - 1);

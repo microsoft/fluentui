@@ -2,44 +2,6 @@
   "name": "@uifabric/icons",
   "entries": [
     {
-      "version": "6.0.1",
-      "tag": "@uifabric/icons_v6.0.1",
-      "date": "Tue, 05 Jun 2018 00:44:30 GMT",
-      "comments": {
-        "patch": [
-          {
-            "author": "Mark Polak <mark@thedutchies.com>",
-            "commit": "cfa7a19ec1d6f98c13f822a828e0751f64507dbd",
-            "comment": "Added Prettier"
-          }
-        ],
-        "dependency": [
-          {
-            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.0.2 <7.0.0` to `>=6.0.3 <7.0.0`"
-          }
-        ]
-      }
-    },
-    {
-      "version": "6.0.0",
-      "tag": "@uifabric/icons_v6.0.0",
-      "date": "Wed, 30 May 2018 20:28:33 GMT",
-      "comments": {
-        "major": [
-          {
-            "author": "Cliff Koh <zihankoh@microsoft.com>",
-            "commit": "937364830cb4f1d6c38a319e61f6388eab2fbe32",
-            "comment": "Minimum React version is now 16.3.2."
-          }
-        ],
-        "dependency": [
-          {
-            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.31.0 <6.0.0` to `>=6.0.0 <7.0.0`"
-          }
-        ]
-      }
-    },
-    {
       "version": "5.8.0",
       "tag": "@uifabric/icons_v5.8.0",
       "date": "Wed, 16 May 2018 00:05:17 GMT",

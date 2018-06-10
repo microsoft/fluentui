@@ -11,6 +11,7 @@ class Example extends React.Component<any, any> {
 }
 
 describe('withResponsiveMode', () => {
+
   it('can be used in a server scenario', () => {
     setSSR(true);
 
@@ -19,4 +20,5 @@ describe('withResponsiveMode', () => {
 
     setSSR(false);
   });
+
 });

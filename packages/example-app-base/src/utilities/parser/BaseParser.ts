@@ -1,3 +1,4 @@
+
 /**
  * Base for a parser - does not actually do any parsing.
  */

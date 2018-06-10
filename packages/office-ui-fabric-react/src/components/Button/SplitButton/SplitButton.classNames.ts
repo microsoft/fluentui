@@ -10,44 +10,53 @@ export interface ISplitButtonClassNames {
   divider?: string;
 }
 
-export const getClassNames = memoizeFunction(
-  (styles: IButtonStyles, disabled: boolean, expanded: boolean, checked: boolean): ISplitButtonClassNames => {
-    return {
-      root: mergeStyles(
-        styles.splitButtonMenuButton,
-        expanded && [styles.splitButtonMenuButtonExpanded],
-        disabled && [styles.splitButtonMenuButtonDisabled],
-        checked && !disabled && [styles.splitButtonMenuButtonChecked]
-      ),
+export const getClassNames = memoizeFunction((
+  styles: IButtonStyles,
+  disabled: boolean,
+  expanded: boolean,
+  checked: boolean,
+): ISplitButtonClassNames => {
+  return {
 
-      splitButtonContainer: mergeStyles(
-        styles.splitButtonContainer,
-        checked &&
-          !disabled && [
-            styles.splitButtonContainerChecked,
-            {
-              selectors: {
-                ':hover': styles.splitButtonContainerCheckedHovered
-              }
-            }
-          ],
-        !disabled &&
-          !checked && [
-            {
-              selectors: {
-                ':hover': styles.splitButtonContainerHovered,
-                ':focus': styles.splitButtonContainerFocused
-              }
-            }
-          ],
-        disabled && styles.splitButtonContainerDisabled
-      ),
+    root: mergeStyles(
+      styles.splitButtonMenuButton,
+      expanded && [
+        styles.splitButtonMenuButtonExpanded
+      ],
+      disabled && [
+        styles.splitButtonMenuButtonDisabled
+      ],
+      checked && !disabled && [
+        styles.splitButtonMenuButtonChecked
+      ]
+    ),
 
-      icon: mergeStyles(styles.splitButtonMenuIcon, disabled && styles.splitButtonMenuIconDisabled),
+    splitButtonContainer: mergeStyles(
+      styles.splitButtonContainer,
+      checked && !disabled && [
+        styles.splitButtonContainerChecked,
+        {
+          selectors: {
+            ':hover': styles.splitButtonContainerCheckedHovered
+          }
+        }],
+      !disabled && !checked && [{
+        selectors: {
+          ':hover': styles.splitButtonContainerHovered,
+          ':focus': styles.splitButtonContainerFocused
+        }
+      }],
+      disabled && styles.splitButtonContainerDisabled
+    ),
 
-      flexContainer: mergeStyles(styles.splitButtonFlexContainer),
+    icon: mergeStyles(
+      styles.splitButtonMenuIcon,
+      disabled && styles.splitButtonMenuIconDisabled
+    ),
 
-      divider: mergeStyles(styles.splitButtonDivider)
-    };
-  }
-);
+    flexContainer: mergeStyles(styles.splitButtonFlexContainer),
+
+    divider: mergeStyles(styles.splitButtonDivider)
+
+  };
+});

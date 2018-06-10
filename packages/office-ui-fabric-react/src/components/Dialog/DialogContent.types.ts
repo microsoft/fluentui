@@ -3,21 +3,23 @@ import { DialogContentBase } from './DialogContent.base';
 import { IButtonProps } from '../Button/Button.types';
 import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IStyleFunction } from '../../Utilities';
 
-export interface IDialogContent {}
+export interface IDialogContent {
+
+}
 
 export interface IDialogContentProps extends React.Props<DialogContentBase> {
   /**
-   * Optional callback to access the IDialogContent interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
-   */
+  * Optional callback to access the IDialogContent interface. Use this instead of ref for accessing
+  * the public methods and properties of the component.
+  */
   componentRef?: (component: IDialogContent | null) => void;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
-  styles?: IStyleFunctionOrObject<IDialogContentStyleProps, IDialogContentStyles>;
+  getStyles?: IStyleFunction<IDialogContentStyleProps, IDialogContentStyles>;
 
   /**
    * Theme provided by HOC.
@@ -30,8 +32,8 @@ export interface IDialogContentProps extends React.Props<DialogContentBase> {
   isMultiline?: boolean;
 
   /**
-   * Show an 'x' close button in the upper-right corner
-   */
+  * Show an 'x' close button in the upper-right corner
+  */
   showCloseButton?: boolean;
 
   /**
@@ -40,23 +42,23 @@ export interface IDialogContentProps extends React.Props<DialogContentBase> {
   topButtonsProps?: IButtonProps[];
 
   /**
-   * Optional override class name
-   */
+  * Optional override class name
+  */
   className?: string;
 
   /**
-   * A callback function for when the Dialog is dismissed from the close button or light dismiss, before the animation completes.
-   */
+  * A callback function for when the Dialog is dismissed from the close button or light dismiss, before the animation completes.
+  */
   onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
 
   /**
-   * The Id for subText container
-   */
+  * The Id for subText container
+  */
   subTextId?: string;
 
   /**
-   * The subtext to display in the dialog
-   */
+  * The subtext to display in the dialog
+  */
   subText?: string;
 
   /**
@@ -65,8 +67,8 @@ export interface IDialogContentProps extends React.Props<DialogContentBase> {
   titleId?: string;
 
   /**
-   * The title text to display at the top of the dialog.
-   */
+  * The title text to display at the top of the dialog.
+  */
   title?: string;
 
   /**
@@ -81,9 +83,9 @@ export interface IDialogContentProps extends React.Props<DialogContentBase> {
   closeButtonAriaLabel?: string;
 
   /**
-   * The type of Dialog to display.
-   * @default DialogType.normal
-   */
+  * The type of Dialog to display.
+  * @default DialogType.normal
+  */
   type?: DialogType;
 }
 

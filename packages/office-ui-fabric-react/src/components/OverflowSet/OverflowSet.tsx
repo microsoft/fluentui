@@ -18,6 +18,7 @@ import * as stylesImport from './OverflowSet.scss';
 const styles: any = stylesImport;
 
 export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements IOverflowSet {
+
   private _focusZone = createRef<IFocusZone>();
   private _persistedKeytips: { [uniqueID: string]: IKeytipProps } = {};
   private _keytipManager: KeytipManager = KeytipManager.getInstance();
@@ -28,7 +29,7 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
 
     if (props.doNotContainWithinFocusZone) {
       this._warnMutuallyExclusive({
-        doNotContainWithinFocusZone: 'focusZoneProps'
+        'doNotContainWithinFocusZone': 'focusZoneProps'
       });
     }
   }
@@ -65,12 +66,17 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
 
     return (
       <Tag
-        {...uniqueComponentProps}
-        className={mergeStyles('ms-OverflowSet', styles.root, vertical && styles.rootVertical, className)}
-        role={role}
+        { ...uniqueComponentProps }
+        className={ mergeStyles(
+          'ms-OverflowSet',
+          styles.root,
+          vertical && styles.rootVertical,
+          className
+        ) }
+        role={ role }
       >
-        {items && this._onRenderItems(items)}
-        {overflowItems && overflowItems.length > 0 && this._onRenderOverflowButtonWrapper(overflowItems)}
+        { items && this._onRenderItems(items) }
+        { overflowItems && overflowItems.length > 0 && this._onRenderOverflowButtonWrapper(overflowItems) }
       </Tag>
     );
   }
@@ -158,22 +164,20 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
     return items.map((item, i) => {
       const wrapperDivProps: React.HTMLProps<HTMLDivElement> = { className: css('ms-OverflowSet-item', styles.item) };
       return (
-        <div key={item.key} {...wrapperDivProps}>
-          {this.props.onRenderItem(item)}
+        <div key={ item.key } { ...wrapperDivProps }>
+          { this.props.onRenderItem(item) }
         </div>
       );
     });
-  };
+  }
 
   private _onRenderOverflowButtonWrapper = (items: any[]): JSX.Element => {
-    const wrapperDivProps: React.HTMLProps<HTMLDivElement> = {
-      className: css('ms-OverflowSet-overflowButton', styles.item)
-    };
+    const wrapperDivProps: React.HTMLProps<HTMLDivElement> = { className: css('ms-OverflowSet-overflowButton', styles.item) };
     const overflowKeytipSequences = this.props.keytipSequences;
     let newOverflowItems: any[] = [];
 
     if (overflowKeytipSequences) {
-      items.forEach(overflowItem => {
+      items.forEach((overflowItem) => {
         const keytip = (overflowItem as IOverflowSetItemProps).keytipProps;
         if (keytip) {
           // Create persisted keytip
@@ -185,11 +189,7 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
 
           if (keytip.hasDynamicChildren || this._getSubMenuForItem(overflowItem)) {
             // If the keytip has a submenu or children nodes, change onExecute to persistedKeytipExecute
-            persistedKeytip.onExecute = this._keytipManager.menuExecute.bind(
-              this._keytipManager,
-              overflowKeytipSequences,
-              overflowItem.keytipProps.keySequences
-            );
+            persistedKeytip.onExecute = this._keytipManager.menuExecute.bind(this._keytipManager, overflowKeytipSequences, overflowItem.keytipProps.keySequences);
           } else {
             // If the keytip doesn't have a submenu, just execute the original function
             persistedKeytip.onExecute = keytip.onExecute;
@@ -216,8 +216,12 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
     } else {
       newOverflowItems = items;
     }
-    return <div {...wrapperDivProps}>{this.props.onRenderOverflowButton(newOverflowItems)}</div>;
-  };
+    return (
+      <div { ...wrapperDivProps }>
+        { this.props.onRenderOverflowButton(newOverflowItems) }
+      </div>
+    );
+  }
 
   /**
    * Gets the subMenu for an overflow item

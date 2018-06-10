@@ -9,12 +9,9 @@ import { AnimationClassNames } from '../../../Styling';
 import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
 const exampleStyles: any = exampleStylesImport;
 
-export class LayerContentExample extends BaseComponent<
-  {},
-  {
-    time: string;
-  }
-> {
+export class LayerContentExample extends BaseComponent<{}, {
+  time: string
+}> {
   public static contextTypes = {
     message: PropTypes.string
   };
@@ -36,19 +33,18 @@ export class LayerContentExample extends BaseComponent<
 
   public render(): JSX.Element {
     return (
-      <div className={'LayerExample-content ' + AnimationClassNames.scaleUpIn100}>
-        <div className="LayerExample-textContent">{this.context.message}</div>
-        <div>{this.state.time}</div>
+      <div className={ 'LayerExample-content ' + AnimationClassNames.scaleUpIn100 }>
+        <div className='LayerExample-textContent'>{ this.context.message }</div>
+        <div>{ this.state.time }</div>
       </div>
+
     );
   }
 }
-export class LayerBasicExample extends BaseComponent<
-  {},
-  {
-    showLayer: boolean;
-  }
-> {
+export class LayerBasicExample extends BaseComponent<{}, {
+  showLayer: boolean;
+}> {
+
   public static childContextTypes = {
     message: PropTypes.string
   };
@@ -62,7 +58,7 @@ export class LayerBasicExample extends BaseComponent<
 
   public getChildContext() {
     return {
-      message: 'Hello world.'
+      'message': 'Hello world.'
     };
   }
 
@@ -71,20 +67,22 @@ export class LayerBasicExample extends BaseComponent<
 
     return (
       <div>
+
         <Checkbox
-          className={exampleStyles.exampleCheckbox}
-          label="Wrap the content box belowed in a Layer"
-          checked={showLayer}
-          onChange={this._onChange}
+          className={ exampleStyles.exampleCheckbox }
+          label='Wrap the content box belowed in a Layer'
+          checked={ showLayer }
+          onChange={ this._onChange }
         />
 
-        {showLayer ? (
+        { showLayer ? (
           <Layer>
             <LayerContentExample />
           </Layer>
         ) : (
-          <LayerContentExample />
-        )}
+            <LayerContentExample />
+          ) }
+
       </div>
     );
   }

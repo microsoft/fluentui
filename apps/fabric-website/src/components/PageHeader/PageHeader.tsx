@@ -8,6 +8,7 @@ import { PageHeaderLink } from '../../components/PageHeaderLink/PageHeaderLink';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 
 export interface IPageHeaderProps extends IBaseProps {
+
   /**
    * The title of the current page.
    * @default 'Page title'
@@ -67,9 +68,11 @@ export class PageHeader extends BaseComponent<IPageHeaderProps, IPageHeaderState
       headerBottom: 'unset',
       headerTop: '0'
     };
+
   }
 
   public componentDidMount(): void {
+
     // Only attach the header if there are in-page nav items
     if (this.props.links) {
       this._events.on(window, 'scroll', this._onScroll, true);
@@ -92,13 +95,13 @@ export class PageHeader extends BaseComponent<IPageHeaderProps, IPageHeaderState
     if (links) {
       inPageNav = (
         <FocusZone>
-          <nav className={styles.pageNav} aria-label="In page navigation">
+          <nav className={ styles.pageNav } aria-label='In page navigation'>
             <ul>
-              {links.map((link, linkIndex) => (
-                <li key={linkIndex}>
-                  <PageHeaderLink href={this._getPagePath(link)} text={link.text} />
+              { links.map((link, linkIndex) => (
+                <li key={ linkIndex }>
+                  <PageHeaderLink href={ this._getPagePath(link) } text={ link.text } />
                 </li>
-              ))}
+              )) }
             </ul>
           </nav>
         </FocusZone>
@@ -106,10 +109,12 @@ export class PageHeader extends BaseComponent<IPageHeaderProps, IPageHeaderState
     }
 
     return (
-      <div className={css(styles.pageHeader, isAttached ? styles.isAttached : '')} style={backgroundStyle}>
-        <div className={styles.content} style={backgroundStyle}>
-          <h1 className={styles.pageTitle}>{pageTitle}</h1>
-          {inPageNav}
+      <div className={ css(styles.pageHeader,
+        isAttached ? styles.isAttached : ''
+      ) } style={ backgroundStyle }>
+        <div className={ styles.content } style={ backgroundStyle }>
+          <h1 className={ styles.pageTitle }>{ pageTitle }</h1>
+          { inPageNav }
         </div>
       </div>
     );

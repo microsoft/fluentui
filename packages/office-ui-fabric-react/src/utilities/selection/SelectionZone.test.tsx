@@ -28,51 +28,36 @@ let _lastItemInvoked: any;
 
 function _initializeSelection(selectionMode = SelectionMode.multiple): void {
   _selection = new Selection();
-  _selection.setItems([{ key: 'a' }, { key: 'b' }, { key: 'c' }, { key: 'd' }]);
+  _selection.setItems([{ key: 'a', }, { key: 'b' }, { key: 'c' }, { key: 'd' }]);
   _selectionZone = ReactTestUtils.renderIntoDocument(
     <SelectionZone
-      selection={_selection}
-      selectionMode={selectionMode}
-      disableAutoSelectOnInputElements={true}
+      selection={ _selection }
+      selectionMode={ selectionMode }
+      disableAutoSelectOnInputElements={ true }
       // tslint:disable-next-line:jsx-no-lambda
-      onItemInvoked={(item: IObjectWithKey) => {
-        _onItemInvokeCalled++;
-        _lastItemInvoked = item;
-      }}
+      onItemInvoked={ (item: IObjectWithKey) => { _onItemInvokeCalled++; _lastItemInvoked = item; } }
     >
-      <button id="toggleAll" data-selection-all-toggle={true}>
-        Toggle all selected
-      </button>
 
-      <div id="surface0" data-selection-index="0">
-        <button id="toggle0" data-selection-toggle={true}>
-          Toggle
-        </button>
-        <button id="invoke0" data-selection-invoke={true}>
-          Invoke
-        </button>
+      <button id='toggleAll' data-selection-all-toggle={ true }>Toggle all selected</button>
+
+      <div id='surface0' data-selection-index='0'>
+        <button id='toggle0' data-selection-toggle={ true }>Toggle</button>
+        <button id='invoke0' data-selection-invoke={ true }>Invoke</button>
       </div>
 
-      <div id="surface1" data-selection-index="1">
-        <button id="toggle1" data-selection-toggle={true}>
-          Toggle
-        </button>
-        <button id="invoke1" data-selection-invoke={true}>
-          Invoke
-        </button>
-        <button id="noSelect1">No Select</button>
-        <button id="select1" data-selection-select={true}>
-          Select First
-        </button>
+      <div id='surface1' data-selection-index='1'>
+        <button id='toggle1' data-selection-toggle={ true }>Toggle</button>
+        <button id='invoke1' data-selection-invoke={ true }>Invoke</button>
+        <button id='noSelect1'>No Select</button>
+        <button id='select1' data-selection-select={ true }>Select First</button>
       </div>
 
-      <div id="invoke2" data-selection-index="2" data-selection-invoke={true}>
-        <button id="toggle2" data-selection-toggle={true}>
-          Toggle
-        </button>
+      <div id='invoke2' data-selection-index='2' data-selection-invoke={ true }>
+        <button id='toggle2' data-selection-toggle={ true }>Toggle</button>
       </div>
 
-      <div id="surface3" data-selection-index="3" />
+      <div id='surface3' data-selection-index='3' />
+
     </SelectionZone>
   );
 

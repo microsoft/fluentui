@@ -1,13 +1,23 @@
 import { IScrollablePaneStyleProps, IScrollablePaneStyles } from './ScrollablePane.types';
-import { HighContrastSelector, IStyle, ZIndexes, getGlobalClassNames } from '../../Styling';
+import {
+  HighContrastSelector,
+  IStyle,
+  ZIndexes,
+  getGlobalClassNames,
+} from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-ScrollablePane',
   contentContainer: 'ms-ScrollablePane--contentContainer'
 };
 
-export const getStyles = (props: IScrollablePaneStyleProps): IScrollablePaneStyles => {
-  const { className, theme } = props;
+export const getStyles = (
+  props: IScrollablePaneStyleProps
+): IScrollablePaneStyles => {
+  const {
+    className,
+    theme,
+  } = props;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -30,8 +40,12 @@ export const getStyles = (props: IScrollablePaneStyleProps): IScrollablePaneStyl
     WebkitOverflowScrolling: 'touch'
   };
 
-  return {
-    root: [classNames.root, positioningStyle, className],
+  return ({
+    root: [
+      classNames.root,
+      positioningStyle,
+      className
+    ],
     contentContainer: [
       classNames.contentContainer,
       {
@@ -67,5 +81,5 @@ export const getStyles = (props: IScrollablePaneStyleProps): IScrollablePaneStyl
       },
       AboveAndBelowStyles
     ]
-  };
+  });
 };

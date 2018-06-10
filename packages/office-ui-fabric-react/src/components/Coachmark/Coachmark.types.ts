@@ -2,56 +2,36 @@ import * as React from 'react';
 import { Coachmark } from './Coachmark';
 import { ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.styles';
 import { IPositioningContainerTypes } from './PositioningContainer/PositioningContainer.types';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IStyleFunction } from '../../Utilities';
 
-export interface ICoachmark {}
+export interface ICoachmark {
+}
 
 export interface ICoachmarkTypes extends React.Props<Coachmark> {
-  /**
-   * Optional callback to access the ICoachmark interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
-   */
   componentRef?: (component: ICoachmark | null) => void;
 
   /**
-   * Call to provide customized styling that will layer on top of the variant rules
+   * Get styles method.
    */
-  styles?: IStyleFunctionOrObject<ICoachmarkStyleProps, ICoachmarkStyles>;
+  getStyles?: IStyleFunction<ICoachmarkStyleProps, ICoachmarkStyles>;
 
   /**
-   * The target that the Coachmark should try to position itself based on.
+   * The target that the TeachingBubble should try to position itself based on.
    */
-  target: HTMLElement | string | null;
+  target: HTMLElement | null;
 
-  /**
-   * Props to pass to the PositioningContainer component.  Specific the `directionalHint` to indicate which edge the
-   * Coachmark/TeachingBubble should live.
-   * @default directionalHint: DirectionalHint.bottomAutoEdge
-   */
   positioningContainerProps?: IPositioningContainerTypes;
 
   /**
-   * Whether or not to force the Coachmark/TeachingBubble content to fit within the window bounds.
-   */
-  isPositionForced?: boolean;
-
-  /**
-   * The starting collapsed state for the Coachmark.  Use isCollapsed instead.
+   * The starting collapsed state for the Coachmark?
    * @default true
-   * @deprecated
    */
   collapsed?: boolean;
 
   /**
-   * The starting collapsed state for the Coachmark.
-   * @default true
-   */
-  isCollapsed?: boolean;
-
-  /**
    * The distance in pixels the mouse is located
-   * before opening up the Coachmark.
-   * @default 10
+   * before opening up the coachmark.
+   * @default 100
    */
   mouseProximityOffset?: number;
 
@@ -66,52 +46,48 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
   onAnimationOpenEnd?: () => void;
 
   /**
-   * The width of the Beak component.
-   * @deprecated
+   * The width of the beak component.
    */
   beakWidth?: number;
 
   /**
-   * The height of the Beak component.
-   * @deprecated
+   * The height of the beak component
    */
   beakHeight?: number;
 
   /**
-   * Delay before allowing mouse movements to open the Coachmark.
-   * @default 3600
+   * Delay before allowing mouse movements to open
+   * the Coachmark
    */
   delayBeforeMouseOpen?: number;
 
   /**
-   * Callback to run when the mouse moves.
+   * Runs every time the mouse moves
    */
   onMouseMove?: (e: MouseEvent) => void;
 
   /**
-   * The width of the Coachmark.
-   * @deprecated
+   * The width of the coachmark
    */
   width?: number;
 
   /**
-   * The height of the Coachmark.
-   * @deprecated
+   * The height of the coachmark
    */
   height?: number;
 
   /**
-   * Color of the Coachmark/TeachingBubble.
+   * Color
    */
   color?: string;
 
   /**
-   * Beacon color one.
+   * Beacon color one
    */
   beaconColorOne?: string;
 
   /**
-   * Beacon color two.
+   * Beacon color two
    */
   beaconColorTwo?: string;
 }

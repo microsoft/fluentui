@@ -77,6 +77,7 @@ export class DetailsListBasicExample extends React.Component<
             ariaLabelForSelectionColumn="Toggle selection"
             ariaLabelForSelectAllCheckbox="Toggle selection for all items"
             onItemInvoked={this._onItemInvoked}
+            useReducedRowRenderer={true}
           />
         </MarqueeSelection>
       </div>

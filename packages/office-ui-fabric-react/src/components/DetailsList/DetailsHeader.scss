@@ -161,18 +161,19 @@ $isPaddedMargin: 24px;
 }
 
 .cellTitle {
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: stretch;
   box-sizing: border-box;
   overflow: hidden;
+  max-width: 100%;
   @include focus-border($position: auto);
   padding: 0 8px;
 }
 
 .cellName {
-  flex: 0 1 auto;
+  flex: 1 1 auto;
   overflow: hidden;
   text-overflow: ellipsis;
 }

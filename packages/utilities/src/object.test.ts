@@ -57,8 +57,8 @@ describe('mapEnumByName', () => {
 describe('values', () => {
   it('gets all values in a dictionary object', () => {
     const obj = {
-      test: 1,
-      ing: 2,
+      'test': 1,
+      'ing': 2,
       '123': 3
     };
     const objValues = values<number>(obj);

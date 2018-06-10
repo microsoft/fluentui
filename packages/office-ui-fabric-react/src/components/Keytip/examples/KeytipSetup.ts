@@ -122,7 +122,7 @@ const keytipConfig: IKeytipConfig = {
               optionalProps: {
                 onExecute: btnExecute
               }
-            }
+            },
           ]
         },
         {
@@ -132,7 +132,7 @@ const keytipConfig: IKeytipConfig = {
             offset: { x: 17, y: 19 },
             onExecute: btnExecute
           }
-        }
+        },
       ]
     },
     // Overflow Well example

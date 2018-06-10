@@ -109,12 +109,13 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
     <input
       aria-activedescendant={undefined}
       aria-autocomplete="both"
-      aria-describedby={undefined}
+      aria-describedby="ComboBox0-option"
       aria-disabled={undefined}
       aria-expanded={false}
       aria-label={undefined}
       aria-labelledby={undefined}
-      aria-owns={undefined}
+      aria-owns="ComboBox0-list"
+      aria-readonly="true"
       autoCapitalize="off"
       autoComplete="off"
       className=
@@ -154,16 +155,16 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
       value="testValue"
     />
     <button
-      aria-describedby={undefined}
+      aria-describedby={null}
       aria-hidden={true}
       aria-label={undefined}
-      aria-labelledby={undefined}
+      aria-labelledby={null}
       aria-pressed={false}
       checked={false}
       className=
           ms-Button
-          ms-Button--icon
           ms-ComboBox-CaretDown-button
+          ms-Button--icon
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -395,12 +396,13 @@ exports[`ComboBox renders a ComboBox with a Keytip correctly 1`] = `
     <input
       aria-activedescendant={undefined}
       aria-autocomplete="both"
-      aria-describedby=" ktp-layer-id ktp-a"
+      aria-describedby="ComboBox4-option ktp-layer-id ktp-a"
       aria-disabled={undefined}
       aria-expanded={false}
       aria-label={undefined}
       aria-labelledby={undefined}
-      aria-owns={undefined}
+      aria-owns="ComboBox4-list"
+      aria-readonly="true"
       autoCapitalize="off"
       autoComplete="off"
       className=
@@ -440,16 +442,16 @@ exports[`ComboBox renders a ComboBox with a Keytip correctly 1`] = `
       value=""
     />
     <button
-      aria-describedby={undefined}
+      aria-describedby={null}
       aria-hidden={true}
       aria-label={undefined}
-      aria-labelledby={undefined}
+      aria-labelledby={null}
       aria-pressed={false}
       checked={false}
       className=
           ms-Button
-          ms-Button--icon
           ms-ComboBox-CaretDown-button
+          ms-Button--icon
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;

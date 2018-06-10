@@ -3,9 +3,11 @@ import { IRenderFunction } from '../../Utilities';
 import { PersonaBase } from './Persona.base';
 import { ImageLoadState } from '../../Image';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IStyleFunction } from '../../Utilities';
 
-export interface IPersona {}
+export interface IPersona {
+
+}
 
 export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
   /**
@@ -149,7 +151,7 @@ export interface IPersonaProps extends IPersonaSharedProps {
   /**
    * Call to provide customized styling that will layer on top of variant rules
    */
-  styles?: IStyleFunctionOrObject<IPersonaStyleProps, IPersonaStyles>;
+  getStyles?: IStyleFunction<IPersonaStyleProps, IPersonaStyles>;
 
   /**
    * Optional custom renderer for the primary text.
@@ -225,7 +227,7 @@ export interface IPersonaCoinProps extends IPersonaSharedProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
-  styles?: IStyleFunctionOrObject<IPersonaCoinStyleProps, IPersonaCoinStyles>;
+  getStyles?: IStyleFunction<IPersonaCoinStyleProps, IPersonaCoinStyles>;
 
   /**
    * Additional css class to apply to the PersonaCoin
@@ -274,7 +276,7 @@ export interface IPersonaPresenceProps extends IPersonaSharedProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
-  styles?: IStyleFunctionOrObject<IPersonaPresenceStyleProps, IPersonaPresenceStyles>;
+  getStyles?: IStyleFunction<IPersonaPresenceStyleProps, IPersonaPresenceStyles>;
 }
 
 export interface IPersonaPresenceStyleProps {
@@ -387,5 +389,5 @@ export enum PersonaInitialsColor {
    * Transparent is not intended to be used with typical initials due to accessibility issues.
    * Its primary use is for overflow buttons, so it is considered a reserved color and can only be set with overrides.
    */
-  transparent = 15
+  transparent = 15,
 }

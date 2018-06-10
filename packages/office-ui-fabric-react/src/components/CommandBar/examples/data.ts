@@ -2,10 +2,7 @@ export const items = [
   {
     key: 'newItem',
     name: 'New',
-    cacheKey: 'myCacheKey',
-    iconProps: {
-      iconName: 'Add'
-    },
+    icon: 'Add',
     ariaLabel: 'New. Use left and right arrow keys to navigate',
     ['data-automation-id']: 'newItemMenu',
     subMenuProps: {
@@ -13,45 +10,103 @@ export const items = [
         {
           key: 'emailMessage',
           name: 'Email message',
-          iconProps: {
-            iconName: 'Mail'
-          },
+          icon: 'Mail',
           ['data-automation-id']: 'newEmailButton'
         },
         {
           key: 'calendarEvent',
           name: 'Calendar event',
-          iconProps: {
-            iconName: 'Calendar'
-          }
+          icon: 'Calendar'
         }
-      ]
-    }
+      ],
+    },
   },
   {
     key: 'upload',
     name: 'Upload',
-    iconProps: {
-      iconName: 'Upload'
-    },
-    href: 'https://dev.office.com/fabric',
+    icon: 'Upload',
+    href: 'https://microsoft.com',
     ['data-automation-id']: 'uploadButton'
   },
   {
     key: 'share',
     name: 'Share',
-    iconProps: {
-      iconName: 'Share'
-    },
-    onClick: () => console.log('Share')
+    icon: 'Share',
+    onClick: () => { return; }
   },
   {
     key: 'download',
     name: 'Download',
-    iconProps: {
-      iconName: 'Download'
-    },
-    onClick: () => console.log('Download')
+    icon: 'Download',
+  },
+  {
+    key: 'link',
+    name: 'Link',
+    icon: 'WindowsLogo',
+    href: 'https://microsoft.com',
+  }
+];
+
+export const textOnlyItems = [
+  {
+    key: 'upload',
+    name: 'Upload',
+    onClick: () => { return; }
+  },
+  {
+    key: 'share',
+    name: 'Share',
+    onClick: () => { return; }
+  },
+  {
+    key: 'download',
+    name: 'Download',
+    onClick: () => { return; }
+  }
+];
+
+export const iconOnlyItems = [
+  {
+    key: 'upload',
+    name: '',
+    icon: 'Upload',
+    onClick: () => { return; }
+  },
+  {
+    key: 'share',
+    name: '',
+    icon: 'Share',
+    onClick: () => { return; }
+  },
+  {
+    key: 'download',
+    name: '',
+    icon: 'Download',
+    onClick: () => { return; }
+  },
+  {
+    key: 'move',
+    name: '',
+    icon: 'MoveToFolder',
+    onClick: () => { return; }
+  },
+  {
+    key: 'copy',
+    name: '',
+    icon: 'Copy',
+    onClick: () => { return; }
+  },
+  {
+    key: 'rename',
+    name: '',
+    icon: 'Edit',
+    onClick: () => { return; }
+  },
+  {
+    key: 'disabled',
+    icon: 'Cancel',
+    disabled: true,
+    onClick: () => { return; }
   }
 ];
 
@@ -59,23 +114,17 @@ export const overflowItems = [
   {
     key: 'move',
     name: 'Move to...',
-    iconProps: {
-      iconName: 'MoveToFolder'
-    }
+    icon: 'MoveToFolder'
   },
   {
     key: 'copy',
     name: 'Copy to...',
-    iconProps: {
-      iconName: 'Copy'
-    }
+    icon: 'Copy'
   },
   {
     key: 'rename',
     name: 'Rename...',
-    iconProps: {
-      iconName: 'Edit'
-    }
+    icon: 'Edit'
   }
 ];
 
@@ -83,27 +132,19 @@ export const farItems = [
   {
     key: 'sort',
     name: 'Sort',
-    iconProps: {
-      iconName: 'SortLines'
-    },
-    onClick: () => console.log('Sort')
+    icon: 'SortLines',
+    onClick: () => { return; }
   },
   {
     key: 'tile',
     name: 'Grid view',
-    iconProps: {
-      iconName: 'Tiles'
-    },
-    iconOnly: true,
-    onClick: () => console.log('Tiles')
+    icon: 'Tiles',
+    onClick: () => { return; }
   },
   {
     key: 'info',
     name: 'Info',
-    iconProps: {
-      iconName: 'Info'
-    },
-    iconOnly: true,
-    onClick: () => console.log('Info')
+    icon: 'Info',
+    onClick: () => { return; }
   }
 ];

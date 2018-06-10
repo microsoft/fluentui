@@ -1,3 +1,4 @@
+
 import { IStyle } from '../../Styling';
 
 export type IThemePagePalette = {
@@ -21,7 +22,7 @@ export interface IThemePageState {
   activeList?: string;
 }
 
-export interface IThemePageStyleProps {}
+export interface IThemePageStyleProps { }
 
 export interface IThemePageStyles {
   colorSwatch: IStyle;

@@ -11,22 +11,22 @@ export class DocumentCardActions extends BaseComponent<IDocumentCardActionsProps
     const { actions, views } = this.props;
 
     return (
-      <div className={css('ms-DocumentCardActions', styles.actions)}>
-        {actions &&
-          actions.map((action, index) => {
-            return (
-              <div className={css('ms-DocumentCardActions-action', styles.action)} key={index}>
-                <IconButton {...action} />
-              </div>
-            );
-          })}
+      <div className={ css('ms-DocumentCardActions', styles.actions) }>
 
-        {views! > 0 && (
-          <div className={css('ms-DocumentCardActions-views', styles.views)}>
-            <Icon iconName="View" />
-            {views}
+        { actions && actions.map((action, index) => {
+          return (
+            <div className={ css('ms-DocumentCardActions-action', styles.action) } key={ index }>
+              <IconButton { ...action } />
+            </div>
+          );
+        }) }
+
+        { views! > 0 && (
+          <div className={ css('ms-DocumentCardActions-views', styles.views) }>
+            <Icon iconName='View' />
+            { views }
           </div>
-        )}
+        ) }
       </div>
     );
   }

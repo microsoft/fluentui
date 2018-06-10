@@ -3,7 +3,9 @@ import { HoverCard } from './HoverCard';
 import { IExpandingCardProps } from './ExpandingCard.types';
 import { IStyle } from '../../Styling';
 
-export interface IHoverCard {}
+export interface IHoverCard {
+
+}
 
 /**
  * HoverCard component props.

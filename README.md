@@ -7,26 +7,6 @@
 
 Fabric React is a responsive, mobile-first collection of robust components designed to make it quick and simple for you to create web experiences using the Office Design Language.
 
-## Created with Fabric
-
-[<img alt="Yammer Logo" align="left" height="40" src='./ghdocs/img/yammer.png'/>](https://www.yammer.com)
-[<img alt="Outlook Logo" align="left" height="50" src='./ghdocs/img/outlook-350-150.png'/>](https://www.outlook.com)
-[<img alt="Visual Studio Logo" height="50" src='./ghdocs/img/VS_rgb_Purple.png'/>](https://www.visualstudio.com/team-services/")
-
-<details>
-    <summary>and many more...</summary>
-
-- [MileIQ](https://www.mileiq.com/)
-- [PowerApps Portal](https://web.powerapps.com/home)
-- [OneDrive](https://onedrive.com)
-- [SharePoint](https://onedrive.com)
-</details>
-
-
-## [Wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki)
-
-The bulk of the documentation is available on the [wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki).
-
 ## Contents
 
 - [Using Fabric React](#using-fabric-react)
@@ -40,9 +20,9 @@ The bulk of the documentation is available on the [wiki](https://github.com/Offi
 - [Licenses](#licenses)
 - [Changelog](#changelog)
 
-## Using Fabric React
+### Using Fabric React
 
-[Here is a step by step tutorial](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Sample-App) on how to build a simple React app with an Office UI Fabric React component.
+[Here is a step by step tutorial](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/OnBoarding/SampleApp.md) on how to build a simple React app with an Office UI Fabric React component.
 
 Integrating components into your project depends heavily on your setup. The recommended setup is to use a bundler such as Webpack which can resolve NPM package imports in your code and can bundle the specific things you import.
 
@@ -71,7 +51,7 @@ ReactDOM.render(
 
 ## Browser support
 
-Fabric React supports many commonly used browsers. See the [browser support doc](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Browser-Support) for more information.
+Fabric React supports many commonly used browsers. See the [browser support doc](./ghdocs/Testing/BrowserSupport.md) for more information.
 
 ## Server-side rendering
 
@@ -145,15 +125,15 @@ In Jest:
 
 ## Advanced usage
 
-For advanced usage including info about module vs. path-based imports, using an AMD bundler like Require, and deployment features, see our [advanced documentation](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Advanced-Usage).
+For advanced usage including info about module vs. path-based imports, using an AMD bundler like Require, and deployment features, see our [advanced documentation](./ghdocs/BestPractices/Advanced.md).
 
 ## Contribute to Fabric React
 
-Please take a look at our [contribution guidelines](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Contributing) for more info. Also read [Contribute Bug fixes](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Bug-Fixes) and [Contribute New component](https://github.com/OfficeDev/office-ui-fabric-react/wiki/New-Components).
+Please take a look at our [contribution guidelines](./ghdocs/Contributing/Contributing.md) for more info. Also read [Contribute Bug fixes](./ghdocs/Contributing/BugFixes.md) and [Contribute New component](./ghdocs/Contributing/NewComponent.md).
 
 ## Building the repo
 
-Before you get started, **make sure you have read the [Git branch setup instrucions](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Setup)**
+Before you get started, **make sure you have read the [Git branch setup instrucions](./ghdocs/Contributing/Setup.md)**
 
 To view the documentation including examples, contracts, component status, and to add functionality or fix issues locally, you can:
 
@@ -169,7 +149,7 @@ To build individual packages within the `packages/*/` folders, you can use `npm 
 
 ## Testing
 
-For testing see our [testing documentation](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Testing).
+For testing see our [testing documentation](./ghdocs/BestPractices/Testing.md).
 
 ## Advanced building tips
 
@@ -203,5 +183,5 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 
 ## Issue management and `Stale-bot`
 
-If you are getting `stale[bot]` messages and/or want to understand how we manage issues, please search for 'issue Triage' and/or 'stale[bot]' in the [FAQ](https://github.com/OfficeDev/office-ui-fabric-react/wiki/FAQ).
+If you are getting `stale[bot]` messages and/or want to understand how we manage issues, please search for 'issue Triage' and/or 'stale[bot]' in the [FAQ](./FAQ.md).
 

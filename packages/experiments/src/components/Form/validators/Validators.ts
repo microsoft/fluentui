@@ -20,13 +20,10 @@ export namespace Validators {
    * @param desiredLength The length of the string
    * @param formatError a callback which takes the length and formats an appropriate error message for validation failed
    */
-  export function length(
-    desiredLength: number,
-    formatError: (length: number) => string
-  ): (value?: string | null) => string | undefined {
+  export function length(desiredLength: number, formatError: (length: number) => string): (value?: string | null) => string | undefined {
     'use strict';
     return (value?: string | null): string | undefined => {
-      value = value !== null && value !== undefined ? value : '';
+      value = ((value !== null && value !== undefined) ? value : '');
       if (value.length !== desiredLength) {
         return formatError(value.length);
       }
@@ -38,13 +35,10 @@ export namespace Validators {
    * @param lengthBound The min length of the string
    * @param formatError a callback which takes the values Length and formats an appropriate error message for validation failed
    */
-  export function minLength(
-    lengthBound: number,
-    formatError: (length: number) => string
-  ): (value?: string | null) => string | undefined {
+  export function minLength(lengthBound: number, formatError: (length: number) => string): (value?: string | null) => string | undefined {
     'use strict';
     return (value?: string | null): string | undefined => {
-      value = value !== null && value !== undefined ? value : '';
+      value = ((value !== null && value !== undefined) ? value : '');
       if (value.length < lengthBound) {
         return formatError(value.length);
       }
@@ -56,13 +50,10 @@ export namespace Validators {
    * @param lengthBound The max length of the string
    * @param formatError a callback which takes the values length and formats an appropriate error message for validation failed
    */
-  export function maxLength(
-    lengthBound: number,
-    formatError: (length: number) => string
-  ): (value?: string | null) => string | undefined {
+  export function maxLength(lengthBound: number, formatError: (length: number) => string): (value?: string | null) => string | undefined {
     'use strict';
     return (value?: string | null): string | undefined => {
-      value = value !== null && value !== undefined ? value : '';
+      value = ((value !== null && value !== undefined) ? value : '');
       if (value.length > lengthBound) {
         return formatError(value.length);
       }
@@ -91,10 +82,7 @@ export namespace Validators {
    * @param bound The bound
    * @param formatError a callback which takes the length and formats an appropriate error message for validation failed
    */
-  export function minValue(
-    bound: number,
-    formatError: (length: number) => string
-  ): (value?: string | null) => string | undefined {
+  export function minValue(bound: number, formatError: (length: number) => string): (value?: string | null) => string | undefined {
     'use strict';
     return (value?: string | null): string | undefined => {
       if (value) {
@@ -111,10 +99,7 @@ export namespace Validators {
    * @param bound The bound
    * @param formatError a callback which takes the length and formats an appropriate error message for validation failed
    */
-  export function maxValue(
-    bound: number,
-    formatError: (length: number) => string
-  ): (value?: string | null) => string | undefined {
+  export function maxValue(bound: number, formatError: (length: number) => string): (value?: string | null) => string | undefined {
     'use strict';
     return (value?: string | null): string | undefined => {
       if (value) {

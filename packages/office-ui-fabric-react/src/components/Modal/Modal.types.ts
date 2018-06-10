@@ -18,20 +18,20 @@ export interface IModalProps extends React.Props<Modal>, IWithResponsiveModeStat
   componentRef?: (component: IModal | null) => void;
 
   /**
-   * Whether the dialog is displayed.
-   * @default false
-   */
+  * Whether the dialog is displayed.
+  * @default false
+  */
   isOpen?: boolean;
 
   /**
-   * Whether the overlay is dark themed.
-   * @default true
-   */
+  * Whether the overlay is dark themed.
+  * @default true
+  */
   isDarkOverlay?: boolean;
 
   /**
-   * A callback function for when the Modal is dismissed light dismiss, before the animation completes.
-   */
+  * A callback function for when the Modal is dismissed light dismiss, before the animation completes.
+  */
   onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
 
   /**
@@ -40,9 +40,9 @@ export interface IModalProps extends React.Props<Modal>, IWithResponsiveModeStat
   onDismissed?: () => any;
 
   /**
-   * Whether the dialog can be light dismissed by clicking outside the dialog (on the overlay).
-   * @default false
-   */
+  * Whether the dialog can be light dismissed by clicking outside the dialog (on the overlay).
+  * @default false
+  */
   isBlocking?: boolean;
 
   /**
@@ -51,8 +51,8 @@ export interface IModalProps extends React.Props<Modal>, IWithResponsiveModeStat
   className?: string;
 
   /**
-   * Optional override for container class
-   */
+  * Optional override for container class
+  */
   containerClassName?: string;
 
   /**

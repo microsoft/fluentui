@@ -86,6 +86,7 @@ export class Router extends BaseComponent<IRouterProps, {}> {
 
     return null;
   }
+
 }
 
 function _match(currentPath: string, child: any): boolean {
@@ -95,7 +96,10 @@ function _match(currentPath: string, child: any): boolean {
     path = path || '';
     currentPath = currentPath || '';
 
-    return !path || path.toLowerCase() === currentPath.toLowerCase();
+    return (
+      (!path) ||
+      (path.toLowerCase() === currentPath.toLowerCase())
+    );
   }
 
   return false;

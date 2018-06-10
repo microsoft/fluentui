@@ -3,7 +3,11 @@ import { assign } from 'office-ui-fabric-react/lib/Utilities';
 import { DetailsList, DetailsListLayoutMode, IColumn, IGroup } from 'office-ui-fabric-react/lib/DetailsList';
 import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
 import './PropertiesTable.scss';
-import { IInterfaceProperty, IEnumProperty, InterfacePropertyType } from '../../utilities/parser/index';
+import {
+  IInterfaceProperty,
+  IEnumProperty,
+  InterfacePropertyType
+} from '../../utilities/parser/index';
 import { FontClassNames } from 'office-ui-fabric-react/lib/Styling';
 
 export interface IPropertiesTableProps {
@@ -49,8 +53,7 @@ const DEFAULT_COLUMNS: IColumn[] = [
     isCollapsable: false,
     isResizable: true,
     isMultiline: true
-  },
-  {
+  }, {
     key: 'description',
     name: 'Description',
     fieldName: 'description',
@@ -93,18 +96,13 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, IPro
     super(props);
 
     let properties = (props.properties as IInterfaceProperty[])
-      .sort(
-        (a: IInterfaceProperty, b: IInterfaceProperty) =>
-          a.interfacePropertyType < b.interfacePropertyType
-            ? -1
-            : a.interfacePropertyType > b.interfacePropertyType
-              ? 1
-              : a.name < b.name
-                ? -1
-                : a.name > b.name
-                  ? 1
-                  : 0
-      )
+      .sort((a: IInterfaceProperty, b: IInterfaceProperty) => (
+        a.interfacePropertyType < b.interfacePropertyType ? -1 :
+          a.interfacePropertyType > b.interfacePropertyType ? 1 :
+            a.name < b.name ? -1 :
+              a.name > b.name ? 1 :
+                0
+      ))
       .map((prop: IInterfaceProperty, index: number) => assign({}, prop, { key: index }));
 
     let groups: IGroup[] | undefined = undefined;
@@ -129,14 +127,14 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, IPro
     }
 
     return (
-      <div className="PropertiesTable">
-        <h2 className={FontClassNames.xLarge}>{title}</h2>
+      <div className='PropertiesTable'>
+        <h2 className={ FontClassNames.xLarge }>{ title }</h2>
         <DetailsList
-          selectionMode={SelectionMode.none}
-          layoutMode={DetailsListLayoutMode.justified}
-          items={properties}
-          groups={groups}
-          columns={isEnum ? ENUM_COLUMNS : DEFAULT_COLUMNS}
+          selectionMode={ SelectionMode.none }
+          layoutMode={ DetailsListLayoutMode.justified }
+          items={ properties }
+          groups={ groups }
+          columns={ isEnum ? ENUM_COLUMNS : DEFAULT_COLUMNS }
         />
       </div>
     );
@@ -156,8 +154,7 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, IPro
   private _tryAddGroup(
     props: IInterfaceProperty[],
     typeToCompare: InterfacePropertyType,
-    name: string,
-    index: number,
+    name: string, index: number,
     allGroups: IGroup[]
   ): number {
     let group: IGroup | undefined = undefined;

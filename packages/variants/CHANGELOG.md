@@ -1,34 +1,6 @@
 # Change Log - @uifabric/variants
 
-This log was last generated on Thu, 07 Jun 2018 16:35:34 GMT and should not be manually modified.
-
-## 6.0.3
-Thu, 07 Jun 2018 16:35:34 GMT
-
-### Patches
-
-- Variant Theming: update soft variant logic for better accessibility
-
-## 6.0.2
-Tue, 05 Jun 2018 00:44:30 GMT
-
-### Patches
-
-- Added Prettier
-
-## 6.0.1
-Mon, 04 Jun 2018 10:16:13 GMT
-
-### Patches
-
-- Updating react typings.
-
-## 6.0.0
-Wed, 30 May 2018 20:28:33 GMT
-
-### Breaking changes
-
-- Minimum React version is now 16.3.2.
+This log was last generated on Thu, 24 May 2018 17:06:02 GMT and should not be manually modified.
 
 ## 5.5.2
 Thu, 24 May 2018 17:06:02 GMT

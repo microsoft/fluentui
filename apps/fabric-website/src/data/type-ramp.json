@@ -1,5 +1,10 @@
 {
-  "headers": ["Class", "Example", "Size", "Weight"],
+  "headers": [
+    "Class",
+    "Example",
+    "Size",
+    "Weight"
+  ],
   "data": [
     [
       {

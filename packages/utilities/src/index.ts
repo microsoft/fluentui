@@ -1,4 +1,3 @@
-export * from './aria';
 export * from './Async';
 export * from './AutoScroll';
 export * from './BaseComponent';

@@ -23,33 +23,33 @@ export interface IPanelProps extends React.Props<Panel> {
   componentRef?: (component: IPanel | null) => void;
 
   /**
-   * Whether the panel is displayed.
-   * @default false
-   */
+  * Whether the panel is displayed.
+  * @default false
+  */
   isOpen?: boolean;
 
   /**
-   * Has the close button visible.
-   * @default true
-   */
+  * Has the close button visible.
+  * @default true
+  */
   hasCloseButton?: boolean;
 
   /**
-   * Whether the panel can be light dismissed.
-   * @default false
-   */
+  * Whether the panel can be light dismissed.
+  * @default false
+  */
   isLightDismiss?: boolean;
 
   /**
-   * Whether the panel is hidden on dismiss, instead of destroyed in the DOM.
-   * @default false
-   */
+  * Whether the panel is hidden on dismiss, instead of destroyed in the DOM.
+  * @default false
+  */
   isHiddenOnDismiss?: boolean;
 
   /**
-   * Whether the panel uses a modal overlay or not
-   * @default true
-   */
+  * Whether the panel uses a modal overlay or not
+  * @default true
+  */
   isBlocking?: boolean;
 
   /**
@@ -59,14 +59,14 @@ export interface IPanelProps extends React.Props<Panel> {
   isFooterAtBottom?: boolean;
 
   /**
-   * Header text for the Panel.
-   * @default ""
-   */
+  * Header text for the Panel.
+  * @default ""
+  */
   headerText?: string;
 
   /**
-   * A callback function for when the panel is closed, before the animation completes.
-   */
+  * A callback function for when the panel is closed, before the animation completes.
+  */
   onDismiss?: () => void;
 
   /**
@@ -75,19 +75,19 @@ export interface IPanelProps extends React.Props<Panel> {
   onDismissed?: () => void;
 
   /**
-   * Additional styling options.
-   */
+  * Additional styling options.
+  */
   className?: string;
 
   /**
-   * Type of the panel.
-   * @default PanelType.smallFixedRight
-   */
+  * Type of the panel.
+  * @default PanelType.smallFixedRight
+  */
   type?: PanelType;
 
   /**
-   * Custom panel width, used only when type is set to PanelType.custom.
-   */
+  * Custom panel width, used only when type is set to PanelType.custom.
+  */
   customWidth?: string;
 
   /**
@@ -107,11 +107,11 @@ export interface IPanelProps extends React.Props<Panel> {
   elementToFocusOnDismiss?: HTMLElement;
 
   /**
-   * Indicates if this Panel will ignore keeping track of HTMLElement that activated the Zone.
-   * Deprecated, use focusTrapZoneProps.
-   * @default false
-   * @deprecated
-   */
+    * Indicates if this Panel will ignore keeping track of HTMLElement that activated the Zone.
+    * Deprecated, use focusTrapZoneProps.
+    * @default false
+    * @deprecated
+    */
   ignoreExternalFocusing?: boolean;
 
   /**
@@ -190,7 +190,11 @@ export interface IPanelHeaderRenderer extends IRenderFunction<IPanelProps> {
    * @param headerTextId If provided, this **must** be used as the ID of an element containing the
    * panel's title, because the panel popup uses this ID as its aria-labelledby.
    */
-  (props?: IPanelProps, defaultRender?: IPanelHeaderRenderer, headerTextId?: string | undefined): JSX.Element | null;
+  (
+    props?: IPanelProps,
+    defaultRender?: IPanelHeaderRenderer,
+    headerTextId?: string | undefined
+  ): JSX.Element | null;
 }
 
 export enum PanelType {

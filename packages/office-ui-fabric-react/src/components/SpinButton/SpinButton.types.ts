@@ -21,6 +21,7 @@ export interface ISpinButton {
 }
 
 export interface ISpinButtonProps {
+
   /**
    * Gets the component ref.
    */
@@ -76,8 +77,8 @@ export interface ISpinButtonProps {
   disabled?: boolean;
 
   /**
-   * Optional className for SpinButton.
-   */
+  * Optional className for SpinButton.
+  */
   className?: string;
 
   /**
@@ -196,8 +197,8 @@ export interface ISpinButtonProps {
   ariaPositionInSet?: number;
 
   /**
-   * The total size of the parent set (if in a set) for aria-setsize.
-   */
+  * The total size of the parent set (if in a set) for aria-setsize.
+  */
   ariaSetSize?: number;
 
   /**
@@ -207,6 +208,7 @@ export interface ISpinButtonProps {
 }
 
 export interface ISpinButtonStyles {
+
   /**
    * Styles for the root of the spin button component.
    */
@@ -244,8 +246,8 @@ export interface ISpinButtonStyles {
   icon: IStyle;
 
   /**
-   * Style for the icon.
-   */
+ * Style for the icon.
+ */
   iconDisabled: IStyle;
 
   /**

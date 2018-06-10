@@ -31,5 +31,5 @@ export function format(s: string, ...values: any[]): string {
 
     return replacement;
   }
-  return s.replace(FORMAT_REGEX, replace_func);
+  return (s.replace(FORMAT_REGEX, replace_func));
 }

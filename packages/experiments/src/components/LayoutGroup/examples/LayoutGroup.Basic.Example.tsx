@@ -1,3 +1,4 @@
+
 import * as React from 'react';
 import { LayoutGroup } from '@uifabric/experiments/lib/LayoutGroup';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
@@ -13,46 +14,51 @@ export class LayoutGroupBasicExample extends React.Component<{}, {}> {
       <div>
         <h3>Layout Group</h3>
 
-        <LayoutGroup layoutGap={20} direction="vertical">
-          <h2>A List of Inputs</h2>
+        <LayoutGroup layoutGap={ 20 } direction='vertical'>
+          <h2 >A List of Inputs</h2>
           <Dropdown
-            placeHolder="Select an Option"
-            label="Basic uncontrolled example:"
-            id="Basicdrop1"
-            ariaLabel="Basic dropdown example"
-            options={[
-              { key: 'A', text: 'Option a' },
-              { key: 'B', text: 'Option b' },
-              { key: 'C', text: 'Option c' },
-              { key: 'D', text: 'Option d' },
-              { key: 'E', text: 'Option e' },
-              { key: 'F', text: 'Option f' },
-              { key: 'G', text: 'Option g' },
-              { key: 'H', text: 'Option h' },
-              { key: 'I', text: 'Option i' },
-              { key: 'J', text: 'Option j' }
-            ]}
+            placeHolder='Select an Option'
+            label='Basic uncontrolled example:'
+            id='Basicdrop1'
+            ariaLabel='Basic dropdown example'
+            options={
+              [
+                { key: 'A', text: 'Option a' },
+                { key: 'B', text: 'Option b' },
+                { key: 'C', text: 'Option c' },
+                { key: 'D', text: 'Option d' },
+                { key: 'E', text: 'Option e' },
+                { key: 'F', text: 'Option f' },
+                { key: 'G', text: 'Option g' },
+                { key: 'H', text: 'Option h' },
+                { key: 'I', text: 'Option i' },
+                { key: 'J', text: 'Option j' },
+              ]
+            }
           />
-          <LayoutGroup layoutGap={20} direction="horizontal" justify="fill">
+          <LayoutGroup layoutGap={ 20 } direction='horizontal' justify='fill'>
             <TextField
-              label="TextField with a placeholder"
-              placeholder="Now I am a Placeholder"
-              ariaLabel="Please enter text here"
+              label='TextField with a placeholder'
+              placeholder='Now I am a Placeholder'
+              ariaLabel='Please enter text here'
             />
-            <TextField label="TextField with an icon" iconProps={{ iconName: 'Calendar' }} />
+            <TextField
+              label='TextField with an icon'
+              iconProps={ { iconName: 'Calendar' } }
+            />
           </LayoutGroup>
 
-          <LayoutGroup layoutGap={20} direction="horizontal" justify="fill">
+          <LayoutGroup layoutGap={ 20 } direction='horizontal' justify='fill'>
             <ChoiceGroup
-              defaultSelectedKey="B"
-              options={[
+              defaultSelectedKey='B'
+              options={ [
                 {
                   key: 'A',
                   text: 'Option A'
                 },
                 {
                   key: 'B',
-                  text: 'Option B'
+                  text: 'Option B',
                 },
                 {
                   key: 'C',
@@ -64,21 +70,34 @@ export class LayoutGroupBasicExample extends React.Component<{}, {}> {
                   text: 'Option D',
                   disabled: true
                 }
-              ]}
-              label="Pick one"
-              required={true}
+              ] }
+              label='Pick one'
+              required={ true }
             />
-            <LayoutGroup layoutGap={10}>
+            <LayoutGroup layoutGap={ 10 }>
               <Label>Pick a few</Label>
-              <Checkbox label="Checkbox A" />
-              <Checkbox label="Checkbox A" />
-              <Checkbox label="Checkbox A" />
-              <Checkbox label="Checkbox A" />
-              <Checkbox label="Checkbox A" />
+              <Checkbox
+                label='Checkbox A'
+              />
+              <Checkbox
+                label='Checkbox A'
+              />
+              <Checkbox
+                label='Checkbox A'
+              />
+              <Checkbox
+                label='Checkbox A'
+              />
+              <Checkbox
+                label='Checkbox A'
+              />
             </LayoutGroup>
           </LayoutGroup>
 
-          <PrimaryButton>Submit</PrimaryButton>
+          <PrimaryButton>
+            Submit
+          </PrimaryButton>
+
         </LayoutGroup>
       </div>
     );

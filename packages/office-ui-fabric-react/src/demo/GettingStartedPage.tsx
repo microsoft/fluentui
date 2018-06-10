@@ -7,16 +7,16 @@ import { PageMarkdown } from '@uifabric/example-app-base';
 export class GettingStartedPage extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
-      <div className="ms-GettingStartedPage">
-        <div className="ms-GettingStartedPage-banner">
-          <div className="ms-GettingStartedPage-title">
+      <div className='ms-GettingStartedPage'>
+        <div className='ms-GettingStartedPage-banner'>
+          <div className='ms-GettingStartedPage-title'>
             <h1>office-ui-fabric-react</h1>
             <h3>A library of reusable, generic React components</h3>
           </div>
-          {this._getEditButton()}
+          { this._getEditButton() }
         </div>
         <PageMarkdown>
-          {require<string>('!raw-loader!office-ui-fabric-react/src/demo/docs/GettingStartedOverview.md')}
+          { require<string>('!raw-loader!office-ui-fabric-react/src/demo/docs/GettingStartedOverview.md') }
         </PageMarkdown>
       </div>
     );
@@ -24,16 +24,16 @@ export class GettingStartedPage extends React.Component<any, any> {
   private _getEditButton() {
     return (
       <TooltipHost
-        key={`GettingStartedPage-editButton`}
-        content={`Edit Getting Started Page on GitHub`}
-        id={`GettingStartedPage-editButtonHost`}
+        key={ `GettingStartedPage-editButton` }
+        content={ `Edit Getting Started Page on GitHub` }
+        id={ `GettingStartedPage-editButtonHost` }
       >
         <IconButton
-          aria-describedby={`GettingStartedPage-editButtonHost`}
-          iconProps={{ iconName: 'Edit' }}
-          href="https://github.com/OfficeDev/office-ui-fabric-react/edit/master/packages/office-ui-fabric-react/src/demo/docs/GettingStartedOverview.md"
-          target="_blank"
-          rel="noopener noreferrer"
+          aria-describedby={ `GettingStartedPage-editButtonHost` }
+          iconProps={ { iconName: 'Edit' } }
+          href='https://github.com/OfficeDev/office-ui-fabric-react/edit/master/packages/office-ui-fabric-react/src/demo/docs/GettingStartedOverview.md'
+          target='_blank'
+          rel='noopener noreferrer'
         />
       </TooltipHost>
     );

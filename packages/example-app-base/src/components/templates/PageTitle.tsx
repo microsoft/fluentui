@@ -1,5 +1,14 @@
-import { BaseComponent, IBaseProps, IClassNames, customizable } from 'office-ui-fabric-react/lib/Utilities';
-import { ITheme, IStyle, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
+import {
+  BaseComponent,
+  IBaseProps,
+  IClassNames,
+  customizable
+} from 'office-ui-fabric-react/lib/Utilities';
+import {
+  ITheme,
+  IStyle,
+  mergeStyleSets
+} from 'office-ui-fabric-react/lib/Styling';
 import * as React from 'react';
 
 export interface IPageTitleProps extends React.Props<PageTitle>, IBaseProps {
@@ -46,16 +55,18 @@ const getDefaultStyles = (props: IPageTitleStyleProps): IPageTitleStyles => ({
   ]
 });
 
-@customizable('PageTitle', ['theme', 'styles'])
+@customizable('PageTitle', ['theme'])
 export class PageTitle extends BaseComponent<IPageTitleProps, {}> {
   public render(): JSX.Element {
     const { children, theme } = this.props;
     const styleProps: IPageTitleStyleProps = { theme: theme! };
-    const classNames: IClassNames<IPageTitleStyles> = mergeStyleSets(getDefaultStyles(styleProps));
+    const classNames: IClassNames<IPageTitleStyles> = mergeStyleSets(
+      getDefaultStyles(styleProps)
+    );
 
     return (
-      <div className={classNames.root}>
-        <h1 className={classNames.title}>{children}</h1>
+      <div className={ classNames.root }>
+        <h1 className={ classNames.title }>{ children }</h1>
       </div>
     );
   }

@@ -9,8 +9,8 @@ export interface ISuggestionsCoreProps<T> extends React.Props<any> {
    */
   componentRef?: () => void;
   /**
-   * How the suggestion should look in the suggestion list.
-   */
+ * How the suggestion should look in the suggestion list.
+ */
   onRenderSuggestion?: (props: T, suggestionItemProps: T) => JSX.Element;
   /**
    * What should occur when a suggestion is clicked

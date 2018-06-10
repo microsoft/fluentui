@@ -19,7 +19,14 @@ export class DetailsListCustomRowsExample extends React.Component {
   }
 
   public render() {
-    return <DetailsList items={_items} setKey="set" onRenderRow={this._onRenderRow} />;
+    return (
+      <DetailsList
+        items={ _items }
+        setKey='set'
+        onRenderRow={ this._onRenderRow }
+        useReducedRowRenderer={true}
+      />
+    );
   }
 
   private _onRenderRow = (props: IDetailsRowProps): JSX.Element => {

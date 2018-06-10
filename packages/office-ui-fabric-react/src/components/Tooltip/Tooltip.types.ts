@@ -4,9 +4,11 @@ import { ICalloutProps } from '../../Callout';
 import { IRenderFunction } from '../../Utilities';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IStyleFunction } from '../../Utilities';
 
-export interface ITooltip {}
+export interface ITooltip {
+
+}
 
 /**
  * Tooltip component props.
@@ -71,7 +73,7 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | Too
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: IStyleFunctionOrObject<ITooltipStyleProps, ITooltipStyles>;
+  getStyles?: IStyleFunction<ITooltipStyleProps, ITooltipStyles>;
 }
 
 export enum TooltipDelay {

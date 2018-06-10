@@ -8,7 +8,12 @@ import {
   getNativeProps,
   createRef
 } from '../../Utilities';
-import { ILink, ILinkProps, ILinkStyleProps, ILinkStyles } from './Link.types';
+import {
+  ILink,
+  ILinkProps,
+  ILinkStyleProps,
+  ILinkStyles
+} from './Link.types';
 import { KeytipData } from '../../KeytipData';
 
 const getClassNames = classNamesFunction<ILinkStyleProps, ILinkStyles>();
@@ -18,9 +23,9 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
   private _link = createRef<HTMLAnchorElement | HTMLButtonElement | null>();
 
   public render(): JSX.Element {
-    const { disabled, children, className, href, theme, styles, keytipProps } = this.props;
+    const { disabled, children, className, href, theme, getStyles, keytipProps } = this.props;
 
-    const classNames = getClassNames(styles!, {
+    const classNames = getClassNames(getStyles!, {
       className,
       isButton: !href,
       isDisabled: disabled,
@@ -32,44 +37,44 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
 
     const anchorElement: JSX.Element = (
       <KeytipData
-        keytipProps={keytipProps}
-        ariaDescribedBy={(anchorNativeProps as any)['aria-describedby']}
-        disabled={disabled}
+        keytipProps={ keytipProps }
+        ariaDescribedBy={ (anchorNativeProps as any)['aria-describedby'] }
+        disabled={ disabled }
       >
-        {(keytipAttributes: any): JSX.Element => (
+        { (keytipAttributes: any): JSX.Element => (
           <a
-            {...anchorNativeProps}
-            {...keytipAttributes}
-            className={classNames.root}
-            onClick={this._onClick}
-            ref={this._link}
-            target={this.props.target}
-            aria-disabled={disabled}
+            { ...anchorNativeProps }
+            { ...keytipAttributes }
+            className={ classNames.root }
+            onClick={ this._onClick }
+            ref={ this._link }
+            target={ this.props.target }
+            aria-disabled={ disabled }
           >
-            {children}
+            { children }
           </a>
-        )}
+        ) }
       </KeytipData>
     );
 
     const buttonElement: JSX.Element = (
       <KeytipData
-        keytipProps={keytipProps}
-        ariaDescribedBy={(buttonNativeProps as any)['aria-describedby']}
-        disabled={disabled}
+        keytipProps={ keytipProps }
+        ariaDescribedBy={ (buttonNativeProps as any)['aria-describedby'] }
+        disabled={ disabled }
       >
-        {(keytipAttributes: any): JSX.Element => (
+        { (keytipAttributes: any): JSX.Element => (
           <button
-            {...buttonNativeProps}
-            {...keytipAttributes}
-            className={classNames.root}
-            onClick={this._onClick}
-            ref={this._link}
-            aria-disabled={disabled}
+            { ...buttonNativeProps }
+            { ...keytipAttributes }
+            className={ classNames.root }
+            onClick={ this._onClick }
+            ref={ this._link }
+            aria-disabled={ disabled }
           >
-            {children}
+            { children }
           </button>
-        )}
+        ) }
       </KeytipData>
     );
 
@@ -90,5 +95,5 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
     } else if (onClick) {
       onClick(ev);
     }
-  };
+  }
 }

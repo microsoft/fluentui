@@ -48,7 +48,7 @@ export const getStyles = (props: IMarqueeSelectionStyleProps): IMarqueeSelection
         position: 'absolute',
         boxSizing: 'border-box',
         backgroundColor: palette.themePrimary,
-        opacity: 0.1,
+        opacity: .1,
         left: 0,
         top: 0,
         right: 0,

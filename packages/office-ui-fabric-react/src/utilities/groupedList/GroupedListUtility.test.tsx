@@ -16,7 +16,11 @@ describe('GroupedListUtility', () => {
     });
 
     it('Counts flat groups 1', () => {
-      const groups: IGroup[] = [G(), G(), G()];
+      const groups: IGroup[] = [
+        G(),
+        G(),
+        G()
+      ];
       expect(GetGroupCount(groups)).toEqual(3);
     });
 
@@ -36,12 +40,10 @@ describe('GroupedListUtility', () => {
     it('Counts nested groups 2', () => {
       const groups: IGroup[] = [
         G(), // 1
-        G([
-          // 1
+        G([ // 1
           G([G()]), // 2
           G(), // 1
-          G([
-            // 1
+          G([ // 1
             G([G()]), // 2
             G([G(), G(), G()]), // 4
             G([G(), G(), G()]) // 4

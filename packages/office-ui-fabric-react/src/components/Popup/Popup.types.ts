@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { Popup } from './Popup';
 
-export interface IPopup {}
+export interface IPopup {
+
+}
 
 export interface IPopupProps extends React.HTMLAttributes<Popup> {
   /**
@@ -26,8 +28,8 @@ export interface IPopupProps extends React.HTMLAttributes<Popup> {
   ariaLabelledBy?: string;
 
   /**
-   * Defines the element id referencing the element containing the description for the popup.
-   */
+    * Defines the element id referencing the element containing the description for the popup.
+    */
   ariaDescribedBy?: string;
 
   /**

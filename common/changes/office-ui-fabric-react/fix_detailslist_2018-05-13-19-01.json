@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "DetailsList: there's now a prop (useReducedRowRenderer) to switch into a pure component mode, resulting in improved performance.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "daniel.gut@outlook.com"
+}

@@ -12,12 +12,12 @@ export interface IActivityItemExampleStyles {
 }
 
 export const getStyles = (props: IActivityItemExampleStyleProps): IActivityItemExampleStyles => {
-  return {
+  return ({
     exampleRoot: {
       marginTop: '20px'
     },
     nameText: {
       fontWeight: 'bold'
     }
-  };
+  });
 };

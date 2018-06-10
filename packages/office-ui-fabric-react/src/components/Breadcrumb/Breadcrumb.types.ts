@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BreadcrumbBase, IBreadCrumbData } from './Breadcrumb.base';
 import { IIconProps } from '../Icon';
-import { IRenderFunction, IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
+import { IRenderFunction, IStyleFunction, IComponentAs } from '../../Utilities';
 import { IBreadcrumbStyleProps, IBreadcrumbStyles } from './Breadcrumb.styles';
 import { ITheme } from '../../Styling';
 
@@ -65,11 +65,12 @@ export interface IBreadcrumbProps extends React.Props<BreadcrumbBase> {
    */
   overflowIndex?: number;
 
-  styles?: IStyleFunctionOrObject<IBreadcrumbStyleProps, IBreadcrumbStyles>;
+  getStyles?: IStyleFunction<IBreadcrumbStyleProps, IBreadcrumbStyles>;
   theme?: ITheme;
 }
 
 export interface IBreadcrumbItem {
+
   /**
    * Text to display to the user for the breadcrumb
    */
@@ -94,6 +95,7 @@ export interface IBreadcrumbItem {
    * If this breadcrumb item is the item the user is currently on, if set to true, aria-current="page" will be applied to this breadcrumb link
    */
   isCurrentItem?: boolean;
+
 }
 
 export interface IDividerAsProps extends IIconProps {

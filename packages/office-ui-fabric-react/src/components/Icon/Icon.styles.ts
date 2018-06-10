@@ -8,7 +8,7 @@ export const getStyles = (props: IIconStyleProps): IIconStyles => {
       isImage && 'ms-Icon-imageContainer',
       isPlaceholder && 'ms-Icon-placeHolder',
       {
-        display: 'inline-block'
+        display: 'inline-block',
       },
       isPlaceholder && {
         width: '1em'
@@ -20,6 +20,6 @@ export const getStyles = (props: IIconStyleProps): IIconStyles => {
       className,
       styles && styles.root,
       styles && styles.imageContainer
-    ]
+    ],
   };
 };

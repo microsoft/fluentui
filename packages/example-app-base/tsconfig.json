@@ -13,8 +13,15 @@
     "moduleResolution": "node",
     "preserveConstEnums": true,
     "outDir": "lib",
-    "lib": ["es2017", "dom"],
-    "types": ["webpack-env"]
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "types": [
+      "webpack-env"
+    ]
   },
-  "include": ["src"]
+  "include": [
+    "src"
+  ]
 }

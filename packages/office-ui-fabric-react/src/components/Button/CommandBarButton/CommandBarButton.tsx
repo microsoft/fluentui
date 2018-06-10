@@ -4,7 +4,7 @@ import { BaseComponent, customizable, nullRender } from '../../../Utilities';
 import { IButtonProps } from '../Button.types';
 import { getStyles } from './CommandBarButton.styles';
 
-@customizable('CommandBarButton', ['theme', 'styles'])
+@customizable('CommandBarButton', ['theme'])
 export class CommandBarButton extends BaseComponent<IButtonProps, {}> {
   /**
    * Tell BaseComponent to bypass resolution of componentRef.
@@ -16,10 +16,10 @@ export class CommandBarButton extends BaseComponent<IButtonProps, {}> {
 
     return (
       <BaseButton
-        {...this.props}
-        variantClassName="ms-Button--commandBar"
-        styles={getStyles(theme!, styles)}
-        onRenderDescription={nullRender}
+        { ...this.props }
+        variantClassName='ms-Button--commandBar'
+        styles={ getStyles(theme!, styles) }
+        onRenderDescription={ nullRender }
       />
     );
   }

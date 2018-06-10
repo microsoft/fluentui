@@ -1,1 +1,0 @@
-export { VerticalBarChart } from './VerticalBarChart';

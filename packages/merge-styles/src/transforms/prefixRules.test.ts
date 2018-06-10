@@ -1,7 +1,9 @@
 import { prefixRules } from './prefixRules';
 import { setVendorSettings } from '../getVendorSettings';
 
-const AUTO_TRANSLATED_RULES = ['user-select'];
+const AUTO_TRANSLATED_RULES = [
+  'user-select'
+];
 
 describe('prefixRules', () => {
   afterAll(() => {
@@ -15,7 +17,10 @@ describe('prefixRules', () => {
       setVendorSettings({ isWebkit: true });
       prefixRules(rules, 0);
 
-      expect(rules).toEqual([rule, 'none', '-webkit-' + rule, 'none']);
+      expect(rules).toEqual([
+        rule, 'none',
+        '-webkit-' + rule, 'none'
+      ]);
     });
   });
 
@@ -25,7 +30,10 @@ describe('prefixRules', () => {
 
       setVendorSettings({ isMoz: true });
       prefixRules(rules, 0);
-      expect(rules).toEqual([rule, 'none', '-moz-' + rule, 'none']);
+      expect(rules).toEqual([
+        rule, 'none',
+        '-moz-' + rule, 'none'
+      ]);
     });
   });
 
@@ -35,7 +43,10 @@ describe('prefixRules', () => {
 
       setVendorSettings({ isMs: true });
       prefixRules(rules, 0);
-      expect(rules).toEqual([rule, 'none', '-ms-' + rule, 'none']);
+      expect(rules).toEqual([
+        rule, 'none',
+        '-ms-' + rule, 'none'
+      ]);
     });
   });
 
@@ -45,7 +56,11 @@ describe('prefixRules', () => {
 
       setVendorSettings({ isOpera: true });
       prefixRules(rules, 0);
-      expect(rules).toEqual([rule, 'none', '-o-' + rule, 'none']);
+      expect(rules).toEqual([
+        rule, 'none',
+        '-o-' + rule, 'none'
+      ]);
     });
   });
+
 });

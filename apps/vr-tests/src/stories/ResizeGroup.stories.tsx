@@ -6,23 +6,7 @@ import { FabricDecorator } from '../utilities';
 import { ResizeGroup, OverflowSet, DefaultButton } from 'office-ui-fabric-react';
 
 // tslint:disable-next-line:max-line-length
-let list = {
-  'primary': [
-    { key: 'item0', name: 'Item 0', iconProps: { iconName: 'Add' }, 'checked': false },
-    { key: 'item1', name: 'Item 1', iconProps: { iconName: 'Share' }, 'checked': false },
-    { key: 'item2', name: 'Item 2', iconProps: { iconName: 'Upload' }, 'checked': false },
-    { key: 'item3', name: 'Item 3', iconProps: { iconName: 'Add' }, 'checked': false },
-    { key: 'item4', name: 'Item 4', iconProps: { iconName: 'Share' }, 'checked': false },
-    { key: 'item5', name: 'Item 5', iconProps: { iconName: 'Upload' }, 'checked': false }
-  ],
-  'overflow': [
-    { key: 'item6', name: 'Item 6', iconProps: { iconName: 'Add' }, 'checked': false },
-    { key: 'item7', name: 'Item 7', iconProps: { iconName: 'Share' }, 'checked': false },
-    { key: 'item8', name: 'Item 8', iconProps: { iconName: 'Upload' }, 'checked': false },
-    { key: 'item9', name: 'Item 9', iconProps: { iconName: 'Add' }, 'checked': false },
-    { key: 'item10', name: 'Item 10', iconProps: { iconName: 'Share' }, 'checked': false }
-  ]
-};
+let list = { 'primary': [{ 'key': 'item0', 'name': 'Item 0', 'icon': 'Add', 'checked': false }, { 'key': 'item1', 'name': 'Item 1', 'icon': 'Share', 'checked': false }, { 'key': 'item2', 'name': 'Item 2', 'icon': 'Upload', 'checked': false }, { 'key': 'item3', 'name': 'Item 3', 'icon': 'Add', 'checked': false }, { 'key': 'item4', 'name': 'Item 4', 'icon': 'Share', 'checked': false }, { 'key': 'item5', 'name': 'Item 5', 'icon': 'Upload', 'checked': false }], 'overflow': [{ 'key': 'item6', 'name': 'Item 6', 'icon': 'Add', 'checked': false }, { 'key': 'item7', 'name': 'Item 7', 'icon': 'Share', 'checked': false }, { 'key': 'item8', 'name': 'Item 8', 'icon': 'Upload', 'checked': false }, { 'key': 'item9', 'name': 'Item 9', 'icon': 'Add', 'checked': false }, { 'key': 'item10', 'name': 'Item 10', 'icon': 'Share', 'checked': false }] };
 
 let noop = () => null;
 
@@ -54,7 +38,7 @@ storiesOf('ResizeGroup', module)
               return (
                 <DefaultButton
                   text={ item.name }
-                  iconProps={ item.iconProps }
+                  iconProps={ { iconName: item.icon } }
                   onClick={ item.onClick }
                   checked={ item.checked }
                 />

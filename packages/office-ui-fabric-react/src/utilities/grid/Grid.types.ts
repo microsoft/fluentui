@@ -1,7 +1,7 @@
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IStyleFunction } from '../../Utilities';
 
-export interface IGrid {}
+export interface IGrid { }
 
 export interface IGridProps {
   /**
@@ -38,7 +38,7 @@ export interface IGridProps {
 
   /**
    * Optional, class name for the FocusZone container for the grid
-   * @deprecated Use styles and IGridStyles to define a styling for the focus zone container with
+   * @deprecated Use getStyles and IGridStyles to define a styling for the focus zone container with
    * focusedContainer property.
    */
   containerClassName?: string;
@@ -66,7 +66,7 @@ export interface IGridProps {
   /**
    * Optional styles for the component.
    */
-  styles?: IStyleFunctionOrObject<IGridStyleProps, IGridStyles>;
+  getStyles?: IStyleFunction<IGridStyleProps, IGridStyles>;
 }
 
 /**
@@ -74,8 +74,8 @@ export interface IGridProps {
  */
 export interface IGridStyleProps {
   /**
-   * Theme to apply to the grid
-   */
+  * Theme to apply to the grid
+  */
   theme: ITheme;
 }
 

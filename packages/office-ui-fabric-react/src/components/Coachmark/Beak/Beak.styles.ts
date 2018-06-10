@@ -1,4 +1,4 @@
-import { IStyle } from '../../../Styling';
+import { IStyle, DefaultPalette } from '../../../Styling';
 import { IBeakStylesProps } from './Beak.types';
 
 export interface IBeakStyles {
@@ -17,17 +17,18 @@ export function getStyles(props: IBeakStylesProps): IBeakStyles {
         boxShadow: 'inherit',
         border: 'none',
         boxSizing: 'border-box',
-        transform: props.transform,
+        transform: 'translateY(-50%)',
+        left: '50%',
         width: props.width,
-        height: props.height,
+        height: props.height
+      },
+      (props.left && props.top) && {
         left: props.left,
-        top: props.top,
-        right: props.right,
-        bottom: props.bottom
+        top: props.top
       }
     ],
     beak: {
-      fill: props.color,
+      fill: DefaultPalette.themePrimary,
       display: 'block'
     }
   };

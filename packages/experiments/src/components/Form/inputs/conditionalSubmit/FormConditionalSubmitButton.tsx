@@ -11,6 +11,7 @@ import { IFormContext } from '../../Form';
  * Submit button for the form which is disabled when the form is invalid
  */
 export class FormConditionalSubmitButton extends BaseComponent<IFormConditionalSubmitButtonProps> {
+
   protected static contextTypes: React.ValidationMap<IFormContext> = {
     isFormValid: PropTypes.func.isRequired,
     mountInput: PropTypes.func.isRequired,
@@ -32,11 +33,17 @@ export class FormConditionalSubmitButton extends BaseComponent<IFormConditionalS
    * Render a Fabric Dropdown
    */
   public render(): JSX.Element {
-    const { children } = this.props;
+    const {
+        children
+    } = this.props;
 
     return (
-      <PrimaryButton type="submit" disabled={!this.formContext.isFormValid()} {...this.props.buttonProps}>
-        {children}
+      <PrimaryButton
+        type='submit'
+        disabled={ !this.formContext.isFormValid() }
+        {...this.props.buttonProps}
+      >
+        { children }
       </PrimaryButton>
     );
   }

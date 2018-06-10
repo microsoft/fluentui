@@ -1,3 +1,4 @@
+
 export interface IPropertiesTableSetProps {
   /**
    * Component name, assumes component resides in /components/[name]/ folder

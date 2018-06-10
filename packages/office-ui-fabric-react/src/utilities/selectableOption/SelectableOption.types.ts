@@ -10,11 +10,6 @@ export interface ISelectableOption {
   text: string;
 
   /**
-   * Title attribute (built in tooltip) for a given option.
-   */
-  title?: string;
-
-  /**
    * Text to render for this option
    */
   itemType?: SelectableOptionMenuItemType;

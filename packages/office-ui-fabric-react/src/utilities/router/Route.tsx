@@ -6,4 +6,5 @@ export interface IRouteProps {
   getComponent?: (cb: any) => void;
 }
 
-export class Route extends React.Component<any, any> {}
+export class Route extends React.Component<any, any> {
+}

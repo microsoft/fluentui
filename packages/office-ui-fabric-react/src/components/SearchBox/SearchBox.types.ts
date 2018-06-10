@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ITheme, IStyle } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IStyleFunction } from '../../Utilities';
 import { IButtonProps } from '../Button';
 
 export interface ISearchBox {
@@ -28,14 +28,14 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
   placeholder?: string;
 
   /**
-   * Deprecated. Use placeholder instead.
-   * @deprecated
-   */
+  * Deprecated. Use placeholder instead.
+  * @deprecated
+  */
   labelText?: string;
 
   /**
-   * Callback function for when the typed input for the SearchBox has changed.
-   */
+  * Callback function for when the typed input for the SearchBox has changed.
+  */
   onChange?: (newValue: any) => void;
 
   /**
@@ -73,8 +73,8 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
   defaultValue?: string;
 
   /**
-   * CSS class to apply to the SearchBox.
-   */
+  * CSS class to apply to the SearchBox.
+  */
   className?: string;
 
   /**
@@ -102,7 +102,7 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: IStyleFunctionOrObject<ISearchBoxStyleProps, ISearchBoxStyles>;
+  getStyles?: IStyleFunction<ISearchBoxStyleProps, ISearchBoxStyles>;
 
   /**
    * Whether or not to animate the SearchBox icon on focus.

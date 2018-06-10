@@ -1,3 +1,4 @@
+
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 
@@ -19,8 +20,7 @@ const suggestions = [
   'rose',
   'violet',
   'white',
-  'yellow'
-];
+  'yellow'];
 
 function generateSimpleSuggestions(selectedIndex: number = 0) {
   return suggestions.map<ISuggestionModel<ISimple>>((value, index) => {
@@ -32,10 +32,11 @@ function generateSimpleSuggestions(selectedIndex: number = 0) {
       selected: index === selectedIndex
     };
   });
+
 }
 
 const basicSuggestionRenderer = (props: ISimple) => {
-  return <div> {props.name} </div>;
+  return <div> { props.name } </div>;
 };
 
 export interface ISimple {
@@ -48,12 +49,14 @@ function mockOnClick() {
 }
 
 describe('Suggestions', () => {
+
   it('renders a list properly', () => {
+
     const component = renderer.create(
       <Suggestions
-        onRenderSuggestion={basicSuggestionRenderer}
-        onSuggestionClick={mockOnClick}
-        suggestions={generateSimpleSuggestions()}
+        onRenderSuggestion={ basicSuggestionRenderer }
+        onSuggestionClick={ mockOnClick }
+        suggestions={ generateSimpleSuggestions() }
       />
     );
     const tree = component.toJSON();
@@ -63,20 +66,21 @@ describe('Suggestions', () => {
   it('scrolls to selected index properly', () => {
     const component = renderer.create(
       <Suggestions
-        onRenderSuggestion={basicSuggestionRenderer}
-        onSuggestionClick={mockOnClick}
-        suggestions={generateSimpleSuggestions()}
+        onRenderSuggestion={ basicSuggestionRenderer }
+        onSuggestionClick={ mockOnClick }
+        suggestions={ generateSimpleSuggestions() }
       />
     );
 
     component.update(
       <Suggestions
-        onRenderSuggestion={basicSuggestionRenderer}
-        onSuggestionClick={mockOnClick}
-        suggestions={generateSimpleSuggestions(8)}
+        onRenderSuggestion={ basicSuggestionRenderer }
+        onSuggestionClick={ mockOnClick }
+        suggestions={ generateSimpleSuggestions(8) }
       />
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
+
 });

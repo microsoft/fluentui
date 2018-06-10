@@ -6,9 +6,9 @@ import { ISelectableOption } from '../../utilities/selectableOption/SelectableOp
 
 export interface ISelectableDroppableTextProps<T> extends React.HTMLAttributes<T> {
   /**
-   * Optional callback to access the ISelectableDroppableText interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
-   */
+  * Optional callback to access the ISelectableDroppableText interface. Use this instead of ref for accessing
+  * the public methods and properties of the component.
+  */
   componentRef?: (component: T | null) => void;
 
   /**
@@ -17,13 +17,13 @@ export interface ISelectableDroppableTextProps<T> extends React.HTMLAttributes<T
   label?: string;
 
   /**
-   * Aria Label for the ISelectableDroppableText for screen reader users.
-   */
+  * Aria Label for the ISelectableDroppableText for screen reader users.
+  */
   ariaLabel?: string;
 
   /**
-   * Id of the ISelectableDroppableText
-   */
+  * Id of the ISelectableDroppableText
+  */
   id?: string;
 
   /**
@@ -53,13 +53,13 @@ export interface ISelectableDroppableTextProps<T> extends React.HTMLAttributes<T
   onChanged?: (option: ISelectableOption, index?: number) => void;
 
   /**
-   * Optional custom renderer for the ISelectableDroppableText container
-   */
+    * Optional custom renderer for the ISelectableDroppableText container
+    */
   onRenderContainer?: IRenderFunction<ISelectableDroppableTextProps<T>>;
 
   /**
-   * Optional custom renderer for the ISelectableDroppableText list
-   */
+    * Optional custom renderer for the ISelectableDroppableText list
+    */
   onRenderList?: IRenderFunction<ISelectableDroppableTextProps<T>>;
 
   /**

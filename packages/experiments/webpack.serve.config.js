@@ -8,11 +8,11 @@ module.exports = resources.createServeConfig({
   entry: './src/demo/index.tsx',
 
   output: {
-    filename: 'demo-app.js'
+    filename: 'demo-app.js',
   },
 
   externals: {
-    react: 'React',
+    'react': 'React',
     'react-dom': 'ReactDOM'
   },
 

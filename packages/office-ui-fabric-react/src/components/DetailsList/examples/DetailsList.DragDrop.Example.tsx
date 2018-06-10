@@ -46,6 +46,7 @@ export class DetailsListDragDropExample extends React.Component<
             onItemInvoked={this._onItemInvoked}
             onRenderItemColumn={this._onRenderItemColumn}
             dragDropEvents={this._getDragDropEvents()}
+            useReducedRowRenderer={true}
           />
         </MarqueeSelection>
       </div>

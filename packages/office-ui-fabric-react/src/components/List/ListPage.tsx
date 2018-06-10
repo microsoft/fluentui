@@ -31,42 +31,44 @@ export class ListPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title="List"
-        componentName="ListExample"
-        componentUrl="https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/List"
+        title='List'
+        componentName='ListExample'
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/List'
         exampleCards={
           <div>
-            <ExampleCard title="List of 5000 grid items" isOptIn={true} code={ListGridExampleCode}>
-              <ListGridExample items={_cachedItems} />
+            <ExampleCard title='List of 5000 grid items' isOptIn={ true } code={ ListGridExampleCode }>
+              <ListGridExample items={ _cachedItems } />
             </ExampleCard>
-            <ExampleCard title="List of 5000 variable height items" isOptIn={true} code={ListBasicExampleCode}>
-              <ListBasicExample items={_cachedItems} />
+            <ExampleCard title='List of 5000 variable height items' isOptIn={ true } code={ ListBasicExampleCode }>
+              <ListBasicExample items={ _cachedItems } />
             </ExampleCard>
-            <ExampleCard title="Scrolling items into view" isOptIn={true} code={ListScrollingExampleCode}>
-              <ListScrollingExample items={_cachedItems} />
+            <ExampleCard title='Scrolling items into view' isOptIn={ true } code={ ListScrollingExampleCode }>
+              <ListScrollingExample items={ _cachedItems } />
             </ExampleCard>
-            <ExampleCard
-              title="Rendering ghost items while the list is scrolling"
-              isOptIn={true}
-              code={ListGhostingExampleCode}
-            >
-              <ListGhostingExample items={_cachedItems} />
+            <ExampleCard title='Rendering ghost items while the list is scrolling' isOptIn={ true } code={ ListGhostingExampleCode }>
+              <ListGhostingExample items={ _cachedItems } />
             </ExampleCard>
           </div>
         }
-        allowNativeProps={true}
+        allowNativeProps={ true }
         propertiesTables={
           <PropertiesTableSet
-            sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/List/List.types.ts')]}
+            sources={ [
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/List/List.types.ts')
+            ] }
           />
         }
         overview={
           <PageMarkdown>
-            {require<string>('!raw-loader!office-ui-fabric-react/src/components/List/docs/ListOverview.md')}
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/List/docs/ListOverview.md') }
           </PageMarkdown>
         }
-        isHeaderVisible={this.props.isHeaderVisible}
-        componentStatus={<ComponentStatus {...ListStatus} />}
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            { ...ListStatus }
+          />
+        }
       />
     );
   }

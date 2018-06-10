@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { LayerBase } from './Layer.base';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IStyleFunction } from '../../Utilities';
 
-export interface ILayer {}
+export interface ILayer {
+
+}
 
 export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement | LayerBase> {
   /**
@@ -15,7 +17,7 @@ export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement | Layer
   /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
-  styles?: IStyleFunctionOrObject<ILayerStyleProps, ILayerStyles>;
+  getStyles?: IStyleFunction<ILayerStyleProps, ILayerStyles>;
 
   /**
    * Theme provided by HOC.
@@ -63,7 +65,7 @@ export interface ILayerStyleProps {
 
   /**
    * Check if Host
-   */
+  */
   isNotHost?: boolean;
 }
 

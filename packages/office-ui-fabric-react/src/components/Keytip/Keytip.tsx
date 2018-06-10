@@ -16,8 +16,14 @@ import { getCalloutStyles, getCalloutOffsetStyles } from './Keytip.styles';
  */
 export class Keytip extends BaseComponent<IKeytipProps, {}> implements IKeytip {
   public render(): JSX.Element {
-    const { keySequences, offset, overflowSetSequence } = this.props;
-    let { calloutProps } = this.props;
+    const {
+      keySequences,
+      offset,
+      overflowSetSequence
+    } = this.props;
+    let {
+      calloutProps
+    } = this.props;
 
     let keytipTarget: string;
     // Take into consideration the overflow sequence
@@ -47,15 +53,15 @@ export class Keytip extends BaseComponent<IKeytipProps, {}> implements IKeytip {
 
     return (
       <Callout
-        {...calloutProps}
-        isBeakVisible={false}
-        doNotLayer={true}
-        minPagePadding={0}
-        styles={offset ? getCalloutOffsetStyles(offset) : getCalloutStyles}
-        preventDismissOnScroll={true}
-        target={keytipTarget}
+        { ...calloutProps }
+        isBeakVisible={ false }
+        doNotLayer={ true }
+        minPagePadding={ 0 }
+        getStyles={ offset ? getCalloutOffsetStyles(offset) : getCalloutStyles }
+        preventDismissOnScroll={ true }
+        target={ keytipTarget }
       >
-        <KeytipContent {...this.props} />
+        <KeytipContent { ...this.props } />
       </Callout>
     );
   }

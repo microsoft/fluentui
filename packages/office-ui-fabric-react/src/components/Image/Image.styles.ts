@@ -1,5 +1,9 @@
 import { IImageStyleProps, IImageStyles } from './Image.types';
-import { AnimationClassNames, IStyle, getGlobalClassNames } from '../../Styling';
+import {
+  AnimationClassNames,
+  IStyle,
+  getGlobalClassNames,
+} from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-Image',
@@ -10,10 +14,12 @@ const GlobalClassNames = {
   imageCover: 'ms-Image-image--cover',
   imageNone: 'ms-Image-image--none',
   imageLandscape: 'ms-Image-image--landscape',
-  imagePortrait: 'ms-Image-image--portrait'
+  imagePortrait: 'ms-Image-image--portrait',
 };
 
-export const getStyles = (props: IImageStyleProps): IImageStyles => {
+export const getStyles = (
+  props: IImageStyleProps
+): IImageStyles => {
   const {
     className,
     width,
@@ -41,7 +47,7 @@ export const getStyles = (props: IImageStyleProps): IImageStyles => {
     transform: 'translate(-50%,-50%)' // @todo test RTL renders transform: translate(50%,-50%);
   };
 
-  return {
+  return ({
     root: [
       classNames.root,
       {
@@ -55,7 +61,7 @@ export const getStyles = (props: IImageStyleProps): IImageStyles => {
         }
       ],
       (isCenter || isContain || isCover) && {
-        position: 'relative'
+        position: 'relative',
       },
       className
     ],
@@ -71,7 +77,10 @@ export const getStyles = (props: IImageStyleProps): IImageStyles => {
           opacity: 1
         }
       ],
-      isCenter && [classNames.imageCenter, ImageFitStyles],
+      isCenter && [
+        classNames.imageCenter,
+        ImageFitStyles
+      ],
       isContain && [
         classNames.imageContain,
         isLandscape && {
@@ -104,21 +113,18 @@ export const getStyles = (props: IImageStyleProps): IImageStyles => {
         }
       ],
       isNotImageFit && [
-        !!width &&
-          !height && {
-            height: 'auto',
-            width: '100%'
-          },
-        !width &&
-          !!height && {
-            height: '100%',
-            width: 'auto'
-          },
-        !!width &&
-          !!height && {
-            height: '100%',
-            width: '100%'
-          }
+        !!width && !height && {
+          height: 'auto',
+          width: '100%'
+        },
+        !width && !!height && {
+          height: '100%',
+          width: 'auto'
+        },
+        !!width && !!height && {
+          height: '100%',
+          width: '100%'
+        }
       ],
       isLoaded && shouldFadeIn && !shouldStartVisible && AnimationClassNames.fadeIn400,
       isLandscape && classNames.imageLandscape,
@@ -127,5 +133,5 @@ export const getStyles = (props: IImageStyleProps): IImageStyles => {
       shouldFadeIn && 'is-fadeIn',
       isError && 'is-error'
     ]
-  };
+  });
 };

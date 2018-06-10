@@ -1,6 +1,9 @@
 import { extractStyleParts } from './extractStyleParts';
 import { mergeStyles } from './mergeStyles';
-import { Stylesheet, InjectionMode } from './Stylesheet';
+import {
+  Stylesheet,
+  InjectionMode
+} from './Stylesheet';
 
 const _stylesheet: Stylesheet = Stylesheet.getInstance();
 

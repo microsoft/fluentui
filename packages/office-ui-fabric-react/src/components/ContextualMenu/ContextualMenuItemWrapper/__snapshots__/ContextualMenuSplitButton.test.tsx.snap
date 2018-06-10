@@ -3,13 +3,12 @@
 exports[`ContextualMenuSplitButton creates a normal split button renders the contextual menu split button correctly 1`] = `
 <div
   aria-checked={undefined}
-  aria-describedby={undefined}
+  aria-describedby="undefined"
   aria-disabled={false}
   aria-expanded={undefined}
   aria-haspopup={true}
   aria-label={undefined}
   aria-posinset={1}
-  aria-roledescription={undefined}
   aria-setsize={1}
   className="splitContainer"
   data-is-focusable={true}
@@ -29,6 +28,7 @@ exports[`ContextualMenuSplitButton creates a normal split button renders the con
     className="splitPrimary"
     data-is-focusable={false}
     disabled={undefined}
+    icon={undefined}
     name={undefined}
   >
     <div

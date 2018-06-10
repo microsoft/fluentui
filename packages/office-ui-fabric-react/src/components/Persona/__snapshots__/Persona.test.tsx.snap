@@ -6,14 +6,11 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
       ms-Persona
       ms-Persona--size48
       {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
         align-items: center;
         box-shadow: none;
         box-sizing: border-box;
         color: #333333;
         display: flex;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 400;
         height: 48px;
@@ -41,13 +38,7 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
     className=
         ms-Persona-coin
         ms-Persona--size48
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-        }
+
     size={13}
   >
     <div
@@ -239,14 +230,11 @@ exports[`Persona renders Persona correctly with image 1`] = `
       ms-Persona
       ms-Persona--size48
       {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
         align-items: center;
         box-shadow: none;
         box-sizing: border-box;
         color: #333333;
         display: flex;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 400;
         height: 48px;
@@ -274,13 +262,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
     className=
         ms-Persona-coin
         ms-Persona--size48
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-        }
+
     size={13}
   >
     <div
@@ -431,14 +413,11 @@ exports[`Persona renders Persona correctly with initials 1`] = `
       ms-Persona
       ms-Persona--size48
       {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
         align-items: center;
         box-shadow: none;
         box-sizing: border-box;
         color: #333333;
         display: flex;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 400;
         height: 48px;
@@ -466,13 +445,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
     className=
         ms-Persona-coin
         ms-Persona--size48
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-        }
+
     size={13}
   >
     <div
@@ -649,14 +622,11 @@ exports[`Persona renders Persona correctly with no props 1`] = `
       ms-Persona
       ms-Persona--size48
       {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
         align-items: center;
         box-shadow: none;
         box-sizing: border-box;
         color: #333333;
         display: flex;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 400;
         height: 48px;
@@ -684,13 +654,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
     className=
         ms-Persona-coin
         ms-Persona--size48
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-        }
+
     size={13}
   >
     <div

@@ -1,5 +1,11 @@
-import { IDialogContentStyleProps, IDialogContentStyles } from './DialogContent.types';
-import { FontWeights, getGlobalClassNames } from '../../Styling';
+import {
+  IDialogContentStyleProps,
+  IDialogContentStyles,
+} from './DialogContent.types';
+import {
+  FontWeights,
+  getGlobalClassNames,
+} from '../../Styling';
 
 const GlobalClassNames = {
   contentLgHeader: 'ms-Dialog-lgHeader',
@@ -10,17 +16,26 @@ const GlobalClassNames = {
   button: 'ms-Dialog-button ms-Dialog-button--close',
   inner: 'ms-Dialog-inner',
   content: 'ms-Dialog-content',
-  title: 'ms-Dialog-title'
+  title: 'ms-Dialog-title',
 };
 
-export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles => {
-  const { className, theme, isLargeHeader, isClose, hidden, isMultiline } = props;
+export const getStyles = (
+  props: IDialogContentStyleProps
+): IDialogContentStyles => {
+  const {
+    className,
+    theme,
+    isLargeHeader,
+    isClose,
+    hidden,
+    isMultiline,
+  } = props;
 
   const { palette, fonts } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  return {
+  return ({
     content: [
       isLargeHeader && classNames.contentLgHeader,
       isClose && classNames.close,
@@ -39,8 +54,8 @@ export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles
         color: palette.neutralPrimary,
         lineHeight: '1.5',
         wordWrap: 'break-word',
-        fontWeight: FontWeights.semilight
-      }
+        fontWeight: FontWeights.semilight,
+      },
     ],
 
     header: [
@@ -48,15 +63,15 @@ export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles
       {
         position: 'relative',
         width: '100%',
-        boxSizing: 'border-box'
+        boxSizing: 'border-box',
       },
       isLargeHeader && [
         classNames.headerLg,
         {
-          backgroundColor: palette.themePrimary
+          backgroundColor: palette.themePrimary,
         }
       ],
-      isClose && classNames.close
+      isClose && classNames.close,
     ],
 
     button: [
@@ -65,7 +80,7 @@ export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles
         selectors: {
           '.ms-Icon.ms-Icon--Cancel': {
             color: palette.neutralSecondary,
-            fontSize: '16px'
+            fontSize: '16px',
           }
         }
       }
@@ -74,7 +89,7 @@ export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles
     inner: [
       classNames.inner,
       {
-        padding: isMultiline ? '0 20px 20px' : '0 28px 20px'
+        padding: isMultiline ? '0 20px 20px' : '0 28px 20px',
       }
     ],
 
@@ -90,7 +105,7 @@ export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles
 
             selectors: {
               '&:last-child': {
-                marginBottom: '0'
+                marginBottom: '0',
               }
             }
           }
@@ -104,18 +119,18 @@ export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles
       {
         color: palette.neutralPrimary,
         margin: '0',
-        padding: '20px 36px 20px 28px'
+        padding: '20px 36px 20px 28px',
       },
       fonts.xLarge,
       isLargeHeader && [
         {
           color: palette.white,
           marginBottom: '8px',
-          padding: '26px 28px 28px'
+          padding: '26px 28px 28px',
         },
         fonts.xxLarge
       ],
-      isMultiline && fonts.xxLarge
+      isMultiline && fonts.xxLarge,
     ],
 
     topButton: [
@@ -130,10 +145,10 @@ export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles
 
         selectors: {
           '> *': {
-            flex: '0 0 auto'
+            flex: '0 0 auto',
           }
         }
       }
-    ]
-  };
+    ],
+  });
 };

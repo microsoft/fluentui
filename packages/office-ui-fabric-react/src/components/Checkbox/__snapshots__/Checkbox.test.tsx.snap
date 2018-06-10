@@ -15,6 +15,7 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
+        background-color: transparent;
         background: none;
         border: none;
         cursor: pointer;
@@ -38,13 +39,13 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
       }
       .ms-Fabric--isFocusVisible &:focus:after {
         border: 1px solid #ffffff;
-        bottom: -2px;
+        bottom: -1px;
         content: "";
-        left: -2px;
+        left: -1px;
         outline: 1px solid #666666;
         position: absolute;
-        right: -2px;
-        top: -2px;
+        right: -1px;
+        top: -1px;
         z-index: 1;
       }
       &:hover .ms-Checkbox-checkbox {
@@ -53,15 +54,11 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
       &:focus .ms-Checkbox-checkbox {
         border-color: #212121;
       }
-      &:hover .ms-Checkbox-checkmark {
-        color: #a6a6a6;
-        opacity: 1;
-      }
       &:hover .ms-Checkbox-text {
-        color: #333333;
+        color: #000000;
       }
       &:focus .ms-Checkbox-text {
-        color: #333333;
+        color: #000000;
       }
   data-ktp-execute-target={undefined}
   disabled={undefined}
@@ -86,7 +83,6 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
           margin-top: 0;
           position: relative;
           text-align: left;
-          user-select: none;
         }
     htmlFor="checkbox-0"
   >
@@ -111,6 +107,7 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
             transition-duration: 200ms;
             transition-property: background, border, border-color;
             transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+            user-select: none;
             width: 20px;
           }
       data-ktp-target={undefined}
@@ -118,7 +115,7 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
       <i
         aria-hidden={true}
         className=
-            ms-Checkbox-checkmark
+
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -129,10 +126,6 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
               font-weight: normal;
               opacity: 0;
               speak: none;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              -ms-high-contrast-adjust: none;
-              color: Window;
             }
         data-icon-name="CheckMark"
         role="presentation"

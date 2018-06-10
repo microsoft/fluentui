@@ -3,7 +3,6 @@
     "tslint-react"
   ],
   "rules": {
-    "deprecation": true,
     "function-name": [
       true,
       {
@@ -25,7 +24,7 @@
     "jsx-key": true,
     "jsx-no-lambda": true,
     "jsx-self-close": true,
-    "jsx-wrap-multiline": false,
+    "jsx-wrap-multiline": true,
     "jsx-no-multiline-js": false,
     "jsx-no-string-ref": true,
     "jsx-ban-props": [
@@ -42,10 +41,7 @@
     ],
     "max-line-length": [
       true,
-      {
-        "limit": 140,
-        "ignore-pattern": "require\\(|https?:\\/\\/"
-      }
+      140
     ],
     "no-arg": true,
     "radix": true,
@@ -60,8 +56,7 @@
     "quotemark": [
       true,
       "single",
-      "jsx-double",
-      "avoid-escape"
+      "jsx-single"
     ],
     "no-inferrable-types": [
       true,
@@ -164,8 +159,7 @@
     ],
     "semicolon": [
       true,
-      "always",
-      "ignore-bound-class-methods"
+      "always"
     ],
     "typedef-whitespace": [
       true,

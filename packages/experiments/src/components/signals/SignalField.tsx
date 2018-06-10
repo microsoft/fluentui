@@ -1,3 +1,4 @@
+
 import * as React from 'react';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
 import * as SignalFieldStyles from './SignalField.scss';
@@ -16,22 +17,26 @@ export interface ISignalFieldProps extends React.HTMLAttributes<HTMLSpanElement>
  * Pass the main value as the children.
  */
 export const SignalField: React.StatelessComponent<ISignalFieldProps> = (props: ISignalFieldProps): JSX.Element => {
-  const { before, after, className, signalsFieldMode = 'compact', ...spanProps } = props;
+  const {
+    before,
+    after,
+    className,
+    signalsFieldMode = 'compact',
+    ...spanProps
+  } = props;
   return (
     <span
-      {...spanProps}
-      className={css(
-        SignalFieldStyles.signalField,
-        {
-          [SignalFieldStyles.wide]: signalsFieldMode === 'wide',
-          [SignalFieldStyles.compact]: signalsFieldMode === 'compact'
-        },
-        className
-      )}
+      { ...spanProps }
+      className={ css(SignalFieldStyles.signalField, {
+        [SignalFieldStyles.wide]: signalsFieldMode === 'wide',
+        [SignalFieldStyles.compact]: signalsFieldMode === 'compact'
+      }, className) }
     >
-      {props.before}
-      <span className={SignalFieldStyles.signalFieldValue}>{props.children}</span>
-      {props.after}
+      { props.before }
+      <span className={ SignalFieldStyles.signalFieldValue }>
+        { props.children }
+      </span>
+      { props.after }
     </span>
   );
 };

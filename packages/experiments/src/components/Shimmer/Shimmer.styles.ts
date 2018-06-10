@@ -1,118 +1,101 @@
 import { IShimmerStyleProps, IShimmerStyles } from './Shimmer.types';
-import { keyframes, getGlobalClassNames, hiddenContentStyle, HighContrastSelector } from '../../Styling';
-import { getRTL } from '../../Utilities';
-
-const GlobalClassNames = {
-  root: 'ms-Shimmer-container',
-  shimmerWrapper: 'ms-Shimmer-shimmerWrapper',
-  dataWrapper: 'ms-Shimmer-dataWrapper'
-};
-
-const BACKGROUND_OFF_SCREEN_POSITION = '1000%';
-
-const shimmerAnimation: string = keyframes({
-  '0%': {
-    backgroundPosition: `-${BACKGROUND_OFF_SCREEN_POSITION}`
-  },
-  '100%': {
-    backgroundPosition: BACKGROUND_OFF_SCREEN_POSITION
-  }
-});
-
-const shimmerAnimationRTL: string = keyframes({
-  '100%': {
-    backgroundPosition: `-${BACKGROUND_OFF_SCREEN_POSITION}`
-  },
-  '0%': {
-    backgroundPosition: BACKGROUND_OFF_SCREEN_POSITION
-  }
-});
+import { keyframes, DefaultPalette } from '../../Styling';
 
 export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
-  const { width, isDataLoaded, widthInPercentage, widthInPixel, className, theme, transitionAnimationInterval } = props;
+  const {
+    width,
+    rowHeight,
+    isDataLoaded,
+    isBaseStyle,
+    widthInPercentage,
+    widthInPixel
+  } = props;
 
-  const { palette } = theme;
-  const classNames = getGlobalClassNames(GlobalClassNames, theme);
-
-  const isRTL = getRTL();
+  const BACKGROUND_OFF_SCREEN_POSITION = '1000%';
 
   // TODO reduce the logic after the deprecated value will be removed.
-  const ACTUAL_WIDTH = width
-    ? width + '%'
-    : widthInPercentage
-      ? widthInPercentage + '%'
-      : widthInPixel
-        ? widthInPixel + 'px'
-        : '100%';
+  const ACTUAL_WIDTH =
+    width ? width + '%' :
+      widthInPercentage ? widthInPercentage + '%' :
+        widthInPixel ? widthInPixel + 'px' : '100%';
+
+  const shimmerAnimation: string = keyframes({
+    '0%': {
+      backgroundPosition: `-${BACKGROUND_OFF_SCREEN_POSITION}`
+    },
+    '100%': {
+      backgroundPosition: BACKGROUND_OFF_SCREEN_POSITION
+    }
+  });
 
   return {
     root: [
-      classNames.root,
+      'ms-Shimmer-container',
       {
         position: 'relative',
-        height: 'auto'
+        margin: '10px',
+        width: 'auto',
+        boxSizing: 'content-box',
+        minHeight: rowHeight ? `${rowHeight}px` : '16px'
       },
-      className
-    ],
-    shimmerWrapper: [
-      classNames.shimmerWrapper,
-      {
-        width: ACTUAL_WIDTH,
-        background: `${palette.neutralLighter}
-                    linear-gradient(
-                      to right,
-                      ${palette.neutralLighter} 0%,
-                      ${palette.neutralLight} 50%,
-                      ${palette.neutralLighter} 100%)
-                    0 0 / 90% 100%
-                    no-repeat`,
-        animationDuration: '2s',
-        animationTimingFunction: 'ease-in-out',
-        animationDirection: 'normal',
-        animationIterationCount: 'infinite',
-        animationName: isRTL ? shimmerAnimationRTL : shimmerAnimation,
-        transition: `opacity ${transitionAnimationInterval}ms`,
-        selectors: {
-          [HighContrastSelector]: {
-            background: `WindowText
-                        linear-gradient(
-                          to right,
-                          transparent 0%,
-                          Window 50%,
-                          transparent 100%)
-                        0 0 / 90% 100%
-                        no-repeat`
-          }
-        }
-      },
-      isDataLoaded && {
-        opacity: '0',
-        position: 'absolute',
-        top: '0',
-        bottom: '0',
-        left: '0',
-        right: '0'
+      isBaseStyle && {
+        margin: '0',
+        minHeight: 'inherit',
+        display: 'flex',
+        alignItems: 'center'
       }
     ],
-    dataWrapper: [
-      classNames.dataWrapper,
+    shimmerWrapper: [
+      'ms-Shimmer-shimmerWrapper',
       {
+        display: 'flex',
         position: 'absolute',
         top: '0',
         bottom: '0',
         left: '0',
         right: '0',
-        opacity: '0',
-        background: 'none',
-        backgroundColor: 'transparent',
-        border: 'none',
-        transition: `opacity ${transitionAnimationInterval}ms`
+        alignItems: 'center',
+        alignContent: 'space-between',
+        width: ACTUAL_WIDTH,
+        height: 'auto',
+        boxSizing: 'border-box',
+        background: `${DefaultPalette.neutralLighter}
+                    linear-gradient(
+                      to right,
+                      ${DefaultPalette.neutralLighter} 0%,
+                      ${DefaultPalette.neutralLight} 50%,
+                      ${DefaultPalette.neutralLighter} 100%)
+                    0 0 / 90% 100%
+                    no-repeat
+                    content-box`,
+        animationDuration: '2s',
+        animationTimingFunction: 'ease-in-out',
+        animationDirection: 'normal',
+        animationIterationCount: 'infinite',
+        animationName: shimmerAnimation,
+        transition: 'opacity 200ms, visibility 200ms'
       },
       isDataLoaded && {
-        opacity: '1',
+        opacity: '0',
+        visibility: 'hidden'
+      },
+      isBaseStyle && {
         position: 'static'
       }
     ],
-    screenReaderText: hiddenContentStyle
+    dataWrapper: [
+      'ms-Shimmer-dataWrapper',
+      {
+        opacity: '0',
+        lineHeight: '1',
+        background: 'none',
+        backgroundColor: 'transparent',
+        border: 'none',
+        transition: 'opacity 200ms'
+      },
+      isDataLoaded && {
+        opacity: '1'
+      }
+    ]
   };
 }

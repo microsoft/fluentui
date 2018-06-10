@@ -1,5 +1,8 @@
 {
-  "headers": ["Resolution", "Devices"],
+  "headers": [
+    "Resolution",
+    "Devices"
+  ],
   "data": [
     [
       {

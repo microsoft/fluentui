@@ -1,0 +1,120 @@
+@import '../../common/common';
+
+.root {
+  position: relative;
+  max-width: 300px;
+}
+
+.panel {
+  padding: 16px;
+}
+
+.colorRect {
+  position: relative;
+  margin-bottom: 10px;
+
+  @include high-contrast {
+    -ms-high-contrast-adjust: none;
+  }
+}
+
+.rectContainer {
+  position: relative;
+}
+
+.capture {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(255,0,0,.1);
+}
+
+.rectContainer.rectContainerIsAdjusting .capture {
+  position: fixed;
+}
+
+.table {
+  table-layout: fixed; // fix IE
+  width: 100%;
+}
+.tableHexCell {
+  width: 25%;
+}
+
+.thumb {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border: 1px solid rgba(255,255,255,.8);
+  border-radius: 50%;
+  box-shadow: 0 0 15px -5px black;
+  transform: translate(-50%, -50%);
+
+  &.thumbIsSlider {
+    top: 50%;
+  }
+}
+
+.light {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(to right, white 0%, transparent 100%);
+}
+
+.dark {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent 0, #000 100%);
+}
+
+.slider {
+  position: relative;
+  height: 20px;
+  margin-bottom: 5px;
+  border: 1px solid $ms-color-neutralLight;
+  box-sizing: border-box;
+
+  &.colorSliderIsHue {
+    background: linear-gradient(to left,red 0,#f09 10%,#cd00ff 20%,#3200ff 30%,#06f 40%,#00fffd 50%,#0f6 60%,#35ff00 70%,#cdff00 80%,#f90 90%,red 100%);
+  }
+
+  &.colorSliderIsAlpha {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJUlEQVQYV2N89erVfwY0ICYmxoguxjgUFKI7GsTH5m4M3w1ChQC1/Ca8i2n1WgAAAABJRU5ErkJggg==);
+  }
+}
+
+.sliderOverlay {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.input {
+  width: 100%;
+  border: none;
+  box-sizing: border-box;
+  height: 30px;
+
+  &:global(.ms-TextField) {
+    padding-right: 2px;
+  }
+
+  :global(.ms-TextField-field) {
+    min-width: auto;
+    padding: 5px;
+    text-overflow: clip;
+  }
+}
+

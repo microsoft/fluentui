@@ -123,6 +123,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     optionalText: 'Available at 4:00pm',
     isValid: true,
     presence: PersonaPresence.none
+
   },
   {
     key: 12,
@@ -448,15 +449,15 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     imageInitials: 'GO',
     text: 'Group One',
     canExpand: true,
-    isValid: true
+    isValid: true,
   },
   {
     key: 42,
     imageInitials: 'GT',
     text: 'Group Two',
     canExpand: true,
-    isValid: true
-  }
+    isValid: true,
+  },
 ];
 
 export const mru: IExtendedPersonaProps[] = people.slice(0, 5);

@@ -1,7 +1,13 @@
 'use strict';
 
+
+import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
+
 // Treat warnings as failures.
 console.warn = (message) => { throw new Error(message); };
+
+// Initialize icons.
+initializeIcons('dist/');
 
 // Configure load-themed-styles to avoid registering styles.
 let themeLoader = require('@microsoft/load-themed-styles');
@@ -17,10 +23,6 @@ library.setRTL(false);
 // Assume a large screen.
 let responsiveLib = require('office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode');
 responsiveLib.setResponsiveMode(responsiveLib.ResponsiveMode.large);
-
-// Initialize icons.
-const { initializeIcons } = require('office-ui-fabric-react/lib/Icons');
-initializeIcons('dist/');
 
 let React = require('react');
 let ReactDOMServer = require('react-dom/server');
