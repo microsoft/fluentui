@@ -22,12 +22,7 @@
     "types": [
       "jest",
       "webpack-env"
-    ],
-    "paths": {
-      "office-ui-fabric-react/lib/*": [
-        "../../packages/office-ui-fabric-react/src/*"
-      ]
-    }
+    ]
   },
   "include": [
     "src"

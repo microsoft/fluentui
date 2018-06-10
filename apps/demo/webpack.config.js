@@ -10,7 +10,7 @@ let entry = {
 
 // In production builds, produce the demo-app bundle.
 if (IS_PRODUCTION) {
-  entry['demo-app'] = './lib/demo/index.js';
+  entry['demo-app'] = './lib/index.js';
 }
 
 module.exports = resources.createConfig(BUNDLE_NAME, IS_PRODUCTION, {
@@ -32,8 +32,6 @@ module.exports = resources.createConfig(BUNDLE_NAME, IS_PRODUCTION, {
 
   resolve: {
     alias: {
-      'office-ui-fabric-react/src': path.resolve(__dirname, '../../package/office-ui-fabric-react/src'),
-      'office-ui-fabric-react/lib': path.resolve(__dirname, '../../package/office-ui-fabric-react/src'),
       'Props.ts.js': 'Props',
       'Example.tsx.js': 'Example'
     }

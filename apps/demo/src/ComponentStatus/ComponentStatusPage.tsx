@@ -17,7 +17,7 @@ export class ComponentStatusPage extends React.Component<{}, {}> {
       <ComponentPage
         title="Components Checklist"
         componentName="Components Checklist"
-        editOverviewUrl="https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/demo/ComponentStatus/docs/ComponentChecklistOverview.md"
+        editOverviewUrl="https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/demo/src/ComponentStatus/docs/ComponentChecklistOverview.md"
         overview={this._renderOverView()}
         otherSections={sections}
       />
@@ -25,13 +25,7 @@ export class ComponentStatusPage extends React.Component<{}, {}> {
   }
 
   private _renderOverView(): JSX.Element {
-    return (
-      <PageMarkdown>
-        {require<
-          string
-        >('!raw-loader!office-ui-fabric-react/src/demo/ComponentStatus/docs/ComponentChecklistOverview.md')}
-      </PageMarkdown>
-    );
+    return <PageMarkdown>{require<string>('!raw-loader!./docs/ComponentChecklistOverview.md')}</PageMarkdown>;
   }
 
   private _renderComponents(): JSX.Element {

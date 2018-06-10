@@ -3,7 +3,7 @@ import * as renderer from 'react-test-renderer';
 
 import { resetIds } from '../Utilities';
 
-import * as DataUtil from '@uifabric/example-app-base/lib-commonjs/utilities/data';
+import * as DataUtil from '../utilities/exampleData';
 
 // Extend Jest Expect to allow us to map each component example to its own snapshot file.
 const snapshotsStateMap = new Map();

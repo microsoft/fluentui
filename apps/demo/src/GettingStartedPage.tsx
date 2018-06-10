@@ -15,9 +15,7 @@ export class GettingStartedPage extends React.Component<any, any> {
           </div>
           {this._getEditButton()}
         </div>
-        <PageMarkdown>
-          {require<string>('!raw-loader!office-ui-fabric-react/src/demo/docs/GettingStartedOverview.md')}
-        </PageMarkdown>
+        <PageMarkdown>{require<string>('!raw-loader!./docs/GettingStartedOverview.md')}</PageMarkdown>
       </div>
     );
   }
@@ -31,7 +29,7 @@ export class GettingStartedPage extends React.Component<any, any> {
         <IconButton
           aria-describedby={`GettingStartedPage-editButtonHost`}
           iconProps={{ iconName: 'Edit' }}
-          href="https://github.com/OfficeDev/office-ui-fabric-react/edit/master/packages/office-ui-fabric-react/src/demo/docs/GettingStartedOverview.md"
+          href="https://github.com/OfficeDev/office-ui-fabric-react/edit/master/apps/demo/src/docs/GettingStartedOverview.md"
           target="_blank"
           rel="noopener noreferrer"
         />

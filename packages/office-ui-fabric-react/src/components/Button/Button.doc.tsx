@@ -23,7 +23,12 @@ const ButtonContextualMenuExampleCode = require('!raw-loader!office-ui-fabric-re
 const ButtonSwapExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Swap.Example.tsx') as string;
 const ButtonSplitExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Split.Example.tsx') as string;
 
-export const ButtonPageProps: IDocPageProps = {
+export interface IButtonDocPageProps extends IDocPageProps {
+  areButtonsDisabled: boolean;
+  areButtonsChecked: boolean;
+}
+
+export const ButtonPageProps = (props: IButtonDocPageProps) => ({
   title: 'Button',
   componentName: 'ButtonExample',
   componentUrl:
@@ -32,39 +37,37 @@ export const ButtonPageProps: IDocPageProps = {
     {
       title: 'Default Button',
       code: ButtonDefaultExampleCode,
-      view: <ButtonDefaultExample disabled={this.state.areButtonsDisabled} checked={this.state.areButtonsChecked} />
+      view: <ButtonDefaultExample disabled={props.areButtonsDisabled} checked={props.areButtonsChecked} />
     },
     {
       title: 'Compound Button',
       code: ButtonCompoundExampleCode,
-      view: <ButtonCompoundExample disabled={this.state.areButtonsDisabled} checked={this.state.areButtonsChecked} />
+      view: <ButtonCompoundExample disabled={props.areButtonsDisabled} checked={props.areButtonsChecked} />
     },
     {
       title: 'Command Bar Button',
       code: ButtonCommandBarExampleCode,
-      view: <ButtonCommandBarExample disabled={this.state.areButtonsDisabled} checked={this.state.areButtonsChecked} />
+      view: <ButtonCommandBarExample disabled={props.areButtonsDisabled} checked={props.areButtonsChecked} />
     },
     {
       title: 'Split Button',
       code: ButtonSplitExampleCode,
-      view: <ButtonSplitExample disabled={this.state.areButtonsDisabled} checked={this.state.areButtonsChecked} />
+      view: <ButtonSplitExample disabled={props.areButtonsDisabled} checked={props.areButtonsChecked} />
     },
     {
       title: 'Icon Button',
       code: ButtonIconExampleCode,
-      view: <ButtonIconExample disabled={this.state.areButtonsDisabled} checked={this.state.areButtonsChecked} />
+      view: <ButtonIconExample disabled={props.areButtonsDisabled} checked={props.areButtonsChecked} />
     },
     {
       title: 'Contextual Menu Button',
       code: ButtonContextualMenuExampleCode,
-      view: (
-        <ButtonContextualMenuExample disabled={this.state.areButtonsDisabled} checked={this.state.areButtonsChecked} />
-      )
+      view: <ButtonContextualMenuExample disabled={props.areButtonsDisabled} checked={props.areButtonsChecked} />
     },
     {
       title: 'Action Button',
       code: ButtonActionExampleCode,
-      view: <ButtonActionExample disabled={this.state.areButtonsDisabled} checked={this.state.areButtonsChecked} />
+      view: <ButtonActionExample disabled={props.areButtonsDisabled} checked={props.areButtonsChecked} />
     }
   ],
 
@@ -72,24 +75,22 @@ export const ButtonPageProps: IDocPageProps = {
     {
       title: 'Button Like Anchor',
       code: ButtonAnchorExampleCode,
-      view: <ButtonAnchorExample disabled={this.state.areButtonsDisabled} checked={this.state.areButtonsChecked} />
+      view: <ButtonAnchorExample disabled={props.areButtonsDisabled} checked={props.areButtonsChecked} />
     },
     {
       title: 'Button with Aria Description for Screen Reader',
       code: ButtonScreenReaderExampleCode,
-      view: (
-        <ButtonScreenReaderExample disabled={this.state.areButtonsDisabled} checked={this.state.areButtonsChecked} />
-      )
+      view: <ButtonScreenReaderExample disabled={props.areButtonsDisabled} checked={props.areButtonsChecked} />
     },
     {
       title: 'Button Swap with Focus State',
       code: ButtonSwapExampleCode,
-      view: <ButtonSwapExample disabled={this.state.areButtonsDisabled} checked={this.state.areButtonsChecked} />
+      view: <ButtonSwapExample disabled={props.areButtonsDisabled} checked={props.areButtonsChecked} />
     },
     {
       title: 'Custom Split Button',
       code: ButtonSplitExampleCode,
-      view: <ButtonSplitCustomExample disabled={this.state.areButtonsDisabled} checked={this.state.areButtonsChecked} />
+      view: <ButtonSplitCustomExample disabled={props.areButtonsDisabled} checked={props.areButtonsChecked} />
     }
   ],
 
@@ -103,4 +104,4 @@ export const ButtonPageProps: IDocPageProps = {
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/docs/ButtonDonts.md'),
   isHeaderVisible: true,
   componentStatus: ButtonStatus
-};
+});

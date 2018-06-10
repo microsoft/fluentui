@@ -33,21 +33,23 @@ export class ButtonPage extends React.Component<IDocPageProps, IButtonDemoPageSt
   };
 
   render() {
+    const { areButtonsDisabled, areButtonsChecked } = this.state;
+
     return (
       <div>
         <Checkbox
           className={exampleStyles.exampleCheckbox}
           label="Disable buttons"
-          checked={this.state.areButtonsDisabled}
+          checked={areButtonsDisabled}
           onChange={this._onDisabledChanged}
         />
         <Checkbox
           className={exampleStyles.exampleCheckbox}
           label="Mark as checked"
-          checked={this.state.areButtonsChecked}
+          checked={areButtonsChecked}
           onChange={this._onToggledChanged}
         />
-        <DemoPage {...{ ...ButtonPageProps, ...this.props }} />
+        <DemoPage {...{ ...ButtonPageProps({ areButtonsDisabled, areButtonsChecked }), ...this.props }} />
       </div>
     );
   }
