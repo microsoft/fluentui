@@ -1,7 +1,4 @@
-import {
-  IStyle,
-  ITheme
-} from '../../Styling';
+import { IStyle, ITheme } from '../../Styling';
 import { IRenderFunction, IStyleFunction } from '../../Utilities';
 import { IIconProps } from '../../Icon';
 
@@ -234,6 +231,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    */
   styles?: IStyleFunction<ITextFieldStyleProps, ITextFieldStyles>;
 
+  // TODO: resolve with closure from styles or some other approach
   // /**
   //  * Call to provide customized styling that will layer on top of the variant rules.
   //  */

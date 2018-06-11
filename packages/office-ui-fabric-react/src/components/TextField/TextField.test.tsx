@@ -4,7 +4,9 @@ import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 
-import { TextField } from './TextField';
+import { createRef } from '../../Utilities';
+
+import { ITextField, TextField } from './TextField';
 
 describe('TextField', () => {
   function renderIntoDocument(element: React.ReactElement<any>): HTMLElement {
@@ -409,16 +411,16 @@ describe('TextField', () => {
   });
 
   it('should select a range of text', () => {
-    let textField: TextField | undefined;
     const initialValue = 'initial value';
+    const textFieldRef = createRef<ITextField>();
 
     const onSelect = () => {
       const selectedText = window.getSelection().toString();
       expect(selectedText).toEqual(initialValue);
     };
 
-    renderIntoDocument(<TextField ref={t => (textField = t!)} defaultValue={initialValue} onSelect={onSelect} />);
+    renderIntoDocument(<TextField componentRef={textFieldRef} defaultValue={initialValue} onSelect={onSelect} />);
 
-    textField!.setSelectionRange(0, initialValue.length);
+    textFieldRef.current!.setSelectionRange(0, initialValue.length);
   });
 });

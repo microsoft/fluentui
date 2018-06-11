@@ -197,47 +197,37 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
     this._isDescriptionAvailable = Boolean(this.props.onRenderDescription || description || errorMessage);
 
     return (
-      <div className={ this._classNames.root }>
-        <div className={ this._classNames.wrapper }>
-          { onRenderLabel(this.props, this._onRenderLabel) }
-          <div className={ this._classNames.fieldGroup }>
-            { (addonString !== undefined || this.props.onRenderAddon) && (
-              <div className={ this._classNames.prefix }>
-                { onRenderAddon(this.props, this._onRenderAddon) }
-              </div>
-            ) }
-            { (prefix !== undefined || this.props.onRenderPrefix) && (
-              <div className={ this._classNames.prefix }>
-                { onRenderPrefix(this.props, this._onRenderPrefix) }
-              </div>
-            ) }
-            { multiline ? this._renderTextArea() : this._renderInput() }
-            { (iconClass || iconProps) && <Icon className={ css(iconClass, this._classNames.icon) } { ...iconProps } /> }
-            { (suffix !== undefined || this.props.onRenderSuffix) && (
-              <div className={ this._classNames.suffix }>
-                { onRenderSuffix(this.props, this._onRenderSuffix) }
-              </div>
-            ) }
+      <div className={this._classNames.root}>
+        <div className={this._classNames.wrapper}>
+          {onRenderLabel(this.props, this._onRenderLabel)}
+          <div className={this._classNames.fieldGroup}>
+            {(addonString !== undefined || this.props.onRenderAddon) && (
+              <div className={this._classNames.prefix}>{onRenderAddon(this.props, this._onRenderAddon)}</div>
+            )}
+            {(prefix !== undefined || this.props.onRenderPrefix) && (
+              <div className={this._classNames.prefix}>{onRenderPrefix(this.props, this._onRenderPrefix)}</div>
+            )}
+            {multiline ? this._renderTextArea() : this._renderInput()}
+            {(iconClass || iconProps) && <Icon className={css(iconClass, this._classNames.icon)} {...iconProps} />}
+            {(suffix !== undefined || this.props.onRenderSuffix) && (
+              <div className={this._classNames.suffix}>{onRenderSuffix(this.props, this._onRenderSuffix)}</div>
+            )}
           </div>
         </div>
-        { this._isDescriptionAvailable && (
-          <span id={ this._descriptionId }>
-            { onRenderDescription(this.props, this._onRenderDescription) }
-            { errorMessage && (
+        {this._isDescriptionAvailable && (
+          <span id={this._descriptionId}>
+            {onRenderDescription(this.props, this._onRenderDescription)}
+            {errorMessage && (
               <div aria-live="assertive">
                 <DelayedRender>
-                  <p
-                    className={ this._classNames.errorMessage }
-                  >
-                    <span data-automation-id="error-message">
-                      { errorMessage }
-                    </span>
+                  <p className={this._classNames.errorMessage}>
+                    <span data-automation-id="error-message">{errorMessage}</span>
                   </p>
                 </DelayedRender>
               </div>
-            ) }
+            )}
           </span>
-        ) }
+        )}
       </div>
     );
   }
@@ -327,11 +317,12 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
 
   private _onRenderLabel = (props: ITextFieldProps): JSX.Element | null => {
     if (props.label) {
-      return <Label htmlFor={ this._id }>{ props.label }</Label>;
+      return <Label htmlFor={this._id}>{props.label}</Label>;
     }
     return null;
   };
 
+  // TODO: is this needed?
   // private _onRenderLabel(props: ITextFieldProps): JSX.Element | null {
   //   const {
   //     theme,
@@ -360,7 +351,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
 
   private _onRenderDescription = (props: ITextFieldProps): JSX.Element | null => {
     if (props.description) {
-      return <span className={ this._classNames.description }>{ props.description }</span>;
+      return <span className={this._classNames.description}>{props.description}</span>;
     }
     return null;
   };
@@ -368,17 +359,17 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
   // @deprecated
   private _onRenderAddon(props: ITextFieldProps): JSX.Element {
     const { addonString } = props;
-    return <span style={ { paddingBottom: '1px' } }>{ addonString }</span>;
+    return <span style={{ paddingBottom: '1px' }}>{addonString}</span>;
   }
 
   private _onRenderPrefix(props: ITextFieldProps): JSX.Element {
     const { prefix } = props;
-    return <span style={ { paddingBottom: '1px' } }>{ prefix }</span>;
+    return <span style={{ paddingBottom: '1px' }}>{prefix}</span>;
   }
 
   private _onRenderSuffix(props: ITextFieldProps): JSX.Element {
     const { suffix } = props;
-    return <span style={ { paddingBottom: '1px' } }>{ suffix }</span>;
+    return <span style={{ paddingBottom: '1px' }}>{suffix}</span>;
   }
 
   private get _errorMessage(): string | undefined {
@@ -395,18 +386,18 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
 
     return (
       <textarea
-        id={ this._id }
-        { ...textAreaProps }
-        ref={ this._textElement }
-        value={ this.state.value }
-        onInput={ this._onInputChange }
-        onChange={ this._onInputChange }
-        className={ this._classNames.field }
-        aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : this.props['aria-describedby'] }
-        aria-invalid={ !!this.state.errorMessage }
-        aria-label={ this.props.ariaLabel }
-        onFocus={ this._onFocus }
-        onBlur={ this._onBlur }
+        id={this._id}
+        {...textAreaProps}
+        ref={this._textElement}
+        value={this.state.value}
+        onInput={this._onInputChange}
+        onChange={this._onInputChange}
+        className={this._classNames.field}
+        aria-describedby={this._isDescriptionAvailable ? this._descriptionId : this.props['aria-describedby']}
+        aria-invalid={!!this.state.errorMessage}
+        aria-label={this.props.ariaLabel}
+        onFocus={this._onFocus}
+        onBlur={this._onBlur}
       />
     );
   }
@@ -418,19 +409,19 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
 
     return (
       <input
-        type={ 'text' }
-        id={ this._id }
-        { ...inputProps }
-        ref={ this._textElement }
-        value={ this.state.value }
-        onInput={ this._onInputChange }
-        onChange={ this._onInputChange }
-        className={ this._classNames.field }
-        aria-label={ this.props.ariaLabel }
-        aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : this.props['aria-describedby'] }
-        aria-invalid={ !!this.state.errorMessage }
-        onFocus={ this._onFocus }
-        onBlur={ this._onBlur }
+        type={'text'}
+        id={this._id}
+        {...inputProps}
+        ref={this._textElement}
+        value={this.state.value}
+        onInput={this._onInputChange}
+        onChange={this._onInputChange}
+        className={this._classNames.field}
+        aria-label={this.props.ariaLabel}
+        aria-describedby={this._isDescriptionAvailable ? this._descriptionId : this.props['aria-describedby']}
+        aria-invalid={!!this.state.errorMessage}
+        onFocus={this._onFocus}
+        onBlur={this._onBlur}
       />
     );
   }
