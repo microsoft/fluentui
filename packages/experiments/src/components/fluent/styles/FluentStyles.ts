@@ -1,10 +1,10 @@
-import * as React from 'react';
+// import * as React from 'react';
 // import { Dialog, DialogFooter, DialogType } from 'office-ui-fabric-react/lib/Dialog';
 // import { PrimaryButton, DefaultButton, CompoundButton } from 'office-ui-fabric-react/lib/Button';
-import { Customizer } from 'office-ui-fabric-react/lib/Utilities';
+// import { Customizer } from 'office-ui-fabric-react/lib/Utilities';
 import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
-import { FluentThemeLinkExample } from './FluentStylesLink.Basic.Examples';
-import { FluentThemeButtonExample } from './FluentStylesButton.Basic.Examples';
+// import { FluentThemeLinkExample } from './FluentStylesLink.Basic.Examples';
+// import { FluentThemeButtonExample } from './FluentStylesButton.Basic.Examples';
 
 /** Definitions for Depth, or shadow, levels. */
 const FluentDepthLevels = {
@@ -48,21 +48,22 @@ const linkStyles = {
 
 const PrimaryButtonStyles = {
   root: {
-    borderRadius: 2,
+    borderRadius: '2px',
+    backgroundColor: 'red',
     boxShadow: FluentDepthLevels.Level1
   }
 };
 
 const CompoundButtonStyles = {
   root: {
-    borderRadius: 2,
+    borderRadius: '2px',
     boxShadow: FluentDepthLevels.Level1
   }
 };
 
 const DefaultButtonStyles = {
   root: {
-    borderRadius: 2,
+    borderRadius: '2px',
     boxShadow: FluentDepthLevels.Level1
   }
 };
@@ -83,7 +84,7 @@ const DialogContentStyles = {
 };
 
 // Roll up all style overrides in a single "Fluent theme" object
-const FluentStyles = {
+export const FluentStyles = {
   Link: {
     styles: linkStyles
   },
@@ -104,25 +105,25 @@ const FluentStyles = {
   }
 };
 
-export class FluentStylesBasicExample extends React.Component<{}, {}> {
-  public render(): JSX.Element {
-    return (
-      <div>
-        <h2>Link</h2>
-        <h3>Current theme</h3>
-        <FluentThemeLinkExample />
-        <h3>Fluent theme</h3>
-        <Customizer scopedSettings={{ ...FluentStyles }}>
-          <FluentThemeLinkExample />
-        </Customizer>
-        <h2>Buttons</h2>
-        <h3>Current theme</h3>
-        <FluentThemeButtonExample />
-        <h3>Fluent theme</h3>
-        <Customizer scopedSettings={{ ...FluentStyles }}>
-          <FluentThemeButtonExample />
-        </Customizer>
-      </div>
-    );
-  }
-}
+// export class FluentStylesBasicExample extends React.Component<{}, {}> {
+//   public render(): JSX.Element {
+//     return (
+//       <div>
+//         <h2>Link</h2>
+//         <h3>Current theme</h3>
+//         <FluentThemeLinkExample />
+//         <h3>Fluent theme</h3>
+//         <Customizer scopedSettings={{ ...FluentStyles }}>
+//           <FluentThemeLinkExample />
+//         </Customizer>
+//         <h2>Buttons</h2>
+//         <h3>Current theme</h3>
+//         <FluentThemeButtonExample />
+//         <h3>Fluent theme</h3>
+//         <Customizer scopedSettings={{ ...FluentStyles }}>
+//           <FluentThemeButtonExample />
+//         </Customizer>
+//       </div>
+//     );
+//   }
+// }

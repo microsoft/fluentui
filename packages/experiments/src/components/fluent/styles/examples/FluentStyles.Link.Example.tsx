@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from 'office-ui-fabric-react';
 
-export class FluentThemeLinkExample extends React.Component<{}, {}> {
+export class FluentStylesLinkExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
       <div className="docs-LinkExample">
