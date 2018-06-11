@@ -1,4 +1,5 @@
 module.exports = function(options) {
+  options = options || {};
   const path = require('path');
   const exec = require('../exec');
   const resolve = require('resolve');
@@ -15,7 +16,15 @@ module.exports = function(options) {
   let hasLoggedErrors = false;
 
   // We wait for all compilations to be done to report success
-  return Promise.all([runTscFor('lib-commonjs', 'commonjs', extraParams), runTscFor('lib', 'es2015', extraParams)]);
+  const runPromises = [];
+
+  runPromises.push(runTscFor('lib-commonjs', 'commonjs', extraParams));
+
+  if (!options.commonjsOnly) {
+    runPromises.push(runTscFor('lib', 'es2015', extraParams));
+  }
+
+  return Promise.all(runPromises);
 
   function logFirstStdOutAndRethrow(process) {
     if (!hasLoggedErrors) {

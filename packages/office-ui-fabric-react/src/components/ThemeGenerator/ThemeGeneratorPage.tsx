@@ -371,7 +371,8 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
           ruleName.indexOf('ColorShade') === -1 &&
           ruleName !== 'primaryColor' &&
           ruleName !== 'backgroundColor' &&
-          ruleName !== 'foregroundColor'
+          ruleName !== 'foregroundColor' &&
+          ruleName.indexOf('body') === -1
         ) {
           abridgedTheme[ruleName] = themeRules[ruleName];
         }
