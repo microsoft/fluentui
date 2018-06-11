@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 08 Jun 2018 18:34:17 GMT and should not be manually modified.
+This log was last generated on Mon, 11 Jun 2018 10:18:35 GMT and should not be manually modified.
+
+## 6.9.0
+Mon, 11 Jun 2018 10:18:35 GMT
+
+### Minor changes
+
+- Adding focus async to focus autofill when calling componentDidUpdate
+
+### Patches
+
+- Add styling output to component example snapshot tests.
+- Add automatic snapshot tests for all component examples.
+- Theme Generator: have json output contain only IPalette members
 
 ## 6.8.0
 Fri, 08 Jun 2018 18:34:17 GMT
