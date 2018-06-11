@@ -10,6 +10,7 @@ import { CollapseAllVisibility } from '../../GroupedList';
 import { DetailsRowCheck } from './DetailsRowCheck';
 import { ITooltipHostProps } from '../../Tooltip';
 import * as checkStylesModule from './DetailsRowCheck.scss';
+import { IViewport } from '../../utilities/decorators/withViewport';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
 import * as stylesImport from './DetailsHeader.scss';
 const styles: any = stylesImport;
@@ -47,6 +48,7 @@ export interface IDetailsHeaderProps extends React.Props<DetailsHeader> {
   ariaLabelForSelectAllCheckbox?: string;
   ariaLabelForSelectionColumn?: string;
   selectAllVisibility?: SelectAllVisibility;
+  viewport?: IViewport;
 }
 
 export enum SelectAllVisibility {
@@ -121,7 +123,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
       ariaLabelForSelectAllCheckbox,
       selectAllVisibility,
       ariaLabelForSelectionColumn,
-      indentWidth
+      indentWidth,
+      viewport
     } = this.props;
     const { isAllSelected, columnResizeDetails, isSizing, groupNestingDepth, isAllCollapsed } = this.state;
 
@@ -143,6 +146,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
         componentRef={this._root}
         onMouseMove={this._onRootMouseMove}
         data-automationid="DetailsHeader"
+        style={{ minWidth: viewport ? viewport.width : 0 }}
         direction={FocusZoneDirection.horizontal}
       >
         {showCheckbox

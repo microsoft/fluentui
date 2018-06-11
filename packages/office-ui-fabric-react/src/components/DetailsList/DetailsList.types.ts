@@ -231,6 +231,11 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
    * Whether or not the selection zone should enter modal state on touch.
    */
   enterModalSelectionOnTouch?: boolean;
+
+  /**
+   * On horizontal scroll event listener
+   */
+  onScroll?: (e?: Event) => void;
 }
 
 export interface IColumn {
