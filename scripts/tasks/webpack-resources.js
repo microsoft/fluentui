@@ -138,11 +138,7 @@ module.exports = {
           ]
         },
 
-        plugins: [
-          // new WebpackNotifierPlugin(),
-          // new ForkTsCheckerWebpackPlugin(),
-          new webpack.ProgressPlugin()
-        ]
+        plugins: [new WebpackNotifierPlugin(), new ForkTsCheckerWebpackPlugin(), new webpack.ProgressPlugin()]
       },
       customConfig
     );
