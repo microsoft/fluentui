@@ -3,7 +3,7 @@
     {
       "packageName": "@uifabric/charting",
       "comment": "add style arg to customizable",
-      "type": "minor"
+      "type": "none"
     }
   ],
   "packageName": "@uifabric/charting",

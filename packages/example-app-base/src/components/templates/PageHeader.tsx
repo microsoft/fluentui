@@ -4,7 +4,7 @@ import {
   IBaseProps,
   customizable,
   classNamesFunction,
-  IStyleFunction,
+  IStyleFunctionOrObject,
   styled
 } from 'office-ui-fabric-react/lib/Utilities';
 import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
@@ -31,7 +31,7 @@ export interface IPageHeaderProps extends IBaseProps {
   theme?: ITheme;
   as?: string;
   children?: JSX.Element | string;
-  getStyles?: IStyleFunction<IPageHeaderStyleProps, IPageHeaderStyles>;
+  styles?: IStyleFunctionOrObject<IPageHeaderStyleProps, IPageHeaderStyles>;
   // getStyles?: IGetStylesFunction<IPageHeaderStyleProps, IPageHeaderStyles>;
 }
 
@@ -40,9 +40,9 @@ const getClassNames = classNamesFunction<IPageHeaderStyleProps, IPageHeaderStyle
 @customizable('PageHeader', ['theme', 'styles'])
 export class PageHeaderBase extends BaseComponent<IPageHeaderProps, {}> {
   public render(): JSX.Element {
-    const { as: RootType = 'h1', theme, children, getStyles } = this.props;
+    const { as: RootType = 'h1', theme, children, styles } = this.props;
 
-    const classNames = getClassNames(getStyles, { theme: theme!, as: RootType });
+    const classNames = getClassNames(styles, { theme: theme!, as: RootType });
 
     return <RootType className={classNames.root}>{children}</RootType>;
   }

@@ -877,10 +877,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       // This is an item without a menu. Click it.
       this._executeItemClick(item, ev);
     } else {
-      if (item.key === this.state.expandedMenuItemKey) {
-        // This has an expanded sub menu. collapse it.
-        this._onSubMenuDismiss(ev);
-      } else {
+      if (item.key !== this.state.expandedMenuItemKey) {
         // This has a collapsed sub menu. Expand it.
         this.setState({
           // When Edge + Narrator are used together (regardless of if the button is in a form or not), pressing

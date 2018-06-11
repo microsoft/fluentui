@@ -1,6 +1,14 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Thu, 07 Jun 2018 16:35:34 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Jun 2018 18:34:17 GMT and should not be manually modified.
+
+## 6.2.0
+Fri, 08 Jun 2018 18:34:17 GMT
+
+### Minor changes
+
+- add style arg to customizable
+- Fixing package dependencies
 
 ## 6.1.0
 Thu, 07 Jun 2018 16:35:34 GMT
