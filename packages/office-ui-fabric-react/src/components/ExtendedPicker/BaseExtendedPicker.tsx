@@ -90,7 +90,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
   public render(): JSX.Element {
     const { className, inputProps, disabled } = this.props;
     const activeDescendant =
-      this.floatingPicker.current && this.floatingPicker.current
+      this.floatingPicker.current && this.floatingPicker.current.currentSelectedSuggestionIndex !== -1
         ? 'sug-' + this.floatingPicker.current.currentSelectedSuggestionIndex
         : undefined;
 

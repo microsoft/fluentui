@@ -103,7 +103,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
   }
 
   public get currentSuggestionIndex(): number {
-    return this._suggestions && this._suggestions.currentIndex;
+    return this._suggestions ? this._suggestions.currentIndex : -1;
   }
 
   public hasSuggestionSelected(): boolean {

@@ -63,7 +63,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
   }
 
   public get currentSelectedSuggestionIndex(): number {
-    return this.suggestionsControl && this.suggestionsControl.currentSuggestionIndex;
+    return this.suggestionsControl ? this.suggestionsControl.currentSuggestionIndex : -1;
   }
 
   public get isSuggestionsShown(): boolean {
