@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, customizable } from '../../Utilities';
+import { BaseComponent, classNamesFunction, createRef, customizable } from '../../Utilities';
 import { IColorPickerProps, IColorPickerStyleProps, IColorPickerStyles } from './ColorPicker.types';
-import { TextField } from '../../TextField';
+import { ITextField, TextField } from '../../TextField';
 import { ColorRectangle } from './ColorRectangle/ColorRectangle';
 import { ColorSlider } from './ColorSlider/ColorSlider';
 import {
@@ -31,11 +31,11 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
     alphaLabel: 'Alpha'
   };
 
-  private hexText: TextField;
-  private rText: TextField;
-  private gText: TextField;
-  private bText: TextField;
-  private aText: TextField;
+  private _hexText = createRef<ITextField>();
+  private _rText = createRef<ITextField>();
+  private _gText = createRef<ITextField>();
+  private _bText = createRef<ITextField>();
+  private _aText = createRef<ITextField>();
 
   constructor(props: IColorPickerProps) {
     super(props);
@@ -98,7 +98,7 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
                   <TextField
                     className={classNames.input}
                     value={color.hex}
-                    ref={ref => (this.hexText = ref!)}
+                    componentRef={this._hexText}
                     onBlur={this._onHexChanged}
                     spellCheck={false}
                   />
@@ -108,7 +108,7 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
                     className={classNames.input}
                     onBlur={this._onRGBAChanged}
                     value={String(color.r)}
-                    ref={ref => (this.rText = ref!)}
+                    componentRef={this._rText}
                     spellCheck={false}
                   />
                 </td>
@@ -117,7 +117,7 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
                     className={classNames.input}
                     onBlur={this._onRGBAChanged}
                     value={String(color.g)}
-                    ref={ref => (this.gText = ref!)}
+                    componentRef={this._gText}
                     spellCheck={false}
                   />
                 </td>
@@ -126,7 +126,7 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
                     className={classNames.input}
                     onBlur={this._onRGBAChanged}
                     value={String(color.b)}
-                    ref={ref => (this.bText = ref!)}
+                    componentRef={this._bText}
                     spellCheck={false}
                   />
                 </td>
@@ -136,7 +136,7 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
                       className={classNames.input}
                       onBlur={this._onRGBAChanged}
                       value={String(color.a)}
-                      ref={ref => (this.aText = ref!)}
+                      componentRef={this._aText}
                       spellCheck={false}
                     />
                   </td>
@@ -162,16 +162,16 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
   };
 
   private _onHexChanged = (): void => {
-    this._updateColor(getColorFromString('#' + this.hexText.value));
+    this._updateColor(getColorFromString('#' + this._hexText.value));
   };
 
   private _onRGBAChanged = (): void => {
     this._updateColor(
       getColorFromRGBA({
-        r: Number(this.rText.value),
-        g: Number(this.gText.value),
-        b: Number(this.bText.value),
-        a: Number((this.aText && this.aText.value) || 100)
+        r: Number(this._rText.value),
+        g: Number(this._gText.value),
+        b: Number(this._bText.value),
+        a: Number((this._aText && this._aText.value) || 100)
       })
     );
   };
