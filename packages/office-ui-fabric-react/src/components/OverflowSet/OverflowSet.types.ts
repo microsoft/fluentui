@@ -1,8 +1,10 @@
-import * as React from 'react';
-import { OverflowSet } from './OverflowSet';
-import { IRenderFunction } from '../../Utilities';
-import { IFocusZoneProps } from '../../FocusZone';
-import { IKeytipProps } from '../../Keytip';
+import * as React from "react";
+
+import { IFocusZoneProps } from "../../FocusZone";
+import { IKeytipProps } from "../../Keytip";
+import { IStyle } from "../../Styling";
+import { IRenderFunction, IStyleFunctionOrObject } from "../../Utilities";
+import { OverflowSetBase } from "./OverflowSet.base";
 
 export interface IOverflowSet {
   /**
@@ -22,7 +24,7 @@ export interface IOverflowSet {
   focusElement(childElement?: HTMLElement): boolean;
 }
 
-export interface IOverflowSetProps extends React.Props<OverflowSet> {
+export interface IOverflowSetProps extends React.Props<OverflowSetBase> {
   /**
    * Gets the component ref.
    */
@@ -35,29 +37,29 @@ export interface IOverflowSetProps extends React.Props<OverflowSet> {
 
   /**
    * An array of items to be rendered by your onRenderItem function in the primary content area
-  */
+   */
   items?: IOverflowSetItemProps[];
 
   /**
    * Change item layout direction to vertical/stacked.
    * @default false
-  */
+   */
   vertical?: boolean;
 
   /**
    * An array of items to be passed to overflow contextual menu
-  */
+   */
   overflowItems?: IOverflowSetItemProps[];
 
   /**
    * Method to call when trying to render an item.
-  */
+   */
   onRenderItem: (item: IOverflowSetItemProps) => any;
 
   /**
    * Rendering method for overflow button and contextual menu. The argument to the function is
    * the overflowItems passed in as props to this function.
-  */
+   */
   onRenderOverflowButton: IRenderFunction<any[]>;
 
   /**
@@ -92,6 +94,18 @@ export interface IOverflowSetProps extends React.Props<OverflowSet> {
    * This is only used if your overflow set has keytips.
    */
   itemSubMenuProvider?: (item: IOverflowSetItemProps) => any[] | undefined;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  styles?: IStyleFunctionOrObject<IOverflowSetProps, IOverflowSetStyles>;
+}
+
+export interface IOverflowSetStyles {
+  /** The style that is layered onto the root element of OverflowSet. */
+  root?: IStyle;
+  /** The style that is layered onto each individual item in the overflow set. */
+  item?: IStyle;
 }
 
 export interface IOverflowSetItemProps {
