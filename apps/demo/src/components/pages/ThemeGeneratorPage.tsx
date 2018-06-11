@@ -339,7 +339,8 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
       // primary color also needs to be accessible, this is also strong variant default
       this._accessibilityRow(FabricSlots.white, FabricSlots.themePrimary),
       this._accessibilityRow(FabricSlots.neutralPrimary, FabricSlots.neutralLighter), // neutral variant default
-      this._accessibilityRow(FabricSlots.themeDark, FabricSlots.neutralLighter)
+      this._accessibilityRow(FabricSlots.themeDark, FabricSlots.neutralLighter),
+      this._accessibilityRow(FabricSlots.neutralPrimary, FabricSlots.themeLighter)
     ]; // neutral variant with primary color
 
     // these are the text and primary colors on top of the soft variant, whose bg depends on invertedness of original theme
