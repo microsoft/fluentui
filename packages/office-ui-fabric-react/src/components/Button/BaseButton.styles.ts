@@ -66,7 +66,8 @@ export const getStyles = memoizeFunction(
             ':hover': noOutline,
             ':focus': noOutline,
             [HighContrastSelector]: {
-              color: 'grayText'
+              color: 'grayText',
+              bordercolor: 'grayText'
             }
           }
         }

@@ -487,11 +487,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       };
     }
 
+    const containerProps = getNativeProps(buttonProps, [], ['disabled']);
     return (
       <KeytipData keytipProps={keytipProps} disabled={disabled}>
         {(keytipAttributes: any): JSX.Element => (
           <div
-            {...buttonProps}
+            {...containerProps}
             data-ktp-target={keytipAttributes['data-ktp-target']}
             role={'button'}
             aria-disabled={disabled}
@@ -505,7 +506,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
             ref={this._splitButtonContainer}
             data-is-focusable={true}
             onClick={!disabled && !primaryDisabled ? this._onSplitButtonPrimaryClick : undefined}
-            tabIndex={(!disabled || allowDisabledFocus) ? 0 : undefined}
+            tabIndex={!disabled || allowDisabledFocus ? 0 : undefined}
             aria-roledescription={buttonProps['aria-roledescription']}
           >
             <span style={{ display: 'flex' }}>
@@ -556,7 +557,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     const splitButtonProps = {
       styles: classNames,
       checked: checked,
-      disabled: !allowDisabledFocus && disabled,
+      disabled: disabled,
       allowDisabledFocus: allowDisabledFocus,
       onClick: this._onMenuClick,
       menuProps: undefined,
