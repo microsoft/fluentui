@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TeachingBubblePage } from 'office-ui-fabric-react/lib/components/TeachingBubble/TeachingBubblePage';
+import { TeachingBubblePage } from '@uifabric/demo/lib/components/pages/TeachingBubblePage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 const pageStyles: any = require('../PageStyles.module.scss');

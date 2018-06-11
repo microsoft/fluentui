@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FocusTrapZonePage } from 'office-ui-fabric-react/lib/components/FocusTrapZone/FocusTrapZonePage';
+import { FocusTrapZonePage } from '@uifabric/demo/lib/components/pages/FocusTrapZonePage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 const pageStyles: any = require('../PageStyles.module.scss');
