@@ -4,9 +4,8 @@ import { BaseComponent, customizable, nullRender } from '../../../Utilities';
 import { IButtonProps } from '../Button.types';
 import { getStyles } from './ActionButton.styles';
 
-@customizable('ActionButton', ['theme'])
+@customizable('ActionButton', ['theme', 'styles'])
 export class ActionButton extends BaseComponent<IButtonProps, {}> {
-
   /**
    * Tell BaseComponent to bypass resolution of componentRef.
    */
@@ -17,10 +16,10 @@ export class ActionButton extends BaseComponent<IButtonProps, {}> {
 
     return (
       <BaseButton
-        { ...this.props }
-        variantClassName='ms-Button--action ms-Button--command'
-        styles={ getStyles(theme!, styles) }
-        onRenderDescription={ nullRender }
+        {...this.props}
+        variantClassName="ms-Button--action ms-Button--command"
+        styles={getStyles(theme!, styles)}
+        onRenderDescription={nullRender}
       />
     );
   }

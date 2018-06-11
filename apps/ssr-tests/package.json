@@ -12,6 +12,7 @@
     "_mocha": "node ./node_modules/mocha/bin/_mocha dist/ssr-tests.js",
     "_test": "npm run _webpack && npm run _mocha",
     "build": "npm run _test",
+    "code-style": "node -v",
     "clean": ""
   },
   "license": "MIT",
@@ -21,7 +22,7 @@
     "@types/mocha": "2.2.39",
     "@types/webpack-env": "1.13.0",
     "mocha": "^3.3.0",
-    "office-ui-fabric-react": ">=6.1.2 <7.0.0",
+    "office-ui-fabric-react": ">=6.9.0 <7.0.0",
     "raw-loader": "^0.5.1",
     "react": ">=16.3.2-0 <17.0.0",
     "react-dom": ">=16.3.2-0 <17.0.0",

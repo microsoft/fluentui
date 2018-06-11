@@ -1,18 +1,10 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  classNamesFunction,
-  customizable
-} from '../../../Utilities';
-import {
-  IShimmerGapProps,
-  IShimmerGapStyleProps,
-  IShimmerGapStyles
-} from './ShimmerGap.types';
+import { BaseComponent, classNamesFunction, customizable } from '../../../Utilities';
+import { IShimmerGapProps, IShimmerGapStyleProps, IShimmerGapStyles } from './ShimmerGap.types';
 
 const getClassNames = classNamesFunction<IShimmerGapStyleProps, IShimmerGapStyles>();
 
-@customizable('ShimmerGap', ['theme'])
+@customizable('ShimmerGap', ['theme', 'styles'])
 export class ShimmerGapBase extends BaseComponent<IShimmerGapProps, {}> {
   private _classNames: { [key in keyof IShimmerGapStyles]: string };
 
@@ -21,14 +13,7 @@ export class ShimmerGapBase extends BaseComponent<IShimmerGapProps, {}> {
   }
 
   public render(): JSX.Element {
-    const {
-      height,
-      styles,
-      widthInPercentage,
-      widthInPixel,
-      borderStyle,
-      theme
-    } = this.props;
+    const { height, styles, widthInPercentage, widthInPixel, borderStyle, theme } = this.props;
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
@@ -38,8 +23,6 @@ export class ShimmerGapBase extends BaseComponent<IShimmerGapProps, {}> {
       borderStyle
     });
 
-    return (
-      <div className={ this._classNames.root } />
-    );
+    return <div className={this._classNames.root} />;
   }
 }

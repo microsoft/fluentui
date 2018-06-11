@@ -1,6 +1,27 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Wed, 30 May 2018 22:05:03 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Jun 2018 16:35:34 GMT and should not be manually modified.
+
+## 6.2.0
+Thu, 07 Jun 2018 16:35:34 GMT
+
+### Minor changes
+
+- Minor changes to improve server side rendering.
+
+## 6.0.2
+Tue, 05 Jun 2018 00:44:30 GMT
+
+### Patches
+
+- Added Prettier
+
+## 6.0.1
+Mon, 04 Jun 2018 10:16:13 GMT
+
+### Patches
+
+- Updating react typings.
 
 ## 6.0.0
 Wed, 30 May 2018 22:05:03 GMT

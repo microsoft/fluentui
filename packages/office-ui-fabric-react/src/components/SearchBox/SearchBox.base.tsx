@@ -1,13 +1,6 @@
 import * as React from 'react';
 import { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
-import {
-  BaseComponent,
-  getId,
-  KeyCodes,
-  customizable,
-  classNamesFunction,
-  createRef
-} from '../../Utilities';
+import { BaseComponent, getId, KeyCodes, customizable, classNamesFunction, createRef } from '../../Utilities';
 
 import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
@@ -20,7 +13,7 @@ export interface ISearchBoxState {
   id?: string;
 }
 
-@customizable('SearchBox', ['theme'])
+@customizable('SearchBox', ['theme', 'styles'])
 export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
   public static defaultProps: ISearchBoxProps = {
     disableAnimation: false
@@ -34,8 +27,8 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
     super(props);
 
     this._warnDeprecations({
-      'labelText': 'placeholder',
-      'defaultValue': 'value'
+      labelText: 'placeholder',
+      defaultValue: 'value'
     });
 
     this._latestValue = props.value || '';
@@ -83,42 +76,32 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
     });
 
     return (
-      <div
-        ref={ this._rootElement }
-        className={ classNames.root }
-        onFocusCapture={ this._onFocusCapture }
-      >
-        <div
-          className={ classNames.iconContainer }
-          onClick={ this._onClickFocus }
-        >
-          <Icon
-            className={ classNames.icon }
-            iconName='Search'
-          />
+      <div ref={this._rootElement} className={classNames.root} onFocusCapture={this._onFocusCapture}>
+        <div className={classNames.iconContainer} onClick={this._onClickFocus}>
+          <Icon className={classNames.icon} iconName="Search" />
         </div>
         <input
-          id={ id }
-          className={ classNames.field }
-          placeholder={ placeholderValue }
-          onChange={ this._onInputChange }
-          onInput={ this._onInputChange }
-          onKeyDown={ this._onKeyDown }
-          value={ value }
-          disabled={ this.props.disabled }
-          aria-label={ ariaLabel ? ariaLabel : placeholder }
-          ref={ this._inputElement }
+          id={id}
+          className={classNames.field}
+          placeholder={placeholderValue}
+          onChange={this._onInputChange}
+          onInput={this._onInputChange}
+          onKeyDown={this._onKeyDown}
+          value={value}
+          disabled={this.props.disabled}
+          aria-label={ariaLabel ? ariaLabel : placeholder}
+          ref={this._inputElement}
         />
-        { value!.length > 0 &&
-          <div className={ classNames.clearButton }>
+        {value!.length > 0 && (
+          <div className={classNames.clearButton}>
             <IconButton
-              styles={ { root: { height: 'auto' }, icon: { fontSize: '12px' } } }
-              iconProps={ { iconName: 'Clear' } }
-              { ...clearButtonProps }
-              onClick={ this._onClearClick }
+              styles={{ root: { height: 'auto' }, icon: { fontSize: '12px' } }}
+              iconProps={{ iconName: 'Clear' }}
+              {...clearButtonProps}
+              onClick={this._onClearClick}
             />
           </div>
-        }
+        )}
       </div>
     );
   }
@@ -160,7 +143,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
       this.focus();
       inputElement.selectionStart = inputElement.selectionEnd = 0;
     }
-  }
+  };
 
   private _onFocusCapture = (ev: React.FocusEvent<HTMLElement>) => {
     this.setState({
@@ -172,7 +155,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
     if (this.props.onFocus) {
       this.props.onFocus(ev as React.FocusEvent<HTMLInputElement>);
     }
-  }
+  };
 
   private _onClearClick = (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
     const { clearButtonProps } = this.props;
@@ -184,12 +167,10 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
     if (!ev.defaultPrevented) {
       this._onClear(ev);
     }
-  }
+  };
 
   private _onKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>) => {
-
     switch (ev.which) {
-
       case KeyCodes.escape:
         this.props.onEscape && this.props.onEscape(ev);
         if (!ev.defaultPrevented) {
@@ -214,7 +195,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
     // or preventDefault was called in case of default keyDown handler
     ev.preventDefault();
     ev.stopPropagation();
-  }
+  };
 
   private _onBlur = (ev: React.FocusEvent<HTMLInputElement>): void => {
     this._events.off(this._rootElement.current, 'blur');
@@ -225,7 +206,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
     if (this.props.onBlur) {
       this.props.onBlur(ev);
     }
-  }
+  };
 
   private _onInputChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
     const value = ev.target.value;
@@ -237,7 +218,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
 
     this.setState({ value });
     this._callOnChange(value);
-  }
+  };
 
   private _callOnChange(newValue: string): void {
     const { onChange, onChanged } = this.props;

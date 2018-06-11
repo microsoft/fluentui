@@ -8,12 +8,7 @@ import {
   inputProperties,
   getNativeProps
 } from '../../Utilities';
-import {
-  IToggleProps,
-  IToggle,
-  IToggleStyleProps,
-  IToggleStyles
-} from './Toggle.types';
+import { IToggleProps, IToggle, IToggleStyleProps, IToggleStyles } from './Toggle.types';
 import { Label } from '../../Label';
 import { KeytipData } from '../../KeytipData';
 
@@ -23,7 +18,7 @@ export interface IToggleState {
 
 const getClassNames = classNamesFunction<IToggleStyleProps, IToggleStyles>();
 
-@customizable('Toggle', ['theme'])
+@customizable('Toggle', ['theme', 'styles'])
 export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implements IToggle {
   private _id: string;
   private _toggleButton = createRef<HTMLButtonElement>();
@@ -74,52 +69,52 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
     const stateText = checked ? onText : offText;
     const ariaLabel = checked ? onAriaLabel : offAriaLabel;
     const toggleNativeProps = getNativeProps(this.props, inputProperties, ['defaultChecked']);
-    const classNames = getClassNames(
-      styles!,
-      {
-        theme: theme!,
-        className,
-        disabled,
-        checked
-      }
-    );
+    const classNames = getClassNames(styles!, {
+      theme: theme!,
+      className,
+      disabled,
+      checked
+    });
 
     return (
-      <RootType className={ classNames.root }>
+      <RootType className={classNames.root}>
+        {label && (
+          <Label htmlFor={this._id} className={classNames.label}>
+            {label}
+          </Label>
+        )}
 
-        { label && (
-          <Label htmlFor={ this._id } className={ classNames.label }>{ label }</Label>
-        ) }
-
-        <div className={ classNames.container } >
+        <div className={classNames.container}>
           <KeytipData
-            keytipProps={ keytipProps }
-            ariaDescribedBy={ (toggleNativeProps as any)['aria-describedby'] }
-            disabled={ disabled }
+            keytipProps={keytipProps}
+            ariaDescribedBy={(toggleNativeProps as any)['aria-describedby']}
+            disabled={disabled}
           >
-            { (keytipAttributes: any): JSX.Element => (
+            {(keytipAttributes: any): JSX.Element => (
               <button
-                { ...toggleNativeProps }
-                { ...keytipAttributes }
-                className={ classNames.pill }
-                disabled={ disabled }
-                id={ this._id }
-                type='button'
-                ref={ this._toggleButton }
-                aria-disabled={ disabled }
-                aria-pressed={ checked }
-                aria-label={ ariaLabel ? ariaLabel : label }
-                data-is-focusable={ true }
-                onChange={ this._noop }
-                onClick={ this._onClick }
+                {...toggleNativeProps}
+                {...keytipAttributes}
+                className={classNames.pill}
+                disabled={disabled}
+                id={this._id}
+                type="button"
+                ref={this._toggleButton}
+                aria-disabled={disabled}
+                aria-pressed={checked}
+                aria-label={ariaLabel ? ariaLabel : label}
+                data-is-focusable={true}
+                onChange={this._noop}
+                onClick={this._onClick}
               >
-                <div className={ classNames.thumb } />
+                <div className={classNames.thumb} />
               </button>
-            ) }
+            )}
           </KeytipData>
-          { stateText && (
-            <Label htmlFor={ this._id } className={ classNames.text }>{ stateText }</Label>
-          ) }
+          {stateText && (
+            <Label htmlFor={this._id} className={classNames.text}>
+              {stateText}
+            </Label>
+          )}
         </div>
       </RootType>
     );
@@ -151,10 +146,9 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
         onClick(ev);
       }
     }
-  }
+  };
 
   private _noop(): void {
     /* no-op */
   }
-
 }

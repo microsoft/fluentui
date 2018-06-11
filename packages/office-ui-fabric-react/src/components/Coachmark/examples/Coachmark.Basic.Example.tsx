@@ -1,19 +1,15 @@
 import * as React from 'react';
 import { Coachmark } from '../Coachmark';
 import { TeachingBubbleContent } from 'office-ui-fabric-react/lib/TeachingBubble';
-import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 import { IStyle } from '../../../Styling';
-import {
-  BaseComponent,
-  classNamesFunction,
-  createRef
-} from 'office-ui-fabric-react/lib/Utilities';
+import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { BaseComponent, classNamesFunction, createRef } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface ICoachmarkBasicExampleState {
-  isVisible?: boolean;
-  isCoachmarkCollapsed?: boolean;
-  targetElement?: HTMLElement;
+  isCoachmarkVisible?: boolean;
+  coachmarkPosition: DirectionalHint;
 }
 
 export interface ICoachmarkBasicExampleStyles {
@@ -26,6 +22,11 @@ export interface ICoachmarkBasicExampleStyles {
    * The example button container
    */
   buttonContainer: IStyle;
+
+  /**
+   * The dropdown component container
+   */
+  dropdownContainer: IStyle;
 }
 
 export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExampleState> {
@@ -34,68 +35,107 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
   public constructor(props: {}) {
     super(props);
 
-    this._onShowMenuClicked = this._onShowMenuClicked.bind(this);
-    this._onCalloutDismiss = this._onCalloutDismiss.bind(this);
-
     this.state = {
-      isVisible: false,
-      isCoachmarkCollapsed: true
+      isCoachmarkVisible: false,
+      coachmarkPosition: DirectionalHint.bottomAutoEdge
     };
   }
 
   public render(): JSX.Element {
-    const { isVisible } = this.state;
-
-    const calloutProps: ICalloutProps = {
-      doNotLayer: true
-    };
+    const { isCoachmarkVisible } = this.state;
 
     const getClassNames = classNamesFunction<{}, ICoachmarkBasicExampleStyles>();
     const classNames = getClassNames(() => {
       return {
-        root: {},
+        dropdownContainer: {
+          maxWidth: '400px'
+        },
         buttonContainer: {
+          marginTop: '30px',
           display: 'inline-block'
         }
       };
     });
 
+    const buttonProps: IButtonProps = {
+      text: 'Try it'
+    };
+
+    const buttonProps2: IButtonProps = {
+      text: 'Try it again'
+    };
+
     return (
-      <div className={ classNames.root }>
-        <div
-          className={ classNames.buttonContainer }
-          ref={ this._targetButton }
-        >
-          <DefaultButton
-            onClick={ this._onShowMenuClicked }
-            text={ isVisible ? 'Hide Coachmark' : 'Show Coachmark' }
+      <div className={classNames.root}>
+        <div className={classNames.dropdownContainer}>
+          <Dropdown
+            label="Coachmark position"
+            defaultSelectedKey="H"
+            onFocus={this._onDismiss}
+            options={[
+              { key: 'A', text: 'Top Left Edge', data: DirectionalHint.topLeftEdge },
+              { key: 'B', text: 'Top Center', data: DirectionalHint.topCenter },
+              { key: 'C', text: 'Top Right Edge', data: DirectionalHint.topRightEdge },
+              { key: 'D', text: 'Top Auto Edge', data: DirectionalHint.topAutoEdge },
+              { key: 'E', text: 'Bottom Left Edge', data: DirectionalHint.bottomLeftEdge },
+              { key: 'F', text: 'Bottom Center', data: DirectionalHint.bottomCenter },
+              { key: 'G', text: 'Bottom Right Edge', data: DirectionalHint.bottomRightEdge },
+              { key: 'H', text: 'Bottom Auto Edge', data: DirectionalHint.bottomAutoEdge },
+              { key: 'I', text: 'Left Top Edge', data: DirectionalHint.leftTopEdge },
+              { key: 'J', text: 'Left Center', data: DirectionalHint.leftCenter },
+              { key: 'K', text: 'Left Bottom Edge', data: DirectionalHint.leftBottomEdge },
+              { key: 'L', text: 'Right Top Edge', data: DirectionalHint.rightTopEdge },
+              { key: 'M', text: 'Right Center', data: DirectionalHint.rightCenter },
+              { key: 'N', text: 'Right Bottom Edge', data: DirectionalHint.rightBottomEdge }
+            ]}
+            onChanged={this._onDropdownChange}
           />
         </div>
-        { isVisible && (
+
+        <div className={classNames.buttonContainer} ref={this._targetButton}>
+          <DefaultButton
+            onClick={this._onShowMenuClicked}
+            text={isCoachmarkVisible ? 'Hide Coachmark' : 'Show Coachmark'}
+          />
+        </div>
+        {isCoachmarkVisible && (
           <Coachmark
-            target={ this._targetButton.current }
+            target={this._targetButton.current}
+            positioningContainerProps={{
+              directionalHint: this.state.coachmarkPosition
+            }}
           >
             <TeachingBubbleContent
-              headline='Example Title'
-              calloutProps={ calloutProps }
+              headline="Example Title"
+              hasCloseIcon={true}
+              closeButtonAriaLabel="Close"
+              primaryButtonProps={buttonProps}
+              secondaryButtonProps={buttonProps2}
+              onDismiss={this._onDismiss}
             >
-              Welcome to the land of coachmarks
+              Welcome to the land of Coachmarks!
             </TeachingBubbleContent>
           </Coachmark>
-        ) }
+        )}
       </div>
     );
   }
 
-  private _onShowMenuClicked(): void {
+  private _onDismiss = (): void => {
     this.setState({
-      isVisible: !this.state.isVisible
+      isCoachmarkVisible: false
     });
-  }
+  };
 
-  private _onCalloutDismiss(): void {
+  private _onDropdownChange = (option: IDropdownOption): void => {
     this.setState({
-      isVisible: false
+      coachmarkPosition: option.data
     });
-  }
+  };
+
+  private _onShowMenuClicked = (): void => {
+    this.setState({
+      isCoachmarkVisible: !this.state.isCoachmarkVisible
+    });
+  };
 }

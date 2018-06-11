@@ -4,12 +4,10 @@ export enum ComponentPageSection {
   BestPractices,
   Donts,
   Dos,
-  Overview,
+  Overview
 }
 
-export interface IEditSection {
-
-}
+export interface IEditSection {}
 
 export interface IEditSectionProps extends React.HTMLAttributes<EditSection> {
   /**
