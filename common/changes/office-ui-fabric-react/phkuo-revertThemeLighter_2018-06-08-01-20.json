@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add styling output to component example snapshot tests.",
+      "comment": "Theme Generator: add additional accessiblity pair",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "jagore@microsoft.com"
+  "email": "phkuo@microsoft.com"
 }

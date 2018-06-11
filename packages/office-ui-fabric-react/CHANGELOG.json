@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.9.0",
+      "tag": "office-ui-fabric-react_v6.9.0",
+      "date": "Mon, 11 Jun 2018 10:18:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "bd5df127d92071074f5b15281c53a4497f6c3296",
+            "comment": "Add styling output to component example snapshot tests."
+          },
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "be0a6b2cde5175cadd20a5fdf06e97ad740dab54",
+            "comment": "Add automatic snapshot tests for all component examples."
+          },
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "b7d25a2d7be4b944bf39c20550defeeb44507a9d",
+            "comment": "Theme Generator: have json output contain only IPalette members"
+          }
+        ],
+        "minor": [
+          {
+            "author": "manueldosal <manuel_dosal32@hotmail.com>",
+            "commit": "fe36b26daf3b00ae1ec53ea558c31918fa190421",
+            "comment": "Adding focus async to focus autofill when calling componentDidUpdate"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.8.0",
       "tag": "office-ui-fabric-react_v6.8.0",
       "date": "Fri, 08 Jun 2018 18:34:17 GMT",

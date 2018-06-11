@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add automatic snapshot tests for all component examples.",
+      "comment": "Temporarily disable component example snapshot tests.",
       "type": "patch"
     }
   ],
