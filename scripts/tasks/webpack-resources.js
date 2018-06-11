@@ -10,12 +10,8 @@ module.exports = {
   webpack,
 
   createConfig(packageName, isProduction, customConfig, onlyProduction) {
-
     const resolveLoader = {
-      modules: [
-        path.resolve(__dirname, '../node_modules'),
-        path.resolve(process.cwd(), 'node_modules')
-      ]
+      modules: [path.resolve(__dirname, '../node_modules'), path.resolve(process.cwd(), 'node_modules')]
     };
 
     const module = {
@@ -33,36 +29,43 @@ module.exports = {
     const configs = [];
 
     if (!onlyProduction) {
-      configs.push(merge(
-        {
-          mode: 'development',
-          output: {
-            filename: `[name].js`,
-            path: path.resolve(process.cwd(), 'dist'),
-            pathinfo: false
+      configs.push(
+        merge(
+          {
+            mode: 'development',
+            output: {
+              filename: `[name].js`,
+              path: path.resolve(process.cwd(), 'dist'),
+              pathinfo: false
+            },
+            resolveLoader,
+            module,
+            devtool,
+            plugins: getPlugins(packageName, false)
           },
-          resolveLoader,
-          module,
-          devtool,
-          plugins: getPlugins(packageName, false)
-        },
-        customConfig
-      ));
+          customConfig
+        )
+      );
     }
 
     if (isProduction) {
-      configs.push(merge({
-        mode: 'production',
-        output: {
-          filename: `[name].min.js`,
-          path: path.resolve(process.cwd(), 'dist')
-        },
+      configs.push(
+        merge(
+          {
+            mode: 'production',
+            output: {
+              filename: `[name].min.js`,
+              path: path.resolve(process.cwd(), 'dist')
+            },
 
-        resolveLoader,
-        module,
-        devtool,
-        plugins: getPlugins(packageName, true)
-      }, customConfig));
+            resolveLoader,
+            module,
+            devtool,
+            plugins: getPlugins(packageName, true)
+          },
+          customConfig
+        )
+      );
     }
 
     return configs;
@@ -81,10 +84,7 @@ module.exports = {
         mode: 'development',
 
         resolveLoader: {
-          modules: [
-            path.resolve(__dirname, '../node_modules'),
-            path.resolve(process.cwd(), 'node_modules')
-          ]
+          modules: [path.resolve(__dirname, '../node_modules'), path.resolve(process.cwd(), 'node_modules')]
         },
         resolve: {
           extensions: ['.ts', '.tsx', '.js']
@@ -103,21 +103,15 @@ module.exports = {
                   transpileOnly: true
                 }
               },
-              exclude: [
-                /node_modules/,
-                /\.scss.ts$/,
-                /\.test.tsx?$/
-              ],
+              exclude: [/node_modules/, /\.scss.ts$/, /\.test.tsx?$/]
             },
             {
               test: /\.scss$/,
               enforce: 'pre',
-              exclude: [
-                /node_modules/
-              ],
+              exclude: [/node_modules/],
               use: [
                 {
-                  loader: '@microsoft/loader-load-themed-styles', // creates style nodes from JS strings
+                  loader: '@microsoft/loader-load-themed-styles' // creates style nodes from JS strings
                 },
                 {
                   loader: 'css-loader', // translates CSS into CommonJS
@@ -131,10 +125,8 @@ module.exports = {
                 {
                   loader: 'postcss-loader',
                   options: {
-                    plugins: function () {
-                      return [
-                        require('autoprefixer')
-                      ];
+                    plugins: function() {
+                      return [require('autoprefixer')];
                     }
                   }
                 },
@@ -146,21 +138,14 @@ module.exports = {
           ]
         },
 
-        plugins: [
-          new WebpackNotifierPlugin(),
-          new ForkTsCheckerWebpackPlugin()
-        ]
+        plugins: [new WebpackNotifierPlugin(), new ForkTsCheckerWebpackPlugin(), new webpack.ProgressPlugin()]
       },
       customConfig
     );
   }
-
 };
 
-function getPlugins(
-  bundleName,
-  isProduction
-) {
+function getPlugins(bundleName, isProduction) {
   const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
   const plugins = [];
@@ -175,7 +160,7 @@ function getPlugins(
         statsOptions: {
           source: false,
           reasons: false,
-          chunks: false,
+          chunks: false
         },
         statsFilename: bundleName + '.stats.json',
         logLevel: 'warn'

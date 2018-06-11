@@ -1,4 +1,4 @@
-import { ChecklistStatus } from '../../demo/ComponentStatus/ComponentStatus.types';
+import { ChecklistStatus } from '../../common/DocPage.types';
 
 export const GroupedListStatus = {
   keyboardAccessibilitySupport: ChecklistStatus.unknown,
