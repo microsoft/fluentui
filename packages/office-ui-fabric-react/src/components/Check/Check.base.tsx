@@ -6,7 +6,7 @@ import { getStyles } from './Check.styles';
 
 const getClassNames = classNamesFunction<ICheckStyleProps, ICheckStyles>();
 
-@customizable('Check', ['theme'])
+@customizable('Check', ['theme', 'styles'])
 export class CheckBase extends BaseComponent<ICheckProps, {}> {
   public static defaultProps: ICheckProps = {
     checked: false

@@ -16,7 +16,7 @@
     "postinstall": "npm run _rushInstall && npm run _rushBuildToFabric",
     "test": "npm run _rushBuild",
     "vrtest": "cd apps && cd vr-tests && npm run screener",
-    "start": "cd packages && cd office-ui-fabric-react && npm start",
+    "start": "cd apps && cd demo && npm start",
     "build": "npm run _rushRebuild",
     "buildfast": "npm run _rushBuild",
     "code-style": "node node_modules/@microsoft/rush/bin/rush code-style",

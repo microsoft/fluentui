@@ -9,7 +9,7 @@ export interface IChicletState {
   chicletCardProps?: IChicletCardProps;
 }
 
-@customizable('ChicletBase', ['theme'])
+@customizable('ChicletBase', ['theme', 'styles'])
 export class ChicletBase extends BaseComponent<IChicletProps, IChicletState> {
   constructor(props: IChicletProps) {
     super(props);

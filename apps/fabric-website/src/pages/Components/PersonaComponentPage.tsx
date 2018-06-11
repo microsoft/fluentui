@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PersonaPage } from 'office-ui-fabric-react/lib/components/Persona/PersonaPage';
+import { PersonaPage } from '@uifabric/demo/lib/components/pages/PersonaPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 const pageStyles: any = require('../PageStyles.module.scss');

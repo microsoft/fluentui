@@ -27,6 +27,6 @@
     "office-ui-fabric-react-tslint": ">=6.0.0 <7.0.0"
   },
   "dependencies": {
-    "@uifabric/merge-styles": ">=6.0.2 <7.0.0"
+    "@uifabric/merge-styles": ">=6.2.0 <7.0.0"
   }
 }

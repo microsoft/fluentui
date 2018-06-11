@@ -1,14 +1,5 @@
-import {
-  GlobalSettings,
-  warn
-} from '@uifabric/utilities';
-import {
-  IRawStyle,
-  IFontFace,
-  fontFace,
-  mergeStyles,
-  Stylesheet
-} from '@uifabric/merge-styles';
+import { GlobalSettings, warn } from '@uifabric/utilities';
+import { IRawStyle, IFontFace, fontFace, mergeStyles, Stylesheet } from '@uifabric/merge-styles';
 
 export interface IIconSubset {
   fontFace?: IFontFace;
@@ -140,21 +131,17 @@ export function getIcon(name?: string): IIconRecord | undefined {
     if (icon) {
       let { subset } = icon;
       if (subset && subset.fontFace) {
-
         if (!subset.isRegistered) {
           fontFace(subset.fontFace);
           subset.isRegistered = true;
         }
 
         if (!subset.className) {
-          subset.className = mergeStyles(
-            subset.style,
-            {
-              fontFamily: subset.fontFace.fontFamily,
-              fontWeight: subset.fontFace.fontWeight || 'normal',
-              fontStyle: subset.fontFace.fontStyle || 'normal'
-            }
-          );
+          subset.className = mergeStyles(subset.style, {
+            fontFamily: subset.fontFace.fontFamily,
+            fontWeight: subset.fontFace.fontWeight || 'normal',
+            fontStyle: subset.fontFace.fontStyle || 'normal'
+          });
         }
       }
     } else {

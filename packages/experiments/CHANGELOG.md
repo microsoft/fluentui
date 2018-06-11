@@ -1,6 +1,25 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 05 Jun 2018 10:23:03 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Jun 2018 18:34:17 GMT and should not be manually modified.
+
+## 6.4.0
+Fri, 08 Jun 2018 18:34:17 GMT
+
+### Minor changes
+
+- add style arg to customizable
+
+## 6.3.0
+Thu, 07 Jun 2018 16:35:34 GMT
+
+### Minor changes
+
+- Create CollapsibleSection component and createComponent utility.
+- Tweaked the lint rules.
+
+### Patches
+
+- Code format changes
 
 ## 6.2.0
 Tue, 05 Jun 2018 10:23:03 GMT

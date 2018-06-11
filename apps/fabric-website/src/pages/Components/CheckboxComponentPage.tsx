@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CheckboxPage } from 'office-ui-fabric-react/lib/components/Checkbox/CheckboxPage';
+import { CheckboxPage } from '@uifabric/demo/lib/components/pages/CheckboxPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 const pageStyles: any = require('../PageStyles.module.scss');
