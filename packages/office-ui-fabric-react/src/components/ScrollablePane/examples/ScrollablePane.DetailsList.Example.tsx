@@ -75,7 +75,7 @@ export class ScrollablePaneDetailsListExample extends React.Component<
   }
 
   public render(): JSX.Element {
-    const { items } = this.state;
+    const { items, selectionDetails } = this.state;
 
     return (
       <div
@@ -86,6 +86,7 @@ export class ScrollablePaneDetailsListExample extends React.Component<
         }}
       >
         <ScrollablePane componentRef={this._scrollablePane}>
+          <Sticky stickyPosition={StickyPositionType.Header}>{selectionDetails}</Sticky>
           <TextField
             label="Filter by name:"
             // tslint:disable-next-line:jsx-no-lambda
