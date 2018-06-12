@@ -125,11 +125,16 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
             // onRenderMissingItem={this._onRenderMissingItem}
             enableShimmer={true}
             listProps={{ renderedWindowsAhead: 0, renderedWindowsBehind: 0 }}
+            shimmerPlaceholderProps={{ onRenderCustomPlaceholder: this._onRenderShimmer }}
           />
         </div>
       </div>
     );
   }
+
+  private _onRenderShimmer = (): React.ReactNode => {
+    return <div>TEST PLACEHOLDER</div>;
+  };
 
   // private _onRenderMissingItem = (index: number, rowProps: IDetailsRowProps): React.ReactNode => {
   //   const { isDataLoaded } = this.state;

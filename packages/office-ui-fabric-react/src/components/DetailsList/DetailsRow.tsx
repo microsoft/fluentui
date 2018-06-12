@@ -53,6 +53,7 @@ export interface IDetailsRowProps extends React.Props<DetailsRow> {
   rowFieldsAs?: React.StatelessComponent<IDetailsRowFieldsProps> | React.ComponentClass<IDetailsRowFieldsProps>;
   className?: string;
   shimmer?: boolean;
+  onRenderCustomPlaceholder?: () => React.ReactNode;
 }
 
 export interface IDetailsRowSelectionState {
@@ -199,7 +200,8 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
       selection,
       indentWidth,
       shimmer,
-      compact
+      compact,
+      onRenderCustomPlaceholder
     } = this.props;
     const { columnMeasureInfo, isDropping, groupNestingDepth } = this.state;
     const { isSelected = false, isSelectionModal = false } = this.state.selectionState as IDetailsRowSelectionState;
@@ -230,7 +232,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     if (shimmer) {
       return (
         <div className={css(showCheckbox && styles.checkboxOffset, !compact && styles.shimmerContainerBottomBorder)}>
-          <Shimmer customElementsGroup={rowFields} />
+          <Shimmer customElementsGroup={onRenderCustomPlaceholder ? onRenderCustomPlaceholder() : rowFields} />
         </div>
       );
     }
