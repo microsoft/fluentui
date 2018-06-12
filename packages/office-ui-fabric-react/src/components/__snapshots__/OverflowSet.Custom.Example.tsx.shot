@@ -144,6 +144,7 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
   >
     <button
       aria-describedby={undefined}
+      aria-disabled={undefined}
       aria-expanded={false}
       aria-haspopup={true}
       aria-label={undefined}
@@ -317,6 +318,7 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
   >
     <button
       aria-describedby={undefined}
+      aria-disabled={undefined}
       aria-label={undefined}
       aria-labelledby={undefined}
       aria-pressed={undefined}
@@ -457,6 +459,7 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
   >
     <button
       aria-describedby={undefined}
+      aria-disabled={undefined}
       aria-label={undefined}
       aria-labelledby={undefined}
       aria-pressed={undefined}
@@ -597,6 +600,7 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
   >
     <button
       aria-describedby={undefined}
+      aria-disabled={undefined}
       aria-expanded={false}
       aria-haspopup={true}
       aria-label={undefined}

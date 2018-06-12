@@ -189,6 +189,7 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
   </div>
   <button
     aria-describedby={undefined}
+    aria-disabled={undefined}
     aria-label={undefined}
     aria-labelledby={undefined}
     aria-pressed={undefined}

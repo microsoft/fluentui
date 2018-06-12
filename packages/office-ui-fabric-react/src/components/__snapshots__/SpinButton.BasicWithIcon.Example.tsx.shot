@@ -181,6 +181,7 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={false}
@@ -304,6 +305,7 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
         </button>
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={false}

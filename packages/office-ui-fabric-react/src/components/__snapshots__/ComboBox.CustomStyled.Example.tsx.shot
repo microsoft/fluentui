@@ -188,6 +188,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
       />
       <button
         aria-describedby={undefined}
+        aria-disabled={undefined}
         aria-hidden={true}
         aria-label={undefined}
         aria-labelledby={undefined}

@@ -13,6 +13,7 @@ exports[`Component Examples renders Button.Icon.Example.tsx correctly 1`] = `
 >
   <button
     aria-describedby={undefined}
+    aria-disabled={undefined}
     aria-label="Emoji"
     aria-labelledby={undefined}
     aria-pressed={undefined}

@@ -374,6 +374,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label="share action"
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -489,6 +490,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label="pin action"
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -604,6 +606,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label="ringer action"
           aria-labelledby={undefined}
           aria-pressed={undefined}
