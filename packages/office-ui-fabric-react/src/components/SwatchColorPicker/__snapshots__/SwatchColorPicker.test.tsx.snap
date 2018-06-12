@@ -52,6 +52,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
         >
           <button
             aria-describedby={undefined}
+            aria-disabled={undefined}
             aria-label="green"
             aria-labelledby={undefined}
             aria-pressed={undefined}
@@ -249,6 +250,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
         >
           <button
             aria-describedby={undefined}
+            aria-disabled={undefined}
             aria-label="orange"
             aria-labelledby={undefined}
             aria-pressed={undefined}
@@ -446,6 +448,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
         >
           <button
             aria-describedby={undefined}
+            aria-disabled={undefined}
             aria-label="blue"
             aria-labelledby={undefined}
             aria-pressed={undefined}
@@ -643,6 +646,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
         >
           <button
             aria-describedby={undefined}
+            aria-disabled={undefined}
             aria-label="red"
             aria-labelledby={undefined}
             aria-pressed={undefined}
@@ -844,6 +848,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
         >
           <button
             aria-describedby={undefined}
+            aria-disabled={undefined}
             aria-label="green"
             aria-labelledby={undefined}
             aria-pressed={undefined}
@@ -1041,6 +1046,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
         >
           <button
             aria-describedby={undefined}
+            aria-disabled={undefined}
             aria-label="orange"
             aria-labelledby={undefined}
             aria-pressed={undefined}
@@ -1238,6 +1244,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
         >
           <button
             aria-describedby={undefined}
+            aria-disabled={undefined}
             aria-label="blue"
             aria-labelledby={undefined}
             aria-pressed={undefined}
@@ -1435,6 +1442,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
         >
           <button
             aria-describedby={undefined}
+            aria-disabled={undefined}
             aria-label="red"
             aria-labelledby={undefined}
             aria-pressed={undefined}
@@ -1636,6 +1644,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
         >
           <button
             aria-describedby={undefined}
+            aria-disabled={undefined}
             aria-label="black"
             aria-labelledby={undefined}
             aria-pressed={undefined}
@@ -1833,6 +1842,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
         >
           <button
             aria-describedby={undefined}
+            aria-disabled={undefined}
             aria-label="grey"
             aria-labelledby={undefined}
             aria-pressed={undefined}
@@ -2030,6 +2040,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
         >
           <button
             aria-describedby={undefined}
+            aria-disabled={undefined}
             aria-label="purple"
             aria-labelledby={undefined}
             aria-pressed={undefined}
@@ -2227,6 +2238,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
         >
           <button
             aria-describedby={undefined}
+            aria-disabled={undefined}
             aria-label="yellow"
             aria-labelledby={undefined}
             aria-pressed={undefined}

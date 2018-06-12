@@ -13,6 +13,7 @@ import {
   customizable,
   divProperties,
   findIndex,
+  focusAsync,
   getId,
   getNativeProps,
   shallowCompare
@@ -243,7 +244,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         this._autofill.current &&
         document.activeElement !== this._autofill.current.inputElement)
     ) {
-      this.focus();
+      this.focus(undefined /*shouldOpenOnFocus*/, true /*useFocusAsync*/);
     }
 
     // If we should focusAfterClose AND
@@ -424,11 +425,16 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   /**
-   * Set focus on the input
+   * @inheritdoc
    */
-  public focus = (shouldOpenOnFocus?: boolean): void => {
+  public focus = (shouldOpenOnFocus?: boolean, useFocusAsync?: boolean): void => {
     if (this._autofill.current) {
-      this._autofill.current.focus();
+      if (useFocusAsync) {
+        focusAsync(this._autofill.current);
+      } else {
+        this._autofill.current.focus();
+      }
+
       if (shouldOpenOnFocus) {
         this.setState({
           isOpen: true

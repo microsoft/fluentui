@@ -20,6 +20,7 @@ exports[`Suggestions renders a list properly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -126,6 +127,7 @@ exports[`Suggestions renders a list properly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -232,6 +234,7 @@ exports[`Suggestions renders a list properly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -338,6 +341,7 @@ exports[`Suggestions renders a list properly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -444,6 +448,7 @@ exports[`Suggestions renders a list properly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -550,6 +555,7 @@ exports[`Suggestions renders a list properly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -656,6 +662,7 @@ exports[`Suggestions renders a list properly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -762,6 +769,7 @@ exports[`Suggestions renders a list properly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -868,6 +876,7 @@ exports[`Suggestions renders a list properly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -974,6 +983,7 @@ exports[`Suggestions renders a list properly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -1080,6 +1090,7 @@ exports[`Suggestions renders a list properly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -1186,6 +1197,7 @@ exports[`Suggestions renders a list properly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -1292,6 +1304,7 @@ exports[`Suggestions renders a list properly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -1398,6 +1411,7 @@ exports[`Suggestions renders a list properly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -1504,6 +1518,7 @@ exports[`Suggestions renders a list properly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -1629,6 +1644,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -1735,6 +1751,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -1841,6 +1858,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -1947,6 +1965,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -2053,6 +2072,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -2159,6 +2179,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -2265,6 +2286,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -2371,6 +2393,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -2477,6 +2500,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -2583,6 +2607,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -2689,6 +2714,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -2795,6 +2821,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -2901,6 +2928,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -3007,6 +3035,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -3113,6 +3142,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CoachmarkPage } from 'office-ui-fabric-react/lib/components/Coachmark/CoachmarkPage';
+import { CoachmarkPage } from '@uifabric/demo/lib/components/pages/CoachmarkPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 const pageStyles: any = require('../PageStyles.module.scss');
