@@ -104,7 +104,12 @@ export const getStyles = memoizeFunction(
       },
 
       descriptionDisabled: {
-        color: 'inherit'
+        color: 'inherit',
+        selectors: {
+          [HighContrastSelector]: {
+            color: 'inherit'
+          }
+        }
       }
     };
 

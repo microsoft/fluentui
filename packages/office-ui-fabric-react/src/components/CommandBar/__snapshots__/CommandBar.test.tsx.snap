@@ -57,6 +57,7 @@ exports[`CommandBar renders commands correctly 1`] = `
         >
           <button
             aria-describedby={undefined}
+            aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
             aria-posinset={1}
@@ -174,6 +175,7 @@ exports[`CommandBar renders commands correctly 1`] = `
         >
           <button
             aria-describedby={undefined}
+            aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
             aria-posinset={2}
