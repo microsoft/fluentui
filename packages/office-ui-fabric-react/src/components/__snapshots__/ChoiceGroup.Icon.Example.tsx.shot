@@ -241,10 +241,11 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
               className=
                   ms-ChoiceField-labelWrapper
                   {
-                    display: block;
+                    display: flex;
+                    flex-direction: row;
                     font-size: 14px;
                     font-weight: 400;
-                    height: 30px;
+                    height: 31px;
                     line-height: 15px;
                     margin-bottom: 4px;
                     margin-left: 8px;
@@ -252,8 +253,7 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
                     margin-top: 4px;
                     overflow: hidden;
                     position: relative;
-                    text-overflow: ellipsis;
-                    white-space: pre-wrap;
+                    word-break: break-all;
                   }
                   & .ms-Label {
                     padding-bottom: 0px;
@@ -263,16 +263,27 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
                   }
               style={
                 Object {
-                  "maxWidth": 64,
+                  "maxWidth": 72,
                 }
               }
             >
-              <span
-                className="ms-Label"
-                id="ChoiceGroupLabel1-day"
-              >
-                Day
-              </span>
+              <div>
+                <div
+                  aria-describedby={undefined}
+                  className="ms-TooltipHost"
+                  onBlurCapture={[Function]}
+                  onFocusCapture={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                >
+                  <span
+                    className="ms-Label"
+                    id="ChoiceGroupLabel1-day"
+                  >
+                    Day
+                  </span>
+                </div>
+              </div>
             </div>
           </label>
         </div>
@@ -464,10 +475,11 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
               className=
                   ms-ChoiceField-labelWrapper
                   {
-                    display: block;
+                    display: flex;
+                    flex-direction: row;
                     font-size: 14px;
                     font-weight: 400;
-                    height: 30px;
+                    height: 31px;
                     line-height: 15px;
                     margin-bottom: 4px;
                     margin-left: 8px;
@@ -475,8 +487,7 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
                     margin-top: 4px;
                     overflow: hidden;
                     position: relative;
-                    text-overflow: ellipsis;
-                    white-space: pre-wrap;
+                    word-break: break-all;
                   }
                   & .ms-Label {
                     padding-bottom: 0px;
@@ -486,16 +497,27 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
                   }
               style={
                 Object {
-                  "maxWidth": 64,
+                  "maxWidth": 72,
                 }
               }
             >
-              <span
-                className="ms-Label"
-                id="ChoiceGroupLabel1-week"
-              >
-                Week
-              </span>
+              <div>
+                <div
+                  aria-describedby={undefined}
+                  className="ms-TooltipHost"
+                  onBlurCapture={[Function]}
+                  onFocusCapture={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                >
+                  <span
+                    className="ms-Label"
+                    id="ChoiceGroupLabel1-week"
+                  >
+                    Week
+                  </span>
+                </div>
+              </div>
             </div>
           </label>
         </div>
@@ -681,10 +703,11 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
               className=
                   ms-ChoiceField-labelWrapper
                   {
-                    display: block;
+                    display: flex;
+                    flex-direction: row;
                     font-size: 14px;
                     font-weight: 400;
-                    height: 30px;
+                    height: 31px;
                     line-height: 15px;
                     margin-bottom: 4px;
                     margin-left: 8px;
@@ -692,8 +715,7 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
                     margin-top: 4px;
                     overflow: hidden;
                     position: relative;
-                    text-overflow: ellipsis;
-                    white-space: pre-wrap;
+                    word-break: break-all;
                   }
                   & .ms-Label {
                     padding-bottom: 0px;
@@ -703,16 +725,27 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
                   }
               style={
                 Object {
-                  "maxWidth": 64,
+                  "maxWidth": 72,
                 }
               }
             >
-              <span
-                className="ms-Label"
-                id="ChoiceGroupLabel1-month"
-              >
-                Month
-              </span>
+              <div>
+                <div
+                  aria-describedby={undefined}
+                  className="ms-TooltipHost"
+                  onBlurCapture={[Function]}
+                  onFocusCapture={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                >
+                  <span
+                    className="ms-Label"
+                    id="ChoiceGroupLabel1-month"
+                  >
+                    Month
+                  </span>
+                </div>
+              </div>
             </div>
           </label>
         </div>
