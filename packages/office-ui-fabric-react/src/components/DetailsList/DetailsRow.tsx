@@ -20,6 +20,7 @@ import { CollapseAllVisibility } from '../../GroupedList';
 import { IDragDropHelper, IDragDropEvents, IDragDropOptions } from './../../utilities/dragdrop/interfaces';
 import { IViewport } from '../../utilities/decorators/withViewport';
 import { AnimationClassNames } from '../../Styling';
+import { Shimmer } from '../../Shimmer';
 import * as stylesImport from './DetailsRow.scss';
 const styles: any = stylesImport;
 import * as checkStylesImport from './DetailsRowCheck.scss';
@@ -228,8 +229,8 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     // Rendering Shimmer Animation outside the focus zone
     if (shimmer) {
       return (
-        <div className={css(showCheckbox && styles.shimmerLeftBorder, !compact && styles.shimmerBottomBorder)}>
-          {rowFields}
+        <div className={css(showCheckbox && styles.checkboxOffset, !compact && styles.shimmerContainerBottomBorder)}>
+          <Shimmer customElementsGroup={rowFields} />
         </div>
       );
     }

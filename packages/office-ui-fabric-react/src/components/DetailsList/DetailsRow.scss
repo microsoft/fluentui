@@ -13,8 +13,6 @@ $rowShimmerIconPlaceholderHeight: 16px;
 $rowShimmerVerticalBorder: ($rowHeight - $rowShimmerLineHeight) / 2;
 $compactRowShimmerVerticalBorder: ($compactRowHeight - $rowShimmerLineHeight) / 2;
 
-
-
 /* DetailsList Colors */
 // Default
 $detailsList-item-default-header-text-color: $ms-color-neutralPrimary;
@@ -41,7 +39,6 @@ $detailsList-item-focus-header-text-color: $ms-color-black;
 $detailsList-item-focus-background-color: $ms-color-neutralQuaternaryAlt;
 $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
 
-
 // Compact mode rules
 :global(.ms-DetailsList--Compact) {
   .root {
@@ -60,14 +57,15 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
       @include border-right(($rowShimmerHorizontalBorder * 4), solid, $detailsList-item-default-background-color);
       border-top: $compactRowShimmerVerticalBorder solid $detailsList-item-default-background-color;
       border-bottom: $compactRowShimmerVerticalBorder solid $detailsList-item-default-background-color;
-
     }
 
     // Masking the running shimmer background with borders when it's an Icon placeholder
     &.shimmerIconPlaceholder {
       @include border-right($rowShimmerHorizontalBorder, solid, $detailsList-item-default-background-color);
-      border-bottom: ($compactRowHeight - $rowShimmerIconPlaceholderHeight) / 2 solid $detailsList-item-default-background-color;
-      border-top: ($compactRowHeight - $rowShimmerIconPlaceholderHeight) / 2 solid $detailsList-item-default-background-color;
+      border-bottom: ($compactRowHeight - $rowShimmerIconPlaceholderHeight) / 2 solid
+        $detailsList-item-default-background-color;
+      border-top: ($compactRowHeight - $rowShimmerIconPlaceholderHeight) / 2 solid
+        $detailsList-item-default-background-color;
     }
   }
 
@@ -241,7 +239,7 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
     font-size: $ms-font-size-m;
   }
 
-  [data-is-focusable=true] {
+  [data-is-focusable='true'] {
     @include focus-border(0, $ms-color-neutralSecondary);
   }
 
@@ -252,7 +250,6 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
     @include border-right(($rowShimmerHorizontalBorder * 4), solid, $detailsList-item-default-background-color);
     border-top: $rowShimmerVerticalBorder solid $detailsList-item-default-background-color;
     border-bottom: $rowShimmerVerticalBorder solid $detailsList-item-default-background-color;
-
   }
 
   // Masking the running shimmer background with borders when it's an Icon placeholder
@@ -262,7 +259,6 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
     border-top: ($rowHeight - $rowShimmerIconPlaceholderHeight) / 2 solid $detailsList-item-default-background-color;
   }
 }
-
 
 .isPadded {
   @include ms-padding-right($isPaddedMargin + $rowHorizontalPadding);
@@ -302,10 +298,10 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
 }
 
 // 40px to take into account the checkbox of items if present.
-.shimmerLeftBorder {
-  border-left: 40px solid $detailsList-item-default-background-color;
+.checkboxOffset {
+  @include border-left(40px, solid, $detailsList-item-default-background-color);
 }
 // 1px to take into account the border-bottom when items replace shimmer lines and in default state.
-.shimmerBottomBorder {
+.shimmerContainerBottomBorder {
   border-bottom: 1px solid $detailsList-item-default-background-color;
 }

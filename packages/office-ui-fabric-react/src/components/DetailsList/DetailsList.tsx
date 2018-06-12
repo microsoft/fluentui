@@ -465,7 +465,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       getRowAriaDescribedBy,
       checkButtonAriaLabel,
       checkboxCellClassName,
-      groupProps
+      groupProps,
+      enableShimmer
     } = this.props;
     const collapseAllVisibility = groupProps && groupProps.collapseAllVisibility;
     const selection = this._selection;
@@ -492,12 +493,17 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       getRowAriaLabel: getRowAriaLabel,
       getRowAriaDescribedBy: getRowAriaDescribedBy,
       checkButtonAriaLabel: checkButtonAriaLabel,
-      checkboxCellClassName: checkboxCellClassName
+      checkboxCellClassName: checkboxCellClassName,
+      shimmer: !item
     };
 
     if (!item) {
       if (onRenderMissingItem) {
         return onRenderMissingItem(index, rowProps);
+      }
+
+      if (enableShimmer) {
+        return onRenderRow(rowProps);
       }
 
       return null;

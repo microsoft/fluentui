@@ -8,11 +8,11 @@ import {
   DetailsList,
   buildColumns,
   SelectionMode,
-  Toggle,
-  IDetailsRowProps,
-  DetailsRow
+  Toggle
+  // IDetailsRowProps,
+  // DetailsRow
 } from 'office-ui-fabric-react/lib/index';
-import { Shimmer } from 'office-ui-fabric-react/lib/Shimmer';
+// import { Shimmer } from 'office-ui-fabric-react/lib/Shimmer';
 
 import * as ShimmerExampleStyles from './Shimmer.Example.scss';
 
@@ -57,7 +57,7 @@ const fileIcons: { name: string }[] = [
 
 const ITEMS_COUNT = 500;
 const ITEMS_BATCH_SIZE = 10;
-const PAGING_DELAY = 2500;
+// const PAGING_DELAY = 2500;
 
 // tslint:disable-next-line:no-any
 let _items: any[];
@@ -71,8 +71,8 @@ export interface IShimmerApplicationExampleState {
 }
 
 export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplicationExampleState> {
-  private _isFetchingItems: boolean;
-  private _lastTimeoutId: number;
+  // private _isFetchingItems: boolean;
+  // private _lastTimeoutId: number;
 
   constructor(props: {}) {
     super(props);
@@ -122,7 +122,7 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
             compact={isCompactMode}
             selectionMode={this.state.isModalSelection ? SelectionMode.multiple : SelectionMode.none}
             onRenderItemColumn={this._onRenderItemColumn}
-            onRenderMissingItem={this._onRenderMissingItem}
+            // onRenderMissingItem={this._onRenderMissingItem}
             enableShimmer={true}
             listProps={{ renderedWindowsAhead: 0, renderedWindowsBehind: 0 }}
           />
@@ -131,34 +131,34 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
     );
   }
 
-  private _onRenderMissingItem = (index: number, rowProps: IDetailsRowProps): React.ReactNode => {
-    const { isDataLoaded } = this.state;
-    isDataLoaded && this._onDataMiss(index as number);
+  // private _onRenderMissingItem = (index: number, rowProps: IDetailsRowProps): React.ReactNode => {
+  //   const { isDataLoaded } = this.state;
+  //   isDataLoaded && this._onDataMiss(index as number);
 
-    const shimmerRow: JSX.Element = <DetailsRow {...rowProps} shimmer={true} />;
+  //   const shimmerRow: JSX.Element = <DetailsRow {...rowProps} shimmer={true} />;
 
-    return <Shimmer customElementsGroup={shimmerRow} />;
-  };
+  //   return <Shimmer customElementsGroup={shimmerRow} />;
+  // };
 
   // Simulating asynchronus data loading each 2.5 sec
-  private _onDataMiss = (index: number): void => {
-    index = Math.floor(index / ITEMS_BATCH_SIZE) * ITEMS_BATCH_SIZE;
-    if (!this._isFetchingItems) {
-      this._isFetchingItems = true;
-      this._lastTimeoutId = this._async.setTimeout(() => {
-        this._isFetchingItems = false;
-        // tslint:disable-next-line:no-any
-        const itemsCopy = ([] as any[]).concat(this.state.items);
-        itemsCopy.splice.apply(
-          itemsCopy,
-          [index, ITEMS_BATCH_SIZE].concat(_items.slice(index, index + ITEMS_BATCH_SIZE))
-        );
-        this.setState({
-          items: itemsCopy
-        });
-      }, PAGING_DELAY);
-    }
-  };
+  // private _onDataMiss = (index: number): void => {
+  //   index = Math.floor(index / ITEMS_BATCH_SIZE) * ITEMS_BATCH_SIZE;
+  //   if (!this._isFetchingItems) {
+  //     this._isFetchingItems = true;
+  //     this._lastTimeoutId = this._async.setTimeout(() => {
+  //       this._isFetchingItems = false;
+  //       // tslint:disable-next-line:no-any
+  //       const itemsCopy = ([] as any[]).concat(this.state.items);
+  //       itemsCopy.splice.apply(
+  //         itemsCopy,
+  //         [index, ITEMS_BATCH_SIZE].concat(_items.slice(index, index + ITEMS_BATCH_SIZE))
+  //       );
+  //       this.setState({
+  //         items: itemsCopy
+  //       });
+  //     }, PAGING_DELAY);
+  //   }
+  // };
 
   private _onLoadData = (checked: boolean): void => {
     if (!_items) {
@@ -174,7 +174,7 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
       items = _items.slice(0, ITEMS_BATCH_SIZE).concat(new Array(ITEMS_COUNT - ITEMS_BATCH_SIZE));
     } else {
       items = new Array();
-      this._async.clearTimeout(this._lastTimeoutId);
+      // this._async.clearTimeout(this._lastTimeoutId);
     }
     this.setState({
       isDataLoaded: checked,
