@@ -187,6 +187,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
       </div>
       <button
         aria-describedby={undefined}
+        aria-disabled={undefined}
         aria-label={undefined}
         aria-labelledby={undefined}
         aria-pressed={undefined}

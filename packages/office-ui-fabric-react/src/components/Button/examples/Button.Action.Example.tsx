@@ -19,6 +19,7 @@ export class ButtonActionExample extends React.Component<IButtonProps> {
         <ActionButton
           data-automation-id="test"
           iconProps={{ iconName: 'AddFriend' }}
+          allowDisabledFocus={true}
           disabled={disabled}
           checked={checked}
         >
