@@ -17,7 +17,7 @@ $detailsList-text-color: $listTextColor;
 }
 
 .rootIsHorizontalConstrained {
-  overflow-x: visible;
+  overflow-x: auto;
   overflow-y: visible;
 
   -webkit-overflow-scrolling: touch;

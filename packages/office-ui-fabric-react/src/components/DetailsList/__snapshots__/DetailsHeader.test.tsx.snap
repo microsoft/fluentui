@@ -180,11 +180,22 @@ exports[`DetailsHeader can render 1`] = `
     role="button"
   />
   <div
-    aria-hidden={true}
-    className="ms-DetailsHeader-dropHint"
-    data-is-focusable={false}
+    className={undefined}
     id="columnDropHint_1"
-  />
+  >
+    <div
+      aria-hidden={true}
+      className="ms-DetailsHeader-dropHintCircleStyle"
+      data-is-focusable={false}
+      data-sizer-index={1}
+    />
+    <div
+      aria-hidden={true}
+      className="ms-DetailsHeader-dropHintLineStyle"
+      data-is-focusable={false}
+      data-sizer-index={1}
+    />
+  </div>
   <div
     aria-colindex={2}
     aria-disabled={false}
@@ -201,6 +212,24 @@ exports[`DetailsHeader can render 1`] = `
       }
     }
   >
+    <i
+      aria-hidden={true}
+      className=
+
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            display: inline-block;
+            font-family: "FabricMDL2Icons-0";
+            font-style: normal;
+            font-weight: normal;
+            speak: none;
+          }
+      data-icon-name="GripperBarVertical"
+      role="presentation"
+    >
+      
+    </i>
     <span
       className=""
     >
@@ -236,10 +265,21 @@ exports[`DetailsHeader can render 1`] = `
     role="button"
   />
   <div
-    aria-hidden={true}
-    className="ms-DetailsHeader-dropHint"
-    data-is-focusable={false}
+    className={undefined}
     id="columnDropHint_2"
-  />
+  >
+    <div
+      aria-hidden={true}
+      className="ms-DetailsHeader-dropHintCircleStyle"
+      data-is-focusable={false}
+      data-sizer-index={2}
+    />
+    <div
+      aria-hidden={true}
+      className="ms-DetailsHeader-dropHintLineStyle"
+      data-is-focusable={false}
+      data-sizer-index={2}
+    />
+  </div>
 </div>
 `;
