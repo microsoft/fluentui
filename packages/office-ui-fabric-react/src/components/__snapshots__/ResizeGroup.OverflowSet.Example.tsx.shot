@@ -25,7 +25,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
       <div
         aria-describedby={undefined}
         aria-labelledby={undefined}
-        className="ms-FocusZone ms-OverflowSet"
+        className=
+            ms-FocusZone
+            ms-OverflowSet
+            {
+              display: flex;
+              flex-wrap: nowrap;
+              position: relative;
+            }
         data-focuszone-id="FocusZone0"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -33,7 +40,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
         role="menubar"
       >
         <div
-          className="ms-OverflowSet-item"
+          className=
+              ms-OverflowSet-item
+              {
+                display: inherit;
+                flex-shrink: 0;
+              }
         >
           <button
             aria-describedby={undefined}
@@ -175,7 +187,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           </button>
         </div>
         <div
-          className="ms-OverflowSet-item"
+          className=
+              ms-OverflowSet-item
+              {
+                display: inherit;
+                flex-shrink: 0;
+              }
         >
           <button
             aria-describedby={undefined}
@@ -317,7 +334,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           </button>
         </div>
         <div
-          className="ms-OverflowSet-item"
+          className=
+              ms-OverflowSet-item
+              {
+                display: inherit;
+                flex-shrink: 0;
+              }
         >
           <button
             aria-describedby={undefined}
@@ -459,7 +481,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           </button>
         </div>
         <div
-          className="ms-OverflowSet-item"
+          className=
+              ms-OverflowSet-item
+              {
+                display: inherit;
+                flex-shrink: 0;
+              }
         >
           <button
             aria-describedby={undefined}
@@ -601,7 +628,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           </button>
         </div>
         <div
-          className="ms-OverflowSet-item"
+          className=
+              ms-OverflowSet-item
+              {
+                display: inherit;
+                flex-shrink: 0;
+              }
         >
           <button
             aria-describedby={undefined}
@@ -743,7 +775,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           </button>
         </div>
         <div
-          className="ms-OverflowSet-item"
+          className=
+              ms-OverflowSet-item
+              {
+                display: inherit;
+                flex-shrink: 0;
+              }
         >
           <button
             aria-describedby={undefined}
@@ -885,7 +922,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           </button>
         </div>
         <div
-          className="ms-OverflowSet-item"
+          className=
+              ms-OverflowSet-item
+              {
+                display: inherit;
+                flex-shrink: 0;
+              }
         >
           <button
             aria-describedby={undefined}
@@ -1027,7 +1069,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           </button>
         </div>
         <div
-          className="ms-OverflowSet-item"
+          className=
+              ms-OverflowSet-item
+              {
+                display: inherit;
+                flex-shrink: 0;
+              }
         >
           <button
             aria-describedby={undefined}
@@ -1169,7 +1216,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           </button>
         </div>
         <div
-          className="ms-OverflowSet-item"
+          className=
+              ms-OverflowSet-item
+              {
+                display: inherit;
+                flex-shrink: 0;
+              }
         >
           <button
             aria-describedby={undefined}
@@ -1311,7 +1363,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           </button>
         </div>
         <div
-          className="ms-OverflowSet-item"
+          className=
+              ms-OverflowSet-item
+              {
+                display: inherit;
+                flex-shrink: 0;
+              }
         >
           <button
             aria-describedby={undefined}
@@ -1453,7 +1510,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           </button>
         </div>
         <div
-          className="ms-OverflowSet-item"
+          className=
+              ms-OverflowSet-item
+              {
+                display: inherit;
+                flex-shrink: 0;
+              }
         >
           <button
             aria-describedby={undefined}
@@ -1595,7 +1657,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           </button>
         </div>
         <div
-          className="ms-OverflowSet-item"
+          className=
+              ms-OverflowSet-item
+              {
+                display: inherit;
+                flex-shrink: 0;
+              }
         >
           <button
             aria-describedby={undefined}
@@ -1737,7 +1804,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           </button>
         </div>
         <div
-          className="ms-OverflowSet-item"
+          className=
+              ms-OverflowSet-item
+              {
+                display: inherit;
+                flex-shrink: 0;
+              }
         >
           <button
             aria-describedby={undefined}
@@ -1879,7 +1951,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           </button>
         </div>
         <div
-          className="ms-OverflowSet-item"
+          className=
+              ms-OverflowSet-item
+              {
+                display: inherit;
+                flex-shrink: 0;
+              }
         >
           <button
             aria-describedby={undefined}
@@ -2021,7 +2098,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           </button>
         </div>
         <div
-          className="ms-OverflowSet-item"
+          className=
+              ms-OverflowSet-item
+              {
+                display: inherit;
+                flex-shrink: 0;
+              }
         >
           <button
             aria-describedby={undefined}
@@ -2163,7 +2245,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           </button>
         </div>
         <div
-          className="ms-OverflowSet-item"
+          className=
+              ms-OverflowSet-item
+              {
+                display: inherit;
+                flex-shrink: 0;
+              }
         >
           <button
             aria-describedby={undefined}
@@ -2305,7 +2392,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           </button>
         </div>
         <div
-          className="ms-OverflowSet-item"
+          className=
+              ms-OverflowSet-item
+              {
+                display: inherit;
+                flex-shrink: 0;
+              }
         >
           <button
             aria-describedby={undefined}
@@ -2447,7 +2539,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           </button>
         </div>
         <div
-          className="ms-OverflowSet-item"
+          className=
+              ms-OverflowSet-item
+              {
+                display: inherit;
+                flex-shrink: 0;
+              }
         >
           <button
             aria-describedby={undefined}
@@ -2589,7 +2686,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           </button>
         </div>
         <div
-          className="ms-OverflowSet-item"
+          className=
+              ms-OverflowSet-item
+              {
+                display: inherit;
+                flex-shrink: 0;
+              }
         >
           <button
             aria-describedby={undefined}
@@ -2731,7 +2833,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           </button>
         </div>
         <div
-          className="ms-OverflowSet-item"
+          className=
+              ms-OverflowSet-item
+              {
+                display: inherit;
+                flex-shrink: 0;
+              }
         >
           <button
             aria-describedby={undefined}
