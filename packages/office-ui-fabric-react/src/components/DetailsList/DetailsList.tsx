@@ -155,6 +155,11 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   }
 
   public componentWillUnmount(): void {
+    const { onScroll } = this.props;
+    if (onScroll && this._root.current) {
+      this._root.current.removeEventListener('scroll', this._onScroll);
+    }
+
     if (this._dragDropHelper) {
       this._dragDropHelper.dispose();
     }
@@ -163,7 +168,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   public componentDidMount(): void {
     const { onScroll } = this.props;
     if (onScroll && this._root.current) {
-      this._root.current.addEventListener('scroll', this._onScroll.bind(this));
+      this._root.current.addEventListener('scroll', this._onScroll);
     }
   }
 
