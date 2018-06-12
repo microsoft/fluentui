@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PickersPage } from 'office-ui-fabric-react/lib/components/pickers/PickersPage';
+import { PickersPage } from '@uifabric/demo/lib/components/pages/PickersPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 const pageStyles: any = require('../PageStyles.module.scss');

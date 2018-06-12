@@ -9,7 +9,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "tsc",
+    "build": "node ../../scripts/build-webpack-utils.js",
     "code-style": "node ../../scripts/code-style.js",
     "clean": "node ../../scripts/clean.js"
   },

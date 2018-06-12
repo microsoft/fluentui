@@ -1,6 +1,35 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 07 Jun 2018 17:40:07 GMT and should not be manually modified.
+This log was last generated on Mon, 11 Jun 2018 10:18:35 GMT and should not be manually modified.
+
+## 6.9.0
+Mon, 11 Jun 2018 10:18:35 GMT
+
+### Minor changes
+
+- Adding focus async to focus autofill when calling componentDidUpdate
+
+### Patches
+
+- Add styling output to component example snapshot tests.
+- Add automatic snapshot tests for all component examples.
+- Theme Generator: have json output contain only IPalette members
+
+## 6.8.0
+Fri, 08 Jun 2018 18:34:17 GMT
+
+### Minor changes
+
+- ColorPicker: use getStyles
+- add style arg to customize
+- Shimmer: Adds new Shimmer component to office-ui-fabric-react
+
+### Patches
+
+- TeachingBubble: Fix content from wrapping to next line unncessarily
+- Dropdown: Add aria-label to option and option to aria-activedescendant
+- Package: Fix sideEffects array to target scss files using global.
+- ContextualMenu: Remove the ability for click to close a submenu. This aligns with windows behavior
 
 ## 6.6.1
 Thu, 07 Jun 2018 17:40:07 GMT
