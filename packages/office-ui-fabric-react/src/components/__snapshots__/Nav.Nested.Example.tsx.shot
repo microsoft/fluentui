@@ -163,6 +163,7 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
               </button>
               <a
                 aria-describedby="id__3"
+                aria-disabled={undefined}
                 aria-label={undefined}
                 aria-labelledby={undefined}
                 aria-pressed={undefined}
@@ -437,6 +438,7 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
               </button>
               <a
                 aria-describedby="id__6"
+                aria-disabled={undefined}
                 aria-label={undefined}
                 aria-labelledby={undefined}
                 aria-pressed={undefined}

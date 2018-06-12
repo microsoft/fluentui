@@ -19,6 +19,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
       >
         <button
           aria-describedby=" ktp-layer-id ktp-a"
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -129,6 +130,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
         </button>
         <button
           aria-describedby=" ktp-layer-id ktp-b"
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -237,6 +239,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
         </button>
         <button
           aria-describedby=" ktp-layer-id ktp-c"
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -507,6 +510,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
             >
               <button
                 aria-describedby={undefined}
+                aria-disabled={undefined}
                 aria-label={undefined}
                 aria-labelledby={undefined}
                 aria-pressed={false}
@@ -630,6 +634,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
               </button>
               <button
                 aria-describedby={undefined}
+                aria-disabled={undefined}
                 aria-label={undefined}
                 aria-labelledby={undefined}
                 aria-pressed={false}

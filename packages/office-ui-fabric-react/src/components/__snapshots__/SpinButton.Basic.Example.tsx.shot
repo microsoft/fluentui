@@ -181,6 +181,7 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={false}
@@ -304,6 +305,7 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
         </button>
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={false}
@@ -578,6 +580,7 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={false}
@@ -701,6 +704,7 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
         </button>
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={false}

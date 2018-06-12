@@ -19,6 +19,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -156,6 +157,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
         </button>
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -285,6 +287,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
         </button>
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -407,6 +410,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
         </button>
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -542,6 +546,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
         </button>
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
