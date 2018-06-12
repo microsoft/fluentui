@@ -156,9 +156,9 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
   public getStartItemIndexInView(): number {
     if (this._list && this._list.current) {
-      return this._list.current.getStartItemIndexInView() || 0;
+      return this._list.current.getStartItemIndexInView();
     } else if (this._groupedList && this._groupedList.current) {
-      return this._groupedList.current!.getStartItemIndexInView() || 0;
+      return this._groupedList.current.getStartItemIndexInView();
     }
     return 0;
   }
