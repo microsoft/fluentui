@@ -6,8 +6,6 @@ import {
   BaseComponent,
   classNamesFunction,
   createRef,
-  css,
-  customizable,
   divProperties,
   elementContains,
   focusFirstChild,
@@ -25,7 +23,6 @@ import {
 
 const getClassNames = classNamesFunction<IOverflowSetStyleProps, IOverflowSetStyles>();
 
-@customizable('OverflowSet', [])
 export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implements IOverflowSet {
   public static defaultProps: Pick<IOverflowSetProps, 'vertical' | 'role'> = {
     vertical: false,
@@ -171,7 +168,7 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
   private _onRenderItems = (items: IOverflowSetItemProps[]): JSX.Element[] => {
     return items.map((item, i) => {
       const wrapperDivProps: React.HTMLProps<HTMLDivElement> = {
-        className: css('ms-OverflowSet-item', this._classNames.item)
+        className: this._classNames.item
       };
       return (
         <div key={item.key} {...wrapperDivProps}>
@@ -183,8 +180,9 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
 
   private _onRenderOverflowButtonWrapper = (items: any[]): JSX.Element => {
     const wrapperDivProps: React.HTMLProps<HTMLDivElement> = {
-      className: css('ms-OverflowSet-overflowButton', this._classNames.item)
+      className: this._classNames.overflowButton
     };
+
     const overflowKeytipSequences = this.props.keytipSequences;
     let newOverflowItems: any[] = [];
 

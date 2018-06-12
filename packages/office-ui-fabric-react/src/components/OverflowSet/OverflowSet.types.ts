@@ -106,6 +106,8 @@ export interface IOverflowSetStyles {
   root?: IStyle;
   /** The style that is layered onto each individual item in the overflow set. */
   item?: IStyle;
+  /** The style that is layered onto the overflow button for the overflow set. */
+  overflowButton?: IStyle;
 }
 
 /**
