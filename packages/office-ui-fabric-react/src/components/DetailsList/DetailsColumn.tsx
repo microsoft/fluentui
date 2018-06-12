@@ -47,7 +47,7 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
   }
 
   public render() {
-    const { column, columnIndex, parentId, isDraggable, isDropped } = this.props;
+    const { column, columnIndex, parentId, isDraggable } = this.props;
     const { onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip
     } = this.props;
 
@@ -68,8 +68,7 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
               (column.columnActionsMode !== ColumnActionsMode.disabled) && ('is-actionable ' + styles.cellIsActionable),
               !column.name && ('is-empty ' + styles.cellIsEmpty),
               (column.isSorted || column.isGrouped || column.isFiltered) && 'is-icon-visible',
-              column.isPadded && styles.cellWrapperPadded,
-              isDropped && styles.borderAfterDropping
+              column.isPadded && styles.cellWrapperPadded
             ) }
             data-is-draggable={ isDraggable }
             draggable={ isDraggable }
@@ -166,6 +165,16 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
     if (this.props.dragDropHelper && this.props.isDraggable!) {
       this._dragDropSubscription = this.props.dragDropHelper.subscribe(this._root.value as HTMLElement, this._events, this._getColumnDragDropOptions());
     }
+    if (this.props.isDropped) {
+      if (this._root!.current!) {
+        this._root!.current!.classList!.add(styles.borderAfterDropping);
+      }
+      setTimeout(() => {
+        if (this._root!.current!) {
+          this._root!.current!.classList!.remove(styles.borderAfterDropping);
+        }
+      }, 1500);
+    }
   }
 
   public componentWillUnmount(): void {
@@ -182,13 +191,6 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
     if (this._dragDropSubscription && !this.props.isDraggable!) {
       this._dragDropSubscription.dispose();
       delete this._dragDropSubscription;
-    }
-    if (this.props.isDropped) {
-      setTimeout(() => {
-        if (this._root!.current!) {
-          this._root!.current!.classList!.remove(styles.borderAfterDropping);
-        }
-      }, 2000);
     }
   }
 

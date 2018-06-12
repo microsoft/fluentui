@@ -233,41 +233,35 @@ $isPaddedMargin: 24px;
   border-color:$ms-color-themePrimary;
   -webkit-animation: fadeOut 0.2s forwards;
   animation: fadeOut 0.2s forwards;
-  cursor: grab !important;
-  cursor: -moz-grab !important;
-  cursor: -webkit-grab !important;
 }
 
-.dropHintArrowStyle {
-  display:inline-block;
+.dropHintCircleStyle {
+  display:none;
   position: absolute;
   bottom: 0;
   top: -27px;
-  height: 24px;
-  width: 24px;
+  height: 9px;
+  width: 9px;
   border-radius: 50%;
   @include ms-margin-left(-11px);
-  line-height: 2;
-  color:white;
-  &.isDropping {
-     background: $ms-color-themePrimary;
-     font-size : 12px;
-     text-align:center;
-     overflow: visible;
-  }
+  top:34px;
+  overflow: visible;
+  z-index: 10;
+  left:6px;
+  border:1px solid $ms-color-themePrimary;
+  background: white ;
 }
 
 .dropHintLineStyle{
-  display: inline-block;
+  display: none;
   position: absolute;
   bottom: 0;
   top: -3px;
   overflow: hidden;
-  height: 36px;
+  height: 37px;
   width: 1px;
-  &.isDropping {
-    background: $ms-color-themePrimary
-  }
+  background: $ms-color-themePrimary;
+  z-index:10;
 }
 
 .dropHintStyle{
@@ -279,8 +273,8 @@ $isPaddedMargin: 24px;
   border-style : solid;
   border-width: 1px;
   border-color:$ms-color-themePrimary;
-  -webkit-animation: fadeOut 2s forwards;
-  animation: fadeOut 2s forwards;
+  -webkit-animation: fadeOut 1.5s forwards;
+  animation: fadeOut 1.5s forwards;
   @include ms-left(-1px);
   line-height: 31px;
 }
