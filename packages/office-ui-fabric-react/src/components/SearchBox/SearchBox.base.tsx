@@ -99,6 +99,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
               iconProps={{ iconName: 'Clear' }}
               {...clearButtonProps}
               onClick={this._onClearClick}
+              ariaLabel="Clear text"
             />
           </div>
         )}
