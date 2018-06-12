@@ -60,7 +60,8 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
       labelText,
       theme,
       clearButtonProps,
-      disableAnimation
+      disableAnimation,
+      clearTextButtonAriaLabel = 'Clear text'
     } = this.props;
     const { value, hasFocus, id } = this.state;
     const placeholderValue = labelText === undefined ? placeholder : labelText;
@@ -99,7 +100,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
               iconProps={{ iconName: 'Clear' }}
               {...clearButtonProps}
               onClick={this._onClearClick}
-              ariaLabel="Clear text"
+              ariaLabel={clearTextButtonAriaLabel}
             />
           </div>
         )}
