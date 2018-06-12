@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "add method to get index of the item in view",
+      "comment": "DetailsList/List: added method to get the index of the item in view",
       "type": "minor"
     }
   ],
