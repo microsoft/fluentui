@@ -10,7 +10,7 @@
   "scripts": {
     "_rushInstall": "node node_modules/@microsoft/rush/bin/rush install -c",
     "_rushBuild": "node node_modules/@microsoft/rush/bin/rush build",
-    "_rushBuildToFabric": "node node_modules/@microsoft/rush/bin/rush build --to office-ui-fabric-react --verbose",
+    "_rushBuildToFabric": "node node_modules/@microsoft/rush/bin/rush build --to @uifabric/demo --verbose",
     "_rushRebuild": "node node_modules/@microsoft/rush/bin/rush rebuild --production --verbose --lint",
     "_rushRebuildCi": "node node_modules/@microsoft/rush/bin/rush rebuild --verbose --lint",
     "_rushRebuildFast": "node node_modules/@microsoft/rush/bin/rush rebuild",
