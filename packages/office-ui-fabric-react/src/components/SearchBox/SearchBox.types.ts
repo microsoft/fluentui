@@ -91,7 +91,7 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
   /**
    * Optional name to use for the aria label on clear text button.
    */
-  clearTextButtonAriaLabel?: string;
+  clearButtonAriaLabel?: string;
 
   /**
    * Whether or not the SearchBox is underlined.
