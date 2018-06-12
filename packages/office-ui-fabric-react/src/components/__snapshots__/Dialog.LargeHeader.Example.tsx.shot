@@ -4,6 +4,7 @@ exports[`Component Examples renders Dialog.LargeHeader.Example.tsx correctly 1`]
 <div>
   <button
     aria-describedby="id__1"
+    aria-disabled={undefined}
     aria-label={undefined}
     aria-labelledby="id__0"
     aria-pressed={undefined}
