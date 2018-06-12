@@ -1,52 +1,49 @@
-import { getStyles } from "office-ui-fabric-react/lib/components/Label/Label.styles";
-import * as React from "react";
+import * as React from 'react';
 
-import { FocusZone, FocusZoneDirection, IFocusZone } from "../../FocusZone";
-import { IKeytipProps } from "../../Keytip";
-import { mergeStyles } from "../../Styling";
+import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
+import { IKeytipProps } from '../../Keytip';
 import {
   BaseComponent,
-  classNameFunction,
+  classNamesFunction,
   createRef,
   css,
   customizable,
   divProperties,
   elementContains,
   focusFirstChild,
-  getNativeProps
-} from "../../Utilities";
-import { KeytipManager } from "../../utilities/keytips/KeytipManager";
+  getNativeProps,
+  IClassNames
+} from '../../Utilities';
+import { KeytipManager } from '../../utilities/keytips/KeytipManager';
 import {
   IOverflowSet,
   IOverflowSetItemProps,
   IOverflowSetProps,
-  IOverflowSetStyles
-} from "./OverflowSet.types";
+  IOverflowSetStyles,
+  IOverflowSetStyleProps
+} from './OverflowSet.types';
 
-const getClassNames = classNameFunction<
-  IOverflowSetProps,
-  IOverflowSetStyles
->();
+const getClassNames = classNamesFunction<IOverflowSetStyleProps, IOverflowSetStyles>();
 
-@customizable("OverflowSet", [])
-export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}>
-  implements IOverflowSet {
-  public static defaultProps: Pick<IOverflowSetProps, "vertical" | "role"> = {
+@customizable('OverflowSet', [])
+export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implements IOverflowSet {
+  public static defaultProps: Pick<IOverflowSetProps, 'vertical' | 'role'> = {
     vertical: false,
-    role: "menubar"
+    role: 'menubar'
   };
 
   private _focusZone = createRef<IFocusZone>();
   private _persistedKeytips: { [uniqueID: string]: IKeytipProps } = {};
   private _keytipManager: KeytipManager = KeytipManager.getInstance();
   private _divContainer = createRef<HTMLDivElement>();
+  private _classNames: IClassNames<IOverflowSetStyles>;
 
   constructor(props: IOverflowSetProps) {
     super(props);
 
     if (props.doNotContainWithinFocusZone) {
       this._warnMutuallyExclusive({
-        doNotContainWithinFocusZone: "focusZoneProps"
+        doNotContainWithinFocusZone: 'focusZoneProps'
       });
     }
   }
@@ -57,17 +54,19 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}>
       overflowItems,
       className,
       focusZoneProps,
+      styles,
       vertical,
       role,
       doNotContainWithinFocusZone
     } = this.props;
-    const classNames = getClassNames(getStyles);
+
+    this._classNames = getClassNames(styles, { className, vertical });
 
     let Tag;
     let uniqueComponentProps;
 
     if (doNotContainWithinFocusZone) {
-      Tag = "div";
+      Tag = 'div';
       uniqueComponentProps = {
         ...getNativeProps(this.props, divProperties),
         ref: this._divContainer
@@ -78,27 +77,14 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}>
         ...getNativeProps(this.props, divProperties),
         ...focusZoneProps,
         componentRef: this._focusZone,
-        direction: vertical
-          ? FocusZoneDirection.vertical
-          : FocusZoneDirection.horizontal
+        direction: vertical ? FocusZoneDirection.vertical : FocusZoneDirection.horizontal
       };
     }
 
     return (
-      <Tag
-        {...uniqueComponentProps}
-        className={mergeStyles(
-          "ms-OverflowSet",
-          styles.root,
-          vertical && styles.rootVertical,
-          className
-        )}
-        role={role}
-      >
+      <Tag {...uniqueComponentProps} className={this._classNames.root} role={role}>
         {items && this._onRenderItems(items)}
-        {overflowItems &&
-          overflowItems.length > 0 &&
-          this._onRenderOverflowButtonWrapper(overflowItems)}
+        {overflowItems && overflowItems.length > 0 && this._onRenderOverflowButtonWrapper(overflowItems)}
       </Tag>
     );
   }
@@ -136,10 +122,7 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}>
     }
 
     if (this.props.doNotContainWithinFocusZone) {
-      if (
-        this._divContainer.current &&
-        elementContains(this._divContainer.current, childElement)
-      ) {
+      if (this._divContainer.current && elementContains(this._divContainer.current, childElement)) {
         childElement.focus();
         focusSucceeded = document.activeElement === childElement;
       }
@@ -180,11 +163,7 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}>
   private _unregisterPersistedKeytips() {
     // Delete all persisted keytips saved
     Object.keys(this._persistedKeytips).forEach((uniqueID: string) => {
-      this._keytipManager.unregister(
-        this._persistedKeytips[uniqueID],
-        uniqueID,
-        true
-      );
+      this._keytipManager.unregister(this._persistedKeytips[uniqueID], uniqueID, true);
     });
     this._persistedKeytips = {};
   }
@@ -192,7 +171,7 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}>
   private _onRenderItems = (items: IOverflowSetItemProps[]): JSX.Element[] => {
     return items.map((item, i) => {
       const wrapperDivProps: React.HTMLProps<HTMLDivElement> = {
-        className: css("ms-OverflowSet-item", styles.item)
+        className: css('ms-OverflowSet-item', this._classNames.item)
       };
       return (
         <div key={item.key} {...wrapperDivProps}>
@@ -204,7 +183,7 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}>
 
   private _onRenderOverflowButtonWrapper = (items: any[]): JSX.Element => {
     const wrapperDivProps: React.HTMLProps<HTMLDivElement> = {
-      className: css("ms-OverflowSet-overflowButton", styles.item)
+      className: css('ms-OverflowSet-overflowButton', this._classNames.item)
     };
     const overflowKeytipSequences = this.props.keytipSequences;
     let newOverflowItems: any[] = [];
@@ -217,15 +196,10 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}>
           const persistedKeytip: IKeytipProps = {
             content: keytip.content,
             keySequences: keytip.keySequences,
-            disabled:
-              keytip.disabled ||
-              !!(overflowItem.disabled || overflowItem.isDisabled)
+            disabled: keytip.disabled || !!(overflowItem.disabled || overflowItem.isDisabled)
           };
 
-          if (
-            keytip.hasDynamicChildren ||
-            this._getSubMenuForItem(overflowItem)
-          ) {
+          if (keytip.hasDynamicChildren || this._getSubMenuForItem(overflowItem)) {
             // If the keytip has a submenu or children nodes, change onExecute to persistedKeytipExecute
             persistedKeytip.onExecute = this._keytipManager.menuExecute.bind(
               this._keytipManager,
@@ -258,11 +232,7 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}>
     } else {
       newOverflowItems = items;
     }
-    return (
-      <div {...wrapperDivProps}>
-        {this.props.onRenderOverflowButton(newOverflowItems)}
-      </div>
-    );
+    return <div {...wrapperDivProps}>{this.props.onRenderOverflowButton(newOverflowItems)}</div>;
   };
 
   /**

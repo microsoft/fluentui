@@ -1,10 +1,10 @@
-import * as React from "react";
+import * as React from 'react';
 
-import { IFocusZoneProps } from "../../FocusZone";
-import { IKeytipProps } from "../../Keytip";
-import { IStyle } from "../../Styling";
-import { IRenderFunction, IStyleFunctionOrObject } from "../../Utilities";
-import { OverflowSetBase } from "./OverflowSet.base";
+import { IFocusZoneProps } from '../../FocusZone';
+import { IKeytipProps } from '../../Keytip';
+import { IStyle } from '../../Styling';
+import { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import { OverflowSetBase } from './OverflowSet.base';
 
 export interface IOverflowSet {
   /**
@@ -107,6 +107,11 @@ export interface IOverflowSetStyles {
   /** The style that is layered onto each individual item in the overflow set. */
   item?: IStyle;
 }
+
+/**
+ * The props needed to construct styles. This represents the simplified set of immutable things which control the class names.
+ */
+export type IOverflowSetStyleProps = Pick<IOverflowSetProps, 'vertical' | 'className'>;
 
 export interface IOverflowSetItemProps {
   /**

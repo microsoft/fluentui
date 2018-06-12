@@ -1,21 +1,22 @@
-import { IOverflowSetProps, IOverflowSetStyleProps } from "./OverflowSet.types";
+import { IOverflowSetStyles, IOverflowSetStyleProps } from './OverflowSet.types';
+import { IStyleFunction } from '../../Utilities';
 
-export const getStyles = (props: IOverflowSetProps): IOverflowSetStyleProps => {
+export const getStyles: IStyleFunction<IOverflowSetStyleProps, IOverflowSetStyles> = props => {
   const { className, vertical } = props;
   return {
     root: [
-      "ms-OverflowSet",
+      'ms-OverflowSet',
       {
-        position: "relative",
-        display: "flex",
-        flexWrap: "nowrap"
+        position: 'relative',
+        display: 'flex',
+        flexWrap: 'nowrap'
       },
-      vertical && { flexDirection: "column" },
+      vertical && { flexDirection: 'column' },
       className
     ],
     item: {
       flexShrink: 0,
-      display: "inherit"
+      display: 'inherit'
     }
   };
 };

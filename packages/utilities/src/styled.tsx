@@ -18,17 +18,17 @@ interface IWrappedComponent<P> {
 
 /**
  * The styled HOC wrapper allows you to create a functional wrapper around a given component which will resolve
- * getStyles functional props, and mix customized props passed in using concatStyleSets. Example:
+ * getStyles functional props, and mix customized props passed in using concatStyleSets.
  *
+ * @example
  * ```tsx
- * export const Toggle = styled(
- *   ToggleBase,
- *   {
- *     getStyles: props => ({ root: { background: 'red' }})
- *   }
- * );
- * ```
- *
+ export const Toggle = styled(
+   ToggleBase,
+   {
+     getStyles: props => ({ root: { background: 'red' }})
+   }
+ );
+ ```
  */
 export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyles>, TStyleProps, TStyles>(
   Component: React.ComponentClass<TComponentProps> | React.StatelessComponent<TComponentProps>,

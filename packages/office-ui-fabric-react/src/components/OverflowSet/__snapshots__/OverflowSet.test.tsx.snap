@@ -4,7 +4,14 @@ exports[`OverflowSet snapshot tests basicSnapshot 1`] = `
 <div
   aria-describedby={undefined}
   aria-labelledby={undefined}
-  className="ms-FocusZone ms-OverflowSet"
+  className=
+      ms-FocusZone
+      ms-OverflowSet
+      {
+        display: flex;
+        flex-wrap: nowrap;
+        position: relative;
+      }
   data-focuszone-id="FocusZone0"
   onFocus={[Function]}
   onKeyDown={[Function]}
@@ -17,7 +24,15 @@ exports[`OverflowSet snapshot tests snapshot with classname 1`] = `
 <div
   aria-describedby={undefined}
   aria-labelledby={undefined}
-  className="ms-FocusZone ms-OverflowSet foobar"
+  className=
+      ms-FocusZone
+      ms-OverflowSet
+      foobar
+      {
+        display: flex;
+        flex-wrap: nowrap;
+        position: relative;
+      }
   data-focuszone-id="FocusZone1"
   onFocus={[Function]}
   onKeyDown={[Function]}
@@ -30,7 +45,16 @@ exports[`OverflowSet snapshot tests snapshot with classname and vertical layout 
 <div
   aria-describedby={undefined}
   aria-labelledby={undefined}
-  className="ms-FocusZone ms-OverflowSet foobar"
+  className=
+      ms-FocusZone
+      ms-OverflowSet
+      foobar
+      {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        position: relative;
+      }
   data-focuszone-id="FocusZone2"
   onFocus={[Function]}
   onKeyDown={[Function]}
