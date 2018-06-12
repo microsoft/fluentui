@@ -240,8 +240,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     this._dismissMenu();
   }
 
-  public openMenu(): void {
-    this._openMenu();
+  public openMenu(shouldFocusOnContainer?: boolean, shouldFocusOnMount?: boolean): void {
+    this._openMenu(shouldFocusOnContainer, shouldFocusOnMount);
   }
 
   private _onRenderContent(tag: any, buttonProps: IButtonProps): JSX.Element {
@@ -418,6 +418,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         directionalHint={DirectionalHint.bottomLeftEdge}
         {...menuProps}
         shouldFocusOnContainer={this.state.menuProps ? this.state.menuProps.shouldFocusOnContainer : undefined}
+        shouldFocusOnMount={this.state.menuProps ? this.state.menuProps.shouldFocusOnMount : undefined}
         className={css('ms-BaseButton-menuhost', menuProps.className)}
         target={this._isSplitButton ? this._splitButtonContainer.current : this._buttonElement.current}
         onDismiss={onDismiss}
@@ -434,9 +435,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     this.setState({ menuProps: menuProps });
   };
 
-  private _openMenu = (shouldFocusOnContainer?: boolean): void => {
+  private _openMenu = (shouldFocusOnContainer?: boolean, shouldFocusOnMount: boolean = true): void => {
     if (this.props.menuProps) {
-      const menuProps = { ...this.props.menuProps, shouldFocusOnContainer: shouldFocusOnContainer };
+      const menuProps = { ...this.props.menuProps, shouldFocusOnContainer, shouldFocusOnMount };
       if (this.props.persistMenu) {
         menuProps.hidden = false;
       }
