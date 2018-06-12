@@ -37,7 +37,7 @@ export class FluentStylesPage extends React.Component<IComponentDemoPageProps, I
         }
         isHeaderVisible={this.props.isHeaderVisible}
         exampleCards={
-          <Customizer scopedSettings={isFluent ? { ...FluentStyles } : undefined}>
+          <Customizer scopedSettings={isFluent ? FluentStyles : undefined}>
             <div>
               <ExampleCard title="Link - Failing" code={FluentLinkExampleCode}>
                 <FluentStylesLinkExample />

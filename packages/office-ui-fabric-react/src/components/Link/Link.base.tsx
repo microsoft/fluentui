@@ -13,7 +13,7 @@ import { KeytipData } from '../../KeytipData';
 
 const getClassNames = classNamesFunction<ILinkStyleProps, ILinkStyles>();
 
-@customizable('Link', ['theme', 'getStyles'])
+@customizable('Link', ['theme', 'styles'])
 export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
   private _link = createRef<HTMLAnchorElement | HTMLButtonElement | null>();
 
