@@ -722,6 +722,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
   </div>
   <button
     aria-describedby={undefined}
+    aria-disabled={undefined}
     aria-label={undefined}
     aria-labelledby={undefined}
     aria-pressed={undefined}

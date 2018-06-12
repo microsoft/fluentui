@@ -1,4 +1,4 @@
-import { ChecklistStatus, IComponentStatusProps } from '../../demo/ComponentStatus/ComponentStatus.types';
+import { ChecklistStatus, IComponentStatusProps } from '../../common/DocPage.types';
 
 export const LabelStatus: IComponentStatusProps = {
   keyboardAccessibilitySupport: ChecklistStatus.notApplicable,
