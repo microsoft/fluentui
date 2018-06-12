@@ -188,7 +188,7 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
   private _onRenderLabel = (props: IChoiceGroupOptionProps): JSX.Element => {
     const imageSize = props.imageSize;
     const paddingBorderTop = 28; // includes padding, border, margin from styles
-    let gapSpace = (imageSize && imageSize.height ? imageSize.height : defaultImageSize) + paddingBorderTop;
+    const gapSpace = (imageSize && imageSize.height ? imageSize.height : defaultImageSize) + paddingBorderTop;
 
     return (
       <TooltipHost overflowMode={TooltipOverflowMode.Parent} calloutProps={{ gapSpace: gapSpace }} content={props.text}>
