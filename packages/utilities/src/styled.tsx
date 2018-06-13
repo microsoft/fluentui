@@ -14,6 +14,19 @@ export interface IPropsWithStyles<TStyleProps, TStyles> {
   };
 }
 
+export interface ICustomizableProps {
+  /**
+   * Name of scope, which can be targeted using the Customizer.
+   */
+  scope: string;
+
+  /**
+   * List of fields which can be customized.
+   * @default [ 'theme', 'styles' ]
+   */
+  fields?: string[];
+}
+
 const DefaultFields = ['theme', 'styles'];
 
 /**
@@ -35,10 +48,7 @@ export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TSt
   Component: React.ComponentClass<TComponentProps> | React.StatelessComponent<TComponentProps>,
   baseStyles: IStyleFunctionOrObject<TStyleProps, TStyles>,
   getProps?: (props: TComponentProps) => Partial<TComponentProps>,
-  customizable?: {
-    scope: string;
-    fields?: string[];
-  }
+  customizable?: ICustomizableProps
 ): React.StatelessComponent<TComponentProps> {
   const Wrapped: React.StatelessComponent<TComponentProps> = (
     componentProps: TComponentProps,
