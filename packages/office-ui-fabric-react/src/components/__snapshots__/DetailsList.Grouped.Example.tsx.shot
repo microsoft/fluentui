@@ -96,7 +96,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
           }
       data-ktp-execute-target={undefined}
       disabled={undefined}
-      id="checkbox-1"
+      id="checkbox-0"
       name={undefined}
       onBlur={[Function]}
       onClick={[Function]}
@@ -119,7 +119,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
               text-align: left;
               user-select: none;
             }
-        htmlFor="checkbox-1"
+        htmlFor="checkbox-0"
       >
         <div
           className=
@@ -291,7 +291,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                 margin-right: 4px;
                 margin-top: 0;
               }
-          id="id__2"
+          id="id__1"
         >
           Add an item
         </div>
