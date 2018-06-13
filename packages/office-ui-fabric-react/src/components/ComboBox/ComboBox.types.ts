@@ -293,4 +293,6 @@ export interface IComboBoxOptionStyles extends IButtonStyles {
    * in the comboBox options.
    */
   optionText: IStyle;
+
+  optionTextWrapper: IStyle;
 }

@@ -127,6 +127,10 @@ export const getOptionStyles = memoizeFunction(
         wordWrap: 'break-word',
         overflowWrap: 'break-word',
         margin: '1px'
+      },
+      optionTextWrapper: {
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
       }
     };
 
