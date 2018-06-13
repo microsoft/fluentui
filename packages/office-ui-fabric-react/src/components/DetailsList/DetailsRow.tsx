@@ -20,7 +20,7 @@ import { CollapseAllVisibility } from '../../GroupedList';
 import { IDragDropHelper, IDragDropEvents, IDragDropOptions } from './../../utilities/dragdrop/interfaces';
 import { IViewport } from '../../utilities/decorators/withViewport';
 import { AnimationClassNames } from '../../Styling';
-import { Shimmer } from '../../Shimmer';
+import { Shimmer, ShimmerElementsGroup, ShimmerElementType, IShimmerElement } from '../../Shimmer';
 import * as stylesImport from './DetailsRow.scss';
 const styles: any = stylesImport;
 import * as checkStylesImport from './DetailsRowCheck.scss';
@@ -73,6 +73,10 @@ export interface IDetailsRowState {
 }
 
 const DEFAULT_DROPPING_CSS_CLASS = 'is-dropping';
+const DEFAULT_SIDE_PADDING = 8;
+const DEFAULT_SHIMMER_HEIGHT = 7;
+const DEFAULT_ROW_HEIGHT = 42;
+const COMPACT_ROW_HEIGHT = 32;
 
 export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState> {
   private _root: HTMLElement | undefined;
@@ -228,11 +232,16 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
         shimmer={shimmer}
       />
     );
+
+    const customElementsGroup: React.ReactNode = onRenderCustomPlaceholder
+      ? onRenderCustomPlaceholder()
+      : this._renderDefaultShimmerPlaceholder(compact);
+
     // Rendering Shimmer Animation outside the focus zone
     if (shimmer) {
       return (
         <div className={css(showCheckbox && styles.checkboxOffset, !compact && styles.shimmerContainerBottomBorder)}>
-          <Shimmer customElementsGroup={onRenderCustomPlaceholder ? onRenderCustomPlaceholder() : rowFields} />
+          <Shimmer customElementsGroup={customElementsGroup} />
         </div>
       );
     }
@@ -438,4 +447,57 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
       this.setState({ selectionState: selectionState, isDropping: newValue });
     }
   }
+
+  private _renderDefaultShimmerPlaceholder = (compact?: boolean): React.ReactNode => {
+    const { columns } = this.props;
+    const shimmerElementsRow: JSX.Element[] = [];
+    const gapHeight: number = compact ? COMPACT_ROW_HEIGHT : DEFAULT_ROW_HEIGHT;
+
+    columns.map((column, columnIdx) => {
+      const shimmerElements: IShimmerElement[] = [];
+      const groupWidth: number = DEFAULT_SIDE_PADDING * 2 + column.calculatedWidth!;
+
+      shimmerElements.push({
+        type: ShimmerElementType.gap,
+        width: DEFAULT_SIDE_PADDING,
+        height: gapHeight
+      });
+
+      if (column.isIconOnly) {
+        shimmerElements.push({
+          type: ShimmerElementType.line,
+          width: column.calculatedWidth!,
+          height: column.calculatedWidth!
+        });
+        shimmerElements.push({
+          type: ShimmerElementType.gap,
+          width: DEFAULT_SIDE_PADDING,
+          height: gapHeight
+        });
+      } else {
+        shimmerElements.push({
+          type: ShimmerElementType.line,
+          width: column.calculatedWidth! - DEFAULT_SIDE_PADDING * 3,
+          height: DEFAULT_SHIMMER_HEIGHT
+        });
+        shimmerElements.push({
+          type: ShimmerElementType.gap,
+          width: DEFAULT_SIDE_PADDING * 4,
+          height: gapHeight
+        });
+      }
+      shimmerElementsRow.push(
+        <ShimmerElementsGroup key={columnIdx} width={`${groupWidth}px`} shimmerElements={shimmerElements} />
+      );
+    });
+    // When resizing the window from narrow to wider, we need to cover the exposed Shimmer wave until the column resizing logic is done.
+    shimmerElementsRow.push(
+      <ShimmerElementsGroup
+        key={'endGap'}
+        width={'100%'}
+        shimmerElements={[{ type: ShimmerElementType.gap, width: '100%', height: gapHeight }]}
+      />
+    );
+    return <div style={{ display: 'flex' }}>{shimmerElementsRow}</div>;
+  };
 }

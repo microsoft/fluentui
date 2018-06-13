@@ -214,7 +214,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   }
 
   public componentWillReceiveProps(newProps: IDetailsListProps): void {
-    const { checkboxVisibility, items, setKey, selectionMode, columns, viewport } = this.props;
+    const { checkboxVisibility, items, setKey, selectionMode, columns, viewport, compact } = this.props;
     const shouldResetSelection = newProps.setKey !== setKey || newProps.setKey === undefined;
     let shouldForceUpdates = false;
 
@@ -244,7 +244,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
     this._adjustColumns(newProps, true);
 
-    if (newProps.selectionMode !== selectionMode) {
+    if (newProps.selectionMode !== selectionMode || newProps.compact !== compact) {
       shouldForceUpdates = true;
     }
 
