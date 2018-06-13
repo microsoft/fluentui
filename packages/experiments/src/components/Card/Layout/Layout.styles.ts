@@ -24,12 +24,12 @@ export const getStyles = (props: ILayoutProps): ILayoutStyles => {
       flex: 1
     },
     contentArea1: {
-      margin: '20px 12px 16px 0',
+      margin: isMediumTall ? '20px 16px 12px 0' : '20px 12px 16px 0',
       flex: isMediumTall ? 'none' : 1,
       overflow: 'hidden'
     },
     contentArea2: {
-      margin: '20px 0 16px 12px',
+      margin: isMediumTall ? '12px 16px 16px 0' : '20px 0 16px 12px',
       flex: isMediumTall ? 'none' : 1,
       overflow: 'hidden'
     },

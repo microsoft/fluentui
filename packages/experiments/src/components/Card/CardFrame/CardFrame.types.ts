@@ -1,4 +1,5 @@
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { IOverflowSetItemProps } from 'office-ui-fabric-react/lib/OverflowSet';
 
 export interface ICardFrameProps {
   /**
@@ -9,7 +10,7 @@ export interface ICardFrameProps {
   /**
    * Contains the items that go into the dropdown of the frame
    */
-  cardDropDownOptions?: any[] | undefined;
+  cardDropDownOptions?: IOverflowSetItemProps[] | undefined;
 
   /**
    * Color property for card title
