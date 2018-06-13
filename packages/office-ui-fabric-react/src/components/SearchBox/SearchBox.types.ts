@@ -89,7 +89,8 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
   clearButtonProps?: IButtonProps;
 
   /**
-   * Optional name to use for the aria label on clear text button.
+   * Optional label to use for the aria label on clear text button.
+   * @default 'Clear text'
    */
   clearButtonAriaLabel?: string;
 
