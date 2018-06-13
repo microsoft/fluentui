@@ -3,16 +3,7 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { createListItems } from '../../../utilities/exampleData';
-import {
-  IColumn,
-  DetailsList,
-  buildColumns,
-  SelectionMode,
-  Toggle,
-  IDetailsRowProps,
-  DetailsRow
-} from 'office-ui-fabric-react/lib/index';
-import { Shimmer } from 'office-ui-fabric-react/lib/Shimmer';
+import { IColumn, DetailsList, buildColumns, SelectionMode, Toggle } from 'office-ui-fabric-react/lib/index';
 
 import * as ShimmerExampleStyles from './Shimmer.Example.scss';
 
@@ -56,8 +47,7 @@ const fileIcons: { name: string }[] = [
 ];
 
 const ITEMS_COUNT = 500;
-const ITEMS_BATCH_SIZE = 10;
-const PAGING_DELAY = 2500;
+const INTERVAL_DELAY = 2500;
 
 // tslint:disable-next-line:no-any
 let _items: any[];
@@ -71,8 +61,8 @@ export interface IShimmerApplicationExampleState {
 }
 
 export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplicationExampleState> {
-  private _isFetchingItems: boolean;
-  private _lastTimeoutId: number;
+  private _lastIntervalId: number;
+  private _lastIndexWithData: number;
 
   constructor(props: {}) {
     super(props);
@@ -84,6 +74,10 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
       isModalSelection: false,
       isCompactMode: false
     };
+  }
+
+  public componentWillUnmount(): void {
+    this._async.dispose();
   }
 
   public render(): JSX.Element {
@@ -122,7 +116,6 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
             compact={isCompactMode}
             selectionMode={this.state.isModalSelection ? SelectionMode.multiple : SelectionMode.none}
             onRenderItemColumn={this._onRenderItemColumn}
-            onRenderMissingItem={this._onRenderMissingItem}
             enableShimmer={true}
             listProps={{ renderedWindowsAhead: 0, renderedWindowsBehind: 0 }}
           />
@@ -131,33 +124,23 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
     );
   }
 
-  private _onRenderMissingItem = (index: number, rowProps: IDetailsRowProps): React.ReactNode => {
-    const { isDataLoaded } = this.state;
-    isDataLoaded && this._onDataMiss(index as number);
-
-    const shimmerRow: JSX.Element = <DetailsRow {...rowProps} shimmer={true} />;
-
-    return <Shimmer customElementsGroup={shimmerRow} />;
-  };
-
   // Simulating asynchronus data loading each 2.5 sec
-  private _onDataMiss = (index: number): void => {
-    index = Math.floor(index / ITEMS_BATCH_SIZE) * ITEMS_BATCH_SIZE;
-    if (!this._isFetchingItems) {
-      this._isFetchingItems = true;
-      this._lastTimeoutId = this._async.setTimeout(() => {
-        this._isFetchingItems = false;
-        // tslint:disable-next-line:no-any
-        const itemsCopy = ([] as any[]).concat(this.state.items);
-        itemsCopy.splice.apply(
-          itemsCopy,
-          [index, ITEMS_BATCH_SIZE].concat(_items.slice(index, index + ITEMS_BATCH_SIZE))
-        );
-        this.setState({
-          items: itemsCopy
-        });
-      }, PAGING_DELAY);
-    }
+  private _loadData = (): void => {
+    this._lastIntervalId = this._async.setInterval(() => {
+      const randomQuantity: number = Math.floor(Math.random() * 10) + 1;
+      // tslint:disable-next-line:no-any
+      const itemsCopy = ([] as any[]).concat(this.state.items);
+      itemsCopy.splice.apply(
+        itemsCopy,
+        [this._lastIndexWithData, randomQuantity].concat(
+          _items.slice(this._lastIndexWithData, this._lastIndexWithData + randomQuantity)
+        )
+      );
+      this._lastIndexWithData += randomQuantity;
+      this.setState({
+        items: itemsCopy
+      });
+    }, INTERVAL_DELAY);
   };
 
   private _onLoadData = (checked: boolean): void => {
@@ -170,11 +153,14 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
     }
 
     let items: IItem[];
+    const randomQuantity: number = Math.floor(Math.random() * 10) + 1;
     if (checked) {
-      items = _items.slice(0, ITEMS_BATCH_SIZE).concat(new Array(ITEMS_COUNT - ITEMS_BATCH_SIZE));
+      items = _items.slice(0, randomQuantity).concat(new Array(ITEMS_COUNT - randomQuantity));
+      this._lastIndexWithData = randomQuantity;
+      this._loadData();
     } else {
       items = new Array();
-      // this._async.clearTimeout(this._lastTimeoutId);
+      this._async.clearInterval(this._lastIntervalId);
     }
     this.setState({
       isDataLoaded: checked,
