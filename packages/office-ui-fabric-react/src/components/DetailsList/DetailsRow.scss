@@ -215,7 +215,8 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
     font-size: $ms-font-size-m;
   }
 
-  [data-is-focusable='true'] {
+  /* prettier-ignore */
+  [data-is-focusable=true] {
     @include focus-border(0, $ms-color-neutralSecondary);
   }
 }
