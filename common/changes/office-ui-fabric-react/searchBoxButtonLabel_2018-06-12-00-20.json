@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "SearchBox: add aria-label to clear text button",
-      "type": "patch"
+      "comment": "SearchBox: add optional aria label prop for clear text button and default to 'clear text'",
+      "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
