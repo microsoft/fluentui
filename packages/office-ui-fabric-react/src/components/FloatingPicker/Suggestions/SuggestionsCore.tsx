@@ -1,9 +1,5 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  css,
-  autobind
-} from '../../../Utilities';
+import { BaseComponent, css, autobind } from '../../../Utilities';
 import { ISuggestionItemProps, SuggestionsItem, ISuggestionModel } from '../../../Pickers';
 import { ISuggestionsCoreProps } from './Suggestions.types';
 import * as stylesImport from './SuggestionsCore.scss';
@@ -17,8 +13,9 @@ export class SuggestionsCore<T> extends BaseComponent<ISuggestionsCoreProps<T>, 
   public currentIndex: number;
   public currentSuggestion: ISuggestionModel<T> | undefined;
   protected _selectedElement: HTMLDivElement;
-  private SuggestionsItemOfProperType: new (props: ISuggestionItemProps<T>) => SuggestionsItem<T> =
-  SuggestionsItem as new (props: ISuggestionItemProps<T>) => SuggestionsItem<T>;
+  private SuggestionsItemOfProperType: new (props: ISuggestionItemProps<T>) => SuggestionsItem<
+    T
+  > = SuggestionsItem as new (props: ISuggestionItemProps<T>) => SuggestionsItem<T>;
 
   constructor(suggestionsProps: ISuggestionsCoreProps<T>) {
     super(suggestionsProps);
@@ -35,10 +32,10 @@ export class SuggestionsCore<T> extends BaseComponent<ISuggestionsCoreProps<T>, 
       if (this.currentIndex === -1) {
         this.setSelectedSuggestion(0);
         return true;
-      } else if (this.currentIndex < (suggestions.length - 1)) {
+      } else if (this.currentIndex < suggestions.length - 1) {
         this.setSelectedSuggestion(this.currentIndex + 1);
         return true;
-      } else if (this.props.shouldLoopSelection && this.currentIndex === (suggestions.length - 1)) {
+      } else if (this.props.shouldLoopSelection && this.currentIndex === suggestions.length - 1) {
         this.setSelectedSuggestion(0);
         return true;
       }
@@ -123,7 +120,8 @@ export class SuggestionsCore<T> extends BaseComponent<ISuggestionsCoreProps<T>, 
       suggestionsItemClassName,
       resultsMaximumNumber,
       showRemoveButtons,
-      suggestionsContainerAriaLabel } = this.props;
+      suggestionsContainerAriaLabel
+    } = this.props;
     const TypedSuggestionsItem = this.SuggestionsItemOfProperType;
     let { suggestions } = this.props;
 
@@ -133,34 +131,36 @@ export class SuggestionsCore<T> extends BaseComponent<ISuggestionsCoreProps<T>, 
 
     return (
       <div
-        className={ css('ms-Suggestions-container', styles.suggestionsContainer) }
-        id='suggestion-list'
-        role='list'
-        aria-label={ suggestionsContainerAriaLabel }
+        className={css('ms-Suggestions-container', styles.suggestionsContainer)}
+        id="suggestion-list"
+        role="list"
+        aria-label={suggestionsContainerAriaLabel}
       >
-        { suggestions.map((suggestion: ISuggestionModel<T>, index: number) =>
+        {suggestions.map((suggestion: ISuggestionModel<T>, index: number) => (
           <div
-            ref={ this._resolveRef(suggestion.selected || index === this.currentIndex ? '_selectedElement' : '') }
+            ref={this._resolveRef(suggestion.selected || index === this.currentIndex ? '_selectedElement' : '')}
             // tslint:disable
-            key={ (suggestion.item as any)['key'] ? (suggestion.item as any)['key'] : index }
+            key={(suggestion.item as any)['key'] ? (suggestion.item as any)['key'] : index}
             // tslint:enable
-            id={ 'sug-' + index }
-            role='listitem'
-            aria-label={ suggestion.ariaLabel }
+            id={'sug-' + index}
+            role="listitem"
+            aria-label={suggestion.ariaLabel}
           >
             <TypedSuggestionsItem
-              id={ 'sug-item' + index }
-              suggestionModel={ suggestion }
+              id={'sug-item' + index}
+              suggestionModel={suggestion}
               // tslint:disable-next-line:no-any
-              RenderSuggestion={ onRenderSuggestion as any }
-              onClick={ this._onClickTypedSuggestionsItem(suggestion.item, index) }
-              className={ suggestionsItemClassName }
-              showRemoveButton={ showRemoveButtons }
-              onRemoveItem={ this._onRemoveTypedSuggestionsItem(suggestion.item, index) }
-              isSelectedOverride={ index === this.currentIndex }
+              RenderSuggestion={onRenderSuggestion as any}
+              onClick={this._onClickTypedSuggestionsItem(suggestion.item, index)}
+              className={suggestionsItemClassName}
+              showRemoveButton={showRemoveButtons}
+              onRemoveItem={this._onRemoveTypedSuggestionsItem(suggestion.item, index)}
+              isSelectedOverride={index === this.currentIndex}
             />
-          </div>) }
-      </div>);
+          </div>
+        ))}
+      </div>
+    );
   }
 
   // TODO get the element to scroll into view properly regardless of direction.

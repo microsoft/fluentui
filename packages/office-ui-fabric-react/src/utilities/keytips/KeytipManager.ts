@@ -1,12 +1,5 @@
 import { IKeytipProps } from '../../Keytip';
-import {
-  arraysEqual,
-  replaceElement,
-  findIndex,
-  find,
-  EventGroup,
-  getId
-} from '../../Utilities';
+import { arraysEqual, replaceElement, findIndex, find, EventGroup, getId } from '../../Utilities';
 import { KeytipEvents } from '../../utilities/keytips/KeytipConstants';
 
 export interface IUniqueKeytip {
@@ -26,6 +19,10 @@ export class KeytipManager {
   // This is (and should be) updated and kept in sync
   // with the inKeytipMode in KeytipLayer.
   public inKeytipMode = false;
+
+  // Boolean that gets checked before entering keytip mode by the KeytipLayer
+  // Used for an override in special cases (e.g. Disable entering keytip mode when a modal is shown)
+  public shouldEnterKeytipMode = true;
 
   /**
    * Static function to get singleton KeytipManager instance
@@ -113,6 +110,20 @@ export class KeytipManager {
       keytip: keytipToRemove,
       uniqueID: uniqueID
     });
+  }
+
+  /**
+   * Manual call to enter keytip mode
+   */
+  public enterKeytipMode(): void {
+    EventGroup.raise(this, KeytipEvents.ENTER_KEYTIP_MODE);
+  }
+
+  /**
+   * Manual call to exit keytip mode
+   */
+  public exitKeytipMode(): void {
+    EventGroup.raise(this, KeytipEvents.EXIT_KEYTIP_MODE);
   }
 
   /**

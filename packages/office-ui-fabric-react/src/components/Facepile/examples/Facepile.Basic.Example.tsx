@@ -16,7 +16,6 @@ export interface IFacepileBasicExampleState {
 }
 
 export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExampleState> {
-
   constructor(props: {}) {
     super(props);
 
@@ -42,37 +41,35 @@ export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExam
     };
 
     return (
-      <div className={ 'ms-FacepileExample' }>
-        <Facepile { ...facepileProps } />
-        <div className={ 'control' }>
+      <div className={'ms-FacepileExample'}>
+        <Facepile {...facepileProps} />
+        <div className={'control'}>
           <Slider
-            label='Number of Personas:'
-            min={ 1 }
-            max={ 5 }
-            step={ 1 }
-            showValue={ true }
-            value={ numberOfFaces }
-            onChange={ this._onChangePersonaNumber }
+            label="Number of Personas:"
+            min={1}
+            max={5}
+            step={1}
+            showValue={true}
+            value={numberOfFaces}
+            onChange={this._onChangePersonaNumber}
           />
           <Dropdown
-            label='Persona Size:'
-            selectedKey={ this.state.personaSize }
-            options={
-              [
-                { key: PersonaSize.size16, text: PersonaSize[PersonaSize.size16] },
-                { key: PersonaSize.size24, text: PersonaSize[PersonaSize.size24] },
-                { key: PersonaSize.size28, text: PersonaSize[PersonaSize.size28] },
-                { key: PersonaSize.size32, text: PersonaSize[PersonaSize.size32] },
-                { key: PersonaSize.size40, text: PersonaSize[PersonaSize.size40] }
-              ]
-            }
-            onChanged={ this._onChangePersonaSize }
+            label="Persona Size:"
+            selectedKey={this.state.personaSize}
+            options={[
+              { key: PersonaSize.size16, text: PersonaSize[PersonaSize.size16] },
+              { key: PersonaSize.size24, text: PersonaSize[PersonaSize.size24] },
+              { key: PersonaSize.size28, text: PersonaSize[PersonaSize.size28] },
+              { key: PersonaSize.size32, text: PersonaSize[PersonaSize.size32] },
+              { key: PersonaSize.size40, text: PersonaSize[PersonaSize.size40] }
+            ]}
+            onChanged={this._onChangePersonaSize}
           />
           <Checkbox
-            className={ exampleStyles.exampleCheckbox }
-            label='Fade In'
-            checked={ this.state.imagesFadeIn }
-            onChange={ this._onChangeFadeIn }
+            className={exampleStyles.exampleCheckbox}
+            label="Fade In"
+            checked={this.state.imagesFadeIn}
+            onChange={this._onChangeFadeIn}
           />
         </div>
       </div>
@@ -80,23 +77,29 @@ export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExam
   }
 
   private _onChangeFadeIn = (ev: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean): void => {
-    this.setState((prevState: IFacepileBasicExampleState): IFacepileBasicExampleState => {
-      prevState.imagesFadeIn = checked!;
-      return prevState;
-    });
-  }
+    this.setState(
+      (prevState: IFacepileBasicExampleState): IFacepileBasicExampleState => {
+        prevState.imagesFadeIn = checked!;
+        return prevState;
+      }
+    );
+  };
 
   private _onChangePersonaNumber = (value: number): void => {
-    this.setState((prevState: IFacepileBasicExampleState): IFacepileBasicExampleState => {
-      prevState.numberOfFaces = value;
-      return prevState;
-    });
-  }
+    this.setState(
+      (prevState: IFacepileBasicExampleState): IFacepileBasicExampleState => {
+        prevState.numberOfFaces = value;
+        return prevState;
+      }
+    );
+  };
 
   private _onChangePersonaSize = (value: IDropdownOption): void => {
-    this.setState((prevState: IFacepileBasicExampleState): IFacepileBasicExampleState => {
-      prevState.personaSize = value.key as PersonaSize;
-      return prevState;
-    });
-  }
+    this.setState(
+      (prevState: IFacepileBasicExampleState): IFacepileBasicExampleState => {
+        prevState.personaSize = value.key as PersonaSize;
+        return prevState;
+      }
+    );
+  };
 }

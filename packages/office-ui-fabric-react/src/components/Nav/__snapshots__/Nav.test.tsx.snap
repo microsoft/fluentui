@@ -34,7 +34,7 @@ exports[`Nav renders Nav correctly 1`] = `
             {
               animation-duration: 0.367s;
               animation-fill-mode: both;
-              animation-name: css-33,css-46;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(0,-20px,0);}to{transform:translate3d(0,0,0);};
               animation-timing-function: cubic-bezier(.1,.9,.2,1);
               display: block;
               margin-bottom: 40px;
@@ -75,15 +75,16 @@ exports[`Nav renders Nav correctly 1`] = `
               name=""
             >
               <button
-                aria-describedby={null}
+                aria-describedby={undefined}
+                aria-disabled={undefined}
                 aria-label={undefined}
-                aria-labelledby={null}
+                aria-labelledby={undefined}
                 aria-pressed={undefined}
                 className=
                     ms-Button
-                    ms-Nav-link
                     ms-Button--action
                     ms-Button--command
+                    ms-Nav-link
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -136,10 +137,6 @@ exports[`Nav renders Nav correctly 1`] = `
                       right: -2px;
                       top: -2px;
                     }
-                    .ms-Nav-compositeLink:hover & {
-                      background-color: #f8f8f8;
-                      color: #333333;
-                    }
                     &:hover {
                       color: #0078d4;
                     }
@@ -155,6 +152,10 @@ exports[`Nav renders Nav correctly 1`] = `
                     }
                     &:active .ms-Button-icon {
                       color: #004578;
+                    }
+                    .ms-Nav-compositeLink:hover & {
+                      background-color: #f8f8f8;
+                      color: #333333;
                     }
                 data-is-focusable={true}
                 disabled={undefined}

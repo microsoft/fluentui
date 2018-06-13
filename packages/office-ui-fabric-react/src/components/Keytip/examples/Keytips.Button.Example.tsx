@@ -8,7 +8,6 @@ export interface IKeytipsButtonExampleState {
 }
 
 export class KeytipsButtonExample extends React.Component<{}, IKeytipsButtonExampleState> {
-
   constructor(props: {}) {
     super(props);
 
@@ -21,80 +20,94 @@ export class KeytipsButtonExample extends React.Component<{}, IKeytipsButtonExam
   public render() {
     return (
       <div>
-        <p>
-          Keytips on the same level starting with the same characters will get filtered out as you hit those keys
-        </p>
+        <p>Keytips on the same level starting with the same characters will get filtered out as you hit those keys</p>
         <DefaultButton
-          keytipProps={ keytipMap.Button }
-          text='Button'
-          onClick={ () => { console.log('Button'); } }
+          keytipProps={keytipMap.Button}
+          text="Button"
+          onClick={() => {
+            console.log('Button');
+          }}
         />
         <CompoundButton
-          keytipProps={ keytipMap.CompoundButton }
-          text='Compound Button'
-          description={ 'With a Keytip' }
-          onClick={ () => { console.log('Compound Button'); } }
+          keytipProps={keytipMap.CompoundButton}
+          text="Compound Button"
+          secondaryText={'With a Keytip'}
+          onClick={() => {
+            console.log('Compound Button');
+          }}
         />
         <DefaultButton
-          keytipProps={ keytipMap.ButtonWithMenu }
-          text='Button with Menu'
-          onClick={ () => { console.log('Button with Menu'); } }
-          menuProps={ {
+          keytipProps={keytipMap.ButtonWithMenu}
+          text="Button with Menu"
+          onClick={() => {
+            console.log('Button with Menu');
+          }}
+          menuProps={{
             items: [
               {
                 key: 'buttonMenuItem1',
-                name: 'Menu Item 1',
+                text: 'Menu Item 1',
                 keytipProps: keytipMap.ButtonMenuItem1
               },
               {
                 key: 'buttonMenuItem2',
-                name: 'Menu Item 2',
+                text: 'Menu Item 2',
                 keytipProps: keytipMap.ButtonMenuItem2
               }
             ]
-          } }
+          }}
         />
         <DefaultButton
-          keytipProps={ keytipMap.SplitButton }
-          text='Split Button'
-          split={ true }
-          onClick={ () => { console.log('Split Button'); } }
-          menuProps={ {
+          keytipProps={keytipMap.SplitButton}
+          text="Split Button"
+          split={true}
+          onClick={() => {
+            console.log('Split Button');
+          }}
+          menuProps={{
             items: [
               {
                 key: 'splitButtonMenuButton1',
-                name: 'Split Button Menu Item 1',
+                text: 'Split Button Menu Item 1',
                 keytipProps: keytipMap.SplitButtonMenuItem1
               },
               {
                 key: 'splitButtonMenuButton2',
-                name: 'Split Button Menu Item 2',
+                text: 'Split Button Menu Item 2',
                 keytipProps: keytipMap.SplitButtonMenuItem2
               }
             ]
-          } }
+          }}
         />
+        <DefaultButton text="I do not have a keytip" />
+        <p>
+          A keytip can have an 'offset' prop which will position the keytip starting from the top-left corner of the
+          element
+        </p>
         <DefaultButton
-          text='I do not have a keytip'
+          keytipProps={keytipMap.ButtonOffset}
+          text="Button keytip offset 10x10"
+          onClick={() => {
+            console.log('Button');
+          }}
         />
-        <p>A keytip can have an 'offset' prop which will position the keytip starting from the top-left corner of the element</p>
-        <DefaultButton
-          keytipProps={ keytipMap.ButtonOffset }
-          text='Button keytip offset 10x10'
-          onClick={ () => { console.log('Button'); } }
-        />
-        <p>A keytip will become disabled when its corresponding component becomes disabled. A disabled keytip will be visible but cannot be triggered</p>
+        <p>
+          A keytip will become disabled when its corresponding component becomes disabled. A disabled keytip will be
+          visible but cannot be triggered
+        </p>
         <Toggle
-          onText={ 'Enabled' }
-          offText={ 'Disabled' }
-          defaultChecked={ !this.state.btnDisabled }
-          onChanged={ this._toggleDisabled }
+          onText={'Enabled'}
+          offText={'Disabled'}
+          defaultChecked={!this.state.btnDisabled}
+          onChanged={this._toggleDisabled}
         />
         <DefaultButton
-          keytipProps={ keytipMap.DisabledButton }
-          disabled={ this.state.btnDisabled }
-          text={ (this.state.btnDisabled ? 'Disabled' : 'Enabled') + ' Button' }
-          onClick={ () => { console.log('Disabled Button'); } }
+          keytipProps={keytipMap.DisabledButton}
+          disabled={this.state.btnDisabled}
+          text={(this.state.btnDisabled ? 'Disabled' : 'Enabled') + ' Button'}
+          onClick={() => {
+            console.log('Disabled Button');
+          }}
         />
       </div>
     );
@@ -102,5 +115,5 @@ export class KeytipsButtonExample extends React.Component<{}, IKeytipsButtonExam
 
   private _toggleDisabled = (checked: boolean) => {
     this.setState({ btnDisabled: !checked });
-  }
+  };
 }

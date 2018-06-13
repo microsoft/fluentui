@@ -2,6 +2,165 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.1.0",
+      "tag": "@uifabric/fabric-website_v6.1.0",
+      "date": "Fri, 08 Jun 2018 18:34:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "6a227713f010cd71401a83e7ec2b4cf352afadfe",
+            "comment": "Add documentation for testing minified files locally."
+          }
+        ],
+        "minor": [
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "3ccea373457639519f55d9762c862d44ae4da36c",
+            "comment": "Shimmer: Adds new Shimmer component to fabric-website"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.6.1 <7.0.0` to `>=6.8.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.4",
+      "tag": "@uifabric/fabric-website_v6.0.4",
+      "date": "Thu, 07 Jun 2018 16:35:34 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "58b0ef8cd0468cbd5cfab04267f2f4143444f919",
+            "comment": "Tweaked the lint rules."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.5.0 <7.0.0` to `>=6.6.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.3",
+      "tag": "@uifabric/fabric-website_v6.0.3",
+      "date": "Tue, 05 Jun 2018 00:44:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "cfa7a19ec1d6f98c13f822a828e0751f64507dbd",
+            "comment": "Added Prettier"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.4.0 <7.0.0` to `>=6.4.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.2",
+      "tag": "@uifabric/fabric-website_v6.0.2",
+      "date": "Mon, 04 Jun 2018 10:16:13 GMT",
+      "comments": {
+        "none": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "2e2a1aba56f9d401d699ef23dafeeba49c86c715",
+            "comment": "Add addins-sketch-toolkit link"
+          }
+        ],
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "4e1cd119bbf0f75e0432b0f92bad342714b57bef",
+            "comment": "Updating react typings."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.2.0 <7.0.0` to `>=6.3.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.1",
+      "tag": "@uifabric/fabric-website_v6.0.1",
+      "date": "Thu, 31 May 2018 10:18:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "425c887c654822e6fb31513f390471cf1953f1aa",
+            "comment": "made sure the deps are resolved by package rather than relative paths"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.1.1 <7.0.0` to `>=6.1.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.0",
+      "tag": "@uifabric/fabric-website_v6.0.0",
+      "date": "Wed, 30 May 2018 20:28:33 GMT",
+      "comments": {
+        "major": [
+          {
+            "author": "Cliff Koh <zihankoh@microsoft.com>",
+            "commit": "937364830cb4f1d6c38a319e61f6388eab2fbe32",
+            "comment": "Bump to 6.0 alongside office-ui-fabric-react 6.0 release."
+          }
+        ],
+        "none": [
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "71c06895d0f7dafd28384357c0bd93541deb95e1",
+            "comment": "revert build change"
+          },
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "81773bd855d12f20ca5a482ceabbb0997111f24c",
+            "comment": "Update sharepoint xd toolkit link"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.112.0 <6.0.0` to `>=6.0.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.7.5",
+      "tag": "@uifabric/fabric-website_v5.7.5",
+      "date": "Thu, 17 May 2018 10:28:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "218d0e70c98804a7f0b97a65e5380c232b01aca1",
+            "comment": "Get rid of App-nav container in mobile, it was blocking interation."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.103.0 <6.0.0` to `>=5.104.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.7.4",
       "tag": "@uifabric/fabric-website_v5.7.4",
       "date": "Tue, 08 May 2018 16:02:16 GMT",

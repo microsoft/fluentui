@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ColorPickerPage } from 'office-ui-fabric-react/lib/components/ColorPicker/ColorPickerPage';
+import { ColorPickerPage } from '@uifabric/demo/lib/components/pages/ColorPickerPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 const pageStyles: any = require('../PageStyles.module.scss');
@@ -7,26 +7,27 @@ const pageStyles: any = require('../PageStyles.module.scss');
 export class ColorPickerComponentPage extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
-      <div className={ pageStyles.basePage }>
+      <div className={pageStyles.basePage}>
         <ComponentPage>
-          <PageHeader pageTitle='ColorPicker' backgroundColor='#038387'
-            links={
-              [
-                {
-                  'text': 'Overview',
-                  'location': 'Overview'
-                },
-                {
-                  'text': 'Variants',
-                  'location': 'Variants'
-                },
-                {
-                  'text': 'Implementation',
-                  'location': 'Implementation'
-                }
-              ]
-            } />
-          <ColorPickerPage isHeaderVisible={ false } />
+          <PageHeader
+            pageTitle="ColorPicker"
+            backgroundColor="#038387"
+            links={[
+              {
+                text: 'Overview',
+                location: 'Overview'
+              },
+              {
+                text: 'Variants',
+                location: 'Variants'
+              },
+              {
+                text: 'Implementation',
+                location: 'Implementation'
+              }
+            ]}
+          />
+          <ColorPickerPage isHeaderVisible={false} />
         </ComponentPage>
       </div>
     );

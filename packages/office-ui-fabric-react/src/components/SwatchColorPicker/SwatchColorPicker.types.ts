@@ -1,8 +1,12 @@
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
-import { IColorCellProps, IColorPickerGridCellStyleProps, IColorPickerGridCellStyles } from './ColorPickerGridCell.types';
+import { IStyleFunctionOrObject } from '../../Utilities';
+import {
+  IColorCellProps,
+  IColorPickerGridCellStyleProps,
+  IColorPickerGridCellStyles
+} from './ColorPickerGridCell.types';
 
-export interface ISwatchColorPicker { }
+export interface ISwatchColorPicker {}
 
 export interface ISwatchColorPickerProps {
   /**
@@ -95,12 +99,12 @@ export interface ISwatchColorPickerProps {
   /**
    * Optional styles for the component.
    */
-  getStyles?: IStyleFunction<ISwatchColorPickerStyleProps, ISwatchColorPickerStyles>;
+  styles?: IStyleFunctionOrObject<ISwatchColorPickerStyleProps, ISwatchColorPickerStyles>;
 
   /**
-  * Optional styles for the component.
-  */
-  getColorGridCellStyles?: IStyleFunction<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>;
+   * Optional styles for the component.
+   */
+  getColorGridCellStyles?: IStyleFunctionOrObject<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>;
 
   /**
    * Optional, whether to update focus when a cell is hovered.
@@ -140,12 +144,12 @@ export interface ISwatchColorPickerStyles {
   root: IStyle;
 
   /**
-  * Style for the table cells of the grid.
-  */
+   * Style for the table cells of the grid.
+   */
   tableCell: IStyle;
 
   /**
-  * Optional, style for the FocusZone container for the grid
-  */
+   * Optional, style for the FocusZone container for the grid
+   */
   focusedContainer?: IStyle;
 }

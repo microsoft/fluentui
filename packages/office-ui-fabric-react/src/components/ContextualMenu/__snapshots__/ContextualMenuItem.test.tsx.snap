@@ -29,7 +29,7 @@ ShallowWrapper {
         "key": "123",
       }
     }
-    onCheckmarkClick={[Function]}
+    onCheckmarkClick={[MockFunction]}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -429,9 +429,11 @@ ShallowWrapper {
     index={1}
     item={
       Object {
-        "icon": "itemIcon",
+        "iconProps": Object {
+          "iconName": "itemIcon",
+        },
         "key": "123",
-        "name": "menuItem",
+        "text": "menuItem",
       }
     }
   />,

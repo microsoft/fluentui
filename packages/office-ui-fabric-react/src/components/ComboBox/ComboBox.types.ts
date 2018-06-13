@@ -9,15 +9,17 @@ import { IKeytipProps } from '../../Keytip';
 
 export interface IComboBox {
   /**
-  * If there is a menu open this will dismiss the menu
-  */
+   * If there is a menu open this will dismiss the menu
+   */
   dismissMenu: () => void;
 
   /**
    * Sets focus to the input in the comboBox
+   * @param {boolean} shouldOpenOnFocus determines if we should open the ComboBox menu when the input gets focus
+   * @param {boolean} useFocusAsync determines if we should focus the input asynchronously
    * @returns True if focus could be set, false if no operation was taken.
    */
-  focus(shouldOpenOnFocus?: boolean): boolean;
+  focus(shouldOpenOnFocus?: boolean, useFocusAsync?: boolean): boolean;
 }
 
 export interface IComboBoxOption extends ISelectableOption {
@@ -98,7 +100,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   /**
    * Value to show in the input, does not have to map to a combobox option
    */
-  value?: string;
+  text?: string;
 
   /**
    * The IconProps to use for the button aspect of the combobox
@@ -153,8 +155,8 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   onRenderLowerContent?: IRenderFunction<IComboBoxProps>;
 
   /**
-  * Custom width for dropdown (unless useComboBoxAsMenuWidth is undefined or false)
-  */
+   * Custom width for dropdown (unless useComboBoxAsMenuWidth is undefined or false)
+   */
   dropdownWidth?: number;
 
   /**
@@ -177,6 +179,12 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * Optional keytip for this combo box
    */
   keytipProps?: IKeytipProps;
+
+  /**
+   * Value to show in the input, does not have to map to a combobox option
+   * @deprecated Use `text` instead.
+   */
+  value?: string;
 }
 
 export interface IComboBoxStyles {
@@ -256,8 +264,8 @@ export interface IComboBoxStyles {
   callout: IStyle;
 
   /**
-  * Styles for the optionsContainerWrapper.
-  */
+   * Styles for the optionsContainerWrapper.
+   */
   optionsContainerWrapper: IStyle;
 
   /**
@@ -267,8 +275,8 @@ export interface IComboBoxStyles {
   optionsContainer: IStyle;
 
   /**
- * Styles for a header in the options.
- */
+   * Styles for a header in the options.
+   */
   header: IStyle;
 
   /**
@@ -278,7 +286,6 @@ export interface IComboBoxStyles {
 }
 
 export interface IComboBoxOptionStyles extends IButtonStyles {
-
   /**
    * Styles for the text inside the comboBox option.
    * This should be used instead of the description

@@ -26,6 +26,7 @@ scripts/ @dzearing
 # todo-app/
 
 #### Packages
+packages/charting/ @kkjeer
 # packages/example-app-base/
 packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
 # packages/icons/
@@ -92,7 +93,7 @@ pickers/  @joschect
 # Pivot/
 # Popup/
 # ProgressIndicator/
-Rating/  @cschleiden
+# Rating/
 ResizeGroup/  @micahgodbolt
 # SearchBox/
 # Slider/

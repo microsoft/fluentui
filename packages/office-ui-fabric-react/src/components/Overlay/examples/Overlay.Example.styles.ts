@@ -5,8 +5,7 @@ export interface IOverlayExampleStyles {
 }
 
 export const getStyles = (): IOverlayExampleStyles => {
-
-  return ({
+  return {
     root: [
       'OverlayExample-content',
       {
@@ -16,8 +15,8 @@ export const getStyles = (): IOverlayExampleStyles => {
         left: '0',
         padding: '10px',
         position: 'absolute',
-        right: '0',
+        right: '0'
       }
     ]
-  });
+  };
 };

@@ -1,18 +1,21 @@
 ﻿/* tslint:disable */
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { IStyleFunction } from 'office-ui-fabric-react/lib/Utilities';
-import {
-  INavLink,
-  INavLinkGroup
-} from 'office-ui-fabric-react/lib/components/Nav';
+import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+import { INavLink, INavLinkGroup } from 'office-ui-fabric-react/lib/components/Nav';
 import { INavState } from 'office-ui-fabric-react/lib/components/Nav/Nav.base';
 /* tslint:enable */
+
+export enum NavGroupType {
+  ToggleGroup,
+  MenuGroup,
+  CustomizationGroup
+}
 
 export interface INavProps {
   /**
    * A collection of link groups to display in the navigation bar
    */
-  groups: INavLinkGroup[] | null;
+  groups: ICustomNavLinkGroup[] | null;
 
   /**
    * (Optional) The key of the nav item initially selected.
@@ -38,7 +41,7 @@ export interface INavProps {
   /**
    * (Optional) Call to provide customized styling that will layer on top of the variant rules
    */
-  getStyles?: IStyleFunction<INavStyleProps, INavStyles>;
+  styles?: IStyleFunctionOrObject<INavStyleProps, INavStyles>;
 
   /**
    * (Optional) Used for telemetry
@@ -95,22 +98,27 @@ export interface INavLink extends INavLink {
   isHidden?: boolean;
 
   /**
-   * (Optional) Localized "Show more" nav link text.
+   * (Optional) Localized alternate text for the name field.
    */
-  showMoreText?: string;
+  alternateText?: string;
 
   /**
    * (Optional) To identify whether this link is show more/less and
    * provide internal implementation to show/hide nav links based on isHidden property.
    */
   isShowMoreLink?: boolean;
+
+  /**
+   * (Optional) Provides an ability to toggle auto expand when the selectedKey prop is one of the child of this link
+   */
+  disableAutoExpand?: boolean;
 }
 
-export interface INavLinkGroup extends INavLinkGroup {
+export interface ICustomNavLinkGroup extends INavLinkGroup {
   /**
-   * (Optional) Used to identify whether the nav group is for customization or not.
+   * Used to identify whether the nav group is toggle group or menu group or the customization group.
    */
-  isCustomizationGroup?: boolean;
+  groupType: NavGroupType;
 }
 
 export interface INavStyleProps {

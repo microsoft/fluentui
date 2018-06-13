@@ -1,4 +1,4 @@
-import { ITheme } from '../interfaces';
+import { ITheme } from '../interfaces/index';
 
 export type GlobalClassNames<IStyles> = Record<keyof IStyles, string>;
 

@@ -46,7 +46,7 @@ export enum FabricSlots {
   neutralDark, // BaseSlots.foregroundColor, Shade[Shade.Shade7]);
 
   black, // BaseSlots.foregroundColor, Shade[Shade.Shade8]);
-  white, // BaseSlots.backgroundColor, Shade[Shade.Unshaded]);
+  white // BaseSlots.backgroundColor, Shade[Shade.Unshaded]);
 }
 
 /* List of all the semantic color slots for this theme.
@@ -119,7 +119,12 @@ export function themeRulesStandardCreator(): IThemeRules {
   slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade7]].color = getColorFromString('#212121');
   slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade8]].color = getColorFromString('#000000');
 
-  function _makeFabricSlotRule(slotName: string, inheritedBase: BaseSlots, inheritedShade: Shade, isBackgroundShade = false): void {
+  function _makeFabricSlotRule(
+    slotName: string,
+    inheritedBase: BaseSlots,
+    inheritedShade: Shade,
+    isBackgroundShade = false
+  ): void {
     const inherits = slotRules[BaseSlots[inheritedBase]];
     const thisSlotRule = {
       name: slotName,
@@ -175,25 +180,6 @@ export function themeRulesStandardCreator(): IThemeRules {
   slotRules[FabricSlots[FabricSlots.themeDark]].isCustomized = true;
   slotRules[FabricSlots[FabricSlots.themeDarker]].isCustomized = true;
 
-  // todo: can remove this once we remove these outdated slots from the product
-  const primaryBackground = 'primaryBackground';
-  slotRules[primaryBackground] = {
-    name: primaryBackground,
-    inherits: slotRules[FabricSlots[FabricSlots.white]],
-    isCustomized: false,
-    dependentRules: []
-  };
-  slotRules[FabricSlots[FabricSlots.white]].dependentRules.push(slotRules[primaryBackground]);
-
-  const primaryText = 'primaryText';
-  slotRules[primaryText] = {
-    name: primaryText,
-    inherits: slotRules[FabricSlots[FabricSlots.neutralPrimary]],
-    isCustomized: false,
-    dependentRules: []
-  };
-  slotRules[FabricSlots[FabricSlots.neutralPrimary]].dependentRules.push(slotRules[primaryText]);
-
   /*** SEMANTIC SLOTS */
   // create the SlotRule for a semantic slot
   function _makeSemanticSlotRule(semanticSlot: SemanticColorSlots, inheritedFabricSlot: FabricSlots): void {
@@ -211,8 +197,6 @@ export function themeRulesStandardCreator(): IThemeRules {
   // Basic simple slots
   _makeSemanticSlotRule(SemanticColorSlots.bodyBackground, FabricSlots.white);
   _makeSemanticSlotRule(SemanticColorSlots.bodyText, FabricSlots.neutralPrimary);
-  _makeSemanticSlotRule(SemanticColorSlots.disabledBackground, FabricSlots.neutralLighter);
-  _makeSemanticSlotRule(SemanticColorSlots.disabledText, FabricSlots.neutralTertiaryAlt);
 
   return slotRules;
 }

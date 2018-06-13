@@ -1,14 +1,9 @@
 import { Stylesheet } from '@uifabric/merge-styles';
 
-export function print(
-  val: string,
-  serialize: () => string,
-  indent: (val: string) => string
-): string {
+export function print(val: string, serialize: () => string, indent: (val: string) => string): string {
   const classNames = [];
   const rules = [];
   const parts = val.split(' ');
-
   for (const part of parts) {
     const ruleSet = Stylesheet.getInstance().insertedRulesFromClassName(part);
 
@@ -19,13 +14,7 @@ export function print(
     }
   }
 
-  return (
-    [
-      ``,
-      `${classNames.map((cn: string) => indent(cn)).join('\n')}`,
-      `${rules.join('\n')}`
-    ].join('\n')
-  );
+  return [``, `${classNames.map((cn: string) => indent(cn)).join('\n')}`, `${rules.join('\n')}`].join('\n');
 }
 
 export function test(val: string): boolean {
@@ -49,25 +38,34 @@ function _serializeRules(rules: string[], indent: (val: string) => string): stri
     if (insertedRules) {
       ruleStrings.push(indent((i === 0 ? '' : selector + ' ') + `{`));
 
-      insertedRules.split(';').sort().forEach((rule: string) => {
-        if (rule) {
-          const [name, value] = rule.split(':');
-          const valueParts = value.split(' ');
-          let result: string[] = [];
+      insertedRules
+        .split(';')
+        .sort()
+        .forEach((rule: string) => {
+          if (rule) {
+            const [name, value] = rule.split(':');
+            let delimiter: string | RegExp = ' ';
 
-          for (const part of valueParts) {
-            const ruleSet = stylesheet.insertedRulesFromClassName(part);
-
-            if (ruleSet) {
-              result = result.concat(ruleSet);
-            } else {
-              result.push(part);
+            if (name === 'animation-name') {
+              delimiter = /[ ,]+/;
             }
-          }
 
-          ruleStrings.push(indent(`  ${name}: ${result.join(' ')};`));
-        }
-      });
+            const valueParts = value.split(delimiter);
+            let result: string[] = [];
+
+            for (const part of valueParts) {
+              const ruleSet = stylesheet.insertedRulesFromClassName(part);
+
+              if (ruleSet) {
+                result = result.concat(ruleSet);
+              } else {
+                result.push(part);
+              }
+            }
+
+            ruleStrings.push(indent(`  ${name}: ${result.join(' ')};`));
+          }
+        });
 
       ruleStrings.push(indent('}'));
     }

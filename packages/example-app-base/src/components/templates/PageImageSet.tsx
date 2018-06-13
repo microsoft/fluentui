@@ -1,18 +1,7 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  IBaseProps,
-  IClassNames,
-  customizable
-} from 'office-ui-fabric-react/lib/Utilities';
-import {
-  ITheme,
-  IStyle,
-  mergeStyleSets
-} from 'office-ui-fabric-react/lib/Styling';
-import {
-  IImageProps
-} from 'office-ui-fabric-react/lib/Image';
+import { BaseComponent, IBaseProps, IClassNames, customizable } from 'office-ui-fabric-react/lib/Utilities';
+import { ITheme, IStyle, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
+import { IImageProps } from 'office-ui-fabric-react/lib/Image';
 
 export interface IPageImageSetStyles {
   root: IStyle;
@@ -47,7 +36,7 @@ const getDefaultStyles = (props: IPageImageSetStyleProps): IPageImageSetStyles =
   }
 });
 
-@customizable('PageImageSet', ['theme'])
+@customizable('PageImageSet', ['theme', 'styles'])
 export class PageImageSet extends BaseComponent<IPageImageSetProps, {}> {
   public render(): JSX.Element {
     const { theme, getStyles, images } = this.props;
@@ -58,12 +47,12 @@ export class PageImageSet extends BaseComponent<IPageImageSetProps, {}> {
     );
 
     return (
-      <div className={ classNames.root }>
-        { images.map((imageProps: IImageProps) => (
-          <div key={ imageProps.src } className={ classNames.imageWrapper }>
-            <img className={ classNames.image } src={ imageProps.src } />
+      <div className={classNames.root}>
+        {images.map((imageProps: IImageProps) => (
+          <div key={imageProps.src} className={classNames.imageWrapper}>
+            <img className={classNames.image} src={imageProps.src} />
           </div>
-        )) }
+        ))}
       </div>
     );
   }

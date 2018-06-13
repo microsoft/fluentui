@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DocumentCardPage } from 'office-ui-fabric-react/lib/components/DocumentCard/DocumentCardPage';
+import { DocumentCardPage } from '@uifabric/demo/lib/components/pages/DocumentCardPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 const pageStyles: any = require('../PageStyles.module.scss');
@@ -7,30 +7,31 @@ const pageStyles: any = require('../PageStyles.module.scss');
 export class DocumentCardComponentPage extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
-      <div className={ pageStyles.basePage }>
+      <div className={pageStyles.basePage}>
         <ComponentPage>
-          <PageHeader pageTitle='DocumentCard' backgroundColor='#038387'
-            links={
-              [
-                {
-                  'text': 'Overview',
-                  'location': 'Overview'
-                },
-                {
-                  'text': 'Best Practices',
-                  'location': 'BestPractices'
-                },
-                {
-                  'text': 'Variants',
-                  'location': 'Variants'
-                },
-                {
-                  'text': 'Implementation',
-                  'location': 'Implementation'
-                }
-              ]
-            } />
-          <DocumentCardPage isHeaderVisible={ false } />
+          <PageHeader
+            pageTitle="DocumentCard"
+            backgroundColor="#038387"
+            links={[
+              {
+                text: 'Overview',
+                location: 'Overview'
+              },
+              {
+                text: 'Best Practices',
+                location: 'BestPractices'
+              },
+              {
+                text: 'Variants',
+                location: 'Variants'
+              },
+              {
+                text: 'Implementation',
+                location: 'Implementation'
+              }
+            ]}
+          />
+          <DocumentCardPage isHeaderVisible={false} />
         </ComponentPage>
       </div>
     );
