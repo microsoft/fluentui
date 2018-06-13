@@ -1,9 +1,3 @@
-/**
- * Fabric async loader will automatically replace the Fabric components specified in the "include" option of the loader with below code
- * The code below uses the `react-loadable` control to facilitate auto code-splitting at the Fabric component level
- *
- * NOTE: This code is heavily inspired by https://github.com/baflo/react-loadable-loader.
- */
 import * as webpack from 'webpack';
 import * as path from 'path';
 import * as loaderUtils from 'loader-utils';
@@ -27,6 +21,14 @@ function getMagicComments(options: loaderUtils.OptionObject): string {
     .join(' ');
 }
 
+/**
+ * Fabric async loader will automatically replace the Fabric components specified in the "include" option of the loader with below code
+ * The code below uses the `react-loadable` control to facilitate auto code-splitting at the Fabric component level
+ *
+ * NOTE: This code is heavily inspired by https://github.com/baflo/react-loadable-loader.
+ *
+ * @param content the source code to be transformed
+ */
 module.exports = function(content: string): string {
   return content;
 };
