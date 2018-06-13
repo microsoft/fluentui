@@ -237,14 +237,15 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     if (
       newProps.checkboxVisibility !== checkboxVisibility ||
       newProps.columns !== columns ||
-      newProps.viewport!.width !== viewport!.width
+      newProps.viewport!.width !== viewport!.width ||
+      newProps.compact !== compact
     ) {
       shouldForceUpdates = true;
     }
 
     this._adjustColumns(newProps, true);
 
-    if (newProps.selectionMode !== selectionMode || newProps.compact !== compact) {
+    if (newProps.selectionMode !== selectionMode) {
       shouldForceUpdates = true;
     }
 
