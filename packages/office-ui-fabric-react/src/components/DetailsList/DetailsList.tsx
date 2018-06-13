@@ -416,6 +416,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                   />
                 ) : (
                   <List
+                    className={css(enableShimmer && styles.shimmerFadeOut)}
                     ref={this._list}
                     role="presentation"
                     items={enableShimmer && !items.length ? this._shimmerItems : items}
