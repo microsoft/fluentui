@@ -14,7 +14,8 @@ export interface IStickyContext {
 
 export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   public static defaultProps: IStickyProps = {
-    stickyPosition: StickyPositionType.Both
+    stickyPosition: StickyPositionType.Both,
+    isScrollSynced: true
   };
 
   public static contextTypes: IStickyContext = {
@@ -114,12 +115,22 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     return (
       <div ref={this._root}>
         {this.canStickyTop && (
-          <div className={this.props.stickyClassName} ref={this._stickyContentTop} aria-hidden={!isStickyTop}>
+          <div
+            className={this.props.stickyClassName}
+            ref={this._stickyContentTop}
+            aria-hidden={!isStickyTop}
+            style={this._getStickyContainerStyle()}
+          >
             <div style={this._getStickyPlaceholderHeight(isStickyTop)} />
           </div>
         )}
         {this.canStickyBottom && (
-          <div className={this.props.stickyClassName} ref={this._stickyContentBottom} aria-hidden={!isStickyBottom}>
+          <div
+            className={this.props.stickyClassName}
+            ref={this._stickyContentBottom}
+            aria-hidden={!isStickyBottom}
+            style={this._getStickyContainerStyle()}
+          >
             <div style={this._getStickyPlaceholderHeight(isStickyBottom)} />
           </div>
         )}
@@ -157,6 +168,13 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     };
   }
 
+  private _getStickyContainerStyle(): React.CSSProperties {
+    const { isScrollSynced } = this.props;
+    return {
+      overflow: isScrollSynced ? 'hidden' : 'auto'
+    };
+  }
+
   private _getStickyPlaceholderHeight(isSticky: boolean): React.CSSProperties {
     const height = this.nonStickyContent ? this.nonStickyContent.offsetHeight : 0;
 
@@ -186,6 +204,10 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       let isStickyTop = false;
       let isStickyBottom = false;
 
+      if (this.props.isScrollSynced) {
+        this._syncScroll(container);
+      }
+
       if (this.canStickyTop) {
         const distanceToStickTop = this.distanceFromTop - this._getStickyDistanceFromTop();
         isStickyTop = distanceToStickTop < container.scrollTop;
@@ -202,6 +224,24 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
         isStickyTop: this.canStickyTop && isStickyTop,
         isStickyBottom: isStickyBottom
       });
+    }
+  };
+
+  private _syncScroll = (container: HTMLElement): void => {
+    if (this.root) {
+      let scrollLeft = 0;
+      let scrollTop = 0;
+      let curr = this.root as HTMLElement;
+      while (curr !== container) {
+        scrollLeft += curr.scrollLeft;
+        scrollTop += curr.scrollTop;
+        curr = curr.parentElement as HTMLElement;
+      }
+
+      if (this.stickyContentTop) {
+        this.stickyContentTop.scrollLeft = scrollLeft;
+        this.stickyContentTop.scrollTop = scrollTop;
+      }
     }
   };
 
