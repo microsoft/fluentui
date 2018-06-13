@@ -7,8 +7,10 @@ import { classNamesFunction } from '../../Utilities';
 
 export class Recommendation extends React.Component<IRecommendationProps, {}> {
   public static defaultProps = {
-    recommendationButtonName: 'View Recommendation',
-    recommendationButtonAriaDescription: 'Click to View Recommendation'
+    recommendationButtonLocalizedName: 'View Recommendation',
+    recommendationButtonAriaDescription: 'Click to View Recommendation',
+    dismissRecommendationLocalizedName: 'Dismiss',
+    dismissRecommendationAriaLabel: 'Dismiss'
   };
 
   constructor(props: IRecommendationProps) {
@@ -20,8 +22,10 @@ export class Recommendation extends React.Component<IRecommendationProps, {}> {
       recommendationBarTitle,
       recommendationDescriptionHeader,
       recommendationDescription,
-      recommendationButtonName,
+      recommendationButtonLocalizedName,
       recommendationButtonAriaDescription,
+      dismissRecommendationLocalizedName,
+      dismissRecommendationAriaLabel,
       handleViewRecommendationClick,
       handleDismissRecommendationClick
     } = this.props;
@@ -30,11 +34,11 @@ export class Recommendation extends React.Component<IRecommendationProps, {}> {
     const classNames = getClassNames(getStyles!);
     const menuItems = [
       {
-        key: 'Remove',
-        name: 'Remove',
+        key: dismissRecommendationLocalizedName,
+        name: dismissRecommendationLocalizedName,
         icon: 'PageRemove',
-        ariaLabel: 'Dimiss Recommendation',
-        title: 'Dimiss Recommendation',
+        ariaLabel: dismissRecommendationAriaLabel,
+        title: dismissRecommendationAriaLabel,
         onClick: handleDismissRecommendationClick
       }
     ];
@@ -53,13 +57,13 @@ export class Recommendation extends React.Component<IRecommendationProps, {}> {
             <div>
               <PrimaryButton
                 data-automation-id="btnRecommendation"
-                name={recommendationButtonName}
+                name={recommendationButtonLocalizedName}
                 disabled={false}
                 checked={false}
                 onClick={handleViewRecommendationClick}
                 ariaDescription={recommendationButtonAriaDescription}
               >
-                {recommendationButtonName}
+                {recommendationButtonLocalizedName}
               </PrimaryButton>
             </div>
           </div>
