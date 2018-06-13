@@ -41,17 +41,23 @@ interface IDocumentTileWithThumbnailProps {
 const DocumentTileWithThumbnail: React.StatelessComponent<IDocumentTileWithThumbnailProps> = (
   props: IDocumentTileWithThumbnailProps
 ): JSX.Element => {
+  const invokeSelection = true;
   const tile = (
     <Tile
       contentSize={{
         width: 176,
         height: 171
       }}
-      itemName={<SignalField before={<TrendingSignal />}>{props.item.name}</SignalField>}
+      itemName={
+        <SignalField before={<TrendingSignal />} isLink={invokeSelection}>
+          {props.item.name}
+        </SignalField>
+      }
       itemActivity={<SignalField before={<CommentsSignal>{'12'}</CommentsSignal>}>{props.item.activity}</SignalField>}
       foreground={<span />}
       hideForeground={!props.showForeground}
       showForegroundFrame={true}
+      invokeSelection={invokeSelection}
     />
   );
 
