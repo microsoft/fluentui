@@ -166,8 +166,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
               tabIndex={disabled ? -1 : 0}
               aria-expanded={isOpen ? 'true' : 'false'}
               aria-label={ariaLabel}
-              aria-labelledby={`${mergeAriaAttributeValues(labelledby, keytipAttributes['aria-labeledby'])}`}
-              aria-describedby={`${mergeAriaAttributeValues(describedby, keytipAttributes['aria-describedby'])}`}
+              aria-labelledby={mergeAriaAttributeValues(labelledby, keytipAttributes['aria-labeledby'])}
+              aria-describedby={mergeAriaAttributeValues(describedby, keytipAttributes['aria-describedby'])}
               aria-activedescendant={
                 isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0
                   ? this._id + '-list' + selectedIndices[0]
