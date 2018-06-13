@@ -229,7 +229,6 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
         itemIndex={itemIndex}
         columnStartIndex={showCheckbox ? 1 : 0}
         onRenderItemColumn={onRenderItemColumn}
-        shimmer={shimmer}
       />
     );
 

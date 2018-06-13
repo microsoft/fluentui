@@ -7,12 +7,6 @@ $rowHorizontalPadding: 8px;
 $compactRowVerticalPadding: 6px;
 $isPaddedMargin: 24px;
 
-$rowShimmerHorizontalBorder: $rowHorizontalPadding;
-$rowShimmerLineHeight: 7px;
-$rowShimmerIconPlaceholderHeight: 16px;
-$rowShimmerVerticalBorder: ($rowHeight - $rowShimmerLineHeight) / 2;
-$compactRowShimmerVerticalBorder: ($compactRowHeight - $rowShimmerLineHeight) / 2;
-
 /* DetailsList Colors */
 // Default
 $detailsList-item-default-header-text-color: $ms-color-neutralPrimary;
@@ -49,24 +43,6 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
   .cell {
     min-height: $compactRowHeight;
     padding: $compactRowVerticalPadding $rowHorizontalPadding;
-
-    // Masking the running shimmer background with borders
-    &.shimmer {
-      padding: 0 0;
-      @include border-left($rowShimmerHorizontalBorder, solid, $detailsList-item-default-background-color);
-      @include border-right(($rowShimmerHorizontalBorder * 4), solid, $detailsList-item-default-background-color);
-      border-top: $compactRowShimmerVerticalBorder solid $detailsList-item-default-background-color;
-      border-bottom: $compactRowShimmerVerticalBorder solid $detailsList-item-default-background-color;
-    }
-
-    // Masking the running shimmer background with borders when it's an Icon placeholder
-    &.shimmerIconPlaceholder {
-      @include border-right($rowShimmerHorizontalBorder, solid, $detailsList-item-default-background-color);
-      border-bottom: ($compactRowHeight - $rowShimmerIconPlaceholderHeight) / 2 solid
-        $detailsList-item-default-background-color;
-      border-top: ($compactRowHeight - $rowShimmerIconPlaceholderHeight) / 2 solid
-        $detailsList-item-default-background-color;
-    }
   }
 
   .check {
@@ -241,22 +217,6 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
 
   [data-is-focusable='true'] {
     @include focus-border(0, $ms-color-neutralSecondary);
-  }
-
-  // Masking the running shimmer background with borders
-  &.shimmer {
-    padding: 0 0;
-    @include border-left($rowShimmerHorizontalBorder, solid, $detailsList-item-default-background-color);
-    @include border-right(($rowShimmerHorizontalBorder * 4), solid, $detailsList-item-default-background-color);
-    border-top: $rowShimmerVerticalBorder solid $detailsList-item-default-background-color;
-    border-bottom: $rowShimmerVerticalBorder solid $detailsList-item-default-background-color;
-  }
-
-  // Masking the running shimmer background with borders when it's an Icon placeholder
-  &.shimmerIconPlaceholder {
-    @include border-right($rowShimmerHorizontalBorder, solid, $detailsList-item-default-background-color);
-    border-bottom: ($rowHeight - $rowShimmerIconPlaceholderHeight) / 2 solid $detailsList-item-default-background-color;
-    border-top: ($rowHeight - $rowShimmerIconPlaceholderHeight) / 2 solid $detailsList-item-default-background-color;
   }
 }
 

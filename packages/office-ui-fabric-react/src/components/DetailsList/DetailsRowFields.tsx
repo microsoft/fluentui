@@ -15,7 +15,6 @@ export interface IDetailsRowFieldsProps {
   columns: IColumn[];
   compact?: boolean;
   onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => any;
-  shimmer?: boolean;
 }
 
 export interface IDetailsRowFieldsState {
@@ -34,7 +33,7 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
   }
 
   public render(): JSX.Element {
-    const { columns, columnStartIndex, shimmer } = this.props;
+    const { columns, columnStartIndex } = this.props;
     const { cellContent } = this.state;
 
     return (
@@ -55,9 +54,7 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
               column.isMultiline && 'is-multiline',
               column.isRowHeader && styles.isRowHeader,
               column.isPadded && styles.isPadded,
-              column.isMultiline && styles.isMultiline,
-              column.isIconOnly && shimmer && styles.shimmerIconPlaceholder,
-              shimmer && styles.shimmer
+              column.isMultiline && styles.isMultiline
             )}
             style={{ width: column.calculatedWidth! + INNER_PADDING + (column.isPadded ? ISPADDED_WIDTH : 0) }}
             data-automationid="DetailsRowCell"
@@ -71,7 +68,7 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
   }
 
   private _getState(props: IDetailsRowFieldsProps): IDetailsRowFieldsState {
-    const { item, itemIndex, onRenderItemColumn, shimmer } = props;
+    const { item, itemIndex, onRenderItemColumn } = props;
 
     return {
       cellContent: props.columns.map(column => {
@@ -80,7 +77,7 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
         try {
           const render = column.onRender || onRenderItemColumn;
 
-          cellContent = render && !shimmer ? render(item, itemIndex, column) : this._getCellText(item, column);
+          cellContent = render ? render(item, itemIndex, column) : this._getCellText(item, column);
         } catch (e) {
           /* no-op */
         }
