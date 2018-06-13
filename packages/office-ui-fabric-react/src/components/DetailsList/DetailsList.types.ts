@@ -34,6 +34,11 @@ export interface IDetailsList extends IList {
     measureItem?: (itemIndex: number) => number,
     scrollToMode?: ScrollToMode
   ) => void;
+
+  /**
+   * Get the start index of the page that is currently in view
+   */
+  getStartItemIndexInView: () => number;
 }
 
 export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewportProps {
@@ -114,7 +119,7 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
   /** Callback for when a given row has been mounted. Useful for identifying when a row has been rendered on the page. */
   onRowDidMount?: (item?: any, index?: number) => void;
 
-  /** Callback for when a given row has been mounted. Useful for identifying when a row has been removed from the page. */
+  /** Callback for when a given row has been unmounted. Useful for identifying when a row has been removed from the page. */
   onRowWillUnmount?: (item?: any, index?: number) => void;
 
   /** Callback for when the user clicks on the column header. */
