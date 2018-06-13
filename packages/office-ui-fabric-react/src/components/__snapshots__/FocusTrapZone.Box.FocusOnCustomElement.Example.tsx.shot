@@ -4,6 +4,7 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
 <div>
   <button
     aria-describedby={undefined}
+    aria-disabled={undefined}
     aria-label={undefined}
     aria-labelledby={undefined}
     aria-pressed={undefined}

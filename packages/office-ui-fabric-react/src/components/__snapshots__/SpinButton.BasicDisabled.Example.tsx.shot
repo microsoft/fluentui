@@ -165,6 +165,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={true}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={false}
@@ -189,7 +190,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                 font-weight: 400;
                 height: 50%;
                 opacity: 0.5;
-                outline: none;
+                outline: transparent;
                 padding-bottom: 0;
                 padding-left: 0;
                 padding-right: 0;
@@ -231,6 +232,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                 outline: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
+                bordercolor: grayText;
                 color: GrayText;
                 opacity: 1;
               }
@@ -286,6 +288,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
         </button>
         <button
           aria-describedby={undefined}
+          aria-disabled={true}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={false}
@@ -310,7 +313,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                 font-weight: 400;
                 height: 50%;
                 opacity: 0.5;
-                outline: none;
+                outline: transparent;
                 padding-bottom: 0;
                 padding-left: 0;
                 padding-right: 0;
@@ -352,6 +355,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                 outline: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
+                bordercolor: grayText;
                 color: GrayText;
                 opacity: 1;
               }

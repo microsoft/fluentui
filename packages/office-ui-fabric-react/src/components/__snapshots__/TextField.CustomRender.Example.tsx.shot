@@ -27,6 +27,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
         >
           <button
             aria-describedby={undefined}
+            aria-disabled={undefined}
             aria-label="Info"
             aria-labelledby={undefined}
             aria-pressed={undefined}

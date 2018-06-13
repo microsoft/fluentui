@@ -4,6 +4,7 @@ exports[`Component Examples renders ContextualMenu.Section.Example.tsx correctly
 <div>
   <button
     aria-describedby={undefined}
+    aria-disabled={undefined}
     aria-expanded={false}
     aria-haspopup={true}
     aria-label={undefined}
