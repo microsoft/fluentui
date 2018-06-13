@@ -21,6 +21,7 @@
     "@types/es6-promise": "0.0.32",
     "@types/mocha": "2.2.39",
     "@types/webpack-env": "1.13.0",
+    "@uifabric/demo": ">=6.0.0 <7.0.0",
     "mocha": "^3.3.0",
     "office-ui-fabric-react": ">=6.9.0 <7.0.0",
     "raw-loader": "^0.5.1",

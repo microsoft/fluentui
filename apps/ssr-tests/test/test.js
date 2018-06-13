@@ -26,7 +26,7 @@ initializeIcons('dist/');
 
 let React = require('react');
 let ReactDOMServer = require('react-dom/server');
-let AppDefinition = require('office-ui-fabric-react/lib/demo/AppDefinition').AppDefinition;
+let AppDefinition = require('@uifabric/demo/lib/AppDefinition').AppDefinition;
 
 describe('Fabric components', () => {
   for (let i = 0; i < AppDefinition.examplePages.length; i++) {
