@@ -1,27 +1,39 @@
 import * as React from 'react';
-import {
-  css,
-  BaseComponent,
-  createRef,
-  getNativeProps,
-  divProperties,
-  focusFirstChild,
-  elementContains
-} from '../../Utilities';
-import { mergeStyles } from '../../Styling';
-import { IOverflowSet, IOverflowSetProps, IOverflowSetItemProps } from './OverflowSet.types';
-import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { KeytipManager } from '../../utilities/keytips/KeytipManager';
+
+import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
 import { IKeytipProps } from '../../Keytip';
-import * as stylesImport from './OverflowSet.scss';
+import {
+  BaseComponent,
+  classNamesFunction,
+  createRef,
+  divProperties,
+  elementContains,
+  focusFirstChild,
+  getNativeProps,
+  IClassNames
+} from '../../Utilities';
+import { KeytipManager } from '../../utilities/keytips/KeytipManager';
+import {
+  IOverflowSet,
+  IOverflowSetItemProps,
+  IOverflowSetProps,
+  IOverflowSetStyles,
+  IOverflowSetStyleProps
+} from './OverflowSet.types';
 
-const styles: any = stylesImport;
+const getClassNames = classNamesFunction<IOverflowSetStyleProps, IOverflowSetStyles>();
 
-export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements IOverflowSet {
+export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implements IOverflowSet {
+  public static defaultProps: Pick<IOverflowSetProps, 'vertical' | 'role'> = {
+    vertical: false,
+    role: 'menubar'
+  };
+
   private _focusZone = createRef<IFocusZone>();
   private _persistedKeytips: { [uniqueID: string]: IKeytipProps } = {};
   private _keytipManager: KeytipManager = KeytipManager.getInstance();
   private _divContainer = createRef<HTMLDivElement>();
+  private _classNames: IClassNames<IOverflowSetStyles>;
 
   constructor(props: IOverflowSetProps) {
     super(props);
@@ -39,10 +51,13 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
       overflowItems,
       className,
       focusZoneProps,
-      vertical = false,
-      role = 'menubar',
+      styles,
+      vertical,
+      role,
       doNotContainWithinFocusZone
     } = this.props;
+
+    this._classNames = getClassNames(styles, { className, vertical });
 
     let Tag;
     let uniqueComponentProps;
@@ -64,11 +79,7 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
     }
 
     return (
-      <Tag
-        {...uniqueComponentProps}
-        className={mergeStyles('ms-OverflowSet', styles.root, vertical && styles.rootVertical, className)}
-        role={role}
-      >
+      <Tag {...uniqueComponentProps} className={this._classNames.root} role={role}>
         {items && this._onRenderItems(items)}
         {overflowItems && overflowItems.length > 0 && this._onRenderOverflowButtonWrapper(overflowItems)}
       </Tag>
@@ -156,7 +167,9 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
 
   private _onRenderItems = (items: IOverflowSetItemProps[]): JSX.Element[] => {
     return items.map((item, i) => {
-      const wrapperDivProps: React.HTMLProps<HTMLDivElement> = { className: css('ms-OverflowSet-item', styles.item) };
+      const wrapperDivProps: React.HTMLProps<HTMLDivElement> = {
+        className: this._classNames.item
+      };
       return (
         <div key={item.key} {...wrapperDivProps}>
           {this.props.onRenderItem(item)}
@@ -167,8 +180,9 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
 
   private _onRenderOverflowButtonWrapper = (items: any[]): JSX.Element => {
     const wrapperDivProps: React.HTMLProps<HTMLDivElement> = {
-      className: css('ms-OverflowSet-overflowButton', styles.item)
+      className: this._classNames.overflowButton
     };
+
     const overflowKeytipSequences = this.props.keytipSequences;
     let newOverflowItems: any[] = [];
 
