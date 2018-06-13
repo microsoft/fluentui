@@ -7,7 +7,9 @@ import { FluentStyles } from './FluentStyles';
 import { FluentStylesLinkExample } from './examples/FluentStyles.Link.Example';
 import { FluentStylesButtonExample } from './examples/FluentStyles.Button.Example';
 import { FluentStylesDialogExample } from './examples/FluentStyles.Dialog.Example';
+import { FluentStylesBreadcrumbExample } from './examples/FluentStyles.Breadcrumb.Example';
 
+const FluentBreadcrumbExampleCode = require('!raw-loader!./examples/FluentStyles.Breadcrumb.Example.tsx') as string;
 const FluentButtonExampleCode = require('!raw-loader!./examples/FluentStyles.Button.Example.tsx') as string;
 const FluentLinkExampleCode = require('!raw-loader!./examples/FluentStyles.Link.Example.tsx') as string;
 const FluentDialogExampleCode = require('!raw-loader!./examples/FluentStyles.Dialog.Example.tsx') as string;
@@ -41,6 +43,9 @@ export class FluentStylesPage extends React.Component<IComponentDemoPageProps, I
             <div>
               <ExampleCard title="Link - Failing" code={FluentLinkExampleCode}>
                 <FluentStylesLinkExample />
+              </ExampleCard>
+              <ExampleCard title="Breadcrumb" code={FluentBreadcrumbExampleCode}>
+                <FluentStylesBreadcrumbExample />
               </ExampleCard>
               <ExampleCard title="Button" code={FluentButtonExampleCode}>
                 <FluentStylesButtonExample />
