@@ -49,8 +49,8 @@ const DocumentTileWithThumbnail: React.StatelessComponent<IDocumentTileWithThumb
         height: 171
       }}
       itemName={
-        <SignalField before={<TrendingSignal />} isLink={invokeSelection}>
-          {props.item.name}
+        <SignalField before={<TrendingSignal />}>
+          {invokeSelection ? <a>{props.item.name}</a> : <span>{props.item.name}</span>}
         </SignalField>
       }
       itemActivity={<SignalField before={<CommentsSignal>{'12'}</CommentsSignal>}>{props.item.activity}</SignalField>}

@@ -8,7 +8,6 @@ export interface ISignalFieldProps extends React.HTMLAttributes<HTMLSpanElement>
   signalsFieldMode?: SignalFieldMode;
   before?: React.ReactNode | React.ReactNode[];
   after?: React.ReactNode | React.ReactNode[];
-  isLink?: boolean;
 }
 
 /**
@@ -17,7 +16,7 @@ export interface ISignalFieldProps extends React.HTMLAttributes<HTMLSpanElement>
  * Pass the main value as the children.
  */
 export const SignalField: React.StatelessComponent<ISignalFieldProps> = (props: ISignalFieldProps): JSX.Element => {
-  const { before, after, className, signalsFieldMode = 'compact', isLink, ...spanProps } = props;
+  const { before, after, className, signalsFieldMode = 'compact', ...spanProps } = props;
   return (
     <span
       {...spanProps}
@@ -31,11 +30,7 @@ export const SignalField: React.StatelessComponent<ISignalFieldProps> = (props: 
       )}
     >
       {props.before}
-      {isLink ? (
-        <a className={SignalFieldStyles.signalFieldValue}>{props.children}</a>
-      ) : (
-        <span className={SignalFieldStyles.signalFieldValue}>{props.children}</span>
-      )}
+      <span className={SignalFieldStyles.signalFieldValue}>{props.children}</span>
       {props.after}
     </span>
   );
