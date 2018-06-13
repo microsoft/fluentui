@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.2.0",
+      "tag": "@uifabric/merge-styles_v6.2.0",
+      "date": "Thu, 07 Jun 2018 16:35:34 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "58b0ef8cd0468cbd5cfab04267f2f4143444f919",
+            "comment": "Minor changes to improve server side rendering."
+          }
+        ]
+      }
+    },
+    {
       "version": "6.0.2",
       "tag": "@uifabric/merge-styles_v6.0.2",
       "date": "Tue, 05 Jun 2018 00:44:30 GMT",

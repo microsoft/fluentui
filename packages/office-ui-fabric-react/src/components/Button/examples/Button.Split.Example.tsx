@@ -109,9 +109,15 @@ export class ButtonSplitExample extends React.Component<IButtonProps> {
             primary
             data-automation-id="test"
             disabled={true}
+            allowDisabledFocus={true}
             checked={checked}
             text="Create account"
             onClick={alertClicked}
+            onKeyPress={alertClicked}
+            onKeyDown={alertClicked}
+            onKeyUp={alertClicked}
+            onMouseDown={alertClicked}
+            onMouseUp={alertClicked}
             split={true}
             aria-roledescription={'split button'}
             style={{ height: '35px' }}

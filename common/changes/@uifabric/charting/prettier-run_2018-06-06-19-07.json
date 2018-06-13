@@ -3,7 +3,7 @@
     {
       "packageName": "@uifabric/charting",
       "comment": "Code format changes",
-      "type": "patch"
+      "type": "none"
     }
   ],
   "packageName": "@uifabric/charting",
