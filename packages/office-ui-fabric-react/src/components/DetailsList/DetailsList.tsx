@@ -334,7 +334,9 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
           aria-label={ariaLabelForGrid}
           aria-rowcount={rowCount}
           aria-colcount={
-            (selectAllVisibility !== SelectAllVisibility.none ? 1 : 0) + (adjustedColumns ? adjustedColumns.length : 0)
+            (selectAllVisibility !== SelectAllVisibility.none && selectAllVisibility !== SelectAllVisibility.hidden
+              ? 1
+              : 0) + (adjustedColumns ? adjustedColumns.length : 0)
           }
           aria-readonly="true"
         >
