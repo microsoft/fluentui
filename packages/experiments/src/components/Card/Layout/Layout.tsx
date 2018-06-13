@@ -6,8 +6,8 @@ import { BodyText } from '../BodyText/BodyText';
 import { CardHeader } from '../CardHeader/CardHeader';
 import { ThumbnailList } from '../ThumbnailList/ThumbnailList';
 import { CardSize, CardContentType, Priority } from '../Card.types';
-import { CompoundButtonStack } from '@uifabric/experiments/lib/components/Card/CompoundButtonStack/CompoundButtonStack';
-import ActionBar from '@uifabric/experiments/lib/components/Card/ActionBar/ActionBar';
+import { CompoundButtonStack } from '../CompoundButtonStack/CompoundButtonStack';
+import { ActionBar } from '../ActionBar/ActionBar';
 
 export class Layout extends React.Component<ILayoutProps> {
   constructor(props: ILayoutProps) {
