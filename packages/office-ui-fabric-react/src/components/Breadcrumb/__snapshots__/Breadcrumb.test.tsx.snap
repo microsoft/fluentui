@@ -420,6 +420,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
           >
             <button
               aria-describedby={undefined}
+              aria-disabled={undefined}
               aria-expanded={false}
               aria-haspopup={true}
               aria-label={undefined}
@@ -1139,6 +1140,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
           >
             <button
               aria-describedby={undefined}
+              aria-disabled={undefined}
               aria-expanded={false}
               aria-haspopup={true}
               aria-label={undefined}
@@ -1506,6 +1508,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
           >
             <button
               aria-describedby={undefined}
+              aria-disabled={undefined}
               aria-expanded={false}
               aria-haspopup={true}
               aria-label={undefined}
@@ -1713,6 +1716,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
           >
             <button
               aria-describedby={undefined}
+              aria-disabled={undefined}
               aria-expanded={false}
               aria-haspopup={true}
               aria-label={undefined}

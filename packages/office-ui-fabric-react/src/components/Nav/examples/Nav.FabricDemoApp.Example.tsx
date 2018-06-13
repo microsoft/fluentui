@@ -1,7 +1,71 @@
 import * as React from 'react';
-import { ExampleStatus } from '@uifabric/example-app-base';
-import { AppDefinition } from '../../../demo/AppDefinition';
 import { Nav } from 'office-ui-fabric-react/lib/Nav';
+
+const AppDefinition = {
+  appTitle: 'Fabric - React',
+  examplePages: [
+    {
+      links: [
+        {
+          key: 'ActivityItem',
+          name: 'ActivityItem',
+          url: '#/examples/activityitem'
+        },
+        {
+          key: 'Breadcrumb',
+          name: 'Breadcrumb',
+          url: '#/examples/breadcrumb'
+        },
+        {
+          key: 'Button',
+          name: 'Button',
+          url: '#/examples/button'
+        }
+      ],
+      name: 'Basic components'
+    },
+    {
+      links: [
+        {
+          key: 'ColorPicker',
+          name: 'ColorPicker',
+          url: '#/examples/colorpicker'
+        },
+        {
+          key: 'ExtendedPeoplePicker',
+          name: 'ExtendedPeoplePicker',
+          url: '#examples/extendedpeoplepicker'
+        },
+        {
+          key: 'GroupedList',
+          name: 'GroupedList',
+          url: '#examples/groupedlist'
+        }
+      ],
+      name: 'Extended components'
+    },
+    {
+      links: [
+        {
+          key: 'FocusTrapZone',
+          name: 'FocusTrapZone',
+          url: '#examples/focustrapzone'
+        },
+        {
+          key: 'FocusZone',
+          name: 'FocusZone',
+          url: '#examples/focuszone'
+        },
+        {
+          key: 'MarqueeSelection',
+          name: 'MarqueeSelection',
+          url: '#examples/marqueeselection'
+        }
+      ],
+      name: 'Utilities'
+    }
+  ]
+};
 
 export class NavFabricDemoAppExample extends React.Component<any, any> {
   public render(): JSX.Element {
@@ -14,11 +78,6 @@ export class NavFabricDemoAppExample extends React.Component<any, any> {
         <span key={1} className="Nav-linkText">
           {link.name}
         </span>
-        {link.status !== undefined ? (
-          <span key={2} className={'Nav-linkFlair ' + 'is-state' + link.status}>
-            {ExampleStatus[link.status]}
-          </span>
-        ) : null}
       </span>
     );
   };

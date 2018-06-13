@@ -16,7 +16,7 @@ const WhiteShadeTable = [0.537, 0.349, 0.216, 0.184, 0.145, 0.082, 0.043, 0.027]
 const BlackTintTable = [0.537, 0.45, 0.349, 0.216, 0.184, 0.145, 0.082, 0.043]; // black fg
 const LumTintTable = [0.88, 0.77, 0.66, 0.55, 0.44, 0.33, 0.22, 0.11]; // light (strongen all)
 const LumShadeTable = [0.11, 0.22, 0.33, 0.44, 0.55, 0.66, 0.77, 0.88]; // dark (soften all)
-const ColorTintTable = [0.96, 0.89, 0.7, 0.4, 0.12]; // default soften
+const ColorTintTable = [0.96, 0.84, 0.7, 0.4, 0.12]; // default soften
 const ColorShadeTable = [0.1, 0.24, 0.44]; // default strongen
 
 // If the given shade's luminance is below/above these values, we'll swap to using the White/Black tables above

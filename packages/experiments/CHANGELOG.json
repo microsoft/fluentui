@@ -2,6 +2,28 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.4.0",
+      "tag": "@uifabric/experiments_v6.4.0",
+      "date": "Fri, 08 Jun 2018 18:34:17 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "790c1daf98eed9a8883e3d19a86bdd6a0317d874",
+            "comment": "add style arg to customizable"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.6.1 <7.0.0` to `>=6.8.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.1.0 <7.0.0` to `>=6.2.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.3.0",
       "tag": "@uifabric/experiments_v6.3.0",
       "date": "Thu, 07 Jun 2018 16:35:34 GMT",
