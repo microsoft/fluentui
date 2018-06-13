@@ -1,68 +1,61 @@
 import * as React from 'react';
-// import * as ReactDOM from 'react-dom';
-// import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
+import { mount } from 'enzyme';
 
 import { MessageBar } from './MessageBar';
 
 describe('MessageBar', () => {
-  // const noop = () => {
-  //   /* no-op */
-  // };
-
-  // function renderIntoDocument(element: React.ReactElement<any>): HTMLElement {
-  //   const component = ReactTestUtils.renderIntoDocument(element);
-  //   const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-  //   return renderedDOM as HTMLElement;
-  // }
+  const noop = () => {
+    /* no-op */
+  };
 
   it('renders MessageBar correctly', () => {
-    const component = renderer.create(<MessageBar>Message</MessageBar>);
+    const component = renderer.create(<MessageBar useNewStyles={true}>Message</MessageBar>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
-  // describe('dismiss', () => {
-  //   describe('single-line', () => {
-  //     it('is present when onDismiss exists', () => {
-  //       const renderedDOM: HTMLElement = renderIntoDocument(<MessageBar onDismiss={noop} isMultiline={false} />);
-  //       const dismissElement = renderedDOM.querySelector('.ms-MessageBar-dismissal');
-  //       expect(dismissElement).not.toBeNull();
-  //     });
+  describe('dismiss', () => {
+    describe('single-line', () => {
+      it('is present when onDismiss exists', () => {
+        const wrapper = mount(<MessageBar onDismiss={noop} isMultiline={false} useNewStyles={true} />);
+        const dismissElement = wrapper.find('.ms-MessageBar-dismissal');
+        expect(dismissElement.exists()).toBe(true);
+      });
 
-  //     it('is not present when onDismiss is missing', () => {
-  //       const renderedDOM: HTMLElement = renderIntoDocument(<MessageBar isMultiline={false} />);
-  //       const dismissElement = renderedDOM.querySelector('.ms-MessageBar-dismissal');
-  //       expect(dismissElement).toBeNull();
-  //     });
-  //   });
+      it('is not present when onDismiss is missing', () => {
+        const wrapper = mount(<MessageBar isMultiline={false} useNewStyles={true} />);
+        const dismissElement = wrapper.find('.ms-MessageBar-dismissal');
+        expect(dismissElement.exists()).toBe(false);
+      });
+    });
 
-  //   describe('multi-line', () => {
-  //     it('is present when onDismiss exists', () => {
-  //       const renderedDOM: HTMLElement = renderIntoDocument(<MessageBar onDismiss={noop} isMultiline={true} />);
-  //       const dismissElement = renderedDOM.querySelector('.ms-MessageBar-dismissal');
-  //       expect(dismissElement).not.toBeNull();
-  //     });
+    describe('multi-line', () => {
+      it('is present when onDismiss exists', () => {
+        const wrapper = mount(<MessageBar onDismiss={noop} isMultiline={true} useNewStyles={true} />);
+        const dismissElement = wrapper.find('.ms-MessageBar-dismissal');
+        expect(dismissElement.exists()).toBe(true);
+      });
 
-  //     it('is not present when onDismiss is missing', () => {
-  //       const renderedDOM: HTMLElement = renderIntoDocument(<MessageBar isMultiline={true} />);
-  //       const dismissElement = renderedDOM.querySelector('.ms-MessageBar-dismissal');
-  //       expect(dismissElement).toBeNull();
-  //     });
-  //   });
-  // });
+      it('is not present when onDismiss is missing', () => {
+        const wrapper = mount(<MessageBar isMultiline={true} useNewStyles={true} />);
+        const dismissElement = wrapper.find('.ms-MessageBar-dismissal');
+        expect(dismissElement.exists()).toBe(false);
+      });
+    });
+  });
 
-  // describe('truncated', () => {
-  //   it('is present when onDismiss exists', () => {
-  //     const renderedDOM: HTMLElement = renderIntoDocument(<MessageBar truncated={true} isMultiline={false} />);
-  //     const expandElement = renderedDOM.querySelector('.ms-MessageBar-expand');
-  //     expect(expandElement).not.toBeNull();
-  //   });
+  describe('truncated', () => {
+    it('is present when onDismiss exists', () => {
+      const wrapper = mount(<MessageBar truncated={true} isMultiline={false} useNewStyles={true} />);
+      const expandElement = wrapper.find('.ms-MessageBar-expand');
+      expect(expandElement.exists()).toBe(true);
+    });
 
-  //   it('is not present when truncated is missing', () => {
-  //     const renderedDOM: HTMLElement = renderIntoDocument(<MessageBar isMultiline={false} />);
-  //     const expandElement = renderedDOM.querySelector('.ms-MessageBar-expand');
-  //     expect(expandElement).toBeNull();
-  //   });
-  // });
+    it('is not present when truncated is missing', () => {
+      const wrapper = mount(<MessageBar isMultiline={false} useNewStyles={true} />);
+      const expandElement = wrapper.find('.ms-MessageBar-expand');
+      expect(expandElement.exists()).toBe(false);
+    });
+  });
 });

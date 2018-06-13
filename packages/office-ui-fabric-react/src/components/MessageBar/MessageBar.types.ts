@@ -82,19 +82,97 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
 }
 
 export interface IMessageBarStyleProps {
+  /**
+   * Theme (provided through customization).
+   */
   theme: ITheme;
+
+  /**
+   * Additional CSS class(es).
+   */
   className?: string;
+
+  /**
+   * Type of the MessageBar.
+   */
   messageBarType?: MessageBarType;
+
+  /**
+   * Whether the MessageBar contains a dismiss button.
+   */
+  onDismiss?: boolean;
+
+  /**
+   * Whether the text is truncated.
+   */
+  truncated?: boolean;
+
+  /**
+   * Whether the MessageBar is rendered in multi line (as opposed to single line) mode.
+   */
+  isMultiline?: boolean;
+
+  /**
+   * Whether the single line MessageBar is being expanded.
+   */
+  expandSingleLine?: boolean;
+
+  /**
+   * Whether the MessageBar contains any action elements.
+   */
+  actions?: boolean;
 }
 
 export interface IMessageBarStyles {
+  /**
+   * Style set for the root element.
+   */
   root?: IStyle;
+
+  /**
+   * Style set for the element containing the icon, text, and optional dismiss button.
+   */
   content?: IStyle;
+
+  /**
+   * Style set for the icon.
+   */
   icon?: IStyle;
+
+  /**
+   * Style set for the element containing the text.
+   */
   text?: IStyle;
+
+  /**
+   * Style set for the text.
+   */
   innerText?: IStyle;
+
+  /**
+   * Style set for the optional dismiss button.
+   */
   dismissal?: IStyle;
+
+  /**
+   * Style set for the icon used to expand and collapse the MessageBar.
+   */
+  expand?: IStyle;
+
+  /**
+   * Style set for the element containing the dismiss button.
+   */
   dismissSingleLine?: IStyle;
+
+  /**
+   * Style set for the element containing the expand icon.
+   */
+  expandSingleLine?: IStyle;
+
+  /**
+   * Style set for the optional element containing the action elements.
+   */
+  actions?: IStyle;
 }
 
 export enum MessageBarType {

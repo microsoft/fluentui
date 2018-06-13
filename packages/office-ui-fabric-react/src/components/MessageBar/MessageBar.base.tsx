@@ -43,14 +43,7 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
       expandSingleLine: false
     };
 
-    // tslint:disable-next-line:no-shadowed-variable
-    const { theme, className, styles } = this.props;
-
-    this._classNames = getClassNames(styles!, {
-      theme: theme!,
-      messageBarType: this.props.messageBarType || MessageBarType.info,
-      className
-    });
+    this._classNames = this._getClassNames();
   }
 
   public render(): JSX.Element {
@@ -60,18 +53,13 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
   }
 
   private _getActionsDiv(): JSX.Element | null {
+    const myClass = this.props.useNewStyles
+      ? this._classNames.actions
+      : this.props.isMultiline
+        ? 'ms-MessageBar-actions ' + styles.actions
+        : 'ms-MessageBar-actionsSingleLine ' + styles.actionsSingleLine;
     if (this.props.actions) {
-      return (
-        <div
-          className={
-            this.props.isMultiline
-              ? 'ms-MessageBar-actions ' + styles.actions
-              : 'ms-MessageBar-actionsSingleLine ' + styles.actionsSingleLine
-          }
-        >
-          {this.props.actions}
-        </div>
-      );
+      return <div className={myClass}>{this.props.actions}</div>;
     }
     return null;
   }
@@ -118,12 +106,18 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
   }
 
   private _getExpandSingleLine(): JSX.Element | null {
+    const myClass = this.props.useNewStyles
+      ? this._classNames.expandSingleLine
+      : css('ms-MessageBar-expandSingleLine', styles.expandSingleLine);
+
+    const iconClass = this.props.useNewStyles ? this._classNames.expand : css('ms-MessageBar-expand', styles.expand);
+
     if (!this.props.actions && this.props.truncated) {
       return (
-        <div className={css('ms-MessageBar-expandSingleLine', styles.expandSingleLine)}>
+        <div className={myClass}>
           <IconButton
             disabled={false}
-            className={css('ms-MessageBar-expand', styles.expand)}
+            className={iconClass}
             onClick={this._onClick}
             iconProps={{ iconName: this.state.expandSingleLine ? 'DoubleChevronUp' : 'DoubleChevronDown' }}
             ariaLabel={this.props.overflowButtonAriaLabel}
@@ -144,18 +138,22 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
   }
 
   private _renderMultiLine(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
-    return (
-      <div
-        className={css(
+    const rootClass = this.props.useNewStyles
+      ? this._classNames.root
+      : css(
           this._getClassName(),
           'ms-MessageBar-multiline',
           styles.multiLine,
           this.props.onDismiss && styles.dismissalMultiLine
-        )}
-        role="status"
-        aria-live={this._getAnnouncementPriority()}
-      >
-        <div className={css(styles.content, 'ms-MessageBar-content')}>
+        );
+
+    const contentClass = this.props.useNewStyles
+      ? this._classNames.content
+      : css(styles.content, 'ms-MessageBar-content');
+
+    return (
+      <div className={rootClass} role="status" aria-live={this._getAnnouncementPriority()}>
+        <div className={contentClass}>
           {this._getIconSpan()}
           {this._renderInnerText()}
           {this._getDismissDiv()}
@@ -195,8 +193,11 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
   }
 
   private _renderInnerText(): JSX.Element {
+    this._classNames = this._getClassNames();
+
+    const newClass = this._classNames.text;
     const textClass = this.props.useNewStyles
-      ? this._classNames.text
+      ? newClass
       : css(
           'ms-MessageBar-text',
           styles.text,
@@ -218,6 +219,22 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
         </span>
       </div>
     );
+  }
+
+  private _getClassNames(): { [key in keyof IMessageBarStyles]: string } {
+    const { theme, className, messageBarType, onDismiss, actions, truncated, isMultiline } = this.props;
+    const { expandSingleLine } = this.state;
+
+    return getClassNames(this.props.styles!, {
+      theme: theme!,
+      messageBarType: messageBarType || MessageBarType.info,
+      onDismiss: onDismiss !== undefined,
+      actions: actions !== undefined,
+      truncated: truncated,
+      isMultiline: isMultiline,
+      expandSingleLine: expandSingleLine,
+      className
+    });
   }
 
   private _getAnnouncementPriority(): 'assertive' | 'polite' {

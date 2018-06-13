@@ -1,5 +1,5 @@
 import * as React from 'react';
-// import { MessageBarButton } from 'office-ui-fabric-react/lib/Button';
+import { MessageBarButton } from 'office-ui-fabric-react/lib/Button';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
@@ -15,70 +15,9 @@ export const MessageBarBasicExample = () => (
       <Link href="www.bing.com">Visit our website.</Link>
     </MessageBar>
 
-    {/* temporary for testing */}
-    <Label>Single line MessageBar - new styles</Label>
+    <Label>Info/Default MessageBar - new styles</Label>
     <MessageBar isMultiline={false} useNewStyles={true}>
       Info lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit.{' '}
-      <Link href="www.bing.com">Visit our website.</Link>
-    </MessageBar>
-
-    <Label>Error MessageBar - single line</Label>
-    <MessageBar messageBarType={MessageBarType.error} isMultiline={false}>
-      Error lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit.{' '}
-      <Link href="www.bing.com">Visit our website.</Link>
-    </MessageBar>
-
-    <Label>Error MessageBar - single line - new styles</Label>
-    <MessageBar messageBarType={MessageBarType.error} isMultiline={false} useNewStyles={true}>
-      Error lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit.{' '}
-      <Link href="www.bing.com">Visit our website.</Link>
-    </MessageBar>
-
-    <Label>Blocked MessageBar - single line</Label>
-    <MessageBar messageBarType={MessageBarType.blocked} isMultiline={false}>
-      Error lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit.{' '}
-      <Link href="www.bing.com">Visit our website.</Link>
-    </MessageBar>
-
-    <Label>Blocked MessageBar - single line - new styles</Label>
-    <MessageBar messageBarType={MessageBarType.blocked} isMultiline={false} useNewStyles={true}>
-      Error lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit.{' '}
-      <Link href="www.bing.com">Visit our website.</Link>
-    </MessageBar>
-
-    <Label>SevereWarning MessageBar - single line</Label>
-    <MessageBar messageBarType={MessageBarType.severeWarning} isMultiline={false}>
-      Error lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit.{' '}
-      <Link href="www.bing.com">Visit our website.</Link>
-    </MessageBar>
-
-    <Label>SevereWarning MessageBar - single line - new styles</Label>
-    <MessageBar messageBarType={MessageBarType.severeWarning} isMultiline={false} useNewStyles={true}>
-      Error lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit.{' '}
-      <Link href="www.bing.com">Visit our website.</Link>
-    </MessageBar>
-
-    <Label>Success MessageBar - single line</Label>
-    <MessageBar messageBarType={MessageBarType.success} isMultiline={false}>
-      Error lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit.{' '}
-      <Link href="www.bing.com">Visit our website.</Link>
-    </MessageBar>
-
-    <Label>Success MessageBar - single line - new styles</Label>
-    <MessageBar messageBarType={MessageBarType.success} isMultiline={false} useNewStyles={true}>
-      Error lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit.{' '}
-      <Link href="www.bing.com">Visit our website.</Link>
-    </MessageBar>
-
-    <Label>Warning MessageBar - single line</Label>
-    <MessageBar messageBarType={MessageBarType.warning} isMultiline={false}>
-      Error lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit.{' '}
-      <Link href="www.bing.com">Visit our website.</Link>
-    </MessageBar>
-
-    <Label>Warning MessageBar - single line - new styles</Label>
-    <MessageBar messageBarType={MessageBarType.warning} isMultiline={false} useNewStyles={true}>
-      Error lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit.{' '}
       <Link href="www.bing.com">Visit our website.</Link>
     </MessageBar>
 
@@ -105,7 +44,10 @@ export const MessageBarBasicExample = () => (
       <Link href="www.bing.com">Visit our website.</Link>
     </MessageBar>
 
-    {/* <Label>Blocked MessageBar - single line, with dismiss button and truncated text. Truncation is not available if you use action buttons or multiline and should be used sparingly.</Label>
+    <Label>
+      Blocked MessageBar - single line, with dismiss button and truncated text. Truncation is not available if you use
+      action buttons or multiline and should be used sparingly.
+    </Label>
     <MessageBar
       messageBarType={MessageBarType.blocked}
       isMultiline={false}
@@ -113,6 +55,28 @@ export const MessageBarBasicExample = () => (
       dismissButtonAriaLabel="Close"
       truncated={true}
       overflowButtonAriaLabel="Overflow"
+    >
+      Blocked lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus, purus a lobortis tristique, odio
+      augue pharetra metus, ac placerat nunc mi nec dui. Vestibulum aliquam et nunc semper scelerisque. Curabitur vitae
+      orci nec quam condimentum porttitor et sed lacus. Vivamus ac efficitur leo. Cras faucibus mauris libero, ac
+      placerat erat euismod et. Donec pulvinar commodo odio sit amet faucibus. In hac habitasse platea dictumst. Duis eu
+      ante commodo, condimentum nibh pellentesque, laoreet enim. Fusce massa lorem, ultrices eu mi a, fermentum suscipit
+      magna. Integer porta purus pulvinar, hendrerit felis eget, condimentum mauris.{' '}
+      <Link href="www.bing.com">Visit our website.</Link>
+    </MessageBar>
+
+    <Label>
+      Blocked MessageBar - single line, with dismiss button and truncated text. Truncation is not available if you use
+      action buttons or multiline and should be used sparingly. - New styles
+    </Label>
+    <MessageBar
+      messageBarType={MessageBarType.blocked}
+      isMultiline={false}
+      onDismiss={log('test')}
+      dismissButtonAriaLabel="Close"
+      truncated={true}
+      overflowButtonAriaLabel="Overflow"
+      useNewStyles={true}
     >
       Blocked lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus, purus a lobortis tristique, odio
       augue pharetra metus, ac placerat nunc mi nec dui. Vestibulum aliquam et nunc semper scelerisque. Curabitur vitae
@@ -137,6 +101,21 @@ export const MessageBarBasicExample = () => (
       <Link href="www.bing.com">Visit our website.</Link>
     </MessageBar>
 
+    <Label>SevereWarning MessageBar - defaults to multiline, with action buttons - new styles</Label>
+    <MessageBar
+      messageBarType={MessageBarType.severeWarning}
+      actions={
+        <div>
+          <MessageBarButton>Yes</MessageBarButton>
+          <MessageBarButton>No</MessageBarButton>
+        </div>
+      }
+      useNewStyles={true}
+    >
+      <span>Severe warning lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit.</span>
+      <Link href="www.bing.com">Visit our website.</Link>
+    </MessageBar>
+
     <Label>Success MessageBar - single line, with action buttons</Label>
     <MessageBar
       actions={
@@ -147,6 +126,21 @@ export const MessageBarBasicExample = () => (
       }
       messageBarType={MessageBarType.success}
       isMultiline={false}
+    >
+      Success lorem ipsum dolor sit amet. <Link href="www.bing.com">Visit our website.</Link>
+    </MessageBar>
+
+    <Label>Success MessageBar - single line, with action buttons - new styles</Label>
+    <MessageBar
+      actions={
+        <div>
+          <MessageBarButton>Yes</MessageBarButton>
+          <MessageBarButton>No</MessageBarButton>
+        </div>
+      }
+      messageBarType={MessageBarType.success}
+      isMultiline={false}
+      useNewStyles={true}
     >
       Success lorem ipsum dolor sit amet. <Link href="www.bing.com">Visit our website.</Link>
     </MessageBar>
@@ -167,6 +161,23 @@ export const MessageBarBasicExample = () => (
       <Link href="www.bing.com">Visit our website.</Link>
     </MessageBar>
 
+    <Label>Warning MessageBar - single line, with dismiss and action buttons - new styles</Label>
+    <MessageBar
+      messageBarType={MessageBarType.warning}
+      isMultiline={false}
+      onDismiss={log('test')}
+      dismissButtonAriaLabel="Close"
+      actions={
+        <div>
+          <MessageBarButton>Action</MessageBarButton>
+        </div>
+      }
+      useNewStyles={true}
+    >
+      Warning lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit.{' '}
+      <Link href="www.bing.com">Visit our website.</Link>
+    </MessageBar>
+
     <Label>Warning MessageBar - defaults to multiline, with dismiss and action buttons</Label>
     <MessageBar
       onDismiss={log('test')}
@@ -180,7 +191,38 @@ export const MessageBarBasicExample = () => (
         </div>
       }
     >
-      Warning lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus, purus a lobortis tristique, odio augue pharetra metus, ac placerat nunc mi nec dui. Vestibulum aliquam et nunc semper scelerisque. Curabitur vitae orci nec quam condimentum porttitor et sed lacus. Vivamus ac efficitur leo. Cras faucibus mauris libero, ac placerat erat euismod et. Donec pulvinar commodo odio sit amet faucibus. In hac habitasse platea dictumst. Duis eu ante commodo, condimentum nibh pellentesque, laoreet enim. Fusce massa lorem, ultrices eu mi a, fermentum suscipit magna. Integer porta purus pulvinar, hendrerit felis eget, condimentum mauris.<Link href='www.bing.com'>Visit our website.</Link>
-    </MessageBar> */}
+      Warning lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus, purus a lobortis tristique, odio
+      augue pharetra metus, ac placerat nunc mi nec dui. Vestibulum aliquam et nunc semper scelerisque. Curabitur vitae
+      orci nec quam condimentum porttitor et sed lacus. Vivamus ac efficitur leo. Cras faucibus mauris libero, ac
+      placerat erat euismod et. Donec pulvinar commodo odio sit amet faucibus. In hac habitasse platea dictumst. Duis eu
+      ante commodo, condimentum nibh pellentesque, laoreet enim. Fusce massa lorem, ultrices eu mi a, fermentum suscipit
+      magna. Integer porta purus pulvinar, hendrerit felis eget, condimentum mauris.<Link href="www.bing.com">
+        Visit our website.
+      </Link>
+    </MessageBar>
+
+    <Label>Warning MessageBar - defaults to multiline, with dismiss and action buttons - new styles</Label>
+    <MessageBar
+      onDismiss={log('test')}
+      dismissButtonAriaLabel="Close"
+      messageBarType={MessageBarType.warning}
+      ariaLabel="Aria help text here"
+      actions={
+        <div>
+          <MessageBarButton>Yes</MessageBarButton>
+          <MessageBarButton>No</MessageBarButton>
+        </div>
+      }
+      useNewStyles={true}
+    >
+      Warning lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus, purus a lobortis tristique, odio
+      augue pharetra metus, ac placerat nunc mi nec dui. Vestibulum aliquam et nunc semper scelerisque. Curabitur vitae
+      orci nec quam condimentum porttitor et sed lacus. Vivamus ac efficitur leo. Cras faucibus mauris libero, ac
+      placerat erat euismod et. Donec pulvinar commodo odio sit amet faucibus. In hac habitasse platea dictumst. Duis eu
+      ante commodo, condimentum nibh pellentesque, laoreet enim. Fusce massa lorem, ultrices eu mi a, fermentum suscipit
+      magna. Integer porta purus pulvinar, hendrerit felis eget, condimentum mauris.<Link href="www.bing.com">
+        Visit our website.
+      </Link>
+    </MessageBar>
   </div>
 );
