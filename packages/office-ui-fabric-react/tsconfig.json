@@ -18,7 +18,8 @@
     "lib": ["es2017", "dom"],
     "types": ["jest", "webpack-env"],
     "paths": {
-      "office-ui-fabric-react/lib/*": ["./src/*"]
+      "office-ui-fabric-react/lib/*": ["./src/*"],
+      "office-ui-fabric-react": ["./src/index.ts"]
     }
   },
   "include": ["src"]
