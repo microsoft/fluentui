@@ -222,17 +222,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     const showCheckbox = selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden;
     const ariaSelected = selectionMode === SelectionMode.none ? undefined : isSelected;
 
-    const rowFields = (
-      <RowFields
-        columns={columns}
-        item={item}
-        itemIndex={itemIndex}
-        columnStartIndex={showCheckbox ? 1 : 0}
-        onRenderItemColumn={onRenderItemColumn}
-      />
-    );
-
-    const customElementsGroup: React.ReactNode = onRenderCustomPlaceholder
+    const placeholderElements: React.ReactNode = onRenderCustomPlaceholder
       ? onRenderCustomPlaceholder()
       : this._renderDefaultShimmerPlaceholder(compact);
 
@@ -240,7 +230,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     if (shimmer) {
       return (
         <div className={css(showCheckbox && styles.checkboxOffset, !compact && styles.shimmerContainerBottomBorder)}>
-          <Shimmer customElementsGroup={customElementsGroup} />
+          <Shimmer customElementsGroup={placeholderElements} />
         </div>
       );
     }
@@ -307,7 +297,15 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
           count={groupNestingDepth! - (this.props.collapseAllVisibility === CollapseAllVisibility.hidden ? 1 : 0)}
         />
 
-        {item && rowFields}
+        {item && (
+          <RowFields
+            columns={columns}
+            item={item}
+            itemIndex={itemIndex}
+            columnStartIndex={showCheckbox ? 1 : 0}
+            onRenderItemColumn={onRenderItemColumn}
+          />
+        )}
         {columnMeasureInfo && (
           <span
             role="presentation"
