@@ -7,7 +7,7 @@ import { IAction, IActionBarProps, IActionBarStyles, IActionOverflowData } from 
 import { getStyles } from './ActionBar.styles';
 import { getCustomActionBarButtonStyles } from './ActionBarButton.styles';
 
-export default class ActionBar extends React.Component<IActionBarProps, {}> {
+export class ActionBar extends React.Component<IActionBarProps, {}> {
   index: number = 0;
   render(): JSX.Element {
     const dataToRender = this.generateData();
