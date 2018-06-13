@@ -126,6 +126,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     const { isAllSelected, columnResizeDetails, isSizing, groupNestingDepth, isAllCollapsed } = this.state;
 
     const showCheckbox = selectAllVisibility !== SelectAllVisibility.none;
+    const isCheckboxHidden = selectAllVisibility === SelectAllVisibility.hidden;
 
     const { onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip } = this.props;
 
@@ -159,8 +160,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                 )}
                 aria-labelledby={`${this._id}-check`}
                 onClick={this._onSelectAllClicked}
-                aria-colindex={1}
-                role="columnheader"
+                aria-colindex={!isCheckboxHidden ? 1 : undefined}
+                role={!isCheckboxHidden ? 'columnheader' : undefined}
               >
                 {onRenderColumnHeaderTooltip(
                   {
@@ -173,11 +174,11 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                         id={`${this._id}-check`}
                         aria-label={ariaLabelForSelectionColumn}
                         aria-describedby={`${this._id}-checkTooltip`}
-                        data-is-focusable={true}
+                        data-is-focusable={!isCheckboxHidden}
                         isHeader={true}
                         selected={isAllSelected}
                         anySelected={false}
-                        canSelect={true}
+                        canSelect={!isCheckboxHidden}
                       />
                     )
                   },
@@ -215,7 +216,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
               role="columnheader"
               aria-sort={column.isSorted ? (column.isSortedDescending ? 'descending' : 'ascending') : 'none'}
               aria-disabled={column.columnActionsMode === ColumnActionsMode.disabled}
-              aria-colindex={(showCheckbox ? 2 : 1) + columnIndex}
+              aria-colindex={(showCheckbox && !isCheckboxHidden ? 2 : 1) + columnIndex}
               className={css(
                 'ms-DetailsHeader-cell',
                 styles.cell,
