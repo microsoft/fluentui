@@ -31,8 +31,9 @@ const DefaultFields = ['theme', 'styles'];
 
 /**
  * The styled HOC wrapper allows you to create a functional wrapper around a given component which will resolve
- * getStyles functional props, and mix customized props passed in using concatStyleSets. Example:
+ * getStyles functional props, and mix customized props passed in using concatStyleSets.
  *
+ * @example
  * ```tsx
  * export const Toggle = styled(
  *   ToggleBase,

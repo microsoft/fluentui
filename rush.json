@@ -75,7 +75,7 @@
       "packageName": "@uifabric/demo",
       "projectFolder": "apps/demo",
       "versionPolicyName": "lockedMajor",
-      "shouldPublish": false
+      "shouldPublish": true
     },
     {
       "packageName": "@uifabric/fabric-website",

@@ -1,4 +1,4 @@
-module.exports = function (options) {
+module.exports = function(options) {
   const exec = require('../exec');
   const path = require('path');
   const fs = require('fs');
