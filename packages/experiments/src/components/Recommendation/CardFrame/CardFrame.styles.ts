@@ -35,7 +35,8 @@ export const getStyles = (props: ICardFrameProps): ICardFrameStyles => {
     seperator: {
       margin: '0px',
       width: '100%',
-      color: seperatorColor ? seperatorColor : 'rgba(0,0,0,0.1)'
+      height: '1px',
+      backgroundColor: seperatorColor ? seperatorColor : 'rgba(0,0,0,0.1)'
     },
     ellipsisIcon: {
       paddingTop: 12

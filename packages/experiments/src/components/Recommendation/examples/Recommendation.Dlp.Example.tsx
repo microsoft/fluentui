@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Recommendation } from '@uifabric/experiments/lib/Recommendation';
-import { IStyle } from '@uifabric/experiments/lib/Styling';
-import { classNamesFunction } from '@uifabric/experiments/lib/Utilities';
+import { Recommendation } from '../Recommendation';
+import { IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import {
   dlpItemCommonStyles,
   baseFontFamily,

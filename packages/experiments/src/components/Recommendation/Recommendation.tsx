@@ -1,17 +1,28 @@
 import * as React from 'react';
+
+/* Dependent Components */
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { CardFrame } from './CardFrame';
+import { CardFrame, ICardDropDownOption } from './CardFrame';
+
+/* Types for props and styles */
 import { IRecommendationProps, IRecommendationStyles } from './Recommendation.types';
+
+/* Styles for CardComponent and Recommendation Card */
 import { CardComponentStyles, getStyles } from './Recommendation.styles';
-import { classNamesFunction } from '../../Utilities';
+
+/* Utilities */
+import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 export class Recommendation extends React.Component<IRecommendationProps, {}> {
+  /* Default Props */
   public static defaultProps = {
     recommendationButtonLocalizedName: 'View Recommendation',
     recommendationButtonAriaDescription: 'Click to View Recommendation',
     dismissRecommendationLocalizedName: 'Dismiss',
-    dismissRecommendationAriaLabel: 'Dismiss'
+    dismissRecommendationAriaLabel: 'Dismiss Recommendation'
   };
+
+  private recommendationMenuItems: ICardDropDownOption[];
 
   constructor(props: IRecommendationProps) {
     super(props);
@@ -24,21 +35,20 @@ export class Recommendation extends React.Component<IRecommendationProps, {}> {
       recommendationDescription,
       recommendationButtonLocalizedName,
       recommendationButtonAriaDescription,
+      handleViewRecommendationClick,
       dismissRecommendationLocalizedName,
       dismissRecommendationAriaLabel,
-      handleViewRecommendationClick,
       handleDismissRecommendationClick
     } = this.props;
 
     const getClassNames = classNamesFunction<{}, IRecommendationStyles>();
     const classNames = getClassNames(getStyles!);
-    const menuItems = [
+    this.recommendationMenuItems = [
       {
-        key: dismissRecommendationLocalizedName,
-        name: dismissRecommendationLocalizedName,
-        icon: 'PageRemove',
+        name: dismissRecommendationLocalizedName!,
         ariaLabel: dismissRecommendationAriaLabel,
-        title: dismissRecommendationAriaLabel,
+        icon: 'PageRemove',
+        title: dismissRecommendationLocalizedName,
         onClick: handleDismissRecommendationClick
       }
     ];
@@ -48,7 +58,7 @@ export class Recommendation extends React.Component<IRecommendationProps, {}> {
         cardTitle={recommendationBarTitle}
         seperatorColor={CardComponentStyles.separatorColor}
         titleTextColor={CardComponentStyles.frameHeaderColor}
-        cardDropDownOptions={menuItems}
+        cardDropDownOptions={this.recommendationMenuItems}
       >
         <div className={classNames.recommendationContainer}>
           <div className={classNames.recommendationTextContainer}>
@@ -58,8 +68,6 @@ export class Recommendation extends React.Component<IRecommendationProps, {}> {
               <PrimaryButton
                 data-automation-id="btnRecommendation"
                 name={recommendationButtonLocalizedName}
-                disabled={false}
-                checked={false}
                 onClick={handleViewRecommendationClick}
                 ariaDescription={recommendationButtonAriaDescription}
               >

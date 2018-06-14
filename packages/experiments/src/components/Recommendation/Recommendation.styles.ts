@@ -1,5 +1,5 @@
-import { ICardComponentCustomizationStyles, IRecommendationStyles } from '@uifabric/experiments/lib/Recommendation';
-import { IStyle, mergeStyles } from '@uifabric/experiments/lib/Styling';
+import { ICardComponentCustomizationStyles, IRecommendationStyles } from './Recommendation.types';
+import { IStyle, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 const cardFrameColor = 'rgba(0, 120, 215, 1)';
 const recommendationBaseColor = 'rgba(0,0,0,1)';

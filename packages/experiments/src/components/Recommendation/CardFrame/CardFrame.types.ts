@@ -1,5 +1,32 @@
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 
+export interface ICardDropDownOption {
+  /**
+   * Name of the drop down item
+   */
+  name: string;
+
+  /**
+   * Icon for the drop down item
+   */
+  icon?: string;
+
+  /**
+   * Aria Label for the drop down item. Default will be the name
+   */
+  ariaLabel?: string;
+
+  /**
+   * Tool tip for the drop down item. Default will be the name
+   */
+  title?: string;
+
+  /**
+   * Function for click
+   */
+  onClick: VoidFunction;
+}
+
 export interface ICardFrameProps {
   /**
    * Defines the Dashboard card title
@@ -9,8 +36,7 @@ export interface ICardFrameProps {
   /**
    * Contains the items that go into the dropdown of the frame
    */
-  /* tslint:disable:no-any */
-  cardDropDownOptions?: any[] | undefined;
+  cardDropDownOptions?: ICardDropDownOption[];
 
   /**
    * Color property for card title

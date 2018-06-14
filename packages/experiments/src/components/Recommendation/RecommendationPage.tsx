@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage } from '@uifabric/example-app-base';
+import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 import {
   RecommendationBasicExample,
   RecommendationDlpExample,
@@ -32,6 +32,13 @@ export class RecommendationPage extends React.Component<IComponentDemoPageProps,
               <RecommendationPasswordSettingsExample />
             </ExampleCard>
           </div>
+        }
+        propertiesTables={
+          <PropertiesTableSet
+            sources={[
+              require<string>('!raw-loader!@uifabric/experiments/src/components/Recommendation/Recommendation.types.ts')
+            ]}
+          />
         }
         /* tslint:disable:max-line-length */
         overview={

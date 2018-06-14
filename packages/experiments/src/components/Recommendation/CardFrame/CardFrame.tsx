@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ICardFrameProps, ICardFrameStyles } from './CardFrame.types';
+import { ICardFrameProps, ICardFrameStyles, ICardDropDownOption } from './CardFrame.types';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { getStyles } from './CardFrame.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
@@ -14,14 +14,27 @@ export class CardFrame extends React.Component<ICardFrameProps, {}> {
     const getClassNames = classNamesFunction<ICardFrameProps, ICardFrameStyles>();
     const { fontFamily, fontSize, cardTitle, seperatorColor, titleTextColor } = this.props;
     const classNames = getClassNames(getStyles, { cardTitle, fontFamily, fontSize, seperatorColor, titleTextColor });
-    /* tslint:disable:no-any */
-    const overflowItems: any[] | undefined = this.props.cardDropDownOptions;
+    const overflowItems: ICardDropDownOption[] | undefined = this.props.cardDropDownOptions;
+    const cardDropDownOptions: IOverflowSetItemProps[] = [];
+    if (overflowItems !== undefined) {
+      overflowItems.map((data: ICardDropDownOption, index: number) => {
+        const cardDropDownOption: IOverflowSetItemProps = {
+          key: index.toString(),
+          name: data.name,
+          icon: data.icon,
+          ariaLable: data.ariaLabel ? data.ariaLabel : data.name,
+          title: data.title ? data.title : data.name,
+          onClick: data.onClick
+        };
+        cardDropDownOptions.push(cardDropDownOption);
+      });
+    }
     return (
       <div className={classNames.root}>
         <div className={classNames.cardTitleBox}>
           <div className={classNames.cardTitleEllipsisButton}>
             <OverflowSet
-              overflowItems={overflowItems}
+              overflowItems={cardDropDownOptions}
               onRenderOverflowButton={this._onRenderOverflowButton}
               onRenderItem={this._onRenderItem}
             />
@@ -45,8 +58,7 @@ export class CardFrame extends React.Component<ICardFrameProps, {}> {
     );
   }
 
-  /* tslint:disable:no-any */
-  private _onRenderOverflowButton(overflowItems: any[] | undefined): JSX.Element {
+  private _onRenderOverflowButton(overflowItems: IOverflowSetItemProps[] | undefined): JSX.Element {
     return (
       <IconButton
         menuIconProps={{ iconName: 'More' }}
