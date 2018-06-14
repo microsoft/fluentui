@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
-import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
 import * as sinon from 'sinon';
 
