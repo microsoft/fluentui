@@ -77,7 +77,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
 
     return (
       <div ref={this._rootElement} className={classNames.root} onFocusCapture={this._onFocusCapture}>
-        <div className={classNames.iconContainer} onClick={this._onClickFocus}>
+        <div className={classNames.iconContainer} onClick={this._onClickFocus} aria-hidden={true}>
           <Icon className={classNames.icon} iconName="Search" />
         </div>
         <input
