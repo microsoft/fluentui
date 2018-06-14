@@ -226,15 +226,15 @@ export const IllustrationColors: any = {
 };
 
 export const CommunicationColors: any = {
-  communication90: '#004578',
-  communication80: '#005a9e',
-  communication70: '#106ebe',
-  communication60: '#0078d4',
-  communication50: '#2b88d8',
-  communication40: '#71afe5',
-  communication30: '#c7e0f4',
-  communication20: '#deecf9',
-  communication10: '#eff6fc'
+  communicationShade30: '#004578',
+  communicationShade20: '#005a9e',
+  communicationShade10: '#106ebe',
+  communicationPrimary: '#0078d4',
+  communicationTint10: '#2b88d8',
+  communicationTint20: '#71afe5',
+  communicationTint30: '#c7e0f4',
+  communicationTint40: '#deecf9',
+  communicationTint50: '#eff6fc'
 };
 
 export const HighContrastColors: any = {
