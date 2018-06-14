@@ -185,31 +185,14 @@ exports[`DetailsHeader can render 1`] = `
     role="button"
   />
   <div
-    className={undefined}
-    id="columnDropHint_1"
-  >
-    <div
-      aria-hidden={true}
-      className="ms-DetailsHeader-dropHintCircleStyle"
-      data-is-focusable={false}
-      data-sizer-index={1}
-    />
-    <div
-      aria-hidden={true}
-      className="ms-DetailsHeader-dropHintLineStyle"
-      data-is-focusable={false}
-      data-sizer-index={1}
-    />
-  </div>
-  <div
-    aria-colindex={2}
+    aria-colindex={3}
     aria-disabled={false}
     aria-sort="none"
     className="ms-DetailsHeader-cell is-actionable undefined"
     data-automationid="ColumnsHeaderColumn"
-    data-is-draggable={true}
+    data-is-draggable={false}
     data-item-key="b"
-    draggable={true}
+    draggable={false}
     role="columnheader"
     style={
       Object {
@@ -217,24 +200,6 @@ exports[`DetailsHeader can render 1`] = `
       }
     }
   >
-    <i
-      aria-hidden={true}
-      className=
-
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            display: inline-block;
-            font-family: "FabricMDL2Icons-0";
-            font-style: normal;
-            font-weight: normal;
-            speak: none;
-          }
-      data-icon-name="GripperBarVertical"
-      role="presentation"
-    >
-      
-    </i>
     <span
       className=""
     >
@@ -269,22 +234,5 @@ exports[`DetailsHeader can render 1`] = `
     onDoubleClick={[Function]}
     role="button"
   />
-  <div
-    className={undefined}
-    id="columnDropHint_2"
-  >
-    <div
-      aria-hidden={true}
-      className="ms-DetailsHeader-dropHintCircleStyle"
-      data-is-focusable={false}
-      data-sizer-index={2}
-    />
-    <div
-      aria-hidden={true}
-      className="ms-DetailsHeader-dropHintLineStyle"
-      data-is-focusable={false}
-      data-sizer-index={2}
-    />
-  </div>
 </div>
 `;

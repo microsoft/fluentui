@@ -1,14 +1,6 @@
 import * as React from 'react';
 import { findDOMNode } from 'react-dom';
-import {
-  BaseComponent,
-  css,
-  getRTL,
-  getId,
-  KeyCodes,
-  IRenderFunction,
-  createRef
-} from '../../Utilities';
+import { BaseComponent, css, getRTL, getId, KeyCodes, IRenderFunction, createRef } from '../../Utilities';
 import { IColumn, DetailsListLayoutMode } from './DetailsList.types';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Icon } from '../../Icon';
@@ -24,6 +16,7 @@ import * as stylesImport from './DetailsHeader.scss';
 import { IDragDropOptions } from './../../utilities/dragdrop/interfaces';
 import { DragDropHelper } from './../../utilities/dragdrop';
 import { DetailsColumn } from './../../components/DetailsList/DetailsColumn';
+import { IColumnReorderOptions } from './../../components/DetailsList';
 
 const styles: any = stylesImport;
 const checkStyles: any = checkStylesModule;
@@ -102,11 +95,10 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
   private _dropHintDetails: { [key: number]: IDropHintDetails } = {};
   private _dragDropHelper: DragDropHelper | null;
   private _currentDropHintIndex: number;
-  private _subscriptionObject:
-    {
-      key: string;
-      dispose(): void;
-    };
+  private _subscriptionObject: {
+    key: string;
+    dispose(): void;
+  };
   private _onDropIndexInfo: {
     sourceIndex: number;
     targetIndex: number;
@@ -151,7 +143,11 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     this._events.on(this._rootElement!, 'keydown', this._onRootKeyDown);
 
     if (columnReorderOptions) {
-      this._subscriptionObject = this._dragDropHelper!.subscribe(this._rootElement!, this._events, this._getHeaderDragDropOptions());
+      this._subscriptionObject = this._dragDropHelper!.subscribe(
+        this._rootElement!,
+        this._events,
+        this._getHeaderDragDropOptions()
+      );
     }
   }
 
@@ -164,12 +160,18 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
         delete this._subscriptionObject;
       }
     } else if (!this._subscriptionObject) {
-      this._subscriptionObject = this._dragDropHelper!.subscribe(this._rootElement!, this._events, this._getHeaderDragDropOptions());
+      this._subscriptionObject = this._dragDropHelper!.subscribe(
+        this._rootElement!,
+        this._events,
+        this._getHeaderDragDropOptions()
+      );
     }
 
-    // TODO - should this be props[fn(targetIndex)] === prevProps[fn(sourceIndex)]? - DONE
     if (this.props !== prevProps && this._onDropIndexInfo.sourceIndex >= 0 && this._onDropIndexInfo.targetIndex >= 0) {
-      if (prevProps.columns[this._onDropIndexInfo.sourceIndex].key === this.props.columns[this._onDropIndexInfo.targetIndex - 1].key) {
+      if (
+        prevProps.columns[this._onDropIndexInfo.sourceIndex].key ===
+        this.props.columns[this._onDropIndexInfo.targetIndex - 1].key
+      ) {
         this._onDropIndexInfo = {
           sourceIndex: Number.MIN_SAFE_INTEGER,
           targetIndex: Number.MIN_SAFE_INTEGER
@@ -214,13 +216,21 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     if (!this._dragDropHelper && this.props.columnReorderOptions) {
       this._dragDropHelper = new DragDropHelper({
         selection: {
-          getSelection: () => { return; }
+          getSelection: () => {
+            return;
+          }
         } as ISelection,
         minimumPixelsForDrag: this.props.minimumPixelsForDrag
       });
     }
-    const frozenColumnCountFromStart = columnReorderOptions && columnReorderOptions!.frozenColumnCountFromStart ? columnReorderOptions!.frozenColumnCountFromStart! : 0;
-    const frozenColumnCountFromEnd = columnReorderOptions && columnReorderOptions!.frozenColumnCountFromEnd ? columnReorderOptions!.frozenColumnCountFromEnd! : 0;
+    const frozenColumnCountFromStart =
+      columnReorderOptions && columnReorderOptions!.frozenColumnCountFromStart
+        ? columnReorderOptions!.frozenColumnCountFromStart!
+        : 0;
+    const frozenColumnCountFromEnd =
+      columnReorderOptions && columnReorderOptions!.frozenColumnCountFromEnd
+        ? columnReorderOptions!.frozenColumnCountFromEnd!
+        : 0;
 
     return (
       <FocusZone
@@ -229,9 +239,9 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
         className={css(
           'ms-DetailsHeader',
           styles.root,
-          isAllSelected && ('is-allSelected ' + styles.rootIsAllSelected),
-          (selectAllVisibility === SelectAllVisibility.hidden) && ('is-selectAllHidden ' + styles.rootIsSelectAllHidden),
-          (!!columnResizeDetails && isSizing) && 'is-resizingColumn'
+          isAllSelected && 'is-allSelected ' + styles.rootIsAllSelected,
+          selectAllVisibility === SelectAllVisibility.hidden && 'is-selectAllHidden ' + styles.rootIsSelectAllHidden,
+          !!columnResizeDetails && isSizing && 'is-resizingColumn'
         )}
         componentRef={this._rootComponent}
         ref={this._onRootRef}
@@ -305,113 +315,29 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
         <GroupSpacer indentWidth={indentWidth} count={groupNestingDepth! - 1} />
         {
           columns.map((column: IColumn, columnIndex: number) => {
-            const _isDraggable = dragDropColumnEvents! && columnIndex >= this.props.frozenColumnCount!;
-            return (
-              [(
-                <DetailsColumn
-                  column={column}
-                  key={column.key}
-                  columnIndex={(showCheckbox ? 2 : 1) + columnIndex}
-                  parentId={this._id}
-                  isDraggable={_isDraggable}
-                  dragDropColumnEvents={dragDropColumnEvents}
-                  dragDropHelper={this._dragDropHelper}
-                  onColumnClick={onColumnClick}
-                  onColumnContextMenu={onColumnContextMenu}
-                />
-                /* <div
-                  key={ column.key }
-                  role='columnheader'
-                  aria-sort={ column.isSorted ? (column.isSortedDescending ? 'descending' : 'ascending') : 'none' }
-                  aria-disabled={ column.columnActionsMode === ColumnActionsMode.disabled }
-                  aria-colindex={ (showCheckbox ? 1 : 0) + columnIndex }
-                  className={ css(
-                    'ms-DetailsHeader-cell',
-                    droppingClassName,
-                    styles.cell,
-                    column.headerClassName,
-                    (column.columnActionsMode !== ColumnActionsMode.disabled) && ('is-actionable ' + styles.cellIsActionable),
-                    !column.name && ('is-empty ' + styles.cellIsEmpty),
-                    (column.isSorted || column.isGrouped || column.isFiltered) && 'is-icon-visible',
-                    column.isPadded && styles.cellWrapperPadded
-                  ) }
-                  data-is-draggable={ isDraggable }
-                  draggable={ isDraggable }
-
-                  style={ { width: column.calculatedWidth! + INNER_PADDING + (column.isPadded ? ISPADDED_WIDTH : 0) } }
-                  data-automationid='ColumnsHeaderColumn'
-                  data-item-key={ column.key }
-                >
-                  {
-                    onRenderColumnHeaderTooltip({
-                      hostClassName: css(styles.cellTooltip),
-                      id: `${this._id}-${column.key}-tooltip`,
-                      setAriaDescribedBy: false,
-                      content: column.columnActionsMode !== ColumnActionsMode.disabled ? column.ariaLabel : '',
-                      children: (
-                        <span
-                          id={ `${this._id}-${column.key}` }
-                          aria-label={ column.isIconOnly ? column.name : undefined }
-                          aria-labelledby={ column.isIconOnly ? undefined : `${this._id}-${column.key}-name ` }
-                          className={ css('ms-DetailsHeader-cellTitle', styles.cellTitle) }
-                          data-is-focusable={ column.columnActionsMode !== ColumnActionsMode.disabled }
-                          role={ column.columnActionsMode !== ColumnActionsMode.disabled ? 'button' : undefined }
-                          aria-describedby={ `${this._id}-${column.key}-tooltip` }
-                          onContextMenu={ this._onColumnContextMenu.bind(this, column) }
-                          onClick={ this._onColumnClick.bind(this, column) }
-                          aria-haspopup={ column.columnActionsMode === ColumnActionsMode.hasDropdown }
-                        >
-                          <span
-                            id={ `${this._id}-${column.key}-name` }
-                            className={ css('ms-DetailsHeader-cellName',
-                              styles.cellName, {
-                                [styles.iconOnlyHeader]: column.isIconOnly
-                              }) }
-                          >
-                            { (column.iconName || column.iconClassName) && (
-                              <Icon className={ css(styles.nearIcon, column.iconClassName) } iconName={ column.iconName } />
-                            ) }
-
-                            { !column.isIconOnly ? column.name : undefined }
-                          </span>
-
-                          { column.isFiltered && (
-                            <Icon className={ styles.nearIcon } iconName='Filter' />
-                          ) }
-
-                          { column.isSorted && (
-                            <Icon className={ css(styles.nearIcon, styles.sortIcon) } iconName={ column.isSortedDescending ? 'SortDown' : 'SortUp' } />
-                          ) }
-
-                          { column.isGrouped && (
-                            <Icon className={ styles.nearIcon } iconName='GroupedDescending' />
-                          ) }
-
-                          { column.columnActionsMode === ColumnActionsMode.hasDropdown && !column.isIconOnly && (
-                            <Icon
-                              className={ css('ms-DetailsHeader-filterChevron', styles.filterChevron) }
-                              iconName='ChevronDown'
-                            />
-                          ) }
-                        </span>
-                      )
-                    }, this._onRenderColumnHeaderTooltip)
-                  }
-                </div>,
-                column.ariaLabel && !this.props.onRenderColumnHeaderTooltip ? (
-                  <label
-                    key={ `${column.key}_label` }
-                    id={ `${this._id}-${column.key}-tooltip` }
-                    className={ styles.accessibleLabel }
-                  >
-                    { column.ariaLabel }
-                  </label>
-                ) : null,*/
-              ),
+            const _isDraggable = columnReorderOptions
+              ? columnIndex >= frozenColumnCountFromStart && columnIndex < columns.length - frozenColumnCountFromEnd
+              : false;
+            return [
+              columnReorderOptions &&
+              (_isDraggable || columnIndex === columns.length - frozenColumnCountFromEnd) &&
+              this._renderDropHint(columnIndex),
+              <DetailsColumn
+                column={column}
+                key={column.key}
+                columnIndex={(showCheckbox ? 2 : 1) + columnIndex}
+                parentId={this._id}
+                isDraggable={_isDraggable}
+                setDraggedItemIndex={this._setDraggedItemIndex}
+                dragDropHelper={this._dragDropHelper}
+                onColumnClick={onColumnClick}
+                onColumnContextMenu={onColumnContextMenu}
+                isDropped={this._onDropIndexInfo.targetIndex === columnIndex + 1}
+              />,
               column.isResizable && this._renderColumnSizer(columnIndex)
-              ];
-        )
-        })}
+            ];
+          })}
+        {columnReorderOptions && frozenColumnCountFromEnd === 0 && this._renderDropHint(columns.length)}
         {isSizing && (
           <Layer>
             <div
@@ -478,7 +404,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
         isValidDrop = true;
         this._onDropIndexInfo.sourceIndex = draggedColumnIndex;
         // Target index will not get changed if draggeditem is before target item.
-        this._onDropIndexInfo.targetIndex = dropIndex + ((draggedColumnIndex > dropIndex!) ? 1 : 0);
+        this._onDropIndexInfo.targetIndex = dropIndex + (draggedColumnIndex > dropIndex! ? 1 : 0);
       }
       this._resetDropHints();
       this._dropHintDetails = {};
@@ -494,170 +420,210 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 
   private _setDraggedItemIndex(itemIndex: number) {
     if (itemIndex >= 0) {
-      this._draggedColumnIndex = (this.props.selectionMode !== SelectionMode.none) ? itemIndex! - 1 : itemIndex;
+      this._draggedColumnIndex = this.props.selectionMode !== SelectionMode.none ? itemIndex! - 2 : itemIndex;
       this._getDropHintPositions();
     } else {
       this._resetDropHints();
       this._draggedColumnIndex = -1;
       this._dropHintDetails = {};
     }
+  }
 
   private _resetDropHints(): void {
     if (this._currentDropHintIndex >= 0) {
       this._updateDropHintElement(this._dropHintDetails[this._currentDropHintIndex].dropHintElementRef, 'none');
       this._currentDropHintIndex = Number.MIN_SAFE_INTEGER;
     }
-
   }
-}
 
   private _updateDropHintElement(element: HTMLElement, property: string) {
-  (element.childNodes[1] as HTMLElement).style.display = property;
-  (element.childNodes[0] as HTMLElement).style.display = property;
-}
+    (element.childNodes[1] as HTMLElement).style.display = property;
+    (element.childNodes[0] as HTMLElement).style.display = property;
+  }
 
   private _getDropHintPositions = (): void => {
-  const { columnReorderOptions, columns } = this.props;
-  let prevX = 0;
-  let prevMid = 0;
-  let prevRef: HTMLElement;
-  const frozenColumnCountFromStart = (columnReorderOptions && columnReorderOptions!.frozenColumnCountFromStart) ? columnReorderOptions!.frozenColumnCountFromStart : 0;
-  const frozenColumnCountFromEnd = (columnReorderOptions && columnReorderOptions!.frozenColumnCountFromEnd) ? columnReorderOptions!.frozenColumnCountFromEnd : 0;
-  for (let i = frozenColumnCountFromStart!; i < columns.length - frozenColumnCountFromEnd! + 1; i++) {
-    const dropHintElement = this._rootElement!.querySelectorAll('#columnDropHint_' + i)[0] as HTMLElement;
-    if (dropHintElement) {
-      if (i === frozenColumnCountFromStart!) {
-        prevX = dropHintElement!.offsetLeft;
-        prevMid = dropHintElement!.offsetLeft;
-        prevRef = dropHintElement;
-      } else {
-        const newMid = ((dropHintElement!.offsetLeft + prevX!) / 2);
-        this._dropHintDetails[i - 1] = { originX: prevX, startX: prevMid!, endX: newMid, dropHintElementRef: prevRef! };
-        prevMid = newMid;
-        prevRef = dropHintElement;
-        prevX = dropHintElement!.offsetLeft;
-        if (i === columns.length - frozenColumnCountFromEnd!) {
-          this._dropHintDetails[i] = { originX: prevX, startX: prevMid!, endX: dropHintElement!.offsetLeft, dropHintElementRef: prevRef };
+    const { columnReorderOptions, columns } = this.props;
+    let prevX = 0;
+    let prevMid = 0;
+    let prevRef: HTMLElement;
+    const frozenColumnCountFromStart =
+      columnReorderOptions && columnReorderOptions!.frozenColumnCountFromStart
+        ? columnReorderOptions!.frozenColumnCountFromStart
+        : 0;
+    const frozenColumnCountFromEnd =
+      columnReorderOptions && columnReorderOptions!.frozenColumnCountFromEnd
+        ? columnReorderOptions!.frozenColumnCountFromEnd
+        : 0;
+    for (let i = frozenColumnCountFromStart!; i < columns.length - frozenColumnCountFromEnd! + 1; i++) {
+      const dropHintElement = this._rootElement!.querySelectorAll('#columnDropHint_' + i)[0] as HTMLElement;
+      if (dropHintElement) {
+        if (i === frozenColumnCountFromStart!) {
+          prevX = dropHintElement!.offsetLeft;
+          prevMid = dropHintElement!.offsetLeft;
+          prevRef = dropHintElement;
+        } else {
+          const newMid = (dropHintElement!.offsetLeft + prevX!) / 2;
+          this._dropHintDetails[i - 1] = {
+            originX: prevX,
+            startX: prevMid!,
+            endX: newMid,
+            dropHintElementRef: prevRef!
+          };
+          prevMid = newMid;
+          prevRef = dropHintElement;
+          prevX = dropHintElement!.offsetLeft;
+          if (i === columns.length - frozenColumnCountFromEnd!) {
+            this._dropHintDetails[i] = {
+              originX: prevX,
+              startX: prevMid!,
+              endX: dropHintElement!.offsetLeft,
+              dropHintElementRef: prevRef
+            };
+          }
         }
       }
     }
-  }
-}
+  };
 
-/**
- * Based on the given cursor position, finds the nearest drop hint and updates the state to make it visible
- *
- */
+  /**
+   * Based on the given cursor position, finds the nearest drop hint and updates the state to make it visible
+   *
+   */
   private _computeDropHintToBeShown = (clientX: number): void => {
-  const clientRect = this._rootElement!.getBoundingClientRect();
-  const headerOriginX = clientRect.left;
-  const eventXRelativePosition = clientX - headerOriginX;
-  const currentDropHintIndex = this._currentDropHintIndex!;
-  if (this._isValidCurrentDropHintIndex()) {
-    if (eventXRelativePosition >= this._dropHintDetails[currentDropHintIndex!].startX && eventXRelativePosition <= this._dropHintDetails[currentDropHintIndex!].endX) {
-      return;
-    }
-  }
-  const { columnReorderOptions, columns } = this.props;
-  const frozenColumnCountFromStart = (columnReorderOptions && columnReorderOptions!.frozenColumnCountFromStart) ? columnReorderOptions!.frozenColumnCountFromStart : 0;
-  const frozenColumnCountFromEnd = (columnReorderOptions && columnReorderOptions!.frozenColumnCountFromEnd) ? columnReorderOptions!.frozenColumnCountFromEnd : 0;
-  const currentIndex: number = frozenColumnCountFromStart!;
-  const lastValidColumn = columns.length - frozenColumnCountFromEnd!;
-  let indexToUpdate = -1;
-  if (eventXRelativePosition <= this._dropHintDetails[currentIndex].endX) {
-    indexToUpdate = currentIndex;
-  } else if (eventXRelativePosition >= this._dropHintDetails[lastValidColumn]!.startX) {
-    indexToUpdate = lastValidColumn;
-  } else if (this._isValidCurrentDropHintIndex()) {
-    if (this._dropHintDetails[currentDropHintIndex! + 1] && eventXRelativePosition >= this._dropHintDetails[currentDropHintIndex! + 1].startX && eventXRelativePosition <= this._dropHintDetails[currentDropHintIndex! + 1].endX) {
-      indexToUpdate = currentDropHintIndex! + 1;
-    } else if (this._dropHintDetails[currentDropHintIndex! - 1] && eventXRelativePosition >= this._dropHintDetails[currentDropHintIndex! - 1].startX && eventXRelativePosition <= this._dropHintDetails[currentDropHintIndex! - 1].endX) {
-      indexToUpdate = currentDropHintIndex! - 1;
-    }
-  }
-  if (indexToUpdate === -1) {
-    let startIndex = frozenColumnCountFromStart!;
-    let endIndex = lastValidColumn;
-    while (startIndex < endIndex) {
-      const middleIndex = Math.ceil((endIndex + startIndex!) / 2);
-      if (eventXRelativePosition >= this._dropHintDetails[middleIndex].startX && eventXRelativePosition <= this._dropHintDetails[middleIndex].endX) {
-        indexToUpdate = middleIndex;
-        break;
-      } else if (eventXRelativePosition < this._dropHintDetails[middleIndex]!.originX) {
-        endIndex = middleIndex;
-      } else if (eventXRelativePosition > this._dropHintDetails[middleIndex]!.originX) {
-        startIndex = middleIndex;
+    const clientRect = this._rootElement!.getBoundingClientRect();
+    const headerOriginX = clientRect.left;
+    const eventXRelativePosition = clientX - headerOriginX;
+    const currentDropHintIndex = this._currentDropHintIndex!;
+    if (this._isValidCurrentDropHintIndex()) {
+      if (
+        eventXRelativePosition >= this._dropHintDetails[currentDropHintIndex!].startX &&
+        eventXRelativePosition <= this._dropHintDetails[currentDropHintIndex!].endX
+      ) {
+        return;
       }
     }
-  }
-  if (dropHintsState) {
-    const newDropHintState = dropHintsState.map(state => false);
-    newDropHintState[indexToUpdate] = true;
-    this.setState({ dropHintsState: newDropHintState });
-  }
-
-  if (indexToUpdate === this._draggedColumnIndex || indexToUpdate === this._draggedColumnIndex + 1) {
-    if (this._isValidCurrentDropHintIndex()) {
-      this._resetDropHints();
+    const { columnReorderOptions, columns } = this.props;
+    const frozenColumnCountFromStart =
+      columnReorderOptions && columnReorderOptions!.frozenColumnCountFromStart
+        ? columnReorderOptions!.frozenColumnCountFromStart
+        : 0;
+    const frozenColumnCountFromEnd =
+      columnReorderOptions && columnReorderOptions!.frozenColumnCountFromEnd
+        ? columnReorderOptions!.frozenColumnCountFromEnd
+        : 0;
+    const currentIndex: number = frozenColumnCountFromStart!;
+    const lastValidColumn = columns.length - frozenColumnCountFromEnd!;
+    let indexToUpdate = -1;
+    if (eventXRelativePosition <= this._dropHintDetails[currentIndex].endX) {
+      indexToUpdate = currentIndex;
+    } else if (eventXRelativePosition >= this._dropHintDetails[lastValidColumn]!.startX) {
+      indexToUpdate = lastValidColumn;
+    } else if (this._isValidCurrentDropHintIndex()) {
+      if (
+        this._dropHintDetails[currentDropHintIndex! + 1] &&
+        eventXRelativePosition >= this._dropHintDetails[currentDropHintIndex! + 1].startX &&
+        eventXRelativePosition <= this._dropHintDetails[currentDropHintIndex! + 1].endX
+      ) {
+        indexToUpdate = currentDropHintIndex! + 1;
+      } else if (
+        this._dropHintDetails[currentDropHintIndex! - 1] &&
+        eventXRelativePosition >= this._dropHintDetails[currentDropHintIndex! - 1].startX &&
+        eventXRelativePosition <= this._dropHintDetails[currentDropHintIndex! - 1].endX
+      ) {
+        indexToUpdate = currentDropHintIndex! - 1;
+      }
     }
-  } else if (currentDropHintIndex !== indexToUpdate && indexToUpdate !== -1) {
-    this.setState({ currentDropHintIndex: indexToUpdate });
-  }
-}
+    if (indexToUpdate === -1) {
+      let startIndex = frozenColumnCountFromStart!;
+      let endIndex = lastValidColumn;
+      while (startIndex < endIndex) {
+        const middleIndex = Math.ceil((endIndex + startIndex!) / 2);
+        if (
+          eventXRelativePosition >= this._dropHintDetails[middleIndex].startX &&
+          eventXRelativePosition <= this._dropHintDetails[middleIndex].endX
+        ) {
+          indexToUpdate = middleIndex;
+          break;
+        } else if (eventXRelativePosition < this._dropHintDetails[middleIndex]!.originX) {
+          endIndex = middleIndex;
+        } else if (eventXRelativePosition > this._dropHintDetails[middleIndex]!.originX) {
+          startIndex = middleIndex;
+        }
+      }
+    }
+
+    if (dropHintsState) {
+      const newDropHintState = dropHintsState.map(state => false);
+      newDropHintState[indexToUpdate] = true;
+      this.setState({ dropHintsState: newDropHintState });
+    }
+
+
+    if (indexToUpdate === this._draggedColumnIndex || indexToUpdate === this._draggedColumnIndex + 1) {
+      if (this._isValidCurrentDropHintIndex()) {
+        this._resetDropHints();
+      }
+    } else if (currentDropHintIndex !== indexToUpdate && indexToUpdate >= 0) {
+      this._resetDropHints();
+      this._updateDropHintElement(this._dropHintDetails[indexToUpdate].dropHintElementRef, 'inline-block');
+      this._currentDropHintIndex = indexToUpdate;
+    }
+  };
 
   private _renderColumnSizer(columnIndex: number): JSX.Element {
-  const { columns } = this.props;
-  const column = this.props.columns[columnIndex];
-  const { columnResizeDetails } = this.state;
+    const { columns } = this.props;
+    const column = this.props.columns[columnIndex];
+    const { columnResizeDetails } = this.state;
 
-  return (
-    <div
-      key={`${column.key}_sizer`}
-      aria-hidden={true}
-      role="button"
-      data-is-focusable={false}
-      onClick={stopPropagation}
-      data-sizer-index={columnIndex}
-      onBlur={this._onSizerBlur}
-      className={css(
-        'ms-DetailsHeader-cellSizer',
-        styles.cellSizer,
-        columnIndex < columns.length - 1 ? styles.cellSizerStart : styles.cellSizerEnd,
-        {
-          ['is-resizing ' + styles.cellIsResizing]: columnResizeDetails && columnResizeDetails.columnIndex === columnIndex
-        })}
-      onDoubleClick={this._onSizerDoubleClick.bind(this, columnIndex)}
-    />
-  );
-}
+    return (
+      <div
+        key={`${column.key}_sizer`}
+        aria-hidden={true}
+        role="button"
+        data-is-focusable={false}
+        onClick={stopPropagation}
+        data-sizer-index={columnIndex}
+        onBlur={this._onSizerBlur}
+        className={css(
+          'ms-DetailsHeader-cellSizer',
+          styles.cellSizer,
+          columnIndex < columns.length - 1 ? styles.cellSizerStart : styles.cellSizerEnd,
+          {
+            ['is-resizing ' + styles.cellIsResizing]:
+              columnResizeDetails && columnResizeDetails.columnIndex === columnIndex
+          }
+        )}
+        onDoubleClick={this._onSizerDoubleClick.bind(this, columnIndex)}
+      />
+    );
+  }
 
   private _renderDropHint(dropHintIndex: number): JSX.Element {
-  return (
-    <div
-      key={`columndropHint`}
-      aria-hidden={true}
-      data-is-focusable={false}
-      data-sizer-index={dropHintIndex}
-      id={`columnDropHint_${dropHintIndex}`}
-      className={css(
-        'ms-DetailsHeader-dropHint',
-        styles.dropHint,
-        {
-          //  TODO add CSS changes to show drop hint
-          ['is-dropping ' + styles.isDropping]: this.state.dropHintsState![dropHintIndex]
-        }
-      )}
-      onDoubleClick={this._onSizerDoubleClick.bind(this, columnIndex)}
-    />
-  );
-}
-
+    return (
+      <div key={'dropHintKey'} className={styles.dropHintStyle} id={`columnDropHint_${dropHintIndex}`}>
+        <div
+          key={`dropHintCircleKey`}
+          aria-hidden={true}
+          data-is-focusable={false}
+          data-sizer-index={dropHintIndex}
+          className={css('ms-DetailsHeader-dropHintCircleStyle', styles.dropHintCircleStyle)}
+        />
+        <div
+          key={`dropHintLineKey`}
+          aria-hidden={true}
+          data-is-focusable={false}
+          data-sizer-index={dropHintIndex}
+          className={css('ms-DetailsHeader-dropHintLineStyle', styles.dropHintLineStyle)}
+        />
+      </div>
+    );
+  }
   private _onRenderColumnHeaderTooltip = (
-  tooltipHostProps: ITooltipHostProps,
-  defaultRender?: IRenderFunction<ITooltipHostProps>
-): JSX.Element => {
-  return <span className={tooltipHostProps.hostClassName}>{tooltipHostProps.children}</span>;
-};
+    tooltipHostProps: ITooltipHostProps,
+    defaultRender?: IRenderFunction<ITooltipHostProps>
+  ): JSX.Element => {
+    return <span className={tooltipHostProps.hostClassName}>{tooltipHostProps.children}</span>;
+  };
 
   /**
    * double click on the column sizer will auto ajust column width
@@ -668,112 +634,111 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 * @param {React.MouseEvent} ev (mouse double click event)
       */
   private _onSizerDoubleClick(columnIndex: number, ev: React.MouseEvent<HTMLElement>): void {
-  const { onColumnAutoResized, columns } = this.props;
-  if(onColumnAutoResized) {
-    onColumnAutoResized(columns[columnIndex], columnIndex);
+    const { onColumnAutoResized, columns } = this.props;
+    if (onColumnAutoResized) {
+      onColumnAutoResized(columns[columnIndex], columnIndex);
+    }
   }
-}
 
   /**
    * Called when the select all toggle is clicked.
    */
   private _onSelectAllClicked = (): void => {
     const { selection } = this.props;
-
     selection.toggleAllSelected();
   };
 
   private _onRootMouseDown = (ev: MouseEvent): void => {
-  const columnIndexAttr = (ev.target as HTMLElement).getAttribute('data-sizer-index');
-  const columnIndex = Number(columnIndexAttr);
-  const { columns } = this.props;
+    const columnIndexAttr = (ev.target as HTMLElement).getAttribute('data-sizer-index');
+    const columnIndex = Number(columnIndexAttr);
+    const { columns } = this.props;
 
-  if (columnIndexAttr === null || ev.button !== MOUSEDOWN_PRIMARY_BUTTON) {
-    // Ignore anything except the primary button.
-    return;
-  }
-
-  this.setState({
-    columnResizeDetails: {
-      columnIndex: columnIndex,
-      columnMinWidth: columns[columnIndex].calculatedWidth!,
-      originX: ev.clientX
+    if (columnIndexAttr === null || ev.button !== MOUSEDOWN_PRIMARY_BUTTON) {
+      // Ignore anything except the primary button.
+      return;
     }
-  });
 
-  ev.preventDefault();
-  ev.stopPropagation();
-};
+    this.setState({
+      columnResizeDetails: {
+        columnIndex: columnIndex,
+        columnMinWidth: columns[columnIndex].calculatedWidth!,
+        originX: ev.clientX
+      }
+    });
+
+    ev.preventDefault();
+    ev.stopPropagation();
+  };
 
   private _onRootMouseMove = (ev: React.MouseEvent<HTMLElement>): void => {
-  const { columnResizeDetails, isSizing } = this.state;
+    const { columnResizeDetails, isSizing } = this.state;
 
-  if (columnResizeDetails && !isSizing && ev.clientX !== columnResizeDetails.originX) {
-    this.setState({ isSizing: true });
-  }
-};
+    if (columnResizeDetails && !isSizing && ev.clientX !== columnResizeDetails.originX) {
+      this.setState({ isSizing: true });
+    }
+  };
 
   private _onRootKeyDown = (ev: KeyboardEvent): void => {
-  const { columnResizeDetails, isSizing } = this.state;
-  const { columns, onColumnResized } = this.props;
+    const { columnResizeDetails, isSizing } = this.state;
+    const { columns, onColumnResized } = this.props;
 
-  const columnIndexAttr = (ev.target as HTMLElement).getAttribute('data-sizer-index');
+    const columnIndexAttr = (ev.target as HTMLElement).getAttribute('data-sizer-index');
 
-  if (!columnIndexAttr || isSizing) {
-    return;
-  }
-
-  const columnIndex = Number(columnIndexAttr);
-
-  if (!columnResizeDetails) {
-    if (ev.which === KeyCodes.enter) {
-      this.setState({
-        columnResizeDetails: {
-          columnIndex: columnIndex,
-          columnMinWidth: columns[columnIndex].calculatedWidth!
-        }
-      });
-
-      ev.preventDefault();
-      ev.stopPropagation();
-    }
-  } else {
-    let increment: number | undefined;
-
-    if (ev.which === KeyCodes.enter) {
-      this.setState({
-        columnResizeDetails: undefined
-      });
-
-      ev.preventDefault();
-      ev.stopPropagation();
-    } else if (ev.which === KeyCodes.left) {
-      increment = getRTL() ? 1 : -1;
-    } else if (ev.which === KeyCodes.right) {
-      increment = getRTL() ? -1 : 1;
+    if (!columnIndexAttr || isSizing) {
+      return;
     }
 
-    if (increment) {
-      if (!ev.shiftKey) {
-        increment *= 10;
+    const columnIndex = Number(columnIndexAttr);
+
+    if (!columnResizeDetails) {
+      if (ev.which === KeyCodes.enter) {
+        this.setState({
+          columnResizeDetails: {
+            columnIndex: columnIndex,
+            columnMinWidth: columns[columnIndex].calculatedWidth!
+          }
+        });
+
+        ev.preventDefault();
+        ev.stopPropagation();
+      }
+    } else {
+      let increment: number | undefined;
+
+      if (ev.which === KeyCodes.enter) {
+        this.setState({
+          columnResizeDetails: undefined
+        });
+
+        ev.preventDefault();
+        ev.stopPropagation();
+      } else if (ev.which === KeyCodes.left) {
+        increment = getRTL() ? 1 : -1;
+      } else if (ev.which === KeyCodes.right) {
+        increment = getRTL() ? -1 : 1;
       }
 
-      this.setState({
-        columnResizeDetails: {
-          ...columnResizeDetails,
-          columnMinWidth: columnResizeDetails.columnMinWidth + increment
+      if (increment) {
+        if (!ev.shiftKey) {
+          increment *= 10;
         }
-      });
 
-      if (onColumnResized) {
-        onColumnResized(columns[columnIndex], columnResizeDetails.columnMinWidth + increment, columnIndex);
+        this.setState({
+          columnResizeDetails: {
+            ...columnResizeDetails,
+            columnMinWidth: columnResizeDetails.columnMinWidth + increment
+          }
+        });
+
+        if (onColumnResized) {
+          onColumnResized(columns[columnIndex], columnResizeDetails.columnMinWidth + increment, columnIndex);
+        }
+
+        ev.preventDefault();
+        ev.stopPropagation();
       }
-
-      ev.preventDefault();
-      ev.stopPropagation();
     }
-  }
-};
+  };
 
   /**
    * mouse move event handler in the header
@@ -783,51 +748,51 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 * @param {React.MouseEvent} ev (mouse move event)
                               */
   private _onSizerMouseMove = (ev: React.MouseEvent<HTMLElement>): void => {
-  const {
-    // use buttons property here since ev.button in some edge case is not upding well during the move.
-    // but firefox doesn't support it, so we set the default value when it is not defined.
-    buttons
-  } = ev;
-  const { onColumnIsSizingChanged, onColumnResized, columns } = this.props;
-  const { columnResizeDetails } = this.state;
+    const {
+      // use buttons property here since ev.button in some edge case is not upding well during the move.
+      // but firefox doesn't support it, so we set the default value when it is not defined.
+      buttons
+    } = ev;
+    const { onColumnIsSizingChanged, onColumnResized, columns } = this.props;
+    const { columnResizeDetails } = this.state;
 
-  if (buttons !== undefined && buttons !== MOUSEMOVE_PRIMARY_BUTTON) {
-    // cancel mouse down event and return early when the primary button is not pressed
-    this._onSizerMouseUp(ev);
-    return;
-  }
-
-  if (ev.clientX !== columnResizeDetails!.originX) {
-    if (onColumnIsSizingChanged) {
-      onColumnIsSizingChanged(columns[columnResizeDetails!.columnIndex], true);
-    }
-  }
-
-  if (onColumnResized) {
-    let movement = ev.clientX - columnResizeDetails!.originX!;
-
-    if (getRTL()) {
-      movement = -movement;
+    if (buttons !== undefined && buttons !== MOUSEMOVE_PRIMARY_BUTTON) {
+      // cancel mouse down event and return early when the primary button is not pressed
+      this._onSizerMouseUp(ev);
+      return;
     }
 
-    onColumnResized(
-      columns[columnResizeDetails!.columnIndex],
-      columnResizeDetails!.columnMinWidth + movement,
-      columnResizeDetails!.columnIndex
-    );
-  }
-};
+    if (ev.clientX !== columnResizeDetails!.originX) {
+      if (onColumnIsSizingChanged) {
+        onColumnIsSizingChanged(columns[columnResizeDetails!.columnIndex], true);
+      }
+    }
+
+    if (onColumnResized) {
+      let movement = ev.clientX - columnResizeDetails!.originX!;
+
+      if (getRTL()) {
+        movement = -movement;
+      }
+
+      onColumnResized(
+        columns[columnResizeDetails!.columnIndex],
+        columnResizeDetails!.columnMinWidth + movement,
+        columnResizeDetails!.columnIndex
+      );
+    }
+  };
 
   private _onSizerBlur = (ev: React.FocusEvent<HTMLElement>): void => {
-  const { columnResizeDetails } = this.state;
+    const { columnResizeDetails } = this.state;
 
-  if (columnResizeDetails) {
-    this.setState({
-      columnResizeDetails: undefined,
-      isSizing: false
-    });
-  }
-};
+    if (columnResizeDetails) {
+      this.setState({
+        columnResizeDetails: undefined,
+        isSizing: false
+      });
+    }
+  };
 
   /**
    * mouse up event handler in the header
@@ -838,39 +803,39 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 * @param {React.MouseEvent} ev (mouse up event)
                                   */
   private _onSizerMouseUp = (ev: React.MouseEvent<HTMLElement>): void => {
-  const { columns, onColumnIsSizingChanged } = this.props;
-  const { columnResizeDetails } = this.state;
+    const { columns, onColumnIsSizingChanged } = this.props;
+    const { columnResizeDetails } = this.state;
 
-  this.setState({
-    columnResizeDetails: undefined,
-    isSizing: false
-  });
+    this.setState({
+      columnResizeDetails: undefined,
+      isSizing: false
+    });
 
-  if (onColumnIsSizingChanged) {
-    onColumnIsSizingChanged(columns[columnResizeDetails!.columnIndex], false);
-  }
-};
+    if (onColumnIsSizingChanged) {
+      onColumnIsSizingChanged(columns[columnResizeDetails!.columnIndex], false);
+    }
+  };
 
   private _onSelectionChanged(): void {
-  const isAllSelected = this.props.selection.isAllSelected();
+    const isAllSelected = this.props.selection.isAllSelected();
 
-  if(this.state.isAllSelected !== isAllSelected) {
-  this.setState({
-    isAllSelected: isAllSelected
-  });
-}
+    if (this.state.isAllSelected !== isAllSelected) {
+      this.setState({
+        isAllSelected: isAllSelected
+      });
+    }
   }
 
   private _onToggleCollapseAll(): void {
-  const { onToggleCollapseAll } = this.props;
-  const newCollapsed = !this.state.isAllCollapsed;
-  this.setState({
-    isAllCollapsed: newCollapsed
-  });
-  if(onToggleCollapseAll) {
-    onToggleCollapseAll(newCollapsed);
+    const { onToggleCollapseAll } = this.props;
+    const newCollapsed = !this.state.isAllCollapsed;
+    this.setState({
+      isAllCollapsed: newCollapsed
+    });
+    if (onToggleCollapseAll) {
+      onToggleCollapseAll(newCollapsed);
+    }
   }
-}
 }
 
 function stopPropagation(ev: React.MouseEvent<HTMLElement>): void {

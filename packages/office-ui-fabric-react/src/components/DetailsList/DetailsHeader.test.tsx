@@ -27,7 +27,6 @@ describe('DetailsHeader', () => {
         selectionMode={SelectionMode.multiple}
         layoutMode={DetailsListLayoutMode.fixedColumns}
         columns={_columns}
-        columnReorderOptions={_columnReorderOptions}
       />
     );
     expect(component.toJSON()).toMatchSnapshot();
@@ -48,6 +47,7 @@ describe('DetailsHeader', () => {
         layoutMode={DetailsListLayoutMode.fixedColumns}
         columns={_columns}
         onColumnResized={onColumnResized}
+        columnReorderOptions={_columnReorderOptions}
       />
     );
 

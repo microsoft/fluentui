@@ -368,8 +368,6 @@ export class DragDropHelper implements IDragDropHelper {
           this._events.on(activeTarget.target.root, 'mouseleave', this._onMouseLeave.bind(this, activeTarget.target));
         }
       }
-      // Prevent marquee selection on draggable targets
-      event.stopPropagation();
     } else {
       this._dragData = null;
     }
