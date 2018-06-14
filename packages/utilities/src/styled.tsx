@@ -49,7 +49,7 @@ export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TSt
   baseStyles: IStyleFunctionOrObject<TStyleProps, TStyles>,
   getProps?: (props: TComponentProps) => Partial<TComponentProps>,
   customizable?: ICustomizableProps
-): React.StatelessComponent<TComponentProps> {
+): (props: TComponentProps) => JSX.Element {
   const Wrapped: React.StatelessComponent<TComponentProps> = (
     componentProps: TComponentProps,
     context: { customizations: ICustomizations }
@@ -69,7 +69,8 @@ export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TSt
 
   Wrapped.contextTypes = CustomizableContextTypes;
   Wrapped.displayName = `Styled${Component.displayName || Component.name}`;
-  return Wrapped;
+
+  return Wrapped as (props: TComponentProps) => JSX.Element;
 }
 
 function _resolve<TStyleProps, TStyles>(
