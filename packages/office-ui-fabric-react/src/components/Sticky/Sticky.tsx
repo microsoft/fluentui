@@ -111,36 +111,27 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
   public render(): JSX.Element {
     const { isStickyTop, isStickyBottom } = this.state;
+    const { stickyClassName, children } = this.props;
 
     return (
       <div ref={this._root}>
         {this.canStickyTop && (
-          <div
-            className={this.props.stickyClassName}
-            ref={this._stickyContentTop}
-            aria-hidden={!isStickyTop}
-            style={this._getStickyContainerStyle()}
-          >
+          <div ref={this._stickyContentTop} aria-hidden={!isStickyTop}>
             <div style={this._getStickyPlaceholderHeight(isStickyTop)} />
           </div>
         )}
         {this.canStickyBottom && (
-          <div
-            className={this.props.stickyClassName}
-            ref={this._stickyContentBottom}
-            aria-hidden={!isStickyBottom}
-            style={this._getStickyContainerStyle()}
-          >
+          <div ref={this._stickyContentBottom} aria-hidden={!isStickyBottom}>
             <div style={this._getStickyPlaceholderHeight(isStickyBottom)} />
           </div>
         )}
         <div style={this._getNonStickyPlaceholderHeight()} />
         <div
           ref={this._nonStickyContent}
-          className={isStickyTop || isStickyBottom ? this.props.stickyClassName : undefined}
+          className={isStickyTop || isStickyBottom ? stickyClassName : undefined}
           style={this._getContentStyles(isStickyTop || isStickyBottom)}
         >
-          {this.props.children}
+          {children}
         </div>
       </div>
     );
@@ -164,14 +155,8 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
   private _getContentStyles(isSticky: boolean): React.CSSProperties {
     return {
-      backgroundColor: this.props.stickyBackgroundColor || this._getBackground()
-    };
-  }
-
-  private _getStickyContainerStyle(): React.CSSProperties {
-    const { isScrollSynced } = this.props;
-    return {
-      overflow: isScrollSynced ? 'hidden' : 'auto'
+      backgroundColor: this.props.stickyBackgroundColor || this._getBackground(),
+      overflow: isSticky ? 'hidden' : ''
     };
   }
 
@@ -238,9 +223,9 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
         curr = curr.parentElement as HTMLElement;
       }
 
-      if (this.stickyContentTop) {
-        this.stickyContentTop.scrollLeft = scrollLeft;
-        this.stickyContentTop.scrollTop = scrollTop;
+      if (this.nonStickyContent) {
+        this.nonStickyContent.scrollLeft = scrollLeft;
+        this.nonStickyContent.scrollTop = scrollTop;
       }
     }
   };
