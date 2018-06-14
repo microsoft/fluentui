@@ -8,4 +8,4 @@ export const Breadcrumb: React.StatelessComponent<IBreadcrumbProps> = styled<
   IBreadcrumbProps,
   IBreadcrumbStyleProps,
   IBreadcrumbStyles
->(BreadcrumbBase, getStyles);
+>(BreadcrumbBase, getStyles, undefined, { scope: 'Breadcrumb' });

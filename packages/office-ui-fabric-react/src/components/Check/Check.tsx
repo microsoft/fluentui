@@ -1,6 +1,12 @@
+import * as React from 'react';
 import { styled } from '../../Utilities';
-import { ICheckProps, ICheckStyleProps, ICheckStyles } from './Check.types';
 import { CheckBase } from './Check.base';
 import { getStyles } from './Check.styles';
+import { ICheckProps, ICheckStyleProps, ICheckStyles } from './Check.types';
 
-export const Check = styled<ICheckProps, ICheckStyleProps, ICheckStyles>(CheckBase, getStyles);
+export const Check: React.StatelessComponent<ICheckProps> = styled<ICheckProps, ICheckStyleProps, ICheckStyles>(
+  CheckBase,
+  getStyles,
+  undefined,
+  { scope: 'Check' }
+);
