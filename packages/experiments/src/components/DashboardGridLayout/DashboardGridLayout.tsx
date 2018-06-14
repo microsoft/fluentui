@@ -4,8 +4,7 @@ import {
   Size,
   IDashboardGridLayoutProps,
   IDashboardGridLayoutStyles,
-  IDashboardCardLayout,
-  DashboardGridBreakpointLayouts
+  IDashboardCardLayout
 } from './DashboardGridLayout.types';
 import { getStyles } from './DashboardGridLayout.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
@@ -86,25 +85,24 @@ export class DashboardGridLayout extends React.Component<IDashboardGridLayoutPro
       for (let i = 0; i < value.length; i++) {
         layout.push(this._createLayoutFromProp(value[i]));
       }
-      /* tslint:disable:no-string-literal */
+
       switch (key) {
         case 'lg':
-          layouts['lg'] = layout;
+          layouts.lg = layout;
           break;
         case 'md':
-          layouts['md'] = layout;
+          layouts.md = layout;
           break;
         case 'sm':
-          layouts['sm'] = layout;
+          layouts.sm = layout;
           break;
         case 'xs':
-          layouts['xs'] = layout;
+          layouts.xs = layout;
           break;
         case 'xxs':
-          layouts['xxs'] = layout;
+          layouts.xxs = layout;
           break;
       }
-      /* tslint:enable:no-string-literal */
     }
 
     return layouts;

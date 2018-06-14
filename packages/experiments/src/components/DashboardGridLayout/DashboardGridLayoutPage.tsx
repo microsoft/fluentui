@@ -7,7 +7,7 @@ export class DashboardGridLayoutPage extends React.Component<IComponentDemoPageP
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title="Basic"
+        title="DashboardGridLayout"
         componentName="DashboardGridLayout"
         exampleCards={
           <div>
@@ -51,7 +51,7 @@ export class DashboardGridLayoutPage extends React.Component<IComponentDemoPageP
           <div>
             <ul>
               <li>
-                Use this grid layout for a list format (if no layout is specific as property, it will show all children
+                Use this grid layout in a single column, or with invalid layout property which will cause it to render
                 in one column
               </li>
             </ul>
