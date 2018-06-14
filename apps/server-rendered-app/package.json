@@ -3,6 +3,7 @@
   "description": "Sample server-rendered todo app using office-ui-fabric-react.",
   "version": "0.0.1",
   "private": true,
+  "sideEffects": false,
   "scripts": {
     "build": "node ../../scripts/build.js",
     "clean": "node ../../scripts/clean.js",
@@ -17,6 +18,7 @@
     "@types/react-dom": "16.0.5",
     "@types/webpack-env": "1.13.0",
     "express": "^4.16.3",
+    "compression": "^1.7.2",
     "office-ui-fabric-react-tslint": ">=6.0.0 <7.0.0"
   },
   "dependencies": {
