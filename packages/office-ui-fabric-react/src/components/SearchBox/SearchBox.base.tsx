@@ -13,7 +13,7 @@ export interface ISearchBoxState {
   id?: string;
 }
 
-const DefaultClearButtonProps: IButtonProps = {
+const DefaultClearButtonProps: Partial<IButtonProps> = {
   ariaLabel: 'Clear text'
 };
 
