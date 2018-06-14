@@ -229,7 +229,7 @@ export const CommunicationColors: any = {
   communication90: '#004578',
   communication80: '#005a9e',
   communication70: '#106ebe',
-  communication60: '#0078d7',
+  communication60: '#0078d4',
   communication50: '#2b88d8',
   communication40: '#71afe5',
   communication30: '#c7e0f4',
