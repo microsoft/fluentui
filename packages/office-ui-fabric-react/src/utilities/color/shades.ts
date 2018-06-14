@@ -2,10 +2,7 @@
 /* This utility module is used with theming. Given a color to shade, whether the theme is inverted (i.e. is a dark color),
  * and the desired shade enum, this will return an appropriate shade of that color.
  */
-import {
-  IColor,
-  MAX_COLOR_RGBA
-} from './colors';
+import { IHSV, IColor, MAX_COLOR_RGBA } from './colors';
 import * as Colors from './colors';
 import { assign } from '../../Utilities';
 
@@ -13,14 +10,14 @@ import { assign } from '../../Utilities';
 // Strongen: opposite of soften
 
 // Luminance multiplier constants for generating shades of a given color
-const WhiteShadeTableBG = [.973, .957, .918, .855, .816, .784, .651, .463]; // white bg
-const BlackTintTableBG = [.463, .55, .651, .784, .816, .855, .918, .957]; // black bg
-const WhiteShadeTable = [.463, .651, .784, .816, .855, .918, .957, .973]; // white fg
-const BlackTintTable = [.463, .55, .651, .784, .816, .855, .918, .957]; // black fg
-const LumTintTable = [.12, .23, .34, .45, .56, .67, .78, .89]; // light (strongen all)
-const LumShadeTable = [.89, .78, .67, .56, .45, .34, .23, .12]; // dark (soften all)
-const ColorTintTable = [.07, .18, .436, .751, .956]; // default soften
-const ColorShadeTable = [.90, .64, .550]; // default strongen
+const WhiteShadeTableBG = [0.027, 0.043, 0.082, 0.145, 0.184, 0.216, 0.349, 0.537]; // white bg
+const BlackTintTableBG = [0.537, 0.45, 0.349, 0.216, 0.184, 0.145, 0.082, 0.043]; // black bg
+const WhiteShadeTable = [0.537, 0.349, 0.216, 0.184, 0.145, 0.082, 0.043, 0.027]; // white fg
+const BlackTintTable = [0.537, 0.45, 0.349, 0.216, 0.184, 0.145, 0.082, 0.043]; // black fg
+const LumTintTable = [0.88, 0.77, 0.66, 0.55, 0.44, 0.33, 0.22, 0.11]; // light (strongen all)
+const LumShadeTable = [0.11, 0.22, 0.33, 0.44, 0.55, 0.66, 0.77, 0.88]; // dark (soften all)
+const ColorTintTable = [0.96, 0.84, 0.7, 0.4, 0.12]; // default soften
+const ColorShadeTable = [0.1, 0.24, 0.44]; // default strongen
 
 // If the given shade's luminance is below/above these values, we'll swap to using the White/Black tables above
 const LowLuminanceThreshold = 0.2;
@@ -36,7 +33,7 @@ export enum Shade {
   Shade5 = 5,
   Shade6 = 6,
   Shade7 = 7,
-  Shade8 = 8,
+  Shade8 = 8
   // remember to update isValidShade()!
 }
 
@@ -46,7 +43,7 @@ export enum Shade {
  */
 export function isValidShade(shade?: Shade): boolean {
   'use strict';
-  return (typeof shade === 'number') && (shade >= Shade.Unshaded) && (shade <= Shade.Shade8);
+  return typeof shade === 'number' && shade >= Shade.Unshaded && shade <= Shade.Shade8;
 }
 
 function _isBlack(color: IColor): boolean {
@@ -57,23 +54,27 @@ function _isWhite(color: IColor): boolean {
   return color.r === MAX_COLOR_RGBA && color.g === MAX_COLOR_RGBA && color.b === MAX_COLOR_RGBA;
 }
 
-function _darken(hsl: { h: number, s: number, l: number }, factor: number) {
+function _darken(hsv: IHSV, factor: number): IHSV {
   return {
-    h: hsl.h,
-    s: hsl.s,
-    l: hsl.l * factor
+    h: hsv.h,
+    s: hsv.s,
+    v: _clamp(hsv.v - hsv.v * factor, 0, 100)
   };
 }
 
-function _lighten(hsl: { h: number, s: number, l: number }, factor: number) {
+function _lighten(hsv: IHSV, factor: number): IHSV {
   return {
-    h: hsl.h,
-    s: hsl.s,
-    l: hsl.l * factor + (100 * (1 - factor))
+    h: hsv.h,
+    s: _clamp(hsv.s - hsv.s * factor, 0, 100),
+    v: _clamp(hsv.v + (100 - hsv.v) * factor, 0, 100)
   };
 }
 
-export function isDark(color: IColor) {
+function _clamp(n: number, min: number, max: number) {
+  return n; // Math.max(min, Math.min(n, max));
+}
+
+export function isDark(color: IColor): boolean {
   return Colors.hsv2hsl(color.h, color.s, color.v).l < 50;
 }
 
@@ -94,7 +95,7 @@ export function isDark(color: IColor) {
  * @param {Shade} shade The shade of the base color to compute
  * @param {Boolean} isInverted Default false. Whether the given theme is inverted (reverse strongen/soften logic)
  */
-export function getShade(color: IColor, shade: Shade, isInverted = false) {
+export function getShade(color: IColor, shade: Shade, isInverted: boolean = false): IColor | null {
   'use strict';
   if (!color) {
     return null;
@@ -104,38 +105,43 @@ export function getShade(color: IColor, shade: Shade, isInverted = false) {
     return color;
   }
 
-  let hsl = Colors.hsv2hsl(color.h, color.s, color.v);
+  const hsl = Colors.hsv2hsl(color.h, color.s, color.v);
+  let hsv = { h: color.h, s: color.s, v: color.v };
   const tableIndex = shade - 1;
   let _soften = _lighten;
   let _strongen = _darken;
   if (isInverted) {
-    // tableIndex = LumTintTable.length - 1 - tableIndex;
     _soften = _darken;
     _strongen = _lighten;
   }
-  if (_isWhite(color)) { // white
-    hsl = _darken(hsl, WhiteShadeTable[tableIndex]);
-  } else if (_isBlack(color)) { // black
-    hsl = _lighten(hsl, BlackTintTable[tableIndex]);
-  } else if (hsl.l / 100 > HighLuminanceThreshold) { // light
-    hsl = _strongen(hsl, LumShadeTable[tableIndex]);
-  } else if (hsl.l / 100 < LowLuminanceThreshold) { // dark
-    hsl = _soften(hsl, LumTintTable[tableIndex]);
-  } else { // default
+  if (_isWhite(color)) {
+    // white
+    hsv = _darken(hsv, WhiteShadeTable[tableIndex]);
+  } else if (_isBlack(color)) {
+    // black
+    hsv = _lighten(hsv, BlackTintTable[tableIndex]);
+  } else if (hsl.l / 100 > HighLuminanceThreshold) {
+    // light
+    hsv = _strongen(hsv, LumShadeTable[tableIndex]);
+  } else if (hsl.l / 100 < LowLuminanceThreshold) {
+    // dark
+    hsv = _soften(hsv, LumTintTable[tableIndex]);
+  } else {
+    // default
     if (tableIndex < ColorTintTable.length) {
-      hsl = _soften(hsl, ColorTintTable[tableIndex]);
+      hsv = _soften(hsv, ColorTintTable[tableIndex]);
     } else {
-      hsl = _strongen(hsl, ColorShadeTable[tableIndex - ColorTintTable.length]);
+      hsv = _strongen(hsv, ColorShadeTable[tableIndex - ColorTintTable.length]);
     }
   }
 
-  return Colors.getColorFromRGBA(assign(Colors.hsl2rgb(hsl.h, hsl.s, hsl.l), { a: color.a }));
+  return Colors.getColorFromRGBA(assign(Colors.hsv2rgb(hsv.h, hsv.s, hsv.v), { a: color.a }));
 }
 
 // Background shades/tints are generated differently. The provided color will be guaranteed
 //   to be the darkest or lightest one. If it is <50% luminance, it will always be the darkest,
 //   otherwise it will always be the lightest.
-export function getBackgroundShade(color: IColor, shade: Shade, isInverted = false) {
+export function getBackgroundShade(color: IColor, shade: Shade, isInverted: boolean = false): IColor | null {
   'use strict';
   if (!color) {
     return null;
@@ -145,47 +151,48 @@ export function getBackgroundShade(color: IColor, shade: Shade, isInverted = fal
     return color;
   }
 
-  let hsl = Colors.hsv2hsl(color.h, color.s, color.v);
+  let hsv = { h: color.h, s: color.s, v: color.v };
   const tableIndex = shade - 1;
-  if (!isInverted) { // lightish
-    hsl = _darken(hsl, WhiteShadeTableBG[tableIndex]);
-  } else { // default: if (hsl.l / 100 < .5) { // darkish
-    hsl = _lighten(hsl, BlackTintTableBG[BlackTintTable.length - 1 - tableIndex]);
+  if (!isInverted) {
+    // lightish
+    hsv = _darken(hsv, WhiteShadeTableBG[tableIndex]);
+  } else {
+    // default: if (hsl.l / 100 < .5) { // darkish
+    hsv = _lighten(hsv, BlackTintTableBG[BlackTintTable.length - 1 - tableIndex]);
   }
 
-  return Colors.getColorFromRGBA(assign(Colors.hsl2rgb(hsl.h, hsl.s, hsl.l), { a: color.a }));
+  return Colors.getColorFromRGBA(assign(Colors.hsv2rgb(hsv.h, hsv.s, hsv.v), { a: color.a }));
 }
 
 /* Calculates the contrast ratio between two colors. Used for verifying
  * color pairs meet minimum accessibility requirements.
  * See: https://www.w3.org/TR/WCAG20/ section 1.4.3
  */
-export function getContrastRatio(color1: IColor, color2: IColor) {
+export function getContrastRatio(color1: IColor, color2: IColor): number {
   // Formula defined by: http://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html#contrast-ratiodef
   // relative luminance: http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef
 
   /* calculate the intermediate value needed to calculating relative luminance */
-  function _getThing(x: number) {
-    if (x <= .03928) {
+  function _getThing(x: number): number {
+    if (x <= 0.03928) {
       return x / 12.92;
     } else {
-      return Math.pow((x + .055) / 1.055, 2.4);
+      return Math.pow((x + 0.055) / 1.055, 2.4);
     }
   }
 
   const r1 = _getThing(color1.r / MAX_COLOR_RGBA);
   const g1 = _getThing(color1.g / MAX_COLOR_RGBA);
   const b1 = _getThing(color1.b / MAX_COLOR_RGBA);
-  let L1 = (.2126 * r1) + (.7152 * g1) + (.0722 * b1); // relative luminance of first color
-  L1 += .05;
+  let L1 = 0.2126 * r1 + 0.7152 * g1 + 0.0722 * b1; // relative luminance of first color
+  L1 += 0.05;
 
   const r2 = _getThing(color2.r / MAX_COLOR_RGBA);
   const g2 = _getThing(color2.g / MAX_COLOR_RGBA);
   const b2 = _getThing(color2.b / MAX_COLOR_RGBA);
-  let L2 = (.2126 * r2) + (.7152 * g2) + (.0722 * b2); // relative luminance of second color
-  L2 += .05;
+  let L2 = 0.2126 * r2 + 0.7152 * g2 + 0.0722 * b2; // relative luminance of second color
+  L2 += 0.05;
 
   // return the lighter color divided by darker
-  return L1 / L2 > 1 ?
-    L1 / L2 : L2 / L1;
+  return L1 / L2 > 1 ? L1 / L2 : L2 / L1;
 }

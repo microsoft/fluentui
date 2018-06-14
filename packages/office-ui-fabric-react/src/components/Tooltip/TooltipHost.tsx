@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import {
   BaseComponent,
   css,
@@ -44,7 +42,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
   }
 
   // Render
-  public render() {
+  public render(): JSX.Element {
     const {
       calloutProps,
       children,
@@ -54,53 +52,52 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
       directionalHintForRTL,
       hostClassName,
       id,
-      overflowMode,
       setAriaDescribedBy = true,
       tooltipProps
     } = this.props;
     const { isTooltipVisible } = this.state;
     const tooltipId = id || getId('tooltip');
-    const isContentPresent = !!(content || (tooltipProps && tooltipProps.onRenderContent && tooltipProps.onRenderContent()));
+    const isContentPresent = !!(
+      content ||
+      (tooltipProps && tooltipProps.onRenderContent && tooltipProps.onRenderContent())
+    );
     const showTooltip = isTooltipVisible && isContentPresent;
 
     return (
       <div
-        className={ css('ms-TooltipHost',
-          styles.host,
-          hostClassName
-        ) }
-        ref={ this._tooltipHost }
-        { ...{ onFocusCapture: this._onTooltipMouseEnter } }
-        { ...{ onBlurCapture: this._hideTooltip } }
-        onMouseEnter={ this._onTooltipMouseEnter }
-        onMouseLeave={ this._onTooltipMouseLeave }
-        aria-describedby={ setAriaDescribedBy && isTooltipVisible && content ? tooltipId : undefined }
+        className={css('ms-TooltipHost', styles.host, hostClassName)}
+        ref={this._tooltipHost}
+        {...{ onFocusCapture: this._onTooltipMouseEnter }}
+        {...{ onBlurCapture: this._hideTooltip }}
+        onMouseEnter={this._onTooltipMouseEnter}
+        onMouseLeave={this._onTooltipMouseLeave}
+        aria-describedby={setAriaDescribedBy && isTooltipVisible && content ? tooltipId : undefined}
       >
-        { children }
-        { showTooltip && (
+        {children}
+        {showTooltip && (
           <Tooltip
-            id={ tooltipId }
-            delay={ delay }
-            content={ content }
-            targetElement={ this._getTargetElement() }
-            directionalHint={ directionalHint }
-            directionalHintForRTL={ directionalHintForRTL }
-            calloutProps={ assign(calloutProps, {
+            id={tooltipId}
+            delay={delay}
+            content={content}
+            targetElement={this._getTargetElement()}
+            directionalHint={directionalHint}
+            directionalHintForRTL={directionalHintForRTL}
+            calloutProps={assign({}, calloutProps, {
               onMouseEnter: this._onTooltipMouseEnter,
               onMouseLeave: this._onTooltipMouseLeave
-            }) }
-            onMouseEnter={ this._onTooltipMouseEnter }
-            onMouseLeave={ this._onTooltipMouseLeave }
-            { ...getNativeProps(this.props, divProperties) }
-            { ...tooltipProps }
+            })}
+            onMouseEnter={this._onTooltipMouseEnter}
+            onMouseLeave={this._onTooltipMouseLeave}
+            {...getNativeProps(this.props, divProperties)}
+            {...tooltipProps}
           />
-        ) }
+        )}
       </div>
     );
   }
 
   private _getTargetElement(): HTMLElement | undefined {
-    if (!this._tooltipHost.value) {
+    if (!this._tooltipHost.current) {
       return undefined;
     }
 
@@ -111,14 +108,14 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
     if (overflowMode !== undefined) {
       switch (overflowMode) {
         case TooltipOverflowMode.Parent:
-          return this._tooltipHost.value.parentElement!;
+          return this._tooltipHost.current.parentElement!;
 
         case TooltipOverflowMode.Self:
-          return this._tooltipHost.value;
+          return this._tooltipHost.current;
       }
     }
 
-    return this._tooltipHost.value;
+    return this._tooltipHost.current;
   }
 
   // Show Tooltip
@@ -134,7 +131,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
 
     this._toggleTooltip(true);
     this._clearDismissTimer();
-  }
+  };
 
   // Hide Tooltip
   private _onTooltipMouseLeave = (ev: any): void => {
@@ -147,23 +144,23 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
     } else {
       this._toggleTooltip(false);
     }
-  }
+  };
 
   private _clearDismissTimer = (): void => {
     this._async.clearTimeout(this._closingTimer);
-  }
+  };
 
   // Hide Tooltip
   private _hideTooltip = (): void => {
     this._toggleTooltip(false);
-  }
+  };
 
-  private _toggleTooltip(isTooltipVisible: boolean) {
+  private _toggleTooltip(isTooltipVisible: boolean): void {
     if (this.state.isTooltipVisible !== isTooltipVisible) {
       this.setState(
         { isTooltipVisible },
-        () => this.props.onTooltipToggle &&
-          this.props.onTooltipToggle(this.state.isTooltipVisible));
+        () => this.props.onTooltipToggle && this.props.onTooltipToggle(this.state.isTooltipVisible)
+      );
     }
   }
 }

@@ -1,6 +1,34 @@
 # Change Log - @uifabric/icons
 
-This log was last generated on Sun, 25 Mar 2018 03:08:03 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Jun 2018 00:44:30 GMT and should not be manually modified.
+
+## 6.0.1
+Tue, 05 Jun 2018 00:44:30 GMT
+
+### Patches
+
+- Added Prettier
+
+## 6.0.0
+Wed, 30 May 2018 20:28:33 GMT
+
+### Breaking changes
+
+- Minimum React version is now 16.3.2.
+
+## 5.8.0
+Wed, 16 May 2018 00:05:17 GMT
+
+### Minor changes
+
+- Update to FabricMDL2 v2.80.
+
+## 5.7.1
+Mon, 16 Apr 2018 10:23:26 GMT
+
+### Patches
+
+- Removing module entry temporarily. (Will be added back in 6.0.)
 
 ## 5.7.0
 Sun, 25 Mar 2018 03:08:03 GMT

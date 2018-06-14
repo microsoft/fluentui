@@ -1,12 +1,9 @@
-import {
-  styled
-} from '../../Utilities';
-// tslint:disable-next-line:no-unused-variable
-import { IRatingProps } from './Rating.types';
+import { styled } from '../../Utilities';
+import { IRatingProps, IRatingStyleProps, IRatingStyles } from './Rating.types';
 import { getStyles } from './Rating.styles';
 import { RatingBase } from './Rating.base';
 
-export const Rating = styled(
+export const Rating: (props: IRatingProps) => JSX.Element = styled<IRatingProps, IRatingStyleProps, IRatingStyles>(
   RatingBase,
   getStyles
 );

@@ -1,9 +1,5 @@
 import * as React from 'react';
-import {
-  DatePicker,
-  DayOfWeek,
-  IDatePickerStrings
-} from 'office-ui-fabric-react/lib/DatePicker';
+import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
 import { addMonths, addYears } from '../../../utilities/dateMath/DateMath';
 import './DatePicker.Examples.scss';
 
@@ -28,40 +24,11 @@ const DayPickerStrings: IDatePickerStrings = {
     'December'
   ],
 
-  shortMonths: [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec'
-  ],
+  shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 
-  days: [
-    'Sunday',
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday'
-  ],
+  days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
 
-  shortDays: [
-    'S',
-    'M',
-    'T',
-    'W',
-    'T',
-    'F',
-    'S'
-  ],
+  shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
 
   goToToday: 'Go to today',
   prevMonthAriaLabel: 'Go to previous month',
@@ -81,7 +48,6 @@ export interface IDatePickerRequiredExampleState {
 }
 
 export class DatePickerBoundedExample extends React.Component<{}, IDatePickerRequiredExampleState> {
-
   constructor(props: {}) {
     super(props);
 
@@ -90,20 +56,20 @@ export class DatePickerBoundedExample extends React.Component<{}, IDatePickerReq
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { firstDayOfWeek } = this.state;
 
     return (
-      <div className='docs-DatePickerExample'>
-        <p>{ description }</p>
+      <div className="docs-DatePickerExample">
+        <p>{description}</p>
         <DatePicker
-          isRequired={ false }
-          firstDayOfWeek={ firstDayOfWeek }
-          strings={ DayPickerStrings }
-          placeholder='Select a date...'
-          minDate={ minDate }
-          maxDate={ maxDate }
-          allowTextInput={ true }
+          isRequired={false}
+          firstDayOfWeek={firstDayOfWeek}
+          strings={DayPickerStrings}
+          placeholder="Select a date..."
+          minDate={minDate}
+          maxDate={maxDate}
+          allowTextInput={true}
         />
       </div>
     );

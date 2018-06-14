@@ -3,7 +3,7 @@ import { IStyle } from './IStyle';
 
 describe('concatStyleSets', () => {
   it('can concat style sets', () => {
-    const result = concatStyleSets<{ root?: IStyle, a?: IStyle, b?: IStyle }>(
+    const result = concatStyleSets<{ root?: IStyle; a?: IStyle; b?: IStyle }>(
       {
         root: { background: 'red' },
         a: { background: 'green' }
@@ -30,10 +30,7 @@ describe('concatStyleSets', () => {
           }
         }
       ],
-      a: [
-        { background: 'green' },
-        { background: 'white' }
-      ],
+      a: [{ background: 'green' }, { background: 'white' }],
       b: { background: 'blue' }
     });
   });

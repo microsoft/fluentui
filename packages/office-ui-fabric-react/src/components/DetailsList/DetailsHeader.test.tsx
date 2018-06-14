@@ -16,14 +16,13 @@ const _columns: IColumn[] = [
 _selection.setItems(_items);
 
 describe('DetailsHeader', () => {
-
   it('can render', () => {
     const component = renderer.create(
       <DetailsHeader
-        selection={ _selection }
-        selectionMode={ SelectionMode.multiple }
-        layoutMode={ DetailsListLayoutMode.fixedColumns }
-        columns={ _columns }
+        selection={_selection}
+        selectionMode={SelectionMode.multiple}
+        layoutMode={DetailsListLayoutMode.fixedColumns}
+        columns={_columns}
       />
     );
     expect(component.toJSON()).toMatchSnapshot();
@@ -32,28 +31,23 @@ describe('DetailsHeader', () => {
   it('can resize columns', () => {
     let lastResize = { size: -1, index: -1 };
 
-    const onColumnResized = (
-      column: IColumn,
-      size: number,
-      index: number
-    ): { size: number; index: number; } => lastResize = { size, index };
+    const onColumnResized = (column: IColumn, size: number, index: number): { size: number; index: number } =>
+      (lastResize = { size, index });
     const headerRef = createRef<IDetailsHeader>();
 
-    const columns = [];
     const wrapper = mount(
       <DetailsHeader
-        componentRef={ headerRef }
-        selection={ _selection }
-        selectionMode={ SelectionMode.multiple }
-        layoutMode={ DetailsListLayoutMode.fixedColumns }
-        columns={ _columns }
-        onColumnResized={ onColumnResized }
+        componentRef={headerRef}
+        selection={_selection}
+        selectionMode={SelectionMode.multiple}
+        layoutMode={DetailsListLayoutMode.fixedColumns}
+        columns={_columns}
+        onColumnResized={onColumnResized}
       />
     );
 
-    const rootElement = wrapper.getDOMNode();
     const sizerElement = wrapper.find('[data-sizer-index=0]').getDOMNode();
-    const header: any = headerRef.value;
+    const header: any = headerRef.current;
 
     // Trigger a mousedown, which validates that the ref to focuszone is hooking up events.
     EventGroup.raise(

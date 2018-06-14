@@ -1,12 +1,6 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
-import {
-  BaseComponent,
-  autobind,
-  css
-} from '../../Utilities';
+import { BaseComponent, css } from '../../Utilities';
 import { IDocumentCardStatusProps } from './DocumentCard.types';
 import * as stylesImport from './DocumentCard.scss';
 import { Icon } from '../../Icon';
@@ -20,14 +14,15 @@ export class DocumentCardStatus extends BaseComponent<IDocumentCardStatusProps, 
   public render() {
     const { statusIcon, status } = this.props;
     const iconProps = {
-      iconName: statusIcon, styles: {
+      iconName: statusIcon,
+      styles: {
         root: { padding: '8px' }
       }
     };
     return (
-      <div className={ css('ms-DocumentCardStatus', styles.status) }>
-        { statusIcon && <Icon { ...iconProps } /> }
-        { status }
+      <div className={css('ms-DocumentCardStatus', styles.status)}>
+        {statusIcon && <Icon {...iconProps} />}
+        {status}
       </div>
     );
   }

@@ -1,6 +1,102 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 05 Apr 2018 10:15:39 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Jun 2018 18:34:17 GMT and should not be manually modified.
+
+## 6.1.0
+Fri, 08 Jun 2018 18:34:17 GMT
+
+### Minor changes
+
+- Shimmer: Adds new Shimmer component to fabric-website
+
+### Patches
+
+- Add documentation for testing minified files locally.
+
+## 6.0.4
+Thu, 07 Jun 2018 16:35:34 GMT
+
+### Patches
+
+- Tweaked the lint rules.
+
+## 6.0.3
+Tue, 05 Jun 2018 00:44:30 GMT
+
+### Patches
+
+- Added Prettier
+
+## 6.0.2
+Mon, 04 Jun 2018 10:16:13 GMT
+
+### Patches
+
+- Updating react typings.
+
+## 6.0.1
+Thu, 31 May 2018 10:18:58 GMT
+
+### Patches
+
+- made sure the deps are resolved by package rather than relative paths
+
+## 6.0.0
+Wed, 30 May 2018 20:28:33 GMT
+
+### Breaking changes
+
+- Bump to 6.0 alongside office-ui-fabric-react 6.0 release.
+
+## 5.7.5
+Thu, 17 May 2018 10:28:07 GMT
+
+### Patches
+
+- Get rid of App-nav container in mobile, it was blocking interation.
+
+## 5.7.4
+Tue, 08 May 2018 16:02:16 GMT
+
+### Patches
+
+- When navigating to a new page, the page will now be scrolled to the top instead of whatever position of the page you were on.
+
+## 5.7.3
+Fri, 04 May 2018 15:58:39 GMT
+
+### Patches
+
+- Add fabric sketch toolkit
+- Updating React build version.
+
+## 5.7.2
+Tue, 01 May 2018 19:26:35 GMT
+
+### Patches
+
+- LocalizationPage: Only show icon names on hover so they don't overlap.
+
+## 5.7.1
+Mon, 30 Apr 2018 10:16:44 GMT
+
+### Patches
+
+- Removing unused refs.
+
+## 5.7.0
+Tue, 17 Apr 2018 18:47:11 GMT
+
+### Minor changes
+
+- GetStarted page: Give titles links to their corresponding pages.
+
+## 5.6.1
+Mon, 16 Apr 2018 10:23:26 GMT
+
+### Patches
+
+- Updating build to React 16.3.1.
 
 ## 5.6.0
 Thu, 05 Apr 2018 10:15:39 GMT

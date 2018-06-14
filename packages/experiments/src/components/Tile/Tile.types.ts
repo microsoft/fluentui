@@ -5,8 +5,8 @@ import { IBaseProps, ISize } from 'office-ui-fabric-react/lib/Utilities';
 import { ISelection } from 'office-ui-fabric-react/lib/Selection';
 
 export type TileSize = keyof {
-  small: 'small',
-  large: 'large'
+  small: 'small';
+  large: 'large';
 };
 
 export interface ITileProps extends IBaseProps, React.AllHTMLAttributes<HTMLSpanElement | HTMLAnchorElement> {
@@ -120,10 +120,10 @@ export interface ITileProps extends IBaseProps, React.AllHTMLAttributes<HTMLSpan
   /**
    * The accessible label for the selection checkbox.
    *
-   * @type {boolean}
+   * @type {string}
    * @memberof ITileProps
    */
-  toggleSelectionAriaLabel?: boolean;
+  toggleSelectionAriaLabel?: string;
 
   /**
    * Link ref

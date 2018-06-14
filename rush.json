@@ -1,5 +1,5 @@
 {
-  "npmVersion": "5.3.0",
+  "npmVersion": "5.4.0",
   "rushVersion": "4.3.0",
   "repository": {
     "url": "https://github.com/OfficeDev/office-ui-fabric-react.git"
@@ -13,10 +13,21 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@uifabric/webpack-utils",
+      "projectFolder": "packages/webpack-utils",
+      "shouldPublish": true
+    },
+    {
       "packageName": "@uifabric/experiments",
       "projectFolder": "packages/experiments",
       "versionPolicyName": "lockedMajor",
       "shouldPublish": true
+    },
+    {
+      "packageName": "@uifabric/charting",
+      "projectFolder": "packages/charting",
+      "versionPolicyName": "lockedMajor",
+      "shouldPublish": false
     },
     {
       "packageName": "@uifabric/merge-styles",
@@ -40,19 +51,12 @@
       "packageName": "@uifabric/example-app-base",
       "projectFolder": "packages/example-app-base",
       "versionPolicyName": "lockedMajor",
-      "cyclicDependencyProjects": [
-        "office-ui-fabric-react"
-      ],
       "shouldPublish": true
     },
     {
       "packageName": "@uifabric/styling",
       "projectFolder": "packages/styling",
       "versionPolicyName": "lockedMajor",
-      "cyclicDependencyProjects": [
-        "office-ui-fabric-react",
-        "@uifabric/example-app-base"
-      ],
       "shouldPublish": true
     },
     {
@@ -64,6 +68,12 @@
     {
       "packageName": "@uifabric/file-type-icons",
       "projectFolder": "packages/file-type-icons",
+      "versionPolicyName": "lockedMajor",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@uifabric/demo",
+      "projectFolder": "apps/demo",
       "versionPolicyName": "lockedMajor",
       "shouldPublish": true
     },
@@ -97,6 +107,11 @@
     {
       "packageName": "todo-app",
       "projectFolder": "apps/todo-app",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "server-rendered-app",
+      "projectFolder": "apps/server-rendered-app",
       "shouldPublish": false
     },
     {

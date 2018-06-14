@@ -4,23 +4,22 @@ import { BaseComponent, customizable, nullRender } from '../../../Utilities';
 import { IButtonProps } from '../Button.types';
 import { getStyles } from './ActionButton.styles';
 
-@customizable('ActionButton', ['theme'])
+@customizable('ActionButton', ['theme', 'styles'])
 export class ActionButton extends BaseComponent<IButtonProps, {}> {
-
   /**
    * Tell BaseComponent to bypass resolution of componentRef.
    */
   protected _shouldUpdateComponentRef = false;
 
-  public render() {
+  public render(): JSX.Element {
     const { styles, theme } = this.props;
 
     return (
       <BaseButton
-        { ...this.props }
-        variantClassName='ms-Button--action ms-Button--command'
-        styles={ getStyles(theme!, styles) }
-        onRenderDescription={ nullRender }
+        {...this.props}
+        variantClassName="ms-Button--action ms-Button--command"
+        styles={getStyles(theme!, styles)}
+        onRenderDescription={nullRender}
       />
     );
   }

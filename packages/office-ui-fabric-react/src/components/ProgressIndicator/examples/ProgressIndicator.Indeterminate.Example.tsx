@@ -6,12 +6,7 @@ export class ProgressIndicatorIndeterminateExample extends React.Component<{}, {
     super(props);
   }
 
-  public render() {
-    return (
-      <ProgressIndicator
-        label='Example title'
-        description='Example description'
-      />
-    );
+  public render(): JSX.Element {
+    return <ProgressIndicator label="Example title" description="Example description" />;
   }
 }

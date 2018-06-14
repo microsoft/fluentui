@@ -1,6 +1,8 @@
-import { IRawStyle } from '@uifabric/merge-styles/lib/index';
+import { IRawStyle } from '@uifabric/merge-styles';
 import { ITheme } from '../interfaces/index';
 import { HighContrastSelector } from './CommonStyles';
+import { IsFocusVisibleClassName } from '@uifabric/utilities';
+import { ZIndexes } from './zIndexes';
 
 /**
  * Generates a focus style which can be used to define an :after focus border.
@@ -24,12 +26,11 @@ export function getFocusStyle(
     position,
 
     selectors: {
-
       '::-moz-focus-inner': {
         border: '0'
       },
 
-      '.ms-Fabric.is-focusVisible &:focus:after': {
+      [`.${IsFocusVisibleClassName} &:focus:after`]: {
         content: '""',
         position: 'absolute',
         left: inset + 1,
@@ -38,12 +39,11 @@ export function getFocusStyle(
         right: inset + 1,
         border: '1px solid ' + theme.palette.white,
         outline: '1px solid ' + theme.palette.neutralSecondary,
-        zIndex: 1,
+        zIndex: ZIndexes.FocusStyle,
         selectors: {
           [HighContrastSelector]: highContrastStyle
         }
       }
-
     }
   };
 }

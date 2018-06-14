@@ -3,6 +3,8 @@ import { Async } from './Async';
 import { EventGroup } from './EventGroup';
 import { IDisposable } from './IDisposable';
 import { warnDeprecations, warnMutuallyExclusive, warnConditionallyRequiredProps, ISettingsMap } from './warn';
+import { initializeFocusRects } from './initializeFocusRects';
+import { initializeDir } from './initializeDir';
 
 /**
  * BaseProps interface.
@@ -11,7 +13,7 @@ import { warnDeprecations, warnMutuallyExclusive, warnConditionallyRequiredProps
  */
 // tslint:disable-next-line:no-any
 export interface IBaseProps<T = any> {
-  componentRef?: (ref: T | null) => (void | T);
+  componentRef?: (ref: T | null) => void | T;
 }
 
 /**
@@ -49,6 +51,10 @@ export class BaseComponent<P extends IBaseProps = {}, S = {}> extends React.Comp
   // tslint:disable-next-line:no-any
   constructor(props: P, context?: any) {
     super(props, context);
+
+    // Ensure basic assumptions about the environment.
+    initializeFocusRects();
+    initializeDir();
 
     this._shouldUpdateComponentRef = true;
 
@@ -101,9 +107,9 @@ export class BaseComponent<P extends IBaseProps = {}, S = {}> extends React.Comp
   public get className(): string {
     if (!this.__className) {
       let funcNameRegex = /function (.{1,})\(/;
-      let results = (funcNameRegex).exec((this).constructor.toString());
+      let results = funcNameRegex.exec(this.constructor.toString());
 
-      this.__className = (results && results.length > 1) ? results[1] : '';
+      this.__className = results && results.length > 1 ? results[1] : '';
     }
 
     return this.__className;
@@ -163,7 +169,7 @@ export class BaseComponent<P extends IBaseProps = {}, S = {}> extends React.Comp
       // tslint:disable-next-line:no-any
       this.__resolves[refName] = (ref: React.ReactNode) => {
         // tslint:disable-next-line:no-any
-        return (this as any)[refName] = ref;
+        return ((this as any)[refName] = ref);
       };
     }
 
@@ -174,10 +180,11 @@ export class BaseComponent<P extends IBaseProps = {}, S = {}> extends React.Comp
    * Updates the componentRef (by calling it with "this" when necessary.)
    */
   protected _updateComponentRef(currentProps: IBaseProps | undefined, newProps: IBaseProps = {}): void {
-    if (this._shouldUpdateComponentRef &&
+    if (
+      this._shouldUpdateComponentRef &&
       ((!currentProps && newProps.componentRef) ||
-        (currentProps && currentProps.componentRef !== newProps.componentRef))) {
-
+        (currentProps && currentProps.componentRef !== newProps.componentRef))
+    ) {
       if (currentProps && currentProps.componentRef) {
         currentProps.componentRef(null);
       }
@@ -213,10 +220,13 @@ export class BaseComponent<P extends IBaseProps = {}, S = {}> extends React.Comp
    * @param conditionalPropName - The name of the prop that the condition is based on.
    * @param condition - Whether the condition is met.
    */
-  protected _warnConditionallyRequiredProps(requiredProps: string[], conditionalPropName: string, condition: boolean): void {
+  protected _warnConditionallyRequiredProps(
+    requiredProps: string[],
+    conditionalPropName: string,
+    condition: boolean
+  ): void {
     warnConditionallyRequiredProps(this.className, this.props, requiredProps, conditionalPropName, condition);
   }
-
 }
 
 /**
@@ -238,7 +248,7 @@ function _makeSafe(obj: BaseComponent<{}, {}>, prototype: Object, methodName: st
 
   if (classMethod || prototypeMethod) {
     // tslint:disable-next-line:no-any
-    (obj as any)[methodName] = function (): any {
+    (obj as any)[methodName] = function(): any {
       let retVal;
 
       if (prototypeMethod) {
@@ -258,4 +268,6 @@ function _makeSafe(obj: BaseComponent<{}, {}>, prototype: Object, methodName: st
  *
  * @public
  */
-export function nullRender(): JSX.Element | null { return null; }
+export function nullRender(): JSX.Element | null {
+  return null;
+}

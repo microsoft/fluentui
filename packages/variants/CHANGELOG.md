@@ -1,6 +1,69 @@
 # Change Log - @uifabric/variants
 
-This log was last generated on Mon, 02 Apr 2018 22:15:06 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Jun 2018 16:35:34 GMT and should not be manually modified.
+
+## 6.0.3
+Thu, 07 Jun 2018 16:35:34 GMT
+
+### Patches
+
+- Variant Theming: update soft variant logic for better accessibility
+
+## 6.0.2
+Tue, 05 Jun 2018 00:44:30 GMT
+
+### Patches
+
+- Added Prettier
+
+## 6.0.1
+Mon, 04 Jun 2018 10:16:13 GMT
+
+### Patches
+
+- Updating react typings.
+
+## 6.0.0
+Wed, 30 May 2018 20:28:33 GMT
+
+### Breaking changes
+
+- Minimum React version is now 16.3.2.
+
+## 5.5.2
+Thu, 24 May 2018 17:06:02 GMT
+
+### Patches
+
+- update variants algorithm for new semantic slot
+
+## 5.5.1
+Wed, 23 May 2018 10:28:50 GMT
+
+### Patches
+
+- Variants: update algorithm to match newest designs
+
+## 5.5.0
+Mon, 14 May 2018 10:14:42 GMT
+
+### Minor changes
+
+- have variants use OUFR instead of Styling as a dependency to ease bundling optimizations
+
+## 5.4.0
+Mon, 30 Apr 2018 10:16:44 GMT
+
+### Minor changes
+
+- Adds flags to theme to support controlling global class names
+
+## 5.3.3
+Mon, 16 Apr 2018 10:23:26 GMT
+
+### Patches
+
+- Removing module entry temporarily. (Will be added back in 6.0.)
 
 ## 5.3.2
 Mon, 02 Apr 2018 22:15:06 GMT

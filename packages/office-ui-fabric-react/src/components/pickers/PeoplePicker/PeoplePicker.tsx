@@ -10,14 +10,11 @@ import { SuggestionItemSmall, SuggestionItemNormal } from './PeoplePickerItems/S
 import './PeoplePicker.scss';
 import { IPeoplePickerItemProps } from './PeoplePickerItems/PeoplePickerItem.types';
 
-export interface IPeoplePickerProps extends IBasePickerProps<IPersonaProps> {
-}
+export interface IPeoplePickerProps extends IBasePickerProps<IPersonaProps> {}
 
-export class BasePeoplePicker extends BasePicker<IPersonaProps, IPeoplePickerProps> {
-}
+export class BasePeoplePicker extends BasePicker<IPersonaProps, IPeoplePickerProps> {}
 
-export class MemberListPeoplePicker extends BasePickerListBelow<IPersonaProps, IPeoplePickerProps> {
-}
+export class MemberListPeoplePicker extends BasePickerListBelow<IPersonaProps, IPeoplePickerProps> {}
 
 /**
  * Standard People Picker.
@@ -25,18 +22,20 @@ export class MemberListPeoplePicker extends BasePickerListBelow<IPersonaProps, I
 export class NormalPeoplePicker extends BasePeoplePicker {
   public static defaultProps = {
     onRenderItem: (props: IPeoplePickerItemProps) => <SelectedItemDefault {...props} />,
-    onRenderSuggestionsItem: (props: IPersonaProps, itemProps?: IBasePickerSuggestionsProps) => SuggestionItemNormal({ ...props }, { ...itemProps }),
+    onRenderSuggestionsItem: (props: IPersonaProps, itemProps?: IBasePickerSuggestionsProps) =>
+      SuggestionItemNormal({ ...props }, { ...itemProps }),
     createGenericItem: createGenericItem
   };
 }
 
 /**
-* Compact layout. It uses small personas when displaying search results.
-*/
+ * Compact layout. It uses small personas when displaying search results.
+ */
 export class CompactPeoplePicker extends BasePeoplePicker {
   public static defaultProps = {
     onRenderItem: (props: IPeoplePickerItemProps) => <SelectedItemDefault {...props} />,
-    onRenderSuggestionsItem: (props: IPersonaProps, itemProps?: IBasePickerSuggestionsProps) => SuggestionItemSmall({ ...props }, { ...itemProps }),
+    onRenderSuggestionsItem: (props: IPersonaProps, itemProps?: IBasePickerSuggestionsProps) =>
+      SuggestionItemSmall({ ...props }, { ...itemProps }),
     createGenericItem: createGenericItem
   };
 }
@@ -47,12 +46,23 @@ export class CompactPeoplePicker extends BasePeoplePicker {
 export class ListPeoplePicker extends MemberListPeoplePicker {
   public static defaultProps = {
     onRenderItem: (props: IPeoplePickerItemProps) => <SelectedItemDefault {...props} />,
-    onRenderSuggestionsItem: (props: IPersonaProps, itemProps?: IBasePickerSuggestionsProps) => SuggestionItemNormal({ ...props }, { ...itemProps }),
+    onRenderSuggestionsItem: (props: IPersonaProps, itemProps?: IBasePickerSuggestionsProps) =>
+      SuggestionItemNormal({ ...props }, { ...itemProps }),
     createGenericItem: createGenericItem
   };
 }
 
-export function createGenericItem(name: string, currentValidationState: ValidationState, allowPhoneInitials: boolean) {
+export interface IGenericItem {
+  primaryText: string;
+  imageInitials: string;
+  ValidationState: ValidationState;
+}
+
+export function createGenericItem(
+  name: string,
+  currentValidationState: ValidationState,
+  allowPhoneInitials: boolean
+): IGenericItem & { key: React.Key } {
   const personaToConvert = {
     key: name,
     primaryText: name,

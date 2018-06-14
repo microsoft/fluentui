@@ -3,10 +3,12 @@ import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button'
 import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 
-export class PanelSmallRightExample extends React.Component<{}, {
-  showPanel: boolean;
-}> {
-
+export class PanelSmallRightExample extends React.Component<
+  {},
+  {
+    showPanel: boolean;
+  }
+> {
   constructor(props: {}) {
     super(props);
     this.state = {
@@ -14,24 +16,20 @@ export class PanelSmallRightExample extends React.Component<{}, {
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
-        <DefaultButton
-          description='Opens the Sample Panel'
-          onClick={ this._onShowPanel }
-          text='Open Panel'
-        />
+        <DefaultButton secondaryText="Opens the Sample Panel" onClick={this._onShowPanel} text="Open Panel" />
         <Panel
-          isOpen={ this.state.showPanel }
-          type={ PanelType.smallFixedFar }
-          onDismiss={ this._onClosePanel }
-          headerText='Panel - Small, right-aligned, fixed, with footer'
-          closeButtonAriaLabel='Close'
-          onRenderFooterContent={ this._onRenderFooterContent }
+          isOpen={this.state.showPanel}
+          type={PanelType.smallFixedFar}
+          onDismiss={this._onClosePanel}
+          headerText="Panel - Small, right-aligned, fixed, with footer"
+          closeButtonAriaLabel="Close"
+          onRenderFooterContent={this._onRenderFooterContent}
         >
           <ChoiceGroup
-            options={ [
+            options={[
               {
                 key: 'A',
                 text: 'Option A'
@@ -52,9 +50,9 @@ export class PanelSmallRightExample extends React.Component<{}, {
                 checked: true,
                 disabled: true
               }
-            ] }
-            label='Pick one'
-            required={ true }
+            ]}
+            label="Pick one"
+            required={true}
           />
         </Panel>
       </div>
@@ -63,27 +61,20 @@ export class PanelSmallRightExample extends React.Component<{}, {
 
   private _onClosePanel = (): void => {
     this.setState({ showPanel: false });
-  }
+  };
 
   private _onRenderFooterContent = (): JSX.Element => {
     return (
       <div>
-        <PrimaryButton
-          onClick={ this._onClosePanel }
-          style={ { 'marginRight': '8px' } }
-        >
+        <PrimaryButton onClick={this._onClosePanel} style={{ marginRight: '8px' }}>
           Save
         </PrimaryButton>
-        <DefaultButton
-          onClick={ this._onClosePanel }
-        >
-          Cancel
-        </DefaultButton>
+        <DefaultButton onClick={this._onClosePanel}>Cancel</DefaultButton>
       </div>
     );
-  }
+  };
 
   private _onShowPanel = (): void => {
     this.setState({ showPanel: true });
-  }
+  };
 }

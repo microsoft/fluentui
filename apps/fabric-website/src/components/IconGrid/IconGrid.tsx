@@ -26,40 +26,58 @@ export class IconGrid extends React.Component<IIconGridProps, IIconGridState> {
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     let { icons } = this.props;
     let { searchQuery } = this.state;
 
     return (
       <div>
-        <SearchBox placeholder='Search icons' value={ searchQuery } onChange={ this._onSearchQueryChanged.bind(this) } className={ styles.searchBox } />
-        <ul className={ styles.grid }>
-          { icons
+        <SearchBox
+          placeholder="Search icons"
+          value={searchQuery}
+          onChange={this._onSearchQueryChanged.bind(this)}
+          className={styles.searchBox}
+        />
+        <ul className={styles.grid}>
+          {icons
             .filter(icon => icon.name.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1)
             .map((icon, iconIndex) => {
-              let iconJsxElement = <i ref={ (`${icon.name}`) } className={ `ms-Icon ms-Icon--${icon.name}` } title={ `${icon.name}` } aria-hidden='true' />;
+              let iconJsxElement = (
+                <i
+                  ref={`${icon.name}`}
+                  className={`ms-Icon ms-Icon--${icon.name}`}
+                  title={`${icon.name}`}
+                  aria-hidden="true"
+                />
+              );
               let iconRefElement = this.refs[icon.name] as HTMLElement;
 
               if (iconRefElement && iconRefElement.offsetWidth > 80) {
-                iconJsxElement = <i ref={ (`${icon.name}`) } className={ `ms-Icon ms-Icon--${icon.name} hoverIcon` } title={ `${icon.name}` } aria-hidden='true' />;
+                iconJsxElement = (
+                  <i
+                    ref={`${icon.name}`}
+                    className={`ms-Icon ms-Icon--${icon.name} hoverIcon`}
+                    title={`${icon.name}`}
+                    aria-hidden="true"
+                  />
+                );
               }
 
               return (
-                < li key={ iconIndex } aria-label={ icon.name + ' icon' } >
-                  { iconJsxElement }
-                  <span>{ icon.name }</span>
+                <li key={iconIndex} aria-label={icon.name + ' icon'}>
+                  {iconJsxElement}
+                  <span>{icon.name}</span>
                 </li>
               );
-            })
-          }
+            })}
         </ul>
       </div>
     );
   }
 
-  private _onSearchQueryChanged(newValue) {
+  private _onSearchQueryChanged(newValue): void {
     this.setState({
-      'searchQuery': newValue
+      searchQuery: newValue
     });
   }
 }

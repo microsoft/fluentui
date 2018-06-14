@@ -5,12 +5,27 @@ import {
   DefaultFontStyles,
   getFocusStyle,
   FontSizes,
-  FontWeights
+  FontWeights,
+  ZIndexes,
+  getGlobalClassNames
 } from '../../Styling';
+
+const GlobalClassNames = {
+  root: 'ms-Nav',
+  linkText: 'ms-Nav-linkText',
+  compositeLink: 'ms-Nav-compositeLink',
+  link: 'ms-Nav-link',
+  chevronButton: 'ms-Nav-chevronButton',
+  chevronIcon: 'ms-Nav-chevron',
+  navItem: 'ms-Nav-navItem',
+  navItems: 'ms-Nav-navItems',
+  group: 'ms-Nav-group',
+  groupContent: 'ms-Nav-groupContent'
+};
 
 export const buttonStyles: IButtonStyles = {
   textContainer: {
-    overflow: 'hidden',
+    overflow: 'hidden'
   },
   label: {
     whiteSpace: 'nowrap',
@@ -20,9 +35,7 @@ export const buttonStyles: IButtonStyles = {
   }
 };
 
-export const getStyles = (
-  props: INavStyleProps
-): INavStyles => {
+export const getStyles = (props: INavStyleProps): INavStyles => {
   const {
     className,
     theme,
@@ -41,9 +54,11 @@ export const getStyles = (
 
   const { palette, semanticColors } = theme;
 
-  return ({
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
+  return {
     root: [
-      'ms-Nav',
+      classNames.root,
       className,
       {
         overflowY: 'auto',
@@ -58,7 +73,7 @@ export const getStyles = (
       ]
     ],
     linkText: [
-      'ms-Nav-linkText',
+      classNames.linkText,
       {
         margin: '0 4px',
         overflow: 'hidden',
@@ -67,18 +82,18 @@ export const getStyles = (
       }
     ],
     compositeLink: [
-      'ms-Nav-compositeLink',
+      classNames.compositeLink,
       {
         display: 'block',
         position: 'relative',
         color: semanticColors.bodyText,
-        backgroundColor: semanticColors.bodyBackground,
+        backgroundColor: semanticColors.bodyBackground
       },
       isExpanded && 'is-expanded',
       isSelected && 'is-selected'
     ],
     link: [
-      'ms-Nav-link',
+      classNames.link,
       getFocusStyle(theme),
       {
         display: 'block',
@@ -97,8 +112,8 @@ export const getStyles = (
           '.ms-Nav-compositeLink:hover &': {
             backgroundColor: palette.neutralLighterAlt,
             color: semanticColors.bodyText
-          },
-        },
+          }
+        }
       },
       isSelected && {
         color: palette.themePrimary,
@@ -120,7 +135,7 @@ export const getStyles = (
       }
     ],
     chevronButton: [
-      'ms-Nav-chevronButton',
+      classNames.chevronButton,
       getFocusStyle(theme),
       {
         display: 'block',
@@ -148,7 +163,7 @@ export const getStyles = (
           '$compositeLink:hover &': {
             color: semanticColors.bodyText,
             backgroundColor: palette.neutralLighterAlt
-          },
+          }
         }
       },
       isGroup && [
@@ -167,7 +182,7 @@ export const getStyles = (
           position: 'absolute',
           top: '1px',
           left: `${position}px`,
-          zIndex: 1,
+          zIndex: ZIndexes.Nav,
           padding: 0,
           margin: 0
         }
@@ -189,14 +204,14 @@ export const getStyles = (
       }
     ],
     chevronIcon: [
-      'ms-Nav-chevron',
+      classNames.chevronIcon,
       {
         position: 'absolute',
         left: '8px',
         height: `${navHeight}px`,
         lineHeight: `${navHeight}px`,
         fontSize: '12px',
-        transition: 'transform .1s linear',
+        transition: 'transform .1s linear'
       },
       isExpanded && {
         transform: 'rotate(-180deg)'
@@ -206,24 +221,21 @@ export const getStyles = (
       }
     ],
     navItem: [
-      'ms-Nav-navItem',
+      classNames.navItem,
       {
         padding: 0
       }
     ],
     navItems: [
-      'ms-Nav-navItems',
+      classNames.navItems,
       {
         listStyleType: 'none',
         padding: 0
       }
     ],
-    group: [
-      'ms-Nav-group',
-      isExpanded && 'is-expanded'
-    ],
+    group: [classNames.group, isExpanded && 'is-expanded'],
     groupContent: [
-      'ms-Nav-groupContent',
+      classNames.groupContent,
       {
         display: 'none',
         marginBottom: '40px'
@@ -233,5 +245,5 @@ export const getStyles = (
         display: 'block'
       }
     ]
-  });
+  };
 };

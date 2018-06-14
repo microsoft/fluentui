@@ -1,48 +1,36 @@
-import {
-  HighContrastSelector,
-  IRawStyle,
-  focusClear
-} from '../../Styling';
+import { HighContrastSelector, IRawStyle, focusClear, getGlobalClassNames } from '../../Styling';
 import { ICalloutContentStyleProps, ICalloutContentStyles } from './Callout.types';
 
-function getBeakStyle(beakWidth?: number,
-  beakStyle?: string): IRawStyle {
-  let beakStyleWidth = beakWidth;
-
-  // This is here to support the old way of setting the beak size until version 1.0.0.
-  // beakStyle is now deprecated and will be be removed at version 1.0.0
-  if (beakStyle === 'ms-Callout-smallbeak') {
-    beakStyleWidth = 16;
-  }
-
+function getBeakStyle(beakWidth?: number): IRawStyle {
   return {
-    height: beakStyleWidth,
-    width: beakStyleWidth
+    height: beakWidth,
+    width: beakWidth
   };
 }
 
+const GlobalClassNames = {
+  container: 'ms-Callout-container',
+  root: 'ms-Callout',
+  beak: 'ms-Callout-beak',
+  beakCurtain: 'ms-Callout-beakCurtain',
+  calloutMain: 'ms-Callout-main'
+};
+
 export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyles => {
-  const {
-    theme,
-    className,
-    overflowYHidden,
-    calloutWidth,
-    contentMaxHeight,
-    beakWidth,
-    backgroundColor,
-    beakStyle
-  } = props;
+  const { theme, className, overflowYHidden, calloutWidth, beakWidth, backgroundColor } = props;
+
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const { palette } = theme;
   return {
     container: [
-      'ms-Callout-container',
+      classNames.container,
       {
-        position: 'relative',
+        position: 'relative'
       }
     ],
     root: [
-      'ms-Callout',
+      classNames.root,
       {
         position: 'absolute',
         boxSizing: 'border-box',
@@ -54,7 +42,7 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
           [HighContrastSelector]: {
             borderWidth: 1,
             borderStyle: 'solid',
-            borderColor: 'WindowText',
+            borderColor: 'WindowText'
           }
         }
       },
@@ -63,7 +51,7 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
       !!calloutWidth && { width: calloutWidth }
     ],
     beak: [
-      'ms-Callout-beak',
+      classNames.beak,
       {
         position: 'absolute',
         backgroundColor: palette.white,
@@ -72,30 +60,29 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
         boxSizing: 'border-box',
         transform: 'rotate(45deg)'
       },
-      getBeakStyle(beakWidth, beakStyle),
+      getBeakStyle(beakWidth),
       backgroundColor && {
         backgroundColor: backgroundColor
       }
     ],
     beakCurtain: [
-      'ms-Callout-beakCurtain',
+      classNames.beakCurtain,
       {
         position: 'absolute',
         top: 0,
         right: 0,
         bottom: 0,
         left: 0,
-        backgroundColor: palette.white,
+        backgroundColor: palette.white
       }
     ],
     calloutMain: [
-      'ms-Callout-main',
+      classNames.calloutMain,
       {
         backgroundColor: palette.white,
         overflowX: 'hidden',
         overflowY: 'auto',
-        position: 'relative',
-        maxHeight: contentMaxHeight
+        position: 'relative'
       },
       overflowYHidden && {
         overflowY: 'hidden'
@@ -103,6 +90,6 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
       backgroundColor && {
         backgroundColor: backgroundColor
       }
-    ],
+    ]
   };
 };

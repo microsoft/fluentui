@@ -1,21 +1,17 @@
 import * as React from 'react';
 import { IRenderFunction } from '../../Utilities';
 import { PersonaBase } from './Persona.base';
-import { PersonaCoinBase } from './PersonaCoin';
-import { PersonaPresenceBase } from './PersonaPresence';
 import { ImageLoadState } from '../../Image';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IStyleFunctionOrObject } from '../../Utilities';
 
-export interface IPersona {
-
-}
+export interface IPersona {}
 
 export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
   /**
    * Primary text to display, usually the name of the person.
    */
-  primaryText?: string;
+  text?: string;
 
   /**
    * Decides the size of the control.
@@ -52,7 +48,7 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
 
   /**
    * The user's initials to display in the image area when there is no image.
-   * @defaultvalue [Derived from primaryText]
+   * @defaultvalue [Derived from text]
    */
   imageInitials?: string;
 
@@ -75,7 +71,7 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
 
   /**
    * The background color when the user's initials are displayed.
-   * @defaultvalue [Derived from primaryText]
+   * @defaultvalue [Derived from text]
    */
   initialsColor?: PersonaInitialsColor | string;
 
@@ -111,6 +107,12 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
   showSecondaryText?: boolean;
 
   /**
+   * If true, show the special coin for unknown persona.
+   * It has '?' in place of initials, with static font and background colors
+   */
+  showUnknownPersonaCoin?: boolean;
+
+  /**
    * Optional custom persona coin size in pixel.
    */
   coinSize?: number;
@@ -124,6 +126,12 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
    * Theme provided by High-Order Component.
    */
   theme?: ITheme;
+
+  /**
+   * Primary text to display, usually the name of the person.
+   * @deprecated Use 'text' instead.
+   */
+  primaryText?: string;
 }
 
 export interface IPersonaProps extends IPersonaSharedProps {
@@ -141,7 +149,7 @@ export interface IPersonaProps extends IPersonaSharedProps {
   /**
    * Call to provide customized styling that will layer on top of variant rules
    */
-  getStyles?: IStyleFunction<IPersonaStyleProps, IPersonaStyles>;
+  styles?: IStyleFunctionOrObject<IPersonaStyleProps, IPersonaStyles>;
 
   /**
    * Optional custom renderer for the primary text.
@@ -217,7 +225,7 @@ export interface IPersonaCoinProps extends IPersonaSharedProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
-  getStyles?: IStyleFunction<IPersonaCoinStyleProps, IPersonaCoinStyles>;
+  styles?: IStyleFunctionOrObject<IPersonaCoinStyleProps, IPersonaCoinStyles>;
 
   /**
    * Additional css class to apply to the PersonaCoin
@@ -242,6 +250,11 @@ export interface IPersonaCoinStyleProps {
    * @defaultvalue PersonaSize.size48
    */
   size?: PersonaSize;
+
+  /**
+   * Decides whether to display coin for unknown persona
+   */
+  showUnknownPersonaCoin?: boolean;
 }
 
 export interface IPersonaCoinStyles {
@@ -261,7 +274,7 @@ export interface IPersonaPresenceProps extends IPersonaSharedProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
-  getStyles?: IStyleFunction<IPersonaPresenceStyleProps, IPersonaPresenceStyles>;
+  styles?: IStyleFunctionOrObject<IPersonaPresenceStyleProps, IPersonaPresenceStyles>;
 }
 
 export interface IPersonaPresenceStyleProps {
@@ -374,5 +387,5 @@ export enum PersonaInitialsColor {
    * Transparent is not intended to be used with typical initials due to accessibility issues.
    * Its primary use is for overflow buttons, so it is considered a reserved color and can only be set with overrides.
    */
-  transparent = 15,
+  transparent = 15
 }

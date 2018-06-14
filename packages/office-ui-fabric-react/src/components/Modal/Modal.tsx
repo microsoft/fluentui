@@ -1,10 +1,5 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  css,
-  getId,
-  createRef
-} from '../../Utilities';
+import { BaseComponent, css, getId, createRef } from '../../Utilities';
 import { FocusTrapZone, IFocusTrapZone } from '../FocusTrapZone/index';
 import { IModalProps, IModal } from './Modal.types';
 import { Overlay } from '../../Overlay';
@@ -25,13 +20,12 @@ export interface IDialogState {
 
 @withResponsiveMode
 export class Modal extends BaseComponent<IModalProps, IDialogState> implements IModal {
-
   public static defaultProps: IModalProps = {
     isOpen: false,
     isDarkOverlay: true,
     isBlocking: false,
     className: '',
-    containerClassName: '',
+    containerClassName: ''
   };
 
   private _onModalCloseTimer: number;
@@ -42,11 +36,11 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> implements I
     this.state = {
       id: getId('Modal'),
       isOpen: props.isOpen,
-      isVisible: props.isOpen,
+      isVisible: props.isOpen
     };
   }
 
-  public componentWillReceiveProps(newProps: IModalProps) {
+  public componentWillReceiveProps(newProps: IModalProps): void {
     clearTimeout(this._onModalCloseTimer);
 
     // Opening the dialog
@@ -94,7 +88,7 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> implements I
       onLayerDidMount,
       responsiveMode,
       titleAriaId,
-      subtitleAriaId,
+      subtitleAriaId
     } = this.props;
     const { isOpen, isVisible } = this.state;
 
@@ -113,25 +107,25 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> implements I
     // @temp tuatology - Will adjust this to be a panel at certain breakpoints
     if (responsiveMode! >= ResponsiveMode.small) {
       return (
-        <Layer onLayerDidMount={ onLayerDidMount }>
+        <Layer onLayerDidMount={onLayerDidMount}>
           <Popup
-            role={ isBlocking ? 'alertdialog' : 'dialog' }
-            ariaLabelledBy={ titleAriaId }
-            ariaDescribedBy={ subtitleAriaId }
-            onDismiss={ onDismiss }
+            role={isBlocking ? 'alertdialog' : 'dialog'}
+            ariaLabelledBy={titleAriaId}
+            ariaDescribedBy={subtitleAriaId}
+            onDismiss={onDismiss}
           >
-            <div className={ modalClassName }>
-              <Overlay isDarkThemed={ isDarkOverlay } onClick={ isBlocking ? undefined : (onDismiss as any) } />
+            <div className={modalClassName}>
+              <Overlay isDarkThemed={isDarkOverlay} onClick={isBlocking ? undefined : (onDismiss as any)} />
               <FocusTrapZone
-                componentRef={ this._focusTrapZone }
-                className={ css('ms-Dialog-main', styles.main, this.props.containerClassName) }
-                elementToFocusOnDismiss={ elementToFocusOnDismiss }
-                isClickableOutsideFocusTrap={ isClickableOutsideFocusTrap ? isClickableOutsideFocusTrap : !isBlocking }
-                ignoreExternalFocusing={ ignoreExternalFocusing }
-                forceFocusInsideTrap={ forceFocusInsideTrap }
-                firstFocusableSelector={ firstFocusableSelector }
+                componentRef={this._focusTrapZone}
+                className={css('ms-Dialog-main', styles.main, this.props.containerClassName)}
+                elementToFocusOnDismiss={elementToFocusOnDismiss}
+                isClickableOutsideFocusTrap={isClickableOutsideFocusTrap ? isClickableOutsideFocusTrap : !isBlocking}
+                ignoreExternalFocusing={ignoreExternalFocusing}
+                forceFocusInsideTrap={forceFocusInsideTrap}
+                firstFocusableSelector={firstFocusableSelector}
               >
-                { this.props.children }
+                {this.props.children}
               </FocusTrapZone>
             </div>
           </Popup>
@@ -142,13 +136,13 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> implements I
   }
 
   public focus() {
-    if (this._focusTrapZone.value) {
-      this._focusTrapZone.value.focus();
+    if (this._focusTrapZone.current) {
+      this._focusTrapZone.current.focus();
     }
   }
 
   // Watch for completed animations and set the state
-  private _onModalClose() {
+  private _onModalClose(): void {
     this.setState({
       isOpen: false
     });

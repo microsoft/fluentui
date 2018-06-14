@@ -12,7 +12,6 @@ exports[`Facepile renders Facepile correctly 1`] = `
       aria-labelledby={undefined}
       className="ms-FocusZone ms-Facepile-members"
       data-focuszone-id="FocusZone1"
-      onClick={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
@@ -31,7 +30,13 @@ exports[`Facepile renders Facepile correctly 1`] = `
           className=
               ms-Persona-coin
               ms-Persona--size32
-
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+              }
           size={11}
         >
           <div
@@ -109,7 +114,13 @@ exports[`Facepile renders Facepile correctly 1`] = `
           className=
               ms-Persona-coin
               ms-Persona--size32
-
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+              }
           size={11}
         >
           <div
@@ -175,9 +186,10 @@ exports[`Facepile renders Facepile correctly 1`] = `
         </div>
       </div>
       <button
-        aria-describedby={null}
+        aria-describedby={undefined}
+        aria-disabled={undefined}
         aria-label={undefined}
-        aria-labelledby={null}
+        aria-labelledby={undefined}
         aria-pressed={undefined}
         className=
             ms-Button
@@ -208,7 +220,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
             &::-moz-focus-inner {
               border: 0;
             }
-            .ms-Fabric.is-focusVisible &:focus:after {
+            .ms-Fabric--isFocusVisible &:focus:after {
               border: 1px solid #ffffff;
               bottom: 0px;
               content: "";
@@ -219,7 +231,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
               top: 0px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
               border: none;
               bottom: -2px;
               left: -2px;
@@ -252,7 +264,13 @@ exports[`Facepile renders Facepile correctly 1`] = `
             className=
                 ms-Persona-coin
                 ms-Persona--size32
-
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
             size={11}
           >
             <div

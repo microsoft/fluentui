@@ -1,5 +1,5 @@
-import { ISpinnerStyleProps, ISpinnerStyles, SpinnerSize, SpinnerType } from './Spinner.types';
-import { IRawStyle, hiddenContentStyle, keyframes, HighContrastSelector } from '../../Styling';
+import { ISpinnerStyleProps, ISpinnerStyles, SpinnerSize } from './Spinner.types';
+import { hiddenContentStyle, keyframes, HighContrastSelector } from '../../Styling';
 
 const spinAnimation: string = keyframes({
   '0%': {
@@ -15,10 +15,7 @@ export const getStyles = (props: ISpinnerStyleProps): ISpinnerStyles => {
   const { palette } = theme;
 
   return {
-    root: [
-      'ms-Spinner',
-      className
-    ],
+    root: ['ms-Spinner', className],
     circle: [
       'ms-Spinner-circle',
       {
@@ -37,7 +34,7 @@ export const getStyles = (props: ISpinnerStyleProps): ISpinnerStyles => {
           [HighContrastSelector]: {
             borderTopColor: 'Highlight'
           }
-        },
+        }
       },
       size === SpinnerSize.xSmall && [
         'ms-Spinner--xSmall',

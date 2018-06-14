@@ -1,6 +1,239 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 10 Apr 2018 17:37:28 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Jun 2018 18:34:17 GMT and should not be manually modified.
+
+## 6.4.0
+Fri, 08 Jun 2018 18:34:17 GMT
+
+### Minor changes
+
+- add style arg to customizable
+
+## 6.3.0
+Thu, 07 Jun 2018 16:35:34 GMT
+
+### Minor changes
+
+- Create CollapsibleSection component and createComponent utility.
+- Tweaked the lint rules.
+
+### Patches
+
+- Code format changes
+
+## 6.2.0
+Tue, 05 Jun 2018 10:23:03 GMT
+
+### Minor changes
+
+- Experiment/Nav component: hide nav group header if the links under it are hidden
+- ShimmerTile: Moves ShimmerTile to Tile component as it's only purpose is create a mock for a tile and itself alone never renders a Shimmer animation.
+
+## 6.1.2
+Tue, 05 Jun 2018 00:44:30 GMT
+
+### Patches
+
+- Added Prettier
+
+## 6.1.1
+Mon, 04 Jun 2018 10:16:13 GMT
+
+### Patches
+
+- Updating react typings.
+- Fixed tests to be compatible with jest 23
+
+## 6.1.0
+Fri, 01 Jun 2018 10:18:43 GMT
+
+### Minor changes
+
+- Experiments/Nav component: display "show more" link only if there is atleast one hidden link
+- Shimmer: Shimmer refactor to use new props and deprecate others. Build more examples of Shimmer use.
+
+## 6.0.0
+Wed, 30 May 2018 20:28:33 GMT
+
+### Breaking changes
+
+- Command Bar: Promoted to main office-ui-fabric-react package.
+- Minimum React version is now 16.3.2.
+
+## 5.44.0
+Mon, 28 May 2018 10:23:24 GMT
+
+### Minor changes
+
+- Shimmer: Refactors and enhances Shimmer with more features.
+
+## 5.43.0
+Fri, 25 May 2018 21:30:43 GMT
+
+### Minor changes
+
+- Experiments/Nav component: Enable auto expand until the next manual expand disables the auto expand
+
+## 5.42.0
+Fri, 25 May 2018 16:53:46 GMT
+
+### Minor changes
+
+- Experiments/Nav component: Auto select/expand based on the selectedKey prop
+- Keyboard support for the slim version of experiments/Nav component and added aria attributes
+
+## 5.41.0
+Tue, 22 May 2018 10:29:12 GMT
+
+### Minor changes
+
+- Implementation of the Chiclet component
+
+## 5.40.0
+Mon, 21 May 2018 10:29:16 GMT
+
+### Minor changes
+
+- Screen reader support for the toggle nav menu and made the toggle nav menu customizable through props
+
+## 5.39.0
+Wed, 16 May 2018 00:05:17 GMT
+
+### Minor changes
+
+- Experiments/Nav: accessibility changes
+
+### Patches
+
+- use better icon for MalwareDetectedSignal
+
+## 5.38.2
+Fri, 11 May 2018 04:21:29 GMT
+
+### Patches
+
+- Fix Fluent palette color names
+
+## 5.38.1
+Thu, 10 May 2018 10:27:25 GMT
+
+### Patches
+
+- Update Fluent theme to use relative imports
+
+## 5.38.0
+Tue, 08 May 2018 10:17:01 GMT
+
+### Minor changes
+
+- Adds a Fluent theme experiment
+
+## 5.37.0
+Fri, 04 May 2018 15:58:38 GMT
+
+### Minor changes
+
+- Edit link to customize experiments/Nav component and show more/less link to toggle hidden nav links
+
+### Patches
+
+- Updating React build version.
+
+## 5.36.0
+Wed, 02 May 2018 23:55:40 GMT
+
+### Minor changes
+
+- Remove Keytips from experiments package
+
+## 5.35.0
+Tue, 01 May 2018 10:23:32 GMT
+
+### Minor changes
+
+- remove extendedPicker, floatingPicker, and selectedItemsList from experiments
+- Command bar accessibility: one tab stop with aria label
+
+## 5.34.0
+Mon, 30 Apr 2018 10:16:44 GMT
+
+### Minor changes
+
+- Nav: Refactored out a NavLink component.
+
+## 5.33.1
+Wed, 25 Apr 2018 05:32:09 GMT
+
+### Patches
+
+- Fix bad aria-label prop in Tile
+
+## 5.33.0
+Mon, 23 Apr 2018 10:24:54 GMT
+
+### Minor changes
+
+- Updating the focus styling to use the generalized `ms-Fabric--isFocusVisibl
+
+### Patches
+
+- Fix code in @uifabric/experiments such that it adheres to same tslint rules as the main office-ui-fabric-react package.
+- Fix index import
+
+## 5.32.0
+Fri, 20 Apr 2018 23:06:06 GMT
+
+### Minor changes
+
+- Add delete callback, expose item change methods on SelectedItemsList
+- Shimmer: adding two new props and deprecating another one.
+
+## 5.31.4
+Thu, 19 Apr 2018 18:25:59 GMT
+
+### Patches
+
+- Update createRef to match React.createRef api
+
+## 5.31.3
+Wed, 18 Apr 2018 10:15:04 GMT
+
+### Patches
+
+- Experiments: NavPage bad imports fixed.
+
+## 5.31.2
+Tue, 17 Apr 2018 18:47:11 GMT
+
+### Patches
+
+- Fix improper imports from index files
+
+## 5.31.1
+Mon, 16 Apr 2018 10:23:25 GMT
+
+### Patches
+
+- prefer const, instead of let, for extendedpicker, floatingpicker, and selecteditemlists
+- M365Nav component as an experiment
+- Removing module entry temporarily. (Will be added back in 6.0.)
+- Updating build to React 16.3.1.
+- Shimmer: Changes casing on enums in Shimmer.types
+- Experiments: fixing imports for example pages for better user understanding.
+- Shimmer: adding two more examples as per designers request.
+- Shimmer: imports audited
+
+## 5.31.0
+Thu, 12 Apr 2018 10:15:54 GMT
+
+### Minor changes
+
+- Refactoring Shimmer and adding ShimmerTile + Implements Shimmer in TilesList.
+
+### Patches
+
+- Shimmerline import was not correct, fixing import.
+- Shimmer: Application example modified to reflect changes in DetailsList
 
 ## 5.30.0
 Tue, 10 Apr 2018 17:37:28 GMT

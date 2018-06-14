@@ -1,30 +1,39 @@
-import {
-  IShimmerGapStyleProps,
-  IShimmerGapStyles
-} from './ShimmerGap.types';
-import { IStyleSet, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { IShimmerGapStyleProps, IShimmerGapStyles } from './ShimmerGap.types';
+import { IStyleSet, getGlobalClassNames, HighContrastSelector } from '../../../Styling';
+
+const GlobalClassNames = {
+  root: 'ms-ShimmerGap-root'
+};
 
 export function getStyles(props: IShimmerGapStyleProps): IShimmerGapStyles {
-  const {
-    height,
-    widthInPercentage,
-    widthInPixel,
-    borderStyle
-  } = props;
+  const { height, widthInPercentage, widthInPixel, borderStyle, theme } = props;
+
+  const { palette } = theme;
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const styles: IStyleSet = !!borderStyle ? borderStyle : {};
   const ACTUAL_WIDTH = widthInPercentage ? widthInPercentage + '%' : widthInPixel ? widthInPixel + 'px' : '10px';
 
   return {
     root: [
-      'ms-ShimmerGap-root',
+      classNames.root,
+      styles,
       {
-        backgroundColor: `${DefaultPalette.white}`,
+        backgroundColor: palette.white,
         width: ACTUAL_WIDTH,
+        minWidth: widthInPixel ? ACTUAL_WIDTH : 'auto', // Fix for IE11 flex items
         height: `${height}px`,
         boxSizing: 'content-box',
-      },
-      styles
+        borderTopStyle: 'solid',
+        borderBottomStyle: 'solid',
+        borderColor: palette.white,
+        selectors: {
+          [HighContrastSelector]: {
+            backgroundColor: 'Window',
+            borderColor: 'Window'
+          }
+        }
+      }
     ]
   };
 }

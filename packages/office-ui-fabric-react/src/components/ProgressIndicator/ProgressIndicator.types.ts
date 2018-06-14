@@ -1,33 +1,58 @@
-export interface IProgressIndicator {
+import * as React from 'react';
+import { ProgressIndicatorBase } from './ProgressIndicator.base';
+import { IStyle, ITheme } from '../../Styling';
+import { IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
 
+export interface IProgressIndicator {
+  focus: () => void;
 }
 
-export interface IProgressIndicatorProps {
+export interface IProgressIndicatorProps extends React.Props<ProgressIndicatorBase> {
   /**
-   * Optional callback to access the IProgressIndicator interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
+   * Gets the component ref.
    */
-  componentRef?: (component: IProgressIndicator | null) => void;
+  componentRef?: (component: IProgressIndicatorProps | null) => void;
 
   /**
-   * Class name to apply to the root in addition to ms-ProgressIndicator.
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  styles?: IStyleFunctionOrObject<IProgressIndicatorStyleProps, IProgressIndicatorStyles>;
+
+  /**
+   * Theme provided by High-Order Component.
+   */
+  theme?: ITheme;
+
+  /**
+   * Additional css class to apply to the ProgressIndicator
+   * @defaultvalue undefined
    */
   className?: string;
 
   /**
-   * Label to display above the control.
+   * Label to display above the control. May be a string or React virtual elements.
    */
-  label?: string;
+  label?: React.ReactNode;
 
   /**
-   * Text describing or supplementing the operation.
+   * Text describing or supplementing the operation. May be a string or React virtual elements.
    */
-  description?: string;
+  description?: React.ReactNode;
 
   /**
    * Percentage of the operation's completeness. If this is not set, the indeterminate progress animation will be shown instead.
    */
   percentComplete?: number;
+
+  /**
+   * Whether or not to hide the progress state.
+   */
+  progressHidden?: boolean;
+
+  /**
+   * A render override for the progress track.
+   */
+  onRenderProgress?: IRenderFunction<IProgressIndicatorProps>;
 
   /**
    * Text alternative of the progress status, used by screen readers for reading the value of the progress.
@@ -39,4 +64,36 @@ export interface IProgressIndicatorProps {
    * @deprecated
    */
   title?: string;
+
+  /**
+   * Height of the ProgressIndicator
+   * @default 2
+   */
+  barHeight?: number;
+}
+
+export interface IProgressIndicatorStyleProps {
+  /**
+   * Theme provided by High-Order Component.
+   */
+  theme: ITheme;
+
+  /**
+   * Accept custom classNames
+   */
+  className?: string;
+  indeterminate?: boolean;
+  barHeight?: number;
+}
+
+export interface IProgressIndicatorStyles {
+  /**
+   * Style for the root element.
+   */
+  root: IStyle;
+  itemName: IStyle;
+  itemDescription: IStyle;
+  itemProgress: IStyle;
+  progressTrack: IStyle;
+  progressBar: IStyle;
 }

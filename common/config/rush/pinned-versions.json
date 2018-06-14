@@ -1,4 +1,5 @@
 {
   "webpack": "3.11.0",
-  "webpack-dev-server": "2.11.2"
+  "webpack-dev-server": "2.11.2",
+  "webpack-cli": "2.0.15"
 }

@@ -1,35 +1,28 @@
-
 import * as React from 'react';
-import { Tile, getTileLayout, renderTileWithLayout } from '../Tile';
+import { Tile, getTileLayout, renderTileWithLayout } from '@uifabric/experiments/lib/Tile';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { css, ISize, fitContentToBounds } from '../../../Utilities';
-import {
-  SignalField,
-  Signal,
-  NewSignal,
-  SharedSignal,
-  MentionSignal
-} from '../../signals/Signals';
-import { lorem } from '@uifabric/example-app-base';
+import { css, ISize, fitContentToBounds } from '@uifabric/experiments/lib/Utilities';
+import { SignalField, Signal, NewSignal, SharedSignal, MentionSignal } from '../../signals/Signals';
+import { lorem } from '@uifabric/example-app-base/lib/utilities/data';
 import * as TileExampleStylesModule from './Tile.Example.scss';
 
-const ITEMS: { name: string; activity: string; }[] = [
+const ITEMS: { name: string; activity: string }[] = [
   {
     name: lorem(2),
-    activity: lorem(6),
+    activity: lorem(6)
   },
   {
     name: lorem(2),
-    activity: lorem(6),
+    activity: lorem(6)
   },
   {
     name: lorem(2),
-    activity: lorem(6),
+    activity: lorem(6)
   },
   {
     name: lorem(2),
-    activity: lorem(6),
+    activity: lorem(6)
   }
 ];
 
@@ -46,36 +39,29 @@ interface IImageTileProps {
 const ImageTile: React.StatelessComponent<IImageTileProps> = (props: IImageTileProps): JSX.Element => {
   const tile = (
     <Tile
-      contentSize={ props.tileSize }
-      itemName={
-        <SignalField
-          before={
-            <NewSignal />
-          }
-        >
-          { props.item.name }
-        </SignalField>
-      }
+      contentSize={props.tileSize}
+      itemName={<SignalField before={<NewSignal />}>{props.item.name}</SignalField>}
       itemActivity={
         <SignalField
-          before={
-            [<Signal key={ 0 }><Icon iconName='play' /></Signal>, <MentionSignal key={ 1 } />]
-          }
+          before={[
+            <Signal key={0}>
+              <Icon iconName="play" />
+            </Signal>,
+            <MentionSignal key={1} />
+          ]}
         >
-          { props.item.activity }
+          {props.item.activity}
         </SignalField>
       }
       background={
         <span /> // Placeholder content
       }
-      hideBackground={ !props.showBackground }
-      showBackgroundFrame={ true }
+      hideBackground={!props.showBackground}
+      showBackgroundFrame={true}
     />
   );
 
-  const {
-    backgroundSize
-  } = getTileLayout(tile);
+  const { backgroundSize } = getTileLayout(tile);
 
   const imageSize = fitContentToBounds({
     contentSize: props.originalImageSize,
@@ -85,25 +71,21 @@ const ImageTile: React.StatelessComponent<IImageTileProps> = (props: IImageTileP
 
   return (
     <div
-      className={ css(TileExampleStyles.tile) }
+      className={css(TileExampleStyles.tile)}
       // tslint:disable-next-line:jsx-ban-props
-      style={
-        {
-          width: `${props.tileSize.width}px`,
-          height: `${props.tileSize.height}px`
-        }
-      }
+      style={{
+        width: `${props.tileSize.width}px`,
+        height: `${props.tileSize.height}px`
+      }}
     >
-      {
-        renderTileWithLayout(tile, {
-          background: (
-            <img
-              className={ css(TileExampleStyles.tileImage) }
-              src={ `//placehold.it/${Math.round(imageSize.width)}x${Math.round(imageSize.height)}` }
-            />
-          )
-        })
-      }
+      {renderTileWithLayout(tile, {
+        background: (
+          <img
+            className={css(TileExampleStyles.tileImage)}
+            src={`//placehold.it/${Math.round(imageSize.width)}x${Math.round(imageSize.height)}`}
+          />
+        )
+      })}
     </div>
   );
 };
@@ -122,98 +104,68 @@ export class TileMediaExample extends React.Component<{}, ITileMediaExampleState
   }
 
   public render(): JSX.Element {
-    const {
-      imagesLoaded
-    } = this.state;
+    const { imagesLoaded } = this.state;
 
     return (
       <div>
-        <Checkbox
-          label='Show images as loaded'
-          checked={ imagesLoaded }
-          onChange={ this._onImagesLoadedChanged }
-        />
+        <Checkbox label="Show images as loaded" checked={imagesLoaded} onChange={this._onImagesLoadedChanged} />
         <h3>Landscape</h3>
         <ImageTile
-          tileSize={
-            {
-              width: 250,
-              height: 200
-            }
-          }
-          item={ ITEMS[0] }
-          originalImageSize={
-            {
-              width: 400,
-              height: 300
-            }
-          }
-          showBackground={ imagesLoaded }
+          tileSize={{
+            width: 250,
+            height: 200
+          }}
+          item={ITEMS[0]}
+          originalImageSize={{
+            width: 400,
+            height: 300
+          }}
+          showBackground={imagesLoaded}
         />
         <h3>Portrait</h3>
         <ImageTile
-          tileSize={
-            {
-              width: 200,
-              height: 250
-            }
-          }
-          item={ ITEMS[1] }
-          originalImageSize={
-            {
-              width: 300,
-              height: 400
-            }
-          }
-          showBackground={ imagesLoaded }
+          tileSize={{
+            width: 200,
+            height: 250
+          }}
+          item={ITEMS[1]}
+          originalImageSize={{
+            width: 300,
+            height: 400
+          }}
+          showBackground={imagesLoaded}
         />
         <h3>Small Image</h3>
         <ImageTile
-          tileSize={
-            {
-              width: 200,
-              height: 200
-            }
-          }
-          item={ ITEMS[2] }
-          originalImageSize={
-            {
-              width: 16,
-              height: 16
-            }
-          }
-          showBackground={ imagesLoaded }
+          tileSize={{
+            width: 200,
+            height: 200
+          }}
+          item={ITEMS[2]}
+          originalImageSize={{
+            width: 16,
+            height: 16
+          }}
+          showBackground={imagesLoaded}
         />
         <h3>No preview</h3>
-        <div className={ css(TileExampleStyles.tile, TileExampleStyles.largeTile) }>
+        <div className={css(TileExampleStyles.tile, TileExampleStyles.largeTile)}>
           <Tile
-            itemName={
+            itemName={<SignalField before={<NewSignal />}>{ITEMS[3].name}</SignalField>}
+            itemActivity={
               <SignalField
-                before={
-                  <NewSignal />
-                }
+                before={[
+                  <Signal key={0}>
+                    <Icon iconName="play" />
+                  </Signal>,
+                  <SharedSignal key={1} />
+                ]}
               >
-                { ITEMS[3].name }
+                {ITEMS[3].name}
               </SignalField>
             }
-            itemActivity={
-              (
-                <SignalField
-                  before={
-                    [
-                      <Signal key={ 0 }><Icon iconName='play' /></Signal>,
-                      <SharedSignal key={ 1 } />
-                    ]
-                  }
-                >
-                  { ITEMS[3].name }
-                </SignalField>
-              )
-            }
-            foreground={
-              <Icon iconName='play' style={ { margin: '11px', fontSize: '40px' } } />
-            }
-            showBackgroundFrame={ true }
+            foreground={<Icon iconName="play" style={{ margin: '11px', fontSize: '40px' }} />}
+            showBackgroundFrame={true}
           />
         </div>
       </div>
@@ -224,5 +176,5 @@ export class TileMediaExample extends React.Component<{}, ITileMediaExampleState
     this.setState({
       imagesLoaded: checked
     });
-  }
+  };
 }

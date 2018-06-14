@@ -12,19 +12,15 @@ export class CheckboxBasicExample extends React.Component<{}, ICheckboxBasicExam
     this._onCheckboxChange = this._onCheckboxChange.bind(this);
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
-        <Checkbox
-          label='Standard checkbox'
-          onChange={ this._onCheckboxChange }
-          ariaDescribedBy={ 'descriptionID' }
-        />
+        <Checkbox label="Standard checkbox" onChange={this._onCheckboxChange} ariaDescribedBy={'descriptionID'} />
       </div>
     );
   }
 
-  private _onCheckboxChange(ev: React.FormEvent<HTMLElement>, isChecked: boolean) {
+  private _onCheckboxChange(ev: React.FormEvent<HTMLElement>, isChecked: boolean): void {
     console.log(`The option has been changed to ${isChecked}.`);
   }
 }

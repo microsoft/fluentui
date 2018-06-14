@@ -19,15 +19,16 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item is-suggested undefined"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -56,7 +57,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &::-moz-focus-inner {
                 border: 0;
               }
-              .ms-Fabric.is-focusVisible &:focus:after {
+              .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
                 bottom: 0px;
                 content: "";
@@ -67,7 +68,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -77,6 +78,10 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:hover {
                 color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -121,15 +126,16 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -158,7 +164,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &::-moz-focus-inner {
                 border: 0;
               }
-              .ms-Fabric.is-focusVisible &:focus:after {
+              .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
                 bottom: 0px;
                 content: "";
@@ -169,7 +175,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -179,6 +185,10 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:hover {
                 color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -223,15 +233,16 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -260,7 +271,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &::-moz-focus-inner {
                 border: 0;
               }
-              .ms-Fabric.is-focusVisible &:focus:after {
+              .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
                 bottom: 0px;
                 content: "";
@@ -271,7 +282,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -281,6 +292,10 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:hover {
                 color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -325,15 +340,16 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -362,7 +378,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &::-moz-focus-inner {
                 border: 0;
               }
-              .ms-Fabric.is-focusVisible &:focus:after {
+              .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
                 bottom: 0px;
                 content: "";
@@ -373,7 +389,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -383,6 +399,10 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:hover {
                 color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -427,15 +447,16 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -464,7 +485,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &::-moz-focus-inner {
                 border: 0;
               }
-              .ms-Fabric.is-focusVisible &:focus:after {
+              .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
                 bottom: 0px;
                 content: "";
@@ -475,7 +496,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -485,6 +506,10 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:hover {
                 color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -529,15 +554,16 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -566,7 +592,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &::-moz-focus-inner {
                 border: 0;
               }
-              .ms-Fabric.is-focusVisible &:focus:after {
+              .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
                 bottom: 0px;
                 content: "";
@@ -577,7 +603,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -587,6 +613,10 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:hover {
                 color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -631,15 +661,16 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -668,7 +699,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &::-moz-focus-inner {
                 border: 0;
               }
-              .ms-Fabric.is-focusVisible &:focus:after {
+              .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
                 bottom: 0px;
                 content: "";
@@ -679,7 +710,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -689,6 +720,10 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:hover {
                 color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -733,15 +768,16 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -770,7 +806,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &::-moz-focus-inner {
                 border: 0;
               }
-              .ms-Fabric.is-focusVisible &:focus:after {
+              .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
                 bottom: 0px;
                 content: "";
@@ -781,7 +817,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -791,6 +827,10 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:hover {
                 color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -835,15 +875,16 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -872,7 +913,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &::-moz-focus-inner {
                 border: 0;
               }
-              .ms-Fabric.is-focusVisible &:focus:after {
+              .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
                 bottom: 0px;
                 content: "";
@@ -883,7 +924,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -893,6 +934,10 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:hover {
                 color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -937,15 +982,16 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -974,7 +1020,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &::-moz-focus-inner {
                 border: 0;
               }
-              .ms-Fabric.is-focusVisible &:focus:after {
+              .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
                 bottom: 0px;
                 content: "";
@@ -985,7 +1031,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -995,6 +1041,10 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:hover {
                 color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1039,15 +1089,16 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -1076,7 +1127,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &::-moz-focus-inner {
                 border: 0;
               }
-              .ms-Fabric.is-focusVisible &:focus:after {
+              .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
                 bottom: 0px;
                 content: "";
@@ -1087,7 +1138,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -1097,6 +1148,10 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:hover {
                 color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1141,15 +1196,16 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -1178,7 +1234,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &::-moz-focus-inner {
                 border: 0;
               }
-              .ms-Fabric.is-focusVisible &:focus:after {
+              .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
                 bottom: 0px;
                 content: "";
@@ -1189,7 +1245,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -1199,6 +1255,10 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:hover {
                 color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1243,15 +1303,16 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -1280,7 +1341,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &::-moz-focus-inner {
                 border: 0;
               }
-              .ms-Fabric.is-focusVisible &:focus:after {
+              .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
                 bottom: 0px;
                 content: "";
@@ -1291,7 +1352,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -1301,6 +1362,10 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:hover {
                 color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1345,15 +1410,16 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -1382,7 +1448,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &::-moz-focus-inner {
                 border: 0;
               }
-              .ms-Fabric.is-focusVisible &:focus:after {
+              .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
                 bottom: 0px;
                 content: "";
@@ -1393,7 +1459,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -1403,6 +1469,10 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:hover {
                 color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1447,15 +1517,16 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -1484,7 +1555,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &::-moz-focus-inner {
                 border: 0;
               }
-              .ms-Fabric.is-focusVisible &:focus:after {
+              .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
                 bottom: 0px;
                 content: "";
@@ -1495,7 +1566,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -1505,6 +1576,10 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:hover {
                 color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1541,8 +1616,10 @@ exports[`Suggestions renders a list properly 1`] = `
       </div>
     </div>
   </div>
-  <div
-    className="ms-Suggestions-title"
+  <span
+    aria-live="polite"
+    className="ms-Suggestions-suggestionsAvailable"
+    role="alert"
   />
 </div>
 `;
@@ -1566,15 +1643,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -1603,7 +1681,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &::-moz-focus-inner {
                 border: 0;
               }
-              .ms-Fabric.is-focusVisible &:focus:after {
+              .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
                 bottom: 0px;
                 content: "";
@@ -1614,7 +1692,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -1624,6 +1702,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:hover {
                 color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1668,15 +1750,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -1705,7 +1788,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &::-moz-focus-inner {
                 border: 0;
               }
-              .ms-Fabric.is-focusVisible &:focus:after {
+              .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
                 bottom: 0px;
                 content: "";
@@ -1716,7 +1799,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -1726,6 +1809,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:hover {
                 color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1770,15 +1857,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -1807,7 +1895,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &::-moz-focus-inner {
                 border: 0;
               }
-              .ms-Fabric.is-focusVisible &:focus:after {
+              .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
                 bottom: 0px;
                 content: "";
@@ -1818,7 +1906,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -1828,6 +1916,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:hover {
                 color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1872,15 +1964,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -1909,7 +2002,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &::-moz-focus-inner {
                 border: 0;
               }
-              .ms-Fabric.is-focusVisible &:focus:after {
+              .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
                 bottom: 0px;
                 content: "";
@@ -1920,7 +2013,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -1930,6 +2023,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:hover {
                 color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1974,15 +2071,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -2011,7 +2109,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &::-moz-focus-inner {
                 border: 0;
               }
-              .ms-Fabric.is-focusVisible &:focus:after {
+              .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
                 bottom: 0px;
                 content: "";
@@ -2022,7 +2120,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -2032,6 +2130,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:hover {
                 color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -2076,15 +2178,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -2113,7 +2216,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &::-moz-focus-inner {
                 border: 0;
               }
-              .ms-Fabric.is-focusVisible &:focus:after {
+              .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
                 bottom: 0px;
                 content: "";
@@ -2124,7 +2227,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -2134,6 +2237,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:hover {
                 color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -2178,15 +2285,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -2215,7 +2323,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &::-moz-focus-inner {
                 border: 0;
               }
-              .ms-Fabric.is-focusVisible &:focus:after {
+              .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
                 bottom: 0px;
                 content: "";
@@ -2226,7 +2334,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -2236,6 +2344,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:hover {
                 color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -2280,15 +2392,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -2317,7 +2430,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &::-moz-focus-inner {
                 border: 0;
               }
-              .ms-Fabric.is-focusVisible &:focus:after {
+              .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
                 bottom: 0px;
                 content: "";
@@ -2328,7 +2441,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -2338,6 +2451,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:hover {
                 color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -2382,15 +2499,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item is-suggested undefined"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -2419,7 +2537,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &::-moz-focus-inner {
                 border: 0;
               }
-              .ms-Fabric.is-focusVisible &:focus:after {
+              .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
                 bottom: 0px;
                 content: "";
@@ -2430,7 +2548,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -2440,6 +2558,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:hover {
                 color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -2484,15 +2606,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -2521,7 +2644,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &::-moz-focus-inner {
                 border: 0;
               }
-              .ms-Fabric.is-focusVisible &:focus:after {
+              .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
                 bottom: 0px;
                 content: "";
@@ -2532,7 +2655,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -2542,6 +2665,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:hover {
                 color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -2586,15 +2713,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -2623,7 +2751,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &::-moz-focus-inner {
                 border: 0;
               }
-              .ms-Fabric.is-focusVisible &:focus:after {
+              .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
                 bottom: 0px;
                 content: "";
@@ -2634,7 +2762,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -2644,6 +2772,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:hover {
                 color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -2688,15 +2820,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -2725,7 +2858,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &::-moz-focus-inner {
                 border: 0;
               }
-              .ms-Fabric.is-focusVisible &:focus:after {
+              .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
                 bottom: 0px;
                 content: "";
@@ -2736,7 +2869,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -2746,6 +2879,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:hover {
                 color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -2790,15 +2927,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -2827,7 +2965,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &::-moz-focus-inner {
                 border: 0;
               }
-              .ms-Fabric.is-focusVisible &:focus:after {
+              .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
                 bottom: 0px;
                 content: "";
@@ -2838,7 +2976,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -2848,6 +2986,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:hover {
                 color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -2892,15 +3034,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -2929,7 +3072,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &::-moz-focus-inner {
                 border: 0;
               }
-              .ms-Fabric.is-focusVisible &:focus:after {
+              .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
                 bottom: 0px;
                 content: "";
@@ -2940,7 +3083,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -2950,6 +3093,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:hover {
                 color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -2994,15 +3141,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -3031,7 +3179,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &::-moz-focus-inner {
                 border: 0;
               }
-              .ms-Fabric.is-focusVisible &:focus:after {
+              .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
                 bottom: 0px;
                 content: "";
@@ -3042,7 +3190,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -3052,6 +3200,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:hover {
                 color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -3088,8 +3240,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       </div>
     </div>
   </div>
-  <div
-    className="ms-Suggestions-title"
+  <span
+    aria-live="polite"
+    className="ms-Suggestions-suggestionsAvailable"
+    role="alert"
   />
 </div>
 `;

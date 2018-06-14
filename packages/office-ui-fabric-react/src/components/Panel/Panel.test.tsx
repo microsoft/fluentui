@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 import * as ReactDOM from 'react-dom';
 
@@ -17,7 +15,7 @@ describe('Panel', () => {
     ReactDOM.unmountComponentAtNode(div);
   });
 
-  it('fires the correct events when closing', (done) => {
+  it('fires the correct events when closing', done => {
     let dismissedCalled = false;
     let dismissCalled = false;
     const setDismissTrue = (): void => {
@@ -28,12 +26,9 @@ describe('Panel', () => {
     };
 
     const panel: Panel = ReactDOM.render(
-      <Panel
-        isOpen={ true }
-        onDismiss={ setDismissTrue }
-        onDismissed={ setDismissedTrue }
-      />,
-      div) as any;
+      <Panel isOpen={true} onDismiss={setDismissTrue} onDismissed={setDismissedTrue} />,
+      div
+    ) as any;
 
     panel.dismiss();
 

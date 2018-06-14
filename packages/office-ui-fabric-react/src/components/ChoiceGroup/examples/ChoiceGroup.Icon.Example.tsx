@@ -2,11 +2,11 @@ import * as React from 'react';
 import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
 
 export class ChoiceGroupIconExample extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ChoiceGroup
-        label='Pick one icon'
-        options={ [
+        label="Pick one icon"
+        options={[
           {
             key: 'day',
             iconProps: { iconName: 'CalendarDay' },
@@ -23,7 +23,7 @@ export class ChoiceGroupIconExample extends React.Component<any, any> {
             text: 'Month',
             disabled: true
           }
-        ] }
+        ]}
       />
     );
   }

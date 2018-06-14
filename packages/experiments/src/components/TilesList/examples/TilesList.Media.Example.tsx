@@ -1,11 +1,5 @@
-
 import * as React from 'react';
-import {
-  TilesList,
-  ITileSize,
-  ITilesGridItem,
-  ITilesGridSegment
-} from '../../TilesList';
+import { TilesList, ITileSize, ITilesGridItem, ITilesGridSegment } from '@uifabric/experiments/lib/TilesList';
 import { Tile, getTileLayout, renderTileWithLayout } from '../../../Tile';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { Selection, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
@@ -35,9 +29,9 @@ function createGroups(): IExampleGroup[] {
 
 const GROUPS = createGroups();
 
-const ITEMS = ([] as IExampleItem[]).concat(...GROUPS.map((group: { items: IExampleItem[]; }) => group.items));
+const ITEMS = ([] as IExampleItem[]).concat(...GROUPS.map((group: { items: IExampleItem[] }) => group.items));
 
-declare class TilesListClass extends TilesList<IExampleItem> { }
+declare class TilesListClass extends TilesList<IExampleItem> {}
 
 const TilesListType: typeof TilesListClass = TilesList;
 
@@ -71,24 +65,17 @@ export class TilesListMediaExample extends React.Component<{}, ITilesListMediaEx
   public render(): JSX.Element {
     return (
       // tslint:disable-next-line:jsx-ban-props
-      <div style={ { padding: '4px' } }>
+      <div style={{ padding: '4px' }}>
         <Toggle
-          label='Enable Modal Selection'
-          checked={ this.state.isModalSelection }
-          onChanged={ this._onToggleIsModalSelection }
-          onText='Modal'
-          offText='Normal'
+          label="Enable Modal Selection"
+          checked={this.state.isModalSelection}
+          onChanged={this._onToggleIsModalSelection}
+          onText="Modal"
+          offText="Normal"
         />
-        <MarqueeSelection selection={ this._selection }>
-          <SelectionZone
-            selection={ this._selection }
-            onItemInvoked={ this._onItemInvoked }
-            enterModalOnTouch={ true }
-          >
-            <TilesListType
-              role='list'
-              items={ this.state.cells }
-            />
+        <MarqueeSelection selection={this._selection}>
+          <SelectionZone selection={this._selection} onItemInvoked={this._onItemInvoked} enterModalOnTouch={true}>
+            <TilesListType role="list" items={this.state.cells} />
           </SelectionZone>
         </MarqueeSelection>
       </div>
@@ -97,62 +84,58 @@ export class TilesListMediaExample extends React.Component<{}, ITilesListMediaEx
 
   private _onToggleIsModalSelection = (checked: boolean): void => {
     this._selection.setModal(checked);
-  }
+  };
 
   private _onSelectionChange = (): void => {
     this.setState({
       isModalSelection: this._selection.isModal()
     });
-  }
+  };
 
   private _onItemInvoked = (item: IExampleItem, index: number, event: Event): void => {
     event.stopPropagation();
     event.preventDefault();
 
     alert(`Invoked item '${item.name}'`);
-  }
+  };
 
   private _onRenderMediaCell = (item: IExampleItem, finalSize: ITileSize): JSX.Element => {
     const tile = (
       <Tile
-        role='listitem'
-        aria-setsize={ ITEMS.length }
-        aria-posinset={ item.index }
-        contentSize={ finalSize }
-        className={ AnimationClassNames.fadeIn400 }
-        selection={ this._selection }
-        selectionIndex={ item.index }
-        invokeSelection={ true }
+        role="listitem"
+        aria-setsize={ITEMS.length}
+        aria-posinset={item.index}
+        contentSize={finalSize}
+        className={AnimationClassNames.fadeIn400}
+        selection={this._selection}
+        selectionIndex={item.index}
+        invokeSelection={true}
         background={
           <span /> // Placeholder
         }
-        showBackgroundFrame={ true }
-        itemName={ item.name }
-        itemActivity={ item.key }
+        showBackgroundFrame={true}
+        itemName={item.name}
+        itemActivity={item.key}
       />
     );
 
-    const {
-      backgroundSize = { width: 0, height: 0 }
-    } = getTileLayout(tile);
+    const { backgroundSize = { width: 0, height: 0 } } = getTileLayout(tile);
 
     return renderTileWithLayout(tile, {
       background: (
         <img
-          className={ TilesListExampleStyles.tileImage }
-          src={
-            `//placehold.it/${Math.round(backgroundSize.width)}x${Math.round(backgroundSize.height)}`
-          }
+          className={TilesListExampleStyles.tileImage}
+          src={`//placehold.it/${Math.round(backgroundSize.width)}x${Math.round(backgroundSize.height)}`}
         />
       )
     });
-  }
+  };
 
   private _onRenderHeader = (item: IExampleItem): JSX.Element => {
     return (
-      <div role='presentation'>
-        <h3>{ item.name }</h3>
+      <div role="presentation">
+        <h3>{item.name}</h3>
       </div>
     );
-  }
+  };
 }

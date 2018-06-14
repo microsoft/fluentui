@@ -5,8 +5,7 @@ import AttachedScrollUtility from '../../utilities/AttachedScrollUtility';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { Nav } from '../Nav/Nav';
 
-export interface IAppProps extends React.Props<App> {
-}
+export interface IAppProps extends React.Props<App> {}
 
 export interface IAppState {
   isAttached: boolean;
@@ -14,7 +13,6 @@ export interface IAppState {
 }
 
 export class App extends React.Component<IAppProps, any> {
-
   private _attachedScrollThreshold: number;
   private _appContent: HTMLDivElement;
   private _appContentRect: ClientRect;
@@ -27,7 +25,7 @@ export class App extends React.Component<IAppProps, any> {
     };
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     window.addEventListener('scroll', this._handleNavPositioning);
     window.addEventListener('resize', this._handleNavPositioning);
 
@@ -35,12 +33,18 @@ export class App extends React.Component<IAppProps, any> {
     this._handleNavPositioning();
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     window.removeEventListener('scroll', this._handleNavPositioning);
     window.removeEventListener('resize', this._handleNavPositioning);
   }
 
-  public render() {
+  public componentWillReceiveProps(nextProps: IAppProps): void {
+    if (nextProps && nextProps.children !== this.props.children) {
+      document.body.scrollTop = document.documentElement.scrollTop = 0;
+    }
+  }
+
+  public render(): JSX.Element {
     let { navHeight } = this.state;
     let navPosition: 'fixed' | 'absolute' = this.state.isAttached ? 'fixed' : 'absolute';
     let navStyle = {
@@ -49,25 +53,18 @@ export class App extends React.Component<IAppProps, any> {
     };
 
     return (
-      <Fabric
-        className='App'
-      >
-        <div className='App-wrapper'>
-          <div
-            className='App-nav'
-            style={ navStyle }
-          >
-            <Nav
-              pages={ AppState.pages }
-            />
+      <Fabric className="App">
+        <div className="App-wrapper">
+          <div className="App-nav" style={navStyle}>
+            <Nav pages={AppState.pages} />
           </div>
           <div
-            className='App-content'
-            data-is-scrollable='true'
-            ref={ (el) => this._appContent = el }
-            data-app-content-div='true'
+            className="App-content"
+            data-is-scrollable="true"
+            ref={el => (this._appContent = el)}
+            data-app-content-div="true"
           >
-            { this.props.children }
+            {this.props.children}
           </div>
         </div>
       </Fabric>
@@ -84,7 +81,7 @@ export class App extends React.Component<IAppProps, any> {
       isAttached: isAttached,
       navHeight: navHeight
     });
-  }
+  };
 
   private _calculateNavHeight(viewPortHeight: number, appContentRect: ClientRect, height: number): number {
     if (!appContentRect) {

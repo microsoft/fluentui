@@ -13,10 +13,11 @@ registerLanguage('typescript', ts);
 export const rootClass = mergeStyles({
   overflowY: 'auto',
   maxHeight: '400px',
+  display: 'flex',
   selectors: {
-    'code': {
+    code: {
       fontFamily: 'Monaco, Menlo, Consolas, "Droid Sans Mono", "Inconsolata", "Courier New", monospace',
-      lineHeight: 19
+      lineHeight: '1.6'
     }
   }
 });
@@ -28,21 +29,20 @@ export const lineNumberStyle = {
   display: 'block',
   borderRight: '1px solid #666',
   paddingRight: 4,
-  lineHeight: '19px'
+  lineHeight: 'inherit'
 };
 
 export class TypeScriptSnippet extends React.Component {
-
   public render(): JSX.Element {
     return (
       <SyntaxHighlighter
-        showLineNumbers={ true }
-        lineNumberStyle={ lineNumberStyle }
-        language='typescript'
-        className={ rootClass }
-        style={ style } // tslint:disable-line
+        showLineNumbers={true}
+        lineNumberStyle={lineNumberStyle}
+        language="typescript"
+        className={rootClass}
+        style={style} // tslint:disable-line
       >
-        { this.props.children }
+        {this.props.children}
       </SyntaxHighlighter>
     );
   }

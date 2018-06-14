@@ -1,13 +1,11 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 
 import { SelectionZone } from './SelectionZone';
 import { Selection } from './Selection';
-import { SelectionMode } from './interfaces';
+import { SelectionMode, IObjectWithKey } from './interfaces';
 
 import { KeyCodes } from '../../Utilities';
 
@@ -20,51 +18,73 @@ let _invoke0: Element;
 let _toggle0: Element;
 let _surface1: Element;
 let _toggle1: Element;
+let _noSelect1: Element;
+let _select1: Element;
 let _toggle2: Element;
 let _surface3: Element;
 
 let _onItemInvokeCalled: number;
 let _lastItemInvoked: any;
 
-function _initializeSelection(selectionMode = SelectionMode.multiple) {
+function _initializeSelection(selectionMode = SelectionMode.multiple): void {
   _selection = new Selection();
-  _selection.setItems([{ key: 'a', }, { key: 'b' }, { key: 'c' }, { key: 'd' }]);
+  _selection.setItems([{ key: 'a' }, { key: 'b' }, { key: 'c' }, { key: 'd' }]);
   _selectionZone = ReactTestUtils.renderIntoDocument(
     <SelectionZone
-      selection={ _selection }
-      selectionMode={ selectionMode }
+      selection={_selection}
+      selectionMode={selectionMode}
+      disableAutoSelectOnInputElements={true}
       // tslint:disable-next-line:jsx-no-lambda
-      onItemInvoked={ (item) => { _onItemInvokeCalled++; _lastItemInvoked = item; } }
+      onItemInvoked={(item: IObjectWithKey) => {
+        _onItemInvokeCalled++;
+        _lastItemInvoked = item;
+      }}
     >
+      <button id="toggleAll" data-selection-all-toggle={true}>
+        Toggle all selected
+      </button>
 
-      <button id='toggleAll' data-selection-all-toggle={ true }>Toggle all selected</button>
-
-      <div id='surface0' data-selection-index='0'>
-        <button id='toggle0' data-selection-toggle={ true }>Toggle</button>
-        <button id='invoke0' data-selection-invoke={ true }>Invoke</button>
+      <div id="surface0" data-selection-index="0">
+        <button id="toggle0" data-selection-toggle={true}>
+          Toggle
+        </button>
+        <button id="invoke0" data-selection-invoke={true}>
+          Invoke
+        </button>
       </div>
 
-      <div id='surface1' data-selection-index='1'>
-        <button id='toggle1' data-selection-toggle={ true }>Toggle</button>
-        <button id='invoke1' data-selection-invoke={ true }>Invoke</button>
+      <div id="surface1" data-selection-index="1">
+        <button id="toggle1" data-selection-toggle={true}>
+          Toggle
+        </button>
+        <button id="invoke1" data-selection-invoke={true}>
+          Invoke
+        </button>
+        <button id="noSelect1">No Select</button>
+        <button id="select1" data-selection-select={true}>
+          Select First
+        </button>
       </div>
 
-      <div id='invoke2' data-selection-index='2' data-selection-invoke={ true }>
-        <button id='toggle2' data-selection-toggle={ true }>Toggle</button>
+      <div id="invoke2" data-selection-index="2" data-selection-invoke={true}>
+        <button id="toggle2" data-selection-toggle={true}>
+          Toggle
+        </button>
       </div>
 
-      <div id='surface3' data-selection-index='3' />
-
+      <div id="surface3" data-selection-index="3" />
     </SelectionZone>
   );
 
-  _componentElement = ReactDOM.findDOMNode(_selectionZone);
+  _componentElement = ReactDOM.findDOMNode(_selectionZone) as Element;
   _toggleAll = _componentElement.querySelector('#toggleAll')!;
   _surface0 = _componentElement.querySelector('#surface0')!;
   _invoke0 = _componentElement.querySelector('#invoke0')!;
   _toggle0 = _componentElement.querySelector('#toggle0')!;
   _surface1 = _componentElement.querySelector('#surface1')!;
   _toggle1 = _componentElement.querySelector('#toggle1')!;
+  _noSelect1 = _componentElement.querySelector('#noSelect1')!;
+  _select1 = _componentElement.querySelector('#select1')!;
   _toggle2 = _componentElement.querySelector('#toggle2')!;
   _surface3 = _componentElement.querySelector('#surface3')!;
 
@@ -155,7 +175,7 @@ describe('SelectionZone', () => {
     expect(_selection.getSelectedCount()).toEqual(0);
   });
 
-  it('suports mouse shift click range select scenarios', () => {
+  it('supports mouse shift click range select scenarios', () => {
     _simulateClick(_surface1);
     expect(_selection.getSelectedCount()).toEqual(1);
 
@@ -230,9 +250,24 @@ describe('SelectionZone', () => {
     expect(_selection.isIndexSelected(0)).toEqual(false);
     expect(_onItemInvokeCalled).toEqual(0);
   });
+
+  it('does not select an item when a button is clicked', () => {
+    ReactTestUtils.Simulate.mouseDown(_noSelect1);
+    expect(_selection.isIndexSelected(1)).toEqual(false);
+  });
+
+  it('selects an item when a button is clicked that has data-selection-select', () => {
+    ReactTestUtils.Simulate.mouseDown(_select1);
+    expect(_selection.isIndexSelected(1)).toEqual(true);
+  });
+
+  it('selects an item when a button is clicked that has data-selection-select', () => {
+    ReactTestUtils.Simulate.keyDown(_select1, { which: KeyCodes.enter });
+    expect(_selection.isIndexSelected(1)).toEqual(true);
+  });
 });
 
-function _simulateClick(el: Element, eventData?: ReactTestUtils.SyntheticEventData) {
+function _simulateClick(el: Element, eventData?: ReactTestUtils.SyntheticEventData): void {
   ReactTestUtils.Simulate.mouseDown(el, eventData);
   ReactTestUtils.Simulate.focus(el, eventData);
   ReactTestUtils.Simulate.click(el, eventData);

@@ -1,32 +1,33 @@
 import * as React from 'react';
-import { ComboBoxPage } from 'office-ui-fabric-react/lib/components/ComboBox/ComboBoxPage';
+import { ComboBoxPage } from '@uifabric/demo/lib/components/pages/ComboBoxPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 const pageStyles: any = require('../PageStyles.module.scss');
 
 export class ComboBoxComponentPage extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
-      <div ref='pageElement' className={ pageStyles.basePage }>
+      <div className={pageStyles.basePage}>
         <ComponentPage>
-          <PageHeader pageTitle='ComboBox' backgroundColor='#038387'
-            links={
-              [
-                {
-                  'text': 'Overview',
-                  'location': 'Overview'
-                },
-                {
-                  'text': 'Variants',
-                  'location': 'Variants'
-                },
-                {
-                  'text': 'Implementation',
-                  'location': 'Implementation'
-                }
-              ]
-            } />
-          <ComboBoxPage isHeaderVisible={ false } />
+          <PageHeader
+            pageTitle="ComboBox"
+            backgroundColor="#038387"
+            links={[
+              {
+                text: 'Overview',
+                location: 'Overview'
+              },
+              {
+                text: 'Variants',
+                location: 'Variants'
+              },
+              {
+                text: 'Implementation',
+                location: 'Implementation'
+              }
+            ]}
+          />
+          <ComboBoxPage isHeaderVisible={false} />
         </ComponentPage>
       </div>
     );

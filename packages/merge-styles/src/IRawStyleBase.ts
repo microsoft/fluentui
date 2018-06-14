@@ -10,17 +10,29 @@ export type ICSSPercentageRule = string;
 export type ICSSPixelUnitRule = string | number;
 
 export type IFontWeight =
-  ICSSRule |
-  'normal' | 'bold' | 'bolder' | 'lighter' |
-  '100' | 100 |
-  '200' | 200 |
-  '300' | 300 |
-  '400' | 400 |
-  '500' | 500 |
-  '600' | 600 |
-  '700' | 700 |
-  '800' | 800 |
-  '900' | 900;
+  | ICSSRule
+  | 'normal'
+  | 'bold'
+  | 'bolder'
+  | 'lighter'
+  | '100'
+  | 100
+  | '200'
+  | 200
+  | '300'
+  | 300
+  | '400'
+  | 400
+  | '500'
+  | 500
+  | '600'
+  | 600
+  | '700'
+  | 700
+  | '800'
+  | 800
+  | '900'
+  | 900;
 
 /**
  * The base font style.
@@ -54,18 +66,18 @@ export interface IRawFontStyle {
    * See CSS 3 font-size property https://www.w3.org/TR/css-fonts-3/#propdef-font-size
    */
   fontSize?:
-  | ICSSRule
-  | 'xx-small'
-  | 'x-small'
-  | 'small'
-  | 'medium'
-  | 'large'
-  | 'x-large'
-  | 'xx-large'
-  | 'larger'
-  | 'smaller'
-  | ICSSPixelUnitRule
-  | ICSSPercentageRule;
+    | ICSSRule
+    | 'xx-small'
+    | 'x-small'
+    | 'small'
+    | 'medium'
+    | 'large'
+    | 'x-large'
+    | 'xx-large'
+    | 'larger'
+    | 'smaller'
+    | ICSSPixelUnitRule
+    | ICSSPercentageRule;
 
   /**
    * The font-size-adjust property adjusts the font-size of the fallback fonts defined
@@ -83,16 +95,16 @@ export interface IRawFontStyle {
    * https://drafts.csswg.org/css-fonts-3/#propdef-font-stretch
    */
   fontStretch?:
-  | ICSSRule
-  | 'normal'
-  | 'ultra-condensed'
-  | 'extra-condensed'
-  | 'condensed'
-  | 'semi-condensed'
-  | 'semi-expanded'
-  | 'expanded'
-  | 'extra-expanded'
-  | 'ultra-expanded';
+    | ICSSRule
+    | 'normal'
+    | 'ultra-condensed'
+    | 'extra-condensed'
+    | 'condensed'
+    | 'semi-condensed'
+    | 'semi-expanded'
+    | 'expanded'
+    | 'extra-expanded'
+    | 'ultra-expanded';
 
   /**
    * The font-style property allows normal, italic, or oblique faces to be selected.
@@ -212,6 +224,14 @@ export interface IRawStyleBase extends IRawFontStyle {
    * value of the alignment-baseline property.
    */
   alignmentBaseline?: ICSSRule | string;
+
+  /**
+   * The animation CSS property is a shorthand property for the various animation properties:
+   * `animation-name`, `animation-duration`, `animation-timing-function`, `animation-delay`,
+   * `animation-iteration-count`, `animation-direction`, `animation-fill-mode`, and
+   * `animation-play-state`.
+   */
+  animation?: ICSSRule | string;
 
   /**
    * Defines a length of time to elapse before an animation starts, allowing an animation to begin execution some time after it is applied.
@@ -334,6 +354,11 @@ export interface IRawStyleBase extends IRawFontStyle {
    * have been sized and positioned
    */
   backgroundRepeat?: ICSSRule | string;
+
+  /**
+   * Sets the size of background images
+   */
+  backgroundSize?: ICSSRule | string;
 
   /**
    * Shorthand property that defines the different properties of all four sides of an

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { IRenderFunction } from '../../Utilities';
+import { IKeytipProps } from '../../Keytip';
 
 export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
@@ -8,9 +9,20 @@ export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
   componentRef?: () => void;
 
   /**
-   * The text displayed of each pivot link.
+   * The text displayed of each pivot link - renaming to 'headerText'.
+   * @deprecated
    */
   linkText?: string;
+
+  /**
+   * The text displayed of each pivot link.
+   */
+  headerText?: string;
+
+  /**
+   * Props for the header command button supporting native props - data-* and aria-* - for each pivot header/link element
+   */
+  headerButtonProps?: { [key: string]: string | number | boolean };
 
   /**
    * An required key to uniquely identify a pivot item.
@@ -42,4 +54,9 @@ export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
    * Optional custom renderer for the pivot item link
    */
   onRenderItemLink?: IRenderFunction<IPivotItemProps>;
+
+  /**
+   * Optional keytip for this PivotItem
+   */
+  keytipProps?: IKeytipProps;
 }

@@ -5,14 +5,13 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
   className="ms-Dropdown-container"
 >
   <div
-    aria-activedescendant={null}
-    aria-autocomplete="none"
+    aria-activedescendant="Dropdown94-option"
     aria-describedby="Dropdown94-option"
     aria-disabled={undefined}
     aria-expanded="false"
     aria-label={undefined}
     aria-live="assertive"
-    aria-owns={null}
+    aria-owns={undefined}
     className="ms-Dropdown"
     data-is-focusable={true}
     id="Dropdown94"
@@ -20,12 +19,12 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
     onClick={[Function]}
     onKeyDown={[Function]}
     onKeyUp={[Function]}
-    role="combobox"
+    role="listbox"
     tabIndex={0}
   >
     <span
       aria-atomic={true}
-      aria-readonly="true"
+      aria-label={undefined}
       className="ms-Dropdown-title ms-Dropdown-titleIsPlaceHolder"
       id="Dropdown94-option"
       role="listbox"
@@ -38,11 +37,19 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
         className=
             ms-Dropdown-caretDown
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               display: inline-block;
+              font-family: "FabricMDL2Icons";
+              font-style: normal;
+              font-weight: normal;
+              speak: none;
             }
         data-icon-name="ChevronDown"
         role="presentation"
-      />
+      >
+        
+      </i>
     </span>
   </div>
 </div>
@@ -53,14 +60,13 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
   className="ms-Dropdown-container"
 >
   <div
-    aria-activedescendant={null}
-    aria-autocomplete="none"
+    aria-activedescendant="Dropdown0-option"
     aria-describedby="Dropdown0-option"
     aria-disabled={undefined}
     aria-expanded="false"
     aria-label={undefined}
     aria-live="assertive"
-    aria-owns={null}
+    aria-owns={undefined}
     className="ms-Dropdown"
     data-is-focusable={true}
     id="Dropdown0"
@@ -68,12 +74,12 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
     onClick={[Function]}
     onKeyDown={[Function]}
     onKeyUp={[Function]}
-    role="combobox"
+    role="listbox"
     tabIndex={0}
   >
     <span
       aria-atomic={true}
-      aria-readonly="true"
+      aria-label={undefined}
       className="ms-Dropdown-title ms-Dropdown-titleIsPlaceHolder"
       id="Dropdown0-option"
       role="listbox"
@@ -86,11 +92,19 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
         className=
             ms-Dropdown-caretDown
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               display: inline-block;
+              font-family: "FabricMDL2Icons";
+              font-style: normal;
+              font-weight: normal;
+              speak: none;
             }
         data-icon-name="ChevronDown"
         role="presentation"
-      />
+      >
+        
+      </i>
     </span>
   </div>
 </div>

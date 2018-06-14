@@ -1,6 +1,117 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Thu, 05 Apr 2018 10:15:39 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Jun 2018 18:34:17 GMT and should not be manually modified.
+
+## 6.2.0
+Fri, 08 Jun 2018 18:34:17 GMT
+
+### Minor changes
+
+- add style arg to customizable
+- Fixing package dependencies
+
+## 6.1.0
+Thu, 07 Jun 2018 16:35:34 GMT
+
+### Minor changes
+
+- Tweaked the lint rules.
+
+## 6.0.2
+Tue, 05 Jun 2018 00:44:30 GMT
+
+### Patches
+
+- Added Prettier
+
+## 6.0.1
+Mon, 04 Jun 2018 10:16:13 GMT
+
+### Patches
+
+- Updating react typings.
+
+## 6.0.0
+Wed, 30 May 2018 20:28:33 GMT
+
+### Breaking changes
+
+- Minimum React version is now 16.3.2.
+
+## 5.11.5
+Thu, 17 May 2018 10:28:07 GMT
+
+### Patches
+
+- Fixed a bug in the documentation generator code that skipped const enums (parser)
+
+## 5.11.4
+Fri, 11 May 2018 04:21:29 GMT
+
+### Patches
+
+- Pin markdown-to-jsx dependency
+
+## 5.11.3
+Tue, 08 May 2018 10:17:01 GMT
+
+### Patches
+
+- Pin markdown-to-jsx dependency
+
+## 5.11.2
+Fri, 04 May 2018 15:58:38 GMT
+
+### Patches
+
+- Updating React build version.
+
+## 5.11.1
+Wed, 02 May 2018 23:55:40 GMT
+
+### Patches
+
+- Refactors String.prototype.includes usage in favor of  String.prototype.indexOf for IE compat.
+
+## 5.11.0
+Mon, 23 Apr 2018 10:24:54 GMT
+
+### Minor changes
+
+- Updating the focus styling to use the generalized `ms-Fabric--isFocusVisibl
+
+## 5.10.2
+Thu, 19 Apr 2018 18:25:59 GMT
+
+### Patches
+
+- Update createRef to match React.createRef api
+
+## 5.10.1
+Wed, 18 Apr 2018 10:15:04 GMT
+
+### Patches
+
+- Fix code block line-height
+
+## 5.10.0
+Mon, 16 Apr 2018 10:23:25 GMT
+
+### Minor changes
+
+- Add new APIs for editing sections on GitHub.
+
+### Patches
+
+- Removing module entry temporarily. (Will be added back in 6.0.)
+- Updating build to React 16.3.1.
+
+## 5.9.0
+Thu, 12 Apr 2018 10:15:54 GMT
+
+### Minor changes
+
+- HTML button tags will be overridden with DefaultButton component.
 
 ## 5.8.0
 Thu, 05 Apr 2018 10:15:39 GMT

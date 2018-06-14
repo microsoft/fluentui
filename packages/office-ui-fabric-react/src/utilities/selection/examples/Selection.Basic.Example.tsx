@@ -10,7 +10,7 @@ import {
   SelectionMode,
   SelectionZone
 } from 'office-ui-fabric-react/lib/Selection';
-import { createListItems } from '@uifabric/example-app-base';
+import { createListItems } from '../../../utilities/exampleData';
 
 import './Selection.Example.scss';
 
@@ -34,7 +34,7 @@ export interface ISelectionItemExampleProps {
  * The SelectionItemExample controls and displays the selection state of a single item
  */
 export class SelectionItemExample extends React.Component<ISelectionItemExampleProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     const { item, itemIndex, selection } = this.props;
     let isSelected = false;
 
@@ -43,15 +43,26 @@ export class SelectionItemExample extends React.Component<ISelectionItemExampleP
     }
 
     return (
-      <div className='ms-SelectionItemExample' data-is-focusable={ true } data-selection-index={ itemIndex }>
-        { (selection && selection.canSelectItem(item) && selection.mode !== SelectionMode.none) && (
-          <div className='ms-SelectionItemExample-check' data-is-focusable={ true } data-selection-toggle={ true } >
-            <Check checked={ isSelected } />
-          </div>
-        ) }
-        <span className='ms-SelectionItemExample-name'>
-          { item.name }
-        </span>
+      <div className="ms-SelectionItemExample" data-is-focusable={true} data-selection-index={itemIndex}>
+        {selection &&
+          selection.canSelectItem(item) &&
+          selection.mode !== SelectionMode.none && (
+            <div className="ms-SelectionItemExample-check" data-is-focusable={true} data-selection-toggle={true}>
+              <Check checked={isSelected} />
+            </div>
+          )}
+        <span className="ms-SelectionItemExample-name">{item.name}</span>
+        <a className="ms-SelectionItemExample-link" href="https://bing.com" target="_blank">
+          Link that avoids selection
+        </a>
+        <a
+          className="ms-SelectionItemExample-link"
+          data-selection-select={true}
+          href="https://bing.com"
+          target="_blank"
+        >
+          Link that selects first
+        </a>
       </div>
     );
   }
@@ -82,49 +93,51 @@ export class SelectionBasicExample extends React.Component<{}, ISelectionBasicEx
     this.state.selection.setItems(this.state.items as IObjectWithKey[], false);
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     this._hasMounted = true;
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { items, selection } = this.state;
 
     return (
-      <div className='ms-SelectionBasicExample'>
-        <CommandBar items={ this._getCommandItems() } />
-        <MarqueeSelection selection={ selection } isEnabled={ selection.mode === SelectionMode.multiple } >
+      <div className="ms-SelectionBasicExample">
+        <CommandBar items={this._getCommandItems()} />
+        <MarqueeSelection selection={selection} isEnabled={selection.mode === SelectionMode.multiple}>
           <SelectionZone
-            selection={ selection }
+            selection={selection}
             // tslint:disable-next-line:jsx-no-lambda
-            onItemInvoked={ (item) => alert('item invoked: ' + item.name) }
+            onItemInvoked={this._alertItem}
           >
-            { items.map((item, index) => (
+            {items.map((item: { key: string | number }, index: number) => (
               <SelectionItemExample
-                ref={ 'detailsGroup_' + index }
-                key={ item.key }
-                item={ item }
-                itemIndex={ index }
-                selection={ selection }
+                ref={'detailsGroup_' + index}
+                key={item.key}
+                item={item}
+                itemIndex={index}
+                selection={selection}
               />
-            )) }
+            ))}
           </SelectionZone>
         </MarqueeSelection>
       </div>
     );
   }
 
-  private _onSelectionChanged() {
+  private _alertItem = (item: { key?: React.Key; name: React.ReactText }): void => alert('item invoked: ' + item.name);
+
+  private _onSelectionChanged(): void {
     if (this._hasMounted) {
       this.forceUpdate();
     }
   }
 
-  private _onToggleSelectAll() {
+  private _onToggleSelectAll(): void {
     const { selection } = this.state;
     selection.toggleAllSelected();
   }
 
-  private _onSelectionModeChanged(ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem) {
+  private _onSelectionModeChanged(ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem): void {
     this.setState((previousState: ISelectionBasicExampleState) => {
       const newSelection = new Selection({
         onSelectionChanged: this._onSelectionChanged,
@@ -139,21 +152,32 @@ export class SelectionBasicExample extends React.Component<{}, ISelectionBasicEx
     });
   }
 
-  private _onCanSelectChanged(ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem) {
-    const canSelectItem = (menuItem.data === 'vowels') ? this._canSelectItem : undefined;
+  private _onCanSelectChanged(ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem): void {
+    const canSelectItem = menuItem.data === 'vowels' ? this._canSelectItem : undefined;
 
     this.setState((previousState: ISelectionBasicExampleState) => {
-      const newSelection = new Selection({ onSelectionChanged: this._onSelectionChanged, canSelectItem: canSelectItem, selectionMode: previousState.selection.mode });
+      const newSelection = new Selection({
+        onSelectionChanged: this._onSelectionChanged,
+        canSelectItem: canSelectItem,
+        selectionMode: previousState.selection.mode
+      });
       newSelection.setItems(previousState.items as IObjectWithKey[], false);
       return {
         selection: newSelection,
-        canSelect: (menuItem.data === 'vowels') ? 'vowels' : 'all'
+        canSelect: menuItem.data === 'vowels' ? 'vowels' : 'all'
       };
     });
   }
 
   private _canSelectItem(item: any): boolean {
-    return item.name && (item.name.indexOf('a') === 0 || item.name.indexOf('e') === 0 || item.name.indexOf('i') === 0 || item.name.indexOf('o') === 0 || item.name.indexOf('u') === 0);
+    return (
+      item.name &&
+      (item.name.indexOf('a') === 0 ||
+        item.name.indexOf('e') === 0 ||
+        item.name.indexOf('i') === 0 ||
+        item.name.indexOf('o') === 0 ||
+        item.name.indexOf('u') === 0)
+    );
   }
 
   private _getCommandItems(): IContextualMenuItem[] {
@@ -162,7 +186,7 @@ export class SelectionBasicExample extends React.Component<{}, ISelectionBasicEx
     return [
       {
         key: 'selectionMode',
-        name: 'Selection Mode',
+        text: 'Selection Mode',
         items: [
           {
             key: SelectionMode[SelectionMode.none],
@@ -171,7 +195,6 @@ export class SelectionBasicExample extends React.Component<{}, ISelectionBasicEx
             checked: selection.mode === SelectionMode.none,
             onClick: this._onSelectionModeChanged,
             data: SelectionMode.none
-
           },
           {
             key: SelectionMode[SelectionMode.single],
@@ -188,18 +211,18 @@ export class SelectionBasicExample extends React.Component<{}, ISelectionBasicEx
             checked: selection.mode === SelectionMode.multiple,
             onClick: this._onSelectionModeChanged,
             data: SelectionMode.multiple
-          },
+          }
         ]
       },
       {
         key: 'selectAll',
-        name: 'Select All',
-        icon: 'CheckMark',
+        text: 'Select All',
+        iconProps: { iconName: 'CheckMark' },
         onClick: this._onToggleSelectAll
       },
       {
         key: 'allowCanSelect',
-        name: 'Choose selectable items',
+        text: 'Choose selectable items',
         items: [
           {
             key: 'all',

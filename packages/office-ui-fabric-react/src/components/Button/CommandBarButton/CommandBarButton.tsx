@@ -4,22 +4,22 @@ import { BaseComponent, customizable, nullRender } from '../../../Utilities';
 import { IButtonProps } from '../Button.types';
 import { getStyles } from './CommandBarButton.styles';
 
-@customizable('CommandBarButton', ['theme'])
+@customizable('CommandBarButton', ['theme', 'styles'])
 export class CommandBarButton extends BaseComponent<IButtonProps, {}> {
   /**
    * Tell BaseComponent to bypass resolution of componentRef.
    */
   protected _shouldUpdateComponentRef = false;
 
-  public render() {
+  public render(): JSX.Element {
     const { styles, theme } = this.props;
 
     return (
       <BaseButton
-        { ...this.props }
-        variantClassName='ms-Button--commandBar'
-        styles={ getStyles(theme!, styles) }
-        onRenderDescription={ nullRender }
+        {...this.props}
+        variantClassName="ms-Button--commandBar"
+        styles={getStyles(theme!, styles)}
+        onRenderDescription={nullRender}
       />
     );
   }

@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { ISelection } from '../../utilities/selection/interfaces';
-import { MarqueeSelection } from './MarqueeSelection';
+import { ITheme, IStyle } from '../../Styling';
+import { IStyleFunction } from '../../Utilities';
 
-export interface IMarqueeSelection {
+export interface IMarqueeSelection {}
 
-}
-
-export interface IMarqueeSelectionProps extends React.Props<MarqueeSelection> {
+export interface IMarqueeSelectionProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the IMarqueeSelection interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -44,4 +43,31 @@ export interface IMarqueeSelectionProps extends React.Props<MarqueeSelection> {
    * @default false
    */
   isDraggingConstrainedToRoot?: boolean;
+
+  /**
+   * Additional CSS class(es) to apply to the MarqueeSelection.
+   */
+  className?: string;
+
+  /**
+   * Theme (provided through customization.)
+   */
+  theme?: ITheme;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  styles?: IStyleFunction<IMarqueeSelectionStyleProps, IMarqueeSelectionStyles>;
+}
+
+export interface IMarqueeSelectionStyleProps {
+  theme: ITheme;
+  className?: string;
+}
+
+export interface IMarqueeSelectionStyles {
+  root?: IStyle;
+  dragMask?: IStyle;
+  box?: IStyle;
+  boxFill?: IStyle;
 }

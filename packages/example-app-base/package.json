@@ -1,11 +1,11 @@
 {
   "name": "@uifabric/example-app-base",
-  "version": "5.8.0",
+  "version": "6.2.0",
   "description": "Office UI Fabric example app base utilities for building example sites.",
-  "main": "lib/index.js",
-  "module": "lib-es2015/index.js",
-  "typings": "lib-es2015/index.d.ts",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
   "sideEffects": true,
+  "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/OfficeDev/office-ui-fabric-react"
@@ -14,31 +14,31 @@
   "scripts": {
     "build": "node ../../scripts/build.js",
     "clean": "node ../../scripts/clean.js",
+    "code-style": "node ../../scripts/code-style.js",
     "start": "node ../../scripts/start.js"
   },
   "devDependencies": {
     "@types/es6-promise": "0.0.32",
     "@types/highlight.js": "9.12.2",
-    "@types/react": "16.0.25",
-    "@types/react-dom": "16.0.3",
+    "@types/react": "16.3.16",
+    "@types/react-dom": "16.0.5",
     "@types/webpack-env": "1.13.0",
     "es6-map": "^0.1.5",
     "es6-promise": "^4.1.0",
     "es6-weak-map": "^2.0.2",
-    "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "office-ui-fabric-react-tslint": ">=6.0.0 <7.0.0",
+    "react": ">=16.3.2-0 <17.0.0",
+    "react-dom": ">=16.3.2-0 <17.0.0"
   },
   "peerDependencies": {
-    "react": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0",
-    "react-dom": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0"
+    "react": ">=16.3.2-0 <17.0.0",
+    "react-dom": ">=16.3.2-0 <17.0.0"
   },
   "dependencies": {
-    "@uifabric/styling": ">=5.23.0 <6.0.0",
-    "@uifabric/utilities": ">=5.23.0 <6.0.0",
+    "@microsoft/load-themed-styles": "^1.7.13",
     "highlight.js": "^9.12.0",
-    "markdown-to-jsx": "^6.6.0",
-    "office-ui-fabric-react": ">=5.1.0 <6.0.0",
+    "markdown-to-jsx": "6.6.1",
+    "office-ui-fabric-react": ">=6.6.1 <7.0.0",
     "react-syntax-highlighter": "^7.0.2",
     "tslib": "^1.7.1"
   }

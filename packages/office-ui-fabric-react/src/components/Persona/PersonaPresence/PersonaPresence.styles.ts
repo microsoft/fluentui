@@ -1,28 +1,17 @@
-import {
-  IPersonaPresenceStyleProps,
-  IPersonaPresenceStyles,
-  PersonaPresence,
-  PersonaSize,
-} from '../Persona.types';
-import {
-  FontSizes,
-  HighContrastSelector,
-} from '../../../Styling';
-import {
-  personaPresenceSize,
-  presenceBoolean,
-  sizeBoolean,
-} from '../PersonaConsts';
+import { IPersonaPresenceStyleProps, IPersonaPresenceStyles, PersonaPresence, PersonaSize } from '../Persona.types';
+import { FontSizes, HighContrastSelector, getGlobalClassNames } from '../../../Styling';
+import { personaPresenceSize, presenceBoolean, sizeBoolean } from '../PersonaConsts';
 
-export const getStyles = (
-  props: IPersonaPresenceStyleProps
-): IPersonaPresenceStyles => {
-  const {
-    className,
-    theme,
-  } = props;
+const GlobalClassNames = {
+  presence: 'ms-Persona-presence',
+  presenceIcon: 'ms-Persona-presenceIcon'
+};
 
+export const getStyles = (props: IPersonaPresenceStyleProps): IPersonaPresenceStyles => {
+  const { theme } = props;
   const { semanticColors } = theme;
+
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const size = sizeBoolean(props.size as PersonaSize);
   const presence = presenceBoolean(props.presence as PersonaPresence);
@@ -34,9 +23,9 @@ export const getStyles = (
   const presenceColorDnd = '#E81123';
   const presenceColorOffline = '#93ABBD';
 
-  return ({
+  return {
     presence: [
-      'ms-Persona-presence',
+      classNames.presence,
       {
         position: 'absolute',
         height: personaPresenceSize.size12,
@@ -54,7 +43,7 @@ export const getStyles = (
         selectors: {
           [HighContrastSelector]: {
             borderColor: 'Window',
-            backgroundColor: 'WindowText',
+            backgroundColor: 'WindowText'
           }
         }
       },
@@ -68,30 +57,30 @@ export const getStyles = (
         selectors: {
           [HighContrastSelector]: {
             top: '9px',
-            border: '1px solid WindowText',
+            border: '1px solid WindowText'
           }
         }
       },
 
       (size.isSize10 || size.isSize24 || size.isSize28 || size.isSize32) && {
         height: personaPresenceSize.size8,
-        width: personaPresenceSize.size8,
+        width: personaPresenceSize.size8
       },
 
       size.isSize16 && {
         height: personaPresenceSize.size6,
         width: personaPresenceSize.size6,
-        borderWidth: '1.5px',
+        borderWidth: '1.5px'
       },
 
       size.isSize72 && {
         height: personaPresenceSize.size20,
-        width: personaPresenceSize.size20,
+        width: personaPresenceSize.size20
       },
 
       size.isSize100 && {
         height: personaPresenceSize.size28,
-        width: personaPresenceSize.size28,
+        width: personaPresenceSize.size28
       },
 
       presence.isAvailable && {
@@ -99,13 +88,13 @@ export const getStyles = (
 
         selectors: {
           [HighContrastSelector]: {
-            backgroundColor: 'Highlight',
-          },
+            backgroundColor: 'Highlight'
+          }
         }
       },
 
       presence.isAway && {
-        backgroundColor: presenceColorAway,
+        backgroundColor: presenceColorAway
       },
 
       presence.isBlocked && [
@@ -122,20 +111,23 @@ export const getStyles = (
               left: 0,
               border: `${personaPresenceSize.border} solid ${presenceColorBusy}`,
               borderRadius: '50%',
-              boxSizing: 'border-box',
+              boxSizing: 'border-box'
             },
 
             // Only show :after at larger sizes
-            ':after': (size.isSize40 || size.isSize48 || size.isSize72 || size.isSize100) ? {
-              content: '""',
-              width: '100%',
-              height: personaPresenceSize.border,
-              backgroundColor: presenceColorBusy,
-              transform: 'translateY(-50%) rotate(-45deg)',
-              position: 'absolute',
-              top: '50%',
-              left: 0,
-            } : undefined,
+            ':after':
+              size.isSize40 || size.isSize48 || size.isSize72 || size.isSize100
+                ? {
+                    content: '""',
+                    width: '100%',
+                    height: personaPresenceSize.border,
+                    backgroundColor: presenceColorBusy,
+                    transform: 'translateY(-50%) rotate(-45deg)',
+                    position: 'absolute',
+                    top: '50%',
+                    left: 0
+                  }
+                : undefined,
 
             [HighContrastSelector]: {
               backgroundColor: 'WindowText',
@@ -146,35 +138,35 @@ export const getStyles = (
                   height: `calc(100% - ${personaPresenceSize.border})`,
                   top: parseFloat(personaPresenceSize.border) / 2 + 'px',
                   left: parseFloat(personaPresenceSize.border) / 2 + 'px',
-                  borderColor: 'Window',
+                  borderColor: 'Window'
                 },
 
                 ':after': {
                   width: `calc(100% - ${parseFloat(personaPresenceSize.border) * 2}px)`,
                   left: personaPresenceSize.border,
-                  backgroundColor: 'Window',
+                  backgroundColor: 'Window'
                 }
               }
-            },
+            }
           }
-        },
+        }
       ],
 
       presence.isBusy && {
-        backgroundColor: presenceColorBusy,
+        backgroundColor: presenceColorBusy
       },
 
       presence.isDoNotDisturb && {
-        backgroundColor: presenceColorDnd,
+        backgroundColor: presenceColorDnd
       },
 
       presence.isOffline && {
-        backgroundColor: presenceColorOffline,
-      },
+        backgroundColor: presenceColorOffline
+      }
     ],
 
     presenceIcon: [
-      'ms-Persona-presenceIcon',
+      classNames.presenceIcon,
       {
         color: semanticColors.bodyBackground,
         fontSize: '6px',
@@ -183,25 +175,25 @@ export const getStyles = (
 
         selectors: {
           [HighContrastSelector]: {
-            color: 'Window',
+            color: 'Window'
           }
         }
       },
 
       size.isSize72 && {
         fontSize: FontSizes.small,
-        lineHeight: personaPresenceSize.size20,
+        lineHeight: personaPresenceSize.size20
       },
 
       size.isSize100 && {
         fontSize: FontSizes.medium,
-        lineHeight: personaPresenceSize.size28,
+        lineHeight: personaPresenceSize.size28
       },
 
       presence.isAway && {
         position: 'relative',
-        left: '1px',
-      },
+        left: '1px'
+      }
     ]
-  });
+  };
 };

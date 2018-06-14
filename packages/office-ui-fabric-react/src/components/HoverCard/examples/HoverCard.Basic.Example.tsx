@@ -1,13 +1,8 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
-import {
-  HoverCard,
-  IExpandingCardProps
-} from 'office-ui-fabric-react/lib/HoverCard';
+import { HoverCard, IExpandingCardProps } from 'office-ui-fabric-react/lib/HoverCard';
 import { DetailsList, buildColumns, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
-import { createListItems } from '@uifabric/example-app-base';
+import { createListItems } from '../../../utilities/exampleData';
 import './HoverCard.Example.scss';
 
 let _items: any[];
@@ -18,7 +13,6 @@ export interface IHoverCardExampleState {
 }
 
 export class HoverCardBasicExample extends BaseComponent<{}, IHoverCardExampleState> {
-
   constructor(props: {}) {
     super(props);
 
@@ -36,12 +30,7 @@ export class HoverCardBasicExample extends BaseComponent<{}, IHoverCardExampleSt
     return (
       <div>
         <p> Hover over location of a row item to see the card </p>
-        <DetailsList
-          setKey='hoverSet'
-          items={ items! }
-          columns={ columns }
-          onRenderItemColumn={ this._onRenderItemColumn }
-        />
+        <DetailsList setKey="hoverSet" items={items!} columns={columns} onRenderItemColumn={this._onRenderItemColumn} />
       </div>
     );
   }
@@ -55,40 +44,36 @@ export class HoverCardBasicExample extends BaseComponent<{}, IHoverCardExampleSt
 
     if (column.key === 'location') {
       return (
-        <HoverCard id='myID1' expandingCardProps={ expandingCardProps } instantOpenOnClick={ true }>
-          <div className='HoverCard-item'>
-            { item.location }
+        <HoverCard id="myID1" expandingCardProps={expandingCardProps} instantOpenOnClick={true}>
+          <div className="HoverCard-item" data-is-focusable={true}>
+            {item.location}
           </div>
         </HoverCard>
       );
     }
 
     return item[column.key];
-  }
+  };
 
   private _onRenderCompactCard = (item: any): JSX.Element => {
     return (
-      <div className='hoverCardExample-compactCard'>
-        <a target='_blank' href={ `http://wikipedia.org/wiki/${item.location}` }>
-          { item.location }
+      <div className="hoverCardExample-compactCard">
+        <a target="_blank" href={`http://wikipedia.org/wiki/${item.location}`}>
+          {item.location}
         </a>
       </div>
     );
-  }
+  };
 
   private _onRenderExpandedCard = (item: any): JSX.Element => {
     const { items, columns } = this.state;
     return (
-      <div className='hoverCardExample-expandedCard'>
-        { item.description }
-        <DetailsList
-          setKey='expandedCardSet'
-          items={ items! }
-          columns={ columns }
-        />
+      <div className="hoverCardExample-expandedCard">
+        {item.description}
+        <DetailsList setKey="expandedCardSet" items={items!} columns={columns} />
       </div>
     );
-  }
+  };
 }
 
 function _buildColumns() {

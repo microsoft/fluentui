@@ -1,13 +1,7 @@
-
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import * as ReactTestUtils from 'react-dom/test-utils';
-/* tslint:enable:no-unused-variable */
 import * as renderer from 'react-test-renderer';
 
 import { Suggestions } from './Suggestions';
-import { ISuggestionItemProps } from './Suggestions.types';
 import { ISuggestionModel } from './SuggestionsController';
 
 const suggestions = [
@@ -25,7 +19,8 @@ const suggestions = [
   'rose',
   'violet',
   'white',
-  'yellow'];
+  'yellow'
+];
 
 function generateSimpleSuggestions(selectedIndex: number = 0) {
   return suggestions.map<ISuggestionModel<ISimple>>((value, index) => {
@@ -37,11 +32,10 @@ function generateSimpleSuggestions(selectedIndex: number = 0) {
       selected: index === selectedIndex
     };
   });
-
 }
 
 const basicSuggestionRenderer = (props: ISimple) => {
-  return <div> { props.name } </div>;
+  return <div> {props.name} </div>;
 };
 
 export interface ISimple {
@@ -54,14 +48,12 @@ function mockOnClick() {
 }
 
 describe('Suggestions', () => {
-
   it('renders a list properly', () => {
-
     const component = renderer.create(
       <Suggestions
-        onRenderSuggestion={ basicSuggestionRenderer }
-        onSuggestionClick={ mockOnClick }
-        suggestions={ generateSimpleSuggestions() }
+        onRenderSuggestion={basicSuggestionRenderer}
+        onSuggestionClick={mockOnClick}
+        suggestions={generateSimpleSuggestions()}
       />
     );
     const tree = component.toJSON();
@@ -71,21 +63,20 @@ describe('Suggestions', () => {
   it('scrolls to selected index properly', () => {
     const component = renderer.create(
       <Suggestions
-        onRenderSuggestion={ basicSuggestionRenderer }
-        onSuggestionClick={ mockOnClick }
-        suggestions={ generateSimpleSuggestions() }
+        onRenderSuggestion={basicSuggestionRenderer}
+        onSuggestionClick={mockOnClick}
+        suggestions={generateSimpleSuggestions()}
       />
     );
 
     component.update(
       <Suggestions
-        onRenderSuggestion={ basicSuggestionRenderer }
-        onSuggestionClick={ mockOnClick }
-        suggestions={ generateSimpleSuggestions(8) }
+        onRenderSuggestion={basicSuggestionRenderer}
+        onSuggestionClick={mockOnClick}
+        suggestions={generateSimpleSuggestions(8)}
       />
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
-
 });

@@ -1,4 +1,4 @@
-import { IRawStyle, keyframes } from '@uifabric/merge-styles/lib/index';
+import { IRawStyle, keyframes } from '@uifabric/merge-styles';
 
 const DEFAULT_DURATION = '14s';
 const DEFAULT_DELAY = '2s';
@@ -45,7 +45,7 @@ function _continuousPulseStepFive(beaconColorOne: string, innerDimension: string
   };
 }
 
-function _continuousPulseAnimation(
+function _continuousPulseAnimationDouble(
   beaconColorOne: string,
   beaconColorTwo: string,
   innerDimension: string,
@@ -73,9 +73,23 @@ function _continuousPulseAnimation(
   });
 }
 
-function _createDefaultAnimation(
-  animationName: string,
-): IRawStyle {
+function _continuousPulseAnimationSingle(
+  beaconColorOne: string,
+  beaconColorTwo: string,
+  innerDimension: string,
+  outerDimension: string,
+  borderWidth: string
+): string {
+  return keyframes({
+    '0%': _continuousPulseStepOne(beaconColorOne, innerDimension),
+    '14.2%': _continuousPulseStepTwo(borderWidth),
+    '35.7%': _continuousPulseStepThree(),
+    '71.4%': _continuousPulseStepFour(beaconColorTwo, outerDimension),
+    '100%': {}
+  });
+}
+
+function _createDefaultAnimation(animationName: string): IRawStyle {
   return {
     animationName,
     animationIterationCount: DEFAULT_ITERATION_COUNT,
@@ -85,6 +99,7 @@ function _createDefaultAnimation(
 }
 
 export const PulsingBeaconAnimationStyles = {
-  continuousPulseAnimation: _continuousPulseAnimation,
+  continuousPulseAnimationDouble: _continuousPulseAnimationDouble,
+  continuousPulseAnimationSingle: _continuousPulseAnimationSingle,
   createDefaultAnimation: _createDefaultAnimation
 };

@@ -1,7 +1,7 @@
 import { Validators } from './Validators';
 
 describe('Simple form validators test', () => {
-  let customMessage = 'Custom Error Message';
+  const customMessage = 'Custom Error Message';
 
   it('Integer validator', () => {
     expect(Validators.isInteger(customMessage)(null)).toBeFalsy();

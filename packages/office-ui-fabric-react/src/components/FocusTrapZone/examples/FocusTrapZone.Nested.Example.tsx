@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 /* tslint:disable:no-string-literal */
 
@@ -15,51 +13,37 @@ interface IFocusTrapComponentProps {
   setIsActive: (name: string, isActive: boolean) => void;
 }
 
-interface IFocusTrapComponentState {
-}
+interface IFocusTrapComponentState {}
 
 class FocusTrapComponent extends React.Component<IFocusTrapComponentProps, IFocusTrapComponentState> {
-
   public render() {
     const contents = (
-      <div className='ms-FocusTrapComponent'>
-        <DefaultButton
-          onClick={ this._onStringButtonClicked }
-          text={ this.props.name }
-        />
+      <div className="ms-FocusTrapComponent">
+        <DefaultButton onClick={this._onStringButtonClicked} text={this.props.name} />
         <Toggle
-          defaultChecked={ this.props.isActive }
-          onChanged={ this._onFocusTrapZoneToggleChanged }
-          label='Focus Trap Zone'
-          onText='On'
-          offText='Off'
+          defaultChecked={this.props.isActive}
+          onChanged={this._onFocusTrapZoneToggleChanged}
+          label="Focus Trap Zone"
+          onText="On"
+          offText="Off"
         />
-        {
-          this.props.children
-        }
+        {this.props.children}
       </div>
     );
 
     if (this.props.isActive) {
-      return (
-        <FocusTrapZone forceFocusInsideTrap={ false }>
-          {
-            contents
-          }
-        </FocusTrapZone>
-      );
+      return <FocusTrapZone forceFocusInsideTrap={false}>{contents}</FocusTrapZone>;
     }
     return contents;
   }
 
   private _onStringButtonClicked = (): void => {
     console.log(this.props.name);
-  }
+  };
 
   private _onFocusTrapZoneToggleChanged = (isChecked: boolean): void => {
     this.props.setIsActive(this.props.name, isChecked);
-  }
-
+  };
 }
 
 export interface IFocusTrapZoneNestedExampleState {
@@ -71,7 +55,6 @@ export interface IFocusTrapZoneNestedExampleState {
 const NAMES: string[] = ['One', 'Two', 'Three', 'Four', 'Five'];
 
 export default class FocusTrapZoneNestedExample extends React.Component<{}, IFocusTrapZoneNestedExampleState> {
-
   constructor(props: {}) {
     super(props);
 
@@ -85,14 +68,14 @@ export default class FocusTrapZoneNestedExample extends React.Component<{}, IFoc
 
     return (
       <div>
-        <FocusTrapComponent name={ 'One' } isActive={ !!stateMap['One'] } setIsActive={ this._setIsActive } >
-          <FocusTrapComponent name={ 'Two' } isActive={ !!stateMap['Two'] } setIsActive={ this._setIsActive } >
-            <FocusTrapComponent name={ 'Three' } isActive={ !!stateMap['Three'] } setIsActive={ this._setIsActive } />
-            <FocusTrapComponent name={ 'Four' } isActive={ !!stateMap['Four'] } setIsActive={ this._setIsActive } />
+        <FocusTrapComponent name={'One'} isActive={!!stateMap['One']} setIsActive={this._setIsActive}>
+          <FocusTrapComponent name={'Two'} isActive={!!stateMap['Two']} setIsActive={this._setIsActive}>
+            <FocusTrapComponent name={'Three'} isActive={!!stateMap['Three']} setIsActive={this._setIsActive} />
+            <FocusTrapComponent name={'Four'} isActive={!!stateMap['Four']} setIsActive={this._setIsActive} />
           </FocusTrapComponent>
-          <FocusTrapComponent name={ 'Five' } isActive={ !!stateMap['Five'] } setIsActive={ this._setIsActive } />
+          <FocusTrapComponent name={'Five'} isActive={!!stateMap['Five']} setIsActive={this._setIsActive} />
         </FocusTrapComponent>
-        <DefaultButton onClick={ this._randomize }>Randomize</DefaultButton>
+        <DefaultButton onClick={this._randomize}>Randomize</DefaultButton>
       </div>
     );
   }
@@ -100,14 +83,13 @@ export default class FocusTrapZoneNestedExample extends React.Component<{}, IFoc
   private _setIsActive = (name: string, isActive: boolean): void => {
     this.state.stateMap[name] = isActive;
     this.forceUpdate();
-  }
+  };
 
   private _randomize = (): void => {
-    NAMES.forEach((name) => {
-      this.state.stateMap[name] = Math.random() >= .5;
+    NAMES.forEach(name => {
+      this.state.stateMap[name] = Math.random() >= 0.5;
     });
 
     this.forceUpdate();
-  }
-
+  };
 }

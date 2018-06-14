@@ -6,7 +6,6 @@ import { SearchBox } from './SearchBox';
 // tslint:disable:jsx-no-lambda
 
 describe('SearchBox', () => {
-
   it('renders SearchBox correctly', () => {
     const component = renderer.create(<SearchBox />);
     const tree = component.toJSON();
@@ -17,9 +16,9 @@ describe('SearchBox', () => {
     let clickExecuted = false;
     const component = mount(
       <SearchBox
-        clearButtonProps={ {
-          onClick: () => clickExecuted = true
-        } }
+        clearButtonProps={{
+          onClick: () => (clickExecuted = true)
+        }}
       />
     );
 
@@ -34,5 +33,11 @@ describe('SearchBox', () => {
     expect(clickExecuted).toEqual(true);
 
     expect(component.find('input').prop('value')).toEqual('');
+  });
+
+  it('renders SearchBox without animation correctly', () => {
+    const component = renderer.create(<SearchBox disableAnimation={true} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
   });
 });

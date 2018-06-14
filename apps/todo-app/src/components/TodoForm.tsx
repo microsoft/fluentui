@@ -58,21 +58,18 @@ export default class TodoForm extends BaseComponent<ITodoFormProps, ITodoFormSta
 
   public render(): JSX.Element {
     return (
-      <form className={ styles.todoForm } onSubmit={ this._onSubmit }>
+      <form className={styles.todoForm} onSubmit={this._onSubmit}>
         <TextField
-          className={ styles.textField }
-          value={ this.state.inputValue }
-          componentRef={ this._textField }
-          placeholder={ strings.inputBoxPlaceholder }
-          onBeforeChange={ this._onBeforeTextFieldChange }
-          autoComplete='off'
-          errorMessage={ this.state.errorMessage }
+          className={styles.textField}
+          value={this.state.inputValue}
+          componentRef={this._textField}
+          placeholder={strings.inputBoxPlaceholder}
+          onBeforeChange={this._onBeforeTextFieldChange}
+          autoComplete="off"
+          errorMessage={this.state.errorMessage}
         />
-        <PrimaryButton
-          className={ styles.addButton }
-          type='submit'
-        >
-          { strings.addButton }
+        <PrimaryButton className={styles.addButton} type="submit">
+          {strings.addButton}
         </PrimaryButton>
       </form>
     );
@@ -81,7 +78,7 @@ export default class TodoForm extends BaseComponent<ITodoFormProps, ITodoFormSta
   private _onSubmit = (event: React.FormEvent<HTMLElement>): void => {
     event.preventDefault();
 
-    const { value: textField } = this._textField;
+    const { current: textField } = this._textField;
     if (!textField) {
       return;
     }
@@ -99,7 +96,7 @@ export default class TodoForm extends BaseComponent<ITodoFormProps, ITodoFormSta
 
       textField.focus();
     }
-  }
+  };
 
   private _onBeforeTextFieldChange(newValue: string): void {
     this.setState({

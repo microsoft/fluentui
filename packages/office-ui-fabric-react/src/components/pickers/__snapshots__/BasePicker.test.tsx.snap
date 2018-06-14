@@ -10,20 +10,11 @@ exports[`Pickers BasePicker renders BasePicker correctly 1`] = `
     aria-labelledby={undefined}
     className="ms-FocusZone"
     data-focuszone-id="FocusZone0"
-    onClick={[Function]}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
     role="presentation"
   >
-    <div
-      aria-live="assertive"
-      className={undefined}
-      id="selected-suggestion-alert"
-      role="alert"
-    >
-       
-    </div>
     <div
       className="ms-SelectionZone"
       onClick={[Function]}
@@ -45,7 +36,7 @@ exports[`Pickers BasePicker renders BasePicker correctly 1`] = `
           aria-controls="selected-suggestion-alert"
           aria-expanded={false}
           aria-haspopup="true"
-          aria-owns="suggestion-list"
+          aria-owns={undefined}
           autoCapitalize="off"
           autoComplete="off"
           className="ms-BasePicker-input"
@@ -78,20 +69,11 @@ exports[`Pickers TagPicker renders TagPicker correctly 1`] = `
     aria-labelledby={undefined}
     className="ms-FocusZone"
     data-focuszone-id="FocusZone17"
-    onClick={[Function]}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
     role="presentation"
   >
-    <div
-      aria-live="assertive"
-      className={undefined}
-      id="selected-suggestion-alert"
-      role="alert"
-    >
-       
-    </div>
     <div
       className="ms-SelectionZone"
       onClick={[Function]}
@@ -113,7 +95,7 @@ exports[`Pickers TagPicker renders TagPicker correctly 1`] = `
           aria-controls="selected-suggestion-alert"
           aria-expanded={false}
           aria-haspopup="true"
-          aria-owns="suggestion-list"
+          aria-owns={undefined}
           autoCapitalize="off"
           autoComplete="off"
           className="ms-BasePicker-input"

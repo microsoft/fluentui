@@ -2,6 +2,151 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.2.0",
+      "tag": "@uifabric/merge-styles_v6.2.0",
+      "date": "Thu, 07 Jun 2018 16:35:34 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "58b0ef8cd0468cbd5cfab04267f2f4143444f919",
+            "comment": "Minor changes to improve server side rendering."
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.2",
+      "tag": "@uifabric/merge-styles_v6.0.2",
+      "date": "Tue, 05 Jun 2018 00:44:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "cfa7a19ec1d6f98c13f822a828e0751f64507dbd",
+            "comment": "Added Prettier"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.1",
+      "tag": "@uifabric/merge-styles_v6.0.1",
+      "date": "Mon, 04 Jun 2018 10:16:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "4e1cd119bbf0f75e0432b0f92bad342714b57bef",
+            "comment": "Updating react typings."
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.0",
+      "tag": "@uifabric/merge-styles_v6.0.0",
+      "date": "Wed, 30 May 2018 22:05:03 GMT",
+      "comments": {
+        "major": [
+          {
+            "comment": "v6 release - see office-ui-fabric-react@6.1.0 for all up v6 release notes."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.17.1",
+      "tag": "@uifabric/merge-styles_v5.17.1",
+      "date": "Wed, 23 May 2018 10:28:50 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Marius Tennøe <mariust@outlook.com>",
+            "commit": "1387cc6d9660ebeacc8d1550b5bb8ecab2dba0fd",
+            "comment": "Added missing merge-styles background-size typing"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.17.0",
+      "tag": "@uifabric/merge-styles_v5.17.0",
+      "date": "Thu, 26 Apr 2018 10:12:34 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "b9f6e845720daf7536a299a84be96ec4793ae57a",
+            "comment": "Add `animation` to `IRawStyleBase` for use in style sets."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.16.1",
+      "tag": "@uifabric/merge-styles_v5.16.1",
+      "date": "Wed, 25 Apr 2018 05:32:09 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "1d305b55114bffaece2841500c8476ba3996d2b2",
+            "comment": "merge-styles: `style` elements which are created on the fly now \"bunch\" together, avoiding unpredictability in specificity."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.16.0",
+      "tag": "@uifabric/merge-styles_v5.16.0",
+      "date": "Mon, 23 Apr 2018 10:24:54 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "bf655ceeaf161fd5ee3cc4dc5a4e55a82dea03e5",
+            "comment": "Updating how keyframe classes are cached to aid with jest snapshot testing."
+          }
+        ],
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "2bbc7950bd9f10ea1e792dcb1155c625aa8e8f4f",
+            "comment": "Updating documentation."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.15.2",
+      "tag": "@uifabric/merge-styles_v5.15.2",
+      "date": "Tue, 17 Apr 2018 18:47:11 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "68acb9b5f356c7b76ef334984ce4a9258a926061",
+            "comment": "mergeStyles: rules are now registered in separate styling objects, improving performance significantly."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.15.1",
+      "tag": "@uifabric/merge-styles_v5.15.1",
+      "date": "Mon, 16 Apr 2018 10:23:26 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "4b856fc9e1734edd3986c28f25e9211a3edf96d4",
+            "comment": "Removing module entry temporarily. (Will be added back in 6.0.)"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.15.0",
       "tag": "@uifabric/merge-styles_v5.15.0",
       "date": "Tue, 10 Apr 2018 17:37:28 GMT",

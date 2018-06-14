@@ -57,6 +57,13 @@ export interface ISemanticColors {
   bodyBackground: string;
 
   /**
+   * A special semantic slot that will always be the same or darker (not necessarily stronger) than the bodyBackground slot, even in
+   * an inverted theme. This is used for zones near the edge of the page, to provide a vignetting effect. This is especially effective
+   * with zones near the edge of the page in stronger themes or if it uses a variant theme.
+   */
+  bodyFrameBackground: string;
+
+  /**
    * The default color for text.
    */
   bodyText: string;
@@ -75,6 +82,16 @@ export interface ISemanticColors {
    * Divider lines; e.g. lines that separate sections in a menu, an <HR> element.
    */
   bodyDivider: string;
+
+  /**
+   * The color of a link.
+   */
+  link: string;
+
+  /**
+   * The color of a hovered link. Also used when the link is active.
+   */
+  linkHovered: string;
 
   /**
    * The default color for backgrounds of disabled controls; e.g. disabled text field.
@@ -140,8 +157,8 @@ export interface ISemanticColors {
   inputBorder: string;
 
   /** The border of a small input control in its resting unchecked state; e.g. the box of an unchecked checkbox.
-  *
-  */
+   *
+   */
   smallInputBorder: string;
 
   /**
@@ -229,12 +246,6 @@ export interface ISemanticColors {
   menuItemBackgroundHovered: string;
 
   /**
-   * @deprecated
-   * The background of checked menu item; e.g. a menu item whose submenu is open, a selected dropdown item.
-   */
-  menuItemBackgroundChecked: string;
-
-  /**
    * The default colors of icons in menus.
    */
   menuIcon: string;
@@ -272,18 +283,26 @@ export interface ISemanticColors {
   listItemBackgroundCheckedHovered: string;
 
   /**
-   * The color of a link.
+   * The background color for a hovered list header.
    */
-  link: string;
+  listHeaderBackgroundHovered: string;
 
   /**
-   * The color of a hovered link. Also used when the link is active.
+   * The background color for a pressed list header.
    */
-  linkHovered: string;
+  listHeaderBackgroundPressed: string;
 
   //// DEPRECATED SLOTS
   // Do not use these slots, they are only maintained for backwards compatibility.
 
-  /** DEPRECATED use listText instead */
+  /** @deprecated
+   * This slot was incorrectly named. Use listText instead. */
   listTextColor: string;
+
+  /**
+   * @deprecated
+   * (Checked menu items no longer get a background color.)
+   * The background of checked menu item; e.g. a menu item whose submenu is open, a selected dropdown item.
+   */
+  menuItemBackgroundChecked: string;
 }

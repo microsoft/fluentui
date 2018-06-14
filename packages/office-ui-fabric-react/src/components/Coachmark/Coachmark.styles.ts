@@ -1,10 +1,19 @@
-import { IStyle, IRawStyle, keyframes } from '../../Styling';
+import { IStyle, keyframes, PulsingBeaconAnimationStyles, ITheme, getTheme } from '../../Styling';
+
+export const COACHMARK_WIDTH = 32;
+export const COACHMARK_HEIGHT = 32;
 
 export interface ICoachmarkStyleProps {
   /**
+   * Is the Coachmark collapsed.  Deprecated: use isCollapsed instead.
+   * @deprecated
+   */
+  collapsed?: boolean;
+
+  /**
    * Is the Coachmark collapsed
    */
-  collapsed: boolean;
+  isCollapsed: boolean;
 
   /**
    * Is the beacon currently animating.
@@ -51,12 +60,17 @@ export interface ICoachmarkStyleProps {
    * Beacon color two
    */
   beaconColorTwo?: string;
+
+  /**
+   * Transform origin for teaching bubble content
+   */
+  transformOrigin?: string;
 }
 
 export interface ICoachmarkStyles {
   /**
-  * Style for the root element in the default enabled/unchecked state.
-  */
+   * Style for the root element in the default enabled/unchecked state.
+   */
   root?: IStyle;
 
   /**
@@ -96,47 +110,6 @@ export interface ICoachmarkStyles {
    * The styles applied when the coachmark has collapsed.
    */
   collapsed?: IStyle;
-}
-
-function continuousPulseStepOne(beaconColorOne: string): IRawStyle {
-  return {
-    borderColor: beaconColorOne,
-    borderWidth: '0px',
-    width: '35px',
-    height: '35px'
-  };
-}
-
-function continuousPulseStepTwo(): IRawStyle {
-  return {
-    opacity: '1',
-    borderWidth: '10px'
-  };
-}
-
-function continuousPulseStepThree(): IRawStyle {
-  return {
-    opacity: 1
-  };
-}
-
-function continuousPulseStepFour(beaconColorTwo: string): IRawStyle {
-  return {
-    borderWidth: '0',
-    width: '150px',
-    height: '150px',
-    opacity: '0',
-    borderColor: beaconColorTwo
-  };
-}
-
-function continuousPulseStepFive(beaconColorOne: string): IRawStyle {
-  return {
-    ...continuousPulseStepOne(beaconColorOne),
-    ...{
-      opacity: '0'
-    }
-  };
 }
 
 export const translateOne: string = keyframes({
@@ -253,26 +226,20 @@ export const rotateOne: string = keyframes({
   }
 });
 
-export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
-  const ContinuousPulse: string = keyframes({
-    '0%': continuousPulseStepOne(props.beaconColorOne!),
-    '1.42%': continuousPulseStepTwo(),
-    '3.57%': continuousPulseStepThree(),
-    '7.14%': continuousPulseStepFour(props.beaconColorTwo!),
-    '8%': continuousPulseStepFive(props.beaconColorOne!),
-    '29.99%': continuousPulseStepFive(props.beaconColorOne!),
-    '30%': continuousPulseStepOne(props.beaconColorOne!),
-    '31.42%': continuousPulseStepTwo(),
-    '33.57%': continuousPulseStepThree(),
-    '37.14%': continuousPulseStepFour(props.beaconColorTwo!),
-    '38%': continuousPulseStepFive(props.beaconColorOne!),
-    '79.42%': continuousPulseStepFive(props.beaconColorOne!),
-    '79.43': continuousPulseStepOne(props.beaconColorOne!),
-    '81.85': continuousPulseStepTwo(),
-    '83.42': continuousPulseStepThree(),
-    '87%': continuousPulseStepFour(props.beaconColorTwo!),
-    '100%': {}
-  });
+export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme()): ICoachmarkStyles {
+  const animationInnerDimension = '35px';
+  const animationOuterDimension = '150px';
+  const animationBorderWidth = '10px';
+
+  const ContinuousPulse: string = PulsingBeaconAnimationStyles.continuousPulseAnimationDouble(
+    props.beaconColorOne ? props.beaconColorOne : theme.palette.themePrimary,
+    props.beaconColorTwo ? props.beaconColorTwo : theme.palette.themeTertiary,
+    animationInnerDimension,
+    animationOuterDimension,
+    animationBorderWidth
+  );
+
+  const ContinuousPulseAnimation = PulsingBeaconAnimationStyles.createDefaultAnimation(ContinuousPulse);
 
   return {
     root: [
@@ -280,7 +247,6 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
         position: 'relative'
       }
     ],
-    // The pulsing beacon
     pulsingBeacon: [
       {
         position: 'absolute',
@@ -293,13 +259,7 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
         borderStyle: 'solid',
         opacity: '0'
       },
-      (props.collapsed && props.isBeaconAnimating) && {
-        animationName: ContinuousPulse,
-        animationIterationCount: '1',
-        animationDuration: '14s',
-        zIndex: 1000,
-        animationDelay: '2s'
-      }
+      props.isCollapsed && props.isBeaconAnimating && ContinuousPulseAnimation
     ],
     // Translate Animation Layer
     translateAnimationContainer: [
@@ -307,7 +267,7 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
         width: '100%',
         height: '100%'
       },
-      props.collapsed && {
+      props.isCollapsed && {
         animationDuration: '14s',
         animationTimingFunction: 'linear',
         animationDirection: 'normal',
@@ -317,7 +277,7 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
         animationName: translateOne,
         transition: 'opacity 0.5s ease-in-out'
       },
-      (!props.collapsed) && {
+      !props.isCollapsed && {
         opacity: '1'
       }
     ],
@@ -327,7 +287,7 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
         width: '100%',
         height: '100%'
       },
-      props.collapsed && {
+      props.isCollapsed && {
         animationDuration: '14s',
         animationTimingFunction: 'linear',
         animationDirection: 'normal',
@@ -341,10 +301,9 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
     rotateAnimationLayer: [
       {
         width: '100%',
-        height: '100%',
-        opacity: '0.8'
+        height: '100%'
       },
-      props.collapsed && {
+      props.isCollapsed && {
         animationDuration: '14s',
         animationTimingFunction: 'linear',
         animationDirection: 'normal',
@@ -353,7 +312,7 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
         animationFillMode: 'forwards',
         animationName: rotateOne
       },
-      !props.collapsed && {
+      !props.isCollapsed && {
         opacity: '1'
       }
     ],
@@ -364,16 +323,16 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
         outline: 'none',
         overflow: 'hidden',
         backgroundColor: props.color,
-        borderRadius: props.width,
+        borderRadius: COACHMARK_WIDTH,
         transition: 'border-radius 250ms, width 500ms, height 500ms cubic-bezier(0.5, 0, 0, 1)',
         visibility: 'hidden'
       },
       !props.isMeasuring && {
-        width: props.width,
-        height: props.height,
+        width: COACHMARK_WIDTH,
+        height: COACHMARK_HEIGHT,
         visibility: 'visible'
       },
-      !props.collapsed && {
+      !props.isCollapsed && {
         borderRadius: '1px',
         opacity: '1',
         width: props.entityHostWidth,
@@ -383,16 +342,16 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
     entityInnerHost: [
       {
         transition: 'transform 500ms cubic-bezier(0.5, 0, 0, 1)',
-        transformOrigin: 'top left',
+        transformOrigin: props.transformOrigin,
         transform: 'scale(0)'
       },
-      (!props.collapsed) && {
+      !props.isCollapsed && {
         width: props.entityHostWidth,
         height: props.entityHostHeight,
         transform: 'scale(1)'
       },
-      (!props.isMeasuring) && {
-        visibility: 'visible',
+      !props.isMeasuring && {
+        visibility: 'visible'
       }
     ]
   };

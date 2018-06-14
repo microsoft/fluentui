@@ -1,36 +1,37 @@
 import * as React from 'react';
-import { ContextualMenuPage } from 'office-ui-fabric-react/lib/components/ContextualMenu/ContextualMenuPage';
+import { ContextualMenuPage } from '@uifabric/demo/lib/components/pages/ContextualMenuPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 const pageStyles: any = require('../PageStyles.module.scss');
 
 export class ContextualMenuComponentPage extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
-      <div ref='pageElement' className={ pageStyles.basePage }>
+      <div className={pageStyles.basePage}>
         <ComponentPage>
-          <PageHeader pageTitle='ContextualMenu' backgroundColor='#038387'
-            links={
-              [
-                {
-                  'text': 'Overview',
-                  'location': 'Overview'
-                },
-                {
-                  'text': 'Best Practices',
-                  'location': 'BestPractices'
-                },
-                {
-                  'text': 'Variants',
-                  'location': 'Variants'
-                },
-                {
-                  'text': 'Implementation',
-                  'location': 'Implementation'
-                }
-              ]
-            } />
-          <ContextualMenuPage isHeaderVisible={ false } />
+          <PageHeader
+            pageTitle="ContextualMenu"
+            backgroundColor="#038387"
+            links={[
+              {
+                text: 'Overview',
+                location: 'Overview'
+              },
+              {
+                text: 'Best Practices',
+                location: 'BestPractices'
+              },
+              {
+                text: 'Variants',
+                location: 'Variants'
+              },
+              {
+                text: 'Implementation',
+                location: 'Implementation'
+              }
+            ]}
+          />
+          <ContextualMenuPage isHeaderVisible={false} />
         </ComponentPage>
       </div>
     );

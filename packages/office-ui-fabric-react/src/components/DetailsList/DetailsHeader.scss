@@ -64,11 +64,11 @@ $isPaddedMargin: 24px;
 
     &:hover {
       color: $bodyTextColor;
-      background: $bodyBackgroundColor;
+      background: $listHeaderBackgroundHoveredColor;
     }
 
     &:active {
-      background: $listItemBackgroundHoveredColor;
+      background: $listHeaderBackgroundPressedColor;
     }
   }
 
@@ -161,14 +161,20 @@ $isPaddedMargin: 24px;
 }
 
 .cellTitle {
-  display: block;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+  box-sizing: border-box;
   overflow: hidden;
-  @include focus-border($position: absolute);
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
+  @include focus-border($position: auto);
   padding: 0 8px;
+}
+
+.cellName {
+  flex: 0 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 :global(.ms-TooltipHost).checkTooltip {

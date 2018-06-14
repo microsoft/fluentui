@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import { css } from '../../Utilities';
 import { Check } from '../../Check';
 import * as DetailsRowCheckStyles from './DetailsRowCheck.scss';
@@ -37,21 +35,17 @@ export const DetailsRowCheck = (props: IDetailsRowCheckProps) => {
 
   return (
     <div
-      { ...buttonProps }
-      role='checkbox'
-      className={
-        css(className, 'ms-DetailsRow-check', DetailsRowCheckStyles.check, CheckStyles.checkHost, {
-          [`ms-DetailsRow-check--isDisabled ${DetailsRowCheckStyles.isDisabled}`]: !props.canSelect,
-          [`ms-DetailsRow-check--isHeader ${DetailsRowCheckStyles.isHeader}`]: props.isHeader
-        })
-      }
-      aria-checked={ isPressed }
-      data-selection-toggle={ true }
-      data-automationid='DetailsRowCheck'
+      {...buttonProps}
+      role="checkbox"
+      className={css(className, 'ms-DetailsRow-check', DetailsRowCheckStyles.check, CheckStyles.checkHost, {
+        [`ms-DetailsRow-check--isDisabled ${DetailsRowCheckStyles.isDisabled}`]: !props.canSelect,
+        [`ms-DetailsRow-check--isHeader ${DetailsRowCheckStyles.isHeader}`]: props.isHeader
+      })}
+      aria-checked={isPressed}
+      data-selection-toggle={true}
+      data-automationid="DetailsRowCheck"
     >
-      <Check
-        checked={ isPressed }
-      />
+      <Check checked={isPressed} />
     </div>
   );
 };

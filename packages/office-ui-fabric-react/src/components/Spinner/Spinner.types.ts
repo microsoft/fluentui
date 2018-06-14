@@ -1,11 +1,8 @@
 import * as React from 'react';
-import { Spinner } from './Spinner';
-import { ITheme, IStyle, IRawStyle } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { ITheme, IStyle } from '../../Styling';
+import { IStyleFunctionOrObject } from '../../Utilities';
 
-export interface ISpinner {
-
-}
+export interface ISpinner {}
 
 export interface ISpinnerProps extends React.HTMLAttributes<HTMLElement> {
   /**
@@ -21,9 +18,9 @@ export interface ISpinnerProps extends React.HTMLAttributes<HTMLElement> {
   type?: SpinnerType;
 
   /**
-  * The size of Spinner to render. { extraSmall, small, medium, large }
-  * @default SpinnerType.medium
-  */
+   * The size of Spinner to render. { extraSmall, small, medium, large }
+   * @default SpinnerType.medium
+   */
   size?: SpinnerSize;
 
   /**
@@ -56,7 +53,7 @@ export interface ISpinnerProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunction<ISpinnerStyleProps, ISpinnerStyles>;
+  styles?: IStyleFunctionOrObject<ISpinnerStyleProps, ISpinnerStyles>;
 }
 
 export enum SpinnerSize {

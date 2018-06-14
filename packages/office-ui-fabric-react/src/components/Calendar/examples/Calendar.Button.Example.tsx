@@ -1,10 +1,8 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
-import {
-  Calendar,
-  DayOfWeek
-} from 'office-ui-fabric-react/lib/Calendar';
+import { Calendar, DayOfWeek } from 'office-ui-fabric-react/lib/Calendar';
+import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 
 const DayPickerStrings = {
   months: [
@@ -22,40 +20,11 @@ const DayPickerStrings = {
     'December'
   ],
 
-  shortMonths: [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec'
-  ],
+  shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 
-  days: [
-    'Sunday',
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday'
-  ],
+  days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
 
-  shortDays: [
-    'S',
-    'M',
-    'T',
-    'W',
-    'T',
-    'F',
-    'S'
-  ],
+  shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
 
   goToToday: 'Go to today'
 };
@@ -69,6 +38,7 @@ export interface ICalendarButtonExampleProps {
   isDayPickerVisible?: boolean;
   isMonthPickerVisible?: boolean;
   highlightCurrentMonth?: boolean;
+  highlightSelectedMonth?: boolean;
   buttonString?: string;
   showMonthPickerAsOverlay?: boolean;
 }
@@ -96,59 +66,61 @@ export class CalendarButtonExample extends React.Component<ICalendarButtonExampl
     this._onSelectDate = this._onSelectDate.bind(this);
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
-        <div ref={ (calendarBtn) => this._calendarButtonElement = calendarBtn! }>
+        <div ref={calendarBtn => (this._calendarButtonElement = calendarBtn!)}>
           <DefaultButton
-            onClick={ this._onClick }
-            text={ !this.state.selectedDate ? this.props.buttonString : this.state.selectedDate.toLocaleDateString() }
+            onClick={this._onClick}
+            text={!this.state.selectedDate ? this.props.buttonString : this.state.selectedDate.toLocaleDateString()}
           />
         </div>
-        { this.state.showCalendar && (
+        {this.state.showCalendar && (
           <Callout
-            isBeakVisible={ false }
-            className='ms-DatePicker-callout'
-            gapSpace={ 0 }
-            doNotLayer={ false }
-            target={ this._calendarButtonElement }
-            directionalHint={ DirectionalHint.bottomLeftEdge }
-            onDismiss={ this._onDismiss }
-            setInitialFocus={ false }
+            isBeakVisible={false}
+            className="ms-DatePicker-callout"
+            gapSpace={0}
+            doNotLayer={false}
+            target={this._calendarButtonElement}
+            directionalHint={DirectionalHint.bottomLeftEdge}
+            onDismiss={this._onDismiss}
+            setInitialFocus={true}
           >
-            <Calendar
-              onSelectDate={ this._onSelectDate }
-              onDismiss={ this._onDismiss }
-              isMonthPickerVisible={ this.props.isMonthPickerVisible }
-              value={ this.state.selectedDate! }
-              firstDayOfWeek={ DayOfWeek.Sunday }
-              strings={ DayPickerStrings }
-              isDayPickerVisible={ this.props.isDayPickerVisible }
-              highlightCurrentMonth={ this.props.highlightCurrentMonth }
-              showMonthPickerAsOverlay={ this.props.showMonthPickerAsOverlay }
-            />
+            <FocusTrapZone isClickableOutsideFocusTrap={true}>
+              <Calendar
+                onSelectDate={this._onSelectDate}
+                onDismiss={this._onDismiss}
+                isMonthPickerVisible={this.props.isMonthPickerVisible}
+                value={this.state.selectedDate!}
+                firstDayOfWeek={DayOfWeek.Sunday}
+                strings={DayPickerStrings}
+                isDayPickerVisible={this.props.isDayPickerVisible}
+                highlightCurrentMonth={this.props.highlightCurrentMonth}
+                highlightSelectedMonth={this.props.highlightSelectedMonth}
+                showMonthPickerAsOverlay={this.props.showMonthPickerAsOverlay}
+              />
+            </FocusTrapZone>
           </Callout>
-        )
-        }
+        )}
       </div>
     );
   }
 
-  private _onClick(event: any) {
+  private _onClick(event: any): void {
     this.setState((prevState: ICalendarButtonExampleState) => {
       prevState.showCalendar = !prevState.showCalendar;
       return prevState;
     });
   }
 
-  private _onDismiss() {
+  private _onDismiss(): void {
     this.setState((prevState: ICalendarButtonExampleState) => {
       prevState.showCalendar = false;
       return prevState;
     });
   }
 
-  private _onSelectDate(date: Date) {
+  private _onSelectDate(date: Date): void {
     this.setState((prevState: ICalendarButtonExampleState) => {
       prevState.showCalendar = false;
       prevState.selectedDate = date;

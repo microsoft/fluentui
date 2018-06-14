@@ -7,26 +7,26 @@ import * as stylesImport from './DocumentCard.scss';
 const styles: any = stylesImport;
 
 export class DocumentCardActions extends BaseComponent<IDocumentCardActionsProps, any> {
-  public render() {
+  public render(): JSX.Element {
     const { actions, views } = this.props;
 
     return (
-      <div className={ css('ms-DocumentCardActions', styles.actions) }>
+      <div className={css('ms-DocumentCardActions', styles.actions)}>
+        {actions &&
+          actions.map((action, index) => {
+            return (
+              <div className={css('ms-DocumentCardActions-action', styles.action)} key={index}>
+                <IconButton {...action} />
+              </div>
+            );
+          })}
 
-        { actions && actions.map((action, index) => {
-          return (
-            <div className={ css('ms-DocumentCardActions-action', styles.action) } key={ index }>
-              <IconButton { ...action } />
-            </div>
-          );
-        }) }
-
-        { views! > 0 && (
-          <div className={ css('ms-DocumentCardActions-views', styles.views) }>
-            <Icon iconName='View' />
-            { views }
+        {views! > 0 && (
+          <div className={css('ms-DocumentCardActions-views', styles.views)}>
+            <Icon iconName="View" />
+            {views}
           </div>
-        ) }
+        )}
       </div>
     );
   }

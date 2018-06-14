@@ -26,6 +26,7 @@ scripts/ @dzearing
 # todo-app/
 
 #### Packages
+packages/charting/ @kkjeer
 # packages/example-app-base/
 packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
 # packages/icons/
@@ -59,7 +60,7 @@ Callout/  @joschect
 ChoiceGroup/   @srideshpande
 # ColorPicker/
 # ComboBox/
-CommandBar/   @micahgodbolt
+CommandBar/   @micahgodbolt @JasonGore
 ContextualMenu/  @joschect
 DatePicker/   @lorejoh12 @sathi23
 # DetailsList/
@@ -86,13 +87,13 @@ OverflowSet/  @micahgodbolt
 # Overlay/
 # Panel/
 # Persona/
-Persona/PersonaCoin.tsx @mtennoe @jakob101
+Persona/PersonaCoin/ @mtennoe @jakob101
 Persona/PersonaConsts.tsx @mtennoe @jakob101
 pickers/  @joschect
 # Pivot/
 # Popup/
 # ProgressIndicator/
-Rating/  @cschleiden
+# Rating/
 ResizeGroup/  @micahgodbolt
 # SearchBox/
 # Slider/
@@ -104,5 +105,60 @@ TeachingBubble/   @micahgodbolt
 # Theme/
 Toggle/  @phkuo
 Tooltip/  @micahgodbolt
+
+## Docs
+# ActivityItem/docs/
+# Breadcrumb/docs/
+# Button/docs/
+Calendar/docs/   @lorejoh12 @sathi23
+Callout/docs/  @joschect
+# Check/docs/
+# Checkbox/docs/
+ChoiceGroup/docs/   @srideshpande
+# ColorPicker/docs/
+# ComboBox/docs/
+CommandBar/docs/   @micahgodbolt
+ContextualMenu/docs/  @joschect
+DatePicker/docs/   @lorejoh12 @sathi23
+# DetailsList/docs/
+# Dialog/docs/
+DocumentCard/docs/ @yiminwu @mikewheaton
+# Dropdown/docs/
+# Fabric/docs/
+# FacePile/docs/
+# FocusTrapZone/docs/
+# FocusZone/docs/
+GroupedList/docs/  @aditima
+HoverCard/docs/   @atneik @Jahnp
+# Icon/docs/
+# Image/docs/
+# Label/docs/
+Layer/docs/  @ThomasMichon
+# Link/docs/
+List/docs/  @cschleiden
+# MarqueeSelection/docs/
+# MessageBar/docs/
+# Modal/docs/
+# Nav/docs/
+OverflowSet/docs/  @micahgodbolt
+# Overlay/docs/
+# Panel/docs/
+# Persona/docs/
+pickers/docs/  @joschect
+# Pivot/docs/
+# Popup/docs/
+# ProgressIndicator/docs/
+Rating/docs/  @cschleiden
+ResizeGroup/docs/  @micahgodbolt
+# SearchBox/docs/
+# Slider/docs/
+# SpinButton/docs/
+# Spinner/docs/
+# SwatchColorPicker/docs/
+TeachingBubble/docs/   @micahgodbolt
+# TextField/docs/
+# Theme/docs/
+Toggle/docs/  @phkuo
+Tooltip/docs/  @micahgodbolt
 
 

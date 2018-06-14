@@ -5,7 +5,6 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import './ContextualMenuExample.scss';
 
 export class ContextualMenuWithCustomMenuItemExample extends React.Component {
-
   constructor(props: {}) {
     super(props);
     this.state = {
@@ -13,18 +12,18 @@ export class ContextualMenuWithCustomMenuItemExample extends React.Component {
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <DefaultButton
-          id='ContextualMenuButton1'
-          text='Click for ContextualMenu'
-          menuProps={ {
+          id="ContextualMenuButton1"
+          text="Click for ContextualMenu"
+          menuProps={{
             shouldFocusOnMount: true,
             items: [
               {
                 key: 'newItem',
-                name: 'New'
+                text: 'New'
               },
               {
                 key: 'divider_1',
@@ -32,24 +31,24 @@ export class ContextualMenuWithCustomMenuItemExample extends React.Component {
               },
               {
                 key: 'rename',
-                name: 'Rename'
+                text: 'Rename'
               },
               {
                 key: 'edit',
-                name: 'Edit'
+                text: 'Edit'
               },
               {
                 key: 'properties',
-                name: 'Properties'
+                text: 'Properties'
               },
               {
                 key: 'disabled',
-                name: 'Disabled item',
+                text: 'Disabled item',
                 disabled: true
               }
             ],
-            contextualMenuItemAs: (props: IContextualMenuItemProps) => <div>Custom rendered { props.item.name }</div>
-          } }
+            contextualMenuItemAs: (props: IContextualMenuItemProps) => <div>Custom rendered {props.item.text}</div>
+          }}
         />
       </div>
     );
