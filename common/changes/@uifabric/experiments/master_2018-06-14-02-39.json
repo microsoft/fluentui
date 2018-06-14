@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/experiments",
+      "comment": "Dashboard Card Component for Admin Portals Dashboard which will be hosted inside  react -grid-layout. ",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/experiments",
+  "email": "raghurk@microsoft.com"
+}
