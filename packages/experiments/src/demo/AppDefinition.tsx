@@ -28,6 +28,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/Card'
         },
         {
+          component: require<any>('../components/DashboardGridLayout/DashboardGridLayoutPage').DashboardGridLayoutPage,
+          key: 'DashboardGridLayout',
+          name: 'DashboardGridLayout',
+          url: '#/examples/DashboardGridLayout'
+        },
+        {
           component: require<any>('../components/FolderCover/FolderCoverPage').FolderCoverPage,
           key: 'FolderCover',
           name: 'FolderCover',
