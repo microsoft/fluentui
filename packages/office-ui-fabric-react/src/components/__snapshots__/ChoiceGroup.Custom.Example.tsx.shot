@@ -175,13 +175,14 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
               <div
                 className="ms-Dropdown-container"
               >
-                <div
+                <button
                   aria-activedescendant="Dropdown2-option"
                   aria-describedby="Dropdown2-option"
                   aria-disabled={false}
                   aria-expanded="false"
+                  aria-haspopup="listbox"
                   aria-label={undefined}
-                  aria-live="assertive"
+                  aria-labelledby="Dropdown2-label"
                   aria-owns={undefined}
                   className="ms-Dropdown"
                   data-is-focusable={true}
@@ -190,11 +191,9 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                   onClick={[Function]}
                   onKeyDown={[Function]}
                   onKeyUp={[Function]}
-                  role="listbox"
                   tabIndex={0}
                 >
                   <span
-                    aria-atomic={true}
                     aria-label="5 seconds"
                     className="ms-Dropdown-title"
                     id="Dropdown2-option"
@@ -226,7 +225,10 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                       
                     </i>
                   </span>
-                </div>
+                </button>
+                <span
+                  className="ms-Layer"
+                />
               </div>
             </div>
           </div>

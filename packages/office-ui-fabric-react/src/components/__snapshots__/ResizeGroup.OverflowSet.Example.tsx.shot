@@ -3505,13 +3505,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
         >
           Number of items to render
         </label>
-        <div
+        <button
           aria-activedescendant="Dropdown64-option"
           aria-describedby="Dropdown64-option"
           aria-disabled={undefined}
           aria-expanded="false"
+          aria-haspopup="listbox"
           aria-label={undefined}
-          aria-live="assertive"
+          aria-labelledby="Dropdown64-label"
           aria-owns={undefined}
           className="ms-Dropdown"
           data-is-focusable={true}
@@ -3520,11 +3521,9 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyUp={[Function]}
-          role="listbox"
           tabIndex={0}
         >
           <span
-            aria-atomic={true}
             aria-label="20"
             className="ms-Dropdown-title"
             id="Dropdown64-option"
@@ -3556,7 +3555,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               
             </i>
           </span>
-        </div>
+        </button>
+        <span
+          className="ms-Layer"
+        />
       </div>
     </div>
   </div>

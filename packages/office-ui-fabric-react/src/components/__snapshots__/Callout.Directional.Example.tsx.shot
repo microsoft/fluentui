@@ -400,13 +400,14 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
       >
         Directional hint
       </label>
-      <div
+      <button
         aria-activedescendant="Dropdown3-option"
         aria-describedby="Dropdown3-option"
         aria-disabled={undefined}
         aria-expanded="false"
+        aria-haspopup="listbox"
         aria-label={undefined}
-        aria-live="assertive"
+        aria-labelledby="Dropdown3-label"
         aria-owns={undefined}
         className="ms-Dropdown"
         data-is-focusable={true}
@@ -415,11 +416,9 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
-        role="listbox"
         tabIndex={0}
       >
         <span
-          aria-atomic={true}
           aria-label="Bottom Left Edge"
           className="ms-Dropdown-title"
           id="Dropdown3-option"
@@ -451,7 +450,10 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
             
           </i>
         </span>
-      </div>
+      </button>
+      <span
+        className="ms-Layer"
+      />
     </div>
   </div>
   <div
