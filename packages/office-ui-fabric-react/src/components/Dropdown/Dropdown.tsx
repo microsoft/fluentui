@@ -670,6 +670,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   private _onDropdownKeyDown = (ev: React.KeyboardEvent<HTMLDivElement>): void => {
 
+    // Take note if we are processing a altKey or metaKey keydown
+    // so that the menu does not collapse if no other keys are pressed
     this._processingExpandCollapseKeyOnly = this._isExpandCollapseKey(ev);
 
     if (this.props.onKeyDown) {
@@ -678,9 +680,11 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         return;
       }
     }
-    const isOpen = this.state.isOpen;
+
     let newIndex: number | undefined;
     const selectedIndex = this.state.selectedIndices!.length ? this.state.selectedIndices![0] : -1;
+    const containsExpandCollapseModifier = ev.altKey || ev.metaKey;
+    const isOpen = this.state.isOpen;
 
     switch (ev.which) {
       case KeyCodes.enter:
@@ -700,7 +704,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         break;
 
       case KeyCodes.up:
-        if ((ev.altKey || ev.metaKey)) {
+        if (containsExpandCollapseModifier) {
           if (isOpen) {
             this.setState({ isOpen: false });
             break;
@@ -716,11 +720,11 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         break;
 
       case KeyCodes.down:
-        if (ev.altKey || ev.metaKey || this.props.multiSelect) {
-          if (ev.altKey || ev.metaKey) {
-            ev.stopPropagation();
-            ev.preventDefault();
-          }
+        if (containsExpandCollapseModifier) {
+          ev.stopPropagation();
+          ev.preventDefault();
+        }
+        if ((containsExpandCollapseModifier && !isOpen) || this.props.multiSelect) {
           this.setState({ isOpen: true });
         } else {
           newIndex = this._moveIndex(1, selectedIndex + 1, selectedIndex);
@@ -744,11 +748,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         break;
 
       default:
-        if (this._processingExpandCollapseKeyOnly) {
-          this.setState({
-            isOpen: false
-          });
-        }
         return;
     }
 
@@ -793,11 +792,15 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   private _onZoneKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     let elementToFocus;
+
+    // Take note if we are processing a altKey or metaKey keydown
+    // so that the menu does not collapse if no other keys are pressed
     this._processingExpandCollapseKeyOnly = this._isExpandCollapseKey(ev);
+    const containsExpandCollapseModifier = ev.altKey || ev.metaKey;
 
     switch (ev.which) {
       case KeyCodes.up:
-        if (ev.altKey || ev.metaKey) {
+        if (containsExpandCollapseModifier) {
           this.setState({ isOpen: false });
         } else {
           if (this._host.current) {
@@ -815,7 +818,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         break;
 
       case KeyCodes.down:
-        if (this._host.current) {
+        if (!containsExpandCollapseModifier && this._host.current) {
           elementToFocus = getFirstFocusable(this._host.current, this._host.current.firstChild as HTMLElement, true);
         }
         break;

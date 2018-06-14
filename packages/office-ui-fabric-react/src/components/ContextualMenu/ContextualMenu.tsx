@@ -695,7 +695,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
-    // take note if we are processing a altKey or metaKey keydown
+    // Take note if we are processing a altKey or metaKey keydown
     // so that the menu does not collapse if no other keys are pressed
     this._processingExpandCollapseKeyOnly = this._isExpandCollapseKey(ev);
 
