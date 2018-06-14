@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CheckboxPage } from '@uifabric/demo/lib/components/pages/CheckboxPage';
+import { CheckboxPage } from '@uifabric/fabric-website-resources/lib/components/pages/CheckboxPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 const pageStyles: any = require('../PageStyles.module.scss');
