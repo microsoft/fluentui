@@ -2,6 +2,20 @@
   "name": "@uifabric/webpack-utils",
   "entries": [
     {
+      "version": "0.4.0",
+      "tag": "@uifabric/webpack-utils_v0.4.0",
+      "date": "Thu, 14 Jun 2018 20:52:57 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "716fb49dd65f4ca23972af98481dc4c5a8d4b0f0",
+            "comment": "Adding useful fabricAsyncLoader options to make it more flexible"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.1",
       "tag": "@uifabric/webpack-utils_v0.0.1",
       "date": "Fri, 08 Jun 2018 18:34:17 GMT",

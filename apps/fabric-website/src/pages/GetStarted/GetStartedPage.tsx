@@ -274,7 +274,7 @@ initializeIcons('https://my.cdn.com/path/to/icons/');`}
             For advanced scenarios or alternatives to NPM see the{' '}
             <a
               className={styles.getStartedLink}
-              href="https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/ADVANCED.md"
+              href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Advanced-Usage"
             >
               advanced documentation in the Fabric React repository
             </a>.
@@ -350,13 +350,13 @@ initializeIcons('https://my.cdn.com/path/to/icons/');`}
             or{' '}
             <a
               className={styles.getStartedLink}
-              href="https://github.com/OfficeDev/office-ui-fabric-core/blob/master/ghdocs/PACKAGES.md"
+              href="https://github.com/OfficeDev/office-ui-fabric-react/wiki#using-fabric-react"
             >
               add it through a package manager
             </a>. You can also{' '}
             <a
               className={styles.getStartedLink}
-              href="https://github.com/OfficeDev/office-ui-fabric-core/blob/master/ghdocs/BUILDING.md"
+              href="https://github.com/OfficeDev/office-ui-fabric-react/wiki#building-the-repo"
             >
               build your own copy from the source code
             </a>.

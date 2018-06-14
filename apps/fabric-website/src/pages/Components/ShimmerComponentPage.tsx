@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ShimmerPage } from 'office-ui-fabric-react/lib/components/Shimmer/ShimmerPage';
+import { ShimmerPage } from '@uifabric/fabric-website-resources/lib/components/pages/ShimmerPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 const pageStyles: any = require('../PageStyles.module.scss');

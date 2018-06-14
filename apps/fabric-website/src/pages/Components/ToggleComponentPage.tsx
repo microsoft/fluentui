@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TogglePage } from 'office-ui-fabric-react/lib/components/Toggle/TogglePage';
+import { TogglePage } from '@uifabric/fabric-website-resources/lib/components/pages/TogglePage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 const pageStyles: any = require('../PageStyles.module.scss');

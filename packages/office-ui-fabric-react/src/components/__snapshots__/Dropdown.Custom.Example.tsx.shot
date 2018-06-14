@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders Dropdown.Custom.Example.tsx correctly 1`] = `
+<div
+  className="docs-DropdownExample"
+>
+  <div
+    className="ms-Dropdown-container"
+  >
+    <label
+      className=
+          ms-Label
+          ms-Dropdown-label
+          {
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #333333;
+            display: block;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            overflow-wrap: break-word;
+            padding-bottom: 5px;
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 5px;
+            word-wrap: break-word;
+          }
+      htmlFor="Customdrop1"
+      id="Customdrop1-label"
+      required={undefined}
+    >
+      Custom example:
+    </label>
+    <div
+      aria-activedescendant="Customdrop1-option"
+      aria-describedby="Customdrop1-option"
+      aria-disabled={undefined}
+      aria-expanded="false"
+      aria-label="Custom dropdown example"
+      aria-live="assertive"
+      aria-owns={undefined}
+      className="ms-Dropdown"
+      data-is-focusable={true}
+      id="Customdrop1"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      role="listbox"
+      tabIndex={0}
+    >
+      <span
+        aria-atomic={true}
+        aria-label="Select an Option"
+        className="ms-Dropdown-title ms-Dropdown-titleIsPlaceHolder"
+        id="Customdrop1-option"
+        role="listbox"
+      >
+        <div
+          className="dropdownExample-placeholder"
+        >
+          <i
+            aria-hidden={true}
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  display: inline-block;
+                  font-family: "FabricMDL2Icons-4";
+                  font-style: normal;
+                  font-weight: normal;
+                  speak: none;
+                }
+            data-icon-name="MessageFill"
+            role="presentation"
+            style={
+              Object {
+                "marginRight": "8px",
+              }
+            }
+          >
+            
+          </i>
+          <span>
+            Select an Option
+          </span>
+        </div>
+      </span>
+      <span
+        className="ms-Dropdown-caretDownWrapper"
+      >
+        <i
+          aria-hidden={true}
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: inline-block;
+                font-family: "FabricMDL2Icons-3";
+                font-style: normal;
+                font-weight: normal;
+                speak: none;
+              }
+          data-icon-name="CirclePlus"
+          role="presentation"
+        >
+          
+        </i>
+      </span>
+    </div>
+  </div>
+</div>
+`;

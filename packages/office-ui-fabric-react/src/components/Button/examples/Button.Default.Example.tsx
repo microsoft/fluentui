@@ -15,7 +15,13 @@ export class ButtonDefaultExample extends React.Component<IButtonProps, {}> {
       <div className={css(classNames.twoup)}>
         <div>
           <Label>Standard</Label>
-          <DefaultButton data-automation-id="test" disabled={disabled} checked={checked} text="Button" />
+          <DefaultButton
+            data-automation-id="test"
+            allowDisabledFocus={true}
+            disabled={disabled}
+            checked={checked}
+            text="Button"
+          />
         </div>
         <div>
           <Label>Primary</Label>
