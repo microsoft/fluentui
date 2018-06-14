@@ -157,9 +157,9 @@ export class ResourcesPage extends React.Component<any, any> {
                   Check out{' '}
                   <a
                     className={styles.relatedLink}
-                    href="https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/README.md"
+                    href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Sample-App"
                   >
-                    Fabric&rsquo;s ToDo tutorial
+                    Fabric&rsquo;s DocumentCard tutorial
                   </a>{' '}
                   to learn how to make a simple React app using Fabric components.
                 </p>
