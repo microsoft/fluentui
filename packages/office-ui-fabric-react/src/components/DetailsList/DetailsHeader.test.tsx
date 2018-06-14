@@ -28,7 +28,6 @@ describe('DetailsHeader', () => {
         selectionMode={SelectionMode.multiple}
         layoutMode={DetailsListLayoutMode.fixedColumns}
         columns={_columns}
-        columnReorderOptions={_columnReorderOptions}
       />
     );
     expect(component.toJSON()).toMatchSnapshot();
@@ -46,12 +45,13 @@ describe('DetailsHeader', () => {
 
     const wrapper = mount(
       <DetailsHeader
-        componentRef={ headerRef }
-        selection={ _selection }
-        selectionMode={ SelectionMode.multiple }
-        layoutMode={ DetailsListLayoutMode.fixedColumns }
-        columns={ _columns }
-        onColumnResized={ onColumnResized }
+        componentRef={headerRef}
+        selection={_selection}
+        selectionMode={SelectionMode.multiple}
+        layoutMode={DetailsListLayoutMode.fixedColumns}
+        columns={_columns}
+        onColumnResized={onColumnResized}
+        columnReorderOptions={_columnReorderOptions}
       />
     );
 
