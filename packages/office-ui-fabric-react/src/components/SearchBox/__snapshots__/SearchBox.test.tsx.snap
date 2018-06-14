@@ -43,6 +43,7 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
   onFocusCapture={[Function]}
 >
   <div
+    aria-hidden={true}
     className=
         ms-SearchBox-iconContainer
         {
@@ -170,6 +171,7 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
   onFocusCapture={[Function]}
 >
   <div
+    aria-hidden={true}
     className=
         ms-SearchBox-iconContainer
         {
