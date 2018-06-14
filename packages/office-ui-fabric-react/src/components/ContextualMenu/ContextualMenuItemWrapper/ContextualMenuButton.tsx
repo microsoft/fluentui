@@ -52,7 +52,7 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
       'aria-haspopup': itemHasSubmenu || undefined,
       'aria-owns': item.key === expandedMenuItemKey ? subMenuId : undefined,
       'aria-expanded': itemHasSubmenu ? item.key === expandedMenuItemKey : undefined,
-      'aria-checked': !!isChecked,
+      'aria-checked': canCheck ? !!isChecked : undefined,
       'aria-posinset': focusableElementIndex + 1,
       'aria-setsize': totalItemCount,
       'aria-disabled': isItemDisabled(item),
