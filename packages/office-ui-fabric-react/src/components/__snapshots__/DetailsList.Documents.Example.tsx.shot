@@ -359,6 +359,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
+          readOnly={undefined}
           type="text"
           value=""
         />

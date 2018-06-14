@@ -36,6 +36,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
+          readOnly={undefined}
           type="text"
           value=""
         />

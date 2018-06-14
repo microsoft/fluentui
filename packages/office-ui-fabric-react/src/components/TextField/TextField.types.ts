@@ -148,6 +148,12 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   disabled?: boolean;
 
   /**
+   * ReadOnly state of the textfield.
+   * @default false
+   */
+  readOnly?: boolean;
+
+  /**
    * If set, this will display an error message for the text field.
    */
   errorMessage?: string;

@@ -159,6 +159,7 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
               onFocus={[Function]}
               onInput={[Function]}
               placeholder="Input inside Focus Trap Zone"
+              readOnly={undefined}
               type="text"
               value=""
             />
