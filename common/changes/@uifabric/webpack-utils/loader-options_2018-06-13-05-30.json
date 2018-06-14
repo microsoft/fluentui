@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/webpack-utils",
+      "comment": "Adding useful fabricAsyncLoader options to make it more flexible",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/webpack-utils",
+  "email": "ken@gizzar.com"
+}

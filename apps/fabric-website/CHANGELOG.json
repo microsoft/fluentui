@@ -2,6 +2,32 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.1.0",
+      "tag": "@uifabric/fabric-website_v6.1.0",
+      "date": "Fri, 08 Jun 2018 18:34:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "6a227713f010cd71401a83e7ec2b4cf352afadfe",
+            "comment": "Add documentation for testing minified files locally."
+          }
+        ],
+        "minor": [
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "3ccea373457639519f55d9762c862d44ae4da36c",
+            "comment": "Shimmer: Adds new Shimmer component to fabric-website"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.6.1 <7.0.0` to `>=6.8.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.0.4",
       "tag": "@uifabric/fabric-website_v6.0.4",
       "date": "Thu, 07 Jun 2018 16:35:34 GMT",

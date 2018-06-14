@@ -1,6 +1,6 @@
 import { IButtonStyles } from './Button.types';
 import { memoizeFunction } from '../../Utilities';
-import { ITheme, IRawStyle, getFocusStyle, FontSizes, hiddenContentStyle } from '../../Styling';
+import { HighContrastSelector, ITheme, IRawStyle, getFocusStyle, FontSizes, hiddenContentStyle } from '../../Styling';
 
 const noOutline: IRawStyle = {
   outline: 0
@@ -55,16 +55,23 @@ export const getStyles = memoizeFunction(
         }
       ],
 
-      rootDisabled: {
-        backgroundColor: disabledBackground,
-        color: disabledText,
-        cursor: 'default',
-        pointerEvents: 'none',
-        selectors: {
-          ':hover': noOutline,
-          ':focus': noOutline
+      rootDisabled: [
+        getFocusStyle(theme, -1, 'relative', buttonHighContrastFocus),
+        {
+          backgroundColor: disabledBackground,
+          color: disabledText,
+          cursor: 'default',
+          pointerEvents: 'none',
+          selectors: {
+            ':hover': noOutline,
+            ':focus': noOutline,
+            [HighContrastSelector]: {
+              color: 'grayText',
+              bordercolor: 'grayText'
+            }
+          }
         }
-      },
+      ],
 
       iconDisabled: {
         color: disabledText

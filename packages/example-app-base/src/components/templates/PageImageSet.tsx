@@ -36,7 +36,7 @@ const getDefaultStyles = (props: IPageImageSetStyleProps): IPageImageSetStyles =
   }
 });
 
-@customizable('PageImageSet', ['theme'])
+@customizable('PageImageSet', ['theme', 'styles'])
 export class PageImageSet extends BaseComponent<IPageImageSetProps, {}> {
   public render(): JSX.Element {
     const { theme, getStyles, images } = this.props;

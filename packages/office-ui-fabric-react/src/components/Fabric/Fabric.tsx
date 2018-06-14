@@ -14,7 +14,7 @@ import { IFabricProps, IFabricStyleProps, IFabricStyles } from './Fabric.types';
 
 const getClassNames = classNamesFunction<IFabricStyleProps, IFabricStyles>();
 
-@customizable('Fabric', ['theme'])
+@customizable('Fabric', ['theme', 'styles'])
 export class Fabric extends BaseComponent<
   IFabricProps,
   {

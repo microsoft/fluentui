@@ -1,11 +1,13 @@
-module.exports = function (options) {
+module.exports = function(options) {
+  options = options || {};
   const path = require('path');
   const exec = require('../exec');
   const resolve = require('resolve');
   const typescriptPath = 'node ' + require.resolve('typescript/lib/tsc');
   const libPath = path.resolve(process.cwd(), 'lib');
   const srcPath = path.resolve(process.cwd(), 'src');
-  const extraParams = '--pretty' + (options.isProduction ? ` --inlineSources --sourceRoot ${path.relative(libPath, srcPath)}` : '');
+  const extraParams =
+    '--pretty' + (options.isProduction ? ` --inlineSources --sourceRoot ${path.relative(libPath, srcPath)}` : '');
 
   // Flag to keep track of if we already logged errors.
   // Since we run the ts builds in parallel, we do not want
@@ -14,11 +16,16 @@ module.exports = function (options) {
   let hasLoggedErrors = false;
 
   // We wait for all compilations to be done to report success
-  return Promise.all([
-    runTscFor('lib-commonjs', 'commonjs', extraParams),
-    runTscFor('lib', 'es2015', extraParams),
-  ]);
+  const runPromises = [];
 
+  if (options.commonjsOnly) {
+    runPromises.push(runTscFor('lib', 'commonjs', extraParams));
+  } else {
+    runPromises.push(runTscFor('lib-commonjs', 'commonjs', extraParams));
+    runPromises.push(runTscFor('lib', 'es2015', extraParams));
+  }
+
+  return Promise.all(runPromises);
 
   function logFirstStdOutAndRethrow(process) {
     if (!hasLoggedErrors) {
@@ -33,7 +40,9 @@ module.exports = function (options) {
   }
 
   function runTscFor(outDir, moduleType, extraParams) {
-    return exec(typescriptPath + ` -outDir ${outDir} -t es5 -m ${moduleType} ` + extraParams)
-      .then(logSuccessFor(outDir), logFirstStdOutAndRethrow)
+    return exec(typescriptPath + ` -outDir ${outDir} -t es5 -m ${moduleType} ` + extraParams).then(
+      logSuccessFor(outDir),
+      logFirstStdOutAndRethrow
+    );
   }
 };
