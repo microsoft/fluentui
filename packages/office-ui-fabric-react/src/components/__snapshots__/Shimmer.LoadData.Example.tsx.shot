@@ -871,105 +871,50 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
           size={12}
         >
           <div
+            aria-hidden="true"
             className=
                 ms-Persona-imageArea
+                ms-Persona-initials
                 {
+                  background-color: #2D89EF;
+                  border-radius: 50%;
+                  color: #ffffff;
                   flex: 0 0 auto;
+                  font-size: 14px;
+                  font-weight: 400;
                   height: 40px;
+                  line-height: 40px;
                   position: relative;
                   text-align: center;
                   width: 40px;
                 }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                  background-color: Window !important;
+                  border: 1px solid WindowText;
+                  box-sizing: border-box;
+                  color: WindowText;
+                }
             style={undefined}
           >
-            <div
-              aria-hidden="true"
+            <i
+              aria-hidden={true}
               className=
-                  ms-Persona-initials
-                  {
-                    background-color: #2D89EF;
-                    border-radius: 50%;
-                    color: #ffffff;
-                    font-size: 14px;
-                    font-weight: 400;
-                    height: 40px;
-                    line-height: 40px;
-                  }
-                  @media screen and (-ms-high-contrast: active){& {
-                    -ms-high-contrast-adjust: none;
-                    background-color: Window !important;
-                    border: 1px solid WindowText;
-                    box-sizing: border-box;
-                    color: WindowText;
-                  }
-              style={undefined}
-            >
-              <i
-                aria-hidden={true}
-                className=
 
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      display: inline-block;
-                      font-family: "FabricMDL2Icons-0";
-                      font-style: normal;
-                      font-weight: normal;
-                      speak: none;
-                    }
-                data-icon-name="Contact"
-                role="presentation"
-              >
-                
-              </i>
-            </div>
-            <div
-              className=
-                  ms-Image
-                  ms-Persona-image
                   {
-                    border-radius: 50%;
-                    border: 0px;
-                    height: 40px;
-                    left: 0px;
-                    margin-right: 10px;
-                    overflow: hidden;
-                    perspective: 1px;
-                    position: absolute;
-                    top: 0px;
-                    width: 40px;
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    display: inline-block;
+                    font-family: "FabricMDL2Icons-0";
+                    font-style: normal;
+                    font-weight: normal;
+                    speak: none;
                   }
-              style={
-                Object {
-                  "height": 40,
-                  "width": 40,
-                }
-              }
+              data-icon-name="Contact"
+              role="presentation"
             >
-              <img
-                alt=""
-                className=
-                    ms-Image-image
-                    ms-Image-image--cover
-                    ms-Image-image--portrait
-                    is-notLoaded
-                    is-fadeIn
-                    {
-                      display: block;
-                      height: auto;
-                      left: 50% /* @noflip */;
-                      opacity: 0;
-                      position: absolute;
-                      top: 50%;
-                      transform: translate(-50%,-50%);
-                      width: 100%;
-                    }
-                onError={[Function]}
-                onLoad={[Function]}
-                role={undefined}
-                src={undefined}
-              />
-            </div>
+              
+            </i>
             <div
               className=
                   ms-Persona-presence

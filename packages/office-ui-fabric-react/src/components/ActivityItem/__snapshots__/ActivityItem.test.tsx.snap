@@ -90,90 +90,33 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
         }
       >
         <div
+          aria-hidden="true"
           className=
               ms-Persona-imageArea
+              ms-Persona-initials
               {
+                background-color: #2D89EF;
+                border-radius: 50%;
+                color: #ffffff;
                 flex: 0 0 auto;
+                font-size: 11px;
+                font-weight: 400;
                 height: 16px;
+                line-height: 16px;
                 position: relative;
                 text-align: center;
                 width: 16px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                background-color: Window !important;
+                border: 1px solid WindowText;
+                box-sizing: border-box;
+                color: WindowText;
+              }
           style={undefined}
         >
-          <div
-            aria-hidden="true"
-            className=
-                ms-Persona-initials
-                {
-                  background-color: #2D89EF;
-                  border-radius: 50%;
-                  color: #ffffff;
-                  font-size: 11px;
-                  font-weight: 400;
-                  height: 16px;
-                  line-height: 16px;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  -ms-high-contrast-adjust: none;
-                  background-color: Window !important;
-                  border: 1px solid WindowText;
-                  box-sizing: border-box;
-                  color: WindowText;
-                }
-            style={undefined}
-          >
-            <span>
-              TN
-            </span>
-          </div>
-          <div
-            className=
-                ms-Image
-                ms-Persona-image
-                {
-                  border-radius: 50%;
-                  border: 0px;
-                  height: 16px;
-                  left: 0px;
-                  margin-right: 10px;
-                  overflow: hidden;
-                  perspective: 1px;
-                  position: absolute;
-                  top: 0px;
-                  width: 16px;
-                }
-            style={
-              Object {
-                "height": undefined,
-                "width": undefined,
-              }
-            }
-          >
-            <img
-              alt=""
-              className=
-                  ms-Image-image
-                  ms-Image-image--cover
-                  ms-Image-image--portrait
-                  is-notLoaded
-                  is-fadeIn
-                  {
-                    display: block;
-                    height: auto;
-                    left: 50% /* @noflip */;
-                    opacity: 0;
-                    position: absolute;
-                    top: 50%;
-                    transform: translate(-50%,-50%);
-                    width: 100%;
-                  }
-              onError={[Function]}
-              onLoad={[Function]}
-              role={undefined}
-              src={undefined}
-            />
-          </div>
+          TN
         </div>
       </div>
     </div>
@@ -417,90 +360,33 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
         }
       >
         <div
+          aria-hidden="true"
           className=
               ms-Persona-imageArea
+              ms-Persona-initials
               {
+                background-color: #2D89EF;
+                border-radius: 50%;
+                color: #ffffff;
                 flex: 0 0 auto;
+                font-size: 11px;
+                font-weight: 400;
                 height: 16px;
+                line-height: 16px;
                 position: relative;
                 text-align: center;
                 width: 16px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                background-color: Window !important;
+                border: 1px solid WindowText;
+                box-sizing: border-box;
+                color: WindowText;
+              }
           style={undefined}
         >
-          <div
-            aria-hidden="true"
-            className=
-                ms-Persona-initials
-                {
-                  background-color: #2D89EF;
-                  border-radius: 50%;
-                  color: #ffffff;
-                  font-size: 11px;
-                  font-weight: 400;
-                  height: 16px;
-                  line-height: 16px;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  -ms-high-contrast-adjust: none;
-                  background-color: Window !important;
-                  border: 1px solid WindowText;
-                  box-sizing: border-box;
-                  color: WindowText;
-                }
-            style={undefined}
-          >
-            <span>
-              TN
-            </span>
-          </div>
-          <div
-            className=
-                ms-Image
-                ms-Persona-image
-                {
-                  border-radius: 50%;
-                  border: 0px;
-                  height: 16px;
-                  left: 0px;
-                  margin-right: 10px;
-                  overflow: hidden;
-                  perspective: 1px;
-                  position: absolute;
-                  top: 0px;
-                  width: 16px;
-                }
-            style={
-              Object {
-                "height": undefined,
-                "width": undefined,
-              }
-            }
-          >
-            <img
-              alt=""
-              className=
-                  ms-Image-image
-                  ms-Image-image--cover
-                  ms-Image-image--portrait
-                  is-notLoaded
-                  is-fadeIn
-                  {
-                    display: block;
-                    height: auto;
-                    left: 50% /* @noflip */;
-                    opacity: 0;
-                    position: absolute;
-                    top: 50%;
-                    transform: translate(-50%,-50%);
-                    width: 100%;
-                  }
-              onError={[Function]}
-              onLoad={[Function]}
-              role={undefined}
-              src={undefined}
-            />
-          </div>
+          TN
         </div>
       </div>
     </div>
@@ -627,90 +513,33 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
         }
       >
         <div
+          aria-hidden="true"
           className=
               ms-Persona-imageArea
+              ms-Persona-initials
               {
+                background-color: #2D89EF;
+                border-radius: 50%;
+                color: #ffffff;
                 flex: 0 0 auto;
+                font-size: 11px;
+                font-weight: 400;
                 height: 16px;
+                line-height: 16px;
                 position: relative;
                 text-align: center;
                 width: 16px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                background-color: Window !important;
+                border: 1px solid WindowText;
+                box-sizing: border-box;
+                color: WindowText;
+              }
           style={undefined}
         >
-          <div
-            aria-hidden="true"
-            className=
-                ms-Persona-initials
-                {
-                  background-color: #2D89EF;
-                  border-radius: 50%;
-                  color: #ffffff;
-                  font-size: 11px;
-                  font-weight: 400;
-                  height: 16px;
-                  line-height: 16px;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  -ms-high-contrast-adjust: none;
-                  background-color: Window !important;
-                  border: 1px solid WindowText;
-                  box-sizing: border-box;
-                  color: WindowText;
-                }
-            style={undefined}
-          >
-            <span>
-              TN
-            </span>
-          </div>
-          <div
-            className=
-                ms-Image
-                ms-Persona-image
-                {
-                  border-radius: 50%;
-                  border: 0px;
-                  height: 16px;
-                  left: 0px;
-                  margin-right: 10px;
-                  overflow: hidden;
-                  perspective: 1px;
-                  position: absolute;
-                  top: 0px;
-                  width: 16px;
-                }
-            style={
-              Object {
-                "height": undefined,
-                "width": undefined,
-              }
-            }
-          >
-            <img
-              alt=""
-              className=
-                  ms-Image-image
-                  ms-Image-image--cover
-                  ms-Image-image--portrait
-                  is-notLoaded
-                  is-fadeIn
-                  {
-                    display: block;
-                    height: auto;
-                    left: 50% /* @noflip */;
-                    opacity: 0;
-                    position: absolute;
-                    top: 50%;
-                    transform: translate(-50%,-50%);
-                    width: 100%;
-                  }
-              onError={[Function]}
-              onLoad={[Function]}
-              role={undefined}
-              src={undefined}
-            />
-          </div>
+          TN
         </div>
       </div>
       <div
@@ -827,90 +656,33 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
         }
       >
         <div
+          aria-hidden="true"
           className=
               ms-Persona-imageArea
+              ms-Persona-initials
               {
+                background-color: #00ABA9;
+                border-radius: 50%;
+                color: #ffffff;
                 flex: 0 0 auto;
+                font-size: 11px;
+                font-weight: 400;
                 height: 16px;
+                line-height: 16px;
                 position: relative;
                 text-align: center;
                 width: 16px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                background-color: Window !important;
+                border: 1px solid WindowText;
+                box-sizing: border-box;
+                color: WindowText;
+              }
           style={undefined}
         >
-          <div
-            aria-hidden="true"
-            className=
-                ms-Persona-initials
-                {
-                  background-color: #00ABA9;
-                  border-radius: 50%;
-                  color: #ffffff;
-                  font-size: 11px;
-                  font-weight: 400;
-                  height: 16px;
-                  line-height: 16px;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  -ms-high-contrast-adjust: none;
-                  background-color: Window !important;
-                  border: 1px solid WindowText;
-                  box-sizing: border-box;
-                  color: WindowText;
-                }
-            style={undefined}
-          >
-            <span>
-              AN
-            </span>
-          </div>
-          <div
-            className=
-                ms-Image
-                ms-Persona-image
-                {
-                  border-radius: 50%;
-                  border: 0px;
-                  height: 16px;
-                  left: 0px;
-                  margin-right: 10px;
-                  overflow: hidden;
-                  perspective: 1px;
-                  position: absolute;
-                  top: 0px;
-                  width: 16px;
-                }
-            style={
-              Object {
-                "height": undefined,
-                "width": undefined,
-              }
-            }
-          >
-            <img
-              alt=""
-              className=
-                  ms-Image-image
-                  ms-Image-image--cover
-                  ms-Image-image--portrait
-                  is-notLoaded
-                  is-fadeIn
-                  {
-                    display: block;
-                    height: auto;
-                    left: 50% /* @noflip */;
-                    opacity: 0;
-                    position: absolute;
-                    top: 50%;
-                    transform: translate(-50%,-50%);
-                    width: 100%;
-                  }
-              onError={[Function]}
-              onLoad={[Function]}
-              role={undefined}
-              src={undefined}
-            />
-          </div>
+          AN
         </div>
       </div>
     </div>
@@ -1001,90 +773,33 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
         style={undefined}
       >
         <div
+          aria-hidden="true"
           className=
               ms-Persona-imageArea
+              ms-Persona-initials
               {
+                background-color: #2D89EF;
+                border-radius: 50%;
+                color: #ffffff;
                 flex: 0 0 auto;
+                font-size: 14px;
+                font-weight: 400;
                 height: 32px;
+                line-height: 32px;
                 position: relative;
                 text-align: center;
                 width: 32px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                background-color: Window !important;
+                border: 1px solid WindowText;
+                box-sizing: border-box;
+                color: WindowText;
+              }
           style={undefined}
         >
-          <div
-            aria-hidden="true"
-            className=
-                ms-Persona-initials
-                {
-                  background-color: #2D89EF;
-                  border-radius: 50%;
-                  color: #ffffff;
-                  font-size: 14px;
-                  font-weight: 400;
-                  height: 32px;
-                  line-height: 32px;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  -ms-high-contrast-adjust: none;
-                  background-color: Window !important;
-                  border: 1px solid WindowText;
-                  box-sizing: border-box;
-                  color: WindowText;
-                }
-            style={undefined}
-          >
-            <span>
-              TN
-            </span>
-          </div>
-          <div
-            className=
-                ms-Image
-                ms-Persona-image
-                {
-                  border-radius: 50%;
-                  border: 0px;
-                  height: 32px;
-                  left: 0px;
-                  margin-right: 10px;
-                  overflow: hidden;
-                  perspective: 1px;
-                  position: absolute;
-                  top: 0px;
-                  width: 32px;
-                }
-            style={
-              Object {
-                "height": 32,
-                "width": 32,
-              }
-            }
-          >
-            <img
-              alt=""
-              className=
-                  ms-Image-image
-                  ms-Image-image--cover
-                  ms-Image-image--portrait
-                  is-notLoaded
-                  is-fadeIn
-                  {
-                    display: block;
-                    height: auto;
-                    left: 50% /* @noflip */;
-                    opacity: 0;
-                    position: absolute;
-                    top: 50%;
-                    transform: translate(-50%,-50%);
-                    width: 100%;
-                  }
-              onError={[Function]}
-              onLoad={[Function]}
-              role={undefined}
-              src={undefined}
-            />
-          </div>
+          TN
         </div>
       </div>
     </div>
@@ -1294,90 +1009,33 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
         style={undefined}
       >
         <div
+          aria-hidden="true"
           className=
               ms-Persona-imageArea
+              ms-Persona-initials
               {
+                background-color: #2D89EF;
+                border-radius: 50%;
+                color: #ffffff;
                 flex: 0 0 auto;
+                font-size: 11px;
+                font-weight: 400;
                 height: 16px;
+                line-height: 16px;
                 position: relative;
                 text-align: center;
                 width: 16px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                background-color: Window !important;
+                border: 1px solid WindowText;
+                box-sizing: border-box;
+                color: WindowText;
+              }
           style={undefined}
         >
-          <div
-            aria-hidden="true"
-            className=
-                ms-Persona-initials
-                {
-                  background-color: #2D89EF;
-                  border-radius: 50%;
-                  color: #ffffff;
-                  font-size: 11px;
-                  font-weight: 400;
-                  height: 16px;
-                  line-height: 16px;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  -ms-high-contrast-adjust: none;
-                  background-color: Window !important;
-                  border: 1px solid WindowText;
-                  box-sizing: border-box;
-                  color: WindowText;
-                }
-            style={undefined}
-          >
-            <span>
-              TN
-            </span>
-          </div>
-          <div
-            className=
-                ms-Image
-                ms-Persona-image
-                {
-                  border-radius: 50%;
-                  border: 0px;
-                  height: 16px;
-                  left: 0px;
-                  margin-right: 10px;
-                  overflow: hidden;
-                  perspective: 1px;
-                  position: absolute;
-                  top: 0px;
-                  width: 16px;
-                }
-            style={
-              Object {
-                "height": undefined,
-                "width": undefined,
-              }
-            }
-          >
-            <img
-              alt=""
-              className=
-                  ms-Image-image
-                  ms-Image-image--cover
-                  ms-Image-image--portrait
-                  is-notLoaded
-                  is-fadeIn
-                  {
-                    display: block;
-                    height: auto;
-                    left: 50% /* @noflip */;
-                    opacity: 0;
-                    position: absolute;
-                    top: 50%;
-                    transform: translate(-50%,-50%);
-                    width: 100%;
-                  }
-              onError={[Function]}
-              onLoad={[Function]}
-              role={undefined}
-              src={undefined}
-            />
-          </div>
+          TN
         </div>
       </div>
       <div
@@ -1474,90 +1132,33 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
         style={undefined}
       >
         <div
+          aria-hidden="true"
           className=
               ms-Persona-imageArea
+              ms-Persona-initials
               {
+                background-color: #00ABA9;
+                border-radius: 50%;
+                color: #ffffff;
                 flex: 0 0 auto;
+                font-size: 11px;
+                font-weight: 400;
                 height: 16px;
+                line-height: 16px;
                 position: relative;
                 text-align: center;
                 width: 16px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                background-color: Window !important;
+                border: 1px solid WindowText;
+                box-sizing: border-box;
+                color: WindowText;
+              }
           style={undefined}
         >
-          <div
-            aria-hidden="true"
-            className=
-                ms-Persona-initials
-                {
-                  background-color: #00ABA9;
-                  border-radius: 50%;
-                  color: #ffffff;
-                  font-size: 11px;
-                  font-weight: 400;
-                  height: 16px;
-                  line-height: 16px;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  -ms-high-contrast-adjust: none;
-                  background-color: Window !important;
-                  border: 1px solid WindowText;
-                  box-sizing: border-box;
-                  color: WindowText;
-                }
-            style={undefined}
-          >
-            <span>
-              AN
-            </span>
-          </div>
-          <div
-            className=
-                ms-Image
-                ms-Persona-image
-                {
-                  border-radius: 50%;
-                  border: 0px;
-                  height: 16px;
-                  left: 0px;
-                  margin-right: 10px;
-                  overflow: hidden;
-                  perspective: 1px;
-                  position: absolute;
-                  top: 0px;
-                  width: 16px;
-                }
-            style={
-              Object {
-                "height": undefined,
-                "width": undefined,
-              }
-            }
-          >
-            <img
-              alt=""
-              className=
-                  ms-Image-image
-                  ms-Image-image--cover
-                  ms-Image-image--portrait
-                  is-notLoaded
-                  is-fadeIn
-                  {
-                    display: block;
-                    height: auto;
-                    left: 50% /* @noflip */;
-                    opacity: 0;
-                    position: absolute;
-                    top: 50%;
-                    transform: translate(-50%,-50%);
-                    width: 100%;
-                  }
-              onError={[Function]}
-              onLoad={[Function]}
-              role={undefined}
-              src={undefined}
-            />
-          </div>
+          AN
         </div>
       </div>
       <div

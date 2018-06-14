@@ -280,90 +280,33 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
           }
         >
           <div
+            aria-hidden="true"
             className=
                 ms-Persona-imageArea
+                ms-Persona-initials
                 {
+                  background-color: #00A300;
+                  border-radius: 50%;
+                  color: #ffffff;
                   flex: 0 0 auto;
+                  font-size: 11px;
+                  font-weight: 400;
                   height: 16px;
+                  line-height: 16px;
                   position: relative;
                   text-align: center;
                   width: 16px;
                 }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                  background-color: Window !important;
+                  border: 1px solid WindowText;
+                  box-sizing: border-box;
+                  color: WindowText;
+                }
             style={undefined}
           >
-            <div
-              aria-hidden="true"
-              className=
-                  ms-Persona-initials
-                  {
-                    background-color: #00A300;
-                    border-radius: 50%;
-                    color: #ffffff;
-                    font-size: 11px;
-                    font-weight: 400;
-                    height: 16px;
-                    line-height: 16px;
-                  }
-                  @media screen and (-ms-high-contrast: active){& {
-                    -ms-high-contrast-adjust: none;
-                    background-color: Window !important;
-                    border: 1px solid WindowText;
-                    box-sizing: border-box;
-                    color: WindowText;
-                  }
-              style={undefined}
-            >
-              <span>
-                PT
-              </span>
-            </div>
-            <div
-              className=
-                  ms-Image
-                  ms-Persona-image
-                  {
-                    border-radius: 50%;
-                    border: 0px;
-                    height: 16px;
-                    left: 0px;
-                    margin-right: 10px;
-                    overflow: hidden;
-                    perspective: 1px;
-                    position: absolute;
-                    top: 0px;
-                    width: 16px;
-                  }
-              style={
-                Object {
-                  "height": undefined,
-                  "width": undefined,
-                }
-              }
-            >
-              <img
-                alt=""
-                className=
-                    ms-Image-image
-                    ms-Image-image--cover
-                    ms-Image-image--portrait
-                    is-notLoaded
-                    is-fadeIn
-                    {
-                      display: block;
-                      height: auto;
-                      left: 50% /* @noflip */;
-                      opacity: 0;
-                      position: absolute;
-                      top: 50%;
-                      transform: translate(-50%,-50%);
-                      width: 100%;
-                    }
-                onError={[Function]}
-                onLoad={[Function]}
-                role={undefined}
-                src={undefined}
-              />
-            </div>
+            PT
           </div>
         </div>
         <div
@@ -480,90 +423,33 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
           }
         >
           <div
+            aria-hidden="true"
             className=
                 ms-Persona-imageArea
+                ms-Persona-initials
                 {
+                  background-color: #603CBA;
+                  border-radius: 50%;
+                  color: #ffffff;
                   flex: 0 0 auto;
+                  font-size: 11px;
+                  font-weight: 400;
                   height: 16px;
+                  line-height: 16px;
                   position: relative;
                   text-align: center;
                   width: 16px;
                 }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                  background-color: Window !important;
+                  border: 1px solid WindowText;
+                  box-sizing: border-box;
+                  color: WindowText;
+                }
             style={undefined}
           >
-            <div
-              aria-hidden="true"
-              className=
-                  ms-Persona-initials
-                  {
-                    background-color: #603CBA;
-                    border-radius: 50%;
-                    color: #ffffff;
-                    font-size: 11px;
-                    font-weight: 400;
-                    height: 16px;
-                    line-height: 16px;
-                  }
-                  @media screen and (-ms-high-contrast: active){& {
-                    -ms-high-contrast-adjust: none;
-                    background-color: Window !important;
-                    border: 1px solid WindowText;
-                    box-sizing: border-box;
-                    color: WindowText;
-                  }
-              style={undefined}
-            >
-              <span>
-                EC
-              </span>
-            </div>
-            <div
-              className=
-                  ms-Image
-                  ms-Persona-image
-                  {
-                    border-radius: 50%;
-                    border: 0px;
-                    height: 16px;
-                    left: 0px;
-                    margin-right: 10px;
-                    overflow: hidden;
-                    perspective: 1px;
-                    position: absolute;
-                    top: 0px;
-                    width: 16px;
-                  }
-              style={
-                Object {
-                  "height": undefined,
-                  "width": undefined,
-                }
-              }
-            >
-              <img
-                alt=""
-                className=
-                    ms-Image-image
-                    ms-Image-image--cover
-                    ms-Image-image--portrait
-                    is-notLoaded
-                    is-fadeIn
-                    {
-                      display: block;
-                      height: auto;
-                      left: 50% /* @noflip */;
-                      opacity: 0;
-                      position: absolute;
-                      top: 50%;
-                      transform: translate(-50%,-50%);
-                      width: 100%;
-                    }
-                onError={[Function]}
-                onLoad={[Function]}
-                role={undefined}
-                src={undefined}
-              />
-            </div>
+            EC
           </div>
         </div>
       </div>

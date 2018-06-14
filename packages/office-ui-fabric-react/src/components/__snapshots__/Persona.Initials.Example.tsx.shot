@@ -54,90 +54,33 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
       size={13}
     >
       <div
+        aria-hidden="true"
         className=
             ms-Persona-imageArea
+            ms-Persona-initials
             {
+              background-color: #1D1D1D;
+              border-radius: 50%;
+              color: #ffffff;
               flex: 0 0 auto;
+              font-size: 17px;
+              font-weight: 400;
               height: 48px;
+              line-height: 46px;
               position: relative;
               text-align: center;
               width: 48px;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: Window !important;
+              border: 1px solid WindowText;
+              box-sizing: border-box;
+              color: WindowText;
+            }
         style={undefined}
       >
-        <div
-          aria-hidden="true"
-          className=
-              ms-Persona-initials
-              {
-                background-color: #1D1D1D;
-                border-radius: 50%;
-                color: #ffffff;
-                font-size: 17px;
-                font-weight: 400;
-                height: 48px;
-                line-height: 46px;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
-                background-color: Window !important;
-                border: 1px solid WindowText;
-                box-sizing: border-box;
-                color: WindowText;
-              }
-          style={undefined}
-        >
-          <span>
-            KL
-          </span>
-        </div>
-        <div
-          className=
-              ms-Image
-              ms-Persona-image
-              {
-                border-radius: 50%;
-                border: 0px;
-                height: 100%;
-                left: 0px;
-                margin-right: 10px;
-                overflow: hidden;
-                perspective: 1px;
-                position: absolute;
-                top: 0px;
-                width: 100%;
-              }
-          style={
-            Object {
-              "height": 48,
-              "width": 48,
-            }
-          }
-        >
-          <img
-            alt=""
-            className=
-                ms-Image-image
-                ms-Image-image--cover
-                ms-Image-image--portrait
-                is-notLoaded
-                is-fadeIn
-                {
-                  display: block;
-                  height: auto;
-                  left: 50% /* @noflip */;
-                  opacity: 0;
-                  position: absolute;
-                  top: 50%;
-                  transform: translate(-50%,-50%);
-                  width: 100%;
-                }
-            onError={[Function]}
-            onLoad={[Function]}
-            role={undefined}
-            src={undefined}
-          />
-        </div>
+        KL
       </div>
     </div>
     <div
@@ -302,90 +245,33 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
       size={13}
     >
       <div
+        aria-hidden="true"
         className=
             ms-Persona-imageArea
+            ms-Persona-initials
             {
+              background-color: #00A300;
+              border-radius: 50%;
+              color: #ffffff;
               flex: 0 0 auto;
+              font-size: 17px;
+              font-weight: 400;
               height: 48px;
+              line-height: 46px;
               position: relative;
               text-align: center;
               width: 48px;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: Window !important;
+              border: 1px solid WindowText;
+              box-sizing: border-box;
+              color: WindowText;
+            }
         style={undefined}
       >
-        <div
-          aria-hidden="true"
-          className=
-              ms-Persona-initials
-              {
-                background-color: #00A300;
-                border-radius: 50%;
-                color: #ffffff;
-                font-size: 17px;
-                font-weight: 400;
-                height: 48px;
-                line-height: 46px;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
-                background-color: Window !important;
-                border: 1px solid WindowText;
-                box-sizing: border-box;
-                color: WindowText;
-              }
-          style={undefined}
-        >
-          <span>
-            A
-          </span>
-        </div>
-        <div
-          className=
-              ms-Image
-              ms-Persona-image
-              {
-                border-radius: 50%;
-                border: 0px;
-                height: 100%;
-                left: 0px;
-                margin-right: 10px;
-                overflow: hidden;
-                perspective: 1px;
-                position: absolute;
-                top: 0px;
-                width: 100%;
-              }
-          style={
-            Object {
-              "height": 48,
-              "width": 48,
-            }
-          }
-        >
-          <img
-            alt=""
-            className=
-                ms-Image-image
-                ms-Image-image--cover
-                ms-Image-image--portrait
-                is-notLoaded
-                is-fadeIn
-                {
-                  display: block;
-                  height: auto;
-                  left: 50% /* @noflip */;
-                  opacity: 0;
-                  position: absolute;
-                  top: 50%;
-                  transform: translate(-50%,-50%);
-                  width: 100%;
-                }
-            onError={[Function]}
-            onLoad={[Function]}
-            role={undefined}
-            src={undefined}
-          />
-        </div>
+        A
       </div>
     </div>
     <div
@@ -550,90 +436,33 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
       size={13}
     >
       <div
+        aria-hidden="true"
         className=
             ms-Persona-imageArea
+            ms-Persona-initials
             {
+              background-color: #00A300;
+              border-radius: 50%;
+              color: #ffffff;
               flex: 0 0 auto;
+              font-size: 17px;
+              font-weight: 400;
               height: 48px;
+              line-height: 46px;
               position: relative;
               text-align: center;
               width: 48px;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: Window !important;
+              border: 1px solid WindowText;
+              box-sizing: border-box;
+              color: WindowText;
+            }
         style={undefined}
       >
-        <div
-          aria-hidden="true"
-          className=
-              ms-Persona-initials
-              {
-                background-color: #00A300;
-                border-radius: 50%;
-                color: #ffffff;
-                font-size: 17px;
-                font-weight: 400;
-                height: 48px;
-                line-height: 46px;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
-                background-color: Window !important;
-                border: 1px solid WindowText;
-                box-sizing: border-box;
-                color: WindowText;
-              }
-          style={undefined}
-        >
-          <span>
-            AL
-          </span>
-        </div>
-        <div
-          className=
-              ms-Image
-              ms-Persona-image
-              {
-                border-radius: 50%;
-                border: 0px;
-                height: 100%;
-                left: 0px;
-                margin-right: 10px;
-                overflow: hidden;
-                perspective: 1px;
-                position: absolute;
-                top: 0px;
-                width: 100%;
-              }
-          style={
-            Object {
-              "height": 48,
-              "width": 48,
-            }
-          }
-        >
-          <img
-            alt=""
-            className=
-                ms-Image-image
-                ms-Image-image--cover
-                ms-Image-image--portrait
-                is-notLoaded
-                is-fadeIn
-                {
-                  display: block;
-                  height: auto;
-                  left: 50% /* @noflip */;
-                  opacity: 0;
-                  position: absolute;
-                  top: 50%;
-                  transform: translate(-50%,-50%);
-                  width: 100%;
-                }
-            onError={[Function]}
-            onLoad={[Function]}
-            role={undefined}
-            src={undefined}
-          />
-        </div>
+        AL
       </div>
     </div>
     <div
@@ -798,90 +627,33 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
       size={13}
     >
       <div
+        aria-hidden="true"
         className=
             ms-Persona-imageArea
+            ms-Persona-initials
             {
+              background-color: #00A300;
+              border-radius: 50%;
+              color: #ffffff;
               flex: 0 0 auto;
+              font-size: 17px;
+              font-weight: 400;
               height: 48px;
+              line-height: 46px;
               position: relative;
               text-align: center;
               width: 48px;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: Window !important;
+              border: 1px solid WindowText;
+              box-sizing: border-box;
+              color: WindowText;
+            }
         style={undefined}
       >
-        <div
-          aria-hidden="true"
-          className=
-              ms-Persona-initials
-              {
-                background-color: #00A300;
-                border-radius: 50%;
-                color: #ffffff;
-                font-size: 17px;
-                font-weight: 400;
-                height: 48px;
-                line-height: 46px;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
-                background-color: Window !important;
-                border: 1px solid WindowText;
-                box-sizing: border-box;
-                color: WindowText;
-              }
-          style={undefined}
-        >
-          <span>
-            AL
-          </span>
-        </div>
-        <div
-          className=
-              ms-Image
-              ms-Persona-image
-              {
-                border-radius: 50%;
-                border: 0px;
-                height: 100%;
-                left: 0px;
-                margin-right: 10px;
-                overflow: hidden;
-                perspective: 1px;
-                position: absolute;
-                top: 0px;
-                width: 100%;
-              }
-          style={
-            Object {
-              "height": 48,
-              "width": 48,
-            }
-          }
-        >
-          <img
-            alt=""
-            className=
-                ms-Image-image
-                ms-Image-image--cover
-                ms-Image-image--portrait
-                is-notLoaded
-                is-fadeIn
-                {
-                  display: block;
-                  height: auto;
-                  left: 50% /* @noflip */;
-                  opacity: 0;
-                  position: absolute;
-                  top: 50%;
-                  transform: translate(-50%,-50%);
-                  width: 100%;
-                }
-            onError={[Function]}
-            onLoad={[Function]}
-            role={undefined}
-            src={undefined}
-          />
-        </div>
+        AL
       </div>
     </div>
     <div
@@ -1046,90 +818,33 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
       size={13}
     >
       <div
+        aria-hidden="true"
         className=
             ms-Persona-imageArea
+            ms-Persona-initials
             {
+              background-color: #B91D47;
+              border-radius: 50%;
+              color: #ffffff;
               flex: 0 0 auto;
+              font-size: 17px;
+              font-weight: 400;
               height: 48px;
+              line-height: 46px;
               position: relative;
               text-align: center;
               width: 48px;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: Window !important;
+              border: 1px solid WindowText;
+              box-sizing: border-box;
+              color: WindowText;
+            }
         style={undefined}
       >
-        <div
-          aria-hidden="true"
-          className=
-              ms-Persona-initials
-              {
-                background-color: #B91D47;
-                border-radius: 50%;
-                color: #ffffff;
-                font-size: 17px;
-                font-weight: 400;
-                height: 48px;
-                line-height: 46px;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
-                background-color: Window !important;
-                border: 1px solid WindowText;
-                box-sizing: border-box;
-                color: WindowText;
-              }
-          style={undefined}
-        >
-          <span>
-            A
-          </span>
-        </div>
-        <div
-          className=
-              ms-Image
-              ms-Persona-image
-              {
-                border-radius: 50%;
-                border: 0px;
-                height: 100%;
-                left: 0px;
-                margin-right: 10px;
-                overflow: hidden;
-                perspective: 1px;
-                position: absolute;
-                top: 0px;
-                width: 100%;
-              }
-          style={
-            Object {
-              "height": 48,
-              "width": 48,
-            }
-          }
-        >
-          <img
-            alt=""
-            className=
-                ms-Image-image
-                ms-Image-image--cover
-                ms-Image-image--portrait
-                is-notLoaded
-                is-fadeIn
-                {
-                  display: block;
-                  height: auto;
-                  left: 50% /* @noflip */;
-                  opacity: 0;
-                  position: absolute;
-                  top: 50%;
-                  transform: translate(-50%,-50%);
-                  width: 100%;
-                }
-            onError={[Function]}
-            onLoad={[Function]}
-            role={undefined}
-            src={undefined}
-          />
-        </div>
+        A
       </div>
     </div>
     <div
@@ -1294,105 +1009,50 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
       size={13}
     >
       <div
+        aria-hidden="true"
         className=
             ms-Persona-imageArea
+            ms-Persona-initials
             {
+              background-color: #E773BD;
+              border-radius: 50%;
+              color: #ffffff;
               flex: 0 0 auto;
+              font-size: 17px;
+              font-weight: 400;
               height: 48px;
+              line-height: 46px;
               position: relative;
               text-align: center;
               width: 48px;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: Window !important;
+              border: 1px solid WindowText;
+              box-sizing: border-box;
+              color: WindowText;
+            }
         style={undefined}
       >
-        <div
-          aria-hidden="true"
+        <i
+          aria-hidden={true}
           className=
-              ms-Persona-initials
-              {
-                background-color: #E773BD;
-                border-radius: 50%;
-                color: #ffffff;
-                font-size: 17px;
-                font-weight: 400;
-                height: 48px;
-                line-height: 46px;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
-                background-color: Window !important;
-                border: 1px solid WindowText;
-                box-sizing: border-box;
-                color: WindowText;
-              }
-          style={undefined}
-        >
-          <i
-            aria-hidden={true}
-            className=
 
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons-0";
-                  font-style: normal;
-                  font-weight: normal;
-                  speak: none;
-                }
-            data-icon-name="Contact"
-            role="presentation"
-          >
-            
-          </i>
-        </div>
-        <div
-          className=
-              ms-Image
-              ms-Persona-image
               {
-                border-radius: 50%;
-                border: 0px;
-                height: 100%;
-                left: 0px;
-                margin-right: 10px;
-                overflow: hidden;
-                perspective: 1px;
-                position: absolute;
-                top: 0px;
-                width: 100%;
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: inline-block;
+                font-family: "FabricMDL2Icons-0";
+                font-style: normal;
+                font-weight: normal;
+                speak: none;
               }
-          style={
-            Object {
-              "height": 48,
-              "width": 48,
-            }
-          }
+          data-icon-name="Contact"
+          role="presentation"
         >
-          <img
-            alt=""
-            className=
-                ms-Image-image
-                ms-Image-image--cover
-                ms-Image-image--portrait
-                is-notLoaded
-                is-fadeIn
-                {
-                  display: block;
-                  height: auto;
-                  left: 50% /* @noflip */;
-                  opacity: 0;
-                  position: absolute;
-                  top: 50%;
-                  transform: translate(-50%,-50%);
-                  width: 100%;
-                }
-            onError={[Function]}
-            onLoad={[Function]}
-            role={undefined}
-            src={undefined}
-          />
-        </div>
+          
+        </i>
       </div>
     </div>
     <div
@@ -1557,90 +1217,33 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
       size={13}
     >
       <div
+        aria-hidden="true"
         className=
             ms-Persona-imageArea
+            ms-Persona-initials
             {
+              background-color: #E773BD;
+              border-radius: 50%;
+              color: #ffffff;
               flex: 0 0 auto;
+              font-size: 17px;
+              font-weight: 400;
               height: 48px;
+              line-height: 46px;
               position: relative;
               text-align: center;
               width: 48px;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: Window !important;
+              border: 1px solid WindowText;
+              box-sizing: border-box;
+              color: WindowText;
+            }
         style={undefined}
       >
-        <div
-          aria-hidden="true"
-          className=
-              ms-Persona-initials
-              {
-                background-color: #E773BD;
-                border-radius: 50%;
-                color: #ffffff;
-                font-size: 17px;
-                font-weight: 400;
-                height: 48px;
-                line-height: 46px;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
-                background-color: Window !important;
-                border: 1px solid WindowText;
-                box-sizing: border-box;
-                color: WindowText;
-              }
-          style={undefined}
-        >
-          <span>
-            1X
-          </span>
-        </div>
-        <div
-          className=
-              ms-Image
-              ms-Persona-image
-              {
-                border-radius: 50%;
-                border: 0px;
-                height: 100%;
-                left: 0px;
-                margin-right: 10px;
-                overflow: hidden;
-                perspective: 1px;
-                position: absolute;
-                top: 0px;
-                width: 100%;
-              }
-          style={
-            Object {
-              "height": 48,
-              "width": 48,
-            }
-          }
-        >
-          <img
-            alt=""
-            className=
-                ms-Image-image
-                ms-Image-image--cover
-                ms-Image-image--portrait
-                is-notLoaded
-                is-fadeIn
-                {
-                  display: block;
-                  height: auto;
-                  left: 50% /* @noflip */;
-                  opacity: 0;
-                  position: absolute;
-                  top: 50%;
-                  transform: translate(-50%,-50%);
-                  width: 100%;
-                }
-            onError={[Function]}
-            onLoad={[Function]}
-            role={undefined}
-            src={undefined}
-          />
-        </div>
+        1X
       </div>
     </div>
     <div
@@ -1805,105 +1408,50 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
       size={13}
     >
       <div
+        aria-hidden="true"
         className=
             ms-Persona-imageArea
+            ms-Persona-initials
             {
+              background-color: #1E7145;
+              border-radius: 50%;
+              color: #ffffff;
               flex: 0 0 auto;
+              font-size: 17px;
+              font-weight: 400;
               height: 48px;
+              line-height: 46px;
               position: relative;
               text-align: center;
               width: 48px;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: Window !important;
+              border: 1px solid WindowText;
+              box-sizing: border-box;
+              color: WindowText;
+            }
         style={undefined}
       >
-        <div
-          aria-hidden="true"
+        <i
+          aria-hidden={true}
           className=
-              ms-Persona-initials
-              {
-                background-color: #1E7145;
-                border-radius: 50%;
-                color: #ffffff;
-                font-size: 17px;
-                font-weight: 400;
-                height: 48px;
-                line-height: 46px;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
-                background-color: Window !important;
-                border: 1px solid WindowText;
-                box-sizing: border-box;
-                color: WindowText;
-              }
-          style={undefined}
-        >
-          <i
-            aria-hidden={true}
-            className=
 
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons-0";
-                  font-style: normal;
-                  font-weight: normal;
-                  speak: none;
-                }
-            data-icon-name="Contact"
-            role="presentation"
-          >
-            
-          </i>
-        </div>
-        <div
-          className=
-              ms-Image
-              ms-Persona-image
               {
-                border-radius: 50%;
-                border: 0px;
-                height: 100%;
-                left: 0px;
-                margin-right: 10px;
-                overflow: hidden;
-                perspective: 1px;
-                position: absolute;
-                top: 0px;
-                width: 100%;
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: inline-block;
+                font-family: "FabricMDL2Icons-0";
+                font-style: normal;
+                font-weight: normal;
+                speak: none;
               }
-          style={
-            Object {
-              "height": 48,
-              "width": 48,
-            }
-          }
+          data-icon-name="Contact"
+          role="presentation"
         >
-          <img
-            alt=""
-            className=
-                ms-Image-image
-                ms-Image-image--cover
-                ms-Image-image--portrait
-                is-notLoaded
-                is-fadeIn
-                {
-                  display: block;
-                  height: auto;
-                  left: 50% /* @noflip */;
-                  opacity: 0;
-                  position: absolute;
-                  top: 50%;
-                  transform: translate(-50%,-50%);
-                  width: 100%;
-                }
-            onError={[Function]}
-            onLoad={[Function]}
-            role={undefined}
-            src={undefined}
-          />
-        </div>
+          
+        </i>
       </div>
     </div>
     <div
@@ -2068,105 +1616,50 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
       size={13}
     >
       <div
+        aria-hidden="true"
         className=
             ms-Persona-imageArea
+            ms-Persona-initials
             {
+              background-color: #DA532C;
+              border-radius: 50%;
+              color: #ffffff;
               flex: 0 0 auto;
+              font-size: 17px;
+              font-weight: 400;
               height: 48px;
+              line-height: 46px;
               position: relative;
               text-align: center;
               width: 48px;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: Window !important;
+              border: 1px solid WindowText;
+              box-sizing: border-box;
+              color: WindowText;
+            }
         style={undefined}
       >
-        <div
-          aria-hidden="true"
+        <i
+          aria-hidden={true}
           className=
-              ms-Persona-initials
-              {
-                background-color: #DA532C;
-                border-radius: 50%;
-                color: #ffffff;
-                font-size: 17px;
-                font-weight: 400;
-                height: 48px;
-                line-height: 46px;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
-                background-color: Window !important;
-                border: 1px solid WindowText;
-                box-sizing: border-box;
-                color: WindowText;
-              }
-          style={undefined}
-        >
-          <i
-            aria-hidden={true}
-            className=
 
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons-0";
-                  font-style: normal;
-                  font-weight: normal;
-                  speak: none;
-                }
-            data-icon-name="Contact"
-            role="presentation"
-          >
-            
-          </i>
-        </div>
-        <div
-          className=
-              ms-Image
-              ms-Persona-image
               {
-                border-radius: 50%;
-                border: 0px;
-                height: 100%;
-                left: 0px;
-                margin-right: 10px;
-                overflow: hidden;
-                perspective: 1px;
-                position: absolute;
-                top: 0px;
-                width: 100%;
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: inline-block;
+                font-family: "FabricMDL2Icons-0";
+                font-style: normal;
+                font-weight: normal;
+                speak: none;
               }
-          style={
-            Object {
-              "height": 48,
-              "width": 48,
-            }
-          }
+          data-icon-name="Contact"
+          role="presentation"
         >
-          <img
-            alt=""
-            className=
-                ms-Image-image
-                ms-Image-image--cover
-                ms-Image-image--portrait
-                is-notLoaded
-                is-fadeIn
-                {
-                  display: block;
-                  height: auto;
-                  left: 50% /* @noflip */;
-                  opacity: 0;
-                  position: absolute;
-                  top: 50%;
-                  transform: translate(-50%,-50%);
-                  width: 100%;
-                }
-            onError={[Function]}
-            onLoad={[Function]}
-            role={undefined}
-            src={undefined}
-          />
-        </div>
+          
+        </i>
       </div>
     </div>
     <div
@@ -2331,105 +1824,50 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
       size={13}
     >
       <div
+        aria-hidden="true"
         className=
             ms-Persona-imageArea
+            ms-Persona-initials
             {
+              background-color: #2B5797;
+              border-radius: 50%;
+              color: #ffffff;
               flex: 0 0 auto;
+              font-size: 17px;
+              font-weight: 400;
               height: 48px;
+              line-height: 46px;
               position: relative;
               text-align: center;
               width: 48px;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: Window !important;
+              border: 1px solid WindowText;
+              box-sizing: border-box;
+              color: WindowText;
+            }
         style={undefined}
       >
-        <div
-          aria-hidden="true"
+        <i
+          aria-hidden={true}
           className=
-              ms-Persona-initials
-              {
-                background-color: #2B5797;
-                border-radius: 50%;
-                color: #ffffff;
-                font-size: 17px;
-                font-weight: 400;
-                height: 48px;
-                line-height: 46px;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
-                background-color: Window !important;
-                border: 1px solid WindowText;
-                box-sizing: border-box;
-                color: WindowText;
-              }
-          style={undefined}
-        >
-          <i
-            aria-hidden={true}
-            className=
 
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons-0";
-                  font-style: normal;
-                  font-weight: normal;
-                  speak: none;
-                }
-            data-icon-name="Contact"
-            role="presentation"
-          >
-            
-          </i>
-        </div>
-        <div
-          className=
-              ms-Image
-              ms-Persona-image
               {
-                border-radius: 50%;
-                border: 0px;
-                height: 100%;
-                left: 0px;
-                margin-right: 10px;
-                overflow: hidden;
-                perspective: 1px;
-                position: absolute;
-                top: 0px;
-                width: 100%;
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: inline-block;
+                font-family: "FabricMDL2Icons-0";
+                font-style: normal;
+                font-weight: normal;
+                speak: none;
               }
-          style={
-            Object {
-              "height": 48,
-              "width": 48,
-            }
-          }
+          data-icon-name="Contact"
+          role="presentation"
         >
-          <img
-            alt=""
-            className=
-                ms-Image-image
-                ms-Image-image--cover
-                ms-Image-image--portrait
-                is-notLoaded
-                is-fadeIn
-                {
-                  display: block;
-                  height: auto;
-                  left: 50% /* @noflip */;
-                  opacity: 0;
-                  position: absolute;
-                  top: 50%;
-                  transform: translate(-50%,-50%);
-                  width: 100%;
-                }
-            onError={[Function]}
-            onLoad={[Function]}
-            role={undefined}
-            src={undefined}
-          />
-        </div>
+          
+        </i>
       </div>
     </div>
     <div
@@ -2594,90 +2032,33 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
       size={13}
     >
       <div
+        aria-hidden="true"
         className=
             ms-Persona-imageArea
+            ms-Persona-initials
             {
+              background-color: #6BA5E7;
+              border-radius: 50%;
+              color: #ffffff;
               flex: 0 0 auto;
+              font-size: 17px;
+              font-weight: 400;
               height: 48px;
+              line-height: 46px;
               position: relative;
               text-align: center;
               width: 48px;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: Window !important;
+              border: 1px solid WindowText;
+              box-sizing: border-box;
+              color: WindowText;
+            }
         style={undefined}
       >
-        <div
-          aria-hidden="true"
-          className=
-              ms-Persona-initials
-              {
-                background-color: #6BA5E7;
-                border-radius: 50%;
-                color: #ffffff;
-                font-size: 17px;
-                font-weight: 400;
-                height: 48px;
-                line-height: 46px;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
-                background-color: Window !important;
-                border: 1px solid WindowText;
-                box-sizing: border-box;
-                color: WindowText;
-              }
-          style={undefined}
-        >
-          <span>
-            MS
-          </span>
-        </div>
-        <div
-          className=
-              ms-Image
-              ms-Persona-image
-              {
-                border-radius: 50%;
-                border: 0px;
-                height: 100%;
-                left: 0px;
-                margin-right: 10px;
-                overflow: hidden;
-                perspective: 1px;
-                position: absolute;
-                top: 0px;
-                width: 100%;
-              }
-          style={
-            Object {
-              "height": 48,
-              "width": 48,
-            }
-          }
-        >
-          <img
-            alt=""
-            className=
-                ms-Image-image
-                ms-Image-image--cover
-                ms-Image-image--portrait
-                is-notLoaded
-                is-fadeIn
-                {
-                  display: block;
-                  height: auto;
-                  left: 50% /* @noflip */;
-                  opacity: 0;
-                  position: absolute;
-                  top: 50%;
-                  transform: translate(-50%,-50%);
-                  width: 100%;
-                }
-            onError={[Function]}
-            onLoad={[Function]}
-            role={undefined}
-            src={undefined}
-          />
-        </div>
+        MS
       </div>
     </div>
     <div
@@ -2842,90 +2223,33 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
       size={13}
     >
       <div
+        aria-hidden="true"
         className=
             ms-Persona-imageArea
+            ms-Persona-initials
             {
+              background-color: #00ABA9;
+              border-radius: 50%;
+              color: #ffffff;
               flex: 0 0 auto;
+              font-size: 17px;
+              font-weight: 400;
               height: 48px;
+              line-height: 46px;
               position: relative;
               text-align: center;
               width: 48px;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: Window !important;
+              border: 1px solid WindowText;
+              box-sizing: border-box;
+              color: WindowText;
+            }
         style={undefined}
       >
-        <div
-          aria-hidden="true"
-          className=
-              ms-Persona-initials
-              {
-                background-color: #00ABA9;
-                border-radius: 50%;
-                color: #ffffff;
-                font-size: 17px;
-                font-weight: 400;
-                height: 48px;
-                line-height: 46px;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
-                background-color: Window !important;
-                border: 1px solid WindowText;
-                box-sizing: border-box;
-                color: WindowText;
-              }
-          style={undefined}
-        >
-          <span>
-            MS
-          </span>
-        </div>
-        <div
-          className=
-              ms-Image
-              ms-Persona-image
-              {
-                border-radius: 50%;
-                border: 0px;
-                height: 100%;
-                left: 0px;
-                margin-right: 10px;
-                overflow: hidden;
-                perspective: 1px;
-                position: absolute;
-                top: 0px;
-                width: 100%;
-              }
-          style={
-            Object {
-              "height": 48,
-              "width": 48,
-            }
-          }
-        >
-          <img
-            alt=""
-            className=
-                ms-Image-image
-                ms-Image-image--cover
-                ms-Image-image--portrait
-                is-notLoaded
-                is-fadeIn
-                {
-                  display: block;
-                  height: auto;
-                  left: 50% /* @noflip */;
-                  opacity: 0;
-                  position: absolute;
-                  top: 50%;
-                  transform: translate(-50%,-50%);
-                  width: 100%;
-                }
-            onError={[Function]}
-            onLoad={[Function]}
-            role={undefined}
-            src={undefined}
-          />
-        </div>
+        MS
       </div>
     </div>
     <div
