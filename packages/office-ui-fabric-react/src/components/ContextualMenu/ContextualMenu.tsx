@@ -92,6 +92,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _classNames: IContextualMenuClassNames;
   private _isScrollIdle: boolean;
   private _scrollIdleTimeoutId: number | undefined;
+  private _processingExpandCollapseKeyOnly: boolean;
 
   private _adjustedFocusZoneProps: IFocusZoneProps;
 
@@ -105,6 +106,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     this._isFocusingPreviousElement = false;
     this._isScrollIdle = true;
+    this._processingExpandCollapseKeyOnly = false;
   }
 
   public dismiss = (ev?: any, dismissAll?: boolean) => {
@@ -287,6 +289,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
             className={this._classNames.container}
             tabIndex={shouldFocusOnContainer ? 0 : -1}
             onKeyDown={this._onMenuKeyDown}
+            onKeyUp={this._onKeyUp}
           >
             {title && (
               <div className={this._classNames.title} role="heading" aria-level={1}>
@@ -301,7 +304,11 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
                 isCircularNavigation={true}
                 handleTabKey={FocusZoneTabbableElements.all}
               >
-                <ul className={this._classNames.list} onKeyDown={this._onKeyDown}>
+                <ul
+                  className={this._classNames.list}
+                  onKeyDown={this._onKeyDown}
+                  onKeyUp={this._onKeyUp}
+                >
                   {items.map((item, index) => {
                     const menuItem = this._renderMenuItem(
                       item,
@@ -687,14 +694,49 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     );
   }
 
-  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
-    if (ev.which === KeyCodes.escape || ev.altKey || ev.metaKey || this._shouldCloseSubMenu(ev)) {
-      // When a user presses escape, we will try to refocus the previous focused element.
+  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
+    // take note if we are processing a altKey or metaKey keydown
+    // so that the menu does not collapse if no other keys are pressed
+    this._processingExpandCollapseKeyOnly = this._isExpandCollapseKey(ev);
+
+    return this._keyHandler(ev, this._shouldHandleKeyDown);
+  };
+
+  private _shouldHandleKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
+    return ev.which === KeyCodes.escape ||
+      this._shouldCloseSubMenu(ev) ||
+      (ev.which === KeyCodes.up && (ev.altKey || ev.metaKey));
+  };
+
+  private _onKeyUp = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
+    return this._keyHandler(ev, this._shouldHandleKeyUp, true /* dismissAllMenus */);
+  };
+
+  private _shouldHandleKeyUp = (ev: React.KeyboardEvent<HTMLElement>) => {
+    const shouldHandleKey = this._processingExpandCollapseKeyOnly && this._isExpandCollapseKey(ev);
+    this._processingExpandCollapseKeyOnly = false;
+    return shouldHandleKey;
+  };
+
+  private _isExpandCollapseKey(ev: React.KeyboardEvent<HTMLElement>) {
+    return ev.which === KeyCodes.alt || ev.key === 'Meta';
+  }
+
+  private _keyHandler = (
+    ev: React.KeyboardEvent<HTMLElement>,
+    shouldHandleKey: (ev: React.KeyboardEvent<HTMLElement>) => boolean,
+    dismissAllMenus?: boolean): boolean => {
+    let handled = false;
+
+    if (shouldHandleKey(ev)) {
       this._isFocusingPreviousElement = true;
       ev.preventDefault();
       ev.stopPropagation();
-      this.dismiss(ev);
+      this.dismiss(ev, dismissAllMenus);
+      handled = true;
     }
+
+    return handled;
   };
 
   /**
@@ -715,20 +757,19 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   };
 
   private _onMenuKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
-    if (ev.which === KeyCodes.escape || ev.altKey || ev.metaKey) {
-      this._isFocusingPreviousElement = true;
-      ev.preventDefault();
-      ev.stopPropagation();
-      this.dismiss(ev);
+    // Mark as handled if onKeyDown (for handling collapse cases) return true
+    // or if we are attempting to expand a submenu (otherwise)
+    const handled = this._onKeyDown(ev);
+
+    if (handled || !this._host) {
       return;
     }
 
-    if (!this._host) {
-      return;
-    }
-
-    const elementToFocus =
-      ev.which === KeyCodes.up
+    // If we have a modifier key being pressed, we do not want to move focus.
+    // Otherwise, handle up and down keys
+    const elementToFocus = (ev.altKey || ev.metaKey)
+      ? null
+      : ev.which === KeyCodes.up
         ? getLastFocusable(this._host, this._host.lastChild as HTMLElement, true)
         : ev.which === KeyCodes.down
           ? getFirstFocusable(this._host, this._host.firstChild as HTMLElement, true)
@@ -919,7 +960,10 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _onItemKeyDown = (item: any, ev: React.KeyboardEvent<HTMLElement>): void => {
     const openKey = getRTL() ? KeyCodes.left : KeyCodes.right;
 
-    if ((ev.which === openKey || ev.which === KeyCodes.enter) && !item.disabled) {
+    if (!item.disabled &&
+      (ev.which === openKey ||
+        ev.which === KeyCodes.enter ||
+        (ev.which === KeyCodes.down && (ev.altKey || ev.metaKey)))) {
       this.setState({
         expandedByMouseClick: false
       });

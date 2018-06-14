@@ -31,7 +31,7 @@ import { getTheme } from '../../Styling';
 import { KeytipData } from '../../KeytipData';
 
 // Internal only props interface to support mixing in responsive mode
-export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {}
+export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState { }
 
 export interface IDropdownState {
   isOpen?: boolean;
@@ -53,6 +53,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private _isScrollIdle: boolean;
   private readonly _scrollIdleDelay: number = 250 /* ms */;
   private _scrollIdleTimeoutId: number | undefined;
+  private _processingExpandCollapseKeyOnly: boolean;
 
   constructor(props: IDropdownProps) {
     super(props);
@@ -77,6 +78,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
     this._id = props.id || getId('Dropdown');
     this._isScrollIdle = true;
+    this._processingExpandCollapseKeyOnly = false;
 
     this.state = {
       isOpen: false
@@ -203,9 +205,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
                 aria-label={selectedOptions.length ? selectedOptions[0].text : this.props.placeHolder}
               >
                 {// If option is selected render title, otherwise render the placeholder text
-                selectedOptions.length
-                  ? onRenderTitle(selectedOptions, this._onRenderTitle)
-                  : onRenderPlaceHolder(this.props, this._onRenderPlaceHolder)}
+                  selectedOptions.length
+                    ? onRenderTitle(selectedOptions, this._onRenderTitle)
+                    : onRenderPlaceHolder(this.props, this._onRenderPlaceHolder)}
               </span>
               <span className={css('ms-Dropdown-caretDownWrapper', styles.caretDownWrapper)}>
                 {onRenderCaretDown(this.props, this._onRenderCaretDown)}
@@ -360,23 +362,23 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         {onRenderList(props, this._onRenderList)}
       </Panel>
     ) : (
-      <Callout
-        isBeakVisible={false}
-        gapSpace={0}
-        doNotLayer={false}
-        directionalHintFixed={true}
-        directionalHint={DirectionalHint.bottomLeftEdge}
-        {...calloutProps}
-        className={css('ms-Dropdown-callout', styles.callout, !!calloutProps && calloutProps.className)}
-        target={this._dropDown.current}
-        onDismiss={this._onDismiss}
-        onScroll={this._onScroll}
-        onPositioned={this._onPositioned}
-        calloutWidth={dropdownWidth || (this._dropDown.current ? this._dropDown.current.clientWidth : 0)}
-      >
-        {onRenderList(props, this._onRenderList)}
-      </Callout>
-    );
+        <Callout
+          isBeakVisible={false}
+          gapSpace={0}
+          doNotLayer={false}
+          directionalHintFixed={true}
+          directionalHint={DirectionalHint.bottomLeftEdge}
+          {...calloutProps}
+          className={css('ms-Dropdown-callout', styles.callout, !!calloutProps && calloutProps.className)}
+          target={this._dropDown.current}
+          onDismiss={this._onDismiss}
+          onScroll={this._onScroll}
+          onPositioned={this._onPositioned}
+          calloutWidth={dropdownWidth || (this._dropDown.current ? this._dropDown.current.clientWidth : 0)}
+        >
+          {onRenderList(props, this._onRenderList)}
+        </Callout>
+      );
   };
 
   // Render Caret Down Icon
@@ -392,7 +394,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     const { selectedIndices = [] } = this.state;
 
     return (
-      <div className={styles.listWrapper} onKeyDown={this._onZoneKeyDown} ref={this._host} tabIndex={0}>
+      <div className={styles.listWrapper} onKeyDown={this._onZoneKeyDown} onKeyUp={this._onZoneKeyUp} ref={this._host} tabIndex={0}>
         <FocusZone
           ref={this._focusZone}
           direction={FocusZoneDirection.vertical}
@@ -478,33 +480,33 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         {onRenderOption(item, this._onRenderOption)}
       </CommandButton>
     ) : (
-      <Checkbox
-        id={id + '-list' + item.index}
-        key={item.key}
-        data-index={item.index}
-        data-is-focusable={!item.disabled}
-        disabled={item.disabled}
-        onChange={this._onItemClick(item)}
-        inputProps={{
-          onMouseEnter: this._onItemMouseEnter.bind(this, item),
-          onMouseLeave: this._onMouseItemLeave.bind(this, item),
-          onMouseMove: this._onItemMouseMove.bind(this, item)
-        }}
-        label={item.text}
-        title={item.title}
-        onRenderLabel={this._onRenderLabel.bind(this, item)}
-        className={css('ms-ColumnManagementPanel-checkbox', styles.dropdownCheckbox, 'ms-Dropdown-item', styles.item, {
-          ['is-selected ' + styles.itemIsSelected]: isItemSelected,
-          ['is-disabled ' + styles.itemIsDisabled]: item.disabled
-        })}
-        role="option"
-        aria-selected={isItemSelected ? 'true' : 'false'}
-        checked={isItemSelected}
-        // Hover is being handled by focus styles
-        // so clear out the explicit hover styles
-        styles={checkboxStyles}
-      />
-    );
+        <Checkbox
+          id={id + '-list' + item.index}
+          key={item.key}
+          data-index={item.index}
+          data-is-focusable={!item.disabled}
+          disabled={item.disabled}
+          onChange={this._onItemClick(item)}
+          inputProps={{
+            onMouseEnter: this._onItemMouseEnter.bind(this, item),
+            onMouseLeave: this._onMouseItemLeave.bind(this, item),
+            onMouseMove: this._onItemMouseMove.bind(this, item)
+          }}
+          label={item.text}
+          title={item.title}
+          onRenderLabel={this._onRenderLabel.bind(this, item)}
+          className={css('ms-ColumnManagementPanel-checkbox', styles.dropdownCheckbox, 'ms-Dropdown-item', styles.item, {
+            ['is-selected ' + styles.itemIsSelected]: isItemSelected,
+            ['is-disabled ' + styles.itemIsDisabled]: item.disabled
+          })}
+          role="option"
+          aria-selected={isItemSelected ? 'true' : 'false'}
+          checked={isItemSelected}
+          // Hover is being handled by focus styles
+          // so clear out the explicit hover styles
+          styles={checkboxStyles}
+        />
+      );
   };
 
   // Render content of item (i.e. text/icon inside of button)
@@ -667,24 +669,28 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   };
 
   private _onDropdownKeyDown = (ev: React.KeyboardEvent<HTMLDivElement>): void => {
+
+    this._processingExpandCollapseKeyOnly = this._isExpandCollapseKey(ev);
+
     if (this.props.onKeyDown) {
       this.props.onKeyDown(ev);
       if (ev.defaultPrevented) {
         return;
       }
     }
+    const isOpen = this.state.isOpen;
     let newIndex: number | undefined;
     const selectedIndex = this.state.selectedIndices!.length ? this.state.selectedIndices![0] : -1;
 
     switch (ev.which) {
       case KeyCodes.enter:
         this.setState({
-          isOpen: !this.state.isOpen
+          isOpen: !isOpen
         });
         break;
 
       case KeyCodes.escape:
-        if (!this.state.isOpen) {
+        if (!isOpen) {
           return;
         }
 
@@ -694,6 +700,14 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         break;
 
       case KeyCodes.up:
+        if ((ev.altKey || ev.metaKey)) {
+          if (isOpen) {
+            this.setState({ isOpen: false });
+            break;
+          }
+
+          return;
+        }
         if (this.props.multiSelect) {
           this.setState({ isOpen: true });
         } else {
@@ -703,6 +717,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
       case KeyCodes.down:
         if (ev.altKey || ev.metaKey || this.props.multiSelect) {
+          if (ev.altKey || ev.metaKey) {
+            ev.stopPropagation();
+            ev.preventDefault();
+          }
           this.setState({ isOpen: true });
         } else {
           newIndex = this._moveIndex(1, selectedIndex + 1, selectedIndex);
@@ -726,12 +744,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         break;
 
       default:
-        if (ev.altKey || ev.metaKey) {
+        if (this._processingExpandCollapseKeyOnly) {
           this.setState({
             isOpen: false
           });
-          ev.stopPropagation();
-          ev.preventDefault();
         }
         return;
     }
@@ -743,6 +759,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   };
 
   private _onDropdownKeyUp = (ev: React.KeyboardEvent<HTMLDivElement>): void => {
+    const shouldHandleKey = this._processingExpandCollapseKeyOnly && this._isExpandCollapseKey(ev);
+    this._processingExpandCollapseKeyOnly = false;
+    const isOpen = this.state.isOpen;
+
     if (this.props.onKeyUp) {
       this.props.onKeyUp(ev);
       if (ev.preventDefault) {
@@ -752,11 +772,14 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     switch (ev.which) {
       case KeyCodes.space:
         this.setState({
-          isOpen: !this.state.isOpen
+          isOpen: !isOpen
         });
         break;
 
       default:
+        if (shouldHandleKey && isOpen) {
+          this.setState({ isOpen: false });
+        }
         return;
     }
 
@@ -764,8 +787,13 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     ev.preventDefault();
   };
 
+  private _isExpandCollapseKey(ev: React.KeyboardEvent<HTMLElement>) {
+    return ev.which === KeyCodes.alt || ev.key === 'Meta';
+  }
+
   private _onZoneKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     let elementToFocus;
+    this._processingExpandCollapseKeyOnly = this._isExpandCollapseKey(ev);
 
     switch (ev.which) {
       case KeyCodes.up:
@@ -801,12 +829,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         return;
 
       default:
-        if (ev.altKey || ev.metaKey) {
-          this.setState({
-            isOpen: false
-          });
-          break;
-        }
         return;
     }
 
@@ -817,6 +839,16 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     ev.stopPropagation();
     ev.preventDefault();
   };
+
+  private _onZoneKeyUp = (ev: React.KeyboardEvent<HTMLElement>): void => {
+    const shouldHandleKey = this._processingExpandCollapseKeyOnly && this._isExpandCollapseKey(ev);
+    this._processingExpandCollapseKeyOnly = false;
+
+    if (shouldHandleKey && this.state.isOpen) {
+      this.setState({ isOpen: false });
+      ev.preventDefault();
+    }
+  }
 
   private _onDropdownClick = (ev: React.MouseEvent<HTMLDivElement>): void => {
     if (this.props.onClick) {
