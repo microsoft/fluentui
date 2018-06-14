@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { MarqueeSelectionPage } from '@uifabric/demo/lib/components/pages/MarqueeSelectionPage';
+import { MarqueeSelectionPage } from '@uifabric/fabric-website-resources/lib/components/pages/MarqueeSelectionPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 const pageStyles: any = require('../PageStyles.module.scss');
