@@ -618,6 +618,7 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
     >
       <button
         aria-describedby={undefined}
+        aria-disabled={undefined}
         aria-label={undefined}
         aria-labelledby={undefined}
         aria-pressed={undefined}
@@ -790,6 +791,7 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
     >
       <button
         aria-describedby={undefined}
+        aria-disabled={undefined}
         aria-label={undefined}
         aria-labelledby={undefined}
         aria-pressed={undefined}

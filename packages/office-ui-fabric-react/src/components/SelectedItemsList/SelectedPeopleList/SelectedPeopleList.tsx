@@ -82,7 +82,8 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
       menuItems: this._createMenuItems(item)
     };
 
-    if ((item as IExtendedPersonaProps).isEditing) {
+    const hasContextMenu = props.menuItems.length > 0;
+    if ((item as IExtendedPersonaProps).isEditing && hasContextMenu) {
       return (
         <EditingItem
           {...props}
@@ -95,7 +96,7 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
     } else {
       const onRenderItem = this.props.onRenderItem as (props: ISelectedPeopleItemProps) => JSX.Element;
       const renderedItem = onRenderItem(props);
-      return props.menuItems.length > 0 ? (
+      return hasContextMenu ? (
         <SelectedItemWithContextMenu
           renderedItem={renderedItem}
           beginEditing={this._beginEditing}

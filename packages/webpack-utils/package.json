@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/webpack-utils",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Office UI Fabric utilities for Webpack bundler.",
   "sideEffects": false,
   "repository": {
@@ -11,7 +11,8 @@
   "scripts": {
     "build": "node ../../scripts/build-webpack-utils.js",
     "code-style": "node ../../scripts/code-style.js",
-    "clean": "node ../../scripts/clean.js"
+    "clean": "node ../../scripts/clean.js",
+    "start": "node ../../scripts/node_modules/typescript/bin/tsc -w --outDir lib -m commonjs -t es5"
   },
   "disabledTasks": [
     "copy",

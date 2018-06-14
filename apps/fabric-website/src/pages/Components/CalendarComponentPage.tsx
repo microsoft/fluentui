@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CalendarPage } from 'office-ui-fabric-react/lib/components/Calendar/CalendarPage';
+import { CalendarPage } from '@uifabric/fabric-website-resources/lib/components/pages/CalendarPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 const pageStyles: any = require('../PageStyles.module.scss');

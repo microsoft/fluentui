@@ -1,11 +1,13 @@
 'use strict';
 
 // Treat warnings as failures.
-console.warn = (message) => { throw new Error(message); };
+console.warn = message => {
+  throw new Error(message);
+};
 
 // Configure load-themed-styles to avoid registering styles.
 let themeLoader = require('@microsoft/load-themed-styles');
-themeLoader.configureLoadStyles((styles) => {
+themeLoader.configureLoadStyles(styles => {
   // noop
 });
 
@@ -24,7 +26,7 @@ initializeIcons('dist/');
 
 let React = require('react');
 let ReactDOMServer = require('react-dom/server');
-let AppDefinition = require('office-ui-fabric-react/lib/demo/AppDefinition').AppDefinition;
+let AppDefinition = require('@uifabric/fabric-website-resources/lib/AppDefinition').AppDefinition;
 
 describe('Fabric components', () => {
   for (let i = 0; i < AppDefinition.examplePages.length; i++) {
@@ -38,12 +40,14 @@ describe('Fabric components', () => {
 });
 
 function testRender(componentName, component) {
-  it(`${componentName} can render in a server environment`, (done) => {
+  it(`${componentName} can render in a server environment`, done => {
     let elem = React.createElement(component);
 
     try {
       ReactDOMServer.renderToString(elem);
       done();
-    } catch (e) { done(new Error(e)) }
+    } catch (e) {
+      done(new Error(e));
+    }
   });
 }

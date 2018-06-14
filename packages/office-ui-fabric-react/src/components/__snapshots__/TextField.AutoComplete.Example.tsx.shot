@@ -57,6 +57,7 @@ exports[`Component Examples renders TextField.AutoComplete.Example.tsx correctly
   </div>
   <button
     aria-describedby={undefined}
+    aria-disabled={undefined}
     aria-label={undefined}
     aria-labelledby={undefined}
     aria-pressed={undefined}

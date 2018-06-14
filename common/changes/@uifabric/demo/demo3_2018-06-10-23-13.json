@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/demo",
+      "comment": "Created new demo page",
+      "type": "none"
+    }
+  ],
+  "packageName": "@uifabric/demo",
+  "email": "ken@gizzar.com"
+}

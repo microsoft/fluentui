@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { OverflowSet } from './OverflowSet';
-import { IRenderFunction } from '../../Utilities';
+
 import { IFocusZoneProps } from '../../FocusZone';
 import { IKeytipProps } from '../../Keytip';
+import { IStyle } from '../../Styling';
+import { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import { OverflowSetBase } from './OverflowSet.base';
 
 export interface IOverflowSet {
   /**
@@ -22,7 +24,7 @@ export interface IOverflowSet {
   focusElement(childElement?: HTMLElement): boolean;
 }
 
-export interface IOverflowSetProps extends React.Props<OverflowSet> {
+export interface IOverflowSetProps extends React.Props<OverflowSetBase> {
   /**
    * Gets the component ref.
    */
@@ -92,7 +94,26 @@ export interface IOverflowSetProps extends React.Props<OverflowSet> {
    * This is only used if your overflow set has keytips.
    */
   itemSubMenuProvider?: (item: IOverflowSetItemProps) => any[] | undefined;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  styles?: IStyleFunctionOrObject<IOverflowSetProps, IOverflowSetStyles>;
 }
+
+export interface IOverflowSetStyles {
+  /** The style that is layered onto the root element of OverflowSet. */
+  root?: IStyle;
+  /** The style that is layered onto each individual item in the overflow set. */
+  item?: IStyle;
+  /** The style that is layered onto the overflow button for the overflow set. */
+  overflowButton?: IStyle;
+}
+
+/**
+ * The props needed to construct styles. This represents the simplified set of immutable things which control the class names.
+ */
+export type IOverflowSetStyleProps = Pick<IOverflowSetProps, 'vertical' | 'className'>;
 
 export interface IOverflowSetItemProps {
   /**

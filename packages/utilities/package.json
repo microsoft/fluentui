@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/utilities",
-  "version": "6.2.0",
+  "version": "6.3.0",
   "description": "Office UI Fabric utilities for building React components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -15,7 +15,8 @@
     "build": "node ../../scripts/build.js",
     "code-style": "node ../../scripts/code-style.js",
     "clean": "node ../../scripts/clean.js",
-    "start-test": "node ../../scripts/start-test.js"
+    "start-test": "node ../../scripts/start-test.js",
+    "update-snapshots": "node ../../scripts/build.js jest -u"
   },
   "disabledTasks": [
     "copy",
@@ -23,18 +24,21 @@
     "webpack"
   ],
   "devDependencies": {
-    "@types/jest": "23.0.0",
     "@types/enzyme": "3.1.5",
     "@types/enzyme-adapter-react-16": "1.0.1",
+    "@types/jest": "23.0.0",
     "@types/prop-types": "15.5.2",
     "@types/react": "16.3.16",
     "@types/react-dom": "16.0.5",
+    "@types/react-test-renderer": "^16.0.0",
     "@types/sinon": "2.2.2",
+    "@uifabric/jest-serializer-merge-styles": ">=6.0.0 <7.0.0",
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.0",
     "office-ui-fabric-react-tslint": ">=6.0.0 <7.0.0",
     "react": ">=16.3.2-0 <17.0.0",
     "react-dom": ">=16.3.2-0 <17.0.0",
+    "react-test-renderer": "^16.2.0",
     "sinon": "^4.1.3"
   },
   "dependencies": {

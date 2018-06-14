@@ -51,19 +51,12 @@
       "packageName": "@uifabric/example-app-base",
       "projectFolder": "packages/example-app-base",
       "versionPolicyName": "lockedMajor",
-      "cyclicDependencyProjects": [
-        "office-ui-fabric-react"
-      ],
       "shouldPublish": true
     },
     {
       "packageName": "@uifabric/styling",
       "projectFolder": "packages/styling",
       "versionPolicyName": "lockedMajor",
-      "cyclicDependencyProjects": [
-        "office-ui-fabric-react",
-        "@uifabric/example-app-base"
-      ],
       "shouldPublish": true
     },
     {
@@ -75,6 +68,12 @@
     {
       "packageName": "@uifabric/file-type-icons",
       "projectFolder": "packages/file-type-icons",
+      "versionPolicyName": "lockedMajor",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@uifabric/fabric-website-resources",
+      "projectFolder": "apps/demo",
       "versionPolicyName": "lockedMajor",
       "shouldPublish": true
     },

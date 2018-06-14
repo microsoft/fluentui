@@ -1,20 +1,33 @@
-// import * as React from 'react';
-// import * as renderer from 'react-test-renderer';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
 
 import { resetIds } from '../Utilities';
 
-import * as DataUtil from '@uifabric/example-app-base/lib-commonjs/utilities/data';
+import * as DataUtil from '../utilities/exampleData';
 import * as mergeStylesSerializer from '@uifabric/jest-serializer-merge-styles';
 
 // Extend Jest Expect to allow us to map each component example to its own snapshot file.
 const snapshotsStateMap = new Map();
 const jestSnapshot = require('jest-snapshot');
 
+// jest-snapshot currently has no DefinitelyTyped or module defs so type the one object we care about for now here
+interface ISnapshotState {
+  _updateSnapshot: string;
+  unmatched: number;
+  matched: number;
+  updated: number;
+  added: number;
+}
+
+let globalSnapshotState: ISnapshotState;
+
 // Using this serializer makes sure we capture styling in snapshot output
 jestSnapshot.addSerializer(mergeStylesSerializer);
 
 expect.extend({
   toMatchSpecificSnapshot(received, snapshotFile) {
+    globalSnapshotState = (this as any).snapshotState;
+
     // Append .shot to prevent jest failure when it finds .snaps without associated tests.
     const absoluteSnapshotFile = process.cwd() + '/src/components/__snapshots__/' + snapshotFile + '.shot';
 
@@ -23,9 +36,11 @@ expect.extend({
 
     if (!snapshotState) {
       // if this is a first test that want to use this snapshot, let's create it
-      snapshotState = new jestSnapshot.SnapshotState(absoluteSnapshotFile, { snapshotPath: absoluteSnapshotFile });
-      // without this, jest-snapshot will not save new snapshots.
-      snapshotState._updateSnapshot = 'new';
+      // We have to grab global state's _updateSnapshot setting to make sure jest configuration is honored
+      snapshotState = new jestSnapshot.SnapshotState(absoluteSnapshotFile, {
+        snapshotPath: absoluteSnapshotFile,
+        updateSnapshot: globalSnapshotState._updateSnapshot
+      });
       // and save it to the map for tracking
       snapshotsStateMap.set(absoluteSnapshotFile, snapshotState);
     }
@@ -85,11 +100,6 @@ describe('Component Examples', () => {
   const constantDate = new Date('2017-06-13T04:41:20');
   const files: string[] = glob.sync(path.resolve(process.cwd(), 'src/components/**/examples/*Example*.tsx'));
 
-  beforeEach(() => {
-    // Resetting ids to create predictability in generated ids.
-    resetIds();
-  });
-
   beforeAll(() => {
     // Prevent random and time elements from failing repeated tests.
     global.Date = class {
@@ -113,8 +123,23 @@ describe('Component Examples', () => {
   afterAll(() => {
     jest.restoreAllMocks();
     global.Date = realDate;
+
     snapshotsStateMap.forEach(snapshotState => {
+      if (snapshotState.getUncheckedCount() > 0) {
+        snapshotState.removeUncheckedKeys();
+      }
+
       snapshotState.save();
+
+      // Report results to global state
+      // TODO: This module is currently not reporting any snapshots without corresponding test cases.
+      //       We should ideally follow Jest behavior and error out or show "obsolete" snapshot output.
+      if (globalSnapshotState) {
+        globalSnapshotState.unmatched += snapshotState.unmatched;
+        globalSnapshotState.matched += snapshotState.matched;
+        globalSnapshotState.updated += snapshotState.updated;
+        globalSnapshotState.added += snapshotState.added;
+      }
     });
   });
 
@@ -128,11 +153,12 @@ describe('Component Examples', () => {
         try {
           const ExampleFile = require(componentFile);
           Object.keys(ExampleFile).forEach(key => {
-            // Temporarily disabled until this file observes update-snapshot arg
-            // const ComponentUnderTest: React.ComponentClass = ExampleFile[key];
-            // const component = renderer.create(<ComponentUnderTest />);
-            // const tree = component.toJSON();
-            // (expect(tree) as any).toMatchSpecificSnapshot(componentFileName);
+            // Resetting ids by each object creates predictability in generated ids.
+            resetIds();
+            const ComponentUnderTest: React.ComponentClass = ExampleFile[key];
+            const component = renderer.create(<ComponentUnderTest />);
+            const tree = component.toJSON();
+            (expect(tree) as any).toMatchSpecificSnapshot(componentFileName);
           });
         } catch (e) {
           console.warn(
