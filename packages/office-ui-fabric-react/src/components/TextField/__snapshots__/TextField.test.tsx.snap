@@ -50,3 +50,301 @@ exports[`TextField renders TextField correctly 1`] = `
   </div>
 </div>
 `;
+
+exports[`TextField renders TextField multiline resizable correctly 1`] = `
+<div
+  className="ms-TextField ms-TextField--multiline undefined"
+>
+  <div
+    className="ms-TextField-wrapper"
+  >
+    <label
+      className=
+          ms-Label
+          {
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #333333;
+            display: block;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            overflow-wrap: break-word;
+            padding-bottom: 5px;
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 5px;
+            word-wrap: break-word;
+          }
+      htmlFor="TextField0"
+    >
+      Label
+    </label>
+    <div
+      className="ms-TextField-fieldGroup"
+    >
+      <textarea
+        aria-describedby={undefined}
+        aria-invalid={false}
+        aria-label={undefined}
+        className="ms-TextField-field"
+        id="TextField0"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onInput={[Function]}
+        value=""
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`TextField renders TextField multiline unresizable correctly 1`] = `
+<div
+  className="ms-TextField ms-TextField--multiline undefined"
+>
+  <div
+    className="ms-TextField-wrapper"
+  >
+    <label
+      className=
+          ms-Label
+          {
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #333333;
+            display: block;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            overflow-wrap: break-word;
+            padding-bottom: 5px;
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 5px;
+            word-wrap: break-word;
+          }
+      htmlFor="TextField0"
+    >
+      Label
+    </label>
+    <div
+      className="ms-TextField-fieldGroup"
+    >
+      <textarea
+        aria-describedby={undefined}
+        aria-invalid={false}
+        aria-label={undefined}
+        className="ms-TextField-field ms-TextField-field--unresizable"
+        id="TextField0"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onInput={[Function]}
+        value=""
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`TextField renders multiline TextField correctly with errorMessage 1`] = `
+<div
+  className="ms-TextField ms-TextField--underlined undefined"
+>
+  <div
+    className="ms-TextField-wrapper"
+  >
+    <StyledCustomizedLabel
+      htmlFor="TextField0"
+    >
+      Label
+    </StyledCustomizedLabel>
+    <div
+      className="ms-TextField-fieldGroup"
+    >
+      <div
+        className="ms-TextField-prefix"
+      >
+        <span
+          style={
+            Object {
+              "paddingBottom": "1px",
+            }
+          }
+        >
+          test addonString
+        </span>
+      </div>
+      <div
+        className="ms-TextField-prefix"
+      >
+        <span
+          style={
+            Object {
+              "paddingBottom": "1px",
+            }
+          }
+        >
+          test prefix
+        </span>
+      </div>
+      <input
+        aria-describedby="TextFieldDescription1"
+        aria-invalid={false}
+        aria-label={undefined}
+        className="ms-TextField-field"
+        id="TextField0"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onInput={[Function]}
+        type="text"
+        value=""
+      />
+      <div
+        className="ms-TextField-suffix"
+      >
+        <span
+          style={
+            Object {
+              "paddingBottom": "1px",
+            }
+          }
+        >
+          test suffix
+        </span>
+      </div>
+    </div>
+  </div>
+  <span
+    id="TextFieldDescription1"
+  >
+    <div
+      aria-live="assertive"
+    >
+      <DelayedRender
+        delay={0}
+      >
+        <p
+          className=
+              ms-TextField-errorMessage
+              {
+                animation-duration: 0.367s;
+                animation-fill-mode: both;
+                animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(0,-20px,0);}to{transform:translate3d(0,0,0);};
+                animation-timing-function: cubic-bezier(.1,.9,.2,1);
+              }
+        >
+          <span
+            className={undefined}
+            data-automation-id="error-message"
+          >
+            test message
+          </span>
+        </p>
+      </DelayedRender>
+    </div>
+  </span>
+</div>
+`;
+
+exports[`TextField renders multiline TextField correctly with props affecting styling 1`] = `
+<div
+  className="ms-TextField ms-TextField--underlined undefined"
+>
+  <div
+    className="ms-TextField-wrapper"
+  >
+    <label
+      className=
+          ms-Label
+          {
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #333333;
+            display: block;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            overflow-wrap: break-word;
+            padding-bottom: 5px;
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 5px;
+            word-wrap: break-word;
+          }
+      htmlFor="TextField0"
+    >
+      Label
+    </label>
+    <div
+      className="ms-TextField-fieldGroup"
+    >
+      <div
+        className="ms-TextField-prefix"
+      >
+        <span
+          style={
+            Object {
+              "paddingBottom": "1px",
+            }
+          }
+        >
+          test addonString
+        </span>
+      </div>
+      <div
+        className="ms-TextField-prefix"
+      >
+        <span
+          style={
+            Object {
+              "paddingBottom": "1px",
+            }
+          }
+        >
+          test prefix
+        </span>
+      </div>
+      <input
+        aria-describedby="TextFieldDescription1"
+        aria-invalid={false}
+        aria-label={undefined}
+        className="ms-TextField-field"
+        id="TextField0"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onInput={[Function]}
+        type="text"
+        value=""
+      />
+      <div
+        className="ms-TextField-suffix"
+      >
+        <span
+          style={
+            Object {
+              "paddingBottom": "1px",
+            }
+          }
+        >
+          test suffix
+        </span>
+      </div>
+    </div>
+  </div>
+  <span
+    id="TextFieldDescription1"
+  >
+    <div
+      aria-live="assertive"
+    />
+  </span>
+</div>
+`;

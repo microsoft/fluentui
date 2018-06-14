@@ -307,5 +307,6 @@ export interface ITextFieldStyles {
   description?: IStyle;
   wrapper?: IStyle;
   errorMessage?: IStyle;
-  label?: IStyle;
+  // TODO: remove or use
+  // label?: IStyle;
 }

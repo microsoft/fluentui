@@ -3,12 +3,30 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
+import * as WarnUtil from '@uifabric/utilities/lib-commonjs/warn';
 
-import { createRef } from '../../Utilities';
+import { createRef, resetIds } from '../../Utilities';
 
 import { ITextField, TextField } from './TextField';
+import { TextFieldBase } from './TextField.base';
+import { getStyles } from './TextField.styles';
 
 describe('TextField', () => {
+  beforeAll(() => {
+    // Prevent warn deprecations from failing test
+    jest.spyOn(WarnUtil, 'warnDeprecations').mockImplementation(() => {
+      /** no impl **/
+    });
+  });
+
+  afterAll(() => {
+    jest.restoreAllMocks();
+  });
+
+  beforeEach(() => {
+    resetIds();
+  });
+
   function renderIntoDocument(element: React.ReactElement<any>): HTMLElement {
     const component = ReactTestUtils.renderIntoDocument(element);
     const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
@@ -32,11 +50,53 @@ describe('TextField', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders TextField multiline unresizable correctly', () => {
+    const component = renderer.create(<TextField label="Label" multiline={true} resizable={false} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders TextField multiline resizable correctly', () => {
+    const component = renderer.create(<TextField label="Label" multiline={true} resizable={true} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders multiline TextField correctly with props affecting styling', () => {
+    const component = renderer.create(
+      <TextField
+        label="Label"
+        errorMessage={'test message'}
+        underlined={true}
+        addonString={'test addonString'}
+        prefix={'test prefix'}
+        suffix={'test suffix'}
+      />
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders multiline TextField correctly with errorMessage', () => {
+    const component = renderer.create(
+      <TextField
+        label="Label"
+        errorMessage={'test message'}
+        underlined={true}
+        addonString={'test addonString'}
+        prefix={'test prefix'}
+        suffix={'test suffix'}
+      />
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('should render label and value to input element', () => {
     const exampleLabel = 'this is label';
     const exampleValue = 'this is value';
 
-    const renderedDOM: HTMLElement = renderIntoDocument(<TextField label={exampleLabel} value={exampleValue} />);
+    const renderedDOM: HTMLElement = renderIntoDocument(<TextFieldBase label={exampleLabel} value={exampleValue} />);
 
     // Assert on the input element.
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
@@ -50,7 +110,7 @@ describe('TextField', () => {
   it('should render prefix in input element', () => {
     const examplePrefix = 'this is a prefix';
 
-    const renderedDOM: HTMLElement = renderIntoDocument(<TextField prefix={examplePrefix} />);
+    const renderedDOM: HTMLElement = renderIntoDocument(<TextFieldBase styles={getStyles} prefix={examplePrefix} />);
 
     // Assert on the prefix
     const prefixDOM: Element = renderedDOM.getElementsByClassName('ms-TextField-prefix')[0];
@@ -60,7 +120,7 @@ describe('TextField', () => {
   it('should render suffix in input element', () => {
     const exampleSuffix = 'this is a suffix';
 
-    const renderedDOM: HTMLElement = renderIntoDocument(<TextField suffix={exampleSuffix} />);
+    const renderedDOM: HTMLElement = renderIntoDocument(<TextFieldBase styles={getStyles} suffix={exampleSuffix} />);
 
     // Assert on the suffix
     const suffixDOM: Element = renderedDOM.getElementsByClassName('ms-TextField-suffix')[0];
@@ -71,7 +131,9 @@ describe('TextField', () => {
     const examplePrefix = 'this is a prefix';
     const exampleSuffix = 'this is a suffix';
 
-    const renderedDOM: HTMLElement = renderIntoDocument(<TextField prefix={examplePrefix} suffix={exampleSuffix} />);
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <TextFieldBase styles={getStyles} prefix={examplePrefix} suffix={exampleSuffix} />
+    );
 
     // Assert on the prefix and suffix
     const prefixDOM: Element = renderedDOM.getElementsByClassName('ms-TextField-prefix')[0];
@@ -81,7 +143,9 @@ describe('TextField', () => {
   });
 
   it('should render multiline as text area element', () => {
-    const renderedDOM: HTMLElement = renderIntoDocument(<TextField value="This\nIs\nMultiline\nText\n" multiline />);
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <TextFieldBase value="This\nIs\nMultiline\nText\n" multiline />
+    );
 
     // Assert on the input element.
     const inputDOM: HTMLTextAreaElement = renderedDOM.getElementsByTagName('textarea')[0];
@@ -89,7 +153,9 @@ describe('TextField', () => {
   });
 
   it('should associate the label and input box', () => {
-    const renderedDOM: HTMLElement = renderIntoDocument(<TextField label="text-field-label" value="whatever value" />);
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <TextFieldBase label="text-field-label" value="whatever value" />
+    );
 
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
     const labelDOM: HTMLLabelElement = renderedDOM.getElementsByTagName('label')[0];
@@ -100,7 +166,7 @@ describe('TextField', () => {
   });
 
   it('should render a disabled input element', () => {
-    const renderedDOM: HTMLElement = renderIntoDocument(<TextField disabled={true} />);
+    const renderedDOM: HTMLElement = renderIntoDocument(<TextFieldBase disabled={true} />);
 
     // Assert the input box is disabled.
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
@@ -108,7 +174,7 @@ describe('TextField', () => {
   });
 
   it('should render a value of 0 when given the number 0', () => {
-    const renderedDOM: HTMLElement = renderIntoDocument(<TextField value={0 as any} />);
+    const renderedDOM: HTMLElement = renderIntoDocument(<TextFieldBase value={0 as any} />);
 
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
 
@@ -117,7 +183,7 @@ describe('TextField', () => {
   });
 
   it('should render a default value of 0 when given the number 0', () => {
-    const renderedDOM: HTMLElement = renderIntoDocument(<TextField defaultValue={0 as any} />);
+    const renderedDOM: HTMLElement = renderIntoDocument(<TextFieldBase defaultValue={0 as any} />);
 
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
 
@@ -146,7 +212,7 @@ describe('TextField', () => {
       }
 
       const renderedDOM: HTMLElement = renderIntoDocument(
-        <TextField label="text-field-label" value="whatever value" onGetErrorMessage={validator} />
+        <TextFieldBase label="text-field-label" value="whatever value" onGetErrorMessage={validator} />
       );
 
       const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
@@ -162,7 +228,7 @@ describe('TextField', () => {
       }
 
       const renderedDOM: HTMLElement = renderIntoDocument(
-        <TextField label="text-field-label" value="whatever value" onGetErrorMessage={validator} />
+        <TextFieldBase label="text-field-label" value="whatever value" onGetErrorMessage={validator} />
       );
 
       const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
@@ -174,7 +240,7 @@ describe('TextField', () => {
 
     it('should render error message on first render when onGetErrorMessage returns a string', () => {
       const renderedDOM: HTMLElement = renderIntoDocument(
-        <TextField
+        <TextFieldBase
           label="text-field-label"
           value="whatever value"
           // tslint:disable-next-line:jsx-no-lambda
@@ -187,7 +253,7 @@ describe('TextField', () => {
 
     it('should render error message on first render when onGetErrorMessage returns a Promise<string>', () => {
       const renderedDOM: HTMLElement = renderIntoDocument(
-        <TextField
+        <TextFieldBase
           label="text-field-label"
           value="whatever value"
           // tslint:disable-next-line:jsx-no-lambda
@@ -233,7 +299,7 @@ describe('TextField', () => {
       }
 
       const renderedDOM: HTMLElement = renderIntoDocument(
-        <TextField value="initial value" onGetErrorMessage={validator} />
+        <TextFieldBase value="initial value" onGetErrorMessage={validator} />
       );
 
       delay(20).then(() => assertErrorMessage(renderedDOM, errorMessage));
@@ -251,7 +317,7 @@ describe('TextField', () => {
       };
 
       const renderedDOM: HTMLElement = renderIntoDocument(
-        <TextField value="initial value" onGetErrorMessage={validatorSpy} validateOnFocusIn />
+        <TextFieldBase value="initial value" onGetErrorMessage={validatorSpy} validateOnFocusIn />
       );
 
       const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
@@ -275,7 +341,7 @@ describe('TextField', () => {
       };
 
       const renderedDOM: HTMLElement = renderIntoDocument(
-        <TextField value="initial value" onGetErrorMessage={validatorSpy} validateOnFocusOut />
+        <TextFieldBase value="initial value" onGetErrorMessage={validatorSpy} validateOnFocusOut />
       );
 
       const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
@@ -300,7 +366,7 @@ describe('TextField', () => {
       };
 
       const renderedDOM: HTMLElement = renderIntoDocument(
-        <TextField value="initial value" onGetErrorMessage={validatorSpy} validateOnFocusOut validateOnFocusIn />
+        <TextFieldBase value="initial value" onGetErrorMessage={validatorSpy} validateOnFocusOut validateOnFocusIn />
       );
 
       const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
@@ -338,20 +404,27 @@ describe('TextField', () => {
   });
 
   it('can render a default value', () => {
-    const renderedDOM: HTMLElement = renderIntoDocument(<TextField defaultValue="initial value" />);
+    const renderedDOM: HTMLElement = renderIntoDocument(<TextFieldBase defaultValue="initial value" />);
 
+    expect(renderedDOM.querySelector('input')).toBeTruthy();
     expect(renderedDOM.querySelector('input')!.value).toEqual('initial value');
   });
 
   it('can render a default value as a textarea', () => {
-    const renderedDOM: HTMLElement = renderIntoDocument(<TextField defaultValue="initial value" multiline={true} />);
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <TextFieldBase defaultValue="initial value" multiline={true} />
+    );
 
+    expect(renderedDOM.querySelector('textarea')).toBeTruthy();
     expect(renderedDOM.querySelector('textarea')!.value).toEqual('initial value');
   });
 
   it('can render description text', () => {
-    const renderedDOM: HTMLElement = renderIntoDocument(<TextField description="A custom description" />);
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <TextFieldBase styles={getStyles} description="A custom description" />
+    );
 
+    expect(renderedDOM.querySelector('.ms-TextField-description')).toBeTruthy();
     expect(renderedDOM.querySelector('.ms-TextField-description')!.textContent).toEqual('A custom description');
   });
 
@@ -374,7 +447,7 @@ describe('TextField', () => {
     };
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <TextField
+      <TextFieldBase
         defaultValue="initial value"
         onChanged={onChangedSpy}
         // tslint:disable-next-line:jsx-no-lambda
@@ -400,7 +473,7 @@ describe('TextField', () => {
       callCount++;
     };
 
-    const renderedDOM: HTMLElement = renderIntoDocument(<TextField onChanged={onChangedSpy} />);
+    const renderedDOM: HTMLElement = renderIntoDocument(<TextFieldBase onChanged={onChangedSpy} />);
 
     expect(callCount).toEqual(0);
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
