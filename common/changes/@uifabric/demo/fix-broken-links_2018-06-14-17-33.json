@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/demo",
+      "comment": "Fix broken documentation links",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/demo",
+  "email": "mark@thedutchies.com"
+}
