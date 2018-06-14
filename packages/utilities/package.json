@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/utilities",
-  "version": "6.5.0",
+  "version": "6.6.0",
   "description": "Office UI Fabric utilities for building React components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -32,7 +32,7 @@
     "@types/react-dom": "16.0.5",
     "@types/react-test-renderer": "^16.0.0",
     "@types/sinon": "2.2.2",
-    "@uifabric/jest-serializer-merge-styles": ">=6.0.0 <7.0.0",
+    "@uifabric/jest-serializer-merge-styles": ">=6.0.3 <7.0.0",
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.0",
     "office-ui-fabric-react-tslint": ">=6.0.0 <7.0.0",
