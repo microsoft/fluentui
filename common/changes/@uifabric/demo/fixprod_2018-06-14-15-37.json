@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/demo",
+      "comment": "Fixes the prod build in demo app so that it builds in CI",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/demo",
+  "email": "kchau@microsoft.com"
+}
