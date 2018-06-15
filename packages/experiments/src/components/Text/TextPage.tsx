@@ -4,7 +4,7 @@ import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet
 import { TextBasicExample } from './examples/Text.Basic.Example';
 const TextBasicExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Text/examples/Text.Basic.Example.tsx') as string;
 
-export class TilePage extends React.Component<IComponentDemoPageProps, {}> {
+export class TextPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
       <ComponentPage
@@ -17,7 +17,7 @@ export class TilePage extends React.Component<IComponentDemoPageProps, {}> {
             </ExampleCard>
           </div>
         }
-        propertiesTables={<PropertiesTableSet />}
+        propertiesTables={<div />}
         overview={<div />}
         bestPractices={<div />}
         dos={

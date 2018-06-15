@@ -15,10 +15,10 @@ export function createTheme(theme?: Partial<ITheme>, parentTheme?: ITheme): IThe
     const swatches: any = processedTheme;
     const typography: any = processedTheme;
 
-    type.color = swatches[type.color] || type.color || types.default.color;
-    type.fontFamily = typography.families[type.fontFamily] || type.fontFamily || types.default.fontFamily;
-    type.fontSize = typography.sizes[type.fontSize] || type.fontSize || types.default.fontSize;
-    type.fontWeight = typography.weights[type.fontWeight] || type.fontWeight || types.default.fontWeight;
+    type.color = swatches.swatches[type.color] || type.color || types.types.default.color;
+    type.fontFamily = typography.typography.families[type.fontFamily] || type.fontFamily || types.types.default.fontFamily;
+    type.fontSize = typography.typography.sizes[type.fontSize] || type.fontSize || types.types.default.fontSize;
+    type.fontWeight = typography.typography.weights[type.fontWeight] || type.fontWeight || types.types.default.fontWeight;
   }
 
   const swatches: any = processedTheme.swatches;

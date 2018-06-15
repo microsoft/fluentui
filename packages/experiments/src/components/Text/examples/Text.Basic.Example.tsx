@@ -7,6 +7,6 @@ export class TextBasicExample extends React.Component<{}, {}> {
   }
 
   public render(): JSX.Element {
-    return <Text />;
+    return <Text weight="bold">Hello!</Text>;
   }
 }

@@ -52,7 +52,7 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/signals'
         },
         {
-          component: require<any>('../components/Text/Text').TextPage,
+          component: require<any>('../components/Text/TextPage').TextPage,
           key: 'Text',
           name: 'Text',
           url: '#/examples/text'

@@ -1,4 +1,4 @@
-import { DefaultFontStyles, FontWeights } from '@uifabric/styling';
+import { DefaultFontStyles, FontWeights } from '../../../../Styling';
 import { IFontColors, IFontFamilies, IFontSizes, IFontWeights, IFontTypes, ITypography } from '../ITypography';
 
 export const DefaultFontSizes: IFontSizes = {
