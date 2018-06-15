@@ -66,9 +66,9 @@ const styles = (props: IStyleProps<IStackAreaProps, IStackAreaStyles>): IStackAr
 
 export const FlexArea: React.StatelessComponent<IStackAreaProps> & {
   styles?:
-  | Partial<IStackAreaStyles>
-  | ((props: IPropsWithStyles<IStackAreaProps, IStackAreaStyles>) => Partial<IStackAreaStyles>)
-  | undefined;
+    | Partial<IStackAreaStyles>
+    | ((props: IPropsWithStyles<IStackAreaProps, IStackAreaStyles>) => Partial<IStackAreaStyles>)
+    | undefined;
 } = createComponent<IStackAreaProps, IStackAreaStyles>({
   displayName: 'StackArea',
   styles,
