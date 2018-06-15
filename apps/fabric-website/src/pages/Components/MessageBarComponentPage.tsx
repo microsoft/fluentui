@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { MessageBarPage } from '@uifabric/demo/lib/components/pages/MessageBarPage';
+import { MessageBarPage } from '@uifabric/fabric-website-resources/lib/components/pages/MessageBarPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 const pageStyles: any = require('../PageStyles.module.scss');

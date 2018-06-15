@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Moved demo out of the codebase",
+      "comment": "ColorPicker: add aria-labels to textfields",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "ken@gizzar.com"
+  "email": "kakje@microsoft.com"
 }

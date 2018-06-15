@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/charting",
-      "comment": "Code format changes",
-      "type": "none"
+      "comment": "Remove redundant dependency",
+      "type": "patch"
     }
   ],
   "packageName": "@uifabric/charting",
-  "email": "mark@thedutchies.com"
+  "email": "cliff.koh@microsoft.com"
 }

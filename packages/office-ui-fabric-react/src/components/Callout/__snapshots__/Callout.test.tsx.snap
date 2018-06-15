@@ -55,7 +55,7 @@ exports[`Callout renders Callout correctly 1`] = `
       style={
         Object {
           "maxHeight": 750,
-          "overflowY": "auto",
+          "overflowY": undefined,
         }
       }
     >
