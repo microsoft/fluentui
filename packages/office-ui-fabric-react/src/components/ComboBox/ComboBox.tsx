@@ -1762,6 +1762,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         ev !== null &&
         ev.which !== KeyCodes.tab &&
         ev.which !== KeyCodes.escape &&
+        ev.which !== KeyCodes.left &&
+        ev.which !== KeyCodes.right &&
+        ev.which !== KeyCodes.up &&
+        ev.which !== KeyCodes.down &&
         (ev.which < 112 /* F1 */ || ev.which > 123) /* F12 */
       ) {
         ev.stopPropagation();
