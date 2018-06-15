@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
 import { BaseComponent, getId, KeyCodes, customizable, classNamesFunction, createRef } from '../../Utilities';
 
-import { IconButton, IButtonProps } from '../../Button';
+import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
 
 const getClassNames = classNamesFunction<ISearchBoxStyleProps, ISearchBoxStyles>();
@@ -13,14 +13,11 @@ export interface ISearchBoxState {
   id?: string;
 }
 
-const DefaultClearButtonProps: Partial<IButtonProps> = {
-  ariaLabel: 'Clear text'
-};
-
 @customizable('SearchBox', ['theme', 'styles'])
 export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
-  public static defaultProps: ISearchBoxProps = {
-    disableAnimation: false
+  public static defaultProps: Pick<ISearchBoxProps, 'disableAnimation' | 'clearButtonProps'> = {
+    disableAnimation: false,
+    clearButtonProps: { ariaLabel: 'Clear text' }
   };
 
   private _rootElement = createRef<HTMLDivElement>();
@@ -63,15 +60,11 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
       styles,
       labelText,
       theme,
+      clearButtonProps,
       disableAnimation
     } = this.props;
     const { value, hasFocus, id } = this.state;
     const placeholderValue = labelText === undefined ? placeholder : labelText;
-
-    const clearButtonProps = {
-      ...DefaultClearButtonProps,
-      ...this.props.clearButtonProps
-    };
 
     const classNames = getClassNames(styles!, {
       theme: theme!,
