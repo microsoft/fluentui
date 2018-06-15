@@ -105,6 +105,14 @@ describe('TextField', () => {
     expect(inputDOM.disabled).toEqual(true);
   });
 
+  it('should render a readonly input element', () => {
+    const renderedDOM: HTMLElement = renderIntoDocument(<TextField readOnly={true} />);
+
+    // Assert the input box is readOnly.
+    const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
+    expect(inputDOM.readOnly).toEqual(true);
+  });
+
   it('should render a value of 0 when given the number 0', () => {
     const renderedDOM: HTMLElement = renderIntoDocument(<TextField value={0 as any} />);
 

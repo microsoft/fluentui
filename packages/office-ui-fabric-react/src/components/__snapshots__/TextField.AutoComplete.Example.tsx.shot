@@ -49,6 +49,7 @@ exports[`Component Examples renders TextField.AutoComplete.Example.tsx correctly
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
+          readOnly={undefined}
           type="text"
           value=""
         />

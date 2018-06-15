@@ -47,6 +47,7 @@ exports[`MaskedTextField renders TextField correctly 1`] = `
         onMouseDown={[Function]}
         onMouseUp={[Function]}
         onPaste={[Function]}
+        readOnly={undefined}
         type="text"
         value="mask: (___) ___ - ____"
       />

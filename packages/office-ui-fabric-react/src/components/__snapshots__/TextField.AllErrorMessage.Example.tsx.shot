@@ -46,6 +46,7 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -79,6 +80,7 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
           onFocus={[Function]}
           onInput={[Function]}
           placeholder="Placeholder with error message"
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -134,6 +136,7 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -189,6 +192,7 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
+          readOnly={undefined}
           rows={4}
           value=""
         />

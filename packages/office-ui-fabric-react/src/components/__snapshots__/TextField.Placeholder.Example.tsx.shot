@@ -24,6 +24,7 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
           onFocus={[Function]}
           onInput={[Function]}
           placeholder="I am a placeholder."
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -51,6 +52,7 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
           onFocus={[Function]}
           onInput={[Function]}
           placeholder="I am disabled. "
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -77,6 +79,7 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
           onFocus={[Function]}
           onInput={[Function]}
           placeholder="I am required."
+          readOnly={undefined}
           required={true}
           type="text"
           value=""
@@ -104,6 +107,7 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
           onFocus={[Function]}
           onInput={[Function]}
           placeholder="I have an error message."
+          readOnly={undefined}
           type="text"
           value=""
         />
