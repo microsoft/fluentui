@@ -60,7 +60,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     directionalHint: DirectionalHint.bottomAutoEdge
   };
 
-  private _classNames: { [key in keyof ICalloutContentStyles]: string };
+  private _classNames: {[key in keyof ICalloutContentStyles]: string };
   private _didSetInitialFocus: boolean;
   private _hostElement = createRef<HTMLDivElement>();
   private _calloutElement = createRef<HTMLDivElement>();
