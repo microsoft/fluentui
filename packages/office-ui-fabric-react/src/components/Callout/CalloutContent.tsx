@@ -7,4 +7,4 @@ export const CalloutContent: (props: ICalloutProps) => JSX.Element = styled<
   ICalloutProps,
   ICalloutContentStyleProps,
   ICalloutContentStyles
->(CalloutContentBase, getStyles);
+>(CalloutContentBase, getStyles, undefined, { scope: 'CalloutContent' });

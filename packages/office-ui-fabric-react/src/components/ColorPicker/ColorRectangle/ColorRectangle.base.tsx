@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, assign, createRef, classNamesFunction, customizable } from '../../../Utilities';
+import { BaseComponent, assign, createRef, classNamesFunction } from '../../../Utilities';
 import {
   IColor,
   MAX_COLOR_SATURATION,
@@ -18,7 +18,6 @@ export interface IColorRectangleState {
   fullColorString?: string;
 }
 
-@customizable('ColorRectangle', ['theme'])
 export class ColorRectangleBase extends BaseComponent<IColorRectangleProps, IColorRectangleState> {
   public static defaultProps = {
     minSize: 220

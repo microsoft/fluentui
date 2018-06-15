@@ -7,4 +7,4 @@ export const ColorRectangle: (props: IColorRectangleProps) => JSX.Element = styl
   IColorRectangleProps,
   IColorRectangleStyleProps,
   IColorRectangleStyles
->(ColorRectangleBase, getStyles);
+>(ColorRectangleBase, getStyles, undefined, { scope: 'ColorRectangle' });

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Label } from '../../Label';
 import { IChoiceGroupOptionProps, ChoiceGroupOption, OnFocusCallback, OnChangeCallback } from './ChoiceGroupOption';
 import { IChoiceGroupOption, IChoiceGroupProps, IChoiceGroupStyleProps, IChoiceGroupStyles } from './ChoiceGroup.types';
-import { BaseComponent, customizable, classNamesFunction, createRef, getId } from '../../Utilities';
+import { BaseComponent, classNamesFunction, createRef, getId } from '../../Utilities';
 
 const getClassNames = classNamesFunction<IChoiceGroupStyleProps, IChoiceGroupStyles>();
 
@@ -13,7 +13,6 @@ export interface IChoiceGroupState {
   keyFocused?: string | number;
 }
 
-@customizable('ChoiceGroup', ['theme', 'styles'])
 export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGroupState> {
   public static defaultProps: IChoiceGroupProps = {
     options: []

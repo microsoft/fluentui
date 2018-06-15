@@ -7,4 +7,4 @@ export const ColorPicker: (props: IColorPickerProps) => JSX.Element = styled<
   IColorPickerProps,
   IColorPickerStyleProps,
   IColorPickerStyles
->(ColorPickerBase, getStyles);
+>(ColorPickerBase, getStyles, undefined, { scope: 'ColorPicker' });

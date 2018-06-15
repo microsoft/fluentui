@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, customizable, createRef } from '../../../Utilities';
+import { BaseComponent, classNamesFunction, createRef } from '../../../Utilities';
 import { IColorSliderProps, IColorSliderStyleProps, IColorSliderStyles } from './ColorSlider.types';
 
 const getClassNames = classNamesFunction<IColorSliderStyleProps, IColorSliderStyles>();
@@ -22,7 +22,6 @@ export interface IColorSliderState {
   currentValue?: number;
 }
 
-@customizable('ColorSlider', ['theme'])
 export class ColorSliderBase extends BaseComponent<IColorSliderProps, IColorSliderState> {
   public static defaultProps = {
     minValue: 0,

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, customizable } from '../../Utilities';
+import { BaseComponent, classNamesFunction } from '../../Utilities';
 import { IColorPickerProps, IColorPickerStyleProps, IColorPickerStyles } from './ColorPicker.types';
 import { TextField } from '../../TextField';
 import { ColorRectangle } from './ColorRectangle/ColorRectangle';
@@ -21,7 +21,6 @@ export interface IColorPickerState {
 
 const getClassNames = classNamesFunction<IColorPickerStyleProps, IColorPickerStyles>();
 
-@customizable('ColorPicker', ['theme'])
 export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPickerState> {
   public static defaultProps = {
     hexLabel: 'Hex',
