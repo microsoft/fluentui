@@ -21,9 +21,13 @@ export interface IButton {
   dismissMenu: () => void;
 
   /**
-   * If there is a menu associated with this button and it is visible, this will open the menu
+   * If there is a menu associated with this button and it is visible, this will open the menu.
+   * Params are optional overrides to the ones defined in 'menuProps' to apply to just this instance of opening the menu.
+   *
+   * @param shouldFocusOnContainer - override to the ContextualMenu shouldFocusOnContainer prop. BaseButton implementation defaults to 'undefined'.
+   * @param shouldFocusOnMount - override to the ContextualMenu shouldFocusOnMount prop. BaseButton implementation defaults to 'true'.
    */
-  openMenu: () => void;
+  openMenu: (shouldFocusOnContainer?: boolean, shouldFocusOnMount?: boolean) => void;
 }
 
 export interface IButtonProps
