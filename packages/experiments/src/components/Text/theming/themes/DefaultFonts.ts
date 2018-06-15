@@ -1,4 +1,4 @@
-import { DefaultFontStyles, FontWeights, IRawStyle } from '@uifabric/styling';
+import { DefaultFontStyles, FontWeights, IRawStyle } from '../../../../Styling';
 
 export const DefaultFonts = {
   medium: DefaultFontStyles.medium

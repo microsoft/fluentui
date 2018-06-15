@@ -7,6 +7,10 @@ export class TextBasicExample extends React.Component<{}, {}> {
   }
 
   public render(): JSX.Element {
-    return <Text weight="bold">Hello!</Text>;
+    return (
+      <Text weight="bold" family="monospace">
+        Hello!
+      </Text>
+    );
   }
 }
