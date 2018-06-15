@@ -150,7 +150,6 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
             }
         data-ktp-execute-target={undefined}
         data-lpignore={true}
-        disabled={true}
         id="input1"
         onBlur={[Function]}
         onChange={[Function]}

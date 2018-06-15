@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 14 Jun 2018 20:52:57 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Jun 2018 14:44:02 GMT and should not be manually modified.
+
+## 6.13.2
+Fri, 15 Jun 2018 14:44:02 GMT
+
+### Patches
+
+- Fix splitButton styling to not break existing usages and fix spinButton to make the contents focusable when disabled
+
+## 6.13.1
+Fri, 15 Jun 2018 10:18:10 GMT
+
+### Patches
+
+- Popup: overflowY set to undefined when not scroll
 
 ## 6.13.0
 Thu, 14 Jun 2018 20:52:57 GMT

@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Popup: overflowY set to undefined when not scroll",
+      "comment": "ColorPicker: add aria-labels to textfields",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "naethell@microsoft.com"
+  "email": "kakje@microsoft.com"
 }
