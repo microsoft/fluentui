@@ -3,7 +3,7 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { IPoint, IRectangle, IStyleFunctionOrObject } from '../../Utilities';
 import { ICalloutPositionedInfo } from '../../utilities/positioning';
 
-export interface ICallout {}
+export interface ICallout { }
 
 export interface ICalloutProps {
   /**
@@ -48,6 +48,12 @@ export interface ICalloutProps {
    * @default 0
    */
   calloutWidth?: number;
+
+  /**
+   * Custom width for callout including borders. If value is 0, no width is applied.
+   * @default 0
+   */
+  calloutMaxWidth?: number;
 
   /**
    * The background color of the Callout in hex format ie. #ffffff.
@@ -229,6 +235,11 @@ export interface ICalloutContentStyleProps {
    * Width of Callout beak
    */
   beakWidth?: number;
+
+  /**
+   * Max width for callout including borders.
+   */
+  calloutMaxWidth?: number;
 }
 
 export interface ICalloutContentStyles {
