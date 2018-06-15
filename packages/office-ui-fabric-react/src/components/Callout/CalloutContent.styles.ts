@@ -17,7 +17,7 @@ const GlobalClassNames = {
 };
 
 export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyles => {
-  const { theme, className, overflowYHidden, calloutWidth, beakWidth, backgroundColor } = props;
+  const { theme, className, overflowYHidden, calloutWidth, beakWidth, backgroundColor, calloutMaxWidth } = props;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -48,7 +48,8 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
       },
       focusClear(),
       className,
-      !!calloutWidth && { width: calloutWidth }
+      !!calloutWidth && { width: calloutWidth },
+      !!calloutMaxWidth && { maxWidth: calloutMaxWidth }
     ],
     beak: [
       classNames.beak,

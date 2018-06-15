@@ -1028,6 +1028,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       onRenderList,
       calloutProps,
       dropdownWidth,
+      dropdownMaxWidth,
       onRenderLowerContent = this._onRenderLowerContent,
       useComboBoxAsMenuWidth
     } = props;
@@ -1050,6 +1051,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             ? this._comboBoxWrapper.current.clientWidth + 2
             : dropdownWidth
         }
+        calloutMaxWidth={dropdownMaxWidth}
       >
         <div className={this._classNames.optionsContainerWrapper} ref={this._comboBoxMenu}>
           {(onRenderList as any)({ ...props }, this._onRenderList)}
@@ -1118,9 +1120,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const id = this._id;
     const isSelected: boolean = this._isOptionSelected(item.index);
     const optionStyles = this._getCurrentOptionStyles(item);
+    const optionClassNames = getComboBoxOptionClassNames(this._getCurrentOptionStyles(item));
     const checkboxStyles = () => {
       return optionStyles;
     };
+    const title = this._getPreviewText(item);
 
     const getOptionComponent = () => {
       return !this.props.multiSelect ? (
@@ -1139,10 +1143,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           aria-selected={isSelected ? 'true' : 'false'}
           ariaLabel={this._getPreviewText(item)}
           disabled={item.disabled}
+          title={title}
         >
           {' '}
           {
-            <span ref={isSelected ? this._selectedElement : undefined}>
+            <span className={optionClassNames.optionTextWrapper} ref={isSelected ? this._selectedElement : undefined}>
               {onRenderOption(item, this._onRenderOptionContent)}
             </span>
           }
@@ -1161,6 +1166,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           role="option"
           aria-selected={isSelected ? 'true' : 'false'}
           checked={isSelected}
+          title={title}
         >
           {onRenderOption(item, this._onRenderOptionContent)}
         </Checkbox>
