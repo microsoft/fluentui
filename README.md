@@ -162,7 +162,7 @@ To build and run tests for all packages in the repo, you can run `npm run build`
 
 To build individual packages within the `packages/*/` folders, you can use `npm run build` in each individually. Note that because the packages are symlinked together, you must manage building dependencies in the right order, or use the `rush` tool to build to the specific package you want. (See advanced tips below.)
 
-## Note for Windows Users
+## Note for Windows Developers on npm 6.x
 
 Due to a known bug in #5174, Windows users who are using npm 6.1.0+ should use one of the following workaround:
 
