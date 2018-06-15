@@ -5,5 +5,7 @@ import { getStyles } from './ResizeGroup.styles';
 
 export const ResizeGroup = styled<IResizeGroupProps, IResizeGroupStyleProps, IResizeGroupStyles>(
   ResizeGroupBase,
-  getStyles
+  getStyles,
+  undefined,
+  { scope: 'ResizeGroup' }
 );

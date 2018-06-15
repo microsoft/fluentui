@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, customizable } from '../../Utilities';
+import { BaseComponent, classNamesFunction } from '../../Utilities';
 import { IKeytipProps, IKeytipStyleProps, IKeytipStyles } from './Keytip.types';
 
 /**
@@ -9,7 +9,6 @@ import { IKeytipProps, IKeytipStyleProps, IKeytipStyles } from './Keytip.types';
  * @class KeytipContent
  * @extends {BaseComponent<IKeytipProps>}
  */
-@customizable('KeytipContent', ['theme', 'styles'])
 export class KeytipContentBase extends BaseComponent<IKeytipProps, {}> {
   public render(): JSX.Element {
     const { content, styles, theme, disabled, visible } = this.props;

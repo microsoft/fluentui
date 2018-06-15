@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, customizable } from '../../../Utilities';
+import { BaseComponent, classNamesFunction } from '../../../Utilities';
 import { IShimmerLineProps, IShimmerLineStyleProps, IShimmerLineStyles } from './ShimmerLine.types';
 
 const getClassNames = classNamesFunction<IShimmerLineStyleProps, IShimmerLineStyles>();
 
-@customizable('ShimmerLine', ['theme'])
 export class ShimmerLineBase extends BaseComponent<IShimmerLineProps, {}> {
   private _classNames: { [key in keyof IShimmerLineStyles]: string };
 

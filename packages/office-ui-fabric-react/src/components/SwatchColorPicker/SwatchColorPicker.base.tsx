@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Async, BaseComponent, classNamesFunction, customizable, findIndex, KeyCodes, getId } from '../../Utilities';
+import { Async, BaseComponent, classNamesFunction, findIndex, KeyCodes, getId } from '../../Utilities';
 import {
   ISwatchColorPicker,
   ISwatchColorPickerProps,
@@ -16,7 +16,6 @@ export interface ISwatchColorPickerState {
 
 const getClassNames = classNamesFunction<ISwatchColorPickerStyleProps, ISwatchColorPickerStyles>();
 
-@customizable('SwatchColorPicker', ['theme', 'styles'])
 export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps, ISwatchColorPickerState>
   implements ISwatchColorPicker {
   public static defaultProps = {

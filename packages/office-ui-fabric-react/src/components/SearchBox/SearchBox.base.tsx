@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
-import { BaseComponent, getId, KeyCodes, customizable, classNamesFunction, createRef } from '../../Utilities';
+import { BaseComponent, getId, KeyCodes, classNamesFunction, createRef } from '../../Utilities';
 
 import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
@@ -13,7 +13,6 @@ export interface ISearchBoxState {
   id?: string;
 }
 
-@customizable('SearchBox', ['theme', 'styles'])
 export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
   public static defaultProps: ISearchBoxProps = {
     disableAnimation: false

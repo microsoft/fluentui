@@ -8,5 +8,7 @@ import { getStyles } from './PersonaPresence.styles';
  */
 export const PersonaPresence = styled<IPersonaPresenceProps, IPersonaPresenceStyleProps, IPersonaPresenceStyles>(
   PersonaPresenceBase,
-  getStyles
+  getStyles,
+  undefined,
+  { scope: 'PersonaPresence' }
 );

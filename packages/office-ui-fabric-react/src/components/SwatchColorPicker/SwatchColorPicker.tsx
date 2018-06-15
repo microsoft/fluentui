@@ -11,4 +11,4 @@ export const SwatchColorPicker: (props: ISwatchColorPickerProps) => JSX.Element 
   ISwatchColorPickerProps,
   ISwatchColorPickerStyleProps,
   ISwatchColorPickerStyles
->(SwatchColorPickerBase, getStyles);
+>(SwatchColorPickerBase, getStyles, undefined, { scope: 'SwatchColorPicker' });

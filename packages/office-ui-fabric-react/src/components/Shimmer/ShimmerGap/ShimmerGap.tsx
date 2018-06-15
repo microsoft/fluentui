@@ -3,4 +3,9 @@ import { IShimmerGapProps, IShimmerGapStyleProps, IShimmerGapStyles } from './Sh
 import { ShimmerGapBase } from './ShimmerGap.base';
 import { getStyles } from './ShimmerGap.styles';
 
-export const ShimmerGap = styled<IShimmerGapProps, IShimmerGapStyleProps, IShimmerGapStyles>(ShimmerGapBase, getStyles);
+export const ShimmerGap = styled<IShimmerGapProps, IShimmerGapStyleProps, IShimmerGapStyles>(
+  ShimmerGapBase,
+  getStyles,
+  undefined,
+  { scope: 'ShimmerGap' }
+);

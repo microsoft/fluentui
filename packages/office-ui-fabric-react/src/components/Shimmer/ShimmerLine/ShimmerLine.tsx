@@ -5,5 +5,7 @@ import { getStyles } from './ShimmerLine.styles';
 
 export const ShimmerLine = styled<IShimmerLineProps, IShimmerLineStyleProps, IShimmerLineStyles>(
   ShimmerLineBase,
-  getStyles
+  getStyles,
+  undefined,
+  { scope: 'ShimmerLine' }
 );

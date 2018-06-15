@@ -3,4 +3,6 @@ import { IOverlayProps, IOverlayStyleProps, IOverlayStyles } from './Overlay.typ
 import { OverlayBase } from './Overlay.base';
 import { getStyles } from './Overlay.styles';
 
-export const Overlay = styled<IOverlayProps, IOverlayStyleProps, IOverlayStyles>(OverlayBase, getStyles);
+export const Overlay = styled<IOverlayProps, IOverlayStyleProps, IOverlayStyles>(OverlayBase, getStyles, undefined, {
+  scope: 'Overlay'
+});

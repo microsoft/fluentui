@@ -4,7 +4,6 @@ import {
   BaseComponent,
   buttonProperties,
   classNamesFunction,
-  customizable,
   getNativeProps,
   createRef
 } from '../../Utilities';
@@ -13,7 +12,6 @@ import { KeytipData } from '../../KeytipData';
 
 const getClassNames = classNamesFunction<ILinkStyleProps, ILinkStyles>();
 
-@customizable('Link', ['theme', 'getStyles'])
 export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
   private _link = createRef<HTMLAnchorElement | HTMLButtonElement | null>();
 

@@ -1,12 +1,5 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  classNamesFunction,
-  customizable,
-  DelayedRender,
-  getNativeProps,
-  divProperties
-} from '../../Utilities';
+import { BaseComponent, classNamesFunction, DelayedRender, getNativeProps, divProperties } from '../../Utilities';
 import { IShimmerProps, IShimmerStyleProps, IShimmerStyles } from './Shimmer.types';
 import { ShimmerElementsGroup } from './ShimmerElementsGroup/ShimmerElementsGroup';
 
@@ -21,7 +14,6 @@ const TRANSITION_ANIMATION_INTERVAL = 200; /* ms */
 
 const getClassNames = classNamesFunction<IShimmerStyleProps, IShimmerStyles>();
 
-@customizable('Shimmer', ['theme'])
 export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
   public static defaultProps: IShimmerProps = {
     isDataLoaded: false

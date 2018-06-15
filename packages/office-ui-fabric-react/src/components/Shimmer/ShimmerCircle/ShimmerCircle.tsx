@@ -5,5 +5,7 @@ import { ShimmerCircleBase } from './ShimmerCircle.base';
 
 export const ShimmerCircle = styled<IShimmerCircleProps, IShimmerCircleStyleProps, IShimmerCircleStyles>(
   ShimmerCircleBase,
-  getStyles
+  getStyles,
+  undefined,
+  { scope: 'ShimmerCircle' }
 );
