@@ -1670,8 +1670,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         // If we get here and we got either and ALT key
         // or meta key, let the event propagate
         if ((ev.keyCode === KeyCodes.alt || ev.key === 'Meta') /* && isOpen */) {
-          // this._setOpenStateAndFocusOnClose(!isOpen, true /* focusInputAfterClose */);
-          // // this._processingExpandCollapseKeyOnly = true;
           return;
         }
 
