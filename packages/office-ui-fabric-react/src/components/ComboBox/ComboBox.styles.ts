@@ -126,11 +126,11 @@ export const getOptionStyles = memoizeFunction(
         maxWidth: '100%',
         wordWrap: 'break-word',
         overflowWrap: 'break-word',
-        margin: '1px'
+        margin: '1px',
+        display: 'inline-block'
       },
       optionTextWrapper: {
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
+        maxWidth: '100%'
       }
     };
 
