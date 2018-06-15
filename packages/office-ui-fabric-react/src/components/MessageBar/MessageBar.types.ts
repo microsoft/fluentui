@@ -76,9 +76,6 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IMessageBarStyleProps, IMessageBarStyles>;
-
-  // Temporary for debugging
-  useNewStyles?: boolean;
 }
 
 export interface IMessageBarStyleProps {

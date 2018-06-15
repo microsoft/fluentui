@@ -1,4 +1,4 @@
-import { IStyle, HighContrastSelector, ScreenWidthMaxSmall, getScreenSelector } from '../../Styling';
+import { IStyle, HighContrastSelector, ScreenWidthMaxSmall, getScreenSelector, getFocusStyle } from '../../Styling';
 import { IMessageBarStyleProps, IMessageBarStyles, MessageBarType } from './MessageBar.types';
 
 export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
@@ -26,7 +26,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
   };
 
   const severeWarningStyle = {
-    background: '#fed9cc',
+    background: semanticColors.blockingBackground,
     selectors: {
       '& .icon': {
         color: semanticColors.errorText
@@ -35,7 +35,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
   };
 
   const successStyle = {
-    background: '#dff6dd',
+    background: semanticColors.successBackground,
     selectors: {
       '& .icon': {
         color: palette.green
@@ -44,7 +44,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
   };
 
   const warningStyle = {
-    background: '#fff4ce'
+    background: semanticColors.warningBackground
   };
 
   const dismissalAndExpandStyle: IStyle = {
@@ -63,28 +63,6 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
       },
       [HighContrastSelector]: {
         MsHighContrastAdjust: 'none'
-      },
-      // trying to replicate the focus-border mixin - not working
-      '&::-moz-focus-inner': {
-        border: 0
-      },
-      '&': {
-        outline: 'transparent',
-        position: 'relative'
-      },
-      ':global(.ms-Fabric--isFocusVisible)': {
-        selectors: {
-          '&:focus:after': {
-            content: '',
-            position: 'absolute',
-            top: 0,
-            right: 0,
-            bottom: 0,
-            left: 0,
-            pointerEvents: 'none',
-            border: `1px solid ${palette.neutralSecondary}`
-          }
-        }
       }
     }
   };
@@ -160,9 +138,6 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
           }
         }
       },
-      isMultiline && {
-        flexDirection: 'row'
-      },
       !isMultiline && {
         selectors: {
           [SmallScreenSelector]: {
@@ -170,7 +145,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
           }
         }
       },
-      truncated && {
+      (truncated || isMultiline) && {
         flexDirection: 'row'
       }
     ],
@@ -267,8 +242,8 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         whiteSpace: 'pre-wrap'
       }
     ],
-    dismissal: ['ms-MessageBar-dismissal', dismissalAndExpandStyle],
-    expand: ['ms-MessageBar-expand', dismissalAndExpandStyle],
+    dismissal: ['ms-MessageBar-dismissal', dismissalAndExpandStyle, getFocusStyle(theme)],
+    expand: ['ms-MessageBar-expand', dismissalAndExpandStyle, getFocusStyle(theme)],
     dismissSingleLine: [
       'ms-MessageBar-dismissSingleLine',
       {

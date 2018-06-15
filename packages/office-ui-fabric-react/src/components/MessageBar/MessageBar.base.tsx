@@ -1,10 +1,8 @@
 import * as React from 'react';
-import { BaseComponent, DelayedRender, css, getId, customizable, classNamesFunction } from '../../Utilities';
+import { BaseComponent, DelayedRender, getId, customizable, classNamesFunction } from '../../Utilities';
 import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
 import { IMessageBarProps, IMessageBarStyleProps, IMessageBarStyles, MessageBarType } from './MessageBar.types';
-import * as stylesImport from './MessageBar.scss';
-const styles: any = stylesImport;
 
 const getClassNames = classNamesFunction<IMessageBarStyleProps, IMessageBarStyles>();
 
@@ -53,39 +51,18 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
   }
 
   private _getActionsDiv(): JSX.Element | null {
-    const myClass = this.props.useNewStyles
-      ? this._classNames.actions
-      : this.props.isMultiline
-        ? 'ms-MessageBar-actions ' + styles.actions
-        : 'ms-MessageBar-actionsSingleLine ' + styles.actionsSingleLine;
     if (this.props.actions) {
-      return <div className={myClass}>{this.props.actions}</div>;
+      return <div className={this._classNames.actions}>{this.props.actions}</div>;
     }
     return null;
   }
 
-  private _getClassName(): string {
-    return css(this.props.className, 'ms-MessageBar', styles.root, {
-      ['ms-MessageBar ' + styles.root]: this.props.messageBarType === MessageBarType.info,
-      ['ms-MessageBar--error ' + styles.rootIsError]: this.props.messageBarType === MessageBarType.error,
-      ['ms-MessageBar--blocked ' + styles.rootIsBlocked]:
-        this.props.messageBarType === MessageBarType.blocked || this.props.messageBarType === MessageBarType.remove, // TODO remove deprecated value at >= 1.0.0
-      ['ms-MessageBar--severeWarning ' + styles.rootIsSevereWarning]:
-        this.props.messageBarType === MessageBarType.severeWarning,
-      ['ms-MessageBar--success ' + styles.rootIsSuccess]: this.props.messageBarType === MessageBarType.success,
-      ['ms-MessageBar--warning ' + styles.rootIsWarning]: this.props.messageBarType === MessageBarType.warning
-    });
-  }
-
   private _getDismissDiv(): JSX.Element | null {
-    const dismissalClassName = this.props.useNewStyles
-      ? this._classNames.dismissal
-      : css('ms-MessageBar-dismissal', styles.dismissal);
     if (this.props.onDismiss) {
       return (
         <IconButton
           disabled={false}
-          className={dismissalClassName}
+          className={this._classNames.dismissal}
           onClick={this.props.onDismiss}
           iconProps={{ iconName: 'Clear' }}
           ariaLabel={this.props.dismissButtonAriaLabel}
@@ -96,28 +73,19 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
   }
 
   private _getDismissSingleLine(): JSX.Element | null {
-    const dismissSingleLineClassName = this.props.useNewStyles
-      ? this._classNames.dismissSingleLine
-      : css('ms-MessageBar-dismissSingleLine', styles.dismissSingleLine);
     if (this.props.onDismiss) {
-      return <div className={dismissSingleLineClassName}>{this._getDismissDiv()}</div>;
+      return <div className={this._classNames.dismissSingleLine}>{this._getDismissDiv()}</div>;
     }
     return null;
   }
 
   private _getExpandSingleLine(): JSX.Element | null {
-    const myClass = this.props.useNewStyles
-      ? this._classNames.expandSingleLine
-      : css('ms-MessageBar-expandSingleLine', styles.expandSingleLine);
-
-    const iconClass = this.props.useNewStyles ? this._classNames.expand : css('ms-MessageBar-expand', styles.expand);
-
     if (!this.props.actions && this.props.truncated) {
       return (
-        <div className={myClass}>
+        <div className={this._classNames.expandSingleLine}>
           <IconButton
             disabled={false}
-            className={iconClass}
+            className={this._classNames.expand}
             onClick={this._onClick}
             iconProps={{ iconName: this.state.expandSingleLine ? 'DoubleChevronUp' : 'DoubleChevronDown' }}
             ariaLabel={this.props.overflowButtonAriaLabel}
@@ -129,31 +97,17 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
   }
 
   private _getIconSpan(): JSX.Element {
-    const myClass = this.props.useNewStyles ? this._classNames.icon : css('ms-MessageBar-icon', styles.icon);
     return (
-      <div className={myClass}>
+      <div className={this._classNames.icon}>
         <Icon iconName={this.ICON_MAP[this.props.messageBarType!]} />
       </div>
     );
   }
 
   private _renderMultiLine(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
-    const rootClass = this.props.useNewStyles
-      ? this._classNames.root
-      : css(
-          this._getClassName(),
-          'ms-MessageBar-multiline',
-          styles.multiLine,
-          this.props.onDismiss && styles.dismissalMultiLine
-        );
-
-    const contentClass = this.props.useNewStyles
-      ? this._classNames.content
-      : css(styles.content, 'ms-MessageBar-content');
-
     return (
-      <div className={rootClass} role="status" aria-live={this._getAnnouncementPriority()}>
-        <div className={contentClass}>
+      <div className={this._classNames.root} role="status" aria-live={this._getAnnouncementPriority()}>
+        <div className={this._classNames.content}>
           {this._getIconSpan()}
           {this._renderInnerText()}
           {this._getDismissDiv()}
@@ -164,24 +118,9 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
   }
 
   private _renderSingleLine(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
-    const rootClass = this.props.useNewStyles
-      ? this._classNames.root
-      : css(
-          this._getClassName(),
-          'ms-MessageBar-singleline',
-          styles.singleLine,
-          this.props.onDismiss && 'ms-MessageBar-dismissalSingleLine',
-          this.props.truncated && 'ms-MessageBar-expandingSingleLine',
-          this.props.truncated && styles.expandingSingleLine
-        );
-
-    const contentClass = this.props.useNewStyles
-      ? this._classNames.content
-      : css(styles.content, 'ms-MessageBar-content');
-
     return (
-      <div className={rootClass}>
-        <div className={contentClass}>
+      <div className={this._classNames.root}>
+        <div className={this._classNames.content}>
           {this._getIconSpan()}
           {this._renderInnerText()}
           {this._getExpandSingleLine()}
@@ -195,24 +134,9 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
   private _renderInnerText(): JSX.Element {
     this._classNames = this._getClassNames();
 
-    const newClass = this._classNames.text;
-    const textClass = this.props.useNewStyles
-      ? newClass
-      : css(
-          'ms-MessageBar-text',
-          styles.text,
-          this.props.actions && styles.multiLineWithActions,
-          !this.props.onDismiss && styles.noDismissButton,
-          this.state.expandSingleLine && styles.expandSingleLine
-        );
-
-    const innerTextClass = this.props.useNewStyles
-      ? this._classNames.innerText
-      : css('ms-MessageBar-innerText ' + styles.innerText);
-
     return (
-      <div className={textClass} id={this.state.labelId}>
-        <span className={innerTextClass} role="status" aria-live={this._getAnnouncementPriority()}>
+      <div className={this._classNames.text} id={this.state.labelId}>
+        <span className={this._classNames.innerText} role="status" aria-live={this._getAnnouncementPriority()}>
           <DelayedRender>
             <span>{this.props.children}</span>
           </DelayedRender>
