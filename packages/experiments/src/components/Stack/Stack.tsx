@@ -29,13 +29,7 @@ export interface IStackProps {
 
   gap?: number;
   align?: 'auto' | 'center' | 'start' | 'baseline' | 'stretch' | 'end';
-  justify?:
-  | 'start'
-  | 'end'
-  | 'center'
-  | 'space-between'
-  | 'space-around'
-  | 'space-evenly';
+  justify?: 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly';
 
   maxWidth?: number | string;
   padding?: number | string;
@@ -60,19 +54,8 @@ const view = (props: IViewProps<IStackProps, IStackStyles>) => {
   return <RootType className={classNames.root}>{children}</RootType>;
 };
 
-const styles = (
-  props: IStyleProps<IStackProps, IStackStyles>
-): IStackStyles => {
-  const {
-    fill,
-    align,
-    justify,
-    maxWidth,
-    vertical,
-    grow,
-    margin,
-    padding
-  } = props;
+const styles = (props: IStyleProps<IStackProps, IStackStyles>): IStackStyles => {
+  const { fill, align, justify, maxWidth, vertical, grow, margin, padding } = props;
 
   return {
     root: [
@@ -101,25 +84,30 @@ const styles = (
   };
 };
 
-export const Stack: React.StatelessComponent<IStackProps & {
-  styles?: Partial<IStackStyles> |
-  ((props: IPropsWithStyles<IStackProps, IStackStyles>) => Partial<IStackStyles>) |
-  undefined
-}> & {
-    Item: React.StatelessComponent<IStackAreaProps & {
-      styles?: Partial<IStackAreaStyles> |
-      ((props: IPropsWithStyles<IStackAreaProps, IStackAreaStyles>) => Partial<IStackAreaStyles>)
-      | undefined
-    }>
-  } =
-  createComponent({
-    displayName: 'Stack',
-    styles,
-    view,
-    statics: {
-      Item: StackItem,
-      defaultProps: {}
+export const Stack: React.StatelessComponent<
+  IStackProps & {
+    styles?:
+      | Partial<IStackStyles>
+      | ((props: IPropsWithStyles<IStackProps, IStackStyles>) => Partial<IStackStyles>)
+      | undefined;
+  }
+> & {
+  Item: React.StatelessComponent<
+    IStackAreaProps & {
+      styles?:
+        | Partial<IStackAreaStyles>
+        | ((props: IPropsWithStyles<IStackAreaProps, IStackAreaStyles>) => Partial<IStackAreaStyles>)
+        | undefined;
     }
-  });
+  >;
+} = createComponent({
+  displayName: 'Stack',
+  styles,
+  view,
+  statics: {
+    Item: StackItem,
+    defaultProps: {}
+  }
+});
 
 export default Stack;

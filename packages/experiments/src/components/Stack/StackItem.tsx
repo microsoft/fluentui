@@ -8,15 +8,14 @@ export interface IStackAreaStyles {
 }
 
 const alignMap: any = {
-  'start': 'flex-start',
-  'end': 'flex-end'
+  start: 'flex-start',
+  end: 'flex-end'
 };
 const justifyMap: any = {};
 
-
 // Inputs to the component
 export interface IStackAreaProps {
-  renderAs?: string | React.ReactType<IStackAreaProps>,
+  renderAs?: string | React.ReactType<IStackAreaProps>;
   children?: React.ReactNode;
 
   gap?: number;
@@ -33,13 +32,10 @@ const view = (props: IViewProps<IStackAreaProps, IStackAreaStyles>) => {
 
   const child = React.Children.only(props.children);
 
-  return React.cloneElement(
-    child,
-    {
-      className: [classNames.root, child.props.classNames].join(' '),
-      ...child.props
-    }
-  );
+  return React.cloneElement(child, {
+    className: [classNames.root, child.props.classNames].join(' '),
+    ...child.props
+  });
 
   // return (
   //   <RootType className={classNames.root}>
@@ -69,14 +65,14 @@ const styles = (props: IStyleProps<IStackAreaProps, IStackAreaStyles>): IStackAr
 };
 
 export const FlexArea: React.StatelessComponent<IStackAreaProps> & {
-  styles?: Partial<IStackAreaStyles> |
-  ((props: IPropsWithStyles<IStackAreaProps, IStackAreaStyles>) => Partial<IStackAreaStyles>) |
-  undefined
-} =
-  createComponent<IStackAreaProps, IStackAreaStyles>({
-    displayName: 'StackArea',
-    styles,
-    view
-  });
+  styles?:
+  | Partial<IStackAreaStyles>
+  | ((props: IPropsWithStyles<IStackAreaProps, IStackAreaStyles>) => Partial<IStackAreaStyles>)
+  | undefined;
+} = createComponent<IStackAreaProps, IStackAreaStyles>({
+  displayName: 'StackArea',
+  styles,
+  view
+});
 
 export default FlexArea;
