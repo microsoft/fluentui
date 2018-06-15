@@ -80,7 +80,7 @@ const itemsWithIcons: IContextualMenuItem[] = [
     iconProps: {
       iconName: 'MusicInCollectionFill'
     },
-    text: 'Music'
+    text: 'Music',
   }
 ];
 
@@ -132,9 +132,9 @@ const itemsWithSubmenu: IContextualMenuItem[] = [
         {
           key: 'calendarEvent',
           text: 'Calendar event',
-          title: 'Create a calendar event'
+          title: 'Create a calendar event',
         }
-      ]
+      ],
     },
     text: 'New'
   },
@@ -144,11 +144,11 @@ const itemsWithSubmenu: IContextualMenuItem[] = [
       items: [
         {
           key: 'sharetotwitter',
-          text: 'Share to Twitter'
+          text: 'Share to Twitter',
         },
         {
           key: 'sharetofacebook',
-          text: 'Share to Facebook'
+          text: 'Share to Facebook',
         },
         {
           key: 'sharetoemail',
@@ -158,17 +158,17 @@ const itemsWithSubmenu: IContextualMenuItem[] = [
               {
                 key: 'sharetooutlook_1',
                 text: 'Share to Outlook',
-                title: 'Share to Outlook'
+                title: 'Share to Outlook',
               },
               {
                 key: 'sharetogmail_1',
                 text: 'Share to Gmail',
-                title: 'Share to Gmail'
+                title: 'Share to Gmail',
               }
-            ]
-          }
-        }
-      ]
+            ],
+          },
+        },
+      ],
     },
     text: 'Share'
   }
@@ -185,11 +185,11 @@ const itemsWithHeaders: IContextualMenuItem[] = [
       items: [
         {
           key: 'newItem',
-          text: 'New'
+          text: 'New',
         },
         {
           key: 'deleteItem',
-          text: 'Delete'
+          text: 'Delete',
         }
       ]
     }
@@ -217,40 +217,38 @@ const itemsWithSplitButtonSubmenu: IContextualMenuItem[] = [
   {
     key: 'share',
     split: true,
-    // tslint:disable-next-line:no-empty
-    onClick: () => {},
+    onClick: () => { },
     subMenuProps: {
       items: [
         {
           key: 'sharetotwitter',
-          text: 'Share to Twitter'
+          text: 'Share to Twitter',
         },
         {
           key: 'sharetofacebook',
-          text: 'Share to Facebook'
+          text: 'Share to Facebook',
         },
         {
           key: 'sharetoemail',
           split: true,
-          // tslint:disable-next-line:no-empty
-          onClick: () => {},
+          onClick: () => { },
           text: 'Share to Email',
           subMenuProps: {
             items: [
               {
                 key: 'sharetooutlook_1',
                 text: 'Share to Outlook',
-                title: 'Share to Outlook'
+                title: 'Share to Outlook',
               },
               {
                 key: 'sharetogmail_1',
                 text: 'Share to Gmail',
-                title: 'Share to Gmail'
+                title: 'Share to Gmail',
               }
-            ]
-          }
-        }
-      ]
+            ],
+          },
+        },
+      ],
     },
     text: 'Share'
   }
@@ -260,21 +258,46 @@ storiesOf('ContextualMenu', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
-      steps={new Screener.Steps()
+      steps={ new Screener.Steps()
         .snapshot('default', { cropTo: '.ms-Layer' })
         .hover('.ms-ContextualMenu-linkContent')
         .snapshot('hover', { cropTo: '.ms-Layer' })
         .click('.ms-ContextualMenu-linkContent')
         .hover('.ms-ContextualMenu-linkContent')
         .snapshot('click', { cropTo: '.ms-Layer' })
-        .end()}
+        .end()
+      }
     >
-      {story()}
+      { story() }
     </Screener>
   ))
-  .add('Root', () => <ContextualMenu items={items} />)
-  .add('With icons', () => <ContextualMenu items={itemsWithIcons} />)
-  .add('With secondaryText', () => <ContextualMenu items={itemsWithSecondaryText} />)
-  .add('With submenu', () => <ContextualMenu items={itemsWithSubmenu} />)
-  .add('With headers', () => <ContextualMenu items={itemsWithHeaders} />)
-  .add('With split button submenu', () => <ContextualMenu items={itemsWithSplitButtonSubmenu} />);
+  .add('Root', () => (
+    <ContextualMenu
+      items={ items }
+    />
+  ))
+  .add('With icons', () => (
+    <ContextualMenu
+      items={ itemsWithIcons }
+    />
+  ))
+  .add('With secondaryText', () => (
+    <ContextualMenu
+      items={ itemsWithSecondaryText }
+    />
+  ))
+  .add('With submenu', () => (
+    <ContextualMenu
+      items={ itemsWithSubmenu }
+    />
+  ))
+  .add('With headers', () => (
+    <ContextualMenu
+      items={ itemsWithHeaders }
+    />
+  ))
+  .add('With split button submenu', () => (
+    <ContextualMenu
+      items={ itemsWithSplitButtonSubmenu }
+    />
+  ));

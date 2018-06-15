@@ -5,28 +5,32 @@ import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
 import { OverflowSet, IconButton } from 'office-ui-fabric-react';
 
-const onRenderItem = item => item.name;
-const onRenderOverflowButton = overflowItems => {
-  return <IconButton menuProps={{ items: overflowItems! }} />;
+const onRenderItem = (item) => item.name;
+const onRenderOverflowButton = (overflowItems) => {
+  return (
+    <IconButton
+      menuProps={ { items: overflowItems! } }
+    />
+  );
 };
 
 storiesOf('OverflowSet', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
-      steps={new Screener.Steps()
+      steps={ new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .click('.ms-Button-flexContainer')
         .hover('.ms-Button-flexContainer')
         .snapshot('default')
-        .end()}
+        .end()
+      }
     >
-      {story()}
+      { story() }
     </Screener>
-  ))
-  .add('Root', () => (
+  )).add('Root', () => (
     <OverflowSet
-      items={[
+      items={ [
         {
           key: 'item1',
           name: 'Link 1'
@@ -39,8 +43,8 @@ storiesOf('OverflowSet', module)
           key: 'item3',
           name: 'Link 3'
         }
-      ]}
-      overflowItems={[
+      ] }
+      overflowItems={ [
         {
           key: 'item4',
           name: 'Overflow Link 1'
@@ -49,21 +53,28 @@ storiesOf('OverflowSet', module)
           key: 'item5',
           name: 'Overflow Link 2'
         }
-      ]}
-      onRenderOverflowButton={onRenderOverflowButton}
-      onRenderItem={onRenderItem}
+      ]
+      }
+      onRenderOverflowButton={ onRenderOverflowButton }
+      onRenderItem={ onRenderItem }
     />
   ));
 
 storiesOf('OverflowSet variant', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
-    <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
-  ))
-  .add('Vertical Direction', () => (
+    <Screener
+      steps={ new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .end()
+      }
+    >
+      { story() }
+    </Screener>
+  )).add('Vertical Direction', () => (
     <OverflowSet
       vertical
-      items={[
+      items={ [
         {
           key: 'item1',
           name: 'Link 1'
@@ -76,8 +87,8 @@ storiesOf('OverflowSet variant', module)
           key: 'item3',
           name: 'Link 3'
         }
-      ]}
-      overflowItems={[
+      ] }
+      overflowItems={ [
         {
           key: 'item4',
           name: 'Overflow Link 1'
@@ -86,8 +97,9 @@ storiesOf('OverflowSet variant', module)
           key: 'item5',
           name: 'Overflow Link 2'
         }
-      ]}
-      onRenderOverflowButton={onRenderOverflowButton}
-      onRenderItem={onRenderItem}
+      ]
+      }
+      onRenderOverflowButton={ onRenderOverflowButton }
+      onRenderItem={ onRenderItem }
     />
   ));
