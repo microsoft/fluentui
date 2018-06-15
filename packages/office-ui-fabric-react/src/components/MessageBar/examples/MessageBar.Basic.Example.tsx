@@ -10,7 +10,7 @@ const log = (text: string): (() => void) => (): void => console.log(text);
 export const MessageBarBasicExample = () => (
   <div className="ms-BasicMessageBarsExample">
     <Label>Info/Default MessageBar</Label>
-    <MessageBar isMultiline={false}>
+    <MessageBar>
       Info lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit.{' '}
       <Link href="www.bing.com">Visit our website.</Link>
     </MessageBar>
