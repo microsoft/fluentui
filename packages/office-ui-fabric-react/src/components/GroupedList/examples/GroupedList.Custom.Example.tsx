@@ -24,7 +24,8 @@ export class GroupedListCustomExample extends React.Component {
         onRenderCell={this._onRenderCell}
         groupProps={{
           onRenderHeader: this._onRenderHeader,
-          onRenderFooter: this._onRenderFooter
+          onRenderFooter: this._onRenderFooter,
+          headerProps: { expandCollapseButtonProps: { 'aria-label': 'hello' } }
         }}
         groups={_groups}
       />

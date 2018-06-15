@@ -262,4 +262,7 @@ export interface IGroupDividerProps {
 
   /** Override which allows the caller to provider a custom title. */
   onRenderTitle?: IRenderFunction<IGroupDividerProps>;
+
+  /** Props for expand/collapse button */
+  expandCollapseButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
 }
