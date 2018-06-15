@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FocusZonePage } from '@uifabric/demo/lib/components/pages/FocusZonePage';
+import { FocusZonePage } from '@uifabric/fabric-website-resources/lib/components/pages/FocusZonePage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 const pageStyles: any = require('../PageStyles.module.scss');

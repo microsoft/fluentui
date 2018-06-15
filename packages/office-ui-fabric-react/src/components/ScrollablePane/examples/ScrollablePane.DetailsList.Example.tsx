@@ -7,9 +7,9 @@ import {
   Selection,
   IColumn
 } from 'office-ui-fabric-react/lib/DetailsList';
-import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { IRenderFunction, createRef } from 'office-ui-fabric-react/lib/Utilities';
 import { TooltipHost, ITooltipHostProps } from 'office-ui-fabric-react/lib/Tooltip';
-import { ScrollablePane } from 'office-ui-fabric-react/lib/ScrollablePane';
+import { ScrollablePane, IScrollablePane } from 'office-ui-fabric-react/lib/ScrollablePane';
 import { Sticky, StickyPositionType } from 'office-ui-fabric-react/lib/Sticky';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 
@@ -47,6 +47,7 @@ export class ScrollablePaneDetailsListExample extends React.Component<
     selectionDetails: string;
   }
 > {
+  private _scrollablePane = createRef<IScrollablePane>();
   private _selection: Selection;
 
   constructor(props: {}) {
@@ -84,7 +85,7 @@ export class ScrollablePaneDetailsListExample extends React.Component<
           maxHeight: 'inherit'
         }}
       >
-        <ScrollablePane>
+        <ScrollablePane componentRef={this._scrollablePane}>
           <Sticky stickyPosition={StickyPositionType.Header}>{selectionDetails}</Sticky>
           <TextField
             label="Filter by name:"
@@ -102,6 +103,7 @@ export class ScrollablePaneDetailsListExample extends React.Component<
               columns={_columns}
               setKey="set"
               layoutMode={DetailsListLayoutMode.fixedColumns}
+              onScroll={this._onScroll}
               onRenderDetailsHeader={
                 // tslint:disable-next-line:jsx-no-lambda
                 (detailsHeaderProps: IDetailsHeaderProps, defaultRender: IRenderFunction<IDetailsHeaderProps>) => (
@@ -127,6 +129,12 @@ export class ScrollablePaneDetailsListExample extends React.Component<
       </div>
     );
   }
+
+  private _onScroll = (e: Event): void => {
+    if (this._scrollablePane.current) {
+      this._scrollablePane.current.forceLayoutUpdate();
+    }
+  };
 
   private _getSelectionDetails(): string {
     const selectionCount = this._selection.getSelectedCount();
