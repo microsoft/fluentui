@@ -115,11 +115,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         variantClassName!,
         iconProps && iconProps.className,
         menuIconProps && menuIconProps.className,
-        allowDisabledFocus!,
         isPrimaryButtonDisabled!,
         checked!,
         !!menuProps,
-        this.props.split
+        this.props.split,
+        allowDisabledFocus!
       )
       : getBaseButtonClassNames(
         styles!,
