@@ -79,6 +79,7 @@ export class ComboBoxBasicExample extends React.Component<
         text: `Option ${i}`
       });
     }
+    this.scaleOptions.push({ key: '1000', text: 'Very Very Very Very long option' });
   }
 
   public render(): JSX.Element {
