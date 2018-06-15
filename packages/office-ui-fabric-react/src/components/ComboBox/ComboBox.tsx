@@ -1122,6 +1122,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const checkboxStyles = () => {
       return optionStyles;
     };
+    const title = this._getPreviewText(item);
 
     const getOptionComponent = () => {
       return !this.props.multiSelect ? (
@@ -1140,6 +1141,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           aria-selected={isSelected ? 'true' : 'false'}
           ariaLabel={this._getPreviewText(item)}
           disabled={item.disabled}
+          title={title}
         >
           {' '}
           {
@@ -1162,6 +1164,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             role="option"
             aria-selected={isSelected ? 'true' : 'false'}
             checked={isSelected}
+            title={title}
           >
             {onRenderOption(item, this._onRenderOptionContent)}
           </Checkbox>
