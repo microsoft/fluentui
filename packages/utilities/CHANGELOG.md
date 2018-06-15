@@ -1,6 +1,17 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 07 Jun 2018 16:35:34 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Jun 2018 20:52:57 GMT and should not be manually modified.
+
+## 6.6.0
+Thu, 14 Jun 2018 20:52:57 GMT
+
+### Minor changes
+
+- Updating `styled` to pick up customizations without using the `customizable` decorator on the base component.
+
+### Patches
+
+- Minor JSDoc improvements.
 
 ## 6.2.0
 Thu, 07 Jun 2018 16:35:34 GMT

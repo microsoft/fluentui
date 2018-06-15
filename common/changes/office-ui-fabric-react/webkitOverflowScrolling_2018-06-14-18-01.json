@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Moved demo out of the codebase",
+      "comment": "Popup: overflowY set to undefined when not scroll",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "ken@gizzar.com"
+  "email": "naethell@microsoft.com"
 }
