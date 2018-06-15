@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { findDOMNode } from 'react-dom';
 import { BaseComponent, css, getRTL, getId, KeyCodes, IRenderFunction, createRef } from '../../Utilities';
-import { IColumn, DetailsListLayoutMode } from './DetailsList.types';
+import { IColumn, DetailsListLayoutMode, IColumnReorderOptions } from './DetailsList.types';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Icon } from '../../Icon';
 import { Layer } from '../../Layer';
@@ -16,7 +16,6 @@ import * as stylesImport from './DetailsHeader.scss';
 import { IDragDropOptions } from './../../utilities/dragdrop/interfaces';
 import { DragDropHelper } from './../../utilities/dragdrop';
 import { DetailsColumn } from './../../components/DetailsList/DetailsColumn';
-import { IColumnReorderOptions } from './../../components/DetailsList';
 
 const styles: any = stylesImport;
 const checkStyles: any = checkStylesModule;
@@ -252,49 +251,49 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
       >
         {showCheckbox
           ? [
-            <div
-              key="__checkbox"
-              className={css(
-                'ms-DetailsHeader-cell',
-                'ms-DetailsHeader-cellIsCheck',
-                styles.cell,
-                styles.cellIsCheck,
-                checkStyles.owner,
-                isAllSelected && checkStyles.isSelected
-              )}
-              aria-labelledby={`${this._id}-check`}
-              onClick={this._onSelectAllClicked}
-              aria-colindex={!isCheckboxHidden ? 1 : undefined}
-              role={!isCheckboxHidden ? 'columnheader' : undefined}
-            >
-              {onRenderColumnHeaderTooltip(
-                {
-                  hostClassName: css(styles.checkTooltip),
-                  id: `${this._id}-checkTooltip`,
-                  setAriaDescribedBy: false,
-                  content: ariaLabelForSelectAllCheckbox,
-                  children: (
-                    <DetailsRowCheck
-                      id={`${this._id}-check`}
-                      aria-label={ariaLabelForSelectionColumn}
-                      aria-describedby={`${this._id}-checkTooltip`}
-                      data-is-focusable={!isCheckboxHidden}
-                      isHeader={true}
-                      selected={isAllSelected}
-                      anySelected={false}
-                      canSelect={!isCheckboxHidden}
-                    />
-                  )
-                },
-                this._onRenderColumnHeaderTooltip
-              )}
-            </div>,
-            ariaLabelForSelectAllCheckbox && !this.props.onRenderColumnHeaderTooltip ? (
-              <label key="__checkboxLabel" id={`${this._id}-checkTooltip`} className={styles.accessibleLabel}>
-                {ariaLabelForSelectAllCheckbox}
-              </label>
-            ) : null
-          ]
+              <div
+                key="__checkbox"
+                className={css(
+                  'ms-DetailsHeader-cell',
+                  'ms-DetailsHeader-cellIsCheck',
+                  styles.cell,
+                  styles.cellIsCheck,
+                  checkStyles.owner,
+                  isAllSelected && checkStyles.isSelected
+                )}
+                aria-labelledby={`${this._id}-check`}
+                onClick={this._onSelectAllClicked}
+                aria-colindex={!isCheckboxHidden ? 1 : undefined}
+                role={!isCheckboxHidden ? 'columnheader' : undefined}
+              >
+                {onRenderColumnHeaderTooltip(
+                  {
+                    hostClassName: css(styles.checkTooltip),
+                    id: `${this._id}-checkTooltip`,
+                    setAriaDescribedBy: false,
+                    content: ariaLabelForSelectAllCheckbox,
+                    children: (
+                      <DetailsRowCheck
+                        id={`${this._id}-check`}
+                        aria-label={ariaLabelForSelectionColumn}
+                        aria-describedby={`${this._id}-checkTooltip`}
+                        data-is-focusable={!isCheckboxHidden}
+                        isHeader={true}
+                        selected={isAllSelected}
+                        anySelected={false}
+                        canSelect={!isCheckboxHidden}
+                      />
+                    )
+                  },
+                  this._onRenderColumnHeaderTooltip
+                )}
+              </div>,
+              ariaLabelForSelectAllCheckbox && !this.props.onRenderColumnHeaderTooltip ? (
+                <label key="__checkboxLabel" id={`${this._id}-checkTooltip`} className={styles.accessibleLabel}>
+                  {ariaLabelForSelectAllCheckbox}
+                </label>
+              ) : null
+            ]
           : null}
         {groupNestingDepth! > 0 && this.props.collapseAllVisibility === CollapseAllVisibility.visible ? (
           <div
@@ -313,30 +312,29 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
           </div>
         ) : null}
         <GroupSpacer indentWidth={indentWidth} count={groupNestingDepth! - 1} />
-        {
-          columns.map((column: IColumn, columnIndex: number) => {
-            const _isDraggable = columnReorderOptions
-              ? columnIndex >= frozenColumnCountFromStart && columnIndex < columns.length - frozenColumnCountFromEnd
-              : false;
-            return [
-              columnReorderOptions &&
+        {columns.map((column: IColumn, columnIndex: number) => {
+          const _isDraggable = columnReorderOptions
+            ? columnIndex >= frozenColumnCountFromStart && columnIndex < columns.length - frozenColumnCountFromEnd
+            : false;
+          return [
+            columnReorderOptions &&
               (_isDraggable || columnIndex === columns.length - frozenColumnCountFromEnd) &&
               this._renderDropHint(columnIndex),
-              <DetailsColumn
-                column={column}
-                key={column.key}
-                columnIndex={(showCheckbox ? 2 : 1) + columnIndex}
-                parentId={this._id}
-                isDraggable={_isDraggable}
-                setDraggedItemIndex={this._setDraggedItemIndex}
-                dragDropHelper={this._dragDropHelper}
-                onColumnClick={onColumnClick}
-                onColumnContextMenu={onColumnContextMenu}
-                isDropped={this._onDropIndexInfo.targetIndex === columnIndex + 1}
-              />,
-              column.isResizable && this._renderColumnSizer(columnIndex)
-            ];
-          })}
+            <DetailsColumn
+              column={column}
+              key={column.key}
+              columnIndex={(showCheckbox ? 2 : 1) + columnIndex}
+              parentId={this._id}
+              isDraggable={_isDraggable}
+              setDraggedItemIndex={this._setDraggedItemIndex}
+              dragDropHelper={this._dragDropHelper}
+              onColumnClick={onColumnClick}
+              onColumnContextMenu={onColumnContextMenu}
+              isDropped={this._onDropIndexInfo.targetIndex === columnIndex + 1}
+            />,
+            column.isResizable && this._renderColumnSizer(columnIndex)
+          ];
+        })}
         {columnReorderOptions && frozenColumnCountFromEnd === 0 && this._renderDropHint(columns.length)}
         {isSizing && (
           <Layer>
@@ -357,10 +355,6 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
   }
 
   private _getHeaderDragDropOptions(): IDragDropOptions {
-    const {
-      dragDropColumnEvents
-    } = this.props;
-    const dataContext: IDragDropContext = { data: this, index: 1 };
     const options = {
       selectionIndex: 1,
       context: { data: this, index: 0 },
@@ -384,7 +378,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
   }
 
   private _isValidCurrentDropHintIndex() {
-    return (this._currentDropHintIndex! >= 0);
+    return this._currentDropHintIndex! >= 0;
   }
 
   private _onDragOver(item: any, event: DragEvent): void {
@@ -412,9 +406,6 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
       if (isValidDrop) {
         this.props.columnReorderOptions!.handleColumnReorder(draggedColumnIndex, dropIndex);
       }
-
-      this._resetDropHints();
-      this._draggedColumnIndex = -1;
     }
   }
 
@@ -552,13 +543,6 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
       }
     }
 
-    if (dropHintsState) {
-      const newDropHintState = dropHintsState.map(state => false);
-      newDropHintState[indexToUpdate] = true;
-      this.setState({ dropHintsState: newDropHintState });
-    }
-
-
     if (indexToUpdate === this._draggedColumnIndex || indexToUpdate === this._draggedColumnIndex + 1) {
       if (this._isValidCurrentDropHintIndex()) {
         this._resetDropHints();
@@ -630,9 +614,9 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
    * to fit the longest content among current rendered rows.
    *
    * @private
-* @param {number} columnIndex (index of the column user double clicked)
-* @param {React.MouseEvent} ev (mouse double click event)
-      */
+   * @param {number} columnIndex (index of the column user double clicked)
+   * @param {React.MouseEvent} ev (mouse double click event)
+   */
   private _onSizerDoubleClick(columnIndex: number, ev: React.MouseEvent<HTMLElement>): void {
     const { onColumnAutoResized, columns } = this.props;
     if (onColumnAutoResized) {
@@ -645,6 +629,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
    */
   private _onSelectAllClicked = (): void => {
     const { selection } = this.props;
+
     selection.toggleAllSelected();
   };
 
@@ -675,6 +660,15 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 
     if (columnResizeDetails && !isSizing && ev.clientX !== columnResizeDetails.originX) {
       this.setState({ isSizing: true });
+    }
+  };
+
+  private _onRootRef = (focusZone: FocusZone): void => {
+    if (focusZone) {
+      // Need to resolve the actual DOM node, not the component. The element itself will be used for drag/drop and focusing.
+      this._rootElement = findDOMNode(focusZone) as HTMLElement;
+    } else {
+      this._rootElement = undefined;
     }
   };
 
@@ -745,8 +739,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
    * it will set isSizing state to true when user clicked on the sizer and move the mouse.
    *
    * @private
-* @param {React.MouseEvent} ev (mouse move event)
-                              */
+   * @param {React.MouseEvent} ev (mouse move event)
+   */
   private _onSizerMouseMove = (ev: React.MouseEvent<HTMLElement>): void => {
     const {
       // use buttons property here since ev.button in some edge case is not upding well during the move.
@@ -800,8 +794,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
    * This is to ensure we can catch double click event
    *
    * @private
-* @param {React.MouseEvent} ev (mouse up event)
-                                  */
+   * @param {React.MouseEvent} ev (mouse up event)
+   */
   private _onSizerMouseUp = (ev: React.MouseEvent<HTMLElement>): void => {
     const { columns, onColumnIsSizingChanged } = this.props;
     const { columnResizeDetails } = this.state;

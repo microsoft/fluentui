@@ -227,8 +227,10 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
   }
 
   private _onDragEnd(item?: any, event?: MouseEvent): void {
-    this.props.setDraggedItemIndex!(-1);
-    this._root.current.classList.remove(styles.borderWhileDragging);
+    if (this.props.setDraggedItemIndex) {
+      this.props.setDraggedItemIndex(-1);
+      this._root.current.classList.remove(styles.borderWhileDragging);
+    }
   }
 
   private _onColumnContextMenu(column: IColumn, ev: React.MouseEvent<HTMLElement>): void {
