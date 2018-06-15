@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IStyle } from '../../Styling';
-import { createComponent, IStyleProps, IViewProps } from '../Text/createComponent';
-import StackItem from './StackItem';
+import { createComponent, IStyleProps, IViewProps, IPropsWithStyles } from '../Text/createComponent';
+import StackItem, { IStackAreaProps, IStackAreaStyles } from './StackItem';
 
 // Styles for the component
 export interface IStackStyles {
@@ -95,21 +95,31 @@ const styles = (
       props.className
     ],
     spacer: {
-      // background: 'red',
       flexShrink: 0,
       alignSelf: 'stretch'
     }
   };
 };
 
-export const Stack: React.StatelessComponent<IStackProps> = createComponent({
-  displayName: 'Stack',
-  styles,
-  view,
-  statics: {
-    Item: StackItem,
-    defaultProps: {}
-  }
-});
+export const Stack: React.StatelessComponent<IStackProps & {
+  styles?: Partial<IStackStyles> |
+  ((props: IPropsWithStyles<IStackProps, IStackStyles>) => Partial<IStackStyles>) |
+  undefined
+}> & {
+    Item: React.StatelessComponent<IStackAreaProps & {
+      styles?: Partial<IStackAreaStyles> |
+      ((props: IPropsWithStyles<IStackAreaProps, IStackAreaStyles>) => Partial<IStackAreaStyles>)
+      | undefined
+    }>
+  } =
+  createComponent({
+    displayName: 'Stack',
+    styles,
+    view,
+    statics: {
+      Item: StackItem,
+      defaultProps: {}
+    }
+  });
 
 export default Stack;

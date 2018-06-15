@@ -16,7 +16,7 @@ export class StackBasicExample extends React.Component<{}, {}> {
       <Stack vertical align="center">
         <Text>A horizontal stack</Text>
         <Stack gap={gapSizeHorizontal} padding={padding}>
-          <Text type="caption">Text 1</Text>
+          <Text>Text 1</Text>
           <Text family="monospace">Text 2</Text>
           <Text>Text 3</Text>
         </Stack>
@@ -26,6 +26,9 @@ export class StackBasicExample extends React.Component<{}, {}> {
           <Text size="medium">Text 2</Text>
           <Text size="large">Text 3</Text>
         </Stack>
+        <Stack.Item align="end">
+          <Text>I am a stack item!</Text>
+        </Stack.Item>
       </Stack>
     );
   }

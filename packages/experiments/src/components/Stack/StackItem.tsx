@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IStyle } from '../../Styling';
-import { createComponent, IStyleProps, IViewProps } from '../Text/createComponent';
+import { createComponent, IStyleProps, IViewProps, IPropsWithStyles } from '../Text/createComponent';
 
 // Styles for the component
 export interface IStackAreaStyles {
@@ -68,10 +68,15 @@ const styles = (props: IStyleProps<IStackAreaProps, IStackAreaStyles>): IStackAr
   };
 };
 
-export const FlexArea: React.StatelessComponent<IStackAreaProps> = createComponent<IStackAreaProps, IStackAreaStyles>({
-  displayName: 'StackArea',
-  styles,
-  view
-});
+export const FlexArea: React.StatelessComponent<IStackAreaProps> & {
+  styles?: Partial<IStackAreaStyles> |
+  ((props: IPropsWithStyles<IStackAreaProps, IStackAreaStyles>) => Partial<IStackAreaStyles>) |
+  undefined
+} =
+  createComponent<IStackAreaProps, IStackAreaStyles>({
+    displayName: 'StackArea',
+    styles,
+    view
+  });
 
 export default FlexArea;
