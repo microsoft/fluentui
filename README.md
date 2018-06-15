@@ -153,7 +153,7 @@ Before you get started, **make sure you have read the [Git branch setup instruci
 To view the documentation including examples, contracts, component status, and to add functionality or fix issues locally, you can:
 
 1.  `git clone https://github.com/OfficeDev/office-ui-fabric-react.git`
-2.  `npm install` _If you're on Windows, please read the next section before running this_
+2.  `npm install` _For Windows developers, please read the next section before running this_
 3.  `npm start`
 
 This will start a demo page from the office-ui-fabric-react package folder, which will open a web browser with the example page. You can make changes to the code which will automatically build and refresh the page using live-reload.
