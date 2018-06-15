@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/charting",
+      "comment": "Code format changes",
+      "type": "none"
+    }
+  ],
+  "packageName": "@uifabric/charting",
+  "email": "mark@thedutchies.com"
+}
