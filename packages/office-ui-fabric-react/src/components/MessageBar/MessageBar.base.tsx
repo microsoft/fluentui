@@ -12,7 +12,7 @@ export interface IMessageBarState {
   expandSingleLine?: boolean;
 }
 
-@customizable('MarqueeSelection', ['theme'])
+@customizable('MessageBar', ['theme'])
 export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarState> {
   public static defaultProps: IMessageBarProps = {
     messageBarType: MessageBarType.info,

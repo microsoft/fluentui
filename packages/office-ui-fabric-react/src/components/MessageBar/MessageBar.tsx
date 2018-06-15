@@ -1,9 +1,10 @@
 import { styled } from '../../Utilities';
 import { MessageBarBase } from './MessageBar.base';
 import { getStyles } from './MessageBar.styles';
-import { IMessageBarProps } from './MessageBar.types';
+import { IMessageBarProps, IMessageBarStyleProps, IMessageBarStyles } from './MessageBar.types';
 
-export const MessageBar: (props: IMessageBarProps) => JSX.Element = styled(
-  MessageBarBase,
-  getStyles
-);
+export const MessageBar: (props: IMessageBarProps) => JSX.Element = styled<
+  IMessageBarProps,
+  IMessageBarStyleProps,
+  IMessageBarStyles
+>(MessageBarBase, getStyles);
