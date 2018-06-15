@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import './TextField.Examples.scss';
-import { lorem } from '@uifabric/example-app-base';
+import { lorem } from '../../../utilities/exampleData';
 
 export class TextFieldMultilineExample extends React.Component<any, any> {
   public render(): JSX.Element {

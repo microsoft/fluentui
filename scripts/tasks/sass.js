@@ -1,4 +1,4 @@
-module.exports = function (options) {
+module.exports = function(options) {
   const glob = require('glob');
   const path = require('path');
   const requireResolveCwd = require('../require-resolve-cwd');
@@ -23,34 +23,34 @@ module.exports = function (options) {
       });
 
       files.forEach(fileName => {
-
         fileName = path.resolve(fileName);
 
-        promises.push(new Promise((resolve, reject) => {
-          sass.render(
-            {
-              file: fileName,
-              outputStyle: 'compressed',
-              importer: patchSassUrl,
-              includePaths: [
-                path.resolve(process.cwd(), 'node_modules')
-              ]
-            },
-            (err, result) => {
-              if (err) {
-                reject(path.relative(process.cwd(), fileName) + ': ' + err);
-              } else {
-                const css = result.css.toString();
+        promises.push(
+          new Promise((resolve, reject) => {
+            sass.render(
+              {
+                file: fileName,
+                outputStyle: 'compressed',
+                importer: patchSassUrl,
+                includePaths: [path.resolve(process.cwd(), 'node_modules')]
+              },
+              (err, result) => {
+                if (err) {
+                  reject(path.relative(process.cwd(), fileName) + ': ' + err);
+                } else {
+                  const css = result.css.toString();
 
-                postcss([autoprefixer, modules])
-                  .process(css, { from: fileName })
-                  .then(result => {
-                    fs.writeFileSync(fileName + '.ts', createTypeScriptModule(fileName, result.css));
-                    resolve();
-                  });
+                  postcss([autoprefixer, modules])
+                    .process(css, { from: fileName })
+                    .then(result => {
+                      fs.writeFileSync(fileName + '.ts', createTypeScriptModule(fileName, result.css));
+                      resolve();
+                    });
+                }
               }
-            });
-        }));
+            );
+          })
+        );
       });
     }
 
@@ -60,7 +60,15 @@ module.exports = function (options) {
   function generateScopedName(name, fileName, css) {
     const crypto = require('crypto');
 
-    return name + '_' + crypto.createHmac('sha1', fileName).update(css).digest('hex').substring(0, 8);
+    return (
+      name +
+      '_' +
+      crypto
+        .createHmac('sha1', fileName)
+        .update(css)
+        .digest('hex')
+        .substring(0, 8)
+    );
   }
 
   function getJSON(cssFileName, json) {
@@ -68,7 +76,7 @@ module.exports = function (options) {
   }
 
   function createTypeScriptModule(fileName, css) {
-    const { splitStyles } = require("@microsoft/load-themed-styles");
+    const { splitStyles } = require('@microsoft/load-themed-styles');
 
     // Create a source file.
     const source = [
@@ -102,8 +110,7 @@ module.exports = function (options) {
 
     if (url[0] === '~') {
       newUrl = requireResolvePackageUrl(url.substr(1));
-    }
-    else if (url === 'stdin') {
+    } else if (url === 'stdin') {
       newUrl = '';
     }
 

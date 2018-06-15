@@ -19,6 +19,7 @@ import {
   SelectedPeopleList,
   IExtendedPersonaProps
 } from '../../SelectedItemsList';
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 
 import * as stylesImport from './ExtendedPeoplePicker.Basic.Example.scss';
 // tslint:disable-next-line:no-any
@@ -28,6 +29,8 @@ export interface IPeoplePickerExampleState {
   peopleList: IPersonaProps[];
   mostRecentlyUsed: IPersonaProps[];
   searchMoreAvailable: boolean;
+  currentlySelectedItems: IExtendedPersonaProps[];
+  controlledComponent: boolean;
 }
 
 // tslint:disable-next-line:no-any
@@ -50,7 +53,9 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
     this.state = {
       peopleList: peopleList,
       mostRecentlyUsed: mru,
-      searchMoreAvailable: true
+      searchMoreAvailable: true,
+      currentlySelectedItems: [],
+      controlledComponent: false
     };
 
     this._suggestionProps = {
@@ -154,6 +159,7 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
     return (
       <div>
         {this._renderExtendedPicker()}
+        <Toggle label="Controlled component" defaultChecked={false} onChanged={this._toggleControlledComponent} />
         <PrimaryButton text="Set focus" onClick={this._onSetFocusButtonClicked} />
       </div>
     );
@@ -162,6 +168,9 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
   private _renderExtendedPicker(): JSX.Element {
     return (
       <ExtendedPeoplePicker
+        selectedItems={this.state.controlledComponent ? this.state.currentlySelectedItems : undefined}
+        onItemAdded={this.state.controlledComponent ? this._onItemAdded : undefined}
+        onItemsRemoved={this.state.controlledComponent ? this._onItemsRemoved : undefined}
         floatingPickerProps={this._floatingPickerProps}
         selectedItemsListProps={this._selectedItemsListProps}
         onRenderFloatingPicker={this._onRenderFloatingPicker}
@@ -178,6 +187,10 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
       />
     );
   }
+
+  private _toggleControlledComponent = (toggleState: boolean): void => {
+    this.setState({ controlledComponent: toggleState });
+  };
 
   private _renderHeader(): JSX.Element {
     return <div>TO:</div>;
@@ -315,6 +328,15 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
     // tslint:disable-next-line:no-any
     return new Promise<IPersonaProps[]>((resolve: any, reject: any) => setTimeout(() => resolve(results), 150));
   }
+
+  private _onItemAdded = (selectedSuggestion: IExtendedPersonaProps) => {
+    this.setState({ currentlySelectedItems: this.state.currentlySelectedItems.concat(selectedSuggestion) });
+  };
+
+  private _onItemsRemoved = (items: IExtendedPersonaProps[]): void => {
+    const newItems = this.state.currentlySelectedItems.filter(value => items.indexOf(value) === -1);
+    this.setState({ currentlySelectedItems: newItems });
+  };
 
   private _validateInput = (input: string): boolean => {
     if (input.indexOf('@') !== -1) {

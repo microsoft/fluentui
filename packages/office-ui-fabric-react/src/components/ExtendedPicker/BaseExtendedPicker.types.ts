@@ -93,13 +93,23 @@ export interface IBaseExtendedPickerProps<T> {
   itemLimit?: number;
 
   /**
-   * A callback to process a selection after the user selects something from the picker.
+   * A callback to process a selection after the user selects a suggestion from the picker.
+   * The returned item will be added to the selected items list
    */
   onItemSelected?: (selectedItem?: T) => T | PromiseLike<T>;
 
   /**
-   * Deprecated at 5.96.0. Use defaultSelectedItems or selectedItems in selectedItemsListProps instead.
-   * @deprecated
+   * A callback on when an item was added to the selected item list
+   */
+  onItemAdded?: (addedItem: T) => void;
+
+  /**
+   * A callback on when an item or items were removed from the selected item list
+   */
+  onItemsRemoved?: (removedItems: T[]) => void;
+
+  /**
+   * If using as a controlled component use selectedItems here instead of the SelectedItemsList
    */
   selectedItems?: T[];
 }

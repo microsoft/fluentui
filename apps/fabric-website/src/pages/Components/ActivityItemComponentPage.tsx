@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ActivityItemPage } from 'office-ui-fabric-react/lib/components/ActivityItem/ActivityItemPage';
+import { ActivityItemPage } from '@uifabric/fabric-website-resources/lib/components/pages/ActivityItemPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 const pageStyles: any = require('../PageStyles.module.scss');

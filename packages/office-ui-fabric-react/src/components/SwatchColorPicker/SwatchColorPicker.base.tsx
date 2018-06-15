@@ -16,7 +16,7 @@ export interface ISwatchColorPickerState {
 
 const getClassNames = classNamesFunction<ISwatchColorPickerStyleProps, ISwatchColorPickerStyles>();
 
-@customizable('SwatchColorPicker', ['theme'])
+@customizable('SwatchColorPicker', ['theme', 'styles'])
 export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps, ISwatchColorPickerState>
   implements ISwatchColorPicker {
   public static defaultProps = {

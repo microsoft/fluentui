@@ -1,11 +1,12 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
-import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
+import { mount } from 'enzyme';
 
 import { ColorPicker } from './ColorPicker';
+import { ColorPickerBase } from './ColorPicker.base';
+import { IColorPicker } from './ColorPicker.types';
 
 describe('ColorPicker', () => {
   it('renders ColorPicker correctly', () => {
@@ -15,15 +16,26 @@ describe('ColorPicker', () => {
   });
 
   it('Props are correctly parsed', () => {
-    const component = ReactTestUtils.renderIntoDocument(<ColorPicker color="#FFFFFF" />) as ColorPicker;
+    let colorPickerComponent: any;
+    const setRef = (ref: IColorPicker): void => {
+      colorPickerComponent = ref;
+    };
 
-    expect(component.state.color.hex).toEqual('ffffff');
+    mount(<ColorPicker color="#FFFFFF" componentRef={setRef} />);
+
+    expect(colorPickerComponent.state.color.hex).toEqual('ffffff');
   });
 
-  it('Reacts to props changes', () => {
-    const component = ReactTestUtils.renderIntoDocument(<ColorPicker color="#FFFFFF" />) as ColorPicker;
+  it('Reacts to props change', () => {
+    let colorPickerComponent: any;
+    const setRef = (ref: IColorPicker): void => {
+      colorPickerComponent = ref;
+    };
 
-    component.componentWillReceiveProps({ color: '#AEAEAE' });
+    mount(<ColorPicker color="#FFFFFF" componentRef={setRef} />);
+
+    const component = colorPickerComponent;
+    colorPickerComponent.componentWillReceiveProps({ color: '#AEAEAE' });
     expect(component.state.color.hex).toEqual('aeaeae');
   });
 
@@ -33,92 +45,70 @@ describe('ColorPicker', () => {
       color = str;
     };
 
-    const component = ReactTestUtils.renderIntoDocument(
-      <ColorPicker color={color} onColorChanged={onColorChanged} />
-    ) as ColorPicker;
+    let colorPickerComponent: any;
+    const setRef = (ref: IColorPicker): void => {
+      colorPickerComponent = ref;
+    };
+
+    mount(<ColorPicker color={color} componentRef={setRef} onColorChanged={onColorChanged} />);
 
     const newColor = '#AEAEAE';
-    component.componentWillReceiveProps({ color: newColor });
+    const component = colorPickerComponent;
+    colorPickerComponent.componentWillReceiveProps({ color: newColor });
 
     expect(component.state.color.hex).toEqual('aeaeae');
     expect(color).toEqual(newColor);
   });
 
   it('Hides alpha control slider', () => {
-    const component = ReactTestUtils.renderIntoDocument(
-      <ColorPicker color="#FFFFFF" alphaSliderHidden={true} />
-    ) as ColorPicker;
+    const wrapper = mount(<ColorPicker color="#FFFFFF" alphaSliderHidden={true} />);
 
-    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
-    const alphaSlider = renderedDOM.querySelector('.is-alpha');
-    const alphaTableHeader = renderedDOM.querySelector('.ms-ColorPicker-table > thead > tr > td:nth-child(5)');
-    const alphaTableInput = renderedDOM.querySelector('.ms-ColorPicker-table > tbody> tr > td:nth-child(5)');
+    const alphaSlider = wrapper.find('.is-alpha');
+    const tableHeaders = wrapper.find('.ms-ColorPicker-table > thead > tr > td');
+    const tableInputs = wrapper.find('.ms-ColorPicker-table > tbody> tr > td');
 
-    expect(alphaSlider).toBeNull();
-    expect(alphaTableHeader).toBeNull();
-    expect(alphaTableInput).toBeNull();
+    // There should only be table headers and inputs for hex, red, green, and blue (no alpha)
+    const expectedTableComponents = 4;
+
+    expect(alphaSlider.exists()).toBe(false);
+    expect(tableHeaders).toHaveLength(expectedTableComponents);
+    expect(tableInputs).toHaveLength(expectedTableComponents);
   });
 
   it('Renders default RGBA/Hex strings', () => {
-    const component = ReactTestUtils.renderIntoDocument(<ColorPicker color="#FFFFFF" />) as ColorPicker;
+    const wrapper = mount(<ColorPicker color="#FFFFFF" />);
 
-    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
-    const tableHeaders = renderedDOM.querySelectorAll('.ms-ColorPicker-table > thead > tr > td') as NodeListOf<
-      HTMLTableDataCellElement
-    >;
+    const tableHeaders = wrapper.find('.ms-ColorPicker-table > thead > tr > td');
+    const textHeaders = [
+      ColorPickerBase.defaultProps.hexLabel,
+      ColorPickerBase.defaultProps.redLabel,
+      ColorPickerBase.defaultProps.greenLabel,
+      ColorPickerBase.defaultProps.blueLabel,
+      ColorPickerBase.defaultProps.alphaLabel
+    ];
 
-    const hexTableHeader = tableHeaders[0];
-    expect(hexTableHeader.textContent).toEqual(ColorPicker.defaultProps.hexLabel);
-
-    const redTableHeader = tableHeaders[1];
-    expect(redTableHeader.textContent).toEqual(ColorPicker.defaultProps.redLabel);
-
-    const greenTableHeader = tableHeaders[2];
-    expect(greenTableHeader.textContent).toEqual(ColorPicker.defaultProps.greenLabel);
-
-    const blueTableHeader = tableHeaders[3];
-    expect(blueTableHeader.textContent).toEqual(ColorPicker.defaultProps.blueLabel);
-
-    const alphaTableHeader = tableHeaders[4];
-    expect(alphaTableHeader.textContent).toEqual(ColorPicker.defaultProps.alphaLabel);
+    tableHeaders.forEach((node, index) => {
+      expect(node.text()).toEqual(textHeaders[index]);
+    });
   });
 
   it('Renders custom RGBA/Hex strings', () => {
-    const customHexLabel = 'Custom Hex';
-    const customRedLabel = 'Custom Red';
-    const customGreenLabel = 'Custom Green';
-    const customBlueLabel = 'Custom Blue';
-    const customAlphaLabel = 'Custom Alpha';
+    const textHeaders = ['Custom Hex', 'Custom Red', 'Custom Green', 'Custom Blue', 'Custom Alpha'];
 
-    const component = ReactTestUtils.renderIntoDocument(
+    const wrapper = mount(
       <ColorPicker
         color="#FFFFFF"
-        hexLabel={customHexLabel}
-        redLabel={customRedLabel}
-        greenLabel={customGreenLabel}
-        blueLabel={customBlueLabel}
-        alphaLabel={customAlphaLabel}
+        hexLabel={textHeaders[0]}
+        redLabel={textHeaders[1]}
+        greenLabel={textHeaders[2]}
+        blueLabel={textHeaders[3]}
+        alphaLabel={textHeaders[4]}
       />
-    ) as ColorPicker;
+    );
 
-    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
-    const tableHeaders = renderedDOM.querySelectorAll('.ms-ColorPicker-table > thead > tr > td') as NodeListOf<
-      HTMLTableDataCellElement
-    >;
-
-    const hexTableHeader = tableHeaders[0];
-    expect(hexTableHeader.textContent).toEqual(customHexLabel);
-
-    const redTableHeader = tableHeaders[1];
-    expect(redTableHeader.textContent).toEqual(customRedLabel);
-
-    const greenTableHeader = tableHeaders[2];
-    expect(greenTableHeader.textContent).toEqual(customGreenLabel);
-
-    const blueTableHeader = tableHeaders[3];
-    expect(blueTableHeader.textContent).toEqual(customBlueLabel);
-
-    const alphaTableHeader = tableHeaders[4];
-    expect(alphaTableHeader.textContent).toEqual(customAlphaLabel);
+    const tableHeaders = wrapper.find('.ms-ColorPicker-table > thead > tr > td');
+    tableHeaders.forEach((node, index) => {
+      expect(node.text()).toEqual(textHeaders[index]);
+    });
   });
 });

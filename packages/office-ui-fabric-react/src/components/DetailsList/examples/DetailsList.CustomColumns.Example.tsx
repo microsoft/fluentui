@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createListItems } from '@uifabric/example-app-base';
+import { createListItems } from '../../../utilities/exampleData';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { DetailsList, buildColumns, IColumn } from 'office-ui-fabric-react/lib/DetailsList';

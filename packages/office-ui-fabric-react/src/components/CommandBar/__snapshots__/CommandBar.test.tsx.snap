@@ -49,14 +49,22 @@ exports[`CommandBar renders commands correctly 1`] = `
               align-items: stretch;
               display: flex;
               flex-grow: 1;
+              flex-wrap: nowrap;
+              position: relative;
             }
         role="presentation"
       >
         <div
-          className="ms-OverflowSet-item"
+          className=
+              ms-OverflowSet-item
+              {
+                display: inherit;
+                flex-shrink: 0;
+              }
         >
           <button
             aria-describedby={undefined}
+            aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
             aria-posinset={1}
@@ -170,10 +178,16 @@ exports[`CommandBar renders commands correctly 1`] = `
           </button>
         </div>
         <div
-          className="ms-OverflowSet-item"
+          className=
+              ms-OverflowSet-item
+              {
+                display: inherit;
+                flex-shrink: 0;
+              }
         >
           <button
             aria-describedby={undefined}
+            aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
             aria-posinset={2}

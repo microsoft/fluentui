@@ -4,7 +4,7 @@ import { BaseComponent, customizable, nullRender } from '../../../Utilities';
 import { IButtonProps } from '../Button.types';
 import { getStyles } from './MessageBarButton.styles';
 
-@customizable('MessageBarButton', ['theme'])
+@customizable('MessageBarButton', ['theme', 'styles'])
 export class MessageBarButton extends BaseComponent<IButtonProps, {}> {
   public render(): JSX.Element {
     const { styles, theme } = this.props;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { DetailsList, IGroup, IGroupDividerProps } from 'office-ui-fabric-react/lib/DetailsList';
-import { createListItems, createGroups } from '@uifabric/example-app-base';
+import { createListItems, createGroups } from '../../../utilities/exampleData';
 import './DetailsListExample.scss';
 
 const ITEMS_PER_GROUP = 20;
@@ -29,7 +29,7 @@ export class DetailsListCustomGroupHeadersExample extends React.Component {
               <div className="DetailsListExample-customHeader">
                 <div className="DetailsListExample-customHeaderTitle">{`I am a custom header for: ${
                   props!.group!.name
-                }`}</div>
+                  }`}</div>
                 <div className="DetailsListExample-customHeaderLinkSet">
                   <Link className="DetailsListExample-customHeaderLink" onClick={this._onToggleSelectGroup(props!)}>
                     {props!.isSelected ? 'Remove selection' : 'Select group'}
@@ -44,7 +44,7 @@ export class DetailsListCustomGroupHeadersExample extends React.Component {
               <div className="DetailsListExample-customHeader">
                 <div className="DetailsListExample-customHeaderTitle">{`I'm a custom footer for: ${
                   props!.group!.name
-                }`}</div>
+                  }`}</div>
               </div>
             )
           }}

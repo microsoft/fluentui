@@ -155,6 +155,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
     />
     <button
       aria-describedby={undefined}
+      aria-disabled={undefined}
       aria-hidden={true}
       aria-label={undefined}
       aria-labelledby={undefined}
@@ -441,6 +442,7 @@ exports[`ComboBox renders a ComboBox with a Keytip correctly 1`] = `
     />
     <button
       aria-describedby={undefined}
+      aria-disabled={undefined}
       aria-hidden={true}
       aria-label={undefined}
       aria-labelledby={undefined}

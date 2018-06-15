@@ -7,13 +7,6 @@ import { IBaseSelectedItemsList, IBaseSelectedItemsListProps, ISelectedItemProps
 export interface IBaseSelectedItemsListState {
   // tslint:disable-next-line:no-any
   items?: any;
-  suggestedDisplayValue?: string;
-  moreSuggestionsAvailable?: boolean;
-  isSearching?: boolean;
-  isMostRecentlyUsedVisible?: boolean;
-  suggestionsVisible?: boolean;
-  suggestionsLoading?: boolean;
-  isResultsFooterVisible?: boolean;
 }
 
 export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
@@ -58,7 +51,6 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
       const newItems: T[] = this.state.items.concat(processedItemObjects);
       this.updateItems(newItems);
     }
-    this.setState({ suggestedDisplayValue: '' });
   };
 
   public removeItemAt = (index: number): void => {
@@ -66,8 +58,8 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
 
     if (this._canRemoveItem(items[index])) {
       if (index > -1) {
-        if (this.props.onItemDeleted) {
-          (this.props.onItemDeleted as (item: T) => void)(items[index]);
+        if (this.props.onItemsDeleted) {
+          (this.props.onItemsDeleted as (item: T[]) => void)([items[index]]);
         }
 
         const newItems = items.slice(0, index).concat(items.slice(index + 1));
@@ -92,10 +84,8 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     const firstItemToRemove = itemsCanRemove[0];
     const index: number = items.indexOf(firstItemToRemove);
 
-    if (this.props.onItemDeleted) {
-      itemsCanRemove.forEach((item: T) => {
-        (this.props.onItemDeleted as (item: T) => void)(item);
-      });
+    if (this.props.onItemsDeleted) {
+      (this.props.onItemsDeleted as (item: T[]) => void)(itemsCanRemove);
     }
 
     this.updateItems(newItems, index);
@@ -113,7 +103,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
    */
   public updateItems(items: T[], focusIndex?: number): void {
     if (this.props.selectedItems) {
-      // If the component is a controlled component then the controlling component will need
+      // If the component is a controlled component then the controlling component will need to pass the new props
       this.onChange(items);
     } else {
       this.setState({ items: items }, () => {
@@ -191,10 +181,6 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
   protected onChange(items?: T[]): void {
     if (this.props.onChange) {
       (this.props.onChange as (items?: T[]) => void)(items);
-    }
-
-    if (items) {
-      this.selection.setItems(items);
     }
   }
 

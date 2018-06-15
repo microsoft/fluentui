@@ -8,11 +8,6 @@ let entry = {
   [BUNDLE_NAME]: './lib/index.bundle.js'
 };
 
-// In production builds, produce the demo-app bundle.
-if (IS_PRODUCTION) {
-  entry['demo-app'] = './lib/demo/index.js';
-}
-
 module.exports = resources.createConfig(BUNDLE_NAME, IS_PRODUCTION, {
   entry,
 

@@ -12,7 +12,7 @@ import { IOverlayProps, IOverlayStyleProps, IOverlayStyles } from './Overlay.typ
 
 const getClassNames = classNamesFunction<IOverlayStyleProps, IOverlayStyles>();
 
-@customizable('Overlay', ['theme'])
+@customizable('Overlay', ['theme', 'styles'])
 export class OverlayBase extends BaseComponent<IOverlayProps, {}> {
   public componentDidMount(): void {
     disableBodyScroll();

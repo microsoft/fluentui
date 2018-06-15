@@ -38,9 +38,9 @@ class NavComponent extends NavBase {
 
     return (
       <nav role="navigation">
-        { this.props.groups.map((group: ICustomNavLinkGroup, groupIndex: number) => {
+        {this.props.groups.map((group: ICustomNavLinkGroup, groupIndex: number) => {
           return this._renderGroup(group, groupIndex);
-        }) }
+        })}
       </nav>
     );
   }
@@ -108,21 +108,21 @@ class NavComponent extends NavBase {
 
     return (
       <NavLink
-        id={ link.key }
-        content={ linkText }
-        href={ link.url }
-        target={ link.target }
-        onClick={ onClickHandler }
-        dataHint={ dataHint }
-        dataValue={ link.key }
-        ariaLabel={ linkText }
-        { ...ariaProps }
+        id={link.key}
+        content={linkText}
+        href={link.url}
+        target={link.target}
+        onClick={onClickHandler}
+        dataHint={dataHint}
+        dataValue={link.key}
+        ariaLabel={linkText}
+        {...ariaProps}
         role="menu"
-        rootClassName={ classNames.navItemRoot }
-        leftIconName={ leftIconName }
-        rightIconName={ rightIconName }
-        textClassName={ classNames.navItemNameColumn }
-        iconClassName={ classNames.navItemIconColumn }
+        rootClassName={classNames.navItemRoot}
+        leftIconName={leftIconName}
+        rightIconName={rightIconName}
+        textClassName={classNames.navItemNameColumn}
+        iconClassName={classNames.navItemIconColumn}
       />
     );
   }
@@ -142,16 +142,16 @@ class NavComponent extends NavBase {
     link.disableAutoExpand = false;
 
     return (
-      <li role="listitem" key={ link.key || linkIndex } title={ linkText }>
-        { this._renderCompositeLink(link, linkIndex, nestingLevel) }
+      <li role="listitem" key={link.key || linkIndex} title={linkText}>
+        {this._renderCompositeLink(link, linkIndex, nestingLevel)}
         {// show child links
-          // 1. only for the first level and
-          // 2. if the link is expanded
-          nestingLevel == 0 && link.isExpanded ? (
-            <div className={ AnimationClassNames.slideDownIn20 }>
-              { this._renderLinks(link.links as INavLink[], ++nestingLevel) }
-            </div>
-          ) : null }
+        // 1. only for the first level and
+        // 2. if the link is expanded
+        nestingLevel == 0 && link.isExpanded ? (
+          <div className={AnimationClassNames.slideDownIn20}>
+            {this._renderLinks(link.links as INavLink[], ++nestingLevel)}
+          </div>
+        ) : null}
       </li>
     );
   }
@@ -165,7 +165,7 @@ class NavComponent extends NavBase {
 
     return (
       <ul role="list">
-        { links.map((link: INavLink, linkIndex: number) => {
+        {links.map((link: INavLink, linkIndex: number) => {
           if (enableCustomization && link.isHidden && !showMore) {
             // atleast one link is hidden
             this._hasAtleastOneHiddenLink = true;
@@ -178,7 +178,7 @@ class NavComponent extends NavBase {
           } else {
             return this._renderLink(link, linkIndex, nestingLevel);
           }
-        }) }
+        })}
       </ul>
     );
   }
@@ -205,15 +205,15 @@ class NavComponent extends NavBase {
     }
 
     return (
-      <div key={ groupIndex }>
-        { isGroupHeaderVisible ? (
-          <div className={ classNames.navGroupSeparatorRoot }>
-            <div className={ classNames.navGroupSeparatorHrLine }>
-              { group.name ? <span className={ classNames.navGroupSeparatorGroupName }>{ group.name }</span> : null }
+      <div key={groupIndex}>
+        {isGroupHeaderVisible ? (
+          <div className={classNames.navGroupSeparatorRoot}>
+            <div className={classNames.navGroupSeparatorHrLine}>
+              {group.name ? <span className={classNames.navGroupSeparatorGroupName}>{group.name}</span> : null}
             </div>
           </div>
-        ) : null }
-        { this._renderLinks(group.links, 0 /* nestingLevel */) }
+        ) : null}
+        {this._renderLinks(group.links, 0 /* nestingLevel */)}
       </div>
     );
   }

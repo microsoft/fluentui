@@ -22,7 +22,7 @@ export interface IBreadCrumbData {
 const OVERFLOW_KEY = 'overflow';
 const nullFunction = (): null => null;
 
-@customizable('Breadcrumb', ['theme'])
+@customizable('Breadcrumb', ['theme', 'styles'])
 export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
   public static defaultProps: IBreadcrumbProps = {
     items: [],

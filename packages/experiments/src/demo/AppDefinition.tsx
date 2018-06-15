@@ -10,10 +10,22 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
+          component: require<any>('../components/CollapsibleSection/CollapsibleSectionPage').CollapsibleSectionPage,
+          key: 'CollapsibleSection',
+          name: 'CollapsibleSection',
+          url: '#/examples/collapsiblesection'
+        },
+        {
           component: require<any>('../components/Chiclet/ChicletPage').ChicletPage,
           key: 'Chiclet',
           name: 'Chiclet',
           url: '#/examples/chiclet'
+        },
+        {
+          component: require<any>('../components/Card/CardPage').CardPage,
+          key: 'DashboardCard',
+          name: 'DashboardCard',
+          url: '#/examples/Card'
         },
         {
           component: require<any>('../components/FolderCover/FolderCoverPage').FolderCoverPage,

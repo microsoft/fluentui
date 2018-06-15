@@ -3,7 +3,7 @@ import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { HoverCard, IExpandingCardProps } from 'office-ui-fabric-react/lib/HoverCard';
 import { DetailsList, buildColumns, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
-import { createListItems } from '@uifabric/example-app-base';
+import { createListItems } from '../../../utilities/exampleData';
 import './HoverCard.Example.scss';
 
 let _items: any[];
