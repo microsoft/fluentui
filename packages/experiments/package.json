@@ -33,7 +33,7 @@
     "@types/enzyme-adapter-react-16": "1.0.1",
     "@types/webpack-env": "1.13.0",
     "@uifabric/example-app-base": ">=6.2.1 <7.0.0",
-    "@uifabric/file-type-icons": ">=0.7.2 <1.0.0",
+    "@uifabric/file-type-icons": ">=5.0.0 <6.0.0",
     "@uifabric/jest-serializer-merge-styles": ">=6.0.3 <7.0.0",
     "es6-weak-map": "^2.0.2",
     "enzyme": "^3.2.0",
