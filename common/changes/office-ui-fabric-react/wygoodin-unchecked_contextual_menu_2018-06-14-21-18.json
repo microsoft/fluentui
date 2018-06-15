@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Make uncheckable contextual menu items lack the aria-checked attribute",
+      "comment": "ContextualMenu: Fixed the fact that uncheckable contextual menu items incorrectly possessed the `aria-checked` attribute.",
       "type": "patch"
     }
   ],
