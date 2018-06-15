@@ -335,7 +335,7 @@ export const getStyles = memoizeFunction(
       },
 
       optionsContainerWrapper: {
-        width: comboBoxOptionWidth,
+        width: comboBoxOptionWidth
       },
 
       optionsContainer: {
