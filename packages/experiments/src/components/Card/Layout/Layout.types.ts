@@ -1,4 +1,3 @@
-/* tslint:disable */
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { ICardHeaderProps } from '../CardHeader/CardHeader.types';
 import { IBodyTextProps } from '../BodyText/BodyText.types';

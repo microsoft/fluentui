@@ -7,7 +7,11 @@ export class ThumbnailList extends React.Component<IThumbnailListProps> {
     super(props);
   }
 
-  public renderThumbnails(): React.ReactElement<ThumbnailItem>[] {
+  public render(): JSX.Element {
+    return <div>{this._renderThumbnails()}</div>;
+  }
+
+  private _renderThumbnails(): React.ReactElement<ThumbnailItem>[] {
     const thumbnailList = this.props.thumbnailItems;
     const thumbnailItemComponentArray: React.ReactElement<ThumbnailItem>[] = [];
     thumbnailList.forEach((thumbnailItem: IThumbnailItemProps, i: number) => {
@@ -22,9 +26,5 @@ export class ThumbnailList extends React.Component<IThumbnailListProps> {
       );
     });
     return thumbnailItemComponentArray;
-  }
-
-  public render(): JSX.Element {
-    return <div>{this.renderThumbnails()}</div>;
   }
 }

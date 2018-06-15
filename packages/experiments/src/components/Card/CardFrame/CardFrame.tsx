@@ -22,7 +22,7 @@ export class CardFrame extends React.Component<ICardFrameProps, {}> {
           key: index.toString(),
           name: data.name,
           icon: data.icon,
-          ariaLable: data.ariaLabel ? data.ariaLabel : data.name,
+          ariaLabel: data.ariaLabel ? data.ariaLabel : data.name,
           title: data.title ? data.title : data.name,
           onClick: data.onClick
         };

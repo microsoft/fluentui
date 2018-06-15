@@ -84,7 +84,7 @@ export class ActionBar extends React.Component<IActionBarProps, {}> {
 
   private _renderOverflowItems = (overflowItems: IAction[]) => {
     const items: IContextualMenuItem[] = [];
-    overflowItems.map((action: IAction, i: number) => {
+    overflowItems.forEach((action: IAction, i: number) => {
       items.push({ key: i.toString(), name: action.title, onClick: action.action });
     });
     return <IconButton split={true} menuProps={{ items: items! }} onClick={this._onClick} />;

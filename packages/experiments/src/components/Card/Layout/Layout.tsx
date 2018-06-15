@@ -112,20 +112,12 @@ export class Layout extends React.Component<ILayoutProps> {
     if (contentAreaContents.length > 1 && cardSize !== CardSize.small) {
       return (
         <div className={contentLayoutClassName}>
-          <div id="c1" className={contentArea1ClassName}>
-            {contentAreaContents[0]}
-          </div>
-          <div id="c2" className={contentArea2ClassName}>
-            {contentAreaContents[1]}
-          </div>
+          <div className={contentArea1ClassName}>{contentAreaContents[0]}</div>
+          <div className={contentArea2ClassName}>{contentAreaContents[1]}</div>
         </div>
       );
     } else {
-      return (
-        <div id="c1" className={contentArea1ClassName}>
-          {contentAreaContents[0]}
-        </div>
-      );
+      return <div className={contentArea1ClassName}>{contentAreaContents[0]}</div>;
     }
   }
 }

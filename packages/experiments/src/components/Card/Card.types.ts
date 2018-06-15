@@ -65,7 +65,7 @@ export enum Priority {
 
 export interface ICardFrameContent {
   /**
-   * Cards title
+   * Card title
    */
   cardTitle: string;
 
