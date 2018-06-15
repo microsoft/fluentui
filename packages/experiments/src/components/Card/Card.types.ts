@@ -45,7 +45,12 @@ export enum CardContentType {
   /**
    * Selects the compound button stack
    */
-  CompoundButtonStack
+  CompoundButtonStack,
+
+  /**
+   * Selects the grid list
+   */
+  GridList
 }
 
 /**

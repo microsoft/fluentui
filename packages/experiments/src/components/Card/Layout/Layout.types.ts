@@ -5,6 +5,7 @@ import { IThumbnailListProps } from '../ThumbnailList/ThumbnailList.types';
 import { CardSize, CardContentType, Priority } from '../Card.types';
 import { ICompoundButtonStackProps } from '../CompoundButtonStack/CompoundButtonStack.types';
 import { IAction } from '../ActionBar/ActionBar.types';
+import { IGridListProps } from '../GridList/GridList.types';
 
 export interface ICardContentDetails {
   /**
@@ -21,7 +22,7 @@ export interface ICardContentDetails {
   /**
    * Content for component we want to render
    */
-  content: IBodyTextProps | IThumbnailListProps | ICompoundButtonStackProps;
+  content: IBodyTextProps | IThumbnailListProps | ICompoundButtonStackProps | IGridListProps;
 }
 
 export interface ILayoutProps {

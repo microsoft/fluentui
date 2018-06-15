@@ -13,6 +13,8 @@ import { IThumbnailListProps } from '../ThumbnailList/ThumbnailList.types';
 import { ICompoundButtonStackProps } from '../CompoundButtonStack/CompoundButtonStack.types';
 import { ICardHeaderProps } from '../CardHeader/CardHeader.types';
 import { IAction } from '../ActionBar/ActionBar.types';
+import { IGridListProps } from '../GridList/GridList.types';
+import { GridList } from '../GridList/GridList';
 
 export class Layout extends React.Component<ILayoutProps> {
   constructor(props: ILayoutProps) {
@@ -62,6 +64,27 @@ export class Layout extends React.Component<ILayoutProps> {
               case CardContentType.CompoundButtonStack: {
                 const { actions } = cardContent.content as ICompoundButtonStackProps;
                 contentArea.push(<CompoundButtonStack actions={actions} />);
+                break;
+              }
+              case CardContentType.GridList: {
+                const {
+                  gridRows,
+                  gridColumns,
+                  isHeaderVisible,
+                  isRowClickable,
+                  actionButtonText,
+                  onActionLinkClicked
+                } = cardContent.content as IGridListProps;
+                contentArea.push(
+                  <GridList
+                    gridRows={gridRows}
+                    gridColumns={gridColumns}
+                    isHeaderVisible={isHeaderVisible}
+                    isRowClickable={isRowClickable}
+                    actionButtonText={actionButtonText}
+                    onActionLinkClicked={onActionLinkClicked}
+                  />
+                );
                 break;
               }
             }
