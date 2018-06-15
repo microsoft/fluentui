@@ -30,7 +30,7 @@ function expandSourcePath(pattern) {
   }
 }
 
-module.exports = function(options) {
+module.exports = function (options) {
   const { logStartTask, logEndTask } = require('../logging');
   const path = require('path');
   const fs = require('fs');
@@ -59,22 +59,17 @@ module.exports = function(options) {
   return promise;
 
   function startCopy(source, destination) {
-    promise = promise.then(
-      () =>
-        new Promise((resolve, reject) => {
-          const copy = require('cpx').copy;
+    promise = promise.then(() => new Promise((resolve, reject) => {
+      const copy = require('cpx').copy;
 
-          console.log(
-            `  Copying "${path.relative(process.cwd(), source)}" to "${path.relative(process.cwd(), destination)}"`
-          );
-          copy(source, destination, err => {
-            if (err) {
-              reject(err);
-            } else {
-              resolve();
-            }
-          });
-        })
-    );
+      console.log(`  Copying "${path.relative(process.cwd(), source)}" to "${path.relative(process.cwd(), destination)}"`);
+      copy(source, destination, (err) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve();
+        }
+      });
+    }));
   }
 };
