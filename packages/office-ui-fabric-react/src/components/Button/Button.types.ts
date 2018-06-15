@@ -223,10 +223,10 @@ export interface IButtonProps
     iconClassName: string | undefined,
     menuIconClassName: string | undefined,
     disabled: boolean,
-    allowDisabledFocus: boolean,
     checked: boolean,
     expanded: boolean,
-    isSplit: boolean | undefined
+    isSplit: boolean | undefined,
+    allowDisabledFocus: boolean
   ) => IButtonClassNames;
 
   /**
@@ -237,9 +237,9 @@ export interface IButtonProps
    */
   getSplitButtonClassNames?: (
     disabled: boolean,
-    allowDisabledFocus: boolean,
     expanded: boolean,
-    checked: boolean
+    checked: boolean,
+    allowDisabledFocus: boolean
   ) => ISplitButtonClassNames;
 
   /**
