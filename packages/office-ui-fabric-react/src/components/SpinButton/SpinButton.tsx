@@ -183,7 +183,6 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
                 onKeyDown={this._handleKeyDown}
                 onKeyUp={this._handleKeyUp}
                 readOnly={disabled}
-                disabled={disabled}
                 aria-disabled={disabled}
                 data-lpignore={true}
                 data-ktp-execute-target={keytipAttributes['data-ktp-execute-target']}

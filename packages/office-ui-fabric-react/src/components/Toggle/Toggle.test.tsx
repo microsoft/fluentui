@@ -1,36 +1,37 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
-import * as ReactDOM from 'react-dom';
-import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 import * as sinon from 'sinon';
 
-import { ToggleBase } from './Toggle.base';
-import { getStyles } from './Toggle.styles';
+import { Toggle } from './Toggle';
 
 describe('Toggle', () => {
   it('renders a label', () => {
-    const component = ReactTestUtils.renderIntoDocument(<ToggleBase styles={getStyles} label="Label" />);
-    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
-    const labelElement = renderedDOM.querySelector('.ms-Toggle-label') as Element;
-
-    expect(labelElement.textContent).toEqual('Label');
+    const component = mount(<Toggle label="Label" />);
+    expect(
+      component
+        .find('.ms-Toggle-label')
+        .first()
+        .text()
+    ).toEqual('Label');
   });
 
   it('renders toggle correctly', () => {
-    const component = renderer.create(<ToggleBase styles={getStyles} label="Label" />);
+    const component = renderer.create(<Toggle label="Label" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders aria-label', () => {
-    const component = ReactTestUtils.renderIntoDocument(
-      <ToggleBase styles={getStyles} label="Label" offAriaLabel="offLabel" />
-    );
-    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
-    const labelElement = renderedDOM.querySelector('button') as Element;
+    const component = mount(<Toggle label="Label" offAriaLabel="offLabel" />);
 
-    expect(labelElement.getAttribute('aria-label')).toEqual('offLabel');
+    expect(
+      component
+        .find('button')
+        .first()
+        .getDOMNode()
+        .getAttribute('aria-label')
+    ).toEqual('offLabel');
   });
 
   it('can call the callback on a change of toggle', () => {
@@ -38,52 +39,63 @@ describe('Toggle', () => {
     const callback = (isToggled: boolean) => {
       isToggledValue = isToggled;
     };
-    let component: any;
 
-    ReactTestUtils.renderIntoDocument<React.ReactInstance>(
-      <ToggleBase
-        styles={getStyles}
-        // tslint:disable-next-line:jsx-no-lambda
-        componentRef={ref => (component = ref)}
-        label="Label"
-        onChanged={callback}
-      />
-    );
-    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
-    const button = renderedDOM.querySelector('button') as HTMLButtonElement;
+    const component = mount<React.ReactInstance>(<Toggle label="Label" onChanged={callback} />);
 
-    ReactTestUtils.Simulate.click(button);
+    expect(
+      component
+        .find('button')
+        .first()
+        .getDOMNode()
+        .getAttribute('aria-pressed')
+    ).toEqual('false');
+
+    component
+      .find('button')
+      .first()
+      .simulate('click');
+
     expect(isToggledValue).toEqual(true);
-    expect((component as React.Component<any, any>).state.checked).toEqual(true);
+
+    expect(
+      component
+        .find('button')
+        .first()
+        .getDOMNode()
+        .getAttribute('aria-pressed')
+    ).toEqual('true');
   });
 
   it(`doesn't update the state if the user provides checked`, () => {
-    let component: any;
+    const component = mount(<Toggle label="Label" checked={false} />);
 
-    ReactTestUtils.renderIntoDocument(
-      <ToggleBase
-        styles={getStyles}
-        // tslint:disable-next-line:jsx-no-lambda
-        componentRef={ref => (component = ref)}
-        label="Label"
-        checked={false}
-      />
-    );
-    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
-    const button = renderedDOM.querySelector('button') as HTMLButtonElement;
+    expect(
+      component
+        .find('button')
+        .first()
+        .getDOMNode()
+        .getAttribute('aria-pressed')
+    ).toEqual('false');
 
-    ReactTestUtils.Simulate.click(button);
+    component
+      .find('button')
+      .first()
+      .simulate('click');
 
-    expect((component as React.Component<any, any>).state.checked).toEqual(false);
+    expect(
+      component
+        .update()
+        .find('button')
+        .first()
+        .getDOMNode()
+        .getAttribute('aria-pressed')
+    ).toEqual('false');
   });
 
   it(`doesn't render a label element if none is provided`, () => {
-    const component = ReactTestUtils.renderIntoDocument(<ToggleBase styles={getStyles} checked={false} />);
-    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
-    const label = renderedDOM.querySelector('label');
+    const component = mount(<Toggle checked={false} />);
 
-    // tslint:disable-next-line:no-unused-expression
-    expect(label).toBeNull();
+    expect(component.find('label').length).toEqual(0);
   });
 
   it(`doesn't trigger onSubmit when placed inside a form`, () => {
@@ -99,8 +111,7 @@ describe('Toggle', () => {
           e.preventDefault();
         }}
       >
-        <ToggleBase
-          styles={getStyles}
+        <Toggle
           // tslint:disable-next-line:jsx-no-lambda
           componentRef={ref => (component = ref)}
           label="Label"

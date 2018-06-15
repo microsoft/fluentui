@@ -23,6 +23,7 @@ exports[`Component Examples renders TextField.OnRenderDescription.Example.tsx co
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
+          readOnly={undefined}
           type="text"
           value=""
         />
