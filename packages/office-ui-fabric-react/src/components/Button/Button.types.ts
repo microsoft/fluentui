@@ -237,9 +237,9 @@ export interface IButtonProps
    */
   getSplitButtonClassNames?: (
     disabled: boolean,
-    allowDisabledFocus: boolean,
     expanded: boolean,
-    checked: boolean
+    checked: boolean,
+    allowDisabledFocus: boolean
   ) => ISplitButtonClassNames;
 
   /**

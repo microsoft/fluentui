@@ -110,28 +110,28 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
     this._classNames = getClassNames
       ? getClassNames(
-          theme!,
-          className!,
-          variantClassName!,
-          iconProps && iconProps.className,
-          menuIconProps && menuIconProps.className,
-          allowDisabledFocus!,
-          isPrimaryButtonDisabled!,
-          checked!,
-          !!menuProps,
-          this.props.split
-        )
+        theme!,
+        className!,
+        variantClassName!,
+        iconProps && iconProps.className,
+        menuIconProps && menuIconProps.className,
+        allowDisabledFocus!,
+        isPrimaryButtonDisabled!,
+        checked!,
+        !!menuProps,
+        this.props.split
+      )
       : getBaseButtonClassNames(
-          styles!,
-          className!,
-          variantClassName!,
-          iconProps && iconProps.className,
-          menuIconProps && menuIconProps.className,
-          isPrimaryButtonDisabled!,
-          checked!,
-          !!menuProps,
-          this.props.split
-        );
+        styles!,
+        className!,
+        variantClassName!,
+        iconProps && iconProps.className,
+        menuIconProps && menuIconProps.className,
+        isPrimaryButtonDisabled!,
+        checked!,
+        !!menuProps,
+        this.props.split
+      );
 
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;
     // Anchor tag cannot be disabled hence in disabled state rendering
@@ -470,7 +470,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     let { keytipProps } = this.props;
 
     const classNames = getSplitButtonClassNames
-      ? getSplitButtonClassNames(!!disabled, !!allowDisabledFocus, !!this.state.menuProps, !!checked)
+      ? getSplitButtonClassNames(!!disabled, !!this.state.menuProps, !!checked, !!allowDisabledFocus)
       : styles && getBaseSplitButtonClassNames(styles!, !!disabled, !!this.state.menuProps, !!checked);
 
     assign(buttonProps, {
