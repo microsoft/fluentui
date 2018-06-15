@@ -197,7 +197,7 @@ export const getCaretDownButtonStyles = memoizeFunction(
 );
 
 export const getStyles = memoizeFunction(
-  (theme: ITheme, customStyles?: Partial<IComboBoxStyles>, comboBoxOptionWidth?: string): Partial<IComboBoxStyles> => {
+  (theme: ITheme, customStyles?: Partial<IComboBoxStyles>, comboBoxOptionWidth?: string, comboBoxOptionMaxWidth?: number): Partial<IComboBoxStyles> => {
     const { semanticColors, fonts, palette } = theme;
     const ComboBoxRootBackground = semanticColors.bodyBackground;
     const ComboBoxRootTextColor = semanticColors.bodyText;
@@ -335,7 +335,8 @@ export const getStyles = memoizeFunction(
       },
 
       optionsContainerWrapper: {
-        width: comboBoxOptionWidth
+        width: comboBoxOptionWidth,
+        maxWidth: comboBoxOptionMaxWidth
       },
 
       optionsContainer: {

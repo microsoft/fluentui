@@ -297,6 +297,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       disabled,
       ariaLabel,
       required,
+      dropdownMaxWidth,
       errorMessage,
       onRenderContainer = this._onRenderContainer,
       onRenderList = this._onRenderList,
@@ -329,7 +330,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         className
       )
       : getClassNames(
-        getStyles(theme!, customStyles),
+        getStyles(theme!, customStyles, undefined /* comboBoxOptionWidth: used in callout */, dropdownMaxWidth),
         className!,
         !!isOpen,
         !!disabled,
