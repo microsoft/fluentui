@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 14 Jun 2018 20:52:57 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Jun 2018 10:18:10 GMT and should not be manually modified.
+
+## 6.13.1
+Fri, 15 Jun 2018 10:18:10 GMT
+
+### Patches
+
+- Popup: overflowY set to undefined when not scroll
 
 ## 6.13.0
 Thu, 14 Jun 2018 20:52:57 GMT
