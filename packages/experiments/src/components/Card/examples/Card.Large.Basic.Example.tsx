@@ -34,11 +34,11 @@ export class LargeCardBasicExample extends React.Component<{}, {}> {
         },
         c2: {
           content: 'cell2',
-          iconName: 'more'
+          iconName: 'AdminALogoInverse32'
         },
         c3: {
           content: 'cell3',
-          iconName: 'more'
+          iconName: 'AdminALogoInverse32'
         },
         // Disabling ts-lint for the signature because Details List expects row parameter as any
         // tslint:disable-next-line
@@ -53,11 +53,11 @@ export class LargeCardBasicExample extends React.Component<{}, {}> {
         },
         c2: {
           content: 'cell5',
-          iconName: 'more'
+          iconName: 'AdminALogoInverse32'
         },
         c3: {
           content: 'cell6',
-          iconName: 'more'
+          iconName: 'AdminALogoInverse32'
         },
         // Disabling ts-lint for the signature because Details List expects row parameter as any
         // tslint:disable-next-line
