@@ -1,19 +1,19 @@
 import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage } from '@uifabric/example-app-base';
 
-import { TextBasicExample } from './examples/Text.Basic.Example';
-const TextBasicExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Text/examples/Text.Basic.Example.tsx') as string;
+import { StackBasicExample } from './examples/Stack.Basic.Example';
+const StackBasicExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Stack/examples/Stack.Basic.Example.tsx') as string;
 
-export class TextPage extends React.Component<IComponentDemoPageProps, {}> {
+export class StackPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title="Text"
-        componentName="Text"
+        title="Stack"
+        componentName="Stack"
         exampleCards={
           <div>
-            <ExampleCard title="Basic Text Component Example" code={TextBasicExampleCode}>
-              <TextBasicExample />
+            <ExampleCard title="Basic Stack Component Example" code={StackBasicExampleCode}>
+              <StackBasicExample />
             </ExampleCard>
           </div>
         }
