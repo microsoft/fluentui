@@ -164,7 +164,7 @@ To build individual packages within the `packages/*/` folders, you can use `npm 
 
 ## Note for Windows Developers on npm 6.x
 
-Due to a known bug in #5174, Windows users who are using npm 6.1.0+ should downgrade to use npm 5.6.0 for now:
+Due to a known bug in #5174, Fabric Windows developers who are using npm 6.1.0+ should downgrade to use npm 5.6.0 for now:
 
 `npm i -g npm@5.6.0`
 
