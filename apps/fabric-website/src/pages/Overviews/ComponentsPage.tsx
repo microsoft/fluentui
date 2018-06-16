@@ -28,7 +28,7 @@ export class ComponentsPage extends React.Component<any, any> {
               <span className={styles.description}>
                 Many Fabric React components are used in our products. We make improvements and bug fixes frequently,
                 ensuring they work as designed across all of the{' '}
-                <a href="https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/BROWSERSUPPORT.md">
+                <a href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Browser-Support">
                   supported browsers
                 </a>.
               </span>

@@ -12,6 +12,10 @@ module.exports = resources.createConfig(
 
     entry: {
       [BUNDLE_NAME]: './lib/index.js'
+    },
+    externals: {
+      react: 'React',
+      'react-dom': 'ReactDOM'
     }
   },
   true
