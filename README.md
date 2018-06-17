@@ -164,7 +164,7 @@ To build individual packages within the `packages/*/` folders, you can use `npm 
 
 ## Note for Windows Developers on npm 6.x
 
-Due to a known bug in #5174, Windows developers who are using npm 6.x should downgrade to use npm 5.6.0 for now:
+Due to a known bug in #5174, Windows developers who are using npm 6.x should downgrade to use `npm` v5.6.0 for now:
 
 `npm i -g npm@5.6.0`
 
