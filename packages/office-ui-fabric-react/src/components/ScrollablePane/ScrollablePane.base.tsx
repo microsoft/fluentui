@@ -1,13 +1,6 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import {
-  BaseComponent,
-  classNamesFunction,
-  customizable,
-  divProperties,
-  getNativeProps,
-  createRef
-} from '../../Utilities';
+import { BaseComponent, classNamesFunction, divProperties, getNativeProps, createRef } from '../../Utilities';
 import {
   IScrollablePane,
   IScrollablePaneProps,
@@ -27,7 +20,6 @@ export interface IScrollablePaneState {
 
 const getClassNames = classNamesFunction<IScrollablePaneStyleProps, IScrollablePaneStyles>();
 
-@customizable('ScrollablePane', ['theme', 'styles'])
 export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScrollablePaneState>
   implements IScrollablePane {
   public static childContextTypes: React.ValidationMap<IScrollablePaneContext> = {

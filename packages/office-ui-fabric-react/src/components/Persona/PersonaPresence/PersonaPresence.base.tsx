@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, customizable } from '../../../Utilities';
+import { BaseComponent, classNamesFunction } from '../../../Utilities';
 import { IStyleSet } from '../../../Styling';
 import { Icon } from '../../../Icon';
 import {
@@ -22,7 +22,7 @@ const getClassNames = classNamesFunction<IPersonaPresenceStyleProps, IPersonaPre
  * PersonaPresence with no default styles.
  * [Use the `getStyles` API to add your own styles.](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Styling)
  */
-@customizable('PersonaPresence', ['theme', 'styles'])
+
 export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}> {
   constructor(props: IPersonaPresenceProps) {
     super(props);
