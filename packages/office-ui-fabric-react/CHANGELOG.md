@@ -1,6 +1,22 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 15 Jun 2018 14:44:02 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Jun 2018 16:57:14 GMT and should not be manually modified.
+
+## 6.15.0
+Mon, 18 Jun 2018 16:57:14 GMT
+
+### Minor changes
+
+- ComboBox: Change Style to allow options to overflow
+- Textfield: Adding new optional `readOnly` prop.
+- Add params to BaseButton openMenu to override focus props temporarily
+- SearchBox: add optional aria label prop for clear text button and default to 'clear text'
+
+### Patches
+
+- ColorPicker: add aria-labels to textfields
+- ContextualMenu/ComboBox/Dropdown: Fix up expand/collapse behavior so that collapsing menus is consistent
+- ContextualMenu: Fixed the fact that uncheckable contextual menu items incorrectly possessed the `aria-checked` attribute.
 
 ## 6.13.2
 Fri, 15 Jun 2018 14:44:02 GMT
