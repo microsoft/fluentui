@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { DetailsList, IGroup, IGroupDividerProps } from 'office-ui-fabric-react/lib/DetailsList';
-import { createListItems, createGroups } from '@uifabric/example-app-base';
+import { createListItems, createGroups } from '../../../utilities/exampleData';
 import './DetailsListExample.scss';
 
 const ITEMS_PER_GROUP = 20;

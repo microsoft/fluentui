@@ -57,6 +57,11 @@ export interface IButtonProps
   disabled?: boolean;
 
   /**
+   * Whether the button can have focus in disabled mode
+   */
+  allowDisabledFocus?: boolean;
+
+  /**
    * If set to true and if this is a splitButton (split == true) then the primary action of a split button is disabled.
    */
   primaryDisabled?: boolean;
@@ -218,6 +223,7 @@ export interface IButtonProps
     iconClassName: string | undefined,
     menuIconClassName: string | undefined,
     disabled: boolean,
+    allowDisabledFocus: boolean,
     checked: boolean,
     expanded: boolean,
     isSplit: boolean | undefined
@@ -229,7 +235,12 @@ export interface IButtonProps
    * defined in BaseButton.classnames.
    * @default getBaseSplitButtonClassNames
    */
-  getSplitButtonClassNames?: (disabled: boolean, expanded: boolean, checked: boolean) => ISplitButtonClassNames;
+  getSplitButtonClassNames?: (
+    disabled: boolean,
+    allowDisabledFocus: boolean,
+    expanded: boolean,
+    checked: boolean
+  ) => ISplitButtonClassNames;
 
   /**
    * Provides a custom KeyCode that can be used to open the button menu.

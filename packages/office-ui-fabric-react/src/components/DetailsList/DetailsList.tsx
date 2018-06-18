@@ -154,9 +154,30 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     }
   }
 
+  public getStartItemIndexInView(): number {
+    if (this._list && this._list.current) {
+      return this._list.current.getStartItemIndexInView();
+    } else if (this._groupedList && this._groupedList.current) {
+      return this._groupedList.current.getStartItemIndexInView();
+    }
+    return 0;
+  }
+
   public componentWillUnmount(): void {
+    const { onScroll } = this.props;
+    if (onScroll && this._root.current) {
+      this._root.current.removeEventListener('scroll', this._onScroll);
+    }
+
     if (this._dragDropHelper) {
       this._dragDropHelper.dispose();
+    }
+  }
+
+  public componentDidMount(): void {
+    const { onScroll } = this.props;
+    if (onScroll && this._root.current) {
+      this._root.current.addEventListener('scroll', this._onScroll);
     }
   }
 
@@ -276,7 +297,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       listProps,
       usePageCache,
       onShouldVirtualize,
-      enableShimmer
+      enableShimmer,
+      viewport
     } = this.props;
     const { adjustedColumns, isCollapsed, isSizing, isSomeGroupExpanded } = this.state;
     const { _selection: selection, _dragDropHelper: dragDropHelper } = this;
@@ -334,7 +356,9 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
           aria-label={ariaLabelForGrid}
           aria-rowcount={rowCount}
           aria-colcount={
-            (selectAllVisibility !== SelectAllVisibility.none ? 1 : 0) + (adjustedColumns ? adjustedColumns.length : 0)
+            (selectAllVisibility !== SelectAllVisibility.none && selectAllVisibility !== SelectAllVisibility.hidden
+              ? 1
+              : 0) + (adjustedColumns ? adjustedColumns.length : 0)
           }
           aria-readonly="true"
         >
@@ -359,7 +383,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                   ariaLabelForSelectAllCheckbox: ariaLabelForSelectAllCheckbox,
                   ariaLabelForSelectionColumn: ariaLabelForSelectionColumn,
                   selectAllVisibility: selectAllVisibility,
-                  collapseAllVisibility: groupProps && groupProps.collapseAllVisibility
+                  collapseAllVisibility: groupProps && groupProps.collapseAllVisibility,
+                  viewport: viewport
                 },
                 this._onRenderDetailsHeader
               )}
@@ -876,6 +901,13 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
     return itemKey;
   }
+
+  private _onScroll = (e: Event): void => {
+    const { onScroll } = this.props;
+    if (onScroll) {
+      onScroll(e);
+    }
+  };
 }
 
 export function buildColumns(

@@ -1,15 +1,35 @@
-// This code is heavily inspired by https://github.com/baflo/react-loadable-loader.
 import * as webpack from 'webpack';
 import * as path from 'path';
 import * as loaderUtils from 'loader-utils';
+
+function getMagicComments(options: loaderUtils.OptionObject): string {
+  const magicCommentsOptions: { [key: string]: string } = {
+    webpackChunkName: `"${options.chunkName || 'fabric.async'}"`,
+    webpackPrefetch: options.prefetch,
+    webpackPreload: options.preload
+  };
+
+  return Object.keys(magicCommentsOptions)
+    .map((key: string) => {
+      if (magicCommentsOptions[key] !== undefined) {
+        return `/* ${key}: ${magicCommentsOptions[key]} */`;
+      } else {
+        return null;
+      }
+    })
+    .filter((s: string) => s)
+    .join(' ');
+}
 
 /**
  * Fabric async loader will automatically replace the Fabric components specified in the "include" option of the loader with below code
  * The code below uses the `react-loadable` control to facilitate auto code-splitting at the Fabric component level
  *
- * @param content the content - passed through during the
+ * NOTE: This code is heavily inspired by https://github.com/baflo/react-loadable-loader.
+ *
+ * @param content the source code to be transformed
  */
-const fabricAsyncLoader: webpack.loader.Loader = (content: string) => {
+module.exports = function(content: string): string {
   return content;
 };
 
@@ -20,18 +40,18 @@ const fabricAsyncLoader: webpack.loader.Loader = (content: string) => {
  * @param remainingRequest the remaining requested module
  * @param previousRequest the remaining requested module
  */
-fabricAsyncLoader.pitch = (remainingRequest: string, precedingRequest: string) => {
+module.exports.pitch = function(remainingRequest: string, precedingRequest: string): string {
+  const options = loaderUtils.getOptions(this) || {};
   const moduleRequest = `!!${remainingRequest}`;
   const normalizedRequest = loaderUtils.stringifyRequest(this, moduleRequest);
   const moduleName = path.basename(normalizedRequest).replace(/\..*$/, '');
+  const request = loaderUtils.stringifyRequest(this, moduleRequest);
+
   return [
     "import Loadable from 'react-loadable';",
     `export const ${moduleName} = Loadable({`,
-    `  loader: async() => (await import(${loaderUtils.stringifyRequest(this, moduleRequest)})).${moduleName},`,
+    `  loader: async() => (await import(${getMagicComments(options)} ${request})).${moduleName},`,
     `  loading: () => null`,
     `});`
-  ].join('');
+  ].join('\n');
 };
-
-// Exports with the old module export standard (pre-ESM) to make it compatible with Webpack
-export = fabricAsyncLoader;

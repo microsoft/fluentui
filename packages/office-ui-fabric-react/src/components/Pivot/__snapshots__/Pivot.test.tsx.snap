@@ -18,6 +18,7 @@ exports[`Pivot renders Pivot correctly 1`] = `
     >
       <button
         aria-describedby={undefined}
+        aria-disabled={undefined}
         aria-label={undefined}
         aria-labelledby={undefined}
         aria-pressed={undefined}
@@ -126,6 +127,7 @@ exports[`Pivot renders Pivot correctly 1`] = `
       </button>
       <button
         aria-describedby={undefined}
+        aria-disabled={undefined}
         aria-label={undefined}
         aria-labelledby={undefined}
         aria-pressed={undefined}
@@ -261,6 +263,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
     >
       <button
         aria-describedby={undefined}
+        aria-disabled={undefined}
         aria-label={undefined}
         aria-labelledby={undefined}
         aria-pressed={undefined}
@@ -369,6 +372,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
       </button>
       <button
         aria-describedby={undefined}
+        aria-disabled={undefined}
         aria-label={undefined}
         aria-labelledby={undefined}
         aria-pressed={undefined}

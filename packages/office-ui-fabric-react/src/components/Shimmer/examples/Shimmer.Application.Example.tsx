@@ -2,7 +2,7 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
-import { createListItems } from '@uifabric/example-app-base/lib/utilities/data';
+import { createListItems } from '../../../utilities/exampleData';
 import {
   IColumn,
   DetailsList,

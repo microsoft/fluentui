@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { GroupedListPage } from 'office-ui-fabric-react/lib/components/GroupedList/GroupedListPage';
+import { GroupedListPage } from '@uifabric/fabric-website-resources/lib/components/pages/GroupedListPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 const pageStyles: any = require('../PageStyles.module.scss');
