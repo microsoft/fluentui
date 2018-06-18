@@ -4,7 +4,6 @@ import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Link } from '../../Link';
 import { Icon } from '../../Icon';
 import { IconButton } from '../../Button';
-import { customizable } from '../../Utilities';
 import { IBreadcrumbProps, IBreadcrumbItem, IDividerAsProps } from './Breadcrumb.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ResizeGroup } from '../../ResizeGroup';
@@ -22,7 +21,6 @@ export interface IBreadCrumbData {
 const OVERFLOW_KEY = 'overflow';
 const nullFunction = (): null => null;
 
-@customizable('Breadcrumb', ['theme', 'styles'])
 export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
   public static defaultProps: IBreadcrumbProps = {
     items: [],
