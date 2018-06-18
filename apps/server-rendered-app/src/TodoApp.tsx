@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const {
+import {
   Spinner,
   Toggle,
   Checkbox,
@@ -10,7 +10,7 @@ const {
   ChoiceGroup,
   DefaultButton,
   PersonaCoin
-} = require('office-ui-fabric-react');
+} from 'office-ui-fabric-react';
 
 const ToggleStrings = {
   onText: 'On',
@@ -23,7 +23,7 @@ const TodoApp = () => {
       <Toggle {...ToggleStrings} disabled />
       <Toggle {...ToggleStrings} />
       <Toggle {...ToggleStrings} checked />
-      <Spinner text="hello" />
+      <Spinner />
       <PrimaryButton text="I am a PrimaryButton" />
       <DefaultButton text="I am a DefaultButton" />
       <Checkbox label="I am a Checkbox" />
@@ -32,11 +32,10 @@ const TodoApp = () => {
       <ChoiceGroup
         options={[
           { key: '1', text: 'ChoiceGroup option 1' },
-          { key: '2', text: 'ChoiceGroup option 2', selected: true }
+          { key: '2', text: 'ChoiceGroup option 2', checked: true }
         ]}
       />
-      <TextField label="I am a TextField" />
-      <ProgressIndicator value={0.5} />
+      <ProgressIndicator percentComplete={0.5} />
       <PersonaCoin text="David Zearing" />
     </div>
   );
