@@ -228,16 +228,15 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
                     className={classNames.entityHost}
                     tabIndex={-1}
                     data-is-focusable={true}
-                    onClick={this._onFocusHandler}
                     role="dialog"
                     aria-labelledby={ariaLabelledBy}
                     aria-describedby={ariaDescribedBy}
                   >
                     {isCollapsed &&
                       ariaLabelledBy && (
-                        <h1 id={ariaLabelledBy} className={classNames.ariaContainer}>
+                        <p id={ariaLabelledBy} className={classNames.ariaContainer}>
                           {ariaLabelledByText}
-                        </h1>
+                        </p>
                       )}
                     {isCollapsed &&
                       ariaDescribedBy && (
