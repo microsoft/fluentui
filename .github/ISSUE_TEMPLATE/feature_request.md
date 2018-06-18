@@ -1,19 +1,15 @@
----
+--
 name: Feature request
-about:  Do you have an idea or improvement for Fabric? Let us know.
+about: Do you have Feature or improvemnet for Fabric? Let us know.
 
 ---
-<!--- The below are just thought starters and can be deleted.  --->
 
-**Is your feature request related to a problem? Please describe.**
-<!--- Fill in or delete --->
+<!-- Note: Feature requests will be moved to the prospective codeowner's backlog and then closed -->
 
-**Describe the solution you'd like:**
-<!--- Fill in or delete --->
+**Describe the feature that you would like added**
 
-**Describe alternatives you've considered:**
-<!--- Fill in or delete --->
+**What component or utility would this be added to**
 
-**Additional context**
-Add any other context or screenshots about the feature request here.
-<!--- Fill in or delete --->
+**Have you discussed this feature with our team, and if so, who**
+
+**Additional context/screenshots**
