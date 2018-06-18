@@ -146,13 +146,13 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     if (isDisabled !== undefined) {
       disabled = isDisabled;
     }
-    const describedby = id + '-option';
-    const labelledby = id + '-label';
+    const optionId = id + '-option';
+    const labelId = id + '-label';
 
     return (
       <div className={css('ms-Dropdown-container')}>
         {label && (
-          <Label className={css('ms-Dropdown-label')} id={labelledby} htmlFor={id} required={required}>
+          <Label className={css('ms-Dropdown-label')} id={labelId} htmlFor={id} required={required}>
             {label}
           </Label>
         )}
@@ -166,13 +166,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
               tabIndex={disabled ? -1 : 0}
               aria-expanded={isOpen ? 'true' : 'false'}
               aria-label={ariaLabel}
-              aria-labelledby={mergeAriaAttributeValues(labelledby, keytipAttributes['aria-labeledby'])}
-              aria-describedby={mergeAriaAttributeValues(describedby, keytipAttributes['aria-describedby'])}
-              aria-activedescendant={
-                isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0
-                  ? this._id + '-list' + selectedIndices[0]
-                  : id + '-option'
-              }
+              aria-labelledby={mergeAriaAttributeValues(labelId + ' ' + optionId, keytipAttributes['aria-labeledby'])}
               aria-disabled={disabled}
               aria-owns={isOpen ? id + '-list' : undefined}
               aria-haspopup="listbox"
@@ -199,8 +193,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
                   !selectedOptions.length && styles.titleIsPlaceHolder,
                   errorMessage && errorMessage.length > 0 ? styles.titleIsError : null
                 )}
-                role="listbox"
-                aria-label={selectedOptions.length ? selectedOptions[0].text : this.props.placeHolder}
               >
                 {// If option is selected render title, otherwise render the placeholder text
                 selectedOptions.length
