@@ -8,7 +8,6 @@ import { IPositionedData, RectangleEdge, getOppositeEdge } from 'office-ui-fabri
 import { PositioningContainer, IPositioningContainer } from './PositioningContainer/index';
 import { Beak, BEAK_HEIGHT, BEAK_WIDTH } from './Beak/Beak';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
-import { FocusZone } from '../../FocusZone';
 
 // Coachmark
 import { ICoachmarkTypes } from './Coachmark.types';
@@ -19,6 +18,7 @@ import {
   ICoachmarkStyles,
   ICoachmarkStyleProps
 } from './Coachmark.styles';
+import { FocusTrapZone } from 'office-ui-fabric-react/lib/components/FocusTrapZone';
 
 const getClassNames = classNamesFunction<ICoachmarkStyleProps, ICoachmarkStyles>();
 
@@ -205,7 +205,9 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
               aria-live="assertive"
               ref={this._ariaAlertContainer}
               aria-hidden={!isCollapsed}
-            />
+            >
+              {ariaAlertText}
+            </div>
           )}
           <div className={classNames.pulsingBeacon} />
           <div className={classNames.translateAnimationContainer} ref={this._translateAnimationContainer}>
@@ -221,7 +223,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
                     color={color}
                   />
                 )}
-                <FocusZone>
+                <FocusTrapZone isClickableOutsideFocusTrap={true} forceFocusInsideTrap={false}>
                   <div
                     className={classNames.entityHost}
                     tabIndex={-1}
@@ -251,7 +253,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
                       {children}
                     </div>
                   </div>
-                </FocusZone>
+                </FocusTrapZone>
               </div>
             </div>
           </div>
@@ -304,16 +306,6 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
         this._async.setTimeout(() => {
           this._addProximityHandler(this.props.mouseProximityOffset);
         }, this.props.delayBeforeMouseOpen!);
-
-        // SetTimeout is hacky solution.  ARIA text doesn't read aloud unless it is appended or changed after the component
-        // is mounted
-        if (this.props.ariaAlertText) {
-          this._async.setTimeout(() => {
-            if (this._ariaAlertContainer.current && this.props.ariaAlertText) {
-              this._ariaAlertContainer.current.innerText = this.props.ariaAlertText;
-            }
-          }, 2000);
-        }
       }
     );
   }
@@ -322,9 +314,14 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     document.removeEventListener('keydown', this._onKeyDown);
   }
 
-  private _onKeyDown = (e: KeyboardEvent): void => {
-    // Open coachmark if user presses ALT + C (arbitrary keypress for now, will change later)
-    if (e.altKey && e.which === KeyCodes.c) {
+  private _onKeyDown = (e: any): void => {
+    // Open coachmark if user presses ALT + C (arbitrary keypress for now)
+    if (
+      (e.altKey && e.which === KeyCodes.c) ||
+      (e.which === KeyCodes.enter &&
+        this._translateAnimationContainer.current &&
+        this._translateAnimationContainer.current.contains(e.target))
+    ) {
       this._onFocusHandler();
     }
   };
