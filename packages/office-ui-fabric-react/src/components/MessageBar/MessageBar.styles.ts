@@ -1,5 +1,6 @@
 import { IStyle, HighContrastSelector, ScreenWidthMaxSmall, getScreenSelector, getFocusStyle } from '../../Styling';
 import { IMessageBarStyleProps, IMessageBarStyles, MessageBarType } from './MessageBar.types';
+import { IsFocusVisibleClassName } from '@uifabric/utilities';
 
 export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
   const { theme, className, messageBarType, onDismiss, actions, truncated, isMultiline, expandSingleLine } = props;
@@ -66,6 +67,8 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
       }
     }
   };
+
+  const focusStyle = getFocusStyle(theme, 0, 'relative', undefined, palette.black);
 
   return {
     root: [
@@ -189,22 +192,22 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         }
       },
       isMultiline &&
-        actions && {
-          marginBottom: 8,
-          selectors: {
-            [SmallScreenSelector]: {
-              marginBottom: 0
-            }
-          }
-        },
-      !isMultiline &&
-        actions && {
-          selectors: {
-            [SmallScreenSelector]: {
-              marginBottom: 0
-            }
+      actions && {
+        marginBottom: 8,
+        selectors: {
+          [SmallScreenSelector]: {
+            marginBottom: 0
           }
         }
+      },
+      !isMultiline &&
+      actions && {
+        selectors: {
+          [SmallScreenSelector]: {
+            marginBottom: 0
+          }
+        }
+      }
     ],
     innerText: [
       {
@@ -229,21 +232,21 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         whiteSpace: 'nowrap'
       },
       !isMultiline &&
-        !truncated && {
-          selectors: {
-            [SmallScreenSelector]: {
-              overflow: 'visible',
-              whiteSpace: 'pre-wrap'
-            }
+      !truncated && {
+        selectors: {
+          [SmallScreenSelector]: {
+            overflow: 'visible',
+            whiteSpace: 'pre-wrap'
           }
-        },
+        }
+      },
       expandSingleLine && {
         overflow: 'visible',
         whiteSpace: 'pre-wrap'
       }
     ],
-    dismissal: ['ms-MessageBar-dismissal', dismissalAndExpandStyle, getFocusStyle(theme)],
-    expand: ['ms-MessageBar-expand', dismissalAndExpandStyle, getFocusStyle(theme)],
+    dismissal: ['ms-MessageBar-dismissal', dismissalAndExpandStyle, focusStyle],
+    expand: ['ms-MessageBar-expand', dismissalAndExpandStyle, focusStyle],
     dismissSingleLine: [
       'ms-MessageBar-dismissSingleLine',
       {
