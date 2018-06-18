@@ -14,6 +14,8 @@ let statusConfig = Object.assign({}, REPO_DETAILS, {
 
 let pr = parsePRNumber();
 
+console.log(`Pull Request #${pr}`);
+
 if (!argv.token) {
   throw new Error('No token specified. Use --token=<token> to provide a token.');
 }
@@ -61,7 +63,7 @@ function parsePRNumber() {
     splitString = argv.prID.split('/');
   }
 
-  if (!argv.prID || !splitString[2]) throw new Error(`Failed to get PR number. \n ${err}`);
+  if (!argv.prID || !splitString[2]) throw new Error(`Failed to get PR number.`);
 
   return splitString[2];
 }
@@ -74,6 +76,6 @@ function setDescription() {
     statusConfig.description = 'Deployment pending.';
   } else if (argv.state === 'success') {
     statusConfig.description = 'PR deployed. Click "Details" to view demo app.';
-    statusConfig.target_url = `https://uifabric.blob.core.windows.net/fabric/refs/pull/${argv.prID}/merge/index.html`;
+    statusConfig.target_url = `https://uifabric.blob.core.windows.net/fabric/${argv.prID}/index.html`;
   }
 }
