@@ -812,7 +812,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     searchDirection: SearchDirection = SearchDirection.none
   ): void {
     const { onChanged, onPendingValueChanged } = this.props;
-    const { currentOptions } = this.state;
+    const { currentOptions, isOpen } = this.state;
     let { selectedIndices } = this.state;
 
     if (!selectedIndices) {
@@ -863,7 +863,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
       // Did the creator give us an onChanged callback?
       if (onChanged) {
-        onChanged(option, index, undefined, submitPendingValueEvent);
+        onChanged(option, index, undefined, submitPendingValueEvent, isOpen);
       }
 
       // if we have a new selected index,
@@ -952,7 +952,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       currentPendingValue,
       currentPendingValueValidIndex,
       currentOptions,
-      currentPendingValueValidIndexOnHover
+      currentPendingValueValidIndexOnHover,
+      isOpen
     } = this.state;
     let { selectedIndices } = this.state;
 
@@ -989,7 +990,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       }
 
       if (onChanged) {
-        onChanged(undefined, undefined, currentPendingValue, submitPendingValueEvent);
+        onChanged(undefined, undefined, currentPendingValue, submitPendingValueEvent, isOpen);
       } else {
         // If we are not controlled, create a new option
         const newOption: IComboBoxOption = { key: currentPendingValue, text: currentPendingValue };
