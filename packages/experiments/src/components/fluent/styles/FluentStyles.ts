@@ -1,10 +1,4 @@
-// import * as React from 'react';
-// import { Dialog, DialogFooter, DialogType } from 'office-ui-fabric-react/lib/Dialog';
-// import { PrimaryButton, DefaultButton, CompoundButton } from 'office-ui-fabric-react/lib/Button';
-// import { Customizer } from 'office-ui-fabric-react/lib/Utilities';
 import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
-// import { FluentThemeLinkExample } from './FluentStylesLink.Basic.Examples';
-// import { FluentThemeButtonExample } from './FluentStylesButton.Basic.Examples';
 
 /** Definitions for Depth, or shadow, levels. */
 const FluentDepthLevels = {
@@ -39,17 +33,27 @@ const FluentDepthLevels = {
   Level4: '0 16px 18px -4px rgba(0, 0, 0, 0.1)'
 };
 
-const linkStyles = {
-  root: {
-    color: 'red',
-    background: 'transparent'
+// const LinkStyles = {
+//   root: {
+//     // Styles
+//   }
+// };
+
+const BreadcrumbStyles = {
+  itemLink: {
+    fontSize: '18px',
+    fontWeight: 400,
+    selectors: {
+      '&:last-child': {
+        fontWeight: 600
+      }
+    }
   }
 };
 
 const PrimaryButtonStyles = {
   root: {
     borderRadius: '2px',
-    backgroundColor: 'red',
     boxShadow: FluentDepthLevels.Level1
   }
 };
@@ -68,26 +72,26 @@ const DefaultButtonStyles = {
   }
 };
 
-// Note: For some reason, all Dialog style overrides aren't being respected here.
 const DialogStyles = {
   main: {
-    boxShadow: FluentDepthLevels.Level4,
-    border: '2px solid red'
+    boxShadow: FluentDepthLevels.Level4
   }
 };
 
 const DialogContentStyles = {
   title: {
-    fontWeight: FontWeights.semibold,
-    color: 'red'
+    fontWeight: FontWeights.semibold
   }
 };
 
 // Roll up all style overrides in a single "Fluent theme" object
 export const FluentStyles = {
-  Link: {
-    styles: linkStyles
+  Breadcrumb: {
+    styles: BreadcrumbStyles
   },
+  // Link: {
+  //   styles: LinkStyles
+  // },
   PrimaryButton: {
     styles: PrimaryButtonStyles
   },

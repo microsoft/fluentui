@@ -41,7 +41,7 @@ export class FluentStylesPage extends React.Component<IComponentDemoPageProps, I
         exampleCards={
           <Customizer scopedSettings={isFluent ? FluentStyles : undefined}>
             <div>
-              <ExampleCard title="Link - Failing" code={FluentLinkExampleCode}>
+              <ExampleCard title="Link - No Current Changes" code={FluentLinkExampleCode}>
                 <FluentStylesLinkExample />
               </ExampleCard>
               <ExampleCard title="Breadcrumb" code={FluentBreadcrumbExampleCode}>
@@ -50,7 +50,7 @@ export class FluentStylesPage extends React.Component<IComponentDemoPageProps, I
               <ExampleCard title="Button" code={FluentButtonExampleCode}>
                 <FluentStylesButtonExample />
               </ExampleCard>
-              <ExampleCard title="Dialog - Failing" code={FluentDialogExampleCode}>
+              <ExampleCard title="Dialog" code={FluentDialogExampleCode}>
                 <FluentStylesDialogExample />
               </ExampleCard>
             </div>
