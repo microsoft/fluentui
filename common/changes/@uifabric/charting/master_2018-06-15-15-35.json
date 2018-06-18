@@ -3,7 +3,7 @@
     {
       "packageName": "@uifabric/charting",
       "comment": "Remove redundant dependency",
-      "type": "patch"
+      "type": "none"
     }
   ],
   "packageName": "@uifabric/charting",
