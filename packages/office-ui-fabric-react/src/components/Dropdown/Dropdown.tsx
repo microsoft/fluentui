@@ -186,6 +186,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             >
               <span
                 id={id + '-option'}
+                aria-label={selectedOptions.length ? selectedOptions[0].text : this.props.placeHolder}
                 className={css(
                   'ms-Dropdown-title',
                   styles.title,
