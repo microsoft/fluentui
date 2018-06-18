@@ -242,25 +242,6 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     if (
       !preventDismissOnLostFocus &&
       ((!this._target && clickedOutsideCallout) ||
-        (ev.target !== this._targetWindow &&
-          clickedOutsideCallout &&
-          ((this._target as MouseEvent).stopPropagation ||
-            (!this._target || (target !== this._target && !elementContains(this._target as HTMLElement, target))))))
-    ) {
-      this.dismiss(ev);
-    }
-  }
-
-  // We implement a blur listener for the Callout component so that if a page inside of an iframe uses a callout,
-  // it can be dismissed when the user clicks outside the iframe.
-  protected _dismissOnBlur(ev: Event) {
-    const target = ev.target as HTMLElement;
-    const clickedOutsideCallout = this._hostElement.current && !elementContains(this._hostElement.current, target);
-    const { preventDismissOnLostFocus } = this.props;
-
-    if (
-      !preventDismissOnLostFocus &&
-      ((!this._target && clickedOutsideCallout) ||
         (clickedOutsideCallout &&
           ((this._target as MouseEvent).stopPropagation ||
             (!this._target || (target !== this._target && !elementContains(this._target as HTMLElement, target))))))
@@ -300,7 +281,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     this._async.setTimeout(() => {
       this._events.on(this._targetWindow, 'scroll', this._dismissOnScroll, true);
       this._events.on(this._targetWindow, 'resize', this.dismiss, true);
-      this._events.on(this._targetWindow, 'blur', this._dismissOnBlur, true);
+      this._events.on(this._targetWindow, 'blur', this._dismissOnLostFocus, true);
       this._events.on(this._targetWindow.document.documentElement, 'focus', this._dismissOnLostFocus, true);
       this._events.on(this._targetWindow.document.documentElement, 'click', this._dismissOnLostFocus, true);
       this._hasListeners = true;
@@ -310,7 +291,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   private _removeListeners() {
     this._events.off(this._targetWindow, 'scroll', this._dismissOnScroll, true);
     this._events.off(this._targetWindow, 'resize', this.dismiss, true);
-    this._events.off(this._targetWindow, 'blur', this._dismissOnBlur, true);
+    this._events.off(this._targetWindow, 'blur', this._dismissOnLostFocus, true);
     this._events.off(this._targetWindow.document.documentElement, 'focus', this._dismissOnLostFocus, true);
     this._events.off(this._targetWindow.document.documentElement, 'click', this._dismissOnLostFocus, true);
     this._hasListeners = false;
