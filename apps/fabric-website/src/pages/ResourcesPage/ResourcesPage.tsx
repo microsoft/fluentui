@@ -38,7 +38,7 @@ export class ResourcesPage extends React.Component<any, any> {
               </div>
               <div className={css('ms-Grid-col ms-sm12 ms-lg8', styles.description)}>
                 <p>
-                  Use the resources on this page to ensure a consistent look and feel fore your project. This section
+                  Use the resources on this page to ensure a consistent look and feel for your project. This section
                   includes design and UI-related downloads for apps designed and built with Fabric.
                 </p>
 
@@ -157,9 +157,9 @@ export class ResourcesPage extends React.Component<any, any> {
                   Check out{' '}
                   <a
                     className={styles.relatedLink}
-                    href="https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/README.md"
+                    href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Sample-App"
                   >
-                    Fabric&rsquo;s ToDo tutorial
+                    Fabric&rsquo;s DocumentCard tutorial
                   </a>{' '}
                   to learn how to make a simple React app using Fabric components.
                 </p>
