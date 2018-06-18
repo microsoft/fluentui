@@ -1,6 +1,7 @@
 import { IStyle, ITheme } from '../../Styling';
-import { IRenderFunction, IStyleFunction } from '../../Utilities';
+import { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IIconProps } from '../../Icon';
+import { ILabelStyleProps, ILabelStyles } from '../../Label';
 
 export interface ITextField {
   /** Gets the current value of the input. */
@@ -229,13 +230,13 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: IStyleFunction<ITextFieldStyleProps, ITextFieldStyles>;
+  styles?: IStyleFunctionOrObject<ITextFieldStyleProps, ITextFieldStyles>;
 
   // TODO: resolve with closure from styles or some other approach
   // /**
   //  * Call to provide customized styling that will layer on top of the variant rules.
   //  */
-  // getLabelStyles?: IStyleFunction<ITextFieldStyleProps, ILabelStyles>;
+  // getLabelStyles?: IStyleFunctionOrObject<ITextFieldStyleProps, ILabelStyles>;
 
   /**
    * @deprecated
@@ -297,16 +298,75 @@ export interface ITextFieldStyleProps {
   resizable?: boolean;
 }
 
+// TODO: why is this causing web page load to hang?
+// TODO: add this standard to wiki
+// export type ITextFieldStyleProps =
+//   Required<Pick<ITextFieldProps, 'theme'>> &
+//   Pick<ITextFieldProps, 'className' | 'disabled' | 'required' | 'multiline' | 'borderless' | 'resizable' | 'underlined'> & {
+//     /** Element has an error message. */
+//     'hasErrorMessage': boolean
+//     /** Element has an icon. */
+//     'hasIcon': boolean
+//     /** Element has a label. */
+//     'hasLabel': boolean
+//     /** Element has focus. */
+//     'focused': boolean
+//   };
+
 export interface ITextFieldStyles {
+  /**
+   * Style for root element.
+   */
   root?: IStyle;
+
+  /**
+   * Style for field group encompassing entry area (prefix, field, icon and suffix).
+   */
   fieldGroup?: IStyle;
+
+  /**
+   * Style for prefix element.
+   */
   prefix?: IStyle;
+
+  /**
+   * Style for suffix element.
+   */
   suffix?: IStyle;
+
+  /**
+   * Style for main field entry element.
+   */
   field?: IStyle;
+
+  /**
+   * Style for icon prop element.
+   */
   icon?: IStyle;
+
+  /**
+   * Style for description element.
+   */
   description?: IStyle;
+
+  /**
+   * Style for TextField wrapper element.
+   */
   wrapper?: IStyle;
+
+  /**
+   * Style for error message element.
+   */
   errorMessage?: IStyle;
-  // TODO: remove or use
+
+  /**
+   * Style for Label element.
+   */
+  // TODO: component styling wiki says to do labelAs instead of passing styling down to subcomponents
+  //  which approach should be used here?
+  // Similarly, for something like https://codepen.io/micahgodbolt/pen/oyzOjV?editors=0010, should we instead be
+  //  using iconAs and buttonAs?
   // label?: IStyle;
+  // label?: ILabelStyles;
+  label?: IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles>;
 }

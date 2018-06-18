@@ -35,6 +35,13 @@ export const getStyles = (props: ILabelStyleProps): ILabelStyles => {
         }
       },
       className
+    ],
+    // TODO: Remove. Superfluous style type added for mergeStyles and TextField testing.
+    text: [
+      'ms-Label-text',
+      {
+        color: theme.semanticColors.errorText
+      }
     ]
   };
 };

@@ -15,14 +15,15 @@ import {
   classNamesFunction
 } from '../../Utilities';
 import { ITextFieldStyleProps, ITextFieldStyles } from './TextField.types';
+import { getLabelStyles } from './TextField.styles';
 
 const getClassNames = classNamesFunction<ITextFieldStyleProps, ITextFieldStyles>();
 
 export interface ITextFieldState {
-  value?: string | undefined;
+  value?: string;
 
   /** Is true when the control has focus. */
-  isFocused?: boolean;
+  isFocused: boolean;
 
   /**
    * The validation error message.
@@ -30,7 +31,7 @@ export interface ITextFieldState {
    * - If there is no validation error or we have not validated the input value, errorMessage is an empty string.
    * - If we have done the validation and there is validation error, errorMessage is the validation error message.
    */
-  errorMessage?: string;
+  errorMessage: string;
 }
 
 @customizable('TextField', ['theme', 'styles'])
@@ -317,7 +318,17 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
 
   private _onRenderLabel = (props: ITextFieldProps): JSX.Element | null => {
     if (props.label) {
-      return <Label htmlFor={this._id}>{props.label}</Label>;
+      // TODO: how will consumer labelStyles be defined?
+      // TODO: right way to do this? how to mix in consumer label style prop when defined as object and function?
+      // TODO: use styled function to mixin consumer labelStyles with TextField's getLabelStyles?
+      // return null;
+      // return <Label htmlFor={this._id}>{props.label}</Label>;
+      // return <Label htmlFor={this._id} styles={this._classNames.label}>{props.label}</Label>;
+      return (
+        <Label htmlFor={this._id} styles={getLabelStyles(props)}>
+          {props.label}
+        </Label>
+      );
     }
     return null;
   };

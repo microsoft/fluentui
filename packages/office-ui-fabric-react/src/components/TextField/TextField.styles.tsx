@@ -1,23 +1,30 @@
-import { FontSizes, IRawStyle, HighContrastSelector, AnimationClassNames } from '../../Styling';
+import { normalize, FontSizes, HighContrastSelector, AnimationClassNames } from '../../Styling';
 import { ILabelStyles } from '../../Label';
 import { ITextFieldStyleProps, ITextFieldStyles } from './TextField.types';
+import { IStyleFunctionOrObject } from '@uifabric/utilities';
+import { ILabelStyleProps } from 'office-ui-fabric-react/lib/components/Label';
 
-export function getLabelStyles(props: ITextFieldStyleProps): ILabelStyles {
-  return {
+// TODO: validate against old CSS
+export function getLabelStyles(props: ITextFieldStyleProps): IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles> {
+  return (labelProps: ILabelStyleProps) => ({
     root: [
       props.disabled && {
         color: props.theme.palette.neutralTertiary
       },
       props.underlined && {
+        // TODO: why is font size only specified for underlined? is this in original CSS?
+        // TODO: how can this be worked in?
+        // props.theme.fonts.medium,
         fontSize: FontSizes.medium,
         marginRight: 8,
         paddingLeft: 12,
-        paddingRight: 0,
-        lineHeight: '22px',
-        height: 32
+        paddingRight: 0
+        // TODO: is this from original css?
+        // lineHeight: '22px',
+        // height: 32
       }
     ]
-  };
+  });
 }
 
 export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
@@ -36,20 +43,10 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
     hasErrorMessage
   } = props;
 
-  // use shared normalize once master merged into 6.0
-  const normalize: IRawStyle = {
-    boxShadow: 'none',
-    margin: 0,
-    padding: 0,
-    boxSizing: 'border-box'
-  };
-
   const { semanticColors, palette } = theme;
 
-  // TODO: move className to last
   return {
     root: [
-      className,
       'ms-TextField',
       required && 'is-required',
       disabled && 'is-disabled',
@@ -90,7 +87,8 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
               borderColor: 'Highlight'
             }
           }
-        }
+        },
+      className
     ],
     wrapper: [
       underlined && {
@@ -306,5 +304,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         lineHeight: 1
       }
     ]
+    // TODO: resolve
+    // label: getLabelStyles(props)
   };
 }

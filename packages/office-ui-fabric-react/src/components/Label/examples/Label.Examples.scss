@@ -1,0 +1,23 @@
+@import '../../../common/_variables';
+@import '../../../common/common';
+@import '../../../common/semanticSlots';
+
+// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
+
+// TODO: Remove file. Whole file added as reference for TextField/mergeStyles work.
+
+//
+// Office UI Fabric
+// --------------------------------------------------
+// Single line (input) and multiline (textarea) form field styles
+@import '../../Label/LabelMixins.scss';
+
+$field-text-disabled-color: $disabledTextColor;
+
+:global {
+  .label-cssStyled {
+    .ms-Label-text {
+      color: $field-text-disabled-color;
+    }
+  }
+}

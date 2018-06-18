@@ -11,6 +11,7 @@ import { TextFieldPlaceholderExample } from './examples/TextField.Placeholder.Ex
 import { TextFieldPrefixExample } from './examples/TextField.Prefix.Example';
 import { TextFieldPrefixAndSuffixExample } from './examples/TextField.PrefixAndSuffix.Example';
 import { TextFieldStatus } from './TextField.checklist';
+import { TextFieldStyledExample } from './examples/TextField.Styled.Example';
 import { TextFieldSuffixExample } from './examples/TextField.Suffix.Example';
 import { TextFieldUnderlinedExample } from './examples/TextField.Underlined.Example';
 import { TextFieldAutoCompleteExample } from './examples/TextField.AutoComplete.Example';
@@ -25,6 +26,7 @@ const TextFieldMultilineExampleCode = require('!raw-loader!office-ui-fabric-reac
 const TextFieldPlaceholderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Placeholder.Example.tsx') as string;
 const TextFieldPrefixExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Prefix.Example.tsx') as string;
 const TextFieldPrefixAndSuffixExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.PrefixAndSuffix.Example.tsx') as string;
+const TextFieldStyledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Styled.Example.tsx') as string;
 const TextFieldSuffixExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Suffix.Example.tsx') as string;
 const TextFieldUnderlinedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Underlined.Example.tsx') as string;
 const TextFieldAutoCompleteExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.AutoComplete.Example.tsx') as string;
@@ -37,6 +39,12 @@ export const TextFieldPageProps: IDocPageProps = {
     'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/TextField',
   componentStatus: TextFieldStatus,
   examples: [
+    // TODO: if this is kept, move to bottom of implementation examples
+    {
+      title: 'TextField styled variations',
+      code: TextFieldStyledExampleCode,
+      view: <TextFieldStyledExample />
+    },
     {
       title: 'Default TextField with Label',
       code: TextFieldBasicExampleCode,

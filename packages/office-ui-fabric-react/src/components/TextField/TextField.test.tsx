@@ -11,6 +11,9 @@ import { ITextField, TextField } from './TextField';
 import { TextFieldBase } from './TextField.base';
 import { getStyles } from './TextField.styles';
 
+// TODO: add tests for both label style as function and object
+// TODO: add test (or example) with custom className and styling for label
+
 describe('TextField', () => {
   beforeAll(() => {
     // Prevent warn deprecations from failing test
