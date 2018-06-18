@@ -19,7 +19,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
     cardDismissDelay: 100,
     expandedCardOpenDelay: 1500,
     instantOpenOnClick: false,
-    setInitialFocus: true
+    setInitialFocus: false
   };
 
   // The wrapping div that gets the hover events
