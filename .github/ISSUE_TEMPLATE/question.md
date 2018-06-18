@@ -1,6 +1,6 @@
 ---
 name: Question
-about: 'Please use Stack Overflow for questions'
+about: 'Please use Stack Overflow for questions #office-ui-fabric'
 
 ---
 
