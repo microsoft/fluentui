@@ -1,6 +1,6 @@
 --
 name: Feature request
-about: Suggest an idea for this project
+about: Do you have an idea or improvement for Fabric? Let us know.
 
 ---
 
