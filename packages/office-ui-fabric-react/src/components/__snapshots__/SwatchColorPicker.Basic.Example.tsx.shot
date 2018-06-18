@@ -4577,7 +4577,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   ms-Button--action
                   ms-Button--command
                   undefined
-                  is-checked
+                  is-disabled
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
@@ -4586,7 +4586,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     border-radius: 0px;
                     border: 1px solid transparent;
                     box-sizing: border-box;
-                    color: #000000;
+                    color: #a6a6a6;
                     cursor: default;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -4631,6 +4631,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
+                    bordercolor: grayText;
+                    color: grayText;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
                     border: none;
@@ -4697,6 +4699,12 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   & $svg {
                     border-radius: 100%;
+                  }
+                  &:hover {
+                    outline: 0px;
+                  }
+                  &:focus {
+                    outline: 0px;
                   }
               data-index={0}
               data-is-focusable={false}
@@ -4769,7 +4777,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   ms-Button--action
                   ms-Button--command
                   undefined
-                  is-checked
+                  is-disabled
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
@@ -4778,7 +4786,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     border-radius: 0px;
                     border: 1px solid transparent;
                     box-sizing: border-box;
-                    color: #000000;
+                    color: #a6a6a6;
                     cursor: default;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -4823,6 +4831,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
+                    bordercolor: grayText;
+                    color: grayText;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
                     border: none;
@@ -4889,6 +4899,12 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   & $svg {
                     border-radius: 100%;
+                  }
+                  &:hover {
+                    outline: 0px;
+                  }
+                  &:focus {
+                    outline: 0px;
                   }
               data-index={1}
               data-is-focusable={false}
@@ -4961,7 +4977,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   ms-Button--action
                   ms-Button--command
                   undefined
-                  is-checked
+                  is-disabled
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
@@ -4970,7 +4986,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     border-radius: 0px;
                     border: 1px solid transparent;
                     box-sizing: border-box;
-                    color: #000000;
+                    color: #a6a6a6;
                     cursor: default;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -5015,6 +5031,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
+                    bordercolor: grayText;
+                    color: grayText;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
                     border: none;
@@ -5081,6 +5099,12 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   & $svg {
                     border-radius: 100%;
+                  }
+                  &:hover {
+                    outline: 0px;
+                  }
+                  &:focus {
+                    outline: 0px;
                   }
               data-index={2}
               data-is-focusable={false}
@@ -5153,7 +5177,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   ms-Button--action
                   ms-Button--command
                   undefined
-                  is-checked
+                  is-disabled
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
@@ -5162,7 +5186,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     border-radius: 0px;
                     border: 1px solid transparent;
                     box-sizing: border-box;
-                    color: #000000;
+                    color: #a6a6a6;
                     cursor: default;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -5207,6 +5231,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
+                    bordercolor: grayText;
+                    color: grayText;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
                     border: none;
@@ -5273,6 +5299,12 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   & $svg {
                     border-radius: 100%;
+                  }
+                  &:hover {
+                    outline: 0px;
+                  }
+                  &:focus {
+                    outline: 0px;
                   }
               data-index={3}
               data-is-focusable={false}
@@ -5345,7 +5377,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   ms-Button--action
                   ms-Button--command
                   undefined
-                  is-checked
+                  is-disabled
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
@@ -5354,7 +5386,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     border-radius: 0px;
                     border: 1px solid transparent;
                     box-sizing: border-box;
-                    color: #000000;
+                    color: #a6a6a6;
                     cursor: default;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -5399,6 +5431,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
+                    bordercolor: grayText;
+                    color: grayText;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
                     border: none;
@@ -5475,6 +5509,12 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-left: 0px;
                     padding-right: 0px;
                     padding-top: 0px;
+                  }
+                  &:hover {
+                    outline: 0px;
+                  }
+                  &:focus {
+                    outline: 0px;
                   }
               data-index={4}
               data-is-focusable={false}

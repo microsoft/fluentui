@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComboBoxPage } from '@uifabric/demo/lib/components/pages/ComboBoxPage';
+import { ComboBoxPage } from '@uifabric/fabric-website-resources/lib/components/pages/ComboBoxPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 const pageStyles: any = require('../PageStyles.module.scss');

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SpinnerPage } from '@uifabric/demo/lib/components/pages/SpinnerPage';
+import { SpinnerPage } from '@uifabric/fabric-website-resources/lib/components/pages/SpinnerPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 const pageStyles: any = require('../PageStyles.module.scss');

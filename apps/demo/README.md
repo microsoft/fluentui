@@ -18,13 +18,14 @@ Fabric React is a responsive, mobile-first collection of robust components desig
 - [Licenses](#licenses)
 - [Changelog](#changelog)
 
-
 ## Get started
 
 ### Tutorial
-[Here is a step by step tutorial](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/README.md) on how to build a simple React app with an Office UI Fabric React component.
+
+[Here is a step by step tutorial](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Sample-App) on how to build a simple React app with an Office UI Fabric React component.
 
 ### Integrate into an existing project
+
 Integrating components into your project depends heavily on your setup. The recommended setup is to use a bundler such as Webpack which can resolve NPM package imports in your code and can bundle the specific things you import.
 
 Within an npm project, you should install the package and save it as a dependency:
@@ -72,13 +73,14 @@ console.log(
   `
   <html>
   <head>
-    <style>${ _allStyles}</style>
+    <style>${_allStyles}</style>
   </head>
   <body>
-    ${ body}
+    ${body}
   </body>
   </html>
-  `);
+  `
+);
 ```
 
 Note: we are evaluating a more robust theming and style loading approach, which will allow a much more flexible server rendering approach, so this syntax may be simplified in the future.
@@ -89,21 +91,19 @@ To learn more about how to use the components in your application visit the [Off
 
 ## Testing
 
-For testing see our [testing documentation](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/BestPractices/Testing.md).
+For testing see our [testing documentation](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Testing).
 
 ## Advanced usage
 
-For advanced usage including info about module vs. path-based imports, using an AMD bundler like Require, and deployment features, see our [advanced documentation](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/BestPractices/Advanced.md).
+For advanced usage including info about module vs. path-based imports, using an AMD bundler like Require, and deployment features, see our [advanced documentation](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Advanced-Usage).
 
 ## Browser support
 
-Fabric React supports many commonly used browsers. See the [browser support doc](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/Testing/BrowserSupport.md) for more information.
-
+Fabric React supports many commonly used browsers. See the [browser support doc](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Browser-Support) for more information.
 
 ## Contributing
 
-We're excited to share our development of this project with folks outside of the company, but please keep in mind that we're moving towards a v1 state which requires that we stay focused on reaching that goal. With this in mind, take a look at our [contribution guidelines](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/Contributing/Contributing.md) for more info on how we plan to look at issues, how to structure your commit messages, and more.
-
+We're excited to share our development of this project with folks outside of the company, but please keep in mind that we're moving towards a v1 state which requires that we stay focused on reaching that goal. With this in mind, take a look at our [contribution guidelines](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Contributing) for more info on how we plan to look at issues, how to structure your commit messages, and more.
 
 ## Licenses
 
@@ -111,11 +111,10 @@ All files on the Office UI Fabric React GitHub repository are subject to the MIT
 
 Usage of the fonts and icons referenced in Office UI Fabric is subject to the terms of the [assets license agreement](http://aka.ms/fabric-assets-license).
 
-
 ## Changelog
 
 We use [GitHub Releases](https://github.com/blog/1547-release-your-software) to manage our releases, including the changelog between every release. View a complete list of additions, fixes, and changes on the [releases](https://github.com/OfficeDev/office-ui-fabric-react/releases) page.
 
-- - -
+---
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
