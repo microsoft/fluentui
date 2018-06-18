@@ -5,6 +5,7 @@ import { ITeachingBubbleState } from './TeachingBubble';
 import { PrimaryButton, DefaultButton, IconButton } from '../../Button';
 import { Image, ImageFit } from '../../Image';
 import * as stylesImport from './TeachingBubble.scss';
+import { KeyCodes } from '@uifabric/utilities';
 const styles: any = stylesImport;
 
 export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, ITeachingBubbleState>
@@ -25,6 +26,18 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
     super(props);
 
     this.state = {};
+  }
+
+  public componentDidMount(): void {
+    if (this.props.onDismiss) {
+      document.addEventListener('keydown', this._onKeyDown, false);
+    }
+  }
+
+  public componentWillUnmount(): void {
+    if (this.props.onDismiss) {
+      document.removeEventListener('keydown', this._onKeyDown);
+    }
   }
 
   public focus(): void {
@@ -148,4 +161,12 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
       </div>
     );
   }
+
+  private _onKeyDown = (e: any): void => {
+    if (this.props.onDismiss) {
+      if (e.which === KeyCodes.escape) {
+        this.props.onDismiss();
+      }
+    }
+  };
 }
