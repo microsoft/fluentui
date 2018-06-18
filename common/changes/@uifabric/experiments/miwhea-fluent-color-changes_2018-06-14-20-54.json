@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/experiments",
+      "comment": "Update Fluent colors",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/experiments",
+  "email": "mike@mikewheaton.ca"
+}
