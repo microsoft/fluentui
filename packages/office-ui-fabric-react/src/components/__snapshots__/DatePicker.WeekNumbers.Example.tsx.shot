@@ -93,13 +93,11 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
       Select the first day of the week
     </label>
     <button
-      aria-activedescendant="Dropdown2-option"
-      aria-describedby="Dropdown2-option"
       aria-disabled={undefined}
       aria-expanded="false"
       aria-haspopup="listbox"
       aria-label={undefined}
-      aria-labelledby="Dropdown2-label"
+      aria-labelledby="Dropdown2-label Dropdown2-option"
       aria-owns={undefined}
       className="ms-Dropdown"
       data-is-focusable={true}
@@ -114,7 +112,6 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
         aria-label="Monday"
         className="ms-Dropdown-title"
         id="Dropdown2-option"
-        role="listbox"
       >
         <span>
           Monday

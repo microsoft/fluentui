@@ -3506,13 +3506,11 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           Number of items to render
         </label>
         <button
-          aria-activedescendant="Dropdown64-option"
-          aria-describedby="Dropdown64-option"
           aria-disabled={undefined}
           aria-expanded="false"
           aria-haspopup="listbox"
           aria-label={undefined}
-          aria-labelledby="Dropdown64-label"
+          aria-labelledby="Dropdown64-label Dropdown64-option"
           aria-owns={undefined}
           className="ms-Dropdown"
           data-is-focusable={true}
@@ -3527,7 +3525,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-label="20"
             className="ms-Dropdown-title"
             id="Dropdown64-option"
-            role="listbox"
           >
             <span>
               20

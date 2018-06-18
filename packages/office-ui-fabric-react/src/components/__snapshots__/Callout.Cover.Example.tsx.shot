@@ -37,13 +37,11 @@ exports[`Component Examples renders Callout.Cover.Example.tsx correctly 1`] = `
         Directional hint
       </label>
       <button
-        aria-activedescendant="Dropdown0-option"
-        aria-describedby="Dropdown0-option"
         aria-disabled={undefined}
         aria-expanded="false"
         aria-haspopup="listbox"
         aria-label={undefined}
-        aria-labelledby="Dropdown0-label"
+        aria-labelledby="Dropdown0-label Dropdown0-option"
         aria-owns={undefined}
         className="ms-Dropdown"
         data-is-focusable={true}
@@ -58,7 +56,6 @@ exports[`Component Examples renders Callout.Cover.Example.tsx correctly 1`] = `
           aria-label="Bottom Left Edge"
           className="ms-Dropdown-title"
           id="Dropdown0-option"
-          role="listbox"
         >
           <span>
             Bottom Left Edge

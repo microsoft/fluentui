@@ -5,13 +5,11 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
   className="ms-Dropdown-container"
 >
   <button
-    aria-activedescendant="Dropdown94-option"
-    aria-describedby="Dropdown94-option"
     aria-disabled={undefined}
     aria-expanded="false"
     aria-haspopup="listbox"
     aria-label={undefined}
-    aria-labelledby="Dropdown94-label"
+    aria-labelledby="Dropdown94-label Dropdown94-option"
     aria-owns={undefined}
     className="ms-Dropdown"
     data-is-focusable={true}
@@ -26,7 +24,6 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
       aria-label={undefined}
       className="ms-Dropdown-title ms-Dropdown-titleIsPlaceHolder"
       id="Dropdown94-option"
-      role="listbox"
     />
     <span
       className="ms-Dropdown-caretDownWrapper"
@@ -62,13 +59,11 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
   className="ms-Dropdown-container"
 >
   <button
-    aria-activedescendant="Dropdown0-option"
-    aria-describedby="Dropdown0-option"
     aria-disabled={undefined}
     aria-expanded="false"
     aria-haspopup="listbox"
     aria-label={undefined}
-    aria-labelledby="Dropdown0-label"
+    aria-labelledby="Dropdown0-label Dropdown0-option"
     aria-owns={undefined}
     className="ms-Dropdown"
     data-is-focusable={true}
@@ -83,7 +78,6 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
       aria-label={undefined}
       className="ms-Dropdown-title ms-Dropdown-titleIsPlaceHolder"
       id="Dropdown0-option"
-      role="listbox"
     />
     <span
       className="ms-Dropdown-caretDownWrapper"

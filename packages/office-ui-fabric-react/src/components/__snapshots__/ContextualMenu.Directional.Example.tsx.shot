@@ -193,13 +193,11 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
         Directional hint
       </label>
       <button
-        aria-activedescendant="Dropdown1-option"
-        aria-describedby="Dropdown1-option"
         aria-disabled={undefined}
         aria-expanded="false"
         aria-haspopup="listbox"
         aria-label={undefined}
-        aria-labelledby="Dropdown1-label"
+        aria-labelledby="Dropdown1-label Dropdown1-option"
         aria-owns={undefined}
         className="ms-Dropdown"
         data-is-focusable={true}
@@ -214,7 +212,6 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
           aria-label="Bottom Left Edge"
           className="ms-Dropdown-title"
           id="Dropdown1-option"
-          role="listbox"
         >
           <span>
             Bottom Left Edge
