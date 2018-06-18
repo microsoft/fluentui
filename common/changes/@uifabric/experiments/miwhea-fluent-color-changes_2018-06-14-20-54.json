@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Add GridList component into the existing Dashboard Card Component",
+      "comment": "Update Fluent colors",
       "type": "minor"
     }
   ],
   "packageName": "@uifabric/experiments",
-  "email": "raghurk@microsoft.com"
+  "email": "mike@mikewheaton.ca"
 }

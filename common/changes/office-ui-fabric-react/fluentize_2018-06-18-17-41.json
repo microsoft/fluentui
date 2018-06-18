@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add params to BaseButton openMenu to override focus props temporarily",
+      "comment": "Updated Link, Breadcrumb, and Dialog to accept custom styles",
       "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "keyou@microsoft.com"
+  "email": "v-brgarl@microsoft.com"
 }
