@@ -411,7 +411,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 
   private _setDraggedItemIndex(itemIndex: number) {
     if (itemIndex >= 0) {
-      this._draggedColumnIndex = this.props.selectionMode !== SelectionMode.none ? itemIndex! - 2 : itemIndex;
+      this._draggedColumnIndex = this.props.selectionMode !== SelectionMode.none ? itemIndex - 2 : itemIndex - 1;
       this._getDropHintPositions();
     } else {
       this._resetDropHints();
