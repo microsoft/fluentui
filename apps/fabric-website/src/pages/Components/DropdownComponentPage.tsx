@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DropdownPage } from 'office-ui-fabric-react/lib/components/Dropdown/DropdownPage';
+import { DropdownPage } from '@uifabric/fabric-website-resources/lib/components/pages/DropdownPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 const pageStyles: any = require('../PageStyles.module.scss');

@@ -20,7 +20,7 @@ import {
   SelectionMode,
   buildColumns
 } from 'office-ui-fabric-react/lib/DetailsList';
-import { createListItems, isGroupable } from '@uifabric/example-app-base';
+import { createListItems, isGroupable } from '../../../utilities/exampleData';
 import './DetailsList.Advanced.Example.scss';
 
 const DEFAULT_ITEM_LIMIT = 5;

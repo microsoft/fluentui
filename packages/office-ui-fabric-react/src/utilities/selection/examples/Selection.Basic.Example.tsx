@@ -10,7 +10,7 @@ import {
   SelectionMode,
   SelectionZone
 } from 'office-ui-fabric-react/lib/Selection';
-import { createListItems } from '@uifabric/example-app-base';
+import { createListItems } from '../../../utilities/exampleData';
 
 import './Selection.Example.scss';
 

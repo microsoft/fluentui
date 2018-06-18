@@ -12,23 +12,43 @@ import {
 } from '../SelectedPeopleList/SelectedPeopleList';
 import { ExtendedSelectedItem } from '../SelectedPeopleList/Items/ExtendedSelectedItem';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 
 import * as stylesImport from './SelectedPeopleList.Basic.Example.scss';
 const styles: any = stylesImport;
 
-export class PeopleSelectedItemsListExample extends BaseComponent<{}, {}> {
+export interface IPeopleSelectedItemsListExampleState {
+  currentSelectedItems: IExtendedPersonaProps[];
+  controlledComponent: boolean;
+}
+
+export class PeopleSelectedItemsListExample extends BaseComponent<{}, IPeopleSelectedItemsListExampleState> {
   private _selectionList: SelectedPeopleList;
   private index: number;
   private selection: Selection = new Selection({ onSelectionChanged: () => this._onSelectionChange() });
 
+  constructor(props: {}) {
+    super(props);
+
+    this.state = {
+      controlledComponent: false,
+      currentSelectedItems: [people[40]]
+    };
+  }
+
   public render(): JSX.Element {
     return (
       <div className={'ms-BasePicker-text'}>
+        <Toggle label="Controlled component" defaultChecked={false} onChanged={this._toggleControlledComponent} />
         <PrimaryButton text="Add another item" onClick={this._onAddItemButtonClicked} />
         {this._renderExtendedPicker()}
       </div>
     );
   }
+
+  private _toggleControlledComponent = (toggleState: boolean): void => {
+    this.setState({ controlledComponent: toggleState });
+  };
 
   private _renderExtendedPicker(): JSX.Element {
     return (
@@ -37,6 +57,7 @@ export class PeopleSelectedItemsListExample extends BaseComponent<{}, {}> {
           key={'normal'}
           removeButtonAriaLabel={'Remove'}
           defaultSelectedItems={[people[40]]}
+          selectedItems={this.state.controlledComponent ? this.state.currentSelectedItems : undefined}
           componentRef={this._setComponentRef}
           onCopyItems={this._onCopyItems}
           onExpandGroup={this._onExpandItem}
@@ -44,6 +65,7 @@ export class PeopleSelectedItemsListExample extends BaseComponent<{}, {}> {
           removeMenuItemText={'Remove'}
           selection={this.selection}
           onRenderItem={this._onRenderItem}
+          onItemDeleted={this.state.controlledComponent ? this._onItemDeleted : undefined}
         />
       </div>
     );
@@ -62,14 +84,37 @@ export class PeopleSelectedItemsListExample extends BaseComponent<{}, {}> {
       if (!this.index) {
         this.index = 0;
       }
-      this._selectionList.addItems([people[this.index]]);
+
+      if (this.state.controlledComponent) {
+        this.setState({ currentSelectedItems: [...this.state.currentSelectedItems, people[this.index]] });
+      } else {
+        this._selectionList.addItems([people[this.index]]);
+      }
       this.index++;
     }
   };
 
+  private _onItemDeleted = (item: IExtendedPersonaProps): void => {
+    const indexToRemove = this.state.currentSelectedItems.indexOf(item);
+    this.setState({
+      currentSelectedItems: this.state.currentSelectedItems
+        .slice(0, indexToRemove)
+        .concat(this.state.currentSelectedItems.slice(indexToRemove + 1))
+    });
+  };
+
   private _onExpandItem = (item: IExtendedPersonaProps): void => {
-    // tslint:disable-next-line:no-any
-    this._selectionList.replaceItem(item, this._getExpandedGroupItems(item as any));
+    if (this.state.controlledComponent) {
+      const indexToExpand = this.state.currentSelectedItems.indexOf(item);
+      this.setState({
+        currentSelectedItems: this.state.currentSelectedItems
+          .slice(0, indexToExpand)
+          .concat(this._getExpandedGroupItems(item as any))
+          .concat(this.state.currentSelectedItems.slice(indexToExpand + 1))
+      });
+    } else {
+      this._selectionList.replaceItem(item, this._getExpandedGroupItems(item as any));
+    }
   };
 
   private _onSelectionChange(): void {

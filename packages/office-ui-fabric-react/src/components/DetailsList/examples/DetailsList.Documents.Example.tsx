@@ -9,7 +9,7 @@ import {
   IColumn
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { lorem } from '@uifabric/example-app-base';
+import { lorem } from '../../../utilities/exampleData';
 import './DetailsListExample.scss';
 
 let _items: IDocument[] = [];

@@ -22,7 +22,7 @@ const DefaultDialogContentProps: IDialogContentProps = {
   topButtonsProps: []
 };
 
-@customizable('Dialog', ['theme'])
+@customizable('Dialog', ['theme', 'styles'])
 @withResponsiveMode
 export class DialogBase extends BaseComponent<IDialogProps, {}> {
   public static defaultProps: IDialogProps = {

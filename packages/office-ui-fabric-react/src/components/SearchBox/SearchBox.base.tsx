@@ -13,10 +13,11 @@ export interface ISearchBoxState {
   id?: string;
 }
 
-@customizable('SearchBox', ['theme'])
+@customizable('SearchBox', ['theme', 'styles'])
 export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
-  public static defaultProps: ISearchBoxProps = {
-    disableAnimation: false
+  public static defaultProps: Pick<ISearchBoxProps, 'disableAnimation' | 'clearButtonProps'> = {
+    disableAnimation: false,
+    clearButtonProps: { ariaLabel: 'Clear text' }
   };
 
   private _rootElement = createRef<HTMLDivElement>();

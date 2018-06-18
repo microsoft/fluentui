@@ -1,6 +1,26 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 07 Jun 2018 16:35:34 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Jun 2018 16:57:14 GMT and should not be manually modified.
+
+## 6.5.0
+Mon, 18 Jun 2018 16:57:14 GMT
+
+### Minor changes
+
+- Dashboard Card Component for Admin Portals Dashboard which will be hosted inside react-grid-layout. 
+- Add GridList component into the existing Dashboard Card Component
+
+### Patches
+
+- Add alias to CommandBar to final version
+- Fix import mistakes
+
+## 6.4.0
+Fri, 08 Jun 2018 18:34:17 GMT
+
+### Minor changes
+
+- add style arg to customizable
 
 ## 6.3.0
 Thu, 07 Jun 2018 16:35:34 GMT

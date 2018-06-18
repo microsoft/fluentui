@@ -13,6 +13,11 @@ exports[`DetailsHeader can render 1`] = `
   onMouseDownCapture={[Function]}
   onMouseMove={[Function]}
   role="row"
+  style={
+    Object {
+      "minWidth": 0,
+    }
+  }
 >
   <div
     aria-colindex={1}

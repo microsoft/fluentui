@@ -4,7 +4,7 @@ import { BaseComponent, customizable } from '../../../Utilities';
 import { IButtonProps } from '../Button.types';
 import { getStyles } from './CompoundButton.styles';
 
-@customizable('CompoundButton', ['theme'])
+@customizable('CompoundButton', ['theme', 'styles'])
 export class CompoundButton extends BaseComponent<IButtonProps, {}> {
   /**
    * Tell BaseComponent to bypass resolution of componentRef.

@@ -21,9 +21,13 @@ export interface IButton {
   dismissMenu: () => void;
 
   /**
-   * If there is a menu associated with this button and it is visible, this will open the menu
+   * If there is a menu associated with this button and it is visible, this will open the menu.
+   * Params are optional overrides to the ones defined in 'menuProps' to apply to just this instance of opening the menu.
+   *
+   * @param shouldFocusOnContainer - override to the ContextualMenu shouldFocusOnContainer prop. BaseButton implementation defaults to 'undefined'.
+   * @param shouldFocusOnMount - override to the ContextualMenu shouldFocusOnMount prop. BaseButton implementation defaults to 'true'.
    */
-  openMenu: () => void;
+  openMenu: (shouldFocusOnContainer?: boolean, shouldFocusOnMount?: boolean) => void;
 }
 
 export interface IButtonProps
@@ -55,6 +59,11 @@ export interface IButtonProps
    * Whether the button is disabled
    */
   disabled?: boolean;
+
+  /**
+   * Whether the button can have focus in disabled mode
+   */
+  allowDisabledFocus?: boolean;
 
   /**
    * If set to true and if this is a splitButton (split == true) then the primary action of a split button is disabled.
@@ -220,7 +229,8 @@ export interface IButtonProps
     disabled: boolean,
     checked: boolean,
     expanded: boolean,
-    isSplit: boolean | undefined
+    isSplit: boolean | undefined,
+    allowDisabledFocus: boolean
   ) => IButtonClassNames;
 
   /**
@@ -229,7 +239,12 @@ export interface IButtonProps
    * defined in BaseButton.classnames.
    * @default getBaseSplitButtonClassNames
    */
-  getSplitButtonClassNames?: (disabled: boolean, expanded: boolean, checked: boolean) => ISplitButtonClassNames;
+  getSplitButtonClassNames?: (
+    disabled: boolean,
+    expanded: boolean,
+    checked: boolean,
+    allowDisabledFocus: boolean
+  ) => ISplitButtonClassNames;
 
   /**
    * Provides a custom KeyCode that can be used to open the button menu.

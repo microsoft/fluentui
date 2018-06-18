@@ -27,7 +27,7 @@ export interface IScrollablePaneState {
 
 const getClassNames = classNamesFunction<IScrollablePaneStyleProps, IScrollablePaneStyles>();
 
-@customizable('ScrollablePane', ['theme'])
+@customizable('ScrollablePane', ['theme', 'styles'])
 export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScrollablePaneState>
   implements IScrollablePane {
   public static childContextTypes: React.ValidationMap<IScrollablePaneContext> = {
@@ -380,9 +380,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   };
 
   private _onWindowResize = (): void => {
-    this._async.setTimeout(() => {
-      this.notifySubscribers();
-    }, 5);
+    this.notifySubscribers();
   };
 
   private _getStickyContainerStyle = (height: number): React.CSSProperties => {

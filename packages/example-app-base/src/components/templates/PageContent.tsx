@@ -16,7 +16,7 @@ const getDefaultStyles = (props: IPageContentProps): IPageContentStyles => ({
   }
 });
 
-@customizable('PageContent', ['theme'])
+@customizable('PageContent', ['theme', 'styles'])
 export class PageContent extends BaseComponent<IPageContentProps, {}> {
   public render(): JSX.Element {
     const { children } = this.props;

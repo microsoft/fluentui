@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders Label.Basic.Example.tsx correctly 1`] = `
+<div>
+  <label
+    className=
+        ms-Label
+        {
+          box-shadow: none;
+          box-sizing: border-box;
+          color: #333333;
+          display: block;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          overflow-wrap: break-word;
+          padding-bottom: 5px;
+          padding-left: 0;
+          padding-right: 0;
+          padding-top: 5px;
+          word-wrap: break-word;
+        }
+  >
+    I'm a Label
+  </label>
+  <label
+    className=
+        ms-Label
+        {
+          box-shadow: none;
+          box-sizing: border-box;
+          color: #c8c8c8;
+          display: block;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          overflow-wrap: break-word;
+          padding-bottom: 5px;
+          padding-left: 0;
+          padding-right: 0;
+          padding-top: 5px;
+          word-wrap: break-word;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          color: GrayText;
+        }
+  >
+    I'm a disabled Label
+  </label>
+  <label
+    className=
+        ms-Label
+        {
+          box-shadow: none;
+          box-sizing: border-box;
+          color: #333333;
+          display: block;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          overflow-wrap: break-word;
+          padding-bottom: 5px;
+          padding-left: 0;
+          padding-right: 0;
+          padding-top: 5px;
+          word-wrap: break-word;
+        }
+        &::after {
+          color: #a80000;
+          content: ' *';
+          padding-right: 12px;
+        }
+    required={true}
+  >
+    I'm a required Label
+  </label>
+</div>
+`;

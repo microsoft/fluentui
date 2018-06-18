@@ -119,7 +119,6 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
           }
       data-ktp-execute-target={undefined}
       data-lpignore={true}
-      disabled={false}
       id="input1"
       onBlur={[Function]}
       onChange={[Function]}
@@ -151,6 +150,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
     >
       <button
         aria-describedby={undefined}
+        aria-disabled={undefined}
         aria-label={undefined}
         aria-labelledby={undefined}
         aria-pressed={false}
@@ -274,6 +274,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
       </button>
       <button
         aria-describedby={undefined}
+        aria-disabled={undefined}
         aria-label={undefined}
         aria-labelledby={undefined}
         aria-pressed={false}

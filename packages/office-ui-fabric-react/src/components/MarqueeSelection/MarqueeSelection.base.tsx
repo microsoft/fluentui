@@ -32,7 +32,7 @@ const MIN_DRAG_DISTANCE = 5;
  * fall within the bounds of the rectangle. The measure is memoized during the drag as a performance optimization
  * so if the items change sizes while dragging, that could cause incorrect results.
  */
-@customizable('MarqueeSelection', ['theme'])
+@customizable('MarqueeSelection', ['theme', 'styles'])
 export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, IMarqueeSelectionState> {
   public static defaultProps = {
     rootTagName: 'div',

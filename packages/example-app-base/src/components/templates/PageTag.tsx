@@ -28,7 +28,7 @@ const getDefaultStyles = (props: IPageTagStyleProps): IPageTagStyles => ({
   }
 });
 
-@customizable('PageTag', ['theme'])
+@customizable('PageTag', ['theme', 'styles'])
 export class PageTag extends BaseComponent<IPageTagProps, {}> {
   public render(): JSX.Element {
     const { children, theme, className } = this.props;

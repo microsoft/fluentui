@@ -18,7 +18,7 @@ export interface ICheckboxState {
 
 const getClassNames = classNamesFunction<ICheckboxStyleProps, ICheckboxStyles>();
 
-@customizable('Checkbox', ['theme'])
+@customizable('Checkbox', ['theme', 'styles'])
 export class CheckboxBase extends BaseComponent<ICheckboxProps, ICheckboxState> implements ICheckbox {
   public static defaultProps: ICheckboxProps = {
     boxSide: 'start'

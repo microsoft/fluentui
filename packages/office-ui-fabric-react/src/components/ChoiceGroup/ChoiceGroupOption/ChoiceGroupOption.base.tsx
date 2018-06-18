@@ -18,7 +18,7 @@ import {
 
 const getClassNames = classNamesFunction<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>();
 
-@customizable('ChoiceGroupOption', ['theme'])
+@customizable('ChoiceGroupOption', ['theme', 'styles'])
 export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps, any> {
   private _inputElement = createRef<HTMLInputElement>();
   private _classNames: IClassNames<IChoiceGroupOptionStyles>;

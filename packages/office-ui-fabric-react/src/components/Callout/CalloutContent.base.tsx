@@ -48,7 +48,7 @@ export interface ICalloutState {
   heightOffset?: number;
 }
 
-@customizable('CalloutContent', ['theme'])
+@customizable('CalloutContent', ['theme', 'styles'])
 export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutState> {
   public static defaultProps = {
     preventDismissOnLostFocus: false,
@@ -151,6 +151,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
       children,
       beakWidth,
       calloutWidth,
+      calloutMaxWidth,
       finalHeight,
       backgroundColor,
       calloutMaxHeight,
@@ -176,7 +177,8 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
       calloutWidth,
       positions,
       beakWidth,
-      backgroundColor
+      backgroundColor,
+      calloutMaxWidth
     });
 
     const overflowStyle: React.CSSProperties = overflowYHidden
