@@ -1,13 +1,5 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  classNamesFunction,
-  customizable,
-  createRef,
-  getId,
-  inputProperties,
-  getNativeProps
-} from '../../Utilities';
+import { BaseComponent, classNamesFunction, createRef, getId, inputProperties, getNativeProps } from '../../Utilities';
 import { IToggleProps, IToggle, IToggleStyleProps, IToggleStyles } from './Toggle.types';
 import { Label } from '../../Label';
 import { KeytipData } from '../../KeytipData';
@@ -18,7 +10,6 @@ export interface IToggleState {
 
 const getClassNames = classNamesFunction<IToggleStyleProps, IToggleStyles>();
 
-@customizable('Toggle', ['theme', 'styles'])
 export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implements IToggle {
   private _id: string;
   private _toggleButton = createRef<HTMLButtonElement>();
