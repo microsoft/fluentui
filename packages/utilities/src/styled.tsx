@@ -9,6 +9,10 @@ export interface IPropsWithStyles<TStyleProps, TStyles> {
   };
 }
 
+interface IMaybeNewStyles<TStyleProps, TStyles> {
+  styles?: IStyleFunction<TStyleProps, TStyles>;
+}
+
 interface IWrappedComponent<P> {
   (props: P): JSX.Element;
   displayName: string;
@@ -34,12 +38,14 @@ export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TSt
   getProps?: (props: TComponentProps) => Partial<TComponentProps>
 ): (props: TComponentProps) => JSX.Element {
 
-  const Wrapped = ((componentProps: TComponentProps) => {
+  const Wrapped = ((componentProps: TComponentProps & IMaybeNewStyles<TStyleProps, TStyles>) => {
+    const originalGetStyles = componentProps.styles || componentProps.getStyles;
+
     const getStyles = (
       styleProps: TStyleProps
     ) => concatStyleSets(
       getBaseStyles && getBaseStyles(styleProps),
-      componentProps && componentProps.getStyles && componentProps.getStyles(styleProps)
+      componentProps && originalGetStyles && originalGetStyles(styleProps)
     );
     const additionalProps = getProps ? getProps(componentProps) : {};
 
