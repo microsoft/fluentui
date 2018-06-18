@@ -1,17 +1,15 @@
----
+--
 name: Feature request
 about: Suggest an idea for this project
 
 ---
 
-**Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+<!-- Feature requests will be moved to the prospective codeowner's backlog and then closed -->
 
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
+**Describe the feature that you would like added**
 
-**Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered.
+**What component or utility would this be added to**
 
-**Additional context**
-Add any other context or screenshots about the feature request here.
+**Have you discussed this feature with our team, and if so, who**
+
+**Additional context/screenshots**
