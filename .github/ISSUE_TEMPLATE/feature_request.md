@@ -1,10 +1,10 @@
 --
 name: Feature request
-about: Do you have an idea or improvement for Fabric? Let us know.
+about: Do you have Feature or improvemnet for Fabric? Let us know.
 
 ---
 
-<!-- Feature requests will be moved to the prospective codeowner's backlog and then closed -->
+<!-- Note: Feature requests will be moved to the prospective codeowner's backlog and then closed -->
 
 **Describe the feature that you would like added**
 
