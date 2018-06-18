@@ -1,6 +1,5 @@
 import { IStyle, HighContrastSelector, ScreenWidthMaxSmall, getScreenSelector, getFocusStyle } from '../../Styling';
 import { IMessageBarStyleProps, IMessageBarStyles, MessageBarType } from './MessageBar.types';
-import { IsFocusVisibleClassName } from '@uifabric/utilities';
 
 export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
   const { theme, className, messageBarType, onDismiss, actions, truncated, isMultiline, expandSingleLine } = props;
@@ -56,7 +55,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
       '& .ms-Button-icon': {
         fontSize: 12,
         height: 12,
-        lineHeight: 12,
+        lineHeight: '12px',
         color: palette.neutralPrimary
       },
       [SmallScreenSelector]: {
