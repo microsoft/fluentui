@@ -89,7 +89,7 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement | H
   /**
    * Set first focus into hover card, default should be true
    */
-  defaultFirstFocus?: boolean;
+  setInitialFocus?: boolean;
 }
 
 export interface IHoverCardStyles {
