@@ -290,7 +290,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         }
       },
       isMultiline && {
-        margin: '12px 12px 12px 0',
+        margin: '0px 12px 12px 0',
         selectors: {
           '& button:nth-child(n+2)': {
             marginLeft: 12
