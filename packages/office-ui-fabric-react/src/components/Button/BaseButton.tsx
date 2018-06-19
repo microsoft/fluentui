@@ -110,28 +110,28 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
     this._classNames = getClassNames
       ? getClassNames(
-        theme!,
-        className!,
-        variantClassName!,
-        iconProps && iconProps.className,
-        menuIconProps && menuIconProps.className,
-        isPrimaryButtonDisabled!,
-        checked!,
-        !!menuProps,
-        this.props.split,
-        !!allowDisabledFocus
-      )
+          theme!,
+          className!,
+          variantClassName!,
+          iconProps && iconProps.className,
+          menuIconProps && menuIconProps.className,
+          isPrimaryButtonDisabled!,
+          checked!,
+          !!menuProps,
+          this.props.split,
+          !!allowDisabledFocus
+        )
       : getBaseButtonClassNames(
-        styles!,
-        className!,
-        variantClassName!,
-        iconProps && iconProps.className,
-        menuIconProps && menuIconProps.className,
-        isPrimaryButtonDisabled!,
-        checked!,
-        !!menuProps,
-        this.props.split
-      );
+          styles!,
+          className!,
+          variantClassName!,
+          iconProps && iconProps.className,
+          menuIconProps && menuIconProps.className,
+          isPrimaryButtonDisabled!,
+          checked!,
+          !!menuProps,
+          this.props.split
+        );
 
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;
     // Anchor tag cannot be disabled hence in disabled state rendering
@@ -181,6 +181,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       className: this._classNames.root,
       ref: this._buttonElement,
       disabled: isPrimaryButtonDisabled && !allowDisabledFocus,
+      onKeyDown: this._onKeyDown,
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledBy,
       'aria-describedby': ariaDescribedBy,
@@ -586,6 +587,13 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
 
     ev.preventDefault();
+  };
+
+  private _onKeyDown = (ev: React.KeyboardEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>) => {
+    if (this.props.disabled && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space)) {
+      ev.preventDefault();
+      ev.stopPropagation();
+    }
   };
 
   private _onSplitButtonContainerKeyDown = (ev: React.KeyboardEvent<HTMLDivElement>) => {
