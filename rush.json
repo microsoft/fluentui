@@ -30,6 +30,12 @@
       "shouldPublish": false
     },
     {
+      "packageName": "@uifabric/dashboard-grid-layout",
+      "projectFolder": "packages/dashboard-grid-layout",
+      "versionPolicyName": "lockedMajor",
+      "shouldPublish": false
+    },
+    {
       "packageName": "@uifabric/merge-styles",
       "projectFolder": "packages/merge-styles",
       "versionPolicyName": "lockedMajor",
