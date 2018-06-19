@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IStyle } from '../../Styling';
 import { createComponent, IStyleProps, IViewProps, IPropsWithStyles } from '../Text/createComponent';
-import StackItem, { IStackAreaProps, IStackAreaStyles } from './StackItem';
+import StackItem, { IStackItemProps, IStackItemStyles } from './StackItem';
 
 // Styles for the component
 export interface IStackStyles {
@@ -21,9 +21,11 @@ export interface IStackProps {
   className?: string;
 
   fill?: boolean;
+  collapseItems?: boolean;
 
   inline?: boolean;
   vertical?: boolean;
+
   grow?: boolean;
   wrap?: boolean;
 
@@ -37,25 +39,64 @@ export interface IStackProps {
 }
 
 const view = (props: IViewProps<IStackProps, IStackStyles>) => {
-  const { renderAs: RootType = 'div', classNames, gap, vertical } = props;
+  const {
+    renderAs: RootType = 'div',
+    classNames,
+    gap,
+    vertical,
+    collapseItems
+  } = props;
 
-  const children: React.ReactChild[] = [];
-  const spacerStyle = {
-    [vertical ? 'height' : 'width']: gap
-  };
+  const children: React.ReactChild[] = React.Children.map(
+    props.children,
+    (child: React.ReactElement<IStackItemProps>, index: number) => {
+      const defaultItemProps: IStackItemProps = {
+        gap: index > 0 ? gap : 0,
+        vertical,
+        collapse: collapseItems
+      };
 
-  React.Children.forEach(props.children, (child, index: number) => {
-    if (index > 0 && gap) {
-      children.push(<span className={classNames.spacer} style={spacerStyle} />);
+      if ((child as any).type === StackItemType) {
+        return React.cloneElement(child as any, {
+          ...defaultItemProps,
+          ...child.props
+        });
+      }
+      else {
+        // tslint:disable-next-line:no-console
+        return <StackItem {...defaultItemProps}>{child}</StackItem>;
+      }
     }
-    children.push(child);
-  });
+  );
+
+  // const spacerStyle = {
+  //   [vertical ? 'height' : 'width']: gap
+  // };
+
+  // React.Children.forEach(props.children, (child, index: number) => {
+  //   if (index > 0 && gap) {
+  //     children.push(<span className={classNames.spacer} style={spacerStyle} />);
+  //   }
+  //   children.push(child);
+  // });
 
   return <RootType className={classNames.root}>{children}</RootType>;
 };
 
-const styles = (props: IStyleProps<IStackProps, IStackStyles>): IStackStyles => {
-  const { fill, align, justify, maxWidth, vertical, grow, margin, padding } = props;
+const styles = (
+  props: IStyleProps<IStackProps, IStackStyles>
+): IStackStyles => {
+  const {
+    fill,
+    align,
+    justify,
+    maxWidth,
+    vertical,
+    gap,
+    grow,
+    margin,
+    padding
+  } = props;
 
   return {
     root: [
@@ -77,37 +118,44 @@ const styles = (props: IStyleProps<IStackProps, IStackStyles>): IStackStyles => 
       },
       props.className
     ],
-    spacer: {
-      flexShrink: 0,
-      alignSelf: 'stretch'
-    }
+    spacer: [
+      {
+        flexShrink: 0,
+        alignSelf: 'stretch'
+      },
+      !!gap && {
+        [vertical ? 'marginBottom' : 'marginRight']: gap
+      }
+    ]
   };
 };
 
 export const Stack: React.StatelessComponent<
   IStackProps & {
     styles?:
-      | Partial<IStackStyles>
-      | ((props: IPropsWithStyles<IStackProps, IStackStyles>) => Partial<IStackStyles>)
-      | undefined;
+    | Partial<IStackStyles>
+    | ((props: IPropsWithStyles<IStackProps, IStackStyles>) => Partial<IStackStyles>)
+    | undefined;
   }
-> & {
-  Item: React.StatelessComponent<
-    IStackAreaProps & {
+  > & {
+    Item: React.StatelessComponent<
+    IStackItemProps & {
       styles?:
-        | Partial<IStackAreaStyles>
-        | ((props: IPropsWithStyles<IStackAreaProps, IStackAreaStyles>) => Partial<IStackAreaStyles>)
-        | undefined;
+      | Partial<IStackItemStyles>
+      | ((props: IPropsWithStyles<IStackItemProps, IStackItemStyles>) => Partial<IStackItemStyles>)
+      | undefined;
     }
-  >;
-} = createComponent({
-  displayName: 'Stack',
-  styles,
-  view,
-  statics: {
-    Item: StackItem,
-    defaultProps: {}
-  }
-});
+    >;
+  } = createComponent({
+    displayName: 'Stack',
+    styles,
+    view,
+    statics: {
+      Item: StackItem,
+      defaultProps: {}
+    }
+  });
+
+const StackItemType = (<StackItem /> as any).type;
 
 export default Stack;

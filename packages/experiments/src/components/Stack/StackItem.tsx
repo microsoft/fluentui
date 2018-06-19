@@ -3,7 +3,7 @@ import { IStyle } from '../../Styling';
 import { createComponent, IStyleProps, IViewProps, IPropsWithStyles } from '../Text/createComponent';
 
 // Styles for the component
-export interface IStackAreaStyles {
+export interface IStackItemStyles {
   root: IStyle;
 }
 
@@ -14,43 +14,46 @@ const alignMap: any = {
 const justifyMap: any = {};
 
 // Inputs to the component
-export interface IStackAreaProps {
-  renderAs?: string | React.ReactType<IStackAreaProps>;
+export interface IStackItemProps {
+  renderAs?: string | React.ReactType<IStackItemProps>;
   children?: React.ReactNode;
 
   gap?: number;
+  vertical?: boolean;
+  index?: number;
+
   grow?: boolean;
+  collapse?: boolean;
+
   align?: 'auto' | 'center' | 'start' | 'baseline' | 'stretch' | 'end';
   justify?: 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly';
 }
 
-const view = (props: IViewProps<IStackAreaProps, IStackAreaStyles>) => {
-  const {
-    // renderAs: RootType = 'span',
-    classNames
-  } = props;
+const view = (props: IViewProps<IStackItemProps, IStackItemStyles>) => {
+  const childNodes: React.ReactElement<{}>[] = React.Children.toArray(
+    props.children
+  ) as React.ReactElement<{}>[];
+  const first = childNodes[0];
 
-  const child = React.Children.only(props.children);
+  if (typeof first === 'string') {
+    return <span className={props.classNames.root}>first</span>;
+  }
 
-  return React.cloneElement(child, {
-    className: [classNames.root, child.props.classNames].join(' '),
-    ...child.props
-  });
-
-  // return (
-  //   <RootType className={classNames.root}>
-  //     {props.children}
-  //   </RootType>
-  // );
+  return React.cloneElement(
+    first as React.ReactElement<{ className: string }>,
+    { ...first.props, className: props.classNames.root }
+  );
 };
 
-const styles = (props: IStyleProps<IStackAreaProps, IStackAreaStyles>): IStackAreaStyles => {
-  const { grow, align, justify } = props;
+const styles = (
+  props: IStyleProps<IStackItemProps, IStackItemStyles>
+): IStackItemStyles => {
+  const { grow, collapse, align, justify, gap, vertical } = props;
 
   return {
     root: [
       grow && { flexGrow: 1 },
-      !grow && { flexShrink: 0 },
+      !grow && !collapse && { flexShrink: 0 },
       align && {
         alignSelf: alignMap[align] || align,
         justifyContent: justifyMap[justify!] || justify
@@ -59,20 +62,23 @@ const styles = (props: IStyleProps<IStackAreaProps, IStackAreaStyles>): IStackAr
         overflow: 'hidden',
         whiteSpace: 'nowrap',
         textOverflow: 'ellipsis'
+      },
+      !!gap && {
+        [vertical ? 'marginTop' : 'marginLeft']: gap
       }
     ]
   };
 };
 
-export const FlexArea: React.StatelessComponent<IStackAreaProps> & {
+export const StackItem: React.StatelessComponent<IStackItemProps> & {
   styles?:
-    | Partial<IStackAreaStyles>
-    | ((props: IPropsWithStyles<IStackAreaProps, IStackAreaStyles>) => Partial<IStackAreaStyles>)
-    | undefined;
-} = createComponent<IStackAreaProps, IStackAreaStyles>({
+  | Partial<IStackItemStyles>
+  | ((props: IPropsWithStyles<IStackItemProps, IStackItemStyles>) => Partial<IStackItemStyles>)
+  | undefined;
+} = createComponent<IStackItemProps, IStackItemStyles>({
   displayName: 'StackArea',
   styles,
   view
 });
 
-export default FlexArea;
+export default StackItem;
