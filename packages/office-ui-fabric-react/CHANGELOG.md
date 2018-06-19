@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 18 Jun 2018 16:57:14 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Jun 2018 10:26:26 GMT and should not be manually modified.
+
+## 6.16.0
+Tue, 19 Jun 2018 10:26:26 GMT
+
+### Minor changes
+
+- Updated Link, Breadcrumb, and Dialog to accept custom styles
 
 ## 6.15.0
 Mon, 18 Jun 2018 16:57:14 GMT

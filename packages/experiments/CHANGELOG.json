@@ -2,6 +2,35 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.6.0",
+      "tag": "@uifabric/experiments_v6.6.0",
+      "date": "Tue, 19 Jun 2018 10:26:26 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "73373b622d1c7dde27f250fad8dddc6758a76ff9",
+            "comment": "Added Fluent Styles Page"
+          },
+          {
+            "author": "Mike Wheaton <miwhea@microsoft.com>",
+            "commit": "21cece15f5e13f17d1d2b3a68c7af58ba02697ad",
+            "comment": "Update Fluent colors"
+          },
+          {
+            "author": "Mike Wheaton <miwhea@microsoft.com>",
+            "commit": "fe1d2db7964251ab5406a835caefccdb58ab94a7",
+            "comment": "Update Fluent colors and theme"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.15.0 <7.0.0` to `>=6.16.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.5.0",
       "tag": "@uifabric/experiments_v6.5.0",
       "date": "Mon, 18 Jun 2018 16:57:14 GMT",
