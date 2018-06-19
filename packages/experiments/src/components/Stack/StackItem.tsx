@@ -68,11 +68,11 @@ const styles = (props: IStyleProps<IStackItemProps, IStackItemStyles>): IStackIt
 
 export const StackItem: React.StatelessComponent<IStackItemProps> & {
   styles?:
-    | Partial<IStackItemStyles>
-    | ((props: IPropsWithStyles<IStackItemProps, IStackItemStyles>) => Partial<IStackItemStyles>)
-    | undefined;
+  | Partial<IStackItemStyles>
+  | ((props: IPropsWithStyles<IStackItemProps, IStackItemStyles>) => Partial<IStackItemStyles>)
+  | undefined;
 } = createComponent<IStackItemProps, IStackItemStyles>({
-  displayName: 'StackArea',
+  displayName: 'StackItem',
   styles,
   view
 });
