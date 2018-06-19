@@ -1,6 +1,10 @@
 import { Stylesheet } from '@uifabric/merge-styles';
 
-Stylesheet.getInstance().onReset(resetMemoizations);
+const stylesheet = Stylesheet.getInstance();
+
+if (stylesheet && stylesheet.onReset) {
+  Stylesheet.getInstance().onReset(resetMemoizations);
+}
 
 // tslint:disable:no-any
 declare class WeakMap {
