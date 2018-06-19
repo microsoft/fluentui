@@ -41,7 +41,14 @@ exports[`RecommendationCard renders basic example correctly 1`] = `
         <div
           aria-describedby={undefined}
           aria-labelledby={undefined}
-          className="ms-FocusZone ms-OverflowSet"
+          className=
+              ms-FocusZone
+              ms-OverflowSet
+              {
+                display: flex;
+                flex-wrap: nowrap;
+                position: relative;
+              }
           data-focuszone-id="FocusZone1"
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -49,7 +56,12 @@ exports[`RecommendationCard renders basic example correctly 1`] = `
           role="menubar"
         >
           <div
-            className="ms-OverflowSet-overflowButton"
+            className=
+                ms-OverflowSet-overflowButton
+                {
+                  display: inherit;
+                  flex-shrink: 0;
+                }
           >
             <button
               aria-describedby={undefined}
@@ -476,7 +488,14 @@ exports[`RecommendationCard renders dlp example correctly 1`] = `
         <div
           aria-describedby={undefined}
           aria-labelledby={undefined}
-          className="ms-FocusZone ms-OverflowSet"
+          className=
+              ms-FocusZone
+              ms-OverflowSet
+              {
+                display: flex;
+                flex-wrap: nowrap;
+                position: relative;
+              }
           data-focuszone-id="FocusZone8"
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -484,7 +503,12 @@ exports[`RecommendationCard renders dlp example correctly 1`] = `
           role="menubar"
         >
           <div
-            className="ms-OverflowSet-overflowButton"
+            className=
+                ms-OverflowSet-overflowButton
+                {
+                  display: inherit;
+                  flex-shrink: 0;
+                }
           >
             <button
               aria-describedby={undefined}
@@ -1198,7 +1222,14 @@ exports[`RecommendationCard renders imageillustration example correctly 1`] = `
         <div
           aria-describedby={undefined}
           aria-labelledby={undefined}
-          className="ms-FocusZone ms-OverflowSet"
+          className=
+              ms-FocusZone
+              ms-OverflowSet
+              {
+                display: flex;
+                flex-wrap: nowrap;
+                position: relative;
+              }
           data-focuszone-id="FocusZone15"
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -1206,7 +1237,12 @@ exports[`RecommendationCard renders imageillustration example correctly 1`] = `
           role="menubar"
         >
           <div
-            className="ms-OverflowSet-overflowButton"
+            className=
+                ms-OverflowSet-overflowButton
+                {
+                  display: inherit;
+                  flex-shrink: 0;
+                }
           >
             <button
               aria-describedby={undefined}
