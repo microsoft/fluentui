@@ -202,12 +202,10 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
           {ariaAlertText && (
             <div
               className={classNames.ariaContainer}
-              aria-live="assertive"
+              role="alert"
               ref={this._ariaAlertContainer}
               aria-hidden={!isCollapsed}
-            >
-              {ariaAlertText}
-            </div>
+            />
           )}
           <div className={classNames.pulsingBeacon} />
           <div className={classNames.translateAnimationContainer} ref={this._translateAnimationContainer}>
@@ -305,6 +303,15 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
         this._async.setTimeout(() => {
           this._addProximityHandler(this.props.mouseProximityOffset);
         }, this.props.delayBeforeMouseOpen!);
+
+        if (this.props.ariaAlertText) {
+          this._async.setTimeout(() => {
+            if (this.props.ariaAlertText && this._ariaAlertContainer.current) {
+              const alertText = document.createTextNode(this.props.ariaAlertText);
+              this._ariaAlertContainer.current.appendChild(alertText);
+            }
+          }, 0);
+        }
       }
     );
   }
