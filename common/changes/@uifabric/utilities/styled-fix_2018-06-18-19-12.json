@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/utilities",
+      "comment": "All `styled` props should be a style function which returns partial styles, or just a partial styles object. (Previously it was a \"complete\" styles object, which was not intended.)",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/utilities",
+  "email": "dzearing@microsoft.com"
+}
