@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 import { DashboardGridLayoutExample } from './examples/DashboardGridLayout.example';
-const DashboardGridLayoutExampleCode = require('!raw-loader!@uifabric/experiments/src/components/DashboardGridLayout/examples/DashboardGridLayout.Example.tsx') as string;
+const DashboardGridLayoutExampleCode = require('!raw-loader!@uifabric/dashboard-grid-layout/src/components/DashboardGridLayout/examples/DashboardGridLayout.example.tsx') as string;
 
 export class DashboardGridLayoutPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -21,7 +21,7 @@ export class DashboardGridLayoutPage extends React.Component<IComponentDemoPageP
             sources={[
               require<
                 string
-              >('!raw-loader!@uifabric/experiments/src/components/DashboardGridLayout/DashboardGridLayout.types.ts')
+              >('!raw-loader!@uifabric/dashboard-grid-layout/src/components/DashboardGridLayout/DashboardGridLayout.types.ts')
             ]}
             renderOnly={['IDashboardGridLayoutProps', 'DashboardGridBreakpointLayouts', 'IDashboardCardLayout']}
           />

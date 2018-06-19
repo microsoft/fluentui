@@ -8,7 +8,6 @@ import {
 } from './DashboardGridLayout.types';
 import { getStyles } from './DashboardGridLayout.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
 export class DashboardGridLayout extends React.Component<IDashboardGridLayoutProps, {}> {
