@@ -1,5 +1,5 @@
 import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
-import { GrayColors } from './FluentColors';
+import { NeutralColors } from './FluentColors';
 
 /** Definitions for Depth, or shadow, levels. */
 const FluentDepthLevels = {
@@ -70,7 +70,7 @@ const DefaultButtonStyles = {
   root: {
     borderRadius: '2px',
     backgroundColor: '#fff',
-    border: `1px solid ${GrayColors.gray20}`
+    border: `1px solid ${NeutralColors.gray20}`
   },
   rootHovered: {
     backgroundColor: '#f3f2f1'
