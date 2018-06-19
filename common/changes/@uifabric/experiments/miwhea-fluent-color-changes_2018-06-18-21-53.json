@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Fix import mistakes",
-      "type": "patch"
+      "comment": "Update Fluent colors and theme",
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/experiments",
-  "email": "cliff.koh@microsoft.com"
+  "email": "mike@mikewheaton.ca"
 }

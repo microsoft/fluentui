@@ -80,7 +80,11 @@ export function filteredAssign(isAllowed: (propName: string) => boolean, target:
 }
 
 // Configure ids to reset on stylesheet resets.
-Stylesheet.getInstance().onReset(resetIds);
+const stylesheet = Stylesheet.getInstance();
+
+if (stylesheet && stylesheet.onReset) {
+  stylesheet.onReset(resetIds);
+}
 
 /**
  * Generates a unique id in the global scope (this spans across duplicate copies of the same library.)

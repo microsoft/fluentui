@@ -2,6 +2,52 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.15.0",
+      "tag": "office-ui-fabric-react_v6.15.0",
+      "date": "Mon, 18 Jun 2018 16:57:14 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Josh Chang <coralbue@gmail.com>",
+            "commit": "64d2c2000f7b70862e595f710f1555145568a0a1",
+            "comment": "ComboBox: Change Style to allow options to overflow"
+          },
+          {
+            "author": "eveleens <eveleen@helloshopper.com>",
+            "commit": "b3465a47474b8494e2026203ec36dd7d16928444",
+            "comment": "Textfield: Adding new optional `readOnly` prop."
+          },
+          {
+            "author": "Kelsey Young <kelseyyoung4@gmail.com>",
+            "commit": "ca32f85dd1ff464b0854dc361e0164ff7be7fee1",
+            "comment": "Add params to BaseButton openMenu to override focus props temporarily"
+          },
+          {
+            "author": "natalieethell <naethell@microsoft.com>",
+            "commit": "28adc1258526a64c6c1c65a6b4b30e7bcdbc8f3a",
+            "comment": "SearchBox: add optional aria label prop for clear text button and default to 'clear text'"
+          }
+        ],
+        "patch": [
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "c4e8898824af842fa74a2e088dbc2825c6943117",
+            "comment": "ColorPicker: add aria-labels to textfields"
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "33e82cc664185972cc411289e60896669cfe81c2",
+            "comment": "ContextualMenu/ComboBox/Dropdown: Fix up expand/collapse behavior so that collapsing menus is consistent"
+          },
+          {
+            "author": "wygoodin <wygoodin@microsoft.com>",
+            "commit": "a0ec7473b093d4767f05074032b443fe630edd52",
+            "comment": "ContextualMenu: Fixed the fact that uncheckable contextual menu items incorrectly possessed the `aria-checked` attribute."
+          }
+        ]
+      }
+    },
+    {
       "version": "6.13.2",
       "tag": "office-ui-fabric-react_v6.13.2",
       "date": "Fri, 15 Jun 2018 14:44:02 GMT",

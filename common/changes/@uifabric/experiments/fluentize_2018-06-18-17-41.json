@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Add alias to CommandBar to final version",
-      "type": "patch"
+      "comment": "Added Fluent Styles Page",
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/experiments",
-  "email": "tmichon@microsoft.com"
+  "email": "v-brgarl@microsoft.com"
 }
