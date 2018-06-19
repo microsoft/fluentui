@@ -73,7 +73,7 @@
     },
     {
       "packageName": "@uifabric/fabric-website-resources",
-      "projectFolder": "apps/demo",
+      "projectFolder": "apps/fabric-website-resources",
       "versionPolicyName": "lockedMajor",
       "shouldPublish": true
     },
