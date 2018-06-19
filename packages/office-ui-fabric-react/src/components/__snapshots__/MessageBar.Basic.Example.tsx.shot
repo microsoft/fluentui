@@ -133,6 +133,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label="Close"
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -311,6 +312,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label="Overflow"
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -427,6 +429,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label="Close"
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -609,6 +612,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
       <div>
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -717,6 +721,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         </button>
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -892,6 +897,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         <div>
           <button
             aria-describedby={undefined}
+            aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
             aria-pressed={undefined}
@@ -1000,6 +1006,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           </button>
           <button
             aria-describedby={undefined}
+            aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
             aria-pressed={undefined}
@@ -1176,6 +1183,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         <div>
           <button
             aria-describedby={undefined}
+            aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
             aria-pressed={undefined}
@@ -1289,6 +1297,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label="Close"
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -1466,6 +1475,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
       </div>
       <button
         aria-describedby={undefined}
+        aria-disabled={undefined}
         aria-label="Close"
         aria-labelledby={undefined}
         aria-pressed={undefined}
@@ -1583,6 +1593,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
       <div>
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -1691,6 +1702,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         </button>
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}

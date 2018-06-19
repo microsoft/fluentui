@@ -11,6 +11,7 @@ exports[`Component Examples renders Tooltip.Custom.Example.tsx correctly 1`] = `
 >
   <button
     aria-describedby="customID"
+    aria-disabled={undefined}
     aria-label={undefined}
     aria-labelledby="id__0"
     aria-pressed={undefined}

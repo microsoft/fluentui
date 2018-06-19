@@ -9,6 +9,7 @@ exports[`Component Examples renders TeachingBubble.WideIllustration.Example.tsx 
   >
     <button
       aria-describedby={undefined}
+      aria-disabled={undefined}
       aria-label={undefined}
       aria-labelledby={undefined}
       aria-pressed={undefined}

@@ -5,11 +5,11 @@ const gzipSize = require('gzip-size');
 const fs = require('fs');
 const { logStatus } = require('../logging');
 
-module.exports = function (options) {
+module.exports = function(options) {
   const webpackConfigPath = path.join(process.cwd(), 'webpack.config.js');
 
   return new Promise((resolve, reject) => {
-    fs.exists(webpackConfigPath, (isFileExists) => {
+    fs.exists(webpackConfigPath, isFileExists => {
       if (!isFileExists) {
         return Promise.resolve();
       }
@@ -31,7 +31,7 @@ module.exports = function (options) {
           let errorStats = stats.toJson('errors-only');
           errorStats.errors.forEach(error => {
             console.log(chalk.red(error));
-          })
+          });
           reject(`Webpack failed with ${errorStats.errors.length} error(s).`);
         } else {
           _printStats(stats);
@@ -63,7 +63,7 @@ function _printStats(stats, isProduction) {
 }
 
 function flatten(arr) {
-  return arr.reduce(function (flat, toFlatten) {
+  return arr.reduce(function(flat, toFlatten) {
     return flat.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten);
   }, []);
 }
@@ -74,7 +74,7 @@ function getFileSize(size) {
   if (size < 1024) {
     sizeString = size + ' bytes';
   } else {
-    sizeString = (Math.round(1000 * size / 1024) / 1000) + ' KB'
+    sizeString = Math.round((1000 * size) / 1024) / 1000 + ' KB';
   }
   return chalk.cyan(sizeString);
 }

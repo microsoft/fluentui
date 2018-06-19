@@ -7,6 +7,7 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
   </p>
   <button
     aria-describedby=" ktp-layer-id ktp-1-a"
+    aria-disabled={undefined}
     aria-label={undefined}
     aria-labelledby={undefined}
     aria-pressed={undefined}
@@ -118,6 +119,7 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
   </button>
   <button
     aria-describedby="id__4 ktp-layer-id ktp-1-b"
+    aria-disabled={undefined}
     aria-label={undefined}
     aria-labelledby="id__3"
     aria-pressed={undefined}
@@ -259,6 +261,7 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
   </button>
   <button
     aria-describedby=" ktp-layer-id ktp-2-a"
+    aria-disabled={undefined}
     aria-expanded={false}
     aria-haspopup={true}
     aria-label={undefined}
@@ -408,6 +411,7 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
     aria-label={undefined}
     aria-labelledby={undefined}
     aria-pressed={undefined}
+    aria-roledescription={undefined}
     className=
 
         {
@@ -444,13 +448,11 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
         }
     data-is-focusable={true}
     data-ktp-target="ktp-2-b"
-    disabled={undefined}
     onClick={[Function]}
     onKeyDown={[Function]}
     onTouchStart={[Function]}
     role="button"
     tabIndex={0}
-    type="button"
   >
     <span
       style={
@@ -461,6 +463,7 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
     >
       <button
         aria-describedby={undefined}
+        aria-disabled={undefined}
         aria-label={undefined}
         aria-labelledby={undefined}
         aria-pressed={undefined}
@@ -571,6 +574,7 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
       </button>
       <button
         aria-describedby={undefined}
+        aria-disabled={undefined}
         aria-expanded={false}
         aria-haspopup={true}
         aria-label={undefined}
@@ -662,6 +666,7 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
   </div>
   <button
     aria-describedby={undefined}
+    aria-disabled={undefined}
     aria-label={undefined}
     aria-labelledby={undefined}
     aria-pressed={undefined}
@@ -773,6 +778,7 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
   </p>
   <button
     aria-describedby=" ktp-layer-id ktp-0-0"
+    aria-disabled={undefined}
     aria-label={undefined}
     aria-labelledby={undefined}
     aria-pressed={undefined}
@@ -1026,6 +1032,7 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
   </div>
   <button
     aria-describedby=" ktp-layer-id ktp-0-1"
+    aria-disabled={undefined}
     aria-label={undefined}
     aria-labelledby={undefined}
     aria-pressed={undefined}

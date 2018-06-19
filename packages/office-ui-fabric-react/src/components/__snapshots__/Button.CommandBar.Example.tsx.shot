@@ -13,6 +13,7 @@ exports[`Component Examples renders Button.CommandBar.Example.tsx correctly 1`] 
   >
     <button
       aria-describedby={undefined}
+      aria-disabled={undefined}
       aria-expanded={false}
       aria-haspopup={true}
       aria-label={undefined}
@@ -193,7 +194,7 @@ exports[`Component Examples renders Button.CommandBar.Example.tsx correctly 1`] 
       aria-label={undefined}
       aria-labelledby={undefined}
       aria-pressed={undefined}
-      checked={undefined}
+      aria-roledescription={undefined}
       className=
 
           {
@@ -231,13 +232,11 @@ exports[`Component Examples renders Button.CommandBar.Example.tsx correctly 1`] 
       data-automation-id="test"
       data-is-focusable={true}
       data-ktp-target={undefined}
-      disabled={undefined}
       onClick={[Function]}
       onKeyDown={[Function]}
       onTouchStart={[Function]}
       role="button"
       tabIndex={0}
-      type="button"
     >
       <span
         style={
@@ -248,6 +247,7 @@ exports[`Component Examples renders Button.CommandBar.Example.tsx correctly 1`] 
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -390,6 +390,7 @@ exports[`Component Examples renders Button.CommandBar.Example.tsx correctly 1`] 
         </button>
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-expanded={false}
           aria-haspopup={true}
           aria-label={undefined}
@@ -484,6 +485,7 @@ exports[`Component Examples renders Button.CommandBar.Example.tsx correctly 1`] 
     </div>
     <button
       aria-describedby={undefined}
+      aria-disabled={undefined}
       aria-label={undefined}
       aria-labelledby={undefined}
       aria-pressed={undefined}

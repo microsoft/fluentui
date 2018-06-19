@@ -49,6 +49,7 @@ exports[`Component Examples renders TextField.AutoComplete.Example.tsx correctly
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -57,6 +58,7 @@ exports[`Component Examples renders TextField.AutoComplete.Example.tsx correctly
   </div>
   <button
     aria-describedby={undefined}
+    aria-disabled={undefined}
     aria-label={undefined}
     aria-labelledby={undefined}
     aria-pressed={undefined}

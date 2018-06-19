@@ -2,6 +2,35 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.1.1",
+      "tag": "@uifabric/fabric-website_v6.1.1",
+      "date": "Thu, 14 Jun 2018 20:52:57 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "493a9ddfa0490004ef882829e2a067bfe0cdaa0e",
+            "comment": "Consumes pages from demo project"
+          },
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "e13fdf037de38dad49a9b784d8d53b8541dda40c",
+            "comment": "Fix broken documentation links"
+          },
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "68b356136be784b0a687eb23187db21f54cd8745",
+            "comment": "Renamed demo to fabric-website-resources"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.9.0 <7.0.0` to `>=6.13.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.1.0",
       "tag": "@uifabric/fabric-website_v6.1.0",
       "date": "Fri, 08 Jun 2018 18:34:17 GMT",

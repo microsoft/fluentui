@@ -135,18 +135,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   // The current visible value sent to the auto fill on render
   private _currentVisibleValue: string | undefined;
-
   private _classNames: IComboBoxClassNames;
-
   private _isScrollIdle: boolean;
-
   private _hasPendingValue: boolean;
-
   private _scrollIdleTimeoutId: number | undefined;
-
   private _processingTouch: boolean;
-
   private _lastTouchTimeoutId: number | undefined;
+  private _processingExpandCollapseKeyOnly: boolean;
 
   // Determines if we should be setting
   // focus back to the input when the menu closes.
@@ -175,6 +170,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     this._isScrollIdle = true;
     this._processingTouch = false;
+    this._processingExpandCollapseKeyOnly = false;
 
     const initialSelectedIndices: number[] = this._getSelectedIndices(props.options, selectedKeys);
 
@@ -319,25 +315,25 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     this._classNames = this.props.getClassNames
       ? this.props.getClassNames(
-          theme!,
-          !!isOpen,
-          !!disabled,
-          !!required,
-          !!focused,
-          !!allowFreeform,
-          !!hasErrorMessage,
-          className
-        )
+        theme!,
+        !!isOpen,
+        !!disabled,
+        !!required,
+        !!focused,
+        !!allowFreeform,
+        !!hasErrorMessage,
+        className
+      )
       : getClassNames(
-          getStyles(theme!, customStyles),
-          className!,
-          !!isOpen,
-          !!disabled,
-          !!required,
-          !!focused,
-          !!allowFreeform,
-          !!hasErrorMessage
-        );
+        getStyles(theme!, customStyles),
+        className!,
+        !!isOpen,
+        !!disabled,
+        !!required,
+        !!focused,
+        !!allowFreeform,
+        !!hasErrorMessage
+      );
 
     return (
       <div {...divProps} ref={this._root} className={this._classNames.container}>
@@ -980,8 +976,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             (this._autofill.current &&
               this._autofill.current.isValueSelected &&
               currentPendingValue.length +
-                (this._autofill.current.selectionEnd! - this._autofill.current.selectionStart!) ===
-                pendingOptionText.length)) ||
+              (this._autofill.current.selectionEnd! - this._autofill.current.selectionStart!) ===
+              pendingOptionText.length)) ||
             (this._autofill.current &&
               this._autofill.current.inputElement &&
               this._autofill.current.inputElement.value.toLocaleLowerCase() === pendingOptionText))
@@ -1028,6 +1024,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       onRenderList,
       calloutProps,
       dropdownWidth,
+      dropdownMaxWidth,
       onRenderLowerContent = this._onRenderLowerContent,
       useComboBoxAsMenuWidth
     } = props;
@@ -1050,6 +1047,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             ? this._comboBoxWrapper.current.clientWidth + 2
             : dropdownWidth
         }
+        calloutMaxWidth={dropdownMaxWidth}
       >
         <div className={this._classNames.optionsContainerWrapper} ref={this._comboBoxMenu}>
           {(onRenderList as any)({ ...props }, this._onRenderList)}
@@ -1118,9 +1116,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const id = this._id;
     const isSelected: boolean = this._isOptionSelected(item.index);
     const optionStyles = this._getCurrentOptionStyles(item);
+    const optionClassNames = getComboBoxOptionClassNames(this._getCurrentOptionStyles(item));
     const checkboxStyles = () => {
       return optionStyles;
     };
+    const title = this._getPreviewText(item);
 
     const getOptionComponent = () => {
       return !this.props.multiSelect ? (
@@ -1139,32 +1139,34 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           aria-selected={isSelected ? 'true' : 'false'}
           ariaLabel={this._getPreviewText(item)}
           disabled={item.disabled}
+          title={title}
         >
           {' '}
           {
-            <span ref={isSelected ? this._selectedElement : undefined}>
+            <span className={optionClassNames.optionTextWrapper} ref={isSelected ? this._selectedElement : undefined}>
               {onRenderOption(item, this._onRenderOptionContent)}
             </span>
           }
         </CommandButton>
       ) : (
-        <Checkbox
-          id={id + '-list' + item.index}
-          ariaLabel={this._getPreviewText(item)}
-          key={item.key}
-          data-index={item.index}
-          styles={checkboxStyles}
-          className={'ms-ComboBox-option'}
-          data-is-focusable={true}
-          onChange={this._onItemClick(item.index!)}
-          label={item.text}
-          role="option"
-          aria-selected={isSelected ? 'true' : 'false'}
-          checked={isSelected}
-        >
-          {onRenderOption(item, this._onRenderOptionContent)}
-        </Checkbox>
-      );
+          <Checkbox
+            id={id + '-list' + item.index}
+            ariaLabel={this._getPreviewText(item)}
+            key={item.key}
+            data-index={item.index}
+            styles={checkboxStyles}
+            className={'ms-ComboBox-option'}
+            data-is-focusable={true}
+            onChange={this._onItemClick(item.index!)}
+            label={item.text}
+            role="option"
+            aria-selected={isSelected ? 'true' : 'false'}
+            checked={isSelected}
+            title={title}
+          >
+            {onRenderOption(item, this._onRenderOptionContent)}
+          </Checkbox>
+        );
     };
 
     return (
@@ -1275,7 +1277,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           if (
             scrollableParentRect.top <= selectedElementRect.top &&
             scrollableParentRect.top + scrollableParentRect.height >=
-              selectedElementRect.top + selectedElementRect.height
+            selectedElementRect.top + selectedElementRect.height
           ) {
             return;
           }
@@ -1527,6 +1529,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const { disabled, allowFreeform, autoComplete } = this.props;
     const { isOpen, currentOptions, currentPendingValueValidIndexOnHover } = this.state;
 
+    // Take note if we are processing a altKey or metaKey keydown
+    // so that the menu does not collapse if no other keys are pressed
+    this._processingExpandCollapseKeyOnly = this._isExpandCollapseKey(ev);
+
     if (disabled) {
       this._handleInputWhenDisabled(ev);
       return;
@@ -1600,8 +1606,16 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           index = this.state.currentOptions.length;
         }
 
-        if ((ev.altKey || ev.metaKey) && isOpen) {
-          this._setOpenStateAndFocusOnClose(!isOpen, true /* focusInputAfterClose */);
+        if ((ev.altKey || ev.metaKey)) {
+
+          // Close the menu if it is open and break so
+          // that the event get stopPropagation and prevent default.
+          // Otherwise, we need to let the event continue to propagate
+          if (isOpen) {
+            this._setOpenStateAndFocusOnClose(!isOpen, true /* focusInputAfterClose */);
+            break;
+          }
+
           return;
         }
 
@@ -1660,9 +1674,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         }
 
         // If we get here and we got either and ALT key
-        // or meta key and we are current open, let's close the menu
-        if ((ev.altKey || ev.metaKey) && isOpen) {
-          this._setOpenStateAndFocusOnClose(!isOpen, true /* focusInputAfterClose */);
+        // or meta key, let the event propagate
+        if ((ev.keyCode === KeyCodes.alt || ev.key === 'Meta') /* && isOpen */) {
+          return;
         }
 
         // If we are not allowing freeform and
@@ -1673,7 +1687,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           break;
         }
 
-        // allow the key to propigate by default
+        // allow the key to propagate by default
         return;
     }
 
@@ -1681,12 +1695,22 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     ev.preventDefault();
   };
 
+  private _isExpandCollapseKey(ev: React.KeyboardEvent<HTMLElement | Autofill>) {
+    return ev.which === KeyCodes.alt || ev.key === 'Meta';
+  }
+
   /**
    * Handle keyup on the input
    * @param ev - the keyboard event that was fired
    */
   private _onInputKeyUp = (ev: React.KeyboardEvent<HTMLElement | Autofill>): void => {
     const { disabled, allowFreeform, autoComplete } = this.props;
+    const isOpen = this.state.isOpen;
+
+    // If we get here and have only gotten the expand/collapse key
+    // and are processing the keyup of that event we should collapse
+    const shouldHandleKey = this._processingExpandCollapseKeyOnly && this._isExpandCollapseKey(ev);
+    this._processingExpandCollapseKeyOnly = false;
 
     if (disabled) {
       this._handleInputWhenDisabled(ev);
@@ -1699,13 +1723,14 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         // make space expand/collapse the comboBox
         // and allow the event to propagate
         if (!allowFreeform && autoComplete === 'off') {
-          const isOpen = this.state.isOpen;
           this._setOpenStateAndFocusOnClose(!isOpen, !!isOpen);
           return;
         }
         break;
-
       default:
+        if (shouldHandleKey && isOpen) {
+          this._setOpenStateAndFocusOnClose(!isOpen, true /* focusInputAfterClose */);
+        }
         return;
     }
 

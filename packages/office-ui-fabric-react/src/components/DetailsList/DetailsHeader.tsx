@@ -10,6 +10,7 @@ import { CollapseAllVisibility } from '../../GroupedList';
 import { DetailsRowCheck } from './DetailsRowCheck';
 import { ITooltipHostProps } from '../../Tooltip';
 import * as checkStylesModule from './DetailsRowCheck.scss';
+import { IViewport } from '../../utilities/decorators/withViewport';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
 import * as stylesImport from './DetailsHeader.scss';
 const styles: any = stylesImport;
@@ -47,6 +48,7 @@ export interface IDetailsHeaderProps extends React.Props<DetailsHeader> {
   ariaLabelForSelectAllCheckbox?: string;
   ariaLabelForSelectionColumn?: string;
   selectAllVisibility?: SelectAllVisibility;
+  viewport?: IViewport;
 }
 
 export enum SelectAllVisibility {
@@ -121,11 +123,13 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
       ariaLabelForSelectAllCheckbox,
       selectAllVisibility,
       ariaLabelForSelectionColumn,
-      indentWidth
+      indentWidth,
+      viewport
     } = this.props;
     const { isAllSelected, columnResizeDetails, isSizing, groupNestingDepth, isAllCollapsed } = this.state;
 
     const showCheckbox = selectAllVisibility !== SelectAllVisibility.none;
+    const isCheckboxHidden = selectAllVisibility === SelectAllVisibility.hidden;
 
     const { onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip } = this.props;
 
@@ -143,6 +147,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
         componentRef={this._root}
         onMouseMove={this._onRootMouseMove}
         data-automationid="DetailsHeader"
+        style={{ minWidth: viewport ? viewport.width : 0 }}
         direction={FocusZoneDirection.horizontal}
       >
         {showCheckbox
@@ -159,8 +164,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                 )}
                 aria-labelledby={`${this._id}-check`}
                 onClick={this._onSelectAllClicked}
-                aria-colindex={1}
-                role="columnheader"
+                aria-colindex={!isCheckboxHidden ? 1 : undefined}
+                role={!isCheckboxHidden ? 'columnheader' : undefined}
               >
                 {onRenderColumnHeaderTooltip(
                   {
@@ -173,11 +178,11 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                         id={`${this._id}-check`}
                         aria-label={ariaLabelForSelectionColumn}
                         aria-describedby={`${this._id}-checkTooltip`}
-                        data-is-focusable={true}
+                        data-is-focusable={!isCheckboxHidden}
                         isHeader={true}
                         selected={isAllSelected}
                         anySelected={false}
-                        canSelect={true}
+                        canSelect={!isCheckboxHidden}
                       />
                     )
                   },
@@ -215,7 +220,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
               role="columnheader"
               aria-sort={column.isSorted ? (column.isSortedDescending ? 'descending' : 'ascending') : 'none'}
               aria-disabled={column.columnActionsMode === ColumnActionsMode.disabled}
-              aria-colindex={(showCheckbox ? 2 : 1) + columnIndex}
+              aria-colindex={(showCheckbox && !isCheckboxHidden ? 2 : 1) + columnIndex}
               className={css(
                 'ms-DetailsHeader-cell',
                 styles.cell,

@@ -3,6 +3,7 @@
 exports[`Button renders ActionButton correctly 1`] = `
 <button
   aria-describedby={undefined}
+  aria-disabled={undefined}
   aria-label={undefined}
   aria-labelledby={undefined}
   aria-pressed={undefined}
@@ -117,6 +118,7 @@ exports[`Button renders ActionButton correctly 1`] = `
 exports[`Button renders CommandBarButton correctly 1`] = `
 <button
   aria-describedby={undefined}
+  aria-disabled={undefined}
   aria-expanded={false}
   aria-haspopup={true}
   aria-label={undefined}
@@ -292,6 +294,7 @@ exports[`Button renders CommandBarButton correctly 1`] = `
 exports[`Button renders CompoundButton correctly 1`] = `
 <button
   aria-describedby="id__14"
+  aria-disabled={undefined}
   aria-label={undefined}
   aria-labelledby={undefined}
   aria-pressed={undefined}
@@ -433,6 +436,7 @@ exports[`Button renders CompoundButton correctly 1`] = `
 exports[`Button renders DefaultButton correctly 1`] = `
 <button
   aria-describedby={undefined}
+  aria-disabled={undefined}
   aria-label={undefined}
   aria-labelledby={undefined}
   aria-pressed={undefined}
@@ -544,6 +548,7 @@ exports[`Button renders DefaultButton correctly 1`] = `
 exports[`Button renders IconButton correctly 1`] = `
 <button
   aria-describedby={undefined}
+  aria-disabled={undefined}
   aria-label="Emoji"
   aria-labelledby={undefined}
   aria-pressed={undefined}
@@ -658,6 +663,7 @@ exports[`Button renders IconButton correctly 1`] = `
 exports[`Button renders a DefaultButton with a keytip correctly 1`] = `
 <button
   aria-describedby=" ktp-layer-id ktp-a"
+  aria-disabled={undefined}
   aria-label={undefined}
   aria-labelledby={undefined}
   aria-pressed={undefined}

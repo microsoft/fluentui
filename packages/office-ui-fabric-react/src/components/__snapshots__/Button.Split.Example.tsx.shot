@@ -46,7 +46,6 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
       aria-labelledby={undefined}
       aria-pressed={undefined}
       aria-roledescription="split button"
-      checked={undefined}
       className=
 
           {
@@ -84,18 +83,11 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
       data-automation-id="test"
       data-is-focusable={true}
       data-ktp-target={undefined}
-      disabled={undefined}
       onClick={[Function]}
       onKeyDown={[Function]}
       onTouchStart={[Function]}
       role="button"
-      style={
-        Object {
-          "height": "35px",
-        }
-      }
       tabIndex={0}
-      type="button"
     >
       <span
         style={
@@ -106,6 +98,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -224,6 +217,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
         </button>
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-expanded={false}
           aria-haspopup={true}
           aria-label="See 2 sample options"
@@ -346,7 +340,6 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
       aria-labelledby={undefined}
       aria-pressed={undefined}
       aria-roledescription="split button"
-      checked={undefined}
       className=
 
           {
@@ -384,18 +377,11 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
       data-automation-id="test"
       data-is-focusable={true}
       data-ktp-target={undefined}
-      disabled={undefined}
       onClick={[Function]}
       onKeyDown={[Function]}
       onTouchStart={[Function]}
       role="button"
-      style={
-        Object {
-          "height": "35px",
-        }
-      }
       tabIndex={0}
-      type="button"
     >
       <span
         style={
@@ -406,6 +392,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -534,6 +521,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
         </button>
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-expanded={false}
           aria-haspopup={true}
           aria-label={undefined}
@@ -656,7 +644,6 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
       aria-labelledby={undefined}
       aria-pressed={undefined}
       aria-roledescription="split button"
-      checked={undefined}
       className=
 
           {
@@ -694,18 +681,11 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
       data-automation-id="test"
       data-is-focusable={true}
       data-ktp-target={undefined}
-      disabled={true}
       onClick={undefined}
       onKeyDown={[Function]}
       onTouchStart={[Function]}
       role="button"
-      style={
-        Object {
-          "height": "35px",
-        }
-      }
       tabIndex={0}
-      type="button"
     >
       <span
         style={
@@ -716,6 +696,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={true}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -778,6 +759,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 -ms-high-contrast-adjust: none;
                 background-color: Window;
                 border-color: GrayText;
+                bordercolor: grayText;
                 color: GrayText;
               }
               &:hover {
@@ -836,6 +818,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
         </button>
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-expanded={false}
           aria-haspopup={true}
           aria-label={undefined}
@@ -958,7 +941,6 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
       aria-labelledby={undefined}
       aria-pressed={undefined}
       aria-roledescription="split button"
-      checked={undefined}
       className=
 
           {
@@ -994,18 +976,11 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
       data-automation-id="test"
       data-is-focusable={true}
       data-ktp-target={undefined}
-      disabled={true}
       onClick={undefined}
       onKeyDown={[Function]}
       onTouchStart={[Function]}
       role="button"
-      style={
-        Object {
-          "height": "35px",
-        }
-      }
-      tabIndex={undefined}
-      type="button"
+      tabIndex={0}
     >
       <span
         style={
@@ -1016,6 +991,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={true}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -1078,6 +1054,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 -ms-high-contrast-adjust: none;
                 background-color: Window;
                 border-color: GrayText;
+                bordercolor: grayText;
                 color: GrayText;
               }
               &:hover {
@@ -1088,8 +1065,13 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
               }
           data-automation-id="test"
           data-is-focusable={false}
-          disabled={true}
+          disabled={false}
           onClick={undefined}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           style={
             Object {
               "height": "35px",
@@ -1136,6 +1118,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
         </button>
         <button
           aria-describedby={undefined}
+          aria-disabled={true}
           aria-expanded={false}
           aria-haspopup={true}
           aria-label={undefined}
@@ -1176,7 +1159,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
               }
           data-is-focusable={false}
           data-ktp-execute-target={undefined}
-          disabled={true}
+          disabled={false}
           onClick={[Function]}
           onMouseDown={[Function]}
           tabIndex={-1}
@@ -1265,7 +1248,6 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 2`] = `
     aria-labelledby={undefined}
     aria-pressed={undefined}
     aria-roledescription="split button"
-    checked={undefined}
     className=
 
         {
@@ -1303,13 +1285,11 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 2`] = `
     data-automation-id="test"
     data-is-focusable={true}
     data-ktp-target={undefined}
-    disabled={undefined}
     onClick={[Function]}
     onKeyDown={[Function]}
     onTouchStart={[Function]}
     role="button"
     tabIndex={0}
-    type="button"
   >
     <span
       style={
@@ -1320,6 +1300,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 2`] = `
     >
       <button
         aria-describedby={undefined}
+        aria-disabled={undefined}
         aria-label={undefined}
         aria-labelledby={undefined}
         aria-pressed={undefined}
@@ -1442,6 +1423,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 2`] = `
       </button>
       <button
         aria-describedby={undefined}
+        aria-disabled={undefined}
         aria-expanded={false}
         aria-haspopup={true}
         aria-label={undefined}

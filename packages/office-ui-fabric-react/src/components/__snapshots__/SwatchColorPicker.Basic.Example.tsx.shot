@@ -56,6 +56,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           >
             <button
               aria-describedby={undefined}
+              aria-disabled={undefined}
               aria-label="green"
               aria-labelledby={undefined}
               aria-pressed={undefined}
@@ -253,6 +254,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           >
             <button
               aria-describedby={undefined}
+              aria-disabled={undefined}
               aria-label="orange"
               aria-labelledby={undefined}
               aria-pressed={undefined}
@@ -450,6 +452,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           >
             <button
               aria-describedby={undefined}
+              aria-disabled={undefined}
               aria-label="blue"
               aria-labelledby={undefined}
               aria-pressed={undefined}
@@ -647,6 +650,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           >
             <button
               aria-describedby={undefined}
+              aria-disabled={undefined}
               aria-label="red"
               aria-labelledby={undefined}
               aria-pressed={undefined}
@@ -844,6 +848,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           >
             <button
               aria-describedby={undefined}
+              aria-disabled={undefined}
               aria-label="white"
               aria-labelledby={undefined}
               aria-pressed={undefined}
@@ -1096,6 +1101,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           >
             <button
               aria-describedby={undefined}
+              aria-disabled={undefined}
               aria-label="green"
               aria-labelledby={undefined}
               aria-pressed={undefined}
@@ -1289,6 +1295,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           >
             <button
               aria-describedby={undefined}
+              aria-disabled={undefined}
               aria-label="orange"
               aria-labelledby={undefined}
               aria-pressed={undefined}
@@ -1482,6 +1489,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           >
             <button
               aria-describedby={undefined}
+              aria-disabled={undefined}
               aria-label="blue"
               aria-labelledby={undefined}
               aria-pressed={undefined}
@@ -1675,6 +1683,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           >
             <button
               aria-describedby={undefined}
+              aria-disabled={undefined}
               aria-label="red"
               aria-labelledby={undefined}
               aria-pressed={undefined}
@@ -1868,6 +1877,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           >
             <button
               aria-describedby={undefined}
+              aria-disabled={undefined}
               aria-label="white"
               aria-labelledby={undefined}
               aria-pressed={undefined}
@@ -2128,6 +2138,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           >
             <button
               aria-describedby={undefined}
+              aria-disabled={undefined}
               aria-label="green"
               aria-labelledby={undefined}
               aria-pressed={undefined}
@@ -2325,6 +2336,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           >
             <button
               aria-describedby={undefined}
+              aria-disabled={undefined}
               aria-label="orange"
               aria-labelledby={undefined}
               aria-pressed={undefined}
@@ -2522,6 +2534,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           >
             <button
               aria-describedby={undefined}
+              aria-disabled={undefined}
               aria-label="blue"
               aria-labelledby={undefined}
               aria-pressed={undefined}
@@ -2719,6 +2732,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           >
             <button
               aria-describedby={undefined}
+              aria-disabled={undefined}
               aria-label="red"
               aria-labelledby={undefined}
               aria-pressed={undefined}
@@ -2920,6 +2934,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           >
             <button
               aria-describedby={undefined}
+              aria-disabled={undefined}
               aria-label="green"
               aria-labelledby={undefined}
               aria-pressed={undefined}
@@ -3117,6 +3132,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           >
             <button
               aria-describedby={undefined}
+              aria-disabled={undefined}
               aria-label="orange"
               aria-labelledby={undefined}
               aria-pressed={undefined}
@@ -3314,6 +3330,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           >
             <button
               aria-describedby={undefined}
+              aria-disabled={undefined}
               aria-label="blue"
               aria-labelledby={undefined}
               aria-pressed={undefined}
@@ -3511,6 +3528,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           >
             <button
               aria-describedby={undefined}
+              aria-disabled={undefined}
               aria-label="red"
               aria-labelledby={undefined}
               aria-pressed={undefined}
@@ -3712,6 +3730,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           >
             <button
               aria-describedby={undefined}
+              aria-disabled={undefined}
               aria-label="black"
               aria-labelledby={undefined}
               aria-pressed={undefined}
@@ -3909,6 +3928,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           >
             <button
               aria-describedby={undefined}
+              aria-disabled={undefined}
               aria-label="grey"
               aria-labelledby={undefined}
               aria-pressed={undefined}
@@ -4106,6 +4126,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           >
             <button
               aria-describedby={undefined}
+              aria-disabled={undefined}
               aria-label="purple"
               aria-labelledby={undefined}
               aria-pressed={undefined}
@@ -4303,6 +4324,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           >
             <button
               aria-describedby={undefined}
+              aria-disabled={undefined}
               aria-label="yellow"
               aria-labelledby={undefined}
               aria-pressed={undefined}
@@ -4545,6 +4567,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           >
             <button
               aria-describedby={undefined}
+              aria-disabled={true}
               aria-label="green"
               aria-labelledby={undefined}
               aria-pressed={undefined}
@@ -4608,6 +4631,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
+                    bordercolor: grayText;
+                    color: grayText;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
                     border: none;
@@ -4742,6 +4767,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           >
             <button
               aria-describedby={undefined}
+              aria-disabled={true}
               aria-label="orange"
               aria-labelledby={undefined}
               aria-pressed={undefined}
@@ -4805,6 +4831,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
+                    bordercolor: grayText;
+                    color: grayText;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
                     border: none;
@@ -4939,6 +4967,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           >
             <button
               aria-describedby={undefined}
+              aria-disabled={true}
               aria-label="blue"
               aria-labelledby={undefined}
               aria-pressed={undefined}
@@ -5002,6 +5031,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
+                    bordercolor: grayText;
+                    color: grayText;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
                     border: none;
@@ -5136,6 +5167,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           >
             <button
               aria-describedby={undefined}
+              aria-disabled={true}
               aria-label="red"
               aria-labelledby={undefined}
               aria-pressed={undefined}
@@ -5199,6 +5231,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
+                    bordercolor: grayText;
+                    color: grayText;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
                     border: none;
@@ -5333,6 +5367,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           >
             <button
               aria-describedby={undefined}
+              aria-disabled={true}
               aria-label="white"
               aria-labelledby={undefined}
               aria-pressed={undefined}
@@ -5396,6 +5431,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
+                    bordercolor: grayText;
+                    color: grayText;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
                     border: none;
@@ -5599,6 +5636,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             >
               <button
                 aria-describedby={undefined}
+                aria-disabled={undefined}
                 aria-label="green"
                 aria-labelledby={undefined}
                 aria-pressed={undefined}
@@ -5796,6 +5834,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             >
               <button
                 aria-describedby={undefined}
+                aria-disabled={undefined}
                 aria-label="orange"
                 aria-labelledby={undefined}
                 aria-pressed={undefined}
@@ -5993,6 +6032,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             >
               <button
                 aria-describedby={undefined}
+                aria-disabled={undefined}
                 aria-label="blue"
                 aria-labelledby={undefined}
                 aria-pressed={undefined}
@@ -6190,6 +6230,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             >
               <button
                 aria-describedby={undefined}
+                aria-disabled={undefined}
                 aria-label="red"
                 aria-labelledby={undefined}
                 aria-pressed={undefined}
@@ -6391,6 +6432,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             >
               <button
                 aria-describedby={undefined}
+                aria-disabled={undefined}
                 aria-label="green"
                 aria-labelledby={undefined}
                 aria-pressed={undefined}
@@ -6588,6 +6630,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             >
               <button
                 aria-describedby={undefined}
+                aria-disabled={undefined}
                 aria-label="orange"
                 aria-labelledby={undefined}
                 aria-pressed={undefined}
@@ -6785,6 +6828,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             >
               <button
                 aria-describedby={undefined}
+                aria-disabled={undefined}
                 aria-label="blue"
                 aria-labelledby={undefined}
                 aria-pressed={undefined}
@@ -6982,6 +7026,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             >
               <button
                 aria-describedby={undefined}
+                aria-disabled={undefined}
                 aria-label="red"
                 aria-labelledby={undefined}
                 aria-pressed={undefined}
@@ -7183,6 +7228,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             >
               <button
                 aria-describedby={undefined}
+                aria-disabled={undefined}
                 aria-label="black"
                 aria-labelledby={undefined}
                 aria-pressed={undefined}
@@ -7380,6 +7426,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             >
               <button
                 aria-describedby={undefined}
+                aria-disabled={undefined}
                 aria-label="grey"
                 aria-labelledby={undefined}
                 aria-pressed={undefined}
@@ -7577,6 +7624,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             >
               <button
                 aria-describedby={undefined}
+                aria-disabled={undefined}
                 aria-label="purple"
                 aria-labelledby={undefined}
                 aria-pressed={undefined}
@@ -7774,6 +7822,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             >
               <button
                 aria-describedby={undefined}
+                aria-disabled={undefined}
                 aria-label="yellow"
                 aria-labelledby={undefined}
                 aria-pressed={undefined}

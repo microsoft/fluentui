@@ -4,6 +4,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
 <div>
   <button
     aria-describedby="id__1"
+    aria-disabled={undefined}
     aria-label={undefined}
     aria-labelledby="id__0"
     aria-pressed={undefined}
@@ -158,6 +159,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
               onFocus={[Function]}
               onInput={[Function]}
               placeholder="Input inside Focus Trap Zone"
+              readOnly={undefined}
               type="text"
               value=""
             />

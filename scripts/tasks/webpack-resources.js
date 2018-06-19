@@ -138,7 +138,12 @@ module.exports = {
           ]
         },
 
-        plugins: [new WebpackNotifierPlugin(), new ForkTsCheckerWebpackPlugin(), new webpack.ProgressPlugin()]
+        plugins: [
+          // TODO: will investigate why this doesn't work on mac
+          // new WebpackNotifierPlugin(),
+          new ForkTsCheckerWebpackPlugin(),
+          new webpack.ProgressPlugin()
+        ]
       },
       customConfig
     );

@@ -76,6 +76,7 @@ exports[`Nav renders Nav correctly 1`] = `
             >
               <button
                 aria-describedby={undefined}
+                aria-disabled={undefined}
                 aria-label={undefined}
                 aria-labelledby={undefined}
                 aria-pressed={undefined}
