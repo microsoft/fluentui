@@ -329,8 +329,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             {
               display: flex;
             }
-            & .ms-MessageBar-icon {
-              color: #666666;
+            & .ms-Button-icon {
+              color: #333333;
               font-size: 12px;
               height: 12px;
               line-height: 12px;
@@ -645,8 +645,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             {
               display: flex;
             }
-            & .ms-MessageBar-icon {
-              color: #666666;
+            & .ms-Button-icon {
+              color: #333333;
               font-size: 12px;
               height: 12px;
               line-height: 12px;
@@ -792,8 +792,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             {
               display: flex;
             }
-            & .ms-MessageBar-icon {
-              color: #666666;
+            & .ms-Button-icon {
+              color: #333333;
               font-size: 12px;
               height: 12px;
               line-height: 12px;
@@ -2036,8 +2036,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             {
               display: flex;
             }
-            & .ms-MessageBar-icon {
-              color: #666666;
+            & .ms-Button-icon {
+              color: #333333;
               font-size: 12px;
               height: 12px;
               line-height: 12px;
@@ -3035,8 +3035,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             {
               display: flex;
             }
-            & .ms-MessageBar-icon {
-              color: #666666;
+            & .ms-Button-icon {
+              color: #333333;
               font-size: 12px;
               height: 12px;
               line-height: 12px;
@@ -3353,8 +3353,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               border: 1px solid #e3008c;
               display: flex;
             }
-            & .ms-MessageBar-icon {
-              color: #666666;
+            & .ms-Button-icon {
+              color: #333333;
               font-size: 12px;
               height: 12px;
               line-height: 12px;
@@ -3501,8 +3501,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               border: 1px solid #5c2d91;
               display: flex;
             }
-            & .ms-MessageBar-icon {
-              color: #666666;
+            & .ms-Button-icon {
+              color: #333333;
               font-size: 12px;
               height: 12px;
               line-height: 12px;
@@ -4751,8 +4751,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               border: 1px solid #ea4300;
               display: flex;
             }
-            & .ms-MessageBar-icon {
-              color: #666666;
+            & .ms-Button-icon {
+              color: #333333;
               font-size: 12px;
               height: 12px;
               line-height: 12px;
