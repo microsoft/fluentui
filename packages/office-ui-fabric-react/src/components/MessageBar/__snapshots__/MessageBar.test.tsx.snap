@@ -28,7 +28,7 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
 >
   <div
     className=
-
+        ms-MessageBar-content
         {
           box-sizing: border-box;
           display: flex;
@@ -55,7 +55,7 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
   >
     <div
       className=
-          icon
+          ms-MessageBar-icon
           {
             color: #666666;
             display: flex;
@@ -82,6 +82,7 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              color: #666666;
               display: inline-block;
               font-family: "FabricMDL2Icons";
               font-style: normal;
@@ -96,7 +97,7 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
     </div>
     <div
       className=
-
+          ms-MessageBar-Text
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;

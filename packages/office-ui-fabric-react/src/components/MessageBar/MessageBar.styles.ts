@@ -1,5 +1,44 @@
-import { IStyle, HighContrastSelector, ScreenWidthMaxSmall, getScreenSelector, getFocusStyle } from '../../Styling';
+import {
+  IStyle,
+  IPalette,
+  ISemanticColors,
+  HighContrastSelector,
+  ScreenWidthMaxSmall,
+  getScreenSelector,
+  getFocusStyle
+} from '../../Styling';
 import { IMessageBarStyleProps, IMessageBarStyles, MessageBarType } from './MessageBar.types';
+
+// Returns the background color of the MessageBar root element based on the type of MessageBar.
+const getRootBackground = (messageBarType: MessageBarType | undefined, palette: IPalette, semanticColors: ISemanticColors): string => {
+  switch (messageBarType) {
+    case MessageBarType.error:
+    case MessageBarType.blocked:
+      return semanticColors.errorBackground;
+    case MessageBarType.severeWarning:
+      return semanticColors.blockingBackground;
+    case MessageBarType.success:
+      return semanticColors.successBackground;
+    case MessageBarType.warning:
+      return semanticColors.warningBackground;
+  }
+  return palette.neutralLighter;
+};
+
+// Returns the icon color based on the type of MessageBar.
+const getIconColor = (messageBarType: MessageBarType | undefined, palette: IPalette, semanticColors: ISemanticColors): string => {
+  switch (messageBarType) {
+    case MessageBarType.error:
+    case MessageBarType.blocked:
+    case MessageBarType.severeWarning:
+      return semanticColors.errorText;
+    case MessageBarType.success:
+      return palette.green;
+    case MessageBarType.warning:
+      return semanticColors.warningText;
+  }
+  return palette.neutralSecondary;
+};
 
 export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
   const { theme, className, messageBarType, onDismiss, actions, truncated, isMultiline, expandSingleLine } = props;
@@ -7,44 +46,11 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
 
   const SmallScreenSelector = getScreenSelector(0, ScreenWidthMaxSmall);
 
-  const errorStyle = {
-    background: semanticColors.errorBackground,
-    selectors: {
-      '& .icon': {
-        color: semanticColors.errorText
-      }
-    }
-  };
-
-  const blockedStyle = {
-    background: semanticColors.errorBackground,
-    selectors: {
-      '& .icon': {
-        color: semanticColors.errorText
-      }
-    }
-  };
-
-  const severeWarningStyle = {
-    background: semanticColors.blockingBackground,
-    selectors: {
-      '& .icon': {
-        color: semanticColors.errorText
-      }
-    }
-  };
-
-  const successStyle = {
-    background: semanticColors.successBackground,
-    selectors: {
-      '& .icon': {
-        color: palette.green
-      }
-    }
-  };
-
-  const warningStyle = {
-    background: semanticColors.warningBackground
+  const dismissalAndExpandIconStyle: IStyle = {
+    fontSize: 12,
+    height: 12,
+    lineHeight: '12px',
+    color: palette.neutralPrimary
   };
 
   const dismissalAndExpandStyle: IStyle = {
@@ -52,12 +58,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
     margin: 8,
     marginLeft: 0,
     selectors: {
-      '& .ms-Button-icon': {
-        fontSize: 12,
-        height: 12,
-        lineHeight: '12px',
-        color: palette.neutralPrimary
-      },
+      '& .ms-Button-icon': dismissalAndExpandIconStyle,
       [SmallScreenSelector]: {
         margin: '0px 0px 0px 8px'
       },
@@ -67,13 +68,20 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
     }
   };
 
+  const dismissalAndExpandSingleLineStyle: IStyle = {
+    display: 'flex',
+    selectors: {
+      '& .ms-Button-icon': dismissalAndExpandIconStyle
+    }
+  };
+
   const focusStyle = getFocusStyle(theme, 0, 'relative', undefined, palette.black);
 
   return {
     root: [
       'ms-MessageBar',
       {
-        background: palette.neutralLighter,
+        background: getRootBackground(messageBarType, palette, semanticColors),
         color: palette.neutralPrimary,
         minHeight: 32,
         width: '100%',
@@ -88,11 +96,6 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
           }
         }
       },
-      messageBarType === MessageBarType.error && errorStyle,
-      messageBarType === MessageBarType.blocked && blockedStyle,
-      messageBarType === MessageBarType.severeWarning && severeWarningStyle,
-      messageBarType === MessageBarType.success && successStyle,
-      messageBarType === MessageBarType.warning && warningStyle,
       isMultiline && {
         flexDirection: 'column'
       },
@@ -117,6 +120,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
       className
     ],
     content: [
+      'ms-MessageBar-content',
       {
         display: 'flex',
         lineHeight: 'normal',
@@ -151,8 +155,8 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         flexDirection: 'row'
       }
     ],
-    icon: [
-      'icon',
+    iconContainer: [
+      'ms-MessageBar-icon',
       {
         fontSize: 16,
         minWidth: 16,
@@ -169,7 +173,11 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         }
       }
     ],
+    icon: {
+      color: getIconColor(messageBarType, palette, semanticColors)
+    },
     text: [
+      'ms-MessageBar-Text',
       {
         minWidth: 0,
         display: 'flex',
@@ -246,34 +254,8 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
     ],
     dismissal: ['ms-MessageBar-dismissal', dismissalAndExpandStyle, focusStyle],
     expand: ['ms-MessageBar-expand', dismissalAndExpandStyle, focusStyle],
-    dismissSingleLine: [
-      'ms-MessageBar-dismissSingleLine',
-      {
-        display: 'flex',
-        selectors: {
-          '& .icon': {
-            fontSize: 12,
-            height: 12,
-            lineHeight: 12,
-            color: palette.neutralSecondary
-          }
-        }
-      }
-    ],
-    expandSingleLine: [
-      'ms-MessageBar-expandSingleLine',
-      {
-        display: 'flex',
-        selectors: {
-          '& .icon': {
-            fontSize: 12,
-            height: 12,
-            lineHeight: 12,
-            color: palette.neutralSecondary
-          }
-        }
-      }
-    ],
+    dismissSingleLine: ['ms-MessageBar-dismissSingleLine', dismissalAndExpandSingleLineStyle],
+    expandSingleLine: ['ms-MessageBar-expandSingleLine', dismissalAndExpandSingleLineStyle],
     actions: [
       {
         display: 'flex',

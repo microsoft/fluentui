@@ -98,8 +98,8 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
 
   private _getIconSpan(): JSX.Element {
     return (
-      <div className={this._classNames.icon}>
-        <Icon iconName={this.ICON_MAP[this.props.messageBarType!]} />
+      <div className={this._classNames.iconContainer}>
+        <Icon iconName={this.ICON_MAP[this.props.messageBarType!]} className={this._classNames.icon} />
       </div>
     );
   }

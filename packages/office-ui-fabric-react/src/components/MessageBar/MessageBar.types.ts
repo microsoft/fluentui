@@ -3,7 +3,7 @@ import { BaseButton, Button } from '../../Button';
 import { ITheme, IStyle } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
 
-export interface IMessageBar {}
+export interface IMessageBar { }
 
 export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
   /**
@@ -130,6 +130,11 @@ export interface IMessageBarStyles {
    * Style set for the element containing the icon, text, and optional dismiss button.
    */
   content?: IStyle;
+
+  /**
+   * Style set for the element containing the icon.
+   */
+  iconContainer?: IStyle;
 
   /**
    * Style set for the icon.
