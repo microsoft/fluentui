@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/styling",
-      "comment": "Handling `stylesheet.onReset` undefi",
+      "comment": "Handling `stylesheet.onReset` undefined scenarios better.",
       "type": "patch"
     }
   ],
