@@ -10,7 +10,7 @@ export interface IPropsWithStyles<TStyleProps, TStyles> {
 }
 
 interface IMaybeNewStyles<TStyleProps, TStyles> {
-  styles?: IStyleFunction<TStyleProps, TStyles>;
+  styles?: IStyleFunction<TStyleProps, TStyles> | TStyles;
 }
 
 interface IWrappedComponent<P> {
@@ -39,7 +39,11 @@ export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TSt
 ): (props: TComponentProps) => JSX.Element {
 
   const Wrapped = ((componentProps: TComponentProps & IMaybeNewStyles<TStyleProps, TStyles>) => {
-    const originalGetStyles = componentProps.styles || componentProps.getStyles;
+    const styles = componentProps.styles;
+
+    const originalGetStyles =
+      styles && (typeof styles === 'function' ? styles : () => styles) ||
+      componentProps.getStyles;
 
     const getStyles = (
       styleProps: TStyleProps
