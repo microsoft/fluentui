@@ -2,6 +2,27 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.7.0",
+      "tag": "@uifabric/utilities_v6.7.0",
+      "date": "Tue, 19 Jun 2018 10:26:26 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "4e6f17be6e5ac4d578dfeff85147fd9386469d1e",
+            "comment": "Handling `stylesheet.onReset` undefined scenarios better."
+          }
+        ],
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "e5888585c6a24851ced8d9fe3db95f6b85f502cf",
+            "comment": "All `styled` props should be a style function which returns partial styles, or just a partial styles object. (Previously it was a \"complete\" styles object, which was not intended.)"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.6.0",
       "tag": "@uifabric/utilities_v6.6.0",
       "date": "Thu, 14 Jun 2018 20:52:57 GMT",
