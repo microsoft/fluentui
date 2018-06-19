@@ -17,7 +17,7 @@
     "postinstall": "npm run _rushInstall && npm run _rushBuildToFabric",
     "test": "npm run _rushBuild",
     "vrtest": "cd apps && cd vr-tests && npm run screener",
-    "start": "cd apps && cd demo && npm start",
+    "start": "cd apps && cd fabric-website-resources && npm start",
     "build": "npm run _rushRebuild",
     "buildci": "npm run _rushRebuildCi",
     "buildfast": "npm run _rushBuild",

@@ -119,7 +119,6 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
           }
       data-ktp-execute-target={undefined}
       data-lpignore={true}
-      disabled={false}
       id="input1"
       onBlur={[Function]}
       onChange={[Function]}
