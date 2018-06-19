@@ -2,7 +2,7 @@ import * as React from 'react';
 
 /* Dependent Components */
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { CardFrame, ICardDropDownOption } from '../Card/CardFrame';
+import { CardFrame, ICardDropDownOption } from '@uifabric/experiments/lib/components/Card/CardFrame';
 
 /* Types for props and styles */
 import { IRecommendationProps, IRecommendationStyles } from './Recommendation.types';
@@ -12,6 +12,9 @@ import { CardComponentStyles, getStyles } from './Recommendation.styles';
 
 /* Utilities */
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+
+const getClassNames = classNamesFunction<{}, IRecommendationStyles>();
+const classNames = getClassNames(getStyles!);
 
 export class Recommendation extends React.Component<IRecommendationProps, {}> {
   /* Default Props */
@@ -41,8 +44,6 @@ export class Recommendation extends React.Component<IRecommendationProps, {}> {
       handleDismissRecommendationClick
     } = this.props;
 
-    const getClassNames = classNamesFunction<{}, IRecommendationStyles>();
-    const classNames = getClassNames(getStyles!);
     this.recommendationMenuItems = [
       {
         name: dismissRecommendationLocalizedName!,
