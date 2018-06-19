@@ -61,13 +61,17 @@ const _iconSettings = GlobalSettings.getValue<IIconRecords>(ICON_SETTING_NAME, {
 });
 
 // Reset icon registration on stylesheet resets.
-Stylesheet.getInstance().onReset(() => {
-  for (const name in _iconSettings) {
-    if (_iconSettings.hasOwnProperty(name) && !!(_iconSettings[name] as IIconRecord).subset) {
-      (_iconSettings[name] as IIconRecord).subset.className = undefined;
+const stylesheet = Stylesheet.getInstance();
+
+if (stylesheet && stylesheet.onReset) {
+  stylesheet.onReset(() => {
+    for (const name in _iconSettings) {
+      if (_iconSettings.hasOwnProperty(name) && !!(_iconSettings[name] as IIconRecord).subset) {
+        (_iconSettings[name] as IIconRecord).subset.className = undefined;
+      }
     }
-  }
-});
+  });
+}
 
 /**
  * Registers a given subset of icons.
