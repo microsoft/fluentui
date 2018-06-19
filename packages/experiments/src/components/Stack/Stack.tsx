@@ -39,13 +39,7 @@ export interface IStackProps {
 }
 
 const view = (props: IViewProps<IStackProps, IStackStyles>) => {
-  const {
-    renderAs: RootType = 'div',
-    classNames,
-    gap,
-    vertical,
-    collapseItems
-  } = props;
+  const { renderAs: RootType = 'div', classNames, gap, vertical, collapseItems } = props;
 
   const children: React.ReactChild[] = React.Children.map(
     props.children,
@@ -61,8 +55,7 @@ const view = (props: IViewProps<IStackProps, IStackStyles>) => {
           ...defaultItemProps,
           ...child.props
         });
-      }
-      else {
+      } else {
         // tslint:disable-next-line:no-console
         return <StackItem {...defaultItemProps}>{child}</StackItem>;
       }
@@ -83,20 +76,8 @@ const view = (props: IViewProps<IStackProps, IStackStyles>) => {
   return <RootType className={classNames.root}>{children}</RootType>;
 };
 
-const styles = (
-  props: IStyleProps<IStackProps, IStackStyles>
-): IStackStyles => {
-  const {
-    fill,
-    align,
-    justify,
-    maxWidth,
-    vertical,
-    gap,
-    grow,
-    margin,
-    padding
-  } = props;
+const styles = (props: IStyleProps<IStackProps, IStackStyles>): IStackStyles => {
+  const { fill, align, justify, maxWidth, vertical, gap, grow, margin, padding } = props;
 
   return {
     root: [
@@ -133,28 +114,28 @@ const styles = (
 export const Stack: React.StatelessComponent<
   IStackProps & {
     styles?:
-    | Partial<IStackStyles>
-    | ((props: IPropsWithStyles<IStackProps, IStackStyles>) => Partial<IStackStyles>)
-    | undefined;
+      | Partial<IStackStyles>
+      | ((props: IPropsWithStyles<IStackProps, IStackStyles>) => Partial<IStackStyles>)
+      | undefined;
   }
-  > & {
-    Item: React.StatelessComponent<
+> & {
+  Item: React.StatelessComponent<
     IStackItemProps & {
       styles?:
-      | Partial<IStackItemStyles>
-      | ((props: IPropsWithStyles<IStackItemProps, IStackItemStyles>) => Partial<IStackItemStyles>)
-      | undefined;
+        | Partial<IStackItemStyles>
+        | ((props: IPropsWithStyles<IStackItemProps, IStackItemStyles>) => Partial<IStackItemStyles>)
+        | undefined;
     }
-    >;
-  } = createComponent({
-    displayName: 'Stack',
-    styles,
-    view,
-    statics: {
-      Item: StackItem,
-      defaultProps: {}
-    }
-  });
+  >;
+} = createComponent({
+  displayName: 'Stack',
+  styles,
+  view,
+  statics: {
+    Item: StackItem,
+    defaultProps: {}
+  }
+});
 
 const StackItemType = (<StackItem /> as any).type;
 

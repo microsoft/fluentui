@@ -30,24 +30,20 @@ export interface IStackItemProps {
 }
 
 const view = (props: IViewProps<IStackItemProps, IStackItemStyles>) => {
-  const childNodes: React.ReactElement<{}>[] = React.Children.toArray(
-    props.children
-  ) as React.ReactElement<{}>[];
+  const childNodes: React.ReactElement<{}>[] = React.Children.toArray(props.children) as React.ReactElement<{}>[];
   const first = childNodes[0];
 
   if (typeof first === 'string') {
     return <span className={props.classNames.root}>first</span>;
   }
 
-  return React.cloneElement(
-    first as React.ReactElement<{ className: string }>,
-    { ...first.props, className: props.classNames.root }
-  );
+  return React.cloneElement(first as React.ReactElement<{ className: string }>, {
+    ...first.props,
+    className: props.classNames.root
+  });
 };
 
-const styles = (
-  props: IStyleProps<IStackItemProps, IStackItemStyles>
-): IStackItemStyles => {
+const styles = (props: IStyleProps<IStackItemProps, IStackItemStyles>): IStackItemStyles => {
   const { grow, collapse, align, justify, gap, vertical } = props;
 
   return {
@@ -72,9 +68,9 @@ const styles = (
 
 export const StackItem: React.StatelessComponent<IStackItemProps> & {
   styles?:
-  | Partial<IStackItemStyles>
-  | ((props: IPropsWithStyles<IStackItemProps, IStackItemStyles>) => Partial<IStackItemStyles>)
-  | undefined;
+    | Partial<IStackItemStyles>
+    | ((props: IPropsWithStyles<IStackItemProps, IStackItemStyles>) => Partial<IStackItemStyles>)
+    | undefined;
 } = createComponent<IStackItemProps, IStackItemStyles>({
   displayName: 'StackArea',
   styles,
