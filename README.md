@@ -11,7 +11,7 @@ Fabric React is a responsive, mobile-first collection of robust components desig
 
 ![image](https://user-images.githubusercontent.com/1110944/41632827-ac599f98-73f0-11e8-9d27-2bfe8ee7adf4.png)
 
-+ 45 additional Microsoft sites and products
+\+ 45 additional Microsoft sites and products
 
 ## For more information...
 
