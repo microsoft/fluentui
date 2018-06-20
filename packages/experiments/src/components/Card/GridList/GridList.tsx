@@ -1,6 +1,12 @@
 import * as React from 'react';
 import { IGridListProps, IGridListStyles, IGridColumn, IGridRow, GridColumnContentType } from './GridList.types';
-import { DetailsList, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
+import {
+  DetailsList,
+  IColumn,
+  ColumnActionsMode,
+  DetailsListLayoutMode,
+  ConstrainMode
+} from 'office-ui-fabric-react/lib/DetailsList';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { CheckboxVisibility } from 'office-ui-fabric-react';
@@ -30,6 +36,8 @@ export class GridList extends React.Component<IGridListProps> {
           isHeaderVisible={this.props.isHeaderVisible}
           checkboxVisibility={CheckboxVisibility.hidden}
           onItemInvoked={this._onItemInvoked}
+          layoutMode={DetailsListLayoutMode.justified}
+          constrainMode={ConstrainMode.unconstrained}
         />
         {actionButton}
       </div>
@@ -106,9 +114,9 @@ export class GridList extends React.Component<IGridListProps> {
           iconName: gridRow.c1.iconName
         },
         c2: {
-          content: gridRow.c2.content,
-          facepileImageSrc: gridRow.c2.facepileImageSrc,
-          iconName: gridRow.c2.iconName
+          content: gridRow.c2 !== undefined ? gridRow.c2.content : undefined,
+          facepileImageSrc: gridRow.c2 !== undefined ? gridRow.c2.facepileImageSrc : undefined,
+          iconName: gridRow.c2 !== undefined ? gridRow.c2.iconName : undefined
         },
         c3: {
           content: gridRow.c3 !== undefined ? gridRow.c3.content : undefined,
@@ -128,6 +136,7 @@ export class GridList extends React.Component<IGridListProps> {
       const column: IColumn = {
         key: GridColumnContentType[gridColumn.key],
         name: gridColumn.name,
+        columnActionsMode: ColumnActionsMode.disabled,
         minWidth: 150,
         isResizable: false,
         fieldName: 'c' + (index + 1)
