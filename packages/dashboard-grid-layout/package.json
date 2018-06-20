@@ -25,6 +25,7 @@
     "@types/react-grid-layout": "^0.16.4",
     "@types/webpack-env": "1.13.0",
     "@uifabric/example-app-base": ">=6.2.1 <7.0.0",
+    "@uifabric/experiments": ">=6.0.0 <7.0.0",
     "office-ui-fabric-react-tslint": ">=6.0.0 <7.0.0",
     "react": ">=16.3.2-0 <17.0.0",
     "react-dom": ">=16.3.2-0 <17.0.0",

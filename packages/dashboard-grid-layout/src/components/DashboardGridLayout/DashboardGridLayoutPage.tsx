@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 import { DashboardGridLayoutExample } from './examples/DashboardGridLayout.example';
+import { DashboardGridLayoutCardExample } from './examples/DashboardGridLayout.card.example';
 const DashboardGridLayoutExampleCode = require('!raw-loader!@uifabric/dashboard-grid-layout/src/components/DashboardGridLayout/examples/DashboardGridLayout.example.tsx') as string;
+const DashboardGridLayoutCardExampleCode = require('!raw-loader!@uifabric/dashboard-grid-layout/src/components/DashboardGridLayout/examples/DashboardGridLayout.card.example.tsx') as string;
 
 export class DashboardGridLayoutPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -11,8 +13,21 @@ export class DashboardGridLayoutPage extends React.Component<IComponentDemoPageP
         componentName="DashboardGridLayout"
         exampleCards={
           <div>
-            <ExampleCard title="DashboardGridLayout" isOptIn={true} code={DashboardGridLayoutExampleCode}>
+            <ExampleCard
+              title="DashboardGridLayout"
+              isScrollable={true}
+              isOptIn={true}
+              code={DashboardGridLayoutExampleCode}
+            >
               <DashboardGridLayoutExample />
+            </ExampleCard>
+            <ExampleCard
+              title="DashboardGridLayout with cards"
+              isScrollable={true}
+              isOptIn={true}
+              code={DashboardGridLayoutCardExampleCode}
+            >
+              <DashboardGridLayoutCardExample />
             </ExampleCard>
           </div>
         }
