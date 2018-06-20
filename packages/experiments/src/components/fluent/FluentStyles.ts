@@ -119,6 +119,12 @@ const DialogContentStyles = {
   }
 };
 
+const LabelStyles = {
+  root: {
+    fontWeight: FontWeights.semibold
+  }
+};
+
 // Roll up all style overrides in a single "Fluent theme" object
 export const FluentStyles = {
   Breadcrumb: {
@@ -147,6 +153,9 @@ export const FluentStyles = {
   },
   DialogContent: {
     styles: DialogContentStyles
+  },
+  Label: {
+    styles: LabelStyles
   }
 };
 
