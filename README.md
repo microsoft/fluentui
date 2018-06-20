@@ -17,8 +17,6 @@ Fabric React is a responsive, mobile-first collection of robust components desig
 
 Please see the [wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki).
 
-The bulk of the documentation is available on the [wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki).
-
 ## Contents
 
 - [Using Fabric React](#using-fabric-react)
@@ -58,7 +56,10 @@ ReactDOM.render(<PrimaryButton>I am a button.</PrimaryButton>, document.body.fir
 
 ## Browser support
 
-Fabric React supports many commonly used browsers. See the [browser support doc](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Browser-Support) for more information.
+Fabric React supports all evergreen browsers, with IE 11 as the min-bar version of Internet Explorer. See the [browser support doc](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Browser-Support) for more information.
+
+## Right-to-left support
+All components can render in LTR or RTL, depending on the `dir` attribute set on the html page. (`dir="rtl"` will flip the direction of everything.
 
 ## Server-side rendering
 
