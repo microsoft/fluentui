@@ -10,6 +10,7 @@ import { FluentStylesDialogExample } from './examples/FluentStyles.Dialog.Exampl
 import { FluentStylesBreadcrumbExample } from './examples/FluentStyles.Breadcrumb.Example';
 import { FluentStylesCheckboxExample } from './examples/FluentStyles.Checkbox.Example';
 import { FluentStylesChoiceGroupExample } from './examples/FluentStyles.ChoiceGroup.Example';
+import { FluentStylesLabelExample } from './examples/FluentStyles.Label.Example';
 import { FluentStylesRatingExample } from './examples/FluentStyles.Rating.Example';
 import { FluentStylesSliderExample } from './examples/FluentStyles.Slider.Example';
 
@@ -19,6 +20,7 @@ const FluentLinkExampleCode = require('!raw-loader!./examples/FluentStyles.Link.
 const FluentDialogExampleCode = require('!raw-loader!./examples/FluentStyles.Dialog.Example.tsx') as string;
 const FluentCheckboxExampleCode = require('!raw-loader!./examples/FluentStyles.Checkbox.Example.tsx') as string;
 const FluentChoiceGroupExampleCode = require('!raw-loader!./examples/FluentStyles.ChoiceGroup.Example.tsx') as string;
+const FluentLabelExampleCode = require('!raw-loader!./examples/FluentStyles.Label.Example.tsx') as string;
 const FluentRatingExampleCode = require('!raw-loader!./examples/FluentStyles.Rating.Example.tsx') as string;
 const FluentSliderExampleCode = require('!raw-loader!./examples/FluentStyles.Slider.Example.tsx') as string;
 
@@ -66,6 +68,9 @@ export class FluentStylesPage extends React.Component<IComponentDemoPageProps, I
               </ExampleCard>
               <ExampleCard title="Dialog" code={FluentDialogExampleCode}>
                 <FluentStylesDialogExample />
+              </ExampleCard>
+              <ExampleCard title="Label" code={FluentLabelExampleCode}>
+                <FluentStylesLabelExample />
               </ExampleCard>
               <ExampleCard title="Rating - No Current Changes" code={FluentRatingExampleCode}>
                 <FluentStylesRatingExample />
