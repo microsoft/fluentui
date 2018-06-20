@@ -871,7 +871,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       const isRangeSelected = selectionStart !== selectionEnd;
       const inputValue = element.value;
 
-      // We shouldn't lose focus in the following cases:
+      // If the element is enabled, we should lose focus except when:
       // 1. There is range selected.
       // 2. When selection start is larger than 0 and it is backward.
       // 3. when selection start is not the end of length and it is forward.
