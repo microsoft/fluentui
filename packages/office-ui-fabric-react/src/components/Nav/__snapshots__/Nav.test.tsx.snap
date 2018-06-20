@@ -160,6 +160,7 @@ exports[`Nav renders Nav correctly 1`] = `
                 data-is-focusable={true}
                 disabled={undefined}
                 onClick={[Function]}
+                onKeyDown={[Function]}
                 rel={undefined}
                 title=""
                 type="button"

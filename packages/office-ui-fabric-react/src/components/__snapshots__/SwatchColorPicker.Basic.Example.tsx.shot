@@ -199,6 +199,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker0-a-0"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -397,6 +398,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker0-b-1"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -595,6 +597,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker0-c-2"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -793,6 +796,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker0-d-3"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -1001,6 +1005,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker0-e-4"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -1241,6 +1246,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker18-a-0"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -1435,6 +1441,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker18-b-1"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -1629,6 +1636,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker18-c-2"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -1823,6 +1831,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker18-d-3"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -2029,6 +2038,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker18-e-4"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -2281,6 +2291,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker36-a-0"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -2479,6 +2490,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker36-b-1"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -2677,6 +2689,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker36-c-2"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -2875,6 +2888,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker36-d-3"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -3077,6 +3091,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker36-g-4"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -3275,6 +3290,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker36-h-5"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -3473,6 +3489,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker36-i-6"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -3671,6 +3688,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker36-j-7"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -3873,6 +3891,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker36-k-8"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -4071,6 +4090,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker36-l-9"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -4269,6 +4289,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker36-m-10"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -4467,6 +4488,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker36-n-11"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -4712,6 +4734,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker75-a-0"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -4912,6 +4935,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker75-b-1"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -5112,6 +5136,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker75-c-2"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -5312,6 +5337,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker75-d-3"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -5522,6 +5548,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker75-e-4"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -5779,6 +5806,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                 id="swatchColorPicker93-a-0"
                 onClick={[Function]}
                 onFocus={[Function]}
+                onKeyDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
                 onMouseMove={[Function]}
@@ -5977,6 +6005,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                 id="swatchColorPicker93-b-1"
                 onClick={[Function]}
                 onFocus={[Function]}
+                onKeyDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
                 onMouseMove={[Function]}
@@ -6175,6 +6204,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                 id="swatchColorPicker93-c-2"
                 onClick={[Function]}
                 onFocus={[Function]}
+                onKeyDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
                 onMouseMove={[Function]}
@@ -6373,6 +6403,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                 id="swatchColorPicker93-d-3"
                 onClick={[Function]}
                 onFocus={[Function]}
+                onKeyDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
                 onMouseMove={[Function]}
@@ -6575,6 +6606,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                 id="swatchColorPicker93-g-4"
                 onClick={[Function]}
                 onFocus={[Function]}
+                onKeyDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
                 onMouseMove={[Function]}
@@ -6773,6 +6805,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                 id="swatchColorPicker93-h-5"
                 onClick={[Function]}
                 onFocus={[Function]}
+                onKeyDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
                 onMouseMove={[Function]}
@@ -6971,6 +7004,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                 id="swatchColorPicker93-i-6"
                 onClick={[Function]}
                 onFocus={[Function]}
+                onKeyDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
                 onMouseMove={[Function]}
@@ -7169,6 +7203,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                 id="swatchColorPicker93-j-7"
                 onClick={[Function]}
                 onFocus={[Function]}
+                onKeyDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
                 onMouseMove={[Function]}
@@ -7371,6 +7406,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                 id="swatchColorPicker93-k-8"
                 onClick={[Function]}
                 onFocus={[Function]}
+                onKeyDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
                 onMouseMove={[Function]}
@@ -7569,6 +7605,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                 id="swatchColorPicker93-l-9"
                 onClick={[Function]}
                 onFocus={[Function]}
+                onKeyDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
                 onMouseMove={[Function]}
@@ -7767,6 +7804,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                 id="swatchColorPicker93-m-10"
                 onClick={[Function]}
                 onFocus={[Function]}
+                onKeyDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
                 onMouseMove={[Function]}
@@ -7965,6 +8003,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                 id="swatchColorPicker93-n-11"
                 onClick={[Function]}
                 onFocus={[Function]}
+                onKeyDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
                 onMouseMove={[Function]}

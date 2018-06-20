@@ -640,92 +640,135 @@ describe('Button', () => {
         });
         expect(didClick).toEqual(false);
       });
+
+      it('A disabled Button does not respond to input events', () => {
+        const renderedDOM: HTMLElement = renderIntoDocument(
+          <DefaultButton
+            disabled={true}
+            data-automation-id="test"
+            text="Create account"
+            split={false}
+            onClick={setTrue}
+            onKeyPress={setTrue}
+            onKeyUp={setTrue}
+            onKeyDown={setTrue}
+            onMouseDown={setTrue}
+            onMouseUp={setTrue}
+          />
+        );
+
+        ReactTestUtils.Simulate.click(renderedDOM);
+        ReactTestUtils.Simulate.keyDown(renderedDOM, {
+          which: KeyCodes.down,
+          altKey: true
+        });
+        ReactTestUtils.Simulate.keyUp(renderedDOM, {
+          which: KeyCodes.down,
+          altKey: true
+        });
+        ReactTestUtils.Simulate.keyPress(renderedDOM, {
+          which: KeyCodes.down,
+          altKey: true
+        });
+        ReactTestUtils.Simulate.mouseDown(renderedDOM, {
+          type: 'mousedown',
+          clientX: 0,
+          clientY: 0
+        });
+
+        ReactTestUtils.Simulate.mouseUp(renderedDOM, {
+          type: 'mouseup',
+          clientX: 0,
+          clientY: 0
+        });
+        // expect(didClick).toEqual(false);
+      });
+    });
+  });
+
+  describe('with contextual menu', () => {
+    function buildRenderAndClickButtonAndReturnContextualMenuDOMElement(
+      menuPropsPatch?: any,
+      text?: string,
+      textAsChildElement: boolean = false
+    ): HTMLElement {
+      const menuProps = { items: [{ key: 'item', name: 'Item' }], ...menuPropsPatch };
+      const element: React.ReactElement<any> = (
+        <DefaultButton
+          iconProps={{ iconName: 'Add' }}
+          text={!textAsChildElement && text ? text : undefined}
+          menuProps={menuProps}
+        >
+          {textAsChildElement && text ? text : null}
+        </DefaultButton>
+      );
+
+      const button = ReactTestUtils.renderIntoDocument<any>(element) as React.ReactInstance;
+      const renderedDOM = ReactDOM.findDOMNode(button) as HTMLElement;
+
+      expect(renderedDOM).toBeDefined();
+      ReactTestUtils.Simulate.click(renderedDOM);
+
+      // get the menu id from the button's aria attribute
+      const menuId = renderedDOM.getAttribute('aria-owns');
+      expect(menuId).toBeDefined();
+
+      const menuDOM = renderedDOM.ownerDocument.getElementById(menuId as string);
+      expect(menuDOM).toBeDefined();
+
+      return menuDOM as HTMLElement;
+    }
+
+    it('If button has text, contextual menu has aria-labelledBy attribute set', () => {
+      const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement(null, 'Button Text');
+
+      expect(contextualMenuElement).not.toBeNull();
+      expect(contextualMenuElement.getAttribute('aria-label') === null);
+      expect(contextualMenuElement.getAttribute('aria-labelledBy') !== null);
     });
 
-    describe('with contextual menu', () => {
-      function buildRenderAndClickButtonAndReturnContextualMenuDOMElement(
-        menuPropsPatch?: any,
-        text?: string,
-        textAsChildElement: boolean = false
-      ): HTMLElement {
-        const menuProps = { items: [{ key: 'item', name: 'Item' }], ...menuPropsPatch };
-        const element: React.ReactElement<any> = (
-          <DefaultButton
-            iconProps={{ iconName: 'Add' }}
-            text={!textAsChildElement && text ? text : undefined}
-            menuProps={menuProps}
-          >
-            {textAsChildElement && text ? text : null}
-          </DefaultButton>
-        );
+    it('If button has a text child, contextual menu has aria-labelledBy attribute set', () => {
+      const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement(
+        null,
+        'Button Text',
+        true
+      );
 
-        const button = ReactTestUtils.renderIntoDocument<any>(element) as React.ReactInstance;
-        const renderedDOM = ReactDOM.findDOMNode(button) as HTMLElement;
+      expect(contextualMenuElement).not.toBeNull();
+      expect(contextualMenuElement.getAttribute('aria-label') === null);
+      expect(contextualMenuElement.getAttribute('aria-labelledBy') !== null);
+    });
 
-        expect(renderedDOM).toBeDefined();
-        ReactTestUtils.Simulate.click(renderedDOM);
+    it('If button has no text, contextual menu has no aria-label or aria-labelledBy attributes', () => {
+      const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement();
 
-        // get the menu id from the button's aria attribute
-        const menuId = renderedDOM.getAttribute('aria-owns');
-        expect(menuId).toBeDefined();
+      expect(contextualMenuElement).not.toBeNull();
+      expect(contextualMenuElement.getAttribute('aria-label') === null);
+      expect(contextualMenuElement.getAttribute('aria-labelledBy') === null);
+    });
 
-        const menuDOM = renderedDOM.ownerDocument.getElementById(menuId as string);
-        expect(menuDOM).toBeDefined();
+    it('If button has text but ariaLabel provided in menuProps, contextual menu has aria-label set', () => {
+      const explicitLabel = 'ExplicitLabel';
+      const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement(
+        { ariaLabel: explicitLabel },
+        'Button Text'
+      );
 
-        return menuDOM as HTMLElement;
-      }
+      expect(contextualMenuElement).not.toBeNull();
+      expect(contextualMenuElement.getAttribute('aria-label') === explicitLabel);
+      expect(contextualMenuElement.getAttribute('aria-labelledBy') === null);
+    });
 
-      it('If button has text, contextual menu has aria-labelledBy attribute set', () => {
-        const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement(null, 'Button Text');
+    it('If button has text but labelElementId provided in menuProps, contextual menu has aria-labelledBy reflecting labelElementId', () => {
+      const explicitLabelElementId = 'id_ExplicitLabel';
+      const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement(
+        { labelElementId: explicitLabelElementId },
+        'Button Text'
+      );
 
-        expect(contextualMenuElement).not.toBeNull();
-        expect(contextualMenuElement.getAttribute('aria-label') === null);
-        expect(contextualMenuElement.getAttribute('aria-labelledBy') !== null);
-      });
-
-      it('If button has a text child, contextual menu has aria-labelledBy attribute set', () => {
-        const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement(
-          null,
-          'Button Text',
-          true
-        );
-
-        expect(contextualMenuElement).not.toBeNull();
-        expect(contextualMenuElement.getAttribute('aria-label') === null);
-        expect(contextualMenuElement.getAttribute('aria-labelledBy') !== null);
-      });
-
-      it('If button has no text, contextual menu has no aria-label or aria-labelledBy attributes', () => {
-        const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement();
-
-        expect(contextualMenuElement).not.toBeNull();
-        expect(contextualMenuElement.getAttribute('aria-label') === null);
-        expect(contextualMenuElement.getAttribute('aria-labelledBy') === null);
-      });
-
-      it('If button has text but ariaLabel provided in menuProps, contextual menu has aria-label set', () => {
-        const explicitLabel = 'ExplicitLabel';
-        const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement(
-          { ariaLabel: explicitLabel },
-          'Button Text'
-        );
-
-        expect(contextualMenuElement).not.toBeNull();
-        expect(contextualMenuElement.getAttribute('aria-label') === explicitLabel);
-        expect(contextualMenuElement.getAttribute('aria-labelledBy') === null);
-      });
-
-      it('If button has text but labelElementId provided in menuProps, contextual menu has aria-labelledBy reflecting labelElementId', () => {
-        const explicitLabelElementId = 'id_ExplicitLabel';
-        const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement(
-          { labelElementId: explicitLabelElementId },
-          'Button Text'
-        );
-
-        expect(contextualMenuElement).not.toBeNull();
-        expect(contextualMenuElement.getAttribute('aria-label') === null);
-        expect(contextualMenuElement.getAttribute('aria-labelledBy') === explicitLabelElementId);
-      });
+      expect(contextualMenuElement).not.toBeNull();
+      expect(contextualMenuElement.getAttribute('aria-label') === null);
+      expect(contextualMenuElement.getAttribute('aria-labelledBy') === explicitLabelElementId);
     });
   });
 });

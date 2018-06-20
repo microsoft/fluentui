@@ -137,6 +137,7 @@ exports[`Component Examples renders TextField.AutoComplete.Example.tsx correctly
         }
     data-is-focusable={true}
     disabled={undefined}
+    onKeyDown={[Function]}
     type="submit"
   >
     <div

@@ -79,6 +79,7 @@ exports[`Component Examples renders TeachingBubble.SmallHeadline.Example.tsx cor
       data-is-focusable={true}
       disabled={undefined}
       onClick={[Function]}
+      onKeyDown={[Function]}
       type="button"
     >
       <div

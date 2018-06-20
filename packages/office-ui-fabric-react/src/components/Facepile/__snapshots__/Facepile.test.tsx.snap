@@ -243,6 +243,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
         data-is-focusable={true}
         disabled={undefined}
         onClick={[Function]}
+        onKeyDown={[Function]}
         onMouseMove={[Function]}
         onMouseOut={[Function]}
         role="option"

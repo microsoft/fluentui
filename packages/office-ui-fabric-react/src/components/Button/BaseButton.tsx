@@ -593,6 +593,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     if (this.props.disabled && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space)) {
       ev.preventDefault();
       ev.stopPropagation();
+    } else if (!this.props.disabled && this.props.onKeyDown !== undefined) {
+      this.props.onKeyDown(ev); // not cancelling event because it's not disabled
     }
   };
 

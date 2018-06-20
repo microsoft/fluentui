@@ -802,6 +802,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
     data-is-focusable={true}
     disabled={undefined}
     onClick={[Function]}
+    onKeyDown={[Function]}
     type="button"
   >
     <div

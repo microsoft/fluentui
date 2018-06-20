@@ -226,6 +226,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
               }
           data-is-focusable={false}
           disabled={undefined}
+          onKeyDown={[Function]}
           onMouseDown={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
@@ -350,6 +351,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
               }
           data-is-focusable={false}
           disabled={undefined}
+          onKeyDown={[Function]}
           onMouseDown={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}

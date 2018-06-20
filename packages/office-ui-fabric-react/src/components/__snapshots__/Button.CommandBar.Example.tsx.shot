@@ -320,6 +320,7 @@ exports[`Component Examples renders Button.CommandBar.Example.tsx correctly 1`] 
           data-is-focusable={false}
           disabled={undefined}
           onClick={undefined}
+          onKeyDown={[Function]}
           tabIndex={-1}
           type="button"
         >
@@ -431,6 +432,7 @@ exports[`Component Examples renders Button.CommandBar.Example.tsx correctly 1`] 
           data-ktp-execute-target={undefined}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
           onMouseDown={[Function]}
           tabIndex={-1}
           type="button"
@@ -557,6 +559,7 @@ exports[`Component Examples renders Button.CommandBar.Example.tsx correctly 1`] 
       data-automation-id="test2"
       data-is-focusable={true}
       disabled={undefined}
+      onKeyDown={[Function]}
       type="button"
     >
       <div
