@@ -1,5 +1,9 @@
 import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
 import { NeutralColors } from './FluentColors';
+import {
+  IChoiceGroupOptionStyleProps,
+  IChoiceGroupOptionStyles
+} from 'office-ui-fabric-react/lib/components/ChoiceGroup/ChoiceGroupOption';
 
 /** Definitions for Depth, or shadow, levels. */
 const FluentDepthLevels = {
@@ -84,27 +88,31 @@ const CheckboxStyles = {
   }
 };
 
-const ChoiceGroupOptionStyles = {
-  field: {
-    selectors: {
-      ':after': [
-        {
-          top: 4,
-          left: 4,
-          width: 12,
-          height: 12,
-          borderWidth: 6
-        }
-        // @todo
-        // checked &&
-        // (hasIcon || hasImage) && {
-        //   top: radioButtonSpacing + radioButtonInnerSize,
-        //   right: radioButtonSpacing + radioButtonInnerSize,
-        //   left: 'auto' // To reset the value of 'left' to its default value, so that 'right' works
-        // }
-      ]
+const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOptionStyles => {
+  const { checked, hasIcon, hasImage } = props;
+  const radioButtonSpacing = 1;
+  const radioButtonInnerSize = 6;
+  return {
+    field: {
+      selectors: {
+        ':after': [
+          {
+            top: 4,
+            left: 4,
+            width: 12,
+            height: 12,
+            borderWidth: 6
+          },
+          checked &&
+            (hasIcon || hasImage) && {
+              top: radioButtonSpacing + radioButtonInnerSize,
+              right: radioButtonSpacing + radioButtonInnerSize,
+              left: 'auto' // To reset the value of 'left' to its default value, so that 'right' works
+            }
+        ]
+      }
     }
-  }
+  };
 };
 
 const DialogStyles = {
