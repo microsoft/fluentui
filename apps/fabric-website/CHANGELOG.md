@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 14 Jun 2018 20:52:57 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Jun 2018 10:25:55 GMT and should not be manually modified.
+
+## 6.1.2
+Wed, 20 Jun 2018 10:25:55 GMT
+
+### Patches
+
+- Prettier changes
 
 ## 6.1.1
 Thu, 14 Jun 2018 20:52:57 GMT

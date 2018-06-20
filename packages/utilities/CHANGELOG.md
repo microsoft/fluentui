@@ -1,6 +1,24 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 14 Jun 2018 20:52:57 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Jun 2018 10:25:55 GMT and should not be manually modified.
+
+## 6.7.1
+Wed, 20 Jun 2018 10:25:55 GMT
+
+### Patches
+
+- Prettier fixes
+
+## 6.7.0
+Tue, 19 Jun 2018 10:26:26 GMT
+
+### Minor changes
+
+- All `styled` props should be a style function which returns partial styles, or just a partial styles object. (Previously it was a "complete" styles object, which was not intended.)
+
+### Patches
+
+- Handling `stylesheet.onReset` undefined scenarios better.
 
 ## 6.6.0
 Thu, 14 Jun 2018 20:52:57 GMT

@@ -478,7 +478,6 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                   }
               data-ktp-execute-target="ktp-a-3"
               data-lpignore={true}
-              disabled={false}
               id="input12"
               onBlur={[Function]}
               onChange={[Function]}

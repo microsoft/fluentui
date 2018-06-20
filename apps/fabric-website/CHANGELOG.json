@@ -2,6 +2,25 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.1.2",
+      "tag": "@uifabric/fabric-website_v6.1.2",
+      "date": "Wed, 20 Jun 2018 10:25:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "natalieethell <naethell@microsoft.com>",
+            "commit": "09d099ec624afed8b92c5e32277a9a15c5d3c607",
+            "comment": "Prettier changes"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.16.0 <7.0.0` to `>=6.17.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.1.1",
       "tag": "@uifabric/fabric-website_v6.1.1",
       "date": "Thu, 14 Jun 2018 20:52:57 GMT",

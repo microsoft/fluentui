@@ -22,6 +22,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/chiclet'
         },
         {
+          component: require<any>('../components/Card/CardPage').CardPage,
+          key: 'DashboardCard',
+          name: 'DashboardCard',
+          url: '#/examples/Card'
+        },
+        {
           component: require<any>('../components/FolderCover/FolderCoverPage').FolderCoverPage,
           key: 'FolderCover',
           name: 'FolderCover',
@@ -101,9 +107,15 @@ export const AppDefinition: IAppDefinition = {
         },
         {
           component: require<any>('../components/fluent/theme/FluentThemePage').FluentThemePage,
-          key: 'FluentTheme',
-          name: 'Fluent Theme',
-          url: '#/examples/fluenttheme'
+          key: 'FluentColorTheme',
+          name: 'Fluent Color Theme',
+          url: '#/examples/fluent-color-theme'
+        },
+        {
+          component: require<any>('../components/fluent/styles/FluentStylesPage').FluentStylesPage,
+          key: 'FluentStyles',
+          name: 'Fluent Component Styles',
+          url: '#/examples/fluent-styles'
         }
       ]
     }
