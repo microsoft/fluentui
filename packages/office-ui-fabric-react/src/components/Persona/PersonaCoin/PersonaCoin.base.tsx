@@ -107,31 +107,31 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
     return (
       <div {...divProps} className={classNames.coin}>
         {// Render PersonaCoin if size is not size10
-        size !== PersonaSize.size10 && size !== PersonaSize.tiny ? (
-          <div {...coinProps} className={classNames.imageArea} style={coinSizeStyle}>
-            {!this.state.isImageLoaded &&
-              (!imageUrl || this.state.isImageError) && (
-                <div
-                  className={mergeStyles(
-                    classNames.initials,
-                    !showUnknownPersonaCoin && { backgroundColor: initialsColorPropToColorCode(this.props) }
-                  )}
-                  style={coinSizeStyle}
-                  aria-hidden="true"
-                >
-                  {onRenderInitials(this.props, this._onRenderInitials)}
-                </div>
+          size !== PersonaSize.size10 && size !== PersonaSize.tiny ? (
+            <div {...coinProps} className={classNames.imageArea} style={coinSizeStyle}>
+              {onRenderCoin === this._onRenderCoin && !this.state.isImageLoaded &&
+                (!imageUrl || this.state.isImageError) && (
+                  <div
+                    className={mergeStyles(
+                      classNames.initials,
+                      !showUnknownPersonaCoin && { backgroundColor: initialsColorPropToColorCode(this.props) }
+                    )}
+                    style={coinSizeStyle}
+                    aria-hidden="true"
+                  >
+                    {onRenderInitials(this.props, this._onRenderInitials)}
+                  </div>
+                )}
+              {onRenderCoin(this.props, this._onRenderCoin)}
+              <PersonaPresence {...personaPresenceProps} />
+            </div>
+          ) : // Otherwise, render just PersonaPresence.
+            this.props.presence ? (
+              <PersonaPresence {...personaPresenceProps} />
+            ) : (
+                // Just render Contact Icon if there isn't a Presence prop.
+                <Icon iconName="Contact" className={classNames.size10WithoutPresenceIcon} />
               )}
-            {onRenderCoin(this.props, this._onRenderCoin)}
-            <PersonaPresence {...personaPresenceProps} />
-          </div>
-        ) : // Otherwise, render just PersonaPresence.
-        this.props.presence ? (
-          <PersonaPresence {...personaPresenceProps} />
-        ) : (
-          // Just render Contact Icon if there isn't a Presence prop.
-          <Icon iconName="Contact" className={classNames.size10WithoutPresenceIcon} />
-        )}
         {this.props.children}
       </div>
     );
