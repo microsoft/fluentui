@@ -1,7 +1,7 @@
 import { createTheme, ITheme } from 'office-ui-fabric-react';
 import { NeutralColors, CommunicationColors } from './FluentColors';
 
-const FluentTheme: ITheme = createTheme({
+export const FluentTheme: ITheme = createTheme({
   palette: {
     black: NeutralColors.black,
     neutralDark: NeutralColors.gray190,
