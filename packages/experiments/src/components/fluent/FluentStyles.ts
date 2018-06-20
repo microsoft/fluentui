@@ -38,12 +38,6 @@ const FluentDepthLevels = {
   Level4: '0 16px 18px -4px rgba(0, 0, 0, 0.1)'
 };
 
-// const LinkStyles = {
-//   root: {
-//     // Styles
-//   }
-// };
-
 const BreadcrumbStyles = {
   itemLink: {
     fontSize: '18px',
@@ -84,7 +78,6 @@ const DefaultButtonStyles = {
 const CheckboxStyles = {
   checkbox: {
     borderRadius: '2px'
-    // borderColor: GrayColors.gray160
   }
 };
 
@@ -132,9 +125,6 @@ export const FluentStyles = {
   Breadcrumb: {
     styles: BreadcrumbStyles
   },
-  // Link: {
-  //   styles: LinkStyles
-  // },
   PrimaryButton: {
     styles: PrimaryButtonStyles
   },
@@ -157,26 +147,3 @@ export const FluentStyles = {
     styles: DialogContentStyles
   }
 };
-
-// export class FluentStylesBasicExample extends React.Component<{}, {}> {
-//   public render(): JSX.Element {
-//     return (
-//       <div>
-//         <h2>Link</h2>
-//         <h3>Current theme</h3>
-//         <FluentThemeLinkExample />
-//         <h3>Fluent theme</h3>
-//         <Customizer scopedSettings={{ ...FluentStyles }}>
-//           <FluentThemeLinkExample />
-//         </Customizer>
-//         <h2>Buttons</h2>
-//         <h3>Current theme</h3>
-//         <FluentThemeButtonExample />
-//         <h3>Fluent theme</h3>
-//         <Customizer scopedSettings={{ ...FluentStyles }}>
-//           <FluentThemeButtonExample />
-//         </Customizer>
-//       </div>
-//     );
-//   }
-// }
