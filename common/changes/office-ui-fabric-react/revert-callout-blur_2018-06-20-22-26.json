@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "fix clear input for BaseExtendedPicker",
+      "comment": "Callout: revert blur change",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "amyngu@microsoft.com"
+  "email": "joschect@microsoft.com"
 }
