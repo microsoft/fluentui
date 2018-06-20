@@ -46,6 +46,7 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
+          readOnly={undefined}
           rows={4}
           value=""
         />
@@ -95,6 +96,7 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
+          readOnly={undefined}
           rows={4}
           value="lorem text"
         />
@@ -143,6 +145,7 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
+          readOnly={undefined}
           required={true}
           rows={4}
           value=""
@@ -192,6 +195,7 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
+          readOnly={undefined}
           rows={4}
           value=""
         />
@@ -247,6 +251,7 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
+          readOnly={undefined}
           value=""
         />
       </div>
@@ -294,6 +299,7 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
+          readOnly={undefined}
           value=""
         />
       </div>

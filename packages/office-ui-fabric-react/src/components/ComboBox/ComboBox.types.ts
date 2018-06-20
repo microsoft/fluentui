@@ -165,6 +165,11 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   useComboBoxAsMenuWidth?: boolean;
 
   /**
+   * Custom max width for dropdown
+   */
+  dropdownMaxWidth?: number;
+
+  /**
    * Optional mode indicates if multi-choice selections is allowed.  Default to false
    */
   multiSelect?: boolean;
@@ -293,4 +298,9 @@ export interface IComboBoxOptionStyles extends IButtonStyles {
    * in the comboBox options.
    */
   optionText: IStyle;
+
+  /**
+   * Styles for the comboBox option text's wrapper.
+   */
+  optionTextWrapper: IStyle;
 }
