@@ -61,7 +61,6 @@ const DEFAULT_RENDERED_WINDOWS_AHEAD = 2;
 const DEFAULT_RENDERED_WINDOWS_BEHIND = 2;
 
 const SHIMMER_INITIAL_ITEMS = 10;
-const SHIMMER_ITEMS = new Array(SHIMMER_INITIAL_ITEMS);
 
 @withViewport
 export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListState> implements IDetailsList {
@@ -87,6 +86,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   private _dragDropHelper: DragDropHelper | null;
   private _initialFocusedIndex: number | undefined;
   private _pendingForceUpdate: boolean;
+  private _shimmerItems: null[];
 
   private _columnOverrides: {
     [key: string]: IColumn;
@@ -129,6 +129,10 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
         })
       : null;
     this._initialFocusedIndex = props.initialFocusedIndex;
+    this._shimmerItems =
+      props.shimmerPlaceholderProps && props.shimmerPlaceholderProps.lines
+        ? new Array(props.shimmerPlaceholderProps.lines)
+        : new Array(SHIMMER_INITIAL_ITEMS);
   }
 
   public scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void {
@@ -222,7 +226,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   }
 
   public componentWillReceiveProps(newProps: IDetailsListProps): void {
-    const { checkboxVisibility, items, setKey, selectionMode, columns, viewport } = this.props;
+    const { checkboxVisibility, items, setKey, selectionMode, columns, viewport, compact } = this.props;
     const shouldResetSelection = newProps.setKey !== setKey || newProps.setKey === undefined;
     let shouldForceUpdates = false;
 
@@ -245,7 +249,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     if (
       newProps.checkboxVisibility !== checkboxVisibility ||
       newProps.columns !== columns ||
-      newProps.viewport!.width !== viewport!.width
+      newProps.viewport!.width !== viewport!.width ||
+      newProps.compact !== compact
     ) {
       shouldForceUpdates = true;
     }
@@ -427,9 +432,10 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                   />
                 ) : (
                   <List
+                    className={css(enableShimmer && styles.shimmerFadeOut)}
                     ref={this._list}
                     role="presentation"
-                    items={enableShimmer && !items.length ? SHIMMER_ITEMS : items}
+                    items={enableShimmer && !items.length ? this._shimmerItems : items}
                     onRenderCell={this._onRenderListCell(0)}
                     usePageCache={usePageCache}
                     onShouldVirtualize={onShouldVirtualize}
@@ -481,7 +487,9 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       getRowAriaDescribedBy,
       checkButtonAriaLabel,
       checkboxCellClassName,
-      groupProps
+      groupProps,
+      enableShimmer,
+      shimmerPlaceholderProps
     } = this.props;
     const collapseAllVisibility = groupProps && groupProps.collapseAllVisibility;
     const selection = this._selection;
@@ -508,12 +516,18 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       getRowAriaLabel: getRowAriaLabel,
       getRowAriaDescribedBy: getRowAriaDescribedBy,
       checkButtonAriaLabel: checkButtonAriaLabel,
-      checkboxCellClassName: checkboxCellClassName
+      checkboxCellClassName: checkboxCellClassName,
+      shimmer: !item,
+      onRenderCustomPlaceholder: shimmerPlaceholderProps && shimmerPlaceholderProps.onRenderCustomPlaceholder
     };
 
     if (!item) {
       if (onRenderMissingItem) {
         return onRenderMissingItem(index, rowProps);
+      }
+
+      if (enableShimmer) {
+        return onRenderRow(rowProps);
       }
 
       return null;

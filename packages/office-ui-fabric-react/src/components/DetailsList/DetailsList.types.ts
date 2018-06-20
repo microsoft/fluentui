@@ -155,10 +155,15 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
   onRenderMissingItem?: (index?: number, rowProps?: IDetailsRowProps) => React.ReactNode;
 
   /**
-   * If set to true and we provide an empty array, it will render 10 lines of whatever provided in onRenderMissingItem.
+   * If set to true will enable a default shimmer placeholder in place of missing items.
+   * If initialy the number of items is unknown it will default to 10 lines.
+   * To customize the shimmer placeholder and the number of initial lines use "shimmerPlaceholderProps" prop.
    * @default false
    */
   enableShimmer?: boolean;
+
+  /** Optional props to pass for shimmer placeholder customization */
+  shimmerPlaceholderProps?: { lines?: number; onRenderCustomPlaceholder?: () => React.ReactNode };
 
   /**
    * An override to render the details header.
