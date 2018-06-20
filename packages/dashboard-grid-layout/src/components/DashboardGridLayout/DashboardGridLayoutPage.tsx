@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
-import { DashboardGridLayoutExample } from './examples/DashboardGridLayout.example';
-import { DashboardGridLayoutCardExample } from './examples/DashboardGridLayout.card.example';
-const DashboardGridLayoutExampleCode = require('!raw-loader!@uifabric/dashboard-grid-layout/src/components/DashboardGridLayout/examples/DashboardGridLayout.example.tsx') as string;
-const DashboardGridLayoutCardExampleCode = require('!raw-loader!@uifabric/dashboard-grid-layout/src/components/DashboardGridLayout/examples/DashboardGridLayout.card.example.tsx') as string;
+import { DashboardGridLayoutExample } from './examples/DashboardGridLayout.Example';
+import { DashboardGridLayoutCardExample } from './examples/DashboardGridLayout.Card.Example';
+const DashboardGridLayoutExampleCode = require('!raw-loader!@uifabric/dashboard-grid-layout/src/components/DashboardGridLayout/examples/DashboardGridLayout.Example.tsx') as string;
+const DashboardGridLayoutCardExampleCode = require('!raw-loader!@uifabric/dashboard-grid-layout/src/components/DashboardGridLayout/examples/DashboardGridLayout.Card.Example.tsx') as string;
 
 export class DashboardGridLayoutPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

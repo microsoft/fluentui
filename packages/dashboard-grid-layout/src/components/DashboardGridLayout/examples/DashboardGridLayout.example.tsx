@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DashboardGridLayout } from '../DashboardGridLayout';
 import { DashboardGridBreakpointLayouts, Size } from '../DashboardGridLayout.types';
-import * as exampleStyles from './DashboardGridLayout.example.scss';
+import * as exampleStyles from './DashboardGridLayout.Example.scss';
 
 export class DashboardGridLayoutExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
