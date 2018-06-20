@@ -110,28 +110,28 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
     this._classNames = getClassNames
       ? getClassNames(
-        theme!,
-        className!,
-        variantClassName!,
-        iconProps && iconProps.className,
-        menuIconProps && menuIconProps.className,
-        isPrimaryButtonDisabled!,
-        checked!,
-        !!menuProps,
-        this.props.split,
-        !!allowDisabledFocus
-      )
+          theme!,
+          className!,
+          variantClassName!,
+          iconProps && iconProps.className,
+          menuIconProps && menuIconProps.className,
+          isPrimaryButtonDisabled!,
+          checked!,
+          !!menuProps,
+          this.props.split,
+          !!allowDisabledFocus
+        )
       : getBaseButtonClassNames(
-        styles!,
-        className!,
-        variantClassName!,
-        iconProps && iconProps.className,
-        menuIconProps && menuIconProps.className,
-        isPrimaryButtonDisabled!,
-        checked!,
-        !!menuProps,
-        this.props.split
-      );
+          styles!,
+          className!,
+          variantClassName!,
+          iconProps && iconProps.className,
+          menuIconProps && menuIconProps.className,
+          isPrimaryButtonDisabled!,
+          checked!,
+          !!menuProps,
+          this.props.split
+        );
 
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;
     // Anchor tag cannot be disabled hence in disabled state rendering

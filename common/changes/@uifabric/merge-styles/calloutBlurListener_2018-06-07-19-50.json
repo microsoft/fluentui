@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/merge-styles",
+      "comment": "Prettier fixes",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/merge-styles",
+  "email": "naethell@microsoft.com"
+}
