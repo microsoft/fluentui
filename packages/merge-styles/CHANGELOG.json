@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.2.1",
+      "tag": "@uifabric/merge-styles_v6.2.1",
+      "date": "Wed, 20 Jun 2018 10:25:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "natalieethell <naethell@microsoft.com>",
+            "commit": "09d099ec624afed8b92c5e32277a9a15c5d3c607",
+            "comment": "Prettier fixes"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.2.0",
       "tag": "@uifabric/merge-styles_v6.2.0",
       "date": "Thu, 07 Jun 2018 16:35:34 GMT",

@@ -1,4 +1,5 @@
 import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
+import { NeutralColors } from './FluentColors';
 
 /** Definitions for Depth, or shadow, levels. */
 const FluentDepthLevels = {
@@ -53,22 +54,56 @@ const BreadcrumbStyles = {
 
 const PrimaryButtonStyles = {
   root: {
-    borderRadius: '2px',
-    boxShadow: FluentDepthLevels.Level1
+    borderRadius: '2px'
+    // boxShadow: FluentDepthLevels.Level1
   }
 };
 
 const CompoundButtonStyles = {
   root: {
-    borderRadius: '2px',
-    boxShadow: FluentDepthLevels.Level1
+    borderRadius: '2px'
+    // boxShadow: FluentDepthLevels.Level1
   }
 };
 
 const DefaultButtonStyles = {
   root: {
     borderRadius: '2px',
-    boxShadow: FluentDepthLevels.Level1
+    backgroundColor: '#fff',
+    border: `1px solid ${NeutralColors.gray20}`
+  },
+  rootHovered: {
+    backgroundColor: '#f3f2f1'
+  }
+};
+
+const CheckboxStyles = {
+  checkbox: {
+    borderRadius: '2px'
+    // borderColor: GrayColors.gray160
+  }
+};
+
+const ChoiceGroupOptionStyles = {
+  field: {
+    selectors: {
+      ':after': [
+        {
+          top: 4,
+          left: 4,
+          width: 12,
+          height: 12,
+          borderWidth: 6
+        }
+        // @todo
+        // checked &&
+        // (hasIcon || hasImage) && {
+        //   top: radioButtonSpacing + radioButtonInnerSize,
+        //   right: radioButtonSpacing + radioButtonInnerSize,
+        //   left: 'auto' // To reset the value of 'left' to its default value, so that 'right' works
+        // }
+      ]
+    }
   }
 };
 
@@ -100,6 +135,12 @@ export const FluentStyles = {
   },
   CompoundButton: {
     styles: CompoundButtonStyles
+  },
+  Checkbox: {
+    styles: CheckboxStyles
+  },
+  ChoiceGroupOption: {
+    styles: ChoiceGroupOptionStyles
   },
   Dialog: {
     styles: DialogStyles

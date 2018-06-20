@@ -5,26 +5,17 @@
 [![npm version](https://badge.fury.io/js/office-ui-fabric-react.svg)](https://badge.fury.io/js/office-ui-fabric-react)
 [![Build Status](https://travis-ci.org/OfficeDev/office-ui-fabric-react.svg?branch=master)](https://travis-ci.org/OfficeDev/office-ui-fabric-react)
 
-Fabric React is a responsive, mobile-first collection of robust components designed to make it quick and simple for you to create web experiences using the Office Design Language.
+Fabric React is a collection of robust React-based components designed to make it simple for you to create consistent web experiences using the Office Design Language.
 
-## Created with Fabric
+## Who uses UI Fabric?
 
-[<img alt="Yammer Logo" align="left" height="40" src='./ghdocs/img/yammer.png'/>](https://www.yammer.com)
-[<img alt="Outlook Logo" align="left" height="50" src='./ghdocs/img/outlook-350-150.png'/>](https://www.outlook.com)
-[<img alt="Visual Studio Logo" height="50" src='./ghdocs/img/VS_rgb_Purple.png'/>](https://www.visualstudio.com/team-services/")
+![image](https://user-images.githubusercontent.com/1110944/41632827-ac599f98-73f0-11e8-9d27-2bfe8ee7adf4.png)
 
-<details>
-    <summary>and many more...</summary>
+\+ 45 additional Microsoft sites and products
 
-- [MileIQ](https://www.mileiq.com/)
-- [PowerApps Portal](https://web.powerapps.com/home)
-- [OneDrive](https://onedrive.com)
-- [SharePoint](https://onedrive.com)
-  </details>
+## For more information...
 
-## [Wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki)
-
-The bulk of the documentation is available on the [wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki).
+Please see the [wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki).
 
 ## Contents
 
@@ -65,7 +56,10 @@ ReactDOM.render(<PrimaryButton>I am a button.</PrimaryButton>, document.body.fir
 
 ## Browser support
 
-Fabric React supports many commonly used browsers. See the [browser support doc](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Browser-Support) for more information.
+Fabric React supports all evergreen browsers, with IE 11 as the min-bar version of Internet Explorer. See the [browser support doc](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Browser-Support) for more information.
+
+## Right-to-left support
+All components can render in LTR or RTL, depending on the `dir` attribute set on the html page. (`dir="rtl"` will flip the direction of everything.
 
 ## Server-side rendering
 

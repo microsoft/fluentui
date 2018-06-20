@@ -60,7 +60,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     directionalHint: DirectionalHint.bottomAutoEdge
   };
 
-  private _classNames: {[key in keyof ICalloutContentStyles]: string };
+  private _classNames: { [key in keyof ICalloutContentStyles]: string };
   private _didSetInitialFocus: boolean;
   private _hostElement = createRef<HTMLDivElement>();
   private _calloutElement = createRef<HTMLDivElement>();
@@ -242,8 +242,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     if (
       !preventDismissOnLostFocus &&
       ((!this._target && clickedOutsideCallout) ||
-        (ev.target !== this._targetWindow &&
-          clickedOutsideCallout &&
+        (clickedOutsideCallout &&
           ((this._target as MouseEvent).stopPropagation ||
             (!this._target || (target !== this._target && !elementContains(this._target as HTMLElement, target))))))
     ) {
@@ -282,6 +281,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     this._async.setTimeout(() => {
       this._events.on(this._targetWindow, 'scroll', this._dismissOnScroll, true);
       this._events.on(this._targetWindow, 'resize', this.dismiss, true);
+      this._events.on(this._targetWindow, 'blur', this._dismissOnLostFocus, true);
       this._events.on(this._targetWindow.document.documentElement, 'focus', this._dismissOnLostFocus, true);
       this._events.on(this._targetWindow.document.documentElement, 'click', this._dismissOnLostFocus, true);
       this._hasListeners = true;
@@ -291,6 +291,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   private _removeListeners() {
     this._events.off(this._targetWindow, 'scroll', this._dismissOnScroll, true);
     this._events.off(this._targetWindow, 'resize', this.dismiss, true);
+    this._events.off(this._targetWindow, 'blur', this._dismissOnLostFocus, true);
     this._events.off(this._targetWindow.document.documentElement, 'focus', this._dismissOnLostFocus, true);
     this._events.off(this._targetWindow.document.documentElement, 'click', this._dismissOnLostFocus, true);
     this._hasListeners = false;

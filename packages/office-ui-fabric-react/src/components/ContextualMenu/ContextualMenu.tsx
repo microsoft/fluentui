@@ -304,11 +304,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
                 isCircularNavigation={true}
                 handleTabKey={FocusZoneTabbableElements.all}
               >
-                <ul
-                  className={this._classNames.list}
-                  onKeyDown={this._onKeyDown}
-                  onKeyUp={this._onKeyUp}
-                >
+                <ul className={this._classNames.list} onKeyDown={this._onKeyDown} onKeyUp={this._onKeyUp}>
                   {items.map((item, index) => {
                     const menuItem = this._renderMenuItem(
                       item,
@@ -703,9 +699,11 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   };
 
   private _shouldHandleKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
-    return ev.which === KeyCodes.escape ||
+    return (
+      ev.which === KeyCodes.escape ||
       this._shouldCloseSubMenu(ev) ||
-      (ev.which === KeyCodes.up && (ev.altKey || ev.metaKey));
+      (ev.which === KeyCodes.up && (ev.altKey || ev.metaKey))
+    );
   };
 
   private _onKeyUp = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
@@ -725,7 +723,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _keyHandler = (
     ev: React.KeyboardEvent<HTMLElement>,
     shouldHandleKey: (ev: React.KeyboardEvent<HTMLElement>) => boolean,
-    dismissAllMenus?: boolean): boolean => {
+    dismissAllMenus?: boolean
+  ): boolean => {
     let handled = false;
 
     if (shouldHandleKey(ev)) {
@@ -767,13 +766,14 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     // If we have a modifier key being pressed, we do not want to move focus.
     // Otherwise, handle up and down keys
-    const elementToFocus = (ev.altKey || ev.metaKey)
-      ? null
-      : ev.which === KeyCodes.up
-        ? getLastFocusable(this._host, this._host.lastChild as HTMLElement, true)
-        : ev.which === KeyCodes.down
-          ? getFirstFocusable(this._host, this._host.firstChild as HTMLElement, true)
-          : null;
+    const elementToFocus =
+      ev.altKey || ev.metaKey
+        ? null
+        : ev.which === KeyCodes.up
+          ? getLastFocusable(this._host, this._host.lastChild as HTMLElement, true)
+          : ev.which === KeyCodes.down
+            ? getFirstFocusable(this._host, this._host.firstChild as HTMLElement, true)
+            : null;
 
     if (elementToFocus) {
       elementToFocus.focus();
@@ -960,10 +960,10 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _onItemKeyDown = (item: any, ev: React.KeyboardEvent<HTMLElement>): void => {
     const openKey = getRTL() ? KeyCodes.left : KeyCodes.right;
 
-    if (!item.disabled &&
-      (ev.which === openKey ||
-        ev.which === KeyCodes.enter ||
-        (ev.which === KeyCodes.down && (ev.altKey || ev.metaKey)))) {
+    if (
+      !item.disabled &&
+      (ev.which === openKey || ev.which === KeyCodes.enter || (ev.which === KeyCodes.down && (ev.altKey || ev.metaKey)))
+    ) {
       this.setState({
         expandedByMouseClick: false
       });
