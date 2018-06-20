@@ -25,6 +25,10 @@ module.exports = function(options) {
     runPromises.push(runTscFor('lib', 'es2015', extraParams));
   }
 
+  if (options.isProduction) {
+    runPromises.push(runTscFor('lib-amd', 'amd', extraParams));
+  }
+
   return Promise.all(runPromises);
 
   function logFirstStdOutAndRethrow(process) {

@@ -46,6 +46,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -95,6 +96,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -128,7 +130,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
             }
         htmlFor="TextField4"
       >
-        Required 
+        Read Only
       </label>
       <div
         className="ms-TextField-fieldGroup"
@@ -143,7 +145,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
-          required={true}
+          readOnly={true}
           type="text"
           value=""
         />
@@ -177,13 +179,13 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
             }
         htmlFor="TextField6"
       >
-        With error message
+        Required 
       </label>
       <div
         className="ms-TextField-fieldGroup"
       >
         <input
-          aria-describedby="TextFieldDescription7"
+          aria-describedby={undefined}
           aria-invalid={false}
           aria-label={undefined}
           className="ms-TextField-field"
@@ -192,13 +194,64 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
+          readOnly={undefined}
+          required={true}
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="ms-TextField"
+  >
+    <div
+      className="ms-TextField-wrapper"
+    >
+      <label
+        className=
+            ms-Label
+            {
+              box-shadow: none;
+              box-sizing: border-box;
+              color: #333333;
+              display: block;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              overflow-wrap: break-word;
+              padding-bottom: 5px;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 5px;
+              word-wrap: break-word;
+            }
+        htmlFor="TextField8"
+      >
+        With error message
+      </label>
+      <div
+        className="ms-TextField-fieldGroup"
+      >
+        <input
+          aria-describedby="TextFieldDescription9"
+          aria-invalid={false}
+          aria-label={undefined}
+          className="ms-TextField-field"
+          id="TextField8"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onInput={[Function]}
+          readOnly={undefined}
           type="text"
           value=""
         />
       </div>
     </div>
     <span
-      id="TextFieldDescription7"
+      id="TextFieldDescription9"
     >
       <div
         aria-live="assertive"
@@ -230,7 +283,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
               padding-top: 5px;
               word-wrap: break-word;
             }
-        htmlFor="TextField8"
+        htmlFor="TextField10"
       >
         With input mask
       </label>
@@ -242,7 +295,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
           aria-invalid={false}
           aria-label={undefined}
           className="ms-TextField-field"
-          id="TextField8"
+          id="TextField10"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -251,6 +304,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
           onMouseDown={[Function]}
           onMouseUp={[Function]}
           onPaste={[Function]}
+          readOnly={undefined}
           type="text"
           value="mask: (___) ___ - ____"
         />
