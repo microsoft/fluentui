@@ -85,7 +85,7 @@ $isPaddedMargin: 24px;
   display: none;
   position: absolute;
   @include ms-text-align(left);
-  color: #a7a7a7;
+  color: $ms-color-neutralTertiary;
   @include ms-left(1px);
 }
 
@@ -236,24 +236,25 @@ $isPaddedMargin: 24px;
 }
 
 .dropHintCircleStyle {
-  display:none;
+  display:inline-block;
+  visibility:hidden;
   position: absolute;
   bottom: 0;
   top: -27px;
   height: 9px;
   width: 9px;
   border-radius: 50%;
-  @include ms-margin-left(-11px);
+  @include ms-margin-left(-5px);
   top:34px;
   overflow: visible;
   z-index: 10;
-  left:6px;
   border:1px solid $ms-color-themePrimary;
-  background: white ;
+  background: $ms-color-white;
 }
 
 .dropHintLineStyle{
-  display: none;
+  display: inline-block;
+  visibility:hidden;
   position: absolute;
   bottom: 0;
   top: -3px;

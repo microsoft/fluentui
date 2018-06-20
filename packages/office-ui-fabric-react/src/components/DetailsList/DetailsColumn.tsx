@@ -181,7 +181,6 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
     }
     if (this._dragDropSubscription && !this.props.isDraggable!) {
       this._dragDropSubscription.dispose();
-      // We need to use native on this to avoid MarqueeSelection from handling the event before us.
       this._events.off(this._root.current, 'mousedown');
       delete this._dragDropSubscription;
     }
