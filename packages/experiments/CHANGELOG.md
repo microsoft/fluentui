@@ -1,6 +1,39 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 08 Jun 2018 18:34:17 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Jun 2018 10:25:55 GMT and should not be manually modified.
+
+## 6.7.0
+Wed, 20 Jun 2018 10:25:55 GMT
+
+### Minor changes
+
+- Experiments/Nav component: Fix to display nav group header on show more
+
+### Patches
+
+- Prettier fixes
+
+## 6.6.0
+Tue, 19 Jun 2018 10:26:26 GMT
+
+### Minor changes
+
+- Added Fluent Styles Page
+- Update Fluent colors
+- Update Fluent colors and theme
+
+## 6.5.0
+Mon, 18 Jun 2018 16:57:14 GMT
+
+### Minor changes
+
+- Dashboard Card Component for Admin Portals Dashboard which will be hosted inside react-grid-layout. 
+- Add GridList component into the existing Dashboard Card Component
+
+### Patches
+
+- Add alias to CommandBar to final version
+- Fix import mistakes
 
 ## 6.4.0
 Fri, 08 Jun 2018 18:34:17 GMT

@@ -312,7 +312,7 @@ class SlimNavComponent extends NavBase {
 
     // first group header is hidden by default, display group header for other groups only if there are visible links
     if (groupIndex > 0) {
-      isGroupHeaderVisible = this.hasAtleastOneVisibleLink(group.links);
+      isGroupHeaderVisible = this.hasAtleastOneVisibleLink(group.links, this.props.showMore);
     }
 
     return (

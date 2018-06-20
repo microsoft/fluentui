@@ -2,6 +2,54 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "6.3.0",
+      "tag": "@uifabric/styling_v6.3.0",
+      "date": "Wed, 20 Jun 2018 10:25:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "natalieethell <naethell@microsoft.com>",
+            "commit": "09d099ec624afed8b92c5e32277a9a15c5d3c607",
+            "comment": "Prettier fixes"
+          }
+        ],
+        "minor": [
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "7948bbba6fc091ca9d745ee0c0fd9720f531e864",
+            "comment": "Add borderColor and outlineColor parameters to getFocusStyle"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.7.0 <7.0.0` to `>=6.7.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.2.0 <7.0.0` to `>=6.2.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.2.1",
+      "tag": "@uifabric/styling_v6.2.1",
+      "date": "Tue, 19 Jun 2018 10:26:26 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "4e6f17be6e5ac4d578dfeff85147fd9386469d1e",
+            "comment": "Handling `stylesheet.onReset` undefined scenarios better."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.6.0 <7.0.0` to `>=6.7.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.2.0",
       "tag": "@uifabric/styling_v6.2.0",
       "date": "Thu, 07 Jun 2018 16:35:34 GMT",

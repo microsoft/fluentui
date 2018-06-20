@@ -18,6 +18,7 @@ export interface IComboBoxClassNames {
 export interface IComboBoxOptionClassNames {
   optionText: string;
   root: string;
+  optionTextWrapper: string;
 }
 
 export const getClassNames = memoizeFunction(
@@ -71,7 +72,8 @@ export const getComboBoxOptionClassNames = memoizeFunction(
           ':focus': styles.rootFocused,
           ':active': styles.rootPressed
         }
-      })
+      }),
+      optionTextWrapper: mergeStyles(styles.optionTextWrapper)
     };
   }
 );

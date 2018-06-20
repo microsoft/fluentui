@@ -9,17 +9,20 @@ import { ZIndexes } from './zIndexes';
  *
  * @param theme - The theme object to use.
  * @param inset - The number of pixels to inset the border.
- * @param color - The color for the border.
  * @param position - The positioning applied to the container. Must
  * be 'relative' or 'absolute' so that the focus border can live around it.
  * @param highContrastStyle - Style for high contrast mode.
+ * @param borderColor - Color of the border.
+ * @param outlineColor - Color of the outline.
  * @returns The style object.
  */
 export function getFocusStyle(
   theme: ITheme,
   inset: number = 0,
   position: 'relative' | 'absolute' = 'relative',
-  highContrastStyle: IRawStyle | undefined = undefined
+  highContrastStyle: IRawStyle | undefined = undefined,
+  borderColor: string = theme.palette.white,
+  outlineColor: string = theme.palette.neutralSecondary
 ): IRawStyle {
   return {
     outline: 'transparent',
@@ -37,8 +40,8 @@ export function getFocusStyle(
         top: inset + 1,
         bottom: inset + 1,
         right: inset + 1,
-        border: '1px solid ' + theme.palette.white,
-        outline: '1px solid ' + theme.palette.neutralSecondary,
+        border: '1px solid ' + borderColor,
+        outline: '1px solid ' + outlineColor,
         zIndex: ZIndexes.FocusStyle,
         selectors: {
           [HighContrastSelector]: highContrastStyle
