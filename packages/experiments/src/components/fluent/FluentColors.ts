@@ -57,7 +57,7 @@ export namespace SharedColors {
   export const cyan10 = '#00b7c3';
   export const cyanBlue20 = '#004e8c';
   export const cyanBlue10 = '#0078d4';
-  export const nlue10 = '#4f6bed';
+  export const blue10 = '#4f6bed';
   export const blueMagenta30 = '#5c2e91';
   export const blueMagenta20 = '#8764b8';
   export const blueMagenta10 = '#8378de';
