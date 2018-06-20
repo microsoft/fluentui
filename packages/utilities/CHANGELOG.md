@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 19 Jun 2018 10:26:26 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Jun 2018 10:25:55 GMT and should not be manually modified.
+
+## 6.7.1
+Wed, 20 Jun 2018 10:25:55 GMT
+
+### Patches
+
+- Prettier fixes
 
 ## 6.7.0
 Tue, 19 Jun 2018 10:26:26 GMT
