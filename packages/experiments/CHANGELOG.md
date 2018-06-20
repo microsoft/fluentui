@@ -1,6 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 19 Jun 2018 10:26:26 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Jun 2018 10:25:55 GMT and should not be manually modified.
+
+## 6.7.0
+Wed, 20 Jun 2018 10:25:55 GMT
+
+### Minor changes
+
+- Experiments/Nav component: Fix to display nav group header on show more
+
+### Patches
+
+- Prettier fixes
 
 ## 6.6.0
 Tue, 19 Jun 2018 10:26:26 GMT

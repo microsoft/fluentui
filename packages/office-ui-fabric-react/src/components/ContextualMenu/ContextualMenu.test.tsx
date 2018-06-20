@@ -70,9 +70,7 @@ describe('ContextualMenu', () => {
       spyCalled = true;
     };
 
-    ReactTestUtils.renderIntoDocument<ContextualMenu>(
-      <ContextualMenu items={items} onDismiss={onDismissSpy} />
-    );
+    ReactTestUtils.renderIntoDocument<ContextualMenu>(<ContextualMenu items={items} onDismiss={onDismissSpy} />);
 
     const menuList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
     ReactTestUtils.Simulate.keyDown(menuList, { which: KeyCodes.alt });
@@ -94,9 +92,7 @@ describe('ContextualMenu', () => {
       spyCalled = true;
     };
 
-    ReactTestUtils.renderIntoDocument<ContextualMenu>(
-      <ContextualMenu items={items} onDismiss={onDismissSpy} />
-    );
+    ReactTestUtils.renderIntoDocument<ContextualMenu>(<ContextualMenu items={items} onDismiss={onDismissSpy} />);
 
     const menuList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
     ReactTestUtils.Simulate.keyDown(menuList, { which: KeyCodes.up, altKey: true });
@@ -117,9 +113,7 @@ describe('ContextualMenu', () => {
       spyCalled = true;
     };
 
-    ReactTestUtils.renderIntoDocument<ContextualMenu>(
-      <ContextualMenu items={items} onDismiss={onDismissSpy} />
-    );
+    ReactTestUtils.renderIntoDocument<ContextualMenu>(<ContextualMenu items={items} onDismiss={onDismissSpy} />);
 
     const menuList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
     ReactTestUtils.Simulate.keyDown(menuList, { which: KeyCodes.escape });
@@ -140,9 +134,7 @@ describe('ContextualMenu', () => {
       spyCalled = true;
     };
 
-    ReactTestUtils.renderIntoDocument<ContextualMenu>(
-      <ContextualMenu items={items} onDismiss={onDismissSpy} />
-    );
+    ReactTestUtils.renderIntoDocument<ContextualMenu>(<ContextualMenu items={items} onDismiss={onDismissSpy} />);
 
     const menuList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
     ReactTestUtils.Simulate.keyDown(menuList, { which: KeyCodes.alt });
@@ -856,8 +848,8 @@ describe('ContextualMenu', () => {
 
     // Alter the Layer's prototype so that we can confirm that it mounts before the contextualmenu mounts.
     /* tslint:disable:no-function-expression */
-    Layer.prototype.componentDidMount = (function (componentDidMount): () => void {
-      return function (): void {
+    Layer.prototype.componentDidMount = (function(componentDidMount): () => void {
+      return function(): void {
         if (menuMounted) {
           menuMountedFirst = true;
         }
