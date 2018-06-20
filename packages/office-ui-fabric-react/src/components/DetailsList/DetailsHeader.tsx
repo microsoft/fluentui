@@ -407,6 +407,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 
   private _setDraggedItemIndex(itemIndex: number) {
     if (itemIndex >= 0) {
+      // Column index is set based on the checkbox
       this._draggedColumnIndex = this.props.selectionMode !== SelectionMode.none ? itemIndex - 2 : itemIndex - 1;
       this._getDropHintPositions();
     } else {
@@ -418,14 +419,14 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 
   private _resetDropHints(): void {
     if (this._currentDropHintIndex >= 0) {
-      this._updateDropHintElement(this._dropHintDetails[this._currentDropHintIndex].dropHintElementRef, 'none');
+      this._updateDropHintElement(this._dropHintDetails[this._currentDropHintIndex].dropHintElementRef, 'hidden');
       this._currentDropHintIndex = Number.MIN_SAFE_INTEGER;
     }
   }
 
   private _updateDropHintElement(element: HTMLElement, property: string) {
-    (element.childNodes[1] as HTMLElement).style.display = property;
-    (element.childNodes[0] as HTMLElement).style.display = property;
+    (element.childNodes[1] as HTMLElement).style.visibility = property;
+    (element.childNodes[0] as HTMLElement).style.visibility = property;
   }
 
   private _getDropHintPositions = (): void => {
@@ -545,7 +546,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
       }
     } else if (currentDropHintIndex !== indexToUpdate && indexToUpdate >= 0) {
       this._resetDropHints();
-      this._updateDropHintElement(this._dropHintDetails[indexToUpdate].dropHintElementRef, 'inline-block');
+      this._updateDropHintElement(this._dropHintDetails[indexToUpdate].dropHintElementRef, 'visible');
       this._currentDropHintIndex = indexToUpdate;
     }
   };

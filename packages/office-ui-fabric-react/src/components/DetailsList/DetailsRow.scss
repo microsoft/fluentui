@@ -3,7 +3,7 @@
 $rowHeight: 42px;
 $compactRowHeight: 32px;
 $rowVerticalPadding: 11px;
-$rowHorizontalPadding: 8px;
+$rowHorizontalPadding: 12px;
 $compactRowVerticalPadding: 6px;
 $isPaddedMargin: 24px;
 
@@ -220,7 +220,6 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding-left:12px;
 
   &.checkCell {
     padding: 0;
