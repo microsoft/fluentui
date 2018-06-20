@@ -49,7 +49,6 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
         ref={this._root}
         role={'columnheader'}
         aria-sort={column.isSorted ? (column.isSortedDescending ? 'descending' : 'ascending') : 'none'}
-        aria-disabled={column.columnActionsMode === ColumnActionsMode.disabled}
         aria-colindex={columnIndex}
         className={css(
           'ms-DetailsHeader-cell',
