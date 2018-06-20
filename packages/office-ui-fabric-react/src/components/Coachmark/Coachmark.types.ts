@@ -33,6 +33,7 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
 
   /**
    * Whether or not to force the Coachmark/TeachingBubble content to fit within the window bounds.
+   * @default true
    */
   isPositionForced?: boolean;
 

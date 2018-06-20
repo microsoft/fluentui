@@ -109,7 +109,7 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
             teachingBubbleRef={this._teachingBubbleContent}
             ariaDescribedBy={'coachmark-desc1'}
             ariaLabelledBy={'coachmark-label1'}
-            ariaDescribedByText={'Press enter for more information'}
+            ariaDescribedByText={'Press enter or alt + C to open the Coachmark notification'}
             ariaLabelledByText={'Coachmark notification'}
           >
             <TeachingBubbleContent
