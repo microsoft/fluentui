@@ -11,6 +11,8 @@ import { FluentStylesBreadcrumbExample } from './examples/FluentStyles.Breadcrum
 import { FluentStylesCheckboxExample } from './examples/FluentStyles.Checkbox.Example';
 import { FluentStylesChoiceGroupExample } from './examples/FluentStyles.ChoiceGroup.Example';
 import { FluentStylesLabelExample } from './examples/FluentStyles.Label.Example';
+import { FluentStylesRatingExample } from './examples/FluentStyles.Rating.Example';
+import { FluentStylesSliderExample } from './examples/FluentStyles.Slider.Example';
 
 const FluentBreadcrumbExampleCode = require('!raw-loader!./examples/FluentStyles.Breadcrumb.Example.tsx') as string;
 const FluentButtonExampleCode = require('!raw-loader!./examples/FluentStyles.Button.Example.tsx') as string;
@@ -19,6 +21,8 @@ const FluentDialogExampleCode = require('!raw-loader!./examples/FluentStyles.Dia
 const FluentCheckboxExampleCode = require('!raw-loader!./examples/FluentStyles.Checkbox.Example.tsx') as string;
 const FluentChoiceGroupExampleCode = require('!raw-loader!./examples/FluentStyles.ChoiceGroup.Example.tsx') as string;
 const FluentLabelExampleCode = require('!raw-loader!./examples/FluentStyles.Label.Example.tsx') as string;
+const FluentRatingExampleCode = require('!raw-loader!./examples/FluentStyles.Rating.Example.tsx') as string;
+const FluentSliderExampleCode = require('!raw-loader!./examples/FluentStyles.Slider.Example.tsx') as string;
 
 export interface IFabricStylesPageState {
   isFluent?: boolean;
@@ -67,6 +71,12 @@ export class FluentStylesPage extends React.Component<IComponentDemoPageProps, I
               </ExampleCard>
               <ExampleCard title="Label" code={FluentLabelExampleCode}>
                 <FluentStylesLabelExample />
+              </ExampleCard>
+              <ExampleCard title="Rating - No Current Changes" code={FluentRatingExampleCode}>
+                <FluentStylesRatingExample />
+              </ExampleCard>
+              <ExampleCard title="Slider - No Current Changes" code={FluentSliderExampleCode}>
+                <FluentStylesSliderExample />
               </ExampleCard>
             </div>
           </Customizer>

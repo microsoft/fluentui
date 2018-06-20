@@ -1,5 +1,9 @@
 import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
 import { NeutralColors } from './FluentColors';
+import {
+  IChoiceGroupOptionStyleProps,
+  IChoiceGroupOptionStyles
+} from 'office-ui-fabric-react/lib/components/ChoiceGroup/ChoiceGroupOption';
 
 /** Definitions for Depth, or shadow, levels. */
 const FluentDepthLevels = {
@@ -33,12 +37,6 @@ const FluentDepthLevels = {
    * */
   Level4: '0 16px 18px -4px rgba(0, 0, 0, 0.1)'
 };
-
-// const LinkStyles = {
-//   root: {
-//     // Styles
-//   }
-// };
 
 const BreadcrumbStyles = {
   itemLink: {
@@ -80,31 +78,34 @@ const DefaultButtonStyles = {
 const CheckboxStyles = {
   checkbox: {
     borderRadius: '2px'
-    // borderColor: GrayColors.gray160
   }
 };
 
-const ChoiceGroupOptionStyles = {
-  field: {
-    selectors: {
-      ':after': [
-        {
-          top: 4,
-          left: 4,
-          width: 12,
-          height: 12,
-          borderWidth: 6
-        }
-        // @todo
-        // checked &&
-        // (hasIcon || hasImage) && {
-        //   top: radioButtonSpacing + radioButtonInnerSize,
-        //   right: radioButtonSpacing + radioButtonInnerSize,
-        //   left: 'auto' // To reset the value of 'left' to its default value, so that 'right' works
-        // }
-      ]
+const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOptionStyles => {
+  const { checked, hasIcon, hasImage } = props;
+  const radioButtonSpacing = 1;
+  const radioButtonInnerSize = 6;
+  return {
+    field: {
+      selectors: {
+        ':after': [
+          {
+            top: 4,
+            left: 4,
+            width: 12,
+            height: 12,
+            borderWidth: 6
+          },
+          checked &&
+            (hasIcon || hasImage) && {
+              top: radioButtonSpacing + radioButtonInnerSize,
+              right: radioButtonSpacing + radioButtonInnerSize,
+              left: 'auto' // To reset the value of 'left' to its default value, so that 'right' works
+            }
+        ]
+      }
     }
-  }
+  };
 };
 
 const DialogStyles = {
@@ -130,9 +131,6 @@ export const FluentStyles = {
   Breadcrumb: {
     styles: BreadcrumbStyles
   },
-  // Link: {
-  //   styles: LinkStyles
-  // },
   PrimaryButton: {
     styles: PrimaryButtonStyles
   },
@@ -158,26 +156,3 @@ export const FluentStyles = {
     styles: LabelStyles
   }
 };
-
-// export class FluentStylesBasicExample extends React.Component<{}, {}> {
-//   public render(): JSX.Element {
-//     return (
-//       <div>
-//         <h2>Link</h2>
-//         <h3>Current theme</h3>
-//         <FluentThemeLinkExample />
-//         <h3>Fluent theme</h3>
-//         <Customizer scopedSettings={{ ...FluentStyles }}>
-//           <FluentThemeLinkExample />
-//         </Customizer>
-//         <h2>Buttons</h2>
-//         <h3>Current theme</h3>
-//         <FluentThemeButtonExample />
-//         <h3>Fluent theme</h3>
-//         <Customizer scopedSettings={{ ...FluentStyles }}>
-//           <FluentThemeButtonExample />
-//         </Customizer>
-//       </div>
-//     );
-//   }
-// }

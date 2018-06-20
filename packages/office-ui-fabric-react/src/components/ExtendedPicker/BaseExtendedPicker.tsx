@@ -78,8 +78,8 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
   }
 
   public clearInput(): void {
-    if (this.input.current && this.input.current.inputElement) {
-      this.input.current.inputElement.value = '';
+    if (this.input.current) {
+      this.input.current.clear();
     }
   }
 
