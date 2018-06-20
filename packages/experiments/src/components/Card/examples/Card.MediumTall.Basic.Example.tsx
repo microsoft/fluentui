@@ -55,8 +55,7 @@ export class MediumTallCardBasicExample extends React.Component<{}, {}> {
         priority: Priority.Priority2,
         cardContentType: CardContentType.CompoundButtonStack,
         content: {
-          actions: compoundButtonStack,
-          buttonSize: ButtonSize.small
+          actions: compoundButtonStack
         }
       }
     ];
