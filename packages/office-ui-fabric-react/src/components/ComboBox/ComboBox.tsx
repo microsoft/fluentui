@@ -315,25 +315,25 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     this._classNames = this.props.getClassNames
       ? this.props.getClassNames(
-        theme!,
-        !!isOpen,
-        !!disabled,
-        !!required,
-        !!focused,
-        !!allowFreeform,
-        !!hasErrorMessage,
-        className
-      )
+          theme!,
+          !!isOpen,
+          !!disabled,
+          !!required,
+          !!focused,
+          !!allowFreeform,
+          !!hasErrorMessage,
+          className
+        )
       : getClassNames(
-        getStyles(theme!, customStyles),
-        className!,
-        !!isOpen,
-        !!disabled,
-        !!required,
-        !!focused,
-        !!allowFreeform,
-        !!hasErrorMessage
-      );
+          getStyles(theme!, customStyles),
+          className!,
+          !!isOpen,
+          !!disabled,
+          !!required,
+          !!focused,
+          !!allowFreeform,
+          !!hasErrorMessage
+        );
 
     return (
       <div {...divProps} ref={this._root} className={this._classNames.container}>
@@ -976,8 +976,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             (this._autofill.current &&
               this._autofill.current.isValueSelected &&
               currentPendingValue.length +
-              (this._autofill.current.selectionEnd! - this._autofill.current.selectionStart!) ===
-              pendingOptionText.length)) ||
+                (this._autofill.current.selectionEnd! - this._autofill.current.selectionStart!) ===
+                pendingOptionText.length)) ||
             (this._autofill.current &&
               this._autofill.current.inputElement &&
               this._autofill.current.inputElement.value.toLocaleLowerCase() === pendingOptionText))
@@ -1149,24 +1149,24 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           }
         </CommandButton>
       ) : (
-          <Checkbox
-            id={id + '-list' + item.index}
-            ariaLabel={this._getPreviewText(item)}
-            key={item.key}
-            data-index={item.index}
-            styles={checkboxStyles}
-            className={'ms-ComboBox-option'}
-            data-is-focusable={true}
-            onChange={this._onItemClick(item.index!)}
-            label={item.text}
-            role="option"
-            aria-selected={isSelected ? 'true' : 'false'}
-            checked={isSelected}
-            title={title}
-          >
-            {onRenderOption(item, this._onRenderOptionContent)}
-          </Checkbox>
-        );
+        <Checkbox
+          id={id + '-list' + item.index}
+          ariaLabel={this._getPreviewText(item)}
+          key={item.key}
+          data-index={item.index}
+          styles={checkboxStyles}
+          className={'ms-ComboBox-option'}
+          data-is-focusable={true}
+          onChange={this._onItemClick(item.index!)}
+          label={item.text}
+          role="option"
+          aria-selected={isSelected ? 'true' : 'false'}
+          checked={isSelected}
+          title={title}
+        >
+          {onRenderOption(item, this._onRenderOptionContent)}
+        </Checkbox>
+      );
     };
 
     return (
@@ -1277,7 +1277,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           if (
             scrollableParentRect.top <= selectedElementRect.top &&
             scrollableParentRect.top + scrollableParentRect.height >=
-            selectedElementRect.top + selectedElementRect.height
+              selectedElementRect.top + selectedElementRect.height
           ) {
             return;
           }
@@ -1606,8 +1606,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           index = this.state.currentOptions.length;
         }
 
-        if ((ev.altKey || ev.metaKey)) {
-
+        if (ev.altKey || ev.metaKey) {
           // Close the menu if it is open and break so
           // that the event get stopPropagation and prevent default.
           // Otherwise, we need to let the event continue to propagate
@@ -1675,7 +1674,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
         // If we get here and we got either and ALT key
         // or meta key, let the event propagate
-        if ((ev.keyCode === KeyCodes.alt || ev.key === 'Meta') /* && isOpen */) {
+        if (ev.keyCode === KeyCodes.alt || ev.key === 'Meta' /* && isOpen */) {
           return;
         }
 

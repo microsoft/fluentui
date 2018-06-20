@@ -11,4 +11,4 @@ export const ChoiceGroupOption: (props: IChoiceGroupOptionProps) => JSX.Element 
   IChoiceGroupOptionProps,
   IChoiceGroupOptionStyleProps,
   IChoiceGroupOptionStyles
->(ChoiceGroupOptionBase, getStyles);
+>(ChoiceGroupOptionBase, getStyles, undefined, { scope: 'ChoiceGroupOption' });
