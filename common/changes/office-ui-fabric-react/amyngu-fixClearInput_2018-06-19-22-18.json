@@ -1,11 +1,11 @@
 {
   "changes": [
     {
-      "packageName": "officeuifabricreact",
+      "packageName": "office-ui-fabric-react",
       "comment": "fix clear input for BaseExtendedPicker",
       "type": "patch"
     }
   ],
-  "packageName": "officeuifabricreact",
+  "packageName": "office-ui-fabric-react",
   "email": "amyngu@microsoft.com"
 } 
