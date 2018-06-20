@@ -7,7 +7,7 @@
 
 Fabric React is a responsive, mobile-first collection of robust components designed to make it quick and simple for you to create web experiences using the Office Design Language.
 
-## Who uses Fabric?
+## Who uses UI Fabric?
 
 ![image](https://user-images.githubusercontent.com/1110944/41632827-ac599f98-73f0-11e8-9d27-2bfe8ee7adf4.png)
 
