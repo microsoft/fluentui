@@ -8,6 +8,7 @@ export class TextFieldBasicExample extends React.Component<any, any> {
       <div className="docs-TextFieldExample">
         <TextField label="Standard" />
         <TextField label="Disabled" disabled={true} />
+        <TextField label="Read Only" readOnly={true} />
         <TextField label="Required " required={true} />
         <TextField label="With error message" errorMessage="Error message" />
         <MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" />

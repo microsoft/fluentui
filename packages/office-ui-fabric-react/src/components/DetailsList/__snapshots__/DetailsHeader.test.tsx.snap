@@ -13,6 +13,11 @@ exports[`DetailsHeader can render 1`] = `
   onMouseDownCapture={[Function]}
   onMouseMove={[Function]}
   role="row"
+  style={
+    Object {
+      "minWidth": 0,
+    }
+  }
 >
   <div
     aria-colindex={1}
@@ -135,7 +140,9 @@ exports[`DetailsHeader can render 1`] = `
     aria-sort="none"
     className="ms-DetailsHeader-cell is-actionable undefined"
     data-automationid="ColumnsHeaderColumn"
+    data-is-draggable={false}
     data-item-key="a"
+    draggable={false}
     role="columnheader"
     style={
       Object {
@@ -183,7 +190,9 @@ exports[`DetailsHeader can render 1`] = `
     aria-sort="none"
     className="ms-DetailsHeader-cell is-actionable undefined"
     data-automationid="ColumnsHeaderColumn"
+    data-is-draggable={false}
     data-item-key="b"
+    draggable={false}
     role="columnheader"
     style={
       Object {

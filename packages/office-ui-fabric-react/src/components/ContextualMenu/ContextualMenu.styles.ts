@@ -68,7 +68,13 @@ export const getMenuItemStyles = memoizeFunction(
       rootDisabled: {
         color: semanticColors.disabledBodyText,
         cursor: 'default',
-        pointerEvents: 'none'
+        pointerEvents: 'none',
+        selectors: {
+          [HighContrastSelector]: {
+            color: 'GrayText',
+            opacity: 1
+          }
+        }
       },
       rootHovered: {
         backgroundColor: ContextualMenuItemBackgroundHoverColor,

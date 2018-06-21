@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ColorPickerPage } from '@uifabric/demo/lib/components/pages/ColorPickerPage';
+import { ColorPickerPage } from '@uifabric/fabric-website-resources/lib/components/pages/ColorPickerPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 const pageStyles: any = require('../PageStyles.module.scss');

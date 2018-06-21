@@ -124,9 +124,9 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     this._selection.setItems(props.items as IObjectWithKey[], false);
     this._dragDropHelper = props.dragDropEvents
       ? new DragDropHelper({
-          selection: this._selection,
-          minimumPixelsForDrag: props.minimumPixelsForDrag
-        })
+        selection: this._selection,
+        minimumPixelsForDrag: props.minimumPixelsForDrag
+      })
       : null;
     this._initialFocusedIndex = props.initialFocusedIndex;
   }
@@ -164,8 +164,20 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   }
 
   public componentWillUnmount(): void {
+    const { onScroll } = this.props;
+    if (onScroll && this._root.current) {
+      this._root.current.removeEventListener('scroll', this._onScroll);
+    }
+
     if (this._dragDropHelper) {
       this._dragDropHelper.dispose();
+    }
+  }
+
+  public componentDidMount(): void {
+    const { onScroll } = this.props;
+    if (onScroll && this._root.current) {
+      this._root.current.addEventListener('scroll', this._onScroll);
     }
   }
 
@@ -285,7 +297,10 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       listProps,
       usePageCache,
       onShouldVirtualize,
-      enableShimmer
+      enableShimmer,
+      viewport,
+      columnReorderOptions,
+      minimumPixelsForDrag
     } = this.props;
     const { adjustedColumns, isCollapsed, isSizing, isSomeGroupExpanded } = this.state;
     const { _selection: selection, _dragDropHelper: dragDropHelper } = this;
@@ -330,7 +345,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
           className,
           layoutMode === DetailsListLayoutMode.fixedColumns && 'is-fixed',
           constrainMode === ConstrainMode.horizontalConstrained &&
-            'is-horizontalConstrained ' + styles.rootIsHorizontalConstrained,
+          'is-horizontalConstrained ' + styles.rootIsHorizontalConstrained,
           !!compact && 'ms-DetailsList--Compact ' + styles.rootCompact
         )}
         data-automationid="DetailsList"
@@ -343,7 +358,9 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
           aria-label={ariaLabelForGrid}
           aria-rowcount={rowCount}
           aria-colcount={
-            (selectAllVisibility !== SelectAllVisibility.none ? 1 : 0) + (adjustedColumns ? adjustedColumns.length : 0)
+            (selectAllVisibility !== SelectAllVisibility.none && selectAllVisibility !== SelectAllVisibility.hidden
+              ? 1
+              : 0) + (adjustedColumns ? adjustedColumns.length : 0)
           }
           aria-readonly="true"
         >
@@ -368,7 +385,10 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                   ariaLabelForSelectAllCheckbox: ariaLabelForSelectAllCheckbox,
                   ariaLabelForSelectionColumn: ariaLabelForSelectionColumn,
                   selectAllVisibility: selectAllVisibility,
-                  collapseAllVisibility: groupProps && groupProps.collapseAllVisibility
+                  collapseAllVisibility: groupProps && groupProps.collapseAllVisibility,
+                  viewport: viewport,
+                  columnReorderOptions: columnReorderOptions,
+                  minimumPixelsForDrag: minimumPixelsForDrag
                 },
                 this._onRenderDetailsHeader
               )}
@@ -410,16 +430,16 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                     onShouldVirtualize={onShouldVirtualize}
                   />
                 ) : (
-                  <List
-                    ref={this._list}
-                    role="presentation"
-                    items={enableShimmer && !items.length ? SHIMMER_ITEMS : items}
-                    onRenderCell={this._onRenderListCell(0)}
-                    usePageCache={usePageCache}
-                    onShouldVirtualize={onShouldVirtualize}
-                    {...additionalListProps}
-                  />
-                )}
+                    <List
+                      ref={this._list}
+                      role="presentation"
+                      items={enableShimmer && !items.length ? SHIMMER_ITEMS : items}
+                      onRenderCell={this._onRenderListCell(0)}
+                      usePageCache={usePageCache}
+                      onShouldVirtualize={onShouldVirtualize}
+                      {...additionalListProps}
+                    />
+                  )}
               </SelectionZone>
             </FocusZone>
           </div>
@@ -885,6 +905,13 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
     return itemKey;
   }
+
+  private _onScroll = (e: Event): void => {
+    const { onScroll } = this.props;
+    if (onScroll) {
+      onScroll(e);
+    }
+  };
 }
 
 export function buildColumns(
