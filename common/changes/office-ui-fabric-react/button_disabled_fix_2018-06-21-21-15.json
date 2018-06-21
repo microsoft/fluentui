@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Focusable disabled buttons are still executable with ENTER/SPACE",
+      "comment": "Buttons: Focusable disabled buttons no longer execute on ENTER/SPACE",
       "type": "patch"
     }
   ],
