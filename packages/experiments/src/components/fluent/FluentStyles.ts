@@ -4,6 +4,7 @@ import {
   IChoiceGroupOptionStyleProps,
   IChoiceGroupOptionStyles
 } from 'office-ui-fabric-react/lib/components/ChoiceGroup/ChoiceGroupOption';
+import { FontSizes } from './FluentType';
 
 /** Definitions for Depth, or shadow, levels. */
 const FluentDepthLevels = {
@@ -40,7 +41,7 @@ const FluentDepthLevels = {
 
 const BreadcrumbStyles = {
   itemLink: {
-    fontSize: '18px',
+    fontSize: FontSizes.size18,
     fontWeight: 400,
     selectors: {
       '&:last-child': {
