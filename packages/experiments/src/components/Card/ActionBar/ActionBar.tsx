@@ -56,9 +56,9 @@ export class ActionBar extends React.Component<IActionBarProps, {}> {
     );
   };
 
-  private _onReduceData = (currentdata: IOverflowSetItemProps): {} => {
+  private _onReduceData = (currentdata: IOverflowSetItemProps): {} | void => {
     if (currentdata.primary.length === 0) {
-      return {};
+      return;
     }
 
     const overflow = [...currentdata.primary.slice(-1), ...currentdata.overflow];
@@ -67,9 +67,9 @@ export class ActionBar extends React.Component<IActionBarProps, {}> {
     return { primary, overflow };
   };
 
-  private _onGrowData = (currentdata: IOverflowSetItemProps): {} => {
+  private _onGrowData = (currentdata: IOverflowSetItemProps): {} | void => {
     if (currentdata.overflow.length === 0) {
-      return {};
+      return;
     }
 
     const overflow = currentdata.overflow.slice(1);

@@ -1,6 +1,37 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 18 Jun 2018 16:57:14 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Jun 2018 23:33:29 GMT and should not be manually modified.
+
+## 6.8.0
+Wed, 20 Jun 2018 23:33:29 GMT
+
+### Minor changes
+
+- Updated ChoiceGroup FluentStyles to include 'checked' style prop
+- Added Checkbox and ChoiceGroup to Fluent Styles Page
+- label fluentstyles
+- Added examples for Rating and Slider to FluentStyles page - no style changes
+- expose Nav to teams not using npm
+
+## 6.7.0
+Wed, 20 Jun 2018 10:25:55 GMT
+
+### Minor changes
+
+- Experiments/Nav component: Fix to display nav group header on show more
+
+### Patches
+
+- Prettier fixes
+
+## 6.6.0
+Tue, 19 Jun 2018 10:26:26 GMT
+
+### Minor changes
+
+- Added Fluent Styles Page
+- Update Fluent colors
+- Update Fluent colors and theme
 
 ## 6.5.0
 Mon, 18 Jun 2018 16:57:14 GMT

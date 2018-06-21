@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Added Fluent Styles Page",
+      "comment": "Add Fluent type ramp, update color names",
       "type": "minor"
     }
   ],
   "packageName": "@uifabric/experiments",
-  "email": "v-brgarl@microsoft.com"
+  "email": "mike@mikewheaton.ca"
 }

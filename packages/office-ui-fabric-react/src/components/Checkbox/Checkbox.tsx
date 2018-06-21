@@ -7,4 +7,4 @@ export const Checkbox: (props: ICheckboxProps) => JSX.Element = styled<
   ICheckboxProps,
   ICheckboxStyleProps,
   ICheckboxStyles
->(CheckboxBase, getStyles);
+>(CheckboxBase, getStyles, undefined, { scope: 'Checkbox' });

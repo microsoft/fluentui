@@ -163,6 +163,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
         group={group}
         groupIndex={groupIndex}
         groupNestingDepth={groupNestingDepth}
+        groupProps={groupProps}
         headerProps={headerProps}
         listProps={listProps}
         items={items}

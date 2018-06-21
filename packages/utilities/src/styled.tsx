@@ -5,7 +5,7 @@ import { IStyleFunction } from './IStyleFunction';
 import { CustomizableContextTypes } from './customizable';
 import { Customizations, ICustomizations } from './Customizations';
 
-export type IStyleFunctionOrObject<TStyleProps, TStyles> = IStyleFunction<TStyleProps, TStyles> | TStyles;
+export type IStyleFunctionOrObject<TStyleProps, TStyles> = IStyleFunction<TStyleProps, TStyles> | Partial<TStyles>;
 
 export interface IPropsWithStyles<TStyleProps, TStyles> {
   styles?: IStyleFunctionOrObject<TStyleProps, TStyles>;

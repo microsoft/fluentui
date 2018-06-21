@@ -30,6 +30,12 @@
       "shouldPublish": false
     },
     {
+      "packageName": "@uifabric/dashboard-grid-layout",
+      "projectFolder": "packages/dashboard-grid-layout",
+      "versionPolicyName": "lockedMajor",
+      "shouldPublish": false
+    },
+    {
       "packageName": "@uifabric/merge-styles",
       "projectFolder": "packages/merge-styles",
       "versionPolicyName": "lockedMajor",
@@ -73,7 +79,7 @@
     },
     {
       "packageName": "@uifabric/fabric-website-resources",
-      "projectFolder": "apps/demo",
+      "projectFolder": "apps/fabric-website-resources",
       "versionPolicyName": "lockedMajor",
       "shouldPublish": true
     },

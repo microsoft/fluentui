@@ -166,7 +166,9 @@ exports[`DetailsList renders List correctly 1`] = `
             aria-sort="none"
             className="ms-DetailsHeader-cell is-actionable undefined"
             data-automationid="ColumnsHeaderColumn"
+            data-is-draggable={false}
             data-item-key="key"
+            draggable={false}
             role="columnheader"
             style={
               Object {
