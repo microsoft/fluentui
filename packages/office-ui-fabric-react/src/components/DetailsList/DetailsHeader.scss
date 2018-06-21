@@ -76,12 +76,12 @@ $isPaddedMargin: 24px;
     text-overflow: clip;
   }
 
-  &:hover .GripperBarVerticalStyle {
+  &:hover .gripperBarVerticalStyle {
     display: block;
    }
 }
 
-.GripperBarVerticalStyle {
+.gripperBarVerticalStyle {
   display: none;
   position: absolute;
   @include ms-text-align(left);
@@ -182,8 +182,7 @@ $isPaddedMargin: 24px;
   overflow: hidden;
   max-width: 100%;
   @include focus-border($position: auto);
-  padding: 0 8px;
-  @include ms-padding-left(12px);
+  padding: 0 8px 0 12px;
 }
 
 .cellName {
