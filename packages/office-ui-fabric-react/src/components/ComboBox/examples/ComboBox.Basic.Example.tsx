@@ -161,7 +161,7 @@ export class ComboBoxBasicExample extends React.Component<
           // tslint:enable:jsx-no-lambda
         />
 
-	<VirtualizedComboBox
+        <VirtualizedComboBox
           defaultSelectedKey="C"
           label="Scaled example with 1000 items (allowFreeform: T, AutoComplete: T):"
           id="Basicdrop1"
