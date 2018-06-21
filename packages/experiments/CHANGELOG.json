@@ -2,6 +2,45 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.8.0",
+      "tag": "@uifabric/experiments_v6.8.0",
+      "date": "Wed, 20 Jun 2018 23:33:29 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "321551862495dc8c4fe354a03c342d6a2b3f35b2",
+            "comment": "Updated ChoiceGroup FluentStyles to include 'checked' style prop"
+          },
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "511225a4f7fc48803b5298c1373570d162af1b7d",
+            "comment": "Added Checkbox and ChoiceGroup to Fluent Styles Page"
+          },
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "6e7427f50b650edcc7fdf721cd8d9857d7db2a6d",
+            "comment": "label fluentstyles"
+          },
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "4b9645c5346b79ace2df9476169562cdcae43d7b",
+            "comment": "Added examples for Rating and Slider to FluentStyles page - no style changes"
+          },
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "3560bb38daa7c358680551af1134a671c61cf1dc",
+            "comment": "expose Nav to teams not using npm"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.17.0 <7.0.0` to `>=6.18.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.7.0",
       "tag": "@uifabric/experiments_v6.7.0",
       "date": "Wed, 20 Jun 2018 10:25:55 GMT",
