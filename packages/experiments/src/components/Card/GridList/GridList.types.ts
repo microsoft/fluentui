@@ -68,7 +68,7 @@ export interface IGridRow {
   /**
    * Column 2 contents for a single row
    */
-  c2: IGridCellItem;
+  c2?: IGridCellItem;
 
   /**
    * Column 3 content for a single row
