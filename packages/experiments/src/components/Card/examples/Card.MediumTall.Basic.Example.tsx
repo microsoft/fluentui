@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ICardProps, CardSize, Priority, CardContentType } from '../Card.types';
 import { Card } from '../Card';
-import { ICompoundAction, ButtonSize } from '../CompoundButtonStack/CompoundButtonStack.types';
+import { ICompoundAction } from '../CompoundButtonStack/CompoundButtonStack.types';
 
 export class MediumTallCardBasicExample extends React.Component<{}, {}> {
   constructor(props: ICardProps) {
