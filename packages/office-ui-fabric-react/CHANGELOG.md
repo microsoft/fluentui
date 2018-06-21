@@ -1,6 +1,33 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 19 Jun 2018 10:26:26 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Jun 2018 23:33:29 GMT and should not be manually modified.
+
+## 6.18.0
+Wed, 20 Jun 2018 23:33:29 GMT
+
+### Minor changes
+
+- Make it possible to disable firstfocus in hover card
+- Updated Checkbox and ChoiceGroup to accept custom styles
+- label fluentstyles
+
+### Patches
+
+- fix clear input for BaseExtendedPicker
+- Callout: revert blur change
+- Adding a Teams customization example.
+
+## 6.17.0
+Wed, 20 Jun 2018 10:25:55 GMT
+
+### Minor changes
+
+- MessageBar: convert to use JS styling
+
+### Patches
+
+- Callout: add blur listener and dismiss on blur functionality to Callout
+- GroupedList: render group headers if showEmptyGroups is true
 
 ## 6.16.0
 Tue, 19 Jun 2018 10:26:26 GMT

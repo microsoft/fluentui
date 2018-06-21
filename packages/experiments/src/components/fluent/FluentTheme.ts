@@ -1,7 +1,7 @@
 import { createTheme, ITheme } from 'office-ui-fabric-react';
 import { NeutralColors, CommunicationColors } from './FluentColors';
 
-const FluentTheme: ITheme = createTheme({
+export const FluentTheme: ITheme = createTheme({
   palette: {
     black: NeutralColors.black,
     neutralDark: NeutralColors.gray190,
@@ -16,14 +16,14 @@ const FluentTheme: ITheme = createTheme({
     neutralLighter: NeutralColors.gray20,
     neutralLighterAlt: NeutralColors.gray10,
     white: NeutralColors.white,
-    themeDarker: CommunicationColors.communicationShade30,
-    themeDark: CommunicationColors.communicationShade20,
-    themeDarkAlt: CommunicationColors.communicationShade10,
-    themePrimary: CommunicationColors.communicationPrimary,
-    themeSecondary: CommunicationColors.communicationTint10,
-    themeLight: CommunicationColors.communicationTint20,
-    themeLighter: CommunicationColors.communicationTint30,
-    themeLighterAlt: CommunicationColors.communicationTint40
+    themeDarker: CommunicationColors.shade30,
+    themeDark: CommunicationColors.shade20,
+    themeDarkAlt: CommunicationColors.shade10,
+    themePrimary: CommunicationColors.primary,
+    themeSecondary: CommunicationColors.tint10,
+    themeLight: CommunicationColors.tint20,
+    themeLighter: CommunicationColors.tint30,
+    themeLighterAlt: CommunicationColors.tint40
   }
 });
 

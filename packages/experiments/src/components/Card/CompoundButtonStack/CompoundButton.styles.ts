@@ -1,14 +1,16 @@
 import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
+import { ButtonSize } from './CompoundButtonStack.types';
 
 export const getCustomCompoundButtonStyles = memoizeFunction(
-  (): IButtonStyles => {
+  (cardSize: number | undefined): IButtonStyles => {
     return {
       root: {
         width: '100%',
         marginBottom: '16px',
         maxWidth: 'none',
-        minHeight: '68px',
+        minHeight: cardSize === ButtonSize.small ? '40px' : '68px',
+        maxHeight: '68px',
         padding: '14px'
       },
       textContainer: {

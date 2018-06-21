@@ -3,7 +3,7 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { IPoint, IRectangle, IStyleFunctionOrObject } from '../../Utilities';
 import { ICalloutPositionedInfo } from '../../utilities/positioning';
 
-export interface ICallout { }
+export interface ICallout {}
 
 export interface ICalloutProps {
   /**
