@@ -391,6 +391,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         aria-describedby={this._isDescriptionAvailable ? this._descriptionId : this.props['aria-describedby']}
         aria-invalid={!!this.state.errorMessage}
         aria-label={this.props.ariaLabel}
+        readOnly={this.props.readOnly}
         onFocus={this._onFocus}
         onBlur={this._onBlur}
       />
@@ -415,6 +416,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         aria-label={this.props.ariaLabel}
         aria-describedby={this._isDescriptionAvailable ? this._descriptionId : this.props['aria-describedby']}
         aria-invalid={!!this.state.errorMessage}
+        readOnly={this.props.readOnly}
         onFocus={this._onFocus}
         onBlur={this._onBlur}
       />
