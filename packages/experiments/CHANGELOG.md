@@ -1,6 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 20 Jun 2018 23:33:29 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Jun 2018 19:27:25 GMT and should not be manually modified.
+
+## 6.9.0
+Thu, 21 Jun 2018 19:27:25 GMT
+
+### Minor changes
+
+- Add Fluent type ramp, update color names
+
+### Patches
+
+- CardDidMount callback for making api calls, additional ref incase there is a use case where there is no state, compoundButtonStack  size variation and gridList component v1.1 changes
 
 ## 6.8.0
 Wed, 20 Jun 2018 23:33:29 GMT

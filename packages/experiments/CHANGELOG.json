@@ -2,6 +2,32 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.9.0",
+      "tag": "@uifabric/experiments_v6.9.0",
+      "date": "Thu, 21 Jun 2018 19:27:25 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "nulikartik <nulikarthik@gmail.com>",
+            "commit": "17cc28536baa952248de7f4a816dc772408f9338",
+            "comment": "CardDidMount callback for making api calls, additional ref incase there is a use case where there is no state, compoundButtonStack  size variation and gridList component v1.1 changes"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Mike Wheaton <miwhea@microsoft.com>",
+            "commit": "31f042b5d099eca7fa342b20725912f6a8c59fc7",
+            "comment": "Add Fluent type ramp, update color names"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.18.0 <7.0.0` to `>=6.18.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.8.0",
       "tag": "@uifabric/experiments_v6.8.0",
       "date": "Wed, 20 Jun 2018 23:33:29 GMT",
