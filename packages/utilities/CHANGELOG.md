@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 23 May 2018 16:14:26 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Jun 2018 11:22:44 GMT and should not be manually modified.
+
+## 5.34.0
+Thu, 21 Jun 2018 11:22:44 GMT
+
+### Minor changes
+
+- Add 'styles' as alias for 'getStyles' to match 6.0
 
 ## 5.33.0
 Wed, 23 May 2018 16:14:26 GMT

@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.34.0",
+      "tag": "@uifabric/utilities_v5.34.0",
+      "date": "Thu, 21 Jun 2018 11:22:44 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "ac2e238e19abf3823e20de3fa5e3221868e8bd17",
+            "comment": "Add 'styles' as alias for 'getStyles' to match 6.0"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.33.0",
       "tag": "@uifabric/utilities_v5.33.0",
       "date": "Wed, 23 May 2018 16:14:26 GMT",
