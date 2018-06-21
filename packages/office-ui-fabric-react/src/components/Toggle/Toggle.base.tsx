@@ -9,6 +9,7 @@ export interface IToggleState {
 }
 
 const getClassNames = classNamesFunction<IToggleStyleProps, IToggleStyles>();
+
 export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implements IToggle {
   private _id: string;
   private _toggleButton = createRef<HTMLButtonElement>();
