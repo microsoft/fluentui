@@ -172,6 +172,10 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           disabled={undefined}
           onClick={undefined}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           style={
             Object {
               "height": "35px",
@@ -259,7 +263,10 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
           onMouseDown={[Function]}
+          onMouseUp={[Function]}
           tabIndex={-1}
           type="button"
         >
@@ -478,6 +485,10 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           disabled={undefined}
           onClick={undefined}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           style={
             Object {
               "height": "35px",
@@ -565,7 +576,10 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
           onMouseDown={[Function]}
+          onMouseUp={[Function]}
           tabIndex={-1}
           type="button"
         >
@@ -777,6 +791,10 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           disabled={true}
           onClick={undefined}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           style={
             Object {
               "height": "35px",
@@ -864,7 +882,10 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
           onMouseDown={[Function]}
+          onMouseUp={[Function]}
           tabIndex={-1}
           type="button"
         >
@@ -1168,7 +1189,10 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           disabled={false}
           onClick={[Function]}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
           onMouseDown={[Function]}
+          onMouseUp={[Function]}
           tabIndex={-1}
           type="button"
         >
@@ -1378,6 +1402,10 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 2`] = `
         disabled={undefined}
         onClick={undefined}
         onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
         tabIndex={-1}
         type="button"
       >
@@ -1465,7 +1493,10 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 2`] = `
         disabled={undefined}
         onClick={[Function]}
         onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
         onMouseDown={[Function]}
+        onMouseUp={[Function]}
         tabIndex={-1}
         type="button"
       >

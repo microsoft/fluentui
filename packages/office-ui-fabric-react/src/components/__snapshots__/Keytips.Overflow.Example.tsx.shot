@@ -107,6 +107,10 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
         name="Link 1"
         onClick={[Function]}
         onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
         type="button"
       >
         <div
@@ -231,6 +235,10 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
         name="Link 2"
         onClick={[Function]}
         onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
         type="button"
       >
         <div
@@ -355,6 +363,10 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
         name="Link 3"
         onClick={[Function]}
         onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
         type="button"
       >
         <div
@@ -481,6 +493,10 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
         disabled={undefined}
         onClick={[Function]}
         onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
         type="button"
       >
         <div
@@ -603,6 +619,10 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
     disabled={undefined}
     onClick={[Function]}
     onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
     type="button"
   >
     <div

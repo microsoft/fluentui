@@ -96,6 +96,10 @@ exports[`Suggestions renders a list properly 1`] = `
           disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -204,6 +208,10 @@ exports[`Suggestions renders a list properly 1`] = `
           disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -312,6 +320,10 @@ exports[`Suggestions renders a list properly 1`] = `
           disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -420,6 +432,10 @@ exports[`Suggestions renders a list properly 1`] = `
           disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -528,6 +544,10 @@ exports[`Suggestions renders a list properly 1`] = `
           disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -636,6 +656,10 @@ exports[`Suggestions renders a list properly 1`] = `
           disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -744,6 +768,10 @@ exports[`Suggestions renders a list properly 1`] = `
           disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -852,6 +880,10 @@ exports[`Suggestions renders a list properly 1`] = `
           disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -960,6 +992,10 @@ exports[`Suggestions renders a list properly 1`] = `
           disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -1068,6 +1104,10 @@ exports[`Suggestions renders a list properly 1`] = `
           disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -1176,6 +1216,10 @@ exports[`Suggestions renders a list properly 1`] = `
           disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -1284,6 +1328,10 @@ exports[`Suggestions renders a list properly 1`] = `
           disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -1392,6 +1440,10 @@ exports[`Suggestions renders a list properly 1`] = `
           disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -1500,6 +1552,10 @@ exports[`Suggestions renders a list properly 1`] = `
           disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -1608,6 +1664,10 @@ exports[`Suggestions renders a list properly 1`] = `
           disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -1735,6 +1795,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -1843,6 +1907,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -1951,6 +2019,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -2059,6 +2131,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -2167,6 +2243,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -2275,6 +2355,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -2383,6 +2467,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -2491,6 +2579,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -2599,6 +2691,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -2707,6 +2803,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -2815,6 +2915,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -2923,6 +3027,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -3031,6 +3139,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -3139,6 +3251,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -3247,6 +3363,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div

@@ -101,6 +101,9 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           role="tab"
           type="button"
         >
@@ -238,6 +241,9 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           role="tab"
           type="button"
         >
@@ -369,6 +375,9 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           role="tab"
           type="button"
         >
@@ -493,6 +502,9 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           role="tab"
           type="button"
         >
@@ -630,6 +642,9 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           role="tab"
           type="button"
         >

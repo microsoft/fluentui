@@ -119,8 +119,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
             onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -268,8 +272,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
             onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -417,8 +425,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
             onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -566,8 +578,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
             onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -715,8 +731,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
             onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -864,8 +884,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
             onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -1013,8 +1037,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
             onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -1162,8 +1190,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
             onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -1311,8 +1343,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
             onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -1460,8 +1496,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
             onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -1609,8 +1649,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
             onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -1758,8 +1802,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
             onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -1907,8 +1955,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
             onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -2056,8 +2108,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
             onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -2205,8 +2261,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
             onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -2354,8 +2414,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
             onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -2503,8 +2567,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
             onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -2652,8 +2720,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
             onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -2801,8 +2873,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
             onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -2950,8 +3026,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
             onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div

@@ -100,6 +100,9 @@ exports[`Pivot renders Pivot correctly 1`] = `
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
         role="tab"
         type="button"
       >
@@ -208,6 +211,9 @@ exports[`Pivot renders Pivot correctly 1`] = `
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
         role="tab"
         type="button"
       >
@@ -347,6 +353,9 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
         role="tab"
         type="button"
       >
@@ -455,6 +464,9 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
         role="tab"
         type="button"
       >

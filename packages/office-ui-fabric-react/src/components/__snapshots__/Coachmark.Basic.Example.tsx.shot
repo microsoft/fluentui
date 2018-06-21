@@ -176,6 +176,10 @@ exports[`Component Examples renders Coachmark.Basic.Example.tsx correctly 1`] = 
       disabled={undefined}
       onClick={[Function]}
       onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
       type="button"
     >
       <div

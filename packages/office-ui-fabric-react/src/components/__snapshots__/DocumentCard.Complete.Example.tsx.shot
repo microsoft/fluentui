@@ -442,6 +442,10 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -559,6 +563,10 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -676,6 +684,10 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div

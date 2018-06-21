@@ -79,6 +79,10 @@ exports[`Component Examples renders PositioningContainer.Basic.Example.tsx corre
       disabled={undefined}
       onClick={[Function]}
       onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
       type="button"
     >
       <div
