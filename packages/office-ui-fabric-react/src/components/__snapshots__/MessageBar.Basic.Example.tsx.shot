@@ -30,6 +30,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     aria-live="polite"
     className=
         ms-MessageBar
+        ms-MessageBar-multiline
         {
           background: #f4f4f4;
           box-sizing: border-box;
@@ -122,7 +123,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
       </div>
       <div
         className=
-            ms-MessageBar-Text
+            ms-MessageBar-text
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -148,7 +149,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         <span
           aria-live="polite"
           className=
-
+              ms-MessageBar-innerText
               {
                 line-height: 16px;
               }
@@ -185,6 +186,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
   <div
     className=
         ms-MessageBar
+        ms-MessageBar--error
+        ms-MessageBar-singleline
+        ms-MessageBar-dismissalSingleLine
         {
           background: rgba(232, 17, 35, .2);
           box-sizing: border-box;
@@ -280,7 +284,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
       </div>
       <div
         className=
-            ms-MessageBar-Text
+            ms-MessageBar-text
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -306,7 +310,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         <span
           aria-live="assertive"
           className=
-
+              ms-MessageBar-innerText
               {
                 line-height: 16px;
                 overflow: hidden;
@@ -497,6 +501,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
   <div
     className=
         ms-MessageBar
+        ms-MessageBar--blocked
+        ms-MessageBar-singleline
+        ms-MessageBar-dismissalSingleLine
+        ms-MessageBar-expandingSingleLine
         {
           background: rgba(232, 17, 35, .2);
           box-sizing: border-box;
@@ -600,7 +608,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
       </div>
       <div
         className=
-            ms-MessageBar-Text
+            ms-MessageBar-text
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -626,7 +634,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         <span
           aria-live="assertive"
           className=
-
+              ms-MessageBar-innerText
               {
                 line-height: 16px;
                 overflow: hidden;
@@ -961,6 +969,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     aria-live="assertive"
     className=
         ms-MessageBar
+        ms-MessageBar--severeWarning
+        ms-MessageBar-multiline
         {
           background: rgba(234, 67, 0, .2);
           box-sizing: border-box;
@@ -1053,7 +1063,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
       </div>
       <div
         className=
-            ms-MessageBar-Text
+            ms-MessageBar-text
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -1079,7 +1089,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         <span
           aria-live="assertive"
           className=
-
+              ms-MessageBar-innerText
               {
                 line-height: 16px;
               }
@@ -1092,7 +1102,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     </div>
     <div
       className=
-
+          ms-MessageBar-actions
           {
             align-items: center;
             display: flex;
@@ -1356,6 +1366,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
   <div
     className=
         ms-MessageBar
+        ms-MessageBar--success
+        ms-MessageBar-singleline
         {
           background: rgba(186, 216, 10, .2);
           box-sizing: border-box;
@@ -1451,7 +1463,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
       </div>
       <div
         className=
-            ms-MessageBar-Text
+            ms-MessageBar-text
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -1477,7 +1489,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         <span
           aria-live="polite"
           className=
-
+              ms-MessageBar-innerText
               {
                 line-height: 16px;
                 overflow: hidden;
@@ -1496,7 +1508,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
       </div>
       <div
         className=
-
+            ms-MessageBar-actionsSingleLine
             {
               align-items: center;
               display: flex;
@@ -1761,6 +1773,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
   <div
     className=
         ms-MessageBar
+        ms-MessageBar--warning
+        ms-MessageBar-singleline
+        ms-MessageBar-dismissalSingleLine
         {
           background: rgba(255, 185, 0, .2);
           box-sizing: border-box;
@@ -1856,7 +1871,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
       </div>
       <div
         className=
-            ms-MessageBar-Text
+            ms-MessageBar-text
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -1882,7 +1897,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         <span
           aria-live="polite"
           className=
-
+              ms-MessageBar-innerText
               {
                 line-height: 16px;
                 overflow: hidden;
@@ -1901,7 +1916,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
       </div>
       <div
         className=
-
+            ms-MessageBar-actionsSingleLine
             {
               align-items: center;
               display: flex;
@@ -2205,6 +2220,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     aria-live="polite"
     className=
         ms-MessageBar
+        ms-MessageBar--warning
+        ms-MessageBar-multiline
         {
           background: rgba(255, 185, 0, .2);
           box-sizing: border-box;
@@ -2297,7 +2314,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
       </div>
       <div
         className=
-            ms-MessageBar-Text
+            ms-MessageBar-text
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -2323,7 +2340,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         <span
           aria-live="polite"
           className=
-
+              ms-MessageBar-innerText
               {
                 line-height: 16px;
               }
@@ -2469,7 +2486,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     </div>
     <div
       className=
-
+          ms-MessageBar-actions
           {
             align-items: center;
             display: flex;
@@ -2734,6 +2751,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     aria-live="polite"
     className=
         ms-MessageBar
+        ms-MessageBar-multiline
         {
           background: rgba(113, 175, 229, 0.2);
           box-sizing: border-box;
@@ -2826,7 +2844,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
       </div>
       <div
         className=
-            ms-MessageBar-Text
+            ms-MessageBar-text
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -2852,7 +2870,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         <span
           aria-live="polite"
           className=
-
+              ms-MessageBar-innerText
               {
                 line-height: 16px;
               }
@@ -2889,6 +2907,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
   <div
     className=
         ms-MessageBar
+        ms-MessageBar--error
+        ms-MessageBar-singleline
+        ms-MessageBar-dismissalSingleLine
         {
           background: rgba(232, 17, 35, .2);
           box-sizing: border-box;
@@ -2985,7 +3006,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
       </div>
       <div
         className=
-            ms-MessageBar-Text
+            ms-MessageBar-text
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -3012,7 +3033,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         <span
           aria-live="assertive"
           className=
-
+              ms-MessageBar-innerText
               {
                 line-height: 16px;
                 overflow: hidden;
@@ -3203,6 +3224,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
   <div
     className=
         ms-MessageBar
+        ms-MessageBar--blocked
+        ms-MessageBar-singleline
+        ms-MessageBar-dismissalSingleLine
+        ms-MessageBar-expandingSingleLine
         {
           background: rgba(0, 178, 148, 0.2);
           box-sizing: border-box;
@@ -3306,7 +3331,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
       </div>
       <div
         className=
-            ms-MessageBar-Text
+            ms-MessageBar-text
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -3332,7 +3357,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         <span
           aria-live="assertive"
           className=
-
+              ms-MessageBar-innerText
               {
                 line-height: 16px;
                 overflow: hidden;
@@ -3670,6 +3695,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     aria-live="assertive"
     className=
         ms-MessageBar
+        ms-MessageBar--severeWarning
+        ms-MessageBar-multiline
         {
           background: rgba(227, 0, 140, 0.2);
           box-sizing: border-box;
@@ -3762,7 +3789,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
       </div>
       <div
         className=
-            ms-MessageBar-Text
+            ms-MessageBar-text
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -3788,7 +3815,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         <span
           aria-live="assertive"
           className=
-
+              ms-MessageBar-innerText
               {
                 line-height: 16px;
               }
@@ -3801,7 +3828,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     </div>
     <div
       className=
-
+          ms-MessageBar-actions
           {
             align-items: center;
             background: rgba(180, 0, 158, 0.4);
@@ -4066,6 +4093,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
   <div
     className=
         ms-MessageBar
+        ms-MessageBar--success
+        ms-MessageBar-singleline
         {
           background: rgba(186, 216, 10, .2);
           box-sizing: border-box;
@@ -4161,7 +4190,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
       </div>
       <div
         className=
-            ms-MessageBar-Text
+            ms-MessageBar-text
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -4187,7 +4216,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         <span
           aria-live="polite"
           className=
-
+              ms-MessageBar-innerText
               {
                 line-height: 16px;
                 overflow: hidden;
@@ -4206,7 +4235,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
       </div>
       <div
         className=
-
+            ms-MessageBar-actionsSingleLine
             {
               align-items: center;
               background: #007d84;
@@ -4473,6 +4502,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
   <div
     className=
         ms-MessageBar
+        ms-MessageBar--warning
+        ms-MessageBar-singleline
+        ms-MessageBar-dismissalSingleLine
         {
           background: rgba(255, 185, 0, .2);
           box-sizing: border-box;
@@ -4569,7 +4601,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
       </div>
       <div
         className=
-            ms-MessageBar-Text
+            ms-MessageBar-text
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -4595,7 +4627,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         <span
           aria-live="polite"
           className=
-
+              ms-MessageBar-innerText
               {
                 line-height: 16px;
                 overflow: hidden;
@@ -4614,7 +4646,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
       </div>
       <div
         className=
-
+            ms-MessageBar-actionsSingleLine
             {
               align-items: center;
               border: 1px solid #ea4300;
@@ -4920,6 +4952,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     aria-live="polite"
     className=
         ms-MessageBar
+        ms-MessageBar--warning
+        ms-MessageBar-multiline
         {
           background: rgba(0, 188, 242, 0.4);
           box-sizing: border-box;
@@ -5012,7 +5046,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
       </div>
       <div
         className=
-            ms-MessageBar-Text
+            ms-MessageBar-text
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -5038,7 +5072,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         <span
           aria-live="polite"
           className=
-
+              ms-MessageBar-innerText
               {
                 line-height: 16px;
               }
@@ -5184,7 +5218,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     </div>
     <div
       className=
-
+          ms-MessageBar-actions
           {
             align-items: center;
             border: 1px solid #0078d4;

@@ -40,6 +40,23 @@ const getIconColor = (messageBarType: MessageBarType | undefined, palette: IPale
   return palette.neutralSecondary;
 };
 
+// Returns the additional class name to add to the root based on the type of MessageBar.
+const getRootClass = (messageBarType: MessageBarType | undefined): string => {
+  switch (messageBarType) {
+    case MessageBarType.error:
+      return 'ms-MessageBar--error';
+    case MessageBarType.blocked:
+      return 'ms-MessageBar--blocked';
+    case MessageBarType.severeWarning:
+      return 'ms-MessageBar--severeWarning';
+    case MessageBarType.success:
+      return 'ms-MessageBar--success';
+    case MessageBarType.warning:
+      return 'ms-MessageBar--warning';
+  }
+  return '';
+};
+
 export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
   const { theme, className, messageBarType, onDismiss, actions, truncated, isMultiline, expandSingleLine } = props;
   const { semanticColors, palette, fonts } = theme;
@@ -80,6 +97,10 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
   return {
     root: [
       'ms-MessageBar',
+      getRootClass(messageBarType),
+      isMultiline ? 'ms-MessageBar-multiline' : 'ms-MessageBar-singleline',
+      !isMultiline && onDismiss && 'ms-MessageBar-dismissalSingleLine',
+      !isMultiline && truncated && 'ms-MessageBar-expandingSingleLine',
       {
         background: getRootBackground(messageBarType, palette, semanticColors),
         color: palette.neutralPrimary,
@@ -177,7 +198,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
       color: getIconColor(messageBarType, palette, semanticColors)
     },
     text: [
-      'ms-MessageBar-Text',
+      'ms-MessageBar-text',
       {
         minWidth: 0,
         display: 'flex',
@@ -217,6 +238,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
       }
     ],
     innerText: [
+      'ms-MessageBar-innerText',
       {
         lineHeight: 16,
         selectors: {
@@ -257,6 +279,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
     dismissSingleLine: ['ms-MessageBar-dismissSingleLine', dismissalAndExpandSingleLineStyle],
     expandSingleLine: ['ms-MessageBar-expandSingleLine', dismissalAndExpandSingleLineStyle],
     actions: [
+      isMultiline ? 'ms-MessageBar-actions' : 'ms-MessageBar-actionsSingleLine',
       {
         display: 'flex',
         flexGrow: 0,
