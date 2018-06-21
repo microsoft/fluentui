@@ -2,6 +2,54 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.18.0",
+      "tag": "office-ui-fabric-react_v6.18.0",
+      "date": "Wed, 20 Jun 2018 23:33:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "3560bb38daa7c358680551af1134a671c61cf1dc",
+            "comment": "fix clear input for BaseExtendedPicker"
+          },
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "3560bb38daa7c358680551af1134a671c61cf1dc",
+            "comment": "Callout: revert blur change"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "7a766dc115f88607aaab8458e3251672c2049212",
+            "comment": "Adding a Teams customization example."
+          }
+        ],
+        "minor": [
+          {
+            "author": "Chao <fengchao199011@hotmail.com>",
+            "commit": "179c3818f1ad582578fa621ec043445291a06f3e",
+            "comment": "Make it possible to disable firstfocus in hover card"
+          },
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "511225a4f7fc48803b5298c1373570d162af1b7d",
+            "comment": "Updated Checkbox and ChoiceGroup to accept custom styles"
+          },
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "6e7427f50b650edcc7fdf721cd8d9857d7db2a6d",
+            "comment": "label fluentstyles"
+          }
+        ],
+        "none": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "2af9a9569ab53d79f28fa68ccf597f492475c028",
+            "comment": "Fix Jest watcher hang by removing invalid mapping."
+          }
+        ]
+      }
+    },
+    {
       "version": "6.17.0",
       "tag": "office-ui-fabric-react_v6.17.0",
       "date": "Wed, 20 Jun 2018 10:25:55 GMT",

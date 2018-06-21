@@ -1,72 +1,72 @@
 /* tslint:disable:no-any */
-export const CommunicationColors: any = {
-  communicationShade30: '#004578',
-  communicationShade20: '#005a9e',
-  communicationShade10: '#106ebe',
-  communicationPrimary: '#0078d4',
-  communicationTint10: '#2b88d8',
-  communicationTint20: '#c7e0f4',
-  communicationTint30: '#deecf9',
-  communicationTint40: '#eff6fc'
-};
+export namespace CommunicationColors {
+  export const shade30 = '#004578';
+  export const shade20 = '#005a9e';
+  export const shade10 = '#106ebe';
+  export const primary = '#0078d4';
+  export const tint10 = '#2b88d8';
+  export const tint20 = '#c7e0f4';
+  export const tint30 = '#deecf9';
+  export const tint40 = '#eff6fc';
+}
 
-export const NeutralColors: any = {
-  black: '#000000',
-  gray220: '#11100f',
-  gray210: '#161514',
-  gray200: '#1b1a19',
-  gray190: '#201f1e',
-  gray180: '#252423',
-  gray170: '#292827',
-  gray160: '#323130',
-  gray150: '#3b3a39',
-  gray140: '#484644',
-  gray130: '#605e5c',
-  gray120: '#797775',
-  gray110: '#8a8886',
-  gray100: '#979593',
-  gray90: '#a19f9d',
-  gray80: '#b3b0ad',
-  gray70: '#bebbb8',
-  gray60: '#c8c6c4',
-  gray50: '#d2d0ce',
-  gray40: '#e1dfdd',
-  gray30: '#edebe9',
-  gray20: '#f3f2f1',
-  gray10: '#faf9f8',
-  white: '#ffffff'
-};
+export namespace NeutralColors {
+  export const black = '#000000';
+  export const gray220 = '#11100f';
+  export const gray210 = '#161514';
+  export const gray200 = '#1b1a19';
+  export const gray190 = '#201f1e';
+  export const gray180 = '#252423';
+  export const gray170 = '#292827';
+  export const gray160 = '#323130';
+  export const gray150 = '#3b3a39';
+  export const gray140 = '#484644';
+  export const gray130 = '#605e5c';
+  export const gray120 = '#797775';
+  export const gray110 = '#8a8886';
+  export const gray100 = '#979593';
+  export const gray90 = '#a19f9d';
+  export const gray80 = '#b3b0ad';
+  export const gray70 = '#bebbb8';
+  export const gray60 = '#c8c6c4';
+  export const gray50 = '#d2d0ce';
+  export const gray40 = '#e1dfdd';
+  export const gray30 = '#edebe9';
+  export const gray20 = '#f3f2f1';
+  export const gray10 = '#faf9f8';
+  export const white = '#ffffff';
+}
 
-export const SharedColors: any = {
-  sharedPinkRed10: '#750b1c',
-  sharedRed30: '#a4262c',
-  sharedRed10: '#d13438',
-  sharedRedOrange10: '#da3b01',
-  sharedOrange30: '#8e562e',
-  sharedOrange20: '#ca5010',
-  sharedOrange10: '#ffaa44',
-  sharedYellow10: '#fce100',
-  sharedOrangeYellow20: '#986f0b',
-  sharedOrangeYellow10: '#c19c00',
-  sharedYellowGreen10: '#8cbd18',
-  sharedGreen20: '#0b6a0b',
-  sharedGreen10: '#498205',
-  sharedGreenCyan10: '#00ad56',
-  sharedCyan30: '#005b70',
-  sharedCyan20: '#038387',
-  sharedCyan10: '#00b7c3',
-  sharedCyanBlue20: '#004e8c',
-  sharedCyanBlue10: '#0078d4',
-  sharedBlue10: '#4f6bed',
-  sharedBlueMagenta30: '#5c2e91',
-  sharedBlueMagenta20: '#8764b8',
-  sharedBlueMagenta10: '#8378de',
-  sharedMagenta20: '#881798',
-  sharedMagenta10: '#c239b3',
-  sharedMagentaPink20: '#9b0062',
-  sharedMagentaPink10: '#e3008c',
-  sharedGray40: '#393939',
-  sharedGray30: '#7a7574',
-  sharedGray20: '#69797e',
-  sharedGray10: '#a0aeb2'
-};
+export namespace SharedColors {
+  export const pinkRed10 = '#750b1c';
+  export const red30 = '#a4262c';
+  export const red10 = '#d13438';
+  export const redOrange10 = '#da3b01';
+  export const orange30 = '#8e562e';
+  export const orange20 = '#ca5010';
+  export const orange10 = '#ffaa44';
+  export const yellow10 = '#fce100';
+  export const orangeYellow20 = '#986f0b';
+  export const orangeYellow10 = '#c19c00';
+  export const yellowGreen10 = '#8cbd18';
+  export const green20 = '#0b6a0b';
+  export const green10 = '#498205';
+  export const greenCyan10 = '#00ad56';
+  export const cyan30 = '#005b70';
+  export const cyan20 = '#038387';
+  export const cyan10 = '#00b7c3';
+  export const cyanBlue20 = '#004e8c';
+  export const cyanBlue10 = '#0078d4';
+  export const blue10 = '#4f6bed';
+  export const blueMagenta30 = '#5c2e91';
+  export const blueMagenta20 = '#8764b8';
+  export const blueMagenta10 = '#8378de';
+  export const magenta20 = '#881798';
+  export const magenta10 = '#c239b3';
+  export const magentaPink20 = '#9b0062';
+  export const magentaPink10 = '#e3008c';
+  export const gray40 = '#393939';
+  export const gray30 = '#7a7574';
+  export const gray20 = '#69797e';
+  export const gray10 = '#a0aeb2';
+}

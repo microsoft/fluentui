@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "expose Nav to teams not using npm",
+      "comment": "Add Fluent type ramp, update color names",
       "type": "minor"
     }
   ],
   "packageName": "@uifabric/experiments",
-  "email": "yuz@microsoft.com"
+  "email": "mike@mikewheaton.ca"
 }

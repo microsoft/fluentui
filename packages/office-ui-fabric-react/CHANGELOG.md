@@ -1,6 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 20 Jun 2018 10:25:55 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Jun 2018 23:33:29 GMT and should not be manually modified.
+
+## 6.18.0
+Wed, 20 Jun 2018 23:33:29 GMT
+
+### Minor changes
+
+- Make it possible to disable firstfocus in hover card
+- Updated Checkbox and ChoiceGroup to accept custom styles
+- label fluentstyles
+
+### Patches
+
+- fix clear input for BaseExtendedPicker
+- Callout: revert blur change
+- Adding a Teams customization example.
 
 ## 6.17.0
 Wed, 20 Jun 2018 10:25:55 GMT
