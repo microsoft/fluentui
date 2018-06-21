@@ -264,5 +264,5 @@ export interface IGroupDividerProps {
   onRenderTitle?: IRenderFunction<IGroupDividerProps>;
 
   /** Props for expand/collapse button */
-  expandCollapseButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
+  expandButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
 }
