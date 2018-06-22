@@ -5,3 +5,4 @@ export { TilesList } from './TilesList';
 export { Shimmer } from './Shimmer';
 export { Chiclet } from './Chiclet';
 export { ICustomNavLinkGroup, INavLink, NavGroupType, NavToggler } from './Nav';
+export { Fluent } from './Fluent';
