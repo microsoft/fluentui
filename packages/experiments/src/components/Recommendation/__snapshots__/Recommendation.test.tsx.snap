@@ -136,6 +136,10 @@ exports[`RecommendationCard renders basic example correctly 1`] = `
               disabled={undefined}
               onClick={[Function]}
               onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
               title="Card options"
               type="button"
             >
@@ -352,6 +356,11 @@ exports[`RecommendationCard renders basic example correctly 1`] = `
               disabled={undefined}
               name="View Recommendation"
               onClick={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
               type="button"
             >
               <div
@@ -583,6 +592,10 @@ exports[`RecommendationCard renders dlp example correctly 1`] = `
               disabled={undefined}
               onClick={[Function]}
               onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
               title="Card options"
               type="button"
             >
@@ -799,6 +812,11 @@ exports[`RecommendationCard renders dlp example correctly 1`] = `
               disabled={undefined}
               name="View Recommendation"
               onClick={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
               type="button"
             >
               <div
@@ -1317,6 +1335,10 @@ exports[`RecommendationCard renders imageillustration example correctly 1`] = `
               disabled={undefined}
               onClick={[Function]}
               onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
               title="Card options"
               type="button"
             >
@@ -1533,6 +1555,11 @@ exports[`RecommendationCard renders imageillustration example correctly 1`] = `
               disabled={undefined}
               name="View Recommendation"
               onClick={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
               type="button"
             >
               <div
