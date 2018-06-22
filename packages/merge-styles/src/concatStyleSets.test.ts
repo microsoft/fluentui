@@ -4,7 +4,7 @@ import { IStyleFunction } from './IStyleFunction';
 
 describe('concatStyleSets', () => {
   it('can concat style sets', () => {
-    const result = concatStyleSets<{ root?: IStyle; a?: IStyle; b?: IStyle }>(
+    const result = concatStyleSets(
       {
         root: { background: 'red' },
         a: { background: 'green' }
@@ -48,7 +48,7 @@ describe('concatStyleSets', () => {
       }
     });
 
-    const result = concatStyleSets<{ root?: IStyle; a?: IStyleFunction; b?: IStyle }>(
+    const result = concatStyleSets(
       {
         root: { background: 'red' },
         a: fn1
