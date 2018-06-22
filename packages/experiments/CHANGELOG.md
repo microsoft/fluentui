@@ -1,6 +1,14 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 21 Jun 2018 19:27:25 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Jun 2018 16:21:15 GMT and should not be manually modified.
+
+## 6.10.0
+Fri, 22 Jun 2018 16:21:15 GMT
+
+### Minor changes
+
+- Toggle component fluent example set up in experiments
+- M365 Common Recommendation control including examples with Image Illustration and Data Viz
 
 ## 6.9.0
 Thu, 21 Jun 2018 19:27:25 GMT

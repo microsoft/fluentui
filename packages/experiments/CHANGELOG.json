@@ -2,6 +2,37 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.10.0",
+      "tag": "@uifabric/experiments_v6.10.0",
+      "date": "Fri, 22 Jun 2018 16:21:15 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "f226e6c68cfa686a81c3ef39716614dcdc70602b",
+            "comment": "Toggle component fluent example set up in experiments"
+          },
+          {
+            "author": "Veerash Ayyagari <veeray@microsoft.com>",
+            "commit": "f805f49025d67fe0a43c2bd89e99a4fe5ee03c59",
+            "comment": "M365 Common Recommendation control including examples with Image Illustration and Data Viz"
+          }
+        ],
+        "none": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "cda2baf135c55c04e5e51475ff17df572acfdd6c",
+            "comment": "Update snapshots."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.18.1 <7.0.0` to `>=6.18.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.9.0",
       "tag": "@uifabric/experiments_v6.9.0",
       "date": "Thu, 21 Jun 2018 19:27:25 GMT",

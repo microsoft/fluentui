@@ -2,6 +2,45 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.18.2",
+      "tag": "office-ui-fabric-react_v6.18.2",
+      "date": "Fri, 22 Jun 2018 16:21:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "9e31ba1d567f8fc95e17c34d2e76c5de55e2cd28",
+            "comment": "Buttons: Focusable disabled buttons no longer execute on ENTER/SPACE"
+          },
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "2d4ee7dfa45311c72183315a05468060ad7482c5",
+            "comment": "MessageBar: add class names for backwards compatibility"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "9858aa8b2184803a6e1c42fcfb9bbe31ad801de1",
+            "comment": "Pivot: fixing a typing issue when used with proxies."
+          },
+          {
+            "author": "Fabio Pintos <fabio.pintos@outlook.com>",
+            "commit": "6a238b9a92511ac7e84efa1b1c0538e0e3b34350",
+            "comment": "Remove space from personaInitialsColorToHexCode magenta case"
+          },
+          {
+            "author": "Sean Podesta <seanfeld87@gmail.com>",
+            "commit": "0f338fe26a99597ce19782258203107ce85949df",
+            "comment": "Accessibility: using the down arrow key to navigate the command bar currently skips over the search box - added aria-hidden to the div containing the search icon"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "d061be9b4d5af089b29d045a3eda38736dd2ec8f",
+            "comment": "TextField: placeholder text should be neutralSeconary."
+          }
+        ]
+      }
+    },
+    {
       "version": "6.18.1",
       "tag": "office-ui-fabric-react_v6.18.1",
       "date": "Thu, 21 Jun 2018 19:27:25 GMT",

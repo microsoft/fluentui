@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 21 Jun 2018 19:27:25 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Jun 2018 16:21:15 GMT and should not be manually modified.
+
+## 6.18.2
+Fri, 22 Jun 2018 16:21:15 GMT
+
+### Patches
+
+- Buttons: Focusable disabled buttons no longer execute on ENTER/SPACE
+- MessageBar: add class names for backwards compatibility
+- Pivot: fixing a typing issue when used with proxies.
+- Remove space from personaInitialsColorToHexCode magenta case
+- Accessibility: using the down arrow key to navigate the command bar currently skips over the search box - added aria-hidden to the div containing the search icon
+- TextField: placeholder text should be neutralSeconary.
 
 ## 6.18.1
 Thu, 21 Jun 2018 19:27:25 GMT
