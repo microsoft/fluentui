@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/experiments",
+      "comment": "Update snapshots.",
+      "type": "none"
+    }
+  ],
+  "packageName": "@uifabric/experiments",
+  "email": "jason.gore@grabtaxi.com"
+}
