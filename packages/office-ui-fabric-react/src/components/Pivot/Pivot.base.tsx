@@ -282,7 +282,7 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
       // React.Element<any> cannot directly convert to PivotItem.
       const item = React.Children.toArray(this.props.children)[index] as any;
 
-      if (typeof item === 'object' && item.type === PivotItem) {
+      if (typeof item === 'object' && item.type.name === PivotItem.name) {
         this.props.onLinkClick(item as PivotItem, ev);
       }
     }
