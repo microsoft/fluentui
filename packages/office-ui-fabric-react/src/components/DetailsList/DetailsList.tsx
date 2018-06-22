@@ -300,7 +300,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       enableShimmer,
       viewport,
       columnReorderOptions,
-      minimumPixelsForDrag
+      minimumPixelsForDrag,
+      getGroupHeight
     } = this.props;
     const { adjustedColumns, isCollapsed, isSizing, isSomeGroupExpanded } = this.state;
     const { _selection: selection, _dragDropHelper: dragDropHelper } = this;
@@ -428,6 +429,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                     onGroupExpandStateChanged={this._onGroupExpandStateChanged}
                     usePageCache={usePageCache}
                     onShouldVirtualize={onShouldVirtualize}
+                    getGroupHeight={getGroupHeight}
                   />
                 ) : (
                     <List
