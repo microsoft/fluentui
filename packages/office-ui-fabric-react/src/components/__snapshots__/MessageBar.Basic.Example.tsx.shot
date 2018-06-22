@@ -50,7 +50,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           font-size: 12px;
           font-weight: 400;
         }
-    role="status"
   >
     <div
       className=
@@ -1005,7 +1004,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           font-size: 12px;
           font-weight: 400;
         }
-    role="status"
   >
     <div
       className=
@@ -2291,7 +2289,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           font-size: 12px;
           font-weight: 400;
         }
-    role="status"
   >
     <div
       className=
@@ -2838,7 +2835,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           font-size: 12px;
           font-weight: 400;
         }
-    role="status"
   >
     <div
       className=
@@ -3798,7 +3794,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           font-size: 12px;
           font-weight: 400;
         }
-    role="status"
   >
     <div
       className=
@@ -5090,7 +5085,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           font-size: 12px;
           font-weight: 400;
         }
-    role="status"
   >
     <div
       className=
