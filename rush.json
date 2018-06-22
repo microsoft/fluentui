@@ -26,14 +26,12 @@
     {
       "packageName": "@uifabric/charting",
       "projectFolder": "packages/charting",
-      "versionPolicyName": "lockedMajor",
       "shouldPublish": false
     },
     {
       "packageName": "@uifabric/dashboard-grid-layout",
       "projectFolder": "packages/dashboard-grid-layout",
-      "versionPolicyName": "lockedMajor",
-      "shouldPublish": true
+      "shouldPublish": false
     },
     {
       "packageName": "@uifabric/merge-styles",
