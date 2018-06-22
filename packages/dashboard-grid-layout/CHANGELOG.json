@@ -1,0 +1,27 @@
+{
+  "name": "@uifabric/dashboard-grid-layout",
+  "entries": [
+    {
+      "version": "0.1.0",
+      "tag": "@uifabric/dashboard-grid-layout_v0.1.0",
+      "date": "Thu, 21 Jun 2018 19:27:25 GMT",
+      "comments": {
+        "none": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "c3a12a7ec366b91f3c1ccf0a45f794cd435d6f34",
+            "comment": "Dashboard grid layout package for fabric, to support dragging cards on the dashboard"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.0.0 <7.0.0` to `>=6.9.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.13.2 <7.0.0` to `>=6.18.1 <7.0.0`"
+          }
+        ]
+      }
+    }
+  ]
+}
