@@ -251,6 +251,8 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     }
   }
 
+  // We implement a blur listener for the Callout component so that if a page inside inside of an iframe uses a callout,
+  // it can be dismissed when the user clicks outside of the iframe.
   protected _dismissOnBlur(ev: Event) {
     const target = ev.target as HTMLElement;
     const clickedOutsideCallout = this._hostElement.current && !elementContains(this._hostElement.current, target);
