@@ -6,4 +6,9 @@ import { getStyles } from './DatePicker.styles';
 /**
  * DatePicker description
  */
-export const DatePicker = styled<IDatePickerProps, IDatePickerStyleProps, IDatePickerStyles>(DatePickerBase, getStyles);
+export const DatePicker = styled<IDatePickerProps, IDatePickerStyleProps, IDatePickerStyles>(
+  DatePickerBase,
+  getStyles,
+  undefined,
+  { scope: 'DatePicker' }
+);
