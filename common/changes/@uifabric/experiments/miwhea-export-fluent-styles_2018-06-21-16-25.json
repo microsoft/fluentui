@@ -3,7 +3,7 @@
     {
       "packageName": "@uifabric/experiments",
       "comment": "Export Fluent constants, theme, component styles, and documentation",
-      "type": "patch"
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/experiments",
