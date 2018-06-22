@@ -101,7 +101,11 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
           id="Pivot0-Tab0"
           name="Pivot 1"
           onClick={[Function]}
+          onKeyDown={[Function]}
           onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           role="tab"
           type="button"
         >
@@ -210,7 +214,11 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
           id="Pivot0-Tab1"
           name="Pivot 2"
           onClick={[Function]}
+          onKeyDown={[Function]}
           onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           role="tab"
           type="button"
         >
@@ -319,7 +327,11 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
           id="Pivot0-Tab2"
           name="Pivot 3"
           onClick={[Function]}
+          onKeyDown={[Function]}
           onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           role="tab"
           type="button"
         >
@@ -584,6 +596,10 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                     }
                 data-is-focusable={false}
                 disabled={undefined}
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
                 onMouseDown={[Function]}
                 onMouseLeave={[Function]}
                 onMouseUp={[Function]}
@@ -708,6 +724,10 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                     }
                 data-is-focusable={false}
                 disabled={undefined}
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
                 onMouseDown={[Function]}
                 onMouseLeave={[Function]}
                 onMouseUp={[Function]}

@@ -79,6 +79,11 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
     data-ktp-target="ktp-1-a"
     disabled={undefined}
     onClick={[Function]}
+    onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
     type="button"
   >
     <div
@@ -198,6 +203,11 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
     data-ktp-target="ktp-1-b"
     disabled={undefined}
     onClick={[Function]}
+    onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
     type="button"
   >
     <div
@@ -337,6 +347,10 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
     disabled={undefined}
     onClick={[Function]}
     onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
     type="button"
   >
     <div
@@ -533,6 +547,11 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
         data-is-focusable={false}
         disabled={undefined}
         onClick={undefined}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
         tabIndex={-1}
         type="button"
       >
@@ -614,7 +633,11 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
         data-ktp-execute-target="ktp-2-b"
         disabled={undefined}
         onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
         onMouseDown={[Function]}
+        onMouseUp={[Function]}
         tabIndex={-1}
         type="button"
       >
@@ -735,6 +758,12 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
         }
     data-is-focusable={true}
     disabled={undefined}
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
     type="button"
   >
     <div
@@ -850,6 +879,11 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
     data-ktp-target="ktp-0-0"
     disabled={undefined}
     onClick={[Function]}
+    onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
     type="button"
   >
     <div
@@ -1104,6 +1138,11 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
     data-ktp-target="ktp-0-1"
     disabled={undefined}
     onClick={[Function]}
+    onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
     type="button"
   >
     <div
