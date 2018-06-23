@@ -95,8 +95,6 @@ export interface IPivotStyleProps {
    */
   className?: string;
   linkIsSelected?: boolean;
-  linkIsDisabled?: boolean;
-  linkIsOverflow?: boolean;
   rootIsLarge?: boolean;
   rootIsTabs?: boolean;
 }
@@ -106,12 +104,12 @@ export interface IPivotStyles {
    * Style for the root element.
    */
   root: IStyle;
-  links: IStyle;
   link: IStyle;
+  linkContent: IStyle;
+  linkIsSelected: IStyle;
   text: IStyle;
   count: IStyle;
   icon: IStyle;
-  ellipsis: IStyle;
 }
 
 export enum PivotLinkFormat {
