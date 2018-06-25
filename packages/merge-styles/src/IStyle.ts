@@ -20,7 +20,7 @@ export interface IRawStyle extends IRawStyleBase {
   };
 }
 
-export type IStyleBase = IRawStyle | string | false | null | undefined;
+export type IStyleBase = IRawStyle | string | false | undefined;
 
 export interface IStyleBaseArray extends Array<IStyle> {}
 

@@ -1,6 +1,6 @@
 import { extractStyleParts } from './extractStyleParts';
 import { concatStyleSets } from './concatStyleSets';
-import { IStyleOrStyleFunction } from './IStyle';
+import { IStyleOrStyleFunction, IStyle } from './IStyle';
 import { styleToRegistration, applyRegistration } from './styleToClassName';
 import { IStyleFunction } from './IStyleFunction';
 import { IStyleSet } from './IStyleSet';
@@ -15,7 +15,9 @@ export type IClassNameOrStyleFunction<TStyleProps = any, TStyles = any> = string
  *
  * @param styleSet1 The first style set to be merged.
  */
-export function mergeStyleSets<T>(styleSet: IStyleSet<T>): { [P in keyof T]?: IClassNameOrStyleFunction };
+export function mergeStyleSets<T>(
+  styleSet: IStyleSet<T>
+): { [P in keyof T]?: T[P] extends Function ? IStyleFunction<any, any> : string };
 
 /**
  * Takes in one or more style set objects, each consisting of a set of areas,
@@ -29,7 +31,7 @@ export function mergeStyleSets<T>(styleSet: IStyleSet<T>): { [P in keyof T]?: IC
 export function mergeStyleSets<T, U>(
   styleSet1: IStyleSet<T>,
   styleSet2: IStyleSet<U>
-): { [P in keyof (T & U)]?: IClassNameOrStyleFunction };
+): { [P in keyof (T & U)]?: (T & U)[P] extends Function ? IStyleFunction<any, any> : string };
 
 /**
  * Takes in one or more style set objects, each consisting of a set of areas,

@@ -41,11 +41,11 @@ describe('mergeStyles', () => {
   });
 
   it('can join strings', () => {
-    expect(mergeStyles('a', false, null, undefined, 'b')).toEqual('a b');
+    expect(mergeStyles('a', false, undefined, undefined, 'b')).toEqual('a b');
   });
 
   it('can join arrays of strings', () => {
-    expect(mergeStyles(['a', 'b', 'c'], false, null, undefined)).toEqual('a b c');
+    expect(mergeStyles(['a', 'b', 'c'], false, undefined, undefined)).toEqual('a b c');
   });
 
   it('can join an object and style', () => {

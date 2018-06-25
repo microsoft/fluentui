@@ -1,4 +1,4 @@
-export { IRawStyle, IStyle } from './IStyle';
+export { IRawStyle, IStyle, IStyleOrStyleFunction } from './IStyle';
 
 export { IStyleFunction } from './IStyleFunction';
 
@@ -8,7 +8,7 @@ export { IFontFace, IFontWeight } from './IRawStyleBase';
 
 export { mergeStyles } from './mergeStyles';
 
-export { mergeStyleSets } from './mergeStyleSets';
+export { mergeStyleSets, IClassNameOrStyleFunction } from './mergeStyleSets';
 
 export { concatStyleSets } from './concatStyleSets';
 
