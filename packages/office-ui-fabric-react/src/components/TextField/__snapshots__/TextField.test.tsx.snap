@@ -43,6 +43,7 @@ exports[`TextField renders TextField correctly 1`] = `
         onChange={[Function]}
         onFocus={[Function]}
         onInput={[Function]}
+        readOnly={undefined}
         type="text"
         value=""
       />

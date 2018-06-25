@@ -9,7 +9,7 @@ export const getStyles = (props: IVerticalBarChartStyleProps): IVerticalBarChart
   const xOffset = 30;
   const yOffset = 20;
 
-  return ({
+  return {
     root: [
       'ms-VerticalBarChart',
       className,
@@ -32,11 +32,10 @@ export const getStyles = (props: IVerticalBarChartStyleProps): IVerticalBarChart
     ],
     xAxis: [
       {
-        transform: `translate(${xOffset}px, ${height}px)`,
+        transform: `translate(${xOffset}px, ${height}px)`
       }
     ],
-    xAxisTicks: [
-    ],
+    xAxisTicks: [],
     yAxis: [
       {
         transform: `translate(${yOffset}px, 0px)`
@@ -57,5 +56,5 @@ export const getStyles = (props: IVerticalBarChartStyleProps): IVerticalBarChart
         transform: `translate(${xOffset}px, 0px)`
       }
     ]
-  });
+  };
 };

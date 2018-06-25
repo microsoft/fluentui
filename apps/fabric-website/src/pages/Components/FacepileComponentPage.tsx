@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FacepilePage } from 'office-ui-fabric-react/lib/components/Facepile/FacepilePage';
+import { FacepilePage } from '@uifabric/fabric-website-resources/lib/components/pages/FacepilePage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 const pageStyles: any = require('../PageStyles.module.scss');

@@ -6,6 +6,7 @@ import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { List, ScrollToMode } from 'office-ui-fabric-react/lib/List';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import './List.Scrolling.Example.scss';
+import { Checkbox } from '../../..';
 
 export interface IListScrollingExampleProps {
   items: any[];
@@ -14,6 +15,7 @@ export interface IListScrollingExampleProps {
 export interface IListScrollingExampleState {
   selectedIndex: number;
   scrollToMode: ScrollToMode;
+  showItemIndexInView: boolean;
 }
 
 const evenItemHeight = 25;
@@ -28,7 +30,8 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
 
     this.state = {
       selectedIndex: 0,
-      scrollToMode: ScrollToMode.auto
+      scrollToMode: ScrollToMode.auto,
+      showItemIndexInView: false
     };
   }
 
@@ -61,7 +64,13 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
           Scroll item index:
           <TextField value={this.state.selectedIndex.toString(10)} onChanged={this._onChangeText} />
         </div>
-
+        <div>
+          <Checkbox
+            label="Show index of the first item in view when unmounting"
+            checked={this.state.showItemIndexInView}
+            onChange={this._onShowItemIndexInViewChanged}
+          />
+        </div>
         <div className="ms-ListScrollingExample-container" data-is-scrollable={true}>
           <List
             ref={this._resolveList}
@@ -72,6 +81,15 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
         </div>
       </FocusZone>
     );
+  }
+
+  public componentWillUnmount() {
+    if (this.state.showItemIndexInView) {
+      const itemIndexInView = this._list!.getStartItemIndexInView(
+        idx => (idx % 2 === 0 ? evenItemHeight : oddItemHeight) /* measureItem */
+      );
+      alert('unmounting, getting first item index that was in view: ' + itemIndexInView);
+    }
   }
 
   private _getPageHeight(idx: number): number {
@@ -149,5 +167,11 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
 
   private _resolveList = (list: List): void => {
     this._list = list;
+  };
+
+  private _onShowItemIndexInViewChanged = (event: React.FormEvent<HTMLInputElement>, checked: boolean): void => {
+    this.setState({
+      showItemIndexInView: checked
+    });
   };
 }

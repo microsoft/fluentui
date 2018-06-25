@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, customizable, createRef } from '../../Utilities';
+import { BaseComponent, classNamesFunction, createRef } from '../../Utilities';
 import { ILink, ILinkProps, ILinkStyleProps, ILinkStyles } from './Link.types';
 import { KeytipData } from '../../KeytipData';
 
 const getClassNames = classNamesFunction<ILinkStyleProps, ILinkStyles>();
 
-@customizable('Link', ['theme', 'getStyles'])
 export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
   private _link = createRef<HTMLAnchorElement | HTMLButtonElement | null>();
 

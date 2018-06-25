@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "lib",
+    "target": "es5",
+    "module": "es6",
+    "jsx": "react",
+    "declaration": true,
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "preserveConstEnums": false,
+    "types": [
+      "webpack-env"
+    ],
+    "paths": {}
+  },
+  "include": [
+    "src"
+  ]
+}

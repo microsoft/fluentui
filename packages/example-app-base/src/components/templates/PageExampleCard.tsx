@@ -65,7 +65,7 @@ const getSubHeaderStyles = () => ({
   root: { flexGrow: 1 }
 });
 
-@customizable('PageExampleCard', ['theme'])
+@customizable('PageExampleCard', ['theme', 'styles'])
 export class PageExampleCard extends BaseComponent<IPageExampleCardProps, IPageExampleCardState> {
   constructor(props: IPageExampleCardProps) {
     super(props);
@@ -84,7 +84,7 @@ export class PageExampleCard extends BaseComponent<IPageExampleCardProps, IPageE
     return (
       <div className={classNames.root}>
         <div className={classNames.header}>
-          <PageHeader getStyles={getSubHeaderStyles}>{title}</PageHeader>
+          <PageHeader styles={getSubHeaderStyles}>{title}</PageHeader>
           <button onClick={this._onToggleCode} className={classNames.showCodeButton}>
             {expanded ? 'Hide code' : 'Show code'}
           </button>

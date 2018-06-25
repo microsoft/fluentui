@@ -10,10 +10,22 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
+          component: require<any>('../components/CollapsibleSection/CollapsibleSectionPage').CollapsibleSectionPage,
+          key: 'CollapsibleSection',
+          name: 'CollapsibleSection',
+          url: '#/examples/collapsiblesection'
+        },
+        {
           component: require<any>('../components/Chiclet/ChicletPage').ChicletPage,
           key: 'Chiclet',
           name: 'Chiclet',
           url: '#/examples/chiclet'
+        },
+        {
+          component: require<any>('../components/Card/CardPage').CardPage,
+          key: 'DashboardCard',
+          name: 'DashboardCard',
+          url: '#/examples/Card'
         },
         {
           component: require<any>('../components/FolderCover/FolderCoverPage').FolderCoverPage,
@@ -38,6 +50,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'LayoutGroup',
           name: 'LayoutGroup',
           url: '#/examples/layoutgroup'
+        },
+        {
+          component: require<any>('../components/Recommendation/RecommendationPage').RecommendationPage,
+          key: 'Recommendation',
+          name: 'Recommendation',
+          url: '#/examples/recommendation'
         },
         {
           component: require<any>('../components/signals/SignalsPage').SignalsPage,
@@ -83,9 +101,15 @@ export const AppDefinition: IAppDefinition = {
         },
         {
           component: require<any>('../components/fluent/theme/FluentThemePage').FluentThemePage,
-          key: 'FluentTheme',
-          name: 'Fluent Theme',
-          url: '#/examples/fluenttheme'
+          key: 'FluentColorTheme',
+          name: 'Fluent Color Theme',
+          url: '#/examples/fluent-color-theme'
+        },
+        {
+          component: require<any>('../components/fluent/styles/FluentStylesPage').FluentStylesPage,
+          key: 'FluentStyles',
+          name: 'Fluent Component Styles',
+          url: '#/examples/fluent-styles'
         }
       ]
     }

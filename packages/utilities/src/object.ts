@@ -1,3 +1,5 @@
+import { Stylesheet } from '@uifabric/merge-styles';
+
 // Initialize global window id.
 const CURRENT_ID_PROPERTY = '__currentId__';
 const DEFAULT_ID_STRING = 'id__';
@@ -75,6 +77,13 @@ export function filteredAssign(isAllowed: (propName: string) => boolean, target:
   }
 
   return target;
+}
+
+// Configure ids to reset on stylesheet resets.
+const stylesheet = Stylesheet.getInstance();
+
+if (stylesheet && stylesheet.onReset) {
+  stylesheet.onReset(resetIds);
 }
 
 /**

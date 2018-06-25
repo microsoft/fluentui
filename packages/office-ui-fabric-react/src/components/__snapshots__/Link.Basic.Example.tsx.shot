@@ -1,0 +1,147 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders Link.Basic.Example.tsx correctly 1`] = `
+<div
+  className="docs-LinkExample"
+>
+  <span>
+    When a link has an href, 
+  </span>
+  <a
+    aria-disabled={undefined}
+    className=
+        ms-Link
+        {
+          color: #0078d4;
+          outline: transparent;
+          position: relative;
+          text-decoration: none;
+        }
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: 1px;
+          content: "";
+          left: 1px;
+          outline: 1px solid #666666;
+          position: absolute;
+          right: 1px;
+          top: 1px;
+          z-index: 1;
+        }
+        &:active, &:hover, &:active:hover {
+          color: #004578;
+        }
+        @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+          text-decoration: underline;
+        }
+        &:focus {
+          color: #0078d4;
+        }
+    href="http://dev.office.com/fabric/components/link"
+    onClick={[Function]}
+    target={undefined}
+  >
+    it renders as an anchor tag.
+  </a>
+  <span>
+     Without an href, 
+  </span>
+  <button
+    aria-disabled={undefined}
+    className=
+        ms-Link
+        {
+          background-color: transparent;
+          background: none;
+          border: none;
+          color: #0078d4;
+          cursor: pointer;
+          display: inline;
+          font-size: inherit;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          outline: transparent;
+          overflow: inherit;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+          text-align: left;
+          text-overflow: inherit;
+          user-select: text;
+        }
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: 1px;
+          content: "";
+          left: 1px;
+          outline: 1px solid #666666;
+          position: absolute;
+          right: 1px;
+          top: 1px;
+          z-index: 1;
+        }
+        &:active, &:hover, &:active:hover {
+          color: #004578;
+        }
+        @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+          text-decoration: underline;
+        }
+        &:focus {
+          color: #0078d4;
+        }
+    onClick={[Function]}
+  >
+    the link is rendered as a button
+  </button>
+  .
+  <span>
+     You can also use the disabled attribute to create a 
+  </span>
+  <a
+    aria-disabled={true}
+    className=
+        ms-Link
+        is-disabled
+        {
+          color: #a6a6a6;
+          cursor: default;
+          outline: transparent;
+          position: relative;
+          text-decoration: none;
+        }
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: 1px;
+          content: "";
+          left: 1px;
+          outline: 1px solid #666666;
+          position: absolute;
+          right: 1px;
+          top: 1px;
+          z-index: 1;
+        }
+        &:link, &:visited {
+          pointer-events: none;
+        }
+    href="http://dev.office.com/fabric/components/link"
+    onClick={[Function]}
+    target={undefined}
+  >
+    disabled link
+  </a>
+  .
+</div>
+`;

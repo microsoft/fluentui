@@ -40,15 +40,18 @@ module.exports = function runTasks(tasks) {
   function runTask(task) {
     let taskStartTime = new Date().getTime();
 
-    return Promise.resolve()
-      .then(() => !hasFailures && Promise.resolve()
-        .then(() => logStartTask(packageName, task))
-        .then(() => require('./tasks/' + task)({ isProduction, argv: process.argv }))
-        .then(() => logEndTask(packageName, task, taskStartTime))
-        .catch((e) => {
-          hasFailures = true;
-          logEndTask(packageName, task, taskStartTime, e);
-        }));
+    return Promise.resolve().then(
+      () =>
+        !hasFailures &&
+        Promise.resolve()
+          .then(() => logStartTask(packageName, task))
+          .then(() => require('./tasks/' + task)({ isProduction, argv: process.argv }))
+          .then(() => logEndTask(packageName, task, taskStartTime))
+          .catch(e => {
+            hasFailures = true;
+            logEndTask(packageName, task, taskStartTime, e);
+          })
+    );
   }
 
   function getPackage() {
@@ -60,4 +63,4 @@ module.exports = function runTasks(tasks) {
 
     return undefined;
   }
-}
+};

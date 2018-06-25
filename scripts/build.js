@@ -62,10 +62,6 @@ executeTasks(firstTasks).then(() => {
 //// Build helper functions
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function isPrettier() {
-  return process.env.PRETTIER === 'true';
-}
-
 function executeTasks(tasks) {
   return Promise.all(
     tasks.map(task => {
@@ -108,10 +104,6 @@ function getPackage() {
 }
 
 function loadTaskFunctions(tasks) {
-  if (isPrettier()) {
-    return { prettier: require('./tasks/prettier') };
-  }
-
   return tasks.reduce((acc, taskName) => {
     acc[taskName] = require('./tasks/' + taskName);
     return acc;
@@ -132,10 +124,6 @@ function getAllTasks() {
 }
 
 function getTasksWithPrerequisites() {
-  if (isPrettier()) {
-    return [['prettier', null]];
-  }
-
   return TASKS_WITH_PREREQUISITES;
 }
 

@@ -4,7 +4,7 @@ import { IShimmerCircleProps, IShimmerCircleStyleProps, IShimmerCircleStyles } f
 
 const getClassNames = classNamesFunction<IShimmerCircleStyleProps, IShimmerCircleStyles>();
 
-@customizable('ShimmerCircle', ['theme'])
+@customizable('ShimmerCircle', ['theme', 'styles'])
 export class ShimmerCircleBase extends BaseComponent<IShimmerCircleProps, {}> {
   private _classNames: { [key in keyof IShimmerCircleStyles]: string };
 

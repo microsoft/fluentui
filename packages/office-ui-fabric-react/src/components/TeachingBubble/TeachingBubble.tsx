@@ -45,7 +45,7 @@ export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachin
   }
 
   public render(): JSX.Element {
-    const { calloutProps: setCalloutProps, targetElement, onDismiss } = this.props;
+    const { calloutProps: setCalloutProps, targetElement, onDismiss, isWide } = this.props;
     const calloutProps = { ...this._defaultCalloutProps, ...setCalloutProps };
 
     return (
@@ -56,7 +56,7 @@ export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachin
         className={css(
           'ms-TeachingBubble',
           styles.root,
-          this.props.isWide ? styles.wideCallout : null,
+          isWide ? styles.wideCallout : null,
           calloutProps ? calloutProps.className : undefined
         )}
       >
