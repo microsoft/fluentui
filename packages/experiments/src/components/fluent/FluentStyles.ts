@@ -84,12 +84,18 @@ const CheckboxStyles = {
 };
 
 const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOptionStyles => {
-  const { checked, hasIcon, hasImage } = props;
+  const { checked, disabled, hasIcon, hasImage } = props;
   const radioButtonSpacing = 1;
   const radioButtonInnerSize = 6;
   return {
     field: {
       selectors: {
+        ':before': [
+          disabled && {
+            backgroundColor: 'transparent',
+            borderColor: NeutralColors.gray60
+          }
+        ],
         ':after': [
           {
             top: 4,
@@ -103,6 +109,10 @@ const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGr
               top: radioButtonSpacing + radioButtonInnerSize,
               right: radioButtonSpacing + radioButtonInnerSize,
               left: 'auto' // To reset the value of 'left' to its default value, so that 'right' works
+            },
+          checked &&
+            disabled && {
+              borderColor: NeutralColors.gray60
             }
         ]
       }
