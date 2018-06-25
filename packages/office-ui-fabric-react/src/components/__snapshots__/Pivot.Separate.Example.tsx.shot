@@ -111,7 +111,11 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
           id="ShapeColorPivot_rectangleRed"
           name="Rectangle red"
           onClick={[Function]}
+          onKeyDown={[Function]}
           onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           role="tab"
           type="button"
         >
@@ -218,7 +222,11 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
           id="ShapeColorPivot_squareRed"
           name="Square red"
           onClick={[Function]}
+          onKeyDown={[Function]}
           onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           role="tab"
           type="button"
         >
@@ -325,7 +333,11 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
           id="ShapeColorPivot_rectangleGreen"
           name="Rectangle green"
           onClick={[Function]}
+          onKeyDown={[Function]}
           onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           role="tab"
           type="button"
         >

@@ -47,6 +47,7 @@ exports[`Component Examples renders FloatingPeoplePicker.Basic.Example.tsx corre
       onFocusCapture={[Function]}
     >
       <div
+        aria-hidden={true}
         className=
             ms-SearchBox-iconContainer
             {

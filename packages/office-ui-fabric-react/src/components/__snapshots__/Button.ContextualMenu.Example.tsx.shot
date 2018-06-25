@@ -83,6 +83,10 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
       disabled={undefined}
       onClick={[Function]}
       onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
       type="button"
     >
       <div

@@ -4,6 +4,7 @@ import {
   IChoiceGroupOptionStyleProps,
   IChoiceGroupOptionStyles
 } from 'office-ui-fabric-react/lib/components/ChoiceGroup/ChoiceGroupOption';
+import { FontSizes } from './FluentType';
 
 /** Definitions for Depth, or shadow, levels. */
 const FluentDepthLevels = {
@@ -38,15 +39,9 @@ const FluentDepthLevels = {
   Level4: '0 16px 18px -4px rgba(0, 0, 0, 0.1)'
 };
 
-// const LinkStyles = {
-//   root: {
-//     // Styles
-//   }
-// };
-
 const BreadcrumbStyles = {
   itemLink: {
-    fontSize: '18px',
+    fontSize: FontSizes.size18,
     fontWeight: 400,
     selectors: {
       '&:last-child': {
@@ -84,7 +79,6 @@ const DefaultButtonStyles = {
 const CheckboxStyles = {
   checkbox: {
     borderRadius: '2px'
-    // borderColor: GrayColors.gray160
   }
 };
 
@@ -127,14 +121,31 @@ const DialogContentStyles = {
   }
 };
 
+const LabelStyles = {
+  root: {
+    fontWeight: FontWeights.semibold
+  }
+};
+const ToggleStyles = {
+  pill: {
+    width: '2em',
+    height: '1em',
+    borderRadius: '.5em'
+  },
+  thumb: {
+    width: '.6em',
+    height: '.6em',
+    borderRadius: '.6em',
+    borderColor: 'transparent',
+    borderWidth: 0
+  }
+};
+
 // Roll up all style overrides in a single "Fluent theme" object
 export const FluentStyles = {
   Breadcrumb: {
     styles: BreadcrumbStyles
   },
-  // Link: {
-  //   styles: LinkStyles
-  // },
   PrimaryButton: {
     styles: PrimaryButtonStyles
   },
@@ -155,28 +166,11 @@ export const FluentStyles = {
   },
   DialogContent: {
     styles: DialogContentStyles
+  },
+  Label: {
+    styles: LabelStyles
+  },
+  Toggle: {
+    styles: ToggleStyles
   }
 };
-
-// export class FluentStylesBasicExample extends React.Component<{}, {}> {
-//   public render(): JSX.Element {
-//     return (
-//       <div>
-//         <h2>Link</h2>
-//         <h3>Current theme</h3>
-//         <FluentThemeLinkExample />
-//         <h3>Fluent theme</h3>
-//         <Customizer scopedSettings={{ ...FluentStyles }}>
-//           <FluentThemeLinkExample />
-//         </Customizer>
-//         <h2>Buttons</h2>
-//         <h3>Current theme</h3>
-//         <FluentThemeButtonExample />
-//         <h3>Fluent theme</h3>
-//         <Customizer scopedSettings={{ ...FluentStyles }}>
-//           <FluentThemeButtonExample />
-//         </Customizer>
-//       </div>
-//     );
-//   }
-// }

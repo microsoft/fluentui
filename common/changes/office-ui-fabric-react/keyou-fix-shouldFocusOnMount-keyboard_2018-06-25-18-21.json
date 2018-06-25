@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Adding a Teams customization example.",
+      "comment": "Default shouldFocusOnMount value in BaseButton _onToggleMenu",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "dzearing@microsoft.com"
+  "email": "keyou@microsoft.com"
 }
