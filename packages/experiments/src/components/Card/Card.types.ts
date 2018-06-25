@@ -2,6 +2,7 @@ import { ICardHeaderProps } from './CardHeader/CardHeader.types';
 import { ICardContentDetails } from './Layout/Layout.types';
 import { IAction } from './ActionBar/ActionBar.types';
 import { ICardDropDownOption } from './CardFrame/CardFrame.types';
+import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 
 /**
  * Card size that we want to build.
@@ -105,6 +106,12 @@ export interface ICardProps {
    * The card size (small | medium tall | medium wide | large)
    */
   cardSize: CardSize;
+
+  /**
+   * This props takes in a function that needs to be called upon componentDidMount.
+   * One of its use could be to fetch server data here
+   */
+  callOnDidMount?: VoidFunction;
 }
 
 export interface ICardState {
@@ -112,4 +119,11 @@ export interface ICardState {
    * The card size state
    */
   cardSize: CardSize;
+}
+
+export interface ICardStyles {
+  /**
+   * Styles for root element of the card
+   */
+  root: IStyle;
 }

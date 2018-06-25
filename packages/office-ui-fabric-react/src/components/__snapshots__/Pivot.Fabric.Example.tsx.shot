@@ -99,7 +99,11 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
           id="Pivot0-Tab0"
           name="Callout"
           onClick={[Function]}
+          onKeyDown={[Function]}
           onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           role="tab"
           type="button"
         >
@@ -206,7 +210,11 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
           id="Pivot0-Tab1"
           name="Spinner"
           onClick={[Function]}
+          onKeyDown={[Function]}
           onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           role="tab"
           type="button"
         >
@@ -313,7 +321,11 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
           id="Pivot0-Tab2"
           name="Persona"
           onClick={[Function]}
+          onKeyDown={[Function]}
           onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           role="tab"
           type="button"
         >
@@ -452,6 +464,11 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
               disabled={undefined}
               id="toggleCallout"
               onClick={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
               type="button"
             >
               <div

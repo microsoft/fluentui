@@ -79,6 +79,10 @@ exports[`Component Examples renders ContextualMenu.CustomMenuItem.Example.tsx co
     id="ContextualMenuButton1"
     onClick={[Function]}
     onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
     type="button"
   >
     <div

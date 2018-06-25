@@ -19,7 +19,7 @@ module.exports = resources.createConfig(BUNDLE_NAME, IS_PRODUCTION, {
   },
   output: {
     libraryTarget: 'var',
-    library: 'dashboard-grid-layout'
+    library: 'FabricDashboardGridLayout'
   },
 
   externals: [{ react: 'React' }, { 'react-dom': 'ReactDOM' }],

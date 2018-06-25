@@ -78,6 +78,10 @@ exports[`Component Examples renders ContextualMenu.Checkmarks.Example.tsx correc
   id="ContextualMenuButton2"
   onClick={[Function]}
   onKeyDown={[Function]}
+  onKeyPress={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  onMouseUp={[Function]}
   type="button"
 >
   <div
