@@ -4,7 +4,7 @@ import { mergeStyleSets } from './mergeStyleSets';
 describe('staticRender', () => {
   it('can render content', () => {
     const { html, css } = renderStatic(() => {
-      const classNames: { root: string } = mergeStyleSets({
+      const classNames = mergeStyleSets({
         root: {
           background: 'red'
         }
@@ -19,7 +19,7 @@ describe('staticRender', () => {
 
   it('can namespace things', () => {
     const { html, css } = renderStatic(() => {
-      const classNames: { root: string } = mergeStyleSets({
+      const classNames = mergeStyleSets({
         root: {
           background: 'red'
         }

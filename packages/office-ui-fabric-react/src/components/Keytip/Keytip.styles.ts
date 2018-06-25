@@ -72,6 +72,6 @@ export const getCalloutOffsetStyles = (
           marginTop: offset.y
         }
       ]
-    });
+    }) as ICalloutContentStyles;
   };
 };

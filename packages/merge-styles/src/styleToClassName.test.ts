@@ -74,7 +74,7 @@ describe('styleToClassName', () => {
 
   it('can merge rules', () => {
     let className = styleToClassName(
-      null,
+      undefined,
       false,
       undefined,
       { backgroundColor: 'red', color: 'white' },

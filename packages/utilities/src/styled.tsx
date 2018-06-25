@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import { concatStyleSets } from '@uifabric/merge-styles';
+import { concatStyleSets, IStyleSet } from '@uifabric/merge-styles';
 import { IStyleFunction } from './IStyleFunction';
 import { CustomizableContextTypes } from './customizable';
 import { Customizations, ICustomizations } from './Customizations';
@@ -74,10 +74,16 @@ export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TSt
   return Wrapped as (props: TComponentProps) => JSX.Element;
 }
 
-function _resolve<TStyleProps, TStyles>(
+/**
+ * This helper function takes any given number of `styles` function or objects, resolves them if necessary, and combines them
+ * into a single style set.
+ * @param styleProps Style props that we pass into the "getStyles" function.
+ * @param allStyles All the "getStyles" functions or objects to be resolved and combined.
+ */
+function _resolve<TStyleProps, TStyles extends IStyleSet<TStyles>>(
   styleProps: TStyleProps,
   ...allStyles: (IStyleFunctionOrObject<TStyleProps, Partial<TStyles>> | undefined)[]
-): Partial<TStyles> | undefined {
+): IStyleSet<TStyles> | undefined {
   const result: Partial<TStyles>[] = [];
 
   for (const styles of allStyles) {
@@ -85,8 +91,9 @@ function _resolve<TStyleProps, TStyles>(
       result.push(typeof styles === 'function' ? styles(styleProps) : styles);
     }
   }
+
   if (result.length) {
-    return concatStyleSets(...result);
+    return concatStyleSets(...result) as IStyleSet<TStyles>;
   }
 
   return undefined;

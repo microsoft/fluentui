@@ -1,4 +1,5 @@
 import { IRawStyleBase } from './IRawStyleBase';
+import { IStyleFunction } from './IStyleFunction';
 
 /**
  * IStyleObject extends a raw style objects, but allows selectors to be defined
@@ -19,7 +20,7 @@ export interface IRawStyle extends IRawStyleBase {
   };
 }
 
-export type IStyleBase = IRawStyle | string | false | null | undefined;
+export type IStyleBase = IRawStyle | string | false | undefined;
 
 export interface IStyleBaseArray extends Array<IStyle> {}
 
@@ -29,3 +30,5 @@ export interface IStyleBaseArray extends Array<IStyle> {}
  * @public
  */
 export type IStyle = IStyleBase | IStyleBaseArray;
+
+export type IStyleOrStyleFunction = IStyle | IStyleFunction<any, any>;

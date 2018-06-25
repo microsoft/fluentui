@@ -1,10 +1,11 @@
-import { mergeStyleSets } from './mergeStyleSets';
+import { mergeStyleSets, IClassNameOrStyleFunction } from './mergeStyleSets';
 import { Stylesheet, InjectionMode } from './Stylesheet';
+import { IStyle } from './IStyle';
 
 const _stylesheet: Stylesheet = Stylesheet.getInstance();
 
 interface ITestClasses {
-  root: string;
+  root?: IClassNameOrStyleFunction;
 }
 
 _stylesheet.setConfig({ injectionMode: InjectionMode.none });
@@ -16,7 +17,7 @@ describe('mergeStyleSets', () => {
 
   it('can merge style sets', () => {
     const empty: { c?: string } = {};
-    const result: { root: string; a: string; b: string } = mergeStyleSets(
+    const result = mergeStyleSets(
       empty,
       {
         root: { background: 'red' },
@@ -114,7 +115,7 @@ describe('mergeStyleSets', () => {
 
   it('can auto expand a previously registered style', () => {
     const styles: ITestClasses = mergeStyleSets({ root: { background: 'red' } });
-    const styles2: ITestClasses = mergeStyleSets({ root: [{ background: 'purple' }, styles.root] });
+    const styles2: ITestClasses = mergeStyleSets({ root: [{ background: 'purple' }, styles.root as IStyle] });
 
     expect(styles.root).toEqual(styles2.root);
 

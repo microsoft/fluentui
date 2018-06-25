@@ -6,7 +6,7 @@ import { Stylesheet } from './Stylesheet';
  * args are auto expanded into objects.
  */
 export function extractStyleParts(
-  ...args: (IStyle | IStyle[] | false | null | undefined)[]
+  ...args: (IStyle | IStyle[] | false | undefined)[]
 ): { classes: string[]; objects: IStyle[] } {
   const classes: string[] = [];
   const objects: {}[] = [];
