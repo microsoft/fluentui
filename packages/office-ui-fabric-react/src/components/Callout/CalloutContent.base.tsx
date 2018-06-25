@@ -251,6 +251,16 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     }
   }
 
+  // We implement a blur listener for the Callout component so that if a page inside inside of an iframe uses a callout,
+  // it can be dismissed when the user clicks outside of the iframe.
+  protected _dismissOnBlur(ev: Event) {
+    const { preventDismissOnLostFocus } = this.props;
+
+    if (!preventDismissOnLostFocus && ev.target === this._targetWindow) {
+      this.dismiss(ev);
+    }
+  }
+
   protected _setInitialFocus = (): void => {
     if (
       this.props.setInitialFocus &&
@@ -282,6 +292,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     this._async.setTimeout(() => {
       this._events.on(this._targetWindow, 'scroll', this._dismissOnScroll, true);
       this._events.on(this._targetWindow, 'resize', this.dismiss, true);
+      this._events.on(this._targetWindow, 'blur', this._dismissOnBlur, true);
       this._events.on(this._targetWindow.document.documentElement, 'focus', this._dismissOnLostFocus, true);
       this._events.on(this._targetWindow.document.documentElement, 'click', this._dismissOnLostFocus, true);
       this._hasListeners = true;
@@ -291,6 +302,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   private _removeListeners() {
     this._events.off(this._targetWindow, 'scroll', this._dismissOnScroll, true);
     this._events.off(this._targetWindow, 'resize', this.dismiss, true);
+    this._events.off(this._targetWindow, 'blur', this._dismissOnBlur, true);
     this._events.off(this._targetWindow.document.documentElement, 'focus', this._dismissOnLostFocus, true);
     this._events.off(this._targetWindow.document.documentElement, 'click', this._dismissOnLostFocus, true);
     this._hasListeners = false;
