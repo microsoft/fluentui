@@ -2,6 +2,193 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.10.0",
+      "tag": "@uifabric/experiments_v6.10.0",
+      "date": "Fri, 22 Jun 2018 16:21:15 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "f226e6c68cfa686a81c3ef39716614dcdc70602b",
+            "comment": "Toggle component fluent example set up in experiments"
+          },
+          {
+            "author": "Veerash Ayyagari <veeray@microsoft.com>",
+            "commit": "f805f49025d67fe0a43c2bd89e99a4fe5ee03c59",
+            "comment": "M365 Common Recommendation control including examples with Image Illustration and Data Viz"
+          }
+        ],
+        "none": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "cda2baf135c55c04e5e51475ff17df572acfdd6c",
+            "comment": "Update snapshots."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.18.1 <7.0.0` to `>=6.18.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.9.0",
+      "tag": "@uifabric/experiments_v6.9.0",
+      "date": "Thu, 21 Jun 2018 19:27:25 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "nulikartik <nulikarthik@gmail.com>",
+            "commit": "17cc28536baa952248de7f4a816dc772408f9338",
+            "comment": "CardDidMount callback for making api calls, additional ref incase there is a use case where there is no state, compoundButtonStack  size variation and gridList component v1.1 changes"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Mike Wheaton <miwhea@microsoft.com>",
+            "commit": "31f042b5d099eca7fa342b20725912f6a8c59fc7",
+            "comment": "Add Fluent type ramp, update color names"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.18.0 <7.0.0` to `>=6.18.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.8.0",
+      "tag": "@uifabric/experiments_v6.8.0",
+      "date": "Wed, 20 Jun 2018 23:33:29 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "321551862495dc8c4fe354a03c342d6a2b3f35b2",
+            "comment": "Updated ChoiceGroup FluentStyles to include 'checked' style prop"
+          },
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "511225a4f7fc48803b5298c1373570d162af1b7d",
+            "comment": "Added Checkbox and ChoiceGroup to Fluent Styles Page"
+          },
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "6e7427f50b650edcc7fdf721cd8d9857d7db2a6d",
+            "comment": "label fluentstyles"
+          },
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "4b9645c5346b79ace2df9476169562cdcae43d7b",
+            "comment": "Added examples for Rating and Slider to FluentStyles page - no style changes"
+          },
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "3560bb38daa7c358680551af1134a671c61cf1dc",
+            "comment": "expose Nav to teams not using npm"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.17.0 <7.0.0` to `>=6.18.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.7.0",
+      "tag": "@uifabric/experiments_v6.7.0",
+      "date": "Wed, 20 Jun 2018 10:25:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "natalieethell <naethell@microsoft.com>",
+            "commit": "09d099ec624afed8b92c5e32277a9a15c5d3c607",
+            "comment": "Prettier fixes"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Sivaraman Krishnan <12967315+sikrishn@users.noreply.github.com>",
+            "commit": "04d9e0e07134b13f61f78be4bfd764da29538a05",
+            "comment": "Experiments/Nav component: Fix to display nav group header on show more"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.16.0 <7.0.0` to `>=6.17.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.6.0",
+      "tag": "@uifabric/experiments_v6.6.0",
+      "date": "Tue, 19 Jun 2018 10:26:26 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "73373b622d1c7dde27f250fad8dddc6758a76ff9",
+            "comment": "Added Fluent Styles Page"
+          },
+          {
+            "author": "Mike Wheaton <miwhea@microsoft.com>",
+            "commit": "21cece15f5e13f17d1d2b3a68c7af58ba02697ad",
+            "comment": "Update Fluent colors"
+          },
+          {
+            "author": "Mike Wheaton <miwhea@microsoft.com>",
+            "commit": "fe1d2db7964251ab5406a835caefccdb58ab94a7",
+            "comment": "Update Fluent colors and theme"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.15.0 <7.0.0` to `>=6.16.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.5.0",
+      "tag": "@uifabric/experiments_v6.5.0",
+      "date": "Mon, 18 Jun 2018 16:57:14 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "ae17e33a6d9861f49f50f71d51d4bf1f5a301d7c",
+            "comment": "Add alias to CommandBar to final version"
+          },
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "a79a8a7207e0c9ca224541799e20cf943128570d",
+            "comment": "Fix import mistakes"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Raghuraman Krishnamurthy <raghurk@microsoft.com>",
+            "commit": "90b9dbf0fa8d4fa8ee85914083aa3e8e18735660",
+            "comment": "Dashboard Card Component for Admin Portals Dashboard which will be hosted inside react-grid-layout. "
+          },
+          {
+            "author": "Raghuraman Krishnamurthy <raghurk@microsoft.com>",
+            "commit": "d02e0b3a839318c81ec472de96793e4810a95f52",
+            "comment": "Add GridList component into the existing Dashboard Card Component"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.13.2 <7.0.0` to `>=6.15.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.4.0",
       "tag": "@uifabric/experiments_v6.4.0",
       "date": "Fri, 08 Jun 2018 18:34:17 GMT",

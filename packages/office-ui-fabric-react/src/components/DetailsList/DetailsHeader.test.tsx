@@ -12,6 +12,10 @@ const _columns: IColumn[] = [
   { key: 'a', name: 'a', fieldName: 'a', minWidth: 200, maxWidth: 400, calculatedWidth: 200, isResizable: true },
   { key: 'b', name: 'b', fieldName: 'a', minWidth: 200, maxWidth: 400, calculatedWidth: 200, isResizable: true }
 ];
+const _columnReorderOptions = {
+  frozenColumnCountFromStart: 1,
+  handleColumnReorder: this._dummyFunction
+};
 
 _selection.setItems(_items);
 
@@ -43,6 +47,7 @@ describe('DetailsHeader', () => {
         layoutMode={DetailsListLayoutMode.fixedColumns}
         columns={_columns}
         onColumnResized={onColumnResized}
+        columnReorderOptions={_columnReorderOptions}
       />
     );
 

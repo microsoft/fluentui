@@ -148,7 +148,7 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
    */
   onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => any;
 
-  /** Map of callback functions related to drag and drop functionality. */
+  /** Map of callback functions related to row drag and drop functionality. */
   dragDropEvents?: IDragDropEvents;
 
   /** Callback for what to render when the item is missing. */
@@ -241,6 +241,22 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
    * On horizontal scroll event listener
    */
   onScroll?: (e?: Event) => void;
+
+  /**
+   * Options for column re-order using drag and drop
+   */
+  columnReorderOptions?: IColumnReorderOptions;
+
+  /**
+   * Optional function which will be called to estimate the height (in pixels) of the given group.
+   *
+   * By default, scrolling through a large virtualized GroupedList will often "jump" due to the order
+   * in which heights are calculated. For more details, see https://github.com/OfficeDev/office-ui-fabric-react/issues/5094
+   *
+   * Pass this prop to ensure the list uses the computed height rather than cached DOM measurements,
+   * avoiding the scroll jumping issue.
+   */
+  getGroupHeight?: (group: IGroup, groupIndex: number) => number;
 }
 
 export interface IColumn {
@@ -434,6 +450,27 @@ export enum ConstrainMode {
    * If specified, constrains the list to the given layout space.
    */
   horizontalConstrained = 1
+}
+
+export interface IColumnReorderOptions {
+  /**
+   * Specifies the number fixed columns from left(0th index)
+   * @default 0
+   */
+  frozenColumnCountFromStart?: number;
+
+  /**
+   * Specifies the number fixed columns from right
+   * @default 0
+   */
+  frozenColumnCountFromEnd?: number;
+
+  /**
+   * Callback to handle the column reorder
+   * draggedIndex is the source column index, that need to be placed in targetIndex
+   */
+  handleColumnReorder: (draggedIndex: number, targetIndex: number) => void;
+
 }
 
 export enum DetailsListLayoutMode {

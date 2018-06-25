@@ -62,8 +62,8 @@ export class Layout extends React.Component<ILayoutProps> {
                 break;
               }
               case CardContentType.CompoundButtonStack: {
-                const { actions } = cardContent.content as ICompoundButtonStackProps;
-                contentArea.push(<CompoundButtonStack actions={actions} />);
+                const { actions, buttonSize } = cardContent.content as ICompoundButtonStackProps;
+                contentArea.push(<CompoundButtonStack actions={actions} buttonSize={buttonSize} />);
                 break;
               }
               case CardContentType.GridList: {

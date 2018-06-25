@@ -136,8 +136,8 @@ $field-error-color: $errorTextColor;
   &:active,
   &:focus,
   &:hover {
-      outline: 0;
-    }
+    outline: 0;
+  }
   &.hasIcon {
     @include ms-padding-right(24px);
   }
@@ -146,12 +146,10 @@ $field-error-color: $errorTextColor;
     background-color: transparent;
     border-color: transparent;
   }
+}
 
-  .field {
-    &::placeholder {
-      color: $field-placeholder-disabled-color;
-    }
-  }
+.field::placeholder {
+  color: $field-placeholder-color;
 }
 
 //= State: A required textfield
@@ -266,7 +264,6 @@ $field-error-color: $errorTextColor;
   }
 }
 
-
 //== Modifier: Multiline textfield
 //
 .root.rootIsMultiline {
@@ -306,7 +303,6 @@ $field-error-color: $errorTextColor;
 }
 
 .root.rootIsUnderlined {
-
   :global(.ms-Label) {
     @include ms-padding-left(12px);
     @include ms-padding-right(0);
@@ -318,7 +314,6 @@ $field-error-color: $errorTextColor;
 }
 
 .root.rootIsMultiline {
-
   .icon {
     @include ms-padding-right(24px);
     padding-bottom: 8px;

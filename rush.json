@@ -26,7 +26,11 @@
     {
       "packageName": "@uifabric/charting",
       "projectFolder": "packages/charting",
-      "versionPolicyName": "lockedMajor",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "@uifabric/dashboard-grid-layout",
+      "projectFolder": "packages/dashboard-grid-layout",
       "shouldPublish": false
     },
     {
@@ -73,7 +77,7 @@
     },
     {
       "packageName": "@uifabric/fabric-website-resources",
-      "projectFolder": "apps/demo",
+      "projectFolder": "apps/fabric-website-resources",
       "versionPolicyName": "lockedMajor",
       "shouldPublish": true
     },
