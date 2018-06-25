@@ -3184,7 +3184,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             {
               align-items: center;
               cursor: pointer;
-              display: inline-flex;
+              display: flex;
               margin-bottom: 0;
               margin-left: -4px;
               margin-right: -4px;
@@ -3340,7 +3340,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             {
               align-items: center;
               cursor: pointer;
-              display: inline-flex;
+              display: flex;
               margin-bottom: 0;
               margin-left: -4px;
               margin-right: -4px;
@@ -3496,7 +3496,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             {
               align-items: center;
               cursor: pointer;
-              display: inline-flex;
+              display: flex;
               margin-bottom: 0;
               margin-left: -4px;
               margin-right: -4px;
