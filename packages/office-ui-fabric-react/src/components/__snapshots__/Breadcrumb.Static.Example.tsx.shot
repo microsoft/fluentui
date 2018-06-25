@@ -163,6 +163,10 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                 disabled={undefined}
                 onClick={[Function]}
                 onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseUp={[Function]}
                 role="button"
                 type="button"
               >
