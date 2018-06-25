@@ -43,6 +43,7 @@ const BreadcrumbStyles = {
   itemLink: {
     fontSize: FontSizes.size18,
     fontWeight: 400,
+    color: NeutralColors.gray130,
     selectors: {
       '&:last-child': {
         fontWeight: 600
