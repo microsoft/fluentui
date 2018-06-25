@@ -126,6 +126,20 @@ const LabelStyles = {
     fontWeight: FontWeights.semibold
   }
 };
+const ToggleStyles = {
+  pill: {
+    width: '2em',
+    height: '1em',
+    borderRadius: '.5em'
+  },
+  thumb: {
+    width: '.6em',
+    height: '.6em',
+    borderRadius: '.6em',
+    borderColor: 'transparent',
+    borderWidth: 0
+  }
+};
 
 // Roll up all style overrides in a single "Fluent theme" object
 export const FluentStyles = {
@@ -155,5 +169,8 @@ export const FluentStyles = {
   },
   Label: {
     styles: LabelStyles
+  },
+  Toggle: {
+    styles: ToggleStyles
   }
 };

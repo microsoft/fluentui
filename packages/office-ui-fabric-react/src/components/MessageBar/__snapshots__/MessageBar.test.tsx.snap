@@ -5,6 +5,7 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
   aria-live="polite"
   className=
       ms-MessageBar
+      ms-MessageBar-multiline
       {
         background: #f4f4f4;
         box-sizing: border-box;
@@ -97,7 +98,7 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
     </div>
     <div
       className=
-          ms-MessageBar-Text
+          ms-MessageBar-text
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -123,7 +124,7 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
       <span
         aria-live="polite"
         className=
-
+            ms-MessageBar-innerText
             {
               line-height: 16px;
             }

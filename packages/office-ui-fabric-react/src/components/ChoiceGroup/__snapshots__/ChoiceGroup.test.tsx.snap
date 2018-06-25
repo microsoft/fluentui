@@ -43,10 +43,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             & .ms-Label {
               display: inline-block;
               font-size: 14px;
-              padding-bottom: 0;
               padding-left: 26px;
-              padding-right: 0;
-              padding-top: 0;
             }
       >
         <div
@@ -159,10 +156,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             & .ms-Label {
               display: inline-block;
               font-size: 14px;
-              padding-bottom: 0;
               padding-left: 26px;
-              padding-right: 0;
-              padding-top: 0;
             }
       >
         <div
@@ -274,10 +268,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             & .ms-Label {
               display: inline-block;
               font-size: 14px;
-              padding-bottom: 0;
               padding-left: 26px;
-              padding-right: 0;
-              padding-top: 0;
             }
       >
         <div

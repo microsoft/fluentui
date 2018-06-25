@@ -1,6 +1,38 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 20 Jun 2018 23:33:29 GMT and should not be manually modified.
+This log was last generated on Mon, 25 Jun 2018 10:28:13 GMT and should not be manually modified.
+
+## 6.19.0
+Mon, 25 Jun 2018 10:28:13 GMT
+
+### Minor changes
+
+- Add a getGroupHeight prop to GroupedList + DetailsList
+- GroupedList: add expandCollapseButtonProps to GroupHeader so an aria-label can be included"
+
+### Patches
+
+- Only apply padding to label if it's not an image/icon type
+
+## 6.18.2
+Fri, 22 Jun 2018 16:21:15 GMT
+
+### Patches
+
+- Buttons: Focusable disabled buttons no longer execute on ENTER/SPACE
+- MessageBar: add class names for backwards compatibility
+- Pivot: fixing a typing issue when used with proxies.
+- Remove space from personaInitialsColorToHexCode magenta case
+- Accessibility: using the down arrow key to navigate the command bar currently skips over the search box - added aria-hidden to the div containing the search icon
+- TextField: placeholder text should be neutralSeconary.
+
+## 6.18.1
+Thu, 21 Jun 2018 19:27:25 GMT
+
+### Patches
+
+- Added column reorder with DragAndDrop support in Details List. As part of this feature, a new component DetailsColumn has been added inside the header, for each  column.  An optional new prop(ColumnReorderOptions) has been added to DetailsList to handle the column reorder. Have added column level drag subscriptions to be able to drag the columns, and added one header level subscription, to handle the drops. All the drag drop events are being handled at header level.
+- Add high contrast styles to disabled contextual menu items
 
 ## 6.18.0
 Wed, 20 Jun 2018 23:33:29 GMT
