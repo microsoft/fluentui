@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 22 Jun 2018 16:21:15 GMT and should not be manually modified.
+This log was last generated on Mon, 25 Jun 2018 10:28:13 GMT and should not be manually modified.
+
+## 6.19.0
+Mon, 25 Jun 2018 10:28:13 GMT
+
+### Minor changes
+
+- Add a getGroupHeight prop to GroupedList + DetailsList
+- GroupedList: add expandCollapseButtonProps to GroupHeader so an aria-label can be included"
+
+### Patches
+
+- Only apply padding to label if it's not an image/icon type
 
 ## 6.18.2
 Fri, 22 Jun 2018 16:21:15 GMT
