@@ -92,7 +92,7 @@ const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGr
       selectors: {
         ':before': [
           disabled && {
-            backgroundColor: 'transparent',
+            backgroundColor: NeutralColors.white,
             borderColor: NeutralColors.gray60
           }
         ],
