@@ -15,8 +15,5 @@ export const overflowButtonStyles: IButtonStyles = {
     height: '32px',
     width: '0',
     minWidth: '0px'
-  },
-  flexContainer: {
-    backgroundColor: 'black'
   }
 };
