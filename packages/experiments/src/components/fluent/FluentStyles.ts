@@ -147,8 +147,7 @@ const ToggleStyles = {
     width: '.6em',
     height: '.6em',
     borderRadius: '.6em',
-    borderColor: 'transparent',
-    borderWidth: 0
+    borderColor: 'transparent'
   }
 };
 
