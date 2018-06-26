@@ -39,7 +39,7 @@ export interface ILineChartProps {
   yAxisTickCount?: number;
 
   /**
-   * Colors from which to select the color of each line.
+   * Color for all the lines in the chart.
    */
   color?: string;
 
