@@ -23,6 +23,7 @@ export type IViewProps<TProps, TStyles> = TProps & {
   classNames: IClassNames<TStyles>;
 };
 
+// tslint:disable-next-line:no-any
 const augmentations: any = {};
 
 export interface IComponentOptions<TProps, TStyles, TStatics> {
@@ -68,6 +69,7 @@ export function createComponent<TProps, TStyles, TStatics = {}>(
               ...(processedProps as {}),
               classNames: mergeStyleSets(
                 evaluateStyle(styleProps, componentStyles),
+                // tslint:disable-next-line:no-any
                 evaluateStyle(styleProps, styles as any)
               )
             });
