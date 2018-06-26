@@ -60,7 +60,7 @@ storiesOf('OverflowSet', module)
     />
   ));
 
-storiesOf('OverflowSet varient', module)
+storiesOf('OverflowSet variant', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener

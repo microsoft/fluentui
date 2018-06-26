@@ -29,6 +29,12 @@ storiesOf('Rating', module)
       max={ 5 }
       rating={ 2 }
     />
+  )).add('Allow Zero', () => (
+    <Rating
+      allowZeroStars={ true }
+      max={ 5 }
+      rating={ 0 }
+    />
   )).add('Large', () => (
     <Rating
       min={ 1 }

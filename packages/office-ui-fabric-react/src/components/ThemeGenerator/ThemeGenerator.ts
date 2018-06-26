@@ -1,19 +1,11 @@
-import {
-  IColor,
-  getColorFromString
-} from '../../utilities/color/colors';
-import {
-  isValidShade,
-  getShade,
-  getBackgroundShade
-} from '../../utilities/color/shades';
+import { IColor, getColorFromString } from '../../utilities/color/colors';
+import { isValidShade, getShade, getBackgroundShade } from '../../utilities/color/shades';
 import { format } from '../../Utilities';
 
 import { IThemeSlotRule } from './IThemeSlotRule';
 import { IThemeRules } from './IThemeRules';
 
 export class ThemeGenerator {
-
   /* Sets an IThemeSlotRule to the given color and cascades it to the rest of the theme, updating other IThemeSlotRules in the theme that
    *   inherit from that color.
    * isInverted: whether it's a dark theme or not, which affects the algorithm used to generate shades
@@ -98,10 +90,12 @@ export class ThemeGenerator {
       if (slotRules.hasOwnProperty(ruleName)) {
         const rule: IThemeSlotRule = slotRules[ruleName];
         const camelCasedName = rule.name.charAt(0).toLowerCase() + rule.name.slice(1);
-        output += format(sassVarTemplate,
+        output += format(
+          sassVarTemplate,
           camelCasedName,
           camelCasedName,
-          rule.color ? rule.color.str : rule.value || '');
+          rule.color ? rule.color.str : rule.value || ''
+        );
       }
     }
     return output;
@@ -131,9 +125,7 @@ export class ThemeGenerator {
         if (rule.color && rule.color.a && rule.color.a !== 100) {
           outputColor += String(rule.color.a.toString(16));
         }
-        output += format(psVarTemplate,
-          camelCasedName,
-          outputColor);
+        output += format(psVarTemplate, camelCasedName, outputColor);
       }
     }
     return '@{\n' + output + '}';
@@ -155,8 +147,14 @@ export class ThemeGenerator {
       return;
     }
 
-    if (overwriteCustomColor || !rule.color || !rule.isCustomized || !rule.inherits) { // set the rule's color under these conditions
-      if ((overwriteCustomColor || !rule.isCustomized) && !isCustomization && rule.inherits && isValidShade(rule.asShade)) {
+    if (overwriteCustomColor || !rule.color || !rule.isCustomized || !rule.inherits) {
+      // set the rule's color under these conditions
+      if (
+        (overwriteCustomColor || !rule.isCustomized) &&
+        !isCustomization &&
+        rule.inherits &&
+        isValidShade(rule.asShade)
+      ) {
         // it's inheriting by shade
         if (rule.isBackgroundShade) {
           rule.color = getBackgroundShade(color, rule.asShade!, isInverted)!;

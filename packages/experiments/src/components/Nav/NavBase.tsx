@@ -1,11 +1,12 @@
 /* tslint:disable */
-import { INavLink, INavProps } from './Nav.types';
+import { INavLink, INavProps, INavState } from './Nav.types';
 import { INav } from 'office-ui-fabric-react/lib/components/Nav';
-import { INavState } from 'office-ui-fabric-react/lib/components/Nav/Nav.base';
 import * as React from 'react';
 /* tslint:enable */
 
 export class NavBase extends React.Component<INavProps, INavState> implements INav {
+  protected _hasAtleastOneHiddenLink = false;
+
   constructor(props: INavProps) {
     super(props);
   }
@@ -49,7 +50,35 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     }
 
     // check if the link or any of the child link is selected
-    return link.key === selectedKey ||
-      (includeChildren && this.isChildLinkSelected(link));
+    return link.key === selectedKey || (includeChildren && this.isChildLinkSelected(link));
+  }
+
+  protected getLinkText(link: INavLink, showMore?: boolean): string | undefined {
+    if (!link) {
+      return undefined;
+    }
+
+    if (link.isShowMoreLink && !showMore && link.alternateText) {
+      // if the link is show more/less link, based on the showMore state; return "Show more" localized text
+      return link.alternateText;
+    }
+
+    return link.name;
+  }
+
+  // find if atleast one child link is visible using isHidden property
+  // showMore flag will overwrite isHidden property
+  protected hasAtleastOneVisibleLink(links: INavLink[], showMore?: boolean): boolean {
+    if (!links || links.length === 0) {
+      return false;
+    }
+
+    return (
+      links.some(
+        (link: INavLink): boolean => {
+          return !link.isHidden;
+        }
+      ) || !!showMore
+    );
   }
 }

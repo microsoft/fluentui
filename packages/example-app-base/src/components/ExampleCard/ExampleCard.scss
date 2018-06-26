@@ -25,6 +25,7 @@
     .ms-Button.ExampleCard-codeButton {
       @include ms-margin-right(0);
       background: none;
+      background-color: transparent;
       border: 1px solid $ms-color-neutralTertiary;
       border-bottom: 0;
       border-top-left-radius: 4px;

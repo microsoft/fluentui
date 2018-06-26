@@ -46,7 +46,6 @@ export interface IFileTypeIconOptions {
  * @param options
  */
 export function getFileTypeIconProps(options: IFileTypeIconOptions): { iconName: string } {
-
   // First, obtain the base name of the icon using the extension or type.
   let iconBaseName: string = GENERIC_FILE;
 
@@ -74,7 +73,6 @@ export function getFileTypeIconProps(options: IFileTypeIconOptions): { iconName:
   let suffix: string = _getFileTypeIconSuffix(size, options.imageFileType);
 
   return { iconName: iconBaseName + suffix };
-
 }
 
 function _getFileTypeIconNameFromExtension(extension: string): string {
@@ -101,7 +99,6 @@ function _getFileTypeIconNameFromExtension(extension: string): string {
 }
 
 function _getFileTypeIconSuffix(size: FileTypeIconSize, imageFileType: ImageFileType = 'svg'): string {
-
   let devicePixelRatio: number = window.devicePixelRatio;
   let devicePixelRatioSuffix = ''; // Default is 1x
 
@@ -116,7 +113,7 @@ function _getFileTypeIconSuffix(size: FileTypeIconSize, imageFileType: ImageFile
     // To look good, PNGs should use a different image for higher device pixel ratios
     if (1 < devicePixelRatio && devicePixelRatio <= 1.5) {
       // Currently missing 1.5x icons for size 20, snap to 2x for now
-      devicePixelRatioSuffix = (size === 20) ? '_2x' : '_1.5x';
+      devicePixelRatioSuffix = size === 20 ? '_2x' : '_1.5x';
     } else if (1.5 < devicePixelRatio && devicePixelRatio <= 2) {
       devicePixelRatioSuffix = '_2x';
     } else if (2 < devicePixelRatio && devicePixelRatio <= 3) {

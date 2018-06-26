@@ -65,7 +65,7 @@ function personaInitialsColorToHexCode(personaInitialsColor: PersonaInitialsColo
     case PersonaInitialsColor.pink:
       return '#FF0097';
     case PersonaInitialsColor.magenta:
-      return ' #7E3878';
+      return '#7E3878';
     case PersonaInitialsColor.purple:
       return '#603CBA';
     case PersonaInitialsColor.black:
@@ -82,13 +82,13 @@ function personaInitialsColorToHexCode(personaInitialsColor: PersonaInitialsColo
 }
 
 export function initialsColorPropToColorCode(props: IPersonaProps): string {
-  const { primaryText } = props;
+  const { primaryText, text } = props;
   let { initialsColor } = props;
   let initialsColorCode: string;
   if (typeof initialsColor === 'string') {
     initialsColorCode = initialsColor;
   } else {
-    initialsColor = initialsColor !== undefined ? initialsColor : getInitialsColorFromName(primaryText);
+    initialsColor = initialsColor !== undefined ? initialsColor : getInitialsColorFromName(text || primaryText);
     initialsColorCode = personaInitialsColorToHexCode(initialsColor);
   }
 

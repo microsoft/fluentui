@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { IRenderFunction } from '../../Utilities';
+import { IKeytipProps } from '../../Keytip';
 
 export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
@@ -53,4 +54,9 @@ export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
    * Optional custom renderer for the pivot item link
    */
   onRenderItemLink?: IRenderFunction<IPivotItemProps>;
+
+  /**
+   * Optional keytip for this PivotItem
+   */
+  keytipProps?: IKeytipProps;
 }

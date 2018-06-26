@@ -1,29 +1,29 @@
-import {
-  IDialogContentStyleProps,
-  IDialogContentStyles,
-} from './DialogContent.types';
-import {
-  FontWeights,
-} from '../../Styling';
+import { IDialogContentStyleProps, IDialogContentStyles } from './DialogContent.types';
+import { FontWeights, getGlobalClassNames } from '../../Styling';
 
-export const getStyles = (
-  props: IDialogContentStyleProps
-): IDialogContentStyles => {
-  const {
-    className,
-    theme,
-    isLargeHeader,
-    isClose,
-    hidden,
-    isMultiline,
-  } = props;
+const GlobalClassNames = {
+  contentLgHeader: 'ms-Dialog-lgHeader',
+  close: 'ms-Dialog--close',
+  subText: 'ms-Dialog-subText',
+  header: 'ms-Dialog-header',
+  headerLg: 'ms-Dialog--lgHeader',
+  button: 'ms-Dialog-button ms-Dialog-button--close',
+  inner: 'ms-Dialog-inner',
+  content: 'ms-Dialog-content',
+  title: 'ms-Dialog-title'
+};
+
+export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles => {
+  const { className, theme, isLargeHeader, isClose, hidden, isMultiline } = props;
 
   const { palette, fonts } = theme;
 
-  return ({
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
+  return {
     content: [
-      isLargeHeader && 'ms-Dialog-lgHeader',
-      isClose && 'ms-Dialog--close',
+      isLargeHeader && classNames.contentLgHeader,
+      isClose && classNames.close,
       {
         flexGrow: 1
       },
@@ -31,7 +31,7 @@ export const getStyles = (
     ],
 
     subText: [
-      'ms-Dialog-subText',
+      classNames.subText,
       isLargeHeader ? fonts.medium : fonts.small,
       {
         margin: '0 0 20px 0',
@@ -39,48 +39,47 @@ export const getStyles = (
         color: palette.neutralPrimary,
         lineHeight: '1.5',
         wordWrap: 'break-word',
-        fontWeight: FontWeights.semilight,
-      },
+        fontWeight: FontWeights.semilight
+      }
     ],
 
     header: [
-      'ms-Dialog-header',
+      classNames.header,
       {
         position: 'relative',
         width: '100%',
-        boxSizing: 'border-box',
+        boxSizing: 'border-box'
       },
       isLargeHeader && [
-        'ms-Dialog--lgHeader',
+        classNames.headerLg,
         {
-          backgroundColor: palette.themePrimary,
+          backgroundColor: palette.themePrimary
         }
       ],
-      isClose && 'ms-Dialog--close',
+      isClose && classNames.close
     ],
 
     button: [
-      'ms-Dialog-button',
-      'ms-Dialog-button--close',
+      classNames.button,
       hidden && {
         selectors: {
           '.ms-Icon.ms-Icon--Cancel': {
             color: palette.neutralSecondary,
-            fontSize: '16px',
+            fontSize: '16px'
           }
         }
       }
     ],
 
     inner: [
-      'ms-Dialog-inner',
+      classNames.inner,
       {
-        padding: isMultiline ? '0 20px 20px' : '0 28px 20px',
+        padding: isMultiline ? '0 20px 20px' : '0 28px 20px'
       }
     ],
 
     innerContent: [
-      'ms-Dialog-content',
+      classNames.content,
       {
         position: 'relative',
         width: '100%',
@@ -91,7 +90,7 @@ export const getStyles = (
 
             selectors: {
               '&:last-child': {
-                marginBottom: '0',
+                marginBottom: '0'
               }
             }
           }
@@ -101,22 +100,22 @@ export const getStyles = (
     ],
 
     title: [
-      'ms-Dialog-title',
+      classNames.title,
       {
         color: palette.neutralPrimary,
         margin: '0',
-        padding: '20px 36px 20px 28px',
+        padding: '20px 36px 20px 28px'
       },
       fonts.xLarge,
       isLargeHeader && [
         {
           color: palette.white,
           marginBottom: '8px',
-          padding: '26px 28px 28px',
+          padding: '26px 28px 28px'
         },
         fonts.xxLarge
       ],
-      isMultiline && fonts.xxLarge,
+      isMultiline && fonts.xxLarge
     ],
 
     topButton: [
@@ -131,10 +130,10 @@ export const getStyles = (
 
         selectors: {
           '> *': {
-            flex: '0 0 auto',
+            flex: '0 0 auto'
           }
         }
       }
-    ],
-  });
+    ]
+  };
 };

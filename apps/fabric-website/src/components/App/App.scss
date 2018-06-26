@@ -74,10 +74,14 @@
       @include ms-left($Nav-width + 18px);
     }
   }
-}
 
-@media only screen and (max-width: $uhf-screen-min-mobile) {
-  .App {
-    padding: 0;
+  @media only screen and (max-width: $uhf-screen-min-mobile) {
+    .App {
+      padding: 0;
+    }
+
+    .App-nav {
+      display: none;
+    }
   }
 }

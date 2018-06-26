@@ -1,23 +1,15 @@
-import { Customizations } from '@uifabric/utilities/lib/Customizations';
-import {
-  IPalette,
-  ISemanticColors,
-  ITheme,
-  IPartialTheme
-} from '../interfaces/index';
-import {
-  DefaultFontStyles
-} from './DefaultFontStyles';
-import {
-  DefaultPalette
-} from './DefaultPalette';
+import { Customizations } from '@uifabric/utilities';
+import { IPalette, ISemanticColors, ITheme, IPartialTheme } from '../interfaces/index';
+import { DefaultFontStyles } from './DefaultFontStyles';
+import { DefaultPalette } from './DefaultPalette';
 import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
 
 let _theme: ITheme = {
   palette: DefaultPalette,
   semanticColors: _makeSemanticColorsFromPalette(DefaultPalette, false, false),
   fonts: DefaultFontStyles,
-  isInverted: false
+  isInverted: false,
+  disableGlobalClassNames: false
 };
 let _onThemeChangeCallbacks: Array<(theme: ITheme) => void> = [];
 
@@ -108,7 +100,10 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
   }
 
   // mix in custom overrides with good slots first, since custom overrides might be used in fixing deprecated slots
-  let newSemanticColors = { ..._makeSemanticColorsFromPalette(newPalette, !!theme.isInverted, depComments), ...theme.semanticColors };
+  let newSemanticColors = {
+    ..._makeSemanticColorsFromPalette(newPalette, !!theme.isInverted, depComments),
+    ...theme.semanticColors
+  };
 
   return {
     palette: newPalette,
@@ -117,16 +112,17 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
       ...theme.fonts
     },
     semanticColors: newSemanticColors,
-    isInverted: !!theme.isInverted
-  } as ITheme;
+    isInverted: !!theme.isInverted,
+    disableGlobalClassNames: !!theme.disableGlobalClassNames
+  };
 }
 
 // Generates all the semantic slot colors based on the Fabric palette.
 // We'll use these as fallbacks for semantic slots that the passed in theme did not define.
-// This does NOT fix deprecated slots.
 function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depComments: boolean): ISemanticColors {
   let toReturn: ISemanticColors = {
     bodyBackground: p.white,
+    bodyFrameBackground: p.white,
     bodyText: p.neutralPrimary,
     bodyTextChecked: p.black,
     bodySubtext: p.neutralSecondary,
@@ -168,7 +164,6 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     buttonTextCheckedHovered: p.black,
 
     menuItemBackgroundHovered: p.neutralLighter,
-    menuItemBackgroundChecked: p.neutralLight,
     menuIcon: p.themePrimary,
     menuHeader: p.themePrimary,
 
@@ -178,15 +173,15 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     listItemBackgroundChecked: p.neutralLight,
     listItemBackgroundCheckedHovered: p.neutralQuaternaryAlt,
 
+    listHeaderBackgroundHovered: p.neutralLighter,
+    listHeaderBackgroundPressed: p.neutralLight,
+
     link: p.themePrimary,
     linkHovered: p.themeDarker,
 
-    // Deprecated slots, fixed by _fixDeprecatedSlots()
-    /**
-     * Deprecated. Use `listText` instead.
-     * @deprecated
-     */
-    listTextColor: ''
+    // Deprecated slots, second pass by _fixDeprecatedSlots() later for self-referential slots
+    listTextColor: '',
+    menuItemBackgroundChecked: p.neutralLight
   };
 
   return _fixDeprecatedSlots(toReturn, depComments!);
@@ -200,5 +195,6 @@ function _fixDeprecatedSlots(s: ISemanticColors, depComments: boolean): ISemanti
   }
 
   s.listTextColor = s.listText + dep;
+  s.menuItemBackgroundChecked += dep;
   return s;
 }

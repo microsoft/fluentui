@@ -1,4 +1,3 @@
-
 let path = require('path');
 let resources = require('../../scripts/tasks/webpack-resources');
 const devServerConfig = {
@@ -8,7 +7,7 @@ const devServerConfig = {
 
 const outputConfig = {
   filename: 'fabric-sitev5.js'
-}
+};
 
 module.exports = resources.createServeConfig({
   entry: './src/root.tsx',
@@ -18,7 +17,7 @@ module.exports = resources.createServeConfig({
   devServer: devServerConfig,
 
   externals: {
-    'react': 'React',
+    react: 'React',
     'react-dom': 'ReactDOM'
   },
 
@@ -31,4 +30,3 @@ module.exports = resources.createServeConfig({
     }
   }
 });
-

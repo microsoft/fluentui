@@ -112,7 +112,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   /**
    * Function that specifies how arbitrary text entered into the well is handled.
    */
-  createGenericItem?: (input: string, ValidationState: ValidationState) => ISuggestionModel<T>;
+  createGenericItem?: (input: string, ValidationState: ValidationState) => ISuggestionModel<T> | T;
   /**
    * Aria label for the "X" button in the selected item component.
    * @default ''
@@ -135,12 +135,19 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * A callback to override the default behavior of adding the selected suggestion on dismiss.
    */
   onDismiss?: (ev?: any, selectedItem?: T) => void;
+  /**
+   * Adds an additional alert for the currently selected suggestion. This prop should be set to true for IE11 and below, as it
+   * enables proper screen reader behavior for each suggestion (since aria-activedescendant does not work with IE11).
+   * It should not be set for modern browsers (Edge, Chrome).
+   * @default false
+   */
+  enableSelectedSuggestionAlert?: boolean;
 }
 
 export interface IBasePickerSuggestionsProps {
   /**
-  * Function that specifies what to render when no results are found.
-  */
+   * Function that specifies what to render when no results are found.
+   */
   onRenderNoResultFound?: IRenderFunction<void>;
   /**
    * The text that should appear at the top of the suggestion box.
@@ -219,4 +226,10 @@ export interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement>
    * Screen reader label to apply to an input element.
    */
   'aria-label'?: string;
+  /**
+   * The default value to be visible when the autofill first created.
+   * This is different than placeholder text because the placeholder text will disappear and re-appear. This
+   * text persists until deleted or changed.
+   */
+  defaultVisibleValue?: string;
 }

@@ -1,21 +1,25 @@
 import { ILayerStyleProps, ILayerStyles } from './Layer.types';
+import { ZIndexes, getGlobalClassNames } from '../../Styling';
 
-export const getStyles = (
-  props: ILayerStyleProps
-): ILayerStyles => {
-  const {
-    className,
-    isNotHost
-  } = props;
+const GlobalClassNames = {
+  root: 'ms-Layer',
+  rootNoHost: 'ms-Layer--fixed',
+  content: 'ms-Layer-content'
+};
 
-  return ({
+export const getStyles = (props: ILayerStyleProps): ILayerStyles => {
+  const { className, isNotHost, theme } = props;
+
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
+  return {
     root: [
-      'ms-Layer',
+      classNames.root,
       isNotHost && [
-        'ms-Layer--fixed',
+        classNames.rootNoHost,
         {
           position: 'fixed',
-          zIndex: 1000000,
+          zIndex: ZIndexes.Layer,
           top: 0,
           left: 0,
           width: '100vw',
@@ -26,10 +30,10 @@ export const getStyles = (
       className
     ],
     content: [
-      'ms-Layer-content',
+      classNames.content,
       {
         visibility: 'visible'
       }
     ]
-  });
+  };
 };

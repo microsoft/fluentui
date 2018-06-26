@@ -2,6 +2,25 @@ import * as React from 'react';
 import { IRectangle, IRenderFunction } from '../../Utilities';
 import { List } from './List';
 
+export const enum ScrollToMode {
+  /**
+   * Does not make any consideration to where in the viewport the item should align to.
+   */
+  auto,
+  /**
+   * Attempts to scroll the list so the top of the desired item is aligned with the top of the viewport.
+   */
+  top,
+  /**
+   * Attempts to scroll the list so the bottom of the desired item is aligned with the bottom of the viewport.
+   */
+  bottom,
+  /**
+   * Attempts to scroll the list so the desired item is in the exact center of the viewport.
+   */
+  center
+}
+
 export interface IList {
   /**
    * Force the component to update.
@@ -17,8 +36,15 @@ export interface IList {
    *
    * @param index Index of item to scroll to
    * @param measureItem Optional callback to measure the height of an individual item
+   * @param scrollToMode Optional defines the behavior of the scrolling alignment. Defaults to auto.
+   *  Note: The scrollToMode requires the measureItem callback is provided to function.
    */
-  scrollToIndex: (index: number, measureItem?: (itemIndex: number) => number) => void;
+  scrollToIndex: (index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode) => void;
+
+  /**
+   * Get the start index of the page that is currently in view
+   */
+  getStartItemIndexInView: () => number;
 }
 
 export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> {
@@ -99,10 +125,10 @@ export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> 
   renderCount?: number;
 
   /**
-  * Boolean value to enable render page caching. This is an experimental performance optimization
-  * that is off by default.
-  * @defaultValue false
-  */
+   * Boolean value to enable render page caching. This is an experimental performance optimization
+   * that is off by default.
+   * @defaultValue false
+   */
   usePageCache?: boolean;
 
   /**
@@ -135,6 +161,7 @@ export interface IPage {
   top: number;
   height: number;
   data?: any;
+  isSpacer?: boolean;
 }
 
 export interface IPageProps extends React.HTMLAttributes<HTMLDivElement>, React.Props<HTMLDivElement> {

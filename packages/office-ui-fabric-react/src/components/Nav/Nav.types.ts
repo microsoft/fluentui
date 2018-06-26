@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
-import { IRenderFunction, IStyleFunction } from '../../Utilities';
+import { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IIconProps } from '../Icon/Icon.types';
 
 export interface INav {
@@ -23,7 +23,7 @@ export interface INavProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
-  getStyles?: IStyleFunction<INavStyleProps, INavStyles>;
+  styles?: IStyleFunctionOrObject<INavStyleProps, INavStyles>;
 
   /**
    * Theme provided by HOC.
@@ -155,7 +155,8 @@ export interface INavLink {
   icon?: string;
 
   /**
-   * Classname to apply to the icon link.
+   * Deprecated. Use iconProps.className instead.
+   * @deprecated
    */
   iconClassName?: string;
 
@@ -305,9 +306,9 @@ export interface INavStyles {
   linkText: IStyle;
 
   /**
-  * Style set for the link element extending the
-  * root style set for ActionButton component.
-  */
+   * Style set for the link element extending the
+   * root style set for ActionButton component.
+   */
   link: IStyle;
 
   /**

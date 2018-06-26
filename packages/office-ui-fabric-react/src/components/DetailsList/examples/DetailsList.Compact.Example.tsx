@@ -1,16 +1,12 @@
 import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import {
-  DetailsList,
-  DetailsListLayoutMode,
-  Selection
-} from 'office-ui-fabric-react/lib/DetailsList';
+import { DetailsList, DetailsListLayoutMode, Selection } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 
 const _items: {
-  key: number,
-  name: string,
-  value: number
+  key: number;
+  name: string;
+  value: number;
 }[] = [];
 
 const _columns = [
@@ -29,13 +25,16 @@ const _columns = [
     minWidth: 100,
     maxWidth: 200,
     isResizable: true
-  },
+  }
 ];
 
-export class DetailsListCompactExample extends React.Component<{}, {
-  items: {}[];
-  selectionDetails: string;
-}> {
+export class DetailsListCompactExample extends React.Component<
+  {},
+  {
+    items: {}[];
+    selectionDetails: string;
+  }
+> {
   private _selection: Selection;
 
   constructor(props: {}) {
@@ -67,21 +66,18 @@ export class DetailsListCompactExample extends React.Component<{}, {
 
     return (
       <div>
-        <div>{ selectionDetails }</div>
-        <TextField
-          label='Filter by name:'
-          onChanged={ this._onChanged }
-        />
-        <MarqueeSelection selection={ this._selection }>
+        <div>{selectionDetails}</div>
+        <TextField label="Filter by name:" onChanged={this._onChanged} />
+        <MarqueeSelection selection={this._selection}>
           <DetailsList
-            items={ items }
-            columns={ _columns }
-            setKey='set'
-            layoutMode={ DetailsListLayoutMode.fixedColumns }
-            selection={ this._selection }
-            selectionPreservedOnEmptyClick={ true }
-            onItemInvoked={ this._onItemInvoked }
-            compact={ true }
+            items={items}
+            columns={_columns}
+            setKey="set"
+            layoutMode={DetailsListLayoutMode.fixedColumns}
+            selection={this._selection}
+            selectionPreservedOnEmptyClick={true}
+            onItemInvoked={this._onItemInvoked}
+            compact={true}
           />
         </MarqueeSelection>
       </div>
@@ -103,7 +99,7 @@ export class DetailsListCompactExample extends React.Component<{}, {
 
   private _onChanged = (text: any): void => {
     this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items });
-  }
+  };
 
   private _onItemInvoked(item: any): void {
     alert(`Item invoked: ${item.name}`);

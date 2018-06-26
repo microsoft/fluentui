@@ -1,9 +1,5 @@
 import { styled } from '../../Utilities';
-import {
-  IScrollablePaneProps,
-  IScrollablePaneStyleProps,
-  IScrollablePaneStyles
-} from './ScrollablePane.types';
+import { IScrollablePaneProps, IScrollablePaneStyleProps, IScrollablePaneStyles } from './ScrollablePane.types';
 import { ScrollablePaneBase } from './ScrollablePane.base';
 import { getStyles } from './ScrollablePane.styles';
 

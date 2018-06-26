@@ -15,6 +15,7 @@
 
   @include high-contrast {
     background: none;
+    background-color: transparent;
   }
 }
 
@@ -42,5 +43,6 @@
 
   @include high-contrast {
     background: none;
+    background-color: transparent;
   }
 }

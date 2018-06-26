@@ -22,7 +22,7 @@ describe('DatePicker', () => {
   });
 
   it('should not open DatePicker when disabled, with label', () => {
-    const wrapper = mount(<DatePicker disabled label='label' />);
+    const wrapper = mount(<DatePicker disabled label="label" />);
     wrapper.find('i').simulate('click');
     expect(wrapper.state('isDatePickerShown')).toBe(false);
   });
@@ -69,16 +69,16 @@ describe('DatePicker', () => {
 
     const datePicker = shallow(
       <DatePicker
-        isMonthPickerVisible={ false }
-        showMonthPickerAsOverlay={ true }
-        value={ value }
-        today={ today }
-        firstDayOfWeek={ 2 }
-        highlightCurrentMonth={ true }
-        showWeekNumbers={ true }
-        firstWeekOfYear={ FirstWeekOfYear.FirstFullWeek }
-        showGoToToday={ false }
-        dateTimeFormatter={ dateTimeFormatter }
+        isMonthPickerVisible={false}
+        showMonthPickerAsOverlay={true}
+        value={value}
+        today={today}
+        firstDayOfWeek={2}
+        highlightCurrentMonth={true}
+        showWeekNumbers={true}
+        firstWeekOfYear={FirstWeekOfYear.FirstFullWeek}
+        showGoToToday={false}
+        dateTimeFormatter={dateTimeFormatter}
       />
     );
     datePicker.setState({ isDatePickerShown: true });
@@ -145,38 +145,9 @@ describe('DatePicker', () => {
         'November',
         'December'
       ],
-      shortMonths: [
-        'Jan',
-        'Feb',
-        'Mar',
-        'Apr',
-        'May',
-        'Jun',
-        'Jul',
-        'Aug',
-        'Sep',
-        'Oct',
-        'Nov',
-        'Dec'
-      ],
-      days: [
-        'Sunday',
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday'
-      ],
-      shortDays: [
-        'S',
-        'M',
-        'T',
-        'W',
-        'T',
-        'F',
-        'S'
-      ],
+      shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
       goToToday: 'Go to today',
       isOutOfBoundsErrorMessage: 'out of bounds'
     };
@@ -184,13 +155,8 @@ describe('DatePicker', () => {
 
     beforeEach(() => {
       datePicker = mount(
-        <DatePicker
-          allowTextInput={ true }
-          minDate={ minDate }
-          maxDate={ maxDate }
-          value={ defaultDate }
-          strings={ strings }
-        />);
+        <DatePicker allowTextInput={true} minDate={minDate} maxDate={maxDate} value={defaultDate} strings={strings} />
+      );
     });
 
     afterEach(() => {
@@ -199,13 +165,15 @@ describe('DatePicker', () => {
 
     it('should throw validation error for date outside boundary', () => {
       // before minDate
-      datePicker.find('input')
+      datePicker
+        .find('input')
         .simulate('change', { target: { value: 'Jan 1 2010' } })
         .simulate('blur');
       expect(datePicker.state('errorMessage')).toBe('out of bounds');
 
       // after maxDate
-      datePicker.find('input')
+      datePicker
+        .find('input')
         .simulate('change', { target: { value: 'Jan 1 2020' } })
         .simulate('blur');
       expect(datePicker.state('errorMessage')).toBe('out of bounds');
@@ -213,13 +181,15 @@ describe('DatePicker', () => {
 
     it('should not throw validation error for date inside boundary', () => {
       // in boundary
-      datePicker.find('input')
+      datePicker
+        .find('input')
         .simulate('change', { target: { value: 'Dec 16 2017' } })
         .simulate('blur');
       expect(datePicker.state('errorMessage')).toBeFalsy();
 
       // on boundary
-      datePicker.find('input')
+      datePicker
+        .find('input')
         .simulate('change', { target: { value: 'Jan 1 2017' } })
         .simulate('blur');
       expect(datePicker.state('errorMessage')).toBeFalsy();

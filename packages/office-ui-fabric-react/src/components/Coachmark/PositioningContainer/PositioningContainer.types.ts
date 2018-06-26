@@ -1,26 +1,15 @@
 import * as React from 'react';
 import { PositioningContainer } from './PositioningContainer';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
-import {
-  IPoint,
-  IRectangle
-} from '../../../Utilities';
-import { ICalloutPositon } from 'office-ui-fabric-react/lib/utilities/positioning';
+import { IPoint, IRectangle } from '../../../Utilities';
+import { IPositionedData } from 'office-ui-fabric-react/lib/utilities/positioning';
 
-export interface IPositioningContainer {
-}
-
-export interface IPositionInfo {
-  calloutPosition: ICalloutPositon;
-  beakPosition: { position: ICalloutPositon, display: string };
-  directionalClassName: string;
-  submenuDirection: DirectionalHint;
-}
+export interface IPositioningContainer {}
 
 export interface IPositioningContainerTypes extends React.Props<PositioningContainer> {
   /**
-  * All props for your component are to be defined here.
-  */
+   * All props for your component are to be defined here.
+   */
   componentRef?: (component: IPositioningContainer | null) => void;
   /**
    * The target that the positioningContainer should try to position itself based on.
@@ -60,7 +49,7 @@ export interface IPositioningContainerTypes extends React.Props<PositioningConta
   backgroundColor?: string;
 
   /**
-   * The bounding rectangle for which  the contextual menu can appear in.
+   * The bounding rectangle for which the contextual menu can appear in.
    */
   bounds?: IRectangle;
 
@@ -129,8 +118,10 @@ export interface IPositioningContainerTypes extends React.Props<PositioningConta
 
   /**
    * Optional callback that is called once the positioningContainer has been correctly positioned.
+   * @param {IPositionedData} positions gives the user information about how the container is positioned such
+   * as the element position, the target edge, and the alignment edge of the container.
    */
-  onPositioned?: () => void;
+  onPositioned?: (positions?: IPositionedData) => void;
 
   /**
    * Callback when the positioningContainer tries to close.

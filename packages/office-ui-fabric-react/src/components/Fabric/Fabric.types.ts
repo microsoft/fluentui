@@ -7,6 +7,7 @@ export interface IFabricProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export interface IFabricStyleProps extends IFabricProps {
   theme: ITheme;
+  isFocusVisible: boolean;
 }
 
 export interface IFabricStyles {

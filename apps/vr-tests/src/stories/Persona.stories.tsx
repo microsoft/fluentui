@@ -3,13 +3,13 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { Persona, PersonaPresence, PersonaSize } from 'office-ui-fabric-react';
+import { IPersonaProps, Persona, PersonaPresence, PersonaSize } from 'office-ui-fabric-react';
 import { TestImages } from '../common/TestImages';
 
-const examplePersona = {
+const examplePersona: IPersonaProps = {
   imageUrl: TestImages.personaFemale,
   imageInitials: 'AL',
-  primaryText: 'Annie Lindqvist',
+  text: 'Annie Lindqvist',
   secondaryText: 'Software Engineer',
   tertiaryText: 'In a meeting',
   optionalText: 'Available at 4:00pm'
@@ -104,37 +104,37 @@ storiesOf('Persona', module)
     <div>
       <Persona
         { ...examplePersona }
-        primaryText='PersonaPresence.away'
+        text='PersonaPresence.away'
         presence={ PersonaPresence.away }
       />
       <Persona
         { ...examplePersona }
-        primaryText='PersonaPresence.blocked'
+        text='PersonaPresence.blocked'
         presence={ PersonaPresence.blocked }
       />
       <Persona
         { ...examplePersona }
-        primaryText='PersonaPresence.busy'
+        text='PersonaPresence.busy'
         presence={ PersonaPresence.busy }
       />
       <Persona
         { ...examplePersona }
-        primaryText='PersonaPresence.dnd'
+        text='PersonaPresence.dnd'
         presence={ PersonaPresence.dnd }
       />
       <Persona
         { ...examplePersona }
-        primaryText='PersonaPresence.none'
+        text='PersonaPresence.none'
         presence={ PersonaPresence.none }
       />
       <Persona
         { ...examplePersona }
-        primaryText='PersonaPresence.offline'
+        text='PersonaPresence.offline'
         presence={ PersonaPresence.offline }
       />
       <Persona
         { ...examplePersona }
-        primaryText='PersonaPresence.online'
+        text='PersonaPresence.online'
         presence={ PersonaPresence.online }
       />
     </div>

@@ -1,5 +1,7 @@
 import { print, test } from './index';
-import { Stylesheet, InjectionMode, mergeStyles } from '@uifabric/merge-styles';
+import { Stylesheet, InjectionMode, mergeStyles, keyframes } from '@uifabric/merge-styles';
+
+const indent = (val: string): string => '    ' + val;
 
 const _stylesheet: Stylesheet = Stylesheet.getInstance();
 _stylesheet.setConfig({ injectionMode: InjectionMode.none });
@@ -14,7 +16,6 @@ describe('test', () => {
     expect(test('a b css-0')).toEqual(true);
     expect(test('a b')).toEqual(false);
   });
-
 });
 
 describe('print', () => {
@@ -23,38 +24,57 @@ describe('print', () => {
   });
 
   it('can format, sort, and indent the class names', () => {
-
-    const indent = (val: string): string => '    ' + val;
-    const classNames = mergeStyles(
-      'ms-GlobalClassName',
-      {
-        color: 'white',
-        background: 'red',
-        selectors: {
-          ':hover': {
-            background: 'green'
-          }
+    const classNames = mergeStyles('ms-GlobalClassName', {
+      color: 'white',
+      background: 'red',
+      selectors: {
+        ':hover': {
+          background: 'green'
         }
       }
-    );
+    });
 
-    expect(
-      print(
-        classNames,
-        () => '',
-        indent
-      )
-    ).toEqual([
-      '',
-      indent('ms-GlobalClassName'),
-      indent('{'),
-      indent('  background: red;'),
-      indent('  color: white;'),
-      indent('}'),
-      indent('&:hover {'),
-      indent('  background: green;'),
-      indent('}'),
-    ].join('\n'));
+    expect(print(classNames, () => '', indent)).toEqual(
+      [
+        '',
+        indent('ms-GlobalClassName'),
+        indent('{'),
+        indent('  background: red;'),
+        indent('  color: white;'),
+        indent('}'),
+        indent('&:hover {'),
+        indent('  background: green;'),
+        indent('}')
+      ].join('\n')
+    );
   });
 
+  it('can expand animation class names', () => {
+    const fadeInClassName = keyframes({
+      from: { opacity: 0 },
+      to: { opacity: 1 }
+    });
+    const leftInClassName = keyframes({
+      from: { left: -100 },
+      to: { left: 0 }
+    });
+    const className = mergeStyles({
+      animationName: `${fadeInClassName},${leftInClassName}`
+    });
+
+    expect(print(className, () => '', indent)).toEqual(
+      [
+        '',
+        '',
+        indent('{'),
+        indent(
+          '  ' +
+            'animation-name: ' +
+            'keyframes from{opacity:0;}to{opacity:1;} ' +
+            'keyframes from{left:-100px;}to{left:0px;};'
+        ),
+        indent('}')
+      ].join('\n')
+    );
+  });
 });

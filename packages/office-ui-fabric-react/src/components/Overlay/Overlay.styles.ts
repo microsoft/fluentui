@@ -1,21 +1,21 @@
 import { IOverlayStyleProps, IOverlayStyles } from './Overlay.types';
-import { HighContrastSelector } from '../../Styling';
+import { HighContrastSelector, getGlobalClassNames } from '../../Styling';
 
-export const getStyles = (
-  props: IOverlayStyleProps
-): IOverlayStyles => {
-  const {
-    className,
-    theme,
-    isNone,
-    isDark,
-  } = props;
+const GlobalClassNames = {
+  root: 'ms-Overlay',
+  rootDark: 'ms-Overlay--dark'
+};
+
+export const getStyles = (props: IOverlayStyleProps): IOverlayStyles => {
+  const { className, theme, isNone, isDark } = props;
 
   const { palette } = theme;
 
-  return ({
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
+  return {
     root: [
-      'ms-Overlay',
+      classNames.root,
       {
         backgroundColor: palette.whiteTranslucent40,
         top: 0,
@@ -26,23 +26,23 @@ export const getStyles = (
 
         selectors: {
           [HighContrastSelector]: {
-            border: '1px solid WindowText',
+            border: '1px solid WindowText'
           }
         }
       },
 
       isNone && {
-        visibility: 'hidden',
+        visibility: 'hidden'
       },
 
       isDark && [
-        'ms-Overlay--dark',
+        classNames.rootDark,
         {
-          backgroundColor: palette.blackTranslucent40,
+          backgroundColor: palette.blackTranslucent40
         }
       ],
 
       className
-    ],
-  });
+    ]
+  };
 };

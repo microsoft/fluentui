@@ -44,25 +44,25 @@ export default class TodoItem extends React.Component<ITodoItemProps, {}> {
 
     return (
       <div
-        role='row'
-        ref={ (ref: HTMLDivElement) => this._rowItem = ref }
-        className={ className }
-        aria-label={ this._ariaLabel }
-        data-is-focusable={ true }
+        role="row"
+        ref={(ref: HTMLDivElement) => (this._rowItem = ref)}
+        className={className}
+        aria-label={this._ariaLabel}
+        data-is-focusable={true}
       >
-        <FocusZone direction={ FocusZoneDirection.horizontal }>
-          <div className={ css(styles.itemTaskRow, 'ms-Grid-row') }>
+        <FocusZone direction={FocusZoneDirection.horizontal}>
+          <div className={css(styles.itemTaskRow, 'ms-Grid-row')}>
             <Checkbox
-              label={ this.props.item.title }
-              onChange={ this._onCheckboxChange }
-              checked={ this.props.item.isComplete === true }
+              label={this.props.item.title}
+              onChange={this._onCheckboxChange}
+              checked={this.props.item.isComplete === true}
             />
             <IconButton
-              className={ styles.deleteButton }
-              iconProps={ { iconName: 'X' } }
-              onClick={ this._onDelete }
-              title={ strings.deleteItemTitle }
-              ariaLabel={ strings.deleteItemAriaLabel }
+              className={styles.deleteButton}
+              iconProps={{ iconName: 'X' }}
+              onClick={this._onDelete}
+              title={strings.deleteItemTitle}
+              ariaLabel={strings.deleteItemAriaLabel}
             />
           </div>
         </FocusZone>
@@ -71,9 +71,10 @@ export default class TodoItem extends React.Component<ITodoItemProps, {}> {
   }
 
   private get _ariaLabel(): string {
-    const completeState: string = this.props.item.isComplete === true
-      ? strings.todoItemAriaLabelCheckedState
-      : strings.todoItemAriaLabelUncheckedState;
+    const completeState: string =
+      this.props.item.isComplete === true
+        ? strings.todoItemAriaLabelCheckedState
+        : strings.todoItemAriaLabelUncheckedState;
     const titleString: string = strings.todoItemAriaLabelTitle + this.props.item.title;
     return `${completeState} ${titleString}`;
   }
@@ -90,12 +91,9 @@ export default class TodoItem extends React.Component<ITodoItemProps, {}> {
     this._rowItem.classList.add(animationClass);
 
     window.clearTimeout(this._animationTimeoutId);
-    this._animationTimeoutId = window.setTimeout(
-      () => {
-        this._rowItem.classList.add(styles.isHidden);
-        callback(this.props.item);
-      },
-      TodoItem.ANIMATION_TIMEOUT
-    );
+    this._animationTimeoutId = window.setTimeout(() => {
+      this._rowItem.classList.add(styles.isHidden);
+      callback(this.props.item);
+    }, TodoItem.ANIMATION_TIMEOUT);
   }
 }

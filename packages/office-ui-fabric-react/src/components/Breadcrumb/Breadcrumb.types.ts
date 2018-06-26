@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { Breadcrumb, IBreadCrumbData } from './Breadcrumb.base';
+import { BreadcrumbBase, IBreadCrumbData } from './Breadcrumb.base';
 import { IIconProps } from '../Icon';
-import { IRenderFunction, IComponentAs } from '../../Utilities';
+import { IRenderFunction, IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
+import { IBreadcrumbStyleProps, IBreadcrumbStyles } from './Breadcrumb.styles';
+import { ITheme } from '../../Styling';
 
 export interface IBreadcrumb {
   /**
@@ -10,7 +12,7 @@ export interface IBreadcrumb {
   focus(): void;
 }
 
-export interface IBreadcrumbProps extends React.Props<Breadcrumb> {
+export interface IBreadcrumbProps extends React.Props<BreadcrumbBase> {
   /**
    * Optional callback to access the IBreadcrumb interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -30,7 +32,7 @@ export interface IBreadcrumbProps extends React.Props<Breadcrumb> {
   /**
    * Render a custom divider in place of the default chevron '>'
    */
-  dividerAs?: IComponentAs<IIconProps>;
+  dividerAs?: IComponentAs<IDividerAsProps>;
 
   /**
    * The maximum number of breadcrumbs to display before coalescing.
@@ -62,10 +64,12 @@ export interface IBreadcrumbProps extends React.Props<Breadcrumb> {
    * Optional index where overflow items will be collapsed. Defaults to 0.
    */
   overflowIndex?: number;
+
+  styles?: IStyleFunctionOrObject<IBreadcrumbStyleProps, IBreadcrumbStyles>;
+  theme?: ITheme;
 }
 
 export interface IBreadcrumbItem {
-
   /**
    * Text to display to the user for the breadcrumb
    */
@@ -90,4 +94,12 @@ export interface IBreadcrumbItem {
    * If this breadcrumb item is the item the user is currently on, if set to true, aria-current="page" will be applied to this breadcrumb link
    */
   isCurrentItem?: boolean;
+}
+
+export interface IDividerAsProps extends IIconProps {
+  /**
+   * Optional breadcrumb item corresponds to left of the divider to be passed for custom rendering.
+   * For overflowed items, it will be last item in the list
+   */
+  item?: IBreadcrumbItem;
 }

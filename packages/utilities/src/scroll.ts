@@ -1,5 +1,5 @@
 import { getDocument } from './dom';
-import { mergeStyles } from '@uifabric/merge-styles/lib/index';
+import { mergeStyles } from '@uifabric/merge-styles';
 
 let _scrollbarWidth: number;
 let _bodyScrollDisabledCount = 0;

@@ -30,7 +30,7 @@
     bottom: 2px;
   }
 
-  .ms-Fabric.is-focusVisible .ms-ListGridExample-tile:focus:after {
+  .ms-Fabric--isFocusVisible .ms-ListGridExample-tile:focus:after {
     content: '';
     position: absolute;
     left: 2px;

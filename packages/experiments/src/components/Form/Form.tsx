@@ -8,11 +8,7 @@ import { IFormProps } from './Form.types';
 import { GenericFormInput } from './FormBaseInput';
 
 // Utilities
-import {
-  BaseComponent,
-  getNativeProps,
-  divProperties
-} from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent, getNativeProps, divProperties } from 'office-ui-fabric-react/lib/Utilities';
 
 /**
  * Validation result for a simple form input. All calls to validate return this type
@@ -102,13 +98,10 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
    * Renders a form component and all child inputs
    */
   public render(): JSX.Element {
-    let nativeProps = getNativeProps(this.props, divProperties);
+    const nativeProps = getNativeProps(this.props, divProperties);
     return (
-      <form
-        { ...nativeProps }
-        onSubmit={ this._onSubmit }
-      >
-        { this.props.children }
+      <form {...nativeProps} onSubmit={this._onSubmit}>
+        {this.props.children}
       </form>
     );
   }
@@ -130,7 +123,7 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
    * Returns a dictionary keyed by the input names
    */
   private _getFormValues(): { [key: string]: any } {
-    let formValues: { [key: string]: any } = {};
+    const formValues: { [key: string]: any } = {};
     this._mountedInputs.forEach((input: GenericFormInput) => {
       formValues[input.props.inputKey] = input.state.currentValue;
     });
@@ -144,7 +137,7 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
    * @param input The input to validate
    */
   private _validateComponent(input: GenericFormInput): IFormValidationResult {
-    let validationResult = input.doValidate();
+    const validationResult = input.doValidate();
     if (!validationResult.isValid && (this.props.showErrorsWhenPristine || !this._pristine)) {
       input.setError(validationResult.errorMessage);
     } else {
@@ -159,7 +152,7 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
    * Returns a list of the validation results
    */
   private _validateForm(): { [key: string]: IFormValidationResult } {
-    let validationResults: { [key: string]: IFormValidationResult } = {};
+    const validationResults: { [key: string]: IFormValidationResult } = {};
     this._mountedInputs.forEach((input: GenericFormInput) => {
       validationResults[input.props.inputKey] = this._validateComponent(input);
     });
@@ -183,9 +176,9 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
     }
 
     if (this.props.onSubmit) {
-      let validationResults = this._validateForm();
-      let formIsValid: boolean = this._isFormValid(validationResults);
-      let formValues: { [key: string]: any } = this._getFormValues();
+      const validationResults = this._validateForm();
+      const formIsValid: boolean = this._isFormValid(validationResults);
+      const formValues: { [key: string]: any } = this._getFormValues();
 
       if (formIsValid) {
         this.props.onSubmit(formValues);
@@ -193,7 +186,7 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
         this.props.onInvalidSubmit(formValues);
       }
     }
-  }
+  };
 
   /**
    * Register an input with the form
@@ -207,10 +200,10 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
         return prevState;
       });
     }
-  }
+  };
 
   private _submitValue = (input: GenericFormInput): void => {
-    let validationResult: IFormValidationResult = this._validateComponent(input);
+    const validationResult: IFormValidationResult = this._validateComponent(input);
     this.setState((prevState: IFormState) => {
       prevState.validationResults[input.props.inputKey] = validationResult;
       return prevState;
@@ -221,14 +214,14 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
         this.props.onUpdated(input.props.inputKey, input.state.currentValue);
       }
     }
-  }
+  };
 
   /**
    * Unregister an input with the form
    * @param input The input to unregister
    */
   private _unmountInput = (input: GenericFormInput): void => {
-    let currentIndex: number = this._mountedInputs.indexOf(input);
+    const currentIndex: number = this._mountedInputs.indexOf(input);
     if (currentIndex > -1) {
       this._mountedInputs.splice(currentIndex, 1);
       this.setState((prevState: IFormState) => {
@@ -236,15 +229,17 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
         return prevState;
       });
     }
-  }
+  };
 
-  private _isFormValid = (validationResults: { [key: string]: IFormValidationResult } = this.state.validationResults): boolean => {
-    for (let key in validationResults) {
+  private _isFormValid = (
+    validationResults: { [key: string]: IFormValidationResult } = this.state.validationResults
+  ): boolean => {
+    for (const key in validationResults) {
       if (!validationResults[key].isValid) {
         return false;
       }
     }
 
     return true;
-  }
+  };
 }

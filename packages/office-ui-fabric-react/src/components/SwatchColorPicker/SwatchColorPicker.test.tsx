@@ -1,7 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-/* tslint:enable:no-unused-variable */
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 import { SwatchColorPickerBase } from './SwatchColorPicker.base';
@@ -25,37 +22,22 @@ const DEFAULT_OPTIONS: IColorCellProps[] = [
 ];
 
 describe('SwatchColorPicker', () => {
-
   it('renders SwatchColorPicker correctly', () => {
     const component = renderer.create(
-      <SwatchColorPickerBase
-        colorCells={ DEFAULT_OPTIONS }
-        columnCount={ 4 }
-        getStyles={ getStyles }
-      />);
+      <SwatchColorPickerBase colorCells={DEFAULT_OPTIONS} columnCount={4} styles={getStyles} />
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('Can render in full without being parented to a button', () => {
-    const wrapper = mount(
-      <SwatchColorPickerBase
-        colorCells={ DEFAULT_OPTIONS }
-        columnCount={ 4 }
-        getStyles={ getStyles }
-      />);
+    const wrapper = mount(<SwatchColorPickerBase colorCells={DEFAULT_OPTIONS} columnCount={4} styles={getStyles} />);
 
     expectNodes(wrapper, '.ms-swatchColorPickerBodyContainer', 1);
   });
 
   it('Can render the correct options when not in a menu', () => {
-    const wrapper = mount(
-      <SwatchColorPickerBase
-        colorCells={ DEFAULT_OPTIONS }
-        columnCount={ 4 }
-        getStyles={ getStyles }
-      />
-    );
+    const wrapper = mount(<SwatchColorPickerBase colorCells={DEFAULT_OPTIONS} columnCount={4} styles={getStyles} />);
 
     expectNodes(wrapper, '.ms-swatchColorPickerBodyContainer', 1);
     expectNodes(wrapper, 'table[role="grid"]', 1);
@@ -75,18 +57,21 @@ describe('SwatchColorPicker', () => {
     let eventFireCounter = 0;
     const wrapper = mount(
       <SwatchColorPickerBase
-        colorCells={ [{ id: 'a', label: 'green', color: '#00ff00' }] }
+        colorCells={[{ id: 'a', label: 'green', color: '#00ff00' }]}
         // tslint:disable-next-line:jsx-no-lambda
-        onColorChanged={ (color) => eventFireCounter++ }
-        columnCount={ 4 }
-        getStyles={ getStyles }
+        onColorChanged={color => eventFireCounter++}
+        columnCount={4}
+        styles={getStyles}
       />
     );
 
     expectNodes(wrapper, '.ms-swatchColorPickerBodyContainer', 1);
     expectNodes(wrapper, '.ms-swatchColorPickerBodyContainer [role="gridcell"]', 1);
 
-    wrapper.find('.ms-swatchColorPickerBodyContainer [role="gridcell"]').at(1).simulate('click');
+    wrapper
+      .find('.ms-swatchColorPickerBodyContainer [role="gridcell"]')
+      .at(1)
+      .simulate('click');
     expect(eventFireCounter).toEqual(1);
   });
 
@@ -94,15 +79,18 @@ describe('SwatchColorPicker', () => {
     let eventFireCounter = 0;
     const wrapper = mount(
       <SwatchColorPickerBase
-        colorCells={ [{ id: 'a', label: 'green', color: '#00ff00' }] }
+        colorCells={[{ id: 'a', label: 'green', color: '#00ff00' }]}
         // tslint:disable-next-line:jsx-no-lambda
-        onCellHovered={ (color) => eventFireCounter++ }
-        columnCount={ 4 }
-        getStyles={ getStyles }
+        onCellHovered={color => eventFireCounter++}
+        columnCount={4}
+        styles={getStyles}
       />
     );
 
-    wrapper.find('.ms-swatchColorPickerBodyContainer [role="gridcell"]').at(0).simulate('mouseenter');
+    wrapper
+      .find('.ms-swatchColorPickerBodyContainer [role="gridcell"]')
+      .at(0)
+      .simulate('mouseenter');
     expect(eventFireCounter).toEqual(1);
   });
 
@@ -110,15 +98,18 @@ describe('SwatchColorPicker', () => {
     let eventFireCounter = 0;
     const wrapper = mount(
       <SwatchColorPickerBase
-        colorCells={ [{ id: 'a', label: 'green', color: '#00ff00' }] }
+        colorCells={[{ id: 'a', label: 'green', color: '#00ff00' }]}
         // tslint:disable-next-line:jsx-no-lambda
-        onCellFocused={ (color) => eventFireCounter++ }
-        columnCount={ 4 }
-        getStyles={ getStyles }
+        onCellFocused={color => eventFireCounter++}
+        columnCount={4}
+        styles={getStyles}
       />
     );
 
-    wrapper.find('.ms-swatchColorPickerBodyContainer [role="gridcell"]').at(0).simulate('focus');
+    wrapper
+      .find('.ms-swatchColorPickerBodyContainer [role="gridcell"]')
+      .at(0)
+      .simulate('focus');
     expect(eventFireCounter).toEqual(1);
   });
 });

@@ -1,6 +1,150 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 19 Apr 2018 18:25:59 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Jun 2018 10:25:55 GMT and should not be manually modified.
+
+## 6.7.1
+Wed, 20 Jun 2018 10:25:55 GMT
+
+### Patches
+
+- Prettier fixes
+
+## 6.7.0
+Tue, 19 Jun 2018 10:26:26 GMT
+
+### Minor changes
+
+- All `styled` props should be a style function which returns partial styles, or just a partial styles object. (Previously it was a "complete" styles object, which was not intended.)
+
+### Patches
+
+- Handling `stylesheet.onReset` undefined scenarios better.
+
+## 6.6.0
+Thu, 14 Jun 2018 20:52:57 GMT
+
+### Minor changes
+
+- Updating `styled` to pick up customizations without using the `customizable` decorator on the base component.
+
+### Patches
+
+- Minor JSDoc improvements.
+
+## 6.2.0
+Thu, 07 Jun 2018 16:35:34 GMT
+
+### Minor changes
+
+- Added getFirstTabbable, Updated getNextElement to take tabbable param like getPreviousElement.
+- Minor changes to improve server side rendering.
+
+### Patches
+
+- Code format changes
+
+## 6.0.5
+Tue, 05 Jun 2018 00:44:30 GMT
+
+### Patches
+
+- Added Prettier
+
+## 6.0.4
+Mon, 04 Jun 2018 10:16:13 GMT
+
+### Patches
+
+- Updating react typings.
+
+## 6.0.3
+Fri, 01 Jun 2018 10:18:43 GMT
+
+### Patches
+
+- Add utility function to help merge ARIA attributes.
+
+## 6.0.2
+Wed, 30 May 2018 22:05:04 GMT
+
+*Version update only*
+
+## 6.0.1
+Wed, 30 May 2018 20:28:33 GMT
+
+### Patches
+
+- Minimum React version is now 16.3.2.
+- Added `resetIds` api for adding predictability in jest tests.
+
+## 5.33.0
+Wed, 23 May 2018 16:14:26 GMT
+
+### Minor changes
+
+- Reverting the ChoiceGroup styling update along with updates to utilities to avoid potentially breaking changes.
+
+## 5.32.0
+Wed, 23 May 2018 10:28:50 GMT
+
+### Minor changes
+
+- Added `resetIds` api for adding predictability in jest tests.
+- allow for customization of keycodes that cause the focus rect to appear
+
+## 5.31.0
+Tue, 15 May 2018 07:09:49 GMT
+
+### Minor changes
+
+- Remove dependency on React from Async
+
+## 5.30.1
+Fri, 04 May 2018 15:58:39 GMT
+
+### Patches
+
+- Updating React build version.
+
+## 5.30.0
+Wed, 02 May 2018 23:55:40 GMT
+
+### Minor changes
+
+- Backing out `isEqual` change which is broken.
+- Add accompanying utilities work for Keytips
+
+## 5.29.0
+Fri, 27 Apr 2018 10:15:52 GMT
+
+### Minor changes
+
+- Allow a function to be passed to the Customizers props
+
+### Patches
+
+- Add isEqual and isNotEqual utilities
+
+## 5.28.0
+Wed, 25 Apr 2018 05:32:09 GMT
+
+### Minor changes
+
+- Adding `isDirectionalKeyCode` helper.
+
+## 5.27.0
+Mon, 23 Apr 2018 10:24:54 GMT
+
+### Minor changes
+
+- The focus styling no longer adds "ms-Fabric" classname to body. Instead a very specific class for controlling focus rects is added, which should not impact any existing code.
+
+## 5.26.0
+Fri, 20 Apr 2018 23:06:06 GMT
+
+### Minor changes
+
+- InputMask: Added inputMask utilitiy and tests
 
 ## 5.25.0
 Thu, 19 Apr 2018 18:25:59 GMT

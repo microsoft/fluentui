@@ -1,7 +1,7 @@
 import { getWindow } from './dom';
 
 export function initializeDir(window?: Window): void {
-  const win = (window || getWindow()) as (Window & { __hasInitializedDir__: boolean });
+  const win = (window || getWindow()) as Window & { __hasInitializedDir__: boolean };
 
   if (win && !win.__hasInitializedDir__) {
     win.__hasInitializedDir__ = true;

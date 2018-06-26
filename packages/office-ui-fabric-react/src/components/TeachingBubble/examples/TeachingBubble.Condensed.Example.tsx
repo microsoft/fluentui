@@ -15,7 +15,7 @@ export class TeachingBubbleCondensedExample extends React.Component<{}, ITeachin
     this._onDismiss = this._onDismiss.bind(this);
 
     this.state = {
-      isTeachingBubbleVisible: false,
+      isTeachingBubbleVisible: false
     };
   }
 
@@ -23,26 +23,30 @@ export class TeachingBubbleCondensedExample extends React.Component<{}, ITeachin
     const { isTeachingBubbleVisible } = this.state;
 
     return (
-      <div className='ms-TeachingBubbleExample'>
-        <span className='ms-TeachingBubbleBasicExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton! }>
+      <div className="ms-TeachingBubbleExample">
+        <span
+          className="ms-TeachingBubbleBasicExample-buttonArea"
+          ref={menuButton => (this._menuButtonElement = menuButton!)}
+        >
           <DefaultButton
-            onClick={ this._onDismiss }
-            text={ isTeachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble' }
+            onClick={this._onDismiss}
+            text={isTeachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble'}
           />
         </span>
-        { isTeachingBubbleVisible ? (
+        {isTeachingBubbleVisible ? (
           <div>
             <TeachingBubble
-              targetElement={ this._menuButtonElement }
-              hasCondensedHeadline={ true }
-              onDismiss={ this._onDismiss }
-              hasCloseIcon={ true }
-              headline='Discover what’s trending around you'
+              targetElement={this._menuButtonElement}
+              hasCondensedHeadline={true}
+              onDismiss={this._onDismiss}
+              hasCloseIcon={true}
+              headline="Discover what’s trending around you"
             >
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni harum non?
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam
+              magni harum non?
             </TeachingBubble>
           </div>
-        ) : (null) }
+        ) : null}
       </div>
     );
   }

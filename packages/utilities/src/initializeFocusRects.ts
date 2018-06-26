@@ -1,20 +1,7 @@
 import { getWindow } from './dom';
-import { KeyCodes } from './KeyCodes';
-import { KeyboardEvent } from '../../../common/temp/node_modules/@types/react';
+import { isDirectionalKeyCode } from './keyboard';
 
-export const FabricClassName = 'ms-Fabric';
-export const IsFocusVisibleClassName = 'is-focusVisible';
-const DirectionalKeyCodes = [
-  KeyCodes.up,
-  KeyCodes.down,
-  KeyCodes.left,
-  KeyCodes.right,
-  KeyCodes.home,
-  KeyCodes.end,
-  KeyCodes.tab,
-  KeyCodes.pageUp,
-  KeyCodes.pageDown
-];
+export const IsFocusVisibleClassName = 'ms-Fabric--isFocusVisible';
 
 /**
  * Initializes the logic which:
@@ -31,14 +18,10 @@ const DirectionalKeyCodes = [
  * @param window
  */
 export function initializeFocusRects(window?: Window): void {
-  const win = (window || getWindow()) as (Window & { __hasInitializeFocusRects__: boolean });
+  const win = (window || getWindow()) as Window & { __hasInitializeFocusRects__: boolean };
 
   if (win && !win.__hasInitializeFocusRects__) {
     win.__hasInitializeFocusRects__ = true;
-    const { classList } = win.document.body;
-
-    classList.toggle(FabricClassName, true);
-
     win.addEventListener('mousedown', _onMouseDown, true);
     win.addEventListener('keydown', _onKeyDown as () => void, true);
   }
@@ -56,14 +39,13 @@ function _onMouseDown(ev: MouseEvent): void {
   }
 }
 
-function _onKeyDown(ev: KeyboardEvent<Element>): void {
+function _onKeyDown(ev: KeyboardEvent): void {
   const win = getWindow(ev.target as Element);
 
   if (win) {
     const { classList } = win.document.body;
-    const isDirectionalKeyCode = DirectionalKeyCodes.indexOf(ev.which) > -1;
 
-    if (isDirectionalKeyCode && !classList.contains(IsFocusVisibleClassName)) {
+    if (isDirectionalKeyCode(ev.which) && !classList.contains(IsFocusVisibleClassName)) {
       classList.add(IsFocusVisibleClassName);
     }
   }

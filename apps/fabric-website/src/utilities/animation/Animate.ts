@@ -40,7 +40,6 @@ export interface IScrollObj {
 }
 
 export class Animate {
-
   private static _transformProps: Array<string> = [
     'x',
     'y',
@@ -71,16 +70,16 @@ export class Animate {
   private static _animationObjects: Array<any> = [];
 
   /**
-  * @param {HTMLElement} element
-  * @param {object} props Transition properties
-  * @param {number} props.duration The duration of the transition in seconds
-  * @param {number} props.delay A delay in seconds that occurs before the transition starts
-  * @param {string} props.ease An easing equation applied to the transition
-  * @param {function} props.onEnd A function that is called when the transition ends
-  * @param {array} props.onEndArgs An array of parameters applied to the onEnd function
-  * @param {number} props.x props.y props.left, props.opacity etc... CSS values to transition to
-  */
-  public static transition(element: HTMLElement, props: any ): void {
+   * @param {HTMLElement} element
+   * @param {object} props Transition properties
+   * @param {number} props.duration The duration of the transition in seconds
+   * @param {number} props.delay A delay in seconds that occurs before the transition starts
+   * @param {string} props.ease An easing equation applied to the transition
+   * @param {function} props.onEnd A function that is called when the transition ends
+   * @param {array} props.onEndArgs An array of parameters applied to the onEnd function
+   * @param {number} props.x props.y props.left, props.opacity etc... CSS values to transition to
+   */
+  public static transition(element: HTMLElement, props: any): void {
     let obj: ITransitionObj = { element: element, props: props, transformations: {} };
     Animate._animationObjects.push(obj);
     Animate._parseProperties(obj);
@@ -98,7 +97,7 @@ export class Animate {
    * @param {string} props.ease An easing equation applied to the animation
    * @param {function} props.onEnd A function that is called when the animation ends
    * @param {array} props.onEndArgs An array of parameters applied to the onEnd function
-  */
+   */
   public static animation(element: HTMLElement, keyframes: string, props: any): void {
     let obj: IAnimationObj = { element: element, keyframes: keyframes, props: props };
     Animate._animationObjects.push(obj);
@@ -115,7 +114,7 @@ export class Animate {
    * @param {number} props.delay A delay in seconds that occurs before the scroll starts
    * @param {function} props.onEnd A function that is called when the scrolling animation ends
    * @param {array} props.onEndArgs An array of parameters applied to the onEnd function
-  */
+   */
   public static scrollTo(element: HTMLElement, props: any): void {
     let obj: IScrollObj = { element: element, props: props, step: 0 };
     Animate._setScrollProperties(obj);
@@ -225,7 +224,7 @@ export class Animate {
   private static _setRegularValues(obj: ITransitionObj, key: string): void {
     let value: string = obj.tweenObj[key];
     if (value.toString().indexOf('%') === -1) {
-      value += (key !== 'opacity') && (key !== 'backgroundColor') && (key !== 'boxShadow') ? 'px' : '';
+      value += key !== 'opacity' && key !== 'backgroundColor' && key !== 'boxShadow' ? 'px' : '';
     }
     obj.element.style[<any>key] = value;
   }
@@ -249,7 +248,10 @@ export class Animate {
   }
 
   private static _setTransformations(obj: ITransitionObj): void {
-    let rotate: string = '', scale = '', skew = '', translate = '';
+    let rotate: string = '',
+      scale = '',
+      skew = '',
+      translate = '';
     let trans: any = obj.transformations;
     translate += trans.x !== undefined && trans.x ? 'translateX(' + trans.x + 'px) ' : '';
     translate += trans.y !== undefined && trans.y ? 'translateY(' + trans.y + 'px) ' : '';
@@ -310,7 +312,7 @@ export class Animate {
   }
 
   private static _contains(array: Array<string>, value: string): boolean {
-    let i: number  = array.length;
+    let i: number = array.length;
     while (i--) {
       if (value === array[i]) {
         return true;
@@ -320,11 +322,14 @@ export class Animate {
   }
 
   private static _camelCaseToDash(value: string): string {
-    return value.replace(/\W+/g, '-').replace(/([a-z\d])([A-Z])/g, '$1-$2').toLowerCase();
+    return value
+      .replace(/\W+/g, '-')
+      .replace(/([a-z\d])([A-Z])/g, '$1-$2')
+      .toLowerCase();
   }
 
   private static _easeOutExpo(time: number, begin: number, change: number, duration: number): number {
-    return (time === duration) ? begin + change : change * (-Math.pow(2, -10 * time / duration) + 1) + begin;
+    return time === duration ? begin + change : change * (-Math.pow(2, (-10 * time) / duration) + 1) + begin;
   }
 
   // private static _easeInOutQuad (time: number, begin: number, change: number, duration: number) {

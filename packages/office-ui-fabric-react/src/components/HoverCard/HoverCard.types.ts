@@ -3,9 +3,7 @@ import { HoverCard } from './HoverCard';
 import { IExpandingCardProps } from './ExpandingCard.types';
 import { IStyle } from '../../Styling';
 
-export interface IHoverCard {
-
-}
+export interface IHoverCard {}
 
 /**
  * HoverCard component props.
@@ -87,6 +85,11 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement | H
    * Should block hover card or not
    */
   shouldBlockHoverCard?: () => void;
+
+  /**
+   * Set first focus into hover card, default should be true
+   */
+  setInitialFocus?: boolean;
 }
 
 export interface IHoverCardStyles {

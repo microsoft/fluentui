@@ -2,10 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "lib": [
-      "es2017",
-      "dom"
-    ],
+    "lib": ["es2017", "dom"],
     "jsx": "react",
     "declaration": true,
     "sourceMap": true,
@@ -17,7 +14,5 @@
     "preserveConstEnums": false,
     "types": []
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

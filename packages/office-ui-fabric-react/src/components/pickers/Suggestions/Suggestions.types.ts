@@ -22,8 +22,8 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
    */
   suggestions: ISuggestionModel<T>[];
   /**
-  * How the "no result found" should look in the suggestion list.
-  */
+   * How the "no result found" should look in the suggestion list.
+   */
   onRenderNoResultFound?: IRenderFunction<void>;
   /**
    * The text that appears at the top of the suggestions list.
@@ -131,6 +131,10 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
    * An ARIA label for the container that is the parent of the suggestions.
    */
   suggestionsContainerAriaLabel?: string;
+  /**
+   * An ARIA label to use for the buttons to remove individual suggestions.
+   */
+  removeSuggestionAriaLabel?: string;
 }
 
 export interface ISuggestionItemProps<T> {
@@ -143,4 +147,8 @@ export interface ISuggestionItemProps<T> {
   id?: string;
   showRemoveButton?: boolean;
   isSelectedOverride?: boolean;
+  /**
+   * The ARIA label for the button to remove the suggestion from the list.
+   */
+  removeButtonAriaLabel?: string;
 }

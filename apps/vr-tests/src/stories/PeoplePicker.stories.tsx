@@ -12,7 +12,7 @@ const people: (IPersonaProps & { key: string | number })[] = [
     key: 1,
     imageUrl: TestImages.personaFemale,
     imageInitials: 'PV',
-    primaryText: 'Annie Lindqvist',
+    text: 'Annie Lindqvist',
     secondaryText: 'Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
@@ -22,7 +22,7 @@ const people: (IPersonaProps & { key: string | number })[] = [
     key: 2,
     imageUrl: TestImages.personaMale,
     imageInitials: 'AR',
-    primaryText: 'Aaron Reid',
+    text: 'Aaron Reid',
     secondaryText: 'Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
@@ -32,7 +32,7 @@ const people: (IPersonaProps & { key: string | number })[] = [
     key: 3,
     imageUrl: TestImages.personaMale,
     imageInitials: 'AL',
-    primaryText: 'Alex Lundberg',
+    text: 'Alex Lundberg',
     secondaryText: 'Software Developer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
@@ -42,7 +42,7 @@ const people: (IPersonaProps & { key: string | number })[] = [
     key: 4,
     imageUrl: TestImages.personaMale,
     imageInitials: 'RK',
-    primaryText: 'Roko Kolar',
+    text: 'Roko Kolar',
     secondaryText: 'Financial Analyst',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
@@ -52,7 +52,7 @@ const people: (IPersonaProps & { key: string | number })[] = [
     key: 5,
     imageUrl: TestImages.personaMale,
     imageInitials: 'RK',
-    primaryText: 'Alex Lundberg1',
+    text: 'Alex Lundberg1',
     secondaryText: 'Financial Analyst',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
@@ -62,7 +62,7 @@ const people: (IPersonaProps & { key: string | number })[] = [
     key: 6,
     imageUrl: TestImages.personaMale,
     imageInitials: 'RK',
-    primaryText: 'Alex Lundberg2',
+    text: 'Alex Lundberg2',
     secondaryText: 'Financial Analyst',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
@@ -72,7 +72,7 @@ const people: (IPersonaProps & { key: string | number })[] = [
     key: 7,
     imageUrl: TestImages.personaMale,
     imageInitials: 'RK',
-    primaryText: 'Alex Lundberg2',
+    text: 'Alex Lundberg2',
     secondaryText: 'Financial Analyst',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
@@ -82,7 +82,7 @@ const people: (IPersonaProps & { key: string | number })[] = [
     key: 8,
     imageUrl: TestImages.personaMale,
     imageInitials: 'RK',
-    primaryText: 'Alex Lundberg3',
+    text: 'Alex Lundberg3',
     secondaryText: 'Financial Analyst',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
@@ -92,7 +92,7 @@ const people: (IPersonaProps & { key: string | number })[] = [
     key: 9,
     imageUrl: TestImages.personaMale,
     imageInitials: 'RK',
-    primaryText: 'Alex Lundberg4',
+    text: 'Alex Lundberg4',
     secondaryText: 'Financial Analyst',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
@@ -110,7 +110,7 @@ const suggestionProps = {
   suggestionsContainerAriaLabel: 'Suggested contacts'
 };
 
-const getTextFromItem = (persona: IPersonaProps): string => persona.primaryText as string;
+const getTextFromItem = (persona: IPersonaProps): string => persona.text as string;
 
 const getPeople = () => people;
 
@@ -150,7 +150,6 @@ storiesOf('PeoplePicker', module)
     <Screener
       steps={ new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .click('.ms-BasePicker-input')
         .setValue('.ms-BasePicker-input', 'a')
         .snapshot('suggestion: "a"')
         .end() }>

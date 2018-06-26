@@ -3,12 +3,12 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecoratorTall } from '../utilities';
-import { CommandBar } from 'office-ui-fabric-react';
+import { CommandBar, ICommandBarItemProps } from 'office-ui-fabric-react';
 
-const items = [
+const items: ICommandBarItemProps[] = [
   {
     key: 'newItem',
-    name: 'New',
+    text: 'New',
     iconProps: {
       iconName: 'Add'
     },
@@ -16,14 +16,14 @@ const items = [
       items: [
         {
           key: 'emailMessage',
-          name: 'Email message',
+          text: 'Email message',
           iconProps: {
             iconName: 'Mail'
           }
         },
         {
           key: 'calendarEvent',
-          name: 'Calendar event',
+          text: 'Calendar event',
           iconProps: {
             iconName: 'Calendar'
           }
@@ -33,28 +33,28 @@ const items = [
   },
   {
     key: 'upload',
-    name: 'Upload',
+    text: 'Upload',
     iconProps: {
       iconName: 'Upload'
     }
   },
   {
     key: 'share',
-    name: 'Share',
+    text: 'Share',
     iconProps: {
       iconName: 'Share'
     }
   },
   {
     key: 'download',
-    name: 'Download',
+    text: 'Download',
     iconProps: {
       iconName: 'Download'
     }
   },
   {
     key: 'disabled',
-    name: 'Disabled...',
+    text: 'Disabled...',
     iconProps: {
       iconName: 'Cancel'
     },
@@ -62,24 +62,24 @@ const items = [
   }
 ];
 
-const farItems = [
+const farItems: ICommandBarItemProps[] = [
   {
     key: 'sort',
-    name: 'Sort',
+    text: 'Sort',
     iconProps: {
       iconName: 'SortLines'
     }
   },
   {
     key: 'tile',
-    name: 'Grid view',
+    text: 'Grid view',
     iconProps: {
       iconName: 'Tiles'
     }
   },
   {
     key: 'info',
-    name: 'Info',
+    text: 'Info',
     iconProps: {
       iconName: 'Info'
     }
@@ -105,29 +105,19 @@ storiesOf('CommandBar', module)
   ))
   .add('Root', () => (
     <CommandBar
-      isSearchBoxVisible
-      items={ items }
-      farItems={ farItems }
-    />
-  ))
-  .add('Without search bar', () => (
-    <CommandBar
-      isSearchBoxVisible={ false }
       items={ items }
       farItems={ farItems }
     />
   ))
   .add('Text only', () => (
     <CommandBar
-      isSearchBoxVisible={ false }
       items={ items.map(item => ({ ...item, iconProps: undefined })) }
       farItems={ farItems.map(item => ({ ...item, iconProps: undefined })) }
     />
   ))
   .add('Icons only', () => (
     <CommandBar
-      isSearchBoxVisible={ false }
-      items={ items.map(item => ({ ...item, name: '' })) }
-      farItems={ farItems.map(item => ({ ...item, name: '' })) }
+      items={ items.map(item => ({ ...item, text: '' })) }
+      farItems={ farItems.map(item => ({ ...item, text: '' })) }
     />
   ));

@@ -40,19 +40,24 @@ describe('FormTextInput Unit Tests', () => {
     });
 
     it('Null name throws error', () => {
-      let errorFunction = () => {
+      const consoleMock = jest.spyOn(console, 'error');
+      consoleMock.mockImplementation(() => undefined);
+
+      const errorFunction = () => {
         ReactTestUtils.renderIntoDocument(
-          <Form
-            { ...formProps }
-          >
-            <FormTextInput
-              { ...formTextInputProps }
-            />
+          <Form {...formProps}>
+            <FormTextInput {...formTextInputProps} />
           </Form>
         );
       };
 
       expect(errorFunction).toThrow();
+      expect(console.error).toHaveBeenCalledTimes(2);
+      expect((consoleMock as jest.MockInstance<{}>).mock.calls[0][0]).toMatch(
+        'Uncaught [Error: FormBaseInput: name must defined on all form inputs]'
+      );
+
+      consoleMock.mockRestore();
 
       (renderedForm as any) = {};
       (renderedInput as any) = {};
@@ -61,12 +66,8 @@ describe('FormTextInput Unit Tests', () => {
     it('Null props still render', () => {
       formTextInputProps.inputKey = 'name';
       renderedForm = ReactTestUtils.renderIntoDocument(
-        <Form
-          { ...formProps }
-        >
-          <FormTextInput
-            { ...formTextInputProps }
-          />
+        <Form {...formProps}>
+          <FormTextInput {...formTextInputProps} />
         </Form>
       ) as Form;
 
@@ -77,12 +78,8 @@ describe('FormTextInput Unit Tests', () => {
       formTextInputProps.inputKey = 'name';
       formTextInputProps.value = 'Value';
       renderedForm = ReactTestUtils.renderIntoDocument(
-        <Form
-          { ...formProps }
-        >
-          <FormTextInput
-            { ...formTextInputProps }
-          />
+        <Form {...formProps}>
+          <FormTextInput {...formTextInputProps} />
         </Form>
       ) as Form;
 
@@ -94,25 +91,24 @@ describe('FormTextInput Unit Tests', () => {
     xit('Validators run properly', () => {
       let result: any;
 
-      let renderedForm: Form = ReactTestUtils.renderIntoDocument(
+      const renderedForm: Form = ReactTestUtils.renderIntoDocument(
         <Form
-          onSubmit={ (value: any) => { result = value; } }
+          onSubmit={(value: any) => {
+            result = value;
+          }}
         >
-          <FormTextInput
-            inputKey='field'
-            value=''
-            validators={ [
-              Validators.required('Message')
-            ] }
-          />
+          <FormTextInput inputKey="field" value="" validators={[Validators.required('Message')]} />
         </Form>
       ) as Form;
 
-      let form: HTMLFormElement = ReactTestUtils.findRenderedDOMComponentWithTag(renderedForm, 'form') as HTMLFormElement;
+      const form: HTMLFormElement = ReactTestUtils.findRenderedDOMComponentWithTag(
+        renderedForm,
+        'form'
+      ) as HTMLFormElement;
       ReactTestUtils.Simulate.submit(form);
 
       // Find the TextField component
-      let field = ReactTestUtils.findRenderedComponentWithType(renderedForm, TextField);
+      const field = ReactTestUtils.findRenderedComponentWithType(renderedForm, TextField);
       expect(field.state.errorMessage).toBeTruthy();
       expect(result).toBeFalsy();
     });
@@ -135,19 +131,14 @@ describe('FormTextInput Unit Tests', () => {
     });
 
     it('TextInput is only trailing debounced', () => {
-      let updateStub: sinon.SinonStub = sinon.stub();
-      let renderedForm = ReactTestUtils.renderIntoDocument(
-        <Form
-          onUpdated={ updateStub }
-        >
-          <ExtendsTextInput
-            inputKey='name'
-            value={ '' }
-          />
+      const updateStub: sinon.SinonStub = sinon.stub();
+      const renderedForm = ReactTestUtils.renderIntoDocument(
+        <Form onUpdated={updateStub}>
+          <ExtendsTextInput inputKey="name" value={''} />
         </Form>
       ) as Form;
 
-      let datePicker: ExtendsTextInput = ReactTestUtils.findRenderedComponentWithType(renderedForm, ExtendsTextInput);
+      const datePicker: ExtendsTextInput = ReactTestUtils.findRenderedComponentWithType(renderedForm, ExtendsTextInput);
       datePicker.setValue('0');
       expect(updateStub.callCount).toEqual(0);
       datePicker.setValue('1');
@@ -157,52 +148,44 @@ describe('FormTextInput Unit Tests', () => {
     });
 
     it('TextInput state updates from props value change', () => {
-      let updatedValue = 'updated';
-      let parent = document.createElement('div');
+      const updatedValue = 'updated';
+      const parent = document.createElement('div');
       let renderedForm = ReactDom.render(
         <Form>
-          <FormTextInput
-            inputKey='name'
-            key='key'
-            value={ 'old value' }
-          />
-        </Form>, parent) as Form;
-      let textboxElement: FormTextInput = ReactTestUtils.findRenderedComponentWithType(renderedForm, FormTextInput);
-      let propsUpdateSpy = sinon.spy(textboxElement, 'componentWillReceiveProps');
+          <FormTextInput inputKey="name" key="key" value={'old value'} />
+        </Form>,
+        parent
+      ) as Form;
+      const textboxElement: FormTextInput = ReactTestUtils.findRenderedComponentWithType(renderedForm, FormTextInput);
+      const propsUpdateSpy = sinon.spy(textboxElement, 'componentWillReceiveProps');
       renderedForm = ReactDom.render(
         <Form>
-          <FormTextInput
-            inputKey='name'
-            key='key'
-            value={ updatedValue }
-          />
-        </Form >, parent) as Form;
+          <FormTextInput inputKey="name" key="key" value={updatedValue} />
+        </Form>,
+        parent
+      ) as Form;
 
       expect(textboxElement.state.currentValue).toEqual(updatedValue);
       expect(propsUpdateSpy.callCount).toEqual(1);
     });
 
     it(`TextInput state doesn't update with no new props value`, () => {
-      let oldValue = 'old value';
-      let parent = document.createElement('div');
+      const oldValue = 'old value';
+      const parent = document.createElement('div');
       let renderedForm = ReactDom.render(
         <Form>
-          <FormTextInput
-            inputKey='name'
-            key='key'
-            value={ oldValue }
-          />
-        </Form>, parent) as Form;
-      let textboxElement: FormTextInput = ReactTestUtils.findRenderedComponentWithType(renderedForm, FormTextInput);
-      let setStateSpy = sinon.spy(textboxElement, 'setState');
+          <FormTextInput inputKey="name" key="key" value={oldValue} />
+        </Form>,
+        parent
+      ) as Form;
+      const textboxElement: FormTextInput = ReactTestUtils.findRenderedComponentWithType(renderedForm, FormTextInput);
+      const setStateSpy = sinon.spy(textboxElement, 'setState');
       renderedForm = ReactDom.render(
         <Form>
-          <FormTextInput
-            inputKey='name'
-            key='key'
-            value={ oldValue }
-          />
-        </Form>, parent) as Form;
+          <FormTextInput inputKey="name" key="key" value={oldValue} />
+        </Form>,
+        parent
+      ) as Form;
 
       expect(setStateSpy.callCount).toEqual(0);
     });

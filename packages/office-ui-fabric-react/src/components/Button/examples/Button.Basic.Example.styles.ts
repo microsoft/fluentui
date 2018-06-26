@@ -12,7 +12,7 @@ export interface IButtonBasicExampleStyles {
 }
 
 export function getStyles(props: IButtonBasicExampleStyleProps): IButtonBasicExampleStyles {
-  return ({
+  return {
     example: [
       'ms-BasicButtonsExample',
       {
@@ -37,5 +37,5 @@ export function getStyles(props: IButtonBasicExampleStyleProps): IButtonBasicExa
         }
       }
     ]
-  });
+  };
 }

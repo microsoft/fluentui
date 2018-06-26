@@ -1,24 +1,24 @@
 import { IDialogStyleProps, IDialogStyles } from './Dialog.types';
-import {
-  ScreenWidthMinMedium,
-} from '../../Styling';
+import { ScreenWidthMinMedium, getGlobalClassNames } from '../../Styling';
 
-export const getStyles = (
-  props: IDialogStyleProps
-): IDialogStyles => {
+const GlobalClassNames = {
+  root: 'ms-Dialog'
+};
+
+export const getStyles = (props: IDialogStyleProps): IDialogStyles => {
   const {
     className,
     containerClassName,
     dialogDefaultMinWidth = '288px',
     dialogDefaultMaxWidth = '340px',
     hidden,
+    theme
   } = props;
 
-  return ({
-    root: [
-      'ms-Dialog',
-      className,
-    ],
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
+  return {
+    root: [classNames.root, className],
 
     main: [
       {
@@ -28,12 +28,12 @@ export const getStyles = (
           [`@media (min-width: ${ScreenWidthMinMedium}px)`]: {
             width: 'auto',
             maxWidth: dialogDefaultMaxWidth,
-            minWidth: dialogDefaultMinWidth,
+            minWidth: dialogDefaultMinWidth
           }
         }
       },
       !hidden && { display: 'flex' },
-      containerClassName,
+      containerClassName
     ]
-  });
+  };
 };

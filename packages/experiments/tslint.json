@@ -3,6 +3,6 @@
     "office-ui-fabric-react-tslint"
   ],
   "rules": {
-    "prefer-const": false
+    "deprecation": false
   }
 }

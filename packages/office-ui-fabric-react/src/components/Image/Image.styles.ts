@@ -1,12 +1,19 @@
 import { IImageStyleProps, IImageStyles } from './Image.types';
-import {
-  AnimationClassNames,
-  IStyle,
-} from '../../Styling';
+import { AnimationClassNames, IStyle, getGlobalClassNames } from '../../Styling';
 
-export const getStyles = (
-  props: IImageStyleProps
-): IImageStyles => {
+const GlobalClassNames = {
+  root: 'ms-Image',
+  rootMaximizeFrame: 'ms-Image--maximizeFrame',
+  image: 'ms-Image-image',
+  imageCenter: 'ms-Image-image--center',
+  imageContain: 'ms-Image-image--contain',
+  imageCover: 'ms-Image-image--cover',
+  imageNone: 'ms-Image-image--none',
+  imageLandscape: 'ms-Image-image--landscape',
+  imagePortrait: 'ms-Image-image--portrait'
+};
+
+export const getStyles = (props: IImageStyleProps): IImageStyles => {
   const {
     className,
     width,
@@ -21,8 +28,11 @@ export const getStyles = (
     isCover,
     isNone,
     isError,
-    isNotImageFit
+    isNotImageFit,
+    theme
   } = props;
+
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const ImageFitStyles: IStyle = {
     position: 'absolute',
@@ -31,26 +41,26 @@ export const getStyles = (
     transform: 'translate(-50%,-50%)' // @todo test RTL renders transform: translate(50%,-50%);
   };
 
-  return ({
+  return {
     root: [
-      'ms-Image',
+      classNames.root,
       {
         overflow: 'hidden'
       },
       maximizeFrame && [
-        'ms-Image--maximizeFrame',
+        classNames.rootMaximizeFrame,
         {
           height: '100%',
           width: '100%'
         }
       ],
       (isCenter || isContain || isCover) && {
-        position: 'relative',
+        position: 'relative'
       },
       className
     ],
     image: [
-      'ms-Image-image',
+      classNames.image,
       {
         display: 'block',
         opacity: 0
@@ -61,12 +71,9 @@ export const getStyles = (
           opacity: 1
         }
       ],
-      isCenter && [
-        'ms-Image-image--center',
-        ImageFitStyles
-      ],
+      isCenter && [classNames.imageCenter, ImageFitStyles],
       isContain && [
-        'ms-Image-image--contain',
+        classNames.imageContain,
         isLandscape && {
           width: '100%',
           height: 'auto'
@@ -78,7 +85,7 @@ export const getStyles = (
         ImageFitStyles
       ],
       isCover && [
-        'ms-Image-image--cover',
+        classNames.imageCover,
         isLandscape && {
           width: 'auto',
           height: '100%'
@@ -90,32 +97,35 @@ export const getStyles = (
         ImageFitStyles
       ],
       isNone && [
-        'ms-Image-image--none',
+        classNames.imageNone,
         {
           width: 'auto',
           height: 'auto'
         }
       ],
       isNotImageFit && [
-        !!width && !height && {
-          height: 'auto',
-          width: '100%'
-        },
-        !width && !!height && {
-          height: '100%',
-          width: 'auto'
-        },
-        !!width && !!height && {
-          height: '100%',
-          width: '100%'
-        }
+        !!width &&
+          !height && {
+            height: 'auto',
+            width: '100%'
+          },
+        !width &&
+          !!height && {
+            height: '100%',
+            width: 'auto'
+          },
+        !!width &&
+          !!height && {
+            height: '100%',
+            width: '100%'
+          }
       ],
       isLoaded && shouldFadeIn && !shouldStartVisible && AnimationClassNames.fadeIn400,
-      isLandscape && 'ms-Image-image--landscape',
-      !isLandscape && 'ms-Image-image--portrait',
+      isLandscape && classNames.imageLandscape,
+      !isLandscape && classNames.imagePortrait,
       !isLoaded && 'is-notLoaded',
       shouldFadeIn && 'is-fadeIn',
       isError && 'is-error'
     ]
-  });
+  };
 };

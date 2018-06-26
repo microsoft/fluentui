@@ -1,9 +1,6 @@
 /* tslint:disable */
 import { IStyle, AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
-import {
-  INavStyleProps,
-  INavStyles
-} from './Nav.types';
+import { INavStyleProps, INavStyles } from './Nav.types';
 
 export type INavItemStyle = {
   root?: IStyle;
@@ -29,18 +26,10 @@ const navItemWithChildBgColor = '#505050';
 const navItemSelectedColor = '#666666';
 const navItemIndentSize = 50;
 
-export const getStyles = (
-  props: INavStyleProps
-): INavStyles => {
-  const {
-    isSelected,
-    hasChildren,
-    nestingLevel,
-    isCollapsed,
-    scrollTop
-  } = props;
+export const getStyles = (props: INavStyleProps): INavStyles => {
+  const { isSelected, hasChildren, nestingLevel, isCollapsed, scrollTop } = props;
 
-  return ({
+  return {
     root: {
       width: isCollapsed ? navCollapsedWidth : navWidth,
       backgroundColor: navBackgroundColor,
@@ -52,22 +41,19 @@ export const getStyles = (
           margin: 0,
           fontSize: navFontSize,
           selectors: {
-            li: {
-              selectors: {
-                ':hover': {
-                  selectors: {
-                    '>div[class*=ms-Nav-FloatingNav]': {
-                      visibility: 'visible'
-                    }
-                  }
-                }
-              }
+            'li:hover >div': {
+              display: 'block'
             }
           }
         },
         a: {
           color: `${navTextColor} !important`,
-          outline: 'none'
+          outline: 'none',
+          selectors: {
+            ':focus': {
+              backgroundColor: navItemHoverColor
+            }
+          }
         }
       }
     },
@@ -106,9 +92,7 @@ export const getStyles = (
     },
     navFloatingRoot: [
       {
-        displayName: 'ms-Nav-FloatingNav',
-        display: 'block',
-        visibility: 'hidden',
+        display: 'none',
         position: 'absolute',
         marginLeft: navCollapsedWidth,
         marginTop: -navItemHeight - (!!scrollTop && scrollTop > 0 ? scrollTop : 0),
@@ -153,6 +137,7 @@ export const getStyles = (
     navToggler: {
       height: navItemHeight,
       cursor: 'pointer',
+      backgroundColor: 'inherit',
       selectors: {
         ':hover': {
           backgroundColor: navItemHoverColor
@@ -160,7 +145,7 @@ export const getStyles = (
       },
       textAlign: 'right'
     }
-  });
+  };
 };
 
 /* tslint:enable */

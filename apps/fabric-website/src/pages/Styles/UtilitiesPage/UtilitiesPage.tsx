@@ -8,13 +8,16 @@ const utilitiesData = require('../../../data/utilities.json');
 export class UtilitiesPage extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
-      <div className={ pageStyles.basePage }>
-        <PageHeader pageTitle='Utilities' backgroundColor='#006f94' />
-        <div className={ pageStyles.u_maxTextWidth }>
+      <div className={pageStyles.basePage}>
+        <PageHeader pageTitle="Utilities" backgroundColor="#006f94" />
+        <div className={pageStyles.u_maxTextWidth}>
           <h2>Helper utilities</h2>
-          <p>Fabric comes with a variety of utility classes that you can use to improve your app&rsquo;s accessibility, layout, text styling, and more.</p>
+          <p>
+            Fabric comes with a variety of utility classes that you can use to improve your app&rsquo;s accessibility,
+            layout, text styling, and more.
+          </p>
         </div>
-        <Table content={ utilitiesData } />
+        <Table content={utilitiesData} />
       </div>
     );
   }
