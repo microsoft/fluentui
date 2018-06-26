@@ -2,6 +2,42 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.20.0",
+      "tag": "office-ui-fabric-react_v6.20.0",
+      "date": "Tue, 26 Jun 2018 10:27:47 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "544de4b27714a42cb4c11bb762cd0f6a7ea5367e",
+            "comment": "Callout: add blur listener that only dismisses Callout if window loses focus"
+          },
+          {
+            "author": "Josh Chang <coralbue@gmail.com>",
+            "commit": "2483f0415b64532b3443b1d7b855e9d40e9d833b",
+            "comment": "ComboBox: Set Callout MaxWidth to be the width of the menu when useComboBoxAsMenuWidth when enabled"
+          },
+          {
+            "author": "Kelsey Young <kelseyyoung4@gmail.com>",
+            "commit": "947831f755d0bbe48e536b6c8132293b952beaad",
+            "comment": "Default shouldFocusOnMount value in BaseButton _onToggleMenu"
+          },
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "1b9405b3b64839975e16ee1fad04d7868d9e3b99",
+            "comment": "MessageBar: remove role property from multiline root div"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "3ddbf34d984442f6302fad29d21d23d6512b6db1",
+            "comment": "mergestyles conversion"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.19.0",
       "tag": "office-ui-fabric-react_v6.19.0",
       "date": "Mon, 25 Jun 2018 10:28:13 GMT",

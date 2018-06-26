@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 25 Jun 2018 10:28:13 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Jun 2018 10:27:47 GMT and should not be manually modified.
+
+## 6.20.0
+Tue, 26 Jun 2018 10:27:47 GMT
+
+### Minor changes
+
+- mergestyles conversion
+
+### Patches
+
+- Callout: add blur listener that only dismisses Callout if window loses focus
+- ComboBox: Set Callout MaxWidth to be the width of the menu when useComboBoxAsMenuWidth when enabled
+- Default shouldFocusOnMount value in BaseButton _onToggleMenu
+- MessageBar: remove role property from multiline root div
 
 ## 6.19.0
 Mon, 25 Jun 2018 10:28:13 GMT

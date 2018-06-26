@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 22 Jun 2018 16:21:15 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Jun 2018 10:27:47 GMT and should not be manually modified.
+
+## 6.10.1
+Tue, 26 Jun 2018 10:27:47 GMT
+
+### Patches
+
+- Re-export ShimmerTile in its original location for 5.0 compat
 
 ## 6.10.0
 Fri, 22 Jun 2018 16:21:15 GMT
