@@ -5,9 +5,9 @@ import StackItem, { IStackItemProps, IStackItemStyles } from './StackItem';
 
 const StackItemType = (<StackItem /> as React.ReactElement<IStackItemProps> & {
   styles?:
-  | Partial<IStackItemStyles>
-  | ((props: IPropsWithStyles<IStackItemProps, IStackItemStyles>) => Partial<IStackItemStyles>)
-  | undefined;
+    | Partial<IStackItemStyles>
+    | ((props: IPropsWithStyles<IStackItemProps, IStackItemStyles>) => Partial<IStackItemStyles>)
+    | undefined;
 }).type;
 
 // Styles for the component
@@ -16,7 +16,7 @@ export interface IStackStyles {
   spacer: IStyle;
 }
 
-const nameMap: any = {
+const nameMap: { [key: string]: string } = {
   start: 'flex-start',
   end: 'flex-end'
 };
@@ -37,7 +37,7 @@ export interface IStackProps {
   wrap?: boolean;
 
   gap?: number;
-  align?: 'auto' | 'center' | 'start' | 'baseline' | 'stretch' | 'end';
+  align?: 'center' | 'start' | 'baseline' | 'stretch' | 'end';
   justify?: 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly';
 
   maxWidth?: number | string;
@@ -106,7 +106,7 @@ const styles = (props: IStyleProps<IStackProps, IStackStyles>): IStackStyles => 
         alignItems: nameMap[align!] || align
       },
       justify && {
-        justifyContent: nameMap[justify] || justify
+        justifyContent: nameMap[justify!] || justify
       },
       props.className
     ],
@@ -119,33 +119,33 @@ const styles = (props: IStyleProps<IStackProps, IStackStyles>): IStackStyles => 
         [vertical ? 'marginBottom' : 'marginRight']: gap
       }
     ]
-  };
+  } as IStackStyles;
 };
 
 export const Stack: React.StatelessComponent<
   IStackProps & {
     styles?:
-    | Partial<IStackStyles>
-    | ((props: IPropsWithStyles<IStackProps, IStackStyles>) => Partial<IStackStyles>)
-    | undefined;
+      | Partial<IStackStyles>
+      | ((props: IPropsWithStyles<IStackProps, IStackStyles>) => Partial<IStackStyles>)
+      | undefined;
   }
-  > & {
-    Item: React.StatelessComponent<
+> & {
+  Item: React.StatelessComponent<
     IStackItemProps & {
       styles?:
-      | Partial<IStackItemStyles>
-      | ((props: IPropsWithStyles<IStackItemProps, IStackItemStyles>) => Partial<IStackItemStyles>)
-      | undefined;
+        | Partial<IStackItemStyles>
+        | ((props: IPropsWithStyles<IStackItemProps, IStackItemStyles>) => Partial<IStackItemStyles>)
+        | undefined;
     }
-    >;
-  } = createComponent({
-    displayName: 'Stack',
-    styles,
-    view,
-    statics: {
-      Item: StackItem,
-      defaultProps: {}
-    }
-  });
+  >;
+} = createComponent({
+  displayName: 'Stack',
+  styles,
+  view,
+  statics: {
+    Item: StackItem,
+    defaultProps: {}
+  }
+});
 
 export default Stack;

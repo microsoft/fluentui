@@ -7,11 +7,11 @@ export interface IStackItemStyles {
   root: IStyle;
 }
 
-const alignMap: any = {
+const alignMap: { [key: string]: string } = {
   start: 'flex-start',
   end: 'flex-end'
 };
-const justifyMap: any = {};
+const justifyMap: { [key: string]: string } = {};
 
 // Inputs to the component
 export interface IStackItemProps {
@@ -65,7 +65,7 @@ const styles = (props: IStyleProps<IStackItemProps, IStackItemStyles>): IStackIt
         [vertical ? 'marginTop' : 'marginLeft']: gap
       }
     ]
-  };
+  } as IStackItemStyles;
 };
 
 export const StackItem: React.StatelessComponent<IStackItemProps> & {
