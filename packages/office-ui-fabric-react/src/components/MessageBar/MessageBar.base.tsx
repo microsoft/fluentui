@@ -106,7 +106,7 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
 
   private _renderMultiLine(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
     return (
-      <div className={this._classNames.root} role="status" aria-live={this._getAnnouncementPriority()}>
+      <div className={this._classNames.root} aria-live={this._getAnnouncementPriority()}>
         <div className={this._classNames.content}>
           {this._getIconSpan()}
           {this._renderInnerText()}

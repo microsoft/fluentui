@@ -41,6 +41,41 @@ describe('Link', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders Link with "as=div" a div element', () => {
+    const component = renderer.create(
+      <Link as="div" className="customClassName">
+        I'm a div
+      </Link>
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('supports non button/anchor html attributes when "as=" is used', () => {
+    const component = renderer.create(
+      <Link as="blockquote" cite={'hi'} className="customClassName">
+        I'm a blockquote
+      </Link>
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders Link with "as=Route" a Route element', () => {
+    class Route extends React.Component {
+      public render() {
+        return null;
+      }
+    }
+
+    const component = renderer.create(
+      <Link as={Route} className="customClassName">
+        I'm a Route
+      </Link>
+    );
+    const testInstance = component.root;
+    expect(() => testInstance.findByType(Route)).not.toThrow();
+  });
   it('can have the global styles for Link component be disabled', () => {
     const NoClassNamesTheme = createTheme({ disableGlobalClassNames: true });
 

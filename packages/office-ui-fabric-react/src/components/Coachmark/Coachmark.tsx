@@ -2,12 +2,12 @@
 import * as React from 'react';
 import { BaseComponent, IRectangle, classNamesFunction, createRef, shallowCompare } from '../../Utilities';
 import { DefaultPalette } from '../../Styling';
-import { IPositionedData, RectangleEdge, getOppositeEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
+import { IPositionedData, RectangleEdge, getOppositeEdge } from '../../utilities/positioning';
 
 // Component Dependencies
 import { PositioningContainer, IPositioningContainer } from './PositioningContainer/index';
 import { Beak, BEAK_HEIGHT, BEAK_WIDTH } from './Beak/Beak';
-import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
+import { DirectionalHint } from '../../common/DirectionalHint';
 
 // Coachmark
 import { ICoachmarkTypes } from './Coachmark.types';

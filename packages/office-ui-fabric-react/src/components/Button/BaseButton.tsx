@@ -457,10 +457,16 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
 
     const currentMenuProps = this.state.menuProps;
+    let shouldFocusOnMount = true;
+    if (this.props.menuProps && this.props.menuProps.shouldFocusOnMount === false) {
+      shouldFocusOnMount = false;
+    }
     if (this.props.persistMenu) {
-      currentMenuProps && currentMenuProps.hidden ? this._openMenu(shouldFocusOnContainer) : this._dismissMenu();
+      currentMenuProps && currentMenuProps.hidden
+        ? this._openMenu(shouldFocusOnContainer, shouldFocusOnMount)
+        : this._dismissMenu();
     } else {
-      currentMenuProps ? this._dismissMenu() : this._openMenu(shouldFocusOnContainer);
+      currentMenuProps ? this._dismissMenu() : this._openMenu(shouldFocusOnContainer, shouldFocusOnMount);
     }
   };
 

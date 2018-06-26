@@ -180,6 +180,29 @@ export class ComboBoxBasicExample extends React.Component<
           }
           // tslint:enable:jsx-no-lambda
           dropdownMaxWidth={200}
+          useComboBoxAsMenuWidth={true}
+        />
+
+        <VirtualizedComboBox
+          defaultSelectedKey="C"
+          label="Scaled example with 1000 items (allowFreeform: T, AutoComplete: T):"
+          id="Basicdrop1"
+          ariaLabel="Basic ComboBox example"
+          allowFreeform={true}
+          autoComplete="on"
+          options={this.scaleOptions}
+          // tslint:disable:jsx-no-lambda
+          onFocus={() => console.log('onFocus called')}
+          onBlur={() => console.log('onBlur called')}
+          onMenuOpen={() => console.log('ComboBox menu opened')}
+          onPendingValueChanged={(option, pendingIndex, pendingValue) =>
+            console.log(
+              'Preview value was changed. Pending index: ' + pendingIndex + '. Pending value: ' + pendingValue
+            )
+          }
+          // tslint:enable:jsx-no-lambda
+          dropdownMaxWidth={400}
+          useComboBoxAsMenuWidth={true}
         />
 
         <ComboBox
