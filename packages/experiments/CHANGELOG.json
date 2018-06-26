@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.10.1",
+      "tag": "@uifabric/experiments_v6.10.1",
+      "date": "Tue, 26 Jun 2018 10:27:47 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "4408e0c62fd912d829a07e7067d7c14416a1bc7d",
+            "comment": "Re-export ShimmerTile in its original location for 5.0 compat"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.19.0 <7.0.0` to `>=6.20.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.10.0",
       "tag": "@uifabric/experiments_v6.10.0",
       "date": "Fri, 22 Jun 2018 16:21:15 GMT",
