@@ -3,6 +3,13 @@ import { IStyle } from '../../Styling';
 import { createComponent, IStyleProps, IViewProps, IPropsWithStyles } from '../Text/createComponent';
 import StackItem, { IStackItemProps, IStackItemStyles } from './StackItem';
 
+const StackItemType = (<StackItem /> as React.ReactElement<IStackItemProps> & {
+  styles?:
+  | Partial<IStackItemStyles>
+  | ((props: IPropsWithStyles<IStackItemProps, IStackItemStyles>) => Partial<IStackItemStyles>)
+  | undefined;
+}).type;
+
 // Styles for the component
 export interface IStackStyles {
   root: IStyle;
@@ -50,8 +57,8 @@ const view = (props: IViewProps<IStackProps, IStackStyles>) => {
         collapse: collapseItems
       };
 
-      if ((child as any).type === StackItemType) {
-        return React.cloneElement(child as any, {
+      if (child.type === StackItemType) {
+        return React.cloneElement(child, {
           ...defaultItemProps,
           ...child.props
         });
@@ -118,29 +125,27 @@ const styles = (props: IStyleProps<IStackProps, IStackStyles>): IStackStyles => 
 export const Stack: React.StatelessComponent<
   IStackProps & {
     styles?:
-      | Partial<IStackStyles>
-      | ((props: IPropsWithStyles<IStackProps, IStackStyles>) => Partial<IStackStyles>)
-      | undefined;
+    | Partial<IStackStyles>
+    | ((props: IPropsWithStyles<IStackProps, IStackStyles>) => Partial<IStackStyles>)
+    | undefined;
   }
-> & {
-  Item: React.StatelessComponent<
+  > & {
+    Item: React.StatelessComponent<
     IStackItemProps & {
       styles?:
-        | Partial<IStackItemStyles>
-        | ((props: IPropsWithStyles<IStackItemProps, IStackItemStyles>) => Partial<IStackItemStyles>)
-        | undefined;
+      | Partial<IStackItemStyles>
+      | ((props: IPropsWithStyles<IStackItemProps, IStackItemStyles>) => Partial<IStackItemStyles>)
+      | undefined;
     }
-  >;
-} = createComponent({
-  displayName: 'Stack',
-  styles,
-  view,
-  statics: {
-    Item: StackItem,
-    defaultProps: {}
-  }
-});
-
-const StackItemType = (<StackItem /> as any).type;
+    >;
+  } = createComponent({
+    displayName: 'Stack',
+    styles,
+    view,
+    statics: {
+      Item: StackItem,
+      defaultProps: {}
+    }
+  });
 
 export default Stack;

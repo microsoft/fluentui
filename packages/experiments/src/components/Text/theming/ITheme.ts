@@ -55,8 +55,6 @@ export interface ISwatches {
 }
 
 export type ISwatchRef = keyof ISwatches;
-export type ISchemeRef = keyof IScheme;
-export type IThemeRef = keyof ITheme;
 
 export interface IScheme {
   background: ISwatchRef;

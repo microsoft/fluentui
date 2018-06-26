@@ -89,7 +89,9 @@ export function createComponent<TProps, TStyles, TStatics = {}>(
 }
 
 // Helper function to augment existing components that have been created.
-export function augmentComponent<TProps, TStyles, TStatics>(options: IComponentOptions<TProps, TStyles, TStatics>) {
+export function augmentComponent<TProps, TStyles, TStatics>(
+  options: IComponentOptions<TProps, TStyles, TStatics>
+): void {
   augmentations[options.displayName] = {
     ...augmentations[options.displayName],
     ...options
