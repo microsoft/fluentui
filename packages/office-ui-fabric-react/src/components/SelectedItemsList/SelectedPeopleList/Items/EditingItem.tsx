@@ -14,7 +14,7 @@ import { FloatingPeoplePicker, IBaseFloatingPickerProps } from '../../../../Floa
 import { ISelectedPeopleItemProps } from '../SelectedPeopleList';
 import { IExtendedPersonaProps } from '../SelectedPeopleList';
 import { IPeoplePickerItemState } from './ExtendedSelectedItem';
-import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
+import { IPersonaProps } from '../../../Persona';
 
 import * as stylesImport from './EditingItem.scss';
 
