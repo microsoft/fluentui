@@ -25,7 +25,6 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
         font-size: 12px;
         font-weight: 400;
       }
-  role="status"
 >
   <div
     className=
