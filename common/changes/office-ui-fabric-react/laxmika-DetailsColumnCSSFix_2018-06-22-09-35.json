@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "CSS changes for draggable columns, to show the gripper ICON",
+      "comment": "CSS changes for draggable columns, to show the gripper ICON only on hover",
       "type": "patch"
     }
   ],
