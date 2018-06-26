@@ -18,7 +18,7 @@ import {
   ICoachmarkStyles,
   ICoachmarkStyleProps
 } from './Coachmark.styles';
-import { FocusTrapZone } from 'office-ui-fabric-react/lib/components/FocusTrapZone';
+import { FocusTrapZone } from '../FocusTrapZone';
 
 const getClassNames = classNamesFunction<ICoachmarkStyleProps, ICoachmarkStyles>();
 
@@ -95,6 +95,11 @@ export interface ICoachmarkState {
    * Transform origin of teaching bubble callout
    */
   transformOrigin?: string;
+
+  /**
+   * ARIA alert text to read aloud with Narrator once the Coachmark is mounted
+   */
+  alertText?: string;
 }
 
 export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
@@ -171,7 +176,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       isBeaconAnimating,
       isMeasuring,
       entityInnerHostRect,
-      transformOrigin
+      transformOrigin,
+      alertText
     } = this.state;
 
     const classNames = getClassNames(getStyles, {
@@ -205,7 +211,9 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
               role="alert"
               ref={this._ariaAlertContainer}
               aria-hidden={!isCollapsed}
-            />
+            >
+              {alertText}
+            </div>
           )}
           <div className={classNames.pulsingBeacon} />
           <div className={classNames.translateAnimationContainer} ref={this._translateAnimationContainer}>
@@ -221,7 +229,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
                     color={color}
                   />
                 )}
-                <FocusTrapZone isClickableOutsideFocusTrap={true} forceFocusInsideTrap={false}>
+                <FocusTrapZone isClickableOutsideFocusTrap={true}>
                   <div
                     className={classNames.entityHost}
                     tabIndex={-1}
@@ -230,18 +238,18 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
                     aria-labelledby={ariaLabelledBy}
                     aria-describedby={ariaDescribedBy}
                   >
-                    {isCollapsed &&
+                    {isCollapsed && [
                       ariaLabelledBy && (
                         <p id={ariaLabelledBy} className={classNames.ariaContainer}>
                           {ariaLabelledByText}
                         </p>
-                      )}
-                    {isCollapsed &&
+                      ),
                       ariaDescribedBy && (
                         <p id={ariaDescribedBy} className={classNames.ariaContainer}>
                           {ariaDescribedByText}
                         </p>
-                      )}
+                      )
+                    ]}
                     <div
                       className={classNames.entityInnerHost}
                       ref={this._entityInnerHostElement}
@@ -304,11 +312,13 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
           this._addProximityHandler(this.props.mouseProximityOffset);
         }, this.props.delayBeforeMouseOpen!);
 
+        // Need to add setTimeout to have narrator read change in alert container
         if (this.props.ariaAlertText) {
           this._async.setTimeout(() => {
             if (this.props.ariaAlertText && this._ariaAlertContainer.current) {
-              const alertText = document.createTextNode(this.props.ariaAlertText);
-              this._ariaAlertContainer.current.appendChild(alertText);
+              this.setState({
+                alertText: this.props.ariaAlertText
+              });
             }
           }, 0);
         }
