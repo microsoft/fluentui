@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "TextField: placeholder text should be neutralSeconary.",
+      "comment": "MessageBar: remove role property from multiline root div",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "dzearing@microsoft.com"
+  "email": "kakje@microsoft.com"
 }

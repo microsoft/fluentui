@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Pivot: fixing a typing issue when used with proxies.",
+      "comment": "Callout: add blur listener that only dismisses Callout if window loses focus",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "dzearing@microsoft.com"
+  "email": "naethell@microsoft.com"
 }

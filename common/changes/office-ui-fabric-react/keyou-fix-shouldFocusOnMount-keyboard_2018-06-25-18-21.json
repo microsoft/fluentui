@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Remove space from personaInitialsColorToHexCode magenta case",
+      "comment": "Default shouldFocusOnMount value in BaseButton _onToggleMenu",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "fpintos@microsoft.com"
+  "email": "keyou@microsoft.com"
 }
