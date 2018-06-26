@@ -51,7 +51,9 @@ const styles = (props: IStyleProps<IStackItemProps, IStackItemStyles>): IStackIt
       grow && { flexGrow: 1 },
       !grow && !collapse && { flexShrink: 0 },
       align && {
-        alignSelf: alignMap[align] || align,
+        alignSelf: alignMap[align] || align
+      },
+      justify && {
         justifyContent: justifyMap[justify!] || justify
       },
       {
@@ -68,9 +70,9 @@ const styles = (props: IStyleProps<IStackItemProps, IStackItemStyles>): IStackIt
 
 export const StackItem: React.StatelessComponent<IStackItemProps> & {
   styles?:
-  | Partial<IStackItemStyles>
-  | ((props: IPropsWithStyles<IStackItemProps, IStackItemStyles>) => Partial<IStackItemStyles>)
-  | undefined;
+    | Partial<IStackItemStyles>
+    | ((props: IPropsWithStyles<IStackItemProps, IStackItemStyles>) => Partial<IStackItemStyles>)
+    | undefined;
 } = createComponent<IStackItemProps, IStackItemStyles>({
   displayName: 'StackItem',
   styles,

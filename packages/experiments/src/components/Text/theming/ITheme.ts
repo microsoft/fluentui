@@ -51,15 +51,19 @@ export interface ISwatches {
   greenDark: ISwatch;
   green: ISwatch;
   greenLight: ISwatch;
+  [key: string]: ISwatch;
 }
 
 export type ISwatchRef = keyof ISwatches;
+export type ISchemeRef = keyof IScheme;
+export type IThemeRef = keyof ITheme;
 
 export interface IScheme {
   background: ISwatchRef;
   text: ISwatchRef;
   link: ISwatchRef;
   linkVisited: ISwatchRef;
+  [key: string]: ISwatchRef;
 }
 
 export interface ITheme {

@@ -1,6 +1,7 @@
 export interface IFontFamilies {
   default: string;
   monospace: string;
+  [key: string]: string;
 }
 
 export interface IFontSizes {
@@ -13,12 +14,14 @@ export interface IFontSizes {
   xxLarge: string;
   xxxLarge: string;
   mega: string;
+  [key: string]: string;
 }
 
 export interface IFontWeights {
   light: number | string;
   default: number | string;
   bold: number | string;
+  [key: string]: number | string;
 }
 
 export interface IFontColors {
@@ -45,6 +48,7 @@ export interface IFontTypes {
   h3: Partial<IFontType>;
   h4: Partial<IFontType>;
   h5: Partial<IFontType>;
+  [key: string]: Partial<IFontType>;
 }
 
 export interface ITypography {

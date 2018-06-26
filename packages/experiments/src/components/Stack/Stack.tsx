@@ -84,8 +84,6 @@ const styles = (props: IStyleProps<IStackProps, IStackStyles>): IStackStyles => 
       {
         display: 'flex',
         flexDirection: vertical ? 'column' : 'row',
-        alignItems: nameMap[align!] || align,
-        justifyContent: nameMap[justify!] || justify,
         flexWrap: 'nowrap',
         width: fill && !vertical ? '100%' : 'auto',
         height: fill && vertical ? '100%' : 'auto',
@@ -96,6 +94,12 @@ const styles = (props: IStyleProps<IStackProps, IStackStyles>): IStackStyles => 
       grow && {
         flexGrow: 1,
         overflow: 'hidden'
+      },
+      align && {
+        alignItems: nameMap[align!] || align
+      },
+      justify && {
+        justifyContent: nameMap[justify] || justify
       },
       props.className
     ],
