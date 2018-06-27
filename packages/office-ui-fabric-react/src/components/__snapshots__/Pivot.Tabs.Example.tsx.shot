@@ -48,7 +48,6 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
               ms-Button--action
               ms-Button--command
               is-selected
-              ms-Pivot-link
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -123,7 +122,7 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
                 border-bottom: 2px solid #0078d4;
                 bottom: 0px;
                 box-sizing: border-box;
-                content: ;
+                content: "";
                 height: auto;
                 left: 0px;
                 position: absolute;
@@ -133,15 +132,12 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
               }
               &:after {
                 color: transparent;
+                content: attr(title);
                 display: block;
                 font-weight: 700;
                 height: 1px;
                 overflow: hidden;
                 visibility: hidden;
-              }
-              &:hover:before {
-                border-bottom: 2px solid transparent;
-                box-sizing: border-box;
               }
               .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #767676;
@@ -153,12 +149,15 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
               }
               @media screen and (-ms-high-contrast: active){& {
                 -ms-high-contrast-adjust: none;
-                background-color: Highlight;
                 background: Highlight;
                 color: HighlightText;
+                font-weight: 600;
               }
               @media screen and (-ms-high-contrast: active){&:before {
                 border-bottom-color: Highlight;
+              }
+              &:active, &:hover {
+                color: #ffffff;
               }
           data-is-focusable={true}
           disabled={undefined}
@@ -280,7 +279,7 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
               }
               &:active {
                 background-color: #0078d4;
-                color: #ffffff;
+                color: #000000;
               }
               &:active .ms-Button-icon {
                 color: #004578;
@@ -288,7 +287,7 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
               &:before {
                 background-color: transparent;
                 bottom: 0px;
-                content: ;
+                content: "";
                 height: 2px;
                 left: 8px;
                 position: absolute;
@@ -297,15 +296,12 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
               }
               &:after {
                 color: transparent;
+                content: attr(title);
                 display: block;
                 font-weight: 700;
                 height: 1px;
                 overflow: hidden;
                 visibility: hidden;
-              }
-              &:hover:before {
-                border-bottom: 2px solid transparent;
-                box-sizing: border-box;
               }
               .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #767676;
@@ -314,6 +310,10 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
                 background: transparent;
                 height: auto;
                 transition: none;
+              }
+              &:hover::before {
+                border-bottom: 2px solid transparent;
+                box-sizing: border-box;
               }
               &:hover, &:focus {
                 color: #000000;
@@ -439,7 +439,7 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
               }
               &:active {
                 background-color: #0078d4;
-                color: #ffffff;
+                color: #000000;
               }
               &:active .ms-Button-icon {
                 color: #004578;
@@ -447,7 +447,7 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
               &:before {
                 background-color: transparent;
                 bottom: 0px;
-                content: ;
+                content: "";
                 height: 2px;
                 left: 8px;
                 position: absolute;
@@ -456,15 +456,12 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
               }
               &:after {
                 color: transparent;
+                content: attr(title);
                 display: block;
                 font-weight: 700;
                 height: 1px;
                 overflow: hidden;
                 visibility: hidden;
-              }
-              &:hover:before {
-                border-bottom: 2px solid transparent;
-                box-sizing: border-box;
               }
               .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #767676;
@@ -473,6 +470,10 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
                 background: transparent;
                 height: auto;
                 transition: none;
+              }
+              &:hover::before {
+                border-bottom: 2px solid transparent;
+                box-sizing: border-box;
               }
               &:hover, &:focus {
                 color: #000000;
@@ -598,7 +599,7 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
               }
               &:active {
                 background-color: #0078d4;
-                color: #ffffff;
+                color: #000000;
               }
               &:active .ms-Button-icon {
                 color: #004578;
@@ -606,7 +607,7 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
               &:before {
                 background-color: transparent;
                 bottom: 0px;
-                content: ;
+                content: "";
                 height: 2px;
                 left: 8px;
                 position: absolute;
@@ -615,15 +616,12 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
               }
               &:after {
                 color: transparent;
+                content: attr(title);
                 display: block;
                 font-weight: 700;
                 height: 1px;
                 overflow: hidden;
                 visibility: hidden;
-              }
-              &:hover:before {
-                border-bottom: 2px solid transparent;
-                box-sizing: border-box;
               }
               .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #767676;
@@ -632,6 +630,10 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
                 background: transparent;
                 height: auto;
                 transition: none;
+              }
+              &:hover::before {
+                border-bottom: 2px solid transparent;
+                box-sizing: border-box;
               }
               &:hover, &:focus {
                 color: #000000;

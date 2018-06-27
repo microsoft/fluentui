@@ -1,7 +1,6 @@
 import { IPivotStyleProps, IPivotStyles } from './Pivot.types';
 import {
   AnimationVariables,
-  GlobalClassNames,
   getFocusStyle,
   getGlobalClassNames,
   HighContrastSelector,
@@ -23,10 +22,7 @@ const globalClassNames = {
   text: 'ms-Pivot-text'
 };
 
-const linkStyles = (
-  props: IPivotStyleProps,
-  classNames: Partial<GlobalClassNames<typeof globalClassNames>>
-): IStyle[] => {
+const linkStyles = (props: IPivotStyleProps): IStyle[] => {
   const { rootIsLarge, rootIsTabs, theme } = props;
   const { palette } = props.theme;
   return [
@@ -122,7 +118,7 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
     ],
     link: [
       classNames.link,
-      ...linkStyles(props, classNames),
+      ...linkStyles(props),
       {
         selectors: {
           ':hover::before': {
@@ -145,7 +141,7 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
     ],
     linkIsSelected: [
       classNames.isSelected,
-      ...linkStyles(props, classNames),
+      ...linkStyles(props),
       {
         fontWeight: FontWeights.semibold,
         selectors: {
