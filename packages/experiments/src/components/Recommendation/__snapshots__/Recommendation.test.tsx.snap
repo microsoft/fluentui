@@ -219,7 +219,7 @@ exports[`RecommendationCard renders basic example correctly 1`] = `
           {
             display: flex;
             flex: 1;
-            padding-bottom: 0;
+            padding-bottom: 16px;
             padding-left: 16px;
             padding-right: 16px;
             padding-top: 0;
@@ -679,7 +679,7 @@ exports[`RecommendationCard renders dlp example correctly 1`] = `
           {
             display: flex;
             flex: 1;
-            padding-bottom: 0;
+            padding-bottom: 16px;
             padding-left: 16px;
             padding-right: 16px;
             padding-top: 0;
@@ -1426,7 +1426,7 @@ exports[`RecommendationCard renders imageillustration example correctly 1`] = `
           {
             display: flex;
             flex: 1;
-            padding-bottom: 0;
+            padding-bottom: 16px;
             padding-left: 16px;
             padding-right: 16px;
             padding-top: 0;
