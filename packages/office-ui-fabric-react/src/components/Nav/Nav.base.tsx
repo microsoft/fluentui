@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, customizable, divProperties, getNativeProps } from '../../Utilities';
+import { BaseComponent, classNamesFunction, divProperties, getNativeProps } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { ActionButton } from '../../Button';
 import { Icon } from '../../Icon';
