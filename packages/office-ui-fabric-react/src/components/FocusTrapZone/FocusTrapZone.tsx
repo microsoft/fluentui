@@ -21,7 +21,6 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   private _previouslyFocusedElementInTrapZone?: HTMLElement;
 
   public componentWillMount(): void {
-    const { isClickableOutsideFocusTrap = false, forceFocusInsideTrap = true } = this.props;
     FocusTrapZone._focusStack.push(this);
   }
 
