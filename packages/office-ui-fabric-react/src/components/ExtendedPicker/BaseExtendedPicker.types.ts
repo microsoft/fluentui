@@ -112,4 +112,9 @@ export interface IBaseExtendedPickerProps<T> {
    * If using as a controlled component use selectedItems here instead of the SelectedItemsList
    */
   selectedItems?: T[];
+
+  /**
+   * If using as a controlled component use suggestionITems here instead of FloatingPicker
+   */
+  suggestionItems?: T[];
 }
