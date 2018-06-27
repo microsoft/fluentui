@@ -409,7 +409,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         id={this._id}
         {...inputProps}
         ref={this._textElement}
-        value={this.state.value ? this.state.value : ''}
+        value={this.state.value === undefined ? '' : this.state.value}
         onInput={this._onInputChange}
         onChange={this._onInputChange}
         className={this._getTextElementClassName()}
