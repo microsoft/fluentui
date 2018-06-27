@@ -252,30 +252,40 @@ exports[`DetailsList renders List correctly 1`] = `
                   style={Object {}}
                 >
                   <div
+                    aria-posinset={1}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={0}
                     role="presentation"
                   />
                   <div
+                    aria-posinset={2}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={1}
                     role="presentation"
                   />
                   <div
+                    aria-posinset={3}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={2}
                     role="presentation"
                   />
                   <div
+                    aria-posinset={4}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={3}
                     role="presentation"
                   />
                   <div
+                    aria-posinset={5}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={4}

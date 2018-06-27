@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, css } from '../../Utilities';
+import { BaseComponent, css, KeyCodes } from '../../Utilities';
 import { IGroupDividerProps } from './GroupedList.types';
 import { SelectionMode } from '../../utilities/selection/index';
 import { Check } from '../../Check';
@@ -46,6 +46,7 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
     const {
       group,
       groupLevel,
+      groupIndex,
       viewport,
       selectionMode,
       loadingText,
@@ -73,7 +74,13 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
         })}
         style={viewport ? { minWidth: viewport.width } : {}}
         onClick={this._onHeaderClick}
+        onKeyDown={this._onKeyDown}
         aria-label={group.ariaLabel || group.name}
+        aria-selected={group.isSelected}
+        aria-expanded={!group.isCollapsed}
+        aria-level={(groupLevel || 0) + 1}
+        aria-posinset={(groupIndex || 0) + 1}
+        aria-setsize={group.children ? group.children.length : group.count}
         data-is-focusable={true}
       >
         <FocusZone className={styles.groupHeaderContainer} direction={FocusZoneDirection.horizontal}>
@@ -149,6 +156,18 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
       onGroupHeaderClick(group!);
     } else if (onToggleSelectGroup) {
       onToggleSelectGroup(group!);
+    }
+  };
+
+  private _onKeyDown = (evt: React.KeyboardEvent<HTMLElement>) => {
+    const { group, onToggleCollapse } = this.props;
+    const { isCollapsed } = group!;
+
+    if ((evt.keyCode === KeyCodes.right && isCollapsed) || (evt.keyCode === KeyCodes.left && !isCollapsed)) {
+      onToggleCollapse!(group!);
+
+      evt.stopPropagation();
+      evt.preventDefault();
     }
   };
 

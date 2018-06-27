@@ -458,17 +458,19 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   }
 
   private _onRenderPage = (pageProps: IPageProps, defaultRender?: IRenderFunction<IPageProps>): any => {
-    const { onRenderCell, role } = this.props;
+    const {
+      onRenderCell,
+      role,
+      cellRole = role === undefined ? 'listitem' : 'presentation',
+      items: allItems = []
+    } = this.props;
 
     const {
-      page: { items, startIndex },
+      page: { items = [], startIndex },
       ...divProps
     } = pageProps;
 
-    // only assign list item role if no role is assigned
-    const cellRole = role === undefined ? 'listitem' : 'presentation';
-
-    const cells = (items || []).map((item: any, offset: number) => {
+    const cells = items.map((item: any, offset: number) => {
       const index = startIndex + offset;
 
       let itemKey = this.props.getKey ? this.props.getKey(item, index) : item && item.key;
@@ -480,6 +482,8 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       return (
         <div
           role={cellRole}
+          aria-posinset={index + 1}
+          aria-setsize={allItems.length}
           className={css('ms-List-cell')}
           key={itemKey}
           data-list-index={index}
