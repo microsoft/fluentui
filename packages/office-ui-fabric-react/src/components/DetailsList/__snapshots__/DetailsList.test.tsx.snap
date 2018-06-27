@@ -162,7 +162,6 @@ exports[`DetailsList renders List correctly 1`] = `
           </div>
           <div
             aria-colindex={2}
-            aria-disabled={false}
             aria-sort="none"
             className="ms-DetailsHeader-cell is-actionable undefined"
             data-automationid="ColumnsHeaderColumn"
