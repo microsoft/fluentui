@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { ICardFrameProps, ICardFrameStyles, ICardDropDownOption } from './CardFrame.types';
-import { IconButton } from 'office-ui-fabric-react/lib/Button';
+import { IconButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { getStyles } from './CardFrame.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IOverflowSetItemProps, OverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
+import { customOverflowStyle } from './CardFrame.styles';
 
 export class CardFrame extends React.Component<ICardFrameProps, {}> {
   constructor(props: ICardFrameProps) {
@@ -41,7 +42,6 @@ export class CardFrame extends React.Component<ICardFrameProps, {}> {
           </div>
           <div className={classNames.cardTitle}>{cardTitle}</div>
         </div>
-        <hr className={classNames.seperator} />
         <div className={classNames.layout}>{this.props.children}</div>
       </div>
     );
@@ -60,11 +60,12 @@ export class CardFrame extends React.Component<ICardFrameProps, {}> {
 
   private _onRenderOverflowButton(overflowItems: IOverflowSetItemProps[] | undefined): JSX.Element {
     return (
-      <IconButton
+      <DefaultButton
         menuIconProps={{ iconName: 'More' }}
         menuProps={{ items: overflowItems! }}
         ariaLabel="Card options"
         title="Card options"
+        styles={customOverflowStyle}
       />
     );
   }
