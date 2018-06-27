@@ -12,7 +12,6 @@ module.exports = resources.createConfig(BUNDLE_NAME, IS_PRODUCTION, {
     rules: [
       {
         test: /\.css$/,
-        exclude: /node_modules/,
         use: ['style-loader', 'css-loader']
       }
     ]
