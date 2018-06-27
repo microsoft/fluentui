@@ -24,6 +24,8 @@ exports[`RecommendationCard renders basic example correctly 1`] = `
       className=
 
           {
+            border-bottom-color: rgba(0, 120, 215, 1);
+            border-bottom: 1px solid;
             height: 40px;
             overflow: hidden;
           }
@@ -35,6 +37,17 @@ exports[`RecommendationCard renders basic example correctly 1`] = `
               float: right;
               height: 100%;
               text-align: center;
+              width: 40px;
+            }
+            & div div {
+              width: 40px;
+            }
+            & div div button {
+              min-width: 40px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
               width: 40px;
             }
       >
@@ -74,31 +87,33 @@ exports[`RecommendationCard renders basic example correctly 1`] = `
               aria-pressed={undefined}
               className=
                   ms-Button
-                  ms-Button--icon
+                  ms-Button--default
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: transparent;
+                    background-color: inherit;
                     border-radius: 0px;
                     border: 1px solid transparent;
                     box-sizing: border-box;
+                    color: #333333;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
-                    height: 32px;
+                    height: 40px;
+                    min-width: 80px;
                     outline: transparent;
                     padding-bottom: 0;
-                    padding-left: 4px;
-                    padding-right: 4px;
+                    padding-left: 16px;
+                    padding-right: 16px;
                     padding-top: 0;
                     position: relative;
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
                     vertical-align: top;
-                    width: 32px;
+                    width: 40px;
                   }
                   &::-moz-focus-inner {
                     border: 0;
@@ -123,14 +138,16 @@ exports[`RecommendationCard renders basic example correctly 1`] = `
                     top: -2px;
                   }
                   &:hover {
-                    color: #004578;
+                    background-color: rgba(0, 0, 0, 0.1);
+                    color: #000000;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     border-color: Highlight;
                     color: Highlight;
                   }
                   &:active {
-                    color: #0078d4;
+                    background-color: #c8c8c8;
+                    color: #212121;
                   }
               data-is-focusable={true}
               disabled={undefined}
@@ -196,19 +213,6 @@ exports[`RecommendationCard renders basic example correctly 1`] = `
         Recommended based on your lorem ipsum
       </div>
     </div>
-    <hr
-      className=
-
-          {
-            background-color: rgba(0, 120, 215, 1);
-            height: 1px;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            width: 100%;
-          }
-    />
     <div
       className=
 
@@ -480,6 +484,8 @@ exports[`RecommendationCard renders dlp example correctly 1`] = `
       className=
 
           {
+            border-bottom-color: rgba(0, 120, 215, 1);
+            border-bottom: 1px solid;
             height: 40px;
             overflow: hidden;
           }
@@ -491,6 +497,17 @@ exports[`RecommendationCard renders dlp example correctly 1`] = `
               float: right;
               height: 100%;
               text-align: center;
+              width: 40px;
+            }
+            & div div {
+              width: 40px;
+            }
+            & div div button {
+              min-width: 40px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
               width: 40px;
             }
       >
@@ -530,31 +547,33 @@ exports[`RecommendationCard renders dlp example correctly 1`] = `
               aria-pressed={undefined}
               className=
                   ms-Button
-                  ms-Button--icon
+                  ms-Button--default
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: transparent;
+                    background-color: inherit;
                     border-radius: 0px;
                     border: 1px solid transparent;
                     box-sizing: border-box;
+                    color: #333333;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
-                    height: 32px;
+                    height: 40px;
+                    min-width: 80px;
                     outline: transparent;
                     padding-bottom: 0;
-                    padding-left: 4px;
-                    padding-right: 4px;
+                    padding-left: 16px;
+                    padding-right: 16px;
                     padding-top: 0;
                     position: relative;
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
                     vertical-align: top;
-                    width: 32px;
+                    width: 40px;
                   }
                   &::-moz-focus-inner {
                     border: 0;
@@ -579,14 +598,16 @@ exports[`RecommendationCard renders dlp example correctly 1`] = `
                     top: -2px;
                   }
                   &:hover {
-                    color: #004578;
+                    background-color: rgba(0, 0, 0, 0.1);
+                    color: #000000;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     border-color: Highlight;
                     color: Highlight;
                   }
                   &:active {
-                    color: #0078d4;
+                    background-color: #c8c8c8;
+                    color: #212121;
                   }
               data-is-focusable={true}
               disabled={undefined}
@@ -652,19 +673,6 @@ exports[`RecommendationCard renders dlp example correctly 1`] = `
         Recommended based on your DLP Policies
       </div>
     </div>
-    <hr
-      className=
-
-          {
-            background-color: rgba(0, 120, 215, 1);
-            height: 1px;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            width: 100%;
-          }
-    />
     <div
       className=
 
@@ -1223,6 +1231,8 @@ exports[`RecommendationCard renders imageillustration example correctly 1`] = `
       className=
 
           {
+            border-bottom-color: rgba(0, 120, 215, 1);
+            border-bottom: 1px solid;
             height: 40px;
             overflow: hidden;
           }
@@ -1234,6 +1244,17 @@ exports[`RecommendationCard renders imageillustration example correctly 1`] = `
               float: right;
               height: 100%;
               text-align: center;
+              width: 40px;
+            }
+            & div div {
+              width: 40px;
+            }
+            & div div button {
+              min-width: 40px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
               width: 40px;
             }
       >
@@ -1273,31 +1294,33 @@ exports[`RecommendationCard renders imageillustration example correctly 1`] = `
               aria-pressed={undefined}
               className=
                   ms-Button
-                  ms-Button--icon
+                  ms-Button--default
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: transparent;
+                    background-color: inherit;
                     border-radius: 0px;
                     border: 1px solid transparent;
                     box-sizing: border-box;
+                    color: #333333;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
-                    height: 32px;
+                    height: 40px;
+                    min-width: 80px;
                     outline: transparent;
                     padding-bottom: 0;
-                    padding-left: 4px;
-                    padding-right: 4px;
+                    padding-left: 16px;
+                    padding-right: 16px;
                     padding-top: 0;
                     position: relative;
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
                     vertical-align: top;
-                    width: 32px;
+                    width: 40px;
                   }
                   &::-moz-focus-inner {
                     border: 0;
@@ -1322,14 +1345,16 @@ exports[`RecommendationCard renders imageillustration example correctly 1`] = `
                     top: -2px;
                   }
                   &:hover {
-                    color: #004578;
+                    background-color: rgba(0, 0, 0, 0.1);
+                    color: #000000;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     border-color: Highlight;
                     color: Highlight;
                   }
                   &:active {
-                    color: #0078d4;
+                    background-color: #c8c8c8;
+                    color: #212121;
                   }
               data-is-focusable={true}
               disabled={undefined}
@@ -1395,19 +1420,6 @@ exports[`RecommendationCard renders imageillustration example correctly 1`] = `
         Recommended based on your password settings
       </div>
     </div>
-    <hr
-      className=
-
-          {
-            background-color: rgba(0, 120, 215, 1);
-            height: 1px;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            width: 100%;
-          }
-    />
     <div
       className=
 

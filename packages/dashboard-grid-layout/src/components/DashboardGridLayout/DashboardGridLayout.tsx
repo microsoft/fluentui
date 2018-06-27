@@ -8,8 +8,8 @@ import {
 } from './DashboardGridLayout.types';
 import { getStyles } from './DashboardGridLayout.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-require('style-loader!css-loader!react-grid-layout/css/styles.css');
-require('style-loader!css-loader!react-resizable/css/styles.css');
+require('react-grid-layout/css/styles.css');
+require('react-resizable/css/styles.css');
 
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 const rowHeight = 50;

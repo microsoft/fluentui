@@ -86,7 +86,7 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
             {
               align-items: center;
               cursor: pointer;
-              display: inline-flex;
+              display: flex;
               margin-bottom: 0;
               margin-left: -4px;
               margin-right: -4px;

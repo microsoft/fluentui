@@ -150,9 +150,8 @@ export interface IFacepileStyleProps {
   // Insert Facepile style props below
   /**
    * Pixel value for spacing around button. Number value set in pixels
-  */
+   */
   spacingAroundItemButton?: number;
-
 }
 
 export interface IFacepileStyles {
