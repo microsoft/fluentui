@@ -31,12 +31,11 @@ exports[`Component Examples renders DatePicker.Input.Example.tsx correctly 1`] =
             {
               position: relative;
             }
+            & input[readonly] {
+              cursor: pointer;
+            }
             & input::-ms-clear {
               display: none;
-            }
-            &read-only {
-              background-color: yellow;
-              cursor: pointer;
             }
       >
         <div
@@ -97,7 +96,6 @@ exports[`Component Examples renders DatePicker.Input.Example.tsx correctly 1`] =
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: green;
                     bottom: 5px;
                     color: #666666;
                     display: inline-block;
@@ -110,6 +108,10 @@ exports[`Component Examples renders DatePicker.Input.Example.tsx correctly 1`] =
                     position: absolute;
                     right: 9px;
                     speak: none;
+                  }
+                  &:not(.msDatePickerDisabled) {
+                    cursor: pointer;
+                    pointer-events: initial;
                   }
               data-icon-name="Calendar"
               onClick={[Function]}

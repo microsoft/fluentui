@@ -17,7 +17,6 @@ describe('DatePicker', () => {
   it('should not open DatePicker when disabled, no label', () => {
     const wrapper = mount(<DatePickerBase disabled />);
     wrapper.find('i').simulate('click');
-    console.log(wrapper);
 
     expect(wrapper.state('isDatePickerShown')).toBe(false);
   });

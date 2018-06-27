@@ -23,14 +23,7 @@ export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
   };
 
   return {
-    root: [
-      classNames.root,
-      normalize,
-      {
-        // backgroundColor: 'red'
-      },
-      className
-    ],
+    root: [classNames.root, normalize, {}, className],
     textField: [
       classNames.textField,
       {
