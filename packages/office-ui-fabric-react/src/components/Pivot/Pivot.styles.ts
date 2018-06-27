@@ -30,7 +30,6 @@ const linkStyles = (
   const { rootIsLarge, rootIsTabs, theme } = props;
   const { palette } = props.theme;
   return [
-    classNames.link,
     {
       color: palette.neutralPrimary,
       display: 'inline-block',
@@ -47,7 +46,7 @@ const linkStyles = (
         ':before': {
           backgroundColor: 'transparent',
           bottom: 0,
-          content: '',
+          content: '""',
           height: '2px',
           left: '8px',
           position: 'absolute',
@@ -56,30 +55,25 @@ const linkStyles = (
         },
         ':after': {
           color: 'transparent',
-          // TODO: how to represent this?
-          // content: attr(title)
+          content: 'attr(title)',
           display: 'block',
           fontWeight: FontWeights.bold,
           height: '1px',
           overflow: 'hidden',
           visibility: 'hidden'
         },
-        '&:hover': {
-          cursor: 'pointer',
-          selectors: {
-            ':before': {
-              boxSizing: 'border-box',
-              borderBottom: '2px solid transparent'
-            }
-          }
+        ':hover': {
+          cursor: 'pointer'
         },
-        '&:focus': {
+        ':focus': {
           outline: 'none'
         },
         '.ms-Fabric--isFocusVisible &:focus': {
           outline: `1px solid ${palette.neutralSecondaryAlt}`
         }
       }
+      //   }
+      // }
     },
     rootIsLarge && {
       fontSize: FontSizes.large
@@ -127,15 +121,23 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
       className
     ],
     link: [
+      classNames.link,
       ...linkStyles(props, classNames),
+      {
+        selectors: {
+          ':hover::before': {
+            boxSizing: 'border-box',
+            borderBottom: '2px solid transparent'
+          }
+        }
+      },
       rootIsTabs && {
         selectors: {
           '&:hover, &:focus': {
             color: palette.black,
             zIndex: 1
           },
-          '&:active': {
-            color: palette.white,
+          ':active': {
             backgroundColor: palette.themePrimary
           }
         }
@@ -147,13 +149,12 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
       {
         fontWeight: FontWeights.semibold,
         selectors: {
-          // TODO: not appearing in DOM / not working
           ':before': {
             boxSizing: 'border-box',
             borderBottom: `2px solid ${palette.themePrimary}`
           },
           [HighContrastSelector]: {
-            backgroundColor: 'Highlight'
+            color: 'Highlight'
           }
         }
       },
@@ -162,11 +163,6 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
         color: palette.white,
         fontWeight: FontWeights.semilight,
         selectors: {
-          [HighContrastSelector]: {
-            color: 'HighlightText',
-            background: 'Highlight',
-            MsHighContrastAdjust: 'none'
-          },
           ':before': {
             backgroundColor: 'transparent',
             transition: 'none',
@@ -175,13 +171,22 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
             left: 0,
             right: 0,
             bottom: 0,
-            content: '',
+            content: '""',
             height: 'auto',
             selectors: {
               [HighContrastSelector]: {
                 borderBottomColor: 'Highlight'
               }
             }
+          },
+          '&:active, &:hover': {
+            color: palette.white
+          },
+          [HighContrastSelector]: {
+            fontWeight: FontWeights.semibold,
+            color: 'HighlightText',
+            background: 'Highlight',
+            MsHighContrastAdjust: 'none'
           }
         }
       }
