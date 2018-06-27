@@ -65,7 +65,7 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
         data-automationid={'ColumnsHeaderColumn'}
         data-item-key={column.key}
       >
-        {isDraggable && <Icon iconName={'GripperBarVertical'} className={css(styles.GripperBarVerticalStyle)} />}
+        {isDraggable && <Icon iconName={'GripperBarVertical'} className={css(styles.gripperBarVerticalStyle)} />}
         {onRenderColumnHeaderTooltip(
           {
             hostClassName: css(styles.cellTooltip),
