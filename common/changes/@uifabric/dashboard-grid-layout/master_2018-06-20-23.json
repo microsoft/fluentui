@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/dashboard-grid-layout",
+      "comment": "Fixed the style loading in dashboard grid layout",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/dashboard-grid-layout",
+  "email": "saakhta@microsoft.com"
+}
