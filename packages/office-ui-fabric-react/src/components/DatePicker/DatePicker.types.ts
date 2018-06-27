@@ -282,6 +282,7 @@ export interface IDatePickerStyles {
    * Style for the root element.
    */
   root: IStyle;
-
-  // Insert DatePicker classNames below
+  textField: IStyle;
+  eventWithLabel: IStyle;
+  eventWithoutLabel: IStyle;
 }

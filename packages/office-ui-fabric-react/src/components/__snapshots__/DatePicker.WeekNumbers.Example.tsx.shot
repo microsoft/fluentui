@@ -5,11 +5,36 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
   className="docs-DatePickerExample"
 >
   <div
-    className="ms-DatePicker"
+    className=
+        ms-DatePicker
+        {
+          box-shadow: none;
+          box-sizing: border-box;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+        }
   >
     <div>
       <div
-        className="ms-TextField"
+        className=
+            ms-TextField
+            ms-TextField
+            {
+              position: relative;
+            }
+            & input::-ms-clear {
+              display: none;
+            }
+            &read-only {
+              background-color: yellow;
+              cursor: pointer;
+            }
       >
         <div
           className="ms-TextField-wrapper"
@@ -46,11 +71,19 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
+                    background-color: red;
+                    color: #666666;
                     display: inline-block;
                     font-family: "FabricMDL2Icons";
+                    font-size: 14px;
                     font-style: normal;
                     font-weight: normal;
+                    line-height: 18px;
+                    pointer-events: none;
+                    position: absolute;
+                    right: 9px;
                     speak: none;
+                    top: 7px;
                   }
               data-icon-name="Calendar"
               onClick={[Function]}
