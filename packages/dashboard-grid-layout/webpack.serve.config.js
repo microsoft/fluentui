@@ -7,6 +7,15 @@ const PACKAGE_NAME = require('./package.json').name;
 module.exports = resources.createServeConfig({
   entry: './src/demo/index.tsx',
 
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      }
+    ]
+  },
+
   output: {
     filename: 'demo-app.js'
   },

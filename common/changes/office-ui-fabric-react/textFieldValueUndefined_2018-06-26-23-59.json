@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "GroupedList: add expandCollapseButtonProps to GroupHeader so an aria-label can be included\"",
-      "type": "minor"
+      "comment": "TextField: render undefined as empty string in renderInput",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",

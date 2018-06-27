@@ -101,7 +101,7 @@ exports[`Component Examples renders Layer.Basic.Example.tsx correctly 2`] = `
           {
             align-items: center;
             cursor: pointer;
-            display: inline-flex;
+            display: flex;
             margin-bottom: 0;
             margin-left: -4px;
             margin-right: -4px;

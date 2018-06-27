@@ -10,7 +10,7 @@ export const getStyles = (props: ICardHeaderProps): ICardHeaderStyles => {
       display: 'flex',
       flexWrap: 'wrap',
       marginTop: '21px',
-      marginBottom: '30px'
+      marginBottom: '21px'
     },
     headerText: {
       fontSize: fontSize === FontSize.medium ? '16px' : '28px',
