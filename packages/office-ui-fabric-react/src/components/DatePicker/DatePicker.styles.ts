@@ -35,16 +35,14 @@ export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
       classNames.textField,
       {
         position: 'relative',
-        // backgroundColor: 'purple',
         selectors: {
+          '& input[readonly]': {
+            cursor: 'pointer'
+          },
           input: {
             selectors: {
               '::-ms-clear': {
                 display: 'none'
-              },
-              '&:readonly': {
-                backgroundColor: 'orange',
-                cursor: 'pointer'
               }
             }
           }
@@ -57,7 +55,12 @@ export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
       DatePickerEvent,
       {
         bottom: '5px',
-        backgroundColor: 'green'
+        selectors: {
+          ':not(.msDatePickerDisabled)': {
+            pointerEvents: 'initial',
+            cursor: 'pointer'
+          }
+        }
       },
       className
     ],
@@ -66,7 +69,12 @@ export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
       DatePickerEvent,
       {
         top: '7px',
-        backgroundColor: 'yellow'
+        selectors: {
+          ':not(.msDatePickerDisabled)': {
+            pointerEvents: 'initial',
+            cursor: 'pointer'
+          }
+        }
       },
       className
     ]

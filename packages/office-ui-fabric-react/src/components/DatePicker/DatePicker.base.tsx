@@ -177,7 +177,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
         <div ref={this._datePickerDiv}>
           <TextField
             label={label}
-            className={styles.textField}
+            className={_classNames.textField}
             ariaLabel={ariaLabel}
             aria-haspopup="true"
             aria-expanded={isDatePickerShown}
@@ -196,8 +196,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
               onClick: this._onIconClick,
               className: css(
                 disabled && styles.msDatePickerDisabled,
-                label ? _classNames.eventWithLabel : _classNames.eventWithoutLabel,
-                label ? styles.eventWithLabel : styles.eventWithoutLabel
+                label ? _classNames.eventWithLabel : _classNames.eventWithoutLabel
               )
             }}
             readOnly={!allowTextInput}
