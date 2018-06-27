@@ -13,7 +13,7 @@ import {
 const globalClassNames = {
   count: 'ms-Pivot-count',
   icon: 'ms-Pivot-icon',
-  isSelected: 'is-selected',
+  linkIsSelected: 'is-selected',
   link: 'ms-Pivot-link',
   linkContent: 'ms-Pivot-linkContent',
   root: 'ms-Pivot',
@@ -68,8 +68,6 @@ const linkStyles = (props: IPivotStyleProps): IStyle[] => {
           outline: `1px solid ${palette.neutralSecondaryAlt}`
         }
       }
-      //   }
-      // }
     },
     rootIsLarge && {
       fontSize: FontSizes.large
@@ -140,14 +138,20 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
       }
     ],
     linkIsSelected: [
-      classNames.isSelected,
+      classNames.link,
+      classNames.linkIsSelected,
       ...linkStyles(props),
       {
         fontWeight: FontWeights.semibold,
         selectors: {
           ':before': {
             boxSizing: 'border-box',
-            borderBottom: `2px solid ${palette.themePrimary}`
+            borderBottom: `2px solid ${palette.themePrimary}`,
+            selectors: {
+              [HighContrastSelector]: {
+                borderBottomColor: 'Highlight'
+              }
+            }
           },
           [HighContrastSelector]: {
             color: 'Highlight'
@@ -168,12 +172,7 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
             right: 0,
             bottom: 0,
             content: '""',
-            height: 'auto',
-            selectors: {
-              [HighContrastSelector]: {
-                borderBottomColor: 'Highlight'
-              }
-            }
+            height: 'auto'
           },
           '&:active, &:hover': {
             color: palette.white
