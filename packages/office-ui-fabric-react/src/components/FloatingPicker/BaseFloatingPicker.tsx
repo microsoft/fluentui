@@ -210,7 +210,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
     // If the returned value is not an array then check to see if it's a promise or PromiseLike. If it is then resolve it asynchronously.
     if (Array.isArray(suggestionsArray)) {
       if (updatedValue !== undefined) {
-        this.updateSuggestions(suggestionsArray);
+        this.updateSuggestions(suggestionsArray, true /*forceUpdate*/);
       }
     } else if (suggestionsPromiseLike && suggestionsPromiseLike.then) {
       // Ensure that the promise will only use the callback if it was the most recent one.
