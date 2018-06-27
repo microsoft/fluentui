@@ -6,7 +6,7 @@ import {
   IDatePickerStyleProps,
   IDatePickerStyles
 } from './DatePicker.types';
-import { BaseComponent, KeyCodes, createRef, css, classNamesFunction, customizable } from '../../Utilities';
+import { BaseComponent, KeyCodes, createRef, css, classNamesFunction } from '../../Utilities';
 import { Calendar, ICalendar, DayOfWeek } from '../../Calendar';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { Callout } from '../../Callout';
@@ -54,7 +54,6 @@ const DEFAULT_STRINGS: IDatePickerStrings = {
   prevYearAriaLabel: 'Go to previous year',
   nextYearAriaLabel: 'Go to next year'
 };
-@customizable('DatePicker', ['theme'])
 export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerState> implements IDatePicker {
   public static defaultProps: IDatePickerProps = {
     allowTextInput: false,
@@ -178,7 +177,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
         <div ref={this._datePickerDiv}>
           <TextField
             label={label}
-            className={_classNames.textField}
+            className={styles.textField}
             ariaLabel={ariaLabel}
             aria-haspopup="true"
             aria-expanded={isDatePickerShown}

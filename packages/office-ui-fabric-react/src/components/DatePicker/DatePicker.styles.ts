@@ -42,8 +42,8 @@ export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
               '::-ms-clear': {
                 display: 'none'
               },
-              '&read-only': {
-                backgroundColor: 'yellow',
+              '&:readonly': {
+                backgroundColor: 'orange',
                 cursor: 'pointer'
               }
             }
@@ -66,7 +66,7 @@ export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
       DatePickerEvent,
       {
         top: '7px',
-        backgroundColor: 'red'
+        backgroundColor: 'yellow'
       },
       className
     ]

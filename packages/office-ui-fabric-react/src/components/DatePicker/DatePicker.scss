@@ -27,6 +27,7 @@
   }
 
   input[readonly] {
+    background-color: purple;
     cursor: pointer;
   }
 }
@@ -34,7 +35,7 @@
 // Insert a calendar icon over the date field.
 .eventWithLabel {
   @include ms-DatePicker-event();
-  bottom:5px;
+  bottom: 5px;
 
   &:not(.msDatePickerDisabled) {
     pointer-events: initial;
@@ -51,4 +52,3 @@
     cursor: pointer;
   }
 }
-
