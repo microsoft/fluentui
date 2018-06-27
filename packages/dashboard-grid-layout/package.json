@@ -7,9 +7,9 @@
     "@types/react-dom": "16.0.5",
     "@types/react-grid-layout": "^0.16.4",
     "@uifabric/example-app-base": ">=6.2.1 <7.0.0",
-    "@uifabric/experiments": ">=6.10.1 <7.0.0",
+    "@uifabric/experiments": ">=6.11.0 <7.0.0",
     "css-loader": "^0.15.1",
-    "office-ui-fabric-react": ">=6.20.0 <7.0.0",
+    "office-ui-fabric-react": ">=6.21.0 <7.0.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-grid-layout": "^0.16.6"

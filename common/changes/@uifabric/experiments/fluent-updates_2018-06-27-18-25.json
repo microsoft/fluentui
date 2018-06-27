@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Prototype of Stack and Text components",
+      "comment": "Change toggle style values from ems to px",
       "type": "minor"
     }
   ],
   "packageName": "@uifabric/experiments",
-  "email": "naethell@microsoft.com"
+  "email": "v-jescla@microsoft.com"
 }
