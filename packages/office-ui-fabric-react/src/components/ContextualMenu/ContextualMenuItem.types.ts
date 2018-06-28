@@ -93,7 +93,7 @@ export interface IContextualMenuItemProps extends React.HTMLAttributes<IContextu
 
 export interface IContextualMenuItemStyleProps {
   /**
-   * Theme provided by High-Order Component.
+   * Accept theme prop.
    */
   theme: ITheme;
 
@@ -101,15 +101,90 @@ export interface IContextualMenuItemStyleProps {
    * Accept custom classNames
    */
   className?: string;
-
-  // Insert ContextualMenuItem style props below
+  disabled: boolean;
+  expanded: boolean;
+  checked: boolean;
+  isAnchorLink: boolean;
+  knownIcon: boolean;
+  itemClassName?: string;
+  dividerClassName?: string;
+  iconClassName?: string;
+  subMenuClassName?: string;
+  primaryDisabled?: boolean;
 }
 
 export interface IContextualMenuItemStyles {
   /**
-   * Style for the root element.
+   * Style set for the root div element.
    */
   root: IStyle;
+  /**
+   * Styles for a menu item that is an anchor link.
+   */
+  item: IStyle;
 
-  // Insert ContextualMenuItem classNames below
+  /**
+   * Styles for the content inside the button/link of the menuItem.
+   */
+  linkContent: IStyle;
+
+  /**
+   * Styles for a menu item that is an anchor link.
+   */
+  // anchorLink: IStyle;
+
+  /**
+   * Default icon color style for known icons.
+   */
+  // iconColor: IStyle;
+
+  /**
+   * Default style for checkmark icons.
+   */
+  checkmarkIcon: IStyle;
+
+  /**
+   * Styles for the submenu icon of a menu item.
+   */
+  subMenuIcon: IStyle;
+
+  /**
+   * Styles for a divider item of a ConextualMenu.
+   */
+  divider: IStyle;
+
+  /**
+   * Styles for a icon of a ConextualMenuItem.
+   */
+  icon: IStyle;
+
+  /**
+   * Styles for a label of a ConextualMenuItem.
+   */
+  label: IStyle;
+
+  /**
+   * Styles for secondary text of a ConextualMenuItem.
+   */
+  secondaryText: IStyle;
+
+  /**
+   * Styles for the split container of a ConextualMenuItem.
+   */
+  splitContainer: IStyle;
+
+  /**
+   * Styles for a split primary button of a ConextualMenuItem.
+   */
+  splitPrimary: IStyle;
+
+  /**
+   * Styles for a split menu of a ConextualMenuItem.
+   */
+  splitMenu: IStyle;
+
+  /**
+   * Styles for a link context menu of a ConextualMenuItem.
+   */
+  linkContentMenu: IStyle;
 }
