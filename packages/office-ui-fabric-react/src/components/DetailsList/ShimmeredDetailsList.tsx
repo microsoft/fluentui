@@ -44,18 +44,23 @@ export class ShimmeredDetailsList extends BaseComponent<IShimmeredDetailsListPro
   }
 
   private _onRenderShimmerPlaceholder = (index: number, rowProps: IDetailsRowProps): React.ReactNode => {
-    const { onRenderCustomPlaceholder } = this.props;
+    const { onRenderCustomPlaceholder, compact } = this.props;
+    const { selectionMode, checkboxVisibility } = rowProps;
+    const showCheckbox = selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden;
 
     const placeholderElements: React.ReactNode = onRenderCustomPlaceholder
       ? onRenderCustomPlaceholder()
       : this._renderDefaultShimmerPlaceholder(rowProps);
 
-    return <Shimmer customElementsGroup={placeholderElements} />;
+    return (
+      <div className={css(showCheckbox && styles.shimmerLeftBorder, !compact && styles.shimmerBottomBorder)}>
+        <Shimmer customElementsGroup={placeholderElements} />
+      </div>
+    );
   };
 
   private _renderDefaultShimmerPlaceholder = (rowProps: IDetailsRowProps): React.ReactNode => {
-    const { columns, compact, selectionMode, checkboxVisibility } = rowProps;
-    const showCheckbox = selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden;
+    const { columns, compact } = rowProps;
     const shimmerElementsRow: JSX.Element[] = [];
     const gapHeight: number = compact ? COMPACT_ROW_HEIGHT : DEFAULT_ROW_HEIGHT;
 
@@ -104,13 +109,6 @@ export class ShimmeredDetailsList extends BaseComponent<IShimmeredDetailsListPro
         shimmerElements={[{ type: ShimmerElementType.gap, width: '100%', height: gapHeight }]}
       />
     );
-    return (
-      <div
-        className={css(showCheckbox && styles.shimmerLeftBorder, !compact && styles.shimmerBottomBorder)}
-        style={{ display: 'flex' }}
-      >
-        {shimmerElementsRow}
-      </div>
-    );
+    return <div style={{ display: 'flex' }}>{shimmerElementsRow}</div>;
   };
 }
