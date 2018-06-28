@@ -40,12 +40,9 @@
   align-items: flex-start;
   justify-content: flex-start;
   align-content: flex-start;
-  position: relative;
 }
 
 .shimmeredList {
-  position: relative;
-
   &::after {
     content: '';
     position: absolute;
