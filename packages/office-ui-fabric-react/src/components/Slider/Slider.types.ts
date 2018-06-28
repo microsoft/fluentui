@@ -117,10 +117,12 @@ export interface ISliderStyleProps {
   rootIsHorizontal?: boolean;
   rootIsVertical?: boolean;
   showTransitions?: boolean;
+  showValue?: boolean;
 }
 
 export interface ISliderStyles {
   root: IStyle;
+  titleLabel: IStyle;
   container: IStyle;
   slideBox: IStyle;
   line: IStyle;
