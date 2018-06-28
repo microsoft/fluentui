@@ -27,7 +27,7 @@ export enum ValuePosition {
 }
 
 const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>();
-@customizable('Label', ['theme', 'styles'])
+@customizable('Slider', ['theme', 'styles'])
 export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implements ISlider {
   public static defaultProps: ISliderProps = {
     step: 1,
