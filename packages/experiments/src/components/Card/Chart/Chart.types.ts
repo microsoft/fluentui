@@ -15,11 +15,6 @@ export enum ChartHeight {
   tall
 }
 
-export interface IChartInternalProps extends IChartProps {
-  width: ChartWidth;
-  height: ChartHeight;
-}
-
 export interface IChartProps {
   /**
    * Label to apply to the whole chart.
@@ -50,4 +45,9 @@ export interface IChartProps {
    * Width of each stroke in the line chart
    */
   strokeWidth?: number;
+}
+
+export interface IChartInternalProps extends IChartProps {
+  width: ChartWidth;
+  height: ChartHeight;
 }
