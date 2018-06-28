@@ -6,12 +6,26 @@ export enum ChartType {
 }
 
 export enum ChartWidth {
+  /**
+   * Compact chart
+   */
   compact,
+
+  /**
+   * Wide chart
+   */
   wide
 }
 
 export enum ChartHeight {
+  /**
+   * Short chart
+   */
   short,
+
+  /**
+   * Tall chart
+   */
   tall
 }
 
