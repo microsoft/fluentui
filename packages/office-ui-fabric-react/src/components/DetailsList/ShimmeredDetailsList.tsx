@@ -32,8 +32,8 @@ export class ShimmeredDetailsList extends BaseComponent<IShimmeredDetailsListPro
   }
 
   public render(): JSX.Element {
-    const { enableShimmer, items } = this.props;
-    const { shimmerLines, onRenderCustomPlaceholder, ...detailsListProps } = this.props;
+    const { items } = this.props;
+    const { shimmerLines, onRenderCustomPlaceholder, enableShimmer, ...detailsListProps } = this.props;
 
     return (
       <DetailsList
