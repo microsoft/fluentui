@@ -26,12 +26,12 @@
     {
       "packageName": "@uifabric/charting",
       "projectFolder": "packages/charting",
-      "shouldPublish": false
+      "shouldPublish": true
     },
     {
       "packageName": "@uifabric/dashboard-grid-layout",
       "projectFolder": "packages/dashboard-grid-layout",
-      "shouldPublish": false
+      "shouldPublish": true
     },
     {
       "packageName": "@uifabric/merge-styles",
