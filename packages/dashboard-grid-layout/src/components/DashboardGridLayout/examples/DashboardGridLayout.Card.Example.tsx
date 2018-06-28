@@ -4,11 +4,12 @@ import { DashboardGridBreakpointLayouts, Size } from '../DashboardGridLayout.typ
 import { CardSize, Priority, CardContentType } from '@uifabric/experiments/src/components/Card/Card.types';
 import { Card } from '@uifabric/experiments/src/components/Card';
 import { IThumbnailItemProps } from '@uifabric/experiments/src/components/Card/ThumbnailList/ThumbnailList.types';
+import { IAction } from '@uifabric/experiments/src/components/Card/ActionBar/ActionBar.types';
 
 export class DashboardGridLayoutCardExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     const cardFrameContent = {
-      cardTitle: 'Small Card',
+      cardTitle: 'Example Card',
       cardDropDownOptions: [
         {
           key: 'Remove',
@@ -37,6 +38,63 @@ export class DashboardGridLayoutCardExample extends React.Component<{}, {}> {
         description: 'Lorem ipsum dolor sit amet, ',
         handleThumbnailItemClick: () => {
           alert('Second Item clicked');
+        }
+      }
+    ];
+
+    const actions: IAction[] = [
+      {
+        title: 'Action 1',
+        action: () => {
+          alert('Action1 clicked');
+        }
+      },
+      {
+        title: 'Action 2',
+        action: () => {
+          alert('Action2 clicked');
+        }
+      },
+      {
+        title: 'Action 3',
+        action: () => {
+          alert('Action3 clicked');
+        }
+      },
+      {
+        title: 'Action 4',
+        action: () => {
+          alert('Action4 clicked');
+        }
+      },
+      {
+        title: 'Action 5',
+        action: () => {
+          alert('Action5 clicked');
+        }
+      },
+      {
+        title: 'Action 6',
+        action: () => {
+          alert('Action6 clicked');
+        }
+      },
+      {
+        title: 'Action 7',
+        action: () => {
+          alert('Action7 clicked');
+        }
+      },
+      {
+        title: 'Action 8',
+        action: () => {
+          alert('Action8 clicked');
+        }
+      },
+      {
+        title: 'Action 9',
+        action: () => {
+          alert('Action9 clicked');
         }
       }
     ];
@@ -89,6 +147,24 @@ export class DashboardGridLayoutCardExample extends React.Component<{}, {}> {
             cardSize={CardSize.small}
           />
         </div>
+        <div key="3">
+          <Card
+            cardFrameContent={cardFrameContent}
+            header={header}
+            cardContentList={contentAreaList}
+            cardSize={CardSize.mediumWide}
+            actions={actions}
+          />
+        </div>
+        <div key="4">
+          <Card
+            cardFrameContent={cardFrameContent}
+            header={header}
+            cardContentList={contentAreaList}
+            cardSize={CardSize.large}
+            actions={actions}
+          />
+        </div>
       </DashboardGridLayout>
     );
   }
@@ -98,7 +174,9 @@ export class DashboardGridLayoutCardExample extends React.Component<{}, {}> {
       lg: [
         { i: '0', y: 0, x: 0, size: Size.small },
         { i: '1', y: 0, x: 1, size: Size.mediumTall },
-        { i: '2', y: 1, x: 0, size: Size.small }
+        { i: '2', y: 1, x: 0, size: Size.small },
+        { i: '3', y: 0, x: 2, size: Size.mediumWide },
+        { i: '4', y: 1, x: 2, size: Size.large }
       ]
     };
   }
