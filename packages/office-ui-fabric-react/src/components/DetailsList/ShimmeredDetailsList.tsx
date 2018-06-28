@@ -15,9 +15,10 @@ export interface IShimmeredDetailsListProps extends IDetailsListProps {
 }
 
 const SHIMMER_INITIAL_ITEMS = 10;
-
-const DEFAULT_SIDE_PADDING = 8;
 const DEFAULT_SHIMMER_HEIGHT = 7;
+
+// This values are matching values from ./DetailsRow.css
+const DEFAULT_SIDE_PADDING = 8;
 const DEFAULT_ROW_HEIGHT = 42;
 const COMPACT_ROW_HEIGHT = 32;
 
