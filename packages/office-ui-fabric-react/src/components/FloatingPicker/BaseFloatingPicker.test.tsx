@@ -87,6 +87,8 @@ describe('Pickers', () => {
       input.value = '';
       picker.onQueryStringChanged('');
 
+      input.click();
+
       expect(picker.suggestions.length).toEqual(4);
 
       ReactDOM.unmountComponentAtNode(root);
