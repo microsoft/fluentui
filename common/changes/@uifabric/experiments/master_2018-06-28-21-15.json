@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "Consumed charts in dashboard cards and fixed styling issues, updating example in dgl",
+      "packageName": "@uifabric/experiments",
+      "type": "none"
+    }
+  ],
+  "packageName": "@uifabric/experiments",
+  "email": "saakhta@microsoft.com"
+}
