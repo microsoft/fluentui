@@ -8,11 +8,64 @@ import { TeachingBubbleContent } from './TeachingBubbleContent';
 
 describe('TeachingBubble', () => {
   it('renders TeachingBubble correctly', () => {
-    const component = renderer.create(<TeachingBubble>Content</TeachingBubble>);
+    const component = renderer.create(
+      <TeachingBubble isWide={true} calloutProps={{ doNotLayer: true, className: 'specialClassName' }}>
+        Test Content
+      </TeachingBubble>
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
 
-    const componentContent = renderer.create(<TeachingBubbleContent headline="Title">Content</TeachingBubbleContent>);
+  it('renders TeachingBubbleContent correctly', () => {
+    const componentContent = renderer.create(
+      <TeachingBubbleContent headline="Test Title">Content</TeachingBubbleContent>
+    );
+    const treeContent = componentContent.toJSON();
+    expect(treeContent).toMatchSnapshot();
+  });
+
+  it('renders TeachingBubbleContent with buttons correctly', () => {
+    const componentContent = renderer.create(
+      <TeachingBubbleContent
+        headline="Test Title"
+        hasCloseIcon={true}
+        primaryButtonProps={{ children: 'Test Primary Button' }}
+        secondaryButtonProps={{ children: 'Test Secondary Button' }}
+      >
+        Content
+      </TeachingBubbleContent>
+    );
+    const treeContent = componentContent.toJSON();
+    expect(treeContent).toMatchSnapshot();
+  });
+
+  it('renders TeachingBubbleContent with image correctly', () => {
+    const componentContent = renderer.create(
+      <TeachingBubbleContent headline="Test Title" illustrationImage={{ src: 'test image url' }}>
+        Content
+      </TeachingBubbleContent>
+    );
+    const treeContent = componentContent.toJSON();
+    expect(treeContent).toMatchSnapshot();
+  });
+
+  it('renders TeachingBubbleContent with condensed headline correctly', () => {
+    const componentContent = renderer.create(
+      <TeachingBubbleContent hasCondensedHeadline={true} headline="Test Title">
+        Content
+      </TeachingBubbleContent>
+    );
+    const treeContent = componentContent.toJSON();
+    expect(treeContent).toMatchSnapshot();
+  });
+
+  it('renders TeachingBubbleContent with small headline correctly', () => {
+    const componentContent = renderer.create(
+      <TeachingBubbleContent hasSmallHeadline={true} headline="Test Title">
+        Content
+      </TeachingBubbleContent>
+    );
     const treeContent = componentContent.toJSON();
     expect(treeContent).toMatchSnapshot();
   });
