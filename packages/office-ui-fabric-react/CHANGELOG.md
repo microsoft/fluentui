@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 27 Jun 2018 17:22:20 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Jun 2018 10:23:21 GMT and should not be manually modified.
+
+## 6.22.0
+Thu, 28 Jun 2018 10:23:21 GMT
+
+### Minor changes
+
+- Added arguments to styled function to allow the Customizer component to affect Nav
+
+## 6.21.1
+Wed, 27 Jun 2018 23:59:19 GMT
+
+### Patches
+
+- TextField: render undefined as empty string in renderInput
 
 ## 6.21.0
 Wed, 27 Jun 2018 17:22:20 GMT
