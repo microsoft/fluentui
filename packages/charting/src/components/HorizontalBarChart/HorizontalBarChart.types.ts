@@ -34,11 +34,6 @@ export interface IHorizontalBarChartProps {
   height?: number;
 
   /**
-   * Width of each bar in the chart.
-   */
-  barWidth?: number;
-
-  /**
    * Height of each bar in the chart.
    */
   barHeight?: number;

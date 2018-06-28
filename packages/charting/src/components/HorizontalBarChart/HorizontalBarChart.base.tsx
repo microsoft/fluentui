@@ -32,8 +32,8 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
 
     this._width = this.props.width || 600;
     this._height = this.props.height || 350;
-    this._barHeight = this.props.barWidth || 15;
-    this._yAxisTickCount = this.props.yAxisTickCount || 5;
+    this._barHeight = this.props.barHeight || 15;
+    this._yAxisTickCount = this.props.yAxisTickCount || 10;
 
     const { theme } = this.props;
     const { palette } = theme!;
@@ -43,7 +43,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   public render(): JSX.Element {
     const isNumeric = typeof this._points[0].x === 'number';
 
-    const xAxis = isNumeric ? this._createNumericXAxis() : this._createStringXAxis();
+    const xAxis = this._createNumericXAxis(isNumeric);
     const yAxis = isNumeric ? this._createYAxis() : this._createStringYAxis();
     const bars = isNumeric ? this._createNumericBars() : this._createStringBars();
 
@@ -87,8 +87,13 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     axisNode.selectAll('text').attr('class', this._classNames.yAxisText!);
   }
 
-  private _createNumericXAxis(): numericAxis {
-    const xMax = d3Max(this._points, (point: IDataPoint) => point.x as number)!;
+  private _createNumericXAxis(isNumeric: boolean): numericAxis {
+    let xMax;
+    if (isNumeric) {
+      xMax = d3Max(this._points, (point: IDataPoint) => point.x as number)!;
+    } else {
+      xMax = d3Max(this._points, (point: IDataPoint) => point.y as number)!;
+    }
     const xAxisScale = d3ScaleLinear()
       .domain([0, xMax])
       .range([0, this._width]);
@@ -96,14 +101,6 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     return xAxis;
   }
 
-  private _createStringXAxis(): stringAxis {
-    const xMax = d3Max(this._points, (point: IDataPoint) => point.y as number)!;
-    const xAxisScale = d3ScaleLinear()
-      .domain([0, xMax])
-      .range([0, this._width]);
-    const xAxis = d3AxisBottom(xAxisScale).ticks(10);
-    return xAxis;
-  }
   private _createStringYAxis(): stringAxis {
     const yAxisScale = d3ScaleBand()
       .domain(this._points.map((point: IDataPoint) => point.x as string))
@@ -152,15 +149,12 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
 
   private _createStringBars(): JSX.Element[] {
     const yMax = d3Max(this._points, (point: IDataPoint) => point.y)!;
-
-    const endpointDistance = 0.5 * (this._width / this._points.length);
     const xBarScale = d3ScaleLinear()
-      .domain([0, this._points.length - 1])
+      .domain([0, this._points.length])
       .range([0, this._height]);
     const yBarScale = d3ScaleLinear()
       .domain([0, yMax])
-      .range([endpointDistance - 0.5 * this._barHeight, this._width - endpointDistance - 0.5 * this._barHeight]);
-
+      .range([0, this._width]);
     const colorScale = this._createColors(yMax);
 
     const bars = this._points.map((point: IDataPoint, index: number) => {

@@ -4,7 +4,7 @@ export const getStyles = (props: IHorizontalBarChartStyleProps): IHorizontalBarC
   const { className, theme, width, height } = props;
 
   const chartWidth = width + 30;
-  const chartPadding = 20;
+  const chartPadding = 30;
   const chartHeight = height + 10;
   const xOffset = 30;
   const yOffset = 30;

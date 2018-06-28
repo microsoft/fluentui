@@ -101,7 +101,7 @@ export class HorizontalBarChartBasicExample extends React.Component<IHorizontalB
         data={points}
         width={800}
         height={400}
-        barWidth={20}
+        barHeight={15}
         yAxisTickCount={6}
         styles={customStyles}
         colors={customColors}
