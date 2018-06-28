@@ -15,6 +15,8 @@ import { ICardHeaderProps } from '../CardHeader/CardHeader.types';
 import { IAction } from '../ActionBar/ActionBar.types';
 import { IGridListProps } from '../GridList/GridList.types';
 import { GridList } from '../GridList/GridList';
+import { IChartProps } from '../Chart/Chart.types';
+import { Chart } from '../Chart/Chart';
 
 export class Layout extends React.Component<ILayoutProps> {
   constructor(props: ILayoutProps) {
@@ -83,6 +85,20 @@ export class Layout extends React.Component<ILayoutProps> {
                     isRowClickable={isRowClickable}
                     actionButtonText={actionButtonText}
                     onActionLinkClicked={onActionLinkClicked}
+                  />
+                );
+                break;
+              }
+              case CardContentType.Chart: {
+                const { chartLabel, colors, barWidth, data, chartType } = cardContent.content as IChartProps;
+                contentArea.push(
+                  <Chart
+                    chartLabel={chartLabel}
+                    chartType={chartType}
+                    colors={colors}
+                    barWidth={barWidth}
+                    data={data}
+                    cardSize={this.props.cardSize}
                   />
                 );
                 break;
