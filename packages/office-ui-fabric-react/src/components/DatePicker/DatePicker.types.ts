@@ -275,6 +275,9 @@ export interface IDatePickerStyleProps {
   className?: string;
 
   // Insert DatePicker style props below
+  disabled?: boolean;
+  label?: boolean;
+  isDatePickerShown?: boolean;
 }
 
 export interface IDatePickerStyles {
@@ -283,6 +286,6 @@ export interface IDatePickerStyles {
    */
   root: IStyle;
   textField: IStyle;
-  eventWithLabel: IStyle;
-  eventWithoutLabel: IStyle;
+  callout: IStyle;
+  icon: IStyle;
 }

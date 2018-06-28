@@ -1,21 +1,22 @@
 import { IDatePickerStyleProps, IDatePickerStyles } from './DatePicker.types';
-import { IStyle, normalize, getGlobalClassNames } from '../../Styling';
+import { IStyle, normalize, getGlobalClassNames, FontSizes } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-DatePicker',
-  textField: 'ms-TextField',
-  eventWithLabel: 'ms-DatePicker-event--with-label',
-  eventWithoutLabel: 'ms-DatePicker-event--without-label'
+  callout: 'ms-DatePicker-callout',
+  withLabel: 'ms-DatePicker-event--with-label',
+  withoutLabel: 'ms-DatePicker-event--without-label',
+  disabled: 'msDatePickerDisabled '
 };
 
 export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
-  const { className, theme } = props;
-  const { palette, fonts } = theme;
+  const { className, theme, disabled, label, isDatePickerShown } = props;
+  const { palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const DatePickerEvent: IStyle = {
     color: palette.neutralSecondary,
-    fontSize: fonts.medium.fontSize,
+    fontSize: FontSizes.icon,
     lineHeight: '18px',
     pointerEvents: 'none',
     position: 'absolute',
@@ -23,9 +24,8 @@ export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
   };
 
   return {
-    root: [classNames.root, normalize, {}, className],
+    root: [classNames.root, isDatePickerShown && 'is-open', normalize, {}, className],
     textField: [
-      classNames.textField,
       {
         position: 'relative',
         selectors: {
@@ -40,36 +40,20 @@ export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
             }
           }
         }
-      },
-      className
+      }
     ],
-    eventWithLabel: [
-      classNames.eventWithLabel,
+    callout: [classNames.callout],
+    icon: [
       DatePickerEvent,
-      {
-        bottom: '5px',
-        selectors: {
-          ':not(.msDatePickerDisabled)': {
-            pointerEvents: 'initial',
-            cursor: 'pointer'
-          }
+      !label && [classNames.withoutLabel, { top: '7px' }],
+      label && [classNames.withLabel, { bottom: '5px' }],
+      !disabled && [
+        classNames.disabled,
+        {
+          pointerEvents: 'initial',
+          cursor: 'pointer'
         }
-      },
-      className
-    ],
-    eventWithoutLabel: [
-      classNames.eventWithoutLabel,
-      DatePickerEvent,
-      {
-        top: '7px',
-        selectors: {
-          ':not(.msDatePickerDisabled)': {
-            pointerEvents: 'initial',
-            cursor: 'pointer'
-          }
-        }
-      },
-      className
+      ]
     ]
   };
 };

@@ -6,16 +6,14 @@ import {
   IDatePickerStyleProps,
   IDatePickerStyles
 } from './DatePicker.types';
-import { BaseComponent, KeyCodes, createRef, css, classNamesFunction } from '../../Utilities';
+import { BaseComponent, KeyCodes, createRef, classNamesFunction } from '../../Utilities';
 import { Calendar, ICalendar, DayOfWeek } from '../../Calendar';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { TextField, ITextField } from '../../TextField';
 import { compareDates, compareDatePart } from '../../utilities/dateMath/DateMath';
-import * as stylesImport from './DatePicker.scss';
 import { FocusTrapZone } from '../../FocusTrapZone';
-const styles: any = stylesImport;
 
 const getClassNames = classNamesFunction<IDatePickerStyleProps, IDatePickerStyles>();
 
@@ -54,6 +52,7 @@ const DEFAULT_STRINGS: IDatePickerStrings = {
   prevYearAriaLabel: 'Go to previous year',
   nextYearAriaLabel: 'Go to next year'
 };
+
 export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerState> implements IDatePicker {
   public static defaultProps: IDatePickerProps = {
     allowTextInput: false,
@@ -92,11 +91,6 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
   private _datePickerDiv = createRef<HTMLDivElement>();
   private _textField = createRef<ITextField>();
   private _preventFocusOpeningPicker: boolean;
-
-  private _classNames = getClassNames(this.props.styles, {
-    theme: this.props.theme!,
-    className: this.props.className
-  });
 
   constructor(props: IDatePickerProps) {
     super(props);
@@ -157,6 +151,9 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
       firstDayOfWeek,
       strings,
       label,
+      theme,
+      className,
+      styles,
       initialPickerDate,
       isRequired,
       disabled,
@@ -170,14 +167,20 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
       calendarProps
     } = this.props;
     const { isDatePickerShown, formattedDate, selectedDate, errorMessage } = this.state;
-    const { _classNames } = this;
+
+    const classNames = getClassNames(styles, {
+      theme: theme!,
+      className,
+      disabled,
+      label: !!label,
+      isDatePickerShown
+    });
 
     return (
-      <div className={_classNames.root}>
+      <div className={classNames.root}>
         <div ref={this._datePickerDiv}>
           <TextField
             label={label}
-            className={_classNames.textField}
             ariaLabel={ariaLabel}
             aria-haspopup="true"
             aria-expanded={isDatePickerShown}
@@ -194,10 +197,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
             iconProps={{
               iconName: 'Calendar',
               onClick: this._onIconClick,
-              className: css(
-                disabled && styles.msDatePickerDisabled,
-                label ? _classNames.eventWithLabel : _classNames.eventWithoutLabel
-              )
+              className: classNames.icon
             }}
             readOnly={!allowTextInput}
             value={formattedDate}
@@ -210,7 +210,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
             role="dialog"
             ariaLabel={pickerAriaLabel}
             isBeakVisible={false}
-            className={css('ms-DatePicker-callout')}
+            className={classNames.callout}
             gapSpace={0}
             doNotLayer={false}
             target={this._datePickerDiv.current}
