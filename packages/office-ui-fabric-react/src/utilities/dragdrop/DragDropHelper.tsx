@@ -158,6 +158,10 @@ export class DragDropHelper implements IDragDropHelper {
 
         onDragOver = (event: DragEvent) => {
           event.preventDefault();
+
+          if (dragDropOptions.onDragOver) {
+            dragDropOptions.onDragOver(dragDropOptions.context.data, event);
+          }
         };
 
         this._dragEnterCounts[key] = 0;
