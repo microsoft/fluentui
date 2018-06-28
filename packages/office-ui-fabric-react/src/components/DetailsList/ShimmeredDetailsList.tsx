@@ -7,7 +7,8 @@ import { DetailsList } from './DetailsList';
 import { IDetailsRowProps } from './DetailsRow';
 import { Shimmer, ShimmerElementsGroup, ShimmerElementType, IShimmerElement } from '../Shimmer';
 
-import * as styles from './DetailsRow.scss';
+import * as rowStyles from './DetailsRow.scss';
+import * as listStyles from './DetailsList.scss';
 
 export interface IShimmeredDetailsListProps extends IDetailsListProps {
   shimmerLines?: number;
@@ -32,14 +33,22 @@ export class ShimmeredDetailsList extends BaseComponent<IShimmeredDetailsListPro
   }
 
   public render(): JSX.Element {
-    const { items } = this.props;
+    const { items, listProps } = this.props;
     const { shimmerLines, onRenderCustomPlaceholder, enableShimmer, ...detailsListProps } = this.props;
+
+    // Adds to the optional listProp classname a fading out overlay classname only when shimmer enabled.
+    const shimmeredListClassname: string = css(
+      listProps && listProps.className,
+      enableShimmer && listStyles.shimmerFadeOut
+    );
+    const newListProps = { ...listProps, className: shimmeredListClassname };
 
     return (
       <DetailsList
         {...detailsListProps}
         items={enableShimmer ? this._shimmerItems : items}
         onRenderMissingItem={this._onRenderShimmerPlaceholder}
+        listProps={newListProps}
       />
     );
   }
@@ -54,7 +63,7 @@ export class ShimmeredDetailsList extends BaseComponent<IShimmeredDetailsListPro
       : this._renderDefaultShimmerPlaceholder(rowProps);
 
     return (
-      <div className={css(showCheckbox && styles.shimmerLeftBorder, !compact && styles.shimmerBottomBorder)}>
+      <div className={css(showCheckbox && rowStyles.shimmerLeftBorder, !compact && rowStyles.shimmerBottomBorder)}>
         <Shimmer customElementsGroup={placeholderElements} />
       </div>
     );
