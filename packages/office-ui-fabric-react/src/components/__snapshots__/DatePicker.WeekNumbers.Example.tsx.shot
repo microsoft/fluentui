@@ -22,18 +22,7 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
   >
     <div>
       <div
-        className=
-            ms-TextField
-            ms-TextField
-            {
-              position: relative;
-            }
-            & input[readonly] {
-              cursor: pointer;
-            }
-            & input::-ms-clear {
-              display: none;
-            }
+        className="ms-TextField"
       >
         <div
           className="ms-TextField-wrapper"
@@ -67,25 +56,23 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
               aria-hidden={true}
               className=
                   ms-DatePicker-event--without-label
+                  msDatePickerDisabled
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
                     color: #666666;
+                    cursor: pointer;
                     display: inline-block;
                     font-family: "FabricMDL2Icons";
-                    font-size: 14px;
+                    font-size: 16px;
                     font-style: normal;
                     font-weight: normal;
                     line-height: 18px;
-                    pointer-events: none;
+                    pointer-events: initial;
                     position: absolute;
                     right: 9px;
                     speak: none;
                     top: 7px;
-                  }
-                  &:not(.msDatePickerDisabled) {
-                    cursor: pointer;
-                    pointer-events: initial;
                   }
               data-icon-name="Calendar"
               onClick={[Function]}
