@@ -99,7 +99,7 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
                 top: -2px;
               }
               &:hover {
-                color: #0078d4;
+                color: #333333;
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
@@ -110,6 +110,7 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
                 color: #0078d4;
               }
               &:focus {
+                outline-offset: -1px;
                 outline: none;
               }
               &:active {
@@ -265,7 +266,7 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
                 top: -2px;
               }
               &:hover {
-                color: #0078d4;
+                color: #333333;
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
@@ -276,6 +277,7 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
                 color: #0078d4;
               }
               &:focus {
+                outline-offset: -1px;
                 outline: none;
               }
               &:active {
@@ -425,7 +427,7 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
                 top: -2px;
               }
               &:hover {
-                color: #0078d4;
+                color: #333333;
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
@@ -436,6 +438,7 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
                 color: #0078d4;
               }
               &:focus {
+                outline-offset: -1px;
                 outline: none;
               }
               &:active {
@@ -585,7 +588,7 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
                 top: -2px;
               }
               &:hover {
-                color: #0078d4;
+                color: #333333;
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
@@ -596,6 +599,7 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
                 color: #0078d4;
               }
               &:focus {
+                outline-offset: -1px;
                 outline: none;
               }
               &:active {

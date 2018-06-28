@@ -99,7 +99,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
               top: -2px;
             }
             &:hover {
-              color: #0078d4;
+              color: #333333;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -253,7 +253,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
               top: -2px;
             }
             &:hover {
-              color: #0078d4;
+              color: #333333;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -451,7 +451,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               top: -2px;
             }
             &:hover {
-              color: #0078d4;
+              color: #333333;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -607,7 +607,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               top: -2px;
             }
             &:hover {
-              color: #0078d4;
+              color: #333333;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -770,7 +770,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               top: -2px;
             }
             &:hover {
-              color: #0078d4;
+              color: #333333;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -993,7 +993,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
               top: -2px;
             }
             &:hover {
-              color: #0078d4;
+              color: #333333;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -1147,7 +1147,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
               top: -2px;
             }
             &:hover {
-              color: #0078d4;
+              color: #333333;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -1345,7 +1345,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               top: -2px;
             }
             &:hover {
-              color: #0078d4;
+              color: #333333;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -1356,6 +1356,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               color: #0078d4;
             }
             &:focus {
+              outline-offset: -1px;
               outline: none;
             }
             &:active {
@@ -1511,7 +1512,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               top: -2px;
             }
             &:hover {
-              color: #0078d4;
+              color: #333333;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -1522,6 +1523,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               color: #0078d4;
             }
             &:focus {
+              outline-offset: -1px;
               outline: none;
             }
             &:active {
@@ -1717,7 +1719,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               top: -2px;
             }
             &:hover {
-              color: #0078d4;
+              color: #333333;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -1871,7 +1873,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               top: -2px;
             }
             &:hover {
-              color: #0078d4;
+              color: #333333;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -2068,7 +2070,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               top: -2px;
             }
             &:hover {
-              color: #0078d4;
+              color: #333333;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -2079,6 +2081,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               color: #0078d4;
             }
             &:focus {
+              outline-offset: -1px;
               outline: none;
             }
             &:active {
@@ -2234,7 +2237,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               top: -2px;
             }
             &:hover {
-              color: #0078d4;
+              color: #333333;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -2245,6 +2248,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               color: #0078d4;
             }
             &:focus {
+              outline-offset: -1px;
               outline: none;
             }
             &:active {

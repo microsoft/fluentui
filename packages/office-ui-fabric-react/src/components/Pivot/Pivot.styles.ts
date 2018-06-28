@@ -59,6 +59,7 @@ const linkStyles = (props: IPivotStyleProps): IStyle[] => {
           visibility: 'hidden'
         },
         ':hover': {
+          color: palette.neutralPrimary,
           cursor: 'pointer'
         },
         ':focus': {
@@ -82,6 +83,9 @@ const linkStyles = (props: IPivotStyleProps): IStyle[] => {
         padding: '0 10px',
         verticalAlign: 'top',
         selectors: {
+          ':focus': {
+            outlineOffset: '-1px'
+          },
           '.ms-Fabric--isFocusVisible &:focus::before': {
             height: 'auto',
             background: 'transparent',
