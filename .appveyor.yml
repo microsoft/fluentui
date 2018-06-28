@@ -1,5 +1,5 @@
 environment:
-  nodejs_version: "10"
+  nodejs_version: "8"
 
 # Install scripts. (runs after repo cloning)
 install:
