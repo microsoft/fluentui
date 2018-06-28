@@ -321,7 +321,6 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
               }
               &:hover, &:focus {
                 color: #000000;
-                z-index: 1;
               }
           data-is-focusable={true}
           disabled={undefined}
@@ -482,7 +481,6 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
               }
               &:hover, &:focus {
                 color: #000000;
-                z-index: 1;
               }
           data-is-focusable={true}
           disabled={undefined}
@@ -643,7 +641,6 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
               }
               &:hover, &:focus {
                 color: #000000;
-                z-index: 1;
               }
           data-is-focusable={true}
           disabled={undefined}

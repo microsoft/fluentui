@@ -114,8 +114,8 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
         color: palette.themePrimary,
         whiteSpace: 'nowrap'
       },
-      rootIsLarge && [classNames.rootIsLarge],
-      rootIsTabs && [classNames.rootIsTabs],
+      rootIsLarge && classNames.rootIsLarge,
+      rootIsTabs && classNames.rootIsTabs,
       className
     ],
     link: [
@@ -132,8 +132,7 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
       rootIsTabs && {
         selectors: {
           '&:hover, &:focus': {
-            color: palette.black,
-            zIndex: 1
+            color: palette.black
           },
           ':active': {
             backgroundColor: palette.themePrimary

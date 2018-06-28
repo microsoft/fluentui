@@ -1566,7 +1566,6 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             }
             &:hover, &:focus {
               color: #000000;
-              z-index: 1;
             }
         data-is-focusable={true}
         disabled={undefined}
@@ -2291,7 +2290,6 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             }
             &:hover, &:focus {
               color: #000000;
-              z-index: 1;
             }
         data-is-focusable={true}
         disabled={undefined}
