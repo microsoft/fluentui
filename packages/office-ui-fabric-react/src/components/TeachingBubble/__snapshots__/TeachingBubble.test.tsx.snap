@@ -150,6 +150,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
             ms-Button
             ms-Button--primary
             ms-TeachingBubble-primaryButton
+            primary-className
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -276,6 +277,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
             ms-Button
             ms-Button--default
             ms-TeachingBubble-secondaryButton
+            secondary-className
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;

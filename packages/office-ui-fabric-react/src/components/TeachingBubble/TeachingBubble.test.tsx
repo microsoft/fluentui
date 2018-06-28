@@ -30,8 +30,8 @@ describe('TeachingBubble', () => {
       <TeachingBubbleContent
         headline="Test Title"
         hasCloseIcon={true}
-        primaryButtonProps={{ children: 'Test Primary Button' }}
-        secondaryButtonProps={{ children: 'Test Secondary Button' }}
+        primaryButtonProps={{ children: 'Test Primary Button', className: 'primary-className' }}
+        secondaryButtonProps={{ children: 'Test Secondary Button', className: 'secondary-className' }}
       >
         Content
       </TeachingBubbleContent>
