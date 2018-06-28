@@ -1,13 +1,23 @@
 import { IDataPoint } from '../../../../../charting/src/components/VerticalBarChart';
-import { CardSize } from '../Card.types';
 
 export enum ChartType {
   VerticalBarChart,
   LineChart
 }
 
+export enum ChartWidth {
+  compact,
+  wide
+}
+
+export enum ChartHeight {
+  short,
+  tall
+}
+
 export interface IChartInternalProps extends IChartProps {
-  cardSize: CardSize;
+  width: ChartWidth;
+  height: ChartHeight;
 }
 
 export interface IChartProps {

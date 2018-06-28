@@ -15,7 +15,7 @@ import { ICardHeaderProps } from '../CardHeader/CardHeader.types';
 import { IAction } from '../ActionBar/ActionBar.types';
 import { IGridListProps } from '../GridList/GridList.types';
 import { GridList } from '../GridList/GridList';
-import { IChartProps } from '../Chart/Chart.types';
+import { IChartProps, ChartWidth, ChartHeight } from '../Chart/Chart.types';
 import { Chart } from '../Chart/Chart';
 
 export class Layout extends React.Component<ILayoutProps> {
@@ -98,7 +98,8 @@ export class Layout extends React.Component<ILayoutProps> {
                     colors={colors}
                     barWidth={barWidth}
                     data={data}
-                    cardSize={this.props.cardSize}
+                    width={this._getChartWidth(cardContentList.length)}
+                    height={this._getChartHeight(cardContentList.length)}
                   />
                 );
                 break;
@@ -110,6 +111,20 @@ export class Layout extends React.Component<ILayoutProps> {
     }
 
     return contentArea;
+  }
+
+  private _getChartHeight(numberOfContentAreas: number): ChartHeight {
+    return this.props.cardSize === CardSize.mediumTall && numberOfContentAreas > 1
+      ? ChartHeight.tall
+      : ChartHeight.short;
+  }
+
+  private _getChartWidth(numberOfContentAreas: number): ChartWidth {
+    return numberOfContentAreas > 1 ||
+      this.props.cardSize === CardSize.small ||
+      this.props.cardSize === CardSize.mediumTall
+      ? ChartWidth.compact
+      : ChartWidth.wide;
   }
 
   private _generateHeader(header: ICardHeaderProps): JSX.Element | null {
