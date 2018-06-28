@@ -96,10 +96,8 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     const onKeyDownProp: {} = disabled ? {} : { onKeyDown: this._onKeyDown };
     const classNames = getClassNames(styles, {
       className,
-      rootIsDisabled: disabled,
-      rootIsEnabled: !disabled,
-      rootIsVertical: vertical,
-      rootIsHorizontal: !vertical,
+      disabled,
+      vertical,
       showTransitions: renderedValue === value,
       showValue,
       theme: theme!

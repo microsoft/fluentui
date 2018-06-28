@@ -20,10 +20,10 @@ const GlobalClassNames = {
 };
 
 export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
-  const { className, titleLabel, theme } = props;
+  const { className, titleLabelClassName, theme } = props;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  const slideBoxActiveSectionStyles = props.rootIsEnabled && {
+  const slideBoxActiveSectionStyles = !props.disabled && {
     backgroundColor: theme.palette.themePrimary,
     selectors: {
       [HighContrastSelector]: {
@@ -32,7 +32,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
     }
   };
 
-  const slideBoxInactiveSectionStyles = props.rootIsEnabled && {
+  const slideBoxInactiveSectionStyles = !props.disabled && {
     backgroundColor: theme.palette.themeLight,
     selectors: {
       [HighContrastSelector]: {
@@ -41,7 +41,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
     }
   };
 
-  const slideBoxActiveThumbStyles = props.rootIsEnabled && {
+  const slideBoxActiveThumbStyles = !props.disabled && {
     border: `2px solid ${theme.palette.themePrimary}`,
     selectors: {
       [HighContrastSelector]: {
@@ -56,20 +56,20 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
       {
         userSelect: 'none'
       },
-      props.rootIsVertical && {
+      props.vertical && {
         marginRight: 8
       },
-      className,
-      ...[props.rootIsEnabled ? classNames.enabled : undefined],
-      ...[props.rootIsDisabled ? classNames.disabled : undefined],
-      ...[props.rootIsHorizontal ? classNames.row : undefined],
-      ...[props.rootIsVertical ? classNames.column : undefined]
+      ...[!props.disabled ? classNames.enabled : undefined],
+      ...[props.disabled ? classNames.disabled : undefined],
+      ...[!props.vertical ? classNames.row : undefined],
+      ...[props.vertical ? classNames.column : undefined],
+      className
     ],
     titleLabel: [
       {
         padding: 0
       },
-      titleLabel
+      titleLabelClassName
     ],
     container: [
       classNames.container,
@@ -78,7 +78,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
         flexWrap: 'nowrap',
         alignItems: 'center'
       },
-      props.rootIsVertical && {
+      props.vertical && {
         flexDirection: 'column',
         height: '100%',
         textAlign: 'center',
@@ -113,19 +113,20 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
               height: 16,
               position: 'absolute'
             },
-            props.rootIsHorizontal && {
-              top: -6,
-              transform: getRTL() ? 'translateX(50%)' : 'translateX(-50%)'
-            },
-            props.rootIsVertical && {
-              left: -6,
-              margin: '0 auto',
-              transform: 'translateY(8px)'
-            },
+            props.vertical
+              ? {
+                  left: -6,
+                  margin: '0 auto',
+                  transform: 'translateY(8px)'
+                }
+              : {
+                  top: -6,
+                  transform: getRTL() ? 'translateX(50%)' : 'translateX(-50%)'
+                },
             props.showTransitions && {
               transition: `left ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`
             },
-            props.rootIsDisabled && {
+            props.disabled && {
               borderColor: theme.palette.neutralTertiaryAlt,
               selectors: {
                 [HighContrastSelector]: {
@@ -136,16 +137,17 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
           ]
         }
       },
-      props.rootIsHorizontal && {
-        height: 28,
-        width: '100%',
-        padding: '0 8px' // Make room for thumb at ends of line
-      },
-      props.rootIsVertical && {
-        height: '100%',
-        width: 28,
-        padding: '8px 0' // Make room for thumb at bottom of line
-      },
+      props.vertical
+        ? {
+            height: '100%',
+            width: 28,
+            padding: '8px 0' // Make room for thumb at bottom of line
+          }
+        : {
+            height: 28,
+            width: '100%',
+            padding: '0 8px' // Make room for thumb at ends of line
+          },
       ...[props.showValue ? classNames.showValue : undefined],
       ...[props.showTransitions ? classNames.showTransitions : undefined]
     ],
@@ -161,26 +163,28 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
               borderRadius: 4,
               boxSizing: 'border-box'
             },
-            props.rootIsHorizontal && {
-              height: 4,
-              width: '100%'
-            },
-            props.rootIsVertical && {
-              width: 4,
-              height: '100%'
-            }
+            props.vertical
+              ? {
+                  width: 4,
+                  height: '100%'
+                }
+              : {
+                  height: 4,
+                  width: '100%'
+                }
           ]
         }
       },
-      props.rootIsHorizontal && {
-        width: '100%'
-      },
-      props.rootIsVertical && {
-        height: '100%',
-        width: 4,
-        margin: '0 auto',
-        flexDirection: 'column-reverse'
-      }
+      props.vertical
+        ? {
+            height: '100%',
+            width: 4,
+            margin: '0 auto',
+            flexDirection: 'column-reverse'
+          }
+        : {
+            width: '100%'
+          }
     ],
     lineContainer: [{}],
     activeSection: [
@@ -196,7 +200,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
       props.showTransitions && {
         transition: `width ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`
       },
-      props.rootIsDisabled && {
+      props.disabled && {
         background: theme.palette.neutralTertiaryAlt,
         selectors: {
           [HighContrastSelector]: {
@@ -219,7 +223,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
       props.showTransitions && {
         transition: `width ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`
       },
-      props.rootIsDisabled && {
+      props.disabled && {
         background: theme.palette.neutralLight,
         selectors: {
           [HighContrastSelector]: {
@@ -236,16 +240,17 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
         width: 30,
         lineHeight: '1' // using a string here meaning it's relative to the size of the font
       },
-      props.rootIsHorizontal && {
-        margin: '0 8px',
-        whiteSpace: 'nowrap',
-        width: 40
-      },
-      props.rootIsVertical && {
-        margin: '0 auto',
-        whiteSpace: 'nowrap',
-        width: 40
-      }
+      props.vertical
+        ? {
+            margin: '0 auto',
+            whiteSpace: 'nowrap',
+            width: 40
+          }
+        : {
+            margin: '0 8px',
+            whiteSpace: 'nowrap',
+            width: 40
+          }
     ]
   };
 };

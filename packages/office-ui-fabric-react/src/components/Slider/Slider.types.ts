@@ -102,23 +102,12 @@ export interface ISliderProps extends React.Props<SliderBase> {
   buttonProps?: React.HTMLAttributes<HTMLButtonElement>;
 }
 
-export interface ISliderStyleProps {
-  /**
-   * Theme provided by High-Order Component.
-   */
-  theme: ITheme;
-  /**
-   * Accept custom classNames.
-   */
-  className?: string;
-  titleLabel?: string;
-  rootIsEnabled?: boolean;
-  rootIsDisabled?: boolean;
-  rootIsHorizontal?: boolean;
-  rootIsVertical?: boolean;
-  showTransitions?: boolean;
-  showValue?: boolean;
-}
+export type ISliderStyleProps = Required<Pick<ISliderProps, 'theme'>> &
+  Pick<ISliderProps, 'className' | 'disabled' | 'vertical'> & {
+    showTransitions?: boolean;
+    showValue?: boolean;
+    titleLabelClassName?: string;
+  };
 
 export interface ISliderStyles {
   root: IStyle;
