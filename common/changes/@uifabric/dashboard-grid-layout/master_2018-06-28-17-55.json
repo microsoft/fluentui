@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "Updated example file to show more type of cards with action bar",
+      "packageName": "@uifabric/dashboard-grid-layout",
+      "type": "none"
+    }
+  ],
+  "packageName": "@uifabric/dashboard-grid-layout",
+  "email": "saakhta@microsoft.com"
+}
