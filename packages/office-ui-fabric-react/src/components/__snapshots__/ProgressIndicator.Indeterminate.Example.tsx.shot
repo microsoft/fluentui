@@ -50,10 +50,6 @@ exports[`Component Examples renders ProgressIndicator.Indeterminate.Example.tsx 
           }
     />
     <div
-      aria-valuemax={undefined}
-      aria-valuemin={undefined}
-      aria-valuenow={undefined}
-      aria-valuetext={undefined}
       className=
           ms-ProgressIndicator-progressBar
           {
@@ -69,7 +65,6 @@ exports[`Component Examples renders ProgressIndicator.Indeterminate.Example.tsx 
           @media screen and (-ms-high-contrast: active){& {
             background-color: WindowText;
           }
-      role="progressbar"
       style={
         Object {
           "transition": undefined,
@@ -77,6 +72,21 @@ exports[`Component Examples renders ProgressIndicator.Indeterminate.Example.tsx 
         }
       }
     />
+    <span
+      aria-live="polite"
+      className=
+
+          {
+            height: 1px;
+            left: -2px;
+            overflow: hidden;
+            position: absolute;
+            top: 0px;
+            width: 1px;
+          }
+    >
+      Working on it
+    </span>
   </div>
   <div
     className=
