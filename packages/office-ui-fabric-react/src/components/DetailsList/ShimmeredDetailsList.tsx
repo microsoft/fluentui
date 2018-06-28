@@ -1,10 +1,13 @@
 import * as React from 'react';
 
-import { BaseComponent } from '../../Utilities';
-import { IDetailsListProps } from './DetailsList.types';
+import { BaseComponent, css } from '../../Utilities';
+import { SelectionMode } from '../../utilities/selection/interfaces';
+import { IDetailsListProps, CheckboxVisibility } from './DetailsList.types';
 import { DetailsList } from './DetailsList';
 import { IDetailsRowProps } from './DetailsRow';
 import { Shimmer, ShimmerElementsGroup, ShimmerElementType, IShimmerElement } from '../Shimmer';
+
+import * as styles from './DetailsRow.scss';
 
 export interface IShimmeredDetailsListProps extends IDetailsListProps {
   shimmerLines?: number;
@@ -51,7 +54,8 @@ export class ShimmeredDetailsList extends BaseComponent<IShimmeredDetailsListPro
   };
 
   private _renderDefaultShimmerPlaceholder = (rowProps: IDetailsRowProps): React.ReactNode => {
-    const { columns, compact } = rowProps;
+    const { columns, compact, selectionMode, checkboxVisibility } = rowProps;
+    const showCheckbox = selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden;
     const shimmerElementsRow: JSX.Element[] = [];
     const gapHeight: number = compact ? COMPACT_ROW_HEIGHT : DEFAULT_ROW_HEIGHT;
 
@@ -100,6 +104,13 @@ export class ShimmeredDetailsList extends BaseComponent<IShimmeredDetailsListPro
         shimmerElements={[{ type: ShimmerElementType.gap, width: '100%', height: gapHeight }]}
       />
     );
-    return <div style={{ display: 'flex' }}>{shimmerElementsRow}</div>;
+    return (
+      <div
+        className={css(showCheckbox && styles.shimmerLeftBorder, !compact && styles.shimmerBottomBorder)}
+        style={{ display: 'flex' }}
+      >
+        {shimmerElementsRow}
+      </div>
+    );
   };
 }
