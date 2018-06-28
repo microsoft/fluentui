@@ -101,7 +101,6 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
           ':active $thumb': slideBoxActiveThumbStyles,
           ':hover $thumb': slideBoxActiveThumbStyles,
           $thumb: [
-            classNames.thumb,
             {
               borderWidth: 2,
               borderStyle: 'solid',
@@ -150,7 +149,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
       ...[props.showValue ? classNames.showValue : undefined],
       ...[props.showTransitions ? classNames.showTransitions : undefined]
     ],
-    thumb: [{}],
+    thumb: [classNames.thumb],
     line: [
       classNames.line,
       {
