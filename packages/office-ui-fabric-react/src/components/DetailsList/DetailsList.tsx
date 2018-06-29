@@ -214,7 +214,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       setKey,
       selectionMode,
       columns,
-      viewport
+      viewport,
+      compact
     } = this.props;
     const shouldResetSelection = (newProps.setKey !== setKey) || newProps.setKey === undefined;
     let shouldForceUpdates = false;
@@ -238,7 +239,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     if (
       newProps.checkboxVisibility !== checkboxVisibility ||
       newProps.columns !== columns ||
-      newProps.viewport!.width !== viewport!.width
+      newProps.viewport!.width !== viewport!.width ||
+      newProps.compact !== compact
     ) {
       shouldForceUpdates = true;
     }
