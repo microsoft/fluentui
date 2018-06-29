@@ -80,60 +80,60 @@ export interface IHorizontalBarChartStyles {
   /**
    *  Style for the root element.
    */
-  root?: IStyle;
+  root: IStyle;
 
   /**
    * Style for the chart.
    */
-  chart?: IStyle;
+  chart: IStyle;
 
   /**
    * Style for the chart label.
    */
-  chartLabel?: IStyle;
+  chartLabel: IStyle;
 
   /**
    * Style for the element containing the x-axis.
    */
-  xAxis?: IStyle;
+  xAxis: IStyle;
 
   /**
    * Style for the line representing the domain of the x-axis.
    */
-  xAxisDomain?: IStyle;
+  xAxisDomain: IStyle;
 
   /**
    * Style for the lines representing the ticks along the x-axis.
    */
-  xAxisTicks?: IStyle;
+  xAxisTicks: IStyle;
 
   /**
    * Style for the text labeling each tick along the x-axis.
    */
-  xAxisText?: IStyle;
+  xAxisText: IStyle;
 
   /**
    * Style for the element containing the y-axis.
    */
-  yAxis?: IStyle;
+  yAxis: IStyle;
 
   /**
    * Style for the line representing the domain of the y-axis.
    */
-  yAxisDomain?: IStyle;
+  yAxisDomain: IStyle;
 
   /**
    * Style for the lines representing the ticks along the y-axis.
    */
-  yAxisTicks?: IStyle;
+  yAxisTicks: IStyle;
 
   /**
    * Style for the text labeling each tick along the y-axis.
    */
-  yAxisText?: IStyle;
+  yAxisText: IStyle;
 
   /**
    * Style for the element containing all the bars in the chart.
    */
-  bars?: IStyle;
+  bars: IStyle;
 }

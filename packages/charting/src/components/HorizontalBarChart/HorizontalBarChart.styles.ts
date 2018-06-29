@@ -12,10 +12,10 @@ export const getStyles = (props: IHorizontalBarChartStyleProps): IHorizontalBarC
   return {
     root: [
       'ms-HorizontalBarChart',
-      className,
       {
         width: chartWidth + 2 * chartPadding
-      }
+      },
+      className
     ],
     chart: [
       {
@@ -35,7 +35,9 @@ export const getStyles = (props: IHorizontalBarChartStyleProps): IHorizontalBarC
         transform: `translate(${xOffset}px, ${height}px)`
       }
     ],
+    xAxisDomain: [],
     xAxisTicks: [],
+    xAxisText: [],
     yAxis: [
       {
         transform: `translate(${yOffset}px, 0px)`
@@ -51,6 +53,7 @@ export const getStyles = (props: IHorizontalBarChartStyleProps): IHorizontalBarC
         transform: 'scaleX(-1)'
       }
     ],
+    yAxisText: [],
     bars: [
       {
         transform: `translate(${xOffset}px, -15px)`

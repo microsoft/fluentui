@@ -28,13 +28,11 @@ export class HorizontalBarChartPage extends React.Component<IComponentDemoPagePr
             ]}
           />
         }
-        /* tslint:disable:max-line-length */
         overview={
           <div>
             <p>HorizontalBarChart description</p>
           </div>
         }
-        /* tslint:enable:max-line-length */
         bestPractices={<div />}
         dos={
           <div>
