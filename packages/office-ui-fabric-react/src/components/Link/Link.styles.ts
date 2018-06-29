@@ -1,4 +1,10 @@
-import { getFocusStyle, getGlobalClassNames, HighContrastSelector } from '../../Styling';
+import {
+  getFocusStyle,
+  getGlobalClassNames,
+  HighContrastSelector,
+  HighContrastSelectorWhite,
+  HighContrastSelectorBlack
+} from '../../Styling';
 import { ILinkStyleProps, ILinkStyles } from './Link.types';
 
 const GlobalClassNames = {
@@ -30,7 +36,15 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
         padding: 0,
         textAlign: 'left',
         textOverflow: 'inherit',
-        userSelect: 'text'
+        userSelect: 'text',
+        selectors: {
+          [HighContrastSelectorBlack]: {
+            color: '#FFFF00'
+          },
+          [HighContrastSelectorWhite]: {
+            color: '#00009F'
+          }
+        }
       },
       !isButton && {
         textDecoration: 'none'
