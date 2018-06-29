@@ -143,7 +143,7 @@ exports[`Component Examples renders Pivot.Remove.Example.tsx correctly 1`] = `
                 visibility: hidden;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #767676;
+                outline: 1px solid undefined;
               }
               .ms-Fabric--isFocusVisible &:focus::before {
                 background: transparent;
@@ -308,7 +308,7 @@ exports[`Component Examples renders Pivot.Remove.Example.tsx correctly 1`] = `
                 visibility: hidden;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #767676;
+                outline: 1px solid undefined;
               }
               .ms-Fabric--isFocusVisible &:focus::before {
                 background: transparent;
@@ -468,7 +468,7 @@ exports[`Component Examples renders Pivot.Remove.Example.tsx correctly 1`] = `
                 visibility: hidden;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #767676;
+                outline: 1px solid undefined;
               }
               .ms-Fabric--isFocusVisible &:focus::before {
                 background: transparent;
@@ -628,7 +628,7 @@ exports[`Component Examples renders Pivot.Remove.Example.tsx correctly 1`] = `
                 visibility: hidden;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #767676;
+                outline: 1px solid undefined;
               }
               .ms-Fabric--isFocusVisible &:focus::before {
                 background: transparent;

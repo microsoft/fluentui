@@ -23,14 +23,9 @@
       "program": "${workspaceRoot}/apps/server-rendered-app/server/index.js",
       "cwd": "${workspaceRoot}/apps/server-rendered-app",
       "stopOnEntry": false,
-      "args": [
-        "-i"
-      ],
+      "args": ["-i"],
       "runtimeExecutable": null,
-      "runtimeArgs": [
-        "--nolazy",
-        "--debug"
-      ],
+      "runtimeArgs": ["--nolazy", "--debug"],
       "env": {
         "NODE_ENV": "development"
       },
@@ -108,6 +103,14 @@
         "NODE_ENV": "development"
       },
       "sourceMaps": true
+    },
+    {
+      "type": "chrome",
+      "request": "attach",
+      "name": "Attach to Chrome office-ui-fabric-react",
+      "port": 9222,
+      "url": "http://localhost:4322/#",
+      "webRoot": "${workspaceFolder}"
     }
   ]
 }

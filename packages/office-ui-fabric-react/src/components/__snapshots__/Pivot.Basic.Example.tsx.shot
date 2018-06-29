@@ -139,7 +139,7 @@ exports[`Component Examples renders Pivot.Basic.Example.tsx correctly 1`] = `
                 visibility: hidden;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #767676;
+                outline: 1px solid undefined;
               }
               @media screen and (-ms-high-contrast: active){&:before {
                 border-bottom-color: Highlight;
@@ -293,7 +293,7 @@ exports[`Component Examples renders Pivot.Basic.Example.tsx correctly 1`] = `
                 visibility: hidden;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #767676;
+                outline: 1px solid undefined;
               }
               &:hover::before {
                 border-bottom: 2px solid transparent;
@@ -443,7 +443,7 @@ exports[`Component Examples renders Pivot.Basic.Example.tsx correctly 1`] = `
                 visibility: hidden;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #767676;
+                outline: 1px solid undefined;
               }
               &:hover::before {
                 border-bottom: 2px solid transparent;
