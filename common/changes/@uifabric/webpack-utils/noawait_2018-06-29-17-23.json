@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/webpack-utils",
+      "comment": "replaced await with promise so this async loader is more IE compatible",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/webpack-utils",
+  "email": "kchau@microsoft.com"
+}
