@@ -157,7 +157,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       disabled = isDisabled;
     }
 
-    const optionId = id + '-option'; // + (!multiSelect ? '-' + selectedIndices[0] : '');
+    const optionId = id + '-option';
     const ariaAttrs = multiSelect
       ? {
           role: undefined,
