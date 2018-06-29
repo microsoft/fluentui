@@ -14,8 +14,10 @@
     "react-dom": "^16.4.1",
     "react-grid-layout": "^0.16.6"
   },
-  "main": "lib/index.js",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
   "typings": "lib/index.d.ts",
+  "sideEffects": false,
   "scripts": {
     "build": "node ../../scripts/build.js",
     "clean": "node ../../scripts/clean.js",
