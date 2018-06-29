@@ -8,7 +8,14 @@ import {
   IChoiceGroupOptionStyleProps,
   IChoiceGroupOptionStyles
 } from './ChoiceGroupOption.types';
-import { BaseComponent, classNamesFunction, getNativeProps, inputProperties, createRef, hasOverflow } from '../../../Utilities';
+import {
+  BaseComponent,
+  classNamesFunction,
+  getNativeProps,
+  inputProperties,
+  createRef,
+  hasOverflow
+} from '../../../Utilities';
 
 const getClassNames = classNamesFunction<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>();
 const defaultImageSize = 32;
