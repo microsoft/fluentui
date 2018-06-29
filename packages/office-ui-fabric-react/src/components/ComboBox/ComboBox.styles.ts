@@ -5,8 +5,10 @@ import {
   ITheme,
   concatStyleSets,
   getFocusStyle,
-  HighContrastSelector
+  HighContrastSelector,
+  ZIndexes
 } from '../../Styling';
+import { IsFocusVisibleClassName } from '@uifabric/utilities';
 import { IComboBoxOptionStyles, IComboBoxStyles } from './ComboBox.types';
 
 import { IButtonStyles } from '../../Button';
@@ -66,6 +68,33 @@ export const getOptionStyles = memoizeFunction(
     const ComboBoxOptionTextColorDisabled = semanticColors.disabledText;
     const ComboBoxOptionBackgroundDisabled = semanticColors.bodyBackground;
 
+    /**
+     * This is the same as the output from getFocusStyle(),
+     * but without `:focus` since ComboBox options don't receive focus.
+     */
+    const ComboBoxFocusStyle: IRawStyle = {
+      outline: 'transparent',
+      position: 'relative',
+
+      selectors: {
+        '::-moz-focus-inner': {
+          border: '0'
+        },
+
+        [`.${IsFocusVisibleClassName} &:after`]: {
+          content: '""',
+          position: 'absolute',
+          left: 1,
+          top: 1,
+          bottom: 1,
+          right: 1,
+          border: `1px solid ${palette.white}`,
+          outline: `1px solid ${palette.neutralSecondary}`,
+          zIndex: ZIndexes.FocusStyle
+        }
+      }
+    };
+
     const optionStyles: IComboBoxOptionStyles = {
       root: [
         {
@@ -90,8 +119,7 @@ export const getOptionStyles = memoizeFunction(
               borderColor: 'Background'
             }
           }
-        },
-        getFocusStyle(theme)
+        }
       ],
       rootHovered: {
         backgroundColor: ComboBoxOptionBackgroundHovered,
@@ -105,7 +133,7 @@ export const getOptionStyles = memoizeFunction(
           backgroundColor: ComboBoxOptionBackgroundHovered,
           color: ComboBoxOptionTextColorSelected
         },
-        getFocusStyle(theme),
+        ComboBoxFocusStyle,
         getListOptionHighContrastStyles(theme)
       ],
       rootDisabled: {
