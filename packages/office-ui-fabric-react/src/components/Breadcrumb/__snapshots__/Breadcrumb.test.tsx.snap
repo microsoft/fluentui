@@ -509,6 +509,10 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
               disabled={undefined}
               onClick={[Function]}
               onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
               role="button"
               type="button"
             >
@@ -1229,6 +1233,10 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
               disabled={undefined}
               onClick={[Function]}
               onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
               role="button"
               type="button"
             >
@@ -1597,6 +1605,10 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
               disabled={undefined}
               onClick={[Function]}
               onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
               role="button"
               type="button"
             >
@@ -1805,6 +1817,10 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
               disabled={undefined}
               onClick={[Function]}
               onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
               role="button"
               type="button"
             >

@@ -115,11 +115,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
           variantClassName!,
           iconProps && iconProps.className,
           menuIconProps && menuIconProps.className,
-          allowDisabledFocus!,
           isPrimaryButtonDisabled!,
           checked!,
           !!menuProps,
-          this.props.split
+          this.props.split,
+          !!allowDisabledFocus
         )
       : getBaseButtonClassNames(
           styles!,
@@ -181,6 +181,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       className: this._classNames.root,
       ref: this._buttonElement,
       disabled: isPrimaryButtonDisabled && !allowDisabledFocus,
+      onKeyDown: this._onKeyDown,
+      onKeyPress: this._onKeyPress,
+      onKeyUp: this._onKeyUp,
+      onMouseDown: this._onMouseDown,
+      onMouseUp: this._onMouseUp,
+      onClick: this._onClick,
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledBy,
       'aria-describedby': ariaDescribedBy,
@@ -240,8 +246,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     this._dismissMenu();
   }
 
-  public openMenu(): void {
-    this._openMenu();
+  public openMenu(shouldFocusOnContainer?: boolean, shouldFocusOnMount?: boolean): void {
+    this._openMenu(shouldFocusOnContainer, shouldFocusOnMount);
   }
 
   private _onRenderContent(tag: any, buttonProps: IButtonProps): JSX.Element {
@@ -418,6 +424,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         directionalHint={DirectionalHint.bottomLeftEdge}
         {...menuProps}
         shouldFocusOnContainer={this.state.menuProps ? this.state.menuProps.shouldFocusOnContainer : undefined}
+        shouldFocusOnMount={this.state.menuProps ? this.state.menuProps.shouldFocusOnMount : undefined}
         className={css('ms-BaseButton-menuhost', menuProps.className)}
         target={this._isSplitButton ? this._splitButtonContainer.current : this._buttonElement.current}
         onDismiss={onDismiss}
@@ -434,9 +441,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     this.setState({ menuProps: menuProps });
   };
 
-  private _openMenu = (shouldFocusOnContainer?: boolean): void => {
+  private _openMenu = (shouldFocusOnContainer?: boolean, shouldFocusOnMount: boolean = true): void => {
     if (this.props.menuProps) {
-      const menuProps = { ...this.props.menuProps, shouldFocusOnContainer: shouldFocusOnContainer };
+      const menuProps = { ...this.props.menuProps, shouldFocusOnContainer, shouldFocusOnMount };
       if (this.props.persistMenu) {
         menuProps.hidden = false;
       }
@@ -450,10 +457,16 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
 
     const currentMenuProps = this.state.menuProps;
+    let shouldFocusOnMount = true;
+    if (this.props.menuProps && this.props.menuProps.shouldFocusOnMount === false) {
+      shouldFocusOnMount = false;
+    }
     if (this.props.persistMenu) {
-      currentMenuProps && currentMenuProps.hidden ? this._openMenu(shouldFocusOnContainer) : this._dismissMenu();
+      currentMenuProps && currentMenuProps.hidden
+        ? this._openMenu(shouldFocusOnContainer, shouldFocusOnMount)
+        : this._dismissMenu();
     } else {
-      currentMenuProps ? this._dismissMenu() : this._openMenu(shouldFocusOnContainer);
+      currentMenuProps ? this._dismissMenu() : this._openMenu(shouldFocusOnContainer, shouldFocusOnMount);
     }
   };
 
@@ -470,7 +483,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     let { keytipProps } = this.props;
 
     const classNames = getSplitButtonClassNames
-      ? getSplitButtonClassNames(!!disabled, !!allowDisabledFocus, !!this.state.menuProps, !!checked)
+      ? getSplitButtonClassNames(!!disabled, !!this.state.menuProps, !!checked, !!allowDisabledFocus)
       : styles && getBaseSplitButtonClassNames(styles!, !!disabled, !!this.state.menuProps, !!checked);
 
     assign(buttonProps, {
@@ -579,12 +592,44 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     );
   }
 
-  private _onMouseDown = (ev: React.MouseEvent<BaseButton>) => {
-    if (this.props.onMouseDown) {
-      this.props.onMouseDown(ev);
+  private _onKeyDown = (ev: React.KeyboardEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>) => {
+    // explicity cancelling event so click won't fire after this
+    if (this.props.disabled && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space)) {
+      ev.preventDefault();
+      ev.stopPropagation();
+    } else if (!this.props.disabled && this.props.onKeyDown !== undefined) {
+      this.props.onKeyDown(ev); // not cancelling event because it's not disabled
     }
+  };
 
-    ev.preventDefault();
+  private _onKeyUp = (ev: React.KeyboardEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>) => {
+    if (!this.props.disabled && this.props.onKeyUp !== undefined) {
+      this.props.onKeyUp(ev); // not cancelling event because it's not disabled
+    }
+  };
+
+  private _onKeyPress = (ev: React.KeyboardEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>) => {
+    if (!this.props.disabled && this.props.onKeyPress !== undefined) {
+      this.props.onKeyPress(ev); // not cancelling event because it's not disabled
+    }
+  };
+
+  private _onMouseUp = (ev: React.MouseEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>) => {
+    if (!this.props.disabled && this.props.onMouseUp !== undefined) {
+      this.props.onMouseUp(ev); // not cancelling event because it's not disabled
+    }
+  };
+
+  private _onMouseDown = (ev: React.MouseEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>) => {
+    if (!this.props.disabled && this.props.onMouseDown !== undefined) {
+      this.props.onMouseDown(ev); // not cancelling event because it's not disabled
+    }
+  };
+
+  private _onClick = (ev: React.MouseEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>) => {
+    if (!this.props.disabled && this.props.onClick !== undefined) {
+      this.props.onClick(ev); // not cancelling event because it's not disabled
+    }
   };
 
   private _onSplitButtonContainerKeyDown = (ev: React.KeyboardEvent<HTMLDivElement>) => {

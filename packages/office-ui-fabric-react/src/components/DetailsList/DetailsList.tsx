@@ -164,8 +164,20 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   }
 
   public componentWillUnmount(): void {
+    const { onScroll } = this.props;
+    if (onScroll && this._root.current) {
+      this._root.current.removeEventListener('scroll', this._onScroll);
+    }
+
     if (this._dragDropHelper) {
       this._dragDropHelper.dispose();
+    }
+  }
+
+  public componentDidMount(): void {
+    const { onScroll } = this.props;
+    if (onScroll && this._root.current) {
+      this._root.current.addEventListener('scroll', this._onScroll);
     }
   }
 
@@ -210,7 +222,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   }
 
   public componentWillReceiveProps(newProps: IDetailsListProps): void {
-    const { checkboxVisibility, items, setKey, selectionMode, columns, viewport } = this.props;
+    const { checkboxVisibility, items, setKey, selectionMode, columns, viewport, compact } = this.props;
     const shouldResetSelection = newProps.setKey !== setKey || newProps.setKey === undefined;
     let shouldForceUpdates = false;
 
@@ -233,7 +245,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     if (
       newProps.checkboxVisibility !== checkboxVisibility ||
       newProps.columns !== columns ||
-      newProps.viewport!.width !== viewport!.width
+      newProps.viewport!.width !== viewport!.width ||
+      newProps.compact !== compact
     ) {
       shouldForceUpdates = true;
     }
@@ -285,7 +298,11 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       listProps,
       usePageCache,
       onShouldVirtualize,
-      enableShimmer
+      enableShimmer,
+      viewport,
+      columnReorderOptions,
+      minimumPixelsForDrag,
+      getGroupHeight
     } = this.props;
     const { adjustedColumns, isCollapsed, isSizing, isSomeGroupExpanded } = this.state;
     const { _selection: selection, _dragDropHelper: dragDropHelper } = this;
@@ -370,7 +387,10 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                   ariaLabelForSelectAllCheckbox: ariaLabelForSelectAllCheckbox,
                   ariaLabelForSelectionColumn: ariaLabelForSelectionColumn,
                   selectAllVisibility: selectAllVisibility,
-                  collapseAllVisibility: groupProps && groupProps.collapseAllVisibility
+                  collapseAllVisibility: groupProps && groupProps.collapseAllVisibility,
+                  viewport: viewport,
+                  columnReorderOptions: columnReorderOptions,
+                  minimumPixelsForDrag: minimumPixelsForDrag
                 },
                 this._onRenderDetailsHeader
               )}
@@ -410,6 +430,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                     onGroupExpandStateChanged={this._onGroupExpandStateChanged}
                     usePageCache={usePageCache}
                     onShouldVirtualize={onShouldVirtualize}
+                    getGroupHeight={getGroupHeight}
                   />
                 ) : (
                   <List
@@ -887,6 +908,13 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
     return itemKey;
   }
+
+  private _onScroll = (e: Event): void => {
+    const { onScroll } = this.props;
+    if (onScroll) {
+      onScroll(e);
+    }
+  };
 }
 
 export function buildColumns(

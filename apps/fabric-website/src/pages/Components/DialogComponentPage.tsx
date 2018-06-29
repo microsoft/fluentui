@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DialogPage } from '@uifabric/demo/lib/components/pages/DialogPage';
+import { DialogPage } from '@uifabric/fabric-website-resources/lib/components/pages/DialogPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 const pageStyles: any = require('../PageStyles.module.scss');

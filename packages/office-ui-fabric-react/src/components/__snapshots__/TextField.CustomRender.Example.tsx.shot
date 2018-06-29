@@ -94,6 +94,11 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
             data-is-focusable={true}
             disabled={undefined}
             onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             title="Info"
             type="button"
           >
@@ -153,6 +158,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
+          readOnly={undefined}
           type="text"
           value=""
         />

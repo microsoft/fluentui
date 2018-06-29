@@ -441,6 +441,11 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -557,6 +562,11 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -673,6 +683,11 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div

@@ -126,7 +126,6 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
             }
         data-ktp-execute-target={undefined}
         data-lpignore={true}
-        disabled={true}
         id="input1"
         onBlur={[Function]}
         onChange={[Function]}
@@ -238,6 +237,10 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
               }
           data-is-focusable={false}
           disabled={true}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
@@ -361,6 +364,10 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
               }
           data-is-focusable={false}
           disabled={true}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}

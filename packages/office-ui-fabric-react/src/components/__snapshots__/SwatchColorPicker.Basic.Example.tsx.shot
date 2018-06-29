@@ -199,9 +199,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker0-a-0"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
+              onMouseUp={[Function]}
               role="gridcell"
               title="green"
               type="button"
@@ -397,9 +402,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker0-b-1"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
+              onMouseUp={[Function]}
               role="gridcell"
               title="orange"
               type="button"
@@ -595,9 +605,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker0-c-2"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
+              onMouseUp={[Function]}
               role="gridcell"
               title="blue"
               type="button"
@@ -793,9 +808,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker0-d-3"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
+              onMouseUp={[Function]}
               role="gridcell"
               title="red"
               type="button"
@@ -1001,9 +1021,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker0-e-4"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
+              onMouseUp={[Function]}
               role="gridcell"
               title="white"
               type="button"
@@ -1241,9 +1266,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker18-a-0"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
+              onMouseUp={[Function]}
               role="gridcell"
               title="green"
               type="button"
@@ -1435,9 +1465,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker18-b-1"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
+              onMouseUp={[Function]}
               role="gridcell"
               title="orange"
               type="button"
@@ -1629,9 +1664,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker18-c-2"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
+              onMouseUp={[Function]}
               role="gridcell"
               title="blue"
               type="button"
@@ -1823,9 +1863,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker18-d-3"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
+              onMouseUp={[Function]}
               role="gridcell"
               title="red"
               type="button"
@@ -2029,9 +2074,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker18-e-4"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
+              onMouseUp={[Function]}
               role="gridcell"
               title="white"
               type="button"
@@ -2281,9 +2331,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker36-a-0"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
+              onMouseUp={[Function]}
               role="gridcell"
               title="green"
               type="button"
@@ -2479,9 +2534,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker36-b-1"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
+              onMouseUp={[Function]}
               role="gridcell"
               title="orange"
               type="button"
@@ -2677,9 +2737,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker36-c-2"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
+              onMouseUp={[Function]}
               role="gridcell"
               title="blue"
               type="button"
@@ -2875,9 +2940,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker36-d-3"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
+              onMouseUp={[Function]}
               role="gridcell"
               title="red"
               type="button"
@@ -3077,9 +3147,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker36-g-4"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
+              onMouseUp={[Function]}
               role="gridcell"
               title="green"
               type="button"
@@ -3275,9 +3350,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker36-h-5"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
+              onMouseUp={[Function]}
               role="gridcell"
               title="orange"
               type="button"
@@ -3473,9 +3553,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker36-i-6"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
+              onMouseUp={[Function]}
               role="gridcell"
               title="blue"
               type="button"
@@ -3671,9 +3756,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker36-j-7"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
+              onMouseUp={[Function]}
               role="gridcell"
               title="red"
               type="button"
@@ -3873,9 +3963,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker36-k-8"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
+              onMouseUp={[Function]}
               role="gridcell"
               title="black"
               type="button"
@@ -4071,9 +4166,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker36-l-9"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
+              onMouseUp={[Function]}
               role="gridcell"
               title="grey"
               type="button"
@@ -4269,9 +4369,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker36-m-10"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
+              onMouseUp={[Function]}
               role="gridcell"
               title="purple"
               type="button"
@@ -4467,9 +4572,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               id="swatchColorPicker36-n-11"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
+              onMouseUp={[Function]}
               role="gridcell"
               title="yellow"
               type="button"
@@ -4577,7 +4687,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   ms-Button--action
                   ms-Button--command
                   undefined
-                  is-checked
+                  is-disabled
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
@@ -4586,7 +4696,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     border-radius: 0px;
                     border: 1px solid transparent;
                     box-sizing: border-box;
-                    color: #000000;
+                    color: #a6a6a6;
                     cursor: default;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -4631,6 +4741,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
+                    bordercolor: grayText;
+                    color: grayText;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
                     border: none;
@@ -4698,15 +4810,26 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   & $svg {
                     border-radius: 100%;
                   }
+                  &:hover {
+                    outline: 0px;
+                  }
+                  &:focus {
+                    outline: 0px;
+                  }
               data-index={0}
               data-is-focusable={false}
               disabled={true}
               id="swatchColorPicker75-a-0"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
+              onMouseUp={[Function]}
               role="gridcell"
               title="green"
               type="button"
@@ -4769,7 +4892,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   ms-Button--action
                   ms-Button--command
                   undefined
-                  is-checked
+                  is-disabled
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
@@ -4778,7 +4901,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     border-radius: 0px;
                     border: 1px solid transparent;
                     box-sizing: border-box;
-                    color: #000000;
+                    color: #a6a6a6;
                     cursor: default;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -4823,6 +4946,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
+                    bordercolor: grayText;
+                    color: grayText;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
                     border: none;
@@ -4890,15 +5015,26 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   & $svg {
                     border-radius: 100%;
                   }
+                  &:hover {
+                    outline: 0px;
+                  }
+                  &:focus {
+                    outline: 0px;
+                  }
               data-index={1}
               data-is-focusable={false}
               disabled={true}
               id="swatchColorPicker75-b-1"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
+              onMouseUp={[Function]}
               role="gridcell"
               title="orange"
               type="button"
@@ -4961,7 +5097,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   ms-Button--action
                   ms-Button--command
                   undefined
-                  is-checked
+                  is-disabled
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
@@ -4970,7 +5106,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     border-radius: 0px;
                     border: 1px solid transparent;
                     box-sizing: border-box;
-                    color: #000000;
+                    color: #a6a6a6;
                     cursor: default;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -5015,6 +5151,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
+                    bordercolor: grayText;
+                    color: grayText;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
                     border: none;
@@ -5082,15 +5220,26 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   & $svg {
                     border-radius: 100%;
                   }
+                  &:hover {
+                    outline: 0px;
+                  }
+                  &:focus {
+                    outline: 0px;
+                  }
               data-index={2}
               data-is-focusable={false}
               disabled={true}
               id="swatchColorPicker75-c-2"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
+              onMouseUp={[Function]}
               role="gridcell"
               title="blue"
               type="button"
@@ -5153,7 +5302,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   ms-Button--action
                   ms-Button--command
                   undefined
-                  is-checked
+                  is-disabled
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
@@ -5162,7 +5311,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     border-radius: 0px;
                     border: 1px solid transparent;
                     box-sizing: border-box;
-                    color: #000000;
+                    color: #a6a6a6;
                     cursor: default;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -5207,6 +5356,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
+                    bordercolor: grayText;
+                    color: grayText;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
                     border: none;
@@ -5274,15 +5425,26 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   & $svg {
                     border-radius: 100%;
                   }
+                  &:hover {
+                    outline: 0px;
+                  }
+                  &:focus {
+                    outline: 0px;
+                  }
               data-index={3}
               data-is-focusable={false}
               disabled={true}
               id="swatchColorPicker75-d-3"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
+              onMouseUp={[Function]}
               role="gridcell"
               title="red"
               type="button"
@@ -5345,7 +5507,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   ms-Button--action
                   ms-Button--command
                   undefined
-                  is-checked
+                  is-disabled
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
@@ -5354,7 +5516,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     border-radius: 0px;
                     border: 1px solid transparent;
                     box-sizing: border-box;
-                    color: #000000;
+                    color: #a6a6a6;
                     cursor: default;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -5399,6 +5561,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
+                    bordercolor: grayText;
+                    color: grayText;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
                     border: none;
@@ -5476,15 +5640,26 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 0px;
                     padding-top: 0px;
                   }
+                  &:hover {
+                    outline: 0px;
+                  }
+                  &:focus {
+                    outline: 0px;
+                  }
               data-index={4}
               data-is-focusable={false}
               disabled={true}
               id="swatchColorPicker75-e-4"
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
+              onMouseUp={[Function]}
               role="gridcell"
               title="white"
               type="button"
@@ -5739,9 +5914,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                 id="swatchColorPicker93-a-0"
                 onClick={[Function]}
                 onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
                 onMouseMove={[Function]}
+                onMouseUp={[Function]}
                 role="gridcell"
                 title="green"
                 type="button"
@@ -5937,9 +6117,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                 id="swatchColorPicker93-b-1"
                 onClick={[Function]}
                 onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
                 onMouseMove={[Function]}
+                onMouseUp={[Function]}
                 role="gridcell"
                 title="orange"
                 type="button"
@@ -6135,9 +6320,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                 id="swatchColorPicker93-c-2"
                 onClick={[Function]}
                 onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
                 onMouseMove={[Function]}
+                onMouseUp={[Function]}
                 role="gridcell"
                 title="blue"
                 type="button"
@@ -6333,9 +6523,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                 id="swatchColorPicker93-d-3"
                 onClick={[Function]}
                 onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
                 onMouseMove={[Function]}
+                onMouseUp={[Function]}
                 role="gridcell"
                 title="red"
                 type="button"
@@ -6535,9 +6730,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                 id="swatchColorPicker93-g-4"
                 onClick={[Function]}
                 onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
                 onMouseMove={[Function]}
+                onMouseUp={[Function]}
                 role="gridcell"
                 title="green"
                 type="button"
@@ -6733,9 +6933,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                 id="swatchColorPicker93-h-5"
                 onClick={[Function]}
                 onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
                 onMouseMove={[Function]}
+                onMouseUp={[Function]}
                 role="gridcell"
                 title="orange"
                 type="button"
@@ -6931,9 +7136,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                 id="swatchColorPicker93-i-6"
                 onClick={[Function]}
                 onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
                 onMouseMove={[Function]}
+                onMouseUp={[Function]}
                 role="gridcell"
                 title="blue"
                 type="button"
@@ -7129,9 +7339,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                 id="swatchColorPicker93-j-7"
                 onClick={[Function]}
                 onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
                 onMouseMove={[Function]}
+                onMouseUp={[Function]}
                 role="gridcell"
                 title="red"
                 type="button"
@@ -7331,9 +7546,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                 id="swatchColorPicker93-k-8"
                 onClick={[Function]}
                 onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
                 onMouseMove={[Function]}
+                onMouseUp={[Function]}
                 role="gridcell"
                 title="black"
                 type="button"
@@ -7529,9 +7749,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                 id="swatchColorPicker93-l-9"
                 onClick={[Function]}
                 onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
                 onMouseMove={[Function]}
+                onMouseUp={[Function]}
                 role="gridcell"
                 title="grey"
                 type="button"
@@ -7727,9 +7952,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                 id="swatchColorPicker93-m-10"
                 onClick={[Function]}
                 onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
                 onMouseMove={[Function]}
+                onMouseUp={[Function]}
                 role="gridcell"
                 title="purple"
                 type="button"
@@ -7925,9 +8155,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                 id="swatchColorPicker93-n-11"
                 onClick={[Function]}
                 onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
                 onMouseMove={[Function]}
+                onMouseUp={[Function]}
                 role="gridcell"
                 title="yellow"
                 type="button"

@@ -15,8 +15,9 @@ export interface ISearchBoxState {
 
 @customizable('SearchBox', ['theme', 'styles'])
 export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
-  public static defaultProps: ISearchBoxProps = {
-    disableAnimation: false
+  public static defaultProps: Pick<ISearchBoxProps, 'disableAnimation' | 'clearButtonProps'> = {
+    disableAnimation: false,
+    clearButtonProps: { ariaLabel: 'Clear text' }
   };
 
   private _rootElement = createRef<HTMLDivElement>();
@@ -77,7 +78,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
 
     return (
       <div ref={this._rootElement} className={classNames.root} onFocusCapture={this._onFocusCapture}>
-        <div className={classNames.iconContainer} onClick={this._onClickFocus}>
+        <div className={classNames.iconContainer} onClick={this._onClickFocus} aria-hidden={true}>
           <Icon className={classNames.icon} iconName="Search" />
         </div>
         <input

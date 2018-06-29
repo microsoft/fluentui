@@ -53,6 +53,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private _isScrollIdle: boolean;
   private readonly _scrollIdleDelay: number = 250 /* ms */;
   private _scrollIdleTimeoutId: number | undefined;
+  private _processingExpandCollapseKeyOnly: boolean;
 
   constructor(props: IDropdownProps) {
     super(props);
@@ -77,6 +78,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
     this._id = props.id || getId('Dropdown');
     this._isScrollIdle = true;
+    this._processingExpandCollapseKeyOnly = false;
 
     this.state = {
       isOpen: false
@@ -392,7 +394,13 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     const { selectedIndices = [] } = this.state;
 
     return (
-      <div className={styles.listWrapper} onKeyDown={this._onZoneKeyDown} ref={this._host} tabIndex={0}>
+      <div
+        className={styles.listWrapper}
+        onKeyDown={this._onZoneKeyDown}
+        onKeyUp={this._onZoneKeyUp}
+        ref={this._host}
+        tabIndex={0}
+      >
         <FocusZone
           ref={this._focusZone}
           direction={FocusZoneDirection.vertical}
@@ -667,24 +675,31 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   };
 
   private _onDropdownKeyDown = (ev: React.KeyboardEvent<HTMLDivElement>): void => {
+    // Take note if we are processing a altKey or metaKey keydown
+    // so that the menu does not collapse if no other keys are pressed
+    this._processingExpandCollapseKeyOnly = this._isExpandCollapseKey(ev);
+
     if (this.props.onKeyDown) {
       this.props.onKeyDown(ev);
       if (ev.defaultPrevented) {
         return;
       }
     }
+
     let newIndex: number | undefined;
     const selectedIndex = this.state.selectedIndices!.length ? this.state.selectedIndices![0] : -1;
+    const containsExpandCollapseModifier = ev.altKey || ev.metaKey;
+    const isOpen = this.state.isOpen;
 
     switch (ev.which) {
       case KeyCodes.enter:
         this.setState({
-          isOpen: !this.state.isOpen
+          isOpen: !isOpen
         });
         break;
 
       case KeyCodes.escape:
-        if (!this.state.isOpen) {
+        if (!isOpen) {
           return;
         }
 
@@ -694,6 +709,14 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         break;
 
       case KeyCodes.up:
+        if (containsExpandCollapseModifier) {
+          if (isOpen) {
+            this.setState({ isOpen: false });
+            break;
+          }
+
+          return;
+        }
         if (this.props.multiSelect) {
           this.setState({ isOpen: true });
         } else {
@@ -702,7 +725,11 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         break;
 
       case KeyCodes.down:
-        if (ev.altKey || ev.metaKey || this.props.multiSelect) {
+        if (containsExpandCollapseModifier) {
+          ev.stopPropagation();
+          ev.preventDefault();
+        }
+        if ((containsExpandCollapseModifier && !isOpen) || this.props.multiSelect) {
           this.setState({ isOpen: true });
         } else {
           newIndex = this._moveIndex(1, selectedIndex + 1, selectedIndex);
@@ -726,13 +753,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         break;
 
       default:
-        if (ev.altKey || ev.metaKey) {
-          this.setState({
-            isOpen: false
-          });
-          ev.stopPropagation();
-          ev.preventDefault();
-        }
         return;
     }
 
@@ -743,6 +763,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   };
 
   private _onDropdownKeyUp = (ev: React.KeyboardEvent<HTMLDivElement>): void => {
+    const shouldHandleKey = this._processingExpandCollapseKeyOnly && this._isExpandCollapseKey(ev);
+    this._processingExpandCollapseKeyOnly = false;
+    const isOpen = this.state.isOpen;
+
     if (this.props.onKeyUp) {
       this.props.onKeyUp(ev);
       if (ev.preventDefault) {
@@ -752,11 +776,14 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     switch (ev.which) {
       case KeyCodes.space:
         this.setState({
-          isOpen: !this.state.isOpen
+          isOpen: !isOpen
         });
         break;
 
       default:
+        if (shouldHandleKey && isOpen) {
+          this.setState({ isOpen: false });
+        }
         return;
     }
 
@@ -764,12 +791,21 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     ev.preventDefault();
   };
 
+  private _isExpandCollapseKey(ev: React.KeyboardEvent<HTMLElement>) {
+    return ev.which === KeyCodes.alt || ev.key === 'Meta';
+  }
+
   private _onZoneKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     let elementToFocus;
 
+    // Take note if we are processing a altKey or metaKey keydown
+    // so that the menu does not collapse if no other keys are pressed
+    this._processingExpandCollapseKeyOnly = this._isExpandCollapseKey(ev);
+    const containsExpandCollapseModifier = ev.altKey || ev.metaKey;
+
     switch (ev.which) {
       case KeyCodes.up:
-        if (ev.altKey || ev.metaKey) {
+        if (containsExpandCollapseModifier) {
           this.setState({ isOpen: false });
         } else {
           if (this._host.current) {
@@ -787,7 +823,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         break;
 
       case KeyCodes.down:
-        if (this._host.current) {
+        if (!containsExpandCollapseModifier && this._host.current) {
           elementToFocus = getFirstFocusable(this._host.current, this._host.current.firstChild as HTMLElement, true);
         }
         break;
@@ -801,12 +837,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         return;
 
       default:
-        if (ev.altKey || ev.metaKey) {
-          this.setState({
-            isOpen: false
-          });
-          break;
-        }
         return;
     }
 
@@ -816,6 +846,16 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
     ev.stopPropagation();
     ev.preventDefault();
+  };
+
+  private _onZoneKeyUp = (ev: React.KeyboardEvent<HTMLElement>): void => {
+    const shouldHandleKey = this._processingExpandCollapseKeyOnly && this._isExpandCollapseKey(ev);
+    this._processingExpandCollapseKeyOnly = false;
+
+    if (shouldHandleKey && this.state.isOpen) {
+      this.setState({ isOpen: false });
+      ev.preventDefault();
+    }
   };
 
   private _onDropdownClick = (ev: React.MouseEvent<HTMLDivElement>): void => {

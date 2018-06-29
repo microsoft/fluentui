@@ -380,9 +380,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   };
 
   private _onWindowResize = (): void => {
-    this._async.setTimeout(() => {
-      this.notifySubscribers();
-    }, 5);
+    this.notifySubscribers();
   };
 
   private _getStickyContainerStyle = (height: number): React.CSSProperties => {

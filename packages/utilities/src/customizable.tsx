@@ -3,6 +3,10 @@ import * as PropTypes from 'prop-types';
 import { Customizations } from './Customizations';
 import { hoistStatics } from './hoistStatics';
 
+export const CustomizableContextTypes = {
+  customizations: PropTypes.object
+};
+
 export function customizable(
   scope: string,
   fields: string[]
@@ -17,11 +21,7 @@ export function customizable(
     const resultClass = class ComponentWithInjectedProps extends React.Component<P, {}> {
       public static displayName: string = 'Customized' + scope;
 
-      public static contextTypes: {
-        customizations: PropTypes.Requireable<{}>;
-      } = {
-        customizations: PropTypes.object
-      };
+      public static contextTypes = CustomizableContextTypes;
 
       // tslint:disable-next-line:no-any
       constructor(props: P, context: any) {
