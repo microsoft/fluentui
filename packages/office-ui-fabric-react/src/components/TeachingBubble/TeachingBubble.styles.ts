@@ -101,9 +101,9 @@ const rootStyle = (isWide?: boolean): IStyle[] => {
   ];
 };
 
-// TODO: merge this function into styles prop once mergeStyles is updated to allow functions,
+// TODO: merge this into styles prop once mergeStyles is updated to allow functions/style objects,
 //        which will also allow consumers to provide their own callout styles.
-// This function takes in TeachingBubble props and returns a Callout styles function
+// This function takes in TeachingBubble props and returns a Callout styles object
 export const calloutStyles = (props: ITeachingBubbleStyleProps): Partial<ICalloutContentStyles> => {
   const { isWide, theme } = props;
   const { palette } = theme;
