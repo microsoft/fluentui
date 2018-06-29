@@ -85,6 +85,12 @@ exports[`Link renders Link with "as=div" a div element 1`] = `
         top: 1px;
         z-index: 1;
       }
+      @media screen and (-ms-high-contrast: white-on-black){& {
+        color: #FFFF00;
+      }
+      @media screen and (-ms-high-contrast: black-on-white){& {
+        color: #00009F;
+      }
       &:active, &:hover, &:active:hover {
         color: #004578;
       }
@@ -186,6 +192,12 @@ exports[`Link renders Link with no href as a button 1`] = `
         top: 1px;
         z-index: 1;
       }
+      @media screen and (-ms-high-contrast: white-on-black){& {
+        color: #FFFF00;
+      }
+      @media screen and (-ms-high-contrast: black-on-white){& {
+        color: #00009F;
+      }
       &:active, &:hover, &:active:hover {
         color: #004578;
       }
@@ -283,6 +295,12 @@ exports[`Link renders disabled Link with no href as a button correctly 1`] = `
         top: 1px;
         z-index: 1;
       }
+      @media screen and (-ms-high-contrast: white-on-black){& {
+        color: #FFFF00;
+      }
+      @media screen and (-ms-high-contrast: black-on-white){& {
+        color: #00009F;
+      }
       &:link, &:visited {
         pointer-events: none;
       }
@@ -336,6 +354,12 @@ exports[`Link supports non button/anchor html attributes when "as=" is used 1`] 
         right: 1px;
         top: 1px;
         z-index: 1;
+      }
+      @media screen and (-ms-high-contrast: white-on-black){& {
+        color: #FFFF00;
+      }
+      @media screen and (-ms-high-contrast: black-on-white){& {
+        color: #00009F;
       }
       &:active, &:hover, &:active:hover {
         color: #004578;
