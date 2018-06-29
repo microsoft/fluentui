@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 27 Jun 2018 23:59:19 GMT and should not be manually modified.
+This log was last generated on Fri, 29 Jun 2018 10:24:05 GMT and should not be manually modified.
+
+## 6.12.1
+Fri, 29 Jun 2018 10:24:05 GMT
+
+### Patches
+
+- TileList: Adds a fading out overlay over the Shimmer Tiles.
 
 ## 6.12.0
 Wed, 27 Jun 2018 23:59:19 GMT
