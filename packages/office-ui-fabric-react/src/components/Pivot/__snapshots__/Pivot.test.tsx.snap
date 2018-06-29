@@ -140,7 +140,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid undefined;
             }
             @media screen and (-ms-high-contrast: active){&:before {
               border-bottom-color: Highlight;
@@ -292,7 +292,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid undefined;
             }
             &:hover::before {
               border-bottom: 2px solid transparent;
@@ -492,7 +492,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid undefined;
             }
             @media screen and (-ms-high-contrast: active){&:before {
               border-bottom-color: Highlight;
@@ -646,7 +646,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid undefined;
             }
             &:hover::before {
               border-bottom: 2px solid transparent;
@@ -809,7 +809,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid undefined;
             }
             &:hover::before {
               border-bottom: 2px solid transparent;
@@ -1034,7 +1034,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid undefined;
             }
             @media screen and (-ms-high-contrast: active){&:before {
               border-bottom-color: Highlight;
@@ -1186,7 +1186,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid undefined;
             }
             &:hover::before {
               border-bottom: 2px solid transparent;
@@ -1388,7 +1388,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid undefined;
             }
             .ms-Fabric--isFocusVisible &:focus::before {
               background: transparent;
@@ -1553,7 +1553,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid undefined;
             }
             .ms-Fabric--isFocusVisible &:focus::before {
               background: transparent;
@@ -1759,7 +1759,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid undefined;
             }
             @media screen and (-ms-high-contrast: active){&:before {
               border-bottom-color: Highlight;
@@ -1911,7 +1911,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid undefined;
             }
             &:hover::before {
               border-bottom: 2px solid transparent;
@@ -2112,7 +2112,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid undefined;
             }
             .ms-Fabric--isFocusVisible &:focus::before {
               background: transparent;
@@ -2277,7 +2277,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid undefined;
             }
             .ms-Fabric--isFocusVisible &:focus::before {
               background: transparent;
