@@ -20,13 +20,21 @@ import {
 const getClassNames = classNamesFunction<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>();
 const defaultImageSize = 32;
 
-export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps, any> {
+export interface IChoiceGroupOptionState {
+  hasOverflow?: boolean;
+}
+
+export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps, IChoiceGroupOptionState> {
   private _inputElement = createRef<HTMLInputElement>();
   private _classNames: IClassNames<IChoiceGroupOptionStyles>;
   private _labelWrapperElementList: HTMLDivElement[] = [];
 
   constructor(props: IChoiceGroupOptionProps) {
     super(props);
+
+    this.state = {
+      hasOverflow: false
+    };
   }
 
   public componentDidMount(): void {
@@ -152,6 +160,7 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
             >
               {onRenderLabel!(props)}
             </div>
+            {this.state.hasOverflow && <span className={this._classNames.labelOverflowWrapper}>...</span>}
           </div>
         ) : (
           onRenderLabel!(props)
@@ -173,12 +182,10 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
     for (let labelListIndex = 0; labelListIndex < this._labelWrapperElementList.length; labelListIndex++) {
       const labelElement = this._labelWrapperElementList[labelListIndex];
       if (labelElement && hasOverflow(labelElement)) {
-        // Append ellipsis node to the labelWrapper if text is overflowing
-        const node = document.createElement('span');
-        const textNode = document.createTextNode('...');
-        node.appendChild(textNode);
-        this._classNames.labelOverflowWrapper && node.classList.add(this._classNames.labelOverflowWrapper);
-        labelElement.insertAdjacentElement('afterend', node);
+        // This state allows adding an ellipsis to the labelWrapper if text is overflowing
+        this.setState({
+          hasOverflow: true
+        });
       }
     }
   };
