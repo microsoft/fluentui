@@ -65,7 +65,6 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
           }
         },
         checked && {
-          background: 'Highlight',
           selectors: {
             ':hover .ms-Checkbox-checkbox': {
               background: checkboxBackgroundCheckedHovered,
@@ -76,11 +75,11 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
               borderColor: checkboxBorderColorCheckedHovered
             },
             [HighContrastSelector]: {
+              background: 'Highlight',
               selectors: {
                 ':hover .ms-Checkbox-checkbox': {
                   background: 'Window',
                   borderColor: 'Highlight'
-                  // color: 'Highlight'
                 },
                 ':focus .ms-Checkbox-checkbox': {
                   background: 'Highlight'
