@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 28 Jun 2018 10:23:21 GMT and should not be manually modified.
+This log was last generated on Fri, 29 Jun 2018 10:24:05 GMT and should not be manually modified.
+
+## 6.23.0
+Fri, 29 Jun 2018 10:24:05 GMT
+
+### Minor changes
+
+- Pivot: Convert to JS styling.
+- ShimmeredDetailsList: adds a new wrapper for DetailsList when needed to be used with Shimmer animation.
 
 ## 6.22.0
 Thu, 28 Jun 2018 10:23:21 GMT
