@@ -93,6 +93,15 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
       _items = this._sortItems(_items, 'name');
     }
 
+    // DEBUG CODE TODO: REMOVE BEFORE CHECKIN
+    setInterval(() => {
+      const newItems = this.state.items.slice();
+      const i = Math.floor(Math.random() * 10);
+      newItems[i] = { ...newItems[i], ...{ modifiedBy: lorem(2) } };
+      this.setState({ items: newItems });
+      this.forceUpdate();
+    }, 2000);
+
     const _columns: IColumn[] = [
       {
         key: 'column1',

@@ -288,7 +288,7 @@ export interface IColumn {
 
   /**
    * Optional accessibility label (aria-label) attribute that will be stamped on to the element.
-   * If none is specified, the arai-label attribute will contain the column name
+   * If none is specified, the aria-label attribute will contain the column name
    */
   ariaLabel?: string;
 
@@ -470,7 +470,6 @@ export interface IColumnReorderOptions {
    * draggedIndex is the source column index, that need to be placed in targetIndex
    */
   handleColumnReorder: (draggedIndex: number, targetIndex: number) => void;
-
 }
 
 export enum DetailsListLayoutMode {
