@@ -1,35 +1,41 @@
 import * as React from 'react';
-import { IDropdownProps, IDropdownOption, DropdownMenuItemType } from './Dropdown.types';
-import { Checkbox } from '../../Checkbox';
-import { DirectionalHint } from '../../common/DirectionalHint';
-import { Callout } from '../../Callout';
-import { Label } from '../../Label';
+
 import { CommandButton } from '../../Button';
-import { Panel } from '../../Panel';
+import { Callout } from '../../Callout';
+import { Checkbox } from '../../Checkbox';
+import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
 import { Icon } from '../../Icon';
-import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
-import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
+import { KeytipData } from '../../KeytipData';
+import { Label } from '../../Label';
+import { Panel } from '../../Panel';
+import { getTheme } from '../../Styling';
 import {
   BaseComponent,
   KeyCodes,
-  css,
-  findIndex,
-  getId,
-  getNativeProps,
-  divProperties,
-  getFirstFocusable,
-  getLastFocusable,
   createRef,
+  css,
+  divProperties,
+  findIndex,
+  getFirstFocusable,
+  getId,
+  getLastFocusable,
+  getNativeProps,
   mergeAriaAttributeValues
 } from '../../Utilities';
+import { DirectionalHint } from '../../common/DirectionalHint';
+import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
+import { ResponsiveMode, withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
-import * as stylesImport from './Dropdown.scss';
-const styles: any = stylesImport;
 import { getStyles as getCheckboxStyles } from '../Checkbox/Checkbox.styles';
-import { getTheme } from '../../Styling';
-import { KeytipData } from '../../KeytipData';
+import * as stylesImport from './Dropdown.scss';
+import { DropdownMenuItemType, IDropdownOption, IDropdownProps } from './Dropdown.types';
 import { DropdownSizePosCache } from './utilities/DropdownSizePosCache';
+
+const styles: any = stylesImport;
+
+
+
+
 
 // Internal only props interface to support mixing in responsive mode
 export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {}
@@ -641,24 +647,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       this._dropDown.current.focus();
     }
   };
-
-  private _getPosAndSize(index: number): { size: number; posInSet: number } {
-    const { options } = this.props;
-
-    let size = 0;
-    let posInSet = 0;
-
-    for (let i = 0; i < options.length; i++) {
-      if ((options[i] && options[i].itemType === undefined) || options[i].itemType === DropdownMenuItemType.Normal) {
-        if (index-- === 0) {
-          posInSet = i;
-        }
-        size++;
-      }
-    }
-
-    return { size, posInSet };
-  }
 
   // Get all selected indexes for multi-select mode
   private _getSelectedIndexes(
