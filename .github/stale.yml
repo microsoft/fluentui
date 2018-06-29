@@ -9,10 +9,10 @@ daysUntilClose: 14
 
 # Issues or Pull Requests with these labels will never be considered stale. Set to `[]` to disable
 exemptLabels:
-  - "Priority 0"
-  - "Priority 1"
-  - "Needs: discussion"
-  - "Needs: revisit"
+  - "Priority 0: Blocking"
+  - "Priority 1: ASAP"
+  - "Needs: Discussion 🙋"
+  - "Needs: Revisit 🔁"
 
 # Set to true to ignore issues in a project (defaults to false)
 exemptProjects: false
