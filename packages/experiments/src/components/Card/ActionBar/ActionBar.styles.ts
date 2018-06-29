@@ -5,7 +5,8 @@ export const getStyles = (): IActionBarStyles => {
   return {
     root: {
       whiteSpace: 'nowrap',
-      width: '100%'
+      width: '100%',
+      height: '32px'
     }
   };
 };
