@@ -41,7 +41,7 @@ exports[`Slider renders Slider correctly 1`] = `
             padding-right: 8px;
             padding-top: 0;
             position: relative;
-            width: 100%;
+            width: auto;
           }
           &::-moz-focus-inner {
             border: 0;
