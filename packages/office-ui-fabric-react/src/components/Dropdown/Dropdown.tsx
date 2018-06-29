@@ -33,10 +33,6 @@ import { DropdownSizePosCache } from './utilities/DropdownSizePosCache';
 
 const styles: any = stylesImport;
 
-
-
-
-
 // Internal only props interface to support mixing in responsive mode
 export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {}
 
@@ -90,9 +86,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     } else {
       const selectedKey = props.defaultSelectedKey !== undefined ? props.defaultSelectedKey : props.selectedKey;
       selectedIndices = this._getSelectedIndexes(props.options, selectedKey!);
-    }
-
-    if (!props.multiSelect) {
       this._sizePosCache.updateOptions(props.options);
     }
 
