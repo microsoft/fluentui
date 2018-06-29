@@ -10,8 +10,9 @@ export const getCustomCompoundButtonStyles = memoizeFunction(
         marginBottom: '16px',
         maxWidth: 'none',
         minHeight: cardSize === ButtonSize.small ? '40px' : '68px',
-        maxHeight: '68px',
-        padding: '14px'
+        height: cardSize === ButtonSize.small ? '40px' : '68px',
+        padding: '14px',
+        marginLeft: '0px'
       },
       textContainer: {
         overflow: 'hidden'

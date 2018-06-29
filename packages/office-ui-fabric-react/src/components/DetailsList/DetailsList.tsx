@@ -124,9 +124,9 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     this._selection.setItems(props.items as IObjectWithKey[], false);
     this._dragDropHelper = props.dragDropEvents
       ? new DragDropHelper({
-        selection: this._selection,
-        minimumPixelsForDrag: props.minimumPixelsForDrag
-      })
+          selection: this._selection,
+          minimumPixelsForDrag: props.minimumPixelsForDrag
+        })
       : null;
     this._initialFocusedIndex = props.initialFocusedIndex;
   }
@@ -222,7 +222,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   }
 
   public componentWillReceiveProps(newProps: IDetailsListProps): void {
-    const { checkboxVisibility, items, setKey, selectionMode, columns, viewport } = this.props;
+    const { checkboxVisibility, items, setKey, selectionMode, columns, viewport, compact } = this.props;
     const shouldResetSelection = newProps.setKey !== setKey || newProps.setKey === undefined;
     let shouldForceUpdates = false;
 
@@ -245,7 +245,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     if (
       newProps.checkboxVisibility !== checkboxVisibility ||
       newProps.columns !== columns ||
-      newProps.viewport!.width !== viewport!.width
+      newProps.viewport!.width !== viewport!.width ||
+      newProps.compact !== compact
     ) {
       shouldForceUpdates = true;
     }
@@ -346,7 +347,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
           className,
           layoutMode === DetailsListLayoutMode.fixedColumns && 'is-fixed',
           constrainMode === ConstrainMode.horizontalConstrained &&
-          'is-horizontalConstrained ' + styles.rootIsHorizontalConstrained,
+            'is-horizontalConstrained ' + styles.rootIsHorizontalConstrained,
           !!compact && 'ms-DetailsList--Compact ' + styles.rootCompact
         )}
         data-automationid="DetailsList"
@@ -432,16 +433,16 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                     getGroupHeight={getGroupHeight}
                   />
                 ) : (
-                    <List
-                      ref={this._list}
-                      role="presentation"
-                      items={enableShimmer && !items.length ? SHIMMER_ITEMS : items}
-                      onRenderCell={this._onRenderListCell(0)}
-                      usePageCache={usePageCache}
-                      onShouldVirtualize={onShouldVirtualize}
-                      {...additionalListProps}
-                    />
-                  )}
+                  <List
+                    ref={this._list}
+                    role="presentation"
+                    items={enableShimmer && !items.length ? SHIMMER_ITEMS : items}
+                    onRenderCell={this._onRenderListCell(0)}
+                    usePageCache={usePageCache}
+                    onShouldVirtualize={onShouldVirtualize}
+                    {...additionalListProps}
+                  />
+                )}
               </SelectionZone>
             </FocusZone>
           </div>

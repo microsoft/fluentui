@@ -2,6 +2,64 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.12.0",
+      "tag": "@uifabric/experiments_v6.12.0",
+      "date": "Wed, 27 Jun 2018 23:59:19 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "92b37c87c2eba06e0009386756c3b1bc2e74c182",
+            "comment": "Change toggle style values from ems to px"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.21.0 <7.0.0` to `>=6.21.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=6.0.1 <7.0.0` to `>=6.0.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.11.0",
+      "tag": "@uifabric/experiments_v6.11.0",
+      "date": "Wed, 27 Jun 2018 17:22:20 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "e69df30fa07f6d5b92895dfdd317927142418217",
+            "comment": "fluent style updates per design feedback"
+          },
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "2607a2f0ae9b6bfd3d1599ed9fd35e44c51f6427",
+            "comment": "Revert toggle border-width to pre-Fluent width"
+          },
+          {
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "761e732516fd4dd6b9772d1dbdce7e2558da868f",
+            "comment": "Prototype of Stack and Text components"
+          }
+        ],
+        "patch": [
+          {
+            "author": "nulikartik <nulikarthik@gmail.com>",
+            "commit": "e01d9a3db228e42d73263e6c60a973074a9d7663",
+            "comment": "CardDidMount callback for making api calls, additional ref incase there is a use case where there is no state, compoundButtonStack  size variation and gridList component v1.1 changes"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.20.0 <7.0.0` to `>=6.21.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.10.1",
       "tag": "@uifabric/experiments_v6.10.1",
       "date": "Tue, 26 Jun 2018 10:27:47 GMT",
