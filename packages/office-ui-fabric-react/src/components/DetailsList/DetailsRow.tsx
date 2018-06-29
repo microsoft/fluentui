@@ -52,17 +52,6 @@ export interface IDetailsRowProps extends React.Props<DetailsRow> {
   rowFieldsAs?: React.StatelessComponent<IDetailsRowFieldsProps> | React.ComponentClass<IDetailsRowFieldsProps>;
   className?: string;
   shimmer?: boolean;
-  /** Provides automatic behaviors, like animation and accessibility. */
-  updateState?: DetailsRowUpdateState;
-}
-
-export enum DetailsRowUpdateState {
-  /** This row is new */
-  New,
-  /** This row had a field updated */
-  Updated,
-  /** This row has been deleted */
-  Deleted
 }
 
 export interface IDetailsRowSelectionState {
