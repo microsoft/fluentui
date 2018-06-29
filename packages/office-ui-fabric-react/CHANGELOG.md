@@ -1,6 +1,58 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 25 Jun 2018 10:28:13 GMT and should not be manually modified.
+This log was last generated on Fri, 29 Jun 2018 10:24:05 GMT and should not be manually modified.
+
+## 6.23.0
+Fri, 29 Jun 2018 10:24:05 GMT
+
+### Minor changes
+
+- Pivot: Convert to JS styling.
+- ShimmeredDetailsList: adds a new wrapper for DetailsList when needed to be used with Shimmer animation.
+
+## 6.22.0
+Thu, 28 Jun 2018 10:23:21 GMT
+
+### Minor changes
+
+- Added arguments to styled function to allow the Customizer component to affect Nav
+
+## 6.21.1
+Wed, 27 Jun 2018 23:59:19 GMT
+
+### Patches
+
+- TextField: render undefined as empty string in renderInput
+
+## 6.21.0
+Wed, 27 Jun 2018 17:22:20 GMT
+
+### Minor changes
+
+- datepicker mergestyles conversion step 1
+- Added as={Component} as a prop to Link
+- Prettier fixes
+
+### Patches
+
+- Checkbox: Fix layout bug that causes `overflow`/`text-overflow` in Checkbox label to not take effect (#5224)
+- Fix minor accessibility bugs in DetailsList
+- Fix import paths to use relative paths for office-ui-fabric-react
+- CSS changes for draggable columns, to show the gripper ICON only on hover
+
+## 6.20.0
+Tue, 26 Jun 2018 10:27:47 GMT
+
+### Minor changes
+
+- mergestyles conversion
+
+### Patches
+
+- Callout: add blur listener that only dismisses Callout if window loses focus
+- ComboBox: Set Callout MaxWidth to be the width of the menu when useComboBoxAsMenuWidth when enabled
+- Default shouldFocusOnMount value in BaseButton _onToggleMenu
+- MessageBar: remove role property from multiline root div
 
 ## 6.19.0
 Mon, 25 Jun 2018 10:28:13 GMT

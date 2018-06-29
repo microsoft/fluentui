@@ -14,26 +14,33 @@ export class FluentStylesChoiceGroupExample extends React.Component<{}, {}> {
             options={[
               {
                 key: 'A',
-                text: 'Option A',
+                text: 'Rest',
                 'data-automation-id': 'auto1'
               } as IChoiceGroupOption,
               {
                 key: 'B',
-                text: 'Option B'
-              },
+                text: 'Selected'
+              }
+            ]}
+            label="Active"
+            required={true}
+          />
+          <br />
+          <ChoiceGroup
+            defaultSelectedKey="D"
+            options={[
               {
                 key: 'C',
-                text: 'Option C',
+                text: 'Disabled',
                 disabled: true
               },
               {
                 key: 'D',
-                text: 'Option D',
+                text: 'Disabled Selected',
                 disabled: true
               }
             ]}
-            label="Pick one"
-            required={true}
+            label="Disabled"
           />
         </div>
         <div className={style.sidebyside}>

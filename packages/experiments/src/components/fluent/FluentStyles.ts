@@ -43,6 +43,7 @@ const BreadcrumbStyles = {
   itemLink: {
     fontSize: FontSizes.size18,
     fontWeight: 400,
+    color: NeutralColors.gray130,
     selectors: {
       '&:last-child': {
         fontWeight: 600
@@ -83,12 +84,18 @@ const CheckboxStyles = {
 };
 
 const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOptionStyles => {
-  const { checked, hasIcon, hasImage } = props;
+  const { checked, disabled, hasIcon, hasImage } = props;
   const radioButtonSpacing = 1;
   const radioButtonInnerSize = 6;
   return {
     field: {
       selectors: {
+        ':before': [
+          disabled && {
+            backgroundColor: NeutralColors.white,
+            borderColor: NeutralColors.gray60
+          }
+        ],
         ':after': [
           {
             top: 4,
@@ -102,6 +109,10 @@ const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGr
               top: radioButtonSpacing + radioButtonInnerSize,
               right: radioButtonSpacing + radioButtonInnerSize,
               left: 'auto' // To reset the value of 'left' to its default value, so that 'right' works
+            },
+          checked &&
+            disabled && {
+              borderColor: NeutralColors.gray60
             }
         ]
       }
@@ -128,16 +139,16 @@ const LabelStyles = {
 };
 const ToggleStyles = {
   pill: {
-    width: '2em',
-    height: '1em',
-    borderRadius: '.5em'
+    width: '40px',
+    height: '20px',
+    borderRadius: '10px',
+    padding: '0 4px'
   },
   thumb: {
-    width: '.6em',
-    height: '.6em',
-    borderRadius: '.6em',
-    borderColor: 'transparent',
-    borderWidth: 0
+    width: '12px',
+    height: '12px',
+    borderRadius: '12px',
+    borderColor: 'transparent'
   }
 };
 
