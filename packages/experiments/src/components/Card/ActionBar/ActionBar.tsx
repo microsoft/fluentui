@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { DefaultButton, IconButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
 import { OverflowSet, IOverflowSetItemProps } from 'office-ui-fabric-react/lib/OverflowSet';
 import { IAction, IActionBarProps, IActionBarStyles, IActionOverflowData, IActionItem } from './ActionBar.types';
-import { getStyles } from './ActionBar.styles';
+import { getStyles, overflowButtonStyles } from './ActionBar.styles';
 import { getCustomActionBarButtonStyles } from './ActionBarButton.styles';
 
 export class ActionBar extends React.Component<IActionBarProps, {}> {
@@ -56,9 +56,9 @@ export class ActionBar extends React.Component<IActionBarProps, {}> {
     );
   };
 
-  private _onReduceData = (currentdata: IOverflowSetItemProps): {} => {
+  private _onReduceData = (currentdata: IOverflowSetItemProps): {} | void => {
     if (currentdata.primary.length === 0) {
-      return {};
+      return;
     }
 
     const overflow = [...currentdata.primary.slice(-1), ...currentdata.overflow];
@@ -67,9 +67,9 @@ export class ActionBar extends React.Component<IActionBarProps, {}> {
     return { primary, overflow };
   };
 
-  private _onGrowData = (currentdata: IOverflowSetItemProps): {} => {
+  private _onGrowData = (currentdata: IOverflowSetItemProps): {} | void => {
     if (currentdata.overflow.length === 0) {
-      return {};
+      return;
     }
 
     const overflow = currentdata.overflow.slice(1);
@@ -87,7 +87,9 @@ export class ActionBar extends React.Component<IActionBarProps, {}> {
     overflowItems.forEach((action: IAction, i: number) => {
       items.push({ key: i.toString(), name: action.title, onClick: action.action });
     });
-    return <IconButton split={true} menuProps={{ items: items! }} onClick={this._onClick} />;
+    return (
+      <DefaultButton split={true} menuProps={{ items: items! }} onClick={this._onClick} styles={overflowButtonStyles} />
+    );
   };
 
   private _renderButton = (action: IOverflowSetItemProps) => {

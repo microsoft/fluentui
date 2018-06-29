@@ -20,10 +20,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         & .ms-Label {
           display: inline-block;
           font-size: 14px;
-          padding-bottom: 0;
           padding-left: 26px;
-          padding-right: 0;
-          padding-top: 0;
         }
   >
     <div
@@ -144,10 +141,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         & .ms-Label {
           display: inline-block;
           font-size: 14px;
-          padding-bottom: 0;
           padding-left: 26px;
-          padding-right: 0;
-          padding-top: 0;
         }
   >
     <div
@@ -289,10 +283,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         & .ms-Label {
           display: inline-block;
           font-size: 14px;
-          padding-bottom: 0;
           padding-left: 26px;
-          padding-right: 0;
-          padding-top: 0;
         }
   >
     <div
@@ -445,10 +436,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         & .ms-Label {
           display: inline-block;
           font-size: 14px;
-          padding-bottom: 0;
           padding-left: 26px;
-          padding-right: 0;
-          padding-top: 0;
         }
   >
     <div
@@ -566,10 +554,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         & .ms-Label {
           display: inline-block;
           font-size: 14px;
-          padding-bottom: 0;
           padding-left: 26px;
-          padding-right: 0;
-          padding-top: 0;
         }
   >
     <div
@@ -703,10 +688,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         & .ms-Label {
           display: inline-block;
           font-size: 14px;
-          padding-bottom: 0;
-          padding-left: 26px;
-          padding-right: 0;
-          padding-top: 0;
         }
   >
     <div
@@ -879,12 +860,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                 position: relative;
                 word-break: break-all;
               }
-              & .ms-Label {
-                padding-bottom: 0px;
-                padding-left: 0px;
-                padding-right: 0px;
-                padding-top: 0px;
-              }
           style={
             Object {
               "maxWidth": 72,
@@ -937,10 +912,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         & .ms-Label {
           display: inline-block;
           font-size: 14px;
-          padding-bottom: 0;
-          padding-left: 26px;
-          padding-right: 0;
-          padding-top: 0;
         }
   >
     <div
@@ -1134,12 +1105,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                 position: relative;
                 word-break: break-all;
               }
-              & .ms-Label {
-                padding-bottom: 0px;
-                padding-left: 0px;
-                padding-right: 0px;
-                padding-top: 0px;
-              }
           style={
             Object {
               "maxWidth": 72,
@@ -1192,10 +1157,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         & .ms-Label {
           display: inline-block;
           font-size: 14px;
-          padding-bottom: 0;
-          padding-left: 26px;
-          padding-right: 0;
-          padding-top: 0;
         }
   >
     <div
@@ -1379,12 +1340,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                 position: relative;
                 word-break: break-all;
               }
-              & .ms-Label {
-                padding-bottom: 0px;
-                padding-left: 0px;
-                padding-right: 0px;
-                padding-top: 0px;
-              }
           style={
             Object {
               "maxWidth": 72,
@@ -1437,10 +1392,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         & .ms-Label {
           display: inline-block;
           font-size: 14px;
-          padding-bottom: 0;
-          padding-left: 26px;
-          padding-right: 0;
-          padding-top: 0;
         }
   >
     <div
@@ -1606,12 +1557,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                 overflow: hidden;
                 position: relative;
                 word-break: break-all;
-              }
-              & .ms-Label {
-                padding-bottom: 0px;
-                padding-left: 0px;
-                padding-right: 0px;
-                padding-top: 0px;
               }
           style={
             Object {

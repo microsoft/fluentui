@@ -222,7 +222,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   }
 
   public componentWillReceiveProps(newProps: IDetailsListProps): void {
-    const { checkboxVisibility, items, setKey, selectionMode, columns, viewport } = this.props;
+    const { checkboxVisibility, items, setKey, selectionMode, columns, viewport, compact } = this.props;
     const shouldResetSelection = newProps.setKey !== setKey || newProps.setKey === undefined;
     let shouldForceUpdates = false;
 
@@ -245,7 +245,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     if (
       newProps.checkboxVisibility !== checkboxVisibility ||
       newProps.columns !== columns ||
-      newProps.viewport!.width !== viewport!.width
+      newProps.viewport!.width !== viewport!.width ||
+      newProps.compact !== compact
     ) {
       shouldForceUpdates = true;
     }
@@ -298,7 +299,10 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       usePageCache,
       onShouldVirtualize,
       enableShimmer,
-      viewport
+      viewport,
+      columnReorderOptions,
+      minimumPixelsForDrag,
+      getGroupHeight
     } = this.props;
     const { adjustedColumns, isCollapsed, isSizing, isSomeGroupExpanded } = this.state;
     const { _selection: selection, _dragDropHelper: dragDropHelper } = this;
@@ -384,7 +388,9 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                   ariaLabelForSelectionColumn: ariaLabelForSelectionColumn,
                   selectAllVisibility: selectAllVisibility,
                   collapseAllVisibility: groupProps && groupProps.collapseAllVisibility,
-                  viewport: viewport
+                  viewport: viewport,
+                  columnReorderOptions: columnReorderOptions,
+                  minimumPixelsForDrag: minimumPixelsForDrag
                 },
                 this._onRenderDetailsHeader
               )}
@@ -424,6 +430,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                     onGroupExpandStateChanged={this._onGroupExpandStateChanged}
                     usePageCache={usePageCache}
                     onShouldVirtualize={onShouldVirtualize}
+                    getGroupHeight={getGroupHeight}
                   />
                 ) : (
                   <List

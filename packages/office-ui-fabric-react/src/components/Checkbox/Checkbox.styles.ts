@@ -88,7 +88,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
     label: [
       'ms-Checkbox-label',
       {
-        display: 'inline-flex',
+        display: 'flex',
         margin: '0 -4px',
         alignItems: 'center',
         cursor: disabled ? 'default' : 'pointer',

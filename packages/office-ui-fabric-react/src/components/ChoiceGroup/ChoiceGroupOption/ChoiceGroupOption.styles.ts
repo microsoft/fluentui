@@ -212,11 +212,18 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
         selectors: {
           '.ms-Label': {
             fontSize: FontSizes.medium,
-            padding: '0 0 0 26px',
             display: 'inline-block'
           }
         }
       },
+      !hasIcon &&
+        !hasImage && {
+          selectors: {
+            '.ms-Label': {
+              paddingLeft: '26px'
+            }
+          }
+        },
       hasImage && 'ms-ChoiceField--image',
       hasIcon && 'ms-ChoiceField--icon',
       (hasIcon || hasImage) && {
@@ -355,12 +362,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
         overflow: 'hidden',
         wordBreak: 'break-all',
         fontSize: FontSizes.medium,
-        fontWeight: FontWeights.regular,
-        selectors: {
-          '.ms-Label': {
-            padding: 0
-          }
-        }
+        fontWeight: FontWeights.regular
       }
     ],
     labelOverflowWrapper: {

@@ -1,5 +1,18 @@
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 
+export enum ButtonSize {
+  /**
+   *Sets button height to small and does not allow
+   *description in each button(Allows title but not description text in each button)
+   */
+  small,
+
+  /**
+   * Sets the normal height and does allow description in each button
+   */
+  normal
+}
+
 export interface ICompoundButtonStackStyles {
   /**
    * Style set for the compound button component root
@@ -34,4 +47,9 @@ export interface ICompoundButtonStackProps {
    * List of actions this stack is going to support
    */
   actions: ICompoundAction[];
+
+  /**
+   * The  compound button height
+   */
+  buttonSize?: ButtonSize;
 }

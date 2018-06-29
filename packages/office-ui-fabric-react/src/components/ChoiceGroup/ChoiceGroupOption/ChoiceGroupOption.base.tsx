@@ -8,20 +8,11 @@ import {
   IChoiceGroupOptionStyleProps,
   IChoiceGroupOptionStyles
 } from './ChoiceGroupOption.types';
-import {
-  BaseComponent,
-  customizable,
-  classNamesFunction,
-  getNativeProps,
-  inputProperties,
-  createRef,
-  hasOverflow
-} from '../../../Utilities';
+import { BaseComponent, classNamesFunction, getNativeProps, inputProperties, createRef, hasOverflow } from '../../../Utilities';
 
 const getClassNames = classNamesFunction<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>();
 const defaultImageSize = 32;
 
-@customizable('ChoiceGroupOption', ['theme', 'styles'])
 export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps, any> {
   private _inputElement = createRef<HTMLInputElement>();
   private _classNames: IClassNames<IChoiceGroupOptionStyles>;

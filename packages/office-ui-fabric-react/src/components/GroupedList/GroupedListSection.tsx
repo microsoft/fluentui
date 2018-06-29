@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IGroup, IGroupDividerProps } from './GroupedList.types';
+import { IGroup, IGroupDividerProps, IGroupRenderProps } from './GroupedList.types';
 
 import { IDragDropContext, IDragDropEvents, IDragDropHelper } from '../../utilities/dragdrop/index';
 
@@ -49,6 +49,9 @@ export interface IGroupedListSectionProps extends React.Props<GroupedListSection
 
   /** Optional grouping instructions. */
   group?: IGroup;
+
+  /** Optional override properties to render groups. */
+  groupProps?: IGroupRenderProps;
 
   /** Information to pass in to the group header. */
   headerProps?: IGroupDividerProps;
@@ -308,6 +311,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       eventsToRegister,
       getGroupItemLimit,
       groupNestingDepth,
+      groupProps,
       items,
       headerProps,
       showAllProps,
@@ -323,7 +327,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       onShouldVirtualize
     } = this.props;
 
-    return !subGroup || subGroup.count > 0 ? (
+    return !subGroup || subGroup.count > 0 || (groupProps && groupProps.showEmptyGroups) ? (
       <GroupedListSection
         ref={'subGroup_' + subGroupIndex}
         key={this._getGroupKey(subGroup, subGroupIndex)}
@@ -335,6 +339,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
         group={subGroup}
         groupIndex={subGroupIndex}
         groupNestingDepth={groupNestingDepth}
+        groupProps={groupProps}
         headerProps={headerProps}
         items={items}
         listProps={listProps}

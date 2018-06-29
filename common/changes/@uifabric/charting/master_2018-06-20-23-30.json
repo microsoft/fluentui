@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/charting",
+      "comment": "Adding line chart to the charting library",
+      "type": "none"
+    }
+  ],
+  "packageName": "@uifabric/charting",
+  "email": "saakhta@microsoft.com"
+}

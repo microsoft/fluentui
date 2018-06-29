@@ -31,7 +31,7 @@ import { getTheme } from '../../Styling';
 import { KeytipData } from '../../KeytipData';
 
 // Internal only props interface to support mixing in responsive mode
-export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState { }
+export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {}
 
 export interface IDropdownState {
   isOpen?: boolean;
@@ -205,9 +205,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
                 aria-label={selectedOptions.length ? selectedOptions[0].text : this.props.placeHolder}
               >
                 {// If option is selected render title, otherwise render the placeholder text
-                  selectedOptions.length
-                    ? onRenderTitle(selectedOptions, this._onRenderTitle)
-                    : onRenderPlaceHolder(this.props, this._onRenderPlaceHolder)}
+                selectedOptions.length
+                  ? onRenderTitle(selectedOptions, this._onRenderTitle)
+                  : onRenderPlaceHolder(this.props, this._onRenderPlaceHolder)}
               </span>
               <span className={css('ms-Dropdown-caretDownWrapper', styles.caretDownWrapper)}>
                 {onRenderCaretDown(this.props, this._onRenderCaretDown)}
@@ -362,23 +362,23 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         {onRenderList(props, this._onRenderList)}
       </Panel>
     ) : (
-        <Callout
-          isBeakVisible={false}
-          gapSpace={0}
-          doNotLayer={false}
-          directionalHintFixed={true}
-          directionalHint={DirectionalHint.bottomLeftEdge}
-          {...calloutProps}
-          className={css('ms-Dropdown-callout', styles.callout, !!calloutProps && calloutProps.className)}
-          target={this._dropDown.current}
-          onDismiss={this._onDismiss}
-          onScroll={this._onScroll}
-          onPositioned={this._onPositioned}
-          calloutWidth={dropdownWidth || (this._dropDown.current ? this._dropDown.current.clientWidth : 0)}
-        >
-          {onRenderList(props, this._onRenderList)}
-        </Callout>
-      );
+      <Callout
+        isBeakVisible={false}
+        gapSpace={0}
+        doNotLayer={false}
+        directionalHintFixed={true}
+        directionalHint={DirectionalHint.bottomLeftEdge}
+        {...calloutProps}
+        className={css('ms-Dropdown-callout', styles.callout, !!calloutProps && calloutProps.className)}
+        target={this._dropDown.current}
+        onDismiss={this._onDismiss}
+        onScroll={this._onScroll}
+        onPositioned={this._onPositioned}
+        calloutWidth={dropdownWidth || (this._dropDown.current ? this._dropDown.current.clientWidth : 0)}
+      >
+        {onRenderList(props, this._onRenderList)}
+      </Callout>
+    );
   };
 
   // Render Caret Down Icon
@@ -394,7 +394,13 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     const { selectedIndices = [] } = this.state;
 
     return (
-      <div className={styles.listWrapper} onKeyDown={this._onZoneKeyDown} onKeyUp={this._onZoneKeyUp} ref={this._host} tabIndex={0}>
+      <div
+        className={styles.listWrapper}
+        onKeyDown={this._onZoneKeyDown}
+        onKeyUp={this._onZoneKeyUp}
+        ref={this._host}
+        tabIndex={0}
+      >
         <FocusZone
           ref={this._focusZone}
           direction={FocusZoneDirection.vertical}
@@ -480,33 +486,33 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         {onRenderOption(item, this._onRenderOption)}
       </CommandButton>
     ) : (
-        <Checkbox
-          id={id + '-list' + item.index}
-          key={item.key}
-          data-index={item.index}
-          data-is-focusable={!item.disabled}
-          disabled={item.disabled}
-          onChange={this._onItemClick(item)}
-          inputProps={{
-            onMouseEnter: this._onItemMouseEnter.bind(this, item),
-            onMouseLeave: this._onMouseItemLeave.bind(this, item),
-            onMouseMove: this._onItemMouseMove.bind(this, item)
-          }}
-          label={item.text}
-          title={item.title}
-          onRenderLabel={this._onRenderLabel.bind(this, item)}
-          className={css('ms-ColumnManagementPanel-checkbox', styles.dropdownCheckbox, 'ms-Dropdown-item', styles.item, {
-            ['is-selected ' + styles.itemIsSelected]: isItemSelected,
-            ['is-disabled ' + styles.itemIsDisabled]: item.disabled
-          })}
-          role="option"
-          aria-selected={isItemSelected ? 'true' : 'false'}
-          checked={isItemSelected}
-          // Hover is being handled by focus styles
-          // so clear out the explicit hover styles
-          styles={checkboxStyles}
-        />
-      );
+      <Checkbox
+        id={id + '-list' + item.index}
+        key={item.key}
+        data-index={item.index}
+        data-is-focusable={!item.disabled}
+        disabled={item.disabled}
+        onChange={this._onItemClick(item)}
+        inputProps={{
+          onMouseEnter: this._onItemMouseEnter.bind(this, item),
+          onMouseLeave: this._onMouseItemLeave.bind(this, item),
+          onMouseMove: this._onItemMouseMove.bind(this, item)
+        }}
+        label={item.text}
+        title={item.title}
+        onRenderLabel={this._onRenderLabel.bind(this, item)}
+        className={css('ms-ColumnManagementPanel-checkbox', styles.dropdownCheckbox, 'ms-Dropdown-item', styles.item, {
+          ['is-selected ' + styles.itemIsSelected]: isItemSelected,
+          ['is-disabled ' + styles.itemIsDisabled]: item.disabled
+        })}
+        role="option"
+        aria-selected={isItemSelected ? 'true' : 'false'}
+        checked={isItemSelected}
+        // Hover is being handled by focus styles
+        // so clear out the explicit hover styles
+        styles={checkboxStyles}
+      />
+    );
   };
 
   // Render content of item (i.e. text/icon inside of button)
@@ -669,7 +675,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   };
 
   private _onDropdownKeyDown = (ev: React.KeyboardEvent<HTMLDivElement>): void => {
-
     // Take note if we are processing a altKey or metaKey keydown
     // so that the menu does not collapse if no other keys are pressed
     this._processingExpandCollapseKeyOnly = this._isExpandCollapseKey(ev);
@@ -851,7 +856,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       this.setState({ isOpen: false });
       ev.preventDefault();
     }
-  }
+  };
 
   private _onDropdownClick = (ev: React.MouseEvent<HTMLDivElement>): void => {
     if (this.props.onClick) {
