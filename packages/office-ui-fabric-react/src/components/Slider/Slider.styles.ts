@@ -145,7 +145,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
           }
         : {
             height: 28,
-            width: '100%',
+            width: 'auto',
             padding: '0 8px' // Make room for thumb at ends of line
           },
       ...[props.showValue ? classNames.showValue : undefined],
