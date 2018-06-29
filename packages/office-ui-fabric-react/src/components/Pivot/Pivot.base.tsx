@@ -1,15 +1,23 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, getId, getNativeProps, divProperties, createRef } from '../../Utilities';
+import {
+  BaseComponent,
+  KeyCodes,
+  getId,
+  getNativeProps,
+  divProperties,
+  createRef,
+  classNamesFunction
+} from '../../Utilities';
 import { CommandButton } from '../../Button';
-import { IPivotProps } from './Pivot.types';
+import { IPivotProps, IPivotStyleProps, IPivotStyles } from './Pivot.types';
 import { IPivotItemProps } from './PivotItem.types';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { PivotItem } from './PivotItem';
 import { PivotLinkFormat } from './Pivot.types';
 import { PivotLinkSize } from './Pivot.types';
 import { Icon } from '../../Icon';
-import * as stylesImport from './Pivot.scss';
-const styles: any = stylesImport;
+
+const getClassNames = classNamesFunction<IPivotStyleProps, IPivotStyles>();
 
 /**
  *  Usage:
@@ -41,6 +49,7 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
   private _keyToTabIds: { [key: string]: string };
   private _pivotId: string;
   private focusZone = createRef<FocusZone>();
+  private _classNames: { [key in keyof IPivotStyles]: string };
 
   constructor(props: IPivotProps) {
     super(props);
@@ -100,6 +109,8 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
   public render(): JSX.Element {
     const divProps = getNativeProps(this.props, divProperties);
 
+    this._classNames = this._getClassNames(this.props);
+
     return (
       <div {...divProps}>
         {this._renderPivotLinks()}
@@ -116,15 +127,7 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
 
     return (
       <FocusZone componentRef={this.focusZone} direction={FocusZoneDirection.horizontal}>
-        <ul
-          className={css(
-            'ms-Pivot',
-            styles.root,
-            { ['ms-Pivot--large ' + styles.rootIsLarge]: this.props.linkSize === PivotLinkSize.large },
-            { ['ms-Pivot--tabs ' + styles.rootIsTabs]: this.props.linkFormat === PivotLinkFormat.tabs }
-          )}
-          role="tablist"
-        >
+        <ul className={this._classNames.root} role="tablist">
           {items}
         </ul>
       </FocusZone>
@@ -136,6 +139,7 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
     const tabId = this._keyToTabIds[itemKey as string];
     const { onRenderItemLink } = link;
     let linkContent: JSX.Element | null;
+    const isSelected: boolean = this.state.selectedKey === itemKey;
 
     if (onRenderItemLink) {
       linkContent = onRenderItemLink(link, this._renderLinkContent);
@@ -148,9 +152,7 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
         {...headerButtonProps}
         id={tabId}
         key={itemKey}
-        className={css('ms-Pivot-link', styles.link, {
-          ['is-selected ' + styles.linkIsSelected]: this.state.selectedKey === itemKey
-        })}
+        className={isSelected ? this._classNames.linkIsSelected : this._classNames.link}
         onClick={this._onLinkClick.bind(this, itemKey)}
         onKeyPress={this._onKeyPress.bind(this, itemKey)}
         ariaLabel={link.ariaLabel}
@@ -168,14 +170,14 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
     const { itemCount, itemIcon, headerText } = link;
 
     return (
-      <span className={css('ms-Pivot-link-content')}>
+      <span className={this._classNames.linkContent}>
         {itemIcon !== undefined && (
-          <span className={css('ms-Pivot-icon', styles.icon)}>
+          <span className={this._classNames.icon}>
             <Icon iconName={itemIcon} />
           </span>
         )}
-        {headerText !== undefined && <span className={css('ms-Pivot-text', styles.text)}> {link.headerText}</span>}
-        {itemCount !== undefined && <span className={css('ms-Pivot-count', styles.count)}> ({itemCount})</span>}
+        {headerText !== undefined && <span className={this._classNames.text}> {link.headerText}</span>}
+        {itemCount !== undefined && <span className={this._classNames.count}> ({itemCount})</span>}
       </span>
     );
   };
@@ -286,5 +288,17 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
         this.props.onLinkClick(item as PivotItem, ev);
       }
     }
+  }
+
+  private _getClassNames(props: IPivotProps): { [key in keyof IPivotStyles]: string } {
+    const { theme } = props;
+    const rootIsLarge: boolean = props.linkSize === PivotLinkSize.large;
+    const rootIsTabs: boolean = props.linkFormat === PivotLinkFormat.tabs;
+
+    return getClassNames(props.styles!, {
+      theme: theme!,
+      rootIsLarge,
+      rootIsTabs
+    });
   }
 }
