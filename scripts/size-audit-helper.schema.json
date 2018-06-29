@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "title": "size-audit-helper Configuration",
+  "description": "Records chunk sizes to be picked up by a build system as artifacts. The chunk sizes are monitored over time by the build system.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "rushCommonDropDirectory": {
+      "description": "If the repository is using Rush, drop size-audit files under this directory under common.",
+      "type": "string"
+    },
+    "secondaryDropDirectory": {
+      "description": "Optional path to a secondary directory where size audit files should be dropped.",
+      "type": "string"
+    },
+    "assemblyLocaleToAnalyze": {
+      "description": "If specified, analyze this locale for assemblies if it exists.",
+      "type": "string"
+    }
+  }
+}

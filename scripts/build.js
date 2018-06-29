@@ -56,7 +56,7 @@ executeTasks(firstTasks).then(() => {
     process.exitCode = 1;
   }
   logEndBuild(packageName, !hasFailures, buildStartTime);
-});
+}).then(() => executeTask(firstTasks, null));
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //// Build helper functions
@@ -168,3 +168,115 @@ function getDisabledTasks(process, defaultDisabled = []) {
 
   return defaultDisabled;
 }
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+//// Artifact helper functions
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+const fsx = require('fs-extra');
+class ISizeAuditHelperTaskConfiguration {
+  /**
+   * If the repository is using Rush, drop size-audit files under this directory under common.
+   */
+  rushRootDropDirectory;
+
+  /**
+   * Optional path to a secondary directory where size audit files should be dropped.
+   */
+  secondaryDropDirectory;
+
+  /**
+   * If specified, analyze this locale for assemblies if it exists.
+   */
+  assemblyLocaleToAnalyze;
+}
+/**
+ * The SizeAuditHelperTask records chunk sizes to be picked up by a build system as artifacts. The chunk sizes
+ *  are monitored over time by the build system.
+ */
+export default class SizeAuditHelperTask extends PostBuildGulpTask {
+  constructor() {
+    super(
+      'size-audit-helper',
+      {}
+    );
+  }
+}
+
+function loadSchema() {
+  return require('./size-audit-helper.schema.json');
+}
+
+function executeTask(gulp, completeCallback) {
+  const dropDirectories;
+
+  if (this.taskConfig.rushRootDropDirectory) {
+    let rushRootDirectory;
+    try {
+      const rushConfiguration = RushConfiguration.loadFromDefaultLocation();
+      if (rushConfiguration) {
+        rushRootDirectory = path.join(rushConfiguration.rushJsonFolder, this.taskConfig.rushRootDropDirectory);
+      }
+    } catch (e) {
+      // Ignore - this means we aren't in a rush repo
+    }
+
+    if (rushRootDirectory) {
+      dropDirectories.push(rushRootDirectory);
+    }
+  }
+
+  if (this.taskConfig.secondaryDropDirectory) {
+    dropDirectories.push(this.taskConfig.secondaryDropDirectory);
+  }
+
+  if (dropDirectories.length === 0) {
+    completeCallback('No drop directories have been specified. Unable to drop size audit files.');
+    return;
+  }
+
+  const projectName = path.basename(this.buildConfig.rootPath);
+  const result = {
+    projectName,
+    chunks: this._analyzeChunks(),
+    assemblies: this._analyzeAssemblies()
+  };
+
+  const sizeFilePaths = dropDirectories.map(
+    (dropDirectory) => path.join(dropDirectory, `${projectName}.json`)
+  );
+
+  this.logVerbose(`Dropping size-audit files in: ${sizeFilePaths.join(', ')}`);
+
+  const fileContents = JSON.stringify(result);
+  for (const sizeFilePath of sizeFilePaths) {
+    fsx.ensureDirSync(path.dirname(sizeFilePath));
+    fsx.writeFileSync(sizeFilePath, fileContents);
+  }
+
+  completeCallback();
+}
+
+/**
+   * Gets the size of the "default" locale bundle file
+   */
+function _analyzeAssembly(assemblyBundle) {
+  const defaultLocaleBundlePath = (
+    assemblyBundle.entrypointFiles[this.taskConfig.assemblyLocaleToAnalyze || ASSEMBLY_LOCALE_TO_ANALYZE] ||
+    assemblyBundle.entrypointFiles[ASSEMBLY_LOCALE_TO_ANALYZE] ||
+    assemblyBundle.entrypointFiles[constants.defaultLocale]
+  );
+
+  return {
+    actualSize: this._getFileSize(defaultLocaleBundlePath)
+  };
+}
+
+function _getFileSize(filePath) {
+  try {
+    const stats = fsx.statSync(filePath);
+    return stats.size;
+  } catch (e) {
+    this.logWarning(`Unable to get size of file "${filePath}"`);
+    return -1;
+  }
+}
+module.exports = ISizeAuditHelperTaskConfiguration;
