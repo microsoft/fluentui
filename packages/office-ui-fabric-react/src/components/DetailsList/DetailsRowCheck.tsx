@@ -2,13 +2,11 @@ import * as React from 'react';
 import { styled } from '../../Utilities';
 import { IDetailsRowCheckProps, IDetailsRowCheckStyleProps, IDetailsRowCheckStyles } from './DetailsRowCheck.types';
 import { getStyles } from './DetailsRowCheck.styles';
-import { classNamesFunction } from '../../Utilities';
 import { css } from '../../Utilities';
 import { Check } from '../../Check';
 import { getClassNames as getCheckClassNames } from '../Check/Check.classNames';
 import { getStyles as getCheckStyles } from '../Check/Check.styles';
-
-const getClassNames = classNamesFunction<IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>();
+import { getClassNames } from './DetailsRowCheck.classNames';
 
 const DetailsRowCheckBase = (props: IDetailsRowCheckProps) => {
   const {

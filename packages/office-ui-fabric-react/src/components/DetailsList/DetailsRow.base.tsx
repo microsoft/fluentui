@@ -21,11 +21,10 @@ import { IDragDropOptions } from './../../utilities/dragdrop/interfaces';
 import { AnimationClassNames } from '../../Styling';
 import * as stylesImport from './DetailsRow.scss';
 const styles: any = stylesImport;
-import * as checkStylesImport from './DetailsRowCheck.scss';
 import { IDetailsRowProps } from './DetailsRow.types';
 import { IDetailsRowCheckProps } from './DetailsRowCheck.types';
-
-const checkStyles: any = checkStylesImport;
+import { getClassNames as getCheckClassNames } from './DetailsRowCheck.classNames';
+import { getStyles as getCheckStyles } from './DetailsRowCheck.styles';
 
 export interface IDetailsRowSelectionState {
   isSelected: boolean;
@@ -171,7 +170,8 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowProps, IDetailsRowS
       selection,
       indentWidth,
       shimmer,
-      compact
+      compact,
+      theme
     } = this.props;
     const { columnMeasureInfo, isDropping, groupNestingDepth } = this.state;
     const { isSelected = false, isSelectionModal = false } = this.state.selectionState as IDetailsRowSelectionState;
@@ -187,6 +187,16 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowProps, IDetailsRowS
     const isContentUnselectable = selectionMode === SelectionMode.multiple;
     const showCheckbox = selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden;
     const ariaSelected = selectionMode === SelectionMode.none ? undefined : isSelected;
+
+    const checkClassNames = getCheckClassNames(
+      getCheckStyles({
+        theme: theme!,
+        isSelected,
+        canSelect: !isContentUnselectable,
+        anySelected: isSelectionModal,
+        isVisible: checkboxVisibility === CheckboxVisibility.always
+      })
+    );
 
     const rowFields = (
       <RowFields
@@ -221,13 +231,13 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowProps, IDetailsRowS
           className,
           AnimationClassNames.fadeIn400,
           styles.root,
-          checkStyles.owner,
+          checkClassNames.owner,
           droppingClassName,
           {
             [`is-contentUnselectable ${styles.rootIsContentUnselectable}`]: isContentUnselectable,
-            [`is-selected ${checkStyles.isSelected} ${styles.rootIsSelected}`]: isSelected,
-            [`${styles.anySelected} ${checkStyles.anySelected}`]: isSelectionModal,
-            [`is-check-visible ${checkStyles.isVisible}`]: checkboxVisibility === CheckboxVisibility.always
+            [`is-selected ${checkClassNames.isSelected} ${styles.rootIsSelected}`]: isSelected,
+            [`${styles.anySelected} ${checkClassNames.anySelected}`]: isSelectionModal,
+            [`is-check-visible ${checkClassNames.isVisible}`]: checkboxVisibility === CheckboxVisibility.always
           }
         )}
         data-is-focusable={true}
@@ -249,7 +259,7 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowProps, IDetailsRowS
             className={css(
               'ms-DetailsRow-cell',
               'ms-DetailsRow-cellCheck',
-              checkStyles.owner,
+              checkClassNames.owner,
               styles.cell,
               styles.checkCell,
               checkboxCellClassName

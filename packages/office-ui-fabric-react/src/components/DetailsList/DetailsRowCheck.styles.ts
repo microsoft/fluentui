@@ -64,9 +64,9 @@ export const getStyles = (props: IDetailsRowCheckStyleProps): IDetailsRowCheckSt
           [`${IsFocusVisibleClassName} $check`]: {
             opacity: 1
           },
-          '&.isSelected': ownerHighlightStyles,
-          '&.isVisible': ownerHighlightStyles,
-          '&.anySelected': ownerHighlightStyles,
+          '&.$isSelected': ownerHighlightStyles,
+          '&.$isVisible': ownerHighlightStyles,
+          '&.$anySelected': ownerHighlightStyles,
           '&:hover': ownerHighlightStyles
         }
       }
@@ -75,6 +75,9 @@ export const getStyles = (props: IDetailsRowCheckStyleProps): IDetailsRowCheckSt
       {
         visibility: 'hidden'
       }
-    ]
+    ],
+    isSelected: [],
+    isVisible: [],
+    anySelected: []
   };
 };

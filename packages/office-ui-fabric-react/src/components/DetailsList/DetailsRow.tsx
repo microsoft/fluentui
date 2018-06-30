@@ -5,4 +5,4 @@ import { IDetailsRowProps, IDetailsRowStyleProps, IDetailsRowStyles } from './De
 import { DetailsRowBase } from './DetailsRow.base';
 import { getStyles } from './DetailsRow.styles';
 
-export const Slider = styled<IDetailsRowProps, IDetailsRowStyleProps, IDetailsRowStyles>(DetailsRowBase, getStyles);
+export const DetailsRow = styled<IDetailsRowProps, IDetailsRowStyleProps, IDetailsRowStyles>(DetailsRowBase, getStyles);
