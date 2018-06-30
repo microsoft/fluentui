@@ -16,16 +16,15 @@ type numericAxis = D3Axis<number | { valueOf(): number }>;
 type stringAxis = D3Axis<string>;
 
 export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartProps, {}> {
-  private _colors: string[];
-  private _classNames: IClassNames<IHorizontalBarChartStyles>;
-
-  public static defaultProps: IHorizontalBarChartProps = {
+  public static defaultProps: Partial<IHorizontalBarChartProps> = {
     data: [],
     width: 600,
     height: 350,
     barHeight: 15,
     yAxisTickCount: 10
   };
+  private _colors: string[];
+  private _classNames: IClassNames<IHorizontalBarChartStyles>;
   constructor(props: IHorizontalBarChartProps) {
     super(props);
 
@@ -33,27 +32,20 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     const { palette } = theme!;
     this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.blueDark];
   }
-
   public render(): JSX.Element {
-    const points = this.props.data || [];
-    const width = this.props.width || 600;
-    const height = this.props.height || 350;
-    const barHeight = this.props.barHeight || 15;
-    const yAxisTickCount = this.props.yAxisTickCount || 10;
-    const isNumeric = typeof points[0].x === 'number';
-    const xAxis = this._createNumericXAxis(isNumeric, points, width);
-    const yAxis = isNumeric
-      ? this._createYAxis(points, height, yAxisTickCount)
-      : this._createStringYAxis(points, height);
+    const { data, width, height, barHeight, yAxisTickCount } = this.props;
+    const isNumeric = typeof data[0].x === 'number';
+    const xAxis = this._createNumericXAxis(isNumeric, data, width);
+    const yAxis = isNumeric ? this._createYAxis(data, height, yAxisTickCount) : this._createStringYAxis(data, height);
     const bars = isNumeric
-      ? this._createNumericBars(points, height, width, barHeight)
-      : this._createStringBars(points, height, width, barHeight);
+      ? this._createNumericBars(data, height, width, barHeight)
+      : this._createStringBars(data, height, width, barHeight);
 
     const { theme, className, styles } = this.props;
     this._classNames = getClassNames(styles!, {
       theme: theme!,
-      width: width,
-      height: height,
+      width,
+      height,
       className
     });
 
@@ -89,12 +81,12 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     axisNode.selectAll('text').attr('class', this._classNames.yAxisText);
   }
 
-  private _createNumericXAxis(isNumeric: boolean, points: IDataPoint[], width: number): numericAxis {
+  private _createNumericXAxis(isNumeric: boolean, data: IDataPoint[], width: number): numericAxis {
     let xMax;
     if (isNumeric) {
-      xMax = d3Max(points, (point: IDataPoint) => point.x as number)!;
+      xMax = d3Max(data, (point: IDataPoint) => point.x as number)!;
     } else {
-      xMax = d3Max(points, (point: IDataPoint) => point.y as number)!;
+      xMax = d3Max(data, (point: IDataPoint) => point.y as number)!;
     }
     const xAxisScale = d3ScaleLinear()
       .domain([0, xMax])
@@ -103,16 +95,16 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     return xAxis;
   }
 
-  private _createStringYAxis(points: IDataPoint[], height: number): stringAxis {
+  private _createStringYAxis(data: IDataPoint[], height: number): stringAxis {
     const yAxisScale = d3ScaleBand()
-      .domain(points.map((point: IDataPoint) => point.x as string))
+      .domain(data.map((point: IDataPoint) => point.x as string))
       .range([height, 0]);
-    const yAxis = d3AxisLeft(yAxisScale).tickFormat((x: string, index: number) => points[index].x as string);
+    const yAxis = d3AxisLeft(yAxisScale).tickFormat((x: string, index: number) => data[index].x as string);
     return yAxis;
   }
 
-  private _createYAxis(points: IDataPoint[], height: number, yAxisTickCount: number): numericAxis {
-    const yMax = d3Max(points, (point: IDataPoint) => point.y)!;
+  private _createYAxis(data: IDataPoint[], height: number, yAxisTickCount: number): numericAxis {
+    const yMax = d3Max(data, (point: IDataPoint) => point.y)!;
     const yAxisScale = d3ScaleLinear()
       .domain([0, yMax])
       .range([height, 0]);
@@ -120,9 +112,9 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     return yAxis;
   }
 
-  private _createNumericBars(points: IDataPoint[], height: number, width: number, barHeight: number): JSX.Element[] {
-    const xMax = d3Max(points, (point: IDataPoint) => point.x as number)!;
-    const yMax = d3Max(points, (point: IDataPoint) => point.y)!;
+  private _createNumericBars(data: IDataPoint[], height: number, width: number, barHeight: number): JSX.Element[] {
+    const xMax = d3Max(data, (point: IDataPoint) => point.x as number)!;
+    const yMax = d3Max(data, (point: IDataPoint) => point.y)!;
 
     const xBarScale = d3ScaleLinear()
       .domain([0, xMax])
@@ -133,7 +125,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
 
     const colorScale = this._createColors(yMax);
 
-    const bars = points.map((point: IDataPoint, index: number) => {
+    const bars = data.map((point: IDataPoint, index: number) => {
       return (
         <rect
           key={point.x}
@@ -149,17 +141,17 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     return bars;
   }
 
-  private _createStringBars(points: IDataPoint[], height: number, width: number, barHeight: number): JSX.Element[] {
-    const yMax = d3Max(points, (point: IDataPoint) => point.y)!;
+  private _createStringBars(data: IDataPoint[], height: number, width: number, barHeight: number): JSX.Element[] {
+    const yMax = d3Max(data, (point: IDataPoint) => point.y)!;
     const xBarScale = d3ScaleLinear()
-      .domain([0, points.length])
+      .domain([0, data.length])
       .range([0, height]);
     const yBarScale = d3ScaleLinear()
       .domain([0, yMax])
       .range([0, width]);
     const colorScale = this._createColors(yMax);
 
-    const bars = points.map((point: IDataPoint, index: number) => {
+    const bars = data.map((point: IDataPoint, index: number) => {
       return (
         <rect
           key={point.x}
