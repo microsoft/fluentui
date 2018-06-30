@@ -2,21 +2,12 @@ import * as React from 'react';
 import { IColumn } from './DetailsList.types';
 import { BaseComponent, css } from '../../Utilities';
 import * as stylesImport from './DetailsRow.scss';
+import { IDetailsRowFieldsProps } from './DetailsRow.types';
+
 const styles: any = stylesImport;
 
 const INNER_PADDING = 16; // Account for padding around the cell.
 const ISPADDED_WIDTH = 24;
-
-export interface IDetailsRowFieldsProps {
-  componentRef?: () => void;
-  item: any;
-  itemIndex: number;
-  columnStartIndex: number;
-  columns: IColumn[];
-  compact?: boolean;
-  onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => any;
-  shimmer?: boolean;
-}
 
 export interface IDetailsRowFieldsState {
   cellContent: React.ReactNode[];
