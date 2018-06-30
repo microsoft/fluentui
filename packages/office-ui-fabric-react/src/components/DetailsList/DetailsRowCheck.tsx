@@ -6,6 +6,7 @@ import { classNamesFunction } from '../../Utilities';
 import { css } from '../../Utilities';
 import { Check } from '../../Check';
 import { getClassNames as getCheckClassNames } from '../Check/Check.classNames';
+import { getStyles as getCheckStyles } from '../Check/Check.styles';
 
 const getClassNames = classNamesFunction<IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>();
 
@@ -33,7 +34,11 @@ const DetailsRowCheckBase = (props: IDetailsRowCheckProps) => {
     theme: theme!
   });
 
-  const checkClassNames = getCheckClassNames(styles);
+  const checkStyles = getCheckStyles({ theme: theme! });
+
+  const checkClassNames = getCheckClassNames(checkStyles, {
+    theme: theme!
+  });
 
   return (
     <div
