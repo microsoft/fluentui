@@ -150,6 +150,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
         {...divProps}
         {...coinProps}
         className={mergeStyles(
+          classNames.coin,
           classNames.imageArea,
           classNames.initials,
           !showUnknownPersonaCoin && { backgroundColor: initialsColorPropToColorCode(this.props) }
@@ -223,7 +224,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
 
     return (
       <Image
-        className={classNames.image}
+        className={[classNames.coin, classNames.image].join(' ')}
         imageFit={ImageFit.cover}
         src={imageUrl}
         width={coinSize || SIZE_TO_PIXELS[size]}

@@ -29,65 +29,56 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
         className="ms-DocumentCardActivity-avatar"
       >
         <div
+          aria-hidden="true"
           className=
-              ms-Persona-coin
               ms-Persona--size32
+              ms-Persona-imageArea
+              ms-Persona-initials
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
+                background-color: #2D89EF;
+                border-radius: 50%;
+                color: #ffffff;
+                flex: 0 0 auto;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
+                height: 32px;
+                line-height: 32px;
+                position: relative;
+                text-align: center;
+                width: 32px;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                background-color: Window !important;
+                border: 1px solid WindowText;
+                box-sizing: border-box;
+                color: WindowText;
               }
           role="persentation"
           size={11}
+          style={undefined}
         >
-          <div
-            aria-hidden="true"
+          <i
+            aria-hidden={true}
             className=
-                ms-Persona-imageArea
-                ms-Persona-initials
-                {
-                  background-color: #2D89EF;
-                  border-radius: 50%;
-                  color: #ffffff;
-                  flex: 0 0 auto;
-                  font-size: 14px;
-                  font-weight: 400;
-                  height: 32px;
-                  line-height: 32px;
-                  position: relative;
-                  text-align: center;
-                  width: 32px;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  -ms-high-contrast-adjust: none;
-                  background-color: Window !important;
-                  border: 1px solid WindowText;
-                  box-sizing: border-box;
-                  color: WindowText;
-                }
-            style={undefined}
-          >
-            <i
-              aria-hidden={true}
-              className=
 
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    display: inline-block;
-                    font-family: "FabricMDL2Icons-0";
-                    font-style: normal;
-                    font-weight: normal;
-                    speak: none;
-                  }
-              data-icon-name="Contact"
-              role="presentation"
-            >
-              
-            </i>
-          </div>
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  display: inline-block;
+                  font-family: "FabricMDL2Icons-0";
+                  font-style: normal;
+                  font-weight: normal;
+                  speak: none;
+                }
+            data-icon-name="Contact"
+            role="presentation"
+          >
+            
+          </i>
         </div>
       </div>
     </div>

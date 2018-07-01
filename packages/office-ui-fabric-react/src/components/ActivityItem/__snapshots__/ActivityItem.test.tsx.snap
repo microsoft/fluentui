@@ -64,60 +64,42 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
           }
     >
       <div
+        aria-hidden="true"
         className=
-            ms-Persona-coin
             ms-Persona--size16
             ms-ActivityItem-activityPersona
+            ms-Persona-imageArea
+            ms-Persona-initials
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              background-color: #2D89EF;
+              border-radius: 50%;
+              color: #ffffff;
               display: inline-block;
+              flex: 0 0 auto;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
+              font-size: 11px;
               font-weight: 400;
+              height: 16px;
+              line-height: 16px;
               min-width: 8px;
               overflow: visible;
-              width: 8px;
+              position: relative;
+              text-align: center;
+              width: 16px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: Window !important;
+              border: 1px solid WindowText;
+              box-sizing: border-box;
+              color: WindowText;
             }
         size={8}
-        style={
-          Object {
-            "display": "inline-block",
-            "minWidth": "10px",
-            "overflow": "visible",
-            "width": "10px",
-          }
-        }
+        style={undefined}
       >
-        <div
-          aria-hidden="true"
-          className=
-              ms-Persona-imageArea
-              ms-Persona-initials
-              {
-                background-color: #2D89EF;
-                border-radius: 50%;
-                color: #ffffff;
-                flex: 0 0 auto;
-                font-size: 11px;
-                font-weight: 400;
-                height: 16px;
-                line-height: 16px;
-                position: relative;
-                text-align: center;
-                width: 16px;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
-                background-color: Window !important;
-                border: 1px solid WindowText;
-                box-sizing: border-box;
-                color: WindowText;
-              }
-          style={undefined}
-        >
-          TN
-        </div>
+        TN
       </div>
     </div>
   </div>
@@ -334,60 +316,42 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
           }
     >
       <div
+        aria-hidden="true"
         className=
-            ms-Persona-coin
             ms-Persona--size16
             ms-ActivityItem-activityPersona
+            ms-Persona-imageArea
+            ms-Persona-initials
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              background-color: #2D89EF;
+              border-radius: 50%;
+              color: #ffffff;
               display: inline-block;
+              flex: 0 0 auto;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
+              font-size: 11px;
               font-weight: 400;
+              height: 16px;
+              line-height: 16px;
               min-width: 8px;
               overflow: visible;
-              width: 8px;
+              position: relative;
+              text-align: center;
+              width: 16px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: Window !important;
+              border: 1px solid WindowText;
+              box-sizing: border-box;
+              color: WindowText;
             }
         size={8}
-        style={
-          Object {
-            "display": "inline-block",
-            "minWidth": "10px",
-            "overflow": "visible",
-            "width": "10px",
-          }
-        }
+        style={undefined}
       >
-        <div
-          aria-hidden="true"
-          className=
-              ms-Persona-imageArea
-              ms-Persona-initials
-              {
-                background-color: #2D89EF;
-                border-radius: 50%;
-                color: #ffffff;
-                flex: 0 0 auto;
-                font-size: 11px;
-                font-weight: 400;
-                height: 16px;
-                line-height: 16px;
-                position: relative;
-                text-align: center;
-                width: 16px;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
-                background-color: Window !important;
-                border: 1px solid WindowText;
-                box-sizing: border-box;
-                color: WindowText;
-              }
-          style={undefined}
-        >
-          TN
-        </div>
+        TN
       </div>
     </div>
   </div>
@@ -487,203 +451,146 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
           }
     >
       <div
+        aria-hidden="true"
         className=
-            ms-Persona-coin
             ms-Persona--size16
             ms-ActivityItem-activityPersona
+            ms-Persona-imageArea
+            ms-Persona-initials
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              background-color: #2D89EF;
+              border-radius: 50%;
+              color: #ffffff;
               display: inline-block;
+              flex: 0 0 auto;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
+              font-size: 11px;
               font-weight: 400;
+              height: 16px;
+              line-height: 16px;
               min-width: 8px;
               overflow: visible;
-              width: 8px;
+              position: relative;
+              text-align: center;
+              width: 16px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: Window !important;
+              border: 1px solid WindowText;
+              box-sizing: border-box;
+              color: WindowText;
             }
         size={8}
-        style={
-          Object {
-            "display": "inline-block",
-            "minWidth": "10px",
-            "overflow": "visible",
-            "width": "10px",
-          }
-        }
+        style={undefined}
       >
-        <div
-          aria-hidden="true"
-          className=
-              ms-Persona-imageArea
-              ms-Persona-initials
-              {
-                background-color: #2D89EF;
-                border-radius: 50%;
-                color: #ffffff;
-                flex: 0 0 auto;
-                font-size: 11px;
-                font-weight: 400;
-                height: 16px;
-                line-height: 16px;
-                position: relative;
-                text-align: center;
-                width: 16px;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
-                background-color: Window !important;
-                border: 1px solid WindowText;
-                box-sizing: border-box;
-                color: WindowText;
-              }
-          style={undefined}
-        >
-          TN
-        </div>
+        TN
       </div>
       <div
         className=
-            ms-Persona-coin
-            ms-Persona--size16
-            ms-ActivityItem-activityPersona
+            ms-Persona-imageArea
             {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              display: inline-block;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              min-width: 8px;
-              overflow: visible;
-              width: 8px;
+              flex: 0 0 auto;
+              height: 16px;
+              position: relative;
+              text-align: center;
+              width: 16px;
             }
-        size={8}
-        style={
-          Object {
-            "display": "inline-block",
-            "minWidth": "10px",
-            "overflow": "visible",
-            "width": "10px",
-          }
-        }
+        style={undefined}
       >
         <div
           className=
-              ms-Persona-imageArea
+              ms-Image
+              ms-Persona--size16
+              ms-Persona-image
               {
-                flex: 0 0 auto;
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                border-radius: 50%;
+                border: 0px;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 height: 16px;
-                position: relative;
-                text-align: center;
+                left: 0px;
+                margin-right: 10px;
+                overflow: hidden;
+                perspective: 1px;
+                position: absolute;
+                top: 0px;
                 width: 16px;
               }
-          style={undefined}
+          style={
+            Object {
+              "height": undefined,
+              "width": undefined,
+            }
+          }
         >
-          <div
+          <img
+            alt=""
             className=
-                ms-Image
-                ms-Persona-image
+                ms-Image-image
+                ms-Image-image--cover
+                ms-Image-image--portrait
+                is-notLoaded
+                is-fadeIn
                 {
-                  border-radius: 50%;
-                  border: 0px;
-                  height: 16px;
-                  left: 0px;
-                  margin-right: 10px;
-                  overflow: hidden;
-                  perspective: 1px;
+                  display: block;
+                  height: auto;
+                  left: 50% /* @noflip */;
+                  opacity: 0;
                   position: absolute;
-                  top: 0px;
-                  width: 16px;
+                  top: 50%;
+                  transform: translate(-50%,-50%);
+                  width: 100%;
                 }
-            style={
-              Object {
-                "height": undefined,
-                "width": undefined,
-              }
-            }
-          >
-            <img
-              alt=""
-              className=
-                  ms-Image-image
-                  ms-Image-image--cover
-                  ms-Image-image--portrait
-                  is-notLoaded
-                  is-fadeIn
-                  {
-                    display: block;
-                    height: auto;
-                    left: 50% /* @noflip */;
-                    opacity: 0;
-                    position: absolute;
-                    top: 50%;
-                    transform: translate(-50%,-50%);
-                    width: 100%;
-                  }
-              onError={[Function]}
-              onLoad={[Function]}
-              role={undefined}
-              src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
-            />
-          </div>
+            onError={[Function]}
+            onLoad={[Function]}
+            role={undefined}
+            src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
+          />
         </div>
       </div>
       <div
+        aria-hidden="true"
         className=
-            ms-Persona-coin
             ms-Persona--size16
             ms-ActivityItem-activityPersona
+            ms-Persona-imageArea
+            ms-Persona-initials
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              background-color: #00ABA9;
+              border-radius: 50%;
+              color: #ffffff;
               display: inline-block;
+              flex: 0 0 auto;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
+              font-size: 11px;
               font-weight: 400;
+              height: 16px;
+              line-height: 16px;
               min-width: 8px;
               overflow: visible;
-              width: 8px;
+              position: relative;
+              text-align: center;
+              width: 16px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: Window !important;
+              border: 1px solid WindowText;
+              box-sizing: border-box;
+              color: WindowText;
             }
         size={8}
-        style={
-          Object {
-            "display": "inline-block",
-            "minWidth": "10px",
-            "overflow": "visible",
-            "width": "10px",
-          }
-        }
+        style={undefined}
       >
-        <div
-          aria-hidden="true"
-          className=
-              ms-Persona-imageArea
-              ms-Persona-initials
-              {
-                background-color: #00ABA9;
-                border-radius: 50%;
-                color: #ffffff;
-                flex: 0 0 auto;
-                font-size: 11px;
-                font-weight: 400;
-                height: 16px;
-                line-height: 16px;
-                position: relative;
-                text-align: center;
-                width: 16px;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
-                background-color: Window !important;
-                border: 1px solid WindowText;
-                box-sizing: border-box;
-                color: WindowText;
-              }
-          style={undefined}
-        >
-          AN
-        </div>
+        AN
       </div>
     </div>
   </div>
@@ -757,50 +664,40 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
           }
     >
       <div
+        aria-hidden="true"
         className=
-            ms-Persona-coin
             ms-Persona--size32
             ms-ActivityItem-activityPersona
+            ms-Persona-imageArea
+            ms-Persona-initials
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              background-color: #2D89EF;
+              border-radius: 50%;
+              color: #ffffff;
               display: block;
+              flex: 0 0 auto;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
+              height: 32px;
+              line-height: 32px;
+              position: relative;
+              text-align: center;
+              width: 32px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: Window !important;
+              border: 1px solid WindowText;
+              box-sizing: border-box;
+              color: WindowText;
             }
         size={11}
         style={undefined}
       >
-        <div
-          aria-hidden="true"
-          className=
-              ms-Persona-imageArea
-              ms-Persona-initials
-              {
-                background-color: #2D89EF;
-                border-radius: 50%;
-                color: #ffffff;
-                flex: 0 0 auto;
-                font-size: 14px;
-                font-weight: 400;
-                height: 32px;
-                line-height: 32px;
-                position: relative;
-                text-align: center;
-                width: 32px;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
-                background-color: Window !important;
-                border: 1px solid WindowText;
-                box-sizing: border-box;
-                color: WindowText;
-              }
-          style={undefined}
-        >
-          TN
-        </div>
+        TN
       </div>
     </div>
   </div>
@@ -993,249 +890,207 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
           }
     >
       <div
+        aria-hidden="true"
         className=
-            ms-Persona-coin
             ms-Persona--size16
             ms-ActivityItem-activityPersona
+            ms-Persona-imageArea
+            ms-Persona-initials
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              background-color: #2D89EF;
+              border-radius: 50%;
+              color: #ffffff;
               display: block;
+              flex: 0 0 auto;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
+              font-size: 11px;
               font-weight: 400;
+              height: 16px;
+              line-height: 16px;
+              position: relative;
+              text-align: center;
+              width: 16px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: Window !important;
+              border: 1px solid WindowText;
+              box-sizing: border-box;
+              color: WindowText;
             }
         size={8}
         style={undefined}
       >
+        TN
+      </div>
+      <div
+        className=
+            ms-Persona-imageArea
+            {
+              flex: 0 0 auto;
+              height: 16px;
+              position: relative;
+              text-align: center;
+              width: 16px;
+            }
+        style={undefined}
+      >
         <div
-          aria-hidden="true"
           className=
-              ms-Persona-imageArea
-              ms-Persona-initials
+              ms-Image
+              ms-Persona--size16
+              ms-Persona-image
               {
-                background-color: #2D89EF;
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 border-radius: 50%;
-                color: #ffffff;
-                flex: 0 0 auto;
-                font-size: 11px;
+                border: 0px;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
                 font-weight: 400;
                 height: 16px;
-                line-height: 16px;
-                position: relative;
-                text-align: center;
+                left: 0px;
+                margin-right: 10px;
+                overflow: hidden;
+                perspective: 1px;
+                position: absolute;
+                top: 0px;
                 width: 16px;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
-                background-color: Window !important;
-                border: 1px solid WindowText;
-                box-sizing: border-box;
-                color: WindowText;
-              }
-          style={undefined}
-        >
-          TN
-        </div>
-      </div>
-      <div
-        className=
-            ms-Persona-coin
-            ms-Persona--size16
-            ms-ActivityItem-activityPersona
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              display: block;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
+          style={
+            Object {
+              "height": undefined,
+              "width": undefined,
             }
-        size={8}
-        style={undefined}
-      >
-        <div
-          className=
-              ms-Persona-imageArea
-              {
-                flex: 0 0 auto;
-                height: 16px;
-                position: relative;
-                text-align: center;
-                width: 16px;
-              }
-          style={undefined}
+          }
         >
-          <div
+          <img
+            alt=""
             className=
-                ms-Image
-                ms-Persona-image
+                ms-Image-image
+                ms-Image-image--cover
+                ms-Image-image--portrait
+                is-notLoaded
+                is-fadeIn
                 {
-                  border-radius: 50%;
-                  border: 0px;
-                  height: 16px;
-                  left: 0px;
-                  margin-right: 10px;
-                  overflow: hidden;
-                  perspective: 1px;
+                  display: block;
+                  height: auto;
+                  left: 50% /* @noflip */;
+                  opacity: 0;
                   position: absolute;
-                  top: 0px;
-                  width: 16px;
+                  top: 50%;
+                  transform: translate(-50%,-50%);
+                  width: 100%;
                 }
-            style={
-              Object {
-                "height": undefined,
-                "width": undefined,
-              }
-            }
-          >
-            <img
-              alt=""
-              className=
-                  ms-Image-image
-                  ms-Image-image--cover
-                  ms-Image-image--portrait
-                  is-notLoaded
-                  is-fadeIn
-                  {
-                    display: block;
-                    height: auto;
-                    left: 50% /* @noflip */;
-                    opacity: 0;
-                    position: absolute;
-                    top: 50%;
-                    transform: translate(-50%,-50%);
-                    width: 100%;
-                  }
-              onError={[Function]}
-              onLoad={[Function]}
-              role={undefined}
-              src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
-            />
-          </div>
+            onError={[Function]}
+            onLoad={[Function]}
+            role={undefined}
+            src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
+          />
         </div>
       </div>
       <div
+        aria-hidden="true"
         className=
-            ms-Persona-coin
             ms-Persona--size16
             ms-ActivityItem-activityPersona
+            ms-Persona-imageArea
+            ms-Persona-initials
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              background-color: #00ABA9;
+              border-radius: 50%;
+              color: #ffffff;
               display: block;
+              flex: 0 0 auto;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
+              font-size: 11px;
               font-weight: 400;
+              height: 16px;
+              line-height: 16px;
+              position: relative;
+              text-align: center;
+              width: 16px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: Window !important;
+              border: 1px solid WindowText;
+              box-sizing: border-box;
+              color: WindowText;
             }
         size={8}
         style={undefined}
       >
+        AN
+      </div>
+      <div
+        className=
+            ms-Persona-imageArea
+            {
+              flex: 0 0 auto;
+              height: 16px;
+              position: relative;
+              text-align: center;
+              width: 16px;
+            }
+        style={undefined}
+      >
         <div
-          aria-hidden="true"
           className=
-              ms-Persona-imageArea
-              ms-Persona-initials
+              ms-Image
+              ms-Persona--size16
+              ms-Persona-image
               {
-                background-color: #00ABA9;
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 border-radius: 50%;
-                color: #ffffff;
-                flex: 0 0 auto;
-                font-size: 11px;
+                border: 0px;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
                 font-weight: 400;
                 height: 16px;
-                line-height: 16px;
-                position: relative;
-                text-align: center;
+                left: 0px;
+                margin-right: 10px;
+                overflow: hidden;
+                perspective: 1px;
+                position: absolute;
+                top: 0px;
                 width: 16px;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
-                background-color: Window !important;
-                border: 1px solid WindowText;
-                box-sizing: border-box;
-                color: WindowText;
-              }
-          style={undefined}
-        >
-          AN
-        </div>
-      </div>
-      <div
-        className=
-            ms-Persona-coin
-            ms-Persona--size16
-            ms-ActivityItem-activityPersona
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              display: block;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
+          style={
+            Object {
+              "height": undefined,
+              "width": undefined,
             }
-        size={8}
-        style={undefined}
-      >
-        <div
-          className=
-              ms-Persona-imageArea
-              {
-                flex: 0 0 auto;
-                height: 16px;
-                position: relative;
-                text-align: center;
-                width: 16px;
-              }
-          style={undefined}
+          }
         >
-          <div
+          <img
+            alt=""
             className=
-                ms-Image
-                ms-Persona-image
+                ms-Image-image
+                ms-Image-image--cover
+                ms-Image-image--portrait
+                is-notLoaded
+                is-fadeIn
                 {
-                  border-radius: 50%;
-                  border: 0px;
-                  height: 16px;
-                  left: 0px;
-                  margin-right: 10px;
-                  overflow: hidden;
-                  perspective: 1px;
+                  display: block;
+                  height: auto;
+                  left: 50% /* @noflip */;
+                  opacity: 0;
                   position: absolute;
-                  top: 0px;
-                  width: 16px;
+                  top: 50%;
+                  transform: translate(-50%,-50%);
+                  width: 100%;
                 }
-            style={
-              Object {
-                "height": undefined,
-                "width": undefined,
-              }
-            }
-          >
-            <img
-              alt=""
-              className=
-                  ms-Image-image
-                  ms-Image-image--cover
-                  ms-Image-image--portrait
-                  is-notLoaded
-                  is-fadeIn
-                  {
-                    display: block;
-                    height: auto;
-                    left: 50% /* @noflip */;
-                    opacity: 0;
-                    position: absolute;
-                    top: 50%;
-                    transform: translate(-50%,-50%);
-                    width: 100%;
-                  }
-              onError={[Function]}
-              onLoad={[Function]}
-              role={undefined}
-              src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-male.png"
-            />
-          </div>
+            onError={[Function]}
+            onLoad={[Function]}
+            role={undefined}
+            src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-male.png"
+          />
         </div>
       </div>
     </div>

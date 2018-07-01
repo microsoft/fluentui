@@ -41,47 +41,38 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
     style={undefined}
   >
     <div
+      aria-hidden="true"
       className=
-          ms-Persona-coin
           ms-Persona--size48
+          ms-Persona-imageArea
+          ms-Persona-initials
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            background-color: #1D1D1D;
+            border-radius: 50%;
+            color: #ffffff;
+            flex: 0 0 auto;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
+            font-size: 17px;
             font-weight: 400;
+            height: 48px;
+            line-height: 46px;
+            position: relative;
+            text-align: center;
+            width: 48px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            -ms-high-contrast-adjust: none;
+            background-color: Window !important;
+            border: 1px solid WindowText;
+            box-sizing: border-box;
+            color: WindowText;
           }
       size={13}
+      style={undefined}
     >
-      <div
-        aria-hidden="true"
-        className=
-            ms-Persona-imageArea
-            ms-Persona-initials
-            {
-              background-color: #1D1D1D;
-              border-radius: 50%;
-              color: #ffffff;
-              flex: 0 0 auto;
-              font-size: 17px;
-              font-weight: 400;
-              height: 48px;
-              line-height: 46px;
-              position: relative;
-              text-align: center;
-              width: 48px;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              -ms-high-contrast-adjust: none;
-              background-color: Window !important;
-              border: 1px solid WindowText;
-              box-sizing: border-box;
-              color: WindowText;
-            }
-        style={undefined}
-      >
-        KL
-      </div>
+      KL
     </div>
     <div
       className=
@@ -232,47 +223,38 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
     style={undefined}
   >
     <div
+      aria-hidden="true"
       className=
-          ms-Persona-coin
           ms-Persona--size48
+          ms-Persona-imageArea
+          ms-Persona-initials
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            background-color: #00A300;
+            border-radius: 50%;
+            color: #ffffff;
+            flex: 0 0 auto;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
+            font-size: 17px;
             font-weight: 400;
+            height: 48px;
+            line-height: 46px;
+            position: relative;
+            text-align: center;
+            width: 48px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            -ms-high-contrast-adjust: none;
+            background-color: Window !important;
+            border: 1px solid WindowText;
+            box-sizing: border-box;
+            color: WindowText;
           }
       size={13}
+      style={undefined}
     >
-      <div
-        aria-hidden="true"
-        className=
-            ms-Persona-imageArea
-            ms-Persona-initials
-            {
-              background-color: #00A300;
-              border-radius: 50%;
-              color: #ffffff;
-              flex: 0 0 auto;
-              font-size: 17px;
-              font-weight: 400;
-              height: 48px;
-              line-height: 46px;
-              position: relative;
-              text-align: center;
-              width: 48px;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              -ms-high-contrast-adjust: none;
-              background-color: Window !important;
-              border: 1px solid WindowText;
-              box-sizing: border-box;
-              color: WindowText;
-            }
-        style={undefined}
-      >
-        A
-      </div>
+      A
     </div>
     <div
       className=
@@ -423,47 +405,38 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
     style={undefined}
   >
     <div
+      aria-hidden="true"
       className=
-          ms-Persona-coin
           ms-Persona--size48
+          ms-Persona-imageArea
+          ms-Persona-initials
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            background-color: #00A300;
+            border-radius: 50%;
+            color: #ffffff;
+            flex: 0 0 auto;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
+            font-size: 17px;
             font-weight: 400;
+            height: 48px;
+            line-height: 46px;
+            position: relative;
+            text-align: center;
+            width: 48px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            -ms-high-contrast-adjust: none;
+            background-color: Window !important;
+            border: 1px solid WindowText;
+            box-sizing: border-box;
+            color: WindowText;
           }
       size={13}
+      style={undefined}
     >
-      <div
-        aria-hidden="true"
-        className=
-            ms-Persona-imageArea
-            ms-Persona-initials
-            {
-              background-color: #00A300;
-              border-radius: 50%;
-              color: #ffffff;
-              flex: 0 0 auto;
-              font-size: 17px;
-              font-weight: 400;
-              height: 48px;
-              line-height: 46px;
-              position: relative;
-              text-align: center;
-              width: 48px;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              -ms-high-contrast-adjust: none;
-              background-color: Window !important;
-              border: 1px solid WindowText;
-              box-sizing: border-box;
-              color: WindowText;
-            }
-        style={undefined}
-      >
-        AL
-      </div>
+      AL
     </div>
     <div
       className=
@@ -614,47 +587,38 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
     style={undefined}
   >
     <div
+      aria-hidden="true"
       className=
-          ms-Persona-coin
           ms-Persona--size48
+          ms-Persona-imageArea
+          ms-Persona-initials
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            background-color: #00A300;
+            border-radius: 50%;
+            color: #ffffff;
+            flex: 0 0 auto;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
+            font-size: 17px;
             font-weight: 400;
+            height: 48px;
+            line-height: 46px;
+            position: relative;
+            text-align: center;
+            width: 48px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            -ms-high-contrast-adjust: none;
+            background-color: Window !important;
+            border: 1px solid WindowText;
+            box-sizing: border-box;
+            color: WindowText;
           }
       size={13}
+      style={undefined}
     >
-      <div
-        aria-hidden="true"
-        className=
-            ms-Persona-imageArea
-            ms-Persona-initials
-            {
-              background-color: #00A300;
-              border-radius: 50%;
-              color: #ffffff;
-              flex: 0 0 auto;
-              font-size: 17px;
-              font-weight: 400;
-              height: 48px;
-              line-height: 46px;
-              position: relative;
-              text-align: center;
-              width: 48px;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              -ms-high-contrast-adjust: none;
-              background-color: Window !important;
-              border: 1px solid WindowText;
-              box-sizing: border-box;
-              color: WindowText;
-            }
-        style={undefined}
-      >
-        AL
-      </div>
+      AL
     </div>
     <div
       className=
@@ -805,47 +769,38 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
     style={undefined}
   >
     <div
+      aria-hidden="true"
       className=
-          ms-Persona-coin
           ms-Persona--size48
+          ms-Persona-imageArea
+          ms-Persona-initials
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            background-color: #B91D47;
+            border-radius: 50%;
+            color: #ffffff;
+            flex: 0 0 auto;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
+            font-size: 17px;
             font-weight: 400;
+            height: 48px;
+            line-height: 46px;
+            position: relative;
+            text-align: center;
+            width: 48px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            -ms-high-contrast-adjust: none;
+            background-color: Window !important;
+            border: 1px solid WindowText;
+            box-sizing: border-box;
+            color: WindowText;
           }
       size={13}
+      style={undefined}
     >
-      <div
-        aria-hidden="true"
-        className=
-            ms-Persona-imageArea
-            ms-Persona-initials
-            {
-              background-color: #B91D47;
-              border-radius: 50%;
-              color: #ffffff;
-              flex: 0 0 auto;
-              font-size: 17px;
-              font-weight: 400;
-              height: 48px;
-              line-height: 46px;
-              position: relative;
-              text-align: center;
-              width: 48px;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              -ms-high-contrast-adjust: none;
-              background-color: Window !important;
-              border: 1px solid WindowText;
-              box-sizing: border-box;
-              color: WindowText;
-            }
-        style={undefined}
-      >
-        A
-      </div>
+      A
     </div>
     <div
       className=
@@ -996,64 +951,55 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
     style={undefined}
   >
     <div
+      aria-hidden="true"
       className=
-          ms-Persona-coin
           ms-Persona--size48
+          ms-Persona-imageArea
+          ms-Persona-initials
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            background-color: #E773BD;
+            border-radius: 50%;
+            color: #ffffff;
+            flex: 0 0 auto;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
+            font-size: 17px;
             font-weight: 400;
+            height: 48px;
+            line-height: 46px;
+            position: relative;
+            text-align: center;
+            width: 48px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            -ms-high-contrast-adjust: none;
+            background-color: Window !important;
+            border: 1px solid WindowText;
+            box-sizing: border-box;
+            color: WindowText;
           }
       size={13}
+      style={undefined}
     >
-      <div
-        aria-hidden="true"
+      <i
+        aria-hidden={true}
         className=
-            ms-Persona-imageArea
-            ms-Persona-initials
-            {
-              background-color: #E773BD;
-              border-radius: 50%;
-              color: #ffffff;
-              flex: 0 0 auto;
-              font-size: 17px;
-              font-weight: 400;
-              height: 48px;
-              line-height: 46px;
-              position: relative;
-              text-align: center;
-              width: 48px;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              -ms-high-contrast-adjust: none;
-              background-color: Window !important;
-              border: 1px solid WindowText;
-              box-sizing: border-box;
-              color: WindowText;
-            }
-        style={undefined}
-      >
-        <i
-          aria-hidden={true}
-          className=
 
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                display: inline-block;
-                font-family: "FabricMDL2Icons-0";
-                font-style: normal;
-                font-weight: normal;
-                speak: none;
-              }
-          data-icon-name="Contact"
-          role="presentation"
-        >
-          
-        </i>
-      </div>
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              display: inline-block;
+              font-family: "FabricMDL2Icons-0";
+              font-style: normal;
+              font-weight: normal;
+              speak: none;
+            }
+        data-icon-name="Contact"
+        role="presentation"
+      >
+        
+      </i>
     </div>
     <div
       className=
@@ -1204,47 +1150,38 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
     style={undefined}
   >
     <div
+      aria-hidden="true"
       className=
-          ms-Persona-coin
           ms-Persona--size48
+          ms-Persona-imageArea
+          ms-Persona-initials
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            background-color: #E773BD;
+            border-radius: 50%;
+            color: #ffffff;
+            flex: 0 0 auto;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
+            font-size: 17px;
             font-weight: 400;
+            height: 48px;
+            line-height: 46px;
+            position: relative;
+            text-align: center;
+            width: 48px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            -ms-high-contrast-adjust: none;
+            background-color: Window !important;
+            border: 1px solid WindowText;
+            box-sizing: border-box;
+            color: WindowText;
           }
       size={13}
+      style={undefined}
     >
-      <div
-        aria-hidden="true"
-        className=
-            ms-Persona-imageArea
-            ms-Persona-initials
-            {
-              background-color: #E773BD;
-              border-radius: 50%;
-              color: #ffffff;
-              flex: 0 0 auto;
-              font-size: 17px;
-              font-weight: 400;
-              height: 48px;
-              line-height: 46px;
-              position: relative;
-              text-align: center;
-              width: 48px;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              -ms-high-contrast-adjust: none;
-              background-color: Window !important;
-              border: 1px solid WindowText;
-              box-sizing: border-box;
-              color: WindowText;
-            }
-        style={undefined}
-      >
-        1X
-      </div>
+      1X
     </div>
     <div
       className=
@@ -1395,64 +1332,55 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
     style={undefined}
   >
     <div
+      aria-hidden="true"
       className=
-          ms-Persona-coin
           ms-Persona--size48
+          ms-Persona-imageArea
+          ms-Persona-initials
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            background-color: #1E7145;
+            border-radius: 50%;
+            color: #ffffff;
+            flex: 0 0 auto;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
+            font-size: 17px;
             font-weight: 400;
+            height: 48px;
+            line-height: 46px;
+            position: relative;
+            text-align: center;
+            width: 48px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            -ms-high-contrast-adjust: none;
+            background-color: Window !important;
+            border: 1px solid WindowText;
+            box-sizing: border-box;
+            color: WindowText;
           }
       size={13}
+      style={undefined}
     >
-      <div
-        aria-hidden="true"
+      <i
+        aria-hidden={true}
         className=
-            ms-Persona-imageArea
-            ms-Persona-initials
-            {
-              background-color: #1E7145;
-              border-radius: 50%;
-              color: #ffffff;
-              flex: 0 0 auto;
-              font-size: 17px;
-              font-weight: 400;
-              height: 48px;
-              line-height: 46px;
-              position: relative;
-              text-align: center;
-              width: 48px;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              -ms-high-contrast-adjust: none;
-              background-color: Window !important;
-              border: 1px solid WindowText;
-              box-sizing: border-box;
-              color: WindowText;
-            }
-        style={undefined}
-      >
-        <i
-          aria-hidden={true}
-          className=
 
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                display: inline-block;
-                font-family: "FabricMDL2Icons-0";
-                font-style: normal;
-                font-weight: normal;
-                speak: none;
-              }
-          data-icon-name="Contact"
-          role="presentation"
-        >
-          
-        </i>
-      </div>
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              display: inline-block;
+              font-family: "FabricMDL2Icons-0";
+              font-style: normal;
+              font-weight: normal;
+              speak: none;
+            }
+        data-icon-name="Contact"
+        role="presentation"
+      >
+        
+      </i>
     </div>
     <div
       className=
@@ -1603,64 +1531,55 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
     style={undefined}
   >
     <div
+      aria-hidden="true"
       className=
-          ms-Persona-coin
           ms-Persona--size48
+          ms-Persona-imageArea
+          ms-Persona-initials
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            background-color: #DA532C;
+            border-radius: 50%;
+            color: #ffffff;
+            flex: 0 0 auto;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
+            font-size: 17px;
             font-weight: 400;
+            height: 48px;
+            line-height: 46px;
+            position: relative;
+            text-align: center;
+            width: 48px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            -ms-high-contrast-adjust: none;
+            background-color: Window !important;
+            border: 1px solid WindowText;
+            box-sizing: border-box;
+            color: WindowText;
           }
       size={13}
+      style={undefined}
     >
-      <div
-        aria-hidden="true"
+      <i
+        aria-hidden={true}
         className=
-            ms-Persona-imageArea
-            ms-Persona-initials
-            {
-              background-color: #DA532C;
-              border-radius: 50%;
-              color: #ffffff;
-              flex: 0 0 auto;
-              font-size: 17px;
-              font-weight: 400;
-              height: 48px;
-              line-height: 46px;
-              position: relative;
-              text-align: center;
-              width: 48px;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              -ms-high-contrast-adjust: none;
-              background-color: Window !important;
-              border: 1px solid WindowText;
-              box-sizing: border-box;
-              color: WindowText;
-            }
-        style={undefined}
-      >
-        <i
-          aria-hidden={true}
-          className=
 
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                display: inline-block;
-                font-family: "FabricMDL2Icons-0";
-                font-style: normal;
-                font-weight: normal;
-                speak: none;
-              }
-          data-icon-name="Contact"
-          role="presentation"
-        >
-          
-        </i>
-      </div>
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              display: inline-block;
+              font-family: "FabricMDL2Icons-0";
+              font-style: normal;
+              font-weight: normal;
+              speak: none;
+            }
+        data-icon-name="Contact"
+        role="presentation"
+      >
+        
+      </i>
     </div>
     <div
       className=
@@ -1811,64 +1730,55 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
     style={undefined}
   >
     <div
+      aria-hidden="true"
       className=
-          ms-Persona-coin
           ms-Persona--size48
+          ms-Persona-imageArea
+          ms-Persona-initials
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            background-color: #2B5797;
+            border-radius: 50%;
+            color: #ffffff;
+            flex: 0 0 auto;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
+            font-size: 17px;
             font-weight: 400;
+            height: 48px;
+            line-height: 46px;
+            position: relative;
+            text-align: center;
+            width: 48px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            -ms-high-contrast-adjust: none;
+            background-color: Window !important;
+            border: 1px solid WindowText;
+            box-sizing: border-box;
+            color: WindowText;
           }
       size={13}
+      style={undefined}
     >
-      <div
-        aria-hidden="true"
+      <i
+        aria-hidden={true}
         className=
-            ms-Persona-imageArea
-            ms-Persona-initials
-            {
-              background-color: #2B5797;
-              border-radius: 50%;
-              color: #ffffff;
-              flex: 0 0 auto;
-              font-size: 17px;
-              font-weight: 400;
-              height: 48px;
-              line-height: 46px;
-              position: relative;
-              text-align: center;
-              width: 48px;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              -ms-high-contrast-adjust: none;
-              background-color: Window !important;
-              border: 1px solid WindowText;
-              box-sizing: border-box;
-              color: WindowText;
-            }
-        style={undefined}
-      >
-        <i
-          aria-hidden={true}
-          className=
 
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                display: inline-block;
-                font-family: "FabricMDL2Icons-0";
-                font-style: normal;
-                font-weight: normal;
-                speak: none;
-              }
-          data-icon-name="Contact"
-          role="presentation"
-        >
-          
-        </i>
-      </div>
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              display: inline-block;
+              font-family: "FabricMDL2Icons-0";
+              font-style: normal;
+              font-weight: normal;
+              speak: none;
+            }
+        data-icon-name="Contact"
+        role="presentation"
+      >
+        
+      </i>
     </div>
     <div
       className=
@@ -2019,47 +1929,38 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
     style={undefined}
   >
     <div
+      aria-hidden="true"
       className=
-          ms-Persona-coin
           ms-Persona--size48
+          ms-Persona-imageArea
+          ms-Persona-initials
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            background-color: #6BA5E7;
+            border-radius: 50%;
+            color: #ffffff;
+            flex: 0 0 auto;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
+            font-size: 17px;
             font-weight: 400;
+            height: 48px;
+            line-height: 46px;
+            position: relative;
+            text-align: center;
+            width: 48px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            -ms-high-contrast-adjust: none;
+            background-color: Window !important;
+            border: 1px solid WindowText;
+            box-sizing: border-box;
+            color: WindowText;
           }
       size={13}
+      style={undefined}
     >
-      <div
-        aria-hidden="true"
-        className=
-            ms-Persona-imageArea
-            ms-Persona-initials
-            {
-              background-color: #6BA5E7;
-              border-radius: 50%;
-              color: #ffffff;
-              flex: 0 0 auto;
-              font-size: 17px;
-              font-weight: 400;
-              height: 48px;
-              line-height: 46px;
-              position: relative;
-              text-align: center;
-              width: 48px;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              -ms-high-contrast-adjust: none;
-              background-color: Window !important;
-              border: 1px solid WindowText;
-              box-sizing: border-box;
-              color: WindowText;
-            }
-        style={undefined}
-      >
-        MS
-      </div>
+      MS
     </div>
     <div
       className=
@@ -2210,47 +2111,38 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
     style={undefined}
   >
     <div
+      aria-hidden="true"
       className=
-          ms-Persona-coin
           ms-Persona--size48
+          ms-Persona-imageArea
+          ms-Persona-initials
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            background-color: #00ABA9;
+            border-radius: 50%;
+            color: #ffffff;
+            flex: 0 0 auto;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
+            font-size: 17px;
             font-weight: 400;
+            height: 48px;
+            line-height: 46px;
+            position: relative;
+            text-align: center;
+            width: 48px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            -ms-high-contrast-adjust: none;
+            background-color: Window !important;
+            border: 1px solid WindowText;
+            box-sizing: border-box;
+            color: WindowText;
           }
       size={13}
+      style={undefined}
     >
-      <div
-        aria-hidden="true"
-        className=
-            ms-Persona-imageArea
-            ms-Persona-initials
-            {
-              background-color: #00ABA9;
-              border-radius: 50%;
-              color: #ffffff;
-              flex: 0 0 auto;
-              font-size: 17px;
-              font-weight: 400;
-              height: 48px;
-              line-height: 46px;
-              position: relative;
-              text-align: center;
-              width: 48px;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              -ms-high-contrast-adjust: none;
-              background-color: Window !important;
-              border: 1px solid WindowText;
-              box-sizing: border-box;
-              color: WindowText;
-            }
-        style={undefined}
-      >
-        MS
-      </div>
+      MS
     </div>
     <div
       className=
