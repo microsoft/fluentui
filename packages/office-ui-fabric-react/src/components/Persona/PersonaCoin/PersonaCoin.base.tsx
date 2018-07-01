@@ -92,29 +92,25 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
       showUnknownPersonaCoin
     });
 
-    return (
-      <div {...divProps} className={classNames.coin}>
-        {// Render PersonaCoin if size is not size10
-        size !== PersonaSize.size10 && size !== PersonaSize.tiny ? (
-          this._onRenderRegularCoin()
-        ) : // Otherwise, render just PersonaPresence.
-        this.props.presence ? (
-          <PersonaPresence {...personaPresenceProps} />
-        ) : (
-          // Just render Contact Icon if there isn't a Presence prop.
-          <Icon iconName="Contact" className={classNames.size10WithoutPresenceIcon} />
-        )}
-        {this.props.children}
-      </div>
-    );
+    // Render PersonaCoin if size is not size10
+    if (size !== PersonaSize.size10 && size !== PersonaSize.tiny) {
+      return this._onRenderRegularCoin();
+    }
+
+    // If the size === 10 or tiny render just PersonaPresence.
+    if (this.props.presence) {
+      return <PersonaPresence {...personaPresenceProps} />;
+    }
+
+    // Just render Contact Icon if there isn't a Presence prop.
+    return <Icon {...divProps} iconName="Contact" className={classNames.size10WithoutPresenceIcon} />;
   }
 
   private _onRenderRegularCoin = (): JSX.Element => {
     const { imageUrl } = this.props;
+    const noImageAvailableOrIsLoading = !this.state.isImageLoaded && (!imageUrl || this.state.isImageError);
 
-    return !this.state.isImageLoaded && (!imageUrl || this.state.isImageError)
-      ? this._onRenderCoinWithInitials()
-      : this._onRenderCoinWithImage();
+    return noImageAvailableOrIsLoading ? this._onRenderCoinWithInitials() : this._onRenderCoinWithImage();
   };
 
   private _onRenderCoinWithInitials(): JSX.Element {
@@ -128,6 +124,8 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
       onRenderInitials = this._onRenderInitials,
       theme
     } = this.props;
+
+    const divProps = getNativeProps(this.props, divProperties);
 
     const size = this.props.size as PersonaSize;
     const coinSizeStyle = coinSize ? { width: coinSize, height: coinSize } : undefined;
@@ -149,6 +147,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
 
     return (
       <div
+        {...divProps}
         {...coinProps}
         className={mergeStyles(
           classNames.imageArea,
@@ -212,9 +211,9 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
       imageShouldStartVisible,
       theme,
       showUnknownPersonaCoin
-    } = this.props;
+    } = props;
 
-    const size = this.props.size as PersonaSize;
+    const size = props.size as PersonaSize;
 
     const classNames = getClassNames(styles, {
       theme: theme!,
