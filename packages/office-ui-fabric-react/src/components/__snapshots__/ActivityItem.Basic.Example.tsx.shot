@@ -118,6 +118,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               &:focus {
                 color: #0078d4;
               }
+          disabled={undefined}
           onClick={[Function]}
         >
           Philippe Lampros
@@ -187,6 +188,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               &:focus {
                 color: #0078d4;
               }
+          disabled={undefined}
           onClick={[Function]}
         >
           @Anđela Debeljak
@@ -327,6 +329,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               &:focus {
                 color: #0078d4;
               }
+          disabled={undefined}
           onClick={[Function]}
         >
           Lisha Refai
@@ -476,6 +479,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               &:focus {
                 color: #0078d4;
               }
+          disabled={undefined}
           onClick={[Function]}
         >
           Julian Arvidsson
@@ -534,6 +538,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               &:focus {
                 color: #0078d4;
               }
+          disabled={undefined}
           onClick={[Function]}
         >
           PresentationTitle.pptx
@@ -592,6 +597,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               &:focus {
                 color: #0078d4;
               }
+          disabled={undefined}
           onClick={[Function]}
         >
           Destination Folder

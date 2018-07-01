@@ -16,6 +16,10 @@ export interface IGroupHeaderState {
 }
 
 export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderState> {
+  public static defaultProps: IGroupDividerProps = {
+    expandButtonProps: { 'aria-label': 'expand collapse group' }
+  };
+
   constructor(props: IGroupDividerProps) {
     super(props);
 
@@ -49,7 +53,8 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
       selected,
       indentWidth,
       onRenderTitle = this._onRenderTitle,
-      isCollapsedGroupSelectVisible = true
+      isCollapsedGroupSelectVisible = true,
+      expandButtonProps
     } = this.props;
 
     const { isCollapsed, isLoadingVisible } = this.state;
@@ -94,6 +99,7 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
             type="button"
             className={css('ms-GroupHeader-expand', styles.expand)}
             onClick={this._onToggleCollapse}
+            {...expandButtonProps}
           >
             <Icon className={css(isCollapsed && 'is-collapsed ' + styles.expandIsCollapsed)} iconName="ChevronDown" />
           </button>

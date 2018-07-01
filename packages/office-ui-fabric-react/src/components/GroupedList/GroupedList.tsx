@@ -68,7 +68,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
   }
 
   public render(): JSX.Element {
-    const { className, usePageCache, onShouldVirtualize } = this.props;
+    const { className, usePageCache, onShouldVirtualize, getGroupHeight } = this.props;
     const { groups } = this.state;
 
     return (
@@ -86,6 +86,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
             items={groups}
             onRenderCell={this._renderGroup}
             getItemCountForPage={this._returnOne}
+            getPageHeight={getGroupHeight && this._getPageHeight(getGroupHeight)}
             getPageSpecification={this._getPageSpecification}
             usePageCache={usePageCache}
             onShouldVirtualize={onShouldVirtualize}
@@ -163,6 +164,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
         group={group}
         groupIndex={groupIndex}
         groupNestingDepth={groupNestingDepth}
+        groupProps={groupProps}
         headerProps={headerProps}
         listProps={listProps}
         items={items}
@@ -182,6 +184,13 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
   private _returnOne(): number {
     return 1;
   }
+
+  private _getPageHeight = (getGroupHeight: (group?: IGroup, groupIndex?: number) => number) => (itemIndex: number) => {
+    const { groups } = this.state;
+
+    const pageGroup = groups && groups[itemIndex];
+    return getGroupHeight(pageGroup, itemIndex);
+  };
 
   private _getGroupKey(group: IGroup, index: number): string {
     return 'group-' + (group && group.key ? group.key : String(index));

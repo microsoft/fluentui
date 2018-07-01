@@ -84,34 +84,27 @@ export interface IPivotProps extends React.Props<PivotBase> {
   getTabId?: (itemKey: string, index: number) => string;
 }
 
-export interface IPivotStyleProps {
-  /**
-   * Theme provided by High-Order Component.
-   */
-  theme: ITheme;
-
-  /**
-   * Accept custom classNames
-   */
-  className?: string;
-  linkIsSelected?: boolean;
-  linkIsDisabled?: boolean;
-  linkIsOverflow?: boolean;
-  rootIsLarge?: boolean;
-  rootIsTabs?: boolean;
-}
+export type IPivotStyleProps = Required<Pick<IPivotProps, 'theme'>> &
+  Pick<IPivotProps, 'className'> & {
+    /** Indicates whether Pivot has large format. */
+    rootIsLarge?: boolean;
+    /** Indicates whether Pivot has tabbed format. */
+    rootIsTabs?: boolean;
+    /** Indicates whether Pivot link is selected. */
+    linkIsSelected?: boolean;
+  };
 
 export interface IPivotStyles {
   /**
    * Style for the root element.
    */
   root: IStyle;
-  links: IStyle;
   link: IStyle;
+  linkContent: IStyle;
+  linkIsSelected: IStyle;
   text: IStyle;
   count: IStyle;
   icon: IStyle;
-  ellipsis: IStyle;
 }
 
 export enum PivotLinkFormat {

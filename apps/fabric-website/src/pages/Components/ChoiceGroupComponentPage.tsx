@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ChoiceGroupPage } from '@uifabric/demo/lib/components/pages/ChoiceGroupPage';
+import { ChoiceGroupPage } from '@uifabric/fabric-website-resources/lib/components/pages/ChoiceGroupPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 const pageStyles: any = require('../PageStyles.module.scss');

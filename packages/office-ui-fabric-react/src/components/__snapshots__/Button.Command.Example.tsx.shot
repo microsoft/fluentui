@@ -93,6 +93,10 @@ exports[`Component Examples renders Button.Command.Example.tsx correctly 1`] = `
       disabled={undefined}
       onClick={[Function]}
       onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
       type="button"
     >
       <div
@@ -265,6 +269,12 @@ exports[`Component Examples renders Button.Command.Example.tsx correctly 1`] = `
       data-automation-id="test2"
       data-is-focusable={true}
       disabled={undefined}
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
       type="button"
     >
       <div

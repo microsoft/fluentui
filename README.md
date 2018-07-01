@@ -5,27 +5,17 @@
 [![npm version](https://badge.fury.io/js/office-ui-fabric-react.svg)](https://badge.fury.io/js/office-ui-fabric-react)
 [![Build Status](https://travis-ci.org/OfficeDev/office-ui-fabric-react.svg?branch=master)](https://travis-ci.org/OfficeDev/office-ui-fabric-react)
 
-Fabric React is a responsive, mobile-first collection of robust components designed to make it quick and simple for you to create web experiences using the Office Design Language.
+Fabric React is a collection of robust React-based components designed to make it simple for you to create consistent web experiences using the Office Design Language.
 
-## Created with Fabric
+## Who uses UI Fabric?
 
-[<img alt="Yammer Logo" align="left" height="40" src='./ghdocs/img/yammer.png'/>](https://www.yammer.com)
-[<img alt="Outlook Logo" align="left" height="50" src='./ghdocs/img/outlook-350-150.png'/>](https://www.outlook.com)
-[<img alt="Visual Studio Logo" height="50" src='./ghdocs/img/VS_rgb_Purple.png'/>](https://www.visualstudio.com/team-services/")
+![image](https://user-images.githubusercontent.com/1110944/41632827-ac599f98-73f0-11e8-9d27-2bfe8ee7adf4.png)
 
-<details>
-    <summary>and many more...</summary>
+\+ 45 additional Microsoft sites and products
 
-- [MileIQ](https://www.mileiq.com/)
-- [PowerApps Portal](https://web.powerapps.com/home)
-- [OneDrive](https://onedrive.com)
-- [SharePoint](https://onedrive.com)
-</details>
+## For more information...
 
-
-## [Wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki)
-
-The bulk of the documentation is available on the [wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki).
+Please see the [wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki).
 
 ## Contents
 
@@ -61,17 +51,15 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 
-ReactDOM.render(
-  <PrimaryButton>
-    I am a button.
-  </PrimaryButton>,
-  document.body.firstChild
-);
+ReactDOM.render(<PrimaryButton>I am a button.</PrimaryButton>, document.body.firstChild);
 ```
 
 ## Browser support
 
-Fabric React supports many commonly used browsers. See the [browser support doc](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Browser-Support) for more information.
+Fabric React supports all evergreen browsers, with IE 11 as the min-bar version of Internet Explorer. See the [browser support doc](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Browser-Support) for more information.
+
+## Right-to-left support
+All components can render in LTR or RTL, depending on the `dir` attribute set on the html page. (`dir="rtl"` will flip the direction of everything.
 
 ## Server-side rendering
 
@@ -98,13 +86,14 @@ console.log(
   `
   <html>
   <head>
-    <style>${ _allStyles}</style>
+    <style>${_allStyles}</style>
   </head>
   <body>
-    ${ body}
+    ${body}
   </body>
   </html>
-  `);
+  `
+);
 ```
 
 Note: we are evaluating a more robust theming and style loading approach, which will allow a much more flexible server rendering approach, so this syntax may be simplified in the future.
@@ -119,7 +108,7 @@ initializeIcons('dist/');
 
 // Configure load-themed-styles to avoid registering styles.
 let themeLoader = require('@microsoft/load-themed-styles');
-themeLoader.configureLoadStyles((styles) => {
+themeLoader.configureLoadStyles(styles => {
   // noop
 });
 
@@ -157,15 +146,21 @@ Before you get started, **make sure you have read the [Git branch setup instruci
 
 To view the documentation including examples, contracts, component status, and to add functionality or fix issues locally, you can:
 
-1. `git clone https://github.com/OfficeDev/office-ui-fabric-react.git`
-2. `npm install`
-3. `npm start`
+1.  `git clone https://github.com/OfficeDev/office-ui-fabric-react.git`
+2.  `npm install` _For Windows developers, please read the next section before running this_
+3.  `npm start`
 
 This will start a demo page from the office-ui-fabric-react package folder, which will open a web browser with the example page. You can make changes to the code which will automatically build and refresh the page using live-reload.
 
 To build and run tests for all packages in the repo, you can run `npm run build` from the root.
 
 To build individual packages within the `packages/*/` folders, you can use `npm run build` in each individually. Note that because the packages are symlinked together, you must manage building dependencies in the right order, or use the `rush` tool to build to the specific package you want. (See advanced tips below.)
+
+## Note for Windows Developers on npm 6.x
+
+Due to a known bug in #5174, Windows developers who are using npm 6.x should downgrade to use `npm` v5.6.0 for now:
+
+`npm i -g npm@5.6.0`
 
 ## Testing
 
@@ -197,11 +192,10 @@ Usage of the fonts and icons referenced in Office UI Fabric is subject to the te
 
 We use [GitHub Releases](https://github.com/blog/1547-release-your-software) to manage our releases, including the changelog between every release. View a complete list of additions, fixes, and changes on the [releases](https://github.com/OfficeDev/office-ui-fabric-react/releases) page.
 
-- - -
+---
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
 ## Issue management and `Stale-bot`
 
 If you are getting `stale[bot]` messages and/or want to understand how we manage issues, please search for 'issue Triage' and/or 'stale[bot]' in the [FAQ](https://github.com/OfficeDev/office-ui-fabric-react/wiki/FAQ).
-

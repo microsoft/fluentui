@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ModalPage } from '@uifabric/demo/lib/components/pages/ModalPage';
+import { ModalPage } from '@uifabric/fabric-website-resources/lib/components/pages/ModalPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 const pageStyles: any = require('../PageStyles.module.scss');

@@ -189,6 +189,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               &:focus {
                 color: #0078d4;
               }
+          disabled={undefined}
           onClick={[Function]}
         >
           Jack Howden
@@ -470,6 +471,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               &:focus {
                 color: #0078d4;
               }
+          disabled={undefined}
           onClick={[Function]}
         >
           Javiera Márquez
@@ -528,6 +530,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               &:focus {
                 color: #0078d4;
               }
+          disabled={undefined}
           onClick={[Function]}
         >
           Amelia Povalіy
@@ -586,6 +589,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               &:focus {
                 color: #0078d4;
               }
+          disabled={undefined}
           onClick={[Function]}
         >
           SpreadsheetTitle.xlsx
@@ -917,6 +921,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               &:focus {
                 color: #0078d4;
               }
+          disabled={undefined}
           onClick={[Function]}
         >
           Robert Larsson
@@ -975,6 +980,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               &:focus {
                 color: #0078d4;
               }
+          disabled={undefined}
           onClick={[Function]}
         >
           2 others
@@ -1355,6 +1361,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               &:focus {
                 color: #0078d4;
               }
+          disabled={undefined}
           onClick={[Function]}
         >
           Jin Cheng
@@ -1413,6 +1420,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               &:focus {
                 color: #0078d4;
               }
+          disabled={undefined}
           onClick={[Function]}
         >
           5 others
