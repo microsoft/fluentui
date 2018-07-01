@@ -31,7 +31,7 @@ const facepilePersonas: IFacepilePersona[] = [
   }
 ];
 
-describe('Facepile', () => {
+xdescribe('Facepile', () => {
   beforeEach(() => {
     setRTL(false);
   });
