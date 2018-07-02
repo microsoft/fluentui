@@ -97,6 +97,7 @@ describe('Component Examples', () => {
   const glob = require('glob');
   const path = require('path');
   const realDate = Date;
+  const realToLocaleString = global.Date.prototype.toLocaleString;
   const realToLocaleTimeString = global.Date.prototype.toLocaleTimeString;
   const realToLocaleDateString = global.Date.prototype.toLocaleDateString;
   const constantDate = new Date(Date.UTC(2017, 13, 6, 4, 41, 20));
@@ -104,12 +105,13 @@ describe('Component Examples', () => {
 
   beforeAll(() => {
     // Ensure test output is consistent across machine locale and time zone config.
-    global.Date.prototype.toLocaleTimeString = () => {
+    const mockToLocaleString = () => {
       return constantDate.toUTCString();
     };
-    global.Date.prototype.toLocaleDateString = () => {
-      return constantDate.toUTCString();
-    };
+
+    global.Date.prototype.toLocaleString = mockToLocaleString;
+    global.Date.prototype.toLocaleTimeString = mockToLocaleString;
+    global.Date.prototype.toLocaleDateString = mockToLocaleString;
 
     // Prevent random and time elements from failing repeated tests.
     global.Date = class {
@@ -133,6 +135,7 @@ describe('Component Examples', () => {
   afterAll(() => {
     jest.restoreAllMocks();
     global.Date = realDate;
+    global.Date.prototype.toLocaleString = realToLocaleString;
     global.Date.prototype.toLocaleTimeString = realToLocaleTimeString;
     global.Date.prototype.toLocaleDateString = realToLocaleDateString;
 
