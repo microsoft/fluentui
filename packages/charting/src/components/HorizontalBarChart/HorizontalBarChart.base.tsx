@@ -34,18 +34,20 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   }
   public render(): JSX.Element {
     const { data, width, height, barHeight, yAxisTickCount } = this.props;
-    const isNumeric = typeof data[0].x === 'number';
-    const xAxis = this._createNumericXAxis(isNumeric, data, width);
-    const yAxis = isNumeric ? this._createYAxis(data, height, yAxisTickCount) : this._createStringYAxis(data, height);
+    const isNumeric = typeof data![0].x === 'number';
+    const xAxis = this._createNumericXAxis(isNumeric, data!, width!);
+    const yAxis = isNumeric
+      ? this._createYAxis(data!, height!, yAxisTickCount!)
+      : this._createStringYAxis(data!, height!);
     const bars = isNumeric
-      ? this._createNumericBars(data, height, width, barHeight)
-      : this._createStringBars(data, height, width, barHeight);
+      ? this._createNumericBars(data!, height!, width!, barHeight!)
+      : this._createStringBars(data!, height!, width!, barHeight!);
 
     const { theme, className, styles } = this.props;
     this._classNames = getClassNames(styles!, {
       theme: theme!,
-      width,
-      height,
+      width: width!,
+      height: height!,
       className
     });
 
