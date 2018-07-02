@@ -1,6 +1,13 @@
-# Change Log - @uifabric/experiments
+# Change Log - @uifabric/charting
 
-This log was last generated on Fri, 11 May 2018 04:21:29 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Jul 2018 10:21:36 GMT and should not be manually modified.
+
+## 0.0.3
+Mon, 02 Jul 2018 10:21:36 GMT
+
+### Patches
+
+- Initial publish.
 
 ## 5.38.2
 Fri, 11 May 2018 04:21:29 GMT

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 29 Jun 2018 10:24:05 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Jul 2018 10:21:36 GMT and should not be manually modified.
+
+## 6.12.2
+Mon, 02 Jul 2018 10:21:36 GMT
+
+### Patches
+
+- css changes for action bar
 
 ## 6.12.1
 Fri, 29 Jun 2018 10:24:05 GMT

@@ -145,6 +145,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               {
                 background-color: transparent;
                 background: none;
+                border-bottom: 1px solid transparent;
                 border: none;
                 color: #0078d4;
                 cursor: pointer;
@@ -179,6 +180,15 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 right: 1px;
                 top: 1px;
                 z-index: 1;
+              }
+              @media screen and (-ms-high-contrast: white-on-black){& {
+                color: #FFFF00;
+              }
+              @media screen and (-ms-high-contrast: black-on-white){& {
+                color: #00009F;
+              }
+              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -484,6 +494,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               {
                 background-color: transparent;
                 background: none;
+                border-bottom: 1px solid transparent;
                 border: none;
                 color: #0078d4;
                 cursor: pointer;
@@ -518,6 +529,15 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 right: 1px;
                 top: 1px;
                 z-index: 1;
+              }
+              @media screen and (-ms-high-contrast: white-on-black){& {
+                color: #FFFF00;
+              }
+              @media screen and (-ms-high-contrast: black-on-white){& {
+                color: #00009F;
+              }
+              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -543,6 +563,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               {
                 background-color: transparent;
                 background: none;
+                border-bottom: 1px solid transparent;
                 border: none;
                 color: #0078d4;
                 cursor: pointer;
@@ -577,6 +598,15 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 right: 1px;
                 top: 1px;
                 z-index: 1;
+              }
+              @media screen and (-ms-high-contrast: white-on-black){& {
+                color: #FFFF00;
+              }
+              @media screen and (-ms-high-contrast: black-on-white){& {
+                color: #00009F;
+              }
+              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -602,6 +632,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               {
                 background-color: transparent;
                 background: none;
+                border-bottom: 1px solid transparent;
                 border: none;
                 color: #0078d4;
                 cursor: pointer;
@@ -636,6 +667,15 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 right: 1px;
                 top: 1px;
                 z-index: 1;
+              }
+              @media screen and (-ms-high-contrast: white-on-black){& {
+                color: #FFFF00;
+              }
+              @media screen and (-ms-high-contrast: black-on-white){& {
+                color: #00009F;
+              }
+              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -991,6 +1031,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               {
                 background-color: transparent;
                 background: none;
+                border-bottom: 1px solid transparent;
                 border: none;
                 color: #0078d4;
                 cursor: pointer;
@@ -1025,6 +1066,15 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 right: 1px;
                 top: 1px;
                 z-index: 1;
+              }
+              @media screen and (-ms-high-contrast: white-on-black){& {
+                color: #FFFF00;
+              }
+              @media screen and (-ms-high-contrast: black-on-white){& {
+                color: #00009F;
+              }
+              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -1050,6 +1100,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               {
                 background-color: transparent;
                 background: none;
+                border-bottom: 1px solid transparent;
                 border: none;
                 color: #0078d4;
                 cursor: pointer;
@@ -1084,6 +1135,15 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 right: 1px;
                 top: 1px;
                 z-index: 1;
+              }
+              @media screen and (-ms-high-contrast: white-on-black){& {
+                color: #FFFF00;
+              }
+              @media screen and (-ms-high-contrast: black-on-white){& {
+                color: #00009F;
+              }
+              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -1545,6 +1605,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               {
                 background-color: transparent;
                 background: none;
+                border-bottom: 1px solid transparent;
                 border: none;
                 color: #0078d4;
                 cursor: pointer;
@@ -1579,6 +1640,15 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 right: 1px;
                 top: 1px;
                 z-index: 1;
+              }
+              @media screen and (-ms-high-contrast: white-on-black){& {
+                color: #FFFF00;
+              }
+              @media screen and (-ms-high-contrast: black-on-white){& {
+                color: #00009F;
+              }
+              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -1604,6 +1674,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               {
                 background-color: transparent;
                 background: none;
+                border-bottom: 1px solid transparent;
                 border: none;
                 color: #0078d4;
                 cursor: pointer;
@@ -1638,6 +1709,15 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 right: 1px;
                 top: 1px;
                 z-index: 1;
+              }
+              @media screen and (-ms-high-contrast: white-on-black){& {
+                color: #FFFF00;
+              }
+              @media screen and (-ms-high-contrast: black-on-white){& {
+                color: #00009F;
+              }
+              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
