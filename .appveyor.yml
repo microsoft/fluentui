@@ -7,7 +7,16 @@ install:
   - ps: Install-Product node $env:nodejs_version
   # install modules
   - npm install
+  
+# Configure project artifacts  
+artifacts:
+  - path: test.zip
+    name: SizeAuditor
 
+  - path: logs
+    name: test logs
+    type: zip
+ 
 # Post-install test scripts.
 test_script:
   # Output useful info for debugging.
