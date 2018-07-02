@@ -1,6 +1,22 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 28 Jun 2018 10:23:21 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Jul 2018 10:21:36 GMT and should not be manually modified.
+
+## 6.24.0
+Mon, 02 Jul 2018 10:21:36 GMT
+
+### Minor changes
+
+- DatePicker MergeStyles step 2 - Converts scss to js styles
+- Convert Slider to merge-styles
+
+## 6.23.0
+Fri, 29 Jun 2018 10:24:05 GMT
+
+### Minor changes
+
+- Pivot: Convert to JS styling.
+- ShimmeredDetailsList: adds a new wrapper for DetailsList when needed to be used with Shimmer animation.
 
 ## 6.22.0
 Thu, 28 Jun 2018 10:23:21 GMT

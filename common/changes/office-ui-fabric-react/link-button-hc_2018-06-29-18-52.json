@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Pivot: Convert to JS styling.",
-      "type": "minor"
+      "comment": "Link: HC color for link rendered as a button.",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "jagore@microsoft.com"
+  "email": "lynam.emily@gmail.com"
 }
