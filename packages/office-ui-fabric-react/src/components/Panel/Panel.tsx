@@ -310,8 +310,9 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
   }
 
   private _onExternalDismiss(ev: any): void {
-    if (this.state.isOpen) {
-      if (!this._panel.current.contains(ev.target)) {
+    const panel = this._panel.current;
+    if (this.state.isOpen && panel) {
+      if (!panel.contains(ev.target)) {
         this.dismiss();
       }
     }
