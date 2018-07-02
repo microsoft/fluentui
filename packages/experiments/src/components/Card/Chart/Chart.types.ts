@@ -1,4 +1,4 @@
-import { IDataPoint } from '../../../../../charting/src/components/VerticalBarChart';
+import { IDataPoint } from '@uifabric/charting/lib/VerticalBarChart';
 
 export enum ChartType {
   VerticalBarChart,
