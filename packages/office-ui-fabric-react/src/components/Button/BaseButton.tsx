@@ -615,19 +615,19 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   };
 
   private _onMouseUp = (ev: React.MouseEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>) => {
-    if (!this.props.disabled && this.props.onMouseUp !== undefined && this.props.menuProps) {
+    if (!this.props.disabled && this.props.onMouseUp !== undefined) {
       this.props.onMouseUp(ev); // not cancelling event because it's not disabled
     }
   };
 
   private _onMouseDown = (ev: React.MouseEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>) => {
-    if (!this.props.disabled && this.props.onMouseDown !== undefined && this.props.menuProps) {
+    if (!this.props.disabled && this.props.onMouseDown !== undefined) {
       this.props.onMouseDown(ev); // not cancelling event because it's not disabled
     }
   };
 
   private _onClick = (ev: React.MouseEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>) => {
-    if (!this.props.disabled && this.props.menuProps && this.props.onMenuClick !== undefined) {
+    if (!this.props.disabled && this.props.menuProps) {
       this._onMenuClick(ev);
     } else if (!this.props.disabled && this.props.onClick !== undefined) {
       this.props.onClick(ev); // not cancelling event because it's not disabled
