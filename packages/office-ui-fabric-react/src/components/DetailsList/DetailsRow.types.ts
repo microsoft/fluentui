@@ -51,8 +51,25 @@ export interface IDetailsRowFieldsProps {
   shimmer?: boolean;
 }
 
-export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>>;
+export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & {
+  isSelected?: boolean;
+  canSelect?: boolean;
+};
 
 export interface IDetailsRowStyles {
+  anySelected: IStyle;
   root: IStyle;
+  cell: IStyle;
+  checkCell: IStyle;
+  check: IStyle;
+  isRowHeader: IStyle;
+  isPadded: IStyle;
+  isMultiline: IStyle;
+  fields: IStyle;
+  cellMeasurer: IStyle;
+  checkCover: IStyle;
+  shimmer: IStyle;
+  shimmerIconPlaceholder: IStyle;
+  shimmerLeftBorder: IStyle;
+  shimmerBottomBorder: IStyle;
 }
