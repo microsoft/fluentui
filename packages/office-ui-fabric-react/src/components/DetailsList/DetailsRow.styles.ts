@@ -1,5 +1,6 @@
-import { IDetailsRowStyleProps, IDetailsRowStyles, IDetailsRowProps } from './DetailsRow.types';
-import { getGlobalClassNames } from '../../Styling';
+import { IDetailsRowStyleProps, IDetailsRowStyles } from './DetailsRow.types';
+import { getGlobalClassNames, getFocusStyle, HighContrastSelector, FontSizes } from '../../Styling';
+import { getRTL } from '../../Utilities';
 
 const GlobalClassNames = {
   root: 'ms-DetailsRow',
@@ -32,8 +33,6 @@ values = {
   }
 };
 
-export { IDetailsRowProps };
-
 export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
   const { theme, isSelected, canSelect } = props;
   const {
@@ -45,7 +44,8 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
     neutralLight,
     neutralDark,
     neutralQuaternaryAlt,
-    black
+    black,
+    themePrimary
   } = theme.palette;
   const { compactRowHeight, compactRowVerticalPadding, rowHorizontalPadding } = values;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
@@ -75,12 +75,26 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
     focusBackgroundColor: neutralQuaternaryAlt,
     focusMetaTextColor: neutralDark
   };
+  const isRTL = getRTL();
 
   return {
     root: [
       classNames.root,
+      isRTL
+        ? {
+            selectors: {
+              "[dir='ltr']": { textAlign: 'right' },
+              "[dir='rtl']": { textAlign: 'left' }
+            }
+          }
+        : {
+            selectors: {
+              "[dir='ltr']": { textAlign: 'left' },
+              "[dir='rtl']": { textAlign: 'right' }
+            }
+          },
+      getFocusStyle(theme, 0, undefined, undefined, neutralSecondary),
       {
-        // @include focus-border(0, $ms-color-neutralSecondary);
         borderBottom: `1px solid ${neutralLighter}`,
         background: colors.defaultBackgroundColor,
         color: colors.defaultMetaTextColor,
@@ -90,85 +104,90 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
         whiteSpace: 'nowrap',
         padding: 0,
         boxSizing: 'border-box',
-        // @include ms-text-align(left);
         verticalAlign: 'top',
-
         ...(isSelected
-          ? {
-              // @include focus-border(0, $ms-color-themePrimary);
-              color: colors.selectedMetaTextColor,
-              background: colors.selectedBackgroundColor,
-              borderBottom: `1px solid ${white}`,
-              selectors: {
-                '&:before': {
-                  position: 'absolute',
-                  display: 'block',
-                  top: -1,
-                  height: 1,
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  content: '',
-                  borderTop: `1px solid ${white}`
-                },
+          ? [
+              getFocusStyle(theme, 0, undefined, undefined, themePrimary),
+              {
+                color: colors.selectedMetaTextColor,
+                background: colors.selectedBackgroundColor,
+                borderBottom: `1px solid ${white}`,
+                selectors: {
+                  '&:before': {
+                    position: 'absolute',
+                    display: 'block',
+                    top: -1,
+                    height: 1,
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    content: '',
+                    borderTop: `1px solid ${white}`
+                  },
 
-                // Selected State hover
-                '&:hover': {
-                  background: colors.selectedHoverBackgroundColor,
-                  selectors: {
-                    // Selected State hover meta cell
-                    $cell: {
-                      color: colors.selectedHoverMetaTextColor,
-                      selectors: {
-                        /*@include high-contrast {
-                          color: HighlightText;
-                          > a {
-                            color: HighlightText;
+                  // Selected State hover
+                  '&:hover': {
+                    background: colors.selectedHoverBackgroundColor,
+                    selectors: {
+                      // Selected State hover meta cell
+                      $cell: {
+                        color: colors.selectedHoverMetaTextColor,
+                        selectors: {
+                          [HighContrastSelector]: {
+                            color: 'HighlightText',
+                            selectors: {
+                              '> a': {
+                                color: 'HighlightText'
+                              }
+                            }
+                          },
+
+                          // Selected State hover Header cell
+                          '&.$isRowHeader': {
+                            color: colors.selectedHoverTextColor,
+                            selectors: {
+                              [HighContrastSelector]: {
+                                color: 'HighlightText'
+                              }
+                            }
                           }
-                        }*/
-
-                        // Selected State hover Header cell
-                        '&.$isRowHeader': {
-                          color: colors.selectedHoverTextColor
-
-                          /*@include high-contrast {
-                            color: HighlightText;
-                          }*/
                         }
                       }
                     }
-                  }
-                },
+                  },
 
-                // Focus state
-                '&:focus': {
-                  background: colors.focusBackgroundColor,
+                  // Focus state
+                  '&:focus': {
+                    background: colors.focusBackgroundColor,
 
-                  selectors: {
-                    // Selected State hover meta cell
-                    $cell: {
-                      color: colors.focusMetaTextColor,
+                    selectors: {
+                      // Selected State hover meta cell
+                      $cell: {
+                        color: colors.focusMetaTextColor,
+                        [HighContrastSelector]: {
+                          color: 'HighlightText',
+                          selectors: {
+                            '> a': {
+                              color: 'HighlightText'
+                            }
+                          }
+                        },
 
-                      /*                      @include high-contrast {
-                        color: HighlightText;
-                        > a {
-                          color: HighlightText;
+                        // Row header cell
+                        '&.$isRowHeader': {
+                          color: colors.focusHeaderTextColor,
+                          selectors: {
+                            [HighContrastSelector]: {
+                              color: 'HighlightText'
+                            }
+                          }
                         }
-                      }*/
-
-                      // Row header cell
-                      '&.$isRowHeader': {
-                        color: colors.focusHeaderTextColor
-
-                        /*@include high-contrast {
-                          color: HighlightText;
-                        }*/
                       }
                     }
                   }
                 }
               }
-            }
+            ]
           : undefined),
 
         ...(canSelect
@@ -229,9 +248,8 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
       }
     ],
     cell: [
+      getFocusStyle(theme),
       {
-        // @include focus-border();
-
         display: 'inline-block',
         position: 'relative',
         boxSizing: 'border-box',
@@ -259,13 +277,10 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
 
           '&.$isRowHeader': {
             color: colors.defaultHeaderTextColor,
-            // TODO: font size
-            fontSize: '$ms-font-size-m;'
+            fontSize: FontSizes.medium
           },
 
-          [classNames.isFocusable!]: {
-            // @include focus-border(0, $ms-color-neutralSecondary);
-          },
+          [classNames.isFocusable!]: getFocusStyle(theme, 0, undefined, undefined, neutralSecondary),
 
           '&.$shimmer': {
             padding: '0 0',
@@ -290,24 +305,24 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
       isSelected && {
         selectors: {
           '&.$isRowHeader': {
-            color: colors.selectedTextColor
+            color: colors.selectedTextColor,
+            selectors: {
+              [HighContrastSelector]: {
+                color: 'HighlightText'
+              }
+            }
+          },
 
-            /*
-            @include high-contrast {
-              color: HighlightText;
-            }
-            */
-          }
-          /*
-          @include high-contrast {
-            background: Highlight;
-            color: HighlightText;
-            -ms-high-contrast-adjust: none;
-            a {
-              color: HighlightText;
+          [HighContrastSelector]: {
+            background: 'Highlight',
+            color: 'HighlightText',
+            '-ms-high-contrast-adjust': 'none',
+            selectors: {
+              a: {
+                color: 'HighlightText'
+              }
             }
           }
-          */
         }
       }
     ],
