@@ -1,6 +1,48 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 27 Jun 2018 17:22:20 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Jul 2018 20:41:48 GMT and should not be manually modified.
+
+## 6.25.0
+Mon, 02 Jul 2018 20:41:48 GMT
+
+### Minor changes
+
+- Convert TeachingBubble to use JS styling.
+
+### Patches
+
+- Checkbox: Updated hc hover states.
+- Link: HC color for link rendered as a button.
+
+## 6.24.0
+Mon, 02 Jul 2018 10:21:36 GMT
+
+### Minor changes
+
+- DatePicker MergeStyles step 2 - Converts scss to js styles
+- Convert Slider to merge-styles
+
+## 6.23.0
+Fri, 29 Jun 2018 10:24:05 GMT
+
+### Minor changes
+
+- Pivot: Convert to JS styling.
+- ShimmeredDetailsList: adds a new wrapper for DetailsList when needed to be used with Shimmer animation.
+
+## 6.22.0
+Thu, 28 Jun 2018 10:23:21 GMT
+
+### Minor changes
+
+- Added arguments to styled function to allow the Customizer component to affect Nav
+
+## 6.21.1
+Wed, 27 Jun 2018 23:59:19 GMT
+
+### Patches
+
+- TextField: render undefined as empty string in renderInput
 
 ## 6.21.0
 Wed, 27 Jun 2018 17:22:20 GMT
