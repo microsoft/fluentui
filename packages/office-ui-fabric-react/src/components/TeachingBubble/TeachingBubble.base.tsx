@@ -1,17 +1,18 @@
 import * as React from 'react';
-import { BaseComponent, css } from '../../Utilities';
+import { BaseComponent, classNamesFunction } from '../../Utilities';
 import { TeachingBubbleContent } from './TeachingBubbleContent';
-import { ITeachingBubbleProps } from './TeachingBubble.types';
+import { ITeachingBubbleProps, ITeachingBubbleStyleProps, ITeachingBubbleStyles } from './TeachingBubble.types';
+import { calloutStyles } from './TeachingBubble.styles';
 import { Callout, ICalloutProps } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import * as stylesImport from './TeachingBubble.scss';
-const styles: any = stylesImport;
+
+const getClassNames = classNamesFunction<ITeachingBubbleStyleProps, ITeachingBubbleStyles>();
 
 export interface ITeachingBubbleState {
   isTeachingBubbleVisible?: boolean;
 }
 
-export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachingBubbleState> {
+export class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITeachingBubbleState> {
   public static defaultProps = {
     /**
      * Default calloutProps is deprecated in favor of private _defaultCalloutProps.
@@ -45,20 +46,23 @@ export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachin
   }
 
   public render(): JSX.Element {
-    const { calloutProps: setCalloutProps, targetElement, onDismiss, isWide } = this.props;
+    const { calloutProps: setCalloutProps, targetElement, onDismiss, isWide, styles, theme } = this.props;
     const calloutProps = { ...this._defaultCalloutProps, ...setCalloutProps };
+    const stylesProps: ITeachingBubbleStyleProps = {
+      theme: theme!,
+      isWide,
+      calloutClassName: calloutProps ? calloutProps.className : undefined
+    };
+
+    const classNames = getClassNames(styles, stylesProps);
 
     return (
       <Callout
         target={targetElement}
         onDismiss={onDismiss}
         {...calloutProps}
-        className={css(
-          'ms-TeachingBubble',
-          styles.root,
-          isWide ? styles.wideCallout : null,
-          calloutProps ? calloutProps.className : undefined
-        )}
+        className={classNames.root}
+        styles={calloutStyles(stylesProps)}
       >
         <TeachingBubbleContent {...this.props} />
       </Callout>
