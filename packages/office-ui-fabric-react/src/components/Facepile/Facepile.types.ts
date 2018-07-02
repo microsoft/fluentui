@@ -164,9 +164,8 @@ export interface IFacepileStyles {
   itemContainer: IStyle;
   itemButton: IStyle;
   members: IStyle;
+  member: IStyle;
   overflowButton: IStyle;
   overflowInitialsIcon: IStyle;
   screenReaderOnly: IStyle;
-
-  // Insert Facepile classNames below
 }
