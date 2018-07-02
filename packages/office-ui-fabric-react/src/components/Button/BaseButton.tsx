@@ -203,8 +203,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       return this._onRenderSplitButtonContent(tag, buttonProps);
     } else if (this.props.menuProps) {
       assign(buttonProps, {
-        onKeyDown: this._onMenuKeyDown,
-        onClick: this._onMenuClick,
         'aria-expanded': this._isExpanded,
         'aria-owns': this.state.menuProps ? this._labelId + '-menu' : null,
         'aria-haspopup': true
@@ -597,37 +595,41 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     if (this.props.disabled && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space)) {
       ev.preventDefault();
       ev.stopPropagation();
+    } else if (!this.props.disabled && this.props.menuProps) {
+      this._onMenuKeyDown(ev);
     } else if (!this.props.disabled && this.props.onKeyDown !== undefined) {
       this.props.onKeyDown(ev); // not cancelling event because it's not disabled
     }
   };
 
   private _onKeyUp = (ev: React.KeyboardEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>) => {
-    if (!this.props.disabled && this.props.onKeyUp !== undefined) {
+    if (!this.props.disabled && this.props.onKeyUp !== undefined && this.props.menuProps) {
       this.props.onKeyUp(ev); // not cancelling event because it's not disabled
     }
   };
 
   private _onKeyPress = (ev: React.KeyboardEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>) => {
-    if (!this.props.disabled && this.props.onKeyPress !== undefined) {
+    if (!this.props.disabled && this.props.onKeyPress !== undefined && this.props.menuProps) {
       this.props.onKeyPress(ev); // not cancelling event because it's not disabled
     }
   };
 
   private _onMouseUp = (ev: React.MouseEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>) => {
-    if (!this.props.disabled && this.props.onMouseUp !== undefined) {
+    if (!this.props.disabled && this.props.onMouseUp !== undefined && this.props.menuProps) {
       this.props.onMouseUp(ev); // not cancelling event because it's not disabled
     }
   };
 
   private _onMouseDown = (ev: React.MouseEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>) => {
-    if (!this.props.disabled && this.props.onMouseDown !== undefined) {
+    if (!this.props.disabled && this.props.onMouseDown !== undefined && this.props.menuProps) {
       this.props.onMouseDown(ev); // not cancelling event because it's not disabled
     }
   };
 
   private _onClick = (ev: React.MouseEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>) => {
-    if (!this.props.disabled && this.props.onClick !== undefined) {
+    if (!this.props.disabled && this.props.menuProps && this.props.onMenuClick !== undefined) {
+      this._onMenuClick(ev);
+    } else if (!this.props.disabled && this.props.onClick !== undefined) {
       this.props.onClick(ev); // not cancelling event because it's not disabled
     }
   };
@@ -718,7 +720,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     return false;
   }
 
-  private _onMenuClick = (ev: React.MouseEvent<HTMLDivElement | HTMLAnchorElement>) => {
+  private _onMenuClick = (ev: React.MouseEvent<HTMLDivElement | HTMLButtonElement | HTMLAnchorElement>) => {
     const { onMenuClick } = this.props;
     if (onMenuClick) {
       onMenuClick(ev, this);
