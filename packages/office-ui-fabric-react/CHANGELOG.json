@@ -2,6 +2,44 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.25.0",
+      "tag": "office-ui-fabric-react_v6.25.0",
+      "date": "Mon, 02 Jul 2018 20:41:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "3ed24b2bfc941f2d1d0a8804504ba86c9230f56c",
+            "comment": "Checkbox: Updated hc hover states."
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "8448853edafc8f7276f7471b6aa1c0852b5c7d25",
+            "comment": "Link: HC color for link rendered as a button."
+          }
+        ],
+        "minor": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "ad5b9fa1a9a85286980961a51025d7df483184b0",
+            "comment": "Convert TeachingBubble to use JS styling."
+          }
+        ],
+        "none": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "b6dea614e4c2a08895e77ec386b0cf1fdbac1038",
+            "comment": "Fix Jest Date output to be consistent regardless of machine locale and time zone config."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.4.0 <7.0.0` to `>=6.5.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.24.0",
       "tag": "office-ui-fabric-react_v6.24.0",
       "date": "Mon, 02 Jul 2018 10:21:36 GMT",
