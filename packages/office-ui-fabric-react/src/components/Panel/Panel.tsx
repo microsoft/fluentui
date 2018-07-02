@@ -28,6 +28,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     type: PanelType.smallFixedFar
   };
 
+  private _panel = createRef<HTMLDivElement>();
   private _content = createRef<HTMLDivElement>();
 
   constructor(props: IPanelProps) {
@@ -56,6 +57,14 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
   }
 
   public componentWillReceiveProps(newProps: IPanelProps): void {
+    if (newProps.isExternalDismiss) {
+      if (newProps.isOpen) {
+        this._events.on(document, 'click', this._onExternalDismiss);
+      } else {
+        this._events.off(document, 'click', this._onExternalDismiss);
+      }
+    }
+
     if (newProps.isOpen !== this.state.isOpen) {
       if (newProps.isOpen) {
         this.open();
@@ -126,6 +135,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
         >
           <div
             {...nativeProps}
+            ref={this._panel}
             className={css(
               'ms-Panel',
               styles.root,
@@ -296,6 +306,14 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
       this.setState({
         isFooterSticky: height < innerHeight ? true : false
       });
+    }
+  }
+
+  private _onExternalDismiss(ev: any): void {
+    if (this.state.isOpen) {
+      if (!this._panel.current.contains(ev.target)) {
+        this.dismiss();
+      }
     }
   }
 

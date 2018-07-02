@@ -41,6 +41,12 @@ export interface IPanelProps extends React.Props<Panel> {
   isLightDismiss?: boolean;
 
   /**
+   * Whether the panel can be dismissed with an external click
+   * @default false
+   */
+  isExternalDismiss?: boolean;
+
+  /**
    * Whether the panel is hidden on dismiss, instead of destroyed in the DOM.
    * @default false
    */
