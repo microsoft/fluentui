@@ -114,13 +114,12 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
     >
       Select the first day of the week
     </label>
-    <div
-      aria-activedescendant="Dropdown2-option"
-      aria-describedby="Dropdown2-option"
+    <button
       aria-disabled={undefined}
       aria-expanded="false"
+      aria-haspopup="listbox"
       aria-label={undefined}
-      aria-live="assertive"
+      aria-labelledby="Dropdown2-label Dropdown2-option"
       aria-owns={undefined}
       className="ms-Dropdown"
       data-is-focusable={true}
@@ -129,15 +128,12 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
       onClick={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
-      role="listbox"
       tabIndex={0}
     >
       <span
-        aria-atomic={true}
         aria-label="Monday"
         className="ms-Dropdown-title"
         id="Dropdown2-option"
-        role="listbox"
       >
         <span>
           Monday
@@ -165,7 +161,10 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
           
         </i>
       </span>
-    </div>
+    </button>
+    <span
+      className="ms-Layer"
+    />
   </div>
 </div>
 `;

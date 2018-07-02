@@ -30,7 +30,6 @@ export class DropdownBasicExample extends BaseComponent<
           placeHolder="Select an Option"
           label="Basic uncontrolled example:"
           id="Basicdrop1"
-          ariaLabel="Basic dropdown example"
           options={[
             { key: 'Header', text: 'Actions', itemType: DropdownMenuItemType.Header },
             { key: 'A', text: 'Option a', title: 'I am option a.' },

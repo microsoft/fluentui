@@ -753,13 +753,12 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
       >
         Persona Size:
       </label>
-      <div
-        aria-activedescendant="Dropdown6-option"
-        aria-describedby="Dropdown6-option"
+      <button
         aria-disabled={undefined}
         aria-expanded="false"
+        aria-haspopup="listbox"
         aria-label={undefined}
-        aria-live="assertive"
+        aria-labelledby="Dropdown6-label Dropdown6-option"
         aria-owns={undefined}
         className="ms-Dropdown"
         data-is-focusable={true}
@@ -768,15 +767,12 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
-        role="listbox"
         tabIndex={0}
       >
         <span
-          aria-atomic={true}
           aria-label="size32"
           className="ms-Dropdown-title"
           id="Dropdown6-option"
-          role="listbox"
         >
           <span>
             size32
@@ -804,7 +800,10 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
             
           </i>
         </span>
-      </div>
+      </button>
+      <span
+        className="ms-Layer"
+      />
     </div>
     <button
       aria-checked={true}
