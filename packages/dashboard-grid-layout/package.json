@@ -12,7 +12,8 @@
     "office-ui-fabric-react": ">=6.25.0 <7.0.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-grid-layout": "^0.16.6"
+    "react-grid-layout": "^0.16.6",
+    "style-loader": "^0.21.0"
   },
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
