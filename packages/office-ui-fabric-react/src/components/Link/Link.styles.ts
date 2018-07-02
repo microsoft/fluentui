@@ -37,12 +37,17 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
         textAlign: 'left',
         textOverflow: 'inherit',
         userSelect: 'text',
+        borderBottom: '1px solid transparent', // For Firefox high contrast mode
         selectors: {
           [HighContrastSelectorBlack]: {
             color: '#FFFF00'
           },
           [HighContrastSelectorWhite]: {
             color: '#00009F'
+          },
+          '@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)': {
+            // For IE high contrast mode
+            borderBottom: 'none'
           }
         }
       },
