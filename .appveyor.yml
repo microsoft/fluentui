@@ -8,14 +8,11 @@ install:
   # install modules
   - npm install
   
-# Configure project artifacts  
+# Configure project artifacts.
 artifacts:
-  - path: test.zip
+  - path: apps\test-bundle-button\dist\test-bundle-button.json
     name: SizeAuditor
-
-  - path: logs
-    name: test logs
-    type: zip
+    type: json
  
 # Post-install test scripts.
 test_script:
