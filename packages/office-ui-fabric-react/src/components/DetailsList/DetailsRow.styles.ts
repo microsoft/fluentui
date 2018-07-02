@@ -1,15 +1,28 @@
 import { IDetailsRowStyleProps, IDetailsRowStyles } from './DetailsRow.types';
-import { getGlobalClassNames, getFocusStyle, HighContrastSelector, FontSizes } from '../../Styling';
+import {
+  getGlobalClassNames,
+  getFocusStyle,
+  HighContrastSelector,
+  FontSizes,
+  AnimationClassNames
+} from '../../Styling';
 import { getRTL } from '../../Utilities';
+import { IStyleBaseArray, IStyle } from '../../../../merge-styles/lib/IStyle';
 
 const GlobalClassNames = {
   root: 'ms-DetailsRow',
   compact: 'ms-DetailsList--Compact',
-  firstCell: 'ms-List-cell:first-child',
+  cell: 'ms-DetailsRow-cell',
+  cellCheck: 'ms-DetailsRow-cellCheck',
+  cellMeasurer: 'ms-DetailsRow-cellMeasurer',
   listCellFirstChild: 'ms-List-cell:first-child',
-  isFocusable: "data-is-focusable='true'"
+  isFocusable: "data-is-focusable='true'",
+  isContentUnselectable: 'is-contentUnselectable',
+  isSelected: 'is-selected',
+  isCheckVisible: 'is-check-visible'
 };
 
+// Constant values
 let values = {
   rowHeight: 42,
   compactRowHeight: 32,
@@ -24,6 +37,7 @@ let values = {
   compactRowShimmerVerticalBorder: 0
 };
 
+// Computed Values
 values = {
   ...values,
   ...{
@@ -34,7 +48,19 @@ values = {
 };
 
 export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
-  const { theme, isSelected, canSelect } = props;
+  const {
+    theme,
+    isSelected,
+    canSelect,
+    checkClassNames,
+    droppingClassName,
+    anySelected,
+    isCheckVisible,
+    checkboxCellClassName,
+    compact,
+    className
+  } = props;
+
   const {
     neutralPrimary,
     neutralSecondaryAlt,
@@ -47,8 +73,10 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
     black,
     themePrimary
   } = theme.palette;
+
   const { compactRowHeight, compactRowVerticalPadding, rowHorizontalPadding } = values;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
   const colors = {
     // Default
     defaultHeaderTextColor: neutralPrimary,
@@ -75,174 +103,139 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
     focusBackgroundColor: neutralQuaternaryAlt,
     focusMetaTextColor: neutralDark
   };
+
   const isRTL = getRTL();
   const thickBorderStyle = `${values.rowShimmerHorizontalBorder * 4} solid ${colors.defaultBackgroundColor}`;
   const thinBorderStyle = `${values.rowShimmerHorizontalBorder} solid ${colors.defaultBackgroundColor}`;
+  const selectedStyles: IStyleBaseArray = [
+    getFocusStyle(theme, 0, undefined, undefined, themePrimary),
+    classNames.isSelected,
+    checkClassNames.isSelected,
+    {
+      color: colors.selectedMetaTextColor,
+      background: colors.selectedBackgroundColor,
+      borderBottom: `1px solid ${white}`,
+      selectors: {
+        '&:before': {
+          position: 'absolute',
+          display: 'block',
+          top: -1,
+          height: 1,
+          bottom: 0,
+          left: 0,
+          right: 0,
+          content: '',
+          borderTop: `1px solid ${white}`
+        },
 
-  return {
-    root: [
-      classNames.root,
-      getFocusStyle(theme, 0, undefined, undefined, neutralSecondary),
-      {
-        borderBottom: `1px solid ${neutralLighter}`,
-        background: colors.defaultBackgroundColor,
-        color: colors.defaultMetaTextColor,
-        display: 'flex',
-        minWidth: '100%',
-        minHeight: values.rowHeight,
-        whiteSpace: 'nowrap',
-        padding: 0,
-        boxSizing: 'border-box',
-        verticalAlign: 'top',
-        textAlign: isRTL ? 'right' : 'left',
-        ...(isSelected
-          ? [
-              getFocusStyle(theme, 0, undefined, undefined, themePrimary),
-              {
-                color: colors.selectedMetaTextColor,
-                background: colors.selectedBackgroundColor,
-                borderBottom: `1px solid ${white}`,
-                selectors: {
-                  '&:before': {
-                    position: 'absolute',
-                    display: 'block',
-                    top: -1,
-                    height: 1,
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    content: '',
-                    borderTop: `1px solid ${white}`
-                  },
+        // Selected State hover
+        '&:hover': {
+          background: colors.selectedHoverBackgroundColor,
+          selectors: {
+            // Selected State hover meta cell
+            $cell: {
+              color: colors.selectedHoverMetaTextColor,
 
-                  // Selected State hover
-                  '&:hover': {
-                    background: colors.selectedHoverBackgroundColor,
-                    selectors: {
-                      // Selected State hover meta cell
-                      $cell: {
-                        color: colors.selectedHoverMetaTextColor,
-                        selectors: {
-                          [HighContrastSelector]: {
-                            color: 'HighlightText',
-                            selectors: {
-                              '> a': {
-                                color: 'HighlightText'
-                              }
-                            }
-                          },
-
-                          // Selected State hover Header cell
-                          '&.$isRowHeader': {
-                            color: colors.selectedHoverTextColor,
-                            selectors: {
-                              [HighContrastSelector]: {
-                                color: 'HighlightText'
-                              }
-                            }
-                          }
-                        }
-                      }
+              selectors: {
+                [HighContrastSelector]: {
+                  color: 'HighlightText',
+                  selectors: {
+                    '> a': {
+                      color: 'HighlightText'
                     }
-                  },
+                  }
+                },
 
-                  // Focus state
-                  '&:focus': {
-                    background: colors.focusBackgroundColor,
-
-                    selectors: {
-                      // Selected State hover meta cell
-                      $cell: {
-                        color: colors.focusMetaTextColor,
-                        [HighContrastSelector]: {
-                          color: 'HighlightText',
-                          selectors: {
-                            '> a': {
-                              color: 'HighlightText'
-                            }
-                          }
-                        },
-
-                        // Row header cell
-                        '&.$isRowHeader': {
-                          color: colors.focusHeaderTextColor,
-                          selectors: {
-                            [HighContrastSelector]: {
-                              color: 'HighlightText'
-                            }
-                          }
-                        }
-                      }
+                // Selected State hover Header cell
+                '&.$isRowHeader': {
+                  color: colors.selectedHoverTextColor,
+                  selectors: {
+                    [HighContrastSelector]: {
+                      color: 'HighlightText'
                     }
                   }
                 }
               }
-            ]
-          : undefined),
-
-        ...(canSelect
-          ? {
-              userSelect: 'none',
-              cursor: 'default'
             }
-          : undefined),
+          }
+        },
 
-        selectors: {
-          [`${classNames.compact} &`]: {
-            minHeight: compactRowHeight,
-            padding: `${compactRowVerticalPadding} ${rowHorizontalPadding} ${compactRowVerticalPadding} 12px`,
-            selectors: {
-              $cell: {
-                minHeight: compactRowHeight,
-                padding: `${compactRowVerticalPadding} ${rowHorizontalPadding} ${compactRowVerticalPadding} 12px`,
+        // Focus state
+        '&:focus': {
+          background: colors.focusBackgroundColor,
+
+          selectors: {
+            // Selected State hover meta cell
+            $cell: {
+              color: colors.focusMetaTextColor,
+              [HighContrastSelector]: {
+                color: 'HighlightText',
                 selectors: {
-                  // Masking the running shimmer background with borders
-                  [`&.$shimmer`]: {
-                    padding: '0 0',
-                    borderLeft: isRTL ? thickBorderStyle : thinBorderStyle,
-                    borderRight: isRTL ? thinBorderStyle : thickBorderStyle,
-                    borderTop: `${values.compactRowShimmerVerticalBorder} solid ${colors.defaultBackgroundColor}`,
-                    borderBottom: `${values.compactRowShimmerVerticalBorder} solid ${colors.defaultBackgroundColor}`
-                  },
-
-                  // Masking the running shimmer background with borders when it's an Icon placeholder
-                  [`&.$shimmerIconPlaceholder`]: {
-                    ...(isRTL
-                      ? {
-                          borderLeft: `${values.rowShimmerHorizontalBorder} solid ${colors.defaultBackgroundColor}`
-                        }
-                      : {
-                          borderRight: `${values.rowShimmerHorizontalBorder} solid ${colors.defaultBackgroundColor}`
-                        }),
-                    borderBottom: `${(values.compactRowHeight - values.rowShimmerIconPlaceholderHeight) / 2} solid ${
-                      colors.defaultBackgroundColor
-                    }`,
-                    borderTop: `${(values.compactRowHeight - values.rowShimmerIconPlaceholderHeight) / 2} solid ${
-                      colors.defaultBackgroundColor
-                    }`
+                  '> a': {
+                    color: 'HighlightText'
                   }
                 }
               },
 
-              $check: {
-                padding: values.rowHorizontalPadding
+              // Row header cell
+              '&.$isRowHeader': {
+                color: colors.focusHeaderTextColor,
+                selectors: {
+                  [HighContrastSelector]: {
+                    color: 'HighlightText'
+                  }
+                }
               }
             }
-          },
-
-          [`${classNames.listCellFirstChild} &:before`]: {
-            display: 'none'
-          },
-
-          '&:hover': {
-            background: colors.hoverColorBackground,
-            color: colors.hoverMetaTextColor
           }
         }
       }
-    ],
-    cell: [
+    }
+  ];
+
+  const canSelectStyles: IStyleBaseArray = [
+    classNames.isContentUnselectable,
+    {
+      userSelect: 'none',
+      cursor: 'default'
+    }
+  ];
+
+  const rootCompactStyles: IStyle = {
+    minHeight: compactRowHeight,
+    border: 0
+  };
+
+  const cellCompactStyles: IStyle = {
+    minHeight: compactRowHeight,
+    padding: `${compactRowVerticalPadding} ${rowHorizontalPadding} ${compactRowVerticalPadding} 12px`,
+    selectors: {
+      // Masking the running shimmer background with borders
+      [`&.$shimmer`]: {
+        padding: '0 0',
+        borderLeft: thinBorderStyle,
+        borderRight: thickBorderStyle,
+        borderTop: `${values.compactRowShimmerVerticalBorder} solid ${colors.defaultBackgroundColor}`,
+        borderBottom: `${values.compactRowShimmerVerticalBorder} solid ${colors.defaultBackgroundColor}`
+      },
+
+      // Masking the running shimmer background with borders when it's an Icon placeholder
+      [`&.$shimmerIconPlaceholder`]: {
+        borderLeft: `${values.rowShimmerHorizontalBorder} solid ${colors.defaultBackgroundColor}`,
+        borderBottom: `${(values.compactRowHeight - values.rowShimmerIconPlaceholderHeight) / 2} solid ${
+          colors.defaultBackgroundColor
+        }`,
+        borderTop: `${(values.compactRowHeight - values.rowShimmerIconPlaceholderHeight) / 2} solid ${
+          colors.defaultBackgroundColor
+        }`
+      }
+    }
+  };
+
+  const defaultCellStyles: IStyle = [
+    [
       getFocusStyle(theme),
+      classNames.cell,
       {
         display: 'inline-block',
         position: 'relative',
@@ -255,16 +248,6 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
         textOverflow: 'ellipsis',
 
         selectors: {
-          '&.$checkCell': {
-            padding: 0,
-            // Ensure that the check cell covers the top border of the cell.
-            // This ensures the click target does not leave a spot which would
-            // cause other items to be deselected.
-            paddingTop: 1,
-            marginTop: -1,
-            flexShrink: 0
-          },
-
           '& > button': {
             maxWidth: '100%'
           },
@@ -278,20 +261,14 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
 
           '&.$shimmer': {
             padding: '0 0',
-            borderLeft: isRTL ? thickBorderStyle : thinBorderStyle,
-            borderRight: isRTL ? thinBorderStyle : thickBorderStyle,
+            borderLeft: thinBorderStyle,
+            borderRight: thickBorderStyle,
             borderTop: `${values.rowShimmerVerticalBorder} solid ${colors.defaultBackgroundColor}`,
             borderBottom: `${values.rowShimmerVerticalBorder} solid ${colors.defaultBackgroundColor}`
           },
 
           '&.$shimmerIconPlaceholder': {
-            ...(isRTL
-              ? {
-                  borderLeft: `${values.rowShimmerHorizontalBorder} solid ${colors.defaultBackgroundColor}`
-                }
-              : {
-                  borderRight: `${values.rowShimmerHorizontalBorder} solid ${colors.defaultBackgroundColor}`
-                }),
+            borderLeft: `${values.rowShimmerHorizontalBorder} solid ${colors.defaultBackgroundColor}`,
             borderBottom: `${(values.rowHeight - values.rowShimmerIconPlaceholderHeight) / 2} solid ${
               colors.defaultBackgroundColor
             }`,
@@ -324,20 +301,77 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
             }
           }
         }
-      }
-    ],
-    checkCell: [],
-    cellMeasurer: [
+      },
+
+      compact && cellCompactStyles
+    ]
+  ];
+
+  const checkCompactStyles: IStyle = {
+    padding: values.rowHorizontalPadding
+  };
+
+  return {
+    root: [
+      classNames.root,
+      AnimationClassNames.fadeIn400,
+      droppingClassName,
+      anySelected && checkClassNames.anySelected,
+      isCheckVisible && checkClassNames.isVisible,
+      isCheckVisible && classNames.isCheckVisible,
+      getFocusStyle(theme, 0, undefined, undefined, isSelected ? neutralSecondary : themePrimary),
       {
+        borderBottom: `1px solid ${neutralLighter}`,
+        background: colors.defaultBackgroundColor,
+        color: colors.defaultMetaTextColor,
+        display: 'flex',
+        minWidth: '100%',
+        minHeight: values.rowHeight,
+        whiteSpace: 'nowrap',
+        padding: 0,
+        boxSizing: 'border-box',
+        verticalAlign: 'top',
+        textAlign: isRTL ? 'right' : 'left',
         selectors: {
-          '$cell &': {
-            overflow: 'visible',
-            whiteSpace: 'nowrap'
+          [`${classNames.listCellFirstChild} &:before`]: {
+            display: 'none'
+          },
+
+          '&:hover': {
+            background: colors.hoverColorBackground,
+            color: colors.hoverMetaTextColor
           }
         }
+      },
+      isSelected && selectedStyles,
+      canSelect && canSelectStyles,
+      compact && rootCompactStyles,
+      className
+    ],
+
+    cell: defaultCellStyles,
+    cellMeasurer: [
+      classNames.cellMeasurer,
+      {
+        overflow: 'visible',
+        whiteSpace: 'nowrap'
       }
     ],
-    check: [],
+    check: [compact && checkCompactStyles],
+    checkCell: [
+      defaultCellStyles,
+      classNames.cellCheck,
+      checkboxCellClassName,
+      {
+        padding: 0,
+        // Ensure that the check cell covers the top border of the cell.
+        // This ensures the click target does not leave a spot which would
+        // cause other items to be deselected.
+        paddingTop: 1,
+        marginTop: -1,
+        flexShrink: 0
+      }
+    ],
     checkCover: [
       {
         position: 'absolute',
@@ -345,13 +379,11 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
         left: 0,
         bottom: 0,
         right: 0,
-        display: 'none',
+        display: 'none'
+      },
 
-        selectors: {
-          '$anySelected &': {
-            display: 'block'
-          }
-        }
+      anySelected && {
+        display: 'block'
       }
     ],
     fields: [
@@ -370,25 +402,14 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
     ],
     isPadded: [
       {
-        ...(isRTL
-          ? {
-              paddingLeft: values.isPaddedMargin + values.rowHorizontalPadding
-            }
-          : {
-              paddingRight: values.isPaddedMargin + values.rowHorizontalPadding
-            }),
+        paddingRight: values.isPaddedMargin + values.rowHorizontalPadding,
         selectors: {
-          '&.$checkCell': isRTL
-            ? {
-                paddingLeft: 0
-              }
-            : {
-                paddingRight: 0
-              }
+          '&.$checkCell': {
+            paddingRight: 0
+          }
         }
       }
     ],
-    anySelected: [],
     shimmer: [],
     shimmerIconPlaceholder: [],
     shimmerLeftBorder: [

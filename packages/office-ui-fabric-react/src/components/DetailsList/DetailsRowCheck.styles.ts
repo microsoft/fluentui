@@ -10,22 +10,14 @@ const GlobalClassNames = {
 };
 
 export const getStyles = (props: IDetailsRowCheckStyleProps): IDetailsRowCheckStyles => {
-  const { theme, className, isHeader, canSelect } = props;
+  const { theme, className, isHeader, isVisible, isSelected, anySelected, canSelect, compact } = props;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
-
-  const ownerHighlightStyles: IStyle = {
-    selectors: {
-      $check: {
-        opacity: '1'
-      }
-    }
-  };
 
   return {
     root: [
       classNames.root,
       !canSelect && `${classNames.isDisabled} $isDisabled`,
-      isHeader && `${classNames.isHeader} $isHeader`,
+      isHeader && classNames.isHeader,
       className
     ],
     check: [
@@ -46,38 +38,28 @@ export const getStyles = (props: IDetailsRowCheckStyleProps): IDetailsRowCheckSt
         padding: 0,
         margin: 0,
         selectors: {
-          '&.isHeader': {
-            height: 32
+          '&:hover': {
+            opacity: 1
           },
-          [classNames.compact!]: {
+          '&.isHeader': {
             height: 32
           },
           [IsFocusVisibleClassName]: {
             opacity: 1
           }
         }
-      }
-    ],
-    owner: [
-      {
-        selectors: {
-          [`${IsFocusVisibleClassName} $check`]: {
-            opacity: 1
-          },
-          '&.$isSelected': ownerHighlightStyles,
-          '&.$isVisible': ownerHighlightStyles,
-          '&.$anySelected': ownerHighlightStyles,
-          '&:hover': ownerHighlightStyles
-        }
+      },
+      compact && {
+        height: 32
+      },
+      (isSelected || isVisible || anySelected) && {
+        opacity: '1'
       }
     ],
     isDisabled: [
       {
         visibility: 'hidden'
       }
-    ],
-    isSelected: [],
-    isVisible: [],
-    anySelected: []
+    ]
   };
 };

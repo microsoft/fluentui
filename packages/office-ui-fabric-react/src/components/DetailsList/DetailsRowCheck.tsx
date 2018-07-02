@@ -18,6 +18,7 @@ const DetailsRowCheckBase = (props: IDetailsRowCheckProps) => {
     className,
     styles,
     theme,
+    compact,
     ...buttonProps
   } = props;
 
@@ -29,6 +30,7 @@ const DetailsRowCheckBase = (props: IDetailsRowCheckProps) => {
     isSelected,
     anySelected,
     canSelect,
+    compact,
     theme: theme!
   });
 
