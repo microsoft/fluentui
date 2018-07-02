@@ -16,5 +16,5 @@ export interface IStackItemProps {
 }
 
 export interface IStackItemStyles {
-  root?: IStyle;
+  root: IStyle;
 }
