@@ -26,7 +26,6 @@ export class StackBasicExample extends React.Component<{}, {}> {
           <Text size="medium">Text 2</Text>
           <Text size="large">Text 3</Text>
         </Stack>
-        <Stack.Item align="start">I am a string</Stack.Item>
         <Stack.Item align="end">
           <Text>I am a stack item!</Text>
           <Text>I am another stack item</Text>
