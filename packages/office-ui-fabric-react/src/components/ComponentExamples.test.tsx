@@ -97,10 +97,20 @@ describe('Component Examples', () => {
   const glob = require('glob');
   const path = require('path');
   const realDate = Date;
-  const constantDate = new Date('2017-06-13T04:41:20');
+  const realToLocaleTimeString = global.Date.prototype.toLocaleTimeString;
+  const realToLocaleDateString = global.Date.prototype.toLocaleDateString;
+  const constantDate = new Date(Date.UTC(2017, 13, 6, 4, 41, 20));
   const files: string[] = glob.sync(path.resolve(process.cwd(), 'src/components/**/examples/*Example*.tsx'));
 
   beforeAll(() => {
+    // Ensure test output is consistent across machine locale and time zone config.
+    global.Date.prototype.toLocaleTimeString = () => {
+      return constantDate.toUTCString();
+    };
+    global.Date.prototype.toLocaleDateString = () => {
+      return constantDate.toUTCString();
+    };
+
     // Prevent random and time elements from failing repeated tests.
     global.Date = class {
       public static now() {
@@ -123,6 +133,8 @@ describe('Component Examples', () => {
   afterAll(() => {
     jest.restoreAllMocks();
     global.Date = realDate;
+    global.Date.prototype.toLocaleTimeString = realToLocaleTimeString;
+    global.Date.prototype.toLocaleDateString = realToLocaleDateString;
 
     snapshotsStateMap.forEach(snapshotState => {
       if (snapshotState.getUncheckedCount() > 0) {
@@ -162,7 +174,10 @@ describe('Component Examples', () => {
           });
         } catch (e) {
           console.warn(
-            'TEST NOTE: Failure with ' +
+            'ERROR: ' +
+              e +
+              ', ' +
+              'TEST NOTE: Failure with ' +
               componentFile +
               '. ' +
               'Have you recently added a component? If so, please see notes in ComponentExamples.test.tsx.'
