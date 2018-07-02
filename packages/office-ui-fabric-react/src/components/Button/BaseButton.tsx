@@ -595,21 +595,23 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     if (this.props.disabled && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space)) {
       ev.preventDefault();
       ev.stopPropagation();
-    } else if (!this.props.disabled && this.props.menuProps) {
-      this._onMenuKeyDown(ev);
-    } else if (!this.props.disabled && this.props.onKeyDown !== undefined) {
-      this.props.onKeyDown(ev); // not cancelling event because it's not disabled
+    } else if (!this.props.disabled) {
+      if (this.props.menuProps) {
+        this._onMenuKeyDown(ev);
+      } else if (this.props.onKeyDown !== undefined) {
+        this.props.onKeyDown(ev); // not cancelling event because it's not disabled
+      }
     }
   };
 
   private _onKeyUp = (ev: React.KeyboardEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>) => {
-    if (!this.props.disabled && this.props.onKeyUp !== undefined && this.props.menuProps) {
+    if (!this.props.disabled && this.props.onKeyUp !== undefined) {
       this.props.onKeyUp(ev); // not cancelling event because it's not disabled
     }
   };
 
   private _onKeyPress = (ev: React.KeyboardEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>) => {
-    if (!this.props.disabled && this.props.onKeyPress !== undefined && this.props.menuProps) {
+    if (!this.props.disabled && this.props.onKeyPress !== undefined) {
       this.props.onKeyPress(ev); // not cancelling event because it's not disabled
     }
   };
@@ -627,10 +629,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   };
 
   private _onClick = (ev: React.MouseEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>) => {
-    if (!this.props.disabled && this.props.menuProps) {
-      this._onMenuClick(ev);
-    } else if (!this.props.disabled && this.props.onClick !== undefined) {
-      this.props.onClick(ev); // not cancelling event because it's not disabled
+    if (!this.props.disabled) {
+      if (this.props.menuProps) {
+        this._onMenuClick(ev);
+      } else if (this.props.onClick !== undefined) {
+        this.props.onClick(ev); // not cancelling event because it's not disabled
+      }
     }
   };
 
