@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/webpack-utils",
+      "comment": "Add Callout to the list of components that can be lazy loaded to reduce bundle sizes",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/webpack-utils",
+  "email": "1581488+christiango@users.noreply.github.com"
+}
