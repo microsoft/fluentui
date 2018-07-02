@@ -15,6 +15,8 @@ import { ICardHeaderProps } from '../CardHeader/CardHeader.types';
 import { IAction } from '../ActionBar/ActionBar.types';
 import { IGridListProps } from '../GridList/GridList.types';
 import { GridList } from '../GridList/GridList';
+import { IChartProps, ChartWidth, ChartHeight } from '../Chart/Chart.types';
+import { Chart } from '../Chart/Chart';
 
 export class Layout extends React.Component<ILayoutProps> {
   constructor(props: ILayoutProps) {
@@ -87,6 +89,21 @@ export class Layout extends React.Component<ILayoutProps> {
                 );
                 break;
               }
+              case CardContentType.Chart: {
+                const { chartLabel, colors, barWidth, data, chartType } = cardContent.content as IChartProps;
+                contentArea.push(
+                  <Chart
+                    chartLabel={chartLabel}
+                    chartType={chartType}
+                    colors={colors}
+                    barWidth={barWidth}
+                    data={data}
+                    width={this._getChartWidth(cardContentList.length)}
+                    height={this._getChartHeight(cardContentList.length)}
+                  />
+                );
+                break;
+              }
             }
           }
         });
@@ -94,6 +111,20 @@ export class Layout extends React.Component<ILayoutProps> {
     }
 
     return contentArea;
+  }
+
+  private _getChartHeight(numberOfContentAreas: number): ChartHeight {
+    return this.props.cardSize === CardSize.mediumTall && numberOfContentAreas > 1
+      ? ChartHeight.tall
+      : ChartHeight.short;
+  }
+
+  private _getChartWidth(numberOfContentAreas: number): ChartWidth {
+    return numberOfContentAreas > 1 ||
+      this.props.cardSize === CardSize.small ||
+      this.props.cardSize === CardSize.mediumTall
+      ? ChartWidth.compact
+      : ChartWidth.wide;
   }
 
   private _generateHeader(header: ICardHeaderProps): JSX.Element | null {
