@@ -22,6 +22,10 @@ import { PersonaCoin, PersonaSize, PersonaInitialsColor } from '../../PersonaCoi
 
 const getClassNames = classNamesFunction<IFacepileStyleProps, IFacepileStyles>();
 
+/**
+ * FacePile with no default styles.
+ * [Use the `styles` API to add your own styles.](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Component-Styling)
+ */
 @customizable('Facepile', ['theme'])
 export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
   public static defaultProps: IFacepileProps = {

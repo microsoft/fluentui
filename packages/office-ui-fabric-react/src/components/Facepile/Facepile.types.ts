@@ -147,7 +147,6 @@ export interface IFacepileStyleProps {
    */
   className?: string;
 
-  // Insert Facepile style props below
   /**
    * Pixel value for spacing around button. Number value set in pixels
    */
