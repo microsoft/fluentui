@@ -6,4 +6,4 @@ export { Shimmer } from './Shimmer';
 export { Chiclet } from './Chiclet';
 export { Text } from './Text';
 export { ICustomNavLinkGroup, INavLink, NavGroupType, NavToggler } from './Nav';
-export { Stack, StackItem } from './Stack';
+export { Stack } from './Stack';

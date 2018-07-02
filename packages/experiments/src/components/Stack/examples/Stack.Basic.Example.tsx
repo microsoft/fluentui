@@ -28,7 +28,6 @@ export class StackBasicExample extends React.Component<{}, {}> {
         </Stack>
         <Stack.Item align="end">
           <Text>I am a stack item!</Text>
-          <Text>I am another stack item</Text>
         </Stack.Item>
       </Stack>
     );
