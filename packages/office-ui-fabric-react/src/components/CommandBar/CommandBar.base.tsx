@@ -192,7 +192,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       ...overflowButtonProps,
       styles: { menuIcon: { fontSize: '17px' }, ...overflowButtonProps.styles },
       className: css('ms-CommandBar-overflowButton', overflowButtonProps.className),
-      menuProps: { items: overflowItems, ...overflowButtonProps.menuProps },
+      menuProps: { ...overflowButtonProps.menuProps, items: overflowItems },
       menuIconProps: { iconName: 'More', ...overflowButtonProps.menuIconProps }
     };
 
