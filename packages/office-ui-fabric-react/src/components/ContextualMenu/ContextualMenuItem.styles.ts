@@ -169,7 +169,8 @@ export const getStyles = (props: IContextualMenuItemStyleProps): IContextualMenu
       classNames.icon,
       fonts.medium,
       {
-        color: semanticColors.bodyText,
+        // color: semanticColors.bodyText,
+        color: 'green',
         position: 'relative',
         boxSizing: 'border-box'
       },

@@ -11,7 +11,7 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
   public render() {
     const {
       item,
-      classNames,
+      // classNames,
       index,
       focusableElementIndex,
       totalItemCount,
@@ -43,6 +43,8 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
       };
     }
 
+    console.log(this._classNames.root);
+
     return (
       <div>
         <KeytipData
@@ -58,7 +60,7 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
               href={item.href}
               target={item.target}
               rel={anchorRel}
-              className={classNames.root}
+              className={this._classNames.root}
               role="menuitem"
               aria-owns={item.key === expandedMenuItemKey ? subMenuId : undefined}
               aria-haspopup={itemHasSubmenu || undefined}
@@ -75,7 +77,7 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
               <ChildrenRenderer
                 componentRef={item.componentRef}
                 item={item}
-                classNames={classNames}
+                // classNames={classNames}
                 index={index}
                 onCheckmarkClick={hasCheckmarks && onItemClick ? onItemClick.bind(this, item) : undefined}
                 hasIcons={hasIcons}

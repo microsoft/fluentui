@@ -51,7 +51,7 @@ export interface IContextualMenuItemProps extends React.HTMLAttributes<IContextu
   /**
    * Classnames for different aspects of a menu item
    */
-  classNames: IMenuItemClassNames;
+  classNames?: IMenuItemClassNames;
 
   /**
    * Index of the item

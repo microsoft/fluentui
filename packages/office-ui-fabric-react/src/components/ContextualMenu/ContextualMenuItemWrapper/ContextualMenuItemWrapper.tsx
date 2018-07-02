@@ -1,9 +1,33 @@
 import * as React from 'react';
-import { BaseComponent } from '../../../Utilities';
+import { BaseComponent, classNamesFunction } from '../../../Utilities';
 import { IContextualMenuItemWrapperProps } from './ContextualMenuItemWrapper.types';
 import { IContextualMenuItem } from '../../ContextualMenu';
+import { ContextualMenuItemType } from '../ContextualMenu.types';
+import { IContextualMenuItemStyleProps, IContextualMenuItemStyles } from '../ContextualMenuItem.types';
+import { getIsChecked, isItemDisabled } from '../../../utilities/contextualMenu/index';
+
+const getClassNames = classNamesFunction<IContextualMenuItemStyleProps, IContextualMenuItemStyles>();
 
 export class ContextualMenuItemWrapper extends BaseComponent<IContextualMenuItemWrapperProps, {}> {
+  protected _iconProps = this.props.item.iconProps || { iconName: 'None' };
+
+  protected _classNames = getClassNames(this.props.item.styles, {
+    theme: this.props.item.theme!,
+    className: this.props.item.className,
+    disabled: isItemDisabled(this.props.item),
+    // expanded: this.state.expandedMenuItemKey === this.props.item.key,
+    expanded: false,
+    checked: !!getIsChecked(this.props.item),
+    isAnchorLink: !!this.props.item.href,
+    knownIcon: this._iconProps.iconName !== 'None',
+    itemClassName: this.props.item.className,
+    dividerClassName:
+      this.props.item.itemType === ContextualMenuItemType.Divider ? this.props.item.className : undefined,
+    iconClassName: this._iconProps.className,
+    subMenuClassName: this.props.item.submenuIconProps ? this.props.item.submenuIconProps.className : '',
+    primaryDisabled: this.props.item.primaryDisabled
+  });
+
   protected _onItemMouseEnter = (ev: React.MouseEvent<HTMLElement>): void => {
     const { item, onItemMouseEnter } = this.props;
     if (onItemMouseEnter) {

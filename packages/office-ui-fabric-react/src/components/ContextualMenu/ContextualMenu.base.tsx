@@ -6,13 +6,14 @@ import {
   IContextualMenuStyleProps,
   IContextualMenuStyles
 } from './ContextualMenu.types';
+import { IContextualMenuItemStyleProps, IContextualMenuItemStyles } from './ContextualMenuItem.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection, IFocusZoneProps, FocusZoneTabbableElements } from '../../FocusZone';
 import {
   IMenuItemClassNames,
   // IContextualMenuClassNames,
-  getContextualMenuClassNames,
-  getItemClassNames
+  getContextualMenuClassNames
+  // getItemClassNames
 } from './ContextualMenu.classNames';
 // import { IContextualMenuItemStyleProps, IContextualMenuItemStyles } from './ContextualMenuItem.types';
 import {
@@ -42,7 +43,7 @@ import {
 } from './ContextualMenuItemWrapper/index';
 
 const getClassNames = classNamesFunction<IContextualMenuStyleProps, IContextualMenuStyles>();
-// const getItemClassNames = classNamesFunction<IContextualMenuItemStyleProps, IContextualMenuItemStyles>();
+const getItemClassNames = classNamesFunction<IContextualMenuItemStyleProps, IContextualMenuItemStyles>();
 
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;
@@ -186,6 +187,24 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     this._events.dispose();
     this._async.dispose();
   }
+
+  // private _iconProps = this.props.item.iconProps || { iconName: 'None' };
+
+  // private _itemClassNames = getItemClassNames(this.props.item.styles, {
+  //   theme: this.props.item.theme!,
+  //   className: this.props.item.className,
+  //   disabled: isItemDisabled(this.props.item),
+  //   expanded: true,
+  //   checked: !!getIsChecked(this.props.item),
+  //   isAnchorLink: true,
+  //   knownIcon: this._iconProps.iconName !== 'None',
+  //   itemClassName: this.props.item.className,
+  //   dividerClassName:
+  //     this.props.item.itemType === ContextualMenuItemType.Divider ? this.props.item.className : undefined,
+  //   iconClassName: this._iconProps.className,
+  //   subMenuClassName: this.props.item.submenuIconProps ? this.props.item.submenuIconProps.className : '',
+  //   primaryDisabled: this.props.item.primaryDisabled
+  // });
 
   public render(): JSX.Element | null {
     let { isBeakVisible } = this.props;
@@ -388,51 +407,50 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     hasIcons: boolean
   ): React.ReactNode {
     const renderedItems: React.ReactNode[] = [];
-    const iconProps = item.iconProps || { iconName: 'None' };
-    // We only send a dividerClassName when the item to be rendered is a divider. For all other cases, the default divider style is used.
-    const dividerClassName = item.itemType === ContextualMenuItemType.Divider ? item.className : undefined;
-    const subMenuIconClassName = item.submenuIconProps ? item.submenuIconProps.className : '';
-    const getTheseClassNames = item.getItemClassNames || getItemClassNames;
-    const itemClassNames = getTheseClassNames(
-      this.props.theme!,
-      isItemDisabled(item),
-      this.state.expandedMenuItemKey === item.key,
-      !!getIsChecked(item),
-      !!item.href,
-      iconProps.iconName !== 'None',
-      item.className,
-      dividerClassName,
-      iconProps.className,
-      subMenuIconClassName,
-      item.primaryDisabled
-    );
+    // const iconProps = item.iconProps || { iconName: 'None' };
+    // // We only send a dividerClassName when the item to be rendered is a divider. For all other cases, the default divider style is used.
+    // const dividerClassName = item.itemType === ContextualMenuItemType.Divider ? item.className : undefined;
+    // const subMenuIconClassName = item.submenuIconProps ? item.submenuIconProps.className : '';
+    // const getTheseClassNames = item.getItemClassNames || getItemClassNames;
+    // const itemClassNames = getTheseClassNames(
+    //   this.props.theme!,
+    //   isItemDisabled(item),
+    //   this.state.expandedMenuItemKey === item.key,
+    //   !!getIsChecked(item),
+    //   !!item.href,
+    //   iconProps.iconName !== 'None',
+    //   item.className,
+    //   dividerClassName,
+    //   iconProps.className,
+    //   subMenuIconClassName,
+    //   item.primaryDisabled
+    // );
 
     if (item.text === '-' || item.name === '-') {
       item.itemType = ContextualMenuItemType.Divider;
     }
     switch (item.itemType) {
       case ContextualMenuItemType.Divider:
-        renderedItems.push(this._renderSeparator(index, itemClassNames));
+        renderedItems.push(this._renderSeparator(index, item));
         break;
       case ContextualMenuItemType.Header:
-        renderedItems.push(this._renderSeparator(index, itemClassNames));
-        const headerItem = this._renderHeaderMenuItem(item, itemClassNames, index, hasCheckmarks, hasIcons);
-        renderedItems.push(this._renderListItem(headerItem, item.key || index, itemClassNames, item.title));
+        renderedItems.push(this._renderSeparator(index, item));
+        const headerItem = this._renderHeaderMenuItem(item, index, hasCheckmarks, hasIcons);
+        renderedItems.push(this._renderListItem(headerItem, item.key || index, item));
         break;
       case ContextualMenuItemType.Section:
-        renderedItems.push(this._renderSectionItem(item, itemClassNames, index, hasCheckmarks, hasIcons));
+        renderedItems.push(this._renderSectionItem(item, index, hasCheckmarks, hasIcons));
         break;
       default:
         const menuItem = this._renderNormalItem(
           item,
-          itemClassNames,
           index,
           focusableElementIndex,
           totalItemCount,
           hasCheckmarks,
           hasIcons
         );
-        renderedItems.push(this._renderListItem(menuItem, item.key || index, itemClassNames, item.title));
+        renderedItems.push(this._renderListItem(menuItem, item.key || index, item));
         break;
     }
 
@@ -441,7 +459,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
   private _renderSectionItem(
     item: IContextualMenuItem,
-    menuClassNames: IMenuItemClassNames,
+    // menuClassNames: IMenuItemClassNames,
     index: number,
     hasCheckmarks: boolean,
     hasIcons: boolean
@@ -458,7 +476,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
         itemType: ContextualMenuItemType.Header,
         text: section.title
       };
-      headerItem = this._renderHeaderMenuItem(headerContextualMenuItem, menuClassNames, index, hasCheckmarks, hasIcons);
+      headerItem = this._renderHeaderMenuItem(headerContextualMenuItem, index, hasCheckmarks, hasIcons);
     }
 
     if (section.items && section.items.length > 0) {
@@ -466,8 +484,8 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
         <li role="presentation" key={section.key}>
           <div role="group">
             <ul className={this._classNames.list}>
-              {section.topDivider && this._renderSeparator(index, menuClassNames, true, true)}
-              {headerItem && this._renderListItem(headerItem, item.key || index, menuClassNames, item.title)}
+              {section.topDivider && this._renderSeparator(index, item, true, true)}
+              {headerItem && this._renderListItem(headerItem, item.key || index, item)}
               {section.items.map((contextualMenuItem, itemsIndex) =>
                 this._renderMenuItem(
                   contextualMenuItem,
@@ -478,7 +496,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
                   hasIcons
                 )
               )}
-              {section.bottomDivider && this._renderSeparator(index, menuClassNames, false, true)}
+              {section.bottomDivider && this._renderSeparator(index, item, false, true)}
             </ul>
           </div>
         </li>
@@ -489,11 +507,22 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   private _renderListItem(
     content: React.ReactNode,
     key: string | number,
-    classNames: IMenuItemClassNames,
-    title?: string
+    item: IContextualMenuItem
+    // classNames: IMenuItemClassNames,
+    // title?: string
   ) {
+    const iconProps = item.iconProps || { iconName: 'None' };
+    const classNames = getItemClassNames(this.props.styles, {
+      theme: this.props.theme!,
+      disabled: isItemDisabled(item),
+      expanded: this.state.expandedMenuItemKey === item.key,
+      checked: !!getIsChecked(item),
+      isAnchorLink: !!item.href,
+      knownIcon: iconProps.iconName !== 'None',
+      itemClassName: item.className
+    });
     return (
-      <li role="presentation" title={title} key={key} className={classNames.item}>
+      <li role="presentation" title={item.title} key={key} className={classNames.item}>
         {content}
       </li>
     );
@@ -501,10 +530,22 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
   private _renderSeparator(
     index: number,
-    classNames: IMenuItemClassNames,
+    item: IContextualMenuItem,
+    // classNames: IMenuItemClassNames,
     top?: boolean,
     fromSection?: boolean
   ): React.ReactNode {
+    const iconProps = item.iconProps || { iconName: 'None' };
+    const classNames = getItemClassNames(this.props.styles, {
+      theme: this.props.theme!,
+      disabled: isItemDisabled(item),
+      expanded: this.state.expandedMenuItemKey === item.key,
+      checked: !!getIsChecked(item),
+      isAnchorLink: !!item.href,
+      knownIcon: iconProps.iconName !== 'None',
+      itemClassName: item.className
+    });
+
     if (fromSection || index > 0) {
       return (
         <li
@@ -519,7 +560,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
   private _renderNormalItem(
     item: IContextualMenuItem,
-    classNames: IMenuItemClassNames,
+    // classNames: IMenuItemClassNames,
     index: number,
     focusableElementIndex: number,
     totalItemCount: number,
@@ -537,7 +578,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     if (item.href) {
       return this._renderAnchorMenuItem(
         item,
-        classNames,
+        // classNames,
         index,
         focusableElementIndex,
         totalItemCount,
@@ -549,7 +590,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     if (item.split && hasSubmenu(item)) {
       return this._renderSplitButton(
         item,
-        classNames,
+        // classNames,
         index,
         focusableElementIndex,
         totalItemCount,
@@ -560,7 +601,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
     return this._renderButtonItem(
       item,
-      classNames,
+      // classNames,
       index,
       focusableElementIndex,
       totalItemCount,
@@ -571,7 +612,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
   private _renderHeaderMenuItem(
     item: IContextualMenuItem,
-    classNames: IMenuItemClassNames,
+    // classNames: IMenuItemClassNames,
     index: number,
     hasCheckmarks: boolean,
     hasIcons: boolean
@@ -582,7 +623,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
       <div className={this._classNames.header} style={item.style} role="heading" aria-level={this.props.title ? 2 : 1}>
         <ChildrenRenderer
           item={item}
-          classNames={classNames}
+          // classNames={classNames}
           index={index}
           onCheckmarkClick={hasCheckmarks ? this._onItemClick : undefined}
           hasIcons={hasIcons}
@@ -593,7 +634,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
   private _renderAnchorMenuItem(
     item: IContextualMenuItem,
-    classNames: IMenuItemClassNames,
+    // classNames: IMenuItemClassNames,
     index: number,
     focusableElementIndex: number,
     totalItemCount: number,
@@ -602,10 +643,12 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   ): React.ReactNode {
     const { contextualMenuItemAs } = this.props;
     const { expandedMenuItemKey } = this.state;
+    console.log('anchor: ');
+
     return (
       <ContextualMenuAnchor
         item={item}
-        classNames={classNames}
+        // classNames={classNames}
         index={index}
         focusableElementIndex={focusableElementIndex}
         totalItemCount={totalItemCount}
@@ -630,7 +673,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
   private _renderButtonItem(
     item: IContextualMenuItem,
-    classNames: IMenuItemClassNames,
+    // classNames: IMenuItemClassNames,
     index: number,
     focusableElementIndex: number,
     totalItemCount: number,
@@ -639,11 +682,11 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   ) {
     const { contextualMenuItemAs } = this.props;
     const { expandedMenuItemKey } = this.state;
-
+    console.log('button');
     return (
       <ContextualMenuButton
         item={item}
-        classNames={classNames}
+        // classNames={classNames}
         index={index}
         focusableElementIndex={focusableElementIndex}
         totalItemCount={totalItemCount}
@@ -669,7 +712,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
   private _renderSplitButton(
     item: IContextualMenuItem,
-    classNames: IMenuItemClassNames,
+    // classNames: IMenuItemClassNames,
     index: number,
     focusableElementIndex: number,
     totalItemCount: number,
@@ -682,7 +725,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     return (
       <ContextualMenuSplitButton
         item={item}
-        classNames={classNames}
+        // classNames={classNames}
         index={index}
         focusableElementIndex={focusableElementIndex}
         totalItemCount={totalItemCount}
