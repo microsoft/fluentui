@@ -76,23 +76,12 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
     focusMetaTextColor: neutralDark
   };
   const isRTL = getRTL();
+  const thickBorderStyle = `${values.rowShimmerHorizontalBorder * 4} solid ${colors.defaultBackgroundColor}`;
+  const thinBorderStyle = `${values.rowShimmerHorizontalBorder} solid ${colors.defaultBackgroundColor}`;
 
   return {
     root: [
       classNames.root,
-      isRTL
-        ? {
-            selectors: {
-              "[dir='ltr']": { textAlign: 'right' },
-              "[dir='rtl']": { textAlign: 'left' }
-            }
-          }
-        : {
-            selectors: {
-              "[dir='ltr']": { textAlign: 'left' },
-              "[dir='rtl']": { textAlign: 'right' }
-            }
-          },
       getFocusStyle(theme, 0, undefined, undefined, neutralSecondary),
       {
         borderBottom: `1px solid ${neutralLighter}`,
@@ -105,6 +94,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
         padding: 0,
         boxSizing: 'border-box',
         verticalAlign: 'top',
+        textAlign: isRTL ? 'right' : 'left',
         ...(isSelected
           ? [
               getFocusStyle(theme, 0, undefined, undefined, themePrimary),
@@ -209,17 +199,21 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
                   // Masking the running shimmer background with borders
                   [`&.$shimmer`]: {
                     padding: '0 0',
-                    /* TODO
-                    @include border-left($rowShimmerHorizontalBorder, solid, $detailsList-item-default-background-color);
-                    @include border-right(($rowShimmerHorizontalBorder * 4), solid, $detailsList-item-default-background-color);
-                    */
+                    borderLeft: isRTL ? thickBorderStyle : thinBorderStyle,
+                    borderRight: isRTL ? thinBorderStyle : thickBorderStyle,
                     borderTop: `${values.compactRowShimmerVerticalBorder} solid ${colors.defaultBackgroundColor}`,
                     borderBottom: `${values.compactRowShimmerVerticalBorder} solid ${colors.defaultBackgroundColor}`
                   },
 
                   // Masking the running shimmer background with borders when it's an Icon placeholder
                   [`&.$shimmerIconPlaceholder`]: {
-                    // @include border-right($rowShimmerHorizontalBorder, solid, $detailsList-item-default-background-color);
+                    ...(isRTL
+                      ? {
+                          borderLeft: `${values.rowShimmerHorizontalBorder} solid ${colors.defaultBackgroundColor}`
+                        }
+                      : {
+                          borderRight: `${values.rowShimmerHorizontalBorder} solid ${colors.defaultBackgroundColor}`
+                        }),
                     borderBottom: `${(values.compactRowHeight - values.rowShimmerIconPlaceholderHeight) / 2} solid ${
                       colors.defaultBackgroundColor
                     }`,
@@ -284,14 +278,20 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
 
           '&.$shimmer': {
             padding: '0 0',
-            // @include border-left($rowShimmerHorizontalBorder, solid, $detailsList-item-default-background-color);
-            // @include border-right(($rowShimmerHorizontalBorder * 4), solid, $detailsList-item-default-background-color);
+            borderLeft: isRTL ? thickBorderStyle : thinBorderStyle,
+            borderRight: isRTL ? thinBorderStyle : thickBorderStyle,
             borderTop: `${values.rowShimmerVerticalBorder} solid ${colors.defaultBackgroundColor}`,
             borderBottom: `${values.rowShimmerVerticalBorder} solid ${colors.defaultBackgroundColor}`
           },
 
           '&.$shimmerIconPlaceholder': {
-            // @include border-right($rowShimmerHorizontalBorder, solid, $detailsList-item-default-background-color);
+            ...(isRTL
+              ? {
+                  borderLeft: `${values.rowShimmerHorizontalBorder} solid ${colors.defaultBackgroundColor}`
+                }
+              : {
+                  borderRight: `${values.rowShimmerHorizontalBorder} solid ${colors.defaultBackgroundColor}`
+                }),
             borderBottom: `${(values.rowHeight - values.rowShimmerIconPlaceholderHeight) / 2} solid ${
               colors.defaultBackgroundColor
             }`,
@@ -370,11 +370,21 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
     ],
     isPadded: [
       {
-        // @include ms-padding-right($isPaddedMargin + $rowHorizontalPadding);
+        ...(isRTL
+          ? {
+              paddingLeft: values.isPaddedMargin + values.rowHorizontalPadding
+            }
+          : {
+              paddingRight: values.isPaddedMargin + values.rowHorizontalPadding
+            }),
         selectors: {
-          '&.$checkCell': {
-            // @include ms-padding-right(0);
-          }
+          '&.$checkCell': isRTL
+            ? {
+                paddingLeft: 0
+              }
+            : {
+                paddingRight: 0
+              }
         }
       }
     ],
