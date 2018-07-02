@@ -331,7 +331,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
         padding: 0,
         boxSizing: 'border-box',
         verticalAlign: 'top',
-        textAlign: isRTL ? 'right' : 'left',
+        textAlign: 'left',
         selectors: {
           [`${classNames.listCellFirstChild} &:before`]: {
             display: 'none'

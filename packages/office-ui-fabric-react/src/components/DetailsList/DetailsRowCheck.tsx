@@ -27,7 +27,7 @@ const DetailsRowCheckBase = (props: IDetailsRowCheckProps) => {
   const classNames = getClassNames(styles, {
     className,
     isHeader,
-    isSelected,
+    selected: isPressed,
     anySelected,
     canSelect,
     compact,

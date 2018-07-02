@@ -51,7 +51,7 @@ export interface IDetailsRowCheckProps extends React.HTMLAttributes<HTMLElement>
 }
 
 export type IDetailsRowCheckStyleProps = Required<Pick<IDetailsRowCheckProps, 'theme'>> &
-  Pick<IDetailsRowCheckProps, 'isHeader' | 'selected' | 'isSelected' | 'anySelected' | 'canSelect' | 'className'> & {
+  Pick<IDetailsRowCheckProps, 'isHeader' | 'selected' | 'anySelected' | 'canSelect' | 'className'> & {
     isVisible?: boolean;
     compact?: boolean;
   };

@@ -190,7 +190,7 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowProps, IDetailsRowS
     const checkClassNames = getCheckClassNames(
       getCheckStyles({
         theme: theme!,
-        isSelected,
+        selected: isSelected,
         canSelect: !isContentUnselectable,
         anySelected: isSelectionModal,
         isVisible: checkboxVisibility === CheckboxVisibility.always
