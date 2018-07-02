@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.12.2",
+      "tag": "@uifabric/experiments_v6.12.2",
+      "date": "Mon, 02 Jul 2018 10:21:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "nulikartik <nulikarthik@gmail.com>",
+            "commit": "ce352819b9e71108a1dca4260334b26aba664192",
+            "comment": "css changes for action bar"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.23.0 <7.0.0` to `>=6.24.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.12.1",
       "tag": "@uifabric/experiments_v6.12.1",
       "date": "Fri, 29 Jun 2018 10:24:05 GMT",
