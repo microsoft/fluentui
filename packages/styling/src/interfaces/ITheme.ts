@@ -1,6 +1,7 @@
 import { IPalette } from './IPalette';
 import { IFontStyles } from './IFontStyles';
 import { ISemanticColors } from './ISemanticColors';
+import { ITypography } from './ITypography';
 
 export interface ITheme {
   palette: IPalette;
@@ -16,6 +17,7 @@ export interface ITheme {
    * Customizer will not get the global styles applied to them.
    */
   disableGlobalClassNames: boolean;
+  typography: ITypography;
 }
 
 export interface IPartialTheme {
@@ -24,4 +26,5 @@ export interface IPartialTheme {
   semanticColors?: Partial<ISemanticColors>;
   isInverted?: boolean;
   disableGlobalClassNames?: boolean;
+  typography?: ITypography;
 }

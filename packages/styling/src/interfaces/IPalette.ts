@@ -242,4 +242,6 @@ export interface IPalette {
    * Color code for greenLight.
    */
   greenLight: string;
+
+  [key: string]: string;
 }

@@ -8,9 +8,23 @@ export class TextBasicExample extends React.Component<{}, {}> {
 
   public render(): JSX.Element {
     return (
-      <Text weight="bold" family="monospace">
-        Hello!
-      </Text>
+      <div>
+        <div>
+          <Text size="small">Small Text</Text>
+        </div>
+        <div>
+          <Text size="medium">Medium Text</Text>
+        </div>
+        <div>
+          <Text size="large">Large Text</Text>
+        </div>
+        <div>
+          <Text size="xLarge">XLarge Text</Text>
+        </div>
+        <div>
+          <Text size="mega">Mega Text</Text>
+        </div>
+      </div>
     );
   }
 }

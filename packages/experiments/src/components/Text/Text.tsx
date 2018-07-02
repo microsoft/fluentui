@@ -1,7 +1,11 @@
 import * as React from 'react';
-import { IStyle } from '../../Styling';
-import { createComponent, IStyleProps, IViewProps } from './createComponent';
+import { IStyle, ITheme, IFontStyles, IPalette } from '../../Styling';
+import { TViewProps, createComponent } from '../../utilities/createComponent';
 import { IFontTypes, IFontFamilies, IFontSizes, IFontWeights, IFontColors } from './theming/ITypography';
+
+export type IStyleProps<TProps, TStyles> = TProps & {
+  theme: ITheme;
+};
 
 // Styles for the component
 export interface ITextStyles {
@@ -16,9 +20,9 @@ export interface ITextProps {
 
   type?: keyof IFontTypes;
   family?: keyof IFontFamilies;
-  size?: keyof IFontSizes;
+  size?: keyof IFontSizes | keyof IFontStyles;
   weight?: keyof IFontWeights;
-  color?: keyof IFontColors;
+  color?: keyof IFontColors | keyof IPalette;
 
   paletteSet?: string;
 
@@ -29,10 +33,12 @@ export interface ITextProps {
   shrink?: boolean;
 }
 
-const view = (props: IViewProps<ITextProps, ITextStyles>) => {
+export type ITextViewProps = TViewProps<ITextProps, ITextStyles>;
+
+const TextView = (props: ITextViewProps) => {
   const {
     block,
-    classNames,
+    className,
     color,
     family,
     grow,
@@ -44,17 +50,25 @@ const view = (props: IViewProps<ITextProps, ITextStyles>) => {
     wrap,
     ...rest
   } = props;
-
-  return <RootType {...rest} className={classNames.root} />;
+  return <RootType {...rest} className={props.styles.root} />;
 };
 
 const styles = (props: IStyleProps<ITextProps, ITextStyles>): ITextStyles => {
-  const { block, theme, wrap, grow, shrink, type, family, weight, size } = props;
-  const { typography } = theme;
-  const themeType = typography.types[type!] || {
-    fontFamily: typography.families[family!] || typography.families.default,
-    fontWeight: typography.weights[weight!] || typography.weights.default,
-    fontSize: typography.sizes[size!] || typography.sizes.medium
+  const { block, theme, wrap, grow, shrink, /* type, family, weight, */ size, color } = props;
+
+  const { palette, fonts /*, semanticColors, isInverted, typography */ } = theme;
+
+  const themeType = {
+    fontFamily:
+      /*typography.families[family!] || typography.families.default ||*/ fonts[size!].fontFamily ||
+      fonts.medium.fontFamily,
+    fontWeight:
+      /*typography.weights[weight!] || typography.weights.default ||*/ fonts[size!].fontWeight ||
+      fonts.medium.fontWeight,
+    fontSize: /*typography.sizes[size!] || typography.sizes.medium ||*/ fonts[size!].fontSize || fonts.medium.fontSize,
+    mozOsxFontSmoothing: fonts[size!].MozOsxFontSmoothing || fonts.medium.MozOsxFontSmoothing,
+    webkitFontSmoothing: fonts[size!].WebkitFontSmoothing || fonts.medium.WebkitFontSmoothing,
+    color: palette[color!] || palette.neutralPrimaryAlt
   };
 
   return {
@@ -80,9 +94,9 @@ const styles = (props: IStyleProps<ITextProps, ITextStyles>): ITextStyles => {
 };
 
 export const Text: React.StatelessComponent<ITextProps> = createComponent<ITextProps, ITextStyles>({
-  displayName: 'Text',
-  styles,
-  view
+  scope: 'Text',
+  styles: styles,
+  view: TextView
 });
 
 export default Text;
