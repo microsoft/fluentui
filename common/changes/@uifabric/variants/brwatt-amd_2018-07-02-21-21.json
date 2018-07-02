@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/variants",
+      "comment": "Bump variants and file-type-icons packages to restore amd build output",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/variants",
+  "email": "brwatt@microsoft.com"
+}
