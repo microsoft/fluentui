@@ -6,7 +6,6 @@ import {
   FontSizes,
   AnimationClassNames
 } from '../../Styling';
-import { getRTL } from '../../Utilities';
 import { IStyleBaseArray, IStyle } from '../../../../merge-styles/lib/IStyle';
 
 const GlobalClassNames = {
@@ -104,7 +103,6 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
     focusMetaTextColor: neutralDark
   };
 
-  const isRTL = getRTL();
   const thickBorderStyle = `${values.rowShimmerHorizontalBorder * 4} solid ${colors.defaultBackgroundColor}`;
   const thinBorderStyle = `${values.rowShimmerHorizontalBorder} solid ${colors.defaultBackgroundColor}`;
   const selectedStyles: IStyleBaseArray = [
