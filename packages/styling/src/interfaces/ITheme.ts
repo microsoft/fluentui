@@ -17,7 +17,7 @@ export interface ITheme {
    * Customizer will not get the global styles applied to them.
    */
   disableGlobalClassNames: boolean;
-  typography: ITypography;
+  typography?: ITypography;
 }
 
 export interface IPartialTheme {

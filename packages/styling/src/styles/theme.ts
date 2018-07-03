@@ -2,13 +2,16 @@ import { Customizations } from '@uifabric/utilities';
 import { IPalette, ISemanticColors, ITheme, IPartialTheme } from '../interfaces/index';
 import { DefaultFontStyles } from './DefaultFontStyles';
 import { DefaultPalette } from './DefaultPalette';
+import { DefaultTypography } from './DefaultTypography';
 import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
+import { IFontType } from '../interfaces/ITypography';
 
 let _theme: ITheme = {
   palette: DefaultPalette,
   semanticColors: _makeSemanticColorsFromPalette(DefaultPalette, false, false),
   fonts: DefaultFontStyles,
   isInverted: false,
+  typography: DefaultTypography,
   disableGlobalClassNames: false
 };
 let _onThemeChangeCallbacks: Array<(theme: ITheme) => void> = [];
@@ -105,6 +108,21 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
     ...theme.semanticColors
   };
 
+  if (theme.typography) {
+    const { types } = theme.typography;
+    for (const typeName in types) {
+      if (typeName) {
+        const type = types[typeName] as IFontType;
+        const { typography } = theme;
+
+        // type.color = swatches[type.color] || type.color || types.default.color || '';
+        type.fontFamily = typography.families[type.fontFamily] || type.fontFamily || types.default.fontFamily || '';
+        type.fontSize = typography.sizes[type.fontSize] || type.fontSize || types.default.fontSize || '';
+        type.fontWeight = typography.weights[type.fontWeight] || type.fontWeight || types.default.fontWeight || '';
+      }
+    }
+  }
+
   return {
     palette: newPalette,
     fonts: {
@@ -113,7 +131,8 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
     },
     semanticColors: newSemanticColors,
     isInverted: !!theme.isInverted,
-    disableGlobalClassNames: !!theme.disableGlobalClassNames
+    disableGlobalClassNames: !!theme.disableGlobalClassNames,
+    typography: theme.typography
   };
 }
 

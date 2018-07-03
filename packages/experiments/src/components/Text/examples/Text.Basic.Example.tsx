@@ -10,7 +10,9 @@ export class TextBasicExample extends React.Component<{}, {}> {
     return (
       <div>
         <div>
-          <Text size="small">Small Text</Text>
+          <Text size="small" weight="bold">
+            Small Text
+          </Text>
         </div>
         <div>
           <Text size="medium">Medium Text</Text>
@@ -22,7 +24,9 @@ export class TextBasicExample extends React.Component<{}, {}> {
           <Text size="xLarge">XLarge Text</Text>
         </div>
         <div>
-          <Text size="mega">Mega Text</Text>
+          <Text size="mega" weight="bold">
+            Mega Text
+          </Text>
         </div>
       </div>
     );
