@@ -180,6 +180,36 @@ describe('CommandBar', () => {
     expect(document.querySelector('.SubMenuClass')).toBeFalsy();
   });
 
+  it('passes overflowButton menuProps to the menu', () => {
+    const items = [
+      {
+        name: 'TestText 1',
+        key: 'TestKey1'
+      }
+    ];
+
+    const overFlowItems = [
+      {
+        name: 'TestText 2',
+        key: 'TestKey2'
+      }
+    ];
+
+    const commandBar = mount(
+      <CommandBar
+        overflowButtonProps={{ menuProps: { items: [], className: 'menuClassnameTest' } }}
+        overflowItems={overFlowItems}
+        items={items}
+      />
+    );
+
+    const overflowMenuItem = commandBar.find('.ms-CommandBar-overflowButton');
+
+    overflowMenuItem.hostNodes().simulate('click');
+
+    expect(document.querySelector('.menuClassnameTest')).toBeTruthy();
+  });
+
   it('updates menu after update if item is still present', () => {
     const items = [
       {
