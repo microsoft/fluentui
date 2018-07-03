@@ -23,14 +23,28 @@ export interface IDetailsRowFieldsState {
   columns: IColumn[];
   cellContent: React.ReactNode[];
   item: any;
-  /** 0: resting state
-   * 1: animating in new content
-   * 2: animating out old content
-   */
-  renderingPhase?: number;
+  renderingPhase?: DetailsRowFieldsRenderingPhase;
   oldColumns?: IColumn[];
   oldCellContent?: React.ReactNode[];
   oldItem?: any;
+}
+
+/* When a column gets new data, we animate the transition. The old data slides out
+  * and then the new data slides in. In order to do this, we remember the old data
+  * whenever new props come in, in getDerivedStateFromProps(). Then we do rendering
+  * in three phases:
+  * 2. OldContentOutgiong: Render with the old data and animate it sliding out
+  * 1. NewContentIncoming: Render the new data and slide it in
+  * 0. Rest: resting state, remove all animation classes
+  * Every render() call will move the rendering phase closer to the rest state.
+  * The phases go 2->1->0 with a delay inbetween each to allow the animation to
+  * complete. Each cell will also check to make sure it changed, if its contents
+  * did not change, then it will not do any animation.
+*/
+export const enum DetailsRowFieldsRenderingPhase {
+  OldContentOutgoing = 2,
+  NewContentIncoming = 1,
+  Rest = 0
 }
 
 export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDetailsRowFieldsState> {
@@ -89,18 +103,6 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
   public render(): JSX.Element {
     const { item, columns } = this.props;
     const { cellContent, renderingPhase, oldColumns, oldCellContent, oldItem } = this.state;
-
-    /* When a column gets new data, we animate the transition. The old data slides out
-     * and then the new data slides in. In order to do this, we remember the old data
-     * whenever new props come in, in getDerivedStateFromProps(). Then we do rendering
-     * in three phases:
-     * 2: Render with the old data and animate it sliding out
-     * 1: Render the new data and slide it in
-     * 0: resting state, remove all animation classes
-     * The phases go 2->1->0 with a delay inbetween each to allow the animation to
-     * complete. Each cell will also check to make sure it changed, if its contents
-     * did not change, then it will not do any animation.
-    */
 
     if (renderingPhase) {
       this._async.setTimeout(() => {

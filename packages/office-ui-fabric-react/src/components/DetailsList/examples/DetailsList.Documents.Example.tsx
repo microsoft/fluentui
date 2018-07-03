@@ -97,7 +97,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
     setInterval(() => {
       const newItems = this.state.items.slice();
       const i = Math.floor(Math.random() * 10);
-      newItems[i] = { ...newItems[i], ...{ modifiedBy: lorem(2) } };
+      newItems[i] = { ...newItems[i], ...{ modifiedBy: lorem(2), name: lorem(1) } };
       this.setState({ items: newItems });
       this.forceUpdate();
     }, 2000);
