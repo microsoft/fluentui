@@ -57,11 +57,11 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
   }
 
   public componentWillReceiveProps(newProps: IPanelProps): void {
-    if (newProps.isExternalDismiss) {
+    if (newProps.isBlocking) {
       if (newProps.isOpen) {
-        this._events.on(document, 'click', this._onExternalDismiss);
+        this._events.on(document, 'click', this._dismissOnOuterClick);
       } else {
-        this._events.off(document, 'click', this._onExternalDismiss);
+        this._events.off(document, 'click', this._dismissOnOuterClick);
       }
     }
 
@@ -309,7 +309,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     }
   }
 
-  private _onExternalDismiss(ev: any): void {
+  private _dismissOnOuterClick(ev: any): void {
     const panel = this._panel.current;
     if (this.state.isOpen && panel) {
       if (!panel.contains(ev.target)) {

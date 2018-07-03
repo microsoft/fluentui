@@ -10,7 +10,6 @@ import { PanelLargeFixedExample } from './examples/Panel.LargeFixed.Example';
 import { PanelExtraLargeExample } from './examples/Panel.ExtraLarge.Example';
 import { PanelCustomExample } from './examples/Panel.Custom.Example';
 import { PanelHiddenOnDismissExample } from './examples/Panel.HiddenOnDismiss.Example';
-import { PanelExternalDismissExample } from './examples/Panel.ExternalDismiss.Example';
 import { PanelLightDismissExample } from './examples/Panel.LightDismiss.Example';
 import { PanelLightDismissCustomExample } from './examples/Panel.LightDismissCustom.Example';
 import { PanelNonModalExample } from './examples/Panel.NonModal.Example';
@@ -26,7 +25,6 @@ const PanelLargeFixedExampleCode = require('!raw-loader!office-ui-fabric-react/s
 const PanelExtraLargeExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.ExtraLarge.Example.tsx') as string;
 const PanelCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.Custom.Example.tsx') as string;
 const PanelHiddenOnDismissExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.HiddenOnDismiss.Example.tsx') as string;
-const PanelExternalDismissExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.ExternalDismiss.Example.tsx') as string;
 const PanelLightDismissExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.LightDismiss.Example.tsx') as string;
 const PanelLightDismissCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.LightDismissCustom.Example.tsx') as string;
 const PanelNonModalExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.NonModal.Example.tsx') as string;
@@ -83,11 +81,6 @@ export const PanelPageProps: IDocPageProps = {
       title: 'Panel - Hidden on Dismiss',
       code: PanelHiddenOnDismissExampleCode,
       view: <PanelHiddenOnDismissExample />
-    },
-    {
-      title: 'Panel - External Dismiss',
-      code: PanelExternalDismissExampleCode,
-      view: <PanelExternalDismissExample />
     },
     {
       title: 'Panel - Light Dismiss',
