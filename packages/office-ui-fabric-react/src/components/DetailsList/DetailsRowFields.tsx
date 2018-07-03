@@ -93,7 +93,10 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
       cellContent: DetailsRowFields._getCellContent(nextProps),
       item: nextProps.item,
       // when first called after ctor, set it to 0, otherwise it's new data and set it to 2
-      renderingPhase: typeof this.state.renderingPhase === 'undefined' ? 0 : 2,
+      renderingPhase:
+        typeof this.state.renderingPhase === 'undefined'
+          ? DetailsRowFieldsRenderingPhase.Rest
+          : DetailsRowFieldsRenderingPhase.OldContentOutgoing,
       oldColumns: { ...{}, ...this.props.columns }, // get by value instead of by reference
       oldCellContent: DetailsRowFields._getCellContent(this.props),
       oldItem: { ...{}, ...this.props.item }
@@ -124,19 +127,19 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
               DetailsRowFields._getCellText(item, column) !== DetailsRowFields._getCellText(oldItem, oldColumn);
           }
           switch (renderingPhase) {
-            case 2:
+            case DetailsRowFieldsRenderingPhase.OldContentOutgoing:
               if (contentChanged) {
                 return this._renderCell(oldColumn!, columnIndex, oldCellContent!, AnimationClassNames.slideRightOut40);
               } else {
                 return this._renderCell(column, columnIndex, cellContent);
               }
-            case 1:
+            case DetailsRowFieldsRenderingPhase.NewContentIncoming:
               if (contentChanged) {
                 return this._renderCell(column, columnIndex, cellContent, AnimationClassNames.slideLeftIn40);
               } else {
                 return this._renderCell(column, columnIndex, cellContent);
               }
-            case 0:
+            case DetailsRowFieldsRenderingPhase.Rest:
             default:
               return this._renderCell(column, columnIndex, cellContent);
           }
