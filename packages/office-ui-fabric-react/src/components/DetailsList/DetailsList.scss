@@ -34,3 +34,21 @@ $detailsList-text-color: $listTextColor;
     min-height: 32px;
   }
 }
+
+/* Adding a fadding out overlay to emphasize that we don't know the number of items that will eventually be diplayed */
+.shimmerFadeOut {
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(
+      to bottom,
+      transparent 30%,
+      $ms-color-whiteTranslucent40 65%,
+      $ms-color-white 100%
+    );
+  }
+}

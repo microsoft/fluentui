@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Wed, 20 Jun 2018 10:25:55 GMT and should not be manually modified.
+This log was last generated on Fri, 29 Jun 2018 10:24:05 GMT and should not be manually modified.
+
+## 6.4.0
+Fri, 29 Jun 2018 10:24:05 GMT
+
+### Minor changes
+
+- Add neutralSecondaryAlt color.
 
 ## 6.3.0
 Wed, 20 Jun 2018 10:25:55 GMT
