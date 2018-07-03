@@ -1,7 +1,7 @@
 {
   "changes": [
     {
-      "comment": "Updated example file to show more type of cards with action bar",
+      "comment": "Consumed charts in dashboard cards and fixed styling issues, updating example in dgl",
       "packageName": "@uifabric/dashboard-grid-layout",
       "type": "none"
     }

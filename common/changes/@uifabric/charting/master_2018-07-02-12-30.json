@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/charting",
-      "comment": "Initial publish.",
+      "comment": "Add ! mark for typed props",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/charting",
-  "email": "dzearing@microsoft.com"
+  "email": "gorigarajesh@gmail.com"
 }
