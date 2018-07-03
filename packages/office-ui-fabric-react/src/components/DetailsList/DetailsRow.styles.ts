@@ -109,7 +109,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
   const selectedStyles: IStyleBaseArray = [
     getFocusStyle(theme, 0, undefined, undefined, themePrimary),
     classNames.isSelected,
-    checkClassNames.isSelected,
+    checkClassNames && checkClassNames.isSelected,
     {
       color: colors.selectedMetaTextColor,
       background: colors.selectedBackgroundColor,
@@ -308,8 +308,8 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
       classNames.root,
       AnimationClassNames.fadeIn400,
       droppingClassName,
-      anySelected && checkClassNames.anySelected,
-      isCheckVisible && checkClassNames.isVisible,
+      anySelected && checkClassNames && checkClassNames.anySelected,
+      isCheckVisible && checkClassNames && checkClassNames.isVisible,
       isCheckVisible && classNames.isCheckVisible,
       getFocusStyle(theme, 0, undefined, undefined, isSelected ? neutralSecondary : themePrimary),
       {

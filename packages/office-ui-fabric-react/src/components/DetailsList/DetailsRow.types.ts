@@ -42,12 +42,12 @@ export interface IDetailsRowProps extends React.Props<DetailsRowBase> {
 }
 
 export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & {
-  isSelected: boolean;
-  anySelected: boolean;
-  canSelect: boolean;
-  checkClassNames: IStyleSet;
-  droppingClassName: string;
-  isCheckVisible: boolean;
+  isSelected?: boolean;
+  anySelected?: boolean;
+  canSelect?: boolean;
+  checkClassNames?: IStyleSet;
+  droppingClassName?: string;
+  isCheckVisible?: boolean;
   isRowHeader?: boolean;
   checkboxCellClassName?: string;
   className?: string;

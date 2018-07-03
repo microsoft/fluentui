@@ -9,16 +9,17 @@ import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { CollapseAllVisibility } from '../../GroupedList';
 import { DetailsRowCheck } from './DetailsRowCheck';
 import { ITooltipHostProps } from '../../Tooltip';
-import * as checkStylesModule from './DetailsRowCheck.scss';
 import { IViewport } from '../../utilities/decorators/withViewport';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
 import * as stylesImport from './DetailsHeader.scss';
 import { IDragDropOptions } from './../../utilities/dragdrop/interfaces';
 import { DragDropHelper } from './../../utilities/dragdrop';
 import { DetailsColumn } from './../../components/DetailsList/DetailsColumn';
+import { getClassNames as getCheckClassNames } from './DetailsRowCheck.classNames';
+import { getStyles as getCheckStyles } from './DetailsRowCheck.styles';
+import { ITheme } from '../..';
 
 const styles: any = stylesImport;
-const checkStyles: any = checkStylesModule;
 
 const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
 const MOUSEMOVE_PRIMARY_BUTTON = 1; // for mouse move event we are using ev.buttons property, 1 means left button
@@ -29,6 +30,7 @@ export interface IDetailsHeader {
 
 export interface IDetailsHeaderProps extends React.Props<DetailsHeader> {
   componentRef?: (component: IDetailsHeader | null) => void;
+  theme?: ITheme;
   columns: IColumn[];
   selection: ISelection;
   selectionMode: SelectionMode;
@@ -205,7 +207,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
       viewport,
       columnReorderOptions,
       onColumnClick,
-      onColumnContextMenu
+      onColumnContextMenu,
+      theme
     } = this.props;
     const { isAllSelected, columnResizeDetails, isSizing, groupNestingDepth, isAllCollapsed } = this.state;
     const showCheckbox = selectAllVisibility !== SelectAllVisibility.none;
@@ -257,9 +260,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                   'ms-DetailsHeader-cell',
                   'ms-DetailsHeader-cellIsCheck',
                   styles.cell,
-                  styles.cellIsCheck,
-                  checkStyles.owner,
-                  isAllSelected && checkStyles.isSelected
+                  styles.cellIsCheck
                 )}
                 aria-labelledby={`${this._id}-check`}
                 onClick={this._onSelectAllClicked}
