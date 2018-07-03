@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/experiments",
+      "comment": "Minor tweak to FormDropdown component to make it compatible with tightened Dropdown API",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/experiments",
+  "email": "cliff.koh@microsoft.com"
+}
