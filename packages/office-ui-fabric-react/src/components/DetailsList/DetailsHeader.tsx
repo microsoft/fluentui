@@ -1,6 +1,16 @@
 import * as React from 'react';
 import { findDOMNode } from 'react-dom';
-import { BaseComponent, css, getRTL, getId, KeyCodes, IRenderFunction, createRef } from '../../Utilities';
+import {
+  BaseComponent,
+  css,
+  getRTL,
+  getId,
+  KeyCodes,
+  IRenderFunction,
+  createRef,
+  customizable,
+  IStyleFunctionOrObject
+} from '../../Utilities';
 import { IColumn, DetailsListLayoutMode, IColumnReorderOptions } from './DetailsList.types';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Icon } from '../../Icon';
@@ -15,6 +25,9 @@ import * as stylesImport from './DetailsHeader.scss';
 import { IDragDropOptions } from './../../utilities/dragdrop/interfaces';
 import { DragDropHelper } from './../../utilities/dragdrop';
 import { DetailsColumn } from './../../components/DetailsList/DetailsColumn';
+import { ITheme } from '../../Styling';
+import { getClassNames as getCheckClassNames } from './DetailsRowCheck.classNames';
+import { getStyles as getCheckStyles } from './DetailsRowCheck.styles';
 
 const styles: any = stylesImport;
 
@@ -26,6 +39,7 @@ export interface IDetailsHeader {
 }
 
 export interface IDetailsHeaderProps extends React.Props<DetailsHeader> {
+  theme?: ITheme;
   componentRef?: (component: IDetailsHeader | null) => void;
   columns: IColumn[];
   selection: ISelection;
@@ -80,6 +94,7 @@ export interface IDropHintDetails {
   dropHintElementRef: HTMLElement; // Reference for drophint to change the style when needed
 }
 
+@customizable('DetailsListHeader', ['theme'])
 export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHeaderState> implements IDetailsHeader {
   public static defaultProps = {
     selectAllVisibility: SelectAllVisibility.visible,
@@ -203,7 +218,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
       viewport,
       columnReorderOptions,
       onColumnClick,
-      onColumnContextMenu
+      onColumnContextMenu,
+      theme
     } = this.props;
     const { isAllSelected, columnResizeDetails, isSizing, groupNestingDepth, isAllCollapsed } = this.state;
     const showCheckbox = selectAllVisibility !== SelectAllVisibility.none;
@@ -228,6 +244,16 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
       columnReorderOptions && columnReorderOptions!.frozenColumnCountFromEnd
         ? columnReorderOptions!.frozenColumnCountFromEnd!
         : 0;
+
+    const checkClassNames = getCheckClassNames(
+      getCheckStyles({
+        theme: theme!,
+        canSelect: true,
+        selected: isAllSelected,
+        isVisible: !isCheckboxHidden,
+        compact: true
+      })
+    );
 
     return (
       <FocusZone
@@ -270,6 +296,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                     content: ariaLabelForSelectAllCheckbox,
                     children: (
                       <DetailsRowCheck
+                        theme={theme}
                         id={`${this._id}-check`}
                         aria-label={ariaLabelForSelectionColumn}
                         aria-describedby={`${this._id}-checkTooltip`}
@@ -278,6 +305,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                         selected={isAllSelected}
                         anySelected={false}
                         canSelect={!isCheckboxHidden}
+                        rowCheckClassNames={checkClassNames}
                       />
                     )
                   },

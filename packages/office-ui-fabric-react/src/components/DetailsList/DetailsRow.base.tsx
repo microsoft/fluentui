@@ -191,9 +191,10 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowProps, IDetailsRowS
       getCheckStyles({
         theme: theme!,
         selected: isSelected,
-        canSelect: !isContentUnselectable,
+        canSelect,
         anySelected: isSelectionModal,
-        isVisible: checkboxVisibility === CheckboxVisibility.always
+        isVisible: checkboxVisibility === CheckboxVisibility.always,
+        compact
       })
     );
 
@@ -239,7 +240,7 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowProps, IDetailsRowS
         role="row"
         aria-label={ariaLabel}
         ariaDescribedBy={ariaDescribedBy}
-        className={classNames.root}
+        className={css(classNames.root, checkClassNames.owner)}
         data-is-focusable={true}
         data-selection-index={itemIndex}
         data-item-index={itemIndex}
@@ -258,7 +259,9 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowProps, IDetailsRowS
               anySelected: isSelectionModal,
               title: checkButtonAriaLabel,
               canSelect,
-              compact
+              compact,
+              rowCheckClassNames: checkClassNames,
+              theme
             })}
           </div>
         )}

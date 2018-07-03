@@ -5,21 +5,24 @@ import { IsFocusVisibleClassName } from '@uifabric/utilities';
 const GlobalClassNames = {
   root: 'ms-DetailsRow-check',
   isDisabled: 'ms-DetailsRow-check--isDisabled',
-  isHeader: 'ms-DetailsRow-check--isHeader',
-  compact: 'ms-DetailsList--Compact'
+  isHeader: 'ms-DetailsRow-check--isHeader'
 };
 
 export const getStyles = (props: IDetailsRowCheckStyleProps): IDetailsRowCheckStyles => {
-  const { theme, className, isHeader, isVisible, selected, anySelected, canSelect, compact } = props;
+  const { theme, className, isHeader, selected, anySelected, canSelect, compact } = props;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
+  const isVisible = selected || anySelected;
 
   return {
     root: [
       classNames.root,
       !canSelect && [classNames.isDisabled, { visibility: 'hidden' }],
       isHeader && classNames.isHeader,
+      isVisible && { opacity: 1 },
       className
     ],
+
     check: [
       getFocusStyle(theme),
       {
@@ -33,29 +36,29 @@ export const getStyles = (props: IDetailsRowCheckStyleProps): IDetailsRowCheckSt
         backgroundColor: 'transparent',
         border: 'none',
         opacity: 0,
-        height: 40,
+        height: compact ? 32 : 40,
         width: 40,
         padding: 0,
         margin: 0,
         selectors: {
+          '$owner:hover &': {
+            opacity: 1
+          },
           '&:hover': {
             opacity: 1
           },
           '&.isHeader': {
             height: 32
           },
-          [IsFocusVisibleClassName]: {
+          [`${IsFocusVisibleClassName} &`]: {
             opacity: 1
           }
         }
-      },
-      compact && {
-        height: 32
-      },
-      (selected || isVisible || anySelected) && {
-        opacity: '1'
       }
     ],
+
+    owner: [],
+
     isDisabled: []
   };
 };

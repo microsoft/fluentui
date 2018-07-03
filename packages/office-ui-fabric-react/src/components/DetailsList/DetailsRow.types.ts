@@ -169,7 +169,6 @@ export interface IDetailsRowStyles {
   root: IStyle;
   cell: IStyle;
   checkCell: IStyle;
-  check: IStyle;
   isRowHeader: IStyle;
   isPadded: IStyle;
   isMultiline: IStyle;

@@ -349,7 +349,6 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
         whiteSpace: 'nowrap'
       }
     ],
-    check: [compact && checkCompactStyles],
     checkCell: [
       defaultCellStyles,
       classNames.cellCheck,
