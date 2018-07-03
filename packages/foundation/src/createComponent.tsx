@@ -9,11 +9,12 @@ export interface IThemeProps<TTheme> {
 export type IStyleFunction<TTheme, TStylesProps extends IThemeProps<TTheme>, TStyles> = (
   props: TStylesProps
 ) => TStyles;
-export type TStateProps<TProps> = TProps & { view: (props: TProps) => JSX.Element };
-export type TStylesProp<TTheme, TProps extends IThemeProps<TTheme>, TStyles> =
+
+export type IStateProps<TProps> = TProps & { view: (props: TProps) => JSX.Element };
+export type IStylesProp<TTheme, TProps extends IThemeProps<TTheme>, TStyles> =
   | IStyleFunction<TTheme, TProps, TStyles>
   | TStyles;
-export type TViewProps<TProps, TStylesSet> = TProps & { styles: TStylesSet };
+export type IViewProps<TProps, TStylesSet> = TProps & { styles: TStylesSet };
 
 export interface IAugmentations<TUserProps extends IThemeProps<TTheme>, TStyles, TStyleSet, TTheme> {
   [scope: string]: IComponentOptions<TUserProps, TStyles, TStyleSet, TTheme>;
@@ -21,9 +22,9 @@ export interface IAugmentations<TUserProps extends IThemeProps<TTheme>, TStyles,
 
 export interface IComponentOptions<TUserProps, TStyles, TStyleSet, TTheme> {
   scope: string;
-  state?: React.ComponentType<TStateProps<TUserProps>>;
-  styles: TStylesProp<TTheme, TUserProps & IThemeProps<TTheme>, TStyles>;
-  view: React.ComponentType<TViewProps<TUserProps, TStyleSet>>;
+  state?: React.ComponentType<IStateProps<TUserProps>>;
+  styles: IStylesProp<TTheme, TUserProps & IThemeProps<TTheme>, TStyles>;
+  view: React.ComponentType<IViewProps<TUserProps, TStyleSet>>;
 }
 
 export interface IStylingProviders<TTheme, TStyles, TStyleSet> {
@@ -45,7 +46,7 @@ export function createComponentWithProviders<TProps, TStyles, TStyleSet, TTheme>
     const augmented: IComponentOptions<TProps, TStyles, TStyleSet, TTheme> = _augmentations[options.scope] || {};
     const StateComponent = augmented.state || options.state;
     const ViewComponent = augmented.view || options.view;
-    const getStyles: TStylesProp<TTheme, TProps & IThemeProps<TTheme>, TStyles> = augmented.styles || options.styles;
+    const getStyles: IStylesProp<TTheme, TProps & IThemeProps<TTheme>, TStyles> = augmented.styles || options.styles;
     const theme = providers.getTheme();
 
     ViewComponent.displayName = ViewComponent.displayName || options.scope + 'View';

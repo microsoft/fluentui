@@ -78,7 +78,7 @@ module.exports = {
       {
         devServer: {
           inline: true,
-          port: 4323
+          port: 4322
         },
 
         mode: 'development',
