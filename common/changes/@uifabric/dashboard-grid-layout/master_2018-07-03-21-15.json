@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "Fixing loading of css stylesheets from rgl using style-loader",
+      "packageName": "@uifabric/dashboard-grid-layout",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/dashboard-grid-layout",
+  "email": "saakhta@microsoft.com"
+}
