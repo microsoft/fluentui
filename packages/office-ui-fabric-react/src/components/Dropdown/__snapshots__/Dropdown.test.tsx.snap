@@ -86,7 +86,7 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
     <span
       aria-atomic={true}
       aria-label={undefined}
-      aria-live="assertive"
+      aria-live="off"
       aria-posinset={undefined}
       aria-selected={undefined}
       aria-setsize={6}

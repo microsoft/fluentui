@@ -113,7 +113,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
         <span
           aria-atomic={true}
           aria-label="Normal"
-          aria-live="assertive"
+          aria-live="off"
           aria-posinset={1}
           aria-selected={true}
           aria-setsize={7}
