@@ -39,6 +39,8 @@ export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveM
 export interface IDropdownState {
   isOpen: boolean;
   selectedIndices: number[];
+  /** Whether the root dropdown element has focus. */
+  hasFocus: boolean;
 }
 
 @withResponsiveMode
@@ -91,7 +93,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
     this.state = {
       isOpen: false,
-      selectedIndices
+      selectedIndices,
+      hasFocus: false
     };
   }
 
@@ -147,7 +150,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       onRenderPlaceHolder = this._onRenderPlaceHolder,
       onRenderCaretDown = this._onRenderCaretDown
     } = this.props;
-    const { isOpen, selectedIndices } = this.state;
+    const { isOpen, selectedIndices, hasFocus } = this.state;
     const selectedOptions = this._getAllSelectedOptions(options, selectedIndices);
     const divProps = getNativeProps(this.props, divProperties);
 
@@ -228,7 +231,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
                 )}
                 aria-atomic={true}
                 role={ariaAttrs.childRole}
-                aria-live={disabled || multiSelect || isOpen ? 'off' : 'assertive'}
+                aria-live={!hasFocus || disabled || multiSelect || isOpen ? 'off' : 'assertive'}
                 aria-label={selectedOptions.length ? selectedOptions[0].text : this.props.placeHolder}
                 aria-setsize={ariaAttrs.ariaSetSize}
                 aria-posinset={ariaAttrs.ariaPosInSet}
@@ -695,6 +698,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   private _onDropdownBlur = (ev: React.FocusEvent<HTMLDivElement>): void => {
+    // hasFocus tracks whether the root element has focus so always update the state.
+    this.setState({ hasFocus: false });
+
     if (this.state.isOpen) {
       // Do not onBlur when the callout is opened
       return;
@@ -918,6 +924,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       // Per aria
       this._moveIndex(1, 0, -1);
     }
+
+    this.setState({ hasFocus: true });
     return;
   };
 }
