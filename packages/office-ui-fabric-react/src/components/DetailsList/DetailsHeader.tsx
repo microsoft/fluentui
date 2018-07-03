@@ -15,9 +15,6 @@ import * as stylesImport from './DetailsHeader.scss';
 import { IDragDropOptions } from './../../utilities/dragdrop/interfaces';
 import { DragDropHelper } from './../../utilities/dragdrop';
 import { DetailsColumn } from './../../components/DetailsList/DetailsColumn';
-import { getClassNames as getCheckClassNames } from './DetailsRowCheck.classNames';
-import { getStyles as getCheckStyles } from './DetailsRowCheck.styles';
-import { ITheme } from '../..';
 
 const styles: any = stylesImport;
 
@@ -30,7 +27,6 @@ export interface IDetailsHeader {
 
 export interface IDetailsHeaderProps extends React.Props<DetailsHeader> {
   componentRef?: (component: IDetailsHeader | null) => void;
-  theme?: ITheme;
   columns: IColumn[];
   selection: ISelection;
   selectionMode: SelectionMode;
@@ -207,8 +203,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
       viewport,
       columnReorderOptions,
       onColumnClick,
-      onColumnContextMenu,
-      theme
+      onColumnContextMenu
     } = this.props;
     const { isAllSelected, columnResizeDetails, isSizing, groupNestingDepth, isAllCollapsed } = this.state;
     const showCheckbox = selectAllVisibility !== SelectAllVisibility.none;

@@ -21,7 +21,8 @@ import {
   IDetailsListProps
 } from '../DetailsList/DetailsList.types';
 import { DetailsHeader, IDetailsHeader, SelectAllVisibility, IDetailsHeaderProps } from '../DetailsList/DetailsHeader';
-import { DetailsRow, IDetailsRowProps } from '../DetailsList/DetailsRow';
+import { DetailsRowBase } from '../DetailsList/DetailsRow.base';
+import { IDetailsRowProps } from '../DetailsList/DetailsRow.types';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import {
   ISelectionZone,
@@ -83,7 +84,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   private _selectionZone = createRef<ISelectionZone>();
 
   private _selection: ISelection;
-  private _activeRows: { [key: string]: DetailsRow };
+  private _activeRows: { [key: string]: DetailsRowBase };
   private _dragDropHelper: DragDropHelper | null;
   private _initialFocusedIndex: number | undefined;
   private _pendingForceUpdate: boolean;
@@ -457,7 +458,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   }
 
   protected _onRenderRow = (props: IDetailsRowProps, defaultRender?: any): JSX.Element => {
-    return <DetailsRow {...props} />;
+    return <DetailsRowBase {...props} />;
   };
 
   private _onRenderDetailsHeader = (
@@ -568,7 +569,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     return level;
   }
 
-  private _onRowDidMount(row: DetailsRow): void {
+  private _onRowDidMount(row: DetailsRowBase): void {
     const { item, itemIndex } = row.props;
     const itemKey = this._getItemKey(item, itemIndex);
     this._activeRows[itemKey] = row; // this is used for column auto resize
@@ -581,7 +582,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     }
   }
 
-  private _setFocusToRowIfPending(row: DetailsRow): void {
+  private _setFocusToRowIfPending(row: DetailsRowBase): void {
     const { itemIndex } = row.props;
     if (this._initialFocusedIndex !== undefined && itemIndex === this._initialFocusedIndex) {
       this._setFocusToRow(row);
@@ -589,7 +590,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     }
   }
 
-  private _setFocusToRow(row: DetailsRow, forceIntoFirstElement: boolean = false): void {
+  private _setFocusToRow(row: DetailsRowBase, forceIntoFirstElement: boolean = false): void {
     if (this._selectionZone.current) {
       this._selectionZone.current.ignoreNextFocus();
     }
@@ -598,7 +599,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     }, 0);
   }
 
-  private _onRowWillUnmount(row: DetailsRow): void {
+  private _onRowWillUnmount(row: DetailsRowBase): void {
     const { onRowWillUnmount } = this.props;
 
     const { item, itemIndex } = row.props;
