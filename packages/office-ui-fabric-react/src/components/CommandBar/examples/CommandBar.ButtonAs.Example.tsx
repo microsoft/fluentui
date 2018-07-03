@@ -30,7 +30,7 @@ export class CommandBarButtonAsExample extends React.Component<ICommandBarProps,
         <CommandBar
           overflowButtonProps={{
             menuProps: {
-              items: [], // Items must be passed for typesafety, but
+              items: [], // Items must be passed for typesafety, but commandBar will determine items rendered in overflow
               isBeakVisible: true,
               beakWidth: 10,
               gapSpace: 10
