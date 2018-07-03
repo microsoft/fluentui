@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ICollapsibleSectionProps, ICollapsibleSectionStyles } from './CollapsibleSection.types';
 import { RefObject } from 'office-ui-fabric-react';
-import { TViewProps } from '../../utilities/createComponent';
+import { TViewProps } from '../../Foundation';
 
 export interface ICollapsibleSectionViewOnlyProps {
   collapsed: boolean;

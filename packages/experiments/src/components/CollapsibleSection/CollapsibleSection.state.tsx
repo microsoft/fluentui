@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ICollapsibleSectionProps, ICollapsibleSectionStyles } from './CollapsibleSection.types';
 import { createRef } from 'office-ui-fabric-react';
-import { TStateProps } from '../../utilities/createComponent';
+import { TStateProps } from '../../Foundation';
 import { getRTL, KeyCodes } from '../../Utilities';
 
 export interface ICollapsibleSectionState {

@@ -1,4 +1,5 @@
-import { createComponent } from '../../utilities/createComponent';
+// TODO: figure out how to centralize this for use throughout OUFR
+import { createComponent } from '../../Foundation';
 import { CollapsibleSectionView } from './CollapsibleSection.view';
 import { CollapsibleSectionState } from './CollapsibleSection.state';
 import { getStyles as styles } from './CollapsibleSection.styles';
