@@ -353,17 +353,22 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
     labelWrapper: [
       classNames.labelWrapper,
       (hasIcon || hasImage) && {
-        display: 'block',
+        display: 'flex',
+        flexDirection: 'row',
         position: 'relative',
         margin: '4px 8px',
-        height: labelWrapperLineHeight * 2,
+        height: labelWrapperLineHeight * 2 + 1, // The +1 is to avoid cutting off too much text descender
         lineHeight: labelWrapperLineHeight,
         overflow: 'hidden',
-        whiteSpace: 'pre-wrap',
-        textOverflow: 'ellipsis',
+        wordBreak: 'break-all',
         fontSize: FontSizes.medium,
         fontWeight: FontWeights.regular
       }
-    ]
+    ],
+    labelOverflowWrapper: {
+      display: 'inline-block',
+      alignSelf: 'flex-end',
+      paddingBottom: '2px'
+    }
   };
 };

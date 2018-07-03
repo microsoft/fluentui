@@ -1,22 +1,44 @@
 import * as React from 'react';
 import { Image } from '../../Image';
 import { Icon } from '../../Icon';
+import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
 import { IClassNames } from '@uifabric/utilities/lib/IClassNames';
 import {
   IChoiceGroupOptionProps,
   IChoiceGroupOptionStyleProps,
   IChoiceGroupOptionStyles
 } from './ChoiceGroupOption.types';
-import { BaseComponent, classNamesFunction, getNativeProps, inputProperties, createRef } from '../../../Utilities';
+import {
+  BaseComponent,
+  classNamesFunction,
+  getNativeProps,
+  inputProperties,
+  createRef,
+  hasOverflow
+} from '../../../Utilities';
 
 const getClassNames = classNamesFunction<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>();
+const defaultImageSize = 32;
 
-export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps, any> {
+export interface IChoiceGroupOptionState {
+  hasOverflow?: boolean;
+}
+
+export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps, IChoiceGroupOptionState> {
   private _inputElement = createRef<HTMLInputElement>();
   private _classNames: IClassNames<IChoiceGroupOptionStyles>;
+  private _labelWrapperElementList: HTMLDivElement[] = [];
 
   constructor(props: IChoiceGroupOptionProps) {
     super(props);
+
+    this.state = {
+      hasOverflow: false
+    };
+  }
+
+  public componentDidMount(): void {
+    this._calculateLabelTextOverflow();
   }
 
   public render(): JSX.Element {
@@ -26,7 +48,7 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
       theme,
       iconProps,
       imageSrc,
-      imageSize = { width: 32, height: 32 },
+      imageSize = { width: defaultImageSize, height: defaultImageSize },
       disabled,
       checked,
       id,
@@ -94,7 +116,11 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
   private _onRenderField = (props: IChoiceGroupOptionProps): JSX.Element => {
     const { onRenderLabel = this._onRenderLabel, id, imageSrc, imageAlt, selectedImageSrc, iconProps } = props;
 
-    const imageSize = props.imageSize ? props.imageSize : { width: 32, height: 32 };
+    const imageSize = props.imageSize ? props.imageSize : { width: defaultImageSize, height: defaultImageSize };
+    // We want to size the labelWrapper in relation to the imageSize width.
+    // The extra 8px allows for images with the defaultImageSize to fit 9 letters in a row before word breaking,
+    // thus minimizing the frequency of word break.
+    const labelWrapperMaxWidth = imageSize.width * 2 + 8;
 
     return (
       <label htmlFor={id} className={this._classNames.field}>
@@ -121,8 +147,20 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
           </div>
         ) : null}
         {imageSrc || iconProps ? (
-          <div className={this._classNames.labelWrapper} style={{ maxWidth: imageSize.width * 2 }}>
-            {onRenderLabel!(props)}
+          <div
+            className={this._classNames.labelWrapper}
+            style={{
+              maxWidth: labelWrapperMaxWidth
+            }}
+          >
+            <div
+              ref={el => {
+                this._onLabelWrapperRef(el);
+              }}
+            >
+              {onRenderLabel!(props)}
+            </div>
+            {this.state.hasOverflow && <span className={this._classNames.labelOverflowWrapper}>...</span>}
           </div>
         ) : (
           onRenderLabel!(props)
@@ -131,11 +169,38 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
     );
   };
 
+  private _onLabelWrapperRef(element: HTMLDivElement | null): void {
+    if (element) {
+      this._labelWrapperElementList.push(element);
+    }
+  }
+
+  private _calculateLabelTextOverflow = (): void => {
+    if (!this._labelWrapperElementList) {
+      return;
+    }
+    for (let labelListIndex = 0; labelListIndex < this._labelWrapperElementList.length; labelListIndex++) {
+      const labelElement = this._labelWrapperElementList[labelListIndex];
+      if (labelElement && hasOverflow(labelElement)) {
+        // This state allows adding an ellipsis to the labelWrapper if text is overflowing
+        this.setState({
+          hasOverflow: true
+        });
+      }
+    }
+  };
+
   private _onRenderLabel = (props: IChoiceGroupOptionProps): JSX.Element => {
+    const imageSize = props.imageSize;
+    const paddingBorderTop = 28; // includes padding, border, margin from styles
+    const gapSpace = (imageSize && imageSize.height ? imageSize.height : defaultImageSize) + paddingBorderTop;
+
     return (
-      <span id={props.labelId} className="ms-Label">
-        {props.text}
-      </span>
+      <TooltipHost overflowMode={TooltipOverflowMode.Parent} calloutProps={{ gapSpace: gapSpace }} content={props.text}>
+        <span id={props.labelId} className="ms-Label">
+          {props.text}
+        </span>
+      </TooltipHost>
     );
   };
 }
