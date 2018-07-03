@@ -3,7 +3,6 @@ import { HighContrastSelector, FontSizes, FontWeights, getGlobalClassNames } fro
 import { personaSize, sizeBoolean } from '../PersonaConsts';
 
 const GlobalClassNames = {
-  coin: 'ms-Persona-coin',
   imageArea: 'ms-Persona-imageArea',
   image: 'ms-Persona-image',
   initials: 'ms-Persona-initials',
@@ -33,7 +32,6 @@ export const getStyles = (props: IPersonaCoinStyleProps): IPersonaCoinStyles => 
 
   return {
     coin: [
-      classNames.coin,
       theme.fonts.medium,
       size.isSize10 && classNames.size10,
       size.isSize16 && classNames.size16,

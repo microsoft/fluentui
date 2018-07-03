@@ -238,43 +238,30 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
     size={9}
     style={undefined}
   >
-    <div
+    <i
+      aria-hidden={true}
       className=
-          ms-Persona-coin
-          ms-Persona--size10
+
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
+            display: inline-block;
+            font-family: "FabricMDL2Icons-0";
+            font-size: 10px;
+            font-style: normal;
+            font-weight: normal;
+            left: 0px;
+            position: absolute;
+            right: auto;
+            speak: none;
+            top: 5px;
           }
+      data-icon-name="Contact"
+      role="presentation"
       size={9}
     >
-      <i
-        aria-hidden={true}
-        className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              display: inline-block;
-              font-family: "FabricMDL2Icons-0";
-              font-size: 10px;
-              font-style: normal;
-              font-weight: normal;
-              left: 0px;
-              position: absolute;
-              right: auto;
-              speak: none;
-              top: 5px;
-            }
-        data-icon-name="Contact"
-        role="presentation"
-      >
-        
-      </i>
-    </div>
+      
+    </i>
     <div
       className=
           ms-Persona-details
@@ -450,45 +437,31 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
   >
     <div
       className=
-          ms-Persona-coin
-          ms-Persona--size10
+          ms-Persona-presence
           {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
+            -ms-high-contrast-adjust: none;
+            background-clip: content-box;
+            background-color: #93ABBD;
+            border-radius: 50%;
+            border: 0px;
+            bottom: -2px;
+            box-sizing: content-box;
+            height: 8px;
+            left: 0px;
+            position: absolute;
+            right: auto;
+            text-align: center;
+            top: 7px;
+            width: 8px;
           }
-      size={9}
-    >
-      <div
-        className=
-            ms-Persona-presence
-            {
-              -ms-high-contrast-adjust: none;
-              background-clip: content-box;
-              background-color: #93ABBD;
-              border-radius: 50%;
-              border: 0px;
-              bottom: -2px;
-              box-sizing: content-box;
-              height: 8px;
-              left: 0px;
-              position: absolute;
-              right: auto;
-              text-align: center;
-              top: 7px;
-              width: 8px;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              background-color: WindowText;
-              border-color: Window;
-              border: 1px solid WindowText;
-              top: 9px;
-            }
-        style={undefined}
-      />
-    </div>
+          @media screen and (-ms-high-contrast: active){& {
+            background-color: WindowText;
+            border-color: Window;
+            border: 1px solid WindowText;
+            top: 9px;
+          }
+      style={undefined}
+    />
     <div
       className=
           ms-Persona-details
@@ -664,101 +637,93 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
   >
     <div
       className=
-          ms-Persona-coin
-          ms-Persona--size24
+          ms-Persona-imageArea
           {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
+            flex: 0 0 auto;
+            height: 24px;
+            position: relative;
+            text-align: center;
+            width: 24px;
           }
-      size={10}
+      style={undefined}
     >
       <div
         className=
-            ms-Persona-imageArea
+            ms-Image
+            ms-Persona--size24
+            ms-Persona-image
             {
-              flex: 0 0 auto;
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              border-radius: 50%;
+              border: 0px;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               height: 24px;
-              position: relative;
-              text-align: center;
+              left: 0px;
+              margin-right: 10px;
+              overflow: hidden;
+              perspective: 1px;
+              position: absolute;
+              top: 0px;
               width: 24px;
             }
-        style={undefined}
-      >
-        <div
-          className=
-              ms-Image
-              ms-Persona-image
-              {
-                border-radius: 50%;
-                border: 0px;
-                height: 24px;
-                left: 0px;
-                margin-right: 10px;
-                overflow: hidden;
-                perspective: 1px;
-                position: absolute;
-                top: 0px;
-                width: 24px;
-              }
-          style={
-            Object {
-              "height": 24,
-              "width": 24,
-            }
+        style={
+          Object {
+            "height": 24,
+            "width": 24,
           }
-        >
-          <img
-            alt=""
-            className=
-                ms-Image-image
-                ms-Image-image--cover
-                ms-Image-image--portrait
-                is-notLoaded
-                is-fadeIn
-                {
-                  display: block;
-                  height: auto;
-                  left: 50% /* @noflip */;
-                  opacity: 0;
-                  position: absolute;
-                  top: 50%;
-                  transform: translate(-50%,-50%);
-                  width: 100%;
-                }
-            onError={[Function]}
-            onLoad={[Function]}
-            role={undefined}
-            src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
-          />
-        </div>
-        <div
+        }
+      >
+        <img
+          alt=""
           className=
-              ms-Persona-presence
+              ms-Image-image
+              ms-Image-image--cover
+              ms-Image-image--portrait
+              is-notLoaded
+              is-fadeIn
               {
-                -ms-high-contrast-adjust: none;
-                background-clip: content-box;
-                background-color: #7FBA00;
-                border-radius: 50%;
-                border: 2px solid #ffffff;
-                bottom: -2px;
-                box-sizing: content-box;
-                height: 8px;
+                display: block;
+                height: auto;
+                left: 50% /* @noflip */;
+                opacity: 0;
                 position: absolute;
-                right: -2px;
-                text-align: center;
-                top: auto;
-                width: 8px;
+                top: 50%;
+                transform: translate(-50%,-50%);
+                width: 100%;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                background-color: Highlight;
-                border-color: Window;
-              }
-          style={undefined}
+          onError={[Function]}
+          onLoad={[Function]}
+          role={undefined}
+          src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
         />
       </div>
+      <div
+        className=
+            ms-Persona-presence
+            {
+              -ms-high-contrast-adjust: none;
+              background-clip: content-box;
+              background-color: #7FBA00;
+              border-radius: 50%;
+              border: 2px solid #ffffff;
+              bottom: -2px;
+              box-sizing: content-box;
+              height: 8px;
+              position: absolute;
+              right: -2px;
+              text-align: center;
+              top: auto;
+              width: 8px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              background-color: Highlight;
+              border-color: Window;
+            }
+        style={undefined}
+      />
     </div>
     <div
       className=
@@ -934,101 +899,93 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
   >
     <div
       className=
-          ms-Persona-coin
-          ms-Persona--size28
+          ms-Persona-imageArea
           {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
+            flex: 0 0 auto;
+            height: 28px;
+            position: relative;
+            text-align: center;
+            width: 28px;
           }
-      size={7}
+      style={undefined}
     >
       <div
         className=
-            ms-Persona-imageArea
+            ms-Image
+            ms-Persona--size28
+            ms-Persona-image
             {
-              flex: 0 0 auto;
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              border-radius: 50%;
+              border: 0px;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               height: 28px;
-              position: relative;
-              text-align: center;
+              left: 0px;
+              margin-right: 10px;
+              overflow: hidden;
+              perspective: 1px;
+              position: absolute;
+              top: 0px;
               width: 28px;
             }
-        style={undefined}
-      >
-        <div
-          className=
-              ms-Image
-              ms-Persona-image
-              {
-                border-radius: 50%;
-                border: 0px;
-                height: 28px;
-                left: 0px;
-                margin-right: 10px;
-                overflow: hidden;
-                perspective: 1px;
-                position: absolute;
-                top: 0px;
-                width: 28px;
-              }
-          style={
-            Object {
-              "height": 28,
-              "width": 28,
-            }
+        style={
+          Object {
+            "height": 28,
+            "width": 28,
           }
-        >
-          <img
-            alt=""
-            className=
-                ms-Image-image
-                ms-Image-image--cover
-                ms-Image-image--portrait
-                is-notLoaded
-                is-fadeIn
-                {
-                  display: block;
-                  height: auto;
-                  left: 50% /* @noflip */;
-                  opacity: 0;
-                  position: absolute;
-                  top: 50%;
-                  transform: translate(-50%,-50%);
-                  width: 100%;
-                }
-            onError={[Function]}
-            onLoad={[Function]}
-            role={undefined}
-            src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
-          />
-        </div>
-        <div
+        }
+      >
+        <img
+          alt=""
           className=
-              ms-Persona-presence
+              ms-Image-image
+              ms-Image-image--cover
+              ms-Image-image--portrait
+              is-notLoaded
+              is-fadeIn
               {
-                -ms-high-contrast-adjust: none;
-                background-clip: content-box;
-                background-color: #7FBA00;
-                border-radius: 50%;
-                border: 2px solid #ffffff;
-                bottom: -2px;
-                box-sizing: content-box;
-                height: 8px;
+                display: block;
+                height: auto;
+                left: 50% /* @noflip */;
+                opacity: 0;
                 position: absolute;
-                right: -2px;
-                text-align: center;
-                top: auto;
-                width: 8px;
+                top: 50%;
+                transform: translate(-50%,-50%);
+                width: 100%;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                background-color: Highlight;
-                border-color: Window;
-              }
-          style={undefined}
+          onError={[Function]}
+          onLoad={[Function]}
+          role={undefined}
+          src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
         />
       </div>
+      <div
+        className=
+            ms-Persona-presence
+            {
+              -ms-high-contrast-adjust: none;
+              background-clip: content-box;
+              background-color: #7FBA00;
+              border-radius: 50%;
+              border: 2px solid #ffffff;
+              bottom: -2px;
+              box-sizing: content-box;
+              height: 8px;
+              position: absolute;
+              right: -2px;
+              text-align: center;
+              top: auto;
+              width: 8px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              background-color: Highlight;
+              border-color: Window;
+            }
+        style={undefined}
+      />
     </div>
     <div
       className=
@@ -1204,101 +1161,93 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
   >
     <div
       className=
-          ms-Persona-coin
-          ms-Persona--size32
+          ms-Persona-imageArea
           {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
+            flex: 0 0 auto;
+            height: 32px;
+            position: relative;
+            text-align: center;
+            width: 32px;
           }
-      size={11}
+      style={undefined}
     >
       <div
         className=
-            ms-Persona-imageArea
+            ms-Image
+            ms-Persona--size32
+            ms-Persona-image
             {
-              flex: 0 0 auto;
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              border-radius: 50%;
+              border: 0px;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               height: 32px;
-              position: relative;
-              text-align: center;
+              left: 0px;
+              margin-right: 10px;
+              overflow: hidden;
+              perspective: 1px;
+              position: absolute;
+              top: 0px;
               width: 32px;
             }
-        style={undefined}
-      >
-        <div
-          className=
-              ms-Image
-              ms-Persona-image
-              {
-                border-radius: 50%;
-                border: 0px;
-                height: 32px;
-                left: 0px;
-                margin-right: 10px;
-                overflow: hidden;
-                perspective: 1px;
-                position: absolute;
-                top: 0px;
-                width: 32px;
-              }
-          style={
-            Object {
-              "height": 32,
-              "width": 32,
-            }
+        style={
+          Object {
+            "height": 32,
+            "width": 32,
           }
-        >
-          <img
-            alt=""
-            className=
-                ms-Image-image
-                ms-Image-image--cover
-                ms-Image-image--portrait
-                is-notLoaded
-                is-fadeIn
-                {
-                  display: block;
-                  height: auto;
-                  left: 50% /* @noflip */;
-                  opacity: 0;
-                  position: absolute;
-                  top: 50%;
-                  transform: translate(-50%,-50%);
-                  width: 100%;
-                }
-            onError={[Function]}
-            onLoad={[Function]}
-            role={undefined}
-            src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
-          />
-        </div>
-        <div
+        }
+      >
+        <img
+          alt=""
           className=
-              ms-Persona-presence
+              ms-Image-image
+              ms-Image-image--cover
+              ms-Image-image--portrait
+              is-notLoaded
+              is-fadeIn
               {
-                -ms-high-contrast-adjust: none;
-                background-clip: content-box;
-                background-color: #7FBA00;
-                border-radius: 50%;
-                border: 2px solid #ffffff;
-                bottom: -2px;
-                box-sizing: content-box;
-                height: 8px;
+                display: block;
+                height: auto;
+                left: 50% /* @noflip */;
+                opacity: 0;
                 position: absolute;
-                right: -2px;
-                text-align: center;
-                top: auto;
-                width: 8px;
+                top: 50%;
+                transform: translate(-50%,-50%);
+                width: 100%;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                background-color: Highlight;
-                border-color: Window;
-              }
-          style={undefined}
+          onError={[Function]}
+          onLoad={[Function]}
+          role={undefined}
+          src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
         />
       </div>
+      <div
+        className=
+            ms-Persona-presence
+            {
+              -ms-high-contrast-adjust: none;
+              background-clip: content-box;
+              background-color: #7FBA00;
+              border-radius: 50%;
+              border: 2px solid #ffffff;
+              bottom: -2px;
+              box-sizing: content-box;
+              height: 8px;
+              position: absolute;
+              right: -2px;
+              text-align: center;
+              top: auto;
+              width: 8px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              background-color: Highlight;
+              border-color: Window;
+            }
+        style={undefined}
+      />
     </div>
     <div
       className=
@@ -1474,129 +1423,121 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
   >
     <div
       className=
-          ms-Persona-coin
-          ms-Persona--size40
+          ms-Persona-imageArea
           {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
+            flex: 0 0 auto;
+            height: 40px;
+            position: relative;
+            text-align: center;
+            width: 40px;
           }
-      size={12}
+      style={undefined}
     >
       <div
         className=
-            ms-Persona-imageArea
+            ms-Image
+            ms-Persona--size40
+            ms-Persona-image
             {
-              flex: 0 0 auto;
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              border-radius: 50%;
+              border: 0px;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               height: 40px;
-              position: relative;
-              text-align: center;
+              left: 0px;
+              margin-right: 10px;
+              overflow: hidden;
+              perspective: 1px;
+              position: absolute;
+              top: 0px;
               width: 40px;
+            }
+        style={
+          Object {
+            "height": 40,
+            "width": 40,
+          }
+        }
+      >
+        <img
+          alt=""
+          className=
+              ms-Image-image
+              ms-Image-image--cover
+              ms-Image-image--portrait
+              is-notLoaded
+              is-fadeIn
+              {
+                display: block;
+                height: auto;
+                left: 50% /* @noflip */;
+                opacity: 0;
+                position: absolute;
+                top: 50%;
+                transform: translate(-50%,-50%);
+                width: 100%;
+              }
+          onError={[Function]}
+          onLoad={[Function]}
+          role={undefined}
+          src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
+        />
+      </div>
+      <div
+        className=
+            ms-Persona-presence
+            {
+              -ms-high-contrast-adjust: none;
+              background-clip: content-box;
+              background-color: #FCD116;
+              border-radius: 50%;
+              border: 2px solid #ffffff;
+              bottom: -2px;
+              box-sizing: content-box;
+              height: 12px;
+              position: absolute;
+              right: -2px;
+              text-align: center;
+              top: auto;
+              width: 12px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              background-color: WindowText;
+              border-color: Window;
             }
         style={undefined}
       >
-        <div
+        <i
+          aria-hidden={true}
           className=
-              ms-Image
-              ms-Persona-image
+              ms-Persona-presenceIcon
               {
-                border-radius: 50%;
-                border: 0px;
-                height: 40px;
-                left: 0px;
-                margin-right: 10px;
-                overflow: hidden;
-                perspective: 1px;
-                position: absolute;
-                top: 0px;
-                width: 40px;
-              }
-          style={
-            Object {
-              "height": 40,
-              "width": 40,
-            }
-          }
-        >
-          <img
-            alt=""
-            className=
-                ms-Image-image
-                ms-Image-image--cover
-                ms-Image-image--portrait
-                is-notLoaded
-                is-fadeIn
-                {
-                  display: block;
-                  height: auto;
-                  left: 50% /* @noflip */;
-                  opacity: 0;
-                  position: absolute;
-                  top: 50%;
-                  transform: translate(-50%,-50%);
-                  width: 100%;
-                }
-            onError={[Function]}
-            onLoad={[Function]}
-            role={undefined}
-            src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
-          />
-        </div>
-        <div
-          className=
-              ms-Persona-presence
-              {
-                -ms-high-contrast-adjust: none;
-                background-clip: content-box;
-                background-color: #FCD116;
-                border-radius: 50%;
-                border: 2px solid #ffffff;
-                bottom: -2px;
-                box-sizing: content-box;
-                height: 12px;
-                position: absolute;
-                right: -2px;
-                text-align: center;
-                top: auto;
-                width: 12px;
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #ffffff;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-size: 6px;
+                font-style: normal;
+                font-weight: normal;
+                left: 1px;
+                line-height: 12px;
+                position: relative;
+                speak: none;
+                vertical-align: top;
               }
               @media screen and (-ms-high-contrast: active){& {
-                background-color: WindowText;
-                border-color: Window;
+                color: Window;
               }
+          data-icon-name="SkypeClock"
+          role="presentation"
           style={undefined}
         >
-          <i
-            aria-hidden={true}
-            className=
-                ms-Persona-presenceIcon
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  color: #ffffff;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-size: 6px;
-                  font-style: normal;
-                  font-weight: normal;
-                  left: 1px;
-                  line-height: 12px;
-                  position: relative;
-                  speak: none;
-                  vertical-align: top;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  color: Window;
-                }
-            data-icon-name="SkypeClock"
-            role="presentation"
-            style={undefined}
-          >
-            
-          </i>
-        </div>
+          
+        </i>
       </div>
     </div>
     <div
@@ -1772,121 +1713,113 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
   >
     <div
       className=
-          ms-Persona-coin
-          ms-Persona--size48
+          ms-Persona-imageArea
           {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
+            flex: 0 0 auto;
+            height: 48px;
+            position: relative;
+            text-align: center;
+            width: 48px;
           }
-      size={13}
+      style={undefined}
     >
       <div
         className=
-            ms-Persona-imageArea
+            ms-Image
+            ms-Persona--size48
+            ms-Persona-image
             {
-              flex: 0 0 auto;
-              height: 48px;
-              position: relative;
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              border-radius: 50%;
+              border: 0px;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              height: 100%;
+              left: 0px;
+              margin-right: 10px;
+              overflow: hidden;
+              perspective: 1px;
+              position: absolute;
+              top: 0px;
+              width: 100%;
+            }
+        style={
+          Object {
+            "height": 48,
+            "width": 48,
+          }
+        }
+      >
+        <img
+          alt=""
+          className=
+              ms-Image-image
+              ms-Image-image--cover
+              ms-Image-image--portrait
+              is-notLoaded
+              is-fadeIn
+              {
+                display: block;
+                height: auto;
+                left: 50% /* @noflip */;
+                opacity: 0;
+                position: absolute;
+                top: 50%;
+                transform: translate(-50%,-50%);
+                width: 100%;
+              }
+          onError={[Function]}
+          onLoad={[Function]}
+          role={undefined}
+          src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
+        />
+      </div>
+      <div
+        className=
+            ms-Persona-presence
+            {
+              -ms-high-contrast-adjust: none;
+              background-clip: content-box;
+              background-color: #D93B3B;
+              border-radius: 50%;
+              border: 2px solid #ffffff;
+              bottom: -2px;
+              box-sizing: content-box;
+              height: 12px;
+              position: absolute;
+              right: -2px;
               text-align: center;
-              width: 48px;
+              top: auto;
+              width: 12px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              background-color: WindowText;
+              border-color: Window;
             }
         style={undefined}
       >
-        <div
+        <i
+          aria-hidden={true}
           className=
-              ms-Image
-              ms-Persona-image
+              ms-Icon-placeHolder
+              ms-Persona-presenceIcon
               {
-                border-radius: 50%;
-                border: 0px;
-                height: 100%;
-                left: 0px;
-                margin-right: 10px;
-                overflow: hidden;
-                perspective: 1px;
-                position: absolute;
-                top: 0px;
-                width: 100%;
-              }
-          style={
-            Object {
-              "height": 48,
-              "width": 48,
-            }
-          }
-        >
-          <img
-            alt=""
-            className=
-                ms-Image-image
-                ms-Image-image--cover
-                ms-Image-image--portrait
-                is-notLoaded
-                is-fadeIn
-                {
-                  display: block;
-                  height: auto;
-                  left: 50% /* @noflip */;
-                  opacity: 0;
-                  position: absolute;
-                  top: 50%;
-                  transform: translate(-50%,-50%);
-                  width: 100%;
-                }
-            onError={[Function]}
-            onLoad={[Function]}
-            role={undefined}
-            src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
-          />
-        </div>
-        <div
-          className=
-              ms-Persona-presence
-              {
-                -ms-high-contrast-adjust: none;
-                background-clip: content-box;
-                background-color: #D93B3B;
-                border-radius: 50%;
-                border: 2px solid #ffffff;
-                bottom: -2px;
-                box-sizing: content-box;
-                height: 12px;
-                position: absolute;
-                right: -2px;
-                text-align: center;
-                top: auto;
-                width: 12px;
+                color: #ffffff;
+                display: inline-block;
+                font-size: 6px;
+                line-height: 12px;
+                vertical-align: top;
+                width: 1em;
               }
               @media screen and (-ms-high-contrast: active){& {
-                background-color: WindowText;
-                border-color: Window;
+                color: Window;
               }
+          data-icon-name=""
+          role="presentation"
           style={undefined}
-        >
-          <i
-            aria-hidden={true}
-            className=
-                ms-Icon-placeHolder
-                ms-Persona-presenceIcon
-                {
-                  color: #ffffff;
-                  display: inline-block;
-                  font-size: 6px;
-                  line-height: 12px;
-                  vertical-align: top;
-                  width: 1em;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  color: Window;
-                }
-            data-icon-name=""
-            role="presentation"
-            style={undefined}
-          />
-        </div>
+        />
       </div>
     </div>
     <div
@@ -2062,127 +1995,119 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
   >
     <div
       className=
-          ms-Persona-coin
-          ms-Persona--size72
+          ms-Persona-imageArea
           {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
+            flex: 0 0 auto;
+            height: 72px;
+            position: relative;
+            text-align: center;
+            width: 72px;
           }
-      size={14}
+      style={undefined}
     >
       <div
         className=
-            ms-Persona-imageArea
+            ms-Image
+            ms-Persona--size72
+            ms-Persona-image
             {
-              flex: 0 0 auto;
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              border-radius: 50%;
+              border: 0px;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               height: 72px;
-              position: relative;
-              text-align: center;
+              left: 0px;
+              margin-right: 10px;
+              overflow: hidden;
+              perspective: 1px;
+              position: absolute;
+              top: 0px;
               width: 72px;
+            }
+        style={
+          Object {
+            "height": 72,
+            "width": 72,
+          }
+        }
+      >
+        <img
+          alt=""
+          className=
+              ms-Image-image
+              ms-Image-image--cover
+              ms-Image-image--portrait
+              is-notLoaded
+              is-fadeIn
+              {
+                display: block;
+                height: auto;
+                left: 50% /* @noflip */;
+                opacity: 0;
+                position: absolute;
+                top: 50%;
+                transform: translate(-50%,-50%);
+                width: 100%;
+              }
+          onError={[Function]}
+          onLoad={[Function]}
+          role={undefined}
+          src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
+        />
+      </div>
+      <div
+        className=
+            ms-Persona-presence
+            {
+              -ms-high-contrast-adjust: none;
+              background-clip: content-box;
+              background-color: #E81123;
+              border-radius: 50%;
+              border: 2px solid #ffffff;
+              bottom: -2px;
+              box-sizing: content-box;
+              height: 20px;
+              position: absolute;
+              right: -2px;
+              text-align: center;
+              top: auto;
+              width: 20px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              background-color: WindowText;
+              border-color: Window;
             }
         style={undefined}
       >
-        <div
+        <i
+          aria-hidden={true}
           className=
-              ms-Image
-              ms-Persona-image
+              ms-Persona-presenceIcon
               {
-                border-radius: 50%;
-                border: 0px;
-                height: 72px;
-                left: 0px;
-                margin-right: 10px;
-                overflow: hidden;
-                perspective: 1px;
-                position: absolute;
-                top: 0px;
-                width: 72px;
-              }
-          style={
-            Object {
-              "height": 72,
-              "width": 72,
-            }
-          }
-        >
-          <img
-            alt=""
-            className=
-                ms-Image-image
-                ms-Image-image--cover
-                ms-Image-image--portrait
-                is-notLoaded
-                is-fadeIn
-                {
-                  display: block;
-                  height: auto;
-                  left: 50% /* @noflip */;
-                  opacity: 0;
-                  position: absolute;
-                  top: 50%;
-                  transform: translate(-50%,-50%);
-                  width: 100%;
-                }
-            onError={[Function]}
-            onLoad={[Function]}
-            role={undefined}
-            src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
-          />
-        </div>
-        <div
-          className=
-              ms-Persona-presence
-              {
-                -ms-high-contrast-adjust: none;
-                background-clip: content-box;
-                background-color: #E81123;
-                border-radius: 50%;
-                border: 2px solid #ffffff;
-                bottom: -2px;
-                box-sizing: content-box;
-                height: 20px;
-                position: absolute;
-                right: -2px;
-                text-align: center;
-                top: auto;
-                width: 20px;
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #ffffff;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-size: 12px;
+                font-style: normal;
+                font-weight: normal;
+                line-height: 20px;
+                speak: none;
+                vertical-align: top;
               }
               @media screen and (-ms-high-contrast: active){& {
-                background-color: WindowText;
-                border-color: Window;
+                color: Window;
               }
+          data-icon-name="SkypeMinus"
+          role="presentation"
           style={undefined}
         >
-          <i
-            aria-hidden={true}
-            className=
-                ms-Persona-presenceIcon
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  color: #ffffff;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-size: 12px;
-                  font-style: normal;
-                  font-weight: normal;
-                  line-height: 20px;
-                  speak: none;
-                  vertical-align: top;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  color: Window;
-                }
-            data-icon-name="SkypeMinus"
-            role="presentation"
-            style={undefined}
-          >
-            
-          </i>
-        </div>
+          
+        </i>
       </div>
     </div>
     <div
@@ -2358,154 +2283,146 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
   >
     <div
       className=
-          ms-Persona-coin
-          ms-Persona--size100
+          ms-Persona-imageArea
           {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
+            flex: 0 0 auto;
+            height: 100px;
+            position: relative;
+            text-align: center;
+            width: 100px;
           }
-      size={15}
+      style={undefined}
     >
       <div
         className=
-            ms-Persona-imageArea
+            ms-Image
+            ms-Persona--size100
+            ms-Persona-image
             {
-              flex: 0 0 auto;
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              border-radius: 50%;
+              border: 0px;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               height: 100px;
-              position: relative;
-              text-align: center;
+              left: 0px;
+              margin-right: 10px;
+              overflow: hidden;
+              perspective: 1px;
+              position: absolute;
+              top: 0px;
               width: 100px;
+            }
+        style={
+          Object {
+            "height": 100,
+            "width": 100,
+          }
+        }
+      >
+        <img
+          alt=""
+          className=
+              ms-Image-image
+              ms-Image-image--cover
+              ms-Image-image--portrait
+              is-notLoaded
+              is-fadeIn
+              {
+                display: block;
+                height: auto;
+                left: 50% /* @noflip */;
+                opacity: 0;
+                position: absolute;
+                top: 50%;
+                transform: translate(-50%,-50%);
+                width: 100%;
+              }
+          onError={[Function]}
+          onLoad={[Function]}
+          role={undefined}
+          src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
+        />
+      </div>
+      <div
+        className=
+            ms-Persona-presence
+            {
+              -ms-high-contrast-adjust: none;
+              background-clip: content-box;
+              background-color: #ffffff;
+              border-radius: 50%;
+              border: 2px solid #ffffff;
+              bottom: -2px;
+              box-sizing: content-box;
+              height: 28px;
+              position: absolute;
+              right: -2px;
+              text-align: center;
+              top: auto;
+              width: 28px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              background-color: WindowText;
+              border-color: Window;
+            }
+            &:before {
+              border-radius: 50%;
+              border: 2px solid #D93B3B;
+              box-sizing: border-box;
+              content: "";
+              height: 100%;
+              left: 0px;
+              position: absolute;
+              top: 0px;
+              width: 100%;
+            }
+            &:after {
+              background-color: #D93B3B;
+              content: "";
+              height: 2px;
+              left: 0px;
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%) rotate(-45deg);
+              width: 100%;
+            }
+            @media screen and (-ms-high-contrast: active){&:before {
+              border-color: Window;
+              height: calc(100% - 2px);
+              left: 1px;
+              top: 1px;
+              width: calc(100% - 2px);
+            }
+            @media screen and (-ms-high-contrast: active){&:after {
+              background-color: Window;
+              left: 2px;
+              width: calc(100% - 4px);
             }
         style={undefined}
       >
-        <div
+        <i
+          aria-hidden={true}
           className=
-              ms-Image
-              ms-Persona-image
+              ms-Icon-placeHolder
+              ms-Persona-presenceIcon
               {
-                border-radius: 50%;
-                border: 0px;
-                height: 100px;
-                left: 0px;
-                margin-right: 10px;
-                overflow: hidden;
-                perspective: 1px;
-                position: absolute;
-                top: 0px;
-                width: 100px;
-              }
-          style={
-            Object {
-              "height": 100,
-              "width": 100,
-            }
-          }
-        >
-          <img
-            alt=""
-            className=
-                ms-Image-image
-                ms-Image-image--cover
-                ms-Image-image--portrait
-                is-notLoaded
-                is-fadeIn
-                {
-                  display: block;
-                  height: auto;
-                  left: 50% /* @noflip */;
-                  opacity: 0;
-                  position: absolute;
-                  top: 50%;
-                  transform: translate(-50%,-50%);
-                  width: 100%;
-                }
-            onError={[Function]}
-            onLoad={[Function]}
-            role={undefined}
-            src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
-          />
-        </div>
-        <div
-          className=
-              ms-Persona-presence
-              {
-                -ms-high-contrast-adjust: none;
-                background-clip: content-box;
-                background-color: #ffffff;
-                border-radius: 50%;
-                border: 2px solid #ffffff;
-                bottom: -2px;
-                box-sizing: content-box;
-                height: 28px;
-                position: absolute;
-                right: -2px;
-                text-align: center;
-                top: auto;
-                width: 28px;
+                color: #ffffff;
+                display: inline-block;
+                font-size: 14px;
+                line-height: 28px;
+                vertical-align: top;
+                width: 1em;
               }
               @media screen and (-ms-high-contrast: active){& {
-                background-color: WindowText;
-                border-color: Window;
+                color: Window;
               }
-              &:before {
-                border-radius: 50%;
-                border: 2px solid #D93B3B;
-                box-sizing: border-box;
-                content: "";
-                height: 100%;
-                left: 0px;
-                position: absolute;
-                top: 0px;
-                width: 100%;
-              }
-              &:after {
-                background-color: #D93B3B;
-                content: "";
-                height: 2px;
-                left: 0px;
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%) rotate(-45deg);
-                width: 100%;
-              }
-              @media screen and (-ms-high-contrast: active){&:before {
-                border-color: Window;
-                height: calc(100% - 2px);
-                left: 1px;
-                top: 1px;
-                width: calc(100% - 2px);
-              }
-              @media screen and (-ms-high-contrast: active){&:after {
-                background-color: Window;
-                left: 2px;
-                width: calc(100% - 4px);
-              }
+          data-icon-name=""
+          role="presentation"
           style={undefined}
-        >
-          <i
-            aria-hidden={true}
-            className=
-                ms-Icon-placeHolder
-                ms-Persona-presenceIcon
-                {
-                  color: #ffffff;
-                  display: inline-block;
-                  font-size: 14px;
-                  line-height: 28px;
-                  vertical-align: top;
-                  width: 1em;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  color: Window;
-                }
-            data-icon-name=""
-            role="presentation"
-            style={undefined}
-          />
-        </div>
+        />
       </div>
     </div>
     <div

@@ -858,171 +858,107 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
         style={undefined}
       >
         <div
+          aria-hidden="true"
           className=
-              ms-Persona-coin
               ms-Persona--size40
+              ms-Persona-imageArea
+              ms-Persona-initials
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
+                background-color: #2D89EF;
+                border-radius: 50%;
+                color: #ffffff;
+                flex: 0 0 auto;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
+                height: 40px;
+                line-height: 40px;
+                position: relative;
+                text-align: center;
+                width: 40px;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                background-color: Window !important;
+                border: 1px solid WindowText;
+                box-sizing: border-box;
+                color: WindowText;
               }
           size={12}
+          style={undefined}
         >
+          <i
+            aria-hidden={true}
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  display: inline-block;
+                  font-family: "FabricMDL2Icons-0";
+                  font-style: normal;
+                  font-weight: normal;
+                  speak: none;
+                }
+            data-icon-name="Contact"
+            role="presentation"
+          >
+            
+          </i>
           <div
             className=
-                ms-Persona-imageArea
+                ms-Persona-presence
                 {
-                  flex: 0 0 auto;
-                  height: 40px;
-                  position: relative;
+                  -ms-high-contrast-adjust: none;
+                  background-clip: content-box;
+                  background-color: #FCD116;
+                  border-radius: 50%;
+                  border: 2px solid #ffffff;
+                  bottom: -2px;
+                  box-sizing: content-box;
+                  height: 12px;
+                  position: absolute;
+                  right: -2px;
                   text-align: center;
-                  width: 40px;
+                  top: auto;
+                  width: 12px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  background-color: WindowText;
+                  border-color: Window;
                 }
             style={undefined}
           >
-            <div
-              aria-hidden="true"
+            <i
+              aria-hidden={true}
               className=
-                  ms-Persona-initials
+                  ms-Persona-presenceIcon
                   {
-                    background-color: #2D89EF;
-                    border-radius: 50%;
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     color: #ffffff;
-                    font-size: 14px;
-                    font-weight: 400;
-                    height: 40px;
-                    line-height: 40px;
+                    display: inline-block;
+                    font-family: "FabricMDL2Icons";
+                    font-size: 6px;
+                    font-style: normal;
+                    font-weight: normal;
+                    left: 1px;
+                    line-height: 12px;
+                    position: relative;
+                    speak: none;
+                    vertical-align: top;
                   }
                   @media screen and (-ms-high-contrast: active){& {
-                    -ms-high-contrast-adjust: none;
-                    background-color: Window !important;
-                    border: 1px solid WindowText;
-                    box-sizing: border-box;
-                    color: WindowText;
+                    color: Window;
                   }
+              data-icon-name="SkypeClock"
+              role="presentation"
               style={undefined}
             >
-              <i
-                aria-hidden={true}
-                className=
-
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      display: inline-block;
-                      font-family: "FabricMDL2Icons-0";
-                      font-style: normal;
-                      font-weight: normal;
-                      speak: none;
-                    }
-                data-icon-name="Contact"
-                role="presentation"
-              >
-                
-              </i>
-            </div>
-            <div
-              className=
-                  ms-Image
-                  ms-Persona-image
-                  {
-                    border-radius: 50%;
-                    border: 0px;
-                    height: 40px;
-                    left: 0px;
-                    margin-right: 10px;
-                    overflow: hidden;
-                    perspective: 1px;
-                    position: absolute;
-                    top: 0px;
-                    width: 40px;
-                  }
-              style={
-                Object {
-                  "height": 40,
-                  "width": 40,
-                }
-              }
-            >
-              <img
-                alt=""
-                className=
-                    ms-Image-image
-                    ms-Image-image--cover
-                    ms-Image-image--portrait
-                    is-notLoaded
-                    is-fadeIn
-                    {
-                      display: block;
-                      height: auto;
-                      left: 50% /* @noflip */;
-                      opacity: 0;
-                      position: absolute;
-                      top: 50%;
-                      transform: translate(-50%,-50%);
-                      width: 100%;
-                    }
-                onError={[Function]}
-                onLoad={[Function]}
-                role={undefined}
-                src={undefined}
-              />
-            </div>
-            <div
-              className=
-                  ms-Persona-presence
-                  {
-                    -ms-high-contrast-adjust: none;
-                    background-clip: content-box;
-                    background-color: #FCD116;
-                    border-radius: 50%;
-                    border: 2px solid #ffffff;
-                    bottom: -2px;
-                    box-sizing: content-box;
-                    height: 12px;
-                    position: absolute;
-                    right: -2px;
-                    text-align: center;
-                    top: auto;
-                    width: 12px;
-                  }
-                  @media screen and (-ms-high-contrast: active){& {
-                    background-color: WindowText;
-                    border-color: Window;
-                  }
-              style={undefined}
-            >
-              <i
-                aria-hidden={true}
-                className=
-                    ms-Persona-presenceIcon
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      color: #ffffff;
-                      display: inline-block;
-                      font-family: "FabricMDL2Icons";
-                      font-size: 6px;
-                      font-style: normal;
-                      font-weight: normal;
-                      left: 1px;
-                      line-height: 12px;
-                      position: relative;
-                      speak: none;
-                      vertical-align: top;
-                    }
-                    @media screen and (-ms-high-contrast: active){& {
-                      color: Window;
-                    }
-                data-icon-name="SkypeClock"
-                role="presentation"
-                style={undefined}
-              >
-                
-              </i>
-            </div>
+              
+            </i>
           </div>
         </div>
         <div

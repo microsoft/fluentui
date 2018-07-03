@@ -53,105 +53,91 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
   >
     <div
       className=
-          ms-Persona-coin
-          ms-Persona--size72
+          ms-Persona-imageArea
           {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
+            flex: 0 0 auto;
+            height: 72px;
+            position: relative;
+            text-align: center;
+            width: 72px;
           }
-      size={14}
+      style={
+        Object {
+          "height": 72,
+          "width": 72,
+        }
+      }
     >
       <div
+        className="customExampleCoin"
+      >
+        <img
+          alt="Custom Coin Image"
+          height={72}
+          src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-male.png"
+          width={72}
+        />
+      </div>
+      <div
         className=
-            ms-Persona-imageArea
+            ms-Persona-presence
             {
-              flex: 0 0 auto;
-              height: 72px;
-              position: relative;
+              -ms-high-contrast-adjust: none;
+              background-clip: content-box;
+              background-color: #7FBA00;
+              border-radius: 50%;
+              border: 2px solid #ffffff;
+              bottom: -2px;
+              box-sizing: content-box;
+              height: 20px;
+              position: absolute;
+              right: -2px;
               text-align: center;
-              width: 72px;
+              top: auto;
+              width: 20px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              background-color: Highlight;
+              border-color: Window;
             }
         style={
           Object {
-            "height": 72,
-            "width": 72,
+            "height": "24px",
+            "width": "24px",
           }
         }
       >
-        <div
-          className="customExampleCoin"
-        >
-          <img
-            alt="Custom Coin Image"
-            height={72}
-            src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-male.png"
-            width={72}
-          />
-        </div>
-        <div
+        <i
+          aria-hidden={true}
           className=
-              ms-Persona-presence
+              ms-Persona-presenceIcon
               {
-                -ms-high-contrast-adjust: none;
-                background-clip: content-box;
-                background-color: #7FBA00;
-                border-radius: 50%;
-                border: 2px solid #ffffff;
-                bottom: -2px;
-                box-sizing: content-box;
-                height: 20px;
-                position: absolute;
-                right: -2px;
-                text-align: center;
-                top: auto;
-                width: 20px;
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #ffffff;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-size: 12px;
+                font-style: normal;
+                font-weight: normal;
+                line-height: 20px;
+                speak: none;
+                vertical-align: top;
               }
               @media screen and (-ms-high-contrast: active){& {
-                background-color: Highlight;
-                border-color: Window;
+                color: Window;
               }
+          data-icon-name="SkypeCheck"
+          role="presentation"
           style={
             Object {
-              "height": "24px",
-              "width": "24px",
+              "fontSize": "12px",
+              "lineHeight": "24px",
             }
           }
         >
-          <i
-            aria-hidden={true}
-            className=
-                ms-Persona-presenceIcon
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  color: #ffffff;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-size: 12px;
-                  font-style: normal;
-                  font-weight: normal;
-                  line-height: 20px;
-                  speak: none;
-                  vertical-align: top;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  color: Window;
-                }
-            data-icon-name="SkypeCheck"
-            role="presentation"
-            style={
-              Object {
-                "fontSize": "12px",
-                "lineHeight": "24px",
-              }
-            }
-          >
-            
-          </i>
-        </div>
+          
+        </i>
       </div>
     </div>
     <div
