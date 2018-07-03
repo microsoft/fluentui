@@ -40,6 +40,7 @@ export class FormDropdown extends FormBaseInput<
         key={this.props.inputKey}
         onChanged={this._onChanged}
         selectedKey={this.state.currentValue}
+        options={[]}
       />
     );
   }
