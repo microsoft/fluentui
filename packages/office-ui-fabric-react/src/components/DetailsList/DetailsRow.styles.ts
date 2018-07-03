@@ -192,7 +192,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
     }
   ];
 
-  const canSelectStyles: IStyleBaseArray = [
+  const cannotSelectStyles: IStyleBaseArray = [
     classNames.isContentUnselectable,
     {
       userSelect: 'none',
@@ -336,7 +336,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
         }
       },
       isSelected && selectedStyles,
-      canSelect && canSelectStyles,
+      !canSelect && cannotSelectStyles,
       compact && rootCompactStyles,
       className
     ],
