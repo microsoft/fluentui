@@ -1,4 +1,5 @@
-import { DefaultFontStyles, FontWeights } from '../../../Styling';
+import { DefaultFontStyles } from './DefaultFontStyles';
+import { FontWeights } from './fonts';
 import {
   IFontColors,
   IFontFamilies,

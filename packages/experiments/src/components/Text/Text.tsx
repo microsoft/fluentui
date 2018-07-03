@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IStyle, ITheme, IFontStyles, IPalette } from '../../Styling';
 import { TViewProps, createComponent } from '../../utilities/createComponent';
-import { IFontTypes, IFontFamilies, IFontSizes, IFontWeights, IFontColors } from './theming/ITypography';
+import { IFontTypes, IFontFamilies, IFontSizes, IFontWeights } from './theming/ITypography';
 
 export type IStyleProps<TProps, TStyles> = TProps & {
   theme: ITheme;
@@ -22,7 +22,7 @@ export interface ITextProps {
   family?: keyof IFontFamilies;
   size?: keyof IFontSizes | keyof IFontStyles;
   weight?: keyof IFontWeights;
-  color?: keyof IFontColors | keyof IPalette;
+  color?: keyof IPalette;
 
   paletteSet?: string;
 
@@ -59,14 +59,30 @@ const styles = (props: IStyleProps<ITextProps, ITextStyles>): ITextStyles => {
   const { palette, fonts, /* semanticColors, isInverted, */ typography } = theme;
 
   const themeType = {
-    fontFamily:
-      typography.families[family!] || typography.families.default || fonts[size!].fontFamily || fonts.medium.fontFamily,
-    fontWeight:
-      typography.weights[weight!] || typography.weights.default || fonts[size!].fontWeight || fonts.medium.fontWeight,
-    fontSize: typography.sizes[size!] || typography.sizes.medium || fonts[size!].fontSize || fonts.medium.fontSize,
-    mozOsxFontSmoothing: fonts[size!].MozOsxFontSmoothing || fonts.medium.MozOsxFontSmoothing,
-    webkitFontSmoothing: fonts[size!].WebkitFontSmoothing || fonts.medium.WebkitFontSmoothing,
-    color: palette[color!] || palette.neutralPrimaryAlt
+    fontFamily: typography
+      ? family && typography.families[family]
+        ? typography.families[family]
+        : typography.families.default
+      : size && fonts[size]
+        ? fonts[size].fontFamily
+        : fonts.medium.fontFamily,
+    fontWeight: typography
+      ? weight && typography.weights[weight]
+        ? typography.weights[weight]
+        : typography.weights.default
+      : size && fonts[size]
+        ? fonts[size].fontWeight
+        : fonts.medium.fontWeight,
+    fontSize: typography
+      ? size && typography.sizes[size]
+        ? typography.sizes[size]
+        : typography.sizes.medium
+      : size && fonts[size]
+        ? fonts[size].fontSize
+        : fonts.medium.fontSize,
+    mozOsxFontSmoothing: size && fonts[size] ? fonts[size].MozOsxFontSmoothing : fonts.medium.MozOsxFontSmoothing,
+    webkitFontSmoothing: size && fonts[size] ? fonts[size].WebkitFontSmoothing : fonts.medium.WebkitFontSmoothing,
+    color: color && palette[color] ? palette[color] : palette.neutralPrimaryAlt
   };
 
   return {
