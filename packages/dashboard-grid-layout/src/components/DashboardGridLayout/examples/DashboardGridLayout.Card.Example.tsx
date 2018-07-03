@@ -5,6 +5,7 @@ import { CardSize, Priority, CardContentType } from '@uifabric/experiments/src/c
 import { Card } from '@uifabric/experiments/src/components/Card';
 import { IThumbnailItemProps } from '@uifabric/experiments/src/components/Card/ThumbnailList/ThumbnailList.types';
 import { IAction } from '@uifabric/experiments/src/components/Card/ActionBar/ActionBar.types';
+import { ChartType } from '@uifabric/experiments/src/components/Card/Chart/Chart.types';
 
 export class DashboardGridLayoutCardExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
@@ -117,6 +118,58 @@ export class DashboardGridLayoutCardExample extends React.Component<{}, {}> {
       }
     ];
 
+    const datapoints = [
+      { x: 0, y: 10 },
+      { x: 6, y: 18 },
+      { x: 12, y: 36 },
+      { x: 21, y: 20 },
+      { x: 29, y: 46 },
+      { x: 34, y: 25 },
+      { x: 40, y: 13 },
+      { x: 48, y: 43 },
+      { x: 57, y: 30 },
+      { x: 64, y: 45 },
+      { x: 72, y: 12 },
+      { x: 78, y: 50 },
+      { x: 85, y: 25 },
+      { x: 90, y: 43 },
+      { x: 96, y: 22 },
+      { x: 100, y: 19 }
+    ];
+
+    const largeContentAreaList = [
+      {
+        priority: Priority.Priority2,
+        cardContentType: CardContentType.ThumbnailList,
+        content: {
+          thumbnailItems: thumbnailItems
+        }
+      },
+      {
+        priority: Priority.Priority1,
+        cardContentType: CardContentType.Chart,
+        content: {
+          chartLabel: 'My first chart!',
+          chartType: ChartType.VerticalBarChart,
+          data: datapoints,
+          colors: ['red', 'yellow']
+        }
+      }
+    ];
+
+    const mediumTallContentAreaList = [
+      {
+        priority: Priority.Priority1,
+        cardContentType: CardContentType.Chart,
+        content: {
+          chartLabel: 'My first chart!',
+          chartType: ChartType.VerticalBarChart,
+          data: datapoints,
+          colors: ['red', 'yellow']
+        }
+      }
+    ];
+
     const header = {
       headerText: 'Header Text ',
       annotationText: 'Annotation Text '
@@ -135,8 +188,9 @@ export class DashboardGridLayoutCardExample extends React.Component<{}, {}> {
           <Card
             cardFrameContent={cardFrameContent}
             header={header}
-            cardContentList={contentAreaList}
+            cardContentList={mediumTallContentAreaList}
             cardSize={CardSize.mediumTall}
+            actions={actions}
           />
         </div>
         <div key="2">
@@ -160,7 +214,7 @@ export class DashboardGridLayoutCardExample extends React.Component<{}, {}> {
           <Card
             cardFrameContent={cardFrameContent}
             header={header}
-            cardContentList={contentAreaList}
+            cardContentList={largeContentAreaList}
             cardSize={CardSize.large}
             actions={actions}
           />

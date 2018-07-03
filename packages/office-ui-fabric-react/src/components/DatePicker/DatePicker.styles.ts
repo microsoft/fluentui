@@ -1,17 +1,59 @@
 import { IDatePickerStyleProps, IDatePickerStyles } from './DatePicker.types';
+import { IStyle, normalize, getGlobalClassNames, FontSizes } from '../../Styling';
 
-export const getStyles = (props: IDatePickerStyleProps): IDatePickerStyles => {
-  const { className } = props;
+const GlobalClassNames = {
+  root: 'ms-DatePicker',
+  callout: 'ms-DatePicker-callout',
+  withLabel: 'ms-DatePicker-event--with-label',
+  withoutLabel: 'ms-DatePicker-event--without-label',
+  disabled: 'msDatePickerDisabled '
+};
+
+export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
+  const { className, theme, disabled, label, isDatePickerShown } = props;
+  const { palette } = theme;
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
+  const DatePickerEvent: IStyle = {
+    color: palette.neutralSecondary,
+    fontSize: FontSizes.icon,
+    lineHeight: '18px',
+    pointerEvents: 'none',
+    position: 'absolute',
+    right: '9px'
+  };
 
   return {
-    root: [
-      'ms-DatePicker',
+    root: [classNames.root, isDatePickerShown && 'is-open', normalize, className],
+    textField: [
       {
-        // Insert css properties
-      },
-      className
+        position: 'relative',
+        selectors: {
+          '& input[readonly]': {
+            cursor: 'pointer'
+          },
+          input: {
+            selectors: {
+              '::-ms-clear': {
+                display: 'none'
+              }
+            }
+          }
+        }
+      }
+    ],
+    callout: [classNames.callout],
+    icon: [
+      DatePickerEvent,
+      !label && [classNames.withoutLabel, { top: '7px' }],
+      label && [classNames.withLabel, { bottom: '5px' }],
+      !disabled && [
+        classNames.disabled,
+        {
+          pointerEvents: 'initial',
+          cursor: 'pointer'
+        }
+      ]
     ]
-
-    // Insert className styles
   };
 };
