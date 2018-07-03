@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fixed target index bug, when the dragged column is before the drophint",
+      "comment": "Fixed target index issue, when the dragged column is before the drophint",
       "type": "patch"
     }
   ],
