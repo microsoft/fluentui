@@ -920,7 +920,13 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private _onFocus = (ev: React.FocusEvent<HTMLDivElement>): void => {
     const { isOpen, selectedIndices } = this.state;
     const { multiSelect } = this.props;
-    if (!isOpen && selectedIndices.length === 0 && !multiSelect) {
+
+    let { disabled } = this.props;
+    if (this.props.isDisabled !== undefined) {
+      disabled = this.props.isDisabled;
+    }
+
+    if (!isOpen && selectedIndices.length === 0 && !multiSelect && !disabled) {
       // Per aria
       this._moveIndex(1, 0, -1);
     }
