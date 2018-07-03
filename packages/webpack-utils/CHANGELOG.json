@@ -2,6 +2,34 @@
   "name": "@uifabric/webpack-utils",
   "entries": [
     {
+      "version": "0.6.0",
+      "tag": "@uifabric/webpack-utils_v0.6.0",
+      "date": "Mon, 02 Jul 2018 20:41:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Christian Gonzalez <1581488+christiango@users.noreply.github.com>",
+            "commit": "5177a84049a1885d3afbacf7e33a9d5ff955493c",
+            "comment": "Add Callout to the list of components that can be lazy loaded to reduce bundle sizes"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.5.0",
+      "tag": "@uifabric/webpack-utils_v0.5.0",
+      "date": "Mon, 02 Jul 2018 10:21:36 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "1c2ebc522eaefb6e3dd743e2d12a0cfe65cc13ad",
+            "comment": "replaced await with promise so this async loader is more IE compatible"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.4.0",
       "tag": "@uifabric/webpack-utils_v0.4.0",
       "date": "Thu, 14 Jun 2018 20:52:57 GMT",

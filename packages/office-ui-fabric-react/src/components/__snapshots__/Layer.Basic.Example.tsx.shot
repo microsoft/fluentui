@@ -15,7 +15,7 @@ exports[`Component Examples renders Layer.Basic.Example.tsx correctly 1`] = `
     className="LayerExample-textContent"
   />
   <div>
-    04:41:20
+    Sun, 06 Jan 2019 04:41:20 GMT
   </div>
 </div>
 `;
@@ -72,12 +72,18 @@ exports[`Component Examples renders Layer.Basic.Example.tsx correctly 2`] = `
         &:hover .ms-Checkbox-checkbox {
           border-color: #212121;
         }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+          border-color: Highlight;
+        }
         &:focus .ms-Checkbox-checkbox {
           border-color: #212121;
         }
         &:hover .ms-Checkbox-checkmark {
           color: #a6a6a6;
           opacity: 1;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+          color: Highlight;
         }
         &:hover .ms-Checkbox-text {
           color: #333333;
@@ -194,7 +200,7 @@ exports[`Component Examples renders Layer.Basic.Example.tsx correctly 2`] = `
       Hello world.
     </div>
     <div>
-      04:41:20
+      Sun, 06 Jan 2019 04:41:20 GMT
     </div>
   </div>
 </div>
