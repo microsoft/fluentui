@@ -18,7 +18,8 @@ const GlobalClassNames = {
   isFocusable: "data-is-focusable='true'",
   isContentUnselectable: 'is-contentUnselectable',
   isSelected: 'is-selected',
-  isCheckVisible: 'is-check-visible'
+  isCheckVisible: 'is-check-visible',
+  fields: 'ms-DetailsRow-fields'
 };
 
 // Constant values
@@ -103,8 +104,8 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
     focusMetaTextColor: neutralDark
   };
 
-  const thickBorderStyle = `${values.rowShimmerHorizontalBorder * 4} solid ${colors.defaultBackgroundColor}`;
-  const thinBorderStyle = `${values.rowShimmerHorizontalBorder} solid ${colors.defaultBackgroundColor}`;
+  const thickBorderStyle = `${values.rowShimmerHorizontalBorder * 4}px solid ${colors.defaultBackgroundColor}`;
+  const thinBorderStyle = `${values.rowShimmerHorizontalBorder}px solid ${colors.defaultBackgroundColor}`;
   const selectedStyles: IStyleBaseArray = [
     getFocusStyle(theme, 0, undefined, undefined, themePrimary),
     classNames.isSelected,
@@ -206,24 +207,24 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
 
   const cellCompactStyles: IStyle = {
     minHeight: compactRowHeight,
-    padding: `${compactRowVerticalPadding} ${rowHorizontalPadding} ${compactRowVerticalPadding} 12px`,
+    padding: `${compactRowVerticalPadding}px ${rowHorizontalPadding}px ${compactRowVerticalPadding}px 12px`,
     selectors: {
       // Masking the running shimmer background with borders
       [`&.$shimmer`]: {
         padding: '0 0',
         borderLeft: thinBorderStyle,
         borderRight: thickBorderStyle,
-        borderTop: `${values.compactRowShimmerVerticalBorder} solid ${colors.defaultBackgroundColor}`,
-        borderBottom: `${values.compactRowShimmerVerticalBorder} solid ${colors.defaultBackgroundColor}`
+        borderTop: `${values.compactRowShimmerVerticalBorder}px solid ${colors.defaultBackgroundColor}`,
+        borderBottom: `${values.compactRowShimmerVerticalBorder}px solid ${colors.defaultBackgroundColor}`
       },
 
       // Masking the running shimmer background with borders when it's an Icon placeholder
       [`&.$shimmerIconPlaceholder`]: {
-        borderLeft: `${values.rowShimmerHorizontalBorder} solid ${colors.defaultBackgroundColor}`,
-        borderBottom: `${(values.compactRowHeight - values.rowShimmerIconPlaceholderHeight) / 2} solid ${
+        borderLeft: `${values.rowShimmerHorizontalBorder}px solid ${colors.defaultBackgroundColor}`,
+        borderBottom: `${(values.compactRowHeight - values.rowShimmerIconPlaceholderHeight) / 2}px solid ${
           colors.defaultBackgroundColor
         }`,
-        borderTop: `${(values.compactRowHeight - values.rowShimmerIconPlaceholderHeight) / 2} solid ${
+        borderTop: `${(values.compactRowHeight - values.rowShimmerIconPlaceholderHeight) / 2}px solid ${
           colors.defaultBackgroundColor
         }`
       }
@@ -231,78 +232,71 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
   };
 
   const defaultCellStyles: IStyle = [
-    [
-      getFocusStyle(theme),
-      classNames.cell,
-      {
-        display: 'inline-block',
-        position: 'relative',
-        boxSizing: 'border-box',
-        padding: `${values.rowVerticalPadding} ${values.rowHorizontalPadding} ${values.rowVerticalPadding} 12px`,
-        minHeight: values.rowHeight,
-        verticalAlign: 'top',
-        whiteSpace: 'nowrap',
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
+    getFocusStyle(theme),
+    classNames.cell,
+    {
+      display: 'inline-block',
+      position: 'relative',
+      boxSizing: 'border-box',
+      padding: `${values.rowVerticalPadding}px ${values.rowHorizontalPadding}px ${values.rowVerticalPadding}px 12px`,
+      minHeight: values.rowHeight,
+      verticalAlign: 'top',
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
 
-        selectors: {
-          '& > button': {
-            maxWidth: '100%'
-          },
+      selectors: {
+        '& > button': {
+          maxWidth: '100%'
+        },
 
-          '&.$isRowHeader': {
-            color: colors.defaultHeaderTextColor,
-            fontSize: FontSizes.medium
-          },
+        [classNames.isFocusable!]: getFocusStyle(theme, 0, undefined, undefined, neutralSecondary),
 
-          [classNames.isFocusable!]: getFocusStyle(theme, 0, undefined, undefined, neutralSecondary),
+        '&.$shimmer': {
+          padding: '0 0',
+          borderLeft: thinBorderStyle,
+          borderRight: thickBorderStyle,
+          borderTop: `${values.rowShimmerVerticalBorder}px solid ${colors.defaultBackgroundColor}`,
+          borderBottom: `${values.rowShimmerVerticalBorder}px solid ${colors.defaultBackgroundColor}`
+        },
 
-          '&.$shimmer': {
-            padding: '0 0',
-            borderLeft: thinBorderStyle,
-            borderRight: thickBorderStyle,
-            borderTop: `${values.rowShimmerVerticalBorder} solid ${colors.defaultBackgroundColor}`,
-            borderBottom: `${values.rowShimmerVerticalBorder} solid ${colors.defaultBackgroundColor}`
-          },
-
-          '&.$shimmerIconPlaceholder': {
-            borderLeft: `${values.rowShimmerHorizontalBorder} solid ${colors.defaultBackgroundColor}`,
-            borderBottom: `${(values.rowHeight - values.rowShimmerIconPlaceholderHeight) / 2} solid ${
-              colors.defaultBackgroundColor
-            }`,
-            borderTop: `${(values.rowHeight - values.rowShimmerIconPlaceholderHeight) / 2} solid ${
-              colors.defaultBackgroundColor
-            }`
-          }
+        '&.$shimmerIconPlaceholder': {
+          borderLeft: `${values.rowShimmerHorizontalBorder}px solid ${colors.defaultBackgroundColor}`,
+          borderBottom: `${(values.rowHeight - values.rowShimmerIconPlaceholderHeight) / 2}px solid ${
+            colors.defaultBackgroundColor
+          }`,
+          borderTop: `${(values.rowHeight - values.rowShimmerIconPlaceholderHeight) / 2}px solid ${
+            colors.defaultBackgroundColor
+          }`
         }
-      },
+      }
+    },
 
-      isSelected && {
-        selectors: {
-          '&.$isRowHeader': {
-            color: colors.selectedTextColor,
-            selectors: {
-              [HighContrastSelector]: {
-                color: 'HighlightText'
-              }
+    isSelected && {
+      selectors: {
+        '&.$isRowHeader': {
+          color: colors.selectedTextColor,
+          selectors: {
+            [HighContrastSelector]: {
+              color: 'HighlightText'
             }
-          },
+          }
+        },
 
-          [HighContrastSelector]: {
-            background: 'Highlight',
-            color: 'HighlightText',
-            '-ms-high-contrast-adjust': 'none',
-            selectors: {
-              a: {
-                color: 'HighlightText'
-              }
+        [HighContrastSelector]: {
+          background: 'Highlight',
+          color: 'HighlightText',
+          '-ms-high-contrast-adjust': 'none',
+          selectors: {
+            a: {
+              color: 'HighlightText'
             }
           }
         }
-      },
+      }
+    },
 
-      compact && cellCompactStyles
-    ]
+    compact && cellCompactStyles
   ];
 
   const checkCompactStyles: IStyle = {
@@ -385,12 +379,18 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
       }
     ],
     fields: [
+      classNames.fields,
       {
         display: 'flex',
         alignItems: 'stretch'
       }
     ],
-    isRowHeader: [],
+    isRowHeader: [
+      {
+        color: colors.defaultHeaderTextColor,
+        fontSize: FontSizes.medium
+      }
+    ],
     isMultiline: [
       {
         whiteSpace: 'normal',

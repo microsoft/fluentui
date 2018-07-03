@@ -212,6 +212,7 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowProps, IDetailsRowS
 
     const rowFields = (
       <RowFields
+        rowClassNames={classNames}
         columns={columns}
         item={item}
         itemIndex={itemIndex}
@@ -271,6 +272,7 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowProps, IDetailsRowS
         {columnMeasureInfo && (
           <span role="presentation" className={css(classNames.cellMeasurer, classNames.cell)} ref={this._cellMeasurer}>
             <RowFields
+              rowClassNames={classNames}
               columns={[columnMeasureInfo.column]}
               item={item}
               itemIndex={itemIndex}

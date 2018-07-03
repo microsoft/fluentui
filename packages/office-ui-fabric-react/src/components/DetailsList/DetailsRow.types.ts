@@ -8,6 +8,7 @@ import { IViewport } from '../../utilities/decorators/withViewport';
 import { CollapseAllVisibility } from '../GroupedList/GroupedList.types';
 import { IStyleFunctionOrObject } from '../../Utilities';
 import { IDetailsRowCheckProps } from './DetailsRowCheck.types';
+import { IDetailsRowFieldsProps } from './DetailsRowFields.types';
 
 export interface IDetailsRowProps extends React.Props<DetailsRowBase> {
   theme?: ITheme;
@@ -37,17 +38,6 @@ export interface IDetailsRowProps extends React.Props<DetailsRowBase> {
   checkboxCellClassName?: string;
   rowFieldsAs?: React.StatelessComponent<IDetailsRowFieldsProps> | React.ComponentClass<IDetailsRowFieldsProps>;
   className?: string;
-  shimmer?: boolean;
-}
-
-export interface IDetailsRowFieldsProps {
-  componentRef?: () => void;
-  item: any;
-  itemIndex: number;
-  columnStartIndex: number;
-  columns: IColumn[];
-  compact?: boolean;
-  onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => any;
   shimmer?: boolean;
 }
 

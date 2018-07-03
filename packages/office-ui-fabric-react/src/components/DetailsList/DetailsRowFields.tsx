@@ -1,10 +1,7 @@
 import * as React from 'react';
 import { IColumn } from './DetailsList.types';
 import { BaseComponent, css } from '../../Utilities';
-import * as stylesImport from './DetailsRow.scss';
-import { IDetailsRowFieldsProps } from './DetailsRow.types';
-
-const styles: any = stylesImport;
+import { IDetailsRowFieldsProps } from './DetailsRowFields.types';
 
 const INNER_PADDING = 16; // Account for padding around the cell.
 const ISPADDED_WIDTH = 24;
@@ -25,30 +22,24 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
   }
 
   public render(): JSX.Element {
-    const { columns, columnStartIndex, shimmer } = this.props;
+    const { columns, columnStartIndex, shimmer, rowClassNames } = this.props;
     const { cellContent } = this.state;
 
     return (
-      <div
-        className={css('ms-DetailsRow-fields', styles.fields)}
-        data-automationid="DetailsRowFields"
-        role="presentation"
-      >
+      <div className={rowClassNames.fields} data-automationid="DetailsRowFields" role="presentation">
         {columns.map((column, columnIndex) => (
           <div
             key={columnIndex}
             role={column.isRowHeader ? 'rowheader' : 'gridcell'}
             aria-colindex={columnIndex + columnStartIndex + 1}
             className={css(
-              'ms-DetailsRow-cell',
-              styles.cell,
+              rowClassNames.cell,
               column.className,
-              column.isMultiline && 'is-multiline',
-              column.isRowHeader && styles.isRowHeader,
-              column.isPadded && styles.isPadded,
-              column.isMultiline && styles.isMultiline,
-              column.isIconOnly && shimmer && styles.shimmerIconPlaceholder,
-              shimmer && styles.shimmer
+              column.isMultiline && rowClassNames.isMultiline,
+              column.isRowHeader && rowClassNames.isRowHeader,
+              column.isPadded && rowClassNames.isPadded,
+              column.isIconOnly && shimmer && rowClassNames.shimmerIconPlaceholder,
+              shimmer && rowClassNames.shimmer
             )}
             style={{ width: column.calculatedWidth! + INNER_PADDING + (column.isPadded ? ISPADDED_WIDTH : 0) }}
             data-automationid="DetailsRowCell"
