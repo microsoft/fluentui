@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IContextualMenuItem, IContextualMenuProps } from '../../ContextualMenu';
+import { IContextualMenuItem } from '../../ContextualMenu';
 import { IButtonStyles, IButtonProps } from '../../Button';
 import { ICommandBarData } from './CommandBar.base';
 import { IStyle, ITheme } from '../../Styling';
