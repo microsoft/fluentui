@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 02 Jul 2018 10:21:36 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Jul 2018 10:23:19 GMT and should not be manually modified.
+
+## 6.13.0
+Tue, 03 Jul 2018 10:23:19 GMT
+
+### Minor changes
+
+- Stack: clean up file structure
 
 ## 6.12.2
 Mon, 02 Jul 2018 10:21:36 GMT

@@ -2,6 +2,35 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.13.0",
+      "tag": "@uifabric/experiments_v6.13.0",
+      "date": "Tue, 03 Jul 2018 10:23:19 GMT",
+      "comments": {
+        "none": [
+          {
+            "author": "Samiya <samiyaakhtar7@gmail.com>",
+            "commit": "841d7a62a74f094e79f4cac794f9e251028d5079",
+            "comment": "Consumed charts in dashboard cards and fixed styling issues, updating example in dgl"
+          }
+        ],
+        "minor": [
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "affa5a5a4bf511f3348f863d80eb8aa2631fbcbe",
+            "comment": "Stack: clean up file structure"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.0.3` to `^0.0.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `>=6.0.0 <7.0.0` to `>=6.0.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.12.2",
       "tag": "@uifabric/experiments_v6.12.2",
       "date": "Mon, 02 Jul 2018 10:21:36 GMT",
