@@ -20,7 +20,8 @@ export interface ITextProps {
 
   type?: keyof IFontTypes;
   family?: keyof IFontFamilies;
-  size?: keyof IFontSizes | keyof IFontStyles;
+  size?: keyof IFontSizes;
+  style?: keyof IFontStyles;
   weight?: keyof IFontWeights;
   color?: keyof IPalette;
 
@@ -54,7 +55,7 @@ const TextView = (props: ITextViewProps) => {
 };
 
 const styles = (props: IStyleProps<ITextProps, ITextStyles>): ITextStyles => {
-  const { block, theme, wrap, grow, shrink, /* type, */ family, weight, size, color } = props;
+  const { block, theme, wrap, grow, shrink, /* type, */ family, weight, size, style, color } = props;
 
   const { palette, fonts, /* semanticColors, isInverted, */ typography } = theme;
 
@@ -63,25 +64,25 @@ const styles = (props: IStyleProps<ITextProps, ITextStyles>): ITextStyles => {
       ? family && typography.families[family]
         ? typography.families[family]
         : typography.families.default
-      : size && fonts[size]
-        ? fonts[size].fontFamily
+      : style && fonts[style]
+        ? fonts[style].fontFamily
         : fonts.medium.fontFamily,
     fontWeight: typography
       ? weight && typography.weights[weight]
         ? typography.weights[weight]
         : typography.weights.default
-      : size && fonts[size]
-        ? fonts[size].fontWeight
+      : style && fonts[style]
+        ? fonts[style].fontWeight
         : fonts.medium.fontWeight,
     fontSize: typography
       ? size && typography.sizes[size]
         ? typography.sizes[size]
         : typography.sizes.medium
-      : size && fonts[size]
-        ? fonts[size].fontSize
+      : style && fonts[style]
+        ? fonts[style].fontSize
         : fonts.medium.fontSize,
-    mozOsxFontSmoothing: size && fonts[size] ? fonts[size].MozOsxFontSmoothing : fonts.medium.MozOsxFontSmoothing,
-    webkitFontSmoothing: size && fonts[size] ? fonts[size].WebkitFontSmoothing : fonts.medium.WebkitFontSmoothing,
+    mozOsxFontSmoothing: style && fonts[style] ? fonts[style].MozOsxFontSmoothing : fonts.medium.MozOsxFontSmoothing,
+    webkitFontSmoothing: style && fonts[style] ? fonts[style].WebkitFontSmoothing : fonts.medium.WebkitFontSmoothing,
     color: color && palette[color] ? palette[color] : palette.neutralPrimaryAlt
   };
 
