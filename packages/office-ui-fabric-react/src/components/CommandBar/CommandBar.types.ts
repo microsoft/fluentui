@@ -40,8 +40,8 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   overflowItems?: ICommandBarItemProps[];
 
   /**
-   * Props to be passed to overflow button
-   * If menuProps are passed through this prop, items will be required but commandBar will use its own calculated items
+   * Props to be passed to overflow button.
+   * If menuProps are passed through this prop, items will be required but commandBar will use its own calculated items.
    */
   overflowButtonProps?: IButtonProps;
 

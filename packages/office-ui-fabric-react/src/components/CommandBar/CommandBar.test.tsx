@@ -180,7 +180,7 @@ describe('CommandBar', () => {
     expect(document.querySelector('.SubMenuClass')).toBeFalsy();
   });
 
-  it('passes overflowButton menuProps to the menu', () => {
+  it('passes overflowButton menuProps to the menu without changing current items', () => {
     const items = [
       {
         name: 'TestText 1',
@@ -197,16 +197,20 @@ describe('CommandBar', () => {
 
     const commandBar = mount(
       <CommandBar
-        overflowButtonProps={{ menuProps: { items: [], className: 'menuClassnameTest' } }}
+        overflowButtonProps={{
+          menuProps: { items: [{ name: 'TestText 3', key: 'TestKey3' }], className: 'menuClassnameTest' }
+          // Items passed in should be ignored
+        }}
         overflowItems={overFlowItems}
         items={items}
       />
     );
 
-    const overflowMenuItem = commandBar.find('.ms-CommandBar-overflowButton');
+    const overflowMenuButton = commandBar.find('.ms-CommandBar-overflowButton');
 
-    overflowMenuItem.hostNodes().simulate('click');
+    overflowMenuButton.hostNodes().simulate('click');
 
+    expect(document.querySelectorAll('.ms-ContextualMenu-item')).toHaveLength(1);
     expect(document.querySelector('.menuClassnameTest')).toBeTruthy();
   });
 

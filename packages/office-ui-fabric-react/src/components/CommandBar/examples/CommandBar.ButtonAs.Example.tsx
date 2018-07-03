@@ -28,6 +28,14 @@ export class CommandBarButtonAsExample extends React.Component<ICommandBarProps,
     return (
       <div>
         <CommandBar
+          overflowButtonProps={{
+            menuProps: {
+              items: [], // Items must be passed for typesafety, but
+              isBeakVisible: true,
+              beakWidth: 10,
+              gapSpace: 10
+            }
+          }}
           buttonAs={customButton}
           items={items}
           overflowItems={overflowItems}
