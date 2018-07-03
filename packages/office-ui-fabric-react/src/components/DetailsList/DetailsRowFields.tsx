@@ -33,13 +33,13 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
             role={column.isRowHeader ? 'rowheader' : 'gridcell'}
             aria-colindex={columnIndex + columnStartIndex + 1}
             className={css(
-              rowClassNames.cell,
               column.className,
               column.isMultiline && rowClassNames.isMultiline,
               column.isRowHeader && rowClassNames.isRowHeader,
               column.isPadded && rowClassNames.isPadded,
               column.isIconOnly && shimmer && rowClassNames.shimmerIconPlaceholder,
-              shimmer && rowClassNames.shimmer
+              shimmer && rowClassNames.shimmer,
+              rowClassNames.cell
             )}
             style={{ width: column.calculatedWidth! + INNER_PADDING + (column.isPadded ? ISPADDED_WIDTH : 0) }}
             data-automationid="DetailsRowCell"

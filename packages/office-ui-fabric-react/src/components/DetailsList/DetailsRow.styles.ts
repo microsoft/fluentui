@@ -211,7 +211,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
     selectors: {
       // Masking the running shimmer background with borders
       [`&.$shimmer`]: {
-        padding: '0 0',
+        padding: 0,
         borderLeft: thinBorderStyle,
         borderRight: thickBorderStyle,
         borderTop: `${values.compactRowShimmerVerticalBorder}px solid ${colors.defaultBackgroundColor}`,
@@ -253,7 +253,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
         [classNames.isFocusable!]: getFocusStyle(theme, 0, undefined, undefined, neutralSecondary),
 
         '&.$shimmer': {
-          padding: '0 0',
+          padding: 0,
           borderLeft: thinBorderStyle,
           borderRight: thickBorderStyle,
           borderTop: `${values.rowShimmerVerticalBorder}px solid ${colors.defaultBackgroundColor}`,
@@ -299,10 +299,6 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
     compact && cellCompactStyles
   ];
 
-  const checkCompactStyles: IStyle = {
-    padding: values.rowHorizontalPadding
-  };
-
   return {
     root: [
       classNames.root,
@@ -341,7 +337,19 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
       className
     ],
 
+    isPadded: [
+      {
+        paddingRight: values.isPaddedMargin + values.rowHorizontalPadding,
+        selectors: {
+          '&.$checkCell': {
+            paddingRight: 0
+          }
+        }
+      }
+    ],
+
     cell: defaultCellStyles,
+
     cellMeasurer: [
       classNames.cellMeasurer,
       {
@@ -395,16 +403,6 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
         whiteSpace: 'normal',
         wordBreak: 'break-word',
         textOverflow: 'clip'
-      }
-    ],
-    isPadded: [
-      {
-        paddingRight: values.isPaddedMargin + values.rowHorizontalPadding,
-        selectors: {
-          '&.$checkCell': {
-            paddingRight: 0
-          }
-        }
       }
     ],
     shimmer: [],
