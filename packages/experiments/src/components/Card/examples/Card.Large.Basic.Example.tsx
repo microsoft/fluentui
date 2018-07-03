@@ -3,6 +3,7 @@ import { ICardProps, CardSize, Priority, CardContentType } from '../Card.types';
 import { Card } from '../Card';
 import { GridColumnContentType, IGridRow, IGridColumn } from '../GridList/GridList.types';
 import { IAction } from '../ActionBar/ActionBar.types';
+import { ChartType } from '../Chart/Chart.types';
 
 export class LargeCardBasicExample extends React.Component<{}, {}> {
   constructor(props: ICardProps) {
@@ -86,6 +87,25 @@ export class LargeCardBasicExample extends React.Component<{}, {}> {
 
     const actionButtonText = 'more';
 
+    const datapoints = [
+      { x: 0, y: 10 },
+      { x: 6, y: 18 },
+      { x: 12, y: 36 },
+      { x: 21, y: 20 },
+      { x: 29, y: 46 },
+      { x: 34, y: 25 },
+      { x: 40, y: 13 },
+      { x: 48, y: 43 },
+      { x: 57, y: 30 },
+      { x: 64, y: 45 },
+      { x: 72, y: 12 },
+      { x: 78, y: 50 },
+      { x: 85, y: 25 },
+      { x: 90, y: 43 },
+      { x: 96, y: 22 },
+      { x: 100, y: 19 }
+    ];
+
     const contentAreaList = [
       {
         priority: Priority.Priority2,
@@ -99,6 +119,16 @@ export class LargeCardBasicExample extends React.Component<{}, {}> {
           onActionLinkClicked: () => {
             alert('more button clicked');
           }
+        }
+      },
+      {
+        priority: Priority.Priority1,
+        cardContentType: CardContentType.Chart,
+        content: {
+          chartLabel: 'My first chart!',
+          chartType: ChartType.VerticalBarChart,
+          data: datapoints,
+          colors: ['red', 'yellow']
         }
       }
     ];
