@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 02 Jul 2018 20:41:48 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Jul 2018 17:41:15 GMT and should not be manually modified.
+
+## 6.25.1
+Tue, 03 Jul 2018 17:41:15 GMT
+
+### Patches
+
+- Pivot: Ctrl+number doesn't work in Firefox to switch tabs if Pivot is focused.
+- Dropdown: Substantially improve accessibility - in particular in single-select mode.
 
 ## 6.25.0
 Mon, 02 Jul 2018 20:41:48 GMT

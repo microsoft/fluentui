@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.25.1",
+      "tag": "office-ui-fabric-react_v6.25.1",
+      "date": "Tue, 03 Jul 2018 17:41:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Pablo Núñez <pablonete@gmail.com>",
+            "commit": "78b1c4c522718ba54062ce2059f85b13717ee796",
+            "comment": "Pivot: Ctrl+number doesn't work in Firefox to switch tabs if Pivot is focused."
+          },
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "98b5219c62242c1ba7e09e647be2fb370b20d0b4",
+            "comment": "Dropdown: Substantially improve accessibility - in particular in single-select mode."
+          }
+        ]
+      }
+    },
+    {
       "version": "6.25.0",
       "tag": "office-ui-fabric-react_v6.25.0",
       "date": "Mon, 02 Jul 2018 20:41:48 GMT",
