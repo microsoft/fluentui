@@ -22,6 +22,7 @@ import {
 } from '../DetailsList/DetailsList.types';
 import { DetailsHeader, IDetailsHeader, SelectAllVisibility, IDetailsHeaderProps } from '../DetailsList/DetailsHeader';
 import { DetailsRowBase } from '../DetailsList/DetailsRow.base';
+import { DetailsRow } from '../DetailsList/DetailsRow';
 import { IDetailsRowProps } from '../DetailsList/DetailsRow.types';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import {
@@ -458,7 +459,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   }
 
   protected _onRenderRow = (props: IDetailsRowProps, defaultRender?: any): JSX.Element => {
-    return <DetailsRowBase {...props} />;
+    return <DetailsRow {...props} />;
   };
 
   private _onRenderDetailsHeader = (
