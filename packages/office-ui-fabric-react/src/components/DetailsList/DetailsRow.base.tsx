@@ -19,10 +19,11 @@ import { SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/inter
 import { CollapseAllVisibility } from '../../GroupedList';
 import { IDragDropOptions } from './../../utilities/dragdrop/interfaces';
 import { IDetailsRowProps } from './DetailsRow.types';
-import { getClassNames } from './DetailsRow.classNames';
 import { IDetailsRowCheckProps } from './DetailsRowCheck.types';
-import { getClassNames as getCheckClassNames } from './DetailsRowCheck.classNames';
-import { getStyles as getCheckStyles } from './DetailsRowCheck.styles';
+import { IDetailsRowStyleProps, IDetailsRowStyles } from './DetailsRow.types';
+import { classNamesFunction } from '../../Utilities';
+
+export const getClassNames = classNamesFunction<IDetailsRowStyleProps, IDetailsRowStyles>();
 
 export interface IDetailsRowSelectionState {
   isSelected: boolean;
@@ -187,24 +188,12 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowProps, IDetailsRowS
     const showCheckbox = selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden;
     const ariaSelected = selectionMode === SelectionMode.none ? undefined : isSelected;
 
-    const checkClassNames = getCheckClassNames(
-      getCheckStyles({
-        theme: theme!,
-        selected: isSelected,
-        canSelect,
-        anySelected: isSelectionModal,
-        isVisible: checkboxVisibility === CheckboxVisibility.always,
-        compact
-      })
-    );
-
     const classNames = getClassNames(styles, {
       theme: theme!,
       isSelected,
       canSelect: !isContentUnselectable,
       anySelected: isSelectionModal,
       isCheckVisible: checkboxVisibility === CheckboxVisibility.always,
-      checkClassNames: checkClassNames,
       checkboxCellClassName,
       droppingClassName,
       className,
@@ -240,7 +229,7 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowProps, IDetailsRowS
         role="row"
         aria-label={ariaLabel}
         ariaDescribedBy={ariaDescribedBy}
-        className={css(classNames.root, checkClassNames.owner)}
+        className={css(classNames.root)}
         data-is-focusable={true}
         data-selection-index={itemIndex}
         data-item-index={itemIndex}
@@ -260,7 +249,7 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowProps, IDetailsRowS
               title: checkButtonAriaLabel,
               canSelect,
               compact,
-              rowCheckClassNames: checkClassNames,
+              className: classNames.check,
               theme
             })}
           </div>

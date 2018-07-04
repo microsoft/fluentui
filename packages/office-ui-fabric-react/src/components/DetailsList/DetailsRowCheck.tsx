@@ -1,12 +1,16 @@
 import * as React from 'react';
 import { IDetailsRowCheckProps } from './DetailsRowCheck.types';
-import { css } from '../../Utilities';
+import { css, styled } from '../../Utilities';
 import { Check } from '../../Check';
 import { getClassNames as getCheckClassNames } from '../Check/Check.classNames';
 import { getStyles as getCheckStyles } from '../Check/Check.styles';
-import { getClassNames } from './DetailsRowCheck.classNames';
+import { getStyles } from './DetailsRowCheck.styles';
+import { IDetailsRowCheckStyleProps, IDetailsRowCheckStyles } from './DetailsRowCheck.types';
+import { classNamesFunction } from '../../Utilities';
 
-export const DetailsRowCheck = (props: IDetailsRowCheckProps) => {
+const getClassNames = classNamesFunction<IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>();
+
+const DetailsRowCheckBase = (props: IDetailsRowCheckProps) => {
   const {
     canSelect = false,
     isSelected = false,
@@ -14,7 +18,7 @@ export const DetailsRowCheck = (props: IDetailsRowCheckProps) => {
     selected = false,
     isHeader = false,
     className,
-    rowCheckClassNames,
+    checkClassName,
     styles,
     theme,
     compact,
@@ -29,11 +33,20 @@ export const DetailsRowCheck = (props: IDetailsRowCheckProps) => {
     theme: theme!
   });
 
+  const classNames = getClassNames(styles, {
+    theme: theme!,
+    canSelect,
+    selected: isPressed,
+    anySelected,
+    className,
+    compact
+  });
+
   return (
     <div
       {...buttonProps}
       role="checkbox"
-      className={css(rowCheckClassNames.root, rowCheckClassNames.check, checkClassNames.checkHost)}
+      className={css(classNames.root, classNames.check, checkClassNames.checkHost)}
       aria-checked={isPressed}
       data-selection-toggle={true}
       data-automationid="DetailsRowCheck"
@@ -42,3 +55,8 @@ export const DetailsRowCheck = (props: IDetailsRowCheckProps) => {
     </div>
   );
 };
+
+export const DetailsRowCheck = styled<IDetailsRowCheckProps, IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>(
+  DetailsRowCheckBase,
+  getStyles
+);

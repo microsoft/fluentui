@@ -6,7 +6,12 @@ export interface IDetailsRowCheckProps extends React.HTMLAttributes<HTMLElement>
   /**
    * Theme provided by High-Order Component.
    */
-  theme: ITheme;
+  theme?: ITheme;
+
+  /**
+   * Style override
+   */
+  styles?: IStyleFunctionOrObject<IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>;
 
   /**
    * Is the check part of the header in a DetailsList
@@ -45,9 +50,9 @@ export interface IDetailsRowCheckProps extends React.HTMLAttributes<HTMLElement>
   className?: string;
 
   /**
-   * Class names to be passed from parent (DetailsRow)
+   * The classname to be passed down to Check component
    */
-  rowCheckClassNames: { [className in keyof IDetailsRowCheckStyles]: string };
+  checkClassName?: string;
 }
 
 export type IDetailsRowCheckStyleProps = Required<Pick<IDetailsRowCheckProps, 'theme'>> &
@@ -59,5 +64,4 @@ export interface IDetailsRowCheckStyles {
   root: IStyle;
   check: IStyle;
   isDisabled: IStyle;
-  owner: IStyle;
 }

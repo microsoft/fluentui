@@ -36,7 +36,7 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
               column.className,
               column.isMultiline && rowClassNames.isMultiline,
               column.isRowHeader && rowClassNames.isRowHeader,
-              column.isPadded && rowClassNames.isPadded,
+              column.isPadded ? rowClassNames.cellPadded : rowClassNames.cellUnpadded,
               column.isIconOnly && shimmer && rowClassNames.shimmerIconPlaceholder,
               shimmer && rowClassNames.shimmer,
               rowClassNames.cell

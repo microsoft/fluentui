@@ -41,9 +41,6 @@ export const getStyles = (props: IDetailsRowCheckStyleProps): IDetailsRowCheckSt
         padding: 0,
         margin: 0,
         selectors: {
-          '$owner:hover &': {
-            opacity: 1
-          },
           '&:hover': {
             opacity: 1
           },
@@ -54,10 +51,11 @@ export const getStyles = (props: IDetailsRowCheckStyleProps): IDetailsRowCheckSt
             opacity: 1
           }
         }
+      },
+      (selected || anySelected || isVisible) && {
+        opacity: 1
       }
     ],
-
-    owner: [],
 
     isDisabled: []
   };

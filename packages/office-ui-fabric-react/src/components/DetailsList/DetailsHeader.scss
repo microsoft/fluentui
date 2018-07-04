@@ -29,6 +29,10 @@ $isPaddedMargin: 24px;
       visibility: hidden;
     }
   }
+
+  &:hover .check {
+    opacity: 1;
+  }
 }
 
 .cellWrapperPadded {

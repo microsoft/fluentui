@@ -168,9 +168,10 @@ export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & 
 export interface IDetailsRowStyles {
   root: IStyle;
   cell: IStyle;
+  cellUnpadded: IStyle;
+  cellPadded: IStyle;
   checkCell: IStyle;
   isRowHeader: IStyle;
-  isPadded: IStyle;
   isMultiline: IStyle;
   fields: IStyle;
   cellMeasurer: IStyle;
@@ -179,4 +180,5 @@ export interface IDetailsRowStyles {
   shimmerIconPlaceholder: IStyle;
   shimmerLeftBorder: IStyle;
   shimmerBottomBorder: IStyle;
+  check: IStyle;
 }

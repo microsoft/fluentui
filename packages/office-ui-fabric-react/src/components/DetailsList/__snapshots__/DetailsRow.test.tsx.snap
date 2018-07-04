@@ -61,7 +61,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 aria-label={undefined}
                 className=
                     ms-DetailsRow-check
-                    ms-DetailsRow-check--isHeader
 
                     {
                       align-items: center;
@@ -107,7 +106,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                     &.isHeader {
                       height: 32px;
                     }
-                    & ms-Fabric--isFocusVisible {
+                    ms-Fabric--isFocusVisible & {
                       opacity: 1;
                     }
 
@@ -424,7 +423,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 aria-label={undefined}
                 className=
                     ms-DetailsRow-check
-                    ms-DetailsRow-check--isHeader
 
                     {
                       align-items: center;
@@ -470,7 +468,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                     &.isHeader {
                       height: 32px;
                     }
-                    & ms-Fabric--isFocusVisible {
+                    ms-Fabric--isFocusVisible & {
                       opacity: 1;
                     }
 
@@ -787,7 +785,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 aria-label={undefined}
                 className=
                     ms-DetailsRow-check
-                    ms-DetailsRow-check--isHeader
 
                     {
                       align-items: center;
@@ -833,7 +830,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                     &.isHeader {
                       height: 32px;
                     }
-                    & ms-Fabric--isFocusVisible {
+                    ms-Fabric--isFocusVisible & {
                       opacity: 1;
                     }
 
@@ -1150,7 +1147,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 aria-label={undefined}
                 className=
                     ms-DetailsRow-check
-                    ms-DetailsRow-check--isHeader
 
                     {
                       align-items: center;
@@ -1196,7 +1192,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                     &.isHeader {
                       height: 32px;
                     }
-                    & ms-Fabric--isFocusVisible {
+                    ms-Fabric--isFocusVisible & {
                       opacity: 1;
                     }
 

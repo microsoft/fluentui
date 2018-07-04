@@ -238,13 +238,14 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
       display: 'inline-block',
       position: 'relative',
       boxSizing: 'border-box',
-      padding: `${values.rowVerticalPadding}px ${values.rowHorizontalPadding}px ${values.rowVerticalPadding}px 12px`,
       minHeight: values.rowHeight,
       verticalAlign: 'top',
       whiteSpace: 'nowrap',
       overflow: 'hidden',
       textOverflow: 'ellipsis',
-
+      paddingTop: values.rowVerticalPadding,
+      paddingBottom: values.rowVerticalPadding,
+      paddingLeft: 12,
       selectors: {
         '& > button': {
           maxWidth: '100%'
@@ -328,6 +329,10 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
           '&:hover': {
             background: colors.hoverColorBackground,
             color: colors.hoverMetaTextColor
+          },
+
+          '&:hover $check': {
+            opacity: 1
           }
         }
       },
@@ -336,8 +341,12 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
       compact && rootCompactStyles,
       className
     ],
-
-    isPadded: [
+    cellUnpadded: [
+      {
+        paddingRight: values.rowHorizontalPadding
+      }
+    ],
+    cellPadded: [
       {
         paddingRight: values.isPaddedMargin + values.rowHorizontalPadding,
         selectors: {
@@ -418,6 +427,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
         // 1px to take into account the border-bottom when items replace shimmer lines and in default state.
         borderBottom: `1px solid ${colors.defaultBackgroundColor}`
       }
-    ]
+    ],
+    check: []
   };
 };
