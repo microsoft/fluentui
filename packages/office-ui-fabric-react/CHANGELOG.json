@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.113.0",
+      "tag": "office-ui-fabric-react_v5.113.0",
+      "date": "Wed, 04 Jul 2018 11:25:40 GMT",
+      "comments": {
+        "none": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "d7980a10aac4ce0eece035d892aee1fc0ffe2b54",
+            "comment": "List: updated scrolling example with bound private methods."
+          }
+        ],
+        "minor": [
+          {
+            "author": "erichdev <a.erich@gmail.com>",
+            "commit": "e436415e79af5122077b7d5918d336eecc1f20d5",
+            "comment": "DragDropHelper: Add support for `onDragOver` prop in IDragDropOptions"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.112.0",
       "tag": "office-ui-fabric-react_v5.112.0",
       "date": "Wed, 30 May 2018 00:35:36 GMT",

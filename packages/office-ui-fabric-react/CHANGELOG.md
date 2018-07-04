@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 30 May 2018 00:35:36 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Jul 2018 11:25:40 GMT and should not be manually modified.
+
+## 5.113.0
+Wed, 04 Jul 2018 11:25:40 GMT
+
+### Minor changes
+
+- DragDropHelper: Add support for `onDragOver` prop in IDragDropOptions
 
 ## 5.112.0
 Wed, 30 May 2018 00:35:36 GMT
