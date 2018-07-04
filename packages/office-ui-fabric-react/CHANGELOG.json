@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.25.2",
+      "tag": "office-ui-fabric-react_v6.25.2",
+      "date": "Wed, 04 Jul 2018 10:28:27 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Manish Dahamiwal <mdhamiwal@gmail.com>",
+            "commit": "b60acd285294c50b6b6f6f4a84b930a5e7ee2b0b",
+            "comment": "Dialog: Fixing layout issue for IE11"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.25.1",
       "tag": "office-ui-fabric-react_v6.25.1",
       "date": "Tue, 03 Jul 2018 17:41:15 GMT",
