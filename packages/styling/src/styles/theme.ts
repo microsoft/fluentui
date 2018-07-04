@@ -113,12 +113,10 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
     for (const typeName in types) {
       if (typeName) {
         const type = types[typeName] as IFontType;
-        const { typography } = theme;
 
-        // type.color = swatches[type.color] || type.color || types.default.color || '';
-        type.fontFamily = typography.families[type.fontFamily] || type.fontFamily || types.default.fontFamily || '';
-        type.fontSize = typography.sizes[type.fontSize] || type.fontSize || types.default.fontSize || '';
-        type.fontWeight = typography.weights[type.fontWeight] || type.fontWeight || types.default.fontWeight || '';
+        type.fontFamily = theme.typography.families[type.fontFamily] || type.fontFamily;
+        type.fontSize = theme.typography.sizes[type.fontSize] || type.fontSize;
+        type.fontWeight = theme.typography.weights[type.fontWeight] || type.fontWeight;
       }
     }
   }
