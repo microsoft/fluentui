@@ -26,6 +26,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'HorizontalBarChart',
           name: 'HorizontalBarChart',
           url: '#/examples/horizontalbarchart'
+        },
+        {
+          component: require<any>('../components/PieChart/PieChartPage').PieChartPage,
+          key: 'PieChart',
+          name: 'PieChart',
+          url: '#/examples/piechart'
         }
       ]
     }
