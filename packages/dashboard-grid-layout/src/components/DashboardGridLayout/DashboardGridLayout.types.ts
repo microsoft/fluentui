@@ -1,6 +1,6 @@
 import { Breakpoints, Layout, Layouts } from 'react-grid-layout';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { DragApi } from 'react-grid-layout';
+import { DragApiRefObject } from 'react-grid-layout';
 
 /**
  * Size of the card
@@ -87,7 +87,7 @@ export interface IDashboardGridLayoutProps {
   /**
    * Drag api to allow custom drag drops
    */
-  dragApi?: DragApi;
+  dragApi?: DragApiRefObject;
 
   /**
    * Whether items in this grid should be draggable or not

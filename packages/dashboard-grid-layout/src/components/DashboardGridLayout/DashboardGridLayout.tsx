@@ -57,6 +57,7 @@ export class DashboardGridLayout extends React.Component<IDashboardGridLayoutPro
         verticalCompact={true}
         onLayoutChange={this.props.onLayoutChange}
         onBreakpointChange={this.props.onBreakPointChange}
+        dragApiRef={this.props.dragApi}
       >
         {this.props.children}
       </ResponsiveReactGridLayout>
