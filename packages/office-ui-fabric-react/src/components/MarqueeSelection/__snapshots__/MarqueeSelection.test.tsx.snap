@@ -231,6 +231,70 @@ exports[`MarqueeSelection renders MarqueeSelection correctly 1`] = `
           "warningHighlight": "#ffb900",
           "warningText": "#333333",
         },
+        "typography": Object {
+          "colors": Object {
+            "caption": "",
+            "default": "",
+            "disabled": "",
+            "error": "",
+            "success": "",
+          },
+          "families": Object {
+            "default": "Menlo, Monaco, \\"Courier New\\", monospace",
+            "monospace": "Menlo, Monaco, \\"Courier New\\", monospace",
+          },
+          "sizes": Object {
+            "large": "1.6rem",
+            "medium": "1.4rem",
+            "mega": "4rem",
+            "small": "1.3rem",
+            "tiny": "1rem",
+            "xLarge": "1.8rem",
+            "xSmall": "1.2rem",
+            "xxLarge": "2rem",
+            "xxxLarge": "3rem",
+          },
+          "types": Object {
+            "caption": Object {
+              "color": "caption",
+              "fontSize": "xSmall",
+            },
+            "default": Object {
+              "color": "default",
+              "fontFamily": "default",
+              "fontSize": "medium",
+              "fontWeight": "default",
+            },
+            "disabled": Object {
+              "color": "disabled",
+            },
+            "h1": Object {
+              "fontSize": "mega",
+              "fontWeight": "light",
+            },
+            "h2": Object {
+              "fontSize": "xxxLarge",
+              "fontWeight": "light",
+            },
+            "h3": Object {
+              "fontSize": "xxLarge",
+              "fontWeight": "light",
+            },
+            "h4": Object {
+              "fontSize": "xLarge",
+              "fontWeight": "light",
+            },
+            "h5": Object {
+              "fontSize": "large",
+              "fontWeight": "light",
+            },
+          },
+          "weights": Object {
+            "bold": 700,
+            "default": 400,
+            "light": 100,
+          },
+        },
       }
     }
   >
@@ -442,6 +506,70 @@ exports[`MarqueeSelection renders MarqueeSelection correctly 1`] = `
             "warningBackground": "rgba(255, 185, 0, .2)",
             "warningHighlight": "#ffb900",
             "warningText": "#333333",
+          },
+          "typography": Object {
+            "colors": Object {
+              "caption": "",
+              "default": "",
+              "disabled": "",
+              "error": "",
+              "success": "",
+            },
+            "families": Object {
+              "default": "Menlo, Monaco, \\"Courier New\\", monospace",
+              "monospace": "Menlo, Monaco, \\"Courier New\\", monospace",
+            },
+            "sizes": Object {
+              "large": "1.6rem",
+              "medium": "1.4rem",
+              "mega": "4rem",
+              "small": "1.3rem",
+              "tiny": "1rem",
+              "xLarge": "1.8rem",
+              "xSmall": "1.2rem",
+              "xxLarge": "2rem",
+              "xxxLarge": "3rem",
+            },
+            "types": Object {
+              "caption": Object {
+                "color": "caption",
+                "fontSize": "xSmall",
+              },
+              "default": Object {
+                "color": "default",
+                "fontFamily": "default",
+                "fontSize": "medium",
+                "fontWeight": "default",
+              },
+              "disabled": Object {
+                "color": "disabled",
+              },
+              "h1": Object {
+                "fontSize": "mega",
+                "fontWeight": "light",
+              },
+              "h2": Object {
+                "fontSize": "xxxLarge",
+                "fontWeight": "light",
+              },
+              "h3": Object {
+                "fontSize": "xxLarge",
+                "fontWeight": "light",
+              },
+              "h4": Object {
+                "fontSize": "xLarge",
+                "fontWeight": "light",
+              },
+              "h5": Object {
+                "fontSize": "large",
+                "fontWeight": "light",
+              },
+            },
+            "weights": Object {
+              "bold": 700,
+              "default": 400,
+              "light": 100,
+            },
           },
         }
       }
