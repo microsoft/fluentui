@@ -207,7 +207,9 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
 
   const cellCompactStyles: IStyle = {
     minHeight: compactRowHeight,
-    padding: `${compactRowVerticalPadding}px ${rowHorizontalPadding}px ${compactRowVerticalPadding}px 12px`,
+    paddingTop: values.compactRowVerticalPadding,
+    paddingBottom: values.compactRowVerticalPadding,
+    paddingLeft: 12,
     selectors: {
       // Masking the running shimmer background with borders
       [`&.$shimmer`]: {
