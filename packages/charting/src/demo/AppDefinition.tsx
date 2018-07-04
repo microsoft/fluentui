@@ -32,6 +32,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'PieChart',
           name: 'PieChart',
           url: '#/examples/piechart'
+        },
+        {
+          component: require<any>('../components/DonutChart/DonutChartPage').DonutChartPage,
+          key: 'DonutChart',
+          name: 'DonutChart',
+          url: '#/examples/donutchart'
         }
       ]
     }
