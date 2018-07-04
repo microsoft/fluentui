@@ -2,6 +2,7 @@ import * as React from 'react';
 import { HoverCard } from './HoverCard';
 import { IExpandingCardProps } from './ExpandingCard.types';
 import { IStyle } from '../../Styling';
+import { KeyCodes } from '../../Utilities';
 
 export interface IHoverCard {}
 
@@ -90,6 +91,8 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement | H
    * Set first focus into hover card, default should be true
    */
   setInitialFocus?: boolean;
+
+  openHotKey?: KeyCodes;
 }
 
 export interface IHoverCardStyles {
