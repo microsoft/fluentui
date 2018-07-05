@@ -6,7 +6,6 @@ export const getStyles = (props: ILayoutProps): ILayoutStyles => {
   const isMediumTall: boolean = cardSize === CardSize.mediumTall;
   return {
     root: {
-      height: '500px',
       width: '100%',
       overflow: 'hidden',
       display: 'flex',

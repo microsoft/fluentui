@@ -470,7 +470,6 @@ export interface IColumnReorderOptions {
    * draggedIndex is the source column index, that need to be placed in targetIndex
    */
   handleColumnReorder: (draggedIndex: number, targetIndex: number) => void;
-
 }
 
 export enum DetailsListLayoutMode {

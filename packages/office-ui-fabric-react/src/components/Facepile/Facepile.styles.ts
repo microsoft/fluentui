@@ -1,11 +1,6 @@
 import { IFacepileStyleProps, IFacepileStyles } from './Facepile.types';
 
-import {
-  IStyle,
-  hiddenContentStyle,
-  getFocusStyle,
-  getGlobalClassNames,
-} from '../../Styling';
+import { IStyle, hiddenContentStyle, getFocusStyle, getGlobalClassNames } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-Facepile',
@@ -14,17 +9,11 @@ const GlobalClassNames = {
   itemButton: 'ms-Facepile-itemButton ms-Facepile-person',
   itemContainer: 'ms-Facepile-itemContainer',
   members: 'ms-Facepile-members',
-  overflowButton: 'ms-Facepile-overflowButton ms-Facepile-itemButton',
+  overflowButton: 'ms-Facepile-overflowButton ms-Facepile-itemButton'
 };
 
-export const styles = (
-  props: IFacepileStyleProps
-): IFacepileStyles => {
-  const {
-    className,
-    theme,
-    spacingAroundItemButton = 2,
-  } = props;
+export const styles = (props: IFacepileStyleProps): IFacepileStyles => {
+  const { className, theme, spacingAroundItemButton = 2 } = props;
 
   const { palette, fonts } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
@@ -52,7 +41,7 @@ export const styles = (
     }
   };
 
-  return ({
+  return {
     root: [
       classNames.root,
       {
@@ -73,21 +62,20 @@ export const styles = (
             marginRight: spacingAroundItemButton * 2 + 'px',
             selectors: {
               '&:hover': {
-                backgroundColor: palette.themeDark,
+                backgroundColor: palette.themeDark
               },
               '&:focus': {
-                backgroundColor: palette.themeDark,
+                backgroundColor: palette.themeDark
               },
               '&:active': {
-                backgroundColor: palette.themeDarker,
+                backgroundColor: palette.themeDarker
               },
               '&:disabled': {
-                backgroundColor: palette.neutralTertiaryAlt,
-              },
+                backgroundColor: palette.neutralTertiaryAlt
+              }
             }
-          },
+          }
         }
-
       }
     ],
     descriptiveOverflowButton: [
@@ -100,15 +88,12 @@ export const styles = (
             fontSize: fonts.small.fontSize,
             color: palette.neutralSecondary,
             backgroundColor: palette.neutralLight,
-            marginLeft: `${spacingAroundItemButton * 2}px`,
+            marginLeft: `${spacingAroundItemButton * 2}px`
           }
         }
       }
     ],
-    itemButton: [
-      classNames.itemButton,
-      ItemButtonStyles,
-    ],
+    itemButton: [classNames.itemButton, ItemButtonStyles],
     itemContainer: [
       classNames.itemContainer,
       {
@@ -124,7 +109,7 @@ export const styles = (
         selectors: {
           '& > *': {
             flex: '0 0 auto',
-            margin: `${spacingAroundItemButton}px`,
+            margin: `${spacingAroundItemButton}px`
           }
         }
       }
@@ -139,7 +124,7 @@ export const styles = (
             fontSize: fonts.medium.fontSize,
             color: palette.neutralSecondary,
             backgroundColor: palette.neutralLight,
-            marginLeft: `${spacingAroundItemButton * 2}px`,
+            marginLeft: `${spacingAroundItemButton * 2}px`
           }
         }
       }
@@ -150,5 +135,5 @@ export const styles = (
       }
     ],
     screenReaderOnly: hiddenContentStyle
-  });
+  };
 };

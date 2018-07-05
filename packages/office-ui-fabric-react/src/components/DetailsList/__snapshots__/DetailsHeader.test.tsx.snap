@@ -136,7 +136,6 @@ exports[`DetailsHeader can render 1`] = `
   </div>
   <div
     aria-colindex={2}
-    aria-disabled={false}
     aria-sort="none"
     className="ms-DetailsHeader-cell is-actionable undefined"
     data-automationid="ColumnsHeaderColumn"
@@ -186,7 +185,6 @@ exports[`DetailsHeader can render 1`] = `
   />
   <div
     aria-colindex={3}
-    aria-disabled={false}
     aria-sort="none"
     className="ms-DetailsHeader-cell is-actionable undefined"
     data-automationid="ColumnsHeaderColumn"

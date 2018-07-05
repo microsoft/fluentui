@@ -1,6 +1,54 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 26 Jun 2018 10:27:47 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Jul 2018 17:41:15 GMT and should not be manually modified.
+
+## 6.13.1
+Tue, 03 Jul 2018 17:41:15 GMT
+
+### Patches
+
+- Minor tweak to FormDropdown component to make it compatible with tightened Dropdown API
+
+## 6.13.0
+Tue, 03 Jul 2018 10:23:19 GMT
+
+### Minor changes
+
+- Stack: clean up file structure
+
+## 6.12.2
+Mon, 02 Jul 2018 10:21:36 GMT
+
+### Patches
+
+- css changes for action bar
+
+## 6.12.1
+Fri, 29 Jun 2018 10:24:05 GMT
+
+### Patches
+
+- TileList: Adds a fading out overlay over the Shimmer Tiles.
+
+## 6.12.0
+Wed, 27 Jun 2018 23:59:19 GMT
+
+### Minor changes
+
+- Change toggle style values from ems to px
+
+## 6.11.0
+Wed, 27 Jun 2018 17:22:20 GMT
+
+### Minor changes
+
+- fluent style updates per design feedback
+- Revert toggle border-width to pre-Fluent width
+- Prototype of Stack and Text components
+
+### Patches
+
+- CardDidMount callback for making api calls, additional ref incase there is a use case where there is no state, compoundButtonStack  size variation and gridList component v1.1 changes
 
 ## 6.10.1
 Tue, 26 Jun 2018 10:27:47 GMT
