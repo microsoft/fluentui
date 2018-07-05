@@ -8,12 +8,7 @@ import {
 } from './ContextualMenu.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection, IFocusZoneProps, FocusZoneTabbableElements } from '../../FocusZone';
-import {
-  IMenuItemClassNames,
-  // IContextualMenuClassNames,
-  getContextualMenuClassNames,
-  getItemClassNames
-} from './ContextualMenu.classNames';
+import { IMenuItemClassNames, getContextualMenuClassNames, getItemClassNames } from './ContextualMenu.classNames';
 import {
   BaseComponent,
   classNamesFunction,
@@ -97,7 +92,6 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   private _enterTimerId: number | undefined;
   private _targetWindow: Window;
   private _target: Element | MouseEvent | IPoint | null;
-  // private _classNames: IContextualMenuClassNames;
   private _isScrollIdle: boolean;
   private _scrollIdleTimeoutId: number | undefined;
   private _processingExpandCollapseKeyOnly: boolean;
@@ -189,7 +183,6 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     let { isBeakVisible } = this.props;
 
     const {
-      // className,
       items,
       labelElementId,
       id,
@@ -208,14 +201,10 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
       shouldFocusOnMount,
       shouldFocusOnContainer,
       title,
-      // theme,
       calloutProps,
       onRenderSubMenu = this._onRenderSubMenu,
       focusZoneProps
     } = this.props;
-
-    // const menuClassNames = this.props.getMenuClassNames || getContextualMenuClassNames;
-    // this._classNames = menuClassNames(theme!, className);
 
     const hasIcons = itemsHaveIcons(items);
 
@@ -375,7 +364,6 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
   private _onRenderSubMenu(subMenuProps: IContextualMenuProps) {
     return <ContextualMenu {...subMenuProps} />;
-    // return <ContextualMenuBase {...subMenuProps} />;
   }
 
   private _renderMenuItem(

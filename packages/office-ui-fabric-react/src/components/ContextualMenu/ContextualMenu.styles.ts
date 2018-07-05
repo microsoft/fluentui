@@ -22,7 +22,6 @@ export const getStyles = (props: IContextualMenuStyleProps): IContextualMenuStyl
       classNames.root,
       {
         backgroundColor: semanticColors.bodyBackground,
-        // backgroundColor: 'green',
         minWidth: '180px'
       },
       className
