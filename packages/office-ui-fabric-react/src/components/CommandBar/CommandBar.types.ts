@@ -41,7 +41,7 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
 
   /**
    * Props to be passed to overflow button.
-   * If menuProps are passed through this prop, any items provided will be appended to the end of the existing menu.
+   * If menuProps are passed through this prop, any items provided will be prepended to the top of the existing menu.
    */
   overflowButtonProps?: IButtonProps;
 
