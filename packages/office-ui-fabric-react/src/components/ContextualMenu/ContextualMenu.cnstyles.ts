@@ -125,7 +125,7 @@ export const getMenuItemStyles = memoizeFunction(
         whiteSpace: 'nowrap'
       },
       secondaryText: {
-        color: theme.palette.neutralTertiary,
+        color: theme.palette.neutralSecondary,
         paddingLeft: '20px',
         textAlign: 'right'
       },
