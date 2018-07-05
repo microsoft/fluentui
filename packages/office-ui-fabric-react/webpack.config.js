@@ -1,5 +1,6 @@
 let path = require('path');
 const resources = require('../../scripts/tasks/webpack-resources');
+const ManifestServicePlugin = require('@uifabric/webpack-utils/lib/ManifestServicePlugin');
 
 const BUNDLE_NAME = 'office-ui-fabric-react';
 const IS_PRODUCTION = process.argv.indexOf('--production') > -1;
@@ -8,29 +9,45 @@ let entry = {
   [BUNDLE_NAME]: './lib/index.bundle.js'
 };
 
-module.exports = resources.createConfig(BUNDLE_NAME, IS_PRODUCTION, {
-  entry,
+function createConfig(config) {
+  return resources.createConfig(BUNDLE_NAME, IS_PRODUCTION, {
+    entry,
 
-  output: {
-    libraryTarget: 'var',
-    library: 'Fabric'
-  },
+    externals: [
+      {
+        react: 'React'
+      },
+      {
+        'react-dom': 'ReactDOM'
+      }
+    ],
 
-  externals: [
-    {
-      react: 'React'
+    resolve: {
+      alias: {
+        'office-ui-fabric-react/src': path.join(__dirname, 'src'),
+        'office-ui-fabric-react/lib': path.join(__dirname, 'lib'),
+        'Props.ts.js': 'Props',
+        'Example.tsx.js': 'Example'
+      }
     },
-    {
-      'react-dom': 'ReactDOM'
-    }
-  ],
 
-  resolve: {
-    alias: {
-      'office-ui-fabric-react/src': path.join(__dirname, 'src'),
-      'office-ui-fabric-react/lib': path.join(__dirname, 'lib'),
-      'Props.ts.js': 'Props',
-      'Example.tsx.js': 'Example'
+    ...config
+  });
+}
+
+module.exports = [
+  createConfig({
+    output: {
+      libraryTarget: 'var',
+      library: 'Fabric'
     }
-  }
-});
+  }),
+  createConfig({
+    plugins: [new ManifestServicePlugin()],
+    output: {
+      libraryTarget: 'umd',
+      library: 'Fabric',
+      filename: `${BUNDLE_NAME}.umd.js`
+    }
+  })
+];
