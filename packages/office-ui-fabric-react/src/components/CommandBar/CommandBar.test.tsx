@@ -180,7 +180,7 @@ describe('CommandBar', () => {
     expect(document.querySelector('.SubMenuClass')).toBeFalsy();
   });
 
-  it('passes overflowButton menuProps to the menu, and appends menuProps.items to end of overflow', () => {
+  it('passes overflowButton menuProps to the menu, and prepend menuProps.items to top of overflow', () => {
     const items = [
       {
         name: 'Text1',
@@ -215,8 +215,8 @@ describe('CommandBar', () => {
     const overfowItems = document.querySelectorAll('.ms-ContextualMenu-item');
 
     expect(overfowItems).toHaveLength(2);
-    expect(overfowItems[0].textContent).toEqual('Text2');
-    expect(overfowItems[1].textContent).toEqual('Text3');
+    expect(overfowItems[0].textContent).toEqual('Text3');
+    expect(overfowItems[1].textContent).toEqual('Text2');
     expect(document.querySelectorAll('.customMenuClass')).toHaveLength(1);
   });
 
