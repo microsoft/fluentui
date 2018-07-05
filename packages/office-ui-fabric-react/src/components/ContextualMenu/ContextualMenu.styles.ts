@@ -27,7 +27,14 @@ export const getStyles = (props: IContextualMenuStyleProps): IContextualMenuStyl
       },
       className
     ],
-    container: [classNames.container],
+    container: [
+      classNames.container,
+      {
+        selectors: {
+          ':focus': { outline: 0 }
+        }
+      }
+    ],
     list: [
       classNames.list,
       {
