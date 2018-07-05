@@ -112,11 +112,17 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
     const { types } = theme.typography;
     for (const typeName in types) {
       if (typeName) {
-        const type = types[typeName] as IFontType;
+        const type = types[typeName];
 
-        type.fontFamily = theme.typography.families[type.fontFamily] || type.fontFamily;
-        type.fontSize = theme.typography.sizes[type.fontSize] || type.fontSize;
-        type.fontWeight = theme.typography.weights[type.fontWeight] || type.fontWeight;
+        if (type.fontFamily && theme.typography.families[type.fontFamily]) {
+          type.fontFamily = theme.typography.families[type.fontFamily];
+        }
+        if (type.fontSize && theme.typography.sizes[type.fontSize]) {
+          type.fontSize = theme.typography.sizes[type.fontSize];
+        }
+        if (type.fontWeight && theme.typography.families[type.fontWeight]) {
+          type.fontWeight = theme.typography.families[type.fontWeight];
+        }
       }
     }
   }

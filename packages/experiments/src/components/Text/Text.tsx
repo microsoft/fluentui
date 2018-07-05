@@ -1,11 +1,7 @@
 import * as React from 'react';
-import { IStyle, ITheme, IFontStyles, IPalette } from '../../Styling';
-import { TViewProps, createComponent } from '../../utilities/createComponent';
+import { IStyle, IFontStyles, IPalette } from '../../Styling';
+import { TViewProps, createComponent, IStyleProps } from '../../utilities/createComponent';
 import { IFontTypes, IFontFamilies, IFontSizes, IFontWeights } from './theming/ITypography';
-
-export type IStyleProps<TProps, TStyles> = TProps & {
-  theme: ITheme;
-};
 
 // Styles for the component
 export interface ITextStyles {
@@ -83,7 +79,7 @@ const styles = (props: IStyleProps<ITextProps, ITextStyles>): ITextStyles => {
         : fonts.medium.fontSize,
     mozOsxFontSmoothing: style && fonts[style] ? fonts[style].MozOsxFontSmoothing : fonts.medium.MozOsxFontSmoothing,
     webkitFontSmoothing: style && fonts[style] ? fonts[style].WebkitFontSmoothing : fonts.medium.WebkitFontSmoothing,
-    color: color && palette[color] ? palette[color] : palette.neutralPrimaryAlt
+    color: color && palette[color] ? palette[color] : palette.neutralPrimary
   };
 
   return {

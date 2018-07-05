@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mergeStyleSets, getTheme } from 'office-ui-fabric-react';
+import { mergeStyleSets, getTheme, ITheme } from 'office-ui-fabric-react';
 
 export type IStyleFunction<TStylesProps, TStyles> = (props: TStylesProps) => Partial<TStyles>;
 
@@ -10,6 +10,11 @@ export type TViewProps<TProps, TStyles> = TProps & { styles: { [key in keyof TSt
 export interface IAugmentations<TUserProps, TStyles> {
   [scope: string]: IComponentOptions<TUserProps, TStyles>;
 }
+
+// TODO: remove after adding foundation package
+export type IStyleProps<TProps, TStyles> = TProps & {
+  theme: ITheme;
+};
 
 // TODO: if merged, figure out typing. could maybe provide a template accessor to prevent 'any' type arg
 // tslint:disable-next-line:no-any
