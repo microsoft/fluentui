@@ -1,11 +1,12 @@
 import * as React from 'react';
+import { ContextualMenuBase } from './ContextualMenu.base';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { IFocusZoneProps } from '../../FocusZone';
 import { IIconProps } from '../Icon/Icon.types';
 import { ICalloutProps } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
 import { IButtonStyles } from '../../Button';
-import { IPoint, IRectangle, IRenderFunction } from '../../Utilities';
+import { IPoint, IRectangle, IRenderFunction, IStyleFunction } from '../../Utilities';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
 export { DirectionalHint } from '../../common/DirectionalHint';
@@ -25,12 +26,28 @@ export interface IContextualMenu {}
 /**
  * React.Props is deprecated and we're removing it in 6.0. Usage of 'any' should go away with it.
  */
-export interface IContextualMenuProps extends React.Props<any>, IWithResponsiveModeState {
+export interface IContextualMenuProps extends React.Props<ContextualMenuBase>, IWithResponsiveModeState {
   /**
    * Optional callback to access the IContextualMenu interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
   componentRef?: (component: IContextualMenu | null) => void;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  styles?: IStyleFunction<IContextualMenuStyleProps, IContextualMenuStyles>;
+
+  /**
+   * Theme provided by High-Order Component.
+   */
+  theme?: ITheme;
+
+  /**
+   * Additional css class to apply to the ContextualMenu
+   * @defaultvalue undefined
+   */
+  className?: string;
 
   /**
    * The target that the ContextualMenu should try to position itself based on.
@@ -134,12 +151,6 @@ export interface IContextualMenuProps extends React.Props<any>, IWithResponsiveM
   ) => boolean | void;
 
   /**
-   * CSS class to apply to the context menu.
-   * @default null
-   */
-  className?: string;
-
-  /**
    * Whether this menu is a submenu of another menu or not.
    */
   isSubMenu?: boolean;
@@ -188,16 +199,6 @@ export interface IContextualMenuProps extends React.Props<any>, IWithResponsiveM
    * Optional title to be displayed on top of the menu.
    */
   title?: string;
-
-  /**
-   * Custom styling for the contextual menu.
-   */
-  styles?: IContextualMenuStyles;
-
-  /**
-   * Theme provided by HOC.
-   */
-  theme?: ITheme;
 
   /**
    * Method to provide the classnames to style the contextual menu. Default value is the getMenuClassnames func
@@ -517,6 +518,20 @@ export interface IMenuItemStyles extends IButtonStyles {
    * Styles for a divider item of a ConextualMenu.
    */
   divider: IStyle;
+}
+
+export interface IContextualMenuStyleProps {
+  /**
+   * Theme provided by High-Order Component.
+   */
+  theme: ITheme;
+
+  /**
+   * Accept custom classNames
+   */
+  className?: string;
+
+  // Insert ContextualMenu style props below
 }
 
 export interface IContextualMenuStyles {
