@@ -11,7 +11,12 @@ import { IWithResponsiveModeState } from '../../utilities/decorators/withRespons
 import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
 export { DirectionalHint } from '../../common/DirectionalHint';
 import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
-import { IContextualMenuItemProps, IContextualMenuRenderItem } from './ContextualMenuItem.types';
+import {
+  IContextualMenuItemProps,
+  IContextualMenuRenderItem,
+  IContextualMenuItemStyleProps,
+  IContextualMenuItemStyles
+} from './ContextualMenuItem.types';
 import { IKeytipProps } from '../../Keytip';
 
 export enum ContextualMenuItemType {
@@ -246,6 +251,16 @@ export interface IContextualMenuItem {
    * Optional callback to access the IContextualMenuRenderItem interface. This will get passed down to ContextualMenuItem.
    */
   componentRef?: (component: IContextualMenuRenderItem | null) => void;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  styles?: IStyleFunction<IContextualMenuItemStyleProps, IContextualMenuItemStyles>;
+
+  /**
+   * Theme provided by High-Order Component.
+   */
+  theme?: ITheme;
 
   /**
    * Unique id to identify the item

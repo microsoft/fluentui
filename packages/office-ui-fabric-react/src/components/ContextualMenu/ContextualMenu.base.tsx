@@ -645,6 +645,8 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     const { expandedMenuItemKey } = this.state;
     console.log('anchor: ');
 
+    console.log('inside ContextualMenuBase._renderAnchorMenuItem -> item: ', item);
+
     return (
       <ContextualMenuAnchor
         item={item}

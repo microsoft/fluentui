@@ -1,9 +1,13 @@
 import * as React from 'react';
-import { anchorProperties, getNativeProps, createRef } from '../../../Utilities';
+import { anchorProperties, classNamesFunction, getNativeProps, createRef } from '../../../Utilities';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
 import { KeytipData } from '../../../KeytipData';
-import { isItemDisabled, hasSubmenu } from '../../../utilities/contextualMenu/index';
+import { getIsChecked, isItemDisabled, hasSubmenu } from '../../../utilities/contextualMenu/index';
+import { ContextualMenuItemType } from '../ContextualMenu.types';
+import { IContextualMenuItemStyleProps, IContextualMenuItemStyles } from '../ContextualMenuItem.types';
 import { ContextualMenuItem } from '../ContextualMenuItem';
+
+const getClassNames = classNamesFunction<IContextualMenuItemStyleProps, IContextualMenuItemStyles>();
 
 export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
   private _anchor = createRef<HTMLAnchorElement>();
@@ -43,7 +47,29 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
       };
     }
 
-    console.log(this._classNames.root);
+    const iconProps = this.props.item.iconProps || { iconName: 'None' };
+
+    const classNames = getClassNames(this.props.item.styles, {
+      theme: this.props.item.theme!,
+      className: this.props.item.className,
+      disabled: isItemDisabled(this.props.item),
+      // expanded: this.state.expandedMenuItemKey === this.props.item.key,
+      expanded: false,
+      checked: !!getIsChecked(this.props.item),
+      isAnchorLink: !!this.props.item.href,
+      knownIcon: iconProps.iconName !== 'None',
+      itemClassName: this.props.item.className,
+      dividerClassName:
+        this.props.item.itemType === ContextualMenuItemType.Divider ? this.props.item.className : undefined,
+      iconClassName: this._iconProps.className,
+      subMenuClassName: this.props.item.submenuIconProps ? this.props.item.submenuIconProps.className : '',
+      primaryDisabled: this.props.item.primaryDisabled
+    });
+
+    console.log('inside ContextualMenuAnchor', classNames);
+    console.log('styles', this.props.item.styles);
+    console.log('theme', this.props.item.theme);
+    console.log('disabled', isItemDisabled(this.props.item));
 
     return (
       <div>
