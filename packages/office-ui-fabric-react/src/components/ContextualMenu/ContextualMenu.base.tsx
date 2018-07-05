@@ -262,7 +262,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
           totalItemCount += itemCount;
         }
       }
-      console.log(calloutProps ? 'calloutProps exists' : 'calloutProps does not exist');
+
       return (
         <Callout
           {...calloutProps}
