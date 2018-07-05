@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 03 Jul 2018 10:23:19 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Jul 2018 17:41:15 GMT and should not be manually modified.
+
+## 6.13.1
+Tue, 03 Jul 2018 17:41:15 GMT
+
+### Patches
+
+- Minor tweak to FormDropdown component to make it compatible with tightened Dropdown API
 
 ## 6.13.0
 Tue, 03 Jul 2018 10:23:19 GMT

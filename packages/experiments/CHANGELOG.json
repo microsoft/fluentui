@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.13.1",
+      "tag": "@uifabric/experiments_v6.13.1",
+      "date": "Tue, 03 Jul 2018 17:41:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "98b5219c62242c1ba7e09e647be2fb370b20d0b4",
+            "comment": "Minor tweak to FormDropdown component to make it compatible with tightened Dropdown API"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.25.0 <7.0.0` to `>=6.25.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.13.0",
       "tag": "@uifabric/experiments_v6.13.0",
       "date": "Tue, 03 Jul 2018 10:23:19 GMT",
