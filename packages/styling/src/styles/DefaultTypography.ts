@@ -1,13 +1,6 @@
 import { DefaultFontStyles } from './DefaultFontStyles';
 import { FontWeights } from './fonts';
-import {
-  IFontColors,
-  IFontFamilies,
-  IFontSizes,
-  IFontWeights,
-  IFontTypes,
-  ITypography
-} from '../interfaces/ITypography';
+import { IFontFamilies, IFontSizes, IFontWeights, IFontTypes, ITypography } from '../interfaces/ITypography';
 
 export const DefaultFontSizes: IFontSizes = {
   tiny: '1rem',
@@ -33,29 +26,17 @@ export const DefaultFontWeights: IFontWeights = {
   bold: 700 // FontWeights.bold
 };
 
-export const DefaultFontColors: IFontColors = {
-  default: '',
-  caption: '',
-  disabled: '',
-  success: '',
-  error: ''
-};
-
 export const DefaultFontTypes: IFontTypes = {
   default: {
     fontFamily: 'default',
     fontSize: 'medium',
-    fontWeight: 'default',
-    color: 'default'
+    fontWeight: 'default'
   },
 
-  disabled: {
-    color: 'disabled'
-  },
+  disabled: {},
 
   caption: {
-    fontSize: 'xSmall',
-    color: 'caption'
+    fontSize: 'xSmall'
   },
 
   h1: {
@@ -88,6 +69,5 @@ export const DefaultTypography: ITypography = {
   families: DefaultFontFamilies,
   sizes: DefaultFontSizes,
   weights: DefaultFontWeights,
-  colors: DefaultFontColors,
   types: DefaultFontTypes
 };

@@ -1,5 +1,5 @@
 import { DefaultFontStyles, FontWeights } from '../../../../Styling';
-import { IFontColors, IFontFamilies, IFontSizes, IFontWeights, IFontTypes, ITypography } from '../ITypography';
+import { IFontFamilies, IFontSizes, IFontWeights, IFontTypes, ITypography } from '../ITypography';
 
 export const DefaultFontSizes: IFontSizes = {
   tiny: '1rem',
@@ -22,14 +22,6 @@ export const DefaultFontWeights: IFontWeights = {
   default: FontWeights.regular,
   light: FontWeights.light,
   bold: FontWeights.bold
-};
-
-export const DefaultFontColors: IFontColors = {
-  default: '',
-  caption: '',
-  disabled: '',
-  success: '',
-  error: ''
 };
 
 export const DefaultFontTypes: IFontTypes = {
