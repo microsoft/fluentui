@@ -180,26 +180,28 @@ describe('CommandBar', () => {
     expect(document.querySelector('.SubMenuClass')).toBeFalsy();
   });
 
-  it('passes overflowButton menuProps to the menu without changing current items', () => {
+  it('passes overflowButton menuProps to the menu, and appends menuProps.items to end of overflow', () => {
     const items = [
       {
-        name: 'TestText 1',
-        key: 'TestKey1'
+        name: 'Text1',
+        key: 'Key1'
       }
     ];
 
     const overFlowItems = [
       {
-        name: 'TestText 2',
-        key: 'TestKey2'
+        name: 'Text2',
+        key: 'Key2'
       }
     ];
 
     const commandBar = mount(
       <CommandBar
         overflowButtonProps={{
-          menuProps: { items: [{ name: 'TestText 3', key: 'TestKey3' }], className: 'menuClassnameTest' }
-          // Items passed in should be ignored
+          menuProps: {
+            items: [{ name: 'Text3', key: 'Key3' }],
+            className: 'customMenuClass'
+          }
         }}
         overflowItems={overFlowItems}
         items={items}
@@ -210,8 +212,12 @@ describe('CommandBar', () => {
 
     overflowMenuButton.hostNodes().simulate('click');
 
-    expect(document.querySelectorAll('.ms-ContextualMenu-item')).toHaveLength(1);
-    expect(document.querySelector('.menuClassnameTest')).toBeTruthy();
+    const overfowItems = document.querySelectorAll('.ms-ContextualMenu-item');
+
+    expect(overfowItems).toHaveLength(2);
+    expect(overfowItems[0].textContent).toEqual('Text2');
+    expect(overfowItems[1].textContent).toEqual('Text3');
+    expect(document.querySelectorAll('.customMenuClass')).toHaveLength(1);
   });
 
   it('updates menu after update if item is still present', () => {
