@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, DelayedRender, getId, customizable, classNamesFunction } from '../../Utilities';
+import { BaseComponent, DelayedRender, getId, classNamesFunction } from '../../Utilities';
 import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
 import { IMessageBarProps, IMessageBarStyleProps, IMessageBarStyles, MessageBarType } from './MessageBar.types';
