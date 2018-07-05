@@ -15,7 +15,6 @@ import { classNamesFunction, createRef } from '../../Utilities';
 
 import { CommandBarButton, IButtonProps } from '../../Button';
 import { TooltipHost } from '../../Tooltip';
-import { IContextualMenuItem } from 'office-ui-fabric-react/lib/components/ContextualMenu';
 
 const getClassNames = classNamesFunction<ICommandBarStyleProps, ICommandBarStyles>();
 
