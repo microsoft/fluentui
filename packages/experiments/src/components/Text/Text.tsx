@@ -51,45 +51,41 @@ const TextView = (props: ITextViewProps) => {
 };
 
 const styles = (props: IStyleProps<ITextProps, ITextStyles>): ITextStyles => {
-  const { block, theme, wrap, grow, shrink, /* type, */ family, weight, size, style, color } = props;
+  const { block, theme, wrap, grow, shrink, type, family, weight, size, style, color } = props;
 
   const { palette, fonts, /* semanticColors, isInverted, */ typography } = theme;
 
-  const fontFamily = typography // if typography is defined, we'll use it to set the property
-    ? family && typography.families[family] // if family prop is passed in and exists in typography.families, we'll use it
-      ? typography.families[family]
-      : typography.families.default // otherwise use default
-    : style && fonts[style] // if style prop is passed in and exists in fonts, we'll use that for fontFamily
-      ? fonts[style].fontFamily
-      : fonts.medium.fontFamily;
+  let themeType;
 
-  const fontWeight = typography
-    ? weight && typography.weights[weight]
-      ? typography.weights[weight]
-      : typography.weights.default
-    : style && fonts[style]
-      ? fonts[style].fontWeight
-      : fonts.medium.fontWeight;
+  if (type && typography.types[type]) {
+    // if a general type is specified, use that for the theme
+    themeType = typography.types[type];
+  } else {
+    // otherwise look for individual properties
+    const fontFamily =
+      family && typography.families[family] // if family prop is passed in and exists in typography.families, we'll use it
+        ? typography.families[family]
+        : typography.families.default; // otherwise use default
 
-  const fontSize = typography
-    ? size && typography.sizes[size]
-      ? typography.sizes[size]
-      : typography.sizes.medium
-    : style && fonts[style]
-      ? fonts[style].fontSize
-      : fonts.medium.fontSize;
+    const fontWeight = weight && typography.weights[weight] ? typography.weights[weight] : typography.weights.default;
 
-  // just use fonts to set these properties
+    const fontSize = size && typography.sizes[size] ? typography.sizes[size] : typography.sizes.medium;
+
+    themeType = {
+      fontFamily: fontFamily,
+      fontWeight: fontWeight,
+      fontSize: fontSize
+    };
+  }
+
+  // use fonts to set these properties
   const mozOsxFontSmoothing =
     style && fonts[style] ? fonts[style].MozOsxFontSmoothing : fonts.medium.MozOsxFontSmoothing;
 
   const webkitFontSmoothing =
     style && fonts[style] ? fonts[style].WebkitFontSmoothing : fonts.medium.WebkitFontSmoothing;
 
-  const themeType = {
-    fontFamily: fontFamily,
-    fontWeight: fontWeight,
-    fontSize: fontSize,
+  const themeProperties = {
     mozOsxFontSmoothing: mozOsxFontSmoothing,
     webkitFontSmoothing: webkitFontSmoothing,
     color:
@@ -101,6 +97,7 @@ const styles = (props: IStyleProps<ITextProps, ITextStyles>): ITextStyles => {
   return {
     root: [
       themeType,
+      themeProperties,
       {
         display: block ? 'block' : 'inline'
       },

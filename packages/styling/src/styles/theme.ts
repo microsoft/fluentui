@@ -108,21 +108,21 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
     ...theme.semanticColors
   };
 
-  if (theme.typography) {
-    const { types } = theme.typography;
-    for (const typeName in types) {
-      if (typeName) {
-        const type = types[typeName];
+  const typography = theme.typography || DefaultTypography;
 
-        if (type.fontFamily && theme.typography.families[type.fontFamily]) {
-          type.fontFamily = theme.typography.families[type.fontFamily];
-        }
-        if (type.fontSize && theme.typography.sizes[type.fontSize]) {
-          type.fontSize = theme.typography.sizes[type.fontSize];
-        }
-        if (type.fontWeight && theme.typography.families[type.fontWeight]) {
-          type.fontWeight = theme.typography.families[type.fontWeight];
-        }
+  const { types } = typography;
+  for (const typeName in types) {
+    if (typeName) {
+      const type = types[typeName];
+
+      if (type.fontFamily && typography.families[type.fontFamily]) {
+        type.fontFamily = typography.families[type.fontFamily];
+      }
+      if (type.fontSize && typography.sizes[type.fontSize]) {
+        type.fontSize = typography.sizes[type.fontSize];
+      }
+      if (type.fontWeight && typography.families[type.fontWeight]) {
+        type.fontWeight = typography.families[type.fontWeight];
       }
     }
   }
@@ -136,7 +136,7 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
     semanticColors: newSemanticColors,
     isInverted: !!theme.isInverted,
     disableGlobalClassNames: !!theme.disableGlobalClassNames,
-    typography: theme.typography
+    typography: typography
   };
 }
 
