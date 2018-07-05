@@ -26,7 +26,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
   public render(): JSX.Element | null {
     const {
       item,
-      classNames,
+      // classNames,
       index,
       focusableElementIndex,
       totalItemCount,
@@ -54,7 +54,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
             ref={(splitButton: HTMLDivElement) => (this._splitButton = splitButton)}
             role={'menuitem'}
             aria-label={item.ariaLabel}
-            className={classNames.splitContainer}
+            className={this._classNames.splitContainer}
             aria-disabled={isItemDisabled(item)}
             aria-expanded={itemHasSubmenu ? item.key === expandedMenuItemKey : undefined}
             aria-haspopup={true}
@@ -74,9 +74,9 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
             data-is-focusable={true}
             aria-roledescription={item['aria-roledescription']}
           >
-            {this._renderSplitPrimaryButton(item, classNames, index, hasCheckmarks!, hasIcons!)}
+            {this._renderSplitPrimaryButton(item, index, hasCheckmarks!, hasIcons!)}
             {this._renderSplitDivider(item)}
-            {this._renderSplitIconButton(item, classNames, index, keytipAttributes)}
+            {this._renderSplitIconButton(item, index, keytipAttributes)}
           </div>
         )}
       </KeytipData>
@@ -100,7 +100,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
 
   private _renderSplitPrimaryButton(
     item: IContextualMenuItem,
-    classNames: IMenuItemClassNames,
+    // classNames: IMenuItemClassNames,
     index: number,
     hasCheckmarks: boolean,
     hasIcons: boolean
@@ -112,7 +112,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
       disabled: isItemDisabled(item) || item.primaryDisabled,
       name: item.name,
       text: item.text || item.name,
-      className: classNames.splitPrimary,
+      className: this._classNames.splitPrimary,
       canCheck: item.canCheck,
       isChecked: item.isChecked,
       checked: item.checked,
@@ -125,7 +125,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
         <ChildrenRenderer
           data-is-focusable={false}
           item={itemProps}
-          classNames={classNames}
+          // classNames={classNames}
           index={index}
           onCheckmarkClick={hasCheckmarks && onItemClick ? onItemClick.bind(this, item) : undefined}
           hasIcons={hasIcons}
@@ -142,7 +142,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
 
   private _renderSplitIconButton(
     item: IContextualMenuItem,
-    classNames: IMenuItemClassNames,
+    // classNames: IMenuItemClassNames,
     index: number,
     keytipAttributes: any
   ) {
@@ -158,7 +158,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
     const itemProps = {
       onClick: this._onIconItemClick,
       disabled: isItemDisabled(item),
-      className: classNames.splitMenu,
+      className: this._classNames.splitMenu,
       subMenuProps: item.subMenuProps,
       submenuIconProps: item.submenuIconProps,
       split: true,
@@ -180,7 +180,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
         <ChildrenRenderer
           componentRef={item.componentRef}
           item={itemProps}
-          classNames={classNames}
+          // classNames={classNames}
           index={index}
           hasIcons={false}
           openSubMenu={openSubMenu}

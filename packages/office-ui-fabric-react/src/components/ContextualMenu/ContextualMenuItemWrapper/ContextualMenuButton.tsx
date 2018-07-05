@@ -39,7 +39,7 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
     delete (buttonNativeProperties as any).disabled;
 
     const itemButtonProperties = {
-      className: classNames.root,
+      className: this._classNames.root,
       onClick: this._onItemClick,
       onKeyDown: itemHasSubmenu ? this._onItemKeyDown : null,
       onMouseEnter: this._onItemMouseEnter,

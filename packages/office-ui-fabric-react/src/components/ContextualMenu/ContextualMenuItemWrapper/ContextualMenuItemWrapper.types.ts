@@ -17,7 +17,7 @@ export interface IContextualMenuItemWrapperProps extends React.Props<IContextual
   /**
    * CSS class to apply to the context menu.
    */
-  classNames: IMenuItemClassNames;
+  classNames?: IMenuItemClassNames;
 
   /**
    * The index number of the wrapper among all items in the contextual menu including things like dividers and headers.
