@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 04 Jul 2018 10:28:27 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Jul 2018 10:26:07 GMT and should not be manually modified.
+
+## 6.25.3
+Thu, 05 Jul 2018 10:26:07 GMT
+
+### Patches
+
+- Fixed target index issue, when the dragged column is before the drophint
+- Fix the text is cropped unexpectedly
 
 ## 6.25.2
 Wed, 04 Jul 2018 10:28:27 GMT
