@@ -74,7 +74,6 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
     themePrimary
   } = theme.palette;
 
-  const { compactRowHeight, compactRowVerticalPadding, rowHorizontalPadding } = values;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const colors = {
@@ -201,12 +200,12 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
   ];
 
   const rootCompactStyles: IStyle = {
-    minHeight: compactRowHeight,
+    minHeight: values.compactRowHeight,
     border: 0
   };
 
   const cellCompactStyles: IStyle = {
-    minHeight: compactRowHeight,
+    minHeight: values.compactRowHeight,
     paddingTop: values.compactRowVerticalPadding,
     paddingBottom: values.compactRowVerticalPadding,
     paddingLeft: 12,
