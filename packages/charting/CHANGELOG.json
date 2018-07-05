@@ -2,6 +2,20 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.0.4",
+      "tag": "@uifabric/charting_v0.0.4",
+      "date": "Tue, 03 Jul 2018 10:23:19 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "e421e971135c6b5fa8caac4c06da0faf41468c48",
+            "comment": "Add ! mark for typed props"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.3",
       "tag": "@uifabric/charting_v0.0.3",
       "date": "Mon, 02 Jul 2018 10:21:36 GMT",

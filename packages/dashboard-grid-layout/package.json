@@ -1,18 +1,19 @@
 {
   "name": "@uifabric/dashboard-grid-layout",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
     "@types/react": "16.3.16",
     "@types/react-dom": "16.0.5",
     "@types/react-grid-layout": "^0.16.4",
     "@uifabric/example-app-base": ">=6.2.1 <7.0.0",
-    "@uifabric/experiments": ">=6.12.2 <7.0.0",
+    "@uifabric/experiments": ">=6.13.1 <7.0.0",
     "css-loader": "^0.15.1",
-    "office-ui-fabric-react": ">=6.24.0 <7.0.0",
+    "office-ui-fabric-react": ">=6.25.3 <7.0.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-grid-layout": "^0.16.6"
+    "react-grid-layout": "^0.16.6",
+    "style-loader": "^0.21.0"
   },
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

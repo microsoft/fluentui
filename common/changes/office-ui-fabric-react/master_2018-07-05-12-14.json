@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Link: HC color for link rendered as a button.",
+      "comment": "Hide persona image when showing UnknownPersonaCoin",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "lynam.emily@gmail.com"
+  "email": "ivdijan@microsoft.com"
 }

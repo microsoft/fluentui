@@ -1,6 +1,41 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 02 Jul 2018 10:21:36 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Jul 2018 10:26:07 GMT and should not be manually modified.
+
+## 6.25.3
+Thu, 05 Jul 2018 10:26:07 GMT
+
+### Patches
+
+- Fixed target index issue, when the dragged column is before the drophint
+- Fix the text is cropped unexpectedly
+
+## 6.25.2
+Wed, 04 Jul 2018 10:28:27 GMT
+
+### Patches
+
+- Dialog: Fixing layout issue for IE11
+
+## 6.25.1
+Tue, 03 Jul 2018 17:41:15 GMT
+
+### Patches
+
+- Pivot: Ctrl+number doesn't work in Firefox to switch tabs if Pivot is focused.
+- Dropdown: Substantially improve accessibility - in particular in single-select mode.
+
+## 6.25.0
+Mon, 02 Jul 2018 20:41:48 GMT
+
+### Minor changes
+
+- Convert TeachingBubble to use JS styling.
+
+### Patches
+
+- Checkbox: Updated hc hover states.
+- Link: HC color for link rendered as a button.
 
 ## 6.24.0
 Mon, 02 Jul 2018 10:21:36 GMT

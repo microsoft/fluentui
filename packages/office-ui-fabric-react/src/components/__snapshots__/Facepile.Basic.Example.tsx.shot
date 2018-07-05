@@ -759,13 +759,14 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
         aria-disabled={undefined}
         aria-expanded="false"
         aria-label={undefined}
-        aria-live="assertive"
+        aria-labelledby="Dropdown6-label"
         aria-owns={undefined}
         className="ms-Dropdown"
         data-is-focusable={true}
         id="Dropdown6"
         onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
         role="listbox"
@@ -774,9 +775,13 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
         <span
           aria-atomic={true}
           aria-label="size32"
+          aria-live="off"
+          aria-posinset={4}
+          aria-selected={true}
+          aria-setsize={5}
           className="ms-Dropdown-title"
           id="Dropdown6-option"
-          role="listbox"
+          role="option"
         >
           <span>
             size32
