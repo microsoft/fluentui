@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Schedule time neutralTertiary -> neutralSecondary ",
+      "comment": "Change the styling for ContextualMenu secondaryText from neutralTertiary to neutralSecondary for accessibility",
       "type": "minor"
     }
   ],
