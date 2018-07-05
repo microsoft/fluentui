@@ -86,11 +86,6 @@ export interface ICardFrameStyles {
   cardTitle: IStyle;
 
   /**
-   * Style for root seperator
-   */
-  seperator: IStyle;
-
-  /**
    * Style for card frame layout(children)
    */
   layout: IStyle;
