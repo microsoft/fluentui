@@ -1,15 +1,22 @@
 import * as React from 'react';
-import { IContextualMenuProps, IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.types';
+import {
+  IContextualMenuProps,
+  IContextualMenuItem,
+  ContextualMenuItemType,
+  IContextualMenuStyleProps,
+  IContextualMenuStyles
+} from './ContextualMenu.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection, IFocusZoneProps, FocusZoneTabbableElements } from '../../FocusZone';
 import {
   IMenuItemClassNames,
-  IContextualMenuClassNames,
+  // IContextualMenuClassNames,
   getContextualMenuClassNames,
   getItemClassNames
 } from './ContextualMenu.classNames';
 import {
   BaseComponent,
+  classNamesFunction,
   IPoint,
   assign,
   getId,
@@ -32,6 +39,8 @@ import {
   ContextualMenuButton,
   ContextualMenuAnchor
 } from './ContextualMenuItemWrapper/index';
+
+const getClassNames = classNamesFunction<IContextualMenuStyleProps, IContextualMenuStyles>();
 
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;
@@ -88,12 +97,17 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   private _enterTimerId: number | undefined;
   private _targetWindow: Window;
   private _target: Element | MouseEvent | IPoint | null;
-  private _classNames: IContextualMenuClassNames;
+  // private _classNames: IContextualMenuClassNames;
   private _isScrollIdle: boolean;
   private _scrollIdleTimeoutId: number | undefined;
   private _processingExpandCollapseKeyOnly: boolean;
 
   private _adjustedFocusZoneProps: IFocusZoneProps;
+
+  private _classNames = getClassNames(this.props.styles, {
+    theme: this.props.theme!,
+    className: this.props.className
+  });
 
   constructor(props: IContextualMenuProps) {
     super(props);
@@ -175,7 +189,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     let { isBeakVisible } = this.props;
 
     const {
-      className,
+      // className,
       items,
       labelElementId,
       id,
@@ -194,14 +208,14 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
       shouldFocusOnMount,
       shouldFocusOnContainer,
       title,
-      theme,
+      // theme,
       calloutProps,
       onRenderSubMenu = this._onRenderSubMenu,
       focusZoneProps
     } = this.props;
 
-    const menuClassNames = this.props.getMenuClassNames || getContextualMenuClassNames;
-    this._classNames = menuClassNames(theme!, className);
+    // const menuClassNames = this.props.getMenuClassNames || getContextualMenuClassNames;
+    // this._classNames = menuClassNames(theme!, className);
 
     const hasIcons = itemsHaveIcons(items);
 
@@ -376,8 +390,8 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     // We only send a dividerClassName when the item to be rendered is a divider. For all other cases, the default divider style is used.
     const dividerClassName = item.itemType === ContextualMenuItemType.Divider ? item.className : undefined;
     const subMenuIconClassName = item.submenuIconProps ? item.submenuIconProps.className : '';
-    const getClassNames = item.getItemClassNames || getItemClassNames;
-    const itemClassNames = getClassNames(
+    const getTheItemClassNames = item.getItemClassNames || getItemClassNames;
+    const itemClassNames = getTheItemClassNames(
       this.props.theme!,
       isItemDisabled(item),
       this.state.expandedMenuItemKey === item.key,
