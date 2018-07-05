@@ -65,12 +65,20 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           border-color: #106ebe;
         }
         @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-          background: WindowText;
-          border-color: WindowText;
+          background: Window;
+          border-color: Highlight;
         }
         @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-checkbox {
-          background: WindowText;
-          border-color: WindowText;
+          background: Highlight;
+        }
+        @media screen and (-ms-high-contrast: active){&:focus:hover .ms-Checkbox-checkbox {
+          background: Highlight;
+        }
+        @media screen and (-ms-high-contrast: active){&:focus:hover .ms-Checkbox-checkmark {
+          color: Window;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+          color: Highlight;
         }
         &:hover .ms-Checkbox-text {
           color: #333333;
@@ -131,8 +139,8 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
               width: 20px;
             }
             @media screen and (-ms-high-contrast: active){& {
-              background: WindowText;
-              border-color: WindowText;
+              background: Highlight;
+              border-color: Highlight;
             }
         data-ktp-target={undefined}
       >

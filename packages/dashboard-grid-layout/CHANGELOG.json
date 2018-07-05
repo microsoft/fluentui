@@ -2,6 +2,40 @@
   "name": "@uifabric/dashboard-grid-layout",
   "entries": [
     {
+      "version": "0.2.0",
+      "tag": "@uifabric/dashboard-grid-layout_v0.2.0",
+      "date": "Tue, 03 Jul 2018 17:41:15 GMT",
+      "comments": {
+        "none": [
+          {
+            "author": "Samiya <samiyaakhtar7@gmail.com>",
+            "commit": "841d7a62a74f094e79f4cac794f9e251028d5079",
+            "comment": "Consumed charts in dashboard cards and fixed styling issues, updating example in dgl"
+          },
+          {
+            "author": "Samiya <samiyaakhtar7@gmail.com>",
+            "commit": "241c3027f083a2d3609b964bacfced41b4d815ab",
+            "comment": "Fixing loading of css stylesheets from rgl using style-loader"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Samiya <samiyaakhtar7@gmail.com>",
+            "commit": "7f4a7b84bcd82306f4bd68334514980377e6a0a8",
+            "comment": "Fixing loading of css stylesheets from rgl using style-loader"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.13.0 <7.0.0` to `>=6.13.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.25.0 <7.0.0` to `>=6.25.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.1.1",
       "tag": "@uifabric/dashboard-grid-layout_v0.1.1",
       "date": "Fri, 29 Jun 2018 10:24:05 GMT",

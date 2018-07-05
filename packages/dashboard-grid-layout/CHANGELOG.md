@@ -1,6 +1,13 @@
 # Change Log - @uifabric/dashboard-grid-layout
 
-This log was last generated on Fri, 29 Jun 2018 10:24:05 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Jul 2018 17:41:15 GMT and should not be manually modified.
+
+## 0.2.0
+Tue, 03 Jul 2018 17:41:15 GMT
+
+### Minor changes
+
+- Fixing loading of css stylesheets from rgl using style-loader
 
 ## 0.1.1
 Fri, 29 Jun 2018 10:24:05 GMT
