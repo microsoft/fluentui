@@ -288,7 +288,7 @@ export interface IColumn {
 
   /**
    * Optional accessibility label (aria-label) attribute that will be stamped on to the element.
-   * If none is specified, the arai-label attribute will contain the column name
+   * If none is specified, the aria-label attribute will contain the column name
    */
   ariaLabel?: string;
 

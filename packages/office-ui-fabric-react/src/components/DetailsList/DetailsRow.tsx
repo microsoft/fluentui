@@ -66,6 +66,7 @@ export interface IDetailsRowState {
     column: IColumn;
     onMeasureDone: (measuredWidth: number) => void;
   };
+  /** for drag-and-drop */
   isDropping?: boolean;
   groupNestingDepth?: number;
 }

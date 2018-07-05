@@ -3,11 +3,29 @@ import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 
 import { DetailsList } from './DetailsList';
-
 import { IDetailsList, IColumn } from './DetailsList.types';
+import { AnimationVariables } from '../../Styling';
+
+const _columns: IColumn[] = [
+  {
+    key: 'key',
+    minWidth: 8,
+    name: 'key'
+  },
+  {
+    key: 'name',
+    minWidth: 8,
+    name: 'name'
+  },
+  {
+    key: 'value',
+    minWidth: 8,
+    name: 'value'
+  }
+];
 
 // Populate mock items for testing
-function mockItems(count: number): any {
+function mockItems(count: number): any[] {
   const items = [];
 
   for (let i = 0; i < count; i++) {
@@ -28,6 +46,7 @@ describe('DetailsList', () => {
     const component = renderer.create(
       <DetailsList
         items={mockItems(5)}
+        columns={_columns}
         // tslint:disable-next-line:jsx-no-lambda
         onRenderRow={() => null}
         skipViewportMeasures={true}
@@ -37,6 +56,35 @@ describe('DetailsList', () => {
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('renders updates correctly', () => {
+    jest.useFakeTimers();
+
+    const testItems = mockItems(5);
+    const detailsList = mount(
+      <DetailsList
+        items={testItems}
+        columns={_columns}
+        skipViewportMeasures={true}
+        // tslint:disable-next-line:jsx-no-lambda
+        onShouldVirtualize={() => false}
+      />
+    );
+
+    const modifiedTestItems = testItems.slice();
+    modifiedTestItems[0] = { ...modifiedTestItems[0], ...{ key: 'newKey 0', name: 'newName 0' } };
+    const endIndex = modifiedTestItems.length - 1;
+    modifiedTestItems[endIndex] = { ...modifiedTestItems[endIndex], ...{ name: 'newName ' + endIndex } };
+    detailsList.setProps({ items: modifiedTestItems });
+    detailsList.update();
+
+    setTimeout(() => {
+      expect(detailsList.getDOMNode()).toMatchSnapshot();
+      // triple the length of the longest animation, to wait for update animations to finish, which should take only double
+      // also convert to ms
+    }, Number(AnimationVariables.durationValue4) * 3 * 1000);
+    jest.runOnlyPendingTimers();
   });
 
   it('focuses row by index', () => {
@@ -141,7 +189,8 @@ describe('DetailsList', () => {
     jest.runOnlyPendingTimers();
 
     // update props to new setKey
-    const newProps = { items: mockItems(7), setKey: 'set2', initialFocusedIndex: 0 };
+    const testItems = mockItems(7);
+    const newProps = { items: testItems, setKey: 'set2', initialFocusedIndex: 0 };
     detailsList.setProps(newProps);
     detailsList.update();
 
