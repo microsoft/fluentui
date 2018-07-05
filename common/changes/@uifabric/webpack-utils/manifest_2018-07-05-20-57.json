@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/webpack-utils",
+      "comment": "Addes a manifest service plugin",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/webpack-utils",
+  "email": "kchau@microsoft.com"
+}
