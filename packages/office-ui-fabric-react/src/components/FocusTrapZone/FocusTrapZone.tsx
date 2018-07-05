@@ -5,7 +5,7 @@ import {
   elementContains,
   getNativeProps,
   divProperties,
-  getFirstFocusable,
+  getFirstTabbable,
   getLastTabbable,
   getNextElement,
   focusAsync,
@@ -36,9 +36,16 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   }
 
   public componentDidMount(): void {
-    const { isClickableOutsideFocusTrap = false, forceFocusInsideTrap = true, elementToFocusOnDismiss, disableFirstFocus = false } = this.props;
+    const {
+      isClickableOutsideFocusTrap = false,
+      forceFocusInsideTrap = true,
+      elementToFocusOnDismiss,
+      disableFirstFocus = false
+    } = this.props;
 
-    this._previouslyFocusedElementOutsideTrapZone = elementToFocusOnDismiss ? elementToFocusOnDismiss : document.activeElement as HTMLElement;
+    this._previouslyFocusedElementOutsideTrapZone = elementToFocusOnDismiss
+      ? elementToFocusOnDismiss
+      : (document.activeElement as HTMLElement);
     if (!elementContains(this._root.current, this._previouslyFocusedElementOutsideTrapZone) && !disableFirstFocus) {
       this.focus();
     }
@@ -76,10 +83,12 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     }
 
     const activeElement = document.activeElement as HTMLElement;
-    if (!ignoreExternalFocusing &&
+    if (
+      !ignoreExternalFocusing &&
       this._previouslyFocusedElementOutsideTrapZone &&
       typeof this._previouslyFocusedElementOutsideTrapZone.focus === 'function' &&
-      (elementContains(this._root.value, activeElement) || activeElement === document.body)) {
+      (elementContains(this._root.value, activeElement) || activeElement === document.body)
+    ) {
       focusAsync(this._previouslyFocusedElementOutsideTrapZone);
     }
   }
@@ -90,14 +99,14 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
 
     return (
       <div
-        { ...divProps }
-        className={ className }
-        ref={ this._root }
-        aria-labelledby={ ariaLabelledBy }
-        onKeyDown={ this._onKeyboardHandler }
-        onFocusCapture={ this._onFocusCapture }
+        {...divProps}
+        className={className}
+        ref={this._root}
+        aria-labelledby={ariaLabelledBy}
+        onKeyDown={this._onKeyboardHandler}
+        onFocusCapture={this._onFocusCapture}
       >
-        { this.props.children }
+        {this.props.children}
       </div>
     );
   }
@@ -116,7 +125,9 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     }
 
     const focusSelector =
-      typeof firstFocusableSelector === 'string' ? firstFocusableSelector : firstFocusableSelector && firstFocusableSelector();
+      typeof firstFocusableSelector === 'string'
+        ? firstFocusableSelector
+        : firstFocusableSelector && firstFocusableSelector();
 
     let _firstFocusableChild;
 
@@ -124,7 +135,14 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
       if (focusSelector) {
         _firstFocusableChild = this._root.current.querySelector('.' + focusSelector);
       } else {
-        _firstFocusableChild = getNextElement(this._root.current, this._root.current.firstChild as HTMLElement, true, false, false, true);
+        _firstFocusableChild = getNextElement(
+          this._root.current,
+          this._root.current.firstChild as HTMLElement,
+          true,
+          false,
+          false,
+          true
+        );
       }
     }
     if (_firstFocusableChild) {
@@ -136,23 +154,12 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     if (this.props.onFocusCapture) {
       this.props.onFocusCapture(ev);
     }
-    if (ev.isDefaultPrevented()) {
-      return;
-    }
-
-    if (ev.target === ev.currentTarget) {
-      // If the trap zone gets focus, pass on focus to either first focusable
-      // child element or the last focused element when this zone last had
-      // a focused child (depending on a prop).
-      this.focus();
-      ev.preventDefault();
-      ev.stopPropagation();
-    } else {
+    if (ev.target !== ev.currentTarget) {
       // every time focus changes within the trap zone, remember the focused element so that
       // it can be restored if focus leaves the pane and returns via keystroke (i.e. via a call to this.focus(true))
       this._previouslyFocusedElementInTrapZone = ev.target as HTMLElement;
     }
-  }
+  };
 
   private _onKeyboardHandler = (ev: React.KeyboardEvent<HTMLDivElement>): void => {
     if (this.props.onKeyDown) {
@@ -172,19 +179,23 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
       return;
     }
 
-    const _firstFocusableChild = getFirstFocusable(this._root.current, this._root.current.firstChild as HTMLElement, true);
-    const _lastFocusableChild = getLastTabbable(this._root.current, this._root.current.lastChild as HTMLElement, true);
+    const _firstTabbableChild = getFirstTabbable(
+      this._root.current,
+      this._root.current.firstChild as HTMLElement,
+      true
+    );
+    const _lastTabbableChild = getLastTabbable(this._root.current, this._root.current.lastChild as HTMLElement, true);
 
-    if (ev.shiftKey && _firstFocusableChild === ev.target) {
-      focusAsync(_lastFocusableChild);
+    if (ev.shiftKey && _firstTabbableChild === ev.target) {
+      focusAsync(_lastTabbableChild);
       ev.preventDefault();
       ev.stopPropagation();
-    } else if (!ev.shiftKey && _lastFocusableChild === ev.target) {
-      focusAsync(_firstFocusableChild);
+    } else if (!ev.shiftKey && _lastTabbableChild === ev.target) {
+      focusAsync(_firstTabbableChild);
       ev.preventDefault();
       ev.stopPropagation();
     }
-  }
+  };
 
   private _forceFocusInTrap(ev: FocusEvent): void {
     if (FocusTrapZone._focusStack.length && this === FocusTrapZone._focusStack[FocusTrapZone._focusStack.length - 1]) {

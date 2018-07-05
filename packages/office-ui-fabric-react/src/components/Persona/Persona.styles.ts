@@ -1,22 +1,6 @@
-import {
-  IPersonaStyleProps,
-  IPersonaStyles,
-  PersonaPresence,
-  PersonaSize
-} from './Persona.types';
-import {
-  FontSizes,
-  FontWeights,
-  IStyle,
-  normalize,
-  noWrap,
-  getGlobalClassNames,
-} from '../../Styling';
-import {
-  personaSize,
-  presenceBoolean,
-  sizeBoolean,
-} from './PersonaConsts';
+import { IPersonaStyleProps, IPersonaStyles, PersonaPresence, PersonaSize } from './Persona.types';
+import { FontSizes, FontWeights, IStyle, normalize, noWrap, getGlobalClassNames } from '../../Styling';
+import { personaSize, presenceBoolean, sizeBoolean } from './PersonaConsts';
 
 const GlobalClassNames = {
   root: 'ms-Persona',
@@ -40,17 +24,11 @@ const GlobalClassNames = {
   secondaryText: 'ms-Persona-secondaryText',
   tertiaryText: 'ms-Persona-tertiaryText',
   optionalText: 'ms-Persona-optionalText',
-  textContent: 'ms-Persona-textContent',
+  textContent: 'ms-Persona-textContent'
 };
 
-export const getStyles = (
-  props: IPersonaStyleProps
-): IPersonaStyles => {
-  const {
-    className,
-    showSecondaryText,
-    theme,
-  } = props;
+export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
+  const { className, showSecondaryText, theme } = props;
 
   const { palette } = theme;
 
@@ -64,12 +42,13 @@ export const getStyles = (
   const sharedTextStyles: IStyle = {
     color: palette.neutralSecondary,
     fontWeight: FontWeights.regular,
-    fontSize: FontSizes.small,
+    fontSize: FontSizes.small
   };
 
-  return ({
+  return {
     root: [
       classNames.root,
+      theme.fonts.medium,
       normalize,
       {
         color: palette.neutralPrimary,
@@ -83,13 +62,13 @@ export const getStyles = (
 
         selectors: {
           '.contextualHost': {
-            display: 'none',
+            display: 'none'
           },
 
           ':hover': {
             selectors: {
-              '$primaryText': {
-                color: palette.neutralDark,
+              $primaryText: {
+                color: palette.neutralDark
               }
             }
           }
@@ -100,7 +79,7 @@ export const getStyles = (
         classNames.size10,
         {
           height: personaSize.size10,
-          minWidth: personaSize.size10,
+          minWidth: personaSize.size10
         }
       ],
 
@@ -108,7 +87,7 @@ export const getStyles = (
         classNames.size16,
         {
           height: personaSize.size16,
-          minWidth: personaSize.size16,
+          minWidth: personaSize.size16
         }
       ],
 
@@ -116,31 +95,33 @@ export const getStyles = (
         classNames.size24,
         {
           height: personaSize.size24,
-          minWidth: personaSize.size24,
+          minWidth: personaSize.size24
         }
       ],
 
-      size.isSize24 && showSecondaryText && {
-        height: '36px',
-      },
+      size.isSize24 &&
+        showSecondaryText && {
+          height: '36px'
+        },
 
       size.isSize28 && [
         classNames.size28,
         {
           height: personaSize.size28,
-          minWidth: personaSize.size28,
+          minWidth: personaSize.size28
         }
       ],
 
-      size.isSize28 && showSecondaryText && {
-        height: '32px',
-      },
+      size.isSize28 &&
+        showSecondaryText && {
+          height: '32px'
+        },
 
       size.isSize32 && [
         classNames.size32,
         {
           height: personaSize.size32,
-          minWidth: personaSize.size32,
+          minWidth: personaSize.size32
         }
       ],
 
@@ -148,7 +129,7 @@ export const getStyles = (
         classNames.size40,
         {
           height: personaSize.size40,
-          minWidth: personaSize.size40,
+          minWidth: personaSize.size40
         }
       ],
 
@@ -158,7 +139,7 @@ export const getStyles = (
         classNames.size72,
         {
           height: personaSize.size72,
-          minWidth: personaSize.size72,
+          minWidth: personaSize.size72
         }
       ],
 
@@ -166,7 +147,7 @@ export const getStyles = (
         classNames.size100,
         {
           height: personaSize.size100,
-          minWidth: personaSize.size100,
+          minWidth: personaSize.size100
         }
       ],
 
@@ -179,7 +160,7 @@ export const getStyles = (
       presence.isBusy && classNames.busy,
       presence.isDoNotDisturb && classNames.doNotDisturb,
       presence.isOffline && classNames.offline,
-      className,
+      className
     ],
 
     details: [
@@ -191,15 +172,15 @@ export const getStyles = (
         textAlign: 'left',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'space-around',
+        justifyContent: 'space-around'
       },
 
       size.isSize10 && {
-        paddingLeft: '17px',
+        paddingLeft: '17px'
       },
 
       (size.isSize24 || size.isSize28) && {
-        padding: '0 12px',
+        padding: '0 12px'
       }
     ],
 
@@ -209,37 +190,37 @@ export const getStyles = (
       {
         color: palette.neutralPrimary,
         fontWeight: FontWeights.regular,
-        fontSize: FontSizes.large,
+        fontSize: FontSizes.large
       },
 
       showSecondaryText && {
         height: showSecondaryTextDefaultHeight,
         lineHeight: showSecondaryTextDefaultHeight,
-        overflowX: 'hidden',
+        overflowX: 'hidden'
       },
 
       size.isSize10 && {
         fontSize: FontSizes.small,
-        lineHeight: personaSize.size10,
+        lineHeight: personaSize.size10
       },
 
       (size.isSize16 || size.isSize24 || size.isSize28 || size.isSize32 || size.isSize40) && {
-        fontSize: FontSizes.medium,
+        fontSize: FontSizes.medium
       },
 
       size.isSize16 && {
-        lineHeight: personaSize.size28,
+        lineHeight: personaSize.size28
       },
 
       size.isSize24 && showSecondaryText && { height: '18px' },
 
       size.isSize72 && {
-        fontSize: FontSizes.xLarge,
+        fontSize: FontSizes.xLarge
       },
 
       size.isSize100 && {
         fontSize: FontSizes.xLarge,
-        fontWeight: FontWeights.semilight,
+        fontWeight: FontWeights.semilight
       }
     ],
 
@@ -249,22 +230,23 @@ export const getStyles = (
       sharedTextStyles,
 
       (size.isSize10 || size.isSize16 || size.isSize24 || size.isSize28 || size.isSize32) && {
-        display: 'none',
+        display: 'none'
       },
 
-      size.isSize24 && showSecondaryText && {
-        height: '18px',
-      },
+      size.isSize24 &&
+        showSecondaryText && {
+          height: '18px'
+        },
 
       (size.isSize72 || size.isSize100) && {
-        fontSize: FontSizes.medium,
+        fontSize: FontSizes.medium
       },
 
       showSecondaryText && {
         display: 'block',
         height: showSecondaryTextDefaultHeight,
         lineHeight: showSecondaryTextDefaultHeight,
-        overflowX: 'hidden',
+        overflowX: 'hidden'
       }
     ],
 
@@ -273,11 +255,11 @@ export const getStyles = (
       noWrap,
       sharedTextStyles,
       {
-        display: 'none',
+        display: 'none'
       },
 
       (size.isSize72 || size.isSize100) && {
-        display: 'block',
+        display: 'block'
       }
     ],
 
@@ -286,17 +268,14 @@ export const getStyles = (
       noWrap,
       sharedTextStyles,
       {
-        display: 'none',
+        display: 'none'
       },
 
       size.isSize100 && {
-        display: 'block',
+        display: 'block'
       }
     ],
 
-    textContent: [
-      classNames.textContent,
-      noWrap
-    ],
-  });
+    textContent: [classNames.textContent, noWrap]
+  };
 };

@@ -6,19 +6,16 @@ function start(): void {
   const div: HTMLElement = document.createElement('div');
 
   document.body.appendChild(div);
-  ReactDOM.render((
+  ReactDOM.render(
     <DefaultButton
-      iconProps={ { iconName: 'Snow' } }
-      text='hi'
-      menuProps={ {
-        items: [
-          { key: 'a', name: 'Item a' },
-          { key: 'c', name: 'Item b' },
-          { key: 'b', name: 'Item c' },
-        ]
-      } }
-    />
-  ), div);
+      iconProps={{ iconName: 'Snow' }}
+      text="hi"
+      menuProps={{
+        items: [{ key: 'a', name: 'Item a' }, { key: 'c', name: 'Item b' }, { key: 'b', name: 'Item c' }]
+      }}
+    />,
+    div
+  );
 }
 
 // tslint:disable-next-line:no-string-literal

@@ -11,15 +11,8 @@
     "moduleResolution": "node",
     "preserveConstEnums": true,
     "strict": true,
-    "lib": [
-      "es6",
-      "dom"
-    ],
-    "types": [
-      "webpack-env"
-    ]
+    "lib": ["es6", "dom"],
+    "types": ["webpack-env"]
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

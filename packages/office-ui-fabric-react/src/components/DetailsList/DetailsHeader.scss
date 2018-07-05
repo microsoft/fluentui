@@ -75,6 +75,18 @@ $isPaddedMargin: 24px;
   &.cellIsEmpty {
     text-overflow: clip;
   }
+
+  &:hover .gripperBarVerticalStyle {
+    display: block;
+   }
+}
+
+.gripperBarVerticalStyle {
+  display: none;
+  position: absolute;
+  @include ms-text-align(left);
+  color: $ms-color-neutralTertiary;
+  @include ms-left(1px);
 }
 
 .cellSizer {
@@ -123,6 +135,7 @@ $isPaddedMargin: 24px;
   @include margin-left(-16px);
 }
 
+
 .collapseButton {
   text-align: center;
   transform: rotate(-180deg);
@@ -161,19 +174,18 @@ $isPaddedMargin: 24px;
 }
 
 .cellTitle {
-  display: inline-flex;
+  display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: stretch;
   box-sizing: border-box;
   overflow: hidden;
-  max-width: 100%;
   @include focus-border($position: auto);
-  padding: 0 8px;
+  padding: 0 8px 0 12px;
 }
 
 .cellName {
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -213,3 +225,66 @@ $isPaddedMargin: 24px;
 .accessibleLabel {
   @include ms-screenReaderOnly;
 }
+
+.borderWhileDragging {
+  border-style : solid;
+  border-width: 1px;
+  border-color:$ms-color-themePrimary;
+  -webkit-animation: fadeOut 0.2s forwards;
+  animation: fadeOut 0.2s forwards;
+}
+
+.dropHintCircleStyle {
+  display:inline-block;
+  visibility:hidden;
+  position: absolute;
+  bottom: 0;
+  top: -27px;
+  height: 9px;
+  width: 9px;
+  border-radius: 50%;
+  @include ms-margin-left(-5px);
+  top:34px;
+  overflow: visible;
+  z-index: 10;
+  border:1px solid $ms-color-themePrimary;
+  background: $ms-color-white;
+}
+
+.dropHintLineStyle{
+  display: inline-block;
+  visibility:hidden;
+  position: absolute;
+  bottom: 0;
+  top: -3px;
+  overflow: hidden;
+  height: 37px;
+  width: 1px;
+  background: $ms-color-themePrimary;
+  z-index:10;
+}
+
+.dropHintStyle{
+  display: inline-block;
+  position: absolute;
+}
+
+.borderAfterDropping {
+  border-style : solid;
+  border-width: 1px;
+  border-color:$ms-color-themePrimary;
+  -webkit-animation: fadeOut 1.5s forwards;
+  animation: fadeOut 1.5s forwards;
+  @include ms-left(-1px);
+  line-height: 31px;
+}
+
+  @-webkit-keyframes fadeOut {
+    from {border-color:$ms-color-themePrimary; }
+    to {border-color:white }
+  }
+
+  @keyframes fadeOut {
+    from {border-color:$ms-color-themePrimary; }
+    to {border-color:white }
+  }

@@ -1,9 +1,5 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  hoistMethods,
-  unhoistMethods
-} from '../../Utilities';
+import { BaseComponent, hoistMethods, unhoistMethods } from '../../Utilities';
 
 export class BaseDecorator<TProps, TState> extends BaseComponent<TProps, TState> {
   // tslint:disable-next-line:typedef

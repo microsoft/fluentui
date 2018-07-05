@@ -54,28 +54,27 @@ const title = baseTitle + ' - ' + packageData.version;
  */
 const description = process.env.DESCRIPTION;
 
-
 /**
  * Object of data to POST to the API
  */
 const postFields = {
-  "sourceRefName": baseBranchPath + srcRefName,
-  "targetRefName": baseBranchPath + targetRefName,
-  "title": { title },
-  "description": { prDescription }
+  sourceRefName: baseBranchPath + srcRefName,
+  targetRefName: baseBranchPath + targetRefName,
+  title: { title },
+  description: { prDescription }
 };
 
 /**
  * Main function to kick off the post request
  */
 function createVsoBranch() {
-  request.post({ url: vsoApiUrl, form: postFields }, function (err, httpResponse, body) {
+  request.post({ url: vsoApiUrl, form: postFields }, function(err, httpResponse, body) {
     if (err) {
       console.error(err);
     }
 
-    console.log("HTTP Response:", httpResponse);
-    console.log("Body Response:", body)
+    console.log('HTTP Response:', httpResponse);
+    console.log('Body Response:', body);
   });
 }
 

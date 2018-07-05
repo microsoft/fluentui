@@ -1,4 +1,3 @@
-
 import * as React from 'react';
 import { IContextualMenuItem, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonStyles, IButtonProps } from '../../Button';
@@ -31,8 +30,8 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   items: ICommandBarItemProps[];
 
   /**
- * Items to render on the right side (or left, in RTL).
- */
+   * Items to render on the right side (or left, in RTL).
+   */
   farItems?: ICommandBarItemProps[];
 
   /**
@@ -46,23 +45,23 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   overflowButtonProps?: IButtonProps;
 
   /**
-  * Custom button to be used as oveflow button
-  */
+   * Custom button to be used as oveflow button
+   */
   overflowButtonAs?: IComponentAs<IButtonProps>;
 
   /**
-  * Menu props to be passed to overflow elipsis
-  */
+   * Menu props to be passed to overflow elipsis
+   */
   overflowMenuProps?: Partial<IContextualMenuProps>;
 
   /**
-  * Custom button to be used as near and far items
-  */
+   * Custom button to be used as near and far items
+   */
   buttonAs?: IComponentAs<IButtonProps>;
 
   /**
-  * When true, items will be 'shifted' off the front of the array when reduced, and unshifted during grow
-  */
+   * When true, items will be 'shifted' off the front of the array when reduced, and unshifted during grow
+   */
   shiftOnReduce?: Boolean;
 
   /**
@@ -102,8 +101,8 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   ariaLabel?: string;
 
   /**
-  * Call to provide customized styling that will layer on top of the variant rules
-  */
+   * Call to provide customized styling that will layer on top of the variant rules
+   */
   styles?: IStyleFunctionOrObject<ICommandBarStyleProps, ICommandBarStyles>;
 
   /**
@@ -113,7 +112,6 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export interface ICommandBarItemProps extends IContextualMenuItem {
-
   /**
    * Remove text when button is not in the overflow
    * @defaultvalue false
@@ -135,7 +133,6 @@ export interface ICommandBarItemProps extends IContextualMenuItem {
    * This value is controlled by the component and useful for adjusting onRender function
    */
   renderedInOverflow?: boolean;
-
 }
 
 export interface ICommandBarStyleProps {

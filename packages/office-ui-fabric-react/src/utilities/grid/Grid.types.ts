@@ -1,7 +1,7 @@
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
 
-export interface IGrid { }
+export interface IGrid {}
 
 export interface IGridProps {
   /**
@@ -74,8 +74,8 @@ export interface IGridProps {
  */
 export interface IGridStyleProps {
   /**
-  * Theme to apply to the grid
-  */
+   * Theme to apply to the grid
+   */
   theme: ITheme;
 }
 

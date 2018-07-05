@@ -29,22 +29,16 @@ export class SuggestionsStore<T> {
   }
 
   public convertSuggestionsToSuggestionItems(suggestions: Array<ISuggestionModel<T> | T>): ISuggestionModel<T>[] {
-    return Array.isArray(suggestions)
-      ? suggestions.map(this._ensureSuggestionModel)
-      : [];
+    return Array.isArray(suggestions) ? suggestions.map(this._ensureSuggestionModel) : [];
   }
 
   @autobind
-  private _isSuggestionModel(
-    value: ISuggestionModel<T> | T
-    ): value is ISuggestionModel<T> {
+  private _isSuggestionModel(value: ISuggestionModel<T> | T): value is ISuggestionModel<T> {
     return (<ISuggestionModel<T>>value).item !== undefined;
   }
 
   @autobind
-  private _ensureSuggestionModel(
-    suggestion: ISuggestionModel<T> | T
-    ): ISuggestionModel<T> {
+  private _ensureSuggestionModel(suggestion: ISuggestionModel<T> | T): ISuggestionModel<T> {
     if (this._isSuggestionModel(suggestion)) {
       return suggestion as ISuggestionModel<T>;
     } else {

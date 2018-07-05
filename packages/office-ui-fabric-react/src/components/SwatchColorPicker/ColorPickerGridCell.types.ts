@@ -8,8 +8,8 @@ export interface IColorPickerGridCellProps {
   item: IColorCellProps;
 
   /**
- * Arbitrary unique string associated with this option
- */
+   * Arbitrary unique string associated with this option
+   */
   id: string;
 
   /**
@@ -55,8 +55,8 @@ export interface IColorPickerGridCellProps {
   onClick?: (item: IColorCellProps) => void;
 
   /**
- * Optional, the onHover handler
- */
+   * Optional, the onHover handler
+   */
   onHover?: (item?: IColorCellProps) => void;
 
   /**
@@ -65,8 +65,8 @@ export interface IColorPickerGridCellProps {
   onFocus?: (item: IColorCellProps) => void;
 
   /**
-  * Optional styles for the component.
-  */
+   * Optional styles for the component.
+   */
   styles?: IStyleFunctionOrObject<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>;
 
   /**
@@ -98,10 +98,9 @@ export interface IColorPickerGridCellProps {
 }
 
 export interface IColorCellProps {
-
   /**
-  * Arbitrary unique string associated with this option
-  */
+   * Arbitrary unique string associated with this option
+   */
   id: string;
 
   /**

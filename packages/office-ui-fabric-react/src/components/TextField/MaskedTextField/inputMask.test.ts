@@ -22,7 +22,7 @@ const values: IMaskValue[] = [
   { value: undefined, format: /[0-9]/, displayIndex: 31 },
   { value: undefined, format: /[0-9]/, displayIndex: 32 },
   { value: undefined, format: /[0-9]/, displayIndex: 33 },
-  { value: undefined, format: /[0-9]/, displayIndex: 34 },
+  { value: undefined, format: /[0-9]/, displayIndex: 34 }
 ];
 
 function resetValues(charData: IMaskValue[], maxIndex: number = Infinity): void {
@@ -63,7 +63,7 @@ describe('inputMask', () => {
     expect(result).toEqual('Phone number mask: (');
   });
 
-  it('generated displayedMask doesn\'t render escape codes', () => {
+  it("generated displayedMask doesn't render escape codes", () => {
     const maskString = 'Esc\\aped Ch\\ar\\acters: (999) 999 - 9999';
     const maskValues = parseMask(maskString);
 

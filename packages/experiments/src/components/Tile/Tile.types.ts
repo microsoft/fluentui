@@ -5,8 +5,8 @@ import { IBaseProps, ISize } from 'office-ui-fabric-react/lib/Utilities';
 import { ISelection } from 'office-ui-fabric-react/lib/Selection';
 
 export type TileSize = keyof {
-  small: 'small',
-  large: 'large'
+  small: 'small';
+  large: 'large';
 };
 
 export interface ITileProps extends IBaseProps, React.AllHTMLAttributes<HTMLSpanElement | HTMLAnchorElement> {

@@ -1,6 +1,59 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Wed, 30 May 2018 22:05:04 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Jul 2018 20:41:48 GMT and should not be manually modified.
+
+## 6.5.0
+Mon, 02 Jul 2018 20:41:48 GMT
+
+### Minor changes
+
+- New selectors for high contrast white and black modes.
+
+## 6.4.0
+Fri, 29 Jun 2018 10:24:05 GMT
+
+### Minor changes
+
+- Add neutralSecondaryAlt color.
+
+## 6.3.0
+Wed, 20 Jun 2018 10:25:55 GMT
+
+### Minor changes
+
+- Add borderColor and outlineColor parameters to getFocusStyle
+
+### Patches
+
+- Prettier fixes
+
+## 6.2.1
+Tue, 19 Jun 2018 10:26:26 GMT
+
+### Patches
+
+- Handling `stylesheet.onReset` undefined scenarios better.
+
+## 6.2.0
+Thu, 07 Jun 2018 16:35:34 GMT
+
+### Minor changes
+
+- Minor changes to improve server side rendering.
+
+## 6.0.3
+Tue, 05 Jun 2018 00:44:30 GMT
+
+### Patches
+
+- Added Prettier
+
+## 6.0.2
+Mon, 04 Jun 2018 10:16:13 GMT
+
+### Patches
+
+- Updating react typings.
 
 ## 6.0.1
 Wed, 30 May 2018 22:05:04 GMT

@@ -20,8 +20,8 @@ export interface IDialogFooterProps extends React.Props<DialogFooterBase> {
   theme?: ITheme;
 
   /**
-  * Optional override class name
-  */
+   * Optional override class name
+   */
   className?: string;
 }
 
@@ -32,8 +32,8 @@ export interface IDialogFooterStyleProps {
   theme: ITheme;
 
   /**
-  * Optional override class name
-  */
+   * Optional override class name
+   */
   className?: string;
 }
 

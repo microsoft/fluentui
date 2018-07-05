@@ -1,10 +1,4 @@
-import {
-  getDocument,
-  getParent,
-  getWindow,
-  setSSR,
-  elementContains
-} from './dom';
+import { getDocument, getParent, getWindow, setSSR, elementContains } from './dom';
 
 let unattachedSvg = document.createElement('svg');
 let unattachedDiv = document.createElement('div');

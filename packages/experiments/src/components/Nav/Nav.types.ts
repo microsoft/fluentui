@@ -1,10 +1,7 @@
 ﻿/* tslint:disable */
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
-import {
-  INavLink,
-  INavLinkGroup
-} from 'office-ui-fabric-react/lib/components/Nav';
+import { INavLink, INavLinkGroup } from 'office-ui-fabric-react/lib/components/Nav';
 import { INavState } from 'office-ui-fabric-react/lib/components/Nav/Nav.base';
 /* tslint:enable */
 

@@ -71,14 +71,14 @@ export function standardStyles(theme: ITheme): IButtonStyles {
             }
           }
         }
-      },
+      }
     },
 
     splitButtonMenuButtonDisabled: {
       backgroundColor: theme.palette.neutralLighter,
       selectors: {
         ':hover': {
-          backgroundColor: theme.palette.neutralLighter,
+          backgroundColor: theme.palette.neutralLighter
         }
       }
     },
@@ -88,11 +88,11 @@ export function standardStyles(theme: ITheme): IButtonStyles {
     },
 
     splitButtonMenuButtonChecked: {
-      backgroundColor: theme.palette.themePrimary,
+      backgroundColor: theme.palette.themePrimary
     },
 
     splitButtonMenuButtonExpanded: {
-      backgroundColor: theme.palette.neutralLight,
+      backgroundColor: theme.palette.neutralLight
     },
 
     splitButtonMenuIcon: {
@@ -101,7 +101,7 @@ export function standardStyles(theme: ITheme): IButtonStyles {
 
     splitButtonMenuIconDisabled: {
       color: theme.palette.neutralTertiary
-    },
+    }
   };
 }
 
@@ -149,7 +149,7 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
 
     rootChecked: {
       backgroundColor: theme.palette.themeDark,
-      color: theme.palette.white,
+      color: theme.palette.white
     },
 
     rootCheckedHovered: {
@@ -164,7 +164,7 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
           borderColor: 'GrayText',
           backgroundColor: 'Window'
         }
-      },
+      }
     },
 
     // Split button styles
@@ -192,24 +192,24 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
             }
           }
         }
-      },
+      }
     },
 
     splitButtonMenuButtonDisabled: {
       backgroundColor: theme.palette.neutralLighter,
       selectors: {
         ':hover': {
-          backgroundColor: theme.palette.neutralLighter,
+          backgroundColor: theme.palette.neutralLighter
         }
       }
     },
 
     splitButtonMenuButtonChecked: {
-      backgroundColor: theme.palette.themeDark,
+      backgroundColor: theme.palette.themeDark
     },
 
     splitButtonMenuButtonExpanded: {
-      backgroundColor: theme.palette.themeDark,
+      backgroundColor: theme.palette.themeDark
     },
 
     splitButtonMenuIcon: {

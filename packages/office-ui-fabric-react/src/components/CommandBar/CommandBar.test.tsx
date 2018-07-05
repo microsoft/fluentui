@@ -9,7 +9,6 @@ import { mount } from 'enzyme';
 import { IContextualMenuItem } from '../../ContextualMenu';
 
 describe('CommandBar', () => {
-
   afterEach(() => {
     for (let i = 0; i < document.body.children.length; i++) {
       if (document.body.children[i].tagName === 'DIV') {
@@ -20,15 +19,13 @@ describe('CommandBar', () => {
   });
 
   it('renders commands correctly', () => {
-    expect(renderer.create(
-      <CommandBar
-        items={ [
-          { key: '1', text: 'asdf' },
-          { key: '2', text: 'asdf' }
-        ] }
-        className={ 'TestClassName' }
-      />
-    ).toJSON()).toMatchSnapshot();
+    expect(
+      renderer
+        .create(
+          <CommandBar items={[{ key: '1', text: 'asdf' }, { key: '2', text: 'asdf' }]} className={'TestClassName'} />
+        )
+        .toJSON()
+    ).toMatchSnapshot();
   });
 
   it('adds the correct aria-setsize and -posinset attributes to the command bar items.', () => {
@@ -50,19 +47,17 @@ describe('CommandBar', () => {
       {
         text: 'TestText 2',
         key: 'TestKey2',
-        className: 'item2',
+        className: 'item2'
       },
       {
         text: 'TestText 3',
         key: 'TestKey3',
-        className: 'item3',
-      },
+        className: 'item3'
+      }
     ];
 
     const renderedContent = ReactTestUtils.renderIntoDocument<CommandBarBase>(
-      <CommandBarBase
-        items={ items }
-      />
+      <CommandBarBase items={items} />
     ) as React.Component<CommandBarBase, {}>;
     document.body.appendChild(ReactDOM.findDOMNode(renderedContent)!);
 
@@ -78,7 +73,7 @@ describe('CommandBar', () => {
   it('opens a menu with IContextualMenuItem.subMenuProps.items property', () => {
     const commandBar = mount(
       <CommandBar
-        items={ [
+        items={[
           {
             text: 'TestText 1',
             key: 'TestKey1',
@@ -92,8 +87,8 @@ describe('CommandBar', () => {
                 }
               ]
             }
-          },
-        ] }
+          }
+        ]}
       />
     );
 
@@ -109,7 +104,7 @@ describe('CommandBar', () => {
   it('keeps menu open after update if item is still present', () => {
     const commandBar = mount(
       <CommandBar
-        items={ [
+        items={[
           {
             text: 'TestText 1',
             key: 'TestKey1',
@@ -122,8 +117,8 @@ describe('CommandBar', () => {
                 }
               ]
             }
-          },
-        ] }
+          }
+        ]}
       />
     );
 
@@ -151,7 +146,7 @@ describe('CommandBar', () => {
   it('closes menu after update if item is not longer present', () => {
     const commandBar = mount(
       <CommandBar
-        items={ [
+        items={[
           {
             text: 'TestText 1',
             key: 'TestKey1',
@@ -164,8 +159,8 @@ describe('CommandBar', () => {
                 }
               ]
             }
-          },
-        ] }
+          }
+        ]}
       />
     );
 
@@ -199,14 +194,10 @@ describe('CommandBar', () => {
             }
           ]
         }
-      },
+      }
     ];
 
-    const commandBar = mount(
-      <CommandBar
-        items={ items }
-      />
-    );
+    const commandBar = mount(<CommandBar items={items} />);
 
     const menuItem = commandBar.find('button');
 
@@ -226,5 +217,4 @@ describe('CommandBar', () => {
     // Make sure the menu is still open after the re-render
     expect(document.querySelector('.SubMenuClassUpdate')).toBeDefined();
   });
-
 });

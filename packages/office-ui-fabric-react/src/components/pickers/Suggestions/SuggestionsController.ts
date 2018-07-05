@@ -34,10 +34,10 @@ export class SuggestionsController<T> {
    */
   public nextSuggestion(): boolean {
     if (this.suggestions && this.suggestions.length) {
-      if (this.currentIndex < (this.suggestions.length - 1)) {
+      if (this.currentIndex < this.suggestions.length - 1) {
         this.setSelectedSuggestion(this.currentIndex + 1);
         return true;
-      } else if (this.currentIndex === (this.suggestions.length - 1)) {
+      } else if (this.currentIndex === this.suggestions.length - 1) {
         this.setSelectedSuggestion(0);
         return true;
       }
@@ -89,9 +89,7 @@ export class SuggestionsController<T> {
   }
 
   public convertSuggestionsToSuggestionItems(suggestions: Array<ISuggestionModel<T> | T>): ISuggestionModel<T>[] {
-    return Array.isArray(suggestions)
-      ? suggestions.map(this._ensureSuggestionModel)
-      : [];
+    return Array.isArray(suggestions) ? suggestions.map(this._ensureSuggestionModel) : [];
   }
 
   public deselectAllSuggestions(): void {
@@ -117,15 +115,11 @@ export class SuggestionsController<T> {
     }
   }
 
-  private _isSuggestionModel = (
-    value: ISuggestionModel<T> | T
-  ): value is ISuggestionModel<T> => {
+  private _isSuggestionModel = (value: ISuggestionModel<T> | T): value is ISuggestionModel<T> => {
     return (<ISuggestionModel<T>>value).item !== undefined;
-  }
+  };
 
-  private _ensureSuggestionModel = (
-    suggestion: ISuggestionModel<T> | T
-  ): ISuggestionModel<T> => {
+  private _ensureSuggestionModel = (suggestion: ISuggestionModel<T> | T): ISuggestionModel<T> => {
     if (this._isSuggestionModel(suggestion)) {
       return suggestion as ISuggestionModel<T>;
     } else {
@@ -135,5 +129,5 @@ export class SuggestionsController<T> {
         ariaLabel: (<any>suggestion).name || (<any>suggestion).primaryText
       } as ISuggestionModel<T>;
     }
-  }
+  };
 }

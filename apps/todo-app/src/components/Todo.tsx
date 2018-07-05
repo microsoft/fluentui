@@ -35,37 +35,41 @@ export default class Todo extends React.Component<ITodoProps, ITodoState> {
 
   public render(): React.ReactElement<ITodoProps> {
     return (
-      <div className={ styles.todo }>
-        <div className={ styles.topRow }>
-          <h2 className={ styles.todoHeading }>{ strings.todoListTitle }</h2>
-          { this._renderWorkingOnItSpinner() }
+      <div className={styles.todo}>
+        <div className={styles.topRow}>
+          <h2 className={styles.todoHeading}>{strings.todoListTitle}</h2>
+          {this._renderWorkingOnItSpinner()}
         </div>
-        <TodoForm
-          onSubmit={ this.props.dataProvider.createItem }
-        />
+        <TodoForm onSubmit={this.props.dataProvider.createItem} />
         <TodoTabs
-          items={ this.state.items }
-          onToggleComplete={ this.props.dataProvider.toggleComplete }
-          onDeleteItem={ this.props.dataProvider.deleteItem }
+          items={this.state.items}
+          onToggleComplete={this.props.dataProvider.toggleComplete}
+          onDeleteItem={this.props.dataProvider.deleteItem}
         />
-        { this._renderFetchingTasksSpinner() }
+        {this._renderFetchingTasksSpinner()}
       </div>
     );
   }
 
   private _renderWorkingOnItSpinner(): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> | false {
-    return (this.props.dataProvider.isLoading && this.state.items.length > 0) && (
-      <div className={ styles.workingOnItSpinner }>
-        <Spinner type={ SpinnerType.normal } />
-      </div>
+    return (
+      this.props.dataProvider.isLoading &&
+      this.state.items.length > 0 && (
+        <div className={styles.workingOnItSpinner}>
+          <Spinner type={SpinnerType.normal} />
+        </div>
+      )
     );
   }
 
   private _renderFetchingTasksSpinner(): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> | false {
-    return (this.props.dataProvider.isLoading && this.state.items.length === 0) && (
-      <div className={ styles.fetchingTasksSpinner }>
-        <Spinner type={ SpinnerType.large } label={ strings.fetchingTasksLabel } />
-      </div>
+    return (
+      this.props.dataProvider.isLoading &&
+      this.state.items.length === 0 && (
+        <div className={styles.fetchingTasksSpinner}>
+          <Spinner type={SpinnerType.large} label={strings.fetchingTasksLabel} />
+        </div>
+      )
     );
   }
 

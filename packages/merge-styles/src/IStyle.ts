@@ -21,7 +21,7 @@ export interface IRawStyle extends IRawStyleBase {
 
 export type IStyleBase = IRawStyle | string | false | null | undefined;
 
-export interface IStyleBaseArray extends Array<IStyle> { }
+export interface IStyleBaseArray extends Array<IStyle> {}
 
 /**
  * IStyleObject extends a raw style objects, but allows selectors to be defined

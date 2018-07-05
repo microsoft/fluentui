@@ -306,9 +306,9 @@ export interface INavStyles {
   linkText: IStyle;
 
   /**
-  * Style set for the link element extending the
-  * root style set for ActionButton component.
-  */
+   * Style set for the link element extending the
+   * root style set for ActionButton component.
+   */
   link: IStyle;
 
   /**

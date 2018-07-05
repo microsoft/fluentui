@@ -1,12 +1,11 @@
 import {
   getFocusStyle,
   getGlobalClassNames,
-  HighContrastSelector
+  HighContrastSelector,
+  HighContrastSelectorWhite,
+  HighContrastSelectorBlack
 } from '../../Styling';
-import {
-  ILinkStyleProps,
-  ILinkStyles
-} from './Link.types';
+import { ILinkStyleProps, ILinkStyles } from './Link.types';
 
 const GlobalClassNames = {
   root: 'ms-Link'
@@ -23,7 +22,7 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
       classNames.root,
       getFocusStyle(theme),
       {
-        color: semanticColors.link,
+        color: semanticColors.link
       },
       isButton && {
         background: 'none',
@@ -37,7 +36,20 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
         padding: 0,
         textAlign: 'left',
         textOverflow: 'inherit',
-        userSelect: 'text'
+        userSelect: 'text',
+        borderBottom: '1px solid transparent', // For Firefox high contrast mode
+        selectors: {
+          [HighContrastSelectorBlack]: {
+            color: '#FFFF00'
+          },
+          [HighContrastSelectorWhite]: {
+            color: '#00009F'
+          },
+          '@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)': {
+            // For IE high contrast mode
+            borderBottom: 'none'
+          }
+        }
       },
       !isButton && {
         textDecoration: 'none'
@@ -54,7 +66,7 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
               pointerEvents: 'none'
             }
           }
-        },
+        }
       ],
       !isDisabled && {
         selectors: {

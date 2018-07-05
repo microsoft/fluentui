@@ -51,7 +51,7 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
 
   .cell {
     min-height: $compactRowHeight;
-    padding: $compactRowVerticalPadding $rowHorizontalPadding;
+    padding: $compactRowVerticalPadding $rowHorizontalPadding $compactRowVerticalPadding 12px;
 
     // Masking the running shimmer background with borders
     &.shimmer {
@@ -214,7 +214,7 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
   display: inline-block;
   position: relative;
   box-sizing: border-box;
-  padding: $rowVerticalPadding $rowHorizontalPadding;
+  padding: $rowVerticalPadding $rowHorizontalPadding $rowVerticalPadding 12px;
   min-height: $rowHeight;
   vertical-align: top;
   white-space: nowrap;

@@ -19,40 +19,11 @@ const DayPickerStrings: IDatePickerStrings = {
     'December'
   ],
 
-  shortMonths: [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec'
-  ],
+  shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 
-  days: [
-    'Sunday',
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday'
-  ],
+  days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
 
-  shortDays: [
-    'S',
-    'M',
-    'T',
-    'W',
-    'T',
-    'F',
-    'S'
-  ],
+  shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
 
   goToToday: 'Go to today',
   prevMonthAriaLabel: 'Go to previous month',
@@ -78,11 +49,18 @@ export class DatePickerWeekNumbersExample extends React.Component<{}, IDatePicke
     const { firstDayOfWeek } = this.state;
 
     return (
-      <div className='docs-DatePickerExample'>
-        <DatePicker firstDayOfWeek={ firstDayOfWeek } strings={ DayPickerStrings } showWeekNumbers={ true } firstWeekOfYear={ 1 } showMonthPickerAsOverlay={ true } placeholder='Select a date...' />
+      <div className="docs-DatePickerExample">
+        <DatePicker
+          firstDayOfWeek={firstDayOfWeek}
+          strings={DayPickerStrings}
+          showWeekNumbers={true}
+          firstWeekOfYear={1}
+          showMonthPickerAsOverlay={true}
+          placeholder="Select a date..."
+        />
         <Dropdown
-          label='Select the first day of the week'
-          options={ [
+          label="Select the first day of the week"
+          options={[
             {
               text: 'Sunday',
               key: DayOfWeek[DayOfWeek.Sunday]
@@ -111,9 +89,9 @@ export class DatePickerWeekNumbersExample extends React.Component<{}, IDatePicke
               text: 'Saturday',
               key: DayOfWeek[DayOfWeek.Saturday]
             }
-          ] }
-          selectedKey={ DayOfWeek[firstDayOfWeek!] }
-          onChanged={ this._onDropdownChanged }
+          ]}
+          selectedKey={DayOfWeek[firstDayOfWeek!]}
+          onChanged={this._onDropdownChanged}
         />
       </div>
     );
@@ -123,5 +101,5 @@ export class DatePickerWeekNumbersExample extends React.Component<{}, IDatePicke
     this.setState({
       firstDayOfWeek: (DayOfWeek as any)[option.key]
     });
-  }
+  };
 }

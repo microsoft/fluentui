@@ -1,19 +1,12 @@
 import * as React from 'react';
-import {
-  Checkbox,
-  ICheckboxProps
-} from 'office-ui-fabric-react/lib/Checkbox';
-import {
-  Persona,
-  PersonaSize
-} from 'office-ui-fabric-react/lib/Persona';
+import { Checkbox, ICheckboxProps } from 'office-ui-fabric-react/lib/Checkbox';
+import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
 
 export interface ICheckboxBasicExampleState {
   isChecked: boolean;
 }
 
 export class CheckboxImplementationExamples extends React.Component<{}, ICheckboxBasicExampleState> {
-
   constructor(props: {}) {
     super(props);
 
@@ -38,56 +31,50 @@ export class CheckboxImplementationExamples extends React.Component<{}, ICheckbo
     return (
       <div>
         <Checkbox
-          label='Uncontrolled checkbox'
-          onChange={ this._onCheckboxChange }
-          inputProps={ {
-            onFocus: () => { console.log('Uncontrolled checkbox is focused'); },
-            onBlur: () => { console.log('Uncontrolled checkbox is blured'); }
-          } }
-          styles={ checkboxStyles }
-          ariaDescribedBy={ 'descriptionID' }
+          label="Uncontrolled checkbox"
+          onChange={this._onCheckboxChange}
+          inputProps={{
+            onFocus: () => {
+              console.log('Uncontrolled checkbox is focused');
+            },
+            onBlur: () => {
+              console.log('Uncontrolled checkbox is blured');
+            }
+          }}
+          styles={checkboxStyles}
+          ariaDescribedBy={'descriptionID'}
         />
-        <label id='descriptionID' className='screenReaderOnly'>Uncontroller checkbox description</label>
+        <label id="descriptionID" className="screenReaderOnly">
+          Uncontroller checkbox description
+        </label>
 
         <Checkbox
-          label='Uncontrolled checkbox with defaultChecked true'
-          defaultChecked={ true }
-          onChange={ this._onCheckboxChange }
-          styles={ checkboxStyles }
+          label="Uncontrolled checkbox with defaultChecked true"
+          defaultChecked={true}
+          onChange={this._onCheckboxChange}
+          styles={checkboxStyles}
         />
 
-        <Checkbox
-          label='Disabled uncontrolled checkbox'
-          disabled={ true }
-          styles={ checkboxStyles }
-        />
+        <Checkbox label="Disabled uncontrolled checkbox" disabled={true} styles={checkboxStyles} />
 
         <Checkbox
-          label='Disabled uncontrolled checkbox with defaultChecked true'
-          disabled={ true }
-          defaultChecked={ true }
-          onChange={ this._onCheckboxChange }
-          styles={ checkboxStyles }
-        />
-
-        <Checkbox
-          label='Controlled checkbox'
-          checked={ isChecked }
-          onChange={ this._onControlledCheckboxChange }
-          styles={ checkboxStyles }
+          label="Disabled uncontrolled checkbox with defaultChecked true"
+          disabled={true}
+          defaultChecked={true}
+          onChange={this._onCheckboxChange}
+          styles={checkboxStyles}
         />
 
         <Checkbox
-          label='Checkbox rendered with boxSide "end"'
-          boxSide='end'
-          styles={ checkboxStyles }
+          label="Controlled checkbox"
+          checked={isChecked}
+          onChange={this._onControlledCheckboxChange}
+          styles={checkboxStyles}
         />
 
-        <Checkbox
-          label='Persona Checkbox'
-          styles={ checkboxStyles }
-          onRenderLabel={ this._renderPersonaLabel }
-        />
+        <Checkbox label="Checkbox rendered with boxSide &quot;end&quot;" boxSide="end" styles={checkboxStyles} />
+
+        <Checkbox label="Persona Checkbox" styles={checkboxStyles} onRenderLabel={this._renderPersonaLabel} />
       </div>
     );
   }
@@ -98,10 +85,10 @@ export class CheckboxImplementationExamples extends React.Component<{}, ICheckbo
 
   private _onControlledCheckboxChange = (ev: React.FormEvent<HTMLElement>, checked: boolean): void => {
     this.setState({ isChecked: checked! });
-  }
+  };
 
   private _renderPersonaLabel(props: ICheckboxProps): JSX.Element {
     const DEFAULT_IMAGE_URL = '/_layouts/15/userphoto.aspx?size=S&accountname=';
-    return <Persona text={ props.label } imageUrl={ DEFAULT_IMAGE_URL } size={ PersonaSize.size32 } />;
+    return <Persona text={props.label} imageUrl={DEFAULT_IMAGE_URL} size={PersonaSize.size32} />;
   }
 }

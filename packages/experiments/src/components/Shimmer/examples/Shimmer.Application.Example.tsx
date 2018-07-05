@@ -28,30 +28,30 @@ export interface IItem {
   height: number;
 }
 
-const fileIcons: { name: string; }[] = [
-  { 'name': 'accdb' },
-  { 'name': 'csv' },
-  { 'name': 'docx' },
-  { 'name': 'dotx' },
-  { 'name': 'mpp' },
-  { 'name': 'mpt' },
-  { 'name': 'odp' },
-  { 'name': 'ods' },
-  { 'name': 'odt' },
-  { 'name': 'one' },
-  { 'name': 'onepkg' },
-  { 'name': 'onetoc' },
-  { 'name': 'potx' },
-  { 'name': 'ppsx' },
-  { 'name': 'pptx' },
-  { 'name': 'pub' },
-  { 'name': 'vsdx' },
-  { 'name': 'vssx' },
-  { 'name': 'vstx' },
-  { 'name': 'xls' },
-  { 'name': 'xlsx' },
-  { 'name': 'xltx' },
-  { 'name': 'xsn' }
+const fileIcons: { name: string }[] = [
+  { name: 'accdb' },
+  { name: 'csv' },
+  { name: 'docx' },
+  { name: 'dotx' },
+  { name: 'mpp' },
+  { name: 'mpt' },
+  { name: 'odp' },
+  { name: 'ods' },
+  { name: 'odt' },
+  { name: 'one' },
+  { name: 'onepkg' },
+  { name: 'onetoc' },
+  { name: 'potx' },
+  { name: 'ppsx' },
+  { name: 'pptx' },
+  { name: 'pub' },
+  { name: 'vsdx' },
+  { name: 'vssx' },
+  { name: 'vstx' },
+  { name: 'xls' },
+  { name: 'xlsx' },
+  { name: 'xltx' },
+  { name: 'xsn' }
 ];
 
 const ITEMS_COUNT = 500;
@@ -86,52 +86,46 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
   }
 
   public render(): JSX.Element {
-    const {
-      items,
-      columns,
-      isDataLoaded,
-      isModalSelection,
-      isCompactMode
-    } = this.state;
+    const { items, columns, isDataLoaded, isModalSelection, isCompactMode } = this.state;
 
     return (
       <div>
-        <div className='shimmerExample-toggleButtons'>
-          <div className='shimmerExample-flexGroup'>
+        <div className="shimmerExample-toggleButtons">
+          <div className="shimmerExample-flexGroup">
             <Toggle
-              label='Enable Modal Selection'
-              checked={ isModalSelection }
-              onChanged={ this._onChangeModalSelection }
-              onText='Modal'
-              offText='Normal'
+              label="Enable Modal Selection"
+              checked={isModalSelection}
+              onChanged={this._onChangeModalSelection}
+              onText="Modal"
+              offText="Normal"
             />
             <Toggle
-              label='Enable Compact Mode'
-              checked={ isCompactMode }
-              onChanged={ this._onChangeCompactMode }
-              onText='Compact'
-              offText='Normal'
+              label="Enable Compact Mode"
+              checked={isCompactMode}
+              onChanged={this._onChangeCompactMode}
+              onText="Compact"
+              offText="Normal"
             />
             <Toggle
-              label='Enable content loading'
-              checked={ isDataLoaded }
-              onChanged={ this._onLoadData }
-              onText='Content'
-              offText='Shimmer'
+              label="Enable content loading"
+              checked={isDataLoaded}
+              onChanged={this._onLoadData}
+              onText="Content"
+              offText="Shimmer"
             />
           </div>
         </div>
-        <div className='shimmerExample-application'>
+        <div className="shimmerExample-application">
           <DetailsList
-            setKey='items'
-            items={ items! }
-            columns={ columns }
-            compact={ isCompactMode }
-            selectionMode={ this.state.isModalSelection ? SelectionMode.multiple : SelectionMode.none }
-            onRenderItemColumn={ this._onRenderItemColumn }
-            onRenderMissingItem={ this._onRenderMissingItem }
-            enableShimmer={ true }
-            listProps={ { renderedWindowsAhead: 0, renderedWindowsBehind: 0 } }
+            setKey="items"
+            items={items!}
+            columns={columns}
+            compact={isCompactMode}
+            selectionMode={this.state.isModalSelection ? SelectionMode.multiple : SelectionMode.none}
+            onRenderItemColumn={this._onRenderItemColumn}
+            onRenderMissingItem={this._onRenderMissingItem}
+            enableShimmer={true}
+            listProps={{ renderedWindowsAhead: 0, renderedWindowsBehind: 0 }}
           />
         </div>
       </div>
@@ -142,16 +136,10 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
     const { isDataLoaded } = this.state;
     isDataLoaded && this._onDataMiss(index as number);
 
-    const shimmerRow: JSX.Element = (
-      <DetailsRow { ...rowProps } shimmer={ true } />
-    );
+    const shimmerRow: JSX.Element = <DetailsRow {...rowProps} shimmer={true} />;
 
-    return (
-      <Shimmer
-        customElementsGroup={ shimmerRow }
-      />
-    );
-  }
+    return <Shimmer customElementsGroup={shimmerRow} />;
+  };
 
   // Simulating asynchronus data loading each 2.5 sec
   private _onDataMiss = (index: number): void => {
@@ -162,13 +150,16 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
         this._isFetchingItems = false;
         // tslint:disable-next-line:no-any
         const itemsCopy = ([] as any[]).concat(this.state.items);
-        itemsCopy.splice.apply(itemsCopy, [index, ITEMS_BATCH_SIZE].concat(_items.slice(index, index + ITEMS_BATCH_SIZE)));
+        itemsCopy.splice.apply(
+          itemsCopy,
+          [index, ITEMS_BATCH_SIZE].concat(_items.slice(index, index + ITEMS_BATCH_SIZE))
+        );
         this.setState({
           items: itemsCopy
         });
       }, PAGING_DELAY);
     }
-  }
+  };
 
   private _onLoadData = (checked: boolean): void => {
     if (!_items) {
@@ -190,29 +181,25 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
       isDataLoaded: checked,
       items: items
     });
-  }
+  };
 
   private _onChangeModalSelection = (checked: boolean): void => {
     this.setState({ isModalSelection: checked });
-  }
+  };
 
   private _onChangeCompactMode = (checked: boolean): void => {
     this.setState({ isCompactMode: checked });
-  }
+  };
 
   private _onRenderItemColumn = (item: IItem, index: number, column: IColumn): JSX.Element | string | number => {
     if (column.key === 'thumbnail') {
-      return (
-        <img
-          src={ item.thumbnail }
-        />
-      );
+      return <img src={item.thumbnail} />;
     }
 
     return item[column.key];
-  }
+  };
 
-  private _randomFileIcon(): { docType: string; url: string; } {
+  private _randomFileIcon(): { docType: string; url: string } {
     const docType: string = fileIcons[Math.floor(Math.random() * fileIcons.length) + 0].name;
     return {
       docType,

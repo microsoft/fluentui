@@ -1,11 +1,5 @@
-import {
-  IBaseProps,
-  IStyleFunction
-} from 'office-ui-fabric-react/lib/Utilities';
-import {
-  ITheme,
-  IStyle
-} from 'office-ui-fabric-react/lib/Styling';
+import { IBaseProps, IStyleFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 
 /**
  * The getStyles props contract.

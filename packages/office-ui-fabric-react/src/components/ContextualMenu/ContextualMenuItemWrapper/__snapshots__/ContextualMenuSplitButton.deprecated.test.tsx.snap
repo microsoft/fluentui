@@ -9,6 +9,7 @@ exports[`ContextualMenuSplitButton creates a normal split button renders the con
   aria-haspopup={true}
   aria-label={undefined}
   aria-posinset={1}
+  aria-roledescription={undefined}
   aria-setsize={1}
   className="splitContainer"
   data-is-focusable={true}

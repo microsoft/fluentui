@@ -1,7 +1,4 @@
-import {
-  IShimmerElementsGroupStyleProps,
-  IShimmerElementsGroupStyles
-} from './ShimmerElementsGroup.types';
+import { IShimmerElementsGroupStyleProps, IShimmerElementsGroupStyles } from './ShimmerElementsGroup.types';
 import { getGlobalClassNames } from '../../../Styling';
 
 const GlobalClassNames = {
@@ -9,11 +6,7 @@ const GlobalClassNames = {
 };
 
 export function getStyles(props: IShimmerElementsGroupStyleProps): IShimmerElementsGroupStyles {
-  const {
-    width,
-    flexWrap,
-    theme
-  } = props;
+  const { width, flexWrap, theme } = props;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 

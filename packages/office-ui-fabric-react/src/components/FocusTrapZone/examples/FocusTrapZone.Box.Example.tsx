@@ -18,7 +18,7 @@ export default class BoxExample extends React.Component<React.HTMLAttributes<HTM
     super(props);
 
     this.state = {
-      isChecked: false,
+      isChecked: false
     };
   }
 
@@ -28,26 +28,18 @@ export default class BoxExample extends React.Component<React.HTMLAttributes<HTM
     return (
       <div>
         <DefaultButton
-          secondaryText='Focuses inside the FocusTrapZone'
-          onClick={ this._onButtonClickHandler }
-          text='Go to Trap Zone'
+          secondaryText="Focuses inside the FocusTrapZone"
+          onClick={this._onButtonClickHandler}
+          text="Go to Trap Zone"
         />
 
-        { (() => {
+        {(() => {
           if (isChecked) {
-            return (
-              <FocusTrapZone>
-                { this._internalContents() }
-              </FocusTrapZone>
-            );
+            return <FocusTrapZone>{this._internalContents()}</FocusTrapZone>;
           } else {
-            return (
-              <div>
-                { this._internalContents() }
-              </div>
-            );
+            return <div>{this._internalContents()}</div>;
           }
-        })() }
+        })()}
       </div>
     );
   }
@@ -56,28 +48,32 @@ export default class BoxExample extends React.Component<React.HTMLAttributes<HTM
     const { isChecked } = this.state;
 
     return (
-      <div className='ms-FocusTrapZoneBoxExample'>
-        <TextField label='Default TextField' placeholder='Input inside Focus Trap Zone' className='' />
-        <Link href='' className='' >Hyperlink inside FocusTrapZone</Link><br /><br />
+      <div className="ms-FocusTrapZoneBoxExample">
+        <TextField label="Default TextField" placeholder="Input inside Focus Trap Zone" className="" />
+        <Link href="" className="">
+          Hyperlink inside FocusTrapZone
+        </Link>
+        <br />
+        <br />
         <Toggle
-          componentRef={ this._setRef }
-          checked={ isChecked }
-          onChanged={ this._onFocusTrapZoneToggleChanged }
-          label='Focus Trap Zone'
-          onText='On'
-          offText='Off'
+          componentRef={this._setRef}
+          checked={isChecked}
+          onChanged={this._onFocusTrapZoneToggleChanged}
+          label="Focus Trap Zone"
+          onText="On"
+          offText="Off"
         />
-        { (() => {
+        {(() => {
           if (isChecked) {
             return (
               <DefaultButton
-                secondaryText='Exit Focus Trap Zone'
-                onClick={ this._onExitButtonClickHandler }
-                text='Exit Focus Trap Zone'
+                secondaryText="Exit Focus Trap Zone"
+                onClick={this._onExitButtonClickHandler}
+                text="Exit Focus Trap Zone"
               />
             );
           }
-        })() }
+        })()}
       </div>
     );
   }
@@ -86,21 +82,24 @@ export default class BoxExample extends React.Component<React.HTMLAttributes<HTM
     this.setState({
       isChecked: true
     });
-  }
+  };
 
   private _onExitButtonClickHandler = (): void => {
     this.setState({
       isChecked: false
     });
-  }
+  };
 
   private _onFocusTrapZoneToggleChanged = (isChecked: boolean): void => {
-    this.setState({
-      isChecked: isChecked
-    }, () => this._toggle.focus());
-  }
+    this.setState(
+      {
+        isChecked: isChecked
+      },
+      () => this._toggle.focus()
+    );
+  };
 
   private _setRef = (toggle: IToggle): void => {
     this._toggle = toggle;
-  }
+  };
 }

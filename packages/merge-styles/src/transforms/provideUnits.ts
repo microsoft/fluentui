@@ -12,15 +12,12 @@ const NON_PIXEL_NUMBER_PROPS = [
   'zoom'
 ];
 
-export function provideUnits(
-  rulePairs: (string | number)[],
-  index: number
-): void {
+export function provideUnits(rulePairs: (string | number)[], index: number): void {
   const name = rulePairs[index];
   const value = rulePairs[index + 1];
 
   if (typeof value === 'number') {
-    const unit = (NON_PIXEL_NUMBER_PROPS.indexOf(name as string) === -1) ? 'px' : '';
+    const unit = NON_PIXEL_NUMBER_PROPS.indexOf(name as string) === -1 ? 'px' : '';
 
     rulePairs[index + 1] = `${value}${unit}`;
   }

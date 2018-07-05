@@ -1,20 +1,10 @@
 import * as React from 'react';
 import { ScrollablePane } from 'office-ui-fabric-react/lib/ScrollablePane';
 import { Sticky, StickyPositionType } from 'office-ui-fabric-react/lib/Sticky';
-import { lorem } from '@uifabric/example-app-base';
+import { lorem } from '../../../utilities/exampleData';
 import './ScrollablePane.Example.scss';
 
-const colors = [
-  '#eaeaea',
-  '#dadada',
-  '#d0d0d0',
-  '#c8c8c8',
-  '#a6a6a6',
-  '#c7e0f4',
-  '#71afe5',
-  '#eff6fc',
-  '#deecf9'
-];
+const colors = ['#eaeaea', '#dadada', '#d0d0d0', '#c8c8c8', '#a6a6a6', '#c7e0f4', '#71afe5', '#eff6fc', '#deecf9'];
 
 export class ScrollablePaneDefaultExample extends React.Component {
   public render() {
@@ -25,16 +15,16 @@ export class ScrollablePaneDefaultExample extends React.Component {
 
     return (
       <div
-        style={ {
+        style={{
           height: '900px',
           position: 'relative',
           maxHeight: 'inherit'
-        } }
+        }}
       >
-        <ScrollablePane className='scrollablePaneDefaultExample'>
-          { contentAreas.map((ele) => {
+        <ScrollablePane className="scrollablePaneDefaultExample">
+          {contentAreas.map(ele => {
             return ele;
-          }) }
+          })}
         </ScrollablePane>
       </div>
     );
@@ -45,21 +35,15 @@ export class ScrollablePaneDefaultExample extends React.Component {
 
     return (
       <div
-        key={ index }
-        style={ {
+        key={index}
+        style={{
           backgroundColor: color
-        } }
+        }}
       >
-        <Sticky
-          stickyPosition={ StickyPositionType.Both }
-        >
-          <div className='sticky'>
-            Sticky Component #{ index + 1 }
-          </div>
+        <Sticky stickyPosition={StickyPositionType.Both}>
+          <div className="sticky">Sticky Component #{index + 1}</div>
         </Sticky>
-        <div className='textContent'>
-          { lorem(200) }
-        </div>
+        <div className="textContent">{lorem(200)}</div>
       </div>
     );
   }

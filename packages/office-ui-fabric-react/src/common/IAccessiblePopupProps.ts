@@ -12,24 +12,24 @@ export interface IAccessiblePopupProps {
   ignoreExternalFocusing?: boolean;
 
   /**
-  * Indicates whether dialog should force focus inside the focus trap zone
-  * @default true
-  */
+   * Indicates whether dialog should force focus inside the focus trap zone
+   * @default true
+   */
   forceFocusInsideTrap?: boolean;
 
   /**
-  * Indicates the selector for first focusable item
-  */
+   * Indicates the selector for first focusable item
+   */
   firstFocusableSelector?: string | (() => string);
 
   /**
-  * Aria label on close button
-  */
+   * Aria label on close button
+   */
   closeButtonAriaLabel?: string;
 
   /**
-  * Indicates if this dialog will allow clicks outside the FocusTrapZone
-  * @default false
-  */
+   * Indicates if this dialog will allow clicks outside the FocusTrapZone
+   * @default false
+   */
   isClickableOutsideFocusTrap?: boolean;
 }

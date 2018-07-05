@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
 import * as stylesImport from './CodeBlock.module.scss';
-import * as  Highlight from 'react-highlight';
+import * as Highlight from 'react-highlight';
 
 const styles: any = stylesImport;
 
@@ -55,21 +55,25 @@ export class CodeBlock extends React.Component<ICodeBlockProps, ICodeBlockState>
 
     let toggleButton;
     if (isCollapsible) {
-      toggleButton = <button className={ styles.toggle } onClick={ this._onToggleClicked.bind(this) }>&lt;/&gt;</button>;
+      toggleButton = (
+        <button className={styles.toggle} onClick={this._onToggleClicked.bind(this)}>
+          &lt;/&gt;
+        </button>
+      );
     }
 
     return (
-      <div className={ css(
-        styles.codeBlock,
-        isCollapsible ? styles.isCollapsible : '',
-        isOpen ? styles.isOpen : '',
-        isLightTheme ? styles.isLightTheme : styles.isDarkTheme
-      ) }>
-        { toggleButton }
-        <div className={ styles.code }>
-          <Highlight className={ language }>
-            { children }
-          </Highlight>
+      <div
+        className={css(
+          styles.codeBlock,
+          isCollapsible ? styles.isCollapsible : '',
+          isOpen ? styles.isOpen : '',
+          isLightTheme ? styles.isLightTheme : styles.isDarkTheme
+        )}
+      >
+        {toggleButton}
+        <div className={styles.code}>
+          <Highlight className={language}>{children}</Highlight>
         </div>
       </div>
     );

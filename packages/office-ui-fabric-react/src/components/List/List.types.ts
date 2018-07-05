@@ -40,6 +40,11 @@ export interface IList {
    *  Note: The scrollToMode requires the measureItem callback is provided to function.
    */
   scrollToIndex: (index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode) => void;
+
+  /**
+   * Get the start index of the page that is currently in view
+   */
+  getStartItemIndexInView: () => number;
 }
 
 export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> {
@@ -120,10 +125,10 @@ export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> 
   renderCount?: number;
 
   /**
-  * Boolean value to enable render page caching. This is an experimental performance optimization
-  * that is off by default.
-  * @defaultValue false
-  */
+   * Boolean value to enable render page caching. This is an experimental performance optimization
+   * that is off by default.
+   * @defaultValue false
+   */
   usePageCache?: boolean;
 
   /**
@@ -156,6 +161,7 @@ export interface IPage {
   top: number;
   height: number;
   data?: any;
+  isSpacer?: boolean;
 }
 
 export interface IPageProps extends React.HTMLAttributes<HTMLDivElement>, React.Props<HTMLDivElement> {

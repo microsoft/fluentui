@@ -23,20 +23,24 @@ describe('FormDatePicker Unit Tests', () => {
     });
 
     it('Null name throws error', () => {
+      const consoleMock = jest.spyOn(console, 'error');
+      consoleMock.mockImplementation(() => undefined);
+
       const errorFunction = () => {
         ReactTestUtils.renderIntoDocument(
-          <Form
-            onSubmit={ undefined }
-          >
-            <FormDatePicker
-              inputKey={ null as any }
-              value={ undefined }
-            />
+          <Form onSubmit={undefined}>
+            <FormDatePicker inputKey={null as any} value={undefined} />
           </Form>
         );
       };
 
       expect(errorFunction).toThrow();
+      expect(console.error).toHaveBeenCalledTimes(2);
+      expect((consoleMock as jest.MockInstance<{}>).mock.calls[0][0]).toMatch(
+        'Uncaught [Error: FormBaseInput: name must defined on all form inputs]'
+      );
+
+      consoleMock.mockRestore();
 
       (renderedForm as any) = {};
       (renderedInput as any) = {};
@@ -44,14 +48,8 @@ describe('FormDatePicker Unit Tests', () => {
 
     it('Null props still render', () => {
       renderedForm = ReactTestUtils.renderIntoDocument(
-        <Form
-          onSubmit={ undefined }
-        >
-          <FormDatePicker
-            inputKey='name'
-            value={ undefined }
-            validators={ undefined }
-          />
+        <Form onSubmit={undefined}>
+          <FormDatePicker inputKey="name" value={undefined} validators={undefined} />
         </Form>
       ) as Form;
 
@@ -63,17 +61,19 @@ describe('FormDatePicker Unit Tests', () => {
       const now: Date = new Date();
       renderedForm = ReactTestUtils.renderIntoDocument(
         <Form
-          onSubmit={ (value: any) => { result = value; } }
+          onSubmit={(value: any) => {
+            result = value;
+          }}
         >
-          <FormDatePicker
-            inputKey='name'
-            value={ now }
-          />
+          <FormDatePicker inputKey="name" value={now} />
         </Form>
       ) as Form;
 
       renderedInput = ReactTestUtils.findRenderedDOMComponentWithClass(renderedForm, 'ms-DatePicker') as HTMLElement;
-      const form: HTMLFormElement = ReactTestUtils.findRenderedDOMComponentWithTag(renderedForm, 'form') as HTMLFormElement;
+      const form: HTMLFormElement = ReactTestUtils.findRenderedDOMComponentWithTag(
+        renderedForm,
+        'form'
+      ) as HTMLFormElement;
       ReactTestUtils.Simulate.submit(form);
 
       expect(result['name']).toEqual(now);
@@ -98,17 +98,15 @@ describe('FormDatePicker Unit Tests', () => {
     it('DatePicker is leading and trailing debounced', () => {
       const updateStub: sinon.SinonStub = sinon.stub();
       const renderedForm = ReactTestUtils.renderIntoDocument(
-        <Form
-          onUpdated={ updateStub }
-        >
-          <ExtendsDatePicker
-            inputKey='name'
-            value={ new Date() }
-          />
+        <Form onUpdated={updateStub}>
+          <ExtendsDatePicker inputKey="name" value={new Date()} />
         </Form>
       ) as Form;
 
-      const datePicker: ExtendsDatePicker = ReactTestUtils.findRenderedComponentWithType(renderedForm, ExtendsDatePicker);
+      const datePicker: ExtendsDatePicker = ReactTestUtils.findRenderedComponentWithType(
+        renderedForm,
+        ExtendsDatePicker
+      );
       datePicker.setValue(new Date('2015-05-05'));
       expect(updateStub.callCount).toEqual(1);
       datePicker.setValue(new Date('2014-05-05'));

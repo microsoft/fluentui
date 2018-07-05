@@ -1,7 +1,4 @@
-import {
-  IRawStyle,
-  mergeStyles
-} from '@uifabric/merge-styles';
+import { IRawStyle, mergeStyles } from '@uifabric/merge-styles';
 import { DefaultPalette } from '../styles/DefaultPalette';
 import { getTheme } from '../styles/index';
 

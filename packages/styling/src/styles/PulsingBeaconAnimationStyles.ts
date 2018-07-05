@@ -89,9 +89,7 @@ function _continuousPulseAnimationSingle(
   });
 }
 
-function _createDefaultAnimation(
-  animationName: string
-): IRawStyle {
+function _createDefaultAnimation(animationName: string): IRawStyle {
   return {
     animationName,
     animationIterationCount: DEFAULT_ITERATION_COUNT,
@@ -103,5 +101,5 @@ function _createDefaultAnimation(
 export const PulsingBeaconAnimationStyles = {
   continuousPulseAnimationDouble: _continuousPulseAnimationDouble,
   continuousPulseAnimationSingle: _continuousPulseAnimationSingle,
-  createDefaultAnimation: _createDefaultAnimation,
+  createDefaultAnimation: _createDefaultAnimation
 };

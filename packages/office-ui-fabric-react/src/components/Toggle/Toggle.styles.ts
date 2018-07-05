@@ -1,19 +1,8 @@
-import {
-  HighContrastSelector,
-  getFocusStyle
-} from '../../Styling';
-import {
-  IToggleStyleProps,
-  IToggleStyles
-} from './Toggle.types';
+import { HighContrastSelector, getFocusStyle } from '../../Styling';
+import { IToggleStyleProps, IToggleStyles } from './Toggle.types';
 
 export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
-  const {
-    theme,
-    className,
-    disabled,
-    checked
-  } = props;
+  const { theme, className, disabled, checked } = props;
   const { semanticColors } = theme;
   const pillUncheckedBackground = semanticColors.bodyBackground;
   const pillCheckedBackground = semanticColors.inputBackgroundChecked;
@@ -38,7 +27,7 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
       {
         marginBottom: '8px'
       },
-      className,
+      className
     ],
 
     label: [
@@ -48,7 +37,7 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
         selectors: {
           [HighContrastSelector]: {
             color: 'GrayText'
-          },
+          }
         }
       }
     ],
@@ -57,7 +46,7 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
       'ms-Toggle-innerContainer',
       {
         display: 'inline-flex',
-        position: 'relative',
+        position: 'relative'
       }
     ],
 
@@ -140,7 +129,7 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
             borderColor: 'transparent',
             justifyContent: 'flex-end'
           }
-        ],
+        ]
       ],
       !disabled && {
         selectors: {
@@ -169,26 +158,27 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
         borderStyle: 'solid',
         boxSizing: 'border-box'
       },
-      !disabled && checked && [
-        {
-          backgroundColor: thumbCheckedBackground,
-          selectors: {
-            [HighContrastSelector]: {
-              backgroundColor: 'Window',
-              borderColor: 'Window'
+      !disabled &&
+        checked && [
+          {
+            backgroundColor: thumbCheckedBackground,
+            selectors: {
+              [HighContrastSelector]: {
+                backgroundColor: 'Window',
+                borderColor: 'Window'
+              }
             }
           }
-        }
-      ],
+        ],
       disabled && [
         !checked && [
           {
-            backgroundColor: thumbDisabledBackground,
+            backgroundColor: thumbDisabledBackground
           }
         ],
         checked && [
           {
-            backgroundColor: thumbCheckedDisabledBackground,
+            backgroundColor: thumbCheckedDisabledBackground
           }
         ]
       ]
@@ -202,7 +192,7 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
           '&&': {
             padding: '0',
             margin: '0 10px',
-            userSelect: 'none',
+            userSelect: 'none'
           }
         }
       },
@@ -213,7 +203,7 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
             selectors: {
               [HighContrastSelector]: {
                 color: 'GrayText'
-              },
+              }
             }
           }
         }

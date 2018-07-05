@@ -25,19 +25,17 @@ function onResolveSuggestions(text: string): ISimple[] {
     'violet',
     'white',
     'yellow'
-  ].filter((tag: string) => tag.toLowerCase().indexOf(text.toLowerCase()) === 0).map((item: string) => ({ key: item, name: item }));
+  ]
+    .filter((tag: string) => tag.toLowerCase().indexOf(text.toLowerCase()) === 0)
+    .map((item: string) => ({ key: item, name: item }));
 }
 
 function onZeroQuerySuggestion(): ISimple[] {
-  return [
-    'black',
-    'blue',
-    'brown',
-    'cyan'].map((item: string) => ({ key: item, name: item }));
+  return ['black', 'blue', 'brown', 'cyan'].map((item: string) => ({ key: item, name: item }));
 }
 
 const basicSuggestionRenderer = (props: ISimple) => {
-  return <div key={ props.key } > { props.name } </div>;
+  return <div key={props.key}> {props.name} </div>;
 };
 
 export interface ISimple {
@@ -48,16 +46,17 @@ export interface ISimple {
 export type TypedBaseFloatingPicker = BaseFloatingPicker<ISimple, IBaseFloatingPickerProps<ISimple>>;
 
 describe('Pickers', () => {
-  describe('BasePicker', () => {
-    const BaseFloatingPickerWithType = BaseFloatingPicker as new (props: IBaseFloatingPickerProps<ISimple>)
-      => BaseFloatingPicker<ISimple, IBaseFloatingPickerProps<ISimple>>;
+  describe('BaseFloatingPicker', () => {
+    const BaseFloatingPickerWithType = BaseFloatingPicker as new (
+      props: IBaseFloatingPickerProps<ISimple>
+    ) => BaseFloatingPicker<ISimple, IBaseFloatingPickerProps<ISimple>>;
 
     it('renders BaseFloatingPicker correctly', () => {
       const component = renderer.create(
         <BaseFloatingPickerWithType
-          onResolveSuggestions={ onResolveSuggestions }
-          onRenderSuggestionsItem={ basicSuggestionRenderer }
-          suggestionsStore={ new SuggestionsStore<ISimple>() }
+          onResolveSuggestions={onResolveSuggestions}
+          onRenderSuggestionsItem={basicSuggestionRenderer}
+          suggestionsStore={new SuggestionsStore<ISimple>()}
         />
       );
       const tree = component.toJSON();
@@ -72,18 +71,20 @@ describe('Pickers', () => {
 
       const picker: TypedBaseFloatingPicker = ReactDOM.render(
         <BaseFloatingPickerWithType
-          onResolveSuggestions={ onResolveSuggestions }
-          onRenderSuggestionsItem={ basicSuggestionRenderer }
-          suggestionsStore={ new SuggestionsStore<ISimple>() }
-          onZeroQuerySuggestion={ onZeroQuerySuggestion }
-          inputElement={ input }
+          onResolveSuggestions={onResolveSuggestions}
+          onRenderSuggestionsItem={basicSuggestionRenderer}
+          suggestionsStore={new SuggestionsStore<ISimple>()}
+          onZeroQuerySuggestion={onZeroQuerySuggestion}
+          inputElement={input}
         />,
         root
       ) as TypedBaseFloatingPicker;
 
+      input.value = 'a';
       picker.onQueryStringChanged('a');
 
       // Change input to be empty string
+      input.value = '';
       picker.onQueryStringChanged('');
 
       expect(picker.suggestions.length).toEqual(4);
@@ -99,14 +100,15 @@ describe('Pickers', () => {
 
       const picker: TypedBaseFloatingPicker = ReactDOM.render(
         <BaseFloatingPickerWithType
-          onResolveSuggestions={ onResolveSuggestions }
-          onRenderSuggestionsItem={ basicSuggestionRenderer }
-          suggestionsStore={ new SuggestionsStore<ISimple>() }
-          inputElement={ input }
+          onResolveSuggestions={onResolveSuggestions}
+          onRenderSuggestionsItem={basicSuggestionRenderer}
+          suggestionsStore={new SuggestionsStore<ISimple>()}
+          inputElement={input}
         />,
         root
       ) as TypedBaseFloatingPicker;
 
+      input.value = 'b';
       picker.onQueryStringChanged('b');
 
       expect(picker.suggestions.length).toEqual(3);

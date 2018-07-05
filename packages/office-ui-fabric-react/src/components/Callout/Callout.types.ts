@@ -1,15 +1,9 @@
 import { IStyle, ITheme } from '../../Styling';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import {
-  IPoint,
-  IRectangle,
-  IStyleFunctionOrObject
-} from '../../Utilities';
+import { IPoint, IRectangle, IStyleFunctionOrObject } from '../../Utilities';
 import { ICalloutPositionedInfo } from '../../utilities/positioning';
 
-export interface ICallout {
-
-}
+export interface ICallout {}
 
 export interface ICalloutProps {
   /**
@@ -56,6 +50,12 @@ export interface ICalloutProps {
   calloutWidth?: number;
 
   /**
+   * Custom width for callout including borders. If value is 0, no width is applied.
+   * @default 0
+   */
+  calloutMaxWidth?: number;
+
+  /**
    * The background color of the Callout in hex format ie. #ffffff.
    * @default $ms-color-white
    */
@@ -79,10 +79,16 @@ export interface ICalloutProps {
   isBeakVisible?: boolean;
 
   /**
-   * If true then the onClose will not not dismiss on scroll
+   * If true then the callout will not dismiss on scroll
    * @default false
    */
   preventDismissOnScroll?: boolean;
+
+  /**
+   * If true then the callout will not dismiss when it loses focus
+   * @default false
+   */
+  preventDismissOnLostFocus?: boolean;
 
   /**
    * If true the position returned will have the menu element cover the target.
@@ -205,8 +211,8 @@ export interface ICalloutContentStyleProps {
   calloutWidth?: number;
 
   /**
- * CSS class to apply to the callout.
- */
+   * CSS class to apply to the callout.
+   */
   className?: string;
 
   /**
@@ -229,6 +235,11 @@ export interface ICalloutContentStyleProps {
    * Width of Callout beak
    */
   beakWidth?: number;
+
+  /**
+   * Max width for callout including borders.
+   */
+  calloutMaxWidth?: number;
 }
 
 export interface ICalloutContentStyles {
@@ -238,22 +249,22 @@ export interface ICalloutContentStyles {
   container: IStyle;
 
   /**
-  * Style for callout container root element.
-  */
+   * Style for callout container root element.
+   */
   root: IStyle;
 
   /**
-  * Style for callout beak.
-  */
+   * Style for callout beak.
+   */
   beak: IStyle;
 
   /**
-  * Style for callout beak curtain.
-  */
+   * Style for callout beak curtain.
+   */
   beakCurtain: IStyle;
 
   /**
-  * Style for content component of the callout.
-  */
+   * Style for content component of the callout.
+   */
   calloutMain: IStyle;
 }

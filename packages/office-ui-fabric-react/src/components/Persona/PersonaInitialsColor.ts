@@ -65,7 +65,7 @@ function personaInitialsColorToHexCode(personaInitialsColor: PersonaInitialsColo
     case PersonaInitialsColor.pink:
       return '#FF0097';
     case PersonaInitialsColor.magenta:
-      return ' #7E3878';
+      return '#7E3878';
     case PersonaInitialsColor.purple:
       return '#603CBA';
     case PersonaInitialsColor.black:

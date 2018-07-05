@@ -4,7 +4,6 @@
 
 - __Package version(s)__: (fill this out)
 - __Browser and OS versions__: (fill this out if relevant)
-- __Microsoft Alias__: (if you are a Microsoft employee)
 
 #### Priorities and help requested (not applicable if asking question):
 
@@ -28,4 +27,5 @@ Products/sites affected: (if applicable)
 
 ### If applicable, please provide a codepen repro:
 
+<!-- See https://codepen.io/FabricReact/ for a starting template -->
 <!-- See http://codepen.io/dzearing/pens/public/?grid_type=list for a variety of examples -->

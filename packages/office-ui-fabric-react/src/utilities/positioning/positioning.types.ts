@@ -1,4 +1,3 @@
-
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { IPoint } from './positioning.types';
 import { IRectangle } from '../../Utilities';
@@ -46,8 +45,8 @@ export interface IPositionProps {
 
 export interface ICalloutPositionProps extends IPositionProps {
   /**
-  * The width of the beak.
-  */
+   * The width of the beak.
+   */
   beakWidth?: number;
 
   /**
@@ -109,7 +108,7 @@ export interface IPositionDirectionalHintData {
 
 export interface IRelativePositions {
   calloutPosition: IPosition;
-  beakPosition: { position: IPosition | undefined, display: 'block' };
+  beakPosition: { position: IPosition | undefined; display: 'block' };
   directionalClassName: string;
   submenuDirection: DirectionalHint;
 }

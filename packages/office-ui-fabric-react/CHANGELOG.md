@@ -1,6 +1,333 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 31 May 2018 10:18:58 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Jul 2018 10:26:07 GMT and should not be manually modified.
+
+## 6.25.3
+Thu, 05 Jul 2018 10:26:07 GMT
+
+### Patches
+
+- Fixed target index issue, when the dragged column is before the drophint
+- Fix the text is cropped unexpectedly
+
+## 6.25.2
+Wed, 04 Jul 2018 10:28:27 GMT
+
+### Patches
+
+- Dialog: Fixing layout issue for IE11
+
+## 6.25.1
+Tue, 03 Jul 2018 17:41:15 GMT
+
+### Patches
+
+- Pivot: Ctrl+number doesn't work in Firefox to switch tabs if Pivot is focused.
+- Dropdown: Substantially improve accessibility - in particular in single-select mode.
+
+## 6.25.0
+Mon, 02 Jul 2018 20:41:48 GMT
+
+### Minor changes
+
+- Convert TeachingBubble to use JS styling.
+
+### Patches
+
+- Checkbox: Updated hc hover states.
+- Link: HC color for link rendered as a button.
+
+## 6.24.0
+Mon, 02 Jul 2018 10:21:36 GMT
+
+### Minor changes
+
+- DatePicker MergeStyles step 2 - Converts scss to js styles
+- Convert Slider to merge-styles
+
+## 6.23.0
+Fri, 29 Jun 2018 10:24:05 GMT
+
+### Minor changes
+
+- Pivot: Convert to JS styling.
+- ShimmeredDetailsList: adds a new wrapper for DetailsList when needed to be used with Shimmer animation.
+
+## 6.22.0
+Thu, 28 Jun 2018 10:23:21 GMT
+
+### Minor changes
+
+- Added arguments to styled function to allow the Customizer component to affect Nav
+
+## 6.21.1
+Wed, 27 Jun 2018 23:59:19 GMT
+
+### Patches
+
+- TextField: render undefined as empty string in renderInput
+
+## 6.21.0
+Wed, 27 Jun 2018 17:22:20 GMT
+
+### Minor changes
+
+- datepicker mergestyles conversion step 1
+- Added as={Component} as a prop to Link
+- Prettier fixes
+
+### Patches
+
+- Checkbox: Fix layout bug that causes `overflow`/`text-overflow` in Checkbox label to not take effect (#5224)
+- Fix minor accessibility bugs in DetailsList
+- Fix import paths to use relative paths for office-ui-fabric-react
+- CSS changes for draggable columns, to show the gripper ICON only on hover
+
+## 6.20.0
+Tue, 26 Jun 2018 10:27:47 GMT
+
+### Minor changes
+
+- mergestyles conversion
+
+### Patches
+
+- Callout: add blur listener that only dismisses Callout if window loses focus
+- ComboBox: Set Callout MaxWidth to be the width of the menu when useComboBoxAsMenuWidth when enabled
+- Default shouldFocusOnMount value in BaseButton _onToggleMenu
+- MessageBar: remove role property from multiline root div
+
+## 6.19.0
+Mon, 25 Jun 2018 10:28:13 GMT
+
+### Minor changes
+
+- Add a getGroupHeight prop to GroupedList + DetailsList
+- GroupedList: add expandCollapseButtonProps to GroupHeader so an aria-label can be included"
+
+### Patches
+
+- Only apply padding to label if it's not an image/icon type
+
+## 6.18.2
+Fri, 22 Jun 2018 16:21:15 GMT
+
+### Patches
+
+- Buttons: Focusable disabled buttons no longer execute on ENTER/SPACE
+- MessageBar: add class names for backwards compatibility
+- Pivot: fixing a typing issue when used with proxies.
+- Remove space from personaInitialsColorToHexCode magenta case
+- Accessibility: using the down arrow key to navigate the command bar currently skips over the search box - added aria-hidden to the div containing the search icon
+- TextField: placeholder text should be neutralSeconary.
+
+## 6.18.1
+Thu, 21 Jun 2018 19:27:25 GMT
+
+### Patches
+
+- Added column reorder with DragAndDrop support in Details List. As part of this feature, a new component DetailsColumn has been added inside the header, for each  column.  An optional new prop(ColumnReorderOptions) has been added to DetailsList to handle the column reorder. Have added column level drag subscriptions to be able to drag the columns, and added one header level subscription, to handle the drops. All the drag drop events are being handled at header level.
+- Add high contrast styles to disabled contextual menu items
+
+## 6.18.0
+Wed, 20 Jun 2018 23:33:29 GMT
+
+### Minor changes
+
+- Make it possible to disable firstfocus in hover card
+- Updated Checkbox and ChoiceGroup to accept custom styles
+- label fluentstyles
+
+### Patches
+
+- fix clear input for BaseExtendedPicker
+- Callout: revert blur change
+- Adding a Teams customization example.
+
+## 6.17.0
+Wed, 20 Jun 2018 10:25:55 GMT
+
+### Minor changes
+
+- MessageBar: convert to use JS styling
+
+### Patches
+
+- Callout: add blur listener and dismiss on blur functionality to Callout
+- GroupedList: render group headers if showEmptyGroups is true
+
+## 6.16.0
+Tue, 19 Jun 2018 10:26:26 GMT
+
+### Minor changes
+
+- Updated Link, Breadcrumb, and Dialog to accept custom styles
+
+## 6.15.0
+Mon, 18 Jun 2018 16:57:14 GMT
+
+### Minor changes
+
+- ComboBox: Change Style to allow options to overflow
+- Textfield: Adding new optional `readOnly` prop.
+- Add params to BaseButton openMenu to override focus props temporarily
+- SearchBox: add optional aria label prop for clear text button and default to 'clear text'
+
+### Patches
+
+- ColorPicker: add aria-labels to textfields
+- ContextualMenu/ComboBox/Dropdown: Fix up expand/collapse behavior so that collapsing menus is consistent
+- ContextualMenu: Fixed the fact that uncheckable contextual menu items incorrectly possessed the `aria-checked` attribute.
+
+## 6.13.2
+Fri, 15 Jun 2018 14:44:02 GMT
+
+### Patches
+
+- Fix splitButton styling to not break existing usages and fix spinButton to make the contents focusable when disabled
+
+## 6.13.1
+Fri, 15 Jun 2018 10:18:10 GMT
+
+### Patches
+
+- Popup: overflowY set to undefined when not scroll
+
+## 6.13.0
+Thu, 14 Jun 2018 20:52:57 GMT
+
+### Minor changes
+
+- DetailsList/List: added method to get the index of the item in view
+- Enable SelectedItemsList and ExtendedPicker to be controlled components
+- WAC wants ability for Button and SplitButton to have focus while disabled so created a new flag allowDisabledFocus & implemented it on these two controls.
+- OverflowSet: Convert from SASS to JS styles.
+- ScrollablePane: Fix DetailsList example's DetailHeader not syncing scroll position.
+- Updating Toggle to use `styled` for customizations.
+
+### Patches
+
+- Moved demo out of the codebase
+- DetailsList: 'select all' checkbox is non-focusable in single selectionmode
+- Fix broken documentation links
+- Theme Generator: add additional accessiblity pair
+- Temporarily disable component example snapshot tests.
+
+## 6.9.0
+Mon, 11 Jun 2018 10:18:35 GMT
+
+### Minor changes
+
+- Adding focus async to focus autofill when calling componentDidUpdate
+
+### Patches
+
+- Add styling output to component example snapshot tests.
+- Add automatic snapshot tests for all component examples.
+- Theme Generator: have json output contain only IPalette members
+
+## 6.8.0
+Fri, 08 Jun 2018 18:34:17 GMT
+
+### Minor changes
+
+- ColorPicker: use getStyles
+- add style arg to customize
+- Shimmer: Adds new Shimmer component to office-ui-fabric-react
+
+### Patches
+
+- TeachingBubble: Fix content from wrapping to next line unncessarily
+- Dropdown: Add aria-label to option and option to aria-activedescendant
+- Package: Fix sideEffects array to target scss files using global.
+- ContextualMenu: Remove the ability for click to close a submenu. This aligns with windows behavior
+
+## 6.6.1
+Thu, 07 Jun 2018 17:40:07 GMT
+
+### Patches
+
+- SplitButton: apply button props to the focusable element for split buttons
+
+## 6.6.0
+Thu, 07 Jun 2018 16:35:34 GMT
+
+### Minor changes
+
+- Add canRemoveItem callback
+- FocusTrapZone: Added new capability. When `FTZ.focus()` is called, it will pass focus to a descendant element.  The new prop `focusPreviouslyFocusedInnerElement` controls the descendant-choosing behavior.
+- Minor changes to improve server side rendering.
+
+### Patches
+
+- "Add selection zone for BaseExtendedPicker, and add screen reader support for suggestions"
+- Update Coachmark basic example and fix TeachingBubble SCSS selectors
+- Fix Detials column header hit targets
+- Add global name to scss files using global selector to tag in sideEffects.
+- Fixed FocusTrapZone bug: If first child in the FTZ is a FocusZone and that FZ's last focused child is not the first focusable child, shift-tab would break out of the FTZ.
+- adding css fix to remove unnecessary scroll bars on calendar and datepicker components
+- Theme Generator Page: update accessibility section to account for new logic for variants
+- Theme Generator: untheme correctly when leaving theme generator
+- Code format changes
+- HoverCard: Removing unnecessary animation class causing a visual bug in IE browser.
+
+## 6.5.0
+Tue, 05 Jun 2018 10:23:03 GMT
+
+### Minor changes
+
+- Callout: Add `preventDismissOnLostFocus` prop.
+
+## 6.4.1
+Tue, 05 Jun 2018 00:44:30 GMT
+
+### Patches
+
+- Added Prettier
+- CommandBarPage: Remove fabric js reference.
+- _onValidate should only skip validation on text entry if state.value is undefined (it was skipping when text entry was empty string)
+
+## 6.4.0
+Mon, 04 Jun 2018 18:50:06 GMT
+
+### Minor changes
+
+- Revert PR 4897
+
+## 6.3.0
+Mon, 04 Jun 2018 10:16:13 GMT
+
+### Minor changes
+
+- Coachmark: Fix positioning bugs and add in support for different Coachmark directions.
+- DetailsList: adjusting aria labels and exporting more ariaLabels in `IColumn` to allow for better narrator reading and table scanning.
+- Dropdown: Allow `title` to be provided as an item property.
+- Icons top level import was exporting a file path, should be exporting a package path.
+- GroupedList: Added multiple customization entry-points including custom indent spacing and header customization.
+- Allow for more control over event handling for keytips
+
+### Patches
+
+- Callout: fix dismissing events to attach to the documentElement, not body.
+- SplitButton: Hook up aria-roledescription to splitButtons so that they can leverage that markup if it gets passed in to the component.
+- SpinButton: addressing onValidate, onIncrement, and onDecrement callbacks to be called correctly.
+- MessageBar: New color for dismiss / expand button in hc mode for better visibility.
+- Updating react typings.
+- Updated test snapshots
+
+## 6.2.0
+Fri, 01 Jun 2018 10:18:43 GMT
+
+### Minor changes
+
+- Added FocusTrapZone capability: When the FTZ is focused, it will pass focus to a descendant element.  The new prop 'focusPreviouslyFocusedInnerElement' controls the descendant-choosing behavior.
+
+### Patches
+
+- Fix ComboBox ARIA attributes.
+- Prevent invalid empty ARIA values from being output.
+- ComboBox: Fix the value that is checked when submitting a pending value to take into account if the aria-label is used as text. This line was missed in the initial change
+- Add support for pointerup to dismiss keytips
 
 ## 6.1.2
 Thu, 31 May 2018 10:18:58 GMT

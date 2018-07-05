@@ -1,7 +1,7 @@
-module.exports = function (options) {
+module.exports = function(options) {
   const path = require('path');
   const fs = require('fs');
-  const execSync = require('../exec-sync');
+  const exec = require('../exec-sync');
   const findConfig = require('../find-config');
   const jestConfigPath = findConfig('jest.config.js');
   const resolve = require('resolve');
@@ -14,21 +14,30 @@ module.exports = function (options) {
       // Specify the config file.
       `--config ${jestConfigPath}`,
 
-      // Run tests in serial (parallel builds seem to hang rush.)
-      `--runInBand`,
+      // When there are no tests we still want to consider that a success.
+      // packages like `variants` do not have any tests (yet).
+      '--passWithNoTests',
+
+      // Forces test results output highlighting even if stdout is not a TTY.
+      '--colors',
+
+      // On Travis, run tests in serial as supposedly, the free Travis build terminates if multiple processes are spun up.
+      process.env.TRAVIS ? `--runInBand` : undefined,
 
       // In production builds, produce coverage information.
       options.isProduction && '--coverage',
 
       // If the -u flag is passed, pass it through.
-      (options.argv && options.argv.indexOf('-u') >= 0) ? '-u' : '',
+      options.argv && options.argv.indexOf('-u') >= 0 ? '-u' : '',
 
       // Pass in custom arguments.
       options.args
-    ].filter(arg => !!arg).join(' ');
+    ]
+      .filter(arg => !!arg)
+      .join(' ');
 
     const command = `node ${jestPath} ${args}`;
 
-    execSync(command, undefined, path.dirname(jestConfigPath));
+    return exec(command, undefined, path.dirname(jestConfigPath), process);
   }
 };

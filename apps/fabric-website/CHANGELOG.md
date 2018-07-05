@@ -1,6 +1,54 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 31 May 2018 10:18:58 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Jun 2018 10:25:55 GMT and should not be manually modified.
+
+## 6.1.2
+Wed, 20 Jun 2018 10:25:55 GMT
+
+### Patches
+
+- Prettier changes
+
+## 6.1.1
+Thu, 14 Jun 2018 20:52:57 GMT
+
+### Patches
+
+- Consumes pages from demo project
+- Fix broken documentation links
+- Renamed demo to fabric-website-resources
+
+## 6.1.0
+Fri, 08 Jun 2018 18:34:17 GMT
+
+### Minor changes
+
+- Shimmer: Adds new Shimmer component to fabric-website
+
+### Patches
+
+- Add documentation for testing minified files locally.
+
+## 6.0.4
+Thu, 07 Jun 2018 16:35:34 GMT
+
+### Patches
+
+- Tweaked the lint rules.
+
+## 6.0.3
+Tue, 05 Jun 2018 00:44:30 GMT
+
+### Patches
+
+- Added Prettier
+
+## 6.0.2
+Mon, 04 Jun 2018 10:16:13 GMT
+
+### Patches
+
+- Updating react typings.
 
 ## 6.0.1
 Thu, 31 May 2018 10:18:58 GMT

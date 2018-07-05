@@ -8,11 +8,7 @@ import { IFormProps } from './Form.types';
 import { GenericFormInput } from './FormBaseInput';
 
 // Utilities
-import {
-  BaseComponent,
-  getNativeProps,
-  divProperties
-} from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent, getNativeProps, divProperties } from 'office-ui-fabric-react/lib/Utilities';
 
 /**
  * Validation result for a simple form input. All calls to validate return this type
@@ -104,11 +100,8 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
   public render(): JSX.Element {
     const nativeProps = getNativeProps(this.props, divProperties);
     return (
-      <form
-        { ...nativeProps }
-        onSubmit={ this._onSubmit }
-      >
-        { this.props.children }
+      <form {...nativeProps} onSubmit={this._onSubmit}>
+        {this.props.children}
       </form>
     );
   }
@@ -193,7 +186,7 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
         this.props.onInvalidSubmit(formValues);
       }
     }
-  }
+  };
 
   /**
    * Register an input with the form
@@ -207,7 +200,7 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
         return prevState;
       });
     }
-  }
+  };
 
   private _submitValue = (input: GenericFormInput): void => {
     const validationResult: IFormValidationResult = this._validateComponent(input);
@@ -221,7 +214,7 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
         this.props.onUpdated(input.props.inputKey, input.state.currentValue);
       }
     }
-  }
+  };
 
   /**
    * Unregister an input with the form
@@ -236,9 +229,11 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
         return prevState;
       });
     }
-  }
+  };
 
-  private _isFormValid = (validationResults: { [key: string]: IFormValidationResult } = this.state.validationResults): boolean => {
+  private _isFormValid = (
+    validationResults: { [key: string]: IFormValidationResult } = this.state.validationResults
+  ): boolean => {
     for (const key in validationResults) {
       if (!validationResults[key].isValid) {
         return false;
@@ -246,5 +241,5 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
     }
 
     return true;
-  }
+  };
 }
