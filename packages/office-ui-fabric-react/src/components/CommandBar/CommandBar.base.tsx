@@ -189,8 +189,8 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     } = this.props;
 
     const combinedOverflowItems: ICommandBarItemProps[] = [
-      ...overflowItems,
-      ...(overflowButtonProps.menuProps ? overflowButtonProps.menuProps.items : [])
+      ...(overflowButtonProps.menuProps ? overflowButtonProps.menuProps.items : []),
+      ...overflowItems
     ];
 
     const overflowProps: IButtonProps = {
