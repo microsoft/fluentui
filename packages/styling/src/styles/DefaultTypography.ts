@@ -15,15 +15,14 @@ export const DefaultFontSizes: IFontSizes = {
 };
 
 export const DefaultFontFamilies: IFontFamilies = {
-  // default: DefaultFontStyles.medium.fontFamily!,
-  default: 'Menlo, Monaco, "Courier New", monospace',
+  default: DefaultFontStyles.medium.fontFamily!,
   monospace: 'Menlo, Monaco, "Courier New", monospace'
 };
 
 export const DefaultFontWeights: IFontWeights = {
-  default: 400, // FontWeights.regular,
-  light: 100, // FontWeights.light,
-  bold: 700 // FontWeights.bold
+  default: FontWeights.regular,
+  light: FontWeights.light,
+  bold: FontWeights.bold
 };
 
 export const DefaultFontTypes: IFontTypes = {

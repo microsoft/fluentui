@@ -233,7 +233,7 @@ exports[`MarqueeSelection renders MarqueeSelection correctly 1`] = `
         },
         "typography": Object {
           "families": Object {
-            "default": "Menlo, Monaco, \\"Courier New\\", monospace",
+            "default": "'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif",
             "monospace": "Menlo, Monaco, \\"Courier New\\", monospace",
           },
           "sizes": Object {
@@ -498,7 +498,7 @@ exports[`MarqueeSelection renders MarqueeSelection correctly 1`] = `
           },
           "typography": Object {
             "families": Object {
-              "default": "Menlo, Monaco, \\"Courier New\\", monospace",
+              "default": "'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif",
               "monospace": "Menlo, Monaco, \\"Courier New\\", monospace",
             },
             "sizes": Object {
