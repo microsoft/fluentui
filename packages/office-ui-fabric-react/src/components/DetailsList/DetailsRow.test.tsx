@@ -2,11 +2,29 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { DetailsList } from './DetailsList';
 import { IDetailsRowProps } from './DetailsRow.types';
-import { IDetailsListProps } from './DetailsList.types';
+import { IDetailsListProps, IColumn } from './DetailsList.types';
 import { SelectionMode, Selection } from '../../utilities/selection';
 
+const _columns: IColumn[] = [
+  {
+    key: 'key',
+    minWidth: 8,
+    name: 'key'
+  },
+  {
+    key: 'name',
+    minWidth: 8,
+    name: 'name'
+  },
+  {
+    key: 'value',
+    minWidth: 8,
+    name: 'value'
+  }
+];
+
 // Populate mock items for testing
-function mockItems(count: number): any {
+function mockItems(count: number): any[] {
   const items = [];
 
   for (let i = 0; i < count; i++) {
@@ -21,8 +39,10 @@ function mockItems(count: number): any {
 }
 
 const renderRow = (row: IDetailsRowProps) => <div>{row!.item.name}</div>;
+
 const mockProps: IDetailsListProps = {
   items: mockItems(5),
+  columns: _columns,
   onRenderRow: renderRow,
   skipViewportMeasures: true,
   onShouldVirtualize: () => false

@@ -17,7 +17,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
     data-is-scrollable="false"
   >
     <div
-      aria-colcount={2}
+      aria-colcount={4}
       aria-label={undefined}
       aria-readonly="true"
       aria-rowcount={6}
@@ -221,7 +221,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
             role="columnheader"
             style={
               Object {
-                "width": 116,
+                "width": 24,
               }
             }
           >
@@ -250,15 +250,83 @@ exports[`DetailsRow renders details list row correctly 1`] = `
             </span>
           </div>
           <div
-            aria-hidden={true}
-            className="ms-DetailsHeader-cellSizer"
-            data-is-focusable={false}
-            data-sizer-index={0}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDoubleClick={[Function]}
-            role="button"
-          />
+            aria-colindex={3}
+            aria-sort="none"
+            className="ms-DetailsHeader-cell is-actionable undefined"
+            data-automationid="ColumnsHeaderColumn"
+            data-is-draggable={false}
+            data-item-key="name"
+            draggable={false}
+            role="columnheader"
+            style={
+              Object {
+                "width": 24,
+              }
+            }
+          >
+            <span
+              className=""
+            >
+              <span
+                aria-describedby={undefined}
+                aria-haspopup={false}
+                aria-label={undefined}
+                aria-labelledby="header0-name-name "
+                className="ms-DetailsHeader-cellTitle"
+                data-is-focusable={true}
+                id="header0-name"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                role="button"
+              >
+                <span
+                  className="ms-DetailsHeader-cellName"
+                  id="header0-name-name"
+                >
+                  name
+                </span>
+              </span>
+            </span>
+          </div>
+          <div
+            aria-colindex={4}
+            aria-sort="none"
+            className="ms-DetailsHeader-cell is-actionable undefined"
+            data-automationid="ColumnsHeaderColumn"
+            data-is-draggable={false}
+            data-item-key="value"
+            draggable={false}
+            role="columnheader"
+            style={
+              Object {
+                "width": 24,
+              }
+            }
+          >
+            <span
+              className=""
+            >
+              <span
+                aria-describedby={undefined}
+                aria-haspopup={false}
+                aria-label={undefined}
+                aria-labelledby="header0-value-name "
+                className="ms-DetailsHeader-cellTitle"
+                data-is-focusable={true}
+                id="header0-value"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                role="button"
+              >
+                <span
+                  className="ms-DetailsHeader-cellName"
+                  id="header0-value-name"
+                >
+                  value
+                </span>
+              </span>
+            </span>
+          </div>
         </div>
       </div>
       <div
@@ -379,7 +447,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
     data-is-scrollable="false"
   >
     <div
-      aria-colcount={2}
+      aria-colcount={4}
       aria-label={undefined}
       aria-readonly="true"
       aria-rowcount={6}
@@ -583,7 +651,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
             role="columnheader"
             style={
               Object {
-                "width": 116,
+                "width": 24,
               }
             }
           >
@@ -612,15 +680,83 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
             </span>
           </div>
           <div
-            aria-hidden={true}
-            className="ms-DetailsHeader-cellSizer"
-            data-is-focusable={false}
-            data-sizer-index={0}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDoubleClick={[Function]}
-            role="button"
-          />
+            aria-colindex={3}
+            aria-sort="none"
+            className="ms-DetailsHeader-cell is-actionable undefined"
+            data-automationid="ColumnsHeaderColumn"
+            data-is-draggable={false}
+            data-item-key="name"
+            draggable={false}
+            role="columnheader"
+            style={
+              Object {
+                "width": 24,
+              }
+            }
+          >
+            <span
+              className=""
+            >
+              <span
+                aria-describedby={undefined}
+                aria-haspopup={false}
+                aria-label={undefined}
+                aria-labelledby="header9-name-name "
+                className="ms-DetailsHeader-cellTitle"
+                data-is-focusable={true}
+                id="header9-name"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                role="button"
+              >
+                <span
+                  className="ms-DetailsHeader-cellName"
+                  id="header9-name-name"
+                >
+                  name
+                </span>
+              </span>
+            </span>
+          </div>
+          <div
+            aria-colindex={4}
+            aria-sort="none"
+            className="ms-DetailsHeader-cell is-actionable undefined"
+            data-automationid="ColumnsHeaderColumn"
+            data-is-draggable={false}
+            data-item-key="value"
+            draggable={false}
+            role="columnheader"
+            style={
+              Object {
+                "width": 24,
+              }
+            }
+          >
+            <span
+              className=""
+            >
+              <span
+                aria-describedby={undefined}
+                aria-haspopup={false}
+                aria-label={undefined}
+                aria-labelledby="header9-value-name "
+                className="ms-DetailsHeader-cellTitle"
+                data-is-focusable={true}
+                id="header9-value"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                role="button"
+              >
+                <span
+                  className="ms-DetailsHeader-cellName"
+                  id="header9-value-name"
+                >
+                  value
+                </span>
+              </span>
+            </span>
+          </div>
         </div>
       </div>
       <div
@@ -741,7 +877,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
     data-is-scrollable="false"
   >
     <div
-      aria-colcount={2}
+      aria-colcount={4}
       aria-label={undefined}
       aria-readonly="true"
       aria-rowcount={6}
@@ -945,7 +1081,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
             role="columnheader"
             style={
               Object {
-                "width": 116,
+                "width": 24,
               }
             }
           >
@@ -974,15 +1110,83 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
             </span>
           </div>
           <div
-            aria-hidden={true}
-            className="ms-DetailsHeader-cellSizer"
-            data-is-focusable={false}
-            data-sizer-index={0}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDoubleClick={[Function]}
-            role="button"
-          />
+            aria-colindex={3}
+            aria-sort="none"
+            className="ms-DetailsHeader-cell is-actionable undefined"
+            data-automationid="ColumnsHeaderColumn"
+            data-is-draggable={false}
+            data-item-key="name"
+            draggable={false}
+            role="columnheader"
+            style={
+              Object {
+                "width": 24,
+              }
+            }
+          >
+            <span
+              className=""
+            >
+              <span
+                aria-describedby={undefined}
+                aria-haspopup={false}
+                aria-label={undefined}
+                aria-labelledby="header3-name-name "
+                className="ms-DetailsHeader-cellTitle"
+                data-is-focusable={true}
+                id="header3-name"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                role="button"
+              >
+                <span
+                  className="ms-DetailsHeader-cellName"
+                  id="header3-name-name"
+                >
+                  name
+                </span>
+              </span>
+            </span>
+          </div>
+          <div
+            aria-colindex={4}
+            aria-sort="none"
+            className="ms-DetailsHeader-cell is-actionable undefined"
+            data-automationid="ColumnsHeaderColumn"
+            data-is-draggable={false}
+            data-item-key="value"
+            draggable={false}
+            role="columnheader"
+            style={
+              Object {
+                "width": 24,
+              }
+            }
+          >
+            <span
+              className=""
+            >
+              <span
+                aria-describedby={undefined}
+                aria-haspopup={false}
+                aria-label={undefined}
+                aria-labelledby="header3-value-name "
+                className="ms-DetailsHeader-cellTitle"
+                data-is-focusable={true}
+                id="header3-value"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                role="button"
+              >
+                <span
+                  className="ms-DetailsHeader-cellName"
+                  id="header3-value-name"
+                >
+                  value
+                </span>
+              </span>
+            </span>
+          </div>
         </div>
       </div>
       <div
@@ -1103,7 +1307,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
     data-is-scrollable="false"
   >
     <div
-      aria-colcount={2}
+      aria-colcount={4}
       aria-label={undefined}
       aria-readonly="true"
       aria-rowcount={6}
@@ -1307,7 +1511,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
             role="columnheader"
             style={
               Object {
-                "width": 116,
+                "width": 24,
               }
             }
           >
@@ -1336,15 +1540,83 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
             </span>
           </div>
           <div
-            aria-hidden={true}
-            className="ms-DetailsHeader-cellSizer"
-            data-is-focusable={false}
-            data-sizer-index={0}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDoubleClick={[Function]}
-            role="button"
-          />
+            aria-colindex={3}
+            aria-sort="none"
+            className="ms-DetailsHeader-cell is-actionable undefined"
+            data-automationid="ColumnsHeaderColumn"
+            data-is-draggable={false}
+            data-item-key="name"
+            draggable={false}
+            role="columnheader"
+            style={
+              Object {
+                "width": 24,
+              }
+            }
+          >
+            <span
+              className=""
+            >
+              <span
+                aria-describedby={undefined}
+                aria-haspopup={false}
+                aria-label={undefined}
+                aria-labelledby="header6-name-name "
+                className="ms-DetailsHeader-cellTitle"
+                data-is-focusable={true}
+                id="header6-name"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                role="button"
+              >
+                <span
+                  className="ms-DetailsHeader-cellName"
+                  id="header6-name-name"
+                >
+                  name
+                </span>
+              </span>
+            </span>
+          </div>
+          <div
+            aria-colindex={4}
+            aria-sort="none"
+            className="ms-DetailsHeader-cell is-actionable undefined"
+            data-automationid="ColumnsHeaderColumn"
+            data-is-draggable={false}
+            data-item-key="value"
+            draggable={false}
+            role="columnheader"
+            style={
+              Object {
+                "width": 24,
+              }
+            }
+          >
+            <span
+              className=""
+            >
+              <span
+                aria-describedby={undefined}
+                aria-haspopup={false}
+                aria-label={undefined}
+                aria-labelledby="header6-value-name "
+                className="ms-DetailsHeader-cellTitle"
+                data-is-focusable={true}
+                id="header6-value"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                role="button"
+              >
+                <span
+                  className="ms-DetailsHeader-cellName"
+                  id="header6-value-name"
+                >
+                  value
+                </span>
+              </span>
+            </span>
+          </div>
         </div>
       </div>
       <div
