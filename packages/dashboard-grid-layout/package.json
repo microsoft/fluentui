@@ -9,7 +9,7 @@
     "@uifabric/example-app-base": ">=6.2.1 <7.0.0",
     "@uifabric/experiments": ">=6.13.1 <7.0.0",
     "css-loader": "^0.15.1",
-    "office-ui-fabric-react": ">=6.25.3 <7.0.0",
+    "office-ui-fabric-react": ">=6.25.4 <7.0.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-grid-layout": "^0.16.6",

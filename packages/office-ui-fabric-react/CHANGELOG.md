@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 05 Jul 2018 10:26:07 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Jul 2018 17:54:06 GMT and should not be manually modified.
+
+## 6.25.4
+Thu, 05 Jul 2018 17:54:06 GMT
+
+### Patches
+
+- Hide persona image when showing UnknownPersonaCoin
+- TeachingBubble: Fixed unscoped focus style
 
 ## 6.25.3
 Thu, 05 Jul 2018 10:26:07 GMT

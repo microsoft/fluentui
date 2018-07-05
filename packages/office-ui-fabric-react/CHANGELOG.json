@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.25.4",
+      "tag": "office-ui-fabric-react_v6.25.4",
+      "date": "Thu, 05 Jul 2018 17:54:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Ivan <ivan.dijan@gmail.com>",
+            "commit": "6621bdc8f47e177432af5b8dc5ef55809d15a1c5",
+            "comment": "Hide persona image when showing UnknownPersonaCoin"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "2f5c3b827cd4ecc3ac9505b0e9b4c83096138b51",
+            "comment": "TeachingBubble: Fixed unscoped focus style"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.25.3",
       "tag": "office-ui-fabric-react_v6.25.3",
       "date": "Thu, 05 Jul 2018 10:26:07 GMT",
