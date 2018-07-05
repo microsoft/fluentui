@@ -1,6 +1,29 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 03 Jul 2018 17:41:15 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Jul 2018 17:54:06 GMT and should not be manually modified.
+
+## 6.25.4
+Thu, 05 Jul 2018 17:54:06 GMT
+
+### Patches
+
+- Hide persona image when showing UnknownPersonaCoin
+- TeachingBubble: Fixed unscoped focus style
+
+## 6.25.3
+Thu, 05 Jul 2018 10:26:07 GMT
+
+### Patches
+
+- Fixed target index issue, when the dragged column is before the drophint
+- Fix the text is cropped unexpectedly
+
+## 6.25.2
+Wed, 04 Jul 2018 10:28:27 GMT
+
+### Patches
+
+- Dialog: Fixing layout issue for IE11
 
 ## 6.25.1
 Tue, 03 Jul 2018 17:41:15 GMT
