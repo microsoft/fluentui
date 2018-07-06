@@ -313,7 +313,12 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     const panel = this._panel.current;
     if (this.state.isOpen && panel) {
       if (!panel.contains(ev.target)) {
-        this.dismiss();
+        if (this.props.onOuterClick) {
+          this.props.onOuterClick();
+          ev.preventDefault();
+        } else {
+          this.dismiss();
+        }
       }
     }
   }
