@@ -47,7 +47,7 @@ export const getStyles = (props: IDetailsRowCheckStyleProps): IDetailsRowCheckSt
           '&.isHeader': {
             height: 32
           },
-          [`${IsFocusVisibleClassName} &`]: {
+          [`.${IsFocusVisibleClassName} &`]: {
             opacity: 1
           }
         }
