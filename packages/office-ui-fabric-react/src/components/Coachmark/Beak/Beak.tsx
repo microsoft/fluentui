@@ -73,7 +73,7 @@ export class Beak extends BaseComponent<IBeakProps, {}> {
     });
 
     return (
-      <div className={css('ms-Beak', classNames.root)} role="presentation">
+      <div className={classNames.root} role="presentation">
         <svg height={svgHeight} width={svgWidth} className={classNames.beak}>
           <polygon points={pointOne + ' ' + pointTwo + ' ' + pointThree} />
         </svg>

@@ -3,7 +3,7 @@ import { BaseButton, Button } from '../../Button';
 import { ITheme, IStyle } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
 
-export interface IMessageBar {}
+export interface IMessageBar { }
 
 export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
   /**
