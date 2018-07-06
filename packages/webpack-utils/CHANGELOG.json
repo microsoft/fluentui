@@ -2,6 +2,20 @@
   "name": "@uifabric/webpack-utils",
   "entries": [
     {
+      "version": "0.7.0",
+      "tag": "@uifabric/webpack-utils_v0.7.0",
+      "date": "Fri, 06 Jul 2018 19:07:51 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "a3bdf358b64ef1d67c4806ab7c3cf9ab93302867",
+            "comment": "Addes a manifest service plugin"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.6.0",
       "tag": "@uifabric/webpack-utils_v0.6.0",
       "date": "Mon, 02 Jul 2018 20:41:48 GMT",

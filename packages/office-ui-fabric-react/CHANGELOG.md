@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 06 Jul 2018 10:23:46 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Jul 2018 19:07:51 GMT and should not be manually modified.
+
+## 6.27.0
+Fri, 06 Jul 2018 19:07:51 GMT
+
+### Minor changes
+
+- Builds a new umd bundle suitable for manifest service
+- HoverCard: Adds new prop 'openHotKey' to allow user to change the default key used to open the hover card when tabbing to it.
+
+### Patches
+
+- fixing webpack.config.js to only build production for the UMD / manifest
 
 ## 6.26.0
 Fri, 06 Jul 2018 10:23:46 GMT
