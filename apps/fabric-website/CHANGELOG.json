@@ -2,6 +2,25 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.1.3",
+      "tag": "@uifabric/fabric-website_v6.1.3",
+      "date": "Fri, 06 Jul 2018 10:23:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Martin Simecek <msimecek@users.noreply.github.com>",
+            "commit": "5727731bc253b8f68a388b93817a374597017e65",
+            "comment": "Update documentation regarding dir attribute."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.25.4 <7.0.0` to `>=6.26.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.1.2",
       "tag": "@uifabric/fabric-website_v6.1.2",
       "date": "Wed, 20 Jun 2018 10:25:55 GMT",

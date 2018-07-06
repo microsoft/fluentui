@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 20 Jun 2018 10:25:55 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Jul 2018 10:23:46 GMT and should not be manually modified.
+
+## 6.1.3
+Fri, 06 Jul 2018 10:23:46 GMT
+
+### Patches
+
+- Update documentation regarding dir attribute.
 
 ## 6.1.2
 Wed, 20 Jun 2018 10:25:55 GMT
