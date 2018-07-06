@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IChartInternalProps, ChartType, ChartHeight, ChartWidth } from './Chart.types';
-import { VerticalBarChart } from '@uifabric/charting/lib/VerticalBarChart';
-import { LineChart } from '@uifabric/charting/lib/LineChart';
+import { VerticalBarChart } from '@uifabric/charting/src/VerticalBarChart';
+import { LineChart } from '@uifabric/charting/src/LineChart';
 
 export class Chart extends React.Component<IChartInternalProps, {}> {
   public render(): JSX.Element {
