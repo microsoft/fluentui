@@ -2,6 +2,63 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.27.0",
+      "tag": "office-ui-fabric-react_v6.27.0",
+      "date": "Fri, 06 Jul 2018 19:07:51 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "a3bdf358b64ef1d67c4806ab7c3cf9ab93302867",
+            "comment": "Builds a new umd bundle suitable for manifest service"
+          },
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "db08deab1db1b18f81415602d959328e78dccf3e",
+            "comment": "HoverCard: Adds new prop 'openHotKey' to allow user to change the default key used to open the hover card when tabbing to it."
+          }
+        ],
+        "patch": [
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "83597b29ba4b9256589161e7372f7e9edeece509",
+            "comment": "fixing webpack.config.js to only build production for the UMD / manifest"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/webpack-utils\" from `>=0.4.0 <1.0.0` to `>=0.7.0 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.26.0",
+      "tag": "office-ui-fabric-react_v6.26.0",
+      "date": "Fri, 06 Jul 2018 10:23:46 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "67480804506a7334be0b325ac4666e33c7a6eda9",
+            "comment": "Converting ContextualMenu to MergeStyles step 1 - file structure"
+          },
+          {
+            "author": "Maximus <maximus12793@users.noreply.github.com>",
+            "commit": "a927b69ea8d5c1ca91fbace9856db9b6c25cf1d2",
+            "comment": "Change the styling for ContextualMenu secondaryText from neutralTertiary to neutralSecondary for accessibility"
+          }
+        ],
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "accea8762e59538f75d3c22a3fd6b897438adb0f",
+            "comment": "MessageBar: class name calculations were not being done in the correct location, and were only valid on initial render. Now ensuring they're evaluated prior to render."
+          }
+        ]
+      }
+    },
+    {
       "version": "6.25.4",
       "tag": "office-ui-fabric-react_v6.25.4",
       "date": "Thu, 05 Jul 2018 17:54:06 GMT",

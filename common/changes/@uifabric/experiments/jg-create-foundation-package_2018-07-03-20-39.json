@@ -1,11 +1,11 @@
 {
   "changes": [
     {
+      "comment": "No changes.",
       "packageName": "@uifabric/experiments",
-      "comment": "css changes for action bar",
-      "type": "patch"
+      "type": "none"
     }
   ],
   "packageName": "@uifabric/experiments",
-  "email": "v-kanuli@microsoft.com"
+  "email": "jagore@microsoft.com"
 }

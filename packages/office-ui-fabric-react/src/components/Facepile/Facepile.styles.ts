@@ -9,6 +9,7 @@ const GlobalClassNames = {
   itemButton: 'ms-Facepile-itemButton ms-Facepile-person',
   itemContainer: 'ms-Facepile-itemContainer',
   members: 'ms-Facepile-members',
+  member: 'ms-Facepile-member',
   overflowButton: 'ms-Facepile-overflowButton ms-Facepile-itemButton'
 };
 
@@ -49,6 +50,7 @@ export const styles = (props: IFacepileStyleProps): IFacepileStyles => {
       },
       className
     ],
+
     addButton: [
       classNames.addButton,
       getFocusStyle(theme, -1),
@@ -78,6 +80,7 @@ export const styles = (props: IFacepileStyleProps): IFacepileStyles => {
         }
       }
     ],
+
     descriptiveOverflowButton: [
       classNames.descriptiveOverflowButton,
       getFocusStyle(theme, -1),
@@ -93,27 +96,36 @@ export const styles = (props: IFacepileStyleProps): IFacepileStyles => {
         }
       }
     ],
+
     itemButton: [classNames.itemButton, ItemButtonStyles],
+
     itemContainer: [
       classNames.itemContainer,
       {
         display: 'flex'
       }
     ],
+
     members: [
       classNames.members,
       {
         display: 'flex',
         overflow: 'hidden',
-        margin: `${-1 * spacingAroundItemButton}px`,
-        selectors: {
-          '& > *': {
-            flex: '0 0 auto',
-            margin: `${spacingAroundItemButton}px`
-          }
-        }
+        listStyleType: 'none',
+        padding: 0,
+        margin: `-${spacingAroundItemButton}px`
       }
     ],
+
+    member: [
+      classNames.member,
+      {
+        display: 'inline-flex',
+        flex: '0 0 auto',
+        margin: `${spacingAroundItemButton}px`
+      }
+    ],
+
     overflowButton: [
       classNames.overflowButton,
       getFocusStyle(theme, -1),
@@ -129,11 +141,13 @@ export const styles = (props: IFacepileStyleProps): IFacepileStyles => {
         }
       }
     ],
+
     overflowInitialsIcon: [
       {
         color: palette.neutralPrimary
       }
     ],
+
     screenReaderOnly: hiddenContentStyle
   };
 };
