@@ -517,7 +517,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               font-size: 14px;
               font-weight: 400;
             }
-            &:hover, :focus {
+            &:hover, &:focus {
               background-color: #106ebe;
               border-color: #ffffff;
             }

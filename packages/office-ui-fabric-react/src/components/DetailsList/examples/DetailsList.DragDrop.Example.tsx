@@ -106,9 +106,6 @@ export class DetailsListDragDropExample extends React.Component<
 
     // insert before the dropped item
     newColumns.splice(draggedIndex, 1);
-    if (draggedIndex < targetIndex) {
-      targetIndex--;
-    }
     newColumns.splice(targetIndex, 0, draggedItems);
     this.setState({ columns: newColumns });
   };
