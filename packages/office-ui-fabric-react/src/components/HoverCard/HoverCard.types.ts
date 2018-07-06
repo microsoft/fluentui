@@ -95,7 +95,7 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement | H
 
   /**
    * HotKey used for opening the HoverCard when tabbed to target.
-   * @default 'C'
+   * @default 'KeyCodes.c'
    */
   openHotKey?: KeyCodes;
 }
