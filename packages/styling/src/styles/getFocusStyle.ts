@@ -1,7 +1,7 @@
 import { IRawStyle } from '@uifabric/merge-styles';
 import { ITheme } from '../interfaces/index';
 import { HighContrastSelector } from './CommonStyles';
-import { IsFocusVisibleClassName } from '@uifabric/utilities';
+import { IsFocusVisibleClassName } from '@uifabric/utilities/lib/initializeFocusRects';
 import { ZIndexes } from './zIndexes';
 
 /**
