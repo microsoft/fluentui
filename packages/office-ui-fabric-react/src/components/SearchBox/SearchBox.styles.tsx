@@ -121,7 +121,8 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         flexBasis: '32px',
         flexShrink: 0,
         padding: 1,
-        color: palette.themePrimary
+        color: palette.themePrimary,
+        backgroundColor: 'transparent'
       }
     ],
     field: [
