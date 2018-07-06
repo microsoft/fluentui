@@ -9,45 +9,56 @@ let entry = {
   [BUNDLE_NAME]: './lib/index.bundle.js'
 };
 
-function createConfig(config) {
-  return resources.createConfig(BUNDLE_NAME, IS_PRODUCTION, {
-    entry,
+function createConfig(config, onlyProduction) {
+  return resources.createConfig(
+    BUNDLE_NAME,
+    IS_PRODUCTION,
+    {
+      entry,
 
-    externals: [
-      {
-        react: 'React'
+      externals: [
+        {
+          react: 'React'
+        },
+        {
+          'react-dom': 'ReactDOM'
+        }
+      ],
+
+      resolve: {
+        alias: {
+          'office-ui-fabric-react/src': path.join(__dirname, 'src'),
+          'office-ui-fabric-react/lib': path.join(__dirname, 'lib'),
+          'Props.ts.js': 'Props',
+          'Example.tsx.js': 'Example'
+        }
       },
-      {
-        'react-dom': 'ReactDOM'
-      }
-    ],
 
-    resolve: {
-      alias: {
-        'office-ui-fabric-react/src': path.join(__dirname, 'src'),
-        'office-ui-fabric-react/lib': path.join(__dirname, 'lib'),
-        'Props.ts.js': 'Props',
-        'Example.tsx.js': 'Example'
-      }
+      ...config
     },
-
-    ...config
-  });
+    onlyProduction
+  );
 }
 
 module.exports = [
-  createConfig({
-    output: {
-      libraryTarget: 'var',
-      library: 'Fabric'
-    }
-  }),
-  createConfig({
-    plugins: [new ManifestServicePlugin()],
-    output: {
-      libraryTarget: 'umd',
-      library: 'Fabric',
-      filename: `${BUNDLE_NAME}.umd.js`
-    }
-  })
+  createConfig(
+    {
+      output: {
+        libraryTarget: 'var',
+        library: 'Fabric'
+      }
+    },
+    false
+  ),
+  createConfig(
+    {
+      plugins: [new ManifestServicePlugin()],
+      output: {
+        libraryTarget: 'umd',
+        library: 'Fabric',
+        filename: `${BUNDLE_NAME}.umd.js`
+      }
+    },
+    true
+  )
 ];
