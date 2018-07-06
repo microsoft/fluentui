@@ -106,7 +106,7 @@ exports[`DetailsList renders List correctly 1`] = `
                     &.isHeader {
                       height: 32px;
                     }
-                    ms-Fabric--isFocusVisible & {
+                    .ms-Fabric--isFocusVisible & {
                       opacity: 1;
                     }
 
