@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 05 Jul 2018 17:54:06 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Jul 2018 10:23:46 GMT and should not be manually modified.
+
+## 6.26.0
+Fri, 06 Jul 2018 10:23:46 GMT
+
+### Minor changes
+
+- Converting ContextualMenu to MergeStyles step 1 - file structure
+- Change the styling for ContextualMenu secondaryText from neutralTertiary to neutralSecondary for accessibility
+
+### Patches
+
+- MessageBar: class name calculations were not being done in the correct location, and were only valid on initial render. Now ensuring they're evaluated prior to render.
 
 ## 6.25.4
 Thu, 05 Jul 2018 17:54:06 GMT
