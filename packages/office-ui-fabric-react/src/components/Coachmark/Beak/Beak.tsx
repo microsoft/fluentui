@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, css, classNamesFunction } from '../../../Utilities';
+import { BaseComponent, classNamesFunction } from '../../../Utilities';
 import { IBeakProps } from './Beak.types';
 import { getStyles, IBeakStyles } from './Beak.styles';
 import { IBeakStylesProps } from './Beak.types';
