@@ -119,7 +119,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -267,7 +272,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -415,7 +425,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -563,7 +578,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -711,7 +731,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -859,7 +884,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -1007,7 +1037,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -1155,7 +1190,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -1303,7 +1343,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -1451,7 +1496,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -1599,7 +1649,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -1747,7 +1802,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -1895,7 +1955,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -2043,7 +2108,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -2191,7 +2261,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -2339,7 +2414,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -2487,7 +2567,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -2635,7 +2720,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -2783,7 +2873,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -2931,7 +3026,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -3055,12 +3155,18 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           &:hover .ms-Checkbox-checkbox {
             border-color: #212121;
           }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+            border-color: Highlight;
+          }
           &:focus .ms-Checkbox-checkbox {
             border-color: #212121;
           }
           &:hover .ms-Checkbox-checkmark {
             color: #a6a6a6;
             opacity: 1;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+            color: Highlight;
           }
           &:hover .ms-Checkbox-text {
             color: #333333;
@@ -3084,7 +3190,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             {
               align-items: center;
               cursor: pointer;
-              display: inline-flex;
+              display: flex;
               margin-bottom: 0;
               margin-left: -4px;
               margin-right: -4px;
@@ -3211,12 +3317,18 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           &:hover .ms-Checkbox-checkbox {
             border-color: #212121;
           }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+            border-color: Highlight;
+          }
           &:focus .ms-Checkbox-checkbox {
             border-color: #212121;
           }
           &:hover .ms-Checkbox-checkmark {
             color: #a6a6a6;
             opacity: 1;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+            color: Highlight;
           }
           &:hover .ms-Checkbox-text {
             color: #333333;
@@ -3240,7 +3352,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             {
               align-items: center;
               cursor: pointer;
-              display: inline-flex;
+              display: flex;
               margin-bottom: 0;
               margin-left: -4px;
               margin-right: -4px;
@@ -3367,12 +3479,18 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           &:hover .ms-Checkbox-checkbox {
             border-color: #212121;
           }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+            border-color: Highlight;
+          }
           &:focus .ms-Checkbox-checkbox {
             border-color: #212121;
           }
           &:hover .ms-Checkbox-checkmark {
             color: #a6a6a6;
             opacity: 1;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+            color: Highlight;
           }
           &:hover .ms-Checkbox-text {
             color: #333333;
@@ -3396,7 +3514,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             {
               align-items: center;
               cursor: pointer;
-              display: inline-flex;
+              display: flex;
               margin-bottom: 0;
               margin-left: -4px;
               margin-right: -4px;
@@ -3511,13 +3629,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           aria-disabled={undefined}
           aria-expanded="false"
           aria-label={undefined}
-          aria-live="assertive"
+          aria-labelledby="Dropdown64-label"
           aria-owns={undefined}
           className="ms-Dropdown"
           data-is-focusable={true}
           id="Dropdown64"
           onBlur={[Function]}
           onClick={[Function]}
+          onFocus={[Function]}
           onKeyDown={[Function]}
           onKeyUp={[Function]}
           role="listbox"
@@ -3526,9 +3645,13 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           <span
             aria-atomic={true}
             aria-label="20"
+            aria-live="off"
+            aria-posinset={1}
+            aria-selected={true}
+            aria-setsize={7}
             className="ms-Dropdown-title"
             id="Dropdown64-option"
-            role="listbox"
+            role="option"
           >
             <span>
               20

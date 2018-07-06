@@ -271,6 +271,11 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
         data-is-focusable={false}
         disabled={undefined}
         onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
         role="presentation"
         tabIndex={-1}
         type="button"

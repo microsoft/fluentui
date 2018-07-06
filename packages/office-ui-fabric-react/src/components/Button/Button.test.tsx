@@ -640,6 +640,92 @@ describe('Button', () => {
         });
         expect(didClick).toEqual(false);
       });
+
+      it('A disabled Button does not respond to input events', () => {
+        const renderedDOM: HTMLElement = renderIntoDocument(
+          <DefaultButton
+            disabled={true}
+            data-automation-id="test"
+            text="Create account"
+            split={false}
+            onClick={setTrue}
+            onKeyPress={setTrue}
+            onKeyUp={setTrue}
+            onKeyDown={setTrue}
+            onMouseDown={setTrue}
+            onMouseUp={setTrue}
+          />
+        );
+
+        ReactTestUtils.Simulate.click(renderedDOM);
+        ReactTestUtils.Simulate.keyDown(renderedDOM, {
+          which: KeyCodes.down,
+          altKey: true
+        });
+        ReactTestUtils.Simulate.keyUp(renderedDOM, {
+          which: KeyCodes.down,
+          altKey: true
+        });
+        ReactTestUtils.Simulate.keyPress(renderedDOM, {
+          which: KeyCodes.down,
+          altKey: true
+        });
+        ReactTestUtils.Simulate.mouseDown(renderedDOM, {
+          type: 'mousedown',
+          clientX: 0,
+          clientY: 0
+        });
+
+        ReactTestUtils.Simulate.mouseUp(renderedDOM, {
+          type: 'mouseup',
+          clientX: 0,
+          clientY: 0
+        });
+        expect(didClick).toEqual(false);
+      });
+      it('A focusable disabled button does not respond to input events', () => {
+        const renderedDOM: HTMLElement = renderIntoDocument(
+          <DefaultButton
+            disabled={true}
+            allowDisabledFocus={true}
+            data-automation-id="test"
+            text="Create account"
+            split={false}
+            onClick={setTrue}
+            onKeyPress={setTrue}
+            onKeyUp={setTrue}
+            onKeyDown={setTrue}
+            onMouseDown={setTrue}
+            onMouseUp={setTrue}
+          />
+        );
+
+        ReactTestUtils.Simulate.click(renderedDOM);
+        ReactTestUtils.Simulate.keyDown(renderedDOM, {
+          which: KeyCodes.down,
+          altKey: true
+        });
+        ReactTestUtils.Simulate.keyUp(renderedDOM, {
+          which: KeyCodes.down,
+          altKey: true
+        });
+        ReactTestUtils.Simulate.keyPress(renderedDOM, {
+          which: KeyCodes.down,
+          altKey: true
+        });
+        ReactTestUtils.Simulate.mouseDown(renderedDOM, {
+          type: 'mousedown',
+          clientX: 0,
+          clientY: 0
+        });
+
+        ReactTestUtils.Simulate.mouseUp(renderedDOM, {
+          type: 'mouseup',
+          clientX: 0,
+          clientY: 0
+        });
+        expect(didClick).toEqual(false);
+      });
     });
 
     describe('with contextual menu', () => {

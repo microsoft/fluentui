@@ -1,9 +1,13 @@
 import * as React from 'react';
-import { TeachingBubbleContent } from './TeachingBubbleContent';
+
+import { TeachingBubbleBase } from './TeachingBubble.base';
+import { TeachingBubbleContentBase } from './TeachingBubbleContent.base';
 import { IImageProps } from '../../Image';
 import { IButtonProps } from '../../Button';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 import { ICalloutProps } from '../../Callout';
+import { IStyle, ITheme } from '../../Styling';
+import { IStyleFunctionOrObject } from '../../Utilities';
 
 export interface ITeachingBubble {
   /** Sets focus to the TeachingBubble root element */
@@ -14,12 +18,24 @@ export interface ITeachingBubble {
  * TeachingBubble component props.
  */
 
-export interface ITeachingBubbleProps extends React.Props<TeachingBubbleContent>, IAccessiblePopupProps {
+export interface ITeachingBubbleProps
+  extends React.Props<TeachingBubbleBase | TeachingBubbleContentBase>,
+    IAccessiblePopupProps {
   /**
    * Optional callback to access the ISlider interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
   componentRef?: (component: ITeachingBubble | null) => void;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  styles?: IStyleFunctionOrObject<ITeachingBubbleStyleProps, ITeachingBubbleStyles>;
+
+  /**
+   * Theme provided by High-Order Component.
+   */
+  theme?: ITheme;
 
   /**
    * Properties to pass through for Callout, reference detail properties in ICalloutProps
@@ -85,4 +101,29 @@ export interface ITeachingBubbleProps extends React.Props<TeachingBubbleContent>
    * Defines the element id referencing the element containing the description for the TeachingBubble.
    */
   ariaDescribedBy?: string;
+}
+
+export type ITeachingBubbleStyleProps = Required<Pick<ITeachingBubbleProps, 'theme'>> &
+  Pick<ITeachingBubbleProps, 'hasCondensedHeadline' | 'hasSmallHeadline' | 'isWide'> & {
+    /** Class name for callout. */
+    calloutClassName?: string;
+    /** Class name for primary button. */
+    primaryButtonClassName?: string;
+    /** Class name for secondary button. */
+    secondaryButtonClassName?: string;
+  };
+
+export interface ITeachingBubbleStyles {
+  root: IStyle;
+  body: IStyle;
+  bodyContent: IStyle;
+  closeButton: IStyle;
+  content: IStyle;
+  footer: IStyle;
+  header: IStyle;
+  headline: IStyle;
+  imageContent: IStyle;
+  primaryButton: IStyle;
+  secondaryButton: IStyle;
+  subText: IStyle;
 }

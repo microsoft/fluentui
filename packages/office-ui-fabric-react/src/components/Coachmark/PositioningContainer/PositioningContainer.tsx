@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { IPositioningContainerTypes } from './PositioningContainer.types';
 import { getClassNames } from './PositioningContainer.styles';
-import { Layer } from 'office-ui-fabric-react/lib/Layer';
+import { Layer } from '../../Layer';
 
 // Utilites/Helpers
-import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
+import { DirectionalHint } from '../../../common/DirectionalHint';
 import {
   BaseComponent,
   IPoint,
@@ -19,13 +19,13 @@ import {
 } from '../../../Utilities';
 
 import {
-  IPositionProps,
   getMaxHeight,
   positionElement,
   IPositionedData,
-  RectangleEdge,
-  IPosition
-} from 'office-ui-fabric-react/lib/utilities/positioning';
+  IPositionProps,
+  IPosition,
+  RectangleEdge
+} from '../../../utilities/positioning';
 
 import { AnimationClassNames, mergeStyles } from '../../../Styling';
 
