@@ -10,7 +10,7 @@ export { IStateProps } from '@uifabric/foundation';
 // Centralize Foundation interaction for use throughout this package.
 
 // TODO: mergeStyleSet needs to have formalized, generic typing using IStyle and IStyleSet to tie everything together here
-//        (like TStyles and TStyleSet<TStyle>). Until then, use any typing and define temporary TStyleSet here
+//        (like IStyles and IStyleSet<TStyle> below). Until then, use any typing and define temporary IStyleSet here
 
 export type IStyleSet<TStyles> = { [P in keyof TStyles]: string };
 
