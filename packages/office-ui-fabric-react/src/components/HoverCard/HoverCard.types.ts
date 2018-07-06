@@ -88,10 +88,15 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement | H
   shouldBlockHoverCard?: () => void;
 
   /**
-   * Set first focus into hover card, default should be true
+   * Set first focus into hover card.
+   * @default false
    */
   setInitialFocus?: boolean;
 
+  /**
+   * HotKey used for opening the HoverCard when tabbed to target.
+   * @default 'C'
+   */
   openHotKey?: KeyCodes;
 }
 
