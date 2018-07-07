@@ -36,6 +36,9 @@ const DetailsListDocumentsExampleCode = require('!raw-loader!office-ui-fabric-re
 import { DetailsListNavigatingFocusExample } from './examples/DetailsList.NavigatingFocus.Example';
 const DetailsListNavigatingFocusExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.NavigatingFocus.Example.tsx') as string;
 
+import { DetailsListShimmerExample } from './examples/DetailsList.Shimmer.Example';
+const DetailsListShimmerExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Shimmer.Example.tsx') as string;
+
 export const DetailsListPageProps: IDocPageProps = {
   title: 'DetailsList',
   componentName: 'DetailsList',
@@ -97,6 +100,11 @@ export const DetailsListPageProps: IDocPageProps = {
       title: 'Navigating to new content preserving keyboard focus with initialFocusedIndex',
       code: DetailsListNavigatingFocusExampleCode,
       view: <DetailsListNavigatingFocusExample />
+    },
+    {
+      title: 'DetailsList Shimmer - usually show before retrieving data from network',
+      code: DetailsListShimmerExampleCode,
+      view: <DetailsListShimmerExample />
     }
   ],
   propertiesTablesSources: [
