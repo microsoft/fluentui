@@ -126,6 +126,7 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
    * Ref for TeachingBubble
    */
   teachingBubbleRef?: ITeachingBubble;
+
   /**
    *  Defines the element id referencing the element containing label text for Coachmark.
    */
