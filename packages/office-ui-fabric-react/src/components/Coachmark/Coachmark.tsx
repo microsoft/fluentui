@@ -484,8 +484,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
         (): void => {
           // Need setTimeout to trigger narrator
           this._async.setTimeout(() => {
-            if (this.props.teachingBubbleRef && this.props.teachingBubbleRef.current) {
-              this.props.teachingBubbleRef.current.focus();
+            if (this.props.teachingBubbleRef && this.props.teachingBubbleRef) {
+              this.props.teachingBubbleRef.focus();
             }
           }, 500);
 
