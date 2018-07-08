@@ -9,8 +9,7 @@ import {
   elementContains,
   getRTLSafeKeyCode,
   IRenderFunction,
-  createRef,
-  customizable
+  createRef
 } from '../../Utilities';
 import {
   CheckboxVisibility,
@@ -21,8 +20,7 @@ import {
   IDetailsList,
   IDetailsListProps
 } from '../DetailsList/DetailsList.types';
-import { DetailsHeader } from '../DetailsList/DetailsHeader';
-import { IDetailsHeaderProps, IDetailsHeader, SelectAllVisibility } from '../DetailsList/DetailsHeader.types';
+import { DetailsHeader, IDetailsHeader, SelectAllVisibility, IDetailsHeaderProps } from '../DetailsList/DetailsHeader';
 import { DetailsRowBase } from '../DetailsList/DetailsRow.base';
 import { DetailsRow } from '../DetailsList/DetailsRow';
 import { IDetailsRowProps } from '../DetailsList/DetailsRow.types';
@@ -68,7 +66,6 @@ const SHIMMER_INITIAL_ITEMS = 10;
 const SHIMMER_ITEMS = new Array(SHIMMER_INITIAL_ITEMS);
 
 @withViewport
-@customizable('DetailsList', ['theme', 'styles'])
 export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListState> implements IDetailsList {
   public static defaultProps = {
     layoutMode: DetailsListLayoutMode.justified,
