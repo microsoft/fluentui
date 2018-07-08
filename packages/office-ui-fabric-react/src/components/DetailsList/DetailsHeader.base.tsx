@@ -193,7 +193,8 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderProps, IDetai
       isSelectAllHidden: selectAllVisibility === SelectAllVisibility.hidden,
       isResizingColumn: !!columnResizeDetails && isSizing,
       isSizing,
-      isAllCollapsed
+      isAllCollapsed,
+      isCheckboxHidden
     });
 
     const classNames = this._classNames;

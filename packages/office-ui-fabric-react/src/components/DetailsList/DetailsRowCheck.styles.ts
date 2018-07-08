@@ -36,24 +36,23 @@ export const getStyles = (props: IDetailsRowCheckStyleProps): IDetailsRowCheckSt
         backgroundColor: 'transparent',
         border: 'none',
         opacity: 0,
-        height: compact ? 32 : 40,
+        height: compact || isHeader ? 32 : 40,
         width: 40,
         padding: 0,
         margin: 0,
         selectors: {
           '&:hover': {
             opacity: 1
-          },
-          '&.isHeader': {
-            height: 32
-          },
-          [`.${IsFocusVisibleClassName} &`]: {
-            opacity: 1
           }
         }
       },
       (selected || anySelected || isVisible) && {
-        opacity: 1
+        opacity: 1,
+        selectors: {
+          [`.${IsFocusVisibleClassName} &`]: {
+            opacity: 1
+          }
+        }
       }
     ],
 

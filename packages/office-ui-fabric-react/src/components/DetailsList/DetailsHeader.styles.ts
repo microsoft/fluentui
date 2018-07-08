@@ -9,6 +9,7 @@ import {
   hiddenContentStyle,
   keyframes
 } from '../../Styling';
+import { IsFocusVisibleClassName } from '../..';
 
 const GlobalClassNames = {
   tooltipHost: 'ms-TooltipHost',
@@ -36,7 +37,16 @@ const values = {
 };
 
 export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles => {
-  const { theme, className, isSelectAllHidden, isAllSelected, isResizingColumn, isSizing, isAllCollapsed } = props;
+  const {
+    theme,
+    className,
+    isSelectAllHidden,
+    isAllSelected,
+    isResizingColumn,
+    isSizing,
+    isCheckboxHidden,
+    isAllCollapsed
+  } = props;
   const { semanticColors, palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -83,8 +93,8 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         position: 'relative',
         minWidth: '100%',
         verticalAlign: 'top',
-        height: '$rowHeight',
-        lineHeight: '$rowHeight',
+        height: values.rowHeight,
+        lineHeight: values.rowHeight,
         whiteSpace: 'nowrap',
         boxSizing: 'content-box',
         paddingBottom: '1px',
@@ -112,7 +122,18 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
       className
     ],
 
-    check: [],
+    check: [
+      {
+        height: 32
+      },
+      {
+        selectors: {
+          [`.${IsFocusVisibleClassName} &:focus`]: {
+            opacity: 1
+          }
+        }
+      }
+    ],
 
     cellWrapperPadded: [
       {
@@ -120,9 +141,37 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
       }
     ],
 
-    cellIsCheck: [classNames.cellIsCheck],
-    cellIsActionable: [],
-    cellIsEmpty: [],
+    cellIsCheck: [
+      classNames.cellIsCheck,
+      {
+        position: 'relative',
+        padding: 0,
+        margin: 0,
+        display: 'inline-flex',
+        alignItems: 'center'
+      },
+      isAllSelected && {
+        opacity: 1
+      }
+    ],
+    cellIsActionable: [
+      {
+        selectors: {
+          '&:hover': {
+            color: semanticColors.bodyText,
+            background: semanticColors.listHeaderBackgroundHovered
+          },
+          '&:active': {
+            background: semanticColors.listHeaderBackgroundPressed
+          }
+        }
+      }
+    ],
+    cellIsEmpty: [
+      {
+        textOverflow: 'clip'
+      }
+    ],
     cell: [
       classNames.cell,
       getFocusStyle(theme),
@@ -142,32 +191,6 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         textOverflow: 'ellipsis',
         textAlign: 'left',
         selectors: {
-          '&$cellIsCheck': {
-            position: 'relative',
-            padding: 0,
-            margin: 0,
-            display: 'inline-flex',
-            alignItems: 'center',
-            selectors: {
-              '&.isSelected': {
-                opacity: 1
-              }
-            }
-          },
-          '&$cellIsActionable': {
-            selectors: {
-              '&:hover': {
-                color: semanticColors.bodyText,
-                background: semanticColors.listHeaderBackgroundHovered
-              },
-              '&:active': {
-                background: semanticColors.listHeaderBackgroundPressed
-              }
-            }
-          },
-          '&$cellIsEmpty': {
-            textOverflow: 'clip'
-          },
           '&:hover $gripperBarVerticalStyle': {
             display: 'block'
           },

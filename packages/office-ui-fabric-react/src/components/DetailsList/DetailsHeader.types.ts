@@ -77,6 +77,7 @@ export type IDetailsHeaderStyleProps = Required<Pick<IDetailsHeaderProps, 'theme
     isResizingColumn?: boolean;
     isAllCollapsed?: boolean;
     isSizing?: boolean;
+    isCheckboxHidden?: boolean;
   };
 
 export interface IDetailsHeaderStyles {
