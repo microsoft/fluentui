@@ -10,7 +10,7 @@ export interface IDataPoint {
   value: number;
 
   /**
-   * Dependent value of the data point, rendered along the y-axis.
+   * Dependent value of the data point, rendered.
    */
   label: number | string;
 }
