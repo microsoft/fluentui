@@ -7,7 +7,8 @@ import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 import { ICalloutProps } from '../../Callout';
 
 export interface ITeachingBubble {
-
+  /** Sets focus to the TeachingBubble root element */
+  focus(): void;
 }
 
 /**
@@ -75,4 +76,14 @@ export interface ITeachingBubbleProps extends React.Props<TeachingBubble | Teach
    * A variation with smaller bold headline and margins to the body (hasCondensedHeadline takes precedence if it is also set to true).
    */
   hasSmallHeadline?: boolean;
+
+  /**
+   *  Defines the element id referencing the element containing label text for TeachingBubble.
+   */
+  ariaLabelledBy?: string;
+
+  /**
+   * Defines the element id referencing the element containing the description for the TeachingBubble.
+   */
+  ariaDescribedBy?: string;
 }

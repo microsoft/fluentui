@@ -116,6 +116,11 @@ export interface ICoachmarkStyles {
    * The styles applied when the coachmark has collapsed.
    */
   collapsed?: IStyle;
+
+  /**
+   * The styles applied to the ARIA attribute container
+   */
+  ariaContainer?: IStyle;
 }
 
 export const translateOne: string = keyframes({
@@ -360,6 +365,10 @@ export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(
       (!props.isMeasuring) && {
         visibility: 'visible',
       }
-    ]
+    ],
+    ariaContainer: {
+      position: 'fixed',
+      opacity: 0
+    }
   };
 }

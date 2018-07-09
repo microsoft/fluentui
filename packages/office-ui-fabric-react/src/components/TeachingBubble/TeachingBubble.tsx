@@ -1,10 +1,11 @@
-import * as React from "react";
-import { BaseComponent, css } from "../../Utilities";
-import { TeachingBubbleContent } from "./TeachingBubbleContent";
-import { ITeachingBubbleProps } from "./TeachingBubble.types";
-import { Callout, ICalloutProps } from "../../Callout";
-import { DirectionalHint } from "../../common/DirectionalHint";
-import * as stylesImport from "./TeachingBubble.scss";
+
+import * as React from 'react';
+import { BaseComponent, classNamesFunction, createRef } from '../../Utilities';
+import { TeachingBubbleContent } from './TeachingBubbleContent';
+import { ITeachingBubbleProps } from './TeachingBubble.types';
+import { Callout, ICalloutProps } from '../../Callout';
+import { DirectionalHint } from '../../common/DirectionalHint'
+import * as stylesImport from './TeachingBubble.scss';
 const styles: any = stylesImport;
 
 export interface ITeachingBubbleState {
@@ -14,7 +15,7 @@ export interface ITeachingBubbleState {
 export class TeachingBubble extends BaseComponent<
   ITeachingBubbleProps,
   ITeachingBubbleState
-> {
+  > {
   public static defaultProps = {
     /**
      * Default calloutProps is deprecated in favor of private _defaultCalloutProps.
@@ -30,6 +31,7 @@ export class TeachingBubble extends BaseComponent<
     }
   };
 
+  public rootElement = createRef<HTMLDivElement>();
   private _defaultCalloutProps: ICalloutProps;
 
   // Constructor
@@ -47,6 +49,12 @@ export class TeachingBubble extends BaseComponent<
     };
   }
 
+  public focus(): void {
+    if (this.rootElement.current) {
+      this.rootElement.current.focus();
+    }
+  }
+
   public render(): JSX.Element {
     const {
       calloutProps: setCalloutProps,
@@ -58,17 +66,15 @@ export class TeachingBubble extends BaseComponent<
 
     return (
       <Callout
-        target={targetElement}
-        onDismiss={onDismiss}
-        {...calloutProps}
-        className={css(
-          "ms-TeachingBubble",
-          styles.root,
-          isWide ? styles.wideCallout : null,
-          calloutProps ? calloutProps.className : undefined
-        )}
+        target={ targetElement }
+        onDismiss={ onDismiss }
+        { ...calloutProps }
+        className={ css('ms-TeachingBubble', styles.root, isWide ? styles.wideCallout : null, calloutProps ? calloutProps.className : undefined
+        ) }
       >
-        <TeachingBubbleContent {...this.props} />
+        <div ref={ this.rootElement }>
+          <TeachingBubbleContent { ...this.props } />
+        </div>
       </Callout>
     );
   }
