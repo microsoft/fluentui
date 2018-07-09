@@ -1,4 +1,5 @@
-import { GlobalSettings, warn } from '@uifabric/utilities';
+import { warn } from '@uifabric/utilities/lib/warn';
+import { GlobalSettings } from '@uifabric/utilities/lib/GlobalSettings';
 import { IRawStyle, IFontFace, fontFace, mergeStyles, Stylesheet } from '@uifabric/merge-styles';
 
 export interface IIconSubset {
