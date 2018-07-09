@@ -209,6 +209,8 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
         {group && group.isCollapsed ? null : hasNestedGroups ? (
           <List
             ref={this._list}
+            role="group"
+            cellRole="treeitem"
             items={group!.children}
             onRenderCell={this._renderSubGroup}
             getItemCountForPage={this._returnOne}

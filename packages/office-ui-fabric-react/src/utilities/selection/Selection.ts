@@ -136,13 +136,13 @@ export class Selection implements ISelection {
     }
 
     // Check the exemption list for discrepencies.
-    const newExemptedIndicies: { [key: string]: boolean } = {};
+    const newExemptedIndices: { [key: string]: boolean } = {};
 
     for (const indexProperty in this._exemptedIndices) {
       if (this._exemptedIndices.hasOwnProperty(indexProperty)) {
         const index = Number(indexProperty);
         const item = this._items[index];
-        const exemptKey = item ? this.getKey(item, Number(index)) : undefined;
+        const exemptKey = item ? this.getKey(item, index) : undefined;
         const newIndex = exemptKey ? newKeyToIndexMap[exemptKey] : index;
 
         if (newIndex === undefined) {
@@ -152,13 +152,13 @@ export class Selection implements ISelection {
           break;
         } else {
           // We know the new index of the item. update the existing exemption table.
-          newExemptedIndicies[newIndex] = true;
+          newExemptedIndices[newIndex] = true;
           hasSelectionChanged = hasSelectionChanged || newIndex !== index;
         }
       }
     }
 
-    this._exemptedIndices = newExemptedIndicies;
+    this._exemptedIndices = newExemptedIndices;
     this._keyToIndexMap = newKeyToIndexMap;
     this._unselectableIndices = newUnselectableIndices;
     this._items = items || [];

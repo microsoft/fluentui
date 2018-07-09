@@ -146,6 +146,12 @@ export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> 
   role?: string;
 
   /**
+   * The role to assign to the list cell elements.
+   * Use this to override the default assignment of `listitem' to the cells.
+   */
+  cellRole?: string;
+
+  /**
    * Called when the List will render a page.
    * Override this to control how cells are rendered within a page.
    */

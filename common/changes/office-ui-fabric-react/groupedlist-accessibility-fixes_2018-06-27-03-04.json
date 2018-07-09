@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Accessibility fixes for GroupedList. Namely, ability to expand/collapse using arrow keys, and proper aria tree semantics for screen-readers.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "boabdelm@microsoft.com"
+}
