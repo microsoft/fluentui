@@ -25,7 +25,6 @@ export class DonutChartBase extends React.Component<IDonutChartProps, {}> {
       height: height!,
       className
     });
-    console.log(' this._classNames');
     const radius = Math.min(width!, height!) / 2;
     const outerRadius = radius - 10;
     const innerRadius = 80;

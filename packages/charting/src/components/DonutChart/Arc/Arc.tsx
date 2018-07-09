@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as d3 from 'd3-shape';
+import * as shape from 'd3-shape';
 import { IArcProps, IArcStyles } from './Arc.types';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { getStyles } from './Arc.styles';
@@ -10,18 +10,18 @@ export class Arc extends React.Component<IArcProps, {}> {
 
   constructor(props: IArcProps) {
     super(props);
-    this.arc = d3.arc();
+    this.arc = shape.arc();
   }
-  public updateD3 = (newProps: IArcProps) => {
+  public updateChart = (newProps: IArcProps) => {
     this.arc.innerRadius(newProps.innerRadius);
     this.arc.outerRadius(newProps.outerRadius);
   };
   public componentWillMount(): void {
-    this.updateD3(this.props);
+    this.updateChart(this.props);
   }
 
   public componentWillReceiveProps(newProps: IArcProps): void {
-    this.updateD3(newProps);
+    this.updateChart(newProps);
   }
 
   public render(): JSX.Element {

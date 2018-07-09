@@ -34,8 +34,6 @@ export class Pie extends React.Component<IPieProps, {}> {
   };
 
   public render(): JSX.Element {
-    // const getClassNames = classNamesFunction<IPieProps, IPieStyles>();
-
     const pie = this.pie(this.props.data),
       translate = `translate(${this.props.width / 2}, ${this.props.height / 2})`;
 
