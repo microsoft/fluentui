@@ -99,6 +99,9 @@ export interface IDocPageProps {
   /** Best practice as markdown string */
   bestPractices?: string;
 
+  /**Feedback tool */
+  feedback?: string;
+
   /** Passed through header visibility flag from the demo component page component */
   isHeaderVisible: boolean;
 

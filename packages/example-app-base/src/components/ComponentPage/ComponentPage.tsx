@@ -28,6 +28,7 @@ export interface IComponentPageProps {
   otherSections?: IComponentPageSection[];
   allowNativeProps?: boolean | string;
   nativePropsElement?: string | string[] | undefined;
+  feedback?: JSX.Element;
 
   /**
    * Link to the Component root folder on GitHub.
@@ -109,6 +110,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
             {this._getVariants()}
             {this._getImplementationExamples()}
             {this._getPropertiesTable()}
+            {this._getFeedback()}
             {this.props.otherSections &&
               this.props.otherSections.map((componentPageSection: IComponentPageSection) => {
                 return this._getSection(componentPageSection);
@@ -161,6 +163,11 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
         {this.props.propertiesTables && (
           <div className="ComponentPage-navLink">
             <Link {...{ href: this._baseUrl + '#Implementation' }}>Implementation</Link>
+          </div>
+        )}
+        {this.props.feedback && (
+          <div className="ComponentPage-navLink">
+            <Link {...{ href: this._baseUrl + '#Feedback' }}>Feedback</Link>
           </div>
         )}
         {this.props.otherSections &&
@@ -349,6 +356,21 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
             Implementation Examples
           </h2>
           {this.props.implementationExampleCards}
+        </div>
+      );
+    }
+
+    return undefined;
+  }
+
+  private _getFeedback(): JSX.Element | undefined {
+    if (this.props.feedback) {
+      return (
+        <div className="ComponentPage-feedbackSection">
+          <h2 className="ComponentPage-subHeading ComponentPage-variantsTitle" id="FeedbackExamples">
+            Feedback
+          </h2>
+          {this.props.feedback}
         </div>
       );
     }
