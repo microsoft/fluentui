@@ -44,23 +44,11 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
       !disabled && [
         !checked && {
           selectors: {
-            ':hover .ms-Checkbox-checkbox': {
-              borderColor: checkboxBorderHoveredColor,
-              selectors: {
-                [HighContrastSelector]: {
-                  borderColor: 'Highlight'
-                }
-              }
-            },
+            ':hover .ms-Checkbox-checkbox': { borderColor: checkboxBorderHoveredColor },
             ':focus .ms-Checkbox-checkbox': { borderColor: checkboxBorderHoveredColor },
             ':hover .ms-Checkbox-checkmark': {
               color: checkmarkFontColorHovered,
-              opacity: '1',
-              selectors: {
-                [HighContrastSelector]: {
-                  color: 'Highlight'
-                }
-              }
+              opacity: '1'
             }
           }
         },
@@ -77,20 +65,12 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
             [HighContrastSelector]: {
               selectors: {
                 ':hover .ms-Checkbox-checkbox': {
-                  background: 'Window',
-                  borderColor: 'Highlight'
+                  background: 'WindowText',
+                  borderColor: 'WindowText'
                 },
                 ':focus .ms-Checkbox-checkbox': {
-                  background: 'Highlight'
-                },
-                ':focus:hover .ms-Checkbox-checkbox': {
-                  background: 'Highlight'
-                },
-                ':focus:hover .ms-Checkbox-checkmark': {
-                  color: 'Window'
-                },
-                ':hover .ms-Checkbox-checkmark': {
-                  color: 'Highlight'
+                  background: 'WindowText',
+                  borderColor: 'WindowText'
                 }
               }
             }
@@ -148,8 +128,8 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
           borderColor: checkboxBorderColorChecked,
           selectors: {
             [HighContrastSelector]: {
-              background: 'Highlight',
-              borderColor: 'Highlight'
+              background: 'WindowText',
+              borderColor: 'WindowText'
             }
           }
         },

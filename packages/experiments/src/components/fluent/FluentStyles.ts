@@ -139,15 +139,14 @@ const LabelStyles = {
 };
 const ToggleStyles = {
   pill: {
-    width: '40px',
-    height: '20px',
-    borderRadius: '10px',
-    padding: '0 4px'
+    width: '2em',
+    height: '1em',
+    borderRadius: '.5em'
   },
   thumb: {
-    width: '12px',
-    height: '12px',
-    borderRadius: '12px',
+    width: '.6em',
+    height: '.6em',
+    borderRadius: '.6em',
     borderColor: 'transparent'
   }
 };

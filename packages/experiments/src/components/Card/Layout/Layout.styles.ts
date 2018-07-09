@@ -33,6 +33,7 @@ export const getStyles = (props: ILayoutProps): ILayoutStyles => {
       overflow: 'hidden'
     },
     footer: {
+      marginBottom: '16px',
       width: '100%',
       minHeight: '32px'
     }

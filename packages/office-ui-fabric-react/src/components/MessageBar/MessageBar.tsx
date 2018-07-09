@@ -7,6 +7,4 @@ export const MessageBar: (props: IMessageBarProps) => JSX.Element = styled<
   IMessageBarProps,
   IMessageBarStyleProps,
   IMessageBarStyles
->(MessageBarBase, getStyles, undefined, {
-  scope: 'MessageBar'
-});
+>(MessageBarBase, getStyles);

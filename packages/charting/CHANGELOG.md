@@ -1,20 +1,6 @@
-# Change Log - @uifabric/charting
+# Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 03 Jul 2018 10:23:19 GMT and should not be manually modified.
-
-## 0.0.4
-Tue, 03 Jul 2018 10:23:19 GMT
-
-### Patches
-
-- Add ! mark for typed props
-
-## 0.0.3
-Mon, 02 Jul 2018 10:21:36 GMT
-
-### Patches
-
-- Initial publish.
+This log was last generated on Fri, 11 May 2018 04:21:29 GMT and should not be manually modified.
 
 ## 5.38.2
 Fri, 11 May 2018 04:21:29 GMT

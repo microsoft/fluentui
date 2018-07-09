@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
 import './PersonaExample.scss';
-import { TestImages } from '../../../common/TestImages';
 
 export class UnknownPersonaExample extends React.Component<any, any> {
   public render(): JSX.Element {
@@ -15,7 +14,6 @@ export class UnknownPersonaExample extends React.Component<any, any> {
           secondaryText="Designer"
           tertiaryText="Unverified sender"
           size={PersonaSize.size72}
-          imageUrl={TestImages.personaFemale}
         />
       </div>
     );

@@ -72,9 +72,4 @@ export interface ICheckStyles {
    * The 'circle' icon styles.
    */
   circle: IStyle;
-
-  /**
-   * Check host style
-   */
-  checkHost: IStyle;
 }

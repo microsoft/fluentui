@@ -1,17 +1,9 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  KeyCodes,
-  css,
-  getId,
-  getRTL,
-  getRTLSafeKeyCode,
-  createRef,
-  customizable
-} from '../../Utilities';
-import { ISliderProps, ISlider, ISliderStyleProps, ISliderStyles } from './Slider.types';
-import { classNamesFunction } from '../../Utilities';
+import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode, createRef } from '../../Utilities';
+import { ISliderProps, ISlider } from './Slider.types';
 import { Label } from '../../Label';
+import * as stylesImport from './Slider.scss';
+const styles: any = stylesImport;
 
 export interface ISliderState {
   value?: number;
@@ -26,8 +18,6 @@ export enum ValuePosition {
   Next = 1
 }
 
-const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>();
-@customizable('Slider', ['theme', 'styles'])
 export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implements ISlider {
   public static defaultProps: ISliderProps = {
     step: 1,
@@ -75,42 +65,29 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
   }
 
   public render(): React.ReactElement<{}> {
-    const {
-      ariaLabel,
-      className,
-      disabled,
-      label,
-      max,
-      min,
-      showValue,
-      buttonProps,
-      vertical,
-      styles,
-      theme
-    } = this.props;
+    const { ariaLabel, className, disabled, label, max, min, showValue, buttonProps, vertical } = this.props;
     const { value, renderedValue } = this.state;
     const thumbOffsetPercent: number = ((renderedValue! - min!) / (max! - min!)) * 100;
     const lengthString = vertical ? 'height' : 'width';
     const onMouseDownProp: {} = disabled ? {} : { onMouseDown: this._onMouseDownOrTouchStart };
     const onTouchStartProp: {} = disabled ? {} : { onTouchStart: this._onMouseDownOrTouchStart };
     const onKeyDownProp: {} = disabled ? {} : { onKeyDown: this._onKeyDown };
-    const classNames = getClassNames(styles, {
-      className,
-      disabled,
-      vertical,
-      showTransitions: renderedValue === value,
-      showValue,
-      theme: theme!
-    });
 
     return (
-      <div className={classNames.root}>
+      <div
+        className={css('ms-Slider', styles.root, className, {
+          ['ms-Slider-enabled ' + styles.rootIsEnabled]: !disabled,
+          ['ms-Slider-disabled ' + styles.rootIsDisabled]: disabled,
+          ['ms-Slider-row ' + styles.rootIsHorizontal]: !vertical,
+          ['ms-Slider-column ' + styles.rootIsVertical]: vertical
+        })}
+      >
         {label && (
-          <Label className={classNames.titleLabel} {...(ariaLabel ? {} : { htmlFor: this._id })}>
+          <Label className={styles.titleLabel} {...(ariaLabel ? {} : { htmlFor: this._id })}>
             {label}
           </Label>
         )}
-        <div className={classNames.container}>
+        <div className={css('ms-Slider-container', styles.container)}>
           <button
             aria-valuenow={value}
             aria-valuemin={min}
@@ -121,29 +98,35 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
             {...onTouchStartProp}
             {...onKeyDownProp}
             {...buttonProps}
-            className={css(classNames.slideBox, buttonProps!.className)}
+            className={css(
+              'ms-Slider-slideBox',
+              styles.slideBox,
+              buttonProps!.className,
+              !!showValue && 'ms-Slider-showValue',
+              renderedValue === value && 'ms-Slider-showTransitions ' + styles.showTransitions
+            )}
             id={this._id}
             disabled={disabled}
             type="button"
             role="slider"
           >
-            <div ref={this._sliderLine} className={classNames.line}>
+            <div ref={this._sliderLine} className={css('ms-Slider-line', styles.line)}>
               <span
                 ref={this._thumb}
-                className={classNames.thumb}
+                className={css('ms-Slider-thumb', styles.thumb)}
                 style={this._getThumbStyle(vertical, thumbOffsetPercent)}
               />
               <span
-                className={css(classNames.lineContainer, classNames.activeSection)}
+                className={css('ms-Slider-active', styles.lineContainer, styles.activeSection)}
                 style={{ [lengthString]: thumbOffsetPercent + '%' }}
               />
               <span
-                className={css(classNames.lineContainer, classNames.inactiveSection)}
+                className={css('ms-Slider-inactive', styles.lineContainer, styles.inactiveSection)}
                 style={{ [lengthString]: 100 - thumbOffsetPercent + '%' }}
               />
             </div>
           </button>
-          {showValue && <Label className={classNames.valueLabel}>{value}</Label>}
+          {showValue && <Label className={css('ms-Slider-value', styles.valueLabel)}>{value}</Label>}
         </div>
       </div>
     ) as React.ReactElement<{}>;

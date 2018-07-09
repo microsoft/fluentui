@@ -8,7 +8,14 @@ module.exports = resources.createConfig(BUNDLE_NAME, IS_PRODUCTION, {
   entry: {
     [BUNDLE_NAME]: './lib/index.js'
   },
-
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      }
+    ]
+  },
   output: {
     libraryTarget: 'var',
     library: 'FabricDashboardGridLayout'

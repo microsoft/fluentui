@@ -21,9 +21,7 @@ import {
   IDetailsListProps
 } from '../DetailsList/DetailsList.types';
 import { DetailsHeader, IDetailsHeader, SelectAllVisibility, IDetailsHeaderProps } from '../DetailsList/DetailsHeader';
-import { DetailsRowBase } from '../DetailsList/DetailsRow.base';
-import { DetailsRow } from '../DetailsList/DetailsRow';
-import { IDetailsRowProps } from '../DetailsList/DetailsRow.types';
+import { DetailsRow, IDetailsRowProps } from '../DetailsList/DetailsRow';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import {
   ISelectionZone,
@@ -85,7 +83,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   private _selectionZone = createRef<ISelectionZone>();
 
   private _selection: ISelection;
-  private _activeRows: { [key: string]: DetailsRowBase };
+  private _activeRows: { [key: string]: DetailsRow };
   private _dragDropHelper: DragDropHelper | null;
   private _initialFocusedIndex: number | undefined;
   private _pendingForceUpdate: boolean;
@@ -126,9 +124,9 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     this._selection.setItems(props.items as IObjectWithKey[], false);
     this._dragDropHelper = props.dragDropEvents
       ? new DragDropHelper({
-          selection: this._selection,
-          minimumPixelsForDrag: props.minimumPixelsForDrag
-        })
+        selection: this._selection,
+        minimumPixelsForDrag: props.minimumPixelsForDrag
+      })
       : null;
     this._initialFocusedIndex = props.initialFocusedIndex;
   }
@@ -224,7 +222,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   }
 
   public componentWillReceiveProps(newProps: IDetailsListProps): void {
-    const { checkboxVisibility, items, setKey, selectionMode, columns, viewport, compact } = this.props;
+    const { checkboxVisibility, items, setKey, selectionMode, columns, viewport } = this.props;
     const shouldResetSelection = newProps.setKey !== setKey || newProps.setKey === undefined;
     let shouldForceUpdates = false;
 
@@ -247,8 +245,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     if (
       newProps.checkboxVisibility !== checkboxVisibility ||
       newProps.columns !== columns ||
-      newProps.viewport!.width !== viewport!.width ||
-      newProps.compact !== compact
+      newProps.viewport!.width !== viewport!.width
     ) {
       shouldForceUpdates = true;
     }
@@ -349,7 +346,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
           className,
           layoutMode === DetailsListLayoutMode.fixedColumns && 'is-fixed',
           constrainMode === ConstrainMode.horizontalConstrained &&
-            'is-horizontalConstrained ' + styles.rootIsHorizontalConstrained,
+          'is-horizontalConstrained ' + styles.rootIsHorizontalConstrained,
           !!compact && 'ms-DetailsList--Compact ' + styles.rootCompact
         )}
         data-automationid="DetailsList"
@@ -435,16 +432,16 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                     getGroupHeight={getGroupHeight}
                   />
                 ) : (
-                  <List
-                    ref={this._list}
-                    role="presentation"
-                    items={enableShimmer && !items.length ? SHIMMER_ITEMS : items}
-                    onRenderCell={this._onRenderListCell(0)}
-                    usePageCache={usePageCache}
-                    onShouldVirtualize={onShouldVirtualize}
-                    {...additionalListProps}
-                  />
-                )}
+                    <List
+                      ref={this._list}
+                      role="presentation"
+                      items={enableShimmer && !items.length ? SHIMMER_ITEMS : items}
+                      onRenderCell={this._onRenderListCell(0)}
+                      usePageCache={usePageCache}
+                      onShouldVirtualize={onShouldVirtualize}
+                      {...additionalListProps}
+                    />
+                  )}
               </SelectionZone>
             </FocusZone>
           </div>
@@ -570,7 +567,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     return level;
   }
 
-  private _onRowDidMount(row: DetailsRowBase): void {
+  private _onRowDidMount(row: DetailsRow): void {
     const { item, itemIndex } = row.props;
     const itemKey = this._getItemKey(item, itemIndex);
     this._activeRows[itemKey] = row; // this is used for column auto resize
@@ -583,7 +580,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     }
   }
 
-  private _setFocusToRowIfPending(row: DetailsRowBase): void {
+  private _setFocusToRowIfPending(row: DetailsRow): void {
     const { itemIndex } = row.props;
     if (this._initialFocusedIndex !== undefined && itemIndex === this._initialFocusedIndex) {
       this._setFocusToRow(row);
@@ -591,7 +588,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     }
   }
 
-  private _setFocusToRow(row: DetailsRowBase, forceIntoFirstElement: boolean = false): void {
+  private _setFocusToRow(row: DetailsRow, forceIntoFirstElement: boolean = false): void {
     if (this._selectionZone.current) {
       this._selectionZone.current.ignoreNextFocus();
     }
@@ -600,7 +597,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     }, 0);
   }
 
-  private _onRowWillUnmount(row: DetailsRowBase): void {
+  private _onRowWillUnmount(row: DetailsRow): void {
     const { onRowWillUnmount } = this.props;
 
     const { item, itemIndex } = row.props;

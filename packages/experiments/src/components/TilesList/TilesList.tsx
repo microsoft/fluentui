@@ -279,8 +279,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
         <div
           key={grid.key}
           className={css('ms-TilesList-grid', {
-            [`${TilesListStyles.grid}`]: grid.mode !== TilesGridMode.none,
-            [`${TilesListStyles.shimmeredList}`]: isPlaceholder
+            [`${TilesListStyles.grid}`]: grid.mode !== TilesGridMode.none
           })}
           // tslint:disable-next-line:jsx-ban-props
           style={{

@@ -39,7 +39,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       aria-disabled={undefined}
       aria-expanded="false"
       aria-label="Basic dropdown example"
-      aria-labelledby="Basicdrop1-label"
+      aria-live="assertive"
       aria-owns={undefined}
       className="ms-Dropdown"
       data-is-focusable={true}
@@ -55,13 +55,9 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       <span
         aria-atomic={true}
         aria-label="Select an Option"
-        aria-live="off"
-        aria-posinset={undefined}
-        aria-selected={undefined}
-        aria-setsize={10}
         className="ms-Dropdown-title ms-Dropdown-titleIsPlaceHolder"
         id="Basicdrop1-option"
-        role="option"
+        role="listbox"
       >
         <span>
           Select an Option
@@ -251,7 +247,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       aria-disabled={true}
       aria-expanded="false"
       aria-label={undefined}
-      aria-labelledby="Dropdown3-label"
+      aria-live="off"
       aria-owns={undefined}
       className="ms-Dropdown is-disabled undefined"
       data-is-focusable={false}
@@ -267,13 +263,9 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       <span
         aria-atomic={true}
         aria-label="Option d"
-        aria-live="off"
-        aria-posinset={4}
-        aria-selected={true}
-        aria-setsize={7}
         className="ms-Dropdown-title"
         id="Dropdown3-option"
-        role="option"
+        role="listbox"
       >
         <span>
           Option d
@@ -338,7 +330,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       aria-disabled={undefined}
       aria-expanded="false"
       aria-label={undefined}
-      aria-labelledby="Dropdown4-label"
+      aria-live="assertive"
       aria-owns={undefined}
       className="ms-Dropdown"
       data-is-focusable={true}
@@ -354,13 +346,9 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       <span
         aria-atomic={true}
         aria-label="Select an Option"
-        aria-live="off"
-        aria-posinset={undefined}
-        aria-selected={undefined}
-        aria-setsize={7}
         className="ms-Dropdown-title ms-Dropdown-titleIsPlaceHolder"
         id="Dropdown4-option"
-        role="option"
+        role="listbox"
       >
         <span>
           Select an Option
@@ -420,12 +408,12 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       Multi-Select uncontrolled example:
     </label>
     <div
-      aria-activedescendant={undefined}
+      aria-activedescendant="Dropdown5-option"
       aria-describedby="Dropdown5-option"
       aria-disabled={undefined}
       aria-expanded="false"
       aria-label={undefined}
-      aria-labelledby="Dropdown5-label"
+      aria-live="assertive"
       aria-owns={undefined}
       className="ms-Dropdown"
       data-is-focusable={true}
@@ -435,19 +423,15 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
-      role={undefined}
+      role="listbox"
       tabIndex={0}
     >
       <span
         aria-atomic={true}
         aria-label="apple"
-        aria-live="off"
-        aria-posinset={undefined}
-        aria-selected={undefined}
-        aria-setsize={undefined}
         className="ms-Dropdown-title"
         id="Dropdown5-option"
-        role={undefined}
+        role="listbox"
       >
         <span>
           apple, banana, orange
@@ -507,12 +491,12 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       Multi-Select controlled example:
     </label>
     <div
-      aria-activedescendant={undefined}
+      aria-activedescendant="Dropdown6-option"
       aria-describedby="Dropdown6-option"
       aria-disabled={undefined}
       aria-expanded="false"
       aria-label={undefined}
-      aria-labelledby="Dropdown6-label"
+      aria-live="assertive"
       aria-owns={undefined}
       className="ms-Dropdown"
       data-is-focusable={true}
@@ -522,19 +506,15 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
-      role={undefined}
+      role="listbox"
       tabIndex={0}
     >
       <span
         aria-atomic={true}
         aria-label="Select options"
-        aria-live="off"
-        aria-posinset={undefined}
-        aria-selected={undefined}
-        aria-setsize={undefined}
         className="ms-Dropdown-title ms-Dropdown-titleIsPlaceHolder"
         id="Dropdown6-option"
-        role={undefined}
+        role="listbox"
       >
         <span>
           Select options
@@ -594,12 +574,12 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       Disabled uncontrolled example with defaultSelectedKey:
     </label>
     <div
-      aria-activedescendant={undefined}
+      aria-activedescendant="Dropdown7-option"
       aria-describedby="Dropdown7-option"
       aria-disabled={true}
       aria-expanded="false"
       aria-label={undefined}
-      aria-labelledby="Dropdown7-label"
+      aria-live="off"
       aria-owns={undefined}
       className="ms-Dropdown is-disabled undefined"
       data-is-focusable={false}
@@ -609,19 +589,15 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
-      role={undefined}
+      role="listbox"
       tabIndex={-1}
     >
       <span
         aria-atomic={true}
         aria-label="Option g"
-        aria-live="off"
-        aria-posinset={undefined}
-        aria-selected={undefined}
-        aria-setsize={undefined}
         className="ms-Dropdown-title"
         id="Dropdown7-option"
-        role={undefined}
+        role="listbox"
       >
         <span>
           Option g, Option f

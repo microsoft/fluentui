@@ -266,10 +266,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
       this._focusOnUpdate = focusOnNavigatedDay;
       return;
     }
-
-    const monthPickerOnly = !this.props.showMonthPickerAsOverlay && !this.props.isDayPickerVisible;
-
-    if (monthPickerOnly) {
+    if (!this.state.isDayPickerVisible) {
       this._onSelectDate(date);
     }
 

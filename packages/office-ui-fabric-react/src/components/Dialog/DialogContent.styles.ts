@@ -25,8 +25,7 @@ export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles
       isLargeHeader && classNames.contentLgHeader,
       isClose && classNames.close,
       {
-        flexGrow: 1,
-        overflowY: 'auto' // required for IE11
+        flexGrow: 1
       },
       className
     ],

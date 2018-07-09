@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { Calendar, ICalendarStrings } from '../Calendar';
-import { DatePicker } from './DatePicker';
 import { DatePickerBase } from './DatePicker.base';
 import { IDatePickerStrings } from './DatePicker.types';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
@@ -10,7 +9,7 @@ import { shallow, mount, ReactWrapper } from 'enzyme';
 describe('DatePicker', () => {
   it('renders default DatePicker correctly', () => {
     // This will only render the input. Calendar component has its own snapshot.
-    const component = renderer.create(<DatePicker />);
+    const component = renderer.create(<DatePickerBase />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
