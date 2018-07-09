@@ -305,7 +305,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
           this.forceUpdate();
         }
 
-        document.addEventListener('keydown', this._onKeyDown, true);
+        this._events.on(document, 'keydown', this._onKeyDown, true);
 
         // We dont want to the user to immediatley trigger the coachmark when it's opened
         this._async.setTimeout(() => {
@@ -327,7 +327,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   }
 
   public componentWillUnmount(): void {
-    document.removeEventListener('keydown', this._onKeyDown);
+    this._events.off(document, 'keydown', this._onKeyDown, true);
   }
 
   private _onKeyDown = (e: any): void => {
@@ -484,7 +484,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
         (): void => {
           // Need setTimeout to trigger narrator
           this._async.setTimeout(() => {
-            if (this.props.teachingBubbleRef && this.props.teachingBubbleRef) {
+            if (this.props.teachingBubbleRef) {
               this.props.teachingBubbleRef.focus();
             }
           }, 500);
