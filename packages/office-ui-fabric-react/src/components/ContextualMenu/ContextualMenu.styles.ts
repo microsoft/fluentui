@@ -2,11 +2,12 @@ import { IContextualMenuStyleProps, IContextualMenuStyles } from './ContextualMe
 import { getGlobalClassNames, FontWeights } from '../../Styling';
 
 const GlobalClassNames = {
-  root: 'ms-ContextualMenu is-open',
+  root: 'ms-ContextualMenu',
   container: 'ms-ContextualMenu-container',
-  list: 'ms-ContextualMenu-list is-open',
+  list: 'ms-ContextualMenu-list',
   header: 'ms-ContextualMenu-header',
-  title: 'ms-ContextualMenu-title'
+  title: 'ms-ContextualMenu-title',
+  isopen: 'is-open'
 };
 
 export const getStyles = (props: IContextualMenuStyleProps): IContextualMenuStyles => {
@@ -20,6 +21,7 @@ export const getStyles = (props: IContextualMenuStyleProps): IContextualMenuStyl
   return {
     root: [
       classNames.root,
+      classNames.isopen,
       {
         backgroundColor: semanticColors.bodyBackground,
         minWidth: '180px'
@@ -36,6 +38,7 @@ export const getStyles = (props: IContextualMenuStyleProps): IContextualMenuStyl
     ],
     list: [
       classNames.list,
+      classNames.isopen,
       {
         listStyleType: 'none',
         margin: '0',
