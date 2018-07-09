@@ -10,18 +10,19 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection, IFocusZoneProps, FocusZoneTabbableElements } from '../../FocusZone';
 import { IMenuItemClassNames, getContextualMenuClassNames, getItemClassNames } from './ContextualMenu.classNames';
 import {
+  assign,
   BaseComponent,
   classNamesFunction,
-  IPoint,
-  assign,
-  getId,
-  getRTL,
-  KeyCodes,
-  getDocument,
-  getWindow,
-  getFirstFocusable,
-  getLastFocusable,
   css,
+  getDocument,
+  getFirstFocusable,
+  getId,
+  getLastFocusable,
+  getRTL,
+  getWindow,
+  IClassNames,
+  IPoint,
+  KeyCodes,
   shouldWrapFocus
 } from '../../Utilities';
 import { hasSubmenu, getIsChecked, isItemDisabled } from '../../utilities/contextualMenu/index';
@@ -98,10 +99,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
   private _adjustedFocusZoneProps: IFocusZoneProps;
 
-  private _classNames = getClassNames(this.props.styles, {
-    theme: this.props.theme!,
-    className: this.props.className
-  });
+  private _classNames: IClassNames<IContextualMenuStyles>;
 
   constructor(props: IContextualMenuProps) {
     super(props);
@@ -186,6 +184,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
       items,
       labelElementId,
       id,
+      className,
       beakWidth,
       directionalHint,
       directionalHintForRTL,
@@ -201,10 +200,17 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
       shouldFocusOnMount,
       shouldFocusOnContainer,
       title,
+      styles,
+      theme,
       calloutProps,
       onRenderSubMenu = this._onRenderSubMenu,
       focusZoneProps
     } = this.props;
+
+    this._classNames = getClassNames(styles, {
+      theme: theme!,
+      className: className
+    });
 
     const hasIcons = itemsHaveIcons(items);
 
