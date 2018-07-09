@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "SearchBox: Move background color styling from searchbox input to searchbox root. Fixes #5477.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "v-jojanz@microsoft.com"
+}
