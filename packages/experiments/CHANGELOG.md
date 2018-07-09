@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 06 Jul 2018 10:23:46 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Jul 2018 10:27:16 GMT and should not be manually modified.
+
+## 6.13.3
+Mon, 09 Jul 2018 10:27:16 GMT
+
+### Patches
+
+- changing imports for charts in react DashboardCard to point to correct package
 
 ## 6.13.2
 Fri, 06 Jul 2018 10:23:46 GMT
