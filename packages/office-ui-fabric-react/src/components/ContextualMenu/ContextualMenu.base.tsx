@@ -1,25 +1,28 @@
 import * as React from 'react';
-import { IContextualMenuProps, IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.types';
+import {
+  IContextualMenuProps,
+  IContextualMenuItem,
+  ContextualMenuItemType,
+  IContextualMenuStyleProps,
+  IContextualMenuStyles
+} from './ContextualMenu.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection, IFocusZoneProps, FocusZoneTabbableElements } from '../../FocusZone';
+import { IMenuItemClassNames, getContextualMenuClassNames, getItemClassNames } from './ContextualMenu.classNames';
 import {
-  IMenuItemClassNames,
-  IContextualMenuClassNames,
-  getContextualMenuClassNames,
-  getItemClassNames
-} from './ContextualMenu.classNames';
-import {
-  BaseComponent,
-  IPoint,
   assign,
-  getId,
-  getRTL,
-  KeyCodes,
-  getDocument,
-  getWindow,
-  getFirstFocusable,
-  getLastFocusable,
+  BaseComponent,
+  classNamesFunction,
   css,
+  getDocument,
+  getFirstFocusable,
+  getId,
+  getLastFocusable,
+  getRTL,
+  getWindow,
+  IClassNames,
+  IPoint,
+  KeyCodes,
   shouldWrapFocus
 } from '../../Utilities';
 import { hasSubmenu, getIsChecked, isItemDisabled } from '../../utilities/contextualMenu/index';
@@ -32,6 +35,8 @@ import {
   ContextualMenuButton,
   ContextualMenuAnchor
 } from './ContextualMenuItemWrapper/index';
+
+const getClassNames = classNamesFunction<IContextualMenuStyleProps, IContextualMenuStyles>();
 
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;
@@ -88,12 +93,13 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   private _enterTimerId: number | undefined;
   private _targetWindow: Window;
   private _target: Element | MouseEvent | IPoint | null;
-  private _classNames: IContextualMenuClassNames;
   private _isScrollIdle: boolean;
   private _scrollIdleTimeoutId: number | undefined;
   private _processingExpandCollapseKeyOnly: boolean;
 
   private _adjustedFocusZoneProps: IFocusZoneProps;
+
+  private _classNames: IClassNames<IContextualMenuStyles>;
 
   constructor(props: IContextualMenuProps) {
     super(props);
@@ -175,10 +181,10 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     let { isBeakVisible } = this.props;
 
     const {
-      className,
       items,
       labelElementId,
       id,
+      className,
       beakWidth,
       directionalHint,
       directionalHintForRTL,
@@ -194,14 +200,17 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
       shouldFocusOnMount,
       shouldFocusOnContainer,
       title,
+      styles,
       theme,
       calloutProps,
       onRenderSubMenu = this._onRenderSubMenu,
       focusZoneProps
     } = this.props;
 
-    const menuClassNames = this.props.getMenuClassNames || getContextualMenuClassNames;
-    this._classNames = menuClassNames(theme!, className);
+    this._classNames = getClassNames(styles, {
+      theme: theme!,
+      className: className
+    });
 
     const hasIcons = itemsHaveIcons(items);
 
@@ -259,6 +268,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
           totalItemCount += itemCount;
         }
       }
+
       return (
         <Callout
           {...calloutProps}
@@ -360,7 +370,6 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
   private _onRenderSubMenu(subMenuProps: IContextualMenuProps) {
     return <ContextualMenu {...subMenuProps} />;
-    // return <ContextualMenuBase {...subMenuProps} />;
   }
 
   private _renderMenuItem(
@@ -376,8 +385,8 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     // We only send a dividerClassName when the item to be rendered is a divider. For all other cases, the default divider style is used.
     const dividerClassName = item.itemType === ContextualMenuItemType.Divider ? item.className : undefined;
     const subMenuIconClassName = item.submenuIconProps ? item.submenuIconProps.className : '';
-    const getClassNames = item.getItemClassNames || getItemClassNames;
-    const itemClassNames = getClassNames(
+    const getTheItemClassNames = item.getItemClassNames || getItemClassNames;
+    const itemClassNames = getTheItemClassNames(
       this.props.theme!,
       isItemDisabled(item),
       this.state.expandedMenuItemKey === item.key,
