@@ -2,6 +2,34 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "6.5.0",
+      "tag": "@uifabric/styling_v6.5.0",
+      "date": "Mon, 02 Jul 2018 20:41:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "8448853edafc8f7276f7471b6aa1c0852b5c7d25",
+            "comment": "New selectors for high contrast white and black modes."
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.4.0",
+      "tag": "@uifabric/styling_v6.4.0",
+      "date": "Fri, 29 Jun 2018 10:24:05 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "c4929c0f03cf82620f748843600d3755821a44c7",
+            "comment": "Add neutralSecondaryAlt color."
+          }
+        ]
+      }
+    },
+    {
       "version": "6.3.0",
       "tag": "@uifabric/styling_v6.3.0",
       "date": "Wed, 20 Jun 2018 10:25:55 GMT",

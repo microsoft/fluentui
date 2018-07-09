@@ -17,11 +17,15 @@ import {
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { FacepileButton } from './FacepileButton';
 import { Icon } from '../../Icon';
-import { Persona, IPersonaStyleProps, IPersonaStyles } from '../../Persona';
+import { Persona, IPersonaStyles } from '../../Persona';
 import { PersonaCoin, PersonaSize, PersonaInitialsColor } from '../../PersonaCoin';
 
 const getClassNames = classNamesFunction<IFacepileStyleProps, IFacepileStyles>();
 
+/**
+ * FacePile with no default styles.
+ * [Use the `styles` API to add your own styles.](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Component-Styling)
+ */
 @customizable('Facepile', ['theme'])
 export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
   public static defaultProps: IFacepileProps = {
@@ -77,10 +81,11 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
           <FocusZone
             ariaDescribedBy={ariaDescription && this._ariaDescriptionId}
             role="listbox"
-            className={_classNames.members}
             direction={FocusZoneDirection.horizontal}
           >
-            {this._onRenderVisiblePersonas(personasPrimary, personasOverflow.length === 0 && personas.length === 1)}
+            <ul className={_classNames.members}>
+              {this._onRenderVisiblePersonas(personasPrimary, personasOverflow.length === 0 && personas.length === 1)}
+            </ul>
           </FocusZone>
           {overflowButtonProps ? this._getOverflowElement(personasOverflow) : null}
         </div>
@@ -109,19 +114,23 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
       const personaControl: JSX.Element = singlePersona
         ? this._getPersonaControl(persona)
         : this._getPersonaCoinControl(persona);
-      return persona.onClick
-        ? this._getElementWithOnClickEvent(personaControl, persona, index)
-        : this._getElementWithoutOnClickEvent(personaControl, persona, index);
+      return (
+        <li key={`${singlePersona ? 'persona' : 'personaCoin'}-${index}`} className={this._classNames.member}>
+          {persona.onClick
+            ? this._getElementWithOnClickEvent(personaControl, persona, index)
+            : this._getElementWithoutOnClickEvent(personaControl, persona, index)}
+        </li>
+      );
     });
   }
 
   private _getPersonaControl(persona: IFacepilePersona): JSX.Element {
     const { getPersonaProps, personaSize } = this.props;
-    const personaStyles = (props: IPersonaStyleProps): Partial<IPersonaStyles> => ({
+    const personaStyles: Partial<IPersonaStyles> = {
       details: {
         flex: '1 0 auto'
       }
-    });
+    };
 
     return (
       <Persona

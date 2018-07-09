@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IStyle, IFontStyles, IPalette } from '../../Styling';
-import { TViewProps, createComponent, IStyleProps } from '../../utilities/createComponent';
+import { IViewProps, createComponent, IStyledProps } from '../../Foundation';
 import { IFontTypes, IFontFamilies, IFontSizes, IFontWeights } from './theming/ITypography';
 
 // Styles for the component
@@ -30,7 +30,7 @@ export interface ITextProps {
   shrink?: boolean;
 }
 
-export type ITextViewProps = TViewProps<ITextProps, ITextStyles>;
+export type ITextViewProps = IViewProps<ITextProps, ITextStyles>;
 
 const TextView = (props: ITextViewProps) => {
   const {
@@ -50,7 +50,7 @@ const TextView = (props: ITextViewProps) => {
   return <RootType {...rest} className={props.styles.root} />;
 };
 
-const styles = (props: IStyleProps<ITextProps, ITextStyles>): ITextStyles => {
+const styles = (props: IStyledProps<ITextProps>): ITextStyles => {
   const { block, theme, wrap, grow, shrink, type, family, weight, size, style, color } = props;
 
   const { palette, fonts, /* semanticColors, isInverted, */ typography } = theme;

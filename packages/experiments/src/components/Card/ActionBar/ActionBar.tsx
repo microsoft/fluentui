@@ -87,9 +87,7 @@ export class ActionBar extends React.Component<IActionBarProps, {}> {
     overflowItems.forEach((action: IAction, i: number) => {
       items.push({ key: i.toString(), name: action.title, onClick: action.action });
     });
-    return (
-      <DefaultButton split={true} menuProps={{ items: items! }} onClick={this._onClick} styles={overflowButtonStyles} />
-    );
+    return <DefaultButton menuProps={{ items: items! }} onClick={this._onClick} styles={overflowButtonStyles} />;
   };
 
   private _renderButton = (action: IOverflowSetItemProps) => {

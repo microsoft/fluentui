@@ -9,7 +9,6 @@ import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { CollapseAllVisibility } from '../../GroupedList';
 import { DetailsRowCheck } from './DetailsRowCheck';
 import { ITooltipHostProps } from '../../Tooltip';
-import * as checkStylesModule from './DetailsRowCheck.scss';
 import { IViewport } from '../../utilities/decorators/withViewport';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
 import * as stylesImport from './DetailsHeader.scss';
@@ -18,7 +17,6 @@ import { DragDropHelper } from './../../utilities/dragdrop';
 import { DetailsColumn } from './../../components/DetailsList/DetailsColumn';
 
 const styles: any = stylesImport;
-const checkStyles: any = checkStylesModule;
 
 const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
 const MOUSEMOVE_PRIMARY_BUTTON = 1; // for mouse move event we are using ev.buttons property, 1 means left button
@@ -169,7 +167,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     if (this.props !== prevProps && this._onDropIndexInfo.sourceIndex >= 0 && this._onDropIndexInfo.targetIndex >= 0) {
       if (
         prevProps.columns[this._onDropIndexInfo.sourceIndex].key ===
-        this.props.columns[this._onDropIndexInfo.targetIndex - 1].key
+        this.props.columns[this._onDropIndexInfo.targetIndex].key
       ) {
         this._onDropIndexInfo = {
           sourceIndex: Number.MIN_SAFE_INTEGER,
@@ -257,9 +255,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                   'ms-DetailsHeader-cell',
                   'ms-DetailsHeader-cellIsCheck',
                   styles.cell,
-                  styles.cellIsCheck,
-                  checkStyles.owner,
-                  isAllSelected && checkStyles.isSelected
+                  styles.cellIsCheck
                 )}
                 aria-labelledby={`${this._id}-check`}
                 onClick={this._onSelectAllClicked}
@@ -282,6 +278,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                         selected={isAllSelected}
                         anySelected={false}
                         canSelect={!isCheckboxHidden}
+                        className={styles.check}
                       />
                     )
                   },
@@ -330,7 +327,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
               dragDropHelper={this._dragDropHelper}
               onColumnClick={onColumnClick}
               onColumnContextMenu={onColumnContextMenu}
-              isDropped={this._onDropIndexInfo.targetIndex === columnIndex + 1}
+              isDropped={this._onDropIndexInfo.targetIndex === columnIndex}
             />,
             column.isResizable && this._renderColumnSizer(columnIndex)
           ];
@@ -390,21 +387,22 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 
   private _onDrop(item?: any, event?: DragEvent): void {
     const draggedColumnIndex = this._draggedColumnIndex;
-    const dropIndex = this._currentDropHintIndex!;
+    // Target index will not get changed if draggeditem is after target item.
+    const targetIndex =
+      draggedColumnIndex > this._currentDropHintIndex! ? this._currentDropHintIndex! : this._currentDropHintIndex! - 1;
     let isValidDrop = false;
     if (this._draggedColumnIndex >= 0 && event! instanceof DragEvent) {
       event!.stopPropagation();
       if (this._isValidCurrentDropHintIndex()) {
         isValidDrop = true;
         this._onDropIndexInfo.sourceIndex = draggedColumnIndex;
-        // Target index will not get changed if draggeditem is before target item.
-        this._onDropIndexInfo.targetIndex = dropIndex + (draggedColumnIndex > dropIndex! ? 1 : 0);
+        this._onDropIndexInfo.targetIndex = targetIndex;
       }
       this._resetDropHints();
       this._dropHintDetails = {};
       this._draggedColumnIndex = -1;
       if (isValidDrop) {
-        this.props.columnReorderOptions!.handleColumnReorder(draggedColumnIndex, dropIndex);
+        this.props.columnReorderOptions!.handleColumnReorder(draggedColumnIndex, targetIndex);
       }
     }
   }
