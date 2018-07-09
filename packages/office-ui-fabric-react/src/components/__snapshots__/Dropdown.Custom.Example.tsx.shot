@@ -39,13 +39,14 @@ exports[`Component Examples renders Dropdown.Custom.Example.tsx correctly 1`] = 
       aria-disabled={undefined}
       aria-expanded="false"
       aria-label="Custom dropdown example"
-      aria-live="assertive"
+      aria-labelledby="Customdrop1-label"
       aria-owns={undefined}
       className="ms-Dropdown"
       data-is-focusable={true}
       id="Customdrop1"
       onBlur={[Function]}
       onClick={[Function]}
+      onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
       role="listbox"
@@ -54,9 +55,13 @@ exports[`Component Examples renders Dropdown.Custom.Example.tsx correctly 1`] = 
       <span
         aria-atomic={true}
         aria-label="Select an Option"
+        aria-live="off"
+        aria-posinset={undefined}
+        aria-selected={undefined}
+        aria-setsize={10}
         className="ms-Dropdown-title ms-Dropdown-titleIsPlaceHolder"
         id="Customdrop1-option"
-        role="listbox"
+        role="option"
       >
         <div
           className="dropdownExample-placeholder"

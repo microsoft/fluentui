@@ -29,6 +29,10 @@ $isPaddedMargin: 24px;
       visibility: hidden;
     }
   }
+
+  &:hover .check {
+    opacity: 1;
+  }
 }
 
 .cellWrapperPadded {
@@ -58,10 +62,13 @@ $isPaddedMargin: 24px;
     margin: 0;
     display: inline-flex;
     align-items: center;
+
+    &.isSelected {
+      opacity: 1;
+    }
   }
 
   &.cellIsActionable {
-
     &:hover {
       color: $bodyTextColor;
       background: $listHeaderBackgroundHoveredColor;
@@ -78,7 +85,7 @@ $isPaddedMargin: 24px;
 
   &:hover .gripperBarVerticalStyle {
     display: block;
-   }
+  }
 }
 
 .gripperBarVerticalStyle {
@@ -118,7 +125,7 @@ $isPaddedMargin: 24px;
   &:hover:after,
   &.cellIsResizing:after {
     opacity: 1;
-    transition: opacity .3s linear;
+    transition: opacity 0.3s linear;
   }
 
   &.cellIsResizing:after {
@@ -135,12 +142,11 @@ $isPaddedMargin: 24px;
   @include margin-left(-16px);
 }
 
-
 .collapseButton {
   text-align: center;
   transform: rotate(-180deg);
   transform-origin: 50% 50%;
-  transition: transform .1s linear;
+  transition: transform 0.1s linear;
   width: 20px;
   outline: 0;
 
@@ -227,16 +233,16 @@ $isPaddedMargin: 24px;
 }
 
 .borderWhileDragging {
-  border-style : solid;
+  border-style: solid;
   border-width: 1px;
-  border-color:$ms-color-themePrimary;
+  border-color: $ms-color-themePrimary;
   -webkit-animation: fadeOut 0.2s forwards;
   animation: fadeOut 0.2s forwards;
 }
 
 .dropHintCircleStyle {
-  display:inline-block;
-  visibility:hidden;
+  display: inline-block;
+  visibility: hidden;
   position: absolute;
   bottom: 0;
   top: -27px;
@@ -244,16 +250,16 @@ $isPaddedMargin: 24px;
   width: 9px;
   border-radius: 50%;
   @include ms-margin-left(-5px);
-  top:34px;
+  top: 34px;
   overflow: visible;
   z-index: 10;
-  border:1px solid $ms-color-themePrimary;
+  border: 1px solid $ms-color-themePrimary;
   background: $ms-color-white;
 }
 
-.dropHintLineStyle{
+.dropHintLineStyle {
   display: inline-block;
-  visibility:hidden;
+  visibility: hidden;
   position: absolute;
   bottom: 0;
   top: -3px;
@@ -261,30 +267,38 @@ $isPaddedMargin: 24px;
   height: 37px;
   width: 1px;
   background: $ms-color-themePrimary;
-  z-index:10;
+  z-index: 10;
 }
 
-.dropHintStyle{
+.dropHintStyle {
   display: inline-block;
   position: absolute;
 }
 
 .borderAfterDropping {
-  border-style : solid;
+  border-style: solid;
   border-width: 1px;
-  border-color:$ms-color-themePrimary;
+  border-color: $ms-color-themePrimary;
   -webkit-animation: fadeOut 1.5s forwards;
   animation: fadeOut 1.5s forwards;
   @include ms-left(-1px);
   line-height: 31px;
 }
 
-  @-webkit-keyframes fadeOut {
-    from {border-color:$ms-color-themePrimary; }
-    to {border-color:white }
+@-webkit-keyframes fadeOut {
+  from {
+    border-color: $ms-color-themePrimary;
   }
+  to {
+    border-color: white;
+  }
+}
 
-  @keyframes fadeOut {
-    from {border-color:$ms-color-themePrimary; }
-    to {border-color:white }
+@keyframes fadeOut {
+  from {
+    border-color: $ms-color-themePrimary;
   }
+  to {
+    border-color: white;
+  }
+}
