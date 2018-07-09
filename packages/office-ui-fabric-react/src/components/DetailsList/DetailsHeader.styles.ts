@@ -9,7 +9,7 @@ import {
   hiddenContentStyle,
   keyframes
 } from '../../Styling';
-import { IsFocusVisibleClassName } from '../..';
+import { IsFocusVisibleClassName } from '../../Utilities';
 
 const GlobalClassNames = {
   tooltipHost: 'ms-TooltipHost',

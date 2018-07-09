@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { IDetailsHeader, DetailsHeader } from './DetailsHeader';
+import { DetailsHeader } from './DetailsHeader';
+import { IDetailsHeader } from './DetailsHeader.types';
 import { DetailsListLayoutMode, IColumn } from './DetailsList.types';
 import { Selection, SelectionMode } from '../../utilities/selection/index';
 import { EventGroup, createRef } from '../../Utilities';
@@ -51,6 +52,7 @@ describe('DetailsHeader', () => {
       />
     );
 
+    const headerBase = wrapper.find('DetailsHeaderBase').instance();
     const sizerElement = wrapper.find('[data-sizer-index=0]').getDOMNode();
     const header: any = headerRef.current;
 
@@ -67,11 +69,11 @@ describe('DetailsHeader', () => {
 
     // Validate we go into resize mode.
     expect(sizerElement.classList.contains('is-resizing')).toBe(true);
-    expect(!!wrapper.state().isSizing).toBe(false);
+    expect(!!headerBase.state.isSizing).toBe(false);
 
     // Mouse move 1 pixel to the right to get into sizing mode.
     wrapper.simulate('mousemove', { clientX: 1 });
-    expect(!!wrapper.state().isSizing).toBe(true);
+    expect(!!headerBase.state.isSizing).toBe(true);
 
     // The header is 200; move mouse 100 to the right, the header should be 300.
     header._onSizerMouseMove({ clientX: 100 });
@@ -83,6 +85,6 @@ describe('DetailsHeader', () => {
 
     // Complete sizing.
     header._onSizerMouseUp();
-    expect(!!wrapper.state().isSizing).toBe(false);
+    expect(!!headerBase.state.isSizing).toBe(false);
   });
 });

@@ -1,14 +1,13 @@
 import * as React from 'react';
 import { DetailsList } from './DetailsList';
 import { ISelection, SelectionMode, ISelectionZoneProps } from '../../utilities/selection/index';
-import { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import { IRenderFunction } from '../../Utilities';
 import { IDragDropEvents, IDragDropContext } from './../../utilities/dragdrop/index';
 import { IGroup, IGroupRenderProps } from '../GroupedList/index';
 import { IDetailsRowProps } from '../DetailsList/DetailsRow';
 import { IDetailsHeaderProps } from './DetailsHeader';
 import { IWithViewportProps, IViewport } from '../../utilities/decorators/withViewport';
 import { IList, IListProps, ScrollToMode } from '../List/index';
-import { ITheme } from '../..';
 
 export { IDetailsHeaderProps };
 
@@ -43,10 +42,6 @@ export interface IDetailsList extends IList {
 }
 
 export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewportProps {
-  theme?: ITheme;
-
-  styles?: IStyleFunctionOrObject<IDetailsListStyleProps, IDetailsListStyles>;
-
   /**
    * Optional callback to access the IDetailsList interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -506,7 +501,3 @@ export enum CheckboxVisibility {
    */
   hidden = 2
 }
-
-export type IDetailsListStyleProps = Required<Pick<IDetailsListProps, 'theme'>> & {};
-
-export interface IDetailsListStyles {}
