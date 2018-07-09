@@ -82,7 +82,7 @@ export interface IDashboardGridLayoutProps {
   /**
    * Describes the layout of the cards to display for every breakpoint
    */
-  layout: DashboardGridBreakpointLayouts;
+  layout?: DashboardGridBreakpointLayouts;
 
   /**
    * Drag api to allow custom drag drops
