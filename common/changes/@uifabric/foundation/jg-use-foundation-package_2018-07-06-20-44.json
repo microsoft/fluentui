@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/foundation",
+      "comment": "Improve typing consistency.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/foundation",
+  "email": "jagore@microsoft.com"
+}

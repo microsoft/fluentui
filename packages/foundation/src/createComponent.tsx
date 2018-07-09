@@ -4,16 +4,19 @@ export interface IThemeProps<TTheme> {
   theme: TTheme;
 }
 
+export type IStyledProps<TProps, TTheme> = TProps & IThemeProps<TTheme>;
+
 // Impose minimal structure and functional shape required for createComponent while allowing
 //  consumers to define the shape of theming and styling.
-export type IStyleFunction<TTheme, TStylesProps extends IThemeProps<TTheme>, TStyles> = (
+export type IStyleFunction<TStylesProps extends IThemeProps<TTheme>, TStyles, TTheme> = (
   props: TStylesProps
 ) => TStyles;
 
 export type IStateProps<TProps> = TProps & { view: (props: TProps) => JSX.Element };
-export type IStylesProp<TTheme, TProps extends IThemeProps<TTheme>, TStyles> =
-  | IStyleFunction<TTheme, TProps, TStyles>
+export type IStylesProp<TProps extends IThemeProps<TTheme>, TStyles, TTheme> =
+  | IStyleFunction<TProps, TStyles, TTheme>
   | TStyles;
+
 export type IViewProps<TProps, TStylesSet> = TProps & { styles: TStylesSet };
 
 export interface IAugmentations<TUserProps extends IThemeProps<TTheme>, TStyles, TStyleSet, TTheme> {
@@ -23,11 +26,11 @@ export interface IAugmentations<TUserProps extends IThemeProps<TTheme>, TStyles,
 export interface IComponentOptions<TUserProps, TStyles, TStyleSet, TTheme> {
   scope: string;
   state?: React.ComponentType<IStateProps<TUserProps>>;
-  styles: IStylesProp<TTheme, TUserProps & IThemeProps<TTheme>, TStyles>;
+  styles: IStylesProp<TUserProps & IThemeProps<TTheme>, TStyles, TTheme>;
   view: React.ComponentType<IViewProps<TUserProps, TStyleSet>>;
 }
 
-export interface IStylingProviders<TTheme, TStyles, TStyleSet> {
+export interface IStylingProviders<TStyles, TStyleSet, TTheme> {
   getTheme: () => TTheme;
   mergeStyleSets: (styles: TStyles) => TStyleSet;
 }
@@ -40,13 +43,13 @@ const _augmentations: IAugmentations<any, any, any, any> = {};
 // Helper function to tie them together.
 export function createComponentWithProviders<TProps, TStyles, TStyleSet, TTheme>(
   options: IComponentOptions<TProps, TStyles, TStyleSet, TTheme>,
-  providers: IStylingProviders<TTheme, TStyles, TStyleSet>
+  providers: IStylingProviders<TStyles, TStyleSet, TTheme>
 ): React.StatelessComponent<TProps> {
   const result: React.StatelessComponent<TProps> = (userProps: TProps) => {
     const augmented: IComponentOptions<TProps, TStyles, TStyleSet, TTheme> = _augmentations[options.scope] || {};
     const StateComponent = augmented.state || options.state;
     const ViewComponent = augmented.view || options.view;
-    const getStyles: IStylesProp<TTheme, TProps & IThemeProps<TTheme>, TStyles> = augmented.styles || options.styles;
+    const getStyles: IStylesProp<TProps & IThemeProps<TTheme>, TStyles, TTheme> = augmented.styles || options.styles;
     const theme = providers.getTheme();
 
     ViewComponent.displayName = ViewComponent.displayName || options.scope + 'View';
@@ -59,7 +62,7 @@ export function createComponentWithProviders<TProps, TStyles, TStyleSet, TTheme>
         //       workaround: Object.assign usage
         // styles = (getStyles as IStyleFunction<TTheme, TProps & IThemeProps<TTheme>, TStyles>)({ theme, ...(processedProps as {}) });
         const mergedProps: TProps & IThemeProps<TTheme> = Object.assign({}, { theme }, userProps);
-        styles = (getStyles as IStyleFunction<TTheme, TProps & IThemeProps<TTheme>, TStyles>)(mergedProps);
+        styles = (getStyles as IStyleFunction<TProps & IThemeProps<TTheme>, TStyles, TTheme>)(mergedProps);
       } else {
         styles = getStyles as TStyles;
       }
