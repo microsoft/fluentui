@@ -7,7 +7,8 @@ import { DetailsList } from './DetailsList';
 import { IDetailsRowProps } from './DetailsRow';
 import { Shimmer, ShimmerElementsGroup, ShimmerElementType, IShimmerElement } from '../Shimmer';
 
-import * as rowStyles from './DetailsRow.scss';
+import { getClassNames as getRowClassNames } from './DetailsRow.classNames';
+
 import * as listStyles from './DetailsList.scss';
 
 export interface IShimmeredDetailsListProps extends IDetailsListProps {
@@ -55,15 +56,20 @@ export class ShimmeredDetailsList extends BaseComponent<IShimmeredDetailsListPro
 
   private _onRenderShimmerPlaceholder = (index: number, rowProps: IDetailsRowProps): React.ReactNode => {
     const { onRenderCustomPlaceholder, compact } = this.props;
-    const { selectionMode, checkboxVisibility } = rowProps;
+    const { selectionMode, checkboxVisibility, theme, styles } = rowProps;
     const showCheckbox = selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden;
+    const rowClassNames = getRowClassNames(styles, {
+      theme: theme!
+    });
 
     const placeholderElements: React.ReactNode = onRenderCustomPlaceholder
       ? onRenderCustomPlaceholder()
       : this._renderDefaultShimmerPlaceholder(rowProps);
 
     return (
-      <div className={css(showCheckbox && rowStyles.shimmerLeftBorder, !compact && rowStyles.shimmerBottomBorder)}>
+      <div
+        className={css(showCheckbox && rowClassNames.shimmerLeftBorder, !compact && rowClassNames.shimmerBottomBorder)}
+      >
         <Shimmer customElementsGroup={placeholderElements} />
       </div>
     );

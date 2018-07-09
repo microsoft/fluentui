@@ -59,7 +59,57 @@ exports[`DetailsList renders List correctly 1`] = `
                 aria-checked={undefined}
                 aria-describedby="header0-checkTooltip"
                 aria-label={undefined}
-                className="ms-DetailsRow-check ms-DetailsRow-check--isHeader undefined"
+                className=
+                    ms-DetailsRow-check
+
+                    {
+                      align-items: center;
+                      background-color: transparent;
+                      background: none;
+                      border: none;
+                      box-sizing: border-box;
+                      cursor: default;
+                      display: flex;
+                      height: 40px;
+                      justify-content: center;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
+                      opacity: 0;
+                      outline: transparent;
+                      padding-bottom: 0px;
+                      padding-left: 0px;
+                      padding-right: 0px;
+                      padding-top: 0px;
+                      position: relative;
+                      vertical-align: top;
+                      width: 40px;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #666666;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    &:hover {
+                      opacity: 1;
+                    }
+                    &.isHeader {
+                      height: 32px;
+                    }
+                    .ms-Fabric--isFocusVisible & {
+                      opacity: 1;
+                    }
+
                 data-automationid="DetailsRowCheck"
                 data-is-focusable={true}
                 data-selection-toggle={true}
@@ -88,7 +138,7 @@ exports[`DetailsList renders List correctly 1`] = `
                         right: 1px;
                         top: 1px;
                       }
-                      .checkHost:hover &, .checkHost:focus &, &:hover, &:focus {
+                      $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
                         opacity: 1;
                       }
                 >
