@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 06 Jul 2018 19:07:51 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Jul 2018 18:08:32 GMT and should not be manually modified.
+
+## 6.29.0
+Mon, 09 Jul 2018 18:08:32 GMT
+
+### Minor changes
+
+- DetailsList - css-in-js styling
+- Dismiss panel when clicking outside of the Panel component.
+
+### Patches
+
+- Don't select date by default when clicking on a month 
+- FacePile now uses semantic list tags.
 
 ## 6.27.0
 Fri, 06 Jul 2018 19:07:51 GMT

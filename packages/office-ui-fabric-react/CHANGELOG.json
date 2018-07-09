@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.29.0",
+      "tag": "office-ui-fabric-react_v6.29.0",
+      "date": "Mon, 09 Jul 2018 18:08:32 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "b1dfce5fd5330e1ee0c286c192093f17f594b03e",
+            "comment": "DetailsList - css-in-js styling"
+          },
+          {
+            "author": "Terri-Anne Cambridge <tacambridge@gmail.com>",
+            "commit": "50f87b51ab16ebdb1e1a809fc73b133b89a10db1",
+            "comment": "Dismiss panel when clicking outside of the Panel component."
+          }
+        ],
+        "patch": [
+          {
+            "author": "ElianaLiberman <40306431+ElianaLiberman@users.noreply.github.com>",
+            "commit": "f94c8c70c07b434f4785fd9749b79830b03bfcd0",
+            "comment": "Don't select date by default when clicking on a month "
+          },
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "3557bdc04818cf6bf6f4105f2921d563cb8d476c",
+            "comment": "FacePile now uses semantic list tags."
+          }
+        ]
+      }
+    },
+    {
       "version": "6.27.0",
       "tag": "office-ui-fabric-react_v6.27.0",
       "date": "Fri, 06 Jul 2018 19:07:51 GMT",
