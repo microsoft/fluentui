@@ -22,7 +22,8 @@ describe('Stylesheet', () => {
 
     expect(Stylesheet.getInstance()).toBe(originalStylesheet);
 
-    originalStylesheet.global = {};
+    // tslint:disable-next-line:no-any
+    (originalStylesheet as any)._lastStyleElement = { ownerDocument: {} };
 
     expect(Stylesheet.getInstance()).not.toBe(originalStylesheet);
   });

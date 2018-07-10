@@ -66,8 +66,6 @@ let _stylesheet: Stylesheet;
  * @public
  */
 export class Stylesheet {
-  public global?: {};
-
   private _lastStyleElement?: HTMLStyleElement;
   private _styleElement?: HTMLStyleElement;
   private _rules: string[] = [];
@@ -90,12 +88,11 @@ export class Stylesheet {
       typeof window !== 'undefined' ? window : typeof process !== 'undefined' ? process : _fileScopedGlobal;
     _stylesheet = global[STYLESHEET_SETTING] as Stylesheet;
 
-    if (!_stylesheet || (_stylesheet.global && _stylesheet.global !== global)) {
+    if (!_stylesheet || (_stylesheet._lastStyleElement && _stylesheet._lastStyleElement.ownerDocument !== document)) {
       // tslint:disable-next-line:no-string-literal
       const fabricConfig = (global && global['FabricConfig']) || {};
 
       _stylesheet = global[STYLESHEET_SETTING] = new Stylesheet(fabricConfig.mergeStyles);
-      _stylesheet.global = global;
     }
 
     return _stylesheet;
