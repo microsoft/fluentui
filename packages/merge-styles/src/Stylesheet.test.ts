@@ -16,4 +16,14 @@ describe('Stylesheet', () => {
     expect(className).toEqual('myCss-0');
     expect(_stylesheet.getRules()).toEqual('.myCss-0{background:red;}');
   });
+
+  it('recreates a new instance when global mismatches', () => {
+    const originalStylesheet = Stylesheet.getInstance();
+
+    expect(Stylesheet.getInstance()).toBe(originalStylesheet);
+
+    originalStylesheet.global = {};
+
+    expect(Stylesheet.getInstance()).not.toBe(originalStylesheet);
+  });
 });
