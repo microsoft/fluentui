@@ -18,8 +18,8 @@ module.exports = resources.createConfig(BUNDLE_NAME, IS_PRODUCTION, {
 
   resolve: {
     alias: {
-      '@uifabric/dashboard-grid-layout/src': path.join(__dirname, 'src'),
-      '@uifabric/dashboard-grid-layout/lib': path.join(__dirname, 'lib')
+      '@uifabric/m365-admin/src': path.join(__dirname, 'src'),
+      '@uifabric/m365-admin/lib': path.join(__dirname, 'lib')
     }
   }
 });

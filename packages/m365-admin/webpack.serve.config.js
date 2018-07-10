@@ -18,8 +18,8 @@ module.exports = resources.createServeConfig({
 
   resolve: {
     alias: {
-      '@uifabric/dashboard-grid-layout/src': path.join(__dirname, 'src'),
-      '@uifabric/dashboard-grid-layout/lib': path.join(__dirname, 'src'),
+      '@uifabric/m365-admin/src': path.join(__dirname, 'src'),
+      '@uifabric/m365-admin/lib': path.join(__dirname, 'src'),
       'Props.ts.js': 'Props',
       'Example.tsx.js': 'Example'
     }
