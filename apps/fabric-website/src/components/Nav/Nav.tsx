@@ -5,10 +5,13 @@ import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import { getPathMinusLastHash } from '../../utilities/pageroute';
 import * as stylesImport from './Nav.module.scss';
 const styles: any = stylesImport;
-import { INavProps, INavPage } from './Nav.types';
+import { INavProps, INavPage, INavCategory } from './Nav.types';
+import { IconButton } from 'office-ui-fabric-react/lib/Button';
+import { categories } from './Nav.categories';
 
 export interface INavState {
   searchQuery: string;
+  viewState: boolean;
 }
 
 export class Nav extends React.Component<INavProps, INavState> {
@@ -16,7 +19,8 @@ export class Nav extends React.Component<INavProps, INavState> {
     super(props);
 
     this.state = {
-      searchQuery: ''
+      searchQuery: '',
+      viewState: false
     };
   }
 
@@ -38,10 +42,74 @@ export class Nav extends React.Component<INavProps, INavState> {
     );
   }
 
+  private _getSearchBox(val) {
+    if (val === 'Components') {
+      return (
+        <div style={{ display: 'flex' }}>
+          <SearchBox
+            placeholder="Search"
+            underlined={true}
+            styles={{
+              iconContainer: {
+                color: 'white'
+              },
+              icon: {
+                color: 'white'
+              },
+              clearButton: {
+                color: 'white',
+                iconProps: {
+                  iconName: ''
+                }
+              },
+              field: {
+                backgroundColor: 'transparent',
+                color: 'white'
+              },
+              root: {
+                marginBottom: '5px',
+                width: '180px'
+              }
+            }}
+            onChange={this._onChangeQuery.bind(this)}
+          />
+          <IconButton
+            iconProps={{ iconName: 'settings' }}
+            style={{ color: 'white', marginLeft: '-26px' }}
+            menuIconProps={{ iconName: '' }}
+            menuProps={{
+              items: [
+                {
+                  key: 'categories',
+                  text: 'Categories',
+                  iconProps: { iconName: 'org' },
+                  onClick: this._showCategories.bind(this)
+                },
+                {
+                  key: 'atoz',
+                  text: 'A to Z',
+                  iconProps: { iconName: 'Ascending' },
+                  onClick: this._showAtoZ.bind(this)
+                }
+              ]
+            }}
+          />
+        </div>
+      );
+    }
+  }
+
   private _renderLink(page: INavPage, linkIndex: number): React.ReactElement<{}> {
     const ariaLabel = page.pages ? 'Hit enter to open sub menu, tab to access sub menu items.' : '';
     const title = page.title === 'Fabric' ? 'Home page' : page.title;
-    const childLinks = page.pages ? this._renderLinkList(page.pages, true) : null;
+    let { viewState } = this.state;
+    let childLinks;
+
+    if (viewState === true && title === 'Components') {
+      childLinks = page.pages ? this._organizeComponents(page.pages) : null;
+    } else {
+      childLinks = page.pages ? this._renderLinkList(page.pages, true) : null;
+    }
 
     return (
       <span>
@@ -70,43 +138,10 @@ export class Nav extends React.Component<INavProps, INavState> {
     );
   }
 
-  private _getSearchBox(val) {
-    if (val === 'Components') {
-      return (
-        <div style={{ display: 'flex' }}>
-          <SearchBox
-            placeholder="Search"
-            underlined={true}
-            styles={{
-              iconContainer: {
-                color: 'white'
-              },
-              icon: {
-                color: 'white'
-              },
-              clearButton: {
-                color: 'white'
-              },
-              field: {
-                backgroundColor: 'transparent',
-                color: 'white'
-              },
-              root: {
-                marginBottom: '5px',
-                width: '180px'
-              }
-            }}
-            onChange={this._onChangeQuery.bind(this)}
-          />
-        </div>
-      );
-    }
-  }
-
   private _renderLinkList(pages: INavPage[], isSubMenu: boolean): React.ReactElement<{}> {
     let { searchQuery } = this.state;
 
-    const links: React.ReactElement<{}>[] = pages
+    let links: React.ReactElement<{}>[] = pages
       .filter(page => !page.hasOwnProperty('isHiddenFromMainNav'))
       .filter(
         page =>
@@ -122,9 +157,55 @@ export class Nav extends React.Component<INavProps, INavState> {
     );
   }
 
+  private _getGroups(pages: INavPage[], title: string, components: string[]): React.ReactElement<{}> {
+    let { searchQuery } = this.state;
+
+    let links: React.ReactElement<{}>[] = pages
+      .filter(page => !page.hasOwnProperty('isHiddenFromMainNav'))
+      .filter(page => page.title.toLowerCase().indexOf(searchQuery.toLowerCase()) > -1)
+      .filter(
+        page =>
+          components
+            .map(function(val) {
+              return val.toLowerCase();
+            })
+            .indexOf(page.title.toLowerCase()) > -1
+      )
+      .map((page: INavPage, linkIndex: number) => this._renderLink(page, linkIndex));
+
+    return (
+      <li className={styles.isSubMenu}>
+        <a>{title}</a>
+        <ul className={styles.isSubMenu} style={{ marginLeft: '8px' }}>
+          {links}
+        </ul>
+      </li>
+    );
+  }
+
+  private _organizeComponents(pages: INavPage[]): React.ReactElement<{}> {
+    let groups: React.ReactElement<{}>[] = categories.map((category: INavCategory) =>
+      this._getGroups(pages, category.title, category.components)
+    );
+
+    return <ul className={css(styles.links, true ? styles.isSubMenu : '')}>{groups}</ul>;
+  }
+
   private _onChangeQuery(newValue): void {
     this.setState({
       searchQuery: newValue
+    });
+  }
+
+  private _showCategories() {
+    this.setState({
+      viewState: true
+    });
+  }
+
+  private _showAtoZ() {
+    this.setState({
+      viewState: false
     });
   }
 }
