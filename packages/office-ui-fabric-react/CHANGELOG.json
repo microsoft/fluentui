@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.30.0",
+      "tag": "office-ui-fabric-react_v6.30.0",
+      "date": "Tue, 10 Jul 2018 05:05:15 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "31e2c53e4dd67bb4fafd5b50eab9b6a7af6e1e68",
+            "comment": "Converting ContextualMenu to MergeStyles step 2 - Style Conversion"
+          },
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "7a36bb911c84c170bff0630191bf378a391e1cb3",
+            "comment": "Coachmark: Add accessibility features to component, ARIA props, narrator support, and keyboarding controls"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "90ab4442e711afb5bc1501c2b24fa777ff893225",
+            "comment": "SearchBox: Move background color styling from searchbox input to searchbox root. Fixes #5477."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.2.1 <7.0.0` to `>=6.2.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.29.0",
       "tag": "office-ui-fabric-react_v6.29.0",
       "date": "Mon, 09 Jul 2018 18:08:32 GMT",
