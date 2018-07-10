@@ -291,18 +291,17 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
       {
         color: colors.iconForegroundColor,
         opacity: 1,
-        paddingLeft: 8,
-        selectors: {
-          '&$sortIcon': {
-            paddingLeft: 4,
-            position: 'relative',
-            top: 1
-          }
-        }
+        paddingLeft: 8
       }
     ],
 
-    sortIcon: [],
+    sortIcon: [
+      {
+        paddingLeft: 4,
+        position: 'relative',
+        top: 1
+      }
+    ],
 
     filterChevron: [classNames.filterChevron],
 
