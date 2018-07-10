@@ -1,13 +1,14 @@
 import * as React from 'react';
-import { DetailsList } from './DetailsList';
+import { DetailsListBase } from './DetailsList.base';
 import { ISelection, SelectionMode, ISelectionZoneProps } from '../../utilities/selection/index';
-import { IRenderFunction } from '../../Utilities';
+import { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IDragDropEvents, IDragDropContext } from './../../utilities/dragdrop/index';
 import { IGroup, IGroupRenderProps } from '../GroupedList/index';
 import { IDetailsRowProps } from '../DetailsList/DetailsRow';
 import { IDetailsHeaderProps } from './DetailsHeader';
 import { IWithViewportProps, IViewport } from '../../utilities/decorators/withViewport';
 import { IList, IListProps, ScrollToMode } from '../List/index';
+import { ITheme, IStyle } from '../..';
 
 export { IDetailsHeaderProps };
 
@@ -41,7 +42,11 @@ export interface IDetailsList extends IList {
   getStartItemIndexInView: () => number;
 }
 
-export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewportProps {
+export interface IDetailsListProps extends React.Props<DetailsListBase>, IWithViewportProps {
+  theme?: ITheme;
+
+  styles?: IStyleFunctionOrObject<IDetailsListStyleProps, IDetailsListStyles>;
+
   /**
    * Optional callback to access the IDetailsList interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -500,4 +505,12 @@ export enum CheckboxVisibility {
    * Hide checkboxes.
    */
   hidden = 2
+}
+
+export type IDetailsListStyleProps = Required<Pick<IDetailsListProps, 'theme'>> &
+  Pick<IDetailsListProps, 'className'> & {};
+
+export interface IDetailsListStyles {
+  root: IStyle;
+  focusZone: IStyle;
 }
