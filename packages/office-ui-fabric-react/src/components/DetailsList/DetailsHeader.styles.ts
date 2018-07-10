@@ -172,7 +172,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         position: 'relative',
         display: 'inline-block;',
         boxSizing: 'border-box',
-        padding: `0 ${values.cellPadding}`,
+        padding: `0 ${values.cellPadding}px`,
         border: 'none',
         lineHeight: 'inherit',
         margin: '0',
