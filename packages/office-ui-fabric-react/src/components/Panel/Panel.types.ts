@@ -145,6 +145,11 @@ export interface IPanelProps extends React.Props<Panel> {
   onLightDismissClick?: () => void;
 
   /**
+   * Optional custom function to handle clicks outside this component
+   */
+  onOuterClick?: () => void;
+
+  /**
    * Optional custom renderer navigation region. Replaces current close button.
    */
   onRenderNavigation?: IRenderFunction<IPanelProps>;

@@ -43,6 +43,7 @@ temp
 lib
 lib-amd
 lib-es2015
+lib-commonjs
 coverage
 dist
 npm-debug.log
