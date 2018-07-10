@@ -2,7 +2,7 @@ import * as React from 'react';
 
 /* Dependent Components */
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { CardFrame, ICardDropDownOption } from '@uifabric/experiments/lib/components/Card/CardFrame';
+import { CardFrame, ICardDropDownOption } from '../Card/CardFrame';
 
 /* Types for props and styles */
 import { IRecommendationProps, IRecommendationStyles } from './Recommendation.types';
