@@ -42,7 +42,7 @@
     "sinon": "^4.1.3"
   },
   "dependencies": {
-    "@uifabric/merge-styles": ">=6.2.2 <7.0.0",
+    "@uifabric/merge-styles": ">=6.2.3 <7.0.0",
     "prop-types": "^15.5.10",
     "tslib": "^1.7.1"
   },

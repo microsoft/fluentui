@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Tue, 10 Jul 2018 05:05:15 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Jul 2018 21:54:07 GMT and should not be manually modified.
+
+## 6.2.3
+Tue, 10 Jul 2018 21:54:07 GMT
+
+### Patches
+
+- Refining the merge-styles fix from yesterday to check for ownerDocument changes, which is a more correct comparison to work around the Chrome "window not resetting" issue.
 
 ## 6.2.2
 Tue, 10 Jul 2018 05:05:15 GMT

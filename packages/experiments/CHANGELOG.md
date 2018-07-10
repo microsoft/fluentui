@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 09 Jul 2018 18:08:32 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Jul 2018 21:54:07 GMT and should not be manually modified.
+
+## 6.13.5
+Tue, 10 Jul 2018 21:54:07 GMT
+
+### Patches
+
+- Update to latest Fluent depths/shadows
 
 ## 6.13.4
 Mon, 09 Jul 2018 18:08:32 GMT

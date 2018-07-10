@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.2.3",
+      "tag": "@uifabric/merge-styles_v6.2.3",
+      "date": "Tue, 10 Jul 2018 21:54:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "35a362f6f82002dde458fde6f322330e8a44e6a9",
+            "comment": "Refining the merge-styles fix from yesterday to check for ownerDocument changes, which is a more correct comparison to work around the Chrome \"window not resetting\" issue."
+          }
+        ]
+      }
+    },
+    {
       "version": "6.2.2",
       "tag": "@uifabric/merge-styles_v6.2.2",
       "date": "Tue, 10 Jul 2018 05:05:15 GMT",
