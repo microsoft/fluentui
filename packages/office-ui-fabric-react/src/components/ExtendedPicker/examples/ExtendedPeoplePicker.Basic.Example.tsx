@@ -30,6 +30,7 @@ export interface IPeoplePickerExampleState {
   mostRecentlyUsed: IPersonaProps[];
   searchMoreAvailable: boolean;
   currentlySelectedItems: IExtendedPersonaProps[];
+  suggestionItems: IPersonaProps[];
   controlledComponent: boolean;
 }
 
@@ -55,7 +56,8 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
       mostRecentlyUsed: mru,
       searchMoreAvailable: true,
       currentlySelectedItems: [],
-      controlledComponent: false
+      controlledComponent: false,
+      suggestionItems: []
     };
 
     this._suggestionProps = {
@@ -169,6 +171,7 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
     return (
       <ExtendedPeoplePicker
         selectedItems={this.state.controlledComponent ? this.state.currentlySelectedItems : undefined}
+        suggestionItems={this.state.controlledComponent ? this.state.suggestionItems : undefined}
         onItemAdded={this.state.controlledComponent ? this._onItemAdded : undefined}
         onItemsRemoved={this.state.controlledComponent ? this._onItemsRemoved : undefined}
         floatingPickerProps={this._floatingPickerProps}
@@ -219,12 +222,20 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
   };
 
   private _onExpandItem = (item: IExtendedPersonaProps): void => {
-    if (this._picker.selectedItemsList.current) {
-      // tslint:disable-next-line:no-any
-      (this._picker.selectedItemsList.current as SelectedPeopleList).replaceItem(
-        item,
-        this._getExpandedGroupItems(item as any)
-      );
+    if (this.state.controlledComponent) {
+      const { currentlySelectedItems } = this.state;
+      const indexToRemove = currentlySelectedItems.indexOf(item);
+      const newItems = currentlySelectedItems;
+      newItems.splice(indexToRemove, 1, ...this._getExpandedGroupItems(item));
+      this.setState({ currentlySelectedItems: newItems });
+    } else {
+      if (this._picker.selectedItemsList.current) {
+        // tslint:disable-next-line:no-any
+        (this._picker.selectedItemsList.current as SelectedPeopleList).replaceItem(
+          item,
+          this._getExpandedGroupItems(item as any)
+        );
+      }
     }
   };
 
@@ -253,21 +264,30 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
     currentPersonas: IPersonaProps[],
     limitResults?: number
   ): Promise<IPersonaProps[]> | null => {
+    const { controlledComponent } = this.state;
+    let filteredPersonas: IPersonaProps[] = [];
     if (filterText) {
-      let filteredPersonas: IPersonaProps[] = this._filterPersonasByText(filterText);
-
+      filteredPersonas = this._filterPersonasByText(filterText);
       filteredPersonas = this._removeDuplicates(filteredPersonas, currentPersonas);
       filteredPersonas = limitResults ? filteredPersonas.splice(0, limitResults) : filteredPersonas;
-      return this._convertResultsToPromise(filteredPersonas);
-    } else {
-      return this._convertResultsToPromise([]);
     }
+
+    if (controlledComponent) {
+      this.setState({ suggestionItems: filteredPersonas });
+    }
+    return controlledComponent ? null : this._convertResultsToPromise(filteredPersonas);
   };
 
-  private _returnMostRecentlyUsed = (currentPersonas: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> => {
+  private _returnMostRecentlyUsed = (
+    currentPersonas: IPersonaProps[]
+  ): IPersonaProps[] | Promise<IPersonaProps[]> | null => {
+    const { controlledComponent } = this.state;
     let { mostRecentlyUsed } = this.state;
     mostRecentlyUsed = this._removeDuplicates(mostRecentlyUsed, this._picker.items);
-    return this._convertResultsToPromise(mostRecentlyUsed);
+    if (controlledComponent) {
+      this.setState({ suggestionItems: mostRecentlyUsed });
+    }
+    return controlledComponent ? null : this._convertResultsToPromise(mostRecentlyUsed);
   };
 
   private _onCopyItems(items: IExtendedPersonaProps[]): string {
