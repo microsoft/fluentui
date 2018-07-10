@@ -77,7 +77,7 @@ const excludedExampleFiles: string[] = [
 declare const global: any;
 
 /**
- * Automatically connsume and test any component examples that are added to the codebase.
+ * Automatically consume and test any component examples that are added to the codebase.
  *
  * If you are here and are getting a failure due to a component you recently added,
  *    here are some options:
