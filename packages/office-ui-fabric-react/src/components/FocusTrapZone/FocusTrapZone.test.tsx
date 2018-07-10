@@ -394,4 +394,57 @@ describe('FocusTrapZone', () => {
       expect(lastFocusedElement).toBe(buttonF);
     });
   });
+
+  describe('Conflicting FocusTrapZones', () => {
+    function setupTest() {
+      const topLevelDiv = ReactTestUtils.renderIntoDocument(
+        <div onFocusCapture={_onFocus}>>
+          <FocusTrapZone
+            forceFocusInsideTrap={ true }
+            isClickableOutsideFocusTrap={ false }
+          >
+            <button className={'a'}>a</button>
+          </FocusTrapZone>
+          <FocusTrapZone
+            forceFocusInsideTrap={ false }
+            isClickableOutsideFocusTrap={ false }
+          >
+            <FocusZone data-is-visible={true}>
+              <button className={'b'}>b</button>
+              <button className={'c'}>c</button>
+            </FocusZone>
+          </FocusTrapZone>
+        </div>
+      ) as HTMLElement;
+
+      const buttonA = topLevelDiv.querySelector('.a') as HTMLElement;
+      const buttonB = topLevelDiv.querySelector('.b') as HTMLElement;
+      const buttonC = topLevelDiv.querySelector('.c') as HTMLElement;
+
+      // Assign bounding locations to buttons.
+      setupElement(buttonA, { clientRect: { top: 0, bottom: 10, left: 0, right: 10 } });
+      setupElement(buttonB, { clientRect: { top: 10, bottom: 20, left: 0, right: 10 } });
+      setupElement(buttonC, { clientRect: { top: 20, bottom: 30, left: 0, right: 10 } });
+
+      return { buttonB, buttonC };
+    }
+
+    it('allows the last FocusTrapZone on the page to have focus', async () => {
+      expect.assertions(2);
+
+      // The point of this test is to ensure that elements in the second FocusTrapZone can be
+      // focused, even though the second FocusTrapZone does not trap focus, while the first
+      // FocusTrapZone does.
+
+      const { buttonB, buttonC } = setupTest();
+
+      buttonB.focus();
+      await animationFrame();
+      expect(lastFocusedElement).toBe(buttonB);
+
+      ReactTestUtils.Simulate.keyDown(buttonB, { which: KeyCodes.down });
+      await animationFrame();
+      expect(lastFocusedElement).toBe(buttonC);
+    });
+  });  
 });
