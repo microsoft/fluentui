@@ -314,16 +314,16 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
             (_isDraggable || columnIndex === columns.length - frozenColumnCountFromEnd) &&
             this._renderDropHint(columnIndex),
             <DetailsColumn
-              column={column}
-              key={column.key}
-              columnIndex={(showCheckbox ? 2 : 1) + columnIndex}
-              parentId={this._id}
-              isDraggable={_isDraggable}
-              setDraggedItemIndex={this._setDraggedItemIndex}
-              dragDropHelper={this._dragDropHelper}
-              onColumnClick={onColumnClick}
-              onColumnContextMenu={onColumnContextMenu}
-              isDropped={this._onDropIndexInfo.targetIndex === columnIndex}
+              column={ column }
+              key={ column.key }
+              columnIndex={ (showCheckbox ? 1 : 0) + columnIndex }
+              parentId={ this._id }
+              isDraggable={ _isDraggable }
+              setDraggedItemIndex={ this._setDraggedItemIndex }
+              dragDropHelper={ this._dragDropHelper }
+              onColumnClick={ onColumnClick }
+              onColumnContextMenu={ onColumnContextMenu }
+              isDropped={ this._onDropIndexInfo.targetIndex === columnIndex }
             />,
             column.isResizable && this._renderColumnSizer(columnIndex)
           ];
@@ -406,7 +406,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
   private _setDraggedItemIndex(itemIndex: number) {
     if (itemIndex >= 0) {
       // Column index is set based on the checkbox
-      this._draggedColumnIndex = this.props.selectionMode !== SelectionMode.none ? itemIndex - 2 : itemIndex - 1;
+      this._draggedColumnIndex = this.props.selectionMode !== SelectionMode.none ? itemIndex - 1 : itemIndex - 0;
       this._getDropHintPositions();
     } else {
       this._resetDropHints();
