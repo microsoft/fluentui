@@ -111,7 +111,6 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
               {this.canAddItems() && (
                 <Autofill
                   {...inputProps as IInputProps}
-                  tabIndex={-1}
                   className={css('ms-BasePicker-input', styles.pickerInput)}
                   ref={this.input}
                   onFocus={this.onInputFocus}

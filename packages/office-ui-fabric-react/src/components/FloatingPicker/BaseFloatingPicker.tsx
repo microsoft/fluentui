@@ -202,16 +202,14 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
     }
   }
 
-  protected updateSuggestionsList(suggestions: T[] | PromiseLike<T[]>, updatedValue?: string): void {
+  protected updateSuggestionsList(suggestions: T[] | PromiseLike<T[]>): void {
     const suggestionsArray: T[] = suggestions as T[];
     const suggestionsPromiseLike: PromiseLike<T[]> = suggestions as PromiseLike<T[]>;
 
     // Check to see if the returned value is an array, if it is then just pass it into the next function.
     // If the returned value is not an array then check to see if it's a promise or PromiseLike. If it is then resolve it asynchronously.
     if (Array.isArray(suggestionsArray)) {
-      if (updatedValue !== undefined) {
-        this.updateSuggestions(suggestionsArray, true /*forceUpdate*/);
-      }
+      this.updateSuggestions(suggestionsArray, true /*forceUpdate*/);
     } else if (suggestionsPromiseLike && suggestionsPromiseLike.then) {
       // Ensure that the promise will only use the callback if it was the most recent one.
       const promise: PromiseLike<T[]> = (this.currentPromise = suggestionsPromiseLike);
@@ -308,7 +306,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
 
     this._updateSuggestionsVisible(true /*shouldShow*/);
     if (suggestions !== null) {
-      this.updateSuggestionsList(suggestions, updatedValue);
+      this.updateSuggestionsList(suggestions);
     }
   }
 

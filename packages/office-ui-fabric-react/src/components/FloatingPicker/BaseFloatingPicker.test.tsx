@@ -83,11 +83,8 @@ describe('Pickers', () => {
       input.value = 'a';
       picker.onQueryStringChanged('a');
 
-      // Change input to be empty string
       input.value = '';
       picker.onQueryStringChanged('');
-
-      input.click();
 
       expect(picker.suggestions.length).toEqual(4);
 
