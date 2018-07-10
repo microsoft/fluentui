@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 09 Jul 2018 18:08:32 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Jul 2018 05:05:15 GMT and should not be manually modified.
+
+## 6.30.0
+Tue, 10 Jul 2018 05:05:15 GMT
+
+### Minor changes
+
+- Converting ContextualMenu to MergeStyles step 2 - Style Conversion
+- Coachmark: Add accessibility features to component, ARIA props, narrator support, and keyboarding controls
+
+### Patches
+
+- SearchBox: Move background color styling from searchbox input to searchbox root. Fixes #5477.
 
 ## 6.29.0
 Mon, 09 Jul 2018 18:08:32 GMT
