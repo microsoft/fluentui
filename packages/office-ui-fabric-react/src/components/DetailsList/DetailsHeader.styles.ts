@@ -236,12 +236,12 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
 
           '&:focus:after': cellSizerFadeInStyles,
           '&:hover:after': cellSizerFadeInStyles,
-          '&$cellIsResizing:after': {
-            ...cellSizerFadeInStyles,
-            ...{
+          '&$cellIsResizing:after': [
+            cellSizerFadeInStyles,
+            {
               boxShadow: '0 0 5px 0 0 rgba(0, 0, 0, 0.4)'
             }
-          }
+          ]
         }
       }
     ],
