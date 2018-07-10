@@ -1,6 +1,5 @@
 import { IDetailsRowCheckStyleProps, IDetailsRowCheckStyles } from './DetailsRowCheck.types';
 import { getGlobalClassNames, getFocusStyle } from '../../Styling';
-import { IsFocusVisibleClassName } from '@uifabric/utilities';
 
 const GlobalClassNames = {
   root: 'ms-DetailsRow-check',
