@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/m365-admin",
+      "comment": "Created new package m365-admin and moved Recommendation, card and nav to it ",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/m365-admin",
+  "email": "saakhta@microsoft.com"
+}
