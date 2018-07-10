@@ -22,12 +22,12 @@ export interface IDonutChartProps {
   data?: IDataPoint[];
 
   /**
-   * Width of the chart.
+   * Width of the donut.
    */
   width?: number;
 
   /**
-   * Height of the chart.
+   * Height of the donut.
    */
   height?: number;
 
@@ -37,9 +37,9 @@ export interface IDonutChartProps {
   colors?: string[];
 
   /**
-   * Label to apply to the whole chart.
+   * Title to apply to the whole chart.
    */
-  chartLabel?: string;
+  chartTitle?: string;
 
   /**
    * Additional CSS class(es) to apply to the DonutChart.
@@ -93,7 +93,7 @@ export interface IDonutChartStyles {
   chart?: IStyle;
 
   /**
-   * Style for the chart label.
+   * Style for the chart Title.
    */
-  chartLabel?: IStyle;
+  chartTitle?: IStyle;
 }

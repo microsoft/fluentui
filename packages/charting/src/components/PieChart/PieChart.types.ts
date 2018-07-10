@@ -37,9 +37,9 @@ export interface IPieChartProps {
   colors?: string[];
 
   /**
-   * Label to apply to the whole chart.
+   * Title to apply to the whole chart.
    */
-  chartLabel?: string;
+  chartTitle?: string;
 
   /**
    * Additional CSS class(es) to apply to the PieChart.
@@ -93,7 +93,7 @@ export interface IPieChartStyles {
   chart?: IStyle;
 
   /**
-   * Style for the chart label.
+   * Style for the chart Title.
    */
-  chartLabel?: IStyle;
+  chartTitle?: IStyle;
 }

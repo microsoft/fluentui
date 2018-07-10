@@ -22,7 +22,7 @@ export const getStyles = (props: IDonutChartStyleProps): IDonutChartStyles => {
         height: chartHeight
       }
     ],
-    chartLabel: [
+    chartTitle: [
       {
         textAlign: 'center',
         ...theme.fonts.mediumPlus

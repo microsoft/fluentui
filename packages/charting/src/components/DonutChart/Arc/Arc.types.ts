@@ -3,28 +3,27 @@ import { IDataPoint } from '../DonutChart.types';
 
 export interface IArcProps {
   /**
-   * Data to render in the chart.
+   * Data to render in the Arc.
    */
   data?: IArc;
 
   /**
-   * innerRadius of the chart.
+   * innerRadius of the Arc.
    */
   innerRadius?: number;
   /**
-   * outerRadius of the chart.
+   * outerRadius of the Arc.
    */
   outerRadius?: number;
   /**
-   * Color for all the lines in the chart.
+   * Color for the Arc.
    */
-  // tslint:disable:no-any
-  color?: any;
+  color: string;
 }
 
 export interface IArc {
   /**
-   * Data to render in the chart.
+   * Data to render in the chart for individual arc.
    */
   data?: IDataPoint;
   /**

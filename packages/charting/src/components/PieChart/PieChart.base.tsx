@@ -30,7 +30,7 @@ export class PieChartBase extends React.Component<IPieChartProps, {}> {
 
     return (
       <div className={this._classNames.root}>
-        {this.props.chartLabel && <p className={this._classNames.chartLabel}>{this.props.chartLabel}</p>}
+        {this.props.chartTitle && <p className={this._classNames.chartTitle}>{this.props.chartTitle}</p>}
         <Pie width={width!} height={height!} outerRadius={outerRadius} innerRadius={0} data={data!} colors={colors!} />
       </div>
     );

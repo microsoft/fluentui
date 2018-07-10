@@ -3,27 +3,27 @@ import { IDataPoint } from '../PieChart.types';
 
 export interface IPieProps {
   /**
-   * Width of the chart.
+   * Width of the Pie.
    */
   width: number;
   /**
-   * Height of the chart.
+   * Height of the Pie.
    */
   height: number;
   /**
-   * outerRadius of the chart.
+   * outerRadius of the Pie.
    */
   outerRadius: number;
   /**
-   * innerRadius of the chart.
+   * innerRadius of the Pie.
    */
   innerRadius: number;
   /**
-   * Data to render in the chart.
+   * Data to render in the Chart.
    */
   data: IDataPoint[];
   /**
-   * colors to render in the chart.
+   * colors to render in the Chart.
    */
   colors?: string[];
 }

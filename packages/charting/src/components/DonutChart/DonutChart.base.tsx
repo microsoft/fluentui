@@ -31,7 +31,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, {}> {
 
     return (
       <div className={this._classNames.root}>
-        {this.props.chartLabel && <p className={this._classNames.chartLabel}>{this.props.chartLabel}</p>}
+        {this.props.chartTitle && <p className={this._classNames.chartTitle}>{this.props.chartTitle}</p>}
         <Pie
           width={width!}
           height={height!}
