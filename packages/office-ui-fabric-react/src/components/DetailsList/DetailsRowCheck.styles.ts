@@ -47,12 +47,7 @@ export const getStyles = (props: IDetailsRowCheckStyleProps): IDetailsRowCheckSt
         }
       },
       (selected || anySelected || isVisible) && {
-        opacity: 1,
-        selectors: {
-          [`.${IsFocusVisibleClassName} &`]: {
-            opacity: 1
-          }
-        }
+        opacity: 1
       }
     ],
 
