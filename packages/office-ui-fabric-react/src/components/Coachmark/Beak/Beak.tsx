@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, css, classNamesFunction } from '../../../Utilities';
+import { BaseComponent, classNamesFunction } from '../../../Utilities';
 import { IBeakProps } from './Beak.types';
 import { getStyles, IBeakStyles } from './Beak.styles';
 import { IBeakStylesProps } from './Beak.types';
@@ -73,7 +73,7 @@ export class Beak extends BaseComponent<IBeakProps, {}> {
     });
 
     return (
-      <div className={css('ms-Beak', classNames.root)}>
+      <div className={classNames.root} role="presentation">
         <svg height={svgHeight} width={svgWidth} className={classNames.beak}>
           <polygon points={pointOne + ' ' + pointTwo + ' ' + pointThree} />
         </svg>

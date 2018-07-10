@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Wed, 20 Jun 2018 10:25:55 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Jul 2018 05:05:15 GMT and should not be manually modified.
+
+## 6.2.2
+Tue, 10 Jul 2018 05:05:15 GMT
+
+### Patches
+
+- If the singleton `Stylesheet` instance originated from another window, reset the instance. Workaround for an unexplained Chrome issue where the singleton was still accessible after a page refresh.
 
 ## 6.2.1
 Wed, 20 Jun 2018 10:25:55 GMT

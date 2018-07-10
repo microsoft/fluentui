@@ -2,6 +2,45 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.13.4",
+      "tag": "@uifabric/experiments_v6.13.4",
+      "date": "Mon, 09 Jul 2018 18:08:32 GMT",
+      "comments": {
+        "none": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "02b1b5e75e61a6e773bcad6ece06acf59a45eb0d",
+            "comment": "No changes."
+          }
+        ],
+        "patch": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "4e506157895212eca6345c65ba3c234c77c36ee6",
+            "comment": "Remove createComponent utility and use Foundation package."
+          },
+          {
+            "author": "nulikartik <nulikarthik@gmail.com>",
+            "commit": "ac6af199ee9c0f0bff7a3c553a51c770689d96eb",
+            "comment": "changing imports for charts in react DashboardCard to point to correct package"
+          },
+          {
+            "author": "Mike Wheaton <miwhea@microsoft.com>",
+            "commit": "c3cd70a3788eafe9382d555681407198bfc97313",
+            "comment": "Update to latest Fluent depths"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.27.0 <7.0.0` to `>=6.29.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.0.0 <1.0.0` to `>=0.0.3 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.13.2",
       "tag": "@uifabric/experiments_v6.13.2",
       "date": "Fri, 06 Jul 2018 10:23:46 GMT",

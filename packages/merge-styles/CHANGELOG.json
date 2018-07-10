@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.2.2",
+      "tag": "@uifabric/merge-styles_v6.2.2",
+      "date": "Tue, 10 Jul 2018 05:05:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "24550050c28c8732c70d0d79ee1e9209d21e91ec",
+            "comment": "If the singleton `Stylesheet` instance originated from another window, reset the instance. Workaround for an unexplained Chrome issue where the singleton was still accessible after a page refresh."
+          }
+        ]
+      }
+    },
+    {
       "version": "6.2.1",
       "tag": "@uifabric/merge-styles_v6.2.1",
       "date": "Wed, 20 Jun 2018 10:25:55 GMT",
