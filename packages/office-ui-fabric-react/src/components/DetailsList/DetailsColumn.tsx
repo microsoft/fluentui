@@ -44,92 +44,96 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
     const { onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip } = this.props;
 
     return [
-      <div
-        key={column.key}
-        ref={this._root}
-        role={'columnheader'}
-        aria-sort={column.isSorted ? (column.isSortedDescending ? 'descending' : 'ascending') : 'none'}
-        aria-disabled={column.columnActionsMode === ColumnActionsMode.disabled}
-        aria-colindex={columnIndex}
-        className={css(
-          'ms-DetailsHeader-cell',
-          styles.cell,
-          column.headerClassName,
-          column.columnActionsMode !== ColumnActionsMode.disabled && 'is-actionable ' + styles.cellIsActionable,
-          !column.name && 'is-empty ' + styles.cellIsEmpty,
-          (column.isSorted || column.isGrouped || column.isFiltered) && 'is-icon-visible',
-          column.isPadded && styles.cellWrapperPadded
-        )}
-        data-is-draggable={isDraggable}
-        draggable={isDraggable}
-        style={{ width: column.calculatedWidth! + INNER_PADDING + (column.isPadded ? ISPADDED_WIDTH : 0) }}
-        data-automationid={'ColumnsHeaderColumn'}
-        data-item-key={column.key}
-      >
-        {isDraggable && <Icon iconName={'GripperBarVertical'} className={css(styles.GripperBarVerticalStyle)} />}
-        {onRenderColumnHeaderTooltip(
-          {
-            hostClassName: css(styles.cellTooltip),
-            id: `${parentId}-${column.key}-tooltip`,
-            setAriaDescribedBy: false,
-            content: column.columnActionsMode !== ColumnActionsMode.disabled ? column.ariaLabel : '',
-            children: (
-              <span
-                id={`${parentId}-${column.key}`}
-                aria-label={column.isIconOnly ? column.name : undefined}
-                aria-labelledby={column.isIconOnly ? undefined : `${parentId}-${column.key}-name `}
-                className={css('ms-DetailsHeader-cellTitle', styles.cellTitle)}
-                data-is-focusable={column.columnActionsMode !== ColumnActionsMode.disabled}
-                role={column.columnActionsMode !== ColumnActionsMode.disabled ? 'button' : undefined}
-                aria-describedby={
-                  this.props.onRenderColumnHeaderTooltip ? `${parentId}-${column.key}-tooltip` : undefined
-                }
-                onContextMenu={this._onColumnContextMenu.bind(this, column)}
-                onClick={this._onColumnClick.bind(this, column)}
-                aria-haspopup={column.columnActionsMode === ColumnActionsMode.hasDropdown}
-              >
+      (
+        <div
+          key={ column.key }
+          ref={ this._root }
+          role={ 'columnheader' }
+          aria-sort={ column.isSorted ? (column.isSortedDescending ? 'descending' : 'ascending') : 'none' }
+          aria-disabled={ column.columnActionsMode === ColumnActionsMode.disabled }
+          aria-colindex={ columnIndex }
+          className={ css(
+            'ms-DetailsHeader-cell',
+            styles.cell,
+            column.headerClassName,
+            column.columnActionsMode !== ColumnActionsMode.disabled && 'is-actionable ' + styles.cellIsActionable,
+            !column.name && 'is-empty ' + styles.cellIsEmpty,
+            (column.isSorted || column.isGrouped || column.isFiltered) && 'is-icon-visible',
+            column.isPadded && styles.cellWrapperPadded
+          ) }
+          data-is-draggable={ isDraggable }
+          draggable={ isDraggable }
+          style={ { width: column.calculatedWidth! + INNER_PADDING + (column.isPadded ? ISPADDED_WIDTH : 0) } }
+          data-automationid={ 'ColumnsHeaderColumn' }
+          data-item-key={ column.key }
+        >
+          { isDraggable && <Icon iconName={ 'GripperBarVertical' } className={ css(styles.GripperBarVerticalStyle) } /> }
+          { onRenderColumnHeaderTooltip(
+            {
+              hostClassName: css(styles.cellTooltip),
+              id: `${parentId}-${column.key}-tooltip`,
+              setAriaDescribedBy: false,
+              content: column.columnActionsMode !== ColumnActionsMode.disabled ? column.ariaLabel : '',
+              children: (
                 <span
-                  id={`${parentId}-${column.key}-name`}
-                  className={css('ms-DetailsHeader-cellName', styles.cellName, {
-                    [styles.iconOnlyHeader]: column.isIconOnly
-                  })}
+                  id={ `${parentId}-${column.key}` }
+                  aria-label={ column.isIconOnly ? column.name : undefined }
+                  aria-labelledby={ column.isIconOnly ? undefined : `${parentId}-${column.key}-name ` }
+                  className={ css('ms-DetailsHeader-cellTitle', styles.cellTitle) }
+                  data-is-focusable={ column.columnActionsMode !== ColumnActionsMode.disabled }
+                  role={ column.columnActionsMode !== ColumnActionsMode.disabled ? 'button' : undefined }
+                  aria-describedby={
+                    this.props.onRenderColumnHeaderTooltip ? `${parentId}-${column.key}-tooltip` : undefined
+                  }
+                  onContextMenu={ this._onColumnContextMenu.bind(this, column) }
+                  onClick={ this._onColumnClick.bind(this, column) }
+                  aria-haspopup={ column.columnActionsMode === ColumnActionsMode.hasDropdown }
                 >
-                  {(column.iconName || column.iconClassName) && (
-                    <Icon className={css(styles.nearIcon, column.iconClassName)} iconName={column.iconName} />
-                  )}
+                  <span
+                    id={ `${parentId}-${column.key}-name` }
+                    className={ css('ms-DetailsHeader-cellName', styles.cellName, {
+                      [styles.iconOnlyHeader]: column.isIconOnly
+                    }) }
+                  >
+                    { (column.iconName || column.iconClassName) && (
+                      <Icon className={ css(styles.nearIcon, column.iconClassName) } iconName={ column.iconName } />
+                    ) }
 
-                  {!column.isIconOnly ? column.name : undefined}
-                </span>
+                    { !column.isIconOnly ? column.name : undefined }
+                  </span>
 
-                {column.isFiltered && <Icon className={styles.nearIcon} iconName={'Filter'} />}
+                  { column.isFiltered && <Icon className={ styles.nearIcon } iconName={ 'Filter' } /> }
 
-                {column.isSorted && (
-                  <Icon
-                    className={css(styles.nearIcon, styles.sortIcon)}
-                    iconName={column.isSortedDescending ? 'SortDown' : 'SortUp'}
-                  />
-                )}
-
-                {column.isGrouped && <Icon className={styles.nearIcon} iconName={'GroupedDescending'} />}
-
-                {column.columnActionsMode === ColumnActionsMode.hasDropdown &&
-                  !column.isIconOnly && (
+                  { column.isSorted && (
                     <Icon
-                      className={css('ms-DetailsHeader-filterChevron', styles.filterChevron)}
-                      iconName={'ChevronDown'}
+                      className={ css(styles.nearIcon, styles.sortIcon) }
+                      iconName={ column.isSortedDescending ? 'SortDown' : 'SortUp' }
                     />
-                  )}
-              </span>
-            )
-          },
-          this._onRenderColumnHeaderTooltip
-        )}
-      </div>,
-      column.ariaLabel && !this.props.onRenderColumnHeaderTooltip ? (
-        <label key={`${column.key}_label`} id={`${parentId}-${column.key}-tooltip`} className={styles.accessibleLabel}>
-          {column.ariaLabel}
-        </label>
-      ) : null
+                  ) }
+
+                  { column.isGrouped && <Icon className={ styles.nearIcon } iconName={ 'GroupedDescending' } /> }
+
+                  { column.columnActionsMode === ColumnActionsMode.hasDropdown &&
+                    !column.isIconOnly && (
+                      <Icon
+                        className={ css('ms-DetailsHeader-filterChevron', styles.filterChevron) }
+                        iconName={ 'ChevronDown' }
+                      />
+                    ) }
+                </span>
+              )
+            },
+            this._onRenderColumnHeaderTooltip
+          ) }
+        </div>
+      ),
+      (
+        column.ariaLabel && !this.props.onRenderColumnHeaderTooltip ? (
+          <label key={ `${column.key}_label` } id={ `${parentId}-${column.key}-tooltip` } className={ styles.accessibleLabel }>
+            { column.ariaLabel }
+          </label>
+        ) : null
+      )
     ];
   }
 
@@ -190,8 +194,8 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
     tooltipHostProps: ITooltipHostProps,
     defaultRender?: IRenderFunction<ITooltipHostProps>
   ): JSX.Element => {
-    return <span className={tooltipHostProps.hostClassName}>{tooltipHostProps.children}</span>;
-  };
+    return <span className={ tooltipHostProps.hostClassName }>{ tooltipHostProps.children }</span>;
+  }
 
   private _onColumnClick(column: IColumn, ev: React.MouseEvent<HTMLElement>): void {
     const { onColumnClick } = this.props;
@@ -244,11 +248,11 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
     }
   }
 
-  private _onRootMouseDown = (ev: MouseEvent): void => {
+  private _onRootMouseDown(ev: MouseEvent): void {
     const { isDraggable } = this.props;
     // Ignore anything except the primary button.
     if (isDraggable && ev.button === MOUSEDOWN_PRIMARY_BUTTON) {
       ev.stopPropagation();
     }
-  };
+  }
 }

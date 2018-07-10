@@ -289,7 +289,6 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       usePageCache,
       onShouldVirtualize,
       enableShimmer,
-      viewport,
       columnReorderOptions,
       minimumPixelsForDrag
     } = this.props;
@@ -347,11 +346,11 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
           constrainMode === ConstrainMode.horizontalConstrained &&
           'is-horizontalConstrained ' + styles.rootIsHorizontalConstrained,
           !!compact && 'ms-DetailsList--Compact ' + styles.rootCompact
-        )}
-        data-automationid="DetailsList"
-        data-is-scrollable="false"
-        aria-label={ariaLabel}
-        {...(shouldApplyApplicationRole ? { role: 'application' } : {})}
+        ) }
+        data-automationid='DetailsList'
+        data-is-scrollable='false'
+        aria-label={ ariaLabel }
+        { ...(shouldApplyApplicationRole ? { role: 'application' } : {}) }
       >
         <div
           role='grid'
@@ -360,8 +359,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
           aria-colcount={ (selectAllVisibility !== SelectAllVisibility.none ? 1 : 0) + (adjustedColumns ? adjustedColumns.length : 0) }
           aria-readonly='true'
         >
-          <div onKeyDown={this._onHeaderKeyDown} role="presentation">
-            {isHeaderVisible &&
+          <div onKeyDown={ this._onHeaderKeyDown } role='presentation'>
+            { isHeaderVisible &&
               onRenderDetailsHeader(
                 {
                   componentRef: this._header,
@@ -382,12 +381,11 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                   ariaLabelForSelectionColumn: ariaLabelForSelectionColumn,
                   selectAllVisibility: selectAllVisibility,
                   collapseAllVisibility: groupProps && groupProps.collapseAllVisibility,
-                  viewport: viewport,
                   columnReorderOptions: columnReorderOptions,
                   minimumPixelsForDrag: minimumPixelsForDrag
                 },
                 this._onRenderDetailsHeader
-              )}
+              ) }
           </div>
           <div onKeyDown={ this._onContentKeyDown } role='presentation'>
             <FocusZone
@@ -427,14 +425,15 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                   />
                 ) : (
                     <List
-                      ref={this._list}
-                      role="presentation"
-                      items={enableShimmer && !items.length ? SHIMMER_ITEMS : items}
-                      onRenderCell={this._onRenderListCell(0)}
-                      usePageCache={usePageCache}
-                      onShouldVirtualize={onShouldVirtualize}
-                      {...additionalListProps}
-                  )}
+                      ref={ this._list }
+                      role='presentation'
+                      items={ enableShimmer && !items.length ? SHIMMER_ITEMS : items }
+                      onRenderCell={ this._onRenderListCell(0) }
+                      usePageCache={ usePageCache }
+                      onShouldVirtualize={ onShouldVirtualize }
+                      { ...additionalListProps }
+                    />
+                  ) }
               </SelectionZone>
             </FocusZone>
           </div>
@@ -810,10 +809,10 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
    * column to the max cell width.
    *
    * @private
-   * @param {IColumn} column (double clicked column definition)
-   * @param {number} columnIndex (double clicked column index)
-   * @todo min width 100 should be changed to const value and should be consistent with the value used on _onSizerMove method in DetailsHeader
-   */
+* @param { IColumn } column (double clicked column definition)
+* @param { number } columnIndex (double clicked column index)
+       * @todo min width 100 should be changed to const value and should be consistent with the value used on _onSizerMove method in DetailsHeader
+       */
   private _onColumnAutoResized(column: IColumn, columnIndex: number): void {
     let max = 0;
     let count = 0;
@@ -838,9 +837,9 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
    * and call onActiveItemChanged callback if specified.
    *
    * @private
-   * @param {el} row element that became active in Focus Zone
-   * @param {ev} focus event from Focus Zone
-   */
+* @param { el } row element that became active in Focus Zone
+* @param { ev } focus event from Focus Zone
+                                             */
   private _onActiveRowChanged(el?: HTMLElement, ev?: React.FocusEvent<HTMLElement>): void {
     const { items, onActiveItemChanged } = this.props;
 
