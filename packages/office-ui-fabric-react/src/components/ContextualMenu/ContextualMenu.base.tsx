@@ -8,7 +8,7 @@ import {
 } from './ContextualMenu.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection, IFocusZoneProps, FocusZoneTabbableElements } from '../../FocusZone';
-import { IMenuItemClassNames, getContextualMenuClassNames, getItemClassNames } from './ContextualMenu.classNames';
+import { IMenuItemClassNames, getItemClassNames } from './ContextualMenu.classNames';
 import {
   assign,
   BaseComponent,
@@ -83,8 +83,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     shouldFocusOnMount: true,
     gapSpace: 0,
     directionalHint: DirectionalHint.bottomAutoEdge,
-    beakWidth: 16,
-    getMenuClassNames: getContextualMenuClassNames
+    beakWidth: 16
   };
 
   private _host: HTMLElement;
