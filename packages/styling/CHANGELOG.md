@@ -1,6 +1,20 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Fri, 29 Jun 2018 10:24:05 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Jul 2018 21:54:07 GMT and should not be manually modified.
+
+## 6.6.0
+Tue, 10 Jul 2018 21:54:07 GMT
+
+### Minor changes
+
+- Add option to getFocusStyle() to not use :focus in the style selector.
+
+## 6.5.0
+Mon, 02 Jul 2018 20:41:48 GMT
+
+### Minor changes
+
+- New selectors for high contrast white and black modes.
 
 ## 6.4.0
 Fri, 29 Jun 2018 10:24:05 GMT

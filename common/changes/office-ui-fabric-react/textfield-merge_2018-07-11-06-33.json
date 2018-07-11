@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Link: HC color for link rendered as a button.",
-      "type": "patch"
+      "comment": "TextField: `id` prop now respected.",
+      "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "lynam.emily@gmail.com"
+  "email": "dzearing@microsoft.com"
 }

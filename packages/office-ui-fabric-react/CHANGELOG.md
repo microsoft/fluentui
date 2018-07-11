@@ -1,6 +1,121 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 02 Jul 2018 10:21:36 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Jul 2018 05:16:03 GMT and should not be manually modified.
+
+## 6.32.0
+Wed, 11 Jul 2018 05:16:03 GMT
+
+### Minor changes
+
+- DetailsHeader css-in-js conversion
+
+### Patches
+
+- Fixing detailsheader screen regression
+
+## 6.31.0
+Tue, 10 Jul 2018 21:54:07 GMT
+
+### Minor changes
+
+- Allow FloatingPicker to be a controlled component
+- CommandBar: Mix in menuProps to overflowButtonProps
+
+### Patches
+
+- Implement new getFocusStyle option in ComboBox.
+
+## 6.30.0
+Tue, 10 Jul 2018 05:05:15 GMT
+
+### Minor changes
+
+- Converting ContextualMenu to MergeStyles step 2 - Style Conversion
+- Coachmark: Add accessibility features to component, ARIA props, narrator support, and keyboarding controls
+
+### Patches
+
+- SearchBox: Move background color styling from searchbox input to searchbox root. Fixes #5477.
+
+## 6.29.0
+Mon, 09 Jul 2018 18:08:32 GMT
+
+### Minor changes
+
+- DetailsList - css-in-js styling
+- Dismiss panel when clicking outside of the Panel component.
+
+### Patches
+
+- Don't select date by default when clicking on a month 
+- FacePile now uses semantic list tags.
+
+## 6.27.0
+Fri, 06 Jul 2018 19:07:51 GMT
+
+### Minor changes
+
+- Builds a new umd bundle suitable for manifest service
+- HoverCard: Adds new prop 'openHotKey' to allow user to change the default key used to open the hover card when tabbing to it.
+
+### Patches
+
+- fixing webpack.config.js to only build production for the UMD / manifest
+
+## 6.26.0
+Fri, 06 Jul 2018 10:23:46 GMT
+
+### Minor changes
+
+- Converting ContextualMenu to MergeStyles step 1 - file structure
+- Change the styling for ContextualMenu secondaryText from neutralTertiary to neutralSecondary for accessibility
+
+### Patches
+
+- MessageBar: class name calculations were not being done in the correct location, and were only valid on initial render. Now ensuring they're evaluated prior to render.
+
+## 6.25.4
+Thu, 05 Jul 2018 17:54:06 GMT
+
+### Patches
+
+- Hide persona image when showing UnknownPersonaCoin
+- TeachingBubble: Fixed unscoped focus style
+
+## 6.25.3
+Thu, 05 Jul 2018 10:26:07 GMT
+
+### Patches
+
+- Fixed target index issue, when the dragged column is before the drophint
+- Fix the text is cropped unexpectedly
+
+## 6.25.2
+Wed, 04 Jul 2018 10:28:27 GMT
+
+### Patches
+
+- Dialog: Fixing layout issue for IE11
+
+## 6.25.1
+Tue, 03 Jul 2018 17:41:15 GMT
+
+### Patches
+
+- Pivot: Ctrl+number doesn't work in Firefox to switch tabs if Pivot is focused.
+- Dropdown: Substantially improve accessibility - in particular in single-select mode.
+
+## 6.25.0
+Mon, 02 Jul 2018 20:41:48 GMT
+
+### Minor changes
+
+- Convert TeachingBubble to use JS styling.
+
+### Patches
+
+- Checkbox: Updated hc hover states.
+- Link: HC color for link rendered as a button.
 
 ## 6.24.0
 Mon, 02 Jul 2018 10:21:36 GMT

@@ -3,6 +3,7 @@ import { Coachmark } from './Coachmark';
 import { ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.styles';
 import { IPositioningContainerTypes } from './PositioningContainer/PositioningContainer.types';
 import { IStyleFunctionOrObject } from '../../Utilities';
+import { ITeachingBubble } from '../../TeachingBubble';
 
 export interface ICoachmark {}
 
@@ -32,6 +33,7 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
 
   /**
    * Whether or not to force the Coachmark/TeachingBubble content to fit within the window bounds.
+   * @default true
    */
   isPositionForced?: boolean;
 
@@ -114,4 +116,34 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
    * Beacon color two.
    */
   beaconColorTwo?: string;
+
+  /**
+   * Text to announce to screen reader / narrator when Coachmark is displayed
+   */
+  ariaAlertText?: string;
+
+  /**
+   * Ref for TeachingBubble
+   */
+  teachingBubbleRef?: ITeachingBubble;
+
+  /**
+   *  Defines the element id referencing the element containing label text for Coachmark.
+   */
+  ariaLabelledBy?: string;
+
+  /**
+   * Defines the element id referencing the element containing the description for the Coachmark.
+   */
+  ariaDescribedBy?: string;
+
+  /**
+   *  Defines the text content for the ariaLabelledBy element
+   */
+  ariaLabelledByText?: string;
+
+  /**
+   * Defines the text content for the ariaDescribedBy element
+   */
+  ariaDescribedByText?: string;
 }

@@ -1,6 +1,20 @@
 # Change Log - @uifabric/webpack-utils
 
-This log was last generated on Mon, 02 Jul 2018 10:21:36 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Jul 2018 19:07:51 GMT and should not be manually modified.
+
+## 0.7.0
+Fri, 06 Jul 2018 19:07:51 GMT
+
+### Minor changes
+
+- Addes a manifest service plugin
+
+## 0.6.0
+Mon, 02 Jul 2018 20:41:48 GMT
+
+### Minor changes
+
+- Add Callout to the list of components that can be lazy loaded to reduce bundle sizes
 
 ## 0.5.0
 Mon, 02 Jul 2018 10:21:36 GMT

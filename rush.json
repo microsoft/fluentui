@@ -24,6 +24,12 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@uifabric/foundation",
+      "projectFolder": "packages/foundation",
+      "versionPolicyName": "lockedMajor",
+      "shouldPublish": true
+    },
+    {
       "packageName": "@uifabric/charting",
       "projectFolder": "packages/charting",
       "versionPolicyName": "lockedMajor",
