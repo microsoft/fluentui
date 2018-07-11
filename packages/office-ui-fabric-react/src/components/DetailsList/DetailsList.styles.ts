@@ -11,7 +11,7 @@ const GlobalClassNames = {
 
 export const getStyles = (props: IDetailsListStyleProps): IDetailsListStyles => {
   const { theme, className, isHorizontalConstrained, compact, isFixed } = props;
-  const { semanticColors, palette } = theme;
+  const { semanticColors } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return {
