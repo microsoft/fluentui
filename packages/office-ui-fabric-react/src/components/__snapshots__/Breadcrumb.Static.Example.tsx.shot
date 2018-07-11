@@ -163,6 +163,10 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                 disabled={undefined}
                 onClick={[Function]}
                 onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseUp={[Function]}
                 role="button"
                 type="button"
               >
@@ -267,6 +271,7 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                       -webkit-font-smoothing: antialiased;
                       background-color: transparent;
                       background: none;
+                      border-bottom: 1px solid transparent;
                       border: none;
                       color: #333333;
                       cursor: pointer;
@@ -306,6 +311,15 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                       top: 1px;
                       z-index: 1;
                     }
+                    @media screen and (-ms-high-contrast: white-on-black){& {
+                      color: #FFFF00;
+                    }
+                    @media screen and (-ms-high-contrast: black-on-white){& {
+                      color: #00009F;
+                    }
+                    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+                      border-bottom: none;
+                    }
                     &:active, &:hover, &:active:hover {
                       color: #004578;
                     }
@@ -342,6 +356,7 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                       font-weight: 400;
                       max-width: 116px;
                     }
+                disabled={undefined}
                 onClick={[Function]}
               >
                 <div
@@ -415,6 +430,7 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                       -webkit-font-smoothing: antialiased;
                       background-color: transparent;
                       background: none;
+                      border-bottom: 1px solid transparent;
                       border: none;
                       color: #333333;
                       cursor: pointer;
@@ -454,6 +470,15 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                       top: 1px;
                       z-index: 1;
                     }
+                    @media screen and (-ms-high-contrast: white-on-black){& {
+                      color: #FFFF00;
+                    }
+                    @media screen and (-ms-high-contrast: black-on-white){& {
+                      color: #00009F;
+                    }
+                    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+                      border-bottom: none;
+                    }
                     &:active, &:hover, &:active:hover {
                       color: #004578;
                     }
@@ -490,6 +515,7 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                       font-weight: 400;
                       max-width: 116px;
                     }
+                disabled={undefined}
                 onClick={[Function]}
               >
                 <div
@@ -563,6 +589,7 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                       -webkit-font-smoothing: antialiased;
                       background-color: transparent;
                       background: none;
+                      border-bottom: 1px solid transparent;
                       border: none;
                       color: #333333;
                       cursor: pointer;
@@ -602,6 +629,15 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                       top: 1px;
                       z-index: 1;
                     }
+                    @media screen and (-ms-high-contrast: white-on-black){& {
+                      color: #FFFF00;
+                    }
+                    @media screen and (-ms-high-contrast: black-on-white){& {
+                      color: #00009F;
+                    }
+                    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+                      border-bottom: none;
+                    }
                     &:active, &:hover, &:active:hover {
                       color: #004578;
                     }
@@ -638,6 +674,7 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                       font-weight: 400;
                       max-width: 116px;
                     }
+                disabled={undefined}
                 onClick={[Function]}
               >
                 <div

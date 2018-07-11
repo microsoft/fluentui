@@ -2,6 +2,20 @@
   "name": "@uifabric/icons",
   "entries": [
     {
+      "version": "6.0.2",
+      "tag": "@uifabric/icons_v6.0.2",
+      "date": "Wed, 27 Jun 2018 23:59:19 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "d9d488025a652298a145aad2565307a613591614",
+            "comment": "Republish to address issue #5353"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.0.1",
       "tag": "@uifabric/icons_v6.0.1",
       "date": "Tue, 05 Jun 2018 00:44:30 GMT",

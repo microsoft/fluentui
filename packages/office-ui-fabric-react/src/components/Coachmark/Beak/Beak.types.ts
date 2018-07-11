@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Beak } from './Beak';
-import { RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
+import { RectangleEdge } from '../../../utilities/positioning';
 
 export interface IBeak {}
 

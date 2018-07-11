@@ -38,7 +38,7 @@ export class ResourcesPage extends React.Component<any, any> {
               </div>
               <div className={css('ms-Grid-col ms-sm12 ms-lg8', styles.description)}>
                 <p>
-                  Use the resources on this page to ensure a consistent look and feel fore your project. This section
+                  Use the resources on this page to ensure a consistent look and feel for your project. This section
                   includes design and UI-related downloads for apps designed and built with Fabric.
                 </p>
 

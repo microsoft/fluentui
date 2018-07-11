@@ -225,6 +225,10 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
             }
         data-is-focusable={false}
         disabled={undefined}
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
         onMouseDown={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
@@ -349,6 +353,10 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
             }
         data-is-focusable={false}
         disabled={undefined}
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
         onMouseDown={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}

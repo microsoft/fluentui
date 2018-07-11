@@ -1,5 +1,5 @@
 import { getDividerClassNames } from '../Divider/VerticalDivider.classNames';
-import { getMenuItemStyles, getStyles as getContextualMenuStyles } from './ContextualMenu.styles';
+import { getMenuItemStyles, getStyles as getContextualMenuStyles } from './ContextualMenu.cnstyles';
 import { ITheme, mergeStyleSets } from '../../Styling';
 import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
 import { memoizeFunction } from '../../Utilities';

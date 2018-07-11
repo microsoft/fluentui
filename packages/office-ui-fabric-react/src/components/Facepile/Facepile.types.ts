@@ -147,7 +147,10 @@ export interface IFacepileStyleProps {
    */
   className?: string;
 
-  // Insert Facepile style props below
+  /**
+   * Pixel value for spacing around button. Number value set in pixels
+   */
+  spacingAroundItemButton?: number;
 }
 
 export interface IFacepileStyles {
@@ -155,6 +158,13 @@ export interface IFacepileStyles {
    * Style for the root element.
    */
   root: IStyle;
-
-  // Insert Facepile classNames below
+  addButton: IStyle;
+  descriptiveOverflowButton: IStyle;
+  itemContainer: IStyle;
+  itemButton: IStyle;
+  members: IStyle;
+  member: IStyle;
+  overflowButton: IStyle;
+  overflowInitialsIcon: IStyle;
+  screenReaderOnly: IStyle;
 }
