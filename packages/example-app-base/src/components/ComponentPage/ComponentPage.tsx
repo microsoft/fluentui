@@ -4,6 +4,7 @@ import { Link } from 'office-ui-fabric-react/lib/Link';
 import { MessageBar } from 'office-ui-fabric-react/lib/MessageBar';
 import { EditSection, ComponentPageSection } from '../EditSection';
 import './ComponentPage.scss';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
 
 export interface IComponentPageSection {
   title: string;
@@ -367,9 +368,12 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     if (this.props.feedback) {
       return (
         <div className="ComponentPage-feedbackSection">
-          <h2 className="ComponentPage-subHeading ComponentPage-variantsTitle" id="FeedbackExamples">
+          <h2 className="ComponentPage-subHeading ComponentPage-variantsTitle" id="Feedback">
             Feedback
           </h2>
+          <a href="https://github.com/OfficeDev/office-ui-fabric-react/issues" target="_blank">
+            Submit feedback on Github
+          </a>
           {this.props.feedback}
         </div>
       );
