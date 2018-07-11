@@ -219,7 +219,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                     className={css('ms-DatePicker-goToday js-goToday', styles.goToday, {
                       [styles.goTodayInlineMonth]: isMonthPickerVisible
                     })}
-                    onClick={this._onGotoToday}
+                    onClick={this._onGotoTodayClick}
                     onKeyDown={this._onGotoTodayKeyDown}
                     tabIndex={0}
                   >
@@ -296,19 +296,26 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     }
   };
 
-  private _onGotoToday = (): void => {
+  private _onGotoToday = (selectDateOnClick: boolean): void => {
     const { dateRangeType, firstDayOfWeek, today, workWeekDays } = this.props;
 
     const dates = getDateRangeArray(today!, dateRangeType!, firstDayOfWeek!, workWeekDays!);
 
-    this._onSelectDate(today!, dates);
+    if (selectDateOnClick) {
+      this._onSelectDate(today!, dates);
+    }
+
     this._navigateDayPickerDay(today!);
+  };
+
+  private _onGotoTodayClick = (ev: React.MouseEvent<HTMLElement>): void => {
+    this._onGotoToday(false /*selectDateOnClick*/);
   };
 
   private _onGotoTodayKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     if (ev.which === KeyCodes.enter) {
       ev.preventDefault();
-      this._onGotoToday();
+      this._onGotoToday(false /*selectDateOnClick*/);
     }
   };
 
