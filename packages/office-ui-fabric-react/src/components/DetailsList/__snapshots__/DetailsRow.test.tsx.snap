@@ -77,24 +77,25 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  align-items: center;
                   border: none;
                   box-sizing: border-box;
                   color: #333333;
-                  display: inline-block;
+                  display: inline-flex;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
                   height: 32px;
                   line-height: inherit;
-                  margin-bottom: 0;
-                  margin-left: 0;
-                  margin-right: 0;
-                  margin-top: 0;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   outline: transparent;
-                  padding-bottom: 0;
-                  padding-left: 8px;
-                  padding-right: 8px;
-                  padding-top: 0;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
                   position: relative;
                   text-align: left;
                   text-overflow: ellipsis;
@@ -114,22 +115,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   right: 1px;
                   top: 1px;
                   z-index: 1;
-                }
-                &:hover $gripperBarVerticalStyle {
-                  display: block;
-                }
-                {
-                  align-items: center;
-                  display: inline-flex;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 0px;
-                  padding-left: 0px;
-                  padding-right: 0px;
-                  padding-top: 0px;
-                  position: relative;
                 }
             onClick={[Function]}
             role="columnheader"
@@ -341,9 +326,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
-                &:hover $gripperBarVerticalStyle {
-                  display: block;
-                }
                 &:hover {
                   background: #f4f4f4;
                   color: #333333;
@@ -477,9 +459,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
-                &:hover $gripperBarVerticalStyle {
-                  display: block;
-                }
                 &:hover {
                   background: #f4f4f4;
                   color: #333333;
@@ -612,9 +591,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   right: 1px;
                   top: 1px;
                   z-index: 1;
-                }
-                &:hover $gripperBarVerticalStyle {
-                  display: block;
                 }
                 &:hover {
                   background: #f4f4f4;
@@ -882,24 +858,25 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  align-items: center;
                   border: none;
                   box-sizing: border-box;
                   color: #333333;
-                  display: inline-block;
+                  display: inline-flex;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
                   height: 32px;
                   line-height: inherit;
-                  margin-bottom: 0;
-                  margin-left: 0;
-                  margin-right: 0;
-                  margin-top: 0;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   outline: transparent;
-                  padding-bottom: 0;
-                  padding-left: 8px;
-                  padding-right: 8px;
-                  padding-top: 0;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
                   position: relative;
                   text-align: left;
                   text-overflow: ellipsis;
@@ -919,22 +896,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   right: 1px;
                   top: 1px;
                   z-index: 1;
-                }
-                &:hover $gripperBarVerticalStyle {
-                  display: block;
-                }
-                {
-                  align-items: center;
-                  display: inline-flex;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 0px;
-                  padding-left: 0px;
-                  padding-right: 0px;
-                  padding-top: 0px;
-                  position: relative;
                 }
             onClick={[Function]}
             role="columnheader"
@@ -1146,9 +1107,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   top: 1px;
                   z-index: 1;
                 }
-                &:hover $gripperBarVerticalStyle {
-                  display: block;
-                }
                 &:hover {
                   background: #f4f4f4;
                   color: #333333;
@@ -1282,9 +1240,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   top: 1px;
                   z-index: 1;
                 }
-                &:hover $gripperBarVerticalStyle {
-                  display: block;
-                }
                 &:hover {
                   background: #f4f4f4;
                   color: #333333;
@@ -1417,9 +1372,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   right: 1px;
                   top: 1px;
                   z-index: 1;
-                }
-                &:hover $gripperBarVerticalStyle {
-                  display: block;
                 }
                 &:hover {
                   background: #f4f4f4;
@@ -1687,24 +1639,25 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  align-items: center;
                   border: none;
                   box-sizing: border-box;
                   color: #333333;
-                  display: inline-block;
+                  display: inline-flex;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
                   height: 32px;
                   line-height: inherit;
-                  margin-bottom: 0;
-                  margin-left: 0;
-                  margin-right: 0;
-                  margin-top: 0;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   outline: transparent;
-                  padding-bottom: 0;
-                  padding-left: 8px;
-                  padding-right: 8px;
-                  padding-top: 0;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
                   position: relative;
                   text-align: left;
                   text-overflow: ellipsis;
@@ -1724,22 +1677,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   right: 1px;
                   top: 1px;
                   z-index: 1;
-                }
-                &:hover $gripperBarVerticalStyle {
-                  display: block;
-                }
-                {
-                  align-items: center;
-                  display: inline-flex;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 0px;
-                  padding-left: 0px;
-                  padding-right: 0px;
-                  padding-top: 0px;
-                  position: relative;
                 }
             onClick={[Function]}
             role="columnheader"
@@ -1951,9 +1888,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   top: 1px;
                   z-index: 1;
                 }
-                &:hover $gripperBarVerticalStyle {
-                  display: block;
-                }
                 &:hover {
                   background: #f4f4f4;
                   color: #333333;
@@ -2087,9 +2021,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   top: 1px;
                   z-index: 1;
                 }
-                &:hover $gripperBarVerticalStyle {
-                  display: block;
-                }
                 &:hover {
                   background: #f4f4f4;
                   color: #333333;
@@ -2222,9 +2153,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   right: 1px;
                   top: 1px;
                   z-index: 1;
-                }
-                &:hover $gripperBarVerticalStyle {
-                  display: block;
                 }
                 &:hover {
                   background: #f4f4f4;
@@ -2492,24 +2420,25 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  align-items: center;
                   border: none;
                   box-sizing: border-box;
                   color: #333333;
-                  display: inline-block;
+                  display: inline-flex;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
                   height: 32px;
                   line-height: inherit;
-                  margin-bottom: 0;
-                  margin-left: 0;
-                  margin-right: 0;
-                  margin-top: 0;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   outline: transparent;
-                  padding-bottom: 0;
-                  padding-left: 8px;
-                  padding-right: 8px;
-                  padding-top: 0;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
                   position: relative;
                   text-align: left;
                   text-overflow: ellipsis;
@@ -2529,22 +2458,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   right: 1px;
                   top: 1px;
                   z-index: 1;
-                }
-                &:hover $gripperBarVerticalStyle {
-                  display: block;
-                }
-                {
-                  align-items: center;
-                  display: inline-flex;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 0px;
-                  padding-left: 0px;
-                  padding-right: 0px;
-                  padding-top: 0px;
-                  position: relative;
                 }
             onClick={[Function]}
             role="columnheader"
@@ -2756,9 +2669,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   top: 1px;
                   z-index: 1;
                 }
-                &:hover $gripperBarVerticalStyle {
-                  display: block;
-                }
                 &:hover {
                   background: #f4f4f4;
                   color: #333333;
@@ -2892,9 +2802,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   top: 1px;
                   z-index: 1;
                 }
-                &:hover $gripperBarVerticalStyle {
-                  display: block;
-                }
                 &:hover {
                   background: #f4f4f4;
                   color: #333333;
@@ -3027,9 +2934,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   right: 1px;
                   top: 1px;
                   z-index: 1;
-                }
-                &:hover $gripperBarVerticalStyle {
-                  display: block;
                 }
                 &:hover {
                   background: #f4f4f4;
