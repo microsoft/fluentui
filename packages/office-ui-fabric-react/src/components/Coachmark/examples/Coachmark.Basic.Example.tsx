@@ -55,7 +55,7 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
           display: 'inline-block'
         }
       };
-    });
+    }, {});
 
     const buttonProps: IButtonProps = {
       text: 'Try it'

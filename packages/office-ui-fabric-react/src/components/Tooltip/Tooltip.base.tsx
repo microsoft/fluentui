@@ -1,12 +1,6 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  classNamesFunction,
-  customizable,
-  divProperties,
-  getNativeProps,
-  IClassNames
-} from '../../Utilities';
+import { BaseComponent, classNamesFunction, customizable, divProperties, getNativeProps } from '../../Utilities';
+import { IProcessedStyleSet } from '../../Styling';
 import { ITooltipProps, ITooltipStyleProps, ITooltipStyles, TooltipDelay } from './Tooltip.types';
 import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
@@ -29,7 +23,7 @@ export class TooltipBase extends BaseComponent<ITooltipProps, any> {
     }
   };
 
-  private _classNames: IClassNames<ITooltipStyles>;
+  private _classNames: IProcessedStyleSet<ITooltipStyles>;
 
   public render(): JSX.Element {
     const {
