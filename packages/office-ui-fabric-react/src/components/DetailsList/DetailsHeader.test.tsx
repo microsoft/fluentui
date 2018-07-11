@@ -12,7 +12,16 @@ const _selection = new Selection();
 
 const _columns: IColumn[] = [
   { key: 'a', name: 'a', fieldName: 'a', minWidth: 200, maxWidth: 400, calculatedWidth: 200, isResizable: true },
-  { key: 'b', name: 'b', fieldName: 'a', minWidth: 200, maxWidth: 400, calculatedWidth: 200, isResizable: true },
+  {
+    key: 'b',
+    name: 'b',
+    fieldName: 'a',
+    minWidth: 200,
+    maxWidth: 400,
+    calculatedWidth: 200,
+    isResizable: true,
+    isSorted: true
+  },
   {
     key: 'c',
     name: 'c',

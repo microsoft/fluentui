@@ -457,10 +457,11 @@ exports[`DetailsHeader can render 1`] = `
   />
   <div
     aria-colindex={3}
-    aria-sort="none"
+    aria-sort="ascending"
     className=
         ms-DetailsHeader-cell
         is-actionable
+        is-icon-visible
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
@@ -588,6 +589,29 @@ exports[`DetailsHeader can render 1`] = `
         >
           b
         </span>
+        <i
+          aria-hidden={true}
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #666666;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                opacity: 1;
+                padding-left: 4px;
+                position: relative;
+                speak: none;
+                top: 1px;
+              }
+          data-icon-name="SortUp"
+          role="presentation"
+        >
+          
+        </i>
       </span>
     </span>
   </div>
