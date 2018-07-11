@@ -92,9 +92,6 @@ exports[`DetailsHeader can render 1`] = `
         &:hover $gripperBarVerticalStyle {
           display: block;
         }
-        & $collapseButton {
-          padding-right: 0px;
-        }
         {
           align-items: center;
           display: inline-flex;
@@ -321,9 +318,6 @@ exports[`DetailsHeader can render 1`] = `
         &:hover $gripperBarVerticalStyle {
           display: block;
         }
-        & $collapseButton {
-          padding-right: 0px;
-        }
         &:hover {
           background: #f4f4f4;
           color: #333333;
@@ -510,9 +504,6 @@ exports[`DetailsHeader can render 1`] = `
         }
         &:hover $gripperBarVerticalStyle {
           display: block;
-        }
-        & $collapseButton {
-          padding-right: 0px;
         }
         &:hover {
           background: #f4f4f4;

@@ -118,9 +118,6 @@ exports[`DetailsList renders List correctly 1`] = `
                 &:hover $gripperBarVerticalStyle {
                   display: block;
                 }
-                & $collapseButton {
-                  padding-right: 0px;
-                }
                 {
                   align-items: center;
                   display: inline-flex;
@@ -346,9 +343,6 @@ exports[`DetailsList renders List correctly 1`] = `
                 }
                 &:hover $gripperBarVerticalStyle {
                   display: block;
-                }
-                & $collapseButton {
-                  padding-right: 0px;
                 }
                 &:hover {
                   background: #f4f4f4;

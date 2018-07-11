@@ -118,9 +118,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 &:hover $gripperBarVerticalStyle {
                   display: block;
                 }
-                & $collapseButton {
-                  padding-right: 0px;
-                }
                 {
                   align-items: center;
                   display: inline-flex;
@@ -347,9 +344,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 &:hover $gripperBarVerticalStyle {
                   display: block;
                 }
-                & $collapseButton {
-                  padding-right: 0px;
-                }
                 &:hover {
                   background: #f4f4f4;
                   color: #333333;
@@ -486,9 +480,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 &:hover $gripperBarVerticalStyle {
                   display: block;
                 }
-                & $collapseButton {
-                  padding-right: 0px;
-                }
                 &:hover {
                   background: #f4f4f4;
                   color: #333333;
@@ -624,9 +615,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 }
                 &:hover $gripperBarVerticalStyle {
                   display: block;
-                }
-                & $collapseButton {
-                  padding-right: 0px;
                 }
                 &:hover {
                   background: #f4f4f4;
@@ -935,9 +923,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 &:hover $gripperBarVerticalStyle {
                   display: block;
                 }
-                & $collapseButton {
-                  padding-right: 0px;
-                }
                 {
                   align-items: center;
                   display: inline-flex;
@@ -1164,9 +1149,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 &:hover $gripperBarVerticalStyle {
                   display: block;
                 }
-                & $collapseButton {
-                  padding-right: 0px;
-                }
                 &:hover {
                   background: #f4f4f4;
                   color: #333333;
@@ -1303,9 +1285,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 &:hover $gripperBarVerticalStyle {
                   display: block;
                 }
-                & $collapseButton {
-                  padding-right: 0px;
-                }
                 &:hover {
                   background: #f4f4f4;
                   color: #333333;
@@ -1441,9 +1420,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 }
                 &:hover $gripperBarVerticalStyle {
                   display: block;
-                }
-                & $collapseButton {
-                  padding-right: 0px;
                 }
                 &:hover {
                   background: #f4f4f4;
@@ -1752,9 +1728,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 &:hover $gripperBarVerticalStyle {
                   display: block;
                 }
-                & $collapseButton {
-                  padding-right: 0px;
-                }
                 {
                   align-items: center;
                   display: inline-flex;
@@ -1981,9 +1954,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 &:hover $gripperBarVerticalStyle {
                   display: block;
                 }
-                & $collapseButton {
-                  padding-right: 0px;
-                }
                 &:hover {
                   background: #f4f4f4;
                   color: #333333;
@@ -2120,9 +2090,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 &:hover $gripperBarVerticalStyle {
                   display: block;
                 }
-                & $collapseButton {
-                  padding-right: 0px;
-                }
                 &:hover {
                   background: #f4f4f4;
                   color: #333333;
@@ -2258,9 +2225,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 }
                 &:hover $gripperBarVerticalStyle {
                   display: block;
-                }
-                & $collapseButton {
-                  padding-right: 0px;
                 }
                 &:hover {
                   background: #f4f4f4;
@@ -2569,9 +2533,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 &:hover $gripperBarVerticalStyle {
                   display: block;
                 }
-                & $collapseButton {
-                  padding-right: 0px;
-                }
                 {
                   align-items: center;
                   display: inline-flex;
@@ -2798,9 +2759,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 &:hover $gripperBarVerticalStyle {
                   display: block;
                 }
-                & $collapseButton {
-                  padding-right: 0px;
-                }
                 &:hover {
                   background: #f4f4f4;
                   color: #333333;
@@ -2937,9 +2895,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 &:hover $gripperBarVerticalStyle {
                   display: block;
                 }
-                & $collapseButton {
-                  padding-right: 0px;
-                }
                 &:hover {
                   background: #f4f4f4;
                   color: #333333;
@@ -3075,9 +3030,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 }
                 &:hover $gripperBarVerticalStyle {
                   display: block;
-                }
-                & $collapseButton {
-                  padding-right: 0px;
                 }
                 &:hover {
                   background: #f4f4f4;
