@@ -7,7 +7,9 @@ export { IDetailsListProps };
 
 export const DetailsList = styled<IDetailsListProps, IDetailsListStyleProps, IDetailsListStyles>(
   DetailsListBase,
-  getStyles
+  getStyles,
+  undefined,
+  { scope: 'DetailsList' }
 );
 
 export * from './DetailsList.base';
