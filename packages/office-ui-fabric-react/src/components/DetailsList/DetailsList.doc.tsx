@@ -46,61 +46,61 @@ export const DetailsListPageProps: IDocPageProps = {
     'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList',
   componentStatus: DetailsListStatus,
   examples: [
-    // {
-    //   title: 'Document DetailsList with 500 items, sorting, filtering, marquee selection, justified columns',
-    //   code: DetailsListDocumentsExampleCode,
-    //   view: <DetailsListDocumentsExample />
-    // },
-    // {
-    //   title: 'Simple DetailsList with 500 items, filtering, marquee selection',
-    //   code: DetailsListBasicExampleCode,
-    //   view: <DetailsListBasicExample />
-    // },
-    // {
-    //   title: 'Compact DetailsList with 500 items, filtering, marquee selection',
-    //   code: DetailsListCompactExampleCode,
-    //   view: <DetailsListCompactExample />
-    // },
-    // {
-    //   title: 'Simple Grouped DetailsList',
-    //   code: DetailsListGroupedExampleCode,
-    //   view: <DetailsListGroupedExample />
-    // },
-    // {
-    //   title: 'Large Grouped DetailsList',
-    //   code: DetailsListGroupedLargeExampleCode,
-    //   view: <DetailsListGroupedLargeExample />
-    // },
-    // {
-    //   title: 'Rendering custom item columns with sorting',
-    //   code: DetailsListCustomColumnsExampleCode,
-    //   view: <DetailsListCustomColumnsExample />
-    // },
-    // {
-    //   title: 'Rendering custom item rows',
-    //   code: DetailsListCustomRowsExampleCode,
-    //   view: <DetailsListCustomRowsExample />
-    // },
-    // {
-    //   title: 'Rendering custom group headers',
-    //   code: DetailsListCustomGroupHeadersExampleCode,
-    //   view: <DetailsListCustomGroupHeadersExample />
-    // },
-    // {
-    //   title: 'Advanced DetailsList of 5000 items, variable row heights',
-    //   code: DetailsListAdvancedExampleCode,
-    //   view: <DetailsListAdvancedExample />
-    // },
-    // {
-    //   title: 'Drag and Drop DetailsList with 10 items',
-    //   code: DetailsListDragDropExampleCode,
-    //   view: <DetailsListDragDropExample />
-    // },
-    // {
-    //   title: 'Navigating to new content preserving keyboard focus with initialFocusedIndex',
-    //   code: DetailsListNavigatingFocusExampleCode,
-    //   view: <DetailsListNavigatingFocusExample />
-    // },
+    {
+      title: 'Document DetailsList with 500 items, sorting, filtering, marquee selection, justified columns',
+      code: DetailsListDocumentsExampleCode,
+      view: <DetailsListDocumentsExample />
+    },
+    {
+      title: 'Simple DetailsList with 500 items, filtering, marquee selection',
+      code: DetailsListBasicExampleCode,
+      view: <DetailsListBasicExample />
+    },
+    {
+      title: 'Compact DetailsList with 500 items, filtering, marquee selection',
+      code: DetailsListCompactExampleCode,
+      view: <DetailsListCompactExample />
+    },
+    {
+      title: 'Simple Grouped DetailsList',
+      code: DetailsListGroupedExampleCode,
+      view: <DetailsListGroupedExample />
+    },
+    {
+      title: 'Large Grouped DetailsList',
+      code: DetailsListGroupedLargeExampleCode,
+      view: <DetailsListGroupedLargeExample />
+    },
+    {
+      title: 'Rendering custom item columns with sorting',
+      code: DetailsListCustomColumnsExampleCode,
+      view: <DetailsListCustomColumnsExample />
+    },
+    {
+      title: 'Rendering custom item rows',
+      code: DetailsListCustomRowsExampleCode,
+      view: <DetailsListCustomRowsExample />
+    },
+    {
+      title: 'Rendering custom group headers',
+      code: DetailsListCustomGroupHeadersExampleCode,
+      view: <DetailsListCustomGroupHeadersExample />
+    },
+    {
+      title: 'Advanced DetailsList of 5000 items, variable row heights',
+      code: DetailsListAdvancedExampleCode,
+      view: <DetailsListAdvancedExample />
+    },
+    {
+      title: 'Drag and Drop DetailsList with 10 items',
+      code: DetailsListDragDropExampleCode,
+      view: <DetailsListDragDropExample />
+    },
+    {
+      title: 'Navigating to new content preserving keyboard focus with initialFocusedIndex',
+      code: DetailsListNavigatingFocusExampleCode,
+      view: <DetailsListNavigatingFocusExample />
+    },
     {
       title: 'DetailsList Shimmer - usually show before retrieving data from network',
       code: DetailsListShimmerExampleCode,
