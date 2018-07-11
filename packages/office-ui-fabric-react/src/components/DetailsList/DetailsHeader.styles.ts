@@ -184,9 +184,6 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         selectors: {
           '&:hover $gripperBarVerticalStyle': {
             display: 'block'
-          },
-          $collapseButton: {
-            paddingRight: 0
           }
         }
       }
@@ -270,7 +267,8 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         transformOrigin: '50% 50%',
         transition: 'transform 0.1s linear',
         width: 20,
-        outline: 0
+        outline: 0,
+        paddingRight: 0
       },
       isAllCollapsed && {
         transform: 'rotate(0deg)'
