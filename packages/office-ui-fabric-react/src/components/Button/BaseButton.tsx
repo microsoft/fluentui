@@ -411,6 +411,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _onRenderMenu = (menuProps: IContextualMenuProps): JSX.Element => {
     const { onDismiss = this._dismissMenu } = menuProps;
 
+    const MenuType = this.props.menuAs || (ContextualMenu as React.ReactType<IContextualMenuProps>);
+
     // the accessible menu label (accessible name) has a relationship to the button.
     // If the menu props do not specify an explicit value for aria-label or aria-labelledBy,
     // AND the button has text, we'll set the menu aria-labelledBy to the text element id.
@@ -419,7 +421,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
 
     return (
-      <ContextualMenu
+      <MenuType
         id={this._labelId + '-menu'}
         directionalHint={DirectionalHint.bottomLeftEdge}
         {...menuProps}
