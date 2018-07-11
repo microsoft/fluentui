@@ -92,8 +92,8 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   margin-top: 0;
                   outline: transparent;
                   padding-bottom: 0;
-                  padding-left: 8;
-                  padding-right: 8;
+                  padding-left: 8px;
+                  padding-right: 8px;
                   padding-top: 0;
                   position: relative;
                   text-align: left;
@@ -117,11 +117,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 }
                 &:hover $gripperBarVerticalStyle {
                   display: block;
-                }
-                & $filterChevron {
-                  color: #a6a6a6;
-                  padding-left: 4px;
-                  vertical-align: middle;
                 }
                 & $collapseButton {
                   padding-right: 0px;
@@ -326,8 +321,8 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   margin-top: 0;
                   outline: transparent;
                   padding-bottom: 0;
-                  padding-left: 8;
-                  padding-right: 8;
+                  padding-left: 8px;
+                  padding-right: 8px;
                   padding-top: 0;
                   position: relative;
                   text-align: left;
@@ -351,11 +346,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 }
                 &:hover $gripperBarVerticalStyle {
                   display: block;
-                }
-                & $filterChevron {
-                  color: #a6a6a6;
-                  padding-left: 4px;
-                  vertical-align: middle;
                 }
                 & $collapseButton {
                   padding-right: 0px;
@@ -470,8 +460,8 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   margin-top: 0;
                   outline: transparent;
                   padding-bottom: 0;
-                  padding-left: 8;
-                  padding-right: 8;
+                  padding-left: 8px;
+                  padding-right: 8px;
                   padding-top: 0;
                   position: relative;
                   text-align: left;
@@ -495,11 +485,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 }
                 &:hover $gripperBarVerticalStyle {
                   display: block;
-                }
-                & $filterChevron {
-                  color: #a6a6a6;
-                  padding-left: 4px;
-                  vertical-align: middle;
                 }
                 & $collapseButton {
                   padding-right: 0px;
@@ -614,8 +599,8 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   margin-top: 0;
                   outline: transparent;
                   padding-bottom: 0;
-                  padding-left: 8;
-                  padding-right: 8;
+                  padding-left: 8px;
+                  padding-right: 8px;
                   padding-top: 0;
                   position: relative;
                   text-align: left;
@@ -639,11 +624,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 }
                 &:hover $gripperBarVerticalStyle {
                   display: block;
-                }
-                & $filterChevron {
-                  color: #a6a6a6;
-                  padding-left: 4px;
-                  vertical-align: middle;
                 }
                 & $collapseButton {
                   padding-right: 0px;
@@ -929,8 +909,8 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   margin-top: 0;
                   outline: transparent;
                   padding-bottom: 0;
-                  padding-left: 8;
-                  padding-right: 8;
+                  padding-left: 8px;
+                  padding-right: 8px;
                   padding-top: 0;
                   position: relative;
                   text-align: left;
@@ -954,11 +934,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 }
                 &:hover $gripperBarVerticalStyle {
                   display: block;
-                }
-                & $filterChevron {
-                  color: #a6a6a6;
-                  padding-left: 4px;
-                  vertical-align: middle;
                 }
                 & $collapseButton {
                   padding-right: 0px;
@@ -1163,8 +1138,8 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   margin-top: 0;
                   outline: transparent;
                   padding-bottom: 0;
-                  padding-left: 8;
-                  padding-right: 8;
+                  padding-left: 8px;
+                  padding-right: 8px;
                   padding-top: 0;
                   position: relative;
                   text-align: left;
@@ -1188,11 +1163,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 }
                 &:hover $gripperBarVerticalStyle {
                   display: block;
-                }
-                & $filterChevron {
-                  color: #a6a6a6;
-                  padding-left: 4px;
-                  vertical-align: middle;
                 }
                 & $collapseButton {
                   padding-right: 0px;
@@ -1307,8 +1277,8 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   margin-top: 0;
                   outline: transparent;
                   padding-bottom: 0;
-                  padding-left: 8;
-                  padding-right: 8;
+                  padding-left: 8px;
+                  padding-right: 8px;
                   padding-top: 0;
                   position: relative;
                   text-align: left;
@@ -1332,11 +1302,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 }
                 &:hover $gripperBarVerticalStyle {
                   display: block;
-                }
-                & $filterChevron {
-                  color: #a6a6a6;
-                  padding-left: 4px;
-                  vertical-align: middle;
                 }
                 & $collapseButton {
                   padding-right: 0px;
@@ -1451,8 +1416,8 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   margin-top: 0;
                   outline: transparent;
                   padding-bottom: 0;
-                  padding-left: 8;
-                  padding-right: 8;
+                  padding-left: 8px;
+                  padding-right: 8px;
                   padding-top: 0;
                   position: relative;
                   text-align: left;
@@ -1476,11 +1441,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 }
                 &:hover $gripperBarVerticalStyle {
                   display: block;
-                }
-                & $filterChevron {
-                  color: #a6a6a6;
-                  padding-left: 4px;
-                  vertical-align: middle;
                 }
                 & $collapseButton {
                   padding-right: 0px;
@@ -1766,8 +1726,8 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   margin-top: 0;
                   outline: transparent;
                   padding-bottom: 0;
-                  padding-left: 8;
-                  padding-right: 8;
+                  padding-left: 8px;
+                  padding-right: 8px;
                   padding-top: 0;
                   position: relative;
                   text-align: left;
@@ -1791,11 +1751,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 }
                 &:hover $gripperBarVerticalStyle {
                   display: block;
-                }
-                & $filterChevron {
-                  color: #a6a6a6;
-                  padding-left: 4px;
-                  vertical-align: middle;
                 }
                 & $collapseButton {
                   padding-right: 0px;
@@ -2000,8 +1955,8 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   margin-top: 0;
                   outline: transparent;
                   padding-bottom: 0;
-                  padding-left: 8;
-                  padding-right: 8;
+                  padding-left: 8px;
+                  padding-right: 8px;
                   padding-top: 0;
                   position: relative;
                   text-align: left;
@@ -2025,11 +1980,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 }
                 &:hover $gripperBarVerticalStyle {
                   display: block;
-                }
-                & $filterChevron {
-                  color: #a6a6a6;
-                  padding-left: 4px;
-                  vertical-align: middle;
                 }
                 & $collapseButton {
                   padding-right: 0px;
@@ -2144,8 +2094,8 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   margin-top: 0;
                   outline: transparent;
                   padding-bottom: 0;
-                  padding-left: 8;
-                  padding-right: 8;
+                  padding-left: 8px;
+                  padding-right: 8px;
                   padding-top: 0;
                   position: relative;
                   text-align: left;
@@ -2169,11 +2119,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 }
                 &:hover $gripperBarVerticalStyle {
                   display: block;
-                }
-                & $filterChevron {
-                  color: #a6a6a6;
-                  padding-left: 4px;
-                  vertical-align: middle;
                 }
                 & $collapseButton {
                   padding-right: 0px;
@@ -2288,8 +2233,8 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   margin-top: 0;
                   outline: transparent;
                   padding-bottom: 0;
-                  padding-left: 8;
-                  padding-right: 8;
+                  padding-left: 8px;
+                  padding-right: 8px;
                   padding-top: 0;
                   position: relative;
                   text-align: left;
@@ -2313,11 +2258,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 }
                 &:hover $gripperBarVerticalStyle {
                   display: block;
-                }
-                & $filterChevron {
-                  color: #a6a6a6;
-                  padding-left: 4px;
-                  vertical-align: middle;
                 }
                 & $collapseButton {
                   padding-right: 0px;
@@ -2603,8 +2543,8 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   margin-top: 0;
                   outline: transparent;
                   padding-bottom: 0;
-                  padding-left: 8;
-                  padding-right: 8;
+                  padding-left: 8px;
+                  padding-right: 8px;
                   padding-top: 0;
                   position: relative;
                   text-align: left;
@@ -2628,11 +2568,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 }
                 &:hover $gripperBarVerticalStyle {
                   display: block;
-                }
-                & $filterChevron {
-                  color: #a6a6a6;
-                  padding-left: 4px;
-                  vertical-align: middle;
                 }
                 & $collapseButton {
                   padding-right: 0px;
@@ -2837,8 +2772,8 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   margin-top: 0;
                   outline: transparent;
                   padding-bottom: 0;
-                  padding-left: 8;
-                  padding-right: 8;
+                  padding-left: 8px;
+                  padding-right: 8px;
                   padding-top: 0;
                   position: relative;
                   text-align: left;
@@ -2862,11 +2797,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 }
                 &:hover $gripperBarVerticalStyle {
                   display: block;
-                }
-                & $filterChevron {
-                  color: #a6a6a6;
-                  padding-left: 4px;
-                  vertical-align: middle;
                 }
                 & $collapseButton {
                   padding-right: 0px;
@@ -2981,8 +2911,8 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   margin-top: 0;
                   outline: transparent;
                   padding-bottom: 0;
-                  padding-left: 8;
-                  padding-right: 8;
+                  padding-left: 8px;
+                  padding-right: 8px;
                   padding-top: 0;
                   position: relative;
                   text-align: left;
@@ -3006,11 +2936,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 }
                 &:hover $gripperBarVerticalStyle {
                   display: block;
-                }
-                & $filterChevron {
-                  color: #a6a6a6;
-                  padding-left: 4px;
-                  vertical-align: middle;
                 }
                 & $collapseButton {
                   padding-right: 0px;
@@ -3125,8 +3050,8 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   margin-top: 0;
                   outline: transparent;
                   padding-bottom: 0;
-                  padding-left: 8;
-                  padding-right: 8;
+                  padding-left: 8px;
+                  padding-right: 8px;
                   padding-top: 0;
                   position: relative;
                   text-align: left;
@@ -3150,11 +3075,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 }
                 &:hover $gripperBarVerticalStyle {
                   display: block;
-                }
-                & $filterChevron {
-                  color: #a6a6a6;
-                  padding-left: 4px;
-                  vertical-align: middle;
                 }
                 & $collapseButton {
                   padding-right: 0px;

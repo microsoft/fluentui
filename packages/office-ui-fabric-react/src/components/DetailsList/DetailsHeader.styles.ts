@@ -185,11 +185,6 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
           '&:hover $gripperBarVerticalStyle': {
             display: 'block'
           },
-          '& $filterChevron': {
-            color: colors.dropdownChevronForegroundColor,
-            paddingLeft: 4,
-            verticalAlign: 'middle'
-          },
           $collapseButton: {
             paddingRight: 0
           }
@@ -235,8 +230,16 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
           },
 
           '&:focus:after': cellSizerFadeInStyles,
-          '&:hover:after': cellSizerFadeInStyles,
-          '&$cellIsResizing:after': [
+          '&:hover:after': cellSizerFadeInStyles
+        }
+      }
+    ],
+
+    cellIsResizing: [
+      classNames.isResizing,
+      {
+        selectors: {
+          '&:after': [
             cellSizerFadeInStyles,
             {
               boxShadow: '0 0 5px 0 0 rgba(0, 0, 0, 0.4)'
@@ -245,8 +248,6 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         }
       }
     ],
-
-    cellIsResizing: [classNames.isResizing],
 
     cellSizerStart: [
       {
@@ -303,7 +304,14 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
       }
     ],
 
-    filterChevron: [classNames.filterChevron],
+    filterChevron: [
+      classNames.filterChevron,
+      {
+        color: colors.dropdownChevronForegroundColor,
+        paddingLeft: 4,
+        verticalAlign: 'middle'
+      }
+    ],
 
     cellTitle: [
       classNames.cellTitle,
