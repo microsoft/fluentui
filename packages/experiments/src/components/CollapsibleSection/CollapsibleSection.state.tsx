@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ICollapsibleSectionProps, ICollapsibleSectionStyles } from './CollapsibleSection.types';
 import { createRef } from 'office-ui-fabric-react';
-import { TStateProps } from '../../utilities/createComponent';
+import { IStateProps } from '../../Foundation';
 import { getRTL, KeyCodes } from '../../Utilities';
 
 export interface ICollapsibleSectionState {
@@ -10,7 +10,7 @@ export interface ICollapsibleSectionState {
 
 // TODO: these types seem duplicated from createComponent. try to avoid duplication and be aware of circular references with IStateComponent
 // export type ICollapsibleSectionStateProps = ICollapsibleSectionProps & { styles: { [key in keyof ICollapsibleSectionStyles]: string } };
-export type ICollapsibleSectionStateProps = TStateProps<
+export type ICollapsibleSectionStateProps = IStateProps<
   ICollapsibleSectionProps & { styles: { [key in keyof ICollapsibleSectionStyles]: string } }
 >;
 

@@ -189,6 +189,7 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
   </div>
   <button
     aria-describedby={undefined}
+    aria-disabled={undefined}
     aria-label={undefined}
     aria-labelledby={undefined}
     aria-pressed={undefined}
@@ -268,6 +269,11 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
     data-is-focusable={true}
     disabled={undefined}
     onClick={[Function]}
+    onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
     type="button"
   >
     <div

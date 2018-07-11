@@ -18,10 +18,15 @@ module.exports = function(options) {
   // We wait for all compilations to be done to report success
   const runPromises = [];
 
-  runPromises.push(runTscFor('lib-commonjs', 'commonjs', extraParams));
-
-  if (!options.commonjsOnly) {
+  if (options.commonjsOnly) {
+    runPromises.push(runTscFor('lib', 'commonjs', extraParams));
+  } else {
+    runPromises.push(runTscFor('lib-commonjs', 'commonjs', extraParams));
     runPromises.push(runTscFor('lib', 'es2015', extraParams));
+  }
+
+  if (options.isProduction) {
+    runPromises.push(runTscFor('lib-amd', 'amd', extraParams));
   }
 
   return Promise.all(runPromises);

@@ -25,6 +25,46 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           animation-fill-mode: both;
           animation-name: keyframes from{opacity:0;}to{opacity:1;};
           animation-timing-function: cubic-bezier(.1,.25,.75,.9);
+          background: #ffffff;
+          border-bottom: 1px solid #f4f4f4;
+          box-sizing: border-box;
+          color: #767676;
+          display: flex;
+          min-height: 42px;
+          min-width: 100%;
+          outline: transparent;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+          text-align: left;
+          vertical-align: top;
+          white-space: nowrap;
+        }
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #0078d4;
+          bottom: 1px;
+          content: "";
+          left: 1px;
+          outline: 1px solid #ffffff;
+          position: absolute;
+          right: 1px;
+          top: 1px;
+          z-index: 1;
+        }
+        ms-List-cell:first-child &:before {
+          display: none;
+        }
+        &:hover {
+          background: #f4f4f4;
+          color: #666666;
+        }
+        &:hover $check {
+          opacity: 1;
         }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone1"
@@ -45,13 +85,115 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
   >
     <div
       aria-colindex={1}
-      className="ms-DetailsRow-cell ms-DetailsRow-cellCheck"
+      className=
+          ms-DetailsRow-cell
+          ms-DetailsRow-cellCheck
+          {
+            box-sizing: border-box;
+            display: inline-block;
+            flex-shrink: 0;
+            margin-top: -1px;
+            min-height: 42px;
+            outline: transparent;
+            overflow: hidden;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 1px;
+            position: relative;
+            text-overflow: ellipsis;
+            vertical-align: top;
+            white-space: nowrap;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid #666666;
+            bottom: 0px;
+            content: "";
+            left: 0px;
+            outline: 1px solid #ffffff;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            z-index: 1;
+          }
+          & > button {
+            max-width: 100%;
+          }
+          & [data-is-focusable='true'] {
+            outline: transparent;
+            position: relative;
+          }
+          & [data-is-focusable='true']::-moz-focus-inner {
+            border: 0;
+          }
+          &.$shimmer {
+            border-bottom: 17.5px solid #ffffff;
+            border-left: 8px solid #ffffff;
+            border-right: 32px solid #ffffff;
+            border-top: 17.5px solid #ffffff;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+          }
+          &.$shimmerIconPlaceholder {
+            border-bottom: 13px solid #ffffff;
+            border-left: 8px solid #ffffff;
+            border-top: 13px solid #ffffff;
+          }
       data-selection-toggle={true}
       role="gridcell"
     >
       <div
         aria-checked={false}
-        className="ms-DetailsRow-check"
+        className=
+            ms-DetailsRow-check
+
+            {
+              align-items: center;
+              background-color: transparent;
+              background: none;
+              border: none;
+              box-sizing: border-box;
+              cursor: default;
+              display: flex;
+              height: 40px;
+              justify-content: center;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              opacity: 0;
+              outline: transparent;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+              vertical-align: top;
+              width: 40px;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: 1px;
+              content: "";
+              left: 1px;
+              outline: 1px solid #666666;
+              position: absolute;
+              right: 1px;
+              top: 1px;
+              z-index: 1;
+            }
+            &:hover {
+              opacity: 1;
+            }
+
         data-automationid="DetailsRowCheck"
         data-selection-toggle={true}
         role="checkbox"
@@ -79,7 +221,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 right: 1px;
                 top: 1px;
               }
-              .checkHost:hover &, .checkHost:focus &, &:hover, &:focus {
+              $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
                 opacity: 1;
               }
         >
@@ -151,13 +293,75 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
     </div>
     <div
-      className="ms-DetailsRow-fields"
+      className=
+          ms-DetailsRow-fields
+          {
+            align-items: stretch;
+            display: flex;
+          }
       data-automationid="DetailsRowFields"
       role="presentation"
     >
       <div
         aria-colindex={2}
-        className="ms-DetailsRow-cell"
+        className=
+            ms-DetailsRow-cell
+            {
+              padding-right: 8px;
+            }
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #666666;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            &.$shimmer {
+              border-bottom: 17.5px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-right: 32px solid #ffffff;
+              border-top: 17.5px solid #ffffff;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+            }
+            &.$shimmerIconPlaceholder {
+              border-bottom: 13px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-top: 13px solid #ffffff;
+            }
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -171,7 +375,64 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
       <div
         aria-colindex={3}
-        className="ms-DetailsRow-cell"
+        className=
+            ms-DetailsRow-cell
+            {
+              padding-right: 8px;
+            }
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #666666;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            &.$shimmer {
+              border-bottom: 17.5px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-right: 32px solid #ffffff;
+              border-top: 17.5px solid #ffffff;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+            }
+            &.$shimmerIconPlaceholder {
+              border-bottom: 13px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-top: 13px solid #ffffff;
+            }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -223,7 +484,64 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
       <div
         aria-colindex={4}
-        className="ms-DetailsRow-cell"
+        className=
+            ms-DetailsRow-cell
+            {
+              padding-right: 8px;
+            }
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #666666;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            &.$shimmer {
+              border-bottom: 17.5px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-right: 32px solid #ffffff;
+              border-top: 17.5px solid #ffffff;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+            }
+            &.$shimmerIconPlaceholder {
+              border-bottom: 13px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-top: 13px solid #ffffff;
+            }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -235,6 +553,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -303,6 +622,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
           data-is-focusable={true}
           disabled={undefined}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -345,7 +670,16 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     </div>
     <span
       aria-checked={false}
-      className=""
+      className=
+
+          {
+            bottom: 0px;
+            display: none;
+            left: 0px;
+            position: absolute;
+            right: 0px;
+            top: -1px;
+          }
       data-selection-toggle={true}
       role="checkbox"
     />
@@ -364,6 +698,46 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           animation-fill-mode: both;
           animation-name: keyframes from{opacity:0;}to{opacity:1;};
           animation-timing-function: cubic-bezier(.1,.25,.75,.9);
+          background: #ffffff;
+          border-bottom: 1px solid #f4f4f4;
+          box-sizing: border-box;
+          color: #767676;
+          display: flex;
+          min-height: 42px;
+          min-width: 100%;
+          outline: transparent;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+          text-align: left;
+          vertical-align: top;
+          white-space: nowrap;
+        }
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #0078d4;
+          bottom: 1px;
+          content: "";
+          left: 1px;
+          outline: 1px solid #ffffff;
+          position: absolute;
+          right: 1px;
+          top: 1px;
+          z-index: 1;
+        }
+        ms-List-cell:first-child &:before {
+          display: none;
+        }
+        &:hover {
+          background: #f4f4f4;
+          color: #666666;
+        }
+        &:hover $check {
+          opacity: 1;
         }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone5"
@@ -384,13 +758,115 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
   >
     <div
       aria-colindex={1}
-      className="ms-DetailsRow-cell ms-DetailsRow-cellCheck"
+      className=
+          ms-DetailsRow-cell
+          ms-DetailsRow-cellCheck
+          {
+            box-sizing: border-box;
+            display: inline-block;
+            flex-shrink: 0;
+            margin-top: -1px;
+            min-height: 42px;
+            outline: transparent;
+            overflow: hidden;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 1px;
+            position: relative;
+            text-overflow: ellipsis;
+            vertical-align: top;
+            white-space: nowrap;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid #666666;
+            bottom: 0px;
+            content: "";
+            left: 0px;
+            outline: 1px solid #ffffff;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            z-index: 1;
+          }
+          & > button {
+            max-width: 100%;
+          }
+          & [data-is-focusable='true'] {
+            outline: transparent;
+            position: relative;
+          }
+          & [data-is-focusable='true']::-moz-focus-inner {
+            border: 0;
+          }
+          &.$shimmer {
+            border-bottom: 17.5px solid #ffffff;
+            border-left: 8px solid #ffffff;
+            border-right: 32px solid #ffffff;
+            border-top: 17.5px solid #ffffff;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+          }
+          &.$shimmerIconPlaceholder {
+            border-bottom: 13px solid #ffffff;
+            border-left: 8px solid #ffffff;
+            border-top: 13px solid #ffffff;
+          }
       data-selection-toggle={true}
       role="gridcell"
     >
       <div
         aria-checked={false}
-        className="ms-DetailsRow-check"
+        className=
+            ms-DetailsRow-check
+
+            {
+              align-items: center;
+              background-color: transparent;
+              background: none;
+              border: none;
+              box-sizing: border-box;
+              cursor: default;
+              display: flex;
+              height: 40px;
+              justify-content: center;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              opacity: 0;
+              outline: transparent;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+              vertical-align: top;
+              width: 40px;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: 1px;
+              content: "";
+              left: 1px;
+              outline: 1px solid #666666;
+              position: absolute;
+              right: 1px;
+              top: 1px;
+              z-index: 1;
+            }
+            &:hover {
+              opacity: 1;
+            }
+
         data-automationid="DetailsRowCheck"
         data-selection-toggle={true}
         role="checkbox"
@@ -418,7 +894,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 right: 1px;
                 top: 1px;
               }
-              .checkHost:hover &, .checkHost:focus &, &:hover, &:focus {
+              $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
                 opacity: 1;
               }
         >
@@ -490,13 +966,75 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
     </div>
     <div
-      className="ms-DetailsRow-fields"
+      className=
+          ms-DetailsRow-fields
+          {
+            align-items: stretch;
+            display: flex;
+          }
       data-automationid="DetailsRowFields"
       role="presentation"
     >
       <div
         aria-colindex={2}
-        className="ms-DetailsRow-cell"
+        className=
+            ms-DetailsRow-cell
+            {
+              padding-right: 8px;
+            }
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #666666;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            &.$shimmer {
+              border-bottom: 17.5px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-right: 32px solid #ffffff;
+              border-top: 17.5px solid #ffffff;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+            }
+            &.$shimmerIconPlaceholder {
+              border-bottom: 13px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-top: 13px solid #ffffff;
+            }
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -510,7 +1048,64 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
       <div
         aria-colindex={3}
-        className="ms-DetailsRow-cell"
+        className=
+            ms-DetailsRow-cell
+            {
+              padding-right: 8px;
+            }
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #666666;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            &.$shimmer {
+              border-bottom: 17.5px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-right: 32px solid #ffffff;
+              border-top: 17.5px solid #ffffff;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+            }
+            &.$shimmerIconPlaceholder {
+              border-bottom: 13px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-top: 13px solid #ffffff;
+            }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -562,7 +1157,64 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
       <div
         aria-colindex={4}
-        className="ms-DetailsRow-cell"
+        className=
+            ms-DetailsRow-cell
+            {
+              padding-right: 8px;
+            }
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #666666;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            &.$shimmer {
+              border-bottom: 17.5px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-right: 32px solid #ffffff;
+              border-top: 17.5px solid #ffffff;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+            }
+            &.$shimmerIconPlaceholder {
+              border-bottom: 13px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-top: 13px solid #ffffff;
+            }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -574,6 +1226,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -642,6 +1295,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
           data-is-focusable={true}
           disabled={undefined}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -684,7 +1343,16 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     </div>
     <span
       aria-checked={false}
-      className=""
+      className=
+
+          {
+            bottom: 0px;
+            display: none;
+            left: 0px;
+            position: absolute;
+            right: 0px;
+            top: -1px;
+          }
       data-selection-toggle={true}
       role="checkbox"
     />
@@ -703,6 +1371,46 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           animation-fill-mode: both;
           animation-name: keyframes from{opacity:0;}to{opacity:1;};
           animation-timing-function: cubic-bezier(.1,.25,.75,.9);
+          background: #ffffff;
+          border-bottom: 1px solid #f4f4f4;
+          box-sizing: border-box;
+          color: #767676;
+          display: flex;
+          min-height: 42px;
+          min-width: 100%;
+          outline: transparent;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+          text-align: left;
+          vertical-align: top;
+          white-space: nowrap;
+        }
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #0078d4;
+          bottom: 1px;
+          content: "";
+          left: 1px;
+          outline: 1px solid #ffffff;
+          position: absolute;
+          right: 1px;
+          top: 1px;
+          z-index: 1;
+        }
+        ms-List-cell:first-child &:before {
+          display: none;
+        }
+        &:hover {
+          background: #f4f4f4;
+          color: #666666;
+        }
+        &:hover $check {
+          opacity: 1;
         }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone9"
@@ -723,13 +1431,115 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
   >
     <div
       aria-colindex={1}
-      className="ms-DetailsRow-cell ms-DetailsRow-cellCheck"
+      className=
+          ms-DetailsRow-cell
+          ms-DetailsRow-cellCheck
+          {
+            box-sizing: border-box;
+            display: inline-block;
+            flex-shrink: 0;
+            margin-top: -1px;
+            min-height: 42px;
+            outline: transparent;
+            overflow: hidden;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 1px;
+            position: relative;
+            text-overflow: ellipsis;
+            vertical-align: top;
+            white-space: nowrap;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid #666666;
+            bottom: 0px;
+            content: "";
+            left: 0px;
+            outline: 1px solid #ffffff;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            z-index: 1;
+          }
+          & > button {
+            max-width: 100%;
+          }
+          & [data-is-focusable='true'] {
+            outline: transparent;
+            position: relative;
+          }
+          & [data-is-focusable='true']::-moz-focus-inner {
+            border: 0;
+          }
+          &.$shimmer {
+            border-bottom: 17.5px solid #ffffff;
+            border-left: 8px solid #ffffff;
+            border-right: 32px solid #ffffff;
+            border-top: 17.5px solid #ffffff;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+          }
+          &.$shimmerIconPlaceholder {
+            border-bottom: 13px solid #ffffff;
+            border-left: 8px solid #ffffff;
+            border-top: 13px solid #ffffff;
+          }
       data-selection-toggle={true}
       role="gridcell"
     >
       <div
         aria-checked={false}
-        className="ms-DetailsRow-check"
+        className=
+            ms-DetailsRow-check
+
+            {
+              align-items: center;
+              background-color: transparent;
+              background: none;
+              border: none;
+              box-sizing: border-box;
+              cursor: default;
+              display: flex;
+              height: 40px;
+              justify-content: center;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              opacity: 0;
+              outline: transparent;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+              vertical-align: top;
+              width: 40px;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: 1px;
+              content: "";
+              left: 1px;
+              outline: 1px solid #666666;
+              position: absolute;
+              right: 1px;
+              top: 1px;
+              z-index: 1;
+            }
+            &:hover {
+              opacity: 1;
+            }
+
         data-automationid="DetailsRowCheck"
         data-selection-toggle={true}
         role="checkbox"
@@ -757,7 +1567,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 right: 1px;
                 top: 1px;
               }
-              .checkHost:hover &, .checkHost:focus &, &:hover, &:focus {
+              $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
                 opacity: 1;
               }
         >
@@ -829,13 +1639,75 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
     </div>
     <div
-      className="ms-DetailsRow-fields"
+      className=
+          ms-DetailsRow-fields
+          {
+            align-items: stretch;
+            display: flex;
+          }
       data-automationid="DetailsRowFields"
       role="presentation"
     >
       <div
         aria-colindex={2}
-        className="ms-DetailsRow-cell"
+        className=
+            ms-DetailsRow-cell
+            {
+              padding-right: 8px;
+            }
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #666666;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            &.$shimmer {
+              border-bottom: 17.5px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-right: 32px solid #ffffff;
+              border-top: 17.5px solid #ffffff;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+            }
+            &.$shimmerIconPlaceholder {
+              border-bottom: 13px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-top: 13px solid #ffffff;
+            }
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -849,7 +1721,64 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
       <div
         aria-colindex={3}
-        className="ms-DetailsRow-cell"
+        className=
+            ms-DetailsRow-cell
+            {
+              padding-right: 8px;
+            }
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #666666;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            &.$shimmer {
+              border-bottom: 17.5px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-right: 32px solid #ffffff;
+              border-top: 17.5px solid #ffffff;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+            }
+            &.$shimmerIconPlaceholder {
+              border-bottom: 13px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-top: 13px solid #ffffff;
+            }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -901,7 +1830,64 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
       <div
         aria-colindex={4}
-        className="ms-DetailsRow-cell"
+        className=
+            ms-DetailsRow-cell
+            {
+              padding-right: 8px;
+            }
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #666666;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            &.$shimmer {
+              border-bottom: 17.5px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-right: 32px solid #ffffff;
+              border-top: 17.5px solid #ffffff;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+            }
+            &.$shimmerIconPlaceholder {
+              border-bottom: 13px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-top: 13px solid #ffffff;
+            }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -913,6 +1899,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -981,6 +1968,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
           data-is-focusable={true}
           disabled={undefined}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -1023,7 +2016,16 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     </div>
     <span
       aria-checked={false}
-      className=""
+      className=
+
+          {
+            bottom: 0px;
+            display: none;
+            left: 0px;
+            position: absolute;
+            right: 0px;
+            top: -1px;
+          }
       data-selection-toggle={true}
       role="checkbox"
     />
@@ -1042,6 +2044,46 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           animation-fill-mode: both;
           animation-name: keyframes from{opacity:0;}to{opacity:1;};
           animation-timing-function: cubic-bezier(.1,.25,.75,.9);
+          background: #ffffff;
+          border-bottom: 1px solid #f4f4f4;
+          box-sizing: border-box;
+          color: #767676;
+          display: flex;
+          min-height: 42px;
+          min-width: 100%;
+          outline: transparent;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+          text-align: left;
+          vertical-align: top;
+          white-space: nowrap;
+        }
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #0078d4;
+          bottom: 1px;
+          content: "";
+          left: 1px;
+          outline: 1px solid #ffffff;
+          position: absolute;
+          right: 1px;
+          top: 1px;
+          z-index: 1;
+        }
+        ms-List-cell:first-child &:before {
+          display: none;
+        }
+        &:hover {
+          background: #f4f4f4;
+          color: #666666;
+        }
+        &:hover $check {
+          opacity: 1;
         }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone13"
@@ -1062,13 +2104,115 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
   >
     <div
       aria-colindex={1}
-      className="ms-DetailsRow-cell ms-DetailsRow-cellCheck"
+      className=
+          ms-DetailsRow-cell
+          ms-DetailsRow-cellCheck
+          {
+            box-sizing: border-box;
+            display: inline-block;
+            flex-shrink: 0;
+            margin-top: -1px;
+            min-height: 42px;
+            outline: transparent;
+            overflow: hidden;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 1px;
+            position: relative;
+            text-overflow: ellipsis;
+            vertical-align: top;
+            white-space: nowrap;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid #666666;
+            bottom: 0px;
+            content: "";
+            left: 0px;
+            outline: 1px solid #ffffff;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            z-index: 1;
+          }
+          & > button {
+            max-width: 100%;
+          }
+          & [data-is-focusable='true'] {
+            outline: transparent;
+            position: relative;
+          }
+          & [data-is-focusable='true']::-moz-focus-inner {
+            border: 0;
+          }
+          &.$shimmer {
+            border-bottom: 17.5px solid #ffffff;
+            border-left: 8px solid #ffffff;
+            border-right: 32px solid #ffffff;
+            border-top: 17.5px solid #ffffff;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+          }
+          &.$shimmerIconPlaceholder {
+            border-bottom: 13px solid #ffffff;
+            border-left: 8px solid #ffffff;
+            border-top: 13px solid #ffffff;
+          }
       data-selection-toggle={true}
       role="gridcell"
     >
       <div
         aria-checked={false}
-        className="ms-DetailsRow-check"
+        className=
+            ms-DetailsRow-check
+
+            {
+              align-items: center;
+              background-color: transparent;
+              background: none;
+              border: none;
+              box-sizing: border-box;
+              cursor: default;
+              display: flex;
+              height: 40px;
+              justify-content: center;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              opacity: 0;
+              outline: transparent;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+              vertical-align: top;
+              width: 40px;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: 1px;
+              content: "";
+              left: 1px;
+              outline: 1px solid #666666;
+              position: absolute;
+              right: 1px;
+              top: 1px;
+              z-index: 1;
+            }
+            &:hover {
+              opacity: 1;
+            }
+
         data-automationid="DetailsRowCheck"
         data-selection-toggle={true}
         role="checkbox"
@@ -1096,7 +2240,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 right: 1px;
                 top: 1px;
               }
-              .checkHost:hover &, .checkHost:focus &, &:hover, &:focus {
+              $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
                 opacity: 1;
               }
         >
@@ -1168,13 +2312,75 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
     </div>
     <div
-      className="ms-DetailsRow-fields"
+      className=
+          ms-DetailsRow-fields
+          {
+            align-items: stretch;
+            display: flex;
+          }
       data-automationid="DetailsRowFields"
       role="presentation"
     >
       <div
         aria-colindex={2}
-        className="ms-DetailsRow-cell"
+        className=
+            ms-DetailsRow-cell
+            {
+              padding-right: 8px;
+            }
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #666666;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            &.$shimmer {
+              border-bottom: 17.5px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-right: 32px solid #ffffff;
+              border-top: 17.5px solid #ffffff;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+            }
+            &.$shimmerIconPlaceholder {
+              border-bottom: 13px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-top: 13px solid #ffffff;
+            }
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -1188,7 +2394,64 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
       <div
         aria-colindex={3}
-        className="ms-DetailsRow-cell"
+        className=
+            ms-DetailsRow-cell
+            {
+              padding-right: 8px;
+            }
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #666666;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            &.$shimmer {
+              border-bottom: 17.5px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-right: 32px solid #ffffff;
+              border-top: 17.5px solid #ffffff;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+            }
+            &.$shimmerIconPlaceholder {
+              border-bottom: 13px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-top: 13px solid #ffffff;
+            }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -1240,7 +2503,64 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
       <div
         aria-colindex={4}
-        className="ms-DetailsRow-cell"
+        className=
+            ms-DetailsRow-cell
+            {
+              padding-right: 8px;
+            }
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #666666;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            &.$shimmer {
+              border-bottom: 17.5px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-right: 32px solid #ffffff;
+              border-top: 17.5px solid #ffffff;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+            }
+            &.$shimmerIconPlaceholder {
+              border-bottom: 13px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-top: 13px solid #ffffff;
+            }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -1252,6 +2572,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -1320,6 +2641,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
           data-is-focusable={true}
           disabled={undefined}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -1362,7 +2689,16 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     </div>
     <span
       aria-checked={false}
-      className=""
+      className=
+
+          {
+            bottom: 0px;
+            display: none;
+            left: 0px;
+            position: absolute;
+            right: 0px;
+            top: -1px;
+          }
       data-selection-toggle={true}
       role="checkbox"
     />
@@ -1381,6 +2717,46 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           animation-fill-mode: both;
           animation-name: keyframes from{opacity:0;}to{opacity:1;};
           animation-timing-function: cubic-bezier(.1,.25,.75,.9);
+          background: #ffffff;
+          border-bottom: 1px solid #f4f4f4;
+          box-sizing: border-box;
+          color: #767676;
+          display: flex;
+          min-height: 42px;
+          min-width: 100%;
+          outline: transparent;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+          text-align: left;
+          vertical-align: top;
+          white-space: nowrap;
+        }
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #0078d4;
+          bottom: 1px;
+          content: "";
+          left: 1px;
+          outline: 1px solid #ffffff;
+          position: absolute;
+          right: 1px;
+          top: 1px;
+          z-index: 1;
+        }
+        ms-List-cell:first-child &:before {
+          display: none;
+        }
+        &:hover {
+          background: #f4f4f4;
+          color: #666666;
+        }
+        &:hover $check {
+          opacity: 1;
         }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone17"
@@ -1401,13 +2777,115 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
   >
     <div
       aria-colindex={1}
-      className="ms-DetailsRow-cell ms-DetailsRow-cellCheck"
+      className=
+          ms-DetailsRow-cell
+          ms-DetailsRow-cellCheck
+          {
+            box-sizing: border-box;
+            display: inline-block;
+            flex-shrink: 0;
+            margin-top: -1px;
+            min-height: 42px;
+            outline: transparent;
+            overflow: hidden;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 1px;
+            position: relative;
+            text-overflow: ellipsis;
+            vertical-align: top;
+            white-space: nowrap;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid #666666;
+            bottom: 0px;
+            content: "";
+            left: 0px;
+            outline: 1px solid #ffffff;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            z-index: 1;
+          }
+          & > button {
+            max-width: 100%;
+          }
+          & [data-is-focusable='true'] {
+            outline: transparent;
+            position: relative;
+          }
+          & [data-is-focusable='true']::-moz-focus-inner {
+            border: 0;
+          }
+          &.$shimmer {
+            border-bottom: 17.5px solid #ffffff;
+            border-left: 8px solid #ffffff;
+            border-right: 32px solid #ffffff;
+            border-top: 17.5px solid #ffffff;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+          }
+          &.$shimmerIconPlaceholder {
+            border-bottom: 13px solid #ffffff;
+            border-left: 8px solid #ffffff;
+            border-top: 13px solid #ffffff;
+          }
       data-selection-toggle={true}
       role="gridcell"
     >
       <div
         aria-checked={false}
-        className="ms-DetailsRow-check"
+        className=
+            ms-DetailsRow-check
+
+            {
+              align-items: center;
+              background-color: transparent;
+              background: none;
+              border: none;
+              box-sizing: border-box;
+              cursor: default;
+              display: flex;
+              height: 40px;
+              justify-content: center;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              opacity: 0;
+              outline: transparent;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+              vertical-align: top;
+              width: 40px;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: 1px;
+              content: "";
+              left: 1px;
+              outline: 1px solid #666666;
+              position: absolute;
+              right: 1px;
+              top: 1px;
+              z-index: 1;
+            }
+            &:hover {
+              opacity: 1;
+            }
+
         data-automationid="DetailsRowCheck"
         data-selection-toggle={true}
         role="checkbox"
@@ -1435,7 +2913,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 right: 1px;
                 top: 1px;
               }
-              .checkHost:hover &, .checkHost:focus &, &:hover, &:focus {
+              $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
                 opacity: 1;
               }
         >
@@ -1507,13 +2985,75 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
     </div>
     <div
-      className="ms-DetailsRow-fields"
+      className=
+          ms-DetailsRow-fields
+          {
+            align-items: stretch;
+            display: flex;
+          }
       data-automationid="DetailsRowFields"
       role="presentation"
     >
       <div
         aria-colindex={2}
-        className="ms-DetailsRow-cell"
+        className=
+            ms-DetailsRow-cell
+            {
+              padding-right: 8px;
+            }
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #666666;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            &.$shimmer {
+              border-bottom: 17.5px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-right: 32px solid #ffffff;
+              border-top: 17.5px solid #ffffff;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+            }
+            &.$shimmerIconPlaceholder {
+              border-bottom: 13px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-top: 13px solid #ffffff;
+            }
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -1527,7 +3067,64 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
       <div
         aria-colindex={3}
-        className="ms-DetailsRow-cell"
+        className=
+            ms-DetailsRow-cell
+            {
+              padding-right: 8px;
+            }
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #666666;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            &.$shimmer {
+              border-bottom: 17.5px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-right: 32px solid #ffffff;
+              border-top: 17.5px solid #ffffff;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+            }
+            &.$shimmerIconPlaceholder {
+              border-bottom: 13px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-top: 13px solid #ffffff;
+            }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -1579,7 +3176,64 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
       <div
         aria-colindex={4}
-        className="ms-DetailsRow-cell"
+        className=
+            ms-DetailsRow-cell
+            {
+              padding-right: 8px;
+            }
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #666666;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            &.$shimmer {
+              border-bottom: 17.5px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-right: 32px solid #ffffff;
+              border-top: 17.5px solid #ffffff;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+            }
+            &.$shimmerIconPlaceholder {
+              border-bottom: 13px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-top: 13px solid #ffffff;
+            }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -1591,6 +3245,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -1659,6 +3314,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
           data-is-focusable={true}
           disabled={undefined}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -1701,7 +3362,16 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     </div>
     <span
       aria-checked={false}
-      className=""
+      className=
+
+          {
+            bottom: 0px;
+            display: none;
+            left: 0px;
+            position: absolute;
+            right: 0px;
+            top: -1px;
+          }
       data-selection-toggle={true}
       role="checkbox"
     />
@@ -1720,6 +3390,46 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           animation-fill-mode: both;
           animation-name: keyframes from{opacity:0;}to{opacity:1;};
           animation-timing-function: cubic-bezier(.1,.25,.75,.9);
+          background: #ffffff;
+          border-bottom: 1px solid #f4f4f4;
+          box-sizing: border-box;
+          color: #767676;
+          display: flex;
+          min-height: 42px;
+          min-width: 100%;
+          outline: transparent;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+          text-align: left;
+          vertical-align: top;
+          white-space: nowrap;
+        }
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #0078d4;
+          bottom: 1px;
+          content: "";
+          left: 1px;
+          outline: 1px solid #ffffff;
+          position: absolute;
+          right: 1px;
+          top: 1px;
+          z-index: 1;
+        }
+        ms-List-cell:first-child &:before {
+          display: none;
+        }
+        &:hover {
+          background: #f4f4f4;
+          color: #666666;
+        }
+        &:hover $check {
+          opacity: 1;
         }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone21"
@@ -1740,13 +3450,115 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
   >
     <div
       aria-colindex={1}
-      className="ms-DetailsRow-cell ms-DetailsRow-cellCheck"
+      className=
+          ms-DetailsRow-cell
+          ms-DetailsRow-cellCheck
+          {
+            box-sizing: border-box;
+            display: inline-block;
+            flex-shrink: 0;
+            margin-top: -1px;
+            min-height: 42px;
+            outline: transparent;
+            overflow: hidden;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 1px;
+            position: relative;
+            text-overflow: ellipsis;
+            vertical-align: top;
+            white-space: nowrap;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid #666666;
+            bottom: 0px;
+            content: "";
+            left: 0px;
+            outline: 1px solid #ffffff;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            z-index: 1;
+          }
+          & > button {
+            max-width: 100%;
+          }
+          & [data-is-focusable='true'] {
+            outline: transparent;
+            position: relative;
+          }
+          & [data-is-focusable='true']::-moz-focus-inner {
+            border: 0;
+          }
+          &.$shimmer {
+            border-bottom: 17.5px solid #ffffff;
+            border-left: 8px solid #ffffff;
+            border-right: 32px solid #ffffff;
+            border-top: 17.5px solid #ffffff;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+          }
+          &.$shimmerIconPlaceholder {
+            border-bottom: 13px solid #ffffff;
+            border-left: 8px solid #ffffff;
+            border-top: 13px solid #ffffff;
+          }
       data-selection-toggle={true}
       role="gridcell"
     >
       <div
         aria-checked={false}
-        className="ms-DetailsRow-check"
+        className=
+            ms-DetailsRow-check
+
+            {
+              align-items: center;
+              background-color: transparent;
+              background: none;
+              border: none;
+              box-sizing: border-box;
+              cursor: default;
+              display: flex;
+              height: 40px;
+              justify-content: center;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              opacity: 0;
+              outline: transparent;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+              vertical-align: top;
+              width: 40px;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: 1px;
+              content: "";
+              left: 1px;
+              outline: 1px solid #666666;
+              position: absolute;
+              right: 1px;
+              top: 1px;
+              z-index: 1;
+            }
+            &:hover {
+              opacity: 1;
+            }
+
         data-automationid="DetailsRowCheck"
         data-selection-toggle={true}
         role="checkbox"
@@ -1774,7 +3586,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 right: 1px;
                 top: 1px;
               }
-              .checkHost:hover &, .checkHost:focus &, &:hover, &:focus {
+              $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
                 opacity: 1;
               }
         >
@@ -1846,13 +3658,75 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
     </div>
     <div
-      className="ms-DetailsRow-fields"
+      className=
+          ms-DetailsRow-fields
+          {
+            align-items: stretch;
+            display: flex;
+          }
       data-automationid="DetailsRowFields"
       role="presentation"
     >
       <div
         aria-colindex={2}
-        className="ms-DetailsRow-cell"
+        className=
+            ms-DetailsRow-cell
+            {
+              padding-right: 8px;
+            }
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #666666;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            &.$shimmer {
+              border-bottom: 17.5px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-right: 32px solid #ffffff;
+              border-top: 17.5px solid #ffffff;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+            }
+            &.$shimmerIconPlaceholder {
+              border-bottom: 13px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-top: 13px solid #ffffff;
+            }
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -1866,7 +3740,64 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
       <div
         aria-colindex={3}
-        className="ms-DetailsRow-cell"
+        className=
+            ms-DetailsRow-cell
+            {
+              padding-right: 8px;
+            }
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #666666;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            &.$shimmer {
+              border-bottom: 17.5px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-right: 32px solid #ffffff;
+              border-top: 17.5px solid #ffffff;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+            }
+            &.$shimmerIconPlaceholder {
+              border-bottom: 13px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-top: 13px solid #ffffff;
+            }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -1918,7 +3849,64 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
       <div
         aria-colindex={4}
-        className="ms-DetailsRow-cell"
+        className=
+            ms-DetailsRow-cell
+            {
+              padding-right: 8px;
+            }
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #666666;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            &.$shimmer {
+              border-bottom: 17.5px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-right: 32px solid #ffffff;
+              border-top: 17.5px solid #ffffff;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+            }
+            &.$shimmerIconPlaceholder {
+              border-bottom: 13px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-top: 13px solid #ffffff;
+            }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -1930,6 +3918,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -1998,6 +3987,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
           data-is-focusable={true}
           disabled={undefined}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -2040,7 +4035,16 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     </div>
     <span
       aria-checked={false}
-      className=""
+      className=
+
+          {
+            bottom: 0px;
+            display: none;
+            left: 0px;
+            position: absolute;
+            right: 0px;
+            top: -1px;
+          }
       data-selection-toggle={true}
       role="checkbox"
     />
@@ -2059,6 +4063,46 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           animation-fill-mode: both;
           animation-name: keyframes from{opacity:0;}to{opacity:1;};
           animation-timing-function: cubic-bezier(.1,.25,.75,.9);
+          background: #ffffff;
+          border-bottom: 1px solid #f4f4f4;
+          box-sizing: border-box;
+          color: #767676;
+          display: flex;
+          min-height: 42px;
+          min-width: 100%;
+          outline: transparent;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+          text-align: left;
+          vertical-align: top;
+          white-space: nowrap;
+        }
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #0078d4;
+          bottom: 1px;
+          content: "";
+          left: 1px;
+          outline: 1px solid #ffffff;
+          position: absolute;
+          right: 1px;
+          top: 1px;
+          z-index: 1;
+        }
+        ms-List-cell:first-child &:before {
+          display: none;
+        }
+        &:hover {
+          background: #f4f4f4;
+          color: #666666;
+        }
+        &:hover $check {
+          opacity: 1;
         }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone25"
@@ -2079,13 +4123,115 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
   >
     <div
       aria-colindex={1}
-      className="ms-DetailsRow-cell ms-DetailsRow-cellCheck"
+      className=
+          ms-DetailsRow-cell
+          ms-DetailsRow-cellCheck
+          {
+            box-sizing: border-box;
+            display: inline-block;
+            flex-shrink: 0;
+            margin-top: -1px;
+            min-height: 42px;
+            outline: transparent;
+            overflow: hidden;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 1px;
+            position: relative;
+            text-overflow: ellipsis;
+            vertical-align: top;
+            white-space: nowrap;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid #666666;
+            bottom: 0px;
+            content: "";
+            left: 0px;
+            outline: 1px solid #ffffff;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            z-index: 1;
+          }
+          & > button {
+            max-width: 100%;
+          }
+          & [data-is-focusable='true'] {
+            outline: transparent;
+            position: relative;
+          }
+          & [data-is-focusable='true']::-moz-focus-inner {
+            border: 0;
+          }
+          &.$shimmer {
+            border-bottom: 17.5px solid #ffffff;
+            border-left: 8px solid #ffffff;
+            border-right: 32px solid #ffffff;
+            border-top: 17.5px solid #ffffff;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+          }
+          &.$shimmerIconPlaceholder {
+            border-bottom: 13px solid #ffffff;
+            border-left: 8px solid #ffffff;
+            border-top: 13px solid #ffffff;
+          }
       data-selection-toggle={true}
       role="gridcell"
     >
       <div
         aria-checked={false}
-        className="ms-DetailsRow-check"
+        className=
+            ms-DetailsRow-check
+
+            {
+              align-items: center;
+              background-color: transparent;
+              background: none;
+              border: none;
+              box-sizing: border-box;
+              cursor: default;
+              display: flex;
+              height: 40px;
+              justify-content: center;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              opacity: 0;
+              outline: transparent;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+              vertical-align: top;
+              width: 40px;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: 1px;
+              content: "";
+              left: 1px;
+              outline: 1px solid #666666;
+              position: absolute;
+              right: 1px;
+              top: 1px;
+              z-index: 1;
+            }
+            &:hover {
+              opacity: 1;
+            }
+
         data-automationid="DetailsRowCheck"
         data-selection-toggle={true}
         role="checkbox"
@@ -2113,7 +4259,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 right: 1px;
                 top: 1px;
               }
-              .checkHost:hover &, .checkHost:focus &, &:hover, &:focus {
+              $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
                 opacity: 1;
               }
         >
@@ -2185,13 +4331,75 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
     </div>
     <div
-      className="ms-DetailsRow-fields"
+      className=
+          ms-DetailsRow-fields
+          {
+            align-items: stretch;
+            display: flex;
+          }
       data-automationid="DetailsRowFields"
       role="presentation"
     >
       <div
         aria-colindex={2}
-        className="ms-DetailsRow-cell"
+        className=
+            ms-DetailsRow-cell
+            {
+              padding-right: 8px;
+            }
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #666666;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            &.$shimmer {
+              border-bottom: 17.5px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-right: 32px solid #ffffff;
+              border-top: 17.5px solid #ffffff;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+            }
+            &.$shimmerIconPlaceholder {
+              border-bottom: 13px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-top: 13px solid #ffffff;
+            }
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -2205,7 +4413,64 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
       <div
         aria-colindex={3}
-        className="ms-DetailsRow-cell"
+        className=
+            ms-DetailsRow-cell
+            {
+              padding-right: 8px;
+            }
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #666666;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            &.$shimmer {
+              border-bottom: 17.5px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-right: 32px solid #ffffff;
+              border-top: 17.5px solid #ffffff;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+            }
+            &.$shimmerIconPlaceholder {
+              border-bottom: 13px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-top: 13px solid #ffffff;
+            }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -2257,7 +4522,64 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
       <div
         aria-colindex={4}
-        className="ms-DetailsRow-cell"
+        className=
+            ms-DetailsRow-cell
+            {
+              padding-right: 8px;
+            }
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #666666;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            &.$shimmer {
+              border-bottom: 17.5px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-right: 32px solid #ffffff;
+              border-top: 17.5px solid #ffffff;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+            }
+            &.$shimmerIconPlaceholder {
+              border-bottom: 13px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-top: 13px solid #ffffff;
+            }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -2269,6 +4591,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -2337,6 +4660,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
           data-is-focusable={true}
           disabled={undefined}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -2379,7 +4708,16 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     </div>
     <span
       aria-checked={false}
-      className=""
+      className=
+
+          {
+            bottom: 0px;
+            display: none;
+            left: 0px;
+            position: absolute;
+            right: 0px;
+            top: -1px;
+          }
       data-selection-toggle={true}
       role="checkbox"
     />
@@ -2398,6 +4736,46 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           animation-fill-mode: both;
           animation-name: keyframes from{opacity:0;}to{opacity:1;};
           animation-timing-function: cubic-bezier(.1,.25,.75,.9);
+          background: #ffffff;
+          border-bottom: 1px solid #f4f4f4;
+          box-sizing: border-box;
+          color: #767676;
+          display: flex;
+          min-height: 42px;
+          min-width: 100%;
+          outline: transparent;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+          text-align: left;
+          vertical-align: top;
+          white-space: nowrap;
+        }
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #0078d4;
+          bottom: 1px;
+          content: "";
+          left: 1px;
+          outline: 1px solid #ffffff;
+          position: absolute;
+          right: 1px;
+          top: 1px;
+          z-index: 1;
+        }
+        ms-List-cell:first-child &:before {
+          display: none;
+        }
+        &:hover {
+          background: #f4f4f4;
+          color: #666666;
+        }
+        &:hover $check {
+          opacity: 1;
         }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone29"
@@ -2418,13 +4796,115 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
   >
     <div
       aria-colindex={1}
-      className="ms-DetailsRow-cell ms-DetailsRow-cellCheck"
+      className=
+          ms-DetailsRow-cell
+          ms-DetailsRow-cellCheck
+          {
+            box-sizing: border-box;
+            display: inline-block;
+            flex-shrink: 0;
+            margin-top: -1px;
+            min-height: 42px;
+            outline: transparent;
+            overflow: hidden;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 1px;
+            position: relative;
+            text-overflow: ellipsis;
+            vertical-align: top;
+            white-space: nowrap;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid #666666;
+            bottom: 0px;
+            content: "";
+            left: 0px;
+            outline: 1px solid #ffffff;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            z-index: 1;
+          }
+          & > button {
+            max-width: 100%;
+          }
+          & [data-is-focusable='true'] {
+            outline: transparent;
+            position: relative;
+          }
+          & [data-is-focusable='true']::-moz-focus-inner {
+            border: 0;
+          }
+          &.$shimmer {
+            border-bottom: 17.5px solid #ffffff;
+            border-left: 8px solid #ffffff;
+            border-right: 32px solid #ffffff;
+            border-top: 17.5px solid #ffffff;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+          }
+          &.$shimmerIconPlaceholder {
+            border-bottom: 13px solid #ffffff;
+            border-left: 8px solid #ffffff;
+            border-top: 13px solid #ffffff;
+          }
       data-selection-toggle={true}
       role="gridcell"
     >
       <div
         aria-checked={false}
-        className="ms-DetailsRow-check"
+        className=
+            ms-DetailsRow-check
+
+            {
+              align-items: center;
+              background-color: transparent;
+              background: none;
+              border: none;
+              box-sizing: border-box;
+              cursor: default;
+              display: flex;
+              height: 40px;
+              justify-content: center;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              opacity: 0;
+              outline: transparent;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+              vertical-align: top;
+              width: 40px;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: 1px;
+              content: "";
+              left: 1px;
+              outline: 1px solid #666666;
+              position: absolute;
+              right: 1px;
+              top: 1px;
+              z-index: 1;
+            }
+            &:hover {
+              opacity: 1;
+            }
+
         data-automationid="DetailsRowCheck"
         data-selection-toggle={true}
         role="checkbox"
@@ -2452,7 +4932,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 right: 1px;
                 top: 1px;
               }
-              .checkHost:hover &, .checkHost:focus &, &:hover, &:focus {
+              $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
                 opacity: 1;
               }
         >
@@ -2524,13 +5004,75 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
     </div>
     <div
-      className="ms-DetailsRow-fields"
+      className=
+          ms-DetailsRow-fields
+          {
+            align-items: stretch;
+            display: flex;
+          }
       data-automationid="DetailsRowFields"
       role="presentation"
     >
       <div
         aria-colindex={2}
-        className="ms-DetailsRow-cell"
+        className=
+            ms-DetailsRow-cell
+            {
+              padding-right: 8px;
+            }
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #666666;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            &.$shimmer {
+              border-bottom: 17.5px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-right: 32px solid #ffffff;
+              border-top: 17.5px solid #ffffff;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+            }
+            &.$shimmerIconPlaceholder {
+              border-bottom: 13px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-top: 13px solid #ffffff;
+            }
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -2544,7 +5086,64 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
       <div
         aria-colindex={3}
-        className="ms-DetailsRow-cell"
+        className=
+            ms-DetailsRow-cell
+            {
+              padding-right: 8px;
+            }
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #666666;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            &.$shimmer {
+              border-bottom: 17.5px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-right: 32px solid #ffffff;
+              border-top: 17.5px solid #ffffff;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+            }
+            &.$shimmerIconPlaceholder {
+              border-bottom: 13px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-top: 13px solid #ffffff;
+            }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -2596,7 +5195,64 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
       <div
         aria-colindex={4}
-        className="ms-DetailsRow-cell"
+        className=
+            ms-DetailsRow-cell
+            {
+              padding-right: 8px;
+            }
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #666666;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            &.$shimmer {
+              border-bottom: 17.5px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-right: 32px solid #ffffff;
+              border-top: 17.5px solid #ffffff;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+            }
+            &.$shimmerIconPlaceholder {
+              border-bottom: 13px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-top: 13px solid #ffffff;
+            }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -2608,6 +5264,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -2676,6 +5333,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
           data-is-focusable={true}
           disabled={undefined}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -2718,7 +5381,16 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     </div>
     <span
       aria-checked={false}
-      className=""
+      className=
+
+          {
+            bottom: 0px;
+            display: none;
+            left: 0px;
+            position: absolute;
+            right: 0px;
+            top: -1px;
+          }
       data-selection-toggle={true}
       role="checkbox"
     />
@@ -2737,6 +5409,46 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           animation-fill-mode: both;
           animation-name: keyframes from{opacity:0;}to{opacity:1;};
           animation-timing-function: cubic-bezier(.1,.25,.75,.9);
+          background: #ffffff;
+          border-bottom: 1px solid #f4f4f4;
+          box-sizing: border-box;
+          color: #767676;
+          display: flex;
+          min-height: 42px;
+          min-width: 100%;
+          outline: transparent;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+          text-align: left;
+          vertical-align: top;
+          white-space: nowrap;
+        }
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #0078d4;
+          bottom: 1px;
+          content: "";
+          left: 1px;
+          outline: 1px solid #ffffff;
+          position: absolute;
+          right: 1px;
+          top: 1px;
+          z-index: 1;
+        }
+        ms-List-cell:first-child &:before {
+          display: none;
+        }
+        &:hover {
+          background: #f4f4f4;
+          color: #666666;
+        }
+        &:hover $check {
+          opacity: 1;
         }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone33"
@@ -2757,13 +5469,115 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
   >
     <div
       aria-colindex={1}
-      className="ms-DetailsRow-cell ms-DetailsRow-cellCheck"
+      className=
+          ms-DetailsRow-cell
+          ms-DetailsRow-cellCheck
+          {
+            box-sizing: border-box;
+            display: inline-block;
+            flex-shrink: 0;
+            margin-top: -1px;
+            min-height: 42px;
+            outline: transparent;
+            overflow: hidden;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 1px;
+            position: relative;
+            text-overflow: ellipsis;
+            vertical-align: top;
+            white-space: nowrap;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid #666666;
+            bottom: 0px;
+            content: "";
+            left: 0px;
+            outline: 1px solid #ffffff;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            z-index: 1;
+          }
+          & > button {
+            max-width: 100%;
+          }
+          & [data-is-focusable='true'] {
+            outline: transparent;
+            position: relative;
+          }
+          & [data-is-focusable='true']::-moz-focus-inner {
+            border: 0;
+          }
+          &.$shimmer {
+            border-bottom: 17.5px solid #ffffff;
+            border-left: 8px solid #ffffff;
+            border-right: 32px solid #ffffff;
+            border-top: 17.5px solid #ffffff;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+          }
+          &.$shimmerIconPlaceholder {
+            border-bottom: 13px solid #ffffff;
+            border-left: 8px solid #ffffff;
+            border-top: 13px solid #ffffff;
+          }
       data-selection-toggle={true}
       role="gridcell"
     >
       <div
         aria-checked={false}
-        className="ms-DetailsRow-check"
+        className=
+            ms-DetailsRow-check
+
+            {
+              align-items: center;
+              background-color: transparent;
+              background: none;
+              border: none;
+              box-sizing: border-box;
+              cursor: default;
+              display: flex;
+              height: 40px;
+              justify-content: center;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              opacity: 0;
+              outline: transparent;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+              vertical-align: top;
+              width: 40px;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: 1px;
+              content: "";
+              left: 1px;
+              outline: 1px solid #666666;
+              position: absolute;
+              right: 1px;
+              top: 1px;
+              z-index: 1;
+            }
+            &:hover {
+              opacity: 1;
+            }
+
         data-automationid="DetailsRowCheck"
         data-selection-toggle={true}
         role="checkbox"
@@ -2791,7 +5605,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 right: 1px;
                 top: 1px;
               }
-              .checkHost:hover &, .checkHost:focus &, &:hover, &:focus {
+              $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
                 opacity: 1;
               }
         >
@@ -2863,13 +5677,75 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
     </div>
     <div
-      className="ms-DetailsRow-fields"
+      className=
+          ms-DetailsRow-fields
+          {
+            align-items: stretch;
+            display: flex;
+          }
       data-automationid="DetailsRowFields"
       role="presentation"
     >
       <div
         aria-colindex={2}
-        className="ms-DetailsRow-cell"
+        className=
+            ms-DetailsRow-cell
+            {
+              padding-right: 8px;
+            }
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #666666;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            &.$shimmer {
+              border-bottom: 17.5px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-right: 32px solid #ffffff;
+              border-top: 17.5px solid #ffffff;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+            }
+            &.$shimmerIconPlaceholder {
+              border-bottom: 13px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-top: 13px solid #ffffff;
+            }
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -2883,7 +5759,64 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
       <div
         aria-colindex={3}
-        className="ms-DetailsRow-cell"
+        className=
+            ms-DetailsRow-cell
+            {
+              padding-right: 8px;
+            }
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #666666;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            &.$shimmer {
+              border-bottom: 17.5px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-right: 32px solid #ffffff;
+              border-top: 17.5px solid #ffffff;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+            }
+            &.$shimmerIconPlaceholder {
+              border-bottom: 13px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-top: 13px solid #ffffff;
+            }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -2935,7 +5868,64 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
       <div
         aria-colindex={4}
-        className="ms-DetailsRow-cell"
+        className=
+            ms-DetailsRow-cell
+            {
+              padding-right: 8px;
+            }
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #666666;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            &.$shimmer {
+              border-bottom: 17.5px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-right: 32px solid #ffffff;
+              border-top: 17.5px solid #ffffff;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+            }
+            &.$shimmerIconPlaceholder {
+              border-bottom: 13px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-top: 13px solid #ffffff;
+            }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -2947,6 +5937,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -3015,6 +6006,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
           data-is-focusable={true}
           disabled={undefined}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -3057,7 +6054,16 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     </div>
     <span
       aria-checked={false}
-      className=""
+      className=
+
+          {
+            bottom: 0px;
+            display: none;
+            left: 0px;
+            position: absolute;
+            right: 0px;
+            top: -1px;
+          }
       data-selection-toggle={true}
       role="checkbox"
     />
@@ -3076,6 +6082,46 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           animation-fill-mode: both;
           animation-name: keyframes from{opacity:0;}to{opacity:1;};
           animation-timing-function: cubic-bezier(.1,.25,.75,.9);
+          background: #ffffff;
+          border-bottom: 1px solid #f4f4f4;
+          box-sizing: border-box;
+          color: #767676;
+          display: flex;
+          min-height: 42px;
+          min-width: 100%;
+          outline: transparent;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+          text-align: left;
+          vertical-align: top;
+          white-space: nowrap;
+        }
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #0078d4;
+          bottom: 1px;
+          content: "";
+          left: 1px;
+          outline: 1px solid #ffffff;
+          position: absolute;
+          right: 1px;
+          top: 1px;
+          z-index: 1;
+        }
+        ms-List-cell:first-child &:before {
+          display: none;
+        }
+        &:hover {
+          background: #f4f4f4;
+          color: #666666;
+        }
+        &:hover $check {
+          opacity: 1;
         }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone37"
@@ -3096,13 +6142,115 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
   >
     <div
       aria-colindex={1}
-      className="ms-DetailsRow-cell ms-DetailsRow-cellCheck"
+      className=
+          ms-DetailsRow-cell
+          ms-DetailsRow-cellCheck
+          {
+            box-sizing: border-box;
+            display: inline-block;
+            flex-shrink: 0;
+            margin-top: -1px;
+            min-height: 42px;
+            outline: transparent;
+            overflow: hidden;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 1px;
+            position: relative;
+            text-overflow: ellipsis;
+            vertical-align: top;
+            white-space: nowrap;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid #666666;
+            bottom: 0px;
+            content: "";
+            left: 0px;
+            outline: 1px solid #ffffff;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            z-index: 1;
+          }
+          & > button {
+            max-width: 100%;
+          }
+          & [data-is-focusable='true'] {
+            outline: transparent;
+            position: relative;
+          }
+          & [data-is-focusable='true']::-moz-focus-inner {
+            border: 0;
+          }
+          &.$shimmer {
+            border-bottom: 17.5px solid #ffffff;
+            border-left: 8px solid #ffffff;
+            border-right: 32px solid #ffffff;
+            border-top: 17.5px solid #ffffff;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+          }
+          &.$shimmerIconPlaceholder {
+            border-bottom: 13px solid #ffffff;
+            border-left: 8px solid #ffffff;
+            border-top: 13px solid #ffffff;
+          }
       data-selection-toggle={true}
       role="gridcell"
     >
       <div
         aria-checked={false}
-        className="ms-DetailsRow-check"
+        className=
+            ms-DetailsRow-check
+
+            {
+              align-items: center;
+              background-color: transparent;
+              background: none;
+              border: none;
+              box-sizing: border-box;
+              cursor: default;
+              display: flex;
+              height: 40px;
+              justify-content: center;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              opacity: 0;
+              outline: transparent;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+              vertical-align: top;
+              width: 40px;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: 1px;
+              content: "";
+              left: 1px;
+              outline: 1px solid #666666;
+              position: absolute;
+              right: 1px;
+              top: 1px;
+              z-index: 1;
+            }
+            &:hover {
+              opacity: 1;
+            }
+
         data-automationid="DetailsRowCheck"
         data-selection-toggle={true}
         role="checkbox"
@@ -3130,7 +6278,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 right: 1px;
                 top: 1px;
               }
-              .checkHost:hover &, .checkHost:focus &, &:hover, &:focus {
+              $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
                 opacity: 1;
               }
         >
@@ -3202,13 +6350,75 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
     </div>
     <div
-      className="ms-DetailsRow-fields"
+      className=
+          ms-DetailsRow-fields
+          {
+            align-items: stretch;
+            display: flex;
+          }
       data-automationid="DetailsRowFields"
       role="presentation"
     >
       <div
         aria-colindex={2}
-        className="ms-DetailsRow-cell"
+        className=
+            ms-DetailsRow-cell
+            {
+              padding-right: 8px;
+            }
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #666666;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            &.$shimmer {
+              border-bottom: 17.5px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-right: 32px solid #ffffff;
+              border-top: 17.5px solid #ffffff;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+            }
+            &.$shimmerIconPlaceholder {
+              border-bottom: 13px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-top: 13px solid #ffffff;
+            }
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -3222,7 +6432,64 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
       <div
         aria-colindex={3}
-        className="ms-DetailsRow-cell"
+        className=
+            ms-DetailsRow-cell
+            {
+              padding-right: 8px;
+            }
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #666666;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            &.$shimmer {
+              border-bottom: 17.5px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-right: 32px solid #ffffff;
+              border-top: 17.5px solid #ffffff;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+            }
+            &.$shimmerIconPlaceholder {
+              border-bottom: 13px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-top: 13px solid #ffffff;
+            }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -3274,7 +6541,64 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
       <div
         aria-colindex={4}
-        className="ms-DetailsRow-cell"
+        className=
+            ms-DetailsRow-cell
+            {
+              padding-right: 8px;
+            }
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #666666;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            &.$shimmer {
+              border-bottom: 17.5px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-right: 32px solid #ffffff;
+              border-top: 17.5px solid #ffffff;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+            }
+            &.$shimmerIconPlaceholder {
+              border-bottom: 13px solid #ffffff;
+              border-left: 8px solid #ffffff;
+              border-top: 13px solid #ffffff;
+            }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -3286,6 +6610,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={undefined}
@@ -3354,6 +6679,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
           data-is-focusable={true}
           disabled={undefined}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -3396,7 +6727,16 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     </div>
     <span
       aria-checked={false}
-      className=""
+      className=
+
+          {
+            bottom: 0px;
+            display: none;
+            left: 0px;
+            position: absolute;
+            right: 0px;
+            top: -1px;
+          }
       data-selection-toggle={true}
       role="checkbox"
     />

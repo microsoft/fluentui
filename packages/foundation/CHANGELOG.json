@@ -1,0 +1,26 @@
+{
+  "name": "@uifabric/foundation",
+  "entries": [
+    {
+      "version": "0.0.3",
+      "tag": "@uifabric/foundation_v0.0.3",
+      "date": "Mon, 09 Jul 2018 18:08:32 GMT",
+      "comments": {
+        "none": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "02b1b5e75e61a6e773bcad6ece06acf59a45eb0d",
+            "comment": "Create new Foundation package."
+          }
+        ],
+        "patch": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "4e506157895212eca6345c65ba3c234c77c36ee6",
+            "comment": "Improve typing consistency."
+          }
+        ]
+      }
+    }
+  ]
+}

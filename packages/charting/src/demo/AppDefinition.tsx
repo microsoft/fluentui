@@ -10,10 +10,22 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
+          component: require<any>('../components/LineChart/LineChartPage').LineChartPage,
+          key: 'LineChart',
+          name: 'LineChart',
+          url: '#/examples/linechart'
+        },
+        {
           component: require<any>('../components/VerticalBarChart/VerticalBarChartPage').VerticalBarChartPage,
           key: 'VerticalBarChart',
           name: 'VerticalBarChart',
           url: '#/examples/verticalbarchart'
+        },
+        {
+          component: require<any>('../components/HorizontalBarChart/HorizontalBarChartPage').HorizontalBarChartPage,
+          key: 'HorizontalBarChart',
+          name: 'HorizontalBarChart',
+          url: '#/examples/horizontalbarchart'
         }
       ]
     }

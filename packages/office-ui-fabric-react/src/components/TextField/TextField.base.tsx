@@ -128,7 +128,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
   public componentWillReceiveProps(newProps: ITextFieldProps): void {
     const { onBeforeChange } = this.props;
 
-    if (newProps.value !== undefined && newProps.value !== this.state.value) {
+    if (newProps.value !== this.state.value) {
       if (onBeforeChange) {
         onBeforeChange(newProps.value);
       }
@@ -407,6 +407,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
         aria-describedby={this._isDescriptionAvailable ? this._descriptionId : this.props['aria-describedby']}
         aria-invalid={!!this.state.errorMessage}
         aria-label={this.props.ariaLabel}
+        readOnly={this.props.readOnly}
         onFocus={this._onFocus}
         onBlur={this._onBlur}
       />
@@ -424,13 +425,14 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
         id={this._id}
         {...inputProps}
         ref={this._textElement}
-        value={this.state.value}
+        value={this.state.value === undefined ? '' : this.state.value}
         onInput={this._onInputChange}
         onChange={this._onInputChange}
         className={this._classNames.field}
         aria-label={this.props.ariaLabel}
         aria-describedby={this._isDescriptionAvailable ? this._descriptionId : this.props['aria-describedby']}
         aria-invalid={!!this.state.errorMessage}
+        readOnly={this.props.readOnly}
         onFocus={this._onFocus}
         onBlur={this._onBlur}
       />

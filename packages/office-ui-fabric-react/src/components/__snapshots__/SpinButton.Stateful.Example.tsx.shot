@@ -126,7 +126,6 @@ exports[`Component Examples renders SpinButton.Stateful.Example.tsx correctly 1`
             }
         data-ktp-execute-target={undefined}
         data-lpignore={true}
-        disabled={false}
         id="input1"
         onBlur={[Function]}
         onChange={[Function]}
@@ -158,6 +157,7 @@ exports[`Component Examples renders SpinButton.Stateful.Example.tsx correctly 1`
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={false}
@@ -232,6 +232,10 @@ exports[`Component Examples renders SpinButton.Stateful.Example.tsx correctly 1`
               }
           data-is-focusable={false}
           disabled={undefined}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
@@ -281,6 +285,7 @@ exports[`Component Examples renders SpinButton.Stateful.Example.tsx correctly 1`
         </button>
         <button
           aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={false}
@@ -355,6 +360,10 @@ exports[`Component Examples renders SpinButton.Stateful.Example.tsx correctly 1`
               }
           data-is-focusable={false}
           disabled={undefined}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}

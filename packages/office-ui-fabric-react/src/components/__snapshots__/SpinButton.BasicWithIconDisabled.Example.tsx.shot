@@ -150,7 +150,6 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
             }
         data-ktp-execute-target={undefined}
         data-lpignore={true}
-        disabled={true}
         id="input1"
         onBlur={[Function]}
         onChange={[Function]}
@@ -189,6 +188,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
       >
         <button
           aria-describedby={undefined}
+          aria-disabled={true}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={false}
@@ -213,7 +213,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
                 font-weight: 400;
                 height: 50%;
                 opacity: 0.5;
-                outline: none;
+                outline: transparent;
                 padding-bottom: 0;
                 padding-left: 0;
                 padding-right: 0;
@@ -255,11 +255,16 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
                 outline: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
+                bordercolor: grayText;
                 color: GrayText;
                 opacity: 1;
               }
           data-is-focusable={false}
           disabled={true}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
@@ -310,6 +315,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
         </button>
         <button
           aria-describedby={undefined}
+          aria-disabled={true}
           aria-label={undefined}
           aria-labelledby={undefined}
           aria-pressed={false}
@@ -334,7 +340,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
                 font-weight: 400;
                 height: 50%;
                 opacity: 0.5;
-                outline: none;
+                outline: transparent;
                 padding-bottom: 0;
                 padding-left: 0;
                 padding-right: 0;
@@ -376,11 +382,16 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
                 outline: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
+                bordercolor: grayText;
                 color: GrayText;
                 opacity: 1;
               }
           data-is-focusable={false}
           disabled={true}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}

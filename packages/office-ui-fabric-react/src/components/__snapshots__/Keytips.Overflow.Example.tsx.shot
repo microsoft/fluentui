@@ -8,7 +8,14 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
   <div
     aria-describedby={undefined}
     aria-labelledby={undefined}
-    className="ms-FocusZone ms-OverflowSet"
+    className=
+        ms-FocusZone
+        ms-OverflowSet
+        {
+          display: flex;
+          flex-wrap: nowrap;
+          position: relative;
+        }
     data-focuszone-id="FocusZone0"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -16,10 +23,16 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
     role="menubar"
   >
     <div
-      className="ms-OverflowSet-item"
+      className=
+          ms-OverflowSet-item
+          {
+            display: inherit;
+            flex-shrink: 0;
+          }
     >
       <button
         aria-describedby=" ktp-layer-id ktp-q"
+        aria-disabled={undefined}
         aria-label={undefined}
         aria-labelledby={undefined}
         aria-pressed={undefined}
@@ -93,6 +106,11 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
         disabled={undefined}
         name="Link 1"
         onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
         type="button"
       >
         <div
@@ -133,10 +151,16 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
       </button>
     </div>
     <div
-      className="ms-OverflowSet-item"
+      className=
+          ms-OverflowSet-item
+          {
+            display: inherit;
+            flex-shrink: 0;
+          }
     >
       <button
         aria-describedby=" ktp-layer-id ktp-w"
+        aria-disabled={undefined}
         aria-label={undefined}
         aria-labelledby={undefined}
         aria-pressed={undefined}
@@ -210,6 +234,11 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
         disabled={undefined}
         name="Link 2"
         onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
         type="button"
       >
         <div
@@ -250,10 +279,16 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
       </button>
     </div>
     <div
-      className="ms-OverflowSet-item"
+      className=
+          ms-OverflowSet-item
+          {
+            display: inherit;
+            flex-shrink: 0;
+          }
     >
       <button
         aria-describedby=" ktp-layer-id ktp-e"
+        aria-disabled={undefined}
         aria-label={undefined}
         aria-labelledby={undefined}
         aria-pressed={undefined}
@@ -327,6 +362,11 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
         disabled={undefined}
         name="Link 3"
         onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
         type="button"
       >
         <div
@@ -367,10 +407,16 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
       </button>
     </div>
     <div
-      className="ms-OverflowSet-overflowButton"
+      className=
+          ms-OverflowSet-overflowButton
+          {
+            display: inherit;
+            flex-shrink: 0;
+          }
     >
       <button
         aria-describedby=" ktp-layer-id ktp-r"
+        aria-disabled={undefined}
         aria-expanded={false}
         aria-haspopup={true}
         aria-label={undefined}
@@ -447,6 +493,10 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
         disabled={undefined}
         onClick={[Function]}
         onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
         type="button"
       >
         <div
@@ -498,6 +548,7 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
   </p>
   <button
     aria-describedby={undefined}
+    aria-disabled={undefined}
     aria-label={undefined}
     aria-labelledby={undefined}
     aria-pressed={undefined}
@@ -567,6 +618,11 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
     data-is-focusable={true}
     disabled={undefined}
     onClick={[Function]}
+    onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
     type="button"
   >
     <div

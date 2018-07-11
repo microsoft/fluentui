@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, customizable, getId } from '../../Utilities';
+import { BaseComponent, classNamesFunction, getId } from '../../Utilities';
 import { IDialogProps, IDialogStyleProps, IDialogStyles } from './Dialog.types';
 import { DialogType, IDialogContentProps } from './DialogContent.types';
 import { Modal, IModalProps } from '../../Modal';
@@ -22,7 +22,6 @@ const DefaultDialogContentProps: IDialogContentProps = {
   topButtonsProps: []
 };
 
-@customizable('Dialog', ['theme', 'styles'])
 @withResponsiveMode
 export class DialogBase extends BaseComponent<IDialogProps, {}> {
   public static defaultProps: IDialogProps = {

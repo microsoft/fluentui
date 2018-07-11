@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TextFieldPage } from '@uifabric/demo/lib/components/pages/TextFieldPage';
+import { TextFieldPage } from '@uifabric/fabric-website-resources/lib/components/pages/TextFieldPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 const pageStyles: any = require('../PageStyles.module.scss');

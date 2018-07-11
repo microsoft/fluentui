@@ -4,6 +4,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Example.tsx correctly 1`] 
 <div>
   <button
     aria-describedby="id__1"
+    aria-disabled={undefined}
     aria-label={undefined}
     aria-labelledby="id__0"
     aria-pressed={undefined}
@@ -73,6 +74,11 @@ exports[`Component Examples renders FocusTrapZone.Box.Example.tsx correctly 1`] 
     data-is-focusable={true}
     disabled={undefined}
     onClick={[Function]}
+    onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
     type="button"
   >
     <div
@@ -158,6 +164,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Example.tsx correctly 1`] 
               onFocus={[Function]}
               onInput={[Function]}
               placeholder="Input inside Focus Trap Zone"
+              readOnly={undefined}
               type="text"
               value=""
             />
@@ -171,6 +178,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Example.tsx correctly 1`] 
             {
               background-color: transparent;
               background: none;
+              border-bottom: 1px solid transparent;
               border: none;
               color: #0078d4;
               cursor: pointer;
@@ -205,6 +213,15 @@ exports[`Component Examples renders FocusTrapZone.Box.Example.tsx correctly 1`] 
               top: 1px;
               z-index: 1;
             }
+            @media screen and (-ms-high-contrast: white-on-black){& {
+              color: #FFFF00;
+            }
+            @media screen and (-ms-high-contrast: black-on-white){& {
+              color: #00009F;
+            }
+            @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+              border-bottom: none;
+            }
             &:active, &:hover, &:active:hover {
               color: #004578;
             }
@@ -214,6 +231,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Example.tsx correctly 1`] 
             &:focus {
               color: #0078d4;
             }
+        disabled={undefined}
         onClick={[Function]}
       >
         Hyperlink inside FocusTrapZone

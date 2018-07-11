@@ -15,7 +15,14 @@ export class ButtonDefaultExample extends React.Component<IButtonProps, {}> {
       <div className={css(classNames.twoup)}>
         <div>
           <Label>Standard</Label>
-          <DefaultButton data-automation-id="test" disabled={disabled} checked={checked} text="Button" />
+          <DefaultButton
+            data-automation-id="test"
+            allowDisabledFocus={true}
+            disabled={disabled}
+            checked={checked}
+            text="Button"
+            onClick={this._alertClicked}
+          />
         </div>
         <div>
           <Label>Primary</Label>
@@ -26,6 +33,7 @@ export class ButtonDefaultExample extends React.Component<IButtonProps, {}> {
             checked={checked}
             text="Button"
             onClick={this._alertClicked}
+            allowDisabledFocus={true}
           />
         </div>
       </div>

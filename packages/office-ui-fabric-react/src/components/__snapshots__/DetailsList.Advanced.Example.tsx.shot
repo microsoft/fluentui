@@ -50,14 +50,22 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                 align-items: stretch;
                 display: flex;
                 flex-grow: 1;
+                flex-wrap: nowrap;
+                position: relative;
               }
           role="presentation"
         >
           <div
-            className="ms-OverflowSet-item"
+            className=
+                ms-OverflowSet-item
+                {
+                  display: inherit;
+                  flex-shrink: 0;
+                }
           >
             <button
               aria-describedby={undefined}
+              aria-disabled={undefined}
               aria-label={undefined}
               aria-labelledby={undefined}
               aria-posinset={1}
@@ -132,6 +140,11 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
               data-is-focusable={true}
               disabled={undefined}
               onClick={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
               type="button"
             >
               <div
@@ -201,10 +214,16 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
             </button>
           </div>
           <div
-            className="ms-OverflowSet-item"
+            className=
+                ms-OverflowSet-item
+                {
+                  display: inherit;
+                  flex-shrink: 0;
+                }
           >
             <button
               aria-describedby={undefined}
+              aria-disabled={undefined}
               aria-label={undefined}
               aria-labelledby={undefined}
               aria-posinset={2}
@@ -279,6 +298,11 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
               data-is-focusable={true}
               disabled={undefined}
               onClick={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
               type="button"
             >
               <div
@@ -348,10 +372,16 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
             </button>
           </div>
           <div
-            className="ms-OverflowSet-item"
+            className=
+                ms-OverflowSet-item
+                {
+                  display: inherit;
+                  flex-shrink: 0;
+                }
           >
             <button
               aria-describedby={undefined}
+              aria-disabled={undefined}
               aria-expanded={false}
               aria-haspopup={true}
               aria-label={undefined}
@@ -430,6 +460,10 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
               disabled={undefined}
               onClick={[Function]}
               onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
               type="button"
             >
               <div

@@ -156,6 +156,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
     />
     <button
       aria-describedby={undefined}
+      aria-disabled={undefined}
       aria-hidden={true}
       aria-label={undefined}
       aria-labelledby={undefined}
@@ -238,6 +239,11 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
       data-is-focusable={false}
       disabled={undefined}
       onClick={[Function]}
+      onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
       role="presentation"
       tabIndex={-1}
       type="button"
@@ -442,6 +448,7 @@ exports[`ComboBox renders a ComboBox with a Keytip correctly 1`] = `
     />
     <button
       aria-describedby={undefined}
+      aria-disabled={undefined}
       aria-hidden={true}
       aria-label={undefined}
       aria-labelledby={undefined}
@@ -524,6 +531,11 @@ exports[`ComboBox renders a ComboBox with a Keytip correctly 1`] = `
       data-is-focusable={false}
       disabled={undefined}
       onClick={[Function]}
+      onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
       role="presentation"
       tabIndex={-1}
       type="button"

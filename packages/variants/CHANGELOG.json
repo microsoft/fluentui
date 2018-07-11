@@ -2,6 +2,39 @@
   "name": "@uifabric/variants",
   "entries": [
     {
+      "version": "6.0.5",
+      "tag": "@uifabric/variants_v6.0.5",
+      "date": "Tue, 03 Jul 2018 10:23:19 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Bryan Watts <brwatt@microsoft.com>",
+            "commit": "3538fae806f2dffe317fb72e3f7df8cc03061fff",
+            "comment": "Bump variants and file-type-icons packages to restore amd build output"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.4",
+      "tag": "@uifabric/variants_v6.0.4",
+      "date": "Thu, 14 Jun 2018 20:52:57 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "e13fdf037de38dad49a9b784d8d53b8541dda40c",
+            "comment": "Fix broken documentation links"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.9.0 <7.0.0` to `>=6.13.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.0.3",
       "tag": "@uifabric/variants_v6.0.3",
       "date": "Thu, 07 Jun 2018 16:35:34 GMT",

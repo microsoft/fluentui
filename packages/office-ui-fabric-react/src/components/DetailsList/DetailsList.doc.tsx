@@ -24,6 +24,9 @@ const DetailsListAdvancedExampleCode = require('!raw-loader!office-ui-fabric-rea
 import { DetailsListGroupedExample } from './examples/DetailsList.Grouped.Example';
 const DetailsListGroupedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Grouped.Example.tsx') as string;
 
+import { DetailsListGroupedLargeExample } from './examples/DetailsList.Grouped.Large.Example';
+const DetailsListGroupedLargeExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Grouped.Large.Example.tsx') as string;
+
 import { DetailsListDragDropExample } from './examples/DetailsList.DragDrop.Example';
 const DetailsListDragDropExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.DragDrop.Example.tsx') as string;
 
@@ -32,6 +35,9 @@ const DetailsListDocumentsExampleCode = require('!raw-loader!office-ui-fabric-re
 
 import { DetailsListNavigatingFocusExample } from './examples/DetailsList.NavigatingFocus.Example';
 const DetailsListNavigatingFocusExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.NavigatingFocus.Example.tsx') as string;
+
+import { DetailsListShimmerExample } from './examples/DetailsList.Shimmer.Example';
+const DetailsListShimmerExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Shimmer.Example.tsx') as string;
 
 export const DetailsListPageProps: IDocPageProps = {
   title: 'DetailsList',
@@ -59,6 +65,11 @@ export const DetailsListPageProps: IDocPageProps = {
       title: 'Simple Grouped DetailsList',
       code: DetailsListGroupedExampleCode,
       view: <DetailsListGroupedExample />
+    },
+    {
+      title: 'Large Grouped DetailsList',
+      code: DetailsListGroupedLargeExampleCode,
+      view: <DetailsListGroupedLargeExample />
     },
     {
       title: 'Rendering custom item columns with sorting',
@@ -89,6 +100,11 @@ export const DetailsListPageProps: IDocPageProps = {
       title: 'Navigating to new content preserving keyboard focus with initialFocusedIndex',
       code: DetailsListNavigatingFocusExampleCode,
       view: <DetailsListNavigatingFocusExample />
+    },
+    {
+      title: 'DetailsList Shimmer - usually show before retrieving data from network',
+      code: DetailsListShimmerExampleCode,
+      view: <DetailsListShimmerExample />
     }
   ],
   propertiesTablesSources: [

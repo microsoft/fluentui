@@ -101,6 +101,7 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
                     componentRef={this._hexText}
                     onBlur={this._onHexChanged}
                     spellCheck={false}
+                    ariaLabel={this.props.hexLabel}
                   />
                 </td>
                 <td style={{ width: '18%' }}>
@@ -110,6 +111,7 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
                     value={String(color.r)}
                     componentRef={this._rText}
                     spellCheck={false}
+                    ariaLabel={this.props.redLabel}
                   />
                 </td>
                 <td style={{ width: '18%' }}>
@@ -119,6 +121,7 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
                     value={String(color.g)}
                     componentRef={this._gText}
                     spellCheck={false}
+                    ariaLabel={this.props.greenLabel}
                   />
                 </td>
                 <td style={{ width: '18%' }}>
@@ -128,6 +131,7 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
                     value={String(color.b)}
                     componentRef={this._bText}
                     spellCheck={false}
+                    ariaLabel={this.props.blueLabel}
                   />
                 </td>
                 {!this.props.alphaSliderHidden && (
@@ -138,6 +142,7 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
                       value={String(color.a)}
                       componentRef={this._aText}
                       spellCheck={false}
+                      ariaLabel={this.props.alphaLabel}
                     />
                   </td>
                 )}

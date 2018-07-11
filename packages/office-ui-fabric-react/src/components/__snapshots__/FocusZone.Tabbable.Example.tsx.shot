@@ -22,6 +22,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
       </span>
       <button
         aria-describedby={undefined}
+        aria-disabled={undefined}
         aria-label={undefined}
         aria-labelledby={undefined}
         aria-pressed={undefined}
@@ -90,6 +91,12 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
             }
         data-is-focusable={true}
         disabled={undefined}
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
         type="button"
       >
         <div
@@ -130,6 +137,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
       </button>
       <button
         aria-describedby={undefined}
+        aria-disabled={undefined}
         aria-label={undefined}
         aria-labelledby={undefined}
         aria-pressed={undefined}
@@ -198,6 +206,12 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
             }
         data-is-focusable={true}
         disabled={undefined}
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
         type="button"
       >
         <div
@@ -255,6 +269,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               onChange={[Function]}
               onFocus={[Function]}
               onInput={[Function]}
+              readOnly={undefined}
               type="text"
               value="FocusZone TextField"
             />
@@ -263,6 +278,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
       </div>
       <button
         aria-describedby={undefined}
+        aria-disabled={undefined}
         aria-label={undefined}
         aria-labelledby={undefined}
         aria-pressed={undefined}
@@ -331,6 +347,12 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
             }
         data-is-focusable={true}
         disabled={undefined}
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
         type="button"
       >
         <div
@@ -377,6 +399,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
         aria-label={undefined}
         aria-labelledby={undefined}
         aria-pressed={undefined}
+        aria-roledescription={undefined}
         className=
 
             {
@@ -413,13 +436,11 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
             }
         data-is-focusable={true}
         data-ktp-target={undefined}
-        disabled={undefined}
         onClick={[Function]}
         onKeyDown={[Function]}
         onTouchStart={[Function]}
         role="button"
         tabIndex={0}
-        type="button"
       >
         <span
           style={
@@ -430,6 +451,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
         >
           <button
             aria-describedby={undefined}
+            aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
             aria-pressed={undefined}
@@ -499,6 +521,11 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
             data-is-focusable={false}
             disabled={undefined}
             onClick={undefined}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             tabIndex={-1}
             type="button"
           >
@@ -540,6 +567,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
           </button>
           <button
             aria-describedby={undefined}
+            aria-disabled={undefined}
             aria-expanded={false}
             aria-haspopup={true}
             aria-label="See 2 sample options"
@@ -579,7 +607,11 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
             data-ktp-execute-target={undefined}
             disabled={undefined}
             onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
             onMouseDown={[Function]}
+            onMouseUp={[Function]}
             tabIndex={-1}
             type="button"
           >
@@ -649,6 +681,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
       </span>
       <button
         aria-describedby={undefined}
+        aria-disabled={undefined}
         aria-label={undefined}
         aria-labelledby={undefined}
         aria-pressed={undefined}
@@ -717,6 +750,12 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
             }
         data-is-focusable={true}
         disabled={undefined}
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
         type="button"
       >
         <div
@@ -757,6 +796,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
       </button>
       <button
         aria-describedby={undefined}
+        aria-disabled={undefined}
         aria-label={undefined}
         aria-labelledby={undefined}
         aria-pressed={undefined}
@@ -825,6 +865,12 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
             }
         data-is-focusable={true}
         disabled={undefined}
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
         type="button"
       >
         <div
@@ -882,6 +928,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               onChange={[Function]}
               onFocus={[Function]}
               onInput={[Function]}
+              readOnly={undefined}
               type="text"
               value="FocusZone TextField"
             />
@@ -890,6 +937,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
       </div>
       <button
         aria-describedby={undefined}
+        aria-disabled={undefined}
         aria-label={undefined}
         aria-labelledby={undefined}
         aria-pressed={undefined}
@@ -958,6 +1006,12 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
             }
         data-is-focusable={true}
         disabled={undefined}
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
         type="button"
       >
         <div

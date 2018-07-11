@@ -49,6 +49,7 @@ exports[`Component Examples renders TextField.AutoComplete.Example.tsx correctly
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -57,6 +58,7 @@ exports[`Component Examples renders TextField.AutoComplete.Example.tsx correctly
   </div>
   <button
     aria-describedby={undefined}
+    aria-disabled={undefined}
     aria-label={undefined}
     aria-labelledby={undefined}
     aria-pressed={undefined}
@@ -135,6 +137,12 @@ exports[`Component Examples renders TextField.AutoComplete.Example.tsx correctly
         }
     data-is-focusable={true}
     disabled={undefined}
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
     type="submit"
   >
     <div
