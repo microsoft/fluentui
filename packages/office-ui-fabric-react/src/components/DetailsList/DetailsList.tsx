@@ -128,10 +128,12 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
     this._selection = props.selection || new Selection({ onSelectionChanged: undefined, getKey: props.getKey });
     this._selection.setItems(props.items as IObjectWithKey[], false);
-    this._dragDropHelper = props.dragDropEvents ? new DragDropHelper({
-      selection: this._selection,
-      minimumPixelsForDrag: props.minimumPixelsForDrag
-    }) : null;
+    this._dragDropHelper = props.dragDropEvents
+      ? new DragDropHelper({
+        selection: this._selection,
+        minimumPixelsForDrag: props.minimumPixelsForDrag
+      })
+      : null;
     this._initialFocusedIndex = props.initialFocusedIndex;
   }
 
@@ -286,7 +288,9 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       listProps,
       usePageCache,
       onShouldVirtualize,
-      enableShimmer
+      enableShimmer,
+      columnReorderOptions,
+      minimumPixelsForDrag
     } = this.props;
     const {
       adjustedColumns,
@@ -338,9 +342,10 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
           'ms-DetailsList',
           styles.root,
           className,
-          (layoutMode === DetailsListLayoutMode.fixedColumns) && 'is-fixed',
-          (constrainMode === ConstrainMode.horizontalConstrained) && ('is-horizontalConstrained ' + styles.rootIsHorizontalConstrained),
-          !!compact && ('ms-DetailsList--Compact ' + styles.rootCompact)
+          layoutMode === DetailsListLayoutMode.fixedColumns && 'is-fixed',
+          constrainMode === ConstrainMode.horizontalConstrained &&
+          'is-horizontalConstrained ' + styles.rootIsHorizontalConstrained,
+          !!compact && 'ms-DetailsList--Compact ' + styles.rootCompact
         ) }
         data-automationid='DetailsList'
         data-is-scrollable='false'
@@ -355,26 +360,32 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
           aria-readonly='true'
         >
           <div onKeyDown={ this._onHeaderKeyDown } role='presentation'>
-            { isHeaderVisible && onRenderDetailsHeader({
-              componentRef: this._header,
-              selectionMode: selectionMode!,
-              layoutMode: layoutMode!,
-              selection: selection,
-              columns: adjustedColumns as IColumn[],
-              onColumnClick: onColumnHeaderClick,
-              onColumnContextMenu: onColumnHeaderContextMenu,
-              onColumnResized: this._onColumnResized,
-              onColumnIsSizingChanged: this._onColumnIsSizingChanged,
-              onColumnAutoResized: this._onColumnAutoResized,
-              groupNestingDepth: groupNestingDepth,
-              isAllCollapsed: isCollapsed,
-              onToggleCollapseAll: this._onToggleCollapse,
-              ariaLabel: ariaLabelForListHeader,
-              ariaLabelForSelectAllCheckbox: ariaLabelForSelectAllCheckbox,
-              ariaLabelForSelectionColumn: ariaLabelForSelectionColumn,
-              selectAllVisibility: selectAllVisibility,
-              collapseAllVisibility: groupProps && groupProps.collapseAllVisibility
-            }, this._onRenderDetailsHeader) }
+            { isHeaderVisible &&
+              onRenderDetailsHeader(
+                {
+                  componentRef: this._header,
+                  selectionMode: selectionMode!,
+                  layoutMode: layoutMode!,
+                  selection: selection,
+                  columns: adjustedColumns as IColumn[],
+                  onColumnClick: onColumnHeaderClick,
+                  onColumnContextMenu: onColumnHeaderContextMenu,
+                  onColumnResized: this._onColumnResized,
+                  onColumnIsSizingChanged: this._onColumnIsSizingChanged,
+                  onColumnAutoResized: this._onColumnAutoResized,
+                  groupNestingDepth: groupNestingDepth,
+                  isAllCollapsed: isCollapsed,
+                  onToggleCollapseAll: this._onToggleCollapse,
+                  ariaLabel: ariaLabelForListHeader,
+                  ariaLabelForSelectAllCheckbox: ariaLabelForSelectAllCheckbox,
+                  ariaLabelForSelectionColumn: ariaLabelForSelectionColumn,
+                  selectAllVisibility: selectAllVisibility,
+                  collapseAllVisibility: groupProps && groupProps.collapseAllVisibility,
+                  columnReorderOptions: columnReorderOptions,
+                  minimumPixelsForDrag: minimumPixelsForDrag
+                },
+                this._onRenderDetailsHeader
+              ) }
           </div>
           <div onKeyDown={ this._onContentKeyDown } role='presentation'>
             <FocusZone
@@ -422,8 +433,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                       onShouldVirtualize={ onShouldVirtualize }
                       { ...additionalListProps }
                     />
-                  )
-                }
+                  ) }
               </SelectionZone>
             </FocusZone>
           </div>
@@ -799,10 +809,10 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
    * column to the max cell width.
    *
    * @private
-   * @param {IColumn} column (double clicked column definition)
-   * @param {number} columnIndex (double clicked column index)
-   * @todo min width 100 should be changed to const value and should be consistent with the value used on _onSizerMove method in DetailsHeader
-   */
+* @param { IColumn } column (double clicked column definition)
+* @param { number } columnIndex (double clicked column index)
+       * @todo min width 100 should be changed to const value and should be consistent with the value used on _onSizerMove method in DetailsHeader
+       */
   private _onColumnAutoResized(column: IColumn, columnIndex: number): void {
     let max = 0;
     let count = 0;
@@ -827,9 +837,9 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
    * and call onActiveItemChanged callback if specified.
    *
    * @private
-   * @param {el} row element that became active in Focus Zone
-   * @param {ev} focus event from Focus Zone
-   */
+* @param { el } row element that became active in Focus Zone
+* @param { ev } focus event from Focus Zone
+                                             */
   private _onActiveRowChanged(el?: HTMLElement, ev?: React.FocusEvent<HTMLElement>): void {
     const { items, onActiveItemChanged } = this.props;
 
