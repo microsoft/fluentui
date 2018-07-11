@@ -2,7 +2,8 @@ import { IDataPoint } from '@uifabric/charting/src/VerticalBarChart';
 
 export enum ChartType {
   VerticalBarChart,
-  LineChart
+  LineChart,
+  HorizontalBarChart
 }
 
 export enum ChartWidth {
@@ -41,9 +42,14 @@ export interface IChartProps {
   colors?: string[];
 
   /**
-   * Width of each bar in the chart (only for bar charts)
+   * Width of each bar in the chart (only for vertical bar chart)
    */
   barWidth?: number;
+
+  /**
+   * Width of each bar in the chart (only for horizontal bar chart)
+   */
+  barHeight?: number;
 
   /**
    * Data to render in the chart.

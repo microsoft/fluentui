@@ -126,7 +126,7 @@ export class LargeCardBasicExample extends React.Component<{}, {}> {
         cardContentType: CardContentType.Chart,
         content: {
           chartLabel: 'My first chart!',
-          chartType: ChartType.VerticalBarChart,
+          chartType: ChartType.HorizontalBarChart,
           data: datapoints,
           colors: ['red', 'yellow']
         }
