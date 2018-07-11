@@ -7,7 +7,7 @@ export const getClassNames = classNamesFunction<IGroupSpacerStyleProps, IGroupSp
 
 const SPACER_WIDTH = 36;
 
-export const GroupSpacer = styled(
+export const GroupSpacer = styled<IGroupSpacerProps, IGroupSpacerStyleProps, IGroupSpacerStyles>(
   (props: IGroupSpacerProps) => {
     const { count, styles, theme, indentWidth = SPACER_WIDTH } = props;
     const classNames = getClassNames(styles, {

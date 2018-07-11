@@ -1,22 +1,12 @@
-import * as React from 'react';
-import { BaseComponent, css } from '../../Utilities';
-import { IGroupDividerProps } from './GroupedList.types';
-import { GroupSpacer } from './GroupSpacer';
-import * as stylesImport from './GroupFooter.scss';
-const styles: any = stylesImport;
+import { styled } from '../../Utilities';
+import { getStyles } from './GroupFooter.styles';
+import { GroupFooterBase } from './GroupFooter.base';
+import { IGroupFooterProps, IGroupFooterStyles, IGroupFooterStyleProps } from './GroupFooter.types';
+export { IGroupFooterProps };
 
-export class GroupFooter extends BaseComponent<IGroupDividerProps, {}> {
-  public render(): JSX.Element | null {
-    const { group, groupLevel, footerText, indentWidth } = this.props;
-
-    if (group && footerText) {
-      return (
-        <div className={css('ms-groupFooter', styles.root)}>
-          <GroupSpacer indentWidth={indentWidth} count={groupLevel!} />
-          {footerText}
-        </div>
-      );
-    }
-    return null;
-  }
-}
+export const GroupFooter = styled<IGroupFooterProps, IGroupFooterStyleProps, IGroupFooterStyles>(
+  GroupFooterBase,
+  getStyles,
+  undefined,
+  { scope: 'GroupFooter' }
+);
