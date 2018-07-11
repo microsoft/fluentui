@@ -51,7 +51,12 @@ export enum CardContentType {
   /**
    * Selects the grid list
    */
-  GridList
+  GridList,
+
+  /**
+   * Selects the chart type
+   */
+  Chart
 }
 
 /**

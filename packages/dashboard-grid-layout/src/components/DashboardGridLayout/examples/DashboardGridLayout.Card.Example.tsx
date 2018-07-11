@@ -4,11 +4,13 @@ import { DashboardGridBreakpointLayouts, Size } from '../DashboardGridLayout.typ
 import { CardSize, Priority, CardContentType } from '@uifabric/experiments/src/components/Card/Card.types';
 import { Card } from '@uifabric/experiments/src/components/Card';
 import { IThumbnailItemProps } from '@uifabric/experiments/src/components/Card/ThumbnailList/ThumbnailList.types';
+import { IAction } from '@uifabric/experiments/src/components/Card/ActionBar/ActionBar.types';
+import { ChartType } from '@uifabric/experiments/src/components/Card/Chart/Chart.types';
 
 export class DashboardGridLayoutCardExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     const cardFrameContent = {
-      cardTitle: 'Small Card',
+      cardTitle: 'Example Card',
       cardDropDownOptions: [
         {
           key: 'Remove',
@@ -41,6 +43,63 @@ export class DashboardGridLayoutCardExample extends React.Component<{}, {}> {
       }
     ];
 
+    const actions: IAction[] = [
+      {
+        title: 'Action 1',
+        action: () => {
+          alert('Action1 clicked');
+        }
+      },
+      {
+        title: 'Action 2',
+        action: () => {
+          alert('Action2 clicked');
+        }
+      },
+      {
+        title: 'Action 3',
+        action: () => {
+          alert('Action3 clicked');
+        }
+      },
+      {
+        title: 'Action 4',
+        action: () => {
+          alert('Action4 clicked');
+        }
+      },
+      {
+        title: 'Action 5',
+        action: () => {
+          alert('Action5 clicked');
+        }
+      },
+      {
+        title: 'Action 6',
+        action: () => {
+          alert('Action6 clicked');
+        }
+      },
+      {
+        title: 'Action 7',
+        action: () => {
+          alert('Action7 clicked');
+        }
+      },
+      {
+        title: 'Action 8',
+        action: () => {
+          alert('Action8 clicked');
+        }
+      },
+      {
+        title: 'Action 9',
+        action: () => {
+          alert('Action9 clicked');
+        }
+      }
+    ];
+
     const contentAreaList = [
       {
         priority: Priority.Priority1,
@@ -55,6 +114,58 @@ export class DashboardGridLayoutCardExample extends React.Component<{}, {}> {
         cardContentType: CardContentType.ThumbnailList,
         content: {
           thumbnailItems: thumbnailItems
+        }
+      }
+    ];
+
+    const datapoints = [
+      { x: 0, y: 10 },
+      { x: 6, y: 18 },
+      { x: 12, y: 36 },
+      { x: 21, y: 20 },
+      { x: 29, y: 46 },
+      { x: 34, y: 25 },
+      { x: 40, y: 13 },
+      { x: 48, y: 43 },
+      { x: 57, y: 30 },
+      { x: 64, y: 45 },
+      { x: 72, y: 12 },
+      { x: 78, y: 50 },
+      { x: 85, y: 25 },
+      { x: 90, y: 43 },
+      { x: 96, y: 22 },
+      { x: 100, y: 19 }
+    ];
+
+    const largeContentAreaList = [
+      {
+        priority: Priority.Priority2,
+        cardContentType: CardContentType.ThumbnailList,
+        content: {
+          thumbnailItems: thumbnailItems
+        }
+      },
+      {
+        priority: Priority.Priority1,
+        cardContentType: CardContentType.Chart,
+        content: {
+          chartLabel: 'My first chart!',
+          chartType: ChartType.VerticalBarChart,
+          data: datapoints,
+          colors: ['red', 'yellow']
+        }
+      }
+    ];
+
+    const mediumTallContentAreaList = [
+      {
+        priority: Priority.Priority1,
+        cardContentType: CardContentType.Chart,
+        content: {
+          chartLabel: 'My first chart!',
+          chartType: ChartType.VerticalBarChart,
+          data: datapoints,
+          colors: ['red', 'yellow']
         }
       }
     ];
@@ -77,8 +188,9 @@ export class DashboardGridLayoutCardExample extends React.Component<{}, {}> {
           <Card
             cardFrameContent={cardFrameContent}
             header={header}
-            cardContentList={contentAreaList}
+            cardContentList={mediumTallContentAreaList}
             cardSize={CardSize.mediumTall}
+            actions={actions}
           />
         </div>
         <div key="2">
@@ -87,6 +199,24 @@ export class DashboardGridLayoutCardExample extends React.Component<{}, {}> {
             header={header}
             cardContentList={contentAreaList}
             cardSize={CardSize.small}
+          />
+        </div>
+        <div key="3">
+          <Card
+            cardFrameContent={cardFrameContent}
+            header={header}
+            cardContentList={contentAreaList}
+            cardSize={CardSize.mediumWide}
+            actions={actions}
+          />
+        </div>
+        <div key="4">
+          <Card
+            cardFrameContent={cardFrameContent}
+            header={header}
+            cardContentList={largeContentAreaList}
+            cardSize={CardSize.large}
+            actions={actions}
           />
         </div>
       </DashboardGridLayout>
@@ -98,7 +228,9 @@ export class DashboardGridLayoutCardExample extends React.Component<{}, {}> {
       lg: [
         { i: '0', y: 0, x: 0, size: Size.small },
         { i: '1', y: 0, x: 1, size: Size.mediumTall },
-        { i: '2', y: 1, x: 0, size: Size.small }
+        { i: '2', y: 1, x: 0, size: Size.small },
+        { i: '3', y: 0, x: 2, size: Size.mediumWide },
+        { i: '4', y: 1, x: 2, size: Size.large }
       ]
     };
   }

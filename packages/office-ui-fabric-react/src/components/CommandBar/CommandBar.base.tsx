@@ -188,11 +188,16 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       overflowButtonProps = {} // assure that props is not empty
     } = this.props;
 
+    const combinedOverflowItems: ICommandBarItemProps[] = [
+      ...(overflowButtonProps.menuProps ? overflowButtonProps.menuProps.items : []),
+      ...overflowItems
+    ];
+
     const overflowProps: IButtonProps = {
       ...overflowButtonProps,
       styles: { menuIcon: { fontSize: '17px' }, ...overflowButtonProps.styles },
       className: css('ms-CommandBar-overflowButton', overflowButtonProps.className),
-      menuProps: { items: overflowItems, ...overflowButtonProps.menuProps },
+      menuProps: { ...overflowButtonProps.menuProps, items: combinedOverflowItems },
       menuIconProps: { iconName: 'More', ...overflowButtonProps.menuIconProps }
     };
 
