@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 06 Jul 2018 11:24:15 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Jul 2018 04:48:35 GMT and should not be manually modified.
+
+## 5.114.0
+Wed, 11 Jul 2018 04:48:35 GMT
+
+### Minor changes
+
+- Added column reorder with DragAndDrop support in Details List. As part of this feature, a new component DetailsColumn has been added inside the header, for each  column.  An optional new prop(ColumnReorderOptions) has been added to DetailsList to handle the column reorder. Have added column level drag subscriptions to be able to drag the columns, and added one header level subscription, to handle the drops. All the drag drop events are being handled at header level
+- Dismiss panel when clicking outside of the Panel component. 
+
+### Patches
+
+- HoverCard: Removing unnecessary animation class causing a visual bug in IE browser.
 
 ## 5.113.1
 Fri, 06 Jul 2018 11:24:15 GMT
