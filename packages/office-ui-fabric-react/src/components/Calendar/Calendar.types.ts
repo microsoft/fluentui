@@ -22,10 +22,10 @@ export interface ICalendarProps extends React.Props<Calendar> {
   className?: string;
 
   /**
-  * Callback issued when a date is selected
-  * @param date - The date the user selected
-  * @param selectedDateRangeArray - The resultant list of dates that are selected based on the date range type set for the component.
-  */
+   * Callback issued when a date is selected
+   * @param date - The date the user selected
+   * @param selectedDateRangeArray - The resultant list of dates that are selected based on the date range type set for the component.
+   */
   onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
 
   /**
@@ -40,20 +40,20 @@ export interface ICalendarProps extends React.Props<Calendar> {
   isMonthPickerVisible?: boolean;
 
   /**
-  * Whether the day picker is shown beside the month picker or hidden.
-  * @defaultvalue true
-  */
+   * Whether the day picker is shown beside the month picker or hidden.
+   * @defaultvalue true
+   */
   isDayPickerVisible?: boolean;
 
   /**
-  * Show month picker on top of date picker when visible.
-  * @defaultvalue false
-  */
+   * Show month picker on top of date picker when visible.
+   * @defaultvalue false
+   */
   showMonthPickerAsOverlay?: boolean;
 
   /**
-    * Value of today. If null, current time in client machine will be used.
-    */
+   * Value of today. If null, current time in client machine will be used.
+   */
   today?: Date;
 
   /**
@@ -100,54 +100,54 @@ export interface ICalendarProps extends React.Props<Calendar> {
   strings: ICalendarStrings | null;
 
   /**
-  * Whether the month picker should highlight the current month
-  * @defaultvalue false
-  */
+   * Whether the month picker should highlight the current month
+   * @defaultvalue false
+   */
   highlightCurrentMonth?: boolean;
 
   /**
-  * Whether the month picker should highlight the selected month
-  * @defaultvalue false
-  */
+   * Whether the month picker should highlight the selected month
+   * @defaultvalue false
+   */
   highlightSelectedMonth?: boolean;
 
   /**
-  * Customize navigation icons using ICalendarIconStrings
-  */
+   * Customize navigation icons using ICalendarIconStrings
+   */
   navigationIcons?: ICalendarIconStrings;
 
   /**
-  * Whether the calendar should show the week number (weeks 1 to 53) before each week row
-  * @defaultvalue false
-  */
+   * Whether the calendar should show the week number (weeks 1 to 53) before each week row
+   * @defaultvalue false
+   */
   showWeekNumbers?: boolean;
 
   /**
-  * Defines when the first week of the year should start, FirstWeekOfYear.FirstDay,
-  * FirstWeekOfYear.FirstFullWeek or FirstWeekOfYear.FirstFourDayWeek are the possible values
-  * @defaultvalue FirstWeekOfYear.FirstDay
-  */
+   * Defines when the first week of the year should start, FirstWeekOfYear.FirstDay,
+   * FirstWeekOfYear.FirstFullWeek or FirstWeekOfYear.FirstFourDayWeek are the possible values
+   * @defaultvalue FirstWeekOfYear.FirstDay
+   */
   firstWeekOfYear?: FirstWeekOfYear;
 
   /**
-  * Apply additional formating to dates, for example localized date formatting.
-  */
+   * Apply additional formating to dates, for example localized date formatting.
+   */
   dateTimeFormatter?: ICalendarFormatDateCallbacks;
 
   /**
-  * If set the Calendar will not allow navigation to or selection of a date earlier than this value.
-  */
+   * If set the Calendar will not allow navigation to or selection of a date earlier than this value.
+   */
   minDate?: Date;
 
   /**
-  * If set the Calendar will not allow navigation to or selection of a date later than this value.
-  */
+   * If set the Calendar will not allow navigation to or selection of a date later than this value.
+   */
   maxDate?: Date;
 
   /**
-  * Whether the calendar should show 6 weeks by default.
-  * @defaultvalue false
-  */
+   * Whether the calendar should show 6 weeks by default.
+   * @defaultvalue false
+   */
   showSixWeeksByDefault?: boolean;
 
   /**
@@ -211,43 +211,40 @@ export interface ICalendarStrings {
    * Aria-label format string for the week number header. Should have 1 string param e.g. "week number {0}"
    */
   weekNumberFormatString?: string;
-
 }
 
 export interface ICalendarIconStrings {
   /**
-  * FabricMDL2Icons name for the left navigation icon.  Previous default: ChevronLeft.
-  * @defaultvalue  'Up'
-  */
+   * FabricMDL2Icons name for the left navigation icon.  Previous default: ChevronLeft.
+   * @defaultvalue  'Up'
+   */
   leftNavigation?: string;
 
   /**
-  * FabricMDL2Icons name for the right navigation icon.  Previous default: ChevronRight.
-  * @defaultvalue  'Down'
-  */
+   * FabricMDL2Icons name for the right navigation icon.  Previous default: ChevronRight.
+   * @defaultvalue  'Down'
+   */
   rightNavigation?: string;
-
 }
 
 export interface ICalendarFormatDateCallbacks {
   /**
- * Callback to apply formatting to mmmm d, yyyy formated dates
- */
+   * Callback to apply formatting to mmmm d, yyyy formated dates
+   */
   formatMonthDayYear: (date: Date, strings?: ICalendarStrings) => string;
 
   /**
-  * Callback to apply formatting to the month and year in the Day Picker header
-  */
+   * Callback to apply formatting to the month and year in the Day Picker header
+   */
   formatMonthYear: (date: Date, strings?: ICalendarStrings) => string;
 
   /**
-  * Callback to apply formatting to the days in the Day Picker calendar
-  */
+   * Callback to apply formatting to the days in the Day Picker calendar
+   */
   formatDay: (date: Date) => string;
 
   /**
-  * Callback to apply formatting to the year in the Month Picker header
-  */
+   * Callback to apply formatting to the year in the Month Picker header
+   */
   formatYear: (date: Date) => string;
-
 }

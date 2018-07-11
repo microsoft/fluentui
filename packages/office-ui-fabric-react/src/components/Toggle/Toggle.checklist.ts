@@ -1,8 +1,8 @@
-import { ChecklistStatus } from '../../demo/ComponentStatus/ComponentStatus.types';
+import { ChecklistStatus } from '../../common/DocPage.types';
 
 export const ToggleStatus = {
-  keyboardAccessibilitySupport: ChecklistStatus.unknown,
-  markupSupport: ChecklistStatus.unknown,
+  keyboardAccessibilitySupport: ChecklistStatus.good,
+  markupSupport: ChecklistStatus.good,
   highContrastSupport: ChecklistStatus.pass,
   rtlSupport: ChecklistStatus.pass,
   testCoverage: ChecklistStatus.good

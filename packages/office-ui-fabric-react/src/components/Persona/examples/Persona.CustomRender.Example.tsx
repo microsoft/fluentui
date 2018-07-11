@@ -22,16 +22,15 @@ const examplePersona: IPersonaSharedProps = {
 };
 
 export class PersonaCustomRenderExample extends React.Component {
-
   public render(): JSX.Element {
     return (
-      <div className='ms-PersonaExample'>
-        <div className={ exampleStyles.exampleLabel }>Custom icon in secondary text</div>
+      <div className="ms-PersonaExample">
+        <div className={exampleStyles.exampleLabel}>Custom icon in secondary text</div>
         <Persona
-          { ...examplePersona }
-          size={ PersonaSize.size72 }
-          presence={ PersonaPresence.offline }
-          onRenderSecondaryText={ this._onRenderSecondaryText }
+          {...examplePersona}
+          size={PersonaSize.size72}
+          presence={PersonaPresence.offline}
+          onRenderSecondaryText={this._onRenderSecondaryText}
         />
       </div>
     );
@@ -40,9 +39,9 @@ export class PersonaCustomRenderExample extends React.Component {
   private _onRenderSecondaryText = (props: IPersonaProps): JSX.Element => {
     return (
       <div>
-        <Icon iconName={ 'Suitcase' } className={ 'ms-JobIconExample' } />
-        { props.secondaryText }
+        <Icon iconName={'Suitcase'} className={'ms-JobIconExample'} />
+        {props.secondaryText}
       </div>
     );
-  }
+  };
 }

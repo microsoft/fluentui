@@ -1,6 +1,75 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 17 May 2018 10:28:07 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Jul 2018 10:23:46 GMT and should not be manually modified.
+
+## 6.1.3
+Fri, 06 Jul 2018 10:23:46 GMT
+
+### Patches
+
+- Update documentation regarding dir attribute.
+
+## 6.1.2
+Wed, 20 Jun 2018 10:25:55 GMT
+
+### Patches
+
+- Prettier changes
+
+## 6.1.1
+Thu, 14 Jun 2018 20:52:57 GMT
+
+### Patches
+
+- Consumes pages from demo project
+- Fix broken documentation links
+- Renamed demo to fabric-website-resources
+
+## 6.1.0
+Fri, 08 Jun 2018 18:34:17 GMT
+
+### Minor changes
+
+- Shimmer: Adds new Shimmer component to fabric-website
+
+### Patches
+
+- Add documentation for testing minified files locally.
+
+## 6.0.4
+Thu, 07 Jun 2018 16:35:34 GMT
+
+### Patches
+
+- Tweaked the lint rules.
+
+## 6.0.3
+Tue, 05 Jun 2018 00:44:30 GMT
+
+### Patches
+
+- Added Prettier
+
+## 6.0.2
+Mon, 04 Jun 2018 10:16:13 GMT
+
+### Patches
+
+- Updating react typings.
+
+## 6.0.1
+Thu, 31 May 2018 10:18:58 GMT
+
+### Patches
+
+- made sure the deps are resolved by package rather than relative paths
+
+## 6.0.0
+Wed, 30 May 2018 20:28:33 GMT
+
+### Breaking changes
+
+- Bump to 6.0 alongside office-ui-fabric-react 6.0 release.
 
 ## 5.7.5
 Thu, 17 May 2018 10:28:07 GMT

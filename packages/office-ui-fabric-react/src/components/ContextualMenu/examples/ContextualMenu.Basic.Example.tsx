@@ -4,7 +4,6 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import './ContextualMenuExample.scss';
 
 export class ContextualMenuBasicExample extends React.Component {
-
   constructor(props: {}) {
     super(props);
     this.state = {
@@ -16,14 +15,14 @@ export class ContextualMenuBasicExample extends React.Component {
     return (
       <div>
         <DefaultButton
-          id='ContextualMenuButton1'
-          text='Click for ContextualMenu'
-          menuProps={ {
+          id="ContextualMenuButton1"
+          text="Click for ContextualMenu"
+          menuProps={{
             shouldFocusOnMount: true,
             items: [
               {
                 key: 'newItem',
-                name: 'New',
+                text: 'New',
                 onClick: () => console.log('New clicked')
               },
               {
@@ -32,27 +31,27 @@ export class ContextualMenuBasicExample extends React.Component {
               },
               {
                 key: 'rename',
-                name: 'Rename',
+                text: 'Rename',
                 onClick: () => console.log('Rename clicked')
               },
               {
                 key: 'edit',
-                name: 'Edit',
+                text: 'Edit',
                 onClick: () => console.log('Edit clicked')
               },
               {
                 key: 'properties',
-                name: 'Properties',
+                text: 'Properties',
                 onClick: () => console.log('Properties clicked')
               },
               {
                 key: 'linkNoTarget',
-                name: 'Link same window',
+                text: 'Link same window',
                 href: 'http://bing.com'
               },
               {
                 key: 'linkWithTarget',
-                name: 'Link new window',
+                text: 'Link new window',
                 href: 'http://bing.com',
                 target: '_blank'
               },
@@ -68,12 +67,12 @@ export class ContextualMenuBasicExample extends React.Component {
               },
               {
                 key: 'disabled',
-                name: 'Disabled item',
+                text: 'Disabled item',
                 disabled: true,
                 onClick: () => console.error('Disabled item should not be clickable.')
               }
             ]
-          } }
+          }}
         />
       </div>
     );

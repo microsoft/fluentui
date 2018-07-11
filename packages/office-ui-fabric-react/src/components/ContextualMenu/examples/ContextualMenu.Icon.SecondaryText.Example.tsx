@@ -2,7 +2,6 @@ import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
 export class ContextualMenuIconSecondaryTextExample extends React.Component<{}, { showCallout: boolean }> {
-
   constructor(props: {}) {
     super(props);
     this.state = {
@@ -14,9 +13,9 @@ export class ContextualMenuIconSecondaryTextExample extends React.Component<{}, 
     return (
       <div>
         <DefaultButton
-          id='ContextualMenuButton2'
-          text='Click for ContextualMenu'
-          menuProps={ {
+          id="ContextualMenuButton2"
+          text="Click for ContextualMenu"
+          menuProps={{
             shouldFocusOnMount: true,
             items: [
               {
@@ -24,7 +23,7 @@ export class ContextualMenuIconSecondaryTextExample extends React.Component<{}, 
                 iconProps: {
                   iconName: 'Clock'
                 },
-                name: 'Later Today',
+                text: 'Later Today',
                 secondaryText: '7:00 PM'
               },
               {
@@ -32,7 +31,7 @@ export class ContextualMenuIconSecondaryTextExample extends React.Component<{}, 
                 iconProps: {
                   iconName: 'Coffeescript'
                 },
-                name: 'Tomorrow',
+                text: 'Tomorrow',
                 secondaryText: 'Thu. 8:00 AM'
               },
               {
@@ -40,7 +39,7 @@ export class ContextualMenuIconSecondaryTextExample extends React.Component<{}, 
                 iconProps: {
                   iconName: 'Vacation'
                 },
-                name: 'This Weekend',
+                text: 'This Weekend',
                 secondaryText: 'Sat. 10:00 AM'
               },
               {
@@ -48,12 +47,11 @@ export class ContextualMenuIconSecondaryTextExample extends React.Component<{}, 
                 iconProps: {
                   iconName: 'Suitcase'
                 },
-                name: 'Next Week',
+                text: 'Next Week',
                 secondaryText: 'Mon. 8:00 AM'
-              },
+              }
             ]
-          }
-          }
+          }}
         />
       </div>
     );

@@ -12,7 +12,7 @@ export class PageHeaderLink extends React.Component<IPageHeaderLink, {}> {
   private scrollDistance;
 
   private _els: {
-    link?: HTMLAnchorElement
+    link?: HTMLAnchorElement;
   } = {};
 
   public componentDidMount(): void {
@@ -25,7 +25,15 @@ export class PageHeaderLink extends React.Component<IPageHeaderLink, {}> {
 
   public render(): JSX.Element {
     return (
-      <a ref={ (a) => { this._els.link = a; } } href={ this.props.href } data-title={ this.props.text }>{ this.props.text }</a>
+      <a
+        ref={a => {
+          this._els.link = a;
+        }}
+        href={this.props.href}
+        data-title={this.props.text}
+      >
+        {this.props.text}
+      </a>
     );
   }
 
@@ -55,7 +63,10 @@ export class PageHeaderLink extends React.Component<IPageHeaderLink, {}> {
     let currentScrollPosition = bodySTop + elRect.top;
     let scrollTarget: HTMLBodyElement | HTMLHtmlElement = document.querySelector('body');
 
-    if (navigatorUserAgent.indexOf('firefox') > -1 || navigatorUserAgent.indexOf('chrome') > -1 && navigatorUserAgent.indexOf('edge') < 0) {
+    if (
+      navigatorUserAgent.indexOf('firefox') > -1 ||
+      (navigatorUserAgent.indexOf('chrome') > -1 && navigatorUserAgent.indexOf('edge') < 0)
+    ) {
       currentScrollPosition += window.scrollY;
       scrollTarget = document.querySelector('html');
     }
@@ -72,7 +83,7 @@ export class PageHeaderLink extends React.Component<IPageHeaderLink, {}> {
 
   private _extractAnchorLink(path) {
     let split = path.split('#');
-    let cleanedSplit = split.filter((value) => {
+    let cleanedSplit = split.filter(value => {
       if (value === '') {
         return false;
       } else {

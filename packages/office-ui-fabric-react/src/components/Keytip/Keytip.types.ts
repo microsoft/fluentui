@@ -1,9 +1,8 @@
 import { ICalloutProps } from '../../Callout';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunction, IPoint } from '../../Utilities';
+import { IStyleFunctionOrObject, IPoint } from '../../Utilities';
 
-export interface IKeytip {
-}
+export interface IKeytip {}
 
 export interface IKeytipProps {
   /**
@@ -41,20 +40,22 @@ export interface IKeytipProps {
   visible?: boolean;
 
   /**
-   * Function to call when this keytip is activated
-   * 'el' is the DOM element marked with 'data-ktp-execute-target'
+   * Function to call when this keytip is activated.
+   * 'executeTarget' is the DOM element marked with 'data-ktp-execute-target'.
+   * 'target' is the DOM element marked with 'data-ktp-target'.
    *
-   * @type {(HTMLElement) => void}
+   * @type {(HTMLElement | null, HTMLElement | null) => void}
    */
-  onExecute?: (el: HTMLElement | null) => void;
+  onExecute?: (executeTarget: HTMLElement | null, target: HTMLElement | null) => void;
 
   /**
-   * Function to call when the keytip is returned to
-   * 'el' is the DOM element marked with 'data-ktp-execute-target'
+   * Function to call when the keytip is the currentKeytip and a return sequence is pressed.
+   * 'executeTarget' is the DOM element marked with 'data-ktp-execute-target'.
+   * 'target' is the DOM element marked with 'data-ktp-target'.
    *
-   * @type {(HTMLElement) => void}
+   * @type {(HTMLElement | null, HTMLElement | null) => void}
    */
-  onReturn?: (el: HTMLElement | null) => void;
+  onReturn?: (executeTarget: HTMLElement | null, target: HTMLElement | null) => void;
 
   /**
    * Array of KeySequences which is the full key sequence to trigger this keytip
@@ -81,9 +82,9 @@ export interface IKeytipProps {
   /**
    * Optional styles for the component.
    *
-   * @type {IStyleFunction<IKeytipStyleProps, IKeytipStyles>}
+   * @type {IStyleFunctionOrObject<IKeytipStyleProps, IKeytipStyles>}
    */
-  getStyles?: IStyleFunction<IKeytipStyleProps, IKeytipStyles>;
+  styles?: IStyleFunctionOrObject<IKeytipStyleProps, IKeytipStyles>;
 
   /**
    * Offset x and y for the keytip, added from the top-left corner
@@ -114,7 +115,6 @@ export interface IKeytipProps {
  * Props to style Keytip component
  */
 export interface IKeytipStyleProps {
-
   /**
    * The theme for the keytip.
    *
@@ -138,7 +138,6 @@ export interface IKeytipStyleProps {
 }
 
 export interface IKeytipStyles {
-
   /**
    * Style for the div container surrounding the keytip content.
    *

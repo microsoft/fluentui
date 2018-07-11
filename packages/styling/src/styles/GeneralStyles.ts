@@ -1,6 +1,6 @@
 // This file mimics styles and mixins from _General.Mixins.scss
 
-import { IRawStyle } from '@uifabric/merge-styles/lib/index';
+import { IRawStyle } from '@uifabric/merge-styles';
 
 export const normalize: IRawStyle = {
   boxShadow: 'none',
@@ -12,5 +12,5 @@ export const normalize: IRawStyle = {
 export const noWrap: IRawStyle = {
   overflow: 'hidden',
   textOverflow: 'ellipsis',
-  whiteSpace: 'nowrap',
+  whiteSpace: 'nowrap'
 };

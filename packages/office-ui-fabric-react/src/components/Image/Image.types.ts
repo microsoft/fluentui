@@ -1,10 +1,8 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IStyleFunctionOrObject } from '../../Utilities';
 
-export interface IImage {
-
-}
+export interface IImage {}
 
 export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   /**
@@ -16,7 +14,7 @@ export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
-  getStyles?: IStyleFunction<IImageStyleProps, IImageStyles>;
+  styles?: IStyleFunctionOrObject<IImageStyleProps, IImageStyles>;
 
   /**
    * Theme provided by HOC.
@@ -45,8 +43,7 @@ export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   /**
    * Used to determine how the image is scaled and cropped to fit the frame.
    *
-   * @defaultvalue If both dimensions are provided, then the image is fit using ImageFit.scale. Otherwise, the
-   * image won't be scaled or cropped.
+   * @defaultvalue If both dimensions are provided, then the image is fit using ImageFit.scale. Otherwise, the image won't be scaled or cropped.
    */
   imageFit?: ImageFit;
 

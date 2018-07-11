@@ -1,25 +1,14 @@
 import { ICheckStyleProps, ICheckStyles } from './Check.types';
-import {
-  HighContrastSelector,
-  IStyle,
-  getGlobalClassNames,
-} from '../../Styling';
+import { HighContrastSelector, IStyle, getGlobalClassNames } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-Check',
   circle: 'ms-Check-circle',
-  check: 'ms-Check-check',
+  check: 'ms-Check-check'
 };
 
-export const getStyles = (
-  props: ICheckStyleProps
-): ICheckStyles => {
-  const {
-    checkBoxHeight = '18px',
-    checked,
-    className,
-    theme,
-  } = props;
+export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
+  const { checkBoxHeight = '18px', checked, className, theme } = props;
 
   const { palette, semanticColors } = theme;
 
@@ -36,7 +25,7 @@ export const getStyles = (
     verticalAlign: 'middle'
   };
 
-  return ({
+  return {
     root: [
       classNames.root,
       {
@@ -58,14 +47,14 @@ export const getStyles = (
             left: '1px',
             borderRadius: '50%',
             opacity: 1,
-            background: semanticColors.bodyBackground,
+            background: semanticColors.bodyBackground
           },
 
           /**
            * TODO: Come back to this once .checkHost has been
            * converted to mergeStyles
            */
-          '.checkHost:hover &, .checkHost:focus &, &:hover, &:focus': {
+          '$checkHost:hover &, $checkHost:focus &, &:hover, &:focus': {
             opacity: 1
           }
         }
@@ -85,7 +74,7 @@ export const getStyles = (
               }
             }
           }
-        },
+        }
       ],
       className
     ],
@@ -142,6 +131,8 @@ export const getStyles = (
           }
         }
       }
-    ]
-  });
+    ],
+
+    checkHost: [{}]
+  };
 };

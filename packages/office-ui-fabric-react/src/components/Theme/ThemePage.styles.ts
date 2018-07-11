@@ -1,14 +1,9 @@
 import { IThemePageStyleProps, IThemePageStyles } from './ThemePage.types';
-import {
-  getFocusStyle,
-  getTheme,
-} from '../../Styling';
+import { getFocusStyle, getTheme } from '../../Styling';
 
-export const getStyles = (
-  props: IThemePageStyleProps
-): IThemePageStyles => {
+export const getStyles = (props: IThemePageStyleProps): IThemePageStyles => {
   const theme = getTheme();
-  return ({
+  return {
     colorSwatch: [
       'ThemePage-colorSwatch',
       getFocusStyle(theme),
@@ -20,7 +15,7 @@ export const getStyles = (
 
         selectors: {
           ':hover': {
-            background: 'rgba(0,0,0,.05)',
+            background: 'rgba(0,0,0,.05)'
           }
         }
       }
@@ -34,10 +29,10 @@ export const getStyles = (
         height: '36px',
         verticalAlign: 'middle',
         marginRight: '5px',
-        border: '1px solid rgba(127, 127, 127, .5)',
+        border: '1px solid rgba(127, 127, 127, .5)'
       }
     ],
 
-    colorValue: 'ThemePage-colorValue',
-  });
+    colorValue: 'ThemePage-colorValue'
+  };
 };

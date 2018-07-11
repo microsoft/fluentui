@@ -3,10 +3,7 @@
     "target": "es5",
     "outDir": "lib",
     "module": "commonjs",
-    "lib": [
-      "es2017",
-      "dom"
-    ],
+    "lib": ["es2017", "dom"],
     "jsx": "react",
     "declaration": true,
     "sourceMap": true,
@@ -16,11 +13,7 @@
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
-    "types": [
-      "jest"
-    ]
+    "types": ["jest"]
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

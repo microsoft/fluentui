@@ -2,11 +2,7 @@ import './Header.scss';
 
 import * as React from 'react';
 
-import {
-  ContextualMenu,
-  DirectionalHint,
-  IContextualMenuItem
-} from 'office-ui-fabric-react/lib/ContextualMenu';
+import { ContextualMenu, DirectionalHint, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { ResponsiveMode, withResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
 import { getRTL, setRTL } from 'office-ui-fabric-react/lib/Utilities';
@@ -16,7 +12,7 @@ import { Icon } from 'office-ui-fabric-react/lib/Icon';
 
 export interface IHeaderProps {
   title: string;
-  sideLinks: { name: string, url: string }[];
+  sideLinks: { name: string; url: string }[];
 
   isMenuVisible: boolean;
   onIsMenuVisibleChanged?: (isMenuVisible: boolean) => void;
@@ -26,8 +22,8 @@ export interface IHeaderProps {
 
 export interface IHeaderState {
   contextMenu?: {
-    target: HTMLElement,
-    items: IContextualMenuItem[]
+    target: HTMLElement;
+    items: IContextualMenuItem[];
   };
 }
 
@@ -64,40 +60,39 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
 
     return (
       <div>
-        <div className='Header'>
-          { (responsiveMode <= ResponsiveMode.large) && (
-            <button className='Header-button' onClick={ this._onMenuClick }>
-              <Icon iconName='GlobalNavButton' />
+        <div className="Header">
+          {responsiveMode <= ResponsiveMode.large && (
+            <button className="Header-button" onClick={this._onMenuClick}>
+              <Icon iconName="GlobalNavButton" />
             </button>
-          ) }
-          <div className={ 'Header-title ' + FontClassNames.large }>
-            { title }
-          </div>
-          <div className='Header-buttons'>
-            <FocusZone direction={ FocusZoneDirection.horizontal }>
-              { sideLinks.map((link: {
-                name: string;
-                url: string;
-              }, linkIndex: number) => (
-                  <a key={ linkIndex } className='Header-button' href={ link.url }>{ link.name }</a>
-                )).concat([
-                  <button key='headerButton' className='Header-button' onClick={ this._onGearClick }>
-                    <Icon iconName='Settings' />
+          )}
+          <div className={'Header-title ' + FontClassNames.large}>{title}</div>
+          <div className="Header-buttons">
+            <FocusZone direction={FocusZoneDirection.horizontal}>
+              {sideLinks
+                .map((link: { name: string; url: string }, linkIndex: number) => (
+                  <a key={linkIndex} className="Header-button" href={link.url}>
+                    {link.name}
+                  </a>
+                ))
+                .concat([
+                  <button key="headerButton" className="Header-button" onClick={this._onGearClick}>
+                    <Icon iconName="Settings" />
                   </button>
-                ]) }
+                ])}
             </FocusZone>
           </div>
         </div>
-        { contextMenu ? (
+        {contextMenu ? (
           <ContextualMenu
-            items={ contextMenu.items }
-            isBeakVisible={ true }
-            target={ contextMenu.target }
-            directionalHint={ DirectionalHint.bottomAutoEdge }
-            gapSpace={ 5 }
-            onDismiss={ this._onDismiss }
+            items={contextMenu.items}
+            isBeakVisible={true}
+            target={contextMenu.target}
+            directionalHint={DirectionalHint.bottomAutoEdge}
+            gapSpace={5}
+            onDismiss={this._onDismiss}
           />
-        ) : (null) }
+        ) : null}
       </div>
     );
   }
@@ -114,20 +109,24 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
     let { contextMenu } = this.state;
 
     this.setState({
-      contextMenu: contextMenu ? undefined : {
-        target: ev.currentTarget as HTMLElement,
-        items: this._getOptionMenuItems()
-      }
+      contextMenu: contextMenu
+        ? undefined
+        : {
+            target: ev.currentTarget as HTMLElement,
+            items: this._getOptionMenuItems()
+          }
     });
   }
 
   private _getOptionMenuItems(): IContextualMenuItem[] {
-    return [{
-      key: 'isRTL',
-      name: `Render in ${this._isRTLEnabled ? 'LTR' : 'RTL'}`,
-      iconProps: { iconName: 'Settings' },
-      onClick: this._onRTLToggled
-    }];
+    return [
+      {
+        key: 'isRTL',
+        name: `Render in ${this._isRTLEnabled ? 'LTR' : 'RTL'}`,
+        iconProps: { iconName: 'Settings' },
+        onClick: this._onRTLToggled
+      }
+    ];
   }
 
   private _onRTLToggled(ev: React.MouseEvent<HTMLElement>): void {

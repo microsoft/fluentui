@@ -4,11 +4,8 @@ import { Fabric } from './Fabric';
 
 describe('Fabric', () => {
   it('renders correctly', () => {
-    const component = renderer.create(
-      <Fabric>test</Fabric>
-    );
+    const component = renderer.create(<Fabric>test</Fabric>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
-
 });

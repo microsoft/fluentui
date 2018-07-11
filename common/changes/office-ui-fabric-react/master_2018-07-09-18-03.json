@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "added fourth paragraph to ListOverview.md that explains how to format the items array if they opt to not use the optional onRenderCell",
+      "type": "none"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "t-jagi@microsoft.com"
+}

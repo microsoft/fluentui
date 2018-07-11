@@ -1,6 +1,41 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Fri, 04 May 2018 15:58:39 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Jul 2018 10:23:19 GMT and should not be manually modified.
+
+## 6.0.1
+Tue, 03 Jul 2018 10:23:19 GMT
+
+### Patches
+
+- Bump variants and file-type-icons packages to restore amd build output
+
+## 6.0.0
+Mon, 15 Jun 2018 00:44:30 GMT
+
+### Breaking changes
+
+- Major bump to 6.0.0 for consistency.
+
+## 0.7.2
+Tue, 05 Jun 2018 00:44:30 GMT
+
+### Patches
+
+- Added Prettier
+
+## 0.7.1
+Mon, 04 Jun 2018 10:16:13 GMT
+
+### Patches
+
+- Updating react typings.
+
+## 0.7.0
+Wed, 30 May 2018 20:28:33 GMT
+
+### Minor changes
+
+- Minimum React version is now 16.3.2.
 
 ## 0.6.2
 Fri, 04 May 2018 15:58:39 GMT

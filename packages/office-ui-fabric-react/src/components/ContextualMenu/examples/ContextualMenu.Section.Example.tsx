@@ -4,16 +4,14 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import './ContextualMenuExample.scss';
 
 export class ContextualMenuSectionExample extends React.Component<any, any> {
-
   public render(): JSX.Element {
     return (
       <div>
         <DefaultButton
-          id='ContextualMenuButton1'
-          text='Click for ContextualMenu'
-          menuProps={ {
-            items:
-            [
+          id="ContextualMenuButton1"
+          text="Click for ContextualMenu"
+          menuProps={{
+            items: [
               {
                 key: 'section',
                 itemType: ContextualMenuItemType.Section,
@@ -24,11 +22,11 @@ export class ContextualMenuSectionExample extends React.Component<any, any> {
                   items: [
                     {
                       key: 'newItem',
-                      name: 'New',
+                      text: 'New'
                     },
                     {
                       key: 'deleteItem',
-                      name: 'Delete',
+                      text: 'Delete'
                     }
                   ]
                 }
@@ -41,16 +39,16 @@ export class ContextualMenuSectionExample extends React.Component<any, any> {
                   items: [
                     {
                       key: 'share',
-                      name: 'Share'
+                      text: 'Share'
                     },
                     {
                       key: 'print',
-                      name: 'Print'
+                      text: 'Print'
                     },
                     {
                       key: 'music',
-                      name: 'Music',
-                    },
+                      text: 'Music'
+                    }
                   ]
                 }
               },
@@ -62,15 +60,14 @@ export class ContextualMenuSectionExample extends React.Component<any, any> {
                   items: [
                     {
                       key: 'Bing',
-                      name: 'Go to Bing',
+                      text: 'Go to Bing',
                       href: 'http://www.bing.com'
                     }
                   ]
                 }
               }
             ]
-          }
-          }
+          }}
         />
       </div>
     );

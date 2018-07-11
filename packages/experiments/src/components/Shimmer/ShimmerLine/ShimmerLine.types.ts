@@ -1,10 +1,8 @@
 import * as React from 'react';
 import { IStyle, IStyleSet, ITheme } from '../../../Styling';
-import { IStyleFunction } from '../../../Utilities';
+import { IStyleFunctionOrObject } from '../../../Utilities';
 
-export interface IShimmerLine {
-
-}
+export interface IShimmerLine {}
 
 /**
  * ShimmerLine component props.
@@ -40,14 +38,14 @@ export interface IShimmerLineProps extends React.AllHTMLAttributes<HTMLElement> 
   borderStyle?: IStyleSet;
 
   /**
-  * Theme provided by High-Order Component.
-  */
+   * Theme provided by High-Order Component.
+   */
   theme?: ITheme;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunction<IShimmerLineStyleProps, IShimmerLineStyles>;
+  styles?: IStyleFunctionOrObject<IShimmerLineStyleProps, IShimmerLineStyles>;
 }
 
 export interface IShimmerLineStyleProps {

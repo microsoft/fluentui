@@ -8,14 +8,10 @@ import './ExtendedPeoplePicker.scss';
 import { BaseExtendedPicker } from '../BaseExtendedPicker';
 import { IBaseExtendedPickerProps } from '../BaseExtendedPicker.types';
 
-export interface IPeoplePickerItemProps extends IPickerItemProps<IExtendedPersonaProps> {
-}
+export interface IPeoplePickerItemProps extends IPickerItemProps<IExtendedPersonaProps> {}
 
-export interface IExtendedPeoplePickerProps extends IBaseExtendedPickerProps<IPersonaProps> {
-}
+export interface IExtendedPeoplePickerProps extends IBaseExtendedPickerProps<IPersonaProps> {}
 
-export class BaseExtendedPeoplePicker extends BaseExtendedPicker<IPersonaProps, IExtendedPeoplePickerProps> {
-}
+export class BaseExtendedPeoplePicker extends BaseExtendedPicker<IPersonaProps, IExtendedPeoplePickerProps> {}
 
-export class ExtendedPeoplePicker extends BaseExtendedPeoplePicker {
-}
+export class ExtendedPeoplePicker extends BaseExtendedPeoplePicker {}

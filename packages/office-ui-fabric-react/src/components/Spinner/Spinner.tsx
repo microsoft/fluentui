@@ -1,9 +1,9 @@
 import { styled } from '../../Utilities';
 import { SpinnerBase } from './Spinner.base';
 import { getStyles } from './Spinner.styles';
-import { ISpinnerProps } from './Spinner.types';
+import { ISpinnerProps, ISpinnerStyles, ISpinnerStyleProps } from './Spinner.types';
 
-export const Spinner: (props: ISpinnerProps) => JSX.Element = styled(
+export const Spinner: (props: ISpinnerProps) => JSX.Element = styled<ISpinnerProps, ISpinnerStyleProps, ISpinnerStyles>(
   SpinnerBase,
   getStyles
 );

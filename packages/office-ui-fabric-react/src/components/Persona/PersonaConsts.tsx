@@ -1,7 +1,4 @@
-import {
-  PersonaPresence,
-  PersonaSize,
-} from './Persona.types';
+import { PersonaPresence, PersonaSize } from './Persona.types';
 
 // Persona Sizes
 export namespace personaSize {
@@ -35,7 +32,7 @@ export const sizeBoolean = (size: PersonaSize) => ({
   isSize40: size === PersonaSize.size40 || size === PersonaSize.small,
   isSize48: size === PersonaSize.size48,
   isSize72: size === PersonaSize.size72 || size === PersonaSize.large,
-  isSize100: size === PersonaSize.size100 || size === PersonaSize.extraLarge,
+  isSize100: size === PersonaSize.size100 || size === PersonaSize.extraLarge
 });
 
 export const presenceBoolean = (presence: PersonaPresence) => ({
@@ -44,5 +41,5 @@ export const presenceBoolean = (presence: PersonaPresence) => ({
   isBlocked: presence === PersonaPresence.blocked,
   isBusy: presence === PersonaPresence.busy,
   isDoNotDisturb: presence === PersonaPresence.dnd,
-  isOffline: presence === PersonaPresence.offline,
+  isOffline: presence === PersonaPresence.offline
 });

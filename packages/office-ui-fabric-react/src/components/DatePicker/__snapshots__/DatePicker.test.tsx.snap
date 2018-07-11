@@ -2,7 +2,20 @@
 
 exports[`DatePicker renders default DatePicker correctly 1`] = `
 <div
-  className="ms-DatePicker"
+  className=
+      ms-DatePicker
+      {
+        box-shadow: none;
+        box-sizing: border-box;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0px;
+      }
 >
   <div>
     <div
@@ -40,14 +53,23 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
             aria-hidden={true}
             className=
                 ms-DatePicker-event--without-label
+                msDatePickerDisabled
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  color: #666666;
+                  cursor: pointer;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
+                  font-size: 16px;
                   font-style: normal;
                   font-weight: normal;
+                  line-height: 18px;
+                  pointer-events: initial;
+                  position: absolute;
+                  right: 9px;
                   speak: none;
+                  top: 7px;
                 }
             data-icon-name="Calendar"
             onClick={[Function]}

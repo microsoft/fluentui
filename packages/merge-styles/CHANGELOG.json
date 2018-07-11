@@ -2,6 +2,102 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.2.3",
+      "tag": "@uifabric/merge-styles_v6.2.3",
+      "date": "Tue, 10 Jul 2018 21:54:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "35a362f6f82002dde458fde6f322330e8a44e6a9",
+            "comment": "Refining the merge-styles fix from yesterday to check for ownerDocument changes, which is a more correct comparison to work around the Chrome \"window not resetting\" issue."
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.2.2",
+      "tag": "@uifabric/merge-styles_v6.2.2",
+      "date": "Tue, 10 Jul 2018 05:05:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "24550050c28c8732c70d0d79ee1e9209d21e91ec",
+            "comment": "If the singleton `Stylesheet` instance originated from another window, reset the instance. Workaround for an unexplained Chrome issue where the singleton was still accessible after a page refresh."
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.2.1",
+      "tag": "@uifabric/merge-styles_v6.2.1",
+      "date": "Wed, 20 Jun 2018 10:25:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "natalieethell <naethell@microsoft.com>",
+            "commit": "09d099ec624afed8b92c5e32277a9a15c5d3c607",
+            "comment": "Prettier fixes"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.2.0",
+      "tag": "@uifabric/merge-styles_v6.2.0",
+      "date": "Thu, 07 Jun 2018 16:35:34 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "58b0ef8cd0468cbd5cfab04267f2f4143444f919",
+            "comment": "Minor changes to improve server side rendering."
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.2",
+      "tag": "@uifabric/merge-styles_v6.0.2",
+      "date": "Tue, 05 Jun 2018 00:44:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "cfa7a19ec1d6f98c13f822a828e0751f64507dbd",
+            "comment": "Added Prettier"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.1",
+      "tag": "@uifabric/merge-styles_v6.0.1",
+      "date": "Mon, 04 Jun 2018 10:16:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "4e1cd119bbf0f75e0432b0f92bad342714b57bef",
+            "comment": "Updating react typings."
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.0",
+      "tag": "@uifabric/merge-styles_v6.0.0",
+      "date": "Wed, 30 May 2018 22:05:03 GMT",
+      "comments": {
+        "major": [
+          {
+            "comment": "v6 release - see office-ui-fabric-react@6.1.0 for all up v6 release notes."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.17.1",
       "tag": "@uifabric/merge-styles_v5.17.1",
       "date": "Wed, 23 May 2018 10:28:50 GMT",

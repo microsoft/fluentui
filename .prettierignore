@@ -1,0 +1,12 @@
+package.json
+packages/*/package.json
+
+**/*.d.ts
+**/*.api.ts
+
+**/lib/**/*.js
+**/lib-commonjs/**/*.js
+**/dist/*.js
+**/common/changes/**/*.*
+
+**/CHANGELOG.json

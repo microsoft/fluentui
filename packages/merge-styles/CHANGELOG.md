@@ -1,6 +1,55 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Wed, 23 May 2018 10:28:50 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Jul 2018 21:54:07 GMT and should not be manually modified.
+
+## 6.2.3
+Tue, 10 Jul 2018 21:54:07 GMT
+
+### Patches
+
+- Refining the merge-styles fix from yesterday to check for ownerDocument changes, which is a more correct comparison to work around the Chrome "window not resetting" issue.
+
+## 6.2.2
+Tue, 10 Jul 2018 05:05:15 GMT
+
+### Patches
+
+- If the singleton `Stylesheet` instance originated from another window, reset the instance. Workaround for an unexplained Chrome issue where the singleton was still accessible after a page refresh.
+
+## 6.2.1
+Wed, 20 Jun 2018 10:25:55 GMT
+
+### Patches
+
+- Prettier fixes
+
+## 6.2.0
+Thu, 07 Jun 2018 16:35:34 GMT
+
+### Minor changes
+
+- Minor changes to improve server side rendering.
+
+## 6.0.2
+Tue, 05 Jun 2018 00:44:30 GMT
+
+### Patches
+
+- Added Prettier
+
+## 6.0.1
+Mon, 04 Jun 2018 10:16:13 GMT
+
+### Patches
+
+- Updating react typings.
+
+## 6.0.0
+Wed, 30 May 2018 22:05:03 GMT
+
+### Breaking changes
+
+- v6 release - see office-ui-fabric-react@6.1.0 for all up v6 release notes.
 
 ## 5.17.1
 Wed, 23 May 2018 10:28:50 GMT

@@ -1,8 +1,4 @@
-import {
-  HighContrastSelector,
-  AnimationVariables,
-  normalize
-} from '../../Styling';
+import { HighContrastSelector, AnimationVariables, normalize } from '../../Styling';
 import { ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
 
 export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
@@ -16,6 +12,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
       normalize,
       {
         color: palette.neutralPrimary,
+        backgroundColor: semanticColors.inputBackground,
         display: 'flex',
         flexDirection: 'row',
         flexWrap: 'nowrap',
@@ -47,7 +44,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
           borderColor: palette.themePrimary,
           selectors: {
             ':hover': {
-              borderColor: palette.themePrimary,
+              borderColor: palette.themePrimary
             },
             [HighContrastSelector]: {
               borderColor: 'Highlight'
@@ -72,9 +69,10 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
           padding: '1px 0 1px 8px'
         }
       ],
-      underlined && disabled && {
-        backgroundColor: 'transparent'
-      },
+      underlined &&
+        disabled && {
+          backgroundColor: 'transparent'
+        },
       hasInput && 'can-clear',
       className
     ],
@@ -104,7 +102,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
     icon: [
       'ms-SearchBox-icon',
       {
-        opacity: 1,
+        opacity: 1
       },
       hasFocus && {
         opacity: 0
@@ -123,7 +121,8 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         flexBasis: '32px',
         flexShrink: 0,
         padding: 1,
-        color: palette.themePrimary
+        color: palette.themePrimary,
+        backgroundColor: 'transparent'
       }
     ],
     field: [
@@ -136,7 +135,6 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         fontFamily: 'inherit',
         fontSize: 'inherit',
         color: palette.neutralPrimary,
-        backgroundColor: semanticColors.inputBackground,
         flex: '1 1 0px',
         overflow: 'hidden',
         textOverflow: 'ellipsis',

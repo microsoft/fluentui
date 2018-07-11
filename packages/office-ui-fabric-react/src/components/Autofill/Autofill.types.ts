@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Autofill } from './Autofill';
 import { KeyCodes } from '../../Utilities';
 export interface IAutofill {
-
   /**
    * The current index of the cursor in the input area. Returns -1 if the input element
    * is not ready.
@@ -40,8 +39,7 @@ export interface IAutofill {
   clear(): void;
 }
 
-export interface IAutofillProps extends
-  React.InputHTMLAttributes<HTMLInputElement | Autofill> {
+export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputElement | Autofill> {
   /**
    * Gets the compoonent ref.
    */
@@ -100,14 +98,10 @@ export interface IAutofillProps extends
 
 /**
  * @deprecated do not use, will be removed in 6.0
-*/
-export interface IBaseAutoFill extends IAutofill {
-
-}
+ */
+export interface IBaseAutoFill extends IAutofill {}
 
 /**
  * @deprecated do not use, will be removed in 6.0
-*/
-export interface IBaseAutoFillProps extends IAutofillProps {
-
-}
+ */
+export interface IBaseAutoFillProps extends IAutofillProps {}

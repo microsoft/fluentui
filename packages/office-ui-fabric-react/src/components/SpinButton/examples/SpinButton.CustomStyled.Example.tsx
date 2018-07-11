@@ -31,14 +31,14 @@ export class SpinButtonCustomStyledExample extends React.Component<any, any> {
     return (
       <div>
         <SpinButton
-          styles={ styles }
-          upArrowButtonStyles={ upArrowButtonStyles }
-          downArrowButtonStyles={ downArrowButtonStyles }
-          defaultValue='0'
-          label={ 'Custom styled SpinButton:' }
-          min={ 0 }
-          max={ 100 }
-          step={ 1 }
+          styles={styles}
+          upArrowButtonStyles={upArrowButtonStyles}
+          downArrowButtonStyles={downArrowButtonStyles}
+          defaultValue="0"
+          label={'Custom styled SpinButton:'}
+          min={0}
+          max={100}
+          step={1}
         />
       </div>
     );

@@ -40,10 +40,6 @@ export interface IBaseSelectedItemsListProps<T> extends React.Props<any> {
    */
   onChange?: (items?: T[]) => void;
   /**
-   * ClassName for the picker.
-   */
-  className?: string;
-  /**
    * Function that specifies how arbitrary text entered into the well is handled.
    */
   createGenericItem?: (input: string, ValidationState: ValidationState) => ISuggestionModel<T>;
@@ -58,13 +54,23 @@ export interface IBaseSelectedItemsListProps<T> extends React.Props<any> {
   selectedItems?: T[];
 
   /**
-  * Aria label for the 'X' button in the selected item component.
-  * @default ''
-  */
+   * Aria label for the 'X' button in the selected item component.
+   * @default ''
+   */
   removeButtonAriaLabel?: string;
-
   /**
-   * A callback when and item is deleted
+   * A callback when an item is deleted
+   * @deprecated Please use onItemsDeleted
    */
   onItemDeleted?: (deletedItem: T) => void;
+
+  /**
+   * A callback when and item or items are deleted
+   */
+  onItemsDeleted?: (deletedItems: T[]) => void;
+
+  /**
+   * A callback on whether this item can be deleted
+   */
+  canRemoveItem?: (item: T) => boolean;
 }

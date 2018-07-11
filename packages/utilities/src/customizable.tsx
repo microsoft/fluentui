@@ -1,32 +1,27 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import {
-  Customizations,
-} from './Customizations';
-import {
-  hoistStatics
-} from './hoistStatics';
+import { Customizations } from './Customizations';
+import { hoistStatics } from './hoistStatics';
+
+export const CustomizableContextTypes = {
+  customizations: PropTypes.object
+};
 
 export function customizable(
   scope: string,
   fields: string[]
   // tslint:disable-next-line:no-any
 ): <P, S>(ComposedComponent: new (props: P, ...args: any[]) => React.Component<P, S>) => any {
-
   // tslint:disable-next-line:no-shadowed-variable
   return function customizableFactory<P, S>(
     // tslint:disable-next-line:no-any
-    ComposedComponent: (new (props: P, ...args: any[]) => React.Component<P, S>)
+    ComposedComponent: new (props: P, ...args: any[]) => React.Component<P, S>
     // tslint:disable-next-line:no-any
   ): any {
     const resultClass = class ComponentWithInjectedProps extends React.Component<P, {}> {
       public static displayName: string = 'Customized' + scope;
 
-      public static contextTypes: {
-        customizations: PropTypes.Requireable<{}>;
-      } = {
-          customizations: PropTypes.object
-        };
+      public static contextTypes = CustomizableContextTypes;
 
       // tslint:disable-next-line:no-any
       constructor(props: P, context: any) {
@@ -48,14 +43,13 @@ export function customizable(
 
         return (
           // tslint:disable-next-line:no-any
-          <ComposedComponent { ...defaultProps } { ...this.props as any } />
+          <ComposedComponent {...defaultProps} {...this.props as any} />
         );
       }
 
       private _onSettingChanged(): void {
         this.forceUpdate();
       }
-
     };
 
     return hoistStatics(ComposedComponent, resultClass);

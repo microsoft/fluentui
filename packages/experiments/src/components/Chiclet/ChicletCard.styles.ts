@@ -1,15 +1,11 @@
-import {
-  normalize
-} from '../../Styling';
+import { normalize } from '../../Styling';
 import { IChicletCardStyleProps, IChicletCardStyles } from './ChicletCard.types';
 
-export const getStyles = (
-  props: IChicletCardStyleProps
-): IChicletCardStyles => {
+export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => {
   const { theme } = props;
   const { palette } = theme;
 
-  return ({
+  return {
     root: [
       normalize,
       {
@@ -44,7 +40,7 @@ export const getStyles = (
         position: 'relative',
         backgroundColor: palette.white,
         display: 'block',
-        padding: '2px 0px 2px 2px',
+        padding: '2px 0px 2px 2px'
       }
     ],
     info: [
@@ -92,5 +88,5 @@ export const getStyles = (
         textOverflow: 'ellipsis'
       }
     ]
-  });
+  };
 };

@@ -19,15 +19,16 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item is-suggested undefined"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -94,6 +95,11 @@ exports[`Suggestions renders a list properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -125,15 +131,16 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -200,6 +207,11 @@ exports[`Suggestions renders a list properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -231,15 +243,16 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -306,6 +319,11 @@ exports[`Suggestions renders a list properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -337,15 +355,16 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -412,6 +431,11 @@ exports[`Suggestions renders a list properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -443,15 +467,16 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -518,6 +543,11 @@ exports[`Suggestions renders a list properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -549,15 +579,16 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -624,6 +655,11 @@ exports[`Suggestions renders a list properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -655,15 +691,16 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -730,6 +767,11 @@ exports[`Suggestions renders a list properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -761,15 +803,16 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -836,6 +879,11 @@ exports[`Suggestions renders a list properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -867,15 +915,16 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -942,6 +991,11 @@ exports[`Suggestions renders a list properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -973,15 +1027,16 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -1048,6 +1103,11 @@ exports[`Suggestions renders a list properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -1079,15 +1139,16 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -1154,6 +1215,11 @@ exports[`Suggestions renders a list properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -1185,15 +1251,16 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -1260,6 +1327,11 @@ exports[`Suggestions renders a list properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -1291,15 +1363,16 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -1366,6 +1439,11 @@ exports[`Suggestions renders a list properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -1397,15 +1475,16 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -1472,6 +1551,11 @@ exports[`Suggestions renders a list properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -1503,15 +1587,16 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -1578,6 +1663,11 @@ exports[`Suggestions renders a list properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -1628,15 +1718,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -1703,6 +1794,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -1734,15 +1830,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -1809,6 +1906,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -1840,15 +1942,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -1915,6 +2018,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -1946,15 +2054,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -2021,6 +2130,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -2052,15 +2166,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -2127,6 +2242,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -2158,15 +2278,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -2233,6 +2354,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -2264,15 +2390,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -2339,6 +2466,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -2370,15 +2502,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -2445,6 +2578,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -2476,15 +2614,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item is-suggested undefined"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -2551,6 +2690,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -2582,15 +2726,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -2657,6 +2802,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -2688,15 +2838,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -2763,6 +2914,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -2794,15 +2950,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -2869,6 +3026,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -2900,15 +3062,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -2975,6 +3138,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -3006,15 +3174,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -3081,6 +3250,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -3112,15 +3286,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
+          aria-disabled={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
-              ms-Suggestions-itemButton
               ms-Button--action
               ms-Button--command
+              ms-Suggestions-itemButton
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -3187,6 +3362,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div

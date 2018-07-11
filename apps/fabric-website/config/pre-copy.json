@@ -1,7 +1,5 @@
 {
   "copyTo": {
-    "lib": [
-      "./src/**/*.json"
-    ]
+    "lib": ["./src/**/*.json"]
   }
 }

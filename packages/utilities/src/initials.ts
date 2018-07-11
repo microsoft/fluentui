@@ -63,7 +63,7 @@ function cleanupDisplayName(displayName: string): string {
 export function getInitials(
   displayName: string | undefined | null,
   isRtl: boolean,
-  allowPhoneInitials?: boolean,
+  allowPhoneInitials?: boolean
 ): string {
   if (!displayName) {
     return '';
@@ -72,10 +72,7 @@ export function getInitials(
   displayName = cleanupDisplayName(displayName);
 
   // For names containing CJK characters, and phone numbers, we don't display initials
-  if (
-    UNSUPPORTED_TEXT_REGEX.test(displayName) ||
-    (!allowPhoneInitials && PHONENUMBER_REGEX.test(displayName))
-  ) {
+  if (UNSUPPORTED_TEXT_REGEX.test(displayName) || (!allowPhoneInitials && PHONENUMBER_REGEX.test(displayName))) {
     return '';
   }
 

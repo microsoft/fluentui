@@ -1,8 +1,6 @@
 let _warningCallback: ((message: string) => void) | undefined = undefined;
 
-export type ISettingsMap<T> = {
-  [P in keyof T]?: string;
-};
+export type ISettingsMap<T> = { [P in keyof T]?: string };
 
 /**
  * Warns when a deprecated props are being used.
@@ -13,11 +11,7 @@ export type ISettingsMap<T> = {
  * @param deprecationMap - The map of deprecations, where key is the prop name and the value is
  * either null or a replacement prop name.
  */
-export function warnDeprecations<P>(
-  componentName: string,
-  props: P,
-  deprecationMap: ISettingsMap<P>): void {
-
+export function warnDeprecations<P>(componentName: string, props: P, deprecationMap: ISettingsMap<P>): void {
   for (const propName in deprecationMap) {
     if (props && propName in props) {
       let deprecationMessage = `${componentName} property '${propName}' was used but has been deprecated.`;
@@ -39,17 +33,15 @@ export function warnDeprecations<P>(
  * @param props - The props passed into the component.
  * @param exclusiveMap - A map where the key is a parameter, and the value is the other parameter.
  */
-export function warnMutuallyExclusive<P>(
-  componentName: string,
-  props: P,
-  exclusiveMap: ISettingsMap<P>): void {
-
+export function warnMutuallyExclusive<P>(componentName: string, props: P, exclusiveMap: ISettingsMap<P>): void {
   for (const propName in exclusiveMap) {
     if (props && propName in props) {
       let propInExclusiveMapValue = exclusiveMap[propName];
       if (propInExclusiveMapValue && propInExclusiveMapValue in props) {
         warn(
-          `${componentName} property '${propName}' is mutually exclusive with '${exclusiveMap[propName]}'. Use one or the other.`
+          `${componentName} property '${propName}' is mutually exclusive with '${
+            exclusiveMap[propName]
+          }'. Use one or the other.`
         );
       }
     }
@@ -65,20 +57,18 @@ export function warnMutuallyExclusive<P>(
  * @param requiredProps - The name of the props that are required when the condition is met.
  * @param conditionalPropName - The name of the prop that the condition is based on.
  * @param condition - Whether the condition is met.
-*/
+ */
 export function warnConditionallyRequiredProps<P>(
   componentName: string,
   props: P,
   requiredProps: string[],
   conditionalPropName: string,
-  condition: boolean): void {
-
+  condition: boolean
+): void {
   if (condition === true) {
     for (const requiredPropName of requiredProps) {
       if (!(requiredPropName in props)) {
-        warn(
-          `${componentName} property '${requiredPropName}' is required when '${conditionalPropName}' is used.'`
-        );
+        warn(`${componentName} property '${requiredPropName}' is required when '${conditionalPropName}' is used.'`);
       }
     }
   }

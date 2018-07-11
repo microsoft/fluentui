@@ -12,40 +12,33 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 
 class CalloutContentWrapper extends React.Component<ICalloutProps, {}> {
   public render(): JSX.Element {
-    return <CalloutContent { ...this.props } />;
+    return <CalloutContent {...this.props} />;
   }
 }
 
 describe('Callout', () => {
-
   it('renders Callout correctly', () => {
     const createNodeMock = (el: React.ReactElement<{}>) => {
       return {
         __events__: {}
       };
     };
-    const component = renderer.create(
-      <CalloutContentWrapper>Content</CalloutContentWrapper>,
-      { createNodeMock }
-    );
+    const component = renderer.create(<CalloutContentWrapper>Content</CalloutContentWrapper>, { createNodeMock });
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('target id strings does not throw exception', () => {
-
     let threwException = false;
     try {
       ReactTestUtils.renderIntoDocument<HTMLDivElement>(
         <div>
-          <button id='target' style={ { top: '10px', left: '10px', height: '0', width: '0px' } }> target </button>
-          <Callout
-            target='#target'
-            directionalHint={ DirectionalHint.topLeftEdge }
-          >
-            <div>
-              Content
-            </div>
+          <button id="target" style={{ top: '10px', left: '10px', height: '0', width: '0px' }}>
+            {' '}
+            target{' '}
+          </button>
+          <Callout target="#target" directionalHint={DirectionalHint.topLeftEdge}>
+            <div>Content</div>
           </Callout>
         </div>
       );
@@ -62,16 +55,10 @@ describe('Callout', () => {
     mouseEvent.initMouseEvent('click', false, false, window, 0, 0, 0, 0, 0, false, false, false, false, 1, eventTarget);
     let threwException = false;
     try {
-
       ReactTestUtils.renderIntoDocument<HTMLDivElement>(
         <div>
-          <Callout
-            target={ eventTarget }
-            directionalHint={ DirectionalHint.topLeftEdge }
-          >
-            <div>
-              Content
-            </div>
+          <Callout target={eventTarget} directionalHint={DirectionalHint.topLeftEdge}>
+            <div>Content</div>
           </Callout>
         </div>
       );
@@ -87,16 +74,10 @@ describe('Callout', () => {
     document.body.appendChild(targetElement);
     let threwException = false;
     try {
-
       ReactTestUtils.renderIntoDocument<HTMLDivElement>(
         <div>
-          <Callout
-            target={ targetElement }
-            directionalHint={ DirectionalHint.topLeftEdge }
-          >
-            <div>
-              Content
-            </div>
+          <Callout target={targetElement} directionalHint={DirectionalHint.topLeftEdge}>
+            <div>Content</div>
           </Callout>
         </div>
       );
@@ -112,12 +93,8 @@ describe('Callout', () => {
     try {
       ReactTestUtils.renderIntoDocument<HTMLDivElement>(
         <div>
-          <Callout
-            directionalHint={ DirectionalHint.topLeftEdge }
-          >
-            <div>
-              Content
-            </div>
+          <Callout directionalHint={DirectionalHint.topLeftEdge}>
+            <div>Content</div>
           </Callout>
         </div>
       );
@@ -127,7 +104,7 @@ describe('Callout', () => {
     expect(threwException).toEqual(false);
   });
 
-  it('passes event to onDismiss prop', (done) => {
+  it('passes event to onDismiss prop', done => {
     let threwException = false;
     let gotEvent = false;
     const onDismiss = (ev?: any) => {
@@ -143,18 +120,16 @@ describe('Callout', () => {
     try {
       ReactDOM.render<HTMLDivElement>(
         <div>
-          <button id='focustarget'> button </button>
-          <button id='target' style={ { top: '10px', left: '10px', height: '0', width: '0px' } }> target </button>
-          <Callout
-            target='#target'
-            directionalHint={ DirectionalHint.topLeftEdge }
-            onDismiss={ onDismiss }
-          >
-            <div>
-              Content
-            </div>
+          <button id="focustarget"> button </button>
+          <button id="target" style={{ top: '10px', left: '10px', height: '0', width: '0px' }}>
+            {' '}
+            target{' '}
+          </button>
+          <Callout target="#target" directionalHint={DirectionalHint.topLeftEdge} onDismiss={onDismiss}>
+            <div>Content</div>
           </Callout>
-        </div>, root
+        </div>,
+        root
       );
     } catch (e) {
       threwException = true;
@@ -175,5 +150,4 @@ describe('Callout', () => {
       done();
     }, 100);
   });
-
 });

@@ -1,7 +1,4 @@
-import {
-  InjectionMode,
-  Stylesheet
-} from './Stylesheet';
+import { InjectionMode, Stylesheet } from './Stylesheet';
 
 import { setRTL } from './transforms/rtlifyRules';
 import { styleToClassName } from './styleToClassName';
@@ -11,7 +8,6 @@ const _stylesheet: Stylesheet = Stylesheet.getInstance();
 _stylesheet.setConfig({ injectionMode: InjectionMode.none });
 
 describe('styleToClassName', () => {
-
   beforeEach(() => {
     _stylesheet.reset();
   });
@@ -139,7 +135,7 @@ describe('styleToClassName', () => {
     const newClassName = styleToClassName({
       selectors: {
         '& > *': className
-      },
+      }
     });
 
     expect(newClassName).toEqual('css-1');
@@ -150,7 +146,7 @@ describe('styleToClassName', () => {
     const className = styleToClassName({
       selectors: {
         ':global(button)': { background: 'red' }
-      },
+      }
     });
 
     expect(className).toEqual('css-0');
@@ -158,10 +154,7 @@ describe('styleToClassName', () => {
   });
 
   it('can expand an array of rules', () => {
-    styleToClassName([
-      { background: 'red' },
-      { background: 'white' }
-    ]);
+    styleToClassName([{ background: 'red' }, { background: 'white' }]);
     expect(_stylesheet.getRules()).toEqual('.css-0{background:white;}');
   });
 
@@ -194,13 +187,12 @@ describe('styleToClassName', () => {
 
     expect(_stylesheet.getRules()).toEqual(
       '.css-0{background:blue;}' +
-      '@media(min-width: 300px){' +
-      '.css-0{background:red;}' +
-      '}' +
-      '@media(min-width: 300px){' +
-      '.css-0:hover{background:green;}' +
-      '}'
+        '@media(min-width: 300px){' +
+        '.css-0{background:red;}' +
+        '}' +
+        '@media(min-width: 300px){' +
+        '.css-0:hover{background:green;}' +
+        '}'
     );
   });
-
 });

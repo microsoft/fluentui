@@ -1,18 +1,12 @@
 import * as React from 'react';
 import { FacepileBase } from './Facepile.base';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IStyleFunctionOrObject } from '../../Utilities';
 
 import { IButtonProps } from '../Button/index';
-import {
-  IPersonaSharedProps,
-  PersonaInitialsColor,
-  PersonaSize
-} from '../Persona/index';
+import { IPersonaSharedProps, PersonaInitialsColor, PersonaSize } from '../Persona/index';
 
-export interface IFacepile {
-
-}
+export interface IFacepile {}
 
 export interface IFacepileProps extends React.Props<FacepileBase> {
   /**
@@ -24,7 +18,7 @@ export interface IFacepileProps extends React.Props<FacepileBase> {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunction<IFacepileStyleProps, IFacepileStyles>;
+  styles?: IStyleFunctionOrObject<IFacepileStyleProps, IFacepileStyles>;
 
   /**
    * Theme provided by High-Order Component.
@@ -76,7 +70,6 @@ export interface IFacepileProps extends React.Props<FacepileBase> {
 
   /** Method to access properties on the underlying Persona control */
   getPersonaProps?: (persona: IFacepilePersona) => IPersonaSharedProps;
-
 }
 
 export interface IFacepilePersona extends React.ButtonHTMLAttributes<HTMLButtonElement | HTMLDivElement> {
@@ -154,7 +147,10 @@ export interface IFacepileStyleProps {
    */
   className?: string;
 
-  // Insert Facepile style props below
+  /**
+   * Pixel value for spacing around button. Number value set in pixels
+   */
+  spacingAroundItemButton?: number;
 }
 
 export interface IFacepileStyles {
@@ -162,6 +158,13 @@ export interface IFacepileStyles {
    * Style for the root element.
    */
   root: IStyle;
-
-  // Insert Facepile classNames below
+  addButton: IStyle;
+  descriptiveOverflowButton: IStyle;
+  itemContainer: IStyle;
+  itemButton: IStyle;
+  members: IStyle;
+  member: IStyle;
+  overflowButton: IStyle;
+  overflowInitialsIcon: IStyle;
+  screenReaderOnly: IStyle;
 }
