@@ -61,25 +61,6 @@ export const getStyles = (props: IDetailsListStyleProps): IDetailsListStyles => 
         minWidth: '100%',
         minHeight: 1
       }
-    ],
-
-    shimmerFadeOut: {
-      selectors: {
-        '&::after': {
-          content: '""',
-          position: 'absolute',
-          top: 0,
-          right: 0,
-          bottom: 0,
-          left: 0,
-          backgroundImage: `linear-gradient(
-         to bottom,
-         transparent 30%,
-         ${palette.whiteTranslucent40} 65%,
-         ${palette.white} 100%
-       )`
-        }
-      }
-    }
+    ]
   };
 };

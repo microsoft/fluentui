@@ -517,5 +517,4 @@ export type IDetailsListStyleProps = Required<Pick<IDetailsListProps, 'theme'>> 
 export interface IDetailsListStyles {
   root: IStyle;
   focusZone: IStyle;
-  shimmerFadeOut: IStyle;
 }
