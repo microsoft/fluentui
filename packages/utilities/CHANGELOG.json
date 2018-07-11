@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.34.1",
+      "tag": "@uifabric/utilities_v5.34.1",
+      "date": "Wed, 11 Jul 2018 13:26:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "052e0267a7d716c5622babd80a68fc1ae95dacd1",
+            "comment": "Fix version"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.34.0",
       "tag": "@uifabric/utilities_v5.34.0",
       "date": "Thu, 21 Jun 2018 11:22:44 GMT",

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 21 Jun 2018 11:22:44 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Jul 2018 13:26:02 GMT and should not be manually modified.
+
+## 5.34.1
+Wed, 11 Jul 2018 13:26:02 GMT
+
+### Patches
+
+- Fix version
 
 ## 5.34.0
 Thu, 21 Jun 2018 11:22:44 GMT

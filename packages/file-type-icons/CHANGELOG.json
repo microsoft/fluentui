@@ -2,6 +2,25 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "version": "5.0.1",
+      "tag": "@uifabric/file-type-icons_v5.0.1",
+      "date": "Wed, 11 Jul 2018 13:26:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "052e0267a7d716c5622babd80a68fc1ae95dacd1",
+            "comment": "Fix version"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.31.0 <6.0.0` to `>=5.31.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.6.2",
       "tag": "@uifabric/file-type-icons_v0.6.2",
       "date": "Fri, 04 May 2018 15:58:39 GMT",
