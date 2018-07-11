@@ -215,7 +215,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderProps, IDetai
           ? [
               <div
                 key="__checkbox"
-                className={css(classNames.cell, classNames.cellIsCheck)}
+                className={classNames.cellIsCheck}
                 aria-labelledby={`${this._id}-check`}
                 onClick={this._onSelectAllClicked}
                 aria-colindex={!isCheckboxHidden ? 1 : undefined}
