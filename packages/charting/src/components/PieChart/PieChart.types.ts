@@ -62,24 +62,8 @@ export interface IPieChartProps {
   strokeWidth?: number;
 }
 
-export interface IPieChartStyleProps {
-  /**
-   * Theme (provided through customization.)
-   */
-  theme: ITheme;
-  /**
-   * Additional CSS class(es) to apply to the PieChart.
-   */
-  className?: string;
-  /**
-   * Width of the chart.
-   */
-  width: number;
-  /**
-   * Height of the chart.
-   */
-  height: number;
-}
+export type IPieChartStyleProps = Required<Pick<IPieChartProps, 'theme' | 'width' | 'height'>> &
+  Pick<IPieChartProps, 'className'>;
 
 export interface IPieChartStyles {
   /**

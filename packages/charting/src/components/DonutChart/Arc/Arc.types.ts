@@ -6,6 +6,11 @@ export interface IArcProps {
    * Data to render in the Arc.
    */
   data?: IArc;
+  /**
+   * shape for  Arc.
+   */
+  // tslint:disable:no-any
+  arc?: any;
 
   /**
    * innerRadius of the Arc.

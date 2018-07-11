@@ -22,7 +22,7 @@ export const getStyles = (props: IPieChartStyleProps): IPieChartStyles => {
         height: chartHeight
       }
     ],
-    chartLabel: [
+    chartTitle: [
       {
         textAlign: 'center',
         ...theme.fonts.mediumPlus

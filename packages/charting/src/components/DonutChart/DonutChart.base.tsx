@@ -12,9 +12,6 @@ export class DonutChartBase extends React.Component<IDonutChartProps, {}> {
     height: 350
   };
   private _classNames: IClassNames<IDonutChartStyles>;
-  constructor(props: IDonutChartProps) {
-    super(props);
-  }
   public render(): JSX.Element {
     const { data, width, height, colors } = this.props;
 

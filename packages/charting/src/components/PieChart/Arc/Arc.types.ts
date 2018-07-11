@@ -5,8 +5,13 @@ export interface IArcProps {
   /**
    * Data to render in the Arc.
    */
-  data?: IArc;
+  data?: IArcData;
 
+  /**
+   * shape for Arc.
+   */
+  // tslint:disable:no-any
+  arc?: any;
   /**
    * innerRadius of the Arc.
    */
@@ -21,7 +26,7 @@ export interface IArcProps {
   color?: string;
 }
 
-export interface IArc {
+export interface IArcData {
   /**
    * Data to render in the chart for individual arc..
    */

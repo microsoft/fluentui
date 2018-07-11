@@ -61,25 +61,8 @@ export interface IDonutChartProps {
    */
   strokeWidth?: number;
 }
-
-export interface IDonutChartStyleProps {
-  /**
-   * Theme (provided through customization.)
-   */
-  theme: ITheme;
-  /**
-   * Additional CSS class(es) to apply to the DonutChart.
-   */
-  className?: string;
-  /**
-   * Width of the chart.
-   */
-  width: number;
-  /**
-   * Height of the chart.
-   */
-  height: number;
-}
+export type IDonutChartStyleProps = Required<Pick<IDonutChartProps, 'theme' | 'width' | 'height'>> &
+  Pick<IDonutChartProps, 'className'>;
 
 export interface IDonutChartStyles {
   /**
