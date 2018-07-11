@@ -1,6 +1,29 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 10 Jul 2018 05:05:15 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Jul 2018 05:16:03 GMT and should not be manually modified.
+
+## 6.32.0
+Wed, 11 Jul 2018 05:16:03 GMT
+
+### Minor changes
+
+- DetailsHeader css-in-js conversion
+
+### Patches
+
+- Fixing detailsheader screen regression
+
+## 6.31.0
+Tue, 10 Jul 2018 21:54:07 GMT
+
+### Minor changes
+
+- Allow FloatingPicker to be a controlled component
+- CommandBar: Mix in menuProps to overflowButtonProps
+
+### Patches
+
+- Implement new getFocusStyle option in ComboBox.
 
 ## 6.30.0
 Tue, 10 Jul 2018 05:05:15 GMT

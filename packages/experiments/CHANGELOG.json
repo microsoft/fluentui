@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.13.5",
+      "tag": "@uifabric/experiments_v6.13.5",
+      "date": "Tue, 10 Jul 2018 21:54:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Mike Wheaton <miwhea@microsoft.com>",
+            "commit": "5b241ca474578dbe803f5d3f81fdeab537632962",
+            "comment": "Update to latest Fluent depths/shadows"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.30.0 <7.0.0` to `>=6.31.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.13.4",
       "tag": "@uifabric/experiments_v6.13.4",
       "date": "Mon, 09 Jul 2018 18:08:32 GMT",

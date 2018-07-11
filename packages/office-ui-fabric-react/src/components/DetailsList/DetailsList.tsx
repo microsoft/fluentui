@@ -20,7 +20,8 @@ import {
   IDetailsList,
   IDetailsListProps
 } from '../DetailsList/DetailsList.types';
-import { DetailsHeader, IDetailsHeader, SelectAllVisibility, IDetailsHeaderProps } from '../DetailsList/DetailsHeader';
+import { DetailsHeader } from '../DetailsList/DetailsHeader';
+import { IDetailsHeader, SelectAllVisibility, IDetailsHeaderProps } from '../DetailsList/DetailsHeader.types';
 import { DetailsRowBase } from '../DetailsList/DetailsRow.base';
 import { DetailsRow } from '../DetailsList/DetailsRow';
 import { IDetailsRowProps } from '../DetailsList/DetailsRow.types';

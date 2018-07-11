@@ -39,6 +39,7 @@ const DetailsRowCheckBase = (props: IDetailsRowCheckProps) => {
     selected: isPressed,
     anySelected,
     className,
+    isHeader,
     compact
   });
 
