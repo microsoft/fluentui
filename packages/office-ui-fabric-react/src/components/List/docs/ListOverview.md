@@ -4,4 +4,4 @@ List provides a base component for rendering large sets of items. It is agnostic
 
 Lists break down the set of items passed in into pages. Only pages within a "materialized window" are actually rendered. As that window changes due to scroll events, pages that fall outside that window are removed, and their layout space is remembered and pushed into spacer elements. This gives the user the experience of browsing massive amounts of content but only using a small number of actual elements. This gives the browser much less layout to resolve, and gives React DOM diffing much less content to worry about.
 
-**Note: although `onRenderCell` is an optional member of `IListProps`, if you opt not to use an `onRender()` method, you need to format each element of your `IList`'s props *items* value using the following format: `[{name: *insert data here*}]`.** An example array passed to items could be `[{name: item1}, {name: item2}]`
+Note: although `onRenderCell` is an optional member of `IListProps`, if you do not provide the method, the `List` will still attempt to render the `name` property for each object provided in the provided `items` array.
