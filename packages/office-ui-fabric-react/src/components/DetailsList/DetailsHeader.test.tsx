@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DetailsHeader } from './DetailsHeader';
 import { IDetailsHeader } from './DetailsHeader.types';
-import { DetailsListLayoutMode, IColumn } from './DetailsList.types';
+import { DetailsListLayoutMode, IColumn, ColumnActionsMode } from './DetailsList.types';
 import { Selection, SelectionMode } from '../../utilities/selection/index';
 import { EventGroup, createRef } from '../../Utilities';
 import { mount } from 'enzyme';
@@ -9,9 +9,30 @@ import * as renderer from 'react-test-renderer';
 
 const _items: {}[] = [];
 const _selection = new Selection();
+
 const _columns: IColumn[] = [
   { key: 'a', name: 'a', fieldName: 'a', minWidth: 200, maxWidth: 400, calculatedWidth: 200, isResizable: true },
-  { key: 'b', name: 'b', fieldName: 'a', minWidth: 200, maxWidth: 400, calculatedWidth: 200, isResizable: true }
+  {
+    key: 'b',
+    name: 'b',
+    fieldName: 'a',
+    minWidth: 200,
+    maxWidth: 400,
+    calculatedWidth: 200,
+    isResizable: true,
+    isSorted: true
+  },
+  {
+    key: 'c',
+    name: 'c',
+    fieldName: 'c',
+    minWidth: 10,
+    maxWidth: 100,
+    calculatedWidth: 10,
+    isResizable: true,
+    columnActionsMode: ColumnActionsMode.hasDropdown,
+    isIconOnly: false
+  }
 ];
 const _columnReorderOptions = {
   frozenColumnCountFromStart: 1,

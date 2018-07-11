@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsHeader css-in-js conversion",
+      "comment": "TextField: `id` prop now respected.",
       "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "kchau@microsoft.com"
+  "email": "dzearing@microsoft.com"
 }

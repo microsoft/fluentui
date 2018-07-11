@@ -75,6 +75,27 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
     animationDirection: 'forwards'
   };
 
+  const cellStyles: IStyle = [
+    classNames.cell,
+    getFocusStyle(theme),
+    FontClassNames.small,
+    {
+      color: colors.headerForegroundColor,
+      position: 'relative',
+      display: 'inline-block;',
+      boxSizing: 'border-box',
+      padding: `0 ${values.cellPadding}px`,
+      border: 'none',
+      lineHeight: 'inherit',
+      margin: '0',
+      height: values.rowHeight,
+      verticalAlign: 'top',
+      whiteSpace: 'nowrap',
+      textOverflow: 'ellipsis',
+      textAlign: 'left'
+    }
+  ];
+
   return {
     root: [
       classNames.root,
@@ -133,6 +154,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
     ],
 
     cellIsCheck: [
+      cellStyles,
       classNames.cellIsCheck,
       {
         position: 'relative',
@@ -145,14 +167,15 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         opacity: 1
       }
     ],
+
     cellIsActionable: [
       {
         selectors: {
-          '&:hover': {
+          ':hover': {
             color: semanticColors.bodyText,
             background: semanticColors.listHeaderBackgroundHovered
           },
-          '&:active': {
+          ':active': {
             background: semanticColors.listHeaderBackgroundPressed
           }
         }
@@ -163,39 +186,8 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         textOverflow: 'clip'
       }
     ],
-    cell: [
-      classNames.cell,
-      getFocusStyle(theme),
-      FontClassNames.small,
-      {
-        color: colors.headerForegroundColor,
-        position: 'relative',
-        display: 'inline-block;',
-        boxSizing: 'border-box',
-        padding: `0 ${values.cellPadding}`,
-        border: 'none',
-        lineHeight: 'inherit',
-        margin: '0',
-        height: values.rowHeight,
-        verticalAlign: 'top',
-        whiteSpace: 'nowrap',
-        textOverflow: 'ellipsis',
-        textAlign: 'left',
-        selectors: {
-          '&:hover $gripperBarVerticalStyle': {
-            display: 'block'
-          },
-          '& $filterChevron': {
-            color: colors.dropdownChevronForegroundColor,
-            paddingLeft: 4,
-            verticalAlign: 'middle'
-          },
-          $collapseButton: {
-            paddingRight: 0
-          }
-        }
-      }
-    ],
+
+    cell: cellStyles,
 
     gripperBarVerticalStyle: [
       {
@@ -203,7 +195,12 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         position: 'absolute',
         textAlign: 'left',
         color: palette.neutralTertiary,
-        left: 1
+        left: 1,
+        selectors: {
+          ':hover': {
+            display: 'block'
+          }
+        }
       }
     ],
 
@@ -221,10 +218,9 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         background: 'transparent',
         zIndex: 1,
         width: 16,
-
         selectors: {
-          '&:after': {
-            content: '',
+          ':after': {
+            content: '""',
             position: 'absolute',
             top: 0,
             bottom: 0,
@@ -233,13 +229,12 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
             opacity: 0,
             left: '50%'
           },
-
-          '&:focus:after': cellSizerFadeInStyles,
-          '&:hover:after': cellSizerFadeInStyles,
+          ':focus:after': cellSizerFadeInStyles,
+          ':hover:after': cellSizerFadeInStyles,
           '&$cellIsResizing:after': [
             cellSizerFadeInStyles,
             {
-              boxShadow: '0 0 5px 0 0 rgba(0, 0, 0, 0.4)'
+              boxShadow: '0 0 5px 0 rgba(0, 0, 0, 0.4)'
             }
           ]
         }
@@ -269,7 +264,8 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         transformOrigin: '50% 50%',
         transition: 'transform 0.1s linear',
         width: 20,
-        outline: 0
+        outline: 0,
+        paddingRight: 0
       },
       isAllCollapsed && {
         transform: 'rotate(0deg)'
@@ -291,20 +287,26 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
       {
         color: colors.iconForegroundColor,
         opacity: 1,
-        paddingLeft: 8,
-        selectors: {
-          '&$sortIcon': {
-            paddingLeft: 4,
-            position: 'relative',
-            top: 1
-          }
-        }
+        paddingLeft: 8
       }
     ],
 
-    sortIcon: [],
+    sortIcon: [
+      {
+        paddingLeft: 4,
+        position: 'relative',
+        top: 1
+      }
+    ],
 
-    filterChevron: [classNames.filterChevron],
+    filterChevron: [
+      classNames.filterChevron,
+      {
+        color: colors.dropdownChevronForegroundColor,
+        paddingLeft: 4,
+        verticalAlign: 'middle'
+      }
+    ],
 
     cellTitle: [
       classNames.cellTitle,
