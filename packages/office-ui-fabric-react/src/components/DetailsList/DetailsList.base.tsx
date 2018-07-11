@@ -345,8 +345,9 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     const classNames = getClassNames(styles, {
       theme: theme!,
       compact,
-      layoutMode,
-      constrainMode
+      isFixed: layoutMode === DetailsListLayoutMode.fixedColumns,
+      isHorizontalConstrained: constrainMode === ConstrainMode.horizontalConstrained,
+      className
     });
 
     return (
@@ -355,15 +356,6 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       <div
         ref={this._root}
         className={classNames.root}
-        /*css(
-          'ms-DetailsList',
-          styles.root,
-          className,
-          layoutMode === DetailsListLayoutMode.fixedColumns && 'is-fixed',
-          constrainMode === ConstrainMode.horizontalConstrained &&
-            'is-horizontalConstrained ' + styles.rootIsHorizontalConstrained,
-          !!compact && 'ms-DetailsList--Compact ' + styles.rootCompact
-        )*/
         data-automationid="DetailsList"
         data-is-scrollable="false"
         aria-label={ariaLabel}
@@ -412,7 +404,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
           <div onKeyDown={this._onContentKeyDown} role="presentation">
             <FocusZone
               componentRef={this._focusZone}
-              className={styles.focusZone}
+              className={classNames.focusZone}
               direction={FocusZoneDirection.vertical}
               isInnerZoneKeystroke={isRightArrow}
               onActiveElementChanged={this._onActiveRowChanged}

@@ -9,3 +9,5 @@ export const DetailsList = styled<IDetailsListProps, IDetailsListStyleProps, IDe
   DetailsListBase,
   getStyles
 );
+
+export * from './DetailsList.base';

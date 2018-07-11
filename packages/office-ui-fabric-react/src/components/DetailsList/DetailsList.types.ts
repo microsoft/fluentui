@@ -119,7 +119,7 @@ export interface IDetailsListProps extends React.Props<DetailsListBase>, IWithVi
   rowElementEventMap?: { eventName: string; callback: (context: IDragDropContext, event?: any) => void }[];
 
   /** Callback for when the details list has been updated. Useful for telemetry tracking externally. */
-  onDidUpdate?: (detailsList?: DetailsList) => any;
+  onDidUpdate?: (detailsList?: DetailsListBase) => any;
 
   /** Callback for when a given row has been mounted. Useful for identifying when a row has been rendered on the page. */
   onRowDidMount?: (item?: any, index?: number) => void;
@@ -508,9 +508,14 @@ export enum CheckboxVisibility {
 }
 
 export type IDetailsListStyleProps = Required<Pick<IDetailsListProps, 'theme'>> &
-  Pick<IDetailsListProps, 'className'> & {};
+  Pick<IDetailsListProps, 'className'> & {
+    isHorizontalConstrained?: boolean;
+    compact?: boolean;
+    isFixed?: boolean;
+  };
 
 export interface IDetailsListStyles {
   root: IStyle;
   focusZone: IStyle;
+  shimmerFadeOut: IStyle;
 }
