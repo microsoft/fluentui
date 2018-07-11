@@ -204,13 +204,16 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
       theme,
       calloutProps,
       onRenderSubMenu = this._onRenderSubMenu,
-      focusZoneProps
+      focusZoneProps,
+      getMenuClassNames
     } = this.props;
 
-    this._classNames = getClassNames(styles, {
-      theme: theme!,
-      className: className
-    });
+    this._classNames = getMenuClassNames
+      ? getMenuClassNames(theme!, className)
+      : getClassNames(styles, {
+          theme: theme!,
+          className: className
+        });
 
     const hasIcons = itemsHaveIcons(items);
 
