@@ -48,7 +48,6 @@ const items: ICommandBarItemProps[] = [
   {
     key: 'download',
     text: 'Download',
-    iconOnly: true,
     iconProps: {
       iconName: 'Download'
     }
@@ -113,6 +112,6 @@ storiesOf('CommandBar', module)
   .add('Icons only', () => (
     <CommandBar
       items={items.map(item => ({ ...item, text: undefined }))}
-      farItems={farItems.map(item => ({ ...item, text: undefined }))}
+      farItems={farItems.map(item => ({ ...item, iconOnly: true }))}
     />
   ));
