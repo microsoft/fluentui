@@ -5,5 +5,7 @@ import { getStyles } from './DialogFooter.styles';
 
 export const DialogFooter = styled<IDialogFooterProps, IDialogFooterStyleProps, IDialogFooterStyles>(
   DialogFooterBase,
-  getStyles
+  getStyles,
+  undefined,
+  { scope: 'DialogFooter' }
 );

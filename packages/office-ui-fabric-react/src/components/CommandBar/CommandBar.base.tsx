@@ -167,7 +167,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       ...item,
       styles: { root: { height: '100%' }, ...item.buttonStyles },
       className: css('ms-CommandBarItem-link', item.className),
-      text: !item.iconOnly ? itemText : '',
+      text: !item.iconOnly ? itemText : undefined,
       menuProps: item.subMenuProps
     };
 
