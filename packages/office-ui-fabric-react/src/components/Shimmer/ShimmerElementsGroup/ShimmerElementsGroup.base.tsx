@@ -50,13 +50,11 @@ export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGrou
           const { type, ...filteredElem } = elem;
           switch (elem.type) {
             case ShimmerElementType.circle:
-              return (
-                <ShimmerCircle key={index} {...filteredElem} borderStyle={this._getBorderStyles(elem, rowHeight)} />
-              );
+              return <ShimmerCircle key={index} {...filteredElem} styles={this._getBorderStyles(elem, rowHeight)} />;
             case ShimmerElementType.gap:
-              return <ShimmerGap key={index} {...filteredElem} borderStyle={this._getBorderStyles(elem, rowHeight)} />;
+              return <ShimmerGap key={index} {...filteredElem} styles={this._getBorderStyles(elem, rowHeight)} />;
             case ShimmerElementType.line:
-              return <ShimmerLine key={index} {...filteredElem} borderStyle={this._getBorderStyles(elem, rowHeight)} />;
+              return <ShimmerLine key={index} {...filteredElem} styles={this._getBorderStyles(elem, rowHeight)} />;
           }
         }
       )
@@ -90,7 +88,9 @@ export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGrou
       };
     }
 
-    return borderStyle;
+    return {
+      root: [{ ...borderStyle }]
+    };
   };
 
   /**

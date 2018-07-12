@@ -10,12 +10,10 @@ const GlobalClassNames = {
 };
 
 export function getStyles(props: IShimmerLineStyleProps): IShimmerLineStyles {
-  const { height, borderStyle, theme } = props;
+  const { height, theme } = props;
 
   const { palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
-
-  const styles: IRawStyle = !!borderStyle ? borderStyle : { borderWidth: '0px' };
 
   const sharedCornerStyles: IRawStyle = {
     position: 'absolute',
@@ -25,7 +23,6 @@ export function getStyles(props: IShimmerLineStyleProps): IShimmerLineStyles {
   return {
     root: [
       classNames.root,
-      styles,
       {
         height: `${height}px`,
         boxSizing: 'content-box',

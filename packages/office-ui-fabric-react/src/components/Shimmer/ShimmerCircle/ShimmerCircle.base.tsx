@@ -13,11 +13,10 @@ export class ShimmerCircleBase extends BaseComponent<IShimmerCircleProps, {}> {
   }
 
   public render(): JSX.Element {
-    const { height, styles, borderStyle, theme } = this.props;
+    const { height, styles, theme } = this.props;
     this._classNames = getClassNames(styles!, {
       theme: theme!,
-      height,
-      borderStyle
+      height
     });
 
     return (

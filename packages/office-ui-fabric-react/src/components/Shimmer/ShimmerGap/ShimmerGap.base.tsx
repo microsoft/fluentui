@@ -13,12 +13,11 @@ export class ShimmerGapBase extends BaseComponent<IShimmerGapProps, {}> {
   }
 
   public render(): JSX.Element {
-    const { height, styles, width, borderStyle, theme } = this.props;
+    const { height, styles, width, theme } = this.props;
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
-      height,
-      borderStyle
+      height
     });
 
     return (

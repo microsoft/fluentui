@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IStyle, ITheme, IRawStyle } from '../../../Styling';
+import { IStyle, ITheme } from '../../../Styling';
 import { IStyleFunctionOrObject } from '../../../Utilities';
 
 export interface IShimmerCircle {}
@@ -21,11 +21,6 @@ export interface IShimmerCircleProps extends React.AllHTMLAttributes<HTMLElement
   height?: number;
 
   /**
-   * Used to
-   */
-  borderStyle?: IRawStyle;
-
-  /**
    * Theme provided by High-Order Component.
    */
   theme?: ITheme;
@@ -38,7 +33,6 @@ export interface IShimmerCircleProps extends React.AllHTMLAttributes<HTMLElement
 
 export interface IShimmerCircleStyleProps {
   height?: number;
-  borderStyle?: IRawStyle;
   theme: ITheme;
 }
 

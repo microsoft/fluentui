@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IStyle, IRawStyle, ITheme } from '../../../Styling';
+import { IStyle, ITheme } from '../../../Styling';
 import { IStyleFunctionOrObject } from '../../../Utilities';
 
 export interface IShimmerGap {}
@@ -27,11 +27,6 @@ export interface IShimmerGapProps extends React.AllHTMLAttributes<HTMLElement> {
   width?: number | string;
 
   /**
-   * Sets custom styling of the gap.
-   */
-  borderStyle?: IRawStyle;
-
-  /**
    * Theme provided by High-Order Component.
    */
   theme?: ITheme;
@@ -44,7 +39,6 @@ export interface IShimmerGapProps extends React.AllHTMLAttributes<HTMLElement> {
 
 export interface IShimmerGapStyleProps {
   height?: number;
-  borderStyle?: IRawStyle;
   theme: ITheme;
 }
 
