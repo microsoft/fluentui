@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DetailsRowBase } from './DetailsRow.base';
-import { IStyle, ITheme, IStyleSet } from '../../Styling';
+import { IStyle, ITheme } from '../../Styling';
 import { IColumn, CheckboxVisibility } from './DetailsList.types';
 import { ISelection, SelectionMode } from '../../utilities/selection/interfaces';
 import { IDragDropHelper, IDragDropEvents } from '../../utilities/dragdrop/interfaces';
@@ -156,7 +156,6 @@ export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & 
   isSelected?: boolean;
   anySelected?: boolean;
   canSelect?: boolean;
-  checkClassNames?: IStyleSet;
   droppingClassName?: string;
   isCheckVisible?: boolean;
   isRowHeader?: boolean;
