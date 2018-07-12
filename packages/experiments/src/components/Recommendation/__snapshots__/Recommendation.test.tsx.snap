@@ -26,6 +26,7 @@ exports[`RecommendationCard renders basic example correctly 1`] = `
           {
             border-bottom-color: rgba(0, 120, 215, 1);
             border-bottom: 1px solid;
+            cursor: move;
             height: 40px;
             overflow: hidden;
           }
@@ -486,6 +487,7 @@ exports[`RecommendationCard renders dlp example correctly 1`] = `
           {
             border-bottom-color: rgba(0, 120, 215, 1);
             border-bottom: 1px solid;
+            cursor: move;
             height: 40px;
             overflow: hidden;
           }
@@ -1233,6 +1235,7 @@ exports[`RecommendationCard renders imageillustration example correctly 1`] = `
           {
             border-bottom-color: rgba(0, 120, 215, 1);
             border-bottom: 1px solid;
+            cursor: move;
             height: 40px;
             overflow: hidden;
           }

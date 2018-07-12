@@ -18,7 +18,8 @@ export const getStyles = (props: ICardFrameProps): ICardFrameStyles => {
       height: cardTitleBox,
       overflow: 'hidden',
       borderBottom: '1px solid',
-      borderBottomColor: seperatorColor ? seperatorColor : 'rgba(0,0,0,0.1)'
+      borderBottomColor: seperatorColor ? seperatorColor : 'rgba(0,0,0,0.1)',
+      cursor: 'move'
     },
     cardTitleEllipsisButton: {
       width: 40,
