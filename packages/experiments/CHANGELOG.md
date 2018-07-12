@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 10 Jul 2018 21:54:07 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Jul 2018 10:29:30 GMT and should not be manually modified.
+
+## 6.13.6
+Thu, 12 Jul 2018 10:29:30 GMT
+
+### Patches
+
+- Consume horizontal bar chart in card, fix bad import 
 
 ## 6.13.5
 Tue, 10 Jul 2018 21:54:07 GMT

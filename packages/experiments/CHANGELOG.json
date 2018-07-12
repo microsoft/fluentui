@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.13.6",
+      "tag": "@uifabric/experiments_v6.13.6",
+      "date": "Thu, 12 Jul 2018 10:29:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Samiya <samiyaakhtar7@gmail.com>",
+            "commit": "dc5bb9989e59d83f8d82fe1bebb02caedd469a35",
+            "comment": "Consume horizontal bar chart in card, fix bad import "
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.33.0 <7.0.0` to `>=6.33.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.13.5",
       "tag": "@uifabric/experiments_v6.13.5",
       "date": "Tue, 10 Jul 2018 21:54:07 GMT",
