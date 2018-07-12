@@ -9,7 +9,7 @@ const htmlContent = `<script src="//unpkg.com/office-ui-fabric-react/dist/office
 const headContent = `<script type="text/javascript" src="https://unpkg.com/react@16/umd/react.development.js"></script><script type="text/javascript" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>`;
 
 const valueData = {
-  title: 'New Fabric Pen!',
+  title: 'Label Example Pen',
   html: htmlContent,
   head: headContent,
   js: jsContent,
