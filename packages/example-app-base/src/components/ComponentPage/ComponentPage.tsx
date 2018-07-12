@@ -2,7 +2,7 @@ import * as React from 'react';
 import { css, getDocument } from 'office-ui-fabric-react/lib/Utilities';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { MessageBar } from 'office-ui-fabric-react/lib/MessageBar';
-import { EditSection, ComponentPageSection } from '../EditSection';
+import { EditSection } from '../EditSection';
 import './ComponentPage.scss';
 
 export interface IComponentPageSection {
@@ -95,7 +95,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
                 </h2>
                 <EditSection
                   title={this.props.title}
-                  section={ComponentPageSection.Overview}
+                  section={'Overview'}
                   sectionContent={this.props.overview}
                   url={this._getURL('Overview', this.props.editOverviewUrl)}
                 />
@@ -278,7 +278,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
             <h2 className="ComponentPage-subHeading">Best Practices</h2>
             <EditSection
               title={this.props.title}
-              section={ComponentPageSection.BestPractices}
+              section={'BestPractices'}
               sectionContent={this.props.bestPractices}
               url={this._getURL('BestPractices', this.props.editBestPracticesUrl)}
             />
@@ -296,7 +296,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
               <h3>Do</h3>
               <EditSection
                 title={this.props.title}
-                section={ComponentPageSection.Dos}
+                section={'Dos'}
                 sectionContent={this.props.dos}
                 url={this._getURL('Dos', this.props.editDosUrl)}
               />
@@ -309,7 +309,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
               <h3>Don&rsquo;t</h3>
               <EditSection
                 title={this.props.title}
-                section={ComponentPageSection.Donts}
+                section={'Donts'}
                 sectionContent={this.props.donts}
                 url={this._getURL('Donts', this.props.editDontsUrl)}
               />
