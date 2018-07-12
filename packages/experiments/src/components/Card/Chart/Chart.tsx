@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { IChartInternalProps, ChartType, ChartHeight, ChartWidth } from './Chart.types';
-import { VerticalBarChart } from '@uifabric/charting/src/VerticalBarChart';
-import { LineChart } from '@uifabric/charting/src/LineChart';
+import { HorizontalBarChart } from '@uifabric/charting/lib/HorizontalBarChart';
+import { LineChart } from '@uifabric/charting/lib/LineChart';
+import { VerticalBarChart } from '@uifabric/charting/lib/VerticalBarChart';
 
 export class Chart extends React.Component<IChartInternalProps, {}> {
   public render(): JSX.Element {
@@ -27,6 +28,18 @@ export class Chart extends React.Component<IChartInternalProps, {}> {
             strokeWidth={this.props.strokeWidth}
             chartLabel={this.props.chartLabel}
             color={this.props.colors && this.props.colors.length > 0 ? this.props.colors[0] : undefined}
+          />
+        );
+      }
+      case ChartType.HorizontalBarChart: {
+        return (
+          <HorizontalBarChart
+            data={this.props.data}
+            width={this._getWidth()}
+            height={this._getHeight()}
+            barHeight={this.props.barHeight}
+            chartLabel={this.props.chartLabel}
+            colors={this.props.colors}
           />
         );
       }
