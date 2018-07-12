@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/experiments",
+      "comment": "Added FluentStyles for Panel, TextField, ContextualMenu, and ComboBox",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/experiments",
+  "email": "v-brgarl@microsoft.com"
+}
