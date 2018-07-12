@@ -26,7 +26,6 @@ export const AppDefinition: IAppDefinition = {
           key: 'HorizontalBarChart',
           name: 'HorizontalBarChart',
           url: '#/examples/horizontalbarchart'
-
         },
         {
           component: require<any>('../components/PieChart/PieChartPage').PieChartPage,
@@ -39,7 +38,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'DonutChart',
           name: 'DonutChart',
           url: '#/examples/donutchart'
-
+        },
+        {
+          component: require<any>('../components/StackedBarChart/StackedBarChartPage').StackedBarChartPage,
+          key: 'StackedBarChart',
+          name: 'StackedBarChart',
+          url: '#/examples/stackedbarchart'
         }
       ]
     }
