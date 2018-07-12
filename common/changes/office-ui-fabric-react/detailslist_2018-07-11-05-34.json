@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Remaining CSS-in-JS conversion of DetailsList",
+      "comment": "DetailsList: Complete CSS-in-JS conversion.",
       "type": "minor"
     }
   ],

@@ -16,9 +16,7 @@ export interface IShimmeredDetailsListProps extends IDetailsListProps {
 }
 
 export type IShimmeredDetailsListStyleProps = Required<Pick<IShimmeredDetailsListProps, 'theme'>> &
-  Pick<IShimmeredDetailsListProps, 'className'> & {
-    enableShimmer?: boolean;
-  };
+  Pick<IShimmeredDetailsListProps, 'className' | 'enableShimmer'>;
 
 export interface IShimmeredDetailsListStyles {
   root: IStyle;

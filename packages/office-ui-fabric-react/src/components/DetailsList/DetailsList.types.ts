@@ -43,8 +43,14 @@ export interface IDetailsList extends IList {
 }
 
 export interface IDetailsListProps extends React.Props<DetailsListBase>, IWithViewportProps {
+  /**
+   * Theme provided by the Higher Order Component
+   */
   theme?: ITheme;
 
+  /**
+   * Style function to be passed in to override the themed or default styles
+   */
   styles?: IStyleFunctionOrObject<IDetailsListStyleProps, IDetailsListStyles>;
 
   /**
@@ -509,8 +515,13 @@ export enum CheckboxVisibility {
 
 export type IDetailsListStyleProps = Required<Pick<IDetailsListProps, 'theme'>> &
   Pick<IDetailsListProps, 'className'> & {
+    /** Whether the the list is horizontally constrained */
     isHorizontalConstrained?: boolean;
+
+    /** Whether the list is in compact mode */
     compact?: boolean;
+
+    /** Whether the list is fixed in size */
     isFixed?: boolean;
   };
 
