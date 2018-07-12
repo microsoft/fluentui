@@ -4,7 +4,7 @@ import { IStyleFunctionOrObject } from './IStyleFunction';
 
 /**
  * Combine a set of styles together (but does not register css classes).
- * @param styleSet1 The first style set to be concatenated.
+ * @param styleSet The first style set to be concatenated.
  */
 export function concatStyleSets<TStyleSet extends IStyleSet<TStyleSet>>(
   styleSet: TStyleSet | false | null | undefined

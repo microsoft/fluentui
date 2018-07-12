@@ -20,9 +20,6 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
     // However, because we usually use `props.styles` as the argument to an invocation of this method, and
     // `props.styles` itself is defined as optional, this avoids the need to use `!` at all invocation points.
     if (styleFunctionOrObject === undefined) {
-      // throw new TypeError(
-      //   'getClassNames within classNamesFunction is undefined, which should never occur at runtime and is unsupported.'
-      // );
       return {} as IProcessedStyleSet<TStyleSet>;
     }
 
