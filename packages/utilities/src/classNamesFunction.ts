@@ -7,7 +7,7 @@ import { IStyleFunctionOrObject } from '@uifabric/merge-styles';
  */
 export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(): (
   getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined,
-  styleProps: TStyleProps
+  styleProps?: TStyleProps
 ) => IProcessedStyleSet<TStyleSet> {
   // TODO: memoize.
 
