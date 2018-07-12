@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/charting",
+      "comment": "Adding Stacked Bar chart",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/charting",
+  "email": "gorigarajesh@gmail.com"
+}
