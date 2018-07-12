@@ -1,4 +1,4 @@
-# Change Log - @uifabric/m365-admin
+# Change Log - @uifabric/dashboard
 
 This log was last generated on Tue, 03 Jul 2018 17:41:15 GMT and should not be manually modified.
 

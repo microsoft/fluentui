@@ -36,8 +36,8 @@
       "shouldPublish": true
     },
     {
-      "packageName": "@uifabric/m365-admin",
-      "projectFolder": "packages/m365-admin",
+      "packageName": "@uifabric/dashboard",
+      "projectFolder": "packages/dashboard",
       "versionPolicyName": "lockedMajor",
       "shouldPublish": true
     },
