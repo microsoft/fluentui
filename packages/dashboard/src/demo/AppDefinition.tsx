@@ -10,10 +10,28 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
+          component: require<any>('../components/Card/CardPage').CardPage,
+          key: 'DashboardCard',
+          name: 'DashboardCard',
+          url: '#/examples/Card'
+        },
+        {
           component: require<any>('../components/DashboardGridLayout/DashboardGridLayoutPage').DashboardGridLayoutPage,
           key: 'DashboardGridLayout',
           name: 'DashboardGridLayout',
           url: '#/examples/DashboardGridLayout'
+        },
+        {
+          component: require<any>('../components/Nav/NavPage').NavPage,
+          key: 'Nav',
+          name: 'Nav',
+          url: '#/examples/nav'
+        },
+        {
+          component: require<any>('../components/Recommendation/RecommendationPage').RecommendationPage,
+          key: 'Recommendation',
+          name: 'Recommendation',
+          url: '#/examples/recommendation'
         }
       ]
     }

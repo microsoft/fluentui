@@ -4,10 +4,10 @@ import { SmallCardBasicExample } from './examples/Card.Small.Basic.Example';
 import { MediumTallCardBasicExample } from './examples/Card.MediumTall.Basic.Example';
 import { MediumWideCardBasicExample } from './examples/Card.MediumWide.Basic.Example';
 import { LargeCardBasicExample } from './examples/Card.Large.Basic.Example';
-const SmallCardExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Card/examples/Card.Small.Basic.Example.tsx') as string;
-const MediumTallCardExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Card/examples/Card.MediumTall.Basic.Example.tsx') as string;
-const MediumWideCardExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Card/examples/Card.MediumWide.Basic.Example.tsx') as string;
-const LargeCardExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Card/examples/Card.Large.Basic.Example.tsx') as string;
+const SmallCardExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.Small.Basic.Example.tsx') as string;
+const MediumTallCardExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.MediumTall.Basic.Example.tsx') as string;
+const MediumWideCardExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.MediumWide.Basic.Example.tsx') as string;
+const LargeCardExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.Large.Basic.Example.tsx') as string;
 
 export class CardPage extends React.Component<{}, {}> {
   public render(): JSX.Element {
@@ -34,17 +34,17 @@ export class CardPage extends React.Component<{}, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={[
-              require<string>('!raw-loader!@uifabric/experiments/src/components/Card/Card.types.ts'),
+              require<string>('!raw-loader!@uifabric/dashboard/src/components/Card/Card.types.ts'),
               require<
                 string
-              >('!raw-loader!@uifabric/experiments/src/components/Card/ThumbnailList/ThumbnailList.types.ts'),
-              require<string>('!raw-loader!@uifabric/experiments/src/components/Card/GridList/GridList.types.ts'),
-              require<string>('!raw-loader!@uifabric/experiments/src/components/Card/Layout/Layout.types.ts'),
+              >('!raw-loader!@uifabric/dashboard/src/components/Card/ThumbnailList/ThumbnailList.types.ts'),
+              require<string>('!raw-loader!@uifabric/dashboard/src/components/Card/GridList/GridList.types.ts'),
+              require<string>('!raw-loader!@uifabric/dashboard/src/components/Card/Layout/Layout.types.ts'),
               require<
                 string
-              >('!raw-loader!@uifabric/experiments/src/components/Card/CompoundButtonStack/CompoundButtonStack.types.ts'),
-              require<string>('!raw-loader!@uifabric/experiments/src/components/Card/BodyText/BodyText.types.ts'),
-              require<string>('!raw-loader!@uifabric/experiments/src/components/Card/ActionBar/ActionBar.types.ts')
+              >('!raw-loader!@uifabric/dashboard/src/components/Card/CompoundButtonStack/CompoundButtonStack.types.ts'),
+              require<string>('!raw-loader!@uifabric/dashboard/src/components/Card/BodyText/BodyText.types.ts'),
+              require<string>('!raw-loader!@uifabric/dashboard/src/components/Card/ActionBar/ActionBar.types.ts')
             ]}
             renderOnly={[
               'CardSize',

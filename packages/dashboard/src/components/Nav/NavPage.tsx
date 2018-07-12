@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 import { NavExample } from './examples/Nav.Example';
-const NavExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Nav/examples/Nav.Example.tsx') as string;
+const NavExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Nav/examples/Nav.Example.tsx') as string;
 
 export class NavPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -18,7 +18,7 @@ export class NavPage extends React.Component<IComponentDemoPageProps, {}> {
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={[require<string>('!raw-loader!@uifabric/experiments/src/components/Nav/Nav.types.ts')]}
+            sources={[require<string>('!raw-loader!@uifabric/dashboard/src/components/Nav/Nav.types.ts')]}
             renderOnly={['INavProps', 'INavState']}
           />
         }

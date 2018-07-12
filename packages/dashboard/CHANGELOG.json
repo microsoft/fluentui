@@ -1,9 +1,9 @@
 {
-  "name": "@uifabric/dashboard-grid-layout",
+  "name": "@uifabric/dashboard",
   "entries": [
     {
       "version": "0.2.0",
-      "tag": "@uifabric/dashboard-grid-layout_v0.2.0",
+      "tag": "@uifabric/dashboard_v0.2.0",
       "date": "Tue, 03 Jul 2018 17:41:15 GMT",
       "comments": {
         "none": [
@@ -37,7 +37,7 @@
     },
     {
       "version": "0.1.1",
-      "tag": "@uifabric/dashboard-grid-layout_v0.1.1",
+      "tag": "@uifabric/dashboard_v0.1.1",
       "date": "Fri, 29 Jun 2018 10:24:05 GMT",
       "comments": {
         "patch": [
@@ -71,7 +71,7 @@
     },
     {
       "version": "0.1.0",
-      "tag": "@uifabric/dashboard-grid-layout_v0.1.0",
+      "tag": "@uifabric/dashboard_v0.1.0",
       "date": "Thu, 21 Jun 2018 19:27:25 GMT",
       "comments": {
         "none": [
