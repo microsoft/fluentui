@@ -8,8 +8,11 @@ import {
 import { IRawStyle } from '../../../Styling';
 import { ShimmerElementType, ShimmerElementsDefaultHeights, IShimmerElement } from '../Shimmer.types';
 import { ShimmerLine } from '../ShimmerLine/ShimmerLine';
+import { IShimmerLineStyles } from '../ShimmerLine/ShimmerLine.types';
 import { ShimmerGap } from '../ShimmerGap/ShimmerGap';
+import { IShimmerGapStyles } from '../ShimmerGap/ShimmerGap.types';
 import { ShimmerCircle } from '../ShimmerCircle/ShimmerCircle';
+import { IShimmerCircleStyles } from '../ShimmerCircle/ShimmerCircle.types';
 
 const getClassNames = classNamesFunction<IShimmerElementsGroupStyleProps, IShimmerElementsGroupStyles>();
 
@@ -65,7 +68,10 @@ export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGrou
     return renderedElements;
   };
 
-  private _getBorderStyles = (elem: IShimmerElement, rowHeight?: number): IRawStyle | undefined => {
+  private _getBorderStyles = (
+    elem: IShimmerElement,
+    rowHeight?: number
+  ): IShimmerCircleStyles | IShimmerGapStyles | IShimmerLineStyles => {
     const elemHeight: number | undefined = elem.height;
     const dif: number = rowHeight && elemHeight ? rowHeight - elemHeight : 0;
 
