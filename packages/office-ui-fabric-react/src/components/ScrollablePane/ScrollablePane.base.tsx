@@ -101,6 +101,8 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     if ('MutationObserver' in window) {
       this._mutationObserver = new MutationObserver(mutation => {
         // Function to check if mutation is occuring in stickyAbove or stickyBelow
+        console.log(mutation, 'mutation');
+
         function checkIfMutationIsSticky(mutationRecord: MutationRecord): boolean {
           if (this.stickyAbove !== null && this.stickyBelow !== null) {
             return this.stickyAbove.contains(mutationRecord.target) || this.stickyBelow.contains(mutationRecord.target);
@@ -112,7 +114,10 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
         if (mutation.some(checkIfMutationIsSticky.bind(this))) {
           this.updateStickyRefHeights();
         } else {
-          // Else if mutation occurs in scrollable region, then find sticky it belongs to and force update
+          // Notify subscribers again to re-check whether Sticky should be Sticky'd or not
+          this.notifySubscribers();
+
+          // If mutation occurs in scrollable region, then find Sticky it belongs to and force update
           const stickyList: Sticky[] = [];
           this._stickies.forEach(sticky => {
             if (sticky.root && sticky.root.contains(mutation[0].target)) {
