@@ -7,6 +7,7 @@ import { Highlight } from '../Highlight/Highlight';
 export interface IExampleCardProps {
   /* Example Title */
   title: string;
+  /* Experimental Component? */
   isOptIn?: boolean;
   /* Example Code */
   code?: string;
