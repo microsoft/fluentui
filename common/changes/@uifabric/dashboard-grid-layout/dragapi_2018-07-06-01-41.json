@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/dashboard-grid-layout",
+      "comment": "Drag api for dashboard-grid-layout",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/dashboard-grid-layout",
+  "email": "saakhta@microsoft.com"
+}
