@@ -13,6 +13,7 @@ export interface IExampleCardProps {
   dos?: JSX.Element;
   donts?: JSX.Element;
   isScrollable?: boolean;
+  codepen?: JSX.Element;
 }
 
 export interface IExampleCardState {
@@ -31,7 +32,7 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
   }
 
   public render(): JSX.Element {
-    const { title, code, children, isRightAligned = false, isScrollable = true } = this.props;
+    const { title, code, children, isRightAligned = false, isScrollable = true, codepen } = this.props;
     const { isCodeVisible } = this.state;
     let rootClass = 'ExampleCard' + (this.state.isCodeVisible ? ' is-codeVisible' : '');
 
@@ -40,6 +41,7 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
         <div className="ExampleCard-header">
           <span className="ExampleCard-title ms-font-l">{title}</span>
           <div className="ExampleCard-toggleButtons ms-font-l">
+            {codepen ? codepen : null}
             {code ? (
               <CommandButton
                 iconProps={{ iconName: 'Embed' }}
