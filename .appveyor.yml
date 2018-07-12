@@ -8,6 +8,9 @@ install:
   # install modules
   - npm install
 
+environment:
+  CI_BUILD: TRUE
+
 # Configure project artifacts.
 artifacts:
   - path: apps\test-bundle-button\dist\test-bundle-button.json
