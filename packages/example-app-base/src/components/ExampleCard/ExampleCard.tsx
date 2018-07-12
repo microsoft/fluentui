@@ -5,20 +5,34 @@ import { CommandButton } from 'office-ui-fabric-react/lib/Button';
 import { Highlight } from '../Highlight/Highlight';
 
 export interface IExampleCardProps {
+  /* Example Title */
   title: string;
   isOptIn?: boolean;
+  /* Example Code */
   code?: string;
+  /* Children of the Example */
   children?: React.ReactNode;
+  /* Example is Right-Aligned ? */
   isRightAligned?: boolean;
+  /* Example dos */
   dos?: JSX.Element;
+  /* Example don'ts */
   donts?: JSX.Element;
+  /* Example is scrollable ? */
   isScrollable?: boolean;
-  codepen?: JSX.Element;
+  /* JS string for Codepen portion of Example */
+  codepen?: string;
 }
 
 export interface IExampleCardState {
   isCodeVisible?: boolean;
 }
+
+// boilerplate for codepen API
+const htmlContent = `<script src="//unpkg.com/office-ui-fabric-react/dist/office-ui-fabric-react.min.js"></script>
+<div id=\'content\'></div>`;
+
+const headContent = `<script type="text/javascript" src="https://unpkg.com/react@16/umd/react.development.js"></script><script type="text/javascript" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>`;
 
 export class ExampleCard extends React.Component<IExampleCardProps, IExampleCardState> {
   constructor(props: IExampleCardProps) {
@@ -33,6 +47,21 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
 
   public render(): JSX.Element {
     const { title, code, children, isRightAligned = false, isScrollable = true, codepen } = this.props;
+
+    // more codepen API boilerplate
+    const jsContent = codepen;
+    const valueData = {
+      title: 'Fabric Example Pen',
+      html: htmlContent,
+      head: headContent,
+      js: jsContent,
+      js_pre_processor: 'typescript'
+    };
+    // reformat the JSON string to take out the quotes so it'll work with the Codepen API
+    const JSONstring = JSON.stringify(valueData)
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&apos;');
+
     const { isCodeVisible } = this.state;
     let rootClass = 'ExampleCard' + (this.state.isCodeVisible ? ' is-codeVisible' : '');
 
@@ -41,7 +70,19 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
         <div className="ExampleCard-header">
           <span className="ExampleCard-title ms-font-l">{title}</span>
           <div className="ExampleCard-toggleButtons ms-font-l">
-            {codepen ? codepen : null}
+            {codepen ? (
+              <form action="https://codepen.io/pen/define" method="POST" target="_blank">
+                <input type="hidden" name="data" value={JSONstring} />
+                <CommandButton
+                  type="submit"
+                  iconProps={{ iconName: 'OpenInNewWindow' }}
+                  text="Export to Codepen"
+                  className={css('ExampleCard-codeButton')}
+                />
+              </form>
+            ) : (
+              undefined
+            )}
             {code ? (
               <CommandButton
                 iconProps={{ iconName: 'Embed' }}
@@ -50,7 +91,9 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
               >
                 {isCodeVisible ? 'Hide code' : 'Show code'}
               </CommandButton>
-            ) : null}
+            ) : (
+              undefined
+            )}
           </div>
         </div>
 

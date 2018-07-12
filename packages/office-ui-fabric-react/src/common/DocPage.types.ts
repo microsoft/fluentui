@@ -70,8 +70,9 @@ export interface IDocPageProps {
 
     /** Working example of the example */
     view: JSX.Element;
-    /** Codepen button for the example */
-    codepen?: JSX.Element;
+
+    /** JS String for codepen of the example */
+    codepen?: string;
   }[];
 
   /** Array of implementation examples, displayed in the order defined */
