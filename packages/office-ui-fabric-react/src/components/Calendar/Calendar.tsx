@@ -302,9 +302,11 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
   private _onGotoToday = (selectDateOnClick: boolean): void => {
     const { dateRangeType, firstDayOfWeek, today, workWeekDays } = this.props;
 
-    const dates = getDateRangeArray(today!, dateRangeType!, firstDayOfWeek!, workWeekDays!);
-
     if (selectDateOnClick) {
+      // When using Defaultprops, TypeScript doesn't know that React is going to inject defaults
+      // so we use exclamation mark as a hint to the type checker (see link below)
+      // https://decembersoft.com/posts/error-ts2532-optional-react-component-props-in-typescript/
+      const dates = getDateRangeArray(today!, dateRangeType!, firstDayOfWeek!, workWeekDays!);
       this._onSelectDate(today!, dates);
     }
 
