@@ -7,5 +7,7 @@ export { IDetailsHeaderProps };
 
 export const DetailsHeader = styled<IDetailsHeaderProps, IDetailsHeaderStyleProps, IDetailsHeaderStyles>(
   DetailsHeaderBase,
-  getStyles
+  getStyles,
+  undefined,
+  { scope: 'DetailsHeader' }
 );

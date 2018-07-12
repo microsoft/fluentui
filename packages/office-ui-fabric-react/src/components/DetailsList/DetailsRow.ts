@@ -5,4 +5,9 @@ import { getStyles } from './DetailsRow.styles';
 
 export { IDetailsRowProps };
 
-export const DetailsRow = styled<IDetailsRowProps, IDetailsRowStyleProps, IDetailsRowStyles>(DetailsRowBase, getStyles);
+export const DetailsRow = styled<IDetailsRowProps, IDetailsRowStyleProps, IDetailsRowStyles>(
+  DetailsRowBase,
+  getStyles,
+  undefined,
+  { scope: 'DetailsRow' }
+);
