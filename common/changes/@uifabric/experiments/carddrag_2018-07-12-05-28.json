@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Consume horizontal bar chart in card, fix bad import ",
-      "type": "patch"
+      "comment": "Card: disable dragging of card everywhere but title bar",
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/experiments",

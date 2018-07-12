@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 12 Jul 2018 00:12:00 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Jul 2018 10:29:30 GMT and should not be manually modified.
+
+## 6.33.1
+Thu, 12 Jul 2018 10:29:30 GMT
+
+### Patches
+
+- In focusable disabled state, no button should be able to execute key/mouse events. Added check for menuProps to existing handlers.
 
 ## 6.33.0
 Thu, 12 Jul 2018 00:12:00 GMT
