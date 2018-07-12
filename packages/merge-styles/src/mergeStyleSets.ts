@@ -10,7 +10,7 @@ import { IStyleSet, IProcessedStyleSet } from './IStyleSet';
  * `mergeStyles` for each property in the object, but ensures we maintain the
  * set ordering when multiple style sets are merged.
  *
- * @param styleSet1 The first style set to be merged.
+ * @param styleSet The first style set to be merged and reigstered.
  */
 export function mergeStyleSets<TStyleSet extends IStyleSet<TStyleSet>>(
   styleSet: TStyleSet
