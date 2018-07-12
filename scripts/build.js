@@ -59,10 +59,10 @@ executeTasks(firstTasks)
     logEndBuild(packageName, !hasFailures, buildStartTime);
   })
   .then(() => {
-  //  if (process.env['CI_BUILD']) {
+    if (process.env['CI_BUILD']) {
       const { generateSizeData } = require('./tasks/size-audit');
       generateSizeData();
-   // }
+    }
   });
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
