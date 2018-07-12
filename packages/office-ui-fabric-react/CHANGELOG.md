@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 11 Jul 2018 05:16:03 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Jul 2018 00:12:00 GMT and should not be manually modified.
+
+## 6.33.0
+Thu, 12 Jul 2018 00:12:00 GMT
+
+### Minor changes
+
+- TextField: `id` prop now respected.
+
+### Patches
+
+- Respect the getMenuClassNames property on ContextualMenu
+- CommandBar: Fixed iconOnly feature where empty text div was still rendered
 
 ## 6.32.0
 Wed, 11 Jul 2018 05:16:03 GMT

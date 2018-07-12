@@ -2,6 +2,39 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.33.0",
+      "tag": "office-ui-fabric-react_v6.33.0",
+      "date": "Thu, 12 Jul 2018 00:12:00 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <1581488+christiango@users.noreply.github.com>",
+            "commit": "d3ac4b119ffd9e8942e0247f94ac2ea8b36cd391",
+            "comment": "Respect the getMenuClassNames property on ContextualMenu"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "250b948a7620fd91403a2cf00e72dbcd4dd519f9",
+            "comment": "CommandBar: Fixed iconOnly feature where empty text div was still rendered"
+          }
+        ],
+        "none": [
+          {
+            "author": "JGibson2019 <jacqueline.gibson@utexas.edu>",
+            "commit": "42ed55e9d8cf28aa7f3489079979416b135f7fb9",
+            "comment": "added fourth paragraph to ListOverview.md that explains how to format the items array if they opt to not use the optional onRenderCell"
+          }
+        ],
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "a7f7c6aeacd7d7315c4e9a15ad6702a140a6abb1",
+            "comment": "TextField: `id` prop now respected."
+          }
+        ]
+      }
+    },
+    {
       "version": "6.32.0",
       "tag": "office-ui-fabric-react_v6.32.0",
       "date": "Wed, 11 Jul 2018 05:16:03 GMT",
