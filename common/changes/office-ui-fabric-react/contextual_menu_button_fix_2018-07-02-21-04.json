@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "In focusable disabled state, no button should be able to execute key/mouse events. Added check for menuProps to existing handlers.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "aneeshak@microsoft.com"
+}
