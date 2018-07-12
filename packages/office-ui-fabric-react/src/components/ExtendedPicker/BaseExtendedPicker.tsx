@@ -13,6 +13,7 @@ const styles: any = stylesImport;
 
 export interface IBaseExtendedPickerState<T> {
   selectedItems: T[] | null;
+  suggestionItems: T[] | null;
 }
 
 export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
@@ -33,6 +34,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
     this.selection = new Selection({ onSelectionChanged: () => this.onSelectionChange() });
 
     this.state = {
+      suggestionItems: this.props.suggestionItems ? (this.props.suggestionItems as T[]) : null,
       selectedItems: this.props.defaultSelectedItems
         ? (this.props.defaultSelectedItems as T[])
         : this.props.selectedItems
@@ -150,6 +152,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
       onChange: this._onSuggestionSelected,
       inputElement: this.input.current ? this.input.current.inputElement : undefined,
       selectedItems: this.items,
+      suggestionItems: this.props.suggestionItems ? this.props.suggestionItems : undefined,
       ...this.floatingPickerProps
     });
   }
@@ -159,7 +162,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
     return onRenderSelectedItems({
       componentRef: this.selectedItemsList,
       selection: this.selection,
-      selectedItems: this.state.selectedItems ? this.state.selectedItems : undefined,
+      selectedItems: this.props.selectedItems ? this.props.selectedItems : undefined,
       onItemsDeleted: this.props.selectedItems ? this.props.onItemsRemoved : undefined,
       ...this.selectedItemsListProps
     });
