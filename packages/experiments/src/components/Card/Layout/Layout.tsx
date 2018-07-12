@@ -37,13 +37,17 @@ export class Layout extends React.Component<ILayoutProps> {
     const headerElement: JSX.Element | null = this._generateHeader(header!);
     const footerElement: JSX.Element | null = this._generateFooter(actions!, classNames.footer);
     return (
-      <div className={classNames.root}>
+      <div className={classNames.root} onMouseDown={this.onMouseDown}>
         {headerElement}
         <div className={classNames.contentAreaLayout}>{content}</div>
         {footerElement}
       </div>
     );
   }
+
+  private onMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+  };
 
   private _generateContentElement(cardContentList: ICardContentDetails[]): JSX.Element[] {
     const contentArea: JSX.Element[] = [];
