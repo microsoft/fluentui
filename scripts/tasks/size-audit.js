@@ -1,7 +1,7 @@
 /**
  * Gets the size of the "default" locale bundle file
  */
-module.exports = function(options) {
+module.exports = function() {
   function generateSizeData() {
     const projectName = path.basename(process.cwd());
     const sizeFilePath = path.join(process.cwd(), 'dist', `${projectName}.json`);
