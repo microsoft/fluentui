@@ -371,9 +371,9 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
           <h2 className="ComponentPage-subHeading ComponentPage-variantsTitle" id="Feedback">
             Feedback
           </h2>
-          <a href="https://github.com/OfficeDev/office-ui-fabric-react/issues" target="_blank">
+          <Link href="https://github.com/OfficeDev/office-ui-fabric-react/issues/new/choose" target="_blank">
             Submit feedback on Github
-          </a>
+          </Link>
           {this.props.feedback}
         </div>
       );
