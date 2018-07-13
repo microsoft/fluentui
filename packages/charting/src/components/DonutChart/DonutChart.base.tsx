@@ -52,9 +52,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, {}> {
     );
   }
   private _createLegendBars(data: IDataPoint[]): JSX.Element[] {
-    console.log(data);
     const bars = data.map((point: IDataPoint, index: number) => {
-      console.log(index);
       return (
         <g key={index}>
           <rect x={index * 61} y={0} width={12} height={12} fill={`${this.colors(index)}`} />
