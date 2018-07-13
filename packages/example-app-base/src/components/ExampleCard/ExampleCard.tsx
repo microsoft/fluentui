@@ -52,8 +52,8 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
         <div className="ExampleCard-header">
           <span className="ExampleCard-title ms-font-l">{title}</span>
           <div className="ExampleCard-toggleButtons ms-font-l">
-            {codepenJS ? <CodepenComponent jsContent={codepenJS} /> : undefined}
-            {code ? (
+            {codepenJS && <CodepenComponent jsContent={codepenJS} />}
+            {code && (
               <CommandButton
                 iconProps={{ iconName: 'Embed' }}
                 onClick={this._onToggleCodeClick}
@@ -61,8 +61,6 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
               >
                 {isCodeVisible ? 'Hide code' : 'Show code'}
               </CommandButton>
-            ) : (
-              undefined
             )}
           </div>
         </div>
