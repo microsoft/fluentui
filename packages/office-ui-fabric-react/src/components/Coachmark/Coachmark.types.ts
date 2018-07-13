@@ -7,7 +7,10 @@ import { ITeachingBubble } from '../../TeachingBubble';
 
 export interface ICoachmark {}
 
-export interface ICoachmarkTypes extends React.Props<Coachmark> {
+/** @deprecated */
+export type ICoachmarkTypes = ICoachmarkProps;
+
+export interface ICoachmarkProps extends React.Props<Coachmark> {
   /**
    * Optional callback to access the ICoachmark interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
