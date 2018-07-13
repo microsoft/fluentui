@@ -1,11 +1,11 @@
 {
   "changes": [
     {
-      "comment": "Add support for style functions and improve documentation/typings.",
       "packageName": "@uifabric/merge-styles",
+      "comment": "Reverting the TypeScript bump, to un",
       "type": "minor"
     }
   ],
   "packageName": "@uifabric/merge-styles",
-  "email": "cliff.koh@microsoft.com"
+  "email": "dzearing@microsoft.com"
 }

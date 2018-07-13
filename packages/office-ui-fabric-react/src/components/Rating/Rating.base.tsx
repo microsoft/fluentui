@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, css, customizable, format, getId } from '../../Utilities';
-import { IProcessedStyleSet } from '../../Styling';
+import { BaseComponent, IClassNames, classNamesFunction, css, customizable, format, getId } from '../../Utilities';
 import { Icon } from '../../Icon';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { IRatingProps, RatingSize, IRatingStyleProps, IRatingStyles } from './Rating.types';
@@ -11,7 +10,7 @@ interface IRatingStarProps extends React.AllHTMLAttributes<HTMLElement> {
   fillPercentage: number;
   disabled: boolean;
   readOnly: boolean;
-  classNames: IProcessedStyleSet<IRatingStyles>;
+  classNames: IClassNames<IRatingStyles>;
 }
 
 export interface IRatingState {

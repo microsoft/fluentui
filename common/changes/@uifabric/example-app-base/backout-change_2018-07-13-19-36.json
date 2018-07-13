@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/example-app-base",
-      "comment": "Fix typing bugs in example-app-base",
-      "type": "patch"
+      "comment": "Reverting the TypeScript bump, to un",
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/example-app-base",
-  "email": "cliff.koh@microsoft.com"
+  "email": "dzearing@microsoft.com"
 }

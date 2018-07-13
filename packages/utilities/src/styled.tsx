@@ -1,11 +1,17 @@
 import * as React from 'react';
-import { concatStyleSets, IStyleSet, IStyleFunctionOrObject, IConcatenatedStyleSet } from '@uifabric/merge-styles';
+import * as PropTypes from 'prop-types';
+import { concatStyleSets } from '@uifabric/merge-styles';
 import { IStyleFunction } from './IStyleFunction';
 import { CustomizableContextTypes } from './customizable';
 import { Customizations, ICustomizations } from './Customizations';
 
-export interface IPropsWithStyles<TStyleProps, TStyleSet extends IStyleSet<TStyleSet>> {
-  styles?: IStyleFunctionOrObject<TStyleProps, TStyleSet>;
+export type IStyleFunctionOrObject<TStyleProps, TStyles> = IStyleFunction<TStyleProps, TStyles> | Partial<TStyles>;
+
+export interface IPropsWithStyles<TStyleProps, TStyles> {
+  styles?: IStyleFunctionOrObject<TStyleProps, TStyles>;
+  subComponents?: {
+    [key: string]: IStyleFunction<{}, {}>;
+  };
 }
 
 export interface ICustomizableProps {
@@ -39,13 +45,9 @@ const DefaultFields = ['theme', 'styles'];
  * @param getProps - A helper which provides default props.
  * @param customizable - An object which defines which props can be customized using the Customizer.
  */
-export function styled<
-  TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>,
-  TStyleProps,
-  TStyleSet extends IStyleSet<TStyleSet>
->(
+export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyles>, TStyleProps, TStyles>(
   Component: React.ComponentClass<TComponentProps> | React.StatelessComponent<TComponentProps>,
-  baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>,
+  baseStyles: IStyleFunctionOrObject<TStyleProps, TStyles>,
   getProps?: (props: TComponentProps) => Partial<TComponentProps>,
   customizable?: ICustomizableProps
 ): (props: TComponentProps) => JSX.Element {
@@ -72,11 +74,11 @@ export function styled<
   return Wrapped as (props: TComponentProps) => JSX.Element;
 }
 
-function _resolve<TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(
+function _resolve<TStyleProps, TStyles>(
   styleProps: TStyleProps,
-  ...allStyles: (IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined)[]
-): IConcatenatedStyleSet<TStyleSet> | undefined {
-  const result: Partial<TStyleSet>[] = [];
+  ...allStyles: (IStyleFunctionOrObject<TStyleProps, Partial<TStyles>> | undefined)[]
+): Partial<TStyles> | undefined {
+  const result: Partial<TStyles>[] = [];
 
   for (const styles of allStyles) {
     if (styles) {
@@ -84,12 +86,7 @@ function _resolve<TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(
     }
   }
   if (result.length) {
-    // cliffkoh: I cannot figure out how to avoid the cast to any here.
-    // It is something to do with the use of Omit in IStyleSet.
-    // It might not be necessary once  Omit becomes part of lib.d.ts (when we remove our own Omit and rely on
-    // the official version).
-    // tslint:disable-next-line:no-any
-    return concatStyleSets(...(result as any)) as IConcatenatedStyleSet<TStyleSet>;
+    return concatStyleSets(...result);
   }
 
   return undefined;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IStyle, ITheme } from '../../../Styling';
+import { IStyle, IStyleSet, ITheme } from '../../../Styling';
 import { IStyleFunctionOrObject } from '../../../Utilities';
 
 export interface IShimmerLine {}
@@ -35,7 +35,7 @@ export interface IShimmerLineProps extends React.AllHTMLAttributes<HTMLElement> 
   /**
    * Sets custom styling of the rectangle.
    */
-  borderStyle?: IStyle;
+  borderStyle?: IStyleSet;
 
   /**
    * Theme provided by High-Order Component.
@@ -52,7 +52,7 @@ export interface IShimmerLineStyleProps {
   height?: number;
   widthInPercentage?: number;
   widthInPixel?: number;
-  borderStyle?: IStyle;
+  borderStyle?: IStyleSet;
   theme: ITheme;
 }
 
