@@ -1,6 +1,14 @@
 // Utilities
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, createRef, IRectangle, KeyCodes, shallowCompare } from '../../Utilities';
+import {
+  BaseComponent,
+  classNamesFunction,
+  createRef,
+  elementContains,
+  IRectangle,
+  KeyCodes,
+  shallowCompare
+} from '../../Utilities';
 import { DefaultPalette } from '../../Styling';
 import { IPositionedData, RectangleEdge, getOppositeEdge } from '../../utilities/positioning';
 
@@ -305,7 +313,7 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
           this.forceUpdate();
         }
 
-        this._events.on(document, 'keydown', this._onKeyDown, true);
+        this._addListeners();
 
         // We dont want to the user to immediatley trigger the coachmark when it's opened
         this._async.setTimeout(() => {
@@ -327,7 +335,47 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
   }
 
   public componentWillUnmount(): void {
+    const { preventDismissOnLostFocus } = this.props;
+
     this._events.off(document, 'keydown', this._onKeyDown, true);
+
+    if (!preventDismissOnLostFocus) {
+      this._events.off(document, 'click', this._dismissOnLostFocus, true);
+      this._events.off(document, 'focus', this._dismissOnLostFocus, true);
+    }
+  }
+
+  public dismiss = (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
+    const { onDismiss } = this.props;
+
+    if (onDismiss) {
+      onDismiss(ev);
+    }
+  };
+
+  private _addListeners(): void {
+    const { preventDismissOnLostFocus } = this.props;
+
+    this._async.setTimeout(() => {
+      this._events.on(document, 'keydown', this._onKeyDown, true);
+
+      if (!preventDismissOnLostFocus) {
+        this._events.on(document, 'click', this._dismissOnLostFocus, true);
+        this._events.on(document, 'focus', this._dismissOnLostFocus, true);
+      }
+    }, 0);
+  }
+
+  protected _dismissOnLostFocus(ev: Event) {
+    const clickTarget = ev.target as HTMLElement;
+    const clickedOutsideCallout =
+      this._translateAnimationContainer.current &&
+      !elementContains(this._translateAnimationContainer.current, clickTarget);
+    const { target } = this.props;
+
+    if (clickedOutsideCallout && clickTarget !== target && !elementContains(target as HTMLElement, clickTarget)) {
+      this.dismiss(ev);
+    }
   }
 
   private _onKeyDown = (e: any): void => {

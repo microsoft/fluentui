@@ -149,4 +149,15 @@ export interface ICoachmarkProps extends React.Props<Coachmark> {
    * Defines the text content for the ariaDescribedBy element
    */
   ariaDescribedByText?: string;
+
+  /**
+   * If true then the Coachmark will not dismiss when it loses focus
+   * @default false
+   */
+  preventDismissOnLostFocus?: boolean;
+
+  /**
+   * Callback when the Coachmark tries to close.
+   */
+  onDismiss?: (ev?: any) => void;
 }
