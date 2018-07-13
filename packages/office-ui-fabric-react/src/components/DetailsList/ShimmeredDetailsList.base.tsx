@@ -1,20 +1,19 @@
 import * as React from 'react';
 
-import { BaseComponent, css } from '../../Utilities';
+import { BaseComponent, css, classNamesFunction } from '../../Utilities';
 import { SelectionMode } from '../../utilities/selection/interfaces';
-import { IDetailsListProps, CheckboxVisibility } from './DetailsList.types';
 import { DetailsList } from './DetailsList';
 import { IDetailsRowProps } from './DetailsRow';
 import { Shimmer, ShimmerElementsGroup, ShimmerElementType, IShimmerElement } from '../Shimmer';
-
 import { getClassNames as getRowClassNames } from './DetailsRow.classNames';
+import {
+  IShimmeredDetailsListProps,
+  IShimmeredDetailsListStyleProps,
+  IShimmeredDetailsListStyles
+} from './ShimmeredDetailsList.types';
+import { CheckboxVisibility } from './DetailsList.types';
 
-import * as listStyles from './DetailsList.scss';
-
-export interface IShimmeredDetailsListProps extends IDetailsListProps {
-  shimmerLines?: number;
-  onRenderCustomPlaceholder?: () => React.ReactNode;
-}
+export const getClassNames = classNamesFunction<IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles>();
 
 const SHIMMER_INITIAL_ITEMS = 10;
 const DEFAULT_SHIMMER_HEIGHT = 7;
@@ -24,7 +23,7 @@ const DEFAULT_SIDE_PADDING = 8;
 const DEFAULT_ROW_HEIGHT = 42;
 const COMPACT_ROW_HEIGHT = 32;
 
-export class ShimmeredDetailsList extends BaseComponent<IShimmeredDetailsListProps, {}> {
+export class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsListProps, {}> {
   private _shimmerItems: null[];
 
   constructor(props: IShimmeredDetailsListProps) {
@@ -34,19 +33,30 @@ export class ShimmeredDetailsList extends BaseComponent<IShimmeredDetailsListPro
   }
 
   public render(): JSX.Element {
-    const { items, listProps } = this.props;
-    const { shimmerLines, onRenderCustomPlaceholder, enableShimmer, ...detailsListProps } = this.props;
+    const {
+      items,
+      listProps,
+      styles,
+      theme,
+      shimmerLines,
+      onRenderCustomPlaceholder,
+      enableShimmer,
+      ...detailsListProps
+    } = this.props;
 
     // Adds to the optional listProp classname a fading out overlay classname only when shimmer enabled.
-    const shimmeredListClassname: string = css(
-      listProps && listProps.className,
-      enableShimmer && listStyles.shimmerFadeOut
-    );
-    const newListProps = { ...listProps, className: shimmeredListClassname };
+    const classNames = getClassNames(styles, {
+      theme: theme!,
+      className: listProps && listProps.className,
+      enableShimmer
+    });
+
+    const newListProps = { ...listProps, className: classNames.root };
 
     return (
       <DetailsList
         {...detailsListProps}
+        enableShimmer={enableShimmer}
         items={enableShimmer ? this._shimmerItems : items}
         onRenderMissingItem={this._onRenderShimmerPlaceholder}
         listProps={newListProps}

@@ -153,14 +153,31 @@ export interface IDetailsRowProps extends React.Props<DetailsRowBase> {
 }
 
 export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & {
+  /** Whether the row is selected  */
   isSelected?: boolean;
+
+  /** Whether there are any rows in the list selected */
   anySelected?: boolean;
+
+  /** Whether this row can be selected */
   canSelect?: boolean;
+
+  /** Class name of when this becomes a drop target. */
   droppingClassName?: string;
+
+  /** Is the checkbox visible */
   isCheckVisible?: boolean;
+
+  /** Is this a row header */
   isRowHeader?: boolean;
+
+  /** A class name from the checkbox cell, so proper styling can be targeted */
   checkboxCellClassName?: string;
+
+  /** CSS class name for the component */
   className?: string;
+
+  /** Is list in compact mode */
   compact?: boolean;
 };
 
