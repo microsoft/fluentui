@@ -61,11 +61,11 @@ export interface IDonutChartProps {
    */
   strokeWidth?: number;
   /**
-   * Width of line stroke
+   * Legend X position
    */
   LegendX?: number;
   /**
-   * Width of line stroke
+   * Legend Y position
    */
   LegendY?: number;
 }
