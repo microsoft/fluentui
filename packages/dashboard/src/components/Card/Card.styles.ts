@@ -4,7 +4,8 @@ export const getStyles = (): ICardStyles => {
   return {
     root: {
       backgroundColor: '#ffffff',
-      height: '100%'
+      height: '100%',
+      width: '100%'
     }
   };
 };
