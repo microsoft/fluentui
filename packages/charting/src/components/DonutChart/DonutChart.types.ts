@@ -60,10 +60,18 @@ export interface IDonutChartProps {
    * Width of line stroke
    */
   strokeWidth?: number;
+  /**
+   * Width of line stroke
+   */
+  LegendX?: number;
+  /**
+   * Width of line stroke
+   */
+  LegendY?: number;
 }
 
 export type IDonutChartStyleProps = Required<Pick<IDonutChartProps, 'theme' | 'width' | 'height'>> &
-  Pick<IDonutChartProps, 'className'>;
+  Pick<IDonutChartProps, 'className' | 'LegendX' | 'LegendY'>;
 
 export interface IDonutChartStyles {
   /**
@@ -80,4 +88,9 @@ export interface IDonutChartStyles {
    * Style for the chart Title.
    */
   chartTitle?: IStyle;
+
+  /**
+   * Style set for the Pie component Legend
+   */
+  Legend: IStyle;
 }
