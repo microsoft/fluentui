@@ -3,8 +3,7 @@ import { max as d3Max } from 'd3-array';
 import { axisLeft as d3AxisLeft, axisBottom as d3AxisBottom, Axis as D3Axis } from 'd3-axis';
 import { scaleBand as d3ScaleBand, scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
-import { classNamesFunction } from '../../Utilities';
-import { IProcessedStyleSet } from '../../Styling';
+import { classNamesFunction, IClassNames } from '../../Utilities';
 import {
   IHorizontalBarChartProps,
   IHorizontalBarChartStyleProps,
@@ -25,7 +24,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     yAxisTickCount: 10
   };
   private _colors: string[];
-  private _classNames: IProcessedStyleSet<IHorizontalBarChartStyles>;
+  private _classNames: IClassNames<IHorizontalBarChartStyles>;
   constructor(props: IHorizontalBarChartProps) {
     super(props);
 

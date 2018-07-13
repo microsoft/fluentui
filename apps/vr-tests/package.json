@@ -32,7 +32,7 @@
     "office-ui-fabric-react": ">=6.33.1 <7.0.0",
     "react": ">=16.3.2-0 <17.0.0",
     "react-dom": ">=16.3.2-0 <17.0.0",
-    "typescript": "2.9.2",
+    "typescript": "2.8.1",
     "tslib": "^1.7.1"
   }
 }

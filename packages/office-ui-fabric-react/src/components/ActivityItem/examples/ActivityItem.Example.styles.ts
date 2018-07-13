@@ -1,6 +1,10 @@
 import { IStyle } from '../../../Styling';
 
-export type IActivityItemExampleStyleProps = {};
+export interface IActivityItemExampleStyleProps {
+  /**
+   * 404 No Style Props Found
+   */
+}
 
 export interface IActivityItemExampleStyles {
   exampleRoot?: IStyle;
