@@ -6,7 +6,7 @@ import { IIconProps } from '../Icon/Icon.types';
 import { ICalloutProps } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
 import { IButtonStyles } from '../../Button';
-import { IPoint, IRectangle, IRenderFunction, IStyleFunction } from '../../Utilities';
+import { IPoint, IRectangle, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
 export { DirectionalHint } from '../../common/DirectionalHint';
@@ -36,7 +36,7 @@ export interface IContextualMenuProps extends React.Props<ContextualMenuBase>, I
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: IStyleFunction<IContextualMenuStyleProps, IContextualMenuStyles>;
+  styles?: IStyleFunctionOrObject<IContextualMenuStyleProps, IContextualMenuStyles>;
 
   /**
    * Theme provided by High-Order Component.

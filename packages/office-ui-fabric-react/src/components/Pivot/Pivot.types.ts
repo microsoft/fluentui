@@ -90,7 +90,10 @@ export type IPivotStyleProps = Required<Pick<IPivotProps, 'theme'>> &
     rootIsLarge?: boolean;
     /** Indicates whether Pivot has tabbed format. */
     rootIsTabs?: boolean;
-    /** Indicates whether Pivot link is selected. */
+    /**
+     * Indicates whether Pivot link is selected.
+     * @deprecated Is not populated with valid value. Specify 'linkIsSelected' styling instead.
+     */
     linkIsSelected?: boolean;
   };
 
