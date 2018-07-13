@@ -1,4 +1,4 @@
-export function generateSizeData() {
+exports.generateSizeData = function() {
   const projectName = path.basename(process.cwd());
   const sizeFilePath = path.join(process.cwd(), 'dist', `${projectName}.json`);
   if (fs.existsSync(path.dirname(sizeFilePath))) {
@@ -8,7 +8,7 @@ export function generateSizeData() {
     const fileContents = JSON.stringify(result);
     fs.writeFileSync(sizeFilePath, fileContents);
   }
-}
+};
 
 function analyzeChunks() {
   const distPath = path.join(process.cwd(), 'dist');
