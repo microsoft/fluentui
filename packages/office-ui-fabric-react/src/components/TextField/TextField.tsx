@@ -122,7 +122,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   public componentWillReceiveProps(newProps: ITextFieldProps): void {
     const { onBeforeChange } = this.props;
 
-    // If old value prop  was undefined, then component is controlled and we should
+    // If old value prop was undefined, then component is controlled and we should
     //    respect new undefined value and update state accordingly.
     if (newProps.value !== this.state.value && (newProps.value !== undefined || this.props.value !== undefined)) {
       if (onBeforeChange) {
@@ -133,7 +133,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       this._latestValue = newProps.value;
       this.setState(
         {
-          value: newProps.value ? newProps.value : '',
+          value: newProps.value || '',
           errorMessage: ''
         } as ITextFieldState,
         () => {

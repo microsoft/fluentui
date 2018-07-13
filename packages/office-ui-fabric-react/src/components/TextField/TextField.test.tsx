@@ -132,7 +132,7 @@ describe('TextField', () => {
     expect(inputDOM.defaultValue).toEqual('0');
   });
 
-  it('should NOT update value when props value remains undefined on props update', () => {
+  it('should NOT update state when props value remains undefined on props update', () => {
     const stateValue = 'state value';
     const textField = mount(<TextField />);
     expect(textField.state('value')).toEqual('');
