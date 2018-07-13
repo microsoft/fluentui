@@ -1,6 +1,16 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 12 Jul 2018 10:29:30 GMT and should not be manually modified.
+This log was last generated on Fri, 13 Jul 2018 21:32:37 GMT and should not be manually modified.
+
+## 6.15.0
+Fri, 13 Jul 2018 21:32:37 GMT
+
+### Minor changes
+
+- Reverting the TypeScript bump, to un
+- Card: disable dragging of card everywhere but title bar
+- Added FluentStyles for Panel, TextField, ContextualMenu, and ComboBox
+- Moved nav, recommendation and card to m365-admin package
 
 ## 6.13.6
 Thu, 12 Jul 2018 10:29:30 GMT
