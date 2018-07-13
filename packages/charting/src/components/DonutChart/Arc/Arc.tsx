@@ -28,20 +28,3 @@ export class Arc extends React.Component<IArcProps, {}> {
     return <path d={arc(this.props.data)} className={classNames.root} />;
   }
 }
-
-export class LabeledArc extends Arc {
-  public render(): JSX.Element {
-    // const { data, arc } = this.props;
-    // const [labelX, labelY] = arc.centroid(data),
-    // labelTranslate = `translate(${labelX}, ${labelY})`;
-
-    return (
-      <g className="arc">
-        {super.render()}
-        {/* <text transform={labelTranslate} textAnchor="middle">
-          {data!.data!.label}-{data!.data!.value}
-        </text> */}
-      </g>
-    );
-  }
-}

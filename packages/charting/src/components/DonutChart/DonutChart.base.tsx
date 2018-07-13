@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { classNamesFunction, IClassNames } from '../../Utilities';
+import { classNamesFunction } from '../../Utilities';
 import { IDonutChartProps, IDonutChartStyleProps, IDonutChartStyles } from './DonutChart.types';
 import { Pie } from './Pie/Pie';
 import { IDataPoint } from './DonutChart.types';
 import * as scale from 'd3-scale';
+import { IProcessedStyleSet } from '../../Styling';
 
 const getClassNames = classNamesFunction<IDonutChartStyleProps, IDonutChartStyles>();
 
@@ -15,7 +16,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, {}> {
     LegendX: 27.81,
     LegendY: 182
   };
-  private _classNames: IClassNames<IDonutChartStyles>;
+  private _classNames: IProcessedStyleSet<IDonutChartStyles>;
   private colors: scale.ScaleOrdinal<string | number, {}>;
   public render(): JSX.Element {
     const { data, width, height, colors } = this.props;

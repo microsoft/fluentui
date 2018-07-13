@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as shape from 'd3-shape';
 import * as scale from 'd3-scale';
 import { IPieProps } from './Pie.types';
-import { LabeledArc } from '../Arc/Arc';
+import { Arc } from '../Arc/Arc';
 import { IArcData } from '../Arc/Arc.types';
 
 export class Pie extends React.Component<IPieProps, {}> {
@@ -23,7 +23,7 @@ export class Pie extends React.Component<IPieProps, {}> {
   }
   public arcGenerator = (d: IArcData, i: number): JSX.Element => {
     return (
-      <LabeledArc
+      <Arc
         key={i}
         data={d}
         innerRadius={this.props.innerRadius}
@@ -34,7 +34,6 @@ export class Pie extends React.Component<IPieProps, {}> {
   };
 
   public render(): JSX.Element {
-    // const getClassNames = classNamesFunction<IPieProps, IPieStyles>();
     const { pie } = this.props;
 
     const piechart = pie(this.props.data),

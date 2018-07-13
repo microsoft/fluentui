@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { classNamesFunction, IClassNames } from '../../Utilities';
+import { classNamesFunction } from '../../Utilities';
 import { IPieChartProps, IPieChartStyleProps, IPieChartStyles } from './PieChart.types';
 import { Pie } from './Pie/Pie';
-
+import { IProcessedStyleSet } from '../../Styling';
 const getClassNames = classNamesFunction<IPieChartStyleProps, IPieChartStyles>();
 
 export class PieChartBase extends React.Component<IPieChartProps, {}> {
@@ -11,7 +11,7 @@ export class PieChartBase extends React.Component<IPieChartProps, {}> {
     width: 600,
     height: 350
   };
-  private _classNames: IClassNames<IPieChartStyles>;
+  private _classNames: IProcessedStyleSet<IPieChartStyles>;
   public render(): JSX.Element {
     const { data, width, height, colors } = this.props;
 

@@ -1,8 +1,7 @@
 import { IDonutChartStyleProps, IDonutChartStyles } from './DonutChart.types';
 
 export const getStyles = (props: IDonutChartStyleProps): IDonutChartStyles => {
-  const { className, theme, width, height, LegendX, LegendY } = props;
-  console.log(LegendX, LegendY);
+  const { className, width, height, LegendX, LegendY } = props;
 
   const chartWidth = width;
   const chartHeight = height;
@@ -21,15 +20,7 @@ export const getStyles = (props: IDonutChartStyleProps): IDonutChartStyles => {
       width: chartHeight,
       height: chartHeight
     },
-
-    chartTitle: [
-      {
-        textAlign: 'center',
-        ...theme.fonts.mediumPlus
-      }
-    ],
     Legend: [
-      // {`translate(${xOffset}px, ${height}px)`
       {
         transform: `translate( ${LegendX}px,
           ${LegendY}px)`

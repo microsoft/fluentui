@@ -37,11 +37,6 @@ export interface IDonutChartProps {
   colors?: string[];
 
   /**
-   * Title to apply to the whole chart.
-   */
-  chartTitle?: string;
-
-  /**
    * Additional CSS class(es) to apply to the DonutChart.
    */
   className?: string;
@@ -83,11 +78,6 @@ export interface IDonutChartStyles {
    * Style for the chart.
    */
   chart?: IStyle;
-
-  /**
-   * Style for the chart Title.
-   */
-  chartTitle?: IStyle;
 
   /**
    * Style set for the Pie component Legend
