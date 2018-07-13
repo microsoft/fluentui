@@ -144,7 +144,6 @@
 
   /* once this is converted to js css, then specificity won't be an issue. */
   height: 100%;
-  padding: 7px 12px;
 
   @include high-contrast {
     color: WindowText;
