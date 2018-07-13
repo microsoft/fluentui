@@ -8,7 +8,8 @@ export class PageHeaderBase extends BaseComponent<IPageHeaderProps, {}> {
   public render(): JSX.Element {
     const { theme, children, getStyles } = this.props;
     const stylesProps: IPageHeaderStylesProps = { theme: theme! };
-    const classNames: IClassNames<IPageHeaderStyles> = mergeStyleSets(getStyles && getStyles(stylesProps));
+
+    const classNames = getStyles ? mergeStyleSets(getStyles(stylesProps)) : { root: '' };
 
     return <h2 className={classNames.root}>{children}</h2>;
   }

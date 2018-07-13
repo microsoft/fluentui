@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/example-app-base",
+      "comment": "Fix typing bugs in example-app-base",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/example-app-base",
+  "email": "cliff.koh@microsoft.com"
+}
