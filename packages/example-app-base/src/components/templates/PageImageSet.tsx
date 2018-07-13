@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseComponent, IBaseProps, IClassNames, customizable } from 'office-ui-fabric-react/lib/Utilities';
-import { ITheme, IStyle, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
+import { ITheme, IStyle, mergeStyleSets, IStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { IImageProps } from 'office-ui-fabric-react/lib/Image';
 
 export interface IPageImageSetStyles {
@@ -20,7 +20,7 @@ export interface IPageImageSetProps extends React.Props<PageImageSet>, IBaseProp
   images: IImageProps[];
 }
 
-const getDefaultStyles = (props: IPageImageSetStyleProps): IPageImageSetStyles => ({
+const getDefaultStyles = (props: IPageImageSetStyleProps): IStyleSet<IPageImageSetStyles> => ({
   root: {
     display: 'flex',
     flexFlow: 'row nowrap',
@@ -41,10 +41,9 @@ export class PageImageSet extends BaseComponent<IPageImageSetProps, {}> {
   public render(): JSX.Element {
     const { theme, getStyles, images } = this.props;
     const styleProps: IPageImageSetStyleProps = { theme: theme! };
-    const classNames: IClassNames<IPageImageSetStyles> = mergeStyleSets(
-      getDefaultStyles(styleProps),
-      getStyles && getStyles(styleProps)
-    );
+    const classNames = getStyles
+      ? mergeStyleSets(getDefaultStyles(styleProps), getStyles(styleProps))
+      : mergeStyleSets(getDefaultStyles(styleProps));
 
     return (
       <div className={classNames.root}>

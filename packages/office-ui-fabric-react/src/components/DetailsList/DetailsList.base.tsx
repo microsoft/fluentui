@@ -1,15 +1,14 @@
 import * as React from 'react';
-import * as stylesImport from './DetailsList.scss';
 
 import {
   BaseComponent,
   KeyCodes,
   assign,
-  css,
   elementContains,
   getRTLSafeKeyCode,
   IRenderFunction,
-  createRef
+  createRef,
+  classNamesFunction
 } from '../../Utilities';
 import {
   CheckboxVisibility,
@@ -18,7 +17,9 @@ import {
   DetailsListLayoutMode,
   IColumn,
   IDetailsList,
-  IDetailsListProps
+  IDetailsListProps,
+  IDetailsListStyles,
+  IDetailsListStyleProps
 } from '../DetailsList/DetailsList.types';
 import { DetailsHeader } from '../DetailsList/DetailsHeader';
 import { IDetailsHeader, SelectAllVisibility, IDetailsHeaderProps } from '../DetailsList/DetailsHeader.types';
@@ -41,7 +42,7 @@ import { IList, List, IListProps, ScrollToMode } from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
 import { GetGroupCount } from '../../utilities/groupedList/GroupedListUtility';
 
-const styles: any = stylesImport;
+export const getClassNames = classNamesFunction<IDetailsListStyleProps, IDetailsListStyles>();
 
 export interface IDetailsListState {
   focusedItemIndex: number;
@@ -67,7 +68,7 @@ const SHIMMER_INITIAL_ITEMS = 10;
 const SHIMMER_ITEMS = new Array(SHIMMER_INITIAL_ITEMS);
 
 @withViewport
-export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListState> implements IDetailsList {
+export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsListState> implements IDetailsList {
   public static defaultProps = {
     layoutMode: DetailsListLayoutMode.justified,
     selectionMode: SelectionMode.multiple,
@@ -305,7 +306,9 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       viewport,
       columnReorderOptions,
       minimumPixelsForDrag,
-      getGroupHeight
+      getGroupHeight,
+      styles,
+      theme
     } = this.props;
     const { adjustedColumns, isCollapsed, isSizing, isSomeGroupExpanded } = this.state;
     const { _selection: selection, _dragDropHelper: dragDropHelper } = this;
@@ -339,20 +342,20 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
     const rowCount = (isHeaderVisible ? 1 : 0) + GetGroupCount(groups) + (items ? items.length : 0);
 
+    const classNames = getClassNames(styles, {
+      theme: theme!,
+      compact,
+      isFixed: layoutMode === DetailsListLayoutMode.fixedColumns,
+      isHorizontalConstrained: constrainMode === ConstrainMode.horizontalConstrained,
+      className
+    });
+
     return (
       // If shouldApplyApplicationRole is true, role application will be applied to make arrow keys work
       // with JAWS.
       <div
         ref={this._root}
-        className={css(
-          'ms-DetailsList',
-          styles.root,
-          className,
-          layoutMode === DetailsListLayoutMode.fixedColumns && 'is-fixed',
-          constrainMode === ConstrainMode.horizontalConstrained &&
-            'is-horizontalConstrained ' + styles.rootIsHorizontalConstrained,
-          !!compact && 'ms-DetailsList--Compact ' + styles.rootCompact
-        )}
+        className={classNames.root}
         data-automationid="DetailsList"
         data-is-scrollable="false"
         aria-label={ariaLabel}
@@ -401,7 +404,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
           <div onKeyDown={this._onContentKeyDown} role="presentation">
             <FocusZone
               componentRef={this._focusZone}
-              className={styles.focusZone}
+              className={classNames.focusZone}
               direction={FocusZoneDirection.vertical}
               isInnerZoneKeystroke={isRightArrow}
               onActiveElementChanged={this._onActiveRowChanged}

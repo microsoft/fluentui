@@ -3,7 +3,9 @@ import { max as d3Max } from 'd3-array';
 import { axisLeft as d3AxisLeft, axisBottom as d3AxisBottom, Axis as D3Axis } from 'd3-axis';
 import { scaleBand as d3ScaleBand, scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
-import { classNamesFunction, customizable, IClassNames } from '../../Utilities';
+import { classNamesFunction, customizable } from '../../Utilities';
+import { IProcessedStyleSet } from '../../Styling';
+
 import {
   IVerticalBarChartProps,
   IVerticalBarChartStyleProps,
@@ -23,7 +25,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   private _barWidth: number;
   private _yAxisTickCount: number;
   private _colors: string[];
-  private _classNames: IClassNames<IVerticalBarChartStyles>;
+  private _classNames: IProcessedStyleSet<IVerticalBarChartStyles>;
 
   constructor(props: IVerticalBarChartProps) {
     super(props);

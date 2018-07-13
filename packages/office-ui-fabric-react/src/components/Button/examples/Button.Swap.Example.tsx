@@ -52,7 +52,7 @@ export class ButtonSwapExample extends React.Component<IButtonProps, IButtonSwap
     );
 
     const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
-    const classNames = getClassNames(getStyles);
+    const classNames = getClassNames(getStyles, {});
 
     return <div className={css(classNames.example)}>{button}</div>;
   }
