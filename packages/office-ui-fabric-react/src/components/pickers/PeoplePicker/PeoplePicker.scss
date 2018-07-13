@@ -2,8 +2,6 @@
 
 .resultContent {
   display: table-row;
-
-  padding: 7px 12px;
   .resultItem {
     display: table-cell;
     vertical-align: bottom;
@@ -28,6 +26,5 @@
   width: 100%;
   justify-content: space-between;
   align-items: center;
-
   padding: 7px 12px;
 }
