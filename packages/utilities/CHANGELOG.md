@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 20 Jun 2018 10:25:55 GMT and should not be manually modified.
+This log was last generated on Fri, 13 Jul 2018 21:32:37 GMT and should not be manually modified.
+
+## 6.9.0
+Fri, 13 Jul 2018 21:32:37 GMT
+
+### Minor changes
+
+- Reverting the TypeScript bump, to un
 
 ## 6.7.1
 Wed, 20 Jun 2018 10:25:55 GMT
