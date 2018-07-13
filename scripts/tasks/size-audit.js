@@ -1,3 +1,6 @@
+const path = require('path');
+const fs = require('fs');
+
 exports.generateSizeData = function() {
   const projectName = path.basename(process.cwd());
   const sizeFilePath = path.join(process.cwd(), 'dist', `${projectName}.json`);
