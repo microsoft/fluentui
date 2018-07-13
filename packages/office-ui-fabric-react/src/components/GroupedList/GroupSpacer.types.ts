@@ -2,10 +2,14 @@ import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunctionOrObject } from '../..';
 
 export interface IGroupSpacerProps {
-  /** Theme, from context */
+  /**
+   * Theme from Higher Order Component
+   */
   theme?: ITheme;
 
-  /** Overriding styles */
+  /**
+   * Style function to be passed in to override the themed or default styles
+   */
   styles?: IStyleFunctionOrObject<IGroupSpacerStyleProps, IGroupSpacerStyles>;
 
   /** Count of spacer(s) */
@@ -15,9 +19,7 @@ export interface IGroupSpacerProps {
   indentWidth?: number;
 }
 
-export interface IGroupSpacerStyleProps {
-  theme: ITheme;
-}
+export type IGroupSpacerStyleProps = Required<Pick<IGroupSpacerProps, 'theme'>>;
 
 export interface IGroupSpacerStyles {
   root: IStyle;

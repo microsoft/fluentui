@@ -4,12 +4,12 @@ import { IStyleFunctionOrObject } from '../../Utilities';
 
 export interface IGroupShowAllProps extends IGroupDividerProps {
   /**
-   * Theme provided by context
+   * Theme provided by Higher Order Component
    */
   theme?: ITheme;
 
   /**
-   * Overridable styles
+   * Style function to be passed in to override the themed or default styles
    */
   styles?: IStyleFunctionOrObject<IGroupShowAllStyleProps, IGroupShowAllStyles>;
 
@@ -20,9 +20,7 @@ export interface IGroupShowAllProps extends IGroupDividerProps {
   showAllLinkText?: string;
 }
 
-export interface IGroupShowAllStyleProps {
-  theme: ITheme;
-}
+export type IGroupShowAllStyleProps = Required<Pick<IGroupShowAllProps, 'theme'>>;
 
 export interface IGroupShowAllStyles {
   root: IStyle;

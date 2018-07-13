@@ -1,5 +1,7 @@
-import { IGroupSpacerStyleProps, IGroupSpacerStyles } from './GroupSpacer.types';
+import { IGroupSpacerProps, IGroupSpacerStyleProps, IGroupSpacerStyles } from './GroupSpacer.types';
 import { getGlobalClassNames } from '../../Styling';
+
+export { IGroupSpacerProps };
 
 const GlobalClassNames = {
   root: 'ms-GroupSpacer'

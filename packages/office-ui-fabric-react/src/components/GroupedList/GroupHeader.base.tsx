@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, css, classNamesFunction, IClassNames } from '../../Utilities';
+import { BaseComponent, classNamesFunction, IClassNames } from '../../Utilities';
 import { IGroupDividerProps } from './GroupedList.types';
 import { SelectionMode } from '../../utilities/selection/index';
 import { Check } from '../../Check';

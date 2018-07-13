@@ -1,5 +1,7 @@
-import { IGroupShowAllStyleProps, IGroupShowAllStyles } from './GroupShowAll.types';
+import { IGroupShowAllProps, IGroupShowAllStyleProps, IGroupShowAllStyles } from './GroupShowAll.types';
 import { getGlobalClassNames, FontSizes } from '../../Styling';
+
+export { IGroupShowAllProps };
 
 const GlobalClassNames = {
   root: 'ms-GroupShowAll',

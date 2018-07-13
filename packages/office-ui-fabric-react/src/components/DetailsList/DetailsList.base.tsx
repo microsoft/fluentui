@@ -422,7 +422,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
               >
                 {groups ? (
                   <GroupedList
-                    ref={this._groupedList}
+                    componentRef={this._groupedList}
                     groups={groups}
                     groupProps={groupProps}
                     items={items}

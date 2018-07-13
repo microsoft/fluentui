@@ -1,5 +1,13 @@
 import { IGroupHeaderStyleProps, IGroupHeaderStyles } from './GroupHeader.types';
-import { getGlobalClassNames, getFocusStyle, FontSizes, IStyle, AnimationVariables } from '../../Styling';
+import {
+  getGlobalClassNames,
+  getFocusStyle,
+  FontSizes,
+  IStyle,
+  AnimationVariables,
+  FontWeights,
+  IconFontSizes
+} from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-GroupHeader',
@@ -35,7 +43,7 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
       background: 'none',
       backgroundColor: 'transparent',
       border: 'none',
-      fontSize: FontSizes.large
+      fontSize: IconFontSizes.large
     }
   ];
 
@@ -118,21 +126,30 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
         width: 36,
         height: rowHeight,
         color: palette.neutralSecondary,
-        paddingTop: 4,
-        selectors: {
-          ':global(i)': {
+        paddingTop: 4
+      }
+    ],
+    expandIsCollapsed: [
+      isCollapsed
+        ? [
+            classNames.isCollapsed,
+            {
+              transform: 'rotate(0deg)',
+              transformOrigin: '50% 50%',
+              transition: 'transform .1s linear'
+            }
+          ]
+        : {
             transform: 'rotate(-180deg)',
             transformOrigin: '50% 50%',
             transition: 'transform .1s linear'
           }
-        }
-      }
     ],
-    expandIsCollapsed: [classNames.isCollapsed, { transform: 'rotate(0deg)' }],
     title: [
       classNames.title,
       {
         fontSize: FontSizes.xLarge,
+        fontWeight: FontWeights.light,
         cursor: 'pointer',
         outline: 0,
         whiteSpace: 'nowrap',
@@ -144,7 +161,7 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
       {
         position: 'absolute',
         left: -26,
-        fontSize: FontSizes.large,
+        fontSize: IconFontSizes.large,
         color: palette.neutralSecondaryAlt,
         transition: `transform ${AnimationVariables.durationValue2} ${beziers.easeInBack}, opacity ${
           AnimationVariables.durationValue4

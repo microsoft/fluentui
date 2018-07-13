@@ -4,12 +4,12 @@ import { ITheme, IStyle } from '../../Styling';
 
 export interface IGroupHeaderProps extends IGroupDividerProps {
   /**
-   * Theme provided by context
+   * Theme provided by Higher Order Component
    */
   theme?: ITheme;
 
   /**
-   * Overridable styles
+   * Style function to be passed in to override the themed or default styles
    */
   styles?: IStyleFunctionOrObject<IGroupHeaderStyleProps, IGroupHeaderStyles>;
 
@@ -21,6 +21,7 @@ export interface IGroupHeaderProps extends IGroupDividerProps {
 
 export type IGroupHeaderStyleProps = Required<Pick<IGroupHeaderProps, 'theme'>> &
   Pick<IGroupHeaderProps, 'selected' | 'className'> & {
+    /** Is Header collapsed */
     isCollapsed?: boolean;
   };
 

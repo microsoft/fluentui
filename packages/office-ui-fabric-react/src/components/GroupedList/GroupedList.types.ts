@@ -28,10 +28,14 @@ export interface IGroupedList extends IList {
 }
 
 export interface IGroupedListProps extends React.Props<GroupedListBase> {
-  /** Theme that is passed in from context */
+  /**
+   * Theme that is passed in from Higher Order Component
+   */
   theme?: ITheme;
 
-  /** Styles for overrides */
+  /**
+   * Style function to be passed in to override the themed or default styles
+   */
   styles?: IStyleFunctionOrObject<IGroupedListStyleProps, IGroupedListStyles>;
 
   /**
@@ -288,6 +292,7 @@ export interface IGroupDividerProps {
 
 export type IGroupedListStyleProps = Required<Pick<IGroupedListProps, 'theme'>> &
   Pick<IGroupedListProps, 'className'> & {
+    /** whether or not the group is collapsed */
     isCollapsed?: boolean;
   };
 

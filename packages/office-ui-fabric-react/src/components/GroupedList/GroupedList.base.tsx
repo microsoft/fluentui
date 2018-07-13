@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, IRectangle, assign, css, createRef, classNamesFunction, IClassNames } from '../../Utilities';
+import { BaseComponent, IRectangle, assign, createRef, classNamesFunction, IClassNames } from '../../Utilities';
 import {
   IGroupedList,
   IGroupedListProps,
