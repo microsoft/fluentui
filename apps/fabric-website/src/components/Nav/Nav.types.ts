@@ -61,10 +61,4 @@ export interface INavPage {
    * @default false
    */
   isUhfLink?: boolean;
-<<<<<<< HEAD
-
-  name?: string;
 }
-=======
-}
->>>>>>> undo debug
