@@ -268,6 +268,12 @@ export interface IDetailsListProps extends React.Props<DetailsListBase>, IWithVi
    * avoiding the scroll jumping issue.
    */
   getGroupHeight?: (group: IGroup, groupIndex: number) => number;
+
+  /**
+   * Rerender DetailsRow only when props changed. Might cause regression when depending on external updates.
+   * @default false
+   */
+  useReducedRowRenderer?: boolean;
 }
 
 export interface IColumn {

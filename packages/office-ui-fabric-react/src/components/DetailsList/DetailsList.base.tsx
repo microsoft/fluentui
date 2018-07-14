@@ -494,7 +494,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       getRowAriaDescribedBy,
       checkButtonAriaLabel,
       checkboxCellClassName,
-      groupProps
+      groupProps,
+      useReducedRowRenderer
     } = this.props;
     const collapseAllVisibility = groupProps && groupProps.collapseAllVisibility;
     const selection = this._selection;
@@ -521,7 +522,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       getRowAriaLabel: getRowAriaLabel,
       getRowAriaDescribedBy: getRowAriaDescribedBy,
       checkButtonAriaLabel: checkButtonAriaLabel,
-      checkboxCellClassName: checkboxCellClassName
+      checkboxCellClassName: checkboxCellClassName,
+      useReducedRowRenderer: useReducedRowRenderer
     };
 
     if (!item) {
