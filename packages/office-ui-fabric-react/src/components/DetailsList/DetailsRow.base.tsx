@@ -156,7 +156,7 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowProps, IDetailsRowS
           return true;
         }
       }
-      return !shallowCompare(this.props, nextProps);
+      return shallowCompare(this.props, nextProps);
     } else {
       return true;
     }
