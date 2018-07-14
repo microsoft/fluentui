@@ -931,7 +931,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     } else {
       if (item.key !== this.state.expandedMenuItemKey) {
         let expandedByMouseClick = false; // keyboard event
-        if (ev.type === "click") {
+        if (ev.type === 'click') {
           // When Edge + Narrator are used together (regardless of if the button is in a form or not), pressing
           // "Enter" fires this method and not _onMenuKeyDown. Checking ev.nativeEvent.screenX and ev.
           // nativeEvent.screenY differentiates between a real click event and a keypress event.
