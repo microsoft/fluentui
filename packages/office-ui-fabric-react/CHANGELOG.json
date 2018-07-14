@@ -2,6 +2,58 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.35.0",
+      "tag": "office-ui-fabric-react_v6.35.0",
+      "date": "Fri, 13 Jul 2018 21:32:37 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "83486db0dd8f831599dd75f37b32878efac45ca0",
+            "comment": "Reverting the TypeScript bump, to unbreak DetailsList d.ts changes."
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "f26458faf5600813cf173a9466954add5a600261",
+            "comment": "Button: Added menuAs to better support custom contextual menus"
+          },
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "266eec7e8228b13dea78b5f270dcb1de04a35cce",
+            "comment": "DetailsList: Complete CSS-in-JS conversion."
+          },
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "743df17c295fac6878edc3ea825f17555f6767e9",
+            "comment": "Edit to styled function call allowing customization with CalloutContent, DialogContent, and DialogFooter"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "140a4f021225eb4ebe6b9ffba024bdae4acbd95a",
+            "comment": "Fix TextField clearing on render when value prop is undefined."
+          },
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "1dbfc5ee7c38e982282f13ef92884538e7226169",
+            "comment": "Deprecate unused linkIsSelected Pivot style prop."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.2.3 <7.0.0` to `>=6.4.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.6.0 <7.0.0` to `>=6.8.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.7.1 <7.0.0` to `>=6.9.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.33.1",
       "tag": "office-ui-fabric-react_v6.33.1",
       "date": "Thu, 12 Jul 2018 10:29:30 GMT",

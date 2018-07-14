@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/dashboard",
-      "comment": "Created new package dashboard and moved Recommendation, card and nav to it ",
+      "comment": "DGL card shadow, card title href and styling fixes",
       "type": "minor"
     }
   ],
