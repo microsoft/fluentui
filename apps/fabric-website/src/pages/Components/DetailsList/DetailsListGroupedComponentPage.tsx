@@ -7,15 +7,15 @@ export class DetailsListGroupedComponentPage extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='Grouped DetailsList'
-        componentName='DetailsListGroupedExample'
-        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList'
+        title="Grouped DetailsList"
+        componentName="DetailsListGroupedExample"
+        componentUrl="https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList"
         exampleCards={
-          <ExampleCard title='Simple Grouped DetailsList' isOptIn={ true } code={ DetailsListGroupedExampleCode }>
+          <ExampleCard title="Simple Grouped DetailsList" isOptIn={true} code={DetailsListGroupedExampleCode}>
             <DetailsListGroupedExample />
           </ExampleCard>
         }
-        isHeaderVisible={ false }
+        isHeaderVisible={false}
       />
     );
   }

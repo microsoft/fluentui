@@ -7,15 +7,19 @@ export class DetailsListCustomColumnsComponentPage extends React.Component<any, 
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='Custom Item Columns DetailsList'
-        componentName='DetailsListCustomColumnsExample'
-        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList'
+        title="Custom Item Columns DetailsList"
+        componentName="DetailsListCustomColumnsExample"
+        componentUrl="https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList"
         exampleCards={
-          <ExampleCard title='Rendering custom item columns with sorting' isOptIn={ true } code={ DetailsListCustomColumnsExampleCode }>
+          <ExampleCard
+            title="Rendering custom item columns with sorting"
+            isOptIn={true}
+            code={DetailsListCustomColumnsExampleCode}
+          >
             <DetailsListCustomColumnsExample />
           </ExampleCard>
         }
-        isHeaderVisible={ false }
+        isHeaderVisible={false}
       />
     );
   }

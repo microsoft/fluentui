@@ -7,15 +7,19 @@ export class DetailsListDragDropComponentPage extends React.Component<any, any> 
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='Drag &amp; Drop DetailsList'
-        componentName='DetailsListDragDropExample'
-        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList'
+        title="Drag &amp; Drop DetailsList"
+        componentName="DetailsListDragDropExample"
+        componentUrl="https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList"
         exampleCards={
-          <ExampleCard title='Drag and Drop DetailsList with 10 items' isOptIn={ true } code={ DetailsListDragDropExampleCode }>
+          <ExampleCard
+            title="Drag and Drop DetailsList with 10 items"
+            isOptIn={true}
+            code={DetailsListDragDropExampleCode}
+          >
             <DetailsListDragDropExample />
           </ExampleCard>
         }
-        isHeaderVisible={ false }
+        isHeaderVisible={false}
       />
     );
   }

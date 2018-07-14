@@ -7,15 +7,19 @@ export class DetailsListNavigatingFocusComponentPage extends React.Component<any
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='Inner Navigation DetailsList'
-        componentName='DetailsListNavigatingFocusExample'
-        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList'
+        title="Inner Navigation DetailsList"
+        componentName="DetailsListNavigatingFocusExample"
+        componentUrl="https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList"
         exampleCards={
-          <ExampleCard title='Navigating to new content preserving keyboard focus with initialFocusedIndex' isOptIn={ true } code={ DetailsListNavigatingFocusExampleCode }>
+          <ExampleCard
+            title="Navigating to new content preserving keyboard focus with initialFocusedIndex"
+            isOptIn={true}
+            code={DetailsListNavigatingFocusExampleCode}
+          >
             <DetailsListNavigatingFocusExample />
           </ExampleCard>
         }
-        isHeaderVisible={ false }
+        isHeaderVisible={false}
       />
     );
   }

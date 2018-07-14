@@ -86,16 +86,17 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
       <div className={css('ComponentPage', className)}>
         <div className={componentName}>
           {this._pageHeader()}
-          <div className='ComponentPage-body'>
-            { this._getComponentStatusBadges() }
-            { this._getOverview() }
-            { this._getDosAndDonts() }
-            { this._getVariants() }
-            { this._getImplementationExamples() }
-            { this._getPropertiesTable() }
-            { this.props.otherSections && this.props.otherSections.map((componentPageSection: IComponentPageSection) => {
-              return this._getSection(componentPageSection);
-            })}
+          <div className="ComponentPage-body">
+            {this._getComponentStatusBadges()}
+            {this._getOverview()}
+            {this._getDosAndDonts()}
+            {this._getVariants()}
+            {this._getImplementationExamples()}
+            {this._getPropertiesTable()}
+            {this.props.otherSections &&
+              this.props.otherSections.map((componentPageSection: IComponentPageSection) => {
+                return this._getSection(componentPageSection);
+              })}
           </div>
         </div>
       </div>
@@ -319,17 +320,11 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
 
     if (this.props.exampleCards) {
       return (
-<<<<<<< HEAD
         <div className="ComponentPage-variantsSection">
           <h2 className="ComponentPage-subHeading ComponentPage-variantsTitle" id="Variants">
-            Variants
+            {headerText}
           </h2>
           {this.props.exampleCards}
-=======
-        <div className='ComponentPage-variantsSection'>
-          <h2 className='ComponentPage-subHeading ComponentPage-variantsTitle' id='Variants'>{ headerText }</h2>
-          { this.props.exampleCards }
->>>>>>> Support Variants or component name as variants header
         </div>
       );
     }
@@ -363,24 +358,26 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
   private _getOverview(): JSX.Element | undefined {
     if (this.props.overview) {
       return (
-        <div className='ComponentPage-overviewSection'>
-          <div className='ComponentPage-overviewSectionHeader'>
-            <h2 className='ComponentPage-subHeading' id='Overview'>Overview</h2>
+        <div className="ComponentPage-overviewSection">
+          <div className="ComponentPage-overviewSectionHeader">
+            <h2 className="ComponentPage-subHeading" id="Overview">
+              Overviewasdfasdfsdfasd
+            </h2>
             <EditSection
-              title={ this.props.title }
-              section={ ComponentPageSection.Overview }
-              sectionContent={ this.props.overview }
-              url={ this._getURL('Overview', this.props.editOverviewUrl) }
+              title={this.props.title}
+              section={ComponentPageSection.Overview}
+              sectionContent={this.props.overview}
+              url={this._getURL('Overview', this.props.editOverviewUrl)}
             />
           </div>
-          <div className='ComponentPage-overviewSectionContent'>
-            <div className='ComponentPage-overview'>
-              { this.props.overview }
-            </div>
-            { this._getRelatedComponents() }
+          <div className="ComponentPage-overviewSectionContent">
+            <div className="ComponentPage-overview">{this.props.overview}</div>
+            {this._getRelatedComponents()}
           </div>
         </div>
       );
+    } else {
+      console.log('BLOWS!');
     }
 
     return undefined;

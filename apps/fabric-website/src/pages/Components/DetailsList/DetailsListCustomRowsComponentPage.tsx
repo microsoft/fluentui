@@ -7,15 +7,15 @@ export class DetailsListCustomRowsComponentPage extends React.Component<any, any
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='Custom Item Rows DetailsList'
-        componentName='DetailsListCustomRowsExample'
-        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList'
+        title="Custom Item Rows DetailsList"
+        componentName="DetailsListCustomRowsExample"
+        componentUrl="https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList"
         exampleCards={
-          <ExampleCard title='Rendering custom item rows' isOptIn={ true } code={ DetailsListCustomRowsExampleCode }>
+          <ExampleCard title="Rendering custom item rows" isOptIn={true} code={DetailsListCustomRowsExampleCode}>
             <DetailsListCustomRowsExample />
           </ExampleCard>
         }
-        isHeaderVisible={ false }
+        isHeaderVisible={false}
       />
     );
   }

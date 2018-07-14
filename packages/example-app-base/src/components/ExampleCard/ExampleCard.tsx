@@ -37,13 +37,9 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
 
     return (
       <div className={rootClass}>
-        <div className='ExampleCard-header'>
-<<<<<<< HEAD
-          <h3 id={id} className='ExampleCard-title ms-font-l'>{'WEEEEEEEEEEEE' + title}</h3>
-=======
-          <span className='ExampleCard-title ms-font-l'>{ title }</span>
->>>>>>> undo debug
-          <div className='ExampleCard-toggleButtons ms-font-l'>
+        <div className="ExampleCard-header">
+          <span className="ExampleCard-title ms-font-l">{title}</span>
+          <div className="ExampleCard-toggleButtons ms-font-l">
             {code ? (
               <CommandButton
                 iconProps={{ iconName: 'Embed' }}
