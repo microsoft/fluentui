@@ -5,12 +5,8 @@ import {
   ITheme,
   IPartialTheme
 } from '../interfaces/index';
-import {
-  DefaultFontStyles
-} from './DefaultFontStyles';
-import {
-  DefaultPalette
-} from './DefaultPalette';
+import { DefaultFontStyles } from './DefaultFontStyles';
+import { DefaultPalette } from './DefaultPalette';
 import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
 
 let _theme: ITheme = {
@@ -18,7 +14,7 @@ let _theme: ITheme = {
   semanticColors: _makeSemanticColorsFromPalette(DefaultPalette, false, false),
   fonts: DefaultFontStyles,
   isInverted: false,
-  disableGlobalClassNames: false,
+  disableGlobalClassNames: false
 };
 let _onThemeChangeCallbacks: Array<(theme: ITheme) => void> = [];
 
@@ -28,7 +24,11 @@ if (!Customizations.getSettings([ThemeSettingName]).theme) {
   let win = typeof window !== 'undefined' ? window : undefined;
 
   // tslint:disable:no-string-literal no-any
-  if (win && (win as any)['FabricConfig'] && (win as any)['FabricConfig'].theme) {
+  if (
+    win &&
+    (win as any)['FabricConfig'] &&
+    (win as any)['FabricConfig'].theme
+  ) {
     _theme = createTheme((win as any)['FabricConfig'].theme);
   }
   // tslint:enable:no-string-literal no-any
@@ -53,7 +53,9 @@ export function getTheme(depComments: boolean = false): ITheme {
  * This should only be used when the component cannot automatically get theme changes through its state.
  * This will not register duplicate callbacks.
  */
-export function registerOnThemeChangeCallback(callback: (theme: ITheme) => void): void {
+export function registerOnThemeChangeCallback(
+  callback: (theme: ITheme) => void
+): void {
   if (_onThemeChangeCallbacks.indexOf(callback) === -1) {
     _onThemeChangeCallbacks.push(callback);
   }
@@ -63,7 +65,9 @@ export function registerOnThemeChangeCallback(callback: (theme: ITheme) => void)
  * See registerOnThemeChangeCallback().
  * Removes previously registered callbacks.
  */
-export function removeOnThemeChangeCallback(callback: (theme: ITheme) => void): void {
+export function removeOnThemeChangeCallback(
+  callback: (theme: ITheme) => void
+): void {
   const i = _onThemeChangeCallbacks.indexOf(callback);
   if (i === -1) {
     return;
@@ -77,7 +81,10 @@ export function removeOnThemeChangeCallback(callback: (theme: ITheme) => void): 
  * @param {object} theme - Partial theme object.
  * @param {boolean} depComments - Whether to include deprecated tags as comments for deprecated slots.
  */
-export function loadTheme(theme: IPartialTheme, depComments: boolean = false): ITheme {
+export function loadTheme(
+  theme: IPartialTheme,
+  depComments: boolean = false
+): ITheme {
   _theme = createTheme(theme, depComments);
 
   // Invoke the legacy method of theming the page as well.
@@ -101,7 +108,10 @@ export function loadTheme(theme: IPartialTheme, depComments: boolean = false): I
  * @param {object} theme - Partial theme object.
  * @param {boolean} depComments - Whether to include deprecated tags as comments for deprecated slots.
  */
-export function createTheme(theme: IPartialTheme, depComments: boolean = false): ITheme {
+export function createTheme(
+  theme: IPartialTheme,
+  depComments: boolean = false
+): ITheme {
   let newPalette = { ...DefaultPalette, ...theme.palette };
 
   if (!theme.palette || !theme.palette.accent) {
@@ -109,7 +119,14 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
   }
 
   // mix in custom overrides with good slots first, since custom overrides might be used in fixing deprecated slots
-  let newSemanticColors = { ..._makeSemanticColorsFromPalette(newPalette, !!theme.isInverted, depComments), ...theme.semanticColors };
+  let newSemanticColors = {
+    ..._makeSemanticColorsFromPalette(
+      newPalette,
+      !!theme.isInverted,
+      depComments
+    ),
+    ...theme.semanticColors
+  };
 
   return {
     palette: newPalette,
@@ -119,16 +136,21 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
     },
     semanticColors: newSemanticColors,
     isInverted: !!theme.isInverted,
-    disableGlobalClassNames: !!theme.disableGlobalClassNames,
+    disableGlobalClassNames: !!theme.disableGlobalClassNames
   };
 }
 
 // Generates all the semantic slot colors based on the Fabric palette.
 // We'll use these as fallbacks for semantic slots that the passed in theme did not define.
-function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depComments: boolean): ISemanticColors {
+function _makeSemanticColorsFromPalette(
+  p: IPalette,
+  isInverted: boolean,
+  depComments: boolean
+): ISemanticColors {
   let toReturn: ISemanticColors = {
     bodyBackground: p.white,
     bodyFrameBackground: p.white,
+    bodyFrameDivider: p.neutralLight,
     bodyText: p.neutralPrimary,
     bodyTextChecked: p.black,
     bodySubtext: p.neutralSecondary,
@@ -143,11 +165,19 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
 
     errorText: !isInverted ? p.redDark : '#ff5f5f',
     warningText: !isInverted ? '#333333' : '#ffffff',
-    errorBackground: !isInverted ? 'rgba(232, 17, 35, .2)' : 'rgba(232, 17, 35, .5)',
-    blockingBackground: !isInverted ? 'rgba(234, 67, 0, .2)' : 'rgba(234, 67, 0, .5)',
-    warningBackground: !isInverted ? 'rgba(255, 185, 0, .2)' : 'rgba(255, 251, 0, .6)',
+    errorBackground: !isInverted
+      ? 'rgba(232, 17, 35, .2)'
+      : 'rgba(232, 17, 35, .5)',
+    blockingBackground: !isInverted
+      ? 'rgba(234, 67, 0, .2)'
+      : 'rgba(234, 67, 0, .5)',
+    warningBackground: !isInverted
+      ? 'rgba(255, 185, 0, .2)'
+      : 'rgba(255, 251, 0, .6)',
     warningHighlight: !isInverted ? '#ffb900' : '#fff100',
-    successBackground: !isInverted ? 'rgba(186, 216, 10, .2)' : 'rgba(186, 216, 10, .4)',
+    successBackground: !isInverted
+      ? 'rgba(186, 216, 10, .2)'
+      : 'rgba(186, 216, 10, .4)',
 
     inputBorder: p.neutralTertiary,
     inputBorderHovered: p.neutralDark,
@@ -193,7 +223,10 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
   return _fixDeprecatedSlots(toReturn, depComments!);
 }
 
-function _fixDeprecatedSlots(s: ISemanticColors, depComments: boolean): ISemanticColors {
+function _fixDeprecatedSlots(
+  s: ISemanticColors,
+  depComments: boolean
+): ISemanticColors {
   // Add @deprecated tag as comment if enabled
   let dep = '';
   if (depComments === true) {
