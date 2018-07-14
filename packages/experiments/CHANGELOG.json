@@ -2,6 +2,46 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.15.0",
+      "tag": "@uifabric/experiments_v6.15.0",
+      "date": "Fri, 13 Jul 2018 21:32:37 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "83486db0dd8f831599dd75f37b32878efac45ca0",
+            "comment": "Reverting the TypeScript bump, to un"
+          },
+          {
+            "author": "Samiya <samiyaakhtar7@gmail.com>",
+            "commit": "bac02c5d4d306edeba272f71d8ab6536c6ed54b5",
+            "comment": "Card: disable dragging of card everywhere but title bar"
+          },
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "743df17c295fac6878edc3ea825f17555f6767e9",
+            "comment": "Added FluentStyles for Panel, TextField, ContextualMenu, and ComboBox"
+          },
+          {
+            "author": "Samiya <samiyaakhtar7@gmail.com>",
+            "commit": "13e6890cc675f00607b96c9f2928537f0f9ac231",
+            "comment": "Moved nav, recommendation and card to m365-admin package"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.33.1 <7.0.0` to `>=6.35.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.0.4` to `^0.1.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.2.1 <7.0.0` to `>=6.3.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.13.6",
       "tag": "@uifabric/experiments_v6.13.6",
       "date": "Thu, 12 Jul 2018 10:29:30 GMT",

@@ -57,6 +57,11 @@ export interface ICardFrameProps {
    * Color property for the seperator
    */
   seperatorColor?: string;
+
+  /**
+   * Hyperlink URL for title
+   */
+  href?: string;
 }
 
 export interface ICardFrameStyles {

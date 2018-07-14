@@ -1,6 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 12 Jul 2018 10:29:30 GMT and should not be manually modified.
+This log was last generated on Fri, 13 Jul 2018 21:32:37 GMT and should not be manually modified.
+
+## 6.35.0
+Fri, 13 Jul 2018 21:32:37 GMT
+
+### Minor changes
+
+- Reverting the TypeScript bump, to unbreak DetailsList d.ts changes.
+- Button: Added menuAs to better support custom contextual menus
+- DetailsList: Complete CSS-in-JS conversion.
+- Edit to styled function call allowing customization with CalloutContent, DialogContent, and DialogFooter
+
+### Patches
+
+- Fix TextField clearing on render when value prop is undefined.
+- Deprecate unused linkIsSelected Pivot style prop.
 
 ## 6.33.1
 Thu, 12 Jul 2018 10:29:30 GMT
