@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/variants",
+      "comment": "Variants: tweak background colors to look better in light and dark, and account for new semantic slots",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/variants",
+  "email": "phkuo@microsoft.com"
+}
