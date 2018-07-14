@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { GroupedList } from './GroupedList';
 import { IList, IListProps } from '../../List';
-import { IRenderFunction } from '../../Utilities';
+import { IRefObject, IRenderFunction } from '../../Utilities';
 import { IDragDropContext, IDragDropEvents, IDragDropHelper } from '../../utilities/dragdrop/index';
 import { ISelection, SelectionMode } from '../../utilities/selection/index';
 import { IViewport } from '../../utilities/decorators/withViewport';
@@ -30,7 +30,7 @@ export interface IGroupedListProps extends React.Props<GroupedList> {
    * Optional callback to access the IGroupedList interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component?: IGroupedList | null) => void;
+  componentRef?: IRefObject<IGroupedList>;
 
   /** Optional class name to add to the root element. */
   className?: string;
@@ -215,7 +215,7 @@ export interface IGroupRenderProps {
 }
 
 export interface IGroupDividerProps {
-  componentRef?: () => void;
+  componentRef?: IRefObject<{}>;
 
   /** Callback to determine if a group has missing items and needs to load them from the server. */
   isGroupLoading?: (group: IGroup) => boolean;

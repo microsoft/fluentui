@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ChicletBase } from './Chiclet.base';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IStyleFunctionOrObject, IRefObject } from '../../Utilities';
 import { IStyle, ITheme } from '../../Styling';
 
 export interface IChiclet {}
@@ -10,7 +10,7 @@ export interface IChicletProps extends React.Props<ChicletBase> {
    * Optional callback to access the IChiclet interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IChiclet | null) => void;
+  componentRef?: IRefObject<IChiclet>;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.

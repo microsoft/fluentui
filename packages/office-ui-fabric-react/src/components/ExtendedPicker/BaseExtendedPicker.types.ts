@@ -3,6 +3,7 @@ import { Autofill } from '../../Autofill';
 import { IInputProps } from '../../Pickers';
 import { IBaseFloatingPickerProps } from '../../FloatingPicker';
 import { IBaseSelectedItemsListProps } from '../../SelectedItemsList';
+import { IRefObject } from '../../Utilities';
 
 export interface IBaseExtendedPicker<T> {
   /** Forces the picker to resolve */
@@ -17,7 +18,10 @@ export interface IBaseExtendedPicker<T> {
 // and searched for by the people picker. For example, if the picker is
 // displaying persona's than type T could either be of Persona or Ipersona props
 export interface IBaseExtendedPickerProps<T> {
-  componentRef?: (component?: IBaseExtendedPicker<T> | null) => void;
+  /**
+   * Ref of the component
+   */
+  componentRef?: IRefObject<IBaseExtendedPicker<T>>;
 
   /**
    * Header/title element for the picker

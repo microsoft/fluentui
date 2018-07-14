@@ -1,8 +1,8 @@
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
 export interface IFabricProps extends React.HTMLAttributes<HTMLDivElement> {
-  componentRef?: () => void;
+  componentRef?: IRefObject<{}>;
   theme?: ITheme;
   styles?: IStyleFunctionOrObject<IFabricStyleProps, IFabricStyles>;
 }
