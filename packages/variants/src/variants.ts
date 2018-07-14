@@ -52,6 +52,7 @@ export function getNeutralVariant(theme: IPartialTheme): ITheme {
     // neutralPrimaryAlt: '#3c3c3c',
     // neutralSecondary: '#666666',
     // neutralTertiary: '#a6a6a6',
+
     // backgrounds - background is still the same scale, just squish it a bit
     // neutralTertiaryAlt: '#c8c8c8',
     neutralQuaternary: p.neutralTertiaryAlt,
@@ -103,6 +104,7 @@ export function getSoftVariant(theme: IPartialTheme): ITheme {
     // neutralPrimaryAlt: '#3c3c3c',
     // neutralSecondary: '#666666',
     // neutralTertiary: '#a6a6a6',
+
     // backgrounds - page background starts at themeLighterAlt or themeLight, depending on inverted theme or not,
     // then gets steps stronger from there
     neutralTertiaryAlt: !fullTheme.isInverted ? p.themeDarkAlt : p.themeDarker,
