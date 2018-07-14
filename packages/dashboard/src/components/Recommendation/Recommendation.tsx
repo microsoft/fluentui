@@ -60,6 +60,7 @@ export class Recommendation extends React.Component<IRecommendationProps, {}> {
         seperatorColor={CardComponentStyles.separatorColor}
         titleTextColor={CardComponentStyles.frameHeaderColor}
         cardDropDownOptions={this.recommendationMenuItems}
+        draggable={false}
       >
         <div className={classNames.recommendationContainer}>
           <div className={classNames.recommendationTextContainer}>

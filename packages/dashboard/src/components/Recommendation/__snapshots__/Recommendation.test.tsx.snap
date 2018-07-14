@@ -26,7 +26,9 @@ exports[`RecommendationCard renders basic example correctly 1`] = `
           {
             border-bottom-color: rgba(0, 120, 215, 1);
             border-bottom: 1px solid;
-            cursor: move;
+            border-top-left-radius: 2px;
+            border-top-right-radius: 2px;
+            cursor: ;
             height: 40px;
             overflow: hidden;
           }
@@ -259,7 +261,7 @@ exports[`RecommendationCard renders basic example correctly 1`] = `
                 }
           >
             Lorem ipsum dolor sit amet
-             
+
           </div>
           <div
             className=
@@ -274,7 +276,7 @@ exports[`RecommendationCard renders basic example correctly 1`] = `
                 }
           >
             I am a recommendation template common control example. My title is above, and this is my content area for descriptive text.
-             
+
           </div>
           <div>
             <button
@@ -487,7 +489,9 @@ exports[`RecommendationCard renders dlp example correctly 1`] = `
           {
             border-bottom-color: rgba(0, 120, 215, 1);
             border-bottom: 1px solid;
-            cursor: move;
+            border-top-left-radius: 2px;
+            border-top-right-radius: 2px;
+            cursor: ;
             height: 40px;
             overflow: hidden;
           }
@@ -720,7 +724,7 @@ exports[`RecommendationCard renders dlp example correctly 1`] = `
                 }
           >
             Protect your sensitive info
-             
+
           </div>
           <div
             className=
@@ -735,7 +739,7 @@ exports[`RecommendationCard renders dlp example correctly 1`] = `
                 }
           >
             Some sensitive information types aren't currently protected and could be shared accidentally. We recommend adding a new data loss prevention (DLP) policy to protect this data.
-             
+
           </div>
           <div>
             <button
@@ -1235,7 +1239,9 @@ exports[`RecommendationCard renders imageillustration example correctly 1`] = `
           {
             border-bottom-color: rgba(0, 120, 215, 1);
             border-bottom: 1px solid;
-            cursor: move;
+            border-top-left-radius: 2px;
+            border-top-right-radius: 2px;
+            cursor: ;
             height: 40px;
             overflow: hidden;
           }
@@ -1468,7 +1474,7 @@ exports[`RecommendationCard renders imageillustration example correctly 1`] = `
                 }
           >
             Set user passwords to never expire
-             
+
           </div>
           <div
             className=
@@ -1483,7 +1489,7 @@ exports[`RecommendationCard renders imageillustration example correctly 1`] = `
                 }
           >
             We recommend that you set passwords to never expire to avoid possible disruption. Currently, passwords expire every 90 days.
-             
+
           </div>
           <div>
             <button

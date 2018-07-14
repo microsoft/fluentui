@@ -122,6 +122,11 @@ export interface ICardProps {
    * One of its use could be to fetch server data here
    */
   callOnDidMount?: VoidFunction;
+
+  /**
+   * Whether the card is draggable or not
+   */
+  draggable?: boolean;
 }
 
 export interface ICardState {
