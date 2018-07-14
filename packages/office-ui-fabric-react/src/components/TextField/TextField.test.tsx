@@ -3,6 +3,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
+import { mount } from 'enzyme';
 
 import { TextField } from './TextField';
 
@@ -129,6 +130,30 @@ describe('TextField', () => {
 
     // Assert on the input element.
     expect(inputDOM.defaultValue).toEqual('0');
+  });
+
+  it('should NOT update state when props value remains undefined on props update', () => {
+    const stateValue = 'state value';
+    const textField = mount(<TextField />);
+    expect(textField.state('value')).toEqual('');
+
+    textField.setState({ value: stateValue });
+    expect(textField.state('value')).toEqual(stateValue);
+
+    // Trigger a props update, but value prop remains the same undefined value,
+    //    so state should not be affected.
+    textField.setProps({ id: 'unimportantValue' });
+    expect(textField.state('value')).toEqual(stateValue);
+  });
+
+  it('should update state when props value changes from defined to undefined', () => {
+    const propsValue = 'props value';
+
+    const textField = mount(<TextField value={propsValue} />);
+    expect(textField.state('value')).toEqual(propsValue);
+
+    textField.setProps({ value: undefined });
+    expect(textField.state('value')).toEqual('');
   });
 
   describe('error message', () => {

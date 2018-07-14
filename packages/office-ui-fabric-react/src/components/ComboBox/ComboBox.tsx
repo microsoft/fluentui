@@ -1029,6 +1029,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       useComboBoxAsMenuWidth
     } = props;
 
+    const comboBoxMenuWidth =
+      useComboBoxAsMenuWidth && this._comboBoxWrapper.current
+        ? this._comboBoxWrapper.current.clientWidth + 2
+        : undefined;
+
     return (
       <Callout
         isBeakVisible={false}
@@ -1044,10 +1049,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         setInitialFocus={false}
         calloutWidth={
           useComboBoxAsMenuWidth && this._comboBoxWrapper.current
-            ? this._comboBoxWrapper.current.clientWidth + 2
+            ? comboBoxMenuWidth && comboBoxMenuWidth
             : dropdownWidth
         }
-        calloutMaxWidth={dropdownMaxWidth}
+        calloutMaxWidth={dropdownMaxWidth ? dropdownMaxWidth : comboBoxMenuWidth}
       >
         <div className={this._classNames.optionsContainerWrapper} ref={this._comboBoxMenu}>
           {(onRenderList as any)({ ...props }, this._onRenderList)}

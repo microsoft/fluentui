@@ -21,6 +21,7 @@ export class ButtonDefaultExample extends React.Component<IButtonProps, {}> {
             disabled={disabled}
             checked={checked}
             text="Button"
+            onClick={this._alertClicked}
           />
         </div>
         <div>
@@ -32,6 +33,7 @@ export class ButtonDefaultExample extends React.Component<IButtonProps, {}> {
             checked={checked}
             text="Button"
             onClick={this._alertClicked}
+            allowDisabledFocus={true}
           />
         </div>
       </div>

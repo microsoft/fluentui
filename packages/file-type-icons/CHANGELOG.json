@@ -1,20 +1,34 @@
 {
   "name": "@uifabric/file-type-icons",
   "entries": [
-      {
-        "version": "6.0.0",
-        "tag": "@uifabric/file-type-icons_v0.7.2",
-        "date": "Mon, 15 Jun 2018 00:44:30 GMT",
-        "comments": {
-          "major": [
-            {
-              "author": "Cliff Koh <cliff.koh@microsoft.com>",
-              "commit": "b74b5764e4feb9be13f7c31d731e4d801eeb8358",
-              "comment": "Major bump to 6.0.0 for consistency."
-            }
-          ]
-        }
-      },
+    {
+      "version": "6.0.1",
+      "tag": "@uifabric/file-type-icons_v6.0.1",
+      "date": "Tue, 03 Jul 2018 10:23:19 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Bryan Watts <brwatt@microsoft.com>",
+            "commit": "3538fae806f2dffe317fb72e3f7df8cc03061fff",
+            "comment": "Bump variants and file-type-icons packages to restore amd build output"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.0",
+      "tag": "@uifabric/file-type-icons_v0.7.2",
+      "date": "Mon, 15 Jun 2018 00:44:30 GMT",
+      "comments": {
+        "major": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "b74b5764e4feb9be13f7c31d731e4d801eeb8358",
+            "comment": "Major bump to 6.0.0 for consistency."
+          }
+        ]
+      }
+    },
     {
       "version": "0.7.2",
       "tag": "@uifabric/file-type-icons_v0.7.2",
