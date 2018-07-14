@@ -62,7 +62,7 @@ export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGrou
         }
       )
     ) : (
-      <ShimmerLine height={ShimmerElementsDefaultHeights.line} />
+      <ShimmerLine height={ShimmerElementsDefaultHeights.line} styles={{ root: [{ borderWidth: '0px' }] }} />
     );
 
     return renderedElements;
