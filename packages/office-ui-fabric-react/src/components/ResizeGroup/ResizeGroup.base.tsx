@@ -3,7 +3,6 @@ import * as PropTypes from 'prop-types';
 import {
   BaseComponent,
   classNamesFunction,
-  customizable,
   divProperties,
   getNativeProps,
   provideContext,
@@ -303,7 +302,6 @@ const MeasuredContext = provideContext(
 
 const getClassNames = classNamesFunction<IResizeGroupStyleProps, IResizeGroupStyles>();
 
-@customizable('ResizeGroup', ['theme', 'styles'])
 export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGroupState> {
   private _nextResizeGroupStateProvider = getNextResizeGroupStateProvider();
   private _root = createRef<HTMLDivElement>();

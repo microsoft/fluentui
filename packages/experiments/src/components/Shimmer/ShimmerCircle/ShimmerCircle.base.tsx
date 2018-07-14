@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, customizable } from '../../../Utilities';
+import { BaseComponent, classNamesFunction } from '../../../Utilities';
 import { IShimmerCircleProps, IShimmerCircleStyleProps, IShimmerCircleStyles } from './ShimmerCircle.types';
 
 const getClassNames = classNamesFunction<IShimmerCircleStyleProps, IShimmerCircleStyles>();
 
-@customizable('ShimmerCircle', ['theme', 'styles'])
 export class ShimmerCircleBase extends BaseComponent<IShimmerCircleProps, {}> {
   private _classNames: { [key in keyof IShimmerCircleStyles]: string };
 
