@@ -361,7 +361,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
         <div className="ComponentPage-overviewSection">
           <div className="ComponentPage-overviewSectionHeader">
             <h2 className="ComponentPage-subHeading" id="Overview">
-              Overviewasdfasdfsdfasd
+              Overview
             </h2>
             <EditSection
               title={this.props.title}
