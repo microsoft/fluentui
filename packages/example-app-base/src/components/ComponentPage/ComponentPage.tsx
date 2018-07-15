@@ -376,8 +376,6 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
           </div>
         </div>
       );
-    } else {
-      console.log('BLOWS!');
     }
 
     return undefined;
