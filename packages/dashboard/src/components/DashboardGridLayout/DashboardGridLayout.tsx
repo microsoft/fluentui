@@ -36,7 +36,8 @@ const sizes: { [P in Size]: { w: number; h: number } } = {
   small: { w: 1, h: 4 },
   mediumTall: { w: 1, h: 8 },
   mediumWide: { w: 2, h: 4 },
-  large: { w: 2, h: 8 }
+  large: { w: 2, h: 8 },
+  section: { w: 4, h: 1 }
 };
 
 export class DashboardGridLayout extends React.Component<IDashboardGridLayoutProps, {}> {

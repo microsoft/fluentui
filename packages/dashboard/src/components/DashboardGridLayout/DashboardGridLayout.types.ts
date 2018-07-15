@@ -23,7 +23,12 @@ export enum Size {
   /**
    * Option for selecting Large card
    */
-  large = 'large'
+  large = 'large',
+
+  /**
+   * Option for selecting section title
+   */
+  section = 'section'
 }
 
 export interface IDashboardGridLayoutStyles {

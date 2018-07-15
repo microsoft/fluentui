@@ -11,8 +11,8 @@ export const AppDefinition: IAppDefinition = {
       links: [
         {
           component: require<any>('../components/Card/CardPage').CardPage,
-          key: 'DashboardCard',
-          name: 'DashboardCard',
+          key: 'Card',
+          name: 'Card',
           url: '#/examples/Card'
         },
         {
@@ -32,6 +32,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'Recommendation',
           name: 'Recommendation',
           url: '#/examples/recommendation'
+        },
+        {
+          component: require<any>('../components/Section/SectionPage').SectionPage,
+          key: 'Section',
+          name: 'Section',
+          url: '#/examples/section'
         }
       ]
     }

@@ -13,7 +13,7 @@ export class CardPage extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title="DashboardCard"
+        title="Card"
         componentName="DashboardCardExample"
         exampleCards={
           <div>

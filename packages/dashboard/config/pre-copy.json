@@ -1,5 +1,6 @@
 {
   "copyTo": {
-    "lib/components/DashboardGridLayout/": ["./src/components/DashboardGridLayout/DashboardGridLayout.css"]
+    "lib/components/DashboardGridLayout/": ["./src/components/DashboardGridLayout/DashboardGridLayout.css"],
+    "lib/components/Section/": ["./src/components/Section/Section.css"]
   }
 }
