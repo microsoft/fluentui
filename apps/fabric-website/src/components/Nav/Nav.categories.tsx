@@ -8,89 +8,61 @@ export const categories: INavCategory[] = [
       'CheckBox',
       'ChoiceGroup',
       'ComboBox',
+      'ContextualMenu',
+      'Dropdown',
       'Label',
       'Link',
       'Rating',
-      'SearchBox',
       'Slider',
       'SpinButton',
-      'SplitButton',
       'TextField',
       'Toggle'
     ]
   },
   {
-    title: 'Galleries and Picker',
-    components: ['Autocomplete', 'BasePicker', 'Calendar', 'DatePicker', 'Gallery', 'PeoplePicker', 'SwatchColorPicker']
+    title: 'Navigation',
+    components: ['Breadcrumb', 'Commandbar', 'Nav', 'OverflowSet', 'Pivot', 'SearchBox']
   },
   {
-    title: 'Items and Lists',
+    title: 'Content',
     components: [
       'ActivityItem',
-      'Basic List',
+      'Calendar',
       'DetailsList',
-      'GroupedList',
-      'HoverCard',
-      'Contact Card',
-      'DocumentCard',
       'Facepile',
-      'Persona',
-      'Item Activity (Office)',
-      'Item Chiclet (Office)',
-      'Item Details (Office)',
-      'Item Scope (Office)',
-      'Item Hovercard (Office)',
-      'Item Viewer (Office)'
+      'GroupedList',
+      'Icon',
+      'Image',
+      'List',
+      'Persona'
     ]
   },
   {
-    title: 'Commands, Menus & Nav',
-    components: ['BreadCrumb', 'CommandBar', 'ContextualMenu', 'SideNav', 'OverflowSet', 'Pivot']
+    title: 'Pickers',
+    components: ['BasePicker', 'ColorPicker', 'DatePicker', 'PeoplePicker', 'SwatchColorPicker']
   },
   {
-    title: 'Notification & Engagement ',
-    components: [
-      'Coachmark',
-      'Feedback Controls',
-      'MessageBar',
-      'Splash Screen',
-      'TeachingBubble',
-      'Tell Me',
-      "What's New",
-      'Inline Notifications',
-      'Callout Notifications',
-      'In-App Toasts'
-    ]
-  },
-  {
-    title: 'Progress',
-    components: ['BlockingProgress', 'ProgressIndicator', 'Spinner']
+    title: 'Progress & Validation',
+    components: ['MessageBar', 'ProgressIndicator', 'Shimmer', 'Spinner']
   },
   {
     title: 'Surfaces',
     components: [
       'Callout',
       'Dialog',
+      'DocumentCard',
+      'HoverCard',
+      'Layer',
       'Modal',
+      'Overlay',
       'Panel',
-      'Tooltip',
-      'Scrollbar',
       'SrollablePane',
-      'Silhouette',
-      'Backstage (Office)',
-      'Ribbon (Office)'
+      'TeachingBubble',
+      'Tooltip'
     ]
   },
   {
     title: 'Utilities',
-    components: ['Icon', 'Image', 'Layer', 'Responsive Layout', 'Overlay', 'ResizeGroup', 'Localization']
-  },
-  {
-    title: 'Composed Controls',
-    components: ['Persona (Office)', 'People Picker (Office)', 'People Card (Office)', 'Share Dialog (Office)']
-  },
-  {
-    title: 'Authentication',
-    components: ['Sign-In (Office)']
+    components: ['FocusTrapZone', 'FocusZone', 'MarqueeSelection', 'ResizeGroup', 'Selection', 'Themes']
   }
 ];

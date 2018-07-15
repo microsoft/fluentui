@@ -50,33 +50,32 @@ export class Nav extends React.Component<INavProps, INavState> {
             placeholder="Search"
             underlined={true}
             styles={{
-              iconContainer: {
+              root: {
+                width: '175px',
+                marginBottom: '5px'
+              },
+              field: {
+                backgroundColor: 'transparent',
                 color: 'white'
               },
               icon: {
                 color: 'white'
               },
               clearButton: {
-                color: 'white',
-                iconProps: {
-                  iconName: ''
+                selectors: {
+                  '.ms-Button': {
+                    color: 'white'
+                  }
                 }
-              },
-              field: {
-                backgroundColor: 'transparent',
-                color: 'white'
-              },
-              root: {
-                marginBottom: '5px',
-                width: '180px'
               }
             }}
+            className={styles.searchBox}
             onChange={this._onChangeQuery.bind(this)}
           />
           <IconButton
-            iconProps={{ iconName: 'settings' }}
-            style={{ color: 'white', marginLeft: '-26px' }}
+            iconProps={{ iconName: 'Filter' }}
             menuIconProps={{ iconName: '' }}
+            style={{ color: 'white', marginLeft: '8px' }}
             menuProps={{
               items: [
                 {
@@ -157,7 +156,12 @@ export class Nav extends React.Component<INavProps, INavState> {
     );
   }
 
-  private _getGroups(pages: INavPage[], title: string, components: string[]): React.ReactElement<{}> {
+  private _getGroups(
+    pages: INavPage[],
+    title: string,
+    components: string[],
+    linkIndex: number
+  ): React.ReactElement<{}> {
     let { searchQuery } = this.state;
 
     let links: React.ReactElement<{}>[] = pages
@@ -166,7 +170,7 @@ export class Nav extends React.Component<INavProps, INavState> {
       .filter(
         page =>
           components
-            .map(function(val) {
+            .map(val => {
               return val.toLowerCase();
             })
             .indexOf(page.title.toLowerCase()) > -1
@@ -174,9 +178,11 @@ export class Nav extends React.Component<INavProps, INavState> {
       .map((page: INavPage, linkIndex: number) => this._renderLink(page, linkIndex));
 
     return (
-      <li className={styles.isSubMenu}>
-        <a>{title}</a>
-        <ul className={styles.isSubMenu} style={{ marginLeft: '8px' }}>
+      <li className={css(styles.isHomePage, styles.hasActiveChild, styles['components'], styles.link)} key={linkIndex}>
+        <a href="#/components" onClick={this.props.onLinkClick}>
+          {title}
+        </a>
+        <ul className={css(styles.links, styles.isSubMenu)} style={{ marginLeft: '8px' }}>
           {links}
         </ul>
       </li>
@@ -184,11 +190,11 @@ export class Nav extends React.Component<INavProps, INavState> {
   }
 
   private _organizeComponents(pages: INavPage[]): React.ReactElement<{}> {
-    let groups: React.ReactElement<{}>[] = categories.map((category: INavCategory) =>
-      this._getGroups(pages, category.title, category.components)
+    let groups: React.ReactElement<{}>[] = categories.map((category: INavCategory, linkIndex: number) =>
+      this._getGroups(pages, category.title, category.components, linkIndex)
     );
 
-    return <ul className={css(styles.links, true ? styles.isSubMenu : '')}>{groups}</ul>;
+    return <ul className={css(styles.links, styles.isSubMenu)}>{groups}</ul>;
   }
 
   private _onChangeQuery(newValue): void {
