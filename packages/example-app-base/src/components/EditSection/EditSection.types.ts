@@ -1,12 +1,5 @@
 import { EditSection } from './EditSection';
 
-export enum ComponentPageSection {
-  BestPractices,
-  Donts,
-  Dos,
-  Overview
-}
-
 export interface IEditSection {}
 
 export interface IEditSectionProps extends React.HTMLAttributes<EditSection> {
@@ -22,9 +15,9 @@ export interface IEditSectionProps extends React.HTMLAttributes<EditSection> {
   title: string;
 
   /**
-   * The section of the page.
+   * The section id of the page.
    */
-  section: ComponentPageSection;
+  section: string;
 
   /**
    * Pass the prop that has the content of the section.

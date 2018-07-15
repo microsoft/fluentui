@@ -2,6 +2,142 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.15.0",
+      "tag": "@uifabric/experiments_v6.15.0",
+      "date": "Fri, 13 Jul 2018 21:32:37 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "83486db0dd8f831599dd75f37b32878efac45ca0",
+            "comment": "Reverting the TypeScript bump, to un"
+          },
+          {
+            "author": "Samiya <samiyaakhtar7@gmail.com>",
+            "commit": "bac02c5d4d306edeba272f71d8ab6536c6ed54b5",
+            "comment": "Card: disable dragging of card everywhere but title bar"
+          },
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "743df17c295fac6878edc3ea825f17555f6767e9",
+            "comment": "Added FluentStyles for Panel, TextField, ContextualMenu, and ComboBox"
+          },
+          {
+            "author": "Samiya <samiyaakhtar7@gmail.com>",
+            "commit": "13e6890cc675f00607b96c9f2928537f0f9ac231",
+            "comment": "Moved nav, recommendation and card to m365-admin package"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.33.1 <7.0.0` to `>=6.35.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.0.4` to `^0.1.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.2.1 <7.0.0` to `>=6.3.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.13.6",
+      "tag": "@uifabric/experiments_v6.13.6",
+      "date": "Thu, 12 Jul 2018 10:29:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Samiya <samiyaakhtar7@gmail.com>",
+            "commit": "dc5bb9989e59d83f8d82fe1bebb02caedd469a35",
+            "comment": "Consume horizontal bar chart in card, fix bad import "
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.33.0 <7.0.0` to `>=6.33.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.13.5",
+      "tag": "@uifabric/experiments_v6.13.5",
+      "date": "Tue, 10 Jul 2018 21:54:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Mike Wheaton <miwhea@microsoft.com>",
+            "commit": "5b241ca474578dbe803f5d3f81fdeab537632962",
+            "comment": "Update to latest Fluent depths/shadows"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.30.0 <7.0.0` to `>=6.31.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.13.4",
+      "tag": "@uifabric/experiments_v6.13.4",
+      "date": "Mon, 09 Jul 2018 18:08:32 GMT",
+      "comments": {
+        "none": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "02b1b5e75e61a6e773bcad6ece06acf59a45eb0d",
+            "comment": "No changes."
+          }
+        ],
+        "patch": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "4e506157895212eca6345c65ba3c234c77c36ee6",
+            "comment": "Remove createComponent utility and use Foundation package."
+          },
+          {
+            "author": "nulikartik <nulikarthik@gmail.com>",
+            "commit": "ac6af199ee9c0f0bff7a3c553a51c770689d96eb",
+            "comment": "changing imports for charts in react DashboardCard to point to correct package"
+          },
+          {
+            "author": "Mike Wheaton <miwhea@microsoft.com>",
+            "commit": "c3cd70a3788eafe9382d555681407198bfc97313",
+            "comment": "Update to latest Fluent depths"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.27.0 <7.0.0` to `>=6.29.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.0.0 <1.0.0` to `>=0.0.3 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.13.2",
+      "tag": "@uifabric/experiments_v6.13.2",
+      "date": "Fri, 06 Jul 2018 10:23:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "nulikartik <nulikarthik@gmail.com>",
+            "commit": "cf11cb70b89e66dcc3e440f8148e83840f3d963f",
+            "comment": "css changes for action bar"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.25.4 <7.0.0` to `>=6.26.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.13.1",
       "tag": "@uifabric/experiments_v6.13.1",
       "date": "Tue, 03 Jul 2018 17:41:15 GMT",

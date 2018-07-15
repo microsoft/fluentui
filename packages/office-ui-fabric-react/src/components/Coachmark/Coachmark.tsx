@@ -1,6 +1,6 @@
 // Utilities
 import * as React from 'react';
-import { BaseComponent, IRectangle, classNamesFunction, createRef, shallowCompare } from '../../Utilities';
+import { BaseComponent, classNamesFunction, createRef, IRectangle, KeyCodes, shallowCompare } from '../../Utilities';
 import { DefaultPalette } from '../../Styling';
 import { IPositionedData, RectangleEdge, getOppositeEdge } from '../../utilities/positioning';
 
@@ -18,7 +18,7 @@ import {
   ICoachmarkStyles,
   ICoachmarkStyleProps
 } from './Coachmark.styles';
-import { FocusZone } from '../../FocusZone';
+import { FocusTrapZone } from '../FocusTrapZone';
 
 const getClassNames = classNamesFunction<ICoachmarkStyleProps, ICoachmarkStyles>();
 
@@ -95,6 +95,11 @@ export interface ICoachmarkState {
    * Transform origin of teaching bubble callout
    */
   transformOrigin?: string;
+
+  /**
+   * ARIA alert text to read aloud with Narrator once the Coachmark is mounted
+   */
+  alertText?: string;
 }
 
 export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
@@ -115,6 +120,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
    */
   private _entityInnerHostElement = createRef<HTMLDivElement>();
   private _translateAnimationContainer = createRef<HTMLDivElement>();
+  private _ariaAlertContainer = createRef<HTMLDivElement>();
   private _positioningContainer = createRef<IPositioningContainer>();
 
   /**
@@ -149,7 +155,17 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   }
 
   public render(): JSX.Element {
-    const { children, target, color, positioningContainerProps } = this.props;
+    const {
+      children,
+      target,
+      color,
+      positioningContainerProps,
+      ariaDescribedBy,
+      ariaDescribedByText,
+      ariaLabelledBy,
+      ariaLabelledByText,
+      ariaAlertText
+    } = this.props;
 
     const {
       beakLeft,
@@ -160,7 +176,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       isBeaconAnimating,
       isMeasuring,
       entityInnerHostRect,
-      transformOrigin
+      transformOrigin,
+      alertText
     } = this.state;
 
     const classNames = getClassNames(getStyles, {
@@ -188,6 +205,16 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
         {...positioningContainerProps}
       >
         <div className={classNames.root}>
+          {ariaAlertText && (
+            <div
+              className={classNames.ariaContainer}
+              role="alert"
+              ref={this._ariaAlertContainer}
+              aria-hidden={!isCollapsed}
+            >
+              {alertText}
+            </div>
+          )}
           <div className={classNames.pulsingBeacon} />
           <div className={classNames.translateAnimationContainer} ref={this._translateAnimationContainer}>
             <div className={classNames.scaleAnimationLayer}>
@@ -202,13 +229,36 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
                     color={color}
                   />
                 )}
-                <FocusZone>
-                  <div className={classNames.entityHost} data-is-focusable={true} onFocus={this._onFocusHandler}>
-                    <div className={classNames.entityInnerHost} ref={this._entityInnerHostElement}>
+                <FocusTrapZone isClickableOutsideFocusTrap={true}>
+                  <div
+                    className={classNames.entityHost}
+                    tabIndex={-1}
+                    data-is-focusable={true}
+                    role="dialog"
+                    aria-labelledby={ariaLabelledBy}
+                    aria-describedby={ariaDescribedBy}
+                  >
+                    {isCollapsed && [
+                      ariaLabelledBy && (
+                        <p id={ariaLabelledBy} className={classNames.ariaContainer}>
+                          {ariaLabelledByText}
+                        </p>
+                      ),
+                      ariaDescribedBy && (
+                        <p id={ariaDescribedBy} className={classNames.ariaContainer}>
+                          {ariaDescribedByText}
+                        </p>
+                      )
+                    ]}
+                    <div
+                      className={classNames.entityInnerHost}
+                      ref={this._entityInnerHostElement}
+                      aria-hidden={isCollapsed}
+                    >
                       {children}
                     </div>
                   </div>
-                </FocusZone>
+                </FocusTrapZone>
               </div>
             </div>
           </div>
@@ -255,13 +305,42 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
           this.forceUpdate();
         }
 
+        this._events.on(document, 'keydown', this._onKeyDown, true);
+
         // We dont want to the user to immediatley trigger the coachmark when it's opened
         this._async.setTimeout(() => {
           this._addProximityHandler(this.props.mouseProximityOffset);
         }, this.props.delayBeforeMouseOpen!);
+
+        // Need to add setTimeout to have narrator read change in alert container
+        if (this.props.ariaAlertText) {
+          this._async.setTimeout(() => {
+            if (this.props.ariaAlertText && this._ariaAlertContainer.current) {
+              this.setState({
+                alertText: this.props.ariaAlertText
+              });
+            }
+          }, 0);
+        }
       }
     );
   }
+
+  public componentWillUnmount(): void {
+    this._events.off(document, 'keydown', this._onKeyDown, true);
+  }
+
+  private _onKeyDown = (e: any): void => {
+    // Open coachmark if user presses ALT + C (arbitrary keypress for now)
+    if (
+      (e.altKey && e.which === KeyCodes.c) ||
+      (e.which === KeyCodes.enter &&
+        this._translateAnimationContainer.current &&
+        this._translateAnimationContainer.current.contains(e.target))
+    ) {
+      this._onFocusHandler();
+    }
+  };
 
   private _onFocusHandler = (): void => {
     if (this.state.isCollapsed) {
@@ -403,6 +482,13 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       this._entityInnerHostElement.current.addEventListener(
         'transitionend',
         (): void => {
+          // Need setTimeout to trigger narrator
+          this._async.setTimeout(() => {
+            if (this.props.teachingBubbleRef) {
+              this.props.teachingBubbleRef.focus();
+            }
+          }, 500);
+
           if (this.props.onAnimationOpenEnd) {
             this.props.onAnimationOpenEnd();
           }

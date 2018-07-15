@@ -3,7 +3,7 @@ import { BaseButton } from './BaseButton';
 import { Button } from './Button';
 import { IButtonClassNames } from './BaseButton.classNames';
 import { ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
-import { IRenderFunction, KeyCodes } from '../../Utilities';
+import { IRenderFunction, KeyCodes, IComponentAs } from '../../Utilities';
 import { IContextualMenuProps } from '../../ContextualMenu';
 import { IIconProps } from '../../Icon';
 import { IStyle, ITheme } from '../../Styling';
@@ -179,9 +179,15 @@ export interface IButtonProps
   onRenderMenuIcon?: IRenderFunction<IButtonProps>;
 
   /**
-   * Custom render function for button menu
+   * Deprecated at v6.3.2, to be removed at >= v7.0.0. Use menuAs instead.
+   * @deprecated
    */
   onRenderMenu?: IRenderFunction<IContextualMenuProps>;
+
+  /**
+   * Render a custom menu in place of the normal one.
+   */
+  menuAs?: IComponentAs<IContextualMenuProps>;
 
   /**
    * Description of the action this button takes.

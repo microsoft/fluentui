@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ICollapsibleSectionProps, ICollapsibleSectionStyles } from './CollapsibleSection.types';
 import { RefObject } from 'office-ui-fabric-react';
-import { TViewProps } from '../../utilities/createComponent';
+import { IViewProps } from '../../Foundation';
 
 export interface ICollapsibleSectionViewOnlyProps {
   collapsed: boolean;
@@ -12,7 +12,7 @@ export interface ICollapsibleSectionViewOnlyProps {
 }
 
 // TODO: consolidate in createComponent to automatically take in parent / HOC props?
-export type ICollapsibleSectionViewProps = TViewProps<
+export type ICollapsibleSectionViewProps = IViewProps<
   ICollapsibleSectionProps & ICollapsibleSectionViewOnlyProps,
   ICollapsibleSectionStyles
 >;
