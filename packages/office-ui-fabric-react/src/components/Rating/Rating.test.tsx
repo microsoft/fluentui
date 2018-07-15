@@ -67,7 +67,7 @@ describe('Rating', () => {
 
 function _checkState(rating: ReactWrapper, ratingToCheck: number, state: string) {
   const ratingFrontStars = rating.find('.ms-RatingStar-front').hostNodes();
-  const width = ratingFrontStars.at(ratingToCheck - 1).props().style.width;
+  const width = ratingFrontStars.at(ratingToCheck - 1).props().style!.width;
 
   expect(width).toEqual(state);
 }

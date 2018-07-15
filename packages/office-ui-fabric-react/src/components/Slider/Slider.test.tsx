@@ -68,7 +68,7 @@ describe('Slider', () => {
 
   it('renders correct aria-valuetext', () => {
     let component = mount(<Slider />);
-    console.log(component.html());
+
     expect(component.find('.ms-Slider-slideBox').prop('aria-valuetext')).toBeUndefined();
 
     const values = ['small', 'medium', 'large'];
