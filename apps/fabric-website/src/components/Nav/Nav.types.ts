@@ -12,18 +12,6 @@ export interface INavProps {
   onLinkClick?: (ev?: React.MouseEvent<{}>) => void;
 }
 
-export interface INavCategory {
-  /**
-   * Category name, as shown in the navigation bar
-   */
-  title: string;
-
-  /**
-   * Array with the name of the components in each category
-   */
-  components: string[];
-}
-
 export interface INavPage {
   /**
    * The page's title, as shown in the navigation.
