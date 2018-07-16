@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 11 Jul 2018 13:26:02 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Jul 2018 11:28:06 GMT and should not be manually modified.
+
+## 5.116.0
+Mon, 16 Jul 2018 11:28:06 GMT
+
+### Minor changes
+
+- Theming: new semantic slots, also update MarqueeSelection snapshot to not have the theme in it
 
 ## 5.115.0
 Wed, 11 Jul 2018 13:26:02 GMT

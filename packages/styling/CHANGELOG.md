@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Wed, 11 Jul 2018 13:26:02 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Jul 2018 11:28:06 GMT and should not be manually modified.
+
+## 5.31.2
+Mon, 16 Jul 2018 11:28:06 GMT
+
+### Patches
+
+- Theming: add new semantic slots
 
 ## 5.31.1
 Wed, 11 Jul 2018 13:26:02 GMT

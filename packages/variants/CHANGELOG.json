@@ -2,6 +2,25 @@
   "name": "@uifabric/variants",
   "entries": [
     {
+      "version": "5.5.4",
+      "tag": "@uifabric/variants_v5.5.4",
+      "date": "Mon, 16 Jul 2018 11:28:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "74c9a264a51885411babc037ac3ec1038233fc3a",
+            "comment": "Variants: tweak background colors to look better in light and dark, and account for new semantic slots"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.115.0 <6.0.0` to `>=5.116.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.5.3",
       "tag": "@uifabric/variants_v5.5.3",
       "date": "Wed, 11 Jul 2018 13:26:02 GMT",

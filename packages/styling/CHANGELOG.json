@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "5.31.2",
+      "tag": "@uifabric/styling_v5.31.2",
+      "date": "Mon, 16 Jul 2018 11:28:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "74c9a264a51885411babc037ac3ec1038233fc3a",
+            "comment": "Theming: add new semantic slots"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.31.1",
       "tag": "@uifabric/styling_v5.31.1",
       "date": "Wed, 11 Jul 2018 13:26:02 GMT",
