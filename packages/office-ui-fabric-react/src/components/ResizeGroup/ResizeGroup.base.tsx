@@ -276,7 +276,8 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     return nextState;
   }
 
-  function shouldRenderDataToMeasureInHiddenDiv(dataToMeasure: any | undefined): boolean {
+  /** Function that determines if we need to render content for measurement based on the measurement cache contents. */
+  function shouldRenderDataForMeasurement(dataToMeasure: any | undefined): boolean {
     if (!dataToMeasure || _measurementCache.getCachedMeasurement(dataToMeasure) !== undefined) {
       return false;
     }
@@ -286,7 +287,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
 
   return {
     getNextState,
-    shouldRenderDataToMeasureInHiddenDiv
+    shouldRenderDataForMeasurement
   };
 };
 
