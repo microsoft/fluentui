@@ -5,21 +5,41 @@ import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import { getPathMinusLastHash } from '../../utilities/pageroute';
 import * as stylesImport from './Nav.module.scss';
 const styles: any = stylesImport;
+<<<<<<< HEAD
 import { INavProps, INavPage } from './Nav.types';
  
 export interface INavState {
   searchQuery: string;
+=======
+import { INavProps, INavPage, INavCategory } from './Nav.types';
+import { IconButton } from 'office-ui-fabric-react/lib/Button';
+import { categories } from './Nav.categories';
+
+export interface INavState {
+  searchQuery: string;
+  viewState: boolean;
+>>>>>>> origin/sopranopillow-SearchBox
 }
 
 export class Nav extends React.Component<INavProps, INavState> {
   constructor(props: INavProps) {
     super(props);
+<<<<<<< HEAD
   
     this.state = {
       searchQuery: ''
     };
   }
   
+=======
+
+    this.state = {
+      searchQuery: '',
+      viewState: false
+    };
+  }
+
+>>>>>>> origin/sopranopillow-SearchBox
   public render(): JSX.Element {
     let { pages } = this.props;
 
@@ -37,6 +57,7 @@ export class Nav extends React.Component<INavProps, INavState> {
       </FocusZone>
     );
   }
+<<<<<<< HEAD
    
   private _renderLink(page: INavPage, linkIndex: number): React.ReactElement<{}> {
     const ariaLabel = page.pages ? 'Hit enter to open sub menu, tab to access sub menu items.' : '';
@@ -67,6 +88,101 @@ export class Nav extends React.Component<INavProps, INavState> {
         {childLinks}
       </li>
     </span>
+=======
+
+  private _getSearchBox(val) {
+    if (val === 'Components') {
+      return (
+        <div style={{ display: 'flex' }}>
+          <SearchBox
+            placeholder="Search"
+            underlined={true}
+            styles={{
+              root: {
+                width: '175px',
+                marginBottom: '5px'
+              },
+              field: {
+                backgroundColor: 'transparent',
+                color: 'white'
+              },
+              icon: {
+                color: 'white'
+              },
+              clearButton: {
+                selectors: {
+                  '.ms-Button': {
+                    color: 'white'
+                  }
+                }
+              }
+            }}
+            className={styles.searchBox}
+            onChange={this._onChangeQuery.bind(this)}
+          />
+          <IconButton
+            iconProps={{ iconName: 'Filter' }}
+            menuIconProps={{ iconName: '' }}
+            style={{ color: 'white', marginLeft: '8px' }}
+            menuProps={{
+              items: [
+                {
+                  key: 'categories',
+                  text: 'Categories',
+                  iconProps: { iconName: 'org' },
+                  onClick: this._showCategories.bind(this)
+                },
+                {
+                  key: 'atoz',
+                  text: 'A to Z',
+                  iconProps: { iconName: 'Ascending' },
+                  onClick: this._showAtoZ.bind(this)
+                }
+              ]
+            }}
+          />
+        </div>
+      );
+    }
+  }
+
+  private _renderLink(page: INavPage, linkIndex: number): React.ReactElement<{}> {
+    const ariaLabel = page.pages ? 'Hit enter to open sub menu, tab to access sub menu items.' : '';
+    const title = page.title === 'Fabric' ? 'Home page' : page.title;
+    let { viewState } = this.state;
+    let childLinks;
+
+    if (viewState === true && title === 'Components') {
+      childLinks = page.pages ? this._organizeComponents(page.pages) : null;
+    } else {
+      childLinks = page.pages ? this._renderLinkList(page.pages, true) : null;
+    }
+
+    return (
+      <span>
+        {this._getSearchBox(title)}
+        <li
+          className={css(
+            styles.link,
+            _isPageActive(page) ? styles.isActive : '',
+            _hasActiveChild(page) ? styles.hasActiveChild : '',
+            page.isHomePage ? styles.isHomePage : '',
+            page.className ? styles[page.className] : ''
+          )}
+          key={linkIndex}
+        >
+          {page.isUhfLink && location.hostname !== 'localhost' ? (
+            ''
+          ) : (
+            <a href={page.url} onClick={this.props.onLinkClick} title={title} aria-label={ariaLabel}>
+              {page.title}
+            </a>
+          )}
+
+          {childLinks}
+        </li>
+      </span>
+>>>>>>> origin/sopranopillow-SearchBox
     );
   }
  
@@ -110,13 +226,21 @@ export class Nav extends React.Component<INavProps, INavState> {
    private _renderLinkList(pages: INavPage[], isSubMenu: boolean): React.ReactElement<{}> {
     let { searchQuery } = this.state;
 
+<<<<<<< HEAD
     const links: React.ReactElement<{}>[] = pages
+=======
+  private _renderLinkList(pages: INavPage[], isSubMenu: boolean): React.ReactElement<{}> {
+    let { searchQuery } = this.state;
+
+    let links: React.ReactElement<{}>[] = pages
+>>>>>>> origin/sopranopillow-SearchBox
       .filter(page => !page.hasOwnProperty('isHiddenFromMainNav'))
       .filter(
         page =>
           page.title.toLowerCase().indexOf(searchQuery.toLowerCase()) > -1 ||
           page.url.toLowerCase().indexOf('#/components/')
       )
+<<<<<<< HEAD
        .map((page: INavPage, linkIndex: number) => this._renderLink(page, linkIndex));
  
      return (
@@ -132,6 +256,76 @@ export class Nav extends React.Component<INavProps, INavState> {
     });
   }
  }
+=======
+      .map((page: INavPage, linkIndex: number) => this._renderLink(page, linkIndex));
+
+    return (
+      <ul className={css(styles.links, isSubMenu ? styles.isSubMenu : '')} aria-label="Main website navigation">
+        {links}
+      </ul>
+    );
+  }
+
+  private _getGroups(
+    pages: INavPage[],
+    title: string,
+    components: string[],
+    linkIndex: number
+  ): React.ReactElement<{}> {
+    let { searchQuery } = this.state;
+
+    let links: React.ReactElement<{}>[] = pages
+      .filter(page => !page.hasOwnProperty('isHiddenFromMainNav'))
+      .filter(page => page.title.toLowerCase().indexOf(searchQuery.toLowerCase()) > -1)
+      .filter(
+        page =>
+          components
+            .map(val => {
+              return val.toLowerCase();
+            })
+            .indexOf(page.title.toLowerCase()) > -1
+      )
+      .map((page: INavPage, linkIndex: number) => this._renderLink(page, linkIndex));
+
+    return (
+      <li className={css(styles.isHomePage, styles.hasActiveChild, styles['components'], styles.link)} key={linkIndex}>
+        <a href="#/components" onClick={this.props.onLinkClick}>
+          {title}
+        </a>
+        <ul className={css(styles.links, styles.isSubMenu)} style={{ marginLeft: '8px' }}>
+          {links}
+        </ul>
+      </li>
+    );
+  }
+
+  private _organizeComponents(pages: INavPage[]): React.ReactElement<{}> {
+    let groups: React.ReactElement<{}>[] = categories.map((category: INavCategory, linkIndex: number) =>
+      this._getGroups(pages, category.title, category.components, linkIndex)
+    );
+
+    return <ul className={css(styles.links, styles.isSubMenu)}>{groups}</ul>;
+  }
+
+  private _onChangeQuery(newValue): void {
+    this.setState({
+      searchQuery: newValue
+    });
+  }
+
+  private _showCategories() {
+    this.setState({
+      viewState: true
+    });
+  }
+
+  private _showAtoZ() {
+    this.setState({
+      viewState: false
+    });
+  }
+}
+>>>>>>> origin/sopranopillow-SearchBox
 
  // A tag used for resolving links.
 const _urlResolver = document.createElement('a');

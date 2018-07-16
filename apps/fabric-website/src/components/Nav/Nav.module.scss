@@ -30,7 +30,6 @@ $nav-group-header-height: 40px;
     position: relative;
   }
 
-
   // Closed by default
   .links {
     display: none;
@@ -39,7 +38,6 @@ $nav-group-header-height: 40px;
   // Open when immediate parent or one of the children is active
   &.isActive,
   &.hasActiveChild {
-
     a {
       color: $ms-color-white;
     }
