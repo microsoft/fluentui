@@ -307,7 +307,7 @@ const getClassNames = classNamesFunction<IResizeGroupStyleProps, IResizeGroupSty
 export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGroupState> {
   private _nextResizeGroupStateProvider = getNextResizeGroupStateProvider();
   private _root = createRef<HTMLDivElement>();
-  private _measured = createRef<HTMLDivElement>();
+  private _hiddenDiv = createRef<HTMLDivElement>();
 
   constructor(props: IResizeGroupProps) {
     super(props);
@@ -327,7 +327,7 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
     return (
       <div {...divProps} className={classNames.root} ref={this._root}>
         {this._nextResizeGroupStateProvider.shouldRenderDataToMeasureInHiddenDiv(dataToMeasure) && (
-          <div style={{ position: 'fixed', visibility: 'hidden' }} ref={this._measured}>
+          <div style={{ position: 'fixed', visibility: 'hidden' }} ref={this._hiddenDiv}>
             <MeasuredContext>{onRenderData(dataToMeasure)}</MeasuredContext>
           </div>
         )}
@@ -374,7 +374,7 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
       const nextState = this._nextResizeGroupStateProvider.getNextState(
         this.props,
         this.state,
-        () => (this._measured.current ? this._measured.current.scrollWidth : 0),
+        () => (this._hiddenDiv.current ? this._hiddenDiv.current.scrollWidth : 0),
         containerWidth
       );
 
