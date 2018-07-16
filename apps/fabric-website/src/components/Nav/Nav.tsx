@@ -108,7 +108,7 @@ export class Nav extends React.Component<INavProps, INavState> {
   }
 
    private _renderLinkList(pages: INavPage[], isSubMenu: boolean): React.ReactElement<{}> {
-    let { searchQuery } = this.state;
+    const { searchQuery } = this.state;
 
     const links: React.ReactElement<{}>[] = pages
       .filter(page => !page.hasOwnProperty('isHiddenFromMainNav'))
