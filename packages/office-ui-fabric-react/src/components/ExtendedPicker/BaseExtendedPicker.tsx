@@ -87,10 +87,6 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
     return this.input.current && this.input.current.inputElement;
   }
 
-  public get selectedItems(): T[] {
-    return this.selectedItemsList.current ? this.selectedItemsList.current.selectedItems() : [];
-  }
-
   public render(): JSX.Element {
     const { className, inputProps, disabled } = this.props;
     const activeDescendant =
