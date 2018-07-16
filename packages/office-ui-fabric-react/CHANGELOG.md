@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 16 Jul 2018 11:28:06 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Jul 2018 14:31:47 GMT and should not be manually modified.
+
+## 5.116.1
+Mon, 16 Jul 2018 14:31:47 GMT
+
+### Patches
+
+- Fix check for Panel light-dismiss
 
 ## 5.116.0
 Mon, 16 Jul 2018 11:28:06 GMT
