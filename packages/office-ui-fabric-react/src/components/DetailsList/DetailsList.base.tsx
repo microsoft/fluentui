@@ -338,6 +338,15 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       selectAllVisibility = SelectAllVisibility.none;
     }
 
+    // Override footerProps columns for the group columns
+    if (groupProps!.footerProps === undefined) {
+      groupProps!.footerProps = {
+        columns: adjustedColumns
+      };
+    } else {
+      groupProps!.footerProps!.columns = this.state.adjustedColumns;
+    }
+
     const { onRenderDetailsHeader = this._onRenderDetailsHeader } = this.props;
 
     const rowCount = (isHeaderVisible ? 1 : 0) + GetGroupCount(groups) + (items ? items.length : 0);

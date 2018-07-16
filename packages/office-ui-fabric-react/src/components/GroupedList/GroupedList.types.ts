@@ -7,6 +7,7 @@ import { ISelection, SelectionMode } from '../../utilities/selection/index';
 import { IViewport } from '../../utilities/decorators/withViewport';
 import { ITheme, IStyle } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
+import { IColumn } from '../../DetailsList';
 
 export enum CollapseAllVisibility {
   hidden = 0,
@@ -224,6 +225,9 @@ export interface IGroupRenderProps {
    * @defaultvalue false
    */
   showEmptyGroups?: boolean;
+
+  /** Column information to be passed*/
+  columns?: IColumn[];
 }
 
 export interface IGroupDividerProps {
@@ -288,6 +292,9 @@ export interface IGroupDividerProps {
 
   /** Props for expand/collapse button */
   expandButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
+
+  /** Column information to be passed*/
+  columns?: IColumn[];
 }
 
 export type IGroupedListStyleProps = Required<Pick<IGroupedListProps, 'theme'>> &
