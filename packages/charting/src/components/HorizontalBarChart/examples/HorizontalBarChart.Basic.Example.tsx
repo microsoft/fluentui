@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { customizable } from '../../../Utilities';
-import { HorizontalBarChart, IHorizontalBarChartProps } from '../../HorizontalBarChart';
+import { customizable } from 'office-ui-fabric-react/lib/Utilities';
+import { HorizontalBarChart, IHorizontalBarChartProps } from '@uifabric/charting';
 
 @customizable('HorizontalBarChartBasicExample', ['theme', 'styles'])
 export class HorizontalBarChartBasicExample extends React.Component<IHorizontalBarChartProps, {}> {

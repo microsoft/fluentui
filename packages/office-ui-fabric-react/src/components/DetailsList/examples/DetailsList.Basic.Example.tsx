@@ -8,8 +8,8 @@ import {
   IDetailsList
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { Checkbox } from '../../..';
-import { createRef } from '../../../Utilities';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { createRef } from 'office-ui-fabric-react/lib/Utilities';
 
 const _items: any[] = [];
 
