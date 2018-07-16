@@ -2,7 +2,7 @@ import * as React from 'react';
 import { HoverCard } from './HoverCard';
 import { IExpandingCardProps } from './ExpandingCard.types';
 import { IStyle } from '../../Styling';
-import { KeyCodes } from '../../Utilities';
+import { IRefObject, KeyCodes } from '../../Utilities';
 
 export interface IHoverCard {}
 
@@ -14,7 +14,7 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement | H
    * Optional callback to access the IHoverCardHost interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IHoverCard | null) => void;
+  componentRef?: IRefObject<IHoverCard>;
 
   /**
    * Additional properties to pass through for HoverCard, reference detail properties in IHoverCardProps

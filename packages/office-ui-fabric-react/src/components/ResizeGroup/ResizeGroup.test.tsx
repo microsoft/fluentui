@@ -1,9 +1,7 @@
 import * as React from 'react';
-import { shallowUntilTarget } from '../../common/shallowUntilTarget';
-
+import { mount } from 'enzyme';
 import { ResizeGroup } from './ResizeGroup';
 import { IResizeGroupState, getNextResizeGroupStateProvider, getMeasurementCache } from './ResizeGroup.base';
-import { IResizeGroupProps } from './ResizeGroup.types';
 import * as sinon from 'sinon';
 import * as renderer from 'react-test-renderer';
 
@@ -49,12 +47,11 @@ describe('ResizeGroup', () => {
     const renderedDataId = 'onRenderDataId';
     const onRenderData = (data: any) => <div id={renderedDataId}> Rendered data: {data.content}</div>;
 
-    const wrapper = shallowUntilTarget<IResizeGroupProps, IResizeGroupState>(
-      <ResizeGroup data={initialData} onReduceData={onReduceScalingData} onRenderData={onRenderData} />,
-      'ResizeGroupBase'
+    const wrapper = mount(
+      <ResizeGroup data={initialData} onReduceData={onReduceScalingData} onRenderData={onRenderData} />
     );
 
-    expect(wrapper.containsMatchingElement(onRenderData(initialData))).toEqual(true);
+    expect(wrapper.find('#' + renderedDataId).length).toEqual(1);
   });
 
   describe('getNextResizeGroupStateProvider', () => {

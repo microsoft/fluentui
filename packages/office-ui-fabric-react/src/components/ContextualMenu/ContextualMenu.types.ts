@@ -1,12 +1,11 @@
 import * as React from 'react';
-import { ContextualMenuBase } from './ContextualMenu.base';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { IFocusZoneProps } from '../../FocusZone';
 import { IIconProps } from '../Icon/Icon.types';
 import { ICalloutProps } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
 import { IButtonStyles } from '../../Button';
-import { IPoint, IRectangle, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IBaseProps, IPoint, IRectangle, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
 export { DirectionalHint } from '../../common/DirectionalHint';
@@ -26,12 +25,12 @@ export interface IContextualMenu {}
 /**
  * React.Props is deprecated and we're removing it in 6.0. Usage of 'any' should go away with it.
  */
-export interface IContextualMenuProps extends React.Props<ContextualMenuBase>, IWithResponsiveModeState {
+export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWithResponsiveModeState {
   /**
    * Optional callback to access the IContextualMenu interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IContextualMenu | null) => void;
+  componentRef?: IRefObject<IContextualMenu>;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
@@ -245,7 +244,7 @@ export interface IContextualMenuItem {
   /**
    * Optional callback to access the IContextualMenuRenderItem interface. This will get passed down to ContextualMenuItem.
    */
-  componentRef?: (component: IContextualMenuRenderItem | null) => void;
+  componentRef?: IRefObject<IContextualMenuRenderItem>;
 
   /**
    * Unique id to identify the item

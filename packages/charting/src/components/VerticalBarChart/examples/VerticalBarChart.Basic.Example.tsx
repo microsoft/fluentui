@@ -1,9 +1,6 @@
 import * as React from 'react';
-
-import { customizable } from '../../../Utilities';
 import { VerticalBarChart, IVerticalBarChartProps } from '../../VerticalBarChart';
 
-@customizable('VerticalBarChartBasicExample', ['theme', 'styles'])
 export class VerticalBarChartBasicExample extends React.Component<IVerticalBarChartProps, {}> {
   constructor(props: IVerticalBarChartProps) {
     super(props);

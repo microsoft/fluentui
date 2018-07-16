@@ -1,5 +1,6 @@
 /* tslint:disable:no-any */
 import * as React from 'react';
+import { IRefObject } from '../../Utilities';
 
 export interface IForm {}
 
@@ -7,7 +8,7 @@ export interface IForm {}
  * The props for Form
  */
 export interface IFormProps extends React.AllHTMLAttributes<HTMLFormElement> {
-  componentRef?: (component: IForm | null) => void;
+  componentRef?: IRefObject<IForm>;
 
   /** The submit handler. Passes back results keyed by the names of the inputs */
   onSubmit?: (results: { [key: string]: any }) => void;

@@ -1,18 +1,16 @@
-import * as React from 'react';
-import { Coachmark } from './Coachmark';
 import { ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.styles';
 import { IPositioningContainerTypes } from './PositioningContainer/PositioningContainer.types';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { ITeachingBubble } from '../../TeachingBubble';
 
 export interface ICoachmark {}
 
-export interface ICoachmarkTypes extends React.Props<Coachmark> {
+export interface ICoachmarkTypes extends IBaseProps<ICoachmark> {
   /**
    * Optional callback to access the ICoachmark interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ICoachmark | null) => void;
+  componentRef?: IRefObject<ICoachmark>;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules
