@@ -32,6 +32,6 @@ function getFileSize(filePath) {
     const stats = fs.statSync(filePath);
     return stats.size;
   } catch (e) {
-    throw `Unable to get size of file "${filePath}"`;
+    throw new error(`Unable to get size of file "${filePath}"`);
   }
 }
