@@ -127,7 +127,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     this.selection.setAllSelected(false);
   }
 
-  public selectedItems(): T[] {
+  public highlightedItems(): T[] {
     return this.selection.getSelection() as T[];
   }
 
