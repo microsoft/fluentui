@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 13 Jul 2018 21:32:37 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Jul 2018 10:27:18 GMT and should not be manually modified.
+
+## 6.36.0
+Mon, 16 Jul 2018 10:27:18 GMT
+
+### Minor changes
+
+- Convert GroupedList to CSS-in-JS
+
+### Patches
+
+- Refactors variants of DetailsList into individual component sub-pages
 
 ## 6.35.0
 Fri, 13 Jul 2018 21:32:37 GMT

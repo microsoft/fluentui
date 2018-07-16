@@ -1,6 +1,13 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Fri, 13 Jul 2018 21:32:37 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Jul 2018 10:27:18 GMT and should not be manually modified.
+
+## 0.4.0
+Mon, 16 Jul 2018 10:27:18 GMT
+
+### Minor changes
+
+- DGL card shadow, card title href and styling fixes
 
 ## 0.3.0
 Fri, 13 Jul 2018 21:32:37 GMT
