@@ -2,11 +2,12 @@ import { normalize } from '../../Styling';
 import { IChicletCardStyleProps, IChicletCardStyles } from './ChicletCard.types';
 
 export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => {
-  const { theme } = props;
+  const { theme, className } = props;
   const { palette } = theme;
 
   return {
     root: [
+      'ms-ChicletCard',
       normalize,
       {
         WebkitFontSmoothing: 'antialiased',
@@ -22,7 +23,8 @@ export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => 
             cursor: 'pointer'
           }
         }
-      }
+      },
+      className
     ],
     icon: [
       {

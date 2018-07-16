@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { IRefObject } from '../../Utilities';
 
 export interface IFocusTrapZone {
   /**
@@ -13,7 +14,7 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
    * Optional callback to access the IFocusTrapZone interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IFocusTrapZone | null) => void;
+  componentRef?: IRefObject<IFocusTrapZone>;
 
   /**
    * Sets the HTMLElement to focus on when exiting the FocusTrapZone.

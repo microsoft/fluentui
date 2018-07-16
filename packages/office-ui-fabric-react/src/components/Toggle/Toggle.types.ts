@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
-import { IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
 
 export interface IToggle {
@@ -20,7 +20,7 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
    * Optional callback to access the IToggle interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IToggle | null) => void;
+  componentRef?: IRefObject<IToggle>;
 
   /**
    * A label for the toggle.

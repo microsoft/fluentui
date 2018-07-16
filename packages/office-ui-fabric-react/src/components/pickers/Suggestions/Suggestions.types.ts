@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { ISuggestionModel } from './SuggestionsController';
-import { IRenderFunction, KeyCodes } from '../../../Utilities';
+import { IRefObject, IRenderFunction, KeyCodes } from '../../../Utilities';
 import { IPersonaProps } from '../../Persona/Persona.types';
 
 export interface ISuggestionsProps<T> extends React.Props<any> {
   /**
    * Gets the component ref.
    */
-  componentRef?: () => void;
+  componentRef?: IRefObject<{}>;
 
   /**
    * How the suggestion should look in the suggestion list.
@@ -138,7 +138,7 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
 }
 
 export interface ISuggestionItemProps<T> {
-  componentRef?: () => void;
+  componentRef?: IRefObject<{}>;
   suggestionModel: ISuggestionModel<T>;
   RenderSuggestion: (item: T, suggestionItemProps?: ISuggestionItemProps<T>) => JSX.Element;
   onClick: (ev: React.MouseEvent<HTMLButtonElement>) => void;

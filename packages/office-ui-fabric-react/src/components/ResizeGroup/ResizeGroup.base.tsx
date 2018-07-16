@@ -3,7 +3,6 @@ import * as PropTypes from 'prop-types';
 import {
   BaseComponent,
   classNamesFunction,
-  customizable,
   divProperties,
   getNativeProps,
   provideContext,
@@ -307,7 +306,6 @@ const getClassNames = classNamesFunction<IResizeGroupStyleProps, IResizeGroupSty
 // Styles for the hidden div used for measurement
 const hiddenDivStyles: React.CSSProperties = { position: 'fixed', visibility: 'hidden' };
 
-@customizable('ResizeGroup', ['theme', 'styles'])
 export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGroupState> {
   private _nextResizeGroupStateProvider = getNextResizeGroupStateProvider();
   // The root div which is the container inside of which we are trying to fit content.
