@@ -3,7 +3,7 @@ const fs = require('fs');
 
 exports.generateSizeData = function() {
   const projectName = path.basename(process.cwd());
-  const sizeFilePath = path.join(process.cwd(), 'dist', `${projectName}.json`);
+  const sizeFilePath = path.join(process.cwd(), 'dist', `${projectName}-sizedata.json`);
   if (fs.existsSync(path.dirname(sizeFilePath))) {
     const result = {
       chunks: analyzeChunks()
@@ -13,6 +13,7 @@ exports.generateSizeData = function() {
   }
 };
 
+// The file format is expected to be {"chunks":{"test-bundle-button.js":xxxxxxx}}
 function analyzeChunks() {
   const distPath = path.join(process.cwd(), 'dist');
   const result = {};
@@ -31,7 +32,6 @@ function getFileSize(filePath) {
     const stats = fs.statSync(filePath);
     return stats.size;
   } catch (e) {
-    console.log(`Unable to get size of file "${filePath}"`);
-    return -1;
+    throw `Unable to get size of file "${filePath}"`;
   }
 }
