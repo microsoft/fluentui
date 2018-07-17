@@ -100,7 +100,7 @@ export interface IDocPageProps {
   bestPractices?: string;
 
   /** Feedback section includes link to new issue page */
-  feedback?: boolean;
+  isFeedbackVisible?: boolean;
 
   /** Passed through header visibility flag from the demo component page component */
   isHeaderVisible: boolean;

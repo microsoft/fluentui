@@ -46,7 +46,7 @@ export interface IComponentPageProps {
   /** Native props root element */
   nativePropsElement?: string | string[] | undefined;
   /** Includes the feedback section **/
-  feedback?: boolean;
+  isFeedbackVisible?: boolean;
 
   /**
    * Link to the Component root folder on GitHub.
@@ -141,7 +141,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     if (bestPractices && dos && donts) {
       links.push(
         <div className="ComponentPage-navLink" key="nav-link">
-          <Link {...{ href: this._baseUrl + '#BestPractices' }}>Best Practices</Link>
+          <Link href={this._baseUrl + '#BestPractices'}>Best Practices</Link>
         </div>
       );
     }
@@ -149,37 +149,34 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     return (
       <div className="ComponentPage-navigation">
         <div className="ComponentPage-navLink">
-          <Link {...{ href: this._baseUrl + '#Overview' }}>Overview</Link>
+          <Link href={this._baseUrl + '#Overview'}>Overview</Link>
         </div>
         {links}
         {this.props.exampleCards && (
           <div className="ComponentPage-navLink">
-            <Link {...{ href: this._baseUrl + '#Variants' }}>Variants</Link>
+            <Link href={this._baseUrl + '#Variants'}>Variants</Link>
           </div>
         )}
         {this.props.implementationExampleCards && (
           <div className="ComponentPage-navLink">
-            <Link {...{ href: this._baseUrl + '#ImplementationExamples' }}>Implementation Examples</Link>
+            <Link href={this._baseUrl + '#ImplementationExamples'}>Implementation Examples</Link>
           </div>
         )}
         {this.props.propertiesTables && (
           <div className="ComponentPage-navLink">
-            <Link {...{ href: this._baseUrl + '#Implementation' }}>Implementation</Link>
+            <Link href={this._baseUrl + '#Implementation'}>Implementation</Link>
           </div>
         )}
-        {this.props.feedback && (
+        {this.props.isFeedbackVisible && (
           <div className="ComponentPage-navLink">
-            <Link {...{ href: this._baseUrl + '#Feedback' }}>Feedback</Link>
+            <Link href={this._baseUrl + '#Feedback'}>Feedback</Link>
           </div>
         )}
         {this.props.otherSections &&
           this.props.otherSections.map((componentPageSection: IComponentPageSection, index: number) => {
             return (
               <div key={index + 'class'} className="ComponentPage-navLink">
-                <Link
-                  key={index + componentPageSection.title}
-                  {...{ href: this._baseUrl + '#' + componentPageSection.title }}
-                >
+                <Link key={index + componentPageSection.title} href={this._baseUrl + '#' + componentPageSection.title}>
                   {componentPageSection.title}
                 </Link>
               </div>
@@ -373,7 +370,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
   }
 
   private _getFeedback(): JSX.Element | undefined {
-    if (this.props.feedback) {
+    if (this.props.isFeedbackVisible) {
       return (
         <div className="ComponentPage-feedbackSection">
           <h2 className="ComponentPage-subHeading ComponentPage-variantsTitle" id="Feedback">
