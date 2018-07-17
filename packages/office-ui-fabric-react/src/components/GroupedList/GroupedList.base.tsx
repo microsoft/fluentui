@@ -1,11 +1,16 @@
 import * as React from 'react';
-import { BaseComponent, IRectangle, assign, css, createRef } from '../../Utilities';
-import { IGroupedList, IGroupedListProps, IGroup } from './GroupedList.types';
+import { BaseComponent, IRectangle, assign, createRef, classNamesFunction, IClassNames } from '../../Utilities';
+import {
+  IGroupedList,
+  IGroupedListProps,
+  IGroup,
+  IGroupedListStyleProps,
+  IGroupedListStyles
+} from './GroupedList.types';
 import { GroupedListSection } from './GroupedListSection';
 import { List, ScrollToMode } from '../../List';
 import { SelectionMode } from '../../utilities/selection/index';
-import * as stylesImport from './GroupedList.scss';
-const styles: any = stylesImport;
+export const getClassNames = classNamesFunction<IGroupedListStyleProps, IGroupedListStyles>();
 
 export interface IGroupedListState {
   lastWidth?: number;
@@ -13,7 +18,7 @@ export interface IGroupedListState {
   groups?: IGroup[];
 }
 
-export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListState> implements IGroupedList {
+export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedListState> implements IGroupedList {
   public static defaultProps = {
     selectionMode: SelectionMode.multiple,
     isHeaderVisible: true,
@@ -23,6 +28,8 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
   public refs: {
     [key: string]: React.ReactInstance;
   };
+
+  private _classNames: IClassNames<IGroupedListStyles>;
 
   private _list = createRef<List>();
 
@@ -68,12 +75,16 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
   }
 
   public render(): JSX.Element {
-    const { className, usePageCache, onShouldVirtualize, getGroupHeight } = this.props;
+    const { className, usePageCache, onShouldVirtualize, getGroupHeight, theme, styles } = this.props;
     const { groups } = this.state;
+    this._classNames = getClassNames(styles, {
+      theme: theme!,
+      className
+    });
 
     return (
       <div
-        className={css('ms-GroupedList', styles.root, className)}
+        className={this._classNames.root}
         data-automationid="GroupedList"
         data-is-scrollable="false"
         role="presentation"
@@ -177,6 +188,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
         showAllProps={showAllProps}
         viewport={viewport}
         onShouldVirtualize={onShouldVirtualize}
+        groupedListClassNames={this._classNames}
       />
     );
   };

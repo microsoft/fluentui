@@ -1,10 +1,8 @@
-import * as React from 'react';
-import { DatePickerBase } from './DatePicker.base';
 import { DayOfWeek, ICalendarProps } from '../../Calendar';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { ICalendarFormatDateCallbacks } from '../Calendar/Calendar.types';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IRefObject, IBaseProps, IStyleFunction } from '../../Utilities';
 
 export interface IDatePicker {
   /** Sets focus to the text field */
@@ -14,12 +12,12 @@ export interface IDatePicker {
   reset(): void;
 }
 
-export interface IDatePickerProps extends React.Props<DatePickerBase> {
+export interface IDatePickerProps extends IBaseProps<IDatePicker> {
   /**
    * Optional callback to access the IDatePicker interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IDatePicker | null) => void;
+  componentRef?: IRefObject<IDatePicker>;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.

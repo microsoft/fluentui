@@ -1,5 +1,5 @@
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
 export interface IGrid {}
 
@@ -7,7 +7,7 @@ export interface IGridProps {
   /**
    * Gets the component ref.
    */
-  componentRef?: (componentRef?: IGrid | null) => void;
+  componentRef?: IRefObject<IGrid>;
 
   /**
    * The items to turn into a grid

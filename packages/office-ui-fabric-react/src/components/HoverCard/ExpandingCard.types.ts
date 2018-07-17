@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ExpandingCard } from './ExpandingCard';
-import { IRenderFunction } from '../../Utilities';
+import { IRefObject, IRenderFunction } from '../../Utilities';
 import { IStyle, ITheme } from '../../Styling';
 import { DirectionalHint } from '../../common/DirectionalHint';
 
@@ -14,7 +14,7 @@ export interface IExpandingCardProps extends React.HTMLAttributes<HTMLDivElement
    * Optional callback to access the IExpandingCard interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IExpandingCard | null) => void;
+  componentRef?: IRefObject<IExpandingCard>;
 
   /**
    *  Item to be returned with onRender functions

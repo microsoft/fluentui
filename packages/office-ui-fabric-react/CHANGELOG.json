@@ -2,6 +2,32 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.36.0",
+      "tag": "office-ui-fabric-react_v6.36.0",
+      "date": "Mon, 16 Jul 2018 10:27:18 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "50afbc71bc286bf38f617fa588121265be4854a6",
+            "comment": "Convert GroupedList to CSS-in-JS"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "5a5228d9cd469098c2b2ee7ea4be5c1f846684e6",
+            "comment": "Refactors variants of DetailsList into individual component sub-pages"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/webpack-utils\" from `>=0.7.0 <1.0.0` to `>=0.7.1 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.35.0",
       "tag": "office-ui-fabric-react_v6.35.0",
       "date": "Fri, 13 Jul 2018 21:32:37 GMT",

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, css } from '../../Utilities';
+import { BaseComponent, classNamesFunction, IClassNames } from '../../Utilities';
 import { IGroupDividerProps } from './GroupedList.types';
 import { SelectionMode } from '../../utilities/selection/index';
 import { Check } from '../../Check';
@@ -7,18 +7,20 @@ import { Icon } from '../../Icon';
 import { GroupSpacer } from './GroupSpacer';
 import { Spinner } from '../../Spinner';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import * as stylesImport from './GroupHeader.scss';
-const styles: any = stylesImport;
+import { IGroupHeaderStyleProps, IGroupHeaderStyles, IGroupHeaderProps } from './GroupHeader.types';
+export const getClassNames = classNamesFunction<IGroupHeaderStyleProps, IGroupHeaderStyles>();
 
 export interface IGroupHeaderState {
   isCollapsed: boolean;
   isLoadingVisible: boolean;
 }
 
-export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderState> {
+export class GroupHeaderBase extends BaseComponent<IGroupHeaderProps, IGroupHeaderState> {
   public static defaultProps: IGroupDividerProps = {
     expandButtonProps: { 'aria-label': 'expand collapse group' }
   };
+
+  private _classNames: IClassNames<IGroupHeaderStyles>;
 
   constructor(props: IGroupDividerProps) {
     super(props);
@@ -54,7 +56,10 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
       indentWidth,
       onRenderTitle = this._onRenderTitle,
       isCollapsedGroupSelectVisible = true,
-      expandButtonProps
+      expandButtonProps,
+      theme,
+      styles,
+      className
     } = this.props;
 
     const { isCollapsed, isLoadingVisible } = this.state;
@@ -63,24 +68,29 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
     const isSelectionCheckVisible = canSelectGroup && (isCollapsedGroupSelectVisible || !(group && group.isCollapsed));
     const currentlySelected = isSelected || selected;
 
+    this._classNames = getClassNames(styles, {
+      theme: theme!,
+      className,
+      selected: currentlySelected,
+      isCollapsed
+    });
+
     if (!group) {
       return null;
     }
     return (
       <div
-        className={css('ms-GroupHeader', styles.root, {
-          ['is-selected ' + styles.rootIsSelected]: currentlySelected
-        })}
+        className={this._classNames.root}
         style={viewport ? { minWidth: viewport.width } : {}}
         onClick={this._onHeaderClick}
         aria-label={group.ariaLabel || group.name}
         data-is-focusable={true}
       >
-        <FocusZone className={styles.groupHeaderContainer} direction={FocusZoneDirection.horizontal}>
+        <FocusZone className={this._classNames.groupHeaderContainer} direction={FocusZoneDirection.horizontal}>
           {isSelectionCheckVisible ? (
             <button
               type="button"
-              className={css('ms-GroupHeader-check', styles.check)}
+              className={this._classNames.check}
               data-selection-toggle={true}
               onClick={this._onToggleSelectGroupClick}
             >
@@ -92,16 +102,16 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
 
           <GroupSpacer indentWidth={indentWidth} count={groupLevel!} />
 
-          <div className={css('ms-GroupHeader-dropIcon', styles.dropIcon)}>
+          <div className={this._classNames.dropIcon}>
             <Icon iconName="Tag" />
           </div>
           <button
             type="button"
-            className={css('ms-GroupHeader-expand', styles.expand)}
+            className={this._classNames.expand}
             onClick={this._onToggleCollapse}
             {...expandButtonProps}
           >
-            <Icon className={css(isCollapsed && 'is-collapsed ' + styles.expandIsCollapsed)} iconName="ChevronDown" />
+            <Icon className={this._classNames.expandIsCollapsed} iconName="ChevronDown" />
           </button>
 
           {onRenderTitle(this.props, this._onRenderTitle)}
@@ -160,7 +170,7 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
     }
 
     return (
-      <div className={css('ms-GroupHeader-title', styles.title)}>
+      <div className={this._classNames.title}>
         <span>{group.name}</span>
         {
           // hasMoreData flag is set when grouping is throttled by SPO server which in turn resorts to regular
@@ -168,7 +178,7 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
           // so far. That's the reason we need to use "+" to show we might have more items than count
           // indicates.
         }
-        <span className={styles.headerCount}>
+        <span className={this._classNames.headerCount}>
           ({group.count}
           {group.hasMoreData && '+'})
         </span>

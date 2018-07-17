@@ -1,11 +1,5 @@
 import { EditSection } from './EditSection';
-
-export enum ComponentPageSection {
-  BestPractices,
-  Donts,
-  Dos,
-  Overview
-}
+import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface IEditSection {}
 
@@ -14,7 +8,7 @@ export interface IEditSectionProps extends React.HTMLAttributes<EditSection> {
    * Optional callback to access the IPersona interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IEditSection | null) => void;
+  componentRef?: IRefObject<IEditSection>;
 
   /**
    * The name of the Component
@@ -22,9 +16,9 @@ export interface IEditSectionProps extends React.HTMLAttributes<EditSection> {
   title: string;
 
   /**
-   * The section of the page.
+   * The section id of the page.
    */
-  section: ComponentPageSection;
+  section: string;
 
   /**
    * Pass the prop that has the content of the section.

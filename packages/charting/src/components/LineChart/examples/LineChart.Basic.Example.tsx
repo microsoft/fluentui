@@ -1,9 +1,7 @@
 import * as React from 'react';
 
-import { customizable } from '../../../Utilities';
 import { LineChart, ILineChartProps } from '../../LineChart';
 
-@customizable('LineChartBasicExample', ['theme', 'styles'])
 export class LineChartBasicExample extends React.Component<ILineChartProps, {}> {
   constructor(props: ILineChartProps) {
     super(props);
