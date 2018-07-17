@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fixes a bug where the DatePicker would only open every other time it gained focus",
+      "comment": "DatePicker: Fixes a bug where the DatePicker would only open every other time it gained focus.",
       "type": "patch"
     }
   ],
