@@ -108,7 +108,7 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
     ...theme.semanticColors
   };
 
-  const typography = theme.typography || DefaultTypography;
+  const typography = { ...DefaultTypography, ...theme.typography };
 
   const { types } = typography;
   for (const typeName in types) {

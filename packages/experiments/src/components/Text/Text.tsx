@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IStyle, IFontStyles, IPalette } from '../../Styling';
+import { IStyle, IFontStyles, IPalette, ISemanticColors } from '../../Styling';
 import { IViewProps, createComponent, IStyledProps } from '../../Foundation';
 import { IFontTypes, IFontFamilies, IFontSizes, IFontWeights } from './theming/ITypography';
 
@@ -20,6 +20,7 @@ export interface ITextProps {
   style?: keyof IFontStyles;
   weight?: keyof IFontWeights;
   color?: keyof IPalette;
+  semanticColor?: keyof ISemanticColors;
 
   paletteSet?: string;
 
@@ -51,9 +52,9 @@ const TextView = (props: ITextViewProps) => {
 };
 
 const styles = (props: IStyledProps<ITextProps>): ITextStyles => {
-  const { block, theme, wrap, grow, shrink, type, family, weight, size, style, color } = props;
+  const { block, theme, wrap, grow, shrink, type, family, weight, size, style, color, semanticColor } = props;
 
-  const { palette, fonts, /* semanticColors, isInverted, */ typography } = theme;
+  const { palette, fonts, semanticColors, typography } = theme;
 
   let themeType;
 
@@ -89,9 +90,11 @@ const styles = (props: IStyledProps<ITextProps>): ITextStyles => {
     mozOsxFontSmoothing: mozOsxFontSmoothing,
     webkitFontSmoothing: webkitFontSmoothing,
     color:
-      color && palette[color] // use palette to set the color
-        ? palette[color]
-        : palette.neutralPrimary
+      semanticColor && semanticColors[semanticColor] // use semanticColors to set color if it exists
+        ? semanticColors[semanticColor]
+        : color && palette[color]
+          ? palette[color]
+          : palette.neutralPrimary // otherwise, use palette
   };
 
   return {
