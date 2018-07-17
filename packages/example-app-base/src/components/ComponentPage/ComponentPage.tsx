@@ -28,7 +28,7 @@ export interface IComponentPageProps {
   /** Component donts **/
   donts?: JSX.Element;
   /** Component overview **/
-  overview: JSX.Element;
+  overview?: JSX.Element;
   /** Related link */
   related?: JSX.Element;
   /** Header visibility flag */
