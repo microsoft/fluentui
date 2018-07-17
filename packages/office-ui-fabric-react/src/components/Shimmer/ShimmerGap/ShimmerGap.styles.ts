@@ -1,5 +1,5 @@
 import { IShimmerGapStyleProps, IShimmerGapStyles } from './ShimmerGap.types';
-import { IRawStyle, getGlobalClassNames, HighContrastSelector } from '../../../Styling';
+import { IStyleSet, getGlobalClassNames, HighContrastSelector } from '../../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-ShimmerGap-root'
@@ -11,7 +11,7 @@ export function getStyles(props: IShimmerGapStyleProps): IShimmerGapStyles {
   const { palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  const styles: IRawStyle = !!borderStyle ? borderStyle : {};
+  const styles: IStyleSet = !!borderStyle ? borderStyle : {};
 
   return {
     root: [

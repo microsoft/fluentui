@@ -1,14 +1,5 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  KeyCodes,
-  css,
-  getId,
-  getRTL,
-  getRTLSafeKeyCode,
-  createRef,
-  customizable
-} from '../../Utilities';
+import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode, createRef } from '../../Utilities';
 import { ISliderProps, ISlider, ISliderStyleProps, ISliderStyles } from './Slider.types';
 import { classNamesFunction } from '../../Utilities';
 import { Label } from '../../Label';
@@ -27,7 +18,6 @@ export enum ValuePosition {
 }
 
 const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>();
-@customizable('Slider', ['theme', 'styles'])
 export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implements ISlider {
   public static defaultProps: ISliderProps = {
     step: 1,

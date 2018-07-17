@@ -1,13 +1,13 @@
 import { ITheme, IStyle } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
 export interface IColorPicker {}
 
-export interface IColorPickerProps {
+export interface IColorPickerProps extends IBaseProps<IColorPicker> {
   /**
    * Gets the component ref.
    */
-  componentRef?: (component: IColorPicker | null) => void;
+  componentRef?: IRefObject<IColorPicker>;
 
   /**
    * CSS-compatible string to describe the initial color.

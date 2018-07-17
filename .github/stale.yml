@@ -13,6 +13,7 @@ exemptLabels:
   - "Priority 1: ASAP"
   - "Needs: Discussion 🙋"
   - "Needs: Revisit 🔁"
+  - "Type: Bug 🐛"
 
 # Set to true to ignore issues in a project (defaults to false)
 exemptProjects: false

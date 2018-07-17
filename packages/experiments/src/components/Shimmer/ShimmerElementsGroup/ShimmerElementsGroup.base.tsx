@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, customizable } from '../../../Utilities';
+import { BaseComponent, classNamesFunction } from '../../../Utilities';
 import {
   IShimmerElementsGroupProps,
   IShimmerElementsGroupStyleProps,
   IShimmerElementsGroupStyles
 } from './ShimmerElementsGroup.types';
-import { IStyle } from '../../../Styling';
+import { IStyleSet } from '../../../Styling';
 import {
   ShimmerElementType,
   ShimmerElementVerticalAlign,
@@ -18,7 +18,6 @@ import { ShimmerCircle } from '../ShimmerCircle/ShimmerCircle';
 
 const getClassNames = classNamesFunction<IShimmerElementsGroupStyleProps, IShimmerElementsGroupStyles>();
 
-@customizable('ShimmerElementsGroup', ['theme', 'styles'])
 export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGroupProps, {}> {
   public static defaultProps: IShimmerElementsGroupProps = {
     flexWrap: false
@@ -68,11 +67,11 @@ export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGrou
     return renderedElements;
   };
 
-  private _getBorderStyles = (elem: IShimmerElement, rowHeight?: number): IStyle | undefined => {
+  private _getBorderStyles = (elem: IShimmerElement, rowHeight?: number): IStyleSet | undefined => {
     const elemHeight: number | undefined = elem.height;
     const dif: number = rowHeight && elemHeight ? rowHeight - elemHeight : 0;
 
-    let borderStyle: IStyle | undefined;
+    let borderStyle: IStyleSet | undefined;
 
     if (!elem.verticalAlign || elem.verticalAlign === ShimmerElementVerticalAlign.center) {
       borderStyle = {

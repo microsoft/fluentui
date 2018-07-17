@@ -367,7 +367,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -438,7 +438,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -547,7 +547,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -1040,7 +1040,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -1111,7 +1111,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -1220,7 +1220,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -1713,7 +1713,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -1784,7 +1784,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -1893,7 +1893,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -2386,7 +2386,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -2457,7 +2457,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -2566,7 +2566,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -3059,7 +3059,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -3130,7 +3130,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -3239,7 +3239,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -3732,7 +3732,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -3803,7 +3803,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -3912,7 +3912,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -4405,7 +4405,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -4476,7 +4476,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -4585,7 +4585,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -5078,7 +5078,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -5149,7 +5149,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -5258,7 +5258,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -5751,7 +5751,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -5822,7 +5822,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -5931,7 +5931,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -6424,7 +6424,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -6495,7 +6495,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -6604,7 +6604,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >

@@ -1,8 +1,6 @@
 export { IRawStyle, IStyle } from './IStyle';
 
-export { IStyleFunction, IStyleFunctionOrObject } from './IStyleFunction';
-
-export { IConcatenatedStyleSet, IProcessedStyleSet, IStyleSet } from './IStyleSet';
+export { IStyleSet } from './IStyleSet';
 
 export { IFontFace, IFontWeight } from './IRawStyleBase';
 

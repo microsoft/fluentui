@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IStyle, IRawStyle, ITheme } from '../../../Styling';
-import { IStyleFunctionOrObject } from '../../../Utilities';
+import { IStyle, IStyleSet, ITheme } from '../../../Styling';
+import { IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
 
 export interface IShimmerLine {}
 
@@ -12,7 +12,7 @@ export interface IShimmerLineProps extends React.AllHTMLAttributes<HTMLElement> 
    * Optional callback to access the IShimmerLine interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IShimmerLine | null) => void;
+  componentRef?: IRefObject<IShimmerLine>;
 
   /**
    * Sets the height of the rectangle.
@@ -29,7 +29,7 @@ export interface IShimmerLineProps extends React.AllHTMLAttributes<HTMLElement> 
   /**
    * Sets custom styling of the rectangle.
    */
-  borderStyle?: IRawStyle;
+  borderStyle?: IStyleSet;
 
   /**
    * Theme provided by High-Order Component.
@@ -44,7 +44,7 @@ export interface IShimmerLineProps extends React.AllHTMLAttributes<HTMLElement> 
 
 export interface IShimmerLineStyleProps {
   height?: number;
-  borderStyle?: IRawStyle;
+  borderStyle?: IStyleSet;
   theme: ITheme;
 }
 

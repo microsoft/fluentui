@@ -9,9 +9,9 @@ import {
   divProperties,
   elementContains,
   focusFirstChild,
-  getNativeProps
+  getNativeProps,
+  IClassNames
 } from '../../Utilities';
-import { IProcessedStyleSet } from '../../Styling';
 import { KeytipManager } from '../../utilities/keytips/KeytipManager';
 import {
   IOverflowSet,
@@ -33,7 +33,7 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
   private _persistedKeytips: { [uniqueID: string]: IKeytipProps } = {};
   private _keytipManager: KeytipManager = KeytipManager.getInstance();
   private _divContainer = createRef<HTMLDivElement>();
-  private _classNames: IProcessedStyleSet<IOverflowSetStyles>;
+  private _classNames: IClassNames<IOverflowSetStyles>;
 
   constructor(props: IOverflowSetProps) {
     super(props);

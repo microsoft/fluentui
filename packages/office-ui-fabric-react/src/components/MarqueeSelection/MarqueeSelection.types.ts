@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ISelection } from '../../utilities/selection/interfaces';
 import { ITheme, IStyle } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IRefObject, IStyleFunction } from '../../Utilities';
 
 export interface IMarqueeSelection {}
 
@@ -10,7 +10,7 @@ export interface IMarqueeSelectionProps extends React.HTMLAttributes<HTMLDivElem
    * Optional callback to access the IMarqueeSelection interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IMarqueeSelection | null) => void;
+  componentRef?: IRefObject<IMarqueeSelection>;
 
   /**
    * The selection object to interact with when updating selection changes.

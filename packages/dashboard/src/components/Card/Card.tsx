@@ -29,7 +29,11 @@ export class Card extends React.Component<ICardProps, ICardState> {
     const classNames = getClassNames(getStyles);
     return (
       <div className={classNames.root}>
-        <CardFrame cardTitle={cardFrameContent.cardTitle} cardDropDownOptions={cardFrameContent.cardDropDownOptions}>
+        <CardFrame
+          cardTitle={cardFrameContent.cardTitle}
+          cardDropDownOptions={cardFrameContent.cardDropDownOptions}
+          href={cardFrameContent.href}
+        >
           <Layout header={header} contentArea={cardContentList} cardSize={this.state.cardSize} actions={actions} />
         </CardFrame>
       </div>

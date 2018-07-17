@@ -1,13 +1,13 @@
 import { ITheme, IStyle } from '../../../Styling';
-import { IStyleFunctionOrObject } from '../../../Utilities';
+import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
 
 export interface IColorSlider {}
 
-export interface IColorSliderProps {
+export interface IColorSliderProps extends IBaseProps<IColorSlider> {
   /**
    * Gets the component ref.
    */
-  componentRef?: (component: IColorSlider | null) => void;
+  componentRef?: IRefObject<IColorSlider>;
 
   /**
    * Minimum value of the slider.
