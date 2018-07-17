@@ -9,7 +9,7 @@ import { IDetailsHeaderProps } from './DetailsHeader';
 import { IWithViewportProps, IViewport } from '../../utilities/decorators/withViewport';
 import { IList, IListProps, ScrollToMode } from '../List/index';
 import { ITheme, IStyle } from '../..';
-
+import { IGroupDividerProps } from '../GroupedList/GroupedList.types';
 export { IDetailsHeaderProps };
 
 export interface IDetailsList extends IList {
@@ -80,7 +80,7 @@ export interface IDetailsListProps extends React.Props<DetailsListBase>, IWithVi
   groups?: IGroup[];
 
   /** Optional override properties to render groups. The definition for IGroupRenderProps can be found under the GroupedList component. */
-  groupProps?: IGroupRenderProps;
+  groupProps?: IDetailsGroupRenderProps;
 
   /** Optional selection model to track selection state.  */
   selection?: ISelection;
@@ -528,4 +528,13 @@ export type IDetailsListStyleProps = Required<Pick<IDetailsListProps, 'theme'>> 
 export interface IDetailsListStyles {
   root: IStyle;
   focusZone: IStyle;
+}
+
+export interface IDetailsGroupRenderProps extends IGroupRenderProps {
+  onRenderFooter?: IRenderFunction<IDetailsGroupDividerProps>;
+  isRenderFooterOverride?: boolean;
+}
+
+export interface IDetailsGroupDividerProps extends IGroupDividerProps {
+  columns?: IColumn[];
 }

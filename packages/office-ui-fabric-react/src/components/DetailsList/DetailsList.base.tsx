@@ -19,7 +19,8 @@ import {
   IDetailsList,
   IDetailsListProps,
   IDetailsListStyles,
-  IDetailsListStyleProps
+  IDetailsListStyleProps,
+  IDetailsGroupRenderProps
 } from '../DetailsList/DetailsList.types';
 import { DetailsHeader } from '../DetailsList/DetailsHeader';
 import { IDetailsHeader, SelectAllVisibility, IDetailsHeaderProps } from '../DetailsList/DetailsHeader.types';
@@ -37,7 +38,7 @@ import {
 } from '../../utilities/selection/index';
 
 import { DragDropHelper } from '../../utilities/dragdrop/DragDropHelper';
-import { IGroupedList, GroupedList } from '../../GroupedList';
+import { IGroupedList, GroupedList, IGroupDividerProps, IGroupRenderProps } from '../../GroupedList';
 import { IList, List, IListProps, ScrollToMode } from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
 import { GetGroupCount } from '../../utilities/groupedList/GroupedListUtility';
@@ -338,17 +339,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       selectAllVisibility = SelectAllVisibility.none;
     }
 
-    // Override footerProps columns for the group columns
-    if (groupProps!.footerProps === undefined) {
-      groupProps!.footerProps = {
-        columns: adjustedColumns
-      };
-    } else {
-      groupProps!.footerProps!.columns = this.state.adjustedColumns;
-    }
-
     const { onRenderDetailsHeader = this._onRenderDetailsHeader } = this.props;
-
+    const newgroupProps = groupProps ? this._getGroupProps(groupProps) : undefined;
     const rowCount = (isHeaderVisible ? 1 : 0) + GetGroupCount(groups) + (items ? items.length : 0);
 
     const classNames = getClassNames(styles, {
@@ -433,7 +425,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
                   <GroupedList
                     componentRef={this._groupedList}
                     groups={groups}
-                    groupProps={groupProps}
+                    groupProps={newgroupProps}
                     items={items}
                     onRenderCell={this._onRenderCell}
                     selection={selection}
@@ -930,6 +922,40 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       onScroll(e);
     }
   };
+
+  private _getGroupProps(groupProps: IDetailsGroupRenderProps | undefined): IGroupRenderProps | undefined {
+    if (groupProps === undefined) {
+      return undefined;
+    }
+    const { onRenderFooter: onRenderDetailsGroupFooter } = groupProps as IDetailsGroupRenderProps;
+    const { adjustedColumns: columns } = this.state;
+
+    if (groupProps!.isRenderFooterOverride) {
+      const onRenderFooter = onRenderDetailsGroupFooter
+        ? (props: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
+            return onRenderDetailsGroupFooter(
+              {
+                ...props,
+                columns
+              },
+              defaultRender
+            );
+          }
+        : undefined;
+
+      const newGroupProps = groupProps as IGroupRenderProps;
+
+      return {
+        ...newGroupProps,
+        onRenderFooter
+      };
+    } else {
+      const newGroupProps = groupProps as IGroupRenderProps;
+      return {
+        ...newGroupProps
+      };
+    }
+  }
 }
 
 export function buildColumns(
