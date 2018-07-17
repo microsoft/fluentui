@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { FacepileBase } from './Facepile.base';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
-
-import { IButtonProps } from '../Button/index';
-import { IPersonaSharedProps, PersonaInitialsColor, PersonaSize } from '../Persona/index';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { IButtonProps } from '../../Button';
+import { IPersonaSharedProps, PersonaInitialsColor, PersonaSize } from '../../Persona';
 
 export interface IFacepile {}
 
@@ -13,7 +12,7 @@ export interface IFacepileProps extends React.Props<FacepileBase> {
    * Optional callback to access the IFacepile interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IFacepile | null) => void;
+  componentRef?: IRefObject<IFacepile>;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
@@ -147,7 +146,6 @@ export interface IFacepileStyleProps {
    */
   className?: string;
 
-  // Insert Facepile style props below
   /**
    * Pixel value for spacing around button. Number value set in pixels
    */
@@ -164,9 +162,8 @@ export interface IFacepileStyles {
   itemContainer: IStyle;
   itemButton: IStyle;
   members: IStyle;
+  member: IStyle;
   overflowButton: IStyle;
   overflowInitialsIcon: IStyle;
   screenReaderOnly: IStyle;
-
-  // Insert Facepile classNames below
 }

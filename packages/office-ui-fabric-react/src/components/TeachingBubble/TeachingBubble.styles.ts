@@ -305,7 +305,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
               color: palette.white
             }
           ],
-          ':hover, :focus': {
+          '&:hover, &:focus': {
             backgroundColor: palette.themeDarkAlt,
             borderColor: palette.white
           },

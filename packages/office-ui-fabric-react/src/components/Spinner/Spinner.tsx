@@ -5,5 +5,7 @@ import { ISpinnerProps, ISpinnerStyles, ISpinnerStyleProps } from './Spinner.typ
 
 export const Spinner: (props: ISpinnerProps) => JSX.Element = styled<ISpinnerProps, ISpinnerStyleProps, ISpinnerStyles>(
   SpinnerBase,
-  getStyles
+  getStyles,
+  undefined,
+  { scope: 'Spinner' }
 );

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IRectangle, IRenderFunction } from '../../Utilities';
+import { IRefObject, IRectangle, IRenderFunction } from '../../Utilities';
 import { List } from './List';
 
 export const enum ScrollToMode {
@@ -52,7 +52,7 @@ export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> 
    * Optional callback to access the IList interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IList | null) => void;
+  componentRef?: IRefObject<IList>;
 
   /** Optional classname to append to root list. */
   className?: string;

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { css, getDocument } from 'office-ui-fabric-react/lib/Utilities';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { MessageBar } from 'office-ui-fabric-react/lib/MessageBar';
-import { EditSection, ComponentPageSection } from '../EditSection';
+import { EditSection } from '../EditSection';
 import './ComponentPage.scss';
 
 export interface IComponentPageSection {
@@ -107,23 +107,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
           {this._pageHeader()}
           <div className="ComponentPage-body">
             {this._getComponentStatusBadges()}
-            <div className="ComponentPage-overviewSection">
-              <div className="ComponentPage-overviewSectionHeader">
-                <h2 className="ComponentPage-subHeading" id="Overview">
-                  Overview
-                </h2>
-                <EditSection
-                  title={this.props.title}
-                  section={ComponentPageSection.Overview}
-                  sectionContent={this.props.overview}
-                  url={this._getURL('Overview', this.props.editOverviewUrl)}
-                />
-              </div>
-              <div className="ComponentPage-overviewSectionContent">
-                <div className="ComponentPage-overview">{overview}</div>
-                {this._getRelatedComponents()}
-              </div>
-            </div>
+            {this._getOverview()}
             {this._getDosAndDonts()}
             {this._getVariants()}
             {this._getImplementationExamples()}
@@ -303,7 +287,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
             <h2 className="ComponentPage-subHeading">Best Practices</h2>
             <EditSection
               title={this.props.title}
-              section={ComponentPageSection.BestPractices}
+              section={'BestPractices'}
               sectionContent={this.props.bestPractices}
               url={this._getURL('BestPractices', this.props.editBestPracticesUrl)}
             />
@@ -321,7 +305,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
               <h3>Do</h3>
               <EditSection
                 title={this.props.title}
-                section={ComponentPageSection.Dos}
+                section={'Dos'}
                 sectionContent={this.props.dos}
                 url={this._getURL('Dos', this.props.editDosUrl)}
               />
@@ -334,7 +318,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
               <h3>Don&rsquo;t</h3>
               <EditSection
                 title={this.props.title}
-                section={ComponentPageSection.Donts}
+                section={'Donts'}
                 sectionContent={this.props.donts}
                 url={this._getURL('Donts', this.props.editDontsUrl)}
               />
@@ -352,11 +336,18 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
   }
 
   private _getVariants(): JSX.Element | undefined {
+    // We want to show the "Variants" header if the header is present since it has a relative anchor to it
+    // or we have more than one example JSX element to render.
+    const hasVariants = this.props.isHeaderVisible || !!this.props.exampleCards!.props.children.length;
+
+    // If only one variant then use its title as the header text, otherwise use "Variants".
+    const headerText = hasVariants ? 'Variants' : this.props.title;
+
     if (this.props.exampleCards) {
       return (
         <div className="ComponentPage-variantsSection">
           <h2 className="ComponentPage-subHeading ComponentPage-variantsTitle" id="Variants">
-            Variants
+            {headerText}
           </h2>
           {this.props.exampleCards}
         </div>
@@ -401,6 +392,32 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
   private _getComponentStatusBadges(): JSX.Element | undefined {
     if (this.props.componentStatus && this.props.areBadgesVisible) {
       return <div className="ComponentPage-componentStatusSection">{this.props.componentStatus}</div>;
+    }
+
+    return undefined;
+  }
+
+  private _getOverview(): JSX.Element | undefined {
+    if (this.props.overview) {
+      return (
+        <div className="ComponentPage-overviewSection">
+          <div className="ComponentPage-overviewSectionHeader">
+            <h2 className="ComponentPage-subHeading" id="Overview">
+              Overview
+            </h2>
+            <EditSection
+              title={this.props.title}
+              section={'Overview'}
+              sectionContent={this.props.overview}
+              url={this._getURL('Overview', this.props.editOverviewUrl)}
+            />
+          </div>
+          <div className="ComponentPage-overviewSectionContent">
+            <div className="ComponentPage-overview">{this.props.overview}</div>
+            {this._getRelatedComponents()}
+          </div>
+        </div>
+      );
     }
 
     return undefined;

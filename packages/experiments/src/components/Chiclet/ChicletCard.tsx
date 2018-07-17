@@ -5,5 +5,7 @@ import { ChicletCardBase } from './ChicletCard.base';
 
 export const ChicletCard = styled<IChicletCardProps, IChicletCardStyleProps, IChicletCardStyles>(
   ChicletCardBase,
-  getStyles
+  getStyles,
+  undefined,
+  { scope: 'ChicletCard' }
 );

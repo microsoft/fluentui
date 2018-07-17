@@ -1,6 +1,58 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 03 Jul 2018 17:41:15 GMT and should not be manually modified.
+This log was last generated on Tue, 17 Jul 2018 10:28:40 GMT and should not be manually modified.
+
+## 6.16.0
+Tue, 17 Jul 2018 10:28:40 GMT
+
+### Minor changes
+
+- Removing most `@customizable` decorator usage. This change should reduce extra React dom elements from being created. Also updating `componentRef` resolution to support `React.createRef()` usage.
+
+## 6.15.1
+Mon, 16 Jul 2018 10:27:18 GMT
+
+*Version update only*
+
+## 6.15.0
+Fri, 13 Jul 2018 21:32:37 GMT
+
+### Minor changes
+
+- Reverting the TypeScript bump, to un
+- Card: disable dragging of card everywhere but title bar
+- Added FluentStyles for Panel, TextField, ContextualMenu, and ComboBox
+- Moved nav, recommendation and card to m365-admin package
+
+## 6.13.6
+Thu, 12 Jul 2018 10:29:30 GMT
+
+### Patches
+
+- Consume horizontal bar chart in card, fix bad import 
+
+## 6.13.5
+Tue, 10 Jul 2018 21:54:07 GMT
+
+### Patches
+
+- Update to latest Fluent depths/shadows
+
+## 6.13.4
+Mon, 09 Jul 2018 18:08:32 GMT
+
+### Patches
+
+- Remove createComponent utility and use Foundation package.
+- changing imports for charts in react DashboardCard to point to correct package
+- Update to latest Fluent depths
+
+## 6.13.2
+Fri, 06 Jul 2018 10:23:46 GMT
+
+### Patches
+
+- css changes for action bar
 
 ## 6.13.1
 Tue, 03 Jul 2018 17:41:15 GMT
