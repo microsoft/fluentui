@@ -8,6 +8,7 @@ import { IResizeGroupProps } from '../..';
 
 interface ITestScalingData {
   scalingIndex: number;
+  cacheKey?: string;
 }
 
 function onReduceScalingData(data: ITestScalingData): ITestScalingData {
@@ -367,27 +368,6 @@ describe('ResizeGroup', () => {
       expect(onGrowData.callCount).toEqual(1);
     });
 
-    it('sets the resizeDirection to shrink after determining contents do not fit when the resize direction is grow', () => {
-      const dataToMeasure = { index: 1 };
-      const onGrowData = sinon.stub();
-      const resizeGroupProps = { ...getRequiredResizeGroupProps(), onGrowData };
-      const resizeGroupState: IResizeGroupState = { dataToMeasure, resizeDirection: 'grow' };
-      const getNextResizeGroupState = getNextResizeGroupStateProvider().getNextState;
-      const getMeasuredElementWidthStub = sinon.stub();
-      getMeasuredElementWidthStub.returns(75);
-
-      const result = getNextResizeGroupState(resizeGroupProps, resizeGroupState, getMeasuredElementWidthStub, 40);
-
-      expect(result).toEqual({
-        measureContainer: false,
-        dataToMeasure,
-        resizeDirection: 'shrink'
-      });
-      expect(getMeasuredElementWidthStub.callCount).toEqual(1);
-      expect(onGrowData.callCount).toEqual(0);
-      expect(resizeGroupProps.onReduceData.callCount).toEqual(0);
-    });
-
     it('renders the last measured contents when onGrowData returns undefined', () => {
       const dataToMeasure = { index: 1 };
       const onGrowData = sinon.stub();
@@ -470,28 +450,35 @@ describe('ResizeGroup', () => {
     });
 
     it('calls onGrowData multiple times when everything is in the cache in the grow resizeDirection', () => {
-      const dataArray = [{ cacheKey: '5' }, { cacheKey: '6' }, { cacheKey: '7' }];
+      const dataArray: ITestScalingData[] = [
+        { scalingIndex: 0, cacheKey: '0' },
+        { scalingIndex: 1, cacheKey: '1' },
+        { scalingIndex: 2, cacheKey: '2' },
+        { scalingIndex: 3, cacheKey: '3' }
+      ];
 
       const measurementCache = getMeasurementCache();
       measurementCache.addMeasurementToCache(dataArray[0], 50);
       measurementCache.addMeasurementToCache(dataArray[1], 70);
-      measurementCache.addMeasurementToCache(dataArray[2], 150);
-      const getNextResizeGroupState = getNextResizeGroupStateProvider(measurementCache).getNextState;
+      measurementCache.addMeasurementToCache(dataArray[2], 80);
+      measurementCache.addMeasurementToCache(dataArray[3], 150);
+      const stateProvider = getNextResizeGroupStateProvider(measurementCache);
 
-      const onGrowData = sinon.stub();
-      onGrowData.onFirstCall().returns(dataArray[1]);
-      onGrowData.onSecondCall().returns(dataArray[2]);
-      const resizeGroupProps = { ...getRequiredResizeGroupProps(), onGrowData };
+      const resizeGroupProps = {
+        ...getRequiredResizeGroupProps(),
+        onGrowData: (data: ITestScalingData) => dataArray[data.scalingIndex + 1],
+        onReduceData: (data: ITestScalingData) => dataArray[data.scalingIndex - 1]
+      };
 
       const resizeGroupState: IResizeGroupState = { dataToMeasure: dataArray[0], resizeDirection: 'grow' };
       const measuredElementWidthStub = sinon.stub();
 
-      const result = getNextResizeGroupState(resizeGroupProps, resizeGroupState, measuredElementWidthStub, 100);
+      const result = stateProvider.getNextState(resizeGroupProps, resizeGroupState, measuredElementWidthStub, 100);
 
       expect(result).toEqual({
         measureContainer: false,
-        dataToMeasure: dataArray[2],
-        resizeDirection: 'shrink'
+        renderedData: dataArray[2],
+        dataToMeasure: undefined
       });
       expect(measuredElementWidthStub.callCount).toEqual(0);
     });
