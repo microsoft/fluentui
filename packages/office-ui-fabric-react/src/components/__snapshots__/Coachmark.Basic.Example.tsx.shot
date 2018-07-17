@@ -46,7 +46,7 @@ exports[`Component Examples renders Coachmark.Basic.Example.tsx correctly 1`] = 
         aria-disabled={undefined}
         aria-expanded="false"
         aria-label={undefined}
-        aria-live="assertive"
+        aria-labelledby="Dropdown0-label"
         aria-owns={undefined}
         className="ms-Dropdown"
         data-is-focusable={true}
@@ -62,9 +62,13 @@ exports[`Component Examples renders Coachmark.Basic.Example.tsx correctly 1`] = 
         <span
           aria-atomic={true}
           aria-label="Bottom Auto Edge"
+          aria-live="off"
+          aria-posinset={8}
+          aria-selected={true}
+          aria-setsize={14}
           className="ms-Dropdown-title"
           id="Dropdown0-option"
-          role="listbox"
+          role="option"
         >
           <span>
             Bottom Auto Edge

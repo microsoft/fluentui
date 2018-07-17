@@ -1,5 +1,5 @@
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import {
   IColorCellProps,
   IColorPickerGridCellStyleProps,
@@ -12,7 +12,7 @@ export interface ISwatchColorPickerProps {
   /**
    * Gets the component ref.
    */
-  componentRef?: (componentRef?: ISwatchColorPicker | null) => void;
+  componentRef?: IRefObject<ISwatchColorPicker>;
 
   /**
    * the number of columns for the swatch color picker

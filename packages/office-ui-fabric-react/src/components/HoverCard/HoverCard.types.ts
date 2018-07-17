@@ -2,6 +2,7 @@ import * as React from 'react';
 import { HoverCard } from './HoverCard';
 import { IExpandingCardProps } from './ExpandingCard.types';
 import { IStyle } from '../../Styling';
+import { IRefObject, KeyCodes } from '../../Utilities';
 
 export interface IHoverCard {}
 
@@ -13,7 +14,7 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement | H
    * Optional callback to access the IHoverCardHost interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IHoverCard | null) => void;
+  componentRef?: IRefObject<IHoverCard>;
 
   /**
    * Additional properties to pass through for HoverCard, reference detail properties in IHoverCardProps
@@ -87,9 +88,16 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement | H
   shouldBlockHoverCard?: () => void;
 
   /**
-   * Set first focus into hover card, default should be true
+   * Set first focus into hover card.
+   * @default false
    */
   setInitialFocus?: boolean;
+
+  /**
+   * HotKey used for opening the HoverCard when tabbed to target.
+   * @default 'KeyCodes.c'
+   */
+  openHotKey?: KeyCodes;
 }
 
 export interface IHoverCardStyles {

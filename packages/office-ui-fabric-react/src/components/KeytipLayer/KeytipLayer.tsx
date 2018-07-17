@@ -5,5 +5,9 @@ import { getStyles } from './KeytipLayer.styles';
 
 export const KeytipLayer = styled<IKeytipLayerProps, IKeytipLayerStyleProps, IKeytipLayerStyles>(
   KeytipLayerBase,
-  getStyles
+  getStyles,
+  undefined,
+  {
+    scope: 'KeytipLayer'
+  }
 );

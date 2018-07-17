@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, customizable } from '../../Utilities';
+import { BaseComponent, classNamesFunction } from '../../Utilities';
 import {
   IProgressIndicatorProps,
   IProgressIndicatorStyleProps,
@@ -20,7 +20,6 @@ export interface IProgressindicatorState {
  * ProgressIndicator with no default styles.
  * [Use the `styles` API to add your own styles.](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Styling)
  */
-@customizable('ProgressIndicator', ['theme', 'styles'])
 export class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps, IProgressindicatorState> {
   public static defaultProps = {
     label: '',

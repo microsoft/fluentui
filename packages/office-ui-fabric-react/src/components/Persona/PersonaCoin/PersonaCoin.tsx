@@ -8,5 +8,7 @@ import { getStyles } from './PersonaCoin.styles';
  */
 export const PersonaCoin = styled<IPersonaCoinProps, IPersonaCoinStyleProps, IPersonaCoinStyles>(
   PersonaCoinBase,
-  getStyles
+  getStyles,
+  undefined,
+  { scope: 'PersonaCoin' }
 );

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage } from '@uifabric/example-app-base';
+import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 
 import { StackBasicExample } from './examples/Stack.Basic.Example';
 const StackBasicExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Stack/examples/Stack.Basic.Example.tsx') as string;
@@ -17,7 +17,14 @@ export class StackPage extends React.Component<IComponentDemoPageProps, {}> {
             </ExampleCard>
           </div>
         }
-        propertiesTables={<div />}
+        propertiesTables={
+          <PropertiesTableSet
+            sources={[
+              require<string>('!raw-loader!@uifabric/experiments/src/components/Stack/Stack.types.ts'),
+              require<string>('!raw-loader!@uifabric/experiments/src/components/Stack/StackItem/StackItem.types.ts')
+            ]}
+          />
+        }
         overview={<div />}
         bestPractices={<div />}
         dos={

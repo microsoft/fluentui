@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IRenderFunction } from '../../Utilities';
+import { IRefObject, IRenderFunction } from '../../Utilities';
 import { IIconProps } from '../../Icon';
 
 export interface ITextField {
@@ -40,7 +40,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    * Optional callback to access the ITextField interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ITextField | null) => void;
+  componentRef?: IRefObject<ITextField>;
 
   /**
    * Whether or not the textfield is a multiline textfield.
