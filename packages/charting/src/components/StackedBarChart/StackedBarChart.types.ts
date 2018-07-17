@@ -2,12 +2,22 @@ import { ITheme, IStyle } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
 
 export interface IStackedBarChart {}
+export interface Idata {
+  /**
+   * Label for data to render in the chart.
+   */
+  label: string;
+  /**
+   * Value for data to render in the chart.
+   */
+  value: number;
+}
 
 export interface IStackedBarChartProps {
   /**
    * Data to render in the chart.
    */
-  data?: number[];
+  data?: Idata[];
 
   /**
    * Width of the chart.
@@ -101,5 +111,5 @@ export interface IStackedBarChartStyles {
   /**
    * Style for the element containing all the Legends in the chart.
    */
-  Legend: IStyle;
+  legend: IStyle;
 }

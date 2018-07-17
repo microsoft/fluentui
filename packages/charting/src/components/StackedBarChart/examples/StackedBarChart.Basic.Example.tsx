@@ -10,7 +10,12 @@ export class StackedBarChartBasicExample extends React.Component<IStackedBarChar
   }
 
   private _basicExample(): JSX.Element {
-    const points = [40, 25, 53, 87];
+    const points = [
+      { label: 'first', value: 40 },
+      { label: 'second', value: 23 },
+      { label: 'third', value: 35 },
+      { label: 'fourth', value: 87 }
+    ];
 
     return <StackedBarChart data={points} chartTitle={'Stacked Bar chart'} />;
   }

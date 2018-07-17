@@ -1,6 +1,5 @@
 import * as React from 'react';
-// import { max as d3Max } from 'd3-array';
-// import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear } from 'd3-scale';
+import { Idata } from './StackedBarChart.types';
 
 import { classNamesFunction, IClassNames } from '../../Utilities';
 import { IStackedBarChartProps, IStackedBarChartStyleProps, IStackedBarChartStyles } from './StackedBarChart.types';
@@ -44,36 +43,42 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         {this.props.chartTitle && <p className={this._classNames.chartTitle}>{this.props.chartTitle}</p>}
         <svg className={this._classNames.chart}>
           <g className={this._classNames.bars}>{bars}</g>
-          <g className={this._classNames.Legend}>{legendBar}</g>
+          <g className={this._classNames.legend}>{legendBar}</g>
         </svg>
       </div>
     );
   }
 
-  private _createBars(data: number[], height: number, width: number, barHeight: number): JSX.Element[] {
+  private _createBars(data: Idata[], height: number, width: number, barHeight: number): JSX.Element[] {
     let prevWidth = 0;
     const barWidths = [0];
-    const total = data.reduce((a: number, b: number) => a + b, 0);
-
-    const bars = data.map((point: number, index: number) => {
-      const value = (point / total) * width;
+    const total = data.map((item: Idata) => item.value).reduce((a: number, b: number) => a + b, 0);
+    const bars = data.map((point: Idata, index: number) => {
+      const value = (point.value / total) * width;
       prevWidth = prevWidth + value;
       barWidths.push(prevWidth);
 
       return (
-        <rect key={index} x={barWidths[index]} y={0} width={value} height={barHeight} fill={this._colors[index]} />
+        <rect
+          key={index}
+          x={barWidths[index]}
+          y={0}
+          width={value}
+          height={barHeight}
+          fill={this._colors[index % this._colors.length]}
+        />
       );
     });
     return bars;
   }
 
-  private _createLegendBars(data: number[], barHeight: number): JSX.Element[] {
-    const bars = data.map((point: number, index: number) => {
+  private _createLegendBars(data: Idata[], barHeight: number): JSX.Element[] {
+    const bars = data.map((point: Idata, index: number) => {
       return (
         <g key={index}>
-          <rect x={index * 40} y={0} width={12} height={12} fill={this._colors[index]} />
-          <text x={15 + index * 40} y={12} fill={this._colors[index]}>
-            {point}
+          <rect x={index * 80} y={0} width={12} height={12} fill={this._colors[index % this._colors.length]} />
+          <text x={15 + index * 80} y={12} fill={this._colors[index % this._colors.length]}>
+            {point.label}
           </text>
         </g>
       );
