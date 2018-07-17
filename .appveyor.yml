@@ -11,7 +11,7 @@ install:
 
 # Configure project artifacts.
 artifacts:
-  - path: apps\test-bundle-button\dist\test-bundle-button.json
+  - path: apps\test-bundle-button\dist\test-bundle-button-sizedata.json
     name: SizeAuditor
     type: json
 
