@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { BaseComponent, classNamesFunction } from '../../../Utilities';
-import { IStyleSet } from '../../../Styling';
 import { Icon } from '../../../Icon';
 import {
   IPersonaPresenceProps,
@@ -76,8 +75,8 @@ export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}
     );
   }
 
-  private _onRenderIcon = (className?: string, styles?: IStyleSet): JSX.Element => (
-    <Icon className={className} iconName={this._determineIcon()} style={styles} />
+  private _onRenderIcon = (className?: string, style?: React.CSSProperties): JSX.Element => (
+    <Icon className={className} iconName={this._determineIcon()} style={style} />
   );
 
   private _determineIcon = (): string | undefined => {

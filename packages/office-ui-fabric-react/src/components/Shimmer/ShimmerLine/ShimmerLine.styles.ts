@@ -1,5 +1,5 @@
 import { IShimmerLineStyleProps, IShimmerLineStyles } from './ShimmerLine.types';
-import { IStyleSet, getGlobalClassNames, HighContrastSelector } from '../../../Styling';
+import { IRawStyle, getGlobalClassNames, HighContrastSelector } from '../../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-ShimmerLine-root',
@@ -15,9 +15,9 @@ export function getStyles(props: IShimmerLineStyleProps): IShimmerLineStyles {
   const { palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  const styles: IStyleSet = !!borderStyle ? borderStyle : { borderWidth: '0px' };
+  const styles: IRawStyle = !!borderStyle ? borderStyle : { borderWidth: '0px' };
 
-  const sharedCornerStyles: IStyleSet = {
+  const sharedCornerStyles: IRawStyle = {
     position: 'absolute',
     fill: palette.white
   };

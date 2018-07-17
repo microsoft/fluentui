@@ -1,5 +1,5 @@
-import { BaseComponent, IBaseProps, IClassNames, autobind, customizable } from 'office-ui-fabric-react/lib/Utilities';
-import { ITheme, IStyle, mergeStyleSets, getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
+import { BaseComponent, IBaseProps, autobind, customizable } from 'office-ui-fabric-react/lib/Utilities';
+import { ITheme, IStyle, mergeStyleSets, getFocusStyle, IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import * as React from 'react';
 import { TypeScriptSnippet } from './TypeScriptSnippet';
 import { PageHeader } from './PageHeader';
@@ -79,7 +79,7 @@ export class PageExampleCard extends BaseComponent<IPageExampleCardProps, IPageE
     const { children, theme, code, title } = this.props;
     const { expanded } = this.state;
     const styleProps: IPageExampleCardStyleProps = { theme: theme! };
-    const classNames: IClassNames<IPageExampleCardStyles> = mergeStyleSets(getDefaultStyles(styleProps));
+    const classNames: IProcessedStyleSet<IPageExampleCardStyles> = mergeStyleSets(getDefaultStyles(styleProps));
 
     return (
       <div className={classNames.root}>
