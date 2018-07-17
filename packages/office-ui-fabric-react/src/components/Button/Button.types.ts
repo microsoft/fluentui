@@ -3,7 +3,7 @@ import { BaseButton } from './BaseButton';
 import { Button } from './Button';
 import { IButtonClassNames } from './BaseButton.classNames';
 import { ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
-import { IRenderFunction, KeyCodes, IComponentAs } from '../../Utilities';
+import { IRefObject, IRenderFunction, KeyCodes, IComponentAs } from '../../Utilities';
 import { IContextualMenuProps } from '../../ContextualMenu';
 import { IIconProps } from '../../Icon';
 import { IStyle, ITheme } from '../../Styling';
@@ -36,7 +36,7 @@ export interface IButtonProps
    * Optional callback to access the IButton interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IButton | null) => void;
+  componentRef?: IRefObject<IButton>;
 
   /**
    * If provided, this component will be rendered as an anchor.

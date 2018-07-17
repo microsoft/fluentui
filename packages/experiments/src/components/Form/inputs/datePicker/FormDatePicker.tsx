@@ -63,14 +63,6 @@ export class FormDatePicker extends FormBaseInput<Date, IFormDatePickerProps, IF
 
   private _validateDatePickerProps(props?: IDatePickerProps): void {
     if (props) {
-      if (props.key) {
-        console.warn(`FormDatePicker: 'key' prop was specified and will be ignored`);
-      }
-
-      if (props.ref) {
-        console.warn(`FormDatePicker: 'ref' prop was specified and will be ignored`);
-      }
-
       if (props.onSelectDate) {
         console.warn(`FormDatePicker: 'onSelectDate' prop was specified and will be ignored`);
       }

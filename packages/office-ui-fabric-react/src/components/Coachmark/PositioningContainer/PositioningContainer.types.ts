@@ -1,16 +1,14 @@
-import * as React from 'react';
-import { PositioningContainer } from './PositioningContainer';
 import { DirectionalHint } from '../../../common/DirectionalHint';
-import { IPoint, IRectangle } from '../../../Utilities';
+import { IRefObject, IBaseProps, IPoint, IRectangle } from '../../../Utilities';
 import { IPositionedData } from '../../../utilities/positioning';
 
 export interface IPositioningContainer {}
 
-export interface IPositioningContainerTypes extends React.Props<PositioningContainer> {
+export interface IPositioningContainerTypes extends IBaseProps<IPositioningContainer> {
   /**
    * All props for your component are to be defined here.
    */
-  componentRef?: (component: IPositioningContainer | null) => void;
+  componentRef?: IRefObject<IPositioningContainer>;
   /**
    * The target that the positioningContainer should try to position itself based on.
    * It can be either an HTMLElement a querySelector string of a valid HTMLElement

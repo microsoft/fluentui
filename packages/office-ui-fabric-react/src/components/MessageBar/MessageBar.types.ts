@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { BaseButton, Button } from '../../Button';
 import { ITheme, IStyle } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
-export interface IMessageBar { }
+export interface IMessageBar {}
 
 export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Optional callback to access the IMessageBar interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IMessageBar | null) => void;
+  componentRef?: IRefObject<IMessageBar>;
 
   /**
    * The type of MessageBar to render.

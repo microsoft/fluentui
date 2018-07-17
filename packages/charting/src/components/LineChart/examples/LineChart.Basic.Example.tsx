@@ -1,8 +1,6 @@
 import * as React from 'react';
-import { customizable } from 'office-ui-fabric-react';
 import { LineChart, ILineChartProps } from '@uifabric/charting';
 
-@customizable('LineChartBasicExample', ['theme', 'styles'])
 export class LineChartBasicExample extends React.Component<ILineChartProps, {}> {
   constructor(props: ILineChartProps) {
     super(props);

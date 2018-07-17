@@ -88,7 +88,7 @@ export interface IDocPageProps {
   propertiesTablesSources?: string[];
 
   /** Overview of the component as markdown string */
-  overview: string;
+  overview?: string;
 
   /** DO's blurb as markdown string */
   dos?: string;

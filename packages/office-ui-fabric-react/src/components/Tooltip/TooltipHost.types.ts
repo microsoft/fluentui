@@ -3,6 +3,7 @@ import { TooltipHost } from './TooltipHost';
 import { TooltipDelay, ITooltipProps } from './Tooltip.types';
 import { ICalloutProps } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
+import { IRefObject } from '../../Utilities';
 
 export interface ITooltipHost {}
 
@@ -22,7 +23,7 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
    * Optional callback to access the ITooltipHost interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ITooltipHost | null) => void;
+  componentRef?: IRefObject<ITooltipHost>;
 
   /**
    * Additional properties to pass through for Callout, reference detail properties in ICalloutProps
