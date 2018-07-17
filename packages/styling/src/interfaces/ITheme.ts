@@ -26,5 +26,5 @@ export interface IPartialTheme {
   semanticColors?: Partial<ISemanticColors>;
   isInverted?: boolean;
   disableGlobalClassNames?: boolean;
-  typography?: ITypography;
+  typography?: Partial<ITypography>;
 }
