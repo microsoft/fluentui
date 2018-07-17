@@ -80,9 +80,7 @@ if (stylesheet && stylesheet.onReset) {
  * @param name - Icon name to normalize.
  * @returns {string} Normalized icon name to use for indexing and mapping.
  */
-const normalizeIconName = (name: string): string => {
-  return name.toLowerCase();
-};
+const normalizeIconName = (name: string): string => name.toLowerCase();
 
 /**
  * Registers a given subset of icons.
@@ -144,14 +142,11 @@ export function unregisterIcons(iconNames: string[]): void {
     }
 
     // Delete any items that were an alias for this iconName
-    const remappedKeys = Object.keys(_iconSettings.__remapped).filter((key: string) => {
-      return _iconSettings.__remapped[key] === normalizedIconName;
-    });
-    if (remappedKeys.length) {
-      for (const remappedKey of remappedKeys) {
-        delete _iconSettings.__remapped[remappedKey];
+    Object.keys(_iconSettings.__remapped).forEach((key: string) => {
+      if (_iconSettings.__remapped[key] === normalizedIconName) {
+        delete _iconSettings.__remapped[key];
       }
-    }
+    });
   }
 }
 
