@@ -34,6 +34,11 @@ export interface INavPage {
   component?: any;
 
   /**
+   * Wether this link is a category subsection
+   */
+  isCategory?: boolean;
+
+  /**
    *  Loads the component using require.ensure;
    */
   getComponent?: (cb: (obj: any) => void) => any;
