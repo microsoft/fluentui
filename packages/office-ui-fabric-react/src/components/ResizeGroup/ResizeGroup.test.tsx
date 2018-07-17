@@ -4,6 +4,7 @@ import { ResizeGroup } from './ResizeGroup';
 import { IResizeGroupState, getNextResizeGroupStateProvider, getMeasurementCache } from './ResizeGroup.base';
 import * as sinon from 'sinon';
 import * as renderer from 'react-test-renderer';
+import { IResizeGroupProps } from '../..';
 
 interface ITestScalingData {
   scalingIndex: number;
@@ -12,6 +13,12 @@ interface ITestScalingData {
 function onReduceScalingData(data: ITestScalingData): ITestScalingData {
   return {
     scalingIndex: data.scalingIndex - 1
+  };
+}
+
+function onGrowScalingData(data: ITestScalingData): ITestScalingData {
+  return {
+    scalingIndex: data.scalingIndex + 1
   };
 }
 
@@ -573,5 +580,25 @@ describe('ResizeGroup', () => {
     const result = resizeGroupStateProvider.shouldRenderDataForMeasurement(data);
 
     expect(result).toEqual(false);
+  });
+
+  it('it tries to measure smaller data when the contents do not fit on the initial measure and an onGrowData is provided', () => {
+    const props: IResizeGroupProps = {
+      data: { scalingIndex: 8 },
+      onReduceData: onReduceScalingData,
+      onGrowData: onGrowScalingData,
+      onRenderData: sinon.stub()
+    };
+
+    const stateProvider = getNextResizeGroupStateProvider();
+
+    const initialState = stateProvider.getInitialResizeGroupState(props.data);
+
+    const getElementToMeasureWidth = () => 100;
+    const containerWidth = 75;
+
+    const nextState = stateProvider.getNextState(props, initialState, getElementToMeasureWidth, containerWidth);
+
+    expect(nextState!.dataToMeasure.scalingIndex).toEqual(7);
   });
 });

@@ -284,9 +284,18 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     return true;
   }
 
+  function getInitialResizeGroupState(data: any): IResizeGroupState {
+    return {
+      dataToMeasure: { ...data },
+      resizeDirection: 'grow',
+      measureContainer: true
+    };
+  }
+
   return {
     getNextState,
-    shouldRenderDataForMeasurement
+    shouldRenderDataForMeasurement,
+    getInitialResizeGroupState
   };
 };
 
@@ -322,11 +331,7 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
 
   constructor(props: IResizeGroupProps) {
     super(props);
-    this.state = {
-      dataToMeasure: { ...this.props.data },
-      resizeDirection: 'grow',
-      measureContainer: true
-    };
+    this.state = this._nextResizeGroupStateProvider.getInitialResizeGroupState(this.props.data);
   }
 
   public render(): JSX.Element {
