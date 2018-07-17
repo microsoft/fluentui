@@ -1,4 +1,4 @@
-import { PersonaPresence } from '../../Persona';
+import { PersonaPresence } from '../../../Persona';
 import { IExtendedPersonaProps } from '../../SelectedItemsList';
 import { TestImages } from '../../../common/TestImages';
 
