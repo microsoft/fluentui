@@ -1,12 +1,10 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, customizable } from '../../Utilities';
-import { ICheckProps, ICheckStyleProps, ICheckStyles } from './Check.types';
+import { BaseComponent } from '../../Utilities';
+import { ICheckProps } from './Check.types';
 import { Icon } from '../../Icon';
 import { getStyles } from './Check.styles';
+import { getClassNames } from './Check.classNames';
 
-const getClassNames = classNamesFunction<ICheckStyleProps, ICheckStyles>();
-
-@customizable('Check', ['theme', 'styles'])
 export class CheckBase extends BaseComponent<ICheckProps, {}> {
   public static defaultProps: ICheckProps = {
     checked: false

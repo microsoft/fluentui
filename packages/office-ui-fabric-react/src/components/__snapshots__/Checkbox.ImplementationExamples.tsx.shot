@@ -51,12 +51,18 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
         &:hover .ms-Checkbox-checkbox {
           border-color: #212121;
         }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+          border-color: Highlight;
+        }
         &:focus .ms-Checkbox-checkbox {
           border-color: #212121;
         }
         &:hover .ms-Checkbox-checkmark {
           color: #a6a6a6;
           opacity: 1;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+          color: Highlight;
         }
         &:hover .ms-Checkbox-text {
           color: #333333;
@@ -80,7 +86,7 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
           {
             align-items: center;
             cursor: pointer;
-            display: inline-flex;
+            display: flex;
             margin-bottom: 0;
             margin-left: -4px;
             margin-right: -4px;
@@ -219,12 +225,20 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
           border-color: #106ebe;
         }
         @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-          background: WindowText;
-          border-color: WindowText;
+          background: Window;
+          border-color: Highlight;
         }
         @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-checkbox {
-          background: WindowText;
-          border-color: WindowText;
+          background: Highlight;
+        }
+        @media screen and (-ms-high-contrast: active){&:focus:hover .ms-Checkbox-checkbox {
+          background: Highlight;
+        }
+        @media screen and (-ms-high-contrast: active){&:focus:hover .ms-Checkbox-checkmark {
+          color: Window;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+          color: Highlight;
         }
         &:hover .ms-Checkbox-text {
           color: #333333;
@@ -249,7 +263,7 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
           {
             align-items: center;
             cursor: pointer;
-            display: inline-flex;
+            display: flex;
             margin-bottom: 0;
             margin-left: -4px;
             margin-right: -4px;
@@ -285,8 +299,8 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
               width: 20px;
             }
             @media screen and (-ms-high-contrast: active){& {
-              background: WindowText;
-              border-color: WindowText;
+              background: Highlight;
+              border-color: Highlight;
             }
         data-ktp-target={undefined}
       >
@@ -393,7 +407,7 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
           {
             align-items: center;
             cursor: default;
-            display: inline-flex;
+            display: flex;
             margin-bottom: 0;
             margin-left: -4px;
             margin-right: -4px;
@@ -534,7 +548,7 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
           {
             align-items: center;
             cursor: default;
-            display: inline-flex;
+            display: flex;
             margin-bottom: 0;
             margin-left: -4px;
             margin-right: -4px;
@@ -662,12 +676,18 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
         &:hover .ms-Checkbox-checkbox {
           border-color: #212121;
         }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+          border-color: Highlight;
+        }
         &:focus .ms-Checkbox-checkbox {
           border-color: #212121;
         }
         &:hover .ms-Checkbox-checkmark {
           color: #a6a6a6;
           opacity: 1;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+          color: Highlight;
         }
         &:hover .ms-Checkbox-text {
           color: #333333;
@@ -691,7 +711,7 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
           {
             align-items: center;
             cursor: pointer;
-            display: inline-flex;
+            display: flex;
             margin-bottom: 0;
             margin-left: -4px;
             margin-right: -4px;
@@ -818,12 +838,18 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
         &:hover .ms-Checkbox-checkbox {
           border-color: #212121;
         }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+          border-color: Highlight;
+        }
         &:focus .ms-Checkbox-checkbox {
           border-color: #212121;
         }
         &:hover .ms-Checkbox-checkmark {
           color: #a6a6a6;
           opacity: 1;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+          color: Highlight;
         }
         &:hover .ms-Checkbox-text {
           color: #333333;
@@ -847,7 +873,7 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
           {
             align-items: center;
             cursor: pointer;
-            display: inline-flex;
+            display: flex;
             flex-direction: row-reverse;
             justify-content: flex-end;
             margin-bottom: 0;
@@ -975,12 +1001,18 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
         &:hover .ms-Checkbox-checkbox {
           border-color: #212121;
         }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+          border-color: Highlight;
+        }
         &:focus .ms-Checkbox-checkbox {
           border-color: #212121;
         }
         &:hover .ms-Checkbox-checkmark {
           color: #a6a6a6;
           opacity: 1;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+          color: Highlight;
         }
         &:hover .ms-Checkbox-text {
           color: #333333;
@@ -1004,7 +1036,7 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
           {
             align-items: center;
             cursor: pointer;
-            display: inline-flex;
+            display: flex;
             margin-bottom: 0;
             margin-left: -4px;
             margin-right: -4px;

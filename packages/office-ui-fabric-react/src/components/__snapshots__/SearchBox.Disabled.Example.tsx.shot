@@ -94,7 +94,6 @@ exports[`Component Examples renders SearchBox.Disabled.Example.tsx correctly 1`]
       className=
           ms-SearchBox-field
           {
-            background-color: #ffffff;
             border: none;
             box-shadow: none;
             box-sizing: border-box;
@@ -226,7 +225,6 @@ exports[`Component Examples renders SearchBox.Disabled.Example.tsx correctly 1`]
       className=
           ms-SearchBox-field
           {
-            background-color: #ffffff;
             border: none;
             box-shadow: none;
             box-sizing: border-box;

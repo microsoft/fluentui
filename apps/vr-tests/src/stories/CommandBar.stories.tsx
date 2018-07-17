@@ -28,8 +28,8 @@ const items: ICommandBarItemProps[] = [
             iconName: 'Calendar'
           }
         }
-      ],
-    },
+      ]
+    }
   },
   {
     key: 'upload',
@@ -90,34 +90,28 @@ storiesOf('CommandBar', module)
   .addDecorator(FabricDecoratorTall)
   .addDecorator(story => (
     <Screener
-      steps={ new Screener.Steps()
+      steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-CommandBarItem-link')
         .snapshot('hover', { cropTo: '.testWrapper' })
         .click('.ms-CommandBarItem-link')
         .hover('.ms-CommandBarItem-link')
         .snapshot('click', { cropTo: '.testWrapper' })
-        .end()
-      }
+        .end()}
     >
-      { story() }
+      {story()}
     </Screener>
   ))
-  .add('Root', () => (
-    <CommandBar
-      items={ items }
-      farItems={ farItems }
-    />
-  ))
+  .add('Root', () => <CommandBar items={items} farItems={farItems} />)
   .add('Text only', () => (
     <CommandBar
-      items={ items.map(item => ({ ...item, iconProps: undefined })) }
-      farItems={ farItems.map(item => ({ ...item, iconProps: undefined })) }
+      items={items.map(item => ({ ...item, iconProps: undefined }))}
+      farItems={farItems.map(item => ({ ...item, iconProps: undefined }))}
     />
   ))
   .add('Icons only', () => (
     <CommandBar
-      items={ items.map(item => ({ ...item, text: '' })) }
-      farItems={ farItems.map(item => ({ ...item, text: '' })) }
+      items={items.map(item => ({ ...item, text: undefined }))}
+      farItems={farItems.map(item => ({ ...item, iconOnly: true }))}
     />
   ));

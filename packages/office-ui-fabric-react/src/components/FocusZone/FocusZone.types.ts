@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { FocusZone } from './FocusZone';
+import { IRefObject } from '../../Utilities';
 
 /**
  * FocusZone component class interface.
@@ -30,7 +31,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
    * Optional callback to access the IFocusZone interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IFocusZone | null) => void;
+  componentRef?: IRefObject<IFocusZone>;
 
   /**
    * Additional class name to provide on the root element, in addition to the ms-FocusZone class.

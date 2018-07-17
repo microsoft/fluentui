@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IPickerItemProps, ISuggestionModel, ValidationState } from '../../Pickers';
 import { Selection } from '../../Selection';
+import { IRefObject } from '../../Utilities';
 
 export interface IBaseSelectedItemsList<T> {
   /** Gets the current value of the input. */
@@ -17,7 +18,7 @@ export interface ISelectedItemProps<T> extends IPickerItemProps<T> {
 // For example, if the picker is displaying persona's than type T could either be of Persona or Ipersona props
 // tslint:disable-next-line:no-any
 export interface IBaseSelectedItemsListProps<T> extends React.Props<any> {
-  componentRef?: (component?: IBaseSelectedItemsList<T> | null) => void;
+  componentRef?: IRefObject<IBaseSelectedItemsList<T>>;
 
   /**
    * The selection

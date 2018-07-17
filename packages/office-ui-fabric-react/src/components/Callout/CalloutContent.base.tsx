@@ -10,7 +10,6 @@ import {
   focusFirstChild,
   getWindow,
   getDocument,
-  customizable,
   css,
   createRef
 } from '../../Utilities';
@@ -48,7 +47,6 @@ export interface ICalloutState {
   heightOffset?: number;
 }
 
-@customizable('CalloutContent', ['theme', 'styles'])
 export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutState> {
   public static defaultProps = {
     preventDismissOnLostFocus: false,

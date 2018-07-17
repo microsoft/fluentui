@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   BaseComponent,
   classNamesFunction,
-  customizable,
   divProperties,
   getInitials,
   getNativeProps,
@@ -52,7 +51,6 @@ export interface IPersonaState {
  * PersonaCoin with no default styles.
  * [Use the `getStyles` API to add your own styles.](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Styling)
  */
-@customizable('PersonaCoin', ['theme', 'styles'])
 export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaState> {
   public static defaultProps: IPersonaCoinProps = {
     size: PersonaSize.size48,
@@ -88,6 +86,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
     const size = this.props.size as PersonaSize;
     const divProps = getNativeProps(this.props, divProperties);
     const coinSizeStyle = coinSize ? { width: coinSize, height: coinSize } : undefined;
+    const hideImage = showUnknownPersonaCoin;
 
     const personaPresenceProps: IPersonaPresenceProps = {
       coinSize,
@@ -110,7 +109,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
         size !== PersonaSize.size10 && size !== PersonaSize.tiny ? (
           <div {...coinProps} className={classNames.imageArea} style={coinSizeStyle}>
             {!this.state.isImageLoaded &&
-              (!imageUrl || this.state.isImageError) && (
+              (!imageUrl || this.state.isImageError || hideImage) && (
                 <div
                   className={mergeStyles(
                     classNames.initials,
@@ -122,7 +121,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
                   {onRenderInitials(this.props, this._onRenderInitials)}
                 </div>
               )}
-            {onRenderCoin(this.props, this._onRenderCoin)}
+            {!hideImage && onRenderCoin(this.props, this._onRenderCoin)}
             <PersonaPresence {...personaPresenceProps} />
           </div>
         ) : // Otherwise, render just PersonaPresence.

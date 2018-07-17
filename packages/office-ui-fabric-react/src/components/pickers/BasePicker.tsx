@@ -23,6 +23,7 @@ export interface IBasePickerState {
   suggestionsVisible?: boolean;
   suggestionsLoading?: boolean;
   isResultsFooterVisible?: boolean;
+  selectedIndices?: number[];
 }
 
 export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBasePickerState>
@@ -53,7 +54,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       isMostRecentlyUsedVisible: false,
       moreSuggestionsAvailable: false,
       isFocused: false,
-      isSearching: false
+      isSearching: false,
+      selectedIndices: []
     };
   }
 
@@ -266,13 +268,13 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     const { disabled, removeButtonAriaLabel } = this.props;
     const onRenderItem = this.props.onRenderItem as (props: IPickerItemProps<T>) => JSX.Element;
 
-    const { items } = this.state;
+    const { items, selectedIndices } = this.state;
     return items.map((item: any, index: number) =>
       onRenderItem({
         item,
         index,
         key: item.key ? item.key : index,
-        selected: this.selection.isIndexSelected(index),
+        selected: selectedIndices!.indexOf(index) !== -1,
         onRemoveItem: () => this.removeItem(item),
         disabled: disabled,
         onItemChange: this.onItemChange,
@@ -294,7 +296,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         this.focusZone.current.focusElement(newEl);
       }
     } else if (!this.canAddItems()) {
-      (items[items.length - 1] as IPickerItemProps<T>).selected = true;
       this.resetFocus(items.length - 1);
     } else {
       if (this.input.current) {
@@ -312,7 +313,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   protected onSelectionChange() {
-    this.forceUpdate();
+    this.setState({
+      selectedIndices: this.selection.getSelectedIndices()
+    });
   }
 
   protected updateSuggestions(suggestions: any[]) {

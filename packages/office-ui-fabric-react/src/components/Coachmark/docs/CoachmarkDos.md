@@ -1,3 +1,5 @@
 - Only one Coachmark + TeachingBubble combo should be displayed at a time
 - Coachmarks can be stand alone or sequential. Sequential Coachmarks should be used sparingly, to walk through complex multi-step interactions. It is recommended that a sequence of Coachmarks does not exceed 3 steps.
-- Coachmarks are designed to only hold TeachingBubbles.
+- Coachmarks are designed to only hold TeachingBubbles
+- Provide descriptive text in the `ariaDescribedByText` prop to let accessibility impaired users know how to open/access the Coachmark with keyboard controls. (See example in documentation)
+- The keyboard shortcut for opening the Coachmark is `Alt + C`

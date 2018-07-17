@@ -4,7 +4,7 @@ import { ICalloutProps } from '../../Callout';
 import { IRenderFunction } from '../../Utilities';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
 export interface ITooltip {}
 
@@ -16,7 +16,7 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | Too
    * Optional callback to access the ITooltip interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ITooltip | null) => void;
+  componentRef?: IRefObject<ITooltip>;
 
   /**
    * Properties to pass through for Callout, reference detail properties in ICalloutProps

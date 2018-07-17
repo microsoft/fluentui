@@ -5,5 +5,7 @@ import { getStyles } from './ScrollablePane.styles';
 
 export const ScrollablePane = styled<IScrollablePaneProps, IScrollablePaneStyleProps, IScrollablePaneStyles>(
   ScrollablePaneBase,
-  getStyles
+  getStyles,
+  undefined,
+  { scope: 'ScrollablePane' }
 );

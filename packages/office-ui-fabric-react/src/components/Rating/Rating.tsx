@@ -5,5 +5,7 @@ import { RatingBase } from './Rating.base';
 
 export const Rating: (props: IRatingProps) => JSX.Element = styled<IRatingProps, IRatingStyleProps, IRatingStyles>(
   RatingBase,
-  getStyles
+  getStyles,
+  undefined,
+  { scope: 'Rating' }
 );

@@ -16,7 +16,7 @@ import * as stylesImport from './TextField.scss';
 const styles: any = stylesImport;
 import { AnimationClassNames } from '../../Styling';
 export interface ITextFieldState {
-  value?: string | undefined;
+  value: string;
 
   /** Is true when the control has focus. */
   isFocused?: boolean;
@@ -29,6 +29,8 @@ export interface ITextFieldState {
    */
   errorMessage?: string;
 }
+
+const DEFAULT_STATE_VALUE = '';
 
 export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> implements ITextField {
   public static defaultProps: ITextFieldProps = {
@@ -77,7 +79,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       value: 'defaultValue'
     });
 
-    this._id = getId('TextField');
+    this._id = props.id || getId('TextField');
     this._descriptionId = getId('TextFieldDescription');
 
     if (props.value !== undefined) {
@@ -85,7 +87,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     } else if (props.defaultValue !== undefined) {
       this._latestValue = props.defaultValue;
     } else {
-      this._latestValue = '';
+      this._latestValue = DEFAULT_STATE_VALUE;
     }
 
     this.state = {
@@ -122,15 +124,18 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   public componentWillReceiveProps(newProps: ITextFieldProps): void {
     const { onBeforeChange } = this.props;
 
-    if (newProps.value !== undefined && newProps.value !== this.state.value) {
+    // If old value prop was undefined, then component is controlled and we should
+    //    respect new undefined value and update state accordingly.
+    if (newProps.value !== this.state.value && (newProps.value !== undefined || this.props.value !== undefined)) {
       if (onBeforeChange) {
         onBeforeChange(newProps.value);
       }
 
+      this._id = newProps.id || this._id;
       this._latestValue = newProps.value;
       this.setState(
         {
-          value: newProps.value,
+          value: newProps.value || DEFAULT_STATE_VALUE,
           errorMessage: ''
         } as ITextFieldState,
         () => {

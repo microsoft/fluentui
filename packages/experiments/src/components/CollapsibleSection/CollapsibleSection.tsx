@@ -1,4 +1,4 @@
-import { createComponent } from '../../utilities/createComponent';
+import { createComponent } from '../../Foundation';
 import { CollapsibleSectionView } from './CollapsibleSection.view';
 import { CollapsibleSectionState } from './CollapsibleSection.state';
 import { getStyles as styles } from './CollapsibleSection.styles';

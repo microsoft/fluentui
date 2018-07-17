@@ -22,12 +22,6 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/chiclet'
         },
         {
-          component: require<any>('../components/Card/CardPage').CardPage,
-          key: 'DashboardCard',
-          name: 'DashboardCard',
-          url: '#/examples/Card'
-        },
-        {
           component: require<any>('../components/FolderCover/FolderCoverPage').FolderCoverPage,
           key: 'FolderCover',
           name: 'FolderCover',
@@ -52,16 +46,22 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/layoutgroup'
         },
         {
-          component: require<any>('../components/Recommendation/RecommendationPage').RecommendationPage,
-          key: 'Recommendation',
-          name: 'Recommendation',
-          url: '#/examples/recommendation'
-        },
-        {
           component: require<any>('../components/signals/SignalsPage').SignalsPage,
           key: 'Signals',
           name: 'Signals',
           url: '#/examples/signals'
+        },
+        {
+          component: require<any>('../components/Stack/StackPage').StackPage,
+          key: 'Stack',
+          name: 'Stack',
+          url: '#/examples/stack'
+        },
+        {
+          component: require<any>('../components/Text/TextPage').TextPage,
+          key: 'Text',
+          name: 'Text',
+          url: '#/examples/text'
         },
         {
           component: require<any>('../components/Tile/TilePage').TilePage,
@@ -92,12 +92,6 @@ export const AppDefinition: IAppDefinition = {
           key: 'StaticList',
           name: 'StaticList',
           url: '#/examples/staticlist'
-        },
-        {
-          component: require<any>('../components/Nav/NavPage').NavPage,
-          key: 'Nav',
-          name: 'Nav',
-          url: '#/examples/nav'
         },
         {
           component: require<any>('../components/fluent/theme/FluentThemePage').FluentThemePage,

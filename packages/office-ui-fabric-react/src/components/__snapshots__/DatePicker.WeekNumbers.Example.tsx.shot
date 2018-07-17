@@ -5,7 +5,20 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
   className="docs-DatePickerExample"
 >
   <div
-    className="ms-DatePicker"
+    className=
+        ms-DatePicker
+        {
+          box-shadow: none;
+          box-sizing: border-box;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+        }
   >
     <div>
       <div
@@ -43,14 +56,23 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
               aria-hidden={true}
               className=
                   ms-DatePicker-event--without-label
+                  msDatePickerDisabled
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
+                    color: #666666;
+                    cursor: pointer;
                     display: inline-block;
                     font-family: "FabricMDL2Icons";
+                    font-size: 16px;
                     font-style: normal;
                     font-weight: normal;
+                    line-height: 18px;
+                    pointer-events: initial;
+                    position: absolute;
+                    right: 9px;
                     speak: none;
+                    top: 7px;
                   }
               data-icon-name="Calendar"
               onClick={[Function]}
@@ -98,13 +120,14 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
       aria-disabled={undefined}
       aria-expanded="false"
       aria-label={undefined}
-      aria-live="assertive"
+      aria-labelledby="Dropdown2-label"
       aria-owns={undefined}
       className="ms-Dropdown"
       data-is-focusable={true}
       id="Dropdown2"
       onBlur={[Function]}
       onClick={[Function]}
+      onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
       role="listbox"
@@ -113,9 +136,13 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
       <span
         aria-atomic={true}
         aria-label="Monday"
+        aria-live="off"
+        aria-posinset={2}
+        aria-selected={true}
+        aria-setsize={7}
         className="ms-Dropdown-title"
         id="Dropdown2-option"
-        role="listbox"
+        role="option"
       >
         <span>
           Monday

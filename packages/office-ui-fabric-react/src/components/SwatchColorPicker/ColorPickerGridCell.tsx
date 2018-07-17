@@ -11,4 +11,4 @@ export const ColorPickerGridCell: (props: IColorPickerGridCellProps) => JSX.Elem
   IColorPickerGridCellProps,
   IColorPickerGridCellStyleProps,
   IColorPickerGridCellStyles
->(ColorPickerGridCellBase, getStyles);
+>(ColorPickerGridCellBase, getStyles, undefined, { scope: 'ColorPickerGridCell' });
