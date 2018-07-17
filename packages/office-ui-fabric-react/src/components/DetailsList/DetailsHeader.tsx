@@ -256,7 +256,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
               ) }
               aria-labelledby={ `${this._id}-check` }
               onClick={ this._onSelectAllClicked }
-              aria-colindex={ 0 }
+              aria-colindex={ 1 }
               role='columnheader'
             >
               { onRenderColumnHeaderTooltip(
