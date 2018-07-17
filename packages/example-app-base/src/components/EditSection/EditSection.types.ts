@@ -1,4 +1,5 @@
 import { EditSection } from './EditSection';
+import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface IEditSection {}
 
@@ -7,7 +8,7 @@ export interface IEditSectionProps extends React.HTMLAttributes<EditSection> {
    * Optional callback to access the IPersona interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IEditSection | null) => void;
+  componentRef?: IRefObject<IEditSection>;
 
   /**
    * The name of the Component
