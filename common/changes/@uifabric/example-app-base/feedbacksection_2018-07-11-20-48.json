@@ -3,7 +3,7 @@
     {
       "packageName": "@uifabric/example-app-base",
       "comment": "Added optional feedback section for component pages",
-      "type": "minor"
+      "type": "patch"
     }
   ],
   "packageName": "@uifabric/example-app-base",

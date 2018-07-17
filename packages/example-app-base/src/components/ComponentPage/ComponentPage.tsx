@@ -4,7 +4,6 @@ import { Link } from 'office-ui-fabric-react/lib/Link';
 import { MessageBar } from 'office-ui-fabric-react/lib/MessageBar';
 import { EditSection, ComponentPageSection } from '../EditSection';
 import './ComponentPage.scss';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
 
 export interface IComponentPageSection {
   title: string;
@@ -12,24 +11,42 @@ export interface IComponentPageSection {
 }
 
 export interface IComponentPageProps {
+  /** Component Title **/
   title: string;
+  /** Component Name **/
   componentName: string;
+  /** Component examples **/
   exampleCards?: JSX.Element;
+  /** Array of implementation examples, displayed in the order defined */
   implementationExampleCards?: JSX.Element;
+  /** Component properties table(s) **/
   propertiesTables?: JSX.Element;
+  /** Component best practices **/
   bestPractices?: JSX.Element;
+  /** Component dos **/
   dos?: JSX.Element;
+  /** Component donts **/
   donts?: JSX.Element;
+  /** Component overview **/
   overview: JSX.Element;
+  /** Related link */
   related?: JSX.Element;
+  /** Header visibility flag */
   isHeaderVisible?: boolean;
+  /** Badges visibility flag **/
   areBadgesVisible?: boolean;
+  /** className of the component being documented */
   className?: string;
+  /** Status of the component; e.g. keyboard accessible */
   componentStatus?: JSX.Element;
+  /** Pass through other sections for ComponentPage */
   otherSections?: IComponentPageSection[];
+  /** Allows native props */
   allowNativeProps?: boolean | string;
+  /** Native props root element */
   nativePropsElement?: string | string[] | undefined;
-  feedback?: JSX.Element;
+  /** Includes the feedback section **/
+  feedback?: boolean;
 
   /**
    * Link to the Component root folder on GitHub.
@@ -374,7 +391,6 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
           <Link href="https://github.com/OfficeDev/office-ui-fabric-react/issues/new/choose" target="_blank">
             Submit feedback on Github
           </Link>
-          {this.props.feedback}
         </div>
       );
     }

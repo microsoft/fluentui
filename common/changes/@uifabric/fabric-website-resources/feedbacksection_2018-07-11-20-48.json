@@ -3,7 +3,7 @@
     {
       "packageName": "@uifabric/fabric-website-resources",
       "comment": "Added optional feedback section for component pages",
-      "type": "minor"
+      "type": "patch"
     }
   ],
   "packageName": "@uifabric/fabric-website-resources",
