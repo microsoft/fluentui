@@ -50,7 +50,7 @@ export const getClassNames = memoizeFunction((): IPositioningContainerNames => {
       border: '1px solid ${}',
       selectors: {
         ...highContrastActive({
-          border: "1px solid WindowText"
+          border: '1px solid WindowText'
         }),
         ...focusClear()
       }
