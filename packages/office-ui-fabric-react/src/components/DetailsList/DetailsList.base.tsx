@@ -340,7 +340,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     }
 
     const { onRenderDetailsHeader = this._onRenderDetailsHeader } = this.props;
-    const newgroupProps = groupProps ? this._getGroupProps(groupProps) : undefined;
+    const recomputedGroupProps = groupProps ? this._getGroupProps(groupProps) : undefined;
     const rowCount = (isHeaderVisible ? 1 : 0) + GetGroupCount(groups) + (items ? items.length : 0);
 
     const classNames = getClassNames(styles, {
@@ -425,7 +425,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
                   <GroupedList
                     componentRef={this._groupedList}
                     groups={groups}
-                    groupProps={newgroupProps}
+                    groupProps={recomputedGroupProps}
                     items={items}
                     onRenderCell={this._onRenderCell}
                     selection={selection}
@@ -923,14 +923,11 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     }
   };
 
-  private _getGroupProps(groupProps: IDetailsGroupRenderProps | undefined): IGroupRenderProps | undefined {
-    if (groupProps === undefined) {
-      return undefined;
-    }
-    const { onRenderFooter: onRenderDetailsGroupFooter } = groupProps as IDetailsGroupRenderProps;
+  private _getGroupProps(detailsGroupProps: IDetailsGroupRenderProps): IGroupRenderProps {
+    const { onRenderFooter: onRenderDetailsGroupFooter } = detailsGroupProps;
     const { adjustedColumns: columns } = this.state;
 
-    if (groupProps!.isRenderFooterOverride) {
+    if (detailsGroupProps!.isRenderFooterOverride) {
       const onRenderFooter = onRenderDetailsGroupFooter
         ? (props: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
             return onRenderDetailsGroupFooter(
@@ -943,16 +940,16 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
           }
         : undefined;
 
-      const newGroupProps = groupProps as IGroupRenderProps;
+      const groupProps = detailsGroupProps as IGroupRenderProps;
 
       return {
-        ...newGroupProps,
+        ...groupProps,
         onRenderFooter
       };
     } else {
-      const newGroupProps = groupProps as IGroupRenderProps;
+      const groupProps = detailsGroupProps as IGroupRenderProps;
       return {
-        ...newGroupProps
+        ...groupProps
       };
     }
   }
