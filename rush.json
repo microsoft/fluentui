@@ -36,8 +36,8 @@
       "shouldPublish": true
     },
     {
-      "packageName": "@uifabric/dashboard-grid-layout",
-      "projectFolder": "packages/dashboard-grid-layout",
+      "packageName": "@uifabric/dashboard",
+      "projectFolder": "packages/dashboard",
       "versionPolicyName": "lockedMajor",
       "shouldPublish": true
     },

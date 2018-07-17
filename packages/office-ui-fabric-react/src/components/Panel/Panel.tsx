@@ -1,6 +1,15 @@
 import * as React from 'react';
 
-import { BaseComponent, css, divProperties, getId, getNativeProps, getRTL, createRef } from '../../Utilities';
+import {
+  BaseComponent,
+  css,
+  divProperties,
+  getId,
+  getNativeProps,
+  getRTL,
+  createRef,
+  elementContains
+} from '../../Utilities';
 import { FocusTrapZone } from '../FocusTrapZone/index';
 import { IPanel, IPanelProps, PanelType } from './Panel.types';
 import { Layer } from '../Layer/Layer';
@@ -51,20 +60,27 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
   public componentDidMount(): void {
     this._events.on(window, 'resize', this._updateFooterPosition);
 
+    if (this._shouldListenForOuterClick(this.props)) {
+      this._events.on(document.body, 'click', this._dismissOnOuterClick, true);
+    }
+
     if (this.props.isOpen) {
       this.open();
     }
   }
 
-  public componentWillReceiveProps(newProps: IPanelProps): void {
-    if (newProps.isBlocking) {
-      if (newProps.isOpen) {
-        this._events.on(document, 'click', this._dismissOnOuterClick);
-      } else {
-        this._events.off(document, 'click', this._dismissOnOuterClick);
-      }
-    }
+  public componentDidUpdate(previousProps: IPanelProps): void {
+    const shouldListenOnOuterClick = this._shouldListenForOuterClick(this.props);
+    const previousShouldListenOnOuterClick = this._shouldListenForOuterClick(previousProps);
 
+    if (shouldListenOnOuterClick && !previousShouldListenOnOuterClick) {
+      this._events.on(document.body, 'click', this._dismissOnOuterClick, true);
+    } else if (!shouldListenOnOuterClick && previousShouldListenOnOuterClick) {
+      this._events.off(document.body, 'click', this._dismissOnOuterClick, true);
+    }
+  }
+
+  public componentWillReceiveProps(newProps: IPanelProps): void {
     if (newProps.isOpen !== this.state.isOpen) {
       if (newProps.isOpen) {
         this.open();
@@ -222,6 +238,10 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     }
   };
 
+  private _shouldListenForOuterClick(props: IPanelProps): boolean {
+    return !!props.isBlocking && !!props.isOpen;
+  }
+
   private _onRenderNavigation = (props: IPanelProps): JSX.Element | null => {
     const { closeButtonAriaLabel, hasCloseButton } = props;
     if (hasCloseButton) {
@@ -312,7 +332,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
   private _dismissOnOuterClick(ev: any): void {
     const panel = this._panel.current;
     if (this.state.isOpen && panel) {
-      if (!panel.contains(ev.target)) {
+      if (!elementContains(panel, ev.target)) {
         if (this.props.onOuterClick) {
           this.props.onOuterClick();
           ev.preventDefault();

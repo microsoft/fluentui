@@ -3,4 +3,6 @@ import { ILayerProps, ILayerStyleProps, ILayerStyles } from './Layer.types';
 import { LayerBase } from './Layer.base';
 import { getStyles } from './Layer.styles';
 
-export const Layer = styled<ILayerProps, ILayerStyleProps, ILayerStyles>(LayerBase, getStyles);
+export const Layer = styled<ILayerProps, ILayerStyleProps, ILayerStyles>(LayerBase, getStyles, undefined, {
+  scope: 'Layer'
+});

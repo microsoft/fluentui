@@ -2,6 +2,25 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.9.0",
+      "tag": "@uifabric/utilities_v6.9.0",
+      "date": "Fri, 13 Jul 2018 21:32:37 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "83486db0dd8f831599dd75f37b32878efac45ca0",
+            "comment": "Reverting the TypeScript bump, to un"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.2.3 <7.0.0` to `>=6.4.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.7.1",
       "tag": "@uifabric/utilities_v6.7.1",
       "date": "Wed, 20 Jun 2018 10:25:55 GMT",

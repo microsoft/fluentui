@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { IRenderFunction } from '../../Utilities';
+import { IRefObject, IRenderFunction } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
 
 export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Gets the component ref.
    */
-  componentRef?: () => void;
+  componentRef?: IRefObject<{}>;
 
   /**
    * The text displayed of each pivot link - renaming to 'headerText'.

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { IFocusZoneProps } from '../../FocusZone';
 import { IKeytipProps } from '../../Keytip';
 import { IStyle } from '../../Styling';
-import { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { OverflowSetBase } from './OverflowSet.base';
 
 export interface IOverflowSet {
@@ -28,7 +28,7 @@ export interface IOverflowSetProps extends React.Props<OverflowSetBase> {
   /**
    * Gets the component ref.
    */
-  componentRef?: (ref?: IOverflowSet | null) => void;
+  componentRef?: IRefObject<IOverflowSet>;
 
   /**
    * Class name

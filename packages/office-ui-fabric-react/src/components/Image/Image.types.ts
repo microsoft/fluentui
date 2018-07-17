@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
 export interface IImage {}
 
@@ -9,7 +9,7 @@ export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
    * Optional callback to access the ICheckbox interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IImage | null) => void;
+  componentRef?: IRefObject<IImage>;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules

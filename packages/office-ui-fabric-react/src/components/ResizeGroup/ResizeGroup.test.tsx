@@ -1,9 +1,7 @@
 import * as React from 'react';
-import { shallowUntilTarget } from '../../common/shallowUntilTarget';
-
+import { mount } from 'enzyme';
 import { ResizeGroup } from './ResizeGroup';
 import { IResizeGroupState, getNextResizeGroupStateProvider, getMeasurementCache } from './ResizeGroup.base';
-import { IResizeGroupProps } from './ResizeGroup.types';
 import * as sinon from 'sinon';
 import * as renderer from 'react-test-renderer';
 
@@ -49,12 +47,11 @@ describe('ResizeGroup', () => {
     const renderedDataId = 'onRenderDataId';
     const onRenderData = (data: any) => <div id={renderedDataId}> Rendered data: {data.content}</div>;
 
-    const wrapper = shallowUntilTarget<IResizeGroupProps, IResizeGroupState>(
-      <ResizeGroup data={initialData} onReduceData={onReduceScalingData} onRenderData={onRenderData} />,
-      'ResizeGroupBase'
+    const wrapper = mount(
+      <ResizeGroup data={initialData} onReduceData={onReduceScalingData} onRenderData={onRenderData} />
     );
 
-    expect(wrapper.containsMatchingElement(onRenderData(initialData))).toEqual(true);
+    expect(wrapper.find('#' + renderedDataId).length).toEqual(1);
   });
 
   describe('getNextResizeGroupStateProvider', () => {
@@ -554,7 +551,7 @@ describe('ResizeGroup', () => {
   it('does not render to the hidden div when there is no dataToMeasure', () => {
     const resizeGroupStateProvider = getNextResizeGroupStateProvider();
 
-    const result = resizeGroupStateProvider.shouldRenderDataToMeasureInHiddenDiv(undefined);
+    const result = resizeGroupStateProvider.shouldRenderDataForMeasurement(undefined);
 
     expect(result).toEqual(false);
   });
@@ -562,7 +559,7 @@ describe('ResizeGroup', () => {
   it('does render to the hidden div when there is dataToMeasure', () => {
     const resizeGroupStateProvider = getNextResizeGroupStateProvider();
 
-    const result = resizeGroupStateProvider.shouldRenderDataToMeasureInHiddenDiv({ index: 18 });
+    const result = resizeGroupStateProvider.shouldRenderDataForMeasurement({ index: 18 });
 
     expect(result).toEqual(true);
   });
@@ -573,7 +570,7 @@ describe('ResizeGroup', () => {
     measurementCache.addMeasurementToCache(data, 12);
     const resizeGroupStateProvider = getNextResizeGroupStateProvider(measurementCache);
 
-    const result = resizeGroupStateProvider.shouldRenderDataToMeasureInHiddenDiv(data);
+    const result = resizeGroupStateProvider.shouldRenderDataForMeasurement(data);
 
     expect(result).toEqual(false);
   });
