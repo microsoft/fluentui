@@ -112,7 +112,7 @@ export function mergeStyleSets(...styleSets: IStyleSet<any>[]): IProcessedStyleS
           continue;
         }
 
-        const styles: IStyle = styleSet[styleSetArea];
+        const styles: IStyle = (styleSet as any)[styleSetArea];
 
         const { classes, objects } = extractStyleParts(styles);
         const registration = styleToRegistration({ displayName: styleSetArea }, objects);
