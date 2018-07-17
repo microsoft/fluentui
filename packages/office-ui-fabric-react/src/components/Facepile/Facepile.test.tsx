@@ -1,11 +1,9 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
-import { shallowUntilTarget } from '../../common/shallowUntilTarget';
-
 import { setRTL } from '../../Utilities';
 import { Facepile } from './Facepile';
-import { IFacepileProps, IFacepilePersona, OverflowButtonType } from './Facepile.types';
+import { IFacepilePersona, OverflowButtonType } from './Facepile.types';
 import { PersonaSize } from '../../Persona';
 import { Persona } from '../../Persona';
 import { PersonaCoin } from '../../PersonaCoin';
@@ -146,75 +144,28 @@ describe('Facepile', () => {
 
   it('personas and buttons render specified size', () => {
     // Test XXS size renders
-    let wrapper = shallowUntilTarget<IFacepileProps, {}>(
-      <Facepile personas={facepilePersonas} personaSize={PersonaSize.size24} />,
-      'FacepileBase'
-    );
+    let wrapper = mount(<Facepile personas={facepilePersonas} personaSize={PersonaSize.size24} />);
 
     expect(wrapper.find(PersonaCoin).length).toEqual(facepilePersonas.length);
     wrapper.find(PersonaCoin).forEach(node => {
       // Need multiple Dives since PersonaCoin is decorated
-      expect(
-        node
-          .dive()
-          .dive()
-          .dive()
-          .hasClass('ms-Persona--size24')
-      ).toBeTruthy();
+      expect(node.find('.ms-Persona--size24').length).toEqual(1);
     });
 
     // Test small size renders
-    wrapper = shallowUntilTarget<IFacepileProps, {}>(
-      <Facepile personas={facepilePersonas} personaSize={PersonaSize.size40} />,
-      'FacepileBase'
-    );
+    wrapper = mount(<Facepile personas={facepilePersonas} personaSize={PersonaSize.size40} />);
 
     expect(wrapper.find(PersonaCoin).length).toEqual(facepilePersonas.length);
     wrapper.find(PersonaCoin).forEach(node => {
       // Need multiple Dives since PersonaCoin is decorated
-      expect(
-        node
-          .dive()
-          .dive()
-          .dive()
-          .hasClass('ms-Persona--size40')
-      ).toBeTruthy();
+      expect(node.find('.ms-Persona--size40').length).toEqual(1);
     });
   });
 
   it('renders Persona control if exactly one persona is sent in props', () => {
-    let wrapper = shallowUntilTarget<IFacepileProps, {}>(
-      <Facepile personas={facepilePersonas.slice(0, 1)} overflowPersonas={[]} />,
-      'FacepileBase'
-    );
+    const wrapper = mount(<Facepile personas={facepilePersonas.slice(0, 1)} overflowPersonas={[]} />);
 
-    expect(wrapper.find(PersonaCoin).length).toEqual(0);
-    expect(wrapper.find(Persona).length).toEqual(1);
-
-    wrapper = shallowUntilTarget<IFacepileProps, {}>(
-      <Facepile personas={facepilePersonas.slice(0, 1)} />,
-      'FacepileBase'
-    );
-
-    expect(wrapper.find(PersonaCoin).length).toEqual(0);
-    expect(wrapper.find(Persona).length).toEqual(1);
-  });
-
-  it('renders Persona control if exactly one persona is sent in props', () => {
-    let wrapper = shallowUntilTarget<IFacepileProps, {}>(
-      <Facepile personas={facepilePersonas.slice(0, 1)} overflowPersonas={[]} />,
-      'FacepileBase'
-    );
-
-    expect(wrapper.find(PersonaCoin).length).toEqual(0);
-    expect(wrapper.find(Persona).length).toEqual(1);
-
-    wrapper = shallowUntilTarget<IFacepileProps, {}>(
-      <Facepile personas={facepilePersonas.slice(0, 1)} />,
-      'FacepileBase'
-    );
-
-    expect(wrapper.find(PersonaCoin).length).toEqual(0);
+    expect(wrapper.find(PersonaCoin).length).toEqual(1);
     expect(wrapper.find(Persona).length).toEqual(1);
   });
 });

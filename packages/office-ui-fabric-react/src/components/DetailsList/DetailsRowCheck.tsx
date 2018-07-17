@@ -39,6 +39,7 @@ const DetailsRowCheckBase = (props: IDetailsRowCheckProps) => {
     selected: isPressed,
     anySelected,
     className,
+    isHeader,
     compact
   });
 
@@ -58,5 +59,7 @@ const DetailsRowCheckBase = (props: IDetailsRowCheckProps) => {
 
 export const DetailsRowCheck = styled<IDetailsRowCheckProps, IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>(
   DetailsRowCheckBase,
-  getStyles
+  getStyles,
+  undefined,
+  { scope: 'DetailsRowCheck' }
 );

@@ -15,7 +15,7 @@ const GlobalClassNames = {
   cellCheck: 'ms-DetailsRow-cellCheck',
   cellMeasurer: 'ms-DetailsRow-cellMeasurer',
   listCellFirstChild: 'ms-List-cell:first-child',
-  isFocusable: "data-is-focusable='true'",
+  isFocusable: "[data-is-focusable='true']",
   isContentUnselectable: 'is-contentUnselectable',
   isSelected: 'is-selected',
   isCheckVisible: 'is-check-visible',
@@ -52,7 +52,6 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
     theme,
     isSelected,
     canSelect,
-    checkClassNames,
     droppingClassName,
     anySelected,
     isCheckVisible,
@@ -106,9 +105,8 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
   const thickBorderStyle = `${values.rowShimmerHorizontalBorder * 4}px solid ${colors.defaultBackgroundColor}`;
   const thinBorderStyle = `${values.rowShimmerHorizontalBorder}px solid ${colors.defaultBackgroundColor}`;
   const selectedStyles: IStyleBaseArray = [
-    getFocusStyle(theme, 0, undefined, undefined, themePrimary),
+    getFocusStyle(theme, -1, undefined, undefined, themePrimary, white),
     classNames.isSelected,
-    checkClassNames && checkClassNames.isSelected,
     {
       color: colors.selectedMetaTextColor,
       background: colors.selectedBackgroundColor,
@@ -233,7 +231,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
   };
 
   const defaultCellStyles: IStyle = [
-    getFocusStyle(theme),
+    getFocusStyle(theme, -1),
     classNames.cell,
     {
       display: 'inline-block',
@@ -252,7 +250,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
           maxWidth: '100%'
         },
 
-        [classNames.isFocusable!]: getFocusStyle(theme, 0, undefined, undefined, neutralSecondary),
+        [classNames.isFocusable!]: getFocusStyle(theme, -1, undefined, undefined, neutralSecondary, white),
 
         '&.$shimmer': {
           padding: 0,
@@ -306,10 +304,8 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
       classNames.root,
       AnimationClassNames.fadeIn400,
       droppingClassName,
-      anySelected && checkClassNames && checkClassNames.anySelected,
-      isCheckVisible && checkClassNames && checkClassNames.isVisible,
       isCheckVisible && classNames.isCheckVisible,
-      getFocusStyle(theme, 0, undefined, undefined, isSelected ? neutralSecondary : themePrimary),
+      getFocusStyle(theme, 0, undefined, undefined, isSelected ? neutralSecondary : themePrimary, white),
       {
         borderBottom: `1px solid ${neutralLighter}`,
         background: colors.defaultBackgroundColor,

@@ -1,12 +1,11 @@
 import * as React from 'react';
-import * as stylesImport from './DetailsHeader.scss';
-const styles: any = stylesImport;
 import { Icon } from '../../Icon';
-import { BaseComponent, css, IRenderFunction, createRef, IDisposable } from '../../Utilities';
+import { BaseComponent, css, IRenderFunction, createRef, IDisposable, IClassNames } from '../../Utilities';
 import { IColumn, ColumnActionsMode } from './DetailsList.types';
 
 import { ITooltipHostProps } from '../../Tooltip';
 import { IDragDropHelper, IDragDropOptions } from './../../utilities/dragdrop/interfaces';
+import { IDetailsHeaderStyles } from './DetailsHeader.types';
 
 const INNER_PADDING = 16; // Account for padding around the cell.
 const ISPADDED_WIDTH = 24;
@@ -24,6 +23,7 @@ export interface IDetailsColumnProps extends React.Props<DetailsColumn> {
   isDraggable?: boolean;
   setDraggedItemIndex?: (itemIndex: number) => void;
   isDropped?: boolean;
+  headerClassNames: IClassNames<IDetailsHeaderStyles>;
 }
 
 export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
@@ -40,7 +40,7 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
   }
 
   public render() {
-    const { column, columnIndex, parentId, isDraggable } = this.props;
+    const { column, columnIndex, parentId, isDraggable, headerClassNames } = this.props;
     const { onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip } = this.props;
 
     return [
@@ -51,13 +51,13 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
         aria-sort={column.isSorted ? (column.isSortedDescending ? 'descending' : 'ascending') : 'none'}
         aria-colindex={columnIndex}
         className={css(
-          'ms-DetailsHeader-cell',
-          styles.cell,
+          headerClassNames.cell,
           column.headerClassName,
-          column.columnActionsMode !== ColumnActionsMode.disabled && 'is-actionable ' + styles.cellIsActionable,
-          !column.name && 'is-empty ' + styles.cellIsEmpty,
+          column.columnActionsMode !== ColumnActionsMode.disabled &&
+            'is-actionable ' + headerClassNames.cellIsActionable,
+          !column.name && 'is-empty ' + headerClassNames.cellIsEmpty,
           (column.isSorted || column.isGrouped || column.isFiltered) && 'is-icon-visible',
-          column.isPadded && styles.cellWrapperPadded
+          column.isPadded && headerClassNames.cellWrapperPadded
         )}
         data-is-draggable={isDraggable}
         draggable={isDraggable}
@@ -65,10 +65,10 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
         data-automationid={'ColumnsHeaderColumn'}
         data-item-key={column.key}
       >
-        {isDraggable && <Icon iconName={'GripperBarVertical'} className={css(styles.gripperBarVerticalStyle)} />}
+        {isDraggable && <Icon iconName={'GripperBarVertical'} className={headerClassNames.gripperBarVerticalStyle} />}
         {onRenderColumnHeaderTooltip(
           {
-            hostClassName: css(styles.cellTooltip),
+            hostClassName: headerClassNames.cellTooltip,
             id: `${parentId}-${column.key}-tooltip`,
             setAriaDescribedBy: false,
             content: column.columnActionsMode !== ColumnActionsMode.disabled ? column.ariaLabel : '',
@@ -77,7 +77,7 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
                 id={`${parentId}-${column.key}`}
                 aria-label={column.isIconOnly ? column.name : undefined}
                 aria-labelledby={column.isIconOnly ? undefined : `${parentId}-${column.key}-name `}
-                className={css('ms-DetailsHeader-cellTitle', styles.cellTitle)}
+                className={headerClassNames.cellTitle}
                 data-is-focusable={column.columnActionsMode !== ColumnActionsMode.disabled}
                 role={column.columnActionsMode !== ColumnActionsMode.disabled ? 'button' : undefined}
                 aria-describedby={
@@ -89,35 +89,30 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
               >
                 <span
                   id={`${parentId}-${column.key}-name`}
-                  className={css('ms-DetailsHeader-cellName', styles.cellName, {
-                    [styles.iconOnlyHeader]: column.isIconOnly
+                  className={css(headerClassNames.cellName, {
+                    [headerClassNames.iconOnlyHeader]: column.isIconOnly
                   })}
                 >
                   {(column.iconName || column.iconClassName) && (
-                    <Icon className={css(styles.nearIcon, column.iconClassName)} iconName={column.iconName} />
+                    <Icon className={css(headerClassNames.nearIcon, column.iconClassName)} iconName={column.iconName} />
                   )}
 
                   {!column.isIconOnly ? column.name : undefined}
                 </span>
 
-                {column.isFiltered && <Icon className={styles.nearIcon} iconName={'Filter'} />}
+                {column.isFiltered && <Icon className={headerClassNames.nearIcon} iconName={'Filter'} />}
 
                 {column.isSorted && (
                   <Icon
-                    className={css(styles.nearIcon, styles.sortIcon)}
+                    className={css(headerClassNames.nearIcon, headerClassNames.sortIcon)}
                     iconName={column.isSortedDescending ? 'SortDown' : 'SortUp'}
                   />
                 )}
 
-                {column.isGrouped && <Icon className={styles.nearIcon} iconName={'GroupedDescending'} />}
+                {column.isGrouped && <Icon className={headerClassNames.nearIcon} iconName={'GroupedDescending'} />}
 
                 {column.columnActionsMode === ColumnActionsMode.hasDropdown &&
-                  !column.isIconOnly && (
-                    <Icon
-                      className={css('ms-DetailsHeader-filterChevron', styles.filterChevron)}
-                      iconName={'ChevronDown'}
-                    />
-                  )}
+                  !column.isIconOnly && <Icon className={headerClassNames.filterChevron} iconName={'ChevronDown'} />}
               </span>
             )
           },
@@ -125,7 +120,11 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
         )}
       </div>,
       column.ariaLabel && !this.props.onRenderColumnHeaderTooltip ? (
-        <label key={`${column.key}_label`} id={`${parentId}-${column.key}-tooltip`} className={styles.accessibleLabel}>
+        <label
+          key={`${column.key}_label`}
+          id={`${parentId}-${column.key}-tooltip`}
+          className={headerClassNames.accessibleLabel}
+        >
           {column.ariaLabel}
         </label>
       ) : null
@@ -148,13 +147,16 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
       // We need to use native on this to avoid MarqueeSelection from handling the event before us.
       this._events.on(this._root.current, 'mousedown', this._onRootMouseDown);
     }
+
+    const { headerClassNames } = this.props;
+
     if (this.props.isDropped) {
       if (this._root!.current!) {
-        this._root!.current!.classList!.add(styles.borderAfterDropping);
+        this._root!.current!.classList!.add(headerClassNames.borderAfterDropping);
       }
       setTimeout(() => {
         if (this._root!.current!) {
-          this._root!.current!.classList!.remove(styles.borderAfterDropping);
+          this._root!.current!.classList!.remove(headerClassNames.borderAfterDropping);
         }
       }, 1500);
     }
@@ -218,16 +220,20 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
   }
 
   private _onDragStart(item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent): void {
+    const { headerClassNames } = this.props;
+
     if (itemIndex && this.props.setDraggedItemIndex) {
       this.props.setDraggedItemIndex(itemIndex);
-      this._root.current.classList.add(styles.borderWhileDragging);
+      this._root.current.classList.add(headerClassNames.borderWhileDragging);
     }
   }
 
   private _onDragEnd(item?: any, event?: MouseEvent): void {
+    const { headerClassNames } = this.props;
+
     if (this.props.setDraggedItemIndex) {
       this.props.setDraggedItemIndex(-1);
-      this._root.current.classList.remove(styles.borderWhileDragging);
+      this._root.current.classList.remove(headerClassNames.borderWhileDragging);
     }
   }
 

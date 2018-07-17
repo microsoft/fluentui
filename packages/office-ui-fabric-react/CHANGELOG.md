@@ -1,6 +1,103 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 09 Jul 2018 18:08:32 GMT and should not be manually modified.
+This log was last generated on Tue, 17 Jul 2018 10:28:40 GMT and should not be manually modified.
+
+## 6.37.0
+Tue, 17 Jul 2018 10:28:40 GMT
+
+### Minor changes
+
+- ExtendedBasePicker: Expose selectedItems, Remove persona suggestion padding in FloatingPicker 
+- Removing most `@customizable` decorator usage. This change should reduce extra React dom elements from being created. Also updating `componentRef` resolution to support `React.createRef()` usage.
+
+### Patches
+
+- ResizeGroup: Optimize performance of initial render
+- BasePicker: Fix a bug where the selection state would mutate inappropriately
+- ScrollablePane: Add notifySubscribers in mutationObserver
+- Use spread operator in PositioningContainer.styles.ts
+- Fix check for Panel light-dismiss
+- CalloutDismiss: Revert change that caused callout to dismiss when window focused
+
+## 6.36.0
+Mon, 16 Jul 2018 10:27:18 GMT
+
+### Minor changes
+
+- Convert GroupedList to CSS-in-JS
+
+### Patches
+
+- Refactors variants of DetailsList into individual component sub-pages
+
+## 6.35.0
+Fri, 13 Jul 2018 21:32:37 GMT
+
+### Minor changes
+
+- Reverting the TypeScript bump, to unbreak DetailsList d.ts changes.
+- Button: Added menuAs to better support custom contextual menus
+- DetailsList: Complete CSS-in-JS conversion.
+- Edit to styled function call allowing customization with CalloutContent, DialogContent, and DialogFooter
+
+### Patches
+
+- Fix TextField clearing on render when value prop is undefined.
+- Deprecate unused linkIsSelected Pivot style prop.
+
+## 6.33.1
+Thu, 12 Jul 2018 10:29:30 GMT
+
+### Patches
+
+- In focusable disabled state, no button should be able to execute key/mouse events. Added check for menuProps to existing handlers.
+
+## 6.33.0
+Thu, 12 Jul 2018 00:12:00 GMT
+
+### Minor changes
+
+- TextField: `id` prop now respected.
+
+### Patches
+
+- Respect the getMenuClassNames property on ContextualMenu
+- CommandBar: Fixed iconOnly feature where empty text div was still rendered
+
+## 6.32.0
+Wed, 11 Jul 2018 05:16:03 GMT
+
+### Minor changes
+
+- DetailsHeader css-in-js conversion
+
+### Patches
+
+- Fixing detailsheader screen regression
+
+## 6.31.0
+Tue, 10 Jul 2018 21:54:07 GMT
+
+### Minor changes
+
+- Allow FloatingPicker to be a controlled component
+- CommandBar: Mix in menuProps to overflowButtonProps
+
+### Patches
+
+- Implement new getFocusStyle option in ComboBox.
+
+## 6.30.0
+Tue, 10 Jul 2018 05:05:15 GMT
+
+### Minor changes
+
+- Converting ContextualMenu to MergeStyles step 2 - Style Conversion
+- Coachmark: Add accessibility features to component, ARIA props, narrator support, and keyboarding controls
+
+### Patches
+
+- SearchBox: Move background color styling from searchbox input to searchbox root. Fixes #5477.
 
 ## 6.29.0
 Mon, 09 Jul 2018 18:08:32 GMT

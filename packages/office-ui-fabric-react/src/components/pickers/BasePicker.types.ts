@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IPickerItemProps } from './PickerItem.types';
 import { IPersonaProps } from '../Persona/Persona.types';
-import { IRenderFunction } from '../../Utilities';
+import { IRefObject, IRenderFunction } from '../../Utilities';
 import { ISuggestionModel } from './Suggestions/SuggestionsController';
 import { BaseAutoFill } from './AutoFill/BaseAutoFill';
 
@@ -20,7 +20,7 @@ export interface IBasePicker<T> {
 // and searched for by the people picker. For example, if the picker is
 // displaying persona's than type T could either be of Persona or Ipersona props
 export interface IBasePickerProps<T> extends React.Props<any> {
-  componentRef?: (component?: IBasePicker<T> | null) => void;
+  componentRef?: IRefObject<IBasePicker<T>>;
 
   /**
    * Function that specifies how the selected item will appear.

@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { BaseComponent, css, customizable, classNamesFunction } from '../../Utilities';
+import { BaseComponent, classNamesFunction } from '../../Utilities';
 import { IChicletCardStyles, IChicletCardStyleProps, IChicletCardProps } from './ChicletCard.types';
-import { mergeStyles } from '../../Styling';
 import { Image } from 'office-ui-fabric-react/lib/Image';
 
 const getClassNames = classNamesFunction<IChicletCardStyleProps, IChicletCardStyles>();
@@ -11,7 +10,6 @@ const ASSET_CDN_BASE_URL = 'https://static2.sharepointonline.com/files/fabric/as
 const PREVIEW_IMAGE_WIDTH = '198px';
 const PREVIEW_IMAGE_HEIGHT = '122px';
 
-@customizable('ChicletCardBase', ['theme', 'styles'])
 export class ChicletCardBase extends BaseComponent<IChicletCardProps, {}> {
   public static defaultProps: IChicletCardProps = {
     imageWidth: PREVIEW_IMAGE_WIDTH,
@@ -38,7 +36,7 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, {}> {
     } = this.props;
     const actionable = onClick ? true : false;
 
-    this._classNames = getClassNames(styles, { theme: theme! });
+    this._classNames = getClassNames(styles, { theme: theme!, className });
 
     // if this element is actionable it should have an aria role
     const role = actionable ? (onClick ? 'button' : 'link') : undefined;
@@ -51,12 +49,12 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, {}> {
         tabIndex={tabIndex}
         role={role}
         onClick={actionable ? this._onClick : undefined}
-        className={css('ms-ChicletCard', className, mergeStyles(this._classNames.root))}
+        className={this._classNames.root}
       >
-        <div className={mergeStyles(this._classNames.preview)}>{preview}</div>
-        <div className={mergeStyles(this._classNames.info)}>
-          <div className={mergeStyles(this._classNames.title)}>{title ? title : null}</div>
-          <div className={mergeStyles(this._classNames.description)}>{description ? description : url}</div>
+        <div className={this._classNames.preview}>{preview}</div>
+        <div className={this._classNames.info}>
+          <div className={this._classNames.title}>{title ? title : null}</div>
+          <div className={this._classNames.description}>{description ? description : url}</div>
           {footer}
         </div>
       </div>
@@ -101,7 +99,7 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, {}> {
     if (itemType !== null) {
       src = `${ASSET_CDN_BASE_URL}/brand-icons/product/svg/` + itemType + `_16x1_5.svg`;
     }
-    let icon = <img className={mergeStyles(this._classNames.icon)} src={src} />;
+    let icon = <img className={this._classNames.icon} src={src} />;
     switch (
       itemType // for "hero" apps, we'll use the app icons
     ) {
@@ -109,7 +107,7 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, {}> {
       case 'docx':
         icon = (
           <img
-            className={mergeStyles(this._classNames.icon)}
+            className={this._classNames.icon}
             src={`${ASSET_CDN_BASE_URL}/brand-icons/product/svg/word_16x1_5.svg`}
           />
         );
@@ -118,7 +116,7 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, {}> {
       case 'pptx':
         icon = (
           <img
-            className={mergeStyles(this._classNames.icon)}
+            className={this._classNames.icon}
             src={`${ASSET_CDN_BASE_URL}/brand-icons/product/svg/powerpoint_16x1_5.svg`}
           />
         );
@@ -126,7 +124,7 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, {}> {
       case 'excel':
         icon = (
           <img
-            className={mergeStyles(this._classNames.icon)}
+            className={this._classNames.icon}
             src={`${ASSET_CDN_BASE_URL}/brand-icons/product/svg/excel_16x1_5.svg`}
           />
         );

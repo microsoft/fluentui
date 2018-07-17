@@ -30,7 +30,7 @@ export const CommandBarPageProps: IDocPageProps = {
       view: <CommandBarBasicExample {...cmdBarParamsTextAndIcons} />
     },
     {
-      title: 'CommandBar custom buttons',
+      title: 'CommandBar custom buttons and overflow menu',
       code: CommandBarButtonAsExampleCode,
       view: <CommandBarButtonAsExample {...cmdBarParamsTextAndIcons} />
     }

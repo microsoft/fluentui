@@ -1,6 +1,13 @@
 # Change Log - @uifabric/webpack-utils
 
-This log was last generated on Fri, 06 Jul 2018 19:07:51 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Jul 2018 10:27:18 GMT and should not be manually modified.
+
+## 0.7.1
+Mon, 16 Jul 2018 10:27:18 GMT
+
+### Patches
+
+- Use var instead of const in the ui fabric plugin to make it compatible with Safari 9
 
 ## 0.7.0
 Fri, 06 Jul 2018 19:07:51 GMT
