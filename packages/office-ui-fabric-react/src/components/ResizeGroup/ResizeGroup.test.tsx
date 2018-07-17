@@ -4,7 +4,6 @@ import { ResizeGroup } from './ResizeGroup';
 import { IResizeGroupState, getNextResizeGroupStateProvider, getMeasurementCache } from './ResizeGroup.base';
 import * as sinon from 'sinon';
 import * as renderer from 'react-test-renderer';
-import { IResizeGroupProps } from '../..';
 
 interface ITestScalingData {
   scalingIndex: number;
@@ -570,7 +569,7 @@ describe('ResizeGroup', () => {
   });
 
   it('it tries to measure smaller data when the contents do not fit on the initial measure and an onGrowData is provided', () => {
-    const props: IResizeGroupProps = {
+    const props = {
       data: { scalingIndex: 8 },
       onReduceData: onReduceScalingData,
       onGrowData: onGrowScalingData,
