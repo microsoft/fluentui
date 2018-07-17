@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 16 Jul 2018 14:31:47 GMT and should not be manually modified.
+This log was last generated on Tue, 17 Jul 2018 14:59:38 GMT and should not be manually modified.
+
+## 5.117.0
+Tue, 17 Jul 2018 14:59:38 GMT
+
+### Minor changes
+
+- DetailsList: adjusting aria labels and exporting more ariaLabels in `IColumn` to allow for better narrator reading and table scanning.
+
+### Patches
+
+- Fix minor accessibility bugs in DetailsList
 
 ## 5.116.1
 Mon, 16 Jul 2018 14:31:47 GMT
