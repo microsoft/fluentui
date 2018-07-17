@@ -110,28 +110,28 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
     this._classNames = getClassNames
       ? getClassNames(
-          theme!,
-          className!,
-          variantClassName!,
-          iconProps && iconProps.className,
-          menuIconProps && menuIconProps.className,
-          isPrimaryButtonDisabled!,
-          checked!,
-          !!menuProps,
-          this.props.split,
-          !!allowDisabledFocus
-        )
+        theme!,
+        className!,
+        variantClassName!,
+        iconProps && iconProps.className,
+        menuIconProps && menuIconProps.className,
+        isPrimaryButtonDisabled!,
+        checked!,
+        !!menuProps,
+        this.props.split,
+        !!allowDisabledFocus
+      )
       : getBaseButtonClassNames(
-          styles!,
-          className!,
-          variantClassName!,
-          iconProps && iconProps.className,
-          menuIconProps && menuIconProps.className,
-          isPrimaryButtonDisabled!,
-          checked!,
-          !!menuProps,
-          this.props.split
-        );
+        styles!,
+        className!,
+        variantClassName!,
+        iconProps && iconProps.className,
+        menuIconProps && menuIconProps.className,
+        isPrimaryButtonDisabled!,
+        checked!,
+        !!menuProps,
+        this.props.split
+      );
 
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;
     // Anchor tag cannot be disabled hence in disabled state rendering
@@ -734,9 +734,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
     if (!ev.defaultPrevented) {
       // When Edge + Narrator are used together (regardless of if the button is in a form or not), pressing
-      // "Enter" fires this method and not _onMenuKeyDown. Checking ev.nativeEvent.detail differentiates
-      // between a real click event and a keypress event.
-      const shouldFocusOnContainer = ev.nativeEvent.detail !== 0;
+      // "Enter" fires this method and not _onMenuKeyDown. Checking ev.nativeEvent.screenX and
+      // ev.nativeEvent.screenY differentiates between a real click event and a keypress event.
+      const shouldFocusOnContainer = ev.nativeEvent.screenX !== 0 && ev.nativeEvent.screenY !== 0;
       this._onToggleMenu(shouldFocusOnContainer);
       ev.preventDefault();
       ev.stopPropagation();
