@@ -551,7 +551,7 @@ describe('ResizeGroup', () => {
   it('does not render to the hidden div when there is no dataToMeasure', () => {
     const resizeGroupStateProvider = getNextResizeGroupStateProvider();
 
-    const result = resizeGroupStateProvider.shouldRenderDataToMeasureInHiddenDiv(undefined);
+    const result = resizeGroupStateProvider.shouldRenderDataForMeasurement(undefined);
 
     expect(result).toEqual(false);
   });
@@ -559,7 +559,7 @@ describe('ResizeGroup', () => {
   it('does render to the hidden div when there is dataToMeasure', () => {
     const resizeGroupStateProvider = getNextResizeGroupStateProvider();
 
-    const result = resizeGroupStateProvider.shouldRenderDataToMeasureInHiddenDiv({ index: 18 });
+    const result = resizeGroupStateProvider.shouldRenderDataForMeasurement({ index: 18 });
 
     expect(result).toEqual(true);
   });
@@ -570,7 +570,7 @@ describe('ResizeGroup', () => {
     measurementCache.addMeasurementToCache(data, 12);
     const resizeGroupStateProvider = getNextResizeGroupStateProvider(measurementCache);
 
-    const result = resizeGroupStateProvider.shouldRenderDataToMeasureInHiddenDiv(data);
+    const result = resizeGroupStateProvider.shouldRenderDataForMeasurement(data);
 
     expect(result).toEqual(false);
   });
