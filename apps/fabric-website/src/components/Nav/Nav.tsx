@@ -6,7 +6,7 @@ import { getPathMinusLastHash } from '../../utilities/pageroute';
 import * as stylesImport from './Nav.module.scss';
 const styles: any = stylesImport;
 import { INavProps, INavPage } from './Nav.types';
- 
+
 export interface INavState {
   searchQuery: string;
 }
@@ -14,12 +14,12 @@ export interface INavState {
 export class Nav extends React.Component<INavProps, INavState> {
   constructor(props: INavProps) {
     super(props);
-  
+
     this.state = {
       searchQuery: ''
     };
   }
-  
+
   public render(): JSX.Element {
     let { pages } = this.props;
 
@@ -37,12 +37,12 @@ export class Nav extends React.Component<INavProps, INavState> {
       </FocusZone>
     );
   }
-   
+
   private _renderLink(page: INavPage, linkIndex: number): React.ReactElement<{}> {
     const ariaLabel = page.pages ? 'Hit enter to open sub menu, tab to access sub menu items.' : '';
     const title = page.title === 'Fabric' ? 'Home page' : page.title;
     const childLinks = page.pages ? this._renderLinkList(page.pages, true) : null;
-  
+
     return (
       <span>
       {this._getSearchBox(title)}
@@ -69,7 +69,7 @@ export class Nav extends React.Component<INavProps, INavState> {
     </span>
     );
   }
- 
+
   private _getSearchBox(val) {
     if (val === 'Components') {
       return (
@@ -118,7 +118,7 @@ export class Nav extends React.Component<INavProps, INavState> {
           page.url.toLowerCase().indexOf('#/components/')
       )
        .map((page: INavPage, linkIndex: number) => this._renderLink(page, linkIndex));
- 
+
      return (
        <ul className={css(styles.links, isSubMenu ? styles.isSubMenu : '')} aria-label="Main website navigation">
          {links}
