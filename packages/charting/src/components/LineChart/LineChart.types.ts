@@ -1,6 +1,7 @@
 import { ITheme, IStyle } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
 import { IDataPoint } from '../../types/IDataPoint';
+export { IDataPoint } from '../../types/IDataPoint';
 
 export interface ILineChart {}
 
