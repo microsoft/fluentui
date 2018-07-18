@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "fix Object.assign ie bug",
+      "comment": "Coachmark: Cherry fix from 6.0 which fixes an Object.assign IE bug.",
       "type": "patch"
     }
   ],
