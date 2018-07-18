@@ -930,6 +930,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     } = detailsGroupProps;
     const { adjustedColumns: columns } = this.state;
     const selection = new Selection();
+    const groupNestingDepth = this._getGroupNestingDepth();
     const {
       compact,
       selectionMode,
@@ -953,7 +954,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       viewport: viewport,
       getRowAriaDescribedBy: getRowAriaDescribedBy,
       checkButtonAriaLabel: checkButtonAriaLabel,
-      checkboxCellClassName: checkboxCellClassName
+      checkboxCellClassName: checkboxCellClassName,
+      groupNestingDepth: groupNestingDepth
     };
 
     const onRenderFooter = onRenderDetailsGroupFooter

@@ -3,13 +3,12 @@ import { DetailsListBase } from './DetailsList.base';
 import { ISelection, SelectionMode, ISelectionZoneProps } from '../../utilities/selection/index';
 import { IRefObject, IBaseProps, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IDragDropEvents, IDragDropContext } from './../../utilities/dragdrop/index';
-import { IGroup, IGroupRenderProps } from '../GroupedList/index';
+import { IGroup, IGroupRenderProps, IGroupDividerProps } from '../GroupedList/index';
 import { IDetailsRowProps } from '../DetailsList/DetailsRow';
 import { IDetailsHeaderProps } from './DetailsHeader';
 import { IWithViewportProps, IViewport } from '../../utilities/decorators/withViewport';
 import { IList, IListProps, ScrollToMode } from '../List/index';
 import { ITheme, IStyle } from '../..';
-import { IGroupDividerProps } from '../GroupedList/GroupedList.types';
 export { IDetailsHeaderProps };
 
 export interface IDetailsList extends IList {
