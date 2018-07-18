@@ -28,10 +28,6 @@ function analyzeChunks() {
 }
 
 function getFileSize(filePath) {
-  try {
-    const stats = fs.statSync(filePath);
-    return stats.size;
-  } catch (e) {
-    throw new error(`Unable to get size of file "${filePath}"`);
-  }
+  const stats = fs.statSync(filePath);
+  return stats.size;
 }
