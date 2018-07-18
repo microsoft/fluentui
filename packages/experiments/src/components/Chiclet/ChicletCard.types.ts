@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ChicletCardBase } from './ChicletCard.base';
 import { ITheme, IStyle } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IStyleFunctionOrObject, IRefObject } from '../../Utilities';
 
 export interface IChicletCard {}
 
@@ -42,7 +42,7 @@ export interface IChicletCardProps extends React.Props<ChicletCardBase> {
    * Optional callback to access the IChicletCard interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IChicletCard | null) => void;
+  componentRef?: IRefObject<IChicletCard>;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.

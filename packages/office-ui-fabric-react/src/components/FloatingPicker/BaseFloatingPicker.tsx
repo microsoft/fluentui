@@ -193,7 +193,6 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
 
   protected updateSuggestionWithZeroState(): void {
     if (this.props.onZeroQuerySuggestion) {
-      this._updateSuggestionsVisible(true /*shouldShow*/);
       const onEmptyInputFocus = this.props.onZeroQuerySuggestion as (selectedItems?: T[]) => T[] | PromiseLike<T[]>;
       const suggestions: T[] | PromiseLike<T[]> = onEmptyInputFocus(this.props.selectedItems);
       this.updateSuggestionsList(suggestions);

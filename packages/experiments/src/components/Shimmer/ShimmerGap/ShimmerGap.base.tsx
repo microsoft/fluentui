@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, customizable } from '../../../Utilities';
+import { BaseComponent, classNamesFunction } from '../../../Utilities';
 import { IShimmerGapProps, IShimmerGapStyleProps, IShimmerGapStyles } from './ShimmerGap.types';
 
 const getClassNames = classNamesFunction<IShimmerGapStyleProps, IShimmerGapStyles>();
 
-@customizable('ShimmerGap', ['theme', 'styles'])
 export class ShimmerGapBase extends BaseComponent<IShimmerGapProps, {}> {
   private _classNames: { [key in keyof IShimmerGapStyles]: string };
 

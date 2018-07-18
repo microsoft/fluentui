@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { BaseComponent, css, customizable, nullRender } from '../../Utilities';
+import { BaseComponent, css, nullRender } from '../../Utilities';
 import {
   ICommandBar,
   ICommandBarItemProps,
@@ -41,7 +41,6 @@ export interface ICommandBarData {
   cacheKey: string;
 }
 
-@customizable('CommandBar', ['theme', 'styles'])
 export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implements ICommandBar {
   public static defaultProps: ICommandBarProps = {
     items: [],
@@ -167,7 +166,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       ...item,
       styles: { root: { height: '100%' }, ...item.buttonStyles },
       className: css('ms-CommandBarItem-link', item.className),
-      text: !item.iconOnly ? itemText : '',
+      text: !item.iconOnly ? itemText : undefined,
       menuProps: item.subMenuProps
     };
 

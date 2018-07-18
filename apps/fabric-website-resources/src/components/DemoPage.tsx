@@ -39,7 +39,7 @@ export const DemoPage: React.StatelessComponent<IDemoPageProps> = componentPageP
           <PropertiesTableSet sources={componentPageProps.propertiesTablesSources} />
         )
       }
-      overview={<PageMarkdown>{componentPageProps.overview}</PageMarkdown>}
+      overview={componentPageProps.overview ? <PageMarkdown>{componentPageProps.overview}</PageMarkdown> : undefined}
       bestPractices={
         componentPageProps.bestPractices ? <PageMarkdown>{componentPageProps.bestPractices}</PageMarkdown> : undefined
       }

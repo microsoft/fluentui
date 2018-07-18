@@ -88,14 +88,36 @@ const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGr
   };
 };
 
+const CalloutContentStyles = {
+  root: {
+    // borderRadius: '2px', // waiting on child override ability before commenting this in
+    boxShadow: Depths.depth64
+  }
+};
+
+const ComboBoxStyles = {
+  root: {
+    borderRadius: '2px' // the bound input box
+  },
+  callout: {
+    backgroundColor: 'blue',
+    borderRadius: '0 0 20px 20px' // Still requires to target calloutMain as well as it overlaps this element
+  }
+};
+
 const DialogStyles = {
   main: {
-    boxShadow: Depths.depth64
+    selectors: {
+      '.ms-Modal.ms-Dialog &': {
+        boxShadow: Depths.depth64
+      }
+    }
   }
 };
 
 const DialogContentStyles = {
   title: {
+    fontSize: FontSizes.size20,
     fontWeight: FontWeights.semibold
   }
 };
@@ -131,6 +153,9 @@ export const FluentStyles = {
   DefaultButton: {
     styles: DefaultButtonStyles
   },
+  CalloutContent: {
+    styles: CalloutContentStyles
+  },
   CompoundButton: {
     styles: CompoundButtonStyles
   },
@@ -139,6 +164,9 @@ export const FluentStyles = {
   },
   ChoiceGroupOption: {
     styles: ChoiceGroupOptionStyles
+  },
+  ComboBox: {
+    styles: ComboBoxStyles
   },
   Dialog: {
     styles: DialogStyles

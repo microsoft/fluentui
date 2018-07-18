@@ -1,7 +1,7 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { ITheme, IStyle } from '../../Styling';
-import { IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
 
 export interface ILabel {}
 
@@ -15,7 +15,7 @@ export interface ILabelProps extends React.LabelHTMLAttributes<HTMLLabelElement>
    * Optional callback to access the ILabel interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ILabel | null) => void;
+  componentRef?: IRefObject<ILabel>;
 
   /**
    * Whether the associated form field is required or not

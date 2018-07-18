@@ -1,7 +1,7 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-import { BaseComponent, assign } from 'office-ui-fabric-react/lib/Utilities';
+import { assign } from 'office-ui-fabric-react/lib/Utilities';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { SuggestionsStore } from '../../Suggestions/SuggestionsStore';
 import {
@@ -22,7 +22,7 @@ export interface IPeoplePickerExampleState {
   searchValue: string;
 }
 
-export class FloatingPeoplePickerTypesExample extends BaseComponent<{}, IPeoplePickerExampleState> {
+export class FloatingPeoplePickerTypesExample extends React.Component<{}, IPeoplePickerExampleState> {
   private _picker: IBaseFloatingPicker;
   private _inputElement: HTMLInputElement;
 

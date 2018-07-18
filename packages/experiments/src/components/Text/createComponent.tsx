@@ -1,16 +1,16 @@
-import { IClassNames, IStyleFunction, mergeStyleSets } from 'office-ui-fabric-react';
+import { IClassNames, IStyleFunction, mergeStyleSets, IStyleSet } from 'office-ui-fabric-react';
 import * as React from 'react';
 import { ITheme } from './theming/ITheme';
 import { ThemeConsumer } from './theming/ThemeProvider';
 
 export type IStyleFunction<TProps, TStyles> = (props: TProps) => Partial<TStyles>;
 
-export interface IPropsWithStyles<TProps, TStyles> {
+export interface IPropsWithStyles<TProps, TStyles extends IStyleSet<TStyles>> {
   styles?: IStyleFunction<TProps, TStyles> | Partial<TStyles>;
 }
 
 // Components should accept styling.
-export type IComponentProps<TProps, TStyles> = TProps & {
+export type IComponentProps<TProps, TStyles extends IStyleSet<TStyles>> = TProps & {
   styles?: IStyleFunction<IPropsWithStyles<TProps, TStyles>, TStyles> | Partial<TStyles>;
 };
 
@@ -26,7 +26,7 @@ export type IViewProps<TProps, TStyles> = TProps & {
 // tslint:disable-next-line:no-any
 const augmentations: any = {};
 
-export interface IComponentOptions<TProps, TStyles, TStatics> {
+export interface IComponentOptions<TProps, TStyles extends IStyleSet<TStyles>, TStatics> {
   displayName: string;
   state?: React.ComponentType<IComponentProps<TProps, TStyles>>;
   styles?: IStyleFunction<IStyleProps<TProps, TStyles>, TStyles> | Partial<TStyles>;
@@ -34,7 +34,7 @@ export interface IComponentOptions<TProps, TStyles, TStatics> {
   statics?: TStatics;
 }
 
-function evaluateStyle<TProps, TStyles>(
+function evaluateStyle<TProps, TStyles extends IStyleSet<TStyles>>(
   props: TProps,
   styles?: IStyleFunction<TProps, TStyles> | Partial<TStyles> | undefined
 ): Partial<TStyles> | undefined {
@@ -46,7 +46,7 @@ function evaluateStyle<TProps, TStyles>(
 }
 
 // Helper function to tie them together.
-export function createComponent<TProps, TStyles, TStatics = {}>(
+export function createComponent<TProps, TStyles extends IStyleSet<TStyles>, TStatics = {}>(
   options: IComponentOptions<TProps, TStyles, TStatics>
 ): React.StatelessComponent<IComponentProps<TProps, TStyles>> & TStatics {
   const result: React.StatelessComponent<TProps> = (userProps: TProps) => {
@@ -65,13 +65,15 @@ export function createComponent<TProps, TStyles, TStatics = {}>(
           {(theme: ITheme) => {
             const styleProps = { theme, ...(processedProps as {}) };
 
+            const styleSets: Array<TStyles> = [
+              evaluateStyle(styleProps, componentStyles),
+              // tslint:disable-next-line:no-any
+              evaluateStyle(styleProps, styles as any)
+            ].filter((elem: Partial<TStyles> | undefined) => !!elem) as Array<TStyles>;
+
             return ComponentView({
               ...(processedProps as {}),
-              classNames: mergeStyleSets(
-                evaluateStyle(styleProps, componentStyles),
-                // tslint:disable-next-line:no-any
-                evaluateStyle(styleProps, styles as any)
-              )
+              classNames: mergeStyleSets(...styleSets)
             });
           }}
         </ThemeConsumer>
@@ -91,7 +93,7 @@ export function createComponent<TProps, TStyles, TStatics = {}>(
 }
 
 // Helper function to augment existing components that have been created.
-export function augmentComponent<TProps, TStyles, TStatics>(
+export function augmentComponent<TProps, TStyles extends IStyleSet<TStyles>, TStatics>(
   options: IComponentOptions<TProps, TStyles, TStatics>
 ): void {
   augmentations[options.displayName] = {

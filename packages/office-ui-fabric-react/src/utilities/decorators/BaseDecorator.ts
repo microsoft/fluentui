@@ -3,7 +3,7 @@ import { BaseComponent, hoistMethods, unhoistMethods } from '../../Utilities';
 
 export class BaseDecorator<TProps, TState> extends BaseComponent<TProps, TState> {
   // tslint:disable-next-line:typedef
-  protected _shouldUpdateComponentRef = false;
+  protected _skipComponentRefResolution = true;
 
   protected _composedComponentInstance: React.Component<TProps, TState>;
 

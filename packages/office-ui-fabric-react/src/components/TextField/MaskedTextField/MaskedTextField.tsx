@@ -63,7 +63,7 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
   /**
    * Tell BaseComponent to bypass resolution of componentRef.
    */
-  protected _shouldUpdateComponentRef = false;
+  protected _skipComponentRefResolution = true;
 
   private _textField: ITextField;
   private _maskCharData: IMaskValue[];
