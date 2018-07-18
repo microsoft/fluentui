@@ -42,6 +42,23 @@ export type DashboardGridBreakpointLayouts = {
   [P in Breakpoints]?: IDashboardCardLayout[]
 };
 
+export type DashboardSectionMapping = {
+  /**
+   * Key to key mapping for sections
+   * Key: section key
+   * Value: List of cards layouts that are under this section
+   */
+  [id: string]: Layout[];
+};
+
+export type LayoutMapping = {
+  /**
+   * Layout key to its layout mapping with height and width
+   * to use while expanding
+   */
+  [id: string]: Layout;
+};
+
 export interface IDashboardCardLayout {
   /**
    * A string corresponding to the component key

@@ -158,6 +158,7 @@ export class DashboardGridLayoutSectionsExample extends React.Component<{}, {}> 
             actions={actions}
           />
         </div>
+        {/* <Section key="1" id="1" title="This is the first section" removeTitle="Remove this section" /> */}
         <div key="2">
           <Card
             cardFrameContent={cardFrameContent}
@@ -166,7 +167,7 @@ export class DashboardGridLayoutSectionsExample extends React.Component<{}, {}> 
             cardSize={CardSize.small}
           />
         </div>
-        <Section key="3.5" id="3.5" title="This is a section title" removeTitle="Remove this section" />
+        <Section key="3.5" id="3.5" title="This is the second section" removeTitle="Remove this section" />
         <div key="3">
           <Card
             cardFrameContent={cardFrameContent}
@@ -193,11 +194,11 @@ export class DashboardGridLayoutSectionsExample extends React.Component<{}, {}> 
     return {
       lg: [
         { i: '0', y: 0, x: 0, size: Size.small },
-        { i: '1', y: 0, x: 1, size: Size.mediumTall },
-        { i: '2', y: 1, x: 0, size: Size.small },
-        { i: '3', y: 0, x: 2, size: Size.mediumWide },
-        { i: '3.5', y: 1, x: 2, size: Size.section },
-        { i: '4', y: 1, x: 2, size: Size.large }
+        { i: '1', y: 4, x: 0, size: Size.mediumTall },
+        { i: '2', y: 0, x: 1, size: Size.small },
+        { i: '3', y: 5, x: 0, size: Size.mediumWide },
+        { i: '3.5', y: 6, x: 0, size: Size.section },
+        { i: '4', y: 7, x: 0, size: Size.large }
       ]
     };
   }
