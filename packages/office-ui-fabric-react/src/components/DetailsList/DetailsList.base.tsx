@@ -930,7 +930,6 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     } = detailsGroupProps;
     const { adjustedColumns: columns } = this.state;
     const selection = new Selection();
-    const collapseAllVisibility = groupProps && groupProps.collapseAllVisibility;
     const {
       compact,
       selectionMode,
@@ -950,7 +949,6 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       selectionMode: selectionMode!,
       selection: selection,
       checkboxVisibility: checkboxVisibility,
-      collapseAllVisibility: collapseAllVisibility,
       getRowAriaLabel: getRowAriaLabel,
       viewport: viewport,
       getRowAriaDescribedBy: getRowAriaDescribedBy,
