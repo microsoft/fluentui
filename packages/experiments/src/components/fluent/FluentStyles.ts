@@ -7,6 +7,8 @@ import {
 import { FontSizes } from './FluentType';
 import { Depths } from './FluentDepths';
 
+const fluentBorderRadius = '2px';
+
 const BreadcrumbStyles = {
   itemLink: {
     fontSize: FontSizes.size18,
@@ -22,21 +24,21 @@ const BreadcrumbStyles = {
 
 const PrimaryButtonStyles = {
   root: {
-    borderRadius: '2px'
+    borderRadius: fluentBorderRadius
     // boxShadow: Depths.depth4
   }
 };
 
 const CompoundButtonStyles = {
   root: {
-    borderRadius: '2px'
+    borderRadius: fluentBorderRadius
     // boxShadow: Depths.depth4
   }
 };
 
 const DefaultButtonStyles = {
   root: {
-    borderRadius: '2px',
+    borderRadius: fluentBorderRadius,
     backgroundColor: '#fff',
     border: `1px solid ${NeutralColors.gray20}`
   },
@@ -47,7 +49,7 @@ const DefaultButtonStyles = {
 
 const CheckboxStyles = {
   checkbox: {
-    borderRadius: '2px'
+    borderRadius: fluentBorderRadius
   }
 };
 
@@ -90,14 +92,14 @@ const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGr
 
 const CalloutContentStyles = {
   root: {
-    // borderRadius: '2px', // waiting on child override ability before commenting this in
+    // borderRadius: fluentBorderRadius, // waiting on child override ability before commenting this in
     boxShadow: Depths.depth64
   }
 };
 
 const ComboBoxStyles = {
   root: {
-    borderRadius: '2px' // the bound input box
+    borderRadius: fluentBorderRadius // the bound input box
   },
   callout: {
     backgroundColor: 'blue',
@@ -109,7 +111,8 @@ const DialogStyles = {
   main: {
     selectors: {
       '.ms-Modal.ms-Dialog &': {
-        boxShadow: Depths.depth64
+        boxShadow: Depths.depth64,
+        borderRadius: fluentBorderRadius
       }
     }
   }
@@ -118,7 +121,11 @@ const DialogStyles = {
 const DialogContentStyles = {
   title: {
     fontSize: FontSizes.size20,
-    fontWeight: FontWeights.semibold
+    fontWeight: FontWeights.semibold,
+    padding: '16px'
+  },
+  topButton: {
+    padding: '20px 16px 0 0'
   }
 };
 
