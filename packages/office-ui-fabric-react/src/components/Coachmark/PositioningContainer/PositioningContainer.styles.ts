@@ -49,12 +49,12 @@ export const getClassNames = memoizeFunction(
         position: 'absolute',
         boxSizing: 'border-box',
         border: '1px solid ${}',
-        selectors: Object.assign(
-          highContrastActive({
+        selectors: {
+          ...highContrastActive({
             border: '1px solid WindowText'
           }),
-          focusClear()
-        )
+          ...focusClear()
+        }
       },
       container: {
         position: 'relative'

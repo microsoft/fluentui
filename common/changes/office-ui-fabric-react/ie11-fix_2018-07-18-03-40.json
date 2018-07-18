@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Refactors variants of DetailsList into individual component sub-pages",
+      "comment": "Adding a try/catch when we call setActive in Dropdown/ContextualMenu in IE11.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "keco@microsoft.com"
+  "email": "dzearing@microsoft.com"
 }

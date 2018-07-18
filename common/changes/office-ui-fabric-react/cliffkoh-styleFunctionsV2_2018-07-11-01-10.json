@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Convert GroupedList to CSS-in-JS",
-      "type": "minor"
+      "comment": "Fix various typings/code bugs.",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "kchau@microsoft.com"
+  "email": "cliff.koh@microsoft.com"
 }

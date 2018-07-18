@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, customizable } from '../../Utilities';
+import { BaseComponent, classNamesFunction } from '../../Utilities';
 import {
   IProgressIndicatorProps,
   IProgressIndicatorStyleProps,
@@ -16,7 +16,6 @@ const ZERO_THRESHOLD = 0.01;
  * ProgressIndicator with no default styles.
  * [Use the `styles` API to add your own styles.](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Styling)
  */
-@customizable('ProgressIndicator', ['theme', 'styles'])
 export class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps, {}> {
   public static defaultProps = {
     label: '',

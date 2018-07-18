@@ -1,11 +1,11 @@
 {
   "changes": [
     {
+      "comment": "",
       "packageName": "@uifabric/charting",
-      "comment": "Reverting the TypeScript bump, to un",
-      "type": "minor"
+      "type": "none"
     }
   ],
   "packageName": "@uifabric/charting",
-  "email": "dzearing@microsoft.com"
+  "email": "cliff.koh@microsoft.com"
 }
