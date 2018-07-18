@@ -924,34 +924,70 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
   };
 
   private _getGroupProps(detailsGroupProps: IDetailsGroupRenderProps): IGroupRenderProps {
-    const { onRenderFooter: onRenderDetailsGroupFooter } = detailsGroupProps;
+    const {
+      onRenderFooter: onRenderDetailsGroupFooter,
+      onRenderHeader: onRenderDetailsGroupHeader
+    } = detailsGroupProps;
     const { adjustedColumns: columns } = this.state;
+    const selection = new Selection();
+    const collapseAllVisibility = groupProps && groupProps.collapseAllVisibility;
+    const {
+      compact,
+      selectionMode,
+      viewport,
+      checkboxVisibility,
+      getRowAriaLabel,
+      getRowAriaDescribedBy,
+      checkButtonAriaLabel,
+      checkboxCellClassName
+    } = this.props;
 
-    if (detailsGroupProps!.isRenderFooterOverride) {
-      const onRenderFooter = onRenderDetailsGroupFooter
-        ? (props: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
-            return onRenderDetailsGroupFooter(
-              {
-                ...props,
-                columns
-              },
-              defaultRender
-            );
-          }
-        : undefined;
+    const detailsRowProps: IDetailsRowProps | undefined = {
+      item: '',
+      itemIndex: -1,
+      compact: compact,
+      columns: columns as IColumn[],
+      selectionMode: selectionMode!,
+      selection: selection,
+      checkboxVisibility: checkboxVisibility,
+      collapseAllVisibility: collapseAllVisibility,
+      getRowAriaLabel: getRowAriaLabel,
+      viewport: viewport,
+      getRowAriaDescribedBy: getRowAriaDescribedBy,
+      checkButtonAriaLabel: checkButtonAriaLabel,
+      checkboxCellClassName: checkboxCellClassName
+    };
 
-      const groupProps = detailsGroupProps as IGroupRenderProps;
+    const onRenderFooter = onRenderDetailsGroupFooter
+      ? (props: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
+          return onRenderDetailsGroupFooter(
+            {
+              ...props,
+              detailsRowProps
+            },
+            defaultRender
+          );
+        }
+      : undefined;
 
-      return {
-        ...groupProps,
-        onRenderFooter
-      };
-    } else {
-      const groupProps = detailsGroupProps as IGroupRenderProps;
-      return {
-        ...groupProps
-      };
-    }
+    const onRenderHeader = onRenderDetailsGroupHeader
+      ? (props: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
+          return onRenderDetailsGroupHeader(
+            {
+              ...props,
+              detailsRowProps
+            },
+            defaultRender
+          );
+        }
+      : undefined;
+
+    const groupProps = detailsGroupProps as IGroupRenderProps;
+    return {
+      ...groupProps,
+      onRenderFooter,
+      onRenderHeader
+    };
   }
 }
 

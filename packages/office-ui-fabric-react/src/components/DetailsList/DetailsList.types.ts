@@ -532,9 +532,9 @@ export interface IDetailsListStyles {
 
 export interface IDetailsGroupRenderProps extends IGroupRenderProps {
   onRenderFooter?: IRenderFunction<IDetailsGroupDividerProps>;
-  isRenderFooterOverride?: boolean;
+  onRenderHeader?: IRenderFunction<IDetailsGroupDividerProps>;
 }
 
 export interface IDetailsGroupDividerProps extends IGroupDividerProps {
-  columns?: IColumn[];
+  detailsRowProps?: IDetailsRowProps;
 }
