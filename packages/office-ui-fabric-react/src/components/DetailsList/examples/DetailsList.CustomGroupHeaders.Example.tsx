@@ -40,16 +40,13 @@ export class DetailsListCustomGroupHeadersExample extends React.Component {
                 </div>
               </div>
             ),
-            onRenderFooter:
-              // this._OnRenderDetailsGroupFooter,
-              // isRenderFooterOverride: true
-              props => (
-                <div className="DetailsListExample-customHeader">
-                  <div className="DetailsListExample-customHeaderTitle">{`I'm a custom footer for: ${
-                    props!.group!.name
-                  }`}</div>
-                </div>
-              )
+            onRenderFooter: props => (
+              <div className="DetailsListExample-customHeader">
+                <div className="DetailsListExample-customHeaderTitle">{`I'm a custom footer for: ${
+                  props!.group!.name
+                }`}</div>
+              </div>
+            )
           }}
         />
       </div>
