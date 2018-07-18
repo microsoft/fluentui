@@ -1,1 +1,1 @@
-export type IStyleFunction<TStylesProps, TStyles> = (props: TStylesProps) => Partial<TStyles>;
+export { IStyleFunction } from '@uifabric/merge-styles';

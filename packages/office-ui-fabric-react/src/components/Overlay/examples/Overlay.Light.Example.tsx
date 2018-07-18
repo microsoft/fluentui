@@ -25,7 +25,7 @@ export class OverlayLightExample extends React.Component<
   public render(): JSX.Element {
     const { isOverlayVisible } = this.state;
     const getClassNames = classNamesFunction<{}, IOverlayExampleStyles>();
-    const classNames = getClassNames(getStyles);
+    const classNames = getClassNames(getStyles, {});
 
     return (
       <div>

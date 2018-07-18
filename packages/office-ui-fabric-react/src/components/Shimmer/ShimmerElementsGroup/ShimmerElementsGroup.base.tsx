@@ -5,7 +5,7 @@ import {
   IShimmerElementsGroupStyleProps,
   IShimmerElementsGroupStyles
 } from './ShimmerElementsGroup.types';
-import { IStyleSet } from '../../../Styling';
+import { IRawStyle } from '../../../Styling';
 import { ShimmerElementType, ShimmerElementsDefaultHeights, IShimmerElement } from '../Shimmer.types';
 import { ShimmerLine } from '../ShimmerLine/ShimmerLine';
 import { ShimmerGap } from '../ShimmerGap/ShimmerGap';
@@ -66,11 +66,11 @@ export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGrou
     return renderedElements;
   };
 
-  private _getBorderStyles = (elem: IShimmerElement, rowHeight?: number): IStyleSet | undefined => {
+  private _getBorderStyles = (elem: IShimmerElement, rowHeight?: number): IRawStyle | undefined => {
     const elemHeight: number | undefined = elem.height;
     const dif: number = rowHeight && elemHeight ? rowHeight - elemHeight : 0;
 
-    let borderStyle: IStyleSet | undefined;
+    let borderStyle: IRawStyle | undefined;
 
     if (!elem.verticalAlign || elem.verticalAlign === 'center') {
       borderStyle = {

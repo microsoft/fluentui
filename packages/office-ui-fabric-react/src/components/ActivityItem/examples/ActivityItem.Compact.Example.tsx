@@ -9,7 +9,7 @@ import { Icon } from '../../../Icon';
 export class ActivityItemCompactExample extends React.Component<React.Props<ActivityItemCompactExample>, {}> {
   public render(): JSX.Element {
     const getClassNames = classNamesFunction<IActivityItemExampleStyleProps, IActivityItemExampleStyles>();
-    const classNames = getClassNames(getStyles);
+    const classNames = getClassNames(getStyles, {});
 
     const activityItemExamples: Partial<IActivityItemProps & React.Props<{}>>[] = [
       {

@@ -164,7 +164,7 @@ export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & 
   /** Whether this row can be selected */
   canSelect?: boolean;
 
-  /** Class name of when this becomes a drop taget */
+  /** Class name of when this becomes a drop target. */
   droppingClassName?: string;
 
   /** Is the checkbox visible */

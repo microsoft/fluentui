@@ -10,7 +10,8 @@ import {
 import { GroupedListSection } from './GroupedListSection';
 import { List, ScrollToMode } from '../../List';
 import { SelectionMode } from '../../utilities/selection/index';
-export const getClassNames = classNamesFunction<IGroupedListStyleProps, IGroupedListStyles>();
+
+const getClassNames = classNamesFunction<IGroupedListStyleProps, IGroupedListStyles>();
 
 export interface IGroupedListState {
   lastWidth?: number;

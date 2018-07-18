@@ -18,6 +18,7 @@
     "test": "npm run _rushBuild",
     "vrtest": "cd apps && cd vr-tests && npm run screener",
     "start": "cd apps && cd fabric-website-resources && npm start",
+    "start-exp": "cd packages && cd experiments && npm start",
     "build": "npm run _rushRebuild",
     "buildci": "npm run _rushRebuildCi",
     "buildfast": "npm run _rushBuild",

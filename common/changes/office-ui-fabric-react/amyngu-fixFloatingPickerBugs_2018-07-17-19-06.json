@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ExtendedBasePicker: Expose selectedItems, Remove persona suggestion padding in FloatingPicker ",
-      "type": "minor"
+      "comment": "Fix issue where last suggestion item was selected on first query change. Fix picker showing on zero query",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
