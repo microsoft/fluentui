@@ -20,6 +20,7 @@ import {
   IColumn,
   IDetailsList,
   IDetailsListProps,
+  IDetailsGroupRenderProps
 } from '../DetailsList/DetailsList.types';
 import { DetailsHeader, IDetailsHeader, SelectAllVisibility, IDetailsHeaderProps } from '../DetailsList/DetailsHeader';
 import { DetailsRow, IDetailsRowProps } from '../DetailsList/DetailsRow';
@@ -34,7 +35,7 @@ import {
 } from '../../utilities/selection/index';
 
 import { DragDropHelper } from '../../utilities/dragdrop/DragDropHelper';
-import { IGroupedList, GroupedList } from '../../GroupedList';
+import { IGroupedList, GroupedList, IGroupRenderProps, IGroupDividerProps } from '../../GroupedList';
 import {
   IList,
   List,
@@ -330,9 +331,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     const {
       onRenderDetailsHeader = this._onRenderDetailsHeader
     } = this.props;
-
+    const recomputedGroupProps = groupProps ? this._getGroupProps(groupProps) : undefined;
     const rowCount = (isHeaderVisible ? 1 : 0) + GetGroupCount(groups) + (items ? items.length : 0);
-
     return (
       // If shouldApplyApplicationRole is true, role application will be applied to make arrow keys work
       // with JAWS.
@@ -410,7 +410,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                   <GroupedList
                     ref={ this._groupedList }
                     groups={ groups }
-                    groupProps={ groupProps }
+                    groupProps={ recomputedGroupProps }
                     items={ items }
                     onRenderCell={ this._onRenderCell }
                     selection={ selection }
@@ -880,6 +880,71 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     }
 
     return itemKey;
+  }
+
+  private _getGroupProps(detailsGroupProps: IDetailsGroupRenderProps): IGroupRenderProps {
+    const {
+      onRenderFooter: onRenderDetailsGroupFooter,
+      onRenderHeader: onRenderDetailsGroupHeader
+    } = detailsGroupProps;
+    const { adjustedColumns: columns } = this.state;
+    const selection = new Selection();
+    const {
+      compact,
+      selectionMode,
+      viewport,
+      checkboxVisibility,
+      getRowAriaLabel,
+      getRowAriaDescribedBy,
+      checkButtonAriaLabel,
+      checkboxCellClassName
+    } = this.props;
+
+    const detailsRowProps: IDetailsRowProps | undefined = {
+      item: '',
+      itemIndex: -1,
+      compact: compact,
+      columns: columns as IColumn[],
+      selectionMode: selectionMode!,
+      selection: selection,
+      checkboxVisibility: checkboxVisibility,
+      getRowAriaLabel: getRowAriaLabel,
+      viewport: viewport,
+      getRowAriaDescribedBy: getRowAriaDescribedBy,
+      checkButtonAriaLabel: checkButtonAriaLabel,
+      checkboxCellClassName: checkboxCellClassName
+    };
+
+    const onRenderFooter = onRenderDetailsGroupFooter
+      ? (props: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
+          return onRenderDetailsGroupFooter(
+            {
+              ...props,
+              detailsRowProps
+            },
+            defaultRender
+          );
+        }
+      : undefined;
+
+    const onRenderHeader = onRenderDetailsGroupHeader
+      ? (props: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
+          return onRenderDetailsGroupHeader(
+            {
+              ...props,
+              detailsRowProps
+            },
+            defaultRender
+          );
+        }
+      : undefined;
+
+    const groupProps = detailsGroupProps as IGroupRenderProps;
+    return {
+      ...groupProps,
+      onRenderFooter,
+      onRenderHeader
+    };
   }
 }
 
