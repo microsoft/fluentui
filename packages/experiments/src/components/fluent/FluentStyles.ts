@@ -125,7 +125,16 @@ const DialogContentStyles = {
     padding: '16px'
   },
   topButton: {
-    padding: '20px 16px 0 0'
+    padding: '16px 10px 0 0'
+  },
+  inner: {
+    padding: '0 16px 16px'
+  }
+};
+
+const DialogFooterStyles = {
+  actions: {
+    margin: '16px 0 0'
   }
 };
 
@@ -180,6 +189,9 @@ export const FluentStyles = {
   },
   DialogContent: {
     styles: DialogContentStyles
+  },
+  DialogFooter: {
+    styles: DialogFooterStyles
   },
   Label: {
     styles: LabelStyles
