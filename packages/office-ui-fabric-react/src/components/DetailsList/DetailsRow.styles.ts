@@ -1,12 +1,12 @@
 import { IDetailsRowStyleProps, IDetailsRowStyles } from './DetailsRow.types';
 import {
-  getGlobalClassNames,
-  getFocusStyle,
-  HighContrastSelector,
+  AnimationClassNames,
   FontSizes,
-  AnimationClassNames
+  HighContrastSelector,
+  IStyle,
+  getFocusStyle,
+  getGlobalClassNames
 } from '../../Styling';
-import { IStyleBaseArray, IStyle } from '../../../../merge-styles/lib/IStyle';
 
 const GlobalClassNames = {
   root: 'ms-DetailsRow',
@@ -104,7 +104,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
 
   const thickBorderStyle = `${values.rowShimmerHorizontalBorder * 4}px solid ${colors.defaultBackgroundColor}`;
   const thinBorderStyle = `${values.rowShimmerHorizontalBorder}px solid ${colors.defaultBackgroundColor}`;
-  const selectedStyles: IStyleBaseArray = [
+  const selectedStyles: IStyle = [
     getFocusStyle(theme, -1, undefined, undefined, themePrimary, white),
     classNames.isSelected,
     {
@@ -189,7 +189,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
     }
   ];
 
-  const cannotSelectStyles: IStyleBaseArray = [
+  const cannotSelectStyles: IStyle = [
     classNames.isContentUnselectable,
     {
       userSelect: 'none',

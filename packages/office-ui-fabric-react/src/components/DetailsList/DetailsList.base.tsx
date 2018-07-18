@@ -42,7 +42,7 @@ import { IList, List, IListProps, ScrollToMode } from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
 import { GetGroupCount } from '../../utilities/groupedList/GroupedListUtility';
 
-export const getClassNames = classNamesFunction<IDetailsListStyleProps, IDetailsListStyles>();
+const getClassNames = classNamesFunction<IDetailsListStyleProps, IDetailsListStyles>();
 
 export interface IDetailsListState {
   focusedItemIndex: number;
