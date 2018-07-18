@@ -17,10 +17,9 @@ export interface ITextProps {
   type?: keyof IFontTypes;
   family?: keyof IFontFamilies;
   size?: keyof IFontSizes;
-  style?: keyof IFontStyles;
+  fontStyle?: keyof IFontStyles;
   weight?: keyof IFontWeights;
-  color?: keyof IPalette;
-  semanticColor?: keyof ISemanticColors;
+  color?: keyof IPalette | keyof ISemanticColors;
 
   paletteSet?: string;
 
@@ -46,19 +45,27 @@ const TextView = (props: ITextViewProps) => {
     type,
     weight,
     wrap,
+    fontStyle,
     ...rest
   } = props;
+
   return <RootType {...rest} className={props.styles.root} />;
 };
 
 const styles = (props: IStyledProps<ITextProps>): ITextStyles => {
-  const { block, theme, wrap, grow, shrink, type, family, weight, size, style, color, semanticColor } = props;
+  const { block, theme, wrap, grow, shrink, type, family, weight, size, fontStyle, color } = props;
 
   const { palette, fonts, semanticColors, typography } = theme;
 
   let themeType;
 
-  if (type && typography.types[type]) {
+  const paletteColor = color as keyof IPalette;
+  const semanticColor = color as keyof ISemanticColors;
+
+  if (fontStyle && fonts[fontStyle]) {
+    // if a general style is specified, use that for the theme
+    themeType = fonts[fontStyle];
+  } else if (type && typography.types[type]) {
     // if a general type is specified, use that for the theme
     themeType = typography.types[type];
   } else {
@@ -81,10 +88,10 @@ const styles = (props: IStyledProps<ITextProps>): ITextStyles => {
 
   // use fonts to set these properties
   const mozOsxFontSmoothing =
-    style && fonts[style] ? fonts[style].MozOsxFontSmoothing : fonts.medium.MozOsxFontSmoothing;
+    fontStyle && fonts[fontStyle] ? fonts[fontStyle].MozOsxFontSmoothing : fonts.medium.MozOsxFontSmoothing;
 
   const webkitFontSmoothing =
-    style && fonts[style] ? fonts[style].WebkitFontSmoothing : fonts.medium.WebkitFontSmoothing;
+    fontStyle && fonts[fontStyle] ? fonts[fontStyle].WebkitFontSmoothing : fonts.medium.WebkitFontSmoothing;
 
   const themeProperties = {
     mozOsxFontSmoothing: mozOsxFontSmoothing,
@@ -92,8 +99,8 @@ const styles = (props: IStyledProps<ITextProps>): ITextStyles => {
     color:
       semanticColor && semanticColors[semanticColor] // use semanticColors to set color if it exists
         ? semanticColors[semanticColor]
-        : color && palette[color]
-          ? palette[color]
+        : paletteColor && palette[paletteColor]
+          ? palette[paletteColor]
           : palette.neutralPrimary // otherwise, use palette
   };
 
