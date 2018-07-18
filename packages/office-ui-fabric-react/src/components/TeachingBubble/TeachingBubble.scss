@@ -118,9 +118,14 @@
   top: 0;
   color: $ms-color-white;
   font-size: $ms-icon-size-s;
+
+  &:hover {
+    background: transparent;
+  }
 }
 
 .footer {
+  display: flex;
   :global(.ms-Button):not(:first-child) {
     @include margin-left(20px);
   }
@@ -155,9 +160,10 @@
 }
 
 //Primary button style override
-.root .primaryButton {
+.bodyContent .primaryButton {
   background-color: $ms-color-white;
   border-color: $ms-color-white;
+  white-space: nowrap;
 
   :global(.ms-Button-label) {
     @include ms-font-m;
@@ -181,9 +187,10 @@
 }
 
 //Secondary button style override
-.root .secondaryButton {
+.bodyContent .secondaryButton {
   background-color: $ms-color-themePrimary;
   border-color: $ms-color-white;
+  white-space: nowrap;
 
   :global(.ms-Button-label) {
     @include ms-font-m;

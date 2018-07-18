@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Beak } from './Beak';
+import { RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
 
 export interface IBeak { }
 
@@ -12,12 +13,14 @@ export interface IBeakProps extends React.Props<Beak> {
   /**
    * Beak width.
    * @default 18
+   * @deprecated
    */
   width?: number;
 
   /**
    * Beak height.
    * @default 18
+   * @deprecated
    */
   height?: number;
 
@@ -29,17 +32,36 @@ export interface IBeakProps extends React.Props<Beak> {
   /**
    * Left position of the beak
    */
-  left?: string | null;
+  left?: string;
 
   /**
    * Top position of the beak
    */
-  top?: string | null;
+  top?: string;
+
+  /**
+   * Right position of the beak
+   */
+  right?: string;
+
+  /**
+   * Bottom position of the beak
+   */
+  bottom?: string;
+
+  /**
+   * Direction of beak
+   */
+  direction?: RectangleEdge;
 }
 
 export interface IBeakStylesProps {
-  left?: string | null;
-  top?: string | null;
+  left?: string | undefined;
+  top?: string | undefined;
+  bottom?: string | undefined;
+  right?: string | undefined;
   width?: string;
   height?: string;
+  transform?: string;
+  color?: string;
 }
