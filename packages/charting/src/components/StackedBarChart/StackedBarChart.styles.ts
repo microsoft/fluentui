@@ -29,12 +29,12 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
     ],
     bars: [
       {
-        transform: `translate( 0px,0px)`
+        transform: `translate(0px, 0px)`
       }
     ],
     legend: [
       {
-        transform: `translate( 20px,${barHeight! + 30}px)`
+        transform: `translate(20px, ${barHeight! + 30}px)`
       }
     ]
   };

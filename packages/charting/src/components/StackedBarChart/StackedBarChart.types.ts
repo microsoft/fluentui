@@ -2,7 +2,7 @@ import { ITheme, IStyle } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
 
 export interface IStackedBarChart {}
-export interface Idata {
+export interface IDataPoint {
   /**
    * Label for data to render in the chart.
    */
@@ -17,7 +17,7 @@ export interface IStackedBarChartProps {
   /**
    * Data to render in the chart.
    */
-  data?: Idata[];
+  data?: IDataPoint[];
 
   /**
    * Width of the chart.
@@ -33,11 +33,6 @@ export interface IStackedBarChartProps {
    * Height of each bar in the chart.
    */
   barHeight?: number;
-
-  /**
-   * Number of ticks on the y-axis.
-   */
-  yAxisTickCount?: number;
 
   /**
    * Colors from which to select the color of each bar.
@@ -70,18 +65,22 @@ export interface IStackedBarChartStyleProps {
    * Theme (provided through customization.)
    */
   theme: ITheme;
+
   /**
    * Additional CSS class(es) to apply to the StackedBarChart.
    */
   className?: string;
+
   /**
    * Width of the chart.
    */
   width: number;
+
   /**
    * Height of the chart.
    */
   height: number;
+
   /**
    * Height of bar in the chart.
    */

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Idata } from './StackedBarChart.types';
+import { IDataPoint } from './StackedBarChart.types';
 
 import { classNamesFunction, IClassNames } from '../../Utilities';
 import { IStackedBarChartProps, IStackedBarChartStyleProps, IStackedBarChartStyles } from './StackedBarChart.types';
@@ -49,11 +49,11 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     );
   }
 
-  private _createBars(data: Idata[], height: number, width: number, barHeight: number): JSX.Element[] {
+  private _createBars(data: IDataPoint[], height: number, width: number, barHeight: number): JSX.Element[] {
     let prevWidth = 0;
     const barWidths = [0];
-    const total = data.map((item: Idata) => item.value).reduce((a: number, b: number) => a + b, 0);
-    const bars = data.map((point: Idata, index: number) => {
+    const total = data.map((item: IDataPoint) => item.value).reduce((a: number, b: number) => a + b, 0);
+    const bars = data.map((point: IDataPoint, index: number) => {
       const value = (point.value / total) * width;
       prevWidth = prevWidth + value;
       barWidths.push(prevWidth);
@@ -72,8 +72,8 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     return bars;
   }
 
-  private _createLegendBars(data: Idata[], barHeight: number): JSX.Element[] {
-    const bars = data.map((point: Idata, index: number) => {
+  private _createLegendBars(data: IDataPoint[], barHeight: number): JSX.Element[] {
+    const bars = data.map((point: IDataPoint, index: number) => {
       return (
         <g key={index}>
           <rect x={index * 80} y={0} width={12} height={12} fill={this._colors[index % this._colors.length]} />
