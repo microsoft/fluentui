@@ -147,7 +147,6 @@ export const AppState: IAppState = {
             className: 'componentsPage',
             isUhfLink: true,
             isCategory: true,
-            component: require<any>('../../pages/Overviews/ComponentsPage').ComponentsPage,
             pages:[
                   {
                     title: 'Button',
@@ -274,7 +273,6 @@ export const AppState: IAppState = {
             className: 'componentsPage',
             isUhfLink: true,
             isCategory: true,
-            component: require<any>('../../pages/Overviews/ComponentsPage').ComponentsPage,
             pages:[
                   {
                     title: 'Breadcrumb',
@@ -336,7 +334,6 @@ export const AppState: IAppState = {
             className: 'componentsPage',
             isUhfLink: true,
             isCategory: true,
-            component: require<any>('../../pages/Overviews/ComponentsPage').ComponentsPage,
             pages:[
                   {
                     title: 'ActivityItem',
@@ -537,7 +534,6 @@ export const AppState: IAppState = {
             className: 'componentsPage',
             isUhfLink: true,
             isCategory: true,
-            component: require<any>('../../pages/Overviews/ComponentsPage').ComponentsPage,
             pages:[
                 {
                     title: 'Pickers',
@@ -592,7 +588,6 @@ export const AppState: IAppState = {
             className: 'componentsPage',
             isUhfLink: true,
             isCategory: true,
-            component: require<any>('../../pages/Overviews/ComponentsPage').ComponentsPage,
             pages:[
                   {
                     title: 'MessageBar',
@@ -638,7 +633,6 @@ export const AppState: IAppState = {
             className: 'componentsPage',
             isUhfLink: true,
             isCategory: true,
-            component: require<any>('../../pages/Overviews/ComponentsPage').ComponentsPage,
             pages:[
                   {
                     title: 'Callout',

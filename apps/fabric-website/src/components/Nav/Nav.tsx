@@ -75,13 +75,19 @@ export class Nav extends React.Component<INavProps, INavState> {
       return (
         <div style={{ display: 'flex' }}>
           <SearchBox
-            placeholder="Search"
+            placeholder="Filter Components"
             underlined={true}
             styles={{
-              iconContainer: {
-                color: 'white'
+              root: {
+                marginBottom: '5px',
+                width: '180px',
+                backgroundColor: 'transparent',
               },
-              icon: {
+              iconContainer:{
+                display: 'none'
+              },
+              field: {
+                backgroundColor:'transparent',
                 color: 'white'
               },
               clearButton: {
@@ -90,14 +96,6 @@ export class Nav extends React.Component<INavProps, INavState> {
                     color: 'white'
                   }
                 }
-              },
-              field: {
-                backgroundColor: 'transparent',
-                color: 'white'
-              },
-              root: {
-                marginBottom: '5px',
-                width: '180px'
               }
             }}
             onChange={this._onChangeQuery.bind(this)}
