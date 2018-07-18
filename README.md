@@ -1,5 +1,7 @@
 # [Office UI Fabric React](http://dev.office.com/fabric)
 
+JUST A DUMMY PR, DO NOT MERGE
+
 ##### The React-based front-end framework for building experiences for Office and Office 365.
 
 [![npm version](https://badge.fury.io/js/office-ui-fabric-react.svg)](https://badge.fury.io/js/office-ui-fabric-react)
@@ -59,6 +61,7 @@ ReactDOM.render(<PrimaryButton>I am a button.</PrimaryButton>, document.body.fir
 Fabric React supports all evergreen browsers, with IE 11 as the min-bar version of Internet Explorer. See the [browser support doc](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Browser-Support) for more information.
 
 ## Right-to-left support
+
 All components can render in LTR or RTL, depending on the `dir` attribute set on the html page. (`dir="rtl"` will flip the direction of everything.
 
 ## Server-side rendering
