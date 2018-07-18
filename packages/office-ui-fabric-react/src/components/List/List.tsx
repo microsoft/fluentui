@@ -31,6 +31,7 @@ export interface IListState {
 
   /** The last versionstamp for  */
   measureVersion?: number;
+  isScrolling?: boolean;
 }
 
 interface IPageCacheItem {
@@ -130,7 +131,8 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     super(props);
 
     this.state = {
-      pages: []
+      pages: [],
+      isScrolling: false
     };
 
     this._estimatedPageHeight = 0;
@@ -152,6 +154,10 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     });
 
     this._onAsyncResize = this._async.debounce(this._onAsyncResize, RESIZE_DELAY, {
+      leading: false
+    });
+
+    this._onScrollingDone = this._async.debounce(this._onScrollingDone, DONE_SCROLLING_WAIT, {
       leading: false
     });
 
@@ -330,9 +336,9 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     let shouldComponentUpdate = false;
 
     // Update if the page stops scrolling
-    // if (!newState.isScrolling && this.state.isScrolling) {
-    //   return true;
-    // }
+    if (!newState.isScrolling && this.state.isScrolling) {
+      return true;
+    }
 
     if (newProps.items === this.props.items && oldPages!.length === newPages!.length) {
       for (let i = 0; i < oldPages!.length; i++) {
@@ -479,7 +485,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
           data-list-index={index}
           data-automationid="ListCell"
         >
-          {onRenderCell && onRenderCell(item, index, false)}
+          {onRenderCell && onRenderCell(item, index, this.state.isScrolling)}
         </div>
       );
     });
@@ -508,7 +514,11 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
    * we will call onAsyncIdle which will reset it back to it's correct value.
    */
   private _onScroll(): void {
+    if (!this.state.isScrolling) {
+      this.setState({ isScrolling: true });
+    }
     this._resetRequiredWindows();
+    this._onScrollingDone();
   }
 
   private _resetRequiredWindows(): void {
@@ -553,6 +563,14 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       // Async increment on next tick.
       this._onAsyncIdle();
     }
+  }
+
+  /**
+   * Function to call when the list is done scrolling.
+   * This function is debounced.
+   */
+  private _onScrollingDone(): void {
+    this.setState({ isScrolling: false });
   }
 
   private _onAsyncResize(): void {
