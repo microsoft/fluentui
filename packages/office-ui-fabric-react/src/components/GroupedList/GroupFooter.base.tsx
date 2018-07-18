@@ -2,7 +2,7 @@ import * as React from 'react';
 import { BaseComponent, classNamesFunction } from '../../Utilities';
 import { GroupSpacer } from './GroupSpacer';
 import { IGroupFooterStyleProps, IGroupFooterStyles, IGroupFooterProps } from './GroupFooter.types';
-export const getClassNames = classNamesFunction<IGroupFooterStyleProps, IGroupFooterStyles>();
+const getClassNames = classNamesFunction<IGroupFooterStyleProps, IGroupFooterStyles>();
 
 export class GroupFooterBase extends BaseComponent<IGroupFooterProps, {}> {
   public render(): JSX.Element | null {

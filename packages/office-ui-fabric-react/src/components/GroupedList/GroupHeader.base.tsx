@@ -8,7 +8,8 @@ import { GroupSpacer } from './GroupSpacer';
 import { Spinner } from '../../Spinner';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { IGroupHeaderStyleProps, IGroupHeaderStyles, IGroupHeaderProps } from './GroupHeader.types';
-export const getClassNames = classNamesFunction<IGroupHeaderStyleProps, IGroupHeaderStyles>();
+
+const getClassNames = classNamesFunction<IGroupHeaderStyleProps, IGroupHeaderStyles>();
 
 export interface IGroupHeaderState {
   isCollapsed: boolean;
