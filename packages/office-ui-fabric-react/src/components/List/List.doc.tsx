@@ -8,11 +8,11 @@ import { ListStatus } from './List.checklist';
 import { createListItems } from '../../utilities/exampleData';
 
 const ListBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Basic.Example.tsx') as string;
-// const ListGridExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Grid.Example.tsx') as string;
-// const ListScrollingExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Scrolling.Example.tsx') as string;
-// const ListGhostingExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Ghosting.Example.tsx') as string;
+const ListGridExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Grid.Example.tsx') as string;
+const ListScrollingExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Scrolling.Example.tsx') as string;
+const ListGhostingExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Ghosting.Example.tsx') as string;
 
-// const _cachedItems = createListItems(5000);
+const _cachedItems = createListItems(5000);
 
 export const ListPageProps: IDocPageProps = {
   title: 'List',
@@ -21,9 +21,24 @@ export const ListPageProps: IDocPageProps = {
     'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/List',
   examples: [
     {
+      title: 'List of 5000 grid items',
+      code: ListGridExampleCode,
+      view: <ListGridExample items={_cachedItems} />
+    },
+    {
       title: 'List of 5000 variable height items',
       code: ListBasicExampleCode,
-      view: <ListBasicExample />
+      view: <ListBasicExample items={_cachedItems} />
+    },
+    {
+      title: 'Scrolling items into view',
+      code: ListScrollingExampleCode,
+      view: <ListScrollingExample items={_cachedItems} />
+    },
+    {
+      title: 'Rendering ghost items while the list is scrolling',
+      code: ListGhostingExampleCode,
+      view: <ListGhostingExample items={_cachedItems} />
     }
   ],
 

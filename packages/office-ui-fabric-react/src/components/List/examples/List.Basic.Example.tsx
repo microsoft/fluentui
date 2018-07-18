@@ -1,36 +1,73 @@
-/* tslint:disable:jsx-no-lambda */
-
 import * as React from 'react';
+import { getRTL } from 'office-ui-fabric-react/lib/Utilities';
+import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { List } from 'office-ui-fabric-react/lib/List';
+import './List.Basic.Example.scss';
 
-const items: { key: string; value: string }[] = [];
-const ITEMS_PER_PAGE = 20;
-const ITEM_HEIGHT = 40;
-
-for (let i = 0; i < 200; ++i) {
-  items.push({ key: String(i), value: String(i) });
+export interface IListBasicExampleProps {
+  items: any[];
 }
 
-class Row extends React.Component<{ value: string }> {
-  private _renderCount = 0;
+export interface IListBasicExampleState {
+  filterText?: string;
+  items?: any[];
+}
 
-  public render() {
+export class ListBasicExample extends React.Component<IListBasicExampleProps, any> {
+  constructor(props: IListBasicExampleProps) {
+    super(props);
+
+    this._onFilterChanged = this._onFilterChanged.bind(this);
+
+    this.state = {
+      filterText: '',
+      items: props.items
+    };
+  }
+
+  public render(): JSX.Element {
+    const { items: originalItems } = this.props;
+    const { items } = this.state;
+    const resultCountText =
+      items.length === originalItems.length ? '' : ` (${items.length} of ${originalItems.length} shown)`;
+
     return (
-      <div style={{ height: ITEM_HEIGHT }}>
-        {this.props.value} - Render: {++this._renderCount}
-      </div>
+      <FocusZone direction={FocusZoneDirection.vertical}>
+        <TextField label={'Filter by name' + resultCountText} onBeforeChange={this._onFilterChanged} />
+        <List items={items} onRenderCell={this._onRenderCell} />
+      </FocusZone>
     );
   }
-}
-export class ListBasicExample extends React.Component<{}, any> {
-  public render(): JSX.Element {
+
+  private _onFilterChanged(text: string): void {
+    const { items } = this.props;
+
+    this.setState({
+      filterText: text,
+      items: text ? items.filter(item => item.name.toLowerCase().indexOf(text.toLowerCase()) >= 0) : items
+    });
+  }
+
+  private _onRenderCell(item: any, index: number | undefined): JSX.Element {
     return (
-      <List
-        items={items}
-        getItemCountForPage={() => ITEMS_PER_PAGE}
-        getPageHeight={() => ITEM_HEIGHT * ITEMS_PER_PAGE}
-        onRenderCell={item => <Row value={item.value} />}
-      />
+      <div className="ms-ListBasicExample-itemCell" data-is-focusable={true}>
+        <Image
+          className="ms-ListBasicExample-itemImage"
+          src={item.thumbnail}
+          width={50}
+          height={50}
+          imageFit={ImageFit.cover}
+        />
+        <div className="ms-ListBasicExample-itemContent">
+          <div className="ms-ListBasicExample-itemName">{item.name}</div>
+          <div className="ms-ListBasicExample-itemIndex">{`Item ${index}`}</div>
+          <div className="ms-ListBasicExample-itemDesc">{item.description}</div>
+        </div>
+        <Icon className="ms-ListBasicExample-chevron" iconName={getRTL() ? 'ChevronLeft' : 'ChevronRight'} />
+      </div>
     );
   }
 }
