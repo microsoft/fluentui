@@ -127,6 +127,15 @@ export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicat
             transition: 'width .15s linear'
           } as IRawStyle),
       classNames.progressBar
-    ]
+    ],
+
+    ariaText: {
+      top: 0,
+      left: '-2px',
+      width: '1px',
+      height: '1px',
+      position: 'absolute',
+      overflow: 'hidden'
+    }
   };
 };

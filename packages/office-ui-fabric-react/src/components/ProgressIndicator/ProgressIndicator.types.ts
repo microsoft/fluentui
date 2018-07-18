@@ -96,4 +96,5 @@ export interface IProgressIndicatorStyles {
   itemProgress: IStyle;
   progressTrack: IStyle;
   progressBar: IStyle;
+  ariaText: IStyle;
 }
