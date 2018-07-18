@@ -48,9 +48,12 @@ export const getClassNames = memoizeFunction((): IPositioningContainerNames => {
       position: 'absolute',
       boxSizing: 'border-box',
       border: '1px solid ${}',
-      selectors: Object.assign(highContrastActive({
-        border: '1px solid WindowText',
-      }), focusClear()),
+      selectors: {
+        ...highContrastActive({
+          border: '1px solid WindowText'
+        }),
+        ...focusClear()
+      }
     },
     container: {
       position: 'relative'
