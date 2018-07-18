@@ -3,7 +3,8 @@ import { max as d3Max } from 'd3-array';
 import { axisLeft as d3AxisLeft, axisBottom as d3AxisBottom, Axis as D3Axis } from 'd3-axis';
 import { scaleBand as d3ScaleBand, scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
-import { classNamesFunction, IClassNames } from '../../Utilities';
+import { classNamesFunction } from '../../Utilities';
+import { IProcessedStyleSet } from '../../Styling';
 import { ILineChartProps, ILineChartStyleProps, ILineChartStyles, IDataPoint } from './LineChart.types';
 
 const getClassNames = classNamesFunction<ILineChartStyleProps, ILineChartStyles>();
@@ -18,7 +19,7 @@ export class LineChartBase extends React.Component<ILineChartProps, {}> {
   private _strokeWidth: number;
   private _yAxisTickCount: number;
   private _color: string;
-  private _classNames: IClassNames<ILineChartStyles>;
+  private _classNames: IProcessedStyleSet<ILineChartStyles>;
 
   constructor(props: ILineChartProps) {
     super(props);

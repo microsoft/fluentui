@@ -15,12 +15,26 @@ describe('mergeStyleSets', () => {
   });
 
   it('can merge style sets', () => {
+    const fn1 = jest.fn().mockReturnValue({
+      root: { background: 'green', fontSize: 12 }
+    });
+
+    const fn2 = jest.fn().mockReturnValue({
+      root: {
+        background: 'yellow',
+        color: 'pink'
+      }
+    });
+
     const empty: { c?: string } = {};
-    const result: { root: string; a: string; b: string } = mergeStyleSets(
+    const result = mergeStyleSets(
       empty,
       {
         root: { background: 'red' },
-        a: { background: 'green' }
+        a: { background: 'green' },
+        subComponentStyles: {
+          labelStyles: fn1
+        }
       },
       {
         a: { background: 'white' },
@@ -31,14 +45,20 @@ describe('mergeStyleSets', () => {
           selectors: {
             ':hover': { background: 'yellow' }
           }
+        },
+        subComponentStyles: {
+          labelStyles: fn2
         }
       }
     );
 
-    expect(result).toEqual({
-      root: 'root-0',
-      a: 'a-1',
-      b: 'b-2'
+    expect(result.root).toBe('root-0');
+    expect(result.a).toBe('a-1');
+    expect(result.b).toBe('b-2');
+    expect(result.subComponentStyles).toBeDefined();
+    const mergedLabelStyles = result.subComponentStyles!.labelStyles({});
+    expect(mergedLabelStyles).toEqual({
+      root: [{ background: 'green', fontSize: 12 }, { background: 'yellow', color: 'pink' }]
     });
 
     expect(_stylesheet.getRules()).toEqual(

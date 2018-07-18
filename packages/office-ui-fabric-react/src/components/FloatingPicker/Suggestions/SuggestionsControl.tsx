@@ -20,9 +20,10 @@ export enum SuggestionItemType {
   footer
 }
 
-export interface ISuggestionsControlState {
+export interface ISuggestionsControlState<T> {
   selectedHeaderIndex: number;
   selectedFooterIndex: number;
+  suggestions: ISuggestionModel<T>[];
 }
 
 export class SuggestionsHeaderFooterItem extends BaseComponent<ISuggestionsHeaderFooterItemProps, {}> {
@@ -49,7 +50,7 @@ export class SuggestionsHeaderFooterItem extends BaseComponent<ISuggestionsHeade
 /**
  * Class when used with SuggestionsStore, renders a suggestions control with customizable headers and footers
  */
-export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProps<T>, ISuggestionsControlState> {
+export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProps<T>, ISuggestionsControlState<T>> {
   protected _forceResolveButton: IButton;
   protected _searchForMoreButton: IButton;
   protected _selectedElement: HTMLDivElement;
@@ -63,7 +64,8 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
 
     this.state = {
       selectedHeaderIndex: -1,
-      selectedFooterIndex: -1
+      selectedFooterIndex: -1,
+      suggestions: suggestionsProps.suggestions
     };
   }
 
@@ -75,8 +77,12 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
     this.scrollSelected();
   }
 
-  public componentWillReceiveProps(): void {
-    this.resetSelectedItem();
+  public componentWillReceiveProps(newProps: ISuggestionsControlProps<T>): void {
+    if (newProps.suggestions) {
+      this.setState({ suggestions: newProps.suggestions }, () => {
+        this.resetSelectedItem();
+      });
+    }
   }
 
   public componentWillUnmount(): void {
@@ -260,7 +266,13 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
   protected _renderSuggestions(): JSX.Element {
     const TypedSuggestions = this.SuggestionsOfProperType;
 
-    return <TypedSuggestions ref={this._resolveRef('_suggestions')} {...this.props as ISuggestionsCoreProps<T>} />;
+    return (
+      <TypedSuggestions
+        ref={this._resolveRef('_suggestions')}
+        {...this.props as ISuggestionsCoreProps<T>}
+        suggestions={this.state.suggestions}
+      />
+    );
   }
 
   /**
@@ -367,7 +379,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
    */
   private _selectNextItemOfItemType(itemType: SuggestionItemType, currentIndex: number = -1): boolean {
     if (itemType === SuggestionItemType.suggestion) {
-      if (this.props.suggestions.length > currentIndex + 1) {
+      if (this.state.suggestions.length > currentIndex + 1) {
         this._suggestions.setSelectedSuggestion(currentIndex + 1);
         this.setState({ selectedHeaderIndex: -1, selectedFooterIndex: -1 });
         return true;
@@ -400,7 +412,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
    */
   private _selectPreviousItemOfItemType(itemType: SuggestionItemType, currentIndex?: number): boolean {
     if (itemType === SuggestionItemType.suggestion) {
-      const index = currentIndex !== undefined ? currentIndex : this.props.suggestions.length;
+      const index = currentIndex !== undefined ? currentIndex : this.state.suggestions.length;
       if (index > 0) {
         this._suggestions.setSelectedSuggestion(index - 1);
         this.setState({ selectedHeaderIndex: -1, selectedFooterIndex: -1 });
