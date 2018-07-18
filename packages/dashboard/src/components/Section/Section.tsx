@@ -23,12 +23,19 @@ export class Section extends React.PureComponent<
     const getClassNames = classNamesFunction<ISectionProps, ISectionStyles>();
     const classNames = getClassNames(getStyles!);
 
+    /* In order to use this within RGL, it needs to have style and className props */
+    // tslint:disable:jsx-ban-props
     return (
-      <div onMouseDown={this._onMouseDown} className={classNames.root}>
+      <div
+        onMouseDown={this._onMouseDown}
+        className={'widget-number ' + this.props.className + ' ' + classNames.root}
+        key={this.props.id}
+        style={this.props.style}
+      >
         {this.props.title}
         <div className={classNames.actions}>
           <IconButton
-            menuIconProps={{ iconName: this.state.expanded ? 'ChevronUpSmall' : 'ChevronDownSmall' }}
+            menuIconProps={{ iconName: this.state.expanded ? 'ChevronDownSmall' : 'ChevronUpSmall' }}
             onClick={this._onCollapseExpandToggled}
             className={classNames.actionButton}
           />
@@ -75,6 +82,9 @@ export class Section extends React.PureComponent<
     this.setState({
       expanded: !this.state.expanded
     });
+    if (this.props.onCollapseExpand) {
+      this.props.onCollapseExpand(this.state.expanded, this.props.id);
+    }
   };
 
   private _onMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {

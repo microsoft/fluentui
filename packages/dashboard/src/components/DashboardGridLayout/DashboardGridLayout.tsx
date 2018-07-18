@@ -40,11 +40,27 @@ const sizes: { [P in Size]: { w: number; h: number } } = {
   section: { w: 4, h: 1 }
 };
 
-export class DashboardGridLayout extends React.Component<IDashboardGridLayoutProps, {}> {
+export class DashboardGridLayout extends React.Component<
+  IDashboardGridLayoutProps,
+  {
+    layouts: Layouts;
+    currentLayout?: Layout[] | undefined;
+    layoutBeforeCollapse: Layouts;
+  }
+> {
+  constructor(props: IDashboardGridLayoutProps) {
+    super(props);
+    const layout = this._createLayout();
+    this.state = {
+      layouts: layout,
+      currentLayout: layout.md,
+      layoutBeforeCollapse: layout
+    };
+  }
+
   public render(): JSX.Element {
     const getClassNames = classNamesFunction<IDashboardGridLayoutProps, IDashboardGridLayoutStyles>();
     const classNames = getClassNames(getStyles!);
-
     return (
       <ResponsiveReactGridLayout
         isDraggable={this.props.isDraggable || true}
@@ -55,15 +71,95 @@ export class DashboardGridLayout extends React.Component<IDashboardGridLayoutPro
         containerPadding={[0, 0]}
         isResizable={this.props.isResizable || false}
         rowHeight={rowHeight}
-        layouts={this._createLayout()}
+        layouts={this.state.layouts}
         verticalCompact={true}
-        onLayoutChange={this.props.onLayoutChange}
+        onLayoutChange={this._onLayoutChanged}
         onBreakpointChange={this.props.onBreakPointChange}
+        {...this.props}
       >
-        {this.props.children}
+        {this._renderChildren()}
       </ResponsiveReactGridLayout>
     );
   }
+
+  private _onLayoutChanged = (currentLayout: Layout[], allLayouts: Layouts) => {
+    console.log('new layout', currentLayout);
+    this.setState({ layouts: allLayouts, currentLayout: currentLayout });
+    if (this.props.onLayoutChange) {
+      this.props.onLayoutChange(currentLayout, allLayouts);
+    }
+  };
+
+  private _renderChildren(): React.ReactNode[] {
+    const childElements: React.ReactNode[] = [];
+    React.Children.forEach(this.props.children, (child: React.ReactChild) => {
+      childElements.push(
+        /*tslint:disable-next-line:no-any */
+        React.cloneElement(child as React.ReactElement<any>, {
+          onCollapseExpand: this.onCollapseExpandToggled
+        })
+      );
+    });
+
+    return childElements;
+  }
+
+  private onCollapseExpandToggled = (expanded: boolean, key: string): void => {
+    console.log('collapse expand toggled', this.state.currentLayout);
+    const newLayout: Layout[] = [];
+    if (this.state.currentLayout && expanded) {
+      this.setState({ layoutBeforeCollapse: JSON.parse(JSON.stringify(this.state.layouts)) });
+      let sectionx = -1,
+        sectiony = -1;
+      for (let i = 0; i < this.state.currentLayout.length; i++) {
+        if (this.state.currentLayout[i].i === key) {
+          sectionx = this.state.currentLayout[i].x;
+          sectiony = this.state.currentLayout[i].y;
+        }
+      }
+      if (sectionx > -1 && sectiony > -1) {
+        for (let i = 0; i < this.state.currentLayout.length; i++) {
+          if (this.state.currentLayout[i].x < sectionx || this.state.currentLayout[i].y < sectiony) {
+            newLayout.push(this.state.currentLayout[i]);
+          } else if (this.state.currentLayout[i].i === key) {
+            newLayout.push(this.state.currentLayout[i]);
+          } else {
+            const copyLayout = this.state.currentLayout[i];
+            copyLayout.w = 0;
+            copyLayout.h = 0;
+            newLayout.push(copyLayout);
+          }
+        }
+      }
+      const layouts: Layouts = {};
+      for (const [k, _] of Object.entries(this.props.layout)) {
+        this._updateLayoutsFromLayout(layouts, newLayout, k);
+      }
+      this.setState({ layouts: layouts });
+    } else {
+      this.setState({ layouts: this.state.layoutBeforeCollapse });
+    }
+  };
+
+  private _updateLayoutsFromLayout = (layouts: Layouts, layout: Layout[], key: string) => {
+    switch (key) {
+      case 'lg':
+        layouts.lg = layout;
+        break;
+      case 'md':
+        layouts.md = layout;
+        break;
+      case 'sm':
+        layouts.sm = layout;
+        break;
+      case 'xs':
+        layouts.xs = layout;
+        break;
+      case 'xxs':
+        layouts.xxs = layout;
+        break;
+    }
+  };
 
   private _createLayoutFromProp(layoutProp: IDashboardCardLayout): Layout {
     return {
@@ -88,26 +184,8 @@ export class DashboardGridLayout extends React.Component<IDashboardGridLayoutPro
       for (let i = 0; i < value.length; i++) {
         layout.push(this._createLayoutFromProp(value[i]));
       }
-
-      switch (key) {
-        case 'lg':
-          layouts.lg = layout;
-          break;
-        case 'md':
-          layouts.md = layout;
-          break;
-        case 'sm':
-          layouts.sm = layout;
-          break;
-        case 'xs':
-          layouts.xs = layout;
-          break;
-        case 'xxs':
-          layouts.xxs = layout;
-          break;
-      }
+      this._updateLayoutsFromLayout(layouts, layout, key);
     }
-
     return layouts;
   }
 }

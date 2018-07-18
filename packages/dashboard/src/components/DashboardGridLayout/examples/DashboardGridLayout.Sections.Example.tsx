@@ -166,9 +166,7 @@ export class DashboardGridLayoutSectionsExample extends React.Component<{}, {}> 
             cardSize={CardSize.small}
           />
         </div>
-        <div key="3.5">
-          <Section title="This is a section title" removeTitle="Remove this section" />
-        </div>
+        <Section key="3.5" id="3.5" title="This is a section title" removeTitle="Remove this section" />
         <div key="3">
           <Card
             cardFrameContent={cardFrameContent}
@@ -198,7 +196,7 @@ export class DashboardGridLayoutSectionsExample extends React.Component<{}, {}> 
         { i: '1', y: 0, x: 1, size: Size.mediumTall },
         { i: '2', y: 1, x: 0, size: Size.small },
         { i: '3', y: 0, x: 2, size: Size.mediumWide },
-        { i: '3.5', y: 0, x: 2, size: Size.section },
+        { i: '3.5', y: 1, x: 2, size: Size.section },
         { i: '4', y: 1, x: 2, size: Size.large }
       ]
     };

@@ -16,7 +16,7 @@ export const getStyles = (): ISectionStyles => {
     actions: {
       position: 'absolute',
       top: '8px',
-      right: '0px',
+      right: '25px',
       display: 'inline-block',
       whiteSpace: 'nowrap'
     },
