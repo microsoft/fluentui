@@ -927,6 +927,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // it we are not really bluring from the whole comboBox
     let relatedTarget = event.relatedTarget;
     if (event.relatedTarget === null) {
+      // In IE11, due to lack of support, event.relatedTarget is always
+      // null making every onBlur call to be "outside" of the ComboBox
+      // even when it's not. Using document.activeElement is another way
+      // for us to be able to get what the relatedTarget without relying
+      // on the event
       relatedTarget = document.activeElement;
     }
     if (
