@@ -633,6 +633,7 @@ export const AppState: IAppState = {
             className: 'componentsPage',
             isUhfLink: true,
             isCategory: true,
+            component: require<any>('../../pages/Overviews/ComponentsPage').ComponentsPage,
             pages:[
                   {
                     title: 'Callout',
