@@ -90,20 +90,13 @@ const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGr
   };
 };
 
-const CalloutContentStyles = {
-  root: {
-    // borderRadius: fluentBorderRadius, // waiting on child override ability before commenting this in
-    boxShadow: Depths.depth64
-  }
-};
-
 const ComboBoxStyles = {
   root: {
     borderRadius: fluentBorderRadius // the bound input box
   },
   callout: {
-    backgroundColor: 'blue',
-    borderRadius: '0 0 20px 20px' // Still requires to target calloutMain as well as it overlaps this element
+    borderRadius: `0 0 ${fluentBorderRadius} ${fluentBorderRadius}`,
+    overflow: 'hidden'
   }
 };
 
@@ -168,9 +161,6 @@ export const FluentStyles = {
   },
   DefaultButton: {
     styles: DefaultButtonStyles
-  },
-  CalloutContent: {
-    styles: CalloutContentStyles
   },
   CompoundButton: {
     styles: CompoundButtonStyles
