@@ -33,11 +33,6 @@ export const getStyles = (props: IProgressBarChartStyleProps): IProgressBarChart
         transform: `translate( 0px,0px)`
       }
     ],
-    legend: [
-      {
-        transform: `translate( 20px,${barHeight! + 30}px)`
-      }
-    ],
     subHeading: [
       {
         float: 'right'
