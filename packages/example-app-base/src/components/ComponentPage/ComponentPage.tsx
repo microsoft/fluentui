@@ -11,23 +11,42 @@ export interface IComponentPageSection {
 }
 
 export interface IComponentPageProps {
+  /** Component Title **/
   title: string;
+  /** Component Name **/
   componentName: string;
+  /** Component examples **/
   exampleCards?: JSX.Element;
+  /** Array of implementation examples, displayed in the order defined */
   implementationExampleCards?: JSX.Element;
+  /** Component properties table(s) **/
   propertiesTables?: JSX.Element;
+  /** Component best practices **/
   bestPractices?: JSX.Element;
+  /** Component dos **/
   dos?: JSX.Element;
+  /** Component donts **/
   donts?: JSX.Element;
+  /** Component overview **/
   overview?: JSX.Element;
+  /** Related link */
   related?: JSX.Element;
+  /** Header visibility flag */
   isHeaderVisible?: boolean;
+  /** Badges visibility flag **/
   areBadgesVisible?: boolean;
+  /** className of the component being documented */
   className?: string;
+  /** Status of the component; e.g. keyboard accessible */
   componentStatus?: JSX.Element;
+  /** Pass through other sections for ComponentPage */
   otherSections?: IComponentPageSection[];
+  /** Allows native props */
   allowNativeProps?: boolean | string;
+  /** Native props root element */
   nativePropsElement?: string | string[] | undefined;
+  /** Includes the feedback section **/
+  isFeedbackVisible?: boolean;
 
   /**
    * Link to the Component root folder on GitHub.
@@ -93,6 +112,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
             {this._getVariants()}
             {this._getImplementationExamples()}
             {this._getPropertiesTable()}
+            {this._getFeedback()}
             {this.props.otherSections &&
               this.props.otherSections.map((componentPageSection: IComponentPageSection) => {
                 return this._getSection(componentPageSection);
@@ -121,7 +141,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     if (bestPractices && dos && donts) {
       links.push(
         <div className="ComponentPage-navLink" key="nav-link">
-          <Link {...{ href: this._baseUrl + '#BestPractices' }}>Best Practices</Link>
+          <Link href={this._baseUrl + '#BestPractices'}>Best Practices</Link>
         </div>
       );
     }
@@ -129,32 +149,34 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     return (
       <div className="ComponentPage-navigation">
         <div className="ComponentPage-navLink">
-          <Link {...{ href: this._baseUrl + '#Overview' }}>Overview</Link>
+          <Link href={this._baseUrl + '#Overview'}>Overview</Link>
         </div>
         {links}
         {this.props.exampleCards && (
           <div className="ComponentPage-navLink">
-            <Link {...{ href: this._baseUrl + '#Variants' }}>Variants</Link>
+            <Link href={this._baseUrl + '#Variants'}>Variants</Link>
           </div>
         )}
         {this.props.implementationExampleCards && (
           <div className="ComponentPage-navLink">
-            <Link {...{ href: this._baseUrl + '#ImplementationExamples' }}>Implementation Examples</Link>
+            <Link href={this._baseUrl + '#ImplementationExamples'}>Implementation Examples</Link>
           </div>
         )}
         {this.props.propertiesTables && (
           <div className="ComponentPage-navLink">
-            <Link {...{ href: this._baseUrl + '#Implementation' }}>Implementation</Link>
+            <Link href={this._baseUrl + '#Implementation'}>Implementation</Link>
+          </div>
+        )}
+        {this.props.isFeedbackVisible && (
+          <div className="ComponentPage-navLink">
+            <Link href={this._baseUrl + '#Feedback'}>Feedback</Link>
           </div>
         )}
         {this.props.otherSections &&
           this.props.otherSections.map((componentPageSection: IComponentPageSection, index: number) => {
             return (
               <div key={index + 'class'} className="ComponentPage-navLink">
-                <Link
-                  key={index + componentPageSection.title}
-                  {...{ href: this._baseUrl + '#' + componentPageSection.title }}
-                >
+                <Link key={index + componentPageSection.title} href={this._baseUrl + '#' + componentPageSection.title}>
                   {componentPageSection.title}
                 </Link>
               </div>
@@ -340,6 +362,23 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
             Implementation Examples
           </h2>
           {this.props.implementationExampleCards}
+        </div>
+      );
+    }
+
+    return undefined;
+  }
+
+  private _getFeedback(): JSX.Element | undefined {
+    if (this.props.isFeedbackVisible) {
+      return (
+        <div className="ComponentPage-feedbackSection">
+          <h2 className="ComponentPage-subHeading ComponentPage-variantsTitle" id="Feedback">
+            Feedback
+          </h2>
+          <Link href="https://github.com/OfficeDev/office-ui-fabric-react/issues/new/choose" target="_blank">
+            Submit feedback on Github
+          </Link>
         </div>
       );
     }
