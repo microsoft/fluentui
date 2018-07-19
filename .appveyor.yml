@@ -1,6 +1,7 @@
 environment:
   nodejs_version: "8"
-
+  APPVEYOR: TRUE
+  
 # Install scripts. (runs after repo cloning)
 install:
   # Get the latest stable version of Node.js or io.js
@@ -10,7 +11,7 @@ install:
 
 # Configure project artifacts.
 artifacts:
-  - path: apps\test-bundle-button\dist\test-bundle-button.json
+  - path: apps\test-bundle-button\dist\test-bundle-button-sizedata.json
     name: SizeAuditor
     type: json
 

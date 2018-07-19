@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { ResizeGroupBase } from './ResizeGroup.base';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+
 export interface IResizeGroup {
   /**
    * Remeasures the available space.
@@ -14,7 +15,7 @@ export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroupBase 
    * Optional callback to access the IResizeGroup interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IResizeGroup | null) => void;
+  componentRef?: IRefObject<IResizeGroup>;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules

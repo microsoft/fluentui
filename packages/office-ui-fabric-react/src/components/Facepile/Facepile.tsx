@@ -6,4 +6,6 @@ import { styles } from './Facepile.styles';
 /**
  * The Facepile shows a list of faces or initials in a horizontal lockup. Each circle represents a person.
  */
-export const Facepile = styled<IFacepileProps, IFacepileStyleProps, IFacepileStyles>(FacepileBase, styles);
+export const Facepile = styled<IFacepileProps, IFacepileStyleProps, IFacepileStyles>(FacepileBase, styles, undefined, {
+  scope: 'Facepile'
+});

@@ -1,6 +1,25 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 13 Jul 2018 21:32:37 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Jul 2018 10:25:50 GMT and should not be manually modified.
+
+## 6.17.0
+Wed, 18 Jul 2018 10:25:50 GMT
+
+### Minor changes
+
+- Fix typing errors
+
+## 6.16.0
+Tue, 17 Jul 2018 10:28:40 GMT
+
+### Minor changes
+
+- Removing most `@customizable` decorator usage. This change should reduce extra React dom elements from being created. Also updating `componentRef` resolution to support `React.createRef()` usage.
+
+## 6.15.1
+Mon, 16 Jul 2018 10:27:18 GMT
+
+*Version update only*
 
 ## 6.15.0
 Fri, 13 Jul 2018 21:32:37 GMT
