@@ -5,7 +5,6 @@
     "@microsoft/load-themed-styles": "^1.7.13",
     "@types/react": "16.3.16",
     "@types/react-dom": "16.0.5",
-    "@types/react-grid-layout": "^0.16.4",
     "@uifabric/charting": "^0.7.0",
     "@uifabric/example-app-base": ">=6.5.2 <7.0.0",
     "@uifabric/experiments": ">=6.18.2 <7.0.0",
@@ -13,7 +12,7 @@
     "office-ui-fabric-react": ">=6.38.1 <7.0.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-grid-layout": "^0.16.6",
+    "react-grid-layout": "samiyaakhtar/react-grid-layout",
     "style-loader": "^0.21.0"
   },
   "main": "lib-commonjs/index.js",

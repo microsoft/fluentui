@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/dashboard",
+      "comment": "Brought in drag api for dashboard grid layout, which enables adding elements from outside the grid into the grid layout",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/dashboard",
+  "email": "saakhta@microsoft.com"
+}
