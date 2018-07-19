@@ -13,8 +13,8 @@ export class DonutChartBase extends React.Component<IDonutChartProps, {}> {
     data: [],
     width: 394,
     height: 196,
-    LegendX: 27.81,
-    LegendY: 182
+    legendX: 27.81,
+    legendY: 182
   };
   private _classNames: IProcessedStyleSet<IDonutChartStyles>;
   private colors: scale.ScaleOrdinal<string | number, {}>;
@@ -22,14 +22,14 @@ export class DonutChartBase extends React.Component<IDonutChartProps, {}> {
     const { data, width, height, colors } = this.props;
     this.colors = scale.scaleOrdinal().range(this.props.colors!);
 
-    const { theme, className, styles, LegendX, LegendY } = this.props;
+    const { theme, className, styles, legendX, legendY } = this.props;
     this._classNames = getClassNames(styles!, {
       theme: theme!,
       width: width!,
       height: height!,
       className,
-      LegendX: LegendX,
-      LegendY: LegendY
+      legendX: legendX,
+      legendY: legendY
     });
     const legendBar = this._createLegendBars(data!);
     const radius = Math.min(width!, height!) / 2;
@@ -47,7 +47,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, {}> {
             data={data!}
             colors={colors!}
           />
-          <g className={this._classNames.Legend}>{legendBar}</g>
+          <g className={this._classNames.legend}>{legendBar}</g>
         </svg>
       </div>
     );
