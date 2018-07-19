@@ -156,7 +156,8 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
   function _growDataUntilItDoesNotFit(
     data: any,
     onGrowData: (prevData: any) => any,
-    getElementToMeasureWidth: () => number
+    getElementToMeasureWidth: () => number,
+    onReduceData: (prevData: any) => any
   ): IResizeGroupState {
     let dataToMeasure = data;
     let measuredWidth: number | undefined = _getMeasuredWidth(data, getElementToMeasureWidth);
@@ -188,8 +189,8 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
 
     // Once the loop is done, we should now shrink until the contents fit.
     return {
-      dataToMeasure,
-      resizeDirection: 'shrink'
+      resizeDirection: 'shrink',
+      ..._shrinkContentsUntilTheyFit(dataToMeasure, onReduceData, getElementToMeasureWidth)
     };
   }
 
@@ -262,7 +263,12 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
       if (currentState.resizeDirection === 'grow' && props.onGrowData) {
         nextState = {
           ...nextState,
-          ..._growDataUntilItDoesNotFit(currentState.dataToMeasure, props.onGrowData, getElementToMeasureWidth)
+          ..._growDataUntilItDoesNotFit(
+            currentState.dataToMeasure,
+            props.onGrowData,
+            getElementToMeasureWidth,
+            props.onReduceData
+          )
         };
       } else {
         nextState = {
@@ -284,9 +290,18 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     return true;
   }
 
+  function getInitialResizeGroupState(data: any): IResizeGroupState {
+    return {
+      dataToMeasure: { ...data },
+      resizeDirection: 'grow',
+      measureContainer: true
+    };
+  }
+
   return {
     getNextState,
-    shouldRenderDataForMeasurement
+    shouldRenderDataForMeasurement,
+    getInitialResizeGroupState
   };
 };
 
@@ -322,11 +337,7 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
 
   constructor(props: IResizeGroupProps) {
     super(props);
-    this.state = {
-      dataToMeasure: { ...this.props.data },
-      resizeDirection: 'grow',
-      measureContainer: true
-    };
+    this.state = this._nextResizeGroupStateProvider.getInitialResizeGroupState(this.props.data);
   }
 
   public render(): JSX.Element {
