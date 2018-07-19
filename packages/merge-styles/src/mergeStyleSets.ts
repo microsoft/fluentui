@@ -2,7 +2,7 @@ import { extractStyleParts } from './extractStyleParts';
 import { concatStyleSets } from './concatStyleSets';
 import { IStyle } from './IStyle';
 import { styleToRegistration, applyRegistration } from './styleToClassName';
-import { IStyleSet, IProcessedStyleSet } from './IStyleSet';
+import { IStyleSet, IProcessedStyleSet, IConcatenatedStyleSet } from './IStyleSet';
 
 /**
  * Takes in one or more style set objects, each consisting of a set of areas,
@@ -13,7 +13,7 @@ import { IStyleSet, IProcessedStyleSet } from './IStyleSet';
  * @param styleSet The first style set to be merged and reigstered.
  */
 export function mergeStyleSets<TStyleSet extends IStyleSet<TStyleSet>>(
-  styleSet: TStyleSet
+  styleSet: TStyleSet | false | null | undefined
 ): IProcessedStyleSet<TStyleSet>;
 
 /**
@@ -26,8 +26,8 @@ export function mergeStyleSets<TStyleSet extends IStyleSet<TStyleSet>>(
  * @param styleSet2 The second style set to be merged.
  */
 export function mergeStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>>(
-  styleSet1: TStyleSet1,
-  styleSet2: TStyleSet2
+  styleSet1: TStyleSet1 | false | null | undefined,
+  styleSet2: TStyleSet2 | false | null | undefined
 ): IProcessedStyleSet<TStyleSet1 & TStyleSet2>;
 
 /**
@@ -45,9 +45,9 @@ export function mergeStyleSets<
   TStyleSet2 extends IStyleSet<TStyleSet2>,
   TStyleSet3 extends IStyleSet<TStyleSet3>
 >(
-  styleSet1: TStyleSet1,
-  styleSet2: TStyleSet2,
-  styleSet3: TStyleSet3
+  styleSet1: TStyleSet1 | false | null | undefined,
+  styleSet2: TStyleSet2 | false | null | undefined,
+  styleSet3: TStyleSet3 | false | null | undefined
 ): IProcessedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3>;
 
 /**
@@ -67,10 +67,10 @@ export function mergeStyleSets<
   TStyleSet3 extends IStyleSet<TStyleSet3>,
   TStyleSet4 extends IStyleSet<TStyleSet4>
 >(
-  styleSet1: TStyleSet1,
-  styleSet2: TStyleSet2,
-  styleSet3: TStyleSet3,
-  styleSet4: TStyleSet4
+  styleSet1: TStyleSet1 | false | null | undefined,
+  styleSet2: TStyleSet2 | false | null | undefined,
+  styleSet3: TStyleSet3 | false | null | undefined,
+  styleSet4: TStyleSet4 | false | null | undefined
 ): IProcessedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3 & TStyleSet4>;
 
 /**
@@ -81,7 +81,7 @@ export function mergeStyleSets<
  *
  * @param styleSets One or more style sets to be merged.
  */
-export function mergeStyleSets(...styleSets: IStyleSet<any>[]): IProcessedStyleSet<any>;
+export function mergeStyleSets(...styleSets: Array<IStyleSet<any> | undefined | false | null>): IProcessedStyleSet<any>;
 
 /**
  * Takes in one or more style set objects, each consisting of a set of areas,
@@ -91,45 +91,53 @@ export function mergeStyleSets(...styleSets: IStyleSet<any>[]): IProcessedStyleS
  *
  * @param styleSets One or more style sets to be merged.
  */
-export function mergeStyleSets(...styleSets: IStyleSet<any>[]): IProcessedStyleSet<any> {
+export function mergeStyleSets(
+  ...styleSets: Array<IStyleSet<any> | undefined | false | null>
+): IProcessedStyleSet<any> {
   // tslint:disable-next-line:no-any
   const classNameSet: any = {};
   const classMap: { [key: string]: string } = {};
 
-  let styleSet = styleSets[0];
+  const styleSet = styleSets[0];
 
-  if (styleSet) {
-    if (styleSets.length > 1) {
-      styleSet = concatStyleSets(...styleSets);
-    }
+  if (!styleSet && styleSets.length <= 1) {
+    return {};
+  }
 
-    const registrations = [];
+  let concatenatedStyleSet: IConcatenatedStyleSet<any> | IStyleSet<any> =
+    // we have guarded against falsey values just above.
+    styleSet!;
 
-    for (const styleSetArea in styleSet) {
-      if (styleSet.hasOwnProperty(styleSetArea)) {
-        if (styleSetArea === 'subComponentStyles') {
-          classNameSet.subComponentStyles = styleSet.subComponentStyles;
-          continue;
-        }
+  if (styleSets.length > 1) {
+    concatenatedStyleSet = concatStyleSets(...styleSets);
+  }
 
-        const styles: IStyle = (styleSet as any)[styleSetArea];
+  const registrations = [];
 
-        const { classes, objects } = extractStyleParts(styles);
-        const registration = styleToRegistration({ displayName: styleSetArea }, objects);
-
-        registrations.push(registration);
-
-        if (registration) {
-          classMap[styleSetArea] = registration.className;
-          classNameSet[styleSetArea] = classes.concat([registration.className]).join(' ');
-        }
+  for (const styleSetArea in concatenatedStyleSet) {
+    if (concatenatedStyleSet.hasOwnProperty(styleSetArea)) {
+      if (styleSetArea === 'subComponentStyles') {
+        classNameSet.subComponentStyles = concatenatedStyleSet.subComponentStyles;
+        continue;
       }
-    }
 
-    for (const registration of registrations) {
+      const styles: IStyle = (concatenatedStyleSet as any)[styleSetArea];
+
+      const { classes, objects } = extractStyleParts(styles);
+      const registration = styleToRegistration({ displayName: styleSetArea }, objects);
+
+      registrations.push(registration);
+
       if (registration) {
-        applyRegistration(registration, classMap);
+        classMap[styleSetArea] = registration.className;
+        classNameSet[styleSetArea] = classes.concat([registration.className]).join(' ');
       }
+    }
+  }
+
+  for (const registration of registrations) {
+    if (registration) {
+      applyRegistration(registration, classMap);
     }
   }
 
