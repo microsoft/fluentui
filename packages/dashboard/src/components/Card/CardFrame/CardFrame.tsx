@@ -13,7 +13,7 @@ export class CardFrame extends React.Component<ICardFrameProps, {}> {
 
   public render(): JSX.Element {
     const getClassNames = classNamesFunction<ICardFrameProps, ICardFrameStyles>();
-    const { fontFamily, fontSize, cardTitle, seperatorColor, titleTextColor, href, draggable } = this.props;
+    const { fontFamily, fontSize, cardTitle, seperatorColor, titleTextColor, href, disableDrag } = this.props;
     const classNames = getClassNames(getStyles, {
       cardTitle,
       fontFamily,
@@ -21,7 +21,7 @@ export class CardFrame extends React.Component<ICardFrameProps, {}> {
       seperatorColor,
       titleTextColor,
       href,
-      draggable
+      disableDrag
     });
     const overflowItems: ICardDropDownOption[] | undefined = this.props.cardDropDownOptions;
     const cardDropDownOptions: IOverflowSetItemProps[] = [];

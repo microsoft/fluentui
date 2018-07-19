@@ -125,8 +125,9 @@ export interface ICardProps {
 
   /**
    * Whether the card is draggable or not
+   * @default false
    */
-  draggable?: boolean;
+  disableDrag?: boolean;
 }
 
 export interface ICardState {

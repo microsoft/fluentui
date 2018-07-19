@@ -65,8 +65,9 @@ export interface ICardFrameProps {
 
   /**
    * Whether the card is draggable or not
+   * @default false
    */
-  draggable?: boolean;
+  disableDrag?: boolean;
 }
 
 export interface ICardFrameStyles {
