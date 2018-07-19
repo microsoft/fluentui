@@ -118,10 +118,9 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
 
   /**
    * Controls the visibility of the details footer.
-   * @default true
+   * @default false
    */
   isFooterVisible?: boolean;
-  // footerProps?: IDetailsFooterProps;
 
   footerText?: string;
 

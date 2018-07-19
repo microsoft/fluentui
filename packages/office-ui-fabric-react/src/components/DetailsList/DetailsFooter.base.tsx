@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { BaseComponent, classNamesFunction } from '../../Utilities';
 import { IDetailsFooterProps, IDetailsFooterStyleProps, IDetailsFooterStyles } from './DetailsFooter.types';
-// import * as stylesImport from './DetailsFooter.scss';
 
-// const styles: any = stylesImport;
 const getClassNames = classNamesFunction<IDetailsFooterStyleProps, IDetailsFooterStyles>();
 
 export class DetailsFooterBase extends BaseComponent<IDetailsFooterProps, {}> {

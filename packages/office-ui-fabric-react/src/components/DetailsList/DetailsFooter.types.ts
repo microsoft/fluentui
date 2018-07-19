@@ -27,10 +27,7 @@ export interface IDetailsFooterProps extends React.Props<DetailsFooterBase> {
 }
 
 export type IDetailsFooterStyleProps = Required<Pick<IDetailsFooterProps, 'theme'>> &
-  Pick<IDetailsFooterProps, 'className'>; //   & {
-//   /** Whether the footer is collapsed */
-//   isFooterVisible?: boolean;
-// };
+  Pick<IDetailsFooterProps, 'className'>;
 
 export interface IDetailsFooterStyles {
   root: IStyle;
