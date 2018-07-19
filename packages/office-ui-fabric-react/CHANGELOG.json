@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.38.1",
+      "tag": "office-ui-fabric-react_v6.38.1",
+      "date": "Thu, 19 Jul 2018 19:04:38 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Bryan Watts <brwatt@microsoft.com>",
+            "commit": "e74f922de58fdc9a7daa172e06aa1a5f47063fb9",
+            "comment": "Add automation identifier to the visible content of ResizeGroup"
+          },
+          {
+            "author": "anavilohia <anavi.lohia@utexas.edu>",
+            "commit": "5327e0b64b21d1b8ef281072ef74a5985e83bec4",
+            "comment": "Added optional feedback section for component pages"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.38.0",
       "tag": "office-ui-fabric-react_v6.38.0",
       "date": "Thu, 19 Jul 2018 10:23:34 GMT",

@@ -1,6 +1,11 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Thu, 19 Jul 2018 10:23:34 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Jul 2018 19:04:38 GMT and should not be manually modified.
+
+## 0.4.4
+Thu, 19 Jul 2018 19:04:38 GMT
+
+*Version update only*
 
 ## 0.4.3
 Thu, 19 Jul 2018 10:23:34 GMT

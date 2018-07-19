@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 19 Jul 2018 10:23:34 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Jul 2018 19:04:38 GMT and should not be manually modified.
+
+## 6.38.1
+Thu, 19 Jul 2018 19:04:38 GMT
+
+### Patches
+
+- Add automation identifier to the visible content of ResizeGroup
+- Added optional feedback section for component pages
 
 ## 6.38.0
 Thu, 19 Jul 2018 10:23:34 GMT

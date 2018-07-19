@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Wed, 18 Jul 2018 10:25:50 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Jul 2018 19:04:38 GMT and should not be manually modified.
+
+## 6.5.2
+Thu, 19 Jul 2018 19:04:38 GMT
+
+### Patches
+
+- Added optional feedback section for component pages
 
 ## 6.5.1
 Wed, 18 Jul 2018 10:25:50 GMT
