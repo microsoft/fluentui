@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Wed, 18 Jul 2018 10:25:50 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Jul 2018 10:23:34 GMT and should not be manually modified.
+
+## 6.10.0
+Thu, 19 Jul 2018 10:23:34 GMT
+
+### Minor changes
+
+- Add unregister icons API
 
 ## 6.9.0
 Wed, 18 Jul 2018 10:25:50 GMT

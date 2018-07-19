@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "6.10.0",
+      "tag": "@uifabric/styling_v6.10.0",
+      "date": "Thu, 19 Jul 2018 10:23:34 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Kelsey Young <kelseyyoung4@gmail.com>",
+            "commit": "aeb683c11a812eb4277c75e6aa63c60cc704cb9b",
+            "comment": "Add unregister icons API"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.9.0",
       "tag": "@uifabric/styling_v6.9.0",
       "date": "Wed, 18 Jul 2018 10:25:50 GMT",

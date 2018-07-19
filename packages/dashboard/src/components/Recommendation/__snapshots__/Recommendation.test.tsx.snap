@@ -26,15 +26,22 @@ exports[`RecommendationCard renders basic example correctly 1`] = `
           {
             border-bottom-color: rgba(0, 120, 215, 1);
             border-bottom: 1px solid;
+            border-top-left-radius: 2px;
+            border-top-right-radius: 2px;
             cursor: move;
             height: 40px;
             overflow: hidden;
+            transition: background-color .2s,color .2s,margin .2s,padding .2s,border-color .2s;
+          }
+          &:hover {
+            background-color: #eaeaea;
           }
     >
       <div
         className=
 
             {
+              border-top-right-radius: 2px;
               float: right;
               height: 100%;
               text-align: center;
@@ -201,7 +208,7 @@ exports[`RecommendationCard renders basic example correctly 1`] = `
         className=
 
             {
-              color: rgba(0, 120, 215, 1);
+              display: inline-block;
               font-family: Segoe UI Semibold;
               font-size: 14px;
               overflow: hidden;
@@ -210,8 +217,16 @@ exports[`RecommendationCard renders basic example correctly 1`] = `
               padding-right: 16px;
               padding-top: 9px;
             }
+            & a {
+              color: rgba(0, 120, 215, 1);
+              text-decoration: none;
+            }
       >
-        Recommended based on your lorem ipsum
+        <a
+          href={undefined}
+        >
+          Recommended based on your lorem ipsum
+        </a>
       </div>
     </div>
     <div
@@ -487,15 +502,22 @@ exports[`RecommendationCard renders dlp example correctly 1`] = `
           {
             border-bottom-color: rgba(0, 120, 215, 1);
             border-bottom: 1px solid;
+            border-top-left-radius: 2px;
+            border-top-right-radius: 2px;
             cursor: move;
             height: 40px;
             overflow: hidden;
+            transition: background-color .2s,color .2s,margin .2s,padding .2s,border-color .2s;
+          }
+          &:hover {
+            background-color: #eaeaea;
           }
     >
       <div
         className=
 
             {
+              border-top-right-radius: 2px;
               float: right;
               height: 100%;
               text-align: center;
@@ -662,7 +684,7 @@ exports[`RecommendationCard renders dlp example correctly 1`] = `
         className=
 
             {
-              color: rgba(0, 120, 215, 1);
+              display: inline-block;
               font-family: Segoe UI Semibold;
               font-size: 14px;
               overflow: hidden;
@@ -671,8 +693,16 @@ exports[`RecommendationCard renders dlp example correctly 1`] = `
               padding-right: 16px;
               padding-top: 9px;
             }
+            & a {
+              color: rgba(0, 120, 215, 1);
+              text-decoration: none;
+            }
       >
-        Recommended based on your DLP Policies
+        <a
+          href={undefined}
+        >
+          Recommended based on your DLP Policies
+        </a>
       </div>
     </div>
     <div
@@ -1235,15 +1265,22 @@ exports[`RecommendationCard renders imageillustration example correctly 1`] = `
           {
             border-bottom-color: rgba(0, 120, 215, 1);
             border-bottom: 1px solid;
+            border-top-left-radius: 2px;
+            border-top-right-radius: 2px;
             cursor: move;
             height: 40px;
             overflow: hidden;
+            transition: background-color .2s,color .2s,margin .2s,padding .2s,border-color .2s;
+          }
+          &:hover {
+            background-color: #eaeaea;
           }
     >
       <div
         className=
 
             {
+              border-top-right-radius: 2px;
               float: right;
               height: 100%;
               text-align: center;
@@ -1410,7 +1447,7 @@ exports[`RecommendationCard renders imageillustration example correctly 1`] = `
         className=
 
             {
-              color: rgba(0, 120, 215, 1);
+              display: inline-block;
               font-family: Segoe UI Semibold;
               font-size: 14px;
               overflow: hidden;
@@ -1419,8 +1456,16 @@ exports[`RecommendationCard renders imageillustration example correctly 1`] = `
               padding-right: 16px;
               padding-top: 9px;
             }
+            & a {
+              color: rgba(0, 120, 215, 1);
+              text-decoration: none;
+            }
       >
-        Recommended based on your password settings
+        <a
+          href={undefined}
+        >
+          Recommended based on your password settings
+        </a>
       </div>
     </div>
     <div

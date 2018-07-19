@@ -365,7 +365,11 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
             </div>
           )}
 
-        <div ref={this._initialHiddenDiv} style={isInitialMeasure ? hiddenDivStyles : undefined}>
+        <div
+          ref={this._initialHiddenDiv}
+          style={isInitialMeasure ? hiddenDivStyles : undefined}
+          data-automation-id="visibleContent"
+        >
           {isInitialMeasure ? onRenderData(dataToMeasure) : renderedData && onRenderData(renderedData)}
         </div>
       </div>

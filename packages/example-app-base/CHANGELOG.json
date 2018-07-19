@@ -2,6 +2,25 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "6.5.2",
+      "tag": "@uifabric/example-app-base_v6.5.2",
+      "date": "Thu, 19 Jul 2018 19:04:38 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "anavilohia <anavi.lohia@utexas.edu>",
+            "commit": "5327e0b64b21d1b8ef281072ef74a5985e83bec4",
+            "comment": "Added optional feedback section for component pages"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.38.0 <7.0.0` to `>=6.38.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.5.1",
       "tag": "@uifabric/example-app-base_v6.5.1",
       "date": "Wed, 18 Jul 2018 10:25:50 GMT",
