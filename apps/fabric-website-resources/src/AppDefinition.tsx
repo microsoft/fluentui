@@ -134,6 +134,13 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/detailslist/CustomRows'
         },
         {
+          component: require<any>('./components/pages/DetailsList/DetailsListCustomFooterPage')
+            .DetailsListCustomFooterPage,
+          key: 'DetailsList',
+          name: 'DetailsList - CustomFooter',
+          url: '#/examples/detailslist/CustomFooter'
+        },
+        {
           component: require<any>('./components/pages/DetailsList/DetailsListDragDropPage').DetailsListDragDropPage,
           key: 'DetailsList - DragDrop',
           name: 'DetailsList - DragDrop',

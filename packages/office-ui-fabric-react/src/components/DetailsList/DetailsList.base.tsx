@@ -22,7 +22,9 @@ import {
   IDetailsListStyleProps
 } from '../DetailsList/DetailsList.types';
 import { DetailsHeader } from '../DetailsList/DetailsHeader';
+import { DetailsFooter } from '../DetailsList/DetailsFooter';
 import { IDetailsHeader, SelectAllVisibility, IDetailsHeaderProps } from '../DetailsList/DetailsHeader.types';
+import { IDetailsFooter, IDetailsFooterProps } from '../DetailsList/DetailsFooter.types';
 import { DetailsRowBase } from '../DetailsList/DetailsRow.base';
 import { DetailsRow } from '../DetailsList/DetailsRow';
 import { IDetailsRowProps } from '../DetailsList/DetailsRow.types';
@@ -75,12 +77,14 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     constrainMode: ConstrainMode.horizontalConstrained,
     checkboxVisibility: CheckboxVisibility.onHover,
     isHeaderVisible: true,
+    isFooterVisible: false,
     enableShimmer: false
   };
 
   // References
   private _root = createRef<HTMLDivElement>();
   private _header = createRef<IDetailsHeader>();
+  private _footer = createRef<IDetailsFooter>();
   private _groupedList = createRef<IGroupedList>();
   private _list = createRef<IList>();
   private _focusZone = createRef<IFocusZone>();
@@ -286,6 +290,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       groupProps,
       items,
       isHeaderVisible,
+      isFooterVisible,
       layoutMode,
       onItemInvoked,
       onItemContextMenu,
@@ -338,9 +343,14 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       selectAllVisibility = SelectAllVisibility.none;
     }
 
-    const { onRenderDetailsHeader = this._onRenderDetailsHeader } = this.props;
+    const {
+      onRenderDetailsHeader = this._onRenderDetailsHeader,
+      onRenderDetailsFooter = this._onRenderDetailsFooter
+    } = this.props;
 
-    const rowCount = (isHeaderVisible ? 1 : 0) + GetGroupCount(groups) + (items ? items.length : 0);
+    const detailsFooterProps = this._getDetailsFooterProps();
+
+    const rowCount = (isHeaderVisible ? 1 : 0) + GetGroupCount(groups) + (items ? items.length : 0); //  + (isFooterVisible ? 4 : 0);
 
     const classNames = getClassNames(styles, {
       theme: theme!,
@@ -452,6 +462,14 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
               </SelectionZone>
             </FocusZone>
           </div>
+          {isFooterVisible &&
+            onRenderDetailsFooter(
+              {
+                componentRef: this._footer,
+                ...detailsFooterProps
+              },
+              this._onRenderDetailsFooter
+            )}
         </div>
       </div>
     );
@@ -471,6 +489,13 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     defaultRender?: IRenderFunction<IDetailsHeaderProps>
   ): JSX.Element => {
     return <DetailsHeader {...detailsHeaderProps} />;
+  };
+
+  private _onRenderDetailsFooter = (
+    detailsFooterProps: IDetailsFooterProps,
+    defaultRender?: IRenderFunction<IDetailsFooterProps>
+  ): JSX.Element => {
+    return <DetailsFooter {...detailsFooterProps} />;
   };
 
   private _onRenderListCell = (nestingDepth: number): ((item: any, itemIndex: number) => React.ReactNode) => {
@@ -921,6 +946,45 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       onScroll(e);
     }
   };
+
+  private _getDetailsFooterProps(): IDetailsFooterProps | undefined {
+    const { adjustedColumns: columns } = this.state;
+    const selection = new Selection();
+    const {
+      compact,
+      selectionMode,
+      viewport,
+      checkboxVisibility,
+      getRowAriaLabel,
+      getRowAriaDescribedBy,
+      checkButtonAriaLabel,
+      checkboxCellClassName,
+      footerText
+    } = this.props;
+    const groupNestingDepth = this._getGroupNestingDepth();
+    const footerRowProps: IDetailsRowProps | undefined = {
+      item: '',
+      itemIndex: -1,
+      compact: compact,
+      columns: columns as IColumn[],
+      selectionMode: selectionMode!,
+      selection: selection,
+      checkboxVisibility: checkboxVisibility,
+      getRowAriaLabel: getRowAriaLabel,
+      viewport: viewport,
+      getRowAriaDescribedBy: getRowAriaDescribedBy,
+      checkButtonAriaLabel: checkButtonAriaLabel,
+      checkboxCellClassName: checkboxCellClassName,
+      groupNestingDepth: groupNestingDepth
+    };
+    const detailsFooterProps: IDetailsFooterProps = {
+      footerText,
+      footerRowProps
+    };
+    return {
+      ...detailsFooterProps
+    };
+  }
 }
 
 export function buildColumns(

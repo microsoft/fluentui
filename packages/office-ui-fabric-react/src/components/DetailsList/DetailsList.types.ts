@@ -6,6 +6,7 @@ import { IDragDropEvents, IDragDropContext } from './../../utilities/dragdrop/in
 import { IGroup, IGroupRenderProps } from '../GroupedList/index';
 import { IDetailsRowProps } from '../DetailsList/DetailsRow';
 import { IDetailsHeaderProps } from './DetailsHeader';
+import { IDetailsFooterProps } from './DetailsFooter';
 import { IWithViewportProps, IViewport } from '../../utilities/decorators/withViewport';
 import { IList, IListProps, ScrollToMode } from '../List/index';
 import { ITheme, IStyle } from '../..';
@@ -115,6 +116,15 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    */
   isHeaderVisible?: boolean;
 
+  /**
+   * Controls the visibility of the details footer.
+   * @default true
+   */
+  isFooterVisible?: boolean;
+  // footerProps?: IDetailsFooterProps;
+
+  footerText?: string;
+
   /** Given column defitions. If none are provided, default columns will be created based on the item's properties. */
   columns?: IColumn[];
 
@@ -175,6 +185,11 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    * An override to render the details header.
    */
   onRenderDetailsHeader?: IRenderFunction<IDetailsHeaderProps>;
+
+  /**
+   * An override to render the details footer.
+   */
+  onRenderDetailsFooter?: IRenderFunction<IDetailsFooterProps>;
 
   /** Viewport, provided by the withViewport decorator. */
   viewport?: IViewport;
