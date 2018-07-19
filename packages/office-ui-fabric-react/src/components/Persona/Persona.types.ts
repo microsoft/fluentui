@@ -113,6 +113,13 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
   showUnknownPersonaCoin?: boolean;
 
   /**
+   * If true renders the initials while the image is loading.
+   * This only applies when an imageUrl is provided.
+   * @defaultvalue false
+   */
+  showInitialsUntilImageLoads?: boolean;
+
+  /**
    * Optional custom persona coin size in pixel.
    */
   coinSize?: number;
