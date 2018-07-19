@@ -268,6 +268,11 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    * avoiding the scroll jumping issue.
    */
   getGroupHeight?: (group: IGroup, groupIndex: number) => number;
+
+  /**
+   * True to refrain from setting a background color.
+   */
+  enableTransparentBackground?: boolean;
 }
 
 export interface IColumn {
@@ -523,6 +528,9 @@ export type IDetailsListStyleProps = Required<Pick<IDetailsListProps, 'theme'>> 
 
     /** Whether the list is fixed in size */
     isFixed?: boolean;
+
+    /** Whether we opt not to apply a background color */
+    isTransparent?: boolean;
   };
 
 export interface IDetailsListStyles {

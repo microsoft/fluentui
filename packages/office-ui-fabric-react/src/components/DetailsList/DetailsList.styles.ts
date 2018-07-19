@@ -10,7 +10,7 @@ const GlobalClassNames = {
 };
 
 export const getStyles = (props: IDetailsListStyleProps): IDetailsListStyles => {
-  const { theme, className, isHorizontalConstrained, compact, isFixed } = props;
+  const { theme, className, isHorizontalConstrained, compact, isFixed, isTransparent } = props;
   const { semanticColors } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -20,7 +20,7 @@ export const getStyles = (props: IDetailsListStyleProps): IDetailsListStyles => 
       {
         position: 'relative',
         fontSize: FontSizes.small,
-        background: semanticColors.listBackground,
+        background: isTransparent ? 'transparent' : semanticColors.listBackground,
         color: semanticColors.listText,
         selectors: {
           [`& .${classNames.listCell}`]: {

@@ -308,7 +308,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       minimumPixelsForDrag,
       getGroupHeight,
       styles,
-      theme
+      theme,
+      enableTransparentBackground
     } = this.props;
     const { adjustedColumns, isCollapsed, isSizing, isSomeGroupExpanded } = this.state;
     const { _selection: selection, _dragDropHelper: dragDropHelper } = this;
@@ -347,7 +348,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       compact,
       isFixed: layoutMode === DetailsListLayoutMode.fixedColumns,
       isHorizontalConstrained: constrainMode === ConstrainMode.horizontalConstrained,
-      className
+      className,
+      isTransparent: enableTransparentBackground
     });
 
     return (
@@ -396,7 +398,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
                   collapseAllVisibility: groupProps && groupProps.collapseAllVisibility,
                   viewport: viewport,
                   columnReorderOptions: columnReorderOptions,
-                  minimumPixelsForDrag: minimumPixelsForDrag
+                  minimumPixelsForDrag: minimumPixelsForDrag,
+                  enableTransparentBackground: enableTransparentBackground
                 },
                 this._onRenderDetailsHeader
               )}
@@ -494,7 +497,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       getRowAriaDescribedBy,
       checkButtonAriaLabel,
       checkboxCellClassName,
-      groupProps
+      groupProps,
+      enableTransparentBackground
     } = this.props;
     const collapseAllVisibility = groupProps && groupProps.collapseAllVisibility;
     const selection = this._selection;
@@ -521,7 +525,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       getRowAriaLabel: getRowAriaLabel,
       getRowAriaDescribedBy: getRowAriaDescribedBy,
       checkButtonAriaLabel: checkButtonAriaLabel,
-      checkboxCellClassName: checkboxCellClassName
+      checkboxCellClassName: checkboxCellClassName,
+      enableTransparentBackground: enableTransparentBackground
     };
 
     if (!item) {

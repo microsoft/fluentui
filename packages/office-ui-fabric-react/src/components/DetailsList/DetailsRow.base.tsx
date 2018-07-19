@@ -171,7 +171,8 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowProps, IDetailsRowS
       shimmer,
       compact,
       theme,
-      styles
+      styles,
+      enableTransparentBackground
     } = this.props;
     const { columnMeasureInfo, isDropping, groupNestingDepth } = this.state;
     const { isSelected = false, isSelectionModal = false } = this.state.selectionState as IDetailsRowSelectionState;
@@ -197,7 +198,8 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowProps, IDetailsRowS
       checkboxCellClassName,
       droppingClassName,
       className,
-      compact
+      compact,
+      isTransparent: enableTransparentBackground
     });
 
     const rowFields = (
