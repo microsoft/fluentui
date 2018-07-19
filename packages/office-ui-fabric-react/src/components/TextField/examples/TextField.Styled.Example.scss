@@ -21,10 +21,7 @@ $field-text-disabled-color: $disabledTextColor;
       border-top-color: $field-border-error-color;
     }
     .ms-Label {
-      color: $field-border-error-color;
-    }
-    .ms-Label-text {
-      color: $field-text-disabled-color;
+      color: $ms-color-themePrimary;
     }
   }
 }

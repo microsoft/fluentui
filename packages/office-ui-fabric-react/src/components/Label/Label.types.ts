@@ -44,12 +44,6 @@ export interface ILabelStyles {
    * Styles for the root element.
    */
   root: IStyle;
-
-  // TODO: remove. just for styles testing
-  /**
-   * Styles for the text element.
-   */
-  text: IStyle;
 }
 
 export interface ILabelStyleProps {

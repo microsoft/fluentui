@@ -15,9 +15,6 @@ export class LabelBase extends BaseComponent<ILabelProps, {}> {
     });
     return (
       <RootType {...getNativeProps(this.props, divProperties)} className={classNames.root}>
-        {/* TODO: Remove. Superfluous style type added for mergeStyles and TextField testing. */}
-        <span className={classNames.text}>Test Text</span>
-        <br />
         {children}
       </RootType>
     );

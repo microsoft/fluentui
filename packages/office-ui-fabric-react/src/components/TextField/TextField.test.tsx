@@ -10,10 +10,7 @@ import { createRef, resetIds } from '../../Utilities';
 
 import { ITextField, TextField } from './TextField';
 import { TextFieldBase } from './TextField.base';
-import { getStyles } from './TextField.styles';
-
-// TODO: add tests for both label style as function and object
-// TODO: add test (or example) with custom className and styling for label
+import { ITextFieldStyles } from './TextField.types';
 
 describe('TextField', () => {
   beforeAll(() => {
@@ -96,6 +93,30 @@ describe('TextField', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('should resepect user component and subcomponent styling', () => {
+    const styles: Partial<ITextFieldStyles> = {
+      root: 'root-testClassName',
+      subComponentStyles: {
+        label: {
+          root: 'label-testClassName'
+        }
+      }
+    };
+    const component = renderer.create(
+      <TextField
+        label="Label"
+        errorMessage={'test message'}
+        underlined={true}
+        addonString={'test addonString'}
+        prefix={'test prefix'}
+        suffix={'test suffix'}
+        styles={styles}
+      />
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('should render label and value to input element', () => {
     const exampleLabel = 'this is label';
     const exampleValue = 'this is value';
@@ -114,20 +135,20 @@ describe('TextField', () => {
   it('should render prefix in input element', () => {
     const examplePrefix = 'this is a prefix';
 
-    const renderedDOM: HTMLElement = renderIntoDocument(<TextFieldBase styles={getStyles} prefix={examplePrefix} />);
+    const textField = mount(<TextField prefix={examplePrefix} />);
 
     // Assert on the prefix
-    const prefixDOM: Element = renderedDOM.getElementsByClassName('ms-TextField-prefix')[0];
+    const prefixDOM: Element = textField.getDOMNode().getElementsByClassName('ms-TextField-prefix')[0];
     expect(prefixDOM.textContent).toEqual(examplePrefix);
   });
 
   it('should render suffix in input element', () => {
     const exampleSuffix = 'this is a suffix';
 
-    const renderedDOM: HTMLElement = renderIntoDocument(<TextFieldBase styles={getStyles} suffix={exampleSuffix} />);
+    const textField = mount(<TextField suffix={exampleSuffix} />);
 
     // Assert on the suffix
-    const suffixDOM: Element = renderedDOM.getElementsByClassName('ms-TextField-suffix')[0];
+    const suffixDOM: Element = textField.getDOMNode().getElementsByClassName('ms-TextField-suffix')[0];
     expect(suffixDOM.textContent).toEqual(exampleSuffix);
   });
 
@@ -135,13 +156,11 @@ describe('TextField', () => {
     const examplePrefix = 'this is a prefix';
     const exampleSuffix = 'this is a suffix';
 
-    const renderedDOM: HTMLElement = renderIntoDocument(
-      <TextFieldBase styles={getStyles} prefix={examplePrefix} suffix={exampleSuffix} />
-    );
+    const textField = mount(<TextField prefix={examplePrefix} suffix={exampleSuffix} />);
 
     // Assert on the prefix and suffix
-    const prefixDOM: Element = renderedDOM.getElementsByClassName('ms-TextField-prefix')[0];
-    const suffixDOM: Element = renderedDOM.getElementsByClassName('ms-TextField-suffix')[0];
+    const prefixDOM: Element = textField.getDOMNode().getElementsByClassName('ms-TextField-prefix')[0];
+    const suffixDOM: Element = textField.getDOMNode().getElementsByClassName('ms-TextField-suffix')[0];
     expect(prefixDOM.textContent).toEqual(examplePrefix);
     expect(suffixDOM.textContent).toEqual(exampleSuffix);
   });
@@ -178,7 +197,7 @@ describe('TextField', () => {
   });
 
   it('should render a readonly input element', () => {
-    const renderedDOM: HTMLElement = renderIntoDocument(<TextField readOnly={true} />);
+    const renderedDOM: HTMLElement = renderIntoDocument(<TextFieldBase readOnly={true} />);
 
     // Assert the input box is readOnly.
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
@@ -205,7 +224,7 @@ describe('TextField', () => {
 
   it('should NOT update state when props value remains undefined on props update', () => {
     const stateValue = 'state value';
-    const textField = mount(<TextField />);
+    const textField = mount(<TextFieldBase />);
     expect(textField.state('value')).toEqual('');
 
     textField.setState({ value: stateValue });
@@ -220,7 +239,7 @@ describe('TextField', () => {
   it('should update state when props value changes from defined to undefined', () => {
     const propsValue = 'props value';
 
-    const textField = mount(<TextField value={propsValue} />);
+    const textField = mount(<TextFieldBase value={propsValue} />);
     expect(textField.state('value')).toEqual(propsValue);
 
     textField.setProps({ value: undefined });
@@ -440,28 +459,25 @@ describe('TextField', () => {
   });
 
   it('can render a default value', () => {
-    const renderedDOM: HTMLElement = renderIntoDocument(<TextFieldBase defaultValue="initial value" />);
+    const textField = mount(<TextField defaultValue="initial value" />);
 
-    expect(renderedDOM.querySelector('input')).toBeTruthy();
-    expect(renderedDOM.querySelector('input')!.value).toEqual('initial value');
+    expect(textField.getDOMNode().querySelector('input')).toBeTruthy();
+    expect(textField.getDOMNode().querySelector('input')!.value).toEqual('initial value');
   });
 
   it('can render a default value as a textarea', () => {
-    const renderedDOM: HTMLElement = renderIntoDocument(
-      <TextFieldBase defaultValue="initial value" multiline={true} />
-    );
+    const textField = mount(<TextField defaultValue="initial value" multiline={true} />);
 
-    expect(renderedDOM.querySelector('textarea')).toBeTruthy();
-    expect(renderedDOM.querySelector('textarea')!.value).toEqual('initial value');
+    expect(textField.getDOMNode().querySelector('textarea')).toBeTruthy();
+    expect(textField.getDOMNode().querySelector('textarea')!.value).toEqual('initial value');
   });
 
   it('can render description text', () => {
-    const renderedDOM: HTMLElement = renderIntoDocument(
-      <TextFieldBase styles={getStyles} description="A custom description" />
-    );
+    const testDescription = 'A custom description';
+    const textField = mount(<TextField description={testDescription} />);
 
-    expect(renderedDOM.querySelector('.ms-TextField-description')).toBeTruthy();
-    expect(renderedDOM.querySelector('.ms-TextField-description')!.textContent).toEqual('A custom description');
+    expect(textField.getDOMNode().querySelector('.ms-TextField-description')).toBeTruthy();
+    expect(textField.getDOMNode().querySelector('.ms-TextField-description')!.textContent).toEqual(testDescription);
   });
 
   it('can render a static custom description without description text', () => {

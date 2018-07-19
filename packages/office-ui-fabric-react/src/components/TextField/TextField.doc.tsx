@@ -39,12 +39,6 @@ export const TextFieldPageProps: IDocPageProps = {
     'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/TextField',
   componentStatus: TextFieldStatus,
   examples: [
-    // TODO: if this is kept, move to bottom of implementation examples
-    {
-      title: 'TextField styled variations',
-      code: TextFieldStyledExampleCode,
-      view: <TextFieldStyledExample />
-    },
     {
       title: 'Default TextField with Label',
       code: TextFieldBasicExampleCode,
@@ -111,6 +105,11 @@ export const TextFieldPageProps: IDocPageProps = {
       title: 'TextField error message variations',
       code: TextFieldErrorMessageExampleCode,
       view: <TextFieldErrorMessageExample />
+    },
+    {
+      title: 'TextField Subcomponent Styling',
+      code: TextFieldStyledExampleCode,
+      view: <TextFieldStyledExample />
     }
   ],
   propertiesTablesSources: [

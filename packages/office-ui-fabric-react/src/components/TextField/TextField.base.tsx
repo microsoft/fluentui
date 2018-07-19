@@ -1,6 +1,8 @@
 import * as React from 'react';
+import { IProcessedStyleSet } from '../../Styling';
+import { IStyleFunctionOrObject } from '../../Utilities';
 import { ITextField, ITextFieldProps } from './TextField.types';
-import { Label } from '../../Label';
+import { Label, ILabelStyleProps, ILabelStyles } from '../../Label';
 import { Icon } from '../../Icon';
 import {
   DelayedRender,
@@ -14,7 +16,6 @@ import {
   classNamesFunction
 } from '../../Utilities';
 import { ITextFieldStyleProps, ITextFieldStyles } from './TextField.types';
-import { getLabelStyles } from './TextField.styles';
 
 const getClassNames = classNamesFunction<ITextFieldStyleProps, ITextFieldStyles>();
 
@@ -68,7 +69,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
   private _latestValidateValue: string | undefined;
   private _isDescriptionAvailable: boolean;
   private _textElement = createRef<HTMLTextAreaElement | HTMLInputElement | null>();
-  private _classNames: { [key in keyof ITextFieldStyles]: string };
+  private _classNames: IProcessedStyleSet<ITextFieldStyles>;
 
   public constructor(props: ITextFieldProps) {
     super(props);
@@ -163,6 +164,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
       disabled,
       iconClass,
       iconProps,
+      label,
       multiline,
       required,
       underlined,
@@ -188,7 +190,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
       focused: isFocused,
       required,
       multiline,
-      hasLabel: !!this.props.label,
+      hasLabel: !!label,
       hasErrorMessage: !!errorMessage,
       borderless,
       resizable,
@@ -320,15 +322,15 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
   }
 
   private _onRenderLabel = (props: ITextFieldProps): JSX.Element | null => {
-    const { theme, underlined, label, required, disabled } = props;
-
-    // TODO: how will consumer labelStyles be defined?
-    // TODO: right way to do this? how to mix in consumer label style prop when defined as object and function?
-    // TODO: use styled function to mixin consumer labelStyles with TextField's getLabelStyles?
+    const { label, required } = props;
+    // IProcessedStyleSet definition requires casting for what Label expects as its styles prop
+    const labelStyles = this._classNames.subComponentStyles
+      ? (this._classNames.subComponentStyles.label as IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles>)
+      : undefined;
 
     if (label) {
       return (
-        <Label required={required} htmlFor={this._id} styles={getLabelStyles({ theme: theme!, underlined, disabled })}>
+        <Label required={required} htmlFor={this._id} styles={labelStyles}>
           {props.label}
         </Label>
       );

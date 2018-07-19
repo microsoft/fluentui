@@ -19,6 +19,7 @@ const globalClassNames = {
   fieldGroup: 'ms-TextField-fieldGroup',
   prefix: 'ms-TextField-prefix',
   suffix: 'ms-TextField-suffix',
+  wrapper: 'ms-TextField-wrapper',
 
   multiline: 'ms-TextField--multiline',
   borderless: 'ms-TextField--borderless',
@@ -32,16 +33,17 @@ const globalClassNames = {
 
 // TODO: ideally we shouldn't have to do this through a styles prop..
 //          modify label to take in new props for disabled, required, underlined, etc.
-export function getLabelStyles(props: ITextFieldStyleProps): IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles> {
-  return (labelProps: ILabelStyleProps) => ({
+function getLabelStyles(props: ITextFieldStyleProps): IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles> {
+  const { underlined, disabled } = props;
+  return () => ({
     root: [
-      props.underlined &&
-        props.disabled && {
+      underlined &&
+        disabled && {
           // line 321 start
           color: props.theme.palette.neutralTertiary
           // line 321 end
         },
-      props.underlined && {
+      underlined && {
         // line 294 start
         fontSize: FontSizes.medium,
         marginRight: 8,
@@ -143,6 +145,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
       className
     ],
     wrapper: [
+      classNames.wrapper,
       // line 272 start
       underlined && {
         display: 'flex',
@@ -492,7 +495,10 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
     ],
     // line 143 start
     prefix: [classNames.prefix, fieldPrefixSuffix],
-    suffix: [classNames.suffix, fieldPrefixSuffix]
+    suffix: [classNames.suffix, fieldPrefixSuffix],
+    subComponentStyles: {
+      label: getLabelStyles(props)
+    }
     // line 149 end
 
     // TODO: resolve

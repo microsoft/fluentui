@@ -4,31 +4,26 @@ import { ILabelStyles, ILabelStyleProps } from 'office-ui-fabric-react/lib/Label
 import './TextField.Examples.scss';
 import './TextField.Styled.Example.scss';
 
-function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
+function getStyles(props: ITextFieldStyleProps): Partial<ITextFieldStyles> {
+  const { required } = props;
   return {
     fieldGroup: [
-      {
+      required && {
         borderTopColor: props.theme.semanticColors.errorText
       }
-    ]
+    ],
+    subComponentStyles: {
+      label: getLabelStyles
+    }
   };
 }
 
-// TODO: need to figure out how to pass this in with getStyles
 function getLabelStyles(props: ILabelStyleProps): ILabelStyles {
+  const { required } = props;
   return {
     root: [
-      props.theme.fonts.large,
-      {
-        marginRight: 80,
-        paddingLeft: 12,
-        paddingRight: 0,
-        lineHeight: '22px'
-      }
-    ],
-    text: [
-      {
-        color: props.theme.palette.neutralTertiary
+      required && {
+        color: props.theme.palette.themePrimary
       }
     ]
   };
@@ -38,8 +33,8 @@ export class TextFieldStyledExample extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
       <div className="docs-TextFieldExample">
-        <TextField label="Grey Test Text, Red Label, Red Top Border (JS):" styles={getStyles} />
-        <TextField label="Grey Test Text, Red Label, Red Top Border (CSS):" className="textField-cssStyled" />
+        <TextField label="Theme Primary Label, Red Top Border (JS):" required={true} styles={getStyles} />
+        <TextField label="Theme Primary Label, Red Top Border (CSS):" required={true} className="textField-cssStyled" />
       </div>
     );
   }

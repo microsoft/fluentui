@@ -1,7 +1,6 @@
-import { IStyle, ITheme } from '../../Styling';
+import { IStyle, IStyleSet, ITheme } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IIconProps } from '../../Icon';
-import { ILabelStyleProps, ILabelStyles } from '../../Label';
 
 export interface ITextField {
   /** Gets the current value of the input. */
@@ -298,60 +297,60 @@ export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> &
     focused?: boolean;
   };
 
-export interface ITextFieldStyles {
+export interface ITextFieldSubComponentStyles {
+  // TODO: this should be the interface once we're on TS 2.9.2 but otherwise causes errors in 2.8.4
+  // label: IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles>;
+  label: IStyleFunctionOrObject<any, any>;
+}
+
+export interface ITextFieldStyles extends IStyleSet<ITextFieldStyles> {
   /**
    * Style for root element.
    */
-  root?: IStyle;
+  root: IStyle;
 
   /**
    * Style for field group encompassing entry area (prefix, field, icon and suffix).
    */
-  fieldGroup?: IStyle;
+  fieldGroup: IStyle;
 
   /**
    * Style for prefix element.
    */
-  prefix?: IStyle;
+  prefix: IStyle;
 
   /**
    * Style for suffix element.
    */
-  suffix?: IStyle;
+  suffix: IStyle;
 
   /**
    * Style for main field entry element.
    */
-  field?: IStyle;
+  field: IStyle;
 
   /**
    * Style for icon prop element.
    */
-  icon?: IStyle;
+  icon: IStyle;
 
   /**
    * Style for description element.
    */
-  description?: IStyle;
+  description: IStyle;
 
   /**
    * Style for TextField wrapper element.
    */
-  wrapper?: IStyle;
+  wrapper: IStyle;
 
   /**
    * Style for error message element.
    */
-  errorMessage?: IStyle;
+  errorMessage: IStyle;
 
   /**
-   * Style for Label element.
+   * Styling for subcomponents.
    */
-  // TODO: component styling wiki says to do labelAs instead of passing styling down to subcomponents
-  //  which approach should be used here?
-  // Similarly, for something like https://codepen.io/micahgodbolt/pen/oyzOjV?editors=0010, should we instead be
-  //  using iconAs and buttonAs?
-  // label?: IStyle;
-  // label?: ILabelStyles;
-  label?: IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles>;
+  subComponentStyles: ITextFieldSubComponentStyles;
 }
