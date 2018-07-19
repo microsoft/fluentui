@@ -2,6 +2,18 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.18.2",
+      "tag": "@uifabric/experiments_v6.18.2",
+      "date": "Thu, 19 Jul 2018 21:25:32 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.6.0` to `^0.7.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.18.1",
       "tag": "@uifabric/experiments_v6.18.1",
       "date": "Thu, 19 Jul 2018 19:04:38 GMT",

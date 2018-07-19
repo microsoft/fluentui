@@ -2,6 +2,21 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.4.5",
+      "tag": "@uifabric/dashboard_v0.4.5",
+      "date": "Thu, 19 Jul 2018 21:25:32 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.6.0` to `^0.7.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.18.1 <7.0.0` to `>=6.18.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.4.4",
       "tag": "@uifabric/dashboard_v0.4.4",
       "date": "Thu, 19 Jul 2018 19:04:38 GMT",

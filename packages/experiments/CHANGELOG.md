@@ -1,6 +1,11 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 19 Jul 2018 19:04:38 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Jul 2018 21:25:32 GMT and should not be manually modified.
+
+## 6.18.2
+Thu, 19 Jul 2018 21:25:32 GMT
+
+*Version update only*
 
 ## 6.18.1
 Thu, 19 Jul 2018 19:04:38 GMT
