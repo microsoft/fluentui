@@ -39,11 +39,10 @@ export class TextAttributesExample extends React.Component<{}, ITextAttributesEx
     const { size, color, fontFamily, weight, wrap } = this.state;
     const content = `<Text
         size=${size}
+        weight=${weight}
         color=${color}
         family=${fontFamily}
-        weight=${weight}
-        wrap=${wrap}
-      >
+        wrap=${wrap}>
         Change This Text's Attributes!
       </Text>`;
     return (
@@ -129,7 +128,7 @@ export class TextAttributesExample extends React.Component<{}, ITextAttributesEx
             calloutProps={{ gapSpace: 0 }}
             tooltipProps={{ directionalHint: DirectionalHint.bottomCenter }}
           >
-            <Text size={size} color={color} family={fontFamily} weight={weight} wrap={wrap} block={false}>
+            <Text size={size} weight={weight} color={color} family={fontFamily} wrap={wrap}>
               Change This Text's Attributes!
             </Text>
           </TooltipHost>

@@ -150,7 +150,8 @@ const styles = (props: IStyledProps<ITextProps>): ITextStyles => {
       !wrap && {
         whiteSpace: 'nowrap',
         overflow: 'hidden',
-        textOverflow: 'ellipsis'
+        textOverflow: 'ellipsis',
+        display: 'block' // when wrap is false, set display to block so that overflow shows ellipsis
       },
       grow && {
         flexGrow: 1
