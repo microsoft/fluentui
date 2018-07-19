@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { IDataPoint } from './StackedBarChart.types';
+import { IProcessedStyleSet } from '../../Styling';
 
-import { classNamesFunction, IClassNames } from '../../Utilities';
+import { classNamesFunction } from '../../Utilities';
 import { IStackedBarChartProps, IStackedBarChartStyleProps, IStackedBarChartStyles } from './StackedBarChart.types';
 
 const getClassNames = classNamesFunction<IStackedBarChartStyleProps, IStackedBarChartStyles>();
@@ -14,7 +15,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     barHeight: 35
   };
   private _colors: string[];
-  private _classNames: IClassNames<IStackedBarChartStyles>;
+  private _classNames: IProcessedStyleSet<IStackedBarChartStyles>;
   constructor(props: IStackedBarChartProps) {
     super(props);
 
