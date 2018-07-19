@@ -182,6 +182,7 @@ export class DashboardGridLayoutCardExample extends React.Component<{}, {}> {
             header={header}
             cardContentList={contentAreaList}
             cardSize={CardSize.small}
+            disableDrag={true}
           />
         </div>
         <div key="1">
@@ -226,7 +227,7 @@ export class DashboardGridLayoutCardExample extends React.Component<{}, {}> {
   private _generateLayout(): DashboardGridBreakpointLayouts {
     return {
       lg: [
-        { i: '0', y: 0, x: 0, size: Size.small },
+        { i: '0', y: 0, x: 0, size: Size.small, disableDrag: true },
         { i: '1', y: 0, x: 1, size: Size.mediumTall },
         { i: '2', y: 1, x: 0, size: Size.small },
         { i: '3', y: 0, x: 2, size: Size.mediumWide },

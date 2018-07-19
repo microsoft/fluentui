@@ -72,9 +72,9 @@ export class DashboardGridLayout extends React.Component<IDashboardGridLayoutPro
       y: layoutProp.y,
       w: sizes[layoutProp.size].w,
       h: sizes[layoutProp.size].h,
-      static: layoutProp.static || false,
-      isDraggable: layoutProp.isDraggable || true,
-      isResizable: layoutProp.isResizable || true
+      static: layoutProp.static === undefined ? false : layoutProp.static,
+      isDraggable: layoutProp.disableDrag === undefined ? true : !layoutProp.disableDrag,
+      isResizable: layoutProp.isResizable === undefined ? true : layoutProp.isResizable
     };
   }
 
