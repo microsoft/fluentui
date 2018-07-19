@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix bug in onPendingValueChanged caused by incorrect check for undefined, which also ignores 0, which is a valid value for both newPendingIndex and newPendingValue",
-      "type": "minor"
+      "comment": "ComboBox: Fix bug in `onPendingValueChanged` caused by incorrect check for undefined, which also ignores 0, which is a valid value for both `newPendingIndex` and `newPendingValue`.",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
