@@ -2,8 +2,9 @@ import * as React from 'react';
 
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
-import { IconButton, Button } from 'office-ui-fabric-react/lib/Button';
-import { CollapsibleSection, CollapsibleSectionTitle } from '../../../../../packages/experiments/lib/components/CollapsibleSection';
+import { IconButton } from 'office-ui-fabric-react/lib/Button';
+import { CollapsibleSection } from '../../../../../packages/experiments/lib/components/CollapsibleSection';
+import { CollapsibleSectionTitle} from './Nav.CollapsibleSectionTitle';
 
 import { getPathMinusLastHash } from '../../utilities/pageroute';
 import * as stylesImport from './Nav.module.scss';
@@ -11,8 +12,10 @@ const styles: any = stylesImport;
 import { INavProps, INavPage } from './Nav.types';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
 
+
 export interface INavState {
   searchQuery: string;
+  defaultFilterState: boolean;
   filterState: boolean;
 }
 
@@ -22,14 +25,15 @@ export class Nav extends React.Component<INavProps, INavState> {
 
     this.state = {
       searchQuery: '',
-      filterState: true
+      defaultFilterState: false,
+      filterState: false
     };
   }
 
   public render(): JSX.Element {
     let { pages } = this.props;
 
-    if (!pages) {
+    if(!pages) {
       return null;
     }
 
@@ -52,7 +56,7 @@ export class Nav extends React.Component<INavProps, INavState> {
         .map((page: INavPage, linkIndex: number) => {
           if(page.isCategory && !filterState) {
             return (
-              //TODO: Add filter here to alphabetized
+              // TODO: Add filter here to alphabetized
               <span>
                 {page.pages.map((innerPage:INavPage, innerLinkIndex) => this._renderLink(innerPage, innerLinkIndex))}
               </span>
@@ -71,15 +75,15 @@ export class Nav extends React.Component<INavProps, INavState> {
   private _renderCategory(page: INavPage, categoryIndex: number): React.ReactElement<{}> {
     if(page.isCategory && page.pages) {
       return (
-        <div key={categoryIndex} className={css(styles.section, _hasActiveChild(page) && styles.hasActiveChild)}>
+        <span key={categoryIndex} className={css(styles.category, _hasActiveChild(page) && styles.hasActiveChild)}>
           <CollapsibleSection
             titleAs={CollapsibleSectionTitle}
             titleProps={{ text: page.title }}
             defaultCollapsed={!_hasActiveChild(page)}
           >
-            {page.pages.map((page: INavPage, indexNumber: number) => this._renderLink(page, indexNumber))}
+            {page.pages.map((innerPage: INavPage, indexNumber: number) => this._renderLink(innerPage, indexNumber))}
           </CollapsibleSection>
-        </div>
+        </span>
       );
     }
   }
@@ -94,7 +98,7 @@ export class Nav extends React.Component<INavProps, INavState> {
     let linkText = <>{text}</>;
 
     // Highlight search query within link.
-    if (!!searchQuery) {
+    if (!!searchQuery && page.isFilterable) {
       const matchIndex = text.toLowerCase().indexOf(searchQuery.toLowerCase());
       if (matchIndex >= 0) {
         const before = text.slice(0, matchIndex);
@@ -117,7 +121,7 @@ export class Nav extends React.Component<INavProps, INavState> {
         <li
           className={css(
             styles.link,
-            _isPageActive(page) ? styles.isActive : '',
+            _isPageActive(page) && searchQuery==='' ? styles.isActive : '',
             _hasActiveChild(page) ? styles.hasActiveChild : '',
             page.isHomePage ? styles.isHomePage : '',
             page.className ? styles[page.className] : ''
@@ -142,7 +146,7 @@ export class Nav extends React.Component<INavProps, INavState> {
     }
     this.setState({
       searchQuery: '',
-      //expandAll: false
+      // expandAll: false
     });
   };
 
@@ -204,18 +208,27 @@ export class Nav extends React.Component<INavProps, INavState> {
 
   private _onChangeQuery(newValue): void {
     this.setState({
-      searchQuery: newValue
+      searchQuery: newValue,
+      filterState: false
     });
+    if(newValue === ''){
+      this.setState({
+        filterState: this.state.defaultFilterState
+      });
+    }
+    
   }
 
   private _setCategories(): void {
     this.setState({
+      defaultFilterState: true,
       filterState: true
     });
   }
 
   private _setAlphabetized(): void {
     this.setState({
+      defaultFilterState: false,
       filterState: false
     });
   }

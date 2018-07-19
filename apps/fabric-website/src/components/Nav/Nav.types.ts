@@ -29,7 +29,7 @@ export interface INavPage {
   className?: string;
 
   /**
-   * Wether this link 
+   * Wether this link
    */
   isFilterable?: boolean;
 

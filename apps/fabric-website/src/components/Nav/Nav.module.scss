@@ -95,6 +95,10 @@ $nav-group-header-height: 40px;
   }
 }
 
+.matchesFilter {
+  color:white;
+}
+
 @media only screen and (max-width: $uhf-screen-max-mobile) {
   .nav {
     display: none;
