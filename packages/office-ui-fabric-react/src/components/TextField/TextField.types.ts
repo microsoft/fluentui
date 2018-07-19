@@ -238,12 +238,6 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    */
   styles?: IStyleFunctionOrObject<ITextFieldStyleProps, ITextFieldStyles>;
 
-  // TODO: resolve with closure from styles or some other approach
-  // /**
-  //  * Call to provide customized styling that will layer on top of the variant rules.
-  //  */
-  // getLabelStyles?: IStyleFunctionOrObject<ITextFieldStyleProps, ILabelStyles>;
-
   /**
    * @deprecated
    * Deprecated; use iconProps instead.
@@ -289,35 +283,20 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   componentId?: string;
 }
 
-export interface ITextFieldStyleProps {
-  theme: ITheme;
-  className?: string;
-  disabled?: boolean;
-  focused?: boolean;
-  required?: boolean;
-  multiline?: boolean;
-  hasLabel?: boolean;
-  borderless?: boolean;
-  underlined?: boolean;
-  hasErrorMessage?: boolean;
-  hasIcon?: boolean;
-  resizable?: boolean;
-}
-
-// TODO: why is this causing web page load to hang?
-// TODO: add this standard to wiki
-// export type ITextFieldStyleProps =
-//   Required<Pick<ITextFieldProps, 'theme'>> &
-//   Pick<ITextFieldProps, 'className' | 'disabled' | 'required' | 'multiline' | 'borderless' | 'resizable' | 'underlined'> & {
-//     /** Element has an error message. */
-//     'hasErrorMessage': boolean
-//     /** Element has an icon. */
-//     'hasIcon': boolean
-//     /** Element has a label. */
-//     'hasLabel': boolean
-//     /** Element has focus. */
-//     'focused': boolean
-//   };
+export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> &
+  Pick<
+    ITextFieldProps,
+    'className' | 'disabled' | 'required' | 'multiline' | 'borderless' | 'resizable' | 'underlined'
+  > & {
+    /** Element has an error message. */
+    hasErrorMessage?: boolean;
+    /** Element has an icon. */
+    hasIcon?: boolean;
+    /** Element has a label. */
+    hasLabel?: boolean;
+    /** Element has focus. */
+    focused?: boolean;
+  };
 
 export interface ITextFieldStyles {
   /**

@@ -30,9 +30,15 @@ $field-error-color: $errorTextColor;
 
 // Mixin for focus border, including high contrast
 @mixin fieldFocusBorder {
-  border-color: $field-border-focus-color;
+  // Converted: N/A
+  // Verified: NO
+  border-color: $field-border-focus-color;  // inputFocusBorderAltColor
   @include high-contrast {
+    // Converted: N/A
+    // Verified: NO
     border-width: 2px;
+    // Converted: N/A
+    // Verified: NO
     .field {
       @include ms-padding(0, 11px, 0, 11px);
     }
@@ -40,57 +46,81 @@ $field-error-color: $errorTextColor;
 }
 
 // the box containing the label and input field
+// Converted: Yes
+// Verified: NO
 .root {
   @include ms-normalize;
   position: relative; /* Needed to position icon */
 }
 
+// Converted: N/A, not used anywhere
+// Verified: N/A
 .screenReaderOnly {
   @include ms-screenReaderOnly;
 }
 
 //= State: default
 .fieldGroup {
+  // Converted: Yes
+  // Verified: NO
   @include ms-normalize;
-  border: 1px solid $field-border-color;
-  background: $field-background-color;
+  border: 1px solid $field-border-color;  // inputBorderColor
+  background: $field-background-color;  // inputBackgroundColor
   height: 32px;
   display: flex;
   flex-direction: row;
   align-items: stretch;
   position: relative;
 
+  // Converted: Yes
+  // Verified: NO
   &:hover {
-    border-color: $field-border-hover-color;
+    border-color: $field-border-hover-color;  // inputBorderHoveredColor
   }
 
+  // Converted: Yes
+  // Verified: NO
   &.fieldGroupIsFocused {
     @include fieldFocusBorder();
   }
 
+  // Converted: Yes
+  // Verified: NO
   &.fieldGroupIsFocused {
     &.invalid {
-      border-color: $field-border-error-color;
+      border-color: $field-border-error-color;  // errorTextColor
     }
   }
 
+  // Converted: Yes
+  // Verified: NO
   .rootIsDisabled & {
-    background-color: $field-background-disabled-color;
-    border-color: $field-border-disabled-color;
+    background-color: $field-background-disabled-color; // disabledBackgroundColor
+    border-color: $field-border-disabled-color; // disabledBackgroundColor
   }
 
+  // Converted: Yes
+  // Verified: NO
   &:hover,
+  // Converted: Yes
+  // Verified: NO
   &.fieldGroupIsFocused {
     @include high-contrast {
       border-color: Highlight;
     }
   }
 
+  // Converted: Yes
+  // Verified: NO
   &::-ms-clear {
     display: none;
   }
 
+  // Converted: Yes
+  // Verified: NO
   ::placeholder,
+  // Converted: Yes
+  // Verified: NO
   :-ms-input-placeholder {
     color: $inputPlaceholderTextColor;
     opacity: 1;
@@ -98,13 +128,17 @@ $field-error-color: $errorTextColor;
 }
 
 //= State: A disabled textfield
+// Converted: Yes, but is this even taking effect? can't find it anywhere in page. wrong classname?
+// Verified: NO (transparent seems to override to field from below)
 .root.rootIsDisabled {
   :global(.field) {
-    background-color: $field-background-disabled-color;
-    border-color: $field-border-disabled-color;
+    background-color: $field-background-disabled-color; // disabledBackgroundColor
+    border-color: $field-border-disabled-color; // disabledBackgroundColor
   }
 }
 
+// Converted: Yes
+// Verified: NO
 .fieldPrefixSuffix {
   align-items: center;
   background: $ms-color-neutralLighter;
@@ -116,13 +150,15 @@ $field-error-color: $errorTextColor;
 }
 
 .field {
+  // Converted: Yes
+  // Verified: NO
   @include ms-normalize;
   font-size: $ms-font-size-m;
   border-radius: 0;
   border: none;
   background: none;
   background-color: transparent;
-  color: $field-text-color;
+  color: $field-text-color; // bodyTextColor
   @include ms-padding(0, 12px, 0, 12px);
   width: 100%;
   /**
@@ -130,35 +166,55 @@ $field-error-color: $errorTextColor;
    * default value calculated from the size attribute and respect the
    * width set on parent elements.
    */
+  // Converted: Yes
+  // Verified: NO
   min-width: 0;
   text-overflow: ellipsis;
   outline: 0;
+
+  // Converted: Yes
+  // Verified: NO
   &:active,
   &:focus,
   &:hover {
     outline: 0;
   }
+  // Converted: Yes
+  // Verified: NO
   &.hasIcon {
     @include ms-padding-right(24px);
   }
 
+  // Converted: Yes
+  // Verified: NO
   &[disabled] {
     background-color: transparent;
     border-color: transparent;
   }
 }
 
+// Converted: Yes
+// Verified: NO
 .field::placeholder {
-  color: $field-placeholder-color;
+  color: $field-placeholder-color;  // bodySubtextColor
 }
 
 //= State: A required textfield
+// Converted: N/A, already handled by Label styling via required prop
+// Verified: N/A
 .root.rootIsRequiredLabel {
   :global(.ms-Label) {
+    // From LabelMixins.scss:
+    //   &::after {
+    //     content: ' *';
+    //     color: $ms-color-error;
+    //   }
     @include ms-Label-is-required;
   }
 }
 
+// Converted: Yes
+// Verified: NO
 .root.rootIsRequiredPlaceholderOnly {
   :global(.ms-TextField-fieldGroup) {
     &::after {
@@ -172,10 +228,14 @@ $field-error-color: $errorTextColor;
 }
 
 //= State: An active textfield
+// Converted: Yes
+// Verified: NO
 .root.rootIsActive {
   @include fieldFocusBorder();
 }
 
+// Converted: Yes
+// Verified: NO
 .icon {
   pointer-events: none;
   position: absolute;
@@ -186,11 +246,15 @@ $field-error-color: $errorTextColor;
   line-height: 18px;
 }
 
+// Converted: Yes
+// Verified: NO
 .description {
-  color: $field-description-color;
+  color: $field-description-color;  // bodySubtextColor
   font-size: $ms-font-size-xs;
 }
 
+// Converted: Yes
+// Verified: NO
 .rootIsBorderless .fieldGroup {
   border-color: transparent;
   border-width: 0;
@@ -198,22 +262,36 @@ $field-error-color: $errorTextColor;
 
 //== Modifier: Single line (default), underlined
 .root.rootIsUnderlined {
-  border: 0px solid $field-border-color;
+  // Converted: Yes, but only as borderWidth of 0
+  // Converted: Yes, back to original
+  // Verified: NO
+  border: 0px solid $field-border-color;  // inputBorderColor
 
   .wrapper {
+    // Converted: Yes, substituting inherit with border def above
+    // Converted: Yes, back to original
+    // Verified: NO
     display: flex;
     border-bottom-width: 1px;
     border-bottom-style: solid;
     border-bottom-color: inherit;
     width: 100%;
 
+    // Converted: Yes
+    // Verified: NO
     &.invalid,
+    // Converted: Yes
+    // Verified: NO
     &.invalid:focus,
+    // Converted: Yes
+    // Verified: NO
     &.invalid:hover {
-      border-bottom: 1px solid $field-border-error-color;
+      border-bottom: 1px solid $field-border-error-color; // errorTextColor
     }
   }
 
+  // Converted: Yes, label styling
+  // Verified: NO
   :global(.ms-Label) {
     font-size: $ms-font-size-m;
     @include ms-margin-right(8px);
@@ -222,6 +300,8 @@ $field-error-color: $errorTextColor;
     height: 32px;
   }
 
+  // Converted: Yes
+  // Verified: NO
   .fieldGroup {
     flex: 1 1 0px;
     border-width: 0;
@@ -230,31 +310,50 @@ $field-error-color: $errorTextColor;
   }
 
   &.rootIsDisabled {
-    border-color: $field-border-disabled-color;
+    // Converted: Yes
+    // Verified: NO
+    border-color: $field-border-disabled-color; // disabledBackgroundColor
 
+    // Converted: Yes, in label styling function
+    // Verified: NO
+    // @mixin ms-Label-is-disabled {
+    //   color: $ms-color-neutralTertiary;
+    // }
     :global(.ms-Label) {
       @include ms-Label-is-disabled;
     }
 
+    // Converted: Yes
+    // Verified: NO
     .field {
       background-color: transparent;
-      color: $field-text-disabled-color;
+      color: $field-text-disabled-color;  // disabledTextColor
     }
 
+    // Converted: Yes
+    // Verified: NO
     .fieldGroup {
       background-color: transparent;
     }
   }
 
+  // Converted: Yes
+  // Verified: NO
   &:hover:not(.rootIsActive):not(.rootIsDisabled) {
-    border-color: $field-border-hover-color;
+    border-color: $field-border-hover-color;  // inputBorderHoveredColor
   }
 
+  // Converted: Yes, redundant with line 84 and 234 (both active on focus)
+  // Verified: NO
   &.rootIsActive {
     @include fieldFocusBorder();
   }
 
+  // Converted: Yes
+  // Verified: NO
   &:hover:not(.rootIsDisabled),
+  // Converted: Yes
+  // Verified: NO
   &.rootIsActive {
     .wrapper {
       @include high-contrast {
@@ -265,14 +364,17 @@ $field-error-color: $errorTextColor;
 }
 
 //== Modifier: Multiline textfield
-//
 .root.rootIsMultiline {
+  // Converted: Yes
+  // Verified: NO
   .fieldGroup {
     min-height: 60px;
     height: auto;
     display: flex;
   }
 
+  // Converted: Yes
+  // Verified: NO
   .field {
     line-height: 17px;
     flex-grow: 1;
@@ -280,6 +382,8 @@ $field-error-color: $errorTextColor;
     overflow: auto;
     width: 100%;
 
+    // Converted: Yes
+    // Verified: NO
     &.hasIcon {
       @include ms-padding-right(40px);
     }
@@ -287,44 +391,62 @@ $field-error-color: $errorTextColor;
 }
 
 // @todo: https://github.com/OfficeDev/Office-UI-Fabric/issues/359
+// Converted: Yes
+// Verified: NO
 .errorMessage {
   @include ms-font-s;
-  color: $field-error-color;
+  color: $field-error-color;  // errorTextColor
   margin: 0;
   padding-top: 5px;
   display: flex;
   align-items: center;
 }
 
+// Converted: Yes
+// Verified: NO
 .invalid,
+// Converted: Yes
+// Verified: NO
 .invalid:focus,
+// Converted: Yes
+// Verified: NO
 .invalid:hover {
-  border-color: $field-border-error-color;
+  border-color: $field-border-error-color;  // errorTextColor
 }
 
 .root.rootIsUnderlined {
+  // Converted: Yes, label styling
+  // Verified: NO
   :global(.ms-Label) {
     @include ms-padding-left(12px);
     @include ms-padding-right(0);
   }
 
+  // Converted: Yes
+  // Verified: NO
   .field {
     @include text-align(left);
   }
 }
 
 .root.rootIsMultiline {
+  // Converted: Yes
+  // Verified: NO
   .icon {
     @include ms-padding-right(24px);
     padding-bottom: 8px;
     align-items: flex-end;
   }
 
+  // Converted: Yes
+  // Verified: NO, why is example not resizable when it is on master? Add examples of both
   .field.fieldIsUnresizable {
     resize: none;
   }
 }
 
+// Converted: N/A (not used anywhere)
+// Verified: NO
 .hidden {
   display: none;
 }

@@ -320,48 +320,21 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
   }
 
   private _onRenderLabel = (props: ITextFieldProps): JSX.Element | null => {
-    if (props.label) {
-      // TODO: how will consumer labelStyles be defined?
-      // TODO: right way to do this? how to mix in consumer label style prop when defined as object and function?
-      // TODO: use styled function to mixin consumer labelStyles with TextField's getLabelStyles?
-      // return null;
-      // return <Label htmlFor={this._id}>{props.label}</Label>;
-      // return <Label htmlFor={this._id} styles={this._classNames.label}>{props.label}</Label>;
+    const { theme, underlined, label, required, disabled } = props;
+
+    // TODO: how will consumer labelStyles be defined?
+    // TODO: right way to do this? how to mix in consumer label style prop when defined as object and function?
+    // TODO: use styled function to mixin consumer labelStyles with TextField's getLabelStyles?
+
+    if (label) {
       return (
-        <Label htmlFor={this._id} styles={getLabelStyles(props)}>
+        <Label required={required} htmlFor={this._id} styles={getLabelStyles({ theme: theme!, underlined, disabled })}>
           {props.label}
         </Label>
       );
     }
     return null;
   };
-
-  // TODO: is this needed?
-  // private _onRenderLabel(props: ITextFieldProps): JSX.Element | null {
-  //   const {
-  //     theme,
-  //     underlined,
-  //     getLabelStyles,
-  //     label,
-  //     componentId,
-  //     required,
-  //     disabled
-  //   } = props;
-
-  //   const labelProps: ILabelProps = {
-  //     required,
-  //     htmlFor: componentId,
-  //     getStyles: getLabelStyles ? () => getLabelStyles({ theme: theme!, underlined, disabled }) : undefined
-  //   };
-
-  //   if (label) {
-  //     return (
-  //       <Label { ...labelProps } >
-  //         { label }
-  //       </Label>);
-  //   }
-  //   return null;
-  // }
 
   private _onRenderDescription = (props: ITextFieldProps): JSX.Element | null => {
     if (props.description) {
@@ -388,7 +361,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
 
   private get _errorMessage(): string | undefined {
     let { errorMessage } = this.state;
-    if (!errorMessage) {
+    if (!errorMessage && this.props.errorMessage) {
       errorMessage = this.props.errorMessage;
     }
 
