@@ -23,7 +23,7 @@ import { IDetailsRowCheckProps } from './DetailsRowCheck.types';
 import { IDetailsRowStyleProps, IDetailsRowStyles } from './DetailsRow.types';
 import { classNamesFunction } from '../../Utilities';
 
-export const getClassNames = classNamesFunction<IDetailsRowStyleProps, IDetailsRowStyles>();
+const getClassNames = classNamesFunction<IDetailsRowStyleProps, IDetailsRowStyles>();
 
 export interface IDetailsRowSelectionState {
   isSelected: boolean;

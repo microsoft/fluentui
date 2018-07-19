@@ -241,7 +241,11 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
          * sets the page focus but does not scroll the parent element.
          */
         if ((elements[index] as any).setActive) {
-          (elements[index] as any).setActive();
+          try {
+            (elements[index] as any).setActive();
+          } catch (e) {
+            /* no-op */
+          }
         } else {
           (elements[index] as HTMLElement).focus();
         }

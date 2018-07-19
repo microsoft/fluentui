@@ -2,6 +2,25 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.11.0",
+      "tag": "@uifabric/utilities_v6.11.0",
+      "date": "Wed, 18 Jul 2018 10:25:50 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "99545224cefac2af3edb13ce7b038ac1d14f3d38",
+            "comment": "Tighten typings of APIs around merge-styles to be more correct"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.4.0 <7.0.0` to `>=6.5.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.10.0",
       "tag": "@uifabric/utilities_v6.10.0",
       "date": "Tue, 17 Jul 2018 10:28:40 GMT",

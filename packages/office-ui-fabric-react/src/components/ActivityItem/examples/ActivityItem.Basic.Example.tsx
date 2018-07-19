@@ -8,7 +8,7 @@ import { Link } from '../../../Link';
 export class ActivityItemBasicExample extends React.Component<React.Props<ActivityItemBasicExample>, {}> {
   public render(): JSX.Element {
     const getClassNames = classNamesFunction<IActivityItemExampleStyleProps, IActivityItemExampleStyles>();
-    const classNames = getClassNames(getStyles);
+    const classNames = getClassNames(getStyles, {});
 
     // tslint:disable:jsx-no-lambda
     const activityItemExamples = [
