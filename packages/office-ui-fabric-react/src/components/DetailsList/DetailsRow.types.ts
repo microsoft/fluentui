@@ -6,11 +6,13 @@ import { ISelection, SelectionMode } from '../../utilities/selection/interfaces'
 import { IDragDropHelper, IDragDropEvents } from '../../utilities/dragdrop/interfaces';
 import { IViewport } from '../../utilities/decorators/withViewport';
 import { CollapseAllVisibility } from '../GroupedList/GroupedList.types';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IDetailsRowCheckProps } from './DetailsRowCheck.types';
 import { IDetailsRowFieldsProps } from './DetailsRowFields.types';
 
-export interface IDetailsRowProps extends React.Props<DetailsRowBase> {
+export interface IDetailsRow {}
+
+export interface IDetailsRowProps extends IBaseProps<IDetailsRow> {
   /**
    * Theme provided by styled() function
    */
@@ -24,7 +26,7 @@ export interface IDetailsRowProps extends React.Props<DetailsRowBase> {
   /**
    * Ref of the component
    */
-  componentRef?: () => void;
+  componentRef?: IRefObject<IDetailsRow>;
 
   /**
    * Data source for this component

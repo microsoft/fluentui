@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, customizable, divProperties, getNativeProps } from '../../Utilities';
+import { BaseComponent, classNamesFunction, divProperties, getNativeProps } from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 import { ITooltipProps, ITooltipStyleProps, ITooltipStyles, TooltipDelay } from './Tooltip.types';
 import { Callout } from '../../Callout';
@@ -7,7 +7,6 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 
 const getClassNames = classNamesFunction<ITooltipStyleProps, ITooltipStyles>();
 
-@customizable('Tooltip', ['theme', 'styles'])
 export class TooltipBase extends BaseComponent<ITooltipProps, any> {
   // Specify default props values
   public static defaultProps: Partial<ITooltipProps> = {

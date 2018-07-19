@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PivotBase } from './Pivot.base';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { PivotItem } from './PivotItem';
 
 export interface IPivot {
@@ -16,7 +16,7 @@ export interface IPivotProps extends React.Props<PivotBase> {
    * Optional callback to access the IPivot interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IPivot | null) => void;
+  componentRef?: IRefObject<IPivot>;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.

@@ -104,7 +104,9 @@ describe('concatStyleSets', () => {
       }
     });
 
-    const result = concatStyleSets(
+    // this cast to any is unnecessary with TS 2.9+.
+    // TODO: remove the cast to any.
+    const result = (concatStyleSets as any)(
       false,
       {
         subComponentStyles: {

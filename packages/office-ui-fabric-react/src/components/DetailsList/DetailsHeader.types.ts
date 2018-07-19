@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { CollapseAllVisibility } from '../../GroupedList';
 import { ITooltipHostProps } from '../../Tooltip';
 import { IViewport } from '../../utilities/decorators/withViewport';
@@ -21,7 +21,7 @@ export interface IDetailsHeaderProps extends React.Props<DetailsHeaderBase> {
   styles?: IStyleFunctionOrObject<IDetailsHeaderStyleProps, IDetailsHeaderStyles>;
 
   /** Ref to the component itself */
-  componentRef?: (component: IDetailsHeader | null) => void;
+  componentRef?: IRefObject<IDetailsHeader>;
 
   /** Column definitions */
   columns: IColumn[];

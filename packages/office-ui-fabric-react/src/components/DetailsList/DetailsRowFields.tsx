@@ -27,27 +27,34 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
 
     return (
       <div className={rowClassNames.fields} data-automationid="DetailsRowFields" role="presentation">
-        {columns.map((column, columnIndex) => (
-          <div
-            key={columnIndex}
-            role={column.isRowHeader ? 'rowheader' : 'gridcell'}
-            aria-colindex={columnIndex + columnStartIndex + 1}
-            className={css(
-              column.className,
-              column.isMultiline && rowClassNames.isMultiline,
-              column.isRowHeader && rowClassNames.isRowHeader,
-              column.isPadded ? rowClassNames.cellPadded : rowClassNames.cellUnpadded,
-              column.isIconOnly && shimmer && rowClassNames.shimmerIconPlaceholder,
-              shimmer && rowClassNames.shimmer,
-              rowClassNames.cell
-            )}
-            style={{ width: column.calculatedWidth! + INNER_PADDING + (column.isPadded ? ISPADDED_WIDTH : 0) }}
-            data-automationid="DetailsRowCell"
-            data-automation-key={column.key}
-          >
-            {cellContent[columnIndex]}
-          </div>
-        ))}
+        {columns.map((column, columnIndex) => {
+          const width: string | number =
+            typeof column.calculatedWidth === 'undefined'
+              ? 'auto'
+              : column.calculatedWidth + INNER_PADDING + (column.isPadded ? ISPADDED_WIDTH : 0);
+
+          return (
+            <div
+              key={columnIndex}
+              role={column.isRowHeader ? 'rowheader' : 'gridcell'}
+              aria-colindex={columnIndex + columnStartIndex + 1}
+              className={css(
+                column.className,
+                column.isMultiline && rowClassNames.isMultiline,
+                column.isRowHeader && rowClassNames.isRowHeader,
+                column.isPadded ? rowClassNames.cellPadded : rowClassNames.cellUnpadded,
+                column.isIconOnly && shimmer && rowClassNames.shimmerIconPlaceholder,
+                shimmer && rowClassNames.shimmer,
+                rowClassNames.cell
+              )}
+              style={{ width }}
+              data-automationid="DetailsRowCell"
+              data-automation-key={column.key}
+            >
+              {cellContent[columnIndex]}
+            </div>
+          );
+        })}
       </div>
     );
   }

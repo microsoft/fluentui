@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, customizable } from '../../Utilities';
+import { BaseComponent, classNamesFunction } from '../../Utilities';
 import { DialogType, IDialogContentProps, IDialogContentStyleProps, IDialogContentStyles } from './DialogContent.types';
 import { IconButton } from '../../Button';
 import { DialogFooter } from './DialogFooter';
@@ -7,7 +7,6 @@ import { withResponsiveMode } from '../../utilities/decorators/withResponsiveMod
 
 const getClassNames = classNamesFunction<IDialogContentStyleProps, IDialogContentStyles>();
 
-@customizable('DialogContent', ['theme', 'styles'])
 @withResponsiveMode
 export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
   public static defaultProps: IDialogContentProps = {

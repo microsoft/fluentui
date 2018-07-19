@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { ISuggestionModel } from '../../../Pickers';
 import { IPersonaProps } from '../../../Persona';
+import { IRefObject } from '../../../Utilities';
 
 // tslint:disable-next-line:no-any
 export interface ISuggestionsCoreProps<T> extends React.Props<any> {
   /**
    * Gets the component ref.
    */
-  componentRef?: () => void;
+  componentRef?: IRefObject<{}>;
   /**
    * How the suggestion should look in the suggestion list.
    */
@@ -93,7 +94,7 @@ export interface ISuggestionsHeaderFooterProps {
 }
 
 export interface ISuggestionsHeaderFooterItemProps {
-  componentRef?: () => void;
+  componentRef?: IRefObject<{}>;
   renderItem: () => JSX.Element;
   onExecute?: () => void;
   isSelected: boolean;

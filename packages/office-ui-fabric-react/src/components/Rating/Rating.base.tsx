@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, css, customizable, format, getId } from '../../Utilities';
+import { BaseComponent, classNamesFunction, css, format, getId } from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 import { Icon } from '../../Icon';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
@@ -31,7 +31,6 @@ const RatingStar = (props: IRatingStarProps) => (
   </div>
 );
 
-@customizable('Rating', ['theme', 'getStyles'])
 export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
   public static defaultProps: IRatingProps = {
     min: 1,

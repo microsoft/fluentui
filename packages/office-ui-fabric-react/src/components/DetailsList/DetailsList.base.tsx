@@ -42,7 +42,7 @@ import { IList, List, IListProps, ScrollToMode } from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
 import { GetGroupCount } from '../../utilities/groupedList/GroupedListUtility';
 
-export const getClassNames = classNamesFunction<IDetailsListStyleProps, IDetailsListStyles>();
+const getClassNames = classNamesFunction<IDetailsListStyleProps, IDetailsListStyles>();
 
 export interface IDetailsListState {
   focusedItemIndex: number;
@@ -422,7 +422,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
               >
                 {groups ? (
                   <GroupedList
-                    ref={this._groupedList}
+                    componentRef={this._groupedList}
                     groups={groups}
                     groupProps={groupProps}
                     items={items}

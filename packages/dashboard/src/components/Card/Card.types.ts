@@ -84,6 +84,11 @@ export interface ICardFrameContent {
    * Array of options that go into the dropdown of card frame
    */
   cardDropDownOptions: ICardDropDownOption[];
+
+  /**
+   * Hyperlink URL for title
+   */
+  href?: string;
 }
 
 export interface ICardProps {
