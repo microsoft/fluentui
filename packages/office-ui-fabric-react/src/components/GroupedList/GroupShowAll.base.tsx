@@ -4,7 +4,8 @@ import { Link } from '../../Link';
 import { IGroupShowAllProps } from './GroupShowAll.types';
 import { IGroupShowAllStyleProps, IGroupShowAllStyles } from './GroupShowAll.types';
 import { GroupSpacer } from './GroupSpacer';
-export const getClassNames = classNamesFunction<IGroupShowAllStyleProps, IGroupShowAllStyles>();
+
+const getClassNames = classNamesFunction<IGroupShowAllStyleProps, IGroupShowAllStyles>();
 
 export class GroupShowAllBase extends BaseComponent<IGroupShowAllProps, {}> {
   public static defaultProps: IGroupShowAllProps = {

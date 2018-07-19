@@ -5,7 +5,6 @@ import { SelectionMode } from '../../utilities/selection/interfaces';
 import { DetailsList } from './DetailsList';
 import { IDetailsRowProps } from './DetailsRow';
 import { Shimmer, ShimmerElementsGroup, ShimmerElementType, IShimmerElement } from '../Shimmer';
-import { getClassNames as getRowClassNames } from './DetailsRow.classNames';
 import {
   IShimmeredDetailsListProps,
   IShimmeredDetailsListStyleProps,
@@ -13,7 +12,11 @@ import {
 } from './ShimmeredDetailsList.types';
 import { CheckboxVisibility } from './DetailsList.types';
 
-export const getClassNames = classNamesFunction<IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles>();
+import { IDetailsRowStyleProps, IDetailsRowStyles } from './DetailsRow.types';
+
+const getRowClassNames = classNamesFunction<IDetailsRowStyleProps, IDetailsRowStyles>();
+
+const getClassNames = classNamesFunction<IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles>();
 
 const SHIMMER_INITIAL_ITEMS = 10;
 const DEFAULT_SHIMMER_HEIGHT = 7;
