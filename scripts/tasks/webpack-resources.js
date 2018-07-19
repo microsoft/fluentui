@@ -78,7 +78,7 @@ module.exports = {
       {
         devServer: {
           inline: true,
-          port: 4323
+          port: 4322
         },
 
         mode: 'development',
@@ -90,7 +90,7 @@ module.exports = {
           extensions: ['.ts', '.tsx', '.js']
         },
 
-        devtool: 'source-map',
+        devtool: 'eval',
 
         module: {
           rules: [
