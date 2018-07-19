@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/dashboard",
+      "comment": "Enable tests in dashboard package",
+      "type": "none"
+    }
+  ],
+  "packageName": "@uifabric/dashboard",
+  "email": "saakhta@microsoft.com"
+}
