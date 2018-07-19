@@ -1,6 +1,25 @@
 {
-  "name": "office-ui-fabric-react",
+  "name": "@uifabric/fabric-website-resources",
   "entries": [
+    {
+      "version": "6.0.2",
+      "tag": "@uifabric/fabric-website-resources_v6.0.2",
+      "date": "Thu, 19 Jul 2018 21:25:32 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "anavilohia <anavi.lohia@utexas.edu>",
+            "commit": "5327e0b64b21d1b8ef281072ef74a5985e83bec4",
+            "comment": "Added optional feedback section for component pages"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.5.0 <7.0.0` to `>=6.5.1 <7.0.0`"
+          }
+        ]
+      }
+    },
     {
       "version": "6.6.1",
       "tag": "office-ui-fabric-react_v6.6.1",
