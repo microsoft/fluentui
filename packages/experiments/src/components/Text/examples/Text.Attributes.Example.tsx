@@ -1,29 +1,27 @@
 import * as React from 'react';
 import { Text } from '../Text';
-import { IPalette, ISemanticColors, IFontStyles } from '../../../Styling';
-import { Slider, SwatchColorPicker, ChoiceGroup, IChoiceGroupOption, customizable } from 'office-ui-fabric-react';
-import './Text.Basic.Example.scss';
+import { IPalette, ISemanticColors } from '../../../Styling';
+import { Slider, SwatchColorPicker, ChoiceGroup, IChoiceGroupOption } from 'office-ui-fabric-react';
+import './Text.Attributes.Example.scss';
 
-export interface ITextBasicExampleState {
+export interface ITextAttributesExampleState {
   size?: string;
   color?: keyof IPalette | keyof ISemanticColors;
   fontFamily?: string;
-  style?: keyof IFontStyles;
 }
 
-export class TextBasicExample extends React.Component<{}, ITextBasicExampleState> {
+export class TextAttributesExample extends React.Component<{}, ITextAttributesExampleState> {
   constructor(props: {}) {
     super(props);
     this.state = {
       size: 'medium',
       color: 'black',
-      fontFamily: 'Monaco',
-      style: 'medium'
+      fontFamily: 'Monaco'
     };
   }
 
   public render(): JSX.Element {
-    const { size, color, fontFamily, style } = this.state;
+    const { size, color, fontFamily } = this.state;
     return (
       <div>
         <div className="ms-sliders">
@@ -83,49 +81,14 @@ export class TextBasicExample extends React.Component<{}, ITextBasicExampleState
             onChange={this._onChangeFontFamily}
           />
         </div>
-        <Text size={size} color={color} family={fontFamily}>
-          Change This Text's Attributes!
-        </Text>
-        <div>
-          <ChoiceGroup
-            label="Change the style"
-            selectedKey={style}
-            options={[
-              {
-                key: 'small',
-                text: 'Small'
-              },
-              {
-                key: 'medium',
-                text: 'Medium'
-              },
-              {
-                key: 'large',
-                text: 'Large'
-              },
-              {
-                key: 'xLarge',
-                text: 'XLarge'
-              },
-              {
-                key: 'xxLarge',
-                text: 'XXLarge'
-              }
-            ]}
-            onChange={this._onChangeStyle}
-          />
+        <div className="ms-text">
+          <Text size={size} color={color} family={fontFamily}>
+            Change This Text's Attributes!
+          </Text>
         </div>
-        <Text fontStyle={style}>Change This Text's Style!</Text>
       </div>
     );
   }
-
-  private _onChangeStyle = (ev: React.SyntheticEvent<HTMLElement>, option: IChoiceGroupOption): void => {
-    const key = option.key as keyof IFontStyles;
-    this.setState({
-      style: key
-    });
-  };
 
   private _onChangePaletteColor = (value: keyof IPalette): void => {
     this.setState({ color: value });
