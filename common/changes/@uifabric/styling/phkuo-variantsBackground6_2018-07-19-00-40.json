@@ -3,7 +3,7 @@
     {
       "packageName": "@uifabric/styling",
       "comment": "Theming: add new semantic slot",
-      "type": "patch"
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/styling",
