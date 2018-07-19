@@ -1,27 +1,34 @@
 import * as React from 'react';
 import { Text } from '../Text';
 import { IPalette, ISemanticColors } from '../../../Styling';
-import { Slider, SwatchColorPicker, ChoiceGroup, IChoiceGroupOption } from 'office-ui-fabric-react';
+import { Slider, SwatchColorPicker, ChoiceGroup, IChoiceGroupOption, Checkbox } from 'office-ui-fabric-react';
 import './Text.Attributes.Example.scss';
 
 export interface ITextAttributesExampleState {
   size?: string;
   color?: keyof IPalette | keyof ISemanticColors;
   fontFamily?: string;
+  weight?: string;
+  wrap?: boolean;
 }
 
 export class TextAttributesExample extends React.Component<{}, ITextAttributesExampleState> {
   constructor(props: {}) {
     super(props);
+
     this.state = {
       size: 'medium',
       color: 'black',
-      fontFamily: 'Monaco'
+      fontFamily: 'Monaco',
+      weight: 'regular',
+      wrap: false
     };
+
+    this._onCheckboxChange = this._onCheckboxChange.bind(this);
   }
 
   public render(): JSX.Element {
-    const { size, color, fontFamily } = this.state;
+    const { size, color, fontFamily, weight, wrap } = this.state;
     return (
       <div>
         <div className="ms-sliders">
@@ -34,6 +41,17 @@ export class TextAttributesExample extends React.Component<{}, ITextAttributesEx
               defaultValue={3}
               showValue={false}
               onChange={this._onChangeSize}
+            />
+          </div>
+          <div>
+            <Slider
+              label="Change the weight"
+              min={1}
+              max={4}
+              step={1}
+              defaultValue={2}
+              showValue={false}
+              onChange={this._onChangeWeight}
             />
           </div>
           <Text size="tiny">Change the color</Text>
@@ -80,15 +98,42 @@ export class TextAttributesExample extends React.Component<{}, ITextAttributesEx
             ]}
             onChange={this._onChangeFontFamily}
           />
+          <div className="ms-text">
+            <Text size="tiny">Wrap the text</Text>
+            <div className="ms-text">
+              <Checkbox label="Wrap" onChange={this._onCheckboxChange} ariaDescribedBy={'wrap text'} />
+            </div>
+          </div>
         </div>
         <div className="ms-text">
-          <Text size={size} color={color} family={fontFamily}>
+          <Text size={size} color={color} family={fontFamily} weight={weight} wrap={wrap}>
             Change This Text's Attributes!
           </Text>
         </div>
       </div>
     );
   }
+
+  private _onCheckboxChange(ev: React.FormEvent<HTMLElement>, isChecked: boolean): void {
+    this.setState({ wrap: isChecked });
+  }
+
+  private _onChangeWeight = (value: number): void => {
+    switch (value) {
+      case 1:
+        this.setState({ weight: 'light' });
+        break;
+      case 2:
+        this.setState({ weight: 'regular' });
+        break;
+      case 3:
+        this.setState({ weight: 'semibold' });
+        break;
+      case 4:
+        this.setState({ weight: 'bold' });
+        break;
+    }
+  };
 
   private _onChangePaletteColor = (value: keyof IPalette): void => {
     this.setState({ color: value });

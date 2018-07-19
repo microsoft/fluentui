@@ -30,10 +30,6 @@ export class TextFontTypeExample extends React.Component<{}, ITextFontTypeExampl
                 text: 'Default'
               },
               {
-                key: 'disabled',
-                text: 'Disabled'
-              },
-              {
                 key: 'caption',
                 text: 'Caption'
               },

@@ -19,7 +19,8 @@ export interface IFontSizes {
 
 export interface IFontWeights {
   light: number | string;
-  default: number | string;
+  regular: number | string;
+  semibold: number | string;
   bold: number | string;
   [key: string]: number | string;
 }
