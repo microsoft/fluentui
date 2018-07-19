@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage } from '@uifabric/example-app-base';
+import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 
 import { TextAttributesExample } from './examples/Text.Attributes.Example';
 const TextAttributesExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Text/examples/Text.Attributes.Example.tsx') as string;
@@ -27,7 +27,11 @@ export class TextPage extends React.Component<IComponentDemoPageProps, {}> {
             </ExampleCard>
           </div>
         }
-        propertiesTables={<div />}
+        propertiesTables={
+          <PropertiesTableSet
+            sources={[require<string>('!raw-loader!@uifabric/experiments/src/components/Text/Text.tsx')]}
+          />
+        }
         overview={<div />}
         bestPractices={<div />}
         dos={

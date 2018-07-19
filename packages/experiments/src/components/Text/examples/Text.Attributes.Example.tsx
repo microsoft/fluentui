@@ -1,7 +1,15 @@
 import * as React from 'react';
 import { Text } from '../Text';
 import { IPalette, ISemanticColors } from '../../../Styling';
-import { Slider, SwatchColorPicker, ChoiceGroup, IChoiceGroupOption, Checkbox } from 'office-ui-fabric-react';
+import {
+  Slider,
+  SwatchColorPicker,
+  ChoiceGroup,
+  IChoiceGroupOption,
+  Checkbox,
+  TooltipHost,
+  DirectionalHint
+} from 'office-ui-fabric-react';
 import './Text.Attributes.Example.scss';
 
 export interface ITextAttributesExampleState {
@@ -19,7 +27,7 @@ export class TextAttributesExample extends React.Component<{}, ITextAttributesEx
     this.state = {
       size: 'medium',
       color: 'black',
-      fontFamily: 'Monaco',
+      fontFamily: 'default',
       weight: 'regular',
       wrap: false
     };
@@ -29,6 +37,15 @@ export class TextAttributesExample extends React.Component<{}, ITextAttributesEx
 
   public render(): JSX.Element {
     const { size, color, fontFamily, weight, wrap } = this.state;
+    const content = `<Text
+        size=${size}
+        color=${color}
+        family=${fontFamily}
+        weight=${weight}
+        wrap=${wrap}
+      >
+        Change This Text's Attributes!
+      </Text>`;
     return (
       <div>
         <div className="ms-sliders">
@@ -106,9 +123,16 @@ export class TextAttributesExample extends React.Component<{}, ITextAttributesEx
           </div>
         </div>
         <div className="ms-text">
-          <Text size={size} color={color} family={fontFamily} weight={weight} wrap={wrap}>
-            Change This Text's Attributes!
-          </Text>
+          <TooltipHost
+            content={content}
+            id="myID"
+            calloutProps={{ gapSpace: 0 }}
+            tooltipProps={{ directionalHint: DirectionalHint.bottomCenter }}
+          >
+            <Text size={size} color={color} family={fontFamily} weight={weight} wrap={wrap} block={false}>
+              Change This Text's Attributes!
+            </Text>
+          </TooltipHost>
         </div>
       </div>
     );

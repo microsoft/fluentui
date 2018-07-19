@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Text } from '../Text';
 import { IFontStyles } from '../../../Styling';
-import { ChoiceGroup, IChoiceGroupOption } from 'office-ui-fabric-react';
+import { ChoiceGroup, IChoiceGroupOption, TooltipHost, DirectionalHint } from 'office-ui-fabric-react';
 import './Text.Attributes.Example.scss';
 
 export interface ITextFontStyleExampleState {
@@ -18,11 +18,11 @@ export class TextFontStyleExample extends React.Component<{}, ITextFontStyleExam
 
   public render(): JSX.Element {
     const { style } = this.state;
+    const content = `<Text fontStyle=${style}>Change This Text's Font Style!</Text>`;
     return (
       <div>
         <div>
           <ChoiceGroup
-            label="Change the text style"
             selectedKey={style}
             options={[
               {
@@ -50,7 +50,14 @@ export class TextFontStyleExample extends React.Component<{}, ITextFontStyleExam
           />
         </div>
         <div className="ms-text">
-          <Text fontStyle={style}>Change This Text's Font Style!</Text>
+          <TooltipHost
+            content={content}
+            id="myID"
+            calloutProps={{ gapSpace: 0 }}
+            tooltipProps={{ directionalHint: DirectionalHint.bottomCenter }}
+          >
+            <Text fontStyle={style}>Change This Text's Font Style!</Text>
+          </TooltipHost>
         </div>
       </div>
     );

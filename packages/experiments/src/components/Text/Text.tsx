@@ -5,6 +5,9 @@ import { IFontTypes, IFontFamilies, IFontSizes, IFontWeights } from './theming/I
 
 // Styles for the component
 export interface ITextStyles {
+  /**
+   * Style for the root element.
+   */
   root: IStyle;
 }
 
@@ -12,18 +15,51 @@ export interface ITextStyles {
 export interface ITextProps {
   renderAs?: string | React.ReactType<ITextProps>;
   children?: React.ReactNode;
+  /**
+   * Optional class name for Text.
+   */
   className?: string;
 
-  type?: keyof IFontTypes;
-  family?: keyof IFontFamilies;
-  size?: keyof IFontSizes;
+  /**
+   * Optional font style for Text.
+   */
   fontStyle?: keyof IFontStyles;
+
+  /**
+   * Optional font type for Text.
+   */
+  type?: keyof IFontTypes;
+
+  /**
+   * Optional font family for Text.
+   */
+  family?: keyof IFontFamilies;
+
+  /**
+   * Optional font size for Text.
+   */
+  size?: keyof IFontSizes;
+
+  /**
+   * Optional font weight for Text.
+   */
   weight?: keyof IFontWeights;
+
+  /**
+   * Optional font color for Text.
+   */
   color?: keyof IPalette | keyof ISemanticColors;
 
   paletteSet?: string;
 
+  /**
+   * Whether the text is displayed as a block element or an inline element.
+   */
   block?: boolean;
+
+  /**
+   * Whether the text is wrapped.
+   */
   wrap?: boolean;
 
   grow?: boolean;
