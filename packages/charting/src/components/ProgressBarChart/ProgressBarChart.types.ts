@@ -84,7 +84,7 @@ export interface IProgressBarChartStyleProps {
   /**
    * colors for bar .
    */
-  // colors?: string[];
+  colors?: string[];
 }
 
 export interface IProgressBarChartStyles {

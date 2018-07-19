@@ -19,13 +19,14 @@ export class ProgressBarChartBase extends React.Component<IProgressBarChartProps
   public render(): JSX.Element {
     const { data, width, height, barHeight, chartTitle } = this.props;
 
-    const { theme, className, styles } = this.props;
+    const { theme, className, styles, colors } = this.props;
     this._classNames = getClassNames(styles!, {
       theme: theme!,
       width: width!,
       height: height!,
       className,
-      barHeight
+      barHeight,
+      colors
     });
 
     return (
