@@ -76,6 +76,6 @@ function setDescription() {
     statusConfig.description = 'Deployment pending.';
   } else if (argv.state === 'success') {
     statusConfig.description = 'Click "Details" to view demo app.';
-    statusConfig.target_url = `http://fabricweb.z5.web.core.windows.net/pr/refs/pull/${argv.prID}/merge/`;
+    statusConfig.target_url = `http://fabricweb.z5.web.core.windows.net/pr/${argv.prID}`;
   }
 }
