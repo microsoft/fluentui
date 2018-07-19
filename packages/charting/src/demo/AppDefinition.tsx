@@ -26,6 +26,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'HorizontalBarChart',
           name: 'HorizontalBarChart',
           url: '#/examples/horizontalbarchart'
+        },
+        {
+          component: require<any>('../components/ProgressBarChart/ProgressBarChartPage').ProgressBarChartPage,
+          key: 'ProgressBarChart',
+          name: 'ProgressBarChart',
+          url: '#/examples/progressbarchart'
         }
       ]
     }
