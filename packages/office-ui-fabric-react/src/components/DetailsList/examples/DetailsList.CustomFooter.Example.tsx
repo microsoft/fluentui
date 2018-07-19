@@ -6,10 +6,7 @@ import {
   Selection,
   IColumn,
   IDetailsList,
-  // IDetailsRowCheckProps,
-  // DetailsRowCheck,
   IDetailsFooterProps
-  // DetailsRow
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { IRenderFunction, createRef } from 'office-ui-fabric-react/lib/Utilities';
@@ -150,34 +147,4 @@ export class DetailsListCustomFooterExample extends React.Component<
       showItemIndexInView: checked
     });
   };
-
-  // private _onRenderDetailsFooter(props: IDetailsFooterProps, defaultRender: IRenderFunction<IDetailsFooterProps>): JSX.Element {
-  //   const footerData = {
-  //     key: 1,
-  //     name: 'Column 1',
-  //     value: 'Column 2'
-  //   };
-  //   const divStyle = {
-  //     display: 'none'
-  //   };
-  //   props!.footerRowProps!.item = footerData;
-  //   // props!.footerRowProps!.groupNestingDepth = props!.footerRowProps!.groupNestingDepth as number + 1;
-  //   props!.footerRowProps!.onRenderItemColumn = _renderItemColumn;
-  //   return (
-  //     <DetailsRow
-  //       {...props!.footerRowProps!}
-  //       onRenderCheck={(props: IDetailsRowCheckProps): JSX.Element => {
-  //         return (
-  //           <DetailsRowCheck {...props}
-  //             style={divStyle}
-  //           />
-  //         );
-  //       }}
-  //     />);
-  // }
 }
-
-// function _renderItemColumn(item: any, index: number, column: IColumn) {
-//   // return <div><div><span><b>{item[column.name]}</b></span></div><div>{column.name}</div></div>;
-//   return <div><div>{column.name}</div></div>;
-// }

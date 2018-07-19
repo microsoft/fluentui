@@ -1,5 +1,5 @@
 import { styled } from '../../Utilities';
-import { getStyles } from '../GroupedList/GroupFooter.styles';
+import { getStyles } from './DetailsFooter.styles';
 import { IDetailsFooterProps, IDetailsFooterStyleProps, IDetailsFooterStyles } from './DetailsFooter.types';
 import { DetailsFooterBase } from './DetailsFooter.base';
 

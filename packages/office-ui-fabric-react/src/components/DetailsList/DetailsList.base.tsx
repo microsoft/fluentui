@@ -350,7 +350,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
 
     const detailsFooterProps = this._getDetailsFooterProps();
 
-    const rowCount = (isHeaderVisible ? 1 : 0) + GetGroupCount(groups) + (items ? items.length : 0); //  + (isFooterVisible ? 4 : 0);
+    const rowCount = (isHeaderVisible ? 1 : 0) + GetGroupCount(groups) + (items ? items.length : 0);
 
     const classNames = getClassNames(styles, {
       theme: theme!,

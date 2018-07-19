@@ -2,7 +2,7 @@ import { IDetailsFooterStyleProps, IDetailsFooterStyles } from './DetailsFooter.
 import { getGlobalClassNames, FontSizes } from '../../Styling';
 
 const GlobalClassNames = {
-  root: 'ms-groupFooter',
+  root: 'ms-DeatilsFooter',
   link: 'ms-Link'
 };
 
