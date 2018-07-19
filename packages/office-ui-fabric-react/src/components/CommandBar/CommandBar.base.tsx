@@ -154,6 +154,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
 
   private _onRenderItem = (item: ICommandBarItemProps): JSX.Element | React.ReactNode => {
     const { buttonAs: CommandButtonType = CommandBarButton } = this.props;
+    const { commandBarButtonAs: ItemCommandButtonType = CommandButtonType } = item;
 
     const itemText = item.text || item.name;
 
@@ -173,12 +174,12 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     if (item.iconOnly && itemText !== undefined) {
       return (
         <TooltipHost content={itemText}>
-          <CommandButtonType {...commandButtonProps as IButtonProps} />
+          <ItemCommandButtonType {...commandButtonProps as IButtonProps} />
         </TooltipHost>
       );
     }
 
-    return <CommandButtonType {...commandButtonProps as IButtonProps} />;
+    return <ItemCommandButtonType {...commandButtonProps as IButtonProps} />;
   };
 
   private _onRenderOverflowButton = (overflowItems: ICommandBarItemProps[]): JSX.Element => {

@@ -26,6 +26,7 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
       dismissMenu
     } = this.props;
 
+    const { contextualMenuItemAs: ItemChildrenRenderer = ChildrenRenderer } = item;
     const subMenuId = this._getSubMenuId(item);
     const ariaLabel = item.ariaLabel || item.text || item.name || '';
 
@@ -81,7 +82,7 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
             {...itemButtonProperties as React.ButtonHTMLAttributes<HTMLButtonElement>}
             {...keytipAttributes}
           >
-            <ChildrenRenderer
+            <ItemChildrenRenderer
               componentRef={item.componentRef}
               item={item}
               classNames={classNames}

@@ -455,6 +455,14 @@ export interface IContextualMenuItem {
    * @deprecated Use `text` instead.
    */
   name?: string;
+
+  /**
+   * Method to override the render of the individual menu items
+   * @default ContextualMenuItem
+   */
+  contextualMenuItemAs?:
+    | React.ComponentClass<IContextualMenuItemProps>
+    | React.StatelessComponent<IContextualMenuItemProps>;
 }
 
 /**
