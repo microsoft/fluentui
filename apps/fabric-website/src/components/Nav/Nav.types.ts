@@ -29,6 +29,11 @@ export interface INavPage {
   className?: string;
 
   /**
+   * Wether this link 
+   */
+  isFilterable?: boolean;
+
+  /**
    * The component to render for this page's content.
    */
   component?: any;

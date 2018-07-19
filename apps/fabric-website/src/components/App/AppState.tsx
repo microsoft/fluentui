@@ -151,6 +151,7 @@ export const AppState: IAppState = {
                   {
                     title: 'Button',
                     url: '#/components/button',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="Button" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -160,6 +161,7 @@ export const AppState: IAppState = {
                   {
                     title: 'Checkbox',
                     url: '#/components/checkbox',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="Checkbox" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -169,6 +171,7 @@ export const AppState: IAppState = {
                   {
                     title: 'ChoiceGroup',
                     url: '#/components/choicegroup',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="ChoiceGroup" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -178,6 +181,7 @@ export const AppState: IAppState = {
                   {
                     title: 'ComboBox',
                     url: '#/components/ComboBox',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="ComboBox" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -187,6 +191,7 @@ export const AppState: IAppState = {
                   {
                     title: 'ContextualMenu',
                     url: '#/components/contextualmenu',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="ContextualMenu" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -196,6 +201,7 @@ export const AppState: IAppState = {
                   {
                     title: 'Dropdown',
                     url: '#/components/dropdown',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="Dropdown" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -205,6 +211,7 @@ export const AppState: IAppState = {
                   {
                     title: 'Label',
                     url: '#/components/label',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="Label" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -214,6 +221,7 @@ export const AppState: IAppState = {
                   {
                     title: 'Link',
                     url: '#/components/link',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="Link" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -223,6 +231,7 @@ export const AppState: IAppState = {
                   {
                     title: 'Rating',
                     url: '#/components/rating',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="Rating" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -232,6 +241,7 @@ export const AppState: IAppState = {
                   {
                     title: 'Slider',
                     url: '#/components/slider',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="Slider" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -241,6 +251,7 @@ export const AppState: IAppState = {
                   {
                     title: 'SpinButton',
                     url: '#/components/spinbutton',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="SpinButton" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -250,6 +261,7 @@ export const AppState: IAppState = {
                   {
                     title: 'TextField',
                     url: '#/components/textfield',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="TextField" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -259,6 +271,7 @@ export const AppState: IAppState = {
                   {
                     title: 'Toggle',
                     url: '#/components/toggle',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="Toggle" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -277,6 +290,7 @@ export const AppState: IAppState = {
                   {
                     title: 'Breadcrumb',
                     url: '#/components/breadcrumb',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="Breadcrumb" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -286,6 +300,7 @@ export const AppState: IAppState = {
                   {
                     title: 'CommandBar',
                     url: '#/components/commandbar',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="CommandBar" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -295,6 +310,7 @@ export const AppState: IAppState = {
                   {
                     title: 'Nav',
                     url: '#/components/nav',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="Nav" />,
                     getComponent: cb =>
                       require.ensure([], require => cb(require<any>('../../pages/Components/NavComponentPage').NavComponentPage))
@@ -302,6 +318,7 @@ export const AppState: IAppState = {
                   {
                     title: 'OverflowSet',
                     url: '#/components/overflowset',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="OverflowSet" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -311,6 +328,7 @@ export const AppState: IAppState = {
                   {
                     title: 'Pivot',
                     url: '#/components/pivot',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="Pivot" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -320,6 +338,7 @@ export const AppState: IAppState = {
                   {
                     title: 'SearchBox',
                     url: '#/components/searchbox',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="SearchBox" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -338,6 +357,7 @@ export const AppState: IAppState = {
                   {
                     title: 'ActivityItem',
                     url: '#/components/activityitem',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="ActivityItem" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -347,6 +367,7 @@ export const AppState: IAppState = {
                   {
                     title: 'Calendar',
                     url: '#/components/Calendar',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="Calendar" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -356,6 +377,7 @@ export const AppState: IAppState = {
                   {
                     title: 'DetailsList',
                     url: '#/components/detailslist',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="DetailsList" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -475,6 +497,7 @@ export const AppState: IAppState = {
                   {
                     title: 'Facepile',
                     url: '#/components/facepile',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="Facepile" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -484,6 +507,7 @@ export const AppState: IAppState = {
                   {
                     title: 'GroupedList',
                     url: '#/components/groupedlist',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="GroupedList" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -493,6 +517,7 @@ export const AppState: IAppState = {
                   {
                     title: 'Icon',
                     url: '#/components/icon',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="Icon" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -502,6 +527,7 @@ export const AppState: IAppState = {
                   {
                     title: 'Image',
                     url: '#/components/image',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="Image" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -511,6 +537,7 @@ export const AppState: IAppState = {
                   {
                     title: 'List',
                     url: '#/components/list',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="List" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -520,6 +547,7 @@ export const AppState: IAppState = {
                   {
                     title: 'Persona',
                     url: '#/components/persona',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="Persona" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -538,6 +566,7 @@ export const AppState: IAppState = {
                 {
                     title: 'Pickers',
                     url: '#/components/pickers',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="Pickers" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -547,6 +576,7 @@ export const AppState: IAppState = {
                   {
                     title: 'ColorPicker',
                     url: '#/components/colorpicker',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="ColorPicker" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -556,6 +586,7 @@ export const AppState: IAppState = {
                   {
                     title: 'DatePicker',
                     url: '#/components/datepicker',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="DatePicker" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -565,6 +596,7 @@ export const AppState: IAppState = {
                   {
                     title: 'PeoplePicker',
                     url: '#/components/peoplepicker',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="PeoplePicker" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -574,6 +606,7 @@ export const AppState: IAppState = {
                   {
                     title: 'SwatchColorPicker',
                     url: '#/components/swatchcolorpicker',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="SwatchColorPicker" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -592,6 +625,7 @@ export const AppState: IAppState = {
                   {
                     title: 'MessageBar',
                     url: '#/components/messagebar',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="MessageBar" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -601,6 +635,7 @@ export const AppState: IAppState = {
                   {
                     title: 'ProgressIndicator',
                     url: '#/components/progressindicator',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="ProgressIndicator" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -610,6 +645,7 @@ export const AppState: IAppState = {
                   {
                     title: 'Shimmer',
                     url: '#/components/shimmer',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="Shimmer" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -619,6 +655,7 @@ export const AppState: IAppState = {
                   {
                     title: 'Spinner',
                     url: '#/components/spinner',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="Spinner" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -638,6 +675,7 @@ export const AppState: IAppState = {
                   {
                     title: 'Callout',
                     url: '#/components/callout',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="Callout" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -647,6 +685,7 @@ export const AppState: IAppState = {
                   {
                     title: 'Dialog',
                     url: '#/components/dialog',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="Dialog" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -656,6 +695,7 @@ export const AppState: IAppState = {
                   {
                     title: 'DocumentCard',
                     url: '#/components/documentcard',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="DocumentCard" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -665,6 +705,7 @@ export const AppState: IAppState = {
                   {
                     title: 'HoverCard',
                     url: '#/components/hovercard',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="HoverCard" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -674,6 +715,7 @@ export const AppState: IAppState = {
                   {
                     title: 'Layer',
                     url: '#/components/layer',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="Layer" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -683,6 +725,7 @@ export const AppState: IAppState = {
                   {
                     title: 'Modal',
                     url: '#/components/modal',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="Modal" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -692,6 +735,7 @@ export const AppState: IAppState = {
                   {
                     title: 'Overlay',
                     url: '#/components/overlay',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="Overlay" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -701,6 +745,7 @@ export const AppState: IAppState = {
                   {
                     title: 'Panel',
                     url: '#/components/panel',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="Panel" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -709,6 +754,7 @@ export const AppState: IAppState = {
                   },
                   {
                     title: 'ScrollablePane',
+                    isFilterable: true,
                     url: '#/components/scrollablepane',
                     component: () => <LoadingComponent title="ScrollablePane" />,
                     getComponent: cb =>
@@ -719,6 +765,7 @@ export const AppState: IAppState = {
                   {
                     title: 'TeachingBubble',
                     url: '#/components/teachingbubble',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="TeachingBubble" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -728,6 +775,7 @@ export const AppState: IAppState = {
                   {
                     title: 'Tooltip',
                     url: '#/components/tooltip',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="Tooltip" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -737,6 +785,7 @@ export const AppState: IAppState = {
                   {
                     title: 'Coachmark',
                     url: '#/components/coachmark',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="Coachmark" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -760,6 +809,7 @@ export const AppState: IAppState = {
                   {
                     title: 'FocusTrapZone',
                     url: '#/components/focustrapzone',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="FocusTrapZone" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -769,6 +819,7 @@ export const AppState: IAppState = {
                   {
                     title: 'FocusZone',
                     url: '#/components/focuszone',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="FocusZone" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -778,6 +829,7 @@ export const AppState: IAppState = {
                   {
                     title: 'MarqueeSelection',
                     url: '#/components/marqueeselection',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="MarqueeSelection" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -787,6 +839,7 @@ export const AppState: IAppState = {
                   {
                     title: 'ResizeGroup',
                     url: '#/components/resizegroup',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="ResizeGroup" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -796,6 +849,7 @@ export const AppState: IAppState = {
                   {
                     title: 'Selection',
                     url: '#/components/selection',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="Selection" />,
                     getComponent: cb =>
                       require.ensure([], require =>
@@ -805,6 +859,7 @@ export const AppState: IAppState = {
                   {
                     title: 'Themes',
                     url: '#/components/themes',
+                    isFilterable: true,
                     component: () => <LoadingComponent title="Themes" />,
                     getComponent: cb =>
                       require.ensure([], require =>
