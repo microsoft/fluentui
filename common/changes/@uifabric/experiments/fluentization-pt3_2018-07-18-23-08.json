@@ -1,11 +1,11 @@
 {
   "changes": [
     {
-      "comment": "",
       "packageName": "@uifabric/experiments",
-      "type": "none"
+      "comment": "Fluent Styles for ComboBox and Dialog",
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/experiments",
-  "email": "cliff.koh@microsoft.com"
+  "email": "v-brgarl@microsoft.com"
 }

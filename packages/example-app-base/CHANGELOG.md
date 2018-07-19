@@ -1,6 +1,20 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Mon, 16 Jul 2018 10:27:18 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Jul 2018 10:25:50 GMT and should not be manually modified.
+
+## 6.5.1
+Wed, 18 Jul 2018 10:25:50 GMT
+
+### Patches
+
+- Fix typing bugs in example-app-base
+
+## 6.5.0
+Tue, 17 Jul 2018 10:28:40 GMT
+
+### Minor changes
+
+- Removing most `@customizable` decorator usage. This change should reduce extra React dom elements from being created. Also updating `componentRef` resolution to support `React.createRef()` usage.
 
 ## 6.4.0
 Mon, 16 Jul 2018 10:27:18 GMT

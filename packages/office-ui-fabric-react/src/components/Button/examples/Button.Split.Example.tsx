@@ -14,7 +14,7 @@ export class ButtonSplitExample extends React.Component<IButtonProps> {
     const { disabled, checked } = this.props;
 
     const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
-    const classNames = getClassNames(getStyles);
+    const classNames = getClassNames(getStyles, {});
 
     return (
       <div className={css(classNames.twoup)}>

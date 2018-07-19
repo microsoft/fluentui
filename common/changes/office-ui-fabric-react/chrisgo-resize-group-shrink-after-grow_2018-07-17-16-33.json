@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ResizeGroup: Optimize performance of initial render",
+      "comment": "ResizeGroup: Optimize performance for initial render when onGrowData is provided",
       "type": "patch"
     }
   ],
