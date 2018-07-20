@@ -17,7 +17,7 @@ export class ProgressBarChartBase extends React.Component<IProgressBarChartProps
   }
   public render(): JSX.Element {
     const { data, width, height, barHeight, chartTitle, theme, className, styles, colors } = this.props;
-    const persentage = (data.value / data.total) * 100;
+    const persentage = (data!.value / data!.total) * 100;
     this._classNames = getClassNames(styles!, {
       theme: theme!,
       width: width!,

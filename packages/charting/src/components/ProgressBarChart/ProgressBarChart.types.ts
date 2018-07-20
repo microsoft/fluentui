@@ -28,7 +28,7 @@ export interface IProgressBarChartProps {
   /**
    * Data to render in the chart.
    */
-  data: Idata;
+  data?: Idata;
 
   /**
    * Width of the chart.
