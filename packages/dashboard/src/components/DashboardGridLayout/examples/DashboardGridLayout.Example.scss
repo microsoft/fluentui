@@ -8,3 +8,15 @@
     width: 100%;
   }
 }
+
+.table {
+  width: 100%;
+  tr {
+    td:first-child {
+      width: 70%;
+    }
+    td:nth-child(2) {
+      width: 30%;
+    }
+  }
+}

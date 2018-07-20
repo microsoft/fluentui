@@ -879,14 +879,18 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     if (!el) {
       return;
     }
-    const index = Number(el.getAttribute('data-item-index'));
-    if (index >= 0) {
-      if (onActiveItemChanged) {
-        onActiveItemChanged(items[index], index, ev);
+
+    // Check and assign index only if the event was raised from any DetailsRow element
+    if (el.getAttribute('data-item-index')) {
+      const index = Number(el.getAttribute('data-item-index'));
+      if (index >= 0) {
+        if (onActiveItemChanged) {
+          onActiveItemChanged(items[index], index, ev);
+        }
+        this.setState({
+          focusedItemIndex: index
+        });
       }
-      this.setState({
-        focusedItemIndex: index
-      });
     }
   }
 
