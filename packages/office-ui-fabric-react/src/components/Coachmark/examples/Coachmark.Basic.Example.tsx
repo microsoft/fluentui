@@ -123,9 +123,9 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
           >
             <TeachingBubbleContent
               componentRef={ this._teachingBubbleRef }
-              headline="Example Title"
+              headline='Example Title'
               hasCloseIcon={ true }
-              closeButtonAriaLabel="Close"
+              closeButtonAriaLabel='Close'
               primaryButtonProps={ buttonProps }
               secondaryButtonProps={ buttonProps2 }
               onDismiss={ this._onDismiss }
