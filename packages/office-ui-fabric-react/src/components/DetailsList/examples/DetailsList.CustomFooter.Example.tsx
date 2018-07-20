@@ -6,10 +6,11 @@ import {
   Selection,
   IColumn,
   IDetailsList,
+  DetailsRow,
   IDetailsFooterProps
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { IRenderFunction, createRef } from 'office-ui-fabric-react/lib/Utilities';
+import { createRef, IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 const _items: any[] = [];
 
@@ -50,7 +51,7 @@ export class DetailsListCustomFooterExample extends React.Component<
 
     // Populate with items for demos.
     if (_items.length === 0) {
-      for (let i = 0; i < 200; i++) {
+      for (let i = 0; i < 2; i++) {
         _items.push({
           key: i,
           name: 'Item ' + i,
@@ -96,18 +97,7 @@ export class DetailsListCustomFooterExample extends React.Component<
             ariaLabelForSelectionColumn="Toggle selection"
             ariaLabelForSelectAllCheckbox="Toggle selection for all items"
             onItemInvoked={this._onItemInvoked}
-            onRenderDetailsFooter={
-              // tslint:disable-next-line:jsx-no-lambda
-              (detailsFooterProps: IDetailsFooterProps, defaultRender: IRenderFunction<IDetailsFooterProps>) => (
-                <div>
-                  {defaultRender({
-                    ...detailsFooterProps
-                  })}
-                </div>
-              )
-            }
-            isFooterVisible={true}
-            footerText={'Details List Footer'}
+            onRenderDetailsFooter={this._onRenderDetailsFooter}
           />
         </MarqueeSelection>
       </div>
@@ -147,4 +137,29 @@ export class DetailsListCustomFooterExample extends React.Component<
       showItemIndexInView: checked
     });
   };
+
+  private _onRenderDetailsFooter(
+    props: IDetailsFooterProps,
+    defaultRender: IRenderFunction<IDetailsFooterProps>
+  ): JSX.Element {
+    const footerData = {
+      key: _items!.length,
+      name: 'Col 1: ',
+      value: 'Col 2: '
+    };
+
+    props!.footerRowProps!.item = footerData;
+    props!.footerRowProps!.onRenderItemColumn = _renderItemColumn;
+
+    return <DetailsRow {...props!.footerRowProps!} />;
+  }
+}
+
+function _renderItemColumn(item: any, index: number, column: IColumn) {
+  return (
+    <div>
+      {item[column.name.toLocaleLowerCase()]}
+      <b>{column.name}</b>
+    </div>
+  );
 }

@@ -5,13 +5,13 @@ import { IDetailsFooterProps, IDetailsFooterStyleProps, IDetailsFooterStyles } f
 const getClassNames = classNamesFunction<IDetailsFooterStyleProps, IDetailsFooterStyles>();
 
 export class DetailsFooterBase extends BaseComponent<IDetailsFooterProps, {}> {
-  public render(): JSX.Element {
+  public render(): JSX.Element | null {
     const { footerText, styles, theme } = this.props;
     const classNames = getClassNames(styles, { theme: theme! });
 
     if (footerText) {
       return <div className={classNames.root}>{footerText}</div>;
     }
-    return <div />;
+    return null;
   }
 }

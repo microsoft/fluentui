@@ -290,7 +290,6 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       groupProps,
       items,
       isHeaderVisible,
-      isFooterVisible,
       layoutMode,
       onItemInvoked,
       onItemContextMenu,
@@ -462,14 +461,13 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
               </SelectionZone>
             </FocusZone>
           </div>
-          {isFooterVisible &&
-            onRenderDetailsFooter(
-              {
-                componentRef: this._footer,
-                ...detailsFooterProps
-              },
-              this._onRenderDetailsFooter
-            )}
+          {onRenderDetailsFooter(
+            {
+              componentRef: this._footer,
+              ...detailsFooterProps
+            },
+            this._onRenderDetailsFooter
+          )}
         </div>
       </div>
     );
@@ -958,8 +956,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       getRowAriaLabel,
       getRowAriaDescribedBy,
       checkButtonAriaLabel,
-      checkboxCellClassName,
-      footerText
+      checkboxCellClassName
     } = this.props;
     const groupNestingDepth = this._getGroupNestingDepth();
     const footerRowProps: IDetailsRowProps | undefined = {
@@ -978,7 +975,6 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       groupNestingDepth: groupNestingDepth
     };
     const detailsFooterProps: IDetailsFooterProps = {
-      footerText,
       footerRowProps
     };
     return {
