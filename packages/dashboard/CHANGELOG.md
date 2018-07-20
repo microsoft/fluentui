@@ -1,6 +1,13 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Thu, 19 Jul 2018 21:25:32 GMT and should not be manually modified.
+This log was last generated on Fri, 20 Jul 2018 10:25:21 GMT and should not be manually modified.
+
+## 0.5.0
+Fri, 20 Jul 2018 10:25:21 GMT
+
+### Minor changes
+
+- Brought in drag api for dashboard grid layout, which enables adding elements from outside the grid into the grid layout
 
 ## 0.4.5
 Thu, 19 Jul 2018 21:25:32 GMT

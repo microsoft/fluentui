@@ -2,6 +2,31 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.5.0",
+      "tag": "@uifabric/dashboard_v0.5.0",
+      "date": "Fri, 20 Jul 2018 10:25:21 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Samiya <samiyaakhtar7@gmail.com>",
+            "commit": "1706784b63a6331b16233ce72c4f73980d8342b6",
+            "comment": "Brought in drag api for dashboard grid layout, which enables adding elements from outside the grid into the grid layout"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.7.0` to `^0.8.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.18.2 <7.0.0` to `>=6.18.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.38.1 <7.0.0` to `>=6.38.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.4.5",
       "tag": "@uifabric/dashboard_v0.4.5",
       "date": "Thu, 19 Jul 2018 21:25:32 GMT",
