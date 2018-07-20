@@ -315,25 +315,25 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     this._classNames = this.props.getClassNames
       ? this.props.getClassNames(
-        theme!,
-        !!isOpen,
-        !!disabled,
-        !!required,
-        !!focused,
-        !!allowFreeform,
-        !!hasErrorMessage,
-        className
-      )
+          theme!,
+          !!isOpen,
+          !!disabled,
+          !!required,
+          !!focused,
+          !!allowFreeform,
+          !!hasErrorMessage,
+          className
+        )
       : getClassNames(
-        getStyles(theme!, customStyles),
-        className!,
-        !!isOpen,
-        !!disabled,
-        !!required,
-        !!focused,
-        !!allowFreeform,
-        !!hasErrorMessage
-      );
+          getStyles(theme!, customStyles),
+          className!,
+          !!isOpen,
+          !!disabled,
+          !!required,
+          !!focused,
+          !!allowFreeform,
+          !!hasErrorMessage
+        );
 
     return (
       <div {...divProps} ref={this._root} className={this._classNames.container}>
@@ -645,15 +645,15 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           return { ...item, index };
         })
         .filter(
-        option =>
-          option.itemType !== SelectableOptionMenuItemType.Header &&
-          option.itemType !== SelectableOptionMenuItemType.Divider
+          option =>
+            option.itemType !== SelectableOptionMenuItemType.Header &&
+            option.itemType !== SelectableOptionMenuItemType.Divider
         )
         .filter(
-        option =>
-          this._getPreviewText(option)
-            .toLocaleLowerCase()
-            .indexOf(updatedValue) === 0
+          option =>
+            this._getPreviewText(option)
+              .toLocaleLowerCase()
+              .indexOf(updatedValue) === 0
         );
       if (items.length > 0) {
         // use ariaLabel as the value when the option is set
@@ -672,9 +672,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           return { ...item, index };
         })
         .filter(
-        option =>
-          option.itemType !== SelectableOptionMenuItemType.Header &&
-          option.itemType !== SelectableOptionMenuItemType.Divider
+          option =>
+            option.itemType !== SelectableOptionMenuItemType.Header &&
+            option.itemType !== SelectableOptionMenuItemType.Divider
         )
         .filter(option => this._getPreviewText(option).toLocaleLowerCase() === updatedValue);
 
@@ -722,9 +722,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             return { ...item, index: i };
           })
           .filter(
-          option =>
-            option.itemType !== SelectableOptionMenuItemType.Header &&
-            option.itemType !== SelectableOptionMenuItemType.Divider
+            option =>
+              option.itemType !== SelectableOptionMenuItemType.Header &&
+              option.itemType !== SelectableOptionMenuItemType.Divider
           )
           .filter(option => option.text.toLocaleLowerCase().indexOf(updatedValue) === 0);
 
@@ -985,8 +985,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             (this._autofill.current &&
               this._autofill.current.isValueSelected &&
               currentPendingValue.length +
-              (this._autofill.current.selectionEnd! - this._autofill.current.selectionStart!) ===
-              pendingOptionText.length)) ||
+                (this._autofill.current.selectionEnd! - this._autofill.current.selectionStart!) ===
+                pendingOptionText.length)) ||
             (this._autofill.current &&
               this._autofill.current.inputElement &&
               this._autofill.current.inputElement.value.toLocaleLowerCase() === pendingOptionText))
@@ -1049,7 +1049,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         gapSpace={0}
         doNotLayer={false}
         directionalHint={DirectionalHint.bottomLeftEdge}
-        directionalHintFixed={true}
+        directionalHintFixed={false}
         {...calloutProps}
         className={css(this._classNames.callout, calloutProps ? calloutProps.className : undefined)}
         target={this._comboBoxWrapper.current}
@@ -1163,24 +1163,24 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           }
         </CommandButton>
       ) : (
-          <Checkbox
-            id={id + '-list' + item.index}
-            ariaLabel={this._getPreviewText(item)}
-            key={item.key}
-            data-index={item.index}
-            styles={checkboxStyles}
-            className={'ms-ComboBox-option'}
-            data-is-focusable={true}
-            onChange={this._onItemClick(item.index!)}
-            label={item.text}
-            role="option"
-            aria-selected={isSelected ? 'true' : 'false'}
-            checked={isSelected}
-            title={title}
-          >
-            {onRenderOption(item, this._onRenderOptionContent)}
-          </Checkbox>
-        );
+        <Checkbox
+          id={id + '-list' + item.index}
+          ariaLabel={this._getPreviewText(item)}
+          key={item.key}
+          data-index={item.index}
+          styles={checkboxStyles}
+          className={'ms-ComboBox-option'}
+          data-is-focusable={true}
+          onChange={this._onItemClick(item.index!)}
+          label={item.text}
+          role="option"
+          aria-selected={isSelected ? 'true' : 'false'}
+          checked={isSelected}
+          title={title}
+        >
+          {onRenderOption(item, this._onRenderOptionContent)}
+        </Checkbox>
+      );
     };
 
     return (
@@ -1291,7 +1291,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           if (
             scrollableParentRect.top <= selectedElementRect.top &&
             scrollableParentRect.top + scrollableParentRect.height >=
-            selectedElementRect.top + selectedElementRect.height
+              selectedElementRect.top + selectedElementRect.height
           ) {
             return;
           }
