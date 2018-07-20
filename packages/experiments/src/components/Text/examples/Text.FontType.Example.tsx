@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Text } from '../Text';
-import { Stack } from '../../Stack';
+import { Stack } from '../../Stack/Stack';
 import { IFontStyles } from '../../../Styling';
 import { ChoiceGroup, IChoiceGroupOption, TooltipHost, DirectionalHint } from 'office-ui-fabric-react';
 
