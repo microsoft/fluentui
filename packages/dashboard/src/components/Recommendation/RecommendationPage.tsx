@@ -4,7 +4,7 @@ import {
   RecommendationBasicExample,
   RecommendationDlpExample,
   RecommendationPasswordSettingsExample
-} from './examples';
+} from './examples/index';
 const RecommendationExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Recommendation/examples/Recommendation.Basic.Example.tsx') as string;
 
 const DlpRecommendationCode = require('!raw-loader!@uifabric/dashboard/src/components/Recommendation/examples/Recommendation.DLP.Example.tsx') as string;
