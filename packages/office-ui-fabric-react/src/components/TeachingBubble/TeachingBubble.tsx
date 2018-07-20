@@ -4,7 +4,7 @@ import { BaseComponent, classNamesFunction, createRef } from '../../Utilities';
 import { TeachingBubbleContent } from './TeachingBubbleContent';
 import { ITeachingBubbleProps } from './TeachingBubble.types';
 import { Callout, ICalloutProps } from '../../Callout';
-import { DirectionalHint } from '../../common/DirectionalHint'
+import { DirectionalHint } from '../../common/DirectionalHint';
 import * as stylesImport from './TeachingBubble.scss';
 const styles: any = stylesImport;
 

@@ -208,7 +208,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
           { ariaAlertText && (
             <div
               className={ classNames.ariaContainer }
-              role="alert"
+              role='alert'
               ref={ this._ariaAlertContainer }
               aria-hidden={ !isCollapsed }
             >
@@ -237,7 +237,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
                     className={ classNames.entityHost }
                     tabIndex={ -1 }
                     data-is-focusable={ true }
-                    role="dialog"
+                    role='dialog'
                     aria-labelledby={ ariaLabelledBy }
                     aria-describedby={ ariaDescribedBy }
                   >
@@ -340,7 +340,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     ) {
       this._onFocusHandler();
     }
-  };
+  }
 
   private _onFocusHandler = (): void => {
     if (this.state.isCollapsed) {
@@ -491,7 +491,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
           }
         }
       );
-  };
+  }
 
   private _addProximityHandler(mouseProximityOffset: number = 0): void {
     /**

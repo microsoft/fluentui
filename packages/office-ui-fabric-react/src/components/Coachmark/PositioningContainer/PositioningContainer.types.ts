@@ -1,13 +1,13 @@
-import * as React from "react";
-import { PositioningContainer } from "./PositioningContainer";
-import { DirectionalHint } from "../../../common/DirectionalHint";
-import { IPoint, IRectangle } from "../../../Utilities";
+import * as React from 'react';
+import { PositioningContainer } from './PositioningContainer';
+import { DirectionalHint } from '../../../common/DirectionalHint';
+import { IPoint, IRectangle } from '../../../Utilities';
 import {
   ICalloutPositon,
   IPositionedData
-} from "../../../utilities/positioning";
+} from '../../../utilities/positioning';
 
-export interface IPositioningContainer {}
+export interface IPositioningContainer { }
 
 export interface IPositionInfo {
   calloutPosition: ICalloutPositon;
