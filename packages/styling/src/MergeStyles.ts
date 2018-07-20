@@ -4,6 +4,7 @@ export {
   IRawStyle,
   IStyle,
   IStyleSet,
+  IProcessedStyleSet,
   IStyleSheetConfig,
   InjectionMode,
   Stylesheet,

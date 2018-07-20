@@ -50,7 +50,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           bottom: 1px;
           content: "";
           left: 1px;
-          outline: 1px solid #666666;
+          outline: 1px solid #ffffff;
           position: absolute;
           right: 1px;
           top: 1px;
@@ -110,23 +110,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           }
           .ms-Fabric--isFocusVisible &:focus:after {
             border: 1px solid #666666;
-            bottom: 1px;
+            bottom: 0px;
             content: "";
-            left: 1px;
-            outline: 1px solid #666666;
+            left: 0px;
+            outline: 1px solid #ffffff;
             position: absolute;
-            right: 1px;
-            top: 1px;
+            right: 0px;
+            top: 0px;
             z-index: 1;
           }
           & > button {
             max-width: 100%;
           }
-          & data-is-focusable='true' {
+          & [data-is-focusable='true'] {
             outline: transparent;
             position: relative;
           }
-          & data-is-focusable='true'::-moz-focus-inner {
+          & [data-is-focusable='true']::-moz-focus-inner {
             border: 0;
           }
           &.$shimmer {
@@ -191,12 +191,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               z-index: 1;
             }
             &:hover {
-              opacity: 1;
-            }
-            &.isHeader {
-              height: 32px;
-            }
-            .ms-Fabric--isFocusVisible & {
               opacity: 1;
             }
 
@@ -334,23 +328,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             .ms-Fabric--isFocusVisible &:focus:after {
               border: 1px solid #666666;
-              bottom: 1px;
+              bottom: 0px;
               content: "";
-              left: 1px;
-              outline: 1px solid #666666;
+              left: 0px;
+              outline: 1px solid #ffffff;
               position: absolute;
-              right: 1px;
-              top: 1px;
+              right: 0px;
+              top: 0px;
               z-index: 1;
             }
             & > button {
               max-width: 100%;
             }
-            & data-is-focusable='true' {
+            & [data-is-focusable='true'] {
               outline: transparent;
               position: relative;
             }
-            & data-is-focusable='true'::-moz-focus-inner {
+            & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
             &.$shimmer {
@@ -373,7 +367,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -405,23 +399,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             .ms-Fabric--isFocusVisible &:focus:after {
               border: 1px solid #666666;
-              bottom: 1px;
+              bottom: 0px;
               content: "";
-              left: 1px;
-              outline: 1px solid #666666;
+              left: 0px;
+              outline: 1px solid #ffffff;
               position: absolute;
-              right: 1px;
-              top: 1px;
+              right: 0px;
+              top: 0px;
               z-index: 1;
             }
             & > button {
               max-width: 100%;
             }
-            & data-is-focusable='true' {
+            & [data-is-focusable='true'] {
               outline: transparent;
               position: relative;
             }
-            & data-is-focusable='true'::-moz-focus-inner {
+            & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
             &.$shimmer {
@@ -444,7 +438,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -514,23 +508,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             .ms-Fabric--isFocusVisible &:focus:after {
               border: 1px solid #666666;
-              bottom: 1px;
+              bottom: 0px;
               content: "";
-              left: 1px;
-              outline: 1px solid #666666;
+              left: 0px;
+              outline: 1px solid #ffffff;
               position: absolute;
-              right: 1px;
-              top: 1px;
+              right: 0px;
+              top: 0px;
               z-index: 1;
             }
             & > button {
               max-width: 100%;
             }
-            & data-is-focusable='true' {
+            & [data-is-focusable='true'] {
               outline: transparent;
               position: relative;
             }
-            & data-is-focusable='true'::-moz-focus-inner {
+            & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
             &.$shimmer {
@@ -553,7 +547,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -729,7 +723,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           bottom: 1px;
           content: "";
           left: 1px;
-          outline: 1px solid #666666;
+          outline: 1px solid #ffffff;
           position: absolute;
           right: 1px;
           top: 1px;
@@ -789,23 +783,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           }
           .ms-Fabric--isFocusVisible &:focus:after {
             border: 1px solid #666666;
-            bottom: 1px;
+            bottom: 0px;
             content: "";
-            left: 1px;
-            outline: 1px solid #666666;
+            left: 0px;
+            outline: 1px solid #ffffff;
             position: absolute;
-            right: 1px;
-            top: 1px;
+            right: 0px;
+            top: 0px;
             z-index: 1;
           }
           & > button {
             max-width: 100%;
           }
-          & data-is-focusable='true' {
+          & [data-is-focusable='true'] {
             outline: transparent;
             position: relative;
           }
-          & data-is-focusable='true'::-moz-focus-inner {
+          & [data-is-focusable='true']::-moz-focus-inner {
             border: 0;
           }
           &.$shimmer {
@@ -870,12 +864,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               z-index: 1;
             }
             &:hover {
-              opacity: 1;
-            }
-            &.isHeader {
-              height: 32px;
-            }
-            .ms-Fabric--isFocusVisible & {
               opacity: 1;
             }
 
@@ -1013,23 +1001,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             .ms-Fabric--isFocusVisible &:focus:after {
               border: 1px solid #666666;
-              bottom: 1px;
+              bottom: 0px;
               content: "";
-              left: 1px;
-              outline: 1px solid #666666;
+              left: 0px;
+              outline: 1px solid #ffffff;
               position: absolute;
-              right: 1px;
-              top: 1px;
+              right: 0px;
+              top: 0px;
               z-index: 1;
             }
             & > button {
               max-width: 100%;
             }
-            & data-is-focusable='true' {
+            & [data-is-focusable='true'] {
               outline: transparent;
               position: relative;
             }
-            & data-is-focusable='true'::-moz-focus-inner {
+            & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
             &.$shimmer {
@@ -1052,7 +1040,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -1084,23 +1072,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             .ms-Fabric--isFocusVisible &:focus:after {
               border: 1px solid #666666;
-              bottom: 1px;
+              bottom: 0px;
               content: "";
-              left: 1px;
-              outline: 1px solid #666666;
+              left: 0px;
+              outline: 1px solid #ffffff;
               position: absolute;
-              right: 1px;
-              top: 1px;
+              right: 0px;
+              top: 0px;
               z-index: 1;
             }
             & > button {
               max-width: 100%;
             }
-            & data-is-focusable='true' {
+            & [data-is-focusable='true'] {
               outline: transparent;
               position: relative;
             }
-            & data-is-focusable='true'::-moz-focus-inner {
+            & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
             &.$shimmer {
@@ -1123,7 +1111,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -1193,23 +1181,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             .ms-Fabric--isFocusVisible &:focus:after {
               border: 1px solid #666666;
-              bottom: 1px;
+              bottom: 0px;
               content: "";
-              left: 1px;
-              outline: 1px solid #666666;
+              left: 0px;
+              outline: 1px solid #ffffff;
               position: absolute;
-              right: 1px;
-              top: 1px;
+              right: 0px;
+              top: 0px;
               z-index: 1;
             }
             & > button {
               max-width: 100%;
             }
-            & data-is-focusable='true' {
+            & [data-is-focusable='true'] {
               outline: transparent;
               position: relative;
             }
-            & data-is-focusable='true'::-moz-focus-inner {
+            & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
             &.$shimmer {
@@ -1232,7 +1220,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -1408,7 +1396,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           bottom: 1px;
           content: "";
           left: 1px;
-          outline: 1px solid #666666;
+          outline: 1px solid #ffffff;
           position: absolute;
           right: 1px;
           top: 1px;
@@ -1468,23 +1456,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           }
           .ms-Fabric--isFocusVisible &:focus:after {
             border: 1px solid #666666;
-            bottom: 1px;
+            bottom: 0px;
             content: "";
-            left: 1px;
-            outline: 1px solid #666666;
+            left: 0px;
+            outline: 1px solid #ffffff;
             position: absolute;
-            right: 1px;
-            top: 1px;
+            right: 0px;
+            top: 0px;
             z-index: 1;
           }
           & > button {
             max-width: 100%;
           }
-          & data-is-focusable='true' {
+          & [data-is-focusable='true'] {
             outline: transparent;
             position: relative;
           }
-          & data-is-focusable='true'::-moz-focus-inner {
+          & [data-is-focusable='true']::-moz-focus-inner {
             border: 0;
           }
           &.$shimmer {
@@ -1549,12 +1537,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               z-index: 1;
             }
             &:hover {
-              opacity: 1;
-            }
-            &.isHeader {
-              height: 32px;
-            }
-            .ms-Fabric--isFocusVisible & {
               opacity: 1;
             }
 
@@ -1692,23 +1674,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             .ms-Fabric--isFocusVisible &:focus:after {
               border: 1px solid #666666;
-              bottom: 1px;
+              bottom: 0px;
               content: "";
-              left: 1px;
-              outline: 1px solid #666666;
+              left: 0px;
+              outline: 1px solid #ffffff;
               position: absolute;
-              right: 1px;
-              top: 1px;
+              right: 0px;
+              top: 0px;
               z-index: 1;
             }
             & > button {
               max-width: 100%;
             }
-            & data-is-focusable='true' {
+            & [data-is-focusable='true'] {
               outline: transparent;
               position: relative;
             }
-            & data-is-focusable='true'::-moz-focus-inner {
+            & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
             &.$shimmer {
@@ -1731,7 +1713,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -1763,23 +1745,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             .ms-Fabric--isFocusVisible &:focus:after {
               border: 1px solid #666666;
-              bottom: 1px;
+              bottom: 0px;
               content: "";
-              left: 1px;
-              outline: 1px solid #666666;
+              left: 0px;
+              outline: 1px solid #ffffff;
               position: absolute;
-              right: 1px;
-              top: 1px;
+              right: 0px;
+              top: 0px;
               z-index: 1;
             }
             & > button {
               max-width: 100%;
             }
-            & data-is-focusable='true' {
+            & [data-is-focusable='true'] {
               outline: transparent;
               position: relative;
             }
-            & data-is-focusable='true'::-moz-focus-inner {
+            & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
             &.$shimmer {
@@ -1802,7 +1784,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -1872,23 +1854,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             .ms-Fabric--isFocusVisible &:focus:after {
               border: 1px solid #666666;
-              bottom: 1px;
+              bottom: 0px;
               content: "";
-              left: 1px;
-              outline: 1px solid #666666;
+              left: 0px;
+              outline: 1px solid #ffffff;
               position: absolute;
-              right: 1px;
-              top: 1px;
+              right: 0px;
+              top: 0px;
               z-index: 1;
             }
             & > button {
               max-width: 100%;
             }
-            & data-is-focusable='true' {
+            & [data-is-focusable='true'] {
               outline: transparent;
               position: relative;
             }
-            & data-is-focusable='true'::-moz-focus-inner {
+            & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
             &.$shimmer {
@@ -1911,7 +1893,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -2087,7 +2069,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           bottom: 1px;
           content: "";
           left: 1px;
-          outline: 1px solid #666666;
+          outline: 1px solid #ffffff;
           position: absolute;
           right: 1px;
           top: 1px;
@@ -2147,23 +2129,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           }
           .ms-Fabric--isFocusVisible &:focus:after {
             border: 1px solid #666666;
-            bottom: 1px;
+            bottom: 0px;
             content: "";
-            left: 1px;
-            outline: 1px solid #666666;
+            left: 0px;
+            outline: 1px solid #ffffff;
             position: absolute;
-            right: 1px;
-            top: 1px;
+            right: 0px;
+            top: 0px;
             z-index: 1;
           }
           & > button {
             max-width: 100%;
           }
-          & data-is-focusable='true' {
+          & [data-is-focusable='true'] {
             outline: transparent;
             position: relative;
           }
-          & data-is-focusable='true'::-moz-focus-inner {
+          & [data-is-focusable='true']::-moz-focus-inner {
             border: 0;
           }
           &.$shimmer {
@@ -2228,12 +2210,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               z-index: 1;
             }
             &:hover {
-              opacity: 1;
-            }
-            &.isHeader {
-              height: 32px;
-            }
-            .ms-Fabric--isFocusVisible & {
               opacity: 1;
             }
 
@@ -2371,23 +2347,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             .ms-Fabric--isFocusVisible &:focus:after {
               border: 1px solid #666666;
-              bottom: 1px;
+              bottom: 0px;
               content: "";
-              left: 1px;
-              outline: 1px solid #666666;
+              left: 0px;
+              outline: 1px solid #ffffff;
               position: absolute;
-              right: 1px;
-              top: 1px;
+              right: 0px;
+              top: 0px;
               z-index: 1;
             }
             & > button {
               max-width: 100%;
             }
-            & data-is-focusable='true' {
+            & [data-is-focusable='true'] {
               outline: transparent;
               position: relative;
             }
-            & data-is-focusable='true'::-moz-focus-inner {
+            & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
             &.$shimmer {
@@ -2410,7 +2386,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -2442,23 +2418,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             .ms-Fabric--isFocusVisible &:focus:after {
               border: 1px solid #666666;
-              bottom: 1px;
+              bottom: 0px;
               content: "";
-              left: 1px;
-              outline: 1px solid #666666;
+              left: 0px;
+              outline: 1px solid #ffffff;
               position: absolute;
-              right: 1px;
-              top: 1px;
+              right: 0px;
+              top: 0px;
               z-index: 1;
             }
             & > button {
               max-width: 100%;
             }
-            & data-is-focusable='true' {
+            & [data-is-focusable='true'] {
               outline: transparent;
               position: relative;
             }
-            & data-is-focusable='true'::-moz-focus-inner {
+            & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
             &.$shimmer {
@@ -2481,7 +2457,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -2551,23 +2527,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             .ms-Fabric--isFocusVisible &:focus:after {
               border: 1px solid #666666;
-              bottom: 1px;
+              bottom: 0px;
               content: "";
-              left: 1px;
-              outline: 1px solid #666666;
+              left: 0px;
+              outline: 1px solid #ffffff;
               position: absolute;
-              right: 1px;
-              top: 1px;
+              right: 0px;
+              top: 0px;
               z-index: 1;
             }
             & > button {
               max-width: 100%;
             }
-            & data-is-focusable='true' {
+            & [data-is-focusable='true'] {
               outline: transparent;
               position: relative;
             }
-            & data-is-focusable='true'::-moz-focus-inner {
+            & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
             &.$shimmer {
@@ -2590,7 +2566,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -2766,7 +2742,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           bottom: 1px;
           content: "";
           left: 1px;
-          outline: 1px solid #666666;
+          outline: 1px solid #ffffff;
           position: absolute;
           right: 1px;
           top: 1px;
@@ -2826,23 +2802,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           }
           .ms-Fabric--isFocusVisible &:focus:after {
             border: 1px solid #666666;
-            bottom: 1px;
+            bottom: 0px;
             content: "";
-            left: 1px;
-            outline: 1px solid #666666;
+            left: 0px;
+            outline: 1px solid #ffffff;
             position: absolute;
-            right: 1px;
-            top: 1px;
+            right: 0px;
+            top: 0px;
             z-index: 1;
           }
           & > button {
             max-width: 100%;
           }
-          & data-is-focusable='true' {
+          & [data-is-focusable='true'] {
             outline: transparent;
             position: relative;
           }
-          & data-is-focusable='true'::-moz-focus-inner {
+          & [data-is-focusable='true']::-moz-focus-inner {
             border: 0;
           }
           &.$shimmer {
@@ -2907,12 +2883,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               z-index: 1;
             }
             &:hover {
-              opacity: 1;
-            }
-            &.isHeader {
-              height: 32px;
-            }
-            .ms-Fabric--isFocusVisible & {
               opacity: 1;
             }
 
@@ -3050,23 +3020,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             .ms-Fabric--isFocusVisible &:focus:after {
               border: 1px solid #666666;
-              bottom: 1px;
+              bottom: 0px;
               content: "";
-              left: 1px;
-              outline: 1px solid #666666;
+              left: 0px;
+              outline: 1px solid #ffffff;
               position: absolute;
-              right: 1px;
-              top: 1px;
+              right: 0px;
+              top: 0px;
               z-index: 1;
             }
             & > button {
               max-width: 100%;
             }
-            & data-is-focusable='true' {
+            & [data-is-focusable='true'] {
               outline: transparent;
               position: relative;
             }
-            & data-is-focusable='true'::-moz-focus-inner {
+            & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
             &.$shimmer {
@@ -3089,7 +3059,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -3121,23 +3091,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             .ms-Fabric--isFocusVisible &:focus:after {
               border: 1px solid #666666;
-              bottom: 1px;
+              bottom: 0px;
               content: "";
-              left: 1px;
-              outline: 1px solid #666666;
+              left: 0px;
+              outline: 1px solid #ffffff;
               position: absolute;
-              right: 1px;
-              top: 1px;
+              right: 0px;
+              top: 0px;
               z-index: 1;
             }
             & > button {
               max-width: 100%;
             }
-            & data-is-focusable='true' {
+            & [data-is-focusable='true'] {
               outline: transparent;
               position: relative;
             }
-            & data-is-focusable='true'::-moz-focus-inner {
+            & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
             &.$shimmer {
@@ -3160,7 +3130,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -3230,23 +3200,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             .ms-Fabric--isFocusVisible &:focus:after {
               border: 1px solid #666666;
-              bottom: 1px;
+              bottom: 0px;
               content: "";
-              left: 1px;
-              outline: 1px solid #666666;
+              left: 0px;
+              outline: 1px solid #ffffff;
               position: absolute;
-              right: 1px;
-              top: 1px;
+              right: 0px;
+              top: 0px;
               z-index: 1;
             }
             & > button {
               max-width: 100%;
             }
-            & data-is-focusable='true' {
+            & [data-is-focusable='true'] {
               outline: transparent;
               position: relative;
             }
-            & data-is-focusable='true'::-moz-focus-inner {
+            & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
             &.$shimmer {
@@ -3269,7 +3239,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -3445,7 +3415,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           bottom: 1px;
           content: "";
           left: 1px;
-          outline: 1px solid #666666;
+          outline: 1px solid #ffffff;
           position: absolute;
           right: 1px;
           top: 1px;
@@ -3505,23 +3475,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           }
           .ms-Fabric--isFocusVisible &:focus:after {
             border: 1px solid #666666;
-            bottom: 1px;
+            bottom: 0px;
             content: "";
-            left: 1px;
-            outline: 1px solid #666666;
+            left: 0px;
+            outline: 1px solid #ffffff;
             position: absolute;
-            right: 1px;
-            top: 1px;
+            right: 0px;
+            top: 0px;
             z-index: 1;
           }
           & > button {
             max-width: 100%;
           }
-          & data-is-focusable='true' {
+          & [data-is-focusable='true'] {
             outline: transparent;
             position: relative;
           }
-          & data-is-focusable='true'::-moz-focus-inner {
+          & [data-is-focusable='true']::-moz-focus-inner {
             border: 0;
           }
           &.$shimmer {
@@ -3586,12 +3556,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               z-index: 1;
             }
             &:hover {
-              opacity: 1;
-            }
-            &.isHeader {
-              height: 32px;
-            }
-            .ms-Fabric--isFocusVisible & {
               opacity: 1;
             }
 
@@ -3729,23 +3693,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             .ms-Fabric--isFocusVisible &:focus:after {
               border: 1px solid #666666;
-              bottom: 1px;
+              bottom: 0px;
               content: "";
-              left: 1px;
-              outline: 1px solid #666666;
+              left: 0px;
+              outline: 1px solid #ffffff;
               position: absolute;
-              right: 1px;
-              top: 1px;
+              right: 0px;
+              top: 0px;
               z-index: 1;
             }
             & > button {
               max-width: 100%;
             }
-            & data-is-focusable='true' {
+            & [data-is-focusable='true'] {
               outline: transparent;
               position: relative;
             }
-            & data-is-focusable='true'::-moz-focus-inner {
+            & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
             &.$shimmer {
@@ -3768,7 +3732,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -3800,23 +3764,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             .ms-Fabric--isFocusVisible &:focus:after {
               border: 1px solid #666666;
-              bottom: 1px;
+              bottom: 0px;
               content: "";
-              left: 1px;
-              outline: 1px solid #666666;
+              left: 0px;
+              outline: 1px solid #ffffff;
               position: absolute;
-              right: 1px;
-              top: 1px;
+              right: 0px;
+              top: 0px;
               z-index: 1;
             }
             & > button {
               max-width: 100%;
             }
-            & data-is-focusable='true' {
+            & [data-is-focusable='true'] {
               outline: transparent;
               position: relative;
             }
-            & data-is-focusable='true'::-moz-focus-inner {
+            & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
             &.$shimmer {
@@ -3839,7 +3803,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -3909,23 +3873,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             .ms-Fabric--isFocusVisible &:focus:after {
               border: 1px solid #666666;
-              bottom: 1px;
+              bottom: 0px;
               content: "";
-              left: 1px;
-              outline: 1px solid #666666;
+              left: 0px;
+              outline: 1px solid #ffffff;
               position: absolute;
-              right: 1px;
-              top: 1px;
+              right: 0px;
+              top: 0px;
               z-index: 1;
             }
             & > button {
               max-width: 100%;
             }
-            & data-is-focusable='true' {
+            & [data-is-focusable='true'] {
               outline: transparent;
               position: relative;
             }
-            & data-is-focusable='true'::-moz-focus-inner {
+            & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
             &.$shimmer {
@@ -3948,7 +3912,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -4124,7 +4088,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           bottom: 1px;
           content: "";
           left: 1px;
-          outline: 1px solid #666666;
+          outline: 1px solid #ffffff;
           position: absolute;
           right: 1px;
           top: 1px;
@@ -4184,23 +4148,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           }
           .ms-Fabric--isFocusVisible &:focus:after {
             border: 1px solid #666666;
-            bottom: 1px;
+            bottom: 0px;
             content: "";
-            left: 1px;
-            outline: 1px solid #666666;
+            left: 0px;
+            outline: 1px solid #ffffff;
             position: absolute;
-            right: 1px;
-            top: 1px;
+            right: 0px;
+            top: 0px;
             z-index: 1;
           }
           & > button {
             max-width: 100%;
           }
-          & data-is-focusable='true' {
+          & [data-is-focusable='true'] {
             outline: transparent;
             position: relative;
           }
-          & data-is-focusable='true'::-moz-focus-inner {
+          & [data-is-focusable='true']::-moz-focus-inner {
             border: 0;
           }
           &.$shimmer {
@@ -4265,12 +4229,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               z-index: 1;
             }
             &:hover {
-              opacity: 1;
-            }
-            &.isHeader {
-              height: 32px;
-            }
-            .ms-Fabric--isFocusVisible & {
               opacity: 1;
             }
 
@@ -4408,23 +4366,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             .ms-Fabric--isFocusVisible &:focus:after {
               border: 1px solid #666666;
-              bottom: 1px;
+              bottom: 0px;
               content: "";
-              left: 1px;
-              outline: 1px solid #666666;
+              left: 0px;
+              outline: 1px solid #ffffff;
               position: absolute;
-              right: 1px;
-              top: 1px;
+              right: 0px;
+              top: 0px;
               z-index: 1;
             }
             & > button {
               max-width: 100%;
             }
-            & data-is-focusable='true' {
+            & [data-is-focusable='true'] {
               outline: transparent;
               position: relative;
             }
-            & data-is-focusable='true'::-moz-focus-inner {
+            & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
             &.$shimmer {
@@ -4447,7 +4405,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -4479,23 +4437,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             .ms-Fabric--isFocusVisible &:focus:after {
               border: 1px solid #666666;
-              bottom: 1px;
+              bottom: 0px;
               content: "";
-              left: 1px;
-              outline: 1px solid #666666;
+              left: 0px;
+              outline: 1px solid #ffffff;
               position: absolute;
-              right: 1px;
-              top: 1px;
+              right: 0px;
+              top: 0px;
               z-index: 1;
             }
             & > button {
               max-width: 100%;
             }
-            & data-is-focusable='true' {
+            & [data-is-focusable='true'] {
               outline: transparent;
               position: relative;
             }
-            & data-is-focusable='true'::-moz-focus-inner {
+            & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
             &.$shimmer {
@@ -4518,7 +4476,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -4588,23 +4546,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             .ms-Fabric--isFocusVisible &:focus:after {
               border: 1px solid #666666;
-              bottom: 1px;
+              bottom: 0px;
               content: "";
-              left: 1px;
-              outline: 1px solid #666666;
+              left: 0px;
+              outline: 1px solid #ffffff;
               position: absolute;
-              right: 1px;
-              top: 1px;
+              right: 0px;
+              top: 0px;
               z-index: 1;
             }
             & > button {
               max-width: 100%;
             }
-            & data-is-focusable='true' {
+            & [data-is-focusable='true'] {
               outline: transparent;
               position: relative;
             }
-            & data-is-focusable='true'::-moz-focus-inner {
+            & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
             &.$shimmer {
@@ -4627,7 +4585,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -4803,7 +4761,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           bottom: 1px;
           content: "";
           left: 1px;
-          outline: 1px solid #666666;
+          outline: 1px solid #ffffff;
           position: absolute;
           right: 1px;
           top: 1px;
@@ -4863,23 +4821,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           }
           .ms-Fabric--isFocusVisible &:focus:after {
             border: 1px solid #666666;
-            bottom: 1px;
+            bottom: 0px;
             content: "";
-            left: 1px;
-            outline: 1px solid #666666;
+            left: 0px;
+            outline: 1px solid #ffffff;
             position: absolute;
-            right: 1px;
-            top: 1px;
+            right: 0px;
+            top: 0px;
             z-index: 1;
           }
           & > button {
             max-width: 100%;
           }
-          & data-is-focusable='true' {
+          & [data-is-focusable='true'] {
             outline: transparent;
             position: relative;
           }
-          & data-is-focusable='true'::-moz-focus-inner {
+          & [data-is-focusable='true']::-moz-focus-inner {
             border: 0;
           }
           &.$shimmer {
@@ -4944,12 +4902,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               z-index: 1;
             }
             &:hover {
-              opacity: 1;
-            }
-            &.isHeader {
-              height: 32px;
-            }
-            .ms-Fabric--isFocusVisible & {
               opacity: 1;
             }
 
@@ -5087,23 +5039,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             .ms-Fabric--isFocusVisible &:focus:after {
               border: 1px solid #666666;
-              bottom: 1px;
+              bottom: 0px;
               content: "";
-              left: 1px;
-              outline: 1px solid #666666;
+              left: 0px;
+              outline: 1px solid #ffffff;
               position: absolute;
-              right: 1px;
-              top: 1px;
+              right: 0px;
+              top: 0px;
               z-index: 1;
             }
             & > button {
               max-width: 100%;
             }
-            & data-is-focusable='true' {
+            & [data-is-focusable='true'] {
               outline: transparent;
               position: relative;
             }
-            & data-is-focusable='true'::-moz-focus-inner {
+            & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
             &.$shimmer {
@@ -5126,7 +5078,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -5158,23 +5110,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             .ms-Fabric--isFocusVisible &:focus:after {
               border: 1px solid #666666;
-              bottom: 1px;
+              bottom: 0px;
               content: "";
-              left: 1px;
-              outline: 1px solid #666666;
+              left: 0px;
+              outline: 1px solid #ffffff;
               position: absolute;
-              right: 1px;
-              top: 1px;
+              right: 0px;
+              top: 0px;
               z-index: 1;
             }
             & > button {
               max-width: 100%;
             }
-            & data-is-focusable='true' {
+            & [data-is-focusable='true'] {
               outline: transparent;
               position: relative;
             }
-            & data-is-focusable='true'::-moz-focus-inner {
+            & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
             &.$shimmer {
@@ -5197,7 +5149,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -5267,23 +5219,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             .ms-Fabric--isFocusVisible &:focus:after {
               border: 1px solid #666666;
-              bottom: 1px;
+              bottom: 0px;
               content: "";
-              left: 1px;
-              outline: 1px solid #666666;
+              left: 0px;
+              outline: 1px solid #ffffff;
               position: absolute;
-              right: 1px;
-              top: 1px;
+              right: 0px;
+              top: 0px;
               z-index: 1;
             }
             & > button {
               max-width: 100%;
             }
-            & data-is-focusable='true' {
+            & [data-is-focusable='true'] {
               outline: transparent;
               position: relative;
             }
-            & data-is-focusable='true'::-moz-focus-inner {
+            & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
             &.$shimmer {
@@ -5306,7 +5258,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -5482,7 +5434,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           bottom: 1px;
           content: "";
           left: 1px;
-          outline: 1px solid #666666;
+          outline: 1px solid #ffffff;
           position: absolute;
           right: 1px;
           top: 1px;
@@ -5542,23 +5494,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           }
           .ms-Fabric--isFocusVisible &:focus:after {
             border: 1px solid #666666;
-            bottom: 1px;
+            bottom: 0px;
             content: "";
-            left: 1px;
-            outline: 1px solid #666666;
+            left: 0px;
+            outline: 1px solid #ffffff;
             position: absolute;
-            right: 1px;
-            top: 1px;
+            right: 0px;
+            top: 0px;
             z-index: 1;
           }
           & > button {
             max-width: 100%;
           }
-          & data-is-focusable='true' {
+          & [data-is-focusable='true'] {
             outline: transparent;
             position: relative;
           }
-          & data-is-focusable='true'::-moz-focus-inner {
+          & [data-is-focusable='true']::-moz-focus-inner {
             border: 0;
           }
           &.$shimmer {
@@ -5623,12 +5575,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               z-index: 1;
             }
             &:hover {
-              opacity: 1;
-            }
-            &.isHeader {
-              height: 32px;
-            }
-            .ms-Fabric--isFocusVisible & {
               opacity: 1;
             }
 
@@ -5766,23 +5712,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             .ms-Fabric--isFocusVisible &:focus:after {
               border: 1px solid #666666;
-              bottom: 1px;
+              bottom: 0px;
               content: "";
-              left: 1px;
-              outline: 1px solid #666666;
+              left: 0px;
+              outline: 1px solid #ffffff;
               position: absolute;
-              right: 1px;
-              top: 1px;
+              right: 0px;
+              top: 0px;
               z-index: 1;
             }
             & > button {
               max-width: 100%;
             }
-            & data-is-focusable='true' {
+            & [data-is-focusable='true'] {
               outline: transparent;
               position: relative;
             }
-            & data-is-focusable='true'::-moz-focus-inner {
+            & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
             &.$shimmer {
@@ -5805,7 +5751,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -5837,23 +5783,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             .ms-Fabric--isFocusVisible &:focus:after {
               border: 1px solid #666666;
-              bottom: 1px;
+              bottom: 0px;
               content: "";
-              left: 1px;
-              outline: 1px solid #666666;
+              left: 0px;
+              outline: 1px solid #ffffff;
               position: absolute;
-              right: 1px;
-              top: 1px;
+              right: 0px;
+              top: 0px;
               z-index: 1;
             }
             & > button {
               max-width: 100%;
             }
-            & data-is-focusable='true' {
+            & [data-is-focusable='true'] {
               outline: transparent;
               position: relative;
             }
-            & data-is-focusable='true'::-moz-focus-inner {
+            & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
             &.$shimmer {
@@ -5876,7 +5822,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -5946,23 +5892,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             .ms-Fabric--isFocusVisible &:focus:after {
               border: 1px solid #666666;
-              bottom: 1px;
+              bottom: 0px;
               content: "";
-              left: 1px;
-              outline: 1px solid #666666;
+              left: 0px;
+              outline: 1px solid #ffffff;
               position: absolute;
-              right: 1px;
-              top: 1px;
+              right: 0px;
+              top: 0px;
               z-index: 1;
             }
             & > button {
               max-width: 100%;
             }
-            & data-is-focusable='true' {
+            & [data-is-focusable='true'] {
               outline: transparent;
               position: relative;
             }
-            & data-is-focusable='true'::-moz-focus-inner {
+            & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
             &.$shimmer {
@@ -5985,7 +5931,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -6161,7 +6107,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           bottom: 1px;
           content: "";
           left: 1px;
-          outline: 1px solid #666666;
+          outline: 1px solid #ffffff;
           position: absolute;
           right: 1px;
           top: 1px;
@@ -6221,23 +6167,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           }
           .ms-Fabric--isFocusVisible &:focus:after {
             border: 1px solid #666666;
-            bottom: 1px;
+            bottom: 0px;
             content: "";
-            left: 1px;
-            outline: 1px solid #666666;
+            left: 0px;
+            outline: 1px solid #ffffff;
             position: absolute;
-            right: 1px;
-            top: 1px;
+            right: 0px;
+            top: 0px;
             z-index: 1;
           }
           & > button {
             max-width: 100%;
           }
-          & data-is-focusable='true' {
+          & [data-is-focusable='true'] {
             outline: transparent;
             position: relative;
           }
-          & data-is-focusable='true'::-moz-focus-inner {
+          & [data-is-focusable='true']::-moz-focus-inner {
             border: 0;
           }
           &.$shimmer {
@@ -6302,12 +6248,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               z-index: 1;
             }
             &:hover {
-              opacity: 1;
-            }
-            &.isHeader {
-              height: 32px;
-            }
-            .ms-Fabric--isFocusVisible & {
               opacity: 1;
             }
 
@@ -6445,23 +6385,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             .ms-Fabric--isFocusVisible &:focus:after {
               border: 1px solid #666666;
-              bottom: 1px;
+              bottom: 0px;
               content: "";
-              left: 1px;
-              outline: 1px solid #666666;
+              left: 0px;
+              outline: 1px solid #ffffff;
               position: absolute;
-              right: 1px;
-              top: 1px;
+              right: 0px;
+              top: 0px;
               z-index: 1;
             }
             & > button {
               max-width: 100%;
             }
-            & data-is-focusable='true' {
+            & [data-is-focusable='true'] {
               outline: transparent;
               position: relative;
             }
-            & data-is-focusable='true'::-moz-focus-inner {
+            & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
             &.$shimmer {
@@ -6484,7 +6424,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -6516,23 +6456,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             .ms-Fabric--isFocusVisible &:focus:after {
               border: 1px solid #666666;
-              bottom: 1px;
+              bottom: 0px;
               content: "";
-              left: 1px;
-              outline: 1px solid #666666;
+              left: 0px;
+              outline: 1px solid #ffffff;
               position: absolute;
-              right: 1px;
-              top: 1px;
+              right: 0px;
+              top: 0px;
               z-index: 1;
             }
             & > button {
               max-width: 100%;
             }
-            & data-is-focusable='true' {
+            & [data-is-focusable='true'] {
               outline: transparent;
               position: relative;
             }
-            & data-is-focusable='true'::-moz-focus-inner {
+            & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
             &.$shimmer {
@@ -6555,7 +6495,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -6625,23 +6565,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             .ms-Fabric--isFocusVisible &:focus:after {
               border: 1px solid #666666;
-              bottom: 1px;
+              bottom: 0px;
               content: "";
-              left: 1px;
-              outline: 1px solid #666666;
+              left: 0px;
+              outline: 1px solid #ffffff;
               position: absolute;
-              right: 1px;
-              top: 1px;
+              right: 0px;
+              top: 0px;
               z-index: 1;
             }
             & > button {
               max-width: 100%;
             }
-            & data-is-focusable='true' {
+            & [data-is-focusable='true'] {
               outline: transparent;
               position: relative;
             }
-            & data-is-focusable='true'::-moz-focus-inner {
+            & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
             &.$shimmer {
@@ -6664,7 +6604,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >

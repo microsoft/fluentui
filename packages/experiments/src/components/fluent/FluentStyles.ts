@@ -5,39 +5,9 @@ import {
   IChoiceGroupOptionStyles
 } from 'office-ui-fabric-react/lib/components/ChoiceGroup/ChoiceGroupOption';
 import { FontSizes } from './FluentType';
+import { Depths } from './FluentDepths';
 
-/** Definitions for Depth, or shadow, levels. */
-const FluentDepthLevels = {
-  /**
-   * Level 0 of Fluent Depth system.
-   * Recommended uses: Surfaces.
-   * */
-  Level0: '0 0 0 0 transparent',
-
-  /**
-   * Level 1 of Fluent Depth system.
-   * Recommended uses: Buttons, Cards, Grid items, List items.
-   * */
-  Level1: '0 2px 4px -0.75px rgba(0, 0, 0, 0.1)',
-
-  /**
-   * Level 2 of Fluent Depth system.
-   * Recommended uses: Command Bar, Contextual Menus.
-   * */
-  Level2: '0 4px 8px -1px rgba(0, 0, 0, 0.1)',
-
-  /**
-   * Level 3 of Fluent Depth system.
-   * Recommended uses: Teaching Callouts, Search Results, Dropdowns, Hover cards, Tooltips.
-   * */
-  Level3: '0 8px 10px -2px rgba(0, 0, 0, 0.1)',
-
-  /**
-   * Level 4 of Fluent Depth system.
-   * Recommended uses: Panels, Dialogs.
-   * */
-  Level4: '0 16px 18px -4px rgba(0, 0, 0, 0.1)'
-};
+const fluentBorderRadius = '2px';
 
 const BreadcrumbStyles = {
   itemLink: {
@@ -54,21 +24,21 @@ const BreadcrumbStyles = {
 
 const PrimaryButtonStyles = {
   root: {
-    borderRadius: '2px'
-    // boxShadow: FluentDepthLevels.Level1
+    borderRadius: fluentBorderRadius
+    // boxShadow: Depths.depth4
   }
 };
 
 const CompoundButtonStyles = {
   root: {
-    borderRadius: '2px'
-    // boxShadow: FluentDepthLevels.Level1
+    borderRadius: fluentBorderRadius
+    // boxShadow: Depths.depth4
   }
 };
 
 const DefaultButtonStyles = {
   root: {
-    borderRadius: '2px',
+    borderRadius: fluentBorderRadius,
     backgroundColor: '#fff',
     border: `1px solid ${NeutralColors.gray20}`
   },
@@ -79,7 +49,7 @@ const DefaultButtonStyles = {
 
 const CheckboxStyles = {
   checkbox: {
-    borderRadius: '2px'
+    borderRadius: fluentBorderRadius
   }
 };
 
@@ -120,15 +90,44 @@ const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGr
   };
 };
 
+const ComboBoxStyles = {
+  root: {
+    borderRadius: fluentBorderRadius // the bound input box
+  },
+  callout: {
+    borderRadius: `0 0 ${fluentBorderRadius} ${fluentBorderRadius}`,
+    overflow: 'hidden'
+  }
+};
+
 const DialogStyles = {
   main: {
-    boxShadow: FluentDepthLevels.Level4
+    selectors: {
+      '.ms-Modal.ms-Dialog &': {
+        boxShadow: Depths.depth64,
+        borderRadius: fluentBorderRadius
+      }
+    }
   }
 };
 
 const DialogContentStyles = {
   title: {
-    fontWeight: FontWeights.semibold
+    fontSize: FontSizes.size20,
+    fontWeight: FontWeights.semibold,
+    padding: '16px'
+  },
+  topButton: {
+    padding: '16px 10px 0 0'
+  },
+  inner: {
+    padding: '0 16px 16px'
+  }
+};
+
+const DialogFooterStyles = {
+  actions: {
+    margin: '16px 0 0'
   }
 };
 
@@ -172,11 +171,17 @@ export const FluentStyles = {
   ChoiceGroupOption: {
     styles: ChoiceGroupOptionStyles
   },
+  ComboBox: {
+    styles: ComboBoxStyles
+  },
   Dialog: {
     styles: DialogStyles
   },
   DialogContent: {
     styles: DialogContentStyles
+  },
+  DialogFooter: {
+    styles: DialogFooterStyles
   },
   Label: {
     styles: LabelStyles

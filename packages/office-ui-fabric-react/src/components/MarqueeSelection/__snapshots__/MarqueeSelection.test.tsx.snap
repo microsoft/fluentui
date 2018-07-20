@@ -285,30 +285,24 @@ exports[`MarqueeSelection renders MarqueeSelection correctly 1`] = `
             "light": 100,
           },
         },
+<div
+  class=
+
+      {
+        cursor: default;
+        position: relative;
       }
-    }
-  >
-    <MarqueeSelectionBase
-      isEnabled={true}
-      rootProps={Object {}}
-      rootTagName="div"
-      selection={
-        Selection {
-          "_anchoredIndex": 0,
-          "_canSelectItem": [Function],
-          "_changeEventSuppressionCount": 0,
-          "_exemptedCount": 0,
-          "_exemptedIndices": Object {},
-          "_getKey": [Function],
-          "_isModal": false,
-          "_items": Array [],
-          "_keyToIndexMap": Object {},
-          "_onSelectionChanged": undefined,
-          "_selectedIndices": Array [],
-          "_selectedItems": null,
-          "_unselectableCount": 0,
-          "_unselectableIndices": Object {},
-          "mode": 2,
+>
+  <div
+    class=
+
+        {
+          background: rgba(255, 0, 0, 0);
+          bottom: 0px;
+          left: 0px;
+          position: absolute;
+          right: 0px;
+          top: 0px;
         }
       }
       styles={[Function]}
@@ -551,76 +545,44 @@ exports[`MarqueeSelection renders MarqueeSelection correctly 1`] = `
               "light": 100,
             },
           },
+        @media screen and (-ms-high-contrast: active){& {
+          background-color: transparent;
+          background: none;
         }
-      }
-    >
-      <div
-        className=
+  />
+  <div
+    class=
 
-            {
-              cursor: default;
-              position: relative;
-            }
-      >
-        <div
-          className=
+        {
+          border: 1px solid #0078d4;
+          box-sizing: border-box;
+          pointer-events: none;
+          position: absolute;
+          z-index: 10;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          border-color: Highlight;
+        }
+    style="left: 0px; top: 0px; width: 100px; height: 100px;"
+  >
+    <div
+      class=
 
-              {
-                background: rgba(255, 0, 0, 0);
-                bottom: 0px;
-                left: 0px;
-                position: absolute;
-                right: 0px;
-                top: 0px;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                background-color: transparent;
-                background: none;
-              }
-        />
-        <div
-          className=
-
-              {
-                border: 1px solid #0078d4;
-                box-sizing: border-box;
-                pointer-events: none;
-                position: absolute;
-                z-index: 10;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                border-color: Highlight;
-              }
-          style={
-            Object {
-              "height": 100,
-              "left": 0,
-              "top": 0,
-              "width": 100,
-            }
+          {
+            background-color: #0078d4;
+            bottom: 0px;
+            box-sizing: border-box;
+            left: 0px;
+            opacity: 0.1;
+            position: absolute;
+            right: 0px;
+            top: 0px;
           }
-        >
-          <div
-            className=
-
-                {
-                  background-color: #0078d4;
-                  bottom: 0px;
-                  box-sizing: border-box;
-                  left: 0px;
-                  opacity: 0.1;
-                  position: absolute;
-                  right: 0px;
-                  top: 0px;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  background-color: transparent;
-                  background: none;
-                }
-          />
-        </div>
-      </div>
-    </MarqueeSelectionBase>
-  </CustomizedMarqueeSelection>
-</StyledCustomizedMarqueeSelection>
+          @media screen and (-ms-high-contrast: active){& {
+            background-color: transparent;
+            background: none;
+          }
+    />
+  </div>
+</div>
 `;

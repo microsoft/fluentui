@@ -1,4 +1,4 @@
-import { IStyle } from './IStyle';
+import { IStyle, IStyleBaseArray } from './IStyle';
 import { styleToClassName } from './styleToClassName';
 import { extractStyleParts } from './extractStyleParts';
 
@@ -7,7 +7,7 @@ import { extractStyleParts } from './extractStyleParts';
  *
  * @public
  */
-export function mergeStyles(...args: (IStyle | IStyle[] | false | null | undefined)[]): string {
+export function mergeStyles(...args: (IStyle | IStyleBaseArray | false | null | undefined)[]): string {
   const { classes, objects } = extractStyleParts(args);
 
   if (objects.length) {

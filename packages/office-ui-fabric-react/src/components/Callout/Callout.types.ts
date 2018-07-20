@@ -1,6 +1,6 @@
 import { IStyle, ITheme } from '../../Styling';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { IPoint, IRectangle, IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IPoint, IRectangle, IStyleFunctionOrObject } from '../../Utilities';
 import { ICalloutPositionedInfo } from '../../utilities/positioning';
 
 export interface ICallout {}
@@ -10,7 +10,7 @@ export interface ICalloutProps {
    * Optional callback to access the ICallout interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ICallout | null) => void;
+  componentRef?: IRefObject<ICallout>;
 
   /**
    * The target that the Callout should try to position itself based on.
@@ -122,6 +122,11 @@ export interface ICalloutProps {
    * @default null
    */
   className?: string;
+
+  /**
+   * CSS style to apply to the callout.
+   */
+  style?: React.CSSProperties;
 
   /**
    * Optional callback when the layer content has mounted.

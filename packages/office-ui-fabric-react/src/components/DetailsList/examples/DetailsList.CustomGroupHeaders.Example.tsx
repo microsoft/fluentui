@@ -48,6 +48,7 @@ export class DetailsListCustomGroupHeadersExample extends React.Component {
               </div>
             )
           }}
+          useReducedRowRenderer={true}
         />
       </div>
     );

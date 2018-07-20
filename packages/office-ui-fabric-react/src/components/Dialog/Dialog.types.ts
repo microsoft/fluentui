@@ -6,7 +6,7 @@ import { IButtonProps } from '../Button/Button.types';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
 export interface IDialog {}
 
@@ -15,7 +15,7 @@ export interface IDialogProps extends React.Props<DialogBase>, IWithResponsiveMo
    * Optional callback to access the IDialog interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IDialog | null) => void;
+  componentRef?: IRefObject<IDialog>;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules

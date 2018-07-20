@@ -2,7 +2,7 @@ import * as React from 'react';
 import { LinkBase } from './Link.base';
 
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
 
 export interface ILink {
@@ -44,7 +44,7 @@ export interface ILinkProps
    * Optional callback to access the ILink interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ILink | null) => void;
+  componentRef?: IRefObject<ILink>;
 
   /**
    * Whether the link is disabled

@@ -1,7 +1,7 @@
 import { IContextualMenuItem } from './ContextualMenu.types';
 import { IMenuItemClassNames } from './ContextualMenu.classNames';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IRefObject, IStyleFunction } from '../../Utilities';
 
 export interface IContextualMenuRenderItem {
   /**
@@ -25,7 +25,7 @@ export interface IContextualMenuItemProps extends React.HTMLAttributes<IContextu
    * Optional callback to access the IContextualMenuRenderItem interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IContextualMenuRenderItem | null) => void;
+  componentRef?: IRefObject<IContextualMenuRenderItem>;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.

@@ -629,7 +629,11 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
      */
     if (this._host.current) {
       if ((this._host.current as any).setActive) {
-        (this._host.current as any).setActive();
+        try {
+          (this._host.current as any).setActive();
+        } catch (e) {
+          /* no-op */
+        }
       } else {
         this._host.current.focus();
       }

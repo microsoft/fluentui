@@ -1,6 +1,34 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Mon, 02 Jul 2018 20:41:48 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Jul 2018 10:23:34 GMT and should not be manually modified.
+
+## 6.10.0
+Thu, 19 Jul 2018 10:23:34 GMT
+
+### Minor changes
+
+- Add unregister icons API
+
+## 6.9.0
+Wed, 18 Jul 2018 10:25:50 GMT
+
+### Minor changes
+
+- Move certain types into `@uifabric/merge-styles` and export more types as well from that package.
+
+## 6.8.0
+Fri, 13 Jul 2018 21:32:37 GMT
+
+### Minor changes
+
+- Reverting the TypeScript bump, to un
+
+## 6.6.0
+Tue, 10 Jul 2018 21:54:07 GMT
+
+### Minor changes
+
+- Add option to getFocusStyle() to not use :focus in the style selector.
 
 ## 6.5.0
 Mon, 02 Jul 2018 20:41:48 GMT

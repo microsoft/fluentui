@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Async, BaseComponent, classNamesFunction, customizable, findIndex, KeyCodes, getId } from '../../Utilities';
+import { Async, BaseComponent, classNamesFunction, findIndex, KeyCodes, getId } from '../../Utilities';
 import {
   ISwatchColorPicker,
   ISwatchColorPickerProps,
@@ -16,7 +16,6 @@ export interface ISwatchColorPickerState {
 
 const getClassNames = classNamesFunction<ISwatchColorPickerStyleProps, ISwatchColorPickerStyles>();
 
-@customizable('SwatchColorPicker', ['theme', 'styles'])
 export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps, ISwatchColorPickerState>
   implements ISwatchColorPicker {
   public static defaultProps = {
@@ -242,7 +241,11 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
          * sets the page focus but does not scroll the parent element.
          */
         if ((elements[index] as any).setActive) {
-          (elements[index] as any).setActive();
+          try {
+            (elements[index] as any).setActive();
+          } catch (e) {
+            /* no-op */
+          }
         } else {
           (elements[index] as HTMLElement).focus();
         }

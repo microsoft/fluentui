@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ScrollablePaneBase } from './ScrollablePane.base';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
 export interface IScrollablePane {
   /** Triggers a layout update for the pane. */
@@ -16,7 +16,7 @@ export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement |
    * Optional callback to access the IScrollablePane interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IScrollablePane | null) => void;
+  componentRef?: IRefObject<IScrollablePane>;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules

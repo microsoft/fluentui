@@ -5,21 +5,13 @@ import * as ReactDOM from 'react-dom';
 
 import { Fabric } from '../../Fabric';
 import { ILayerProps, ILayerStyleProps, ILayerStyles } from './Layer.types';
-import {
-  BaseComponent,
-  classNamesFunction,
-  customizable,
-  getDocument,
-  setVirtualParent,
-  createRef
-} from '../../Utilities';
+import { BaseComponent, classNamesFunction, getDocument, setVirtualParent, createRef } from '../../Utilities';
 
 const _layersByHostId: { [hostId: string]: LayerBase[] } = {};
 let _defaultHostSelector: string | undefined;
 
 const getClassNames = classNamesFunction<ILayerStyleProps, ILayerStyles>();
 
-@customizable('Layer', ['theme', 'hostId'])
 export class LayerBase extends BaseComponent<ILayerProps, {}> {
   public static defaultProps: ILayerProps = {
     onLayerDidMount: () => undefined,
