@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "Adding ProgressBarChart to charting package",
+      "packageName": "@uifabric/charting",
+      "type": "none"
+    }
+  ],
+  "packageName": "@uifabric/charting",
+  "email": "gorigarajesh@gmail.com"
+}
