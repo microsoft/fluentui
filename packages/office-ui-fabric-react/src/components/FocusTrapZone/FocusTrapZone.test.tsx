@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { KeyCodes, createRef } from '../../Utilities';
-import { FocusZone, FocusZoneDirection } from '../FocusZone';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { FocusTrapZone } from './FocusTrapZone';
 
 // rAF does not exist in node - let's mock it

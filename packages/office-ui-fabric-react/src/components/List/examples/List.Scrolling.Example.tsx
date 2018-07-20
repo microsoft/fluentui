@@ -6,7 +6,7 @@ import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { List, ScrollToMode } from 'office-ui-fabric-react/lib/List';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import './List.Scrolling.Example.scss';
-import { Checkbox } from '../../..';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 
 export interface IListScrollingExampleProps {
   items: any[];

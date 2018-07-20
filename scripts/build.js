@@ -27,6 +27,7 @@ const buildStartTime = new Date().getTime();
 const TASKS_WITH_PREREQUISITES = [
   ['copy', null],
   ['sass', 'copy'],
+  ['lint-imports', null],
   ['ts', 'sass'],
   ['tslint', 'sass'],
   ['jest', 'sass'],
