@@ -3,7 +3,7 @@
     {
       "packageName": "@uifabric/charting",
       "comment": "Addressing bad imports.",
-      "type": "patch"
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/charting",
