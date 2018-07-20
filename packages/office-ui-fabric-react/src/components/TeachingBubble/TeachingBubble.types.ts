@@ -2,7 +2,7 @@ import { IImageProps } from '../../Image';
 import { IButtonProps } from '../../Button';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 import { ICalloutProps } from '../../Callout';
-import { RefObject } from '@uifabric/utilities';
+import { RefObject } from '../../Utilities';
 
 export interface ITeachingBubble {
   rootElement: RefObject<HTMLDivElement>;
