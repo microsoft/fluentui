@@ -123,6 +123,7 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
   let toReturn: ISemanticColors = {
     bodyBackground: p.white,
     bodyFrameBackground: p.white,
+    bodyFrameDivider: p.neutralLight,
     bodyText: p.neutralPrimary,
     bodyTextChecked: p.black,
     bodySubtext: p.neutralSecondary,
