@@ -50,8 +50,6 @@ export interface ITextProps {
    */
   color?: keyof IPalette | keyof ISemanticColors;
 
-  paletteSet?: string;
-
   /**
    * Whether the text is displayed as a block element or an inline element.
    */
@@ -61,9 +59,6 @@ export interface ITextProps {
    * Whether the text is wrapped.
    */
   wrap?: boolean;
-
-  grow?: boolean;
-  shrink?: boolean;
 }
 
 export type ITextViewProps = IViewProps<ITextProps, ITextStyles>;
@@ -74,22 +69,21 @@ const TextView = (props: ITextViewProps) => {
     className,
     color,
     family,
-    grow,
     renderAs: RootType = 'span',
-    shrink,
     size,
     type,
     weight,
     wrap,
     fontStyle,
+    styles: textStyles,
     ...rest
   } = props;
 
-  return <RootType {...rest} className={props.styles.root} />;
+  return <RootType {...rest} className={textStyles.root} />;
 };
 
 const styles = (props: IStyledProps<ITextProps>): ITextStyles => {
-  const { block, theme, wrap, grow, shrink, type, family, weight, size, fontStyle, color } = props;
+  const { block, theme, wrap, type, family, weight, size, fontStyle, color } = props;
 
   const { palette, fonts, semanticColors, typography } = theme;
 
@@ -152,12 +146,6 @@ const styles = (props: IStyledProps<ITextProps>): ITextStyles => {
         overflow: 'hidden',
         textOverflow: 'ellipsis',
         display: 'block' // when wrap is false, set display to block so that overflow shows ellipsis
-      },
-      grow && {
-        flexGrow: 1
-      },
-      shrink && {
-        flexShrink: 0
       },
       props.className
     ]

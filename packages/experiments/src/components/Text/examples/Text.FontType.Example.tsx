@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Text } from '../Text';
+import { Stack } from '../../Stack';
 import { IFontStyles } from '../../../Styling';
 import { ChoiceGroup, IChoiceGroupOption, TooltipHost, DirectionalHint } from 'office-ui-fabric-react';
-import './Text.Attributes.Example.scss';
 
 export interface ITextFontTypeExampleState {
   type?: string;
@@ -20,7 +20,7 @@ export class TextFontTypeExample extends React.Component<{}, ITextFontTypeExampl
     const { type } = this.state;
     const content = `<Text type=${type}>Change This Text's Font Type!</Text>`;
     return (
-      <div>
+      <Stack vertical gap={10}>
         <div>
           <ChoiceGroup
             selectedKey={type}
@@ -57,7 +57,7 @@ export class TextFontTypeExample extends React.Component<{}, ITextFontTypeExampl
             onChange={this._onChangeStyle}
           />
         </div>
-        <div className="ms-text">
+        <div>
           <TooltipHost
             content={content}
             id="myID"
@@ -67,7 +67,7 @@ export class TextFontTypeExample extends React.Component<{}, ITextFontTypeExampl
             <Text type={type}>Change This Text's Font Type!</Text>
           </TooltipHost>
         </div>
-      </div>
+      </Stack>
     );
   }
 

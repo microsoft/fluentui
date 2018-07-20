@@ -112,7 +112,7 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
 
   const { types } = typography;
   for (const typeName in types) {
-    if (typeName) {
+    if (types.hasOwnProperty(typeName)) {
       const type = types[typeName];
 
       if (type.fontFamily && typography.families[type.fontFamily]) {
