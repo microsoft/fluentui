@@ -20,8 +20,9 @@ export const DefaultFontFamilies: IFontFamilies = {
 };
 
 export const DefaultFontWeights: IFontWeights = {
-  default: FontWeights.regular,
+  regular: FontWeights.regular,
   light: FontWeights.light,
+  semibold: FontWeights.semibold,
   bold: FontWeights.bold
 };
 
