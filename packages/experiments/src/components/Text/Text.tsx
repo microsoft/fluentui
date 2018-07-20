@@ -95,11 +95,13 @@ const styles = (props: IStyledProps<ITextProps>): ITextStyles => {
   if (fontStyle && fonts[fontStyle]) {
     // if a general style is specified, use that for the theme
     themeType = fonts[fontStyle];
-  } else if (type && typography.types[type]) {
-    // if a general type is specified, use that for the theme
-    themeType = typography.types[type];
   } else {
-    // otherwise look for individual properties
+    if (type && typography.types[type]) {
+      // if a general type is specified, use it to initialize the theme
+      themeType = typography.types[type];
+    }
+
+    // next, look for individual properties and use them if they are present
     const fontFamily =
       family && typography.families[family] // if family prop is passed in and exists in typography.families, we'll use it
         ? typography.families[family]
@@ -109,11 +111,23 @@ const styles = (props: IStyledProps<ITextProps>): ITextStyles => {
 
     const fontSize = size && typography.sizes[size] ? typography.sizes[size] : typography.sizes.medium;
 
-    themeType = {
-      fontFamily: fontFamily,
-      fontWeight: fontWeight,
-      fontSize: fontSize
-    };
+    if (themeType) {
+      if (fontFamily) {
+        themeType.fontFamily = fontFamily;
+      }
+      if (fontWeight) {
+        themeType.fontWeight = fontWeight;
+      }
+      if (fontSize) {
+        themeType.fontSize = fontSize;
+      }
+    } else {
+      themeType = {
+        fontFamily: fontFamily,
+        fontWeight: fontWeight,
+        fontSize: fontSize
+      };
+    }
   }
 
   // use fonts to set these properties
