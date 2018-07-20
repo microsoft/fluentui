@@ -113,36 +113,24 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
             target={ this._targetButton.current }
             positioningContainerProps={ {
               directionalHint: this.state.coachmarkPosition
-<<<<<<< HEAD
             } }
+            ariaAlertText='A Coachmark has appeared'
+            teachingBubbleRef={ this._teachingBubbleContent }
+            ariaDescribedBy={ 'coachmark-desc1' }
+            ariaLabelledBy={ 'coachmark-label1' }
+            ariaDescribedByText={ 'Press enter or alt + C to open the Coachmark notification' }
+            ariaLabelledByText={ 'Coachmark notification' }
           >
             <TeachingBubbleContent
-              headline='Example Title'
+              componentRef={ this._teachingBubbleRef }
+              headline="Example Title"
               hasCloseIcon={ true }
-              closeButtonAriaLabel='Close'
+              closeButtonAriaLabel="Close"
               primaryButtonProps={ buttonProps }
               secondaryButtonProps={ buttonProps2 }
               onDismiss={ this._onDismiss }
-=======
-            }}
-            ariaAlertText="A Coachmark has appeared"
-            teachingBubbleRef={this._teachingBubbleContent}
-            ariaDescribedBy={'coachmark-desc1'}
-            ariaLabelledBy={'coachmark-label1'}
-            ariaDescribedByText={'Press enter or alt + C to open the Coachmark notification'}
-            ariaLabelledByText={'Coachmark notification'}
-          >
-            <TeachingBubbleContent
-              componentRef={this._teachingBubbleRef}
-              headline="Example Title"
-              hasCloseIcon={true}
-              closeButtonAriaLabel="Close"
-              primaryButtonProps={buttonProps}
-              secondaryButtonProps={buttonProps2}
-              onDismiss={this._onDismiss}
-              ariaDescribedBy={'example-description1'}
-              ariaLabelledBy={'example-label1'}
->>>>>>> 7a36bb911... Coachmark accessibility (#5155)
+              ariaDescribedBy={ 'example-description1' }
+              ariaLabelledBy={ 'example-label1' }
             >
               Welcome to the land of Coachmarks!
             </TeachingBubbleContent>
@@ -168,14 +156,9 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
     this.setState({
       isCoachmarkVisible: !this.state.isCoachmarkVisible
     });
-<<<<<<< HEAD
   }
-}
-=======
-  };
 
   private _teachingBubbleRef = (component: ITeachingBubble): void => {
     this._teachingBubbleContent = component;
-  };
+  }
 }
->>>>>>> 7a36bb911... Coachmark accessibility (#5155)
