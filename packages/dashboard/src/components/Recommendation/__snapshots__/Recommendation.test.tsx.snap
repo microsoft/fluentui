@@ -28,7 +28,7 @@ exports[`RecommendationCard renders basic example correctly 1`] = `
             border-bottom: 1px solid;
             border-top-left-radius: 2px;
             border-top-right-radius: 2px;
-            cursor: move;
+            cursor: ;
             height: 40px;
             overflow: hidden;
             transition: background-color .2s,color .2s,margin .2s,padding .2s,border-color .2s;
@@ -504,7 +504,7 @@ exports[`RecommendationCard renders dlp example correctly 1`] = `
             border-bottom: 1px solid;
             border-top-left-radius: 2px;
             border-top-right-radius: 2px;
-            cursor: move;
+            cursor: ;
             height: 40px;
             overflow: hidden;
             transition: background-color .2s,color .2s,margin .2s,padding .2s,border-color .2s;
@@ -1267,7 +1267,7 @@ exports[`RecommendationCard renders imageillustration example correctly 1`] = `
             border-bottom: 1px solid;
             border-top-left-radius: 2px;
             border-top-right-radius: 2px;
-            cursor: move;
+            cursor: ;
             height: 40px;
             overflow: hidden;
             transition: background-color .2s,color .2s,margin .2s,padding .2s,border-color .2s;

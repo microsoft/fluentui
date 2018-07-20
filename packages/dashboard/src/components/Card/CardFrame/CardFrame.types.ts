@@ -62,6 +62,12 @@ export interface ICardFrameProps {
    * Hyperlink URL for title
    */
   href?: string;
+
+  /**
+   * Whether the card is draggable or not
+   * @default false
+   */
+  disableDrag?: boolean;
 }
 
 export interface ICardFrameStyles {
