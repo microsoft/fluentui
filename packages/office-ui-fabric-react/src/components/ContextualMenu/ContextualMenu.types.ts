@@ -446,7 +446,8 @@ export interface IContextualMenuItem {
   [propertyName: string]: any;
 
   /**
-   * Optional prop to make an item readonly which is disabled but visitable by keyboard, will apply aria-readonly and some styling. Not supported by all components
+   * This prop is no longer used. All contextual menu items are now focusable when disabled.
+   * @deprecated in 6.38.2 will be removed in 7.0.0
    */
   inactive?: boolean;
 
