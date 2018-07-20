@@ -6,7 +6,6 @@ import {
   Selection,
   IColumn,
   IDetailsList,
-  DetailsRow,
   IDetailsFooterProps
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
@@ -139,27 +138,16 @@ export class DetailsListCustomFooterExample extends React.Component<
   };
 
   private _onRenderDetailsFooter(
-    props: IDetailsFooterProps,
+    detailsFooterProps: IDetailsFooterProps,
     defaultRender: IRenderFunction<IDetailsFooterProps>
   ): JSX.Element {
-    const footerData = {
-      key: _items!.length,
-      name: 'Col 1: ',
-      value: 'Col 2: '
-    };
-
-    props!.footerRowProps!.item = footerData;
-    props!.footerRowProps!.onRenderItemColumn = _renderItemColumn;
-
-    return <DetailsRow {...props!.footerRowProps!} />;
+    return (
+      <b>
+        {defaultRender({
+          ...detailsFooterProps,
+          footerText: 'Details List Footer'
+        })}
+      </b>
+    );
   }
-}
-
-function _renderItemColumn(item: any, index: number, column: IColumn) {
-  return (
-    <div>
-      {item[column.name.toLocaleLowerCase()]}
-      <b>{column.name}</b>
-    </div>
-  );
 }
