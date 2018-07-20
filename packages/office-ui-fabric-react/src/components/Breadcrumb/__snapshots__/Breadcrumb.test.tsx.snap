@@ -10,6 +10,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
       }
 >
   <div
+    data-automation-id="visibleContent"
     style={
       Object {
         "position": "fixed",
@@ -363,6 +364,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
       }
 >
   <div
+    data-automation-id="visibleContent"
     style={
       Object {
         "position": "fixed",
@@ -735,6 +737,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 3 1`] = `
       }
 >
   <div
+    data-automation-id="visibleContent"
     style={
       Object {
         "position": "fixed",
@@ -1007,6 +1010,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
       }
 >
   <div
+    data-automation-id="visibleContent"
     style={
       Object {
         "position": "fixed",
@@ -1379,6 +1383,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
       }
 >
   <div
+    data-automation-id="visibleContent"
     style={
       Object {
         "position": "fixed",
@@ -1671,6 +1676,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
       }
 >
   <div
+    data-automation-id="visibleContent"
     style={
       Object {
         "position": "fixed",
@@ -1883,6 +1889,7 @@ exports[`Breadcrumb renders empty breadcrumb 1`] = `
       }
 >
   <div
+    data-automation-id="visibleContent"
     style={
       Object {
         "position": "fixed",

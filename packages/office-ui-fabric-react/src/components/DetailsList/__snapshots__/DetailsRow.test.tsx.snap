@@ -12,7 +12,22 @@ exports[`DetailsRow renders details list row correctly 1`] = `
 >
   <div
     aria-label={undefined}
-    className="ms-DetailsList is-horizontalConstrained undefined"
+    className=
+        ms-DetailsList
+        is-horizontalConstrained
+        {
+          -webkit-overflow-scrolling: touch;
+          background: #ffffff;
+          color: #333333;
+          font-size: 12px;
+          overflow-x: auto;
+          overflow-y: visible;
+          position: relative;
+        }
+        & .ms-List-cell {
+          min-height: 38px;
+          word-break: break-word;
+        }
     data-automationid="DetailsList"
     data-is-scrollable="false"
   >
@@ -687,7 +702,13 @@ exports[`DetailsRow renders details list row correctly 1`] = `
         <div
           aria-describedby={undefined}
           aria-labelledby={undefined}
-          className="ms-FocusZone"
+          className=
+              ms-FocusZone
+              {
+                display: inline-block;
+                min-height: 1px;
+                min-width: 100%;
+              }
           data-focuszone-id="FocusZone2"
           onBlur={[Function]}
           onFocus={[Function]}
@@ -793,7 +814,22 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
 >
   <div
     aria-label={undefined}
-    className="ms-DetailsList is-horizontalConstrained undefined"
+    className=
+        ms-DetailsList
+        is-horizontalConstrained
+        {
+          -webkit-overflow-scrolling: touch;
+          background: #ffffff;
+          color: #333333;
+          font-size: 12px;
+          overflow-x: auto;
+          overflow-y: visible;
+          position: relative;
+        }
+        & .ms-List-cell {
+          min-height: 38px;
+          word-break: break-word;
+        }
     data-automationid="DetailsList"
     data-is-scrollable="false"
   >
@@ -1468,7 +1504,13 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
         <div
           aria-describedby={undefined}
           aria-labelledby={undefined}
-          className="ms-FocusZone"
+          className=
+              ms-FocusZone
+              {
+                display: inline-block;
+                min-height: 1px;
+                min-width: 100%;
+              }
           data-focuszone-id="FocusZone11"
           onBlur={[Function]}
           onFocus={[Function]}
@@ -1574,7 +1616,22 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
 >
   <div
     aria-label={undefined}
-    className="ms-DetailsList is-horizontalConstrained undefined"
+    className=
+        ms-DetailsList
+        is-horizontalConstrained
+        {
+          -webkit-overflow-scrolling: touch;
+          background: #ffffff;
+          color: #333333;
+          font-size: 12px;
+          overflow-x: auto;
+          overflow-y: visible;
+          position: relative;
+        }
+        & .ms-List-cell {
+          min-height: 38px;
+          word-break: break-word;
+        }
     data-automationid="DetailsList"
     data-is-scrollable="false"
   >
@@ -2249,7 +2306,13 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
         <div
           aria-describedby={undefined}
           aria-labelledby={undefined}
-          className="ms-FocusZone"
+          className=
+              ms-FocusZone
+              {
+                display: inline-block;
+                min-height: 1px;
+                min-width: 100%;
+              }
           data-focuszone-id="FocusZone5"
           onBlur={[Function]}
           onFocus={[Function]}
@@ -2355,7 +2418,22 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
 >
   <div
     aria-label={undefined}
-    className="ms-DetailsList is-horizontalConstrained undefined"
+    className=
+        ms-DetailsList
+        is-horizontalConstrained
+        {
+          -webkit-overflow-scrolling: touch;
+          background: #ffffff;
+          color: #333333;
+          font-size: 12px;
+          overflow-x: auto;
+          overflow-y: visible;
+          position: relative;
+        }
+        & .ms-List-cell {
+          min-height: 38px;
+          word-break: break-word;
+        }
     data-automationid="DetailsList"
     data-is-scrollable="false"
   >
@@ -3030,7 +3108,13 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
         <div
           aria-describedby={undefined}
           aria-labelledby={undefined}
-          className="ms-FocusZone"
+          className=
+              ms-FocusZone
+              {
+                display: inline-block;
+                min-height: 1px;
+                min-width: 100%;
+              }
           data-focuszone-id="FocusZone8"
           onBlur={[Function]}
           onFocus={[Function]}

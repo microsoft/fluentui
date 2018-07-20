@@ -7,6 +7,8 @@ import {
 import { FontSizes } from './FluentType';
 import { Depths } from './FluentDepths';
 
+const fluentBorderRadius = '2px';
+
 const BreadcrumbStyles = {
   itemLink: {
     fontSize: FontSizes.size18,
@@ -22,21 +24,21 @@ const BreadcrumbStyles = {
 
 const PrimaryButtonStyles = {
   root: {
-    borderRadius: '2px'
+    borderRadius: fluentBorderRadius
     // boxShadow: Depths.depth4
   }
 };
 
 const CompoundButtonStyles = {
   root: {
-    borderRadius: '2px'
+    borderRadius: fluentBorderRadius
     // boxShadow: Depths.depth4
   }
 };
 
 const DefaultButtonStyles = {
   root: {
-    borderRadius: '2px',
+    borderRadius: fluentBorderRadius,
     backgroundColor: '#fff',
     border: `1px solid ${NeutralColors.gray20}`
   },
@@ -47,7 +49,7 @@ const DefaultButtonStyles = {
 
 const CheckboxStyles = {
   checkbox: {
-    borderRadius: '2px'
+    borderRadius: fluentBorderRadius
   }
 };
 
@@ -88,15 +90,44 @@ const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGr
   };
 };
 
+const ComboBoxStyles = {
+  root: {
+    borderRadius: fluentBorderRadius // the bound input box
+  },
+  callout: {
+    borderRadius: `0 0 ${fluentBorderRadius} ${fluentBorderRadius}`,
+    overflow: 'hidden'
+  }
+};
+
 const DialogStyles = {
   main: {
-    boxShadow: Depths.depth64
+    selectors: {
+      '.ms-Modal.ms-Dialog &': {
+        boxShadow: Depths.depth64,
+        borderRadius: fluentBorderRadius
+      }
+    }
   }
 };
 
 const DialogContentStyles = {
   title: {
-    fontWeight: FontWeights.semibold
+    fontSize: FontSizes.size20,
+    fontWeight: FontWeights.semibold,
+    padding: '16px'
+  },
+  topButton: {
+    padding: '16px 10px 0 0'
+  },
+  inner: {
+    padding: '0 16px 16px'
+  }
+};
+
+const DialogFooterStyles = {
+  actions: {
+    margin: '16px 0 0'
   }
 };
 
@@ -140,11 +171,17 @@ export const FluentStyles = {
   ChoiceGroupOption: {
     styles: ChoiceGroupOptionStyles
   },
+  ComboBox: {
+    styles: ComboBoxStyles
+  },
   Dialog: {
     styles: DialogStyles
   },
   DialogContent: {
     styles: DialogContentStyles
+  },
+  DialogFooter: {
+    styles: DialogFooterStyles
   },
   Label: {
     styles: LabelStyles

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Slider renders Slider correctly 1`] = `
+exports[`Slider renders correctly 1`] = `
 <div
   className=
       ms-Slider
@@ -10,6 +10,29 @@ exports[`Slider renders Slider correctly 1`] = `
         user-select: none;
       }
 >
+  <label
+    className=
+        ms-Label
+        {
+          box-shadow: none;
+          box-sizing: border-box;
+          color: #333333;
+          display: block;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          overflow-wrap: break-word;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          word-wrap: break-word;
+        }
+    htmlFor="Slider0"
+  >
+    I am a slider
+  </label>
   <div
     className=
         ms-Slider-container
@@ -20,7 +43,7 @@ exports[`Slider renders Slider correctly 1`] = `
         }
   >
     <button
-      aria-label={undefined}
+      aria-label="I am a slider"
       aria-valuemax={10}
       aria-valuemin={0}
       aria-valuenow={0}

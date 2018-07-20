@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { BaseComponent, IClassNames, classNamesFunction, css, customizable, format, getId } from '../../Utilities';
+import { BaseComponent, classNamesFunction, css, format, getId } from '../../Utilities';
+import { IProcessedStyleSet } from '../../Styling';
 import { Icon } from '../../Icon';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { IRatingProps, RatingSize, IRatingStyleProps, IRatingStyles } from './Rating.types';
@@ -10,7 +11,7 @@ interface IRatingStarProps extends React.AllHTMLAttributes<HTMLElement> {
   fillPercentage: number;
   disabled: boolean;
   readOnly: boolean;
-  classNames: IClassNames<IRatingStyles>;
+  classNames: IProcessedStyleSet<IRatingStyles>;
 }
 
 export interface IRatingState {
@@ -30,7 +31,6 @@ const RatingStar = (props: IRatingStarProps) => (
   </div>
 );
 
-@customizable('Rating', ['theme', 'getStyles'])
 export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
   public static defaultProps: IRatingProps = {
     min: 1,

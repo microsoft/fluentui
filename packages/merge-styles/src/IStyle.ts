@@ -20,7 +20,6 @@ export interface IRawStyle extends IRawStyleBase {
 }
 
 export type IStyleBase = IRawStyle | string | false | null | undefined;
-
 export interface IStyleBaseArray extends Array<IStyle> {}
 
 /**

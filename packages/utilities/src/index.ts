@@ -1,3 +1,4 @@
+export { IStyleFunctionOrObject } from '@uifabric/merge-styles';
 export * from './aria';
 export * from './Async';
 export * from './AutoScroll';

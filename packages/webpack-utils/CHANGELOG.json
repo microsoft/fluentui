@@ -2,6 +2,20 @@
   "name": "@uifabric/webpack-utils",
   "entries": [
     {
+      "version": "0.7.1",
+      "tag": "@uifabric/webpack-utils_v0.7.1",
+      "date": "Mon, 16 Jul 2018 10:27:18 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <1581488+christiango@users.noreply.github.com>",
+            "commit": "0a4f97dbcbb34c5c6661abe6170b6c8a8c12bd65",
+            "comment": "Use var instead of const in the ui fabric plugin to make it compatible with Safari 9"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.7.0",
       "tag": "@uifabric/webpack-utils_v0.7.0",
       "date": "Fri, 06 Jul 2018 19:07:51 GMT",

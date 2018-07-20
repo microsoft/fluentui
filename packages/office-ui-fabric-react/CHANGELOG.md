@@ -1,6 +1,85 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 12 Jul 2018 10:29:30 GMT and should not be manually modified.
+This log was last generated on Fri, 20 Jul 2018 10:25:21 GMT and should not be manually modified.
+
+## 6.38.2
+Fri, 20 Jul 2018 10:25:21 GMT
+
+### Patches
+
+- ComboBox: Fix IE11 null event.relatedTarget
+
+## 6.38.1
+Thu, 19 Jul 2018 19:04:38 GMT
+
+### Patches
+
+- Add automation identifier to the visible content of ResizeGroup
+- Added optional feedback section for component pages
+
+## 6.38.0
+Thu, 19 Jul 2018 10:23:34 GMT
+
+### Minor changes
+
+- Adds showInitialsUntilImageLoads property to Persona/PersonaCoin to show initials while the image is loading
+
+### Patches
+
+- ResizeGroup: Optimize performance for initial render when onGrowData is provided
+
+## 6.37.1
+Wed, 18 Jul 2018 10:25:50 GMT
+
+### Patches
+
+- Fix issue where last suggestion item was selected on first query change. Fix picker showing on zero query
+- Fix various typings/code bugs.
+- Adding a try/catch when we call setActive in Dropdown/ContextualMenu in IE11.
+- DatePicker: Fixes a bug where the DatePicker would only open every other time it gained focus.
+
+## 6.37.0
+Tue, 17 Jul 2018 10:28:40 GMT
+
+### Minor changes
+
+- ExtendedBasePicker: Expose selectedItems, Remove persona suggestion padding in FloatingPicker 
+- Removing most `@customizable` decorator usage. This change should reduce extra React dom elements from being created. Also updating `componentRef` resolution to support `React.createRef()` usage.
+
+### Patches
+
+- ResizeGroup: Optimize performance of initial render
+- BasePicker: Fix a bug where the selection state would mutate inappropriately
+- ScrollablePane: Add notifySubscribers in mutationObserver
+- Use spread operator in PositioningContainer.styles.ts
+- Fix check for Panel light-dismiss
+- CalloutDismiss: Revert change that caused callout to dismiss when window focused
+
+## 6.36.0
+Mon, 16 Jul 2018 10:27:18 GMT
+
+### Minor changes
+
+- Convert GroupedList to CSS-in-JS
+
+### Patches
+
+- Refactors variants of DetailsList into individual component sub-pages
+
+## 6.35.0
+Fri, 13 Jul 2018 21:32:37 GMT
+
+### Minor changes
+
+- Reverting the TypeScript bump, to unbreak DetailsList d.ts changes.
+- Button: Added menuAs to better support custom contextual menus
+- DetailsList: Complete CSS-in-JS conversion.
+- Edit to styled function call allowing customization with CalloutContent, DialogContent, and DialogFooter
+
+### Patches
+
+- Fix TextField clearing on render when value prop is undefined.
+- Deprecate unused linkIsSelected Pivot style prop.
 
 ## 6.33.1
 Thu, 12 Jul 2018 10:29:30 GMT
