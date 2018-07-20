@@ -46,76 +46,80 @@ export class TextAttributesExample extends React.Component<{}, ITextAttributesEx
         Change This Text's Attributes!
       </Text>`;
     return (
-      <Stack vertical>
-        <Stack vertical maxWidth={300}>
-          <Slider
-            label="Change the size"
-            min={1}
-            max={9}
-            step={1}
-            defaultValue={3}
-            showValue={false}
-            onChange={this._onChangeSize}
-          />
-          <Slider
-            label="Change the weight"
-            min={1}
-            max={4}
-            step={1}
-            defaultValue={2}
-            showValue={false}
-            onChange={this._onChangeWeight}
-          />
-        </Stack>
-        <Text fontStyle="medium">Change the color</Text>
-        <SwatchColorPicker
-          columnCount={8}
-          cellShape={'circle'}
-          colorCells={[
-            { id: 'red', label: 'red', color: 'red' },
-            { id: 'orange', label: 'orange', color: 'orange' },
-            { id: 'yellow', label: 'yellow', color: 'yellow' },
-            { id: 'green', label: 'green', color: 'green' },
-            { id: 'teal', label: 'teal', color: 'teal' },
-            { id: 'blue', label: 'blue', color: 'blue' },
-            { id: 'purple', label: 'purple', color: 'purple' },
-            { id: 'black', label: 'black', color: 'black' }
-          ]}
-          onColorChanged={this._onChangePaletteColor}
-        />
-        <SwatchColorPicker
-          columnCount={6}
-          cellShape={'circle'}
-          colorCells={[
-            { id: 'neutralPrimary', label: 'neutralPrimary', color: '#333333' },
-            { id: 'neutralPrimaryAlt', label: 'neutralPrimaryAlt', color: '#3c3c3c' },
-            { id: 'neutralSecondary', label: 'neutralSecondary', color: '#666666' },
-            { id: 'neutralSecondaryAlt', label: 'neutralSecondaryAlt', color: '#767676' },
-            { id: 'neutralTertiary', label: 'neutralTertiary', color: '#a6a6a6' },
-            { id: 'neutralTertiaryAlt', label: 'neutralTertiaryAlt', color: '#c8c8c8' }
-          ]}
-          onColorChanged={this._onChangeSemanticColor}
-        />
-        <Stack vertical gap={10}>
-          <ChoiceGroup
-            label="Change the font family"
-            selectedKey={fontFamily}
-            options={[
-              {
-                key: 'default',
-                text: 'Default'
-              },
-              {
-                key: 'monospace',
-                text: 'Monospace'
-              }
-            ]}
-            onChange={this._onChangeFontFamily}
-          />
-          <Stack vertical gap={10}>
-            <Text fontStyle="medium">Wrap the text</Text>
-            <Checkbox label="Wrap" onChange={this._onCheckboxChange} ariaDescribedBy={'wrap text'} />
+      <div>
+        <Stack vertical>
+          <Stack vertical maxWidth={300}>
+            <Slider
+              label="Change the size"
+              min={1}
+              max={9}
+              step={1}
+              defaultValue={3}
+              showValue={false}
+              onChange={this._onChangeSize}
+            />
+            <Slider
+              label="Change the weight"
+              min={1}
+              max={4}
+              step={1}
+              defaultValue={2}
+              showValue={false}
+              onChange={this._onChangeWeight}
+            />
           </Stack>
+          <Text fontStyle="medium">Change the color</Text>
+          <SwatchColorPicker
+            columnCount={8}
+            cellShape={'circle'}
+            colorCells={[
+              { id: 'red', label: 'red', color: 'red' },
+              { id: 'orange', label: 'orange', color: 'orange' },
+              { id: 'yellow', label: 'yellow', color: 'yellow' },
+              { id: 'green', label: 'green', color: 'green' },
+              { id: 'teal', label: 'teal', color: 'teal' },
+              { id: 'blue', label: 'blue', color: 'blue' },
+              { id: 'purple', label: 'purple', color: 'purple' },
+              { id: 'black', label: 'black', color: 'black' }
+            ]}
+            onColorChanged={this._onChangePaletteColor}
+          />
+          <SwatchColorPicker
+            columnCount={6}
+            cellShape={'circle'}
+            colorCells={[
+              { id: 'neutralPrimary', label: 'neutralPrimary', color: '#333333' },
+              { id: 'neutralPrimaryAlt', label: 'neutralPrimaryAlt', color: '#3c3c3c' },
+              { id: 'neutralSecondary', label: 'neutralSecondary', color: '#666666' },
+              { id: 'neutralSecondaryAlt', label: 'neutralSecondaryAlt', color: '#767676' },
+              { id: 'neutralTertiary', label: 'neutralTertiary', color: '#a6a6a6' },
+              { id: 'neutralTertiaryAlt', label: 'neutralTertiaryAlt', color: '#c8c8c8' }
+            ]}
+            onColorChanged={this._onChangeSemanticColor}
+          />
+          <Stack.Item gap={10}>
+            <ChoiceGroup
+              label="Change the font family"
+              selectedKey={fontFamily}
+              options={[
+                {
+                  key: 'default',
+                  text: 'Default'
+                },
+                {
+                  key: 'monospace',
+                  text: 'Monospace'
+                }
+              ]}
+              onChange={this._onChangeFontFamily}
+            />
+          </Stack.Item>
+          <Stack.Item gap={10}>
+            <Text fontStyle="medium">Wrap the text</Text>
+          </Stack.Item>
+          <Stack.Item gap={10}>
+            <Checkbox label="Wrap" onChange={this._onCheckboxChange} ariaDescribedBy={'wrap text'} />
+          </Stack.Item>
         </Stack>
         <TooltipHost
           content={content}
@@ -127,7 +131,7 @@ export class TextAttributesExample extends React.Component<{}, ITextAttributesEx
             Change This Text's Attributes!
           </Text>
         </TooltipHost>
-      </Stack>
+      </div>
     );
   }
 

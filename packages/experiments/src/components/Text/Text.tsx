@@ -51,9 +51,10 @@ export interface ITextProps {
   color?: keyof IPalette | keyof ISemanticColors;
 
   /**
-   * Whether the text is displayed as a block element or an inline element.
+   * Whether the text is displayed as an inline element.
+   * Note that inline does not support ellipsis truncation by default.
    */
-  block?: boolean;
+  inline?: boolean;
 
   /**
    * Whether the text is wrapped.
@@ -65,7 +66,7 @@ export type ITextViewProps = IViewProps<ITextProps, ITextStyles>;
 
 const TextView = (props: ITextViewProps) => {
   const {
-    block,
+    inline,
     className,
     color,
     family,
@@ -83,7 +84,7 @@ const TextView = (props: ITextViewProps) => {
 };
 
 const styles = (props: IStyledProps<ITextProps>): ITextStyles => {
-  const { block, theme, wrap, type, family, weight, size, fontStyle, color } = props;
+  const { inline, theme, wrap, type, family, weight, size, fontStyle, color } = props;
 
   const { palette, fonts, semanticColors, typography } = theme;
 
@@ -112,13 +113,14 @@ const styles = (props: IStyledProps<ITextProps>): ITextStyles => {
     const fontSize = size && typography.sizes[size] ? typography.sizes[size] : typography.sizes.medium;
 
     if (themeType) {
-      if (fontFamily) {
+      // if a type was specified and individual properties were also specified, use individual properties
+      if (family && typography.families[family]) {
         themeType.fontFamily = fontFamily;
       }
-      if (fontWeight) {
+      if (weight && typography.weights[weight]) {
         themeType.fontWeight = fontWeight;
       }
-      if (fontSize) {
+      if (size && typography.sizes[size]) {
         themeType.fontSize = fontSize;
       }
     } else {
@@ -153,13 +155,12 @@ const styles = (props: IStyledProps<ITextProps>): ITextStyles => {
       themeType,
       themeProperties,
       {
-        display: block ? 'block' : 'inline'
+        display: inline ? 'inline' : 'block'
       },
       !wrap && {
         whiteSpace: 'nowrap',
         overflow: 'hidden',
-        textOverflow: 'ellipsis',
-        display: 'block' // when wrap is false, set display to block so that overflow shows ellipsis
+        textOverflow: 'ellipsis'
       },
       props.className
     ]
