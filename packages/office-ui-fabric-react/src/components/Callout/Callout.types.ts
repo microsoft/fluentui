@@ -165,6 +165,12 @@ export interface ICalloutProps {
   finalHeight?: number;
 
   /**
+   * Manually set OverflowYHidden style prop to true on calloutMain element
+   * A variety of callout load animations will need this to hide the scollbar that can appear
+   */
+  hideOverflow?: boolean;
+
+  /**
    * If true then the callout will attempt to focus the first focusable element that it contains.
    * If it doesn't find an element, no focus will be set and the method will return false.
    * This means that it's the contents responsibility to either set focus or have

@@ -152,6 +152,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
       calloutWidth,
       calloutMaxWidth,
       finalHeight,
+      hideOverflow,
       backgroundColor,
       calloutMaxHeight,
       onScroll
@@ -166,7 +167,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
       calloutMaxHeight! && getContentMaxHeight && calloutMaxHeight! < getContentMaxHeight
         ? calloutMaxHeight!
         : getContentMaxHeight!;
-    const overflowYHidden = !!finalHeight;
+    const overflowYHidden = !!finalHeight || hideOverflow;
 
     const beakVisible = isBeakVisible && !!target;
     this._classNames = getClassNames(styles!, {
