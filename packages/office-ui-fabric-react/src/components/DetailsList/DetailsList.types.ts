@@ -116,14 +116,6 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    */
   isHeaderVisible?: boolean;
 
-  /**
-   * Controls the visibility of the details footer.
-   * @default false
-   */
-  isFooterVisible?: boolean;
-
-  footerText?: string;
-
   /** Given column defitions. If none are provided, default columns will be created based on the item's properties. */
   columns?: IColumn[];
 
