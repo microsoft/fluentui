@@ -1,6 +1,32 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 18 Jul 2018 10:25:50 GMT and should not be manually modified.
+This log was last generated on Fri, 20 Jul 2018 10:25:21 GMT and should not be manually modified.
+
+## 6.38.2
+Fri, 20 Jul 2018 10:25:21 GMT
+
+### Patches
+
+- ComboBox: Fix IE11 null event.relatedTarget
+
+## 6.38.1
+Thu, 19 Jul 2018 19:04:38 GMT
+
+### Patches
+
+- Add automation identifier to the visible content of ResizeGroup
+- Added optional feedback section for component pages
+
+## 6.38.0
+Thu, 19 Jul 2018 10:23:34 GMT
+
+### Minor changes
+
+- Adds showInitialsUntilImageLoads property to Persona/PersonaCoin to show initials while the image is loading
+
+### Patches
+
+- ResizeGroup: Optimize performance for initial render when onGrowData is provided
 
 ## 6.37.1
 Wed, 18 Jul 2018 10:25:50 GMT

@@ -58,6 +58,7 @@ export class DashboardGridLayout extends React.Component<IDashboardGridLayoutPro
         verticalCompact={true}
         onLayoutChange={this.props.onLayoutChange}
         onBreakpointChange={this.props.onBreakPointChange}
+        dragApiRef={this.props.dragApi}
       >
         {this.props.children}
       </ResponsiveReactGridLayout>
@@ -71,39 +72,41 @@ export class DashboardGridLayout extends React.Component<IDashboardGridLayoutPro
       y: layoutProp.y,
       w: sizes[layoutProp.size].w,
       h: sizes[layoutProp.size].h,
-      static: layoutProp.static || false,
-      isDraggable: layoutProp.isDraggable || true,
-      isResizable: layoutProp.isResizable || true
+      static: layoutProp.static === undefined ? false : layoutProp.static,
+      isDraggable: layoutProp.disableDrag === undefined ? true : !layoutProp.disableDrag,
+      isResizable: layoutProp.isResizable === undefined ? true : layoutProp.isResizable
     };
   }
 
   private _createLayout(): Layouts {
     const layouts: Layouts = {};
-    for (const [key, value] of Object.entries(this.props.layout)) {
-      if (value === undefined) {
-        continue;
-      }
-      const layout: Layout[] = [];
-      for (let i = 0; i < value.length; i++) {
-        layout.push(this._createLayoutFromProp(value[i]));
-      }
+    if (this.props.layout) {
+      for (const [key, value] of Object.entries(this.props.layout)) {
+        if (value === undefined) {
+          continue;
+        }
+        const layout: Layout[] = [];
+        for (let i = 0; i < value.length; i++) {
+          layout.push(this._createLayoutFromProp(value[i]));
+        }
 
-      switch (key) {
-        case 'lg':
-          layouts.lg = layout;
-          break;
-        case 'md':
-          layouts.md = layout;
-          break;
-        case 'sm':
-          layouts.sm = layout;
-          break;
-        case 'xs':
-          layouts.xs = layout;
-          break;
-        case 'xxs':
-          layouts.xxs = layout;
-          break;
+        switch (key) {
+          case 'lg':
+            layouts.lg = layout;
+            break;
+          case 'md':
+            layouts.md = layout;
+            break;
+          case 'sm':
+            layouts.sm = layout;
+            break;
+          case 'xs':
+            layouts.xs = layout;
+            break;
+          case 'xxs':
+            layouts.xxs = layout;
+            break;
+        }
       }
     }
 

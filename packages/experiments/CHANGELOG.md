@@ -1,6 +1,28 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 18 Jul 2018 10:25:50 GMT and should not be manually modified.
+This log was last generated on Fri, 20 Jul 2018 10:25:21 GMT and should not be manually modified.
+
+## 6.18.3
+Fri, 20 Jul 2018 10:25:21 GMT
+
+*Version update only*
+
+## 6.18.2
+Thu, 19 Jul 2018 21:25:32 GMT
+
+*Version update only*
+
+## 6.18.1
+Thu, 19 Jul 2018 19:04:38 GMT
+
+*Version update only*
+
+## 6.18.0
+Thu, 19 Jul 2018 10:23:34 GMT
+
+### Minor changes
+
+- Fluent Styles for ComboBox and Dialog
 
 ## 6.17.0
 Wed, 18 Jul 2018 10:25:50 GMT

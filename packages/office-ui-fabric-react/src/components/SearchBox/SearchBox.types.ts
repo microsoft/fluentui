@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ITheme, IStyle } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { IButtonProps } from '../Button';
+import { IButtonProps } from '../../Button';
 
 export interface ISearchBox {
   /**
