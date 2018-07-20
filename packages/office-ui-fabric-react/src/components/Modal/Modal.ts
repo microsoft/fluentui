@@ -4,5 +4,5 @@ import { ModalBase } from './Modal.base';
 import { getStyles } from './Modal.styles';
 
 export const Modal = styled<IModalProps, IModalStyleProps, IModalStyles>(ModalBase, getStyles, undefined, {
-  scope: 'TeachingBubble'
+  scope: 'Modal'
 });
