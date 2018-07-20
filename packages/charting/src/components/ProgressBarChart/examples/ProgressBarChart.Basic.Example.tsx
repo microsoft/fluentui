@@ -10,8 +10,8 @@ export class ProgressBarChartBasicExample extends React.Component<IProgressBarCh
   }
 
   private _basicExample(): JSX.Element {
-    const points = { value: 888, total: 1000 };
-    const colors = ['red', 'gray'];
+    const points = { value: 500, total: 1000 };
+    const colors = { backgroundColor: 'grey', barColor: 'blue' };
 
     return <ProgressBarChart data={points} chartTitle={'Sub Heading'} colors={colors} />;
   }

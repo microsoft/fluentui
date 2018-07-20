@@ -1,7 +1,7 @@
 import { IProgressBarChartStyleProps, IProgressBarChartStyles } from './ProgressBarChart.types';
 
 export const getStyles = (props: IProgressBarChartStyleProps): IProgressBarChartStyles => {
-  const { className, theme, width, barHeight, colors } = props;
+  const { className, width, barHeight, colors, persentage } = props;
   const chartWidth = width;
   const chartPadding = 20;
   return {
@@ -17,29 +17,19 @@ export const getStyles = (props: IProgressBarChartStyleProps): IProgressBarChart
       {
         width: chartWidth,
         height: barHeight,
-        color: colors![0],
-        // color:   '#0063a6',
-        background: colors![1],
-        border: 'none'
-        // selectors: {
-        //   'progress::-webkit-progress-bar': {
-        //     background: 'red'
-        //   }
-        // }
+        backgroundColor: colors!.backgroundColor,
+        border: 'none',
+        transform: `translate(0px, 20px)`
+      }
+    ],
+    bar: [
+      {
+        width: `${persentage}%`,
+        height: barHeight,
+        backgroundColor: colors!.barColor
       }
     ],
     chartTitle: [
-      {
-        textAlign: 'center',
-        ...theme.fonts.mediumPlus
-      }
-    ],
-    bars: [
-      {
-        transform: `translate( 0px,0px)`
-      }
-    ],
-    subHeading: [
       {
         float: 'right'
       }

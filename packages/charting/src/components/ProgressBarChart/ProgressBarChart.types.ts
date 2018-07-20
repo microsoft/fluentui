@@ -13,11 +13,22 @@ export interface Idata {
   total: number;
 }
 
+export interface Icolor {
+  /**
+   * Label for data to render in the chart.
+   */
+  backgroundColor: string;
+  /**
+   * Value for data to render in the chart.
+   */
+  barColor: string;
+}
+
 export interface IProgressBarChartProps {
   /**
    * Data to render in the chart.
    */
-  data?: Idata;
+  data: Idata;
 
   /**
    * Width of the chart.
@@ -37,7 +48,7 @@ export interface IProgressBarChartProps {
   /**
    * Colors from which to select the color of each bar.
    */
-  colors?: string[];
+  colors?: Icolor;
 
   /**
    * Title of  the chart.
@@ -84,7 +95,11 @@ export interface IProgressBarChartStyleProps {
   /**
    * colors for bar .
    */
-  colors?: string[];
+  colors?: Icolor;
+  /**
+   * persentage for progress .
+   */
+  persentage: number;
 }
 
 export interface IProgressBarChartStyles {
@@ -106,11 +121,7 @@ export interface IProgressBarChartStyles {
   /**
    * Style for the element containing all the bars in the chart.
    */
-  bars: IStyle;
-  /**
-   * Style for element conatinning subHeading
-   */
-  subHeading: IStyle;
+  bar: IStyle;
   /**
    * Style for element containing value
    */
