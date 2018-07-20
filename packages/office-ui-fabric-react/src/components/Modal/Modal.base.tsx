@@ -1,13 +1,12 @@
 import * as React from 'react';
-import { BaseComponent, css, getId, createRef } from '../../Utilities';
+import { BaseComponent, classNamesFunction, getId, createRef } from '../../Utilities';
 import { FocusTrapZone, IFocusTrapZone } from '../FocusTrapZone/index';
-import { IModalProps, IModal } from './Modal.types';
+import { animationDuration, getOverlayStyles } from './Modal.styles';
+import { IModalProps, IModalStyleProps, IModalStyles, IModal } from './Modal.types';
 import { Overlay } from '../../Overlay';
 import { Layer } from '../../Layer';
 import { Popup } from '../Popup/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
-import * as stylesImport from './Modal.scss';
-const styles: any = stylesImport;
 
 // @TODO - need to change this to a panel whenever the breakpoint is under medium (verify the spec)
 
@@ -18,8 +17,10 @@ export interface IDialogState {
   id?: string;
 }
 
+const getClassNames = classNamesFunction<IModalStyleProps, IModalStyles>();
+
 @withResponsiveMode
-export class Modal extends BaseComponent<IModalProps, IDialogState> implements IModal {
+export class ModalBase extends BaseComponent<IModalProps, IDialogState> implements IModal {
   public static defaultProps: IModalProps = {
     isOpen: false,
     isDarkOverlay: true,
@@ -60,7 +61,7 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> implements I
 
     // Closing the dialog
     if (!newProps.isOpen && this.state.isOpen) {
-      this._onModalCloseTimer = this._async.setTimeout(this._onModalClose, parseFloat(styles.duration) * 1000);
+      this._onModalCloseTimer = this._async.setTimeout(this._onModalClose, parseFloat(animationDuration) * 1000);
       this.setState({
         isVisible: false
       });
@@ -77,6 +78,8 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> implements I
 
   public render(): JSX.Element | null {
     const {
+      className,
+      containerClassName,
       elementToFocusOnDismiss,
       firstFocusableSelector,
       forceFocusInsideTrap,
@@ -88,21 +91,23 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> implements I
       onLayerDidMount,
       responsiveMode,
       titleAriaId,
-      subtitleAriaId
+      styles,
+      subtitleAriaId,
+      theme
     } = this.props;
     const { isOpen, isVisible } = this.state;
-
-    const modalClassName = css(
-      'ms-Modal',
-      styles.root,
-      this.props.className,
-      !!isOpen && 'is-open',
-      !!isVisible && styles.rootIsVisible
-    );
 
     if (!isOpen) {
       return null;
     }
+
+    const classNames = getClassNames(styles, {
+      theme: theme!,
+      className,
+      containerClassName,
+      isOpen,
+      isVisible
+    });
 
     // @temp tuatology - Will adjust this to be a panel at certain breakpoints
     if (responsiveMode! >= ResponsiveMode.small) {
@@ -114,11 +119,15 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> implements I
             ariaDescribedBy={subtitleAriaId}
             onDismiss={onDismiss}
           >
-            <div className={modalClassName}>
-              <Overlay isDarkThemed={isDarkOverlay} onClick={isBlocking ? undefined : (onDismiss as any)} />
+            <div className={classNames.root}>
+              <Overlay
+                isDarkThemed={isDarkOverlay}
+                onClick={isBlocking ? undefined : (onDismiss as any)}
+                styles={getOverlayStyles}
+              />
               <FocusTrapZone
                 componentRef={this._focusTrapZone}
-                className={css('ms-Dialog-main', styles.main, this.props.containerClassName)}
+                className={classNames.main}
                 elementToFocusOnDismiss={elementToFocusOnDismiss}
                 isClickableOutsideFocusTrap={isClickableOutsideFocusTrap ? isClickableOutsideFocusTrap : !isBlocking}
                 ignoreExternalFocusing={ignoreExternalFocusing}
