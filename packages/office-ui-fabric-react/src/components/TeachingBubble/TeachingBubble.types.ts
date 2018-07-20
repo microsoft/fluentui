@@ -1,12 +1,12 @@
-import * as React from 'react';
-import { TeachingBubble } from './TeachingBubble';
-import { TeachingBubbleContent } from './TeachingBubbleContent';
 import { IImageProps } from '../../Image';
 import { IButtonProps } from '../../Button';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 import { ICalloutProps } from '../../Callout';
+import { RefObject } from '@uifabric/utilities';
 
 export interface ITeachingBubble {
+  rootElement: RefObject<HTMLDivElement>;
+
   /** Sets focus to the TeachingBubble root element */
   focus(): void;
 }
@@ -15,7 +15,7 @@ export interface ITeachingBubble {
  * TeachingBubble component props.
  */
 
-export interface ITeachingBubbleProps extends React.Props<TeachingBubble | TeachingBubbleContent>, IAccessiblePopupProps {
+export interface ITeachingBubbleProps extends React.Props<any>, IAccessiblePopupProps {
   /**
    * Optional callback to access the ISlider interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
