@@ -216,20 +216,22 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
             </div>
           ) }
           <div className={ classNames.pulsingBeacon } />
-          <div className={ classNames.translateAnimationContainer } ref={ this._translateAnimationContainer }>
+          <div
+            className={ classNames.translateAnimationContainer }
+            ref={ this._translateAnimationContainer }
+          >
             <div className={ classNames.scaleAnimationLayer }>
               <div className={ classNames.rotateAnimationLayer }>
                 {
-                  this._positioningContainer.current && (
-                    <Beak
-                      left={ beakLeft }
-                      top={ beakTop }
-                      right={ beakRight }
-                      bottom={ beakBottom }
-                      direction={ this._beakDirection }
-                      color={ color }
-                    />
-                  ) }
+                  this._positioningContainer.current && <Beak
+                    left={ beakLeft }
+                    top={ beakTop }
+                    right={ beakRight }
+                    bottom={ beakBottom }
+                    direction={ this._beakDirection }
+                    color={ color }
+                  />
+                }
                 <FocusTrapZone isClickableOutsideFocusTrap={ true }>
                   <div
                     className={ classNames.entityHost }
