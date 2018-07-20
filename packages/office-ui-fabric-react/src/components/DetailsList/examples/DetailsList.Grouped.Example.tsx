@@ -119,6 +119,7 @@ export class DetailsListGroupedExample extends BaseComponent<
             showEmptyGroups: true
           }}
           onRenderItemColumn={this._onRenderColumn}
+          useReducedRowRenderer={true}
         />
       </Fabric>
     );
