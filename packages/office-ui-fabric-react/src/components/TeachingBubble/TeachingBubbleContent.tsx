@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, css } from '../../Utilities';
+import { BaseComponent, css, createRef, KeyCodes } from '../../Utilities';
 import { ITeachingBubbleProps } from './TeachingBubble.types';
 import { ITeachingBubbleState } from './TeachingBubble';
 import { PrimaryButton, DefaultButton, IconButton } from '../../Button';
@@ -21,10 +21,30 @@ export class TeachingBubbleContent extends BaseComponent<
     }
   };
 
+  public rootElement = createRef<HTMLDivElement>();
+
   constructor(props: ITeachingBubbleProps) {
     super(props);
 
     this.state = {};
+  }
+
+  public componentDidMount(): void {
+    if (this.props.onDismiss) {
+      document.addEventListener('keydown', this._onKeyDown, false);
+    }
+  }
+
+  public componentWillUnmount(): void {
+    if (this.props.onDismiss) {
+      document.removeEventListener('keydown', this._onKeyDown);
+    }
+  }
+
+  public focus(): void {
+    if (this.rootElement.current) {
+      this.rootElement.current.focus();
+    }
   }
 
   public render(): JSX.Element {
@@ -39,7 +59,9 @@ export class TeachingBubbleContent extends BaseComponent<
       onDismiss,
       closeButtonAriaLabel,
       hasSmallHeadline,
-      isWide
+      isWide,
+      ariaDescribedBy,
+      ariaLabelledBy
     } = this.props;
 
     let imageContent;
@@ -69,7 +91,7 @@ export class TeachingBubbleContent extends BaseComponent<
                 : 'ms-TeachingBubble-header--large ' + styles.headerIsLarge
           ) }
         >
-          <p className={ css('ms-TeachingBubble-headline', styles.headline) }>
+          <p className={ css('ms-TeachingBubble-headline', styles.headline) } id={ ariaLabelledBy }>
             { headline }
           </p>
         </div>
@@ -79,7 +101,7 @@ export class TeachingBubbleContent extends BaseComponent<
     if (children) {
       bodyContent = (
         <div className={ css('ms-TeachingBubble-body', styles.body) }>
-          <p className={ css('ms-TeachingBubble-subText', styles.subText) }>
+          <p className={ css('ms-TeachingBubble-subText', styles.subText) } id={ ariaDescribedBy }>
             { children }
           </p>
         </div>
@@ -132,6 +154,12 @@ export class TeachingBubbleContent extends BaseComponent<
           styles.root,
           isWide ? styles.wideCallout : null
         ) }
+        ref={ this.rootElement }
+        role={ 'dialog' }
+        tabIndex={ -1 }
+        aria-labelledby={ ariaLabelledBy }
+        aria-describedby={ ariaDescribedBy }
+        data-is-focusable={ true }
       >
         { imageContent }
         <div
@@ -144,5 +172,13 @@ export class TeachingBubbleContent extends BaseComponent<
         { closeButton }
       </div>
     );
+  }
+
+  private _onKeyDown = (e: any): void => {
+    if (this.props.onDismiss) {
+      if (e.which === KeyCodes.escape) {
+        this.props.onDismiss();
+      }
+    }
   }
 }
