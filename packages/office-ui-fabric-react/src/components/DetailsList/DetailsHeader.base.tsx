@@ -161,7 +161,8 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderProps, IDetai
       onColumnClick,
       onColumnContextMenu,
       styles,
-      theme
+      theme,
+      enableTransparentBackground
     } = this.props;
     const { isAllSelected, columnResizeDetails, isSizing, groupNestingDepth, isAllCollapsed } = this.state;
     const showCheckbox = selectAllVisibility !== SelectAllVisibility.none;
@@ -194,7 +195,8 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderProps, IDetai
       isResizingColumn: !!columnResizeDetails && isSizing,
       isSizing,
       isAllCollapsed,
-      isCheckboxHidden
+      isCheckboxHidden,
+      isTransparent: enableTransparentBackground
     });
 
     const classNames = this._classNames;

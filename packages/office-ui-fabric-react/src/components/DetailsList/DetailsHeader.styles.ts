@@ -37,7 +37,16 @@ const values = {
 };
 
 export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles => {
-  const { theme, className, isSelectAllHidden, isAllSelected, isResizingColumn, isSizing, isAllCollapsed } = props;
+  const {
+    theme,
+    className,
+    isSelectAllHidden,
+    isAllSelected,
+    isResizingColumn,
+    isSizing,
+    isAllCollapsed,
+    isTransparent
+  } = props;
   const { semanticColors, palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -101,7 +110,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
       classNames.root,
       {
         display: 'inline-block',
-        background: colors.headerBackgroundColor,
+        background: isTransparent ? 'transparent' : colors.headerBackgroundColor,
         position: 'relative',
         minWidth: '100%',
         verticalAlign: 'top',

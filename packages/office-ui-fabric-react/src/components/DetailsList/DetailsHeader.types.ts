@@ -91,6 +91,9 @@ export interface IDetailsHeaderProps extends React.Props<DetailsHeaderBase> {
 
   /** Overriding class name */
   className?: string;
+
+  /** True to set a transparent background */
+  enableTransparentBackground?: boolean;
 }
 
 export enum SelectAllVisibility {
@@ -139,6 +142,9 @@ export type IDetailsHeaderStyleProps = Required<Pick<IDetailsHeaderProps, 'theme
 
     /** Whether checkbox is hidden  */
     isCheckboxHidden?: boolean;
+
+    /** True to set a transparent background */
+    isTransparent?: boolean;
   };
 
 export interface IDetailsHeaderStyles {

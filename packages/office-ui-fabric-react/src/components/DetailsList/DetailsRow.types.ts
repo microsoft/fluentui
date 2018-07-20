@@ -152,6 +152,11 @@ export interface IDetailsRowProps extends IBaseProps<IDetailsRow> {
    * Whether to render shimmer
    */
   shimmer?: boolean;
+
+  /**
+   * True to set a transparent background
+   */
+  enableTransparentBackground?: boolean;
 }
 
 export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & {
@@ -181,6 +186,9 @@ export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & 
 
   /** Is list in compact mode */
   compact?: boolean;
+
+  /** True to set a transparent background */
+  isTransparent?: boolean;
 };
 
 export interface IDetailsRowStyles {

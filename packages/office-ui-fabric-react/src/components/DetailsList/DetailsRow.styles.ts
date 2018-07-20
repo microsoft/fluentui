@@ -57,7 +57,8 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
     isCheckVisible,
     checkboxCellClassName,
     compact,
-    className
+    className,
+    isTransparent
   } = props;
 
   const {
@@ -308,7 +309,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
       getFocusStyle(theme, 0, undefined, undefined, isSelected ? neutralSecondary : themePrimary, white),
       {
         borderBottom: `1px solid ${neutralLighter}`,
-        background: colors.defaultBackgroundColor,
+        background: isTransparent ? 'transparent' : colors.defaultBackgroundColor,
         color: colors.defaultMetaTextColor,
         display: 'flex',
         minWidth: '100%',
