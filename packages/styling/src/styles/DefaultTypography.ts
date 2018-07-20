@@ -1,5 +1,6 @@
-import { DefaultFontStyles, FontWeights } from '../../../../Styling';
-import { IFontFamilies, IFontSizes, IFontWeights, IFontTypes, ITypography } from '../ITypography';
+import { DefaultFontStyles } from './DefaultFontStyles';
+import { FontWeights } from './fonts';
+import { IFontFamilies, IFontSizes, IFontWeights, IFontTypes, ITypography } from '../interfaces/ITypography';
 
 export const DefaultFontSizes: IFontSizes = {
   tiny: '1rem',
