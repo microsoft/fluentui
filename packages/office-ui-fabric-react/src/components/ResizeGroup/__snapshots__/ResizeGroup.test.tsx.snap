@@ -11,6 +11,7 @@ exports[`ResizeGroup renders the ResizeGroup correctly 1`] = `
       }
 >
   <div
+    data-automation-id="visibleContent"
     style={
       Object {
         "position": "fixed",

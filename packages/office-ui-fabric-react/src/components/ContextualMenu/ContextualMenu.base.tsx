@@ -851,7 +851,11 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
      * sets the page focus but does not scroll the parent element.
      */
     if ((this._host as any).setActive) {
-      (this._host as any).setActive();
+      try {
+        (this._host as any).setActive();
+      } catch (e) {
+        /* no-op */
+      }
     } else {
       this._host.focus();
     }

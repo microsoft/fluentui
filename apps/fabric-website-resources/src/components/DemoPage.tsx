@@ -49,6 +49,7 @@ export const DemoPage: React.StatelessComponent<IDemoPageProps> = componentPageP
       componentStatus={
         componentPageProps.componentStatus ? <ComponentStatus {...componentPageProps.componentStatus} /> : undefined
       }
+      isFeedbackVisible={componentPageProps.isFeedbackVisible}
     />
   );
 };

@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix various typings/code bugs.",
+      "comment": "Changes to fix auto-scroll to top issue when state changed, adding an if st",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "cliff.koh@microsoft.com"
+  "email": "akashperfect@gmail.com"
 }
