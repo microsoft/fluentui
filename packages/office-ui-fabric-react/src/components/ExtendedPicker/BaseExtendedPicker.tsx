@@ -118,7 +118,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
                   onInputValueChange={this.onInputChange}
                   aria-activedescendant={activeDescendant}
                   aria-owns="suggestion-list"
-                  aria-expanded="true"
+                  aria-expanded={this.floatingPicker.current ? this.floatingPicker.current.isSuggestionsShown : false}
                   aria-haspopup="true"
                   autoCapitalize="off"
                   autoComplete="off"
