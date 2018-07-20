@@ -8,7 +8,7 @@ import { IDetailsRowProps } from '../DetailsList/DetailsRow';
 import { IDetailsHeaderProps } from './DetailsHeader';
 import { IWithViewportProps, IViewport } from '../../utilities/decorators/withViewport';
 import { IList, IListProps, ScrollToMode } from '../List/index';
-import { ITheme, IStyle } from '../..';
+import { ITheme, IStyle } from '../../Styling';
 
 export { IDetailsHeaderProps };
 

@@ -1,11 +1,16 @@
 import * as React from 'react';
-import { DashboardGridLayout } from '../DashboardGridLayout';
-import { DashboardGridBreakpointLayouts, Size } from '../DashboardGridLayout.types';
-import { CardSize, Priority, CardContentType } from '../../Card/Card.types';
-import { Card } from '../../Card';
-import { IThumbnailItemProps } from '../../Card/ThumbnailList/ThumbnailList.types';
-import { IAction } from '../../Card/ActionBar/ActionBar.types';
-import { ChartType } from '../../Card/Chart/Chart.types';
+import {
+  Card,
+  CardContentType,
+  CardSize,
+  ChartType,
+  DashboardGridBreakpointLayouts,
+  DashboardGridLayout,
+  IAction,
+  IThumbnailItemProps,
+  Priority,
+  Size
+} from '@uifabric/dashboard';
 
 export class DashboardGridLayoutCardExample extends React.Component<{}, {}> {
   public render(): JSX.Element {

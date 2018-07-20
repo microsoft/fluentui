@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ScrollablePane } from 'office-ui-fabric-react/lib/ScrollablePane';
 import { Sticky, StickyPositionType } from 'office-ui-fabric-react/lib/Sticky';
-import { lorem } from '../../../utilities/exampleData';
+import { lorem } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import './ScrollablePane.Example.scss';
 
 const colors = ['#eaeaea', '#dadada', '#d0d0d0', '#c8c8c8', '#a6a6a6', '#c7e0f4', '#71afe5', '#eff6fc', '#deecf9'];

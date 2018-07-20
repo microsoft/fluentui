@@ -45,28 +45,28 @@ export class Nav extends React.Component<INavProps, INavState> {
 
     return (
       <span>
-      {this._getSearchBox(title)}
-      <li
-        className={css(
-          styles.link,
-          _isPageActive(page) ? styles.isActive : '',
-          _hasActiveChild(page) ? styles.hasActiveChild : '',
-          page.isHomePage ? styles.isHomePage : '',
-          page.className ? styles[page.className] : ''
-        )}
-        key={linkIndex}
-      >
-        {page.isUhfLink && location.hostname !== 'localhost' ? (
-          ''
-        ) : (
-          <a href={page.url} onClick={this.props.onLinkClick} title={title} aria-label={ariaLabel}>
-            {page.title}
-          </a>
-        )}
+        {this._getSearchBox(title)}
+        <li
+          className={css(
+            styles.link,
+            _isPageActive(page) ? styles.isActive : '',
+            _hasActiveChild(page) ? styles.hasActiveChild : '',
+            page.isHomePage ? styles.isHomePage : '',
+            page.className ? styles[page.className] : ''
+          )}
+          key={linkIndex}
+        >
+          {page.isUhfLink && location.hostname !== 'localhost' ? (
+            ''
+          ) : (
+            <a href={page.url} onClick={this.props.onLinkClick} title={title} aria-label={ariaLabel}>
+              {page.title}
+            </a>
+          )}
 
-        {childLinks}
-      </li>
-    </span>
+          {childLinks}
+        </li>
+      </span>
     );
   }
 
@@ -107,7 +107,7 @@ export class Nav extends React.Component<INavProps, INavState> {
     }
   }
 
-   private _renderLinkList(pages: INavPage[], isSubMenu: boolean): React.ReactElement<{}> {
+  private _renderLinkList(pages: INavPage[], isSubMenu: boolean): React.ReactElement<{}> {
     const { searchQuery } = this.state;
 
     const links: React.ReactElement<{}>[] = pages
@@ -117,23 +117,23 @@ export class Nav extends React.Component<INavProps, INavState> {
           page.title.toLowerCase().indexOf(searchQuery.toLowerCase()) > -1 ||
           page.url.toLowerCase().indexOf('#/components/')
       )
-       .map((page: INavPage, linkIndex: number) => this._renderLink(page, linkIndex));
+      .map((page: INavPage, linkIndex: number) => this._renderLink(page, linkIndex));
 
-     return (
-       <ul className={css(styles.links, isSubMenu ? styles.isSubMenu : '')} aria-label="Main website navigation">
-         {links}
-       </ul>
-     );
-   }
+    return (
+      <ul className={css(styles.links, isSubMenu ? styles.isSubMenu : '')} aria-label="Main website navigation">
+        {links}
+      </ul>
+    );
+  }
 
   private _onChangeQuery(newValue): void {
     this.setState({
       searchQuery: newValue
     });
   }
- }
+}
 
- // A tag used for resolving links.
+// A tag used for resolving links.
 const _urlResolver = document.createElement('a');
 
 function _isPageActive(page: INavPage): boolean {
