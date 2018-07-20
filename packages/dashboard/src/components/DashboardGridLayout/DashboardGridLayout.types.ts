@@ -67,9 +67,9 @@ export interface IDashboardCardLayout {
 
   /**
    * Whether cards in this grid are allowed to drag
-   * @default true
+   * @default false
    */
-  isDraggable?: boolean;
+  disableDrag?: boolean;
 
   /**
    * Whether cards in this grid are allowed to get resized
