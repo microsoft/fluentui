@@ -1,4 +1,3 @@
-
 import * as React from 'react';
 import { BaseComponent, css, createRef } from '../../Utilities';
 import { TeachingBubbleContent } from './TeachingBubbleContent';
@@ -12,10 +11,7 @@ export interface ITeachingBubbleState {
   isTeachingBubbleVisible?: boolean;
 }
 
-export class TeachingBubble extends BaseComponent<
-  ITeachingBubbleProps,
-  ITeachingBubbleState
-  > {
+export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachingBubbleState> {
   public static defaultProps = {
     /**
      * Default calloutProps is deprecated in favor of private _defaultCalloutProps.
@@ -38,7 +34,8 @@ export class TeachingBubble extends BaseComponent<
   constructor(props: ITeachingBubbleProps) {
     super(props);
 
-    this.state = {};
+    this.state = {
+    };
 
     this._defaultCalloutProps = {
       beakWidth: 16,
