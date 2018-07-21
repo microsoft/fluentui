@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { customizable } from '../../../Utilities';
-import { StackedBarChart, IStackedBarChartProps } from '../../StackedBarChart';
+import { customizable } from 'office-ui-fabric-react/lib/Utilities';
+import { StackedBarChart, IStackedBarChartProps } from '@uifabric/charting/lib/StackedBarChart';
 
 @customizable('StackedBarChartBasicExample', ['theme', 'styles'])
 export class StackedBarChartBasicExample extends React.Component<IStackedBarChartProps, {}> {
