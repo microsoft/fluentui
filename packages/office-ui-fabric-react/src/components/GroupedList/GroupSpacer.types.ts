@@ -1,5 +1,5 @@
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../..';
+import { IStyleFunctionOrObject } from '../../Utilities';
 
 export interface IGroupSpacerProps {
   /**

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
-import { CollapsibleSection, CollapsibleSectionTitle } from '..';
+import { CollapsibleSection, CollapsibleSectionTitle } from '@uifabric/experiments';
 import { lorem } from '@uifabric/example-app-base';
 
 export interface IFileItem {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IPositioningContainerTypes } from './PositioningContainer.types';
 import { getClassNames } from './PositioningContainer.styles';
-import { Layer } from '../../Layer';
+import { Layer } from '../../../Layer';
 
 // Utilites/Helpers
 import { DirectionalHint } from '../../../common/DirectionalHint';
