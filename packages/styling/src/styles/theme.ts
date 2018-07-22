@@ -2,13 +2,16 @@ import { Customizations } from '@uifabric/utilities';
 import { IPalette, ISemanticColors, ITheme, IPartialTheme } from '../interfaces/index';
 import { DefaultFontStyles } from './DefaultFontStyles';
 import { DefaultPalette } from './DefaultPalette';
+import { DefaultTypography } from './DefaultTypography';
 import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
+import { IFontType } from '../interfaces/ITypography';
 
 let _theme: ITheme = {
   palette: DefaultPalette,
   semanticColors: _makeSemanticColorsFromPalette(DefaultPalette, false, false),
   fonts: DefaultFontStyles,
   isInverted: false,
+  typography: DefaultTypography,
   disableGlobalClassNames: false
 };
 let _onThemeChangeCallbacks: Array<(theme: ITheme) => void> = [];
@@ -105,6 +108,25 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
     ...theme.semanticColors
   };
 
+  const typography = { ...DefaultTypography, ...theme.typography };
+
+  const { types } = typography;
+  for (const typeName in types) {
+    if (types.hasOwnProperty(typeName)) {
+      const type = types[typeName];
+
+      if (type.fontFamily && typography.families[type.fontFamily]) {
+        type.fontFamily = typography.families[type.fontFamily];
+      }
+      if (type.fontSize && typography.sizes[type.fontSize]) {
+        type.fontSize = typography.sizes[type.fontSize];
+      }
+      if (type.fontWeight && typography.families[type.fontWeight]) {
+        type.fontWeight = typography.families[type.fontWeight];
+      }
+    }
+  }
+
   return {
     palette: newPalette,
     fonts: {
@@ -113,7 +135,8 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
     },
     semanticColors: newSemanticColors,
     isInverted: !!theme.isInverted,
-    disableGlobalClassNames: !!theme.disableGlobalClassNames
+    disableGlobalClassNames: !!theme.disableGlobalClassNames,
+    typography: typography
   };
 }
 
@@ -123,6 +146,7 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
   let toReturn: ISemanticColors = {
     bodyBackground: p.white,
     bodyFrameBackground: p.white,
+    bodyFrameDivider: p.neutralLight,
     bodyText: p.neutralPrimary,
     bodyTextChecked: p.black,
     bodySubtext: p.neutralSecondary,

@@ -1,11 +1,11 @@
 {
   "changes": [
     {
-      "comment": "",
       "packageName": "@uifabric/fabric-website-resources",
-      "type": "none"
+      "comment": "Addressing bad imports.",
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/fabric-website-resources",
-  "email": "kchau@microsoft.com"
+  "email": "dzearing@microsoft.com"
 }

@@ -1,0 +1,11 @@
+{
+ "changes": [
+   {
+     "packageName": "@uifabric/dashboard",
+     "comment": "Added disable drag prop to card to allow recommendation card to be non draggable",
+     "type": "minor"
+   }
+ ],
+ "packageName": "@uifabric/dashboard",
+ "email": "saakhta@microsoft.com"
+}

@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { BaseComponent } from '../../../Utilities';
+import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { TagPicker } from 'office-ui-fabric-react/lib/components/pickers/TagPicker/TagPicker';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { ITagPickerDemoPageState } from 'office-ui-fabric-react/lib/components/pickers/examples/ITagPickerDemoPageState';
-import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
+import * as exampleStylesImport from 'office-ui-fabric-react/lib/common/_exampleStyles.scss';
 const exampleStyles: any = exampleStylesImport;
 
 const _testTags = [

@@ -38,6 +38,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'DonutChart',
           name: 'DonutChart',
           url: '#/examples/Donutchart'
+        },
+        {
+          component: require<any>('../components/StackedBarChart/StackedBarChartPage').StackedBarChartPage,
+          key: 'StackedBarChart',
+          name: 'StackedBarChart',
+          url: '#/examples/stackedbarchart'
         }
       ]
     }
