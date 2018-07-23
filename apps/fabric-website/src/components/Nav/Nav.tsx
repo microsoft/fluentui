@@ -153,15 +153,6 @@ export class Nav extends React.Component<INavProps, INavState> {
     );
   }
 
-  private _onLinkClick = (ev: React.MouseEvent<{}>) => {
-    if (this.props.onLinkClick) {
-      return this.props.onLinkClick(ev);
-    }
-    this.setState({
-      searchQuery: ''
-    });
-  };
-
   private _getSearchBox(val) {
     if (val === 'Components') {
       return (
@@ -217,6 +208,15 @@ export class Nav extends React.Component<INavProps, INavState> {
       );
     }
   }
+
+  private _onLinkClick = (ev: React.MouseEvent<{}>) => {
+    if (this.props.onLinkClick) {
+      return this.props.onLinkClick(ev);
+    }
+    this.setState({
+      searchQuery: ''
+    });
+  };
 
   private _onChangeQuery(newValue): void {
     this.setState({
