@@ -12,7 +12,6 @@ const styles: any = stylesImport;
 import { INavProps, INavPage } from './Nav.types';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
 
-
 export interface INavState {
   searchQuery: string;
   defaultFilterState: boolean;
@@ -25,8 +24,8 @@ export class Nav extends React.Component<INavProps, INavState> {
 
     this.state = {
       searchQuery: '',
-      defaultFilterState: false,
-      filterState: false
+      defaultFilterState: true,
+      filterState: true
     };
   }
 
@@ -56,7 +55,6 @@ export class Nav extends React.Component<INavProps, INavState> {
         .map((page: INavPage, linkIndex: number) => {
           if(page.isCategory && !filterState) {
             return (
-              // TODO: Add filter here to alphabetized
               <span>
                 {page.pages.map((innerPage:INavPage, innerLinkIndex) => this._renderLink(innerPage, innerLinkIndex))}
               </span>
@@ -88,10 +86,25 @@ export class Nav extends React.Component<INavProps, INavState> {
     }
   }
 
+  private _renderSortedLinks(pages: INavPage[]): React.ReactElement<{}> {
+    const links: INavPage[] = [];
+    pages.map((page: INavPage) => page.pages.map((link: INavPage) => links.push(link)));
+    links.sort((l1, l2) => {
+      if(l1.title>l2.title) {
+        return 1;
+      } else if(l1.title<l2.title) {
+        return -1;
+      }
+      return 0;
+    });
+
+    return this._renderLinkList(links, true);
+  }
+
   private _renderLink(page: INavPage, linkIndex: number): React.ReactElement<{}> {
     const ariaLabel = page.pages ? 'Hit enter to open sub menu, tab to access sub menu items.' : '';
     const title = page.title === 'Fabric' ? 'Home page' : page.title;
-    const childLinks = page.pages ? this._renderLinkList(page.pages, true) : null;
+    const childLinks = (page.pages && title === 'Components' && !this.state.filterState) ? this._renderSortedLinks(page.pages) : (page.pages) ? this._renderLinkList(page.pages, true) : null;
     const { searchQuery } = this.state;
     const searchRegEx = new RegExp(searchQuery, 'i');
     const text = page.title;
@@ -145,8 +158,7 @@ export class Nav extends React.Component<INavProps, INavState> {
       return this.props.onLinkClick(ev);
     }
     this.setState({
-      searchQuery: '',
-      // expandAll: false
+      searchQuery: ''
     });
   };
 
@@ -211,12 +223,11 @@ export class Nav extends React.Component<INavProps, INavState> {
       searchQuery: newValue,
       filterState: false
     });
-    if(newValue === ''){
+    if(newValue === '') {
       this.setState({
         filterState: this.state.defaultFilterState
       });
     }
-    
   }
 
   private _setCategories(): void {
