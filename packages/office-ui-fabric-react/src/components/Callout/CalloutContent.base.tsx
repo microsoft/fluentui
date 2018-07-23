@@ -153,6 +153,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     } = this.props;
     const {
       getStyles,
+      style,
       role,
       ariaLabel,
       ariaDescribedBy,
@@ -190,7 +191,12 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
       }
     );
 
-    const overflowStyle: React.CSSProperties = overflowYHidden ? { overflowY: 'hidden', maxHeight: contentMaxHeight } : { maxHeight: contentMaxHeight };
+    const overflowStyle: React.CSSProperties = {
+      ...style,
+      maxHeight: contentMaxHeight,
+      ...(overflowYHidden && { overflowY: 'hidden' })
+    };
+
     const visibilityStyle: React.CSSProperties | undefined = this.props.hidden ? { visibility: 'hidden' } : undefined;
     // React.CSSProperties does not understand IRawStyle, so the inline animations will need to be cast as any for now.
     const content = (
