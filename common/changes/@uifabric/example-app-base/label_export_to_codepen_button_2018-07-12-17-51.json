@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "Updating example pages to provide codepen script content.",
+      "packageName": "@uifabric/example-app-base",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/example-app-base",
+  "email": "avitalbaral99@gmail.com"
+}
