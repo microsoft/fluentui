@@ -42,7 +42,7 @@ import { IList, List, IListProps, ScrollToMode } from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
 import { GetGroupCount } from '../../utilities/groupedList/GroupedListUtility';
 
-export const getClassNames = classNamesFunction<IDetailsListStyleProps, IDetailsListStyles>();
+const getClassNames = classNamesFunction<IDetailsListStyleProps, IDetailsListStyles>();
 
 export interface IDetailsListState {
   focusedItemIndex: number;
@@ -494,7 +494,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       getRowAriaDescribedBy,
       checkButtonAriaLabel,
       checkboxCellClassName,
-      groupProps
+      groupProps,
+      useReducedRowRenderer
     } = this.props;
     const collapseAllVisibility = groupProps && groupProps.collapseAllVisibility;
     const selection = this._selection;
@@ -521,7 +522,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       getRowAriaLabel: getRowAriaLabel,
       getRowAriaDescribedBy: getRowAriaDescribedBy,
       checkButtonAriaLabel: checkButtonAriaLabel,
-      checkboxCellClassName: checkboxCellClassName
+      checkboxCellClassName: checkboxCellClassName,
+      useReducedRowRenderer: useReducedRowRenderer
     };
 
     if (!item) {
@@ -879,14 +881,18 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     if (!el) {
       return;
     }
-    const index = Number(el.getAttribute('data-item-index'));
-    if (index >= 0) {
-      if (onActiveItemChanged) {
-        onActiveItemChanged(items[index], index, ev);
+
+    // Check and assign index only if the event was raised from any DetailsRow element
+    if (el.getAttribute('data-item-index')) {
+      const index = Number(el.getAttribute('data-item-index'));
+      if (index >= 0) {
+        if (onActiveItemChanged) {
+          onActiveItemChanged(items[index], index, ev);
+        }
+        this.setState({
+          focusedItemIndex: index
+        });
       }
-      this.setState({
-        focusedItemIndex: index
-      });
     }
   }
 

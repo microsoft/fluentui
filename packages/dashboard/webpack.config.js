@@ -19,7 +19,8 @@ module.exports = resources.createConfig(BUNDLE_NAME, IS_PRODUCTION, {
   resolve: {
     alias: {
       '@uifabric/dashboard/src': path.join(__dirname, 'src'),
-      '@uifabric/dashboard/lib': path.join(__dirname, 'lib')
+      '@uifabric/dashboard/lib': path.join(__dirname, 'lib'),
+      '@uifabric/dashboard': path.join(__dirname, 'lib')
     }
   }
 });

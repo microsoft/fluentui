@@ -1,19 +1,18 @@
 {
   "name": "@uifabric/dashboard",
-  "version": "0.4.1",
+  "version": "0.6.0",
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
     "@types/react": "16.3.16",
     "@types/react-dom": "16.0.5",
-    "@types/react-grid-layout": "^0.16.4",
-    "@uifabric/charting": "^0.3.0",
-    "@uifabric/example-app-base": ">=6.5.0 <7.0.0",
-    "@uifabric/experiments": ">=6.16.0 <7.0.0",
+    "@uifabric/charting": "^0.9.0",
+    "@uifabric/example-app-base": ">=6.6.0 <7.0.0",
+    "@uifabric/experiments": ">=6.19.0 <7.0.0",
     "css-loader": "^0.15.1",
-    "office-ui-fabric-react": ">=6.37.0 <7.0.0",
+    "office-ui-fabric-react": ">=6.39.0 <7.0.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-grid-layout": "^0.16.6",
+    "react-grid-layout": "samiyaakhtar/react-grid-layout",
     "style-loader": "^0.21.0"
   },
   "main": "lib-commonjs/index.js",
@@ -29,9 +28,14 @@
     "update-snapshots": "node ../../scripts/build.js jest -u"
   },
   "devDependencies": {
+    "@types/enzyme": "3.1.5",
+    "@types/enzyme-adapter-react-16": "1.0.1",
     "@types/jest": "23.0.0",
     "@types/webpack-env": "1.13.0",
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.0",
     "office-ui-fabric-react-tslint": ">=6.0.0 <7.0.0",
-    "@types/react-test-renderer": "^16.0.0"
+    "@types/react-test-renderer": "^16.0.0",
+    "@uifabric/jest-serializer-merge-styles": ">=6.0.3 <7.0.0"
   }
 }

@@ -124,6 +124,11 @@ export interface ICalloutProps {
   className?: string;
 
   /**
+   * CSS style to apply to the callout.
+   */
+  style?: React.CSSProperties;
+
+  /**
    * Optional callback when the layer content has mounted.
    */
   onLayerMounted?: () => void;
@@ -158,6 +163,12 @@ export interface ICalloutProps {
    * To be used when expanding the content dynamically so that callout can adjust its position.
    */
   finalHeight?: number;
+
+  /**
+   * Manually set OverflowYHidden style prop to true on calloutMain element
+   * A variety of callout load animations will need this to hide the scollbar that can appear
+   */
+  hideOverflow?: boolean;
 
   /**
    * If true then the callout will attempt to focus the first focusable element that it contains.

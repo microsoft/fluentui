@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/charting",
-      "comment": "Reverting the TypeScript bump, to un",
+      "comment": "Addressing bad imports.",
       "type": "minor"
     }
   ],

@@ -1,4 +1,4 @@
-import { IStyle } from './IStyle';
+import { IStyle, IStyleBaseArray } from './IStyle';
 import { Stylesheet } from './Stylesheet';
 
 /**
@@ -7,7 +7,7 @@ import { Stylesheet } from './Stylesheet';
  */
 export function extractStyleParts(
   ...args: (IStyle | IStyle[] | false | null | undefined)[]
-): { classes: string[]; objects: IStyle[] } {
+): { classes: string[]; objects: IStyleBaseArray } {
   const classes: string[] = [];
   const objects: {}[] = [];
   const stylesheet = Stylesheet.getInstance();

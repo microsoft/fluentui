@@ -129,7 +129,7 @@ export const AppDefinition: IAppDefinition = {
         },
         {
           component: require<any>('./components/pages/DetailsList/DetailsListCustomRowsPage').DetailsListCustomRowsPage,
-          key: 'DetailsList',
+          key: 'DetailsList - CustomRows',
           name: 'DetailsList - CustomRows',
           url: '#/examples/detailslist/CustomRows'
         },

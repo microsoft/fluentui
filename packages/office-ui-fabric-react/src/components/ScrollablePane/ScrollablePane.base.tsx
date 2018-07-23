@@ -152,7 +152,11 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
 
   public componentDidUpdate(prevProps: IScrollablePaneProps, prevState: IScrollablePaneState) {
     const initialScrollPosition = this.props.initialScrollPosition;
-    if (this.contentContainer && initialScrollPosition && prevProps.initialScrollPosition !== initialScrollPosition) {
+    if (
+      this.contentContainer &&
+      typeof initialScrollPosition === 'number' &&
+      prevProps.initialScrollPosition !== initialScrollPosition
+    ) {
       this.contentContainer.scrollTop = initialScrollPosition;
     }
 

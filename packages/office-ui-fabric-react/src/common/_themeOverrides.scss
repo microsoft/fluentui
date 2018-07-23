@@ -13,7 +13,6 @@ $ms-color-neutralDark: "[theme:neutralDark, default: #212121]";
 $ms-color-neutralPrimary: "[theme:neutralPrimary, default: #333333]";
 $ms-color-neutralPrimaryAlt: "[theme:neutralPrimaryAlt, default: #3c3c3c]";
 $ms-color-neutralSecondary: "[theme:neutralSecondary, default: #666666]";
-$ms-color-neutralSecondaryAlt: "[theme:neutralSecondaryAlt, default: #767676]";
 $ms-color-neutralTertiary: "[theme:neutralTertiary, default: #a6a6a6]";
 $ms-color-neutralTertiaryAlt: "[theme:neutralTertiaryAlt, default: #c8c8c8]";
 $ms-color-neutralQuaternary: "[theme:neutralQuaternary, default: #d0d0d0]";
@@ -67,3 +66,6 @@ $ms-color-info: "[theme:info, default: #666666]";
 $ms-color-infoText: "[theme:infoText, default: #333333]";
 $ms-color-infoBackground: "[theme:infoBackground, default: #f4f4f4]";
 $ms-color-orangeLighter: "[theme:orangeLighter, default: #ea4300]";
+
+// DEPRECATED
+$ms-color-neutralSecondaryAlt: "[theme:neutralSecondaryAlt, default: #767676]";

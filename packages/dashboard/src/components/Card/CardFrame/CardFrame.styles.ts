@@ -4,7 +4,7 @@ import { IButtonStyles } from 'office-ui-fabric-react';
 const cardTitleBox = 40;
 
 export const getStyles = (props: ICardFrameProps): ICardFrameStyles => {
-  const { titleTextColor, fontFamily, fontSize, seperatorColor, href } = props;
+  const { titleTextColor, fontFamily, fontSize, seperatorColor, href, disableDrag } = props;
 
   return {
     root: {
@@ -21,7 +21,7 @@ export const getStyles = (props: ICardFrameProps): ICardFrameStyles => {
       borderBottomColor: seperatorColor ? seperatorColor : 'rgba(0,0,0,0.1)',
       borderTopLeftRadius: '2px',
       borderTopRightRadius: '2px',
-      cursor: 'move',
+      cursor: disableDrag ? '' : 'move',
       transition: 'background-color .2s,color .2s,margin .2s,padding .2s,border-color .2s',
       selectors: {
         ':hover': {
