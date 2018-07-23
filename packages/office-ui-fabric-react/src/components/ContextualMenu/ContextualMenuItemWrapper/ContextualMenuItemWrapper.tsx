@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BaseComponent } from '../../../Utilities';
 import { IContextualMenuItemWrapperProps } from './ContextualMenuItemWrapper.types';
-import { IContextualMenuItem } from '../../ContextualMenu';
+import { IContextualMenuItem } from '../../../ContextualMenu';
 
 export class ContextualMenuItemWrapper extends BaseComponent<IContextualMenuItemWrapperProps, {}> {
   protected _onItemMouseEnter = (ev: React.MouseEvent<HTMLElement>): void => {

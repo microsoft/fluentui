@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { DetailsList, IGroup, IGroupDividerProps } from 'office-ui-fabric-react/lib/DetailsList';
-import { createListItems, createGroups } from '../../../utilities/exampleData';
+import { createListItems, createGroups } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import './DetailsListExample.scss';
 
 const ITEMS_PER_GROUP = 20;
@@ -48,6 +48,7 @@ export class DetailsListCustomGroupHeadersExample extends React.Component {
               </div>
             )
           }}
+          useReducedRowRenderer={true}
         />
       </div>
     );

@@ -32,6 +32,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'ProgressBarChart',
           name: 'ProgressBarChart',
           url: '#/examples/progressbarchart'
+        },
+        {
+          component: require<any>('../components/StackedBarChart/StackedBarChartPage').StackedBarChartPage,
+          key: 'StackedBarChart',
+          name: 'StackedBarChart',
+          url: '#/examples/stackedbarchart'
         }
       ]
     }

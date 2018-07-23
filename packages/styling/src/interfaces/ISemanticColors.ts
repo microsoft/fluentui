@@ -57,11 +57,20 @@ export interface ISemanticColors {
   bodyBackground: string;
 
   /**
-   * A special semantic slot that will always be the same or darker (not necessarily stronger) than the bodyBackground slot, even in
-   * an inverted theme. This is used for zones near the edge of the page, to provide a vignetting effect. This is especially effective
-   * with zones near the edge of the page in stronger themes or if it uses a variant theme.
+   * The color for chrome adjacent to an area with bodyBackground.
+   * This can be used to provide visual separation of zones when using stronger colors, when using a divider line is not desired.
+   * In most themes, this should match the color of bodyBackground.
+   * See also: bodyFrameDivider
    */
   bodyFrameBackground: string;
+
+  /**
+   * Used as the border between a zone with bodyFrameBackground and a zone with bodyBackground.
+   * If bodyBackground and bodyFrameBackground are different, this should be the same color as bodyFrameBackground
+   * in order to visually disappear.
+   * See also: bodyFrameBackground
+   */
+  bodyFrameDivider: string;
 
   /**
    * The default color for text.
@@ -156,8 +165,8 @@ export interface ISemanticColors {
    */
   inputBorder: string;
 
-  /** The border of a small input control in its resting unchecked state; e.g. the box of an unchecked checkbox.
-   *
+  /**
+   * The border of a small input control in its resting unchecked state; e.g. the box of an unchecked checkbox.
    */
   smallInputBorder: string;
 

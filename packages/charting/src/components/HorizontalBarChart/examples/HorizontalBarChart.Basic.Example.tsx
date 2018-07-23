@@ -1,6 +1,5 @@
 import * as React from 'react';
-
-import { HorizontalBarChart, IHorizontalBarChartProps } from '../../HorizontalBarChart';
+import { HorizontalBarChart, IHorizontalBarChartProps } from '@uifabric/charting';
 
 export class HorizontalBarChartBasicExample extends React.Component<IHorizontalBarChartProps, {}> {
   constructor(props: IHorizontalBarChartProps) {

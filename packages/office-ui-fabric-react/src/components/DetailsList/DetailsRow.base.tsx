@@ -148,6 +148,20 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowProps, IDetailsRowS
     });
   }
 
+  public shouldComponentUpdate(nextProps: IDetailsRowProps, nextState: IDetailsRowState): boolean {
+    if (this.props.useReducedRowRenderer) {
+      if (this.state.selectionState) {
+        const newSelectionState = this._getSelectionState(nextProps);
+        if (this.state.selectionState.isSelected !== newSelectionState.isSelected) {
+          return true;
+        }
+      }
+      return shallowCompare(this.props, nextProps);
+    } else {
+      return true;
+    }
+  }
+
   public render(): JSX.Element {
     const {
       className,
