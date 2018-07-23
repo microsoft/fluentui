@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { customizable } from '../../../Utilities';
-import { ProgressBarChart, IProgressBarChartProps } from '../../ProgressBarChart';
+import { customizable } from '@uifabric/charting/lib/Utilities';
+import { ProgressBarChart, IProgressBarChartProps } from '@uifabric/charting/lib/ProgressBarChart';
 
 @customizable('ProgressBarChartBasicExample', ['theme', 'styles'])
 export class ProgressBarChartBasicExample extends React.Component<IProgressBarChartProps, {}> {
