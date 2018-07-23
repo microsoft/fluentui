@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { customizable } from '@uifabric/charting/lib/Utilities';
+import { customizable } from 'office-ui-fabric-react/lib/Utilities';
 import { ProgressBarChart, IProgressBarChartProps } from '@uifabric/charting/lib/ProgressBarChart';
 
 @customizable('ProgressBarChartBasicExample', ['theme', 'styles'])
