@@ -3,7 +3,7 @@
     {
       "packageName": "@uifabric/styling",
       "comment": "Add unregisterIcons to styling export",
-      "type": "patch"
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/styling",
