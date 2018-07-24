@@ -20,7 +20,10 @@ const GlobalClassNames = {
   dropdownItems: 'ms-Dropdown-items',
   dropdownDivider: 'ms-Dropdown-divider',
   dropdownOptionText: 'ms-Dropdown-optionText',
-  dropdownItemHeader: 'ms-Dropdown-header'
+  dropdownItemHeader: 'ms-Dropdown-header',
+  /** legacy */
+  titleIsPlaceHolder: 'ms-Dropdown-titleIsPlaceHolder',
+  titleHasError: 'ms-Dropdown-title--hasError'
 };
 
 const DROPDOWN_HEIGHT = 32;
@@ -90,6 +93,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       boxSizing: 'border-box',
       cursor: 'pointer',
       display: 'block',
+      padding: '4px 16px',
       width: '100%',
       minHeight: DROPDOWN_ITEMHEIGHT,
       lineHeight: 20,
@@ -102,11 +106,6 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       selectors: {
         [HighContrastSelector]: {
           borderColor: 'Window'
-        },
-        '&.ms-Dropdown-item.ms-Dropdown-item': {
-          // todo: resolve  this hack before checkin.
-          // Checkbox has a global classname (ms-checkbox) that sets a 15px top padding which wins.
-          padding: '4px 16px'
         },
         '&:hover': {
           color: 'inherit'
@@ -150,21 +149,21 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
         outline: 0,
         userSelect: 'none',
         selectors: {
-          '&:hover .title': [
+          ['&:hover .' + globalClassnames.title]: [
             rootHoverFocusActiveSelectorNeutralDarkMixin,
             {
               borderColor: theme.palette.neutralDark
             },
             highContrastBorderState
           ],
-          '&:focus .title': [
+          ['&:focus .' + globalClassnames.title]: [
             rootHoverFocusActiveSelectorNeutralDarkMixin,
             {
               borderColor: theme.palette.themePrimary
             },
             highContrastItemAndTitleStateMixin
           ],
-          '&:active .title': [
+          ['&:active .' + globalClassnames.title]: [
             rootHoverFocusActiveSelectorNeutralDarkMixin,
             {
               borderColor: theme.palette.themeDark
@@ -172,8 +171,8 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
             highContrastBorderState
           ],
 
-          '&:hover .caretDown': rootHoverFocusActiveSelectorNeutralDarkMixin,
-          '&:focus .caretDown': [
+          ['&:hover .' + globalClassnames.caretDown]: rootHoverFocusActiveSelectorNeutralDarkMixin,
+          ['&:focus .' + globalClassnames.caretDown]: [
             rootHoverFocusActiveSelectorNeutralDarkMixin,
             {
               selectors: {
@@ -184,15 +183,15 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
               }
             }
           ],
-          '&:active .caretDown': rootHoverFocusActiveSelectorNeutralDarkMixin,
+          ['&:active .' + globalClassnames.caretDown]: rootHoverFocusActiveSelectorNeutralDarkMixin,
 
-          '&:hover .titleIsPlaceHolder': rootHoverFocusActiveSelectorNeutralSecondaryMixin,
-          '&:focus .titleIsPlaceHolder': rootHoverFocusActiveSelectorNeutralSecondaryMixin,
-          '&:active .titleIsPlaceHolder': rootHoverFocusActiveSelectorNeutralSecondaryMixin,
+          ['&:hover .' + globalClassnames.titleIsPlaceHolder]: rootHoverFocusActiveSelectorNeutralSecondaryMixin,
+          ['&:focus .' + globalClassnames.titleIsPlaceHolder]: rootHoverFocusActiveSelectorNeutralSecondaryMixin,
+          ['&:active .' + globalClassnames.titleIsPlaceHolder]: rootHoverFocusActiveSelectorNeutralSecondaryMixin,
 
-          '&:hover .titleIsError': borderColorError,
-          '&:active .titleIsError': borderColorError,
-          '&:focus .titleIsError': borderColorError
+          ['&:hover .' + globalClassnames.titleHasError]: borderColorError,
+          ['&:active .' + globalClassnames.titleHasError]: borderColorError,
+          ['&:focus .' + globalClassnames.titleHasError]: borderColorError
         }
       },
       className,
@@ -219,12 +218,12 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
         textOverflow: 'ellipsis'
       },
       isRenderingPlaceholder && [
-        'ms-Dropdown-titleIsPlaceHolder',
+        globalClassnames.titleIsPlaceHolder,
         {
           color: theme.semanticColors.inputPlaceholderText
         }
       ],
-      hasError && borderColorError,
+      hasError && [globalClassnames.titleHasError, borderColorError],
       disabled && {
         backgroundColor: theme.semanticColors.disabledBackground,
         border: 'none',
@@ -239,7 +238,6 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       }
     ],
     caretDownWrapper: [
-      globalClassnames.caretDownWrapper,
       {
         position: 'absolute',
         top: 1,

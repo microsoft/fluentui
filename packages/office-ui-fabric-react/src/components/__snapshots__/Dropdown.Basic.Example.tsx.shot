@@ -64,63 +64,63 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             position: relative;
             user-select: none;
           }
-          &:hover .title {
+          &:hover .ms-Dropdown-title {
             border-color: #212121;
             color: #212121;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .title {
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
             border-color: Highlight;
           }
-          &:focus .title {
+          &:focus .ms-Dropdown-title {
             border-color: #0078d4;
             color: #212121;
           }
-          @media screen and (-ms-high-contrast: active){&:focus .title {
+          @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
             background-color: Highlight;
             border-color: Highlight;
             color: Highlight;
           }
-          @media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white){&:focus .title {
+          @media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
             -ms-high-contrast-adjust: none;
           }
-          &:active .title {
+          &:active .ms-Dropdown-title {
             border-color: #005a9e;
             color: #212121;
           }
-          @media screen and (-ms-high-contrast: active){&:active .title {
+          @media screen and (-ms-high-contrast: active){&:active .ms-Dropdown-title {
             border-color: Highlight;
           }
-          &:hover .caretDown {
+          &:hover .ms-Dropdown-caretDown {
             color: #212121;
           }
-          &:focus .caretDown {
+          &:focus .ms-Dropdown-caretDown {
             color: #212121;
           }
-          @media screen and (-ms-high-contrast: active){&:focus .caretDown {
+          @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
             color: HighlightText;
           }
-          @media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white){&:focus .caretDown {
+          @media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-caretDown {
             -ms-high-contrast-adjust: none;
           }
-          &:active .caretDown {
+          &:active .ms-Dropdown-caretDown {
             color: #212121;
           }
-          &:hover .titleIsPlaceHolder {
+          &:hover .ms-Dropdown-titleIsPlaceHolder {
             color: #666666;
           }
-          &:focus .titleIsPlaceHolder {
+          &:focus .ms-Dropdown-titleIsPlaceHolder {
             color: #666666;
           }
-          &:active .titleIsPlaceHolder {
+          &:active .ms-Dropdown-titleIsPlaceHolder {
             color: #666666;
           }
-          &:hover .titleIsError {
+          &:hover .ms-Dropdown-title--hasError {
             border-color: #a80000;
           }
-          &:active .titleIsError {
+          &:active .ms-Dropdown-title--hasError {
             border-color: #a80000;
           }
-          &:focus .titleIsError {
+          &:focus .ms-Dropdown-title--hasError {
             border-color: #a80000;
           }
       data-is-focusable={true}
@@ -177,7 +177,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       </span>
       <span
         className=
-            ms-Dropdown-caretDownWrapper
+
             {
               height: 32px;
               line-height: 30px;
@@ -396,63 +396,63 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             position: relative;
             user-select: none;
           }
-          &:hover .title {
+          &:hover .ms-Dropdown-title {
             border-color: #212121;
             color: #212121;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .title {
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
             border-color: Highlight;
           }
-          &:focus .title {
+          &:focus .ms-Dropdown-title {
             border-color: #0078d4;
             color: #212121;
           }
-          @media screen and (-ms-high-contrast: active){&:focus .title {
+          @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
             background-color: Highlight;
             border-color: Highlight;
             color: Highlight;
           }
-          @media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white){&:focus .title {
+          @media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
             -ms-high-contrast-adjust: none;
           }
-          &:active .title {
+          &:active .ms-Dropdown-title {
             border-color: #005a9e;
             color: #212121;
           }
-          @media screen and (-ms-high-contrast: active){&:active .title {
+          @media screen and (-ms-high-contrast: active){&:active .ms-Dropdown-title {
             border-color: Highlight;
           }
-          &:hover .caretDown {
+          &:hover .ms-Dropdown-caretDown {
             color: #212121;
           }
-          &:focus .caretDown {
+          &:focus .ms-Dropdown-caretDown {
             color: #212121;
           }
-          @media screen and (-ms-high-contrast: active){&:focus .caretDown {
+          @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
             color: HighlightText;
           }
-          @media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white){&:focus .caretDown {
+          @media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-caretDown {
             -ms-high-contrast-adjust: none;
           }
-          &:active .caretDown {
+          &:active .ms-Dropdown-caretDown {
             color: #212121;
           }
-          &:hover .titleIsPlaceHolder {
+          &:hover .ms-Dropdown-titleIsPlaceHolder {
             color: #666666;
           }
-          &:focus .titleIsPlaceHolder {
+          &:focus .ms-Dropdown-titleIsPlaceHolder {
             color: #666666;
           }
-          &:active .titleIsPlaceHolder {
+          &:active .ms-Dropdown-titleIsPlaceHolder {
             color: #666666;
           }
-          &:hover .titleIsError {
+          &:hover .ms-Dropdown-title--hasError {
             border-color: #a80000;
           }
-          &:active .titleIsError {
+          &:active .ms-Dropdown-title--hasError {
             border-color: #a80000;
           }
-          &:focus .titleIsError {
+          &:focus .ms-Dropdown-title--hasError {
             border-color: #a80000;
           }
       data-is-focusable={false}
@@ -513,7 +513,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       </span>
       <span
         className=
-            ms-Dropdown-caretDownWrapper
+
             {
               height: 32px;
               line-height: 30px;
@@ -609,63 +609,63 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             position: relative;
             user-select: none;
           }
-          &:hover .title {
+          &:hover .ms-Dropdown-title {
             border-color: #212121;
             color: #212121;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .title {
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
             border-color: Highlight;
           }
-          &:focus .title {
+          &:focus .ms-Dropdown-title {
             border-color: #0078d4;
             color: #212121;
           }
-          @media screen and (-ms-high-contrast: active){&:focus .title {
+          @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
             background-color: Highlight;
             border-color: Highlight;
             color: Highlight;
           }
-          @media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white){&:focus .title {
+          @media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
             -ms-high-contrast-adjust: none;
           }
-          &:active .title {
+          &:active .ms-Dropdown-title {
             border-color: #005a9e;
             color: #212121;
           }
-          @media screen and (-ms-high-contrast: active){&:active .title {
+          @media screen and (-ms-high-contrast: active){&:active .ms-Dropdown-title {
             border-color: Highlight;
           }
-          &:hover .caretDown {
+          &:hover .ms-Dropdown-caretDown {
             color: #212121;
           }
-          &:focus .caretDown {
+          &:focus .ms-Dropdown-caretDown {
             color: #212121;
           }
-          @media screen and (-ms-high-contrast: active){&:focus .caretDown {
+          @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
             color: HighlightText;
           }
-          @media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white){&:focus .caretDown {
+          @media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-caretDown {
             -ms-high-contrast-adjust: none;
           }
-          &:active .caretDown {
+          &:active .ms-Dropdown-caretDown {
             color: #212121;
           }
-          &:hover .titleIsPlaceHolder {
+          &:hover .ms-Dropdown-titleIsPlaceHolder {
             color: #666666;
           }
-          &:focus .titleIsPlaceHolder {
+          &:focus .ms-Dropdown-titleIsPlaceHolder {
             color: #666666;
           }
-          &:active .titleIsPlaceHolder {
+          &:active .ms-Dropdown-titleIsPlaceHolder {
             color: #666666;
           }
-          &:hover .titleIsError {
+          &:hover .ms-Dropdown-title--hasError {
             border-color: #a80000;
           }
-          &:active .titleIsError {
+          &:active .ms-Dropdown-title--hasError {
             border-color: #a80000;
           }
-          &:focus .titleIsError {
+          &:focus .ms-Dropdown-title--hasError {
             border-color: #a80000;
           }
       data-is-focusable={true}
@@ -722,7 +722,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       </span>
       <span
         className=
-            ms-Dropdown-caretDownWrapper
+
             {
               height: 32px;
               line-height: 30px;
@@ -815,63 +815,63 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             position: relative;
             user-select: none;
           }
-          &:hover .title {
+          &:hover .ms-Dropdown-title {
             border-color: #212121;
             color: #212121;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .title {
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
             border-color: Highlight;
           }
-          &:focus .title {
+          &:focus .ms-Dropdown-title {
             border-color: #0078d4;
             color: #212121;
           }
-          @media screen and (-ms-high-contrast: active){&:focus .title {
+          @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
             background-color: Highlight;
             border-color: Highlight;
             color: Highlight;
           }
-          @media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white){&:focus .title {
+          @media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
             -ms-high-contrast-adjust: none;
           }
-          &:active .title {
+          &:active .ms-Dropdown-title {
             border-color: #005a9e;
             color: #212121;
           }
-          @media screen and (-ms-high-contrast: active){&:active .title {
+          @media screen and (-ms-high-contrast: active){&:active .ms-Dropdown-title {
             border-color: Highlight;
           }
-          &:hover .caretDown {
+          &:hover .ms-Dropdown-caretDown {
             color: #212121;
           }
-          &:focus .caretDown {
+          &:focus .ms-Dropdown-caretDown {
             color: #212121;
           }
-          @media screen and (-ms-high-contrast: active){&:focus .caretDown {
+          @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
             color: HighlightText;
           }
-          @media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white){&:focus .caretDown {
+          @media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-caretDown {
             -ms-high-contrast-adjust: none;
           }
-          &:active .caretDown {
+          &:active .ms-Dropdown-caretDown {
             color: #212121;
           }
-          &:hover .titleIsPlaceHolder {
+          &:hover .ms-Dropdown-titleIsPlaceHolder {
             color: #666666;
           }
-          &:focus .titleIsPlaceHolder {
+          &:focus .ms-Dropdown-titleIsPlaceHolder {
             color: #666666;
           }
-          &:active .titleIsPlaceHolder {
+          &:active .ms-Dropdown-titleIsPlaceHolder {
             color: #666666;
           }
-          &:hover .titleIsError {
+          &:hover .ms-Dropdown-title--hasError {
             border-color: #a80000;
           }
-          &:active .titleIsError {
+          &:active .ms-Dropdown-title--hasError {
             border-color: #a80000;
           }
-          &:focus .titleIsError {
+          &:focus .ms-Dropdown-title--hasError {
             border-color: #a80000;
           }
       data-is-focusable={true}
@@ -926,7 +926,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       </span>
       <span
         className=
-            ms-Dropdown-caretDownWrapper
+
             {
               height: 32px;
               line-height: 30px;
@@ -1019,63 +1019,63 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             position: relative;
             user-select: none;
           }
-          &:hover .title {
+          &:hover .ms-Dropdown-title {
             border-color: #212121;
             color: #212121;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .title {
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
             border-color: Highlight;
           }
-          &:focus .title {
+          &:focus .ms-Dropdown-title {
             border-color: #0078d4;
             color: #212121;
           }
-          @media screen and (-ms-high-contrast: active){&:focus .title {
+          @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
             background-color: Highlight;
             border-color: Highlight;
             color: Highlight;
           }
-          @media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white){&:focus .title {
+          @media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
             -ms-high-contrast-adjust: none;
           }
-          &:active .title {
+          &:active .ms-Dropdown-title {
             border-color: #005a9e;
             color: #212121;
           }
-          @media screen and (-ms-high-contrast: active){&:active .title {
+          @media screen and (-ms-high-contrast: active){&:active .ms-Dropdown-title {
             border-color: Highlight;
           }
-          &:hover .caretDown {
+          &:hover .ms-Dropdown-caretDown {
             color: #212121;
           }
-          &:focus .caretDown {
+          &:focus .ms-Dropdown-caretDown {
             color: #212121;
           }
-          @media screen and (-ms-high-contrast: active){&:focus .caretDown {
+          @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
             color: HighlightText;
           }
-          @media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white){&:focus .caretDown {
+          @media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-caretDown {
             -ms-high-contrast-adjust: none;
           }
-          &:active .caretDown {
+          &:active .ms-Dropdown-caretDown {
             color: #212121;
           }
-          &:hover .titleIsPlaceHolder {
+          &:hover .ms-Dropdown-titleIsPlaceHolder {
             color: #666666;
           }
-          &:focus .titleIsPlaceHolder {
+          &:focus .ms-Dropdown-titleIsPlaceHolder {
             color: #666666;
           }
-          &:active .titleIsPlaceHolder {
+          &:active .ms-Dropdown-titleIsPlaceHolder {
             color: #666666;
           }
-          &:hover .titleIsError {
+          &:hover .ms-Dropdown-title--hasError {
             border-color: #a80000;
           }
-          &:active .titleIsError {
+          &:active .ms-Dropdown-title--hasError {
             border-color: #a80000;
           }
-          &:focus .titleIsError {
+          &:focus .ms-Dropdown-title--hasError {
             border-color: #a80000;
           }
       data-is-focusable={true}
@@ -1132,7 +1132,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       </span>
       <span
         className=
-            ms-Dropdown-caretDownWrapper
+
             {
               height: 32px;
               line-height: 30px;
@@ -1226,63 +1226,63 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             position: relative;
             user-select: none;
           }
-          &:hover .title {
+          &:hover .ms-Dropdown-title {
             border-color: #212121;
             color: #212121;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .title {
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
             border-color: Highlight;
           }
-          &:focus .title {
+          &:focus .ms-Dropdown-title {
             border-color: #0078d4;
             color: #212121;
           }
-          @media screen and (-ms-high-contrast: active){&:focus .title {
+          @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
             background-color: Highlight;
             border-color: Highlight;
             color: Highlight;
           }
-          @media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white){&:focus .title {
+          @media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
             -ms-high-contrast-adjust: none;
           }
-          &:active .title {
+          &:active .ms-Dropdown-title {
             border-color: #005a9e;
             color: #212121;
           }
-          @media screen and (-ms-high-contrast: active){&:active .title {
+          @media screen and (-ms-high-contrast: active){&:active .ms-Dropdown-title {
             border-color: Highlight;
           }
-          &:hover .caretDown {
+          &:hover .ms-Dropdown-caretDown {
             color: #212121;
           }
-          &:focus .caretDown {
+          &:focus .ms-Dropdown-caretDown {
             color: #212121;
           }
-          @media screen and (-ms-high-contrast: active){&:focus .caretDown {
+          @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
             color: HighlightText;
           }
-          @media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white){&:focus .caretDown {
+          @media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-caretDown {
             -ms-high-contrast-adjust: none;
           }
-          &:active .caretDown {
+          &:active .ms-Dropdown-caretDown {
             color: #212121;
           }
-          &:hover .titleIsPlaceHolder {
+          &:hover .ms-Dropdown-titleIsPlaceHolder {
             color: #666666;
           }
-          &:focus .titleIsPlaceHolder {
+          &:focus .ms-Dropdown-titleIsPlaceHolder {
             color: #666666;
           }
-          &:active .titleIsPlaceHolder {
+          &:active .ms-Dropdown-titleIsPlaceHolder {
             color: #666666;
           }
-          &:hover .titleIsError {
+          &:hover .ms-Dropdown-title--hasError {
             border-color: #a80000;
           }
-          &:active .titleIsError {
+          &:active .ms-Dropdown-title--hasError {
             border-color: #a80000;
           }
-          &:focus .titleIsError {
+          &:focus .ms-Dropdown-title--hasError {
             border-color: #a80000;
           }
       data-is-focusable={false}
@@ -1343,7 +1343,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       </span>
       <span
         className=
-            ms-Dropdown-caretDownWrapper
+
             {
               height: 32px;
               line-height: 30px;
