@@ -3,6 +3,7 @@ import * as React from 'react';
 /* Dependent Components */
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { CardFrame, ICardDropDownOption } from '../Card/CardFrame/index';
+import { AutoFontSize } from 'auto-fontsize';
 
 /* Types for props and styles */
 import { IRecommendationProps, IRecommendationStyles } from './Recommendation.types';
@@ -64,7 +65,15 @@ export class Recommendation extends React.Component<IRecommendationProps, {}> {
       >
         <div className={classNames.recommendationContainer}>
           <div className={classNames.recommendationTextContainer}>
-            <div className={classNames.recommendationHeader}>{recommendationDescriptionHeader} </div>
+            <div className={classNames.recommendationHeader}>
+              <AutoFontSize
+                text={recommendationDescriptionHeader}
+                minTextSize={10}
+                textSize={28}
+                textSizeStep={2}
+                targetLines={1}
+              />
+            </div>
             <div className={classNames.recommendationContent}>{recommendationDescription} </div>
             <div>
               <PrimaryButton
