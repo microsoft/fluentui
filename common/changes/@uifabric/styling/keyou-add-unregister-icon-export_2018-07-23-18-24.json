@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/styling",
-      "comment": "add ITypography to ITheme",
+      "comment": "Add unregisterIcons to styling export",
       "type": "minor"
     }
   ],
   "packageName": "@uifabric/styling",
-  "email": "naethell@microsoft.com"
+  "email": "keyou@microsoft.com"
 }

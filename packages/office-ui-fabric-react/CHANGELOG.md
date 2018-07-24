@@ -1,6 +1,29 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 20 Jul 2018 10:25:21 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Jul 2018 10:28:08 GMT and should not be manually modified.
+
+## 6.39.0
+Mon, 23 Jul 2018 10:28:08 GMT
+
+### Minor changes
+
+- add shouldComponentUpdate to detailsrow to improve performance
+- Addressing bad imports.
+- Modal: Convert to JS styling.
+- Added hideOverflow prop to Callout to control it's overflowYHidden style prop on calloutMain element. Used this prop to hide flickering scrollbar on TeachingBubble due to height variance during load animation.
+
+### Patches
+
+- fix aria-expanded for ExtendedPicker
+- Combobox: Dropdown will now "drop up" if there isn't enough space below
+- ContextualMenu: Deprecated inactive prop as it was no longer being used
+- Coachmark: Add missing key prop to array in render
+- ScrollablePane: allow initialScrollPosition === 0
+- MarqueeSelection: fix snapshot test verbosity
+- Popup: Skip scroll computation if style.overflowY is provided.
+- Textfield: onSearch now works when no text has been entered. It will return an empty string.
+- Changes to fix auto-scroll to top issue when state changed, adding an if st
+- ComboBox: Fix bug in `onPendingValueChanged` caused by incorrect check for undefined, which also ignores 0, which is a valid value for both `newPendingIndex` and `newPendingValue`.
 
 ## 6.38.2
 Fri, 20 Jul 2018 10:25:21 GMT
