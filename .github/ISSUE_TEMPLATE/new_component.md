@@ -7,28 +7,44 @@ about: Interested in contributing a new component to Fabric? This template inclu
 
 ## Component Details
 
-#### Exports
-<!-- What will be included in index.ts file -->
+<!-- Please provide a general description of the component(s) being added -->
 
-#### Imports
+
+### Imports
 <!-- What other components/modules will your component be using -->
 
-#### Intended Package
-<!-- OUFR/New Package/Charting etc... -->
+### Exports/ Component Breakdown
+<!-- Consider creating smaller composable components vs a single larger one
+See https://github.com/OfficeDev/office-ui-fabric-react/wiki/Component-Design#build-many-smaller-components-and-compose-them-together -->
 
-#### Code mockup/example
+### Intended Package
+<!-- If this is a prototype component, start in @uifabric/experiments. If you feel that there is a new package required, please indicate the requested name here. -->
+
+### Code mockup/example
 <!-- List/describe all expected props -->
-```
+
+__Code Sample__
 
 ```
 
-#### Design Assets
-<!-- links or images -->
+```
 
-#### Component Ownership
-<!-- who is reponsible for bugs -->
+<!-- View naming guidelines here https://github.com/OfficeDev/office-ui-fabric-react/wiki/Component-Design#naming-guidance -->
+__Props__
 
-#### Deadlines
+| Name      | Type     | Default Value | Description |
+|-----------|----------|---------------|-------------|
+| className | string   |               | Optional class name to be added to the root |
+
+
+
+### Design Assets
+<!-- Please provide links to redlines or screenshots of intended component design -->
+
+### Component Ownership
+<!-- Are there one or more people who can help maintain this component over time? Who will address bugs? -->
+
+### Deadlines
 <!-- is this needed to meet a deadline? -->
 
 ## Steps
