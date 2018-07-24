@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Image } from '../../Image';
-import { Icon } from '../../Icon';
+import { Image } from '../../../Image';
+import { Icon } from '../../../Icon';
 import {
   IChoiceGroupOptionProps,
   IChoiceGroupOptionStyleProps,

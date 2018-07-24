@@ -15,6 +15,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
     role="tabpanel"
   >
     <div
+      data-automation-id="visibleContent"
       style={
         Object {
           "position": "fixed",

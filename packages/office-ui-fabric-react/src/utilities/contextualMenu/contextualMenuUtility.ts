@@ -1,4 +1,4 @@
-import { IContextualMenuItem } from '../..';
+import { IContextualMenuItem } from '../../index';
 
 /**
  * Determines the effective checked state of a menu item.

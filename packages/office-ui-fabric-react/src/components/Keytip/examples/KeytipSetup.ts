@@ -1,4 +1,4 @@
-import { buildKeytipConfigMap, IKeytipConfig, IKeytipConfigMap } from '../../../utilities/keytips';
+import { buildKeytipConfigMap, IKeytipConfig, IKeytipConfigMap } from '../../../utilities/keytips/index';
 
 const btnExecute = (el: HTMLElement) => {
   el.click();

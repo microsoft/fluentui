@@ -2,6 +2,124 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.19.1",
+      "tag": "@uifabric/experiments_v6.19.1",
+      "date": "Tue, 24 Jul 2018 10:24:36 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.9.0` to `^0.10.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.39.0 <7.0.0` to `>=6.39.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.6.0 <7.0.0` to `>=6.7.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.19.0",
+      "tag": "@uifabric/experiments_v6.19.0",
+      "date": "Mon, 23 Jul 2018 10:28:08 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "c2cfa6c609fe5c531491a4a9a8eb613b0063c96d",
+            "comment": "Text: use existing theming"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "28242c40916d14cef3d555d18f4df69454163e87",
+            "comment": "Addressing bad imports."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.3.0` to `^0.9.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.0.3 <1.0.0` to `>=0.1.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.38.2 <7.0.0` to `>=6.39.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.5.2 <7.0.0` to `>=6.6.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.18.3",
+      "tag": "@uifabric/experiments_v6.18.3",
+      "date": "Fri, 20 Jul 2018 10:25:21 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.38.1 <7.0.0` to `>=6.38.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.7.0` to `^0.8.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.18.2",
+      "tag": "@uifabric/experiments_v6.18.2",
+      "date": "Thu, 19 Jul 2018 21:25:32 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.6.0` to `^0.7.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.18.1",
+      "tag": "@uifabric/experiments_v6.18.1",
+      "date": "Thu, 19 Jul 2018 19:04:38 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.38.0 <7.0.0` to `>=6.38.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.5.0` to `^0.6.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.5.1 <7.0.0` to `>=6.5.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.18.0",
+      "tag": "@uifabric/experiments_v6.18.0",
+      "date": "Thu, 19 Jul 2018 10:23:34 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "536e4cc40d3a74298ddc4caf87060339467a4be6",
+            "comment": "Fluent Styles for ComboBox and Dialog"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.37.1 <7.0.0` to `>=6.38.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.4.0` to `^0.5.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.17.0",
       "tag": "@uifabric/experiments_v6.17.0",
       "date": "Wed, 18 Jul 2018 10:25:50 GMT",

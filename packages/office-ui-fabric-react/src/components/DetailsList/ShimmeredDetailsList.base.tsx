@@ -4,7 +4,7 @@ import { BaseComponent, css, classNamesFunction } from '../../Utilities';
 import { SelectionMode } from '../../utilities/selection/interfaces';
 import { DetailsList } from './DetailsList';
 import { IDetailsRowProps } from './DetailsRow';
-import { Shimmer, ShimmerElementsGroup, ShimmerElementType, IShimmerElement } from '../Shimmer';
+import { Shimmer, ShimmerElementsGroup, ShimmerElementType, IShimmerElement } from '../../Shimmer';
 import {
   IShimmeredDetailsListProps,
   IShimmeredDetailsListStyleProps,
