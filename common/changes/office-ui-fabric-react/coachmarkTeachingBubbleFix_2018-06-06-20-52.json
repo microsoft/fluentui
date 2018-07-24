@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Coachmark: Cherry fix from 6.0 which fixes an Object.assign IE bug.",
+      "comment": "TeachingBubble: Fix content from wrapping to next line unncessarily",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "nidurak@microsoft.com"
+  "email": "edwl@microsoft.com"
 }

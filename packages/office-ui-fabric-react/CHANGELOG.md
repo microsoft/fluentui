@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 17 Jul 2018 14:59:38 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Jul 2018 11:27:52 GMT and should not be manually modified.
+
+## 5.117.1
+Wed, 18 Jul 2018 11:27:52 GMT
+
+### Patches
+
+- Coachmark: Cherry fix from 6.0 which fixes an Object.assign IE bug.
+- Cherry pick #5589 which fixes an Object.assign ie bug.
 
 ## 5.117.0
 Tue, 17 Jul 2018 14:59:38 GMT

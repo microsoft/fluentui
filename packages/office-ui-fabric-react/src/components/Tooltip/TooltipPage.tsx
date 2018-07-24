@@ -11,6 +11,7 @@ import { TooltipCustomExample } from './examples/Tooltip.Custom.Example';
 import { TooltipBasicExample } from './examples/Tooltip.Basic.Example';
 import { TooltipInteractiveExample } from './examples/Tooltip.Interactive.Example';
 import { TooltipOverflowExample } from './examples/Tooltip.Overflow.Example';
+import { TooltipNoScrollExample } from './examples/Tooltip.NoScroll.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { TooltipStatus } from './Tooltip.checklist';
 
@@ -20,6 +21,7 @@ const TooltipBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/
 const TooltipCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Custom.Example.tsx') as string;
 const TooltipInteractiveExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Interactive.Example.tsx') as string;
 const TooltipOverflowExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Overflow.Example.tsx') as string;
+const TooltipNoScrollExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.NoScroll.Example.tsx') as string;
 
 export class TooltipPage extends React.Component<IComponentDemoPageProps, any> {
   public render(): JSX.Element {
@@ -30,43 +32,61 @@ export class TooltipPage extends React.Component<IComponentDemoPageProps, any> {
         componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Tooltip'
         exampleCards={
           <LayerHost>
-            <ExampleCard title='Default Tooltip' code={ TooltipBasicExampleCode }>
+            <ExampleCard title='Default Tooltip' code={TooltipBasicExampleCode}>
               <TooltipBasicExample />
             </ExampleCard>
 
-            <ExampleCard title='Tooltip with list' code={ TooltipCustomExampleCode }>
+            <ExampleCard
+              title='Tooltip with list'
+              code={TooltipCustomExampleCode}
+            >
               <TooltipCustomExample />
             </ExampleCard>
 
-            <ExampleCard title='Tooltip with a closing delay' code={ TooltipInteractiveExampleCode }>
+            <ExampleCard
+              title='Tooltip with a closing delay'
+              code={TooltipInteractiveExampleCode}
+            >
               <TooltipInteractiveExample />
             </ExampleCard>
 
-            <ExampleCard title='Tooltip only on overflow' code={ TooltipOverflowExampleCode }>
+            <ExampleCard
+              title='Tooltip only on overflow'
+              code={TooltipOverflowExampleCode}
+            >
               <TooltipOverflowExample />
+            </ExampleCard>
+
+            <ExampleCard
+              title='Tooltip without scrollbar (may improve performance)'
+              code={TooltipNoScrollExampleCode}
+            >
+              <TooltipNoScrollExample />
             </ExampleCard>
           </LayerHost>
         }
-        allowNativeProps={ true }
+        allowNativeProps={true}
         propertiesTables={
           <PropertiesTableSet
-            sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Tooltip/Tooltip.types.ts'),
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Tooltip/TooltipHost.types.ts')
-            ] }
+            sources={[
+              require<
+                string
+              >('!raw-loader!office-ui-fabric-react/src/components/Tooltip/Tooltip.types.ts'),
+              require<
+                string
+              >('!raw-loader!office-ui-fabric-react/src/components/Tooltip/TooltipHost.types.ts')
+            ]}
           />
         }
         overview={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Tooltip/docs/TooltipOverview.md') }
+            {require<
+              string
+            >('!raw-loader!office-ui-fabric-react/src/components/Tooltip/docs/TooltipOverview.md')}
           </PageMarkdown>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }
-        componentStatus={
-          <ComponentStatus
-            { ...TooltipStatus }
-          />
-        }
+        isHeaderVisible={this.props.isHeaderVisible}
+        componentStatus={<ComponentStatus {...TooltipStatus} />}
       />
     );
   }

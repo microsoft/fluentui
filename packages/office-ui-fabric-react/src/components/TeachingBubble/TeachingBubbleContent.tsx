@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, css } from '../../Utilities';
+import { BaseComponent, css, createRef, KeyCodes } from '../../Utilities';
 import { ITeachingBubbleProps } from './TeachingBubble.types';
 import { ITeachingBubbleState } from './TeachingBubble';
 import { PrimaryButton, DefaultButton, IconButton } from '../../Button';
@@ -7,8 +7,10 @@ import { Image, ImageFit } from '../../Image';
 import * as stylesImport from './TeachingBubble.scss';
 const styles: any = stylesImport;
 
-export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, ITeachingBubbleState> {
-
+export class TeachingBubbleContent extends BaseComponent<
+  ITeachingBubbleProps,
+  ITeachingBubbleState
+  > {
   // Specify default props values
   public static defaultProps = {
     hasCondensedHeadline: false,
@@ -19,15 +21,48 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
     }
   };
 
+  public rootElement = createRef<HTMLDivElement>();
+
   constructor(props: ITeachingBubbleProps) {
     super(props);
 
-    this.state = {
-    };
+    this.state = {};
+  }
+
+  public componentDidMount(): void {
+    if (this.props.onDismiss) {
+      document.addEventListener('keydown', this._onKeyDown, false);
+    }
+  }
+
+  public componentWillUnmount(): void {
+    if (this.props.onDismiss) {
+      document.removeEventListener('keydown', this._onKeyDown);
+    }
+  }
+
+  public focus(): void {
+    if (this.rootElement.current) {
+      this.rootElement.current.focus();
+    }
   }
 
   public render(): JSX.Element {
-    const { illustrationImage, primaryButtonProps, secondaryButtonProps, headline, hasCondensedHeadline, hasCloseIcon, onDismiss, closeButtonAriaLabel, hasSmallHeadline } = this.props;
+    const {
+      children,
+      illustrationImage,
+      primaryButtonProps,
+      secondaryButtonProps,
+      headline,
+      hasCondensedHeadline,
+      hasCloseIcon,
+      onDismiss,
+      closeButtonAriaLabel,
+      hasSmallHeadline,
+      isWide,
+      ariaDescribedBy,
+      ariaLabelledBy
+    } = this.props;
 
     let imageContent;
     let headerContent;
@@ -48,25 +83,26 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
         <div
           className={ css(
             'ms-TeachingBubble-header',
-            hasCondensedHeadline ?
-              'ms-TeachingBubble-header--condensed ' + styles.headerIsCondensed
+            hasCondensedHeadline
+              ? 'ms-TeachingBubble-header--condensed ' +
+              styles.headerIsCondensed
               : hasSmallHeadline
                 ? 'ms-TeachingBubble-header--small ' + styles.headerIsSmall
                 : 'ms-TeachingBubble-header--large ' + styles.headerIsLarge
           ) }
         >
-          <p className={ css('ms-TeachingBubble-headline', styles.headline) } >
+          <p className={ css('ms-TeachingBubble-headline', styles.headline) } id={ ariaLabelledBy }>
             { headline }
           </p>
         </div>
       );
     }
 
-    if (this.props.children) {
+    if (children) {
       bodyContent = (
         <div className={ css('ms-TeachingBubble-body', styles.body) }>
-          <p className={ css('ms-TeachingBubble-subText', styles.subText) }>
-            { this.props.children }
+          <p className={ css('ms-TeachingBubble-subText', styles.subText) } id={ ariaDescribedBy }>
+            { children }
           </p>
         </div>
       );
@@ -78,13 +114,21 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
           { primaryButtonProps && (
             <PrimaryButton
               { ...primaryButtonProps }
-              className={ css('ms-TeachingBubble-primaryButton', styles.primaryButton, primaryButtonProps.className) }
+              className={ css(
+                'ms-TeachingBubble-primaryButton',
+                styles.primaryButton,
+                primaryButtonProps.className
+              ) }
             />
           ) }
           { secondaryButtonProps && (
             <DefaultButton
               { ...secondaryButtonProps }
-              className={ css('ms-TeachingBubble-secondaryButton', styles.secondaryButton, secondaryButtonProps.className) }
+              className={ css(
+                'ms-TeachingBubble-secondaryButton',
+                styles.secondaryButton,
+                secondaryButtonProps.className
+              ) }
             />
           ) }
         </div>
@@ -104,15 +148,37 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
     }
 
     return (
-      <div className={ css('ms-TeachingBubble-content') }>
+      <div
+        className={ css(
+          'ms-TeachingBubble-content',
+          styles.root,
+          isWide ? styles.wideCallout : null
+        ) }
+        ref={ this.rootElement }
+        role={ 'dialog' }
+        tabIndex={ -1 }
+        aria-labelledby={ ariaLabelledBy }
+        aria-describedby={ ariaDescribedBy }
+        data-is-focusable={ true }
+      >
         { imageContent }
-        { closeButton }
-        <div className={ css('ms-TeachingBubble-bodycontent', styles.bodyContent) }>
+        <div
+          className={ css('ms-TeachingBubble-bodycontent', styles.bodyContent) }
+        >
           { headerContent }
           { bodyContent }
           { footerContent }
         </div>
+        { closeButton }
       </div>
     );
+  }
+
+  private _onKeyDown = (e: any): void => {
+    if (this.props.onDismiss) {
+      if (e.which === KeyCodes.escape) {
+        this.props.onDismiss();
+      }
+    }
   }
 }
