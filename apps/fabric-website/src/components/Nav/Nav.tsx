@@ -5,6 +5,7 @@ import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import { getPathMinusLastHash } from '../../utilities/pageroute';
 import * as stylesImport from './Nav.module.scss';
 const styles: any = stylesImport;
+import { CollapsibleSection } from '@uifabric/experiments';
 import { INavProps, INavPage } from './Nav.types';
 
 export interface INavState {
