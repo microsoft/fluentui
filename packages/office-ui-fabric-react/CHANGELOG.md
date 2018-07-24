@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 23 Jul 2018 10:28:08 GMT and should not be manually modified.
+This log was last generated on Tue, 24 Jul 2018 10:24:36 GMT and should not be manually modified.
+
+## 6.39.1
+Tue, 24 Jul 2018 10:24:36 GMT
+
+### Patches
+
+- Added an optional "export to codepen" button to code examples. Implemented the button for the Label Component. When clicked, the button redirects to a codepen containing the relevant code example, ready for user editing.
+- ScrollablePane: Fix overflow css and remove unncessary stickyClassName in render
 
 ## 6.39.0
 Mon, 23 Jul 2018 10:28:08 GMT
