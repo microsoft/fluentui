@@ -74,17 +74,18 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
   }
 
   const globalClassnames = getGlobalClassNames(GlobalClassNames, theme);
+  const { palette, semanticColors } = theme;
 
   const rootHoverFocusActiveSelectorNeutralDarkMixin: IStyle = {
-    color: theme.palette.neutralDark
+    color: palette.neutralDark
   };
 
   const rootHoverFocusActiveSelectorNeutralSecondaryMixin: IStyle = {
-    color: theme.palette.neutralSecondary
+    color: palette.neutralSecondary
   };
 
   const borderColorError: IStyle = {
-    borderColor: theme.semanticColors.errorText
+    borderColor: semanticColors.errorText
   };
 
   const dropdownItemStyle: IStyle = [
@@ -112,11 +113,11 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
           color: 'inherit'
         },
         '&:focus': {
-          backgroundColor: theme.semanticColors.listItemBackgroundHovered
+          backgroundColor: semanticColors.listItemBackgroundHovered
         },
         '&:active': {
-          backgroundColor: theme.semanticColors.listHeaderBackgroundHovered,
-          color: theme.palette.black
+          backgroundColor: semanticColors.listHeaderBackgroundHovered,
+          color: palette.black
         }
       }
     }
@@ -125,8 +126,8 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
   const dropdownItemSelected: IStyle = [
     dropdownItemStyle,
     {
-      backgroundColor: theme.palette.neutralQuaternaryAlt,
-      color: theme.palette.black
+      backgroundColor: palette.neutralQuaternaryAlt,
+      color: palette.black
     },
     highContrastItemAndTitleStateMixin
   ];
@@ -134,7 +135,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
   const dropdownItemDisabled: IStyle = [
     dropdownItemStyle,
     {
-      color: theme.semanticColors.disabledText,
+      color: semanticColors.disabledText,
       cursor: 'default'
     }
   ];
@@ -147,7 +148,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       normalize,
       {
         ...theme.fonts.medium,
-        color: theme.palette.neutralPrimary,
+        color: palette.neutralPrimary,
         position: 'relative',
         outline: 0,
         userSelect: 'none',
@@ -155,21 +156,21 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
           ['&:hover .' + globalClassnames.title]: [
             rootHoverFocusActiveSelectorNeutralDarkMixin,
             {
-              borderColor: theme.palette.neutralDark
+              borderColor: palette.neutralDark
             },
             highContrastBorderState
           ],
           ['&:focus .' + globalClassnames.title]: [
             rootHoverFocusActiveSelectorNeutralDarkMixin,
             {
-              borderColor: theme.palette.themePrimary
+              borderColor: palette.themePrimary
             },
             highContrastItemAndTitleStateMixin
           ],
           ['&:active .' + globalClassnames.title]: [
             rootHoverFocusActiveSelectorNeutralDarkMixin,
             {
-              borderColor: theme.palette.themeDark
+              borderColor: palette.themeDark
             },
             highContrastBorderState
           ],
@@ -206,10 +207,10 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       globalClassnames.title,
       normalize,
       {
-        backgroundColor: theme.semanticColors.inputBackground,
+        backgroundColor: semanticColors.inputBackground,
         borderWidth: 1,
         borderStyle: 'solid',
-        borderColor: theme.semanticColors.inputBorder,
+        borderColor: semanticColors.inputBorder,
         cursor: 'pointer',
         display: 'block',
         height: DROPDOWN_HEIGHT,
@@ -223,14 +224,14 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       isRenderingPlaceholder && [
         globalClassnames.titleIsPlaceHolder,
         {
-          color: theme.semanticColors.inputPlaceholderText
+          color: semanticColors.inputPlaceholderText
         }
       ],
       hasError && [globalClassnames.titleHasError, borderColorError],
       disabled && {
-        backgroundColor: theme.semanticColors.disabledBackground,
+        backgroundColor: semanticColors.disabledBackground,
         border: 'none',
-        color: theme.semanticColors.disabledText,
+        color: semanticColors.disabledText,
         cursor: 'default',
         selectors: {
           [HighContrastSelector]: {
@@ -252,12 +253,12 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     caretDown: [
       globalClassnames.caretDown,
       {
-        color: theme.palette.neutralSecondary,
+        color: palette.neutralSecondary,
         fontSize: FontSizes.small,
         pointerEvents: 'none'
       },
       disabled && {
-        color: theme.semanticColors.disabledText,
+        color: semanticColors.disabledText,
         selectors: {
           [HighContrastSelector]: {
             color: 'GrayText'
@@ -266,7 +267,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       }
     ],
     errorMessage: {
-      color: theme.semanticColors.errorText,
+      color: semanticColors.errorText,
       ...theme.fonts.small,
       paddingTop: 5
     },
@@ -274,7 +275,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       globalClassnames.callout,
       {
         boxShadow: '0 0 2px 0 rgba(0,0,0,0.2)',
-        border: `1px solid ${theme.palette.neutralLight}`
+        border: `1px solid ${palette.neutralLight}`
       },
       calloutClassName
     ],
@@ -321,7 +322,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       globalClassnames.dropdownDivider,
       {
         height: 1,
-        backgroundColor: theme.semanticColors.bodyDivider
+        backgroundColor: semanticColors.bodyDivider
       }
     ],
     dropdownOptionText: [
@@ -342,7 +343,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       {
         ...theme.fonts.medium,
         fontWeight: FontWeights.semibold,
-        color: theme.semanticColors.menuHeader,
+        color: semanticColors.menuHeader,
         background: 'none',
         backgroundColor: 'transparent',
         border: 'none',

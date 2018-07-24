@@ -213,12 +213,15 @@ export interface IDropdownStyles {
   /** Refers to the callout that hosts Dropdown options in larger viewports. */
   callout: IStyle;
 
-  subComponentStyles: {
-    /** Refers to the panel that hosts the Dropdown options in small viewports. */
-    // panel: IStyleFunctionOrObject<IPanelStyleProps, IPanelStyles>; // TODO: this relies on Panel supporting JS styling.
+  /** Subcomponent styles. */
+  subComponentStyles: IDropdownSubComponentStyles;
+}
 
-    /** Refers to the primary label for the Dropdown. */
-    label: IStyleFunctionOrObject<ILabelStyleProps, any>;
-    // TODO: replace any with ILabelStyles in TS 2.9
-  };
+export interface IDropdownSubComponentStyles {
+  /** Refers to the panel that hosts the Dropdown options in small viewports. */
+  // panel: IStyleFunctionOrObject<IPanelStyleProps, IPanelStyles>; // TODO: this relies on Panel supporting JS styling.
+
+  /** Refers to the primary label for the Dropdown. */
+  label: IStyleFunctionOrObject<ILabelStyleProps, any>;
+  // TODO: replace any with ILabelStyles in TS 2.9
 }
