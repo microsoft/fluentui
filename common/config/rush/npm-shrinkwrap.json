@@ -11217,6 +11217,7 @@
       "version": "1.0.2",
       "resolved": "https://registry.npmjs.org/kleur/-/kleur-1.0.2.tgz",
       "integrity": "sha512-4u2TF1/mKmiawrkjzCxRKszdCvqRsPgTJwjmZZt0RE4OiZMzvFfb4kwqfFP/p0gvakH1lhQOfCMYXUOYI9dTgA=="
+
     },
     "lazy-cache": {
       "version": "1.0.4",
@@ -15548,7 +15549,9 @@
       "resolved": "https://registry.npmjs.org/prompts/-/prompts-0.1.12.tgz",
       "integrity": "sha512-pgR1GE1JM8q8UsHVIgjdK62DPwvrf0kvaKWJ/mfMoCm2lwfIReX/giQ1p0AlMoUXNhQap/8UiOdqi3bOROm/eg==",
       "requires": {
+
         "kleur": "1.0.2",
+
         "sisteransi": "0.1.1"
       }
     },
@@ -15946,6 +15949,23 @@
         "recast": "0.15.2"
       },
       "dependencies": {
+
+        "ast-types": {
+          "version": "0.10.1",
+          "resolved": "https://registry.npmjs.org/ast-types/-/ast-types-0.10.1.tgz",
+          "integrity": "sha512-UY7+9DPzlJ9VM8eY0b2TUZcZvF+1pO0hzMtAyjBYKhOmnvRlqYNYnWdtsMj0V16CGaMlpL0G1jnLbLo4AyotuQ=="
+        },
+        "babylon": {
+          "version": "7.0.0-beta.31",
+          "resolved": "https://registry.npmjs.org/babylon/-/babylon-7.0.0-beta.31.tgz",
+          "integrity": "sha512-6lm2mV3S51yEnKmQQNnswoABL1U1H1KHoCCVwdwI3hvIv+W7ya4ki7Aw4o4KxtUHjNKkK5WpZb22rrMMOcJXJQ=="
+        },
+        "esprima": {
+          "version": "4.0.1",
+          "resolved": "https://registry.npmjs.org/esprima/-/esprima-4.0.1.tgz",
+          "integrity": "sha512-eGuFFw7Upda+g4p+QHvnW0RyTX/SVeJBDM/gCtMARO0cLuT2HcEKnTPvhjV6aGeqrCB/sbNop0Kszm0jsaWU4A=="
+        },
+
         "node-dir": {
           "version": "0.1.17",
           "resolved": "https://registry.npmjs.org/node-dir/-/node-dir-0.1.17.tgz",
@@ -15953,6 +15973,20 @@
           "requires": {
             "minimatch": "3.0.4"
           }
+
+        },
+        "recast": {
+          "version": "0.12.9",
+          "resolved": "https://registry.npmjs.org/recast/-/recast-0.12.9.tgz",
+          "integrity": "sha512-y7ANxCWmMW8xLOaiopiRDlyjQ9ajKRENBH+2wjntIbk3A6ZR1+BLQttkmSHMY7Arl+AAZFwJ10grg2T6f1WI8A==",
+          "requires": {
+            "ast-types": "0.10.1",
+            "core-js": "2.5.7",
+            "esprima": "4.0.1",
+            "private": "0.1.8",
+            "source-map": "0.6.1"
+          }
+
         }
       }
     },

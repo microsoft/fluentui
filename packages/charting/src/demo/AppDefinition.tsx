@@ -28,10 +28,22 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/horizontalbarchart'
         },
         {
+          component: require<any>('../components/PieChart/PieChartPage').PieChartPage,
+          key: 'PieChart',
+          name: 'PieChart',
+          url: '#/examples/piechart'
+        },
+        {
           component: require<any>('../components/ProgressBarChart/ProgressBarChartPage').ProgressBarChartPage,
           key: 'ProgressBarChart',
           name: 'ProgressBarChart',
           url: '#/examples/progressbarchart'
+        },
+        {
+          component: require<any>('../components/DonutChart/DonutChartPage').DonutChartPage,
+          key: 'DonutChart',
+          name: 'DonutChart',
+          url: '#/examples/Donutchart'
         },
         {
           component: require<any>('../components/StackedBarChart/StackedBarChartPage').StackedBarChartPage,
