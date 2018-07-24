@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Removed global css selectors in example code, which was causing sporadic spacing problems with Checkbox examples.",
+      "comment": "Removed global css selectors in example code, which was causing sporadic spacing problems with other unrelated examples.",
       "type": "patch"
     }
   ],
