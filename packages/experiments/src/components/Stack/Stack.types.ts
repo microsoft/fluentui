@@ -11,7 +11,7 @@ export interface IStackProps {
   inline?: boolean;
   vertical?: boolean;
 
-  grow?: boolean;
+  grow?: boolean | number;
   wrap?: boolean;
 
   gap?: number;
