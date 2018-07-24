@@ -2,6 +2,95 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.39.0",
+      "tag": "office-ui-fabric-react_v6.39.0",
+      "date": "Mon, 23 Jul 2018 10:28:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "90a0730e889f29e26844948cd4c18774dea944db",
+            "comment": "fix aria-expanded for ExtendedPicker"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "ff5c6f7c6613dd98011865b062e0c80395960dbb",
+            "comment": "Combobox: Dropdown will now \"drop up\" if there isn't enough space below"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "00a4915b57dc002647cec0613db14850e2e488ed",
+            "comment": "ContextualMenu: Deprecated inactive prop as it was no longer being used"
+          },
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "e27e76d0fa29c7fe530666719f23d7aef296948e",
+            "comment": "Coachmark: Add missing key prop to array in render"
+          },
+          {
+            "author": "Spencer Elliott <me@elliottsj.com>",
+            "commit": "f31595d7eb683193a3f19df4dde1c3deedc81804",
+            "comment": "ScrollablePane: allow initialScrollPosition === 0"
+          },
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "7604bf8128096c2fec78c81a1ce076b2f75bb668",
+            "comment": "MarqueeSelection: fix snapshot test verbosity"
+          },
+          {
+            "author": "Pablo Núñez <pablonete@gmail.com>",
+            "commit": "19ffe56cc578409adb59df8e7eba2be6ac3da1dc",
+            "comment": "Popup: Skip scroll computation if style.overflowY is provided."
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "c9547bdb5661ec8e56a57868d391e728df879d52",
+            "comment": "Textfield: onSearch now works when no text has been entered. It will return an empty string."
+          },
+          {
+            "author": "akashperfect <akashperfect@gmail.com>",
+            "commit": "98d0a9f7339fb7913c5568e89e848d93d5e8baa3",
+            "comment": "Changes to fix auto-scroll to top issue when state changed, adding an if st"
+          },
+          {
+            "author": "Vlad Andrei Poenaru <41198244+VladPoenaru@users.noreply.github.com>",
+            "commit": "a67f2c023d6000991b41b87f8c2da479bb3b0906",
+            "comment": "ComboBox: Fix bug in `onPendingValueChanged` caused by incorrect check for undefined, which also ignores 0, which is a valid value for both `newPendingIndex` and `newPendingValue`."
+          }
+        ],
+        "minor": [
+          {
+            "author": "Daniel Gut <daniel.gut@solarproject.ch>",
+            "commit": "9bc5cc5581556e1cd6ff8482c6a3d11c28dbb3c9",
+            "comment": "add shouldComponentUpdate to detailsrow to improve performance"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "28242c40916d14cef3d555d18f4df69454163e87",
+            "comment": "Addressing bad imports."
+          },
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "72252194b9e634f8964e876290a79268226e804b",
+            "comment": "Modal: Convert to JS styling."
+          },
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "d7457fe0a38cde413ea1b3dc9da3b57f45e4ccc8",
+            "comment": "Added hideOverflow prop to Callout to control it's overflowYHidden style prop on calloutMain element. Used this prop to hide flickering scrollbar on TeachingBubble due to height variance during load animation."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.10.0 <7.0.0` to `>=6.11.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.11.0 <7.0.0` to `>=6.12.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.38.2",
       "tag": "office-ui-fabric-react_v6.38.2",
       "date": "Fri, 20 Jul 2018 10:25:21 GMT",

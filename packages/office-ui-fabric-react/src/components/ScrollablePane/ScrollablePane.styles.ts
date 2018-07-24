@@ -15,9 +15,7 @@ export const getStyles = (props: IScrollablePaneStyleProps): IScrollablePaneStyl
     position: 'absolute',
     pointerEvents: 'auto',
     width: '100%',
-    zIndex: ZIndexes.ScrollablePane,
-    overflowY: 'hidden',
-    overflowX: 'auto'
+    zIndex: ZIndexes.ScrollablePane
   };
 
   const positioningStyle: IStyle = {
