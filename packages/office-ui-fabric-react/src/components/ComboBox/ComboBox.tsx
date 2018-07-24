@@ -229,16 +229,19 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       this._async.setTimeout(() => this._scrollIntoView(), 0);
     }
 
+    const focusInComboBox = this._root.current && this._root.current.contains(document.activeElement);
+
     // If we are open or we are just closed, shouldFocusAfterClose is set,
     // are focused but we are not the activeElement set focus on the input
     if (
+      focusInComboBox
       isOpen ||
-      (prevState.isOpen &&
-        !isOpen &&
-        this._focusInputAfterClose &&
-        focused &&
-        this._autofill.current &&
-        document.activeElement !== this._autofill.current.inputElement)
+        (prevState.isOpen &&
+          !isOpen &&
+          this._focusInputAfterClose &&
+          focused &&
+          this._autofill.current &&
+          document.activeElement !== this._autofill.current.inputElement)
     ) {
       this.focus(undefined /*shouldOpenOnFocus*/, true /*useFocusAsync*/);
     }
@@ -251,17 +254,18 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     //     the value changed
     // we need to set selection
     if (
+      focusInComboBox
       this._focusInputAfterClose &&
-      ((prevState.isOpen && !isOpen) ||
-        (focused &&
-          ((!isOpen &&
-            !this.props.multiSelect &&
-            prevState.selectedIndices &&
-            selectedIndices &&
-            prevState.selectedIndices[0] !== selectedIndices[0]) ||
-            !allowFreeform ||
-            text !== prevProps.text ||
-            value !== prevProps.value)))
+        ((prevState.isOpen && !isOpen) ||
+          (focused &&
+            ((!isOpen &&
+              !this.props.multiSelect &&
+              prevState.selectedIndices &&
+              selectedIndices &&
+              prevState.selectedIndices[0] !== selectedIndices[0]) ||
+              !allowFreeform ||
+              text !== prevProps.text ||
+              value !== prevProps.value)))
     ) {
       this._select();
     }
@@ -315,25 +319,25 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     this._classNames = this.props.getClassNames
       ? this.props.getClassNames(
-          theme!,
-          !!isOpen,
-          !!disabled,
-          !!required,
-          !!focused,
-          !!allowFreeform,
-          !!hasErrorMessage,
-          className
-        )
+        theme!,
+        !!isOpen,
+        !!disabled,
+        !!required,
+        !!focused,
+        !!allowFreeform,
+        !!hasErrorMessage,
+        className
+      )
       : getClassNames(
-          getStyles(theme!, customStyles),
-          className!,
-          !!isOpen,
-          !!disabled,
-          !!required,
-          !!focused,
-          !!allowFreeform,
-          !!hasErrorMessage
-        );
+        getStyles(theme!, customStyles),
+        className!,
+        !!isOpen,
+        !!disabled,
+        !!required,
+        !!focused,
+        !!allowFreeform,
+        !!hasErrorMessage
+      );
 
     return (
       <div {...divProps} ref={this._root} className={this._classNames.container}>
@@ -645,15 +649,15 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           return { ...item, index };
         })
         .filter(
-          option =>
-            option.itemType !== SelectableOptionMenuItemType.Header &&
-            option.itemType !== SelectableOptionMenuItemType.Divider
+        option =>
+          option.itemType !== SelectableOptionMenuItemType.Header &&
+          option.itemType !== SelectableOptionMenuItemType.Divider
         )
         .filter(
-          option =>
-            this._getPreviewText(option)
-              .toLocaleLowerCase()
-              .indexOf(updatedValue) === 0
+        option =>
+          this._getPreviewText(option)
+            .toLocaleLowerCase()
+            .indexOf(updatedValue) === 0
         );
       if (items.length > 0) {
         // use ariaLabel as the value when the option is set
@@ -672,9 +676,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           return { ...item, index };
         })
         .filter(
-          option =>
-            option.itemType !== SelectableOptionMenuItemType.Header &&
-            option.itemType !== SelectableOptionMenuItemType.Divider
+        option =>
+          option.itemType !== SelectableOptionMenuItemType.Header &&
+          option.itemType !== SelectableOptionMenuItemType.Divider
         )
         .filter(option => this._getPreviewText(option).toLocaleLowerCase() === updatedValue);
 
@@ -722,9 +726,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             return { ...item, index: i };
           })
           .filter(
-            option =>
-              option.itemType !== SelectableOptionMenuItemType.Header &&
-              option.itemType !== SelectableOptionMenuItemType.Divider
+          option =>
+            option.itemType !== SelectableOptionMenuItemType.Header &&
+            option.itemType !== SelectableOptionMenuItemType.Divider
           )
           .filter(option => option.text.toLocaleLowerCase().indexOf(updatedValue) === 0);
 
@@ -976,8 +980,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             (this._autofill.current &&
               this._autofill.current.isValueSelected &&
               currentPendingValue.length +
-                (this._autofill.current.selectionEnd! - this._autofill.current.selectionStart!) ===
-                pendingOptionText.length)) ||
+              (this._autofill.current.selectionEnd! - this._autofill.current.selectionStart!) ===
+              pendingOptionText.length)) ||
             (this._autofill.current &&
               this._autofill.current.inputElement &&
               this._autofill.current.inputElement.value.toLocaleLowerCase() === pendingOptionText))
@@ -1149,24 +1153,24 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           }
         </CommandButton>
       ) : (
-        <Checkbox
-          id={id + '-list' + item.index}
-          ariaLabel={this._getPreviewText(item)}
-          key={item.key}
-          data-index={item.index}
-          styles={checkboxStyles}
-          className={'ms-ComboBox-option'}
-          data-is-focusable={true}
-          onChange={this._onItemClick(item.index!)}
-          label={item.text}
-          role="option"
-          aria-selected={isSelected ? 'true' : 'false'}
-          checked={isSelected}
-          title={title}
-        >
-          {onRenderOption(item, this._onRenderOptionContent)}
-        </Checkbox>
-      );
+          <Checkbox
+            id={id + '-list' + item.index}
+            ariaLabel={this._getPreviewText(item)}
+            key={item.key}
+            data-index={item.index}
+            styles={checkboxStyles}
+            className={'ms-ComboBox-option'}
+            data-is-focusable={true}
+            onChange={this._onItemClick(item.index!)}
+            label={item.text}
+            role="option"
+            aria-selected={isSelected ? 'true' : 'false'}
+            checked={isSelected}
+            title={title}
+          >
+            {onRenderOption(item, this._onRenderOptionContent)}
+          </Checkbox>
+        );
     };
 
     return (
@@ -1277,7 +1281,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           if (
             scrollableParentRect.top <= selectedElementRect.top &&
             scrollableParentRect.top + scrollableParentRect.height >=
-              selectedElementRect.top + selectedElementRect.height
+            selectedElementRect.top + selectedElementRect.height
           ) {
             return;
           }
@@ -1329,7 +1333,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // close the menu and focus the input
     this.setState({ isOpen: false });
 
-    if (this._autofill.current && this._focusInputAfterClose) {
+    if (this._autofill.current && this._focusInputAfterClose && this._root.current && this._root.current.contains(document.activeElement)) {
       this._autofill.current.focus();
     }
   };
