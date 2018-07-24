@@ -5,7 +5,9 @@ exports[`Component Examples renders Dropdown.Error.Example.tsx correctly 1`] = `
   className="docs-DropdownExample"
 >
   <div
-    className="ms-Dropdown-container"
+    className=
+        ms-Dropdown-container
+
   >
     <label
       className=

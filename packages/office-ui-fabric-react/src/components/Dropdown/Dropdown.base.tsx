@@ -13,7 +13,6 @@ import {
   BaseComponent,
   KeyCodes,
   createRef,
-  css,
   divProperties,
   findIndex,
   getFirstFocusable,
@@ -210,10 +209,10 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
       : undefined;
 
     return (
-      <div className={css('ms-Dropdown-container')}>
+      <div className={this._classNames.root}>
         {label && (
           <Label
-            className={css('ms-Dropdown-label')}
+            className={this._classNames.label}
             id={id + '-label'}
             htmlFor={id}
             required={required}
@@ -239,7 +238,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
               aria-disabled={disabled}
               aria-owns={isOpen ? id + '-list' : undefined}
               {...divProps}
-              className={this._classNames.root}
+              className={this._classNames.dropdown}
               onBlur={this._onDropdownBlur}
               onKeyDown={this._onDropdownKeyDown}
               onKeyUp={this._onDropdownKeyUp}

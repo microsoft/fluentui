@@ -170,7 +170,9 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
       </label>
     </button>
     <div
-      className="ms-Dropdown-container"
+      className=
+          ms-Dropdown-container
+
     >
       <label
         className=

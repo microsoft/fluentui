@@ -170,7 +170,9 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                 </span>
               </label>
               <div
-                className="ms-Dropdown-container"
+                className=
+                    ms-Dropdown-container
+
               >
                 <div
                   aria-activedescendant="Dropdown2-option"

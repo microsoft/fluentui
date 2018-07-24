@@ -765,7 +765,9 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
       </div>
     </div>
     <div
-      className="ms-Dropdown-container"
+      className=
+          ms-Dropdown-container
+
     >
       <label
         className=

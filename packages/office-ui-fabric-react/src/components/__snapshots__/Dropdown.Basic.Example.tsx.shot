@@ -5,7 +5,9 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
   className="docs-DropdownExample"
 >
   <div
-    className="ms-Dropdown-container"
+    className=
+        ms-Dropdown-container
+
   >
     <label
       className=
@@ -336,7 +338,9 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
     </div>
   </button>
   <div
-    className="ms-Dropdown-container"
+    className=
+        ms-Dropdown-container
+
   >
     <label
       className=
@@ -550,7 +554,9 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
     </div>
   </div>
   <div
-    className="ms-Dropdown-container"
+    className=
+        ms-Dropdown-container
+
   >
     <label
       className=
@@ -756,7 +762,9 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
     </div>
   </div>
   <div
-    className="ms-Dropdown-container"
+    className=
+        ms-Dropdown-container
+
   >
     <label
       className=
@@ -960,7 +968,9 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
     </div>
   </div>
   <div
-    className="ms-Dropdown-container"
+    className=
+        ms-Dropdown-container
+
   >
     <label
       className=
@@ -1166,7 +1176,9 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
     </div>
   </div>
   <div
-    className="ms-Dropdown-container"
+    className=
+        ms-Dropdown-container
+
   >
     <label
       className=

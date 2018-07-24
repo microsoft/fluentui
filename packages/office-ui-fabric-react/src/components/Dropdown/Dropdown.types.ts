@@ -153,8 +153,14 @@ export type IDropdownStyleProps = Pick<IDropdownProps, 'theme' | 'className' | '
  * Represents the stylable areas of the control.
  */
 export interface IDropdownStyles {
-  /** Root element of the Dropdown. */
+  /** Root element of the Dropdown (includes Label and the actual Dropdown). */
   root: IStyle;
+
+  /** Refers to the label associated with the dropdown. This is enclosed by the root. */
+  label: IStyle;
+
+  /** Refers to the actual Dropdown element. */
+  dropdown: IStyle;
 
   /** Refers to the primary title of the Dropdown (rendering the selected options/placeholder/etc.). */
   title: IStyle;

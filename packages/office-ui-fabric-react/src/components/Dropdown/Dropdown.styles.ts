@@ -11,7 +11,9 @@ import {
 } from '../../Styling';
 
 const GlobalClassNames = {
-  root: 'ms-Dropdown',
+  root: 'ms-Dropdown-container',
+  label: 'ms-Dropdown-label',
+  dropdown: 'ms-Dropdown',
   title: 'ms-Dropdown-title',
   caretDownWrapper: 'ms-Dropdown-caretDownWrapper',
   caretDown: 'ms-Dropdown-caretDown',
@@ -21,7 +23,6 @@ const GlobalClassNames = {
   dropdownDivider: 'ms-Dropdown-divider',
   dropdownOptionText: 'ms-Dropdown-optionText',
   dropdownItemHeader: 'ms-Dropdown-header',
-  /** legacy */
   titleIsPlaceHolder: 'ms-Dropdown-titleIsPlaceHolder',
   titleHasError: 'ms-Dropdown-title--hasError'
 };
@@ -139,8 +140,10 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
   ];
 
   return {
-    root: [
-      globalClassnames.root,
+    root: globalClassnames.root,
+    label: globalClassnames.label,
+    dropdown: [
+      globalClassnames.dropdown,
       normalize,
       {
         ...theme.fonts.medium,
@@ -196,7 +199,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       },
       className,
       isOpen && 'is-open',
-      disabled && ['is-disabled'],
+      disabled && 'is-disabled',
       required && 'is-required'
     ],
     title: [
