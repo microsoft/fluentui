@@ -8,7 +8,7 @@ import { Icon } from '../../Icon';
 import { KeytipData } from '../../KeytipData';
 import { Label, ILabelStyleProps, ILabelStyles } from '../../Label';
 import { Panel } from '../../Panel';
-import { getTheme, IProcessedStyleSet } from '../../Styling';
+import { IProcessedStyleSet } from '../../Styling';
 import {
   BaseComponent,
   KeyCodes,
@@ -28,8 +28,6 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { ResponsiveMode, withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
-import { getStyles as getCheckboxStyles } from '../Checkbox/Checkbox.styles';
-import * as stylesImport from './Dropdown.scss';
 import {
   DropdownMenuItemType,
   IDropdownOption,
@@ -39,7 +37,6 @@ import {
 } from './Dropdown.types';
 import { DropdownSizePosCache } from './utilities/DropdownSizePosCache';
 
-const styles: any = stylesImport;
 const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>();
 
 // Internal only props interface to support mixing in responsive mode
@@ -272,7 +269,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
           )}
         </KeytipData>
         {isOpen && onRenderContainer(this.props, this._onRenderContainer)}
-        {errorMessage && <div className={this._classNames.errorMessage}>{errorMessage}</div>}
+        {errorMessage && errorMessage.length > 0 && <div className={this._classNames.errorMessage}>{errorMessage}</div>}
       </div>
     );
   }
@@ -510,13 +507,15 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     const id = this._id;
     const isItemSelected =
       item.index !== undefined && selectedIndices ? selectedIndices.indexOf(item.index) > -1 : false;
-    const checkboxStyles = () => {
-      return getCheckboxStyles({
-        theme: getTheme(),
-        checked: isItemSelected,
-        disabled: item.disabled
-      });
-    };
+
+    const itemClassName =
+      isItemSelected && item.disabled === true
+        ? this._classNames.dropdownItemSelectedAndDisabled
+        : isItemSelected
+          ? this._classNames.dropdownItemSelected
+          : item.disabled === true
+            ? this._classNames.dropdownItemDisabled
+            : this._classNames.dropdownItem;
 
     return !this.props.multiSelect ? (
       <CommandButton
@@ -526,13 +525,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
         data-index={item.index}
         data-is-focusable={!item.disabled}
         disabled={item.disabled}
-        className={
-          isItemSelected
-            ? this._classNames.dropdownItemSelected
-            : item.disabled === true
-              ? this._classNames.dropdownItemDisabled
-              : this._classNames.dropdownItem
-        }
+        className={itemClassName}
         onClick={this._onItemClick(item)}
         onMouseEnter={this._onItemMouseEnter.bind(this, item)}
         onMouseLeave={this._onMouseItemLeave.bind(this, item)}
@@ -560,16 +553,10 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
         label={item.text}
         title={item.title}
         onRenderLabel={this._onRenderLabel.bind(this, item)}
-        className={css('ms-ColumnManagementPanel-checkbox', styles.dropdownCheckbox, 'ms-Dropdown-item', styles.item, {
-          ['is-selected ' + styles.itemIsSelected]: isItemSelected,
-          ['is-disabled ' + styles.itemIsDisabled]: item.disabled
-        })}
+        className={itemClassName}
         role="option"
         aria-selected={isItemSelected ? 'true' : 'false'}
         checked={isItemSelected}
-        // Hover is being handled by focus styles
-        // so clear out the explicit hover styles
-        styles={checkboxStyles}
       />
     );
   };

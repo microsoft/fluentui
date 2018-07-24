@@ -15,8 +15,8 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             box-shadow: none;
             box-sizing: border-box;
             color: #333333;
-            display: block;
-            margin-bottom: 0px;
+            display: inline-block;
+            margin-bottom: 8px;
             margin-left: 0px;
             margin-right: 0px;
             margin-top: 0px;
@@ -41,7 +41,88 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       aria-label="Basic dropdown example"
       aria-labelledby="Basicdrop1-label"
       aria-owns={undefined}
-      className="ms-Dropdown"
+      className=
+          ms-Dropdown
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #333333;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            outline: 0px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: relative;
+            user-select: none;
+          }
+          &:hover .title {
+            border-color: #212121;
+            color: #212121;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .title {
+            border-color: Highlight;
+          }
+          &:focus .title {
+            border-color: #0078d4;
+            color: #212121;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus .title {
+            background-color: Highlight;
+            border-color: Highlight;
+            color: Highlight;
+          }
+          @media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white){&:focus .title {
+            -ms-high-contrast-adjust: none;
+          }
+          &:active .title {
+            border-color: #005a9e;
+            color: #212121;
+          }
+          @media screen and (-ms-high-contrast: active){&:active .title {
+            border-color: Highlight;
+          }
+          &:hover .caretDown {
+            color: #212121;
+          }
+          &:focus .caretDown {
+            color: #212121;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus .caretDown {
+            color: HighlightText;
+          }
+          @media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white){&:focus .caretDown {
+            -ms-high-contrast-adjust: none;
+          }
+          &:active .caretDown {
+            color: #212121;
+          }
+          &:hover .titleIsPlaceHolder {
+            color: #666666;
+          }
+          &:focus .titleIsPlaceHolder {
+            color: #666666;
+          }
+          &:active .titleIsPlaceHolder {
+            color: #666666;
+          }
+          &:hover .titleIsError {
+            border-color: #a80000;
+          }
+          &:active .titleIsError {
+            border-color: #a80000;
+          }
+          &:focus .titleIsError {
+            border-color: #a80000;
+          }
       data-is-focusable={true}
       id="Basicdrop1"
       onBlur={[Function]}
@@ -59,7 +140,34 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
         aria-posinset={undefined}
         aria-selected={undefined}
         aria-setsize={10}
-        className="ms-Dropdown-title ms-Dropdown-titleIsPlaceHolder"
+        className=
+            ms-Dropdown-title
+            ms-Dropdown-titleIsPlaceHolder
+            {
+              background-color: #ffffff;
+              border-color: #a6a6a6;
+              border-style: solid;
+              border-width: 1px;
+              box-shadow: none;
+              box-sizing: border-box;
+              color: #666666;
+              cursor: pointer;
+              display: block;
+              height: 32px;
+              line-height: 30px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              overflow: hidden;
+              padding-bottom: 0;
+              padding-left: 12px;
+              padding-right: 32px;
+              padding-top: 0;
+              position: relative;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
         id="Basicdrop1-option"
         role="option"
       >
@@ -68,7 +176,15 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
         </span>
       </span>
       <span
-        className="ms-Dropdown-caretDownWrapper"
+        className=
+            ms-Dropdown-caretDownWrapper
+            {
+              height: 32px;
+              line-height: 30px;
+              position: absolute;
+              right: 12px;
+              top: 1px;
+            }
       >
         <i
           aria-hidden={true}
@@ -77,10 +193,13 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
+                color: #666666;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
+                font-size: 12px;
                 font-style: normal;
                 font-weight: normal;
+                pointer-events: none;
                 speak: none;
               }
           data-icon-name="ChevronDown"
@@ -227,8 +346,8 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             box-shadow: none;
             box-sizing: border-box;
             color: #333333;
-            display: block;
-            margin-bottom: 0px;
+            display: inline-block;
+            margin-bottom: 8px;
             margin-left: 0px;
             margin-right: 0px;
             margin-top: 0px;
@@ -253,7 +372,89 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       aria-label={undefined}
       aria-labelledby="Dropdown3-label"
       aria-owns={undefined}
-      className="ms-Dropdown is-disabled undefined"
+      className=
+          ms-Dropdown
+          is-disabled
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #333333;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            outline: 0px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: relative;
+            user-select: none;
+          }
+          &:hover .title {
+            border-color: #212121;
+            color: #212121;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .title {
+            border-color: Highlight;
+          }
+          &:focus .title {
+            border-color: #0078d4;
+            color: #212121;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus .title {
+            background-color: Highlight;
+            border-color: Highlight;
+            color: Highlight;
+          }
+          @media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white){&:focus .title {
+            -ms-high-contrast-adjust: none;
+          }
+          &:active .title {
+            border-color: #005a9e;
+            color: #212121;
+          }
+          @media screen and (-ms-high-contrast: active){&:active .title {
+            border-color: Highlight;
+          }
+          &:hover .caretDown {
+            color: #212121;
+          }
+          &:focus .caretDown {
+            color: #212121;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus .caretDown {
+            color: HighlightText;
+          }
+          @media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white){&:focus .caretDown {
+            -ms-high-contrast-adjust: none;
+          }
+          &:active .caretDown {
+            color: #212121;
+          }
+          &:hover .titleIsPlaceHolder {
+            color: #666666;
+          }
+          &:focus .titleIsPlaceHolder {
+            color: #666666;
+          }
+          &:active .titleIsPlaceHolder {
+            color: #666666;
+          }
+          &:hover .titleIsError {
+            border-color: #a80000;
+          }
+          &:active .titleIsError {
+            border-color: #a80000;
+          }
+          &:focus .titleIsError {
+            border-color: #a80000;
+          }
       data-is-focusable={false}
       id="Dropdown3"
       onBlur={[Function]}
@@ -271,7 +472,38 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
         aria-posinset={4}
         aria-selected={true}
         aria-setsize={7}
-        className="ms-Dropdown-title"
+        className=
+            ms-Dropdown-title
+            {
+              background-color: #f4f4f4;
+              border-color: #a6a6a6;
+              border-style: solid;
+              border-width: 1px;
+              border: none;
+              box-shadow: none;
+              box-sizing: border-box;
+              color: #a6a6a6;
+              cursor: default;
+              display: block;
+              height: 32px;
+              line-height: 30px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              overflow: hidden;
+              padding-bottom: 0;
+              padding-left: 12px;
+              padding-right: 32px;
+              padding-top: 0;
+              position: relative;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              border: 1px solid GrayText;
+              color: GrayText;
+            }
         id="Dropdown3-option"
         role="option"
       >
@@ -280,7 +512,15 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
         </span>
       </span>
       <span
-        className="ms-Dropdown-caretDownWrapper"
+        className=
+            ms-Dropdown-caretDownWrapper
+            {
+              height: 32px;
+              line-height: 30px;
+              position: absolute;
+              right: 12px;
+              top: 1px;
+            }
       >
         <i
           aria-hidden={true}
@@ -289,11 +529,17 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
+                color: #a6a6a6;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
+                font-size: 12px;
                 font-style: normal;
                 font-weight: normal;
+                pointer-events: none;
                 speak: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: GrayText;
               }
           data-icon-name="ChevronDown"
           role="presentation"
@@ -314,8 +560,8 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             box-shadow: none;
             box-sizing: border-box;
             color: #333333;
-            display: block;
-            margin-bottom: 0px;
+            display: inline-block;
+            margin-bottom: 8px;
             margin-left: 0px;
             margin-right: 0px;
             margin-top: 0px;
@@ -340,7 +586,88 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       aria-label={undefined}
       aria-labelledby="Dropdown4-label"
       aria-owns={undefined}
-      className="ms-Dropdown"
+      className=
+          ms-Dropdown
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #333333;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            outline: 0px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: relative;
+            user-select: none;
+          }
+          &:hover .title {
+            border-color: #212121;
+            color: #212121;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .title {
+            border-color: Highlight;
+          }
+          &:focus .title {
+            border-color: #0078d4;
+            color: #212121;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus .title {
+            background-color: Highlight;
+            border-color: Highlight;
+            color: Highlight;
+          }
+          @media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white){&:focus .title {
+            -ms-high-contrast-adjust: none;
+          }
+          &:active .title {
+            border-color: #005a9e;
+            color: #212121;
+          }
+          @media screen and (-ms-high-contrast: active){&:active .title {
+            border-color: Highlight;
+          }
+          &:hover .caretDown {
+            color: #212121;
+          }
+          &:focus .caretDown {
+            color: #212121;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus .caretDown {
+            color: HighlightText;
+          }
+          @media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white){&:focus .caretDown {
+            -ms-high-contrast-adjust: none;
+          }
+          &:active .caretDown {
+            color: #212121;
+          }
+          &:hover .titleIsPlaceHolder {
+            color: #666666;
+          }
+          &:focus .titleIsPlaceHolder {
+            color: #666666;
+          }
+          &:active .titleIsPlaceHolder {
+            color: #666666;
+          }
+          &:hover .titleIsError {
+            border-color: #a80000;
+          }
+          &:active .titleIsError {
+            border-color: #a80000;
+          }
+          &:focus .titleIsError {
+            border-color: #a80000;
+          }
       data-is-focusable={true}
       id="Dropdown4"
       onBlur={[Function]}
@@ -358,7 +685,34 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
         aria-posinset={undefined}
         aria-selected={undefined}
         aria-setsize={7}
-        className="ms-Dropdown-title ms-Dropdown-titleIsPlaceHolder"
+        className=
+            ms-Dropdown-title
+            ms-Dropdown-titleIsPlaceHolder
+            {
+              background-color: #ffffff;
+              border-color: #a6a6a6;
+              border-style: solid;
+              border-width: 1px;
+              box-shadow: none;
+              box-sizing: border-box;
+              color: #666666;
+              cursor: pointer;
+              display: block;
+              height: 32px;
+              line-height: 30px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              overflow: hidden;
+              padding-bottom: 0;
+              padding-left: 12px;
+              padding-right: 32px;
+              padding-top: 0;
+              position: relative;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
         id="Dropdown4-option"
         role="option"
       >
@@ -367,7 +721,15 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
         </span>
       </span>
       <span
-        className="ms-Dropdown-caretDownWrapper"
+        className=
+            ms-Dropdown-caretDownWrapper
+            {
+              height: 32px;
+              line-height: 30px;
+              position: absolute;
+              right: 12px;
+              top: 1px;
+            }
       >
         <i
           aria-hidden={true}
@@ -376,10 +738,13 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
+                color: #666666;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
+                font-size: 12px;
                 font-style: normal;
                 font-weight: normal;
+                pointer-events: none;
                 speak: none;
               }
           data-icon-name="ChevronDown"
@@ -401,8 +766,8 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             box-shadow: none;
             box-sizing: border-box;
             color: #333333;
-            display: block;
-            margin-bottom: 0px;
+            display: inline-block;
+            margin-bottom: 8px;
             margin-left: 0px;
             margin-right: 0px;
             margin-top: 0px;
@@ -427,7 +792,88 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       aria-label={undefined}
       aria-labelledby="Dropdown5-label"
       aria-owns={undefined}
-      className="ms-Dropdown"
+      className=
+          ms-Dropdown
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #333333;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            outline: 0px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: relative;
+            user-select: none;
+          }
+          &:hover .title {
+            border-color: #212121;
+            color: #212121;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .title {
+            border-color: Highlight;
+          }
+          &:focus .title {
+            border-color: #0078d4;
+            color: #212121;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus .title {
+            background-color: Highlight;
+            border-color: Highlight;
+            color: Highlight;
+          }
+          @media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white){&:focus .title {
+            -ms-high-contrast-adjust: none;
+          }
+          &:active .title {
+            border-color: #005a9e;
+            color: #212121;
+          }
+          @media screen and (-ms-high-contrast: active){&:active .title {
+            border-color: Highlight;
+          }
+          &:hover .caretDown {
+            color: #212121;
+          }
+          &:focus .caretDown {
+            color: #212121;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus .caretDown {
+            color: HighlightText;
+          }
+          @media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white){&:focus .caretDown {
+            -ms-high-contrast-adjust: none;
+          }
+          &:active .caretDown {
+            color: #212121;
+          }
+          &:hover .titleIsPlaceHolder {
+            color: #666666;
+          }
+          &:focus .titleIsPlaceHolder {
+            color: #666666;
+          }
+          &:active .titleIsPlaceHolder {
+            color: #666666;
+          }
+          &:hover .titleIsError {
+            border-color: #a80000;
+          }
+          &:active .titleIsError {
+            border-color: #a80000;
+          }
+          &:focus .titleIsError {
+            border-color: #a80000;
+          }
       data-is-focusable={true}
       id="Dropdown5"
       onBlur={[Function]}
@@ -445,7 +891,32 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
         aria-posinset={undefined}
         aria-selected={undefined}
         aria-setsize={undefined}
-        className="ms-Dropdown-title"
+        className=
+            ms-Dropdown-title
+            {
+              background-color: #ffffff;
+              border-color: #a6a6a6;
+              border-style: solid;
+              border-width: 1px;
+              box-shadow: none;
+              box-sizing: border-box;
+              cursor: pointer;
+              display: block;
+              height: 32px;
+              line-height: 30px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              overflow: hidden;
+              padding-bottom: 0;
+              padding-left: 12px;
+              padding-right: 32px;
+              padding-top: 0;
+              position: relative;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
         id="Dropdown5-option"
         role={undefined}
       >
@@ -454,7 +925,15 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
         </span>
       </span>
       <span
-        className="ms-Dropdown-caretDownWrapper"
+        className=
+            ms-Dropdown-caretDownWrapper
+            {
+              height: 32px;
+              line-height: 30px;
+              position: absolute;
+              right: 12px;
+              top: 1px;
+            }
       >
         <i
           aria-hidden={true}
@@ -463,10 +942,13 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
+                color: #666666;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
+                font-size: 12px;
                 font-style: normal;
                 font-weight: normal;
+                pointer-events: none;
                 speak: none;
               }
           data-icon-name="ChevronDown"
@@ -488,8 +970,8 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             box-shadow: none;
             box-sizing: border-box;
             color: #333333;
-            display: block;
-            margin-bottom: 0px;
+            display: inline-block;
+            margin-bottom: 8px;
             margin-left: 0px;
             margin-right: 0px;
             margin-top: 0px;
@@ -514,7 +996,88 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       aria-label={undefined}
       aria-labelledby="Dropdown6-label"
       aria-owns={undefined}
-      className="ms-Dropdown"
+      className=
+          ms-Dropdown
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #333333;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            outline: 0px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: relative;
+            user-select: none;
+          }
+          &:hover .title {
+            border-color: #212121;
+            color: #212121;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .title {
+            border-color: Highlight;
+          }
+          &:focus .title {
+            border-color: #0078d4;
+            color: #212121;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus .title {
+            background-color: Highlight;
+            border-color: Highlight;
+            color: Highlight;
+          }
+          @media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white){&:focus .title {
+            -ms-high-contrast-adjust: none;
+          }
+          &:active .title {
+            border-color: #005a9e;
+            color: #212121;
+          }
+          @media screen and (-ms-high-contrast: active){&:active .title {
+            border-color: Highlight;
+          }
+          &:hover .caretDown {
+            color: #212121;
+          }
+          &:focus .caretDown {
+            color: #212121;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus .caretDown {
+            color: HighlightText;
+          }
+          @media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white){&:focus .caretDown {
+            -ms-high-contrast-adjust: none;
+          }
+          &:active .caretDown {
+            color: #212121;
+          }
+          &:hover .titleIsPlaceHolder {
+            color: #666666;
+          }
+          &:focus .titleIsPlaceHolder {
+            color: #666666;
+          }
+          &:active .titleIsPlaceHolder {
+            color: #666666;
+          }
+          &:hover .titleIsError {
+            border-color: #a80000;
+          }
+          &:active .titleIsError {
+            border-color: #a80000;
+          }
+          &:focus .titleIsError {
+            border-color: #a80000;
+          }
       data-is-focusable={true}
       id="Dropdown6"
       onBlur={[Function]}
@@ -532,7 +1095,34 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
         aria-posinset={undefined}
         aria-selected={undefined}
         aria-setsize={undefined}
-        className="ms-Dropdown-title ms-Dropdown-titleIsPlaceHolder"
+        className=
+            ms-Dropdown-title
+            ms-Dropdown-titleIsPlaceHolder
+            {
+              background-color: #ffffff;
+              border-color: #a6a6a6;
+              border-style: solid;
+              border-width: 1px;
+              box-shadow: none;
+              box-sizing: border-box;
+              color: #666666;
+              cursor: pointer;
+              display: block;
+              height: 32px;
+              line-height: 30px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              overflow: hidden;
+              padding-bottom: 0;
+              padding-left: 12px;
+              padding-right: 32px;
+              padding-top: 0;
+              position: relative;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
         id="Dropdown6-option"
         role={undefined}
       >
@@ -541,7 +1131,15 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
         </span>
       </span>
       <span
-        className="ms-Dropdown-caretDownWrapper"
+        className=
+            ms-Dropdown-caretDownWrapper
+            {
+              height: 32px;
+              line-height: 30px;
+              position: absolute;
+              right: 12px;
+              top: 1px;
+            }
       >
         <i
           aria-hidden={true}
@@ -550,10 +1148,13 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
+                color: #666666;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
+                font-size: 12px;
                 font-style: normal;
                 font-weight: normal;
+                pointer-events: none;
                 speak: none;
               }
           data-icon-name="ChevronDown"
@@ -575,8 +1176,8 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             box-shadow: none;
             box-sizing: border-box;
             color: #333333;
-            display: block;
-            margin-bottom: 0px;
+            display: inline-block;
+            margin-bottom: 8px;
             margin-left: 0px;
             margin-right: 0px;
             margin-top: 0px;
@@ -601,7 +1202,89 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       aria-label={undefined}
       aria-labelledby="Dropdown7-label"
       aria-owns={undefined}
-      className="ms-Dropdown is-disabled undefined"
+      className=
+          ms-Dropdown
+          is-disabled
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #333333;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            outline: 0px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: relative;
+            user-select: none;
+          }
+          &:hover .title {
+            border-color: #212121;
+            color: #212121;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .title {
+            border-color: Highlight;
+          }
+          &:focus .title {
+            border-color: #0078d4;
+            color: #212121;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus .title {
+            background-color: Highlight;
+            border-color: Highlight;
+            color: Highlight;
+          }
+          @media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white){&:focus .title {
+            -ms-high-contrast-adjust: none;
+          }
+          &:active .title {
+            border-color: #005a9e;
+            color: #212121;
+          }
+          @media screen and (-ms-high-contrast: active){&:active .title {
+            border-color: Highlight;
+          }
+          &:hover .caretDown {
+            color: #212121;
+          }
+          &:focus .caretDown {
+            color: #212121;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus .caretDown {
+            color: HighlightText;
+          }
+          @media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white){&:focus .caretDown {
+            -ms-high-contrast-adjust: none;
+          }
+          &:active .caretDown {
+            color: #212121;
+          }
+          &:hover .titleIsPlaceHolder {
+            color: #666666;
+          }
+          &:focus .titleIsPlaceHolder {
+            color: #666666;
+          }
+          &:active .titleIsPlaceHolder {
+            color: #666666;
+          }
+          &:hover .titleIsError {
+            border-color: #a80000;
+          }
+          &:active .titleIsError {
+            border-color: #a80000;
+          }
+          &:focus .titleIsError {
+            border-color: #a80000;
+          }
       data-is-focusable={false}
       id="Dropdown7"
       onBlur={[Function]}
@@ -619,7 +1302,38 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
         aria-posinset={undefined}
         aria-selected={undefined}
         aria-setsize={undefined}
-        className="ms-Dropdown-title"
+        className=
+            ms-Dropdown-title
+            {
+              background-color: #f4f4f4;
+              border-color: #a6a6a6;
+              border-style: solid;
+              border-width: 1px;
+              border: none;
+              box-shadow: none;
+              box-sizing: border-box;
+              color: #a6a6a6;
+              cursor: default;
+              display: block;
+              height: 32px;
+              line-height: 30px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              overflow: hidden;
+              padding-bottom: 0;
+              padding-left: 12px;
+              padding-right: 32px;
+              padding-top: 0;
+              position: relative;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              border: 1px solid GrayText;
+              color: GrayText;
+            }
         id="Dropdown7-option"
         role={undefined}
       >
@@ -628,7 +1342,15 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
         </span>
       </span>
       <span
-        className="ms-Dropdown-caretDownWrapper"
+        className=
+            ms-Dropdown-caretDownWrapper
+            {
+              height: 32px;
+              line-height: 30px;
+              position: absolute;
+              right: 12px;
+              top: 1px;
+            }
       >
         <i
           aria-hidden={true}
@@ -637,11 +1359,17 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
+                color: #a6a6a6;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
+                font-size: 12px;
                 font-style: normal;
                 font-weight: normal;
+                pointer-events: none;
                 speak: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: GrayText;
               }
           data-icon-name="ChevronDown"
           role="presentation"

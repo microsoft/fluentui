@@ -1,6 +1,27 @@
 import { IDropdownStyles, IDropdownStyleProps } from './Dropdown.types';
 import { IStyleFunction } from '../../Utilities';
-import { IStyle, normalize, HighContrastSelector, FontSizes, IRawStyle, FontWeights } from '../../Styling';
+import {
+  FontSizes,
+  FontWeights,
+  HighContrastSelector,
+  IRawStyle,
+  IStyle,
+  getGlobalClassNames,
+  normalize
+} from '../../Styling';
+
+const GlobalClassNames = {
+  root: 'ms-Dropdown',
+  title: 'ms-Dropdown-title',
+  caretDownWrapper: 'ms-Dropdown-caretDownWrapper',
+  caretDown: 'ms-Dropdown-caretDown',
+  callout: 'ms-Dropdown-callout',
+  panel: 'ms-Dropdown-panel',
+  dropdownItems: 'ms-Dropdown-items',
+  dropdownDivider: 'ms-Dropdown-divider',
+  dropdownOptionText: 'ms-Dropdown-optionText',
+  dropdownItemHeader: 'ms-Dropdown-header'
+};
 
 const DROPDOWN_HEIGHT = 32;
 const DROPDOWN_ITEMHEIGHT = 32;
@@ -45,8 +66,10 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
   } = props;
 
   if (!theme) {
-    throw new Error('theme is undefined');
+    throw new Error('theme is undefined or null in base Dropdown getStyles function.');
   }
+
+  const globalClassnames = getGlobalClassNames(GlobalClassNames, theme);
 
   const rootHoverFocusActiveSelectorNeutralDarkMixin: IStyle = {
     color: theme.palette.neutralDark
@@ -71,7 +94,6 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       minHeight: DROPDOWN_ITEMHEIGHT,
       lineHeight: 20,
       height: 'auto',
-      padding: '4px 16px',
       position: 'relative',
       border: '1px solid transparent',
       wordWrap: 'break-word',
@@ -80,6 +102,11 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       selectors: {
         [HighContrastSelector]: {
           borderColor: 'Window'
+        },
+        '&.ms-Dropdown-item.ms-Dropdown-item': {
+          // todo: resolve  this hack before checkin.
+          // Checkbox has a global classname (ms-checkbox) that sets a 15px top padding which wins.
+          padding: '4px 16px'
         },
         '&:hover': {
           color: 'inherit'
@@ -95,9 +122,26 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     }
   ];
 
+  const dropdownItemSelected: IStyle = [
+    dropdownItemStyle,
+    {
+      backgroundColor: theme.palette.neutralQuaternaryAlt,
+      color: theme.palette.black
+    },
+    highContrastItemAndTitleStateMixin
+  ];
+
+  const dropdownItemDisabled: IStyle = [
+    dropdownItemStyle,
+    {
+      color: theme.semanticColors.disabledText,
+      cursor: 'default'
+    }
+  ];
+
   return {
     root: [
-      'ms-Dropdown',
+      globalClassnames.root,
       normalize,
       {
         ...theme.fonts.medium,
@@ -153,11 +197,11 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       },
       className,
       isOpen && 'is-open',
-      disabled && 'is-disabled',
+      disabled && ['is-disabled'],
       required && 'is-required'
     ],
     title: [
-      'ms-Dropdown-title',
+      globalClassnames.title,
       normalize,
       {
         backgroundColor: theme.semanticColors.inputBackground,
@@ -168,7 +212,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
         display: 'block',
         height: DROPDOWN_HEIGHT,
         lineHeight: DROPDOWN_HEIGHT - 2,
-        padding: `0 ${DROPDOWN_HEIGHT} 0 12`,
+        padding: `0 ${DROPDOWN_HEIGHT}px 0 12px`,
         position: 'relative',
         overflow: 'hidden',
         whiteSpace: 'nowrap',
@@ -180,10 +224,22 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
           color: theme.semanticColors.inputPlaceholderText
         }
       ],
-      hasError && borderColorError
+      hasError && borderColorError,
+      disabled && {
+        backgroundColor: theme.semanticColors.disabledBackground,
+        border: 'none',
+        color: theme.semanticColors.disabledText,
+        cursor: 'default',
+        selectors: {
+          [HighContrastSelector]: {
+            border: '1px solid GrayText',
+            color: 'GrayText'
+          }
+        }
+      }
     ],
     caretDownWrapper: [
-      'ms-Dropdown-caretDownWrapper',
+      globalClassnames.caretDownWrapper,
       {
         position: 'absolute',
         top: 1,
@@ -193,11 +249,19 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       }
     ],
     caretDown: [
-      'ms-Dropdown-caretDown',
+      globalClassnames.caretDown,
       {
         color: theme.palette.neutralSecondary,
         fontSize: FontSizes.small,
         pointerEvents: 'none'
+      },
+      disabled && {
+        color: theme.semanticColors.disabledText,
+        selectors: {
+          [HighContrastSelector]: {
+            color: 'GrayText'
+          }
+        }
       }
     ],
     errorMessage: {
@@ -206,7 +270,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       paddingTop: 5
     },
     callout: [
-      'ms-Dropdown-callout',
+      globalClassnames.callout,
       {
         boxShadow: '0 0 2px 0 rgba(0,0,0,0.2)',
         border: `1px solid ${theme.palette.neutralLight}`
@@ -214,9 +278,9 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       calloutClassName
     ],
     panel: [
-      'ms-Dropdown-panel',
+      globalClassnames.panel,
       {
-        // TODO: use subcomponentstyles when panel is converted to us js styling.
+        // TODO: use subcomponentstyles when panel is converted to use js styling.
         selectors: {
           '& .ms-Panel-main': {
             // Force drop shadow even under medium breakpoint
@@ -237,36 +301,30 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       }
     },
     dropdownItems: [
-      'ms-Dropdown-items',
+      globalClassnames.dropdownItems,
       {
         display: 'block'
       }
     ],
-    dropdownItem: ['ms-Dropdown-item', dropdownItemStyle],
-    dropdownItemSelected: [
-      dropdownItemStyle,
+    dropdownItem: dropdownItemStyle,
+    dropdownItemSelected: dropdownItemSelected,
+    dropdownItemDisabled: dropdownItemDisabled,
+    dropdownItemSelectedAndDisabled: [
+      dropdownItemSelected,
+      dropdownItemDisabled,
       {
-        backgroundColor: theme.palette.neutralQuaternaryAlt,
-        color: theme.palette.black
-      },
-      highContrastItemAndTitleStateMixin
-    ],
-    dropdownItemDisabled: [
-      dropdownItemStyle,
-      {
-        color: theme.semanticColors.disabledText,
-        cursor: 'default'
+        backgroundColor: 'transparent'
       }
     ],
     dropdownDivider: [
-      'ms-Dropdown-divider',
+      globalClassnames.dropdownDivider,
       {
         height: 1,
         backgroundColor: theme.semanticColors.bodyDivider
       }
     ],
     dropdownOptionText: [
-      'ms-Dropdown-optionText',
+      globalClassnames.dropdownOptionText,
       {
         overflow: 'hidden',
         whiteSpace: 'nowrap',
@@ -279,7 +337,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       }
     ],
     dropdownItemHeader: [
-      'ms-Dropdown-header',
+      globalClassnames.dropdownItemHeader,
       {
         ...theme.fonts.medium,
         fontWeight: FontWeights.semibold,

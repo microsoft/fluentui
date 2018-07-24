@@ -4,7 +4,7 @@ import { ISelectableOption } from '../../utilities/selectableOption/SelectableOp
 import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/SelectableDroppableText.types';
 import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { IKeytipProps } from '../../Keytip';
-import { ILabelStyleProps } from 'office-ui-fabric-react/lib/components/Label';
+import { ILabelStyleProps } from '../../Label';
 
 export {
   SelectableOptionMenuItemType as DropdownMenuItemType
@@ -182,6 +182,9 @@ export interface IDropdownStyles {
 
   /** Style for a dropdown item when it is disabled. */
   dropdownItemDisabled: IStyle;
+
+  /** Style for a dropdown item when it is both selected and disabled. */
+  dropdownItemSelectedAndDisabled: IStyle;
 
   /**
    * Refers to the text element that renders the actual dropdown item/option text. This would be wrapped by the element
