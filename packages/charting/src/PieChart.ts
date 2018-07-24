@@ -1,1 +1,1 @@
-export * from './components/DonutChart/index';
+export * from './components/PieChart/index';
