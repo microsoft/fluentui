@@ -1,7 +1,7 @@
 import * as React from 'react';
-
-import { createRef, findScrollableParent, getRect, getWindow } from '../../Utilities';
 import { BaseDecorator } from './BaseDecorator';
+import { findScrollableParent, getRect, createRef } from '../../Utilities';
+import { getWindow } from '../../Utilities';
 
 export interface IViewport {
   width: number;
