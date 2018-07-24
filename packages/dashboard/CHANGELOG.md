@@ -1,6 +1,14 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Fri, 20 Jul 2018 10:25:21 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Jul 2018 10:28:08 GMT and should not be manually modified.
+
+## 0.6.0
+Mon, 23 Jul 2018 10:28:08 GMT
+
+### Minor changes
+
+- Added disable drag prop to card to allow recommendation card to be non draggable
+- Addressing bad imports.
 
 ## 0.5.0
 Fri, 20 Jul 2018 10:25:21 GMT

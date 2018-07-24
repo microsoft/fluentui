@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ScrollablePane: allow initialScrollPosition === 0",
+      "comment": "ScrollablePane: Fix overflow css and remove unncessary stickyClassName in render",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "spelliot@microsoft.com"
+  "email": "edwl@microsoft.com"
 }

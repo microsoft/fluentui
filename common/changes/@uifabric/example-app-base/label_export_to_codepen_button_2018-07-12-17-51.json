@@ -1,11 +1,11 @@
 {
   "changes": [
     {
+      "comment": "Updating example pages to provide codepen script content.",
       "packageName": "@uifabric/example-app-base",
-      "comment": "Addressing bad imports.",
       "type": "minor"
     }
   ],
   "packageName": "@uifabric/example-app-base",
-  "email": "dzearing@microsoft.com"
+  "email": "avitalbaral99@gmail.com"
 }
