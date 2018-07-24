@@ -234,14 +234,14 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // If we are open or we are just closed, shouldFocusAfterClose is set,
     // are focused but we are not the activeElement set focus on the input
     if (
-      focusInComboBox
+      focusInComboBox &&
       isOpen ||
-        (prevState.isOpen &&
-          !isOpen &&
-          this._focusInputAfterClose &&
-          focused &&
-          this._autofill.current &&
-          document.activeElement !== this._autofill.current.inputElement)
+      (prevState.isOpen &&
+        !isOpen &&
+        this._focusInputAfterClose &&
+        focused &&
+        this._autofill.current &&
+        document.activeElement !== this._autofill.current.inputElement)
     ) {
       this.focus(undefined /*shouldOpenOnFocus*/, true /*useFocusAsync*/);
     }
@@ -254,18 +254,18 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     //     the value changed
     // we need to set selection
     if (
-      focusInComboBox
+      focusInComboBox &&
       this._focusInputAfterClose &&
-        ((prevState.isOpen && !isOpen) ||
-          (focused &&
-            ((!isOpen &&
-              !this.props.multiSelect &&
-              prevState.selectedIndices &&
-              selectedIndices &&
-              prevState.selectedIndices[0] !== selectedIndices[0]) ||
-              !allowFreeform ||
-              text !== prevProps.text ||
-              value !== prevProps.value)))
+      ((prevState.isOpen && !isOpen) ||
+        (focused &&
+          ((!isOpen &&
+            !this.props.multiSelect &&
+            prevState.selectedIndices &&
+            selectedIndices &&
+            prevState.selectedIndices[0] !== selectedIndices[0]) ||
+            !allowFreeform ||
+            text !== prevProps.text ||
+            value !== prevProps.value)))
     ) {
       this._select();
     }
