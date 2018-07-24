@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { customizable } from '../../../Utilities';
-import { PieChart, IPieChartProps } from '../../PieChart';
+import { PieChart, IPieChartProps } from '@uifabric/charting/lib/PieChart';
 
 @customizable('PieChartBasicExample', ['theme', 'styles'])
 export class PieChartBasicExample extends React.Component<IPieChartProps, {}> {
