@@ -44,10 +44,11 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
       });
 
       const window = getWindow();
+      const viewportElement = this._root.current;
 
       if (window && (window as any).ResizeObserver) {
         this._viewportResizeObserver = new (window as any).ResizeObserver(this._onAsyncResize);
-        this._viewportResizeObserver.observe(this.state.viewport);
+        this._viewportResizeObserver.observe(viewportElement);
       } else {
         this._events.on(window, 'resize', this._onAsyncResize);
       }
@@ -63,7 +64,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
       this._events.dispose();
 
       if (this._viewportResizeObserver) {
-        this._viewportResizeObserver.unobserve(this.state.viewport);
+        this._viewportResizeObserver.disconnect();
       }
     }
 
