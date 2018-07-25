@@ -20,7 +20,7 @@ scripts/ @dzearing
 
 #### Apps
 # component-demo/
-# fabric-website/
+fabric-website/ @jordandrako
 # ssr-tests/
 # test-bundle-button/ @dzearing
 # todo-app/

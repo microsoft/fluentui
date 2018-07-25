@@ -2,6 +2,28 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.20.0",
+      "tag": "@uifabric/experiments_v6.20.0",
+      "date": "Wed, 25 Jul 2018 03:20:34 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "546f0418fcdf56ad6d55af4141c2ac744cc473a6",
+            "comment": "Make stack grow be more flexible"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.10.0` to `^0.11.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.39.1 <7.0.0` to `>=6.39.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.19.1",
       "tag": "@uifabric/experiments_v6.19.1",
       "date": "Tue, 24 Jul 2018 10:24:36 GMT",
