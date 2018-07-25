@@ -446,5 +446,5 @@ describe('FocusTrapZone', () => {
       await animationFrame();
       expect(lastFocusedElement).toBe(buttonC);
     });
-  });  
+  });
 });
