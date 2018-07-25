@@ -4,6 +4,7 @@ import { IButtonStyles, IButtonProps } from '../../Button';
 import { ICommandBarData } from './CommandBar.base';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject, IComponentAs } from '../../Utilities';
+import { ITooltipHostProps } from '../../Tooltip';
 
 export interface ICommandBar {
   /**
@@ -113,6 +114,11 @@ export interface ICommandBarItemProps extends IContextualMenuItem {
    * @defaultvalue false
    */
   iconOnly?: boolean;
+
+  /**
+   * Props to pass into tooltip during iconOnly
+   */
+  tooltipHostProps?: ITooltipHostProps;
 
   /**
    * Custom styles for individual button
