@@ -71,7 +71,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
         {...{ onBlurCapture: this._hideTooltip }}
         onMouseEnter={this._onTooltipMouseEnter}
         onMouseLeave={this._onTooltipMouseLeave}
-        aria-describedby={setAriaDescribedBy && isTooltipVisible && content ? tooltipId : undefined}
+        aria-describedby={setAriaDescribedBy && isTooltipVisible && isContentPresent ? tooltipId : undefined}
       >
         {children}
         {showTooltip && (
