@@ -5,7 +5,7 @@ import {
   IShimmerElementsGroupStyleProps,
   IShimmerElementsGroupStyles
 } from './ShimmerElementsGroup.types';
-import { IStyleSet } from '../../../Styling';
+import { IStyle } from '../../../Styling';
 import {
   ShimmerElementType,
   ShimmerElementVerticalAlign,
@@ -67,11 +67,11 @@ export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGrou
     return renderedElements;
   };
 
-  private _getBorderStyles = (elem: IShimmerElement, rowHeight?: number): IStyleSet | undefined => {
+  private _getBorderStyles = (elem: IShimmerElement, rowHeight?: number): IStyle | undefined => {
     const elemHeight: number | undefined = elem.height;
     const dif: number = rowHeight && elemHeight ? rowHeight - elemHeight : 0;
 
-    let borderStyle: IStyleSet | undefined;
+    let borderStyle: IStyle | undefined;
 
     if (!elem.verticalAlign || elem.verticalAlign === ShimmerElementVerticalAlign.center) {
       borderStyle = {

@@ -22,7 +22,7 @@ export const styles = (props: IStyleProps<IStackProps, IStackStyles>): IStackSty
         padding
       },
       grow && {
-        flexGrow: 1,
+        flexGrow: grow === true ? 1 : grow,
         overflow: 'hidden'
       },
       align && {

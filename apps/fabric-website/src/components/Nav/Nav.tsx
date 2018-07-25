@@ -4,7 +4,7 @@ import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { CollapsibleSection } from '../../../../../packages/experiments/lib/components/CollapsibleSection';
-import { CollapsibleSectionTitle} from './Nav.CollapsibleSectionTitle';
+import { CollapsibleSectionTitle } from './Nav.CollapsibleSectionTitle';
 
 import { getPathMinusLastHash } from '../../utilities/pageroute';
 import * as stylesImport from './Nav.module.scss';
@@ -32,7 +32,7 @@ export class Nav extends React.Component<INavProps, INavState> {
   public render(): JSX.Element {
     let { pages } = this.props;
 
-    if(!pages) {
+    if (!pages) {
       return null;
     }
 
@@ -52,16 +52,18 @@ export class Nav extends React.Component<INavProps, INavState> {
 
     const links: React.ReactElement<{}>[] = pages
       .filter(page => !page.hasOwnProperty('isHiddenFromMainNav'))
-        .map((page: INavPage, linkIndex: number) => {
-          if(page.isCategory && !filterState) {
-            return (
-              <span>
-                {page.pages.map((innerPage:INavPage, innerLinkIndex) => this._renderLink(innerPage, innerLinkIndex))}
-              </span>
-            );
-          }
-          return (page.isCategory && filterState) ? this._renderCategory(page, linkIndex) : this._renderLink(page, linkIndex);
-        });
+      .map((page: INavPage, linkIndex: number) => {
+        if (page.isCategory && !filterState) {
+          return (
+            <span>
+              {page.pages.map((innerPage: INavPage, innerLinkIndex) => this._renderLink(innerPage, innerLinkIndex))}
+            </span>
+          );
+        }
+        return page.isCategory && filterState
+          ? this._renderCategory(page, linkIndex)
+          : this._renderLink(page, linkIndex);
+      });
 
     return (
       <ul className={css(styles.links, isSubMenu ? styles.isSubMenu : '')} aria-label="Main website navigation">
@@ -71,7 +73,7 @@ export class Nav extends React.Component<INavProps, INavState> {
   }
 
   private _renderCategory(page: INavPage, categoryIndex: number): React.ReactElement<{}> {
-    if(page.isCategory && page.pages) {
+    if (page.isCategory && page.pages) {
       return (
         <span key={categoryIndex} className={css(styles.category, _hasActiveChild(page) && styles.hasActiveChild)}>
           <CollapsibleSection
@@ -90,9 +92,9 @@ export class Nav extends React.Component<INavProps, INavState> {
     const links: INavPage[] = [];
     pages.map((page: INavPage) => page.pages.map((link: INavPage) => links.push(link)));
     links.sort((l1, l2) => {
-      if(l1.title>l2.title) {
+      if (l1.title > l2.title) {
         return 1;
-      } else if(l1.title<l2.title) {
+      } else if (l1.title < l2.title) {
         return -1;
       }
       return 0;
@@ -104,7 +106,12 @@ export class Nav extends React.Component<INavProps, INavState> {
   private _renderLink(page: INavPage, linkIndex: number): React.ReactElement<{}> {
     const ariaLabel = page.pages ? 'Hit enter to open sub menu, tab to access sub menu items.' : '';
     const title = page.title === 'Fabric' ? 'Home page' : page.title;
-    const childLinks = (page.pages && title === 'Components' && !this.state.filterState) ? this._renderSortedLinks(page.pages) : (page.pages) ? this._renderLinkList(page.pages, true) : null;
+    const childLinks =
+      page.pages && title === 'Components' && !this.state.filterState
+        ? this._renderSortedLinks(page.pages)
+        : page.pages
+          ? this._renderLinkList(page.pages, true)
+          : null;
     const { searchQuery } = this.state;
     const searchRegEx = new RegExp(searchQuery, 'i');
     const text = page.title;
@@ -134,7 +141,7 @@ export class Nav extends React.Component<INavProps, INavState> {
         <li
           className={css(
             styles.link,
-            _isPageActive(page) && searchQuery==='' ? styles.isActive : '',
+            _isPageActive(page) && searchQuery === '' ? styles.isActive : '',
             _hasActiveChild(page) ? styles.hasActiveChild : '',
             page.isHomePage ? styles.isHomePage : '',
             page.className ? styles[page.className] : ''
@@ -142,11 +149,11 @@ export class Nav extends React.Component<INavProps, INavState> {
           key={linkIndex}
         >
           {!(page.isUhfLink && location.hostname !== 'localhost') &&
-          (page.isFilterable ? searchRegEx.test(page.title) : true) && (
-            <a href={page.url} onClick={this._onLinkClick} title={title} aria-label={ariaLabel}>
-              {linkText}
-            </a>
-          )}
+            (page.isFilterable ? searchRegEx.test(page.title) : true) && (
+              <a href={page.url} onClick={this._onLinkClick} title={title} aria-label={ariaLabel}>
+                {linkText}
+              </a>
+            )}
           {childLinks}
         </li>
       </span>
@@ -164,13 +171,13 @@ export class Nav extends React.Component<INavProps, INavState> {
               root: {
                 marginBottom: '5px',
                 width: '180px',
-                backgroundColor: 'transparent',
+                backgroundColor: 'transparent'
               },
-              iconContainer:{
+              iconContainer: {
                 display: 'none'
               },
               field: {
-                backgroundColor:'transparent',
+                backgroundColor: 'transparent',
                 color: 'white'
               },
               clearButton: {
@@ -184,26 +191,26 @@ export class Nav extends React.Component<INavProps, INavState> {
             onChange={this._onChangeQuery.bind(this)}
           />
           <IconButton
-              iconProps={{iconName: 'filter'}}
-              style={{ color:'white', marginLeft: '5px' }}
-              menuIconProps={{iconName:''}}
-              menuProps={{
-                items: [
-                  {
-                    key: 'categories',
-                    text: 'Categories',
-                    iconProps: {iconName: 'org'},
-                    onClick: this._setCategories.bind(this)
-                  },
-                  {
-                    key: 'alphabetized',
-                    text: 'A to Z',
-                    iconProps: {iconName: 'Ascending'},
-                    onClick: this._setAlphabetized.bind(this)
-                  }
-                ]
-              }}
-            />
+            iconProps={{ iconName: 'filter' }}
+            style={{ color: 'white', marginLeft: '5px' }}
+            menuIconProps={{ iconName: '' }}
+            menuProps={{
+              items: [
+                {
+                  key: 'categories',
+                  text: 'Categories',
+                  iconProps: { iconName: 'org' },
+                  onClick: this._setCategories.bind(this)
+                },
+                {
+                  key: 'alphabetized',
+                  text: 'A to Z',
+                  iconProps: { iconName: 'Ascending' },
+                  onClick: this._setAlphabetized.bind(this)
+                }
+              ]
+            }}
+          />
         </div>
       );
     }
@@ -223,7 +230,7 @@ export class Nav extends React.Component<INavProps, INavState> {
       searchQuery: newValue,
       filterState: false
     });
-    if(newValue === '') {
+    if (newValue === '') {
       this.setState({
         filterState: this.state.defaultFilterState
       });
@@ -245,7 +252,7 @@ export class Nav extends React.Component<INavProps, INavState> {
   }
 }
 
- // A tag used for resolving links.
+// A tag used for resolving links.
 const _urlResolver = document.createElement('a');
 
 function _isPageActive(page: INavPage): boolean {

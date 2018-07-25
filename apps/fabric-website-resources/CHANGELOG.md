@@ -1,6 +1,13 @@
-# Change Log - office-ui-fabric-react
+# Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Thu, 07 Jun 2018 17:40:07 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Jul 2018 21:25:32 GMT and should not be manually modified.
+
+## 6.0.2
+Thu, 19 Jul 2018 21:25:32 GMT
+
+### Patches
+
+- Added optional feedback section for component pages
 
 ## 6.6.1
 Thu, 07 Jun 2018 17:40:07 GMT

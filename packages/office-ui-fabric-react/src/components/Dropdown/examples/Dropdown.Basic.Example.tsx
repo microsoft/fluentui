@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Dropdown, IDropdown, DropdownMenuItemType, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-import { BaseComponent, createRef } from '../../../Utilities';
+import { BaseComponent, createRef } from 'office-ui-fabric-react/lib/Utilities';
 import './Dropdown.Basic.Example.scss';
 
 export class DropdownBasicExample extends BaseComponent<

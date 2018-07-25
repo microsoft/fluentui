@@ -925,10 +925,19 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // Do nothing if the blur is coming from something
     // inside the comboBox root or the comboBox menu since
     // it we are not really bluring from the whole comboBox
+    let relatedTarget = event.relatedTarget;
+    if (event.relatedTarget === null) {
+      // In IE11, due to lack of support, event.relatedTarget is always
+      // null making every onBlur call to be "outside" of the ComboBox
+      // even when it's not. Using document.activeElement is another way
+      // for us to be able to get what the relatedTarget without relying
+      // on the event
+      relatedTarget = document.activeElement;
+    }
     if (
-      event.relatedTarget &&
-      ((this._root.current && this._root.current.contains(event.relatedTarget as HTMLElement)) ||
-        (this._comboBoxMenu.current && this._comboBoxMenu.current.contains(event.relatedTarget as HTMLElement)))
+      relatedTarget &&
+      ((this._root.current && this._root.current.contains(relatedTarget as HTMLElement)) ||
+        (this._comboBoxMenu.current && this._comboBoxMenu.current.contains(relatedTarget as HTMLElement)))
     ) {
       event.preventDefault();
       event.stopPropagation();
@@ -1040,7 +1049,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         gapSpace={0}
         doNotLayer={false}
         directionalHint={DirectionalHint.bottomLeftEdge}
-        directionalHintFixed={true}
+        directionalHintFixed={false}
         {...calloutProps}
         className={css(this._classNames.callout, calloutProps ? calloutProps.className : undefined)}
         target={this._comboBoxWrapper.current}
@@ -1506,9 +1515,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     }
 
     // Notify when there is a new pending index/value. Also, if there is a pending value, it needs to send undefined.
-    if (newPendingIndex !== undefined || newPendingValue || this._hasPendingValue) {
+    if (newPendingIndex !== undefined || newPendingValue !== undefined || this._hasPendingValue) {
       onPendingValueChanged(
-        newPendingIndex ? currentOptions[newPendingIndex] : undefined,
+        newPendingIndex !== undefined ? currentOptions[newPendingIndex] : undefined,
         newPendingIndex,
         newPendingValue
       );

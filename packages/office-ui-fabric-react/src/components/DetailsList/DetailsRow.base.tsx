@@ -23,7 +23,7 @@ import { IDetailsRowCheckProps } from './DetailsRowCheck.types';
 import { IDetailsRowStyleProps, IDetailsRowStyles } from './DetailsRow.types';
 import { classNamesFunction } from '../../Utilities';
 
-export const getClassNames = classNamesFunction<IDetailsRowStyleProps, IDetailsRowStyles>();
+const getClassNames = classNamesFunction<IDetailsRowStyleProps, IDetailsRowStyles>();
 
 export interface IDetailsRowSelectionState {
   isSelected: boolean;
@@ -146,6 +146,20 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowProps, IDetailsRowS
       selectionState: this._getSelectionState(newProps),
       groupNestingDepth: newProps.groupNestingDepth
     });
+  }
+
+  public shouldComponentUpdate(nextProps: IDetailsRowProps, nextState: IDetailsRowState): boolean {
+    if (this.props.useReducedRowRenderer) {
+      if (this.state.selectionState) {
+        const newSelectionState = this._getSelectionState(nextProps);
+        if (this.state.selectionState.isSelected !== newSelectionState.isSelected) {
+          return true;
+        }
+      }
+      return shallowCompare(this.props, nextProps);
+    } else {
+      return true;
+    }
   }
 
   public render(): JSX.Element {

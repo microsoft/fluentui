@@ -2,7 +2,7 @@ import * as React from 'react';
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { HoverCard, IExpandingCardProps } from 'office-ui-fabric-react/lib/HoverCard';
 import { DetailsList, buildColumns, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
-import { createListItems } from '../../../utilities/exampleData';
+import { createListItems } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import './HoverCard.Example.scss';
 
 let _items: any[];

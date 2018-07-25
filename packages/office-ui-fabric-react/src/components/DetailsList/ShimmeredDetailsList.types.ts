@@ -1,5 +1,6 @@
 import { IDetailsListProps } from './DetailsList.types';
-import { IStyle, IStyleFunctionOrObject, ITheme } from '../..';
+import { IStyle, ITheme } from '../../Styling';
+import { IStyleFunctionOrObject } from '../../Utilities';
 
 export interface IShimmeredDetailsListProps extends IDetailsListProps {
   /** The theme provided by context */

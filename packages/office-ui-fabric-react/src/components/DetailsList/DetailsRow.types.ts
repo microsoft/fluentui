@@ -152,6 +152,12 @@ export interface IDetailsRowProps extends IBaseProps<IDetailsRow> {
    * Whether to render shimmer
    */
   shimmer?: boolean;
+
+  /**
+   * Rerender DetailsRow only when props changed. Might cause regression when depending on external updates.
+   * @default false
+   */
+  useReducedRowRenderer?: boolean;
 }
 
 export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & {
@@ -164,7 +170,7 @@ export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & 
   /** Whether this row can be selected */
   canSelect?: boolean;
 
-  /** Class name of when this becomes a drop taget */
+  /** Class name of when this becomes a drop target. */
   droppingClassName?: string;
 
   /** Is the checkbox visible */

@@ -74,6 +74,15 @@ if (stylesheet && stylesheet.onReset) {
 }
 
 /**
+ * Normalizes an icon name for consistent mapping.
+ * Current implementation is to convert the icon name to lower case.
+ *
+ * @param name - Icon name to normalize.
+ * @returns {string} Normalized icon name to use for indexing and mapping.
+ */
+const normalizeIconName = (name: string): string => name.toLowerCase();
+
+/**
  * Registers a given subset of icons.
  *
  * @param iconSubset - the icon subset definition.
@@ -92,7 +101,7 @@ export function registerIcons(iconSubset: IIconSubset, options?: Partial<IIconOp
   for (const iconName in icons) {
     if (icons.hasOwnProperty(iconName)) {
       const code = icons[iconName];
-      const normalizedIconName = iconName.toLowerCase();
+      const normalizedIconName = normalizeIconName(iconName);
 
       if (_iconSettings[normalizedIconName]) {
         if (!options.disableWarnings) {
@@ -109,10 +118,43 @@ export function registerIcons(iconSubset: IIconSubset, options?: Partial<IIconOp
 }
 
 /**
+ * Unregisters icons by name.
+ *
+ * @param iconNames - List of icons to unregister.
+ */
+export function unregisterIcons(iconNames: string[]): void {
+  const options = _iconSettings.__options;
+
+  for (const iconName of iconNames) {
+    const normalizedIconName = normalizeIconName(iconName);
+    if (_iconSettings[normalizedIconName]) {
+      delete _iconSettings[normalizedIconName];
+    } else {
+      // Warn that we are trying to delete an icon that doesn't exist
+      if (!options.disableWarnings) {
+        warn(`The icon "${iconName}" tried to unregister but was not registered.`);
+      }
+    }
+
+    // Delete any aliases for this iconName
+    if (_iconSettings.__remapped[normalizedIconName]) {
+      delete _iconSettings.__remapped[normalizedIconName];
+    }
+
+    // Delete any items that were an alias for this iconName
+    Object.keys(_iconSettings.__remapped).forEach((key: string) => {
+      if (_iconSettings.__remapped[key] === normalizedIconName) {
+        delete _iconSettings.__remapped[key];
+      }
+    });
+  }
+}
+
+/**
  * Remaps one icon name to another.
  */
 export function registerIconAlias(iconName: string, mappedToName: string): void {
-  _iconSettings.__remapped[iconName.toLowerCase()] = mappedToName.toLowerCase();
+  _iconSettings.__remapped[normalizeIconName(iconName)] = normalizeIconName(mappedToName);
 }
 
 /**
@@ -126,7 +168,7 @@ export function getIcon(name?: string): IIconRecord | undefined {
   let icon: IIconRecord | undefined = undefined;
   const options = _iconSettings.__options;
 
-  name = name ? name.toLowerCase() : '';
+  name = name ? normalizeIconName(name) : '';
   name = _iconSettings.__remapped[name] || name;
 
   if (name) {
