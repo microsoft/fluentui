@@ -507,12 +507,13 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     const isItemSelected =
       item.index !== undefined && selectedIndices ? selectedIndices.indexOf(item.index) > -1 : false;
 
+    // select the right classname based on the combination of selected/disabled
     const itemClassName =
-      isItemSelected && item.disabled === true
+      isItemSelected && item.disabled === true // preciate: both selected and disabled
         ? this._classNames.dropdownItemSelectedAndDisabled
-        : isItemSelected
+        : isItemSelected // preciate: selected only
           ? this._classNames.dropdownItemSelected
-          : item.disabled === true
+          : item.disabled === true // predicate: disabled only
             ? this._classNames.dropdownItemDisabled
             : this._classNames.dropdownItem;
 

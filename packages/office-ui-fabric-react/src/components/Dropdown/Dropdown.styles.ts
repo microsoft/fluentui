@@ -32,7 +32,7 @@ const DROPDOWN_ITEMHEIGHT = 32;
 
 const highContrastAdjustMixin = {
   // highContrastAdjust mixin
-  '@media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white)': {
+  '@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white)': {
     MsHighContrastAdjust: 'none'
   }
 };
@@ -242,6 +242,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       }
     ],
     caretDownWrapper: [
+      globalClassnames.caretDownWrapper,
       {
         position: 'absolute',
         top: 1,

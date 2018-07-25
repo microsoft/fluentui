@@ -247,7 +247,7 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
               border-color: Highlight;
               color: Highlight;
             }
-            @media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
+            @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
               -ms-high-contrast-adjust: none;
             }
             &:active .ms-Dropdown-title {
@@ -266,7 +266,7 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
             @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
               color: HighlightText;
             }
-            @media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-caretDown {
+            @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-caretDown {
               -ms-high-contrast-adjust: none;
             }
             &:active .ms-Dropdown-caretDown {
@@ -342,7 +342,7 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
         </span>
         <span
           className=
-
+              ms-Dropdown-caretDownWrapper
               {
                 height: 32px;
                 line-height: 30px;
