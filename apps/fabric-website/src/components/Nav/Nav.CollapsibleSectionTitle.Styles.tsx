@@ -1,4 +1,7 @@
-import { ICollapsibleSectionTitleProps, ICollapsibleSectionTitleStyles } from './../../../../../packages/experiments/lib/components/CollapsibleSection/CollapsibleSectionTitle.types';
+import {
+  ICollapsibleSectionTitleProps,
+  ICollapsibleSectionTitleStyles
+} from '@uifabric/experiments/lib/CollapsibleSection';
 import { ITheme, getFocusStyle } from 'office-ui-fabric-react';
 
 export const getStyles = (props: ICollapsibleSectionTitleProps & { theme: ITheme }): ICollapsibleSectionTitleStyles => {
@@ -19,7 +22,7 @@ export const getStyles = (props: ICollapsibleSectionTitleProps & { theme: ITheme
         selectors: {
           ':hover': {
             background: theme.palette.neutralPrimary,
-            cursor:'pointer'
+            cursor: 'pointer'
           }
         }
       }

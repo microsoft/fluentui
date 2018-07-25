@@ -3,7 +3,7 @@ import * as React from 'react';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
-import { CollapsibleSection } from '../../../../../packages/experiments/lib/components/CollapsibleSection';
+import { CollapsibleSection } from '@uifabric/experiments/lib/CollapsibleSection';
 import { CollapsibleSectionTitle } from './Nav.CollapsibleSectionTitle';
 
 import { getPathMinusLastHash } from '../../utilities/pageroute';
