@@ -8,7 +8,6 @@ import {
   DelayedRender,
   BaseComponent,
   getId,
-  css,
   getNativeProps,
   inputProperties,
   textAreaProperties,
@@ -195,7 +194,8 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
       borderless,
       resizable,
       hasIcon: !!iconProps,
-      underlined
+      underlined,
+      iconClass
     });
 
     // If a custom description render function is supplied then treat description as always available.
@@ -214,7 +214,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
               <div className={this._classNames.prefix}>{onRenderPrefix(this.props, this._onRenderPrefix)}</div>
             )}
             {multiline ? this._renderTextArea() : this._renderInput()}
-            {(iconClass || iconProps) && <Icon className={css(iconClass, this._classNames.icon)} {...iconProps} />}
+            {(iconClass || iconProps) && <Icon className={this._classNames.icon} {...iconProps} />}
             {(suffix !== undefined || this.props.onRenderSuffix) && (
               <div className={this._classNames.suffix}>{onRenderSuffix(this.props, this._onRenderSuffix)}</div>
             )}

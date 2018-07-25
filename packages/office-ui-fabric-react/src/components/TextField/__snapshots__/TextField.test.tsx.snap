@@ -572,32 +572,6 @@ exports[`TextField renders multiline TextField correctly with errorMessage 1`] =
             }
           }
         >
-          test addonString
-        </span>
-      </div>
-      <div
-        className=
-            ms-TextField-prefix
-            {
-              align-items: center;
-              background: #f4f4f4;
-              color: #666666;
-              display: flex;
-              line-height: 1px;
-              padding-bottom: 0;
-              padding-left: 10px;
-              padding-right: 10px;
-              padding-top: 0;
-              white-space: nowrap;
-            }
-      >
-        <span
-          style={
-            Object {
-              "paddingBottom": "1px",
-            }
-          }
-        >
           test prefix
         </span>
       </div>
@@ -808,32 +782,6 @@ exports[`TextField renders multiline TextField correctly with props affecting st
             border-color: #a80000;
           }
     >
-      <div
-        className=
-            ms-TextField-prefix
-            {
-              align-items: center;
-              background: #f4f4f4;
-              color: #666666;
-              display: flex;
-              line-height: 1px;
-              padding-bottom: 0;
-              padding-left: 10px;
-              padding-right: 10px;
-              padding-top: 0;
-              white-space: nowrap;
-            }
-      >
-        <span
-          style={
-            Object {
-              "paddingBottom": "1px",
-            }
-          }
-        >
-          test addonString
-        </span>
-      </div>
       <div
         className=
             ms-TextField-prefix
@@ -1069,32 +1017,6 @@ exports[`TextField should resepect user component and subcomponent styling 1`] =
             border-color: #a80000;
           }
     >
-      <div
-        className=
-            ms-TextField-prefix
-            {
-              align-items: center;
-              background: #f4f4f4;
-              color: #666666;
-              display: flex;
-              line-height: 1px;
-              padding-bottom: 0;
-              padding-left: 10px;
-              padding-right: 10px;
-              padding-top: 0;
-              white-space: nowrap;
-            }
-      >
-        <span
-          style={
-            Object {
-              "paddingBottom": "1px",
-            }
-          }
-        >
-          test addonString
-        </span>
-      </div>
       <div
         className=
             ms-TextField-prefix

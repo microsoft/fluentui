@@ -64,7 +64,8 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
     underlined,
     hasIcon,
     resizable,
-    hasErrorMessage
+    hasErrorMessage,
+    iconClass
   } = props;
 
   const { semanticColors, palette } = theme;
@@ -345,7 +346,8 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         top: 'auto',
         fontSize: 16,
         lineHeight: 18
-      }
+      },
+      iconClass
     ],
     description: [
       classNames.description,

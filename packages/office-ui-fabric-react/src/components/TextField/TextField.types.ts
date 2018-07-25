@@ -285,7 +285,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
 export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> &
   Pick<
     ITextFieldProps,
-    'className' | 'disabled' | 'required' | 'multiline' | 'borderless' | 'resizable' | 'underlined'
+    'className' | 'disabled' | 'required' | 'multiline' | 'borderless' | 'resizable' | 'underlined' | 'iconClass'
   > & {
     /** Element has an error message. */
     hasErrorMessage?: boolean;
@@ -298,6 +298,9 @@ export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> &
   };
 
 export interface ITextFieldSubComponentStyles {
+  /**
+   * Styling for Label child component.
+   */
   // TODO: this should be the interface once we're on TS 2.9.2 but otherwise causes errors in 2.8.4
   // label: IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles>;
   label: IStyleFunctionOrObject<any, any>;
