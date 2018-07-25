@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 24 Jul 2018 10:24:36 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Jul 2018 03:20:34 GMT and should not be manually modified.
+
+## 6.20.0
+Wed, 25 Jul 2018 03:20:34 GMT
+
+### Minor changes
+
+- Make stack grow be more flexible
 
 ## 6.19.1
 Tue, 24 Jul 2018 10:24:36 GMT
