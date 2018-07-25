@@ -70,6 +70,7 @@ export class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITea
         {...calloutProps}
         className={classNames.root}
         styles={calloutStyles(stylesProps)}
+        hideOverflow
       >
         <div ref={this.rootElement}>
           <TeachingBubbleContent {...this.props} />

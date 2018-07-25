@@ -6,7 +6,7 @@ import { ContextualMenuItemBase } from './ContextualMenuItem.base';
 import { IContextualMenuItemProps } from './ContextualMenuItem.types';
 import { IContextualMenuItem } from './ContextualMenu.types';
 import { IMenuItemClassNames } from './ContextualMenu.classNames';
-import { hasSubmenu } from '../../utilities/contextualMenu';
+import { hasSubmenu } from '../../utilities/contextualMenu/index';
 
 describe('ContextMenuItemChildren', () => {
   describe('when a checkmark icon', () => {

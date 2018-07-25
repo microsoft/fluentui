@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { css, classNamesFunction } from '../../../Utilities';
-import { ActivityItem, IActivityItemProps } from '..';
+import { css, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { ActivityItem, IActivityItemProps } from '../../../ActivityItem';
 import { getStyles, IActivityItemExampleStyleProps, IActivityItemExampleStyles } from './ActivityItem.Example.styles';
 import { TestImages } from '../../../common/TestImages';
 import { Link } from '../../../Link';

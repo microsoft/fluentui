@@ -342,6 +342,33 @@ describe('ComboBox', () => {
     expect(wrapper.find('.is-open').length).toEqual(1);
   });
 
+  it('onPendingValueChanged triggers for all indexes', () => {
+    let comboBoxRoot;
+    let inputElement: ReactWrapper<React.InputHTMLAttributes<any>, any>;
+    const indexSeen: number[] = [];
+    const pendingValueChangedHandler = (option?: IComboBoxOption, index?: number, value?: string) => {
+      if (index !== undefined) {
+        indexSeen.push(index);
+      }
+    };
+    const wrapper = mount(
+      <ComboBox
+        label="testgroup"
+        options={DEFAULT_OPTIONS}
+        defaultSelectedKey="1"
+        allowFreeform={true}
+        onPendingValueChanged={pendingValueChangedHandler}
+      />
+    );
+    comboBoxRoot = wrapper.find('.ms-ComboBox');
+    inputElement = comboBoxRoot.find('input');
+    inputElement.simulate('input', { target: { value: 'f' } });
+    inputElement.simulate('keydown', { which: KeyCodes.down });
+    inputElement.simulate('keydown', { which: KeyCodes.up });
+    expect(indexSeen).toContain(0);
+    expect(indexSeen).toContain(1);
+  });
+
   it('Can type a complete option with autocomplete and allowFreeform on and submit it', () => {
     let updatedOption;
     let updatedIndex;

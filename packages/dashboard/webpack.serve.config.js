@@ -20,6 +20,7 @@ module.exports = resources.createServeConfig({
     alias: {
       '@uifabric/dashboard/src': path.join(__dirname, 'src'),
       '@uifabric/dashboard/lib': path.join(__dirname, 'src'),
+      '@uifabric/dashboard': path.join(__dirname, 'lib'),
       'Props.ts.js': 'Props',
       'Example.tsx.js': 'Example'
     }

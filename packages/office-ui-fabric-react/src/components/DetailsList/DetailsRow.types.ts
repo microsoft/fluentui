@@ -152,6 +152,12 @@ export interface IDetailsRowProps extends IBaseProps<IDetailsRow> {
    * Whether to render shimmer
    */
   shimmer?: boolean;
+
+  /**
+   * Rerender DetailsRow only when props changed. Might cause regression when depending on external updates.
+   * @default false
+   */
+  useReducedRowRenderer?: boolean;
 }
 
 export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & {
