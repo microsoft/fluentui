@@ -154,40 +154,27 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
         userSelect: 'none',
         selectors: {
           ['&:hover .' + globalClassnames.title]: [
-            rootHoverFocusActiveSelectorNeutralDarkMixin,
-            {
-              borderColor: palette.neutralDark
-            },
+            !disabled && rootHoverFocusActiveSelectorNeutralDarkMixin,
+            { borderColor: palette.neutralDark },
             highContrastBorderState
           ],
           ['&:focus .' + globalClassnames.title]: [
-            rootHoverFocusActiveSelectorNeutralDarkMixin,
-            {
-              borderColor: palette.themePrimary
-            },
+            !disabled && rootHoverFocusActiveSelectorNeutralDarkMixin,
+            { borderColor: palette.themePrimary },
             highContrastItemAndTitleStateMixin
           ],
           ['&:active .' + globalClassnames.title]: [
-            rootHoverFocusActiveSelectorNeutralDarkMixin,
-            {
-              borderColor: palette.themeDark
-            },
+            !disabled && rootHoverFocusActiveSelectorNeutralDarkMixin,
+            { borderColor: palette.themeDark },
             highContrastBorderState
           ],
 
-          ['&:hover .' + globalClassnames.caretDown]: rootHoverFocusActiveSelectorNeutralDarkMixin,
+          ['&:hover .' + globalClassnames.caretDown]: !disabled && rootHoverFocusActiveSelectorNeutralDarkMixin,
           ['&:focus .' + globalClassnames.caretDown]: [
-            rootHoverFocusActiveSelectorNeutralDarkMixin,
-            {
-              selectors: {
-                [HighContrastSelector]: {
-                  color: 'HighlightText'
-                },
-                ...highContrastAdjustMixin
-              }
-            }
+            !disabled && rootHoverFocusActiveSelectorNeutralDarkMixin,
+            { selectors: { [HighContrastSelector]: { color: 'HighlightText' }, ...highContrastAdjustMixin } }
           ],
-          ['&:active .' + globalClassnames.caretDown]: rootHoverFocusActiveSelectorNeutralDarkMixin,
+          ['&:active .' + globalClassnames.caretDown]: !disabled && rootHoverFocusActiveSelectorNeutralDarkMixin,
 
           ['&:hover .' + globalClassnames.titleIsPlaceHolder]: rootHoverFocusActiveSelectorNeutralSecondaryMixin,
           ['&:focus .' + globalClassnames.titleIsPlaceHolder]: rootHoverFocusActiveSelectorNeutralSecondaryMixin,
@@ -221,62 +208,33 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
         whiteSpace: 'nowrap',
         textOverflow: 'ellipsis'
       },
-      isRenderingPlaceholder && [
-        globalClassnames.titleIsPlaceHolder,
-        {
-          color: semanticColors.inputPlaceholderText
-        }
-      ],
+      isRenderingPlaceholder && [globalClassnames.titleIsPlaceHolder, { color: semanticColors.inputPlaceholderText }],
       hasError && [globalClassnames.titleHasError, borderColorError],
       disabled && {
         backgroundColor: semanticColors.disabledBackground,
         border: 'none',
         color: semanticColors.disabledText,
         cursor: 'default',
-        selectors: {
-          [HighContrastSelector]: {
-            border: '1px solid GrayText',
-            color: 'GrayText'
-          }
-        }
+        selectors: { [HighContrastSelector]: { border: '1px solid GrayText', color: 'GrayText' } }
       }
     ],
     caretDownWrapper: [
       globalClassnames.caretDownWrapper,
-      {
-        position: 'absolute',
-        top: 1,
-        right: 12,
-        height: DROPDOWN_HEIGHT,
-        lineHeight: DROPDOWN_HEIGHT - 2 // height minus the border
-      }
+      { position: 'absolute', top: 1, right: 12, height: DROPDOWN_HEIGHT, lineHeight: DROPDOWN_HEIGHT - 2 }
     ],
     caretDown: [
       globalClassnames.caretDown,
-      {
-        color: palette.neutralSecondary,
-        fontSize: FontSizes.small,
-        pointerEvents: 'none'
-      },
-      disabled && {
-        color: semanticColors.disabledText,
-        selectors: {
-          [HighContrastSelector]: {
-            color: 'GrayText'
-          }
-        }
-      }
+      { color: palette.neutralSecondary, fontSize: FontSizes.small, pointerEvents: 'none' },
+      disabled && { color: semanticColors.disabledText, selectors: { [HighContrastSelector]: { color: 'GrayText' } } }
     ],
-    errorMessage: {
-      color: semanticColors.errorText,
-      ...theme.fonts.small,
-      paddingTop: 5
-    },
+    errorMessage: { color: semanticColors.errorText, ...theme.fonts.small, paddingTop: 5 },
     callout: [
       globalClassnames.callout,
       {
         boxShadow: '0 0 2px 0 rgba(0,0,0,0.2)',
-        border: `1px solid ${palette.neutralLight}`
+        border: `1px solid ${
+          palette.neutralLight // height minus the border
+        }`
       },
       calloutClassName
     ],
@@ -289,43 +247,18 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
             // Force drop shadow even under medium breakpoint
             boxShadow: '-30px 0px 30px -30px rgba(0,0,0,0.2)'
           },
-          '& .ms-Panel-contentInner': {
-            padding: '0 0 20px'
-          }
+          '& .ms-Panel-contentInner': { padding: '0 0 20px' }
         }
       },
       panelClassName
     ],
-    dropdownItemsWrapper: {
-      selectors: {
-        '&:focus': {
-          outline: 0
-        }
-      }
-    },
-    dropdownItems: [
-      globalClassnames.dropdownItems,
-      {
-        display: 'block'
-      }
-    ],
+    dropdownItemsWrapper: { selectors: { '&:focus': { outline: 0 } } },
+    dropdownItems: [globalClassnames.dropdownItems, { display: 'block' }],
     dropdownItem: dropdownItemStyle,
     dropdownItemSelected: dropdownItemSelected,
     dropdownItemDisabled: dropdownItemDisabled,
-    dropdownItemSelectedAndDisabled: [
-      dropdownItemSelected,
-      dropdownItemDisabled,
-      {
-        backgroundColor: 'transparent'
-      }
-    ],
-    dropdownDivider: [
-      globalClassnames.dropdownDivider,
-      {
-        height: 1,
-        backgroundColor: semanticColors.bodyDivider
-      }
-    ],
+    dropdownItemSelectedAndDisabled: [dropdownItemSelected, dropdownItemDisabled, { backgroundColor: 'transparent' }],
+    dropdownDivider: [globalClassnames.dropdownDivider, { height: 1, backgroundColor: semanticColors.bodyDivider }],
     dropdownOptionText: [
       globalClassnames.dropdownOptionText,
       {
@@ -356,13 +289,6 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
         textAlign: 'left'
       }
     ],
-    subComponentStyles: {
-      label: {
-        root: {
-          display: 'inline-block',
-          marginBottom: 8
-        }
-      }
-    }
+    subComponentStyles: { label: { root: { display: 'inline-block', marginBottom: 8 } } }
   };
 };

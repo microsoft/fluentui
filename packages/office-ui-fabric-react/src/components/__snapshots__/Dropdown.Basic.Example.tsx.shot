@@ -402,14 +402,12 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           }
           &:hover .ms-Dropdown-title {
             border-color: #212121;
-            color: #212121;
           }
           @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
             border-color: Highlight;
           }
           &:focus .ms-Dropdown-title {
             border-color: #0078d4;
-            color: #212121;
           }
           @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
             background-color: Highlight;
@@ -421,25 +419,15 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           }
           &:active .ms-Dropdown-title {
             border-color: #005a9e;
-            color: #212121;
           }
           @media screen and (-ms-high-contrast: active){&:active .ms-Dropdown-title {
             border-color: Highlight;
-          }
-          &:hover .ms-Dropdown-caretDown {
-            color: #212121;
-          }
-          &:focus .ms-Dropdown-caretDown {
-            color: #212121;
           }
           @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
             color: HighlightText;
           }
           @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-caretDown {
             -ms-high-contrast-adjust: none;
-          }
-          &:active .ms-Dropdown-caretDown {
-            color: #212121;
           }
           &:hover .ms-Dropdown-titleIsPlaceHolder {
             color: #666666;
@@ -1240,14 +1228,12 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           }
           &:hover .ms-Dropdown-title {
             border-color: #212121;
-            color: #212121;
           }
           @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
             border-color: Highlight;
           }
           &:focus .ms-Dropdown-title {
             border-color: #0078d4;
-            color: #212121;
           }
           @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
             background-color: Highlight;
@@ -1259,25 +1245,15 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           }
           &:active .ms-Dropdown-title {
             border-color: #005a9e;
-            color: #212121;
           }
           @media screen and (-ms-high-contrast: active){&:active .ms-Dropdown-title {
             border-color: Highlight;
-          }
-          &:hover .ms-Dropdown-caretDown {
-            color: #212121;
-          }
-          &:focus .ms-Dropdown-caretDown {
-            color: #212121;
           }
           @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
             color: HighlightText;
           }
           @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-caretDown {
             -ms-high-contrast-adjust: none;
-          }
-          &:active .ms-Dropdown-caretDown {
-            color: #212121;
           }
           &:hover .ms-Dropdown-titleIsPlaceHolder {
             color: #666666;
