@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "VSO: 603037:- Either render the initials or the avtar image (PersonaCoin) and not both in the site permission panel",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "svaibhav@microsoft.com"
+}
