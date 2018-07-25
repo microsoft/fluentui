@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Mon, 23 Jul 2018 10:28:08 GMT and should not be manually modified.
+This log was last generated on Tue, 24 Jul 2018 10:24:36 GMT and should not be manually modified.
+
+## 6.7.0
+Tue, 24 Jul 2018 10:24:36 GMT
+
+### Minor changes
+
+- Updating example pages to provide codepen script content.
 
 ## 6.6.0
 Mon, 23 Jul 2018 10:28:08 GMT

@@ -28,7 +28,7 @@ export const DemoPage: React.StatelessComponent<IDemoPageProps> = componentPageP
           {componentPageProps.exampleKnobs}
           {componentPageProps.examples &&
             componentPageProps.examples.map(example => (
-              <ExampleCard title={example.title} code={example.code} key={example.title}>
+              <ExampleCard title={example.title} code={example.code} key={example.title} codepenJS={example.codepenJS}>
                 {example.view}
               </ExampleCard>
             ))}

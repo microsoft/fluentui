@@ -12,7 +12,7 @@ export const styles = (props: IStyleProps<IStackItemProps, IStackItemStyles>): I
 
   return {
     root: [
-      grow && { flexGrow: 1 },
+      grow && { flexGrow: grow === true ? 1 : grow },
       !grow && !collapse && { flexShrink: 0 },
       align && {
         alignSelf: alignMap[align] || align

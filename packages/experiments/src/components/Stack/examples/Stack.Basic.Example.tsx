@@ -29,6 +29,14 @@ export class StackBasicExample extends React.Component<{}, {}> {
         <Stack.Item align="end">
           <Text>I am a stack item!</Text>
         </Stack.Item>
+        <Stack>
+          <Stack.Item grow={5}>
+            <Text>grow is 5</Text>
+          </Stack.Item>
+          <Stack.Item grow={1}>
+            <Text>grow is 1</Text>
+          </Stack.Item>
+        </Stack>
       </Stack>
     );
   }
