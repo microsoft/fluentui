@@ -34,6 +34,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/piechart'
         },
         {
+          component: require<any>('../components/ProgressBarChart/ProgressBarChartPage').ProgressBarChartPage,
+          key: 'ProgressBarChart',
+          name: 'ProgressBarChart',
+          url: '#/examples/progressbarchart'
+        },
+        {
           component: require<any>('../components/DonutChart/DonutChartPage').DonutChartPage,
           key: 'DonutChart',
           name: 'DonutChart',
