@@ -113,7 +113,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
         {// Render PersonaCoin if size is not size10
         size !== PersonaSize.size10 && size !== PersonaSize.tiny ? (
           <div {...coinProps} className={classNames.imageArea} style={coinSizeStyle}>
-            {(!this.state.isImageLoaded && shouldRenderInitials) || hideImage ? (
+            {((!this.state.isImageLoaded && shouldRenderInitials) || hideImage) && (
               <div
                 className={mergeStyles(
                   classNames.initials,
@@ -124,9 +124,8 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
               >
                 {onRenderInitials(this.props, this._onRenderInitials)}
               </div>
-            ) : (
-              onRenderCoin(this.props, this._onRenderCoin)
             )}
+            {imageUrl && !hideImage && onRenderCoin(this.props, this._onRenderCoin)}
             <PersonaPresence {...personaPresenceProps} />
           </div>
         ) : // Otherwise, render just PersonaPresence.
