@@ -14,8 +14,8 @@ export class LayerCustomizedExample extends React.Component<{}, ILayerCustomized
     super(props);
 
     this.state = {
-      showPanel: true,
-      trapPanel: true
+      showPanel: false,
+      trapPanel: false
     };
   }
 
