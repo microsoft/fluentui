@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
-import { CollapsibleSection, CollapsibleSectionTitle } from '@uifabric/experiments';
+// TODO: fix imports
+// import { CollapsibleSection, ICollapsibleSectionStyleProps } from '@uifabric/experiments';
+import { CollapsibleSection } from '../CollapsibleSection';
+import { ICollapsibleSectionStyleProps } from '../CollapsibleSection.types';
+
 import { lorem } from '@uifabric/example-app-base';
 
 export interface IFileItem {
@@ -55,6 +59,18 @@ const ExampleFile = (props: IExampleFileProps) => {
   );
 };
 
+const collapsibleSectionStyles = (props: ICollapsibleSectionStyleProps) => {
+  return {
+    body: [
+      // Match font size of title and indent to make look like tree view
+      {
+        paddingLeft: 30
+      },
+      props.theme.fonts.small
+    ]
+  };
+};
+
 /**
  * Example recursive folder structure with a random number of subfolders and items.
  */
@@ -79,7 +95,7 @@ class CollapsibleSectionFolder extends React.Component<{}, {}> {
         <CollapsibleSection
           key={i}
           defaultCollapsed={true}
-          titleAs={CollapsibleSectionTitle}
+          styles={collapsibleSectionStyles}
           titleProps={{
             text: _folderItems[randomFolder]
           }}
