@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/dashboard",
+      "comment": "Add Auto-FontSize to Dashboard/Recommendation for header text auto resize to one line",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/dashboard",
+  "email": "timto@corp.microsoft.com"
+}

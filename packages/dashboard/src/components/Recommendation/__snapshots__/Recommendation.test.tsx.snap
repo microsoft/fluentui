@@ -273,8 +273,16 @@ exports[`RecommendationCard renders basic example correctly 1`] = `
                   margin-bottom: 24px;
                 }
           >
-            Lorem ipsum dolor sit amet
-             
+            <p
+              style={
+                Object {
+                  "fontSize": 28,
+                  "width": 0,
+                }
+              }
+            >
+              Lorem ipsum dolor sit amet
+            </p>
           </div>
           <div
             className=
@@ -749,8 +757,16 @@ exports[`RecommendationCard renders dlp example correctly 1`] = `
                   margin-bottom: 24px;
                 }
           >
-            Protect your sensitive info
-             
+            <p
+              style={
+                Object {
+                  "fontSize": 28,
+                  "width": 0,
+                }
+              }
+            >
+              Protect your sensitive info
+            </p>
           </div>
           <div
             className=
@@ -1512,8 +1528,16 @@ exports[`RecommendationCard renders imageillustration example correctly 1`] = `
                   margin-bottom: 24px;
                 }
           >
-            Set user passwords to never expire
-             
+            <p
+              style={
+                Object {
+                  "fontSize": 28,
+                  "width": 0,
+                }
+              }
+            >
+              Set user passwords to never expire
+            </p>
           </div>
           <div
             className=
