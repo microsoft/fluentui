@@ -33,8 +33,13 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
           className="ms-BasePicker-text"
           role="list"
         >
-          <div>
-            TO:
+          <div
+            data-is-focusable={true}
+            onFocus={[Function]}
+          >
+            <div>
+              TO:
+            </div>
           </div>
           <input
             aria-activedescendant={undefined}
