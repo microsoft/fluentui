@@ -226,7 +226,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     panel: [
       globalClassnames.panel,
       {
-        // TODO: use subcomponentstyles when panel is converted to use js styling.
+        // #5689: use subcomponentstyles when panel is converted to use js styling.
         selectors: {
           '& .ms-Panel-main': {
             // Force drop shadow even under medium breakpoint

@@ -219,9 +219,9 @@ export interface IDropdownStyles {
 
 export interface IDropdownSubComponentStyles {
   /** Refers to the panel that hosts the Dropdown options in small viewports. */
-  // panel: IStyleFunctionOrObject<IPanelStyleProps, IPanelStyles>; // TODO: this relies on Panel supporting JS styling.
+  // panel: IStyleFunctionOrObject<IPanelStyleProps, IPanelStyles>; // #5689: this relies on Panel supporting JS styling.
 
   /** Refers to the primary label for the Dropdown. */
   label: IStyleFunctionOrObject<ILabelStyleProps, any>;
-  // TODO: replace any with ILabelStyles in TS 2.9
+  // #5690: replace any with ILabelStyles in TS 2.9
 }
