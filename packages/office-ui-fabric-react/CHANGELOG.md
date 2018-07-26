@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 25 Jul 2018 03:20:34 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Jul 2018 10:28:51 GMT and should not be manually modified.
+
+## 6.40.0
+Thu, 26 Jul 2018 10:28:51 GMT
+
+### Minor changes
+
+- CommandBar: Support passing tooltipHostProps to items in iconOnly mode
+- TextField: Convert to JS styling.
+
+### Patches
+
+- Changes resizing viewport detection
 
 ## 6.39.2
 Wed, 25 Jul 2018 03:20:34 GMT
