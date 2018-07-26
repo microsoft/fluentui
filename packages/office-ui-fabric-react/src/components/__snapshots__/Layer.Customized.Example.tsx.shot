@@ -10,17 +10,16 @@ exports[`Component Examples renders Layer.Customized.Example.tsx correctly 1`] =
      is rendered, trapped in a specified container. Use 'Show panel' to show/hide the panel (or click the X to dismiss it). Use 'Trap panel' to release the panel from its bounds.
   </p>
   <button
-    aria-checked={true}
+    aria-checked={false}
     aria-describedby={undefined}
     aria-disabled={undefined}
     aria-label={undefined}
     aria-labelledby={undefined}
     aria-posinset={undefined}
     aria-setsize={undefined}
-    checked={true}
+    checked={false}
     className=
         ms-Checkbox
-        is-checked
         is-enabled
         {
           -moz-osx-font-smoothing: grayscale;
@@ -58,25 +57,17 @@ exports[`Component Examples renders Layer.Customized.Example.tsx correctly 1`] =
           z-index: 1;
         }
         &:hover .ms-Checkbox-checkbox {
-          background: #106ebe;
-          border-color: #106ebe;
-        }
-        &:focus .ms-Checkbox-checkbox {
-          background: #106ebe;
-          border-color: #106ebe;
+          border-color: #212121;
         }
         @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-          background: Window;
           border-color: Highlight;
         }
-        @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-checkbox {
-          background: Highlight;
+        &:focus .ms-Checkbox-checkbox {
+          border-color: #212121;
         }
-        @media screen and (-ms-high-contrast: active){&:focus:hover .ms-Checkbox-checkbox {
-          background: Highlight;
-        }
-        @media screen and (-ms-high-contrast: active){&:focus:hover .ms-Checkbox-checkmark {
-          color: Window;
+        &:hover .ms-Checkbox-checkmark {
+          color: #a6a6a6;
+          opacity: 1;
         }
         @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
           color: Highlight;
@@ -119,8 +110,7 @@ exports[`Component Examples renders Layer.Customized.Example.tsx correctly 1`] =
             ms-Checkbox-checkbox
             {
               align-items: center;
-              background: #0078d4;
-              border-color: #0078d4;
+              border-color: #666666;
               border-style: solid;
               border-width: 1px;
               box-sizing: border-box;
@@ -138,10 +128,6 @@ exports[`Component Examples renders Layer.Customized.Example.tsx correctly 1`] =
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 20px;
             }
-            @media screen and (-ms-high-contrast: active){& {
-              background: Highlight;
-              border-color: Highlight;
-            }
         data-ktp-target={undefined}
       >
         <i
@@ -156,7 +142,7 @@ exports[`Component Examples renders Layer.Customized.Example.tsx correctly 1`] =
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
                 font-weight: normal;
-                opacity: 1;
+                opacity: 0;
                 speak: none;
               }
               @media screen and (-ms-high-contrast: active){& {
@@ -186,17 +172,16 @@ exports[`Component Examples renders Layer.Customized.Example.tsx correctly 1`] =
     </label>
   </button>
   <button
-    aria-checked={true}
+    aria-checked={false}
     aria-describedby={undefined}
     aria-disabled={undefined}
     aria-label={undefined}
     aria-labelledby={undefined}
     aria-posinset={undefined}
     aria-setsize={undefined}
-    checked={true}
+    checked={false}
     className=
         ms-Checkbox
-        is-checked
         is-enabled
         {
           -moz-osx-font-smoothing: grayscale;
@@ -234,25 +219,17 @@ exports[`Component Examples renders Layer.Customized.Example.tsx correctly 1`] =
           z-index: 1;
         }
         &:hover .ms-Checkbox-checkbox {
-          background: #106ebe;
-          border-color: #106ebe;
-        }
-        &:focus .ms-Checkbox-checkbox {
-          background: #106ebe;
-          border-color: #106ebe;
+          border-color: #212121;
         }
         @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-          background: Window;
           border-color: Highlight;
         }
-        @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-checkbox {
-          background: Highlight;
+        &:focus .ms-Checkbox-checkbox {
+          border-color: #212121;
         }
-        @media screen and (-ms-high-contrast: active){&:focus:hover .ms-Checkbox-checkbox {
-          background: Highlight;
-        }
-        @media screen and (-ms-high-contrast: active){&:focus:hover .ms-Checkbox-checkmark {
-          color: Window;
+        &:hover .ms-Checkbox-checkmark {
+          color: #a6a6a6;
+          opacity: 1;
         }
         @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
           color: Highlight;
@@ -295,8 +272,7 @@ exports[`Component Examples renders Layer.Customized.Example.tsx correctly 1`] =
             ms-Checkbox-checkbox
             {
               align-items: center;
-              background: #0078d4;
-              border-color: #0078d4;
+              border-color: #666666;
               border-style: solid;
               border-width: 1px;
               box-sizing: border-box;
@@ -314,10 +290,6 @@ exports[`Component Examples renders Layer.Customized.Example.tsx correctly 1`] =
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 20px;
             }
-            @media screen and (-ms-high-contrast: active){& {
-              background: Highlight;
-              border-color: Highlight;
-            }
         data-ktp-target={undefined}
       >
         <i
@@ -332,7 +304,7 @@ exports[`Component Examples renders Layer.Customized.Example.tsx correctly 1`] =
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
                 font-weight: normal;
-                opacity: 1;
+                opacity: 0;
                 speak: none;
               }
               @media screen and (-ms-high-contrast: active){& {
@@ -361,9 +333,7 @@ exports[`Component Examples renders Layer.Customized.Example.tsx correctly 1`] =
       </span>
     </label>
   </button>
-  <span
-    className="ms-Layer"
-  />
+  <div />
   <div
     className="ms-LayerHost"
     id="test"
