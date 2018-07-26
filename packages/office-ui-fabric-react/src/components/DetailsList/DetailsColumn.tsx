@@ -55,7 +55,7 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
             headerClassNames.cell,
             column.headerClassName,
             column.columnActionsMode !== ColumnActionsMode.disabled &&
-              'is-actionable ' + headerClassNames.cellIsActionable,
+            'is-actionable ' + headerClassNames.cellIsActionable,
             !column.name && 'is-empty ' + headerClassNames.cellIsEmpty,
             (column.isSorted || column.isGrouped || column.isFiltered) && 'is-icon-visible',
             column.isPadded && headerClassNames.cellWrapperPadded
@@ -82,7 +82,9 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
                   data-is-focusable={column.columnActionsMode !== ColumnActionsMode.disabled}
                   role={column.columnActionsMode !== ColumnActionsMode.disabled ? 'button' : undefined}
                   aria-describedby={
-                    this.props.onRenderColumnHeaderTooltip ? `${parentId}-${column.key}-tooltip` : undefined
+                    this.props.onRenderColumnHeaderTooltip || column.ariaLabel
+                      ? `${parentId}-${column.key}-tooltip`
+                      : undefined
                   }
                   onContextMenu={this._onColumnContextMenu.bind(this, column)}
                   onClick={this._onColumnClick.bind(this, column)}
