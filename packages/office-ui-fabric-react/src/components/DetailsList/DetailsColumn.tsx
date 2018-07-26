@@ -103,22 +103,37 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
                       />
                     )}
 
-                    {!column.isIconOnly ? column.name : undefined}
+                    <span className={column.isIconOnly ? headerClassNames.accessibleLabel : undefined}>
+                      {column.name}
+                    </span>
                   </span>
 
-                  {column.isFiltered && <Icon className={headerClassNames.nearIcon} iconName={'Filter'} />}
+                  {column.isFiltered && (
+                    <Icon ariaLabel={column.filterAriaLabel} className={headerClassNames.nearIcon} iconName={'Filter'} />
+                  )}
 
                   {column.isSorted && (
                     <Icon
+                      ariaLabel={
+                        column.isSortedDescending ? column.sortDescendingAriaLabel : column.sortAscendingAriaLabel
+                      }
                       className={css(headerClassNames.nearIcon, headerClassNames.sortIcon)}
                       iconName={column.isSortedDescending ? 'SortDown' : 'SortUp'}
                     />
                   )}
 
-                  {column.isGrouped && <Icon className={headerClassNames.nearIcon} iconName={'GroupedDescending'} />}
+                  {column.isGrouped && (
+                    <Icon
+                      ariaLabel={column.groupAriaLabel}
+                      className={headerClassNames.nearIcon}
+                      iconName={'GroupedDescending'}
+                    />
+                  )}
 
                   {column.columnActionsMode === ColumnActionsMode.hasDropdown &&
-                    !column.isIconOnly && <Icon className={headerClassNames.filterChevron} iconName={'ChevronDown'} />}
+                    !column.isIconOnly && (
+                      <Icon aria-hidden={true} className={headerClassNames.filterChevron} iconName={'ChevronDown'} />
+                    )}
                 </span>
               )
             },
