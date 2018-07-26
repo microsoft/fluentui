@@ -54,8 +54,6 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     options: [] as any[]
   };
 
-  private static Option = 'option';
-
   private _host = createRef<HTMLDivElement>();
   private _focusZone = createRef<IFocusZone>();
   private _dropDown = createRef<HTMLDivElement>();
@@ -520,7 +518,6 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     return !this.props.multiSelect ? (
       <CommandButton
         id={id + '-list' + item.index}
-        ref={DropdownBase.Option + item.index}
         key={item.key}
         data-index={item.index}
         data-is-focusable={!item.disabled}
