@@ -6,10 +6,29 @@ exports[`Component Examples renders TextField.AutoComplete.Example.tsx correctly
   className="docs-TextFieldExample"
 >
   <div
-    className="ms-TextField"
+    className=
+        ms-TextField
+        {
+          box-shadow: none;
+          box-sizing: border-box;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          border-width: 2px;
+        }
   >
     <div
-      className="ms-TextField-wrapper"
+      className=
+          ms-TextField-wrapper
+
     >
       <label
         className=
@@ -31,18 +50,85 @@ exports[`Component Examples renders TextField.AutoComplete.Example.tsx correctly
               word-wrap: break-word;
             }
         htmlFor="TextField0"
+        required={undefined}
       >
         Fill in and submit this form. The page will reload and autocomplete suggestions will appear.
       </label>
       <div
-        className="ms-TextField-fieldGroup"
+        className=
+            ms-TextField-fieldGroup
+            {
+              align-items: stretch;
+              background: #ffffff;
+              border: 1px solid #a6a6a6;
+              box-shadow: none;
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: row;
+              height: 32px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+            }
+            &:-ms-clear {
+              display: none;
+            }
+            &:hover {
+              border-color: #212121;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+            }
+            &::placeholder {
+              color: #666666;
+              opacity: 1;
+            }
+            &:-ms-input-placeholder {
+              color: #666666;
+              opacity: 1;
+            }
       >
         <input
           aria-describedby={undefined}
           aria-invalid={false}
           aria-label={undefined}
           autoComplete="on"
-          className="ms-TextField-field"
+          className=
+              ms-TextField-field
+              {
+                background-color: transparent;
+                background: none;
+                border-radius: 0px;
+                border: none;
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #333333;
+                font-size: 14px;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                min-width: 0px;
+                outline: 0px;
+                padding-bottom: 0;
+                padding-left: 12px;
+                padding-right: 12px;
+                padding-top: 0;
+                text-overflow: ellipsis;
+                width: 100%;
+              }
+              &:active, &:focus, &:hover {
+                outline: 0px;
+              }
+              &::placeholder {
+                color: #666666;
+              }
           id="TextField0"
           name="example"
           onBlur={[Function]}
