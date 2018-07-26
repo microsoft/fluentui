@@ -2,6 +2,85 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.7.0",
+      "tag": "@uifabric/dashboard_v0.7.0",
+      "date": "Wed, 25 Jul 2018 03:20:34 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Samiya <samiyaakhtar7@gmail.com>",
+            "commit": "4ee642daf21fc05b940e5f8475d19eb656a10f8f",
+            "comment": "Fix dashboard package webpack issue"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.10.0` to `^0.11.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.19.1 <7.0.0` to `>=6.20.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.39.1 <7.0.0` to `>=6.39.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.6.1",
+      "tag": "@uifabric/dashboard_v0.6.1",
+      "date": "Tue, 24 Jul 2018 10:24:36 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.9.0` to `^0.10.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.6.0 <7.0.0` to `>=6.7.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.19.0 <7.0.0` to `>=6.19.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.39.0 <7.0.0` to `>=6.39.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.6.0",
+      "tag": "@uifabric/dashboard_v0.6.0",
+      "date": "Mon, 23 Jul 2018 10:28:08 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Samiya <samiyaakhtar7@gmail.com>",
+            "commit": "e0a29874eb224bca5e9da35de72b999785413a9d",
+            "comment": "Added disable drag prop to card to allow recommendation card to be non draggable"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "28242c40916d14cef3d555d18f4df69454163e87",
+            "comment": "Addressing bad imports."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.8.0` to `^0.9.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.5.2 <7.0.0` to `>=6.6.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.18.3 <7.0.0` to `>=6.19.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.38.2 <7.0.0` to `>=6.39.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.5.0",
       "tag": "@uifabric/dashboard_v0.5.0",
       "date": "Fri, 20 Jul 2018 10:25:21 GMT",

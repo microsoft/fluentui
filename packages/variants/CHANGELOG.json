@@ -2,6 +2,25 @@
   "name": "@uifabric/variants",
   "entries": [
     {
+      "version": "6.0.6",
+      "tag": "@uifabric/variants_v6.0.6",
+      "date": "Mon, 23 Jul 2018 10:28:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "7604bf8128096c2fec78c81a1ce076b2f75bb668",
+            "comment": "Variants: new designs for bodyFrameBackground"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.38.2 <7.0.0` to `>=6.39.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.0.5",
       "tag": "@uifabric/variants_v6.0.5",
       "date": "Tue, 03 Jul 2018 10:23:19 GMT",

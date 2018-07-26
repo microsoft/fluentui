@@ -1,6 +1,33 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 20 Jul 2018 10:25:21 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Jul 2018 10:28:51 GMT and should not be manually modified.
+
+## 6.21.0
+Thu, 26 Jul 2018 10:28:51 GMT
+
+### Minor changes
+
+- Updates Fluent styles for Dialog and ComoboBox
+
+## 6.20.0
+Wed, 25 Jul 2018 03:20:34 GMT
+
+### Minor changes
+
+- Make stack grow be more flexible
+
+## 6.19.1
+Tue, 24 Jul 2018 10:24:36 GMT
+
+*Version update only*
+
+## 6.19.0
+Mon, 23 Jul 2018 10:28:08 GMT
+
+### Minor changes
+
+- Text: use existing theming
+- Addressing bad imports.
 
 ## 6.18.3
 Fri, 20 Jul 2018 10:25:21 GMT

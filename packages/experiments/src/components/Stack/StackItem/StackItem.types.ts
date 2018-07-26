@@ -8,7 +8,7 @@ export interface IStackItemProps {
   vertical?: boolean;
   index?: number;
 
-  grow?: boolean;
+  grow?: boolean | number | 'inherit' | 'initial' | 'unset';
   collapse?: boolean;
 
   align?: 'auto' | 'center' | 'start' | 'baseline' | 'stretch' | 'end';
