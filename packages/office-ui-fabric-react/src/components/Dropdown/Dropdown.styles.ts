@@ -91,7 +91,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
   const dropdownItemStyle: IStyle = [
     'ms-Dropdown-item',
     {
-      background: 'transparent',
+      backgroundColor: 'transparent',
       boxSizing: 'border-box',
       cursor: 'pointer',
       display: 'block',
@@ -109,7 +109,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
   ];
 
   const dropdownItemSelected: IStyle = [
-    dropdownItemStyle,
+    ...dropdownItemStyle,
     {
       backgroundColor: palette.neutralQuaternaryAlt,
       color: palette.black
@@ -118,7 +118,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
   ];
 
   const dropdownItemDisabled: IStyle = [
-    dropdownItemStyle,
+    ...dropdownItemStyle,
     {
       color: semanticColors.disabledText,
       cursor: 'default'
