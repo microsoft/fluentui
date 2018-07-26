@@ -104,22 +104,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       border: '1px solid transparent',
       wordWrap: 'break-word',
       overflowWrap: 'break-word',
-      textAlign: 'left',
-      selectors: {
-        [HighContrastSelector]: {
-          borderColor: 'Window'
-        },
-        '&:hover': {
-          color: 'inherit'
-        },
-        '&:focus': {
-          backgroundColor: semanticColors.listItemBackgroundHovered
-        },
-        '&:active': {
-          backgroundColor: semanticColors.listHeaderBackgroundHovered,
-          color: palette.black
-        }
-      }
+      textAlign: 'left'
     }
   ];
 
@@ -254,7 +239,26 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     ],
     dropdownItemsWrapper: { selectors: { '&:focus': { outline: 0 } } },
     dropdownItems: [globalClassnames.dropdownItems, { display: 'block' }],
-    dropdownItem: dropdownItemStyle,
+    dropdownItem: [
+      ...dropdownItemStyle,
+      {
+        selectors: {
+          [HighContrastSelector]: {
+            borderColor: 'Window'
+          },
+          '&:hover': {
+            color: 'inherit'
+          },
+          '&:focus': {
+            backgroundColor: semanticColors.listItemBackgroundHovered
+          },
+          '&:active': {
+            backgroundColor: semanticColors.listHeaderBackgroundHovered,
+            color: palette.black
+          }
+        }
+      }
+    ],
     dropdownItemSelected: dropdownItemSelected,
     dropdownItemDisabled: dropdownItemDisabled,
     dropdownItemSelectedAndDisabled: [dropdownItemSelected, dropdownItemDisabled, { backgroundColor: 'transparent' }],
