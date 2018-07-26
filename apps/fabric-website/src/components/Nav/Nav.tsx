@@ -3,7 +3,7 @@ import * as React from 'react';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
-import { CollapsibleSection } from '@uifabric/experiments/lib/CollapsibleSection';
+import { CollapsibleSection } from '@uifabric/experiments';
 import { CollapsibleSectionTitle } from './Nav.CollapsibleSectionTitle';
 
 import { getPathMinusLastHash } from '../../utilities/pageroute';
@@ -50,7 +50,7 @@ export class Nav extends React.Component<INavProps, INavState> {
   private _renderLinkList(pages: INavPage[], isSubMenu: boolean): React.ReactElement<{}> {
     const { filterState } = this.state;
 
-    const links: React.ReactElement<{}>[] = pages
+    const links = pages
       .filter(page => !page.hasOwnProperty('isHiddenFromMainNav'))
       .map((page: INavPage, linkIndex: number) => {
         if (page.isCategory && !filterState) {

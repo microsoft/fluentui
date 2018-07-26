@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { createComponent } from '@uifabric/experiments/lib/Foundation';
-import { CollapsibleSectionTitleView as view } from '@uifabric/experiments/lib/components/CollapsibleSection';
-import { getStyles as styles } from './Nav.CollapsibleSectionTitleStyles';
+import { createComponent } from '@uifabric/experiments';
+import { CollapsibleSectionTitleView as view } from '@uifabric/experiments';
+import { getStyles as styles } from './Nav.styles';
 import {
   ICollapsibleSectionTitleProps,
   ICollapsibleSectionTitleStyles
