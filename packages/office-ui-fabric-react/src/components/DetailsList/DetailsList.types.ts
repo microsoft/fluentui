@@ -535,5 +535,6 @@ export interface IDetailsGroupRenderProps extends IGroupRenderProps {
 }
 
 export interface IDetailsGroupDividerProps extends IGroupDividerProps {
-  detailsRowProps?: IDetailsRowProps;
+  columns?: IColumn[];
+  groupNestingDepth?: number;
 }
