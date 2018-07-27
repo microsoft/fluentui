@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 26 Jul 2018 10:28:51 GMT and should not be manually modified.
+This log was last generated on Fri, 27 Jul 2018 10:25:40 GMT and should not be manually modified.
+
+## 6.41.0
+Fri, 27 Jul 2018 10:25:40 GMT
+
+### Minor changes
+
+- Enabled Customizer to affect TextField
+
+### Patches
+
+- ScrollablePane: Fix mutationObserver
+- Fixing the Detailscolumn render return type to return a single JSX element, instead of an array
+- Added experiments dependency to fabric website package file and added exports for collapsible section and foundation
 
 ## 6.40.0
 Thu, 26 Jul 2018 10:28:51 GMT
