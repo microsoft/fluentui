@@ -1,11 +1,7 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import { Customizations } from './Customizations';
 import { hoistStatics } from './hoistStatics';
-
-export const CustomizableContextTypes = {
-  customizations: PropTypes.object
-};
+import { CustomizerContext, ICustomizerContext } from './Customizer';
 
 export function customizable(
   scope: string,
@@ -21,11 +17,9 @@ export function customizable(
     const resultClass = class ComponentWithInjectedProps extends React.Component<P, {}> {
       public static displayName: string = 'Customized' + scope;
 
-      public static contextTypes = CustomizableContextTypes;
-
       // tslint:disable-next-line:no-any
-      constructor(props: P, context: any) {
-        super(props, context);
+      constructor(props: P) {
+        super(props);
 
         this._onSettingChanged = this._onSettingChanged.bind(this);
       }
@@ -39,11 +33,14 @@ export function customizable(
       }
 
       public render(): JSX.Element {
-        const defaultProps = Customizations.getSettings(fields, scope, this.context.customizations);
-
         return (
-          // tslint:disable-next-line:no-any
-          <ComposedComponent {...defaultProps} {...this.props as any} />
+          <CustomizerContext.Consumer>
+            {(context: ICustomizerContext) => {
+              const defaultProps = Customizations.getSettings(fields, scope, context.customizations);
+              // tslint:disable-next-line:no-any
+              return <ComposedComponent {...defaultProps} {...this.props as any} />;
+            }}
+          </CustomizerContext.Consumer>
         );
       }
 
