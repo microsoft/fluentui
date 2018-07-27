@@ -1,164 +1,139 @@
 import * as React from 'react';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import {
-  Fabric,
-  PrimaryButton,
-  Customizer,
-  CommandBar,
   DetailsList,
-  createTheme,
-  ITheme,
-  loadTheme
-} from 'office-ui-fabric-react';
+  DetailsListLayoutMode,
+  Selection,
+  IColumn,
+  IDetailsList
+} from 'office-ui-fabric-react/lib/DetailsList';
+import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { createRef } from 'office-ui-fabric-react/lib/Utilities';
 
-const theme1: ITheme = createTheme({
-  palette: {
-    themePrimary: '#5cc20c',
-    themeLighterAlt: '#f7fdf3',
-    themeLighter: '#e0f5d0',
-    themeLight: '#c7edaa',
-    themeTertiary: '#95da5f',
-    themeSecondary: '#6bc923',
-    themeDarkAlt: '#52ae0a',
-    themeDark: '#459309',
-    themeDarker: '#336d07',
-    neutralLighterAlt: '#f8f8f8',
-    neutralLighter: '#f4f4f4',
-    neutralLight: '#eaeaea',
-    neutralQuaternaryAlt: '#dadada',
-    neutralQuaternary: '#d0d0d0',
-    neutralTertiaryAlt: '#c8c8c8',
-    neutralTertiary: '#c2c2c2',
-    neutralSecondary: '#858585',
-    neutralPrimaryAlt: '#4b4b4b',
-    neutralPrimary: '#333',
-    neutralDark: '#272727',
-    black: '#1d1d1d',
-    white: '#fff',
-    bodyBackground: '#fff',
-    bodyText: '#333'
-  }
-});
+const _items: any[] = [];
 
-const theme2 = createTheme({
-  palette: {
-    themePrimary: '#f005b1',
-    themeLighterAlt: '#fef4fc',
-    themeLighter: '#fdd5f2',
-    themeLight: '#fab1e7',
-    themeTertiary: '#f665cf',
-    themeSecondary: '#f221ba',
-    themeDarkAlt: '#d8049f',
-    themeDark: '#b60487',
-    themeDarker: '#860363',
-    neutralLighterAlt: '#f8f8f8',
-    neutralLighter: '#f4f4f4',
-    neutralLight: '#eaeaea',
-    neutralQuaternaryAlt: '#dadada',
-    neutralQuaternary: '#d0d0d0',
-    neutralTertiaryAlt: '#c8c8c8',
-    neutralTertiary: '#c2c2c2',
-    neutralSecondary: '#858585',
-    neutralPrimaryAlt: '#4b4b4b',
-    neutralPrimary: '#333',
-    neutralDark: '#272727',
-    black: '#1d1d1d',
-    white: '#fff',
-    bodyBackground: '#fff',
-    bodyText: '#333'
-  }
-});
-
-const items = [
+const _columns: IColumn[] = [
   {
-    key: '1',
-    text: 'Command 1',
-    iconProps: { iconName: 'delete' },
-    onClick: () => console.log('command 1')
+    key: 'column1',
+    name: 'Name',
+    fieldName: 'name',
+    minWidth: 100,
+    maxWidth: 200,
+    isResizable: true,
+    ariaLabel: 'Operations for name'
   },
   {
-    key: '2',
-    text: 'Command 2',
-    iconProps: { iconName: 'add' },
-    onClick: () => console.log('command 2')
-  },
-  {
-    key: '3',
-    name: 'Command 3',
-    iconProps: { iconName: 'upload' },
-    onClick: () => console.log('command 3')
-  },
-  {
-    key: '4',
-    text: 'Command 4',
-    title: 'command 4 title',
-    iconProps: { iconName: 'refresh' },
-    subMenuProps: {
-      items: [
-        {
-          key: 'a',
-          text: 'Hi',
-          title: 'Tooltip for a',
-          subMenuProps: {
-            items: [
-              {
-                key: 'asdf',
-                text: 'I am a sublink',
-                title: 'I am the title of the sublink'
-              }
-            ]
-          }
-        }
-      ]
-    }
+    key: 'column2',
+    name: 'Value',
+    fieldName: 'value',
+    minWidth: 100,
+    maxWidth: 200,
+    isResizable: true,
+    ariaLabel: 'Operations for value'
   }
 ];
 
-const listItems: { key: string; text: string; age: string }[] = [];
+export class DetailsListBasicExample extends React.Component<
+  {},
+  {
+    items: {}[];
+    selectionDetails: {};
+    showItemIndexInView: boolean;
+  }
+> {
+  private _selection: Selection;
+  private _detailsList = createRef<IDetailsList>();
 
-for (let i = 0; i < 30; i++) {
-  listItems.push({
-    key: '1',
-    text: '1',
-    age: '1'
-  });
-}
-
-// Render out!
-export class DetailsListBasicExample extends React.Component<{}, { useTheme1: boolean }> {
   constructor(props: {}) {
     super(props);
 
+    // Populate with items for demos.
+    if (_items.length === 0) {
+      for (let i = 0; i < 200; i++) {
+        _items.push({
+          key: i,
+          name: 'Item ' + i,
+          value: i
+        });
+      }
+    }
+
+    this._selection = new Selection({
+      onSelectionChanged: () => this.setState({ selectionDetails: this._getSelectionDetails() })
+    });
+
     this.state = {
-      useTheme1: true
+      items: _items,
+      selectionDetails: this._getSelectionDetails(),
+      showItemIndexInView: false
     };
   }
-  public render() {
+
+  public render(): JSX.Element {
+    const { items, selectionDetails } = this.state;
+
     return (
-      <Fabric>
-        <Customizer
-          settings={{
-            theme: this.state.useTheme1 ? theme1 : theme2
-          }}
-        >
-          <div>
-            <CommandBar items={items} />
-            <PrimaryButton text="hi" />
-            <DetailsList items={listItems} />
-          </div>
-        </Customizer>
-        <PrimaryButton text="hi" />
-      </Fabric>
+      <div>
+        <div>{selectionDetails}</div>
+        <div>
+          <Checkbox
+            label="Show index of the first item in view when unmounting"
+            checked={this.state.showItemIndexInView}
+            onChange={this._onShowItemIndexInViewChanged}
+          />
+        </div>
+        <TextField label="Filter by name:" onChanged={this._onChanged} />
+        <MarqueeSelection selection={this._selection}>
+          <DetailsList
+            componentRef={this._detailsList}
+            items={items}
+            columns={_columns}
+            setKey="set"
+            layoutMode={DetailsListLayoutMode.fixedColumns}
+            selection={this._selection}
+            selectionPreservedOnEmptyClick={true}
+            ariaLabelForSelectionColumn="Toggle selection"
+            ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+            onItemInvoked={this._onItemInvoked}
+            useReducedRowRenderer={true}
+          />
+        </MarqueeSelection>
+      </div>
     );
   }
-  public componentDidMount() {
-    setInterval(() => {
-      const useTheme1 = !this.state.useTheme1;
 
-      this.setState({
-        useTheme1
-      });
-
-      loadTheme(useTheme1 ? theme1 : theme2);
-    }, 1000);
+  public componentWillUnmount() {
+    if (this.state.showItemIndexInView) {
+      const itemIndexInView = this._detailsList!.current!.getStartItemIndexInView();
+      alert('unmounting, getting first item index that was in view: ' + itemIndexInView);
+    }
   }
+
+  private _getSelectionDetails(): string {
+    const selectionCount = this._selection.getSelectedCount();
+
+    switch (selectionCount) {
+      case 0:
+        return 'No items selected';
+      case 1:
+        return '1 item selected: ' + (this._selection.getSelection()[0] as any).name;
+      default:
+        return `${selectionCount} items selected`;
+    }
+  }
+
+  private _onChanged = (text: any): void => {
+    this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items });
+  };
+
+  private _onItemInvoked(item: any): void {
+    alert(`Item invoked: ${item.name}`);
+  }
+
+  private _onShowItemIndexInViewChanged = (event: React.FormEvent<HTMLInputElement>, checked: boolean): void => {
+    this.setState({
+      showItemIndexInView: checked
+    });
+  };
 }
