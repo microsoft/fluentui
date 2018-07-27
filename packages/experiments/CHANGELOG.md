@@ -1,6 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 26 Jul 2018 10:28:51 GMT and should not be manually modified.
+This log was last generated on Fri, 27 Jul 2018 10:25:39 GMT and should not be manually modified.
+
+## 6.22.0
+Fri, 27 Jul 2018 10:25:39 GMT
+
+### Minor changes
+
+- Added TextField to FluentStyles
+
+### Patches
+
+- added export for collapsible section and foundation
 
 ## 6.21.0
 Thu, 26 Jul 2018 10:28:51 GMT
