@@ -4,7 +4,12 @@ import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { Coachmark } from './Coachmark';
 import { ITeachingBubble } from '../../TeachingBubble';
 
-export interface ICoachmark {}
+export interface ICoachmark {
+  /**
+   * Forces the Coachmark to dismiss
+   */
+  dismiss?: (ev?: any) => void;
+}
 
 /** @deprecated */
 export type ICoachmarkTypes = ICoachmarkProps;
