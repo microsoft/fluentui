@@ -166,7 +166,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     this._id = props.id || getId('ComboBox');
 
-    const selectedKeys: (string | number)[] = this._getSelectedKeys(props.defaultSelectedKey, props.selectedKey);
+    const selectedKeys: string[] | number[] = this._buildDefaultSelectedKeys(
+      props.defaultSelectedKey,
+      props.selectedKey
+    );
 
     this._isScrollIdle = true;
     this._processingTouch = false;
@@ -208,7 +211,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       newProps.value !== this.props.value ||
       newProps.options !== this.props.options
     ) {
-      const selectedKeys: string[] | number[] = this._getSelectedKeys(undefined, newProps.selectedKey);
+      const selectedKeys: string[] | number[] = this._buildSelectedKeys(newProps.selectedKey);
       const indices: number[] = this._getSelectedIndices(newProps.options, selectedKeys);
 
       this.setState({
@@ -1517,7 +1520,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // Notify when there is a new pending index/value. Also, if there is a pending value, it needs to send undefined.
     if (newPendingIndex !== undefined || newPendingValue !== undefined || this._hasPendingValue) {
       onPendingValueChanged(
-        newPendingIndex !== undefined ? currentOptions[newPendingIndex]: undefined,
+        newPendingIndex !== undefined ? currentOptions[newPendingIndex] : undefined,
         newPendingIndex,
         newPendingValue
       );
@@ -1924,31 +1927,32 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @returns No matter what specific types the input parameters are, always return an array of
    *  either strings or numbers instead of premitive type.  This normlization makes caller's logic easier.
    */
-  private _getSelectedKeys(
+  private _buildDefaultSelectedKeys(
     defaultSelectedKey: string | number | string[] | number[] | undefined,
     selectedKey: string | number | string[] | number[] | undefined
   ): string[] | number[] {
-    let retKeys: string[] | number[] = [];
-
-    if (defaultSelectedKey) {
-      if (defaultSelectedKey instanceof Array) {
-        retKeys = defaultSelectedKey;
-      } else if (typeof defaultSelectedKey === 'string') {
-        retKeys = [defaultSelectedKey as string];
-      } else if (typeof defaultSelectedKey === 'number') {
-        retKeys = [defaultSelectedKey as number];
-      }
-    } else if (selectedKey) {
-      if (selectedKey instanceof Array) {
-        retKeys = selectedKey;
-      } else if (typeof selectedKey === 'string') {
-        retKeys = [selectedKey as string];
-      } else if (typeof selectedKey === 'number') {
-        retKeys = [selectedKey as number];
-      }
+    const selectedKeys: string[] | number[] = this._buildSelectedKeys(defaultSelectedKey);
+    if (selectedKeys.length) {
+      return selectedKeys;
     }
 
-    return retKeys;
+    return this._buildSelectedKeys(selectedKey);
+  }
+
+  private _buildSelectedKeys(selectedKey: string | number | string[] | number[] | undefined): string[] | number[] {
+    if (typeof selectedKey === 'string' && selectedKey !== '') {
+      return [selectedKey];
+    }
+
+    if (typeof selectedKey === 'number' && selectedKey >= 0) {
+      return [selectedKey];
+    }
+
+    if (selectedKey instanceof Array) {
+      return selectedKey;
+    }
+
+    return [];
   }
 
   // For scenarios where the option's text prop contains embedded styles, we use the option's
