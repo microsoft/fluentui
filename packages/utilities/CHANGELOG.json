@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.12.1",
+      "tag": "@uifabric/utilities_v6.12.1",
+      "date": "Fri, 27 Jul 2018 10:25:39 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Esteban Munoz <esteban.230@hotmail.com>",
+            "commit": "313c5cd21a9dcf435528e83693d75a7fedeeb015",
+            "comment": "prop-types version "
+          }
+        ]
+      }
+    },
+    {
       "version": "6.12.0",
       "tag": "@uifabric/utilities_v6.12.0",
       "date": "Mon, 23 Jul 2018 10:28:08 GMT",

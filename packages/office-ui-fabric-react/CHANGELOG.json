@@ -2,6 +2,42 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.41.0",
+      "tag": "office-ui-fabric-react_v6.41.0",
+      "date": "Fri, 27 Jul 2018 10:25:40 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "f052a832ec92854dc09a3adbcb76ba73a689454c",
+            "comment": "ScrollablePane: Fix mutationObserver"
+          },
+          {
+            "author": "laxmikankanala <39089979+laxmikankanala@users.noreply.github.com>",
+            "commit": "a55fb7596f963e75ec77ad22caea71737bcbe7a1",
+            "comment": "Fixing the Detailscolumn render return type to return a single JSX element, instead of an array"
+          },
+          {
+            "author": "Esteban Munoz <esteban.230@hotmail.com>",
+            "commit": "313c5cd21a9dcf435528e83693d75a7fedeeb015",
+            "comment": "Added experiments dependency to fabric website package file and added exports for collapsible section and foundation"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "c981bcef80bd0855fbbad0418ce7ffbceaa71258",
+            "comment": "Enabled Customizer to affect TextField"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.12.0 <7.0.0` to `>=6.12.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.40.0",
       "tag": "office-ui-fabric-react_v6.40.0",
       "date": "Thu, 26 Jul 2018 10:28:51 GMT",
