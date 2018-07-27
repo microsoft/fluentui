@@ -2,7 +2,7 @@
 import * as React from 'react';
 /* tslint:enable */
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { people, groupOne, groupTwo } from '../../ExtendedPicker';
+import { people, groupOne, groupTwo } from '../../../ExtendedPicker';
 import 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/examples/PeoplePicker.Types.Example.scss';
 import {
   IExtendedPersonaProps,

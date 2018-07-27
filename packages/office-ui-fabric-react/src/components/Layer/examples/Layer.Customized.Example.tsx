@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Customizer } from '@uifabric/utilities';
-import { Panel } from '../../../Panel';
-import { Checkbox } from '../../../Checkbox';
-import { LayerHost } from '../LayerHost';
+import { Panel } from 'office-ui-fabric-react/lib/Panel';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { LayerHost } from 'office-ui-fabric-react/lib/Layer';
 
 export interface ILayerCustomizedExampleState {
   showPanel: boolean;

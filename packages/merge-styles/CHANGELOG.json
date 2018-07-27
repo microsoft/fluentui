@@ -2,6 +2,34 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.6.0",
+      "tag": "@uifabric/merge-styles_v6.6.0",
+      "date": "Thu, 26 Jul 2018 10:28:51 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "d056d71f1ad27733e8e6027301c1d83aaf0ccffc",
+            "comment": "Add resize rule to IRawStyleBase."
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.5.1",
+      "tag": "@uifabric/merge-styles_v6.5.1",
+      "date": "Thu, 19 Jul 2018 21:25:32 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "9e76cd58ec8a34d80227fb28fb03844e35331c4c",
+            "comment": "`mergeStyleSet` is able to take falsey values again and handle it correctly in all cases."
+          }
+        ]
+      }
+    },
+    {
       "version": "6.5.0",
       "tag": "@uifabric/merge-styles_v6.5.0",
       "date": "Wed, 18 Jul 2018 10:25:50 GMT",

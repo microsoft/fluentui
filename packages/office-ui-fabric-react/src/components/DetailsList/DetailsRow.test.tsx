@@ -3,7 +3,7 @@ import * as renderer from 'react-test-renderer';
 import { DetailsList } from './DetailsList';
 import { IDetailsRowProps } from './DetailsRow.types';
 import { IDetailsListProps, IColumn } from './DetailsList.types';
-import { SelectionMode, Selection } from '../../utilities/selection';
+import { SelectionMode, Selection } from '../../utilities/selection/index';
 
 const _columns: IColumn[] = [
   {

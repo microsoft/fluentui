@@ -1,8 +1,12 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage } from '@uifabric/example-app-base';
+import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 
-import { TextBasicExample } from './examples/Text.Basic.Example';
-const TextBasicExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Text/examples/Text.Basic.Example.tsx') as string;
+import { TextAttributesExample } from './examples/Text.Attributes.Example';
+const TextAttributesExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Text/examples/Text.Attributes.Example.tsx') as string;
+import { TextFontStyleExample } from './examples/Text.FontStyle.Example';
+const TextFontStyleExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Text/examples/Text.FontStyle.Example.tsx') as string;
+import { TextFontTypeExample } from './examples/Text.FontType.Example';
+const TextFontTypeExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Text/examples/Text.FontType.Example.tsx') as string;
 
 export class TextPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -12,12 +16,22 @@ export class TextPage extends React.Component<IComponentDemoPageProps, {}> {
         componentName="Text"
         exampleCards={
           <div>
-            <ExampleCard title="Basic Text Component Example" code={TextBasicExampleCode}>
-              <TextBasicExample />
+            <ExampleCard title="Change Text's Attributes" code={TextAttributesExampleCode}>
+              <TextAttributesExample />
+            </ExampleCard>
+            <ExampleCard title="Change Text's Style" code={TextFontStyleExampleCode}>
+              <TextFontStyleExample />
+            </ExampleCard>
+            <ExampleCard title="Change Text's Type" code={TextFontTypeExampleCode}>
+              <TextFontTypeExample />
             </ExampleCard>
           </div>
         }
-        propertiesTables={<div />}
+        propertiesTables={
+          <PropertiesTableSet
+            sources={[require<string>('!raw-loader!@uifabric/experiments/src/components/Text/Text.tsx')]}
+          />
+        }
         overview={<div />}
         bestPractices={<div />}
         dos={
