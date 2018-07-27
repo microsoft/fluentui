@@ -11,7 +11,7 @@ import {
 
 // TODO: can we use controlled as arg instead of having two distinct types? maybe controlled could be used by createComponent
 //          to specify whether or not to use the state component? we could even have default controlled types, like toggle and counter
-export const CollapsibleSectionControlled: React.StatelessComponent<
+export const CollapsibleSectionUncontrolled: React.StatelessComponent<
   ICollapsibleSectionControlledProps
 > = createComponent<ICollapsibleSectionViewProps, ICollapsibleSectionStyles>({
   displayName: 'CollapsibleSection',

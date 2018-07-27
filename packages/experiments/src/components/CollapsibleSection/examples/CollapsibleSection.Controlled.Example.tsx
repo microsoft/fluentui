@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { CollapsibleSectionControlled } from '../CollapsibleSection';
+import { CollapsibleSectionUncontrolled } from '../CollapsibleSection';
 
 export interface ICollapsibleSectionControlledExampleState {
   collapsed: boolean;
@@ -29,22 +29,22 @@ export class CollapsibleSectionControlledExample extends React.Component<
               this.setState({ collapsed: !this.state.collapsed });
             }}
           />
-          <CollapsibleSectionControlled
+          <CollapsibleSectionUncontrolled
             collapsed={this.state.collapsed}
             titleProps={{
               text: `Title 1`
             }}
           >
             Content 1
-          </CollapsibleSectionControlled>
-          <CollapsibleSectionControlled
+          </CollapsibleSectionUncontrolled>
+          <CollapsibleSectionUncontrolled
             collapsed={this.state.collapsed}
             titleProps={{
               text: `Title 2`
             }}
           >
             Content 2
-          </CollapsibleSectionControlled>
+          </CollapsibleSectionUncontrolled>
         </FocusZone>
       </div>
     );

@@ -1,16 +1,14 @@
 import * as React from 'react';
 import { Customizer, ITheme, createTheme, DefaultPalette } from 'office-ui-fabric-react';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
-// TODO: fix imports
-// import { CollapsibleSection, ICollapsibleSectionStyleProps } from '@uifabric/experiments';
 import {
   CollapsibleSection,
-  CollapsibleSectionControlled,
+  CollapsibleSectionUncontrolled,
   ICollapsibleSectionStyleProps,
   ICollapsibleSectionStyles,
   ICollapsibleSectionTitleStyleProps,
   ICollapsibleSectionTitleStyles
-} from '../../CollapsibleSection/index';
+} from '../../CollapsibleSection';
 
 function getStyles(props: ICollapsibleSectionStyleProps): Partial<ICollapsibleSectionStyles> {
   const { theme } = props;
@@ -128,16 +126,16 @@ export class CollapsibleSectionStyledExample extends React.Component<{}, {}> {
             </CollapsibleSection>
           </Customizer>
           <br />
-          <CollapsibleSectionControlled
+          <CollapsibleSectionUncontrolled
             collapsed={false}
             titleProps={{
               text: `Uncontrolled No Styling`
             }}
           >
             Body
-          </CollapsibleSectionControlled>
+          </CollapsibleSectionUncontrolled>
           <br />
-          <CollapsibleSectionControlled
+          <CollapsibleSectionUncontrolled
             collapsed={false}
             titleProps={{
               text: `Uncontrolled JS Styling`,
@@ -146,10 +144,10 @@ export class CollapsibleSectionStyledExample extends React.Component<{}, {}> {
             styles={getStyles}
           >
             Body
-          </CollapsibleSectionControlled>
+          </CollapsibleSectionUncontrolled>
           <br />
           <Customizer settings={{ theme: csCustomizerTheme }}>
-            <CollapsibleSectionControlled
+            <CollapsibleSectionUncontrolled
               collapsed={false}
               titleProps={{
                 text: `Uncontrolled JS Styling + Customizer`,
@@ -158,10 +156,10 @@ export class CollapsibleSectionStyledExample extends React.Component<{}, {}> {
               styles={getStyles}
             >
               TODO: Fix me. Customizer theme is not applying to me.
-            </CollapsibleSectionControlled>
+            </CollapsibleSectionUncontrolled>
           </Customizer>
           <br />
-          <CollapsibleSectionControlled
+          <CollapsibleSectionUncontrolled
             collapsed={false}
             titleProps={{
               text: `Uncontrolled  JS Styling + Theme Prop`,
@@ -171,10 +169,10 @@ export class CollapsibleSectionStyledExample extends React.Component<{}, {}> {
             theme={csPropTheme}
           >
             Body
-          </CollapsibleSectionControlled>
+          </CollapsibleSectionUncontrolled>
           <br />
           <Customizer settings={{ theme: csCustomizerTheme }}>
-            <CollapsibleSectionControlled
+            <CollapsibleSectionUncontrolled
               collapsed={false}
               titleProps={{
                 text: `Uncontrolled  JS Styling + Customizer + Theme Prop`,
@@ -184,7 +182,7 @@ export class CollapsibleSectionStyledExample extends React.Component<{}, {}> {
               theme={csPropTheme}
             >
               Body
-            </CollapsibleSectionControlled>
+            </CollapsibleSectionUncontrolled>
           </Customizer>
         </FocusZone>
       </div>

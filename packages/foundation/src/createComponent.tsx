@@ -56,10 +56,11 @@ export type IViewComponentProps<TViewProps, TProcessedStyledSet> = TViewProps &
 /**
  * Component options used by foundation to tie elements together.
  */
-export interface IComponentOptions<TViewProps, TStyleSet, TProcessedStyledSet, TTheme> {
+export interface IComponentOptions<TViewProps, TStyleSet, TProcessedStyledSet, TTheme, TStatics> {
   displayName: string;
   styles: IStylesProp<TViewProps, TStyleSet>;
   view: (props: IViewComponentProps<TViewProps, TProcessedStyledSet>) => JSX.Element;
+  statics?: TStatics;
 }
 
 /**
@@ -125,16 +126,17 @@ export function createComponentWithState<
   TViewProps,
   TStyleSet,
   TProcessedStyleSet,
-  TTheme
+  TTheme,
+  TStatics
 >(
-  options: IComponentOptions<TViewProps, TStyleSet, TProcessedStyleSet, TTheme>,
+  options: IComponentOptions<TViewProps, TStyleSet, TProcessedStyleSet, TTheme, TStatics>,
   providers: IStylingProviders<TStyleSet, TProcessedStyleSet, TTheme>,
   StateComponent: IStateComponent<
     TComponentProps,
     TViewProps & IViewComponent<TViewProps, TProcessedStyleSet>,
     TProcessedStyleSet
   >
-): React.StatelessComponent<TComponentProps> {
+): React.StatelessComponent<TComponentProps> & TStatics {
   const result: React.StatelessComponent<TComponentProps> = (userProps: TComponentProps) => {
     const theme = providers.getTheme();
 
@@ -167,8 +169,10 @@ export function createComponentWithState<
   };
 
   result.displayName = options.displayName;
+  Object.assign(result, options.statics);
 
-  return result;
+  // Later versions of TypeSript should allow us to merge objects in a type safe way and avoid this cast.
+  return result as React.StatelessComponent<TComponentProps> & TStatics;
 }
 
 /**
@@ -181,11 +185,12 @@ export function createComponent<
   TComponentProps extends IStyleableComponent<TComponentProps, TStyleSet, TTheme>,
   TStyleSet,
   TProcessedStyleSet,
-  TTheme
+  TTheme,
+  TStatics
 >(
-  options: IComponentOptions<TComponentProps, TStyleSet, TProcessedStyleSet, TTheme>,
+  options: IComponentOptions<TComponentProps, TStyleSet, TProcessedStyleSet, TTheme, TStatics>,
   providers: IStylingProviders<TStyleSet, TProcessedStyleSet, TTheme>
-): React.StatelessComponent<TComponentProps> {
+): React.StatelessComponent<TComponentProps> & TStatics {
   const result: React.StatelessComponent<TComponentProps> = (userProps: TComponentProps) => {
     const theme = providers.getTheme();
 
@@ -210,6 +215,8 @@ export function createComponent<
   };
 
   result.displayName = options.displayName;
+  Object.assign(result, options.statics);
 
-  return result;
+  // Later versions of TypeSript should allow us to merge objects in a type safe way and avoid this cast.
+  return result as React.StatelessComponent<TComponentProps> & TStatics;
 }

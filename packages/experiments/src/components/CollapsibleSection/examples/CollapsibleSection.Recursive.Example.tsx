@@ -1,7 +1,5 @@
 import * as React from 'react';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
-// TODO: fix imports
-// import { CollapsibleSection, ICollapsibleSectionStyleProps } from '@uifabric/experiments';
 import { CollapsibleSection } from '../CollapsibleSection';
 import { ICollapsibleSectionStyleProps } from '../CollapsibleSection.types';
 

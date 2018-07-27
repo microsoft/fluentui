@@ -1,18 +1,13 @@
 import * as React from 'react';
-import { createComponent, IViewProps, IPropsWithStyles } from '../Text/createComponent';
+import { createComponent, IViewComponentProps, IStyleableComponent } from '../../Foundation';
 import { CollapsibleSection, ICollapsibleSectionProps, ICollapsibleSectionStyles } from '../../CollapsibleSection';
 import { IAccordionProps, IAccordionStyles } from './Accordion.types';
 import { styles } from './Accordion.styles';
 
-const AccordionItemType = (<CollapsibleSection /> as React.ReactElement<ICollapsibleSectionProps> & {
-  styles?:
-    | Partial<ICollapsibleSectionStyles>
-    | ((
-        props: IPropsWithStyles<ICollapsibleSectionProps, ICollapsibleSectionStyles>
-      ) => Partial<ICollapsibleSectionStyles>);
-}).type;
+const AccordionItemType = (<CollapsibleSection /> as React.ReactElement<ICollapsibleSectionProps> &
+  IStyleableComponent<ICollapsibleSectionProps, ICollapsibleSectionStyles>).type;
 
-const view = (props: IViewProps<IAccordionProps, IAccordionStyles>) => {
+const view = (props: IViewComponentProps<IAccordionProps, IAccordionStyles>) => {
   const { renderAs: RootType = 'div', classNames, collapseItems } = props;
 
   const children: React.ReactChild[] = React.Children.map(
@@ -36,30 +31,19 @@ const view = (props: IViewProps<IAccordionProps, IAccordionStyles>) => {
   return <RootType className={classNames.root}> {children} </RootType>;
 };
 
-export const Accordion: React.StatelessComponent<
-  IAccordionProps & {
-    styles?:
-      | Partial<IAccordionStyles>
-      | ((props: IPropsWithStyles<IAccordionProps, IAccordionStyles>) => Partial<IAccordionStyles>);
-  }
-> & {
-  Item: React.StatelessComponent<
-    ICollapsibleSectionProps & {
-      styles?:
-        | Partial<ICollapsibleSectionStyles>
-        | ((
-            props: IPropsWithStyles<ICollapsibleSectionProps, ICollapsibleSectionStyles>
-          ) => Partial<ICollapsibleSectionStyles>);
-    }
-  >;
-} = createComponent({
+const AccordionStatics = {
+  Item: CollapsibleSection,
+  defaultProps: {}
+};
+type IAccordionStatics = typeof AccordionStatics;
+
+export const Accordion: React.StatelessComponent<IAccordionProps> & {
+  Item: React.StatelessComponent<ICollapsibleSectionProps>;
+} = createComponent<ICollapsibleSectionProps, ICollapsibleSectionStyles, IAccordionStatics>({
   displayName: 'Accordion',
   styles,
   view,
-  statics: {
-    Item: CollapsibleSection,
-    defaultProps: {}
-  }
+  statics: AccordionStatics
 });
 
 export default Accordion;

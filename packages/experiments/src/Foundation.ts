@@ -47,10 +47,11 @@ const providers: IStylingProviders<any, any, ITheme> = {
  */
 export function createComponent<
   TComponentProps extends IStyleableComponent<TComponentProps, TStyleSet, ITheme>,
-  TStyleSet extends IStyleSet<TStyleSet>
+  TStyleSet extends IStyleSet<TStyleSet>,
+  TStatics = {}
 >(
-  options: IComponentOptions<TComponentProps, TStyleSet, IProcessedStyleSet<TStyleSet>, ITheme>
-): React.StatelessComponent<TComponentProps> {
+  options: IComponentOptions<TComponentProps, TStyleSet, IProcessedStyleSet<TStyleSet>, ITheme, TStatics>
+): React.StatelessComponent<TComponentProps> & TStatics {
   return create(options, providers);
 }
 
@@ -63,14 +64,15 @@ export function createComponent<
 export function createComponentWithState<
   TComponentProps extends IStyleableComponent<TViewProps, TStyleSet, ITheme>,
   TViewProps,
-  TStyleSet extends IStyleSet<TStyleSet>
+  TStyleSet extends IStyleSet<TStyleSet>,
+  TStatics = {}
 >(
-  options: IComponentOptions<TViewProps, TStyleSet, IProcessedStyleSet<TStyleSet>, ITheme>,
+  options: IComponentOptions<TViewProps, TStyleSet, IProcessedStyleSet<TStyleSet>, ITheme, TStatics>,
   state: IStateComponent<
     TComponentProps,
     TViewProps & IViewComponent<TViewProps, IProcessedStyleSet<TStyleSet>>,
     IProcessedStyleSet<TStyleSet>
   >
-): React.StatelessComponent<TComponentProps> {
+): React.StatelessComponent<TComponentProps> & TStatics {
   return createWithState(options, providers, state);
 }
