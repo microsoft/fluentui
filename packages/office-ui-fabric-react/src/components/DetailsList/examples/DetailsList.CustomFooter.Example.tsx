@@ -145,7 +145,6 @@ export class DetailsListCustomFooterExample extends React.Component<
     detailsFooterProps: IDetailsFooterProps,
     defaultRender: IRenderFunction<IDetailsFooterProps>
   ): JSX.Element {
-    const selection = new Selection();
     return (
       <DetailsRow
         columns={detailsFooterProps!.columns as IColumn[]}
@@ -153,7 +152,7 @@ export class DetailsListCustomFooterExample extends React.Component<
         itemIndex={-1}
         groupNestingDepth={detailsFooterProps!.groupNestingDepth}
         selectionMode={SelectionMode.single}
-        selection={selection}
+        selection={detailsFooterProps!.selection as Selection}
         onRenderItemColumn={_renderDetailsFooterItemColumn}
         onRenderCheck={_onRenderCheckForFooterRow}
       />
