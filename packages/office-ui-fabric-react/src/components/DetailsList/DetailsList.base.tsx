@@ -954,7 +954,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     const { adjustedColumns: columns } = this.state;
     const detailsFooterProps: IDetailsFooterProps = {
       columns: columns as IColumn[],
-      groupNestingDepth: this._getGroupNestingDepth()
+      groupNestingDepth: this._getGroupNestingDepth(),
+      selection: this._selection
     };
     return {
       ...detailsFooterProps

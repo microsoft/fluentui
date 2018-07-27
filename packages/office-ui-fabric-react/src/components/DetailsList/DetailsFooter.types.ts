@@ -2,6 +2,7 @@ import { IStyleFunctionOrObject } from '../../Utilities';
 import { ITheme, IStyle } from '../../Styling';
 import { DetailsFooterBase } from './DetailsFooter.base';
 import { IColumn } from './DetailsList.types';
+import { ISelection } from '../../utilities/selection/index';
 export interface IDetailsFooter {
   focus: () => boolean;
 }
@@ -23,6 +24,7 @@ export interface IDetailsFooterProps extends React.Props<DetailsFooterBase> {
   className?: string;
   columns?: IColumn[];
   groupNestingDepth?: number;
+  selection?: ISelection;
 }
 
 export type IDetailsFooterStyleProps = Required<Pick<IDetailsFooterProps, 'theme'>> &
