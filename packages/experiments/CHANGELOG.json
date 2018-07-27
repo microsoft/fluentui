@@ -2,6 +2,32 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.22.0",
+      "tag": "@uifabric/experiments_v6.22.0",
+      "date": "Fri, 27 Jul 2018 10:25:39 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Esteban Munoz <esteban.230@hotmail.com>",
+            "commit": "313c5cd21a9dcf435528e83693d75a7fedeeb015",
+            "comment": "added export for collapsible section and foundation"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "c981bcef80bd0855fbbad0418ce7ffbceaa71258",
+            "comment": "Added TextField to FluentStyles"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.40.0 <7.0.0` to `>=6.41.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.21.0",
       "tag": "@uifabric/experiments_v6.21.0",
       "date": "Thu, 26 Jul 2018 10:28:51 GMT",
