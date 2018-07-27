@@ -941,7 +941,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
             {
               ...props,
               columns: columns,
-              groupNestingDepth: groupNestingDepth
+              groupNestingDepth: groupNestingDepth,
+              selection: this._selection
             },
             defaultRender
           );
@@ -954,7 +955,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
             {
               ...props,
               columns: columns,
-              groupNestingDepth: groupNestingDepth
+              groupNestingDepth: groupNestingDepth,
+              selection: this._selection
             },
             defaultRender
           );
