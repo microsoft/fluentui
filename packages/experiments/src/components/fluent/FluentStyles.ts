@@ -43,7 +43,8 @@ const DefaultButtonStyles = {
     border: `1px solid ${NeutralColors.gray20}`
   },
   rootHovered: {
-    backgroundColor: '#f3f2f1'
+    backgroundColor: '#f3f2f1',
+    border: `1px solid ${NeutralColors.gray20}`
   }
 };
 
