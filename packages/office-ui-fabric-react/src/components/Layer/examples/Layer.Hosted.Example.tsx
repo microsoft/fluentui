@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { Checkbox } from '../../../Checkbox';
-import { Layer } from '../Layer';
-import { LayerHost } from '../LayerHost';
-import { Toggle } from '../../../Toggle';
-import { AnimationClassNames } from '../../../Styling';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { Layer, LayerHost } from 'office-ui-fabric-react/lib/Layer';
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
 import './Layer.Example.scss';
-import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
+import * as exampleStylesImport from 'office-ui-fabric-react/lib/common/_exampleStyles.scss';
 const exampleStyles: any = exampleStylesImport;
 
 export class LayerHostedExample extends React.Component<

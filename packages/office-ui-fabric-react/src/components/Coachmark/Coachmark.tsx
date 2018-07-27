@@ -18,7 +18,7 @@ import {
   ICoachmarkStyles,
   ICoachmarkStyleProps
 } from './Coachmark.styles';
-import { FocusTrapZone } from '../FocusTrapZone';
+import { FocusTrapZone } from '../../FocusTrapZone';
 
 const getClassNames = classNamesFunction<ICoachmarkStyleProps, ICoachmarkStyles>();
 
@@ -240,12 +240,12 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
                   >
                     {isCollapsed && [
                       ariaLabelledBy && (
-                        <p id={ariaLabelledBy} className={classNames.ariaContainer}>
+                        <p id={ariaLabelledBy} key={0} className={classNames.ariaContainer}>
                           {ariaLabelledByText}
                         </p>
                       ),
                       ariaDescribedBy && (
-                        <p id={ariaDescribedBy} className={classNames.ariaContainer}>
+                        <p id={ariaDescribedBy} key={1} className={classNames.ariaContainer}>
                           {ariaDescribedByText}
                         </p>
                       )

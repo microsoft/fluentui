@@ -19,7 +19,7 @@
   }
 
   .ExampleCard-toggleButtons {
-    display: block;
+    display: flex;
     @include float(right);
 
     .ms-Button.ExampleCard-codeButton {
@@ -113,7 +113,7 @@
 
     h4 {
       @include ms-font-l;
-      color: #177D3E;
+      color: #177d3e;
     }
   }
 
@@ -123,8 +123,7 @@
 
     h4 {
       @include ms-font-l;
-      color: #A61E22;
+      color: #a61e22;
     }
   }
-
 }

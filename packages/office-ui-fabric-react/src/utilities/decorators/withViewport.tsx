@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseDecorator } from './BaseDecorator';
-import { findScrollableParent, getRect, createRef } from '../../Utilities';
+import { findScrollableParent, getRect, createRef, getWindow } from '../../Utilities';
 
 export interface IViewport {
   width: number;
@@ -24,6 +24,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
   return class WithViewportComponent extends BaseDecorator<TProps, IWithViewportState> {
     private _root = createRef<HTMLDivElement>();
     private _resizeAttempts: number;
+    private _viewportResizeObserver: any;
 
     constructor(props: TProps) {
       super(props);
@@ -42,8 +43,18 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
         leading: false
       });
 
-      this._events.on(window, 'resize', this._onAsyncResize);
+      const window = getWindow();
+      const viewportElement = this._root.current;
+
+      if (window && (window as any).ResizeObserver) {
+        this._viewportResizeObserver = new (window as any).ResizeObserver(this._onAsyncResize);
+        this._viewportResizeObserver.observe(viewportElement);
+      } else {
+        this._events.on(window, 'resize', this._onAsyncResize);
+      }
+
       const { skipViewportMeasures } = this.props as IWithViewportProps;
+
       if (!skipViewportMeasures) {
         this._updateViewport();
       }
@@ -51,6 +62,10 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
 
     public componentWillUnmount(): void {
       this._events.dispose();
+
+      if (this._viewportResizeObserver) {
+        this._viewportResizeObserver.disconnect();
+      }
     }
 
     public render(): JSX.Element {

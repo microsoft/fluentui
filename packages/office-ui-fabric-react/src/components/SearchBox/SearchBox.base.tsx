@@ -179,7 +179,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
         break;
 
       case KeyCodes.enter:
-        if (this.props.onSearch && this.state.value!.length > 0) {
+        if (this.props.onSearch) {
           this.props.onSearch(this.state.value);
         }
         break;

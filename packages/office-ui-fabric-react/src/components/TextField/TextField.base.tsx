@@ -1,25 +1,28 @@
 import * as React from 'react';
+import { IProcessedStyleSet } from '../../Styling';
+import { IStyleFunctionOrObject } from '../../Utilities';
 import { ITextField, ITextFieldProps } from './TextField.types';
-import { Label } from '../../Label';
+import { Label, ILabelStyleProps, ILabelStyles } from '../../Label';
 import { Icon } from '../../Icon';
 import {
   DelayedRender,
   BaseComponent,
   getId,
-  css,
   getNativeProps,
   inputProperties,
   textAreaProperties,
-  createRef
+  createRef,
+  classNamesFunction
 } from '../../Utilities';
-import * as stylesImport from './TextField.scss';
-const styles: any = stylesImport;
-import { AnimationClassNames } from '../../Styling';
+import { ITextFieldStyleProps, ITextFieldStyles } from './TextField.types';
+
+const getClassNames = classNamesFunction<ITextFieldStyleProps, ITextFieldStyles>();
+
 export interface ITextFieldState {
   value: string;
 
   /** Is true when the control has focus. */
-  isFocused?: boolean;
+  isFocused: boolean;
 
   /**
    * The validation error message.
@@ -27,12 +30,12 @@ export interface ITextFieldState {
    * - If there is no validation error or we have not validated the input value, errorMessage is an empty string.
    * - If we have done the validation and there is validation error, errorMessage is the validation error message.
    */
-  errorMessage?: string;
+  errorMessage: string;
 }
 
 const DEFAULT_STATE_VALUE = '';
 
-export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> implements ITextField {
+export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldState> implements ITextField {
   public static defaultProps: ITextFieldProps = {
     multiline: false,
     resizable: true,
@@ -65,6 +68,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   private _latestValidateValue: string | undefined;
   private _isDescriptionAvailable: boolean;
   private _textElement = createRef<HTMLTextAreaElement | HTMLInputElement | null>();
+  private _classNames: IProcessedStyleSet<ITextFieldStyles>;
 
   public constructor(props: ITextFieldProps) {
     super(props);
@@ -153,18 +157,22 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
 
   public render(): JSX.Element {
     const {
+      borderless,
       className,
       description,
       disabled,
       iconClass,
       iconProps,
+      label,
       multiline,
       required,
       underlined,
-      borderless,
       addonString, // @deprecated
       prefix,
+      resizable,
       suffix,
+      theme,
+      styles,
       onRenderAddon = this._onRenderAddon, // @deprecated
       onRenderPrefix = this._onRenderPrefix,
       onRenderSuffix = this._onRenderSuffix,
@@ -174,48 +182,41 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     const { isFocused } = this.state;
     const errorMessage = this._errorMessage;
 
+    this._classNames = getClassNames(styles!, {
+      theme: theme!,
+      className,
+      disabled,
+      focused: isFocused,
+      required,
+      multiline,
+      hasLabel: !!label,
+      hasErrorMessage: !!errorMessage,
+      borderless,
+      resizable,
+      hasIcon: !!iconProps,
+      underlined,
+      iconClass
+    });
+
     // If a custom description render function is supplied then treat description as always available.
     // Otherwise defer to the presence of description or error message text.
     this._isDescriptionAvailable = Boolean(this.props.onRenderDescription || description || errorMessage);
 
-    const textFieldClassName = css('ms-TextField', styles.root, className, {
-      ['is-required ' + styles.rootIsRequiredLabel]: this.props.label && required,
-      ['is-required ' + styles.rootIsRequiredPlaceholderOnly]: !this.props.label && required,
-      ['is-disabled ' + styles.rootIsDisabled]: disabled,
-      ['is-active ' + styles.rootIsActive]: isFocused,
-      ['ms-TextField--multiline ' + styles.rootIsMultiline]: multiline,
-      ['ms-TextField--underlined ' + styles.rootIsUnderlined]: underlined,
-      ['ms-TextField--borderless ' + styles.rootIsBorderless]: borderless
-    });
-
     return (
-      <div className={textFieldClassName}>
-        <div className={css('ms-TextField-wrapper', styles.wrapper, underlined ? errorMessage && styles.invalid : '')}>
+      <div className={this._classNames.root}>
+        <div className={this._classNames.wrapper}>
           {onRenderLabel(this.props, this._onRenderLabel)}
-          <div
-            className={css(
-              'ms-TextField-fieldGroup',
-              styles.fieldGroup,
-              isFocused && styles.fieldGroupIsFocused,
-              errorMessage && styles.invalid
-            )}
-          >
+          <div className={this._classNames.fieldGroup}>
             {(addonString !== undefined || this.props.onRenderAddon) && (
-              <div className={css('ms-TextField-prefix', styles.fieldPrefixSuffix)}>
-                {onRenderAddon(this.props, this._onRenderAddon)}
-              </div>
+              <div className={this._classNames.prefix}>{onRenderAddon(this.props, this._onRenderAddon)}</div>
             )}
             {(prefix !== undefined || this.props.onRenderPrefix) && (
-              <div className={css('ms-TextField-prefix', styles.fieldPrefixSuffix)}>
-                {onRenderPrefix(this.props, this._onRenderPrefix)}
-              </div>
+              <div className={this._classNames.prefix}>{onRenderPrefix(this.props, this._onRenderPrefix)}</div>
             )}
             {multiline ? this._renderTextArea() : this._renderInput()}
-            {(iconClass || iconProps) && <Icon className={css(iconClass, styles.icon)} {...iconProps} />}
+            {(iconClass || iconProps) && <Icon className={this._classNames.icon} {...iconProps} />}
             {(suffix !== undefined || this.props.onRenderSuffix) && (
-              <div className={css('ms-TextField-suffix', styles.fieldPrefixSuffix)}>
-                {onRenderSuffix(this.props, this._onRenderSuffix)}
-              </div>
+              <div className={this._classNames.suffix}>{onRenderSuffix(this.props, this._onRenderSuffix)}</div>
             )}
           </div>
         </div>
@@ -225,12 +226,8 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
             {errorMessage && (
               <div aria-live="assertive">
                 <DelayedRender>
-                  <p
-                    className={css('ms-TextField-errorMessage', AnimationClassNames.slideDownIn20, styles.errorMessage)}
-                  >
-                    <span className={styles.errorText} data-automation-id="error-message">
-                      {errorMessage}
-                    </span>
+                  <p className={this._classNames.errorMessage}>
+                    <span data-automation-id="error-message">{errorMessage}</span>
                   </p>
                 </DelayedRender>
               </div>
@@ -325,15 +322,25 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   }
 
   private _onRenderLabel = (props: ITextFieldProps): JSX.Element | null => {
-    if (props.label) {
-      return <Label htmlFor={this._id}>{props.label}</Label>;
+    const { label, required } = props;
+    // IProcessedStyleSet definition requires casting for what Label expects as its styles prop
+    const labelStyles = this._classNames.subComponentStyles
+      ? (this._classNames.subComponentStyles.label as IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles>)
+      : undefined;
+
+    if (label) {
+      return (
+        <Label required={required} htmlFor={this._id} styles={labelStyles}>
+          {props.label}
+        </Label>
+      );
     }
     return null;
   };
 
   private _onRenderDescription = (props: ITextFieldProps): JSX.Element | null => {
     if (props.description) {
-      return <span className={css('ms-TextField-description', styles.description)}>{props.description}</span>;
+      return <span className={this._classNames.description}>{props.description}</span>;
     }
     return null;
   };
@@ -354,27 +361,9 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     return <span style={{ paddingBottom: '1px' }}>{suffix}</span>;
   }
 
-  private _getTextElementClassName(): string {
-    let textFieldClassName: string;
-
-    if (this.props.multiline && !this.props.resizable) {
-      textFieldClassName = css(
-        'ms-TextField-field ms-TextField-field--unresizable',
-        styles.field,
-        styles.fieldIsUnresizable
-      );
-    } else {
-      textFieldClassName = css('ms-TextField-field', styles.field);
-    }
-
-    return css(textFieldClassName, this.props.inputClassName, {
-      [styles.hasIcon]: !!this.props.iconClass
-    });
-  }
-
   private get _errorMessage(): string | undefined {
     let { errorMessage } = this.state;
-    if (!errorMessage) {
+    if (!errorMessage && this.props.errorMessage) {
       errorMessage = this.props.errorMessage;
     }
 
@@ -392,7 +381,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         value={this.state.value}
         onInput={this._onInputChange}
         onChange={this._onInputChange}
-        className={this._getTextElementClassName()}
+        className={this._classNames.field}
         aria-describedby={this._isDescriptionAvailable ? this._descriptionId : this.props['aria-describedby']}
         aria-invalid={!!this.state.errorMessage}
         aria-label={this.props.ariaLabel}
@@ -417,7 +406,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         value={this.state.value}
         onInput={this._onInputChange}
         onChange={this._onInputChange}
-        className={this._getTextElementClassName()}
+        className={this._classNames.field}
         aria-label={this.props.ariaLabel}
         aria-describedby={this._isDescriptionAvailable ? this._descriptionId : this.props['aria-describedby']}
         aria-invalid={!!this.state.errorMessage}

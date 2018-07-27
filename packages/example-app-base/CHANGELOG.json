@@ -2,6 +2,44 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "6.7.0",
+      "tag": "@uifabric/example-app-base_v6.7.0",
+      "date": "Tue, 24 Jul 2018 10:24:36 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Avital Baral <avitalbaral99@gmail.com>",
+            "commit": "2e979a5ace4b5e77f8ba76f3529df6a4e373fa4a",
+            "comment": "Updating example pages to provide codepen script content."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.39.0 <7.0.0` to `>=6.39.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.6.0",
+      "tag": "@uifabric/example-app-base_v6.6.0",
+      "date": "Mon, 23 Jul 2018 10:28:08 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "28242c40916d14cef3d555d18f4df69454163e87",
+            "comment": "Addressing bad imports."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.38.2 <7.0.0` to `>=6.39.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.5.2",
       "tag": "@uifabric/example-app-base_v6.5.2",
       "date": "Thu, 19 Jul 2018 19:04:38 GMT",

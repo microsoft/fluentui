@@ -59,7 +59,8 @@ export function getNeutralVariant(theme: IPartialTheme): ITheme {
 
   const partialSemantic: Partial<ISemanticColors> = {
     bodyBackground: p.neutralLighter,
-    bodyFrameBackground: !fullTheme.isInverted ? p.neutralLight : p.neutralLighterAlt
+    bodyFrameBackground: !fullTheme.isInverted ? p.neutralLight : p.neutralLighter,
+    bodyFrameDivider: !fullTheme.isInverted ? p.neutralLight : p.neutralQuaternary
   };
 
   return makeThemeFromPartials(theme, partialPalette, partialSemantic);
@@ -111,7 +112,8 @@ export function getSoftVariant(theme: IPartialTheme): ITheme {
 
   const partialSemantic: Partial<ISemanticColors> = {
     bodyBackground: !fullTheme.isInverted ? p.themeLighterAlt : p.themeLight,
-    bodyFrameBackground: p.themeLighter, // this will always be the darker shade as compared to bodyBackground
+    bodyFrameBackground: !fullTheme.isInverted ? p.themeLighter : p.themeLight,
+    bodyFrameDivider: !fullTheme.isInverted ? p.themeLighter : p.themeTertiary,
 
     inputBorder: p.themeLighter,
     // inputBorderHovered: p.neutralPrimary,
@@ -176,7 +178,8 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
 
   const partialSemantic: Partial<ISemanticColors> = {
     bodyBackground: p.themePrimary,
-    bodyFrameBackground: !fullTheme.isInverted ? p.themeDarkAlt : p.themeSecondary,
+    bodyFrameBackground: !fullTheme.isInverted ? p.themeDarkAlt : p.themePrimary,
+    bodyFrameDivider: !fullTheme.isInverted ? p.themeDarkAlt : p.themeTertiary,
 
     bodyText: p.white,
     bodySubtext: p.white,

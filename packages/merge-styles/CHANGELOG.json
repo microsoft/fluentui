@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.6.0",
+      "tag": "@uifabric/merge-styles_v6.6.0",
+      "date": "Thu, 26 Jul 2018 10:28:51 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "d056d71f1ad27733e8e6027301c1d83aaf0ccffc",
+            "comment": "Add resize rule to IRawStyleBase."
+          }
+        ]
+      }
+    },
+    {
       "version": "6.5.1",
       "tag": "@uifabric/merge-styles_v6.5.1",
       "date": "Thu, 19 Jul 2018 21:25:32 GMT",
