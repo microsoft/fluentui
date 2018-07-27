@@ -100,13 +100,13 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
           return false;
         }
 
+        // Notify subscribers again to re-check whether Sticky should be Sticky'd or not
+        this.notifySubscribers();
+
         // If mutation occurs in sticky header or footer, then update sticky top/bottom heights
         if (mutation.some(checkIfMutationIsSticky.bind(this))) {
           this.updateStickyRefHeights();
         } else {
-          // Notify subscribers again to re-check whether Sticky should be Sticky'd or not
-          this.notifySubscribers();
-
           // If mutation occurs in scrollable region, then find Sticky it belongs to and force update
           const stickyList: Sticky[] = [];
           this._stickies.forEach(sticky => {
