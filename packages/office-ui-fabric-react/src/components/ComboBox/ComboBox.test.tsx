@@ -86,6 +86,15 @@ describe('ComboBox', () => {
     expect(inputElement.props().value).toEqual('1');
   });
 
+  it('Renders a selected item with zero key', () => {
+    const options: IComboBoxOption[] = [{ key: 0, text: '0' }, { key: 1, text: '0' }];
+    const wrapper = mount(<ComboBox selectedKey={0} options={options} label="testgroup" />);
+    const comboBoxRoot = wrapper.find('.ms-ComboBox');
+    const inputElement: ReactWrapper<React.InputHTMLAttributes<any>, any> = comboBoxRoot.find('input');
+
+    expect(inputElement.props().value).toEqual('0');
+  });
+
   it('New options are not automatically added when allowFreeform on in controlled case', () => {
     let comboBoxRoot;
     let inputElement: ReactWrapper<React.InputHTMLAttributes<any>, any>;
