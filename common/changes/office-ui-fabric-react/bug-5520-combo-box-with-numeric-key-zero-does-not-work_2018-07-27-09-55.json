@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Allow using zero as the correct selectedKey value (issue#5520)",
+      "comment": "ComboBox: now accepts zero as a selectedKey value.",
       "type": "patch"
     }
   ],
