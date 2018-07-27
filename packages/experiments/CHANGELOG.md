@@ -1,6 +1,95 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 12 Jul 2018 10:29:30 GMT and should not be manually modified.
+This log was last generated on Fri, 27 Jul 2018 10:25:39 GMT and should not be manually modified.
+
+## 6.22.0
+Fri, 27 Jul 2018 10:25:39 GMT
+
+### Minor changes
+
+- Added TextField to FluentStyles
+
+### Patches
+
+- added export for collapsible section and foundation
+
+## 6.21.0
+Thu, 26 Jul 2018 10:28:51 GMT
+
+### Minor changes
+
+- Updates Fluent styles for Dialog and ComoboBox
+
+## 6.20.0
+Wed, 25 Jul 2018 03:20:34 GMT
+
+### Minor changes
+
+- Make stack grow be more flexible
+
+## 6.19.1
+Tue, 24 Jul 2018 10:24:36 GMT
+
+*Version update only*
+
+## 6.19.0
+Mon, 23 Jul 2018 10:28:08 GMT
+
+### Minor changes
+
+- Text: use existing theming
+- Addressing bad imports.
+
+## 6.18.3
+Fri, 20 Jul 2018 10:25:21 GMT
+
+*Version update only*
+
+## 6.18.2
+Thu, 19 Jul 2018 21:25:32 GMT
+
+*Version update only*
+
+## 6.18.1
+Thu, 19 Jul 2018 19:04:38 GMT
+
+*Version update only*
+
+## 6.18.0
+Thu, 19 Jul 2018 10:23:34 GMT
+
+### Minor changes
+
+- Fluent Styles for ComboBox and Dialog
+
+## 6.17.0
+Wed, 18 Jul 2018 10:25:50 GMT
+
+### Minor changes
+
+- Fix typing errors
+
+## 6.16.0
+Tue, 17 Jul 2018 10:28:40 GMT
+
+### Minor changes
+
+- Removing most `@customizable` decorator usage. This change should reduce extra React dom elements from being created. Also updating `componentRef` resolution to support `React.createRef()` usage.
+
+## 6.15.1
+Mon, 16 Jul 2018 10:27:18 GMT
+
+*Version update only*
+
+## 6.15.0
+Fri, 13 Jul 2018 21:32:37 GMT
+
+### Minor changes
+
+- Reverting the TypeScript bump, to un
+- Card: disable dragging of card everywhere but title bar
+- Added FluentStyles for Panel, TextField, ContextualMenu, and ComboBox
+- Moved nav, recommendation and card to m365-admin package
 
 ## 6.13.6
 Thu, 12 Jul 2018 10:29:30 GMT

@@ -1,19 +1,22 @@
 import * as React from 'react';
-import { css } from '../../Utilities';
-import * as stylesImport from './GroupSpacer.scss';
-const styles: any = stylesImport;
+import { styled, classNamesFunction } from '../../Utilities';
+import { IGroupSpacerProps, IGroupSpacerStyleProps, IGroupSpacerStyles } from './GroupSpacer.types';
+import { getStyles } from './GroupSpacer.styles';
 
-export interface IGroupSpacerProps {
-  count: number;
-  indentWidth?: number;
-}
+const getClassNames = classNamesFunction<IGroupSpacerStyleProps, IGroupSpacerStyles>();
 
 const SPACER_WIDTH = 36;
 
-export const GroupSpacer = (props: IGroupSpacerProps) => {
-  const { count, indentWidth = SPACER_WIDTH } = props;
+export const GroupSpacer = styled<IGroupSpacerProps, IGroupSpacerStyleProps, IGroupSpacerStyles>(
+  (props: IGroupSpacerProps) => {
+    const { count, styles, theme, indentWidth = SPACER_WIDTH } = props;
+    const classNames = getClassNames(styles, {
+      theme: theme!
+    });
 
-  return count > 0 ? (
-    <span className={css('ms-GroupSpacer', styles.root)} style={{ width: count * indentWidth }} />
-  ) : null;
-};
+    return count > 0 ? <span className={classNames.root} style={{ width: count * indentWidth }} /> : null;
+  },
+  getStyles,
+  undefined,
+  { scope: 'GroupSpacer' }
+);

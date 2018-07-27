@@ -66,6 +66,38 @@ describe('mergeStyleSets', () => {
     );
   });
 
+  it('can merge correctly when falsey values are provided as inputs', () => {
+    const result = mergeStyleSets(
+      undefined,
+      {
+        root: { background: 'red' },
+        a: { background: 'green' }
+      },
+      null,
+      {
+        a: { background: 'white' },
+        b: { background: 'blue' }
+      }
+    );
+
+    expect(result.root).toBe('root-0');
+    expect(result.a).toBe('a-1');
+    expect(result.b).toBe('b-2');
+
+    expect(_stylesheet.getRules()).toEqual(
+      '.root-0{background:red;}' + '.a-1{background:white;}' + '.b-2{background:blue;}'
+    );
+  });
+
+  it('can merge correctly when all inputs are falsey', () => {
+    // poor 0 is missing out on the party.
+    // he will not be missed.
+    const result = mergeStyleSets(undefined, false, null);
+
+    expect(result).toEqual({});
+    expect(_stylesheet.getRules()).toBe('');
+  });
+
   it('can expand child selectors', () => {
     const result = mergeStyleSets({
       a: {

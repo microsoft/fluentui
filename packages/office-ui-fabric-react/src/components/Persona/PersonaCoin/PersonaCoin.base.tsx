@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   BaseComponent,
   classNamesFunction,
-  customizable,
   divProperties,
   getInitials,
   getNativeProps,
@@ -52,7 +51,6 @@ export interface IPersonaState {
  * PersonaCoin with no default styles.
  * [Use the `getStyles` API to add your own styles.](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Styling)
  */
-@customizable('PersonaCoin', ['theme', 'styles'])
 export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaState> {
   public static defaultProps: IPersonaCoinProps = {
     size: PersonaSize.size48,
@@ -82,6 +80,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
       onRenderCoin = this._onRenderCoin,
       onRenderInitials = this._onRenderInitials,
       presence,
+      showInitialsUntilImageLoads,
       theme
     } = this.props;
 
@@ -105,13 +104,17 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
       showUnknownPersonaCoin
     });
 
+    const shouldRenderInitials = Boolean(
+      (showInitialsUntilImageLoads && imageUrl) || !imageUrl || this.state.isImageError || hideImage
+    );
+
     return (
       <div {...divProps} className={classNames.coin}>
         {// Render PersonaCoin if size is not size10
         size !== PersonaSize.size10 && size !== PersonaSize.tiny ? (
           <div {...coinProps} className={classNames.imageArea} style={coinSizeStyle}>
             {!this.state.isImageLoaded &&
-              (!imageUrl || this.state.isImageError || hideImage) && (
+              shouldRenderInitials && (
                 <div
                   className={mergeStyles(
                     classNames.initials,

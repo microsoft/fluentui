@@ -18,7 +18,8 @@
     "lib": ["es2017", "dom"],
     "types": ["jest", "webpack-env"],
     "paths": {
-      "@uifabric/dashboard/lib/*": ["./src/*"]
+      "@uifabric/dashboard/lib/*": ["./src/*"],
+      "@uifabric/dashboard": ["./src"]
     }
   },
   "include": ["src"]

@@ -162,13 +162,15 @@ export function concatStyleSets(
             continue;
           }
 
-          const mergedValue: IStyle = mergedSet[prop];
-          const currentValue = currentSet[prop];
+          // the as any casts below is a workaround for ts 2.8.
+          // todo: remove cast to any in ts 2.9.
+          const mergedValue: IStyle = (mergedSet as any)[prop];
+          const currentValue = (currentSet as any)[prop];
 
           if (mergedValue === undefined) {
-            mergedSet[prop] = currentValue;
+            (mergedSet as any)[prop] = currentValue;
           } else {
-            mergedSet[prop] = [
+            (mergedSet as any)[prop] = [
               // https://github.com/Microsoft/TypeScript/issues/25474
               ...(Array.isArray(mergedValue) ? mergedValue : [mergedValue as IStyleBase]),
               ...(Array.isArray(currentValue) ? currentValue : [currentValue as IStyleBase])

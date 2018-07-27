@@ -11,6 +11,7 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
         }
   >
     <div
+      data-automation-id="visibleContent"
       style={
         Object {
           "position": "fixed",

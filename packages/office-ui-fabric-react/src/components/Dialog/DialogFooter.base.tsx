@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { IDialogFooterProps, IDialogFooterStyleProps, IDialogFooterStyles } from './DialogFooter.types';
-import { BaseComponent, classNamesFunction, customizable } from '../../Utilities';
+import { BaseComponent, classNamesFunction } from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 
 const getClassNames = classNamesFunction<IDialogFooterStyleProps, IDialogFooterStyles>();
 
-@customizable('DialogFooter', ['theme', 'styles'])
 export class DialogFooterBase extends BaseComponent<IDialogFooterProps, {}> {
   private _classNames: IProcessedStyleSet<IDialogFooterStyles>;
 

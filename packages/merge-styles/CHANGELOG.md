@@ -1,6 +1,34 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Tue, 10 Jul 2018 21:54:07 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Jul 2018 10:28:51 GMT and should not be manually modified.
+
+## 6.6.0
+Thu, 26 Jul 2018 10:28:51 GMT
+
+### Minor changes
+
+- Add resize rule to IRawStyleBase.
+
+## 6.5.1
+Thu, 19 Jul 2018 21:25:32 GMT
+
+### Patches
+
+- `mergeStyleSet` is able to take falsey values again and handle it correctly in all cases.
+
+## 6.5.0
+Wed, 18 Jul 2018 10:25:50 GMT
+
+### Minor changes
+
+- Add support for style functions and improve documentation/typings.
+
+## 6.4.0
+Fri, 13 Jul 2018 21:32:37 GMT
+
+### Minor changes
+
+- Reverting the TypeScript bump, to un
 
 ## 6.2.3
 Tue, 10 Jul 2018 21:54:07 GMT

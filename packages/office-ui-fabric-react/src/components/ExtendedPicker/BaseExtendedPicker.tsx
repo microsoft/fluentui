@@ -89,6 +89,10 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
     return this.input.current && this.input.current.inputElement;
   }
 
+  public get highlightedItems(): T[] {
+    return this.selectedItemsList.current ? this.selectedItemsList.current.highlightedItems() : [];
+  }
+
   public render(): JSX.Element {
     const { className, inputProps, disabled } = this.props;
     const activeDescendant =
@@ -118,7 +122,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
                   onInputValueChange={this.onInputChange}
                   aria-activedescendant={activeDescendant}
                   aria-owns="suggestion-list"
-                  aria-expanded="true"
+                  aria-expanded={this.floatingPicker.current ? this.floatingPicker.current.isSuggestionsShown : false}
                   aria-haspopup="true"
                   autoCapitalize="off"
                   autoComplete="off"
