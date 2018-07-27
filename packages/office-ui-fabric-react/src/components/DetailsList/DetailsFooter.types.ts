@@ -1,7 +1,7 @@
-import { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import { IStyleFunctionOrObject } from '../../Utilities';
 import { ITheme, IStyle } from '../../Styling';
 import { DetailsFooterBase } from './DetailsFooter.base';
-import { IDetailsRowProps } from './DetailsRow';
+import { IColumn } from './DetailsList.types';
 export interface IDetailsFooter {
   focus: () => boolean;
 }
@@ -21,9 +21,8 @@ export interface IDetailsFooterProps extends React.Props<DetailsFooterBase> {
    * Custom classname
    */
   className?: string;
-  footerText?: string;
-  footerRowProps?: IDetailsRowProps;
-  onRenderRowFooter?: IRenderFunction<IDetailsRowProps>;
+  columns?: IColumn[];
+  groupNestingDepth?: number;
 }
 
 export type IDetailsFooterStyleProps = Required<Pick<IDetailsFooterProps, 'theme'>> &

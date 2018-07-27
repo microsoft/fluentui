@@ -6,7 +6,11 @@ import {
   Selection,
   IColumn,
   IDetailsList,
-  IDetailsFooterProps
+  IDetailsFooterProps,
+  DetailsRow,
+  SelectionMode,
+  IDetailsRowCheckProps,
+  DetailsRowCheck
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { createRef, IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
@@ -141,13 +145,43 @@ export class DetailsListCustomFooterExample extends React.Component<
     detailsFooterProps: IDetailsFooterProps,
     defaultRender: IRenderFunction<IDetailsFooterProps>
   ): JSX.Element {
+    const footerData = _items[0];
+    const selection = new Selection();
+    // detailsFooterProps!.footerRowProps!.item = footerData;
+    // detailsFooterProps!.footerRowProps!.onRenderItemColumn = _renderItemColumn;
+    // detailsFooterProps!.footerRowProps!.selectionMode = SelectionMode.single;
     return (
-      <b>
-        {defaultRender({
-          ...detailsFooterProps,
-          footerText: 'Details List Footer'
-        })}
-      </b>
+      <DetailsRow
+        columns={detailsFooterProps!.columns as IColumn[]}
+        item={footerData}
+        itemIndex={-1}
+        groupNestingDepth={detailsFooterProps!.groupNestingDepth}
+        selectionMode={SelectionMode.single}
+        selection={selection}
+        onRenderItemColumn={_renderDetailsFooterItemColumn}
+        onRenderCheck={this._onRenderCheckForFooterRow}
+        // onRenderCheck={(props: IDetailsRowCheckProps): JSX.Element => {
+        //   return <DetailsRowCheck {...props} style={{ visibility: 'hidden' }} />;
+        // }}
+      />
     );
   }
+
+  private _onRenderCheckForFooterRow(props: IDetailsRowCheckProps): JSX.Element {
+    return <DetailsRowCheck {...props} style={{ visibility: 'hidden' }} />;
+  }
+}
+function _renderDetailsFooterItemColumn(item: any, index: number, column: IColumn) {
+  return (
+    <div>
+      <div>
+        <span>{item[column.name.toLocaleLowerCase()]}</span>
+      </div>
+      <div>
+        <span>
+          <b>{column.name}</b>
+        </span>
+      </div>
+    </div>
+  );
 }

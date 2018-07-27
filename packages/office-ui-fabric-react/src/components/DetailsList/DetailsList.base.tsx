@@ -946,35 +946,9 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
 
   private _getDetailsFooterProps(): IDetailsFooterProps | undefined {
     const { adjustedColumns: columns } = this.state;
-    const selection = new Selection();
-    const {
-      compact,
-      selectionMode,
-      viewport,
-      checkboxVisibility,
-      getRowAriaLabel,
-      getRowAriaDescribedBy,
-      checkButtonAriaLabel,
-      checkboxCellClassName
-    } = this.props;
-    const groupNestingDepth = this._getGroupNestingDepth();
-    const footerRowProps: IDetailsRowProps | undefined = {
-      item: '',
-      itemIndex: -1,
-      compact: compact,
-      columns: columns as IColumn[],
-      selectionMode: selectionMode!,
-      selection: selection,
-      checkboxVisibility: checkboxVisibility,
-      getRowAriaLabel: getRowAriaLabel,
-      viewport: viewport,
-      getRowAriaDescribedBy: getRowAriaDescribedBy,
-      checkButtonAriaLabel: checkButtonAriaLabel,
-      checkboxCellClassName: checkboxCellClassName,
-      groupNestingDepth: groupNestingDepth
-    };
     const detailsFooterProps: IDetailsFooterProps = {
-      footerRowProps
+      columns: columns as IColumn[],
+      groupNestingDepth: this._getGroupNestingDepth()
     };
     return {
       ...detailsFooterProps
