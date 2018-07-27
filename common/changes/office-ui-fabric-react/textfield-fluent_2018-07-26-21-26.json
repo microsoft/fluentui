@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Changes resizing viewport detection",
-      "type": "patch"
+      "comment": "Enabled Customizer to affect TextField",
+      "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "witrend@microsoft.com"
+  "email": "v-brgarl@microsoft.com"
 }

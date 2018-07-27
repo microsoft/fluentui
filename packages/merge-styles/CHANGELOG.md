@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Thu, 19 Jul 2018 21:25:32 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Jul 2018 10:28:51 GMT and should not be manually modified.
+
+## 6.6.0
+Thu, 26 Jul 2018 10:28:51 GMT
+
+### Minor changes
+
+- Add resize rule to IRawStyleBase.
 
 ## 6.5.1
 Thu, 19 Jul 2018 21:25:32 GMT

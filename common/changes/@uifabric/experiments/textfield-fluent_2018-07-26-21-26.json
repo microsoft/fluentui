@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Updates Fluent styles for Dialog and ComoboBox",
+      "comment": "Added TextField to FluentStyles",
       "type": "minor"
     }
   ],

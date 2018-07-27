@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "TextField: Convert to JS styling.",
-      "type": "minor"
+      "comment": "ScrollablePane: Fix mutationObserver",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "jagore@microsoft.com"
+  "email": "edwl@microsoft.com"
 }
