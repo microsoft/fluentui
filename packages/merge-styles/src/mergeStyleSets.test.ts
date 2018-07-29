@@ -94,7 +94,7 @@ describe('mergeStyleSets', () => {
     // he will not be missed.
     const result = mergeStyleSets(undefined, false, null);
 
-    expect(result).toEqual({});
+    expect(result).toEqual({ subComponentStyles: {} });
     expect(_stylesheet.getRules()).toBe('');
   });
 
@@ -122,7 +122,8 @@ describe('mergeStyleSets', () => {
     expect(result).toEqual({
       a: 'a-0',
       b: 'b-1',
-      'c-foo': 'c-foo-2'
+      'c-foo': 'c-foo-2',
+      subComponentStyles: {}
     });
 
     expect(_stylesheet.getRules()).toEqual(
@@ -153,14 +154,16 @@ describe('mergeStyleSets', () => {
 
     expect(styles).toEqual({
       root: 'a root-0',
-      child: 'd child-1'
+      child: 'd child-1',
+      subComponentStyles: {}
     });
     expect(_stylesheet.getRules()).toEqual('.root-0:hover .child-1{background:red;}' + '.child-1{background:green;}');
   });
 
   it('can merge class names', () => {
     expect(mergeStyleSets({ root: ['a', 'b', { background: 'red' }] })).toEqual({
-      root: 'a b root-0'
+      root: 'a b root-0',
+      subComponentStyles: {}
     });
   });
 
@@ -177,7 +180,7 @@ describe('mergeStyleSets', () => {
     const styles: ITestClasses = mergeStyleSets({ root: ['a', { background: 'red' }] });
     const styles1: ITestClasses = mergeStyleSets(styles, styles);
 
-    expect(styles1).toEqual({ root: 'a root-0' });
+    expect(styles1).toEqual({ root: 'a root-0', subComponentStyles: {} });
   });
 
   it('can auto expand a previously registered style embedded in static classname', () => {
@@ -186,10 +189,10 @@ describe('mergeStyleSets', () => {
     const styles3: ITestClasses = mergeStyleSets(styles, { root: ['b', { background: 'purple' }] });
     const styles4: ITestClasses = mergeStyleSets(styles, styles2, styles3, { root: 'c' });
 
-    expect(styles).toEqual({ root: 'a root-0' });
-    expect(styles2).toEqual({ root: 'b a root-0' });
-    expect(styles3).toEqual({ root: 'a b root-1' });
-    expect(styles4).toEqual({ root: 'a b c root-1' });
+    expect(styles).toEqual({ root: 'a root-0', subComponentStyles: {} });
+    expect(styles2).toEqual({ root: 'b a root-0', subComponentStyles: {} });
+    expect(styles3).toEqual({ root: 'a b root-1', subComponentStyles: {} });
+    expect(styles4).toEqual({ root: 'a b c root-1', subComponentStyles: {} });
   });
 
   it('can merge two sets with class names', () => {
@@ -200,7 +203,7 @@ describe('mergeStyleSets', () => {
       root: ['ms-Bar', { background: 'green' }]
     });
 
-    expect(styleSet2).toEqual({ root: 'ms-Foo ms-Bar root-1' });
+    expect(styleSet2).toEqual({ root: 'ms-Foo ms-Bar root-1', subComponentStyles: {} });
     expect(_stylesheet.getRules()).toEqual('.root-0{background:red;}' + '.root-1{background:green;}');
   });
 });

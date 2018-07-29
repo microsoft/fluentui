@@ -95,13 +95,13 @@ export function mergeStyleSets(
   ...styleSets: Array<IStyleSet<any> | undefined | false | null>
 ): IProcessedStyleSet<any> {
   // tslint:disable-next-line:no-any
-  const classNameSet: any = {};
+  const classNameSet: IProcessedStyleSet<any> = { subComponentStyles: {} };
   const classMap: { [key: string]: string } = {};
 
   const styleSet = styleSets[0];
 
   if (!styleSet && styleSets.length <= 1) {
-    return {};
+    return { subComponentStyles: {} };
   }
 
   let concatenatedStyleSet: IConcatenatedStyleSet<any> | IStyleSet<any> =
@@ -117,7 +117,7 @@ export function mergeStyleSets(
   for (const styleSetArea in concatenatedStyleSet) {
     if (concatenatedStyleSet.hasOwnProperty(styleSetArea)) {
       if (styleSetArea === 'subComponentStyles') {
-        classNameSet.subComponentStyles = concatenatedStyleSet.subComponentStyles;
+        classNameSet.subComponentStyles = (concatenatedStyleSet as IConcatenatedStyleSet<any>).subComponentStyles || {};
         continue;
       }
 
@@ -130,7 +130,8 @@ export function mergeStyleSets(
 
       if (registration) {
         classMap[styleSetArea] = registration.className;
-        classNameSet[styleSetArea] = classes.concat([registration.className]).join(' ');
+        // as any cast not needed in ts >=2.9
+        (classNameSet as any)[styleSetArea] = classes.concat([registration.className]).join(' ');
       }
     }
   }
