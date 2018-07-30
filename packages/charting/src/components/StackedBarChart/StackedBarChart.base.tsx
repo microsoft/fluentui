@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { IDataPoint } from './StackedBarChart.types';
-import { IProcessedStyleSet } from '../../Styling';
+import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 
-import { classNamesFunction } from '../../Utilities';
+import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IStackedBarChartProps, IStackedBarChartStyleProps, IStackedBarChartStyles } from './StackedBarChart.types';
 
 const getClassNames = classNamesFunction<IStackedBarChartStyleProps, IStackedBarChartStyles>();

@@ -328,6 +328,18 @@ export const AppState: IAppState = {
                 )
             },
             {
+              title: 'Custom Footer',
+              url: '#/components/detailslist/customfooter',
+              component: () => <LoadingComponent title="Custom Footer DetailsList" />,
+              getComponent: cb =>
+                require.ensure([], require =>
+                  cb(
+                    require<any>('../../pages/Components/DetailsList/DetailsListCustomFooterComponentPage')
+                      .DetailsListCustomFooterComponentPage
+                  )
+                )
+            },
+            {
               title: 'Custom Group Headers',
               url: '#/components/detailslist/customgroupheaders',
               component: () => <LoadingComponent title="Custom Group Headers DetailsList" />,
