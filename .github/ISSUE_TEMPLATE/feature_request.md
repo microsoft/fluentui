@@ -1,6 +1,6 @@
 ---
 name: Feature request
-about: Do you have Feature or improvemnet for Fabric? Let us know.
+about: Do you have Feature or improvement for Fabric? Let us know.
 
 ---
 

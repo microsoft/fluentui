@@ -1,6 +1,20 @@
 # Change Log - @uifabric/variants
 
-This log was last generated on Thu, 14 Jun 2018 20:52:57 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Jul 2018 10:28:08 GMT and should not be manually modified.
+
+## 6.0.6
+Mon, 23 Jul 2018 10:28:08 GMT
+
+### Patches
+
+- Variants: new designs for bodyFrameBackground
+
+## 6.0.5
+Tue, 03 Jul 2018 10:23:19 GMT
+
+### Patches
+
+- Bump variants and file-type-icons packages to restore amd build output
 
 ## 6.0.4
 Thu, 14 Jun 2018 20:52:57 GMT

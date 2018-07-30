@@ -14,4 +14,4 @@ export const ProgressIndicator = styled<
   IProgressIndicatorProps,
   IProgressIndicatorStyleProps,
   IProgressIndicatorStyles
->(ProgressIndicatorBase, getStyles);
+>(ProgressIndicatorBase, getStyles, undefined, { scope: 'ProgressIndicator' });

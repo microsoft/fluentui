@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { SliderBase } from './Slider.base';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IStyleFunctionOrObject, IRefObject } from '../../Utilities';
 
 export interface ISlider {
   value: number | undefined;
@@ -14,7 +14,7 @@ export interface ISliderProps extends React.Props<SliderBase> {
    * Optional callback to access the ISlider interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ISlider | null) => void;
+  componentRef?: IRefObject<ISlider>;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
@@ -102,25 +102,16 @@ export interface ISliderProps extends React.Props<SliderBase> {
   buttonProps?: React.HTMLAttributes<HTMLButtonElement>;
 }
 
-export interface ISliderStyleProps {
-  /**
-   * Theme provided by High-Order Component.
-   */
-  theme: ITheme;
-  /**
-   * Accept custom classNames.
-   */
-  className?: string;
-  titleLabel?: string;
-  rootIsEnabled?: boolean;
-  rootIsDisabled?: boolean;
-  rootIsHorizontal?: boolean;
-  rootIsVertical?: boolean;
-  showTransitions?: boolean;
-}
+export type ISliderStyleProps = Required<Pick<ISliderProps, 'theme'>> &
+  Pick<ISliderProps, 'className' | 'disabled' | 'vertical'> & {
+    showTransitions?: boolean;
+    showValue?: boolean;
+    titleLabelClassName?: string;
+  };
 
 export interface ISliderStyles {
   root: IStyle;
+  titleLabel: IStyle;
   container: IStyle;
   slideBox: IStyle;
   line: IStyle;

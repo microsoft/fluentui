@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { styled, IStyleFunctionOrObject } from './styled';
+import { styled } from './styled';
 import * as renderer from 'react-test-renderer';
 import { Customizer } from './Customizer';
-import { IStyle, Stylesheet, InjectionMode } from '@uifabric/merge-styles';
+import { IStyle, Stylesheet, InjectionMode, IStyleFunctionOrObject } from '@uifabric/merge-styles';
 import { classNamesFunction } from './classNamesFunction';
 
 interface ITestStyles {

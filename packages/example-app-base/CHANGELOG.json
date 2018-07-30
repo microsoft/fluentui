@@ -2,6 +2,144 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "6.7.0",
+      "tag": "@uifabric/example-app-base_v6.7.0",
+      "date": "Tue, 24 Jul 2018 10:24:36 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Avital Baral <avitalbaral99@gmail.com>",
+            "commit": "2e979a5ace4b5e77f8ba76f3529df6a4e373fa4a",
+            "comment": "Updating example pages to provide codepen script content."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.39.0 <7.0.0` to `>=6.39.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.6.0",
+      "tag": "@uifabric/example-app-base_v6.6.0",
+      "date": "Mon, 23 Jul 2018 10:28:08 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "28242c40916d14cef3d555d18f4df69454163e87",
+            "comment": "Addressing bad imports."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.38.2 <7.0.0` to `>=6.39.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.5.2",
+      "tag": "@uifabric/example-app-base_v6.5.2",
+      "date": "Thu, 19 Jul 2018 19:04:38 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "anavilohia <anavi.lohia@utexas.edu>",
+            "commit": "5327e0b64b21d1b8ef281072ef74a5985e83bec4",
+            "comment": "Added optional feedback section for component pages"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.38.0 <7.0.0` to `>=6.38.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.5.1",
+      "tag": "@uifabric/example-app-base_v6.5.1",
+      "date": "Wed, 18 Jul 2018 10:25:50 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "99545224cefac2af3edb13ce7b038ac1d14f3d38",
+            "comment": "Fix typing bugs in example-app-base"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.37.0 <7.0.0` to `>=6.37.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.5.0",
+      "tag": "@uifabric/example-app-base_v6.5.0",
+      "date": "Tue, 17 Jul 2018 10:28:40 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "5d0930647e631482b6016e0017aae0b5167b9f13",
+            "comment": "Removing most `@customizable` decorator usage. This change should reduce extra React dom elements from being created. Also updating `componentRef` resolution to support `React.createRef()` usage."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.36.0 <7.0.0` to `>=6.37.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.4.0",
+      "tag": "@uifabric/example-app-base_v6.4.0",
+      "date": "Mon, 16 Jul 2018 10:27:18 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "5a5228d9cd469098c2b2ee7ea4be5c1f846684e6",
+            "comment": "Variant section lists have same style as best practices section lists. ComponentPage Overview now marked optional prop."
+          },
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "135e0397a89df36f3836dedc1200fd21c6a4d2df",
+            "comment": "EditSection: Remove ComponentPageSection enum to make EditSection easier to use."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.35.0 <7.0.0` to `>=6.36.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.3.0",
+      "tag": "@uifabric/example-app-base_v6.3.0",
+      "date": "Fri, 13 Jul 2018 21:32:37 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "83486db0dd8f831599dd75f37b32878efac45ca0",
+            "comment": "Reverting the TypeScript bump, to un"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.33.1 <7.0.0` to `>=6.35.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.2.1",
       "tag": "@uifabric/example-app-base_v6.2.1",
       "date": "Thu, 14 Jun 2018 20:52:57 GMT",

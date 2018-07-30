@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Autofill } from './Autofill';
-import { KeyCodes } from '../../Utilities';
+import { IRefObject, KeyCodes } from '../../Utilities';
+
 export interface IAutofill {
   /**
    * The current index of the cursor in the input area. Returns -1 if the input element
@@ -43,7 +44,7 @@ export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputEleme
   /**
    * Gets the compoonent ref.
    */
-  componentRef?: (componentRef?: IAutofill | null) => void;
+  componentRef?: IRefObject<IAutofill>;
 
   /**
    * The suggested autofill value that will display.

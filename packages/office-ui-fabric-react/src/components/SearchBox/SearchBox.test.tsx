@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 import { SearchBox } from './SearchBox';
+import { KeyCodes } from '../../Utilities';
 
 // tslint:disable:jsx-no-lambda
 
@@ -39,5 +40,13 @@ describe('SearchBox', () => {
     const component = renderer.create(<SearchBox disableAnimation={true} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('can execute search when SearchBox is empty', () => {
+    let searchExecuted = false;
+    const component = mount(<SearchBox onSearch={() => (searchExecuted = true)} />);
+
+    component.find('input').simulate('keydown', { which: KeyCodes.enter });
+    expect(searchExecuted).toEqual(true);
   });
 });

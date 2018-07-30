@@ -5,7 +5,7 @@ import { DetailsRow } from 'office-ui-fabric-react/lib/components/DetailsList/De
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { Selection, SelectionMode, SelectionZone } from 'office-ui-fabric-react/lib/utilities/selection/index';
 
-import { createListItems, createGroups } from '../../../utilities/exampleData';
+import { createListItems, createGroups } from 'office-ui-fabric-react/lib/utilities/exampleData';
 
 const groupCount = 3;
 const groupDepth = 3;

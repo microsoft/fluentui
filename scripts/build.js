@@ -27,9 +27,10 @@ const buildStartTime = new Date().getTime();
 const TASKS_WITH_PREREQUISITES = [
   ['copy', null],
   ['sass', 'copy'],
-  ['ts', 'sass'],
-  ['tslint', 'sass'],
-  ['jest', 'sass'],
+  ['lint-imports', 'sass'],
+  ['ts', 'lint-imports'],
+  ['tslint', 'lint-imports'],
+  ['jest', 'lint-imports'],
   ['webpack', 'ts']
 ];
 
@@ -51,12 +52,19 @@ const disabledTasks = getDisabledTasks(process, package.disabledTasks);
 const firstTasks = getNextTasks(null, disabledTasks);
 
 // Start executing tasks, executeTasks will call itself recursively until all tasks are done
-executeTasks(firstTasks).then(() => {
-  if (hasFailures) {
-    process.exitCode = 1;
-  }
-  logEndBuild(packageName, !hasFailures, buildStartTime);
-});
+executeTasks(firstTasks)
+  .then(() => {
+    if (hasFailures) {
+      process.exitCode = 1;
+    }
+    logEndBuild(packageName, !hasFailures, buildStartTime);
+  })
+  .then(() => {
+    if (process.env['APPVEYOR']) {
+      const { generateSizeData } = require('./tasks/size-audit');
+      generateSizeData();
+    }
+  });
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //// Build helper functions

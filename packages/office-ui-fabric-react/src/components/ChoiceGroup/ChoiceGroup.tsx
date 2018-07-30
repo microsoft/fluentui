@@ -7,4 +7,4 @@ export const ChoiceGroup: (props: IChoiceGroupProps) => JSX.Element = styled<
   IChoiceGroupProps,
   IChoiceGroupStyleProps,
   IChoiceGroupStyles
->(ChoiceGroupBase, getStyles);
+>(ChoiceGroupBase, getStyles, undefined, { scope: 'ChoiceGroup' });
