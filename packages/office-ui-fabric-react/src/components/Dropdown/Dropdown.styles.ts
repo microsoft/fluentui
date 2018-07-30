@@ -80,8 +80,8 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     color: palette.neutralDark
   };
 
-  const rootHoverFocusActiveSelectorNeutralSecondaryMixin: IStyle = {
-    color: palette.neutralSecondary
+  const rootHoverFocusActiveSelectorBodySubtextMixin: IStyle = {
+    color: semanticColors.bodySubtext
   };
 
   const borderColorError: IStyle = {
@@ -161,9 +161,9 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
           ],
           ['&:active .' + globalClassnames.caretDown]: !disabled && rootHoverFocusActiveSelectorNeutralDarkMixin,
 
-          ['&:hover .' + globalClassnames.titleIsPlaceHolder]: rootHoverFocusActiveSelectorNeutralSecondaryMixin,
-          ['&:focus .' + globalClassnames.titleIsPlaceHolder]: rootHoverFocusActiveSelectorNeutralSecondaryMixin,
-          ['&:active .' + globalClassnames.titleIsPlaceHolder]: rootHoverFocusActiveSelectorNeutralSecondaryMixin,
+          ['&:hover .' + globalClassnames.titleIsPlaceHolder]: rootHoverFocusActiveSelectorBodySubtextMixin,
+          ['&:focus .' + globalClassnames.titleIsPlaceHolder]: rootHoverFocusActiveSelectorBodySubtextMixin,
+          ['&:active .' + globalClassnames.titleIsPlaceHolder]: rootHoverFocusActiveSelectorBodySubtextMixin,
 
           ['&:hover .' + globalClassnames.titleHasError]: borderColorError,
           ['&:active .' + globalClassnames.titleHasError]: borderColorError,
@@ -205,7 +205,13 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     ],
     caretDownWrapper: [
       globalClassnames.caretDownWrapper,
-      { position: 'absolute', top: 1, right: 12, height: DROPDOWN_HEIGHT, lineHeight: DROPDOWN_HEIGHT - 2 }
+      {
+        position: 'absolute',
+        top: 1,
+        right: 12,
+        height: DROPDOWN_HEIGHT,
+        lineHeight: DROPDOWN_HEIGHT - 2 // height minus the border
+      }
     ],
     caretDown: [
       globalClassnames.caretDown,
@@ -217,9 +223,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       globalClassnames.callout,
       {
         boxShadow: '0 0 2px 0 rgba(0,0,0,0.2)',
-        border: `1px solid ${
-          palette.neutralLight // height minus the border
-        }`
+        border: `1px solid ${palette.neutralLight}`
       },
       calloutClassName
     ],
