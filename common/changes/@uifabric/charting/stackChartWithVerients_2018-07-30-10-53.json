@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/charting",
+      "comment": "Adding stacked chart with verients",
+      "type": ""
+    }
+  ],
+  "packageName": "@uifabric/charting",
+  "email": "gorigarajesh@gmail.com"
+}
