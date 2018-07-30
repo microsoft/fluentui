@@ -1,9 +1,7 @@
 import * as React from 'react';
 
-import { customizable } from '../../../Utilities';
 import { DonutChart, IDonutChartProps } from '@uifabric/charting/lib/DonutChart';
 
-@customizable('DonutChartBasicExample', ['theme', 'styles'])
 export class DonutChartBasicExample extends React.Component<IDonutChartProps, {}> {
   constructor(props: IDonutChartProps) {
     super(props);
