@@ -4,7 +4,7 @@
  * @public
  */
 
-export const enum variantThemeType {
+export const enum VariantThemeType {
   None = 0,
   Neutral = 1,
   Soft = 2,

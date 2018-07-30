@@ -1,4 +1,5 @@
 import { IPalette, ISemanticColors, ITheme, IPartialTheme, createTheme } from 'office-ui-fabric-react/lib/Styling';
+import { VariantThemeType } from './variantThemeType';
 
 function makeThemeFromPartials(
   originalTheme: IPartialTheme,
@@ -12,6 +13,19 @@ function makeThemeFromPartials(
       semanticColors: { ...originalTheme.semanticColors, ...partialSemantic }
     }
   });
+}
+
+export function getVariant(theme: ITheme, variantThemeType: VariantThemeType) {
+  switch (variantThemeType) {
+    case variantThemeType.Neutral:
+      return getNeutralVariant(theme);
+    case variantThemeType.Soft:
+      return getSoftVariant(theme);
+    case variantThemeType.Strong:
+      return getStrongVariant(theme);
+    default:
+      return theme;
+  }
 }
 
 /**
