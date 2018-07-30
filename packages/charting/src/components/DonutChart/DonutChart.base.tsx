@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { classNamesFunction } from '../../Utilities';
+import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IDonutChartProps, IDonutChartStyleProps, IDonutChartStyles } from './DonutChart.types';
 import { Pie } from './Pie/Pie';
 import { IDataPoint } from './DonutChart.types';
 import * as scale from 'd3-scale';
-import { IProcessedStyleSet } from '../../Styling';
+import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 
 const getClassNames = classNamesFunction<IDonutChartStyleProps, IDonutChartStyles>();
 

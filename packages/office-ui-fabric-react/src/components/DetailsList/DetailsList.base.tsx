@@ -19,7 +19,8 @@ import {
   IDetailsList,
   IDetailsListProps,
   IDetailsListStyles,
-  IDetailsListStyleProps
+  IDetailsListStyleProps,
+  IDetailsGroupRenderProps
 } from '../DetailsList/DetailsList.types';
 import { DetailsHeader } from '../DetailsList/DetailsHeader';
 import { IDetailsHeader, SelectAllVisibility, IDetailsHeaderProps } from '../DetailsList/DetailsHeader.types';
@@ -38,7 +39,7 @@ import {
 } from '../../utilities/selection/index';
 
 import { DragDropHelper } from '../../utilities/dragdrop/DragDropHelper';
-import { IGroupedList, GroupedList } from '../../GroupedList';
+import { IGroupedList, GroupedList, IGroupDividerProps, IGroupRenderProps } from '../../GroupedList';
 import { IList, List, IListProps, ScrollToMode } from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
 import { GetGroupCount } from '../../utilities/groupedList/GroupedListUtility';
@@ -430,7 +431,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
                   <GroupedList
                     componentRef={this._groupedList}
                     groups={groups}
-                    groupProps={groupProps}
+                    groupProps={groupProps ? this._getGroupProps(groupProps) : undefined}
                     items={items}
                     onRenderCell={this._onRenderCell}
                     selection={selection}
@@ -956,6 +957,48 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     };
     return {
       ...detailsFooterProps
+    };
+  }
+  private _getGroupProps(detailsGroupProps: IDetailsGroupRenderProps): IGroupRenderProps {
+    const {
+      onRenderFooter: onRenderDetailsGroupFooter,
+      onRenderHeader: onRenderDetailsGroupHeader
+    } = detailsGroupProps;
+    const { adjustedColumns: columns } = this.state;
+    const groupNestingDepth = this._getGroupNestingDepth();
+    const onRenderFooter = onRenderDetailsGroupFooter
+      ? (props: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
+          return onRenderDetailsGroupFooter(
+            {
+              ...props,
+              columns: columns,
+              groupNestingDepth: groupNestingDepth,
+              selection: this._selection
+            },
+            defaultRender
+          );
+        }
+      : undefined;
+
+    const onRenderHeader = onRenderDetailsGroupHeader
+      ? (props: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
+          return onRenderDetailsGroupHeader(
+            {
+              ...props,
+              columns: columns,
+              groupNestingDepth: groupNestingDepth,
+              selection: this._selection
+            },
+            defaultRender
+          );
+        }
+      : undefined;
+
+    const groupProps = detailsGroupProps as IGroupRenderProps;
+    return {
+      ...groupProps,
+      onRenderFooter,
+      onRenderHeader
     };
   }
 }
