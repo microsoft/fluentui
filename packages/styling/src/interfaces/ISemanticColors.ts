@@ -52,16 +52,6 @@ export interface ISemanticColors {
   //// Base slots
 
   /**
-   * Neutral colored links and links for action buttons.
-   */
-  actionLink: string;
-
-  /**
-   * Hover state for neutral colored links and links for action buttons.
-   */
-  actionLinkHovered: string;
-
-  /**
    * The default color for backgrounds.
    */
   bodyBackground: string;
@@ -106,6 +96,16 @@ export interface ISemanticColors {
    * Background color for "cards" (elements with a background that sit on top of another background).
    */
   cardBackground: string;
+
+  /**
+   * Neutral colored links and links for action buttons.
+   */
+  actionLink: string;
+
+  /**
+   * Hover state for neutral colored links and links for action buttons.
+   */
+  actionLinkHovered: string;
 
   /**
    * The color of a link.

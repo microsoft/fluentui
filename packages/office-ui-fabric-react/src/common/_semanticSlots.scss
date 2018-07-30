@@ -1,7 +1,5 @@
 /* Base slots */
 
-$actionLinkColor: '[theme:actionLink, default: #333333]';
-$actionLinkHoveredColor: '[theme:actionLinkHovered, default: #212121]';
 $bodyBackgroundColor: '[theme:bodyBackground, default: #ffffff]';
 $bodyFrameBackgroundColor: '[theme:bodyFrameBackground, default: #ffffff]';
 $bodyFrameDividerColor: '[theme:bodyFrameDivider, default: #eaeaea]';
@@ -10,6 +8,9 @@ $bodyTextCheckedColor: '[theme:bodyTextChecked, default: #000000]';
 $bodySubtextColor: '[theme:bodySubtext, default: #666666]';
 $bodyDividerColor: '[theme:bodyDivider, default: #c8c8c8]';
 $cardBackgroundColor: '[theme:cardBackground, default: #ffffff]';
+
+$actionLinkColor: '[theme:actionLink, default: #333333]';
+$actionLinkHoveredColor: '[theme:actionLinkHovered, default: #212121]';
 $linkColor: '[theme:link, default: #0078d4]';
 $linkHoveredColor: '[theme:linkHovered, default: #004578]';
 

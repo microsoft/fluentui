@@ -144,8 +144,6 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
 // We'll use these as fallbacks for semantic slots that the passed in theme did not define.
 function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depComments: boolean): ISemanticColors {
   let toReturn: ISemanticColors = {
-    actionLink: p.neutralPrimary,
-    actionLinkHovered: p.neutralDark,
     bodyBackground: p.white,
     bodyFrameBackground: p.white,
     bodyFrameDivider: p.neutralLight,
@@ -204,6 +202,8 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     listHeaderBackgroundHovered: p.neutralLighter,
     listHeaderBackgroundPressed: p.neutralLight,
 
+    actionLink: p.neutralPrimary,
+    actionLinkHovered: p.neutralDark,
     link: p.themePrimary,
     linkHovered: p.themeDarker,
 
