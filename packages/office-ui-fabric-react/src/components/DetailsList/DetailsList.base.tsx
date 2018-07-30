@@ -22,9 +22,8 @@ import {
   IDetailsListStyleProps
 } from '../DetailsList/DetailsList.types';
 import { DetailsHeader } from '../DetailsList/DetailsHeader';
-import { DetailsFooter } from '../DetailsList/DetailsFooter';
 import { IDetailsHeader, SelectAllVisibility, IDetailsHeaderProps } from '../DetailsList/DetailsHeader.types';
-import { IDetailsFooter, IDetailsFooterProps } from '../DetailsList/DetailsFooter.types';
+import { IDetailsFooterProps } from '../DetailsList/DetailsFooter.types';
 import { DetailsRowBase } from '../DetailsList/DetailsRow.base';
 import { DetailsRow } from '../DetailsList/DetailsRow';
 import { IDetailsRowProps } from '../DetailsList/DetailsRow.types';
@@ -83,7 +82,6 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
   // References
   private _root = createRef<HTMLDivElement>();
   private _header = createRef<IDetailsHeader>();
-  private _footer = createRef<IDetailsFooter>();
   private _groupedList = createRef<IGroupedList>();
   private _list = createRef<IList>();
   private _focusZone = createRef<IFocusZone>();
@@ -462,7 +460,6 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
           </div>
           {onRenderDetailsFooter(
             {
-              componentRef: this._footer,
               ...detailsFooterProps
             },
             this._onRenderDetailsFooter
@@ -491,8 +488,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
   private _onRenderDetailsFooter = (
     detailsFooterProps: IDetailsFooterProps,
     defaultRender?: IRenderFunction<IDetailsFooterProps>
-  ): JSX.Element => {
-    return <DetailsFooter {...detailsFooterProps} />;
+  ): JSX.Element | null => {
+    return null;
   };
 
   private _onRenderListCell = (nestingDepth: number): ((item: any, itemIndex: number) => React.ReactNode) => {
