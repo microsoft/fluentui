@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Expose FocusZoneProps on ExtendedBasePicker",
+      "comment": "Fix SelectionZone selectToIndex with Ctrl_Tab, expose FocusZoneProps on ExtendedBasePicker",
       "type": "minor"
     }
   ],
