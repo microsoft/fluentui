@@ -12,15 +12,15 @@ import {
   FloatingPeoplePicker,
   IBaseFloatingPickerProps,
   IBaseFloatingPickerSuggestionProps
-} from '../../FloatingPicker';
+} from 'office-ui-fabric-react/lib/FloatingPicker';
 import {
   IBaseSelectedItemsListProps,
   ISelectedPeopleProps,
   SelectedPeopleList,
   IExtendedPersonaProps
-} from '../../SelectedItemsList';
+} from 'office-ui-fabric-react/lib/SelectedItemsList';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import { IFocusZoneProps, FocusZoneTabbableElements } from '../../FocusZone';
+import { IFocusZoneProps, FocusZoneTabbableElements } from 'office-ui-fabric-react/lib/FocusZone';
 
 import * as stylesImport from './ExtendedPeoplePicker.Basic.Example.scss';
 // tslint:disable-next-line:no-any
