@@ -20,6 +20,7 @@ const GlobalClassNames = {
   callout: 'ms-Dropdown-callout',
   panel: 'ms-Dropdown-panel',
   dropdownItems: 'ms-Dropdown-items',
+  dropdownItem: 'ms-Dropdown-item',
   dropdownDivider: 'ms-Dropdown-divider',
   dropdownOptionText: 'ms-Dropdown-optionText',
   dropdownItemHeader: 'ms-Dropdown-header',
@@ -89,7 +90,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
   };
 
   const dropdownItemStyle: IStyle = [
-    'ms-Dropdown-item',
+    GlobalClassNames.dropdownItems,
     {
       backgroundColor: 'transparent',
       boxSizing: 'border-box',
