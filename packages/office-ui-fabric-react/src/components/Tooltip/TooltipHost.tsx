@@ -63,7 +63,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
     );
     const showTooltip = isTooltipVisible && isContentPresent;
     const ariaDescribedBy = (setAriaDescribedBy && isTooltipVisible && isContentPresent) ? tooltipId : undefined;
-    
+
     return (
       <div
         className={css('ms-TooltipHost', styles.host, hostClassName)}
