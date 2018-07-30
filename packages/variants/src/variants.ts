@@ -15,13 +15,21 @@ function makeThemeFromPartials(
   });
 }
 
-export function getVariant(theme: ITheme, variantThemeType: VariantThemeType) {
-  switch (variantThemeType) {
-    case variantThemeType.Neutral:
+/**
+ * Sets the variant theme based on which variant is currently applied.
+ *
+ * @export
+ * @param {IPartialTheme} theme the theme to build a variant for
+ * @param {VariantThemeType} variant the variant type designation
+ * @returns {ITheme} the variant theme
+ */
+export function getVariant(theme: ITheme, variant: VariantThemeType): ITheme {
+  switch (variant) {
+    case VariantThemeType.Neutral:
       return getNeutralVariant(theme);
-    case variantThemeType.Soft:
+    case VariantThemeType.Soft:
       return getSoftVariant(theme);
-    case variantThemeType.Strong:
+    case VariantThemeType.Strong:
       return getStrongVariant(theme);
     default:
       return theme;
