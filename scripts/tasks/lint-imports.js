@@ -59,7 +59,7 @@ module.exports = function(options) {
     const fileContent = fs.readFileSync(filePath, 'utf8');
 
     // Find imports.
-    const importRegex = /import [{} a-zA-Z,*\n]+ from ['"]{1}([.\/a-zA-Z]+)['"]{1};$/gm;
+    const importRegex = /import [{} a-zA-Z,*\r?\n]+ from ['"]{1}([.\/a-zA-Z]+)['"]{1};$/gm;
     const importStatements = fileContent.match(importRegex);
 
     if (importStatements) {
