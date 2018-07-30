@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BreadcrumbBase, IBreadCrumbData } from './Breadcrumb.base';
-import { IIconProps } from '../Icon';
-import { IRenderFunction, IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
+import { IIconProps } from '../../Icon';
+import { IRefObject, IRenderFunction, IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
 import { IBreadcrumbStyleProps, IBreadcrumbStyles } from './Breadcrumb.styles';
 import { ITheme } from '../../Styling';
 
@@ -17,7 +17,7 @@ export interface IBreadcrumbProps extends React.Props<BreadcrumbBase> {
    * Optional callback to access the IBreadcrumb interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IBreadcrumb | null) => void;
+  componentRef?: IRefObject<IBreadcrumb>;
 
   /**
    * Collection of breadcrumbs to render

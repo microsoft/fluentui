@@ -3,4 +3,6 @@ import { IShimmerProps, IShimmerStyleProps, IShimmerStyles } from './Shimmer.typ
 import { getStyles } from './Shimmer.styles';
 import { ShimmerBase } from './Shimmer.base';
 
-export const Shimmer = styled<IShimmerProps, IShimmerStyleProps, IShimmerStyles>(ShimmerBase, getStyles);
+export const Shimmer = styled<IShimmerProps, IShimmerStyleProps, IShimmerStyles>(ShimmerBase, getStyles, undefined, {
+  scope: 'Shimmer'
+});

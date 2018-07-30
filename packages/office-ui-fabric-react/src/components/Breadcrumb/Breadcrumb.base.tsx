@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { BaseComponent, getRTL, createRef, classNamesFunction, IClassNames } from '../../Utilities';
+import { BaseComponent, getRTL, createRef, classNamesFunction } from '../../Utilities';
+import { IProcessedStyleSet } from '../../Styling';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Link } from '../../Link';
 import { Icon } from '../../Icon';
@@ -28,7 +29,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
     overflowIndex: 0
   };
 
-  private _classNames: IClassNames<IBreadcrumbStyles>;
+  private _classNames: IProcessedStyleSet<IBreadcrumbStyles>;
   private _focusZone = createRef<FocusZone>();
 
   constructor(props: IBreadcrumbProps) {

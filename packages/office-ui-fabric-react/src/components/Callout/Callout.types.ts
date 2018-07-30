@@ -1,6 +1,6 @@
 import { IStyle, ITheme } from '../../Styling';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { IPoint, IRectangle, IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IPoint, IRectangle, IStyleFunctionOrObject } from '../../Utilities';
 import { ICalloutPositionedInfo } from '../../utilities/positioning';
 
 export interface ICallout {}
@@ -10,7 +10,7 @@ export interface ICalloutProps {
    * Optional callback to access the ICallout interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ICallout | null) => void;
+  componentRef?: IRefObject<ICallout>;
 
   /**
    * The target that the Callout should try to position itself based on.
@@ -124,6 +124,11 @@ export interface ICalloutProps {
   className?: string;
 
   /**
+   * CSS style to apply to the callout.
+   */
+  style?: React.CSSProperties;
+
+  /**
    * Optional callback when the layer content has mounted.
    */
   onLayerMounted?: () => void;
@@ -158,6 +163,12 @@ export interface ICalloutProps {
    * To be used when expanding the content dynamically so that callout can adjust its position.
    */
   finalHeight?: number;
+
+  /**
+   * Manually set OverflowYHidden style prop to true on calloutMain element
+   * A variety of callout load animations will need this to hide the scollbar that can appear
+   */
+  hideOverflow?: boolean;
 
   /**
    * If true then the callout will attempt to focus the first focusable element that it contains.

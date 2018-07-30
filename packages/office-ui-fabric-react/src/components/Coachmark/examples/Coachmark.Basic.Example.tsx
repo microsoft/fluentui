@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Coachmark } from '../Coachmark';
-import { TeachingBubbleContent } from 'office-ui-fabric-react/lib/TeachingBubble';
+import { ITeachingBubble, TeachingBubbleContent } from 'office-ui-fabric-react/lib/TeachingBubble';
 import { DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
-import { IStyle } from '../../../Styling';
+import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { BaseComponent, classNamesFunction, createRef } from 'office-ui-fabric-react/lib/Utilities';
 
@@ -31,6 +31,7 @@ export interface ICoachmarkBasicExampleStyles {
 
 export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExampleState> {
   private _targetButton = createRef<HTMLDivElement>();
+  private _teachingBubbleContent: ITeachingBubble;
 
   public constructor(props: {}) {
     super(props);
@@ -55,7 +56,7 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
           display: 'inline-block'
         }
       };
-    });
+    }, {});
 
     const buttonProps: IButtonProps = {
       text: 'Try it'
@@ -104,14 +105,23 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
             positioningContainerProps={{
               directionalHint: this.state.coachmarkPosition
             }}
+            ariaAlertText="A Coachmark has appeared"
+            teachingBubbleRef={this._teachingBubbleContent}
+            ariaDescribedBy={'coachmark-desc1'}
+            ariaLabelledBy={'coachmark-label1'}
+            ariaDescribedByText={'Press enter or alt + C to open the Coachmark notification'}
+            ariaLabelledByText={'Coachmark notification'}
           >
             <TeachingBubbleContent
+              componentRef={this._teachingBubbleRef}
               headline="Example Title"
               hasCloseIcon={true}
               closeButtonAriaLabel="Close"
               primaryButtonProps={buttonProps}
               secondaryButtonProps={buttonProps2}
               onDismiss={this._onDismiss}
+              ariaDescribedBy={'example-description1'}
+              ariaLabelledBy={'example-label1'}
             >
               Welcome to the land of Coachmarks!
             </TeachingBubbleContent>
@@ -137,5 +147,9 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
     this.setState({
       isCoachmarkVisible: !this.state.isCoachmarkVisible
     });
+  };
+
+  private _teachingBubbleRef = (component: ITeachingBubble): void => {
+    this._teachingBubbleContent = component;
   };
 }

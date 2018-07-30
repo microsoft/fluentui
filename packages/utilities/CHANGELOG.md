@@ -1,6 +1,41 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 20 Jun 2018 10:25:55 GMT and should not be manually modified.
+This log was last generated on Fri, 27 Jul 2018 10:25:39 GMT and should not be manually modified.
+
+## 6.12.1
+Fri, 27 Jul 2018 10:25:39 GMT
+
+### Patches
+
+- prop-types version 
+
+## 6.12.0
+Mon, 23 Jul 2018 10:28:08 GMT
+
+### Minor changes
+
+- Addressing bad imports.
+
+## 6.11.0
+Wed, 18 Jul 2018 10:25:50 GMT
+
+### Minor changes
+
+- Tighten typings of APIs around merge-styles to be more correct
+
+## 6.10.0
+Tue, 17 Jul 2018 10:28:40 GMT
+
+### Minor changes
+
+- Removing most `@customizable` decorator usage. This change should reduce extra React dom elements from being created. Also updating `componentRef` resolution to support `React.createRef()` usage.
+
+## 6.9.0
+Fri, 13 Jul 2018 21:32:37 GMT
+
+### Minor changes
+
+- Reverting the TypeScript bump, to un
 
 ## 6.7.1
 Wed, 20 Jun 2018 10:25:55 GMT

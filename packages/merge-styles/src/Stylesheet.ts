@@ -88,7 +88,7 @@ export class Stylesheet {
       typeof window !== 'undefined' ? window : typeof process !== 'undefined' ? process : _fileScopedGlobal;
     _stylesheet = global[STYLESHEET_SETTING] as Stylesheet;
 
-    if (!_stylesheet) {
+    if (!_stylesheet || (_stylesheet._lastStyleElement && _stylesheet._lastStyleElement.ownerDocument !== document)) {
       // tslint:disable-next-line:no-string-literal
       const fabricConfig = (global && global['FabricConfig']) || {};
 

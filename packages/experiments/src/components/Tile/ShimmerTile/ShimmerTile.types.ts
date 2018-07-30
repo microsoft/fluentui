@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IStyle } from '../../../Styling';
-import { ISize, IStyleFunctionOrObject } from '../../../Utilities';
+import { IRefObject, ISize, IStyleFunctionOrObject } from '../../../Utilities';
 import { TileSize } from '../Tile.types';
 
 export interface IShimmerTile {}
@@ -13,7 +13,7 @@ export interface IShimmerTileProps extends React.AllHTMLAttributes<HTMLElement> 
    * Optional callback to access the IShimmerTile interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IShimmerTile | null) => void;
+  componentRef?: IRefObject<IShimmerTile>;
 
   /**
    * The intended dimensions for the Tile.

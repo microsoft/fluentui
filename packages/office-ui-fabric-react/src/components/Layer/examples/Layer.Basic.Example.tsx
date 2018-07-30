@@ -1,12 +1,12 @@
 import * as React from 'react'; // tslint:disable-line:no-unused-variable
 import * as PropTypes from 'prop-types';
 import './Layer.Example.scss';
-import '../../../common/_exampleStyles.scss';
-import { BaseComponent } from '../../../Utilities';
-import { Checkbox } from '../../../Checkbox';
-import { Layer } from '../Layer';
-import { AnimationClassNames } from '../../../Styling';
-import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
+import 'office-ui-fabric-react/lib/common/_exampleStyles.scss';
+import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { Layer } from 'office-ui-fabric-react/lib/Layer';
+import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
+import * as exampleStylesImport from 'office-ui-fabric-react/lib/common/_exampleStyles.scss';
 const exampleStyles: any = exampleStylesImport;
 
 export class LayerContentExample extends BaseComponent<
@@ -89,7 +89,7 @@ export class LayerBasicExample extends BaseComponent<
     );
   }
 
-  private _onChange(ev: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean): void {
+  private _onChange = (ev: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean): void => {
     this.setState({ showLayer: checked });
-  }
+  };
 }

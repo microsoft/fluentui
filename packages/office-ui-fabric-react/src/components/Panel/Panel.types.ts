@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Panel } from './Panel';
-import { IRenderFunction } from '../../Utilities';
+import { IRefObject, IRenderFunction } from '../../Utilities';
 import { ILayerProps } from '../../Layer';
 import { IFocusTrapZoneProps } from '../../FocusTrapZone';
 
@@ -20,7 +20,7 @@ export interface IPanelProps extends React.Props<Panel> {
    * Optional callback to access the IPanel interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IPanel | null) => void;
+  componentRef?: IRefObject<IPanel>;
 
   /**
    * Whether the panel is displayed.
@@ -143,6 +143,11 @@ export interface IPanelProps extends React.Props<Panel> {
    * Optional custom function to handle clicks outside the panel in lightdismiss mode
    */
   onLightDismissClick?: () => void;
+
+  /**
+   * Optional custom function to handle clicks outside this component
+   */
+  onOuterClick?: () => void;
 
   /**
    * Optional custom renderer navigation region. Replaces current close button.

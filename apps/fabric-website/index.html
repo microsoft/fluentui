@@ -46,7 +46,7 @@
 
     var isLocal = window.location.hostname === 'localhost';
     // This path allows minified files to be served locally for testing purposes.
-    var appPath = isLocal ? './dist/' : '';
+    var appPath = isLocal ? '' : '';
 
     var scripts = [
       '//cdnjs.cloudflare.com/ajax/libs/react/16.3.1/umd/react.production.min.js',

@@ -8,6 +8,7 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
         align-items: stretch;
+        background-color: #ffffff;
         border: 1px solid #a6a6a6;
         box-shadow: none;
         box-sizing: border-box;
@@ -86,7 +87,6 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
     className=
         ms-SearchBox-field
         {
-          background-color: #ffffff;
           border: none;
           box-shadow: none;
           box-sizing: border-box;
@@ -136,6 +136,7 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
         align-items: stretch;
+        background-color: #ffffff;
         border: 1px solid #a6a6a6;
         box-shadow: none;
         box-sizing: border-box;
@@ -212,7 +213,6 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
     className=
         ms-SearchBox-field
         {
-          background-color: #ffffff;
           border: none;
           box-shadow: none;
           box-sizing: border-box;

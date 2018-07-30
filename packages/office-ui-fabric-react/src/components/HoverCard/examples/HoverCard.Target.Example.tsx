@@ -3,8 +3,9 @@ import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { HoverCard, IExpandingCardProps } from 'office-ui-fabric-react/lib/HoverCard';
 import { DetailsList, buildColumns, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
-import { createListItems } from '../../../utilities/exampleData';
+import { createListItems } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import './HoverCard.Example.scss';
+import { KeyCodes } from '@uifabric/utilities';
 
 let _items: any[];
 
@@ -47,6 +48,7 @@ class HoverCardField extends BaseComponent<IHoverCardFieldProps, IHoverCardField
             onCardVisible={this._log('onCardVisible')}
             onCardHide={this._log('onCardHide')}
             trapFocus={true}
+            openHotKey={KeyCodes.enter}
           />
         )}
       </div>

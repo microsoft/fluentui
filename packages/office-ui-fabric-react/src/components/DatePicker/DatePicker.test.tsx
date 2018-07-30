@@ -1,7 +1,8 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { Calendar, ICalendarStrings } from '../Calendar';
+import { Calendar, ICalendarStrings } from '../../Calendar';
 import { DatePicker } from './DatePicker';
+import { DatePickerBase } from './DatePicker.base';
 import { IDatePickerStrings } from './DatePicker.types';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { shallow, mount, ReactWrapper } from 'enzyme';
@@ -15,20 +16,20 @@ describe('DatePicker', () => {
   });
 
   it('should not open DatePicker when disabled, no label', () => {
-    const wrapper = mount(<DatePicker disabled />);
+    const wrapper = mount(<DatePickerBase disabled />);
     wrapper.find('i').simulate('click');
 
     expect(wrapper.state('isDatePickerShown')).toBe(false);
   });
 
   it('should not open DatePicker when disabled, with label', () => {
-    const wrapper = mount(<DatePicker disabled label="label" />);
+    const wrapper = mount(<DatePickerBase disabled label="label" />);
     wrapper.find('i').simulate('click');
     expect(wrapper.state('isDatePickerShown')).toBe(false);
   });
 
   describe('when Calendar properties are not specified', () => {
-    const datePicker = shallow(<DatePicker />);
+    const datePicker = shallow(<DatePickerBase />);
     datePicker.setState({ isDatePickerShown: true });
     const calendarProps = datePicker.find(Calendar).props();
 
@@ -68,7 +69,7 @@ describe('DatePicker', () => {
     };
 
     const datePicker = shallow(
-      <DatePicker
+      <DatePickerBase
         isMonthPickerVisible={false}
         showMonthPickerAsOverlay={true}
         value={value}
@@ -155,7 +156,13 @@ describe('DatePicker', () => {
 
     beforeEach(() => {
       datePicker = mount(
-        <DatePicker allowTextInput={true} minDate={minDate} maxDate={maxDate} value={defaultDate} strings={strings} />
+        <DatePickerBase
+          allowTextInput={true}
+          minDate={minDate}
+          maxDate={maxDate}
+          value={defaultDate}
+          strings={strings}
+        />
       );
     });
 
