@@ -6,7 +6,7 @@ import * as stylesImport from './BaseExtendedPicker.scss';
 import { IBaseExtendedPickerProps, IBaseExtendedPicker } from './BaseExtendedPicker.types';
 import { IBaseFloatingPickerProps, BaseFloatingPicker } from '../../FloatingPicker';
 import { BaseSelectedItemsList, IBaseSelectedItemsListProps } from '../../SelectedItemsList';
-import { FocusZone, FocusZoneDirection, FocusZoneTabbableElements } from '../../FocusZone';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Selection, SelectionMode, SelectionZone } from '../../Selection';
 // tslint:disable-next-line:no-any
 const styles: any = stylesImport;
@@ -90,7 +90,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
   }
 
   public render(): JSX.Element {
-    const { className, inputProps, disabled } = this.props;
+    const { className, inputProps, disabled, focusZoneProps } = this.props;
     const activeDescendant =
       this.floatingPicker.current && this.floatingPicker.current.currentSelectedSuggestionIndex !== -1
         ? 'sug-' + this.floatingPicker.current.currentSelectedSuggestionIndex
@@ -103,11 +103,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
         onKeyDown={this.onBackspace}
         onCopy={this.onCopy}
       >
-        <FocusZone
-          direction={FocusZoneDirection.bidirectional}
-          shouldInputLoseFocusOnArrowKey={this._shouldInputLoseFocusOnArrowKey}
-          handleTabKey={FocusZoneTabbableElements.all}
-        >
+        <FocusZone direction={FocusZoneDirection.bidirectional} {...focusZoneProps}>
           <SelectionZone selection={this.selection} selectionMode={SelectionMode.multiple}>
             <div className={css('ms-BasePicker-text', styles.pickerText)} role={'list'}>
               {this.props.headerComponent}
@@ -295,9 +291,5 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
     }
 
     this.focus();
-  }
-
-  private _shouldInputLoseFocusOnArrowKey() {
-    return true;
   }
 }
