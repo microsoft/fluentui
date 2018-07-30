@@ -32,6 +32,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'Recommendation',
           name: 'Recommendation',
           url: '#/examples/recommendation'
+        },
+        {
+          component: require<any>('../components/MultiCountChart/MultiCountChartPage').MultiCountChartPage,
+          key: 'MultiCountChart',
+          name: 'MultiCountChart',
+          url: '#/examples/multiCountChart'
         }
       ]
     }
