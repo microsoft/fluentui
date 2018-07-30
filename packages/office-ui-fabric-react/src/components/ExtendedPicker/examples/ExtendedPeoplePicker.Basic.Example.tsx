@@ -20,6 +20,7 @@ import {
   IExtendedPersonaProps
 } from 'office-ui-fabric-react/lib/SelectedItemsList';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { IFocusZoneProps, FocusZoneTabbableElements } from 'office-ui-fabric-react/lib/FocusZone';
 
 import * as stylesImport from './ExtendedPeoplePicker.Basic.Example.scss';
 // tslint:disable-next-line:no-any
@@ -39,6 +40,7 @@ export class ExtendedPeoplePickerTypesExample extends React.Component<{}, IPeopl
   private _picker: ExtendedPeoplePicker;
   private _floatingPickerProps: IBaseFloatingPickerProps<IPersonaProps>;
   private _selectedItemsListProps: ISelectedPeopleProps;
+  private _focusZoneProps: IFocusZoneProps;
   private _suggestionProps: IBaseFloatingPickerSuggestionProps;
 
   constructor(props: {}) {
@@ -155,6 +157,11 @@ export class ExtendedPeoplePickerTypesExample extends React.Component<{}, IPeopl
       onRenderFloatingPicker: this._onRenderFloatingPicker,
       floatingPickerProps: this._floatingPickerProps
     };
+
+    this._focusZoneProps = {
+      shouldInputLoseFocusOnArrowKey: this._shouldInputLoseFocusOnArrowKey,
+      handleTabKey: FocusZoneTabbableElements.all
+    };
   }
 
   public render(): JSX.Element {
@@ -187,6 +194,7 @@ export class ExtendedPeoplePickerTypesExample extends React.Component<{}, IPeopl
         }}
         componentRef={this._setComponentRef}
         headerComponent={this._renderHeader()}
+        focusZoneProps={this._focusZoneProps}
       />
     );
   }
@@ -196,7 +204,7 @@ export class ExtendedPeoplePickerTypesExample extends React.Component<{}, IPeopl
   };
 
   private _renderHeader(): JSX.Element {
-    return <div>TO:</div>;
+    return <div data-is-focusable={true}>TO:</div>;
   }
 
   private _onRenderFloatingPicker(props: IBaseFloatingPickerProps<IPersonaProps>): JSX.Element {
@@ -377,5 +385,9 @@ export class ExtendedPeoplePickerTypesExample extends React.Component<{}, IPeopl
       default:
         return [];
     }
+  }
+
+  private _shouldInputLoseFocusOnArrowKey(): boolean {
+    return true;
   }
 }
