@@ -103,10 +103,14 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
         onKeyDown={this.onBackspace}
         onCopy={this.onCopy}
       >
-        <FocusZone direction={FocusZoneDirection.bidirectional} handleTabKey={FocusZoneTabbableElements.all}>
+        <FocusZone
+          direction={FocusZoneDirection.bidirectional}
+          shouldInputLoseFocusOnArrowKey={this._shouldInputLoseFocusOnArrowKey}
+          handleTabKey={FocusZoneTabbableElements.all}
+        >
           <SelectionZone selection={this.selection} selectionMode={SelectionMode.multiple}>
             <div className={css('ms-BasePicker-text', styles.pickerText)} role={'list'}>
-              {this.renderHeader()}
+              {this.props.headerComponent}
               {this.renderSelectedItemsList()}
               {this.canAddItems() && (
                 <Autofill
@@ -134,14 +138,6 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
         {this.renderSuggestions()}
       </div>
     );
-  }
-
-  protected renderHeader(): JSX.Element | null {
-    return this.props.headerComponent ? (
-      <div data-is-focusable={true} onFocus={this._onHeaderItemFocus}>
-        {this.props.headerComponent}
-      </div>
-    ) : null;
   }
 
   protected onSelectionChange = (): void => {
@@ -301,7 +297,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
     this.focus();
   }
 
-  private _onHeaderItemFocus = () => {
-    this.selection.setAllSelected(false /*isAllSelected*/);
-  };
+  private _shouldInputLoseFocusOnArrowKey() {
+    return true;
+  }
 }

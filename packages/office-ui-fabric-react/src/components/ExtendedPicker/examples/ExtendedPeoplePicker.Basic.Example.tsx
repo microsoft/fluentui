@@ -196,7 +196,7 @@ export class ExtendedPeoplePickerTypesExample extends React.Component<{}, IPeopl
   };
 
   private _renderHeader(): JSX.Element {
-    return <div>TO:</div>;
+    return <div data-is-focusable={true}>TO:</div>;
   }
 
   private _onRenderFloatingPicker(props: IBaseFloatingPickerProps<IPersonaProps>): JSX.Element {

@@ -35,11 +35,8 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
         >
           <div
             data-is-focusable={true}
-            onFocus={[Function]}
           >
-            <div>
-              TO:
-            </div>
+            TO:
           </div>
           <input
             aria-activedescendant={undefined}
