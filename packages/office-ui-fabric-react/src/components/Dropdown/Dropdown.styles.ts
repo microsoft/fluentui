@@ -90,7 +90,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
   };
 
   const dropdownItemStyle: IStyle = [
-    GlobalClassNames.dropdownItems,
+    globalClassnames.dropdownItem,
     {
       backgroundColor: 'transparent',
       boxSizing: 'border-box',
