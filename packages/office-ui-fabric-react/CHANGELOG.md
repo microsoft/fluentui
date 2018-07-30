@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 18 Jul 2018 11:27:52 GMT and should not be manually modified.
+This log was last generated on Tue, 24 Jul 2018 11:25:45 GMT and should not be manually modified.
+
+## 5.118.0
+Tue, 24 Jul 2018 11:25:45 GMT
+
+### Minor changes
+
+- Coachmark: Add accessibility features to component, ARIA props, narrator support, and keyboarding controls
+- Coachmark: Fix positioning bugs and add in support for different Coachmark directions.
+
+### Patches
+
+- TeachingBubble: Fix content from wrapping to next line unncessarily
+- Fix import paths to use relative paths for office-ui-fabric-react
+- Popup: Skip scroll computation if style.overflowY is provided.
 
 ## 5.117.1
 Wed, 18 Jul 2018 11:27:52 GMT
