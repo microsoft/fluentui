@@ -2,6 +2,27 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.7.0",
+      "tag": "@uifabric/merge-styles_v6.7.0",
+      "date": "Mon, 30 Jul 2018 10:27:11 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "de408fab23e5f30a9d34c19cddb900269636556e",
+            "comment": "Change IProcessedStyleSet typings to be easier to consume - subcomponentStyles is now always present so consumers do not have to check for presence even when it is fully expected that it is there."
+          }
+        ],
+        "patch": [
+          {
+            "author": "ht <41147089+tharshada@users.noreply.github.com>",
+            "commit": "dc02c1e44970a76a0fd2a88ed6101c7bd7303876",
+            "comment": "formatting change"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.6.0",
       "tag": "@uifabric/merge-styles_v6.6.0",
       "date": "Thu, 26 Jul 2018 10:28:51 GMT",
