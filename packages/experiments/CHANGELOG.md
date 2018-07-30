@@ -1,6 +1,31 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 25 Jul 2018 03:20:34 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Jul 2018 10:27:11 GMT and should not be manually modified.
+
+## 6.22.1
+Mon, 30 Jul 2018 10:27:11 GMT
+
+### Patches
+
+- FormDropdown: allow options prop to flow to the underlying Dropdown component.
+
+## 6.22.0
+Fri, 27 Jul 2018 10:25:39 GMT
+
+### Minor changes
+
+- Added TextField to FluentStyles
+
+### Patches
+
+- added export for collapsible section and foundation
+
+## 6.21.0
+Thu, 26 Jul 2018 10:28:51 GMT
+
+### Minor changes
+
+- Updates Fluent styles for Dialog and ComoboBox
 
 ## 6.20.0
 Wed, 25 Jul 2018 03:20:34 GMT

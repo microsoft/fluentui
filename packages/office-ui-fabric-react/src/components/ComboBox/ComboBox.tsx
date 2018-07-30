@@ -1517,7 +1517,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // Notify when there is a new pending index/value. Also, if there is a pending value, it needs to send undefined.
     if (newPendingIndex !== undefined || newPendingValue !== undefined || this._hasPendingValue) {
       onPendingValueChanged(
-        newPendingIndex !== undefined ? currentOptions[newPendingIndex]: undefined,
+        newPendingIndex !== undefined ? currentOptions[newPendingIndex] : undefined,
         newPendingIndex,
         newPendingValue
       );

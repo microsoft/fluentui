@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { LineChart, ILineChartProps } from '@uifabric/charting';
 import { customizable } from 'office-ui-fabric-react/lib/Utilities';
+
 @customizable('StackedBarChartBasicExample', ['theme', 'styles'])
+
 export class LineChartStyledExample extends React.Component<ILineChartProps, {}> {
   constructor(props: ILineChartProps) {
     super(props);

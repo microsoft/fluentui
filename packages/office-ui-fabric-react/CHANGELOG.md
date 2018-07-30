@@ -1,6 +1,40 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 25 Jul 2018 03:20:34 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Jul 2018 10:27:11 GMT and should not be manually modified.
+
+## 6.41.1
+Mon, 30 Jul 2018 10:27:11 GMT
+
+### Patches
+
+- Layer: Fixed bugs in examples that were affecting their functionality (#5680).
+- Ratings: Minor typings bug fix.
+- Adding interfaces IDetailsGroupRenderProps, IDetailsGroupDividerProps, which extends existing interfaces  IGroupRenderProps, IGroupDividerProps respectively, allowing group header/footer for DetailsList to be displayed as a DetailsRow.
+
+## 6.41.0
+Fri, 27 Jul 2018 10:25:40 GMT
+
+### Minor changes
+
+- Enabled Customizer to affect TextField
+
+### Patches
+
+- ScrollablePane: Fix mutationObserver
+- Fixing the Detailscolumn render return type to return a single JSX element, instead of an array
+- Added experiments dependency to fabric website package file and added exports for collapsible section and foundation
+
+## 6.40.0
+Thu, 26 Jul 2018 10:28:51 GMT
+
+### Minor changes
+
+- CommandBar: Support passing tooltipHostProps to items in iconOnly mode
+- TextField: Convert to JS styling.
+
+### Patches
+
+- Changes resizing viewport detection
 
 ## 6.39.2
 Wed, 25 Jul 2018 03:20:34 GMT

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { classNamesFunction } from '../../Utilities';
+import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IPieChartProps, IPieChartStyleProps, IPieChartStyles } from './PieChart.types';
 import { Pie } from './Pie/Pie';
-import { IProcessedStyleSet } from '../../Styling';
+import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 const getClassNames = classNamesFunction<IPieChartStyleProps, IPieChartStyles>();
 
 export class PieChartBase extends React.Component<IPieChartProps, {}> {

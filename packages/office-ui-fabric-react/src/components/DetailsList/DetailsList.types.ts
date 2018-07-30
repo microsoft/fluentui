@@ -3,7 +3,7 @@ import { DetailsListBase } from './DetailsList.base';
 import { ISelection, SelectionMode, ISelectionZoneProps } from '../../utilities/selection/index';
 import { IRefObject, IBaseProps, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IDragDropEvents, IDragDropContext } from './../../utilities/dragdrop/index';
-import { IGroup, IGroupRenderProps } from '../GroupedList/index';
+import { IGroup, IGroupRenderProps, IGroupDividerProps } from '../GroupedList/index';
 import { IDetailsRowProps } from '../DetailsList/DetailsRow';
 import { IDetailsHeaderProps } from './DetailsHeader';
 import { IWithViewportProps, IViewport } from '../../utilities/decorators/withViewport';
@@ -80,7 +80,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   groups?: IGroup[];
 
   /** Optional override properties to render groups. The definition for IGroupRenderProps can be found under the GroupedList component. */
-  groupProps?: IGroupRenderProps;
+  groupProps?: IDetailsGroupRenderProps;
 
   /** Optional selection model to track selection state.  */
   selection?: ISelection;
@@ -534,4 +534,15 @@ export type IDetailsListStyleProps = Required<Pick<IDetailsListProps, 'theme'>> 
 export interface IDetailsListStyles {
   root: IStyle;
   focusZone: IStyle;
+}
+
+export interface IDetailsGroupRenderProps extends IGroupRenderProps {
+  onRenderFooter?: IRenderFunction<IDetailsGroupDividerProps>;
+  onRenderHeader?: IRenderFunction<IDetailsGroupDividerProps>;
+}
+
+export interface IDetailsGroupDividerProps extends IGroupDividerProps {
+  columns?: IColumn[];
+  groupNestingDepth?: number;
+  selection?: ISelection;
 }
