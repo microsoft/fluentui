@@ -57,6 +57,7 @@ export interface IDetailsRowCheckProps extends React.HTMLAttributes<HTMLElement>
 
 export type IDetailsRowCheckStyleProps = Required<Pick<IDetailsRowCheckProps, 'theme'>> &
   Pick<IDetailsRowCheckProps, 'compact' | 'isHeader' | 'selected' | 'anySelected' | 'canSelect' | 'className'> & {
+    /** Is checkbox visible */
     isVisible?: boolean;
   };
 

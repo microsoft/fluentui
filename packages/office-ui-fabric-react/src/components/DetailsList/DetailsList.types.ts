@@ -1,13 +1,15 @@
 import * as React from 'react';
-import { DetailsList } from './DetailsList';
+import { DetailsListBase } from './DetailsList.base';
 import { ISelection, SelectionMode, ISelectionZoneProps } from '../../utilities/selection/index';
-import { IRenderFunction } from '../../Utilities';
+import { IRefObject, IBaseProps, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IDragDropEvents, IDragDropContext } from './../../utilities/dragdrop/index';
-import { IGroup, IGroupRenderProps } from '../GroupedList/index';
+import { IGroup, IGroupRenderProps, IGroupDividerProps } from '../GroupedList/index';
 import { IDetailsRowProps } from '../DetailsList/DetailsRow';
 import { IDetailsHeaderProps } from './DetailsHeader';
+import { IDetailsFooterProps } from './DetailsFooter.types';
 import { IWithViewportProps, IViewport } from '../../utilities/decorators/withViewport';
 import { IList, IListProps, ScrollToMode } from '../List/index';
+import { ITheme, IStyle } from '../../Styling';
 
 export { IDetailsHeaderProps };
 
@@ -41,12 +43,22 @@ export interface IDetailsList extends IList {
   getStartItemIndexInView: () => number;
 }
 
-export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewportProps {
+export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewportProps {
+  /**
+   * Theme provided by the Higher Order Component
+   */
+  theme?: ITheme;
+
+  /**
+   * Style function to be passed in to override the themed or default styles
+   */
+  styles?: IStyleFunctionOrObject<IDetailsListStyleProps, IDetailsListStyles>;
+
   /**
    * Optional callback to access the IDetailsList interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IDetailsList | null) => void;
+  componentRef?: IRefObject<IDetailsList>;
 
   /** A key that uniquely identifies the given items. If provided, the selection will be reset when the key changes. */
   setKey?: string;
@@ -69,7 +81,7 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
   groups?: IGroup[];
 
   /** Optional override properties to render groups. The definition for IGroupRenderProps can be found under the GroupedList component. */
-  groupProps?: IGroupRenderProps;
+  groupProps?: IDetailsGroupRenderProps;
 
   /** Optional selection model to track selection state.  */
   selection?: ISelection;
@@ -114,7 +126,7 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
   rowElementEventMap?: { eventName: string; callback: (context: IDragDropContext, event?: any) => void }[];
 
   /** Callback for when the details list has been updated. Useful for telemetry tracking externally. */
-  onDidUpdate?: (detailsList?: DetailsList) => any;
+  onDidUpdate?: (detailsList?: DetailsListBase) => any;
 
   /** Callback for when a given row has been mounted. Useful for identifying when a row has been rendered on the page. */
   onRowDidMount?: (item?: any, index?: number) => void;
@@ -164,6 +176,11 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
    * An override to render the details header.
    */
   onRenderDetailsHeader?: IRenderFunction<IDetailsHeaderProps>;
+
+  /**
+   * An override to render the details footer.
+   */
+  onRenderDetailsFooter?: IRenderFunction<IDetailsFooterProps>;
 
   /** Viewport, provided by the withViewport decorator. */
   viewport?: IViewport;
@@ -257,6 +274,12 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
    * avoiding the scroll jumping issue.
    */
   getGroupHeight?: (group: IGroup, groupIndex: number) => number;
+
+  /**
+   * Rerender DetailsRow only when props changed. Might cause regression when depending on external updates.
+   * @default false
+   */
+  useReducedRowRenderer?: boolean;
 }
 
 export interface IColumn {
@@ -500,4 +523,32 @@ export enum CheckboxVisibility {
    * Hide checkboxes.
    */
   hidden = 2
+}
+
+export type IDetailsListStyleProps = Required<Pick<IDetailsListProps, 'theme'>> &
+  Pick<IDetailsListProps, 'className'> & {
+    /** Whether the the list is horizontally constrained */
+    isHorizontalConstrained?: boolean;
+
+    /** Whether the list is in compact mode */
+    compact?: boolean;
+
+    /** Whether the list is fixed in size */
+    isFixed?: boolean;
+  };
+
+export interface IDetailsListStyles {
+  root: IStyle;
+  focusZone: IStyle;
+}
+
+export interface IDetailsGroupRenderProps extends IGroupRenderProps {
+  onRenderFooter?: IRenderFunction<IDetailsGroupDividerProps>;
+  onRenderHeader?: IRenderFunction<IDetailsGroupDividerProps>;
+}
+
+export interface IDetailsGroupDividerProps extends IGroupDividerProps {
+  columns?: IColumn[];
+  groupNestingDepth?: number;
+  selection?: ISelection;
 }

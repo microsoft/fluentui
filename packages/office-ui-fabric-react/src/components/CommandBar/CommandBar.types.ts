@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { IContextualMenuItem, IContextualMenuProps } from '../../ContextualMenu';
+import { IContextualMenuItem } from '../../ContextualMenu';
 import { IButtonStyles, IButtonProps } from '../../Button';
 import { ICommandBarData } from './CommandBar.base';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject, IComponentAs } from '../../Utilities';
+import { IRefObject, IStyleFunctionOrObject, IComponentAs } from '../../Utilities';
+import { ITooltipHostProps } from '../../Tooltip';
 
 export interface ICommandBar {
   /**
@@ -22,7 +23,7 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
    * Optional callback to access the ICommandBar interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ICommandBar | null) => void;
+  componentRef?: IRefObject<ICommandBar>;
 
   /**
    * Items to render
@@ -40,7 +41,8 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   overflowItems?: ICommandBarItemProps[];
 
   /**
-   * Props to be passed to overflow button
+   * Props to be passed to overflow button.
+   * If menuProps are passed through this prop, any items provided will be prepended to the top of the existing menu.
    */
   overflowButtonProps?: IButtonProps;
 
@@ -48,11 +50,6 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
    * Custom button to be used as oveflow button
    */
   overflowButtonAs?: IComponentAs<IButtonProps>;
-
-  /**
-   * Menu props to be passed to overflow elipsis
-   */
-  overflowMenuProps?: Partial<IContextualMenuProps>;
 
   /**
    * Custom button to be used as near and far items
@@ -117,6 +114,11 @@ export interface ICommandBarItemProps extends IContextualMenuItem {
    * @defaultvalue false
    */
   iconOnly?: boolean;
+
+  /**
+   * Props to pass into tooltip during iconOnly
+   */
+  tooltipHostProps?: ITooltipHostProps;
 
   /**
    * Custom styles for individual button

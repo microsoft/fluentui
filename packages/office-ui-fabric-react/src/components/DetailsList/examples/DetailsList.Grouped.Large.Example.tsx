@@ -56,6 +56,7 @@ export class DetailsListGroupedLargeExample extends BaseComponent<{}, { items: {
           getGroupHeight={this._getGroupHeight}
           ariaLabelForSelectAllCheckbox="Toggle selection for all items"
           ariaLabelForSelectionColumn="Toggle selection"
+          useReducedRowRenderer={true}
         />
       </Fabric>
     );

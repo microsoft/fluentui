@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, customizable } from '../../../Utilities';
-import { IStyleSet } from '../../../Styling';
+import { BaseComponent, classNamesFunction } from '../../../Utilities';
 import { Icon } from '../../../Icon';
 import {
   IPersonaPresenceProps,
@@ -22,7 +21,6 @@ const getClassNames = classNamesFunction<IPersonaPresenceStyleProps, IPersonaPre
  * PersonaPresence with no default styles.
  * [Use the `getStyles` API to add your own styles.](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Styling)
  */
-@customizable('PersonaPresence', ['theme', 'styles'])
 export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}> {
   constructor(props: IPersonaPresenceProps) {
     super(props);
@@ -77,8 +75,8 @@ export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}
     );
   }
 
-  private _onRenderIcon = (className?: string, styles?: IStyleSet): JSX.Element => (
-    <Icon className={className} iconName={this._determineIcon()} style={styles} />
+  private _onRenderIcon = (className?: string, style?: React.CSSProperties): JSX.Element => (
+    <Icon className={className} iconName={this._determineIcon()} style={style} />
   );
 
   private _determineIcon = (): string | undefined => {

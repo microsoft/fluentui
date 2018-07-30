@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction } from '../../Utilities';
+import { BaseComponent, classNamesFunction, createRef } from '../../Utilities';
 import { TeachingBubbleContent } from './TeachingBubbleContent';
 import { ITeachingBubbleProps, ITeachingBubbleStyleProps, ITeachingBubbleStyles } from './TeachingBubble.types';
 import { calloutStyles } from './TeachingBubble.styles';
@@ -28,6 +28,7 @@ export class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITea
     }
   };
 
+  public rootElement = createRef<HTMLDivElement>();
   private _defaultCalloutProps: ICalloutProps;
 
   // Constructor
@@ -43,6 +44,12 @@ export class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITea
       doNotLayer: false,
       directionalHint: DirectionalHint.rightCenter
     };
+  }
+
+  public focus(): void {
+    if (this.rootElement.current) {
+      this.rootElement.current.focus();
+    }
   }
 
   public render(): JSX.Element {
@@ -63,8 +70,11 @@ export class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITea
         {...calloutProps}
         className={classNames.root}
         styles={calloutStyles(stylesProps)}
+        hideOverflow
       >
-        <TeachingBubbleContent {...this.props} />
+        <div ref={this.rootElement}>
+          <TeachingBubbleContent {...this.props} />
+        </div>
       </Callout>
     );
   }

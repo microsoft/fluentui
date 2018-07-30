@@ -1,24 +1,179 @@
-/**
- * Combine a set of styles together (but does not register css classes.)
- * @public
- */
-export function concatStyleSets<T extends object>(...args: (T | false | null | undefined)[]): T {
-  // tslint:disable-next-line:no-any
-  const mergedSet = {} as any;
+import { IStyleSet, IConcatenatedStyleSet } from './IStyleSet';
+import { IStyleBase, IStyle } from './IStyle';
+import { IStyleFunctionOrObject } from './IStyleFunction';
 
-  for (const currentSet of args) {
+/**
+ * Combine a set of styles together (but does not register css classes).
+ * @param styleSet The first style set to be concatenated.
+ */
+export function concatStyleSets<TStyleSet extends IStyleSet<TStyleSet>>(
+  styleSet: TStyleSet | false | null | undefined
+): IConcatenatedStyleSet<TStyleSet>;
+
+/**
+ * Combine a set of styles together (but does not register css classes).
+ * @param styleSet1 The first style set to be concatenated.
+ * @param styleSet2 The second style set to be concatenated.
+ */
+export function concatStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>>(
+  styleSet1: TStyleSet1 | false | null | undefined,
+  styleSet2: TStyleSet2 | false | null | undefined
+): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2>;
+
+/**
+ * Combine a set of styles together (but does not register css classes).
+ * @param styleSet1 The first style set to be concatenated.
+ * @param styleSet2 The second style set to be concatenated.
+ * @param styleSet3 The third style set to be concatenated.
+ */
+export function concatStyleSets<
+  TStyleSet1 extends IStyleSet<TStyleSet1>,
+  TStyleSet2 extends IStyleSet<TStyleSet2>,
+  TStyleSet3 extends IStyleSet<TStyleSet3>
+>(
+  styleSet1: TStyleSet1 | false | null | undefined,
+  styleSet2: TStyleSet2 | false | null | undefined,
+  styleSet3: TStyleSet3 | false | null | undefined
+): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3>;
+
+/**
+ * Combine a set of styles together (but does not register css classes).
+ * @param styleSet1 The first style set to be concatenated.
+ * @param styleSet2 The second style set to be concatenated.
+ * @param styleSet3 The third style set to be concatenated.
+ * @param styleSet4 The fourth style set to be concatenated.
+ */
+export function concatStyleSets<
+  TStyleSet1 extends IStyleSet<TStyleSet1>,
+  TStyleSet2 extends IStyleSet<TStyleSet2>,
+  TStyleSet3 extends IStyleSet<TStyleSet3>,
+  TStyleSet4 extends IStyleSet<TStyleSet4>
+>(
+  styleSet1: TStyleSet1 | false | null | undefined,
+  styleSet2: TStyleSet2 | false | null | undefined,
+  styleSet3: TStyleSet3 | false | null | undefined,
+  styleSet4: TStyleSet3 | false | null | undefined
+): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3 & TStyleSet4>;
+
+/**
+ * Combine a set of styles together (but does not register css classes).
+ * @param styleSet1 The first style set to be concatenated.
+ * @param styleSet2 The second style set to be concatenated.
+ * @param styleSet3 The third style set to be concatenated.
+ * @param styleSet4 The fourth style set to be concatenated.
+ */
+export function concatStyleSets<
+  TStyleSet1 extends IStyleSet<TStyleSet1>,
+  TStyleSet2 extends IStyleSet<TStyleSet2>,
+  TStyleSet3 extends IStyleSet<TStyleSet3>,
+  TStyleSet4 extends IStyleSet<TStyleSet4>
+>(
+  styleSet1: TStyleSet1 | false | null | undefined,
+  styleSet2: TStyleSet2 | false | null | undefined,
+  styleSet3: TStyleSet3 | false | null | undefined,
+  styleSet4: TStyleSet4 | false | null | undefined
+): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3 & TStyleSet4>;
+
+/**
+ * Combine a set of styles together (but does not register css classes).
+ * @param styleSet1 The first style set to be concatenated.
+ * @param styleSet2 The second style set to be concatenated.
+ * @param styleSet3 The third style set to be concatenated.
+ * @param styleSet4 The fourth style set to be concatenated.
+ * @param styleSet5 The fifth set to be concatenated.
+ */
+export function concatStyleSets<
+  TStyleSet1 extends IStyleSet<TStyleSet1>,
+  TStyleSet2 extends IStyleSet<TStyleSet2>,
+  TStyleSet3 extends IStyleSet<TStyleSet3>,
+  TStyleSet4 extends IStyleSet<TStyleSet4>,
+  TStyleSet5 extends IStyleSet<TStyleSet5>
+>(
+  styleSet1: TStyleSet1 | false | null | undefined,
+  styleSet2: TStyleSet2 | false | null | undefined,
+  styleSet3: TStyleSet3 | false | null | undefined,
+  styleSet4: TStyleSet4 | false | null | undefined,
+  styleSet5: TStyleSet5 | false | null | undefined
+): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3 & TStyleSet4 & TStyleSet5>;
+
+/**
+ * Combine a set of styles together (but does not register css classes).
+ * @param styleSet1 The first style set to be concatenated.
+ * @param styleSet2 The second style set to be concatenated.
+ * @param styleSet3 The third style set to be concatenated.
+ * @param styleSet4 The fourth style set to be concatenated.
+ * @param styleSet5 The fifth set to be concatenated.
+ * @param styleSet6 The sixth set to be concatenated.
+ */
+export function concatStyleSets<
+  TStyleSet1 extends IStyleSet<TStyleSet1>,
+  TStyleSet2 extends IStyleSet<TStyleSet2>,
+  TStyleSet3 extends IStyleSet<TStyleSet3>,
+  TStyleSet4 extends IStyleSet<TStyleSet4>,
+  TStyleSet5 extends IStyleSet<TStyleSet5>,
+  TStyleSet6 extends IStyleSet<TStyleSet6>
+>(
+  styleSet1: TStyleSet1 | false | null | undefined,
+  styleSet2: TStyleSet2 | false | null | undefined,
+  styleSet3: TStyleSet3 | false | null | undefined,
+  styleSet4: TStyleSet4 | false | null | undefined,
+  styleSet5: TStyleSet5 | false | null | undefined,
+  styleSet6: TStyleSet6 | false | null | undefined
+): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3 & TStyleSet4 & TStyleSet5 & TStyleSet6>;
+
+/**
+ * Combine a set of styles together (but does not register css classes).
+ * @param styleSets One or more stylesets to be merged (each param can also be falsy).
+ */
+export function concatStyleSets(
+  ...styleSets: (IStyleSet<any> | false | null | undefined)[]
+): IConcatenatedStyleSet<any>;
+
+/**
+ * Combine a set of styles together (but does not register css classes).
+ * @param styleSets One or more stylesets to be merged (each param can also be falsy).
+ */
+export function concatStyleSets(
+  ...styleSets: (IStyleSet<any> | false | null | undefined)[]
+): IConcatenatedStyleSet<any> {
+  const mergedSet: IConcatenatedStyleSet<any> = {};
+
+  // We process sub component styles in two phases. First we collect them, then we combine them into 1 style function.
+  const workingSubcomponentStyles: { [key: string]: Array<IStyleFunctionOrObject<any, any>> } = {};
+
+  for (const currentSet of styleSets) {
     if (currentSet) {
       for (const prop in currentSet) {
         if (currentSet.hasOwnProperty(prop)) {
-          const mergedValue = mergedSet[prop];
-          const currentValue = currentSet[prop];
+          if (prop === 'subComponentStyles' && currentSet.subComponentStyles !== undefined) {
+            // subcomponent styles - style functions or objects
+
+            const currentComponentStyles = currentSet.subComponentStyles;
+            for (const subCompProp in currentComponentStyles) {
+              if (currentComponentStyles.hasOwnProperty(subCompProp)) {
+                if (workingSubcomponentStyles.hasOwnProperty(subCompProp)) {
+                  workingSubcomponentStyles[subCompProp].push(currentComponentStyles[subCompProp]);
+                } else {
+                  workingSubcomponentStyles[subCompProp] = [currentComponentStyles[subCompProp]];
+                }
+              }
+            }
+
+            continue;
+          }
+
+          // the as any casts below is a workaround for ts 2.8.
+          // todo: remove cast to any in ts 2.9.
+          const mergedValue: IStyle = (mergedSet as any)[prop];
+          const currentValue = (currentSet as any)[prop];
 
           if (mergedValue === undefined) {
-            mergedSet[prop] = currentValue;
+            (mergedSet as any)[prop] = currentValue;
           } else {
-            mergedSet[prop] = [
-              ...(Array.isArray(mergedValue) ? mergedValue : [mergedValue]),
-              ...(Array.isArray(currentValue) ? currentValue : [currentValue])
+            (mergedSet as any)[prop] = [
+              // https://github.com/Microsoft/TypeScript/issues/25474
+              ...(Array.isArray(mergedValue) ? mergedValue : [mergedValue as IStyleBase]),
+              ...(Array.isArray(currentValue) ? currentValue : [currentValue as IStyleBase])
             ];
           }
         }
@@ -26,5 +181,25 @@ export function concatStyleSets<T extends object>(...args: (T | false | null | u
     }
   }
 
-  return mergedSet as T;
+  if (Object.keys(workingSubcomponentStyles).length > 0) {
+    mergedSet.subComponentStyles = {};
+    const mergedSubStyles = mergedSet.subComponentStyles;
+
+    // now we process the subcomponent styles if there are any
+    for (const subCompProp in workingSubcomponentStyles) {
+      if (workingSubcomponentStyles.hasOwnProperty(subCompProp)) {
+        const workingSet = workingSubcomponentStyles[subCompProp];
+        mergedSubStyles[subCompProp] = (styleProps: any) => {
+          return concatStyleSets(
+            ...workingSet.map(
+              (styleFunctionOrObject: IStyleFunctionOrObject<any, any>) =>
+                typeof styleFunctionOrObject === 'function' ? styleFunctionOrObject(styleProps) : styleFunctionOrObject
+            )
+          );
+        };
+      }
+    }
+  }
+
+  return mergedSet;
 }

@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { Sticky } from './Sticky';
+import { IRefObject } from '../../Utilities';
 
 export interface IStickyProps extends React.Props<Sticky> {
   /**
    * Gets ref to component interface.
    */
-  componentRef?: (component: IStickyProps | null) => void;
+  componentRef?: IRefObject<IStickyProps>;
 
   /**
    * Class name to apply to the sticky element if component is sticky.

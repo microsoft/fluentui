@@ -90,8 +90,7 @@ export const getOptionStyles = memoizeFunction(
               borderColor: 'Background'
             }
           }
-        },
-        getFocusStyle(theme)
+        }
       ],
       rootHovered: {
         backgroundColor: ComboBoxOptionBackgroundHovered,
@@ -105,7 +104,7 @@ export const getOptionStyles = memoizeFunction(
           backgroundColor: ComboBoxOptionBackgroundHovered,
           color: ComboBoxOptionTextColorSelected
         },
-        getFocusStyle(theme),
+        getFocusStyle(theme, undefined, undefined, undefined, undefined, undefined, false),
         getListOptionHighContrastStyles(theme)
       ],
       rootDisabled: {

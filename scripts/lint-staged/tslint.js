@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs');
 const msCustomRulesMain = require.resolve('tslint-microsoft-contrib');
 const rulesPath = path.dirname(msCustomRulesMain);
-const tslintPath = 'node ' + path.resolve(__dirname, '../node_modules/tslint/lib/tslint-cli');
+const tslintPath = 'node ' + path.resolve(__dirname, '../node_modules/tslint/lib/tslintCli');
 
 const files = process.argv.slice(2);
 

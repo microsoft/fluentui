@@ -1,16 +1,18 @@
 import * as React from 'react';
 import { DetailsRowBase } from './DetailsRow.base';
-import { IStyle, ITheme, IStyleSet } from '../../Styling';
+import { IStyle, ITheme } from '../../Styling';
 import { IColumn, CheckboxVisibility } from './DetailsList.types';
 import { ISelection, SelectionMode } from '../../utilities/selection/interfaces';
 import { IDragDropHelper, IDragDropEvents } from '../../utilities/dragdrop/interfaces';
 import { IViewport } from '../../utilities/decorators/withViewport';
 import { CollapseAllVisibility } from '../GroupedList/GroupedList.types';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IDetailsRowCheckProps } from './DetailsRowCheck.types';
 import { IDetailsRowFieldsProps } from './DetailsRowFields.types';
 
-export interface IDetailsRowProps extends React.Props<DetailsRowBase> {
+export interface IDetailsRow {}
+
+export interface IDetailsRowProps extends IBaseProps<IDetailsRow> {
   /**
    * Theme provided by styled() function
    */
@@ -24,7 +26,7 @@ export interface IDetailsRowProps extends React.Props<DetailsRowBase> {
   /**
    * Ref of the component
    */
-  componentRef?: () => void;
+  componentRef?: IRefObject<IDetailsRow>;
 
   /**
    * Data source for this component
@@ -150,18 +152,40 @@ export interface IDetailsRowProps extends React.Props<DetailsRowBase> {
    * Whether to render shimmer
    */
   shimmer?: boolean;
+
+  /**
+   * Rerender DetailsRow only when props changed. Might cause regression when depending on external updates.
+   * @default false
+   */
+  useReducedRowRenderer?: boolean;
 }
 
 export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & {
+  /** Whether the row is selected  */
   isSelected?: boolean;
+
+  /** Whether there are any rows in the list selected */
   anySelected?: boolean;
+
+  /** Whether this row can be selected */
   canSelect?: boolean;
-  checkClassNames?: IStyleSet;
+
+  /** Class name of when this becomes a drop target. */
   droppingClassName?: string;
+
+  /** Is the checkbox visible */
   isCheckVisible?: boolean;
+
+  /** Is this a row header */
   isRowHeader?: boolean;
+
+  /** A class name from the checkbox cell, so proper styling can be targeted */
   checkboxCellClassName?: string;
+
+  /** CSS class name for the component */
   className?: string;
+
+  /** Is list in compact mode */
   compact?: boolean;
 };
 

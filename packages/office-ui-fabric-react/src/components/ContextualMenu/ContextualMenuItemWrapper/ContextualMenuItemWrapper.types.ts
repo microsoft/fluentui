@@ -1,13 +1,14 @@
-import { IContextualMenuItem, IContextualMenuItemProps } from '../../ContextualMenu';
+import { IContextualMenuItem, IContextualMenuItemProps } from '../../../ContextualMenu';
 import { IMenuItemClassNames } from '../ContextualMenu.classNames';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
+import { IRefObject } from '../../../Utilities';
 
 export interface IContextualMenuItemWrapperProps extends React.Props<IContextualMenuItem> {
   /**
    * Optional callback to access the ContextualMenuSplitButton interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ContextualMenuItemWrapper | null) => void;
+  componentRef?: IRefObject<ContextualMenuItemWrapper>;
 
   /**
    * The IContextualMenuItem that is used to render the item in the menu.

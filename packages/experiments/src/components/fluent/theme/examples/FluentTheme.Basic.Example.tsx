@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link, Customizer, Breadcrumb } from 'office-ui-fabric-react';
-import FluentTheme from '../../FluentTheme';
+import { FluentCustomizations } from '@uifabric/experiments/lib/components/fluent/FluentCustomizations';
 
 export class FluentThemeBasicExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
@@ -10,7 +10,7 @@ export class FluentThemeBasicExample extends React.Component<{}, {}> {
         {this._renderComponents()}
 
         <h2>Fluent color theme</h2>
-        <Customizer settings={{ theme: FluentTheme }}>{this._renderComponents()}</Customizer>
+        <Customizer {...FluentCustomizations}>{this._renderComponents()}</Customizer>
       </div>
     );
   }

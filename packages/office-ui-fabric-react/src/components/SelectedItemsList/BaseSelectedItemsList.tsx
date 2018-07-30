@@ -127,6 +127,10 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     this.selection.setAllSelected(false);
   }
 
+  public highlightedItems(): T[] {
+    return this.selection.getSelection() as T[];
+  }
+
   public componentWillUpdate(newProps: P, newState: IBaseSelectedItemsListState): void {
     if (newState.items && newState.items !== this.state.items) {
       this.selection.setItems(newState.items);

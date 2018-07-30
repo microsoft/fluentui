@@ -57,7 +57,7 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
             background-color: #ffffff;
             background: #0078d4;
             overflow-x: hidden;
-            overflow-y: auto;
+            overflow-y: hidden;
             position: relative;
           }
       onKeyDown={[Function]}
@@ -66,58 +66,66 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
       style={
         Object {
           "maxHeight": 750,
-          "overflowY": undefined,
+          "overflowY": "hidden",
         }
       }
     >
-      <div
-        className=
-            ms-TeachingBubble-content
-            {
-              animation-duration: 2000ms;
-              animation-fill-mode: both;
-              animation-name: keyframes 0%{transform:matrix3d(0.5, 0, 0, 0, 0, 0.5, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}1.7%{transform:matrix3d(0.658, 0, 0, 0, 0, 0.703, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}2.35%{transform:matrix3d(0.725, 0, 0, 0, 0, 0.8, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}3.4%{transform:matrix3d(0.83, 0, 0, 0, 0, 0.946, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}4.7%{transform:matrix3d(0.942, 0, 0, 0, 0, 1.084, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}5.11%{transform:matrix3d(0.971, 0, 0, 0, 0, 1.113, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}6.81%{transform:matrix3d(1.062, 0, 0, 0, 0, 1.166, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}7.06%{transform:matrix3d(1.07, 0, 0, 0, 0, 1.165, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}8.76%{transform:matrix3d(1.104, 0, 0, 0, 0, 1.12, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}9.36%{transform:matrix3d(1.106, 0, 0, 0, 0, 1.094, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}10.66%{transform:matrix3d(1.098, 0, 0, 0, 0, 1.035, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}12.16%{transform:matrix3d(1.075, 0, 0, 0, 0, 0.98, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}12.61%{transform:matrix3d(1.067, 0, 0, 0, 0, 0.969, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}14.51%{transform:matrix3d(1.031, 0, 0, 0, 0, 0.948, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}14.96%{transform:matrix3d(1.024, 0, 0, 0, 0, 0.949, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}17.77%{transform:matrix3d(0.99, 0, 0, 0, 0, 0.981, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}18.37%{transform:matrix3d(0.986, 0, 0, 0, 0, 0.989, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}20.52%{transform:matrix3d(0.98, 0, 0, 0, 0, 1.011, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}22.22%{transform:matrix3d(0.983, 0, 0, 0, 0, 1.016, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}26.08%{transform:matrix3d(0.996, 0, 0, 0, 0, 1.003, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}29.93%{transform:matrix3d(1.003, 0, 0, 0, 0, 0.995, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}31.63%{transform:matrix3d(1.004, 0, 0, 0, 0, 0.996, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}37.64%{transform:matrix3d(1.001, 0, 0, 0, 0, 1.002, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}42.74%{transform:matrix3d(0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}45.35%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}49.9%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}50%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}52.15%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}54.3%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}56.46%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}58.61%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}64.16%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}69.72%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}80.83%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}91.99%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}100%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);} keyframes 0%{opacity:0;animation-timing-function:cubic-bezier(.1,.25,.75,.9);}26.26%{opacity:1;}100%{opacity:1;};
-              animation-timing-function: linear;
-              border: 0px;
-              box-shadow: none !important;
-              display: flex;
-              max-width: 456px;
-              width: calc(100% + 1px);
-            }
-      >
+      <div>
         <div
+          aria-describedby={undefined}
+          aria-labelledby={undefined}
           className=
-              ms-TeachingBubble-bodycontent
+              ms-TeachingBubble-content
               {
-                max-width: 302px;
-                padding-bottom: 20px;
-                padding-left: 20px;
-                padding-right: 20px;
-                padding-top: 20px;
+                animation-duration: 2000ms;
+                animation-fill-mode: both;
+                animation-name: keyframes 0%{transform:matrix3d(0.5, 0, 0, 0, 0, 0.5, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}1.7%{transform:matrix3d(0.658, 0, 0, 0, 0, 0.703, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}2.35%{transform:matrix3d(0.725, 0, 0, 0, 0, 0.8, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}3.4%{transform:matrix3d(0.83, 0, 0, 0, 0, 0.946, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}4.7%{transform:matrix3d(0.942, 0, 0, 0, 0, 1.084, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}5.11%{transform:matrix3d(0.971, 0, 0, 0, 0, 1.113, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}6.81%{transform:matrix3d(1.062, 0, 0, 0, 0, 1.166, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}7.06%{transform:matrix3d(1.07, 0, 0, 0, 0, 1.165, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}8.76%{transform:matrix3d(1.104, 0, 0, 0, 0, 1.12, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}9.36%{transform:matrix3d(1.106, 0, 0, 0, 0, 1.094, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}10.66%{transform:matrix3d(1.098, 0, 0, 0, 0, 1.035, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}12.16%{transform:matrix3d(1.075, 0, 0, 0, 0, 0.98, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}12.61%{transform:matrix3d(1.067, 0, 0, 0, 0, 0.969, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}14.51%{transform:matrix3d(1.031, 0, 0, 0, 0, 0.948, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}14.96%{transform:matrix3d(1.024, 0, 0, 0, 0, 0.949, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}17.77%{transform:matrix3d(0.99, 0, 0, 0, 0, 0.981, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}18.37%{transform:matrix3d(0.986, 0, 0, 0, 0, 0.989, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}20.52%{transform:matrix3d(0.98, 0, 0, 0, 0, 1.011, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}22.22%{transform:matrix3d(0.983, 0, 0, 0, 0, 1.016, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}26.08%{transform:matrix3d(0.996, 0, 0, 0, 0, 1.003, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}29.93%{transform:matrix3d(1.003, 0, 0, 0, 0, 0.995, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}31.63%{transform:matrix3d(1.004, 0, 0, 0, 0, 0.996, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}37.64%{transform:matrix3d(1.001, 0, 0, 0, 0, 1.002, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}42.74%{transform:matrix3d(0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}45.35%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}49.9%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}50%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}52.15%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}54.3%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}56.46%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}58.61%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}64.16%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}69.72%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}80.83%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}91.99%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}100%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);} keyframes 0%{opacity:0;animation-timing-function:cubic-bezier(.1,.25,.75,.9);}26.26%{opacity:1;}100%{opacity:1;};
+                animation-timing-function: linear;
+                border: 0px;
+                box-shadow: none !important;
+                display: flex;
+                max-width: 456px;
+                width: calc(100% + 1px);
               }
+          data-is-focusable={true}
+          role="dialog"
+          tabIndex={-1}
         >
           <div
             className=
-                ms-TeachingBubble-body
-                &:not(:last-child) {
-                  margin-bottom: 20px;
+                ms-TeachingBubble-bodycontent
+                {
+                  max-width: 302px;
+                  padding-bottom: 20px;
+                  padding-left: 20px;
+                  padding-right: 20px;
+                  padding-top: 20px;
                 }
           >
-            <p
+            <div
               className=
-                  ms-TeachingBubble-subText
-                  {
-                    color: #ffffff;
-                    font-size: 14px;
-                    font-weight: 300;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
+                  ms-TeachingBubble-body
+                  &:not(:last-child) {
+                    margin-bottom: 20px;
                   }
             >
-              Test Content
-            </p>
+              <p
+                className=
+                    ms-TeachingBubble-subText
+                    {
+                      color: #ffffff;
+                      font-size: 14px;
+                      font-weight: 300;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
+                    }
+                id={undefined}
+              >
+                Test Content
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -128,6 +136,8 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
 
 exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
 <div
+  aria-describedby={undefined}
+  aria-labelledby={undefined}
   className=
       ms-TeachingBubble-content
       {
@@ -141,6 +151,9 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
         max-width: 364px;
         width: calc(100% + 1px);
       }
+  data-is-focusable={true}
+  role="dialog"
+  tabIndex={-1}
 >
   <div
     className=
@@ -175,6 +188,7 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
               margin-right: 0px;
               margin-top: 0px;
             }
+        id={undefined}
       >
         Test Title
       </p>
@@ -198,6 +212,7 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
               margin-right: 0px;
               margin-top: 0px;
             }
+        id={undefined}
       >
         Content
       </p>
@@ -208,6 +223,8 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
 
 exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`] = `
 <div
+  aria-describedby={undefined}
+  aria-labelledby={undefined}
   className=
       ms-TeachingBubble-content
       {
@@ -221,6 +238,9 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
         max-width: 364px;
         width: calc(100% + 1px);
       }
+  data-is-focusable={true}
+  role="dialog"
+  tabIndex={-1}
 >
   <div
     className=
@@ -255,6 +275,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               margin-right: 0px;
               margin-top: 0px;
             }
+        id={undefined}
       >
         Test Title
       </p>
@@ -278,6 +299,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               margin-right: 0px;
               margin-top: 0px;
             }
+        id={undefined}
       >
         Content
       </p>
@@ -697,6 +719,8 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
 
 exports[`TeachingBubble renders TeachingBubbleContent with condensed headline correctly 1`] = `
 <div
+  aria-describedby={undefined}
+  aria-labelledby={undefined}
   className=
       ms-TeachingBubble-content
       {
@@ -710,6 +734,9 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
         max-width: 364px;
         width: calc(100% + 1px);
       }
+  data-is-focusable={true}
+  role="dialog"
+  tabIndex={-1}
 >
   <div
     className=
@@ -744,6 +771,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
               margin-right: 0px;
               margin-top: 0px;
             }
+        id={undefined}
       >
         Test Title
       </p>
@@ -767,6 +795,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
               margin-right: 0px;
               margin-top: 0px;
             }
+        id={undefined}
       >
         Content
       </p>
@@ -777,6 +806,8 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
 
 exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] = `
 <div
+  aria-describedby={undefined}
+  aria-labelledby={undefined}
   className=
       ms-TeachingBubble-content
       {
@@ -790,6 +821,9 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
         max-width: 364px;
         width: calc(100% + 1px);
       }
+  data-is-focusable={true}
+  role="dialog"
+  tabIndex={-1}
 >
   <div
     className=
@@ -861,6 +895,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
               margin-right: 0px;
               margin-top: 0px;
             }
+        id={undefined}
       >
         Test Title
       </p>
@@ -884,6 +919,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
               margin-right: 0px;
               margin-top: 0px;
             }
+        id={undefined}
       >
         Content
       </p>
@@ -894,6 +930,8 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
 
 exports[`TeachingBubble renders TeachingBubbleContent with small headline correctly 1`] = `
 <div
+  aria-describedby={undefined}
+  aria-labelledby={undefined}
   className=
       ms-TeachingBubble-content
       {
@@ -907,6 +945,9 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
         max-width: 364px;
         width: calc(100% + 1px);
       }
+  data-is-focusable={true}
+  role="dialog"
+  tabIndex={-1}
 >
   <div
     className=
@@ -944,6 +985,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
               margin-right: 0px;
               margin-top: 0px;
             }
+        id={undefined}
       >
         Test Title
       </p>
@@ -967,6 +1009,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
               margin-right: 0px;
               margin-top: 0px;
             }
+        id={undefined}
       >
         Content
       </p>

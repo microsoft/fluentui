@@ -2,6 +2,105 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.3.1",
+      "tag": "@uifabric/fabric-website_v6.3.1",
+      "date": "Fri, 27 Jul 2018 10:25:39 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Esteban Munoz <esteban.230@hotmail.com>",
+            "commit": "313c5cd21a9dcf435528e83693d75a7fedeeb015",
+            "comment": "Added @uifabric/experiments dependency to fabric-website"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `>=6.5.0 <7.0.0` to `>=6.6.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.19.0 <7.0.0` to `>=6.22.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.40.0 <7.0.0` to `>=6.41.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.3.0",
+      "tag": "@uifabric/fabric-website_v6.3.0",
+      "date": "Mon, 23 Jul 2018 10:28:08 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "c2cfa6c609fe5c531491a4a9a8eb613b0063c96d",
+            "comment": "prettier fixes"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "28242c40916d14cef3d555d18f4df69454163e87",
+            "comment": "Addressing bad imports."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `>=6.0.2 <7.0.0` to `>=6.1.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.5.2 <7.0.0` to `>=6.6.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.38.2 <7.0.0` to `>=6.39.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.2.0",
+      "tag": "@uifabric/fabric-website_v6.2.0",
+      "date": "Tue, 17 Jul 2018 10:28:40 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Esteban Munoz <esteban.230@hotmail.com>",
+            "commit": "c72b698ac50b7f294cc24ca904184fb1dc9e25e0",
+            "comment": "Added searchbox feature"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.4.0 <7.0.0` to `>=6.5.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.36.0 <7.0.0` to `>=6.37.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.1.4",
+      "tag": "@uifabric/fabric-website_v6.1.4",
+      "date": "Mon, 16 Jul 2018 10:27:18 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "5a5228d9cd469098c2b2ee7ea4be5c1f846684e6",
+            "comment": "Refactors DetailsList variants to be sub-pages"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.2.1 <7.0.0` to `>=6.4.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.35.0 <7.0.0` to `>=6.36.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.1.3",
       "tag": "@uifabric/fabric-website_v6.1.3",
       "date": "Fri, 06 Jul 2018 10:23:46 GMT",

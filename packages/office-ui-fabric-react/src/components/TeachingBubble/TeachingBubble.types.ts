@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import { TeachingBubbleBase } from './TeachingBubble.base';
 import { TeachingBubbleContentBase } from './TeachingBubbleContent.base';
 import { IImageProps } from '../../Image';
@@ -6,9 +7,12 @@ import { IButtonProps } from '../../Button';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 import { ICalloutProps } from '../../Callout';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
-export interface ITeachingBubble {}
+export interface ITeachingBubble {
+  /** Sets focus to the TeachingBubble root element */
+  focus(): void;
+}
 
 /**
  * TeachingBubble component props.
@@ -21,7 +25,7 @@ export interface ITeachingBubbleProps
    * Optional callback to access the ISlider interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ITeachingBubble | null) => void;
+  componentRef?: IRefObject<ITeachingBubble>;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
@@ -87,6 +91,16 @@ export interface ITeachingBubbleProps
    * A variation with smaller bold headline and margins to the body (hasCondensedHeadline takes precedence if it is also set to true).
    */
   hasSmallHeadline?: boolean;
+
+  /**
+   *  Defines the element id referencing the element containing label text for TeachingBubble.
+   */
+  ariaLabelledBy?: string;
+
+  /**
+   * Defines the element id referencing the element containing the description for the TeachingBubble.
+   */
+  ariaDescribedBy?: string;
 }
 
 export type ITeachingBubbleStyleProps = Required<Pick<ITeachingBubbleProps, 'theme'>> &

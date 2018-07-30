@@ -12,7 +12,22 @@ exports[`DetailsRow renders details list row correctly 1`] = `
 >
   <div
     aria-label={undefined}
-    className="ms-DetailsList is-horizontalConstrained undefined"
+    className=
+        ms-DetailsList
+        is-horizontalConstrained
+        {
+          -webkit-overflow-scrolling: touch;
+          background: #ffffff;
+          color: #333333;
+          font-size: 12px;
+          overflow-x: auto;
+          overflow-y: visible;
+          position: relative;
+        }
+        & .ms-List-cell {
+          min-height: 38px;
+          word-break: break-word;
+        }
     data-automationid="DetailsList"
     data-is-scrollable="false"
   >
@@ -31,7 +46,30 @@ exports[`DetailsRow renders details list row correctly 1`] = `
           aria-describedby={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
-          className="ms-FocusZone ms-DetailsHeader"
+          className=
+              ms-FocusZone
+              ms-DetailsHeader
+              {
+                background: #ffffff;
+                border-bottom: 1px solid #c8c8c8;
+                box-sizing: content-box;
+                cursor: default;
+                display: inline-block;
+                height: 32px;
+                line-height: 32px;
+                min-width: 100%;
+                padding-bottom: 1px;
+                position: relative;
+                user-select: none;
+                vertical-align: top;
+                white-space: nowrap;
+              }
+              &:hover $check {
+                opacity: 1;
+              }
+              & ms-TooltipHost $checkTooltip {
+                display: block;
+              }
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone1"
           onFocus={[Function]}
@@ -48,12 +86,58 @@ exports[`DetailsRow renders details list row correctly 1`] = `
           <div
             aria-colindex={1}
             aria-labelledby="header0-check"
-            className="ms-DetailsHeader-cell ms-DetailsHeader-cellIsCheck"
+            className=
+                ms-DetailsHeader-cell
+                ms-DetailsHeader-cellIsCheck
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  align-items: center;
+                  border: none;
+                  box-sizing: border-box;
+                  color: #333333;
+                  display: inline-flex;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  height: 32px;
+                  line-height: inherit;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  outline: transparent;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                  position: relative;
+                  text-align: left;
+                  text-overflow: ellipsis;
+                  vertical-align: top;
+                  white-space: nowrap;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
             onClick={[Function]}
             role="columnheader"
           >
             <span
-              className=""
+              className=
+
+
             >
               <div
                 aria-checked={undefined}
@@ -61,7 +145,13 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 aria-label={undefined}
                 className=
                     ms-DetailsRow-check
-
+                    ms-DetailsRow-check--isHeader
+                    {
+                      height: 32px;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus {
+                      opacity: 1;
+                    }
                     {
                       align-items: center;
                       background-color: transparent;
@@ -70,7 +160,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                       box-sizing: border-box;
                       cursor: default;
                       display: flex;
-                      height: 40px;
+                      height: 32px;
                       justify-content: center;
                       margin-bottom: 0px;
                       margin-left: 0px;
@@ -101,12 +191,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                       z-index: 1;
                     }
                     &:hover {
-                      opacity: 1;
-                    }
-                    &.isHeader {
-                      height: 32px;
-                    }
-                    .ms-Fabric--isFocusVisible & {
                       opacity: 1;
                     }
 
@@ -213,7 +297,57 @@ exports[`DetailsRow renders details list row correctly 1`] = `
           <div
             aria-colindex={2}
             aria-sort="none"
-            className="ms-DetailsHeader-cell is-actionable undefined"
+            className=
+                ms-DetailsHeader-cell
+                is-actionable
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  border: none;
+                  box-sizing: border-box;
+                  color: #333333;
+                  display: inline-block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  height: 32px;
+                  line-height: inherit;
+                  margin-bottom: 0;
+                  margin-left: 0;
+                  margin-right: 0;
+                  margin-top: 0;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 8px;
+                  padding-right: 8px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: left;
+                  text-overflow: ellipsis;
+                  vertical-align: top;
+                  white-space: nowrap;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
+                &:hover {
+                  background: #f4f4f4;
+                  color: #333333;
+                }
+                &:active {
+                  background: #eaeaea;
+                }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
             data-item-key="key"
@@ -226,14 +360,52 @@ exports[`DetailsRow renders details list row correctly 1`] = `
             }
           >
             <span
-              className=""
+              className=
+
+                  {
+                    bottom: 0px;
+                    display: block;
+                    left: 0px;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                  }
             >
               <span
                 aria-describedby={undefined}
                 aria-haspopup={false}
                 aria-label={undefined}
                 aria-labelledby="header0-key-name "
-                className="ms-DetailsHeader-cellTitle"
+                className=
+                    ms-DetailsHeader-cellTitle
+                    {
+                      align-items: stretch;
+                      box-sizing: border-box;
+                      display: flex;
+                      flex-direction: row;
+                      justify-content: flex-start;
+                      outline: transparent;
+                      overflow: hidden;
+                      padding-bottom: 0;
+                      padding-left: 12px;
+                      padding-right: 8px;
+                      padding-top: 0;
+                      position: relative;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #666666;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 data-is-focusable={true}
                 id="header0-key"
                 onClick={[Function]}
@@ -241,7 +413,13 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 role="button"
               >
                 <span
-                  className="ms-DetailsHeader-cellName"
+                  className=
+                      ms-DetailsHeader-cellName
+                      {
+                        flex: 0 1 auto;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                      }
                   id="header0-key-name"
                 >
                   key
@@ -252,7 +430,57 @@ exports[`DetailsRow renders details list row correctly 1`] = `
           <div
             aria-colindex={3}
             aria-sort="none"
-            className="ms-DetailsHeader-cell is-actionable undefined"
+            className=
+                ms-DetailsHeader-cell
+                is-actionable
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  border: none;
+                  box-sizing: border-box;
+                  color: #333333;
+                  display: inline-block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  height: 32px;
+                  line-height: inherit;
+                  margin-bottom: 0;
+                  margin-left: 0;
+                  margin-right: 0;
+                  margin-top: 0;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 8px;
+                  padding-right: 8px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: left;
+                  text-overflow: ellipsis;
+                  vertical-align: top;
+                  white-space: nowrap;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
+                &:hover {
+                  background: #f4f4f4;
+                  color: #333333;
+                }
+                &:active {
+                  background: #eaeaea;
+                }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
             data-item-key="name"
@@ -265,14 +493,52 @@ exports[`DetailsRow renders details list row correctly 1`] = `
             }
           >
             <span
-              className=""
+              className=
+
+                  {
+                    bottom: 0px;
+                    display: block;
+                    left: 0px;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                  }
             >
               <span
                 aria-describedby={undefined}
                 aria-haspopup={false}
                 aria-label={undefined}
                 aria-labelledby="header0-name-name "
-                className="ms-DetailsHeader-cellTitle"
+                className=
+                    ms-DetailsHeader-cellTitle
+                    {
+                      align-items: stretch;
+                      box-sizing: border-box;
+                      display: flex;
+                      flex-direction: row;
+                      justify-content: flex-start;
+                      outline: transparent;
+                      overflow: hidden;
+                      padding-bottom: 0;
+                      padding-left: 12px;
+                      padding-right: 8px;
+                      padding-top: 0;
+                      position: relative;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #666666;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 data-is-focusable={true}
                 id="header0-name"
                 onClick={[Function]}
@@ -280,7 +546,13 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 role="button"
               >
                 <span
-                  className="ms-DetailsHeader-cellName"
+                  className=
+                      ms-DetailsHeader-cellName
+                      {
+                        flex: 0 1 auto;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                      }
                   id="header0-name-name"
                 >
                   name
@@ -291,7 +563,57 @@ exports[`DetailsRow renders details list row correctly 1`] = `
           <div
             aria-colindex={4}
             aria-sort="none"
-            className="ms-DetailsHeader-cell is-actionable undefined"
+            className=
+                ms-DetailsHeader-cell
+                is-actionable
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  border: none;
+                  box-sizing: border-box;
+                  color: #333333;
+                  display: inline-block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  height: 32px;
+                  line-height: inherit;
+                  margin-bottom: 0;
+                  margin-left: 0;
+                  margin-right: 0;
+                  margin-top: 0;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 8px;
+                  padding-right: 8px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: left;
+                  text-overflow: ellipsis;
+                  vertical-align: top;
+                  white-space: nowrap;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
+                &:hover {
+                  background: #f4f4f4;
+                  color: #333333;
+                }
+                &:active {
+                  background: #eaeaea;
+                }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
             data-item-key="value"
@@ -304,14 +626,52 @@ exports[`DetailsRow renders details list row correctly 1`] = `
             }
           >
             <span
-              className=""
+              className=
+
+                  {
+                    bottom: 0px;
+                    display: block;
+                    left: 0px;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                  }
             >
               <span
                 aria-describedby={undefined}
                 aria-haspopup={false}
                 aria-label={undefined}
                 aria-labelledby="header0-value-name "
-                className="ms-DetailsHeader-cellTitle"
+                className=
+                    ms-DetailsHeader-cellTitle
+                    {
+                      align-items: stretch;
+                      box-sizing: border-box;
+                      display: flex;
+                      flex-direction: row;
+                      justify-content: flex-start;
+                      outline: transparent;
+                      overflow: hidden;
+                      padding-bottom: 0;
+                      padding-left: 12px;
+                      padding-right: 8px;
+                      padding-top: 0;
+                      position: relative;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #666666;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 data-is-focusable={true}
                 id="header0-value"
                 onClick={[Function]}
@@ -319,7 +679,13 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 role="button"
               >
                 <span
-                  className="ms-DetailsHeader-cellName"
+                  className=
+                      ms-DetailsHeader-cellName
+                      {
+                        flex: 0 1 auto;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                      }
                   id="header0-value-name"
                 >
                   value
@@ -336,7 +702,13 @@ exports[`DetailsRow renders details list row correctly 1`] = `
         <div
           aria-describedby={undefined}
           aria-labelledby={undefined}
-          className="ms-FocusZone"
+          className=
+              ms-FocusZone
+              {
+                display: inline-block;
+                min-height: 1px;
+                min-width: 100%;
+              }
           data-focuszone-id="FocusZone2"
           onBlur={[Function]}
           onFocus={[Function]}
@@ -442,7 +814,22 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
 >
   <div
     aria-label={undefined}
-    className="ms-DetailsList is-horizontalConstrained undefined"
+    className=
+        ms-DetailsList
+        is-horizontalConstrained
+        {
+          -webkit-overflow-scrolling: touch;
+          background: #ffffff;
+          color: #333333;
+          font-size: 12px;
+          overflow-x: auto;
+          overflow-y: visible;
+          position: relative;
+        }
+        & .ms-List-cell {
+          min-height: 38px;
+          word-break: break-word;
+        }
     data-automationid="DetailsList"
     data-is-scrollable="false"
   >
@@ -461,7 +848,30 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
           aria-describedby={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
-          className="ms-FocusZone ms-DetailsHeader"
+          className=
+              ms-FocusZone
+              ms-DetailsHeader
+              {
+                background: #ffffff;
+                border-bottom: 1px solid #c8c8c8;
+                box-sizing: content-box;
+                cursor: default;
+                display: inline-block;
+                height: 32px;
+                line-height: 32px;
+                min-width: 100%;
+                padding-bottom: 1px;
+                position: relative;
+                user-select: none;
+                vertical-align: top;
+                white-space: nowrap;
+              }
+              &:hover $check {
+                opacity: 1;
+              }
+              & ms-TooltipHost $checkTooltip {
+                display: block;
+              }
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone10"
           onFocus={[Function]}
@@ -478,12 +888,58 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
           <div
             aria-colindex={1}
             aria-labelledby="header9-check"
-            className="ms-DetailsHeader-cell ms-DetailsHeader-cellIsCheck"
+            className=
+                ms-DetailsHeader-cell
+                ms-DetailsHeader-cellIsCheck
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  align-items: center;
+                  border: none;
+                  box-sizing: border-box;
+                  color: #333333;
+                  display: inline-flex;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  height: 32px;
+                  line-height: inherit;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  outline: transparent;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                  position: relative;
+                  text-align: left;
+                  text-overflow: ellipsis;
+                  vertical-align: top;
+                  white-space: nowrap;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
             onClick={[Function]}
             role="columnheader"
           >
             <span
-              className=""
+              className=
+
+
             >
               <div
                 aria-checked={undefined}
@@ -491,7 +947,13 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 aria-label={undefined}
                 className=
                     ms-DetailsRow-check
-
+                    ms-DetailsRow-check--isHeader
+                    {
+                      height: 32px;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus {
+                      opacity: 1;
+                    }
                     {
                       align-items: center;
                       background-color: transparent;
@@ -500,7 +962,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                       box-sizing: border-box;
                       cursor: default;
                       display: flex;
-                      height: 40px;
+                      height: 32px;
                       justify-content: center;
                       margin-bottom: 0px;
                       margin-left: 0px;
@@ -531,12 +993,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                       z-index: 1;
                     }
                     &:hover {
-                      opacity: 1;
-                    }
-                    &.isHeader {
-                      height: 32px;
-                    }
-                    .ms-Fabric--isFocusVisible & {
                       opacity: 1;
                     }
 
@@ -643,7 +1099,57 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
           <div
             aria-colindex={2}
             aria-sort="none"
-            className="ms-DetailsHeader-cell is-actionable undefined"
+            className=
+                ms-DetailsHeader-cell
+                is-actionable
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  border: none;
+                  box-sizing: border-box;
+                  color: #333333;
+                  display: inline-block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  height: 32px;
+                  line-height: inherit;
+                  margin-bottom: 0;
+                  margin-left: 0;
+                  margin-right: 0;
+                  margin-top: 0;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 8px;
+                  padding-right: 8px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: left;
+                  text-overflow: ellipsis;
+                  vertical-align: top;
+                  white-space: nowrap;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
+                &:hover {
+                  background: #f4f4f4;
+                  color: #333333;
+                }
+                &:active {
+                  background: #eaeaea;
+                }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
             data-item-key="key"
@@ -656,14 +1162,52 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
             }
           >
             <span
-              className=""
+              className=
+
+                  {
+                    bottom: 0px;
+                    display: block;
+                    left: 0px;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                  }
             >
               <span
                 aria-describedby={undefined}
                 aria-haspopup={false}
                 aria-label={undefined}
                 aria-labelledby="header9-key-name "
-                className="ms-DetailsHeader-cellTitle"
+                className=
+                    ms-DetailsHeader-cellTitle
+                    {
+                      align-items: stretch;
+                      box-sizing: border-box;
+                      display: flex;
+                      flex-direction: row;
+                      justify-content: flex-start;
+                      outline: transparent;
+                      overflow: hidden;
+                      padding-bottom: 0;
+                      padding-left: 12px;
+                      padding-right: 8px;
+                      padding-top: 0;
+                      position: relative;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #666666;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 data-is-focusable={true}
                 id="header9-key"
                 onClick={[Function]}
@@ -671,7 +1215,13 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 role="button"
               >
                 <span
-                  className="ms-DetailsHeader-cellName"
+                  className=
+                      ms-DetailsHeader-cellName
+                      {
+                        flex: 0 1 auto;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                      }
                   id="header9-key-name"
                 >
                   key
@@ -682,7 +1232,57 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
           <div
             aria-colindex={3}
             aria-sort="none"
-            className="ms-DetailsHeader-cell is-actionable undefined"
+            className=
+                ms-DetailsHeader-cell
+                is-actionable
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  border: none;
+                  box-sizing: border-box;
+                  color: #333333;
+                  display: inline-block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  height: 32px;
+                  line-height: inherit;
+                  margin-bottom: 0;
+                  margin-left: 0;
+                  margin-right: 0;
+                  margin-top: 0;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 8px;
+                  padding-right: 8px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: left;
+                  text-overflow: ellipsis;
+                  vertical-align: top;
+                  white-space: nowrap;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
+                &:hover {
+                  background: #f4f4f4;
+                  color: #333333;
+                }
+                &:active {
+                  background: #eaeaea;
+                }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
             data-item-key="name"
@@ -695,14 +1295,52 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
             }
           >
             <span
-              className=""
+              className=
+
+                  {
+                    bottom: 0px;
+                    display: block;
+                    left: 0px;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                  }
             >
               <span
                 aria-describedby={undefined}
                 aria-haspopup={false}
                 aria-label={undefined}
                 aria-labelledby="header9-name-name "
-                className="ms-DetailsHeader-cellTitle"
+                className=
+                    ms-DetailsHeader-cellTitle
+                    {
+                      align-items: stretch;
+                      box-sizing: border-box;
+                      display: flex;
+                      flex-direction: row;
+                      justify-content: flex-start;
+                      outline: transparent;
+                      overflow: hidden;
+                      padding-bottom: 0;
+                      padding-left: 12px;
+                      padding-right: 8px;
+                      padding-top: 0;
+                      position: relative;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #666666;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 data-is-focusable={true}
                 id="header9-name"
                 onClick={[Function]}
@@ -710,7 +1348,13 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 role="button"
               >
                 <span
-                  className="ms-DetailsHeader-cellName"
+                  className=
+                      ms-DetailsHeader-cellName
+                      {
+                        flex: 0 1 auto;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                      }
                   id="header9-name-name"
                 >
                   name
@@ -721,7 +1365,57 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
           <div
             aria-colindex={4}
             aria-sort="none"
-            className="ms-DetailsHeader-cell is-actionable undefined"
+            className=
+                ms-DetailsHeader-cell
+                is-actionable
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  border: none;
+                  box-sizing: border-box;
+                  color: #333333;
+                  display: inline-block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  height: 32px;
+                  line-height: inherit;
+                  margin-bottom: 0;
+                  margin-left: 0;
+                  margin-right: 0;
+                  margin-top: 0;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 8px;
+                  padding-right: 8px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: left;
+                  text-overflow: ellipsis;
+                  vertical-align: top;
+                  white-space: nowrap;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
+                &:hover {
+                  background: #f4f4f4;
+                  color: #333333;
+                }
+                &:active {
+                  background: #eaeaea;
+                }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
             data-item-key="value"
@@ -734,14 +1428,52 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
             }
           >
             <span
-              className=""
+              className=
+
+                  {
+                    bottom: 0px;
+                    display: block;
+                    left: 0px;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                  }
             >
               <span
                 aria-describedby={undefined}
                 aria-haspopup={false}
                 aria-label={undefined}
                 aria-labelledby="header9-value-name "
-                className="ms-DetailsHeader-cellTitle"
+                className=
+                    ms-DetailsHeader-cellTitle
+                    {
+                      align-items: stretch;
+                      box-sizing: border-box;
+                      display: flex;
+                      flex-direction: row;
+                      justify-content: flex-start;
+                      outline: transparent;
+                      overflow: hidden;
+                      padding-bottom: 0;
+                      padding-left: 12px;
+                      padding-right: 8px;
+                      padding-top: 0;
+                      position: relative;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #666666;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 data-is-focusable={true}
                 id="header9-value"
                 onClick={[Function]}
@@ -749,7 +1481,13 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 role="button"
               >
                 <span
-                  className="ms-DetailsHeader-cellName"
+                  className=
+                      ms-DetailsHeader-cellName
+                      {
+                        flex: 0 1 auto;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                      }
                   id="header9-value-name"
                 >
                   value
@@ -766,7 +1504,13 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
         <div
           aria-describedby={undefined}
           aria-labelledby={undefined}
-          className="ms-FocusZone"
+          className=
+              ms-FocusZone
+              {
+                display: inline-block;
+                min-height: 1px;
+                min-width: 100%;
+              }
           data-focuszone-id="FocusZone11"
           onBlur={[Function]}
           onFocus={[Function]}
@@ -872,7 +1616,22 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
 >
   <div
     aria-label={undefined}
-    className="ms-DetailsList is-horizontalConstrained undefined"
+    className=
+        ms-DetailsList
+        is-horizontalConstrained
+        {
+          -webkit-overflow-scrolling: touch;
+          background: #ffffff;
+          color: #333333;
+          font-size: 12px;
+          overflow-x: auto;
+          overflow-y: visible;
+          position: relative;
+        }
+        & .ms-List-cell {
+          min-height: 38px;
+          word-break: break-word;
+        }
     data-automationid="DetailsList"
     data-is-scrollable="false"
   >
@@ -891,7 +1650,30 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
           aria-describedby={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
-          className="ms-FocusZone ms-DetailsHeader"
+          className=
+              ms-FocusZone
+              ms-DetailsHeader
+              {
+                background: #ffffff;
+                border-bottom: 1px solid #c8c8c8;
+                box-sizing: content-box;
+                cursor: default;
+                display: inline-block;
+                height: 32px;
+                line-height: 32px;
+                min-width: 100%;
+                padding-bottom: 1px;
+                position: relative;
+                user-select: none;
+                vertical-align: top;
+                white-space: nowrap;
+              }
+              &:hover $check {
+                opacity: 1;
+              }
+              & ms-TooltipHost $checkTooltip {
+                display: block;
+              }
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone4"
           onFocus={[Function]}
@@ -908,12 +1690,58 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
           <div
             aria-colindex={1}
             aria-labelledby="header3-check"
-            className="ms-DetailsHeader-cell ms-DetailsHeader-cellIsCheck"
+            className=
+                ms-DetailsHeader-cell
+                ms-DetailsHeader-cellIsCheck
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  align-items: center;
+                  border: none;
+                  box-sizing: border-box;
+                  color: #333333;
+                  display: inline-flex;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  height: 32px;
+                  line-height: inherit;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  outline: transparent;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                  position: relative;
+                  text-align: left;
+                  text-overflow: ellipsis;
+                  vertical-align: top;
+                  white-space: nowrap;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
             onClick={[Function]}
             role="columnheader"
           >
             <span
-              className=""
+              className=
+
+
             >
               <div
                 aria-checked={undefined}
@@ -921,7 +1749,13 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 aria-label={undefined}
                 className=
                     ms-DetailsRow-check
-
+                    ms-DetailsRow-check--isHeader
+                    {
+                      height: 32px;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus {
+                      opacity: 1;
+                    }
                     {
                       align-items: center;
                       background-color: transparent;
@@ -930,7 +1764,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                       box-sizing: border-box;
                       cursor: default;
                       display: flex;
-                      height: 40px;
+                      height: 32px;
                       justify-content: center;
                       margin-bottom: 0px;
                       margin-left: 0px;
@@ -961,12 +1795,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                       z-index: 1;
                     }
                     &:hover {
-                      opacity: 1;
-                    }
-                    &.isHeader {
-                      height: 32px;
-                    }
-                    .ms-Fabric--isFocusVisible & {
                       opacity: 1;
                     }
 
@@ -1073,7 +1901,57 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
           <div
             aria-colindex={2}
             aria-sort="none"
-            className="ms-DetailsHeader-cell is-actionable undefined"
+            className=
+                ms-DetailsHeader-cell
+                is-actionable
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  border: none;
+                  box-sizing: border-box;
+                  color: #333333;
+                  display: inline-block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  height: 32px;
+                  line-height: inherit;
+                  margin-bottom: 0;
+                  margin-left: 0;
+                  margin-right: 0;
+                  margin-top: 0;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 8px;
+                  padding-right: 8px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: left;
+                  text-overflow: ellipsis;
+                  vertical-align: top;
+                  white-space: nowrap;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
+                &:hover {
+                  background: #f4f4f4;
+                  color: #333333;
+                }
+                &:active {
+                  background: #eaeaea;
+                }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
             data-item-key="key"
@@ -1086,14 +1964,52 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
             }
           >
             <span
-              className=""
+              className=
+
+                  {
+                    bottom: 0px;
+                    display: block;
+                    left: 0px;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                  }
             >
               <span
                 aria-describedby={undefined}
                 aria-haspopup={false}
                 aria-label={undefined}
                 aria-labelledby="header3-key-name "
-                className="ms-DetailsHeader-cellTitle"
+                className=
+                    ms-DetailsHeader-cellTitle
+                    {
+                      align-items: stretch;
+                      box-sizing: border-box;
+                      display: flex;
+                      flex-direction: row;
+                      justify-content: flex-start;
+                      outline: transparent;
+                      overflow: hidden;
+                      padding-bottom: 0;
+                      padding-left: 12px;
+                      padding-right: 8px;
+                      padding-top: 0;
+                      position: relative;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #666666;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 data-is-focusable={true}
                 id="header3-key"
                 onClick={[Function]}
@@ -1101,7 +2017,13 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 role="button"
               >
                 <span
-                  className="ms-DetailsHeader-cellName"
+                  className=
+                      ms-DetailsHeader-cellName
+                      {
+                        flex: 0 1 auto;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                      }
                   id="header3-key-name"
                 >
                   key
@@ -1112,7 +2034,57 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
           <div
             aria-colindex={3}
             aria-sort="none"
-            className="ms-DetailsHeader-cell is-actionable undefined"
+            className=
+                ms-DetailsHeader-cell
+                is-actionable
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  border: none;
+                  box-sizing: border-box;
+                  color: #333333;
+                  display: inline-block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  height: 32px;
+                  line-height: inherit;
+                  margin-bottom: 0;
+                  margin-left: 0;
+                  margin-right: 0;
+                  margin-top: 0;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 8px;
+                  padding-right: 8px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: left;
+                  text-overflow: ellipsis;
+                  vertical-align: top;
+                  white-space: nowrap;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
+                &:hover {
+                  background: #f4f4f4;
+                  color: #333333;
+                }
+                &:active {
+                  background: #eaeaea;
+                }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
             data-item-key="name"
@@ -1125,14 +2097,52 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
             }
           >
             <span
-              className=""
+              className=
+
+                  {
+                    bottom: 0px;
+                    display: block;
+                    left: 0px;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                  }
             >
               <span
                 aria-describedby={undefined}
                 aria-haspopup={false}
                 aria-label={undefined}
                 aria-labelledby="header3-name-name "
-                className="ms-DetailsHeader-cellTitle"
+                className=
+                    ms-DetailsHeader-cellTitle
+                    {
+                      align-items: stretch;
+                      box-sizing: border-box;
+                      display: flex;
+                      flex-direction: row;
+                      justify-content: flex-start;
+                      outline: transparent;
+                      overflow: hidden;
+                      padding-bottom: 0;
+                      padding-left: 12px;
+                      padding-right: 8px;
+                      padding-top: 0;
+                      position: relative;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #666666;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 data-is-focusable={true}
                 id="header3-name"
                 onClick={[Function]}
@@ -1140,7 +2150,13 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 role="button"
               >
                 <span
-                  className="ms-DetailsHeader-cellName"
+                  className=
+                      ms-DetailsHeader-cellName
+                      {
+                        flex: 0 1 auto;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                      }
                   id="header3-name-name"
                 >
                   name
@@ -1151,7 +2167,57 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
           <div
             aria-colindex={4}
             aria-sort="none"
-            className="ms-DetailsHeader-cell is-actionable undefined"
+            className=
+                ms-DetailsHeader-cell
+                is-actionable
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  border: none;
+                  box-sizing: border-box;
+                  color: #333333;
+                  display: inline-block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  height: 32px;
+                  line-height: inherit;
+                  margin-bottom: 0;
+                  margin-left: 0;
+                  margin-right: 0;
+                  margin-top: 0;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 8px;
+                  padding-right: 8px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: left;
+                  text-overflow: ellipsis;
+                  vertical-align: top;
+                  white-space: nowrap;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
+                &:hover {
+                  background: #f4f4f4;
+                  color: #333333;
+                }
+                &:active {
+                  background: #eaeaea;
+                }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
             data-item-key="value"
@@ -1164,14 +2230,52 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
             }
           >
             <span
-              className=""
+              className=
+
+                  {
+                    bottom: 0px;
+                    display: block;
+                    left: 0px;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                  }
             >
               <span
                 aria-describedby={undefined}
                 aria-haspopup={false}
                 aria-label={undefined}
                 aria-labelledby="header3-value-name "
-                className="ms-DetailsHeader-cellTitle"
+                className=
+                    ms-DetailsHeader-cellTitle
+                    {
+                      align-items: stretch;
+                      box-sizing: border-box;
+                      display: flex;
+                      flex-direction: row;
+                      justify-content: flex-start;
+                      outline: transparent;
+                      overflow: hidden;
+                      padding-bottom: 0;
+                      padding-left: 12px;
+                      padding-right: 8px;
+                      padding-top: 0;
+                      position: relative;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #666666;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 data-is-focusable={true}
                 id="header3-value"
                 onClick={[Function]}
@@ -1179,7 +2283,13 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 role="button"
               >
                 <span
-                  className="ms-DetailsHeader-cellName"
+                  className=
+                      ms-DetailsHeader-cellName
+                      {
+                        flex: 0 1 auto;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                      }
                   id="header3-value-name"
                 >
                   value
@@ -1196,7 +2306,13 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
         <div
           aria-describedby={undefined}
           aria-labelledby={undefined}
-          className="ms-FocusZone"
+          className=
+              ms-FocusZone
+              {
+                display: inline-block;
+                min-height: 1px;
+                min-width: 100%;
+              }
           data-focuszone-id="FocusZone5"
           onBlur={[Function]}
           onFocus={[Function]}
@@ -1302,7 +2418,22 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
 >
   <div
     aria-label={undefined}
-    className="ms-DetailsList is-horizontalConstrained undefined"
+    className=
+        ms-DetailsList
+        is-horizontalConstrained
+        {
+          -webkit-overflow-scrolling: touch;
+          background: #ffffff;
+          color: #333333;
+          font-size: 12px;
+          overflow-x: auto;
+          overflow-y: visible;
+          position: relative;
+        }
+        & .ms-List-cell {
+          min-height: 38px;
+          word-break: break-word;
+        }
     data-automationid="DetailsList"
     data-is-scrollable="false"
   >
@@ -1321,7 +2452,30 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
           aria-describedby={undefined}
           aria-label={undefined}
           aria-labelledby={undefined}
-          className="ms-FocusZone ms-DetailsHeader"
+          className=
+              ms-FocusZone
+              ms-DetailsHeader
+              {
+                background: #ffffff;
+                border-bottom: 1px solid #c8c8c8;
+                box-sizing: content-box;
+                cursor: default;
+                display: inline-block;
+                height: 32px;
+                line-height: 32px;
+                min-width: 100%;
+                padding-bottom: 1px;
+                position: relative;
+                user-select: none;
+                vertical-align: top;
+                white-space: nowrap;
+              }
+              &:hover $check {
+                opacity: 1;
+              }
+              & ms-TooltipHost $checkTooltip {
+                display: block;
+              }
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone7"
           onFocus={[Function]}
@@ -1338,12 +2492,58 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
           <div
             aria-colindex={1}
             aria-labelledby="header6-check"
-            className="ms-DetailsHeader-cell ms-DetailsHeader-cellIsCheck"
+            className=
+                ms-DetailsHeader-cell
+                ms-DetailsHeader-cellIsCheck
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  align-items: center;
+                  border: none;
+                  box-sizing: border-box;
+                  color: #333333;
+                  display: inline-flex;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  height: 32px;
+                  line-height: inherit;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  outline: transparent;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                  position: relative;
+                  text-align: left;
+                  text-overflow: ellipsis;
+                  vertical-align: top;
+                  white-space: nowrap;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
             onClick={[Function]}
             role="columnheader"
           >
             <span
-              className=""
+              className=
+
+
             >
               <div
                 aria-checked={undefined}
@@ -1351,7 +2551,13 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 aria-label={undefined}
                 className=
                     ms-DetailsRow-check
-
+                    ms-DetailsRow-check--isHeader
+                    {
+                      height: 32px;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus {
+                      opacity: 1;
+                    }
                     {
                       align-items: center;
                       background-color: transparent;
@@ -1360,7 +2566,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                       box-sizing: border-box;
                       cursor: default;
                       display: flex;
-                      height: 40px;
+                      height: 32px;
                       justify-content: center;
                       margin-bottom: 0px;
                       margin-left: 0px;
@@ -1391,12 +2597,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                       z-index: 1;
                     }
                     &:hover {
-                      opacity: 1;
-                    }
-                    &.isHeader {
-                      height: 32px;
-                    }
-                    .ms-Fabric--isFocusVisible & {
                       opacity: 1;
                     }
 
@@ -1503,7 +2703,57 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
           <div
             aria-colindex={2}
             aria-sort="none"
-            className="ms-DetailsHeader-cell is-actionable undefined"
+            className=
+                ms-DetailsHeader-cell
+                is-actionable
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  border: none;
+                  box-sizing: border-box;
+                  color: #333333;
+                  display: inline-block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  height: 32px;
+                  line-height: inherit;
+                  margin-bottom: 0;
+                  margin-left: 0;
+                  margin-right: 0;
+                  margin-top: 0;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 8px;
+                  padding-right: 8px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: left;
+                  text-overflow: ellipsis;
+                  vertical-align: top;
+                  white-space: nowrap;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
+                &:hover {
+                  background: #f4f4f4;
+                  color: #333333;
+                }
+                &:active {
+                  background: #eaeaea;
+                }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
             data-item-key="key"
@@ -1516,14 +2766,52 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
             }
           >
             <span
-              className=""
+              className=
+
+                  {
+                    bottom: 0px;
+                    display: block;
+                    left: 0px;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                  }
             >
               <span
                 aria-describedby={undefined}
                 aria-haspopup={false}
                 aria-label={undefined}
                 aria-labelledby="header6-key-name "
-                className="ms-DetailsHeader-cellTitle"
+                className=
+                    ms-DetailsHeader-cellTitle
+                    {
+                      align-items: stretch;
+                      box-sizing: border-box;
+                      display: flex;
+                      flex-direction: row;
+                      justify-content: flex-start;
+                      outline: transparent;
+                      overflow: hidden;
+                      padding-bottom: 0;
+                      padding-left: 12px;
+                      padding-right: 8px;
+                      padding-top: 0;
+                      position: relative;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #666666;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 data-is-focusable={true}
                 id="header6-key"
                 onClick={[Function]}
@@ -1531,7 +2819,13 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 role="button"
               >
                 <span
-                  className="ms-DetailsHeader-cellName"
+                  className=
+                      ms-DetailsHeader-cellName
+                      {
+                        flex: 0 1 auto;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                      }
                   id="header6-key-name"
                 >
                   key
@@ -1542,7 +2836,57 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
           <div
             aria-colindex={3}
             aria-sort="none"
-            className="ms-DetailsHeader-cell is-actionable undefined"
+            className=
+                ms-DetailsHeader-cell
+                is-actionable
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  border: none;
+                  box-sizing: border-box;
+                  color: #333333;
+                  display: inline-block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  height: 32px;
+                  line-height: inherit;
+                  margin-bottom: 0;
+                  margin-left: 0;
+                  margin-right: 0;
+                  margin-top: 0;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 8px;
+                  padding-right: 8px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: left;
+                  text-overflow: ellipsis;
+                  vertical-align: top;
+                  white-space: nowrap;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
+                &:hover {
+                  background: #f4f4f4;
+                  color: #333333;
+                }
+                &:active {
+                  background: #eaeaea;
+                }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
             data-item-key="name"
@@ -1555,14 +2899,52 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
             }
           >
             <span
-              className=""
+              className=
+
+                  {
+                    bottom: 0px;
+                    display: block;
+                    left: 0px;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                  }
             >
               <span
                 aria-describedby={undefined}
                 aria-haspopup={false}
                 aria-label={undefined}
                 aria-labelledby="header6-name-name "
-                className="ms-DetailsHeader-cellTitle"
+                className=
+                    ms-DetailsHeader-cellTitle
+                    {
+                      align-items: stretch;
+                      box-sizing: border-box;
+                      display: flex;
+                      flex-direction: row;
+                      justify-content: flex-start;
+                      outline: transparent;
+                      overflow: hidden;
+                      padding-bottom: 0;
+                      padding-left: 12px;
+                      padding-right: 8px;
+                      padding-top: 0;
+                      position: relative;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #666666;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 data-is-focusable={true}
                 id="header6-name"
                 onClick={[Function]}
@@ -1570,7 +2952,13 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 role="button"
               >
                 <span
-                  className="ms-DetailsHeader-cellName"
+                  className=
+                      ms-DetailsHeader-cellName
+                      {
+                        flex: 0 1 auto;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                      }
                   id="header6-name-name"
                 >
                   name
@@ -1581,7 +2969,57 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
           <div
             aria-colindex={4}
             aria-sort="none"
-            className="ms-DetailsHeader-cell is-actionable undefined"
+            className=
+                ms-DetailsHeader-cell
+                is-actionable
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  border: none;
+                  box-sizing: border-box;
+                  color: #333333;
+                  display: inline-block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  height: 32px;
+                  line-height: inherit;
+                  margin-bottom: 0;
+                  margin-left: 0;
+                  margin-right: 0;
+                  margin-top: 0;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 8px;
+                  padding-right: 8px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: left;
+                  text-overflow: ellipsis;
+                  vertical-align: top;
+                  white-space: nowrap;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
+                &:hover {
+                  background: #f4f4f4;
+                  color: #333333;
+                }
+                &:active {
+                  background: #eaeaea;
+                }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
             data-item-key="value"
@@ -1594,14 +3032,52 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
             }
           >
             <span
-              className=""
+              className=
+
+                  {
+                    bottom: 0px;
+                    display: block;
+                    left: 0px;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                  }
             >
               <span
                 aria-describedby={undefined}
                 aria-haspopup={false}
                 aria-label={undefined}
                 aria-labelledby="header6-value-name "
-                className="ms-DetailsHeader-cellTitle"
+                className=
+                    ms-DetailsHeader-cellTitle
+                    {
+                      align-items: stretch;
+                      box-sizing: border-box;
+                      display: flex;
+                      flex-direction: row;
+                      justify-content: flex-start;
+                      outline: transparent;
+                      overflow: hidden;
+                      padding-bottom: 0;
+                      padding-left: 12px;
+                      padding-right: 8px;
+                      padding-top: 0;
+                      position: relative;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #666666;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 data-is-focusable={true}
                 id="header6-value"
                 onClick={[Function]}
@@ -1609,7 +3085,13 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 role="button"
               >
                 <span
-                  className="ms-DetailsHeader-cellName"
+                  className=
+                      ms-DetailsHeader-cellName
+                      {
+                        flex: 0 1 auto;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                      }
                   id="header6-value-name"
                 >
                   value
@@ -1626,7 +3108,13 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
         <div
           aria-describedby={undefined}
           aria-labelledby={undefined}
-          className="ms-FocusZone"
+          className=
+              ms-FocusZone
+              {
+                display: inline-block;
+                min-height: 1px;
+                min-width: 100%;
+              }
           data-focuszone-id="FocusZone8"
           onBlur={[Function]}
           onFocus={[Function]}
