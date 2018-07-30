@@ -3,7 +3,6 @@ import { IStyleableComponent } from '../../Foundation';
 
 export interface IStackProps extends IStyleableComponent<IStackProps, IStackStyles> {
   renderAs?: string | React.ReactType<IStackProps>;
-  children?: React.ReactNode;
   className?: string;
 
   fill?: boolean;

@@ -55,6 +55,10 @@ export type IViewComponentProps<TViewProps, TProcessedStyledSet> = TViewProps &
 
 /**
  * Component options used by foundation to tie elements together.
+ * @param {IComponentOptions} displayName Display name to identify component in React hierarchy.
+ * @param {IStylesProp<TViewProps, TStyleSet>} styles Styles prop to pass into component.
+ * @param {IStateComponent} view Functional React view component.
+ * @param {TStatics} statics Optional static object to pass into constructed component.
  */
 export interface IComponentOptions<TViewProps, TStyleSet, TProcessedStyledSet, TTheme, TStatics> {
   displayName: string;
@@ -102,7 +106,7 @@ export interface IStylingProviders<TStyleSet, TProcessedStyleSet, TTheme> {
  * TComponentProps: A styleable props interface for the created component.
  * TViewProps: The props specific to the view, including processed properties outputted by optional state component. If state
  * component is not provided, TComponentProps is the same as TViewProps.
- * TStyleSet: The type provided by styles properties.
+ * TStyleSet: The type for styles properties.
  * TProcessedStyleSet: The type provided by mergeStyleSets provider after processing TStyleSet and provided to views.
  * TTheme: The type for theme properties as well as the getTheme provider.
  *

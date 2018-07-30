@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Customizer, ITheme, createTheme, DefaultPalette } from 'office-ui-fabric-react';
+import { Customizer } from 'office-ui-fabric-react/lib/Utilities';
+import { ITheme, createTheme, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import {
   CollapsibleSection,
@@ -8,7 +9,7 @@ import {
   ICollapsibleSectionStyles,
   ICollapsibleSectionTitleStyleProps,
   ICollapsibleSectionTitleStyles
-} from '../../CollapsibleSection';
+} from '@uifabric/experiments/lib/CollapsibleSection';
 
 function getStyles(props: ICollapsibleSectionStyleProps): Partial<ICollapsibleSectionStyles> {
   const { theme } = props;

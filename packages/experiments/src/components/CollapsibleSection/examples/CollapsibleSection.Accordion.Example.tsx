@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
-// TODO: move this file to Accordion and fix this import
-import { Accordion } from '../../Accordion/Accordion';
+// TODO: move this file to Accordion
+import { Accordion } from '@uifabric/experiments/lib/Accordion';
 
 export class CollapsibleSectionAccordionExample extends React.Component<{}, {}> {
   public render(): JSX.Element {

@@ -3,7 +3,6 @@ import { IStyleableComponent } from '../../../Foundation';
 
 export interface IStackItemProps extends IStyleableComponent<IStackItemProps, IStackItemStyles> {
   renderAs?: string | React.ReactType<IStackItemProps>;
-  children?: React.ReactNode;
 
   gap?: number;
   vertical?: boolean;

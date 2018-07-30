@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
-import { CollapsibleSection } from '../CollapsibleSection';
+import { CollapsibleSection } from '@uifabric/experiments/lib/CollapsibleSection';
 
 export class CollapsibleSectionBasicExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
