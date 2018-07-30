@@ -1,10 +1,10 @@
 import { IStackedBarChartStyleProps, IStackedBarChartStyles } from './StackedBarChart.types';
 
 export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartStyles => {
-  const { className, theme, width, height, barHeight } = props;
+  const { className, width, height } = props;
 
-  const chartWidth = width + 30;
-  const chartPadding = 30;
+  const chartWidth = width;
+  const chartPadding = 10;
   const chartHeight = height;
   return {
     root: [
@@ -23,8 +23,8 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
     ],
     chartTitle: [
       {
-        textAlign: 'center',
-        ...theme.fonts.mediumPlus
+        padding: chartPadding,
+        display: 'flex'
       }
     ],
     bars: [
@@ -34,8 +34,21 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
     ],
     legend: [
       {
-        transform: `translate(20px, ${barHeight! + 30}px)`
+        listStyle: 'none',
+        display: 'flex',
+        flexWrap: 'wrap',
+        paddingLeft: '30px',
+        paddingRight: '30px'
       }
-    ]
+    ],
+    subTitle: [{ width: '100%' }],
+    value: [
+      {
+        width: '100%',
+        textAlign: 'right'
+      }
+    ],
+    legendBar: [{ display: 'flex', padding: '10px 10px 0px 0px' }],
+    legendText: [{ marginTop: '-5px', paddingLeft: '5px' }]
   };
 };

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { HorizontalBarChart, IHorizontalBarChartProps } from '@uifabric/charting';
-
+import { customizable } from 'office-ui-fabric-react/lib/Utilities';
+@customizable('StackedBarChartBasicExample', ['theme', 'styles'])
 export class HorizontalBarChartBasicExample extends React.Component<IHorizontalBarChartProps, {}> {
   constructor(props: IHorizontalBarChartProps) {
     super(props);
