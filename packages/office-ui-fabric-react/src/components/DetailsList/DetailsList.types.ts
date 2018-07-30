@@ -12,7 +12,8 @@ import {
 } from './../../utilities/dragdrop/index';
 import {
   IGroup,
-  IGroupRenderProps
+  IGroupRenderProps,
+  IGroupDividerProps
 } from '../GroupedList/index';
 import { IDetailsRowProps } from '../DetailsList/DetailsRow';
 import { IDetailsHeaderProps } from './DetailsHeader';
@@ -78,7 +79,7 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
   groups?: IGroup[];
 
   /** Optional override properties to render groups. The definition for IGroupRenderProps can be found under the GroupedList component. */
-  groupProps?: IGroupRenderProps;
+  groupProps?: IDetailsGroupRenderProps;
 
   /** Optional selection model to track selection state.  */
   selection?: ISelection;
@@ -495,4 +496,13 @@ export enum CheckboxVisibility {
    * Hide checkboxes.
    */
   hidden = 2
+}
+
+export interface IDetailsGroupRenderProps extends IGroupRenderProps {
+  onRenderFooter?: IRenderFunction<IDetailsGroupDividerProps>;
+  onRenderHeader?: IRenderFunction<IDetailsGroupDividerProps>;
+}
+
+export interface IDetailsGroupDividerProps extends IGroupDividerProps {
+  detailsRowProps?: IDetailsRowProps;
 }
