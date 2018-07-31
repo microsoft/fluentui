@@ -1,9 +1,8 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { people, groupOne, groupTwo } from '../../ExtendedPicker';
+import { people, groupOne, groupTwo } from '../../../ExtendedPicker';
 import 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/examples/PeoplePicker.Types.Example.scss';
 import {
   IExtendedPersonaProps,
@@ -22,7 +21,7 @@ export interface IPeopleSelectedItemsListExampleState {
   controlledComponent: boolean;
 }
 
-export class PeopleSelectedItemsListExample extends BaseComponent<{}, IPeopleSelectedItemsListExampleState> {
+export class PeopleSelectedItemsListExample extends React.Component<{}, IPeopleSelectedItemsListExampleState> {
   private _selectionList: SelectedPeopleList;
   private index: number;
   private selection: Selection = new Selection({ onSelectionChanged: () => this._onSelectionChange() });

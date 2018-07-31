@@ -19,10 +19,12 @@ import {
   IDetailsList,
   IDetailsListProps,
   IDetailsListStyles,
-  IDetailsListStyleProps
+  IDetailsListStyleProps,
+  IDetailsGroupRenderProps
 } from '../DetailsList/DetailsList.types';
 import { DetailsHeader } from '../DetailsList/DetailsHeader';
 import { IDetailsHeader, SelectAllVisibility, IDetailsHeaderProps } from '../DetailsList/DetailsHeader.types';
+import { IDetailsFooterProps } from '../DetailsList/DetailsFooter.types';
 import { DetailsRowBase } from '../DetailsList/DetailsRow.base';
 import { DetailsRow } from '../DetailsList/DetailsRow';
 import { IDetailsRowProps } from '../DetailsList/DetailsRow.types';
@@ -37,12 +39,12 @@ import {
 } from '../../utilities/selection/index';
 
 import { DragDropHelper } from '../../utilities/dragdrop/DragDropHelper';
-import { IGroupedList, GroupedList } from '../../GroupedList';
+import { IGroupedList, GroupedList, IGroupDividerProps, IGroupRenderProps } from '../../GroupedList';
 import { IList, List, IListProps, ScrollToMode } from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
 import { GetGroupCount } from '../../utilities/groupedList/GroupedListUtility';
 
-export const getClassNames = classNamesFunction<IDetailsListStyleProps, IDetailsListStyles>();
+const getClassNames = classNamesFunction<IDetailsListStyleProps, IDetailsListStyles>();
 
 export interface IDetailsListState {
   focusedItemIndex: number;
@@ -338,7 +340,12 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       selectAllVisibility = SelectAllVisibility.none;
     }
 
-    const { onRenderDetailsHeader = this._onRenderDetailsHeader } = this.props;
+    const {
+      onRenderDetailsHeader = this._onRenderDetailsHeader,
+      onRenderDetailsFooter = this._onRenderDetailsFooter
+    } = this.props;
+
+    const detailsFooterProps = this._getDetailsFooterProps();
 
     const rowCount = (isHeaderVisible ? 1 : 0) + GetGroupCount(groups) + (items ? items.length : 0);
 
@@ -422,9 +429,9 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
               >
                 {groups ? (
                   <GroupedList
-                    ref={this._groupedList}
+                    componentRef={this._groupedList}
                     groups={groups}
-                    groupProps={groupProps}
+                    groupProps={groupProps ? this._getGroupProps(groupProps) : undefined}
                     items={items}
                     onRenderCell={this._onRenderCell}
                     selection={selection}
@@ -452,6 +459,12 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
               </SelectionZone>
             </FocusZone>
           </div>
+          {onRenderDetailsFooter(
+            {
+              ...detailsFooterProps
+            },
+            this._onRenderDetailsFooter
+          )}
         </div>
       </div>
     );
@@ -471,6 +484,13 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     defaultRender?: IRenderFunction<IDetailsHeaderProps>
   ): JSX.Element => {
     return <DetailsHeader {...detailsHeaderProps} />;
+  };
+
+  private _onRenderDetailsFooter = (
+    detailsFooterProps: IDetailsFooterProps,
+    defaultRender?: IRenderFunction<IDetailsFooterProps>
+  ): JSX.Element | null => {
+    return null;
   };
 
   private _onRenderListCell = (nestingDepth: number): ((item: any, itemIndex: number) => React.ReactNode) => {
@@ -494,7 +514,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       getRowAriaDescribedBy,
       checkButtonAriaLabel,
       checkboxCellClassName,
-      groupProps
+      groupProps,
+      useReducedRowRenderer
     } = this.props;
     const collapseAllVisibility = groupProps && groupProps.collapseAllVisibility;
     const selection = this._selection;
@@ -521,7 +542,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       getRowAriaLabel: getRowAriaLabel,
       getRowAriaDescribedBy: getRowAriaDescribedBy,
       checkButtonAriaLabel: checkButtonAriaLabel,
-      checkboxCellClassName: checkboxCellClassName
+      checkboxCellClassName: checkboxCellClassName,
+      useReducedRowRenderer: useReducedRowRenderer
     };
 
     if (!item) {
@@ -879,14 +901,18 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     if (!el) {
       return;
     }
-    const index = Number(el.getAttribute('data-item-index'));
-    if (index >= 0) {
-      if (onActiveItemChanged) {
-        onActiveItemChanged(items[index], index, ev);
+
+    // Check and assign index only if the event was raised from any DetailsRow element
+    if (el.getAttribute('data-item-index')) {
+      const index = Number(el.getAttribute('data-item-index'));
+      if (index >= 0) {
+        if (onActiveItemChanged) {
+          onActiveItemChanged(items[index], index, ev);
+        }
+        this.setState({
+          focusedItemIndex: index
+        });
       }
-      this.setState({
-        focusedItemIndex: index
-      });
     }
   }
 
@@ -921,6 +947,60 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       onScroll(e);
     }
   };
+
+  private _getDetailsFooterProps(): IDetailsFooterProps | undefined {
+    const { adjustedColumns: columns } = this.state;
+    const detailsFooterProps: IDetailsFooterProps = {
+      columns: columns as IColumn[],
+      groupNestingDepth: this._getGroupNestingDepth(),
+      selection: this._selection
+    };
+    return {
+      ...detailsFooterProps
+    };
+  }
+  private _getGroupProps(detailsGroupProps: IDetailsGroupRenderProps): IGroupRenderProps {
+    const {
+      onRenderFooter: onRenderDetailsGroupFooter,
+      onRenderHeader: onRenderDetailsGroupHeader
+    } = detailsGroupProps;
+    const { adjustedColumns: columns } = this.state;
+    const groupNestingDepth = this._getGroupNestingDepth();
+    const onRenderFooter = onRenderDetailsGroupFooter
+      ? (props: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
+          return onRenderDetailsGroupFooter(
+            {
+              ...props,
+              columns: columns,
+              groupNestingDepth: groupNestingDepth,
+              selection: this._selection
+            },
+            defaultRender
+          );
+        }
+      : undefined;
+
+    const onRenderHeader = onRenderDetailsGroupHeader
+      ? (props: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
+          return onRenderDetailsGroupHeader(
+            {
+              ...props,
+              columns: columns,
+              groupNestingDepth: groupNestingDepth,
+              selection: this._selection
+            },
+            defaultRender
+          );
+        }
+      : undefined;
+
+    const groupProps = detailsGroupProps as IGroupRenderProps;
+    return {
+      ...groupProps,
+      onRenderFooter,
+      onRenderHeader
+    };
+  }
 }
 
 export function buildColumns(

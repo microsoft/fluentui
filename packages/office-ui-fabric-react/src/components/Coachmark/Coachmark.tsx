@@ -10,7 +10,7 @@ import { Beak, BEAK_HEIGHT, BEAK_WIDTH } from './Beak/Beak';
 import { DirectionalHint } from '../../common/DirectionalHint';
 
 // Coachmark
-import { ICoachmarkTypes } from './Coachmark.types';
+import { ICoachmarkProps } from './Coachmark.types';
 import {
   COACHMARK_HEIGHT,
   COACHMARK_WIDTH,
@@ -18,7 +18,7 @@ import {
   ICoachmarkStyles,
   ICoachmarkStyleProps
 } from './Coachmark.styles';
-import { FocusTrapZone } from '../FocusTrapZone';
+import { FocusTrapZone } from '../../FocusTrapZone';
 
 const getClassNames = classNamesFunction<ICoachmarkStyleProps, ICoachmarkStyles>();
 
@@ -102,8 +102,8 @@ export interface ICoachmarkState {
   alertText?: string;
 }
 
-export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
-  public static defaultProps: Partial<ICoachmarkTypes> = {
+export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
+  public static defaultProps: Partial<ICoachmarkProps> = {
     isCollapsed: true,
     mouseProximityOffset: 10,
     delayBeforeMouseOpen: 3600, // The approximate time the coachmark shows up
@@ -129,7 +129,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
    */
   private _targetElementRect: ClientRect;
 
-  constructor(props: ICoachmarkTypes) {
+  constructor(props: ICoachmarkProps) {
     super(props);
 
     // Set defaults for state
@@ -240,12 +240,12 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
                   >
                     {isCollapsed && [
                       ariaLabelledBy && (
-                        <p id={ariaLabelledBy} className={classNames.ariaContainer}>
+                        <p id={ariaLabelledBy} key={0} className={classNames.ariaContainer}>
                           {ariaLabelledByText}
                         </p>
                       ),
                       ariaDescribedBy && (
-                        <p id={ariaDescribedBy} className={classNames.ariaContainer}>
+                        <p id={ariaDescribedBy} key={1} className={classNames.ariaContainer}>
                           {ariaDescribedByText}
                         </p>
                       )
@@ -267,18 +267,18 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     );
   }
 
-  public componentWillReceiveProps(newProps: ICoachmarkTypes): void {
+  public componentWillReceiveProps(newProps: ICoachmarkProps): void {
     if (this.props.isCollapsed && !newProps.isCollapsed) {
       // The coachmark is about to open
       this._openCoachmark();
     }
   }
 
-  public shouldComponentUpdate(newProps: ICoachmarkTypes, newState: ICoachmarkState): boolean {
+  public shouldComponentUpdate(newProps: ICoachmarkProps, newState: ICoachmarkState): boolean {
     return !shallowCompare(newProps, this.props) || !shallowCompare(newState, this.state);
   }
 
-  public componentDidUpdate(prevProps: ICoachmarkTypes, prevState: ICoachmarkState): void {
+  public componentDidUpdate(prevProps: ICoachmarkProps, prevState: ICoachmarkState): void {
     if (
       prevState.targetAlignment !== this.state.targetAlignment ||
       prevState.targetPosition !== this.state.targetPosition

@@ -2,7 +2,7 @@ import * as React from 'react';
 
 /* Dependent Components */
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { CardFrame, ICardDropDownOption } from '../Card/CardFrame';
+import { CardFrame, ICardDropDownOption } from '../Card/CardFrame/index';
 
 /* Types for props and styles */
 import { IRecommendationProps, IRecommendationStyles } from './Recommendation.types';
@@ -60,6 +60,7 @@ export class Recommendation extends React.Component<IRecommendationProps, {}> {
         seperatorColor={CardComponentStyles.separatorColor}
         titleTextColor={CardComponentStyles.frameHeaderColor}
         cardDropDownOptions={this.recommendationMenuItems}
+        disableDrag={true}
       >
         <div className={classNames.recommendationContainer}>
           <div className={classNames.recommendationTextContainer}>

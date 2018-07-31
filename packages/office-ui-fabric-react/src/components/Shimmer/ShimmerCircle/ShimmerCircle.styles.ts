@@ -1,5 +1,5 @@
 import { IShimmerCircleStyleProps, IShimmerCircleStyles } from './ShimmerCircle.types';
-import { getGlobalClassNames, HighContrastSelector } from '../../../Styling';
+import { getGlobalClassNames, HighContrastSelector, IRawStyle } from '../../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-ShimmerCircle-root',
@@ -7,10 +7,12 @@ const GlobalClassNames = {
 };
 
 export function getStyles(props: IShimmerCircleStyleProps): IShimmerCircleStyles {
-  const { height, theme } = props;
+  const { height, theme, borderStyle } = props;
 
   const { palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
+  const styles: IRawStyle = !!borderStyle ? borderStyle : {};
 
   return {
     root: [
@@ -28,7 +30,8 @@ export function getStyles(props: IShimmerCircleStyleProps): IShimmerCircleStyles
             borderColor: 'Window'
           }
         }
-      }
+      },
+      styles
     ],
     svg: [
       classNames.svg,

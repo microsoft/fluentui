@@ -1,11 +1,14 @@
 import { IColumn } from './DetailsList.types';
 import { IDetailsRowStyles } from './DetailsRow.types';
+import { IBaseProps, IRefObject } from '../../Utilities';
 
-export interface IDetailsRowFieldsProps {
+export interface IDetailsRowFields {}
+
+export interface IDetailsRowFieldsProps extends IBaseProps<IDetailsRowFields> {
   /**
    * Ref of component
    */
-  componentRef?: () => void;
+  componentRef?: IRefObject<IDetailsRowFields>;
 
   /**
    * Data source for this component

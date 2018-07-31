@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
-import { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IIconProps } from '../Icon/Icon.types';
 import { IKeytipProps } from '../../Keytip';
 
@@ -23,7 +23,7 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
    * Optional callback to access the ICheckbox interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ICheckbox | null) => void;
+  componentRef?: IRefObject<ICheckbox>;
 
   /**
    * Additional class name to provide on the root element, in addition to the ms-Checkbox class.

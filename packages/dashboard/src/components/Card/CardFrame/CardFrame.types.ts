@@ -57,6 +57,17 @@ export interface ICardFrameProps {
    * Color property for the seperator
    */
   seperatorColor?: string;
+
+  /**
+   * Hyperlink URL for title
+   */
+  href?: string;
+
+  /**
+   * Whether the card is draggable or not
+   * @default false
+   */
+  disableDrag?: boolean;
 }
 
 export interface ICardFrameStyles {

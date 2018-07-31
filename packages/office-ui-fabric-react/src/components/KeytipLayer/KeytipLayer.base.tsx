@@ -105,7 +105,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
 
     const { keytips, visibleKeytips } = this.state;
 
-    this._classNames = getClassNames(styles!);
+    this._classNames = getClassNames(styles, {});
 
     return (
       <Layer styles={getLayerStyles}>

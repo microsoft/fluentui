@@ -20,7 +20,7 @@ scripts/ @dzearing
 
 #### Apps
 # component-demo/
-# fabric-website/
+fabric-website/ @jordandrako
 # ssr-tests/
 # test-bundle-button/ @dzearing
 # todo-app/
@@ -88,7 +88,7 @@ OverflowSet/  @micahgodbolt
 # Overlay/
 # Panel/
 # Persona/
-Persona/PersonaCoin/ @mtennoe @jakob101
+PersonaCoin/ @mtennoe @jakob101
 Persona/PersonaConsts.tsx @mtennoe @jakob101
 pickers/  @joschect
 # Pivot/

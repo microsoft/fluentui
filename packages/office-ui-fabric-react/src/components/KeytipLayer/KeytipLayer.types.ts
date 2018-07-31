@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IStyle } from '../../Styling';
 import { IKeytipTransitionKey } from '../../utilities/keytips/IKeytipTransitionKey';
 
@@ -10,7 +10,7 @@ export interface IKeytipLayerProps extends React.Props<IKeytipLayer> {
    * Optional callback to access the KeytipLayer component. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IKeytipLayer | null) => void;
+  componentRef?: IRefObject<IKeytipLayer>;
 
   /**
    * String to put inside the layer to be used for the aria-describedby for the component with the keytip

@@ -5,10 +5,30 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
   className="docs-TextFieldExample"
 >
   <div
-    className="ms-TextField ms-TextField--multiline undefined"
+    className=
+        ms-TextField
+        ms-TextField--multiline
+        {
+          box-shadow: none;
+          box-sizing: border-box;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          border-width: 2px;
+        }
   >
     <div
-      className="ms-TextField-wrapper"
+      className=
+          ms-TextField-wrapper
+
     >
       <label
         className=
@@ -30,17 +50,88 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
               word-wrap: break-word;
             }
         htmlFor="TextField0"
+        required={undefined}
       >
         Standard
       </label>
       <div
-        className="ms-TextField-fieldGroup"
+        className=
+            ms-TextField-fieldGroup
+            {
+              align-items: stretch;
+              background: #ffffff;
+              border: 1px solid #a6a6a6;
+              box-shadow: none;
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: row;
+              height: auto;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              min-height: 60px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+            }
+            &:-ms-clear {
+              display: none;
+            }
+            &:hover {
+              border-color: #212121;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+            }
+            &::placeholder {
+              color: #666666;
+              opacity: 1;
+            }
+            &:-ms-input-placeholder {
+              color: #666666;
+              opacity: 1;
+            }
       >
         <textarea
           aria-describedby={undefined}
           aria-invalid={false}
           aria-label={undefined}
-          className="ms-TextField-field"
+          className=
+              ms-TextField-field
+              {
+                background-color: transparent;
+                background: none;
+                border-radius: 0px;
+                border: none;
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #333333;
+                flex-grow: 1;
+                font-size: 14px;
+                line-height: 17px;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                min-width: 0px;
+                outline: 0px;
+                overflow: auto;
+                padding-bottom: 0;
+                padding-left: 12px;
+                padding-right: 12px;
+                padding-top: 6px;
+                text-overflow: ellipsis;
+                width: 100%;
+              }
+              &:active, &:focus, &:hover {
+                outline: 0px;
+              }
+              &::placeholder {
+                color: #666666;
+              }
           id="TextField0"
           onBlur={[Function]}
           onChange={[Function]}
@@ -54,10 +145,31 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
     </div>
   </div>
   <div
-    className="ms-TextField is-disabled undefined ms-TextField--multiline undefined"
+    className=
+        ms-TextField
+        is-disabled
+        ms-TextField--multiline
+        {
+          box-shadow: none;
+          box-sizing: border-box;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          border-width: 2px;
+        }
   >
     <div
-      className="ms-TextField-wrapper"
+      className=
+          ms-TextField-wrapper
+
     >
       <label
         className=
@@ -79,17 +191,88 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
               word-wrap: break-word;
             }
         htmlFor="TextField2"
+        required={undefined}
       >
         Disabled
       </label>
       <div
-        className="ms-TextField-fieldGroup"
+        className=
+            ms-TextField-fieldGroup
+            {
+              align-items: stretch;
+              background-color: #f4f4f4;
+              background: #ffffff;
+              border-color: #f4f4f4;
+              border: 1px solid #a6a6a6;
+              box-shadow: none;
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: row;
+              height: auto;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              min-height: 60px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+            }
+            &:-ms-clear {
+              display: none;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+            }
+            &::placeholder {
+              color: #666666;
+              opacity: 1;
+            }
+            &:-ms-input-placeholder {
+              color: #666666;
+              opacity: 1;
+            }
       >
         <textarea
           aria-describedby={undefined}
           aria-invalid={false}
           aria-label={undefined}
-          className="ms-TextField-field"
+          className=
+              ms-TextField-field
+              {
+                background-color: transparent;
+                background: none;
+                border-color: transparent;
+                border-radius: 0px;
+                border: none;
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #333333;
+                flex-grow: 1;
+                font-size: 14px;
+                line-height: 17px;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                min-width: 0px;
+                outline: 0px;
+                overflow: auto;
+                padding-bottom: 0;
+                padding-left: 12px;
+                padding-right: 12px;
+                padding-top: 6px;
+                text-overflow: ellipsis;
+                width: 100%;
+              }
+              &:active, &:focus, &:hover {
+                outline: 0px;
+              }
+              &::placeholder {
+                color: #666666;
+              }
           disabled={true}
           id="TextField2"
           onBlur={[Function]}
@@ -104,10 +287,31 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
     </div>
   </div>
   <div
-    className="ms-TextField ms-TextField--multiline undefined"
+    className=
+        ms-TextField
+        is-required
+        ms-TextField--multiline
+        {
+          box-shadow: none;
+          box-sizing: border-box;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          border-width: 2px;
+        }
   >
     <div
-      className="ms-TextField-wrapper"
+      className=
+          ms-TextField-wrapper
+
     >
       <label
         className=
@@ -128,18 +332,94 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
               padding-top: 5px;
               word-wrap: break-word;
             }
+            &::after {
+              color: #a80000;
+              content: ' *';
+              padding-right: 12px;
+            }
         htmlFor="TextField4"
+        required={true}
       >
         Required
       </label>
       <div
-        className="ms-TextField-fieldGroup"
+        className=
+            ms-TextField-fieldGroup
+            {
+              align-items: stretch;
+              background: #ffffff;
+              border: 1px solid #a6a6a6;
+              box-shadow: none;
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: row;
+              height: auto;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              min-height: 60px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+            }
+            &:-ms-clear {
+              display: none;
+            }
+            &:hover {
+              border-color: #212121;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+            }
+            &::placeholder {
+              color: #666666;
+              opacity: 1;
+            }
+            &:-ms-input-placeholder {
+              color: #666666;
+              opacity: 1;
+            }
       >
         <textarea
           aria-describedby={undefined}
           aria-invalid={false}
           aria-label={undefined}
-          className="ms-TextField-field"
+          className=
+              ms-TextField-field
+              {
+                background-color: transparent;
+                background: none;
+                border-radius: 0px;
+                border: none;
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #333333;
+                flex-grow: 1;
+                font-size: 14px;
+                line-height: 17px;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                min-width: 0px;
+                outline: 0px;
+                overflow: auto;
+                padding-bottom: 0;
+                padding-left: 12px;
+                padding-right: 12px;
+                padding-top: 6px;
+                text-overflow: ellipsis;
+                width: 100%;
+              }
+              &:active, &:focus, &:hover {
+                outline: 0px;
+              }
+              &::placeholder {
+                color: #666666;
+              }
           id="TextField4"
           onBlur={[Function]}
           onChange={[Function]}
@@ -154,10 +434,35 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
     </div>
   </div>
   <div
-    className="ms-TextField ms-TextField--multiline undefined"
+    className=
+        ms-TextField
+        ms-TextField--multiline
+        {
+          box-shadow: none;
+          box-sizing: border-box;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          border-width: 2px;
+        }
   >
     <div
-      className="ms-TextField-wrapper"
+      className=
+          ms-TextField-wrapper
+          {
+            border-color: #a80000;
+          }
+          &:focus, &:hover {
+            border-color: #a80000;
+          }
     >
       <label
         className=
@@ -179,17 +484,92 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
               word-wrap: break-word;
             }
         htmlFor="TextField6"
+        required={undefined}
       >
         With error message
       </label>
       <div
-        className="ms-TextField-fieldGroup"
+        className=
+            ms-TextField-fieldGroup
+            {
+              align-items: stretch;
+              background: #ffffff;
+              border-color: #a80000;
+              border: 1px solid #a6a6a6;
+              box-shadow: none;
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: row;
+              height: auto;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              min-height: 60px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+            }
+            &:-ms-clear {
+              display: none;
+            }
+            &:hover {
+              border-color: #212121;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+            }
+            &::placeholder {
+              color: #666666;
+              opacity: 1;
+            }
+            &:-ms-input-placeholder {
+              color: #666666;
+              opacity: 1;
+            }
+            &:focus, &:hover {
+              border-color: #a80000;
+            }
       >
         <textarea
           aria-describedby="TextFieldDescription7"
           aria-invalid={false}
           aria-label={undefined}
-          className="ms-TextField-field"
+          className=
+              ms-TextField-field
+              {
+                background-color: transparent;
+                background: none;
+                border-radius: 0px;
+                border: none;
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #333333;
+                flex-grow: 1;
+                font-size: 14px;
+                line-height: 17px;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                min-width: 0px;
+                outline: 0px;
+                overflow: auto;
+                padding-bottom: 0;
+                padding-left: 12px;
+                padding-right: 12px;
+                padding-top: 6px;
+                text-overflow: ellipsis;
+                width: 100%;
+              }
+              &:active, &:focus, &:hover {
+                outline: 0px;
+              }
+              &::placeholder {
+                color: #666666;
+              }
           id="TextField6"
           onBlur={[Function]}
           onChange={[Function]}
@@ -210,10 +590,30 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
     </span>
   </div>
   <div
-    className="ms-TextField ms-TextField--multiline undefined"
+    className=
+        ms-TextField
+        ms-TextField--multiline
+        {
+          box-shadow: none;
+          box-sizing: border-box;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          border-width: 2px;
+        }
   >
     <div
-      className="ms-TextField-wrapper"
+      className=
+          ms-TextField-wrapper
+
     >
       <label
         className=
@@ -235,17 +635,90 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
               word-wrap: break-word;
             }
         htmlFor="TextField8"
+        required={undefined}
       >
         Non-resizable
       </label>
       <div
-        className="ms-TextField-fieldGroup"
+        className=
+            ms-TextField-fieldGroup
+            {
+              align-items: stretch;
+              background: #ffffff;
+              border: 1px solid #a6a6a6;
+              box-shadow: none;
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: row;
+              height: auto;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              min-height: 60px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+            }
+            &:-ms-clear {
+              display: none;
+            }
+            &:hover {
+              border-color: #212121;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+            }
+            &::placeholder {
+              color: #666666;
+              opacity: 1;
+            }
+            &:-ms-input-placeholder {
+              color: #666666;
+              opacity: 1;
+            }
       >
         <textarea
           aria-describedby={undefined}
           aria-invalid={false}
           aria-label={undefined}
-          className="ms-TextField-field ms-TextField-field--unresizable"
+          className=
+              ms-TextField-field
+              ms-TextField--unresizable
+              {
+                background-color: transparent;
+                background: none;
+                border-radius: 0px;
+                border: none;
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #333333;
+                flex-grow: 1;
+                font-size: 14px;
+                line-height: 17px;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                min-width: 0px;
+                outline: 0px;
+                overflow: auto;
+                padding-bottom: 0;
+                padding-left: 12px;
+                padding-right: 12px;
+                padding-top: 6px;
+                resize: none;
+                text-overflow: ellipsis;
+                width: 100%;
+              }
+              &:active, &:focus, &:hover {
+                outline: 0px;
+              }
+              &::placeholder {
+                color: #666666;
+              }
           id="TextField8"
           onBlur={[Function]}
           onChange={[Function]}
@@ -258,10 +731,30 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
     </div>
   </div>
   <div
-    className="ms-TextField ms-TextField--multiline undefined"
+    className=
+        ms-TextField
+        ms-TextField--multiline
+        {
+          box-shadow: none;
+          box-sizing: border-box;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          border-width: 2px;
+        }
   >
     <div
-      className="ms-TextField-wrapper"
+      className=
+          ms-TextField-wrapper
+
     >
       <label
         className=
@@ -283,17 +776,88 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
               word-wrap: break-word;
             }
         htmlFor="TextField10"
+        required={undefined}
       >
         With auto adjusting height
       </label>
       <div
-        className="ms-TextField-fieldGroup"
+        className=
+            ms-TextField-fieldGroup
+            {
+              align-items: stretch;
+              background: #ffffff;
+              border: 1px solid #a6a6a6;
+              box-shadow: none;
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: row;
+              height: auto;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              min-height: 60px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+            }
+            &:-ms-clear {
+              display: none;
+            }
+            &:hover {
+              border-color: #212121;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+            }
+            &::placeholder {
+              color: #666666;
+              opacity: 1;
+            }
+            &:-ms-input-placeholder {
+              color: #666666;
+              opacity: 1;
+            }
       >
         <textarea
           aria-describedby={undefined}
           aria-invalid={false}
           aria-label={undefined}
-          className="ms-TextField-field"
+          className=
+              ms-TextField-field
+              {
+                background-color: transparent;
+                background: none;
+                border-radius: 0px;
+                border: none;
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #333333;
+                flex-grow: 1;
+                font-size: 14px;
+                line-height: 17px;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                min-width: 0px;
+                outline: 0px;
+                overflow: auto;
+                padding-bottom: 0;
+                padding-left: 12px;
+                padding-right: 12px;
+                padding-top: 6px;
+                text-overflow: ellipsis;
+                width: 100%;
+              }
+              &:active, &:focus, &:hover {
+                outline: 0px;
+              }
+              &::placeholder {
+                color: #666666;
+              }
           id="TextField10"
           onBlur={[Function]}
           onChange={[Function]}

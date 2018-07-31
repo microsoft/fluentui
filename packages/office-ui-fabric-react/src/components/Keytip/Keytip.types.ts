@@ -1,6 +1,6 @@
 import { ICalloutProps } from '../../Callout';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject, IPoint } from '../../Utilities';
+import { IRefObject, IStyleFunctionOrObject, IPoint } from '../../Utilities';
 
 export interface IKeytip {}
 
@@ -9,7 +9,7 @@ export interface IKeytipProps {
    * Optional callback to access the Keytip component. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IKeytip | null) => void;
+  componentRef?: IRefObject<IKeytip>;
 
   /**
    * Content to put inside the keytip

@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/foundation",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Foundation library for building Fabric components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -22,7 +22,6 @@
     "@types/enzyme": "3.1.5",
     "@types/enzyme-adapter-react-16": "1.0.1",
     "@types/jest": "23.0.0",
-    "@types/prop-types": "15.5.2",
     "@types/react": "16.3.16",
     "@types/react-dom": "16.0.5",
     "@types/react-test-renderer": "^16.0.0",

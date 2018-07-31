@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, customizable } from '../../../Utilities';
+import { BaseComponent, classNamesFunction } from '../../../Utilities';
 import {
   IShimmerElementsGroupProps,
   IShimmerElementsGroupStyleProps,
@@ -16,7 +16,6 @@ import { IShimmerCircleStyles } from '../ShimmerCircle/ShimmerCircle.types';
 
 const getClassNames = classNamesFunction<IShimmerElementsGroupStyleProps, IShimmerElementsGroupStyles>();
 
-@customizable('ShimmerElementsGroup', ['theme'])
 export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGroupProps, {}> {
   public static defaultProps: IShimmerElementsGroupProps = {
     flexWrap: false

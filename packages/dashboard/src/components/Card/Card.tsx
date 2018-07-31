@@ -24,12 +24,17 @@ export class Card extends React.Component<ICardProps, ICardState> {
   }
 
   public render(): JSX.Element {
-    const { cardFrameContent, header, cardContentList, actions } = this.props;
+    const { cardFrameContent, header, cardContentList, actions, disableDrag } = this.props;
     const getClassNames = classNamesFunction<ICardProps, ICardStyles>();
     const classNames = getClassNames(getStyles);
     return (
       <div className={classNames.root}>
-        <CardFrame cardTitle={cardFrameContent.cardTitle} cardDropDownOptions={cardFrameContent.cardDropDownOptions}>
+        <CardFrame
+          cardTitle={cardFrameContent.cardTitle}
+          cardDropDownOptions={cardFrameContent.cardDropDownOptions}
+          href={cardFrameContent.href}
+          disableDrag={disableDrag === undefined ? false : disableDrag}
+        >
           <Layout header={header} contentArea={cardContentList} cardSize={this.state.cardSize} actions={actions} />
         </CardFrame>
       </div>

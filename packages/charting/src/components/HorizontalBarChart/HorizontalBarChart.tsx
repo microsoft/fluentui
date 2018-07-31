@@ -1,4 +1,4 @@
-import { styled } from '../../Utilities';
+import { styled } from 'office-ui-fabric-react/lib/Utilities';
 import {
   IHorizontalBarChartProps,
   IHorizontalBarChartStyleProps,
