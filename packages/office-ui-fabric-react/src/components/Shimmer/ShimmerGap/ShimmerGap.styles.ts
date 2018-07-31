@@ -9,13 +9,13 @@ export function getStyles(props: IShimmerGapStyleProps): IShimmerGapStyles {
   const { height, borderStyle, theme } = props;
 
   const { palette } = theme;
-  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+  const globalClassNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const borderStyles: IRawStyle = !!borderStyle ? borderStyle : {};
 
   return {
     root: [
-      classNames.root,
+      globalClassNames.root,
       {
         backgroundColor: palette.white,
         height: `${height}px`,
