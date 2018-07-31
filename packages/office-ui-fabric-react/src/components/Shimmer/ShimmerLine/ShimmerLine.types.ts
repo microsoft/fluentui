@@ -43,16 +43,53 @@ export interface IShimmerLineProps extends React.AllHTMLAttributes<HTMLElement> 
   borderStyle?: IRawStyle;
 }
 
-export interface IShimmerLineStyleProps {
-  height?: number;
-  borderStyle?: IRawStyle;
+/**
+ * Props needed to construct styles.
+ */
+export type IShimmerLineStyleProps = {
+  /**
+   * Theme values passed to the component.
+   */
   theme: ITheme;
-}
 
+  /**
+   * Needed to provide a height to the root of the control.
+   */
+  height?: number;
+
+  /**
+   * Styles to override borderStyles with custom ones.
+   * @deprecated in favor of mergeStyles API.
+   */
+  borderStyle?: IRawStyle;
+};
+
+/**
+ * Represents the stylable areas of the control.
+ */
 export interface IShimmerLineStyles {
+  /**
+   * Root of the ShimmerLine component.
+   */
   root?: IStyle;
+
+  /**
+   * Top-left corner SVG of the ShimmerLine component.
+   */
   topLeftCorner?: IStyle;
+
+  /**
+   * Top-right corner SVG of the ShimmerLine component.
+   */
   topRightCorner?: IStyle;
+
+  /**
+   * Bottom-right corner SVG of the ShimmerLine component.
+   */
   bottomRightCorner?: IStyle;
+
+  /**
+   * Bottom-left corner SVG of the ShimmerLine component.
+   */
   bottomLeftCorner?: IStyle;
 }

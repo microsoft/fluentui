@@ -37,13 +37,38 @@ export interface IShimmerCircleProps extends React.AllHTMLAttributes<HTMLElement
   borderStyle?: IRawStyle;
 }
 
-export interface IShimmerCircleStyleProps {
-  height?: number;
-  borderStyle?: IRawStyle;
+/**
+ * Props needed to construct styles.
+ */
+export type IShimmerCircleStyleProps = {
+  /**
+   * Theme values passed to the component.
+   */
   theme: ITheme;
-}
 
+  /**
+   * Needed to provide a height to the root of the control.
+   */
+  height?: number;
+
+  /**
+   * Styles to override borderStyles with custom ones.
+   * @deprecated in favor of mergeStyles API.
+   */
+  borderStyle?: IRawStyle;
+};
+
+/**
+ * Represents the stylable areas of the control.
+ */
 export interface IShimmerCircleStyles {
+  /**
+   * Root of the ShimmerCircle component.
+   */
   root?: IStyle;
+
+  /**
+   * Style for the circle SVG of the ShimmerCircle component.
+   */
   svg?: IStyle;
 }
