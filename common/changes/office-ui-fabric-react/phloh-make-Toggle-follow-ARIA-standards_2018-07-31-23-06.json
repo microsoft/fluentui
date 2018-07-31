@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Make Toggle component follow accessibility standards, propose deprecation of onAriaLabel, offAriaLabel",
+      "type": "minor"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "phloh@microsoft.com"
+}
