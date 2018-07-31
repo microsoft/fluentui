@@ -95,7 +95,6 @@ class ComboBoxOptionWrapper extends React.Component<IComboBoxOptionWrapperProps,
 
   public shouldComponentUpdate(newProps: IComboBoxOptionWrapperProps): boolean {
     // The render function will always be different, so we ignore that prop
-    // console.log('shouldComponentUpdate');
     return !shallowCompare({ ...this.props, render: undefined }, { ...newProps, render: undefined });
   }
 }
@@ -224,7 +223,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   public shouldComponentUpdate() {
-    console.log('shouldComponentUpdate ' + !this._isDismissStillRunning);
     return !this._isDismissStillRunning;
   }
 
@@ -236,16 +234,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // make sure the currently selected/pending option is scrolled into view
     if (isOpen && (!prevState.isOpen || prevState.currentPendingValueValidIndex !== currentPendingValueValidIndex)) {
       // Need this timeout so that the selectedElement ref is correctly updated
-      console.log('componentDidUpdate: calling async scrollIntoView ' + ' ' + new Date().getTime());
       this._async.setTimeout(() => this._scrollIntoView(), 0);
     }
 
-    //const focusInComboBox = true;// this._root.current && this._root.current.contains(document.activeElement);
-    console.log('componentDidUpdate' + ' ' + new Date().getTime());
-    console.log(this.props);
-    console.log(prevProps);
-    console.log(this.state);
-    console.log(prevState);
     // If we are open or we are just closed, shouldFocusAfterClose is set,
     // are focused but we are not the activeElement set focus on the input
     if (
@@ -258,7 +249,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           this._autofill.current &&
           document.activeElement !== this._autofill.current.inputElement))
     ) {
-      console.log('componentDidUpdate: focus' + ' ' + new Date().getTime());
       this.focus(undefined /*shouldOpenOnFocus*/, true /*useFocusAsync*/);
     }
 
@@ -960,7 +950,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       this.setState({ focused: false });
       this._focusInputAfterBlur = false;
       if (!this.props.multiSelect) {
-        console.log('onBlur: submitPendingValue' + ' ' + new Date().getTime());
         this._submitPendingValue(event);
       }
     }
@@ -979,7 +968,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     } = this.state;
     let { selectedIndices } = this.state;
 
-    console.log('submitPendingValue called' + ' ' + new Date().getTime());
     // If we allow freeform and we have a pending value, we
     // need to handle that
     if (allowFreeform && currentPendingValue !== '') {
@@ -1006,19 +994,15 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
               this._autofill.current.inputElement &&
               this._autofill.current.inputElement.value.toLocaleLowerCase() === pendingOptionText))
         ) {
-          console.log('submitPendingValue: exact match: calling setSelectionIndex ' + currentPendingValueValidIndex + ' submitPendingValueEvent ' + submitPendingValueEvent + ' ' + new Date().getTime());
           this._setSelectedIndex(currentPendingValueValidIndex, submitPendingValueEvent);
-          console.log('submitPendingValue: exact match: clear Pending Info' + ' ' + new Date().getTime());
           this._clearPendingInfo();
           return;
         }
       }
 
       if (onChanged) {
-        console.log('submitPendingValue: onChanged' + ' ' + new Date().getTime());
         onChanged(undefined, undefined, currentPendingValue, submitPendingValueEvent);
       } else {
-        console.log('submitPendingValue: no onChanged (should not happen for our case)' + ' ' + new Date().getTime());
         // If we are not controlled, create a new option
         const newOption: IComboBoxOption = { key: currentPendingValue, text: currentPendingValue };
         const newOptions: IComboBoxOption[] = [...currentOptions, newOption];
@@ -1039,12 +1023,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       this._setSelectedIndex(currentPendingValueValidIndex, submitPendingValueEvent);
     } else if (currentPendingValueValidIndexOnHover >= 0) {
       // If all else failed and we were hovering over an item, select it
-      console.log('submitPendingValue: call setSelectedIndex in else' + ' ' + new Date().getTime());
       this._setSelectedIndex(currentPendingValueValidIndexOnHover, submitPendingValueEvent);
     }
 
     // Finally, clear the pending info
-    console.log('submitPendingValue: call clearPendingInfo' + ' ' + new Date().getTime());
     this._clearPendingInfo();
   }
 
@@ -1354,27 +1336,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   private _onDismiss = (ev: React.FocusEvent<any>): void => {
     // reset the selected index
     // to the last valud state
-    // console.log('isDismissStillRunning true' + ' ' + new Date().getTime());
-    console.log('onDismiss' + ' ' + new Date().getTime())
 
     // close the menu and focus the input
-    console.log('onDismiss set isOpen to be false' + ' ' + new Date().getTime())
-    //this.setState({ isOpen: false });
     this._setOpenStateAndFocusOnClose(false, false);
 
-    // this._isDismissStillRunning = true;
-    console.log('onDismiss call resetSelectedIndex' + ' ' + new Date().getTime());
     this._resetSelectedIndex();
-
-    //let focusInComboBox = this._root.current && this._root.current.contains(document.activeElement);
-    //this._focusInputAfterClose = focusInComboBox;
-
-    // if (this._autofill.current && this._focusInputAfterClose /*&& focusInComboBox*/) {
-    //   console.log('onDismiss focus autofill' + ' ' + new Date().getTime())
-    //   this._autofill.current.focus();
-    // }
-    // console.log('isDismissStillRunning false' + ' ' + new Date().getTime());
-    // this._isDismissStillRunning = false;
   };
 
   /**
@@ -1412,19 +1378,16 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     if (this._autofill.current) {
       this._autofill.current.clear();
     }
-    console.log('resetSelectedIndex call clearPendingInfo ' + new Date().getTime())
     this._clearPendingInfo();
 
     const selectedIndex: number = this._getFirstSelectedIndex();
     if (selectedIndex > 0 && selectedIndex < currentOptions.length) {
-      console.log('resetSelectedIndex: changed suggestedDisplayValue to ' + currentOptions[selectedIndex].text + ' ' + new Date().getTime());
       this.setState({
         suggestedDisplayValue: currentOptions[selectedIndex].text
       });
     } else if (this.props.text || this.props.value) {
       // If we had a value initially, restore it
 
-      console.log('resetSelectedIndex: changed suggestedDisplayValue to ' + this.props.text || this.props.value) + ' ' + new Date().getTime();
       this.setState({
         suggestedDisplayValue: this.props.text || this.props.value
       });
@@ -1435,7 +1398,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * Clears the pending info state
    */
   private _clearPendingInfo(): void {
-    console.log('clearPendingInfo call setPendingInfo ' + new Date().getTime());
     this._setPendingInfo(
       '' /* suggestedDisplayValue */,
       -1 /* currentPendingValueValidIndex */,
@@ -1455,7 +1417,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     suggestedDisplayValue: string
   ): void {
 
-    console.log('setPendingInfo: currentPendingValue: ' + currentPendingValue + ' currentPendingValueIndex ' + currentPendingValueValidIndex + ' suggestedDisplayValue ' + suggestedDisplayValue + ' ' + new Date().getTime());
     this.setState({
       currentPendingValue: currentPendingValue,
       currentPendingValueValidIndex: currentPendingValueValidIndex,
