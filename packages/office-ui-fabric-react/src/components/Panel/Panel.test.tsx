@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import * as ReactDOM from 'react-dom';
 
-import { Panel } from './Panel';
+import { PanelBase } from './Panel.base';
 
 let div: HTMLElement;
 
@@ -25,8 +25,8 @@ describe('Panel', () => {
       dismissedCalled = true;
     };
 
-    const panel: Panel = ReactDOM.render(
-      <Panel isOpen={true} onDismiss={setDismissTrue} onDismissed={setDismissedTrue} />,
+    const panel: PanelBase = ReactDOM.render(
+      <PanelBase isOpen={true} onDismiss={setDismissTrue} onDismissed={setDismissedTrue} />,
       div
     ) as any;
 
