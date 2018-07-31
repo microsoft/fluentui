@@ -398,17 +398,12 @@ describe('FocusTrapZone', () => {
   describe('Conflicting FocusTrapZones', () => {
     function setupTest() {
       const topLevelDiv = ReactTestUtils.renderIntoDocument(
-        <div onFocusCapture={_onFocus}>>
-          <FocusTrapZone
-            forceFocusInsideTrap={ true }
-            isClickableOutsideFocusTrap={ false }
+        <div onFocusCapture={_onFocus}>
           >
+          <FocusTrapZone forceFocusInsideTrap={true} isClickableOutsideFocusTrap={false}>
             <button className={'a'}>a</button>
           </FocusTrapZone>
-          <FocusTrapZone
-            forceFocusInsideTrap={ false }
-            isClickableOutsideFocusTrap={ false }
-          >
+          <FocusTrapZone forceFocusInsideTrap={false} isClickableOutsideFocusTrap={false}>
             <FocusZone data-is-visible={true}>
               <button className={'b'}>b</button>
               <button className={'c'}>c</button>

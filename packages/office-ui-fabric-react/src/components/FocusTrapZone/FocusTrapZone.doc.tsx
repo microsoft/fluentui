@@ -13,6 +13,9 @@ const FocusTrapZoneBoxClickExampleCode = require('!raw-loader!office-ui-fabric-r
 import FocusTrapZoneNestedExample from './examples/FocusTrapZone.Nested.Example';
 const FocusTrapZoneNestedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/examples/FocusTrapZone.Nested.Example.tsx') as string;
 
+import FocusTrapZoneDialogExample from './examples/FocusTrapZone.Dialog.Example';
+const FocusTrapZoneDialogExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/examples/FocusTrapZone.Dialog.Example.tsx') as string;
+
 export const FocusTrapZonePageProps: IDocPageProps = {
   title: 'FocusTrapZone',
   componentName: 'FocusTrapZone',
@@ -38,6 +41,11 @@ export const FocusTrapZonePageProps: IDocPageProps = {
       title: 'Multiple Nest FocusTrapZones',
       code: FocusTrapZoneNestedExampleCode,
       view: <FocusTrapZoneNestedExample />
+    },
+    {
+      title: 'A Dialog Nested in a Panel',
+      code: FocusTrapZoneDialogExampleCode,
+      view: <FocusTrapZoneDialogExample />
     }
   ],
   propertiesTablesSources: [
