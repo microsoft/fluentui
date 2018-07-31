@@ -100,11 +100,7 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
               </button>
             )}
           </KeytipData>
-          {stateText && (
-            <Label htmlFor={this._id} className={classNames.text}>
-              {stateText}
-            </Label>
-          )}
+          {stateText && <Label className={classNames.text}>{stateText}</Label>}
         </div>
       </RootType>
     );
