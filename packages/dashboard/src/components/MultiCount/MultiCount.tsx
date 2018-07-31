@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { AnnotationType, IMultiCountChartProps, IMultiCountRow, IMultiCountChartStyles } from './MultiCountChart.types';
+import { AnnotationType, IMultiCountProps, IMultiCountRow, IMultiCountStyles } from './MultiCount.types';
 import { getStyles } from './MultiCountStyles';
 
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
-export class MultiCount extends React.Component<IMultiCountChartProps, {}> {
-  constructor(props: IMultiCountChartProps) {
+export class MultiCount extends React.Component<IMultiCountProps, {}> {
+  constructor(props: IMultiCountProps) {
     super(props);
   }
 
@@ -32,7 +32,7 @@ export class MultiCount extends React.Component<IMultiCountChartProps, {}> {
       const formattedData = data % 1 === 0 ? data : data.toFixed(1);
       const changeIconIndicator =
         AnnotationType[row.type] === 'nuetral' ? '' : AnnotationType[row.type] === 'positive' ? 'FlickDown' : 'FlickUp';
-      const getClassNames = classNamesFunction<IMultiCountChartProps, IMultiCountChartStyles>();
+      const getClassNames = classNamesFunction<IMultiCountProps, IMultiCountStyles>();
       const classNames = getClassNames(getStyles({ color: row.color, iconName: changeIconIndicator }));
       formattedRows.push(
         <div key={index} className={classNames.root}>

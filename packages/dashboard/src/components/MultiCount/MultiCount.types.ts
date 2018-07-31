@@ -1,6 +1,6 @@
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 
-export interface IMultiCountChartProps {
+export interface IMultiCountProps {
   /**
    * rows of Multicount Dataviz
    */
@@ -56,7 +56,7 @@ export interface IMultiCountRow {
   type: AnnotationType;
 }
 
-export interface IMultiCountChartStyles {
+export interface IMultiCountStyles {
   /**
    * Style for the root element
    */

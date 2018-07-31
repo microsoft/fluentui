@@ -1,6 +1,6 @@
-import { IMultiCountChartStyles, IMultiCountStyleProps } from './MultiCountChart.types';
+import { IMultiCountStyles, IMultiCountStyleProps } from './MultiCount.types';
 
-export const getStyles = (props: IMultiCountStyleProps): IMultiCountChartStyles => {
+export const getStyles = (props: IMultiCountStyleProps): IMultiCountStyles => {
   return {
     root: {
       display: 'flex',

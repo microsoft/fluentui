@@ -3,7 +3,7 @@ import { AnnotationType, MultiCount } from '@uifabric/dashboard';
 
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
-export class MultiCountChartExample extends React.Component<{}, {}> {
+export class MultiCountExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     const rows = [
       {

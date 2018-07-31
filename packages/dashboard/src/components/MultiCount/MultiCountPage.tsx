@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { ComponentPage, ExampleCard, IComponentDemoPageProps, PropertiesTableSet } from '@uifabric/example-app-base';
-const MultiCountChartExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/MultiCountChart/examples/MultiCountChart.Example.tsx') as string;
+const MultiCountExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/MultiCount/examples/MultiCount.Example.tsx') as string;
 
-import { MultiCountChartExample } from './examples/MultiCountChart.Example';
+import { MultiCountExample } from './examples/MultiCount.Example';
 
-export class MultiCountChartPage extends React.Component<IComponentDemoPageProps, {}> {
+export class MultiCountPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     const style = {
       width: '300px'
@@ -12,21 +12,19 @@ export class MultiCountChartPage extends React.Component<IComponentDemoPageProps
     return (
       <ComponentPage
         title="Multicount chart"
-        componentName="MulticountChartExample"
+        componentName="MulticountExample"
         exampleCards={
           <div>
-            <ExampleCard title="MulticountChart" code={MultiCountChartExampleCode}>
+            <ExampleCard title="Multicount" code={MultiCountExampleCode}>
               <div style={style}>
-                <MultiCountChartExample />
+                <MultiCountExample />
               </div>
             </ExampleCard>
           </div>
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={[
-              require<string>('!raw-loader!@uifabric/dashboard/src/components/MultiCountChart/MultiCountChart.types.ts')
-            ]}
+            sources={[require<string>('!raw-loader!@uifabric/dashboard/src/components/MultiCount/MultiCount.types.ts')]}
           />
         }
         overview={
