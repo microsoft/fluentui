@@ -27,11 +27,7 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
         display: 'flex'
       }
     ],
-    bars: [
-      {
-        transform: `translate(0px, 0px)`
-      }
-    ],
+    bars: [],
     legend: [
       {
         listStyle: 'none',
