@@ -6,7 +6,6 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
-import './FocusTrapZone.Box.Example.scss';
 
 export interface IFocusTrapZoneDialogExampleState {
   hideDialog: boolean;
