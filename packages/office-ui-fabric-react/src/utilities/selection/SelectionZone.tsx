@@ -65,6 +65,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   private _isCtrlPressed: boolean;
   private _isShiftPressed: boolean;
   private _isMetaPressed: boolean;
+  private _isTabPressed: boolean;
   private _shouldHandleFocus: boolean;
   private _shouldHandleFocusTimeoutId: number | undefined;
   private _isTouch: boolean;
@@ -465,7 +466,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     const selectionMode = this._getSelectionMode();
 
     if (selectionMode === SelectionMode.multiple) {
-      if (this._isShiftPressed) {
+      if (this._isShiftPressed && !this._isTabPressed) {
         selection.selectToIndex(index, !isToggleModifierPressed);
       } else if (isToggleModifierPressed) {
         selection.toggleIndexSelected(index);
@@ -521,6 +522,9 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     this._isShiftPressed = ev.shiftKey;
     this._isCtrlPressed = ev.ctrlKey;
     this._isMetaPressed = ev.metaKey;
+
+    const keyCode = (ev as React.KeyboardEvent<HTMLElement>).keyCode;
+    this._isTabPressed = keyCode ? keyCode === KeyCodes.tab : false;
   }
 
   private _findItemRoot(target: HTMLElement): HTMLElement | undefined {

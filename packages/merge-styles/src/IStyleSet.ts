@@ -33,5 +33,5 @@ export type IConcatenatedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
 export type IProcessedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
   [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: string
 } & {
-  subComponentStyles?: { [P in keyof TStyleSet['subComponentStyles']]: IStyleFunction<any, IStyleSet<any>> };
+  subComponentStyles: { [P in keyof TStyleSet['subComponentStyles']]: IStyleFunction<any, IStyleSet<any>> };
 };
