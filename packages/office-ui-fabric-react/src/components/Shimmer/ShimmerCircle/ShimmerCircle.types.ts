@@ -21,11 +21,6 @@ export interface IShimmerCircleProps extends React.AllHTMLAttributes<HTMLElement
   height?: number;
 
   /**
-   * Used to
-   */
-  borderStyle?: IRawStyle;
-
-  /**
    * Theme provided by High-Order Component.
    */
   theme?: ITheme;
@@ -34,6 +29,12 @@ export interface IShimmerCircleProps extends React.AllHTMLAttributes<HTMLElement
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IShimmerCircleStyleProps, IShimmerCircleStyles>;
+
+  /**
+   * Sets custom styling of the shimmerCircle borders.
+   * @deprecated Use 'styles' prop to leverage mergeStyle API.
+   */
+  borderStyle?: IRawStyle;
 }
 
 export interface IShimmerCircleStyleProps {

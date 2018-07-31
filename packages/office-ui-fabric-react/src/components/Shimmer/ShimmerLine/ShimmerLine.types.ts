@@ -27,11 +27,6 @@ export interface IShimmerLineProps extends React.AllHTMLAttributes<HTMLElement> 
   width?: number | string;
 
   /**
-   * Sets custom styling of the rectangle.
-   */
-  borderStyle?: IRawStyle;
-
-  /**
    * Theme provided by High-Order Component.
    */
   theme?: ITheme;
@@ -40,6 +35,12 @@ export interface IShimmerLineProps extends React.AllHTMLAttributes<HTMLElement> 
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IShimmerLineStyleProps, IShimmerLineStyles>;
+
+  /**
+   * Sets custom styling of the shimmerLine borders.
+   * @deprecated Use styles prop to leverage mergeStyle API.
+   */
+  borderStyle?: IRawStyle;
 }
 
 export interface IShimmerLineStyleProps {
