@@ -37,7 +37,7 @@ export function getVariant(theme: ITheme, variant: VariantThemeType): ITheme {
 }
 
 /**
- * A variant where the background soft shade of the neutral color. Most other colors remain unchanged.
+ * A variant where the background is a soft shade of the neutral color. Most other colors remain unchanged.
  *
  * @export
  * @param {IPartialTheme} theme the theme for which to build a variant for

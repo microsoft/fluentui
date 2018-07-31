@@ -3,7 +3,6 @@
  *
  * @public
  */
-
 export const enum VariantThemeType {
   None = 0,
   Neutral = 1,
