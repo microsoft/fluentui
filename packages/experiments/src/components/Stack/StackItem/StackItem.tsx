@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { createComponent, IViewProps, IPropsWithStyles } from '../../Text/createComponent';
+import { createComponent, IViewComponentProps } from '../../../Foundation';
 import { IStackItemProps, IStackItemStyles } from './StackItem.types';
 import { styles } from './StackItem.styles';
 
-const view = (props: IViewProps<IStackItemProps, IStackItemStyles>) => {
+const view = (props: IViewComponentProps<IStackItemProps, IStackItemStyles>) => {
   const childNodes: React.ReactElement<{}>[] = React.Children.toArray(props.children) as React.ReactElement<{}>[];
   const first = childNodes[0];
 
@@ -17,11 +17,7 @@ const view = (props: IViewProps<IStackItemProps, IStackItemStyles>) => {
   });
 };
 
-export const StackItem: React.StatelessComponent<IStackItemProps> & {
-  styles?:
-    | Partial<IStackItemStyles>
-    | ((props: IPropsWithStyles<IStackItemProps, IStackItemStyles>) => Partial<IStackItemStyles>);
-} = createComponent<IStackItemProps, IStackItemStyles>({
+export const StackItem: React.StatelessComponent<IStackItemProps> = createComponent<IStackItemProps, IStackItemStyles>({
   displayName: 'StackItem',
   styles,
   view

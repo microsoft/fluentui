@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IStyle, IFontStyles, IPalette, ISemanticColors } from '../../Styling';
-import { IViewProps, createComponent, IStyledProps } from '../../Foundation';
+import { IStyleableComponent, IThemedProps, IViewComponentProps, createComponent } from '../../Foundation';
 import { IFontTypes, IFontFamilies, IFontSizes, IFontWeights } from './theming/ITypography';
 
 // Styles for the component
@@ -12,9 +12,8 @@ export interface ITextStyles {
 }
 
 // Inputs to the component
-export interface ITextProps {
+export interface ITextProps extends IStyleableComponent<ITextProps, ITextStyles> {
   renderAs?: string | React.ReactType<ITextProps>;
-  children?: React.ReactNode;
   /**
    * Optional class name for Text.
    */
@@ -62,9 +61,7 @@ export interface ITextProps {
   wrap?: boolean;
 }
 
-export type ITextViewProps = IViewProps<ITextProps, ITextStyles>;
-
-const TextView = (props: ITextViewProps) => {
+const TextView = (props: IViewComponentProps<ITextProps, ITextStyles>) => {
   const {
     inline,
     className,
@@ -76,14 +73,14 @@ const TextView = (props: ITextViewProps) => {
     weight,
     wrap,
     fontStyle,
-    styles: textStyles,
+    classNames,
     ...rest
   } = props;
 
-  return <RootType {...rest} className={textStyles.root} />;
+  return <RootType {...rest} className={classNames.root} />;
 };
 
-const styles = (props: IStyledProps<ITextProps>): ITextStyles => {
+const styles = (props: IThemedProps<ITextProps>): ITextStyles => {
   const { inline, theme, wrap, type, family, weight, size, fontStyle, color } = props;
 
   const { palette, fonts, semanticColors, typography } = theme;
@@ -168,7 +165,7 @@ const styles = (props: IStyledProps<ITextProps>): ITextStyles => {
 };
 
 export const Text: React.StatelessComponent<ITextProps> = createComponent<ITextProps, ITextStyles>({
-  scope: 'Text',
+  displayName: 'Text',
   styles: styles,
   view: TextView
 });
