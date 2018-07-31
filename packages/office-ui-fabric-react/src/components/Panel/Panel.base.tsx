@@ -28,7 +28,7 @@ export interface IPanelState {
   id?: string;
 }
 
-export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IPanel {
+export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implements IPanel {
   public static defaultProps: IPanelProps = {
     isHiddenOnDismiss: false,
     isOpen: false,

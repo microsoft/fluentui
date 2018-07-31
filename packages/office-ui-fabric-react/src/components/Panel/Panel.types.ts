@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { Panel } from './Panel';
-import { IRefObject, IRenderFunction } from '../../Utilities';
+// import { Panel } from './Panel';
+import { PanelBase } from './Panel.base';
+import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import { IStyle, ITheme } from '../../Styling';
 import { ILayerProps } from '../../Layer';
 import { IFocusTrapZoneProps } from '../../FocusTrapZone';
 
@@ -15,7 +17,7 @@ export interface IPanel {
    */
   dismiss: () => void;
 }
-export interface IPanelProps extends React.Props<Panel> {
+export interface IPanelProps extends React.Props<PanelBase> {
   /**
    * Optional callback to access the IPanel interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -75,7 +77,18 @@ export interface IPanelProps extends React.Props<Panel> {
   onDismissed?: () => void;
 
   /**
-   * Additional styling options.
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  styles?: IStyleFunctionOrObject<IPanelStyleProps, IPanelStyles>;
+
+  /**
+   * Theme provided by High-Order Component.
+   */
+  theme?: ITheme;
+
+  /**
+   * Additional css class to apply to the Panel
+   * @defaultvalue undefined
    */
   className?: string;
 
@@ -282,4 +295,23 @@ export enum PanelType {
    * XXLarge: 643px width, 40px Left/Right padding
    */
   custom = 7
+}
+
+export interface IPanelStyleProps {
+  /**
+   * Theme provided by High-Order Component.
+   */
+  theme: ITheme;
+
+  /**
+   * Accept custom classNames
+   */
+  className?: string;
+}
+
+export interface IPanelStyles {
+  /**
+   * Style for the root element.
+   */
+  root: IStyle;
 }
