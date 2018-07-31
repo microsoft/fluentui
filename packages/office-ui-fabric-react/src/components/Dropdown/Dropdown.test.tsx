@@ -190,13 +190,19 @@ describe('Dropdown', () => {
       const wrapper = shallow(<Dropdown options={options} />);
 
       // Use .dive() because Dropdown is a decorated component
-      let state = wrapper.dive().state('selectedIndices');
+      let state = wrapper
+        .dive() // styled
+        .dive() // withResponsiveMode
+        .state('selectedIndices');
       expect(state).toEqual([]);
 
       const newProps = { options, selectedKey };
       wrapper.setProps(newProps);
       wrapper.update();
-      state = wrapper.dive().state('selectedIndices');
+      state = wrapper
+        .dive()
+        .dive()
+        .state('selectedIndices');
       expect(state).toEqual([selectedKey]);
     });
 
@@ -319,13 +325,19 @@ describe('Dropdown', () => {
       const wrapper = shallow(<Dropdown multiSelect options={options} />);
 
       // Use .dive() because Dropdown is a decorated component
-      let state = wrapper.dive().state('selectedIndices');
+      let state = wrapper
+        .dive() // styled
+        .dive() // withresponsivemode
+        .state('selectedIndices');
       expect(state).toEqual([]);
 
       const newProps = { options, selectedKeys };
       wrapper.setProps(newProps);
       wrapper.update();
-      state = wrapper.dive().state('selectedIndices');
+      state = wrapper
+        .dive()
+        .dive()
+        .state('selectedIndices');
       expect(state).toEqual(selectedKeys);
     });
 

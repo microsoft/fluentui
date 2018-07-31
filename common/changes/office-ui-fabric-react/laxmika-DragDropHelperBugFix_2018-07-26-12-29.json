@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fixing issue with render coin on persona component",
+      "comment": "dragStart callback will be in sync with browser, instaed of calling it in mousemove",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "satagarw@microsoft.com"
+  "email": "laxmika@microsoft.com"
 }
