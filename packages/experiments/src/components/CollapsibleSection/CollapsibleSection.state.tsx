@@ -30,7 +30,7 @@ export class CollapsibleSectionState extends BaseComponent<ICollapsibleSectionSt
   }
 
   public render(): JSX.Element {
-    const { collapsed } = this.state;
+    const { collapsed = this.state.collapsed } = this.props;
 
     // TODO: check React 16 deriveStateFromProps
     const viewProps: ICollapsibleSectionViewProps = {

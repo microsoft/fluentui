@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { CollapsibleSectionUncontrolled } from '@uifabric/experiments/lib/CollapsibleSection';
+import { CollapsibleSection } from '@uifabric/experiments/lib/CollapsibleSection';
 
 export interface ICollapsibleSectionControlledExampleState {
   collapsed: boolean;
+  titleClicks: number;
 }
 
 // tslint:disable:jsx-no-lambda
@@ -15,7 +16,8 @@ export class CollapsibleSectionControlledExample extends React.Component<
   constructor(props: {}) {
     super(props);
     this.state = {
-      collapsed: true
+      collapsed: true,
+      titleClicks: 0
     };
   }
 
@@ -29,22 +31,23 @@ export class CollapsibleSectionControlledExample extends React.Component<
               this.setState({ collapsed: !this.state.collapsed });
             }}
           />
-          <CollapsibleSectionUncontrolled
+          <p>Title Clicks: {this.state.titleClicks}</p>
+          <CollapsibleSection
             collapsed={this.state.collapsed}
             titleProps={{
               text: `Title 1`
             }}
           >
             Content 1
-          </CollapsibleSectionUncontrolled>
-          <CollapsibleSectionUncontrolled
+          </CollapsibleSection>
+          <CollapsibleSection
             collapsed={this.state.collapsed}
             titleProps={{
               text: `Title 2`
             }}
           >
             Content 2
-          </CollapsibleSectionUncontrolled>
+          </CollapsibleSection>
         </FocusZone>
       </div>
     );

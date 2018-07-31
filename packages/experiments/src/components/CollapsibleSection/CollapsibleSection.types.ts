@@ -19,6 +19,12 @@ export interface ICollapsibleSectionProps
   defaultCollapsed?: boolean;
 
   /**
+   * Collapsed state. If provided, component is controlled.
+   * @default defaultCollapsed
+   */
+  collapsed?: boolean;
+
+  /**
    * Component to use for CollapsibleSection title.
    */
   titleAs?: React.ReactType<ICollapsibleSectionTitleProps>;
@@ -34,13 +40,14 @@ export type ICollapsibleSectionControlledProps = IStyleableComponentProps<
   ICollapsibleSectionStyles
 >;
 
-export type ICollapsibleSectionViewProps = Pick<ICollapsibleSectionProps, 'titleAs' | 'titleProps'> & {
-  collapsed: boolean;
-  titleElementRef?: RefObject<HTMLElement>;
-  onKeyDown?: (ev: React.KeyboardEvent<Element>) => void;
-  onToggleCollapse?: () => void;
-  onRootKeyDown?: (ev: React.KeyboardEvent<Element>) => void;
-};
+export type ICollapsibleSectionViewProps = Pick<ICollapsibleSectionProps, 'titleAs' | 'titleProps'> &
+  Required<Pick<ICollapsibleSectionProps, 'collapsed'>> & {
+    titleElementRef?: RefObject<HTMLElement>;
+    onKeyDown?: (ev: React.KeyboardEvent<Element>) => void;
+    // TODO: redundant with titleProps version? reconcile
+    onToggleCollapse?: () => void;
+    onRootKeyDown?: (ev: React.KeyboardEvent<Element>) => void;
+  };
 
 export type ICollapsibleSectionStyleProps = IThemedProps<ICollapsibleSectionViewProps>;
 

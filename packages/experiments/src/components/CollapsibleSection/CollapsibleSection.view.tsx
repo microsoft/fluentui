@@ -23,6 +23,7 @@ export const CollapsibleSectionView = (
 ) => {
   const { collapsed, titleAs: TitleType = CollapsibleSectionTitle, titleProps, children } = props;
 
+  // TODO: make sure onToggleCollapse gets called both from state and from titleProps.
   return (
     <div className={props.classNames.root} onKeyDown={props.onRootKeyDown}>
       <TitleType
