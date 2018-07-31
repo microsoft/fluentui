@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 24 Jul 2018 11:25:45 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Jul 2018 11:24:42 GMT and should not be manually modified.
+
+## 5.118.1
+Mon, 30 Jul 2018 11:24:42 GMT
+
+### Patches
+
+- Adding interfaces IDetailsGroupRenderProps, IDetailsGroupDividerProps, which extends existing interfaces  IGroupRenderProps, IGroupDividerProps respectively, allowing group header/footer for DetailsList to be displayed as a DetailsRow.
 
 ## 5.118.0
 Tue, 24 Jul 2018 11:25:45 GMT
