@@ -1,2 +1,2 @@
 export * from './MultiCountChart';
-export * from './MutliCountChart.types';
+export * from './MultiCountChart.types';

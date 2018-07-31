@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AnnotationType, IMultiCountChartProps, IMultiCountRow, IMultiCountChartStyles } from './MutliCountChart.types';
+import { AnnotationType, IMultiCountChartProps, IMultiCountRow, IMultiCountChartStyles } from './MultiCountChart.types';
 import { getStyles } from './MultiCountStyles';
 
 import { Icon } from 'office-ui-fabric-react/lib/Icon';

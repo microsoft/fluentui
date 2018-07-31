@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComponentPage, ExampleCard, IComponentDemoPageProps } from '@uifabric/example-app-base';
+import { ComponentPage, ExampleCard, IComponentDemoPageProps, PropertiesTableSet } from '@uifabric/example-app-base';
 const MultiCountChartExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/MultiCountChart/examples/MultiCountChart.Example.tsx') as string;
 
 import { MultiCountChartExample } from './examples/MultiCountChart.Example';
@@ -21,6 +21,13 @@ export class MultiCountChartPage extends React.Component<IComponentDemoPageProps
               </div>
             </ExampleCard>
           </div>
+        }
+        propertiesTables={
+          <PropertiesTableSet
+            sources={[
+              require<string>('!raw-loader!@uifabric/dashboard/src/components/MultiCountChart/MultiCountChart.types.ts')
+            ]}
+          />
         }
         overview={
           <div>

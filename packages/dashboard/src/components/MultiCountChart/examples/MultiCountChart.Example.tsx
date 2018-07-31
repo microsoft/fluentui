@@ -23,7 +23,7 @@ export class MultiCountChartExample extends React.Component<{}, {}> {
         bodyText: 'Risky sign-ins',
         annotaionText: 'Annotation',
         color: 'red',
-        type: AnnotationType.nuetral
+        type: AnnotationType.neutral
       }
     ];
     return <MultiCountChart multiCountRows={rows} />;

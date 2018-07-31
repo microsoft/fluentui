@@ -1,4 +1,4 @@
-import { IMultiCountChartStyles, IMultiCountStyleProps } from './MutliCountChart.types';
+import { IMultiCountChartStyles, IMultiCountStyleProps } from './MultiCountChart.types';
 
 export const getStyles = (props: IMultiCountStyleProps): IMultiCountChartStyles => {
   return {
@@ -33,7 +33,7 @@ export const getStyles = (props: IMultiCountStyleProps): IMultiCountChartStyles 
     icon: {
       width: '12px',
       height: '12px',
-      display: props.iconName ? '' : 'none',
+      display: props.iconName === '' ? 'none' : '',
       color: props.iconName === 'FlickUp' ? '#ED0000' : '#6BB700'
     }
   };

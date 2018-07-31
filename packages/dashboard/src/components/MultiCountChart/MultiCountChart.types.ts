@@ -9,17 +9,17 @@ export interface IMultiCountChartProps {
 
 export enum AnnotationType {
   /**
-   * Indicate a positive change, displays a up arrow
+   * Indicates a positive change, displays a up arrow
    */
   positive,
 
   /**
-   * Indicate no change, no icon is displayed
+   * Indicates no change, no icon is displayed
    */
-  nuetral,
+  neutral,
 
   /**
-   * Indicate a negative change, displays a down arrow
+   * Indicates a negative change, displays a down arrow
    */
   negative
 }
