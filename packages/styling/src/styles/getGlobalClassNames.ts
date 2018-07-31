@@ -29,7 +29,7 @@ export const getGlobalClassNames: <T>(
     if (disableGlobalClassNames || (disableGlobalClassNames === undefined && theme.disableGlobalClassNames)) {
       // disable global classnames
       return Object.keys(classNames).reduce((acc: {}, className: string) => {
-        acc[className] = styleSheet.getClassName('__global-class-name__');
+        acc[className] = styleSheet.getClassName(classNames[className]);
         return acc;
       }, {});
     }

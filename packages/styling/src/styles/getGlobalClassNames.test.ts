@@ -13,8 +13,8 @@ describe('getGlobalClassNames', () => {
     const theme = createTheme({ disableGlobalClassNames: true });
 
     expect(getGlobalClassNames({ root: 'ms-Link', label: 'ms-Label' }, theme)).toEqual({
-      root: '__global-class-name__-0',
-      label: '__global-class-name__-1'
+      root: 'ms-Link-0',
+      label: 'ms-Label-1'
     });
   });
 
@@ -26,17 +26,17 @@ describe('getGlobalClassNames', () => {
     });
 
     it('multiple calls with the same instance of classnames return the same set of global classnames', () => {
-      expect(getGlobalClassNames(globalClassnames, theme)).toEqual({ root: '__global-class-name__-0' });
-      expect(getGlobalClassNames(globalClassnames, theme)).toEqual({ root: '__global-class-name__-0' });
-      expect(getGlobalClassNames(globalClassnames, theme)).toEqual({ root: '__global-class-name__-0' });
+      expect(getGlobalClassNames(globalClassnames, theme)).toEqual({ root: 'ms-Memoized-0' });
+      expect(getGlobalClassNames(globalClassnames, theme)).toEqual({ root: 'ms-Memoized-0' });
+      expect(getGlobalClassNames(globalClassnames, theme)).toEqual({ root: 'ms-Memoized-0' });
     });
 
     it('calls with different arguments returns a different set of global classnames', () => {
-      expect(getGlobalClassNames(globalClassnames, theme)).toEqual({ root: '__global-class-name__-0' });
-      expect(getGlobalClassNames(globalClassnames, theme, true)).toEqual({ root: '__global-class-name__-1' });
-      expect(getGlobalClassNames({ ...globalClassnames }, theme)).toEqual({ root: '__global-class-name__-2' });
-      expect(getGlobalClassNames(globalClassnames, theme)).toEqual({ root: '__global-class-name__-0' });
-      expect(getGlobalClassNames(globalClassnames, { ...theme })).toEqual({ root: '__global-class-name__-3' });
+      expect(getGlobalClassNames(globalClassnames, theme)).toEqual({ root: 'ms-Memoized-0' });
+      expect(getGlobalClassNames(globalClassnames, theme, true)).toEqual({ root: 'ms-Memoized-1' });
+      expect(getGlobalClassNames({ ...globalClassnames }, theme)).toEqual({ root: 'ms-Memoized-2' });
+      expect(getGlobalClassNames(globalClassnames, theme)).toEqual({ root: 'ms-Memoized-0' });
+      expect(getGlobalClassNames(globalClassnames, { ...theme })).toEqual({ root: 'ms-Memoized-3' });
     });
   });
 
