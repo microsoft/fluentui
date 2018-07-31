@@ -1,15 +1,21 @@
 import * as React from 'react';
-import { IDatePicker, IDatePickerProps, IDatePickerStrings } from './DatePicker.types';
+import {
+  IDatePicker,
+  IDatePickerProps,
+  IDatePickerStrings,
+  IDatePickerStyleProps,
+  IDatePickerStyles
+} from './DatePicker.types';
+import { BaseComponent, KeyCodes, createRef, classNamesFunction } from '../../Utilities';
 import { Calendar, ICalendar, DayOfWeek } from '../../Calendar';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { TextField, ITextField } from '../../TextField';
-import { BaseComponent, KeyCodes, css, createRef } from '../../Utilities';
 import { compareDates, compareDatePart } from '../../utilities/dateMath/DateMath';
-import * as stylesImport from './DatePicker.scss';
 import { FocusTrapZone } from '../../FocusTrapZone';
-const styles: any = stylesImport;
+
+const getClassNames = classNamesFunction<IDatePickerStyleProps, IDatePickerStyles>();
 
 export interface IDatePickerState {
   selectedDate?: Date;
@@ -84,13 +90,10 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
   private _calendar = createRef<ICalendar>();
   private _datePickerDiv = createRef<HTMLDivElement>();
   private _textField = createRef<ITextField>();
-  private _preventFocusOpeningPicker: boolean;
 
   constructor(props: IDatePickerProps) {
     super(props);
     this.state = this._getDefaultState();
-
-    this._preventFocusOpeningPicker = false;
   }
 
   public componentWillReceiveProps(nextProps: IDatePickerProps): void {
@@ -145,6 +148,9 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
       firstDayOfWeek,
       strings,
       label,
+      theme,
+      className,
+      styles,
       initialPickerDate,
       isRequired,
       disabled,
@@ -153,19 +159,25 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
       placeholder,
       allowTextInput,
       borderless,
-      className,
       minDate,
       maxDate,
       calendarProps
     } = this.props;
     const { isDatePickerShown, formattedDate, selectedDate, errorMessage } = this.state;
 
+    const classNames = getClassNames(styles, {
+      theme: theme!,
+      className,
+      disabled,
+      label: !!label,
+      isDatePickerShown
+    });
+
     return (
-      <div className={css('ms-DatePicker', styles.root, isDatePickerShown && 'is-open', className)}>
+      <div className={classNames.root}>
         <div ref={this._datePickerDiv}>
           <TextField
             label={label}
-            className={styles.textField}
             ariaLabel={ariaLabel}
             aria-haspopup="true"
             aria-expanded={isDatePickerShown}
@@ -182,11 +194,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
             iconProps={{
               iconName: 'Calendar',
               onClick: this._onIconClick,
-              className: css(
-                disabled && styles.msDatePickerDisabled,
-                label ? 'ms-DatePicker-event--with-label' : 'ms-DatePicker-event--without-label',
-                label ? styles.eventWithLabel : styles.eventWithoutLabel
-              )
+              className: classNames.icon
             }}
             readOnly={!allowTextInput}
             value={formattedDate}
@@ -199,7 +207,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
             role="dialog"
             ariaLabel={pickerAriaLabel}
             isBeakVisible={false}
-            className={css('ms-DatePicker-callout')}
+            className={classNames.callout}
             gapSpace={0}
             doNotLayer={false}
             target={this._datePickerDiv.current}
@@ -276,11 +284,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
     }
 
     if (!this.props.allowTextInput) {
-      if (!this._preventFocusOpeningPicker) {
-        this._showDatePickerPopup();
-      } else {
-        this._preventFocusOpeningPicker = false;
-      }
+      this._showDatePickerPopup();
     }
   };
 
@@ -347,7 +351,6 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
 
   private _showDatePickerPopup(): void {
     if (!this.state.isDatePickerShown) {
-      this._preventFocusOpeningPicker = true;
       this.setState({
         isDatePickerShown: true,
         errorMessage: ''
@@ -369,7 +372,6 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
    * Callback for closing the calendar callout
    */
   private _calendarDismissed = (): void => {
-    this._preventFocusOpeningPicker = true;
     this._dismissDatePickerPopup();
     // don't need to focus the text box, if necessary the focusTrapZone will do it
   };

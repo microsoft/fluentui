@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../../Styling';
-import { IStyleFunctionOrObject } from '../../../Utilities';
+import { IStyleFunctionOrObject, IRefObject } from '../../../Utilities';
 import { IShimmerElement } from '../Shimmer.types';
 
 export interface IShimmerElementsGroup {}
@@ -13,7 +13,7 @@ export interface IShimmerElementsGroupProps extends React.AllHTMLAttributes<HTML
    * Optional callback to access the IShimmerElementsGroup interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IShimmerElementsGroup | null) => void;
+  componentRef?: IRefObject<IShimmerElementsGroup>;
 
   /**
    * Optional maximum row height of the shimmerElements container.

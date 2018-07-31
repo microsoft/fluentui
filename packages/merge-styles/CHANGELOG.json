@@ -2,6 +2,111 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.7.0",
+      "tag": "@uifabric/merge-styles_v6.7.0",
+      "date": "Mon, 30 Jul 2018 10:27:11 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "de408fab23e5f30a9d34c19cddb900269636556e",
+            "comment": "Change IProcessedStyleSet typings to be easier to consume - subcomponentStyles is now always present so consumers do not have to check for presence even when it is fully expected that it is there."
+          }
+        ],
+        "patch": [
+          {
+            "author": "ht <41147089+tharshada@users.noreply.github.com>",
+            "commit": "dc02c1e44970a76a0fd2a88ed6101c7bd7303876",
+            "comment": "formatting change"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.6.0",
+      "tag": "@uifabric/merge-styles_v6.6.0",
+      "date": "Thu, 26 Jul 2018 10:28:51 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "d056d71f1ad27733e8e6027301c1d83aaf0ccffc",
+            "comment": "Add resize rule to IRawStyleBase."
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.5.1",
+      "tag": "@uifabric/merge-styles_v6.5.1",
+      "date": "Thu, 19 Jul 2018 21:25:32 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "9e76cd58ec8a34d80227fb28fb03844e35331c4c",
+            "comment": "`mergeStyleSet` is able to take falsey values again and handle it correctly in all cases."
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.5.0",
+      "tag": "@uifabric/merge-styles_v6.5.0",
+      "date": "Wed, 18 Jul 2018 10:25:50 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "99545224cefac2af3edb13ce7b038ac1d14f3d38",
+            "comment": "Add support for style functions and improve documentation/typings."
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.4.0",
+      "tag": "@uifabric/merge-styles_v6.4.0",
+      "date": "Fri, 13 Jul 2018 21:32:37 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "83486db0dd8f831599dd75f37b32878efac45ca0",
+            "comment": "Reverting the TypeScript bump, to un"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.2.3",
+      "tag": "@uifabric/merge-styles_v6.2.3",
+      "date": "Tue, 10 Jul 2018 21:54:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "35a362f6f82002dde458fde6f322330e8a44e6a9",
+            "comment": "Refining the merge-styles fix from yesterday to check for ownerDocument changes, which is a more correct comparison to work around the Chrome \"window not resetting\" issue."
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.2.2",
+      "tag": "@uifabric/merge-styles_v6.2.2",
+      "date": "Tue, 10 Jul 2018 05:05:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "24550050c28c8732c70d0d79ee1e9209d21e91ec",
+            "comment": "If the singleton `Stylesheet` instance originated from another window, reset the instance. Workaround for an unexplained Chrome issue where the singleton was still accessible after a page refresh."
+          }
+        ]
+      }
+    },
+    {
       "version": "6.2.1",
       "tag": "@uifabric/merge-styles_v6.2.1",
       "date": "Wed, 20 Jun 2018 10:25:55 GMT",

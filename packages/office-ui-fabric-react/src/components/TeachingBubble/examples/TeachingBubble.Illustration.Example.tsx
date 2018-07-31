@@ -28,7 +28,7 @@ export class TeachingBubbleIllustrationExample extends React.Component<{}, ITeac
       children: 'Try it out'
     };
     const exampleSecondaryButtonProps: IButtonProps = {
-      children: 'May be later',
+      children: 'Maybe later',
       onClick: this._onDismiss
     };
 

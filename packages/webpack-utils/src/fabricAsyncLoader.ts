@@ -49,9 +49,11 @@ module.exports.pitch = function(remainingRequest: string, precedingRequest: stri
 
   return [
     "import Loadable from 'react-loadable';",
-    `export const ${moduleName} = Loadable({`,
-    `  loader: async() => (await import(${getMagicComments(options)} ${request})).${moduleName},`,
-    `  loading: () => null`,
+    `export var ${moduleName} = Loadable({`,
+    `  loader: function() { return import(${getMagicComments(
+      options
+    )} ${request}).then(function(m) { return m.${moduleName}; }); },`,
+    `  loading: function() { return null; }`,
     `});`
   ].join('\n');
 };

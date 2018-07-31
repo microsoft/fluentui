@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createListItems } from '../../../utilities/exampleData';
+import { createListItems } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { DetailsList, buildColumns, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
@@ -35,6 +35,7 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
         onColumnHeaderClick={this._onColumnClick}
         onItemInvoked={this._onItemInvoked}
         onColumnHeaderContextMenu={this._onColumnHeaderContextMenu}
+        useReducedRowRenderer={true}
       />
     );
   }

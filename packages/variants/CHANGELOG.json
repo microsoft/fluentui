@@ -2,6 +2,39 @@
   "name": "@uifabric/variants",
   "entries": [
     {
+      "version": "6.0.6",
+      "tag": "@uifabric/variants_v6.0.6",
+      "date": "Mon, 23 Jul 2018 10:28:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "7604bf8128096c2fec78c81a1ce076b2f75bb668",
+            "comment": "Variants: new designs for bodyFrameBackground"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.38.2 <7.0.0` to `>=6.39.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.5",
+      "tag": "@uifabric/variants_v6.0.5",
+      "date": "Tue, 03 Jul 2018 10:23:19 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Bryan Watts <brwatt@microsoft.com>",
+            "commit": "3538fae806f2dffe317fb72e3f7df8cc03061fff",
+            "comment": "Bump variants and file-type-icons packages to restore amd build output"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.0.4",
       "tag": "@uifabric/variants_v6.0.4",
       "date": "Thu, 14 Jun 2018 20:52:57 GMT",

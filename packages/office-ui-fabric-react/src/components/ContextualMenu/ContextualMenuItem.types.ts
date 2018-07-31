@@ -1,5 +1,7 @@
 import { IContextualMenuItem } from './ContextualMenu.types';
 import { IMenuItemClassNames } from './ContextualMenu.classNames';
+import { IStyle, ITheme } from '../../Styling';
+import { IRefObject, IStyleFunction } from '../../Utilities';
 
 export interface IContextualMenuRenderItem {
   /**
@@ -23,7 +25,23 @@ export interface IContextualMenuItemProps extends React.HTMLAttributes<IContextu
    * Optional callback to access the IContextualMenuRenderItem interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IContextualMenuRenderItem | null) => void;
+  componentRef?: IRefObject<IContextualMenuRenderItem>;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  styles?: IStyleFunction<IContextualMenuItemStyleProps, IContextualMenuItemStyles>;
+
+  /**
+   * Theme provided by High-Order Component.
+   */
+  theme?: ITheme;
+
+  /**
+   * Additional css class to apply to the ContextualMenuItem
+   * @defaultvalue undefined
+   */
+  className?: string;
 
   /**
    * The item to display
@@ -71,4 +89,27 @@ export interface IContextualMenuItemProps extends React.HTMLAttributes<IContextu
    * Used for openSubMenu.
    */
   getSubmenuTarget?: () => HTMLElement | undefined;
+}
+
+export interface IContextualMenuItemStyleProps {
+  /**
+   * Theme provided by High-Order Component.
+   */
+  theme: ITheme;
+
+  /**
+   * Accept custom classNames
+   */
+  className?: string;
+
+  // Insert ContextualMenuItem style props below
+}
+
+export interface IContextualMenuItemStyles {
+  /**
+   * Style for the root element.
+   */
+  root: IStyle;
+
+  // Insert ContextualMenuItem classNames below
 }

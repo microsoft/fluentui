@@ -7,6 +7,7 @@ export {
   getIcon,
   registerIcons,
   registerIconAlias,
+  unregisterIcons,
   setIconOptions
 } from './icons';
 

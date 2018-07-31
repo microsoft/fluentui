@@ -1,2 +1,3 @@
-export { LineChart } from './LineChart';
-export { VerticalBarChart } from './VerticalBarChart';
+export * from './LineChart';
+export * from './VerticalBarChart';
+export * from './HorizontalBarChart';

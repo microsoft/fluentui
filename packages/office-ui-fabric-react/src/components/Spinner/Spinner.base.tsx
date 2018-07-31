@@ -1,17 +1,9 @@
 import * as React from 'react';
 import { ISpinnerProps, ISpinnerStyleProps, ISpinnerStyles, SpinnerType, SpinnerSize } from './Spinner.types';
-import {
-  BaseComponent,
-  customizable,
-  classNamesFunction,
-  DelayedRender,
-  getNativeProps,
-  divProperties
-} from '../../Utilities';
+import { BaseComponent, classNamesFunction, DelayedRender, getNativeProps, divProperties } from '../../Utilities';
 
 const getClassNames = classNamesFunction<ISpinnerStyleProps, ISpinnerStyles>();
 
-@customizable('Spinner', ['theme', 'styles'])
 export class SpinnerBase extends BaseComponent<ISpinnerProps, any> {
   public static defaultProps: ISpinnerProps = {
     size: SpinnerSize.medium,

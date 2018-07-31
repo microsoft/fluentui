@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal renders Modal correctly 1`] = `
+<div
+  aria-describedby={undefined}
+  aria-label={undefined}
+  aria-labelledby={undefined}
+  className={undefined}
+  onKeyDown={[Function]}
+  role="dialog"
+  style={
+    Object {
+      "overflowY": undefined,
+    }
+  }
+>
+  <div
+    className=
+        ms-Modal
+        is-open
+        test-className
+        {
+          align-items: center;
+          background-color: transparent;
+          display: flex;
+          height: 100%;
+          justify-content: center;
+          opacity: 1;
+          pointer-events: auto;
+          position: fixed;
+          transition: opacity 0.267s;
+          width: 100%;
+        }
+  >
+    <div
+      className=
+          ms-Overlay
+          ms-Overlay--dark
+          {
+            background-color: rgba(0,0,0,.4);
+            bottom: 0px;
+            left: 0px;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            border: 1px solid WindowText;
+            opacity: 0;
+          }
+      onClick={undefined}
+    />
+    <div
+      aria-labelledby={undefined}
+      className=
+          ms-Dialog-main
+          test-containerClassName
+          {
+            background-color: #ffffff;
+            box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
+            box-sizing: border-box;
+            max-height: 100%;
+            outline: 3px solid tranparent;
+            overflow-y: auto;
+            position: relative;
+            text-align: left;
+          }
+      onFocusCapture={[Function]}
+      onKeyDown={[Function]}
+    >
+      Test Content
+    </div>
+  </div>
+</div>
+`;
