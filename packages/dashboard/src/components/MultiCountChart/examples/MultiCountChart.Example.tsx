@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AnnotationType, MultiCountChart } from '../index';
+import { AnnotationType, MultiCountChart } from '@uifabric/dashboard';
 
 export class MultiCountChartExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
