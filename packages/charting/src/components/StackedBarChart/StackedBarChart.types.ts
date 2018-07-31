@@ -2,16 +2,9 @@ import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface IStackedBarChart {}
-export interface IDataPoint {
-  /**
-   * Label for data to render in the chart.
-   */
-  label: string;
-  /**
-   * Value for data to render in the chart.
-   */
-  value: number;
-}
+import { IDataPoint } from '../../types/IDataPoint';
+
+export { IDataPoint } from '../../types/IDataPoint';
 
 export interface IStackedBarChartProps {
   /**
@@ -111,4 +104,20 @@ export interface IStackedBarChartStyles {
    * Style for the element containing all the Legends in the chart.
    */
   legend: IStyle;
+  /**
+   * Style for the element subTitle.
+   */
+  subTitle: IStyle;
+  /**
+   * Style for the element value.
+   */
+  value: IStyle;
+  /**
+   * Style for the legend  bars.
+   */
+  legendBar: IStyle;
+  /**
+   * Style for the legend text.
+   */
+  legendText: IStyle;
 }

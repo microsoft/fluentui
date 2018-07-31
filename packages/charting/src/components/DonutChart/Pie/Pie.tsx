@@ -12,7 +12,7 @@ export class Pie extends React.Component<IPieProps, {}> {
       .sort(null)
       // tslint:disable:no-any
       .value((d: any) => {
-        return d.value;
+        return d.y;
       })
   };
   private colors: scale.ScaleOrdinal<string | number, {}>;
