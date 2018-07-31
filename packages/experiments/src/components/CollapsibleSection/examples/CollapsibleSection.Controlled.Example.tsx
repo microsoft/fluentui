@@ -5,7 +5,6 @@ import { CollapsibleSection } from '@uifabric/experiments/lib/CollapsibleSection
 
 export interface ICollapsibleSectionControlledExampleState {
   collapsed: boolean;
-  titleClicks: number;
 }
 
 // tslint:disable:jsx-no-lambda
@@ -16,8 +15,7 @@ export class CollapsibleSectionControlledExample extends React.Component<
   constructor(props: {}) {
     super(props);
     this.state = {
-      collapsed: true,
-      titleClicks: 0
+      collapsed: true
     };
   }
 
@@ -31,7 +29,6 @@ export class CollapsibleSectionControlledExample extends React.Component<
               this.setState({ collapsed: !this.state.collapsed });
             }}
           />
-          <p>Title Clicks: {this.state.titleClicks}</p>
           <CollapsibleSection
             collapsed={this.state.collapsed}
             titleProps={{
