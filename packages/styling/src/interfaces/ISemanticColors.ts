@@ -57,6 +57,11 @@ export interface ISemanticColors {
   bodyBackground: string;
 
   /**
+   * The standout color for backgrounds.
+   */
+  bodyStandoutBackground: string;
+
+  /**
    * The color for chrome adjacent to an area with bodyBackground.
    * This can be used to provide visual separation of zones when using stronger colors, when using a divider line is not desired.
    * In most themes, this should match the color of bodyBackground.
