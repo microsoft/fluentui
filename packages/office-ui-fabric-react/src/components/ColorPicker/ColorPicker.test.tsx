@@ -143,7 +143,6 @@ describe('ColorPicker', () => {
 
     allInputs.forEach(input => {
       input.simulate('blur');
-      wrapper.update();
 
       expect(colorPickerComponent.state.color.hex).toEqual(colorStringValue);
       expect(colorChangeCalled).toBeFalsy();
