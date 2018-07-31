@@ -43,6 +43,16 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
   ariaLabel?: string;
 
   /**
+   * @deprecated Use ariaLabel for name, and let the metadata convey state
+   */
+  onAriaLabel?: string;
+
+  /**
+   * @deprecated Use ariaLabel for name, and let the metadata convey state
+   */
+  offAriaLabel?: string;
+
+  /**
    * Checked state of the toggle. If you are maintaining state yourself, use this property. Otherwise refer to 'defaultChecked'.
    */
   checked?: boolean;
