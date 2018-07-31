@@ -12,7 +12,7 @@ export class ShimmerLineBase extends BaseComponent<IShimmerLineProps, {}> {
   }
 
   public render(): JSX.Element {
-    const { height, styles, width, borderStyle, theme } = this.props;
+    const { height, styles, width, theme, borderStyle } = this.props;
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,

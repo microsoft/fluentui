@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Removing use of borderStyle prop of Shimmer subcomponents Line, Circle, Gap in favor of using mergeStyles API.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "v-vibr@microsoft.com"
+}
