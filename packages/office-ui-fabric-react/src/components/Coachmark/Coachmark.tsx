@@ -18,7 +18,7 @@ import { Beak, BEAK_HEIGHT, BEAK_WIDTH } from './Beak/Beak';
 import { DirectionalHint } from '../../common/DirectionalHint';
 
 // Coachmark
-import { ICoachmarkProps } from './Coachmark.types';
+import { ICoachmark, ICoachmarkProps } from './Coachmark.types';
 import {
   COACHMARK_HEIGHT,
   COACHMARK_WIDTH,
@@ -110,7 +110,7 @@ export interface ICoachmarkState {
   alertText?: string;
 }
 
-export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
+export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> implements ICoachmark {
   public static defaultProps: Partial<ICoachmarkProps> = {
     isCollapsed: true,
     mouseProximityOffset: 10,
