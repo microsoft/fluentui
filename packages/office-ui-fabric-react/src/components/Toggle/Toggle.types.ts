@@ -38,14 +38,9 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
   offText?: string;
 
   /**
-   * Text for screen-reader to announce when toggle is ON.
+   * Text for screen-reader to announce as the name of the toggle.
    */
-  onAriaLabel?: string;
-
-  /**
-   * Text for screen-reader to announce when toggle is OFF.
-   */
-  offAriaLabel?: string;
+  ariaLabel?: string;
 
   /**
    * Checked state of the toggle. If you are maintaining state yourself, use this property. Otherwise refer to 'defaultChecked'.
