@@ -15,7 +15,7 @@ export function getStyles(props: IShimmerLineStyleProps): IShimmerLineStyles {
   const { palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  const borderStyles: IRawStyle = !!borderStyle ? borderStyle : { borderWidth: '0px' };
+  const borderStyles: IRawStyle = !!borderStyle ? borderStyle : {};
 
   const sharedCornerStyles: IRawStyle = {
     position: 'absolute',
