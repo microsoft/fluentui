@@ -7,12 +7,15 @@ import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dia
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 
-export interface IFocusTrapZoneDialogExampleState {
+export interface IFocusTrapZoneDialogInPanelExampleState {
   hideDialog: boolean;
   showPanel: boolean;
 }
 
-export default class FocusTrapDialogNestedExample extends React.Component<{}, IFocusTrapZoneDialogExampleState> {
+export default class FocusTrapDialogInPanelExample extends React.Component<
+  {},
+  IFocusTrapZoneDialogInPanelExampleState
+> {
   constructor(props: {}) {
     super(props);
 
