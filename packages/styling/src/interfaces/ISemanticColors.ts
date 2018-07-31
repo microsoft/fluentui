@@ -93,6 +93,21 @@ export interface ISemanticColors {
   bodyDivider: string;
 
   /**
+   * Background color for "cards" (elements with a background that sit on top of another background).
+   */
+  cardBackground: string;
+
+  /**
+   * Neutral colored links and links for action buttons.
+   */
+  actionLink: string;
+
+  /**
+   * Hover state for neutral colored links and links for action buttons.
+   */
+  actionLinkHovered: string;
+
+  /**
    * The color of a link.
    */
   link: string;
@@ -126,6 +141,11 @@ export interface ISemanticColors {
    * The color of the outline around focused controls that don't already have a border; e.g. menu items
    */
   focusBorder: string;
+
+  /**
+   * The color of the border that provides contrast between an element, such as a card, and an emphasized background.
+   */
+  variantBorder: string;
 
   //// Invariants - slots that rarely change color theme-to-theme because the color has meaning
 
