@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Mon, 23 Jul 2018 10:28:08 GMT and should not be manually modified.
+This log was last generated on Fri, 27 Jul 2018 10:25:39 GMT and should not be manually modified.
+
+## 6.3.1
+Fri, 27 Jul 2018 10:25:39 GMT
+
+### Patches
+
+- Added @uifabric/experiments dependency to fabric-website
 
 ## 6.3.0
 Mon, 23 Jul 2018 10:28:08 GMT

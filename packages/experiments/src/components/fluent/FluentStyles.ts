@@ -141,6 +141,13 @@ const LabelStyles = {
     fontWeight: FontWeights.semibold
   }
 };
+
+const TextFieldStyles = {
+  fieldGroup: {
+    borderRadius: fluentBorderRadius
+  }
+};
+
 const ToggleStyles = {
   pill: {
     width: '40px',
@@ -190,6 +197,9 @@ export const FluentStyles = {
   },
   Label: {
     styles: LabelStyles
+  },
+  TextField: {
+    styles: TextFieldStyles
   },
   Toggle: {
     styles: ToggleStyles
