@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "@types/prop-types": "^15.5.2",
-    "@uifabric/merge-styles": ">=6.6.0 <7.0.0",
+    "@uifabric/merge-styles": ">=6.7.0 <7.0.0",
     "prop-types": "^15.5.10",
     "tslib": "^1.7.1"
   },

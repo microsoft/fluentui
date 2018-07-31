@@ -1,6 +1,13 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Wed, 25 Jul 2018 03:20:34 GMT and should not be manually modified.
+This log was last generated on Tue, 31 Jul 2018 10:25:18 GMT and should not be manually modified.
+
+## 0.7.1
+Tue, 31 Jul 2018 10:25:18 GMT
+
+### Patches
+
+- Fix bad import.
 
 ## 0.7.0
 Wed, 25 Jul 2018 03:20:34 GMT

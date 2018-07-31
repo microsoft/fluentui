@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 27 Jul 2018 10:25:39 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Jul 2018 10:27:11 GMT and should not be manually modified.
+
+## 6.22.1
+Mon, 30 Jul 2018 10:27:11 GMT
+
+### Patches
+
+- FormDropdown: allow options prop to flow to the underlying Dropdown component.
 
 ## 6.22.0
 Fri, 27 Jul 2018 10:25:39 GMT

@@ -1,6 +1,29 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 27 Jul 2018 10:25:40 GMT and should not be manually modified.
+This log was last generated on Tue, 31 Jul 2018 10:25:18 GMT and should not be manually modified.
+
+## 6.42.0
+Tue, 31 Jul 2018 10:25:18 GMT
+
+### Minor changes
+
+- Fix SelectionZone selectToIndex with Shift+Tab, expose FocusZoneProps on ExtendedBasePicker
+- Dropdown: Converted to support JS styling.
+- Adding footer component for details list
+
+### Patches
+
+- Fixing issue with render coin on persona component
+- Tooltip: narrator now announces aria-describedby when using onRenderContent
+
+## 6.41.1
+Mon, 30 Jul 2018 10:27:11 GMT
+
+### Patches
+
+- Layer: Fixed bugs in examples that were affecting their functionality (#5680).
+- Ratings: Minor typings bug fix.
+- Adding interfaces IDetailsGroupRenderProps, IDetailsGroupDividerProps, which extends existing interfaces  IGroupRenderProps, IGroupDividerProps respectively, allowing group header/footer for DetailsList to be displayed as a DetailsRow.
 
 ## 6.41.0
 Fri, 27 Jul 2018 10:25:40 GMT
