@@ -249,20 +249,17 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // If we are open or we are just closed, shouldFocusAfterClose is set,
     // are focused but we are not the activeElement set focus on the input
     if (
-      // this._focusInputAfterBlur &&
-      isOpen ||
-      (prevState.isOpen &&
-        !isOpen &&
-        this._focusInputAfterClose &&
-        focused &&
-        this._autofill.current &&
-        document.activeElement !== this._autofill.current.inputElement)
+      this._focusInputAfterBlur &&
+      (isOpen ||
+        (prevState.isOpen &&
+          !isOpen &&
+          this._focusInputAfterClose &&
+          focused &&
+          this._autofill.current &&
+          document.activeElement !== this._autofill.current.inputElement))
     ) {
       console.log('componentDidUpdate: focus' + ' ' + new Date().getTime());
-      if (this._focusInputAfterBlur) {
-        this.focus(undefined /*shouldOpenOnFocus*/, true /* true /*useFocusAsync*/);
-      }
-      // this._focusInputAfterBlur = true;
+      this.focus(undefined /*shouldOpenOnFocus*/, true /*useFocusAsync*/);
     }
 
     // If we should focusAfterClose AND
@@ -272,34 +269,31 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     //     are not allowing freeform OR
     //     the value changed
     // we need to set selection
-    if (
-      ((prevState.isOpen && !isOpen) ||
-        (focused &&
-          ((!isOpen &&
-            !this.props.multiSelect &&
-            prevState.selectedIndices &&
-            selectedIndices &&
-            prevState.selectedIndices[0] !== selectedIndices[0]) ||
-            !allowFreeform ||
-            text !== prevProps.text ||
-            value !== prevProps.value)))
-    ) {
-      if (this.state.focused && this._focusInputAfterBlur) {
 
-        console.log('componentDidUpdate: select' + ' ' + new Date().getTime());
-        this._select();
-      }
+    // TODO update comment
+    if (
+      this._focusInputAfterBlur && (
+        ((prevState.isOpen && !isOpen) ||
+          (focused &&
+            ((!isOpen &&
+              !this.props.multiSelect &&
+              prevState.selectedIndices &&
+              selectedIndices &&
+              prevState.selectedIndices[0] !== selectedIndices[0]) ||
+              !allowFreeform ||
+              text !== prevProps.text ||
+              value !== prevProps.value))))
+    ) {
+      this._select();
     }
 
     this._notifyPendingValueChanged(prevState);
 
     if (isOpen && !prevState.isOpen && onMenuOpen) {
-      console.log('componentDidUpdate: onMenuOpen' + ' ' + new Date().getTime());
       onMenuOpen();
     }
 
     if (!isOpen && prevState.isOpen && onMenuDismissed) {
-      console.log('componentDidUpdate: onMenuDismissed' + ' ' + new Date().getTime());
       onMenuDismissed();
     }
   }
@@ -339,7 +333,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const divProps = getNativeProps(this.props, divProperties);
 
     const hasErrorMessage = errorMessage && errorMessage.length > 0 ? true : false;
-    console.log('onRender');
 
     this._classNames = this.props.getClassNames
       ? this.props.getClassNames(
@@ -452,22 +445,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    */
   public focus = (shouldOpenOnFocus?: boolean, useFocusAsync?: boolean): void => {
     if (this._autofill.current) {
-      console.log('focus' + ' ' + new Date().getTime())
       if (useFocusAsync) {
-        console.log('focus: focus async' + ' ' + new Date().getTime())
-        // this._autofill.current.focus();
-        // problem:
-        // using focusAsync is causing us to focus on the combo box later, specifically, after
-        // we focus the checkbox, we would call this and then call onBlur
-        // however the problem is that we will still focus on the combobox and we need to make
         focusAsync(this._autofill.current);
       } else {
-        console.log('focus: focus sync' + ' ' + new Date().getTime())
         this._autofill.current.focus();
       }
 
       if (shouldOpenOnFocus) {
-        console.log('focus: isOpen set to true' + ' ' + new Date().getTime());
         this.setState({
           isOpen: true
         });
@@ -891,8 +875,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         selectedIndices: selectedIndices
       });
 
-      console.log('setSelectedIndex: changed selectedIndices to ' + selectedIndices + ' ' + new Date().getTime());
-
       // If ComboBox value is changed, revert preview first
       if (this._hasPendingValue && onPendingValueChanged) {
         onPendingValueChanged();
@@ -915,16 +897,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * and set the focused state
    */
   private _select = (): void => {
-    console.log('select' + ' ' + new Date().getTime());
-    console.log('select focus input after close: ' + this._focusInputAfterClose + new Date().getTime());
-    // this._focusInputAfterBlur = true;
     if (this._autofill.current && this._autofill.current.inputElement) {
-      console.log('select: select element of items' + ' ' + new Date().getTime());
       this._autofill.current.inputElement.select();
     }
 
     if (!this.state.focused) {
-      console.log('select: change focused to be true' + ' ' + new Date().getTime())
       this.setState({ focused: true });
       this._focusInputAfterBlur = true;
     }
@@ -969,7 +946,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // Do nothing if the blur is coming from something
     // inside the comboBox root or the comboBox menu since
     // it we are not really bluring from the whole comboBox
-    console.log('onBlur' + ' ' + new Date().getTime());
     if (
       event.relatedTarget &&
       ((this._root.current && this._root.current.contains(event.relatedTarget as HTMLElement)) ||
@@ -981,10 +957,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     }
 
     if (this.state.focused) {
-      console.log('onBlur: set focused to false' + ' ' + new Date().getTime());
       this.setState({ focused: false });
       this._focusInputAfterBlur = false;
-      // this._focusInputAfterClose = false;
       if (!this.props.multiSelect) {
         console.log('onBlur: submitPendingValue' + ' ' + new Date().getTime());
         this._submitPendingValue(event);
