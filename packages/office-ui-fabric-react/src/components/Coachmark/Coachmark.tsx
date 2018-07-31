@@ -5,6 +5,7 @@ import {
   classNamesFunction,
   createRef,
   elementContains,
+  getDocument,
   IRectangle,
   KeyCodes,
   shallowCompare
@@ -293,6 +294,9 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> i
     ) {
       this._setBeakPosition();
     }
+    if (prevProps.preventDismissOnLostFocus !== this.props.preventDismissOnLostFocus) {
+      this._addListeners();
+    }
   }
 
   public componentDidMount(): void {
@@ -334,17 +338,6 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> i
     );
   }
 
-  public componentWillUnmount(): void {
-    const { preventDismissOnLostFocus } = this.props;
-
-    this._events.off(document, 'keydown', this._onKeyDown, true);
-
-    if (!preventDismissOnLostFocus) {
-      this._events.off(document, 'click', this._dismissOnLostFocus, true);
-      this._events.off(document, 'focus', this._dismissOnLostFocus, true);
-    }
-  }
-
   public dismiss = (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
     const { onDismiss } = this.props;
 
@@ -355,15 +348,19 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> i
 
   private _addListeners(): void {
     const { preventDismissOnLostFocus } = this.props;
+    const currentDoc: Document = getDocument()!;
 
-    this._async.setTimeout(() => {
-      this._events.on(document, 'keydown', this._onKeyDown, true);
+    if (currentDoc) {
+      this._events.on(currentDoc, 'keydown', this._onKeyDown, true);
 
       if (!preventDismissOnLostFocus) {
-        this._events.on(document, 'click', this._dismissOnLostFocus, true);
-        this._events.on(document, 'focus', this._dismissOnLostFocus, true);
+        this._events.on(currentDoc, 'click', this._dismissOnLostFocus, true);
+        this._events.on(currentDoc, 'focus', this._dismissOnLostFocus, true);
+      } else {
+        this._events.off(currentDoc, 'click', this._dismissOnLostFocus, true);
+        this._events.off(currentDoc, 'focus', this._dismissOnLostFocus, true);
       }
-    }, 0);
+    }
   }
 
   private _dismissOnLostFocus(ev: Event) {
