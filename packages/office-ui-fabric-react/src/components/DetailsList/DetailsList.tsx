@@ -44,6 +44,7 @@ import {
 } from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
 import { GetGroupCount } from '../../utilities/groupedList/GroupedListUtility';
+import { IDetailsFooterProps } from '../DetailsList/DetailsFooter.types';
 
 const styles: any = stylesImport;
 
@@ -329,9 +330,11 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     }
 
     const {
-      onRenderDetailsHeader = this._onRenderDetailsHeader
+      onRenderDetailsHeader = this._onRenderDetailsHeader,
+      onRenderDetailsFooter = this._onRenderDetailsFooter
     } = this.props;
-    const recomputedGroupProps = groupProps ? this._getGroupProps(groupProps) : undefined;
+
+    const detailsFooterProps = this._getDetailsFooterProps();
     const rowCount = (isHeaderVisible ? 1 : 0) + GetGroupCount(groups) + (items ? items.length : 0);
     return (
       // If shouldApplyApplicationRole is true, role application will be applied to make arrow keys work
@@ -410,7 +413,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                   <GroupedList
                     ref={ this._groupedList }
                     groups={ groups }
-                    groupProps={ recomputedGroupProps }
+                    groupProps={ groupProps ? this._getGroupProps(groupProps) : undefined }
                     items={ items }
                     onRenderCell={ this._onRenderCell }
                     selection={ selection }
@@ -437,6 +440,12 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
               </SelectionZone>
             </FocusZone>
           </div>
+          { onRenderDetailsFooter(
+            {
+              ...detailsFooterProps
+            },
+            this._onRenderDetailsFooter
+          ) }
         </div>
       </div>
     );
@@ -453,6 +462,13 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
   private _onRenderDetailsHeader = (detailsHeaderProps: IDetailsHeaderProps, defaultRender?: IRenderFunction<IDetailsHeaderProps>): JSX.Element => {
     return <DetailsHeader { ...detailsHeaderProps } />;
+  }
+
+  private _onRenderDetailsFooter = (
+    detailsFooterProps: IDetailsFooterProps,
+    defaultRender?: IRenderFunction<IDetailsFooterProps>
+  ): JSX.Element | null => {
+    return null;
   }
 
   private _onRenderListCell = (nestingDepth: number)
@@ -882,61 +898,51 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     return itemKey;
   }
 
+  private _getDetailsFooterProps(): IDetailsFooterProps | undefined {
+    const { adjustedColumns: columns } = this.state;
+    const detailsFooterProps: IDetailsFooterProps = {
+      columns: columns as IColumn[],
+      groupNestingDepth: this._getGroupNestingDepth(),
+      selection: this._selection
+    };
+    return {
+      ...detailsFooterProps
+    };
+  }
+
   private _getGroupProps(detailsGroupProps: IDetailsGroupRenderProps): IGroupRenderProps {
     const {
       onRenderFooter: onRenderDetailsGroupFooter,
       onRenderHeader: onRenderDetailsGroupHeader
     } = detailsGroupProps;
     const { adjustedColumns: columns } = this.state;
-    const selection = new Selection();
-    const {
-      compact,
-      selectionMode,
-      viewport,
-      checkboxVisibility,
-      getRowAriaLabel,
-      getRowAriaDescribedBy,
-      checkButtonAriaLabel,
-      checkboxCellClassName
-    } = this.props;
-
-    const detailsRowProps: IDetailsRowProps | undefined = {
-      item: '',
-      itemIndex: -1,
-      compact: compact,
-      columns: columns as IColumn[],
-      selectionMode: selectionMode!,
-      selection: selection,
-      checkboxVisibility: checkboxVisibility,
-      getRowAriaLabel: getRowAriaLabel,
-      viewport: viewport,
-      getRowAriaDescribedBy: getRowAriaDescribedBy,
-      checkButtonAriaLabel: checkButtonAriaLabel,
-      checkboxCellClassName: checkboxCellClassName
-    };
-
+    const groupNestingDepth = this._getGroupNestingDepth();
     const onRenderFooter = onRenderDetailsGroupFooter
       ? (props: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
-          return onRenderDetailsGroupFooter(
-            {
-              ...props,
-              detailsRowProps
-            },
-            defaultRender
-          );
-        }
+        return onRenderDetailsGroupFooter(
+          {
+            ...props,
+            columns: columns,
+            groupNestingDepth: groupNestingDepth,
+            selection: this._selection
+          },
+          defaultRender
+        );
+      }
       : undefined;
 
     const onRenderHeader = onRenderDetailsGroupHeader
       ? (props: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
-          return onRenderDetailsGroupHeader(
-            {
-              ...props,
-              detailsRowProps
-            },
-            defaultRender
-          );
-        }
+        return onRenderDetailsGroupHeader(
+          {
+            ...props,
+            columns: columns,
+            groupNestingDepth: groupNestingDepth,
+            selection: this._selection
+          },
+          defaultRender
+        );
+      }
       : undefined;
 
     const groupProps = detailsGroupProps as IGroupRenderProps;

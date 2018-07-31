@@ -23,6 +23,7 @@ import {
   IListProps,
   ScrollToMode
 } from '../List/index';
+import { IDetailsFooterProps } from './DetailsFooter.types';
 
 export { IDetailsHeaderProps };
 
@@ -175,6 +176,10 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
    */
   onRenderDetailsHeader?: IRenderFunction<IDetailsHeaderProps>;
 
+  /**
+  * An override to render the details footer.
+  */
+  onRenderDetailsFooter?: IRenderFunction<IDetailsFooterProps>;
   /** Viewport, provided by the withViewport decorator. */
   viewport?: IViewport;
 
@@ -504,5 +509,7 @@ export interface IDetailsGroupRenderProps extends IGroupRenderProps {
 }
 
 export interface IDetailsGroupDividerProps extends IGroupDividerProps {
-  detailsRowProps?: IDetailsRowProps;
+  columns?: IColumn[];
+  groupNestingDepth?: number;
+  selection?: ISelection;
 }
