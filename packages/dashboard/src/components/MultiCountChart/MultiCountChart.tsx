@@ -5,7 +5,7 @@ import { getStyles } from './MultiCountStyles';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
-export class MultiCountChart extends React.Component<IMultiCountChartProps, {}> {
+export class MultiCount extends React.Component<IMultiCountChartProps, {}> {
   constructor(props: IMultiCountChartProps) {
     super(props);
   }

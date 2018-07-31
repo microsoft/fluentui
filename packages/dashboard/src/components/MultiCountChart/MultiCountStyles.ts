@@ -4,9 +4,9 @@ export const getStyles = (props: IMultiCountStyleProps): IMultiCountChartStyles 
   return {
     root: {
       display: 'flex',
-      lineHeight: '33px',
       flexDirection: 'row',
-      flex: 1
+      flex: 1,
+      alignItems: 'baseline'
     },
     bodyText: {
       fontFamily: 'Segoe UI Semibold',

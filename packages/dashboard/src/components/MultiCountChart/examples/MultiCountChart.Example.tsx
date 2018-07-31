@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { AnnotationType, MultiCountChart } from '@uifabric/dashboard';
+import { AnnotationType, MultiCount } from '@uifabric/dashboard';
+
+import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export class MultiCountChartExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
@@ -8,24 +10,24 @@ export class MultiCountChartExample extends React.Component<{}, {}> {
         data: 13000,
         bodyText: 'Flagged users',
         annotaionText: 'Annotation Text',
-        color: 'blue',
+        color: DefaultPalette.accent,
         type: AnnotationType.positive
       },
       {
         data: 8000000,
         bodyText: 'Risky sign-ins',
         annotaionText: 'Decrease in the safety',
-        color: 'green',
+        color: DefaultPalette.green,
         type: AnnotationType.negative
       },
       {
         data: 331100000,
         bodyText: 'Risky sign-ins',
         annotaionText: 'Annotation',
-        color: 'red',
+        color: DefaultPalette.blue,
         type: AnnotationType.neutral
       }
     ];
-    return <MultiCountChart multiCountRows={rows} />;
+    return <MultiCount multiCountRows={rows} />;
   }
 }
