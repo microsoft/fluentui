@@ -92,7 +92,7 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
                 ref={this._toggleButton}
                 aria-disabled={disabled}
                 aria-checked={checked}
-                aria-label={ariaLabel || onAriaLabel}
+                aria-label={ariaLabel ? ariaLabel : onAriaLabel}
                 data-is-focusable={true}
                 onChange={this._noop}
                 onClick={this._onClick}
