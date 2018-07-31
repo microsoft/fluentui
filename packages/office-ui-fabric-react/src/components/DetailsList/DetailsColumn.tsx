@@ -39,96 +39,101 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
     this._onRootMouseDown = this._onRootMouseDown.bind(this);
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { column, columnIndex, parentId, isDraggable, headerClassNames } = this.props;
     const { onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip } = this.props;
 
-    return [
-      <div
-        key={column.key}
-        ref={this._root}
-        role={'columnheader'}
-        aria-sort={column.isSorted ? (column.isSortedDescending ? 'descending' : 'ascending') : 'none'}
-        aria-colindex={columnIndex}
-        className={css(
-          headerClassNames.cell,
-          column.headerClassName,
-          column.columnActionsMode !== ColumnActionsMode.disabled &&
-            'is-actionable ' + headerClassNames.cellIsActionable,
-          !column.name && 'is-empty ' + headerClassNames.cellIsEmpty,
-          (column.isSorted || column.isGrouped || column.isFiltered) && 'is-icon-visible',
-          column.isPadded && headerClassNames.cellWrapperPadded
-        )}
-        data-is-draggable={isDraggable}
-        draggable={isDraggable}
-        style={{ width: column.calculatedWidth! + INNER_PADDING + (column.isPadded ? ISPADDED_WIDTH : 0) }}
-        data-automationid={'ColumnsHeaderColumn'}
-        data-item-key={column.key}
-      >
-        {isDraggable && <Icon iconName={'GripperBarVertical'} className={headerClassNames.gripperBarVerticalStyle} />}
-        {onRenderColumnHeaderTooltip(
-          {
-            hostClassName: headerClassNames.cellTooltip,
-            id: `${parentId}-${column.key}-tooltip`,
-            setAriaDescribedBy: false,
-            content: column.columnActionsMode !== ColumnActionsMode.disabled ? column.ariaLabel : '',
-            children: (
-              <span
-                id={`${parentId}-${column.key}`}
-                aria-label={column.isIconOnly ? column.name : undefined}
-                aria-labelledby={column.isIconOnly ? undefined : `${parentId}-${column.key}-name `}
-                className={headerClassNames.cellTitle}
-                data-is-focusable={column.columnActionsMode !== ColumnActionsMode.disabled}
-                role={column.columnActionsMode !== ColumnActionsMode.disabled ? 'button' : undefined}
-                aria-describedby={
-                  this.props.onRenderColumnHeaderTooltip ? `${parentId}-${column.key}-tooltip` : undefined
-                }
-                onContextMenu={this._onColumnContextMenu.bind(this, column)}
-                onClick={this._onColumnClick.bind(this, column)}
-                aria-haspopup={column.columnActionsMode === ColumnActionsMode.hasDropdown}
-              >
+    return (
+      <>
+        <div
+          key={column.key}
+          ref={this._root}
+          role={'columnheader'}
+          aria-sort={column.isSorted ? (column.isSortedDescending ? 'descending' : 'ascending') : 'none'}
+          aria-colindex={columnIndex}
+          className={css(
+            headerClassNames.cell,
+            column.headerClassName,
+            column.columnActionsMode !== ColumnActionsMode.disabled &&
+              'is-actionable ' + headerClassNames.cellIsActionable,
+            !column.name && 'is-empty ' + headerClassNames.cellIsEmpty,
+            (column.isSorted || column.isGrouped || column.isFiltered) && 'is-icon-visible',
+            column.isPadded && headerClassNames.cellWrapperPadded
+          )}
+          data-is-draggable={isDraggable}
+          draggable={isDraggable}
+          style={{ width: column.calculatedWidth! + INNER_PADDING + (column.isPadded ? ISPADDED_WIDTH : 0) }}
+          data-automationid={'ColumnsHeaderColumn'}
+          data-item-key={column.key}
+        >
+          {isDraggable && <Icon iconName={'GripperBarVertical'} className={headerClassNames.gripperBarVerticalStyle} />}
+          {onRenderColumnHeaderTooltip(
+            {
+              hostClassName: headerClassNames.cellTooltip,
+              id: `${parentId}-${column.key}-tooltip`,
+              setAriaDescribedBy: false,
+              content: column.columnActionsMode !== ColumnActionsMode.disabled ? column.ariaLabel : '',
+              children: (
                 <span
-                  id={`${parentId}-${column.key}-name`}
-                  className={css(headerClassNames.cellName, {
-                    [headerClassNames.iconOnlyHeader]: column.isIconOnly
-                  })}
+                  id={`${parentId}-${column.key}`}
+                  aria-label={column.isIconOnly ? column.name : undefined}
+                  aria-labelledby={column.isIconOnly ? undefined : `${parentId}-${column.key}-name `}
+                  className={headerClassNames.cellTitle}
+                  data-is-focusable={column.columnActionsMode !== ColumnActionsMode.disabled}
+                  role={column.columnActionsMode !== ColumnActionsMode.disabled ? 'button' : undefined}
+                  aria-describedby={
+                    this.props.onRenderColumnHeaderTooltip || this._hasAccessibleLabel()
+                      ? `${parentId}-${column.key}-tooltip`
+                      : undefined
+                  }
+                  onContextMenu={this._onColumnContextMenu.bind(this, column)}
+                  onClick={this._onColumnClick.bind(this, column)}
+                  aria-haspopup={column.columnActionsMode === ColumnActionsMode.hasDropdown}
                 >
-                  {(column.iconName || column.iconClassName) && (
-                    <Icon className={css(headerClassNames.nearIcon, column.iconClassName)} iconName={column.iconName} />
+                  <span
+                    id={`${parentId}-${column.key}-name`}
+                    className={css(headerClassNames.cellName, {
+                      [headerClassNames.iconOnlyHeader]: column.isIconOnly
+                    })}
+                  >
+                    {(column.iconName || column.iconClassName) && (
+                      <Icon
+                        className={css(headerClassNames.nearIcon, column.iconClassName)}
+                        iconName={column.iconName}
+                      />
+                    )}
+
+                    {column.isIconOnly ? (
+                      <span className={headerClassNames.accessibleLabel}>{column.name}</span>
+                    ) : (
+                      column.name
+                    )}
+                  </span>
+
+                  {column.isFiltered && <Icon className={headerClassNames.nearIcon} iconName={'Filter'} />}
+
+                  {column.isSorted && (
+                    <Icon
+                      className={css(headerClassNames.nearIcon, headerClassNames.sortIcon)}
+                      iconName={column.isSortedDescending ? 'SortDown' : 'SortUp'}
+                    />
                   )}
 
-                  {!column.isIconOnly ? column.name : undefined}
+                  {column.isGrouped && <Icon className={headerClassNames.nearIcon} iconName={'GroupedDescending'} />}
+
+                  {column.columnActionsMode === ColumnActionsMode.hasDropdown &&
+                    !column.isIconOnly && (
+                      <Icon aria-hidden={true} className={headerClassNames.filterChevron} iconName={'ChevronDown'} />
+                    )}
                 </span>
-
-                {column.isFiltered && <Icon className={headerClassNames.nearIcon} iconName={'Filter'} />}
-
-                {column.isSorted && (
-                  <Icon
-                    className={css(headerClassNames.nearIcon, headerClassNames.sortIcon)}
-                    iconName={column.isSortedDescending ? 'SortDown' : 'SortUp'}
-                  />
-                )}
-
-                {column.isGrouped && <Icon className={headerClassNames.nearIcon} iconName={'GroupedDescending'} />}
-
-                {column.columnActionsMode === ColumnActionsMode.hasDropdown &&
-                  !column.isIconOnly && <Icon className={headerClassNames.filterChevron} iconName={'ChevronDown'} />}
-              </span>
-            )
-          },
-          this._onRenderColumnHeaderTooltip
-        )}
-      </div>,
-      column.ariaLabel && !this.props.onRenderColumnHeaderTooltip ? (
-        <label
-          key={`${column.key}_label`}
-          id={`${parentId}-${column.key}-tooltip`}
-          className={headerClassNames.accessibleLabel}
-        >
-          {column.ariaLabel}
-        </label>
-      ) : null
-    ];
+              )
+            },
+            this._onRenderColumnHeaderTooltip
+          )}
+        </div>
+        {!this.props.onRenderColumnHeaderTooltip ? this._renderAccessibleLabel() : null}
+      </>
+    );
   }
 
   public componentDidMount(): void {
@@ -217,6 +222,37 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
       onDragEnd: this._onDragEnd
     };
     return options;
+  }
+
+  private _hasAccessibleLabel(): boolean {
+    const { column } = this.props;
+
+    return !!(
+      column.ariaLabel ||
+      column.filterAriaLabel ||
+      column.sortAscendingAriaLabel ||
+      column.sortDescendingAriaLabel ||
+      column.groupAriaLabel
+    );
+  }
+
+  private _renderAccessibleLabel(): JSX.Element | null {
+    const { column, parentId, headerClassNames } = this.props;
+
+    return this._hasAccessibleLabel() && !this.props.onRenderColumnHeaderTooltip ? (
+      <label
+        key={`${column.key}_label`}
+        id={`${parentId}-${column.key}-tooltip`}
+        className={headerClassNames.accessibleLabel}
+      >
+        {column.ariaLabel}
+        {(column.isFiltered && column.filterAriaLabel) || null}
+        {(column.isSorted &&
+          (column.isSortedDescending ? column.sortDescendingAriaLabel : column.sortAscendingAriaLabel)) ||
+          null}
+        {(column.isGrouped && column.groupAriaLabel) || null}
+      </label>
+    ) : null;
   }
 
   private _onDragStart(item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent): void {

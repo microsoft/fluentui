@@ -62,6 +62,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
       (tooltipProps && tooltipProps.onRenderContent && tooltipProps.onRenderContent())
     );
     const showTooltip = isTooltipVisible && isContentPresent;
+    const ariaDescribedBy = (setAriaDescribedBy && isTooltipVisible && isContentPresent) ? tooltipId : undefined;
 
     return (
       <div
@@ -71,7 +72,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
         {...{ onBlurCapture: this._hideTooltip }}
         onMouseEnter={this._onTooltipMouseEnter}
         onMouseLeave={this._onTooltipMouseLeave}
-        aria-describedby={setAriaDescribedBy && isTooltipVisible && content ? tooltipId : undefined}
+        aria-describedby={ariaDescribedBy}
       >
         {children}
         {showTooltip && (

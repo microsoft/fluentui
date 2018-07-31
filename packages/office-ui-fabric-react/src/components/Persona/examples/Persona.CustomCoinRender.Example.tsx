@@ -12,7 +12,6 @@ import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
 const exampleStyles: any = exampleStylesImport;
 
 const examplePersona: IPersonaSharedProps = {
-  imageUrl: TestImages.personaMale,
   imageInitials: 'TR',
   text: 'Ted Randall',
   secondaryText: 'Project Manager',
@@ -37,8 +36,8 @@ export class PersonaCustomCoinRenderExample extends React.Component {
   }
 
   private _onRenderCoin = (props: IPersonaProps): JSX.Element => {
-    const { coinSize, imageUrl, imageAlt } = props;
-
+    const { coinSize, imageAlt } = props;
+    const imageUrl = TestImages.personaMale;
     return (
       <div className="customExampleCoin">
         <img src={imageUrl} alt={imageAlt} width={coinSize} height={coinSize} />

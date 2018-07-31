@@ -10,6 +10,8 @@ module.exports = function(options) {
   function lintSource() {
     const files = _getFiles(sourcePath, /\.(ts|tsx)$/i);
     const importErrors = {
+      totalImportKeywords: 0,
+      totalImportStatements: 0,
       pathInvalid: {
         count: 0,
         matches: {}
@@ -18,6 +20,15 @@ module.exports = function(options) {
 
     for (const file of files) {
       _evaluateFile(file, importErrors);
+    }
+
+    // If you're here for this error check out commented out code in _evaluateFile for troubleshooting.
+    if (importErrors.totalImportKeywords !== importErrors.totalImportStatements) {
+      console.log('!!!!!!!!!!!!!!!!!!!!!!!!!');
+      console.log('WARNING: Potential missed import statements.');
+      console.log(`Import keywords found: ${importErrors.totalImportKeywords}`);
+      console.log(`Import statements found: ${importErrors.totalImportStatements}`);
+      console.log('!!!!!!!!!!!!!!!!!!!!!!!!!');
     }
 
     if (reportFilePathErrors(importErrors.pathInvalid)) {
@@ -59,12 +70,24 @@ module.exports = function(options) {
     const fileContent = fs.readFileSync(filePath, 'utf8');
 
     // Find imports.
-    const importRegex = /import [{} a-zA-Z,*\n]+ from ['"]{1}([.\/a-zA-Z]+)['"]{1};$/gm;
-    const importStatements = fileContent.match(importRegex);
+    const importKeywordRegex = /^import/gm;
+    const importStatementRegex = /^import [{} a-zA-Z0-9_,*\r?\n ]*(?:from )?['"]{1}([.\/a-zA-Z0-9_@\-]+)['"]{1};.*$/gm;
+
+    const importKeywords = fileContent.match(importKeywordRegex);
+    const importStatements = fileContent.match(importStatementRegex);
+
+    importErrors.totalImportKeywords += importKeywords ? importKeywords.length : 0;
+    importErrors.totalImportStatements += importStatements ? importStatements.length : 0;
+
+    // This code is left here to help troubleshoot any instances of mismatch import keywords and statements.
+    // if (importKeywords && (!importStatements || importKeywords.length !== importStatements.length)) {
+    //   console.log(`\r\nCould not detect import in ${filePath}! ('${importKeywords.length} keywords vs. ${importStatements ? importStatements.length : 0})`);
+    //   console.log(`importStatements: ${importStatements}`);
+    // }
 
     if (importStatements) {
       importStatements.forEach(statement => {
-        const parts = new RegExp(importRegex).exec(statement);
+        const parts = new RegExp(importStatementRegex).exec(statement);
 
         if (parts) {
           _evaluateImport(filePath, parts[1], importErrors);

@@ -4,6 +4,7 @@ import { IInputProps } from '../../Pickers';
 import { IBaseFloatingPickerProps } from '../../FloatingPicker';
 import { IBaseSelectedItemsListProps } from '../../SelectedItemsList';
 import { IRefObject } from '../../Utilities';
+import { IFocusZoneProps } from '../../FocusZone';
 
 export interface IBaseExtendedPicker<T> {
   /** Forces the picker to resolve */
@@ -121,4 +122,9 @@ export interface IBaseExtendedPickerProps<T> {
    * If using as a controlled component use suggestionItems here instead of FloatingPicker
    */
   suggestionItems?: T[];
+
+  /**
+   * Focus zone props
+   */
+  focusZoneProps?: IFocusZoneProps;
 }

@@ -6,32 +6,37 @@ import { Checkbox } from '../../Checkbox';
 import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
 import { Icon } from '../../Icon';
 import { KeytipData } from '../../KeytipData';
-import { Label } from '../../Label';
+import { Label, ILabelStyleProps, ILabelStyles } from '../../Label';
 import { Panel } from '../../Panel';
-import { getTheme } from '../../Styling';
+import { IProcessedStyleSet } from '../../Styling';
 import {
   BaseComponent,
   KeyCodes,
   createRef,
-  css,
   divProperties,
   findIndex,
   getFirstFocusable,
   getId,
   getLastFocusable,
   getNativeProps,
-  mergeAriaAttributeValues
+  mergeAriaAttributeValues,
+  classNamesFunction,
+  IStyleFunctionOrObject
 } from '../../Utilities';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { ResponsiveMode, withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
-import { getStyles as getCheckboxStyles } from '../Checkbox/Checkbox.styles';
-import * as stylesImport from './Dropdown.scss';
-import { DropdownMenuItemType, IDropdownOption, IDropdownProps } from './Dropdown.types';
+import {
+  DropdownMenuItemType,
+  IDropdownOption,
+  IDropdownProps,
+  IDropdownStyleProps,
+  IDropdownStyles
+} from './Dropdown.types';
 import { DropdownSizePosCache } from './utilities/DropdownSizePosCache';
 
-const styles: any = stylesImport;
+const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>();
 
 // Internal only props interface to support mixing in responsive mode
 export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {}
@@ -44,12 +49,10 @@ export interface IDropdownState {
 }
 
 @withResponsiveMode
-export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownState> {
+export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdownState> {
   public static defaultProps = {
     options: [] as any[]
   };
-
-  private static Option = 'option';
 
   private _host = createRef<HTMLDivElement>();
   private _focusZone = createRef<IFocusZone>();
@@ -60,6 +63,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private _scrollIdleTimeoutId: number | undefined;
   private _processingExpandCollapseKeyOnly: boolean;
   private _sizePosCache: DropdownSizePosCache = new DropdownSizePosCache();
+  private _classNames: IProcessedStyleSet<IDropdownStyles>;
 
   constructor(props: IDropdownProps) {
     super(props);
@@ -145,6 +149,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       errorMessage,
       multiSelect,
       keytipProps,
+      styles: propStyles,
+      theme,
+      panelProps,
+      calloutProps,
       onRenderTitle = this._onRenderTitle,
       onRenderContainer = this._onRenderContainer,
       onRenderPlaceHolder = this._onRenderPlaceHolder,
@@ -182,10 +190,32 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           ariaSelected: selectedIndices[0] === undefined ? undefined : true
         };
 
+    this._classNames = getClassNames(propStyles, {
+      theme,
+      className,
+      hasError: Boolean(errorMessage && errorMessage.length > 0),
+      isOpen,
+      required,
+      disabled,
+      isRenderingPlaceholder: !selectedOptions.length,
+      panelClassName: !!panelProps ? panelProps.className : undefined,
+      calloutClassName: !!calloutProps ? calloutProps.className : undefined
+    });
+
+    const labelStyles = this._classNames.subComponentStyles
+      ? (this._classNames.subComponentStyles.label as IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles>)
+      : undefined;
+
     return (
-      <div className={css('ms-Dropdown-container')}>
+      <div className={this._classNames.root}>
         {label && (
-          <Label className={css('ms-Dropdown-label')} id={id + '-label'} htmlFor={id} required={required}>
+          <Label
+            className={this._classNames.label}
+            id={id + '-label'}
+            htmlFor={id}
+            required={required}
+            styles={labelStyles}
+          >
             {label}
           </Label>
         )}
@@ -206,14 +236,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
               aria-disabled={disabled}
               aria-owns={isOpen ? id + '-list' : undefined}
               {...divProps}
-              className={css(
-                'ms-Dropdown',
-                styles.root,
-                className,
-                isOpen && 'is-open',
-                disabled! && 'is-disabled ' + styles.rootIsDisabled,
-                required! && 'is-required'
-              )}
+              className={this._classNames.dropdown}
               onBlur={this._onDropdownBlur}
               onKeyDown={this._onDropdownKeyDown}
               onKeyUp={this._onDropdownKeyUp}
@@ -222,13 +245,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             >
               <span
                 id={optionId}
-                className={css(
-                  'ms-Dropdown-title',
-                  styles.title,
-                  !selectedOptions.length && 'ms-Dropdown-titleIsPlaceHolder',
-                  !selectedOptions.length && styles.titleIsPlaceHolder,
-                  errorMessage && errorMessage.length > 0 ? styles.titleIsError : null
-                )}
+                className={this._classNames.title}
                 aria-atomic={true}
                 role={ariaAttrs.childRole}
                 aria-live={!hasFocus || disabled || multiSelect || isOpen ? 'off' : 'assertive'}
@@ -242,14 +259,14 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
                   ? onRenderTitle(selectedOptions, this._onRenderTitle)
                   : onRenderPlaceHolder(this.props, this._onRenderPlaceHolder)}
               </span>
-              <span className={css('ms-Dropdown-caretDownWrapper', styles.caretDownWrapper)}>
+              <span className={this._classNames.caretDownWrapper}>
                 {onRenderCaretDown(this.props, this._onRenderCaretDown)}
               </span>
             </div>
           )}
         </KeytipData>
         {isOpen && onRenderContainer(this.props, this._onRenderContainer)}
-        {errorMessage && <div className={css(styles.errorMessage)}>{errorMessage}</div>}
+        {errorMessage && errorMessage.length > 0 && <div className={this._classNames.errorMessage}>{errorMessage}</div>}
       </div>
     );
   }
@@ -385,7 +402,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
     return isSmall ? (
       <Panel
-        className={css('ms-Dropdown-panel', styles.panel, !!panelProps && panelProps.className)}
+        className={this._classNames.panel}
         isOpen={true}
         isLightDismiss={true}
         onDismissed={this._onDismiss}
@@ -402,7 +419,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         directionalHintFixed={true}
         directionalHint={DirectionalHint.bottomLeftEdge}
         {...calloutProps}
-        className={css('ms-Dropdown-callout', styles.callout, !!calloutProps && calloutProps.className)}
+        className={this._classNames.callout}
         target={this._dropDown.current}
         onDismiss={this._onDismiss}
         onScroll={this._onScroll}
@@ -416,7 +433,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   // Render Caret Down Icon
   private _onRenderCaretDown = (props: IDropdownProps): JSX.Element => {
-    return <Icon className={css('ms-Dropdown-caretDown', styles.caretDown)} iconName="ChevronDown" />;
+    return <Icon className={this._classNames.caretDown} iconName="ChevronDown" />;
   };
 
   // Render List of items
@@ -428,7 +445,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
     return (
       <div
-        className={styles.listWrapper}
+        className={this._classNames.dropdownItemsWrapper}
         onKeyDown={this._onZoneKeyDown}
         onKeyUp={this._onZoneKeyUp}
         ref={this._host}
@@ -439,7 +456,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           direction={FocusZoneDirection.vertical}
           defaultActiveElement={selectedIndices[0] !== undefined ? `#${id}-list${selectedIndices[0]}` : undefined}
           id={id + '-list'}
-          className={css('ms-Dropdown-items', styles.items)}
+          className={this._classNames.dropdownItems}
           aria-labelledby={id + '-label'}
           role="listbox"
         >
@@ -465,7 +482,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private _renderSeparator(item: IDropdownOption): JSX.Element | null {
     const { index, key } = item;
     if (index! > 0) {
-      return <div role="separator" key={key} className={css('ms-Dropdown-divider', styles.divider)} />;
+      return <div role="separator" key={key} className={this._classNames.dropdownDivider} />;
     }
     return null;
   }
@@ -474,7 +491,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     const { onRenderOption = this._onRenderOption } = this.props;
     const { key } = item;
     return (
-      <div key={key} className={css('ms-Dropdown-header', styles.header)}>
+      <div key={key} className={this._classNames.dropdownItemHeader}>
         {onRenderOption(item, this._onRenderOption)}
       </div>
     );
@@ -487,26 +504,25 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     const id = this._id;
     const isItemSelected =
       item.index !== undefined && selectedIndices ? selectedIndices.indexOf(item.index) > -1 : false;
-    const checkboxStyles = () => {
-      return getCheckboxStyles({
-        theme: getTheme(),
-        checked: isItemSelected,
-        disabled: item.disabled
-      });
-    };
+
+    // select the right classname based on the combination of selected/disabled
+    const itemClassName =
+      isItemSelected && item.disabled === true // preciate: both selected and disabled
+        ? this._classNames.dropdownItemSelectedAndDisabled
+        : isItemSelected // preciate: selected only
+          ? this._classNames.dropdownItemSelected
+          : item.disabled === true // predicate: disabled only
+            ? this._classNames.dropdownItemDisabled
+            : this._classNames.dropdownItem;
 
     return !this.props.multiSelect ? (
       <CommandButton
         id={id + '-list' + item.index}
-        ref={Dropdown.Option + item.index}
         key={item.key}
         data-index={item.index}
         data-is-focusable={!item.disabled}
         disabled={item.disabled}
-        className={css('ms-Dropdown-item', styles.item, {
-          ['is-selected ' + styles.itemIsSelected]: isItemSelected,
-          ['is-disabled ' + styles.itemIsDisabled]: item.disabled === true
-        })}
+        className={itemClassName}
         onClick={this._onItemClick(item)}
         onMouseEnter={this._onItemMouseEnter.bind(this, item)}
         onMouseLeave={this._onMouseItemLeave.bind(this, item)}
@@ -534,23 +550,17 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         label={item.text}
         title={item.title}
         onRenderLabel={this._onRenderLabel.bind(this, item)}
-        className={css('ms-ColumnManagementPanel-checkbox', styles.dropdownCheckbox, 'ms-Dropdown-item', styles.item, {
-          ['is-selected ' + styles.itemIsSelected]: isItemSelected,
-          ['is-disabled ' + styles.itemIsDisabled]: item.disabled
-        })}
+        className={itemClassName}
         role="option"
         aria-selected={isItemSelected ? 'true' : 'false'}
         checked={isItemSelected}
-        // Hover is being handled by focus styles
-        // so clear out the explicit hover styles
-        styles={checkboxStyles}
       />
     );
   };
 
   // Render content of item (i.e. text/icon inside of button)
   private _onRenderOption = (item: IDropdownOption): JSX.Element => {
-    return <span className={css('ms-Dropdown-optionText', styles.optionText)}>{item.text}</span>;
+    return <span className={this._classNames.dropdownOptionText}>{item.text}</span>;
   };
 
   // Render custom label for drop down item
