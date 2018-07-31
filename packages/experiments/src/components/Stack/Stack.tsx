@@ -1,17 +1,14 @@
 import * as React from 'react';
-import { createComponent, IViewProps, IPropsWithStyles } from '../Text/createComponent';
+import { createComponent, IStyleableComponent, IViewComponentProps } from '../../Foundation';
 import StackItem from './StackItem/StackItem';
 import { IStackItemProps, IStackItemStyles } from './StackItem/StackItem.types';
 import { IStackProps, IStackStyles } from './Stack.types';
 import { styles } from './Stack.styles';
 
-const StackItemType = (<StackItem /> as React.ReactElement<IStackItemProps> & {
-  styles?:
-    | Partial<IStackItemStyles>
-    | ((props: IPropsWithStyles<IStackItemProps, IStackItemStyles>) => Partial<IStackItemStyles>);
-}).type;
+const StackItemType = (<StackItem /> as React.ReactElement<IStackItemProps> &
+  IStyleableComponent<IStackItemProps, IStackItemStyles>).type;
 
-const view = (props: IViewProps<IStackProps, IStackStyles>) => {
+const view = (props: IViewComponentProps<IStackProps, IStackStyles>) => {
   const { renderAs: RootType = 'div', classNames, gap, vertical, collapseItems } = props;
 
   const children: React.ReactChild[] = React.Children.map(
@@ -37,26 +34,19 @@ const view = (props: IViewProps<IStackProps, IStackStyles>) => {
   return <RootType className={classNames.root}>{children}</RootType>;
 };
 
-export const Stack: React.StatelessComponent<
-  IStackProps & {
-    styles?: Partial<IStackStyles> | ((props: IPropsWithStyles<IStackProps, IStackStyles>) => Partial<IStackStyles>);
-  }
-> & {
-  Item: React.StatelessComponent<
-    IStackItemProps & {
-      styles?:
-        | Partial<IStackItemStyles>
-        | ((props: IPropsWithStyles<IStackItemProps, IStackItemStyles>) => Partial<IStackItemStyles>);
-    }
-  >;
-} = createComponent({
+const StackStatics = {
+  Item: StackItem,
+  defaultProps: {}
+};
+type IStackStatics = typeof StackStatics;
+
+export const Stack: React.StatelessComponent<IStackProps> & {
+  Item: React.StatelessComponent<IStackItemProps>;
+} = createComponent<IStackProps, IStackStyles, IStackStatics>({
   displayName: 'Stack',
   styles,
   view,
-  statics: {
-    Item: StackItem,
-    defaultProps: {}
-  }
+  statics: StackStatics
 });
 
 export default Stack;

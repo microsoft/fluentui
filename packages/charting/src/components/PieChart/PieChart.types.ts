@@ -1,19 +1,8 @@
 import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
-
+import { IDataPoint } from '../../types/IDataPoint';
+export { IDataPoint } from '../../types/IDataPoint';
 export interface IPieChart {}
-
-export interface IDataPoint {
-  /**
-   * Independent value of the data point, rendered.
-   */
-  value: number;
-
-  /**
-   * Dependent value of the data point, rendered.
-   */
-  label: number | string;
-}
 
 export interface IPieChartProps {
   /**
