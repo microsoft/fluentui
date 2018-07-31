@@ -11,12 +11,11 @@ export function getStyles(props: IShimmerGapStyleProps): IShimmerGapStyles {
   const { palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  const styles: IRawStyle = !!borderStyle ? borderStyle : {};
+  const borderStyles: IRawStyle = !!borderStyle ? borderStyle : {};
 
   return {
     root: [
       classNames.root,
-      styles,
       {
         backgroundColor: palette.white,
         height: `${height}px`,
@@ -30,7 +29,8 @@ export function getStyles(props: IShimmerGapStyleProps): IShimmerGapStyles {
             borderColor: 'Window'
           }
         }
-      }
+      },
+      borderStyles
     ]
   };
 }

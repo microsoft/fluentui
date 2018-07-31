@@ -12,12 +12,11 @@ export function getStyles(props: IShimmerCircleStyleProps): IShimmerCircleStyles
   const { palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  const styles: IRawStyle = !!borderStyle ? borderStyle : {};
+  const borderStyles: IRawStyle = !!borderStyle ? borderStyle : {};
 
   return {
     root: [
       classNames.root,
-      styles,
       {
         width: `${height}px`,
         height: `${height}px`,
@@ -31,7 +30,8 @@ export function getStyles(props: IShimmerCircleStyleProps): IShimmerCircleStyles
             borderColor: 'Window'
           }
         }
-      }
+      },
+      borderStyles
     ],
     svg: [
       classNames.svg,
