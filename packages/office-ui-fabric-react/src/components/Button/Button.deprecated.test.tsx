@@ -5,6 +5,7 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 import * as WarnUtil from '@uifabric/utilities/lib-commonjs/warn';
 import { CompoundButton } from './CompoundButton/CompoundButton';
+import { resetIds } from '@uifabric/utilities';
 
 describe('Button', () => {
   beforeAll(() => {
@@ -12,6 +13,10 @@ describe('Button', () => {
     jest.spyOn(WarnUtil, 'warnDeprecations').mockImplementation(() => {
       /** no impl **/
     });
+  });
+
+  beforeEach(() => {
+    resetIds();
   });
 
   afterAll(() => {
