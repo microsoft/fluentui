@@ -1,9 +1,13 @@
 import * as React from 'react';
-import { ICardProps, CardSize, Priority, CardContentType } from '../Card.types';
-import { Card } from '../Card';
-import { IThumbnailItemProps } from '../ThumbnailList/ThumbnailList.types';
-import { IAction } from '../ActionBar/ActionBar.types';
-
+import {
+  Card,
+  CardContentType,
+  CardSize,
+  IAction,
+  ICardProps,
+  IThumbnailItemProps,
+  Priority
+} from '@uifabric/dashboard';
 export class MediumWideCardBasicExample extends React.Component<{}, {}> {
   constructor(props: ICardProps) {
     super(props);

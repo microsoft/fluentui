@@ -17,6 +17,7 @@ import { IGridListProps } from '../GridList/GridList.types';
 import { GridList } from '../GridList/GridList';
 import { IChartProps, ChartWidth, ChartHeight } from '../Chart/Chart.types';
 import { Chart } from '../Chart/Chart';
+import { MultiCount, IMultiCountProps } from '@uifabric/dashboard';
 
 export class Layout extends React.Component<ILayoutProps> {
   constructor(props: ILayoutProps) {
@@ -106,6 +107,11 @@ export class Layout extends React.Component<ILayoutProps> {
                     height={this._getChartHeight(cardContentList.length)}
                   />
                 );
+                break;
+              }
+              case CardContentType.MultiCount: {
+                const { multiCountRows } = cardContent.content as IMultiCountProps;
+                contentArea.push(<MultiCount multiCountRows={multiCountRows} />);
                 break;
               }
             }
