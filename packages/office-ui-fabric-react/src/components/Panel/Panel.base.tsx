@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import {
   BaseComponent,
+  classNamesFunction,
   css,
   divProperties,
   getId,
@@ -10,8 +11,9 @@ import {
   createRef,
   elementContains
 } from '../../Utilities';
+import { IProcessedStyleSet } from '../../Styling';
 import { FocusTrapZone } from '../FocusTrapZone/index';
-import { IPanel, IPanelProps, PanelType } from './Panel.types';
+import { IPanel, IPanelProps, PanelType, IPanelStyleProps, IPanelStyles } from './Panel.types';
 import { Layer } from '../Layer/Layer';
 import { Overlay } from '../../Overlay';
 import { Popup } from '../../Popup';
@@ -20,6 +22,8 @@ import { AnimationClassNames, getTheme, IconFontSizes } from '../../Styling';
 import * as stylesImport from './Panel.scss';
 const styles: any = stylesImport;
 const theme = getTheme();
+
+const getClassNames = classNamesFunction<IPanelStyleProps, IPanelStyles>();
 
 export interface IPanelState {
   isFooterSticky?: boolean;
@@ -39,6 +43,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
 
   private _panel = createRef<HTMLDivElement>();
   private _content = createRef<HTMLDivElement>();
+  private _classNames: IProcessedStyleSet<IPanelStyles>;
 
   constructor(props: IPanelProps) {
     super(props);
@@ -124,15 +129,25 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       return null;
     }
 
+    this._classNames = getClassNames(styles!, {
+      theme: theme!,
+      className,
+      isAnimating,
+      isOpen
+    });
+
+    const { _classNames } = this;
+
     let overlay;
     if (isBlocking && isOpen) {
       overlay = (
         <Overlay
-          className={css(
-            styles.overlay,
-            isOpen && isAnimating && AnimationClassNames.fadeIn200,
-            !isOpen && isAnimating && AnimationClassNames.fadeOut200
-          )}
+          // className={css(
+          //   styles.overlay,
+          //   isOpen && isAnimating && AnimationClassNames.fadeIn200,
+          //   !isOpen && isAnimating && AnimationClassNames.fadeOut200
+          // )}
+          className={_classNames.overlay}
           isDarkThemed={false}
           onClick={isLightDismiss ? onLightDismissClick : undefined}
         />

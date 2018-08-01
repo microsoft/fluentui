@@ -307,6 +307,16 @@ export interface IPanelStyleProps {
    * Accept custom classNames
    */
   className?: string;
+
+  /**
+   * Is Panel open
+   */
+  isOpen?: boolean;
+
+  /**
+   * Is animation currently running
+   */
+  isAnimating?: boolean;
 }
 
 export interface IPanelStyles {
@@ -314,4 +324,16 @@ export interface IPanelStyles {
    * Style for the root element.
    */
   root: IStyle;
+  overlay: IStyle;
+  hiddenPanel: IStyle;
+  main: IStyle;
+  commands: IStyle;
+  contentInner: IStyle;
+  navigation: IStyle;
+  closeButton: IStyle;
+  header: IStyle;
+  headerText: IStyle;
+  content: IStyle;
+  footer: IStyle;
+  footerInner: IStyle;
 }
