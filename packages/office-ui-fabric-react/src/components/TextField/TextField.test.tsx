@@ -451,16 +451,16 @@ describe('TextField', () => {
     expect(callCount).toEqual(1);
   });
 
-  it('should call onChanged handler for input change', () => {
+  it('should call onChange handler for input change', () => {
     let callCount = 0;
-    const onChangedSpy = (value: string) => {
+    const onChangeSpy = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, value: string) => {
       callCount++;
     };
 
     const textField = mount(
       <TextField
         defaultValue="initial value"
-        onChanged={onChangedSpy}
+        onChange={onChangeSpy}
         // tslint:disable-next-line:jsx-no-lambda
         onGetErrorMessage={value => (value.length > 0 ? '' : 'error')}
       />
@@ -478,13 +478,13 @@ describe('TextField', () => {
     expect(callCount).toEqual(2);
   });
 
-  it('should not call onChanged when initial value is undefined and input change is an empty string', () => {
+  it('should not call onChange when initial value is undefined and input change is an empty string', () => {
     let callCount = 0;
-    const onChangedSpy = (value: string) => {
+    const onChangeSpy = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, value: string) => {
       callCount++;
     };
 
-    const textField = mount(<TextField onChanged={onChangedSpy} />);
+    const textField = mount(<TextField onChange={onChangeSpy} />);
 
     expect(callCount).toEqual(0);
     const inputDOM = textField.getDOMNode().querySelector('input') as Element;

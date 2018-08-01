@@ -19,7 +19,7 @@ export class ContextualMenuSubmenuExample extends React.Component<any, IContextu
   public render(): JSX.Element {
     return (
       <div>
-        <TextField value={String(this.state.hoverDelay)} onChanged={this._onHoverDelayChanged} />
+        <TextField value={String(this.state.hoverDelay)} onChange={this._onHoverDelayChanged} />
         <DefaultButton
           id="ContextualMenuButton2"
           text="Click for ContextualMenu"
@@ -124,7 +124,7 @@ export class ContextualMenuSubmenuExample extends React.Component<any, IContextu
     );
   }
 
-  private _onHoverDelayChanged = (newValue: string) => {
+  private _onHoverDelayChanged = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue: string) => {
     this.setState({
       hoverDelay: +newValue
     });
