@@ -152,7 +152,6 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     bodyTextChecked: p.black,
     bodySubtext: p.neutralSecondary,
     bodyDivider: p.neutralTertiaryAlt,
-    cardBackground: p.white,
 
     disabledBackground: p.neutralLighter,
     disabledText: p.neutralTertiary,

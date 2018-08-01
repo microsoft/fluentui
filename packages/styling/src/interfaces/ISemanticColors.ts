@@ -57,7 +57,9 @@ export interface ISemanticColors {
   bodyBackground: string;
 
   /**
-   * The standout color for backgrounds.
+   * The standout color for highlighted content backgrounds.
+   * This should use the neutral variant when on no emphasis.
+   * This should be a shade darker than the other emphases.
    */
   bodyStandoutBackground: string;
 
@@ -96,11 +98,6 @@ export interface ISemanticColors {
    * Divider lines; e.g. lines that separate sections in a menu, an <HR> element.
    */
   bodyDivider: string;
-
-  /**
-   * Background color for "cards" (elements with a background that sit on top of another background).
-   */
-  cardBackground: string;
 
   /**
    * Neutral colored links and links for action buttons.
