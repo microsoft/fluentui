@@ -2,6 +2,31 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.22.2",
+      "tag": "@uifabric/experiments_v6.22.2",
+      "date": "Wed, 01 Aug 2018 10:25:51 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "a6e83781f6720a39c24f6ee58f9ad27e11d4fde2",
+            "comment": "Improvements to CollapsibleSection and new examples."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.11.1` to `^0.12.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.1.0 <1.0.0` to `>=0.2.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.42.0 <7.0.0` to `>=6.43.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.22.1",
       "tag": "@uifabric/experiments_v6.22.1",
       "date": "Mon, 30 Jul 2018 10:27:11 GMT",

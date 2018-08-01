@@ -2,6 +2,52 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.43.0",
+      "tag": "office-ui-fabric-react_v6.43.0",
+      "date": "Wed, 01 Aug 2018 10:25:51 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "e602510ad7d8d86efb352bddbe5060af1e9c4243",
+            "comment": "Check: shouldComponentUpdate now resepects theme and classname changes."
+          },
+          {
+            "author": "dagoff <dagoff@users.noreply.github.com>",
+            "commit": "2a403765c2a6e9c40400961cff7bff1f818a89a8",
+            "comment": "FocusTrapZone: Fix focus/click-trapping bugs when FocusTrapZones are nested."
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "076907f79ba963e73eaef9df9b4d94153ead8f82",
+            "comment": "Restore accessible labels for DetailsList columns and states"
+          },
+          {
+            "author": "laxmikankanala <39089979+laxmikankanala@users.noreply.github.com>",
+            "commit": "4bab998822957516d8b08159b8bd7729bda3b471",
+            "comment": "dragStart callback will be in sync with browser, instaed of calling it in mousemove"
+          },
+          {
+            "author": "Swapnil Vaibhav <swapnil.vaibhav@microsoft.com>",
+            "commit": "f67630f414ae408c1e57134941b39de966bf32ac",
+            "comment": "PersonaCion will render the user's avatar image only if there is a valid image and the user do not wish to hide it, unlike previously where an empty img tag(src='') was being rendered over the initials always"
+          },
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "ed91a17186ae44bdc0fab88ca824d59d6e864d1a",
+            "comment": "Deprecating 'borderStyle' prop of Shimmer subcomponents Line, Circle, Gap in favor of leveraging mergeStyles API."
+          }
+        ],
+        "minor": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "100076fc726f6f833da46b6bb0b6baf0f1c112d8",
+            "comment": "Remove ShimmeredDetailsList from the DetailsList 'bundle'"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.42.0",
       "tag": "office-ui-fabric-react_v6.42.0",
       "date": "Tue, 31 Jul 2018 10:25:18 GMT",
