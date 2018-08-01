@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "PersonaCion will render the user's avatar image only if there is a valid image and the user do not wish to hide it, unlike previously where an empty img tag(src='') was being rendered over the initials always",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "swapnil.vaibhav@microsoft.com"
+}
