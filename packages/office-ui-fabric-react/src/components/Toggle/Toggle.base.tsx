@@ -52,12 +52,14 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
       label,
       ariaLabel,
       onAriaLabel,
+      offAriaLabel,
       offText,
       onText,
       styles
     } = this.props;
     const { checked } = this.state;
     const stateText = checked ? onText : offText;
+    const badAriaLabel = checked ? onAriaLabel : offAriaLabel;
     const toggleNativeProps = getNativeProps(this.props, inputProperties, ['defaultChecked']);
     const classNames = getClassNames(styles!, {
       theme: theme!,
@@ -92,7 +94,7 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
                 ref={this._toggleButton}
                 aria-disabled={disabled}
                 aria-checked={checked}
-                aria-label={ariaLabel ? ariaLabel : onAriaLabel}
+                aria-label={ariaLabel ? ariaLabel : badAriaLabel}
                 data-is-focusable={true}
                 onChange={this._noop}
                 onClick={this._onClick}
