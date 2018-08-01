@@ -436,7 +436,7 @@ describe('FocusTrapZone', () => {
     });
   });
 
-  describe.only('Nested FocusTrapZones Stack Behavior', () => {
+  describe('Nested FocusTrapZones Stack Behavior', () => {
     function getFocusStack(): FocusTrapZone[] {
       return (FocusTrapZone as any)._focusStack;
     }
@@ -445,7 +445,7 @@ describe('FocusTrapZone', () => {
       getFocusStack().length = 0;
     });
 
-    it('allows the last FocusTrapZone on the page to have focus', async () => {
+    it('FocusTrapZone maintains a proper stack of FocusTrapZones as more are mounted/unmounted.', async () => {
       let focusTrapZoneFocusStack: FocusTrapZone[] = getFocusStack();
       const topLevelDiv = ReactTestUtils.renderIntoDocument(
         <div>
