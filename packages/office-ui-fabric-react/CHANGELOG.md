@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 30 Jul 2018 11:24:42 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Aug 2018 11:25:30 GMT and should not be manually modified.
+
+## 5.118.2
+Wed, 01 Aug 2018 11:25:30 GMT
+
+### Patches
+
+- Adding Callback for details list footer custom render
 
 ## 5.118.1
 Mon, 30 Jul 2018 11:24:42 GMT
