@@ -1,6 +1,13 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Tue, 31 Jul 2018 10:25:18 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Aug 2018 10:25:51 GMT and should not be manually modified.
+
+## 0.8.0
+Wed, 01 Aug 2018 10:25:51 GMT
+
+### Minor changes
+
+- Multicount dataviz containing body text and annotation text
 
 ## 0.7.1
 Tue, 31 Jul 2018 10:25:18 GMT
