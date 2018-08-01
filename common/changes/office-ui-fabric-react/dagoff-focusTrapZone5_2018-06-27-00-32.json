@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "FocusTrapZone should have only 1 stack",
+      "comment": "FocusTrapZone: Fix focus/click-trapping bugs when FocusTrapZones are nested.",
       "type": "patch"
     }
   ],
