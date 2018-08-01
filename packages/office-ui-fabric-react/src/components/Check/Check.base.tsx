@@ -14,7 +14,11 @@ export class CheckBase extends BaseComponent<ICheckProps, {}> {
   };
 
   public shouldComponentUpdate(newProps: ICheckProps): boolean {
-    return this.props.checked !== newProps.checked;
+    return (
+      this.props.checked !== newProps.checked ||
+      this.props.theme !== newProps.theme ||
+      this.props.className !== newProps.className
+    );
   }
 
   public render(): JSX.Element {
