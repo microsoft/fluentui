@@ -192,10 +192,11 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   value?: string;
 
   /**
-   * If true the position will not change sides in an attempt to fit the callout within bounds of the ComboBox.
+   * If true the position will not change sides in an attempt to fit the callout
+   * menu within bounds of the ComboBox.
    * @default false
    */
-  directionalHintFixed?: boolean;
+  menuDirectionalHintFixed?: boolean;
 }
 
 export interface IComboBoxStyles {
