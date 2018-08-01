@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/experiments",
+      "comment": "Improvements to CollapsibleSection and new examples.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/experiments",
+  "email": "jagore@microsoft.com"
+}

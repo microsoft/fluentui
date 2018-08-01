@@ -1,27 +1,31 @@
 import * as React from 'react';
-import { ICollapsibleSectionProps, ICollapsibleSectionStyles } from './CollapsibleSection.types';
-import { RefObject } from 'office-ui-fabric-react';
-import { TViewProps } from '../../utilities/createComponent';
 
-export interface ICollapsibleSectionViewOnlyProps {
-  collapsed: boolean;
-  titleElementRef?: RefObject<HTMLElement>;
-  onKeyDown?: (ev: React.KeyboardEvent<Element>) => void;
-  onToggleCollapse?: () => void;
-  onRootKeyDown?: (ev: React.KeyboardEvent<Element>) => void;
-}
-
-// TODO: consolidate in createComponent to automatically take in parent / HOC props?
-export type ICollapsibleSectionViewProps = TViewProps<
-  ICollapsibleSectionProps & ICollapsibleSectionViewOnlyProps,
+import {
+  ICollapsibleSectionProps,
+  ICollapsibleSectionViewProps,
   ICollapsibleSectionStyles
->;
+} from './CollapsibleSection.types';
+import { CollapsibleSectionTitle } from './CollapsibleSectionTitle';
+import { IViewComponentProps } from '../../Foundation';
+import { IStyleFunction } from '../../Utilities';
 
-export const CollapsibleSectionView = (props: ICollapsibleSectionViewProps) => {
-  const { collapsed, titleAs: TitleType, titleProps, children } = props;
+/**
+ * @deprecated
+ * This is a dummy export used to avoid the "Exported variable X has or is using name Y from eternal module but cannot be named"
+ * error. Importing Y is enough to eliminate the export error but generates an unused import error. This dummy export eliminates
+ * the unused error. This export and its associated imports should be removed once we upgrade past TS 2.8.
+ */
+// tslint:disable-next-line:no-any
+export type __TYPESCRIPT_2_8_WORKAROUND_ = IStyleFunction<any, any> & ICollapsibleSectionProps;
 
+export const CollapsibleSectionView = (
+  props: IViewComponentProps<ICollapsibleSectionViewProps, ICollapsibleSectionStyles>
+) => {
+  const { collapsed, titleAs: TitleType = CollapsibleSectionTitle, titleProps, children } = props;
+
+  // TODO: make sure onToggleCollapse gets called both from state and from titleProps.
   return (
-    <div onKeyDown={props.onRootKeyDown}>
+    <div className={props.classNames.root} onKeyDown={props.onRootKeyDown}>
       <TitleType
         {...titleProps}
         collapsed={props.collapsed}
@@ -30,7 +34,7 @@ export const CollapsibleSectionView = (props: ICollapsibleSectionViewProps) => {
         onToggleCollapse={props.onToggleCollapse}
         onKeyDown={props.onKeyDown}
       />
-      <div className={props.styles.body}>{!collapsed && children}</div>
+      <div className={props.classNames.body}>{!collapsed && children}</div>
     </div>
   );
 };

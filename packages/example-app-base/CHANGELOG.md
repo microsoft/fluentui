@@ -1,6 +1,56 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Thu, 14 Jun 2018 20:52:57 GMT and should not be manually modified.
+This log was last generated on Tue, 24 Jul 2018 10:24:36 GMT and should not be manually modified.
+
+## 6.7.0
+Tue, 24 Jul 2018 10:24:36 GMT
+
+### Minor changes
+
+- Updating example pages to provide codepen script content.
+
+## 6.6.0
+Mon, 23 Jul 2018 10:28:08 GMT
+
+### Minor changes
+
+- Addressing bad imports.
+
+## 6.5.2
+Thu, 19 Jul 2018 19:04:38 GMT
+
+### Patches
+
+- Added optional feedback section for component pages
+
+## 6.5.1
+Wed, 18 Jul 2018 10:25:50 GMT
+
+### Patches
+
+- Fix typing bugs in example-app-base
+
+## 6.5.0
+Tue, 17 Jul 2018 10:28:40 GMT
+
+### Minor changes
+
+- Removing most `@customizable` decorator usage. This change should reduce extra React dom elements from being created. Also updating `componentRef` resolution to support `React.createRef()` usage.
+
+## 6.4.0
+Mon, 16 Jul 2018 10:27:18 GMT
+
+### Minor changes
+
+- Variant section lists have same style as best practices section lists. ComponentPage Overview now marked optional prop.
+- EditSection: Remove ComponentPageSection enum to make EditSection easier to use.
+
+## 6.3.0
+Fri, 13 Jul 2018 21:32:37 GMT
+
+### Minor changes
+
+- Reverting the TypeScript bump, to un
 
 ## 6.2.1
 Thu, 14 Jun 2018 20:52:57 GMT

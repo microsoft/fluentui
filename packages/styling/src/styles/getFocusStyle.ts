@@ -14,6 +14,7 @@ import { ZIndexes } from './zIndexes';
  * @param highContrastStyle - Style for high contrast mode.
  * @param borderColor - Color of the border.
  * @param outlineColor - Color of the outline.
+ * @param isFocusedOnly - If the styles should apply on focus or not.
  * @returns The style object.
  */
 export function getFocusStyle(
@@ -22,7 +23,8 @@ export function getFocusStyle(
   position: 'relative' | 'absolute' = 'relative',
   highContrastStyle: IRawStyle | undefined = undefined,
   borderColor: string = theme.palette.white,
-  outlineColor: string = theme.palette.neutralSecondary
+  outlineColor: string = theme.palette.neutralSecondary,
+  isFocusedOnly: boolean = true
 ): IRawStyle {
   return {
     outline: 'transparent',
@@ -33,7 +35,7 @@ export function getFocusStyle(
         border: '0'
       },
 
-      [`.${IsFocusVisibleClassName} &:focus:after`]: {
+      [`.${IsFocusVisibleClassName} &${isFocusedOnly ? ':focus' : ''}:after`]: {
         content: '""',
         position: 'absolute',
         left: inset + 1,

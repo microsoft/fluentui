@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
-import { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IIconProps } from '../Icon/Icon.types';
 
 export interface INav {
@@ -18,7 +18,7 @@ export interface INavProps {
    * Optional callback to access the INav interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: INav | null) => void;
+  componentRef?: IRefObject<INav>;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules

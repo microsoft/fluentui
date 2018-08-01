@@ -2,6 +2,86 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.12.1",
+      "tag": "@uifabric/utilities_v6.12.1",
+      "date": "Fri, 27 Jul 2018 10:25:39 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Esteban Munoz <esteban.230@hotmail.com>",
+            "commit": "313c5cd21a9dcf435528e83693d75a7fedeeb015",
+            "comment": "prop-types version "
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.12.0",
+      "tag": "@uifabric/utilities_v6.12.0",
+      "date": "Mon, 23 Jul 2018 10:28:08 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "28242c40916d14cef3d555d18f4df69454163e87",
+            "comment": "Addressing bad imports."
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.11.0",
+      "tag": "@uifabric/utilities_v6.11.0",
+      "date": "Wed, 18 Jul 2018 10:25:50 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "99545224cefac2af3edb13ce7b038ac1d14f3d38",
+            "comment": "Tighten typings of APIs around merge-styles to be more correct"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.4.0 <7.0.0` to `>=6.5.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.10.0",
+      "tag": "@uifabric/utilities_v6.10.0",
+      "date": "Tue, 17 Jul 2018 10:28:40 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "5d0930647e631482b6016e0017aae0b5167b9f13",
+            "comment": "Removing most `@customizable` decorator usage. This change should reduce extra React dom elements from being created. Also updating `componentRef` resolution to support `React.createRef()` usage."
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.9.0",
+      "tag": "@uifabric/utilities_v6.9.0",
+      "date": "Fri, 13 Jul 2018 21:32:37 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "83486db0dd8f831599dd75f37b32878efac45ca0",
+            "comment": "Reverting the TypeScript bump, to un"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.2.3 <7.0.0` to `>=6.4.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.7.1",
       "tag": "@uifabric/utilities_v6.7.1",
       "date": "Wed, 20 Jun 2018 10:25:55 GMT",

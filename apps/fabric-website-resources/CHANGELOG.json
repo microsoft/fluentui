@@ -1,6 +1,54 @@
 {
-  "name": "office-ui-fabric-react",
+  "name": "@uifabric/fabric-website-resources",
   "entries": [
+    {
+      "version": "6.7.0",
+      "tag": "@uifabric/fabric-website-resources_v6.7.0",
+      "date": "Mon, 30 Jul 2018 10:27:11 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "28242c40916d14cef3d555d18f4df69454163e87",
+            "comment": "Addressing bad imports."
+          }
+        ],
+        "patch": [
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "545b99a0ca28c39a0fae11c89f4ef37827879922",
+            "comment": "Fixes an issue with demo website that have a duplicate key in the list of components"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.6.0 <7.0.0` to `>=6.7.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.41.0 <7.0.0` to `>=6.41.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.2",
+      "tag": "@uifabric/fabric-website-resources_v6.0.2",
+      "date": "Thu, 19 Jul 2018 21:25:32 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "anavilohia <anavi.lohia@utexas.edu>",
+            "commit": "5327e0b64b21d1b8ef281072ef74a5985e83bec4",
+            "comment": "Added optional feedback section for component pages"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.5.0 <7.0.0` to `>=6.5.1 <7.0.0`"
+          }
+        ]
+      }
+    },
     {
       "version": "6.6.1",
       "tag": "office-ui-fabric-react_v6.6.1",

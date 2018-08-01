@@ -13,9 +13,9 @@ import { PrimaryButton } from './PrimaryButton/PrimaryButton';
  */
 export class Button extends BaseComponent<IButtonProps, {}> {
   /**
-   * Set this BaseComponent._resolveComponentRef to false, bypassing resolution of componentRef.
+   * Set this BaseComponent._skipComponentRefResolution to true, bypassing resolution of componentRef.
    */
-  protected _shouldUpdateComponentRef = false;
+  protected _skipComponentRefResolution = true;
 
   constructor(props: IButtonProps) {
     super(props);

@@ -5,5 +5,7 @@ import { getStyles } from './DialogContent.styles';
 
 export const DialogContent = styled<IDialogContentProps, IDialogContentStyleProps, IDialogContentStyles>(
   DialogContentBase,
-  getStyles
+  getStyles,
+  undefined,
+  { scope: 'DialogContent' }
 );

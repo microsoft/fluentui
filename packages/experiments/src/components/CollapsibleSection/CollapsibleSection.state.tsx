@@ -1,21 +1,23 @@
 import * as React from 'react';
-import { ICollapsibleSectionProps, ICollapsibleSectionStyles } from './CollapsibleSection.types';
+import { ICollapsibleSectionProps, ICollapsibleSectionViewProps } from './CollapsibleSection.types';
 import { createRef } from 'office-ui-fabric-react';
-import { TStateProps } from '../../utilities/createComponent';
-import { getRTL, KeyCodes } from '../../Utilities';
+import { IStateComponentProps } from '../../Foundation';
+import { BaseComponent, getRTL, KeyCodes } from '../../Utilities';
 
 export interface ICollapsibleSectionState {
   collapsed: boolean;
 }
 
-// TODO: these types seem duplicated from createComponent. try to avoid duplication and be aware of circular references with IStateComponent
-// export type ICollapsibleSectionStateProps = ICollapsibleSectionProps & { styles: { [key in keyof ICollapsibleSectionStyles]: string } };
-export type ICollapsibleSectionStateProps = TStateProps<
-  ICollapsibleSectionProps & { styles: { [key in keyof ICollapsibleSectionStyles]: string } }
+// TODO: Reduce the amount of types needed as much as possible. Some ideas include having state and view components
+//        extend or inherit createComponent constructs that automatically apply the correct characteristcs. For now,
+//        these types are explicitly defined below.
+export type ICollapsibleSectionStateProps = IStateComponentProps<
+  ICollapsibleSectionProps,
+  ICollapsibleSectionViewProps
 >;
 
-export class CollapsibleSectionState extends React.Component<ICollapsibleSectionStateProps, ICollapsibleSectionState> {
-  public static defaultProps: Partial<ICollapsibleSectionProps> = {
+export class CollapsibleSectionState extends BaseComponent<ICollapsibleSectionStateProps, ICollapsibleSectionState> {
+  public static defaultProps: Partial<ICollapsibleSectionStateProps> = {
     defaultCollapsed: true
   };
 
@@ -28,13 +30,10 @@ export class CollapsibleSectionState extends React.Component<ICollapsibleSection
   }
 
   public render(): JSX.Element {
-    const { collapsed } = this.state;
+    const { collapsed = this.state.collapsed } = this.props;
 
-    // TODO: clean this up. is this the right way to merge and pass props on?
     // TODO: check React 16 deriveStateFromProps
-    // TODO: analyze functions and determine if any should be moved to view
-    const mergedProps = {
-      ...this.props,
+    const viewProps: ICollapsibleSectionViewProps = {
       collapsed,
       titleElementRef: this._titleElement,
       onToggleCollapse: this._onToggleCollapse,
@@ -42,7 +41,7 @@ export class CollapsibleSectionState extends React.Component<ICollapsibleSection
       onRootKeyDown: this._onRootKeyDown
     };
 
-    return this.props.view(mergedProps);
+    return this.props.renderView(viewProps);
   }
 
   private _onRootKeyDown = (ev: React.KeyboardEvent<Element>) => {
@@ -63,7 +62,6 @@ export class CollapsibleSectionState extends React.Component<ICollapsibleSection
 
   private _onToggleCollapse = () => {
     this.setState((state: ICollapsibleSectionState) => ({ collapsed: !state.collapsed }));
-    // TODO: make sense of this in design and clean this up
     if (this.props.titleProps && this.props.titleProps.onToggleCollapse) {
       this.props.titleProps.onToggleCollapse();
     }

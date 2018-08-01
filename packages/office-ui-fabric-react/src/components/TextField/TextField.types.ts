@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { IRenderFunction } from '../../Utilities';
+import { IStyle, IStyleSet, ITheme } from '../../Styling';
+import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IIconProps } from '../../Icon';
 
 export interface ITextField {
@@ -40,7 +40,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    * Optional callback to access the ITextField interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ITextField | null) => void;
+  componentRef?: IRefObject<ITextField>;
 
   /**
    * Whether or not the textfield is a multiline textfield.
@@ -228,6 +228,16 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   validateOnLoad?: boolean;
 
   /**
+   * Theme (provided through customization.)
+   */
+  theme?: ITheme;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  styles?: IStyleFunctionOrObject<ITextFieldStyleProps, ITextFieldStyles>;
+
+  /**
    * @deprecated
    * Deprecated; use iconProps instead.
    */
@@ -270,4 +280,80 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    * @deprecated
    */
   componentId?: string;
+}
+
+export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> &
+  Pick<
+    ITextFieldProps,
+    'className' | 'disabled' | 'required' | 'multiline' | 'borderless' | 'resizable' | 'underlined' | 'iconClass'
+  > & {
+    /** Element has an error message. */
+    hasErrorMessage?: boolean;
+    /** Element has an icon. */
+    hasIcon?: boolean;
+    /** Element has a label. */
+    hasLabel?: boolean;
+    /** Element has focus. */
+    focused?: boolean;
+  };
+
+export interface ITextFieldSubComponentStyles {
+  /**
+   * Styling for Label child component.
+   */
+  // TODO: this should be the interface once we're on TS 2.9.2 but otherwise causes errors in 2.8.4
+  // label: IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles>;
+  label: IStyleFunctionOrObject<any, any>;
+}
+
+export interface ITextFieldStyles extends IStyleSet<ITextFieldStyles> {
+  /**
+   * Style for root element.
+   */
+  root: IStyle;
+
+  /**
+   * Style for field group encompassing entry area (prefix, field, icon and suffix).
+   */
+  fieldGroup: IStyle;
+
+  /**
+   * Style for prefix element.
+   */
+  prefix: IStyle;
+
+  /**
+   * Style for suffix element.
+   */
+  suffix: IStyle;
+
+  /**
+   * Style for main field entry element.
+   */
+  field: IStyle;
+
+  /**
+   * Style for icon prop element.
+   */
+  icon: IStyle;
+
+  /**
+   * Style for description element.
+   */
+  description: IStyle;
+
+  /**
+   * Style for TextField wrapper element.
+   */
+  wrapper: IStyle;
+
+  /**
+   * Style for error message element.
+   */
+  errorMessage: IStyle;
+
+  /**
+   * Styling for subcomponents.
+   */
+  subComponentStyles: ITextFieldSubComponentStyles;
 }

@@ -1,3 +1,5 @@
+export type IRefObject<T> = React.RefObject<T> | RefObject<T> | ((ref: T | null) => void);
+
 export type RefObject<T> = {
   (component: T | null): void;
   current: T | null;
@@ -9,11 +11,8 @@ export type RefObject<T> = {
 };
 
 /**
- * This is a polyfill for the React.createRef() api.
- * For more info on React.createRef() see the official React documentation
- * on creating and accessing refs.
- * @see https://reactjs.org/docs/refs-and-the-dom.html#creating-refs
- * @see https://reactjs.org/docs/refs-and-the-dom.html#accessing-refs
+ * @deprecated Use React.createRef.
+ * May be removed in 6 months (Jan '19).
  */
 export function createRef<T>(): RefObject<T> {
   const refObject = ((element: T | null): void => {

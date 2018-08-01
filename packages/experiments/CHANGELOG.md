@@ -1,6 +1,206 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 20 Jun 2018 23:33:29 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Jul 2018 10:27:11 GMT and should not be manually modified.
+
+## 6.22.1
+Mon, 30 Jul 2018 10:27:11 GMT
+
+### Patches
+
+- FormDropdown: allow options prop to flow to the underlying Dropdown component.
+
+## 6.22.0
+Fri, 27 Jul 2018 10:25:39 GMT
+
+### Minor changes
+
+- Added TextField to FluentStyles
+
+### Patches
+
+- added export for collapsible section and foundation
+
+## 6.21.0
+Thu, 26 Jul 2018 10:28:51 GMT
+
+### Minor changes
+
+- Updates Fluent styles for Dialog and ComoboBox
+
+## 6.20.0
+Wed, 25 Jul 2018 03:20:34 GMT
+
+### Minor changes
+
+- Make stack grow be more flexible
+
+## 6.19.1
+Tue, 24 Jul 2018 10:24:36 GMT
+
+*Version update only*
+
+## 6.19.0
+Mon, 23 Jul 2018 10:28:08 GMT
+
+### Minor changes
+
+- Text: use existing theming
+- Addressing bad imports.
+
+## 6.18.3
+Fri, 20 Jul 2018 10:25:21 GMT
+
+*Version update only*
+
+## 6.18.2
+Thu, 19 Jul 2018 21:25:32 GMT
+
+*Version update only*
+
+## 6.18.1
+Thu, 19 Jul 2018 19:04:38 GMT
+
+*Version update only*
+
+## 6.18.0
+Thu, 19 Jul 2018 10:23:34 GMT
+
+### Minor changes
+
+- Fluent Styles for ComboBox and Dialog
+
+## 6.17.0
+Wed, 18 Jul 2018 10:25:50 GMT
+
+### Minor changes
+
+- Fix typing errors
+
+## 6.16.0
+Tue, 17 Jul 2018 10:28:40 GMT
+
+### Minor changes
+
+- Removing most `@customizable` decorator usage. This change should reduce extra React dom elements from being created. Also updating `componentRef` resolution to support `React.createRef()` usage.
+
+## 6.15.1
+Mon, 16 Jul 2018 10:27:18 GMT
+
+*Version update only*
+
+## 6.15.0
+Fri, 13 Jul 2018 21:32:37 GMT
+
+### Minor changes
+
+- Reverting the TypeScript bump, to un
+- Card: disable dragging of card everywhere but title bar
+- Added FluentStyles for Panel, TextField, ContextualMenu, and ComboBox
+- Moved nav, recommendation and card to m365-admin package
+
+## 6.13.6
+Thu, 12 Jul 2018 10:29:30 GMT
+
+### Patches
+
+- Consume horizontal bar chart in card, fix bad import 
+
+## 6.13.5
+Tue, 10 Jul 2018 21:54:07 GMT
+
+### Patches
+
+- Update to latest Fluent depths/shadows
+
+## 6.13.4
+Mon, 09 Jul 2018 18:08:32 GMT
+
+### Patches
+
+- Remove createComponent utility and use Foundation package.
+- changing imports for charts in react DashboardCard to point to correct package
+- Update to latest Fluent depths
+
+## 6.13.2
+Fri, 06 Jul 2018 10:23:46 GMT
+
+### Patches
+
+- css changes for action bar
+
+## 6.13.1
+Tue, 03 Jul 2018 17:41:15 GMT
+
+### Patches
+
+- Minor tweak to FormDropdown component to make it compatible with tightened Dropdown API
+
+## 6.13.0
+Tue, 03 Jul 2018 10:23:19 GMT
+
+### Minor changes
+
+- Stack: clean up file structure
+
+## 6.12.2
+Mon, 02 Jul 2018 10:21:36 GMT
+
+### Patches
+
+- css changes for action bar
+
+## 6.12.1
+Fri, 29 Jun 2018 10:24:05 GMT
+
+### Patches
+
+- TileList: Adds a fading out overlay over the Shimmer Tiles.
+
+## 6.12.0
+Wed, 27 Jun 2018 23:59:19 GMT
+
+### Minor changes
+
+- Change toggle style values from ems to px
+
+## 6.11.0
+Wed, 27 Jun 2018 17:22:20 GMT
+
+### Minor changes
+
+- fluent style updates per design feedback
+- Revert toggle border-width to pre-Fluent width
+- Prototype of Stack and Text components
+
+### Patches
+
+- CardDidMount callback for making api calls, additional ref incase there is a use case where there is no state, compoundButtonStack  size variation and gridList component v1.1 changes
+
+## 6.10.1
+Tue, 26 Jun 2018 10:27:47 GMT
+
+### Patches
+
+- Re-export ShimmerTile in its original location for 5.0 compat
+
+## 6.10.0
+Fri, 22 Jun 2018 16:21:15 GMT
+
+### Minor changes
+
+- Toggle component fluent example set up in experiments
+- M365 Common Recommendation control including examples with Image Illustration and Data Viz
+
+## 6.9.0
+Thu, 21 Jun 2018 19:27:25 GMT
+
+### Minor changes
+
+- Add Fluent type ramp, update color names
+
+### Patches
+
+- CardDidMount callback for making api calls, additional ref incase there is a use case where there is no state, compoundButtonStack  size variation and gridList component v1.1 changes
 
 ## 6.8.0
 Wed, 20 Jun 2018 23:33:29 GMT
