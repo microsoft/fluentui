@@ -82,16 +82,6 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
         }
       >
         <div
-          className="customExampleCoin"
-        >
-          <img
-            alt="Custom Coin Image"
-            height={72}
-            src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-male.png"
-            width={72}
-          />
-        </div>
-        <div
           className=
               ms-Persona-presence
               {
