@@ -10,6 +10,7 @@ import { IDetailsFooterProps } from './DetailsFooter.types';
 import { IWithViewportProps, IViewport } from '../../utilities/decorators/withViewport';
 import { IList, IListProps, ScrollToMode } from '../List/index';
 import { ITheme, IStyle } from '../../Styling';
+import { ICellStyleProps } from './DetailsRow.types';
 
 export { IDetailsHeaderProps };
 
@@ -280,6 +281,12 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    * @default false
    */
   useReducedRowRenderer?: boolean;
+
+  /**
+   * Props impacting the render style of cells. Since these have an impact on calculated column widths, they are
+   * handled separately from normal theme styling, but they are passed to the styling system.
+   */
+  cellStyleProps?: ICellStyleProps;
 }
 
 export interface IColumn {
