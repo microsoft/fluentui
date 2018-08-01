@@ -59,9 +59,10 @@ export function getNeutralVariant(theme: IPartialTheme): ITheme {
 
   const partialSemantic: Partial<ISemanticColors> = {
     bodyBackground: p.neutralLighter,
-    bodyStandoutBackground: p.themeDarkAlt,
+    bodyStandoutBackground: p.neutralLight,
     bodyFrameBackground: !fullTheme.isInverted ? p.neutralLight : p.neutralLighter,
-    bodyFrameDivider: !fullTheme.isInverted ? p.neutralLight : p.neutralQuaternary
+    bodyFrameDivider: !fullTheme.isInverted ? p.neutralLight : p.neutralQuaternary,
+    variantBorder: !fullTheme.isInverted ? p.neutralQuaternaryAlt : p.neutralLighterAlt
   };
 
   return makeThemeFromPartials(theme, partialPalette, partialSemantic);
@@ -113,6 +114,7 @@ export function getSoftVariant(theme: IPartialTheme): ITheme {
 
   const partialSemantic: Partial<ISemanticColors> = {
     bodyBackground: !fullTheme.isInverted ? p.themeLighterAlt : p.themeLight,
+    bodyStandoutBackground: !fullTheme.isInverted ? p.themeLighter : p.themeTertiary,
     bodyFrameBackground: !fullTheme.isInverted ? p.themeLighter : p.themeLight,
     bodyFrameDivider: !fullTheme.isInverted ? p.themeLighter : p.themeTertiary,
 
@@ -121,8 +123,9 @@ export function getSoftVariant(theme: IPartialTheme): ITheme {
     inputBackground: p.themeLighter,
     // inputBackgroundChecked: p.themePrimary,
     // inputBackgroundCheckedHovered: p.themeDarkAlt,
-    inputForegroundChecked: p.themeLighter
+    inputForegroundChecked: p.themeLighter,
     // inputFocusBorderAlt: p.themePrimary,
+    variantBorder: !fullTheme.isInverted ? p.neutralLight : p.neutralLighterAlt
   };
 
   return makeThemeFromPartials(theme, partialPalette, partialSemantic);
@@ -191,8 +194,9 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
     inputBackground: p.themeDark,
     inputBackgroundChecked: p.white,
     // inputBackgroundCheckedHovered: p.themePrimary,
-    inputForegroundChecked: p.themeDark
+    inputForegroundChecked: p.themeDark,
     // inputFocusBorderAlt: p.themePrimary,
+    variantBorder: p.themeDark
   };
 
   // Strong variant is unique here, we've redefined the entire palette and are
