@@ -50,9 +50,7 @@ export interface ITypography {
   types: IFontTypes;
 }
 
-export interface IPartialTypography {
-  families?: Partial<IFontFamilies>;
-  sizes?: Partial<IFontSizes>;
-  weights?: Partial<IFontWeights>;
-  types?: Partial<IFontTypes>;
-}
+/**
+ * Used in IPartialTheme so that user-defined themes can override selected typography properties
+ */
+export type IPartialTypography = { [P in keyof ITypography]?: Partial<ITypography[P]> };

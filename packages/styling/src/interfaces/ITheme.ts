@@ -26,11 +26,10 @@ export interface ITheme {
   typography: ITypography;
 }
 
-export interface IPartialTheme {
-  palette?: Partial<IPalette>;
-  fonts?: Partial<IFontStyles>;
-  semanticColors?: Partial<ISemanticColors>;
-  isInverted?: boolean;
-  disableGlobalClassNames?: boolean;
-  typography?: IPartialTypography;
-}
+export type IPartialTheme = {
+  [P in keyof Pick<
+    ITheme,
+    'palette' | 'fonts' | 'semanticColors' | 'isInverted' | 'disableGlobalClassNames'
+  >]?: Partial<ITheme[P]>
+} &
+  { [P in keyof Pick<ITheme, 'typography'>]?: IPartialTypography };

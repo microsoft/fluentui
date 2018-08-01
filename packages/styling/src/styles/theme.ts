@@ -108,7 +108,7 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
     ...theme.semanticColors
   };
 
-  let typography = { ...DefaultTypography };
+  let typography = DefaultTypography;
   if (theme.typography) {
     typography = {
       families: { ...DefaultTypography.families, ...theme.typography.families },
