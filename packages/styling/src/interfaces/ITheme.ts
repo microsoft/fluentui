@@ -1,7 +1,7 @@
 import { IPalette } from './IPalette';
 import { IFontStyles } from './IFontStyles';
 import { ISemanticColors } from './ISemanticColors';
-import { ITypography } from './ITypography';
+import { ITypography, IPartialTypography } from './ITypography';
 
 export interface ITheme {
   palette: IPalette;
@@ -32,5 +32,5 @@ export interface IPartialTheme {
   semanticColors?: Partial<ISemanticColors>;
   isInverted?: boolean;
   disableGlobalClassNames?: boolean;
-  typography?: Partial<ITypography>;
+  typography?: IPartialTypography;
 }

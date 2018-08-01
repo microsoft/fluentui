@@ -49,3 +49,10 @@ export interface ITypography {
   weights: IFontWeights;
   types: IFontTypes;
 }
+
+export interface IPartialTypography {
+  families?: Partial<IFontFamilies>;
+  sizes?: Partial<IFontSizes>;
+  weights?: Partial<IFontWeights>;
+  types?: Partial<IFontTypes>;
+}
