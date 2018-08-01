@@ -108,4 +108,50 @@ describe('DetailsHeader', () => {
     header._onSizerMouseUp();
     expect(!!headerBase.state.isSizing).toBe(false);
   });
+
+  it('renders accessible labels', () => {
+    const columns: IColumn[] = [
+      { key: 'a', name: 'a', fieldName: 'a', minWidth: 200, maxWidth: 400, calculatedWidth: 200, isResizable: true },
+      {
+        key: 'b',
+        name: 'b',
+        fieldName: 'a',
+        minWidth: 200,
+        maxWidth: 400,
+        calculatedWidth: 200,
+        isResizable: true,
+        isSorted: true,
+        sortAscendingAriaLabel: 'Sorted up.',
+        sortDescendingAriaLabel: 'Sorted down.',
+        ariaLabel: 'Click to sort.'
+      },
+      {
+        key: 'c',
+        name: 'c',
+        fieldName: 'c',
+        minWidth: 10,
+        maxWidth: 100,
+        calculatedWidth: 10,
+        isResizable: true,
+        columnActionsMode: ColumnActionsMode.hasDropdown,
+        isIconOnly: false,
+        isFiltered: true,
+        filterAriaLabel: 'Filtered.',
+        isGrouped: true,
+        groupAriaLabel: 'Grouped.',
+        ariaLabel: 'Click to sort, filter, or group.'
+      }
+    ];
+
+    const component = renderer.create(
+      <DetailsHeader
+        selection={_selection}
+        selectionMode={SelectionMode.multiple}
+        layoutMode={DetailsListLayoutMode.fixedColumns}
+        columns={columns}
+      />
+    );
+
+    expect(component.toJSON()).toMatchSnapshot();
+  });
 });

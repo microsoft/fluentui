@@ -7,7 +7,7 @@ export const CollapsibleSectionTitle: React.StatelessComponent = createComponent
   ICollapsibleSectionTitleProps,
   ICollapsibleSectionTitleStyles
 >({
-  scope: 'CollapsibleSectionTitle',
+  displayName: 'CollapsibleSectionTitle',
   view,
   styles
 });

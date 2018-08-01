@@ -2,6 +2,25 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.7.1",
+      "tag": "@uifabric/dashboard_v0.7.1",
+      "date": "Tue, 31 Jul 2018 10:25:18 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "0b3d2f0b993d82d67c8c42017698891f8a1269ad",
+            "comment": "Fix bad import."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.41.1 <7.0.0` to `>=6.42.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.7.0",
       "tag": "@uifabric/dashboard_v0.7.0",
       "date": "Wed, 25 Jul 2018 03:20:34 GMT",

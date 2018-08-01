@@ -32,6 +32,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'Recommendation',
           name: 'Recommendation',
           url: '#/examples/recommendation'
+        },
+        {
+          component: require<any>('../components/MultiCount/MultiCountPage').MultiCountPage,
+          key: 'MultiCount',
+          name: 'MultiCount',
+          url: '#/examples/multiCount'
         }
       ]
     }
