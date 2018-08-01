@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Giving ComboBox options an optional getStyles prop which will allow for a full override of combobox option styles. Today, they are simpy merged with fabric styles, which is not ideal for teams that want to buffer themselves from potential style breaks. ",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "kysedate@microsoft.com"
+}
