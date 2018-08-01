@@ -17,7 +17,7 @@ function makeThemeFromPartials(
 
 /**
  * Returns the specified variant theme for the given theme.
- * IMPORTANT: Never generate a variant from a variant.
+ * Do not generate a variant from a variant, the results will be ugly.
  *
  * @export
  * @param {IPartialTheme} theme the theme to build a variant for
