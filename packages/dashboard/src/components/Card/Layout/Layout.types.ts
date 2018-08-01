@@ -7,6 +7,7 @@ import { ICompoundButtonStackProps } from '../CompoundButtonStack/CompoundButton
 import { IAction } from '../ActionBar/ActionBar.types';
 import { IGridListProps } from '../GridList/GridList.types';
 import { IChartProps } from '../Chart/Chart.types';
+import { IMultiCountProps } from '@uifabric/dashboard';
 
 export interface ICardContentDetails {
   /**
@@ -23,7 +24,13 @@ export interface ICardContentDetails {
   /**
    * Content for component we want to render
    */
-  content: IBodyTextProps | IThumbnailListProps | ICompoundButtonStackProps | IGridListProps | IChartProps;
+  content:
+    | IBodyTextProps
+    | IThumbnailListProps
+    | ICompoundButtonStackProps
+    | IGridListProps
+    | IChartProps
+    | IMultiCountProps;
 }
 
 export interface ILayoutProps {

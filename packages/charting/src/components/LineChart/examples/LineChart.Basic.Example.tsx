@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { LineChart, ILineChartProps } from '@uifabric/charting';
+import { LineChart, ILineChartProps } from '@uifabric/charting/lib/LineChart';
 
 export class LineChartBasicExample extends React.Component<ILineChartProps, {}> {
   constructor(props: ILineChartProps) {

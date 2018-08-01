@@ -1,6 +1,13 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Mon, 23 Jul 2018 10:28:08 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Aug 2018 10:25:51 GMT and should not be manually modified.
+
+## 0.2.0
+Wed, 01 Aug 2018 10:25:51 GMT
+
+### Minor changes
+
+- Major improvements to typing and functionality.
 
 ## 0.1.0
 Mon, 23 Jul 2018 10:28:08 GMT

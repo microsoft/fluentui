@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/dashboard",
-      "comment": "Multicount dataviz containing body text and annotation text",
+      "comment": "Consuming donut,pie,stacked bar chart and mulicount into card.",
       "type": "minor"
     }
   ],

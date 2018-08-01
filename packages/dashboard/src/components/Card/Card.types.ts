@@ -56,7 +56,12 @@ export enum CardContentType {
   /**
    * Selects the chart type
    */
-  Chart
+  Chart,
+
+  /**
+   * Selects the Multicount component
+   */
+  MultiCount
 }
 
 /**

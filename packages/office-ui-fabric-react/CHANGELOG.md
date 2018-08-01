@@ -1,6 +1,22 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 31 Jul 2018 10:25:18 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Aug 2018 10:25:51 GMT and should not be manually modified.
+
+## 6.43.0
+Wed, 01 Aug 2018 10:25:51 GMT
+
+### Minor changes
+
+- Remove ShimmeredDetailsList from the DetailsList 'bundle'
+
+### Patches
+
+- Check: shouldComponentUpdate now resepects theme and classname changes.
+- FocusTrapZone: Fix focus/click-trapping bugs when FocusTrapZones are nested.
+- Restore accessible labels for DetailsList columns and states
+- dragStart callback will be in sync with browser, instaed of calling it in mousemove
+- PersonaCion will render the user's avatar image only if there is a valid image and the user do not wish to hide it, unlike previously where an empty img tag(src='') was being rendered over the initials always
+- Deprecating 'borderStyle' prop of Shimmer subcomponents Line, Circle, Gap in favor of leveraging mergeStyles API.
 
 ## 6.42.0
 Tue, 31 Jul 2018 10:25:18 GMT

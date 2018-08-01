@@ -166,16 +166,22 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
   };
 
   private _onHexChanged = (): void => {
-    this._updateColor(getColorFromString('#' + this._hexText.value));
+    if (this._hexText.current) {
+      this._updateColor(getColorFromString('#' + this._hexText.current.value));
+    }
   };
 
   private _onRGBAChanged = (): void => {
+    if (!this._rText.current || !this._gText.current || !this._bText.current || !this._aText.current) {
+      return;
+    }
+
     this._updateColor(
       getColorFromRGBA({
-        r: Number(this._rText.value),
-        g: Number(this._gText.value),
-        b: Number(this._bText.value),
-        a: Number((this._aText && this._aText.value) || 100)
+        r: Number(this._rText.current.value),
+        g: Number(this._gText.current.value),
+        b: Number(this._bText.current.value),
+        a: Number((this._aText && this._aText.current.value) || 100)
       })
     );
   };
