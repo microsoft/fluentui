@@ -5,8 +5,8 @@ import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 
 import { ColorPicker } from './ColorPicker';
-import { ColorPickerBase } from './ColorPicker.base';
-import { IColorPicker } from './ColorPicker.types';
+import { ColorPickerBase, IColorPickerState } from './ColorPicker.base';
+import { IColorPicker, IColorPickerProps } from './ColorPicker.types';
 
 describe('ColorPicker', () => {
   it('renders ColorPicker correctly', () => {
@@ -109,6 +109,43 @@ describe('ColorPicker', () => {
     const tableHeaders = wrapper.find('.ms-ColorPicker-table > thead > tr > td');
     tableHeaders.forEach((node, index) => {
       expect(node.text()).toEqual(textHeaders[index]);
+    });
+  });
+
+  it('Keeps color value when tabbing between Hex and RGBA text inputs', () => {
+    const colorStringValue = 'ffffff';
+    let colorChangeCalled = false;
+    const onColorChanged = (newColor: string): void => {
+      colorChangeCalled = newColor !== colorStringValue;
+    };
+
+    let colorPickerComponent: any;
+    const setRef = (ref: IColorPicker): void => {
+      colorPickerComponent = ref;
+    };
+
+    const inputClassName = 'input-tab-test';
+    const wrapper = mount<IColorPickerProps, IColorPickerState>(
+      <ColorPicker
+        color={`#${colorStringValue}`}
+        onColorChanged={onColorChanged}
+        componentRef={setRef}
+        styles={{ input: inputClassName }}
+      />
+    );
+
+    expect(colorPickerComponent.state.color.hex).toEqual(colorStringValue);
+    expect(colorChangeCalled).toBeFalsy();
+
+    // Tab between text inputs checking state after each time.
+    const allInputs = wrapper.find(`.${inputClassName} input`);
+    expect(allInputs.length).toBe(5);
+
+    allInputs.forEach(input => {
+      input.simulate('blur');
+
+      expect(colorPickerComponent.state.color.hex).toEqual(colorStringValue);
+      expect(colorChangeCalled).toBeFalsy();
     });
   });
 });
