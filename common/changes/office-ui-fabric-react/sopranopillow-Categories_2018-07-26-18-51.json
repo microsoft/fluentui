@@ -1,11 +1,9 @@
 {
-  "changes": [
-    {
-      "packageName": "office-ui-fabric-react",
-      "comment": "Added filter highlighting, categories toggle, and category view",
-      "type": "minor"
-    }
-  ],
+  "changes": [{
+    "packageName": "office-ui-fabric-react",
+    "comment": "",
+    "type": "none"
+  }],
   "packageName": "office-ui-fabric-react",
   "email": "'esteban.230@hotmail.com'"
 }

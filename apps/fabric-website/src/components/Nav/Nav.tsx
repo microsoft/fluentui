@@ -3,8 +3,12 @@ import * as React from 'react';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
-import { CollapsibleSection } from '@uifabric/experiments';
-import { CollapsibleSectionTitle } from './Nav.CollapsibleSectionTitle';
+import {
+  CollapsibleSection,
+  CollapsibleSectionTitle,
+  ICollapsibleSectionTitleStyleProps,
+  ICollapsibleSectionTitleStyles
+} from '@uifabric/experiments';
 
 import { getPathMinusLastHash } from '../../utilities/pageroute';
 import * as stylesImport from './Nav.module.scss';
@@ -78,7 +82,8 @@ export class Nav extends React.Component<INavProps, INavState> {
         <span key={categoryIndex} className={css(styles.category, _hasActiveChild(page) && styles.hasActiveChild)}>
           <CollapsibleSection
             titleAs={CollapsibleSectionTitle}
-            titleProps={{ text: page.title }}
+            titleProps={{ text: page.title, styles: getTitleStyles }}
+            styles={{ body: [{ marginLeft: '28px' }] }}
             defaultCollapsed={!_hasActiveChild(page)}
           >
             {page.pages.map((innerPage: INavPage, indexNumber: number) => this._renderLink(innerPage, indexNumber))}
@@ -117,9 +122,10 @@ export class Nav extends React.Component<INavProps, INavState> {
     const text = page.title;
     let linkText = <>{text}</>;
 
+    let matchIndex;
     // Highlight search query within link.
     if (!!searchQuery && page.isFilterable) {
-      const matchIndex = text.toLowerCase().indexOf(searchQuery.toLowerCase());
+      matchIndex = text.toLowerCase().indexOf(searchQuery.toLowerCase());
       if (matchIndex >= 0) {
         const before = text.slice(0, matchIndex);
         const match = text.slice(matchIndex, matchIndex + searchQuery.length);
@@ -149,7 +155,7 @@ export class Nav extends React.Component<INavProps, INavState> {
           key={linkIndex}
         >
           {!(page.isUhfLink && location.hostname !== 'localhost') &&
-            (page.isFilterable ? searchRegEx.test(page.title) : true) && (
+            (page.isFilterable && searchQuery !== '' ? matchIndex > -1 : true) && (
               <a href={page.url} onClick={this._onLinkClick} title={title} aria-label={ariaLabel}>
                 {linkText}
               </a>
@@ -170,7 +176,7 @@ export class Nav extends React.Component<INavProps, INavState> {
             styles={{
               root: {
                 marginBottom: '5px',
-                width: '180px',
+                width: '152px',
                 backgroundColor: 'transparent'
               },
               iconContainer: {
@@ -302,4 +308,23 @@ function _hasActiveChild(page: INavPage): boolean {
   }
 
   return hasActiveChild;
+}
+
+function getTitleStyles(props: ICollapsibleSectionTitleStyleProps): Partial<ICollapsibleSectionTitleStyles> {
+  const { theme } = props;
+  return {
+    root: [
+      {
+        color: theme.palette.neutralQuaternaryAlt,
+        marginBottom: '8px',
+        selectors: {
+          ':hover': {
+            background: theme.palette.neutralPrimary,
+            cursor: 'pointer'
+          }
+        }
+      }
+    ],
+    text: theme.fonts.medium
+  };
 }

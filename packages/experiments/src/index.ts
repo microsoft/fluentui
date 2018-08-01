@@ -1,6 +1,5 @@
 export * from './Chiclet';
 export * from './CollapsibleSection';
-export * from './Foundation';
 export * from './CommandBar';
 export * from './FolderCover';
 export * from './Form';
