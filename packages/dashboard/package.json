@@ -13,7 +13,8 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-grid-layout": "samiyaakhtar/react-grid-layout",
-    "style-loader": "^0.21.0"
+    "style-loader": "^0.21.0",
+    "auto-fontsize": "^1.0.4"
   },
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
