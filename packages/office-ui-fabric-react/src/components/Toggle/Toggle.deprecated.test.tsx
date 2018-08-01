@@ -12,6 +12,10 @@ describe('Toggle', () => {
     });
   });
 
+  afterAll(() => {
+    jest.restoreAllMocks();
+  });
+
   it('renders aria-label based on offAriaLabel', () => {
     const component = mount(<Toggle label="Label" offAriaLabel="offLabel" />);
 
