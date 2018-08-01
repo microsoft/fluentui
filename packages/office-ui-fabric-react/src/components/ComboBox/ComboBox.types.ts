@@ -190,6 +190,12 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * @deprecated Use `text` instead.
    */
   value?: string;
+
+  /**
+   * If true the position will not change sides in an attempt to fit the callout within bounds of the ComboBox.
+   * @default false
+   */
+  directionalHintFixed?: boolean;
 }
 
 export interface IComboBoxStyles {

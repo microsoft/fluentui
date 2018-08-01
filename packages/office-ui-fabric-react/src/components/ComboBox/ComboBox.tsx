@@ -1032,6 +1032,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const {
       onRenderList,
       calloutProps,
+      directionalHintFixed,
       dropdownWidth,
       dropdownMaxWidth,
       onRenderLowerContent = this._onRenderLowerContent,
@@ -1049,7 +1050,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         gapSpace={0}
         doNotLayer={false}
         directionalHint={DirectionalHint.bottomLeftEdge}
-        directionalHintFixed={false}
+        directionalHintFixed={!!directionalHintFixed}
         {...calloutProps}
         className={css(this._classNames.callout, calloutProps ? calloutProps.className : undefined)}
         target={this._comboBoxWrapper.current}
