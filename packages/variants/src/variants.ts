@@ -59,6 +59,7 @@ export function getNeutralVariant(theme: IPartialTheme): ITheme {
 
   const partialSemantic: Partial<ISemanticColors> = {
     bodyBackground: p.neutralLighter,
+    bodyStandoutBackground: p.neutralLight,
     bodyFrameBackground: !fullTheme.isInverted ? p.neutralLight : p.neutralLighter,
     bodyFrameDivider: !fullTheme.isInverted ? p.neutralLight : p.neutralQuaternary
   };
@@ -178,6 +179,7 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
 
   const partialSemantic: Partial<ISemanticColors> = {
     bodyBackground: p.themePrimary,
+    bodyStandoutBackground: p.neutralLight,
     bodyFrameBackground: !fullTheme.isInverted ? p.themeDarkAlt : p.themePrimary,
     bodyFrameDivider: !fullTheme.isInverted ? p.themeDarkAlt : p.themeTertiary,
 
