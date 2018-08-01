@@ -21,6 +21,8 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
       checked: 'defaultChecked'
     });
 
+    this._warnDeprecations({ onAriaLabel: 'ariaLabel', offAriaLabel: undefined });
+
     this.state = {
       checked: !!(props.checked || props.defaultChecked)
     };
