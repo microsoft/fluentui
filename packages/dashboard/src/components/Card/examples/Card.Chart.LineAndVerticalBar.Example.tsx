@@ -1,8 +1,6 @@
 import * as React from 'react';
-import { ICardProps, CardSize, Priority, CardContentType } from '../Card.types';
-import { Card } from '../Card';
-import { IAction } from '../ActionBar/ActionBar.types';
-import { ChartType } from '../Chart/Chart.types';
+import { IDataPoint } from '@uifabric/charting';
+import { Card, CardContentType, CardSize, ChartType, ICardProps, Priority } from '@uifabric/dashboard';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export class LineAndVerticalBarChartExample extends React.Component<{}, {}> {
@@ -27,7 +25,7 @@ export class LineAndVerticalBarChartExample extends React.Component<{}, {}> {
       ]
     };
 
-    const datapoints = [
+    const datapoints: IDataPoint[] = [
       { x: 0, y: 10 },
       { x: 6, y: 18 },
       { x: 12, y: 36 },
@@ -45,7 +43,7 @@ export class LineAndVerticalBarChartExample extends React.Component<{}, {}> {
       { x: 96, y: 22 },
       { x: 100, y: 19 }
     ];
-    const colors = [DefaultPalette.yellow, DefaultPalette.blue, DefaultPalette.red];
+    const colors: string[] = [DefaultPalette.yellow, DefaultPalette.blue, DefaultPalette.red];
 
     const contentAreaList = [
       {
@@ -75,70 +73,12 @@ export class LineAndVerticalBarChartExample extends React.Component<{}, {}> {
       annotationText: 'Annotation Text '
     };
 
-    const actions: IAction[] = [
-      {
-        title: 'Action 1',
-        action: () => {
-          alert('Action1 clicked');
-        }
-      },
-      {
-        title: 'Action 2',
-        action: () => {
-          alert('Action2 clicked');
-        }
-      },
-      {
-        title: 'Action 3',
-        action: () => {
-          alert('Action3 clicked');
-        }
-      },
-      {
-        title: 'Action 4',
-        action: () => {
-          alert('Action4 clicked');
-        }
-      },
-      {
-        title: 'Action 5',
-        action: () => {
-          alert('Action5 clicked');
-        }
-      },
-      {
-        title: 'Action 6',
-        action: () => {
-          alert('Action6 clicked');
-        }
-      },
-      {
-        title: 'Action 7',
-        action: () => {
-          alert('Action7 clicked');
-        }
-      },
-      {
-        title: 'Action 8',
-        action: () => {
-          alert('Action8 clicked');
-        }
-      },
-      {
-        title: 'Action 9',
-        action: () => {
-          alert('Action9 clicked');
-        }
-      }
-    ];
-
     return (
       <Card
         cardFrameContent={cardFrameContent}
         header={header}
         cardContentList={contentAreaList}
         cardSize={CardSize.large}
-        actions={actions}
       />
     );
   }
