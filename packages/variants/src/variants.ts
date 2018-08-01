@@ -24,7 +24,7 @@ function makeThemeFromPartials(
  * @param {VariantThemeType} variant the variant type designation
  * @returns {ITheme} the variant theme
  */
-export function getVariant(theme: ITheme, variant: VariantThemeType): ITheme {
+export function getVariant(theme: IPartialTheme, variant: VariantThemeType): ITheme {
   switch (variant) {
     case VariantThemeType.Neutral:
       return getNeutralVariant(theme);
@@ -33,7 +33,7 @@ export function getVariant(theme: ITheme, variant: VariantThemeType): ITheme {
     case VariantThemeType.Strong:
       return getStrongVariant(theme);
     default:
-      return theme;
+      return createTheme(theme);
   }
 }
 

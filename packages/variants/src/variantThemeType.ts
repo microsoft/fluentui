@@ -9,7 +9,7 @@ export const enum VariantThemeType {
   */
   None = 0,
   /*
-  * A variant where the background is a soft version of the primary color. Most other colors remain unchanged.
+  * A variant where the background is a soft version of the background color. Most other colors remain unchanged.
   */
   Neutral = 1,
   /*
