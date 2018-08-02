@@ -29,6 +29,7 @@ export class PersonaCustomCoinRenderExample extends React.Component {
           presence={PersonaPresence.online}
           onRenderCoin={this._onRenderCoin}
           imageAlt={'Custom Coin Image'}
+          imageUrl={TestImages.personaMale}
           coinSize={72}
         />
       </div>
@@ -36,8 +37,7 @@ export class PersonaCustomCoinRenderExample extends React.Component {
   }
 
   private _onRenderCoin = (props: IPersonaProps): JSX.Element => {
-    const { coinSize, imageAlt } = props;
-    const imageUrl = TestImages.personaMale;
+    const { coinSize, imageAlt, imageUrl } = props;
     return (
       <div className="customExampleCoin">
         <img src={imageUrl} alt={imageAlt} width={coinSize} height={coinSize} />

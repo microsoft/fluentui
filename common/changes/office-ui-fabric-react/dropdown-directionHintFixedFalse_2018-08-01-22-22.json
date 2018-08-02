@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Dropdown: changed default directionalHintFixed to false. Can be changed to true via calloutProps.directionalHintFixed",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "mgodbolt@microsoft.com"
+}

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/variants
 
-This log was last generated on Mon, 23 Jul 2018 10:28:08 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Aug 2018 10:23:19 GMT and should not be manually modified.
+
+## 6.1.0
+Thu, 02 Aug 2018 10:23:19 GMT
+
+### Minor changes
+
+- Add variantThemeType enums and utility function to apply variant theme
 
 ## 6.0.6
 Mon, 23 Jul 2018 10:28:08 GMT

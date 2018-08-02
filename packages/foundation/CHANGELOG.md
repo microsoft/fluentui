@@ -1,6 +1,13 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Wed, 01 Aug 2018 10:25:51 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Aug 2018 10:23:19 GMT and should not be manually modified.
+
+## 0.2.1
+Thu, 02 Aug 2018 10:23:19 GMT
+
+### Patches
+
+- Add webpack config.
 
 ## 0.2.0
 Wed, 01 Aug 2018 10:25:51 GMT

@@ -2,6 +2,35 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.9.0",
+      "tag": "@uifabric/dashboard_v0.9.0",
+      "date": "Thu, 02 Aug 2018 10:23:19 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "0f5adec987bc75661c5a5b16a2d45f42319710ed",
+            "comment": "Adding auto-fontsize dependency."
+          }
+        ],
+        "minor": [
+          {
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "1ef7812da2f994edce867acdd6f58e82688c816d",
+            "comment": "Consuming donut,pie,stacked bar chart and mulicount into card."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.22.2 <7.0.0` to `>=6.22.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.43.0 <7.0.0` to `>=6.44.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.8.0",
       "tag": "@uifabric/dashboard_v0.8.0",
       "date": "Wed, 01 Aug 2018 10:25:51 GMT",

@@ -115,9 +115,9 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
           }
     >
       <button
+        aria-checked={false}
         aria-disabled={undefined}
-        aria-label="Controlled component"
-        aria-pressed={false}
+        aria-label={undefined}
         className=
             ms-Toggle-background
             {
@@ -169,6 +169,7 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
         id="Toggle1"
         onChange={[Function]}
         onClick={[Function]}
+        role="switch"
         type="button"
       >
         <div

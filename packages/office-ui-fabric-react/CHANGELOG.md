@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 01 Aug 2018 10:25:51 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Aug 2018 10:23:19 GMT and should not be manually modified.
+
+## 6.44.0
+Thu, 02 Aug 2018 10:23:19 GMT
+
+### Minor changes
+
+- Make Toggle component follow accessibility standards, propose deprecation of onAriaLabel, offAriaLabel
+
+### Patches
+
+- Fixing an issue where ColorPicker would report invalid color values when tabbing between its Hex and RGBA text inputs."
 
 ## 6.43.0
 Wed, 01 Aug 2018 10:25:51 GMT
