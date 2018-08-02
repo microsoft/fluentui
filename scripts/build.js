@@ -26,10 +26,10 @@ const buildStartTime = new Date().getTime();
  */
 const TASKS_WITH_PREREQUISITES = [
   ['copy', null],
-  ['build-codepen-examples', 'ts'],
   ['sass', 'copy'],
   ['lint-imports', 'sass'],
   ['ts', 'lint-imports'],
+  ['build-codepen-examples', 'ts'],
   ['tslint', 'lint-imports'],
   ['jest', 'lint-imports'],
   ['webpack', 'ts']
