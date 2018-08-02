@@ -3183,6 +3183,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
       onClick={[Function]}
       onFocus={[Function]}
       role="checkbox"
+      title={undefined}
       type="button"
     >
       <label
@@ -3345,6 +3346,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
       onClick={[Function]}
       onFocus={[Function]}
       role="checkbox"
+      title={undefined}
       type="button"
     >
       <label
@@ -3507,6 +3509,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
       onClick={[Function]}
       onFocus={[Function]}
       role="checkbox"
+      title={undefined}
       type="button"
     >
       <label

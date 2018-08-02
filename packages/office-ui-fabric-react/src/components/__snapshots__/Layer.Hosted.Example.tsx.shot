@@ -217,6 +217,7 @@ exports[`Component Examples renders Layer.Hosted.Example.tsx correctly 1`] = `
     onClick={[Function]}
     onFocus={[Function]}
     role="checkbox"
+    title={undefined}
     type="button"
   >
     <label
@@ -399,6 +400,7 @@ exports[`Component Examples renders Layer.Hosted.Example.tsx correctly 1`] = `
     onClick={[Function]}
     onFocus={[Function]}
     role="checkbox"
+    title={undefined}
     type="button"
   >
     <label
