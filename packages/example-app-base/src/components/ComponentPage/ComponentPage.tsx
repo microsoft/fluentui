@@ -46,7 +46,7 @@ export interface IComponentPageProps {
   /** Native props root element */
   nativePropsElement?: string | string[] | undefined;
   /** Includes the feedback section **/
-  isFeedbackVisible?: boolean;
+  isFeedbackVisible?: JSX.Element;
 
   /**
    * Link to the Component root folder on GitHub.
@@ -376,9 +376,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
           <h2 className="ComponentPage-subHeading ComponentPage-variantsTitle" id="Feedback">
             Feedback
           </h2>
-          <Link href="https://github.com/OfficeDev/office-ui-fabric-react/issues/new/choose" target="_blank">
-            Submit feedback on Github
-          </Link>
+          {this.props.isFeedbackVisible}
         </div>
       );
     }

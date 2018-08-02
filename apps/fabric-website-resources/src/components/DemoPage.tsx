@@ -1,5 +1,6 @@
 import { IDemoPageProps } from './DemoPage.types';
 import { ComponentPage, ExampleCard, PropertiesTableSet, PageMarkdown } from '@uifabric/example-app-base';
+import { FeedbackList } from '../../../../packages/example-app-base/src/components/FeedbackList/FeedbackList';
 import * as React from 'react';
 import { ComponentStatus } from '../ComponentStatus/ComponentStatus';
 
@@ -49,7 +50,9 @@ export const DemoPage: React.StatelessComponent<IDemoPageProps> = componentPageP
       componentStatus={
         componentPageProps.componentStatus ? <ComponentStatus {...componentPageProps.componentStatus} /> : undefined
       }
-      isFeedbackVisible={componentPageProps.isFeedbackVisible}
+      isFeedbackVisible={
+        componentPageProps.isFeedbackVisible ? <FeedbackList title={componentPageProps.title} /> : undefined
+      }
     />
   );
 };
