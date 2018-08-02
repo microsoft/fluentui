@@ -1,10 +1,10 @@
 import { Customizations } from '@uifabric/utilities';
 import { IPalette, ISemanticColors, ITheme, IPartialTheme } from '../interfaces/index';
+import { ITypography } from '../interfaces/ITypography';
 import { DefaultFontStyles } from './DefaultFontStyles';
 import { DefaultPalette } from './DefaultPalette';
 import { DefaultTypography } from './DefaultTypography';
 import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
-import { IFontType } from '../interfaces/ITypography';
 
 let _theme: ITheme = {
   palette: DefaultPalette,
@@ -108,21 +108,30 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
     ...theme.semanticColors
   };
 
-  const typography = { ...DefaultTypography, ...theme.typography };
+  let typography = DefaultTypography;
+  if (theme.typography) {
+    typography = {
+      families: { ...DefaultTypography.families, ...theme.typography.families },
+      weights: { ...DefaultTypography.weights, ...theme.typography.weights },
+      sizes: { ...DefaultTypography.sizes, ...theme.typography.sizes },
+      types: { ...DefaultTypography.types, ...theme.typography.types }
+    } as ITypography;
+  }
 
   const { types } = typography;
   for (const typeName in types) {
     if (types.hasOwnProperty(typeName)) {
       const type = types[typeName];
-
-      if (type.fontFamily && typography.families[type.fontFamily]) {
-        type.fontFamily = typography.families[type.fontFamily];
-      }
-      if (type.fontSize && typography.sizes[type.fontSize]) {
-        type.fontSize = typography.sizes[type.fontSize];
-      }
-      if (type.fontWeight && typography.families[type.fontWeight]) {
-        type.fontWeight = typography.families[type.fontWeight];
+      if (type) {
+        if (type.fontFamily && typography.families[type.fontFamily]) {
+          type.fontFamily = typography.families[type.fontFamily];
+        }
+        if (type.fontSize && typography.sizes[type.fontSize]) {
+          type.fontSize = typography.sizes[type.fontSize];
+        }
+        if (type.fontWeight && typography.families[type.fontWeight]) {
+          type.fontWeight = typography.families[type.fontWeight];
+        }
       }
     }
   }
@@ -136,7 +145,7 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
     semanticColors: newSemanticColors,
     isInverted: !!theme.isInverted,
     disableGlobalClassNames: !!theme.disableGlobalClassNames,
-    typography: typography
+    typography: typography as ITypography
   };
 }
 
