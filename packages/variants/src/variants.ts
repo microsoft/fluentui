@@ -47,7 +47,31 @@ function changeOpacity(inputColor: string, opacity: number): string {
  * Do not generate a variant from a variant, the results will be ugly.
  *
  * @export
- * @param {IPartialTheme} theme the theme for which to build a variant for
+ * @param {IPartialTheme} theme the theme to build a variant for
+ * @param {VariantThemeType} variant the variant type designation
+ * @returns {ITheme} the variant theme
+ */
+export function getVariant(
+  theme: IPartialTheme,
+  variant: VariantThemeType
+): ITheme {
+  switch (variant) {
+    case VariantThemeType.Neutral:
+      return getNeutralVariant(theme);
+    case VariantThemeType.Soft:
+      return getSoftVariant(theme);
+    case VariantThemeType.Strong:
+      return getStrongVariant(theme);
+    default:
+      return createTheme(theme);
+  }
+}
+
+/**
+ * A variant where the background is a soft shade of the neutral color. Most other colors remain unchanged.
+ *
+ * @export
+ * @param {IPartialTheme} theme the theme to build a variant for
  * @returns {ITheme} the variant theme
  */
 export function getNeutralVariant(theme: IPartialTheme): ITheme {
@@ -124,7 +148,7 @@ export function getNeutralVariant(theme: IPartialTheme): ITheme {
  * A variant where the background is a soft version of the primary color. Most other colors remain unchanged.
  *
  * @export
- * @param {IPartialTheme} theme the theme for which to build a variant for
+ * @param {IPartialTheme} theme the theme to build a variant for
  * @returns {ITheme} the variant theme
  */
 export function getSoftVariant(theme: IPartialTheme): ITheme {
@@ -217,7 +241,7 @@ export function getSoftVariant(theme: IPartialTheme): ITheme {
  * The primary color becomes shades of the background.
  *
  * @export
- * @param {IPartialTheme} theme the theme for which to build a variant for
+ * @param {IPartialTheme} theme the theme to build a variant for
  * @returns {ITheme} the variant theme
  */
 export function getStrongVariant(theme: IPartialTheme): ITheme {
