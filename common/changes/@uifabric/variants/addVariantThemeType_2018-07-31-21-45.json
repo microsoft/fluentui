@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/variants",
+      "comment": "Add variantThemeType enums and utility function to apply variant theme",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/variants",
+  "email": "v-jescla@microsoft.com"
+}
