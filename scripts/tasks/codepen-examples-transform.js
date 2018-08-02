@@ -86,7 +86,7 @@ function transform(file, api) {
   let exampleName;
 
   // for examples with variable export declarations
-  if (variableExportDeclarations.__paths.length > 0) {
+  if (variableExportDeclarations.size() > 0) {
     // extract name
     variableExportDeclarations.forEach(p => {
       exampleName = p.node.declaration.declarations[0].id.name;
@@ -95,7 +95,7 @@ function transform(file, api) {
   }
 
   // for examples which export react components as a class
-  else if (classExportDeclarations.__paths.length > 0) {
+  else if (classExportDeclarations.size() > 0) {
     // extract name
     classExportDeclarations.forEach(p => {
       exampleName = p.node.declaration.id.name;
