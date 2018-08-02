@@ -1166,7 +1166,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             data-is-focusable={true}
             onChange={this._onItemClick(item.index!)}
             label={item.text}
-            role='option'
+            role="option"
             aria-selected={isSelected ? 'true' : 'false'}
             checked={isSelected}
             title={title}
