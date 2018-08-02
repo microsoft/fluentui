@@ -2,6 +2,20 @@
   "name": "@uifabric/foundation",
   "entries": [
     {
+      "version": "0.2.1",
+      "tag": "@uifabric/foundation_v0.2.1",
+      "date": "Thu, 02 Aug 2018 10:23:19 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "5781704e7a6ba5795b6367bd3ca0c1ba7d571484",
+            "comment": "Add webpack config."
+          }
+        ]
+      }
+    },
+    {
       "version": "0.2.0",
       "tag": "@uifabric/foundation_v0.2.0",
       "date": "Wed, 01 Aug 2018 10:25:51 GMT",

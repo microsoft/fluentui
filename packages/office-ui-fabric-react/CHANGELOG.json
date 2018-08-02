@@ -2,6 +2,32 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.44.0",
+      "tag": "office-ui-fabric-react_v6.44.0",
+      "date": "Thu, 02 Aug 2018 10:23:19 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Spencer Lynn <sllynn8907@gmail.com>",
+            "commit": "808e06e91198ce6cdfe0dea5fb2c7e5ec982a382",
+            "comment": "Fixing an issue where ColorPicker would report invalid color values when tabbing between its Hex and RGBA text inputs.\""
+          }
+        ],
+        "minor": [
+          {
+            "author": "philipzloh <philip.loh@students.olin.edu>",
+            "commit": "79b3ef42b9fa78e2622698693564051889e53201",
+            "comment": "Make Toggle component follow accessibility standards, propose deprecation of onAriaLabel, offAriaLabel"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.12.0 <7.0.0` to `>=6.13.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.43.0",
       "tag": "office-ui-fabric-react_v6.43.0",
       "date": "Wed, 01 Aug 2018 10:25:51 GMT",

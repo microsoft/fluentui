@@ -1,6 +1,14 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 24 Jul 2018 10:24:36 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Aug 2018 10:23:19 GMT and should not be manually modified.
+
+## 6.13.0
+Thu, 02 Aug 2018 10:23:19 GMT
+
+### Minor changes
+
+- getGlobalClassNames - when disabled, now returns a unique classname (modularized) instead of empty string.
+- Styling: make typography properties optional in Partial<ITheme>
 
 ## 6.12.0
 Tue, 24 Jul 2018 10:24:36 GMT

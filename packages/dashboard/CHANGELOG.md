@@ -1,6 +1,17 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Wed, 01 Aug 2018 10:25:51 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Aug 2018 10:23:19 GMT and should not be manually modified.
+
+## 0.9.0
+Thu, 02 Aug 2018 10:23:19 GMT
+
+### Minor changes
+
+- Consuming donut,pie,stacked bar chart and mulicount into card.
+
+### Patches
+
+- Adding auto-fontsize dependency.
 
 ## 0.8.0
 Wed, 01 Aug 2018 10:25:51 GMT

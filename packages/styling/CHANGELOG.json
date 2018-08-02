@@ -2,6 +2,25 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "6.13.0",
+      "tag": "@uifabric/styling_v6.13.0",
+      "date": "Thu, 02 Aug 2018 10:23:19 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "b71a54d9c3fb4da6243f175371ed5f6c4e102a31",
+            "comment": "getGlobalClassNames - when disabled, now returns a unique classname (modularized) instead of empty string."
+          },
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "2c5dd3f83f390ec128884ccf107c74cb759c9d37",
+            "comment": "Styling: make typography properties optional in Partial<ITheme>"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.12.0",
       "tag": "@uifabric/styling_v6.12.0",
       "date": "Tue, 24 Jul 2018 10:24:36 GMT",
