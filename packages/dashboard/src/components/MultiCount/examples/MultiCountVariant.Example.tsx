@@ -1,23 +1,29 @@
 import * as React from 'react';
 import { AnnotationType, IMultiCountRow, MultiCount } from '@uifabric/dashboard';
-
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
-export class MultiCountExample extends React.Component<{}, {}> {
+export class MultiCountVariantExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     const rows: IMultiCountRow[] = [
       {
-        data: 109000,
+        data: 13100,
         bodyText: 'Flagged users',
-        annotaionText: 'Annotation Text',
-        color: DefaultPalette.accent,
+        annotaionText: 'Annotation Text ',
+        color: DefaultPalette.blue,
         type: AnnotationType.positive
       },
       {
-        data: 8100000,
+        data: 7100000000,
         bodyText: 'Risky sign-ins',
         annotaionText: 'Decrease in the safety',
-        color: DefaultPalette.green,
+        color: DefaultPalette.blue,
+        type: AnnotationType.negative
+      },
+      {
+        data: 7000000000,
+        bodyText: 'Risky sign-ins',
+        annotaionText: 'Decrease in the safety',
+        color: DefaultPalette.blue,
         type: AnnotationType.negative
       },
       {
@@ -28,6 +34,14 @@ export class MultiCountExample extends React.Component<{}, {}> {
         type: AnnotationType.neutral
       }
     ];
-    return <MultiCount multiCountRows={rows} />;
+    return (
+      <MultiCount
+        multiCountRows={rows}
+        bodyTextFontSize={'16px'}
+        annotationTextColor={DefaultPalette.green}
+        annotationTextFontSize={'12px'}
+        bodyTextColor={DefaultPalette.green}
+      />
+    );
   }
 }
