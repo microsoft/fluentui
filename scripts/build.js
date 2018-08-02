@@ -25,8 +25,8 @@ const buildStartTime = new Date().getTime();
  * and execute them until no tasks are left.
  */
 const TASKS_WITH_PREREQUISITES = [
-  ['build-codepen-examples', null],
   ['copy', null],
+  ['build-codepen-examples', 'ts'],
   ['sass', 'copy'],
   ['lint-imports', 'sass'],
   ['ts', 'lint-imports'],

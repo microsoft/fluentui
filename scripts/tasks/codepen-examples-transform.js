@@ -22,7 +22,7 @@ function parseRaw(code) {
   return recast.parse(code, { parser: { parse } }).program.body;
 }
 
-function transformer(file, api) {
+function transform(file, api) {
   const parse = source =>
     babylon.parse(source, {
       sourceType: 'module',
@@ -109,4 +109,4 @@ function transformer(file, api) {
   return sourceWithFooter;
 }
 
-module.exports = transformer;
+module.exports = transform;
