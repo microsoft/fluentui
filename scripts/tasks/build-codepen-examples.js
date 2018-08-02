@@ -13,19 +13,27 @@ module.exports = function(options) {
     const promises = [];
     if (files.length) {
       files.forEach(file => {
-        const filePath = path.resolve(file);
-        const fileSource = fs.readFileSync(filePath).toString();
+        // console.log('file', file);
+        // const filePath = path.resolve(file);
+        // console.log('filepath', filePath);
+        const fileSource = fs.readFileSync(file).toString();
 
         promises.push(
           new Promise((resolve, reject) => {
             // check if the @codepen tag is present
             if (fileSource.indexOf('@codepen') >= 0) {
+              const exampleName = path.basename(file, '.tsx');
+              // extract the name of the component (relies on component/examples/examplefile.tsx structure)
+              const exampleComponentName = file.split('/').reverse()[2];
               // parameters for transform file
               const options = { parser: 'babylon' };
-              const fileInfo = { path: filePath, source: fileSource };
+              const fileInfo = { path: file, source: fileSource };
               const api = { jscodeshift: jscodeshift, stats: {} };
               const transformResult = transformer(fileInfo, api);
-              fs.writeFileSync('lib/components/Label/Label.Basic.CodepenExample.txt', transformResult);
+              fs.writeFileSync(
+                'lib/components/' + exampleComponentName + '/' + exampleName + '.Codepen.txt',
+                transformResult
+              );
               resolve();
             }
           })
