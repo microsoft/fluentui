@@ -87,6 +87,9 @@ export interface IDetailsHeaderProps extends React.Props<DetailsHeaderBase> {
   /** Column reordering options */
   columnReorderOptions?: IColumnReorderOptions | null;
 
+  /** callback to notify the column dragEnd event */
+  onColumnDragEnd?: (event: MouseEvent, onHeader: boolean) => void;
+
   /** Minimum pixels to be moved before dragging is registered */
   minimumPixelsForDrag?: number;
 

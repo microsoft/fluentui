@@ -266,8 +266,8 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
   private _onDragStart(item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent): void {
     const classNames = this._classNames;
 
-    if (itemIndex && this.props.setDraggedItemIndex) {
-      this.props.setDraggedItemIndex(itemIndex);
+    if (itemIndex && this.props.updateDragInfo) {
+      this.props.updateDragInfo(itemIndex);
       this._root.current.classList.add(classNames.borderWhileDragging);
     }
   }
@@ -275,8 +275,8 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
   private _onDragEnd(item?: any, event?: MouseEvent): void {
     const classNames = this._classNames;
 
-    if (this.props.setDraggedItemIndex) {
-      this.props.setDraggedItemIndex(-1);
+    if (this.props.updateDragInfo) {
+      this.props.updateDragInfo(-1, event);
       this._root.current.classList.remove(classNames.borderWhileDragging);
     }
   }

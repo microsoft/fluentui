@@ -114,6 +114,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     this._onContentKeyDown = this._onContentKeyDown.bind(this);
     this._onRenderCell = this._onRenderCell.bind(this);
     this._onGroupExpandStateChanged = this._onGroupExpandStateChanged.bind(this);
+    this._onColumnDragEnd = this._onColumnDragEnd.bind(this);
 
     this.state = {
       focusedItemIndex: -1,
@@ -402,6 +403,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
                   collapseAllVisibility: groupProps && groupProps.collapseAllVisibility,
                   viewport: viewport,
                   columnReorderOptions: columnReorderOptions,
+                  onColumnDragEnd: this._onColumnDragEnd,
                   minimumPixelsForDrag: minimumPixelsForDrag,
                   cellStyleProps: DEFAULT_CELL_STYLE_PROPS
                 },
@@ -646,6 +648,24 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     });
     if (this._groupedList.current) {
       this._groupedList.current.toggleCollapseAll(collapsed);
+    }
+  }
+
+  private _onColumnDragEnd(event: MouseEvent, onHeader: boolean): void {
+    if (onHeader) {
+      this.props.columnReorderOptions!.onColumnDragEnd!(0);
+    } else {
+      const clientRect = this._root.current!.getBoundingClientRect();
+      if (
+        event.clientX > clientRect.left &&
+        event.clientX < clientRect.right &&
+        event.clientY > clientRect.top &&
+        event.clientY < clientRect.bottom
+      ) {
+        this.props.columnReorderOptions!.onColumnDragEnd!(1);
+      } else {
+        this.props.columnReorderOptions!.onColumnDragEnd!(2);
+      }
     }
   }
 

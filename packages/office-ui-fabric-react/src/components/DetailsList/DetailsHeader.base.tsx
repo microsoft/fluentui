@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { findDOMNode } from 'react-dom';
 import { BaseComponent, css, getRTL, getId, KeyCodes, IRenderFunction, createRef, IClassNames } from '../../Utilities';
-import { IColumn, IDetailsHeaderProps } from './DetailsList.types';
+import { IColumn, IDetailsHeaderProps, IColumnDragDropDetails } from './DetailsList.types';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Icon } from '../../Icon';
 import { Layer } from '../../Layer';
@@ -66,7 +66,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderProps, IDetai
 
     this._onToggleCollapseAll = this._onToggleCollapseAll.bind(this);
     this._onSelectAllClicked = this._onSelectAllClicked.bind(this);
-    this._setDraggedItemIndex = this._setDraggedItemIndex.bind(this);
+    this._updateDragInfo = this._updateDragInfo.bind(this);
     this._onDragOver = this._onDragOver.bind(this);
     this._onDrop = this._onDrop.bind(this);
     this._getHeaderDragDropOptions = this._getHeaderDragDropOptions.bind(this);
@@ -270,7 +270,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderProps, IDetai
               columnIndex={(showCheckbox ? 2 : 1) + columnIndex}
               parentId={this._id}
               isDraggable={_isDraggable}
-              setDraggedItemIndex={this._setDraggedItemIndex}
+              updateDragInfo={this._updateDragInfo}
               dragDropHelper={this._dragDropHelper}
               onColumnClick={onColumnClick}
               onColumnContextMenu={onColumnContextMenu}
@@ -336,10 +336,12 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderProps, IDetai
   private _onDrop(item?: any, event?: DragEvent): void {
     const draggedColumnIndex = this._draggedColumnIndex;
     // Target index will not get changed if draggeditem is after target item.
-    const targetIndex =
-      draggedColumnIndex > this._currentDropHintIndex! ? this._currentDropHintIndex! : this._currentDropHintIndex! - 1;
-    let isValidDrop = false;
     if (this._draggedColumnIndex >= 0 && event! instanceof DragEvent) {
+      const targetIndex =
+        draggedColumnIndex > this._currentDropHintIndex!
+          ? this._currentDropHintIndex!
+          : this._currentDropHintIndex! - 1;
+      let isValidDrop = false;
       event!.stopPropagation();
       if (this._isValidCurrentDropHintIndex()) {
         isValidDrop = true;
@@ -350,20 +352,40 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderProps, IDetai
       this._dropHintDetails = {};
       this._draggedColumnIndex = -1;
       if (isValidDrop) {
-        this.props.columnReorderOptions!.handleColumnReorder(draggedColumnIndex, targetIndex);
+        if (this.props.columnReorderOptions!.onColumnDrop) {
+          const dragDropDetails: IColumnDragDropDetails = {
+            draggedIndex: draggedColumnIndex,
+            targetIndex: targetIndex
+          };
+          this.props.columnReorderOptions!.onColumnDrop!(dragDropDetails);
+        } else if (this.props.columnReorderOptions!.handleColumnReorder) {
+          this.props.columnReorderOptions!.handleColumnReorder!(draggedColumnIndex, targetIndex);
+        }
       }
     }
   }
 
-  private _setDraggedItemIndex(itemIndex: number) {
+  private _updateDragInfo(itemIndex: number, event?: MouseEvent) {
     if (itemIndex >= 0) {
       // Column index is set based on the checkbox
       this._draggedColumnIndex = this.props.selectionMode !== SelectionMode.none ? itemIndex - 2 : itemIndex - 1;
       this._getDropHintPositions();
-    } else {
+      this.props.columnReorderOptions!.onColumnDragStart!(true);
+    } else if (event && this._draggedColumnIndex >= 0) {
       this._resetDropHints();
       this._draggedColumnIndex = -1;
       this._dropHintDetails = {};
+      const clientRect = this._rootElement!.getBoundingClientRect();
+      if (
+        event.clientX > clientRect.left &&
+        event.clientX < clientRect.right &&
+        event.clientY > clientRect.top &&
+        event.clientY < clientRect.bottom
+      ) {
+        this.props.onColumnDragEnd!(event!, true);
+      } else {
+        this.props.onColumnDragEnd!(event!, false);
+      }
     }
   }
 
