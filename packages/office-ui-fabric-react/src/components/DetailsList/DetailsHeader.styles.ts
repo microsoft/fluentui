@@ -177,6 +177,15 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
       }
     ],
 
+    cellIsGroupExpander: [
+      cellStyles,
+      {
+        paddingLeft: '8px',
+        paddingRight: '8px',
+        width: '36px'
+      }
+    ],
+
     cellIsActionable: [
       {
         selectors: {

@@ -251,7 +251,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderProps, IDetai
             ]
           : null}
         {groupNestingDepth! > 0 && this.props.collapseAllVisibility === CollapseAllVisibility.visible ? (
-          <div className={classNames.cell} onClick={this._onToggleCollapseAll} data-is-focusable={true}>
+          <div className={classNames.cellIsGroupExpander} onClick={this._onToggleCollapseAll} data-is-focusable={true}>
             <Icon className={classNames.collapseButton} iconName="ChevronDown" />
           </div>
         ) : null}

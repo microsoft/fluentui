@@ -13,7 +13,7 @@ import {
 import { CheckboxVisibility } from './DetailsList.types';
 
 import { IDetailsRowStyleProps, IDetailsRowStyles } from './DetailsRow.types';
-import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
+import { DEFAULT_CELL_STYLE_PROPS, getStyles as getRowStyles } from './DetailsRow.styles';
 
 const getRowClassNames = classNamesFunction<IDetailsRowStyleProps, IDetailsRowStyles>();
 
@@ -69,10 +69,19 @@ export class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsLis
 
   private _onRenderShimmerPlaceholder = (index: number, rowProps: IDetailsRowProps): React.ReactNode => {
     const { onRenderCustomPlaceholder, compact } = this.props;
-    const { selectionMode, checkboxVisibility, theme, styles } = rowProps;
+    const { selectionMode, checkboxVisibility } = rowProps;
+
+    const theme = this.props.theme!;
+
     const showCheckbox = selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden;
-    const rowClassNames = getRowClassNames(styles, {
-      theme: theme!
+
+    const rowStyleProps = {
+      ...rowProps,
+      theme: theme
+    };
+
+    const rowClassNames = getRowClassNames(getRowStyles(rowStyleProps), {
+      theme: theme
     });
 
     const placeholderElements: React.ReactNode = onRenderCustomPlaceholder
@@ -96,7 +105,10 @@ export class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsLis
     columns.map((column, columnIdx) => {
       const shimmerElements: IShimmerElement[] = [];
       const groupWidth: number =
-        cellStyleProps.cellLeftPadding + cellStyleProps.cellRightPadding + column.calculatedWidth!;
+        cellStyleProps.cellLeftPadding +
+        cellStyleProps.cellRightPadding +
+        column.calculatedWidth! +
+        (column.isPadded ? cellStyleProps.cellExtraRightPadding : 0);
 
       shimmerElements.push({
         type: ShimmerElementType.gap,

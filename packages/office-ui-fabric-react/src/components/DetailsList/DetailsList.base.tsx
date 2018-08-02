@@ -770,22 +770,18 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     props: IDetailsListProps,
     firstIndex: number
   ): IColumn[] {
-    const { selectionMode, checkboxVisibility, groups, cellStyleProps = DEFAULT_CELL_STYLE_PROPS } = props;
-    const outerPadding = cellStyleProps.cellLeftPadding + cellStyleProps.cellRightPadding;
+    const { selectionMode, checkboxVisibility, groups } = props;
     const rowCheckWidth =
       selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden ? CHECKBOX_WIDTH : 0;
     const groupExpandWidth = groups ? GROUP_EXPAND_WIDTH : 0;
     let totalWidth = 0; // offset because we have one less inner padding.
-    const availableWidth = viewportWidth - (outerPadding + rowCheckWidth + groupExpandWidth);
+    const availableWidth = viewportWidth - (rowCheckWidth + groupExpandWidth);
     const adjustedColumns: IColumn[] = newColumns.map((column, i) => {
-      const newColumn = assign(
-        {},
-        column,
-        {
-          calculatedWidth: column.minWidth || MIN_COLUMN_WIDTH
-        },
-        this._columnOverrides[column.key]
-      );
+      const newColumn = {
+        ...column,
+        calculatedWidth: column.minWidth || MIN_COLUMN_WIDTH,
+        ...this._columnOverrides[column.key]
+      };
 
       const isFirst = i + firstIndex === 0;
       totalWidth += getPaddedWidth(newColumn, isFirst, props);
@@ -1053,7 +1049,8 @@ function getPaddedWidth(column: IColumn, isFirst: boolean, props: IDetailsListPr
 
   return (
     column.calculatedWidth! +
-    (isFirst ? 0 : cellStyleProps.cellLeftPadding + cellStyleProps.cellRightPadding) +
+    cellStyleProps.cellLeftPadding +
+    cellStyleProps.cellRightPadding +
     (column.isPadded ? cellStyleProps.cellExtraRightPadding : 0)
   );
 }

@@ -159,6 +159,7 @@ export interface IDetailsHeaderStyles {
   cellSizerStart: IStyle;
   cellSizerEnd: IStyle;
   cellIsResizing: IStyle;
+  cellIsGroupExpander: IStyle;
   collapseButton: IStyle;
   iconOnlyHeader: IStyle;
   nearIcon: IStyle;
