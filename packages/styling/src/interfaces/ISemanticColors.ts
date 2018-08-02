@@ -58,8 +58,9 @@ export interface ISemanticColors {
 
   /**
    * The standout color for highlighted content backgrounds.
-   * This should use the neutral variant when on no emphasis.
-   * This should be a shade darker than the other emphases.
+   * For highlighted content when there is no emphasis, use the neutral variant instead.
+   * This should be a shade darker than bodyBackground in light themes,
+   * and a shade lighter in inverted themes.
    */
   bodyStandoutBackground: string;
 
