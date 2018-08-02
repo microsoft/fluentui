@@ -3,18 +3,14 @@
   "version": "0.9.0",
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
-    "@types/react": "16.3.16",
-    "@types/react-dom": "16.0.5",
     "@uifabric/charting": "^0.12.0",
     "@uifabric/example-app-base": ">=6.7.0 <7.0.0",
     "@uifabric/experiments": ">=6.22.3 <7.0.0",
+    "auto-fontsize": "^1.0.4",
     "css-loader": "^0.15.1",
     "office-ui-fabric-react": ">=6.44.0 <7.0.0",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
     "react-grid-layout": "samiyaakhtar/react-grid-layout",
-    "style-loader": "^0.21.0",
-    "auto-fontsize": "^1.0.4"
+    "style-loader": "^0.21.0"
   },
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -32,11 +28,20 @@
     "@types/enzyme": "3.1.5",
     "@types/enzyme-adapter-react-16": "1.0.1",
     "@types/jest": "23.0.0",
+    "@types/react": "16.3.16",
+    "@types/react-test-renderer": "^16.0.0",
+    "@types/react-dom": "16.0.5",
     "@types/webpack-env": "1.13.0",
+    "@uifabric/jest-serializer-merge-styles": ">=6.0.3 <7.0.0",
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.0",
     "office-ui-fabric-react-tslint": ">=6.0.0 <7.0.0",
-    "@types/react-test-renderer": "^16.0.0",
-    "@uifabric/jest-serializer-merge-styles": ">=6.0.3 <7.0.0"
+    "react": ">=16.3.2-0 <17.0.0",
+    "react-test-renderer": "^16.2.0",
+    "react-dom": ">=16.3.2-0 <17.0.0"
+  },
+  "peerDependencies": {
+    "react": ">=16.3.2-0 <17.0.0",
+    "react-dom": ">=16.3.2-0 <17.0.0"
   }
 }
