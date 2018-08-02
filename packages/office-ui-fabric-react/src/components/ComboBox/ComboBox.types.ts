@@ -31,6 +31,16 @@ export interface IComboBoxOption extends ISelectableOption {
   styles?: Partial<IComboBoxOptionStyles>;
 
   /**
+   * Custom function for providing the styles for the ComboBox options. Instead of merging with the default styles,
+   * this function can be used to apply all of the styles to the option
+   */
+  getStyles?: (
+    theme: ITheme,
+    customStylesForAllOptions?: Partial<IComboBoxOptionStyles>,
+    isPending?: boolean
+  ) => Partial<IComboBoxOptionStyles>;
+
+  /**
    * In scenarios where embedded data is used at the text prop, we will use the ariaLabel prop
    * to set the aria-label and preview text. Default to false
    * @default false;

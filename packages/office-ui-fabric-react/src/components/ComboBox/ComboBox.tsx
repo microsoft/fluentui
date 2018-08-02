@@ -1878,14 +1878,23 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    */
   private _getCurrentOptionStyles(item: IComboBoxOption): Partial<IComboBoxOptionStyles> {
     const { comboBoxOptionStyles: customStylesForAllOptions } = this.props;
-    const { styles: customStylesForCurrentOption } = item;
+    const {
+      getStyles: customGetOptionStyles,
+      styles: customStylesForCurrentOption
+    } = item;
 
-    return getOptionStyles(
-      this.props.theme!,
-      customStylesForAllOptions,
-      customStylesForCurrentOption,
-      this._isPendingOption(item)
-    );
+    return customGetOptionStyles ?
+      customGetOptionStyles(
+        this.props.theme!,
+        customStylesForAllOptions,
+        this._isPendingOption(item)
+      ) :
+      getOptionStyles(
+        this.props.theme!,
+        customStylesForAllOptions,
+        customStylesForCurrentOption,
+        this._isPendingOption(item)
+      );
   }
 
   /**
