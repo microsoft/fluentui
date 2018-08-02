@@ -154,6 +154,7 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
 function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depComments: boolean): ISemanticColors {
   let toReturn: ISemanticColors = {
     bodyBackground: p.white,
+    bodyStandoutBackground: p.white,
     bodyFrameBackground: p.white,
     bodyFrameDivider: p.neutralLight,
     bodyText: p.neutralPrimary,
@@ -167,6 +168,7 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     disabledSubtext: p.neutralQuaternary,
 
     focusBorder: p.black,
+    variantBorder: p.neutralLight,
 
     errorText: !isInverted ? p.redDark : '#ff5f5f',
     warningText: !isInverted ? '#333333' : '#ffffff',
@@ -209,6 +211,8 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     listHeaderBackgroundHovered: p.neutralLighter,
     listHeaderBackgroundPressed: p.neutralLight,
 
+    actionLink: p.neutralPrimary,
+    actionLinkHovered: p.neutralDark,
     link: p.themePrimary,
     linkHovered: p.themeDarker,
 
