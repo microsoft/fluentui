@@ -4,7 +4,7 @@ import { createDragApiRef, Layout } from 'react-grid-layout';
 import { DashboardGridLayout } from '../DashboardGridLayout';
 import { Size } from '../DashboardGridLayout.types';
 import * as exampleStyles from './DashboardGridLayout.Example.scss';
-import { DefaultButton } from '../../../../../office-ui-fabric-react/lib/components/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib//Button';
 
 export class DashboardGridLayoutDragApiExample extends React.PureComponent<
   {},

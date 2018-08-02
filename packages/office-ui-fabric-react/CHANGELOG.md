@@ -1,6 +1,47 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 30 Jul 2018 10:27:11 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Aug 2018 10:23:19 GMT and should not be manually modified.
+
+## 6.44.0
+Thu, 02 Aug 2018 10:23:19 GMT
+
+### Minor changes
+
+- Make Toggle component follow accessibility standards, propose deprecation of onAriaLabel, offAriaLabel
+
+### Patches
+
+- Fixing an issue where ColorPicker would report invalid color values when tabbing between its Hex and RGBA text inputs."
+
+## 6.43.0
+Wed, 01 Aug 2018 10:25:51 GMT
+
+### Minor changes
+
+- Remove ShimmeredDetailsList from the DetailsList 'bundle'
+
+### Patches
+
+- Check: shouldComponentUpdate now resepects theme and classname changes.
+- FocusTrapZone: Fix focus/click-trapping bugs when FocusTrapZones are nested.
+- Restore accessible labels for DetailsList columns and states
+- dragStart callback will be in sync with browser, instaed of calling it in mousemove
+- PersonaCion will render the user's avatar image only if there is a valid image and the user do not wish to hide it, unlike previously where an empty img tag(src='') was being rendered over the initials always
+- Deprecating 'borderStyle' prop of Shimmer subcomponents Line, Circle, Gap in favor of leveraging mergeStyles API.
+
+## 6.42.0
+Tue, 31 Jul 2018 10:25:18 GMT
+
+### Minor changes
+
+- Fix SelectionZone selectToIndex with Shift+Tab, expose FocusZoneProps on ExtendedBasePicker
+- Dropdown: Converted to support JS styling.
+- Adding footer component for details list
+
+### Patches
+
+- Fixing issue with render coin on persona component
+- Tooltip: narrator now announces aria-describedby when using onRenderContent
 
 ## 6.41.1
 Mon, 30 Jul 2018 10:27:11 GMT

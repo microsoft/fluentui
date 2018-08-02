@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/dashboard",
+      "comment": "Adding custom font size and color props to Multicount. Changes to the precision logic",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/dashboard",
+  "email": "v-kanuli@microsoft.com"
+}

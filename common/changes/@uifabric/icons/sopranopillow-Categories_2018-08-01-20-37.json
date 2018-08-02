@@ -2,10 +2,10 @@
   "changes": [
     {
       "comment": "",
-      "packageName": "@uifabric/variants",
+      "packageName": "@uifabric/icons",
       "type": "none"
     }
   ],
-  "packageName": "@uifabric/variants",
+  "packageName": "@uifabric/icons",
   "email": "'esteban.230@hotmail.com'"
 }

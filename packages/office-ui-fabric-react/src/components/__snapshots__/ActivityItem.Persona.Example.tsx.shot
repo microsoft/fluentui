@@ -339,53 +339,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 JM
               </span>
             </div>
-            <div
-              className=
-                  ms-Image
-                  ms-Persona-image
-                  {
-                    border-radius: 50%;
-                    border: 0px;
-                    height: 16px;
-                    left: 0px;
-                    margin-right: 10px;
-                    overflow: hidden;
-                    perspective: 1px;
-                    position: absolute;
-                    top: 0px;
-                    width: 16px;
-                  }
-              style={
-                Object {
-                  "height": undefined,
-                  "width": undefined,
-                }
-              }
-            >
-              <img
-                alt=""
-                className=
-                    ms-Image-image
-                    ms-Image-image--cover
-                    ms-Image-image--portrait
-                    is-notLoaded
-                    is-fadeIn
-                    {
-                      display: block;
-                      height: auto;
-                      left: 50% /* @noflip */;
-                      opacity: 0;
-                      position: absolute;
-                      top: 50%;
-                      transform: translate(-50%,-50%);
-                      width: 100%;
-                    }
-                onError={[Function]}
-                onLoad={[Function]}
-                role={undefined}
-                src={undefined}
-              />
-            </div>
           </div>
         </div>
         <div
@@ -801,53 +754,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               <span>
                 RL
               </span>
-            </div>
-            <div
-              className=
-                  ms-Image
-                  ms-Persona-image
-                  {
-                    border-radius: 50%;
-                    border: 0px;
-                    height: 16px;
-                    left: 0px;
-                    margin-right: 10px;
-                    overflow: hidden;
-                    perspective: 1px;
-                    position: absolute;
-                    top: 0px;
-                    width: 16px;
-                  }
-              style={
-                Object {
-                  "height": undefined,
-                  "width": undefined,
-                }
-              }
-            >
-              <img
-                alt=""
-                className=
-                    ms-Image-image
-                    ms-Image-image--cover
-                    ms-Image-image--portrait
-                    is-notLoaded
-                    is-fadeIn
-                    {
-                      display: block;
-                      height: auto;
-                      left: 50% /* @noflip */;
-                      opacity: 0;
-                      position: absolute;
-                      top: 50%;
-                      transform: translate(-50%,-50%);
-                      width: 100%;
-                    }
-                onError={[Function]}
-                onLoad={[Function]}
-                role={undefined}
-                src={undefined}
-              />
             </div>
           </div>
         </div>
@@ -1273,53 +1179,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 JC
               </span>
             </div>
-            <div
-              className=
-                  ms-Image
-                  ms-Persona-image
-                  {
-                    border-radius: 50%;
-                    border: 0px;
-                    height: 16px;
-                    left: 0px;
-                    margin-right: 10px;
-                    overflow: hidden;
-                    perspective: 1px;
-                    position: absolute;
-                    top: 0px;
-                    width: 16px;
-                  }
-              style={
-                Object {
-                  "height": undefined,
-                  "width": undefined,
-                }
-              }
-            >
-              <img
-                alt=""
-                className=
-                    ms-Image-image
-                    ms-Image-image--cover
-                    ms-Image-image--portrait
-                    is-notLoaded
-                    is-fadeIn
-                    {
-                      display: block;
-                      height: auto;
-                      left: 50% /* @noflip */;
-                      opacity: 0;
-                      position: absolute;
-                      top: 50%;
-                      transform: translate(-50%,-50%);
-                      width: 100%;
-                    }
-                onError={[Function]}
-                onLoad={[Function]}
-                role={undefined}
-                src={undefined}
-              />
-            </div>
           </div>
         </div>
         <div
@@ -1452,53 +1311,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               <span>
                 AL
               </span>
-            </div>
-            <div
-              className=
-                  ms-Image
-                  ms-Persona-image
-                  {
-                    border-radius: 50%;
-                    border: 0px;
-                    height: 16px;
-                    left: 0px;
-                    margin-right: 10px;
-                    overflow: hidden;
-                    perspective: 1px;
-                    position: absolute;
-                    top: 0px;
-                    width: 16px;
-                  }
-              style={
-                Object {
-                  "height": undefined,
-                  "width": undefined,
-                }
-              }
-            >
-              <img
-                alt=""
-                className=
-                    ms-Image-image
-                    ms-Image-image--cover
-                    ms-Image-image--portrait
-                    is-notLoaded
-                    is-fadeIn
-                    {
-                      display: block;
-                      height: auto;
-                      left: 50% /* @noflip */;
-                      opacity: 0;
-                      position: absolute;
-                      top: 50%;
-                      transform: translate(-50%,-50%);
-                      width: 100%;
-                    }
-                onError={[Function]}
-                onLoad={[Function]}
-                role={undefined}
-                src={undefined}
-              />
             </div>
           </div>
         </div>

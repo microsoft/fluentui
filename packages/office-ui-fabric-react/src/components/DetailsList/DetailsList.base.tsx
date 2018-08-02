@@ -24,6 +24,7 @@ import {
 } from '../DetailsList/DetailsList.types';
 import { DetailsHeader } from '../DetailsList/DetailsHeader';
 import { IDetailsHeader, SelectAllVisibility, IDetailsHeaderProps } from '../DetailsList/DetailsHeader.types';
+import { IDetailsFooterProps } from '../DetailsList/DetailsFooter.types';
 import { DetailsRowBase } from '../DetailsList/DetailsRow.base';
 import { DetailsRow } from '../DetailsList/DetailsRow';
 import { IDetailsRowProps } from '../DetailsList/DetailsRow.types';
@@ -339,7 +340,13 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       selectAllVisibility = SelectAllVisibility.none;
     }
 
-    const { onRenderDetailsHeader = this._onRenderDetailsHeader } = this.props;
+    const {
+      onRenderDetailsHeader = this._onRenderDetailsHeader,
+      onRenderDetailsFooter = this._onRenderDetailsFooter
+    } = this.props;
+
+    const detailsFooterProps = this._getDetailsFooterProps();
+
     const rowCount = (isHeaderVisible ? 1 : 0) + GetGroupCount(groups) + (items ? items.length : 0);
 
     const classNames = getClassNames(styles, {
@@ -452,6 +459,12 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
               </SelectionZone>
             </FocusZone>
           </div>
+          {onRenderDetailsFooter(
+            {
+              ...detailsFooterProps
+            },
+            this._onRenderDetailsFooter
+          )}
         </div>
       </div>
     );
@@ -471,6 +484,13 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     defaultRender?: IRenderFunction<IDetailsHeaderProps>
   ): JSX.Element => {
     return <DetailsHeader {...detailsHeaderProps} />;
+  };
+
+  private _onRenderDetailsFooter = (
+    detailsFooterProps: IDetailsFooterProps,
+    defaultRender?: IRenderFunction<IDetailsFooterProps>
+  ): JSX.Element | null => {
+    return null;
   };
 
   private _onRenderListCell = (nestingDepth: number): ((item: any, itemIndex: number) => React.ReactNode) => {
@@ -928,6 +948,17 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     }
   };
 
+  private _getDetailsFooterProps(): IDetailsFooterProps | undefined {
+    const { adjustedColumns: columns } = this.state;
+    const detailsFooterProps: IDetailsFooterProps = {
+      columns: columns as IColumn[],
+      groupNestingDepth: this._getGroupNestingDepth(),
+      selection: this._selection
+    };
+    return {
+      ...detailsFooterProps
+    };
+  }
   private _getGroupProps(detailsGroupProps: IDetailsGroupRenderProps): IGroupRenderProps {
     const {
       onRenderFooter: onRenderDetailsGroupFooter,

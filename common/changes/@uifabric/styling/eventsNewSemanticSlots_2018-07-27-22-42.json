@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/styling",
+      "comment": "adds 4 new semantic slots, based on designs from SP-Client events webpart, and with approval from Philip Kuo; actionLink, actionLinkHovered, cardBackground, variantBorder",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/styling",
+  "email": "v-jescla@microsoft.com"
+}

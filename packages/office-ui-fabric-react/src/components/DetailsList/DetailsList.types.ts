@@ -6,6 +6,7 @@ import { IDragDropEvents, IDragDropContext } from './../../utilities/dragdrop/in
 import { IGroup, IGroupRenderProps, IGroupDividerProps } from '../GroupedList/index';
 import { IDetailsRowProps } from '../DetailsList/DetailsRow';
 import { IDetailsHeaderProps } from './DetailsHeader';
+import { IDetailsFooterProps } from './DetailsFooter.types';
 import { IWithViewportProps, IViewport } from '../../utilities/decorators/withViewport';
 import { IList, IListProps, ScrollToMode } from '../List/index';
 import { ITheme, IStyle } from '../../Styling';
@@ -175,6 +176,11 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    * An override to render the details header.
    */
   onRenderDetailsHeader?: IRenderFunction<IDetailsHeaderProps>;
+
+  /**
+   * An override to render the details footer.
+   */
+  onRenderDetailsFooter?: IRenderFunction<IDetailsFooterProps>;
 
   /** Viewport, provided by the withViewport decorator. */
   viewport?: IViewport;

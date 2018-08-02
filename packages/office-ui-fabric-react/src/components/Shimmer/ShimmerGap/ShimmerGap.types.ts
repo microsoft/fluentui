@@ -27,11 +27,6 @@ export interface IShimmerGapProps extends React.AllHTMLAttributes<HTMLElement> {
   width?: number | string;
 
   /**
-   * Sets custom styling of the gap.
-   */
-  borderStyle?: IRawStyle;
-
-  /**
    * Theme provided by High-Order Component.
    */
   theme?: ITheme;
@@ -40,14 +35,41 @@ export interface IShimmerGapProps extends React.AllHTMLAttributes<HTMLElement> {
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IShimmerGapStyleProps, IShimmerGapStyles>;
-}
 
-export interface IShimmerGapStyleProps {
-  height?: number;
+  /**
+   * Use to set custom styling of the shimmerGap borders.
+   * @deprecated Use 'styles' prop to leverage mergeStyle API.
+   */
   borderStyle?: IRawStyle;
-  theme: ITheme;
 }
 
+/**
+ * Props needed to construct styles.
+ */
+export type IShimmerGapStyleProps = {
+  /**
+   * Theme values passed to the component.
+   */
+  theme: ITheme;
+
+  /**
+   * Needed to provide a height to the root of the control.
+   */
+  height?: number;
+
+  /**
+   * Styles to override borderStyles with custom ones.
+   * @deprecated in favor of mergeStyles API.
+   */
+  borderStyle?: IRawStyle;
+};
+
+/**
+ * Represents the stylable areas of the control.
+ */
 export interface IShimmerGapStyles {
+  /**
+   * Root of the ShimmerGap component.
+   */
   root?: IStyle;
 }
