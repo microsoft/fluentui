@@ -416,7 +416,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
         isBeakVisible={false}
         gapSpace={0}
         doNotLayer={false}
-        directionalHintFixed={true}
+        directionalHintFixed={false}
         directionalHint={DirectionalHint.bottomLeftEdge}
         {...calloutProps}
         className={this._classNames.callout}

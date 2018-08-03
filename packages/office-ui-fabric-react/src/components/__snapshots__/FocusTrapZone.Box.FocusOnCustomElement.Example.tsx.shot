@@ -373,9 +373,9 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
                 }
           >
             <button
+              aria-checked={false}
               aria-disabled={undefined}
-              aria-label="Focus Trap Zone"
-              aria-pressed={false}
+              aria-label={undefined}
               checked={false}
               className=
                   ms-Toggle-background
@@ -428,6 +428,7 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
               id="Toggle5"
               onChange={[Function]}
               onClick={[Function]}
+              role="switch"
               type="button"
             >
               <div
@@ -477,7 +478,6 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
                     padding-top: 0;
                     user-select: none;
                   }
-              htmlFor="Toggle5"
             >
               Off
             </label>

@@ -314,9 +314,9 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
             }
       >
         <button
+          aria-checked={false}
           aria-disabled={undefined}
-          aria-label="Delay Suggestion Results"
-          aria-pressed={false}
+          aria-label={undefined}
           className=
               ms-Toggle-background
               {
@@ -368,6 +368,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
           id="Toggle2"
           onChange={[Function]}
           onClick={[Function]}
+          role="switch"
           type="button"
         >
           <div

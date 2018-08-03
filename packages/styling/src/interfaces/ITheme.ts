@@ -1,7 +1,7 @@
 import { IPalette } from './IPalette';
 import { IFontStyles } from './IFontStyles';
 import { ISemanticColors } from './ISemanticColors';
-import { ITypography } from './ITypography';
+import { ITypography, IPartialTypography } from './ITypography';
 
 export interface ITheme {
   palette: IPalette;
@@ -26,11 +26,10 @@ export interface ITheme {
   typography: ITypography;
 }
 
-export interface IPartialTheme {
-  palette?: Partial<IPalette>;
-  fonts?: Partial<IFontStyles>;
-  semanticColors?: Partial<ISemanticColors>;
-  isInverted?: boolean;
-  disableGlobalClassNames?: boolean;
-  typography?: Partial<ITypography>;
-}
+export type IPartialTheme = {
+  [P in keyof Pick<
+    ITheme,
+    'palette' | 'fonts' | 'semanticColors' | 'isInverted' | 'disableGlobalClassNames'
+  >]?: Partial<ITheme[P]>
+} &
+  { [P in keyof Pick<ITheme, 'typography'>]?: IPartialTypography };
