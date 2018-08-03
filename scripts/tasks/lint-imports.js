@@ -35,8 +35,6 @@ module.exports = function(options) {
     return findRushJson(parentFolder);
   }
 
-  function getCurrentRushPkgName(rushJsonPath) {}
-
   function lintSource() {
     const files = _getFiles(sourcePath, /\.(ts|tsx)$/i);
     const importErrors = {
@@ -130,6 +128,8 @@ module.exports = function(options) {
     } else {
       const pkgNameMatch = importPath.match(pkgNameRegex);
       if (pkgNameMatch === null) {
+        // This means the import does not adhere to what we are looking for (usually import * from 'react';, which
+        // we would skipping linting for.
         return;
       }
 
