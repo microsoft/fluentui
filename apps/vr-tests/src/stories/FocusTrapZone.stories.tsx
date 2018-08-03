@@ -10,7 +10,7 @@ storiesOf('FocusTrapZones', module)
     <Screener
       steps={new Screener.Steps()
         .snapshot('default')
-        .click(.'ms-Panel-closeButton')
+        .click('.ms-Panel-closeButton')
         .snapshot('click on panel close button')
         .end()}
     >
