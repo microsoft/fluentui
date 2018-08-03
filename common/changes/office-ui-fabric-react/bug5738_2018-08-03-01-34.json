@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Dropdown: You can no longer use the arrow keys to change the selected items in a  disabled Dropdown. (#5738)",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "cliff.koh@microsoft.com"
+}
