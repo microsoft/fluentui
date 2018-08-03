@@ -1324,7 +1324,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    */
   private _onDismiss = (): void => {
     // close the menu
-    this._setOpenStateAndFocusOnClose(false, false);
+    this._setOpenStateAndFocusOnClose(false /* isOpen */, false /* focusInputAfterClose */);
 
     // reset the selected index
     // to the last value state
@@ -1403,7 +1403,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     currentPendingValueValidIndex: number,
     suggestedDisplayValue: string
   ): void {
-
     this.setState({
       currentPendingValue: currentPendingValue,
       currentPendingValueValidIndex: currentPendingValueValidIndex,
