@@ -451,16 +451,16 @@ describe('TextField', () => {
     expect(callCount).toEqual(1);
   });
 
-  it('should call onChanged handler for input change', () => {
+  it('should call onChange handler for input change', () => {
     let callCount = 0;
-    const onChangedSpy = (value: string) => {
+    const onChangeSpy = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, value: string) => {
       callCount++;
     };
 
     const textField = mount(
       <TextField
         defaultValue="initial value"
-        onChanged={onChangedSpy}
+        onChange={onChangeSpy}
         // tslint:disable-next-line:jsx-no-lambda
         onGetErrorMessage={value => (value.length > 0 ? '' : 'error')}
       />
@@ -478,13 +478,13 @@ describe('TextField', () => {
     expect(callCount).toEqual(2);
   });
 
-  it('should not call onChanged when initial value is undefined and input change is an empty string', () => {
+  it('should not call onChange when initial value is undefined and input change is an empty string', () => {
     let callCount = 0;
-    const onChangedSpy = (value: string) => {
+    const onChangeSpy = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, value: string) => {
       callCount++;
     };
 
-    const textField = mount(<TextField onChanged={onChangedSpy} />);
+    const textField = mount(<TextField onChange={onChangeSpy} />);
 
     expect(callCount).toEqual(0);
     const inputDOM = textField.getDOMNode().querySelector('input') as Element;
@@ -492,6 +492,28 @@ describe('TextField', () => {
     ReactTestUtils.Simulate.input(inputDOM, mockEvent(''));
     ReactTestUtils.Simulate.change(inputDOM, mockEvent(''));
     expect(callCount).toEqual(0);
+  });
+
+  it('should call onChange with a persisted event', () => {
+    let textFieldTarget: any = null;
+    const onChangeSpy = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, value: string) => {
+      textFieldTarget = ev.target;
+    };
+
+    const textFieldOne = mount(<TextField onChange={onChangeSpy} />);
+    const textFieldTwo = mount(<TextField onChange={onChangeSpy} />);
+
+    const inputDOMOne = textFieldOne.getDOMNode().querySelector('input') as Element;
+    const inputDOMTwo = textFieldTwo.getDOMNode().querySelector('input') as Element;
+
+    const valueOne = 'textfield one';
+    const valueTwo = 'textfield two';
+
+    ReactTestUtils.Simulate.input(inputDOMOne, mockEvent(valueOne));
+    expect(textFieldTarget!.value).toEqual(valueOne);
+
+    ReactTestUtils.Simulate.change(inputDOMTwo, mockEvent(valueTwo));
+    expect(textFieldTarget!.value).toEqual(valueTwo);
   });
 
   it('should select a range of text', () => {
