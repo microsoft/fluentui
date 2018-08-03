@@ -1,7 +1,5 @@
-import * as React from 'react';
-import { Calendar } from './Calendar';
 import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
-
+import { IRefObject, IBaseProps } from '../../Utilities';
 export { DayOfWeek, DateRangeType, FirstWeekOfYear };
 
 export interface ICalendar {
@@ -9,12 +7,12 @@ export interface ICalendar {
   focus: () => void;
 }
 
-export interface ICalendarProps extends React.Props<Calendar> {
+export interface ICalendarProps extends IBaseProps<ICalendar> {
   /**
    * Optional callback to access the ICalendar interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ICalendar | null) => void;
+  componentRef?: IRefObject<ICalendar>;
 
   /**
    * Optional class name to add to the root element.

@@ -75,7 +75,7 @@ function setDescription() {
   if (argv.state === 'pending') {
     statusConfig.description = 'Deployment pending.';
   } else if (argv.state === 'success') {
-    statusConfig.description = 'PR deployed. Click "Details" to view demo app.';
-    statusConfig.target_url = `https://uifabric.blob.core.windows.net/fabric/${argv.prID}/index.html`;
+    statusConfig.description = 'Click "Details" to view demo app.';
+    statusConfig.target_url = `http://fabricweb.z5.web.core.windows.net/pr/${argv.prID}/`;
   }
 }

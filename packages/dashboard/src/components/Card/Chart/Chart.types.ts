@@ -1,6 +1,9 @@
 import { IDataPoint } from '@uifabric/charting/lib/VerticalBarChart';
 
 export enum ChartType {
+  DonutChart,
+  PieChart,
+  StackedBarChart,
   VerticalBarChart,
   LineChart,
   HorizontalBarChart

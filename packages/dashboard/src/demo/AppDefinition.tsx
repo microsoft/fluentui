@@ -38,6 +38,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'Section',
           name: 'Section',
           url: '#/examples/section'
+        },
+        {
+          component: require<any>('../components/MultiCount/MultiCountPage').MultiCountPage,
+          key: 'MultiCount',
+          name: 'MultiCount',
+          url: '#/examples/multiCount'
         }
       ]
     }

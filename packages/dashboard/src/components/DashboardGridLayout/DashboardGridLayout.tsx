@@ -88,6 +88,7 @@ export class DashboardGridLayout extends React.Component<
         onLayoutChange={this._onLayoutChanged}
         onBreakpointChange={this.props.onBreakPointChange}
         {...this.props}
+        dragApiRef={this.props.dragApi}
       >
         {this._renderChildren()}
       </ResponsiveReactGridLayout>
@@ -233,14 +234,12 @@ export class DashboardGridLayout extends React.Component<
         }
       }
     }
-    layouts.sort(
-      (a: Layout, b: Layout): number => {
-        if (a.y < b.y) {
-          return 0;
-        }
-        return 1;
+    layouts.sort((a: Layout, b: Layout): number => {
+      if (a.y < b.y) {
+        return 0;
       }
-    );
+      return 1;
+    });
     return layouts;
   };
 
@@ -306,9 +305,9 @@ export class DashboardGridLayout extends React.Component<
       y: layoutProp.y,
       w: sizes[layoutProp.size].w,
       h: sizes[layoutProp.size].h,
-      static: layoutProp.static || false,
-      isDraggable: layoutProp.isDraggable || true,
-      isResizable: layoutProp.isResizable || true
+      static: layoutProp.static === undefined ? false : layoutProp.static,
+      isDraggable: layoutProp.disableDrag === undefined ? true : !layoutProp.disableDrag,
+      isResizable: layoutProp.isResizable === undefined ? true : layoutProp.isResizable
     };
   }
 

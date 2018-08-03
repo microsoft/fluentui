@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css, classNamesFunction } from '../../../Utilities';
+import { css, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { getStyles, IButtonBasicExampleStyleProps, IButtonBasicExampleStyles } from './Button.Basic.Example.styles';
 import { PrimaryButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 
@@ -8,7 +8,7 @@ export class ButtonScreenReaderExample extends React.Component<IButtonProps, {}>
     const { disabled, checked } = this.props;
 
     const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
-    const classNames = getClassNames(getStyles);
+    const classNames = getClassNames(getStyles, {});
 
     return (
       <div className={css(classNames.example)}>

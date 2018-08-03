@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { CollapseAllVisibility } from '../../GroupedList';
 import { ITooltipHostProps } from '../../Tooltip';
 import { IViewport } from '../../utilities/decorators/withViewport';
@@ -7,6 +7,7 @@ import { ISelection, SelectionMode } from '../../utilities/selection/interfaces'
 import { ITheme, IStyle } from '../../Styling';
 import { DetailsHeaderBase } from './DetailsHeader.base';
 import { IColumn, DetailsListLayoutMode, IColumnReorderOptions } from './DetailsList.types';
+import { ICellStyleProps } from './DetailsRow.types';
 
 export interface IDetailsHeader {
   /** sets focus into the header */
@@ -21,7 +22,7 @@ export interface IDetailsHeaderProps extends React.Props<DetailsHeaderBase> {
   styles?: IStyleFunctionOrObject<IDetailsHeaderStyleProps, IDetailsHeaderStyles>;
 
   /** Ref to the component itself */
-  componentRef?: (component: IDetailsHeader | null) => void;
+  componentRef?: IRefObject<IDetailsHeader>;
 
   /** Column definitions */
   columns: IColumn[];
@@ -91,6 +92,8 @@ export interface IDetailsHeaderProps extends React.Props<DetailsHeaderBase> {
 
   /** Overriding class name */
   className?: string;
+
+  cellStyleProps?: ICellStyleProps;
 }
 
 export enum SelectAllVisibility {
@@ -139,6 +142,8 @@ export type IDetailsHeaderStyleProps = Required<Pick<IDetailsHeaderProps, 'theme
 
     /** Whether checkbox is hidden  */
     isCheckboxHidden?: boolean;
+
+    cellStyleProps?: ICellStyleProps;
   };
 
 export interface IDetailsHeaderStyles {
@@ -154,6 +159,7 @@ export interface IDetailsHeaderStyles {
   cellSizerStart: IStyle;
   cellSizerEnd: IStyle;
   cellIsResizing: IStyle;
+  cellIsGroupExpander: IStyle;
   collapseButton: IStyle;
   iconOnlyHeader: IStyle;
   nearIcon: IStyle;

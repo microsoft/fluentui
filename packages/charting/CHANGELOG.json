@@ -2,6 +2,90 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.12.0",
+      "tag": "@uifabric/charting_v0.12.0",
+      "date": "Wed, 01 Aug 2018 10:25:51 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "961669024e924017f3322e1deec6a63ac1c7c3d7",
+            "comment": "Adding stacked chart with variants, updating stacked chart to use common IDataPoint"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.42.0 <7.0.0` to `>=6.43.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.11.1",
+      "tag": "@uifabric/charting_v0.11.1",
+      "date": "Mon, 30 Jul 2018 10:27:11 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Samiya <samiyaakhtar7@gmail.com>",
+            "commit": "dcd6ceefaa3a105cdcf26117e4e4dfa17d97571b",
+            "comment": "Fixing bad imports and broken theming in some charts"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.41.0 <7.0.0` to `>=6.41.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.11.0",
+      "tag": "@uifabric/charting_v0.11.0",
+      "date": "Wed, 25 Jul 2018 03:20:34 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "99545224cefac2af3edb13ce7b038ac1d14f3d38",
+            "comment": "Update typings to not use deprecated types."
+          },
+          {
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "b60d3dfb35367467568d91c2933bb7053e9b716b",
+            "comment": "Add Pie and Donut Chart to charting package"
+          },
+          {
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "b60d3dfb35367467568d91c2933bb7053e9b716b",
+            "comment": "Change  package.json file"
+          },
+          {
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "2c5084e79109ba2f43cc966c6d6ba9cd508f897e",
+            "comment": "Adding Stacked Bar chart"
+          }
+        ],
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "28242c40916d14cef3d555d18f4df69454163e87",
+            "comment": "Addressing bad imports."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "5d0930647e631482b6016e0017aae0b5167b9f13",
+            "comment": "Removing most `@customizable` decorator usage. This change should reduce extra React dom elements from being created. Also updating `componentRef` resolution to support `React.createRef()` usage."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.39.1 <7.0.0` to `>=6.39.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.4",
       "tag": "@uifabric/charting_v0.0.4",
       "date": "Tue, 03 Jul 2018 10:23:19 GMT",

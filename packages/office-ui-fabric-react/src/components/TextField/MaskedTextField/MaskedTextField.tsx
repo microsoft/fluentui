@@ -63,7 +63,7 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
   /**
    * Tell BaseComponent to bypass resolution of componentRef.
    */
-  protected _shouldUpdateComponentRef = false;
+  protected _skipComponentRefResolution = true;
 
   private _textField: ITextField;
   private _maskCharData: IMaskValue[];
@@ -124,7 +124,7 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
         onKeyDown={this._onKeyDown}
         onPaste={this._onPaste}
         value={this.state.displayValue}
-        ref={this._resolveRef('_textField')}
+        componentRef={this._resolveRef('_textField')}
       />
     );
   }

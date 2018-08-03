@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DetailsListLayoutMode, IColumn } from 'office-ui-fabric-react/lib/components/DetailsList';
-import { ShimmeredDetailsList } from 'office-ui-fabric-react/lib/components/DetailsList/ShimmeredDetailsList';
-import { lorem } from '../../../utilities/exampleData';
+import { ShimmeredDetailsList } from 'office-ui-fabric-react/lib/ShimmeredDetailsList';
+import { lorem } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import './DetailsListExample.scss';
 
 const _items: IDocument[] = [];

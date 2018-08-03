@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { Calendar, ICalendarStrings } from '../Calendar';
+import { Calendar, ICalendarStrings } from '../../Calendar';
 import { DatePicker } from './DatePicker';
 import { DatePickerBase } from './DatePicker.base';
 import { IDatePickerStrings } from './DatePicker.types';

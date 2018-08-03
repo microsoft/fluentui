@@ -2,6 +2,62 @@
   "name": "@uifabric/foundation",
   "entries": [
     {
+      "version": "0.2.2",
+      "tag": "@uifabric/foundation_v0.2.2",
+      "date": "Fri, 03 Aug 2018 10:25:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "adf6e2883a19f03298b0f2ae89a495724e47a4e4",
+            "comment": "Add tslib as dependency."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.2.1",
+      "tag": "@uifabric/foundation_v0.2.1",
+      "date": "Thu, 02 Aug 2018 10:23:19 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "5781704e7a6ba5795b6367bd3ca0c1ba7d571484",
+            "comment": "Add webpack config."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.2.0",
+      "tag": "@uifabric/foundation_v0.2.0",
+      "date": "Wed, 01 Aug 2018 10:25:51 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "a6e83781f6720a39c24f6ee58f9ad27e11d4fde2",
+            "comment": "Major improvements to typing and functionality."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.1.0",
+      "tag": "@uifabric/foundation_v0.1.0",
+      "date": "Mon, 23 Jul 2018 10:28:08 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "28242c40916d14cef3d555d18f4df69454163e87",
+            "comment": "Addressing bad imports."
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.3",
       "tag": "@uifabric/foundation_v0.0.3",
       "date": "Mon, 09 Jul 2018 18:08:32 GMT",

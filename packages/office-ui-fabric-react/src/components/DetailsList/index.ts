@@ -6,4 +6,4 @@ export * from './DetailsRow';
 export * from './DetailsRow.types';
 export * from './DetailsRowCheck';
 export * from './DetailsRowCheck.types';
-export * from './ShimmeredDetailsList';
+export * from './DetailsFooter.types';

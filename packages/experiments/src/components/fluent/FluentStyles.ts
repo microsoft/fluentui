@@ -7,6 +7,8 @@ import {
 import { FontSizes } from './FluentType';
 import { Depths } from './FluentDepths';
 
+const fluentBorderRadius = '2px';
+
 const BreadcrumbStyles = {
   itemLink: {
     fontSize: FontSizes.size18,
@@ -22,32 +24,31 @@ const BreadcrumbStyles = {
 
 const PrimaryButtonStyles = {
   root: {
-    borderRadius: '2px'
-    // boxShadow: Depths.depth4
+    borderRadius: fluentBorderRadius
   }
 };
 
 const CompoundButtonStyles = {
   root: {
-    borderRadius: '2px'
-    // boxShadow: Depths.depth4
+    borderRadius: fluentBorderRadius
   }
 };
 
 const DefaultButtonStyles = {
   root: {
-    borderRadius: '2px',
+    borderRadius: fluentBorderRadius,
     backgroundColor: '#fff',
-    border: `1px solid ${NeutralColors.gray20}`
+    border: `1px solid ${NeutralColors.gray110}`
   },
   rootHovered: {
-    backgroundColor: '#f3f2f1'
+    backgroundColor: '#f3f2f1',
+    border: `1px solid ${NeutralColors.gray110}`
   }
 };
 
 const CheckboxStyles = {
   checkbox: {
-    borderRadius: '2px'
+    borderRadius: fluentBorderRadius
   }
 };
 
@@ -65,13 +66,6 @@ const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGr
           }
         ],
         ':after': [
-          {
-            top: 4,
-            left: 4,
-            width: 12,
-            height: 12,
-            borderWidth: 6
-          },
           checked &&
             (hasIcon || hasImage) && {
               top: radioButtonSpacing + radioButtonInnerSize,
@@ -88,20 +82,14 @@ const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGr
   };
 };
 
-const CalloutContentStyles = {
-  root: {
-    // borderRadius: '2px', // waiting on child override ability before commenting this in
-    boxShadow: Depths.depth64
-  }
-};
-
 const ComboBoxStyles = {
   root: {
-    borderRadius: '2px' // the bound input box
+    borderRadius: fluentBorderRadius // the bound input box
   },
   callout: {
-    backgroundColor: 'blue',
-    borderRadius: '0 0 20px 20px' // Still requires to target calloutMain as well as it overlaps this element
+    borderRadius: `0 0 ${fluentBorderRadius} ${fluentBorderRadius}`,
+    overflow: 'hidden',
+    boxShadow: Depths.depth8
   }
 };
 
@@ -109,7 +97,8 @@ const DialogStyles = {
   main: {
     selectors: {
       '.ms-Modal.ms-Dialog &': {
-        boxShadow: Depths.depth64
+        boxShadow: Depths.depth64,
+        borderRadius: fluentBorderRadius
       }
     }
   }
@@ -118,7 +107,24 @@ const DialogStyles = {
 const DialogContentStyles = {
   title: {
     fontSize: FontSizes.size20,
-    fontWeight: FontWeights.semibold
+    fontWeight: FontWeights.semibold,
+    padding: '16px',
+    lineHeight: 'normal'
+  },
+  topButton: {
+    padding: '16px 10px 0 0'
+  },
+  inner: {
+    padding: '0 16px 16px'
+  },
+  subText: {
+    fontWeight: FontWeights.regular
+  }
+};
+
+const DialogFooterStyles = {
+  actions: {
+    margin: '16px 0 0'
   }
 };
 
@@ -127,6 +133,13 @@ const LabelStyles = {
     fontWeight: FontWeights.semibold
   }
 };
+
+const TextFieldStyles = {
+  fieldGroup: {
+    borderRadius: fluentBorderRadius
+  }
+};
+
 const ToggleStyles = {
   pill: {
     width: '40px',
@@ -153,9 +166,6 @@ export const FluentStyles = {
   DefaultButton: {
     styles: DefaultButtonStyles
   },
-  CalloutContent: {
-    styles: CalloutContentStyles
-  },
   CompoundButton: {
     styles: CompoundButtonStyles
   },
@@ -174,8 +184,14 @@ export const FluentStyles = {
   DialogContent: {
     styles: DialogContentStyles
   },
+  DialogFooter: {
+    styles: DialogFooterStyles
+  },
   Label: {
     styles: LabelStyles
+  },
+  TextField: {
+    styles: TextFieldStyles
   },
   Toggle: {
     styles: ToggleStyles

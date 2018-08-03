@@ -1,12 +1,5 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  classNamesFunction,
-  customizable,
-  divProperties,
-  getNativeProps,
-  IRenderFunction
-} from '../../Utilities';
+import { BaseComponent, classNamesFunction, divProperties, getNativeProps, IRenderFunction } from '../../Utilities';
 import { TooltipHost, TooltipOverflowMode, DirectionalHint } from '../../Tooltip';
 import { PersonaCoin } from './PersonaCoin/PersonaCoin';
 import {
@@ -24,7 +17,6 @@ const getClassNames = classNamesFunction<IPersonaStyleProps, IPersonaStyles>();
  * Persona with no default styles.
  * [Use the `styles` API to add your own styles.](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Styling)
  */
-@customizable('Persona', ['theme', 'styles'])
 export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
   public static defaultProps: IPersonaProps = {
     size: PersonaSize.size48,
@@ -66,6 +58,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       onRenderCoin,
       onRenderInitials,
       presence,
+      showInitialsUntilImageLoads,
       showSecondaryText,
       theme
     } = this.props;
@@ -85,6 +78,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       onRenderCoin,
       onRenderInitials,
       presence,
+      showInitialsUntilImageLoads,
       size,
       text: this._getText()
     };

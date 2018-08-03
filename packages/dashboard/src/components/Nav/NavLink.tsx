@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Icon } from 'office-ui-fabric-react/lib/components/Icon';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { INavLinkProps } from './Nav.types';
 import { IStyle, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
