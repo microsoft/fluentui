@@ -68,6 +68,9 @@ export interface IGroupedListProps extends React.Props<GroupedListBase> {
   /** Optional properties to pass through to the list components being rendered. */
   listProps?: IListProps;
 
+  /** Aria label for the expand/collapse button. */
+  expandCollapseButtonAriaLabel?: string;
+
   /** Rendering callback to render the group items. */
   onRenderCell: (nestingDepth?: number, item?: any, index?: number) => React.ReactNode;
 
@@ -286,8 +289,8 @@ export interface IGroupDividerProps {
   /** Override which allows the caller to provider a custom title. */
   onRenderTitle?: IRenderFunction<IGroupDividerProps>;
 
-  /** Props for expand/collapse button */
-  expandButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
+  /** Aria label for the expand/collapse button */
+  expandCollapseButtonAriaLabel?: string;
 }
 
 export type IGroupedListStyleProps = Required<Pick<IGroupedListProps, 'theme'>> &
