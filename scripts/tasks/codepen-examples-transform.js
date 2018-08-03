@@ -42,9 +42,14 @@ function transform(file, api) {
 
   //remove css imports
   source = source
-    .find(j.ImportDeclaration, node => {
-      node.source.value.endsWith('.css') || node.source.value.endsWith('.scss');
-    })
+    .find(j.ImportDeclaration, node => node.source.value.endsWith('.scss'))
+    .remove()
+    .toSource();
+  source = j(recast.parse(source, { parser: { parse } }));
+
+  //remove scss imports
+  source = source
+    .find(j.ImportDeclaration, node => node.source.value.endsWith('.css'))
     .remove()
     .toSource();
   source = j(recast.parse(source, { parser: { parse } }));
@@ -97,7 +102,7 @@ function transform(file, api) {
   }
 
   // for examples which export react components as a class
-  else if (classExportDeclarations.size() > 0) {
+  if (classExportDeclarations.size() > 0) {
     // extract name
     classExportDeclarations.forEach(p => {
       exampleName = p.node.declaration.id.name;
