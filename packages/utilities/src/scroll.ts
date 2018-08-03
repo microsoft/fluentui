@@ -27,6 +27,11 @@ export function disableBodyScroll(): void {
 
   if (doc && doc.body && !_bodyScrollDisabledCount) {
     doc.body.classList.add(DisabledScrollClassName);
+
+    // disable body scroll on ios
+    doc.ontouchmove = (event: Event) => {
+      event.preventDefault();
+    };
   }
 
   _bodyScrollDisabledCount++;
