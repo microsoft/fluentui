@@ -142,7 +142,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   private _processingTouch: boolean;
   private _lastTouchTimeoutId: number | undefined;
   private _processingExpandCollapseKeyOnly: boolean;
-  private _focusInputAfterBlur: boolean;
 
   // Determines if we should be setting
   // focus back to the input when the menu closes.
@@ -185,7 +184,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       currentPendingValue: '',
       currentPendingValueValidIndexOnHover: HoverStatus.default
     };
-    this._focusInputAfterBlur = true;
   }
 
   public componentDidMount(): void {
@@ -231,15 +229,15 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       this._async.setTimeout(() => this._scrollIntoView(), 0);
     }
 
-    // If we are open or we are just closed, shouldFocusAfterClose is set,
-    // are focused but we are not the activeElement set focus on the input
+    // if an action is taken that put focus in the ComboBox
+    // and If we are open or we are just closed, shouldFocusAfterClose is set,
+    // but we are not the activeElement set focus on the input
     if (
-      this._focusInputAfterBlur &&
+      focused &&
       (isOpen ||
         (prevState.isOpen &&
           !isOpen &&
           this._focusInputAfterClose &&
-          focused &&
           this._autofill.current &&
           document.activeElement !== this._autofill.current.inputElement))
     ) {
@@ -253,20 +251,18 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     //     are not allowing freeform OR
     //     the value changed
     // we need to set selection
-
-    // TODO update comment
     if (
-      this._focusInputAfterBlur && (
-        ((prevState.isOpen && !isOpen) ||
-          (focused &&
-            ((!isOpen &&
-              !this.props.multiSelect &&
-              prevState.selectedIndices &&
-              selectedIndices &&
-              prevState.selectedIndices[0] !== selectedIndices[0]) ||
-              !allowFreeform ||
-              text !== prevProps.text ||
-              value !== prevProps.value))))
+      this._focusInputAfterClose &&
+      ((prevState.isOpen && !isOpen) ||
+        (focused &&
+          ((!isOpen &&
+            !this.props.multiSelect &&
+            prevState.selectedIndices &&
+            selectedIndices &&
+            prevState.selectedIndices[0] !== selectedIndices[0]) ||
+            !allowFreeform ||
+            text !== prevProps.text ||
+            value !== prevProps.value)))
     ) {
       this._select();
     }
@@ -888,7 +884,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     if (!this.state.focused) {
       this.setState({ focused: true });
-      this._focusInputAfterBlur = true;
     }
   };
 
@@ -943,7 +938,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     if (this.state.focused) {
       this.setState({ focused: false });
-      this._focusInputAfterBlur = false;
       if (!this.props.multiSelect) {
         this._submitPendingValue(event);
       }
@@ -1329,7 +1323,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * Handles dismissing (cancelling) the menu
    */
   private _onDismiss = (): void => {
-    // close the menu and focus the input
+    // close the menu
     this._setOpenStateAndFocusOnClose(false, false);
 
     // reset the selected index
@@ -1809,7 +1803,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     if (!disabled) {
       this._setOpenStateAndFocusOnClose(!isOpen, false /* focusInputAfterClose */);
-      this._focusInputAfterBlur = true;
+      this.setState({ focused: true })
     }
   };
 
