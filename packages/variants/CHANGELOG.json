@@ -2,6 +2,25 @@
   "name": "@uifabric/variants",
   "entries": [
     {
+      "version": "6.2.0",
+      "tag": "@uifabric/variants_v6.2.0",
+      "date": "Fri, 03 Aug 2018 10:25:59 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "7264474f10852c0e4d6f6431c52b019659546abc",
+            "comment": "add bodyStandoutBackground default values to variants"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.44.0 <7.0.0` to `>=6.45.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.1.0",
       "tag": "@uifabric/variants_v6.1.0",
       "date": "Thu, 02 Aug 2018 10:23:19 GMT",

@@ -1,6 +1,18 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Thu, 02 Aug 2018 10:23:19 GMT and should not be manually modified.
+This log was last generated on Fri, 03 Aug 2018 10:25:59 GMT and should not be manually modified.
+
+## 0.10.0
+Fri, 03 Aug 2018 10:25:59 GMT
+
+### Minor changes
+
+- Adding custom font size and color props to Multicount. Changes to the precision logic
+
+### Patches
+
+- Integrate Auto-FontSize to Recommendation Card header text
+- Updated package.json to use react and react-dom in peer dependencies
 
 ## 0.9.0
 Thu, 02 Aug 2018 10:23:19 GMT

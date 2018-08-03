@@ -1,6 +1,13 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Thu, 02 Aug 2018 10:23:19 GMT and should not be manually modified.
+This log was last generated on Fri, 03 Aug 2018 10:25:59 GMT and should not be manually modified.
+
+## 0.2.2
+Fri, 03 Aug 2018 10:25:59 GMT
+
+### Patches
+
+- Add tslib as dependency.
 
 ## 0.2.1
 Thu, 02 Aug 2018 10:23:19 GMT
