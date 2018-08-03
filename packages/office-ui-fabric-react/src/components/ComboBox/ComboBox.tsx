@@ -1802,7 +1802,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     if (!disabled) {
       this._setOpenStateAndFocusOnClose(!isOpen, false /* focusInputAfterClose */);
-      this.setState({ focused: true })
+      this.setState({ focused: true });
     }
   };
 
