@@ -317,6 +317,36 @@ export interface IPanelStyleProps {
    * Is animation currently running
    */
   isAnimating?: boolean;
+
+  /**
+   * Is panel on right side
+   */
+  isOnRightSide?: boolean;
+
+  /**
+   * Is panel hidden on dismiss
+   */
+  isHiddenOnDismiss?: boolean;
+
+  /**
+   * Classname for FocusTrapZone element
+   */
+  focusTrapZoneClassName?: string;
+
+  /**
+   * Determines if content should stretch to fill available space putting footer at the bottom of the page
+   */
+  isFooterAtBottom?: boolean;
+
+  /**
+   * Based on state value setting footer to sticky or not
+   */
+  isFooterSticky?: boolean;
+
+  /**
+   * Panel has close button
+   */
+  hasCloseButton?: boolean;
 }
 
 export interface IPanelStyles {

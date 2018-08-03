@@ -41,67 +41,67 @@ export const PanelPageProps: IDocPageProps = {
       title: 'Panel - Small Panel, Anchored Right, Fixed Width',
       code: PanelSmallRightExampleCode,
       view: <PanelSmallRightExample />
-    },
-    {
-      title: 'Panel - Small Panel, Anchored Left, Fixed Width',
-      code: PanelSmallLeftExampleCode,
-      view: <PanelSmallLeftExample />
-    },
-    {
-      title: 'Panel - Small Panel, Full Screen, Fluid Width',
-      code: PanelSmallFluidExampleCode,
-      view: <PanelSmallFluidExample />
-    },
-    {
-      title: 'Panel - Medium',
-      code: PanelMediumExampleCode,
-      view: <PanelMediumExample />
-    },
-    {
-      title: 'Panel - Large',
-      code: PanelLargeExampleCode,
-      view: <PanelLargeExample />
-    },
-    {
-      title: 'Panel - LargeFixed',
-      code: PanelLargeFixedExampleCode,
-      view: <PanelLargeFixedExample />
-    },
-    {
-      title: 'Panel - Extra Large',
-      code: PanelExtraLargeExampleCode,
-      view: <PanelExtraLargeExample />
-    },
-    {
-      title: 'Panel - Custom',
-      code: PanelCustomExampleCode,
-      view: <PanelCustomExample />
-    },
-    {
-      title: 'Panel - Hidden on Dismiss',
-      code: PanelHiddenOnDismissExampleCode,
-      view: <PanelHiddenOnDismissExample />
-    },
-    {
-      title: 'Panel - Light Dismiss',
-      code: PanelLightDismissExampleCode,
-      view: <PanelLightDismissExample />
-    },
-    {
-      title: 'Panel - Custom Light Dismiss',
-      code: PanelLightDismissCustomExampleCode,
-      view: <PanelLightDismissCustomExample />
-    },
-    {
-      title: 'Panel - Non-Modal',
-      code: PanelNonModalExampleCode,
-      view: <PanelNonModalExample />
-    },
-    {
-      title: 'Panel - Footer',
-      code: PanelFooterExampleCode,
-      view: <PanelFooterExample />
     }
+    // {
+    //   title: 'Panel - Small Panel, Anchored Left, Fixed Width',
+    //   code: PanelSmallLeftExampleCode,
+    //   view: <PanelSmallLeftExample />
+    // },
+    // {
+    //   title: 'Panel - Small Panel, Full Screen, Fluid Width',
+    //   code: PanelSmallFluidExampleCode,
+    //   view: <PanelSmallFluidExample />
+    // },
+    // {
+    //   title: 'Panel - Medium',
+    //   code: PanelMediumExampleCode,
+    //   view: <PanelMediumExample />
+    // },
+    // {
+    //   title: 'Panel - Large',
+    //   code: PanelLargeExampleCode,
+    //   view: <PanelLargeExample />
+    // },
+    // {
+    //   title: 'Panel - LargeFixed',
+    //   code: PanelLargeFixedExampleCode,
+    //   view: <PanelLargeFixedExample />
+    // },
+    // {
+    //   title: 'Panel - Extra Large',
+    //   code: PanelExtraLargeExampleCode,
+    //   view: <PanelExtraLargeExample />
+    // },
+    // {
+    //   title: 'Panel - Custom',
+    //   code: PanelCustomExampleCode,
+    //   view: <PanelCustomExample />
+    // },
+    // {
+    //   title: 'Panel - Hidden on Dismiss',
+    //   code: PanelHiddenOnDismissExampleCode,
+    //   view: <PanelHiddenOnDismissExample />
+    // },
+    // {
+    //   title: 'Panel - Light Dismiss',
+    //   code: PanelLightDismissExampleCode,
+    //   view: <PanelLightDismissExample />
+    // },
+    // {
+    //   title: 'Panel - Custom Light Dismiss',
+    //   code: PanelLightDismissCustomExampleCode,
+    //   view: <PanelLightDismissCustomExample />
+    // },
+    // {
+    //   title: 'Panel - Non-Modal',
+    //   code: PanelNonModalExampleCode,
+    //   view: <PanelNonModalExample />
+    // },
+    // {
+    //   title: 'Panel - Footer',
+    //   code: PanelFooterExampleCode,
+    //   view: <PanelFooterExample />
+    // }
   ],
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/Panel.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/docs/PanelOverview.md'),

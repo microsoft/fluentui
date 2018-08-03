@@ -25,53 +25,53 @@ $Panel-margin-lg: 428px;
 $Panel-margin-xl: 176px;
 $CommandBarHeight: 44px;
 
-.hiddenPanel {
-  visibility: hidden;
-}
+// .hiddenPanel {
+//   visibility: hidden;
+// }
 
-.root {
-  pointer-events: none;
+// .root {
+//   pointer-events: none;
 
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
 
 
-  // Overlay used within panel
-  .overlay {
-    pointer-events: none;
-    opacity: 1;
-    cursor: pointer;
-    transition: opacity $ms-animation-duration-3 $ms-animation-ease-1;
-  }
-}
+//   // Overlay used within panel
+//   .overlay {
+//     pointer-events: none;
+//     opacity: 1;
+//     cursor: pointer;
+//     transition: opacity $ms-animation-duration-3 $ms-animation-ease-1;
+//   }
+// }
 
 // The panel itself, where the content goes.
-.main {
-  background-color: $ms-color-white;
+// .main {
+  // background-color: $ms-color-white;
 
-  position: absolute;
-  @include ms-right(0);
-  width: 100%;
-  bottom: 0;
-  top: 0;
+  // position: absolute;
+  // @include ms-right(0);
+  // width: 100%;
+  // bottom: 0;
+  // top: 0;
 
-  overflow-x: hidden;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
+  // overflow-x: hidden;
+  // overflow-y: auto;
+  // -webkit-overflow-scrolling: touch;
 
   // Medium screens and up - (anchored right, fixed width)
-  @media (min-width: $ms-screen-min-md) {
-    border-left: 1px solid $ms-color-neutralLight;
-    border-right: 1px solid $ms-color-neutralLight;
-    pointer-events: auto;
-    width: $Panel-width-sm;
-    @include ms-drop-shadow(-30px, 0px, 30px, -30px, .2);
-    @include ms-left(auto);
-  }
-}
+  // @media (min-width: $ms-screen-min-md) {
+  //   border-left: 1px solid $ms-color-neutralLight;
+  //   border-right: 1px solid $ms-color-neutralLight;
+  //   pointer-events: auto;
+  //   width: $Panel-width-sm;
+  //   @include ms-drop-shadow(-30px, 0px, 30px, -30px, .2);
+  //   @include ms-left(auto);
+  // }
+// }
 
 //== Modifier: Small panel (anchored right, fixed width)
 //
@@ -188,87 +188,87 @@ $CommandBarHeight: 44px;
   }
 }
 
-.navigation {
-  padding: 0 5px;
-  height: $CommandBarHeight;
-  display: flex;
-  justify-content: flex-end;
-}
+// .navigation {
+//   padding: 0 5px;
+//   height: $CommandBarHeight;
+//   display: flex;
+//   justify-content: flex-end;
+// }
 
 // Scrollable content area
-.contentInner {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  overflow-y: hidden;
-  display: flex;
-  flex-direction: column;
-  .rootHasCloseButton & {
-    top: $CommandBarHeight;
-  }
+// .contentInner {
+//   position: absolute;
+//   top: 0;
+//   bottom: 0;
+//   left: 0;
+//   right: 0;
+//   overflow-y: hidden;
+//   display: flex;
+//   flex-direction: column;
+//   .rootHasCloseButton & {
+//     top: $CommandBarHeight;
+//   }
 
-  -webkit-overflow-scrolling: touch;
+//   -webkit-overflow-scrolling: touch;
 
-  /* Force hw accelleration on scrollable region */
-  transform: translateZ(0);
-}
+//   /* Force hw accelleration on scrollable region */
+//   transform: translateZ(0);
+// }
 
-.header, .content, .footerInner {
-  padding-left: 16px;
-  padding-right: 16px;
+// .header, .content, .footerInner {
+//   padding-left: 16px;
+//   padding-right: 16px;
 
-  @media (min-width: $uhf-screen-min-mobile) {
-    padding-left: 32px;
-    padding-right: 32px;
-  }
+//   @media (min-width: $uhf-screen-min-mobile) {
+//     padding-left: 32px;
+//     padding-right: 32px;
+//   }
 
-  @media (min-width: $ms-screen-min-xxl) {
-    padding-left: 40px;
-    padding-right: 40px;
-  }
-}
+//   @media (min-width: $ms-screen-min-xxl) {
+//     padding-left: 40px;
+//     padding-right: 40px;
+//   }
+// }
 
-.header {
-  margin: 14px 0;
-  // Ensure that title doesn't shrink if screen is too small
-  flex-grow: 0;
-  @media (min-width: $ms-screen-min-xl) {
-    margin-top: 30px;
-  }
-}
+// .header {
+//   margin: 14px 0;
+//   // Ensure that title doesn't shrink if screen is too small
+//   flex-grow: 0;
+//   @media (min-width: $ms-screen-min-xl) {
+//     margin-top: 30px;
+//   }
+// }
 
-.content {
-  margin-bottom: 0;
-  padding-bottom: 20px;
-  overflow-y: auto;
-}
+// .content {
+//   margin-bottom: 0;
+//   padding-bottom: 20px;
+//   overflow-y: auto;
+// }
 
-.contentGrow {
-  flex-grow: 1;
-}
+// .contentGrow {
+//   flex-grow: 1;
+// }
 
-.footer {
-  // Ensure that footer doesn't shrink if screen is too small
-  flex-grow: 0;
-  border-top: 1px solid transparent;
-  transition: border $ms-animation-duration-3 $ms-animation-ease-2;
-}
+// .footer {
+//   // Ensure that footer doesn't shrink if screen is too small
+//   flex-grow: 0;
+//   border-top: 1px solid transparent;
+//   transition: border $ms-animation-duration-3 $ms-animation-ease-2;
+// }
 
-.footerInner {
-  padding-bottom: 20px;
-  padding-top: 20px;
-}
-.footerIsSticky {
-  background: $ms-color-white;
-  border-top-color: $ms-color-neutralLight;
-}
+// .footerInner {
+//   padding-bottom: 20px;
+//   padding-top: 20px;
+// }
+// .footerIsSticky {
+//   background: $ms-color-white;
+//   border-top-color: $ms-color-neutralLight;
+// }
 
 // Header text at the top of the panel.
-.headerText {
-  @include ms-font-xl;
-  color: $ms-color-neutralPrimary;
-  line-height: 32px;
-  margin: 0;
-}
+// .headerText {
+//   @include ms-font-xl;
+//   color: $ms-color-neutralPrimary;
+//   line-height: 32px;
+//   margin: 0;
+// }

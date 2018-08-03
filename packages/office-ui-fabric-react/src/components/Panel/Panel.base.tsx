@@ -106,6 +106,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       headerText,
       ignoreExternalFocusing,
       isBlocking,
+      isFooterAtBottom,
       isLightDismiss,
       isHiddenOnDismiss,
       layerProps,
@@ -117,7 +118,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       onRenderBody = this._onRenderBody,
       onRenderFooter = this._onRenderFooter
     } = this.props;
-    const { isOpen, isAnimating, id } = this.state;
+    const { isFooterSticky, isOpen, isAnimating, id } = this.state;
     const isLeft = type === PanelType.smallFixedNear ? true : false;
     const isRTL = getRTL();
     const isOnRightSide = isRTL ? isLeft : !isLeft;
@@ -132,8 +133,14 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     this._classNames = getClassNames(styles!, {
       theme: theme!,
       className,
-      isAnimating,
-      isOpen
+      focusTrapZoneClassName: focusTrapZoneProps ? focusTrapZoneProps.className : undefined,
+      hasCloseButton,
+      isAnimating: this.state.isAnimating,
+      isFooterAtBottom,
+      isFooterSticky,
+      isOnRightSide,
+      isOpen: this.state.isOpen,
+      isHiddenOnDismiss
     });
 
     const { _classNames } = this;
@@ -162,7 +169,8 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
           role="dialog"
           ariaLabelledBy={header ? headerTextId : undefined}
           onDismiss={this.dismiss}
-          className={css(!isOpen && !isAnimating && isHiddenOnDismiss && styles.hiddenPanel)}
+          // className={css(!isOpen && !isAnimating && isHiddenOnDismiss && styles.hiddenPanel)}
+          className={_classNames.hiddenPanel}
         >
           <div
             {...nativeProps}
@@ -181,8 +189,8 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
               type === PanelType.largeFixed && 'ms-Panel--fixed ' + styles.rootIsFixed,
               type === PanelType.extraLarge && 'ms-Panel--xl ' + styles.rootIsXLarge,
               type === PanelType.custom && 'ms-Panel--custom ' + styles.rootIsCustom,
-              hasCloseButton && 'ms-Panel--hasCloseButton ' + styles.rootHasCloseButton,
-              !isOpen && !isAnimating && isHiddenOnDismiss && styles.hiddenPanel
+              hasCloseButton && 'ms-Panel--hasCloseButton ' + styles.rootHasCloseButton
+              // !isOpen && !isAnimating && isHiddenOnDismiss && styles.hiddenPanel
             )}
           >
             {overlay}
@@ -191,15 +199,16 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
               forceFocusInsideTrap={forceFocusInsideTrap}
               firstFocusableSelector={firstFocusableSelector}
               {...focusTrapZoneProps}
-              className={css(
-                'ms-Panel-main',
-                styles.main,
-                isOpen && isAnimating && !isOnRightSide && AnimationClassNames.slideRightIn40,
-                isOpen && isAnimating && isOnRightSide && AnimationClassNames.slideLeftIn40,
-                !isOpen && isAnimating && !isOnRightSide && AnimationClassNames.slideLeftOut40,
-                !isOpen && isAnimating && isOnRightSide && AnimationClassNames.slideRightOut40,
-                focusTrapZoneProps ? focusTrapZoneProps.className : undefined
-              )}
+              // className={css(
+              //   'ms-Panel-main',
+              //   styles.main,
+              //   isOpen && isAnimating && !isOnRightSide && AnimationClassNames.slideRightIn40,
+              //   isOpen && isAnimating && isOnRightSide && AnimationClassNames.slideLeftIn40,
+              //   !isOpen && isAnimating && !isOnRightSide && AnimationClassNames.slideLeftOut40,
+              //   !isOpen && isAnimating && isOnRightSide && AnimationClassNames.slideRightOut40,
+              //   focusTrapZoneProps ? focusTrapZoneProps.className : undefined
+              // )}
+              className={_classNames.main}
               style={customWidthStyles}
               elementToFocusOnDismiss={elementToFocusOnDismiss}
               isClickableOutsideFocusTrap={
