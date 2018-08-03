@@ -4,7 +4,10 @@ import { IPositionedData } from '../../../utilities/positioning';
 
 export interface IPositioningContainer {}
 
-export interface IPositioningContainerTypes extends IBaseProps<IPositioningContainer> {
+/** @deprecated Use `IPositioningContainerProps` */
+export type IPositioningContainerTypes = IPositioningContainerProps;
+
+export interface IPositioningContainerProps extends IBaseProps<IPositioningContainer> {
   /**
    * All props for your component are to be defined here.
    */

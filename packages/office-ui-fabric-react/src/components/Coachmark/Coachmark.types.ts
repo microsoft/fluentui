@@ -1,10 +1,10 @@
 import { ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.styles';
-import { IPositioningContainerTypes } from './PositioningContainer/PositioningContainer.types';
+import { IPositioningContainerProps } from './PositioningContainer/PositioningContainer.types';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { Coachmark } from './Coachmark';
 import { ITeachingBubble } from '../../TeachingBubble';
 
-export interface ICoachmark {}
+export interface ICoachmark { }
 
 /** @deprecated */
 export type ICoachmarkTypes = ICoachmarkProps;
@@ -27,11 +27,11 @@ export interface ICoachmarkProps extends React.Props<Coachmark> {
   target: HTMLElement | string | null;
 
   /**
-   * Props to pass to the PositioningContainer component.  Specific the `directionalHint` to indicate which edge the
-   * Coachmark/TeachingBubble should live.
+   * Props to pass to the PositioningContainer component. Specify the `directionalHint` to indicate
+   * on which edge the Coachmark/TeachingBubble should be positioned.
    * @default directionalHint: DirectionalHint.bottomAutoEdge
    */
-  positioningContainerProps?: IPositioningContainerTypes;
+  positioningContainerProps?: IPositioningContainerProps;
 
   /**
    * Whether or not to force the Coachmark/TeachingBubble content to fit within the window bounds.

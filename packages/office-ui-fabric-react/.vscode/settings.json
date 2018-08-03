@@ -23,6 +23,7 @@
     "**/node_modules": true,
     "**/lib": true,
     "**/lib-amd": true,
+    "**/lib-es2015": true,
     "**/dist": true,
     "**/*.scss.ts": true
   },
