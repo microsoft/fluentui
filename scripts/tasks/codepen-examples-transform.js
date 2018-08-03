@@ -23,6 +23,7 @@ function parseRaw(code) {
 }
 
 function transform(file, api) {
+  console.log('in transform');
   const parse = source =>
     babylon.parse(source, {
       sourceType: 'module',
@@ -30,7 +31,6 @@ function transform(file, api) {
     });
 
   const j = api.jscodeshift;
-
   let source = j(recast.parse(file.source, { parser: { parse } }));
 
   //remove react import
@@ -42,7 +42,9 @@ function transform(file, api) {
 
   //remove css imports
   source = source
-    .find(j.ImportDeclaration, node => node.source.value.endsWith('css'))
+    .find(j.ImportDeclaration, node => {
+      node.source.value.endsWith('.css') || node.source.value.endsWith('.scss');
+    })
     .remove()
     .toSource();
   source = j(recast.parse(source, { parser: { parse } }));
