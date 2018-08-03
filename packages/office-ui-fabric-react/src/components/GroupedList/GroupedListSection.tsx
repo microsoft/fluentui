@@ -205,6 +205,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
         ref={this._root}
         className={css(groupedListClassNames && groupedListClassNames.group, this._getDroppingClassName())}
         role="presentation"
+        aria-expanded={group ? !group.isCollapsed : undefined}
       >
         {onRenderGroupHeader(groupHeaderProps, this._onRenderGroupHeader)}
         {group && group.isCollapsed ? null : hasNestedGroups ? (
