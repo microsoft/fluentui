@@ -8,6 +8,7 @@ import {
 import { CollapsibleSectionTitle } from './CollapsibleSectionTitle';
 import { IViewComponentProps } from '../../Foundation';
 import { IStyleFunction } from '../../Utilities';
+import { getRTL, KeyCodes } from '../../Utilities';
 
 /**
  * @deprecated
@@ -23,16 +24,71 @@ export const CollapsibleSectionView = (
 ) => {
   const { collapsed, titleAs: TitleType = CollapsibleSectionTitle, titleProps, children } = props;
 
-  // TODO: make sure onToggleCollapse gets called both from state and from titleProps.
+  const onRootKeyDown = (ev: React.KeyboardEvent<Element>) => {
+    const rootKey = getRTL() ? KeyCodes.right : KeyCodes.left;
+    switch (ev.which) {
+      case rootKey:
+        if (props.titleElementRef && props.titleElementRef.value && ev.target !== props.titleElementRef.value) {
+          props.titleElementRef.value.focus();
+          ev.preventDefault();
+          ev.stopPropagation();
+        }
+        break;
+
+      default:
+        break;
+    }
+  };
+
+  const onToggleCollapse = () => {
+    if (props.titleProps && props.titleProps.onToggleCollapse) {
+      props.titleProps.onToggleCollapse();
+    }
+    if (props.onToggleCollapse) {
+      props.onToggleCollapse();
+    }
+  };
+
+  const onKeyDown = (ev: React.KeyboardEvent<Element>) => {
+    const collapseKey = getRTL() ? KeyCodes.right : KeyCodes.left;
+    const expandKey = getRTL() ? KeyCodes.left : KeyCodes.right;
+
+    switch (ev.which) {
+      case collapseKey:
+        if (!collapsed) {
+          if (onToggleCollapse) {
+            onToggleCollapse();
+          }
+          break;
+        }
+        return;
+
+      case expandKey:
+        if (collapsed) {
+          if (onToggleCollapse) {
+            onToggleCollapse();
+          }
+          break;
+        }
+        return;
+
+      default:
+        return;
+    }
+
+    ev.preventDefault();
+    ev.stopPropagation();
+  };
+
   return (
-    <div className={props.classNames.root} onKeyDown={props.onRootKeyDown}>
+    <div className={props.classNames.root} onKeyDown={onRootKeyDown}>
       <TitleType
         {...titleProps}
         collapsed={props.collapsed}
         focusElementRef={props.titleElementRef}
         defaultCollapsed={true}
-        onToggleCollapse={props.onToggleCollapse}
-        onKeyDown={props.onKeyDown}
+        onToggleCollapse={onToggleCollapse}
+        onKeyDown={onKeyDown}
       />
       <div className={props.classNames.body}>{!collapsed && children}</div>
     </div>

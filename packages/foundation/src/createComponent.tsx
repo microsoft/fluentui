@@ -125,7 +125,9 @@ export interface IStylingProviders<TStyleSet, TProcessedStyleSet, TTheme> {
 // TODO: Combine these functions into one once conditional types (TS 2.8) can be used. This will allow us to define
 //        TComponentProps as being the same as TViewProps when StateComponent is not provided.
 // TODO: use theming prop when provided and reconcile with global theme
-export function createComponentWithState<
+// TODO: should userProps have higher priority over processedProps? or vice versa? tradeoff between styles priority and controlled values
+//        if user props take priority, this could cause some subtle issues like overriding callbacks that state component uses.
+export function createComponent<
   TComponentProps extends IStyleableComponent<TViewProps, TStyleSet, TTheme>,
   TViewProps,
   TStyleSet,
@@ -155,8 +157,8 @@ export function createComponentWithState<
       const themedProps: TProcessedProps = Object.assign({}, { theme }, userProps, processedProps);
       const viewProps: IViewComponentProps<TProcessedProps, TProcessedStyleSet> = Object.assign(
         {},
-        userProps,
         processedProps,
+        userProps,
         {
           classNames: providers.mergeStyleSets(
             evaluateStyle(themedProps, options.styles),
@@ -180,12 +182,12 @@ export function createComponentWithState<
 }
 
 /**
- * This is essentially the same as createComponentWithState. The primary differences are that TComponentProps and TViewProps
+ * This is essentially the same as createComponent. The primary differences are that TComponentProps and TViewProps
  * are equivalent and there is no state component argument.
  *
- * @see {@link createComponentWithState} for more information.
+ * @see {@link createComponent} for more information.
  */
-export function createComponent<
+export function createStatelessComponent<
   TComponentProps extends IStyleableComponent<TComponentProps, TStyleSet, TTheme>,
   TStyleSet,
   TProcessedStyleSet,
