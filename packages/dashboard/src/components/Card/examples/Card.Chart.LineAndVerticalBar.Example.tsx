@@ -57,7 +57,7 @@ export class LineAndVerticalBarChartExample extends React.Component<{}, {}> {
         }
       },
       {
-        priority: Priority.Priority1,
+        priority: Priority.Priority2,
         cardContentType: CardContentType.Chart,
         content: {
           chartLabel: 'Line chart example',
