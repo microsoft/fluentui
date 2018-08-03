@@ -116,7 +116,8 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
           ':focus': {
             opacity: 1
           }
-        }
+        },
+        width: '40px'
       }
     ],
     expand: [
@@ -148,6 +149,7 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
     title: [
       classNames.title,
       {
+        paddingLeft: '12px',
         fontSize: FontSizes.xLarge,
         fontWeight: FontWeights.light,
         cursor: 'pointer',

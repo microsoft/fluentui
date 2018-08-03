@@ -10,6 +10,7 @@ import {
   keyframes
 } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
+import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 
 const GlobalClassNames = {
   tooltipHost: 'ms-TooltipHost',
@@ -31,13 +32,21 @@ const GlobalClassNames = {
 };
 
 const values = {
-  rowHeight: 32,
-  cellPadding: 8,
-  isPaddedMargin: 24
+  rowHeight: 32
 };
 
 export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles => {
-  const { theme, className, isSelectAllHidden, isAllSelected, isResizingColumn, isSizing, isAllCollapsed } = props;
+  const {
+    theme,
+    className,
+    isSelectAllHidden,
+    isAllSelected,
+    isResizingColumn,
+    isSizing,
+    isAllCollapsed,
+    cellStyleProps = DEFAULT_CELL_STYLE_PROPS
+  } = props;
+
   const { semanticColors, palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -84,7 +93,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
       position: 'relative',
       display: 'inline-block;',
       boxSizing: 'border-box',
-      padding: `0 ${values.cellPadding}px`,
+      padding: `0 ${cellStyleProps.cellRightPadding}px 0 ${cellStyleProps.cellLeftPadding}px`,
       border: 'none',
       lineHeight: 'inherit',
       margin: '0',
@@ -149,7 +158,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
 
     cellWrapperPadded: [
       {
-        paddingRight: values.isPaddedMargin + values.cellPadding
+        paddingRight: cellStyleProps.cellExtraRightPadding + cellStyleProps.cellRightPadding
       }
     ],
 
@@ -165,6 +174,15 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
       },
       isAllSelected && {
         opacity: 1
+      }
+    ],
+
+    cellIsGroupExpander: [
+      cellStyles,
+      {
+        paddingLeft: '8px',
+        paddingRight: '8px',
+        width: '36px'
       }
     ],
 
@@ -318,7 +336,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         alignItems: 'stretch',
         boxSizing: 'border-box',
         overflow: 'hidden',
-        padding: '0 8px 0 12px'
+        padding: `0 ${cellStyleProps.cellRightPadding}px 0 ${cellStyleProps.cellLeftPadding}px`
       }
     ],
 

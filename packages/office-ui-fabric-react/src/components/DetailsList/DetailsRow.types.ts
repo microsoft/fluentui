@@ -158,6 +158,8 @@ export interface IDetailsRowProps extends IBaseProps<IDetailsRow> {
    * @default false
    */
   useReducedRowRenderer?: boolean;
+
+  cellStyleProps?: ICellStyleProps;
 }
 
 export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & {
@@ -187,7 +189,15 @@ export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & 
 
   /** Is list in compact mode */
   compact?: boolean;
+
+  cellStyleProps?: ICellStyleProps;
 };
+
+export interface ICellStyleProps {
+  cellLeftPadding: number;
+  cellRightPadding: number;
+  cellExtraRightPadding: number;
+}
 
 export interface IDetailsRowStyles {
   root: IStyle;
