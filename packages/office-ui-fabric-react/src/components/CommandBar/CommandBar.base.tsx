@@ -172,7 +172,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
 
     if (item.iconOnly && itemText !== undefined) {
       return (
-        <TooltipHost content={itemText}>
+        <TooltipHost content={itemText} {...item.tooltipHostProps}>
           <CommandButtonType {...commandButtonProps as IButtonProps} />
         </TooltipHost>
       );

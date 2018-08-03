@@ -1,9 +1,16 @@
 import * as React from 'react';
-import { ICardProps, CardSize, Priority, CardContentType } from '../Card.types';
-import { Card } from '../Card';
-import { GridColumnContentType, IGridRow, IGridColumn } from '../GridList/GridList.types';
-import { IAction } from '../ActionBar/ActionBar.types';
-import { ChartType } from '../Chart/Chart.types';
+import {
+  Card,
+  CardContentType,
+  CardSize,
+  ChartType,
+  IAction,
+  ICardProps,
+  IGridRow,
+  IGridColumn,
+  GridColumnContentType,
+  Priority
+} from '@uifabric/dashboard';
 
 export class LargeCardBasicExample extends React.Component<{}, {}> {
   constructor(props: ICardProps) {

@@ -3,7 +3,7 @@ import * as renderer from 'react-test-renderer';
 
 import { resetIds } from '../../Utilities';
 
-import { Pivot, PivotItem, PivotLinkFormat, PivotLinkSize } from '.';
+import { Pivot, PivotItem, PivotLinkFormat, PivotLinkSize } from './index';
 
 describe('Pivot', () => {
   beforeEach(() => {

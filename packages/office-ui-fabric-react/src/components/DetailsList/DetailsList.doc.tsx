@@ -37,8 +37,11 @@ import { DetailsListNavigatingFocusExample } from './examples/DetailsList.Naviga
 const DetailsListNavigatingFocusExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.NavigatingFocus.Example.tsx') as string;
 
 import { DetailsListShimmerExample } from './examples/DetailsList.Shimmer.Example';
-import { Link } from '../Link';
+import { Link } from '../../Link';
 const DetailsListShimmerExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Shimmer.Example.tsx') as string;
+
+import { DetailsListCustomFooterExample } from './examples/DetailsList.CustomFooter.Example';
+const DetailsListCustomFooterExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.CustomFooter.Example.tsx') as string;
 
 export const DetailsListPageProps: IDocPageProps = {
   title: 'DetailsList',
@@ -173,4 +176,10 @@ export const DetailsListShimmerPageProps: IDocPageProps = generateProps({
   title: 'DetailsList Shimmer - usually show before retrieving data from network',
   code: DetailsListShimmerExampleCode,
   view: <DetailsListShimmerExample />
+});
+
+export const DetailsListCustomFooterPageProps: IDocPageProps = generateProps({
+  title: 'Rendering custom details list footer',
+  code: DetailsListCustomFooterExampleCode,
+  view: <DetailsListCustomFooterExample />
 });

@@ -1339,6 +1339,12 @@ export interface IRawStyleBase extends IRawFontStyle {
   regionFragment?: ICSSRule | string;
 
   /**
+   * The resize CSS sets whether an element is resizable, and if so, in which direction(s).
+   */
+
+  resize?: ICSSRule | 'none' | 'both' | 'horizontal' | 'vertical' | 'block' | 'inline';
+
+  /**
    * The rest-after property determines how long a speech media agent should pause after
    * presenting an element's main content, before presenting that element's exit cue
    * sound. It may be replaced by the shorthand property rest, which sets rest time

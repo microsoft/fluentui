@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BreadcrumbBase, IBreadCrumbData } from './Breadcrumb.base';
-import { IIconProps } from '../Icon';
+import { IIconProps } from '../../Icon';
 import { IRefObject, IRenderFunction, IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
 import { IBreadcrumbStyleProps, IBreadcrumbStyles } from './Breadcrumb.styles';
 import { ITheme } from '../../Styling';

@@ -1,4 +1,4 @@
-import { IStyleProps } from '../Text/createComponent';
+import { IThemedProps } from '../../Foundation';
 import { IStackProps, IStackStyles } from './Stack.types';
 
 const nameMap: { [key: string]: string } = {
@@ -6,7 +6,7 @@ const nameMap: { [key: string]: string } = {
   end: 'flex-end'
 };
 
-export const styles = (props: IStyleProps<IStackProps, IStackStyles>): IStackStyles => {
+export const styles = (props: IThemedProps<IStackProps>): IStackStyles => {
   const { fill, align, justify, maxWidth, vertical, grow, margin, padding } = props;
 
   return {
@@ -22,7 +22,7 @@ export const styles = (props: IStyleProps<IStackProps, IStackStyles>): IStackSty
         padding
       },
       grow && {
-        flexGrow: 1,
+        flexGrow: grow === true ? 1 : grow,
         overflow: 'hidden'
       },
       align && {
@@ -33,5 +33,7 @@ export const styles = (props: IStyleProps<IStackProps, IStackStyles>): IStackSty
       },
       props.className
     ]
+    // TODO: this cast may be hiding some potential issues with styling and name
+    //        lookups and should be removed
   } as IStackStyles;
 };

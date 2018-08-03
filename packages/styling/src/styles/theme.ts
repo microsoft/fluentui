@@ -1,7 +1,9 @@
 import { Customizations } from '@uifabric/utilities';
 import { IPalette, ISemanticColors, ITheme, IPartialTheme } from '../interfaces/index';
+import { ITypography } from '../interfaces/ITypography';
 import { DefaultFontStyles } from './DefaultFontStyles';
 import { DefaultPalette } from './DefaultPalette';
+import { DefaultTypography } from './DefaultTypography';
 import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
 
 let _theme: ITheme = {
@@ -9,6 +11,7 @@ let _theme: ITheme = {
   semanticColors: _makeSemanticColorsFromPalette(DefaultPalette, false, false),
   fonts: DefaultFontStyles,
   isInverted: false,
+  typography: DefaultTypography,
   disableGlobalClassNames: false
 };
 let _onThemeChangeCallbacks: Array<(theme: ITheme) => void> = [];
@@ -105,6 +108,34 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
     ...theme.semanticColors
   };
 
+  let typography = DefaultTypography;
+  if (theme.typography) {
+    typography = {
+      families: { ...DefaultTypography.families, ...theme.typography.families },
+      weights: { ...DefaultTypography.weights, ...theme.typography.weights },
+      sizes: { ...DefaultTypography.sizes, ...theme.typography.sizes },
+      types: { ...DefaultTypography.types, ...theme.typography.types }
+    } as ITypography;
+  }
+
+  const { types } = typography;
+  for (const typeName in types) {
+    if (types.hasOwnProperty(typeName)) {
+      const type = types[typeName];
+      if (type) {
+        if (type.fontFamily && typography.families[type.fontFamily]) {
+          type.fontFamily = typography.families[type.fontFamily];
+        }
+        if (type.fontSize && typography.sizes[type.fontSize]) {
+          type.fontSize = typography.sizes[type.fontSize];
+        }
+        if (type.fontWeight && typography.families[type.fontWeight]) {
+          type.fontWeight = typography.families[type.fontWeight];
+        }
+      }
+    }
+  }
+
   return {
     palette: newPalette,
     fonts: {
@@ -113,7 +144,8 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
     },
     semanticColors: newSemanticColors,
     isInverted: !!theme.isInverted,
-    disableGlobalClassNames: !!theme.disableGlobalClassNames
+    disableGlobalClassNames: !!theme.disableGlobalClassNames,
+    typography: typography as ITypography
   };
 }
 
@@ -122,7 +154,9 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
 function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depComments: boolean): ISemanticColors {
   let toReturn: ISemanticColors = {
     bodyBackground: p.white,
+    bodyStandoutBackground: p.white,
     bodyFrameBackground: p.white,
+    bodyFrameDivider: p.neutralLight,
     bodyText: p.neutralPrimary,
     bodyTextChecked: p.black,
     bodySubtext: p.neutralSecondary,
@@ -134,6 +168,7 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     disabledSubtext: p.neutralQuaternary,
 
     focusBorder: p.black,
+    variantBorder: p.neutralLight,
 
     errorText: !isInverted ? p.redDark : '#ff5f5f',
     warningText: !isInverted ? '#333333' : '#ffffff',
@@ -176,6 +211,8 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     listHeaderBackgroundHovered: p.neutralLighter,
     listHeaderBackgroundPressed: p.neutralLight,
 
+    actionLink: p.neutralPrimary,
+    actionLinkHovered: p.neutralDark,
     link: p.themePrimary,
     linkHovered: p.themeDarker,
 

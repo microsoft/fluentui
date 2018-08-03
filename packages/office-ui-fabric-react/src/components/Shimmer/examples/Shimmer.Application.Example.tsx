@@ -2,10 +2,9 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
-import { createListItems } from '../../../utilities/exampleData';
+import { createListItems } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import { IColumn, buildColumns, SelectionMode, Toggle } from 'office-ui-fabric-react/lib/index';
-import { ShimmeredDetailsList } from '../../DetailsList';
-
+import { ShimmeredDetailsList } from 'office-ui-fabric-react/lib/ShimmeredDetailsList';
 import * as ShimmerExampleStyles from './Shimmer.Example.scss';
 
 export interface IItem {

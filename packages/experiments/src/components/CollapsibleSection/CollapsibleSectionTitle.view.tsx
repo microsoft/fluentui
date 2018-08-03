@@ -1,19 +1,30 @@
 import * as React from 'react';
+import { IViewComponentProps } from '../../Foundation';
+import { IStyleFunction } from '../../Utilities';
 import { ICollapsibleSectionTitleProps, ICollapsibleSectionTitleStyles } from './CollapsibleSectionTitle.types';
 import { Icon } from 'office-ui-fabric-react';
 
+/**
+ * @deprecated
+ * This is a dummy export used to avoid the "Exported variable X has or is using name Y from eternal module but cannot be named"
+ * error. Importing Y is enough to eliminate the export error but generates an unused import error. This dummy export eliminates
+ * the unused error. This export and its associated imports should be removed once we upgrade past TS 2.8.
+ */
+// tslint:disable-next-line:no-any
+export type __TYPESCRIPT_2_8_WORKAROUND_ = IStyleFunction<any, any>;
+
 export const CollapsibleSectionTitleView = (
-  props: ICollapsibleSectionTitleProps & { styles: { [key in keyof ICollapsibleSectionTitleStyles]: string } }
+  props: IViewComponentProps<ICollapsibleSectionTitleProps, ICollapsibleSectionTitleStyles>
 ) => {
   return (
     <button
       ref={props.focusElementRef}
-      className={props.styles.root}
+      className={props.classNames.root}
       onClick={props.onToggleCollapse}
       onKeyDown={props.onKeyDown}
     >
-      {!props.noChevron && <Icon className={props.styles.icon} iconName="ChevronDown" />}
-      <span className={props.styles.text}>{props.text}</span>
+      {!props.noChevron && <Icon className={props.classNames.icon} iconName="ChevronDown" />}
+      <span className={props.classNames.text}>{props.text}</span>
     </button>
   );
 };

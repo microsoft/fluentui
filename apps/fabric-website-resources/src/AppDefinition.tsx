@@ -129,9 +129,16 @@ export const AppDefinition: IAppDefinition = {
         },
         {
           component: require<any>('./components/pages/DetailsList/DetailsListCustomRowsPage').DetailsListCustomRowsPage,
-          key: 'DetailsList',
+          key: 'DetailsList - CustomRows',
           name: 'DetailsList - CustomRows',
           url: '#/examples/detailslist/CustomRows'
+        },
+        {
+          component: require<any>('./components/pages/DetailsList/DetailsListCustomFooterPage')
+            .DetailsListCustomFooterPage,
+          key: 'DetailsList',
+          name: 'DetailsList - CustomFooter',
+          url: '#/examples/detailslist/CustomFooter'
         },
         {
           component: require<any>('./components/pages/DetailsList/DetailsListDragDropPage').DetailsListDragDropPage,

@@ -12,9 +12,8 @@ export function createTheme(theme?: Partial<ITheme>, parentTheme?: ITheme): IThe
   // tslint:disable-next-line:forin
   for (const typeName in types) {
     const type = types[typeName] as IFontType;
-    const { swatches, typography } = processedTheme;
+    const { typography } = processedTheme;
 
-    type.color = swatches[type.color] || type.color || types.default.color || '';
     type.fontFamily = typography.families[type.fontFamily] || type.fontFamily || types.default.fontFamily || '';
     type.fontSize = typography.sizes[type.fontSize] || type.fontSize || types.default.fontSize || '';
     type.fontWeight = typography.weights[type.fontWeight] || type.fontWeight || types.default.fontWeight || '';

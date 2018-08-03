@@ -3,7 +3,7 @@ import { styled, classNamesFunction } from '../../Utilities';
 import { IGroupSpacerProps, IGroupSpacerStyleProps, IGroupSpacerStyles } from './GroupSpacer.types';
 import { getStyles } from './GroupSpacer.styles';
 
-export const getClassNames = classNamesFunction<IGroupSpacerStyleProps, IGroupSpacerStyles>();
+const getClassNames = classNamesFunction<IGroupSpacerStyleProps, IGroupSpacerStyles>();
 
 const SPACER_WIDTH = 36;
 

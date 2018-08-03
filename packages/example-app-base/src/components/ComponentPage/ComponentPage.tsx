@@ -2,7 +2,7 @@ import * as React from 'react';
 import { css, getDocument } from 'office-ui-fabric-react/lib/Utilities';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { MessageBar } from 'office-ui-fabric-react/lib/MessageBar';
-import { EditSection } from '../EditSection';
+import { EditSection } from '../EditSection/index';
 import './ComponentPage.scss';
 
 export interface IComponentPageSection {
@@ -252,10 +252,13 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
 
       return (
         <MessageBar>
-          <strong>Native Props Allowed{componentString}</strong> - all HTML attributes native to the {elementString},
-          including all aria and custom data attributes, can be applied as native props on{componentString || (
-            <> this component</>
-          )}.
+          <strong>
+            Native Props Allowed
+            {componentString}
+          </strong>{' '}
+          - all HTML attributes native to the {elementString}, including all aria and custom data attributes, can be
+          applied as native props on
+          {componentString || <> this component</>}.
         </MessageBar>
       );
     }

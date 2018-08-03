@@ -9,7 +9,7 @@ import {
   IColumn
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { lorem } from '../../../utilities/exampleData';
+import { lorem } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import './DetailsListExample.scss';
 
 let _items: IDocument[] = [];
@@ -100,6 +100,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         headerClassName: 'DetailsListExample-header--FileIcon',
         className: 'DetailsListExample-cell--FileIcon',
         iconClassName: 'DetailsListExample-Header-FileTypeIcon',
+        ariaLabel: 'Column operations for File type',
         iconName: 'Page',
         isIconOnly: true,
         fieldName: 'name',
@@ -120,6 +121,8 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         isResizable: true,
         isSorted: true,
         isSortedDescending: false,
+        sortAscendingAriaLabel: 'Sorted A to Z',
+        sortDescendingAriaLabel: 'Sorted Z to A',
         onColumnClick: this._onColumnClick,
         data: 'string',
         isPadded: true
@@ -221,6 +224,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
             selectionPreservedOnEmptyClick={true}
             onItemInvoked={this._onItemInvoked}
             enterModalSelectionOnTouch={true}
+            useReducedRowRenderer={true}
           />
         </MarqueeSelection>
       </div>

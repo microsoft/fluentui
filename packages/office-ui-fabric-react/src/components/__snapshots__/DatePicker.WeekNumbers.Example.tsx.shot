@@ -22,13 +22,69 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
   >
     <div>
       <div
-        className="ms-TextField"
+        className=
+            ms-TextField
+            {
+              box-shadow: none;
+              box-sizing: border-box;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              border-width: 2px;
+            }
       >
         <div
-          className="ms-TextField-wrapper"
+          className=
+              ms-TextField-wrapper
+
         >
           <div
-            className="ms-TextField-fieldGroup"
+            className=
+                ms-TextField-fieldGroup
+                {
+                  align-items: stretch;
+                  background: #ffffff;
+                  border: 1px solid #a6a6a6;
+                  box-shadow: none;
+                  box-sizing: border-box;
+                  display: flex;
+                  flex-direction: row;
+                  height: 32px;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                  position: relative;
+                }
+                &:-ms-clear {
+                  display: none;
+                }
+                &:hover {
+                  border-color: #212121;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                }
+                &::placeholder {
+                  color: #666666;
+                  opacity: 1;
+                }
+                &:-ms-input-placeholder {
+                  color: #666666;
+                  opacity: 1;
+                }
           >
             <input
               aria-describedby={undefined}
@@ -36,7 +92,36 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
               aria-haspopup="true"
               aria-invalid={false}
               aria-label={undefined}
-              className="ms-TextField-field"
+              className=
+                  ms-TextField-field
+                  {
+                    background-color: transparent;
+                    background: none;
+                    border-radius: 0px;
+                    border: none;
+                    box-shadow: none;
+                    box-sizing: border-box;
+                    color: #333333;
+                    font-size: 14px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    min-width: 0px;
+                    outline: 0px;
+                    padding-bottom: 0;
+                    padding-left: 12px;
+                    padding-right: 24px;
+                    padding-top: 0;
+                    text-overflow: ellipsis;
+                    width: 100%;
+                  }
+                  &:active, &:focus, &:hover {
+                    outline: 0px;
+                  }
+                  &::placeholder {
+                    color: #666666;
+                  }
               disabled={undefined}
               id="TextField0"
               onBlur={[Function]}
@@ -86,7 +171,9 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
     </div>
   </div>
   <div
-    className="ms-Dropdown-container"
+    className=
+        ms-Dropdown-container
+
   >
     <label
       className=
@@ -96,8 +183,8 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
             box-shadow: none;
             box-sizing: border-box;
             color: #333333;
-            display: block;
-            margin-bottom: 0px;
+            display: inline-block;
+            margin-bottom: 8px;
             margin-left: 0px;
             margin-right: 0px;
             margin-top: 0px;
@@ -122,7 +209,88 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
       aria-label={undefined}
       aria-labelledby="Dropdown2-label"
       aria-owns={undefined}
-      className="ms-Dropdown"
+      className=
+          ms-Dropdown
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #333333;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            outline: 0px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: relative;
+            user-select: none;
+          }
+          &:hover .ms-Dropdown-title {
+            border-color: #212121;
+            color: #212121;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
+            border-color: Highlight;
+          }
+          &:focus .ms-Dropdown-title {
+            border-color: #0078d4;
+            color: #212121;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
+            background-color: Highlight;
+            border-color: Highlight;
+            color: Highlight;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
+            -ms-high-contrast-adjust: none;
+          }
+          &:active .ms-Dropdown-title {
+            border-color: #005a9e;
+            color: #212121;
+          }
+          @media screen and (-ms-high-contrast: active){&:active .ms-Dropdown-title {
+            border-color: Highlight;
+          }
+          &:hover .ms-Dropdown-caretDown {
+            color: #212121;
+          }
+          &:focus .ms-Dropdown-caretDown {
+            color: #212121;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
+            color: HighlightText;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-caretDown {
+            -ms-high-contrast-adjust: none;
+          }
+          &:active .ms-Dropdown-caretDown {
+            color: #212121;
+          }
+          &:hover .ms-Dropdown-titleIsPlaceHolder {
+            color: #666666;
+          }
+          &:focus .ms-Dropdown-titleIsPlaceHolder {
+            color: #666666;
+          }
+          &:active .ms-Dropdown-titleIsPlaceHolder {
+            color: #666666;
+          }
+          &:hover .ms-Dropdown-title--hasError {
+            border-color: #a80000;
+          }
+          &:active .ms-Dropdown-title--hasError {
+            border-color: #a80000;
+          }
+          &:focus .ms-Dropdown-title--hasError {
+            border-color: #a80000;
+          }
       data-is-focusable={true}
       id="Dropdown2"
       onBlur={[Function]}
@@ -140,7 +308,32 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
         aria-posinset={2}
         aria-selected={true}
         aria-setsize={7}
-        className="ms-Dropdown-title"
+        className=
+            ms-Dropdown-title
+            {
+              background-color: #ffffff;
+              border-color: #a6a6a6;
+              border-style: solid;
+              border-width: 1px;
+              box-shadow: none;
+              box-sizing: border-box;
+              cursor: pointer;
+              display: block;
+              height: 32px;
+              line-height: 30px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              overflow: hidden;
+              padding-bottom: 0;
+              padding-left: 12px;
+              padding-right: 32px;
+              padding-top: 0;
+              position: relative;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
         id="Dropdown2-option"
         role="option"
       >
@@ -149,7 +342,15 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
         </span>
       </span>
       <span
-        className="ms-Dropdown-caretDownWrapper"
+        className=
+            ms-Dropdown-caretDownWrapper
+            {
+              height: 32px;
+              line-height: 30px;
+              position: absolute;
+              right: 12px;
+              top: 1px;
+            }
       >
         <i
           aria-hidden={true}
@@ -158,10 +359,13 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
+                color: #666666;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
+                font-size: 12px;
                 font-style: normal;
                 font-weight: normal;
+                pointer-events: none;
                 speak: none;
               }
           data-icon-name="ChevronDown"

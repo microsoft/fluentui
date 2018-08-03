@@ -3,7 +3,7 @@ import * as React from 'react';
 /* tslint:enable */
 import { assign } from 'office-ui-fabric-react/lib/Utilities';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
-import { ExtendedPeoplePicker } from '../PeoplePicker/ExtendedPeoplePicker';
+import { ExtendedPeoplePicker } from 'office-ui-fabric-react/lib/ExtendedPicker';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.types';
 import { people, mru, groupOne, groupTwo } from './PeopleExampleData';
@@ -12,14 +12,15 @@ import {
   FloatingPeoplePicker,
   IBaseFloatingPickerProps,
   IBaseFloatingPickerSuggestionProps
-} from '../../FloatingPicker';
+} from 'office-ui-fabric-react/lib/FloatingPicker';
 import {
   IBaseSelectedItemsListProps,
   ISelectedPeopleProps,
   SelectedPeopleList,
   IExtendedPersonaProps
-} from '../../SelectedItemsList';
+} from 'office-ui-fabric-react/lib/SelectedItemsList';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { IFocusZoneProps, FocusZoneTabbableElements } from 'office-ui-fabric-react/lib/FocusZone';
 
 import * as stylesImport from './ExtendedPeoplePicker.Basic.Example.scss';
 // tslint:disable-next-line:no-any
@@ -39,6 +40,7 @@ export class ExtendedPeoplePickerTypesExample extends React.Component<{}, IPeopl
   private _picker: ExtendedPeoplePicker;
   private _floatingPickerProps: IBaseFloatingPickerProps<IPersonaProps>;
   private _selectedItemsListProps: ISelectedPeopleProps;
+  private _focusZoneProps: IFocusZoneProps;
   private _suggestionProps: IBaseFloatingPickerSuggestionProps;
 
   constructor(props: {}) {
@@ -155,6 +157,11 @@ export class ExtendedPeoplePickerTypesExample extends React.Component<{}, IPeopl
       onRenderFloatingPicker: this._onRenderFloatingPicker,
       floatingPickerProps: this._floatingPickerProps
     };
+
+    this._focusZoneProps = {
+      shouldInputLoseFocusOnArrowKey: this._shouldInputLoseFocusOnArrowKey,
+      handleTabKey: FocusZoneTabbableElements.all
+    };
   }
 
   public render(): JSX.Element {
@@ -187,6 +194,7 @@ export class ExtendedPeoplePickerTypesExample extends React.Component<{}, IPeopl
         }}
         componentRef={this._setComponentRef}
         headerComponent={this._renderHeader()}
+        focusZoneProps={this._focusZoneProps}
       />
     );
   }
@@ -196,7 +204,7 @@ export class ExtendedPeoplePickerTypesExample extends React.Component<{}, IPeopl
   };
 
   private _renderHeader(): JSX.Element {
-    return <div>TO:</div>;
+    return <div data-is-focusable={true}>TO:</div>;
   }
 
   private _onRenderFloatingPicker(props: IBaseFloatingPickerProps<IPersonaProps>): JSX.Element {
@@ -377,5 +385,9 @@ export class ExtendedPeoplePickerTypesExample extends React.Component<{}, IPeopl
       default:
         return [];
     }
+  }
+
+  private _shouldInputLoseFocusOnArrowKey(): boolean {
+    return true;
   }
 }

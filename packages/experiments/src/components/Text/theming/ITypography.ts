@@ -19,24 +19,16 @@ export interface IFontSizes {
 
 export interface IFontWeights {
   light: number | string;
-  default: number | string;
+  regular: number | string;
+  semibold: number | string;
   bold: number | string;
   [key: string]: number | string;
-}
-
-export interface IFontColors {
-  default: string;
-  caption: string;
-  disabled: string;
-  success: string;
-  error: string;
 }
 
 export interface IFontType {
   fontFamily: keyof IFontFamilies | string;
   fontSize: keyof IFontSizes | number | string;
   fontWeight: keyof IFontWeights | number;
-  color: keyof IFontColors | string;
 }
 
 export interface IFontTypes {
@@ -55,6 +47,5 @@ export interface ITypography {
   families: IFontFamilies;
   sizes: IFontSizes;
   weights: IFontWeights;
-  colors: IFontColors;
   types: IFontTypes;
 }

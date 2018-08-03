@@ -56,7 +56,12 @@ export enum CardContentType {
   /**
    * Selects the chart type
    */
-  Chart
+  Chart,
+
+  /**
+   * Selects the Multicount component
+   */
+  MultiCount
 }
 
 /**
@@ -122,6 +127,12 @@ export interface ICardProps {
    * One of its use could be to fetch server data here
    */
   callOnDidMount?: VoidFunction;
+
+  /**
+   * Whether the card is draggable or not
+   * @default false
+   */
+  disableDrag?: boolean;
 }
 
 export interface ICardState {

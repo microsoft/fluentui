@@ -80,6 +80,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
       onRenderCoin = this._onRenderCoin,
       onRenderInitials = this._onRenderInitials,
       presence,
+      showInitialsUntilImageLoads,
       theme
     } = this.props;
 
@@ -103,25 +104,30 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
       showUnknownPersonaCoin
     });
 
+    const shouldRenderInitials = Boolean(
+      !this.state.isImageLoaded &&
+        onRenderCoin === this._onRenderCoin &&
+        ((showInitialsUntilImageLoads && imageUrl) || !imageUrl || this.state.isImageError || hideImage)
+    );
+
     return (
       <div {...divProps} className={classNames.coin}>
         {// Render PersonaCoin if size is not size10
         size !== PersonaSize.size10 && size !== PersonaSize.tiny ? (
           <div {...coinProps} className={classNames.imageArea} style={coinSizeStyle}>
-            {!this.state.isImageLoaded &&
-              (!imageUrl || this.state.isImageError || hideImage) && (
-                <div
-                  className={mergeStyles(
-                    classNames.initials,
-                    !showUnknownPersonaCoin && { backgroundColor: initialsColorPropToColorCode(this.props) }
-                  )}
-                  style={coinSizeStyle}
-                  aria-hidden="true"
-                >
-                  {onRenderInitials(this.props, this._onRenderInitials)}
-                </div>
-              )}
-            {!hideImage && onRenderCoin(this.props, this._onRenderCoin)}
+            {shouldRenderInitials && (
+              <div
+                className={mergeStyles(
+                  classNames.initials,
+                  !showUnknownPersonaCoin && { backgroundColor: initialsColorPropToColorCode(this.props) }
+                )}
+                style={coinSizeStyle}
+                aria-hidden="true"
+              >
+                {onRenderInitials(this.props, this._onRenderInitials)}
+              </div>
+            )}
+            {imageUrl && !hideImage && onRenderCoin(this.props, this._onRenderCoin)}
             <PersonaPresence {...personaPresenceProps} />
           </div>
         ) : // Otherwise, render just PersonaPresence.
