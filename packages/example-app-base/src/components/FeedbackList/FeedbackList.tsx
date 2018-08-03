@@ -4,8 +4,9 @@ import * as React from 'react';
 import { List } from 'office-ui-fabric-react/lib/List';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
-import { Button } from 'office-ui-fabric-react/lib/Button';
+import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Label } from 'office-ui-fabric-react/lib/Label';
+import { relativeDates } from './relativeDates';
 
 export interface IFeedbackListProps {
   title: string;
@@ -51,24 +52,7 @@ export class FeedbackList extends React.Component<IFeedbackListProps, IFeedbackL
 
         for (let i = 0; i < myObj.total_count; i++) {
           let dateCreated = new Date(myObj.items[i].created_at);
-          let milliSeconds = new Date().getTime() - dateCreated.getTime();
-          let hours = Math.floor(milliSeconds / (1000 * 60 * 60)) % 24;
-          let days = Math.floor(milliSeconds / (1000 * 60 * 60 * 24));
-          let openedOn;
-
-          if (days < 1) {
-            if (hours < 1) {
-              openedOn = '1 hour ago';
-            } else {
-              openedOn = hours + ' hours ago';
-            }
-          } else if (days === 1) {
-            openedOn = '1 day ago';
-          } else if (days <= 30) {
-            openedOn = days + ' days ago';
-          } else {
-            openedOn = 'on ' + dateCreated.toString().substring(4, 10);
-          }
+          let openedOn = relativeDates(dateCreated, new Date());
 
           if (this === openIssueRequest) {
             openList.push({
@@ -104,14 +88,14 @@ export class FeedbackList extends React.Component<IFeedbackListProps, IFeedbackL
 
     return (
       <div>
-        <Button
+        <PrimaryButton
           href="https://github.com/OfficeDev/office-ui-fabric-react/issues/new/choose"
           target="_blank"
           primary={true}
           className="FeedbackList-button"
         >
           Submit GitHub Issue
-        </Button>
+        </PrimaryButton>
 
         <Pivot className="FeedbackList-pivot">
           <PivotItem linkText="Open Issues">

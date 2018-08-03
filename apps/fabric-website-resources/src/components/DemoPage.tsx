@@ -1,6 +1,6 @@
 import { IDemoPageProps } from './DemoPage.types';
 import { ComponentPage, ExampleCard, PropertiesTableSet, PageMarkdown } from '@uifabric/example-app-base';
-import { FeedbackList } from '../../../../packages/example-app-base/src/components/FeedbackList/FeedbackList';
+import { FeedbackList } from '@uifabric/example-app-base/src/components/FeedbackList/FeedbackList';
 import * as React from 'react';
 import { ComponentStatus } from '../ComponentStatus/ComponentStatus';
 
