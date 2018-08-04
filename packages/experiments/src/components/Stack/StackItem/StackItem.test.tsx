@@ -13,7 +13,7 @@ describe('Stack Item', () => {
     expect(wrapper.find('div.test').length).toBe(1);
   });
 
-  it('can handle not having a class in a child of an explicit Stack.Item component', () => {
+  it('can handle having a class in a child of an explicit Stack.Item component', () => {
     const wrapper = mount(
       <Stack>
         <Stack.Item>
