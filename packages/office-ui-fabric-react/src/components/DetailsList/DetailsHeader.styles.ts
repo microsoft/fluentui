@@ -28,7 +28,8 @@ const GlobalClassNames = {
   dropHintLineStyle: 'ms-DetailsHeader-dropHintLineStyle',
   cellTitle: 'ms-DetailsHeader-cellTitle',
   cellName: 'ms-DetailsHeader-cellName',
-  filterChevron: 'ms-DetailsHeader-filterChevron'
+  filterChevron: 'ms-DetailsHeader-filterChevron',
+  gripperBarVertical: 'ms-DetailsColumn-gripperBarVertical'
 };
 
 const values = {
@@ -101,7 +102,12 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
       verticalAlign: 'top',
       whiteSpace: 'nowrap',
       textOverflow: 'ellipsis',
-      textAlign: 'left'
+      textAlign: 'left',
+      selectors: {
+        [`:hover .${classNames.gripperBarVertical}`]: {
+          display: 'block'
+        }
+      }
     }
   ];
 
@@ -207,21 +213,6 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
 
     cell: cellStyles,
 
-    gripperBarVerticalStyle: [
-      {
-        display: 'none',
-        position: 'absolute',
-        textAlign: 'left',
-        color: palette.neutralTertiary,
-        left: 1,
-        selectors: {
-          ':hover': {
-            display: 'block'
-          }
-        }
-      }
-    ],
-
     cellSizer: [
       classNames.cellSizer,
       focusClear(),
@@ -271,6 +262,17 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
       {
         margin: 0,
         marginLeft: -16
+      }
+    ],
+
+    gripperBarVerticalStyle: [
+      classNames.gripperBarVertical,
+      {
+        display: 'none',
+        position: 'absolute',
+        textAlign: 'left',
+        color: palette.neutralTertiary,
+        left: 1
       }
     ],
 
