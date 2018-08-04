@@ -17,6 +17,10 @@ const DisabledScrollClassName = mergeStyles({
  */
 export const DATA_IS_SCROLLABLE_ATTRIBUTE = 'data-is-scrollable';
 
+const disableIosBodyScroll = (event: Event) => {
+  event.preventDefault();
+};
+
 /**
  * Disables the body scrolling.
  *
@@ -29,9 +33,7 @@ export function disableBodyScroll(): void {
     doc.body.classList.add(DisabledScrollClassName);
 
     // disable body scroll on ios
-    doc.ontouchmove = (event: Event) => {
-      event.preventDefault();
-    };
+    doc.ontouchmove = disableIosBodyScroll;
   }
 
   _bodyScrollDisabledCount++;
@@ -48,6 +50,7 @@ export function enableBodyScroll(): void {
 
     if (doc && doc.body && _bodyScrollDisabledCount === 1) {
       doc.body.classList.remove(DisabledScrollClassName);
+      doc.removeEventListener('ontouchmove', disableIosBodyScroll);
     }
 
     _bodyScrollDisabledCount--;
