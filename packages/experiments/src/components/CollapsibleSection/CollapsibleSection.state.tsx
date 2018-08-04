@@ -1,6 +1,6 @@
 import { createRef } from 'office-ui-fabric-react';
 import { ICollapsibleSectionProps, ICollapsibleSectionViewProps } from './CollapsibleSection.types';
-import { BaseStateComponent, IBaseStateComponentProps } from '../../utilities/BaseState';
+import { BaseStateComponent, IBaseStateComponentProps, IStateTransforms } from '../../utilities/BaseState';
 
 export interface ICollapsibleSectionState {
   collapsed: boolean;
@@ -11,22 +11,25 @@ export type ICollapsibleSectionStateProps = IBaseStateComponentProps<
   ICollapsibleSectionViewProps
 >;
 
+const CollapsibleSectionStateTransforms: IStateTransforms<ICollapsibleSectionProps, ICollapsibleSectionViewProps> = [
+  {
+    transform: 'toggle',
+    prop: 'collapsed',
+    defaultValueProp: 'defaultCollapsed',
+    defaultValue: true,
+    onChange: 'onToggleCollapse'
+  }
+];
+
 export class CollapsibleSectionState extends BaseStateComponent<
   ICollapsibleSectionProps,
   ICollapsibleSectionViewProps
 > {
-  public static defaultProps: Partial<ICollapsibleSectionStateProps> = {
-    transforms: [
-      {
-        transform: 'toggle',
-        prop: 'collapsed',
-        defaultValue: true,
-        onChange: 'onToggleCollapse'
-      }
-    ]
-  };
-
   private _titleElement = createRef<HTMLElement>();
+
+  constructor(props: IBaseStateComponentProps<ICollapsibleSectionProps, ICollapsibleSectionViewProps>) {
+    super(props, CollapsibleSectionStateTransforms);
+  }
 
   public render(): JSX.Element {
     const viewProps = {

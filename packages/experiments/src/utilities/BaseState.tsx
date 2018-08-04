@@ -2,7 +2,7 @@ import { IStateComponentProps } from '../Foundation';
 import { BaseComponent } from '../Utilities';
 
 // TODO: add transforms and flesh out typing
-export type ITransform<TViewProps> = {
+export type ITransform<TComponentProps, TViewProps> = {
   /**
    * Available transforms.
    */
@@ -12,23 +12,22 @@ export type ITransform<TViewProps> = {
    */
   prop: keyof TViewProps;
   /**
-   * Default value for prop.
+   * Component prop setting default value.
    */
-  defaultValue?: boolean;
+  defaultValueProp?: keyof TComponentProps;
+  /**
+   * Default value for prop when defaultValueProp is undefined.
+   */
+  defaultValue: boolean;
   /**
    * Callback as input into transform indicating change. Must exist in TViewProps.
    */
   onChange: keyof TViewProps;
 };
 
-export type IStateTransforms<TViewProps> = (ITransform<TViewProps>)[];
+export type IStateTransforms<TComponentProps, TViewProps> = (ITransform<TComponentProps, TViewProps>)[];
 
-export type IBaseStateComponentProps<TComponentProps, TViewProps> = IStateComponentProps<
-  TComponentProps,
-  TViewProps
-> & {
-  transforms: IStateTransforms<TViewProps>;
-};
+export type IBaseStateComponentProps<TComponentProps, TViewProps> = IStateComponentProps<TComponentProps, TViewProps>;
 
 // TODO: One or the other of these solutions should work in TS. TypeScript is preventing use of
 //        keyof against generic types throughout this file.
@@ -44,13 +43,20 @@ export class BaseStateComponent<TComponentProps, TViewProps> extends BaseCompone
   IBaseStateComponentProps<TComponentProps, TViewProps>,
   IBaseStateComponentState<TViewProps>
 > {
-  constructor(props: IBaseStateComponentProps<TComponentProps, TViewProps>) {
+  constructor(
+    props: IBaseStateComponentProps<TComponentProps, TViewProps>,
+    transforms: IStateTransforms<TComponentProps, TViewProps>
+  ) {
     super(props);
 
     const stateObject: IBaseStateComponentState<TViewProps> = {};
 
-    props.transforms.forEach((transform: ITransform<TViewProps>) => {
-      stateObject[transform.prop] = transform.defaultValue;
+    transforms.forEach((transform: ITransform<TComponentProps, TViewProps>) => {
+      const defaultValuePropDefined =
+        transform.defaultValueProp !== undefined && props[transform.defaultValueProp] !== undefined;
+      stateObject[transform.prop] = defaultValuePropDefined
+        ? props[transform.defaultValueProp!]
+        : transform.defaultValue;
       stateObject[transform.onChange] = this._onToggle(transform.prop);
     });
 
