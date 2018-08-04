@@ -1,6 +1,36 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Tue, 31 Jul 2018 10:25:18 GMT and should not be manually modified.
+This log was last generated on Fri, 03 Aug 2018 10:25:59 GMT and should not be manually modified.
+
+## 0.10.0
+Fri, 03 Aug 2018 10:25:59 GMT
+
+### Minor changes
+
+- Adding custom font size and color props to Multicount. Changes to the precision logic
+
+### Patches
+
+- Integrate Auto-FontSize to Recommendation Card header text
+- Updated package.json to use react and react-dom in peer dependencies
+
+## 0.9.0
+Thu, 02 Aug 2018 10:23:19 GMT
+
+### Minor changes
+
+- Consuming donut,pie,stacked bar chart and mulicount into card.
+
+### Patches
+
+- Adding auto-fontsize dependency.
+
+## 0.8.0
+Wed, 01 Aug 2018 10:25:51 GMT
+
+### Minor changes
+
+- Multicount dataviz containing body text and annotation text
 
 ## 0.7.1
 Tue, 31 Jul 2018 10:25:18 GMT

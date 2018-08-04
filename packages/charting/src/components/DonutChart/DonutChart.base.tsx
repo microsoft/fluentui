@@ -58,7 +58,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, {}> {
         <g key={index}>
           <rect x={index * 61} y={0} width={12} height={12} fill={`${this.colors(index)}`} />
           <text x={15 + index * 61} width={61} height={16} y={12} fill={`${this.colors(index)}`}>
-            {point.label}
+            {point.x}
           </text>
         </g>
       );

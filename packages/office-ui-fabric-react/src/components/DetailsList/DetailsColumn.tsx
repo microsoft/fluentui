@@ -6,9 +6,9 @@ import { IColumn, ColumnActionsMode } from './DetailsList.types';
 import { ITooltipHostProps } from '../../Tooltip';
 import { IDragDropHelper, IDragDropOptions } from './../../utilities/dragdrop/interfaces';
 import { IDetailsHeaderStyles } from './DetailsHeader.types';
+import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
+import { ICellStyleProps } from './DetailsRow.types';
 
-const INNER_PADDING = 16; // Account for padding around the cell.
-const ISPADDED_WIDTH = 24;
 const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
 
 export interface IDetailsColumnProps extends React.Props<DetailsColumn> {
@@ -24,6 +24,7 @@ export interface IDetailsColumnProps extends React.Props<DetailsColumn> {
   setDraggedItemIndex?: (itemIndex: number) => void;
   isDropped?: boolean;
   headerClassNames: IClassNames<IDetailsHeaderStyles>;
+  cellStyleProps?: ICellStyleProps;
 }
 
 export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
@@ -40,7 +41,14 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
   }
 
   public render(): JSX.Element {
-    const { column, columnIndex, parentId, isDraggable, headerClassNames } = this.props;
+    const {
+      column,
+      columnIndex,
+      parentId,
+      isDraggable,
+      headerClassNames,
+      cellStyleProps = DEFAULT_CELL_STYLE_PROPS
+    } = this.props;
     const { onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip } = this.props;
 
     return (
@@ -62,7 +70,13 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
           )}
           data-is-draggable={isDraggable}
           draggable={isDraggable}
-          style={{ width: column.calculatedWidth! + INNER_PADDING + (column.isPadded ? ISPADDED_WIDTH : 0) }}
+          style={{
+            width:
+              column.calculatedWidth! +
+              cellStyleProps.cellLeftPadding +
+              cellStyleProps.cellRightPadding +
+              (column.isPadded ? cellStyleProps.cellExtraRightPadding : 0)
+          }}
           data-automationid={'ColumnsHeaderColumn'}
           data-item-key={column.key}
         >
@@ -82,7 +96,9 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
                   data-is-focusable={column.columnActionsMode !== ColumnActionsMode.disabled}
                   role={column.columnActionsMode !== ColumnActionsMode.disabled ? 'button' : undefined}
                   aria-describedby={
-                    this.props.onRenderColumnHeaderTooltip ? `${parentId}-${column.key}-tooltip` : undefined
+                    this.props.onRenderColumnHeaderTooltip || this._hasAccessibleLabel()
+                      ? `${parentId}-${column.key}-tooltip`
+                      : undefined
                   }
                   onContextMenu={this._onColumnContextMenu.bind(this, column)}
                   onClick={this._onColumnClick.bind(this, column)}
@@ -101,7 +117,11 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
                       />
                     )}
 
-                    {!column.isIconOnly ? column.name : undefined}
+                    {column.isIconOnly ? (
+                      <span className={headerClassNames.accessibleLabel}>{column.name}</span>
+                    ) : (
+                      column.name
+                    )}
                   </span>
 
                   {column.isFiltered && <Icon className={headerClassNames.nearIcon} iconName={'Filter'} />}
@@ -116,22 +136,16 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
                   {column.isGrouped && <Icon className={headerClassNames.nearIcon} iconName={'GroupedDescending'} />}
 
                   {column.columnActionsMode === ColumnActionsMode.hasDropdown &&
-                    !column.isIconOnly && <Icon className={headerClassNames.filterChevron} iconName={'ChevronDown'} />}
+                    !column.isIconOnly && (
+                      <Icon aria-hidden={true} className={headerClassNames.filterChevron} iconName={'ChevronDown'} />
+                    )}
                 </span>
               )
             },
             this._onRenderColumnHeaderTooltip
           )}
         </div>
-        {column.ariaLabel && !this.props.onRenderColumnHeaderTooltip ? (
-          <label
-            key={`${column.key}_label`}
-            id={`${parentId}-${column.key}-tooltip`}
-            className={headerClassNames.accessibleLabel}
-          >
-            {column.ariaLabel}
-          </label>
-        ) : null}
+        {!this.props.onRenderColumnHeaderTooltip ? this._renderAccessibleLabel() : null}
       </>
     );
   }
@@ -222,6 +236,37 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
       onDragEnd: this._onDragEnd
     };
     return options;
+  }
+
+  private _hasAccessibleLabel(): boolean {
+    const { column } = this.props;
+
+    return !!(
+      column.ariaLabel ||
+      column.filterAriaLabel ||
+      column.sortAscendingAriaLabel ||
+      column.sortDescendingAriaLabel ||
+      column.groupAriaLabel
+    );
+  }
+
+  private _renderAccessibleLabel(): JSX.Element | null {
+    const { column, parentId, headerClassNames } = this.props;
+
+    return this._hasAccessibleLabel() && !this.props.onRenderColumnHeaderTooltip ? (
+      <label
+        key={`${column.key}_label`}
+        id={`${parentId}-${column.key}-tooltip`}
+        className={headerClassNames.accessibleLabel}
+      >
+        {column.ariaLabel}
+        {(column.isFiltered && column.filterAriaLabel) || null}
+        {(column.isSorted &&
+          (column.isSortedDescending ? column.sortDescendingAriaLabel : column.sortAscendingAriaLabel)) ||
+          null}
+        {(column.isGrouped && column.groupAriaLabel) || null}
+      </label>
+    ) : null;
   }
 
   private _onDragStart(item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent): void {
