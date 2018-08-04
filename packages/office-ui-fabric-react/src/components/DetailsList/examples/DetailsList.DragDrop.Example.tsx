@@ -74,13 +74,13 @@ export class DetailsListDragDropExample extends React.Component<
           label={'Number of Left frozen columns:'}
           onGetErrorMessage={this._validateNumber}
           value={frozenColumnCountFromStart}
-          onChanged={this._onChangeStartCountText}
+          onChange={this._onChangeStartCountText}
         />
         <TextField
           label={'Number of Right frozen columns:'}
           onGetErrorMessage={this._validateNumber}
           value={frozenColumnCountFromEnd}
-          onChanged={this._onChangeEndCountText}
+          onChange={this._onChangeEndCountText}
         />
         <div>{selectionDetails}</div>
         <MarqueeSelection selection={this._selection}>
@@ -123,11 +123,17 @@ export class DetailsListDragDropExample extends React.Component<
     return isNaN(Number(value)) ? `The value should be a number, actual is ${value}.` : '';
   }
 
-  private _onChangeStartCountText = (text: any): void => {
+  private _onChangeStartCountText = (
+    event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
+    text: string
+  ): void => {
     this.setState({ frozenColumnCountFromStart: text });
   };
 
-  private _onChangeEndCountText = (text: any): void => {
+  private _onChangeEndCountText = (
+    event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
+    text: string
+  ): void => {
     this.setState({ frozenColumnCountFromEnd: text });
   };
 
