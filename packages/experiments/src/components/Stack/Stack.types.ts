@@ -9,10 +9,9 @@ export interface IStackProps extends IStyleableComponent<IStackProps, IStackStyl
   collapseItems?: boolean;
 
   inline?: boolean;
-  vertical?: boolean;
+  horizontal?: boolean;
 
   grow?: boolean | number | 'inherit' | 'initial' | 'unset';
-  wrap?: boolean;
 
   gap?: number;
   align?: 'center' | 'start' | 'baseline' | 'stretch' | 'end';

@@ -10,7 +10,7 @@ export interface IStackItemProps extends IStyleableComponent<IStackItemProps, IS
   children?: React.ReactElement<IStackItemProps>[] | React.ReactElement<IStackItemProps>;
 
   gap?: number;
-  vertical?: boolean;
+  horizontal?: boolean;
   index?: number;
 
   grow?: boolean | number | 'inherit' | 'initial' | 'unset';

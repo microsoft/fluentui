@@ -9,14 +9,14 @@ const StackItemType = (<StackItem /> as React.ReactElement<IStackItemProps> &
   IStyleableComponent<IStackItemProps, IStackItemStyles>).type;
 
 const view = (props: IViewComponentProps<IStackProps, IStackStyles>) => {
-  const { renderAs: RootType = 'div', classNames, gap, vertical, collapseItems } = props;
+  const { renderAs: RootType = 'div', classNames, gap, horizontal, collapseItems } = props;
 
   const stackChildren: React.ReactChild[] = React.Children.map(
     props.children,
     (child: React.ReactElement<IStackItemProps>, index: number) => {
       const defaultItemProps: IStackItemProps = {
         gap: index > 0 ? gap : 0,
-        vertical,
+        horizontal,
         collapse: collapseItems,
         className: child.props ? child.props.className : undefined
       };

@@ -8,7 +8,7 @@ const alignMap: { [key: string]: string } = {
 const justifyMap: { [key: string]: string } = {};
 
 export const styles = (props: IThemedProps<IStackItemProps>): IStackItemStyles => {
-  const { grow, collapse, align, justify, gap, vertical, className } = props;
+  const { grow, collapse, align, justify, gap, horizontal, className } = props;
 
   return {
     root: [
@@ -26,7 +26,7 @@ export const styles = (props: IThemedProps<IStackItemProps>): IStackItemStyles =
         textOverflow: 'ellipsis'
       },
       !!gap && {
-        [vertical ? 'marginTop' : 'marginLeft']: gap
+        [horizontal ? 'marginLeft' : 'marginTop']: gap
       },
       className
     ]
