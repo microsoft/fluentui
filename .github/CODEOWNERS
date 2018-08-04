@@ -79,7 +79,7 @@ HoverCard/   @atneik @Jahnp
 # Label/
 Layer/  @ThomasMichon
 # Link/
-List/  @cschleiden
+# List/
 # MarqueeSelection/
 # MessageBar/
 # Modal/
@@ -136,7 +136,7 @@ HoverCard/docs/   @atneik @Jahnp
 # Label/docs/
 Layer/docs/  @ThomasMichon
 # Link/docs/
-List/docs/  @cschleiden
+# List/docs/  
 # MarqueeSelection/docs/
 # MessageBar/docs/
 # Modal/docs/
@@ -149,7 +149,7 @@ pickers/docs/  @joschect
 # Pivot/docs/
 # Popup/docs/
 # ProgressIndicator/docs/
-Rating/docs/  @cschleiden
+# Rating/docs/
 ResizeGroup/docs/  @micahgodbolt
 # SearchBox/docs/
 # Slider/docs/

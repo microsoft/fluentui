@@ -47,13 +47,37 @@ export class Chart extends React.Component<IChartInternalProps, {}> {
         );
       }
       case ChartType.DonutChart: {
-        return <DonutChart data={this.props.data} colors={this.props.colors} />;
+        return (
+          <DonutChart
+            data={this.props.data}
+            colors={this.props.colors}
+            width={this._getWidth()}
+            height={this._getHeight()}
+          />
+        );
       }
       case ChartType.PieChart: {
-        return <PieChart data={this.props.data} chartTitle={this.props.chartLabel} colors={this.props.colors} />;
+        return (
+          <PieChart
+            data={this.props.data}
+            chartTitle={this.props.chartLabel}
+            colors={this.props.colors}
+            width={this._getWidth()}
+            height={this._getHeight()}
+          />
+        );
       }
       case ChartType.StackedBarChart: {
-        return <StackedBarChart data={this.props.data} chartTitle={this.props.chartLabel} colors={this.props.colors} />;
+        return (
+          <StackedBarChart
+            data={this.props.data}
+            chartTitle={this.props.chartLabel}
+            colors={this.props.colors}
+            width={this._getWidth()}
+            height={this._getHeight()}
+            barHeight={this.props.barHeight}
+          />
+        );
       }
     }
   }

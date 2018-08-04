@@ -11,19 +11,26 @@ const StackItemType = (<StackItem /> as React.ReactElement<IStackItemProps> &
 const view = (props: IViewComponentProps<IStackProps, IStackStyles>) => {
   const { renderAs: RootType = 'div', classNames, gap, vertical, collapseItems } = props;
 
-  const children: React.ReactChild[] = React.Children.map(
+  const stackChildren: React.ReactChild[] = React.Children.map(
     props.children,
     (child: React.ReactElement<IStackItemProps>, index: number) => {
       const defaultItemProps: IStackItemProps = {
         gap: index > 0 ? gap : 0,
         vertical,
-        collapse: collapseItems
+        collapse: collapseItems,
+        className: child.props ? child.props.className : undefined
       };
 
       if (child.type === StackItemType) {
+        // If child is a StackItem, we need to pass down the className of ITS first child to the StackItem for mergeStylesSet to work
+        const children = child.props ? child.props.children : undefined;
+        const stackItemFirstChildren = React.Children.toArray(children) as React.ReactElement<{ className?: string }>[];
+        const stackItemFirstChild = stackItemFirstChildren && stackItemFirstChildren[0];
+
         return React.cloneElement(child, {
           ...defaultItemProps,
-          ...child.props
+          ...child.props,
+          className: stackItemFirstChild && stackItemFirstChild.props ? stackItemFirstChild.props.className : undefined
         });
       }
 
@@ -31,7 +38,7 @@ const view = (props: IViewComponentProps<IStackProps, IStackStyles>) => {
     }
   );
 
-  return <RootType className={classNames.root}>{children}</RootType>;
+  return <RootType className={classNames.root}>{stackChildren}</RootType>;
 };
 
 const StackStatics = {

@@ -8,7 +8,7 @@ const alignMap: { [key: string]: string } = {
 const justifyMap: { [key: string]: string } = {};
 
 export const styles = (props: IThemedProps<IStackItemProps>): IStackItemStyles => {
-  const { grow, collapse, align, justify, gap, vertical } = props;
+  const { grow, collapse, align, justify, gap, vertical, className } = props;
 
   return {
     root: [
@@ -27,7 +27,8 @@ export const styles = (props: IThemedProps<IStackItemProps>): IStackItemStyles =
       },
       !!gap && {
         [vertical ? 'marginTop' : 'marginLeft']: gap
-      }
+      },
+      className
     ]
     // TODO: this cast may be hiding some potential issues with styling and name
     //        lookups and should be removed
