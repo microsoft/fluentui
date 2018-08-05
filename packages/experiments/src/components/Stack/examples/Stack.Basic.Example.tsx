@@ -13,14 +13,14 @@ export class StackBasicExample extends React.Component<{}, {}> {
     const padding = 20;
 
     return (
-      <Stack align="center">
+      <Stack horizontalAlignment="center">
         <Text>A horizontal stack</Text>
-        <Stack horizontal gap={gapSizeHorizontal} padding={padding}>
+        <Stack horizontal gap={gapSizeHorizontal} padding={padding} verticalAlignment="center">
           <Text>Text 1</Text>
           <Text family="monospace">Text 2</Text>
           <Text>Text 3</Text>
         </Stack>
-        <Stack gap={gapSizeVertical} padding={padding} align="center">
+        <Stack gap={gapSizeVertical} padding={padding} horizontalAlignment="center">
           <Text>A vertical stack</Text>
           <Text size="small">Text 1</Text>
           <Text size="medium">Text 2</Text>

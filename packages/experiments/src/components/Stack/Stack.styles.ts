@@ -7,7 +7,7 @@ const nameMap: { [key: string]: string } = {
 };
 
 export const styles = (props: IThemedProps<IStackProps>): IStackStyles => {
-  const { fill, align, justify, maxWidth, horizontal, grow, margin, padding } = props;
+  const { fill, maxWidth, horizontal, grow, margin, padding, horizontalAlignment, verticalAlignment } = props;
 
   return {
     root: [
@@ -25,11 +25,11 @@ export const styles = (props: IThemedProps<IStackProps>): IStackStyles => {
         flexGrow: grow === true ? 1 : grow,
         overflow: 'hidden'
       },
-      align && {
-        alignItems: nameMap[align] || align
+      horizontalAlignment && {
+        [horizontal ? 'justifyContent' : 'alignItems']: nameMap[horizontalAlignment] || horizontalAlignment
       },
-      justify && {
-        justifyContent: nameMap[justify] || justify
+      verticalAlignment && {
+        [horizontal ? 'alignItems' : 'justifyContent']: nameMap[verticalAlignment] || verticalAlignment
       },
       props.className
     ]

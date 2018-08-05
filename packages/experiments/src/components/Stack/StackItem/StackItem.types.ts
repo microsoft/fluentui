@@ -17,7 +17,6 @@ export interface IStackItemProps extends IStyleableComponent<IStackItemProps, IS
   collapse?: boolean;
 
   align?: 'auto' | 'center' | 'start' | 'baseline' | 'stretch' | 'end';
-  justify?: 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly';
 }
 
 export interface IStackItemStyles {

@@ -8,14 +8,13 @@ export interface IStackProps extends IStyleableComponent<IStackProps, IStackStyl
   fill?: boolean;
   collapseItems?: boolean;
 
-  inline?: boolean;
   horizontal?: boolean;
 
   grow?: boolean | number | 'inherit' | 'initial' | 'unset';
-
   gap?: number;
-  align?: 'center' | 'start' | 'baseline' | 'stretch' | 'end';
-  justify?: 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly';
+
+  verticalAlignment?: 'center' | 'start' | 'baseline' | 'stretch' | 'end';
+  horizontalAlignment?: 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly';
 
   maxWidth?: number | string;
   padding?: number | string;

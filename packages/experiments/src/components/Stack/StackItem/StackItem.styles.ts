@@ -5,10 +5,9 @@ const alignMap: { [key: string]: string } = {
   start: 'flex-start',
   end: 'flex-end'
 };
-const justifyMap: { [key: string]: string } = {};
 
 export const styles = (props: IThemedProps<IStackItemProps>): IStackItemStyles => {
-  const { grow, collapse, align, justify, gap, horizontal, className } = props;
+  const { grow, collapse, align, gap, horizontal, className } = props;
 
   return {
     root: [
@@ -16,9 +15,6 @@ export const styles = (props: IThemedProps<IStackItemProps>): IStackItemStyles =
       !grow && !collapse && { flexShrink: 0 },
       align && {
         alignSelf: alignMap[align] || align
-      },
-      justify && {
-        justifyContent: justifyMap[justify] || justify
       },
       {
         overflow: 'hidden',
