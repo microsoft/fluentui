@@ -13,7 +13,7 @@ export interface IStackItemProps extends IStyleableComponent<IStackItemProps, IS
   renderAs?: string | React.ReactType<IStackItemProps>;
 
   /** @internal Internal use only - gives the Stack component a handle on the children of its Stack.Items */
-  children?: React.ReactElement<IStackItemProps>[] | React.ReactElement<IStackItemProps>;
+  children?: (React.ReactElement<IStackItemProps> | string)[] | React.ReactElement<IStackItemProps> | string;
 
   /**
    * Top margin (for vertical StackItems) or left margin (for horizontal StackItems).
