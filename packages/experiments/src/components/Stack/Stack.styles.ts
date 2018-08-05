@@ -7,7 +7,17 @@ const nameMap: { [key: string]: string } = {
 };
 
 export const styles = (props: IThemedProps<IStackProps>): IStackStyles => {
-  const { fill, maxWidth, horizontal, grow, margin, padding, horizontalAlignment, verticalAlignment } = props;
+  const {
+    fillHorizontal,
+    fillVertical,
+    maxWidth,
+    horizontal,
+    grow,
+    margin,
+    padding,
+    horizontalAlignment,
+    verticalAlignment
+  } = props;
 
   return {
     root: [
@@ -15,8 +25,8 @@ export const styles = (props: IThemedProps<IStackProps>): IStackStyles => {
         display: 'flex',
         flexDirection: horizontal ? 'row' : 'column',
         flexWrap: 'nowrap',
-        width: fill && horizontal ? '100%' : 'auto',
-        height: fill && !horizontal ? '100%' : 'auto',
+        width: fillHorizontal ? '100%' : 'auto',
+        height: fillVertical ? '100%' : 'auto',
         maxWidth,
         margin,
         padding

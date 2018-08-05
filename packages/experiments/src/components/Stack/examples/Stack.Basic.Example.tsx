@@ -29,7 +29,7 @@ export class StackBasicExample extends React.Component<{}, {}> {
         <Stack.Item align="end">
           <Text>I am a stack item!</Text>
         </Stack.Item>
-        <Stack horizontal fill>
+        <Stack horizontal fillHorizontal>
           <Stack.Item grow={5}>
             <Text>grow is 5</Text>
           </Stack.Item>

@@ -5,16 +5,18 @@ export interface IStackProps extends IStyleableComponent<IStackProps, IStackStyl
   renderAs?: string | React.ReactType<IStackProps>;
   className?: string;
 
-  fill?: boolean;
-  collapseItems?: boolean;
-
   horizontal?: boolean;
-
-  grow?: boolean | number | 'inherit' | 'initial' | 'unset';
-  gap?: number;
 
   verticalAlignment?: 'center' | 'start' | 'baseline' | 'stretch' | 'end';
   horizontalAlignment?: 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly';
+
+  fillHorizontal?: boolean;
+  fillVertical?: boolean;
+
+  collapseItems?: boolean;
+
+  grow?: boolean | number | 'inherit' | 'initial' | 'unset';
+  gap?: number;
 
   maxWidth?: number | string;
   padding?: number | string;
