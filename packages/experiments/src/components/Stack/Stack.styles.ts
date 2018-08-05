@@ -11,6 +11,7 @@ export const styles = (props: IThemedProps<IStackProps>): IStackStyles => {
     fillHorizontal,
     fillVertical,
     maxWidth,
+    maxHeight,
     horizontal,
     grow,
     margin,
@@ -28,6 +29,7 @@ export const styles = (props: IThemedProps<IStackProps>): IStackStyles => {
         width: fillHorizontal ? '100%' : 'auto',
         height: fillVertical ? '100%' : 'auto',
         maxWidth,
+        maxHeight,
         margin,
         padding
       },

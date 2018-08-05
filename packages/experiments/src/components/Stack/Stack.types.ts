@@ -19,6 +19,7 @@ export interface IStackProps extends IStyleableComponent<IStackProps, IStackStyl
   gap?: number;
 
   maxWidth?: number | string;
+  maxHeight?: number | string;
   padding?: number | string;
   margin?: number | string;
 }
