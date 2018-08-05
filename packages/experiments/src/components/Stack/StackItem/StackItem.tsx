@@ -6,6 +6,9 @@ import { styles } from './StackItem.styles';
 const view = (props: IViewComponentProps<IStackItemProps, IStackItemStyles>) => {
   const childNodes: React.ReactElement<{}>[] = React.Children.toArray(props.children) as React.ReactElement<{}>[];
   const first = childNodes[0];
+  if (!first) {
+    return <div />;
+  }
 
   if (typeof first === 'string') {
     return <span className={props.classNames.root}>{first}</span>;

@@ -47,8 +47,8 @@ export class TextAttributesExample extends React.Component<{}, ITextAttributesEx
       </Text>`;
     return (
       <div>
-        <Stack vertical>
-          <Stack vertical maxWidth={300}>
+        <Stack>
+          <Stack maxWidth={300}>
             <Slider
               label="Change the size"
               min={1}
