@@ -33,9 +33,6 @@ export class FeedbackList extends React.Component<IFeedbackListProps, IFeedbackL
   }
 
   public componentDidMount(): void {
-    let openList: IListItem[] = [];
-    let closedList: IListItem[] = [];
-
     const githubUrl =
       'https://api.github.com/search/issues?q=type:issue%20repo:OfficeDev/office-ui-fabric-react%20label:%22Component:%20' +
       this.props.title;
@@ -43,44 +40,28 @@ export class FeedbackList extends React.Component<IFeedbackListProps, IFeedbackL
     const openIssuesURL = githubUrl + '%22%20is:open';
     const closedIssuesURL = githubUrl + '%22%20is:closed';
 
-    const openIssueRequest = new XMLHttpRequest();
-    const closedIssueRequest = new XMLHttpRequest();
+    this.setState({ openIssues: this.getIssues(openIssuesURL), closedIssues: this.getIssues(closedIssuesURL) });
+  }
 
-    openIssueRequest.onload = closedIssueRequest.onload = function(): void {
-      if (this.readyState === 4 && this.status === 200) {
-        const myObj = JSON.parse(this.responseText);
-
+  public getIssues(url: string): IListItem[] {
+    let issueList: IListItem[] = [];
+    fetch(url)
+      .then((response: Response) => {
+        return response.text();
+      })
+      .then((responseText: string) => {
+        const myObj = JSON.parse(responseText);
         for (let i = 0; i < myObj.total_count; i++) {
           let dateCreated = new Date(myObj.items[i].created_at);
           let openedOn = relativeDates(dateCreated, new Date());
-
-          if (this === openIssueRequest) {
-            openList.push({
-              issueTitle: myObj.items[i].title,
-              issueNum: myObj.items[i].number,
-              issueCreated: openedOn
-            });
-          } else if (this === closedIssueRequest) {
-            closedList.push({
-              issueTitle: myObj.items[i].title,
-              issueNum: myObj.items[i].number,
-              issueCreated: openedOn
-            });
-          }
+          issueList.push({
+            issueTitle: myObj.items[i].title,
+            issueNum: myObj.items[i].number,
+            issueCreated: openedOn
+          });
         }
-      }
-    };
-
-    this.setState({
-      openIssues: openList,
-      closedIssues: closedList
-    });
-
-    openIssueRequest.open('get', openIssuesURL, true);
-    closedIssueRequest.open('get', closedIssuesURL, true);
-
-    openIssueRequest.send();
-    closedIssueRequest.send();
+      });
+    return issueList;
   }
 
   public render(): JSX.Element | null {

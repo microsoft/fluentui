@@ -41,6 +41,7 @@
     "markdown-to-jsx": "6.6.1",
     "office-ui-fabric-react": ">=6.45.0 <7.0.0",
     "react-syntax-highlighter": "^7.0.2",
-    "tslib": "^1.7.1"
+    "tslib": "^1.7.1",
+    "whatwg-fetch":"2.0.4"
   }
 }
