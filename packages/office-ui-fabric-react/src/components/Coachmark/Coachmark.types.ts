@@ -4,10 +4,7 @@ import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { Coachmark } from './Coachmark';
 import { ITeachingBubble } from '../../TeachingBubble';
 
-export interface ICoachmark { }
-
-/** @deprecated */
-export type ICoachmarkTypes = ICoachmarkProps;
+export interface ICoachmark {}
 
 export interface ICoachmarkProps extends React.Props<Coachmark> {
   /**
@@ -149,3 +146,6 @@ export interface ICoachmarkProps extends React.Props<Coachmark> {
    */
   ariaDescribedByText?: string;
 }
+
+/** @deprecated */
+export type ICoachmarkTypes = ICoachmarkProps;
