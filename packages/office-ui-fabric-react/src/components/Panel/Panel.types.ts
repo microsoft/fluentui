@@ -352,6 +352,20 @@ export interface IPanelStyleProps {
    * Type of the panel.
    */
   type?: PanelType;
+
+  /**
+   * Optional parameter to provider the class name for header text
+   */
+  headerClassName?: string;
+}
+
+export interface IPanelSubComponentStyles {
+  /**
+   * Styling for Icon child component.
+   */
+  // TODO: this should be the interface once we're on TS 2.9.2 but otherwise causes errors in 2.8.4
+  // icon: IStyleFunctionOrObject<IIconStyleProps, IIconStyles>;
+  icon: IStyleFunctionOrObject<any, any>;
 }
 
 export interface IPanelStyles {
@@ -371,4 +385,9 @@ export interface IPanelStyles {
   content: IStyle;
   footer: IStyle;
   footerInner: IStyle;
+
+  /**
+   * Styling for subcomponents.
+   */
+  subComponentStyles: IPanelSubComponentStyles;
 }

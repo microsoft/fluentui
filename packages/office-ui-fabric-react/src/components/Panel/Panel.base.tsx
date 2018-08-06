@@ -3,7 +3,6 @@ import * as React from 'react';
 import {
   BaseComponent,
   classNamesFunction,
-  css,
   divProperties,
   getId,
   getNativeProps,
@@ -18,10 +17,6 @@ import { Layer } from '../Layer/Layer';
 import { Overlay } from '../../Overlay';
 import { Popup } from '../../Popup';
 import { IconButton } from '../../Button';
-import { AnimationClassNames, getTheme, IconFontSizes } from '../../Styling';
-import * as stylesImport from './Panel.scss';
-const styles: any = stylesImport;
-const theme = getTheme();
 
 const getClassNames = classNamesFunction<IPanelStyleProps, IPanelStyles>();
 
@@ -104,6 +99,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       forceFocusInsideTrap,
       hasCloseButton,
       headerText,
+      headerClassName = '',
       ignoreExternalFocusing,
       isBlocking,
       isFooterAtBottom,
@@ -111,6 +107,8 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       isHiddenOnDismiss,
       layerProps,
       type,
+      styles,
+      theme,
       customWidth,
       onLightDismissClick = this._onPanelClick,
       onRenderNavigation = this._onRenderNavigation,
@@ -135,6 +133,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       className,
       focusTrapZoneClassName: focusTrapZoneProps ? focusTrapZoneProps.className : undefined,
       hasCloseButton,
+      headerClassName,
       isAnimating: this.state.isAnimating,
       isFooterAtBottom,
       isFooterSticky,
@@ -150,11 +149,6 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     if (isBlocking && isOpen) {
       overlay = (
         <Overlay
-          // className={css(
-          //   styles.overlay,
-          //   isOpen && isAnimating && AnimationClassNames.fadeIn200,
-          //   !isOpen && isAnimating && AnimationClassNames.fadeOut200
-          // )}
           className={_classNames.overlay}
           isDarkThemed={false}
           onClick={isLightDismiss ? onLightDismissClick : undefined}
@@ -170,46 +164,15 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
           role="dialog"
           ariaLabelledBy={header ? headerTextId : undefined}
           onDismiss={this.dismiss}
-          // className={css(!isOpen && !isAnimating && isHiddenOnDismiss && styles.hiddenPanel)}
           className={_classNames.hiddenPanel}
         >
-          <div
-            {...nativeProps}
-            ref={this._panel}
-            // className={css(
-            //   'ms-Panel',
-            //   styles.root,
-            //   className,
-            //   // because the RTL animations are not being used, we need to set a class
-            //   isOpen && 'is-open ' + styles.rootIsOpen,
-            //   type === PanelType.smallFluid && 'ms-Panel--smFluid ' + styles.rootIsSmallFluid,
-            //   type === PanelType.smallFixedNear && 'ms-Panel--smLeft ' + styles.rootIsSmallLeft,
-            //   type === PanelType.smallFixedFar && 'ms-Panel--sm ' + styles.rootIsSmall,
-            //   type === PanelType.medium && 'ms-Panel--md ' + styles.rootIsMedium,
-            //   (type === PanelType.large || type === PanelType.largeFixed) && 'ms-Panel--lg ' + styles.rootIsLarge,
-            //   type === PanelType.largeFixed && 'ms-Panel--fixed ' + styles.rootIsFixed,
-            //   type === PanelType.extraLarge && 'ms-Panel--xl ' + styles.rootIsXLarge,
-            //   type === PanelType.custom && 'ms-Panel--custom ' + styles.rootIsCustom,
-            //   hasCloseButton && 'ms-Panel--hasCloseButton ' + styles.rootHasCloseButton
-            //   // !isOpen && !isAnimating && isHiddenOnDismiss && styles.hiddenPanel
-            // )}
-            className={_classNames.root}
-          >
+          <div {...nativeProps} ref={this._panel} className={_classNames.root}>
             {overlay}
             <FocusTrapZone
               ignoreExternalFocusing={ignoreExternalFocusing}
               forceFocusInsideTrap={forceFocusInsideTrap}
               firstFocusableSelector={firstFocusableSelector}
               {...focusTrapZoneProps}
-              // className={css(
-              //   'ms-Panel-main',
-              //   styles.main,
-              //   isOpen && isAnimating && !isOnRightSide && AnimationClassNames.slideRightIn40,
-              //   isOpen && isAnimating && isOnRightSide && AnimationClassNames.slideLeftIn40,
-              //   !isOpen && isAnimating && !isOnRightSide && AnimationClassNames.slideLeftOut40,
-              //   !isOpen && isAnimating && isOnRightSide && AnimationClassNames.slideRightOut40,
-              //   focusTrapZoneProps ? focusTrapZoneProps.className : undefined
-              // )}
               className={_classNames.main}
               style={customWidthStyles}
               elementToFocusOnDismiss={elementToFocusOnDismiss}
@@ -217,11 +180,9 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
                 focusTrapZoneProps && !focusTrapZoneProps.isClickableOutsideFocusTrap ? false : true
               }
             >
-              {/* <div className={css('ms-Panel-commands')} data-is-visible={true}> */}
               <div className={_classNames.commands} data-is-visible={true}>
                 {onRenderNavigation(this.props, this._onRenderNavigation)}
               </div>
-              {/* <div className={css('ms-Panel-contentInner', styles.contentInner)}> */}
               <div className={_classNames.contentInner}>
                 {header}
                 {onRenderBody(this.props, this._onRenderBody)}
@@ -274,21 +235,19 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     const { closeButtonAriaLabel, hasCloseButton } = props;
     if (hasCloseButton) {
       return (
-        // <div className={css('ms-Panel-navigation', styles.navigation)}>
         <div className={this._classNames.navigation}>
           <IconButton
-            styles={{
-              root: {
-                height: 'auto',
-                width: '44px',
-                color: theme.palette.neutralSecondary,
-                fontSize: IconFontSizes.large
-              },
-              rootHovered: {
-                color: theme.palette.neutralPrimary
-              }
-            }}
-            // className={css('ms-Panel-closeButton ms-PanelAction-close')}
+            // styles={{
+            //   root: {
+            //     height: 'auto',
+            //     width: '44px',
+            //     // color: theme.palette.neutralSecondary,
+            //     fontSize: IconFontSizes.large
+            //   },
+            //   rootHovered: {
+            //     // color: theme.palette.neutralPrimary
+            //   }
+            // }}
             className={this._classNames.closeButton}
             onClick={this._onPanelClick}
             ariaLabel={closeButtonAriaLabel}
@@ -306,18 +265,12 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     defaultRender?: (props?: IPanelProps) => JSX.Element | null,
     headerTextId?: string | undefined
   ): JSX.Element | null => {
-    const { headerText, headerClassName = '' } = props;
+    const { headerText } = props;
 
     if (headerText) {
       return (
-        // <div className={css('ms-Panel-header', styles.header)}>
         <div className={this._classNames.header}>
-          <p
-            // className={css('ms-Panel-headerText', styles.headerText, headerClassName)}
-            className={this._classNames.headerText}
-            id={headerTextId}
-            role="heading"
-          >
+          <p className={this._classNames.headerText} id={headerTextId} role="heading">
             {headerText}
           </p>
         </div>
@@ -327,8 +280,6 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
   };
 
   private _onRenderBody = (props: IPanelProps): JSX.Element => {
-    // const contentClass = css('ms-Panel-content', styles.content, props.isFooterAtBottom && styles.contentGrow);
-
     return (
       <div ref={this._content} className={this._classNames.content} data-is-scrollable={true}>
         {props.children}
@@ -337,13 +288,10 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
   };
 
   private _onRenderFooter = (props: IPanelProps): JSX.Element | null => {
-    const { isFooterSticky } = this.state;
     const { onRenderFooterContent = null } = this.props;
     if (onRenderFooterContent) {
       return (
-        // <div className={css('ms-Panel-footer', styles.footer, isFooterSticky && styles.footerIsSticky)}>
         <div className={this._classNames.footer}>
-          {/* <div className={css('ms-Panel-footerInner', styles.footerInner)}>{onRenderFooterContent()}</div> */}
           <div className={this._classNames.footerInner}>{onRenderFooterContent()}</div>
         </div>
       );

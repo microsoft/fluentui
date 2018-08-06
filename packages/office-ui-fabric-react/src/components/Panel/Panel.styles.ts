@@ -3,13 +3,15 @@ import {
   AnimationClassNames,
   AnimationVariables,
   FontSizes,
+  IconFontSizes,
   getGlobalClassNames,
   ScreenWidthMinMedium,
   ScreenWidthMinXLarge,
   ScreenWidthMinXXLarge,
   ScreenWidthMinUhfMobile
 } from '../../Styling';
-import { panel } from 'office-ui-fabric-react/lib/components/Dropdown/Dropdown.scss';
+import { IStyleFunctionOrObject } from '../../Utilities';
+import { IIconStyles, IIconStyleProps } from '../../Icon';
 
 const GlobalClassNames = {
   root: 'ms-Panel',
@@ -35,11 +37,27 @@ const GlobalClassNames = {
   custom: 'ms-Panel--custom'
 };
 
+function getIconStyles(props: IPanelStyleProps): IStyleFunctionOrObject<IIconStyleProps, IIconStyles> {
+  const { theme } = props;
+  return () => ({
+    root: {
+      height: 'auto',
+      width: '44px',
+      color: theme.palette.neutralSecondary,
+      fontSize: IconFontSizes.large
+    },
+    rootHovered: {
+      color: theme.palette.neutralPrimary
+    }
+  });
+}
+
 export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
   const {
     className,
     focusTrapZoneClassName,
     hasCloseButton,
+    headerClassName,
     isAnimating,
     isFooterAtBottom,
     isFooterSticky,
@@ -70,11 +88,11 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
     paddingLeft: '16px',
     paddingRight: '16px',
     selectors: {
-      ['@media (min-width: ' + ScreenWidthMinUhfMobile + ')']: {
+      ['@media screen and (min-width: ' + ScreenWidthMinUhfMobile + 'px)']: {
         paddingLeft: '32px',
         paddingRight: '32px'
       },
-      ['@media (min-width: ' + ScreenWidthMinXXLarge + ')']: {
+      ['@media screen and (min-width: ' + ScreenWidthMinXXLarge + 'px)']: {
         paddingLeft: '40px',
         paddingRight: '40px'
       }
@@ -138,12 +156,11 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         overflowY: 'auto',
         WebkitOverflowScrolling: 'touch',
         selectors: {
-          ['@media (min-width: ' + ScreenWidthMinMedium + ')']: {
+          ['@media (min-width: ' + ScreenWidthMinMedium + 'px)']: {
             borderLeft: `1px solid ${palette.neutralLight}`,
             borderRight: `1px solid ${palette.neutralLight}`,
             pointerEvents: 'auto',
             width: panelSize.width.sm,
-            // width: '340px',
             boxShadow: '-30px, 0px, 30px, -30px, .2',
             left: 'auto'
           }
@@ -153,11 +170,9 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         pointerEvents: 'auto'
       },
       type === PanelType.smallFluid && {
-        // styles.rootIsSmallFluid
         width: '100%'
       },
       type === PanelType.smallFixedNear && {
-        // styles.rootIsSmallLeft,
         right: 'auto',
         left: 0,
         width: panelSize.width.xs,
@@ -166,65 +181,60 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       type === PanelType.smallFixedFar && {
         width: panelSize.width.xs,
         selectors: {
-          ['@media (min-width: ' + ScreenWidthMinMedium + ')']: {
+          ['@media (min-width: ' + ScreenWidthMinMedium + 'px)']: {
             width: panelSize.width.sm
           }
         }
       },
       type === PanelType.medium && {
-        // styles.rootIsMedium
         selectors: {
-          ['@media (min-width: ' + ScreenWidthMinUhfMobile + ')']: {
+          ['@media (min-width: ' + ScreenWidthMinUhfMobile + 'px)']: {
             left: panelSize.margin.md,
             width: 'auto'
           },
-          ['@media (min-width: ' + ScreenWidthMinXLarge + ')']: {
+          ['@media (min-width: ' + ScreenWidthMinXLarge + 'px)']: {
             left: 'auto',
             width: panelSize.width.md
           }
         }
       },
       (type === PanelType.large || type === PanelType.largeFixed) && {
-        // styles.rootIsLarg
         selectors: {
-          ['@media (min-width: ' + ScreenWidthMinUhfMobile + ')']: {
+          ['@media (min-width: ' + ScreenWidthMinUhfMobile + 'px)']: {
             left: panelSize.margin.md,
             width: 'auto'
           },
-          ['@media (min-width: ' + ScreenWidthMinXXLarge + ')']: {
+          ['@media (min-width: ' + ScreenWidthMinXXLarge + 'px)']: {
             left: panelSize.margin.lg
           }
         }
       },
       type === PanelType.largeFixed && {
-        // styles.rootIsFixed
         selectors: {
-          ['@media (min-width: ' + ScreenWidthMinXXLarge + ')']: {
+          ['@media (min-width: ' + ScreenWidthMinXXLarge + 'px)']: {
             left: 'auto',
             width: panelSize.width.lg
           }
         }
       },
       type === PanelType.extraLarge && {
-        // styles.rootIsXLarge
         selectors: {
-          ['@media (min-width: ' + ScreenWidthMinUhfMobile + ')']: {
+          ['@media (min-width: ' + ScreenWidthMinUhfMobile + 'px)']: {
             left: panelSize.margin.md,
             width: 'auto'
           },
-          ['@media (min-width: ' + ScreenWidthMinXXLarge + ')']: {
+          ['@media (min-width: ' + ScreenWidthMinXXLarge + 'px)']: {
             left: panelSize.margin.xl
           }
         }
       },
       type === PanelType.custom && {
-        // styles.rootIsCustom
         selectors: {
-          ['@media (min-width: ' + ScreenWidthMinUhfMobile + ')']: {
+          ['@media (min-width: ' + ScreenWidthMinUhfMobile + 'px)']: {
             left: panelSize.margin.md,
             width: 'auto'
           },
-          ['@media (min-width: ' + ScreenWidthMinXLarge + ')']: {
+          ['@media (min-width: ' + ScreenWidthMinXLarge + 'px)']: {
             left: 'auto'
           }
         }
@@ -252,11 +262,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         transform: 'translateZ(0)'
       },
       hasCloseButton && {
-        selectors: {
-          '$root &': {
-            top: commandBarHeight
-          }
-        }
+        top: commandBarHeight
       }
     ],
     navigation: [
@@ -277,7 +283,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         // Ensure that title doesn't shrink if screen is too small
         flexGrow: 0,
         selectors: {
-          ['@media (min-width: ' + ScreenWidthMinXLarge + ')']: {
+          ['@media (min-width: ' + ScreenWidthMinXLarge + 'px)']: {
             marginTop: '30px'
           }
         }
@@ -290,7 +296,8 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         color: palette.neutralPrimary,
         lineHeight: '32px',
         margin: 0
-      }
+      },
+      headerClassName
     ],
     content: [
       classNames.content,
@@ -324,6 +331,9 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         paddingBottom: '20px',
         paddingTop: '20px'
       }
-    ]
+    ],
+    subComponentStyles: {
+      icon: getIconStyles(props)
+    }
   };
 };
