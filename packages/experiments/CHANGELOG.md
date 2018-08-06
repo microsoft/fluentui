@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 03 Aug 2018 10:25:59 GMT and should not be manually modified.
+This log was last generated on Mon, 06 Aug 2018 10:27:53 GMT and should not be manually modified.
+
+## 6.22.5
+Mon, 06 Aug 2018 10:27:53 GMT
+
+### Patches
+
+- Fixing Stack to allow for classNames through Stack.Item
 
 ## 6.22.4
 Fri, 03 Aug 2018 10:25:59 GMT

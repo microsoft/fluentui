@@ -2,6 +2,35 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.11.0",
+      "tag": "@uifabric/dashboard_v0.11.0",
+      "date": "Mon, 06 Aug 2018 10:27:53 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Samiya <samiyaakhtar7@gmail.com>",
+            "commit": "17ec45db2c4603d095c881123385a9989725f195",
+            "comment": "Fixing the type of onLayoutChange to fix build"
+          }
+        ],
+        "minor": [
+          {
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "88f940abe5fd081a238b260b57479892a0ecd0ed",
+            "comment": "passing down card width and height down to charts"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.22.4 <7.0.0` to `>=6.22.5 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.45.0 <7.0.0` to `>=6.46.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.10.0",
       "tag": "@uifabric/dashboard_v0.10.0",
       "date": "Fri, 03 Aug 2018 10:25:59 GMT",
