@@ -75,15 +75,15 @@ $CommandBarHeight: 44px;
 
 //== Modifier: Small panel (anchored right, fixed width)
 //
-.root.rootIsSmall {
-  .main {
-    width: $Panel-width-xs;
+// .root.rootIsSmall {
+//   .main {
+//     width: $Panel-width-xs;
 
-    @media (min-width: $ms-screen-min-md) {
-      width: $Panel-width-sm;
-    }
-  }
-}
+//     @media (min-width: $ms-screen-min-md) {
+//       width: $Panel-width-sm;
+//     }
+//   }
+// }
 
 //== Modifier: Small panel (anchored left, fixed width)
 //
@@ -99,77 +99,77 @@ $CommandBarHeight: 44px;
 //== Modifier: Small panel, full screen (anchored left, fluid width)
 // Note: This panel should only be used for dropdown menus on small screens.
 //
-.root.rootIsSmallFluid {
-  .main {
-    width: 100%;
-  }
-}
+// .root.rootIsSmallFluid {
+//   .main {
+//     width: 100%;
+//   }
+// }
 
 //== Modifier: Medium, Large, Extra Large and Custom panels (anchored right, fluid width)
 //
-.root.rootIsMedium,
-.root.rootIsLarge,
-.root.rootIsXLarge,
-.root.rootIsCustom {
-  .main {
-    @media (min-width: $uhf-screen-min-mobile) {
-      @include ms-left($Panel-margin-md);
-      width: auto;
-    }
-  }
-}
+// .root.rootIsMedium,
+// .root.rootIsLarge,
+// .root.rootIsXLarge,
+// .root.rootIsCustom {
+//   .main {
+//     @media (min-width: $uhf-screen-min-mobile) {
+//       @include ms-left($Panel-margin-md);
+//       width: auto;
+//     }
+//   }
+// }
 
 //== Modifier: Medium panel (anchored right, fixed width)
 //
-.root.rootIsMedium {
-  .main {
-    @media (min-width: $ms-screen-min-xl) {
-      @include ms-left(auto);
-      width: $Panel-width-md;
-    }
-  }
-}
+// .root.rootIsMedium {
+//   .main {
+//     @media (min-width: $ms-screen-min-xl) {
+//       @include ms-left(auto);
+//       width: $Panel-width-md;
+//     }
+//   }
+// }
 
 //== Modifier: Large panel (anchored right, fluid width)
 //
-.root.rootIsLarge {
-  .main {
-    @media (min-width: $ms-screen-min-xxl) {
-      @include ms-left($Panel-margin-lg);
-    }
-  }
-}
+// .root.rootIsLarge {
+//   .main {
+//     @media (min-width: $ms-screen-min-xxl) {
+//       @include ms-left($Panel-margin-lg);
+//     }
+//   }
+// }
 
 //== Modifier: Large fixed panel (anchored right, fixed width)
 //
-.root.rootIsLarge.rootIsFixed {
-  .main {
-    @media (min-width: $ms-screen-min-xxl) {
-      @include ms-left(auto);
-      width: $Panel-width-lg;
-    }
-  }
-}
+// .root.rootIsLarge.rootIsFixed {
+//   .main {
+//     @media (min-width: $ms-screen-min-xxl) {
+//       @include ms-left(auto);
+//       width: $Panel-width-lg;
+//     }
+//   }
+// }
 
 //== Modifier: XLarge panel (anchored right, fluid width)
 //
-.root.rootIsXLarge {
-  .main {
-    @media (min-width: $ms-screen-min-xxl) {
-      @include ms-left($Panel-margin-xl);
-    }
-  }
-}
+// .root.rootIsXLarge {
+//   .main {
+//     @media (min-width: $ms-screen-min-xxl) {
+//       @include ms-left($Panel-margin-xl);
+//     }
+//   }
+// }
 
 //== Modifier: Medium panel (anchored right, fixed width)
 //
-.root.rootIsCustom {
-  .main {
-    @media (min-width: $ms-screen-min-xl) {
-      @include ms-left(auto);
-    }
-  }
-}
+// .root.rootIsCustom {
+//   .main {
+//     @media (min-width: $ms-screen-min-xl) {
+//       @include ms-left(auto);
+//     }
+//   }
+// }
 
 //== State: When the panel is open.
 //

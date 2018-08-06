@@ -1,4 +1,4 @@
-import { IPanelStyleProps, IPanelStyles } from './Panel.types';
+import { IPanelStyleProps, IPanelStyles, PanelType } from './Panel.types';
 import {
   AnimationClassNames,
   AnimationVariables,
@@ -9,6 +9,7 @@ import {
   ScreenWidthMinXXLarge,
   ScreenWidthMinUhfMobile
 } from '../../Styling';
+import { panel } from 'office-ui-fabric-react/lib/components/Dropdown/Dropdown.scss';
 
 const GlobalClassNames = {
   root: 'ms-Panel',
@@ -45,7 +46,8 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
     isOnRightSide,
     isOpen,
     isHiddenOnDismiss,
-    theme
+    theme,
+    type
   } = props;
   const { palette } = theme;
 
@@ -149,6 +151,83 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       },
       isOpen && {
         pointerEvents: 'auto'
+      },
+      type === PanelType.smallFluid && {
+        // styles.rootIsSmallFluid
+        width: '100%'
+      },
+      type === PanelType.smallFixedNear && {
+        // styles.rootIsSmallLeft,
+        right: 'auto',
+        left: 0,
+        width: panelSize.width.xs,
+        boxShadow: '30px, 0px, 30px, -30px, .2'
+      },
+      type === PanelType.smallFixedFar && {
+        width: panelSize.width.xs,
+        selectors: {
+          ['@media (min-width: ' + ScreenWidthMinMedium + ')']: {
+            width: panelSize.width.sm
+          }
+        }
+      },
+      type === PanelType.medium && {
+        // styles.rootIsMedium
+        selectors: {
+          ['@media (min-width: ' + ScreenWidthMinUhfMobile + ')']: {
+            left: panelSize.margin.md,
+            width: 'auto'
+          },
+          ['@media (min-width: ' + ScreenWidthMinXLarge + ')']: {
+            left: 'auto',
+            width: panelSize.width.md
+          }
+        }
+      },
+      (type === PanelType.large || type === PanelType.largeFixed) && {
+        // styles.rootIsLarg
+        selectors: {
+          ['@media (min-width: ' + ScreenWidthMinUhfMobile + ')']: {
+            left: panelSize.margin.md,
+            width: 'auto'
+          },
+          ['@media (min-width: ' + ScreenWidthMinXXLarge + ')']: {
+            left: panelSize.margin.lg
+          }
+        }
+      },
+      type === PanelType.largeFixed && {
+        // styles.rootIsFixed
+        selectors: {
+          ['@media (min-width: ' + ScreenWidthMinXXLarge + ')']: {
+            left: 'auto',
+            width: panelSize.width.lg
+          }
+        }
+      },
+      type === PanelType.extraLarge && {
+        // styles.rootIsXLarge
+        selectors: {
+          ['@media (min-width: ' + ScreenWidthMinUhfMobile + ')']: {
+            left: panelSize.margin.md,
+            width: 'auto'
+          },
+          ['@media (min-width: ' + ScreenWidthMinXXLarge + ')']: {
+            left: panelSize.margin.xl
+          }
+        }
+      },
+      type === PanelType.custom && {
+        // styles.rootIsCustom
+        selectors: {
+          ['@media (min-width: ' + ScreenWidthMinUhfMobile + ')']: {
+            left: panelSize.margin.md,
+            width: 'auto'
+          },
+          ['@media (min-width: ' + ScreenWidthMinXLarge + ')']: {
+            left: 'auto'
+          }
+        }
       },
       isOpen && isAnimating && !isOnRightSide && AnimationClassNames.slideRightIn40,
       isOpen && isAnimating && isOnRightSide && AnimationClassNames.slideLeftIn40,

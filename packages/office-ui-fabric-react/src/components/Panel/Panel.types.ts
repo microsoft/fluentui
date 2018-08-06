@@ -347,6 +347,11 @@ export interface IPanelStyleProps {
    * Panel has close button
    */
   hasCloseButton?: boolean;
+
+  /**
+   * Type of the panel.
+   */
+  type?: PanelType;
 }
 
 export interface IPanelStyles {

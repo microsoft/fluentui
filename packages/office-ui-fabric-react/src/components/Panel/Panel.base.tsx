@@ -140,7 +140,8 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       isFooterSticky,
       isOnRightSide,
       isOpen: this.state.isOpen,
-      isHiddenOnDismiss
+      isHiddenOnDismiss,
+      type
     });
 
     const { _classNames } = this;
@@ -175,23 +176,24 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
           <div
             {...nativeProps}
             ref={this._panel}
-            className={css(
-              'ms-Panel',
-              styles.root,
-              className,
-              // because the RTL animations are not being used, we need to set a class
-              isOpen && 'is-open ' + styles.rootIsOpen,
-              type === PanelType.smallFluid && 'ms-Panel--smFluid ' + styles.rootIsSmallFluid,
-              type === PanelType.smallFixedNear && 'ms-Panel--smLeft ' + styles.rootIsSmallLeft,
-              type === PanelType.smallFixedFar && 'ms-Panel--sm ' + styles.rootIsSmall,
-              type === PanelType.medium && 'ms-Panel--md ' + styles.rootIsMedium,
-              (type === PanelType.large || type === PanelType.largeFixed) && 'ms-Panel--lg ' + styles.rootIsLarge,
-              type === PanelType.largeFixed && 'ms-Panel--fixed ' + styles.rootIsFixed,
-              type === PanelType.extraLarge && 'ms-Panel--xl ' + styles.rootIsXLarge,
-              type === PanelType.custom && 'ms-Panel--custom ' + styles.rootIsCustom,
-              hasCloseButton && 'ms-Panel--hasCloseButton ' + styles.rootHasCloseButton
-              // !isOpen && !isAnimating && isHiddenOnDismiss && styles.hiddenPanel
-            )}
+            // className={css(
+            //   'ms-Panel',
+            //   styles.root,
+            //   className,
+            //   // because the RTL animations are not being used, we need to set a class
+            //   isOpen && 'is-open ' + styles.rootIsOpen,
+            //   type === PanelType.smallFluid && 'ms-Panel--smFluid ' + styles.rootIsSmallFluid,
+            //   type === PanelType.smallFixedNear && 'ms-Panel--smLeft ' + styles.rootIsSmallLeft,
+            //   type === PanelType.smallFixedFar && 'ms-Panel--sm ' + styles.rootIsSmall,
+            //   type === PanelType.medium && 'ms-Panel--md ' + styles.rootIsMedium,
+            //   (type === PanelType.large || type === PanelType.largeFixed) && 'ms-Panel--lg ' + styles.rootIsLarge,
+            //   type === PanelType.largeFixed && 'ms-Panel--fixed ' + styles.rootIsFixed,
+            //   type === PanelType.extraLarge && 'ms-Panel--xl ' + styles.rootIsXLarge,
+            //   type === PanelType.custom && 'ms-Panel--custom ' + styles.rootIsCustom,
+            //   hasCloseButton && 'ms-Panel--hasCloseButton ' + styles.rootHasCloseButton
+            //   // !isOpen && !isAnimating && isHiddenOnDismiss && styles.hiddenPanel
+            // )}
+            className={_classNames.root}
           >
             {overlay}
             <FocusTrapZone
@@ -215,10 +217,12 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
                 focusTrapZoneProps && !focusTrapZoneProps.isClickableOutsideFocusTrap ? false : true
               }
             >
-              <div className={css('ms-Panel-commands')} data-is-visible={true}>
+              {/* <div className={css('ms-Panel-commands')} data-is-visible={true}> */}
+              <div className={_classNames.commands} data-is-visible={true}>
                 {onRenderNavigation(this.props, this._onRenderNavigation)}
               </div>
-              <div className={css('ms-Panel-contentInner', styles.contentInner)}>
+              {/* <div className={css('ms-Panel-contentInner', styles.contentInner)}> */}
+              <div className={_classNames.contentInner}>
                 {header}
                 {onRenderBody(this.props, this._onRenderBody)}
                 {onRenderFooter(this.props, this._onRenderFooter)}
@@ -270,7 +274,8 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     const { closeButtonAriaLabel, hasCloseButton } = props;
     if (hasCloseButton) {
       return (
-        <div className={css('ms-Panel-navigation', styles.navigation)}>
+        // <div className={css('ms-Panel-navigation', styles.navigation)}>
+        <div className={this._classNames.navigation}>
           <IconButton
             styles={{
               root: {
@@ -283,7 +288,8 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
                 color: theme.palette.neutralPrimary
               }
             }}
-            className={css('ms-Panel-closeButton ms-PanelAction-close')}
+            // className={css('ms-Panel-closeButton ms-PanelAction-close')}
+            className={this._classNames.closeButton}
             onClick={this._onPanelClick}
             ariaLabel={closeButtonAriaLabel}
             data-is-visible={true}
@@ -304,9 +310,11 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
 
     if (headerText) {
       return (
-        <div className={css('ms-Panel-header', styles.header)}>
+        // <div className={css('ms-Panel-header', styles.header)}>
+        <div className={this._classNames.header}>
           <p
-            className={css('ms-Panel-headerText', styles.headerText, headerClassName)}
+            // className={css('ms-Panel-headerText', styles.headerText, headerClassName)}
+            className={this._classNames.headerText}
             id={headerTextId}
             role="heading"
           >
@@ -319,10 +327,10 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
   };
 
   private _onRenderBody = (props: IPanelProps): JSX.Element => {
-    const contentClass = css('ms-Panel-content', styles.content, props.isFooterAtBottom && styles.contentGrow);
+    // const contentClass = css('ms-Panel-content', styles.content, props.isFooterAtBottom && styles.contentGrow);
 
     return (
-      <div ref={this._content} className={contentClass} data-is-scrollable={true}>
+      <div ref={this._content} className={this._classNames.content} data-is-scrollable={true}>
         {props.children}
       </div>
     );
@@ -333,8 +341,10 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     const { onRenderFooterContent = null } = this.props;
     if (onRenderFooterContent) {
       return (
-        <div className={css('ms-Panel-footer', styles.footer, isFooterSticky && styles.footerIsSticky)}>
-          <div className={css('ms-Panel-footerInner', styles.footerInner)}>{onRenderFooterContent()}</div>
+        // <div className={css('ms-Panel-footer', styles.footer, isFooterSticky && styles.footerIsSticky)}>
+        <div className={this._classNames.footer}>
+          {/* <div className={css('ms-Panel-footerInner', styles.footerInner)}>{onRenderFooterContent()}</div> */}
+          <div className={this._classNames.footerInner}>{onRenderFooterContent()}</div>
         </div>
       );
     }
