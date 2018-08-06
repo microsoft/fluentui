@@ -32,7 +32,7 @@ export class FeedbackList extends React.Component<IFeedbackListProps, IFeedbackL
     };
   }
 
-  public componentDidMount(): void {
+  public async componentDidMount(): Promise<void> {
     const githubUrl =
       'https://api.github.com/search/issues?q=type:issue%20repo:OfficeDev/office-ui-fabric-react%20label:%22Component:%20' +
       this.props.title;
@@ -40,7 +40,9 @@ export class FeedbackList extends React.Component<IFeedbackListProps, IFeedbackL
     const openIssuesURL = githubUrl + '%22%20is:open';
     const closedIssuesURL = githubUrl + '%22%20is:closed';
 
-    this.setState({ openIssues: this.getIssues(openIssuesURL), closedIssues: this.getIssues(closedIssuesURL) });
+    const results = await Promise.all([this.getIssues(openIssuesURL), this.getIssues(closedIssuesURL)]);
+
+    this.setState({ openIssues: results[0], closedIssues: results[1] });
   }
 
   public getIssues(url: string): IListItem[] {
