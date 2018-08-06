@@ -311,7 +311,7 @@ export interface ISemanticColors {
   /**
    * Color of text in a hovered primary button
    */
-  primarybuttonTextHovered: string;
+  primaryButtonTextHovered: string;
   /**
    * Color of text in a pressed primary button; i.e. currently being clicked by mouse
    */

@@ -206,7 +206,7 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     primaryButtonBackgroundPressed: p.themeDark,
     primaryButtonBorder: 'transparent',
     primaryButtonText: p.white,
-    primarybuttonTextHovered: p.white,
+    primaryButtonTextHovered: p.white,
     primaryButtonTextPressed: p.white,
 
     menuItemBackgroundHovered: p.neutralLighter,
