@@ -8,11 +8,11 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
 >
   <div
     aria-activedescendant={undefined}
-    aria-describedby="Dropdown94-option"
+    aria-describedby="Dropdown0-option"
     aria-disabled={undefined}
     aria-expanded="false"
     aria-label={undefined}
-    aria-labelledby="Dropdown94-label"
+    aria-labelledby="Dropdown0-label"
     aria-owns={undefined}
     className=
         ms-Dropdown
@@ -97,7 +97,7 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
           border-color: #a80000;
         }
     data-is-focusable={true}
-    id="Dropdown94"
+    id="Dropdown0"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -141,7 +141,7 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
             text-overflow: ellipsis;
             white-space: nowrap;
           }
-      id="Dropdown94-option"
+      id="Dropdown0-option"
       role={undefined}
     />
     <span
