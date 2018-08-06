@@ -16,7 +16,6 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
           font-size: 12px;
           font-weight: 400;
           justify-content: flex-start;
-          line-height: 17px;
           margin-top: 20px;
         }
     style={undefined}
@@ -204,7 +203,6 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
           font-size: 12px;
           font-weight: 400;
           justify-content: flex-start;
-          line-height: 17px;
           margin-top: 20px;
         }
     style={undefined}
@@ -534,7 +532,6 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
           font-size: 12px;
           font-weight: 400;
           justify-content: flex-start;
-          line-height: 17px;
           margin-top: 20px;
         }
     style={undefined}
@@ -639,7 +636,6 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
           font-size: 12px;
           font-weight: 400;
           justify-content: flex-start;
-          line-height: 17px;
           margin-top: 20px;
         }
     style={undefined}
