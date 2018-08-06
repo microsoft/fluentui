@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.118.3",
+      "tag": "office-ui-fabric-react_v5.118.3",
+      "date": "Mon, 06 Aug 2018 18:19:56 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "4a67e6dcad6433af963a9126fccaa62e7ef2e7dc",
+            "comment": "Fix DetailsHeader rendering more than one root element"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.118.2",
       "tag": "office-ui-fabric-react_v5.118.2",
       "date": "Wed, 01 Aug 2018 11:25:30 GMT",

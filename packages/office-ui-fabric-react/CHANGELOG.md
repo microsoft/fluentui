@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 01 Aug 2018 11:25:30 GMT and should not be manually modified.
+This log was last generated on Mon, 06 Aug 2018 18:19:56 GMT and should not be manually modified.
+
+## 5.118.3
+Mon, 06 Aug 2018 18:19:56 GMT
+
+### Patches
+
+- Fix DetailsHeader rendering more than one root element
 
 ## 5.118.2
 Wed, 01 Aug 2018 11:25:30 GMT
