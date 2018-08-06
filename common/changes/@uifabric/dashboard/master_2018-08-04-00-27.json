@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/dashboard",
-      "comment": "Adding custom font size and color props to Multicount. Changes to the precision logic",
+      "comment": "Adding props that take colors for icon and content in each cell of gridlist",
       "type": "minor"
     }
   ],

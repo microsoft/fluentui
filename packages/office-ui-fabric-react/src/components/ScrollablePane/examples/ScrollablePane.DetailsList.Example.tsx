@@ -90,7 +90,7 @@ export class ScrollablePaneDetailsListExample extends React.Component<
           <TextField
             label="Filter by name:"
             // tslint:disable-next-line:jsx-no-lambda
-            onChanged={text =>
+            onChange={(ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text: string) =>
               this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items })
             }
           />

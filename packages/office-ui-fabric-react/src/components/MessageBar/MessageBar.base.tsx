@@ -118,7 +118,10 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
 
   private _renderSingleLine(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
     return (
-      <div className={this._classNames.root}>
+      <div
+        className={this._classNames.root}
+        aria-expanded={!this.props.actions && this.props.truncated ? this.state.expandSingleLine : undefined}
+      >
         <div className={this._classNames.content}>
           {this._getIconSpan()}
           {this._renderInnerText()}

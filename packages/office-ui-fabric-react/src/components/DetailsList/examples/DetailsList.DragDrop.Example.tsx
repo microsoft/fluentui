@@ -74,13 +74,13 @@ export class DetailsListDragDropExample extends React.Component<
           label={'Number of Left frozen columns:'}
           onGetErrorMessage={this._validateNumber}
           value={frozenColumnCountFromStart}
-          onChanged={this._onChangeStartCountText}
+          onChange={this._onChangeStartCountText}
         />
         <TextField
           label={'Number of Right frozen columns:'}
           onGetErrorMessage={this._validateNumber}
           value={frozenColumnCountFromEnd}
-          onChanged={this._onChangeEndCountText}
+          onChange={this._onChangeEndCountText}
         />
         <div>{selectionDetails}</div>
         <MarqueeSelection selection={this._selection}>
