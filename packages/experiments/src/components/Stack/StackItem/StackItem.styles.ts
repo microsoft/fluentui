@@ -1,4 +1,4 @@
-import { IStyleProps } from '../../Text/createComponent';
+import { IThemedProps } from '../../../Foundation';
 import { IStackItemProps, IStackItemStyles } from './StackItem.types';
 
 const alignMap: { [key: string]: string } = {
@@ -7,8 +7,8 @@ const alignMap: { [key: string]: string } = {
 };
 const justifyMap: { [key: string]: string } = {};
 
-export const styles = (props: IStyleProps<IStackItemProps, IStackItemStyles>): IStackItemStyles => {
-  const { grow, collapse, align, justify, gap, vertical } = props;
+export const styles = (props: IThemedProps<IStackItemProps>): IStackItemStyles => {
+  const { grow, collapse, align, justify, gap, vertical, className } = props;
 
   return {
     root: [
@@ -27,7 +27,10 @@ export const styles = (props: IStyleProps<IStackItemProps, IStackItemStyles>): I
       },
       !!gap && {
         [vertical ? 'marginTop' : 'marginLeft']: gap
-      }
+      },
+      className
     ]
+    // TODO: this cast may be hiding some potential issues with styling and name
+    //        lookups and should be removed
   } as IStackItemStyles;
 };

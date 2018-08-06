@@ -3,6 +3,9 @@ import { IChartInternalProps, ChartType, ChartHeight, ChartWidth } from './Chart
 import { HorizontalBarChart } from '@uifabric/charting/lib/HorizontalBarChart';
 import { LineChart } from '@uifabric/charting/lib/LineChart';
 import { VerticalBarChart } from '@uifabric/charting/lib/VerticalBarChart';
+import { DonutChart } from '@uifabric/charting/lib/DonutChart';
+import { PieChart } from '@uifabric/charting/lib/PieChart';
+import { StackedBarChart } from '@uifabric/charting/lib/StackedBarChart';
 
 export class Chart extends React.Component<IChartInternalProps, {}> {
   public render(): JSX.Element {
@@ -40,6 +43,39 @@ export class Chart extends React.Component<IChartInternalProps, {}> {
             barHeight={this.props.barHeight}
             chartLabel={this.props.chartLabel}
             colors={this.props.colors}
+          />
+        );
+      }
+      case ChartType.DonutChart: {
+        return (
+          <DonutChart
+            data={this.props.data}
+            colors={this.props.colors}
+            width={this._getWidth()}
+            height={this._getHeight()}
+          />
+        );
+      }
+      case ChartType.PieChart: {
+        return (
+          <PieChart
+            data={this.props.data}
+            chartTitle={this.props.chartLabel}
+            colors={this.props.colors}
+            width={this._getWidth()}
+            height={this._getHeight()}
+          />
+        );
+      }
+      case ChartType.StackedBarChart: {
+        return (
+          <StackedBarChart
+            data={this.props.data}
+            chartTitle={this.props.chartLabel}
+            colors={this.props.colors}
+            width={this._getWidth()}
+            height={this._getHeight()}
+            barHeight={this.props.barHeight}
           />
         );
       }

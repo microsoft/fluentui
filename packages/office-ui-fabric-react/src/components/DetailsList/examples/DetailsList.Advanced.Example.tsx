@@ -119,7 +119,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
       <div className="ms-DetailsListAdvancedExample">
         <CommandBar items={this._getCommandItems()} />
 
-        {isGrouped ? <TextField label="Group Item Limit" onChanged={this._onItemLimitChanged} /> : null}
+        {isGrouped ? <TextField label="Group Item Limit" onChange={this._onItemLimitChanged} /> : null}
 
         <DetailsList
           setKey="items"
@@ -218,7 +218,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     });
   };
 
-  private _onItemLimitChanged = (value: string): void => {
+  private _onItemLimitChanged = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, value: string): void => {
     let newValue = parseInt(value, 10);
     if (isNaN(newValue)) {
       newValue = DEFAULT_ITEM_LIMIT;

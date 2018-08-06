@@ -80,11 +80,13 @@ describe('Link', () => {
     const NoClassNamesTheme = createTheme({ disableGlobalClassNames: true });
 
     expect(
-      ReactDOM.renderToStaticMarkup(
-        <Customizer settings={{ theme: NoClassNamesTheme }}>
-          <Link href="helloworld.html">My Link</Link>
-        </Customizer>
-      ).indexOf('ms-Link')
-    ).toEqual(-1);
+      /ms-Link($| )/.test(
+        ReactDOM.renderToStaticMarkup(
+          <Customizer settings={{ theme: NoClassNamesTheme }}>
+            <Link href="helloworld.html">My Link</Link>
+          </Customizer>
+        )
+      )
+    ).toBe(false);
   });
 });

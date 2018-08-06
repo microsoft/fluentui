@@ -36,7 +36,7 @@ export const MessageBarBasicExample = () => (
       onDismiss={log('test')}
       dismissButtonAriaLabel="Close"
       truncated={true}
-      overflowButtonAriaLabel="Overflow"
+      overflowButtonAriaLabel="See more"
     >
       Blocked lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus, purus a lobortis tristique, odio
       augue pharetra metus, ac placerat nunc mi nec dui. Vestibulum aliquam et nunc semper scelerisque. Curabitur vitae
@@ -156,9 +156,7 @@ export const MessageBarBasicExample = () => (
       <Link href="www.bing.com">Visit our website.</Link>
     </MessageBar>
 
-    <Label>
-      Blocked, single line, with dismiss button and truncated text - custom styles
-    </Label>
+    <Label>Blocked, single line, with dismiss button and truncated text - custom styles</Label>
     <MessageBar
       styles={{
         root: {
@@ -193,13 +191,13 @@ export const MessageBarBasicExample = () => (
       onDismiss={log('test')}
       dismissButtonAriaLabel="Close"
       truncated={true}
-      overflowButtonAriaLabel="Overflow"
+      overflowButtonAriaLabel="See more"
     >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus, purus a lobortis tristique, odio
-      augue pharetra metus, ac placerat nunc mi nec dui. Vestibulum aliquam et nunc semper scelerisque. Curabitur vitae
-      orci nec quam condimentum porttitor et sed lacus. Vivamus ac efficitur leo. Cras faucibus mauris libero, ac
-      placerat erat euismod et. Donec pulvinar commodo odio sit amet faucibus. In hac habitasse platea dictumst. Duis eu
-      ante commodo, condimentum nibh pellentesque, laoreet enim. Fusce massa lorem, ultrices eu mi a, fermentum suscipit
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus, purus a lobortis tristique, odio augue
+      pharetra metus, ac placerat nunc mi nec dui. Vestibulum aliquam et nunc semper scelerisque. Curabitur vitae orci
+      nec quam condimentum porttitor et sed lacus. Vivamus ac efficitur leo. Cras faucibus mauris libero, ac placerat
+      erat euismod et. Donec pulvinar commodo odio sit amet faucibus. In hac habitasse platea dictumst. Duis eu ante
+      commodo, condimentum nibh pellentesque, laoreet enim. Fusce massa lorem, ultrices eu mi a, fermentum suscipit
       magna. Integer porta purus pulvinar, hendrerit felis eget, condimentum mauris.{' '}
       <Link href="www.bing.com">Visit our website.</Link>
     </MessageBar>
@@ -283,7 +281,7 @@ export const MessageBarBasicExample = () => (
           background: 'rgba(0, 188, 242, 0.4)'
         },
         dismissal: {
-          border: '1px solid #00188f',
+          border: '1px solid #00188f'
         },
         actions: {
           border: '1px solid #0078d4',
@@ -301,11 +299,11 @@ export const MessageBarBasicExample = () => (
         </div>
       }
     >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus, purus a lobortis tristique, odio
-      augue pharetra metus, ac placerat nunc mi nec dui. Vestibulum aliquam et nunc semper scelerisque. Curabitur vitae
-      orci nec quam condimentum porttitor et sed lacus. Vivamus ac efficitur leo. Cras faucibus mauris libero, ac
-      placerat erat euismod et. Donec pulvinar commodo odio sit amet faucibus. In hac habitasse platea dictumst. Duis eu
-      ante commodo, condimentum nibh pellentesque, laoreet enim. Fusce massa lorem, ultrices eu mi a, fermentum suscipit
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus, purus a lobortis tristique, odio augue
+      pharetra metus, ac placerat nunc mi nec dui. Vestibulum aliquam et nunc semper scelerisque. Curabitur vitae orci
+      nec quam condimentum porttitor et sed lacus. Vivamus ac efficitur leo. Cras faucibus mauris libero, ac placerat
+      erat euismod et. Donec pulvinar commodo odio sit amet faucibus. In hac habitasse platea dictumst. Duis eu ante
+      commodo, condimentum nibh pellentesque, laoreet enim. Fusce massa lorem, ultrices eu mi a, fermentum suscipit
       magna. Integer porta purus pulvinar, hendrerit felis eget, condimentum mauris.<Link href="www.bing.com">
         Visit our website.
       </Link>
