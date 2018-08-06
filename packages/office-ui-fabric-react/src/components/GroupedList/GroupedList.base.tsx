@@ -145,8 +145,7 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
       selectionMode,
       selection,
       viewport,
-      onShouldVirtualize,
-      expandCollapseButtonAriaLabel
+      onShouldVirtualize
     } = this.props;
 
     // override group header/footer props as needed
@@ -156,9 +155,7 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
       onToggleSummarize: this._onToggleSummarize
     };
 
-    const expandButtonProps = { expandCollapseButtonAriaLabel: expandCollapseButtonAriaLabel };
-
-    const headerProps = assign({}, groupProps!.headerProps, expandButtonProps, dividerProps);
+    const headerProps = assign({}, groupProps!.headerProps, dividerProps);
     const showAllProps = assign({}, groupProps!.showAllProps, dividerProps);
     const footerProps = assign({}, groupProps!.footerProps, dividerProps);
     const groupNestingDepth = this._getGroupNestingDepth();
