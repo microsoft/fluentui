@@ -1,6 +1,17 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Fri, 03 Aug 2018 10:25:59 GMT and should not be manually modified.
+This log was last generated on Mon, 06 Aug 2018 10:27:53 GMT and should not be manually modified.
+
+## 0.11.0
+Mon, 06 Aug 2018 10:27:53 GMT
+
+### Minor changes
+
+- passing down card width and height down to charts
+
+### Patches
+
+- Fixing the type of onLayoutChange to fix build
 
 ## 0.10.0
 Fri, 03 Aug 2018 10:25:59 GMT

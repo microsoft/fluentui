@@ -1,14 +1,14 @@
 {
   "name": "@uifabric/dashboard",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
     "@uifabric/charting": "^0.12.0",
     "@uifabric/example-app-base": ">=6.7.0 <7.0.0",
-    "@uifabric/experiments": ">=6.22.4 <7.0.0",
+    "@uifabric/experiments": ">=6.22.5 <7.0.0",
     "auto-fontsize": "^1.0.4",
     "css-loader": "^0.15.1",
-    "office-ui-fabric-react": ">=6.45.0 <7.0.0",
+    "office-ui-fabric-react": ">=6.46.0 <7.0.0",
     "react-grid-layout": "samiyaakhtar/react-grid-layout",
     "style-loader": "^0.21.0"
   },
