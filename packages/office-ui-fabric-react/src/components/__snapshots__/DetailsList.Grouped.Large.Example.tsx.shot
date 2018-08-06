@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correctly 1`] = `
+<div
+  className=
+      ms-Fabric
+      DetailsList-grouped-large-example
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        color: #333333;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+      }
+      & button {
+        font-family: inherit;
+      }
+      & input {
+        font-family: inherit;
+      }
+      & textarea {
+        font-family: inherit;
+      }
+      button {
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        overflow: visible;
+      }
+>
+  <div
+    className="ms-Viewport"
+    style={
+      Object {
+        "minHeight": 1,
+        "minWidth": 1,
+      }
+    }
+  />
+</div>
+`;

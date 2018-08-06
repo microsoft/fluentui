@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { DatePicker } from './DatePicker';
 import { DayOfWeek, ICalendarProps } from '../../Calendar';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { ICalendarFormatDateCallbacks } from '../Calendar/Calendar.types';
+import { IStyle, ITheme } from '../../Styling';
+import { IRefObject, IBaseProps, IStyleFunction } from '../../Utilities';
 
 export interface IDatePicker {
   /** Sets focus to the text field */
@@ -12,12 +12,22 @@ export interface IDatePicker {
   reset(): void;
 }
 
-export interface IDatePickerProps extends React.Props<DatePicker> {
+export interface IDatePickerProps extends IBaseProps<IDatePicker> {
   /**
    * Optional callback to access the IDatePicker interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IDatePicker | null) => void;
+  componentRef?: IRefObject<IDatePicker>;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  styles?: IStyleFunction<IDatePickerStyleProps, IDatePickerStyles>;
+
+  /**
+   * Theme provided by High-Order Component.
+   */
+  theme?: ITheme;
 
   /**
    * Pass calendar props to calendar component
@@ -250,4 +260,30 @@ export interface IDatePickerStrings {
    * Aria-label for the "next year" button.
    */
   nextYearAriaLabel?: string;
+}
+export interface IDatePickerStyleProps {
+  /**
+   * Theme provided by High-Order Component.
+   */
+  theme: ITheme;
+
+  /**
+   * Accept custom classNames
+   */
+  className?: string;
+
+  // Insert DatePicker style props below
+  disabled?: boolean;
+  label?: boolean;
+  isDatePickerShown?: boolean;
+}
+
+export interface IDatePickerStyles {
+  /**
+   * Style for the root element.
+   */
+  root: IStyle;
+  textField: IStyle;
+  callout: IStyle;
+  icon: IStyle;
 }

@@ -1,7 +1,5 @@
 @import '../../styles/variables';
-
 $nav-group-header-height: 40px;
-
 .nav {
   padding-top: 20px;
   @include ms-padding-right(12px);
@@ -12,39 +10,29 @@ $nav-group-header-height: 40px;
   font-size: $ms-font-size-l;
   font-weight: $ms-font-weight-light;
   line-height: 1.5;
-
   a {
     color: $ms-color-neutralTertiary;
     display: block;
     margin-bottom: 12px;
-
     &:hover {
       color: $ms-color-white;
     }
   }
-
   &.isActive:not(.isHomePage),
   &:hover:not(.isHomePage),
   &.hasActiveChild {
     color: $ms-color-white;
     position: relative;
-  }
-
-
-  // Closed by default
+  } // Closed by default
   .links {
     display: none;
-  }
-
-  // Open when immediate parent or one of the children is active
+  } // Open when immediate parent or one of the children is active
   &.isActive,
   &.hasActiveChild {
-
     a {
       color: $ms-color-white;
     }
-
-    > .links {
+    >.links {
       display: block;
       @include ms-margin-left(8px);
     }
@@ -66,35 +54,33 @@ $nav-group-header-height: 40px;
       color: $ms-color-neutralTertiary;
       font-size: $ms-font-size-m;
       font-weight: $ms-font-weight-regular;
-
       &:hover {
         color: $ms-color-white;
       }
     }
-
     &.isActive,
     &:hover {
-      > a:first-child {
+      >a:first-child {
         color: $ms-color-white;
-      }
-
-      // Hide the line indicators on submenus
+      } // Hide the line indicators on submenus
       &::before {
         display: none;
       }
     }
-
     &.hasActiveChild {
-      > a:first-child {
+      >a:first-child {
         color: $ms-color-white;
         font-weight: $ms-font-weight-semibold;
       }
-
       &::before {
         display: none;
       }
     }
   }
+}
+
+.matchesFilter {
+  color: $ms-color-white;
 }
 
 @media only screen and (max-width: $uhf-screen-max-mobile) {

@@ -5,7 +5,7 @@ import { IIconProps } from '../Icon/Icon.types';
 import { ICalloutProps } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
 import { IButtonStyles } from '../../Button';
-import { IPoint, IRectangle, IRenderFunction } from '../../Utilities';
+import { IRefObject, IBaseProps, IPoint, IRectangle, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
 export { DirectionalHint } from '../../common/DirectionalHint';
@@ -25,12 +25,28 @@ export interface IContextualMenu {}
 /**
  * React.Props is deprecated and we're removing it in 6.0. Usage of 'any' should go away with it.
  */
-export interface IContextualMenuProps extends React.Props<any>, IWithResponsiveModeState {
+export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWithResponsiveModeState {
   /**
    * Optional callback to access the IContextualMenu interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IContextualMenu | null) => void;
+  componentRef?: IRefObject<IContextualMenu>;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  styles?: IStyleFunctionOrObject<IContextualMenuStyleProps, IContextualMenuStyles>;
+
+  /**
+   * Theme provided by High-Order Component.
+   */
+  theme?: ITheme;
+
+  /**
+   * Additional css class to apply to the ContextualMenu
+   * @defaultvalue undefined
+   */
+  className?: string;
 
   /**
    * The target that the ContextualMenu should try to position itself based on.
@@ -134,12 +150,6 @@ export interface IContextualMenuProps extends React.Props<any>, IWithResponsiveM
   ) => boolean | void;
 
   /**
-   * CSS class to apply to the context menu.
-   * @default null
-   */
-  className?: string;
-
-  /**
    * Whether this menu is a submenu of another menu or not.
    */
   isSubMenu?: boolean;
@@ -190,16 +200,6 @@ export interface IContextualMenuProps extends React.Props<any>, IWithResponsiveM
   title?: string;
 
   /**
-   * Custom styling for the contextual menu.
-   */
-  styles?: IContextualMenuStyles;
-
-  /**
-   * Theme provided by HOC.
-   */
-  theme?: ITheme;
-
-  /**
    * Method to provide the classnames to style the contextual menu. Default value is the getMenuClassnames func
    * defined in ContextualMenu.classnames.
    * @default getContextualMenuClassNames
@@ -244,7 +244,7 @@ export interface IContextualMenuItem {
   /**
    * Optional callback to access the IContextualMenuRenderItem interface. This will get passed down to ContextualMenuItem.
    */
-  componentRef?: (component: IContextualMenuRenderItem | null) => void;
+  componentRef?: IRefObject<IContextualMenuRenderItem>;
 
   /**
    * Unique id to identify the item
@@ -446,7 +446,8 @@ export interface IContextualMenuItem {
   [propertyName: string]: any;
 
   /**
-   * Optional prop to make an item readonly which is disabled but visitable by keyboard, will apply aria-readonly and some styling. Not supported by all components
+   * This prop is no longer used. All contextual menu items are now focusable when disabled.
+   * @deprecated in 6.38.2 will be removed in 7.0.0
    */
   inactive?: boolean;
 
@@ -517,6 +518,20 @@ export interface IMenuItemStyles extends IButtonStyles {
    * Styles for a divider item of a ConextualMenu.
    */
   divider: IStyle;
+}
+
+export interface IContextualMenuStyleProps {
+  /**
+   * Theme provided by High-Order Component.
+   */
+  theme: ITheme;
+
+  /**
+   * Accept custom classNames
+   */
+  className?: string;
+
+  // Insert ContextualMenu style props below
 }
 
 export interface IContextualMenuStyles {

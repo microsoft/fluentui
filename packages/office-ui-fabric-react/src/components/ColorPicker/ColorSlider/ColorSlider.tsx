@@ -7,4 +7,4 @@ export const ColorSlider: (props: IColorSliderProps) => JSX.Element = styled<
   IColorSliderProps,
   IColorSliderStyleProps,
   IColorSliderStyles
->(ColorSliderBase, getStyles);
+>(ColorSliderBase, getStyles, undefined, { scope: 'ColorSlider' });

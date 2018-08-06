@@ -35,6 +35,7 @@ export class FormDropdown extends FormBaseInput<
   public render(): JSX.Element {
     return (
       <Dropdown
+        options={[]}
         {...this.props.dropdownProps}
         // These props cannot be overridden
         key={this.props.inputKey}

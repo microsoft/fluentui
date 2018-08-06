@@ -24,16 +24,22 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@uifabric/foundation",
+      "projectFolder": "packages/foundation",
+      "versionPolicyName": "lockedMajor",
+      "shouldPublish": true
+    },
+    {
       "packageName": "@uifabric/charting",
       "projectFolder": "packages/charting",
       "versionPolicyName": "lockedMajor",
-      "shouldPublish": false
+      "shouldPublish": true
     },
     {
-      "packageName": "@uifabric/dashboard-grid-layout",
-      "projectFolder": "packages/dashboard-grid-layout",
+      "packageName": "@uifabric/dashboard",
+      "projectFolder": "packages/dashboard",
       "versionPolicyName": "lockedMajor",
-      "shouldPublish": false
+      "shouldPublish": true
     },
     {
       "packageName": "@uifabric/merge-styles",

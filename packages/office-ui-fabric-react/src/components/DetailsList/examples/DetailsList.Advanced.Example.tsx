@@ -20,7 +20,7 @@ import {
   SelectionMode,
   buildColumns
 } from 'office-ui-fabric-react/lib/DetailsList';
-import { createListItems, isGroupable } from '../../../utilities/exampleData';
+import { createListItems, isGroupable } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import './DetailsList.Advanced.Example.scss';
 
 const DEFAULT_ITEM_LIMIT = 5;
@@ -119,7 +119,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
       <div className="ms-DetailsListAdvancedExample">
         <CommandBar items={this._getCommandItems()} />
 
-        {isGrouped ? <TextField label="Group Item Limit" onChanged={this._onItemLimitChanged} /> : null}
+        {isGrouped ? <TextField label="Group Item Limit" onChange={this._onItemLimitChanged} /> : null}
 
         <DetailsList
           setKey="items"
@@ -139,6 +139,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
           ariaLabelForSelectAllCheckbox="Toggle selection for all items"
           ariaLabelForSelectionColumn="Toggle selection"
           onRenderMissingItem={this._onRenderMissingItem}
+          useReducedRowRenderer={true}
         />
 
         {contextualMenuProps && <ContextualMenu {...contextualMenuProps} />}
@@ -217,7 +218,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     });
   };
 
-  private _onItemLimitChanged = (value: string): void => {
+  private _onItemLimitChanged = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, value: string): void => {
     let newValue = parseInt(value, 10);
     if (isNaN(newValue)) {
       newValue = DEFAULT_ITEM_LIMIT;

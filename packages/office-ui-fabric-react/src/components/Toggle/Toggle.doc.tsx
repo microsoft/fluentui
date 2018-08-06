@@ -2,11 +2,9 @@ import * as React from 'react';
 import { ToggleBasicExample } from './examples/Toggle.Basic.Example';
 
 import { IDocPageProps } from '../../common/DocPage.types';
-import { ToggleAriaLabelExample } from './examples/Toggle.AriaLabel.Example';
 import { ToggleStatus } from './Toggle.checklist';
 
 const ToggleBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Toggle/examples/Toggle.Basic.Example.tsx') as string;
-const ToggleAriaLabelExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Toggle/examples/Toggle.AriaLabel.Example.tsx') as string;
 
 export const TogglePageProps: IDocPageProps = {
   title: 'Toggle',
@@ -19,11 +17,6 @@ export const TogglePageProps: IDocPageProps = {
       title: 'Default Toggles',
       code: ToggleBasicExampleCode,
       view: <ToggleBasicExample />
-    },
-    {
-      title: 'Toggle with specialized aria labels for the screen-reader to announce when the toggle is on and off',
-      code: ToggleAriaLabelExampleCode,
-      view: <ToggleAriaLabelExample />
     }
   ],
   propertiesTablesSources: [

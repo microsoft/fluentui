@@ -47,9 +47,9 @@ exports[`Toggle renders toggle correctly 1`] = `
         }
   >
     <button
+      aria-checked={false}
       aria-disabled={undefined}
-      aria-label="Label"
-      aria-pressed={false}
+      aria-label={undefined}
       className=
           ms-Toggle-background
           {
@@ -101,6 +101,7 @@ exports[`Toggle renders toggle correctly 1`] = `
       id="Toggle1"
       onChange={[Function]}
       onClick={[Function]}
+      role="switch"
       type="button"
     >
       <div

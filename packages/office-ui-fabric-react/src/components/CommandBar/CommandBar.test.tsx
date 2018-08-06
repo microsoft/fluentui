@@ -180,6 +180,46 @@ describe('CommandBar', () => {
     expect(document.querySelector('.SubMenuClass')).toBeFalsy();
   });
 
+  it('passes overflowButton menuProps to the menu, and prepend menuProps.items to top of overflow', () => {
+    const items = [
+      {
+        name: 'Text1',
+        key: 'Key1'
+      }
+    ];
+
+    const overFlowItems = [
+      {
+        name: 'Text2',
+        key: 'Key2'
+      }
+    ];
+
+    const commandBar = mount(
+      <CommandBar
+        overflowButtonProps={{
+          menuProps: {
+            items: [{ name: 'Text3', key: 'Key3' }],
+            className: 'customMenuClass'
+          }
+        }}
+        overflowItems={overFlowItems}
+        items={items}
+      />
+    );
+
+    const overflowMenuButton = commandBar.find('.ms-CommandBar-overflowButton');
+
+    overflowMenuButton.hostNodes().simulate('click');
+
+    const overfowItems = document.querySelectorAll('.ms-ContextualMenu-item');
+
+    expect(overfowItems).toHaveLength(2);
+    expect(overfowItems[0].textContent).toEqual('Text3');
+    expect(overfowItems[1].textContent).toEqual('Text2');
+    expect(document.querySelectorAll('.customMenuClass')).toHaveLength(1);
+  });
+
   it('updates menu after update if item is still present', () => {
     const items = [
       {

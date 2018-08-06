@@ -1,8 +1,6 @@
 import * as React from 'react';
-
-import { customizable } from '../../../Utilities';
-import { VerticalBarChart, IVerticalBarChartProps } from '../../VerticalBarChart';
-
+import { VerticalBarChart, IVerticalBarChartProps } from '@uifabric/charting/lib/VerticalBarChart';
+import { customizable } from 'office-ui-fabric-react/lib/Utilities';
 @customizable('VerticalBarChartBasicExample', ['theme', 'styles'])
 export class VerticalBarChartBasicExample extends React.Component<IVerticalBarChartProps, {}> {
   constructor(props: IVerticalBarChartProps) {

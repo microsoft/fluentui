@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { CheckBase } from './Check.base';
-import { IStyle, ITheme } from '@uifabric/styling';
-import { IStyleFunctionOrObject } from '@uifabric/utilities';
+import { IStyle, ITheme } from '../../Styling';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
 export interface ICheckProps extends React.Props<CheckBase> {
   /**
    * Gets the component ref.
    */
-  componentRef?: (component: ICheckProps | null) => void;
+  componentRef?: IRefObject<ICheckProps>;
 
   /**
    * Whether or not this menu item is currently checked.
@@ -72,4 +72,9 @@ export interface ICheckStyles {
    * The 'circle' icon styles.
    */
   circle: IStyle;
+
+  /**
+   * Check host style
+   */
+  checkHost: IStyle;
 }

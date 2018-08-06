@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
 import { MarqueeSelection } from './MarqueeSelection';
 import { Selection } from '../../utilities/selection/index';
 
@@ -18,7 +17,6 @@ describe('MarqueeSelection', () => {
     component.update();
 
     // Run snapshot test.
-    const tree = toJson(component);
-    expect(tree).toMatchSnapshot();
+    expect(component.getDOMNode()).toMatchSnapshot();
   });
 });

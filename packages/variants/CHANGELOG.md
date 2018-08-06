@@ -1,6 +1,34 @@
 # Change Log - @uifabric/variants
 
-This log was last generated on Thu, 14 Jun 2018 20:52:57 GMT and should not be manually modified.
+This log was last generated on Fri, 03 Aug 2018 10:25:59 GMT and should not be manually modified.
+
+## 6.2.0
+Fri, 03 Aug 2018 10:25:59 GMT
+
+### Minor changes
+
+- add bodyStandoutBackground default values to variants
+
+## 6.1.0
+Thu, 02 Aug 2018 10:23:19 GMT
+
+### Minor changes
+
+- Add variantThemeType enums and utility function to apply variant theme
+
+## 6.0.6
+Mon, 23 Jul 2018 10:28:08 GMT
+
+### Patches
+
+- Variants: new designs for bodyFrameBackground
+
+## 6.0.5
+Tue, 03 Jul 2018 10:23:19 GMT
+
+### Patches
+
+- Bump variants and file-type-icons packages to restore amd build output
 
 ## 6.0.4
 Thu, 14 Jun 2018 20:52:57 GMT

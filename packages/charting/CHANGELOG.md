@@ -1,6 +1,49 @@
-# Change Log - @uifabric/experiments
+# Change Log - @uifabric/charting
 
-This log was last generated on Fri, 11 May 2018 04:21:29 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Aug 2018 10:25:51 GMT and should not be manually modified.
+
+## 0.12.0
+Wed, 01 Aug 2018 10:25:51 GMT
+
+### Minor changes
+
+- Adding stacked chart with variants, updating stacked chart to use common IDataPoint
+
+## 0.11.1
+Mon, 30 Jul 2018 10:27:11 GMT
+
+### Patches
+
+- Fixing bad imports and broken theming in some charts
+
+## 0.11.0
+Wed, 25 Jul 2018 03:20:34 GMT
+
+### Minor changes
+
+- Addressing bad imports.
+- Removing most `@customizable` decorator usage. This change should reduce extra React dom elements from being created. Also updating `componentRef` resolution to support `React.createRef()` usage.
+
+### Patches
+
+- Update typings to not use deprecated types.
+- Add Pie and Donut Chart to charting package
+- Change  package.json file
+- Adding Stacked Bar chart
+
+## 0.0.4
+Tue, 03 Jul 2018 10:23:19 GMT
+
+### Patches
+
+- Add ! mark for typed props
+
+## 0.0.3
+Mon, 02 Jul 2018 10:21:36 GMT
+
+### Patches
+
+- Initial publish.
 
 ## 5.38.2
 Fri, 11 May 2018 04:21:29 GMT

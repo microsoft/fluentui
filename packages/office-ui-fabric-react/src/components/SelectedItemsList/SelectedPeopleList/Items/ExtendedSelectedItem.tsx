@@ -2,9 +2,9 @@
 import * as React from 'react';
 /* tslint:enable */
 import { BaseComponent, css, getId, createRef } from '../../../../Utilities';
-import { Persona, PersonaSize } from '../../../Persona';
+import { Persona, PersonaSize } from '../../../../Persona';
 import { ISelectedPeopleItemProps } from '../SelectedPeopleList';
-import { IconButton } from '../../../Button';
+import { IconButton } from '../../../../Button';
 import * as stylesImport from './ExtendedSelectedItem.scss';
 // tslint:disable-next-line:no-any
 const styles: any = stylesImport;
