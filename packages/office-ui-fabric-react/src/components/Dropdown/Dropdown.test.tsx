@@ -6,7 +6,7 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 
-import { KeyCodes } from '../../Utilities';
+import { KeyCodes, resetIds } from '../../Utilities';
 import { Dropdown } from './Dropdown';
 import { DropdownMenuItemType, IDropdownOption } from './Dropdown.types';
 
@@ -23,6 +23,10 @@ const DEFAULT_OPTIONS: IDropdownOption[] = [
 ];
 
 describe('Dropdown', () => {
+  beforeEach(() => {
+    resetIds();
+  });
+
   describe('single-select', () => {
     it('Renders single-select Dropdown correctly', () => {
       const component = renderer.create(<Dropdown options={DEFAULT_OPTIONS} />);
@@ -230,12 +234,44 @@ describe('Dropdown', () => {
       }
     });
 
-    it('Will select the first valid item on keypress', () => {
+    it('Keypresses on a disabled dropdown has no effect.', () => {
+      const container = document.createElement('div');
+      const options = [...DEFAULT_OPTIONS];
+      options[3] = { key: 3, text: '3', selected: true };
+      ReactDOM.render(<Dropdown label="testgroup" disabled options={options} />, container);
+      const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+
+      const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+      expect(titleElement.textContent).toEqual('3');
+      ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.down });
+      expect(titleElement.textContent).toEqual('3');
+      ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.up });
+      expect(titleElement.textContent).toEqual('3');
+    });
+
+    it('Keypresses on a normal dropdown selects the right, valid items.', () => {
+      const container = document.createElement('div');
+      const options = [...DEFAULT_OPTIONS];
+      options[3] = { key: 3, text: '3', selected: true };
+      ReactDOM.render(<Dropdown label="testgroup" options={options} />, container);
+      const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+
+      const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+      expect(titleElement.textContent).toEqual('3');
+      ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.down });
+      expect(titleElement.textContent).toEqual('4');
+      ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.up });
+      expect(titleElement.textContent).toEqual('3');
+      ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.up });
+      expect(titleElement.textContent).toEqual('2');
+    });
+
+    it('Will select the first valid item on focus', () => {
       const container = document.createElement('div');
 
       ReactDOM.render(<Dropdown label="testgroup" options={DEFAULT_OPTIONS} />, container);
       const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
-      ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.down });
+      ReactTestUtils.Simulate.focus(dropdownRoot);
 
       const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
       expect(titleElement.textContent).toEqual('1');
