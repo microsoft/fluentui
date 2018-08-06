@@ -1,6 +1,16 @@
 import { IStyle } from '../../Styling';
 import { IStyleableComponent } from '../../Foundation';
 
+type Alignment =
+  | 'start'
+  | 'end'
+  | 'center'
+  | 'space-between'
+  | 'space-around'
+  | 'space-evenly'
+  | 'baseline'
+  | 'stretch';
+
 export interface IStackProps extends IStyleableComponent<IStackProps, IStackStyles> {
   /**
    * How to render the Stack.
@@ -20,28 +30,12 @@ export interface IStackProps extends IStyleableComponent<IStackProps, IStackStyl
   /**
    * How to align Stack child elements horizontally (along the x-axis).
    */
-  horizontalAlignment?:
-    | 'start'
-    | 'end'
-    | 'center'
-    | 'space-between'
-    | 'space-around'
-    | 'space-evenly'
-    | 'baseline'
-    | 'stretch';
+  horizontalAlignment?: Alignment;
 
   /**
    * How to align Stack child elements vertically (along the y-axis).
    */
-  verticalAlignment?:
-    | 'start'
-    | 'end'
-    | 'center'
-    | 'space-between'
-    | 'space-around'
-    | 'space-evenly'
-    | 'baseline'
-    | 'stretch';
+  verticalAlignment?: Alignment;
 
   /**
    * Whether the Stack should take up 100% of the width of its parent.
