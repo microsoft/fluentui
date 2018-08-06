@@ -540,19 +540,19 @@ export interface IColumnDragDropDetails {
  */
 export enum ColumnDragEndLocation {
   /**
-   * Drag ended on Header
+   * Drag ended outside of current list
    */
-  onHeader = 0,
+  outside = 0,
 
   /**
    * Drag ended on current List
    */
-  onList = 1,
+  surface = 1,
 
   /**
-   * Drag ended outside of current list
+   * Drag ended on Header
    */
-  outsideList = 2
+  header = 2
 }
 
 export enum DetailsListLayoutMode {

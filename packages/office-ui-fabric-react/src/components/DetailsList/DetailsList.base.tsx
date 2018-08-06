@@ -23,7 +23,12 @@ import {
   IDetailsGroupRenderProps
 } from '../DetailsList/DetailsList.types';
 import { DetailsHeader } from '../DetailsList/DetailsHeader';
-import { IDetailsHeader, SelectAllVisibility, IDetailsHeaderProps } from '../DetailsList/DetailsHeader.types';
+import {
+  IDetailsHeader,
+  SelectAllVisibility,
+  IDetailsHeaderProps,
+  IColumnReorderProps
+} from '../DetailsList/DetailsHeader.types';
 import { IDetailsFooterProps } from '../DetailsList/DetailsFooter.types';
 import { DetailsRowBase } from '../DetailsList/DetailsRow.base';
 import { DetailsRow } from '../DetailsList/DetailsRow';
@@ -306,7 +311,6 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       onShouldVirtualize,
       enableShimmer,
       viewport,
-      columnReorderOptions,
       minimumPixelsForDrag,
       getGroupHeight,
       styles,
@@ -346,6 +350,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     } = this.props;
 
     const detailsFooterProps = this._getDetailsFooterProps();
+    const columnReorderProps = this._getColumnReorderProps();
 
     const rowCount = (isHeaderVisible ? 1 : 0) + GetGroupCount(groups) + (items ? items.length : 0);
 
@@ -402,8 +407,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
                   selectAllVisibility: selectAllVisibility,
                   collapseAllVisibility: groupProps && groupProps.collapseAllVisibility,
                   viewport: viewport,
-                  columnReorderOptions: columnReorderOptions,
-                  onColumnDragEnd: this._onColumnDragEnd,
+                  columnReorderProps: columnReorderProps,
                   minimumPixelsForDrag: minimumPixelsForDrag,
                   cellStyleProps: DEFAULT_CELL_STYLE_PROPS
                 },
@@ -652,20 +656,25 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
   }
 
   private _onColumnDragEnd(event: MouseEvent, onHeader: boolean): void {
-    if (onHeader) {
-      this.props.columnReorderOptions!.onColumnDragEnd!(0);
-    } else {
-      const clientRect = this._root.current!.getBoundingClientRect();
-      if (
-        event.clientX > clientRect.left &&
-        event.clientX < clientRect.right &&
-        event.clientY > clientRect.top &&
-        event.clientY < clientRect.bottom
-      ) {
-        this.props.columnReorderOptions!.onColumnDragEnd!(1);
+    const { columnReorderOptions } = this.props;
+    if (columnReorderOptions && columnReorderOptions.onColumnDragEnd) {
+      let dropLocation = 0;
+      if (!onHeader && this._root.current) {
+        const clientRect = this._root.current.getBoundingClientRect();
+        if (
+          event.clientX > clientRect.left &&
+          event.clientX < clientRect.right &&
+          event.clientY > clientRect.top &&
+          event.clientY < clientRect.bottom
+        ) {
+          dropLocation = 1;
+        } else {
+          dropLocation = 0;
+        }
       } else {
-        this.props.columnReorderOptions!.onColumnDragEnd!(2);
+        dropLocation = 2;
       }
+      columnReorderOptions.onColumnDragEnd(dropLocation);
     }
   }
 
@@ -977,6 +986,17 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       ...detailsFooterProps
     };
   }
+
+  private _getColumnReorderProps(): IColumnReorderProps | undefined {
+    const { columnReorderOptions } = this.props;
+    if (columnReorderOptions) {
+      return {
+        columnReorderOptions: columnReorderOptions,
+        onColumnDragEnd: this._onColumnDragEnd
+      };
+    }
+  }
+
   private _getGroupProps(detailsGroupProps: IDetailsGroupRenderProps): IGroupRenderProps {
     const {
       onRenderFooter: onRenderDetailsGroupFooter,

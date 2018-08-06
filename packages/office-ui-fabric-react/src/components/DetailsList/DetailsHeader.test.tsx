@@ -34,9 +34,12 @@ const _columns: IColumn[] = [
     isIconOnly: false
   }
 ];
-const _columnReorderOptions = {
-  frozenColumnCountFromStart: 1,
-  handleColumnReorder: this._dummyFunction
+
+const _columnReorderProps = {
+  columnReorderOptions: {
+    frozenColumnCountFromStart: 1,
+    handleColumnReorder: this._dummyFunction
+  }
 };
 
 _selection.setItems(_items);
@@ -69,7 +72,7 @@ describe('DetailsHeader', () => {
         layoutMode={DetailsListLayoutMode.fixedColumns}
         columns={_columns}
         onColumnResized={onColumnResized}
-        columnReorderOptions={_columnReorderOptions}
+        columnReorderProps={_columnReorderProps}
       />
     );
 

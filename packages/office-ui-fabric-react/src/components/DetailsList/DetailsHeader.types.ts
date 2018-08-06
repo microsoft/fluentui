@@ -85,10 +85,7 @@ export interface IDetailsHeaderProps extends React.Props<DetailsHeaderBase> {
   viewport?: IViewport;
 
   /** Column reordering options */
-  columnReorderOptions?: IColumnReorderOptions | null;
-
-  /** callback to notify the column dragEnd event */
-  onColumnDragEnd?: (event: MouseEvent, onHeader: boolean) => void;
+  columnReorderProps?: IColumnReorderProps;
 
   /** Minimum pixels to be moved before dragging is registered */
   minimumPixelsForDrag?: number;
@@ -117,6 +114,16 @@ export interface IColumnResizeDetails {
   columnIndex: number;
   originX?: number;
   columnMinWidth: number;
+}
+
+export interface IColumnReorderProps {
+  columnReorderOptions: IColumnReorderOptions;
+
+  /** Callback to notify the column dragEnd event to List
+   * Need this to check whether the dragEnd has happened on
+   * corresponding list or outside of the list
+   */
+  onColumnDragEnd?: (event: MouseEvent, onHeader: boolean) => void;
 }
 
 export interface IDropHintDetails {
