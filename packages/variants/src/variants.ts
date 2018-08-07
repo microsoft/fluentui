@@ -1,6 +1,6 @@
 import { IPalette, ISemanticColors, ITheme, IPartialTheme, createTheme } from 'office-ui-fabric-react/lib/Styling';
 import { VariantThemeType } from './variantThemeType';
-import * as Colors from '../../office-ui-fabric-react/src/utilities/color/colors';
+import * as Colors from 'office-ui-fabric-react/lib/utilities/color/colors';
 
 function makeThemeFromPartials(
   originalTheme: IPartialTheme,
@@ -18,8 +18,11 @@ function makeThemeFromPartials(
 
 function changeOpacity(inputColor: string, opacity: number): string {
   const newColor: Colors.IColor | undefined = Colors.getColorFromString(inputColor);
-  newColor!.a = opacity;
-  const outputRBGAString = `rgb(${newColor!.r},${newColor!.g},${newColor!.b},${newColor!.a})`;
+  if (!newColor) {
+    return inputColor;
+  }
+  newColor.a = opacity;
+  const outputRBGAString = `rgb(${newColor.r},${newColor.g},${newColor.b},${newColor.a})`;
   return outputRBGAString;
 }
 
@@ -126,7 +129,6 @@ export function getNeutralVariant(theme: IPartialTheme): ITheme {
 export function getSoftVariant(theme: IPartialTheme): ITheme {
   const fullTheme = createTheme(theme);
   const p = fullTheme.palette;
-  console.log('variant');
 
   // commented lines are unchanged, but left in for tracking purposes
   // in a soft variant, most colors remain unchanged
