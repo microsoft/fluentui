@@ -4,7 +4,7 @@ import { DefaultFontStyles } from './DefaultFontStyles';
 import { DefaultPalette } from './DefaultPalette';
 import { DefaultTypography } from './DefaultTypography';
 import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
-import { IFontType } from '../interfaces/ITypography';
+import { IFontVariant } from '../interfaces/ITypography';
 
 let _theme: ITheme = {
   palette: DefaultPalette,
@@ -109,20 +109,20 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
   };
 
   const typography = { ...DefaultTypography, ...theme.typography };
+  const { variants } = typography;
 
-  const { types } = typography;
-  for (const typeName in types) {
-    if (types.hasOwnProperty(typeName)) {
-      const type = types[typeName];
+  for (const variantName in variants) {
+    if (variants.hasOwnProperty(variantName)) {
+      const variant = variants[variantName];
 
-      if (type.fontFamily && typography.families[type.fontFamily]) {
-        type.fontFamily = typography.families[type.fontFamily];
+      if (variant.fontFamily && typography.families[variant.fontFamily]) {
+        variant.fontFamily = typography.families[variant.fontFamily];
       }
-      if (type.fontSize && typography.sizes[type.fontSize]) {
-        type.fontSize = typography.sizes[type.fontSize];
+      if (variant.fontSize && typography.sizes[variant.fontSize]) {
+        variant.fontSize = typography.sizes[variant.fontSize];
       }
-      if (type.fontWeight && typography.families[type.fontWeight]) {
-        type.fontWeight = typography.families[type.fontWeight];
+      if (variant.fontWeight && typography.weights[variant.fontWeight]) {
+        variant.fontWeight = typography.weights[variant.fontWeight];
       }
     }
   }
