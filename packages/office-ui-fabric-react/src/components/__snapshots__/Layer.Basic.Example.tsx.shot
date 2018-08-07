@@ -99,6 +99,7 @@ exports[`Component Examples renders Layer.Basic.Example.tsx correctly 2`] = `
     onClick={[Function]}
     onFocus={[Function]}
     role="checkbox"
+    title={undefined}
     type="button"
   >
     <label
