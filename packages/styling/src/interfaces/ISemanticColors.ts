@@ -256,10 +256,6 @@ export interface ISemanticColors {
    * Border of a standard button
    */
   buttonBorder: string;
-  /**
-   * Border of a disabled standard button
-   */
-  buttonBorderDisabled: string;
 
   /**
    * Color of text in a standard button
@@ -281,6 +277,11 @@ export interface ISemanticColors {
    * Color of text in a pressed standard button; i.e. currently being clicked by mouse
    */
   buttonTextPressed: string;
+
+  /**
+   * Border of a disabled standard button
+   */
+  buttonBorderDisabled: string;
   /**
    * Color of text in a disabled standard button
    */
