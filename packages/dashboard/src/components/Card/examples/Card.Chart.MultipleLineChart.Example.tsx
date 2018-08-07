@@ -3,14 +3,14 @@ import { IDataPoint } from '@uifabric/charting';
 import { Card, CardContentType, CardSize, ChartType, ICardProps, Priority } from '@uifabric/dashboard';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
-export class LineAndVerticalBarChartExample extends React.Component<{}, {}> {
+export class MultipleLineChartExample extends React.Component<{}, {}> {
   constructor(props: ICardProps) {
     super(props);
   }
 
   public render(): JSX.Element {
     const cardFrameContent = {
-      cardTitle: 'Vertical bar and line chart example',
+      cardTitle: 'Multiple Line chart example',
       cardDropDownOptions: [
         {
           key: 'Remove',
@@ -25,25 +25,6 @@ export class LineAndVerticalBarChartExample extends React.Component<{}, {}> {
       ]
     };
 
-    const datapoints: IDataPoint[] = [
-      { x: 0, y: 10 },
-      { x: 6, y: 18 },
-      { x: 12, y: 36 },
-      { x: 21, y: 20 },
-      { x: 29, y: 46 },
-      { x: 34, y: 25 },
-      { x: 40, y: 13 },
-      { x: 48, y: 43 },
-      { x: 57, y: 30 },
-      { x: 64, y: 45 },
-      { x: 72, y: 12 },
-      { x: 78, y: 50 },
-      { x: 85, y: 25 },
-      { x: 90, y: 43 },
-      { x: 96, y: 22 },
-      { x: 100, y: 19 }
-    ];
-
     const points: IDataPoint[][] = [
       [
         { x: 0, y: 10 },
@@ -57,21 +38,39 @@ export class LineAndVerticalBarChartExample extends React.Component<{}, {}> {
         { x: 40, y: 29 },
         { x: 45, y: 43 },
         { x: 50, y: 45 }
+      ],
+      [
+        { x: 0, y: 18 },
+        { x: 5, y: 20 },
+        { x: 10, y: 40 },
+        { x: 15, y: 30 },
+        { x: 20, y: 18 },
+        { x: 22, y: 20 },
+        { x: 35, y: 40 },
+        { x: 40, y: 30 },
+        { x: 42, y: 18 },
+        { x: 43, y: 20 },
+        { x: 45, y: 40 },
+        { x: 50, y: 30 }
+      ],
+      [
+        { x: 0, y: 20 },
+        { x: 5, y: 15 },
+        { x: 10, y: 30 },
+        { x: 15, y: 35 },
+        { x: 20, y: 30 },
+        { x: 22, y: 15 },
+        { x: 35, y: 30 },
+        { x: 40, y: 27 },
+        { x: 42, y: 29 },
+        { x: 43, y: 35 },
+        { x: 45, y: 40 },
+        { x: 50, y: 42 }
       ]
     ];
     const colors: string[] = [DefaultPalette.yellow, DefaultPalette.blue, DefaultPalette.red];
 
     const contentAreaList = [
-      {
-        priority: Priority.Priority1,
-        cardContentType: CardContentType.Chart,
-        content: {
-          chartLabel: 'Vertical bar chart example',
-          chartType: ChartType.VerticalBarChart,
-          dataPoints: datapoints,
-          colors: colors
-        }
-      },
       {
         priority: Priority.Priority2,
         cardContentType: CardContentType.Chart,

@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/dashboard",
+      "comment": "Adding multiple line chart to charting package. Consuming the multiple line chart in the dashboard Card.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/dashboard",
+  "email": "v-kanuli@microsoft.com"
+}
