@@ -3,15 +3,15 @@ import {
   AnimationClassNames,
   AnimationVariables,
   FontSizes,
-  IconFontSizes,
+  // IconFontSizes,
   getGlobalClassNames,
   ScreenWidthMinMedium,
   ScreenWidthMinXLarge,
   ScreenWidthMinXXLarge,
   ScreenWidthMinUhfMobile
 } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
-import { IIconStyles, IIconStyleProps } from '../../Icon';
+// import { IStyleFunctionOrObject } from '../../Utilities';
+// import { IButtonStyles, IButtonStyleProps } from '../../Button';
 
 const GlobalClassNames = {
   root: 'ms-Panel',
@@ -37,20 +37,22 @@ const GlobalClassNames = {
   custom: 'ms-Panel--custom'
 };
 
-function getIconStyles(props: IPanelStyleProps): IStyleFunctionOrObject<IIconStyleProps, IIconStyles> {
-  const { theme } = props;
-  return () => ({
-    root: {
-      height: 'auto',
-      width: '44px',
-      color: theme.palette.neutralSecondary,
-      fontSize: IconFontSizes.large
-    },
-    rootHovered: {
-      color: theme.palette.neutralPrimary
-    }
-  });
-}
+// // TODO: Once Button is converted to mergeStyles this code should be ready to go along with the comment
+// // on line 242 of Panel.base.tsx
+// function getIconButtonStyles(props: IPanelStyleProps): IStyleFunctionOrObject<IButtonStyleProps, IButtonStyles> {
+//   const { theme } = props;
+//   return () => ({
+//     root: {
+//       height: 'auto',
+//       width: '44px',
+//       color: theme.palette.neutralSecondary,
+//       fontSize: IconFontSizes.large
+//     },
+//     rootHovered: {
+//       color: theme.palette.neutralPrimary
+//     }
+//   });
+// }
 
 export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
   const {
@@ -331,9 +333,9 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         paddingBottom: '20px',
         paddingTop: '20px'
       }
-    ],
-    subComponentStyles: {
-      icon: getIconStyles(props)
-    }
+    ]
+    // subComponentStyles: {
+    //   iconButton: getIconButtonStyles(props)
+    // }
   };
 };

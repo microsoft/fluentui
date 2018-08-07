@@ -389,5 +389,5 @@ export interface IPanelStyles {
   /**
    * Styling for subcomponents.
    */
-  subComponentStyles: IPanelSubComponentStyles;
+  // subComponentStyles: IPanelSubComponentStyles;
 }

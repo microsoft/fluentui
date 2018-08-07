@@ -10,7 +10,7 @@ import {
   createRef,
   elementContains
 } from '../../Utilities';
-import { IProcessedStyleSet } from '../../Styling';
+import { IProcessedStyleSet, getTheme, IconFontSizes } from '../../Styling';
 import { FocusTrapZone } from '../FocusTrapZone/index';
 import { IPanel, IPanelProps, PanelType, IPanelStyleProps, IPanelStyles } from './Panel.types';
 import { Layer } from '../Layer/Layer';
@@ -233,21 +233,26 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
 
   private _onRenderNavigation = (props: IPanelProps): JSX.Element | null => {
     const { closeButtonAriaLabel, hasCloseButton } = props;
+    const theme = getTheme();
     if (hasCloseButton) {
+      // const iconButtonStyles = this._classNames.subComponentStyles
+      // ? (this._classNames.subComponentStyles.iconButton as IStyleFunctionOrObject<IButtonStyleProps, IButtonStyles>)
+      // : undefined;
       return (
         <div className={this._classNames.navigation}>
           <IconButton
-            // styles={{
-            //   root: {
-            //     height: 'auto',
-            //     width: '44px',
-            //     // color: theme.palette.neutralSecondary,
-            //     fontSize: IconFontSizes.large
-            //   },
-            //   rootHovered: {
-            //     // color: theme.palette.neutralPrimary
-            //   }
-            // }}
+            // className={iconButtonStyles}
+            styles={{
+              root: {
+                height: 'auto',
+                width: '44px',
+                color: theme.palette.neutralSecondary,
+                fontSize: IconFontSizes.large
+              },
+              rootHovered: {
+                color: theme.palette.neutralPrimary
+              }
+            }}
             className={this._classNames.closeButton}
             onClick={this._onPanelClick}
             ariaLabel={closeButtonAriaLabel}
