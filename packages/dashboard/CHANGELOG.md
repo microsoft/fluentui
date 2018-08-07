@@ -1,6 +1,13 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Mon, 06 Aug 2018 10:27:53 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Aug 2018 10:22:32 GMT and should not be manually modified.
+
+## 0.12.0
+Tue, 07 Aug 2018 10:22:32 GMT
+
+### Minor changes
+
+- Adding props that take colors for icon and content in each cell of gridlist
 
 ## 0.11.0
 Mon, 06 Aug 2018 10:27:53 GMT

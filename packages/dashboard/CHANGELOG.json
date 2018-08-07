@@ -2,6 +2,25 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.12.0",
+      "tag": "@uifabric/dashboard_v0.12.0",
+      "date": "Tue, 07 Aug 2018 10:22:32 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "3626dc51a1f0997d7a0f918a921f9e3bdf5c089f",
+            "comment": "Adding props that take colors for icon and content in each cell of gridlist"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.46.0 <7.0.0` to `>=6.47.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.11.0",
       "tag": "@uifabric/dashboard_v0.11.0",
       "date": "Mon, 06 Aug 2018 10:27:53 GMT",
