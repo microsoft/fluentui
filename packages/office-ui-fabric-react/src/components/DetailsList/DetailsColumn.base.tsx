@@ -1,35 +1,29 @@
 import * as React from 'react';
 import { Icon } from '../../Icon';
-import { BaseComponent, css, IRenderFunction, createRef, IDisposable, IClassNames } from '../../Utilities';
+import {
+  BaseComponent,
+  IRenderFunction,
+  createRef,
+  IDisposable,
+  classNamesFunction,
+  IClassNames
+} from '../../Utilities';
 import { IColumn, ColumnActionsMode } from './DetailsList.types';
 
 import { ITooltipHostProps } from '../../Tooltip';
-import { IDragDropHelper, IDragDropOptions } from './../../utilities/dragdrop/interfaces';
-import { IDetailsHeaderStyles } from './DetailsHeader.types';
+import { IDragDropOptions } from './../../utilities/dragdrop/interfaces';
+import { IDetailsColumnStyles } from './DetailsColumn.types';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
-import { ICellStyleProps } from './DetailsRow.types';
+import { IDetailsColumnStyleProps, IDetailsColumnProps } from './DetailsColumn.types';
 
 const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
 
-export interface IDetailsColumnProps extends React.Props<DetailsColumn> {
-  componentRef?: () => void;
-  column: IColumn;
-  columnIndex: number;
-  parentId?: string;
-  onRenderColumnHeaderTooltip?: IRenderFunction<ITooltipHostProps>;
-  onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => void;
-  onColumnContextMenu?: (column: IColumn, ev: React.MouseEvent<HTMLElement>) => void;
-  dragDropHelper?: IDragDropHelper | null;
-  isDraggable?: boolean;
-  setDraggedItemIndex?: (itemIndex: number) => void;
-  isDropped?: boolean;
-  headerClassNames: IClassNames<IDetailsHeaderStyles>;
-  cellStyleProps?: ICellStyleProps;
-}
+const getClassNames = classNamesFunction<IDetailsColumnStyleProps, IDetailsColumnStyles>();
 
-export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
+export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
   private _root: any;
   private _dragDropSubscription: IDisposable;
+  private _classNames: IClassNames<IDetailsColumnStyles>;
 
   constructor(props: IDetailsColumnProps) {
     super(props);
@@ -46,10 +40,25 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
       columnIndex,
       parentId,
       isDraggable,
-      headerClassNames,
+      styles,
+      theme,
       cellStyleProps = DEFAULT_CELL_STYLE_PROPS
     } = this.props;
     const { onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip } = this.props;
+
+    this._classNames = getClassNames(styles, {
+      theme: theme!,
+      headerClassName: column.headerClassName,
+      iconClassName: column.iconClassName,
+      isActionable: column.columnActionsMode !== ColumnActionsMode.disabled,
+      isEmpty: !column.name,
+      isIconVisible: column.isSorted || column.isGrouped || column.isFiltered,
+      isPadded: column.isPadded,
+      isIconOnly: column.isIconOnly,
+      cellStyleProps
+    });
+
+    const classNames = this._classNames;
 
     return (
       <>
@@ -59,15 +68,7 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
           role={'columnheader'}
           aria-sort={column.isSorted ? (column.isSortedDescending ? 'descending' : 'ascending') : 'none'}
           aria-colindex={columnIndex}
-          className={css(
-            headerClassNames.cell,
-            column.headerClassName,
-            column.columnActionsMode !== ColumnActionsMode.disabled &&
-              'is-actionable ' + headerClassNames.cellIsActionable,
-            !column.name && 'is-empty ' + headerClassNames.cellIsEmpty,
-            (column.isSorted || column.isGrouped || column.isFiltered) && 'is-icon-visible',
-            column.isPadded && headerClassNames.cellWrapperPadded
-          )}
+          className={classNames.root}
           data-is-draggable={isDraggable}
           draggable={isDraggable}
           style={{
@@ -80,10 +81,10 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
           data-automationid={'ColumnsHeaderColumn'}
           data-item-key={column.key}
         >
-          {isDraggable && <Icon iconName={'GripperBarVertical'} className={headerClassNames.gripperBarVerticalStyle} />}
+          {isDraggable && <Icon iconName="GripperBarVertical" className={classNames.gripperBarVerticalStyle} />}
           {onRenderColumnHeaderTooltip(
             {
-              hostClassName: headerClassNames.cellTooltip,
+              hostClassName: classNames.cellTooltip,
               id: `${parentId}-${column.key}-tooltip`,
               setAriaDescribedBy: false,
               content: column.columnActionsMode !== ColumnActionsMode.disabled ? column.ariaLabel : '',
@@ -92,7 +93,7 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
                   id={`${parentId}-${column.key}`}
                   aria-label={column.isIconOnly ? column.name : undefined}
                   aria-labelledby={column.isIconOnly ? undefined : `${parentId}-${column.key}-name `}
-                  className={headerClassNames.cellTitle}
+                  className={classNames.cellTitle}
                   data-is-focusable={column.columnActionsMode !== ColumnActionsMode.disabled}
                   role={column.columnActionsMode !== ColumnActionsMode.disabled ? 'button' : undefined}
                   aria-describedby={
@@ -104,40 +105,32 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
                   onClick={this._onColumnClick.bind(this, column)}
                   aria-haspopup={column.columnActionsMode === ColumnActionsMode.hasDropdown}
                 >
-                  <span
-                    id={`${parentId}-${column.key}-name`}
-                    className={css(headerClassNames.cellName, {
-                      [headerClassNames.iconOnlyHeader]: column.isIconOnly
-                    })}
-                  >
+                  <span id={`${parentId}-${column.key}-name`} className={classNames.cellName}>
                     {(column.iconName || column.iconClassName) && (
-                      <Icon
-                        className={css(headerClassNames.nearIcon, column.iconClassName)}
-                        iconName={column.iconName}
-                      />
+                      <Icon className={classNames.iconClassName} iconName={column.iconName} />
                     )}
 
                     {column.isIconOnly ? (
-                      <span className={headerClassNames.accessibleLabel}>{column.name}</span>
+                      <span className={classNames.accessibleLabel}>{column.name}</span>
                     ) : (
                       column.name
                     )}
                   </span>
 
-                  {column.isFiltered && <Icon className={headerClassNames.nearIcon} iconName={'Filter'} />}
+                  {column.isFiltered && <Icon className={classNames.nearIcon} iconName={'Filter'} />}
 
                   {column.isSorted && (
                     <Icon
-                      className={css(headerClassNames.nearIcon, headerClassNames.sortIcon)}
+                      className={classNames.sortIcon}
                       iconName={column.isSortedDescending ? 'SortDown' : 'SortUp'}
                     />
                   )}
 
-                  {column.isGrouped && <Icon className={headerClassNames.nearIcon} iconName={'GroupedDescending'} />}
+                  {column.isGrouped && <Icon className={classNames.nearIcon} iconName={'GroupedDescending'} />}
 
                   {column.columnActionsMode === ColumnActionsMode.hasDropdown &&
                     !column.isIconOnly && (
-                      <Icon aria-hidden={true} className={headerClassNames.filterChevron} iconName={'ChevronDown'} />
+                      <Icon aria-hidden={true} className={classNames.filterChevron} iconName={'ChevronDown'} />
                     )}
                 </span>
               )
@@ -167,15 +160,15 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
       this._events.on(this._root.current, 'mousedown', this._onRootMouseDown);
     }
 
-    const { headerClassNames } = this.props;
+    const classNames = this._classNames;
 
     if (this.props.isDropped) {
       if (this._root!.current!) {
-        this._root!.current!.classList!.add(headerClassNames.borderAfterDropping);
+        this._root!.current!.classList!.add(classNames.borderAfterDropping);
       }
       setTimeout(() => {
         if (this._root!.current!) {
-          this._root!.current!.classList!.remove(headerClassNames.borderAfterDropping);
+          this._root!.current!.classList!.remove(classNames.borderAfterDropping);
         }
       }, 1500);
     }
@@ -251,13 +244,14 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
   }
 
   private _renderAccessibleLabel(): JSX.Element | null {
-    const { column, parentId, headerClassNames } = this.props;
+    const { column, parentId } = this.props;
+    const classNames = this._classNames;
 
     return this._hasAccessibleLabel() && !this.props.onRenderColumnHeaderTooltip ? (
       <label
         key={`${column.key}_label`}
         id={`${parentId}-${column.key}-tooltip`}
-        className={headerClassNames.accessibleLabel}
+        className={classNames.accessibleLabel}
       >
         {column.ariaLabel}
         {(column.isFiltered && column.filterAriaLabel) || null}
@@ -270,20 +264,20 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
   }
 
   private _onDragStart(item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent): void {
-    const { headerClassNames } = this.props;
+    const classNames = this._classNames;
 
     if (itemIndex && this.props.setDraggedItemIndex) {
       this.props.setDraggedItemIndex(itemIndex);
-      this._root.current.classList.add(headerClassNames.borderWhileDragging);
+      this._root.current.classList.add(classNames.borderWhileDragging);
     }
   }
 
   private _onDragEnd(item?: any, event?: MouseEvent): void {
-    const { headerClassNames } = this.props;
+    const classNames = this._classNames;
 
     if (this.props.setDraggedItemIndex) {
       this.props.setDraggedItemIndex(-1);
-      this._root.current.classList.remove(headerClassNames.borderWhileDragging);
+      this._root.current.classList.remove(classNames.borderWhileDragging);
     }
   }
 
