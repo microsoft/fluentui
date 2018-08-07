@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { LineChart, ILineChartProps } from '@uifabric/charting/lib/LineChart';
 import { customizable } from 'office-ui-fabric-react/lib/Utilities';
-@customizable('LineChartStyledExample', ['theme', 'styles'])
+import { IDataPoint } from '@uifabric/charting/lib/types/IDataPoint';
+@customizable('HorizontalBarChartBasicExample', ['theme', 'styles'])
 export class LineChartStyledExample extends React.Component<ILineChartProps, {}> {
   constructor(props: ILineChartProps) {
     super(props);
@@ -15,27 +16,55 @@ export class LineChartStyledExample extends React.Component<ILineChartProps, {}>
     const { theme } = this.props;
     const { palette, fonts } = theme!;
 
-    const points = [
-      { x: 'One', y: 20 },
-      { x: 'Two', y: 48 },
-      { x: 'Three', y: 30 },
-      { x: 'Four', y: 40 },
-      { x: 'Five', y: 13 },
-      { x: 'Six', y: 60 },
-      { x: 'Seven', y: 60 },
-      { x: 'Eight', y: 57 },
-      { x: 'Nine', y: 14 },
-      { x: 'Ten', y: 35 },
-      { x: 'Eleven', y: 21 },
-      { x: 'Twelve', y: 60 },
-      { x: 'Thirteen', y: 60 },
-      { x: 'Fourteen', y: 52 },
-      { x: 'Fifteen', y: 23 },
-      { x: 'Sixteen', y: 14 },
-      { x: 'Seventeen', y: 11 },
-      { x: 'Eighteen', y: 50 },
-      { x: 'Nineteen', y: 43 },
-      { x: 'Twenty', y: 20 }
+    const points: IDataPoint[][] = [
+      [
+        { x: 'One', y: 5 },
+        { x: 'Two', y: 10 },
+        { x: 'Three', y: 5 },
+        { x: 'Four', y: 20 },
+        { x: 'Five', y: 18 },
+        { x: 'Six', y: 5 },
+        { x: 'Seven', y: 10 },
+        { x: 'Eight', y: 5 },
+        { x: 'Nine', y: 20 },
+        { x: 'Ten', y: 18 }
+      ],
+      [
+        { x: 'One', y: 7 },
+        { x: 'Two', y: 12 },
+        { x: 'Three', y: 7 },
+        { x: 'Four', y: 22 },
+        { x: 'Five', y: 20 },
+        { x: 'Six', y: 7 },
+        { x: 'Seven', y: 12 },
+        { x: 'Eight', y: 7 },
+        { x: 'Nine', y: 22 },
+        { x: 'Ten', y: 20 }
+      ],
+      [
+        { x: 'One', y: 9 },
+        { x: 'Two', y: 14 },
+        { x: 'Three', y: 9 },
+        { x: 'Four', y: 24 },
+        { x: 'Five', y: 22 },
+        { x: 'Six', y: 9 },
+        { x: 'Seven', y: 14 },
+        { x: 'Eight', y: 9 },
+        { x: 'Nine', y: 24 },
+        { x: 'Ten', y: 22 }
+      ],
+      [
+        { x: 'One', y: 11 },
+        { x: 'Two', y: 16 },
+        { x: 'Three', y: 11 },
+        { x: 'Four', y: 26 },
+        { x: 'Five', y: 24 },
+        { x: 'Six', y: 11 },
+        { x: 'Seven', y: 16 },
+        { x: 'Eight', y: 11 },
+        { x: 'Nine', y: 26 },
+        { x: 'Ten', y: 20 }
+      ]
     ];
 
     const axisStyle = {
@@ -68,7 +97,7 @@ export class LineChartStyledExample extends React.Component<ILineChartProps, {}>
       };
     };
 
-    const customColor = 'green';
+    const colors = ['#FF5733', '#176213', '#193BBD', '#FF0000'];
 
     return (
       <LineChart
@@ -77,7 +106,7 @@ export class LineChartStyledExample extends React.Component<ILineChartProps, {}>
         height={500}
         yAxisTickCount={6}
         styles={customStyles}
-        color={customColor}
+        colors={colors}
         chartLabel={'Chart with Axis Labels and Custom Styles'}
         strokeWidth={4}
       />

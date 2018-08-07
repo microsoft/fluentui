@@ -60,6 +60,11 @@ export interface IChartProps {
   data?: IDataPoint[];
 
   /**
+   * Data to render in the chart.
+   */
+  multipleChartsData?: IDataPoint[][];
+
+  /**
    * Type of chart to render
    */
   chartType: ChartType;

@@ -25,12 +25,12 @@ export class Chart extends React.Component<IChartInternalProps, {}> {
       case ChartType.LineChart: {
         return (
           <LineChart
-            data={this.props.data}
+            data={this.props.multipleChartsData}
             width={this._getWidth()}
             height={this._getHeight()}
             strokeWidth={this.props.strokeWidth}
             chartLabel={this.props.chartLabel}
-            color={this.props.colors && this.props.colors.length > 0 ? this.props.colors[0] : undefined}
+            colors={this.props.colors}
           />
         );
       }
