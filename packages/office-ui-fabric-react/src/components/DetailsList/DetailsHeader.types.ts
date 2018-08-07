@@ -161,7 +161,7 @@ export interface IDetailsHeaderStyles {
   collapseButton: IStyle;
   checkTooltip: IStyle;
   sizingOverlay: IStyle;
-  dropHintCircleStyle: IStyle;
+  dropHintCaretStyle: IStyle;
   dropHintLineStyle: IStyle;
   dropHintStyle: IStyle;
   accessibleLabel: IStyle;
