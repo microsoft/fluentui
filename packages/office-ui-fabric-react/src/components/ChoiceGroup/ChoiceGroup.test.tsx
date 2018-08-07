@@ -38,24 +38,36 @@ describe('ChoiceGroup', () => {
     expect((choiceOptions[0] as HTMLInputElement).checked).toEqual(false);
     expect((choiceOptions[1] as HTMLInputElement).checked).toEqual(false);
     expect((choiceOptions[2] as HTMLInputElement).checked).toEqual(false);
+    expect((choiceOptions[0] as HTMLInputElement).tabIndex).toEqual(0);
+    expect((choiceOptions[1] as HTMLInputElement).tabIndex).toEqual(-1);
+    expect((choiceOptions[2] as HTMLInputElement).tabIndex).toEqual(-1);
 
     ReactTestUtils.Simulate.change(choiceOptions[0]);
 
     expect((choiceOptions[0] as HTMLInputElement).checked).toEqual(true);
     expect((choiceOptions[1] as HTMLInputElement).checked).toEqual(false);
     expect((choiceOptions[2] as HTMLInputElement).checked).toEqual(false);
+    expect((choiceOptions[0] as HTMLInputElement).tabIndex).toEqual(0);
+    expect((choiceOptions[1] as HTMLInputElement).tabIndex).toEqual(-1);
+    expect((choiceOptions[2] as HTMLInputElement).tabIndex).toEqual(-1);
 
     ReactTestUtils.Simulate.change(choiceOptions[1]);
 
     expect((choiceOptions[0] as HTMLInputElement).checked).toEqual(false);
     expect((choiceOptions[1] as HTMLInputElement).checked).toEqual(true);
     expect((choiceOptions[2] as HTMLInputElement).checked).toEqual(false);
+    expect((choiceOptions[0] as HTMLInputElement).tabIndex).toEqual(-1);
+    expect((choiceOptions[1] as HTMLInputElement).tabIndex).toEqual(0);
+    expect((choiceOptions[2] as HTMLInputElement).tabIndex).toEqual(-1);
 
     ReactTestUtils.Simulate.change(choiceOptions[0]);
 
     expect((choiceOptions[0] as HTMLInputElement).checked).toEqual(true);
     expect((choiceOptions[1] as HTMLInputElement).checked).toEqual(false);
     expect((choiceOptions[2] as HTMLInputElement).checked).toEqual(false);
+    expect((choiceOptions[0] as HTMLInputElement).tabIndex).toEqual(0);
+    expect((choiceOptions[1] as HTMLInputElement).tabIndex).toEqual(-1);
+    expect((choiceOptions[2] as HTMLInputElement).tabIndex).toEqual(-1);
   });
 
   it('An individual choice option can be disabled', () => {
@@ -69,6 +81,9 @@ describe('ChoiceGroup', () => {
     expect((choiceOptions[0] as HTMLInputElement).disabled).toEqual(true);
     expect((choiceOptions[1] as HTMLInputElement).disabled).toEqual(false);
     expect((choiceOptions[2] as HTMLInputElement).disabled).toEqual(false);
+    expect((choiceOptions[0] as HTMLInputElement).tabIndex).toEqual(-1);
+    expect((choiceOptions[1] as HTMLInputElement).tabIndex).toEqual(0);
+    expect((choiceOptions[2] as HTMLInputElement).tabIndex).toEqual(-1);
   });
 
   it('renders all choice options as disabled when disabled', () => {
@@ -79,6 +94,9 @@ describe('ChoiceGroup', () => {
     expect((choiceOptions[0] as HTMLInputElement).disabled).toEqual(true);
     expect((choiceOptions[1] as HTMLInputElement).disabled).toEqual(true);
     expect((choiceOptions[2] as HTMLInputElement).disabled).toEqual(true);
+    expect((choiceOptions[0] as HTMLInputElement).tabIndex).toEqual(-1);
+    expect((choiceOptions[1] as HTMLInputElement).tabIndex).toEqual(-1);
+    expect((choiceOptions[2] as HTMLInputElement).tabIndex).toEqual(-1);
   });
 
   it('can act as an uncontrolled component', () => {

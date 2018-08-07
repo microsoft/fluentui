@@ -69,6 +69,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             onChange={[Function]}
             onFocus={[Function]}
             required={true}
+            tabIndex={0}
             type="radio"
           />
           <label
@@ -181,6 +182,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             onChange={[Function]}
             onFocus={[Function]}
             required={true}
+            tabIndex={-1}
             type="radio"
           />
           <label
@@ -293,6 +295,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             onChange={[Function]}
             onFocus={[Function]}
             required={true}
+            tabIndex={-1}
             type="radio"
           />
           <label
