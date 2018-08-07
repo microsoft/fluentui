@@ -13,6 +13,7 @@ export const TextStyles = (props: IThemedProps<ITextProps>): ITextStyles => {
         display: inline ? 'inline' : 'block'
       },
       family && {
+        // TODO: How are language specific font families configured?
         fontFamily: typography.families[family]
       },
       size && {
@@ -36,6 +37,7 @@ export const TextStyles = (props: IThemedProps<ITextProps>): ITextStyles => {
         overflow: 'hidden',
         textOverflow: 'ellipsis'
       },
+      // TODO: this needs to be evaluated.
       //     mozOsxFontSmoothing: mozOsxFontSmoothing,
       //     webkitFontSmoothing: webkitFontSmoothing,
       className

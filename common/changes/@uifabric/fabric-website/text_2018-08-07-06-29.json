@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/fabric-website",
-      "comment": "TODO replace here",
+      "comment": "Prettier cleanup.",
       "type": "patch"
     }
   ],

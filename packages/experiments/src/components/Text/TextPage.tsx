@@ -1,12 +1,6 @@
 import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 
-// import { TextAttributesExample } from './examples/Text.Attributes.Example';
-// const TextAttributesExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Text/examples/Text.Attributes.Example.tsx') as string;
-// import { TextFontStyleExample } from './examples/Text.FontStyle.Example';
-// const TextFontStyleExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Text/examples/Text.FontStyle.Example.tsx') as string;
-// import { TextFontTypeExample } from './examples/Text.FontType.Example';
-// const TextFontTypeExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Text/examples/Text.FontType.Example.tsx') as string;
 import { TextRampExample } from './examples/Text.Ramp.Example';
 const TextRampExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Text/examples/Text.Ramp.Example.tsx') as string;
 
@@ -21,15 +15,6 @@ export class TextPage extends React.Component<IComponentDemoPageProps, {}> {
             <ExampleCard title="Text Ramps" code={TextRampExampleCode}>
               <TextRampExample />
             </ExampleCard>
-            {/* <ExampleCard title="Change Text's Attributes" code={TextAttributesExampleCode}>
-              <TextAttributesExample />
-            </ExampleCard>
-            <ExampleCard title="Change Text's Style" code={TextFontStyleExampleCode}>
-              <TextFontStyleExample />
-            </ExampleCard>
-            <ExampleCard title="Change Text's Type" code={TextFontTypeExampleCode}>
-              <TextFontTypeExample />
-            </ExampleCard> */}
           </div>
         }
         propertiesTables={

@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "TODO replace here",
+      "comment": "Prettier cleanup.",
       "type": "patch"
     }
   ],
