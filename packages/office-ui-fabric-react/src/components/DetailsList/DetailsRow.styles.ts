@@ -212,7 +212,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
     paddingLeft: `${cellStyleProps.cellLeftPadding}px`,
     selectors: {
       // Masking the running shimmer background with borders
-      [`&.$shimmer`]: {
+      [`&$shimmer`]: {
         padding: 0,
         borderLeft: shimmerLeftBorderStyle,
         borderRight: shimmerRightBorderStyle,
@@ -221,8 +221,8 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
       },
 
       // Masking the running shimmer background with borders when it's an Icon placeholder
-      [`&.$shimmerIconPlaceholder`]: {
-        borderLeft: `${cellStyleProps.cellLeftPadding}px solid ${colors.defaultBackgroundColor}`,
+      [`&$shimmerIconPlaceholder`]: {
+        borderRight: `${cellStyleProps.cellRightPadding}px solid ${colors.defaultBackgroundColor}`,
         borderBottom: `${(values.compactRowHeight - values.rowShimmerIconPlaceholderHeight) / 2}px solid ${
           colors.defaultBackgroundColor
         }`,
@@ -255,7 +255,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
 
         [classNames.isFocusable!]: getFocusStyle(theme, -1, undefined, undefined, neutralSecondary, white),
 
-        '&.$shimmer': {
+        '&$shimmer': {
           padding: 0,
           borderLeft: shimmerLeftBorderStyle,
           borderRight: shimmerRightBorderStyle,
@@ -263,8 +263,8 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
           borderBottom: `${values.rowShimmerVerticalBorder}px solid ${colors.defaultBackgroundColor}`
         },
 
-        '&.$shimmerIconPlaceholder': {
-          borderLeft: `${cellStyleProps.cellLeftPadding}px solid ${colors.defaultBackgroundColor}`,
+        '&$shimmerIconPlaceholder': {
+          borderRight: `${cellStyleProps.cellRightPadding}px solid ${colors.defaultBackgroundColor}`,
           borderBottom: `${(values.rowHeight - values.rowShimmerIconPlaceholderHeight) / 2}px solid ${
             colors.defaultBackgroundColor
           }`,

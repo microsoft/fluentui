@@ -662,7 +662,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                 aria-disabled={undefined}
                 aria-label={undefined}
                 aria-labelledby={undefined}
-                aria-pressed={false}
+                aria-pressed={undefined}
                 checked={false}
                 className=
                     ms-Button
@@ -790,7 +790,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                 aria-disabled={undefined}
                 aria-label={undefined}
                 aria-labelledby={undefined}
-                aria-pressed={false}
+                aria-pressed={undefined}
                 checked={false}
                 className=
                     ms-Button
