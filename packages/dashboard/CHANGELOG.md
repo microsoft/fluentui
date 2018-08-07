@@ -1,6 +1,36 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Thu, 02 Aug 2018 10:23:19 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Aug 2018 10:22:32 GMT and should not be manually modified.
+
+## 0.12.0
+Tue, 07 Aug 2018 10:22:32 GMT
+
+### Minor changes
+
+- Adding props that take colors for icon and content in each cell of gridlist
+
+## 0.11.0
+Mon, 06 Aug 2018 10:27:53 GMT
+
+### Minor changes
+
+- passing down card width and height down to charts
+
+### Patches
+
+- Fixing the type of onLayoutChange to fix build
+
+## 0.10.0
+Fri, 03 Aug 2018 10:25:59 GMT
+
+### Minor changes
+
+- Adding custom font size and color props to Multicount. Changes to the precision logic
+
+### Patches
+
+- Integrate Auto-FontSize to Recommendation Card header text
+- Updated package.json to use react and react-dom in peer dependencies
 
 ## 0.9.0
 Thu, 02 Aug 2018 10:23:19 GMT

@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "6.14.0",
+      "tag": "@uifabric/styling_v6.14.0",
+      "date": "Fri, 03 Aug 2018 10:25:59 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "7264474f10852c0e4d6f6431c52b019659546abc",
+            "comment": "adds 4 new semantic slots, based on designs from SP-Client events webpart, and with approval from Philip Kuo; actionLink, actionLinkHovered, cardBackground, variantBorder"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.13.0",
       "tag": "@uifabric/styling_v6.13.0",
       "date": "Thu, 02 Aug 2018 10:23:19 GMT",

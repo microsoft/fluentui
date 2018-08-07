@@ -1,4 +1,4 @@
-import { IDetailsRowStyleProps, IDetailsRowStyles } from './DetailsRow.types';
+import { IDetailsRowStyleProps, IDetailsRowStyles, ICellStyleProps } from './DetailsRow.types';
 import {
   AnimationClassNames,
   FontSizes,
@@ -22,17 +22,20 @@ const GlobalClassNames = {
   fields: 'ms-DetailsRow-fields'
 };
 
+export const DEFAULT_CELL_STYLE_PROPS: ICellStyleProps = {
+  cellLeftPadding: 12,
+  cellRightPadding: 8,
+  cellExtraRightPadding: 24
+};
+
 // Constant values
 let values = {
   rowHeight: 42,
   compactRowHeight: 32,
   rowVerticalPadding: 11,
-  rowHorizontalPadding: 8,
   compactRowVerticalPadding: 6,
-  isPaddedMargin: 24,
   rowShimmerLineHeight: 7,
   rowShimmerIconPlaceholderHeight: 16,
-  rowShimmerHorizontalBorder: 0,
   rowShimmerVerticalBorder: 0,
   compactRowShimmerVerticalBorder: 0
 };
@@ -41,7 +44,6 @@ let values = {
 values = {
   ...values,
   ...{
-    rowShimmerHorizontalBorder: values.rowHorizontalPadding,
     rowShimmerVerticalBorder: (values.rowHeight - values.rowShimmerLineHeight) / 2,
     compactRowShimmerVerticalBorder: (values.compactRowHeight - values.rowShimmerLineHeight) / 2
   }
@@ -57,7 +59,8 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
     isCheckVisible,
     checkboxCellClassName,
     compact,
-    className
+    className,
+    cellStyleProps = DEFAULT_CELL_STYLE_PROPS
   } = props;
 
   const {
@@ -102,8 +105,8 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
     focusMetaTextColor: neutralDark
   };
 
-  const thickBorderStyle = `${values.rowShimmerHorizontalBorder * 4}px solid ${colors.defaultBackgroundColor}`;
-  const thinBorderStyle = `${values.rowShimmerHorizontalBorder}px solid ${colors.defaultBackgroundColor}`;
+  const shimmerRightBorderStyle = `${cellStyleProps.cellRightPadding * 4}px solid ${colors.defaultBackgroundColor}`;
+  const shimmerLeftBorderStyle = `${cellStyleProps.cellLeftPadding}px solid ${colors.defaultBackgroundColor}`;
   const selectedStyles: IStyle = [
     getFocusStyle(theme, -1, undefined, undefined, themePrimary, white),
     classNames.isSelected,
@@ -206,20 +209,20 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
     minHeight: values.compactRowHeight,
     paddingTop: values.compactRowVerticalPadding,
     paddingBottom: values.compactRowVerticalPadding,
-    paddingLeft: 12,
+    paddingLeft: `${cellStyleProps.cellLeftPadding}px`,
     selectors: {
       // Masking the running shimmer background with borders
-      [`&.$shimmer`]: {
+      [`&$shimmer`]: {
         padding: 0,
-        borderLeft: thinBorderStyle,
-        borderRight: thickBorderStyle,
+        borderLeft: shimmerLeftBorderStyle,
+        borderRight: shimmerRightBorderStyle,
         borderTop: `${values.compactRowShimmerVerticalBorder}px solid ${colors.defaultBackgroundColor}`,
         borderBottom: `${values.compactRowShimmerVerticalBorder}px solid ${colors.defaultBackgroundColor}`
       },
 
       // Masking the running shimmer background with borders when it's an Icon placeholder
-      [`&.$shimmerIconPlaceholder`]: {
-        borderLeft: `${values.rowShimmerHorizontalBorder}px solid ${colors.defaultBackgroundColor}`,
+      [`&$shimmerIconPlaceholder`]: {
+        borderRight: `${cellStyleProps.cellRightPadding}px solid ${colors.defaultBackgroundColor}`,
         borderBottom: `${(values.compactRowHeight - values.rowShimmerIconPlaceholderHeight) / 2}px solid ${
           colors.defaultBackgroundColor
         }`,
@@ -244,7 +247,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
       textOverflow: 'ellipsis',
       paddingTop: values.rowVerticalPadding,
       paddingBottom: values.rowVerticalPadding,
-      paddingLeft: 12,
+      paddingLeft: `${cellStyleProps.cellLeftPadding}px`,
       selectors: {
         '& > button': {
           maxWidth: '100%'
@@ -252,16 +255,16 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
 
         [classNames.isFocusable!]: getFocusStyle(theme, -1, undefined, undefined, neutralSecondary, white),
 
-        '&.$shimmer': {
+        '&$shimmer': {
           padding: 0,
-          borderLeft: thinBorderStyle,
-          borderRight: thickBorderStyle,
+          borderLeft: shimmerLeftBorderStyle,
+          borderRight: shimmerRightBorderStyle,
           borderTop: `${values.rowShimmerVerticalBorder}px solid ${colors.defaultBackgroundColor}`,
           borderBottom: `${values.rowShimmerVerticalBorder}px solid ${colors.defaultBackgroundColor}`
         },
 
-        '&.$shimmerIconPlaceholder': {
-          borderLeft: `${values.rowShimmerHorizontalBorder}px solid ${colors.defaultBackgroundColor}`,
+        '&$shimmerIconPlaceholder': {
+          borderRight: `${cellStyleProps.cellRightPadding}px solid ${colors.defaultBackgroundColor}`,
           borderBottom: `${(values.rowHeight - values.rowShimmerIconPlaceholderHeight) / 2}px solid ${
             colors.defaultBackgroundColor
           }`,
@@ -340,12 +343,12 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
     ],
     cellUnpadded: [
       {
-        paddingRight: values.rowHorizontalPadding
+        paddingRight: `${cellStyleProps.cellRightPadding}px`
       }
     ],
     cellPadded: [
       {
-        paddingRight: values.isPaddedMargin + values.rowHorizontalPadding,
+        paddingRight: `${cellStyleProps.cellExtraRightPadding + cellStyleProps.cellRightPadding}px`,
         selectors: {
           '&.$checkCell': {
             paddingRight: 0

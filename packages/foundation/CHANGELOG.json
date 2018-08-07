@@ -2,6 +2,20 @@
   "name": "@uifabric/foundation",
   "entries": [
     {
+      "version": "0.2.2",
+      "tag": "@uifabric/foundation_v0.2.2",
+      "date": "Fri, 03 Aug 2018 10:25:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "adf6e2883a19f03298b0f2ae89a495724e47a4e4",
+            "comment": "Add tslib as dependency."
+          }
+        ]
+      }
+    },
+    {
       "version": "0.2.1",
       "tag": "@uifabric/foundation_v0.2.1",
       "date": "Thu, 02 Aug 2018 10:23:19 GMT",

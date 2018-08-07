@@ -40,7 +40,7 @@ export class DonutAndPieChartExample extends React.Component<{}, {}> {
         }
       },
       {
-        priority: Priority.Priority1,
+        priority: Priority.Priority2,
         cardContentType: CardContentType.Chart,
         content: {
           chartLabel: 'Pie Chart',

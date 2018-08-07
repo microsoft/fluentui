@@ -57,6 +57,14 @@ export interface ISemanticColors {
   bodyBackground: string;
 
   /**
+   * The standout color for highlighted content backgrounds.
+   * For highlighted content when there is no emphasis, use the neutral variant instead.
+   * This should be a shade darker than bodyBackground in light themes,
+   * and a shade lighter in inverted themes.
+   */
+  bodyStandoutBackground: string;
+
+  /**
    * The color for chrome adjacent to an area with bodyBackground.
    * This can be used to provide visual separation of zones when using stronger colors, when using a divider line is not desired.
    * In most themes, this should match the color of bodyBackground.
@@ -93,6 +101,16 @@ export interface ISemanticColors {
   bodyDivider: string;
 
   /**
+   * Neutral colored links and links for action buttons.
+   */
+  actionLink: string;
+
+  /**
+   * Hover state for neutral colored links and links for action buttons.
+   */
+  actionLinkHovered: string;
+
+  /**
    * The color of a link.
    */
   link: string;
@@ -126,6 +144,11 @@ export interface ISemanticColors {
    * The color of the outline around focused controls that don't already have a border; e.g. menu items
    */
   focusBorder: string;
+
+  /**
+   * The color of the border that provides contrast between an element, such as a card, and an emphasized background.
+   */
+  variantBorder: string;
 
   //// Invariants - slots that rarely change color theme-to-theme because the color has meaning
 

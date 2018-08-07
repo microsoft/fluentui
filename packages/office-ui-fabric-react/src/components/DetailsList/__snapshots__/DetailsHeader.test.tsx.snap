@@ -277,7 +277,7 @@ exports[`DetailsHeader can render 1`] = `
           margin-top: 0;
           outline: transparent;
           padding-bottom: 0;
-          padding-left: 8px;
+          padding-left: 12px;
           padding-right: 8px;
           padding-top: 0;
           position: relative;
@@ -307,6 +307,9 @@ exports[`DetailsHeader can render 1`] = `
         &:active {
           background: #eaeaea;
         }
+        &:hover i[data-icon-name="GripperBarVertical"] {
+          display: block;
+        }
     data-automationid="ColumnsHeaderColumn"
     data-is-draggable={false}
     data-item-key="a"
@@ -314,7 +317,7 @@ exports[`DetailsHeader can render 1`] = `
     role="columnheader"
     style={
       Object {
-        "width": 216,
+        "width": 220,
       }
     }
   >
@@ -467,7 +470,7 @@ exports[`DetailsHeader can render 1`] = `
           margin-top: 0;
           outline: transparent;
           padding-bottom: 0;
-          padding-left: 8px;
+          padding-left: 12px;
           padding-right: 8px;
           padding-top: 0;
           position: relative;
@@ -497,6 +500,9 @@ exports[`DetailsHeader can render 1`] = `
         &:active {
           background: #eaeaea;
         }
+        &:hover i[data-icon-name="GripperBarVertical"] {
+          display: block;
+        }
     data-automationid="ColumnsHeaderColumn"
     data-is-draggable={false}
     data-item-key="b"
@@ -504,7 +510,7 @@ exports[`DetailsHeader can render 1`] = `
     role="columnheader"
     style={
       Object {
-        "width": 216,
+        "width": 220,
       }
     }
   >
@@ -679,7 +685,7 @@ exports[`DetailsHeader can render 1`] = `
           margin-top: 0;
           outline: transparent;
           padding-bottom: 0;
-          padding-left: 8px;
+          padding-left: 12px;
           padding-right: 8px;
           padding-top: 0;
           position: relative;
@@ -709,6 +715,9 @@ exports[`DetailsHeader can render 1`] = `
         &:active {
           background: #eaeaea;
         }
+        &:hover i[data-icon-name="GripperBarVertical"] {
+          display: block;
+        }
     data-automationid="ColumnsHeaderColumn"
     data-is-draggable={false}
     data-item-key="c"
@@ -716,7 +725,7 @@ exports[`DetailsHeader can render 1`] = `
     role="columnheader"
     style={
       Object {
-        "width": 26,
+        "width": 30,
       }
     }
   >
@@ -1145,7 +1154,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           margin-top: 0;
           outline: transparent;
           padding-bottom: 0;
-          padding-left: 8px;
+          padding-left: 12px;
           padding-right: 8px;
           padding-top: 0;
           position: relative;
@@ -1175,6 +1184,9 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         &:active {
           background: #eaeaea;
         }
+        &:hover i[data-icon-name="GripperBarVertical"] {
+          display: block;
+        }
     data-automationid="ColumnsHeaderColumn"
     data-is-draggable={false}
     data-item-key="a"
@@ -1182,7 +1194,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
     role="columnheader"
     style={
       Object {
-        "width": 216,
+        "width": 220,
       }
     }
   >
@@ -1335,7 +1347,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           margin-top: 0;
           outline: transparent;
           padding-bottom: 0;
-          padding-left: 8px;
+          padding-left: 12px;
           padding-right: 8px;
           padding-top: 0;
           position: relative;
@@ -1365,6 +1377,9 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         &:active {
           background: #eaeaea;
         }
+        &:hover i[data-icon-name="GripperBarVertical"] {
+          display: block;
+        }
     data-automationid="ColumnsHeaderColumn"
     data-is-draggable={false}
     data-item-key="b"
@@ -1372,7 +1387,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
     role="columnheader"
     style={
       Object {
-        "width": 216,
+        "width": 220,
       }
     }
   >
@@ -1571,7 +1586,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           margin-top: 0;
           outline: transparent;
           padding-bottom: 0;
-          padding-left: 8px;
+          padding-left: 12px;
           padding-right: 8px;
           padding-top: 0;
           position: relative;
@@ -1601,6 +1616,9 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         &:active {
           background: #eaeaea;
         }
+        &:hover i[data-icon-name="GripperBarVertical"] {
+          display: block;
+        }
     data-automationid="ColumnsHeaderColumn"
     data-is-draggable={false}
     data-item-key="c"
@@ -1608,7 +1626,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
     role="columnheader"
     style={
       Object {
-        "width": 26,
+        "width": 30,
       }
     }
   >
