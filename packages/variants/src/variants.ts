@@ -1,6 +1,6 @@
 import { IPalette, ISemanticColors, ITheme, IPartialTheme, createTheme } from 'office-ui-fabric-react/lib/Styling';
 import { VariantThemeType } from './variantThemeType';
-import * as Colors from 'office-ui-fabric-react/lib/utilities/color/colors';
+import { IColor, updateA, getColorFromString } from 'office-ui-fabric-react/lib/utilities/color/colors';
 
 function makeThemeFromPartials(
   originalTheme: IPartialTheme,
@@ -17,11 +17,12 @@ function makeThemeFromPartials(
 }
 
 function changeOpacity(inputColor: string, opacity: number): string {
-  const newColor: Colors.IColor | undefined = Colors.getColorFromString(inputColor);
+  let newColor: IColor | undefined = getColorFromString(inputColor);
   if (!newColor) {
     return inputColor;
   }
-  newColor.a = opacity;
+  newColor = updateA(newColor, opacity);
+  // newColor.a = opacity;
   const outputRBGAString = `rgb(${newColor.r},${newColor.g},${newColor.b},${newColor.a})`;
   return outputRBGAString;
 }
@@ -99,20 +100,20 @@ export function getNeutralVariant(theme: IPartialTheme): ITheme {
     variantBorder: !fullTheme.isInverted ? p.neutralQuaternaryAlt : p.neutralLighterAlt,
 
     buttonBackground: p.neutralLighter,
-    buttonText: p.neutralPrimary,
-    buttonBorder: p.neutralSecondary,
     buttonBackgroundHovered: p.neutralLight,
-    buttonTextHovered: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary,
     buttonBackgroundPressed: p.neutralQuaternaryAlt,
+    buttonBorder: p.neutralSecondary,
+    buttonText: p.neutralPrimary,
+    buttonTextHovered: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary,
     buttonTextPressed: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary,
     buttonTextDisabled: p.neutralQuaternary,
     buttonBorderDisabled: p.neutralQuaternary,
     primaryButtonBackground: p.themePrimary,
-    primaryButtonText: p.white,
-    primaryButtonBorder: 'transparent',
     primaryButtonBackgroundHovered: p.themeDarkAlt,
-    primaryButtonTextHovered: p.white,
     primaryButtonBackgroundPressed: p.themeDark,
+    primaryButtonBorder: 'transparent',
+    primaryButtonText: p.white,
+    primaryButtonTextHovered: p.white,
     primaryButtonTextPressed: p.white
   };
 
@@ -179,20 +180,23 @@ export function getSoftVariant(theme: IPartialTheme): ITheme {
     variantBorder: !fullTheme.isInverted ? p.neutralLight : p.neutralLighterAlt,
 
     buttonBackground: !fullTheme.isInverted ? p.themeLighterAlt : p.themeLight,
-    buttonText: !fullTheme.isInverted ? p.neutralPrimary : p.themePrimary,
-    buttonBorder: p.neutralSecondary,
     buttonBackgroundHovered: !fullTheme.isInverted ? p.themeLighter : changeOpacity(p.themeTertiary, 50),
-    buttonTextHovered: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary,
+    // buttonBackgroundHovered: !fullTheme.isInverted
+    //   ? p.themeLighter
+    // : updateA(getColorFromString(p.themeTertiary), 50).str,
     buttonBackgroundPressed: !fullTheme.isInverted ? p.themeLight : p.themeTertiary,
+    buttonBorder: p.neutralSecondary,
+    buttonText: !fullTheme.isInverted ? p.neutralPrimary : p.themePrimary,
+    buttonTextHovered: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary,
     buttonTextPressed: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary,
     buttonTextDisabled: !fullTheme.isInverted ? p.themeLight : p.themeTertiary,
     buttonBorderDisabled: !fullTheme.isInverted ? p.themeLight : p.themeTertiary,
     primaryButtonBackground: p.themePrimary,
-    primaryButtonText: p.white,
-    primaryButtonBorder: 'transparent',
     primaryButtonBackgroundHovered: p.themeDarkAlt,
-    primaryButtonTextHovered: p.white,
     primaryButtonBackgroundPressed: p.themeDark,
+    primaryButtonBorder: 'transparent',
+    primaryButtonText: p.white,
+    primaryButtonTextHovered: p.white,
     primaryButtonTextPressed: p.white
   };
 
@@ -267,20 +271,20 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
     variantBorder: p.themeDark,
 
     buttonBackground: p.white,
-    buttonText: !fullTheme.isInverted ? p.themePrimary : p.neutralPrimary,
-    buttonBorder: 'transparent',
     buttonBackgroundHovered: !fullTheme.isInverted ? p.themeLighter : p.themeLight,
-    buttonTextHovered: !fullTheme.isInverted ? p.themePrimary : p.neutralPrimary,
     buttonBackgroundPressed: !fullTheme.isInverted ? p.themeLight : p.themeTertiary,
+    buttonBorder: 'transparent',
+    buttonText: !fullTheme.isInverted ? p.themePrimary : p.neutralPrimary,
+    buttonTextHovered: !fullTheme.isInverted ? p.themePrimary : p.neutralPrimary,
     buttonTextPressed: !fullTheme.isInverted ? p.themePrimary : p.neutralPrimary,
     buttonTextDisabled: !fullTheme.isInverted ? p.themeLight : p.themeTertiary,
     buttonBorderDisabled: !fullTheme.isInverted ? p.themeLight : p.themeTertiary,
     primaryButtonBackground: p.themePrimary,
-    primaryButtonText: p.white,
-    primaryButtonBorder: p.white,
     primaryButtonBackgroundHovered: p.themeDarkAlt,
-    primaryButtonTextHovered: p.white,
     primaryButtonBackgroundPressed: p.themeDark,
+    primaryButtonBorder: p.white,
+    primaryButtonText: p.white,
+    primaryButtonTextHovered: p.white,
     primaryButtonTextPressed: p.white
   };
 
