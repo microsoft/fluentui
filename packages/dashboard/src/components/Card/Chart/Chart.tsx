@@ -13,7 +13,7 @@ export class Chart extends React.Component<IChartInternalProps, {}> {
       case ChartType.VerticalBarChart: {
         return (
           <VerticalBarChart
-            data={this.props.data}
+            data={this.props.dataPoints}
             width={this._getWidth()}
             height={this._getHeight()}
             barWidth={this.props.barWidth}
@@ -25,7 +25,7 @@ export class Chart extends React.Component<IChartInternalProps, {}> {
       case ChartType.LineChart: {
         return (
           <LineChart
-            data={this.props.multipleChartsData}
+            data={this.props.data}
             width={this._getWidth()}
             height={this._getHeight()}
             strokeWidth={this.props.strokeWidth}
@@ -37,7 +37,7 @@ export class Chart extends React.Component<IChartInternalProps, {}> {
       case ChartType.HorizontalBarChart: {
         return (
           <HorizontalBarChart
-            data={this.props.data}
+            data={this.props.dataPoints}
             width={this._getWidth()}
             height={this._getHeight()}
             barHeight={this.props.barHeight}
@@ -49,7 +49,7 @@ export class Chart extends React.Component<IChartInternalProps, {}> {
       case ChartType.DonutChart: {
         return (
           <DonutChart
-            data={this.props.data}
+            data={this.props.dataPoints}
             colors={this.props.colors}
             width={this._getWidth()}
             height={this._getHeight()}
@@ -59,7 +59,7 @@ export class Chart extends React.Component<IChartInternalProps, {}> {
       case ChartType.PieChart: {
         return (
           <PieChart
-            data={this.props.data}
+            data={this.props.dataPoints}
             chartTitle={this.props.chartLabel}
             colors={this.props.colors}
             width={this._getWidth()}
@@ -70,7 +70,7 @@ export class Chart extends React.Component<IChartInternalProps, {}> {
       case ChartType.StackedBarChart: {
         return (
           <StackedBarChart
-            data={this.props.data}
+            data={this.props.dataPoints}
             chartTitle={this.props.chartLabel}
             colors={this.props.colors}
             width={this._getWidth()}

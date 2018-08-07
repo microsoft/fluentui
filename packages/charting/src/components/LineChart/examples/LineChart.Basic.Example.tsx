@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { LineChart, ILineChartProps } from '@uifabric/charting/lib/LineChart';
 import { IDataPoint } from '@uifabric/charting/lib/types/IDataPoint';
+import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export class LineChartBasicExample extends React.Component<ILineChartProps, {}> {
   constructor(props: ILineChartProps) {
@@ -27,7 +28,7 @@ export class LineChartBasicExample extends React.Component<ILineChartProps, {}> 
         { x: 50, y: 45 }
       ]
     ];
-    const colors = ['#FF5733'];
+    const colors = [DefaultPalette.blue];
     return <LineChart data={points} chartLabel={'Basic Chart with Numeric Axes'} colors={colors} />;
   }
 }

@@ -2,6 +2,8 @@ import * as React from 'react';
 import { LineChart, ILineChartProps } from '@uifabric/charting/lib/LineChart';
 import { customizable } from 'office-ui-fabric-react/lib/Utilities';
 import { IDataPoint } from '@uifabric/charting/lib/types/IDataPoint';
+import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+
 @customizable('HorizontalBarChartBasicExample', ['theme', 'styles'])
 export class LineChartMultipleExample extends React.Component<ILineChartProps, {}> {
   constructor(props: ILineChartProps) {
@@ -89,7 +91,7 @@ export class LineChartMultipleExample extends React.Component<ILineChartProps, {
       };
     };
 
-    const colors = ['#FF5733', '#176213', '#193BBD'];
+    const colors = [DefaultPalette.blue, DefaultPalette.green, DefaultPalette.red];
 
     return (
       <LineChart

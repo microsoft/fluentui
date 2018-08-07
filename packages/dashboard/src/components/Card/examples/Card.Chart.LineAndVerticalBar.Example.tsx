@@ -68,7 +68,7 @@ export class LineAndVerticalBarChartExample extends React.Component<{}, {}> {
         content: {
           chartLabel: 'Vertical bar chart example',
           chartType: ChartType.VerticalBarChart,
-          data: datapoints,
+          dataPoints: datapoints,
           colors: colors
         }
       },
@@ -78,7 +78,7 @@ export class LineAndVerticalBarChartExample extends React.Component<{}, {}> {
         content: {
           chartLabel: 'Line chart example',
           chartType: ChartType.LineChart,
-          multipleChartsData: points,
+          data: points,
           colors: colors
         }
       }

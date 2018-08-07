@@ -77,7 +77,7 @@ export class MultipleLineChartExample extends React.Component<{}, {}> {
         content: {
           chartLabel: 'Line chart example',
           chartType: ChartType.LineChart,
-          multipleChartsData: points,
+          data: points,
           colors: colors
         }
       }
