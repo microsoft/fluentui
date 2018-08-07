@@ -9,6 +9,7 @@ module.exports = function(options) {
   const sourcePath = path.resolve(process.cwd(), 'src');
   const nodeModulesPath = path.resolve(process.cwd(), 'node_modules');
   const rushJsonPath = findRushJson(process.cwd());
+  const rootFolder = path.dirname(rushJsonPath);
   if (!rushJsonPath) {
     throw new Error('lint-import: unable to find rush.json');
   }
@@ -17,11 +18,8 @@ module.exports = function(options) {
   const rushPackages = rush.projects.map(project => project.packageName);
 
   const currentRushPackage = rush.projects.find(project => {
-    return (
-      path.normalize(project.projectFolder) === path.normalize(path.relative(path.dirname(rushJsonPath), process.cwd()))
-    );
+    return path.normalize(project.projectFolder) === path.normalize(path.relative(rootFolder, process.cwd()));
   }).packageName;
-
   // TestCode
   return lintSource();
 
@@ -139,22 +137,18 @@ module.exports = function(options) {
       if (rushPackages.indexOf(pkgName) === -1) return;
 
       if (pkgName === currentRushPackage) {
-        fullImportPath = _evaluateImportPath(process.cwd(), '../' + importPath);
+        const importPathWithoutPkgName = importPath.substring(pkgName.length + 1 /* 1 is for '/' */);
+        fullImportPath = _evaluateImportPath(process.cwd(), './' + importPathWithoutPkgName);
       } else {
         fullImportPath = _evaluateImportPath(nodeModulesPath, './' + importPath);
       }
     }
 
-    // Does this file path exist?
-    if (!fullImportPath) {
-      console.log(`DOESNT EXIST!!! ${importPath}`);
-    } else {
-      if (fs.statSync(fullImportPath).isDirectory()) {
-        const pathInvalid = importErrors.pathInvalid;
-        const relativePath = path.relative(sourcePath, filePath);
-        pathInvalid.count++;
-        pathInvalid.matches[relativePath] = importPath;
-      }
+    if (!fullImportPath || fs.statSync(fullImportPath).isDirectory()) {
+      const pathInvalid = importErrors.pathInvalid;
+      const relativePath = path.relative(sourcePath, filePath);
+      pathInvalid.count++;
+      pathInvalid.matches[relativePath] = importPath;
     }
   }
 
