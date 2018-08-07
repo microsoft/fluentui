@@ -119,7 +119,7 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
         onBlur={this._onBlur}
         onMouseDown={this._onMouseDown}
         onMouseUp={this._onMouseUp}
-        onChanged={this._onInputChange}
+        onChange={this._onInputChange}
         onBeforeChange={this._onBeforeChange}
         onKeyDown={this._onKeyDown}
         onPaste={this._onPaste}
@@ -267,7 +267,11 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
   }
 
   @autobind
-  private _onInputChange(value: string) {
+  private _onInputChange(ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, value: string) {
+    if (this.props.onChange) {
+      this.props.onChange(ev, value);
+    }
+
     if (this.props.onChanged) {
       this.props.onChanged(value);
     }

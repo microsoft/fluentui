@@ -129,7 +129,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           & [data-is-focusable='true']::-moz-focus-inner {
             border: 0;
           }
-          &.$shimmer {
+          &$shimmer {
             border-bottom: 17.5px solid #ffffff;
             border-left: 12px solid #ffffff;
             border-right: 32px solid #ffffff;
@@ -139,9 +139,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             padding-right: 0px;
             padding-top: 0px;
           }
-          &.$shimmerIconPlaceholder {
+          &$shimmerIconPlaceholder {
             border-bottom: 13px solid #ffffff;
-            border-left: 12px solid #ffffff;
+            border-right: 8px solid #ffffff;
             border-top: 13px solid #ffffff;
           }
       data-selection-toggle={true}
@@ -344,7 +344,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
               border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
@@ -354,9 +354,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 12px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
             }
             {
@@ -415,7 +415,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
               border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
@@ -425,9 +425,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 12px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
             }
             {
@@ -524,7 +524,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
               border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
@@ -534,9 +534,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 12px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
             }
             {
@@ -802,7 +802,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           & [data-is-focusable='true']::-moz-focus-inner {
             border: 0;
           }
-          &.$shimmer {
+          &$shimmer {
             border-bottom: 17.5px solid #ffffff;
             border-left: 12px solid #ffffff;
             border-right: 32px solid #ffffff;
@@ -812,9 +812,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             padding-right: 0px;
             padding-top: 0px;
           }
-          &.$shimmerIconPlaceholder {
+          &$shimmerIconPlaceholder {
             border-bottom: 13px solid #ffffff;
-            border-left: 12px solid #ffffff;
+            border-right: 8px solid #ffffff;
             border-top: 13px solid #ffffff;
           }
       data-selection-toggle={true}
@@ -1017,7 +1017,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
               border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
@@ -1027,9 +1027,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 12px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
             }
             {
@@ -1088,7 +1088,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
               border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
@@ -1098,9 +1098,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 12px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
             }
             {
@@ -1197,7 +1197,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
               border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
@@ -1207,9 +1207,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 12px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
             }
             {
@@ -1475,7 +1475,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           & [data-is-focusable='true']::-moz-focus-inner {
             border: 0;
           }
-          &.$shimmer {
+          &$shimmer {
             border-bottom: 17.5px solid #ffffff;
             border-left: 12px solid #ffffff;
             border-right: 32px solid #ffffff;
@@ -1485,9 +1485,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             padding-right: 0px;
             padding-top: 0px;
           }
-          &.$shimmerIconPlaceholder {
+          &$shimmerIconPlaceholder {
             border-bottom: 13px solid #ffffff;
-            border-left: 12px solid #ffffff;
+            border-right: 8px solid #ffffff;
             border-top: 13px solid #ffffff;
           }
       data-selection-toggle={true}
@@ -1690,7 +1690,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
               border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
@@ -1700,9 +1700,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 12px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
             }
             {
@@ -1761,7 +1761,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
               border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
@@ -1771,9 +1771,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 12px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
             }
             {
@@ -1870,7 +1870,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
               border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
@@ -1880,9 +1880,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 12px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
             }
             {
@@ -2148,7 +2148,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           & [data-is-focusable='true']::-moz-focus-inner {
             border: 0;
           }
-          &.$shimmer {
+          &$shimmer {
             border-bottom: 17.5px solid #ffffff;
             border-left: 12px solid #ffffff;
             border-right: 32px solid #ffffff;
@@ -2158,9 +2158,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             padding-right: 0px;
             padding-top: 0px;
           }
-          &.$shimmerIconPlaceholder {
+          &$shimmerIconPlaceholder {
             border-bottom: 13px solid #ffffff;
-            border-left: 12px solid #ffffff;
+            border-right: 8px solid #ffffff;
             border-top: 13px solid #ffffff;
           }
       data-selection-toggle={true}
@@ -2363,7 +2363,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
               border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
@@ -2373,9 +2373,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 12px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
             }
             {
@@ -2434,7 +2434,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
               border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
@@ -2444,9 +2444,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 12px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
             }
             {
@@ -2543,7 +2543,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
               border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
@@ -2553,9 +2553,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 12px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
             }
             {
@@ -2821,7 +2821,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           & [data-is-focusable='true']::-moz-focus-inner {
             border: 0;
           }
-          &.$shimmer {
+          &$shimmer {
             border-bottom: 17.5px solid #ffffff;
             border-left: 12px solid #ffffff;
             border-right: 32px solid #ffffff;
@@ -2831,9 +2831,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             padding-right: 0px;
             padding-top: 0px;
           }
-          &.$shimmerIconPlaceholder {
+          &$shimmerIconPlaceholder {
             border-bottom: 13px solid #ffffff;
-            border-left: 12px solid #ffffff;
+            border-right: 8px solid #ffffff;
             border-top: 13px solid #ffffff;
           }
       data-selection-toggle={true}
@@ -3036,7 +3036,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
               border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
@@ -3046,9 +3046,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 12px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
             }
             {
@@ -3107,7 +3107,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
               border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
@@ -3117,9 +3117,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 12px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
             }
             {
@@ -3216,7 +3216,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
               border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
@@ -3226,9 +3226,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 12px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
             }
             {
@@ -3494,7 +3494,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           & [data-is-focusable='true']::-moz-focus-inner {
             border: 0;
           }
-          &.$shimmer {
+          &$shimmer {
             border-bottom: 17.5px solid #ffffff;
             border-left: 12px solid #ffffff;
             border-right: 32px solid #ffffff;
@@ -3504,9 +3504,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             padding-right: 0px;
             padding-top: 0px;
           }
-          &.$shimmerIconPlaceholder {
+          &$shimmerIconPlaceholder {
             border-bottom: 13px solid #ffffff;
-            border-left: 12px solid #ffffff;
+            border-right: 8px solid #ffffff;
             border-top: 13px solid #ffffff;
           }
       data-selection-toggle={true}
@@ -3709,7 +3709,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
               border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
@@ -3719,9 +3719,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 12px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
             }
             {
@@ -3780,7 +3780,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
               border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
@@ -3790,9 +3790,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 12px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
             }
             {
@@ -3889,7 +3889,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
               border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
@@ -3899,9 +3899,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 12px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
             }
             {
@@ -4167,7 +4167,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           & [data-is-focusable='true']::-moz-focus-inner {
             border: 0;
           }
-          &.$shimmer {
+          &$shimmer {
             border-bottom: 17.5px solid #ffffff;
             border-left: 12px solid #ffffff;
             border-right: 32px solid #ffffff;
@@ -4177,9 +4177,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             padding-right: 0px;
             padding-top: 0px;
           }
-          &.$shimmerIconPlaceholder {
+          &$shimmerIconPlaceholder {
             border-bottom: 13px solid #ffffff;
-            border-left: 12px solid #ffffff;
+            border-right: 8px solid #ffffff;
             border-top: 13px solid #ffffff;
           }
       data-selection-toggle={true}
@@ -4382,7 +4382,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
               border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
@@ -4392,9 +4392,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 12px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
             }
             {
@@ -4453,7 +4453,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
               border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
@@ -4463,9 +4463,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 12px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
             }
             {
@@ -4562,7 +4562,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
               border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
@@ -4572,9 +4572,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 12px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
             }
             {
@@ -4840,7 +4840,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           & [data-is-focusable='true']::-moz-focus-inner {
             border: 0;
           }
-          &.$shimmer {
+          &$shimmer {
             border-bottom: 17.5px solid #ffffff;
             border-left: 12px solid #ffffff;
             border-right: 32px solid #ffffff;
@@ -4850,9 +4850,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             padding-right: 0px;
             padding-top: 0px;
           }
-          &.$shimmerIconPlaceholder {
+          &$shimmerIconPlaceholder {
             border-bottom: 13px solid #ffffff;
-            border-left: 12px solid #ffffff;
+            border-right: 8px solid #ffffff;
             border-top: 13px solid #ffffff;
           }
       data-selection-toggle={true}
@@ -5055,7 +5055,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
               border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
@@ -5065,9 +5065,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 12px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
             }
             {
@@ -5126,7 +5126,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
               border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
@@ -5136,9 +5136,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 12px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
             }
             {
@@ -5235,7 +5235,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
               border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
@@ -5245,9 +5245,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 12px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
             }
             {
@@ -5513,7 +5513,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           & [data-is-focusable='true']::-moz-focus-inner {
             border: 0;
           }
-          &.$shimmer {
+          &$shimmer {
             border-bottom: 17.5px solid #ffffff;
             border-left: 12px solid #ffffff;
             border-right: 32px solid #ffffff;
@@ -5523,9 +5523,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             padding-right: 0px;
             padding-top: 0px;
           }
-          &.$shimmerIconPlaceholder {
+          &$shimmerIconPlaceholder {
             border-bottom: 13px solid #ffffff;
-            border-left: 12px solid #ffffff;
+            border-right: 8px solid #ffffff;
             border-top: 13px solid #ffffff;
           }
       data-selection-toggle={true}
@@ -5728,7 +5728,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
               border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
@@ -5738,9 +5738,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 12px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
             }
             {
@@ -5799,7 +5799,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
               border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
@@ -5809,9 +5809,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 12px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
             }
             {
@@ -5908,7 +5908,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
               border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
@@ -5918,9 +5918,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 12px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
             }
             {
@@ -6186,7 +6186,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           & [data-is-focusable='true']::-moz-focus-inner {
             border: 0;
           }
-          &.$shimmer {
+          &$shimmer {
             border-bottom: 17.5px solid #ffffff;
             border-left: 12px solid #ffffff;
             border-right: 32px solid #ffffff;
@@ -6196,9 +6196,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             padding-right: 0px;
             padding-top: 0px;
           }
-          &.$shimmerIconPlaceholder {
+          &$shimmerIconPlaceholder {
             border-bottom: 13px solid #ffffff;
-            border-left: 12px solid #ffffff;
+            border-right: 8px solid #ffffff;
             border-top: 13px solid #ffffff;
           }
       data-selection-toggle={true}
@@ -6401,7 +6401,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
               border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
@@ -6411,9 +6411,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 12px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
             }
             {
@@ -6472,7 +6472,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
               border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
@@ -6482,9 +6482,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 12px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
             }
             {
@@ -6581,7 +6581,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
               border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
@@ -6591,9 +6591,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 12px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
             }
             {

@@ -48,7 +48,7 @@ export class StackedBarChartExample extends React.Component<{}, {}> {
         }
       },
       {
-        priority: Priority.Priority1,
+        priority: Priority.Priority2,
         cardContentType: CardContentType.Chart,
         content: {
           chartLabel: 'Stacked bar chart with multiple points',

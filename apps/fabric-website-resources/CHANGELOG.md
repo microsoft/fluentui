@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Mon, 30 Jul 2018 10:27:11 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Aug 2018 10:22:32 GMT and should not be manually modified.
+
+## 6.7.1
+Tue, 07 Aug 2018 10:22:32 GMT
+
+### Patches
+
+- Fix duplicate nav key
 
 ## 6.7.0
 Mon, 30 Jul 2018 10:27:11 GMT
