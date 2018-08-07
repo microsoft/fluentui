@@ -10,7 +10,7 @@ export class MultipleLineChartExample extends React.Component<{}, {}> {
 
   public render(): JSX.Element {
     const cardFrameContent = {
-      cardTitle: 'Vertical bar and line chart example',
+      cardTitle: 'Multiple Line chart example',
       cardDropDownOptions: [
         {
           key: 'Remove',
