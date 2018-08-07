@@ -3,7 +3,7 @@
     {
       "packageName": "@uifabric/styling",
       "comment": "Theme: add unit tests to ensure that createTheme does not modify DefaultTypography",
-      "type": "patch"
+      "type": "none"
     }
   ],
   "packageName": "@uifabric/styling",
