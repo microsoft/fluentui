@@ -163,6 +163,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       return item.onRender(item, () => undefined);
     }
     const commandButtonProps: ICommandBarItemProps = {
+      allowDisabledFocus: true,
       ...item,
       styles: { root: { height: '100%' }, ...item.buttonStyles },
       className: css('ms-CommandBarItem-link', item.className),

@@ -5,6 +5,26 @@ export interface IMultiCountProps {
    * rows of Multicount Dataviz
    */
   multiCountRows: IMultiCountRow[];
+
+  /**
+   * Font size for the annotation text
+   */
+  annotationTextFontSize?: string;
+
+  /**
+   * color for the annotation text
+   */
+  annotationTextColor?: string;
+
+  /**
+   * font size for the body text
+   */
+  bodyTextFontSize?: string;
+
+  /**
+   * color for the body text
+   */
+  bodyTextColor?: string;
 }
 
 export enum AnnotationType {
@@ -27,6 +47,10 @@ export enum AnnotationType {
 export interface IMultiCountStyleProps {
   color: string;
   iconName: string;
+  annotationTextFontSize?: string;
+  annotationTextColor?: string;
+  bodyTextFontSize?: string;
+  bodyTextColor?: string;
 }
 
 export interface IMultiCountRow {

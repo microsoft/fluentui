@@ -318,7 +318,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   margin-top: 0;
                   outline: transparent;
                   padding-bottom: 0;
-                  padding-left: 8px;
+                  padding-left: 12px;
                   padding-right: 8px;
                   padding-top: 0;
                   position: relative;
@@ -355,7 +355,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
             role="columnheader"
             style={
               Object {
-                "width": 24,
+                "width": 28,
               }
             }
           >
@@ -451,7 +451,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   margin-top: 0;
                   outline: transparent;
                   padding-bottom: 0;
-                  padding-left: 8px;
+                  padding-left: 12px;
                   padding-right: 8px;
                   padding-top: 0;
                   position: relative;
@@ -488,7 +488,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
             role="columnheader"
             style={
               Object {
-                "width": 24,
+                "width": 28,
               }
             }
           >
@@ -584,7 +584,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   margin-top: 0;
                   outline: transparent;
                   padding-bottom: 0;
-                  padding-left: 8px;
+                  padding-left: 12px;
                   padding-right: 8px;
                   padding-top: 0;
                   position: relative;
@@ -621,7 +621,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
             role="columnheader"
             style={
               Object {
-                "width": 24,
+                "width": 28,
               }
             }
           >
@@ -1120,7 +1120,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   margin-top: 0;
                   outline: transparent;
                   padding-bottom: 0;
-                  padding-left: 8px;
+                  padding-left: 12px;
                   padding-right: 8px;
                   padding-top: 0;
                   position: relative;
@@ -1157,7 +1157,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
             role="columnheader"
             style={
               Object {
-                "width": 24,
+                "width": 28,
               }
             }
           >
@@ -1253,7 +1253,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   margin-top: 0;
                   outline: transparent;
                   padding-bottom: 0;
-                  padding-left: 8px;
+                  padding-left: 12px;
                   padding-right: 8px;
                   padding-top: 0;
                   position: relative;
@@ -1290,7 +1290,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
             role="columnheader"
             style={
               Object {
-                "width": 24,
+                "width": 28,
               }
             }
           >
@@ -1386,7 +1386,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   margin-top: 0;
                   outline: transparent;
                   padding-bottom: 0;
-                  padding-left: 8px;
+                  padding-left: 12px;
                   padding-right: 8px;
                   padding-top: 0;
                   position: relative;
@@ -1423,7 +1423,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
             role="columnheader"
             style={
               Object {
-                "width": 24,
+                "width": 28,
               }
             }
           >
@@ -1922,7 +1922,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   margin-top: 0;
                   outline: transparent;
                   padding-bottom: 0;
-                  padding-left: 8px;
+                  padding-left: 12px;
                   padding-right: 8px;
                   padding-top: 0;
                   position: relative;
@@ -1959,7 +1959,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
             role="columnheader"
             style={
               Object {
-                "width": 24,
+                "width": 28,
               }
             }
           >
@@ -2055,7 +2055,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   margin-top: 0;
                   outline: transparent;
                   padding-bottom: 0;
-                  padding-left: 8px;
+                  padding-left: 12px;
                   padding-right: 8px;
                   padding-top: 0;
                   position: relative;
@@ -2092,7 +2092,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
             role="columnheader"
             style={
               Object {
-                "width": 24,
+                "width": 28,
               }
             }
           >
@@ -2188,7 +2188,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   margin-top: 0;
                   outline: transparent;
                   padding-bottom: 0;
-                  padding-left: 8px;
+                  padding-left: 12px;
                   padding-right: 8px;
                   padding-top: 0;
                   position: relative;
@@ -2225,7 +2225,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
             role="columnheader"
             style={
               Object {
-                "width": 24,
+                "width": 28,
               }
             }
           >
@@ -2724,7 +2724,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   margin-top: 0;
                   outline: transparent;
                   padding-bottom: 0;
-                  padding-left: 8px;
+                  padding-left: 12px;
                   padding-right: 8px;
                   padding-top: 0;
                   position: relative;
@@ -2761,7 +2761,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
             role="columnheader"
             style={
               Object {
-                "width": 24,
+                "width": 28,
               }
             }
           >
@@ -2857,7 +2857,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   margin-top: 0;
                   outline: transparent;
                   padding-bottom: 0;
-                  padding-left: 8px;
+                  padding-left: 12px;
                   padding-right: 8px;
                   padding-top: 0;
                   position: relative;
@@ -2894,7 +2894,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
             role="columnheader"
             style={
               Object {
-                "width": 24,
+                "width": 28,
               }
             }
           >
@@ -2990,7 +2990,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   margin-top: 0;
                   outline: transparent;
                   padding-bottom: 0;
-                  padding-left: 8px;
+                  padding-left: 12px;
                   padding-right: 8px;
                   padding-top: 0;
                   position: relative;
@@ -3027,7 +3027,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
             role="columnheader"
             style={
               Object {
-                "width": 24,
+                "width": 28,
               }
             }
           >

@@ -183,6 +183,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     Error MessageBar - single line, with dismiss button
   </label>
   <div
+    aria-expanded={undefined}
     className=
         ms-MessageBar
         ms-MessageBar--error
@@ -503,6 +504,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     Blocked MessageBar - single line, with dismiss button and truncated text. Truncation is not available if you use action buttons or multiline and should be used sparingly.
   </label>
   <div
+    aria-expanded={false}
     className=
         ms-MessageBar
         ms-MessageBar--blocked
@@ -667,7 +669,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         <button
           aria-describedby={undefined}
           aria-disabled={undefined}
-          aria-label="Overflow"
+          aria-label="See more"
           aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
@@ -1389,6 +1391,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     Success MessageBar - single line, with action buttons
   </label>
   <div
+    aria-expanded={undefined}
     className=
         ms-MessageBar
         ms-MessageBar--success
@@ -1808,6 +1811,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     Warning MessageBar - single line, with dismiss and action buttons
   </label>
   <div
+    aria-expanded={undefined}
     className=
         ms-MessageBar
         ms-MessageBar--warning
@@ -2968,6 +2972,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     Error, single line, with dismiss button - custom styles
   </label>
   <div
+    aria-expanded={undefined}
     className=
         ms-MessageBar
         ms-MessageBar--error
@@ -3290,6 +3295,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     Blocked, single line, with dismiss button and truncated text - custom styles
   </label>
   <div
+    aria-expanded={false}
     className=
         ms-MessageBar
         ms-MessageBar--blocked
@@ -3456,7 +3462,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         <button
           aria-describedby={undefined}
           aria-disabled={undefined}
-          aria-label="Overflow"
+          aria-label="See more"
           aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
@@ -4180,6 +4186,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     Success, single line, with action buttons - custom styles
   </label>
   <div
+    aria-expanded={undefined}
     className=
         ms-MessageBar
         ms-MessageBar--success
@@ -4601,6 +4608,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     Warning, single line, with dismiss and action buttons - custom styles
   </label>
   <div
+    aria-expanded={undefined}
     className=
         ms-MessageBar
         ms-MessageBar--warning

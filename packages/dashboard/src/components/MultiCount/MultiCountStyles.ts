@@ -13,8 +13,9 @@ export const getStyles = (props: IMultiCountStyleProps): IMultiCountStyles => {
       overflow: 'hidden',
       textOverflow: 'ellipsis',
       whiteSpace: 'nowrap',
-      fontSize: '28px',
-      flex: 1
+      fontSize: props.bodyTextFontSize ? props.bodyTextFontSize : '28px',
+      flex: 1,
+      color: props.bodyTextColor ? props.bodyTextColor : '#000000'
     },
     data: {
       fontFamily: 'Segoe UI',
@@ -28,7 +29,8 @@ export const getStyles = (props: IMultiCountStyleProps): IMultiCountStyles => {
     },
     annotationText: {
       marginLeft: '16px',
-      color: '#000000'
+      color: props.annotationTextColor ? props.annotationTextColor : '#000000',
+      fontSize: props.annotationTextFontSize ? props.annotationTextFontSize : '12px'
     },
     icon: {
       width: '12px',

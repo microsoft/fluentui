@@ -1,6 +1,46 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 02 Aug 2018 10:23:19 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Aug 2018 10:22:32 GMT and should not be manually modified.
+
+## 6.47.0
+Tue, 07 Aug 2018 10:22:32 GMT
+
+### Minor changes
+
+- Minor documentation and type name fixes
+- Add new toggle prop to correclty use aria-pressed attribute as needed.
+
+### Patches
+
+- Fix line height scrollbar issue in ActivityItem
+- Dropdown: You can no longer use the arrow keys to change the selected items in a  disabled Dropdown. (#5738)
+- CommandBar: Disabled buttons are now focusable by default due to menubar role
+- Fix bug in ChoiceGroup that errors on Array.find as it does not exist in IE11
+- Add Modal component to index entry file.
+- Fixing Shimmer implementation in DetailsList.
+
+## 6.46.0
+Mon, 06 Aug 2018 10:27:53 GMT
+
+### Minor changes
+
+- TextField: Add onChange prop and deprecate onChanged
+
+## 6.45.0
+Fri, 03 Aug 2018 10:25:59 GMT
+
+### Minor changes
+
+- Align cell and column padding in DetailsList
+- 'adds 4 new semantic slots, based on designs from SP-Client events webpart, and with approval from Philip Kuo; actionLink, actionLinkHovered, cardBackground, variantBorder'
+
+### Patches
+
+- ComboBox: Only allow focus to be put back on input if focus is still inside the ComboBox
+- Dropdown: changed default directionalHintFixed to false. Can be changed to true via calloutProps.directionalHintFixed
+- SearchBox: fix field backgroundColor.
+- Updated the example to use imageUrl as props instead of hard coding directly into the img tag
+- MessageBar: add aria-expanded
 
 ## 6.44.0
 Thu, 02 Aug 2018 10:23:19 GMT

@@ -159,7 +159,12 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   errorMessage?: string;
 
   /**
-   * Callback for the onChanged event.
+   * Callback for when the input value changes.
+   */
+  onChange?: (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void;
+
+  /**
+   * @deprecated Use onChange instead.
    */
   onChanged?: (newValue: any) => void;
 

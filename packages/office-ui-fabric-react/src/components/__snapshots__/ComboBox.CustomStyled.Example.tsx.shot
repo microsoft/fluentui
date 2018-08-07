@@ -192,7 +192,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
         aria-hidden={true}
         aria-label={undefined}
         aria-labelledby={undefined}
-        aria-pressed={false}
+        aria-pressed={undefined}
         checked={false}
         className=
             ms-Button

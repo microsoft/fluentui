@@ -2,6 +2,88 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.12.0",
+      "tag": "@uifabric/dashboard_v0.12.0",
+      "date": "Tue, 07 Aug 2018 10:22:32 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "3626dc51a1f0997d7a0f918a921f9e3bdf5c089f",
+            "comment": "Adding props that take colors for icon and content in each cell of gridlist"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.46.0 <7.0.0` to `>=6.47.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.11.0",
+      "tag": "@uifabric/dashboard_v0.11.0",
+      "date": "Mon, 06 Aug 2018 10:27:53 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Samiya <samiyaakhtar7@gmail.com>",
+            "commit": "17ec45db2c4603d095c881123385a9989725f195",
+            "comment": "Fixing the type of onLayoutChange to fix build"
+          }
+        ],
+        "minor": [
+          {
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "88f940abe5fd081a238b260b57479892a0ecd0ed",
+            "comment": "passing down card width and height down to charts"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.22.4 <7.0.0` to `>=6.22.5 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.45.0 <7.0.0` to `>=6.46.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.10.0",
+      "tag": "@uifabric/dashboard_v0.10.0",
+      "date": "Fri, 03 Aug 2018 10:25:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "2735d02adba33335038e59869b139edf2303fff3",
+            "comment": "Integrate Auto-FontSize to Recommendation Card header text"
+          },
+          {
+            "author": "Samiya <samiyaakhtar7@gmail.com>",
+            "commit": "612ddc224941f7bd9e684de0fec8a0116b4289c5",
+            "comment": "Updated package.json to use react and react-dom in peer dependencies"
+          }
+        ],
+        "minor": [
+          {
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "4f2c4a9d574404bea0acc596015470b6e14af29b",
+            "comment": "Adding custom font size and color props to Multicount. Changes to the precision logic"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.22.3 <7.0.0` to `>=6.22.4 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.44.0 <7.0.0` to `>=6.45.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.9.0",
       "tag": "@uifabric/dashboard_v0.9.0",
       "date": "Thu, 02 Aug 2018 10:23:19 GMT",

@@ -3,6 +3,7 @@ import { ComponentPage, ExampleCard, IComponentDemoPageProps, PropertiesTableSet
 const MultiCountExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/MultiCount/examples/MultiCount.Example.tsx') as string;
 
 import { MultiCountExample } from './examples/MultiCount.Example';
+import { MultiCountVariantExample } from './examples/MultiCountVariant.Example';
 
 export class MultiCountPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -18,6 +19,14 @@ export class MultiCountPage extends React.Component<IComponentDemoPageProps, {}>
             <ExampleCard title="Multicount" code={MultiCountExampleCode}>
               <div style={style}>
                 <MultiCountExample />
+              </div>
+            </ExampleCard>
+            <ExampleCard
+              title="Multicount Variant. Multicount accepts font size and color as optional attributes."
+              code={MultiCountExampleCode}
+            >
+              <div style={style}>
+                <MultiCountVariantExample />
               </div>
             </ExampleCard>
           </div>
