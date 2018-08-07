@@ -277,7 +277,7 @@ Array [
               <p
                 style={
                   Object {
-                    "fontSize": 28,
+                    "fontSize": undefined,
                     "width": 0,
                   }
                 }
@@ -758,7 +758,7 @@ Array [
               <p
                 style={
                   Object {
-                    "fontSize": 28,
+                    "fontSize": undefined,
                     "width": 0,
                   }
                 }
@@ -1243,7 +1243,7 @@ exports[`RecommendationCard renders dlp example correctly 1`] = `
             <p
               style={
                 Object {
-                  "fontSize": 28,
+                  "fontSize": undefined,
                   "width": 0,
                 }
               }
@@ -2014,7 +2014,7 @@ exports[`RecommendationCard renders imageillustration example correctly 1`] = `
             <p
               style={
                 Object {
-                  "fontSize": 28,
+                  "fontSize": undefined,
                   "width": 0,
                 }
               }
