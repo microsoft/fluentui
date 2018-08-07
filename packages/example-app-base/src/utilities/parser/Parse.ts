@@ -29,7 +29,8 @@ export function parse(source: string, propsInterfaceOrEnumName?: string): IPrope
 
   if (propsInterfaceOrEnumName) {
     regex = new RegExp(
-      `export (interface|(?:const )?enum) ${propsInterfaceOrEnumName}(?: extends .*?)? \\{(.*[\\r\\n]*)*?\\}`
+      `^export (interface|(?:const )?enum) ${propsInterfaceOrEnumName}(?: extends .*?)? \\{( |.*[\\r\\n]*)*?\\}`,
+      'm'
     );
     let regexResult = regex.exec(source);
     if (regexResult && regexResult.length > 0) {
