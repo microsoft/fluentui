@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 27 Jul 2018 10:25:39 GMT and should not be manually modified.
+This log was last generated on Fri, 03 Aug 2018 10:25:59 GMT and should not be manually modified.
+
+## 6.4.0
+Fri, 03 Aug 2018 10:25:59 GMT
+
+### Minor changes
+
+- Added Nav categories, filter highlighting, and alphabetization of components
 
 ## 6.3.1
 Fri, 27 Jul 2018 10:25:39 GMT

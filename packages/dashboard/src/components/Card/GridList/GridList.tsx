@@ -15,7 +15,7 @@ import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { ActionButton } from 'office-ui-fabric-react/lib/Button';
 
 const getClassNames = classNamesFunction<IGridListProps, IGridListStyles>();
-const classNames = getClassNames(getStyles);
+const classNames = getClassNames(getStyles({}));
 
 export class GridList extends React.Component<IGridListProps> {
   constructor(props: IGridListProps) {
@@ -55,6 +55,7 @@ export class GridList extends React.Component<IGridListProps> {
     } else {
       cell = row.c3;
     }
+    const customColorCss = getClassNames(getStyles({ iconColor: cell.iconColor, textColor: cell.textColor }));
     switch (column.key) {
       case 'facepile':
         return (
@@ -62,21 +63,21 @@ export class GridList extends React.Component<IGridListProps> {
             <span className={classNames.imageAlignment}>
               <Image src={cell.facepileImageSrc} width={24} height={24} imageFit={ImageFit.cover} />
             </span>
-            <span className={classNames.text}>{cell.content}</span>
+            <span className={customColorCss.text}>{cell.content}</span>
           </div>
         );
       case 'icon':
         return (
           <div data-selection-invoke={row.isClickable}>
-            <span className={classNames.imageAlignment}>
+            <span className={customColorCss.imageAlignment}>
               <Icon iconName={cell.iconName} />
             </span>
-            <span className={classNames.text}>{cell.content}</span>
+            <span className={customColorCss.text}>{cell.content}</span>
           </div>
         );
       case 'textOnly':
         return (
-          <span className={classNames.text} data-selection-invoke={row.isClickable}>
+          <span className={customColorCss.text} data-selection-invoke={row.isClickable}>
             {cell.content}
           </span>
         );
@@ -111,17 +112,23 @@ export class GridList extends React.Component<IGridListProps> {
         c1: {
           content: gridRow.c1.content,
           facepileImageSrc: gridRow.c1.facepileImageSrc,
-          iconName: gridRow.c1.iconName
+          iconName: gridRow.c1.iconName,
+          textColor: gridRow.c1 !== undefined ? gridRow.c1.textColor : undefined,
+          iconColor: gridRow.c1 !== undefined ? gridRow.c1.iconColor : undefined
         },
         c2: {
           content: gridRow.c2 !== undefined ? gridRow.c2.content : undefined,
           facepileImageSrc: gridRow.c2 !== undefined ? gridRow.c2.facepileImageSrc : undefined,
-          iconName: gridRow.c2 !== undefined ? gridRow.c2.iconName : undefined
+          iconName: gridRow.c2 !== undefined ? gridRow.c2.iconName : undefined,
+          textColor: gridRow.c1 !== undefined ? gridRow.c1.textColor : undefined,
+          iconColor: gridRow.c1 !== undefined ? gridRow.c1.iconColor : undefined
         },
         c3: {
           content: gridRow.c3 !== undefined ? gridRow.c3.content : undefined,
           facepileImageSrc: gridRow.c3 !== undefined ? gridRow.c3.facepileImageSrc : undefined,
-          iconName: gridRow.c3 !== undefined ? gridRow.c3.iconName : undefined
+          iconName: gridRow.c3 !== undefined ? gridRow.c3.iconName : undefined,
+          textColor: gridRow.c1 !== undefined ? gridRow.c1.textColor : undefined,
+          iconColor: gridRow.c1 !== undefined ? gridRow.c1.iconColor : undefined
         }
       };
       rows.push(rowItem);

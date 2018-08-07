@@ -229,16 +229,17 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       this._async.setTimeout(() => this._scrollIntoView(), 0);
     }
 
-    // If we are open or we are just closed, shouldFocusAfterClose is set,
-    // are focused but we are not the activeElement set focus on the input
+    // if an action is taken that put focus in the ComboBox
+    // and If we are open or we are just closed, shouldFocusAfterClose is set,
+    // but we are not the activeElement set focus on the input
     if (
-      isOpen ||
-      (prevState.isOpen &&
-        !isOpen &&
-        this._focusInputAfterClose &&
-        focused &&
-        this._autofill.current &&
-        document.activeElement !== this._autofill.current.inputElement)
+      focused &&
+      (isOpen ||
+        (prevState.isOpen &&
+          !isOpen &&
+          this._focusInputAfterClose &&
+          this._autofill.current &&
+          document.activeElement !== this._autofill.current.inputElement))
     ) {
       this.focus(undefined /*shouldOpenOnFocus*/, true /*useFocusAsync*/);
     }
@@ -1336,16 +1337,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * Handles dismissing (cancelling) the menu
    */
   private _onDismiss = (): void => {
+    // close the menu
+    this._setOpenStateAndFocusOnClose(false /* isOpen */, false /* focusInputAfterClose */);
+
     // reset the selected index
-    // to the last valud state
+    // to the last value state
     this._resetSelectedIndex();
-
-    // close the menu and focus the input
-    this.setState({ isOpen: false });
-
-    if (this._autofill.current && this._focusInputAfterClose) {
-      this._autofill.current.focus();
-    }
   };
 
   /**
@@ -1819,6 +1816,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     if (!disabled) {
       this._setOpenStateAndFocusOnClose(!isOpen, false /* focusInputAfterClose */);
+      this.setState({ focused: true });
     }
   };
 

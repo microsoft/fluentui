@@ -1,10 +1,10 @@
-import { Customizations } from '@uifabric/utilities';
+import { Customizations, merge } from '@uifabric/utilities';
 import { IPalette, ISemanticColors, ITheme, IPartialTheme } from '../interfaces/index';
+import { ITypography, IPartialTypography, IFontVariant } from '../interfaces/ITypography';
 import { DefaultFontStyles } from './DefaultFontStyles';
 import { DefaultPalette } from './DefaultPalette';
 import { DefaultTypography } from './DefaultTypography';
 import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
-import { IFontVariant } from '../interfaces/ITypography';
 
 let _theme: ITheme = {
   palette: DefaultPalette,
@@ -108,7 +108,7 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
     ...theme.semanticColors
   };
 
-  const typography = { ...DefaultTypography, ...theme.typography };
+  const typography = merge<ITypography>(DefaultTypography, theme.typography as ITypography);
   const { variants } = typography;
 
   for (const variantName in variants) {
@@ -136,7 +136,7 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
     semanticColors: newSemanticColors,
     isInverted: !!theme.isInverted,
     disableGlobalClassNames: !!theme.disableGlobalClassNames,
-    typography: typography
+    typography: typography as ITypography
   };
 }
 
@@ -145,6 +145,7 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
 function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depComments: boolean): ISemanticColors {
   let toReturn: ISemanticColors = {
     bodyBackground: p.white,
+    bodyStandoutBackground: p.white,
     bodyFrameBackground: p.white,
     bodyFrameDivider: p.neutralLight,
     bodyText: p.neutralPrimary,
@@ -158,6 +159,7 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     disabledSubtext: p.neutralQuaternary,
 
     focusBorder: p.black,
+    variantBorder: p.neutralLight,
 
     errorText: !isInverted ? p.redDark : '#ff5f5f',
     warningText: !isInverted ? '#333333' : '#ffffff',
@@ -200,6 +202,8 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     listHeaderBackgroundHovered: p.neutralLighter,
     listHeaderBackgroundPressed: p.neutralLight,
 
+    actionLink: p.neutralPrimary,
+    actionLinkHovered: p.neutralDark,
     link: p.themePrimary,
     linkHovered: p.themeDarker,
 

@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/dashboard",
-      "comment": "Consuming donut,pie,stacked bar chart and mulicount into card.",
+      "comment": "Adding props that take colors for icon and content in each cell of gridlist",
       "type": "minor"
     }
   ],

@@ -104,7 +104,7 @@ export interface IDashboardGridLayoutProps {
   /**
    * Callback so you can save the layout.
    */
-  onLayoutChange?(currentLayout: Layout, allLayouts: Layouts): void;
+  onLayoutChange?(currentLayout: Layout[], allLayouts: Layouts): void;
 
   /**
    * Calls back with breakpoint and new number of columns

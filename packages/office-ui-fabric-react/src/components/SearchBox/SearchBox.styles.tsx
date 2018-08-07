@@ -121,14 +121,14 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         flexBasis: '32px',
         flexShrink: 0,
         padding: 1,
-        color: palette.themePrimary,
-        backgroundColor: 'transparent'
+        color: palette.themePrimary
       }
     ],
     field: [
       'ms-SearchBox-field',
       normalize,
       {
+        backgroundColor: 'transparent',
         border: 'none',
         outline: 'none',
         fontWeight: 'inherit',

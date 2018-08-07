@@ -44,23 +44,40 @@ export class RecommendationBasicExample extends React.Component<{}, IRecommendat
 
     const recommendationBarTitle = 'Recommended based on your lorem ipsum';
     const recommendationDescriptionHeader = 'Lorem ipsum dolor sit amet';
+    const recommendationDescriptionHeaderLong =
+      'The quick brown fox jumps over the lazy dog, The quick brown fox jumps over the lazy dog';
     // tslint:disable-next-line:max-line-length
     const recommendationDescription = `I am a recommendation template common control example. My title is above, and this is my content area for descriptive text.`;
 
     return this.state.dismissed === true ? null : (
-      <div className={classNames.sampleContainerStyle}>
-        <Recommendation
-          recommendationBarTitle={recommendationBarTitle}
-          recommendationDescriptionHeader={recommendationDescriptionHeader}
-          recommendationDescription={recommendationDescription}
-          handleViewRecommendationClick={this.onViewRecommendationClick}
-          handleDismissRecommendationClick={this.onDimissRecommendationClick}
-        >
-          <div className={classNames.visualizationStyle}>
-            <p>This is a content area for graphic elements, like illustrations or data-visualizations</p>
-          </div>
-        </Recommendation>
-      </div>
+      <React.Fragment>
+        <div className={classNames.sampleContainerStyle}>
+          <Recommendation
+            recommendationBarTitle={recommendationBarTitle}
+            recommendationDescriptionHeader={recommendationDescriptionHeader}
+            recommendationDescription={recommendationDescription}
+            handleViewRecommendationClick={this.onViewRecommendationClick}
+            handleDismissRecommendationClick={this.onDimissRecommendationClick}
+          >
+            <div className={classNames.visualizationStyle}>
+              <p>This is a content area for graphic elements, like illustrations or data-visualizations</p>
+            </div>
+          </Recommendation>
+        </div>
+        <div className={classNames.sampleContainerStyle}>
+          <Recommendation
+            recommendationBarTitle={recommendationBarTitle}
+            recommendationDescriptionHeader={recommendationDescriptionHeaderLong}
+            recommendationDescription={recommendationDescription}
+            handleViewRecommendationClick={this.onViewRecommendationClick}
+            handleDismissRecommendationClick={this.onDimissRecommendationClick}
+          >
+            <div className={classNames.visualizationStyle}>
+              <p>This is a content area for graphic elements, like illustrations or data-visualizations</p>
+            </div>
+          </Recommendation>
+        </div>
+      </React.Fragment>
     );
   }
 

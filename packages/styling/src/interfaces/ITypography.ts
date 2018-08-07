@@ -48,3 +48,8 @@ export interface ITypography {
   weights: IFontWeights;
   variants: IFontVariants;
 }
+
+/**
+ * Used in IPartialTheme so that user-defined themes can override selected typography properties
+ */
+export type IPartialTypography = { [P in keyof ITypography]?: Partial<ITypography[P]> };

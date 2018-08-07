@@ -1,6 +1,40 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 01 Aug 2018 10:25:51 GMT and should not be manually modified.
+This log was last generated on Mon, 06 Aug 2018 10:27:53 GMT and should not be manually modified.
+
+## 6.46.0
+Mon, 06 Aug 2018 10:27:53 GMT
+
+### Minor changes
+
+- TextField: Add onChange prop and deprecate onChanged
+
+## 6.45.0
+Fri, 03 Aug 2018 10:25:59 GMT
+
+### Minor changes
+
+- Align cell and column padding in DetailsList
+- 'adds 4 new semantic slots, based on designs from SP-Client events webpart, and with approval from Philip Kuo; actionLink, actionLinkHovered, cardBackground, variantBorder'
+
+### Patches
+
+- ComboBox: Only allow focus to be put back on input if focus is still inside the ComboBox
+- Dropdown: changed default directionalHintFixed to false. Can be changed to true via calloutProps.directionalHintFixed
+- SearchBox: fix field backgroundColor.
+- Updated the example to use imageUrl as props instead of hard coding directly into the img tag
+- MessageBar: add aria-expanded
+
+## 6.44.0
+Thu, 02 Aug 2018 10:23:19 GMT
+
+### Minor changes
+
+- Make Toggle component follow accessibility standards, propose deprecation of onAriaLabel, offAriaLabel
+
+### Patches
+
+- Fixing an issue where ColorPicker would report invalid color values when tabbing between its Hex and RGBA text inputs."
 
 ## 6.43.0
 Wed, 01 Aug 2018 10:25:51 GMT
