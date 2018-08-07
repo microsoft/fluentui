@@ -278,7 +278,7 @@ Array [
                 style={
                   Object {
                     "fontSize": 28,
-                    "width": "100%",
+                    "width": 0,
                   }
                 }
               >
@@ -759,7 +759,7 @@ Array [
                 style={
                   Object {
                     "fontSize": 28,
-                    "width": "100%",
+                    "width": 0,
                   }
                 }
               >
@@ -1244,7 +1244,7 @@ exports[`RecommendationCard renders dlp example correctly 1`] = `
               style={
                 Object {
                   "fontSize": 28,
-                  "width": "100%",
+                  "width": 0,
                 }
               }
             >
@@ -2015,7 +2015,7 @@ exports[`RecommendationCard renders imageillustration example correctly 1`] = `
               style={
                 Object {
                   "fontSize": 28,
-                  "width": "100%",
+                  "width": 0,
                 }
               }
             >
