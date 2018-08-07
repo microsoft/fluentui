@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ICardHeaderProps, ICardHeaderStyles } from './CardHeader.types';
 import { getStyles } from './CardHeader.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { AutoFontSize } from 'auto-fontsize';
 
 export class CardHeader extends React.Component<ICardHeaderProps, {}> {
   constructor(props: ICardHeaderProps) {
@@ -17,7 +18,9 @@ export class CardHeader extends React.Component<ICardHeaderProps, {}> {
 
     return (
       <div className={classNames.root}>
-        <div className={classNames.headerText}>{headerText}</div>
+        <div className={classNames.headerText}>
+          <AutoFontSize text={headerText || ''} targetLines={2} minTextSize={12} />
+        </div>
         <span className={classNames.annotationText}>{annotationText}</span>
       </div>
     );
