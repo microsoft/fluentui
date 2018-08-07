@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Text, Stack } from '@uifabric/experiments';
 import { IFontVariants, IFontSizes, IFontWeights, IFontFamilies } from '@uifabric/experiments/lib/Styling';
-import { ISemanticColors, IPalette } from '../../../../node_modules/office-ui-fabric-react';
+import { ISemanticColors, IPalette, ITheme } from '@uifabric/experiments/lib/Styling';
+import { createComponent } from '@uifabric/experiments/lib/Foundation';
 
 const TestText = 'The quick brown fox jumped over the lazy dog.';
 
@@ -54,23 +55,31 @@ interface ITableProps {
   title: string;
   headers: string[];
   children: React.ReactNode;
+
+  theme?: ITheme;
 }
 
-const Table: React.StatelessComponent<ITableProps> = (props: ITableProps) => (
-  <Stack className={props.className} gap={20} vertical>
-    <Text variant="h3">{props.title}</Text>
-    <table>
-      <thead>
-        <tr>
-          {props.headers.map((header: string) => (
-            <td key={header}>{header}</td>
-          ))}
-        </tr>
-      </thead>
-      <tbody>{props.children}</tbody>
-    </table>
-  </Stack>
-);
+const Table = createComponent<ITableProps, {}, {}>({
+  view: (props: ITableProps) => (
+    <Stack className={props.className} gap={20} vertical>
+      <Text variant="h3">{props.title}</Text>
+      <table>
+        <thead>
+          <tr>
+            {props.headers.map((header: string) => (
+              <td key={header}>{header}</td>
+            ))}
+          </tr>
+        </thead>
+        <tbody>{props.children}</tbody>
+      </table>
+    </Stack>
+  ),
+  displayName: 'Table',
+  styles: {
+    table: {}
+  }
+});
 
 interface ITableRowProps {
   cells: React.ReactNode[];
