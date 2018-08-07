@@ -107,5 +107,31 @@ describe('loadTheme', () => {
       expect(newTheme.typography.sizes.xxxLarge).toEqual(DefaultTypography.sizes.xxxLarge);
       expect(newTheme.typography.sizes.mega).toEqual(DefaultTypography.sizes.mega);
     });
+
+    it('does not modify DefaultTypography when given a theme with no typography', () => {
+      const previousDefault = { ...DefaultTypography };
+      theme.loadTheme({
+        palette: {
+          themePrimary: '#ff0000'
+        }
+      });
+      expect(DefaultTypography).toEqual(previousDefault);
+    });
+
+    it('does not modify DefaultTypography when given a theme with typography', () => {
+      const previousDefault = { ...DefaultTypography };
+      theme.loadTheme({
+        typography: {
+          types: {
+            default: {
+              fontFamily: 'Comic Sans MS',
+              fontSize: '18px',
+              fontWeight: 500
+            }
+          }
+        }
+      });
+      expect(DefaultTypography).toEqual(previousDefault);
+    });
   });
 });
