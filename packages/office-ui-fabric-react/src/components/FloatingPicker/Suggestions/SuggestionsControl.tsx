@@ -30,7 +30,7 @@ export class SuggestionsHeaderFooterItem extends BaseComponent<ISuggestionsHeade
   public render(): JSX.Element {
     const { renderItem, onExecute, isSelected, id } = this.props;
     return onExecute ? (
-      <button
+      <div
         id={id}
         onClick={onExecute}
         className={css('ms-Suggestions-sectionButton', styles.actionButton, {
@@ -38,7 +38,7 @@ export class SuggestionsHeaderFooterItem extends BaseComponent<ISuggestionsHeade
         })}
       >
         {renderItem()}
-      </button>
+      </div>
     ) : (
       <div id={id} className={css('ms-Suggestions-section', styles.suggestionsTitle)}>
         {renderItem()}
