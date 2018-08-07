@@ -2,6 +2,25 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "version": "6.7.1",
+      "tag": "@uifabric/fabric-website-resources_v6.7.1",
+      "date": "Tue, 07 Aug 2018 10:22:32 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "9110f7bf9e5169d0742dda7210da761ccdfd8e87",
+            "comment": "Fix duplicate nav key"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.46.0 <7.0.0` to `>=6.47.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.7.0",
       "tag": "@uifabric/fabric-website-resources_v6.7.0",
       "date": "Mon, 30 Jul 2018 10:27:11 GMT",

@@ -101,6 +101,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       checked,
       variantClassName,
       theme,
+      toggle,
       getClassNames
     } = this.props;
 
@@ -192,7 +193,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       'aria-describedby': ariaDescribedBy,
       'aria-disabled': isPrimaryButtonDisabled,
       'data-is-focusable': dataIsFocusable,
-      'aria-pressed': checked
+      'aria-pressed': toggle ? !!checked : undefined // aria-pressed attribute should only be present for toggle buttons
     });
 
     if (ariaHidden) {
@@ -478,7 +479,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       checked,
       getSplitButtonClassNames,
       primaryDisabled,
-      menuProps
+      menuProps,
+      toggle
     } = this.props;
     let { keytipProps } = this.props;
 
@@ -511,7 +513,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
             aria-disabled={disabled}
             aria-haspopup={true}
             aria-expanded={this._isExpanded}
-            aria-pressed={this.props.checked}
+            aria-pressed={toggle ? !!checked : undefined} // aria-pressed attribute should only be present for toggle buttons
             aria-describedby={mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])}
             className={classNames && classNames.splitButtonContainer}
             onKeyDown={this._onSplitButtonContainerKeyDown}

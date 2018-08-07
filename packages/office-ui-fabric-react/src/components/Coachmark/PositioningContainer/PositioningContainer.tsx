@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IPositioningContainerTypes } from './PositioningContainer.types';
+import { IPositioningContainerProps } from './PositioningContainer.types';
 import { getClassNames } from './PositioningContainer.styles';
 import { Layer } from '../../../Layer';
 
@@ -55,9 +55,9 @@ export interface IPositioningContainerState {
   heightOffset?: number;
 }
 
-export class PositioningContainer extends BaseComponent<IPositioningContainerTypes, IPositioningContainerState>
+export class PositioningContainer extends BaseComponent<IPositioningContainerProps, IPositioningContainerState>
   implements PositioningContainer {
-  public static defaultProps: IPositioningContainerTypes = {
+  public static defaultProps: IPositioningContainerProps = {
     preventDismissOnScroll: false,
     offsetFromTarget: 0,
     minPagePadding: 8,
@@ -95,7 +95,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
   private _target: HTMLElement | MouseEvent | IPoint | null;
   private _setHeightOffsetTimer: number;
 
-  constructor(props: IPositioningContainerTypes) {
+  constructor(props: IPositioningContainerProps) {
     super(props);
     this._didSetInitialFocus = false;
     this.state = {
@@ -118,7 +118,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
     this._updateAsyncPosition();
   }
 
-  public componentWillUpdate(newProps: IPositioningContainerTypes): void {
+  public componentWillUpdate(newProps: IPositioningContainerProps): void {
     // If the target element changed, find the new one. If we are tracking
     // target with class name, always find element because we do not know if
     // fabric has rendered a new element and disposed the old element.
@@ -413,7 +413,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
   }
 
   private _getTarget(
-    props: IPositioningContainerTypes = this.props
+    props: IPositioningContainerProps = this.props
   ): HTMLElement | string | MouseEvent | IPoint | null {
     const { target } = props;
     return target!;
