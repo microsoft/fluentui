@@ -1,0 +1,91 @@
+import * as React from 'react';
+import { VerticalStack } from '@uifabric/experiments/lib/Stack';
+import { Text } from '@uifabric/experiments/lib/Text';
+import { ITheme, customizable, mergeStyles } from 'office-ui-fabric-react';
+
+export interface IStackVerticalExampleProps {
+  theme?: ITheme;
+}
+
+@customizable('StackVerticalAlignExample', ['theme'])
+export class StackVerticalAlignExample extends React.Component<IStackVerticalExampleProps, {}> {
+  constructor(props: IStackVerticalExampleProps) {
+    super(props);
+  }
+
+  public render(): JSX.Element {
+    const padding = 10;
+
+    const expandedHeightStyle = mergeStyles({
+      height: 130
+    });
+
+    const { theme } = this.props;
+    const { palette } = theme!;
+    const style = mergeStyles({
+      background: palette.themeTertiary
+    });
+
+    const items = this._renderItems();
+
+    return (
+      <VerticalStack gap={5}>
+        <Text>Top-aligned</Text>
+        <div className={expandedHeightStyle}>
+          <VerticalStack verticalAlign="top" fillVertical padding={padding} className={style}>
+            {items}
+          </VerticalStack>
+        </div>
+
+        <Text>Vertically centered</Text>
+        <div className={expandedHeightStyle}>
+          <VerticalStack verticalAlign="center" fillVertical padding={padding} className={style}>
+            {items}
+          </VerticalStack>
+        </div>
+
+        <Text>Bottom-aligned</Text>
+        <div className={expandedHeightStyle}>
+          <VerticalStack verticalAlign="bottom" fillVertical padding={padding} className={style}>
+            {items}
+          </VerticalStack>
+        </div>
+
+        <Text>Vertical space around items</Text>
+        <div className={expandedHeightStyle}>
+          <VerticalStack verticalAlign="space-around" fillVertical padding={padding} className={style}>
+            {items}
+          </VerticalStack>
+        </div>
+
+        <Text>Vertical space between items</Text>
+        <div className={expandedHeightStyle}>
+          <VerticalStack verticalAlign="space-between" fillVertical padding={padding} className={style}>
+            {items}
+          </VerticalStack>
+        </div>
+
+        <Text>Items vertically evenly spaced</Text>
+        <div className={expandedHeightStyle}>
+          <VerticalStack verticalAlign="space-evenly" fillVertical padding={padding} className={style}>
+            {items}
+          </VerticalStack>
+        </div>
+      </VerticalStack>
+    );
+  }
+
+  private _renderItems(): JSX.Element[] {
+    return [
+      <Text size="tiny" key={1}>
+        Item One
+      </Text>,
+      <Text size="tiny" key={2}>
+        Item Two
+      </Text>,
+      <Text size="tiny" key={3}>
+        Item Three
+      </Text>
+    ];
+  }
+}

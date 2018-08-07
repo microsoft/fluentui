@@ -31,7 +31,8 @@ export const styles = (props: IThemedProps<IStackProps>): IStackStyles => {
         maxWidth,
         maxHeight,
         margin,
-        padding
+        padding,
+        boxSizing: 'border-box'
       },
       grow && {
         flexGrow: grow === true ? 1 : grow,

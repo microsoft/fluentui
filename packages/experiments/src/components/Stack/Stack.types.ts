@@ -1,7 +1,7 @@
 import { IStyle } from '../../Styling';
 import { IStyleableComponent } from '../../Foundation';
 
-type Alignment =
+export type Alignment =
   | 'start'
   | 'end'
   | 'center'
@@ -10,6 +10,9 @@ type Alignment =
   | 'space-evenly'
   | 'baseline'
   | 'stretch';
+
+type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
+export type IPartialStackProps = Omit<IStackProps, 'verticalAlignment' | 'horizontalAlignment' | 'horizontal'>;
 
 export interface IStackProps extends IStyleableComponent<IStackProps, IStackStyles> {
   /**
@@ -50,7 +53,7 @@ export interface IStackProps extends IStyleableComponent<IStackProps, IStackStyl
   /**
    * Whether Stack child elements should shrink to fit the available space.
    */
-  collapseItems?: boolean;
+  shrinkItems?: boolean;
 
   /**
    * How much to grow the Stack in proportion to its siblings.

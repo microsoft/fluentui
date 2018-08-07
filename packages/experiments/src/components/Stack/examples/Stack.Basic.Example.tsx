@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Stack } from '../Stack';
-import { Text } from '../../Text/Text';
+import { Stack } from '@uifabric/experiments/lib/Stack';
+import { Text } from '@uifabric/experiments/lib/Text';
 
 export class StackBasicExample extends React.Component<{}, {}> {
   constructor(props: {}) {

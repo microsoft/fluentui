@@ -36,7 +36,7 @@ export interface IStackItemProps extends IStyleableComponent<IStackItemProps, IS
   /**
    * Whether the StackItem should shrink to fit the available space.
    */
-  collapse?: boolean;
+  shrink?: boolean;
 
   /**
    * How to align the StackItem along the x-axis (for vertical Stacks) or the y-axis (for horizontal Stacks).

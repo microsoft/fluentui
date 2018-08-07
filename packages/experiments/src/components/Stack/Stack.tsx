@@ -4,12 +4,13 @@ import StackItem from './StackItem/StackItem';
 import { IStackItemProps, IStackItemStyles } from './StackItem/StackItem.types';
 import { IStackProps, IStackStyles } from './Stack.types';
 import { styles } from './Stack.styles';
+import { mergeStyles } from 'office-ui-fabric-react';
 
 const StackItemType = (<StackItem /> as React.ReactElement<IStackItemProps> &
   IStyleableComponent<IStackItemProps, IStackItemStyles>).type;
 
 const view = (props: IViewComponentProps<IStackProps, IStackStyles>) => {
-  const { renderAs: RootType = 'div', classNames, gap, horizontal, collapseItems } = props;
+  const { renderAs: RootType = 'div', classNames, gap, horizontal, shrinkItems } = props;
 
   const stackChildren: (React.ReactChild | null)[] = React.Children.map(
     props.children,
@@ -21,7 +22,7 @@ const view = (props: IViewComponentProps<IStackProps, IStackStyles>) => {
       const defaultItemProps: IStackItemProps = {
         gap: index > 0 ? gap : 0,
         horizontal,
-        collapse: collapseItems,
+        shrink: shrinkItems,
         className: child.props ? child.props.className : undefined
       };
 
@@ -31,10 +32,16 @@ const view = (props: IViewComponentProps<IStackProps, IStackStyles>) => {
         const stackItemFirstChildren = React.Children.toArray(children) as React.ReactElement<{ className?: string }>[];
         const stackItemFirstChild = stackItemFirstChildren && stackItemFirstChildren[0];
 
+        // pass down both the className on the StackItem as well as the className on its first child
+        let mergedClassName = defaultItemProps.className;
+        if (stackItemFirstChild && stackItemFirstChild.props && stackItemFirstChild.props.className) {
+          mergedClassName = mergeStyles(mergedClassName, stackItemFirstChild.props.className);
+        }
+
         return React.cloneElement(child, {
           ...defaultItemProps,
           ...child.props,
-          className: stackItemFirstChild && stackItemFirstChild.props ? stackItemFirstChild.props.className : undefined
+          className: mergedClassName
         });
       }
 
