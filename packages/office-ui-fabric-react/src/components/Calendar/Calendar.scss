@@ -11,10 +11,6 @@ $Calendar-dayPicker-margin: 10px;
 
   * {
     @include focus-border($color: $ms-color-neutralSecondary);
-
-    @include high-contrast {
-       @include focus-border(0, WindowText, 2px, false);
-    }
   }
 }
 
@@ -131,10 +127,6 @@ $Calendar-dayPicker-margin: 10px;
 
   * {
     @include focus-border(-2px, $color: $ms-color-neutralSecondary);
-
-    @include high-contrast {
-       @include focus-border(-2px, WindowText, 2px, false);
-    }
   }
 }
 
@@ -145,6 +137,9 @@ $Calendar-dayPicker-margin: 10px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  border: none;
+  padding: 0;
+  background-color: transparent;
 }
 
 // Today.
@@ -158,12 +153,11 @@ $Calendar-dayPicker-margin: 10px;
 
 // Disabled day.
 .dayIsDisabled:before {
-  border-top-color: $ms-color-neutralTertiary;
+  border-top-color: $ms-color-neutralTertiaryAlt;
 }
 
 // Out of focus days.
-.dayIsUnfocused,
-.dayIsDisabled {
+.dayIsUnfocused {
   color: $ms-color-neutralSecondary;
   font-weight: $ms-font-weight-regular;
 }
@@ -201,7 +195,7 @@ $Calendar-dayPicker-margin: 10px;
 // Disabled and highlighted dates.
 .dayIsHighlighted.dayDisabled,
 .dayIsHighlighted.dayDisabled:hover {
-  background: $ms-color-neutralTertiary;
+  background: $ms-color-neutralTertiaryAlt;
 }
 
 // Highlighted date squares
