@@ -1,6 +1,23 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 06 Aug 2018 10:27:53 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Aug 2018 10:22:32 GMT and should not be manually modified.
+
+## 6.47.0
+Tue, 07 Aug 2018 10:22:32 GMT
+
+### Minor changes
+
+- Minor documentation and type name fixes
+- Add new toggle prop to correclty use aria-pressed attribute as needed.
+
+### Patches
+
+- Fix line height scrollbar issue in ActivityItem
+- Dropdown: You can no longer use the arrow keys to change the selected items in a  disabled Dropdown. (#5738)
+- CommandBar: Disabled buttons are now focusable by default due to menubar role
+- Fix bug in ChoiceGroup that errors on Array.find as it does not exist in IE11
+- Add Modal component to index entry file.
+- Fixing Shimmer implementation in DetailsList.
 
 ## 6.46.0
 Mon, 06 Aug 2018 10:27:53 GMT

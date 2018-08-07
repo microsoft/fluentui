@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add Modal component to index entry file.",
+      "comment": "Dropdown: use item text for title if title is not provided",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "lianhu@microsoft.com"
+  "email": "natalie.ethell@microsoft.com"
 }

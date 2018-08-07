@@ -2,6 +2,57 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.47.0",
+      "tag": "office-ui-fabric-react_v6.47.0",
+      "date": "Tue, 07 Aug 2018 10:22:32 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "07ed1541c99d9d34ceef1833ebc907bd6b2f1788",
+            "comment": "Fix line height scrollbar issue in ActivityItem"
+          },
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "6e14278028e7e8e00f7efc1c1b75aaec6ecd6ac7",
+            "comment": "Dropdown: You can no longer use the arrow keys to change the selected items in a  disabled Dropdown. (#5738)"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "5bba9117f90ec7d7e07ea3f86372949687184620",
+            "comment": "CommandBar: Disabled buttons are now focusable by default due to menubar role"
+          },
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "8a38361bd7603eefcc9818da41c019897d79a5b3",
+            "comment": "Fix bug in ChoiceGroup that errors on Array.find as it does not exist in IE11"
+          },
+          {
+            "author": "Shadowglen Elf <shadowglen@outlook.com>",
+            "commit": "947d66ca624448d09f0fc1c7a9e94ad46474696e",
+            "comment": "Add Modal component to index entry file."
+          },
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "c512cbdd7d1675ae80a7dd63970580e23bf6c94b",
+            "comment": "Fixing Shimmer implementation in DetailsList."
+          }
+        ],
+        "minor": [
+          {
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "6aa724dffcc4d68d230e44c23c38d4f3db3737e9",
+            "comment": "Minor documentation and type name fixes"
+          },
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "fe9ce5e469d2dd162b5685c5d5f3ce85b90f37e8",
+            "comment": "Add new toggle prop to correclty use aria-pressed attribute as needed."
+          }
+        ]
+      }
+    },
+    {
       "version": "6.46.0",
       "tag": "office-ui-fabric-react_v6.46.0",
       "date": "Mon, 06 Aug 2018 10:27:53 GMT",
