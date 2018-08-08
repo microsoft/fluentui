@@ -16,6 +16,9 @@ const STYLES = {
   red: '.ms-Persona-initials--red'
 };
 
+/**
+ * function to override the default onRender callbacks
+ */
 const onRender = () => {
   return null;
 };

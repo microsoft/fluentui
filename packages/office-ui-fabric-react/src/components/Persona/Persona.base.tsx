@@ -122,6 +122,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
 
   /**
    * to render various types of Text based on the className
+   * primaryText, secondaryText, tertinaryText, and optionalText
    * @param cNames
    * @param renderFunction
    * @param defaultRenderFunction
@@ -147,8 +148,10 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
    * @param text
    */
   private _onRenderText(text: string | undefined): IRenderFunction<IPersonaProps> | undefined {
+    // return default render behaviour for valid text or undefined
     return text
       ? (): JSX.Element => {
+          // default onRender behaviour
           return (
             <TooltipHost
               content={text}
