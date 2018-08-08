@@ -153,7 +153,7 @@ $Calendar-dayPicker-margin: 10px;
 
 // Disabled day.
 .dayIsDisabled:before {
-  border-top-color: $ms-color-neutralTertiaryAlt;
+  border-top-color: $ms-color-neutralTertiary;
 }
 
 // Out of focus days.
@@ -195,7 +195,7 @@ $Calendar-dayPicker-margin: 10px;
 // Disabled and highlighted dates.
 .dayIsHighlighted.dayDisabled,
 .dayIsHighlighted.dayDisabled:hover {
-  background: $ms-color-neutralTertiaryAlt;
+  background: $ms-color-neutralTertiary;
 }
 
 // Highlighted date squares
