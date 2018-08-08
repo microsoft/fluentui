@@ -18,7 +18,6 @@ module.exports = function(options) {
           new Promise((resolve, reject) => {
             // check if the @codepen tag is present
             if (fileSource.indexOf('@codepen') >= 0) {
-              console.log('FILESOURCE', fileSource);
               const exampleName = path.basename(file, '.tsx');
               // extract the name of the component (relies on component/examples/examplefile.tsx structure)
               const exampleComponentName = file.split('/').reverse()[2];

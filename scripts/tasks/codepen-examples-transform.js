@@ -23,7 +23,6 @@ function parseRaw(code) {
 }
 
 function transform(file, api) {
-  console.log('in transform');
   const parse = source =>
     babylon.parse(source, {
       sourceType: 'module',
