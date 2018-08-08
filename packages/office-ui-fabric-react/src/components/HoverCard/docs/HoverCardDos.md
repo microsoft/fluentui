@@ -1,0 +1,1 @@
+- Set `trapFocus` prop to **true** if you want to render the content of the HoverCard in a FocusTrapZone.

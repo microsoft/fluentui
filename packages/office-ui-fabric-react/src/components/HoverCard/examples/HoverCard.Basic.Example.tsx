@@ -29,7 +29,7 @@ export class HoverCardBasicExample extends BaseComponent<{}, IHoverCardExampleSt
 
     return (
       <div>
-        <p> Hover over location of a row item to see the card </p>
+        <p> Hover over the location cell of a row item to see the card or use the keyboard to navigate to it.</p>
         <DetailsList setKey="hoverSet" items={items!} columns={columns} onRenderItemColumn={this._onRenderItemColumn} />
       </div>
     );
@@ -44,10 +44,8 @@ export class HoverCardBasicExample extends BaseComponent<{}, IHoverCardExampleSt
 
     if (column.key === 'location') {
       return (
-        <HoverCard id="myID1" expandingCardProps={expandingCardProps} instantOpenOnClick={true}>
-          <div className="HoverCard-item" data-is-focusable={true}>
-            {item.location}
-          </div>
+        <HoverCard id="myID1" expandingCardProps={expandingCardProps} instantOpenOnClick={true} setInitialFocus={true}>
+          <div className="HoverCard-item">{item.location}</div>
         </HoverCard>
       );
     }
