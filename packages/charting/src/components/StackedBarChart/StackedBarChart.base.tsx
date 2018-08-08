@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { IDataPoint } from './StackedBarChart.types';
 
-import { IProcessedStyleSet, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IStackedBarChartProps, IStackedBarChartStyleProps, IStackedBarChartStyles } from './StackedBarChart.types';
+import { Legend } from '@uifabric/charting/lib/components/Legend/Legend';
+import { ILegendDataItem } from '@uifabric/charting/lib/components/Legend/Legend.types';
 
 const getClassNames = classNamesFunction<IStackedBarChartStyleProps, IStackedBarChartStyles>();
 
@@ -45,7 +47,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           <svg className={this._classNames.chart}>
             <g className={this._classNames.bars}>{bars}</g>
           </svg>
-          <ul className={this._classNames.legend}>{legendBar}</ul>
+          <div>{legendBar}</div>
         </div>
       );
     } else {
@@ -92,21 +94,30 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     return bars;
   }
 
-  private _createLegendBars(data: IDataPoint[]): JSX.Element[] {
-    const bars = data.map((point: IDataPoint, index: number) => {
-      const itemStyle = {
-        backgroundColor: this._colors[index % this._colors.length],
-        height: '0px',
-        width: '0px',
-        padding: '5px'
+  private _createLegendBars(data: IDataPoint[]): JSX.Element {
+    const legendDataItems: ILegendDataItem[] = data.map((point: IDataPoint, index: number) => {
+      return {
+        legendText: point.x,
+        legendColor: this._colors[index % this._colors.length]
       };
-      return (
-        <li key={index} className={this._classNames.legendBar}>
-          <span className={mergeStyles(itemStyle)} />
-          <span className={this._classNames.legendText}>{point.x}</span>
-        </li>
-      );
     });
-    return bars;
+
+    return <Legend renderData={legendDataItems} />;
+
+    // const bars = data.map((point: IDataPoint, index: number) => {
+    //   const itemStyle = {
+    //     backgroundColor: this._colors[index % this._colors.length],
+    //     height: '0px',
+    //     width: '0px',
+    //     padding: '5px'
+    //   };
+    //   return (
+    //     <li key={index} className={this._classNames.legendBar}>
+    //       <span className={mergeStyles(itemStyle)} />
+    //       <span className={this._classNames.legendText}>{point.x}</span>
+    //     </li>
+    //   );
+    // });
+    // return bars;
   }
 }
