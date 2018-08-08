@@ -11,8 +11,13 @@ const testImage1x1 =
 const STYLES = {
   green: '.ms-Persona-initials--green',
   initials: '.ms-Persona-initials',
+  primaryText: '.ms-Persona-primaryText',
   black: '.ms-Persona-initials--black',
   red: '.ms-Persona-initials--red'
+};
+
+const onRender = () => {
+  return null;
 };
 
 describe('Persona', () => {
@@ -62,6 +67,18 @@ describe('Persona', () => {
       result = wrapper.find(STYLES.initials);
       expect(result).toHaveLength(1);
       expect(result.text()).toEqual('45');
+      wrapper.unmount();
+
+      wrapper = mount(<Persona text="Swapnil Vaibhav" onRenderCoin={onRender} />);
+      result = wrapper.find(STYLES.initials);
+      expect(result).toHaveLength(1);
+      expect(result.text()).toEqual('SV');
+      wrapper.unmount();
+
+      wrapper = mount(<Persona text="Swapnil Vaibhav" />);
+      result = wrapper.find(STYLES.primaryText);
+      expect(result).toHaveLength(1);
+      expect(result.text()).toEqual('Swapnil Vaibhav');
       wrapper.unmount();
 
       wrapper = mount(<Persona text="+1 (555) 6789" />);
