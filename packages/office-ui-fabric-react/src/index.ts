@@ -39,6 +39,7 @@ export * from './Link';
 export * from './List';
 export * from './MessageBar';
 export * from './MarqueeSelection';
+export * from './Modal';
 export * from './Nav';
 export * from './OverflowSet';
 export * from './Overlay';

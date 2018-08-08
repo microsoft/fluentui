@@ -1,6 +1,9 @@
 import { IDataPoint } from '@uifabric/charting/lib/VerticalBarChart';
 
 export enum ChartType {
+  DonutChart,
+  PieChart,
+  StackedBarChart,
   VerticalBarChart,
   LineChart,
   HorizontalBarChart
@@ -52,9 +55,14 @@ export interface IChartProps {
   barHeight?: number;
 
   /**
-   * Data to render in the chart.
+   * Data to render for single charts.
    */
-  data?: IDataPoint[];
+  dataPoints?: IDataPoint[];
+
+  /**
+   * Data to render for multiple charts.
+   */
+  data?: IDataPoint[][];
 
   /**
    * Type of chart to render

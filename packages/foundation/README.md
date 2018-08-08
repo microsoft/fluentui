@@ -7,5 +7,5 @@ This library provides the foundation for creating and using Fabric components.
 To import the foundation:
 
 ```js
-import { createComponent } from '@uifabric/foundation';
+import { createStatelessComponent, createComponent } from '@uifabric/foundation';
 ```

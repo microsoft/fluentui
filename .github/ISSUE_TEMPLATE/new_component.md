@@ -30,7 +30,7 @@ __Code Sample__
 ```
 
 <!-- View naming guidelines here https://github.com/OfficeDev/office-ui-fabric-react/wiki/Component-Design#naming-guidance -->
-__Props__
+__Types__
 
 | Name      | Type     | Default Value | Description |
 |-----------|----------|---------------|-------------|
@@ -49,12 +49,16 @@ __Props__
 
 ## Steps
 
-- [ ] is themable (base/styles)
-- [ ] has unit tests
-- [ ] has snapshot tests
-- [ ] has visual tests
-- [ ] has documentation and examples
+- [ ] Themable (Component.base/Component.styles)
+- [ ] Unit tests
+- [ ] Visual tests
+- [ ] Documentation and examples
+- [ ] Keyboard Accessible
+- [ ] High Constrast Support
+- [ ] RTL Support
 - [ ] Design Review
 - [ ] API review
 - [ ] Public Preview
 - [ ] Ready for Publishing
+
+

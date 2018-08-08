@@ -318,7 +318,7 @@ exports[`DetailsList renders List correctly 1`] = `
                   margin-top: 0;
                   outline: transparent;
                   padding-bottom: 0;
-                  padding-left: 8px;
+                  padding-left: 12px;
                   padding-right: 8px;
                   padding-top: 0;
                   position: relative;
@@ -348,6 +348,9 @@ exports[`DetailsList renders List correctly 1`] = `
                 &:active {
                   background: #eaeaea;
                 }
+                &:hover i[data-icon-name="GripperBarVertical"] {
+                  display: block;
+                }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
             data-item-key="key"
@@ -355,7 +358,7 @@ exports[`DetailsList renders List correctly 1`] = `
             role="columnheader"
             style={
               Object {
-                "width": 116,
+                "width": 120,
               }
             }
           >
@@ -891,7 +894,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                   margin-top: 0;
                   outline: transparent;
                   padding-bottom: 0;
-                  padding-left: 8px;
+                  padding-left: 12px;
                   padding-right: 8px;
                   padding-top: 0;
                   position: relative;
@@ -921,6 +924,9 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                 &:active {
                   background: #eaeaea;
                 }
+                &:hover i[data-icon-name="GripperBarVertical"] {
+                  display: block;
+                }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
             data-item-key="key"
@@ -928,7 +934,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
             role="columnheader"
             style={
               Object {
-                "width": 116,
+                "width": 120,
               }
             }
           >
@@ -1464,7 +1470,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   margin-top: 0;
                   outline: transparent;
                   padding-bottom: 0;
-                  padding-left: 8px;
+                  padding-left: 12px;
                   padding-right: 8px;
                   padding-top: 0;
                   position: relative;
@@ -1494,6 +1500,9 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                 &:active {
                   background: #eaeaea;
                 }
+                &:hover i[data-icon-name="GripperBarVertical"] {
+                  display: block;
+                }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
             data-item-key="key"
@@ -1501,7 +1510,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
             role="columnheader"
             style={
               Object {
-                "width": 316,
+                "width": 320,
               }
             }
           >
@@ -1653,7 +1662,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   margin-top: 0;
                   outline: transparent;
                   padding-bottom: 0;
-                  padding-left: 8px;
+                  padding-left: 12px;
                   padding-right: 8px;
                   padding-top: 0;
                   position: relative;
@@ -1683,6 +1692,9 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                 &:active {
                   background: #eaeaea;
                 }
+                &:hover i[data-icon-name="GripperBarVertical"] {
+                  display: block;
+                }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
             data-item-key="name"
@@ -1690,7 +1702,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
             role="columnheader"
             style={
               Object {
-                "width": 316,
+                "width": 320,
               }
             }
           >
@@ -1842,7 +1854,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   margin-top: 0;
                   outline: transparent;
                   padding-bottom: 0;
-                  padding-left: 8px;
+                  padding-left: 12px;
                   padding-right: 8px;
                   padding-top: 0;
                   position: relative;
@@ -1872,6 +1884,9 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                 &:active {
                   background: #eaeaea;
                 }
+                &:hover i[data-icon-name="GripperBarVertical"] {
+                  display: block;
+                }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
             data-item-key="value"
@@ -1879,7 +1894,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
             role="columnheader"
             style={
               Object {
-                "width": 316,
+                "width": 320,
               }
             }
           >

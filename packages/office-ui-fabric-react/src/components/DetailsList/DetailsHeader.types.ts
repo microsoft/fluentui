@@ -7,6 +7,7 @@ import { ISelection, SelectionMode } from '../../utilities/selection/interfaces'
 import { ITheme, IStyle } from '../../Styling';
 import { DetailsHeaderBase } from './DetailsHeader.base';
 import { IColumn, DetailsListLayoutMode, IColumnReorderOptions } from './DetailsList.types';
+import { ICellStyleProps } from './DetailsRow.types';
 
 export interface IDetailsHeader {
   /** sets focus into the header */
@@ -91,6 +92,8 @@ export interface IDetailsHeaderProps extends React.Props<DetailsHeaderBase> {
 
   /** Overriding class name */
   className?: string;
+
+  cellStyleProps?: ICellStyleProps;
 }
 
 export enum SelectAllVisibility {
@@ -139,6 +142,8 @@ export type IDetailsHeaderStyleProps = Required<Pick<IDetailsHeaderProps, 'theme
 
     /** Whether checkbox is hidden  */
     isCheckboxHidden?: boolean;
+
+    cellStyleProps?: ICellStyleProps;
   };
 
 export interface IDetailsHeaderStyles {
@@ -148,26 +153,16 @@ export interface IDetailsHeaderStyles {
   cellIsCheck: IStyle;
   cellIsActionable: IStyle;
   cellIsEmpty: IStyle;
-  cell: IStyle;
-  gripperBarVerticalStyle: IStyle;
   cellSizer: IStyle;
   cellSizerStart: IStyle;
   cellSizerEnd: IStyle;
   cellIsResizing: IStyle;
+  cellIsGroupExpander: IStyle;
   collapseButton: IStyle;
-  iconOnlyHeader: IStyle;
-  nearIcon: IStyle;
-  sortIcon: IStyle;
-  filterChevron: IStyle;
-  cellTitle: IStyle;
-  cellName: IStyle;
   checkTooltip: IStyle;
-  cellTooltip: IStyle;
   sizingOverlay: IStyle;
-  borderWhileDragging: IStyle;
   dropHintCircleStyle: IStyle;
   dropHintLineStyle: IStyle;
   dropHintStyle: IStyle;
-  borderAfterDropping: IStyle;
   accessibleLabel: IStyle;
 }

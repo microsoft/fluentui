@@ -17,6 +17,7 @@ import { IGridListProps } from '../GridList/GridList.types';
 import { GridList } from '../GridList/GridList';
 import { IChartProps, ChartWidth, ChartHeight } from '../Chart/Chart.types';
 import { Chart } from '../Chart/Chart';
+import { MultiCount, IMultiCountProps } from '@uifabric/dashboard';
 
 export class Layout extends React.Component<ILayoutProps> {
   constructor(props: ILayoutProps) {
@@ -94,7 +95,14 @@ export class Layout extends React.Component<ILayoutProps> {
                 break;
               }
               case CardContentType.Chart: {
-                const { chartLabel, colors, barWidth, data, chartType } = cardContent.content as IChartProps;
+                const {
+                  chartLabel,
+                  colors,
+                  barWidth,
+                  data,
+                  chartType,
+                  dataPoints
+                } = cardContent.content as IChartProps;
                 contentArea.push(
                   <Chart
                     chartLabel={chartLabel}
@@ -102,10 +110,16 @@ export class Layout extends React.Component<ILayoutProps> {
                     colors={colors}
                     barWidth={barWidth}
                     data={data}
+                    dataPoints={dataPoints}
                     width={this._getChartWidth(cardContentList.length)}
                     height={this._getChartHeight(cardContentList.length)}
                   />
                 );
+                break;
+              }
+              case CardContentType.MultiCount: {
+                const { multiCountRows } = cardContent.content as IMultiCountProps;
+                contentArea.push(<MultiCount multiCountRows={multiCountRows} />);
                 break;
               }
             }

@@ -187,7 +187,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
             onFocus={this._onTextFieldFocus}
             onBlur={this._onTextFieldBlur}
             onClick={this._onTextFieldClick}
-            onChanged={this._onTextFieldChanged}
+            onChange={this._onTextFieldChanged}
             errorMessage={errorMessage}
             placeholder={placeholder}
             borderless={borderless}
@@ -292,7 +292,10 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
     this._validateTextInput();
   };
 
-  private _onTextFieldChanged = (newValue: string): void => {
+  private _onTextFieldChanged = (
+    ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
+    newValue: string
+  ): void => {
     if (this.props.allowTextInput) {
       if (this.state.isDatePickerShown) {
         this._dismissDatePickerPopup();

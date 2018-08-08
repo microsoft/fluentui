@@ -39,7 +39,7 @@ export class LabeledArc extends Arc {
       <g className="arc">
         {super.render()}
         <text transform={labelTranslate} textAnchor="middle">
-          {data!.data!.label}-{data!.data!.value}
+          {data!.data!.x}-{data!.data!.y}
         </text>
       </g>
     );

@@ -1,6 +1,31 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Thu, 19 Jul 2018 21:25:32 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Aug 2018 10:25:08 GMT and should not be manually modified.
+
+## 6.7.2
+Wed, 08 Aug 2018 10:25:07 GMT
+
+### Patches
+
+- Fix bad imports that break AMD.
+
+## 6.7.1
+Tue, 07 Aug 2018 10:22:32 GMT
+
+### Patches
+
+- Fix duplicate nav key
+
+## 6.7.0
+Mon, 30 Jul 2018 10:27:11 GMT
+
+### Minor changes
+
+- Addressing bad imports.
+
+### Patches
+
+- Fixes an issue with demo website that have a duplicate key in the list of components
 
 ## 6.0.2
 Thu, 19 Jul 2018 21:25:32 GMT

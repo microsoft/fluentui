@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { ICardProps, CardSize, Priority, CardContentType } from '../Card.types';
-import { Card } from '../Card';
-import { IThumbnailItemProps } from '../ThumbnailList/ThumbnailList.types';
+import { Card, CardContentType, CardSize, ICardProps, IThumbnailItemProps, Priority } from '@uifabric/dashboard';
 
 export class SmallCardBasicExample extends React.Component<{}, {}> {
   constructor(props: ICardProps) {

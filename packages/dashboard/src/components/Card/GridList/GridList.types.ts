@@ -38,6 +38,21 @@ export interface IGridCellItem {
    * The icon we want to show
    */
   iconName?: string;
+
+  /**
+   * The color for the icon
+   */
+  iconColor?: string;
+
+  /**
+   * The color for text in each cell
+   */
+  textColor?: string;
+}
+
+export interface ICustomCssForCells {
+  iconColor?: string;
+  textColor?: string;
 }
 
 /**

@@ -2,6 +2,201 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.13.0",
+      "tag": "@uifabric/dashboard_v0.13.0",
+      "date": "Wed, 08 Aug 2018 10:25:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "4d32614144c1ee0b904746f615ae245bb47348ce",
+            "comment": "Fix bad imports that break AMD."
+          },
+          {
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "3ef4c8f42150ee6f33699d1a29ed009bdefa1350",
+            "comment": "Update Auto-FontSize package to 1.0.9"
+          }
+        ],
+        "minor": [
+          {
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "081268ecf1b88f6428fbd99ac6faae490de5c398",
+            "comment": "Adding multiple line chart to charting package. Consuming the multiple line chart in the dashboard Card."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.12.0` to `^0.13.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.7.0 <7.0.0` to `>=6.7.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.22.5 <7.0.0` to `>=6.22.6 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.47.0 <7.0.0` to `>=6.47.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.12.0",
+      "tag": "@uifabric/dashboard_v0.12.0",
+      "date": "Tue, 07 Aug 2018 10:22:32 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "3626dc51a1f0997d7a0f918a921f9e3bdf5c089f",
+            "comment": "Adding props that take colors for icon and content in each cell of gridlist"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.46.0 <7.0.0` to `>=6.47.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.11.0",
+      "tag": "@uifabric/dashboard_v0.11.0",
+      "date": "Mon, 06 Aug 2018 10:27:53 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Samiya <samiyaakhtar7@gmail.com>",
+            "commit": "17ec45db2c4603d095c881123385a9989725f195",
+            "comment": "Fixing the type of onLayoutChange to fix build"
+          }
+        ],
+        "minor": [
+          {
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "88f940abe5fd081a238b260b57479892a0ecd0ed",
+            "comment": "passing down card width and height down to charts"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.22.4 <7.0.0` to `>=6.22.5 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.45.0 <7.0.0` to `>=6.46.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.10.0",
+      "tag": "@uifabric/dashboard_v0.10.0",
+      "date": "Fri, 03 Aug 2018 10:25:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "2735d02adba33335038e59869b139edf2303fff3",
+            "comment": "Integrate Auto-FontSize to Recommendation Card header text"
+          },
+          {
+            "author": "Samiya <samiyaakhtar7@gmail.com>",
+            "commit": "612ddc224941f7bd9e684de0fec8a0116b4289c5",
+            "comment": "Updated package.json to use react and react-dom in peer dependencies"
+          }
+        ],
+        "minor": [
+          {
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "4f2c4a9d574404bea0acc596015470b6e14af29b",
+            "comment": "Adding custom font size and color props to Multicount. Changes to the precision logic"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.22.3 <7.0.0` to `>=6.22.4 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.44.0 <7.0.0` to `>=6.45.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.9.0",
+      "tag": "@uifabric/dashboard_v0.9.0",
+      "date": "Thu, 02 Aug 2018 10:23:19 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "0f5adec987bc75661c5a5b16a2d45f42319710ed",
+            "comment": "Adding auto-fontsize dependency."
+          }
+        ],
+        "minor": [
+          {
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "1ef7812da2f994edce867acdd6f58e82688c816d",
+            "comment": "Consuming donut,pie,stacked bar chart and mulicount into card."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.22.2 <7.0.0` to `>=6.22.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.43.0 <7.0.0` to `>=6.44.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.8.0",
+      "tag": "@uifabric/dashboard_v0.8.0",
+      "date": "Wed, 01 Aug 2018 10:25:51 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "nulikartik <nulikarthik@gmail.com>",
+            "commit": "5c7d118ebf3904d9bf25fb49fd76ae1c16120965",
+            "comment": "Multicount dataviz containing body text and annotation text"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.11.1` to `^0.12.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.22.1 <7.0.0` to `>=6.22.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.42.0 <7.0.0` to `>=6.43.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.7.1",
+      "tag": "@uifabric/dashboard_v0.7.1",
+      "date": "Tue, 31 Jul 2018 10:25:18 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "0b3d2f0b993d82d67c8c42017698891f8a1269ad",
+            "comment": "Fix bad import."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.41.1 <7.0.0` to `>=6.42.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.7.0",
       "tag": "@uifabric/dashboard_v0.7.0",
       "date": "Wed, 25 Jul 2018 03:20:34 GMT",

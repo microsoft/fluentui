@@ -12,6 +12,7 @@ import { CardComponentStyles, getStyles } from './Recommendation.styles';
 
 /* Utilities */
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { AutoFontSize } from 'auto-fontsize';
 
 const getClassNames = classNamesFunction<{}, IRecommendationStyles>();
 const classNames = getClassNames(getStyles!);
@@ -64,7 +65,9 @@ export class Recommendation extends React.Component<IRecommendationProps, {}> {
       >
         <div className={classNames.recommendationContainer}>
           <div className={classNames.recommendationTextContainer}>
-            <div className={classNames.recommendationHeader}>{recommendationDescriptionHeader} </div>
+            <div className={classNames.recommendationHeader}>
+              <AutoFontSize text={recommendationDescriptionHeader} minTextSize={12} textSizeStep={2} targetLines={2} />
+            </div>
             <div className={classNames.recommendationContent}>{recommendationDescription} </div>
             <div>
               <PrimaryButton
