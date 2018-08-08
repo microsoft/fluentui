@@ -78,7 +78,6 @@ export class DetailsListCompactExample extends React.Component<
             selectionPreservedOnEmptyClick={true}
             onItemInvoked={this._onItemInvoked}
             compact={true}
-            useReducedRowRenderer={true}
           />
         </MarqueeSelection>
       </div>
