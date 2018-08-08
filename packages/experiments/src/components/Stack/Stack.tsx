@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createComponent, IStyleableComponent, IViewComponentProps } from '../../Foundation';
+import { createStatelessComponent, IStyleableComponent, IViewComponentProps } from '../../Foundation';
 import StackItem from './StackItem/StackItem';
 import { IStackItemProps, IStackItemStyles } from './StackItem/StackItem.types';
 import { IStackProps, IStackStyles } from './Stack.types';
@@ -56,7 +56,7 @@ type IStackStatics = typeof StackStatics;
 
 export const Stack: React.StatelessComponent<IStackProps> & {
   Item: React.StatelessComponent<IStackItemProps>;
-} = createComponent<IStackProps, IStackStyles, IStackStatics>({
+} = createStatelessComponent<IStackProps, IStackStyles, IStackStatics>({
   displayName: 'Stack',
   styles,
   view,

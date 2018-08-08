@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IStyle, IFontStyles, IPalette, ISemanticColors } from '../../Styling';
-import { IStyleableComponent, IThemedProps, IViewComponentProps, createComponent } from '../../Foundation';
+import { IStyleableComponent, IThemedProps, IViewComponentProps, createStatelessComponent } from '../../Foundation';
 import { IFontTypes, IFontFamilies, IFontSizes, IFontWeights } from './theming/ITypography';
 
 // Styles for the component
@@ -164,7 +164,7 @@ const styles = (props: IThemedProps<ITextProps>): ITextStyles => {
   } as ITextStyles;
 };
 
-export const Text: React.StatelessComponent<ITextProps> = createComponent<ITextProps, ITextStyles>({
+export const Text: React.StatelessComponent<ITextProps> = createStatelessComponent<ITextProps, ITextStyles>({
   displayName: 'Text',
   styles: styles,
   view: TextView
