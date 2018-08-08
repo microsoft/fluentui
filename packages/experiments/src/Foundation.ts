@@ -41,8 +41,8 @@ const providers: IStylingProviders<any, any, ITheme> = {
 };
 
 /**
- * A helper for Foundation's createStatlessComponent that automatically passes in constant types.
- * See Foundation's createStatlessComponent for more detail.
+ * A helper for Foundation's createStatelessComponent that automatically passes in constant types.
+ * See Foundation's createStatelessComponent for more detail.
  * @param {IComponentOptions} options
  */
 export function createStatelessComponent<
@@ -52,7 +52,13 @@ export function createStatelessComponent<
 >(
   options: IComponentOptions<TComponentProps, TStyleSet, IProcessedStyleSet<TStyleSet>, ITheme, TStatics>
 ): React.StatelessComponent<TComponentProps> & TStatics {
-  return foundationCreateStatelessComponent(options, providers);
+  return foundationCreateStatelessComponent<
+    TComponentProps,
+    TStyleSet,
+    IProcessedStyleSet<TStyleSet>,
+    ITheme,
+    TStatics
+  >(options, providers);
 }
 
 /**
@@ -74,5 +80,12 @@ export function createComponent<
     IProcessedStyleSet<TStyleSet>
   >
 ): React.StatelessComponent<TComponentProps> & TStatics {
-  return foundationCreateComponent(options, providers, state);
+  return foundationCreateComponent<
+    TComponentProps,
+    TViewProps,
+    TStyleSet,
+    IProcessedStyleSet<TStyleSet>,
+    ITheme,
+    TStatics
+  >(options, providers, state);
 }

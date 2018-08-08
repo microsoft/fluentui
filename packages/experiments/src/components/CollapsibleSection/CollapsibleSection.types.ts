@@ -51,6 +51,14 @@ export type ICollapsibleSectionViewProps = Pick<ICollapsibleSectionProps, 'title
      * Toggle input callback triggered by mouse and keyboard input.
      */
     onToggleCollapse?: () => void;
+    /**
+     * Key down callback for root element of CollapsibleSection.
+     */
+    onRootKeyDown?: (ev: React.KeyboardEvent<Element>) => void;
+    /**
+     * Key down callback for CollapsibleSection title.
+     */
+    onKeyDown?: (ev: React.KeyboardEvent<Element>) => void;
   };
 
 export type ICollapsibleSectionStyleProps = IThemedProps<ICollapsibleSectionViewProps>;

@@ -67,20 +67,6 @@ export interface IComponentOptions<TViewProps, TStyleSet, TProcessedStyledSet, T
   statics?: TStatics;
 }
 
-/**
- * Evaluate styles based on type to return consistent TStyleSet.
- */
-function evaluateStyle<TViewProps, TStyleSet>(
-  props: TViewProps,
-  styles?: IStylesProp<TViewProps, TStyleSet>
-): Partial<TStyleSet> | undefined {
-  if (typeof styles === 'function') {
-    return styles(props);
-  }
-
-  return styles;
-}
-
 // TODO: get themes from context/provider rather than accessor
 /**
  * Providers used by createComponent to process and apply styling.
@@ -161,8 +147,8 @@ export function createComponent<
         userProps,
         {
           classNames: providers.mergeStyleSets(
-            evaluateStyle(themedProps, options.styles),
-            evaluateStyle(themedProps, styles)
+            _evaluateStyle(themedProps, options.styles),
+            _evaluateStyle(themedProps, styles)
           )
         }
       );
@@ -208,8 +194,8 @@ export function createStatelessComponent<
       const themedProps: TProcessedProps = Object.assign({}, { theme }, processedProps);
       const viewProps: IViewComponentProps<TProcessedProps, TProcessedStyleSet> = Object.assign({}, processedProps, {
         classNames: providers.mergeStyleSets(
-          evaluateStyle(themedProps, options.styles),
-          evaluateStyle(themedProps, styles)
+          _evaluateStyle(themedProps, options.styles),
+          _evaluateStyle(themedProps, styles)
         )
       });
 
@@ -225,4 +211,18 @@ export function createStatelessComponent<
 
   // Later versions of TypeSript should allow us to merge objects in a type safe way and avoid this cast.
   return result as React.StatelessComponent<TComponentProps> & TStatics;
+}
+
+/**
+ * Evaluate styles based on type to return consistent TStyleSet.
+ */
+function _evaluateStyle<TViewProps, TStyleSet>(
+  props: TViewProps,
+  styles?: IStylesProp<TViewProps, TStyleSet>
+): Partial<TStyleSet> | undefined {
+  if (typeof styles === 'function') {
+    return styles(props);
+  }
+
+  return styles;
 }

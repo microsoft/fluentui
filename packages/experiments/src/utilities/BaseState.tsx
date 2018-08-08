@@ -20,9 +20,9 @@ export type ITransform<TComponentProps, TViewProps> = {
    */
   defaultValue: boolean;
   /**
-   * Callback as input into transform indicating change. Must exist in TViewProps.
+   * Callback as input into transform indicating change on input. Must exist in TViewProps.
    */
-  onChange: keyof TViewProps;
+  onInput: keyof TViewProps;
 };
 
 export type IStateTransforms<TComponentProps, TViewProps> = (ITransform<TComponentProps, TViewProps>)[];
@@ -57,7 +57,7 @@ export class BaseStateComponent<TComponentProps, TViewProps> extends BaseCompone
       stateObject[transform.prop] = defaultValuePropDefined
         ? props[transform.defaultValueProp!]
         : transform.defaultValue;
-      stateObject[transform.onChange] = this._onToggle(transform.prop);
+      stateObject[transform.onInput] = this._onToggle(transform.prop);
     });
 
     this.state = stateObject;

@@ -32,7 +32,7 @@ export class CollapsibleSectionControlledExample extends React.Component<
             result, clicking on the titles in this example does not affect collapsed state, only clicking on the Toggle
             button does.
           </p>
-          <Stack vertical={false} gap={20} align="center">
+          <Stack gap={20} align="center">
             <DefaultButton
               text="Toggle"
               onClick={() => {
