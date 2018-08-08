@@ -12,7 +12,6 @@ import { IOverflowSet, OverflowSet } from '../../OverflowSet';
 import { IResizeGroup, ResizeGroup } from '../../ResizeGroup';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { classNamesFunction, createRef } from '../../Utilities';
-import { IContextualMenuItem } from '../../ContextualMenu';
 import { CommandBarButton, IButtonProps } from '../../Button';
 import { TooltipHost } from '../../Tooltip';
 
