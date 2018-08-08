@@ -101,6 +101,30 @@ describe('CommandBar', () => {
     expect(document.querySelector('.SubMenuClass')).toBeDefined();
   });
 
+  it('passes event and item to button onClick callbacks', () => {
+    let testValue: string | undefined = '';
+    const commandBar = mount(
+      <CommandBar
+        items={[
+          {
+            text: 'TestText 1',
+            key: 'TestKey1',
+            className: 'MenuItem',
+            onClick: (ev, item) => {
+              testValue = ev && item && item.text;
+            }
+          }
+        ]}
+      />
+    );
+
+    const menuItem = commandBar.find('.MenuItem button');
+
+    menuItem.simulate('click');
+
+    expect(testValue).toEqual('TestText 1');
+  });
+
   it('keeps menu open after update if item is still present', () => {
     const commandBar = mount(
       <CommandBar
