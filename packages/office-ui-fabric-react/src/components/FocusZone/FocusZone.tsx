@@ -871,21 +871,23 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       const isRangeSelected = selectionStart !== selectionEnd;
       const inputValue = element.value;
 
-      // We shouldn't lose focus in the following cases:
+      // If the element is enabled, we should lose focus except when:
       // 1. There is range selected.
       // 2. When selection start is larger than 0 and it is backward.
       // 3. when selection start is not the end of length and it is forward.
       // 4. We press any of the arrow keys when our handleTabKey isn't none or undefined (only losing focus if we hit tab)
       // and if shouldInputLoseFocusOnArrowKey is defined, if scenario prefers to not loose the focus which is determined by calling the
       // callback shouldInputLoseFocusOnArrowKey
-      if (
-        isRangeSelected ||
-        (selectionStart! > 0 && !isForward) ||
-        (selectionStart !== inputValue.length && isForward) ||
-        (!!this.props.handleTabKey &&
-          !(this.props.shouldInputLoseFocusOnArrowKey && this.props.shouldInputLoseFocusOnArrowKey(element)))
-      ) {
-        return false;
+      if (element.readOnly === false) {
+        if (
+          isRangeSelected ||
+          (selectionStart! > 0 && !isForward) ||
+          (selectionStart !== inputValue.length && isForward) ||
+          (!!this.props.handleTabKey &&
+            !(this.props.shouldInputLoseFocusOnArrowKey && this.props.shouldInputLoseFocusOnArrowKey(element)))
+        ) {
+          return false;
+        }
       }
     }
 

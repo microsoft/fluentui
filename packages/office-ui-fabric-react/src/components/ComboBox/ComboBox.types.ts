@@ -186,6 +186,11 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   keytipProps?: IKeytipProps;
 
   /**
+   * Optional mode indicates if arrow keys are valid input when disabled.
+   */
+  allowArrowKeyInputWhenDisabled?: boolean;
+
+  /**
    * Value to show in the input, does not have to map to a combobox option
    * @deprecated Use `text` instead.
    */

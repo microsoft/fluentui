@@ -1791,12 +1791,17 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         this.setState({ isOpen: false });
       }
 
+      let allowedKeys: number[] = [KeyCodes.tab, KeyCodes.escape];
+
+      if (this.props.allowArrowKeyInputWhenDisabled === true) {
+        allowedKeys = [...allowedKeys, KeyCodes.left, KeyCodes.right, KeyCodes.up, KeyCodes.down];
+      }
+
       // When disabled stop propagation and prevent default
       // of the event unless we have a tab, escape, or function key
       if (
         ev !== null &&
-        ev.which !== KeyCodes.tab &&
-        ev.which !== KeyCodes.escape &&
+        allowedKeys.includes(ev.which) === false &&
         (ev.which < 112 /* F1 */ || ev.which > 123) /* F12 */
       ) {
         ev.stopPropagation();

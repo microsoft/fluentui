@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Added allowArrowKeyInputWhenDisabled to ComboBox and disbaled elements now always give up focus.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "mipatera@microsoft.com"
+}
