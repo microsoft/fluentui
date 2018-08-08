@@ -49,7 +49,7 @@ export class CheckboxImplementationExamples extends React.Component<{}, ICheckbo
         </label>
 
         <Checkbox
-          label="Uncontrolled checkbox with defaultChecked true Uncontrolled checkbox with defaultChecked trueUncontrolled checkbox with defaultChecked trueUncontrolled checkbox with defaultChecked trueUncontrolled checkbox with defaultChecked trueUncontrolled checkbox with defaultChecked trueUncontrolled checkbox with defaultChecked trueUncontrolled checkbox with defaultChecked trueUncontrolled checkbox with defaultChecked trueUncontrolled checkbox with defaultChecked true"
+          label="Uncontrolled checkbox with defaultChecked true"
           defaultChecked={true}
           onChange={this._onCheckboxChange}
           styles={checkboxStyles}
@@ -58,7 +58,7 @@ export class CheckboxImplementationExamples extends React.Component<{}, ICheckbo
         <Checkbox label="Disabled uncontrolled checkbox" disabled={true} styles={checkboxStyles} />
 
         <Checkbox
-          label="Disabled uncontrolled checkbox with defaultChecked true Uncontrolled checkbox with defaultChecked trueUncontrolled checkbox with defaultChecked trueUncontrolled checkbox with defaultChecked trueUncontrolled checkbox with defaultChecked trueUncontrolled checkbox with defaultChecked trueUncontrolled checkbox with defaultChecked trueUncontrolled checkbox with defaultChecked true"
+          label="Disabled uncontrolled checkbox with defaultChecked true"
           disabled={true}
           defaultChecked={true}
           onChange={this._onCheckboxChange}

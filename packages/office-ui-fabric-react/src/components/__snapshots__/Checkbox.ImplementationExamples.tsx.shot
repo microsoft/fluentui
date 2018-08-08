@@ -345,7 +345,7 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
               margin-top: 0;
             }
       >
-        Uncontrolled checkbox with defaultChecked true Uncontrolled checkbox with defaultChecked trueUncontrolled checkbox with defaultChecked trueUncontrolled checkbox with defaultChecked trueUncontrolled checkbox with defaultChecked trueUncontrolled checkbox with defaultChecked trueUncontrolled checkbox with defaultChecked trueUncontrolled checkbox with defaultChecked trueUncontrolled checkbox with defaultChecked trueUncontrolled checkbox with defaultChecked true
+        Uncontrolled checkbox with defaultChecked true
       </span>
     </label>
   </button>
@@ -630,7 +630,7 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
               margin-top: 0;
             }
       >
-        Disabled uncontrolled checkbox with defaultChecked true Uncontrolled checkbox with defaultChecked trueUncontrolled checkbox with defaultChecked trueUncontrolled checkbox with defaultChecked trueUncontrolled checkbox with defaultChecked trueUncontrolled checkbox with defaultChecked trueUncontrolled checkbox with defaultChecked trueUncontrolled checkbox with defaultChecked true
+        Disabled uncontrolled checkbox with defaultChecked true
       </span>
     </label>
   </button>
