@@ -69,10 +69,10 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
 
     const ariaLabelledBy = label ? this._id + '-label' : (this.props as any)['aria-labelledby'];
 
-    // In cases where no option is checked, set tab index to first enabled option so that ChoiceGroup remains tabbable.
-    // If no options are enabled, ChoiceGroup is not tabbable. If any option is checked, do not set keyDefaultTab.
+    // In cases where no option is checked, set focusable to first enabled option so that ChoiceGroup remains focusable.
+    // If no options are enabled, ChoiceGroup is not focusable. If any option is checked, do not set keyDefaultFocusable.
     const firstEnabledOption = disabled || options === undefined ? undefined : options.find(option => !option.disabled);
-    const keyDefaultTab = keyChecked === undefined && firstEnabledOption ? firstEnabledOption.key : undefined;
+    const keyDefaultFocusable = keyChecked === undefined && firstEnabledOption ? firstEnabledOption.key : undefined;
 
     return (
       // Need to assign role application on containing div because JAWS doesn't call OnKeyDown without this role
@@ -85,11 +85,11 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
           )}
           <div className={classNames.flexContainer}>
             {options!.map((option: IChoiceGroupOption) => {
-              const innerOptionProps: IChoiceGroupOptionProps = {
+              const innerOptionProps = {
                 ...option,
                 focused: option.key === keyFocused,
                 checked: option.key === keyChecked,
-                tabIndex: option.key === keyChecked || option.key === keyDefaultTab ? 0 : -1,
+                'data-is-focusable': option.key === keyChecked || option.key === keyDefaultFocusable ? true : false,
                 disabled: option.disabled || disabled,
                 id: `${this._id}-${option.key}`,
                 labelId: `${this._labelId}-${option.key}`,

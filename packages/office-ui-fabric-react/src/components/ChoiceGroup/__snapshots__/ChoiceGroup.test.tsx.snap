@@ -62,6 +62,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
                   top: 8px;
                 }
             data-automation-id="auto1"
+            data-is-focusable={true}
             disabled={undefined}
             id="ChoiceGroup0-1"
             name="ChoiceGroup0"
@@ -69,7 +70,6 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             onChange={[Function]}
             onFocus={[Function]}
             required={true}
-            tabIndex={0}
             type="radio"
           />
           <label
@@ -175,6 +175,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
                   position: absolute;
                   top: 8px;
                 }
+            data-is-focusable={false}
             disabled={undefined}
             id="ChoiceGroup0-2"
             name="ChoiceGroup0"
@@ -182,7 +183,6 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             onChange={[Function]}
             onFocus={[Function]}
             required={true}
-            tabIndex={-1}
             type="radio"
           />
           <label
@@ -288,6 +288,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
                   position: absolute;
                   top: 8px;
                 }
+            data-is-focusable={false}
             disabled={undefined}
             id="ChoiceGroup0-3"
             name="ChoiceGroup0"
@@ -295,7 +296,6 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             onChange={[Function]}
             onFocus={[Function]}
             required={true}
-            tabIndex={-1}
             type="radio"
           />
           <label
