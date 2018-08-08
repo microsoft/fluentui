@@ -21,7 +21,7 @@ const STYLES = {
 /**
  * function to override the default onRender callbacks
  */
-const wrapPersona = (
+export const wrapPersona = (
   example: IPersonaSharedProps
 ): ((coinProps: IPersonaProps, defaultRenderer: IRenderFunction<IPersonaProps>) => JSX.Element | null) => {
   return (coinProps, defaultCoinRenderer): JSX.Element | null => {

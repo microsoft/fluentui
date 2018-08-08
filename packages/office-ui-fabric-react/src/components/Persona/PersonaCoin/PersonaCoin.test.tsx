@@ -1,9 +1,9 @@
 /* tslint:disable-next-line:no-unused-variable */
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { setRTL, IRenderFunction } from '../../../Utilities';
+import { setRTL } from '../../../Utilities';
 import { PersonaCoin } from './PersonaCoin';
-import { IPersonaSharedProps, IPersonaProps } from '../../../index';
+import { wrapPersona } from 'office-ui-fabric-react/lib/components/Persona/Persona.test';
 
 const testImage1x1 =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
@@ -14,17 +14,6 @@ const coinProp = {
   tertiaryText: 'In a meeting',
   optionalText: 'Available at 4:00pm',
   size: 15
-};
-
-/**
- * function to override the default onRender callbacks
- */
-const wrapPersona = (
-  example: IPersonaSharedProps
-): ((coinProps: IPersonaProps, defaultRenderer: IRenderFunction<IPersonaProps>) => JSX.Element | null) => {
-  return (coinProps, defaultCoinRenderer): JSX.Element | null => {
-    return defaultCoinRenderer(coinProps);
-  };
 };
 
 describe('PersonaCoin', () => {
