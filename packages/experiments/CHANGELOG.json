@@ -2,6 +2,44 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.22.6",
+      "tag": "@uifabric/experiments_v6.22.6",
+      "date": "Wed, 08 Aug 2018 10:25:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "4d32614144c1ee0b904746f615ae245bb47348ce",
+            "comment": "Fix bad imports that break AMD."
+          },
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "e33aed2e672ab52018f934d146517b0dfff9f84d",
+            "comment": "Implement base state class and controlled vs. uncontrolled behavior."
+          },
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "c1873c1a4acf1f2719615427053c4a0b36a7a31f",
+            "comment": "Stack: merge the className of a StackItem with the className of its first child"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.12.0` to `^0.13.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.2.2 <1.0.0` to `>=0.2.3 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.47.0 <7.0.0` to `>=6.47.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.7.0 <7.0.0` to `>=6.7.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.22.5",
       "tag": "@uifabric/experiments_v6.22.5",
       "date": "Mon, 06 Aug 2018 10:27:53 GMT",

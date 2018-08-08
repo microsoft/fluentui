@@ -173,7 +173,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
             {overlay}
             <FocusTrapZone
               ignoreExternalFocusing={ignoreExternalFocusing}
-              forceFocusInsideTrap={forceFocusInsideTrap}
+              forceFocusInsideTrap={isHiddenOnDismiss && !isOpen ? false : forceFocusInsideTrap}
               firstFocusableSelector={firstFocusableSelector}
               {...focusTrapZoneProps}
               className={css(

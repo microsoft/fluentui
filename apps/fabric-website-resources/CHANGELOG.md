@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Tue, 07 Aug 2018 10:22:32 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Aug 2018 10:25:08 GMT and should not be manually modified.
+
+## 6.7.2
+Wed, 08 Aug 2018 10:25:07 GMT
+
+### Patches
+
+- Fix bad imports that break AMD.
 
 ## 6.7.1
 Tue, 07 Aug 2018 10:22:32 GMT

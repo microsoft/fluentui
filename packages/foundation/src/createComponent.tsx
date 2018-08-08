@@ -67,20 +67,6 @@ export interface IComponentOptions<TViewProps, TStyleSet, TProcessedStyledSet, T
   statics?: TStatics;
 }
 
-/**
- * Evaluate styles based on type to return consistent TStyleSet.
- */
-function evaluateStyle<TViewProps, TStyleSet>(
-  props: TViewProps,
-  styles?: IStylesProp<TViewProps, TStyleSet>
-): Partial<TStyleSet> | undefined {
-  if (typeof styles === 'function') {
-    return styles(props);
-  }
-
-  return styles;
-}
-
 // TODO: get themes from context/provider rather than accessor
 /**
  * Providers used by createComponent to process and apply styling.
@@ -125,7 +111,9 @@ export interface IStylingProviders<TStyleSet, TProcessedStyleSet, TTheme> {
 // TODO: Combine these functions into one once conditional types (TS 2.8) can be used. This will allow us to define
 //        TComponentProps as being the same as TViewProps when StateComponent is not provided.
 // TODO: use theming prop when provided and reconcile with global theme
-export function createComponentWithState<
+// TODO: should userProps have higher priority over processedProps? or vice versa? tradeoff between styles priority and controlled values
+//        if user props take priority, this could cause some subtle issues like overriding callbacks that state component uses.
+export function createComponent<
   TComponentProps extends IStyleableComponent<TViewProps, TStyleSet, TTheme>,
   TViewProps,
   TStyleSet,
@@ -155,12 +143,12 @@ export function createComponentWithState<
       const themedProps: TProcessedProps = Object.assign({}, { theme }, userProps, processedProps);
       const viewProps: IViewComponentProps<TProcessedProps, TProcessedStyleSet> = Object.assign(
         {},
-        userProps,
         processedProps,
+        userProps,
         {
           classNames: providers.mergeStyleSets(
-            evaluateStyle(themedProps, options.styles),
-            evaluateStyle(themedProps, styles)
+            _evaluateStyle(themedProps, options.styles),
+            _evaluateStyle(themedProps, styles)
           )
         }
       );
@@ -180,12 +168,12 @@ export function createComponentWithState<
 }
 
 /**
- * This is essentially the same as createComponentWithState. The primary differences are that TComponentProps and TViewProps
+ * This is essentially the same as createComponent. The primary differences are that TComponentProps and TViewProps
  * are equivalent and there is no state component argument.
  *
- * @see {@link createComponentWithState} for more information.
+ * @see {@link createComponent} for more information.
  */
-export function createComponent<
+export function createStatelessComponent<
   TComponentProps extends IStyleableComponent<TComponentProps, TStyleSet, TTheme>,
   TStyleSet,
   TProcessedStyleSet,
@@ -206,8 +194,8 @@ export function createComponent<
       const themedProps: TProcessedProps = Object.assign({}, { theme }, processedProps);
       const viewProps: IViewComponentProps<TProcessedProps, TProcessedStyleSet> = Object.assign({}, processedProps, {
         classNames: providers.mergeStyleSets(
-          evaluateStyle(themedProps, options.styles),
-          evaluateStyle(themedProps, styles)
+          _evaluateStyle(themedProps, options.styles),
+          _evaluateStyle(themedProps, styles)
         )
       });
 
@@ -223,4 +211,18 @@ export function createComponent<
 
   // Later versions of TypeSript should allow us to merge objects in a type safe way and avoid this cast.
   return result as React.StatelessComponent<TComponentProps> & TStatics;
+}
+
+/**
+ * Evaluate styles based on type to return consistent TStyleSet.
+ */
+function _evaluateStyle<TViewProps, TStyleSet>(
+  props: TViewProps,
+  styles?: IStylesProp<TViewProps, TStyleSet>
+): Partial<TStyleSet> | undefined {
+  if (typeof styles === 'function') {
+    return styles(props);
+  }
+
+  return styles;
 }

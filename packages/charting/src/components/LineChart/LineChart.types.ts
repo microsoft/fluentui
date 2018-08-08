@@ -9,7 +9,7 @@ export interface ILineChartProps {
   /**
    * Data to render in the chart.
    */
-  data?: IDataPoint[];
+  data?: IDataPoint[][];
 
   /**
    * Width of the chart.
@@ -29,7 +29,7 @@ export interface ILineChartProps {
   /**
    * Color for all the lines in the chart.
    */
-  color?: string;
+  colors?: string[];
 
   /**
    * Label to apply to the whole chart.

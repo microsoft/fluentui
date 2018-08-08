@@ -43,7 +43,7 @@ export class StackedBarChartExample extends React.Component<{}, {}> {
         content: {
           chartLabel: 'Stacked bar chart with two data points',
           chartType: ChartType.StackedBarChart,
-          data: points,
+          dataPoints: points,
           colors: colors
         }
       },
@@ -53,7 +53,7 @@ export class StackedBarChartExample extends React.Component<{}, {}> {
         content: {
           chartLabel: 'Stacked bar chart with multiple points',
           chartType: ChartType.StackedBarChart,
-          data: multiplePoints,
+          dataPoints: multiplePoints,
           colors: multipleColors
         }
       }

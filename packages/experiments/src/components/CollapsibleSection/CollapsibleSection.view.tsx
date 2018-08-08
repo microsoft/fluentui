@@ -23,7 +23,18 @@ export const CollapsibleSectionView = (
 ) => {
   const { collapsed, titleAs: TitleType = CollapsibleSectionTitle, titleProps, children } = props;
 
-  // TODO: make sure onToggleCollapse gets called both from state and from titleProps.
+  // A helper to call both callbacks
+  const onToggleCollapse = () => {
+    if (props.titleProps && props.titleProps.onToggleCollapse) {
+      props.titleProps.onToggleCollapse();
+    }
+    if (props.onToggleCollapse) {
+      props.onToggleCollapse();
+    }
+  };
+
+  // TODO: we're stomping on titleProps here with callbacks and ref. need to deal with both
+  //        state and user values or limit the props exposed to user.
   return (
     <div className={props.classNames.root} onKeyDown={props.onRootKeyDown}>
       <TitleType
@@ -31,7 +42,7 @@ export const CollapsibleSectionView = (
         collapsed={props.collapsed}
         focusElementRef={props.titleElementRef}
         defaultCollapsed={true}
-        onToggleCollapse={props.onToggleCollapse}
+        onToggleCollapse={onToggleCollapse}
         onKeyDown={props.onKeyDown}
       />
       <div className={props.classNames.body}>{!collapsed && children}</div>

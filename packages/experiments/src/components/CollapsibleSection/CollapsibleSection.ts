@@ -1,14 +1,15 @@
-import { createComponentWithState } from '../../Foundation';
 import { CollapsibleSectionView } from './CollapsibleSection.view';
-import { CollapsibleSectionState } from './CollapsibleSection.state';
 import { getStyles as styles } from './CollapsibleSection.styles';
+import { createComponent } from '../../Foundation';
+import { CollapsibleSectionState } from './CollapsibleSection.state';
+
 import {
   ICollapsibleSectionProps,
   ICollapsibleSectionViewProps,
   ICollapsibleSectionStyles
 } from './CollapsibleSection.types';
 
-export const CollapsibleSection: React.StatelessComponent<ICollapsibleSectionProps> = createComponentWithState<
+export const CollapsibleSection: React.StatelessComponent<ICollapsibleSectionProps> = createComponent<
   ICollapsibleSectionProps,
   ICollapsibleSectionViewProps,
   ICollapsibleSectionStyles

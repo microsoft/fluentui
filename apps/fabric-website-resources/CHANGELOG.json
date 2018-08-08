@@ -2,6 +2,28 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "version": "6.7.2",
+      "tag": "@uifabric/fabric-website-resources_v6.7.2",
+      "date": "Wed, 08 Aug 2018 10:25:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "4d32614144c1ee0b904746f615ae245bb47348ce",
+            "comment": "Fix bad imports that break AMD."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.7.0 <7.0.0` to `>=6.7.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.47.0 <7.0.0` to `>=6.47.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.7.1",
       "tag": "@uifabric/fabric-website-resources_v6.7.1",
       "date": "Tue, 07 Aug 2018 10:22:32 GMT",

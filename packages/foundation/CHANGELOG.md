@@ -1,6 +1,13 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Fri, 03 Aug 2018 10:25:59 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Aug 2018 10:25:08 GMT and should not be manually modified.
+
+## 0.2.3
+Wed, 08 Aug 2018 10:25:08 GMT
+
+### Patches
+
+- Align createComponent naming with React terminology.
 
 ## 0.2.2
 Fri, 03 Aug 2018 10:25:59 GMT
