@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DetailsListLayoutMode, IColumn } from 'office-ui-fabric-react/lib/components/DetailsList';
+import { DetailsListLayoutMode, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { ShimmeredDetailsList } from 'office-ui-fabric-react/lib/ShimmeredDetailsList';
 import { lorem } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import './DetailsListExample.scss';

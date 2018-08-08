@@ -6,10 +6,9 @@ import {
   IStyle,
   normalize
 } from '../../Styling';
-import { ILabelStyles } from '../../Label';
+import { ILabelStyles, ILabelStyleProps } from '../../Label';
 import { ITextFieldStyleProps, ITextFieldStyles } from './TextField.types';
 import { IStyleFunctionOrObject } from '@uifabric/utilities';
-import { ILabelStyleProps } from 'office-ui-fabric-react/lib/components/Label';
 
 const globalClassNames = {
   root: 'ms-TextField',

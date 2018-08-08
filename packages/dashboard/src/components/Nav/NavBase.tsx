@@ -1,6 +1,6 @@
 /* tslint:disable */
 import { INavLink, INavProps, INavState } from './Nav.types';
-import { INav } from 'office-ui-fabric-react/lib/components/Nav';
+import { INav } from 'office-ui-fabric-react/lib/Nav';
 import * as React from 'react';
 /* tslint:enable */
 
