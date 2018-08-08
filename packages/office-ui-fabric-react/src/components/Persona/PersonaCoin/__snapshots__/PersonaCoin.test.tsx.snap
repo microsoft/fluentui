@@ -225,6 +225,62 @@ exports[`PersonaCoin renders correctly with image 1`] = `
 </div>
 `;
 
+exports[`PersonaCoin renders correctly with onRender callback 1`] = `
+<div
+  className=
+      ms-Persona-coin
+      ms-Persona--size100
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+      }
+  size={15}
+>
+  <div
+    className=
+        ms-Persona-imageArea
+        {
+          flex: 0 0 auto;
+          height: 100px;
+          position: relative;
+          text-align: center;
+          width: 100px;
+        }
+    style={undefined}
+  >
+    <div
+      aria-hidden="true"
+      className=
+          ms-Persona-initials
+          {
+            background-color: #7E3878;
+            border-radius: 50%;
+            color: #ffffff;
+            font-size: 42px;
+            font-weight: 400;
+            height: 100px;
+            line-height: 100px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            -ms-high-contrast-adjust: none;
+            background-color: Window !important;
+            border: 1px solid WindowText;
+            box-sizing: border-box;
+            color: WindowText;
+          }
+      style={undefined}
+    >
+      <span>
+        SV
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`PersonaCoin renders correctly with provided initials 1`] = `
 <div
   className=
