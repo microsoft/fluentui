@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/dashboard",
-      "comment": "passing down card width and height down to charts",
+      "comment": "Adding multiple line chart to charting package. Consuming the multiple line chart in the dashboard Card.",
       "type": "minor"
     }
   ],

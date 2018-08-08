@@ -153,27 +153,16 @@ export interface IDetailsHeaderStyles {
   cellIsCheck: IStyle;
   cellIsActionable: IStyle;
   cellIsEmpty: IStyle;
-  cell: IStyle;
-  gripperBarVerticalStyle: IStyle;
   cellSizer: IStyle;
   cellSizerStart: IStyle;
   cellSizerEnd: IStyle;
   cellIsResizing: IStyle;
   cellIsGroupExpander: IStyle;
   collapseButton: IStyle;
-  iconOnlyHeader: IStyle;
-  nearIcon: IStyle;
-  sortIcon: IStyle;
-  filterChevron: IStyle;
-  cellTitle: IStyle;
-  cellName: IStyle;
   checkTooltip: IStyle;
-  cellTooltip: IStyle;
   sizingOverlay: IStyle;
-  borderWhileDragging: IStyle;
   dropHintCircleStyle: IStyle;
   dropHintLineStyle: IStyle;
   dropHintStyle: IStyle;
-  borderAfterDropping: IStyle;
   accessibleLabel: IStyle;
 }

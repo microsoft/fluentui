@@ -275,7 +275,6 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderProps, IDetai
               onColumnClick={onColumnClick}
               onColumnContextMenu={onColumnContextMenu}
               isDropped={this._onDropIndexInfo.targetIndex === columnIndex}
-              headerClassNames={classNames}
               cellStyleProps={this.props.cellStyleProps}
             />,
             column.isResizable && this._renderColumnSizer(columnIndex)

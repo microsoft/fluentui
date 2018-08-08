@@ -138,12 +138,11 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   // Primary Render
   public render(): JSX.Element {
     const id = this._id;
-    let { disabled } = this.props;
+
     const {
       className,
       label,
       options,
-      isDisabled,
       ariaLabel,
       required,
       errorMessage,
@@ -162,10 +161,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     const selectedOptions = this._getAllSelectedOptions(options, selectedIndices);
     const divProps = getNativeProps(this.props, divProperties);
 
-    // Remove this deprecation workaround at 1.0.0
-    if (isDisabled !== undefined) {
-      disabled = isDisabled;
-    }
+    const disabled = this._isDisabled();
 
     const optionId = id + '-option';
     const ariaAttrs = multiSelect
@@ -530,7 +526,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
         role="option"
         aria-selected={isItemSelected ? 'true' : 'false'}
         ariaLabel={item.ariaLabel || item.text}
-        title={item.title}
+        title={item.title ? item.title : item.text}
       >
         {onRenderOption(item, this._onRenderOption)}
       </CommandButton>
@@ -548,7 +544,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
           onMouseMove: this._onItemMouseMove.bind(this, item)
         }}
         label={item.text}
-        title={item.title}
+        title={item.title ? item.title : item.text}
         onRenderLabel={this._onRenderLabel.bind(this, item)}
         className={itemClassName}
         role="option"
@@ -769,7 +765,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
         }
         if (this.props.multiSelect) {
           this.setState({ isOpen: true });
-        } else {
+        } else if (!this._isDisabled()) {
           newIndex = this._moveIndex(-1, selectedIndex - 1, selectedIndex);
         }
         break;
@@ -781,7 +777,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
         }
         if ((containsExpandCollapseModifier && !isOpen) || this.props.multiSelect) {
           this.setState({ isOpen: true });
-        } else {
+        } else if (!this._isDisabled()) {
           newIndex = this._moveIndex(1, selectedIndex + 1, selectedIndex);
         }
         break;
@@ -915,14 +911,9 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
         return;
       }
     }
-    let { disabled } = this.props;
-    const { isDisabled } = this.props;
-    const { isOpen } = this.state;
 
-    // Remove this deprecation workaround at 1.0.0
-    if (isDisabled !== undefined) {
-      disabled = isDisabled;
-    }
+    const { isOpen } = this.state;
+    const disabled = this._isDisabled();
 
     if (!disabled) {
       this.setState({
@@ -935,10 +926,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     const { isOpen, selectedIndices } = this.state;
     const { multiSelect } = this.props;
 
-    let { disabled } = this.props;
-    if (this.props.isDisabled !== undefined) {
-      disabled = this.props.isDisabled;
-    }
+    const disabled = this._isDisabled();
 
     if (!isOpen && selectedIndices.length === 0 && !multiSelect && !disabled) {
       // Per aria
@@ -947,5 +935,21 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
 
     this.setState({ hasFocus: true });
     return;
+  };
+
+  /**
+   * Because the isDisabled prop is deprecated, we have had to repeat this logic all over the place.
+   * This helper method avoids all the repetition.
+   */
+  private _isDisabled: () => boolean | undefined = () => {
+    let { disabled } = this.props;
+    const { isDisabled } = this.props;
+
+    // Remove this deprecation workaround at 1.0.0
+    if (isDisabled !== undefined) {
+      disabled = isDisabled;
+    }
+
+    return disabled;
   };
 }

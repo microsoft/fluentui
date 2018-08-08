@@ -77,6 +77,7 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
   onClick={[Function]}
   onFocus={[Function]}
   role="checkbox"
+  title={undefined}
   type="button"
 >
   <label

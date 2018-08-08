@@ -113,12 +113,8 @@ export class DetailsListDragDropExample extends React.Component<
 
   private _getColumnReorderOptions(): IColumnReorderOptions {
     return {
-      frozenColumnCountFromStart: !isNaN(Number(this.state.frozenColumnCountFromStart))
-        ? parseInt(this.state.frozenColumnCountFromStart, 10)
-        : undefined,
-      frozenColumnCountFromEnd: !isNaN(Number(this.state.frozenColumnCountFromEnd))
-        ? parseInt(this.state.frozenColumnCountFromEnd, 10)
-        : undefined,
+      frozenColumnCountFromStart: parseInt(this.state.frozenColumnCountFromStart, 10),
+      frozenColumnCountFromEnd: parseInt(this.state.frozenColumnCountFromEnd, 10),
       handleColumnReorder: this._handleColumnReorder
     };
   }
@@ -127,11 +123,17 @@ export class DetailsListDragDropExample extends React.Component<
     return isNaN(Number(value)) ? `The value should be a number, actual is ${value}.` : '';
   }
 
-  private _onChangeStartCountText = (text: any): void => {
+  private _onChangeStartCountText = (
+    event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
+    text: string
+  ): void => {
     this.setState({ frozenColumnCountFromStart: text });
   };
 
-  private _onChangeEndCountText = (text: any): void => {
+  private _onChangeEndCountText = (
+    event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
+    text: string
+  ): void => {
     this.setState({ frozenColumnCountFromEnd: text });
   };
 

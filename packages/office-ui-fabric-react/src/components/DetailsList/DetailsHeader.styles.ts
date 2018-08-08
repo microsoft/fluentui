@@ -7,10 +7,11 @@ import {
   getGlobalClassNames,
   HighContrastSelector,
   hiddenContentStyle,
-  keyframes
+  ITheme
 } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
+import { ICellStyleProps } from './DetailsRow.types';
 
 const GlobalClassNames = {
   tooltipHost: 'ms-TooltipHost',
@@ -28,11 +29,39 @@ const GlobalClassNames = {
   dropHintLineStyle: 'ms-DetailsHeader-dropHintLineStyle',
   cellTitle: 'ms-DetailsHeader-cellTitle',
   cellName: 'ms-DetailsHeader-cellName',
-  filterChevron: 'ms-DetailsHeader-filterChevron'
+  filterChevron: 'ms-DetailsHeader-filterChevron',
+  gripperBarVertical: 'ms-DetailsColumn-gripperBarVertical'
 };
 
 const values = {
   rowHeight: 32
+};
+
+export const getCellStyles = (props: { theme: ITheme; cellStyleProps?: ICellStyleProps }): IStyle => {
+  const { theme, cellStyleProps = DEFAULT_CELL_STYLE_PROPS } = props;
+  const { semanticColors } = theme;
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
+  return [
+    classNames.cell,
+    getFocusStyle(theme),
+    FontClassNames.small,
+    {
+      color: semanticColors.bodyText,
+      position: 'relative',
+      display: 'inline-block;',
+      boxSizing: 'border-box',
+      padding: `0 ${cellStyleProps.cellRightPadding}px 0 ${cellStyleProps.cellLeftPadding}px`,
+      border: 'none',
+      lineHeight: 'inherit',
+      margin: '0',
+      height: values.rowHeight,
+      verticalAlign: 'top',
+      whiteSpace: 'nowrap',
+      textOverflow: 'ellipsis',
+      textAlign: 'left'
+    }
+  ];
 };
 
 export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles => {
@@ -63,47 +92,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
     transition: 'opacity 0.3s linear'
   };
 
-  const fadeOut: string = keyframes({
-    from: {
-      borderColor: palette.themePrimary
-    },
-    to: {
-      borderColor: palette.white
-    }
-  });
-
-  const fadeOutAnimation = {
-    animationName: fadeOut,
-    animationDuration: '0.2s',
-    animationDirection: 'forwards'
-  };
-
-  const slowFadeOutAnimation = {
-    animationName: fadeOut,
-    animationDuration: '1.5s',
-    animationDirection: 'forwards'
-  };
-
-  const cellStyles: IStyle = [
-    classNames.cell,
-    getFocusStyle(theme),
-    FontClassNames.small,
-    {
-      color: colors.headerForegroundColor,
-      position: 'relative',
-      display: 'inline-block;',
-      boxSizing: 'border-box',
-      padding: `0 ${cellStyleProps.cellRightPadding}px 0 ${cellStyleProps.cellLeftPadding}px`,
-      border: 'none',
-      lineHeight: 'inherit',
-      margin: '0',
-      height: values.rowHeight,
-      verticalAlign: 'top',
-      whiteSpace: 'nowrap',
-      textOverflow: 'ellipsis',
-      textAlign: 'left'
-    }
-  ];
+  const cellStyles = getCellStyles(props);
 
   return {
     root: [
@@ -205,23 +194,6 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
       }
     ],
 
-    cell: cellStyles,
-
-    gripperBarVerticalStyle: [
-      {
-        display: 'none',
-        position: 'absolute',
-        textAlign: 'left',
-        color: palette.neutralTertiary,
-        left: 1,
-        selectors: {
-          ':hover': {
-            display: 'block'
-          }
-        }
-      }
-    ],
-
     cellSizer: [
       classNames.cellSizer,
       focusClear(),
@@ -291,76 +263,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
       isAllCollapsed && classNames.isCollapsed
     ],
 
-    iconOnlyHeader: [
-      {
-        selectors: {
-          $nearIcon: {
-            paddingLeft: 0
-          }
-        }
-      }
-    ],
-
-    nearIcon: [
-      {
-        color: colors.iconForegroundColor,
-        opacity: 1,
-        paddingLeft: 8
-      }
-    ],
-
-    sortIcon: [
-      {
-        paddingLeft: 4,
-        position: 'relative',
-        top: 1
-      }
-    ],
-
-    filterChevron: [
-      classNames.filterChevron,
-      {
-        color: colors.dropdownChevronForegroundColor,
-        paddingLeft: 4,
-        verticalAlign: 'middle'
-      }
-    ],
-
-    cellTitle: [
-      classNames.cellTitle,
-      getFocusStyle(theme),
-      {
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'flex-start',
-        alignItems: 'stretch',
-        boxSizing: 'border-box',
-        overflow: 'hidden',
-        padding: `0 ${cellStyleProps.cellRightPadding}px 0 ${cellStyleProps.cellLeftPadding}px`
-      }
-    ],
-
-    cellName: [
-      classNames.cellName,
-      {
-        flex: '0 1 auto',
-        overflow: 'hidden',
-        textOverflow: 'ellipsis'
-      }
-    ],
-
     checkTooltip: [],
-
-    cellTooltip: [
-      {
-        display: 'block',
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        bottom: 0,
-        right: 0
-      }
-    ],
 
     sizingOverlay: [
       isSizing && {
@@ -381,15 +284,6 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
     ],
 
     accessibleLabel: [hiddenContentStyle],
-
-    borderWhileDragging: [
-      {
-        borderStyle: 'solid',
-        borderWidth: 1,
-        borderColor: palette.themePrimary
-      },
-      fadeOutAnimation
-    ],
 
     dropHintCircleStyle: [
       classNames.dropHintCircleStyle,
@@ -431,17 +325,6 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         display: 'inline-block',
         position: 'absolute'
       }
-    ],
-
-    borderAfterDropping: [
-      {
-        borderStyle: 'solid',
-        borderWidth: 1,
-        borderColor: palette.themePrimary,
-        left: -1,
-        lineHeight: 31
-      },
-      slowFadeOutAnimation
     ]
   };
 };
