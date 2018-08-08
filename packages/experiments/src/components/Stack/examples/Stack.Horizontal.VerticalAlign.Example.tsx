@@ -17,7 +17,7 @@ export class StackHorizontalVerticalAlignExample extends React.Component<
   }
 
   public render(): JSX.Element {
-    const padding = 20;
+    const padding = 10;
 
     const expandedHeightStyle = mergeStyles({
       height: 100

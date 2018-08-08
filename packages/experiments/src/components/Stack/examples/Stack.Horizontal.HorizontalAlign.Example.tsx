@@ -14,7 +14,7 @@ export class StackHorizontalAlignExample extends React.Component<IStackHorizonta
   }
 
   public render(): JSX.Element {
-    const padding = 20;
+    const padding = 10;
 
     const { theme } = this.props;
     const { palette } = theme!;
