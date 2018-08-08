@@ -24,7 +24,7 @@ export const getStyles = (props: ICardHeaderProps): ICardHeaderStyles => {
     },
     annotationText: {
       whiteSpace: 'noWrap',
-      fontFamily: 'Segoe UI',
+      fontFamily: '"Segoe UI Regular WestEuropean","Segoe UI","Segoe WP",Tahoma,Arial,sans-serif',
       textOverflow: 'ellipsis',
       overflow: 'hidden',
       alignSelf: 'flex-end',

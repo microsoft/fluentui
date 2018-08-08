@@ -1,6 +1,6 @@
 import { IStyle } from '@uifabric/experiments/lib/Styling';
 
-export const baseFontFamily = 'Segoe UI';
+export const baseFontFamily = '"Segoe UI Regular WestEuropean","Segoe UI","Segoe WP",Tahoma,Arial,sans-serif';
 export const wrappingContainerWidth = 876;
 export const wrappingContainerHeight = 296;
 export const regularFontWeight = 'bold';

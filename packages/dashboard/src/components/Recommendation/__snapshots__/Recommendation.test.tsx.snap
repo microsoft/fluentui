@@ -268,7 +268,7 @@ Array [
 
                   {
                     color: rgba(0,0,0,1);
-                    font-family: Segoe UI;
+                    font-family: "Segoe UI Regular WestEuropean","Segoe UI","Segoe WP",Tahoma,Arial,sans-serif;
                     font-size: 28px;
                     font-weight: bold;
                     margin-bottom: 24px;
@@ -291,7 +291,7 @@ Array [
                   {
                     color: rgba(0,0,0,1);
                     flex: 1;
-                    font-family: Segoe UI;
+                    font-family: "Segoe UI Regular WestEuropean","Segoe UI","Segoe WP",Tahoma,Arial,sans-serif;
                     font-size: 12px;
                     margin-bottom: 16px;
                     word-wrap: break-word;
@@ -749,7 +749,7 @@ Array [
 
                   {
                     color: rgba(0,0,0,1);
-                    font-family: Segoe UI;
+                    font-family: "Segoe UI Regular WestEuropean","Segoe UI","Segoe WP",Tahoma,Arial,sans-serif;
                     font-size: 28px;
                     font-weight: bold;
                     margin-bottom: 24px;
@@ -772,7 +772,7 @@ Array [
                   {
                     color: rgba(0,0,0,1);
                     flex: 1;
-                    font-family: Segoe UI;
+                    font-family: "Segoe UI Regular WestEuropean","Segoe UI","Segoe WP",Tahoma,Arial,sans-serif;
                     font-size: 12px;
                     margin-bottom: 16px;
                     word-wrap: break-word;
@@ -1234,7 +1234,7 @@ exports[`RecommendationCard renders dlp example correctly 1`] = `
 
                 {
                   color: rgba(0,0,0,1);
-                  font-family: Segoe UI;
+                  font-family: "Segoe UI Regular WestEuropean","Segoe UI","Segoe WP",Tahoma,Arial,sans-serif;
                   font-size: 28px;
                   font-weight: bold;
                   margin-bottom: 24px;
@@ -1257,7 +1257,7 @@ exports[`RecommendationCard renders dlp example correctly 1`] = `
                 {
                   color: rgba(0,0,0,1);
                   flex: 1;
-                  font-family: Segoe UI;
+                  font-family: "Segoe UI Regular WestEuropean","Segoe UI","Segoe WP",Tahoma,Arial,sans-serif;
                   font-size: 12px;
                   margin-bottom: 16px;
                   word-wrap: break-word;
@@ -1445,7 +1445,7 @@ exports[`RecommendationCard renders dlp example correctly 1`] = `
 
                     {
                       color: rgba(132,132,132,1);
-                      font-family: Segoe UI;
+                      font-family: "Segoe UI Regular WestEuropean","Segoe UI","Segoe WP",Tahoma,Arial,sans-serif;
                       font-size: 14px;
                       font-weight: bold;
                       padding-bottom: 24px;
@@ -1469,7 +1469,7 @@ exports[`RecommendationCard renders dlp example correctly 1`] = `
 
                       {
                         color: rgba(0,0,0,1);
-                        font-family: Segoe UI;
+                        font-family: "Segoe UI Regular WestEuropean","Segoe UI","Segoe WP",Tahoma,Arial,sans-serif;
                         font-size: 12px;
                         font-weight: bold;
                         padding-right: 24px;
@@ -1482,7 +1482,7 @@ exports[`RecommendationCard renders dlp example correctly 1`] = `
 
                       {
                         display: flex;
-                        font-family: Segoe UI;
+                        font-family: "Segoe UI Regular WestEuropean","Segoe UI","Segoe WP",Tahoma,Arial,sans-serif;
                         font-size: 12px;
                         font-weight: bold;
                       }
@@ -1524,7 +1524,7 @@ exports[`RecommendationCard renders dlp example correctly 1`] = `
 
                       {
                         color: rgba(0,0,0,1);
-                        font-family: Segoe UI;
+                        font-family: "Segoe UI Regular WestEuropean","Segoe UI","Segoe WP",Tahoma,Arial,sans-serif;
                         font-size: 12px;
                         font-weight: bold;
                         padding-right: 24px;
@@ -1537,7 +1537,7 @@ exports[`RecommendationCard renders dlp example correctly 1`] = `
 
                       {
                         display: flex;
-                        font-family: Segoe UI;
+                        font-family: "Segoe UI Regular WestEuropean","Segoe UI","Segoe WP",Tahoma,Arial,sans-serif;
                         font-size: 12px;
                         font-weight: bold;
                       }
@@ -1579,7 +1579,7 @@ exports[`RecommendationCard renders dlp example correctly 1`] = `
 
                       {
                         color: rgba(0,0,0,1);
-                        font-family: Segoe UI;
+                        font-family: "Segoe UI Regular WestEuropean","Segoe UI","Segoe WP",Tahoma,Arial,sans-serif;
                         font-size: 12px;
                         font-weight: bold;
                         padding-right: 24px;
@@ -1592,7 +1592,7 @@ exports[`RecommendationCard renders dlp example correctly 1`] = `
 
                       {
                         display: flex;
-                        font-family: Segoe UI;
+                        font-family: "Segoe UI Regular WestEuropean","Segoe UI","Segoe WP",Tahoma,Arial,sans-serif;
                         font-size: 12px;
                         font-weight: bold;
                       }
@@ -1634,7 +1634,7 @@ exports[`RecommendationCard renders dlp example correctly 1`] = `
 
                       {
                         color: rgba(0,0,0,1);
-                        font-family: Segoe UI;
+                        font-family: "Segoe UI Regular WestEuropean","Segoe UI","Segoe WP",Tahoma,Arial,sans-serif;
                         font-size: 12px;
                         font-weight: bold;
                         padding-right: 24px;
@@ -1647,7 +1647,7 @@ exports[`RecommendationCard renders dlp example correctly 1`] = `
 
                       {
                         display: flex;
-                        font-family: Segoe UI;
+                        font-family: "Segoe UI Regular WestEuropean","Segoe UI","Segoe WP",Tahoma,Arial,sans-serif;
                         font-size: 12px;
                         font-weight: bold;
                       }
@@ -1689,7 +1689,7 @@ exports[`RecommendationCard renders dlp example correctly 1`] = `
 
                       {
                         color: rgba(0,0,0,1);
-                        font-family: Segoe UI;
+                        font-family: "Segoe UI Regular WestEuropean","Segoe UI","Segoe WP",Tahoma,Arial,sans-serif;
                         font-size: 12px;
                         font-weight: bold;
                         padding-right: 24px;
@@ -1702,7 +1702,7 @@ exports[`RecommendationCard renders dlp example correctly 1`] = `
 
                       {
                         display: flex;
-                        font-family: Segoe UI;
+                        font-family: "Segoe UI Regular WestEuropean","Segoe UI","Segoe WP",Tahoma,Arial,sans-serif;
                         font-size: 12px;
                         font-weight: bold;
                       }
@@ -2005,7 +2005,7 @@ exports[`RecommendationCard renders imageillustration example correctly 1`] = `
 
                 {
                   color: rgba(0,0,0,1);
-                  font-family: Segoe UI;
+                  font-family: "Segoe UI Regular WestEuropean","Segoe UI","Segoe WP",Tahoma,Arial,sans-serif;
                   font-size: 28px;
                   font-weight: bold;
                   margin-bottom: 24px;
@@ -2028,7 +2028,7 @@ exports[`RecommendationCard renders imageillustration example correctly 1`] = `
                 {
                   color: rgba(0,0,0,1);
                   flex: 1;
-                  font-family: Segoe UI;
+                  font-family: "Segoe UI Regular WestEuropean","Segoe UI","Segoe WP",Tahoma,Arial,sans-serif;
                   font-size: 12px;
                   margin-bottom: 16px;
                   word-wrap: break-word;

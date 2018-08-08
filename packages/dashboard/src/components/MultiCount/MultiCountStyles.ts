@@ -18,7 +18,7 @@ export const getStyles = (props: IMultiCountStyleProps): IMultiCountStyles => {
       color: props.bodyTextColor ? props.bodyTextColor : '#000000'
     },
     data: {
-      fontFamily: 'Segoe UI',
+      fontFamily: '"Segoe UI Regular WestEuropean","Segoe UI","Segoe WP",Tahoma,Arial,sans-serif',
       fontWeight: 'bold',
       color: props.color,
       marginRight: '8px'
