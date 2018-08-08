@@ -3,7 +3,7 @@ import { IStyle, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 const cardFrameColor = 'rgba(0, 120, 215, 1)';
 const recommendationBaseColor = 'rgba(0,0,0,1)';
-const commonFontFamily = 'Segoe UI';
+const commonFontFamily = '"Segoe UI Regular WestEuropean","Segoe UI","Segoe WP",Tahoma,Arial,sans-serif';
 const commonFontWeight = 'bold';
 const largeFontSize = 28;
 const regularFontSize = 12;
