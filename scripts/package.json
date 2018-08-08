@@ -6,7 +6,8 @@
     "clean": "",
     "build": "node -v",
     "code-style": "node -v",
-    "bundlesize": "bundlesize --debug"
+    "bundlesize": "bundlesize --debug",
+    "test": "jest"
   },
   "devDependencies": {
     "@microsoft/api-extractor": "^4.2.6",
