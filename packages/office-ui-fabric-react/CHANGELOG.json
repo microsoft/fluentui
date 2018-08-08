@@ -2,6 +2,45 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.47.1",
+      "tag": "office-ui-fabric-react_v6.47.1",
+      "date": "Wed, 08 Aug 2018 10:25:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "f779270729450296b6d1e0e8bc3dfc7b4ae2349f",
+            "comment": "Layer: Fix layer customizability regression introduced in #5569 - which also broke the official Layer example."
+          },
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "4d32614144c1ee0b904746f615ae245bb47348ce",
+            "comment": "Fix a class of bad imports that breaks AMD."
+          },
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "676ef29ea22bd80c7e228cc4984732a76a6636c5",
+            "comment": "Fixes a bug in drag and drop detaillist column not showing a gripper"
+          },
+          {
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "dfad9e92697b3a418aa254c1c17fdd7b434c41f7",
+            "comment": "Dropdown: use item text for title if title is not provided"
+          },
+          {
+            "author": "Francis Meng <meng.francis@gmail.com>",
+            "commit": "c24d35f482654b6f986e21f38d31babaf4d627f6",
+            "comment": "Button should not have any html tag as children. In IE the inner html, would not render. "
+          },
+          {
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "f731eb82a95050720fc558ff4cd22734e5c3200c",
+            "comment": "Panel: Don't force focus in trap if isHiddenOnDismiss is set and panel is closed"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.47.0",
       "tag": "office-ui-fabric-react_v6.47.0",
       "date": "Tue, 07 Aug 2018 10:22:32 GMT",
