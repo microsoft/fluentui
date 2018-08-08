@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { Panel } from './Panel';
-import { IRefObject, IRenderFunction } from '../../Utilities';
+// import { Panel } from './Panel';
+import { PanelBase } from './Panel.base';
+import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import { IStyle, ITheme } from '../../Styling';
 import { ILayerProps } from '../../Layer';
 import { IFocusTrapZoneProps } from '../../FocusTrapZone';
 
@@ -15,7 +17,7 @@ export interface IPanel {
    */
   dismiss: () => void;
 }
-export interface IPanelProps extends React.Props<Panel> {
+export interface IPanelProps extends React.Props<PanelBase> {
   /**
    * Optional callback to access the IPanel interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -76,7 +78,18 @@ export interface IPanelProps extends React.Props<Panel> {
   onDismissed?: () => void;
 
   /**
-   * Additional styling options.
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  styles?: IStyleFunctionOrObject<IPanelStyleProps, IPanelStyles>;
+
+  /**
+   * Theme provided by High-Order Component.
+   */
+  theme?: ITheme;
+
+  /**
+   * Additional css class to apply to the Panel
+   * @defaultvalue undefined
    */
   className?: string;
 
@@ -283,4 +296,99 @@ export enum PanelType {
    * XXLarge: 643px width, 40px Left/Right padding
    */
   custom = 7
+}
+
+export interface IPanelStyleProps {
+  /**
+   * Theme provided by High-Order Component.
+   */
+  theme: ITheme;
+
+  /**
+   * Accept custom classNames
+   */
+  className?: string;
+
+  /**
+   * Is Panel open
+   */
+  isOpen?: boolean;
+
+  /**
+   * Is animation currently running
+   */
+  isAnimating?: boolean;
+
+  /**
+   * Is panel on right side
+   */
+  isOnRightSide?: boolean;
+
+  /**
+   * Is panel hidden on dismiss
+   */
+  isHiddenOnDismiss?: boolean;
+
+  /**
+   * Classname for FocusTrapZone element
+   */
+  focusTrapZoneClassName?: string;
+
+  /**
+   * Determines if content should stretch to fill available space putting footer at the bottom of the page
+   */
+  isFooterAtBottom?: boolean;
+
+  /**
+   * Based on state value setting footer to sticky or not
+   */
+  isFooterSticky?: boolean;
+
+  /**
+   * Panel has close button
+   */
+  hasCloseButton?: boolean;
+
+  /**
+   * Type of the panel.
+   */
+  type?: PanelType;
+
+  /**
+   * Optional parameter to provider the class name for header text
+   */
+  headerClassName?: string;
+}
+
+export interface IPanelSubComponentStyles {
+  /**
+   * Styling for Icon child component.
+   */
+  // TODO: this should be the interface once we're on TS 2.9.2 but otherwise causes errors in 2.8.4
+  // icon: IStyleFunctionOrObject<IIconStyleProps, IIconStyles>;
+  icon: IStyleFunctionOrObject<any, any>;
+}
+
+export interface IPanelStyles {
+  /**
+   * Style for the root element.
+   */
+  root: IStyle;
+  overlay: IStyle;
+  hiddenPanel: IStyle;
+  main: IStyle;
+  commands: IStyle;
+  contentInner: IStyle;
+  navigation: IStyle;
+  closeButton: IStyle;
+  header: IStyle;
+  headerText: IStyle;
+  content: IStyle;
+  footer: IStyle;
+  footerInner: IStyle;
+
+  /**
+   * Styling for subcomponents.
+   */
+  // subComponentStyles: IPanelSubComponentStyles;
 }

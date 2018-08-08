@@ -14,6 +14,8 @@ export const ScreenWidthMaxLarge = ScreenWidthMinXLarge - 1;
 export const ScreenWidthMaxXLarge = ScreenWidthMinXXLarge - 1;
 export const ScreenWidthMaxXXLarge = ScreenWidthMinXXXLarge - 1;
 
+export const ScreenWidthMinUhfMobile = 768;
+
 export function getScreenSelector(min: number, max: number): string {
   return `@media only screen and (min-width: ${min}px) and (max-width: ${max}px)`;
 }

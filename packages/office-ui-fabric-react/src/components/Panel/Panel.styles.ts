@@ -1,0 +1,341 @@
+import { IPanelStyleProps, IPanelStyles, PanelType } from './Panel.types';
+import {
+  AnimationClassNames,
+  AnimationVariables,
+  FontSizes,
+  // IconFontSizes,
+  getGlobalClassNames,
+  ScreenWidthMinMedium,
+  ScreenWidthMinXLarge,
+  ScreenWidthMinXXLarge,
+  ScreenWidthMinUhfMobile
+} from '../../Styling';
+// import { IStyleFunctionOrObject } from '../../Utilities';
+// import { IButtonStyles, IButtonStyleProps } from '../../Button';
+
+const GlobalClassNames = {
+  root: 'ms-Panel',
+  main: 'ms-Panel-main',
+  commands: 'ms-Panel-commands',
+  contentInner: 'ms-Panel-contentInner',
+  navigation: 'ms-Panel-navigation',
+  closeButton: 'ms-Panel-closeButton ms-PanelAction-close',
+  header: 'ms-Panel-header',
+  headerText: 'ms-Panel-headerText',
+  content: 'ms-Panel-content',
+  footer: 'ms-Panel-footer',
+  footerInner: 'ms-Panel-footerInner',
+  isOpen: 'is-open',
+  hasCloseButton: 'ms-Panel--hasCloseButton',
+  smallFluid: 'ms-Panel--smFluid',
+  smallFixedNear: 'ms-Panel--smLeft',
+  smallFixedFar: 'ms-Panel--sm',
+  medium: 'ms-Panel--md',
+  large: 'ms-Panel--lg',
+  largeFixed: 'ms-Panel--fixed',
+  extraLarge: 'ms-Panel--xl',
+  custom: 'ms-Panel--custom'
+};
+
+// // TODO: Once Button is converted to mergeStyles this code should be ready to go along with the comment
+// // on line 242 of Panel.base.tsx
+// function getIconButtonStyles(props: IPanelStyleProps): IStyleFunctionOrObject<IButtonStyleProps, IButtonStyles> {
+//   const { theme } = props;
+//   return () => ({
+//     root: {
+//       height: 'auto',
+//       width: '44px',
+//       color: theme.palette.neutralSecondary,
+//       fontSize: IconFontSizes.large
+//     },
+//     rootHovered: {
+//       color: theme.palette.neutralPrimary
+//     }
+//   });
+// }
+
+export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
+  const {
+    className,
+    focusTrapZoneClassName,
+    hasCloseButton,
+    headerClassName,
+    isAnimating,
+    isFooterAtBottom,
+    isFooterSticky,
+    isOnRightSide,
+    isOpen,
+    isHiddenOnDismiss,
+    theme,
+    type
+  } = props;
+  const { palette } = theme;
+
+  const panelSize = {
+    width: {
+      xs: '272px',
+      sm: '340px',
+      md: '643px',
+      lg: '940px'
+    },
+    margin: {
+      md: '48px',
+      lg: '428px',
+      xl: '176px'
+    }
+  };
+  const commandBarHeight = '44px';
+
+  const sharedPaddingStyles = {
+    paddingLeft: '16px',
+    paddingRight: '16px',
+    selectors: {
+      ['@media screen and (min-width: ' + ScreenWidthMinUhfMobile + 'px)']: {
+        paddingLeft: '32px',
+        paddingRight: '32px'
+      },
+      ['@media screen and (min-width: ' + ScreenWidthMinXXLarge + 'px)']: {
+        paddingLeft: '40px',
+        paddingRight: '40px'
+      }
+    }
+  };
+
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
+  return {
+    root: [
+      classNames.root,
+      isOpen && classNames.isOpen,
+      hasCloseButton && classNames.hasCloseButton,
+      {
+        pointerEvents: 'none',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0
+      },
+      !isOpen &&
+        !isAnimating &&
+        isHiddenOnDismiss && {
+          visibility: 'hidden'
+        },
+      className
+    ],
+    overlay: [
+      {
+        pointerEvents: 'none',
+        opacity: 1,
+        cursor: 'pointer',
+        transition: `opacity ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`
+      },
+      isOpen && {
+        cursor: 'pointer',
+        pointerEvents: 'auto'
+      },
+      isOpen && isAnimating && AnimationClassNames.fadeIn200,
+      !isOpen && isAnimating && AnimationClassNames.fadeOut200
+    ],
+    hiddenPanel: [
+      !isOpen &&
+        !isAnimating &&
+        isHiddenOnDismiss && {
+          visibility: 'hidden'
+          // visibility: 'visible'
+        }
+    ],
+    main: [
+      classNames.main,
+      {
+        backgroundColor: palette.white,
+        position: 'absolute',
+        right: 0,
+        width: '100%',
+        bottom: 0,
+        top: 0,
+        overflowX: 'hidden',
+        overflowY: 'auto',
+        WebkitOverflowScrolling: 'touch',
+        selectors: {
+          ['@media (min-width: ' + ScreenWidthMinMedium + 'px)']: {
+            borderLeft: `1px solid ${palette.neutralLight}`,
+            borderRight: `1px solid ${palette.neutralLight}`,
+            pointerEvents: 'auto',
+            width: panelSize.width.sm,
+            boxShadow: '-30px, 0px, 30px, -30px, .2',
+            left: 'auto'
+          }
+        }
+      },
+      isOpen && {
+        pointerEvents: 'auto'
+      },
+      type === PanelType.smallFluid && {
+        width: '100%'
+      },
+      type === PanelType.smallFixedNear && {
+        right: 'auto',
+        left: 0,
+        width: panelSize.width.xs,
+        boxShadow: '30px, 0px, 30px, -30px, .2'
+      },
+      type === PanelType.smallFixedFar && {
+        width: panelSize.width.xs,
+        selectors: {
+          ['@media (min-width: ' + ScreenWidthMinMedium + 'px)']: {
+            width: panelSize.width.sm
+          }
+        }
+      },
+      type === PanelType.medium && {
+        selectors: {
+          ['@media (min-width: ' + ScreenWidthMinUhfMobile + 'px)']: {
+            left: panelSize.margin.md,
+            width: 'auto'
+          },
+          ['@media (min-width: ' + ScreenWidthMinXLarge + 'px)']: {
+            left: 'auto',
+            width: panelSize.width.md
+          }
+        }
+      },
+      (type === PanelType.large || type === PanelType.largeFixed) && {
+        selectors: {
+          ['@media (min-width: ' + ScreenWidthMinUhfMobile + 'px)']: {
+            left: panelSize.margin.md,
+            width: 'auto'
+          },
+          ['@media (min-width: ' + ScreenWidthMinXXLarge + 'px)']: {
+            left: panelSize.margin.lg
+          }
+        }
+      },
+      type === PanelType.largeFixed && {
+        selectors: {
+          ['@media (min-width: ' + ScreenWidthMinXXLarge + 'px)']: {
+            left: 'auto',
+            width: panelSize.width.lg
+          }
+        }
+      },
+      type === PanelType.extraLarge && {
+        selectors: {
+          ['@media (min-width: ' + ScreenWidthMinUhfMobile + 'px)']: {
+            left: panelSize.margin.md,
+            width: 'auto'
+          },
+          ['@media (min-width: ' + ScreenWidthMinXXLarge + 'px)']: {
+            left: panelSize.margin.xl
+          }
+        }
+      },
+      type === PanelType.custom && {
+        selectors: {
+          ['@media (min-width: ' + ScreenWidthMinUhfMobile + 'px)']: {
+            left: panelSize.margin.md,
+            width: 'auto'
+          },
+          ['@media (min-width: ' + ScreenWidthMinXLarge + 'px)']: {
+            left: 'auto'
+          }
+        }
+      },
+      isOpen && isAnimating && !isOnRightSide && AnimationClassNames.slideRightIn40,
+      isOpen && isAnimating && isOnRightSide && AnimationClassNames.slideLeftIn40,
+      !isOpen && isAnimating && !isOnRightSide && AnimationClassNames.slideLeftOut40,
+      !isOpen && isAnimating && isOnRightSide && AnimationClassNames.slideRightOut40,
+      focusTrapZoneClassName
+    ],
+    commands: [classNames.commands],
+    contentInner: [
+      classNames.contentInner,
+      {
+        position: 'absolute',
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0,
+        overflowY: 'hidden',
+        display: 'flex',
+        flexDirection: 'column',
+        WebkitOverflowScrolling: 'touch',
+        /* Force hw accelleration on scrollable region */
+        transform: 'translateZ(0)'
+      },
+      hasCloseButton && {
+        top: commandBarHeight
+      }
+    ],
+    navigation: [
+      classNames.navigation,
+      {
+        padding: '0 5px',
+        height: commandBarHeight,
+        display: 'flex',
+        justifyContent: 'flex-end'
+      }
+    ],
+    closeButton: [classNames.closeButton],
+    header: [
+      classNames.header,
+      sharedPaddingStyles,
+      {
+        margin: '14px 0',
+        // Ensure that title doesn't shrink if screen is too small
+        flexGrow: 0,
+        selectors: {
+          ['@media (min-width: ' + ScreenWidthMinXLarge + 'px)']: {
+            marginTop: '30px'
+          }
+        }
+      }
+    ],
+    headerText: [
+      classNames.headerText,
+      {
+        fontSize: FontSizes.xLarge,
+        color: palette.neutralPrimary,
+        lineHeight: '32px',
+        margin: 0
+      },
+      headerClassName
+    ],
+    content: [
+      classNames.content,
+      sharedPaddingStyles,
+      {
+        marginBottom: 0,
+        paddingBottom: '20px',
+        overflowY: 'auto'
+      },
+      isFooterAtBottom && {
+        flexGrow: 1
+      }
+    ],
+    footer: [
+      classNames.footer,
+      {
+        // Ensure that footer doesn't shrink if screen is too small
+        flexGrow: 0,
+        borderTop: '1px solid transparent',
+        transition: `opacity ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction2}`
+      },
+      isFooterSticky && {
+        background: palette.white,
+        borderTopColor: palette.neutralLight
+      }
+    ],
+    footerInner: [
+      classNames.footerInner,
+      sharedPaddingStyles,
+      {
+        paddingBottom: '20px',
+        paddingTop: '20px'
+      }
+    ]
+    // subComponentStyles: {
+    //   iconButton: getIconButtonStyles(props)
+    // }
+  };
+};
