@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsList: Fix example modal behavior by disabling row renderer.",
+      "comment": "DetailsList: Fix all examples by disabling row renderer optimization.",
       "type": "patch"
     }
   ],
