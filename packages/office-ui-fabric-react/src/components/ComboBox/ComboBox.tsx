@@ -99,7 +99,7 @@ class ComboBoxOptionWrapper extends React.Component<IComboBoxOptionWrapperProps,
   }
 }
 
-@customizable('ComboBox', ['theme', 'styles'])
+@customizable('ComboBox', ['theme', 'styles'], true)
 export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   public static defaultProps: IComboBoxProps = {
     options: [],
