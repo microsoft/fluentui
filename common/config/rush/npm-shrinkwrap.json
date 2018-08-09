@@ -131,6 +131,7 @@
         "@microsoft/load-themed-styles": "1.7.73",
         "@microsoft/loader-load-themed-styles": "1.7.56",
         "autoprefixer": "7.2.6",
+        "babylon": "7.0.0-beta.47",
         "bundlesize": "0.15.3",
         "chalk": "2.4.1",
         "command-line-args": "4.0.7",
@@ -141,6 +142,7 @@
         "glob": "7.1.2",
         "gzip-size": "3.0.0",
         "jest": "23.4.2",
+        "jscodeshift": "0.5.1",
         "json-loader": "0.5.7",
         "mustache": "2.3.1",
         "node-sass": "4.9.2",
@@ -3705,6 +3707,11 @@
         "source-map": "0.5.7"
       },
       "dependencies": {
+        "babylon": {
+          "version": "6.18.0",
+          "resolved": "https://registry.npmjs.org/babylon/-/babylon-6.18.0.tgz",
+          "integrity": "sha512-q/UEjfGJ2Cm3oKV71DJz9d25TPnq5rhBVL2Q4fA5wcC3jcrdn7+SssEybFIxwAvvP+YCsCYNKughoF33GxgycQ=="
+        },
         "debug": {
           "version": "2.6.9",
           "resolved": "https://registry.npmjs.org/debug/-/debug-2.6.9.tgz",
@@ -4929,6 +4936,11 @@
         "lodash": "4.17.10"
       },
       "dependencies": {
+        "babylon": {
+          "version": "6.18.0",
+          "resolved": "https://registry.npmjs.org/babylon/-/babylon-6.18.0.tgz",
+          "integrity": "sha512-q/UEjfGJ2Cm3oKV71DJz9d25TPnq5rhBVL2Q4fA5wcC3jcrdn7+SssEybFIxwAvvP+YCsCYNKughoF33GxgycQ=="
+        },
         "lodash": {
           "version": "4.17.10",
           "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.10.tgz",
@@ -4952,6 +4964,11 @@
         "lodash": "4.17.10"
       },
       "dependencies": {
+        "babylon": {
+          "version": "6.18.0",
+          "resolved": "https://registry.npmjs.org/babylon/-/babylon-6.18.0.tgz",
+          "integrity": "sha512-q/UEjfGJ2Cm3oKV71DJz9d25TPnq5rhBVL2Q4fA5wcC3jcrdn7+SssEybFIxwAvvP+YCsCYNKughoF33GxgycQ=="
+        },
         "debug": {
           "version": "2.6.9",
           "resolved": "https://registry.npmjs.org/debug/-/debug-2.6.9.tgz",
@@ -4986,9 +5003,9 @@
       }
     },
     "babylon": {
-      "version": "6.18.0",
-      "resolved": "https://registry.npmjs.org/babylon/-/babylon-6.18.0.tgz",
-      "integrity": "sha512-q/UEjfGJ2Cm3oKV71DJz9d25TPnq5rhBVL2Q4fA5wcC3jcrdn7+SssEybFIxwAvvP+YCsCYNKughoF33GxgycQ=="
+      "version": "7.0.0-beta.47",
+      "resolved": "https://registry.npmjs.org/babylon/-/babylon-7.0.0-beta.47.tgz",
+      "integrity": "sha512-+rq2cr4GDhtToEzKFD6KZZMDBXhjFAr9JjPw9pAppZACeEWqNM294j+NdBzkSHYXwzzBmVjZ3nEVJlOhbR2gOQ=="
     },
     "balanced-match": {
       "version": "1.0.0",
@@ -10533,6 +10550,13 @@
         "babylon": "6.18.0",
         "istanbul-lib-coverage": "1.2.0",
         "semver": "5.5.0"
+      },
+      "dependencies": {
+        "babylon": {
+          "version": "6.18.0",
+          "resolved": "https://registry.npmjs.org/babylon/-/babylon-6.18.0.tgz",
+          "integrity": "sha512-q/UEjfGJ2Cm3oKV71DJz9d25TPnq5rhBVL2Q4fA5wcC3jcrdn7+SssEybFIxwAvvP+YCsCYNKughoF33GxgycQ=="
+        }
       }
     },
     "istanbul-lib-report": {
@@ -11098,11 +11122,6 @@
         "write-file-atomic": "1.3.4"
       },
       "dependencies": {
-        "babylon": {
-          "version": "7.0.0-beta.47",
-          "resolved": "https://registry.npmjs.org/babylon/-/babylon-7.0.0-beta.47.tgz",
-          "integrity": "sha512-+rq2cr4GDhtToEzKFD6KZZMDBXhjFAr9JjPw9pAppZACeEWqNM294j+NdBzkSHYXwzzBmVjZ3nEVJlOhbR2gOQ=="
-        },
         "write-file-atomic": {
           "version": "1.3.4",
           "resolved": "https://registry.npmjs.org/write-file-atomic/-/write-file-atomic-1.3.4.tgz",
@@ -21339,6 +21358,11 @@
           "version": "1.5.2",
           "resolved": "https://registry.npmjs.org/async/-/async-1.5.2.tgz",
           "integrity": "sha1-7GphrlZIDAw8skHJVhjiCJL5Zyo="
+        },
+        "babylon": {
+          "version": "6.18.0",
+          "resolved": "https://registry.npmjs.org/babylon/-/babylon-6.18.0.tgz",
+          "integrity": "sha512-q/UEjfGJ2Cm3oKV71DJz9d25TPnq5rhBVL2Q4fA5wcC3jcrdn7+SssEybFIxwAvvP+YCsCYNKughoF33GxgycQ=="
         },
         "esprima": {
           "version": "4.0.1",
