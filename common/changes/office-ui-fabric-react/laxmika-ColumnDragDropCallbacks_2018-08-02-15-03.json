@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "' Added 2 callback functions for dragstart and drag end events to get the telemetry logs in ODSP-Next'",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "laxmika@microsoft.com"
+}

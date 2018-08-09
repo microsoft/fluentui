@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IComponentDemoPageProps, ComponentPage, ExampleCard } from '@uifabric/example-app-base';
-import { Toggle } from 'office-ui-fabric-react/lib/components/Toggle';
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { Customizer } from 'office-ui-fabric-react/lib/Utilities';
 import { FluentCustomizations } from '../FluentCustomizations';
 

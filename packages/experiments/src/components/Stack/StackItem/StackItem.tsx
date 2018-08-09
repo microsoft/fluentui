@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createComponent, IViewComponentProps } from '../../../Foundation';
+import { createStatelessComponent, IViewComponentProps } from '../../../Foundation';
 import { IStackItemProps, IStackItemStyles } from './StackItem.types';
 import { styles } from './StackItem.styles';
 
@@ -17,7 +17,10 @@ const view = (props: IViewComponentProps<IStackItemProps, IStackItemStyles>) => 
   });
 };
 
-export const StackItem: React.StatelessComponent<IStackItemProps> = createComponent<IStackItemProps, IStackItemStyles>({
+export const StackItem: React.StatelessComponent<IStackItemProps> = createStatelessComponent<
+  IStackItemProps,
+  IStackItemStyles
+>({
   displayName: 'StackItem',
   styles,
   view

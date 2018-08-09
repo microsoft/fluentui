@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "@uifabric/dashboard",
-      "comment": "Fixing the type of onLayoutChange to fix build",
-      "type": "patch"
+      "comment": "Fix dashboard card height to match red lines",
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/dashboard",
