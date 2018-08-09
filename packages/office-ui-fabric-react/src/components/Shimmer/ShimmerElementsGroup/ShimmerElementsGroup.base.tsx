@@ -8,11 +8,11 @@ import {
 import { IStyleSet } from '../../../Styling';
 import { ShimmerElementType, ShimmerElementsDefaultHeights, IShimmerElement } from '../Shimmer.types';
 import { ShimmerLine } from '../ShimmerLine/ShimmerLine';
-import { IShimmerLineStyles } from '../ShimmerLine/ShimmerLine.types';
+import { IShimmerLineStyles, IShimmerLineStyleProps } from '../ShimmerLine/ShimmerLine.types';
 import { ShimmerGap } from '../ShimmerGap/ShimmerGap';
-import { IShimmerGapStyles } from '../ShimmerGap/ShimmerGap.types';
+import { IShimmerGapStyles, IShimmerGapStyleProps } from '../ShimmerGap/ShimmerGap.types';
 import { ShimmerCircle } from '../ShimmerCircle/ShimmerCircle';
-import { IShimmerCircleStyles } from '../ShimmerCircle/ShimmerCircle.types';
+import { IShimmerCircleStyles, IShimmerCircleStyleProps } from '../ShimmerCircle/ShimmerCircle.types';
 
 const getClassNames = classNamesFunction<IShimmerElementsGroupStyleProps, IShimmerElementsGroupStyles>();
 
@@ -62,7 +62,7 @@ export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGrou
         }
       )
     ) : (
-        <ShimmerLine height={ ShimmerElementsDefaultHeights.line } getStyles={ { root: [{ borderWidth: '0px' }] } } />
+        <ShimmerLine height={ ShimmerElementsDefaultHeights.line } getStyles={ this._getDefaultLineStyle } />
       );
 
     return renderedElements;
@@ -71,31 +71,33 @@ export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGrou
   private _getBorderStyles = (
     elem: IShimmerElement,
     rowHeight?: number
-  ): IShimmerCircleStyles | IShimmerGapStyles | IShimmerLineStyles => {
-    const elemHeight: number | undefined = elem.height;
-    const dif: number = rowHeight && elemHeight ? rowHeight - elemHeight : 0;
+  ): (props: IShimmerCircleStyleProps | IShimmerGapStyleProps | IShimmerLineStyleProps) => IShimmerCircleStyles | IShimmerGapStyles | IShimmerLineStyles => {
+    return (props: IShimmerCircleStyleProps | IShimmerGapStyleProps | IShimmerLineStyleProps): IShimmerCircleStyles | IShimmerGapStyles | IShimmerLineStyles => {
+      const elemHeight: number | undefined = elem.height;
+      const dif: number = rowHeight && elemHeight ? rowHeight - elemHeight : 0;
 
-    let borderStyle: IStyleSet | undefined;
+      let borderStyle: IStyleSet | undefined;
 
-    if (!elem.verticalAlign || elem.verticalAlign === 'center') {
-      borderStyle = {
-        borderBottomWidth: `${dif ? Math.floor(dif / 2) : 0}px`,
-        borderTopWidth: `${dif ? Math.ceil(dif / 2) : 0}px`
-      };
-    } else if (elem.verticalAlign && elem.verticalAlign === 'top') {
-      borderStyle = {
-        borderBottomWidth: `${dif ? dif : 0}px`,
-        borderTopWidth: `0px`
-      };
-    } else if (elem.verticalAlign && elem.verticalAlign === 'bottom') {
-      borderStyle = {
-        borderBottomWidth: `0px`,
-        borderTopWidth: `${dif ? dif : 0}px`
-      };
-    }
+      if (!elem.verticalAlign || elem.verticalAlign === 'center') {
+        borderStyle = {
+          borderBottomWidth: `${dif ? Math.floor(dif / 2) : 0}px`,
+          borderTopWidth: `${dif ? Math.ceil(dif / 2) : 0}px`
+        };
+      } else if (elem.verticalAlign && elem.verticalAlign === 'top') {
+        borderStyle = {
+          borderBottomWidth: `${dif ? dif : 0}px`,
+          borderTopWidth: `0px`
+        };
+      } else if (elem.verticalAlign && elem.verticalAlign === 'bottom') {
+        borderStyle = {
+          borderBottomWidth: `0px`,
+          borderTopWidth: `${dif ? dif : 0}px`
+        };
+      }
 
-    return {
-      root: [{ ...borderStyle }]
+      return {
+        root: [{ ...borderStyle }]
+      };
     };
   }
 
@@ -129,5 +131,9 @@ export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGrou
     }, 0);
 
     return rowHeight;
+  }
+
+  private _getDefaultLineStyle = (props: IShimmerLineStyleProps): IShimmerLineStyles => {
+    return { root: [{ borderWidth: '0px' }] };
   }
 }
