@@ -87,9 +87,9 @@ describe('Stack', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders Stack with collapsed StackItems correctly', () => {
+  it('renders Stack with shrinking StackItems correctly', () => {
     const component = renderer.create(
-      <Stack collapseItems>
+      <Stack shrinkItems>
         <Stack.Item>Item 1</Stack.Item>
         <Stack.Item>Item 2</Stack.Item>
       </Stack>
