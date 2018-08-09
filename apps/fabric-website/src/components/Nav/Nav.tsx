@@ -22,6 +22,28 @@ export interface INavState {
   filterState: boolean;
 }
 
+const searchBoxStyles = {
+  root: {
+    marginBottom: '5px',
+    width: '152px',
+    backgroundColor: 'transparent'
+  },
+  iconContainer: {
+    display: 'none'
+  },
+  field: {
+    backgroundColor: 'transparent',
+    color: 'white'
+  },
+  clearButton: {
+    selectors: {
+      '.ms-Button': {
+        color: 'white'
+      }
+    }
+  }
+};
+
 export class Nav extends React.Component<INavProps, INavState> {
   constructor(props: INavProps) {
     super(props);
@@ -118,7 +140,6 @@ export class Nav extends React.Component<INavProps, INavState> {
           ? this._renderLinkList(page.pages, true)
           : null;
     const { searchQuery } = this.state;
-    const searchRegEx = new RegExp(searchQuery, 'i');
     const text = page.title;
     let linkText = <>{text}</>;
 
@@ -143,7 +164,7 @@ export class Nav extends React.Component<INavProps, INavState> {
 
     return (
       <span>
-        {this._getSearchBox(title)}
+        {this._getSearchBox(title, page)}
         <li
           className={css(
             styles.link,
@@ -166,34 +187,14 @@ export class Nav extends React.Component<INavProps, INavState> {
     );
   }
 
-  private _getSearchBox(val) {
-    if (val === 'Components') {
+  private _getSearchBox(val, page) {
+    if (val === 'Components' && _isPageActive(page)) {
       return (
-        <div style={{ display: 'flex' }}>
+        <div className={css(styles.searchBox)}>
           <SearchBox
             placeholder="Filter Components"
             underlined={true}
-            styles={{
-              root: {
-                marginBottom: '5px',
-                width: '152px',
-                backgroundColor: 'transparent'
-              },
-              iconContainer: {
-                display: 'none'
-              },
-              field: {
-                backgroundColor: 'transparent',
-                color: 'white'
-              },
-              clearButton: {
-                selectors: {
-                  '.ms-Button': {
-                    color: 'white'
-                  }
-                }
-              }
-            }}
+            styles={searchBoxStyles}
             onChange={this._onChangeQuery.bind(this)}
           />
           <IconButton
