@@ -3,11 +3,6 @@ import { DefaultTypography } from './DefaultTypography';
 import { IPartialTheme, ITypography } from '../interfaces/index';
 
 describe('registerOnThemeChangeCallback', () => {
-  /*let counter = 0;
-  let callback = (t: ITheme) => {
-    expect(t).toBeTruthy();
-    counter++;
-  };*/
   let callback = jest.fn();
 
   it('registers a callback successfully', () => {
@@ -62,7 +57,7 @@ describe('theme.typography', () => {
     const userTheme = {
       typography: {
         sizes: {
-          medium: '100px'
+          [DefaultTypography.variants.default.fontSize!]: '100px'
         }
       }
     } as IPartialTheme;
