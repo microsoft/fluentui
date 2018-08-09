@@ -14,7 +14,7 @@
     "preserveConstEnums": true,
     "outDir": "lib",
     "lib": ["es2017", "dom"],
-    "types": ["webpack-env"]
+    "types": ["webpack-env", "jest"]
   },
   "include": ["src"]
 }
