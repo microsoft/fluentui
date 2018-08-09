@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 08 Aug 2018 10:25:08 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Aug 2018 10:31:30 GMT and should not be manually modified.
+
+## 6.47.2
+Thu, 09 Aug 2018 10:31:30 GMT
+
+### Patches
+
+- Checkbox: Now aligns to spec when text wraps to multiple lines (#5816).
+- ChoiceGroup: Set data-is-focusable attribute so that FocusTrapZone can detect correct focusable elements
+- DetailsList: Fix all examples by disabling row renderer optimization.
 
 ## 6.47.1
 Wed, 08 Aug 2018 10:25:08 GMT
