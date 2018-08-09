@@ -350,15 +350,14 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> i
     const { preventDismissOnLostFocus } = this.props;
     const currentDoc: Document = getDocument()!;
 
+    this._events.off();
+
     if (currentDoc) {
       this._events.on(currentDoc, 'keydown', this._onKeyDown, true);
 
       if (!preventDismissOnLostFocus) {
         this._events.on(currentDoc, 'click', this._dismissOnLostFocus, true);
         this._events.on(currentDoc, 'focus', this._dismissOnLostFocus, true);
-      } else {
-        this._events.off(currentDoc, 'click', this._dismissOnLostFocus, true);
-        this._events.off(currentDoc, 'focus', this._dismissOnLostFocus, true);
       }
     }
   }
