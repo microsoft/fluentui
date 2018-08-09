@@ -1,4 +1,4 @@
-import * as theme from './theme';
+import { registerOnThemeChangeCallback, removeOnThemeChangeCallback, loadTheme, createTheme } from './theme';
 import { DefaultTypography } from './DefaultTypography';
 import { IPartialTheme, ITypography } from '../interfaces/index';
 
@@ -10,30 +10,25 @@ describe('registerOnThemeChangeCallback', () => {
   };*/
   let callback = jest.fn();
 
-  it('doesnt do anything yet', () => {
-    theme.loadTheme({});
-    expect(callback.mock.calls.length).toBe(0);
-  });
-
   it('registers a callback successfully', () => {
-    theme.registerOnThemeChangeCallback(callback);
+    registerOnThemeChangeCallback(callback);
     expect(callback.mock.calls.length).toBe(0);
   });
 
   it('calls the previously registered callback', () => {
-    theme.loadTheme({});
+    loadTheme({});
     expect(callback.mock.calls.length).toBe(1);
   });
 
   it('calls the previously registered callback (again)', () => {
-    theme.loadTheme({});
+    loadTheme({});
     expect(callback.mock.calls.length).toBe(2);
   });
 
   it('unregisters the callback, and doesnt call it again', () => {
-    theme.removeOnThemeChangeCallback(callback);
+    removeOnThemeChangeCallback(callback);
     expect(callback.mock.calls.length).toBe(2);
-    theme.loadTheme({});
+    loadTheme({});
     expect(callback.mock.calls.length).toBe(2);
   });
 
@@ -43,67 +38,47 @@ describe('registerOnThemeChangeCallback', () => {
   });
 });
 
-describe('loadTheme', () => {
-  describe('typography', () => {
-    it('expands sizes', () => {
-      const userTheme: IPartialTheme = {
-        typography: {
-          variants: {
-            default: {
-              fontFamily: 'monospacej',
-              fontSize: 'small',
-              fontWeight: 'bold',
-              color: 'themePrimary'
-            }
+describe('theme.typography', () => {
+  it('expands sizes', () => {
+    const userTheme: IPartialTheme = {
+      typography: {
+        variants: {
+          default: {
+            fontFamily: 'monospacej',
+            fontSize: 'small',
+            fontWeight: 'bold',
+            color: 'themePrimary'
           }
         }
-      };
+      }
+    };
 
-      const newTheme = theme.loadTheme(userTheme);
+    const newTheme = createTheme(userTheme);
 
-      expect(newTheme.typography.variants.default.fontSize).toEqual(DefaultTypography.sizes.small);
-    });
+    expect(newTheme.typography.variants.default.fontSize).toEqual(DefaultTypography.sizes.small);
+  });
 
-    it('updates the variants when sizes are adjusted', () => {
-      const userTheme = {
-        typography: {
-          sizes: {
-            medium: '100px'
-          }
+  it('updates the variants when sizes are adjusted', () => {
+    const userTheme = {
+      typography: {
+        sizes: {
+          medium: '100px'
         }
-      } as IPartialTheme;
+      }
+    } as IPartialTheme;
 
-      theme.loadTheme(userTheme);
+    const newTheme = createTheme(userTheme);
 
-      const newTheme = theme.getTheme();
+    expect(newTheme.typography.variants.default.fontSize).toEqual('100px');
+  });
 
-      expect(newTheme.typography.variants.default.fontSize).toEqual('100px');
+  it('does not modify DefaultTypography when given a theme with no typography', () => {
+    const previousDefault = { ...DefaultTypography };
+    const newTheme = createTheme({
+      palette: {
+        themePrimary: '#ff0000'
+      }
     });
-
-    it('does not modify DefaultTypography when given a theme with no typography', () => {
-      const previousDefault = { ...DefaultTypography };
-      theme.loadTheme({
-        palette: {
-          themePrimary: '#ff0000'
-        }
-      });
-      expect(DefaultTypography).toEqual(previousDefault);
-    });
-
-    it('does not modify DefaultTypography when given a theme with typography', () => {
-      const previousDefault = { ...DefaultTypography };
-      theme.loadTheme({
-        typography: {
-          variants: {
-            default: {
-              fontFamily: 'Comic Sans MS',
-              fontSize: '18px',
-              fontWeight: 500
-            }
-          }
-        }
-      });
-      expect(DefaultTypography).toEqual(previousDefault);
-    });
+    expect(DefaultTypography).toEqual(previousDefault);
   });
 });
