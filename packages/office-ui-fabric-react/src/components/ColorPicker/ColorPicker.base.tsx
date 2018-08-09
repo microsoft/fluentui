@@ -193,13 +193,14 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
 
     const { onColorChanged } = this.props;
     const { color } = this.state;
-    if (newColor.h !== color.h || newColor.str !== color.str) {
+    const hasColorStringChanged = newColor.str !== color.str;
+    if (newColor.h !== color.h || hasColorStringChanged) {
       this.setState(
         {
           color: newColor
         } as IColorPickerState,
         () => {
-          if (onColorChanged) {
+          if (hasColorStringChanged && onColorChanged) {
             onColorChanged(newColor.str);
           }
         }
