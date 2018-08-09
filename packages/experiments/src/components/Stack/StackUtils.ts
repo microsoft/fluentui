@@ -1,3 +1,8 @@
+/**
+ * Functions to convert Vertical/Horizontal Stack alignment names (top, bottom, left, right)
+ * to Stack alignment names (start, end)
+ */
+
 import { Alignment } from './Stack.types';
 
 const verticalAlignmentMap: { [key: string]: string } = {
