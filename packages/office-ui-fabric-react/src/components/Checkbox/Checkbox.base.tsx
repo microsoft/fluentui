@@ -79,7 +79,8 @@ export class CheckboxBase extends BaseComponent<ICheckboxProps, ICheckboxState> 
       className,
       disabled,
       checked: isChecked,
-      reversed: isReversed
+      reversed: isReversed,
+      isUsingCustomLabelRender: onRenderLabel !== this._onRenderLabel
     });
 
     return (
