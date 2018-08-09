@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fixed an issue #5871",
+      "comment": "ColorPicker: Update color rectangle when hue value changes",
       "type": "patch"
     }
   ],
