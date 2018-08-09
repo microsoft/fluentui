@@ -1015,6 +1015,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           selectedIndices: selectedIndices
         });
       }
+    } else if (allowFreeform && currentPendingValue === '' && onChanged) {
+      // trigger onChanged to clear value
+      onChanged(undefined, undefined, currentPendingValue, submitPendingValueEvent);
     } else if (currentPendingValueValidIndex >= 0) {
       // Since we are not allowing freeform, we must have a matching
       // to be able to update state

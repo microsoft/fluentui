@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/experiments",
+      "comment": "Stack: render vertically by default, add horizontalAlignment, verticalAlignment, fillHorizontal, fillVertical properties",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/experiments",
+  "email": "kakje@microsoft.com"
+}
