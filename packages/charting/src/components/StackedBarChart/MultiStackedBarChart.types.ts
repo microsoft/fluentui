@@ -1,5 +1,6 @@
 import { IDataPoint } from '@uifabric/charting/lib/types/IDataPoint';
 import { ILegendDataItem } from '@uifabric/charting/lib/components/Legend/Legend.types';
+import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 
 export interface IMultiStackedBarChartProps {
   /**
@@ -12,21 +13,33 @@ export interface IMultiStackedBarChartProps {
    * An array of bar chart titles, each title in the
    * order is applicable to each bar chart
    */
-  chartTitle: string[];
+  chartTitles: string[];
 
   /**
-   * Width of each bar chart in that order
+   * Width of bar chart
    */
-  width?: number[];
+  width?: number;
 
   /**
-   * Height of each bar chart in that order
-   * if none specified will default to 15px
+   * Height of bar chart
+   * @default 15
    */
-  barHeight?: number[];
+  barHeight?: number;
 
   /**
    * Data for rendering the legend
    */
   legendData?: ILegendDataItem[];
+}
+
+export interface IMultiStackedBarChartStyles {
+  /**
+   * Styling for the root container
+   */
+  root: IStyle;
+
+  /**
+   * Styling for each item in the container
+   */
+  items: IStyle;
 }

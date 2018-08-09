@@ -1,12 +1,73 @@
 import * as React from 'react';
-import { IMultiStackedBarChartProps } from '@uifabric/charting/lib/components/StackedBarChart/MultiStackedBarChart.types';
+import {
+  IMultiStackedBarChartProps,
+  IMultiStackedBarChartStyles
+} from '@uifabric/charting/lib/components/StackedBarChart/MultiStackedBarChart.types';
+import { IDataPoint } from '@uifabric/charting/lib/types/IDataPoint';
+import { StackedBarChart } from '@uifabric/charting/lib/components/StackedBarChart/StackedBarChart';
+import { ILegendDataItem } from '@uifabric/charting/lib/components/Legend/Legend.types';
+import { Legend } from '@uifabric/charting/lib/components/Legend/Legend';
+import { classNamesFunction } from '@uifabric/charting/lib/Utilities';
+import { getMultiStackedBarChartStyles } from '@uifabric/charting/lib/components/StackedBarChart/MultiStackedBarChart.styles';
+import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 
 export class MultiStackedBarChart extends React.Component<IMultiStackedBarChartProps, {}> {
+  private _classNames: IProcessedStyleSet<IMultiStackedBarChartStyles>;
   constructor(props: IMultiStackedBarChartProps) {
     super(props);
+
+    const getClassNames = classNamesFunction<{}, IMultiStackedBarChartStyles>();
+    this._classNames = getClassNames(() => getMultiStackedBarChartStyles(props.width));
   }
 
   public render(): JSX.Element {
-    return <div>Multi Stacked BarChart </div>;
+    const { data, chartTitles, legendData, width, barHeight } = this.props;
+
+    return (
+      <div className={this._classNames.root}>
+        {data.map((value: IDataPoint[], index: number) => {
+          let colors: string[] | undefined = [];
+          const points: IDataPoint[] = value;
+
+          /**
+           *  If the data point array is empty
+           *  render a default blank bar
+           */
+          if (value.length === 0) {
+            colors = ['#C2C2C2'];
+            points.push({ x: '', y: 100 });
+          } else if (legendData && legendData.length > 0) {
+            /**
+             * Try to get the color for each data point from legendData
+             * if atleast one color mapping is missing , we fallback to default colors.
+             */
+            for (let i = 0; i < legendData.length; i++) {
+              const itemIdx = legendData.findIndex((item: ILegendDataItem) => item.legendText === value[i].x);
+              if (itemIdx > -1) {
+                colors!.push(legendData[itemIdx].legendColor);
+              } else {
+                colors = undefined;
+                break;
+              }
+            }
+          }
+
+          return (
+            <div key={index} className={this._classNames.items}>
+              <StackedBarChart
+                barHeight={barHeight}
+                width={width}
+                chartTitle={chartTitles[index]}
+                colors={colors}
+                data={points}
+                hideLegend={true}
+                hideRatioWhenTwoDatapoints={true}
+              />
+            </div>
+          );
+        })}
+        <Legend renderData={legendData!} />
+      </div>
+    );
   }
 }
