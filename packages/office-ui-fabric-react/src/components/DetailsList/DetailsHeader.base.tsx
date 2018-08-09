@@ -532,12 +532,13 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderProps, IDetai
     const classNames = this._classNames;
     return (
       <div key={'dropHintKey'} className={classNames.dropHintStyle} id={`columnDropHint_${dropHintIndex}`}>
-        <div
-          key={`dropHintCircleKey`}
+        <Icon
+          key={`dropHintCaretKey`}
           aria-hidden={true}
           data-is-focusable={false}
           data-sizer-index={dropHintIndex}
-          className={classNames.dropHintCircleStyle}
+          className={classNames.dropHintCaretStyle}
+          iconName={'CaretUpSolid8'}
         />
         <div
           key={`dropHintLineKey`}
