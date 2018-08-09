@@ -1,6 +1,6 @@
 import { IContextualMenuStyleProps, IContextualMenuStyles } from './ContextualMenu.types';
 import { getGlobalClassNames, FontWeights } from '../../Styling';
-import { ContextualMenuItemHeight } from 'office-ui-fabric-react/lib/components/ContextualMenu/ContextualMenuItem.styles';
+import { ContextualMenuItemHeight } from './ContextualMenuItem.styles';
 
 const GlobalClassNames = {
   root: 'ms-ContextualMenu',
