@@ -139,7 +139,6 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
           ariaLabelForSelectAllCheckbox="Toggle selection for all items"
           ariaLabelForSelectionColumn="Toggle selection"
           onRenderMissingItem={this._onRenderMissingItem}
-          useReducedRowRenderer={true}
         />
 
         {contextualMenuProps && <ContextualMenu {...contextualMenuProps} />}

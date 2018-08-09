@@ -318,6 +318,27 @@ describe('Dropdown', () => {
       titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
       expect(titleElement.textContent).toEqual('4');
     });
+
+    it('Shows correct tooltip with and without title prop specified', () => {
+      const container = document.createElement('div');
+      let dropdownRoot: HTMLElement | undefined;
+
+      document.body.appendChild(container);
+
+      ReactDOM.render(<Dropdown label="testgroup" options={DEFAULT_OPTIONS} />, container);
+      dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+
+      ReactTestUtils.Simulate.click(dropdownRoot);
+
+      const firstItemElement = document.querySelector('.ms-Dropdown-item[data-index="1"]') as HTMLElement;
+      expect(firstItemElement.getAttribute('title')).toEqual('1');
+
+      const secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"]') as HTMLElement;
+      expect(secondItemElement.getAttribute('title')).toEqual('test');
+
+      const thirdItemElement = document.querySelector('.ms-Dropdown-item[data-index="3"]') as HTMLElement;
+      expect(thirdItemElement.getAttribute('title')).toEqual('3');
+    });
   });
 
   describe('multi-select', () => {

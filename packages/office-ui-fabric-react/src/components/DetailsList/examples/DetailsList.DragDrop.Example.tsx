@@ -5,7 +5,7 @@ import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { IColumn, buildColumns } from 'office-ui-fabric-react/lib/DetailsList';
 import { IDragDropEvents, IDragDropContext } from 'office-ui-fabric-react/lib/utilities/dragdrop/interfaces';
 import './DetailsList.DragDrop.Example.scss';
-import { IColumnReorderOptions } from 'office-ui-fabric-react/lib/components/DetailsList';
+import { IColumnReorderOptions } from 'office-ui-fabric-react/lib/DetailsList';
 import { createListItems } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
@@ -94,7 +94,6 @@ export class DetailsListDragDropExample extends React.Component<
             onRenderItemColumn={this._onRenderItemColumn}
             dragDropEvents={this._getDragDropEvents()}
             columnReorderOptions={this.state.isColumnReorderEnabled ? this._getColumnReorderOptions() : undefined}
-            useReducedRowRenderer={true}
           />
         </MarqueeSelection>
       </div>

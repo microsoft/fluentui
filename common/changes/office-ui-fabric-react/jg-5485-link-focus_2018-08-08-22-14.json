@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fixes a bug in drag and drop detaillist column not showing a gripper",
+      "comment": "Link: Fix focus border text clipping.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "kchau@micosoft.com"
+  "email": "jagore@microsoft.com"
 }
