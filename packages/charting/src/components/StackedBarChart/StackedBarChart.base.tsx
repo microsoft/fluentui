@@ -14,7 +14,9 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
   public static defaultProps: Partial<IStackedBarChartProps> = {
     data: [],
     width: 500,
-    barHeight: 16
+    barHeight: 16,
+    hideRatioWhenTwoDatapoints: false,
+    hideLegend: false
   };
   private _colors: string[];
   private _classNames: IProcessedStyleSet<IStackedBarChartStyles>;
@@ -27,25 +29,24 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
       width: width!,
-      height: barHeight!,
-      className,
-      barHeight
+      barHeight: barHeight!,
+      className
     });
   }
   public render(): JSX.Element {
-    const { data, width, barHeight, alwaysShowLegend, chartTitle } = this.props;
+    const { data, width, barHeight, chartTitle, hideRatioWhenTwoDatapoints, hideLegend } = this.props;
 
     const bars = this._createBars(data!, width!, barHeight!);
 
     const legendBar = this._createLegendBars(data!);
 
-    const showRatio = data!.length === 2;
+    const showRatio = hideRatioWhenTwoDatapoints === false && data!.length === 2;
     let total = 0;
     if (showRatio === true) {
       total = data!.reduce((acc: number, value: IDataPoint) => acc + value.y, 0);
     }
 
-    const showLegend = alwaysShowLegend === true || data!.length > 2;
+    const showLegend = hideLegend === false && data!.length > 2;
 
     return (
       <div className={this._classNames.root}>

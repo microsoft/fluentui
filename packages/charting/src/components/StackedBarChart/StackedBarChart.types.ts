@@ -23,10 +23,19 @@ export interface IStackedBarChartProps {
   barHeight?: number;
 
   /**
-   * Determines if the legend needs to be displayed
-   * even if there are 2 or less datapoints
+   * Do not show the legend at the bottom of chart
+   * when there are more than two datapoints
+   *
+   * @default false
    */
-  alwaysShowLegend?: boolean;
+  hideLegend?: boolean;
+
+  /**
+   * Do not show ratio for 2 or less datapoints
+   *
+   * @default false
+   */
+  hideRatioWhenTwoDatapoints?: boolean;
 
   /**
    * Colors from which to select the color of each bar.
@@ -69,11 +78,6 @@ export interface IStackedBarChartStyleProps {
    * Width of the chart.
    */
   width: number;
-
-  /**
-   * Height of the chart.
-   */
-  height: number;
 
   /**
    * Height of bar in the chart.

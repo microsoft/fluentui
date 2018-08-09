@@ -1,10 +1,10 @@
 import { IStackedBarChartStyleProps, IStackedBarChartStyles } from './StackedBarChart.types';
 
 export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartStyles => {
-  const { className, width, height } = props;
+  const { className, width, barHeight } = props;
 
   const chartWidth = width;
-  const chartHeight = height;
+  const chartHeight = barHeight;
   return {
     root: [
       'ms-StackedBarChart',
