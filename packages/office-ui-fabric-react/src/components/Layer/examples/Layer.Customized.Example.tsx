@@ -59,7 +59,8 @@ export class LayerCustomizedExample extends React.Component<{}, ILayerCustomized
           style={{
             position: 'relative',
             height: '400px',
-            overflow: 'hidden'
+            overflow: 'hidden',
+            border: '1px solid #ccc'
           }}
         />
       </div>

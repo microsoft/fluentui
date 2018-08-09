@@ -42,11 +42,23 @@ export type ICollapsibleSectionControlledProps = IStyleableComponentProps<
 
 export type ICollapsibleSectionViewProps = Pick<ICollapsibleSectionProps, 'titleAs' | 'titleProps'> &
   Required<Pick<ICollapsibleSectionProps, 'collapsed'>> & {
+    /**
+     * Optional callback to access the Title element interface. Use this instead of ref for accessing
+     * the public methods and properties of the component.
+     */
     titleElementRef?: RefObject<HTMLElement>;
-    onKeyDown?: (ev: React.KeyboardEvent<Element>) => void;
-    // TODO: redundant with titleProps version? reconcile
+    /**
+     * Toggle input callback triggered by mouse and keyboard input.
+     */
     onToggleCollapse?: () => void;
+    /**
+     * Key down callback for root element of CollapsibleSection.
+     */
     onRootKeyDown?: (ev: React.KeyboardEvent<Element>) => void;
+    /**
+     * Key down callback for CollapsibleSection title.
+     */
+    onKeyDown?: (ev: React.KeyboardEvent<Element>) => void;
   };
 
 export type ICollapsibleSectionStyleProps = IThemedProps<ICollapsibleSectionViewProps>;

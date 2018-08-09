@@ -4,10 +4,25 @@ import { IStyleableComponent, IThemedProps } from '../../Foundation';
 export interface ICollapsibleSectionTitleProps
   extends IStyleableComponent<ICollapsibleSectionTitleProps, ICollapsibleSectionTitleStyles> {
   focusElementRef?: RefObject<HTMLElement>;
+  /**
+   * Collapsed state of body associated with this component.
+   */
   collapsed?: boolean;
+  /**
+   * Toggle input callback triggered by mouse and keyboard input.
+   */
   onToggleCollapse?: () => void;
+  /**
+   * Key down callback for input on title.
+   */
   onKeyDown?: (ev: React.KeyboardEvent<Element>) => void;
-  noChevron?: boolean;
+  /**
+   * Disable chevron appearance.
+   */
+  chevronDisabled?: boolean;
+  /**
+   * Title text.
+   */
   text?: string;
 }
 
