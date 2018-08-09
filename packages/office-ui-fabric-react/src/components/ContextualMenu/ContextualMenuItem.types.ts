@@ -158,7 +158,7 @@ export interface IContextualMenuItem {
   /**
    * Additional styles to apply to the menu item
    * @defaultvalue undefined
-   * @deprecated -- keco -- worth doing?
+   * @deprecated in favor of mergeStyles API.
    */
   style?: React.CSSProperties;
 
