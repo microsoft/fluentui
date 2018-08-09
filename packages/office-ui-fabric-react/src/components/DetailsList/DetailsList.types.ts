@@ -611,5 +611,4 @@ export interface IDetailsGroupDividerProps extends IGroupDividerProps {
   columns?: IColumn[];
   groupNestingDepth?: number;
   selection?: ISelection;
-  jhcja?: number;
 }
