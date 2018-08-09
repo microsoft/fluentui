@@ -20,6 +20,7 @@ export interface ILegendProps {
 }
 
 export interface ILegendStyles {
+  root: IStyle;
   /**
    * Style for the legend wrapping container
    */

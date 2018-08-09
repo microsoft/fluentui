@@ -10,12 +10,12 @@ export const Legend: React.SFC<ILegendProps> = (props: ILegendProps) => {
 
   const legends = props.renderData.map((data: ILegendDataItem, index: number) => {
     return (
-      <div key={index}>
-        <span className={mergeStyles(getLegendColorStyle(data.legendColor))} />
-        <span className={classNames.legendText}>{data.legendText}</span>
+      <div key={index} className={classNames.legendContainer}>
+        <div className={mergeStyles(getLegendColorStyle(data.legendColor))} />
+        <div className={classNames.legendText}>{data.legendText}</div>
       </div>
     );
   });
 
-  return <div className={classNames.legendContainer}>{legends}</div>;
+  return <div className={classNames.root}>{legends}</div>;
 };

@@ -3,9 +3,16 @@ import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 
 export const getLegendStyles = (): ILegendStyles => {
   return {
-    legendContainer: {
+    root: {
       display: 'flex',
       flexWrap: 'wrap'
+    },
+    legendContainer: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      alignItems: 'center',
+      marginTop: '8px',
+      marginBottom: '8px'
     },
     legendText: {
       fontSize: '12px',

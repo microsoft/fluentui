@@ -18,14 +18,15 @@ export interface IStackedBarChartProps {
   width?: number;
 
   /**
-   * Height of the chart.
-   */
-  height?: number;
-
-  /**
    * Height of each bar in the chart.
    */
   barHeight?: number;
+
+  /**
+   * Determines if the legend needs to be displayed
+   * even if there are 2 or less datapoints
+   */
+  alwaysShowLegend?: boolean;
 
   /**
    * Colors from which to select the color of each bar.
@@ -97,27 +98,7 @@ export interface IStackedBarChartStyles {
   chartTitle: IStyle;
 
   /**
-   * Style for the element containing all the bars in the chart.
+   * Style for the legend container div
    */
-  bars: IStyle;
-  /**
-   * Style for the element containing all the Legends in the chart.
-   */
-  legend: IStyle;
-  /**
-   * Style for the element subTitle.
-   */
-  subTitle: IStyle;
-  /**
-   * Style for the element value.
-   */
-  value: IStyle;
-  /**
-   * Style for the legend  bars.
-   */
-  legendBar: IStyle;
-  /**
-   * Style for the legend text.
-   */
-  legendText: IStyle;
+  legendContainer: IStyle;
 }
