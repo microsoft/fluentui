@@ -1,13 +1,13 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { IContextualMenuItem } from '../ContextualMenu.types';
-import { IMenuItemClassNames } from '../ContextualMenu.classNames';
+import { IContextualMenuItemStyles, IContextualMenuItem } from '../ContextualMenuItem.types';
 import { ContextualMenuAnchor } from './ContextualMenuAnchor';
+import { IProcessedStyleSet } from '@uifabric/styling/lib/MergeStyles';
 
 describe('ContextualMenuButton', () => {
   describe('creates a normal button', () => {
     let menuItem: IContextualMenuItem;
-    let menuClassNames: IMenuItemClassNames;
+    let menuClassNames: IProcessedStyleSet<IContextualMenuItemStyles>;
 
     beforeEach(() => {
       menuItem = { key: '123' };
@@ -30,7 +30,7 @@ describe('ContextualMenuButton', () => {
   });
 });
 
-function getMenuItemClassNames(): IMenuItemClassNames {
+function getMenuItemClassNames(): IProcessedStyleSet<IContextualMenuItemStyles> {
   return {
     item: 'item',
     divider: '---',
@@ -44,6 +44,9 @@ function getMenuItemClassNames(): IMenuItemClassNames {
     splitContainer: 'splitContainer',
     splitPrimary: 'splitPrimary',
     splitMenu: 'splitMenu',
-    linkContentMenu: 'linkContentMenu'
+    linkContentMenu: 'linkContentMenu',
+    anchorLink: 'anchorLink',
+    iconColor: 'iconColor',
+    subComponentStyles: {}
   };
 }

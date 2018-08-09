@@ -1,7 +1,8 @@
 import { IContextualMenuItem, IContextualMenuItemProps } from '../../../ContextualMenu';
-import { IMenuItemClassNames } from '../ContextualMenu.classNames';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
+import { IContextualMenuItemStyles } from '../ContextualMenuItem.types';
 import { IRefObject } from '../../../Utilities';
+import { IProcessedStyleSet } from '@uifabric/styling/lib/MergeStyles';
 
 export interface IContextualMenuItemWrapperProps extends React.Props<IContextualMenuItem> {
   /**
@@ -18,7 +19,7 @@ export interface IContextualMenuItemWrapperProps extends React.Props<IContextual
   /**
    * CSS class to apply to the context menu.
    */
-  classNames: IMenuItemClassNames;
+  classNames: IProcessedStyleSet<IContextualMenuItemStyles>;
 
   /**
    * The index number of the wrapper among all items in the contextual menu including things like dividers and headers.
