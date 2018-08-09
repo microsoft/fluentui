@@ -37,6 +37,37 @@ const GlobalClassNames = {
   custom: 'ms-Panel--custom'
 };
 
+const panelSize = {
+  width: {
+    xs: '272px',
+    sm: '340px',
+    md: '643px',
+    lg: '940px'
+  },
+  margin: {
+    md: '48px',
+    lg: '428px',
+    xl: '176px'
+  }
+};
+
+const commandBarHeight = '44px';
+
+const sharedPaddingStyles = {
+  paddingLeft: '16px',
+  paddingRight: '16px',
+  selectors: {
+    ['@media screen and (min-width: ' + ScreenWidthMinUhfMobile + 'px)']: {
+      paddingLeft: '32px',
+      paddingRight: '32px'
+    },
+    ['@media screen and (min-width: ' + ScreenWidthMinXXLarge + 'px)']: {
+      paddingLeft: '40px',
+      paddingRight: '40px'
+    }
+  }
+};
+
 // // TODO: Once Button is converted to mergeStyles this code should be ready to go along with the comment
 // // on line 242 of Panel.base.tsx
 // function getIconButtonStyles(props: IPanelStyleProps): IStyleFunctionOrObject<IButtonStyleProps, IButtonStyles> {
@@ -70,36 +101,6 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
     type
   } = props;
   const { palette } = theme;
-
-  const panelSize = {
-    width: {
-      xs: '272px',
-      sm: '340px',
-      md: '643px',
-      lg: '940px'
-    },
-    margin: {
-      md: '48px',
-      lg: '428px',
-      xl: '176px'
-    }
-  };
-  const commandBarHeight = '44px';
-
-  const sharedPaddingStyles = {
-    paddingLeft: '16px',
-    paddingRight: '16px',
-    selectors: {
-      ['@media screen and (min-width: ' + ScreenWidthMinUhfMobile + 'px)']: {
-        paddingLeft: '32px',
-        paddingRight: '32px'
-      },
-      ['@media screen and (min-width: ' + ScreenWidthMinXXLarge + 'px)']: {
-        paddingLeft: '40px',
-        paddingRight: '40px'
-      }
-    }
-  };
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
