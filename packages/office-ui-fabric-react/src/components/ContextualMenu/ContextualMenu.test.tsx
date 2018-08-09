@@ -7,8 +7,8 @@ import { FocusZoneDirection } from '../../FocusZone';
 import { IContextualMenuProps } from './ContextualMenu.types';
 import { ContextualMenu } from './ContextualMenu';
 import { canAnyMenuItemsCheck } from './ContextualMenu.base';
-import { IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.types';
-import { IContextualMenuRenderItem } from './ContextualMenuItem.types';
+import { ContextualMenuItemType } from './ContextualMenu.types';
+import { IContextualMenuRenderItem, IContextualMenuItem } from './ContextualMenuItem.types';
 import { LayerBase as Layer } from '../Layer/Layer.base';
 
 describe('ContextualMenu', () => {

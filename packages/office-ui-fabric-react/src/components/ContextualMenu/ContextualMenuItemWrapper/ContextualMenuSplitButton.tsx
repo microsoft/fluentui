@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { assign, buttonProperties, getNativeProps, KeyCodes, mergeAriaAttributeValues } from '../../../Utilities';
 import { ContextualMenuItem } from '../ContextualMenuItem';
-import { IContextualMenuItem } from '../ContextualMenu.types';
-import { IMenuItemClassNames, getSplitButtonVerticalDividerClassNames } from '../ContextualMenu.classNames';
+import { IContextualMenuItem } from '../ContextualMenuItem.types';
+import { getSplitButtonVerticalDividerClassNames } from '../ContextualMenu.classNames';
 import { KeytipData } from '../../../KeytipData';
 import { isItemDisabled, hasSubmenu } from '../../../utilities/contextualMenu/index';
 import { VerticalDivider } from '../../../Divider';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
+import { IContextualMenuItemStyles } from '../ContextualMenuItem.types';
+import { IProcessedStyleSet } from '@uifabric/styling/lib/MergeStyles';
 
 export interface IContextualMenuSplitButtonState {}
 
@@ -100,7 +102,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
 
   private _renderSplitPrimaryButton(
     item: IContextualMenuItem,
-    classNames: IMenuItemClassNames,
+    classNames: IProcessedStyleSet<IContextualMenuItemStyles>,
     index: number,
     hasCheckmarks: boolean,
     hasIcons: boolean
@@ -142,7 +144,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
 
   private _renderSplitIconButton(
     item: IContextualMenuItem,
-    classNames: IMenuItemClassNames,
+    classNames: IProcessedStyleSet<IContextualMenuItemStyles>,
     index: number,
     keytipAttributes: any
   ) {
