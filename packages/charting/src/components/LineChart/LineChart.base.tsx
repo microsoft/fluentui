@@ -23,21 +23,11 @@ export class LineChartBase extends React.Component<ILineChartProps, {}> {
 
   constructor(props: ILineChartProps) {
     super(props);
-
-    this._points = this.props.data || [];
-
-    this._width = this.props.width || 600;
-    this._height = this.props.height || 350;
-    this._lineWidth = 15;
-    this._yAxisTickCount = this.props.yAxisTickCount || 5;
-    this._strokeWidth = this.props.strokeWidth || 2;
-
-    const { theme } = this.props;
-    const { palette } = theme!;
-    this._color = this.props.color || palette.blue;
+    this._adjustProps();
   }
 
   public render(): JSX.Element {
+    this._adjustProps();
     const isNumeric = typeof this._points[0].x === 'number';
 
     const xAxis = isNumeric ? this._createNumericXAxis() : this._createStringXAxis();
@@ -62,6 +52,20 @@ export class LineChartBase extends React.Component<ILineChartProps, {}> {
         </svg>
       </div>
     );
+  }
+
+  private _adjustProps(): void {
+    this._points = this.props.data || [];
+
+    this._width = this.props.width || 600;
+    this._height = this.props.height || 350;
+    this._lineWidth = 15;
+    this._yAxisTickCount = this.props.yAxisTickCount || 5;
+    this._strokeWidth = this.props.strokeWidth || 2;
+
+    const { theme } = this.props;
+    const { palette } = theme!;
+    this._color = this.props.color || palette.blue;
   }
 
   private _setXAxis(node: SVGGElement | null, xAxis: numericAxis | stringAxis): void {
