@@ -37,6 +37,18 @@ export interface ISectionProps {
   onDelete?(key: string): void;
 }
 
+export interface ISection extends ISectionProps {
+  /**
+   * The unique key for item in dashboard
+   */
+  key: string;
+
+  /**
+   * keys of cards for this section
+   */
+  keysOfCard: string[];
+}
+
 export interface ISectionStyles {
   root: IStyle;
   actions: IStyle;

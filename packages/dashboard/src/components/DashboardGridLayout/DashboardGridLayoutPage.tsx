@@ -3,11 +3,11 @@ import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet
 import { DashboardGridLayoutExample } from './examples/DashboardGridLayout.Example';
 import { DashboardGridLayoutCardExample } from './examples/DashboardGridLayout.Card.Example';
 import { DashboardGridLayoutSectionsExample } from './examples/DashboardGridLayout.Sections.Example';
+import { DashboardGridLayoutDragApiExample } from './examples/DashboardGridLayout.DragApi.Example';
 const DashboardGridLayoutExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/DashboardGridLayout/examples/DashboardGridLayout.Example.tsx') as string;
 const DashboardGridLayoutCardExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/DashboardGridLayout/examples/DashboardGridLayout.Card.Example.tsx') as string;
 const DashboardGridLayoutSectionsExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/DashboardGridLayout/examples/DashboardGridLayout.Sections.Example.tsx') as string;
 const DashboardGridLayoutDragApiExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/DashboardGridLayout/examples/DashboardGridLayout.DragApi.Example.tsx') as string;
-import { DashboardGridLayoutDragApiExample } from './examples/DashboardGridLayout.DragApi.Example';
 
 export class DashboardGridLayoutPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -63,9 +63,7 @@ export class DashboardGridLayoutPage extends React.Component<IComponentDemoPageP
         }
         overview={
           <div>
-            This component is built using <a href="https://github.com/STRML/react-grid-layout">
-              react-grid-layout
-            </a>{' '}
+            This component is built using <a href="https://github.com/STRML/react-grid-layout">react-grid-layout</a>{' '}
             with a specific layout and breakpoint constraint for dashboard with cards.
           </div>
         }

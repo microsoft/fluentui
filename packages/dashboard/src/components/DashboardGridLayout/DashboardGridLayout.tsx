@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { Responsive, WidthProvider, Layout, Layouts } from 'react-grid-layout';
 import {
-  Size,
   IDashboardGridLayoutProps,
   IDashboardGridLayoutStyles,
   IDashboardCardLayout,
-  DashboardSectionMapping,
-  LayoutMapping
+  DashboardSectionMapping
 } from './DashboardGridLayout.types';
+import { CardSize } from '../Card/Card.types';
 import { getStyles } from './DashboardGridLayout.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+// import { card } from '@uifabric/dashboard/lib/components/DashboardGridLayout/examples/DashboardGridLayout.Example.scss';
 require('style-loader!css-loader!react-grid-layout/css/styles.css');
 require('style-loader!css-loader!react-resizable/css/styles.css');
 require('style-loader!css-loader!./DashboardGridLayout.css');
@@ -34,7 +34,7 @@ const cols = {
   xxxs: 1
 };
 
-const sizes: { [P in Size]: { w: number; h: number } } = {
+const sizes: { [P in CardSize]: { w: number; h: number } } = {
   small: { w: 1, h: 4 },
   mediumTall: { w: 1, h: 8 },
   mediumWide: { w: 2, h: 4 },
@@ -42,7 +42,7 @@ const sizes: { [P in Size]: { w: number; h: number } } = {
   section: { w: 4, h: 1 }
 };
 
-const layoutMapping: LayoutMapping = {};
+// const layoutMapping: LayoutMapping = {};
 
 export class DashboardGridLayout extends React.Component<
   IDashboardGridLayoutProps,
@@ -66,10 +66,6 @@ export class DashboardGridLayout extends React.Component<
     };
   }
 
-  public componentDidMount(): void {
-    this._processSections();
-  }
-
   public render(): JSX.Element {
     const getClassNames = classNamesFunction<IDashboardGridLayoutProps, IDashboardGridLayoutStyles>();
     const classNames = getClassNames(getStyles!);
@@ -90,7 +86,7 @@ export class DashboardGridLayout extends React.Component<
         {...this.props}
         dragApiRef={this.props.dragApi}
       >
-        {this._renderChildren()}
+        {this.props.children}
       </ResponsiveReactGridLayout>
     );
   }
@@ -98,153 +94,9 @@ export class DashboardGridLayout extends React.Component<
   private _onLayoutChanged = (currentLayout: Layout[], allLayouts: Layouts) => {
     console.log('new layout', currentLayout);
     this.setState({ layouts: allLayouts, currentLayout: currentLayout });
-    this._processSections();
     if (this.props.onLayoutChange) {
       this.props.onLayoutChange(currentLayout, allLayouts);
     }
-  };
-
-  private _processSections = () => {
-    if (this.state.currentLayout) {
-      const sections: Layout[] = this._getSections();
-      const sectionMapping: DashboardSectionMapping = {};
-
-      if (sections.length > 0) {
-        for (let i = 0; i < sections.length; i++) {
-          const currentSectionKey: string | undefined = sections[i].i;
-
-          for (let j = 0; j < this.state.currentLayout.length; j++) {
-            this._saveLayoutMapping(this.state.currentLayout[j]);
-            if (
-              this.state.currentLayout[j].x >= sections[i].x &&
-              this.state.currentLayout[j].y >= sections[i].y &&
-              currentSectionKey !== undefined &&
-              currentSectionKey !== this.state.currentLayout[j].i &&
-              !this._isSection(this.state.currentLayout[j])
-            ) {
-              if (!(currentSectionKey in sectionMapping)) {
-                sectionMapping[currentSectionKey] = [];
-              }
-              sectionMapping[currentSectionKey].push(this.state.currentLayout[j]);
-            }
-          }
-        }
-        this.setState({ sectionMapping: sectionMapping }, () => console.log(this.state.sectionMapping));
-      }
-    }
-  };
-
-  private _onExpandCollapseToggled = (expanded: boolean, key: string) => {
-    if (expanded && this.state.sectionMapping && key in this.state.sectionMapping) {
-      this._collapseLayoutsUnderSection(this.state.sectionMapping[key], key);
-    } else if (!expanded && this.state.sectionMapping && key in this.state.sectionMapping) {
-      this._expandLayoutsUnderSection(this.state.sectionMapping[key], key);
-    }
-  };
-
-  private _expandLayoutsUnderSection = (layouts: Layout[], sectionKey: string) => {
-    if (this.state.currentLayout) {
-      const newLayout: Layout[] = [];
-      for (let i = 0; i < this.state.currentLayout.length; i++) {
-        let isCollapsed = false;
-        for (let j = 0; j < layouts.length; j++) {
-          if (this.state.currentLayout[i].i === layouts[j].i) {
-            isCollapsed = true;
-          }
-        }
-        if (isCollapsed) {
-          const copyLayout = this.state.currentLayout[i];
-          const key: string | undefined = this.state.currentLayout[i].i;
-          if (key) {
-            const previousLayout = layoutMapping[key];
-            copyLayout.h = previousLayout.h;
-            copyLayout.w = previousLayout.w;
-            copyLayout.x = previousLayout.x;
-            copyLayout.y = previousLayout.y;
-            newLayout.push(copyLayout);
-          }
-        } else {
-          newLayout.push(this.state.currentLayout[i]);
-        }
-      }
-      const newLayouts: Layouts = {};
-      for (const [k, _] of Object.entries(this.props.layout)) {
-        this._updateLayoutsFromLayout(newLayouts, newLayout, k);
-      }
-      this.setState({ layouts: newLayouts });
-    }
-  };
-
-  private _collapseLayoutsUnderSection = (layouts: Layout[], sectionKey: string) => {
-    if (this.state.currentLayout) {
-      const newLayout: Layout[] = [];
-      for (let i = 0; i < this.state.currentLayout.length; i++) {
-        let toBeExpanded = true;
-        for (let j = 0; j < layouts.length; j++) {
-          if (this.state.currentLayout[i].i === layouts[j].i) {
-            toBeExpanded = false;
-            break;
-          }
-        }
-        if (toBeExpanded) {
-          newLayout.push(this.state.currentLayout[i]);
-        } else {
-          const copyLayout = this.state.currentLayout[i];
-          this._addCollapsedLayoutToSection(this.state.currentLayout[i], sectionKey);
-          // const key = this.state.currentLayout[i].i === undefined ? '' : this.state.currentLayout[i].i;
-          // if (key) {
-          //   layoutMapping[key] = JSON.parse(JSON.stringify(this.state.currentLayout[i]));
-          // }
-          this._saveLayoutMapping(this.state.currentLayout[i]);
-          copyLayout.w = 0;
-          copyLayout.h = 0;
-          newLayout.push(copyLayout);
-        }
-      }
-      const newLayouts: Layouts = {};
-      for (const [k, _] of Object.entries(this.props.layout)) {
-        this._updateLayoutsFromLayout(newLayouts, newLayout, k);
-      }
-      this.setState({ layouts: newLayouts });
-    }
-  };
-
-  private _saveLayoutMapping = (layout: Layout) => {
-    const key = layout.i === undefined ? '' : layout.i;
-    if (layout.w > 0 && layout.h > 0) {
-      layoutMapping[key] = JSON.parse(JSON.stringify(layout));
-    }
-  };
-
-  private _addCollapsedLayoutToSection = (layout: Layout, sectionKey: string) => {
-    const mapping = this.state.collapseMapping;
-    if (!(sectionKey in this.state.collapseMapping)) {
-      mapping[sectionKey] = [];
-    }
-    mapping[sectionKey].push(layout);
-    this.setState({ collapseMapping: mapping });
-  };
-
-  private _getSections = (): Layout[] => {
-    const layouts: Layout[] = [];
-    if (this.state.currentLayout) {
-      for (let i = 0; i < this.state.currentLayout.length; i++) {
-        if (this._isSection(this.state.currentLayout[i])) {
-          layouts.push(this.state.currentLayout[i]);
-        }
-      }
-    }
-    layouts.sort((a: Layout, b: Layout): number => {
-      if (a.y < b.y) {
-        return 0;
-      }
-      return 1;
-    });
-    return layouts;
-  };
-
-  private _isSection = (layout: Layout): boolean => {
-    return layout.w === 4 && layout.h === 1;
   };
 
   private _getFirstDefinedLayout = (layouts: Layouts): Layout[] => {
@@ -263,20 +115,6 @@ export class DashboardGridLayout extends React.Component<
     }
     return [];
   };
-
-  private _renderChildren(): React.ReactNode[] {
-    const childElements: React.ReactNode[] = [];
-    React.Children.forEach(this.props.children, (child: React.ReactChild) => {
-      childElements.push(
-        /*tslint:disable-next-line:no-any */
-        React.cloneElement(child as React.ReactElement<any>, {
-          onCollapseExpand: this._onExpandCollapseToggled
-        })
-      );
-    });
-
-    return childElements;
-  }
 
   private _updateLayoutsFromLayout = (layouts: Layouts, layout: Layout[], key: string) => {
     switch (key) {
@@ -313,16 +151,19 @@ export class DashboardGridLayout extends React.Component<
 
   private _createLayout(): Layouts {
     const layouts: Layouts = {};
-    for (const [key, value] of Object.entries(this.props.layout)) {
-      if (value === undefined) {
-        continue;
+    if (this.props.layout) {
+      for (const [key, value] of Object.entries(this.props.layout)) {
+        if (value === undefined) {
+          continue;
+        }
+        const layout: Layout[] = [];
+        for (let i = 0; i < value.length; i++) {
+          layout.push(this._createLayoutFromProp(value[i]));
+        }
+        this._updateLayoutsFromLayout(layouts, layout, key);
       }
-      const layout: Layout[] = [];
-      for (let i = 0; i < value.length; i++) {
-        layout.push(this._createLayoutFromProp(value[i]));
-      }
-      this._updateLayoutsFromLayout(layouts, layout, key);
     }
+
     return layouts;
   }
 }
