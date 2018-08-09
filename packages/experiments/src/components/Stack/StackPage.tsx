@@ -1,9 +1,6 @@
 import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 
-import { StackBasicExample } from './examples/Stack.Basic.Example';
-const StackBasicExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Stack/examples/Stack.Basic.Example.tsx') as string;
-
 import { StackVerticalExample } from './examples/Stack.Vertical.Example';
 const StackVerticalExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Stack/examples/Stack.Vertical.Example.tsx') as string;
 
@@ -30,9 +27,6 @@ export class StackPage extends React.Component<IComponentDemoPageProps, {}> {
         componentName="Stack"
         exampleCards={
           <div>
-            <ExampleCard title="Basic Stack" code={StackBasicExampleCode}>
-              <StackBasicExample />
-            </ExampleCard>
             <ExampleCard title="Vertical Stack" code={StackVerticalExampleCode}>
               <StackVerticalExample />
             </ExampleCard>
