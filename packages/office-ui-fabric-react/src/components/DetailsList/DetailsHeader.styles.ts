@@ -292,7 +292,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         visibility: 'hidden',
         position: 'absolute',
         top: 22,
-        left: -9,
+        left: -7.5,
         fontSize: 16,
         color: palette.themePrimary,
         overflow: 'visible',
