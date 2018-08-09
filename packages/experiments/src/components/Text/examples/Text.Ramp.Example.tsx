@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Text, Stack } from '@uifabric/experiments';
 import { IFontVariants, IFontSizes, IFontWeights, IFontFamilies } from '@uifabric/experiments/lib/Styling';
 import { ISemanticColors, IPalette, ITheme } from '@uifabric/experiments/lib/Styling';
-import { createComponent } from '@uifabric/experiments/lib/Foundation';
+import { createStatelessComponent } from '@uifabric/experiments/lib/Foundation';
 
 const TestText = 'The quick brown fox jumped over the lazy dog.';
 
@@ -59,7 +59,7 @@ interface ITableProps {
   theme?: ITheme;
 }
 
-const Table = createComponent<ITableProps, {}, {}>({
+const Table = createStatelessComponent<ITableProps, {}, {}>({
   view: (props: ITableProps) => (
     <Stack className={props.className} gap={20} vertical>
       <Text variant="h3">{props.title}</Text>
