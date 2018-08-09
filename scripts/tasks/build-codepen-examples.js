@@ -10,43 +10,36 @@ module.exports = function(options) {
   return processFiles();
 
   function processFiles() {
-    const promises = [];
-    if (files.length) {
-      promises.push(
-        new Promise((resolve, reject) => {
-          async.eachLimit(
-            files,
-            5,
-            function(file, callback) {
-              const fileSource = fs.readFileSync(file).toString();
-              if (fileSource.indexOf('@codepen') >= 0) {
-                const exampleName = path.basename(file, '.tsx');
-                // extract the name of the component (relies on component/examples/examplefile.tsx structure)
-                const exampleComponentName = file.split('/').reverse()[2];
-                const fileInfo = { path: file, source: fileSource };
-                const api = { jscodeshift: jscodeshift.withParser('babylon'), stats: {} };
-                const transformResult = transformer(fileInfo, api);
-                fs.writeFileSync(
-                  'lib/components/' + exampleComponentName + '/' + exampleName + '.Codepen.txt',
-                  transformResult
-                );
-                callback();
-              } else {
-                callback();
-              }
-            },
-            function(err) {
-              if (err) {
-                reject();
-              } else {
-                resolve();
-              }
-            }
-          );
-        })
+    return new Promise((resolve, reject) => {
+      async.eachLimit(
+        files,
+        5,
+        function(file, callback) {
+          const fileSource = fs.readFileSync(file).toString();
+          if (fileSource.indexOf('@codepen') >= 0) {
+            const exampleName = path.basename(file, '.tsx');
+            // extract the name of the component (relies on component/examples/examplefile.tsx structure)
+            const exampleComponentName = file.split('/').reverse()[2];
+            const fileInfo = { path: file, source: fileSource };
+            const api = { jscodeshift: jscodeshift.withParser('babylon'), stats: {} };
+            const transformResult = transformer(fileInfo, api);
+            fs.writeFileSync(
+              'lib/components/' + exampleComponentName + '/' + exampleName + '.Codepen.txt',
+              transformResult
+            );
+            callback();
+          } else {
+            callback();
+          }
+        },
+        function(err) {
+          if (err) {
+            reject();
+          } else {
+            resolve();
+          }
+        }
       );
-    }
-
-    return Promise.all(promises);
+    });
   }
 };
