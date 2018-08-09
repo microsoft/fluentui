@@ -348,6 +348,9 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 &:active {
                   background: #eaeaea;
                 }
+                &:hover i[data-icon-name="GripperBarVertical"] {
+                  display: block;
+                }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
             data-item-key="key"
@@ -481,6 +484,9 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 &:active {
                   background: #eaeaea;
                 }
+                &:hover i[data-icon-name="GripperBarVertical"] {
+                  display: block;
+                }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
             data-item-key="name"
@@ -613,6 +619,9 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 }
                 &:active {
                   background: #eaeaea;
+                }
+                &:hover i[data-icon-name="GripperBarVertical"] {
+                  display: block;
                 }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
@@ -1150,6 +1159,9 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 &:active {
                   background: #eaeaea;
                 }
+                &:hover i[data-icon-name="GripperBarVertical"] {
+                  display: block;
+                }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
             data-item-key="key"
@@ -1283,6 +1295,9 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 &:active {
                   background: #eaeaea;
                 }
+                &:hover i[data-icon-name="GripperBarVertical"] {
+                  display: block;
+                }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
             data-item-key="name"
@@ -1415,6 +1430,9 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 }
                 &:active {
                   background: #eaeaea;
+                }
+                &:hover i[data-icon-name="GripperBarVertical"] {
+                  display: block;
                 }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
@@ -1952,6 +1970,9 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 &:active {
                   background: #eaeaea;
                 }
+                &:hover i[data-icon-name="GripperBarVertical"] {
+                  display: block;
+                }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
             data-item-key="key"
@@ -2085,6 +2106,9 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 &:active {
                   background: #eaeaea;
                 }
+                &:hover i[data-icon-name="GripperBarVertical"] {
+                  display: block;
+                }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
             data-item-key="name"
@@ -2217,6 +2241,9 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 }
                 &:active {
                   background: #eaeaea;
+                }
+                &:hover i[data-icon-name="GripperBarVertical"] {
+                  display: block;
                 }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
@@ -2754,6 +2781,9 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 &:active {
                   background: #eaeaea;
                 }
+                &:hover i[data-icon-name="GripperBarVertical"] {
+                  display: block;
+                }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
             data-item-key="key"
@@ -2887,6 +2917,9 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 &:active {
                   background: #eaeaea;
                 }
+                &:hover i[data-icon-name="GripperBarVertical"] {
+                  display: block;
+                }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
             data-item-key="name"
@@ -3019,6 +3052,9 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 }
                 &:active {
                   background: #eaeaea;
+                }
+                &:hover i[data-icon-name="GripperBarVertical"] {
+                  display: block;
                 }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}

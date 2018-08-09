@@ -23,7 +23,7 @@ export const CollapsibleSectionTitleView = (
       onClick={props.onToggleCollapse}
       onKeyDown={props.onKeyDown}
     >
-      {!props.noChevron && <Icon className={props.classNames.icon} iconName="ChevronDown" />}
+      {!props.chevronDisabled && <Icon className={props.classNames.icon} iconName="ChevronDown" />}
       <span className={props.classNames.text}>{props.text}</span>
     </button>
   );

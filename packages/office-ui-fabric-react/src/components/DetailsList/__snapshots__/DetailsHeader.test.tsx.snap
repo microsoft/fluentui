@@ -307,6 +307,9 @@ exports[`DetailsHeader can render 1`] = `
         &:active {
           background: #eaeaea;
         }
+        &:hover i[data-icon-name="GripperBarVertical"] {
+          display: block;
+        }
     data-automationid="ColumnsHeaderColumn"
     data-is-draggable={false}
     data-item-key="a"
@@ -496,6 +499,9 @@ exports[`DetailsHeader can render 1`] = `
         }
         &:active {
           background: #eaeaea;
+        }
+        &:hover i[data-icon-name="GripperBarVertical"] {
+          display: block;
         }
     data-automationid="ColumnsHeaderColumn"
     data-is-draggable={false}
@@ -708,6 +714,9 @@ exports[`DetailsHeader can render 1`] = `
         }
         &:active {
           background: #eaeaea;
+        }
+        &:hover i[data-icon-name="GripperBarVertical"] {
+          display: block;
         }
     data-automationid="ColumnsHeaderColumn"
     data-is-draggable={false}
@@ -1175,6 +1184,9 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         &:active {
           background: #eaeaea;
         }
+        &:hover i[data-icon-name="GripperBarVertical"] {
+          display: block;
+        }
     data-automationid="ColumnsHeaderColumn"
     data-is-draggable={false}
     data-item-key="a"
@@ -1364,6 +1376,9 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         }
         &:active {
           background: #eaeaea;
+        }
+        &:hover i[data-icon-name="GripperBarVertical"] {
+          display: block;
         }
     data-automationid="ColumnsHeaderColumn"
     data-is-draggable={false}
@@ -1600,6 +1615,9 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         }
         &:active {
           background: #eaeaea;
+        }
+        &:hover i[data-icon-name="GripperBarVertical"] {
+          display: block;
         }
     data-automationid="ColumnsHeaderColumn"
     data-is-draggable={false}

@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { createComponent, IStyleableComponent, IViewComponentProps } from '../../Foundation';
+import { createStatelessComponent, IStyleableComponent, IViewComponentProps } from '../../Foundation';
 import StackItem from './StackItem/StackItem';
 import { IStackItemProps, IStackItemStyles } from './StackItem/StackItem.types';
 import { IStackProps, IStackStyles } from './Stack.types';
 import { styles } from './Stack.styles';
-import { mergeStyles } from 'office-ui-fabric-react';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 const StackItemType = (<StackItem /> as React.ReactElement<IStackItemProps> &
   IStyleableComponent<IStackItemProps, IStackItemStyles>).type;
@@ -60,7 +60,7 @@ type IStackStatics = typeof StackStatics;
 
 export const Stack: React.StatelessComponent<IStackProps> & {
   Item: React.StatelessComponent<IStackItemProps>;
-} = createComponent<IStackProps, IStackStyles, IStackStatics>({
+} = createStatelessComponent<IStackProps, IStackStyles, IStackStatics>({
   displayName: 'Stack',
   styles,
   view,

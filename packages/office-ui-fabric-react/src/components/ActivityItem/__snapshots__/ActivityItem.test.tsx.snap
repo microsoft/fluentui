@@ -15,7 +15,6 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
         font-size: 12px;
         font-weight: 400;
         justify-content: flex-start;
-        line-height: 17px;
       }
   style={undefined}
 >
@@ -175,7 +174,6 @@ exports[`ActivityItem renders compact with an icon correctly 1`] = `
         font-size: 12px;
         font-weight: 400;
         justify-content: flex-start;
-        line-height: 17px;
       }
   style={undefined}
 >
@@ -276,7 +274,6 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
         font-size: 12px;
         font-weight: 400;
         justify-content: flex-start;
-        line-height: 17px;
       }
   style={undefined}
 >
@@ -458,7 +455,6 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
         font-size: 12px;
         font-weight: 400;
         justify-content: flex-start;
-        line-height: 17px;
       }
   style={undefined}
 >
@@ -771,7 +767,6 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
         font-size: 12px;
         font-weight: 400;
         justify-content: flex-start;
-        line-height: 17px;
       }
   style={undefined}
 >
@@ -919,7 +914,6 @@ exports[`ActivityItem renders with an icon correctly 1`] = `
         font-size: 12px;
         font-weight: 400;
         justify-content: flex-start;
-        line-height: 17px;
       }
   style={undefined}
 >
@@ -1017,7 +1011,6 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
         font-size: 12px;
         font-weight: 400;
         justify-content: flex-start;
-        line-height: 17px;
       }
   style={undefined}
 >

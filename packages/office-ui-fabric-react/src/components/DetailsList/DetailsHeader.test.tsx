@@ -34,7 +34,7 @@ const _columns: IColumn[] = [
     isIconOnly: false
   }
 ];
-const _columnReorderOptions = {
+const _columnReorderProps = {
   frozenColumnCountFromStart: 1,
   handleColumnReorder: this._dummyFunction
 };
@@ -69,7 +69,7 @@ describe('DetailsHeader', () => {
         layoutMode={DetailsListLayoutMode.fixedColumns}
         columns={_columns}
         onColumnResized={onColumnResized}
-        columnReorderOptions={_columnReorderOptions}
+        columnReorderProps={_columnReorderProps}
       />
     );
 

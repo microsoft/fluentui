@@ -1,11 +1,11 @@
 {
   "changes": [
     {
-      "comment": "",
       "packageName": "@uifabric/fabric-website-resources",
-      "type": "none"
+      "comment": "Added optional feedback section for component pages",
+      "type": "patch"
     }
   ],
   "packageName": "@uifabric/fabric-website-resources",
-  "email": "hatrived@microsoft.com"
+  "email": "anavi.lohia@utexas.edu"
 }

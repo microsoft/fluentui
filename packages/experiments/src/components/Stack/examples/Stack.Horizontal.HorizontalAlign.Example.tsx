@@ -38,7 +38,7 @@ export class StackHorizontalAlignExample extends React.Component<IStackExamplePr
           <Text size="tiny">Item Three</Text>
         </HorizontalStack>
 
-        <Text size="xSmall">Horizontally right-aligned</Text>
+        <Text size="xSmall">Right-aligned</Text>
         <HorizontalStack horizontalAlign="right" gap={10} padding={padding} className={style}>
           <Text size="tiny">Item One</Text>
           <Text size="tiny">Item Two</Text>

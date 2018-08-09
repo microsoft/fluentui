@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createComponent, IViewComponentProps } from '../../../Foundation';
+import { createStatelessComponent, IViewComponentProps } from '../../../Foundation';
 import { Stack } from '../Stack';
 import { StackItem } from '../StackItem/StackItem';
 import { IStackItemProps } from '../StackItem/StackItem.types';
@@ -31,7 +31,7 @@ type IHorizontalStackStatics = typeof StackStatics;
 
 export const HorizontalStack: React.StatelessComponent<IHorizontalStackProps> & {
   Item: React.StatelessComponent<IStackItemProps>;
-} = createComponent<IHorizontalStackProps, IHorizontalStackStyles, IHorizontalStackStatics>({
+} = createStatelessComponent<IHorizontalStackProps, IHorizontalStackStyles, IHorizontalStackStatics>({
   displayName: 'HorizontalStack',
   styles,
   view,
