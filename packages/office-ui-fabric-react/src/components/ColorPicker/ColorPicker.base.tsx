@@ -138,7 +138,7 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
                     <TextField
                       className={classNames.input}
                       onBlur={this._onRGBAChanged}
-                      value={String(color.a ? (color.a / 100).toFixed(3) : color.a)}
+                      value={String(color.a ? color.a.toFixed(1) : color.a)}
                       componentRef={this._aText}
                       spellCheck={false}
                       ariaLabel={this.props.alphaLabel}
@@ -181,7 +181,7 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
         r: Number(this._rText.current.value),
         g: Number(this._gText.current.value),
         b: Number(this._bText.current.value),
-        a: Number((this._aText.current.value && parseFloat(this._aText.current.value) * 100) || 100)
+        a: Number((this._aText.current.value && this._aText.current.value) || 100)
       })
     );
   };

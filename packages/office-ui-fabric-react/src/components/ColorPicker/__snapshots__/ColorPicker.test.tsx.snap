@@ -904,7 +904,7 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                     readOnly={undefined}
                     spellCheck={false}
                     type="text"
-                    value="1.000"
+                    value="100.0"
                   />
                 </div>
               </div>
