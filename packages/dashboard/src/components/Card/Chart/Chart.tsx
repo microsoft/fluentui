@@ -13,7 +13,7 @@ export class Chart extends React.Component<IChartInternalProps, {}> {
       case ChartType.VerticalBarChart: {
         return (
           <VerticalBarChart
-            data={this.props.data}
+            data={this.props.dataPoints}
             width={this._getWidth()}
             height={this._getHeight()}
             barWidth={this.props.barWidth}
@@ -30,14 +30,14 @@ export class Chart extends React.Component<IChartInternalProps, {}> {
             height={this._getHeight()}
             strokeWidth={this.props.strokeWidth}
             chartLabel={this.props.chartLabel}
-            color={this.props.colors && this.props.colors.length > 0 ? this.props.colors[0] : undefined}
+            colors={this.props.colors}
           />
         );
       }
       case ChartType.HorizontalBarChart: {
         return (
           <HorizontalBarChart
-            data={this.props.data}
+            data={this.props.dataPoints}
             width={this._getWidth()}
             height={this._getHeight()}
             barHeight={this.props.barHeight}
@@ -47,13 +47,37 @@ export class Chart extends React.Component<IChartInternalProps, {}> {
         );
       }
       case ChartType.DonutChart: {
-        return <DonutChart data={this.props.data} colors={this.props.colors} />;
+        return (
+          <DonutChart
+            data={this.props.dataPoints}
+            colors={this.props.colors}
+            width={this._getWidth()}
+            height={this._getHeight()}
+          />
+        );
       }
       case ChartType.PieChart: {
-        return <PieChart data={this.props.data} chartTitle={this.props.chartLabel} colors={this.props.colors} />;
+        return (
+          <PieChart
+            data={this.props.dataPoints}
+            chartTitle={this.props.chartLabel}
+            colors={this.props.colors}
+            width={this._getWidth()}
+            height={this._getHeight()}
+          />
+        );
       }
       case ChartType.StackedBarChart: {
-        return <StackedBarChart data={this.props.data} chartTitle={this.props.chartLabel} colors={this.props.colors} />;
+        return (
+          <StackedBarChart
+            data={this.props.dataPoints}
+            chartTitle={this.props.chartLabel}
+            colors={this.props.colors}
+            width={this._getWidth()}
+            height={this._getHeight()}
+            barHeight={this.props.barHeight}
+          />
+        );
       }
     }
   }

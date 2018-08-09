@@ -66,13 +66,7 @@ export class Recommendation extends React.Component<IRecommendationProps, {}> {
         <div className={classNames.recommendationContainer}>
           <div className={classNames.recommendationTextContainer}>
             <div className={classNames.recommendationHeader}>
-              <AutoFontSize
-                text={recommendationDescriptionHeader}
-                minTextSize={12}
-                textSize={28}
-                textSizeStep={2}
-                targetLines={2}
-              />
+              <AutoFontSize text={recommendationDescriptionHeader} minTextSize={12} textSizeStep={2} targetLines={2} />
             </div>
             <div className={classNames.recommendationContent}>{recommendationDescription} </div>
             <div>

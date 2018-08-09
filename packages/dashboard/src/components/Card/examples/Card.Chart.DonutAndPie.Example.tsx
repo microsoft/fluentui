@@ -35,17 +35,17 @@ export class DonutAndPieChartExample extends React.Component<{}, {}> {
         content: {
           chartLabel: 'Donut Chart',
           chartType: ChartType.DonutChart,
-          data: points,
+          dataPoints: points,
           colors: colors
         }
       },
       {
-        priority: Priority.Priority1,
+        priority: Priority.Priority2,
         cardContentType: CardContentType.Chart,
         content: {
           chartLabel: 'Pie Chart',
           chartType: ChartType.PieChart,
-          data: points,
+          dataPoints: points,
           colors: colors
         }
       }

@@ -8,6 +8,7 @@ import { DonutAndPieChartExample } from './examples/Card.Chart.DonutAndPie.Examp
 import { LineAndVerticalBarChartExample } from './examples/Card.Chart.LineAndVerticalBar.Example';
 import { MultiCountExample } from './examples/Card.MultiCount.Example';
 import { StackedBarChartExample } from './examples/Card.Chart.StackedBar.Example';
+import { MultipleLineChartExample } from './examples/Card.Chart.MultipleLineChart.Example';
 const SmallCardExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.Small.Basic.Example.tsx') as string;
 const MediumTallCardExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.MediumTall.Basic.Example.tsx') as string;
 const MediumWideCardExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.MediumWide.Basic.Example.tsx') as string;
@@ -16,6 +17,7 @@ const DonutAndPieChartExampleCode = require('!raw-loader!@uifabric/dashboard/src
 const LineAndVerticalBarChartExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.Chart.LineAndVerticalBar.Example.tsx') as string;
 const MultiCountExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.MultiCount.Example.tsx') as string;
 const StackedBarChartExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.Chart.StackedBar.Example.tsx') as string;
+const MultipleLineChartExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.Chart.MultipleLineChart.Example.tsx') as string;
 
 export class CardPage extends React.Component<{}, {}> {
   public render(): JSX.Element {
@@ -48,6 +50,9 @@ export class CardPage extends React.Component<{}, {}> {
             </ExampleCard>
             <ExampleCard title="Stacked bar chart example" code={StackedBarChartExampleCode}>
               <StackedBarChartExample />
+            </ExampleCard>
+            <ExampleCard title="Mulitple line chart" code={MultipleLineChartExampleCode}>
+              <MultipleLineChartExample />
             </ExampleCard>
           </div>
         }

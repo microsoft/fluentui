@@ -1,6 +1,6 @@
-import { IGridListStyles } from './GridList.types';
+import { ICustomCssForCells, IGridListStyles } from './GridList.types';
 
-export const getStyles = (): IGridListStyles => {
+export const getStyles = (props: ICustomCssForCells): IGridListStyles => {
   return {
     root: {},
     actionButton: {
@@ -8,7 +8,8 @@ export const getStyles = (): IGridListStyles => {
     },
     imageAlignment: {
       float: 'left',
-      marginRight: '16px'
+      marginRight: '16px',
+      color: props.iconColor ? props.iconColor : ''
     },
     cursonPointer: {
       cursor: 'pointer'
@@ -16,7 +17,7 @@ export const getStyles = (): IGridListStyles => {
     text: {
       fontSize: '14px',
       lineHeight: '16px',
-      color: '#333333'
+      color: props.textColor ? props.textColor : '#333333'
     }
   };
 };

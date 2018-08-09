@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/styling",
+      "comment": "Theme: add unit tests to ensure that createTheme does not modify DefaultTypography",
+      "type": "none"
+    }
+  ],
+  "packageName": "@uifabric/styling",
+  "email": "kakje@microsoft.com"
+}

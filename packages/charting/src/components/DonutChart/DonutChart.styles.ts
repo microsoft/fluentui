@@ -18,7 +18,8 @@ export const getStyles = (props: IDonutChartStyleProps): IDonutChartStyles => {
     ],
     chart: {
       width: chartHeight,
-      height: chartHeight
+      height: chartHeight,
+      boxSizing: 'content-box'
     },
     legend: [
       {
