@@ -251,9 +251,6 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/searchbox'
         },
         {
-<<<<<<< HEAD
-          component: require<any>('../components/SelectedItemsList/SelectedPeopleList/SelectedPeopleListPage').SelectedPeopleListPage,
-=======
           component: require<any>('../components/Shimmer/ShimmerPage').ShimmerPage,
           key: 'Shimmer',
           name: 'Shimmer',
@@ -262,7 +259,6 @@ export const AppDefinition: IAppDefinition = {
         {
           component: require<any>('../components/SelectedItemsList/SelectedPeopleList/SelectedPeopleListPage')
             .SelectedPeopleListPage,
->>>>>>> 3ccea3734... Shimmer: adding new component to OUFR (#5067)
           key: 'SelectedPeopleList',
           name: 'SelectedPeopleList',
           url: '#examples/selectedpeoplelist'
