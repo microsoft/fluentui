@@ -1,4 +1,4 @@
-import { mergeStyleSets, getTheme, ITheme } from 'office-ui-fabric-react';
+import { mergeStyleSets, ITheme } from 'office-ui-fabric-react';
 import {
   createStatelessComponent as foundationCreateStatelessComponent,
   createComponent as foundationCreateComponent,
@@ -13,6 +13,7 @@ import {
 } from '@uifabric/foundation';
 export { IStateComponentProps } from '@uifabric/foundation';
 import { IProcessedStyleSet, IStyleSet } from './Styling';
+import { Customizations, CustomizableContextTypes, ICustomizations } from './Utilities';
 
 // Centralize Foundation interaction for use throughout this package. These convenience types provide types
 //  that are global for all of OUFR, such as ITheme and IProcessedStyleSet.
@@ -34,10 +35,17 @@ export type IStyleableComponentProps<TProps, TStyleSet> = IStyleableComponentPro
  */
 export type IThemedProps<TProps> = TProps & IThemedComponent<ITheme>;
 
+/**
+ * The shape of customizations within context.
+ */
+type IContextCustomization = { customizations: ICustomizations };
+
+// TODO: remove any if possible
 // tslint:disable-next-line:no-any
-const providers: IStylingProviders<any, any, ITheme> = {
-  getTheme,
-  mergeStyleSets
+const providers: IStylingProviders<any, any, any, IContextCustomization, ITheme> = {
+  mergeStyleSets,
+  getCustomizations,
+  CustomizableContextTypes
 };
 
 /**
@@ -56,6 +64,7 @@ export function createStatelessComponent<
     TComponentProps,
     TStyleSet,
     IProcessedStyleSet<TStyleSet>,
+    IContextCustomization,
     ITheme,
     TStatics
   >(options, providers);
@@ -85,7 +94,17 @@ export function createComponent<
     TViewProps,
     TStyleSet,
     IProcessedStyleSet<TStyleSet>,
+    IContextCustomization,
     ITheme,
     TStatics
   >(options, providers, state);
+}
+
+// TODO: remove any if possible
+// tslint:disable-next-line:no-any
+function getCustomizations(displayName: string, context: IContextCustomization): any {
+  // TODO: do we want field props? should fields be part of IComponentOptions and used here?
+  // TODO: should we centrally define DefaultFields? (not exported from styling)
+  const DefaultFields = ['theme', 'styles'];
+  return Customizations.getSettings(DefaultFields, displayName, context.customizations);
 }
