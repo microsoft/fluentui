@@ -181,7 +181,7 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
         r: Number(this._rText.current.value),
         g: Number(this._gText.current.value),
         b: Number(this._bText.current.value),
-        a: Number((this._aText.current.value && this._aText.current.value) || 100)
+        a: Number(this._aText.current.value || 100)
       })
     );
   };
