@@ -102,27 +102,26 @@ describe('CommandBar', () => {
   });
 
   it('passes event and item to button onClick callbacks', () => {
-    let testValue: string | undefined = '';
-    const commandBar = mount(
-      <CommandBar
-        items={[
-          {
-            text: 'TestText 1',
-            key: 'TestKey1',
-            className: 'MenuItem',
-            onClick: (ev, item) => {
-              testValue = ev && item && item.text;
-            }
-          }
-        ]}
-      />
-    );
+    const itemData: IContextualMenuItem = {
+      text: 'TestText 1',
+      key: 'TestKey1',
+      className: 'MenuItem',
+      data: {
+        foo: 'bar'
+      },
+      onClick: (ev, item) => {
+        testValue = item;
+      }
+    };
+
+    let testValue: IContextualMenuItem | undefined;
+    const commandBar = mount(<CommandBar items={[itemData]} />);
 
     const menuItem = commandBar.find('.MenuItem button');
 
     menuItem.simulate('click');
 
-    expect(testValue).toEqual('TestText 1');
+    expect(testValue).toEqual(itemData);
   });
 
   it('keeps menu open after update if item is still present', () => {
