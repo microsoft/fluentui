@@ -45,31 +45,29 @@ export class FeedbackList extends React.Component<IFeedbackListProps, IFeedbackL
     this.setState({ openIssues: results[0], closedIssues: results[1] });
   }
 
-  public getIssues(url: string): IListItem[] {
+  public async getIssues(url: string): Promise<IListItem[]> {
     let issueList: IListItem[] = [];
-    fetch(url)
-      .then((response: Response) => {
-        return response.text();
-      })
-      .then((responseText: string) => {
-        const myObj = JSON.parse(responseText);
-        for (let i = 0; i < myObj.total_count; i++) {
-          let dateCreated = new Date(myObj.items[i].created_at);
-          let openedOn = relativeDates(dateCreated, new Date());
-          issueList.push({
-            issueTitle: myObj.items[i].title,
-            issueNum: myObj.items[i].number,
-            issueCreated: openedOn
-          });
-        }
+
+    const response = await fetch(url);
+    const responseText = await response.text();
+
+    const myObj = JSON.parse(responseText);
+    for (let i = 0; i < myObj.total_count; i++) {
+      let dateCreated = new Date(myObj.items[i].created_at);
+      let openedOn = relativeDates(dateCreated, new Date());
+      issueList.push({
+        issueTitle: myObj.items[i].title,
+        issueNum: myObj.items[i].number,
+        issueCreated: openedOn
       });
+    }
     return issueList;
   }
 
   public render(): JSX.Element | null {
     let { openIssues, closedIssues } = this.state;
 
-    return (
+    let submitButton = (
       <div>
         <PrimaryButton
           href="https://github.com/OfficeDev/office-ui-fabric-react/issues/new/choose"
@@ -79,7 +77,15 @@ export class FeedbackList extends React.Component<IFeedbackListProps, IFeedbackL
         >
           Submit GitHub Issue
         </PrimaryButton>
+      </div>
+    );
 
+    if (openIssues.length === 0 && closedIssues.length === 0) {
+      return submitButton;
+    }
+    return (
+      <div>
+        {submitButton}
         <Pivot className="FeedbackList-pivot">
           <PivotItem linkText="Open Issues">
             <List
