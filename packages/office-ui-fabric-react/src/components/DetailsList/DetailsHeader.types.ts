@@ -6,7 +6,7 @@ import { IViewport } from '../../utilities/decorators/withViewport';
 import { ISelection, SelectionMode } from '../../utilities/selection/interfaces';
 import { ITheme, IStyle } from '../../Styling';
 import { DetailsHeaderBase } from './DetailsHeader.base';
-import { IColumn, DetailsListLayoutMode, IColumnReorderOptions } from './DetailsList.types';
+import { IColumn, DetailsListLayoutMode, IColumnReorderOptions, ColumnDragEndLocation } from './DetailsList.types';
 import { ICellStyleProps } from './DetailsRow.types';
 
 export interface IDetailsHeader {
@@ -85,7 +85,10 @@ export interface IDetailsHeaderProps extends React.Props<DetailsHeaderBase> {
   viewport?: IViewport;
 
   /** Column reordering options */
-  columnReorderProps?: IColumnReorderProps;
+  columnReorderOptions?: IColumnReorderOptions;
+
+  /** Column reordering options */
+  columnReorderProps?: IColumnReorderHeaderProps;
 
   /** Minimum pixels to be moved before dragging is registered */
   minimumPixelsForDrag?: number;
@@ -116,14 +119,12 @@ export interface IColumnResizeDetails {
   columnMinWidth: number;
 }
 
-export interface IColumnReorderProps {
-  columnReorderOptions: IColumnReorderOptions;
-
+export interface IColumnReorderHeaderProps extends IColumnReorderOptions {
   /** Callback to notify the column dragEnd event to List
    * Need this to check whether the dragEnd has happened on
    * corresponding list or outside of the list
    */
-  onColumnDragEnd?: (event: MouseEvent, onHeader: boolean) => void;
+  onColumnDragEnd?: (props: { dropLocation?: ColumnDragEndLocation }, event: MouseEvent) => void;
 }
 
 export interface IDropHintDetails {

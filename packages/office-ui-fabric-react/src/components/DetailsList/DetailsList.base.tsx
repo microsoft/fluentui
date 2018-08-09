@@ -20,14 +20,15 @@ import {
   IDetailsListProps,
   IDetailsListStyles,
   IDetailsListStyleProps,
-  IDetailsGroupRenderProps
+  IDetailsGroupRenderProps,
+  ColumnDragEndLocation
 } from '../DetailsList/DetailsList.types';
 import { DetailsHeader } from '../DetailsList/DetailsHeader';
 import {
   IDetailsHeader,
   SelectAllVisibility,
   IDetailsHeaderProps,
-  IColumnReorderProps
+  IColumnReorderHeaderProps
 } from '../DetailsList/DetailsHeader.types';
 import { IDetailsFooterProps } from '../DetailsList/DetailsFooter.types';
 import { DetailsRowBase } from '../DetailsList/DetailsRow.base';
@@ -655,11 +656,13 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     }
   }
 
-  private _onColumnDragEnd(event: MouseEvent, onHeader: boolean): void {
+  private _onColumnDragEnd(props: { dropLocation?: ColumnDragEndLocation }, event: MouseEvent): void {
     const { columnReorderOptions } = this.props;
-    if (columnReorderOptions && columnReorderOptions.onColumnDragEnd) {
-      let dropLocation = 0;
-      if (!onHeader && this._root.current) {
+    let finalDropLocation: ColumnDragEndLocation = ColumnDragEndLocation.outside;
+    if (columnReorderOptions && columnReorderOptions.onDragEnd) {
+      if (props.dropLocation && props.dropLocation !== ColumnDragEndLocation.header) {
+        finalDropLocation = props.dropLocation;
+      } else if (this._root.current) {
         const clientRect = this._root.current.getBoundingClientRect();
         if (
           event.clientX > clientRect.left &&
@@ -667,14 +670,10 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
           event.clientY > clientRect.top &&
           event.clientY < clientRect.bottom
         ) {
-          dropLocation = 1;
-        } else {
-          dropLocation = 0;
+          finalDropLocation = ColumnDragEndLocation.surface;
         }
-      } else {
-        dropLocation = 2;
       }
-      columnReorderOptions.onColumnDragEnd(dropLocation);
+      columnReorderOptions.onDragEnd(finalDropLocation);
     }
   }
 
@@ -987,11 +986,11 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     };
   }
 
-  private _getColumnReorderProps(): IColumnReorderProps | undefined {
+  private _getColumnReorderProps(): IColumnReorderHeaderProps | undefined {
     const { columnReorderOptions } = this.props;
     if (columnReorderOptions) {
       return {
-        columnReorderOptions: columnReorderOptions,
+        ...columnReorderOptions,
         onColumnDragEnd: this._onColumnDragEnd
       };
     }

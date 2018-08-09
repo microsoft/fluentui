@@ -34,12 +34,9 @@ const _columns: IColumn[] = [
     isIconOnly: false
   }
 ];
-
 const _columnReorderProps = {
-  columnReorderOptions: {
-    frozenColumnCountFromStart: 1,
-    handleColumnReorder: this._dummyFunction
-  }
+  frozenColumnCountFromStart: 1,
+  handleColumnReorder: this._dummyFunction
 };
 
 _selection.setItems(_items);

@@ -518,7 +518,7 @@ export interface IColumnReorderOptions {
   /**
    * Callback to handle the column reorder
    */
-  onColumnDragEnd?: (columnDropLocationDetails: ColumnDragEndLocation) => void;
+  onDragEnd?: (columnDropLocationDetails: ColumnDragEndLocation) => void;
 }
 
 export interface IColumnDragDropDetails {
@@ -611,4 +611,5 @@ export interface IDetailsGroupDividerProps extends IGroupDividerProps {
   columns?: IColumn[];
   groupNestingDepth?: number;
   selection?: ISelection;
+  jhcja?: number;
 }
