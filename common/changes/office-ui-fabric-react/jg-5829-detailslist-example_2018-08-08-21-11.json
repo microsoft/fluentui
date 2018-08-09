@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix a class of bad imports that breaks AMD.",
+      "comment": "DetailsList: Fix all examples by disabling row renderer optimization.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "cliff.koh@microsoft.com"
+  "email": "jagore@microsoft.com"
 }

@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 07 Aug 2018 10:22:32 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Aug 2018 10:25:08 GMT and should not be manually modified.
+
+## 6.47.1
+Wed, 08 Aug 2018 10:25:08 GMT
+
+### Patches
+
+- Layer: Fix layer customizability regression introduced in #5569 - which also broke the official Layer example.
+- Fix a class of bad imports that breaks AMD.
+- Fixes a bug in drag and drop detaillist column not showing a gripper
+- Dropdown: use item text for title if title is not provided
+- Button should not have any html tag as children. In IE the inner html, would not render. 
+- Panel: Don't force focus in trap if isHiddenOnDismiss is set and panel is closed
 
 ## 6.47.0
 Tue, 07 Aug 2018 10:22:32 GMT

@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Dropdown: use item text for title if title is not provided",
+      "comment": "Checkbox: Now aligns to spec when text wraps to multiple lines (#5816).",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "natalie.ethell@microsoft.com"
+  "email": "cliff.koh@microsoft.com"
 }

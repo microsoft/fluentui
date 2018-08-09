@@ -1,6 +1,18 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Tue, 07 Aug 2018 10:22:32 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Aug 2018 10:25:07 GMT and should not be manually modified.
+
+## 0.13.0
+Wed, 08 Aug 2018 10:25:07 GMT
+
+### Minor changes
+
+- Adding multiple line chart to charting package. Consuming the multiple line chart in the dashboard Card.
+
+### Patches
+
+- Fix bad imports that break AMD.
+- Update Auto-FontSize package to 1.0.9
 
 ## 0.12.0
 Tue, 07 Aug 2018 10:22:32 GMT
