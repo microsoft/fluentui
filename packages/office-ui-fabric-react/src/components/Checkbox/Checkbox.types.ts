@@ -128,6 +128,7 @@ export interface ICheckboxStyleProps {
   disabled?: boolean;
   checked?: boolean;
   reversed?: boolean;
+  isUsingCustomLabelRender: boolean;
 }
 
 export interface ICheckboxStyles {

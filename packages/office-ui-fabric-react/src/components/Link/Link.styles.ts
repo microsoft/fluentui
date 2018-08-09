@@ -20,7 +20,7 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
   return {
     root: [
       classNames.root,
-      getFocusStyle(theme),
+      getFocusStyle(theme, -2),
       {
         color: semanticColors.link
       },

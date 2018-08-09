@@ -2,6 +2,30 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.47.2",
+      "tag": "office-ui-fabric-react_v6.47.2",
+      "date": "Thu, 09 Aug 2018 10:31:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "6789c7581c39f6cf78803aa1f2dc5e30f2958664",
+            "comment": "Checkbox: Now aligns to spec when text wraps to multiple lines (#5816)."
+          },
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "e675d585788e570866234fb1dcd66b786f54ccfc",
+            "comment": "ChoiceGroup: Set data-is-focusable attribute so that FocusTrapZone can detect correct focusable elements"
+          },
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "31c385a4a22a157e456a6fd7e1dd3cd3115652ab",
+            "comment": "DetailsList: Fix all examples by disabling row renderer optimization."
+          }
+        ]
+      }
+    },
+    {
       "version": "6.47.1",
       "tag": "office-ui-fabric-react_v6.47.1",
       "date": "Wed, 08 Aug 2018 10:25:08 GMT",
