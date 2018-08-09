@@ -102,6 +102,8 @@ describe('CommandBar', () => {
   });
 
   it('passes event and item to button onClick callbacks', () => {
+    let testValue: IContextualMenuItem | undefined;
+
     const itemData: IContextualMenuItem = {
       text: 'TestText 1',
       key: 'TestKey1',
@@ -114,7 +116,6 @@ describe('CommandBar', () => {
       }
     };
 
-    let testValue: IContextualMenuItem | undefined;
     const commandBar = mount(<CommandBar items={[itemData]} />);
 
     const menuItem = commandBar.find('.MenuItem button');
