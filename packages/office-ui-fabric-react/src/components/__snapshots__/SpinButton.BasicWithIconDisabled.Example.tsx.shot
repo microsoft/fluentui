@@ -191,7 +191,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
           aria-disabled={true}
           aria-label={undefined}
           aria-labelledby={undefined}
-          aria-pressed={false}
+          aria-pressed={undefined}
           checked={false}
           className=
               ms-Button
@@ -318,7 +318,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
           aria-disabled={true}
           aria-label={undefined}
           aria-labelledby={undefined}
-          aria-pressed={false}
+          aria-pressed={undefined}
           checked={false}
           className=
               ms-Button

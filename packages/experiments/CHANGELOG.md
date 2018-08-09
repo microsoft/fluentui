@@ -1,6 +1,15 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 06 Aug 2018 10:27:53 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Aug 2018 10:25:07 GMT and should not be manually modified.
+
+## 6.22.6
+Wed, 08 Aug 2018 10:25:07 GMT
+
+### Patches
+
+- Fix bad imports that break AMD.
+- Implement base state class and controlled vs. uncontrolled behavior.
+- Stack: merge the className of a StackItem with the className of its first child
 
 ## 6.22.5
 Mon, 06 Aug 2018 10:27:53 GMT

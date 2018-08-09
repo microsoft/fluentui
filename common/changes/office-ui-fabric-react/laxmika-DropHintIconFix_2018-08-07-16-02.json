@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add Modal component to index entry file.",
+      "comment": "Changing the drophint ICON",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "lianhu@microsoft.com"
+  "email": "laxmika@microsoft.com"
 }

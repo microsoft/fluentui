@@ -526,7 +526,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
         role="option"
         aria-selected={isItemSelected ? 'true' : 'false'}
         ariaLabel={item.ariaLabel || item.text}
-        title={item.title}
+        title={item.title ? item.title : item.text}
       >
         {onRenderOption(item, this._onRenderOption)}
       </CommandButton>
@@ -544,7 +544,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
           onMouseMove: this._onItemMouseMove.bind(this, item)
         }}
         label={item.text}
-        title={item.title}
+        title={item.title ? item.title : item.text}
         onRenderLabel={this._onRenderLabel.bind(this, item)}
         className={itemClassName}
         role="option"

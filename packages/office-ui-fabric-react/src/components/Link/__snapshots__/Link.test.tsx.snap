@@ -16,13 +16,13 @@ exports[`Link renders Link correctly 1`] = `
       }
       .ms-Fabric--isFocusVisible &:focus:after {
         border: 1px solid #ffffff;
-        bottom: 1px;
+        bottom: -1px;
         content: "";
-        left: 1px;
+        left: -1px;
         outline: 1px solid #666666;
         position: absolute;
-        right: 1px;
-        top: 1px;
+        right: -1px;
+        top: -1px;
         z-index: 1;
       }
       &:active, &:hover, &:active:hover {
@@ -77,13 +77,13 @@ exports[`Link renders Link with "as=div" a div element 1`] = `
       }
       .ms-Fabric--isFocusVisible &:focus:after {
         border: 1px solid #ffffff;
-        bottom: 1px;
+        bottom: -1px;
         content: "";
-        left: 1px;
+        left: -1px;
         outline: 1px solid #666666;
         position: absolute;
-        right: 1px;
-        top: 1px;
+        right: -1px;
+        top: -1px;
         z-index: 1;
       }
       @media screen and (-ms-high-contrast: white-on-black){& {
@@ -128,13 +128,13 @@ exports[`Link renders Link with a custom class name 1`] = `
       }
       .ms-Fabric--isFocusVisible &:focus:after {
         border: 1px solid #ffffff;
-        bottom: 1px;
+        bottom: -1px;
         content: "";
-        left: 1px;
+        left: -1px;
         outline: 1px solid #666666;
         position: absolute;
-        right: 1px;
-        top: 1px;
+        right: -1px;
+        top: -1px;
         z-index: 1;
       }
       &:active, &:hover, &:active:hover {
@@ -188,13 +188,13 @@ exports[`Link renders Link with no href as a button 1`] = `
       }
       .ms-Fabric--isFocusVisible &:focus:after {
         border: 1px solid #ffffff;
-        bottom: 1px;
+        bottom: -1px;
         content: "";
-        left: 1px;
+        left: -1px;
         outline: 1px solid #666666;
         position: absolute;
-        right: 1px;
-        top: 1px;
+        right: -1px;
+        top: -1px;
         z-index: 1;
       }
       @media screen and (-ms-high-contrast: white-on-black){& {
@@ -240,13 +240,13 @@ exports[`Link renders disabled Link correctly 1`] = `
       }
       .ms-Fabric--isFocusVisible &:focus:after {
         border: 1px solid #ffffff;
-        bottom: 1px;
+        bottom: -1px;
         content: "";
-        left: 1px;
+        left: -1px;
         outline: 1px solid #666666;
         position: absolute;
-        right: 1px;
-        top: 1px;
+        right: -1px;
+        top: -1px;
         z-index: 1;
       }
       &:link, &:visited {
@@ -295,13 +295,13 @@ exports[`Link renders disabled Link with no href as a button correctly 1`] = `
       }
       .ms-Fabric--isFocusVisible &:focus:after {
         border: 1px solid #ffffff;
-        bottom: 1px;
+        bottom: -1px;
         content: "";
-        left: 1px;
+        left: -1px;
         outline: 1px solid #666666;
         position: absolute;
-        right: 1px;
-        top: 1px;
+        right: -1px;
+        top: -1px;
         z-index: 1;
       }
       @media screen and (-ms-high-contrast: white-on-black){& {
@@ -359,13 +359,13 @@ exports[`Link supports non button/anchor html attributes when "as=" is used 1`] 
       }
       .ms-Fabric--isFocusVisible &:focus:after {
         border: 1px solid #ffffff;
-        bottom: 1px;
+        bottom: -1px;
         content: "";
-        left: 1px;
+        left: -1px;
         outline: 1px solid #666666;
         position: absolute;
-        right: 1px;
-        top: 1px;
+        right: -1px;
+        top: -1px;
         z-index: 1;
       }
       @media screen and (-ms-high-contrast: white-on-black){& {

@@ -67,7 +67,8 @@ export class CheckboxBase extends BaseComponent<ICheckboxProps, ICheckboxState> 
       checkmarkIconProps,
       ariaPositionInSet,
       ariaSetSize,
-      keytipProps
+      keytipProps,
+      title
     } = this.props;
 
     const isChecked = checked === undefined ? this.state.isChecked : checked;
@@ -78,7 +79,8 @@ export class CheckboxBase extends BaseComponent<ICheckboxProps, ICheckboxState> 
       className,
       disabled,
       checked: isChecked,
-      reversed: isReversed
+      reversed: isReversed,
+      isUsingCustomLabelRender: onRenderLabel !== this._onRenderLabel
     });
 
     return (
@@ -95,6 +97,7 @@ export class CheckboxBase extends BaseComponent<ICheckboxProps, ICheckboxState> 
             id={this._id}
             role="checkbox"
             type="button"
+            title={title}
             className={this._classNames.root}
             onClick={this._onClick}
             onFocus={this._onFocus}
