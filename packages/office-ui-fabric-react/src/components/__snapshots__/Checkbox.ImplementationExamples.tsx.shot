@@ -78,13 +78,14 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
     onClick={[Function]}
     onFocus={[Function]}
     role="checkbox"
+    title={undefined}
     type="button"
   >
     <label
       className=
           ms-Checkbox-label
           {
-            align-items: center;
+            align-items: flex-start;
             cursor: pointer;
             display: flex;
             margin-bottom: 0;
@@ -153,6 +154,7 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
             {
               color: #333333;
               font-size: 14px;
+              line-height: 20px;
               margin-bottom: 0;
               margin-left: 4px;
               margin-right: 4px;
@@ -255,13 +257,14 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
     onClick={[Function]}
     onFocus={[Function]}
     role="checkbox"
+    title={undefined}
     type="button"
   >
     <label
       className=
           ms-Checkbox-label
           {
-            align-items: center;
+            align-items: flex-start;
             cursor: pointer;
             display: flex;
             margin-bottom: 0;
@@ -335,6 +338,7 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
             {
               color: #333333;
               font-size: 14px;
+              line-height: 20px;
               margin-bottom: 0;
               margin-left: 4px;
               margin-right: 4px;
@@ -399,13 +403,14 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
     onClick={[Function]}
     onFocus={[Function]}
     role="checkbox"
+    title={undefined}
     type="button"
   >
     <label
       className=
           ms-Checkbox-label
           {
-            align-items: center;
+            align-items: flex-start;
             cursor: default;
             display: flex;
             margin-bottom: 0;
@@ -474,6 +479,7 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
             {
               color: #a6a6a6;
               font-size: 14px;
+              line-height: 20px;
               margin-bottom: 0;
               margin-left: 4px;
               margin-right: 4px;
@@ -540,13 +546,14 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
     onClick={[Function]}
     onFocus={[Function]}
     role="checkbox"
+    title={undefined}
     type="button"
   >
     <label
       className=
           ms-Checkbox-label
           {
-            align-items: center;
+            align-items: flex-start;
             cursor: default;
             display: flex;
             margin-bottom: 0;
@@ -616,6 +623,7 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
             {
               color: #a6a6a6;
               font-size: 14px;
+              line-height: 20px;
               margin-bottom: 0;
               margin-left: 4px;
               margin-right: 4px;
@@ -703,13 +711,14 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
     onClick={[Function]}
     onFocus={[Function]}
     role="checkbox"
+    title={undefined}
     type="button"
   >
     <label
       className=
           ms-Checkbox-label
           {
-            align-items: center;
+            align-items: flex-start;
             cursor: pointer;
             display: flex;
             margin-bottom: 0;
@@ -778,6 +787,7 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
             {
               color: #333333;
               font-size: 14px;
+              line-height: 20px;
               margin-bottom: 0;
               margin-left: 4px;
               margin-right: 4px;
@@ -865,13 +875,14 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
     onClick={[Function]}
     onFocus={[Function]}
     role="checkbox"
+    title={undefined}
     type="button"
   >
     <label
       className=
           ms-Checkbox-label
           {
-            align-items: center;
+            align-items: flex-start;
             cursor: pointer;
             display: flex;
             flex-direction: row-reverse;
@@ -942,6 +953,7 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
             {
               color: #333333;
               font-size: 14px;
+              line-height: 20px;
               margin-bottom: 0;
               margin-left: 4px;
               margin-right: 4px;
@@ -1028,6 +1040,7 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
     onClick={[Function]}
     onFocus={[Function]}
     role="checkbox"
+    title={undefined}
     type="button"
   >
     <label

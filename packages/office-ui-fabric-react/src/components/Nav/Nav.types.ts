@@ -134,7 +134,8 @@ export interface INavLink {
   url: string;
 
   /**
-   * Meta info for the link server, if negative, client side added node.
+   * Unique, stable key for the link, used when rendering the list of links and for tracking
+   * the currently selected link.
    */
   key?: string;
 
@@ -150,7 +151,7 @@ export interface INavLink {
   onClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
 
   /**
-   * button icon name if applied
+   * Name of an icon to render next to the link button.
    */
   icon?: string;
 
@@ -161,7 +162,7 @@ export interface INavLink {
   iconClassName?: string;
 
   /**
-   * button icon props if applied
+   * Props for an icon to render next to the link button.
    */
   iconProps?: IIconProps;
 
@@ -193,7 +194,7 @@ export interface INavLink {
   ariaLabel?: string;
 
   /**
-   * title for tooltip or description
+   * Text for title tooltip and ARIA description.
    */
   title?: string;
 
@@ -203,8 +204,7 @@ export interface INavLink {
   target?: string;
 
   /**
-   * Point to the parent node key.  This is used in EditNav when move node from sublink to
-   *   parent link vs vers.
+   * @deprecated Not used in the Nav control or anywhere else in office-ui-fabric-react.
    */
   parentId?: string;
 

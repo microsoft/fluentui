@@ -136,7 +136,7 @@ export const AppDefinition: IAppDefinition = {
         {
           component: require<any>('./components/pages/DetailsList/DetailsListCustomFooterPage')
             .DetailsListCustomFooterPage,
-          key: 'DetailsList',
+          key: 'DetailsList - CustomFooter',
           name: 'DetailsList - CustomFooter',
           url: '#/examples/detailslist/CustomFooter'
         },

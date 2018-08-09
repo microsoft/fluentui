@@ -1,45 +1,40 @@
-import * as React from 'react';
-import { ICollapsibleSectionProps, ICollapsibleSectionViewProps } from './CollapsibleSection.types';
 import { createRef } from 'office-ui-fabric-react';
-import { IStateComponentProps } from '../../Foundation';
-import { BaseComponent, getRTL, KeyCodes } from '../../Utilities';
+import { ICollapsibleSectionProps, ICollapsibleSectionViewProps } from './CollapsibleSection.types';
+import { BaseStateComponent, IBaseStateComponentProps, IStateTransforms } from '../../utilities/BaseState';
+import { getRTL, KeyCodes } from '../../Utilities';
 
-export interface ICollapsibleSectionState {
-  collapsed: boolean;
-}
-
-// TODO: Reduce the amount of types needed as much as possible. Some ideas include having state and view components
-//        extend or inherit createComponent constructs that automatically apply the correct characteristcs. For now,
-//        these types are explicitly defined below.
-export type ICollapsibleSectionStateProps = IStateComponentProps<
+export type ICollapsibleSectionStateProps = IBaseStateComponentProps<
   ICollapsibleSectionProps,
   ICollapsibleSectionViewProps
 >;
 
-export class CollapsibleSectionState extends BaseComponent<ICollapsibleSectionStateProps, ICollapsibleSectionState> {
-  public static defaultProps: Partial<ICollapsibleSectionStateProps> = {
-    defaultCollapsed: true
-  };
+const CollapsibleSectionStateTransforms: IStateTransforms<ICollapsibleSectionProps, ICollapsibleSectionViewProps> = [
+  {
+    transform: 'toggle',
+    prop: 'collapsed',
+    defaultValueProp: 'defaultCollapsed',
+    defaultValue: true,
+    onInput: 'onToggleCollapse'
+  }
+];
 
+export class CollapsibleSectionState extends BaseStateComponent<
+  ICollapsibleSectionProps,
+  ICollapsibleSectionViewProps
+> {
   private _titleElement = createRef<HTMLElement>();
 
-  constructor(props: ICollapsibleSectionStateProps) {
-    super(props);
-
-    this.state = { collapsed: props.defaultCollapsed! };
+  constructor(props: IBaseStateComponentProps<ICollapsibleSectionProps, ICollapsibleSectionViewProps>) {
+    super(props, CollapsibleSectionStateTransforms);
   }
 
   public render(): JSX.Element {
-    const { collapsed = this.state.collapsed } = this.props;
-
-    // TODO: check React 16 deriveStateFromProps
-    const viewProps: ICollapsibleSectionViewProps = {
-      collapsed,
+    const viewProps = {
+      ...this.getTransformProps(),
       titleElementRef: this._titleElement,
-      onToggleCollapse: this._onToggleCollapse,
       onKeyDown: this._onKeyDown,
       onRootKeyDown: this._onRootKeyDown
-    };
+    } as ICollapsibleSectionViewProps;
 
     return this.props.renderView(viewProps);
   }
@@ -48,8 +43,8 @@ export class CollapsibleSectionState extends BaseComponent<ICollapsibleSectionSt
     const rootKey = getRTL() ? KeyCodes.right : KeyCodes.left;
     switch (ev.which) {
       case rootKey:
-        if (ev.target !== this._titleElement.value && this._titleElement.value) {
-          this._titleElement.value.focus();
+        if (this._titleElement && this._titleElement.current && ev.target !== this._titleElement.current) {
+          this._titleElement.current.focus();
           ev.preventDefault();
           ev.stopPropagation();
         }
@@ -57,13 +52,6 @@ export class CollapsibleSectionState extends BaseComponent<ICollapsibleSectionSt
 
       default:
         break;
-    }
-  };
-
-  private _onToggleCollapse = () => {
-    this.setState((state: ICollapsibleSectionState) => ({ collapsed: !state.collapsed }));
-    if (this.props.titleProps && this.props.titleProps.onToggleCollapse) {
-      this.props.titleProps.onToggleCollapse();
     }
   };
 
@@ -75,14 +63,16 @@ export class CollapsibleSectionState extends BaseComponent<ICollapsibleSectionSt
     switch (ev.which) {
       case collapseKey:
         if (!collapsed) {
-          this.setState({ collapsed: true });
+          const onToggleCollapse = this.getTransformProps().onToggleCollapse;
+          onToggleCollapse && onToggleCollapse();
           break;
         }
         return;
 
       case expandKey:
         if (collapsed) {
-          this.setState({ collapsed: false });
+          const onToggleCollapse = this.getTransformProps().onToggleCollapse;
+          onToggleCollapse && onToggleCollapse();
           break;
         }
         return;

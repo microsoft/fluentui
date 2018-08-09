@@ -21,7 +21,8 @@ export const getStyles = (props: IHorizontalBarChartStyleProps): IHorizontalBarC
       {
         padding: chartPadding,
         width: chartWidth,
-        height: chartHeight
+        height: chartHeight,
+        boxSizing: 'content-box'
       }
     ],
     chartLabel: [

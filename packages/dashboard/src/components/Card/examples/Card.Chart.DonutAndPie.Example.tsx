@@ -35,7 +35,7 @@ export class DonutAndPieChartExample extends React.Component<{}, {}> {
         content: {
           chartLabel: 'Donut Chart',
           chartType: ChartType.DonutChart,
-          data: points,
+          dataPoints: points,
           colors: colors
         }
       },
@@ -45,7 +45,7 @@ export class DonutAndPieChartExample extends React.Component<{}, {}> {
         content: {
           chartLabel: 'Pie Chart',
           chartType: ChartType.PieChart,
-          data: points,
+          dataPoints: points,
           colors: colors
         }
       }
