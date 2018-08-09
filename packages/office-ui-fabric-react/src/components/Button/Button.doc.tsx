@@ -13,6 +13,8 @@ import { ButtonSplitExample, ButtonSplitCustomExample } from './examples/Button.
 import { IDocPageProps, ChecklistStatus } from '../../common/DocPage.types';
 export { ChecklistStatus };
 
+import { CommandBarButtonCustomizerExample } from './examples/CommandBarButtonCustomizer.Example';
+
 const ButtonDefaultExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Default.Example.tsx') as string;
 const ButtonCompoundExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Compound.Example.tsx') as string;
 const ButtonActionExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Action.Example.tsx') as string;
@@ -39,6 +41,11 @@ export const ButtonPageProps = (props: IButtonDocPageProps): IDocPageProps => ({
   componentUrl:
     'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Button',
   examples: [
+    {
+      title: 'CommandBar Button Customizer Example',
+      code: '',
+      view: <CommandBarButtonCustomizerExample />
+    },
     {
       title: 'Default Button',
       code: ButtonDefaultExampleCode,
