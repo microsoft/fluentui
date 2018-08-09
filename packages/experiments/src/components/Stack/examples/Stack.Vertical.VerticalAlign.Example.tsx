@@ -28,7 +28,7 @@ export class StackVerticalAlignExample extends React.Component<IStackVerticalExa
 
     return (
       <VerticalStack gap={5}>
-        <Text>Top-aligned</Text>
+        <Text size="xSmall">Top-aligned</Text>
         <div className={expandedHeightStyle}>
           <VerticalStack verticalAlign="top" fillVertical padding={padding} className={style}>
             <Text size="tiny">Item One</Text>
@@ -37,7 +37,7 @@ export class StackVerticalAlignExample extends React.Component<IStackVerticalExa
           </VerticalStack>
         </div>
 
-        <Text>Vertically centered</Text>
+        <Text size="xSmall">Vertically centered</Text>
         <div className={expandedHeightStyle}>
           <VerticalStack verticalAlign="center" fillVertical padding={padding} className={style}>
             <Text size="tiny">Item One</Text>
@@ -46,7 +46,7 @@ export class StackVerticalAlignExample extends React.Component<IStackVerticalExa
           </VerticalStack>
         </div>
 
-        <Text>Bottom-aligned</Text>
+        <Text size="xSmall">Bottom-aligned</Text>
         <div className={expandedHeightStyle}>
           <VerticalStack verticalAlign="bottom" fillVertical padding={padding} className={style}>
             <Text size="tiny">Item One</Text>
@@ -55,7 +55,7 @@ export class StackVerticalAlignExample extends React.Component<IStackVerticalExa
           </VerticalStack>
         </div>
 
-        <Text>Vertical space around items</Text>
+        <Text size="xSmall">Vertical space around items</Text>
         <div className={expandedHeightStyle}>
           <VerticalStack verticalAlign="space-around" fillVertical padding={padding} className={style}>
             <Text size="tiny">Item One</Text>
@@ -64,7 +64,7 @@ export class StackVerticalAlignExample extends React.Component<IStackVerticalExa
           </VerticalStack>
         </div>
 
-        <Text>Vertical space between items</Text>
+        <Text size="xSmall">Vertical space between items</Text>
         <div className={expandedHeightStyle}>
           <VerticalStack verticalAlign="space-between" fillVertical padding={padding} className={style}>
             <Text size="tiny">Item One</Text>
@@ -73,7 +73,7 @@ export class StackVerticalAlignExample extends React.Component<IStackVerticalExa
           </VerticalStack>
         </div>
 
-        <Text>Items vertically evenly spaced</Text>
+        <Text size="xSmall">Items vertically evenly spaced</Text>
         <div className={expandedHeightStyle}>
           <VerticalStack verticalAlign="space-evenly" fillVertical padding={padding} className={style}>
             <Text size="tiny">Item One</Text>

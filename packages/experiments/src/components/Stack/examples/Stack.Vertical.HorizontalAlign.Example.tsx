@@ -24,21 +24,21 @@ export class StackVerticalHorizontalAlignExample extends React.Component<IStackE
 
     return (
       <VerticalStack gap={5}>
-        <Text>Left-aligned</Text>
+        <Text size="xSmall">Left-aligned</Text>
         <VerticalStack horizontalAlign="left" padding={padding} className={style}>
           <Text size="tiny">Item One</Text>
           <Text size="tiny">Item Two</Text>
           <Text size="tiny">Item Three</Text>
         </VerticalStack>
 
-        <Text>Horizontally centered</Text>
+        <Text size="xSmall">Horizontally centered</Text>
         <VerticalStack horizontalAlign="center" padding={padding} className={style}>
           <Text size="tiny">Item One</Text>
           <Text size="tiny">Item Two</Text>
           <Text size="tiny">Item Three</Text>
         </VerticalStack>
 
-        <Text>Right-aligned</Text>
+        <Text size="xSmall">Right-aligned</Text>
         <VerticalStack horizontalAlign="right" padding={padding} className={style}>
           <Text size="tiny">Item One</Text>
           <Text size="tiny">Item Two</Text>

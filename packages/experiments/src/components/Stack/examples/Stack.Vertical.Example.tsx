@@ -48,21 +48,21 @@ export class StackVerticalExample extends React.Component<IStackExampleProps, IS
 
     return (
       <VerticalStack gap={5}>
-        <Text>Default vertical stack</Text>
+        <Text size="xSmall">Default vertical stack</Text>
         <VerticalStack padding={padding} className={style}>
           <Text size="tiny">Item One</Text>
           <Text size="tiny">Item Two</Text>
           <Text size="tiny">Item Three</Text>
         </VerticalStack>
 
-        <Text>Vertical gap between items</Text>
+        <Text size="xSmall">Vertical gap between items</Text>
         <VerticalStack gap={10} padding={padding} className={style}>
           <Text size="tiny">Item One</Text>
           <Text size="tiny">Item Two</Text>
           <Text size="tiny">Item Three</Text>
         </VerticalStack>
 
-        <Text>Growing items</Text>
+        <Text size="xSmall">Growing items</Text>
         <div className={expandedHeightStyle}>
           <VerticalStack fillVertical gap={5} padding={padding} className={style}>
             <VerticalStack.Item grow={3} className={itemStyle}>
@@ -74,7 +74,7 @@ export class StackVerticalExample extends React.Component<IStackExampleProps, IS
           </VerticalStack>
         </div>
 
-        <Text>Shrinking items</Text>
+        <Text size="xSmall">Shrinking items</Text>
         <Slider
           label="Change the container height to see how its items shrink:"
           min={1}
@@ -101,7 +101,7 @@ export class StackVerticalExample extends React.Component<IStackExampleProps, IS
           </VerticalStack>
         </div>
 
-        <Text>Item alignments</Text>
+        <Text size="xSmall">Item alignments</Text>
         <VerticalStack gap={5} padding={padding} className={style}>
           <VerticalStack.Item align="auto" className={itemStyle}>
             <Text size="tiny">Auto-aligned item</Text>

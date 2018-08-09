@@ -28,7 +28,7 @@ export class StackHorizontalVerticalAlignExample extends React.Component<IStackE
 
     return (
       <VerticalStack gap={5}>
-        <Text>Top-aligned</Text>
+        <Text size="xSmall">Top-aligned</Text>
         <div className={expandedHeightStyle}>
           <HorizontalStack verticalAlign="top" fillVertical gap={10} padding={padding} className={style}>
             <Text size="tiny">Item One</Text>
@@ -37,7 +37,7 @@ export class StackHorizontalVerticalAlignExample extends React.Component<IStackE
           </HorizontalStack>
         </div>
 
-        <Text>Vertically centered</Text>
+        <Text size="xSmall">Vertically centered</Text>
         <div className={expandedHeightStyle}>
           <HorizontalStack verticalAlign="center" fillVertical gap={10} padding={padding} className={style}>
             <Text size="tiny">Item One</Text>
@@ -46,7 +46,7 @@ export class StackHorizontalVerticalAlignExample extends React.Component<IStackE
           </HorizontalStack>
         </div>
 
-        <Text>Bottom-aligned</Text>
+        <Text size="xSmall">Bottom-aligned</Text>
         <div className={expandedHeightStyle}>
           <HorizontalStack verticalAlign="bottom" fillVertical gap={10} padding={padding} className={style}>
             <Text size="tiny">Item One</Text>

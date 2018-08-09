@@ -42,21 +42,21 @@ export class StackHorizontalExample extends React.Component<IStackExampleProps, 
 
     return (
       <VerticalStack gap={5}>
-        <Text>Default horizontal stack</Text>
+        <Text size="xSmall">Default horizontal stack</Text>
         <HorizontalStack padding={padding} className={style}>
           <Text size="tiny">Item One</Text>
           <Text size="tiny">Item Two</Text>
           <Text size="tiny">Item Three</Text>
         </HorizontalStack>
 
-        <Text>Horizontal gap between items</Text>
+        <Text size="xSmall">Horizontal gap between items</Text>
         <HorizontalStack gap={10} padding={padding} className={style}>
           <Text size="tiny">Item One</Text>
           <Text size="tiny">Item Two</Text>
           <Text size="tiny">Item Three</Text>
         </HorizontalStack>
 
-        <Text>Growing items</Text>
+        <Text size="xSmall">Growing items</Text>
         <HorizontalStack gap={5} padding={padding} className={style}>
           <HorizontalStack.Item grow={3} className={itemStyle}>
             <Text size="tiny">Grow is 3</Text>
@@ -66,7 +66,7 @@ export class StackHorizontalExample extends React.Component<IStackExampleProps, 
           </HorizontalStack.Item>
         </HorizontalStack>
 
-        <Text>Shrinking items</Text>
+        <Text size="xSmall">Shrinking items</Text>
         <Slider
           label="Change the container width to see how its items shrink:"
           min={1}
@@ -91,7 +91,7 @@ export class StackHorizontalExample extends React.Component<IStackExampleProps, 
           </HorizontalStack.Item>
         </HorizontalStack>
 
-        <Text>Item alignments</Text>
+        <Text size="xSmall">Item alignments</Text>
         <div className={mergeStyles({ height: 100 })}>
           <HorizontalStack fillVertical gap={5} padding={padding} className={style}>
             <HorizontalStack.Item align="auto" className={itemStyle}>
