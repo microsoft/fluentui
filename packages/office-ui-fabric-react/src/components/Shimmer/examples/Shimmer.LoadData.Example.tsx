@@ -28,37 +28,37 @@ export class ShimmerLoadDataExample extends React.Component<{}, IShimmerLoadData
     const { isDataLoadedOne, isDataLoadedTwo, contentOne, examplePersona } = this.state;
 
     return (
-      <div className={ShimmerExampleStyles.shimmerExampleContainer}>
+      <div className={ ShimmerExampleStyles.shimmerExampleContainer }>
         <Toggle
-          checked={isDataLoadedOne}
-          onChanged={this._getContentOne}
-          onText="Toggle to show shimmer"
-          offText="Toggle to load content"
+          checked={ isDataLoadedOne }
+          onChanged={ this._getContentOne }
+          onText='Toggle to show shimmer'
+          offText='Toggle to load content'
         />
-        <Shimmer isDataLoaded={isDataLoadedOne} ariaLabel={'Loading content'}>
+        <Shimmer isDataLoaded={ isDataLoadedOne } ariaLabel={ 'Loading content' }>
           <div
             // tslint:disable-next-line:jsx-ban-props
-            style={{
+            style={ {
               overflow: 'hidden',
               textOverflow: 'ellipsis',
               whiteSpace: 'nowrap',
               lineHeight: '1',
               minHeight: '16px' // Default height of Shimmer when no elements being provided.
-            }}
+            } }
           >
-            {contentOne}
-            {contentOne}
-            {contentOne}
+            { contentOne }
+            { contentOne }
+            { contentOne }
           </div>
         </Shimmer>
         <Toggle
-          checked={isDataLoadedTwo}
-          onChanged={this._getContentTwo}
-          onText="Toggle to show shimmer"
-          offText="Toggle to load content"
+          checked={ isDataLoadedTwo }
+          onChanged={ this._getContentTwo }
+          onText='Toggle to show shimmer'
+          offText='Toggle to load content'
         />
-        <Shimmer customElementsGroup={this._getCustomElements()} width={300} isDataLoaded={isDataLoadedTwo}>
-          <Persona {...examplePersona} size={PersonaSize.size40} presence={PersonaPresence.away} />
+        <Shimmer customElementsGroup={ this._getCustomElements() } width={ 300 } isDataLoaded={ isDataLoadedTwo }>
+          <Persona { ...examplePersona } size={ PersonaSize.size40 } presence={ PersonaPresence.away } />
         </Shimmer>
       </div>
     );
@@ -70,7 +70,7 @@ export class ShimmerLoadDataExample extends React.Component<{}, IShimmerLoadData
       isDataLoadedOne: checked,
       contentOne: !isDataLoadedOne ? 'Congratulations!!! You have successfully loaded the content. ' : ''
     });
-  };
+  }
 
   private _getContentTwo = (checked: boolean): void => {
     const { isDataLoadedTwo } = this.state;
@@ -78,27 +78,27 @@ export class ShimmerLoadDataExample extends React.Component<{}, IShimmerLoadData
       isDataLoadedTwo: checked,
       examplePersona: !isDataLoadedTwo ? { ...PersonaDetails } : {}
     });
-  };
+  }
 
   private _getCustomElements = (): JSX.Element => {
     return (
       <div
         // tslint:disable-next-line:jsx-ban-props
-        style={{ display: 'flex' }}
+        style={ { display: 'flex' } }
       >
         <ShimmerElementsGroup
-          shimmerElements={[{ type: ElemType.circle, height: 40 }, { type: ElemType.gap, width: 16, height: 40 }]}
+          shimmerElements={ [{ type: ElemType.circle, height: 40 }, { type: ElemType.gap, width: 16, height: 40 }] }
         />
         <ShimmerElementsGroup
-          flexWrap={true}
-          width={'100%'}
-          shimmerElements={[
+          flexWrap={ true }
+          width={ '100%' }
+          shimmerElements={ [
             { type: ElemType.line, width: '100%', height: 10, verticalAlign: 'bottom' },
             { type: ElemType.line, width: '90%', height: 8 },
             { type: ElemType.gap, width: '10%', height: 20 }
-          ]}
+          ] }
         />
       </div>
     );
-  };
+  }
 }

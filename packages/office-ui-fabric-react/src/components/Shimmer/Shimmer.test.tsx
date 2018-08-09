@@ -3,19 +3,19 @@ import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 
 import { Shimmer } from './Shimmer';
-import { ShimmerElementType as ElemType } from './Shimmer.types';
+import { ShimmerElementType as ElemType, IShimmer } from './Shimmer.types';
 import { ShimmerElementsGroup } from './ShimmerElementsGroup/ShimmerElementsGroup';
 
 describe('Shimmer', () => {
   it('renders Shimmer correctly', () => {
     const component = renderer.create(
       <Shimmer
-        width={'50%'}
-        shimmerElements={[
+        width={ '50%' }
+        shimmerElements={ [
           { type: ElemType.circle, height: 30 },
           { type: ElemType.gap, width: '2%' },
           { type: ElemType.line, height: 20 }
-        ]}
+        ] }
       />
     );
     const tree = component.toJSON();
@@ -26,44 +26,47 @@ describe('Shimmer', () => {
     const customElements: JSX.Element = (
       <div
         // tslint:disable-next-line:jsx-ban-props
-        style={{ display: 'flex' }}
+        style={ { display: 'flex' } }
       >
         <ShimmerElementsGroup
-          shimmerElements={[
+          shimmerElements={ [
             { type: ElemType.line, width: 40, height: 40 },
             { type: ElemType.gap, width: 10, height: 40 }
-          ]}
+          ] }
         />
         <ShimmerElementsGroup
-          flexWrap={true}
-          shimmerElements={[
+          flexWrap={ true }
+          shimmerElements={ [
             { type: ElemType.line, width: 300, height: 10 },
             { type: ElemType.line, width: 200, height: 10 },
             { type: ElemType.gap, width: 100, height: 20 }
-          ]}
+          ] }
         />
       </div>
     );
 
-    const component = renderer.create(<Shimmer customElementsGroup={customElements} width={350} />);
+    const component = renderer.create(<Shimmer customElementsGroup={ customElements } width={ 350 } />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('removes Shimmer animation div when data is loaded', () => {
-    let component: any;
+    let shimmerComponent: any;
+    const setRef = (ref: IShimmer): void => {
+      shimmerComponent = ref;
+    };
     const shimmer = mount(
       <Shimmer
-        isDataLoaded={false}
-        ariaLabel={'Shimmer component'}
+        isDataLoaded={ false }
+        ariaLabel={ 'Shimmer component' }
         // tslint:disable-next-line:jsx-no-lambda
-        componentRef={ref => (component = ref)}
+        componentRef={ setRef }
       >
         <div>TEST DATA</div>
       </Shimmer>
     );
 
-    expect(component).toBeDefined();
+    expect(shimmerComponent).toBeDefined();
 
     // moved initialization of fake timers below the mount() as it caused and extra setTimeout call registered.
     jest.useFakeTimers();

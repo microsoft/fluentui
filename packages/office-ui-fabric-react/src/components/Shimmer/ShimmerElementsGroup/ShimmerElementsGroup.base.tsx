@@ -26,9 +26,9 @@ export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGrou
   }
 
   public render(): JSX.Element {
-    const { styles, width, shimmerElements, rowHeight, flexWrap, theme } = this.props;
+    const { getStyles, width, shimmerElements, rowHeight, flexWrap, theme } = this.props;
 
-    this._classNames = getClassNames(styles!, {
+    this._classNames = getClassNames(getStyles!, {
       theme: theme!,
       flexWrap
     });
@@ -37,8 +37,8 @@ export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGrou
 
     return (
       // tslint:disable-next-line:jsx-ban-props
-      <div style={{ width: width ? width : 'auto' }} className={this._classNames.root}>
-        {this._getRenderedElements(shimmerElements, height)}
+      <div style={ { width: width ? width : 'auto' } } className={ this._classNames.root }>
+        { this._getRenderedElements(shimmerElements, height) }
       </div>
     );
   }
@@ -51,21 +51,21 @@ export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGrou
           switch (elem.type) {
             case ShimmerElementType.circle:
               return (
-                <ShimmerCircle key={index} {...filteredElem} borderStyle={this._getBorderStyles(elem, rowHeight)} />
+                <ShimmerCircle key={ index } { ...filteredElem } borderStyle={ this._getBorderStyles(elem, rowHeight) } />
               );
             case ShimmerElementType.gap:
-              return <ShimmerGap key={index} {...filteredElem} borderStyle={this._getBorderStyles(elem, rowHeight)} />;
+              return <ShimmerGap key={ index } { ...filteredElem } borderStyle={ this._getBorderStyles(elem, rowHeight) } />;
             case ShimmerElementType.line:
-              return <ShimmerLine key={index} {...filteredElem} borderStyle={this._getBorderStyles(elem, rowHeight)} />;
+              return <ShimmerLine key={ index } { ...filteredElem } borderStyle={ this._getBorderStyles(elem, rowHeight) } />;
           }
         }
       )
     ) : (
-      <ShimmerLine height={ShimmerElementsDefaultHeights.line} />
-    );
+        <ShimmerLine height={ ShimmerElementsDefaultHeights.line } />
+      );
 
     return renderedElements;
-  };
+  }
 
   private _getBorderStyles = (elem: IShimmerElement, rowHeight?: number): IStyleSet | undefined => {
     const elemHeight: number | undefined = elem.height;
@@ -91,7 +91,7 @@ export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGrou
     }
 
     return borderStyle;
-  };
+  }
 
   /**
    * User should not worry to provide which of the elements is the highest, we do the calculation for him.
@@ -123,5 +123,5 @@ export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGrou
     }, 0);
 
     return rowHeight;
-  };
+  }
 }

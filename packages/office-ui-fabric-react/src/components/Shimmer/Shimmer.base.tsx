@@ -61,7 +61,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
 
   public render(): JSX.Element {
     const {
-      styles,
+      getStyles,
       shimmerElements,
       children,
       isDataLoaded,
@@ -74,7 +74,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
 
     const { contentLoaded } = this.state;
 
-    this._classNames = getClassNames(styles!, {
+    this._classNames = getClassNames(getStyles!, {
       theme: theme!,
       isDataLoaded,
       className,
@@ -84,21 +84,21 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
     const divProps = getNativeProps(this.props, divProperties);
 
     return (
-      <div {...divProps} className={this._classNames.root}>
-        {!contentLoaded && (
-          <div style={{ width: width ? width : '100%' }} className={this._classNames.shimmerWrapper}>
-            {customElementsGroup ? customElementsGroup : <ShimmerElementsGroup shimmerElements={shimmerElements} />}
+      <div { ...divProps } className={ this._classNames.root }>
+        { !contentLoaded && (
+          <div style={ { width: width ? width : '100%' } } className={ this._classNames.shimmerWrapper }>
+            { customElementsGroup ? customElementsGroup : <ShimmerElementsGroup shimmerElements={ shimmerElements } /> }
           </div>
-        )}
-        {children && <div className={this._classNames.dataWrapper}>{children}</div>}
-        {ariaLabel &&
+        ) }
+        { children && <div className={ this._classNames.dataWrapper }>{ children }</div> }
+        { ariaLabel &&
           !isDataLoaded && (
-            <div role="status" aria-live="polite">
+            <div role='status' aria-live='polite'>
               <DelayedRender>
-                <div className={this._classNames.screenReaderText}>{ariaLabel}</div>
+                <div className={ this._classNames.screenReaderText }>{ ariaLabel }</div>
               </DelayedRender>
             </div>
-          )}
+          ) }
       </div>
     );
   }

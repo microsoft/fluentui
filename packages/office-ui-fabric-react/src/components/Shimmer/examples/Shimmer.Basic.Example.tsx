@@ -11,17 +11,17 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
 
   public render(): JSX.Element {
     return (
-      <div className={ShimmerExampleStyles.shimmerExampleContainer}>
+      <div className={ ShimmerExampleStyles.shimmerExampleContainer }>
         Basic Shimmer with no elements provided. It defaults to a line of 16px height.
         <Shimmer />
-        <Shimmer width={'75%'} />
-        <Shimmer width={'50%'} />
+        <Shimmer width={ '75%' } />
+        <Shimmer width={ '50%' } />
         Basic Shimmer with elements provided.
         <Shimmer
-          shimmerElements={[{ type: ElemType.circle }, { type: ElemType.gap, width: '2%' }, { type: ElemType.line }]}
+          shimmerElements={ [{ type: ElemType.circle }, { type: ElemType.gap, width: '2%' }, { type: ElemType.line }] }
         />
         <Shimmer
-          shimmerElements={[
+          shimmerElements={ [
             { type: ElemType.circle, height: 24 },
             { type: ElemType.gap, width: '2%' },
             { type: ElemType.line, height: 16, width: '20%' },
@@ -31,11 +31,11 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
             { type: ElemType.line, height: 16, width: '15%' },
             { type: ElemType.gap, width: '10%' },
             { type: ElemType.line, height: 16 }
-          ]}
+          ] }
         />
         <Shimmer
-          width={'70%'}
-          shimmerElements={[
+          width={ '70%' }
+          shimmerElements={ [
             { type: ElemType.circle, height: 24 },
             { type: ElemType.gap, width: '2%' },
             { type: ElemType.line, height: 16, width: '20%' },
@@ -45,11 +45,11 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
             { type: ElemType.line, height: 16, width: '15%' },
             { type: ElemType.gap, width: '10%' },
             { type: ElemType.line, height: 16 }
-          ]}
+          ] }
         />
         Variations of vertical alignment for Circles and Lines.
         <Shimmer
-          shimmerElements={[
+          shimmerElements={ [
             { type: ElemType.circle },
             { type: ElemType.gap, width: '2%' },
             { type: ElemType.circle, height: 15, verticalAlign: 'top' },
@@ -61,7 +61,7 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
             { type: ElemType.line, height: 16, width: '15%' },
             { type: ElemType.gap, width: '2%' },
             { type: ElemType.line, height: 10, verticalAlign: 'bottom' }
-          ]}
+          ] }
         />
       </div>
     );

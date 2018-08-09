@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { IStyle, IStyleSet, ITheme } from '../../../Styling';
-import { IStyleFunctionOrObject } from '../../../Utilities';
+import { IStyleFunction } from '../../../Utilities';
 
-export interface IShimmerCircle {}
+export interface IShimmerCircle { }
 
 /**
  * ShimmerCircle component props.
@@ -33,7 +33,7 @@ export interface IShimmerCircleProps extends React.AllHTMLAttributes<HTMLElement
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: IStyleFunctionOrObject<IShimmerCircleStyleProps, IShimmerCircleStyles>;
+  getStyles?: IStyleFunction<IShimmerCircleStyleProps, IShimmerCircleStyles>;
 }
 
 export interface IShimmerCircleStyleProps {

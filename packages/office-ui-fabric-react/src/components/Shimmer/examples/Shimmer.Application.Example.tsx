@@ -93,30 +93,30 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
       <div>
         <div className={ShimmerExampleStyles.shimmerExampleFlexGroup}>
           <Toggle
-            label="Enable Modal Selection"
+            label='Enable Modal Selection'
             checked={isModalSelection}
             onChanged={this._onChangeModalSelection}
-            onText="Modal"
-            offText="Normal"
+            onText='Modal'
+            offText='Normal'
           />
           <Toggle
-            label="Enable Compact Mode"
+            label='Enable Compact Mode'
             checked={isCompactMode}
             onChanged={this._onChangeCompactMode}
-            onText="Compact"
-            offText="Normal"
+            onText='Compact'
+            offText='Normal'
           />
           <Toggle
-            label="Enable content loading"
+            label='Enable content loading'
             checked={isDataLoaded}
             onChanged={this._onLoadData}
-            onText="Content"
-            offText="Shimmer"
+            onText='Content'
+            offText='Shimmer'
           />
         </div>
         <div>
           <DetailsList
-            setKey="items"
+            setKey='items'
             items={items!}
             columns={columns}
             compact={isCompactMode}
@@ -138,7 +138,7 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
     const shimmerRow: JSX.Element = <DetailsRow {...rowProps} shimmer={true} />;
 
     return <Shimmer customElementsGroup={shimmerRow} />;
-  };
+  }
 
   // Simulating asynchronus data loading each 2.5 sec
   private _onDataMiss = (index: number): void => {
@@ -158,7 +158,7 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
         });
       }, PAGING_DELAY);
     }
-  };
+  }
 
   private _onLoadData = (checked: boolean): void => {
     if (!_items) {
@@ -180,15 +180,15 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
       isDataLoaded: checked,
       items: items
     });
-  };
+  }
 
   private _onChangeModalSelection = (checked: boolean): void => {
     this.setState({ isModalSelection: checked });
-  };
+  }
 
   private _onChangeCompactMode = (checked: boolean): void => {
     this.setState({ isCompactMode: checked });
-  };
+  }
 
   private _onRenderItemColumn = (item: IItem, index: number, column: IColumn): JSX.Element | string | number => {
     if (column.key === 'thumbnail') {
@@ -196,7 +196,7 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
     }
 
     return item[column.key];
-  };
+  }
 
   private _randomFileIcon(): { docType: string; url: string } {
     const docType: string = fileIcons[Math.floor(Math.random() * fileIcons.length) + 0].name;

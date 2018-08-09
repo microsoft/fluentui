@@ -13,9 +13,9 @@ export class ShimmerGapBase extends BaseComponent<IShimmerGapProps, {}> {
   }
 
   public render(): JSX.Element {
-    const { height, styles, width, borderStyle, theme } = this.props;
+    const { height, getStyles, width, borderStyle, theme } = this.props;
 
-    this._classNames = getClassNames(styles!, {
+    this._classNames = getClassNames(getStyles!, {
       theme: theme!,
       height,
       borderStyle
@@ -23,8 +23,8 @@ export class ShimmerGapBase extends BaseComponent<IShimmerGapProps, {}> {
 
     return (
       <div
-        style={{ width: width ? width : '10px', minWidth: typeof width === 'number' ? `${width}px` : 'auto' }}
-        className={this._classNames.root}
+        style={ { width: width ? width : '10px', minWidth: typeof width === 'number' ? `${width}px` : 'auto' } }
+        className={ this._classNames.root }
       />
     );
   }
