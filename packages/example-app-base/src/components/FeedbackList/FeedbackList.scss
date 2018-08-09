@@ -1,0 +1,23 @@
+:global {
+  .FeedbackList-pivot {
+    padding-top: 20px;
+  }
+
+  .FeedbackList-issueList {
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  .FeedbackList-button {
+    margin-bottom: 10px;
+  }
+
+  .FeedbackList-listElement {
+    font-size: 10pt;
+    font-weight: bold;
+  }
+
+  .FeedbackList-timeStamp {
+    font-size: 10pt;
+  }
+}

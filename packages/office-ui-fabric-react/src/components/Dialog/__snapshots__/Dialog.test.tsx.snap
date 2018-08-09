@@ -19,6 +19,7 @@ exports[`Dialog renders Dialog correctly 1`] = `
         }
   >
     <p
+      aria-level={2}
       className=
           ms-Dialog-title
           {

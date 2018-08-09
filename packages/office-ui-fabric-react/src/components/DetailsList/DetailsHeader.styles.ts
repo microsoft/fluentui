@@ -26,6 +26,7 @@ const GlobalClassNames = {
   cellSizer: 'ms-DetailsHeader-cellSizer',
   isResizing: 'is-resizing',
   dropHintCircleStyle: 'ms-DetailsHeader-dropHintCircleStyle',
+  dropHintCaretStyle: 'ms-DetailsHeader-dropHintCaretStyle',
   dropHintLineStyle: 'ms-DetailsHeader-dropHintLineStyle',
   cellTitle: 'ms-DetailsHeader-cellTitle',
   cellName: 'ms-DetailsHeader-cellName',
@@ -301,6 +302,21 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         zIndex: 10,
         border: `1px solid ${palette.themePrimary}`,
         background: palette.white
+      }
+    ],
+
+    dropHintCaretStyle: [
+      classNames.dropHintCaretStyle,
+      {
+        display: 'inline-block',
+        visibility: 'hidden',
+        position: 'absolute',
+        top: 22,
+        left: -7.5,
+        fontSize: 16,
+        color: palette.themePrimary,
+        overflow: 'visible',
+        zIndex: 10
       }
     ],
 
