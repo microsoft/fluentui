@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Checkbox: Now aligns to spec when text wraps to multiple lines (#5816).",
+      "comment": "Changing the drophint ICON",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "cliff.koh@microsoft.com"
+  "email": "laxmika@microsoft.com"
 }

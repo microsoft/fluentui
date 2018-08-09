@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsList: Fix all examples by disabling row renderer optimization.",
+      "comment": "Link: Fix focus border text clipping.",
       "type": "patch"
     }
   ],
