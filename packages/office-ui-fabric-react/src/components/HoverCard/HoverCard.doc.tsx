@@ -34,5 +34,6 @@ export const HoverCardPageProps: IDocPageProps = {
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/docs/HoverCardOverview.md'),
   isHeaderVisible: true,
+  isFeedbackVisible: true,
   allowNativeProps: true
 };
