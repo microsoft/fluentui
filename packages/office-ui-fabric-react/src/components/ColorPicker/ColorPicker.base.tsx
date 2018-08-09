@@ -138,7 +138,7 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
                     <TextField
                       className={classNames.input}
                       onBlur={this._onRGBAChanged}
-                      value={String(color.a ? color.a.toFixed(1) : color.a)}
+                      value={String(color.a ? color.a.toPrecision(3) : color.a)}
                       componentRef={this._aText}
                       spellCheck={false}
                       ariaLabel={this.props.alphaLabel}
