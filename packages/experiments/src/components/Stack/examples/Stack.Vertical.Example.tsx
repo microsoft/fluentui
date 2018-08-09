@@ -3,17 +3,17 @@ import { VerticalStack } from '@uifabric/experiments/lib/Stack';
 import { Text } from '@uifabric/experiments/lib/Text';
 import { ITheme, customizable, mergeStyles, Slider } from 'office-ui-fabric-react';
 
-export interface IStackVerticalExampleProps {
+export interface IStackExampleProps {
   theme?: ITheme;
 }
 
-export interface IStackVerticalExampleState {
+export interface IStackExampleState {
   shrinkingContainerHeight: number;
 }
 
 @customizable('StackVerticalExample', ['theme'])
-export class StackVerticalExample extends React.Component<IStackVerticalExampleProps, IStackVerticalExampleState> {
-  constructor(props: IStackVerticalExampleProps) {
+export class StackVerticalExample extends React.Component<IStackExampleProps, IStackExampleState> {
+  constructor(props: IStackExampleProps) {
     super(props);
     this.state = {
       shrinkingContainerHeight: 100
@@ -45,26 +45,21 @@ export class StackVerticalExample extends React.Component<IStackVerticalExampleP
       height: `${this.state.shrinkingContainerHeight}%`,
       overflow: 'hidden'
     });
-    const shrinkingItemStyle = mergeStyles({
-      height: 60,
-      border: `1px solid ${palette.neutralPrimary}`
-    });
-    const preventShrinkingStyle = mergeStyles(shrinkingItemStyle, {
-      flexShrink: 0
-    });
-
-    const items = this._renderItems();
 
     return (
       <VerticalStack gap={5}>
         <Text>Default vertical stack</Text>
         <VerticalStack padding={padding} className={style}>
-          {items}
+          <Text size="tiny">Item One</Text>
+          <Text size="tiny">Item Two</Text>
+          <Text size="tiny">Item Three</Text>
         </VerticalStack>
 
         <Text>Vertical gap between items</Text>
         <VerticalStack gap={10} padding={padding} className={style}>
-          {items}
+          <Text size="tiny">Item One</Text>
+          <Text size="tiny">Item Two</Text>
+          <Text size="tiny">Item Three</Text>
         </VerticalStack>
 
         <Text>Growing items</Text>
@@ -89,38 +84,46 @@ export class StackVerticalExample extends React.Component<IStackVerticalExampleP
           showValue={true}
           onChange={this._onSliderChange}
         />
-        <div className={mergeStyles({ height: 300 })}>
+        <div className={expandedHeightStyle}>
           <VerticalStack shrinkItems gap={5} padding={padding} className={shrinkingContainerStyle}>
-            <VerticalStack.Item className={shrinkingItemStyle}>
+            <VerticalStack.Item grow className={itemStyle}>
               <Text size="tiny">I shrink</Text>
             </VerticalStack.Item>
-            <VerticalStack.Item className={shrinkingItemStyle}>
+            <VerticalStack.Item grow className={itemStyle}>
               <Text size="tiny">I shrink</Text>
             </VerticalStack.Item>
-            <VerticalStack.Item className={preventShrinkingStyle}>
+            <VerticalStack.Item grow preventShrink className={mergeStyles(itemStyle, { height: 50 })}>
               <Text size="tiny">I don't shrink</Text>
             </VerticalStack.Item>
-            <VerticalStack.Item className={shrinkingItemStyle}>
+            <VerticalStack.Item grow className={itemStyle}>
               <Text size="tiny">I shrink</Text>
             </VerticalStack.Item>
           </VerticalStack>
         </div>
+
+        <Text>Item alignments</Text>
+        <VerticalStack gap={5} padding={padding} className={style}>
+          <VerticalStack.Item align="auto" className={itemStyle}>
+            <Text size="tiny">Auto-aligned item</Text>
+          </VerticalStack.Item>
+          <VerticalStack.Item align="stretch" className={itemStyle}>
+            <Text size="tiny">Stretch-aligned item</Text>
+          </VerticalStack.Item>
+          <VerticalStack.Item align="baseline" className={itemStyle}>
+            <Text size="tiny">Baseline-aligned item</Text>
+          </VerticalStack.Item>
+          <VerticalStack.Item align="start" className={itemStyle}>
+            <Text size="tiny">Start-aligned item</Text>
+          </VerticalStack.Item>
+          <VerticalStack.Item align="center" className={itemStyle}>
+            <Text size="tiny">Center-aligned item</Text>
+          </VerticalStack.Item>
+          <VerticalStack.Item align="end" className={itemStyle}>
+            <Text size="tiny">End-aligned item</Text>
+          </VerticalStack.Item>
+        </VerticalStack>
       </VerticalStack>
     );
-  }
-
-  private _renderItems(): JSX.Element[] {
-    return [
-      <Text size="tiny" key={1}>
-        Item One
-      </Text>,
-      <Text size="tiny" key={2}>
-        Item Two
-      </Text>,
-      <Text size="tiny" key={3}>
-        Item Three
-      </Text>
-    ];
   }
 
   private _onSliderChange(value: number): void {

@@ -3,16 +3,13 @@ import { VerticalStack } from '@uifabric/experiments/lib/Stack';
 import { Text } from '@uifabric/experiments/lib/Text';
 import { ITheme, customizable, mergeStyles } from 'office-ui-fabric-react';
 
-export interface IStackVerticalHorizontalAlignExampleProps {
+export interface IStackExampleProps {
   theme?: ITheme;
 }
 
 @customizable('StackVerticalHorizontalAlignExample', ['theme'])
-export class StackVerticalHorizontalAlignExample extends React.Component<
-  IStackVerticalHorizontalAlignExampleProps,
-  {}
-> {
-  constructor(props: IStackVerticalHorizontalAlignExampleProps) {
+export class StackVerticalHorizontalAlignExample extends React.Component<IStackExampleProps, {}> {
+  constructor(props: IStackExampleProps) {
     super(props);
   }
 
@@ -25,39 +22,29 @@ export class StackVerticalHorizontalAlignExample extends React.Component<
       background: palette.themeTertiary
     });
 
-    const items = this._renderItems();
-
     return (
       <VerticalStack gap={5}>
         <Text>Left-aligned</Text>
         <VerticalStack horizontalAlign="left" padding={padding} className={style}>
-          {items}
+          <Text size="tiny">Item One</Text>
+          <Text size="tiny">Item Two</Text>
+          <Text size="tiny">Item Three</Text>
         </VerticalStack>
 
         <Text>Horizontally centered</Text>
         <VerticalStack horizontalAlign="center" padding={padding} className={style}>
-          {items}
+          <Text size="tiny">Item One</Text>
+          <Text size="tiny">Item Two</Text>
+          <Text size="tiny">Item Three</Text>
         </VerticalStack>
 
         <Text>Right-aligned</Text>
         <VerticalStack horizontalAlign="right" padding={padding} className={style}>
-          {items}
+          <Text size="tiny">Item One</Text>
+          <Text size="tiny">Item Two</Text>
+          <Text size="tiny">Item Three</Text>
         </VerticalStack>
       </VerticalStack>
     );
-  }
-
-  private _renderItems(): JSX.Element[] {
-    return [
-      <Text size="tiny" key={1}>
-        Item One
-      </Text>,
-      <Text size="tiny" key={2}>
-        Item Two
-      </Text>,
-      <Text size="tiny" key={3}>
-        Item Three
-      </Text>
-    ];
   }
 }

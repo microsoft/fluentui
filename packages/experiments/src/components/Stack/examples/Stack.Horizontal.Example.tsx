@@ -3,20 +3,17 @@ import { HorizontalStack, VerticalStack } from '@uifabric/experiments/lib/Stack'
 import { Text } from '@uifabric/experiments/lib/Text';
 import { ITheme, customizable, mergeStyles, Slider } from 'office-ui-fabric-react';
 
-export interface IStackHorizontalExampleProps {
+export interface IStackExampleProps {
   theme?: ITheme;
 }
 
-export interface IStackHorizontalExampleState {
+export interface IStackExampleState {
   shrinkingContainerWidth: number;
 }
 
 @customizable('StackHorizontalExample', ['theme'])
-export class StackHorizontalExample extends React.Component<
-  IStackHorizontalExampleProps,
-  IStackHorizontalExampleState
-> {
-  constructor(props: IStackHorizontalExampleProps) {
+export class StackHorizontalExample extends React.Component<IStackExampleProps, IStackExampleState> {
+  constructor(props: IStackExampleProps) {
     super(props);
     this.state = {
       shrinkingContainerWidth: 100
@@ -42,26 +39,21 @@ export class StackHorizontalExample extends React.Component<
     const shrinkingContainerStyle = mergeStyles(style, {
       width: `${this.state.shrinkingContainerWidth}%`
     });
-    const shrinkingItemStyle = mergeStyles({
-      width: 500,
-      border: `1px solid ${palette.themePrimary}`
-    });
-    const preventShrinkingStyle = mergeStyles(shrinkingItemStyle, {
-      flexShrink: 0
-    });
-
-    const items = this._renderItems();
 
     return (
       <VerticalStack gap={5}>
         <Text>Default horizontal stack</Text>
         <HorizontalStack padding={padding} className={style}>
-          {items}
+          <Text size="tiny">Item One</Text>
+          <Text size="tiny">Item Two</Text>
+          <Text size="tiny">Item Three</Text>
         </HorizontalStack>
 
         <Text>Horizontal gap between items</Text>
         <HorizontalStack gap={10} padding={padding} className={style}>
-          {items}
+          <Text size="tiny">Item One</Text>
+          <Text size="tiny">Item Two</Text>
+          <Text size="tiny">Item Three</Text>
         </HorizontalStack>
 
         <Text>Growing items</Text>
@@ -84,36 +76,46 @@ export class StackHorizontalExample extends React.Component<
           showValue={true}
           onChange={this._onSliderChange}
         />
-        <HorizontalStack shrinkItems padding={padding} className={shrinkingContainerStyle}>
-          <HorizontalStack.Item className={shrinkingItemStyle}>
+        <HorizontalStack shrinkItems gap={5} padding={padding} className={shrinkingContainerStyle}>
+          <HorizontalStack.Item grow className={itemStyle}>
             <Text size="tiny">I shrink</Text>
           </HorizontalStack.Item>
-          <HorizontalStack.Item className={shrinkingItemStyle}>
+          <HorizontalStack.Item grow className={itemStyle}>
             <Text size="tiny">I shrink</Text>
           </HorizontalStack.Item>
-          <HorizontalStack.Item className={preventShrinkingStyle}>
+          <HorizontalStack.Item grow preventShrink className={mergeStyles(itemStyle, { width: 500 })}>
             <Text size="tiny">I don't shrink</Text>
           </HorizontalStack.Item>
-          <HorizontalStack.Item className={shrinkingItemStyle}>
+          <HorizontalStack.Item grow className={itemStyle}>
             <Text size="tiny">I shrink</Text>
           </HorizontalStack.Item>
         </HorizontalStack>
+
+        <Text>Item alignments</Text>
+        <div className={mergeStyles({ height: 100 })}>
+          <HorizontalStack fillVertical gap={5} padding={padding} className={style}>
+            <HorizontalStack.Item align="auto" className={itemStyle}>
+              <Text size="tiny">Auto-aligned item</Text>
+            </HorizontalStack.Item>
+            <HorizontalStack.Item align="stretch" className={itemStyle}>
+              <Text size="tiny">Stretch-aligned item</Text>
+            </HorizontalStack.Item>
+            <HorizontalStack.Item align="baseline" className={itemStyle}>
+              <Text size="tiny">Baseline-aligned item</Text>
+            </HorizontalStack.Item>
+            <HorizontalStack.Item align="start" className={itemStyle}>
+              <Text size="tiny">Start-aligned item</Text>
+            </HorizontalStack.Item>
+            <HorizontalStack.Item align="center" className={itemStyle}>
+              <Text size="tiny">Center-aligned item</Text>
+            </HorizontalStack.Item>
+            <HorizontalStack.Item align="end" className={itemStyle}>
+              <Text size="tiny">End-aligned item</Text>
+            </HorizontalStack.Item>
+          </HorizontalStack>
+        </div>
       </VerticalStack>
     );
-  }
-
-  private _renderItems(): JSX.Element[] {
-    return [
-      <Text size="tiny" key={1}>
-        Item One
-      </Text>,
-      <Text size="tiny" key={2}>
-        Item Two
-      </Text>,
-      <Text size="tiny" key={3}>
-        Item Three
-      </Text>
-    ];
   }
 
   private _onSliderChange(value: number): void {

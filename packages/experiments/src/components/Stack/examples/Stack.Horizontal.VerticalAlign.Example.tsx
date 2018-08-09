@@ -3,16 +3,13 @@ import { HorizontalStack, VerticalStack } from '@uifabric/experiments/lib/Stack'
 import { Text } from '@uifabric/experiments/lib/Text';
 import { ITheme, customizable, mergeStyles } from 'office-ui-fabric-react';
 
-export interface IStackHorizontalVerticalAlignExampleProps {
+export interface IStackExampleProps {
   theme?: ITheme;
 }
 
 @customizable('StackHorizontalVerticalAlignExample', ['theme'])
-export class StackHorizontalVerticalAlignExample extends React.Component<
-  IStackHorizontalVerticalAlignExampleProps,
-  {}
-> {
-  constructor(props: IStackHorizontalVerticalAlignExampleProps) {
+export class StackHorizontalVerticalAlignExample extends React.Component<IStackExampleProps, {}> {
+  constructor(props: IStackExampleProps) {
     super(props);
   }
 
@@ -29,45 +26,35 @@ export class StackHorizontalVerticalAlignExample extends React.Component<
       background: palette.neutralTertiary
     });
 
-    const items = this._renderItems();
-
     return (
       <VerticalStack gap={5}>
         <Text>Top-aligned</Text>
         <div className={expandedHeightStyle}>
           <HorizontalStack verticalAlign="top" fillVertical gap={10} padding={padding} className={style}>
-            {items}
+            <Text size="tiny">Item One</Text>
+            <Text size="tiny">Item Two</Text>
+            <Text size="tiny">Item Three</Text>
           </HorizontalStack>
         </div>
 
         <Text>Vertically centered</Text>
         <div className={expandedHeightStyle}>
           <HorizontalStack verticalAlign="center" fillVertical gap={10} padding={padding} className={style}>
-            {items}
+            <Text size="tiny">Item One</Text>
+            <Text size="tiny">Item Two</Text>
+            <Text size="tiny">Item Three</Text>
           </HorizontalStack>
         </div>
 
         <Text>Bottom-aligned</Text>
         <div className={expandedHeightStyle}>
           <HorizontalStack verticalAlign="bottom" fillVertical gap={10} padding={padding} className={style}>
-            {items}
+            <Text size="tiny">Item One</Text>
+            <Text size="tiny">Item Two</Text>
+            <Text size="tiny">Item Three</Text>
           </HorizontalStack>
         </div>
       </VerticalStack>
     );
-  }
-
-  private _renderItems(): JSX.Element[] {
-    return [
-      <Text size="tiny" key={1}>
-        Item One
-      </Text>,
-      <Text size="tiny" key={2}>
-        Item Two
-      </Text>,
-      <Text size="tiny" key={3}>
-        Item Three
-      </Text>
-    ];
   }
 }

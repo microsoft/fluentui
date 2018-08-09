@@ -7,12 +7,12 @@ const alignMap: { [key: string]: string } = {
 };
 
 export const styles = (props: IThemedProps<IStackItemProps>): IStackItemStyles => {
-  const { grow, shrink, align, gap, horizontal, className } = props;
+  const { grow, shrink, preventShrink, align, gap, horizontal, className } = props;
 
   return {
     root: [
       grow && { flexGrow: grow === true ? 1 : grow },
-      !grow && !shrink && { flexShrink: 0 },
+      (preventShrink || (!grow && !shrink)) && { flexShrink: 0 },
       align && {
         alignSelf: alignMap[align] || align
       },
