@@ -42,3 +42,68 @@ describe('registerOnThemeChangeCallback', () => {
     expect(callback.mock.calls[1][0]).toBeTruthy();
   });
 });
+
+describe('loadTheme', () => {
+  describe('typography', () => {
+    it('expands sizes', () => {
+      const userTheme: IPartialTheme = {
+        typography: {
+          variants: {
+            default: {
+              fontFamily: 'monospacej',
+              fontSize: 'small',
+              fontWeight: 'bold',
+              color: 'themePrimary'
+            }
+          }
+        }
+      };
+
+      const newTheme = theme.loadTheme(userTheme);
+
+      expect(newTheme.typography.variants.default.fontSize).toEqual(DefaultTypography.sizes.small);
+    });
+
+    it('updates the variants when sizes are adjusted', () => {
+      const userTheme = {
+        typography: {
+          sizes: {
+            medium: '100px'
+          }
+        }
+      } as IPartialTheme;
+
+      theme.loadTheme(userTheme);
+
+      const newTheme = theme.getTheme();
+
+      expect(newTheme.typography.variants.default.fontSize).toEqual('100px');
+    });
+
+    it('does not modify DefaultTypography when given a theme with no typography', () => {
+      const previousDefault = { ...DefaultTypography };
+      theme.loadTheme({
+        palette: {
+          themePrimary: '#ff0000'
+        }
+      });
+      expect(DefaultTypography).toEqual(previousDefault);
+    });
+
+    it('does not modify DefaultTypography when given a theme with typography', () => {
+      const previousDefault = { ...DefaultTypography };
+      theme.loadTheme({
+        typography: {
+          variants: {
+            default: {
+              fontFamily: 'Comic Sans MS',
+              fontSize: '18px',
+              fontWeight: 500
+            }
+          }
+        }
+      });
+      expect(DefaultTypography).toEqual(previousDefault);
+    });
+  });
+});

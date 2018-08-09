@@ -55,7 +55,6 @@ interface ITableProps {
   title: string;
   headers: string[];
   children: React.ReactNode;
-
   theme?: ITheme;
 }
 
