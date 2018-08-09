@@ -20,7 +20,7 @@ export class TextFontStyleExample extends React.Component<{}, ITextFontStyleExam
     const { style } = this.state;
     const content = `<Text fontStyle=${style}>Change This Text's Font Style!</Text>`;
     return (
-      <Stack vertical gap={10}>
+      <Stack gap={10}>
         <div>
           <ChoiceGroup
             selectedKey={style}

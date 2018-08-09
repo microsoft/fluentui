@@ -5,20 +5,16 @@ const alignMap: { [key: string]: string } = {
   start: 'flex-start',
   end: 'flex-end'
 };
-const justifyMap: { [key: string]: string } = {};
 
 export const styles = (props: IThemedProps<IStackItemProps>): IStackItemStyles => {
-  const { grow, collapse, align, justify, gap, vertical, className } = props;
+  const { grow, shrink, preventShrink, align, gap, horizontal, className } = props;
 
   return {
     root: [
       grow && { flexGrow: grow === true ? 1 : grow },
-      !grow && !collapse && { flexShrink: 0 },
+      (preventShrink || (!grow && !shrink)) && { flexShrink: 0 },
       align && {
         alignSelf: alignMap[align] || align
-      },
-      justify && {
-        justifyContent: justifyMap[justify] || justify
       },
       {
         overflow: 'hidden',
@@ -26,7 +22,7 @@ export const styles = (props: IThemedProps<IStackItemProps>): IStackItemStyles =
         textOverflow: 'ellipsis'
       },
       !!gap && {
-        [vertical ? 'marginTop' : 'marginLeft']: gap
+        [horizontal ? 'marginLeft' : 'marginTop']: gap
       },
       className
     ]
