@@ -49,7 +49,7 @@ export class HoverCardBasicExample extends BaseComponent<{}, IHoverCardExampleSt
 
     if (column.key === 'location') {
       return (
-        <HoverCard id="myID1" expandingCardProps={expandingCardProps} instantOpenOnClick={true} setInitialFocus={true}>
+        <HoverCard id="myID1" expandingCardProps={expandingCardProps} instantOpenOnClick={true}>
           <div className="HoverCard-item">{item.location}</div>
         </HoverCard>
       );
