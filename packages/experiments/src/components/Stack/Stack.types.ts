@@ -11,7 +11,7 @@ export type Alignment =
   | 'baseline'
   | 'stretch';
 
-type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
+export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 export type IPartialStackProps = Omit<IStackProps, 'verticalAlignment' | 'horizontalAlignment' | 'horizontal'>;
 
 export interface IStackProps extends IStyleableComponent<IStackProps, IStackStyles> {
