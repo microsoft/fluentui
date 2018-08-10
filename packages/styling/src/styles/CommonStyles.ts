@@ -14,6 +14,16 @@ export const ScreenWidthMaxLarge = ScreenWidthMinXLarge - 1;
 export const ScreenWidthMaxXLarge = ScreenWidthMinXXLarge - 1;
 export const ScreenWidthMaxXXLarge = ScreenWidthMinXXXLarge - 1;
 
+/**
+ * Selectors for determining primary input mechanism.
+ * Useful for detecting mouse/stylus (fine) vs. touch (coarse) input.
+ * Since IE11 doesn't support pointer media queries, it's detected via other means
+ * and always assumed to have a fine input mechanism.
+ */
+export const CoarsePointerSelector = '@media (pointer:coarse), (-moz-touch-enabled: 1)';
+export const FinePointerSelector =
+  '@media (pointer:fine), (-moz-touch-enabled: 0), screen and (-ms-high-contrast: active), (-ms-high-contrast: none)';
+
 export function getScreenSelector(min: number, max: number): string {
   return `@media only screen and (min-width: ${min}px) and (max-width: ${max}px)`;
 }

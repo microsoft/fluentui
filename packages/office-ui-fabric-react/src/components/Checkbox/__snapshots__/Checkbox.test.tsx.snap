@@ -56,7 +56,7 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
       &:focus .ms-Checkbox-checkbox {
         border-color: #212121;
       }
-      &:hover .ms-Checkbox-checkmark {
+      @media (pointer:fine), (-moz-touch-enabled: 0), screen and (-ms-high-contrast: active), (-ms-high-contrast: none){&:hover .ms-Checkbox-checkmark {
         color: #a6a6a6;
         opacity: 1;
       }

@@ -1,5 +1,5 @@
 import { ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
-import { getFocusStyle, FontSizes, HighContrastSelector } from '../../Styling';
+import { getFocusStyle, FontSizes, FinePointerSelector, HighContrastSelector } from '../../Styling';
 
 const MS_CHECKBOX_LABEL_SIZE = '20px';
 const MS_CHECKBOX_TRANSITION_DURATION = '200ms';
@@ -54,9 +54,11 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
             },
             ':focus .ms-Checkbox-checkbox': { borderColor: checkboxBorderHoveredColor },
             ':hover .ms-Checkbox-checkmark': {
-              color: checkmarkFontColorHovered,
-              opacity: '1',
               selectors: {
+                [FinePointerSelector]: {
+                  color: checkmarkFontColorHovered,
+                  opacity: '1'
+                },
                 [HighContrastSelector]: {
                   color: 'Highlight'
                 }
