@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/utilities",
+      "comment": "Customizable: add optional flag to allow customizer styles to be merged with component styles prop rather than overriding component styles",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/utilities",
+  "email": "kakje@microsoft.com"
+}
