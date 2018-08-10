@@ -4,7 +4,13 @@ import {
   ITheme,
   IPartialTheme,
   createTheme
-} from 'office-ui-fabric-react/lib/Styling';
+} from "office-ui-fabric-react/lib/Styling";
+import { VariantThemeType } from "./variantThemeType";
+import {
+  IColor,
+  updateA,
+  getColorFromString
+} from "office-ui-fabric-react/lib/utilities/color/colors";
 
 function makeThemeFromPartials(
   originalTheme: IPartialTheme,
@@ -21,7 +27,24 @@ function makeThemeFromPartials(
 }
 
 /**
- * A variant where the background soft shade of the neutral color. Most other colors remain unchanged.
+ * Returns a RGBA string with opacity.
+ *
+ * @export
+ * @param {string} inputColor the hex color string that needs opacity applied to it
+ * @param {number} opacity the opacity to be applied - ex. 0.5 opacity (50%) should be passed in as 50
+ * @returns {string} the RGBA color string
+ */
+function changeOpacity(inputColor: string, opacity: number): string {
+  const newColor: IColor | undefined = getColorFromString(inputColor);
+  if (!newColor) {
+    return inputColor;
+  }
+  return updateA(newColor, opacity).str;
+}
+
+/**
+ * Returns the specified variant theme for the given theme.
+ * Do not generate a variant from a variant, the results will be ugly.
  *
  * @export
  * @param {IPartialTheme} theme the theme for which to build a variant for
@@ -74,7 +97,24 @@ export function getNeutralVariant(theme: IPartialTheme): ITheme {
       : p.neutralQuaternary,
     variantBorder: !fullTheme.isInverted
       ? p.neutralQuaternaryAlt
-      : p.neutralLighterAlt
+      : p.neutralLighterAlt,
+
+    buttonBackground: p.neutralLighter,
+    buttonBackgroundHovered: p.neutralLight,
+    buttonBackgroundPressed: p.neutralQuaternaryAlt,
+    buttonBorder: p.neutralSecondary,
+    buttonText: p.neutralPrimary,
+    buttonTextHovered: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary,
+    buttonTextPressed: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary,
+    buttonTextDisabled: p.neutralQuaternary,
+    buttonBorderDisabled: p.neutralQuaternary,
+    primaryButtonBackground: p.themePrimary,
+    primaryButtonBackgroundHovered: p.themeDarkAlt,
+    primaryButtonBackgroundPressed: p.themeDark,
+    primaryButtonBorder: "transparent",
+    primaryButtonText: p.white,
+    primaryButtonTextHovered: p.white,
+    primaryButtonTextPressed: p.white
   };
 
   return makeThemeFromPartials(theme, partialPalette, partialSemantic);
@@ -141,7 +181,30 @@ export function getSoftVariant(theme: IPartialTheme): ITheme {
     // inputBackgroundCheckedHovered: p.themeDarkAlt,
     inputForegroundChecked: p.themeLighter,
     // inputFocusBorderAlt: p.themePrimary,
-    variantBorder: !fullTheme.isInverted ? p.neutralLight : p.neutralLighterAlt
+    variantBorder: !fullTheme.isInverted ? p.neutralLight : p.neutralLighterAlt,
+
+    buttonBackground: !fullTheme.isInverted ? p.themeLighterAlt : p.themeLight,
+    buttonBackgroundHovered: !fullTheme.isInverted
+      ? p.themeLighter
+      : changeOpacity(p.themeTertiary, 50),
+    buttonBackgroundPressed: !fullTheme.isInverted
+      ? p.themeLight
+      : p.themeTertiary,
+    buttonBorder: p.neutralSecondary,
+    buttonText: !fullTheme.isInverted ? p.neutralPrimary : p.themePrimary,
+    buttonTextHovered: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary,
+    buttonTextPressed: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary,
+    buttonTextDisabled: !fullTheme.isInverted ? p.themeLight : p.themeTertiary,
+    buttonBorderDisabled: !fullTheme.isInverted
+      ? p.themeLight
+      : p.themeTertiary,
+    primaryButtonBackground: p.themePrimary,
+    primaryButtonBackgroundHovered: p.themeDarkAlt,
+    primaryButtonBackgroundPressed: p.themeDark,
+    primaryButtonBorder: "transparent",
+    primaryButtonText: p.white,
+    primaryButtonTextHovered: p.white,
+    primaryButtonTextPressed: p.white
   };
 
   return makeThemeFromPartials(theme, partialPalette, partialSemantic);
@@ -214,7 +277,34 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
     // inputBackgroundCheckedHovered: p.themePrimary,
     inputForegroundChecked: p.themeDark,
     // inputFocusBorderAlt: p.themePrimary,
-    variantBorder: p.themeDark
+    variantBorder: p.themeDark,
+
+    buttonBackground: p.white,
+    buttonBackgroundHovered: !fullTheme.isInverted
+      ? p.themeLighter
+      : p.themeLight,
+    buttonBackgroundPressed: !fullTheme.isInverted
+      ? p.themeLight
+      : p.themeTertiary,
+    buttonBorder: "transparent",
+    buttonText: !fullTheme.isInverted ? p.themePrimary : p.neutralPrimary,
+    buttonTextHovered: !fullTheme.isInverted
+      ? p.themePrimary
+      : p.neutralPrimary,
+    buttonTextPressed: !fullTheme.isInverted
+      ? p.themePrimary
+      : p.neutralPrimary,
+    buttonTextDisabled: !fullTheme.isInverted ? p.themeLight : p.themeTertiary,
+    buttonBorderDisabled: !fullTheme.isInverted
+      ? p.themeLight
+      : p.themeTertiary,
+    primaryButtonBackground: p.themePrimary,
+    primaryButtonBackgroundHovered: p.themeDarkAlt,
+    primaryButtonBackgroundPressed: p.themeDark,
+    primaryButtonBorder: p.white,
+    primaryButtonText: p.white,
+    primaryButtonTextHovered: p.white,
+    primaryButtonTextPressed: p.white
   };
 
   // Strong variant is unique here, we've redefined the entire palette and are

@@ -247,6 +247,10 @@ export interface ISemanticColors {
    * Background of a checked and hovered standard button; e.g. bold/italicize/underline text button in toolbar
    */
   buttonBackgroundCheckedHovered: string;
+  /**
+   * Background of a pressed standard button; i.e. currently being clicked by mouse
+   */
+  buttonBackgroundPressed: string;
 
   /**
    * Border of a standard button
@@ -269,6 +273,50 @@ export interface ISemanticColors {
    * Color of text in a checked and hovered standard button
    */
   buttonTextCheckedHovered: string;
+  /**
+   * Color of text in a pressed standard button; i.e. currently being clicked by mouse
+   */
+  buttonTextPressed: string;
+
+  /**
+   * Border of a disabled standard button
+   */
+  buttonBorderDisabled: string;
+  /**
+   * Color of text in a disabled standard button
+   */
+  buttonTextDisabled: string;
+
+  /**
+   * Background of a primary button
+   */
+  primaryButtonBackground: string;
+  /**
+   * Background of a hovered primary button
+   */
+  primaryButtonBackgroundHovered: string;
+  /**
+   * Background of a pressed primary button; i.e. currently being clicked by mouse
+   */
+  primaryButtonBackgroundPressed: string;
+
+  /**
+   * Border of a primary button
+   */
+  primaryButtonBorder: string;
+
+  /**
+   * Color of text in a primary button
+   */
+  primaryButtonText: string;
+  /**
+   * Color of text in a hovered primary button
+   */
+  primaryButtonTextHovered: string;
+  /**
+   * Color of text in a pressed primary button; i.e. currently being clicked by mouse
+   */
+  primaryButtonTextPressed: string;
 
   //// Menus, popups, etc
 
