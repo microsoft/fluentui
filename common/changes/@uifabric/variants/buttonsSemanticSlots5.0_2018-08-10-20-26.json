@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/variants",
+      "comment": "adds variantThemeType.ts and getVariant() function to variants.ts to handle variant control; adds changeOpacity() function to variants.ts to handle opacity control in semantic slot settings; adds semantic slots and fallback values to variants.ts",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/variants",
+  "email": "v-jescla@microsoft.com"
+}
