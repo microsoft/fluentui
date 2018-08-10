@@ -50,26 +50,26 @@ export class StackVerticalExample extends React.Component<IStackExampleProps, IS
       <VerticalStack gap={5}>
         <Text size="xSmall">Default vertical stack</Text>
         <VerticalStack padding={padding} className={style}>
-          <Text size="tiny">Item One</Text>
-          <Text size="tiny">Item Two</Text>
-          <Text size="tiny">Item Three</Text>
+          <Text size="mini">Item One</Text>
+          <Text size="mini">Item Two</Text>
+          <Text size="mini">Item Three</Text>
         </VerticalStack>
 
         <Text size="xSmall">Vertical gap between items</Text>
         <VerticalStack gap={10} padding={padding} className={style}>
-          <Text size="tiny">Item One</Text>
-          <Text size="tiny">Item Two</Text>
-          <Text size="tiny">Item Three</Text>
+          <Text size="mini">Item One</Text>
+          <Text size="mini">Item Two</Text>
+          <Text size="mini">Item Three</Text>
         </VerticalStack>
 
         <Text size="xSmall">Growing items</Text>
         <div className={expandedHeightStyle}>
           <VerticalStack fillVertical gap={5} padding={padding} className={style}>
             <VerticalStack.Item grow={3} className={itemStyle}>
-              <Text size="tiny">Grow is 3</Text>
+              <Text size="mini">Grow is 3</Text>
             </VerticalStack.Item>
             <VerticalStack.Item grow className={itemStyle}>
-              <Text size="tiny">Grow is 1</Text>
+              <Text size="mini">Grow is 1</Text>
             </VerticalStack.Item>
           </VerticalStack>
         </div>
@@ -87,16 +87,16 @@ export class StackVerticalExample extends React.Component<IStackExampleProps, IS
         <div className={expandedHeightStyle}>
           <VerticalStack shrinkItems gap={5} padding={padding} className={shrinkingContainerStyle}>
             <VerticalStack.Item grow className={itemStyle}>
-              <Text size="tiny">I shrink</Text>
+              <Text size="mini">I shrink</Text>
             </VerticalStack.Item>
             <VerticalStack.Item grow className={itemStyle}>
-              <Text size="tiny">I shrink</Text>
+              <Text size="mini">I shrink</Text>
             </VerticalStack.Item>
             <VerticalStack.Item grow preventShrink className={mergeStyles(itemStyle, { height: 50 })}>
-              <Text size="tiny">I don't shrink</Text>
+              <Text size="mini">I don't shrink</Text>
             </VerticalStack.Item>
             <VerticalStack.Item grow className={itemStyle}>
-              <Text size="tiny">I shrink</Text>
+              <Text size="mini">I shrink</Text>
             </VerticalStack.Item>
           </VerticalStack>
         </div>
@@ -104,22 +104,22 @@ export class StackVerticalExample extends React.Component<IStackExampleProps, IS
         <Text size="xSmall">Item alignments</Text>
         <VerticalStack gap={5} padding={padding} className={style}>
           <VerticalStack.Item align="auto" className={itemStyle}>
-            <Text size="tiny">Auto-aligned item</Text>
+            <Text size="mini">Auto-aligned item</Text>
           </VerticalStack.Item>
           <VerticalStack.Item align="stretch" className={itemStyle}>
-            <Text size="tiny">Stretch-aligned item</Text>
+            <Text size="mini">Stretch-aligned item</Text>
           </VerticalStack.Item>
           <VerticalStack.Item align="baseline" className={itemStyle}>
-            <Text size="tiny">Baseline-aligned item</Text>
+            <Text size="mini">Baseline-aligned item</Text>
           </VerticalStack.Item>
           <VerticalStack.Item align="start" className={itemStyle}>
-            <Text size="tiny">Start-aligned item</Text>
+            <Text size="mini">Start-aligned item</Text>
           </VerticalStack.Item>
           <VerticalStack.Item align="center" className={itemStyle}>
-            <Text size="tiny">Center-aligned item</Text>
+            <Text size="mini">Center-aligned item</Text>
           </VerticalStack.Item>
           <VerticalStack.Item align="end" className={itemStyle}>
-            <Text size="tiny">End-aligned item</Text>
+            <Text size="mini">End-aligned item</Text>
           </VerticalStack.Item>
         </VerticalStack>
       </VerticalStack>

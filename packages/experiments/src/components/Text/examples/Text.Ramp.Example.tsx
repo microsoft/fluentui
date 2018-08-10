@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, Stack } from '@uifabric/experiments';
+import { Text, VerticalStack } from '@uifabric/experiments';
 import { IFontVariants, IFontSizes, IFontWeights, IFontFamilies } from '@uifabric/experiments/lib/Styling';
 import { ISemanticColors, IPalette, ITheme } from '@uifabric/experiments/lib/Styling';
 import { createStatelessComponent } from '@uifabric/experiments/lib/Foundation';
@@ -60,7 +60,7 @@ interface ITableProps {
 
 const Table = createStatelessComponent<ITableProps, {}, {}>({
   view: (props: ITableProps) => (
-    <Stack className={props.className} gap={20} vertical>
+    <VerticalStack className={props.className} gap={20}>
       <Text variant="h3">{props.title}</Text>
       <table>
         <thead>
@@ -72,7 +72,7 @@ const Table = createStatelessComponent<ITableProps, {}, {}>({
         </thead>
         <tbody>{props.children}</tbody>
       </table>
-    </Stack>
+    </VerticalStack>
   ),
   displayName: 'Table',
   styles: {
@@ -93,7 +93,7 @@ const TableRow: React.StatelessComponent<ITableRowProps> = (props: ITableRowProp
 );
 
 export const TextRampExample = () => (
-  <Stack gap={40} vertical>
+  <VerticalStack gap={40}>
     <Table title="Variants" headers={['Variant', 'Example', 'Usage']}>
       {Variants.map((setting: ISetting<keyof IFontVariants>) => (
         <TableRow
@@ -167,5 +167,5 @@ export const TextRampExample = () => (
         />
       ))}
     </Table>
-  </Stack>
+  </VerticalStack>
 );
