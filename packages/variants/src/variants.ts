@@ -16,15 +16,20 @@ function makeThemeFromPartials(
   });
 }
 
+/**
+ * Returns a RGBA string with opacity.
+ *
+ * @export
+ * @param {string} inputColor the hex color string that needs opacity applied to it
+ * @param {number} opacity the opacity to be applied - ex. 0.5 opacity (50%) should be passed in as 50
+ * @returns {string} the RGBA color string
+ */
 function changeOpacity(inputColor: string, opacity: number): string {
-  let newColor: IColor | undefined = getColorFromString(inputColor);
+  const newColor: IColor | undefined = getColorFromString(inputColor);
   if (!newColor) {
     return inputColor;
   }
-  newColor = updateA(newColor, opacity);
-  // newColor.a = opacity;
-  const outputRBGAString = `rgb(${newColor.r},${newColor.g},${newColor.b},${newColor.a})`;
-  return outputRBGAString;
+  return updateA(newColor, opacity).str;
 }
 
 /**
