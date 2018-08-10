@@ -61,6 +61,8 @@ export class FormDropdown extends FormBaseInput<
    * Render a Fabric Dropdown
    */
   public render(): JSX.Element {
+    const { currentValue } = this.state;
+
     return (
       <Dropdown
         options={[]}
@@ -68,8 +70,9 @@ export class FormDropdown extends FormBaseInput<
         // These props cannot be overridden
         key={this.props.inputKey}
         onChanged={this._onChanged}
-        selectedKeys={Array.isArray(this.state.currentValue) ? this.state.currentValue : undefined}
-        selectedKey={!Array.isArray(this.state.currentValue) ? this.state.currentValue : undefined}
+        {...(currentValue && Array.isArray(currentValue)
+          ? { selectedKeys: currentValue }
+          : { selectedKey: currentValue })}
       />
     );
   }
