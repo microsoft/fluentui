@@ -1,11 +1,16 @@
 /* Base slots */
+
 $bodyBackgroundColor: "[theme:bodyBackground, default: #ffffff]";
+$bodyStandoutBackgroundColor: "[theme:bodyStandoutBackground, default: #ffffff]";
 $bodyFrameBackgroundColor: "[theme:bodyFrameBackground, default: #ffffff]";
 $bodyFrameDividerColor: "[theme:bodyFrameDivider, default: #eaeaea]";
 $bodyTextColor: "[theme:bodyText, default: #333333]";
 $bodyTextCheckedColor: "[theme:bodyTextChecked, default: #000000]";
 $bodySubtextColor: "[theme:bodySubtext, default: #666666]";
 $bodyDividerColor: "[theme:bodyDivider, default: #c8c8c8]";
+
+$actionLinkColor: "[theme:actionLink, default: #333333]";
+$actionLinkHoveredColor: "[theme:actionLinkHovered, default: #212121]";
 $linkColor: "[theme:link, default: #0078d4]";
 $linkHoveredColor: "[theme:linkHovered, default: #004578]";
 
@@ -15,6 +20,7 @@ $disabledBodyTextColor: "[theme:disabledText, default: #c8c8c8]";
 $disabledSubtextColor: "[theme:disabledSubtext, default: #dadada]";
 
 $focusBorderColor: "[theme:focusBorder, default: #000000]";
+$variantBorderColor: "[theme:variantBorder, default: #eaeaea]";
 
 $errorTextColor: "[theme:errorText, default: #a80000]";
 $warningTextColor: "[theme:warningText, default: #333333]";
