@@ -79,7 +79,13 @@ export class HoverCardTargetExample extends BaseComponent<{}, IHoverCardExampleS
 
     return (
       <div>
-        <p> Hover over key of a row item to see the card </p>
+        <p>
+          Hover over the <i>key</i> cell of a row item to see the card or use the keyboard to navigate to it.
+        </p>
+        <p>
+          When using the keyboard to tab to it, open the card with the hotKey and it will automatically focus the first
+          focusable element in the card allowing further navigation inside the card.
+        </p>
         <DetailsList
           setKey="hoverSet"
           items={items!}
