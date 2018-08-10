@@ -6,8 +6,9 @@ import { ILegendProps, ILegendDataItem, ILegendStyles } from './Legend.types';
 import { getLegendStyles, getLegendColorStyle } from './Legend.styles';
 
 export const Legend: React.SFC<ILegendProps> = (props: ILegendProps) => {
+  const maxTextWidth = props.maxTextWidth || 250;
   const getClassNames = classNamesFunction<{}, ILegendStyles>();
-  const classNames = getClassNames(getLegendStyles!);
+  const classNames = getClassNames(() => getLegendStyles(maxTextWidth));
 
   const legends = props.renderData.map((data: ILegendDataItem, index: number) => {
     return (

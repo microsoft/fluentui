@@ -70,6 +70,13 @@ export interface IChartProps {
   chartType: ChartType;
 
   /**
+   * custom width for a compact chart
+   *
+   * @default 250
+   */
+  compactChartWidth?: number;
+
+  /**
    * Width of each stroke in the line chart
    */
   strokeWidth?: number;

@@ -44,26 +44,31 @@ export class StackedBarChartExample extends React.Component<{}, {}> {
       { legendText: 'fourth', legendColor: DefaultPalette.green }
     ];
 
+    const chartContent1 = {
+      chartLabels: ['Stacked bar chart with two data points'],
+      chartType: ChartType.StackedBarChart,
+      dataPoints: points,
+      legendColors: colors
+    };
+
+    const chartContent2 = {
+      chartLabels: ['Stacked bar chart with multiple points'],
+      chartType: ChartType.StackedBarChart,
+      dataPoints: multiplePoints,
+      compactChartWidth: 394,
+      legendColors: multipleColors
+    };
+
     const contentAreaList = [
       {
         priority: Priority.Priority1,
         cardContentType: CardContentType.Chart,
-        content: {
-          chartLabels: ['Stacked bar chart with two data points'],
-          chartType: ChartType.StackedBarChart,
-          dataPoints: points,
-          legendColors: colors
-        }
+        content: chartContent1
       },
       {
         priority: Priority.Priority2,
         cardContentType: CardContentType.Chart,
-        content: {
-          chartLabels: ['Stacked bar chart with multiple points'],
-          chartType: ChartType.StackedBarChart,
-          dataPoints: multiplePoints,
-          legendColors: multipleColors
-        }
+        content: chartContent2
       }
     ];
 

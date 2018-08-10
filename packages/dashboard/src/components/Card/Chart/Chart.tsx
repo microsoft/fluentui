@@ -13,6 +13,10 @@ import {
 } from '@uifabric/charting/lib/StackedBarChart';
 
 export class Chart extends React.Component<IChartInternalProps, {}> {
+  public static defaultProps = {
+    compactChartWidth: 250
+  };
+
   private _chartLabel: string | undefined;
   private _isMultiBarChart = false;
   private _colors: string[] | undefined;
@@ -119,7 +123,7 @@ export class Chart extends React.Component<IChartInternalProps, {}> {
   private _getWidth(): number {
     switch (this.props.width) {
       case ChartWidth.compact: {
-        return 250;
+        return this.props.compactChartWidth!;
       }
       case ChartWidth.wide: {
         return 500;

@@ -8,6 +8,8 @@ export interface ILegendProps {
    * Data to render in the legend.
    */
   renderData: ILegendDataItem[];
+
+  maxTextWidth?: number;
 }
 
 export interface ILegendStyles {

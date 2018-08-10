@@ -1,7 +1,7 @@
 import { ILegendStyles } from '@uifabric/charting/lib/components/Legend/Legend.types';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 
-export const getLegendStyles = (): ILegendStyles => {
+export const getLegendStyles = (maxTextWidth: number): ILegendStyles => {
   return {
     root: {
       display: 'flex',
@@ -21,7 +21,8 @@ export const getLegendStyles = (): ILegendStyles => {
       paddingRight: '16px',
       textOverflow: 'ellipsis',
       overflow: 'hidden',
-      whiteSpace: 'nowrap'
+      whiteSpace: 'nowrap',
+      maxWidth: maxTextWidth
     }
   };
 };

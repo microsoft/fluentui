@@ -101,7 +101,8 @@ export class Layout extends React.Component<ILayoutProps> {
                   barWidth,
                   data,
                   chartType,
-                  dataPoints
+                  dataPoints,
+                  compactChartWidth
                 } = cardContent.content as IChartProps;
                 contentArea.push(
                   <Chart
@@ -111,6 +112,7 @@ export class Layout extends React.Component<ILayoutProps> {
                     barWidth={barWidth}
                     data={data}
                     dataPoints={dataPoints}
+                    compactChartWidth={compactChartWidth}
                     width={this._getChartWidth(cardContentList.length)}
                     height={this._getChartHeight(cardContentList.length)}
                   />
