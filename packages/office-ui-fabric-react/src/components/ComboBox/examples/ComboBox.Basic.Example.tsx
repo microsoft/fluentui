@@ -1,3 +1,4 @@
+// @codepen
 import * as React from 'react';
 import { ComboBox, IComboBoxOption, VirtualizedComboBox } from 'office-ui-fabric-react/lib/ComboBox';
 import './ComboBox.Basic.Example.scss';
