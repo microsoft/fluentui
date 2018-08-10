@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "ComboBox cannot clear value when allowFreeForm enabled. Should trigger onChanged when value is cleared",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "ngyukman@gmail.com"
+}

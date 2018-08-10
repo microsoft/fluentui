@@ -302,12 +302,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
             onKeyDown={this._onMenuKeyDown}
             onKeyUp={this._onKeyUp}
           >
-            {title && (
-              <div className={this._classNames.title} role="heading" aria-level={1}>
-                {' '}
-                {title}{' '}
-              </div>
-            )}
+            {title && <div className={this._classNames.title}> {title} </div>}
             {items && items.length ? (
               <FocusZone
                 {...this._adjustedFocusZoneProps}
@@ -574,7 +569,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     const { contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem } = this.props;
 
     return (
-      <div className={this._classNames.header} style={item.style} role="heading" aria-level={this.props.title ? 2 : 1}>
+      <div className={this._classNames.header} style={item.style}>
         <ChildrenRenderer
           item={item}
           classNames={classNames}

@@ -2,6 +2,46 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.13.0",
+      "tag": "@uifabric/dashboard_v0.13.0",
+      "date": "Wed, 08 Aug 2018 10:25:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "4d32614144c1ee0b904746f615ae245bb47348ce",
+            "comment": "Fix bad imports that break AMD."
+          },
+          {
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "3ef4c8f42150ee6f33699d1a29ed009bdefa1350",
+            "comment": "Update Auto-FontSize package to 1.0.9"
+          }
+        ],
+        "minor": [
+          {
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "081268ecf1b88f6428fbd99ac6faae490de5c398",
+            "comment": "Adding multiple line chart to charting package. Consuming the multiple line chart in the dashboard Card."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.12.0` to `^0.13.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.7.0 <7.0.0` to `>=6.7.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.22.5 <7.0.0` to `>=6.22.6 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.47.0 <7.0.0` to `>=6.47.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.12.0",
       "tag": "@uifabric/dashboard_v0.12.0",
       "date": "Tue, 07 Aug 2018 10:22:32 GMT",

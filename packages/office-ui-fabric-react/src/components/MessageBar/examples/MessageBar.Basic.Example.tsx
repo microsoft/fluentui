@@ -109,9 +109,8 @@ export const MessageBarBasicExample = () => (
       orci nec quam condimentum porttitor et sed lacus. Vivamus ac efficitur leo. Cras faucibus mauris libero, ac
       placerat erat euismod et. Donec pulvinar commodo odio sit amet faucibus. In hac habitasse platea dictumst. Duis eu
       ante commodo, condimentum nibh pellentesque, laoreet enim. Fusce massa lorem, ultrices eu mi a, fermentum suscipit
-      magna. Integer porta purus pulvinar, hendrerit felis eget, condimentum mauris.<Link href="www.bing.com">
-        Visit our website.
-      </Link>
+      magna. Integer porta purus pulvinar, hendrerit felis eget, condimentum mauris.
+      <Link href="www.bing.com">Visit our website.</Link>
     </MessageBar>
 
     <Label>Info/Default MessageBar - custom styles</Label>
@@ -304,9 +303,8 @@ export const MessageBarBasicExample = () => (
       nec quam condimentum porttitor et sed lacus. Vivamus ac efficitur leo. Cras faucibus mauris libero, ac placerat
       erat euismod et. Donec pulvinar commodo odio sit amet faucibus. In hac habitasse platea dictumst. Duis eu ante
       commodo, condimentum nibh pellentesque, laoreet enim. Fusce massa lorem, ultrices eu mi a, fermentum suscipit
-      magna. Integer porta purus pulvinar, hendrerit felis eget, condimentum mauris.<Link href="www.bing.com">
-        Visit our website.
-      </Link>
+      magna. Integer porta purus pulvinar, hendrerit felis eget, condimentum mauris.
+      <Link href="www.bing.com">Visit our website.</Link>
     </MessageBar>
   </div>
 );
