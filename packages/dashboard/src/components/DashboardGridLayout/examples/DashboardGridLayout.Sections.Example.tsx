@@ -7,6 +7,7 @@ import {
   DashboardGridBreakpointLayouts,
   DashboardGridSectionLayout,
   ICard,
+  ICardContentDetails,
   IAction,
   ISection,
   IThumbnailItemProps,
@@ -68,7 +69,7 @@ const actions: IAction[] = [
   }
 ];
 
-const contentAreaList = [
+const contentAreaList: ICardContentDetails[] = [
   {
     priority: Priority.Priority1,
     cardContentType: CardContentType.BodyText,
@@ -105,7 +106,7 @@ const datapoints = [
   { x: 100, y: 19 }
 ];
 
-const largeContentAreaList = [
+const largeContentAreaList: ICardContentDetails[] = [
   {
     priority: Priority.Priority2,
     cardContentType: CardContentType.ThumbnailList,
@@ -119,21 +120,21 @@ const largeContentAreaList = [
     content: {
       chartLabel: 'My first chart!',
       chartType: ChartType.VerticalBarChart,
-      data: datapoints,
+      dataPoints: datapoints,
       colors: ['red', 'yellow']
     }
   }
 ];
 
-const mediumTallContentAreaList = [
+const mediumTallContentAreaList: ICardContentDetails[] = [
   {
     priority: Priority.Priority1,
     cardContentType: CardContentType.Chart,
     content: {
       chartLabel: 'My first chart!',
       chartType: ChartType.VerticalBarChart,
-      data: datapoints,
-      colors: ['red', 'yellow']
+      dataPoints: datapoints,
+      colors: ['green', 'yellow']
     }
   }
 ];
