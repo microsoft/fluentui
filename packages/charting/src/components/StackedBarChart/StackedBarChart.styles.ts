@@ -19,7 +19,8 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
         padding: chartPadding,
         width: chartWidth,
         height: chartHeight,
-        boxSizing: 'content-box'
+        boxSizing: 'content-box',
+        overflow: 'visible'
       }
     ],
     chartTitle: [

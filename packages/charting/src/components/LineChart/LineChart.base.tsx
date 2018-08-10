@@ -21,11 +21,6 @@ export class LineChartBase extends React.Component<ILineChartProps, {}> {
   private _colors: string[];
   private _classNames: IProcessedStyleSet<ILineChartStyles>;
 
-  constructor(props: ILineChartProps) {
-    super(props);
-    this._adjustProps();
-  }
-
   public render(): JSX.Element {
     this._adjustProps();
 
