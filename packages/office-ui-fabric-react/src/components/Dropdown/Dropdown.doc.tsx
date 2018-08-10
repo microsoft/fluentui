@@ -46,5 +46,6 @@ export const DropdownPageProps: IDocPageProps = {
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Dropdown/docs/DropdownDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Dropdown/docs/DropdownDonts.md'),
   isHeaderVisible: true,
-  allowNativeProps: true
+  allowNativeProps: true,
+  isFeedbackVisible: true
 };

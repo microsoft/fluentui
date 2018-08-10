@@ -2,6 +2,41 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.14.0",
+      "tag": "@uifabric/dashboard_v0.14.0",
+      "date": "Fri, 10 Aug 2018 10:26:08 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Samiya <samiyaakhtar7@gmail.com>",
+            "commit": "77254db658b8c8d652088ce01679ae4180e67c00",
+            "comment": "Fix dashboard card height to match red lines"
+          }
+        ],
+        "patch": [
+          {
+            "author": "exchangeadmin <yuz@microsoft.com>",
+            "commit": "0016e471eb2b418362951732ba0323dfbf16bffc",
+            "comment": "update leftNav style change"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.13.0` to `^0.13.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.7.1 <7.0.0` to `>=6.7.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.22.6 <7.0.0` to `>=6.23.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.47.2 <7.0.0` to `>=6.48.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.13.0",
       "tag": "@uifabric/dashboard_v0.13.0",
       "date": "Wed, 08 Aug 2018 10:25:07 GMT",

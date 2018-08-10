@@ -101,6 +101,30 @@ describe('CommandBar', () => {
     expect(document.querySelector('.SubMenuClass')).toBeDefined();
   });
 
+  it('passes event and item to button onClick callbacks', () => {
+    let testValue: IContextualMenuItem | undefined;
+
+    const itemData: IContextualMenuItem = {
+      text: 'TestText 1',
+      key: 'TestKey1',
+      className: 'MenuItem',
+      data: {
+        foo: 'bar'
+      },
+      onClick: (ev, item) => {
+        testValue = item;
+      }
+    };
+
+    const commandBar = mount(<CommandBar items={[itemData]} />);
+
+    const menuItem = commandBar.find('.MenuItem button');
+
+    menuItem.simulate('click');
+
+    expect(testValue).toEqual(itemData);
+  });
+
   it('keeps menu open after update if item is still present', () => {
     const commandBar = mount(
       <CommandBar

@@ -148,7 +148,10 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
         }
       );
 
-      this._delayedValidate(newProps.value);
+      const { validateOnFocusIn, validateOnFocusOut } = newProps;
+      if (!(validateOnFocusIn || validateOnFocusOut)) {
+        this._delayedValidate(newProps.value);
+      }
     }
   }
 

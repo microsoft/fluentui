@@ -2,6 +2,110 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.48.0",
+      "tag": "office-ui-fabric-react_v6.48.0",
+      "date": "Fri, 10 Aug 2018 10:26:09 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Srinath Janakiraman <me@vjsrinath.com>",
+            "commit": "6a2bfffc4b9a79863ed1a187f803879274bbdfa7",
+            "comment": "ColorPicker: Update color rectangle when hue value changes"
+          },
+          {
+            "author": "Avital Baral <avitalbaral99@gmail.com>",
+            "commit": "172afbf5208fa1295a349d14eae716a14e16328c",
+            "comment": "autogenerate codepenable examples for fabric examples tagged with @codepen "
+          },
+          {
+            "author": "Ng Yuk Man <ngyukman@gmail.com>",
+            "commit": "4ca8133cacda36dd54c7fd8580bbb9d55b11a0da",
+            "comment": "ComboBox cannot clear value when allowFreeForm enabled. Should trigger onChanged when value is cleared"
+          },
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "b77f3bdfe3c4ae9c1b51f297921c23038de5f2ac",
+            "comment": "Update components using customizer (including Button variations) to concatenate customizer and component style sets"
+          },
+          {
+            "author": "anavilohia <anavi.lohia@utexas.edu>",
+            "commit": "34a0e9d620cd391e545332e17c5c93494a7a8618",
+            "comment": "Added optional feedback section for component pages"
+          },
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "1c80b8ba031a5beb7cbd0ebfae5cedc6ce9c7c0e",
+            "comment": "Link: Fix focus border text clipping."
+          },
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "c3c818bec245501b4fd01bce0fe177cdee90d845",
+            "comment": "TextField: Respect validateOnFocus props when props change."
+          },
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "cfcff98bb81963f55d7cdffe24f42b402e61d4d6",
+            "comment": "ColorPicker: Limit decimal points shown for alpha."
+          },
+          {
+            "author": "laxmikankanala <39089979+laxmikankanala@users.noreply.github.com>",
+            "commit": "94ba1e94b7bd62a4dad03e25e46356a101c5bddc",
+            "comment": "' Added 2 callback functions for dragstart and drag end events to get the telemetry logs in ODSP-Next'"
+          },
+          {
+            "author": "laxmikankanala <39089979+laxmikankanala@users.noreply.github.com>",
+            "commit": "c34c9f0ba5e94b22ff894baa05bb3685e821ec5e",
+            "comment": "Changing the drophint ICON"
+          },
+          {
+            "author": "Swapnil Vaibhav <swapnil.vaibhav@microsoft.com>",
+            "commit": "e099e102e8f14b4067638846233bc1705b69a00d",
+            "comment": "default render behaviour can be used along with onRenderCoin in Persona component"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "904f08478a0113198d8004ba757b9a82a6b6da8a",
+            "comment": "Prettier cleanup."
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "d5129e5fc07dc03088d8ba9562860f1d32766b86",
+            "comment": "Removed unnecessary heading roles, and added aria-level to those requiring them"
+          },
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "d37761797f5b5d391f713b736f3e1aa07fcab555",
+            "comment": "HoverCard: Adds more documentation and adds a focus stop on root to eliminate an edge case when target is not provided the focus listener was not firing at all."
+          },
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "9b74e783e6519b81bd52987aa829bcd12d3156ac",
+            "comment": "ShimmeredDetailsList: replace a hard coded multiplier with a ratio constant and modify some math logic."
+          }
+        ],
+        "minor": [
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "02ded6e7de41c017c85f7b87607de45c5b9ca6a6",
+            "comment": "Coachmark: Add onDismiss"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "878c634f9458aabb96b8f8c3f02c050f7f062a9b",
+            "comment": "CommandBar: OnClick now properly passes item as well as event"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.14.0 <7.0.0` to `>=6.15.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.12.1 <7.0.0` to `>=6.13.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.47.2",
       "tag": "office-ui-fabric-react_v6.47.2",
       "date": "Thu, 09 Aug 2018 10:31:30 GMT",

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { CollapsibleSection } from '@uifabric/experiments/lib/CollapsibleSection';
-import { Stack } from '@uifabric/experiments/lib/Stack';
+import { HorizontalStack } from '@uifabric/experiments/lib/Stack';
 
 export interface ICollapsibleSectionControlledExampleState {
   collapsed: boolean;
@@ -32,7 +32,7 @@ export class CollapsibleSectionControlledExample extends React.Component<
             result, clicking on the titles in this example does not affect collapsed state, only clicking on the Toggle
             button does.
           </p>
-          <Stack gap={20} align="center">
+          <HorizontalStack gap={20} verticalAlign="center">
             <DefaultButton
               text="Toggle"
               onClick={() => {
@@ -40,7 +40,7 @@ export class CollapsibleSectionControlledExample extends React.Component<
               }}
             />
             <p>Number of title clicks: {this.state.clicks}</p>
-          </Stack>
+          </HorizontalStack>
           <CollapsibleSection
             collapsed={this.state.collapsed}
             titleProps={{

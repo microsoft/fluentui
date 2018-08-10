@@ -32,6 +32,7 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
     this._onDragStart = this._onDragStart.bind(this);
     this._onDragEnd = this._onDragEnd.bind(this);
     this._onRootMouseDown = this._onRootMouseDown.bind(this);
+    this._updateHeaderDragInfo = this._updateHeaderDragInfo.bind(this);
   }
 
   public render(): JSX.Element {
@@ -265,19 +266,26 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
 
   private _onDragStart(item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent): void {
     const classNames = this._classNames;
-
-    if (itemIndex && this.props.setDraggedItemIndex) {
-      this.props.setDraggedItemIndex(itemIndex);
+    if (itemIndex) {
+      this._updateHeaderDragInfo(itemIndex);
       this._root.current.classList.add(classNames.borderWhileDragging);
     }
   }
 
   private _onDragEnd(item?: any, event?: MouseEvent): void {
     const classNames = this._classNames;
+    if (event) {
+      this._updateHeaderDragInfo(-1, event);
+    }
+    this._root.current.classList.remove(classNames.borderWhileDragging);
+  }
 
+  private _updateHeaderDragInfo(itemIndex: number, event?: MouseEvent) {
     if (this.props.setDraggedItemIndex) {
-      this.props.setDraggedItemIndex(-1);
-      this._root.current.classList.remove(classNames.borderWhileDragging);
+      this.props.setDraggedItemIndex(itemIndex);
+    }
+    if (this.props.updateDragInfo) {
+      this.props.updateDragInfo({ itemIndex }, event);
     }
   }
 

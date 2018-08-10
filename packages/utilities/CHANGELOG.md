@@ -1,6 +1,14 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 27 Jul 2018 10:25:39 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Aug 2018 10:26:09 GMT and should not be manually modified.
+
+## 6.13.0
+Fri, 10 Aug 2018 10:26:09 GMT
+
+### Minor changes
+
+- Customizable: add optional flag to allow customizer styles to be merged with component styles prop rather than overriding component styles
+- Adding merge helper for deep merging.
 
 ## 6.12.1
 Fri, 27 Jul 2018 10:25:39 GMT
