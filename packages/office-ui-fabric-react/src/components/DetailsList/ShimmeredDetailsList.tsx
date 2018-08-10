@@ -45,10 +45,10 @@ export class ShimmeredDetailsList extends BaseComponent<IShimmeredDetailsListPro
 
     return (
       <DetailsList
-        {...detailsListProps}
-        items={enableShimmer ? this._shimmerItems : items}
-        onRenderMissingItem={this._onRenderShimmerPlaceholder}
-        listProps={newListProps}
+        { ...detailsListProps }
+        items={ enableShimmer ? this._shimmerItems : items }
+        onRenderMissingItem={ this._onRenderShimmerPlaceholder }
+        listProps={ newListProps }
       />
     );
   }
@@ -63,11 +63,11 @@ export class ShimmeredDetailsList extends BaseComponent<IShimmeredDetailsListPro
       : this._renderDefaultShimmerPlaceholder(rowProps);
 
     return (
-      <div className={css(showCheckbox && rowStyles.shimmerLeftBorder, !compact && rowStyles.shimmerBottomBorder)}>
-        <Shimmer customElementsGroup={placeholderElements} />
+      <div className={ css(showCheckbox && rowStyles.shimmerLeftBorder, !compact && rowStyles.shimmerBottomBorder) }>
+        <Shimmer customElementsGroup={ placeholderElements } />
       </div>
     );
-  };
+  }
 
   private _renderDefaultShimmerPlaceholder = (rowProps: IDetailsRowProps): React.ReactNode => {
     const { columns, compact } = rowProps;
@@ -108,17 +108,17 @@ export class ShimmeredDetailsList extends BaseComponent<IShimmeredDetailsListPro
         });
       }
       shimmerElementsRow.push(
-        <ShimmerElementsGroup key={columnIdx} width={`${groupWidth}px`} shimmerElements={shimmerElements} />
+        <ShimmerElementsGroup key={ columnIdx } width={ `${groupWidth}px` } shimmerElements={ shimmerElements } />
       );
     });
     // When resizing the window from narrow to wider, we need to cover the exposed Shimmer wave until the column resizing logic is done.
     shimmerElementsRow.push(
       <ShimmerElementsGroup
-        key={'endGap'}
-        width={'100%'}
-        shimmerElements={[{ type: ShimmerElementType.gap, width: '100%', height: gapHeight }]}
+        key={ 'endGap' }
+        width={ '100%' }
+        shimmerElements={ [{ type: ShimmerElementType.gap, width: '100%', height: gapHeight }] }
       />
     );
-    return <div style={{ display: 'flex' }}>{shimmerElementsRow}</div>;
-  };
+    return <div style={ { display: 'flex' } }>{ shimmerElementsRow }</div>;
+  }
 }
