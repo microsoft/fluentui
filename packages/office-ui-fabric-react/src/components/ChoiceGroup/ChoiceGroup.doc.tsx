@@ -50,6 +50,7 @@ export const ChoiceGroupPageProps: IDocPageProps = {
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/docs/ChoiceGroupDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/docs/ChoiceGroupDonts.md'),
   isHeaderVisible: true,
+  isFeedbackVisible: true,
   allowNativeProps: true,
   nativePropsElement: 'input'
 };

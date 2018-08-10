@@ -46,5 +46,6 @@ export const IconPageProps: IDocPageProps = {
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Icon/docs/IconDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Icon/docs/IconDonts.md'),
   isHeaderVisible: true,
+  isFeedbackVisible: true,
   allowNativeProps: true
 };
