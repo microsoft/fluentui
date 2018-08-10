@@ -44,25 +44,25 @@ export class StackHorizontalExample extends React.Component<IStackExampleProps, 
       <VerticalStack gap={5}>
         <Text size="xSmall">Default horizontal stack</Text>
         <HorizontalStack padding={padding} className={style}>
-          <Text size="tiny">Item One</Text>
-          <Text size="tiny">Item Two</Text>
-          <Text size="tiny">Item Three</Text>
+          <Text size="mini">Item One</Text>
+          <Text size="mini">Item Two</Text>
+          <Text size="mini">Item Three</Text>
         </HorizontalStack>
 
         <Text size="xSmall">Horizontal gap between items</Text>
         <HorizontalStack gap={10} padding={padding} className={style}>
-          <Text size="tiny">Item One</Text>
-          <Text size="tiny">Item Two</Text>
-          <Text size="tiny">Item Three</Text>
+          <Text size="mini">Item One</Text>
+          <Text size="mini">Item Two</Text>
+          <Text size="mini">Item Three</Text>
         </HorizontalStack>
 
         <Text size="xSmall">Growing items</Text>
         <HorizontalStack gap={5} padding={padding} className={style}>
           <HorizontalStack.Item grow={3} className={itemStyle}>
-            <Text size="tiny">Grow is 3</Text>
+            <Text size="mini">Grow is 3</Text>
           </HorizontalStack.Item>
           <HorizontalStack.Item grow className={itemStyle}>
-            <Text size="tiny">Grow is 1</Text>
+            <Text size="mini">Grow is 1</Text>
           </HorizontalStack.Item>
         </HorizontalStack>
 
@@ -78,16 +78,16 @@ export class StackHorizontalExample extends React.Component<IStackExampleProps, 
         />
         <HorizontalStack shrinkItems gap={5} padding={padding} className={shrinkingContainerStyle}>
           <HorizontalStack.Item grow className={itemStyle}>
-            <Text size="tiny">I shrink</Text>
+            <Text size="mini">I shrink</Text>
           </HorizontalStack.Item>
           <HorizontalStack.Item grow className={itemStyle}>
-            <Text size="tiny">I shrink</Text>
+            <Text size="mini">I shrink</Text>
           </HorizontalStack.Item>
           <HorizontalStack.Item grow preventShrink className={mergeStyles(itemStyle, { width: 500 })}>
-            <Text size="tiny">I don't shrink</Text>
+            <Text size="mini">I don't shrink</Text>
           </HorizontalStack.Item>
           <HorizontalStack.Item grow className={itemStyle}>
-            <Text size="tiny">I shrink</Text>
+            <Text size="mini">I shrink</Text>
           </HorizontalStack.Item>
         </HorizontalStack>
 
@@ -95,22 +95,22 @@ export class StackHorizontalExample extends React.Component<IStackExampleProps, 
         <div className={mergeStyles({ height: 100 })}>
           <HorizontalStack fillVertical gap={5} padding={padding} className={style}>
             <HorizontalStack.Item align="auto" className={itemStyle}>
-              <Text size="tiny">Auto-aligned item</Text>
+              <Text size="mini">Auto-aligned item</Text>
             </HorizontalStack.Item>
             <HorizontalStack.Item align="stretch" className={itemStyle}>
-              <Text size="tiny">Stretch-aligned item</Text>
+              <Text size="mini">Stretch-aligned item</Text>
             </HorizontalStack.Item>
             <HorizontalStack.Item align="baseline" className={itemStyle}>
-              <Text size="tiny">Baseline-aligned item</Text>
+              <Text size="mini">Baseline-aligned item</Text>
             </HorizontalStack.Item>
             <HorizontalStack.Item align="start" className={itemStyle}>
-              <Text size="tiny">Start-aligned item</Text>
+              <Text size="mini">Start-aligned item</Text>
             </HorizontalStack.Item>
             <HorizontalStack.Item align="center" className={itemStyle}>
-              <Text size="tiny">Center-aligned item</Text>
+              <Text size="mini">Center-aligned item</Text>
             </HorizontalStack.Item>
             <HorizontalStack.Item align="end" className={itemStyle}>
-              <Text size="tiny">End-aligned item</Text>
+              <Text size="mini">End-aligned item</Text>
             </HorizontalStack.Item>
           </HorizontalStack>
         </div>
