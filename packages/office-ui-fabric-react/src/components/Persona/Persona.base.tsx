@@ -31,7 +31,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
   }
 
   public render(): JSX.Element {
-    // wrappring default render behavior based of various this.props properties
+    // wrapping default render behavior based on various this.props properties
     const _onRenderPrimaryText = this._onRenderText(this._getText()),
       _onRenderSecondaryText = this._onRenderText(this.props.secondaryText),
       _onRenderTertiaryText = this._onRenderText(this.props.tertiaryText),
@@ -121,18 +121,18 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
   }
 
   /**
-   * to render various types of Text based on the className
-   * primaryText, secondaryText, tertinaryText, and optionalText
-   * @param cNames
+   * Renders various types of Text (primaryText, secondaryText, etc)
+   * based on the classNames passed
+   * @param classNames
    * @param renderFunction
    * @param defaultRenderFunction
    */
   private _renderElement(
-    cNames: string,
+    classNames: string,
     renderFunction: IRenderFunction<IPersonaProps> | undefined,
     defaultRenderFunction: IRenderFunction<IPersonaProps> | undefined
   ): JSX.Element {
-    return <div className={cNames}>{renderFunction && renderFunction(this.props, defaultRenderFunction)}</div>;
+    return <div className={classNames}>{renderFunction && renderFunction(this.props, defaultRenderFunction)}</div>;
   }
 
   /**
