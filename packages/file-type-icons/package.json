@@ -19,7 +19,8 @@
   "disabledTasks": [
     "sass",
     "karma",
-    "jest"
+    "jest",
+    "build-codepen-examples"
   ],
   "devDependencies": {
     "@types/react": "16.3.16",

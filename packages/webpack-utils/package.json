@@ -17,7 +17,8 @@
   "disabledTasks": [
     "copy",
     "karma",
-    "webpack"
+    "webpack",
+    "build-codepen-examples"
   ],
   "devDependencies": {
     "@types/jest": "23.0.0",
