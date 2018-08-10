@@ -20,7 +20,7 @@ export class Chart extends React.Component<IChartInternalProps, {}> {
 
   public constructor(props: IChartInternalProps) {
     super(props);
-    console.log(props.chartType, props);
+
     if (props.chartLabels && props.chartLabels.length === 1) {
       this._chartLabel = props.chartLabels[0];
     }

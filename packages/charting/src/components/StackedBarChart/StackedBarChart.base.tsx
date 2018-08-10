@@ -12,7 +12,7 @@ const getClassNames = classNamesFunction<IStackedBarChartStyleProps, IStackedBar
 export class StackedBarChartBase extends React.Component<IStackedBarChartProps, {}> {
   public static defaultProps: Partial<IStackedBarChartProps> = {
     data: [],
-    width: 500,
+    width: 250,
     barHeight: 16,
     hideRatioWhenTwoDatapoints: false,
     hideLegend: false
