@@ -4,7 +4,7 @@ import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 export interface IStackedBarChart {}
 import { IDataPoint } from '../../types/IDataPoint';
 
-export { IDataPoint } from '../../types/IDataPoint';
+export { IDataPoint, ILegendDataItem } from '../../types';
 
 export interface IStackedBarChartProps {
   /**

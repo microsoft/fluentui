@@ -1,16 +1,7 @@
 import { IStyle } from '@uifabric/charting/lib/Styling';
+import { ILegendDataItem } from '../../types/ILegendDataItem';
 
-export interface ILegendDataItem {
-  /**
-   * Text to be displayed for legend item.
-   */
-  legendText: string | number;
-
-  /**
-   * Color for the specific legend
-   */
-  legendColor: string;
-}
+export { ILegendDataItem } from '../../types/ILegendDataItem';
 
 export interface ILegendProps {
   /**

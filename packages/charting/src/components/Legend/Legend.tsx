@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { ILegendProps, ILegendDataItem, ILegendStyles } from '@uifabric/charting/lib/components/Legend/Legend.types';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { getLegendStyles, getLegendColorStyle } from '@uifabric/charting/lib/components/Legend/Legend.styles';
-import { mergeStyles } from '@uifabric/charting/lib/Styling';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+
+import { ILegendProps, ILegendDataItem, ILegendStyles } from './Legend.types';
+import { getLegendStyles, getLegendColorStyle } from './Legend.styles';
 
 export const Legend: React.SFC<ILegendProps> = (props: ILegendProps) => {
   const getClassNames = classNamesFunction<{}, ILegendStyles>();

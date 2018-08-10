@@ -96,8 +96,8 @@ export class Layout extends React.Component<ILayoutProps> {
               }
               case CardContentType.Chart: {
                 const {
-                  chartLabel,
-                  colors,
+                  chartLabels,
+                  legendColors,
                   barWidth,
                   data,
                   chartType,
@@ -105,9 +105,9 @@ export class Layout extends React.Component<ILayoutProps> {
                 } = cardContent.content as IChartProps;
                 contentArea.push(
                   <Chart
-                    chartLabel={chartLabel}
+                    chartLabels={chartLabels}
                     chartType={chartType}
-                    colors={colors}
+                    legendColors={legendColors}
                     barWidth={barWidth}
                     data={data}
                     dataPoints={dataPoints}

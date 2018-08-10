@@ -1,5 +1,4 @@
-import { IDataPoint } from '@uifabric/charting/lib/types/IDataPoint';
-import { ILegendDataItem } from '@uifabric/charting/lib/components/Legend/Legend.types';
+import { IDataPoint, ILegendDataItem } from './StackedBarChart.types';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 
 export interface IMultiStackedBarChartProps {

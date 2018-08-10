@@ -1,12 +1,11 @@
 import * as React from 'react';
-import { IDataPoint } from './StackedBarChart.types';
-
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
-
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+
+import { Legend } from '../Legend/Legend';
+
+import { IDataPoint, ILegendDataItem } from './StackedBarChart.types';
 import { IStackedBarChartProps, IStackedBarChartStyleProps, IStackedBarChartStyles } from './StackedBarChart.types';
-import { Legend } from '@uifabric/charting/lib/components/Legend/Legend';
-import { ILegendDataItem } from '@uifabric/charting/lib/components/Legend/Legend.types';
 
 const getClassNames = classNamesFunction<IStackedBarChartStyleProps, IStackedBarChartStyles>();
 

@@ -1,15 +1,13 @@
 import * as React from 'react';
-import {
-  IMultiStackedBarChartProps,
-  IMultiStackedBarChartStyles
-} from '@uifabric/charting/lib/components/StackedBarChart/MultiStackedBarChart.types';
-import { IDataPoint } from '@uifabric/charting/lib/types/IDataPoint';
-import { StackedBarChart } from '@uifabric/charting/lib/components/StackedBarChart/StackedBarChart';
-import { ILegendDataItem } from '@uifabric/charting/lib/components/Legend/Legend.types';
-import { Legend } from '@uifabric/charting/lib/components/Legend/Legend';
-import { classNamesFunction } from '@uifabric/charting/lib/Utilities';
-import { getMultiStackedBarChartStyles } from '@uifabric/charting/lib/components/StackedBarChart/MultiStackedBarChart.styles';
+import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
+
+import { Legend } from '../Legend/Legend';
+
+import { IMultiStackedBarChartProps, IMultiStackedBarChartStyles } from './MultiStackedBarChart.types';
+import { IDataPoint, ILegendDataItem } from './StackedBarChart.types';
+import { StackedBarChart } from './StackedBarChart';
+import { getMultiStackedBarChartStyles } from './MultiStackedBarChart.styles';
 
 export class MultiStackedBarChart extends React.Component<IMultiStackedBarChartProps, {}> {
   private _classNames: IProcessedStyleSet<IMultiStackedBarChartStyles>;
