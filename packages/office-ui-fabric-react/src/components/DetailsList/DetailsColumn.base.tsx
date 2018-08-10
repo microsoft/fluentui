@@ -274,6 +274,9 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
 
   private _onDragEnd(item?: any, event?: MouseEvent): void {
     const classNames = this._classNames;
+    if (event) {
+      this._updateHeaderDragInfo(-1, event);
+    }
     this._root.current.classList.remove(classNames.borderWhileDragging);
   }
 

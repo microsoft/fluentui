@@ -424,14 +424,14 @@ describe('ComboBox', () => {
     const wrapper = mount(
       <ComboBox
         label="testgroup"
-        options={ DEFAULT_OPTIONS }
+        options={DEFAULT_OPTIONS}
         autoComplete="off"
-        allowFreeform={ true }
+        allowFreeform={true}
         text="hikari"
         // tslint:disable-next-line:jsx-no-lambda
-        onChanged={ (option?: IComboBoxOption, index?: number, value?: string) => {
+        onChanged={(option?: IComboBoxOption, index?: number, value?: string) => {
           updatedText = value;
-        } }
+        }}
       />
     );
 

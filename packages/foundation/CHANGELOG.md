@@ -1,6 +1,13 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Wed, 08 Aug 2018 10:25:08 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Aug 2018 10:26:09 GMT and should not be manually modified.
+
+## 0.2.4
+Fri, 10 Aug 2018 10:26:09 GMT
+
+### Patches
+
+- Add support for contextual theming and styling.
 
 ## 0.2.3
 Wed, 08 Aug 2018 10:25:08 GMT
