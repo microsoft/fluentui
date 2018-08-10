@@ -13,7 +13,7 @@ require('style-loader!css-loader!react-resizable/css/styles.css');
 require('style-loader!css-loader!./DashboardGridLayout.css');
 
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
-const rowHeight = 50;
+const rowHeight = 56;
 const breakpoints = {
   lg: 1920,
   md: 1366,

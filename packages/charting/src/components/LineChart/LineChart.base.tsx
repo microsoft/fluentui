@@ -135,7 +135,7 @@ export class LineChartBase extends React.Component<ILineChartProps, {}> {
       for (let j = 1; j < this._points[i].length; j++) {
         lines.push(
           <line
-            key={lines.length}
+            key={i + '_' + j}
             x1={xLineScale(this._points[i][j - 1].x as number)}
             y1={this._height - yLineScale(this._points[i][j - 1].y)}
             x2={xLineScale(this._points[i][j].x as number)}
@@ -169,7 +169,7 @@ export class LineChartBase extends React.Component<ILineChartProps, {}> {
       for (let j = 1; j < this._points[i].length; j++) {
         lines.push(
           <line
-            key={lines.length}
+            key={i + '_' + j}
             x1={xLineScale(j - 1)}
             y1={this._height - yLineScale(this._points[i][j - 1].y)}
             x2={xLineScale(j)}

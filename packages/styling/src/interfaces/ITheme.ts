@@ -8,6 +8,7 @@ export interface ITheme {
   fonts: IFontStyles;
   semanticColors: ISemanticColors;
   isInverted: boolean;
+
   /**
    * This setting is for a very narrow use case and you probably don't need to worry about,
    * unless you share a environment with others that also use fabric.
@@ -17,6 +18,7 @@ export interface ITheme {
    * Customizer will not get the global styles applied to them.
    */
   disableGlobalClassNames: boolean;
+
   /**
    * @internal
    * The typography property is still in an experimental phase. The intent is the have it

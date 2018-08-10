@@ -39,6 +39,13 @@ $nav-group-header-height: 40px;
   }
 }
 
+.searchBox {
+  display: flex;
+  &.isHomePage {
+    display: none;
+  }
+}
+
 // The home page link
 .isHomePage a,
 .isHomePage.isActive a {
