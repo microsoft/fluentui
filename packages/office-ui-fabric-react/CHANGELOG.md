@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 06 Aug 2018 18:19:56 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Aug 2018 11:26:02 GMT and should not be manually modified.
+
+## 5.119.0
+Fri, 10 Aug 2018 11:26:02 GMT
+
+### Minor changes
+
+- Adds a new Shimmer component to OUFR 5.0
 
 ## 5.118.3
 Mon, 06 Aug 2018 18:19:56 GMT
