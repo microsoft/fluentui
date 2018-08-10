@@ -18,7 +18,10 @@ export const getLegendStyles = (): ILegendStyles => {
       fontSize: '12px',
       fontFamily: 'Segoe UI',
       paddingLeft: '7px',
-      paddingRight: '16px'
+      paddingRight: '16px',
+      textOverflow: 'ellipsis',
+      overflow: 'hidden',
+      whiteSpace: 'nowrap'
     }
   };
 };
