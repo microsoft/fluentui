@@ -4,7 +4,7 @@ import {
   ITheme,
   IPartialTheme,
   createTheme
-} from "office-ui-fabric-react/lib/Styling";
+} from 'office-ui-fabric-react/lib/Styling';
 
 function makeThemeFromPartials(
   originalTheme: IPartialTheme,
