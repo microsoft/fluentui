@@ -2,6 +2,25 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.8.0",
+      "tag": "@uifabric/fabric-website_v5.8.0",
+      "date": "Fri, 10 Aug 2018 11:26:02 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "db6bb9fa90dc2f5afa60d38bdb79fa826d7cfd02",
+            "comment": "Adds new Shimmer component to fabric-website."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.118.3 <6.0.0` to `>=5.119.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.7.6",
       "tag": "@uifabric/fabric-website_v5.7.6",
       "date": "Wed, 11 Jul 2018 13:26:02 GMT",
