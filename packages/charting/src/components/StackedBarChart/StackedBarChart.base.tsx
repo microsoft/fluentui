@@ -12,16 +12,17 @@ const getClassNames = classNamesFunction<IStackedBarChartStyleProps, IStackedBar
 export class StackedBarChartBase extends React.Component<IStackedBarChartProps, {}> {
   public static defaultProps: Partial<IStackedBarChartProps> = {
     data: [],
-    width: 250,
+    width: 394,
     barHeight: 16,
-    hideRatioWhenTwoDatapoints: false,
+    hideNumberDisplay: false,
     hideLegend: false
   };
   private _colors: string[];
   private _classNames: IProcessedStyleSet<IStackedBarChartStyles>;
+
   constructor(props: IStackedBarChartProps) {
     super(props);
-    const { theme, className, styles, width, barHeight } = this.props;
+    const { theme, className, styles, width, barHeight } = props;
 
     const { palette } = theme!;
     this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
@@ -33,13 +34,13 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     });
   }
   public render(): JSX.Element {
-    const { data, width, barHeight, chartTitle, hideRatioWhenTwoDatapoints, hideLegend } = this.props;
+    const { data, width, barHeight, chartTitle, hideNumberDisplay, hideLegend } = this.props;
 
     const bars = this._createBars(data!, width!, barHeight!);
-
     const legendBar = this._createLegendBars(data!);
 
-    const showRatio = hideRatioWhenTwoDatapoints === false && data!.length === 2;
+    const showRatio = hideNumberDisplay === false && data!.length === 2;
+    const showNumber = hideNumberDisplay === false && data!.length === 1;
     let total = 0;
     if (showRatio === true) {
       total = data!.reduce((acc: number, value: IDataPoint) => acc + value.y, 0);
@@ -58,6 +59,11 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           {showRatio && (
             <div>
               <strong>{data![0].y}</strong>/{total}
+            </div>
+          )}
+          {showNumber && (
+            <div>
+              <strong>{data![0].y}</strong>
             </div>
           )}
         </div>

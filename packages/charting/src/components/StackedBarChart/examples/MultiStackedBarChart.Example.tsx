@@ -24,5 +24,5 @@ export const MultiStackedBarChartExample: React.SFC<{}> = () => {
 
   const chartTitles: string[] = ['Monitored', 'Unmonitored'];
 
-  return <MultiStackedBarChart data={points} legendData={colors} chartTitles={chartTitles} width={500} />;
+  return <MultiStackedBarChart data={points} legendData={colors} chartTitles={chartTitles} width={394} />;
 };

@@ -59,7 +59,7 @@ export class MultiStackedBarChart extends React.Component<IMultiStackedBarChartP
                 colors={colors}
                 data={points}
                 hideLegend={true}
-                hideRatioWhenTwoDatapoints={true}
+                hideNumberDisplay={true}
               />
             </div>
           );

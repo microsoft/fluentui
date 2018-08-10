@@ -9,7 +9,7 @@ export const getLegendStyles = (): ILegendStyles => {
     },
     legendContainer: {
       display: 'flex',
-      flexWrap: 'wrap',
+      flexWrap: 'nowrap',
       alignItems: 'center',
       marginTop: '8px',
       marginBottom: '8px'

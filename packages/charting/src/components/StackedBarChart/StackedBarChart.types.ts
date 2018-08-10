@@ -31,11 +31,11 @@ export interface IStackedBarChartProps {
   hideLegend?: boolean;
 
   /**
-   * Do not show ratio for 2 or less datapoints
+   * Do not show number/ratio on top of bar
    *
    * @default false
    */
-  hideRatioWhenTwoDatapoints?: boolean;
+  hideNumberDisplay?: boolean;
 
   /**
    * Colors from which to select the color of each bar.
