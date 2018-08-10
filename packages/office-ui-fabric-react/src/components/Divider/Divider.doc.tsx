@@ -36,5 +36,6 @@ export const DividerPageProps: IDocPageProps = {
   >('!raw-loader!office-ui-fabric-react/src/components/Divider/docs/DividerBestPractices.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/docs/DividerDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/docs/DividerDonts.md'),
-  isHeaderVisible: true
+  isHeaderVisible: true,
+  isFeedbackVisible: true
 };

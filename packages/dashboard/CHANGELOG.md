@@ -1,6 +1,36 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Mon, 06 Aug 2018 10:27:53 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Aug 2018 10:26:08 GMT and should not be manually modified.
+
+## 0.14.0
+Fri, 10 Aug 2018 10:26:08 GMT
+
+### Minor changes
+
+- Fix dashboard card height to match red lines
+
+### Patches
+
+- update leftNav style change
+
+## 0.13.0
+Wed, 08 Aug 2018 10:25:07 GMT
+
+### Minor changes
+
+- Adding multiple line chart to charting package. Consuming the multiple line chart in the dashboard Card.
+
+### Patches
+
+- Fix bad imports that break AMD.
+- Update Auto-FontSize package to 1.0.9
+
+## 0.12.0
+Tue, 07 Aug 2018 10:22:32 GMT
+
+### Minor changes
+
+- Adding props that take colors for icon and content in each cell of gridlist
 
 ## 0.11.0
 Mon, 06 Aug 2018 10:27:53 GMT

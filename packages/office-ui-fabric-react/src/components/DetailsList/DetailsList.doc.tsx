@@ -108,7 +108,8 @@ function generateProps(example: { title: string; code: string; view: JSX.Element
     componentUrl:
       'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList',
     examples: [example],
-    isHeaderVisible: false
+    isHeaderVisible: false,
+    isFeedbackVisible: true
   };
 }
 

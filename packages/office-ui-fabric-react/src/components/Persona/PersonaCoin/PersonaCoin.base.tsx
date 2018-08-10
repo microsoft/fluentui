@@ -106,7 +106,6 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
 
     const shouldRenderInitials = Boolean(
       !this.state.isImageLoaded &&
-        onRenderCoin === this._onRenderCoin &&
         ((showInitialsUntilImageLoads && imageUrl) || !imageUrl || this.state.isImageError || hideImage)
     );
 

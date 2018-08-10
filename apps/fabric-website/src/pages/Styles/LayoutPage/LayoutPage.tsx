@@ -147,7 +147,8 @@ export class LayoutPage extends React.Component<any, any> {
           </p>
           <p>
             Newer versions of Fabric require the <code>dir</code> attribute to be set to specify how the content should
-            be rendered (whether left-to-right, <code>ltr</code>, or right-to-left, <code>rtl</code>).
+            be rendered (whether left-to-right, <code>ltr</code>, or right-to-left, <code>rtl</code>
+            ).
           </p>
         </div>
         <CodeBlock language="html" isLightTheme={true}>

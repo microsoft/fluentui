@@ -160,7 +160,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
       aria-hidden={true}
       aria-label={undefined}
       aria-labelledby={undefined}
-      aria-pressed={false}
+      aria-pressed={undefined}
       checked={false}
       className=
           ms-Button
@@ -452,7 +452,7 @@ exports[`ComboBox renders a ComboBox with a Keytip correctly 1`] = `
       aria-hidden={true}
       aria-label={undefined}
       aria-labelledby={undefined}
-      aria-pressed={false}
+      aria-pressed={undefined}
       checked={false}
       className=
           ms-Button

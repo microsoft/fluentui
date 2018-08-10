@@ -134,7 +134,7 @@ export class LargeCardBasicExample extends React.Component<{}, {}> {
         content: {
           chartLabel: 'My first chart!',
           chartType: ChartType.HorizontalBarChart,
-          data: datapoints,
+          dataPoints: datapoints,
           colors: ['red', 'yellow']
         }
       }

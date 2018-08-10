@@ -418,4 +418,29 @@ describe('ComboBox', () => {
       expect(callout.classList.contains('foo')).toBeTruthy();
     }, 0);
   });
+
+  it('Can clear text in controlled case with autoComplete off and allowFreeform on', () => {
+    let updatedText;
+    const wrapper = mount(
+      <ComboBox
+        label="testgroup"
+        options={DEFAULT_OPTIONS}
+        autoComplete="off"
+        allowFreeform={true}
+        text="hikari"
+        // tslint:disable-next-line:jsx-no-lambda
+        onChanged={(option?: IComboBoxOption, index?: number, value?: string) => {
+          updatedText = value;
+        }}
+      />
+    );
+
+    const input = wrapper.find('input');
+    (input.instance() as any).value = '';
+    input.simulate('input', { target: { value: '' } });
+    input.simulate('keydown', { which: KeyCodes.enter });
+    wrapper.update();
+
+    expect(updatedText).toEqual('');
+  });
 });

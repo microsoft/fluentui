@@ -29,5 +29,6 @@ export const SelectedPeopleListPageProps: IDocPageProps = {
   donts: require<
     string
   >('!raw-loader!office-ui-fabric-react/src/components/SelectedItemsList/docs/SelectedPeopleListDonts.md'),
-  isHeaderVisible: true
+  isHeaderVisible: true,
+  isFeedbackVisible: true
 };

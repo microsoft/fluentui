@@ -6,7 +6,7 @@ import { SlimNav } from './SlimNav';
 import { getStyles } from './Nav.styles';
 import { styled, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { NavLink } from './NavLink';
-import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/components/FocusZone';
+import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 
 const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();
 

@@ -1,9 +1,6 @@
 import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
 import { NeutralColors } from './FluentColors';
-import {
-  IChoiceGroupOptionStyleProps,
-  IChoiceGroupOptionStyles
-} from 'office-ui-fabric-react/lib/components/ChoiceGroup/ChoiceGroupOption';
+import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { FontSizes } from './FluentType';
 import { Depths } from './FluentDepths';
 

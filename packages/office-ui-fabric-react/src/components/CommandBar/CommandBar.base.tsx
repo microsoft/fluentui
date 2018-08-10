@@ -12,7 +12,6 @@ import { IOverflowSet, OverflowSet } from '../../OverflowSet';
 import { IResizeGroup, ResizeGroup } from '../../ResizeGroup';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { classNamesFunction, createRef } from '../../Utilities';
-
 import { CommandBarButton, IButtonProps } from '../../Button';
 import { TooltipHost } from '../../Tooltip';
 
@@ -163,11 +162,13 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       return item.onRender(item, () => undefined);
     }
     const commandButtonProps: ICommandBarItemProps = {
+      allowDisabledFocus: true,
       ...item,
       styles: { root: { height: '100%' }, ...item.buttonStyles },
       className: css('ms-CommandBarItem-link', item.className),
       text: !item.iconOnly ? itemText : undefined,
-      menuProps: item.subMenuProps
+      menuProps: item.subMenuProps,
+      onClick: this._onButtonClick(item)
     };
 
     if (item.iconOnly && itemText !== undefined) {
@@ -180,6 +181,18 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
 
     return <CommandButtonType {...commandButtonProps as IButtonProps} />;
   };
+
+  private _onButtonClick(item: ICommandBarItemProps): (ev: React.MouseEvent<HTMLButtonElement>) => void {
+    return ev => {
+      // inactive is deprecated. remove check in 7.0
+      if (item.inactive) {
+        return;
+      }
+      if (item.onClick) {
+        item.onClick(ev, item);
+      }
+    };
+  }
 
   private _onRenderOverflowButton = (overflowItems: ICommandBarItemProps[]): JSX.Element => {
     const {

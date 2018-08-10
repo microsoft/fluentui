@@ -18,12 +18,12 @@ export const HoverCardPageProps: IDocPageProps = {
   componentStatus: HoverCardStatus,
   examples: [
     {
-      title: 'HoverCard',
+      title: 'Example 1: HoverCard wrapping an element',
       code: HoverCardBasicExampleCode,
       view: <HoverCardBasicExample />
     },
     {
-      title: 'HoverCard using Target and at right center',
+      title: 'Example 2: HoverCard using Target, DirectionalHint and custom HotKey',
       code: HoverCardTargetExampleCode,
       view: <HoverCardTargetExample />
     }
@@ -33,6 +33,10 @@ export const HoverCardPageProps: IDocPageProps = {
     require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/ExpandingCard.types.ts')
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/docs/HoverCardOverview.md'),
+  bestPractices: 'Use this guidance when need to fine tune properties of HoverCard',
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/docs/HoverCardDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/docs/HoverCardDonts.md'),
   isHeaderVisible: true,
+  isFeedbackVisible: true,
   allowNativeProps: true
 };

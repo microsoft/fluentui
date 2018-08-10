@@ -1,0 +1,255 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VerticalStack renders default VerticalStack correctly 1`] = `
+<div
+  className=
+
+      {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: auto;
+        width: auto;
+      }
+>
+  <div
+    className=
+
+        {
+          flex-shrink: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+  >
+    Item 1
+  </div>
+  <div
+    className=
+
+        {
+          flex-shrink: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+  >
+    Item 2
+  </div>
+</div>
+`;
+
+exports[`VerticalStack renders gap correctly 1`] = `
+<div
+  className=
+
+      {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: auto;
+        width: auto;
+      }
+>
+  <div
+    className=
+
+        {
+          flex-shrink: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+  >
+    Item 1
+  </div>
+  <div
+    className=
+
+        {
+          flex-shrink: 0;
+          margin-top: 5px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+  >
+    Item 2
+  </div>
+</div>
+`;
+
+exports[`VerticalStack renders growing items correctly 1`] = `
+<div
+  className=
+
+      {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: auto;
+        width: auto;
+      }
+>
+  <span
+    className=
+
+        {
+          flex-shrink: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+  >
+    Item 1
+  </span>
+  <span
+    className=
+
+        {
+          flex-shrink: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+  >
+    Item 2
+  </span>
+</div>
+`;
+
+exports[`VerticalStack renders item alignments correctly 1`] = `
+<div
+  className=
+
+      {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: auto;
+        width: auto;
+      }
+>
+  <span
+    className=
+
+        {
+          align-self: auto;
+          flex-shrink: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+  >
+    Auto
+  </span>
+  <span
+    className=
+
+        {
+          align-self: stretch;
+          flex-shrink: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+  >
+    Stretch
+  </span>
+  <span
+    className=
+
+        {
+          align-self: baseline;
+          flex-shrink: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+  >
+    Baseline
+  </span>
+  <span
+    className=
+
+        {
+          align-self: flex-start;
+          flex-shrink: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+  >
+    Start
+  </span>
+  <span
+    className=
+
+        {
+          align-self: center;
+          flex-shrink: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+  >
+    Center
+  </span>
+  <span
+    className=
+
+        {
+          align-self: flex-end;
+          flex-shrink: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+  >
+    End
+  </span>
+</div>
+`;
+
+exports[`VerticalStack renders shrinking items correctly 1`] = `
+<div
+  className=
+
+      {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: auto;
+        width: auto;
+      }
+>
+  <span
+    className=
+
+        {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+  >
+    Item 1
+  </span>
+  <span
+    className=
+
+        {
+          flex-shrink: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+  >
+    Item 2
+  </span>
+</div>
+`;

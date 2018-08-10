@@ -1,6 +1,27 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 06 Aug 2018 10:27:53 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Aug 2018 10:26:08 GMT and should not be manually modified.
+
+## 6.23.0
+Fri, 10 Aug 2018 10:26:08 GMT
+
+### Minor changes
+
+- Stack: render vertically by default, add horizontalAlignment, verticalAlignment, fillHorizontal, fillVertical properties
+- Updating `Text` component with fixes to make it usable.
+
+### Patches
+
+- Inject customizations into Foundation. Add contextual theming and styling examples.
+
+## 6.22.6
+Wed, 08 Aug 2018 10:25:07 GMT
+
+### Patches
+
+- Fix bad imports that break AMD.
+- Implement base state class and controlled vs. uncontrolled behavior.
+- Stack: merge the className of a StackItem with the className of its first child
 
 ## 6.22.5
 Mon, 06 Aug 2018 10:27:53 GMT
