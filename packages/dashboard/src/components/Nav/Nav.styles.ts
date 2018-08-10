@@ -13,21 +13,22 @@ export type IFloatingNavStyle = IStyle & {
   withChild?: IStyle;
 };
 
-const navFontSize = 13;
+const navFontSize = 14;
 const navTextColor = '#FFF';
 const navWidth = 280;
-const navCollapsedWidth = 50;
+const navCollapsedWidth = 48;
 const navFloatingWidth = 230;
-const navItemHeight = 50;
-const navBackgroundColor = '#333333';
-const navItemHoverColor = '#767676';
+const navItemHeight = 48;
+const navBackgroundColor = '#E5E5E5';
+const navItemHoverColor = '#CCCCCC';
 const navGroupSeparatorItemHeight = 40;
-const navItemWithChildBgColor = '#505050';
-const navItemSelectedColor = '#666666';
+const navGroupSeparatorWithGroupNameHeight = 70;
+const navItemWithChildBgColor = '#CCCCCC';
+const navItemSelectedColor = '#B7B7B7';
 const navItemIndentSize = 50;
 
 export const getStyles = (props: INavStyleProps): INavStyles => {
-  const { isSelected, hasChildren, nestingLevel, isCollapsed, scrollTop } = props;
+  const { isSelected, hasChildren, nestingLevel, isCollapsed, scrollTop, isChildLinkSelected, hasGroupName } = props;
 
   return {
     root: {
@@ -51,7 +52,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
           outline: 'none',
           selectors: {
             ':focus': {
-              backgroundColor: navItemHoverColor
+              backgroundColor: navItemSelectedColor
             }
           }
         }
@@ -68,11 +69,22 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
         }
       }
     },
+    navItemBarMarker: {
+      position: 'absolute',
+      marginLeft: !!nestingLevel && nestingLevel > 0 && !hasChildren ? '-9px' : '6px',
+      marginTop: '12px',
+      width: '2px',
+      height: '24px',
+      backgroundColor: '#0078D4',
+      display: isSelected || isChildLinkSelected ? 'block' : 'none',
+      borderWidth: 0
+    },
     navItemIconColumn: {
       width: navCollapsedWidth,
-      fontSize: '15px',
+      fontSize: '16px',
       lineHeight: navItemHeight,
-      textAlign: 'center'
+      textAlign: 'center',
+      color: '#000000'
     },
     navItemNameColumn: {
       width: '100%',
@@ -81,7 +93,8 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
       display: 'inline-block',
       textOverflow: 'ellipsis',
       overflow: 'hidden',
-      whiteSpace: 'nowrap'
+      whiteSpace: 'nowrap',
+      color: '#000000'
     },
     navSlimItemRoot: {
       selectors: {
@@ -121,18 +134,19 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
     },
     navGroupSeparatorRoot: {
       width: '100%',
-      height: navGroupSeparatorItemHeight,
+      height: hasGroupName ? navGroupSeparatorWithGroupNameHeight : navGroupSeparatorItemHeight,
       textAlign: 'center'
     },
     navGroupSeparatorHrLine: {
       height: '20px',
       borderBottom: `1px solid ${navItemWithChildBgColor}`
     },
-    navGroupSeparatorGroupName: {
-      lineHeight: navGroupSeparatorItemHeight,
-      padding: '0 8px',
-      color: '#9B9B9B',
-      backgroundColor: navBackgroundColor
+    navGroupSeparatorHeaderGroupName: {
+      position: 'absolute',
+      marginTop: '40px',
+      left: '24px',
+      color: '#000000',
+      fontWeight: 'bold'
     },
     navToggler: {
       height: navItemHeight,
@@ -143,7 +157,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
           backgroundColor: navItemHoverColor
         }
       },
-      textAlign: 'right'
+      textAlign: 'left'
     }
   };
 };

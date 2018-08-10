@@ -348,6 +348,9 @@ exports[`DetailsList renders List correctly 1`] = `
                 &:active {
                   background: #eaeaea;
                 }
+                &:hover i[data-icon-name="GripperBarVertical"] {
+                  display: block;
+                }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
             data-item-key="key"
@@ -920,6 +923,9 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                 }
                 &:active {
                   background: #eaeaea;
+                }
+                &:hover i[data-icon-name="GripperBarVertical"] {
+                  display: block;
                 }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
@@ -1494,6 +1500,9 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                 &:active {
                   background: #eaeaea;
                 }
+                &:hover i[data-icon-name="GripperBarVertical"] {
+                  display: block;
+                }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
             data-item-key="key"
@@ -1683,6 +1692,9 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                 &:active {
                   background: #eaeaea;
                 }
+                &:hover i[data-icon-name="GripperBarVertical"] {
+                  display: block;
+                }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
             data-item-key="name"
@@ -1871,6 +1883,9 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                 }
                 &:active {
                   background: #eaeaea;
+                }
+                &:hover i[data-icon-name="GripperBarVertical"] {
+                  display: block;
                 }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}

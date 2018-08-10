@@ -99,7 +99,7 @@ class ComboBoxOptionWrapper extends React.Component<IComboBoxOptionWrapperProps,
   }
 }
 
-@customizable('ComboBox', ['theme', 'styles'])
+@customizable('ComboBox', ['theme', 'styles'], true)
 export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   public static defaultProps: IComboBoxProps = {
     options: [],
@@ -1015,6 +1015,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           selectedIndices: selectedIndices
         });
       }
+    } else if (allowFreeform && currentPendingValue === '' && onChanged) {
+      // trigger onChanged to clear value
+      onChanged(undefined, undefined, currentPendingValue, submitPendingValueEvent);
     } else if (currentPendingValueValidIndex >= 0) {
       // Since we are not allowing freeform, we must have a matching
       // to be able to update state
@@ -1120,7 +1123,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const { onRenderOption = this._onRenderOptionContent } = this.props;
 
     return (
-      <div key={item.key} className={this._classNames.header} role="heading">
+      <div key={item.key} className={this._classNames.header}>
         {onRenderOption(item, this._onRenderOptionContent)}
       </div>
     );

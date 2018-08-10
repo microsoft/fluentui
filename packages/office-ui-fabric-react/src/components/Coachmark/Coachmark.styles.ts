@@ -361,7 +361,10 @@ export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(
     ],
     ariaContainer: {
       position: 'fixed',
-      opacity: 0
+      opacity: 0,
+      height: 0,
+      width: 0,
+      pointerEvents: 'none'
     }
   };
 }

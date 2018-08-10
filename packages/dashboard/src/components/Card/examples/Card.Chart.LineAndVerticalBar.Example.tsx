@@ -43,6 +43,22 @@ export class LineAndVerticalBarChartExample extends React.Component<{}, {}> {
       { x: 96, y: 22 },
       { x: 100, y: 19 }
     ];
+
+    const points: IDataPoint[][] = [
+      [
+        { x: 0, y: 10 },
+        { x: 5, y: 18 },
+        { x: 10, y: 24 },
+        { x: 15, y: 25 },
+        { x: 20, y: 15 },
+        { x: 25, y: 30 },
+        { x: 30, y: 18 },
+        { x: 35, y: 32 },
+        { x: 40, y: 29 },
+        { x: 45, y: 43 },
+        { x: 50, y: 45 }
+      ]
+    ];
     const colors: string[] = [DefaultPalette.yellow, DefaultPalette.blue, DefaultPalette.red];
 
     const contentAreaList = [
@@ -52,7 +68,7 @@ export class LineAndVerticalBarChartExample extends React.Component<{}, {}> {
         content: {
           chartLabel: 'Vertical bar chart example',
           chartType: ChartType.VerticalBarChart,
-          data: datapoints,
+          dataPoints: datapoints,
           colors: colors
         }
       },
@@ -62,7 +78,7 @@ export class LineAndVerticalBarChartExample extends React.Component<{}, {}> {
         content: {
           chartLabel: 'Line chart example',
           chartType: ChartType.LineChart,
-          data: datapoints,
+          data: points,
           colors: colors
         }
       }

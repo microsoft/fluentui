@@ -62,7 +62,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
       (tooltipProps && tooltipProps.onRenderContent && tooltipProps.onRenderContent())
     );
     const showTooltip = isTooltipVisible && isContentPresent;
-    const ariaDescribedBy = (setAriaDescribedBy && isTooltipVisible && isContentPresent) ? tooltipId : undefined;
+    const ariaDescribedBy = setAriaDescribedBy && isTooltipVisible && isContentPresent ? tooltipId : undefined;
 
     return (
       <div

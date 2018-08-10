@@ -2,6 +2,34 @@
   "name": "@uifabric/foundation",
   "entries": [
     {
+      "version": "0.2.4",
+      "tag": "@uifabric/foundation_v0.2.4",
+      "date": "Fri, 10 Aug 2018 10:26:09 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "e70852b93ca71d709fcf64c1973bb9bf1ff659bf",
+            "comment": "Add support for contextual theming and styling."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.2.3",
+      "tag": "@uifabric/foundation_v0.2.3",
+      "date": "Wed, 08 Aug 2018 10:25:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "e33aed2e672ab52018f934d146517b0dfff9f84d",
+            "comment": "Align createComponent naming with React terminology."
+          }
+        ]
+      }
+    },
+    {
       "version": "0.2.2",
       "tag": "@uifabric/foundation_v0.2.2",
       "date": "Fri, 03 Aug 2018 10:25:59 GMT",

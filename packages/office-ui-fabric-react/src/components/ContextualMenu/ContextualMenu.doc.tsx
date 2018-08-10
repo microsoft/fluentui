@@ -100,5 +100,6 @@ export const ContextualMenuPageProps: IDocPageProps = {
   donts: require<
     string
   >('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/docs/ContextualMenuDonts.md'),
-  isHeaderVisible: true
+  isHeaderVisible: true,
+  isFeedbackVisible: true
 };

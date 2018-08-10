@@ -2,6 +2,25 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.13.0",
+      "tag": "@uifabric/utilities_v6.13.0",
+      "date": "Fri, 10 Aug 2018 10:26:09 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "b77f3bdfe3c4ae9c1b51f297921c23038de5f2ac",
+            "comment": "Customizable: add optional flag to allow customizer styles to be merged with component styles prop rather than overriding component styles"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "904f08478a0113198d8004ba757b9a82a6b6da8a",
+            "comment": "Adding merge helper for deep merging."
+          }
+        ]
+      }
+    },
+    {
       "version": "6.12.1",
       "tag": "@uifabric/utilities_v6.12.1",
       "date": "Fri, 27 Jul 2018 10:25:39 GMT",

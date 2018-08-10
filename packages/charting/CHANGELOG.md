@@ -1,6 +1,20 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Wed, 01 Aug 2018 10:25:51 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Aug 2018 10:26:08 GMT and should not be manually modified.
+
+## 0.13.1
+Fri, 10 Aug 2018 10:26:08 GMT
+
+### Patches
+
+- Charting: change svg boxSizing to content-box
+
+## 0.13.0
+Wed, 08 Aug 2018 10:25:07 GMT
+
+### Minor changes
+
+- Adding multiple line chart implementation to existing single line chart.
 
 ## 0.12.0
 Wed, 01 Aug 2018 10:25:51 GMT
