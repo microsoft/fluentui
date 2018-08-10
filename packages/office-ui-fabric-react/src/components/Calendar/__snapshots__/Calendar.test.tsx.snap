@@ -119,6 +119,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                 aria-multiselectable="false"
                 aria-readonly="true"
                 className="ms-DatePicker-table"
+                role="grid"
               >
                 <thead>
                   <tr>

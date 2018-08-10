@@ -207,6 +207,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
             aria-multiselectable="false"
             aria-labelledby={monthAndYearId}
             aria-activedescendant={activeDescendantId}
+            role="grid"
           >
             <thead>
               <tr>
