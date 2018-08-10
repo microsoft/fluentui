@@ -17,9 +17,12 @@ export interface IShimmeredDetailsListProps extends IDetailsListProps {
 
 const SHIMMER_INITIAL_ITEMS = 10;
 const DEFAULT_SHIMMER_HEIGHT = 7;
+const SHIMMER_LINE_VS_CELL_WIDTH_RATIO = 0.95;
 
 // This values are matching values from ./DetailsRow.css
-const DEFAULT_SIDE_PADDING = 8;
+const DEFAULT_RIGHT_SIDE_PADDING = 8;
+const DEFAULT_LEFT_SIDE_PADDING = 12;
+const DEFAULT_EXTRA_SIDE_PADDING = 24;
 const DEFAULT_ROW_HEIGHT = 42;
 const COMPACT_ROW_HEIGHT = 32;
 
@@ -76,11 +79,15 @@ export class ShimmeredDetailsList extends BaseComponent<IShimmeredDetailsListPro
 
     columns.map((column, columnIdx) => {
       const shimmerElements: IShimmerElement[] = [];
-      const groupWidth: number = DEFAULT_SIDE_PADDING * 2 + column.calculatedWidth!;
+      const groupWidth: number =
+        DEFAULT_RIGHT_SIDE_PADDING +
+        DEFAULT_LEFT_SIDE_PADDING +
+        column.calculatedWidth! +
+        (column.isPadded ? DEFAULT_EXTRA_SIDE_PADDING : 0);
 
       shimmerElements.push({
         type: ShimmerElementType.gap,
-        width: DEFAULT_SIDE_PADDING,
+        width: DEFAULT_LEFT_SIDE_PADDING,
         height: gapHeight
       });
 
@@ -92,18 +99,21 @@ export class ShimmeredDetailsList extends BaseComponent<IShimmeredDetailsListPro
         });
         shimmerElements.push({
           type: ShimmerElementType.gap,
-          width: DEFAULT_SIDE_PADDING,
+          width: DEFAULT_RIGHT_SIDE_PADDING,
           height: gapHeight
         });
       } else {
         shimmerElements.push({
           type: ShimmerElementType.line,
-          width: column.calculatedWidth! - DEFAULT_SIDE_PADDING * 3,
+          width: column.calculatedWidth! * SHIMMER_LINE_VS_CELL_WIDTH_RATIO,
           height: DEFAULT_SHIMMER_HEIGHT
         });
         shimmerElements.push({
           type: ShimmerElementType.gap,
-          width: DEFAULT_SIDE_PADDING * 4,
+          width:
+            DEFAULT_RIGHT_SIDE_PADDING +
+            (column.calculatedWidth! - column.calculatedWidth! * SHIMMER_LINE_VS_CELL_WIDTH_RATIO) +
+            (column.isPadded ? DEFAULT_EXTRA_SIDE_PADDING : 0),
           height: gapHeight
         });
       }
