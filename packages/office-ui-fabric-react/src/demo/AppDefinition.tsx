@@ -251,7 +251,14 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/searchbox'
         },
         {
-          component: require<any>('../components/SelectedItemsList/SelectedPeopleList/SelectedPeopleListPage').SelectedPeopleListPage,
+          component: require<any>('../components/Shimmer/ShimmerPage').ShimmerPage,
+          key: 'Shimmer',
+          name: 'Shimmer',
+          url: '#/examples/shimmer'
+        },
+        {
+          component: require<any>('../components/SelectedItemsList/SelectedPeopleList/SelectedPeopleListPage')
+            .SelectedPeopleListPage,
           key: 'SelectedPeopleList',
           name: 'SelectedPeopleList',
           url: '#examples/selectedpeoplelist'
