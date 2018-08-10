@@ -3,7 +3,14 @@
 exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = `
 <div>
   <p>
-     Hover over location of a row item to see the card 
+    Hover over the 
+    <i>
+      location
+    </i>
+     cell of a row item to see the card or use the keyboard to navigate to it.
+  </p>
+  <p>
+    When using the keyboard to tab to it, the card will open but navigation inside of it will not be available.
   </p>
   <div
     className="ms-Viewport"

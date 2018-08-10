@@ -170,6 +170,7 @@ storiesOf('Button Special Scenarios', module)
     </div>
   ))
   .add('no flex shrink', () => (
+    // tslint:disable-next-line:jsx-ban-props
     <div style={{ width: '300px' }}>
       <DefaultButton
         {...baseProps}

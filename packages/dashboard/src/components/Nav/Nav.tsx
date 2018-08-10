@@ -101,7 +101,7 @@ class NavComponent extends NavBase {
     const hasChildren = !!link.links && link.links.length > 0;
     const isSelected = (isLinkSelected && !hasChildren) || (isChildLinkSelected && !link.isExpanded);
     const { styles, showMore, onShowMoreLinkClicked, dataHint } = this.props;
-    const classNames = getClassNames(styles!, { isSelected, nestingLevel });
+    const classNames = getClassNames(styles!, { isSelected, nestingLevel, isChildLinkSelected });
     const linkText = this.getLinkText(link, showMore);
     const onClickHandler =
       link.isShowMoreLink && onShowMoreLinkClicked ? onShowMoreLinkClicked : this._onLinkClicked.bind(this, link);
@@ -123,6 +123,7 @@ class NavComponent extends NavBase {
         rightIconName={rightIconName}
         textClassName={classNames.navItemNameColumn}
         iconClassName={classNames.navItemIconColumn}
+        barClassName={classNames.navItemBarMarker}
       />
     );
   }
@@ -189,13 +190,14 @@ class NavComponent extends NavBase {
     }
 
     const { styles, enableCustomization } = this.props;
+    const hasGroupName = !!group.name;
 
     // skip customization group if customization is not enabled
     if (!enableCustomization && group.groupType === NavGroupType.CustomizationGroup) {
       return null;
     }
 
-    const classNames = getClassNames(styles!, {});
+    const classNames = getClassNames(styles!, { hasGroupName });
 
     let isGroupHeaderVisible = false;
 
@@ -209,7 +211,7 @@ class NavComponent extends NavBase {
         {isGroupHeaderVisible ? (
           <div className={classNames.navGroupSeparatorRoot}>
             <div className={classNames.navGroupSeparatorHrLine}>
-              {group.name ? <span className={classNames.navGroupSeparatorGroupName}>{group.name}</span> : null}
+              {group.name ? <span className={classNames.navGroupSeparatorHeaderGroupName}>{group.name}</span> : null}
             </div>
           </div>
         ) : null}
