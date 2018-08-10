@@ -3,13 +3,12 @@ import { Responsive, WidthProvider, Layout, Layouts } from 'react-grid-layout';
 import {
   IDashboardGridLayoutProps,
   IDashboardGridLayoutStyles,
-  IDashboardCardLayout,
-  DashboardSectionMapping
+  IDashboardCardLayout
 } from './DashboardGridLayout.types';
 import { CardSize } from '../Card/Card.types';
 import { getStyles } from './DashboardGridLayout.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-// import { card } from '@uifabric/dashboard/lib/components/DashboardGridLayout/examples/DashboardGridLayout.Example.scss';
+
 require('style-loader!css-loader!react-grid-layout/css/styles.css');
 require('style-loader!css-loader!react-resizable/css/styles.css');
 require('style-loader!css-loader!./DashboardGridLayout.css');
@@ -42,33 +41,11 @@ const sizes: { [P in CardSize]: { w: number; h: number } } = {
   section: { w: 4, h: 1 }
 };
 
-// const layoutMapping: LayoutMapping = {};
-
-export class DashboardGridLayout extends React.Component<
-  IDashboardGridLayoutProps,
-  {
-    layouts: Layouts;
-    currentLayout?: Layout[] | undefined;
-    layoutBeforeCollapse: Layouts;
-    sectionMapping: DashboardSectionMapping;
-    collapseMapping: DashboardSectionMapping;
-  }
-> {
-  constructor(props: IDashboardGridLayoutProps) {
-    super(props);
-    const layout = this._createLayout();
-    this.state = {
-      layouts: layout,
-      currentLayout: this._getFirstDefinedLayout(layout),
-      layoutBeforeCollapse: layout,
-      sectionMapping: {},
-      collapseMapping: {}
-    };
-  }
-
+export class DashboardGridLayout extends React.Component<IDashboardGridLayoutProps, {}> {
   public render(): JSX.Element {
     const getClassNames = classNamesFunction<IDashboardGridLayoutProps, IDashboardGridLayoutStyles>();
     const classNames = getClassNames(getStyles!);
+
     return (
       <ResponsiveReactGridLayout
         isDraggable={this.props.isDraggable || true}
@@ -79,42 +56,17 @@ export class DashboardGridLayout extends React.Component<
         containerPadding={[0, 0]}
         isResizable={this.props.isResizable || false}
         rowHeight={rowHeight}
-        layouts={this.state.layouts}
+        layouts={this._createLayout()}
         verticalCompact={true}
-        onLayoutChange={this._onLayoutChanged}
+        onLayoutChange={this.props.onLayoutChange}
         onBreakpointChange={this.props.onBreakPointChange}
-        {...this.props}
         dragApiRef={this.props.dragApi}
+        {...this.props}
       >
         {this.props.children}
       </ResponsiveReactGridLayout>
     );
   }
-
-  private _onLayoutChanged = (currentLayout: Layout[], allLayouts: Layouts) => {
-    console.log('new layout', currentLayout);
-    this.setState({ layouts: allLayouts, currentLayout: currentLayout });
-    if (this.props.onLayoutChange) {
-      this.props.onLayoutChange(currentLayout, allLayouts);
-    }
-  };
-
-  private _getFirstDefinedLayout = (layouts: Layouts): Layout[] => {
-    if (layouts.lg) {
-      return layouts.lg;
-    } else if (layouts.md) {
-      return layouts.md;
-    } else if (layouts.md) {
-      return layouts.md;
-    } else if (layouts.sm) {
-      return layouts.sm;
-    } else if (layouts.xs) {
-      return layouts.xs;
-    } else if (layouts.xxs) {
-      return layouts.xxs;
-    }
-    return [];
-  };
 
   private _updateLayoutsFromLayout = (layouts: Layouts, layout: Layout[], key: string) => {
     switch (key) {

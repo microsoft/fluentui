@@ -19,7 +19,7 @@ export type DashboardSectionMapping = {
   /**
    * Key to key mapping for sections
    * Key: section key
-   * Value: List of cards layouts that are under this section
+   * Value: List of cards keys that are under this section
    */
   [id: string]: string[];
 };

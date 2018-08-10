@@ -45,7 +45,7 @@ const sizes: { [P in CardSize]: { w: number; h: number } } = {
   section: { w: 4, h: 1 }
 };
 
-const layoutMapping: LayoutMapping = {};
+const layoutMapping: LayoutMapping = {}; // TODO: refactor into state
 
 export class DashboardGridSectionLayout extends React.Component<
   IDashboardGridSectionLayoutProps,
@@ -163,13 +163,14 @@ export class DashboardGridSectionLayout extends React.Component<
    * @param key, the key of the section clicked
    */
   private _onExpandCollapseToggled = (expanded: boolean, key: string): void => {
-    if (expanded && this.state.sectionMapping && key in this.state.sectionMapping) {
-      this._expandCollapseLayoutsUnderSection(expanded, key);
-    } else if (!expanded && this.state.sectionMapping && key in this.state.sectionMapping) {
+    if (this.state.sectionMapping && key in this.state.sectionMapping) {
       this._expandCollapseLayoutsUnderSection(expanded, key);
     }
   };
 
+  /**
+   * expand collapse section
+   */
   private _expandCollapseLayoutsUnderSection = (expanded: boolean, sectionKey: string) => {
     const sectionsAfterCurrentSection = this._sectionKeys.slice(this._sectionKeys.indexOf(sectionKey) + 1);
     const impactedSections: ISection[] = this.props.sections.filter((section: ISection) => {
@@ -228,7 +229,7 @@ export class DashboardGridSectionLayout extends React.Component<
     }
   };
 
-  private _currentSectionHeight = (key: string) => {
+  private _currentSectionHeight = (key: string): number => {
     const currentSectionY = this.state.currentLayout.filter((layout: Layout) => {
       return layout.i === key;
     })[0].y;
@@ -241,6 +242,9 @@ export class DashboardGridSectionLayout extends React.Component<
     return nextSectionY - currentSectionY - sectionHeaderHeight;
   };
 
+  /**
+   * If this is the last section on the dashboard
+   */
   private _isLastSection = (key: string) => {
     if (this._sectionKeys[this._sectionKeys.indexOf(key) + 1]) {
       return false;
@@ -289,6 +293,9 @@ export class DashboardGridSectionLayout extends React.Component<
     return layouts;
   };
 
+  /**
+   * Given a layout object, determin if it is a section
+   */
   private _isSection = (layout: Layout): boolean => {
     return this._sectionKeys.indexOf(String(layout.i)) > -1;
     // return layout.w === 4 && layout.h === 1;
@@ -370,6 +377,9 @@ export class DashboardGridSectionLayout extends React.Component<
     }
   };
 
+  /**
+   * Translate size to w and h value, return a Layout object for react-grid-layout
+   */
   private _createLayoutFromProp(layoutProp: IDashboardCardLayout): Layout {
     return {
       i: layoutProp.i,
