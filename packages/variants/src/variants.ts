@@ -4,13 +4,13 @@ import {
   ITheme,
   IPartialTheme,
   createTheme
-} from "office-ui-fabric-react/lib/Styling";
-import { VariantThemeType } from "./variantThemeType";
+} from 'office-ui-fabric-react/lib/Styling';
+import { VariantThemeType } from './variantThemeType';
 import {
   IColor,
   updateA,
   getColorFromString
-} from "office-ui-fabric-react/lib/utilities/color/colors";
+} from 'office-ui-fabric-react/lib/utilities/color/colors';
 
 function makeThemeFromPartials(
   originalTheme: IPartialTheme,
@@ -135,7 +135,7 @@ export function getNeutralVariant(theme: IPartialTheme): ITheme {
     primaryButtonBackground: p.themePrimary,
     primaryButtonBackgroundHovered: p.themeDarkAlt,
     primaryButtonBackgroundPressed: p.themeDark,
-    primaryButtonBorder: "transparent",
+    primaryButtonBorder: 'transparent',
     primaryButtonText: p.white,
     primaryButtonTextHovered: p.white,
     primaryButtonTextPressed: p.white
@@ -225,7 +225,7 @@ export function getSoftVariant(theme: IPartialTheme): ITheme {
     primaryButtonBackground: p.themePrimary,
     primaryButtonBackgroundHovered: p.themeDarkAlt,
     primaryButtonBackgroundPressed: p.themeDark,
-    primaryButtonBorder: "transparent",
+    primaryButtonBorder: 'transparent',
     primaryButtonText: p.white,
     primaryButtonTextHovered: p.white,
     primaryButtonTextPressed: p.white
@@ -310,7 +310,7 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
     buttonBackgroundPressed: !fullTheme.isInverted
       ? p.themeLight
       : p.themeTertiary,
-    buttonBorder: "transparent",
+    buttonBorder: 'transparent',
     buttonText: !fullTheme.isInverted ? p.themePrimary : p.neutralPrimary,
     buttonTextHovered: !fullTheme.isInverted
       ? p.themePrimary
@@ -333,7 +333,7 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
 
   // Strong variant is unique here, we've redefined the entire palette and are
   // effectively inverting the theme. Thus, do not mix in the original theme's value
-  // for the palette and semanticColors, since they will not work well "inverted",
+  // for the palette and semanticColors, since they will not work well 'inverted',
   // instead, use the new palette and then generate semanticColors from scratch.
   return createTheme({
     ...theme,
