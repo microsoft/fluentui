@@ -1,6 +1,14 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Mon, 16 Jul 2018 11:28:06 GMT and should not be manually modified.
+This log was last generated on Sat, 11 Aug 2018 01:52:57 GMT and should not be manually modified.
+
+## 5.32.0
+Sat, 11 Aug 2018 01:52:57 GMT
+
+### Minor changes
+
+- adds button semantic slots
+- adds 4 new semantic slots, based on designs from SP-Client events webpart, and with approval from Philip Kuo; actionLink, actionLinkHovered, cardBackground, variantBorder
 
 ## 5.31.2
 Mon, 16 Jul 2018 11:28:06 GMT
