@@ -18,11 +18,6 @@ export const getStyles = (props: IDetailsRowCheckStyleProps): IDetailsRowCheckSt
       classNames.root,
       !canSelect && [classNames.isDisabled, { visibility: 'hidden' }],
       isHeader && classNames.isHeader,
-      isVisible && { opacity: 1 },
-      className
-    ],
-
-    check: [
       getFocusStyle(theme),
       {
         display: 'flex',
@@ -47,7 +42,8 @@ export const getStyles = (props: IDetailsRowCheckStyleProps): IDetailsRowCheckSt
       },
       isCheckVisible && {
         opacity: 1
-      }
+      },
+      className
     ],
 
     isDisabled: []
