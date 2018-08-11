@@ -50,7 +50,7 @@ const DetailsRowCheckBase = (props: IDetailsRowCheckProps) => {
     <div
       {...buttonProps}
       role="checkbox"
-      className={css(classNames.root, classNames.check, checkClassNames.checkHost)}
+      className={css(classNames.root, checkClassNames.checkHost)}
       aria-checked={isPressed}
       data-selection-toggle={true}
       data-automationid="DetailsRowCheck"

@@ -147,12 +147,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
                     {
-                      height: 32px;
-                    }
-                    .ms-Fabric--isFocusVisible &:focus {
-                      opacity: 1;
-                    }
-                    {
                       align-items: center;
                       background-color: transparent;
                       background: none;
@@ -191,6 +185,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                       z-index: 1;
                     }
                     &:hover {
+                      opacity: 1;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus {
                       opacity: 1;
                     }
 

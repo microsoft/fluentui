@@ -147,12 +147,6 @@ exports[`DetailsList renders List correctly 1`] = `
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
                     {
-                      height: 32px;
-                    }
-                    .ms-Fabric--isFocusVisible &:focus {
-                      opacity: 1;
-                    }
-                    {
                       align-items: center;
                       background-color: transparent;
                       background: none;
@@ -191,6 +185,9 @@ exports[`DetailsList renders List correctly 1`] = `
                       z-index: 1;
                     }
                     &:hover {
+                      opacity: 1;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus {
                       opacity: 1;
                     }
 
@@ -723,12 +720,6 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
                     {
-                      height: 32px;
-                    }
-                    .ms-Fabric--isFocusVisible &:focus {
-                      opacity: 1;
-                    }
-                    {
                       align-items: center;
                       background-color: transparent;
                       background: none;
@@ -767,6 +758,9 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                       z-index: 1;
                     }
                     &:hover {
+                      opacity: 1;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus {
                       opacity: 1;
                     }
 
@@ -1299,12 +1293,6 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
                     {
-                      height: 32px;
-                    }
-                    .ms-Fabric--isFocusVisible &:focus {
-                      opacity: 1;
-                    }
-                    {
                       align-items: center;
                       background-color: transparent;
                       background: none;
@@ -1343,6 +1331,9 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                       z-index: 1;
                     }
                     &:hover {
+                      opacity: 1;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus {
                       opacity: 1;
                     }
 
