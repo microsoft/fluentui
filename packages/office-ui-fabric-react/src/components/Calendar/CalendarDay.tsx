@@ -309,7 +309,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                       >
                         <button
                           key={day.key + 'button'}
-                          className={css(styles.day, {
+                          className={css(styles.day, 'ms-DatePicker-day-button', {
                             ['ms-DatePicker-day--disabled ' + styles.dayIsDisabled]: !day.isInBounds,
                             ['ms-DatePicker-day--today ' + styles.dayIsToday]: day.isToday
                           })}
