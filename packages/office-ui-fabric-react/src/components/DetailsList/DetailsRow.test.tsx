@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { DetailsList } from './DetailsList';
 import { IDetailsRowProps } from './DetailsRow.types';
-import { IDetailsListProps, IColumn } from './DetailsList.types';
+import { IDetailsListProps, IColumn, CheckboxVisibility } from './DetailsList.types';
 import { SelectionMode, Selection } from '../../utilities/selection/index';
 
 const _columns: IColumn[] = [
@@ -86,6 +86,20 @@ describe('DetailsRow', () => {
 
     const component = renderer.create(
       <DetailsList {...mockProps} selectionMode={SelectionMode.multiple} selection={selection} />
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders details list row with checkbox visible always correctly', () => {
+    DetailsList.prototype.componentDidMount = jest.fn();
+
+    const component = renderer.create(
+      <DetailsList
+        {...mockProps}
+        selectionMode={SelectionMode.multiple}
+        checkboxVisibility={CheckboxVisibility.always}
+      />
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
