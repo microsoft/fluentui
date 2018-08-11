@@ -33,6 +33,7 @@ export class MultiStackedBarChartExample extends React.Component<{}, {}> {
       ],
       [{ x: 'Credit card numbers', y: 87 }, { x: 'Tax identification numbers (USA)', y: 87 }]
     ];
+
     const colors: ILegendDataItem[] = [
       { legendText: 'Debit card numbers (EU and USA)', legendColor: DefaultPalette.blueLight },
       { legendText: 'Passport numbers (USA)', legendColor: DefaultPalette.blue },

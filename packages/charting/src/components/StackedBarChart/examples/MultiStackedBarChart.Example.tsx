@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { MultiStackedBarChart } from '@uifabric/charting/lib/StackedBarChart';
 import { ILegendDataItem } from '@uifabric/charting/lib/components/Legend/Legend.types';
+import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export const MultiStackedBarChartExample: React.SFC<{}> = () => {
   const points = [
@@ -15,11 +16,11 @@ export const MultiStackedBarChartExample: React.SFC<{}> = () => {
   ];
 
   const colors: ILegendDataItem[] = [
-    { legendText: 'Debit card numbers (EU and USA)', legendColor: '#0078D7' },
-    { legendText: 'Passport numbers (USA)', legendColor: '#038387' },
-    { legendText: 'Social security numbers', legendColor: '#00AE56' },
-    { legendText: 'Credit card numbers', legendColor: '#008000' },
-    { legendText: 'Tax identification numbers (USA)', legendColor: '#008000' }
+    { legendText: 'Debit card numbers (EU and USA)', legendColor: DefaultPalette.blueLight },
+    { legendText: 'Passport numbers (USA)', legendColor: DefaultPalette.blue },
+    { legendText: 'Social security numbers', legendColor: DefaultPalette.blueMid },
+    { legendText: 'Credit card numbers', legendColor: DefaultPalette.red },
+    { legendText: 'Tax identification numbers (USA)', legendColor: DefaultPalette.black }
   ];
 
   const chartTitles: string[] = ['Monitored', 'Unmonitored'];
