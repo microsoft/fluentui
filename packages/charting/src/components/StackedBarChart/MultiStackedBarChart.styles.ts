@@ -1,14 +1,18 @@
 import { IMultiStackedBarChartStyles } from '@uifabric/charting/lib/StackedBarChart';
-import { IStyle, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { IMultiStackedBarChartStyleProps } from './MultiStackedBarChart.types';
 
-export const getMultiStackedBarChartStyles = (width: number | undefined): IMultiStackedBarChartStyles => {
-  const widthStyling: IStyle = width ? { width: width } : {};
+export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleProps): IMultiStackedBarChartStyles => {
+  const { className, width } = props;
 
   return {
-    root: mergeStyles(widthStyling, {
-      display: 'flex',
-      flexDirection: 'column'
-    }),
+    root: [
+      {
+        display: 'flex',
+        flexDirection: 'column',
+        width: width
+      },
+      className
+    ],
     items: {
       marginBottom: '11px'
     }

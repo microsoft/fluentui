@@ -9,10 +9,19 @@ export interface ILegendProps {
    */
   renderData: ILegendDataItem[];
 
+  /**
+   * Max legend text width after which
+   * the overflow takes effect
+   *
+   * @default 250
+   */
   maxTextWidth?: number;
 }
 
 export interface ILegendStyles {
+  /**
+   * Styling for the root container
+   */
   root: IStyle;
   /**
    * Style for the legend wrapping container

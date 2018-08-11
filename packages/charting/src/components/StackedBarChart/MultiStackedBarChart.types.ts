@@ -1,5 +1,6 @@
 import { IDataPoint, ILegendDataItem } from './StackedBarChart.types';
-import { IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface IMultiStackedBarChartProps {
   /**
@@ -29,6 +30,38 @@ export interface IMultiStackedBarChartProps {
    * Data for rendering the legend
    */
   legendData?: ILegendDataItem[];
+
+  /**
+   * Additional CSS class(es) to apply to the StackedBarChart.
+   */
+  className?: string;
+
+  /**
+   * Theme (provided through customization.)
+   */
+  theme?: ITheme;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  styles?: IStyleFunctionOrObject<IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles>;
+}
+
+export interface IMultiStackedBarChartStyleProps {
+  /**
+   * Theme (provided through customization.)
+   */
+  theme: ITheme;
+
+  /**
+   * Additional CSS class(es) to apply to the StackedBarChart.
+   */
+  className?: string;
+
+  /**
+   * Width of the chart.
+   */
+  width: number;
 }
 
 export interface IMultiStackedBarChartStyles {
