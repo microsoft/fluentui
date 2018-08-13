@@ -1,6 +1,14 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Fri, 10 Aug 2018 10:26:08 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Aug 2018 03:43:25 GMT and should not be manually modified.
+
+## 0.14.1
+Mon, 13 Aug 2018 03:43:25 GMT
+
+### Patches
+
+- update leftNav style change
+- fix leftNav styling bugs
 
 ## 0.14.0
 Fri, 10 Aug 2018 10:26:08 GMT

@@ -128,6 +128,7 @@ export const TextFieldPageProps: IDocPageProps = {
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/docs/TextFieldDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/docs/TextFieldDonts.md'),
   isHeaderVisible: true,
+  isFeedbackVisible: true,
   allowNativeProps: true,
   nativePropsElement: ['input', 'textarea']
 };

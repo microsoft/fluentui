@@ -495,6 +495,41 @@ describe('TextField', () => {
     expect(textField.getDOMNode().querySelector('textarea')!.value).toEqual('initial value');
   });
 
+  it('should update value when defaultValue changes and value prop is not set', () => {
+    const defaultValue1 = 'default value 1';
+    const defaultValue2 = 'default value 2';
+
+    const textField = mount(<TextField defaultValue={defaultValue1} />);
+    expect(textField.getDOMNode().querySelector('input')).toBeTruthy();
+    expect(textField.getDOMNode().querySelector('input')!.value).toEqual(defaultValue1);
+
+    textField.setProps({ defaultValue: defaultValue2 });
+    expect(textField.getDOMNode().querySelector('input')).toBeTruthy();
+    expect(textField.getDOMNode().querySelector('input')!.value).toEqual(defaultValue2);
+
+    textField.setProps({ defaultValue: undefined });
+    expect(textField.getDOMNode().querySelector('input')).toBeTruthy();
+    expect(textField.getDOMNode().querySelector('input')!.value).toEqual('');
+  });
+
+  it('should not update value when defaultValue changes and value prop is set', () => {
+    const defaultValue1 = 'default value 1';
+    const defaultValue2 = 'default value 2';
+    const testValue = 'test value';
+
+    const textField = mount(<TextField defaultValue={defaultValue1} />);
+    expect(textField.getDOMNode().querySelector('input')).toBeTruthy();
+    expect(textField.getDOMNode().querySelector('input')!.value).toEqual(defaultValue1);
+
+    textField.setProps({ value: testValue, defaultValue: defaultValue2 });
+    expect(textField.getDOMNode().querySelector('input')).toBeTruthy();
+    expect(textField.getDOMNode().querySelector('input')!.value).toEqual(testValue);
+
+    textField.setProps({ defaultValue: undefined });
+    expect(textField.getDOMNode().querySelector('input')).toBeTruthy();
+    expect(textField.getDOMNode().querySelector('input')!.value).toEqual(testValue);
+  });
+
   it('can render description text', () => {
     const testDescription = 'A custom description';
     const textField = mount(<TextField description={testDescription} />);

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 10 Aug 2018 10:26:09 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Aug 2018 03:43:25 GMT and should not be manually modified.
+
+## 6.14.0
+Mon, 13 Aug 2018 03:43:25 GMT
+
+### Minor changes
+
+- Customizer should allow for nesting. Right now, `settings` provided have the reverse precendence expected; the outer-most Customizer wins over an inner one. This is completely backwards. Fixing to be correct.
 
 ## 6.13.0
 Fri, 10 Aug 2018 10:26:09 GMT

@@ -37,5 +37,6 @@ export const ResizeGroupPageProps: IDocPageProps = {
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/docs/ResizeGroupDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/docs/ResizeGroupDonts.md'),
   isHeaderVisible: true,
+  isFeedbackVisible: true,
   allowNativeProps: true
 };

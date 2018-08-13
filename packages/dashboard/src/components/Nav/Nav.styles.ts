@@ -19,6 +19,7 @@ const navWidth = 280;
 const navCollapsedWidth = 48;
 const navFloatingWidth = 230;
 const navItemHeight = 48;
+const navChildItemHeight = 32;
 const navBackgroundColor = '#E5E5E5';
 const navItemHoverColor = '#CCCCCC';
 const navGroupSeparatorItemHeight = 40;
@@ -59,10 +60,11 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
       }
     },
     navItemRoot: {
-      height: navItemHeight,
+      height: !!nestingLevel && nestingLevel > 0 ? navChildItemHeight : navItemHeight,
       cursor: 'pointer',
       backgroundColor: isSelected ? navItemSelectedColor : 'inherit',
       paddingLeft: !!nestingLevel && nestingLevel > 0 ? nestingLevel * navItemIndentSize : 'inherit',
+
       selectors: {
         ':hover': {
           backgroundColor: hasChildren ? navItemWithChildBgColor : navItemHoverColor
@@ -72,9 +74,9 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
     navItemBarMarker: {
       position: 'absolute',
       marginLeft: !!nestingLevel && nestingLevel > 0 && !hasChildren ? '-9px' : '6px',
-      marginTop: '12px',
+      marginTop: !!nestingLevel && nestingLevel > 0 ? '7px' : '12px',
       width: '2px',
-      height: '24px',
+      height: !!nestingLevel && nestingLevel > 0 ? '18px' : '24px',
       backgroundColor: '#0078D4',
       display: isSelected || isChildLinkSelected ? 'block' : 'none',
       borderWidth: 0
@@ -82,13 +84,13 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
     navItemIconColumn: {
       width: navCollapsedWidth,
       fontSize: '16px',
-      lineHeight: navItemHeight,
+      lineHeight: !!nestingLevel && nestingLevel > 0 ? navChildItemHeight : navItemHeight,
       textAlign: 'center',
       color: '#000000'
     },
     navItemNameColumn: {
       width: '100%',
-      lineHeight: navItemHeight,
+      lineHeight: !!nestingLevel && nestingLevel > 0 ? navChildItemHeight : navItemHeight,
       verticalAlign: 'top',
       display: 'inline-block',
       textOverflow: 'ellipsis',
@@ -122,7 +124,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
       AnimationClassNames.slideRightIn20
     ],
     navFloatingItemRoot: {
-      height: navItemHeight,
+      height: !!nestingLevel && nestingLevel > 0 ? navChildItemHeight : navItemHeight,
       cursor: 'pointer',
       backgroundColor: !!nestingLevel && nestingLevel > 0 && isSelected ? navItemSelectedColor : 'inherit',
       paddingLeft: !!nestingLevel && nestingLevel > 0 ? nestingLevel * navItemIndentSize : 'inherit',
@@ -138,13 +140,14 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
       textAlign: 'center'
     },
     navGroupSeparatorHrLine: {
+      position: 'relative',
       height: '20px',
       borderBottom: `1px solid ${navItemWithChildBgColor}`
     },
     navGroupSeparatorHeaderGroupName: {
       position: 'absolute',
       marginTop: '40px',
-      left: '24px',
+      left: '16px',
       color: '#000000',
       fontWeight: 'bold'
     },
