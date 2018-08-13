@@ -12,16 +12,16 @@ export const NavLink: React.SFC<INavLinkProps> = (props: INavLinkProps) => {
   }
 
   const computedTextWidth: IStyle = {
-    // 100px to accomodate left and right icons (50px each)
-    width: 'calc(100% - 100px)'
+    // 100px to accomodate left and right icons (48px each)
+    width: 'calc(100% - 96px)'
   };
 
   if (!props.rightIconName && !props.leftIconName) {
     // no icons, take full with to text
     computedTextWidth.width = '100%';
   } else if (!props.leftIconName || !props.rightIconName) {
-    // 50px to the left or right icon
-    computedTextWidth.width = 'calc(100% - 50px)';
+    // 48px to the left or right icon
+    computedTextWidth.width = 'calc(100% - 48px)';
   }
 
   return (
@@ -37,6 +37,7 @@ export const NavLink: React.SFC<INavLinkProps> = (props: INavLinkProps) => {
       role={props.role}
     >
       <div className={props.rootClassName} aria-hidden="true">
+        <hr className={props.barClassName} />
         {props.leftIconName ? <Icon iconName={props.leftIconName} className={props.iconClassName} /> : null}
         {props.content ? (
           <div className={mergeStyles(props.textClassName, computedTextWidth)}>{props.content}</div>

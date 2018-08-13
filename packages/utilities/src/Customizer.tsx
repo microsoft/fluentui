@@ -126,7 +126,7 @@ function isSettingsFunction(settings?: Settings | SettingsFunction): settings is
 }
 
 function settingsMergeWith(newSettings?: object): (settings: Settings) => Settings {
-  return (settings: Settings) => (newSettings ? { ...newSettings, ...settings } : settings);
+  return (settings: Settings) => (newSettings ? { ...settings, ...newSettings } : settings);
 }
 
 function scopedSettingsMergeWith(scopedSettingsFromProps: Settings = {}): (scopedSettings: Settings) => Settings {

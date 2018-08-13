@@ -1,83 +1,88 @@
 import * as React from 'react';
-import { IDataPoint } from './StackedBarChart.types';
-
-import { IProcessedStyleSet, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-
+import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+
+import { Legend } from '../Legend/Legend';
+
+import { IDataPoint, ILegendDataItem } from './StackedBarChart.types';
 import { IStackedBarChartProps, IStackedBarChartStyleProps, IStackedBarChartStyles } from './StackedBarChart.types';
 
 const getClassNames = classNamesFunction<IStackedBarChartStyleProps, IStackedBarChartStyles>();
 
 export class StackedBarChartBase extends React.Component<IStackedBarChartProps, {}> {
-  private _points: IDataPoint[];
-  private _width: number;
-  private _height: number;
-  private _barHeight: number;
+  public static defaultProps: Partial<IStackedBarChartProps> = {
+    data: [],
+    width: 394,
+    barHeight: 16,
+    hideNumberDisplay: false,
+    hideLegend: false
+  };
   private _colors: string[];
   private _classNames: IProcessedStyleSet<IStackedBarChartStyles>;
 
   public render(): JSX.Element {
     this._adjustProps();
+    const { data, width, barHeight, chartTitle, hideNumberDisplay, hideLegend } = this.props;
 
-    const bars = this._createBars();
-    const legendBar = this._createLegendBars();
+    const bars = this._createBars(data!, width!, barHeight!);
+    const legendBar = this._createLegendBars(data!);
 
-    if (this._points.length > 2) {
-      return (
-        <div className={this._classNames.root}>
-          {this.props.chartTitle && <strong className={this._classNames.chartTitle}>{this.props.chartTitle}</strong>}
-          <svg className={this._classNames.chart}>
-            <g className={this._classNames.bars}>{bars}</g>
-          </svg>
-          <ul className={this._classNames.legend}>{legendBar}</ul>
-        </div>
-      );
+    const showRatio = hideNumberDisplay === false && data!.length === 2;
+    const showNumber = hideNumberDisplay === false && data!.length === 1;
+    let total = 0;
+    if (showRatio === true) {
+      total = data!.reduce((acc: number, value: IDataPoint) => acc + value.y, 0);
     }
 
-    const total = this._points.map((item: IDataPoint) => item.y).reduce((a: number, b: number) => a + b, 0);
-    const { chartTitle } = this.props;
+    const showLegend = hideLegend === false && data!.length > 2;
+
     return (
       <div className={this._classNames.root}>
         <div className={this._classNames.chartTitle}>
-          <div className={this._classNames.subTitle}>
-            <strong>{chartTitle}</strong>
-          </div>
-          <div className={this._classNames.value}>
-            <strong>{this._points[0].y}</strong>/{total}
-          </div>
+          {chartTitle && (
+            <div>
+              <strong>{this.props.chartTitle}</strong>
+            </div>
+          )}
+          {showRatio && (
+            <div>
+              <strong>{data![0].y}</strong>/{total}
+            </div>
+          )}
+          {showNumber && (
+            <div>
+              <strong>{data![0].y}</strong>
+            </div>
+          )}
         </div>
+
         <svg className={this._classNames.chart}>
-          <g className={this._classNames.bars}>{bars}</g>
+          <g>{bars}</g>
         </svg>
+        {showLegend && <div className={this._classNames.legendContainer}>{legendBar}</div>}
       </div>
     );
   }
 
   private _adjustProps(): void {
-    const { theme, className, styles, data, width, height, barHeight } = this.props;
-
-    this._points = data || [];
-    this._width = width || 500;
-    this._height = height || 50;
-    this._barHeight = barHeight || 35;
+    const { theme, className, styles, width, barHeight } = this.props;
 
     const { palette } = theme!;
     this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     this._classNames = getClassNames(styles!, {
       theme: theme!,
-      width: this._width,
-      height: this._height,
-      className,
-      barHeight: this._barHeight
+      width: width!,
+      barHeight: barHeight!,
+      className
     });
   }
 
-  private _createBars(): JSX.Element[] {
+  private _createBars(data: IDataPoint[], width: number, barHeight: number): JSX.Element[] {
     let prevWidth = 0;
     const barWidths = [0];
-    const total = this._points.map((item: IDataPoint) => item.y).reduce((a: number, b: number) => a + b, 0);
-    const bars = this._points.map((point: IDataPoint, index: number) => {
-      const value = (point.y / total) * this._width;
+    const total = data.reduce((acc: number, point: IDataPoint) => acc + point.y, 0);
+    const bars = data.map((point: IDataPoint, index: number) => {
+      const value = (point.y / total) * width;
       prevWidth = prevWidth + value;
       barWidths.push(prevWidth);
 
@@ -87,7 +92,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           x={barWidths[index]}
           y={0}
           width={value}
-          height={this._barHeight}
+          height={barHeight}
           fill={this._colors[index % this._colors.length]}
         />
       );
@@ -95,21 +100,14 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     return bars;
   }
 
-  private _createLegendBars(): JSX.Element[] {
-    const bars = this._points.map((point: IDataPoint, index: number) => {
-      const itemStyle = {
-        backgroundColor: this._colors[index % this._colors.length],
-        height: '0px',
-        width: '0px',
-        padding: '5px'
+  private _createLegendBars(data: IDataPoint[]): JSX.Element {
+    const legendDataItems: ILegendDataItem[] = data.map((point: IDataPoint, index: number) => {
+      return {
+        legendText: point.x,
+        legendColor: this._colors[index % this._colors.length]
       };
-      return (
-        <li key={index} className={this._classNames.legendBar}>
-          <span className={mergeStyles(itemStyle)} />
-          <span className={this._classNames.legendText}>{point.x}</span>
-        </li>
-      );
     });
-    return bars;
+
+    return <Legend renderData={legendDataItems} />;
   }
 }

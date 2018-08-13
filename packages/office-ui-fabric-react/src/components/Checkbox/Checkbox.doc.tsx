@@ -32,5 +32,6 @@ export const CheckboxPageProps: IDocPageProps = {
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Checkbox/docs/CheckboxDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Checkbox/docs/CheckboxDonts.md'),
-  isHeaderVisible: true
+  isHeaderVisible: true,
+  isFeedbackVisible: true
 };

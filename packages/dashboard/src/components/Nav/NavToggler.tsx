@@ -115,6 +115,7 @@ class NavTogglerComponent extends React.Component<INavProps, INavState> {
         rootClassName={classNames.navToggler}
         leftIconName={link.icon}
         iconClassName={classNames.navItemIconColumn}
+        barClassName={classNames.navItemBarMarker}
         role="menu"
       />
     );

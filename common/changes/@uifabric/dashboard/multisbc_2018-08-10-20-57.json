@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/dashboard",
+      "comment": "Implement new design for StackedBarChart, New components MultiStackedBarChart and Legend. Update Card component to render new components",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/dashboard",
+  "email": "veeray@microsoft.com"
+}

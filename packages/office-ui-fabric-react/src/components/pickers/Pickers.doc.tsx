@@ -30,5 +30,6 @@ export const PickersPageProps: IDocPageProps = {
     require<string>('!raw-loader!office-ui-fabric-react/src/components/pickers/BasePicker.types.ts')
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/pickers/docs/PickersOverview.md'),
-  isHeaderVisible: true
+  isHeaderVisible: true,
+  isFeedbackVisible: true
 };
