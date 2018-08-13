@@ -1,0 +1,4 @@
+- Ensure the width of the parent of this component has a fixed width that does not depend on the dimensions of it's children. Failure to do so may result in ResizeGroup attempting to fill a width of 0px.
+- Ensure that result of rendering the data returned by onReduceData is actually smaller than the previous data.
+- Include a cacheKey in your data to improve performance. Two objects with the same cacheKey are assumed to have the same width, so the ResizeGroup will only store one measurement per resize group.
+- Implement onGrowData for improved performance when the container for the resize group increases in size.

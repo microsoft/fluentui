@@ -1,0 +1,368 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+//== Common
+.button {
+  @include ghostButton($color-home-lighter, $color-home-darker);
+  flex-shrink: 0;
+  font-size: $ms-font-size-l;
+}
+
+//== Hero
+
+.hero {
+  @include contentPadding(48px, 80px);
+  @include fullWidth();
+  position: relative;
+  align-items: center;
+  background-image: url('https://static2.sharepointonline.com/files/fabric/fabric-website/images/home-background.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: $color-home-darker;
+  display: flex;
+  flex-direction: column;
+
+  &::after {
+    // Use http://pressbin.com/tools/urlencode_urldecode/ and encodeURIComponent() to change contents below
+    // SVG content: <svg xmlns="http://www.w3.org/2000/svg" viewBox="5 0 395 25"><polygon fill="#333333" points="0 25 0 0 200 21 400 0 400 25"/></svg>
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%225%200%20395%2025%22%3E%3Cpolygon%20fill%3D%22%23333333%22%20points%3D%220%2025%200%200%20200%2021%20400%200%20400%2025%22%2F%3E%3C%2Fsvg%3E");
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
+    bottom: $svg-hero-bottom-alignment;
+    content: '';
+    height: 89px;
+    left: -10px;
+    position: absolute;
+    right: -10px;
+  }
+}
+
+.title {
+  color: $ms-color-white;
+  font-size: $ms-font-size-su;
+  font-weight: $ms-font-weight-light;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.tagline {
+  color: $ms-color-white;
+  font-size: $ms-font-size-l;
+  font-weight: $ms-font-weight-semilight;
+  line-height: 1.5;
+  margin-bottom: 36px;
+  max-width: 26em;
+  text-align: center;
+}
+
+.primaryButton {
+  @include ghostButton($ms-color-white, $color-home-darker);
+  background-color: $ms-color-white;
+  color: $color-home-darker;
+
+  &:hover {
+    background-color: $ms-color-neutralLight;
+  }
+}
+
+.version {
+  color: $color-home-lighter;
+  font-size: $ms-font-size-xs;
+  font-weight: $ms-font-weight-regular;
+  margin-top: 16px;
+}
+
+@media screen and (min-width: $uhf-screen-min-mobile) {
+  .hero {
+    padding-bottom: 120px;
+  }
+
+  .title {
+    font-size: $font-size-huge;
+  }
+}
+
+@media screen and (min-width: $ms-screen-min-xl) {
+  .hero {
+    padding-top: 140px;
+  }
+}
+
+// UHF specific breakpoint
+@media only screen and (max-width: $uhf-screen-max-lg) and (min-width: $uhf-screen-min-mobile) {
+  .title, .button {
+    text-align: center;
+  }
+}
+
+//== Flavors
+
+.flavors {
+  @include contentPadding(40px, 0px);
+  @include fullWidth();
+  background: $ms-color-neutralPrimary;
+  display: flex;
+  flex-wrap: wrap; // Wrap the 4th around to the second row
+  justify-content: space-around; // Center the items in available space
+  flex-direction: column;
+}
+
+.flavor {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 60px;
+
+  img {
+    margin-bottom: 12px;
+  }
+
+  a,
+  .homePageLink {
+    color: $color-home-lighter;
+    font-size: $ms-font-size-m;
+    transition: color $ms-animation-duration-2 $ms-animation-ease-1;
+
+    &:hover {
+      color: $ms-color-white;
+    }
+  }
+
+  .button {
+    @include ghostButton($color-home-lighter, $ms-color-neutralPrimaryAlt);
+    font-size: $ms-font-size-m;
+  }
+}
+
+.flavorTitle,
+.flavorDescription {
+  color: $ms-color-white;
+  line-height: 1.5;
+}
+
+.flavorTitle {
+  font-size: $ms-font-size-xl;
+  font-weight: $ms-font-weight-semilight;
+}
+
+.flavorDescription {
+  font-size: $ms-font-size-m;
+  margin-bottom: 12px;
+  max-width: 16em;
+  text-align: center;
+}
+
+@media screen and (min-width: $uhf-screen-min-mobile) {
+  .flavors {
+    flex-direction: row;
+    padding-bottom: 72px;
+    padding-top: 62px;
+  }
+
+  .flavor {
+    margin-bottom: 0;
+    width: 30%; // Ensure that the 4th one wraps
+
+    // Lift out the first flavor
+    &:nth-of-type(1) {
+      position: relative;
+      top: -96px;
+      margin: 0 30%; // Pushes other items into their own row
+    }
+
+    // Move the Angular flavor to the last column
+    &:nth-of-type(3) {
+      order: 4;
+    }
+  }
+}
+
+// UHF specific breakpoint
+@media only screen and (max-width: $uhf-screen-max-lg) and (min-width: $uhf-screen-min-mobile) {
+  .flavorTitle {
+    text-align: center;
+  }
+}
+
+
+//== Products
+
+.product {
+  @include contentPadding(20px, 40px);
+  @include fullWidth();
+  align-items: center;
+  color: $ms-color-neutralPrimary;
+  display: flex;
+  flex-direction: column-reverse;
+  font-weight: $ms-font-weight-semilight;
+
+  @include high-contrast {
+    border-top: 1px solid WindowText;
+    border-bottom: 1px solid WindowText;
+  }
+}
+
+.productImage {
+  height: auto;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.productTitle {
+  display: block;
+  font-size: $font-size-big;
+  margin-bottom: 8px;
+}
+
+.productDescription {
+  font-size: $ms-font-size-l;
+
+  a, a:visited, .homePageLink {
+    color: $color-home-medium;
+    transition: color $ms-animation-duration-2 $ms-animation-ease-1;
+  }
+
+  a:hover, a:active {
+    color: $color-home-darker;
+  }
+}
+
+.productSharepoint {
+  background-color: $ms-color-neutralLighter;
+}
+
+.productAddins {
+  background-color: $ms-color-neutralLight;
+}
+
+@media screen and (min-width: $uhf-screen-min-mobile) {
+  .product {
+    flex-direction: row;
+    padding-bottom: 60px;
+    padding-top: 40px;
+  }
+
+  .productAddins {
+    flex-direction: row-reverse;
+
+    .productImage {
+      margin-left: 0;
+      margin-right: 32px;
+    }
+  }
+
+  .productImage {
+    margin-bottom: 0;
+    margin-left: 32px;
+    width: 40%;
+  }
+}
+
+@media screen and (min-width: $ms-screen-min-xl) {
+  .productImage {
+    width: 50%;
+  }
+}
+
+
+//== Featured features
+
+.featured {
+  @include contentPadding(40px, 40px);
+  @include fullHeight();
+  @include fullWidth();
+  background-color: $ms-color-neutralPrimary;
+
+  a,
+  a:visited {
+    color: $color-home-lighter;
+  }
+}
+
+.featuredTitle,
+.featuredDescription {
+  display: block;
+  font-weight: $ms-font-weight-semilight;
+}
+
+.featuredTitle {
+  color: $ms-color-neutralLight;
+  font-size: $font-size-big;
+  margin-bottom: 12px;
+}
+
+.featuredDescription {
+  color: $ms-color-neutralTertiary;
+  font-size: $ms-font-size-l;
+  line-height: 1.5;
+  margin-bottom: 28px;
+  width: 35%;
+
+  &#toolkitDescription {
+    width: 70%;
+  }
+}
+
+.featureList {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  li {
+    margin-bottom: 28px;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    span {
+      color: $ms-color-neutralLight;
+      display: block;
+      font-size: $ms-font-size-l;
+      transition: color $ms-animation-duration-2 $ms-animation-ease-1;
+    }
+
+    &:hover {
+      span {
+        color: $ms-color-white;
+      }
+    }
+  }
+}
+
+.trademark {
+  color: $ms-color-neutralTertiary;
+  display: block;
+  font-size: $ms-font-size-s;
+  margin-top: 32px;
+  margin-bottom: 80px;
+
+  a,
+  a:visited,
+  .homePageLink {
+    color: $color-home-lighter;
+  }
+}
+
+@media screen and (min-width: $uhf-screen-min-mobile) {
+  .featureList {
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    li {
+      width: 48%; // @todo: Would be better if this gutter snapped to grid rather than percentage
+    }
+  }
+}
+
+@media screen and (min-width: $ms-screen-min-xl) {
+  .featureList li {
+    width: 23%; // @todo: Same here, better to use pixels that snap to grid
+  }
+
+  .trademark {
+    margin-top: 72px;
+  }
+}

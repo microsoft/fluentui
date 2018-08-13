@@ -1,0 +1,10 @@
+@import '../../../common/common';
+
+:global {
+  .ms-dialogMainOverride {
+      max-width: 450px;
+  }
+  .screenReaderOnly {
+      @include  ms-screenReaderOnly;
+  }
+}

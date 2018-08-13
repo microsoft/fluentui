@@ -1,0 +1,241 @@
+{
+  "fontName": "fabric-icons",
+  "fontFamilyName": "FabricMDL2Icons",
+  "excludeGlyphs": false,
+  "excludeThirdPartyIcons": true,
+  "chunkSubsets": true,
+  "hashFontFileName": true,
+  "subsetChunkSettings": {
+    "maxSubsetSize": 100
+  },
+  "glyphs": [
+    {
+      "name": "GlobalNavButton",
+      "unicode": "E700"
+    },
+    {
+      "name": "ChevronDown",
+      "unicode": "E70D"
+    },
+    {
+      "name": "ChevronUp",
+      "unicode": "E70E"
+    },
+    {
+      "name": "Edit",
+      "unicode": "E70F"
+    },
+    {
+      "name": "Add",
+      "unicode": "E710"
+    },
+    {
+      "name": "Cancel",
+      "unicode": "E711"
+    },
+    {
+      "name": "More",
+      "unicode": "E712"
+    },
+    {
+      "name": "Settings",
+      "unicode": "E713"
+    },
+    {
+      "name": "Mail",
+      "unicode": "E715"
+    },
+    {
+      "name": "Filter",
+      "unicode": "E71C"
+    },
+    {
+      "name": "Search",
+      "unicode": "E721"
+    },
+    {
+      "name": "Share",
+      "unicode": "E72D"
+    },
+    {
+      "name": "BlockedSite",
+      "unicode": "E72F"
+    },
+    {
+      "name": "FavoriteStar",
+      "unicode": "E734"
+    },
+    {
+      "name": "FavoriteStarFill",
+      "unicode": "E735"
+    },
+    {
+      "name": "CheckMark",
+      "unicode": "E73E"
+    },
+    {
+      "name": "Delete",
+      "unicode": "E74D"
+    },
+    {
+      "name": "ChevronLeft",
+      "unicode": "E76B"
+    },
+    {
+      "name": "ChevronRight",
+      "unicode": "E76C"
+    },
+    {
+      "name": "Calendar",
+      "unicode": "E787"
+    },
+    {
+      "name": "Megaphone",
+      "unicode": "E789"
+    },
+    {
+      "name": "Undo",
+      "unicode": "E7A7"
+    },
+    {
+      "name": "Flag",
+      "unicode": "E7C1"
+    },
+    {
+      "name": "Page",
+      "unicode": "E7C3"
+    },
+    {
+      "name": "Pinned",
+      "unicode": "E840"
+    },
+    {
+      "name": "View",
+      "unicode": "E890"
+    },
+    {
+      "name": "Clear",
+      "unicode": "E894"
+    },
+    {
+      "name": "Download",
+      "unicode": "E896"
+    },
+    {
+      "name": "Upload",
+      "unicode": "E898"
+    },
+    {
+      "name": "Folder",
+      "unicode": "E8B7"
+    },
+    {
+      "name": "Sort",
+      "unicode": "E8CB"
+    },
+    {
+      "name": "AlignRight",
+      "unicode": "E8E2"
+    },
+    {
+      "name": "AlignLeft",
+      "unicode": "E8E4"
+    },
+    {
+      "name": "Tag",
+      "unicode": "E8EC"
+    },
+    {
+      "name": "AddFriend",
+      "unicode": "E8FA"
+    },
+    {
+      "name": "Info",
+      "unicode": "E946"
+    },
+    {
+      "name": "SortLines",
+      "unicode": "E9D0"
+    },
+    {
+      "name": "List",
+      "unicode": "EA37"
+    },
+    {
+      "name": "CircleRing",
+      "unicode": "EA3A"
+    },
+    {
+      "name": "Heart",
+      "unicode": "EB51"
+    },
+    {
+      "name": "HeartFill",
+      "unicode": "EB52"
+    },
+    {
+      "name": "Tiles",
+      "unicode": "ECA5"
+    },
+    {
+      "name": "Embed",
+      "unicode": "ECCE"
+    },
+    {
+      "name": "Glimmer",
+      "unicode": "ECF4"
+    },
+    {
+      "name": "Ascending",
+      "unicode": "EDC0"
+    },
+    {
+      "name": "Descending",
+      "unicode": "EDC1"
+    },
+    {
+      "name": "SortUp",
+      "unicode": "EE68"
+    },
+    {
+      "name": "SortDown",
+      "unicode": "EE69"
+    },
+    {
+      "name": "SyncToPC",
+      "unicode": "EE6E"
+    },
+    {
+      "name": "LargeGrid",
+      "unicode": "EECB"
+    },
+    {
+      "name": "SkypeCheck",
+      "unicode": "EF80"
+    },
+    {
+      "name": "SkypeClock",
+      "unicode": "EF81"
+    },
+    {
+      "name": "SkypeMinus",
+      "unicode": "EF82"
+    },
+    {
+      "name": "ClearFilter",
+      "unicode": "EF8F"
+    },
+    {
+      "name": "Flow",
+      "unicode": "EF90"
+    },
+    {
+      "name": "StatusCircleCheckmark",
+      "unicode": "F13E"
+    },
+    {
+      "name": "MoreVertical",
+      "unicode": "F2BC"
+    }
+  ]
+}

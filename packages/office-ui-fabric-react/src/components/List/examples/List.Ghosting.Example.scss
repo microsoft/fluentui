@@ -1,0 +1,54 @@
+@import '../../../common/common';
+
+:global {
+  .ms-ListGhostingExample {
+    &-container {
+      overflow: auto;
+      max-height: 500px;
+    }
+
+    &-itemCell {
+      @include focus-border();
+
+      min-height: 54px;
+      padding: 10px;
+      box-sizing: border-box;
+      border-bottom: 1px solid $bodyDividerColor;
+      display: flex;
+      &:hover {
+        background: #EEE;
+      }
+    }
+
+    &-itemImage {
+      flex-shrink: 0;
+    }
+
+    &-itemContent {
+      @include margin-left(10px);
+      overflow: hidden;
+      flex-grow: 1;
+    }
+
+    &-itemName {
+      @include ms-font-xl;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &-itemIndex {
+      font-size: $ms-font-size-s;
+      color: $ms-color-neutralTertiary;
+      margin-bottom: 10px;
+    }
+
+    &-chevron {
+      align-self: center;
+      @include margin-left(10px);
+      color: $ms-color-neutralTertiary;
+      font-size: $ms-font-size-l;
+      flex-shrink: 0;
+    }
+  }
+}

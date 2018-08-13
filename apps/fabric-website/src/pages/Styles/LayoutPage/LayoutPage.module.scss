@@ -1,0 +1,18 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.demoBlock {
+  background-color: $ms-color-neutralTertiary;
+  color: $ms-color-white;
+  height: 40px;
+  line-height: 40px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.demoBlockCol {
+  @include high-contrast {
+    border: 1px solid WindowText;
+  }
+}
+

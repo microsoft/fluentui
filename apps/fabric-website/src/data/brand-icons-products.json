@@ -1,0 +1,16 @@
+[
+  { "name": "access" },
+  { "name": "delve" },
+  { "name": "excel" },
+  { "name": "infopath" },
+  { "name": "office" },
+  { "name": "onedrive" },
+  { "name": "onenote" },
+  { "name": "outlook" },
+  { "name": "powerpoint" },
+  { "name": "project" },
+  { "name": "sharepoint" },
+  { "name": "sway" },
+  { "name": "visio" },
+  { "name": "word" }
+]

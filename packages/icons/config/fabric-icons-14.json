@@ -1,0 +1,165 @@
+{
+  "fontName": "fabric-icons-14",
+  "fontFamilyName": "FabricMDL2Icons-14",
+  "excludeGlyphs": false,
+  "excludeThirdPartyIcons": true,
+  "chunkSubsets": true,
+  "hashFontFileName": true,
+  "subsetChunkSettings": {
+    "maxSubsetSize": 100
+  },
+  "glyphs": [
+    {
+      "name": "DeleteRowsMirrored",
+      "unicode": "F650"
+    },
+    {
+      "name": "DeleteTable",
+      "unicode": "F651"
+    },
+    {
+      "name": "VersionControlPush",
+      "unicode": "F664"
+    },
+    {
+      "name": "WhiteBoardApp16",
+      "unicode": "F673"
+    },
+    {
+      "name": "WhiteBoardApp32",
+      "unicode": "F674"
+    },
+    {
+      "name": "InsertSignatureLine",
+      "unicode": "F677"
+    },
+    {
+      "name": "ArrangeByFrom",
+      "unicode": "F678"
+    },
+    {
+      "name": "Phishing",
+      "unicode": "F679"
+    },
+    {
+      "name": "CreateMailRule",
+      "unicode": "F67A"
+    },
+    {
+      "name": "PublishCourse",
+      "unicode": "F699"
+    },
+    {
+      "name": "DictionaryRemove",
+      "unicode": "F69A"
+    },
+    {
+      "name": "UserRemove",
+      "unicode": "F69B"
+    },
+    {
+      "name": "UserEvent",
+      "unicode": "F69C"
+    },
+    {
+      "name": "Encryption",
+      "unicode": "F69D"
+    },
+    {
+      "name": "D365TalentLearn",
+      "unicode": "F6BB"
+    },
+    {
+      "name": "D365TalentInsight",
+      "unicode": "F6BC"
+    },
+    {
+      "name": "D365TalentHRCore",
+      "unicode": "F6BD"
+    },
+    {
+      "name": "BacklogList",
+      "unicode": "F6BF"
+    },
+    {
+      "name": "ButtonControl",
+      "unicode": "F6C0"
+    },
+    {
+      "name": "TableGroup",
+      "unicode": "F6D9"
+    },
+    {
+      "name": "MountainClimbing",
+      "unicode": "F6DB"
+    },
+    {
+      "name": "TagUnknown",
+      "unicode": "F6DF"
+    },
+    {
+      "name": "TagUnknownMirror",
+      "unicode": "F6E0"
+    },
+    {
+      "name": "TagUnknown12",
+      "unicode": "F6E1"
+    },
+    {
+      "name": "TagUnknown12Mirror",
+      "unicode": "F6E2"
+    },
+    {
+      "name": "Link12",
+      "unicode": "F6E3"
+    },
+    {
+      "name": "Presentation",
+      "unicode": "F6E4"
+    },
+    {
+      "name": "Presentation12",
+      "unicode": "F6E5"
+    },
+    {
+      "name": "Lock12",
+      "unicode": "F6E6"
+    },
+    {
+      "name": "BuildDefinition",
+      "unicode": "F6E9"
+    },
+    {
+      "name": "ReleaseDefinition",
+      "unicode": "F6EA"
+    },
+    {
+      "name": "SaveTemplate",
+      "unicode": "F6EC"
+    },
+    {
+      "name": "UserGauge",
+      "unicode": "F6ED"
+    },
+    {
+      "name": "BlockedSiteSolid12",
+      "unicode": "F70A"
+    },
+    {
+      "name": "TagSolid",
+      "unicode": "F70E"
+    },
+    {
+      "name": "OfficeChat",
+      "unicode": "F70F"
+    },
+    {
+      "name": "OfficeChatSolid",
+      "unicode": "F710"
+    },
+    {
+      "name": "MailSchedule",
+      "unicode": "F72E"
+    }
+  ]
+}
