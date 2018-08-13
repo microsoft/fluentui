@@ -21,6 +21,7 @@ const getClassNames = classNamesFunction<IShimmeredDetailsListStyleProps, IShimm
 
 const SHIMMER_INITIAL_ITEMS = 10;
 const DEFAULT_SHIMMER_HEIGHT = 7;
+const SHIMMER_LINE_VS_CELL_WIDTH_RATIO = 0.95;
 
 // This values are matching values from ./DetailsRow.css
 const DEFAULT_ROW_HEIGHT = 42;
@@ -130,12 +131,15 @@ export class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsLis
       } else {
         shimmerElements.push({
           type: ShimmerElementType.line,
-          width: column.calculatedWidth! - cellStyleProps.cellRightPadding * 3,
+          width: column.calculatedWidth! * SHIMMER_LINE_VS_CELL_WIDTH_RATIO,
           height: DEFAULT_SHIMMER_HEIGHT
         });
         shimmerElements.push({
           type: ShimmerElementType.gap,
-          width: cellStyleProps.cellRightPadding * 4,
+          width:
+            cellStyleProps.cellRightPadding +
+            (column.calculatedWidth! - column.calculatedWidth! * SHIMMER_LINE_VS_CELL_WIDTH_RATIO) +
+            (column.isPadded ? cellStyleProps.cellExtraRightPadding : 0),
           height: gapHeight
         });
       }

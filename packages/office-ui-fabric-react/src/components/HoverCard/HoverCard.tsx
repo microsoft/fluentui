@@ -92,6 +92,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
         className={mergeStyles(this._styles.host)}
         ref={this._hoverCard}
         aria-describedby={setAriaDescribedBy && isHoverCardVisible ? hoverCardId : undefined}
+        data-is-focusable={!Boolean(this.props.target)}
       >
         {children}
         {isHoverCardVisible && (

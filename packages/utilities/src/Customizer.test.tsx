@@ -96,7 +96,7 @@ describe('Customizer', () => {
 
     expect(
       ReactDOM.renderToStaticMarkup(
-        <Customizer scopedSettings={{ Bar: { field: 'field' } }}>
+        <Customizer scopedSettings={{ Bar: { field: 'field', field2: 'oldfield2' } }}>
           <Customizer scopedSettings={{ Bar: { field2: 'field2' } }}>
             <Bar />
           </Customizer>
@@ -144,7 +144,7 @@ describe('Customizer', () => {
     ).toEqual('<div><div>scopedToFoo</div><div>scopedToBar</div></div>');
   });
 
-  it('does not override previously set settings', () => {
+  it('overrides previously set settings', () => {
     expect(
       ReactDOM.renderToStaticMarkup(
         <Customizer settings={{ field: 'field1' }}>
@@ -153,7 +153,7 @@ describe('Customizer', () => {
           </Customizer>
         </Customizer>
       )
-    ).toEqual('<div>field1</div>');
+    ).toEqual('<div>field2</div>');
   });
 
   it('overrides the old settings when the parameter is ignored', () => {

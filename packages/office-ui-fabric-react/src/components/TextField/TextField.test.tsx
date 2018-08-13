@@ -18,6 +18,10 @@ describe('TextField', () => {
     resetIds();
   });
 
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
   function renderIntoDocument(element: React.ReactElement<any>): HTMLElement {
     const component = ReactTestUtils.renderIntoDocument(element);
     const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
@@ -318,13 +322,73 @@ describe('TextField', () => {
         return value.length > 3 ? errorMessage : '';
       }
 
+      jest.useFakeTimers();
+
       const textField = mount(<TextField value="initial value" onGetErrorMessage={validator} />);
 
-      delay(20).then(() => assertErrorMessage(textField.getDOMNode(), errorMessage));
+      jest.runOnlyPendingTimers();
+      assertErrorMessage(textField.getDOMNode(), errorMessage);
 
       textField.setProps({ value: '' });
+      jest.runOnlyPendingTimers();
 
-      return delay(250).then(() => assertErrorMessage(textField.getDOMNode(), /* exist */ false));
+      assertErrorMessage(textField.getDOMNode(), /* exist */ false);
+    });
+
+    it('should not validate when receiving props when validating only on focus in', () => {
+      let validationCallCount = 0;
+      const validatorSpy = (value: string) => {
+        validationCallCount++;
+        return value.length > 3 ? errorMessage : '';
+      };
+
+      jest.useFakeTimers();
+
+      const textField = mount(
+        <TextField
+          validateOnFocusIn
+          value="initial value"
+          onGetErrorMessage={validatorSpy}
+          validateOnLoad={false}
+          deferredValidationTime={0}
+        />
+      );
+      expect(validationCallCount).toEqual(0);
+      assertErrorMessage(textField.getDOMNode(), false);
+
+      textField.setProps({ value: 'failValidationValue' });
+      jest.runOnlyPendingTimers();
+
+      expect(validationCallCount).toEqual(0);
+      assertErrorMessage(textField.getDOMNode(), false);
+    });
+
+    it('should not validate when receiving props when validating only on focus out', () => {
+      let validationCallCount = 0;
+      const validatorSpy = (value: string) => {
+        validationCallCount++;
+        return value.length > 3 ? errorMessage : '';
+      };
+
+      jest.useFakeTimers();
+
+      const textField = mount(
+        <TextField
+          validateOnFocusOut
+          value="initial value"
+          onGetErrorMessage={validatorSpy}
+          validateOnLoad={false}
+          deferredValidationTime={0}
+        />
+      );
+      expect(validationCallCount).toEqual(0);
+      assertErrorMessage(textField.getDOMNode(), false);
+
+      textField.setProps({ value: 'failValidationValue' });
+      jest.runOnlyPendingTimers();
+
+      expect(validationCallCount).toEqual(0);
+      assertErrorMessage(textField.getDOMNode(), false);
     });
 
     it('should trigger validation only on focus', () => {
@@ -429,6 +493,41 @@ describe('TextField', () => {
 
     expect(textField.getDOMNode().querySelector('textarea')).toBeTruthy();
     expect(textField.getDOMNode().querySelector('textarea')!.value).toEqual('initial value');
+  });
+
+  it('should update value when defaultValue changes and value prop is not set', () => {
+    const defaultValue1 = 'default value 1';
+    const defaultValue2 = 'default value 2';
+
+    const textField = mount(<TextField defaultValue={defaultValue1} />);
+    expect(textField.getDOMNode().querySelector('input')).toBeTruthy();
+    expect(textField.getDOMNode().querySelector('input')!.value).toEqual(defaultValue1);
+
+    textField.setProps({ defaultValue: defaultValue2 });
+    expect(textField.getDOMNode().querySelector('input')).toBeTruthy();
+    expect(textField.getDOMNode().querySelector('input')!.value).toEqual(defaultValue2);
+
+    textField.setProps({ defaultValue: undefined });
+    expect(textField.getDOMNode().querySelector('input')).toBeTruthy();
+    expect(textField.getDOMNode().querySelector('input')!.value).toEqual('');
+  });
+
+  it('should not update value when defaultValue changes and value prop is set', () => {
+    const defaultValue1 = 'default value 1';
+    const defaultValue2 = 'default value 2';
+    const testValue = 'test value';
+
+    const textField = mount(<TextField defaultValue={defaultValue1} />);
+    expect(textField.getDOMNode().querySelector('input')).toBeTruthy();
+    expect(textField.getDOMNode().querySelector('input')!.value).toEqual(defaultValue1);
+
+    textField.setProps({ value: testValue, defaultValue: defaultValue2 });
+    expect(textField.getDOMNode().querySelector('input')).toBeTruthy();
+    expect(textField.getDOMNode().querySelector('input')!.value).toEqual(testValue);
+
+    textField.setProps({ defaultValue: undefined });
+    expect(textField.getDOMNode().querySelector('input')).toBeTruthy();
+    expect(textField.getDOMNode().querySelector('input')!.value).toEqual(testValue);
   });
 
   it('can render description text', () => {

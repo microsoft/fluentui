@@ -102,7 +102,7 @@ export interface IDocPageProps {
   /** Best practice as markdown string */
   bestPractices?: string;
 
-  /** Feedback section includes link to new issue page */
+  /** Feedback section includes link to new issue page and displays Github issues */
   isFeedbackVisible?: boolean;
 
   /** Passed through header visibility flag from the demo component page component */

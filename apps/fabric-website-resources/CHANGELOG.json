@@ -2,6 +2,39 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "version": "6.7.3",
+      "tag": "@uifabric/fabric-website-resources_v6.7.3",
+      "date": "Fri, 10 Aug 2018 10:26:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Avital Baral <avitalbaral99@gmail.com>",
+            "commit": "172afbf5208fa1295a349d14eae716a14e16328c",
+            "comment": "autogenerate codepenable examples for fabric examples tagged with @codepen"
+          },
+          {
+            "author": "anavilohia <anavi.lohia@utexas.edu>",
+            "commit": "34a0e9d620cd391e545332e17c5c93494a7a8618",
+            "comment": "Added optional feedback section for component pages"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.7.1 <7.0.0` to `>=6.7.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.14.0 <7.0.0` to `>=6.15.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.12.1 <7.0.0` to `>=6.13.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.47.2 <7.0.0` to `>=6.48.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.7.2",
       "tag": "@uifabric/fabric-website-resources_v6.7.2",
       "date": "Wed, 08 Aug 2018 10:25:07 GMT",
