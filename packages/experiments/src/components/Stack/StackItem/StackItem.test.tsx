@@ -37,6 +37,18 @@ describe('Stack Item', () => {
     expect(wrapper.find('.test').length).toBe(0);
   });
 
+  it('can handle having no children', () => {
+    const createEmptyStackItem = () => {
+      mount(
+        <Stack>
+          <Stack.Item />
+        </Stack>
+      );
+    };
+
+    expect(createEmptyStackItem).not.toThrow();
+  });
+
   it('includes the classNames on both a StackItem and its child', () => {
     const stackItemClassName = 'stackItemClass';
     const childClassName = 'childClass';

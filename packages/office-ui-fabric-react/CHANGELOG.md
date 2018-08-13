@@ -1,6 +1,56 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 08 Aug 2018 10:25:08 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Aug 2018 03:43:25 GMT and should not be manually modified.
+
+## 6.49.0
+Mon, 13 Aug 2018 03:43:25 GMT
+
+### Minor changes
+
+- new button semantic slots
+- adds opacity function to variants
+- Uniformly export component "Base" implementations.
+
+### Patches
+
+- Improves high contrast mode styles for calendar
+- Adding updateDragInfo for DragEnd event
+- Updating the documentation pages for components to enable the feedback section.
+
+## 6.48.0
+Fri, 10 Aug 2018 10:26:09 GMT
+
+### Minor changes
+
+- Coachmark: Add onDismiss
+- CommandBar: OnClick now properly passes item as well as event
+
+### Patches
+
+- ColorPicker: Update color rectangle when hue value changes
+- autogenerate codepenable examples for fabric examples tagged with @codepen 
+- ComboBox cannot clear value when allowFreeForm enabled. Should trigger onChanged when value is cleared
+- Update components using customizer (including Button variations) to concatenate customizer and component style sets
+- Added optional feedback section for component pages
+- Link: Fix focus border text clipping.
+- TextField: Respect validateOnFocus props when props change.
+- ColorPicker: Limit decimal points shown for alpha.
+- ' Added 2 callback functions for dragstart and drag end events to get the telemetry logs in ODSP-Next'
+- Changing the drophint ICON
+- default render behaviour can be used along with onRenderCoin in Persona component
+- Prettier cleanup.
+- Removed unnecessary heading roles, and added aria-level to those requiring them
+- HoverCard: Adds more documentation and adds a focus stop on root to eliminate an edge case when target is not provided the focus listener was not firing at all.
+- ShimmeredDetailsList: replace a hard coded multiplier with a ratio constant and modify some math logic.
+
+## 6.47.2
+Thu, 09 Aug 2018 10:31:30 GMT
+
+### Patches
+
+- Checkbox: Now aligns to spec when text wraps to multiple lines (#5816).
+- ChoiceGroup: Set data-is-focusable attribute so that FocusTrapZone can detect correct focusable elements
+- DetailsList: Fix all examples by disabling row renderer optimization.
 
 ## 6.47.1
 Wed, 08 Aug 2018 10:25:08 GMT

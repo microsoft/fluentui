@@ -12,6 +12,7 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
     className=
 
         {
+          box-sizing: content-box;
           height: 360px;
           padding-bottom: 20px;
           padding-left: 20px;

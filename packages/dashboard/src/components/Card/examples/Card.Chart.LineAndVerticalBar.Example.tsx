@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IDataPoint } from '@uifabric/charting';
+import { IDataPoint, ILegendDataItem } from '@uifabric/charting';
 import { Card, CardContentType, CardSize, ChartType, ICardProps, Priority } from '@uifabric/dashboard';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
@@ -59,27 +59,31 @@ export class LineAndVerticalBarChartExample extends React.Component<{}, {}> {
         { x: 50, y: 45 }
       ]
     ];
-    const colors: string[] = [DefaultPalette.yellow, DefaultPalette.blue, DefaultPalette.red];
+    const colors: ILegendDataItem[] = [
+      { legendText: 'first', legendColor: DefaultPalette.yellow },
+      { legendText: 'second', legendColor: DefaultPalette.blue },
+      { legendText: 'third', legendColor: DefaultPalette.red }
+    ];
 
     const contentAreaList = [
       {
         priority: Priority.Priority1,
         cardContentType: CardContentType.Chart,
         content: {
-          chartLabel: 'Vertical bar chart example',
+          chartLabels: ['Vertical bar chart example'],
           chartType: ChartType.VerticalBarChart,
           dataPoints: datapoints,
-          colors: colors
+          legendColors: colors
         }
       },
       {
         priority: Priority.Priority2,
         cardContentType: CardContentType.Chart,
         content: {
-          chartLabel: 'Line chart example',
+          chartLabel: ['Line chart example'],
           chartType: ChartType.LineChart,
           data: points,
-          colors: colors
+          legendColors: colors
         }
       }
     ];
