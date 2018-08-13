@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Panel Renders Panel correctly 1`] = `
+<span
+  className="ms-Layer"
+/>
+`;

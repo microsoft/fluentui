@@ -143,7 +143,6 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         !isAnimating &&
         isHiddenOnDismiss && {
           visibility: 'hidden'
-          // visibility: 'visible'
         }
     ],
     main: [

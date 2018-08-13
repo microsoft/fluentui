@@ -3,10 +3,31 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 import { PanelBase } from './Panel.base';
-
+import { PanelType } from './Panel.types';
+import { Panel } from './Panel';
+import * as renderer from 'react-test-renderer';
 let div: HTMLElement;
 
+// Mock Layer since it otherwise shows nothing in snapshot tests
+jest.mock('../../Layer', () => {
+  return {
+    Layer: jest.fn().mockImplementation(props => {
+      return props.children;
+    })
+  };
+});
+
 describe('Panel', () => {
+  it('Renders Panel correctly', () => {
+    const component = renderer.create(
+      <Panel isOpen={true} type={PanelType.large} headerText="Large Panel">
+        <span>Content goes here.</span>
+        />
+      </Panel>
+    );
+    expect(component.toJSON()).toMatchSnapshot();
+  });
+
   beforeEach(() => {
     div = document.createElement('div');
   });
