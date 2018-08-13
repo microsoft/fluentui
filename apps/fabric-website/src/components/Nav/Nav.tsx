@@ -73,7 +73,7 @@ export class Nav extends React.Component<INavProps, INavState> {
     );
   }
 
-  private _renderLinkList(pages: INavPage[], isSubMenu: boolean): React.ReactElement<{}> {
+  private _renderLinkList(pages: INavPage[], isSubMenu: boolean, title?: string): React.ReactElement<{}> {
     const { filterState } = this.state;
 
     const links = pages
@@ -93,6 +93,7 @@ export class Nav extends React.Component<INavProps, INavState> {
 
     return (
       <ul className={css(styles.links, isSubMenu ? styles.isSubMenu : '')} aria-label="Main website navigation">
+        {title === 'Components' ? this._getSearchBox() : ''}
         {links}
       </ul>
     );
@@ -115,7 +116,7 @@ export class Nav extends React.Component<INavProps, INavState> {
     }
   }
 
-  private _renderSortedLinks(pages: INavPage[]): React.ReactElement<{}> {
+  private _renderSortedLinks(pages: INavPage[], title: string): React.ReactElement<{}> {
     const links: INavPage[] = [];
     pages.map((page: INavPage) => page.pages.map((link: INavPage) => links.push(link)));
     links.sort((l1, l2) => {
@@ -127,7 +128,7 @@ export class Nav extends React.Component<INavProps, INavState> {
       return 0;
     });
 
-    return this._renderLinkList(links, true);
+    return this._renderLinkList(links, true, title);
   }
 
   private _renderLink(page: INavPage, linkIndex: number): React.ReactElement<{}> {
@@ -135,15 +136,15 @@ export class Nav extends React.Component<INavProps, INavState> {
     const title = page.title === 'Fabric' ? 'Home page' : page.title;
     const childLinks =
       page.pages && title === 'Components' && !this.state.filterState
-        ? this._renderSortedLinks(page.pages)
+        ? this._renderSortedLinks(page.pages, title)
         : page.pages
-          ? this._renderLinkList(page.pages, true)
+          ? this._renderLinkList(page.pages, true, title)
           : null;
     const { searchQuery } = this.state;
     const text = page.title;
     let linkText = <>{text}</>;
-
     let matchIndex;
+
     // Highlight search query within link.
     if (!!searchQuery && page.isFilterable) {
       matchIndex = text.toLowerCase().indexOf(searchQuery.toLowerCase());
@@ -164,7 +165,6 @@ export class Nav extends React.Component<INavProps, INavState> {
 
     return (
       <span>
-        {this._getSearchBox(title, page)}
         <li
           className={css(
             styles.link,
@@ -187,40 +187,38 @@ export class Nav extends React.Component<INavProps, INavState> {
     );
   }
 
-  private _getSearchBox(val, page) {
-    if (val === 'Components' && _isPageActive(page)) {
-      return (
-        <div className={css(styles.searchBox)}>
-          <SearchBox
-            placeholder="Filter Components"
-            underlined={true}
-            styles={searchBoxStyles}
-            onChange={this._onChangeQuery.bind(this)}
-          />
-          <IconButton
-            iconProps={{ iconName: 'filter' }}
-            style={{ color: 'white', marginLeft: '5px' }}
-            menuIconProps={{ iconName: '' }}
-            menuProps={{
-              items: [
-                {
-                  key: 'categories',
-                  text: 'Categories',
-                  iconProps: { iconName: 'org' },
-                  onClick: this._setCategories.bind(this)
-                },
-                {
-                  key: 'alphabetized',
-                  text: 'A to Z',
-                  iconProps: { iconName: 'Ascending' },
-                  onClick: this._setAlphabetized.bind(this)
-                }
-              ]
-            }}
-          />
-        </div>
-      );
-    }
+  private _getSearchBox() {
+    return (
+      <div className={css(styles.searchBox)}>
+        <SearchBox
+          placeholder="Filter Components"
+          underlined={true}
+          styles={searchBoxStyles}
+          onChange={this._onChangeQuery.bind(this)}
+        />
+        <IconButton
+          iconProps={{ iconName: 'filter' }}
+          style={{ color: 'white', marginLeft: '5px' }}
+          menuIconProps={{ iconName: '' }}
+          menuProps={{
+            items: [
+              {
+                key: 'categories',
+                text: 'Categories',
+                iconProps: { iconName: 'org' },
+                onClick: this._setCategories.bind(this)
+              },
+              {
+                key: 'alphabetized',
+                text: 'A to Z',
+                iconProps: { iconName: 'Ascending' },
+                onClick: this._setAlphabetized.bind(this)
+              }
+            ]
+          }}
+        />
+      </div>
+    );
   }
 
   private _onLinkClick = (ev: React.MouseEvent<{}>) => {
@@ -286,6 +284,21 @@ function _isPageActive(page: INavPage): boolean {
   return false;
 }
 
+function _hasActiveGrandchild(childPage: INavPage): boolean {
+  let hasActiveGrandchild = false;
+
+  childPage.pages.forEach(grandchildPage => {
+    if (_isPageActive(grandchildPage)) {
+      hasActiveGrandchild = _hasActiveGrandchild(grandchildPage);
+    }
+    if (grandchildPage.pages) {
+      hasActiveGrandchild = _hasActiveGrandchild(grandchildPage);
+    }
+  });
+
+  return hasActiveGrandchild;
+}
+
 function _hasActiveChild(page: INavPage): boolean {
   let hasActiveChild: boolean = false;
 
@@ -302,6 +315,20 @@ function _hasActiveChild(page: INavPage): boolean {
         childPage.pages.forEach(grandchildPage => {
           if (_isPageActive(grandchildPage)) {
             hasActiveChild = true;
+          }
+          if (grandchildPage.pages) {
+            grandchildPage.pages.forEach(thirdLevelChild => {
+              if (_isPageActive(thirdLevelChild)) {
+                hasActiveChild = true;
+              }
+              if (thirdLevelChild.pages) {
+                thirdLevelChild.pages.forEach(fourthLevelChild => {
+                  if (_isPageActive(fourthLevelChild)) {
+                    hasActiveChild = true;
+                  }
+                });
+              }
+            });
           }
         });
       }
