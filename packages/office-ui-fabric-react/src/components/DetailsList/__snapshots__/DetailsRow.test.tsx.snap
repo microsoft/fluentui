@@ -147,6 +147,12 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
                     {
+                      height: 32px;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus {
+                      opacity: 1;
+                    }
+                    {
                       align-items: center;
                       background-color: transparent;
                       background: none;
@@ -185,9 +191,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                       z-index: 1;
                     }
                     &:hover {
-                      opacity: 1;
-                    }
-                    .ms-Fabric--isFocusVisible &:focus {
                       opacity: 1;
                     }
 
@@ -955,6 +958,12 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
                     {
+                      height: 32px;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus {
+                      opacity: 1;
+                    }
+                    {
                       align-items: center;
                       background-color: transparent;
                       background: none;
@@ -993,9 +1002,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                       z-index: 1;
                     }
                     &:hover {
-                      opacity: 1;
-                    }
-                    .ms-Fabric--isFocusVisible &:focus {
                       opacity: 1;
                     }
 
@@ -1757,6 +1763,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
       aria-checked={false}
       className=
           ms-DetailsRow-check
+
           {
             align-items: center;
             background-color: transparent;
@@ -2286,6 +2293,12 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
                     {
+                      height: 32px;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus {
+                      opacity: 1;
+                    }
+                    {
                       align-items: center;
                       background-color: transparent;
                       background: none;
@@ -2324,9 +2337,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                       z-index: 1;
                     }
                     &:hover {
-                      opacity: 1;
-                    }
-                    .ms-Fabric--isFocusVisible &:focus {
                       opacity: 1;
                     }
 
@@ -3094,6 +3104,12 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
                     {
+                      height: 32px;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus {
+                      opacity: 1;
+                    }
+                    {
                       align-items: center;
                       background-color: transparent;
                       background: none;
@@ -3132,9 +3148,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                       z-index: 1;
                     }
                     &:hover {
-                      opacity: 1;
-                    }
-                    .ms-Fabric--isFocusVisible &:focus {
                       opacity: 1;
                     }
 

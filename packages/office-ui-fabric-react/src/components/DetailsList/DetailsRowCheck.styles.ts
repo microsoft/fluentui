@@ -14,8 +14,9 @@ export const getStyles = (props: IDetailsRowCheckStyleProps): IDetailsRowCheckSt
   const isCheckVisible = isVisible || selected || anySelected;
 
   return {
-    root: [
-      classNames.root,
+    root: [classNames.root, className],
+
+    check: [
       !canSelect && [classNames.isDisabled, { visibility: 'hidden' }],
       isHeader && classNames.isHeader,
       getFocusStyle(theme),
@@ -40,10 +41,10 @@ export const getStyles = (props: IDetailsRowCheckStyleProps): IDetailsRowCheckSt
           }
         }
       },
+
       isCheckVisible && {
         opacity: 1
-      },
-      className
+      }
     ],
 
     isDisabled: []

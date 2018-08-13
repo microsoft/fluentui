@@ -68,5 +68,6 @@ export type IDetailsRowCheckStyleProps = Required<Pick<IDetailsRowCheckProps, 't
 
 export interface IDetailsRowCheckStyles {
   root: IStyle;
+  check: IStyle;
   isDisabled: IStyle;
 }
