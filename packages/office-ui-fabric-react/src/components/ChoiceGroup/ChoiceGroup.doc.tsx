@@ -8,11 +8,11 @@ import { ChoiceGroupIconExample } from './examples/ChoiceGroup.Icon.Example';
 import { ChoiceGroupStatus } from './ChoiceGroup.checklist';
 
 const ChoiceGroupBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/examples/ChoiceGroup.Basic.Example.tsx') as string;
-const ChoiceGroupBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/components/ChoiceGroup/ChoiceGroup.Basic.Example.Codepen.txt') as string;
+const ChoiceGroupBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/ChoiceGroup/ChoiceGroup.Basic.Example.Codepen.txt') as string;
 const ChoiceGroupCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/examples/ChoiceGroup.Custom.Example.tsx') as string;
 const ChoiceGroupImageExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/examples/ChoiceGroup.Image.Example.tsx') as string;
 const ChoiceGroupIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/examples/ChoiceGroup.Icon.Example.tsx') as string;
-const ChoiceGroupIconExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/components/ChoiceGroup/ChoiceGroup.Icon.Example.Codepen.txt') as string;
+const ChoiceGroupIconExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/ChoiceGroup/ChoiceGroup.Icon.Example.Codepen.txt') as string;
 
 export const ChoiceGroupPageProps: IDocPageProps = {
   title: 'ChoiceGroup',

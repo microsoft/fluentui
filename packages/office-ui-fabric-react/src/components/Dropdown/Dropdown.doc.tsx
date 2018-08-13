@@ -7,7 +7,7 @@ import { DropdownErrorExample } from './examples/Dropdown.Error.Example';
 import { DropdownStatus } from './Dropdown.checklist';
 
 const DropdownBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Basic.Example.tsx') as string;
-const DropdownBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/components/Dropdown/Dropdown.Basic.Example.Codepen.txt') as string;
+const DropdownBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Dropdown/Dropdown.Basic.Example.Codepen.txt') as string;
 const DropdownCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Custom.Example.tsx') as string;
 const DropdownErrorExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Error.Example.tsx') as string;
 

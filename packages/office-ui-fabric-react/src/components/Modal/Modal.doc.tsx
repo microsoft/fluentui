@@ -5,7 +5,7 @@ import { IDocPageProps } from '../../common/DocPage.types';
 import { ModalStatus } from './Modal.checklist';
 
 const ModalBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Modal/examples/Modal.Basic.Example.tsx') as string;
-const ModalBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/components/Modal/Modal.Basic.Example.Codepen.txt') as string;
+const ModalBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Modal/Modal.Basic.Example.Codepen.txt') as string;
 
 export const ModalPageProps: IDocPageProps = {
   title: 'Modal',
