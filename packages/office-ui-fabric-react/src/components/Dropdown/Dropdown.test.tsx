@@ -34,6 +34,29 @@ describe('Dropdown', () => {
       expect(tree).toMatchSnapshot();
     });
 
+    describe('with a placeHolder', () => {
+      const placeHolderText = 'Please select a number';
+      const element = <Dropdown options={DEFAULT_OPTIONS} placeHolder={placeHolderText} />;
+
+      it('matches snapshot', () => {
+        const component = renderer.create(element);
+        expect(component.toJSON()).toMatchSnapshot();
+      });
+
+      it('selectedValue is unchanged after focus', () => {
+        const container = document.createElement('div');
+        ReactDOM.render(element, container);
+        const dropdownRoot = container.querySelector('.ms-Dropdown');
+
+        try {
+          ReactTestUtils.Simulate.focus(dropdownRoot!);
+        } finally {
+          expect(dropdownRoot!.querySelector('.ms-Dropdown-title')!.textContent).toEqual(placeHolderText);
+          document.body.innerHTML = '';
+        }
+      });
+    });
+
     it('Can flip between enabled and disabled.', () => {
       const container = document.createElement('div');
       ReactDOM.render(<Dropdown label="testgroup" options={DEFAULT_OPTIONS} />, container);
