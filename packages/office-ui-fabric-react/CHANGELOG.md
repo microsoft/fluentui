@@ -1,6 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 10 Aug 2018 10:26:09 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Aug 2018 03:43:25 GMT and should not be manually modified.
+
+## 6.49.0
+Mon, 13 Aug 2018 03:43:25 GMT
+
+### Minor changes
+
+- new button semantic slots
+- adds opacity function to variants
+- Uniformly export component "Base" implementations.
+
+### Patches
+
+- Improves high contrast mode styles for calendar
+- Adding updateDragInfo for DragEnd event
+- Updating the documentation pages for components to enable the feedback section.
 
 ## 6.48.0
 Fri, 10 Aug 2018 10:26:09 GMT

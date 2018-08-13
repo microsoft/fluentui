@@ -2,6 +2,25 @@
   "name": "@uifabric/variants",
   "entries": [
     {
+      "version": "6.3.0",
+      "tag": "@uifabric/variants_v6.3.0",
+      "date": "Mon, 13 Aug 2018 03:43:25 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "30ce67f0d1eda4736015ba73968a21388ac58324",
+            "comment": "adds opacity function to variants"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.48.0 <7.0.0` to `>=6.49.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.2.0",
       "tag": "@uifabric/variants_v6.2.0",
       "date": "Fri, 03 Aug 2018 10:25:59 GMT",
