@@ -13,7 +13,7 @@ import {
 import { IProcessedStyleSet, getTheme, IconFontSizes } from '../../Styling';
 import { FocusTrapZone } from '../FocusTrapZone/index';
 import { IPanel, IPanelProps, PanelType, IPanelStyleProps, IPanelStyles } from './Panel.types';
-import { Layer } from '../Layer/Layer';
+import { Layer } from '../../Layer';
 import { Overlay } from '../../Overlay';
 import { Popup } from '../../Popup';
 import { IconButton } from '../../Button';
