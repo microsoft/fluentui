@@ -40,6 +40,7 @@ export const ScrollablePanePageProps: IDocPageProps = {
     string
   >('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneDonts.md'),
   isHeaderVisible: true,
+  isFeedbackVisible: true,
   allowNativeProps: true,
   nativePropsElement: ['a', 'button']
 };

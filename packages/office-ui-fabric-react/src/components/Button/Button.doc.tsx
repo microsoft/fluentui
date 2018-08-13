@@ -115,5 +115,6 @@ export const ButtonPageProps = (props: IButtonDocPageProps): IDocPageProps => ({
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/docs/ButtonDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/docs/ButtonDonts.md'),
   isHeaderVisible: true,
+  isFeedbackVisible: true,
   componentStatus: ButtonStatus
 });
