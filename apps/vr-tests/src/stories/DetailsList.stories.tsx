@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { DetailsList, DetailsListLayoutMode, IColumn } from 'office-ui-fabric-react';
+import { DetailsList, DetailsListLayoutMode, IColumn, CheckboxVisibility } from 'office-ui-fabric-react';
 
 const url = 'https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/';
 
@@ -154,6 +154,15 @@ storiesOf('DetailsList', module)
       groups={groups}
       columns={columns}
       layoutMode={DetailsListLayoutMode.justified}
+      isHeaderVisible={true}
+    />
+  ))
+  .add('Checkbox Visible Always', () => (
+    <DetailsList
+      items={items}
+      columns={columns}
+      layoutMode={DetailsListLayoutMode.justified}
+      checkboxVisibility={CheckboxVisibility.always}
       isHeaderVisible={true}
     />
   ));
