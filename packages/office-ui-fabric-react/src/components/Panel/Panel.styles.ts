@@ -164,80 +164,82 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
             width: panelSize.width.sm,
             boxShadow: '-30px, 0px, 30px, -30px, .2',
             left: 'auto'
-          }
-        }
-      },
-      isOpen && {
-        pointerEvents: 'auto'
-      },
-      type === PanelType.smallFluid && {
-        width: '100%'
-      },
-      type === PanelType.smallFixedNear && {
-        right: 'auto',
-        left: 0,
-        width: panelSize.width.xs,
-        boxShadow: '30px, 0px, 30px, -30px, .2'
-      },
-      type === PanelType.smallFixedFar && {
-        width: panelSize.width.xs,
-        selectors: {
-          ['@media (min-width: ' + ScreenWidthMinMedium + 'px)']: {
-            width: panelSize.width.sm
-          }
-        }
-      },
-      type === PanelType.medium && {
-        selectors: {
-          ['@media (min-width: ' + ScreenWidthMinUhfMobile + 'px)']: {
-            left: panelSize.margin.md,
-            width: 'auto'
           },
-          ['@media (min-width: ' + ScreenWidthMinXLarge + 'px)']: {
-            left: 'auto',
-            width: panelSize.width.md
-          }
-        }
-      },
-      (type === PanelType.large || type === PanelType.largeFixed) && {
-        selectors: {
-          ['@media (min-width: ' + ScreenWidthMinUhfMobile + 'px)']: {
-            left: panelSize.margin.md,
-            width: 'auto'
-          },
-          ['@media (min-width: ' + ScreenWidthMinXXLarge + 'px)']: {
-            left: panelSize.margin.lg
-          }
-        }
-      },
-      type === PanelType.largeFixed && {
-        selectors: {
-          ['@media (min-width: ' + ScreenWidthMinXXLarge + 'px)']: {
-            left: 'auto',
-            width: panelSize.width.lg
-          }
-        }
-      },
-      type === PanelType.extraLarge && {
-        selectors: {
-          ['@media (min-width: ' + ScreenWidthMinUhfMobile + 'px)']: {
-            left: panelSize.margin.md,
-            width: 'auto'
-          },
-          ['@media (min-width: ' + ScreenWidthMinXXLarge + 'px)']: {
-            left: panelSize.margin.xl
-          }
-        }
-      },
-      type === PanelType.custom && {
-        selectors: {
-          ['@media (min-width: ' + ScreenWidthMinUhfMobile + 'px)']: {
-            left: panelSize.margin.md,
-            width: 'auto'
-          },
-          ['@media (min-width: ' + ScreenWidthMinXLarge + 'px)']: {
-            left: 'auto'
-          }
+          '$root &': [
+            isOpen && {
+              pointerEvents: 'auto'
+            },
+            type === PanelType.smallFluid && {
+              width: '100%'
+            },
+            type === PanelType.smallFixedNear && {
+              right: 'auto',
+              left: 0,
+              width: panelSize.width.xs,
+              boxShadow: '30px, 0px, 30px, -30px, .2'
+            },
+            type === PanelType.smallFixedFar && {
+              width: panelSize.width.xs,
+              selectors: {
+                ['@media (min-width: ' + ScreenWidthMinMedium + 'px)']: {
+                  width: panelSize.width.sm
+                }
+              }
+            },
+            type === PanelType.medium && {
+              selectors: {
+                ['@media (min-width: ' + ScreenWidthMinUhfMobile + 'px)']: {
+                  left: panelSize.margin.md,
+                  width: 'auto'
+                },
+                ['@media (min-width: ' + ScreenWidthMinXLarge + 'px)']: {
+                  left: 'auto',
+                  width: panelSize.width.md
+                }
+              }
+            },
+            (type === PanelType.large || type === PanelType.largeFixed) && {
+              selectors: {
+                ['@media (min-width: ' + ScreenWidthMinUhfMobile + 'px)']: {
+                  left: panelSize.margin.md,
+                  width: 'auto'
+                },
+                ['@media (min-width: ' + ScreenWidthMinXXLarge + 'px)']: {
+                  left: panelSize.margin.lg
+                }
+              }
+            },
+            type === PanelType.largeFixed && {
+              selectors: {
+                ['@media (min-width: ' + ScreenWidthMinXXLarge + 'px)']: {
+                  left: 'auto',
+                  width: panelSize.width.lg
+                }
+              }
+            },
+            type === PanelType.extraLarge && {
+              selectors: {
+                ['@media (min-width: ' + ScreenWidthMinUhfMobile + 'px)']: {
+                  left: panelSize.margin.md,
+                  width: 'auto'
+                },
+                ['@media (min-width: ' + ScreenWidthMinXXLarge + 'px)']: {
+                  left: panelSize.margin.xl
+                }
+              }
+            },
+            type === PanelType.custom && {
+              selectors: {
+                ['@media (min-width: ' + ScreenWidthMinUhfMobile + 'px)']: {
+                  left: panelSize.margin.md,
+                  width: 'auto'
+                },
+                ['@media (min-width: ' + ScreenWidthMinXLarge + 'px)']: {
+                  left: 'auto'
+                }
+              }
+            }
+          ]
         }
       },
       isOpen && isAnimating && !isOnRightSide && AnimationClassNames.slideRightIn40,
