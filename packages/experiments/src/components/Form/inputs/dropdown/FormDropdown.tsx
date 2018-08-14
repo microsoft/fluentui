@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 // Components
-import { IFormDropdownProps } from './FormDropdown.types';
+import { IFormDropdownProps, DropdownValue } from './FormDropdown.types';
 import { Dropdown, IDropdownOption, IDropdownProps } from 'office-ui-fabric-react/lib/Dropdown';
 import { FormBaseInput, IFormBaseInputState } from '../../FormBaseInput';
 import { IFormContext } from '../../Form';
@@ -9,30 +9,23 @@ import { IFormContext } from '../../Form';
 /**
  * Dropdown input for Form
  */
-export class FormDropdown extends FormBaseInput<
-  number | string | number[] | string[],
-  IFormDropdownProps,
-  IFormBaseInputState<number | string | number[] | string[]>
-> {
+export class FormDropdown extends FormBaseInput<DropdownValue, IFormDropdownProps, IFormBaseInputState<DropdownValue>> {
   constructor(props: IFormDropdownProps, context: IFormContext) {
     super(props, context);
 
     const { dropdownProps } = props;
 
-    const propsValue = this.props.value !== null && this.props.value !== undefined ? this.props.value : undefined;
+    const propsValue = this.props.value;
 
-    let currentValue: number | string | number[] | string[] | undefined = undefined;
+    let currentValue: DropdownValue | undefined = undefined;
 
-    if (dropdownProps !== undefined && dropdownProps.multiSelect === true) {
+    if (dropdownProps && dropdownProps.multiSelect) {
       // If multiSelect is set to true the currentValue should be an array.
       if (Array.isArray(propsValue)) {
         currentValue = propsValue;
       } else if (propsValue !== undefined) {
-        if (typeof propsValue === 'string') {
-          currentValue = new Array<string>(propsValue);
-        } else {
-          currentValue = new Array<number>(propsValue);
-        }
+        // tslint:disable-next-line:no-any
+        currentValue = [propsValue] as any[];
       } else {
         currentValue = [];
       }
@@ -42,11 +35,7 @@ export class FormDropdown extends FormBaseInput<
           ? this.props.dropdownProps.options[0].key
           : undefined;
 
-      if (propsValue !== undefined) {
-        currentValue = propsValue;
-      } else if (firstOption !== undefined) {
-        currentValue = firstOption;
-      }
+      currentValue = propsValue || firstOption || undefined;
     }
 
     this.state = {
@@ -80,34 +69,25 @@ export class FormDropdown extends FormBaseInput<
   private _onChanged = (option: IDropdownOption): void => {
     const { dropdownProps } = this.props;
 
-    if (dropdownProps !== undefined && dropdownProps.multiSelect === true) {
-      const selected = option.selected === true;
+    if (dropdownProps && dropdownProps.multiSelect) {
+      // tslint:disable-next-line:no-any
+      let value = this.state.currentValue as any[];
+      const selected = !!option.selected;
 
-      this.setState((prevState: IFormBaseInputState<number | string | number[] | string[]>) => {
-        let currentValue = prevState.currentValue;
+      if (value === undefined) {
+        value = [];
+      }
 
-        if (currentValue === undefined) {
-          currentValue = [];
+      if (selected) {
+        value.push(option.key);
+      } else {
+        const index = value.indexOf(option.key);
+        if (index >= 0) {
+          value.splice(index, 1);
         }
+      }
 
-        if (selected) {
-          if (typeof option.key === 'string') {
-            currentValue = (currentValue as string[]).concat([option.key]);
-          } else {
-            currentValue = (currentValue as number[]).concat([option.key]);
-          }
-        } else {
-          if (typeof option.key === 'string') {
-            currentValue = (currentValue as string[]).filter((x: string) => x !== option.key);
-          } else {
-            currentValue = (currentValue as number[]).filter((x: number) => x !== option.key);
-          }
-        }
-
-        return {
-          currentValue: currentValue
-        };
-      });
+      this.setValue(value);
     } else {
       this.setValue(option.key);
     }
