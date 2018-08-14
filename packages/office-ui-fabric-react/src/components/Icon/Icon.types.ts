@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IImageProps } from '../Image/Image.types';
-import { IStyle, ITheme } from '../../Styling';
+import { IStyle } from '../../Styling';
 import { IBaseProps, IStyleFunctionOrObject } from '../../Utilities';
 
 // Please keep alphabetized
@@ -61,11 +61,6 @@ export interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement
   imageErrorAs?: React.StatelessComponent<IImageProps> | React.ComponentClass<IImageProps>;
 
   /**
-   * Theme (provided through customization.)
-   */
-  theme?: ITheme;
-
-  /**
    * Gets the styles for an Icon.
    */
   styles?: IStyleFunctionOrObject<IIconStyleProps, IIconStyles>;
@@ -77,11 +72,6 @@ export interface IIconStyleProps {
   isPlaceholder: boolean;
   isImage: boolean;
   styles?: Partial<IIconStyles>;
-
-  /**
-   * Theme provided by High-Order Component.
-   */
-  theme: ITheme;
 }
 
 export interface IIconStyles {

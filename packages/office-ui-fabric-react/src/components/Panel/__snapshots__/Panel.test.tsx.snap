@@ -277,6 +277,7 @@ exports[`Panel Renders Panel correctly 1`] = `
               }
         >
           <p
+            aria-level={2}
             className=
                 ms-Panel-headerText
                 {
