@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "fix issue click target sizes for compoundButton",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "gorigarajesh@gmail.com"
+}
