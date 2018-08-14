@@ -281,8 +281,12 @@ exports[`Panel Renders Panel correctly 1`] = `
             className=
                 ms-Panel-headerText
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   color: #333333;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 21px;
+                  font-weight: 100;
                   line-height: 32px;
                   margin-bottom: 0px;
                   margin-left: 0px;
