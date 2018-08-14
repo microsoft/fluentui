@@ -46,5 +46,6 @@ export const FocusZonePageProps: IDocPageProps = {
   dos: '',
   donts: '',
   isHeaderVisible: true,
+  isFeedbackVisible: true,
   allowNativeProps: true
 };

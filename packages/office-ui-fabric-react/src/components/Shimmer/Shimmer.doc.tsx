@@ -57,5 +57,6 @@ export const ShimmerPageProps: IDocPageProps = {
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Shimmer/docs/ShimmerDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Shimmer/docs/ShimmerDonts.md'),
   isHeaderVisible: true,
+  isFeedbackVisible: true,
   componentStatus: ShimmerStatus
 };

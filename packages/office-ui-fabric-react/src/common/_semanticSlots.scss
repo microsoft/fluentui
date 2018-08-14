@@ -46,11 +46,22 @@ $buttonBackgroundColor: '[theme:buttonBackground, default: #f4f4f4]';
 $buttonBackgroundHoveredColor: '[theme:buttonBackgroundHovered, default: #eaeaea]';
 $buttonBackgroundCheckedColor: '[theme:buttonBackgroundChecked, default: #c8c8c8]';
 $buttonBackgroundCheckedHoveredColor: '[theme:buttonBackgroundCheckedHovered, default: #eaeaea]';
+$buttonBackgroundPressedColor: '[theme:buttonBackgroundPressed, default: #eaeaea]';
 $buttonBorderColor: '[theme:buttonBorder, default: transparent]';
 $buttonTextColor: '[theme:buttonText, default: #333333]';
 $buttonTextHoveredColor: '[theme:buttonTextHovered, default: #000000]';
 $buttonTextCheckedColor: '[theme:buttonTextChecked, default: #212121]';
 $buttonTextCheckedHoveredColor: '[theme:buttonTextCheckedHovered, default: #000000]';
+$buttonTextPressedColor: '[theme:buttonTextPressed, default: #f8f8f8]';
+$buttonBorderDisabledColor: '[theme:buttonBorderDisabled, default: #767676]';
+$buttonTextDisabledColor: '[theme:buttonTextDisabled, default: #767676]';
+$primaryButtonBackgroundColor: '[theme:primaryButtonBackground, default: #0078d4]';
+$primaryButtonBackgroundHoveredColor: '[theme:primaryButtonBackgroundHovered, default: #106ebe]';
+$primaryButtonBackgroundPressedColor: '[theme:primaryButtonBackgroundPressed, default: #005a9e]';
+$primaryButtonBorderColor: '[theme:primaryButtonText, default: transparent]';
+$primaryButtonTextColor: '[theme:primaryButtonText, default: #ffffff]';
+$primarybuttonTextHoveredColor: '[theme:primaryButtonTextHovered, default: #ffffff]';
+$primaryButtonTextPressedColor: '[theme:primaryButtonTextPressed, default: #ffffff]';
 
 /* Menus */
 $menuItemBackgroundHoveredColor: '[theme:menuItemBackgroundHovered, default: #f8f8f8]';

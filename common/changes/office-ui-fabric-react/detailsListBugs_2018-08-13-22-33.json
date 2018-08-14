@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Link: Fix focus border text clipping.",
+      "comment": "DetailsList: in single select mode maintain role and index, and remove onclick",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "jagore@microsoft.com"
+  "email": "naethell@microsoft.com"
 }

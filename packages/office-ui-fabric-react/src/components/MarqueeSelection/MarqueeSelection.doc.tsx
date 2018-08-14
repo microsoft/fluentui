@@ -24,5 +24,6 @@ export const MarqueeSelectionPageProps: IDocPageProps = {
   bestPractices: '',
   dos: '',
   donts: '',
-  isHeaderVisible: true
+  isHeaderVisible: true,
+  isFeedbackVisible: true
 };
