@@ -138,7 +138,7 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
                     <TextField
                       className={classNames.input}
                       onBlur={this._onRGBAChanged}
-                      value={String(color.a)}
+                      value={String(color.a ? color.a.toPrecision(3) : color.a)}
                       componentRef={this._aText}
                       spellCheck={false}
                       ariaLabel={this.props.alphaLabel}
@@ -166,16 +166,22 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
   };
 
   private _onHexChanged = (): void => {
-    this._updateColor(getColorFromString('#' + this._hexText.value));
+    if (this._hexText.current) {
+      this._updateColor(getColorFromString('#' + this._hexText.current.value));
+    }
   };
 
   private _onRGBAChanged = (): void => {
+    if (!this._rText.current || !this._gText.current || !this._bText.current || !this._aText.current) {
+      return;
+    }
+
     this._updateColor(
       getColorFromRGBA({
-        r: Number(this._rText.value),
-        g: Number(this._gText.value),
-        b: Number(this._bText.value),
-        a: Number((this._aText && this._aText.value) || 100)
+        r: Number(this._rText.current.value),
+        g: Number(this._gText.current.value),
+        b: Number(this._bText.current.value),
+        a: Number(this._aText.current.value || 100)
       })
     );
   };
@@ -186,14 +192,15 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
     }
 
     const { onColorChanged } = this.props;
-
-    if (newColor.str !== this.state.color.str) {
+    const { color } = this.state;
+    const hasColorStringChanged = newColor.str !== color.str;
+    if (newColor.h !== color.h || hasColorStringChanged) {
       this.setState(
         {
           color: newColor
         } as IColorPickerState,
         () => {
-          if (onColorChanged) {
+          if (hasColorStringChanged && onColorChanged) {
             onColorChanged(newColor.str);
           }
         }

@@ -16,7 +16,7 @@ export class NumberTextField extends React.Component<INumberTextFieldProps, INum
     super(props);
 
     this._restore = this._restore.bind(this);
-    this._onChanged = this._onChanged.bind(this);
+    this._onChange = this._onChange.bind(this);
     this._validateNumber = this._validateNumber.bind(this);
 
     this.state = {
@@ -31,7 +31,7 @@ export class NumberTextField extends React.Component<INumberTextFieldProps, INum
           className="NumberTextField-textField"
           label={this.props.label}
           value={this.state.value}
-          onChanged={this._onChanged}
+          onChange={this._onChange}
           onGetErrorMessage={this._validateNumber}
         />
         <div className="NumberTextField-restoreButton">
@@ -45,7 +45,7 @@ export class NumberTextField extends React.Component<INumberTextFieldProps, INum
     return isNaN(Number(value)) ? `The value should be a number, actual is ${value}.` : '';
   }
 
-  private _onChanged(value: string): void {
+  private _onChange(ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, value: string): void {
     return this.setState({
       value
     });

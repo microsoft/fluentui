@@ -5,7 +5,8 @@ import { CustomizerContext, ICustomizerContext } from './Customizer';
 
 export function customizable(
   scope: string,
-  fields: string[]
+  fields: string[],
+  concatStyles?: boolean
   // tslint:disable-next-line:no-any
 ): <P, S>(ComposedComponent: new (props: P, ...args: any[]) => React.Component<P, S>) => any {
   // tslint:disable-next-line:no-shadowed-variable

@@ -47,6 +47,8 @@ export interface IComponentPageProps {
   nativePropsElement?: string | string[] | undefined;
   /** Includes the feedback section **/
   isFeedbackVisible?: boolean;
+  /** Feedback section with GitHub issues **/
+  feedback?: JSX.Element;
 
   /**
    * Link to the Component root folder on GitHub.
@@ -252,10 +254,13 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
 
       return (
         <MessageBar>
-          <strong>Native Props Allowed{componentString}</strong> - all HTML attributes native to the {elementString},
-          including all aria and custom data attributes, can be applied as native props on{componentString || (
-            <> this component</>
-          )}.
+          <strong>
+            Native Props Allowed
+            {componentString}
+          </strong>{' '}
+          - all HTML attributes native to the {elementString}, including all aria and custom data attributes, can be
+          applied as native props on
+          {componentString || <> this component</>}.
         </MessageBar>
       );
     }
@@ -376,9 +381,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
           <h2 className="ComponentPage-subHeading ComponentPage-variantsTitle" id="Feedback">
             Feedback
           </h2>
-          <Link href="https://github.com/OfficeDev/office-ui-fabric-react/issues/new/choose" target="_blank">
-            Submit feedback on Github
-          </Link>
+          {this.props.feedback}
         </div>
       );
     }

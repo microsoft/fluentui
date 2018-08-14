@@ -39,7 +39,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
   private _id: string;
   private _min: number;
   private _labelId: string;
-  private _classNames: { [key in keyof IRatingStyles]: string };
+  private _classNames: IProcessedStyleSet<IRatingStyles>;
 
   constructor(props: IRatingProps) {
     super(props);

@@ -18,6 +18,10 @@ describe('TextField', () => {
     resetIds();
   });
 
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
   function renderIntoDocument(element: React.ReactElement<any>): HTMLElement {
     const component = ReactTestUtils.renderIntoDocument(element);
     const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
@@ -318,13 +322,73 @@ describe('TextField', () => {
         return value.length > 3 ? errorMessage : '';
       }
 
+      jest.useFakeTimers();
+
       const textField = mount(<TextField value="initial value" onGetErrorMessage={validator} />);
 
-      delay(20).then(() => assertErrorMessage(textField.getDOMNode(), errorMessage));
+      jest.runOnlyPendingTimers();
+      assertErrorMessage(textField.getDOMNode(), errorMessage);
 
       textField.setProps({ value: '' });
+      jest.runOnlyPendingTimers();
 
-      return delay(250).then(() => assertErrorMessage(textField.getDOMNode(), /* exist */ false));
+      assertErrorMessage(textField.getDOMNode(), /* exist */ false);
+    });
+
+    it('should not validate when receiving props when validating only on focus in', () => {
+      let validationCallCount = 0;
+      const validatorSpy = (value: string) => {
+        validationCallCount++;
+        return value.length > 3 ? errorMessage : '';
+      };
+
+      jest.useFakeTimers();
+
+      const textField = mount(
+        <TextField
+          validateOnFocusIn
+          value="initial value"
+          onGetErrorMessage={validatorSpy}
+          validateOnLoad={false}
+          deferredValidationTime={0}
+        />
+      );
+      expect(validationCallCount).toEqual(0);
+      assertErrorMessage(textField.getDOMNode(), false);
+
+      textField.setProps({ value: 'failValidationValue' });
+      jest.runOnlyPendingTimers();
+
+      expect(validationCallCount).toEqual(0);
+      assertErrorMessage(textField.getDOMNode(), false);
+    });
+
+    it('should not validate when receiving props when validating only on focus out', () => {
+      let validationCallCount = 0;
+      const validatorSpy = (value: string) => {
+        validationCallCount++;
+        return value.length > 3 ? errorMessage : '';
+      };
+
+      jest.useFakeTimers();
+
+      const textField = mount(
+        <TextField
+          validateOnFocusOut
+          value="initial value"
+          onGetErrorMessage={validatorSpy}
+          validateOnLoad={false}
+          deferredValidationTime={0}
+        />
+      );
+      expect(validationCallCount).toEqual(0);
+      assertErrorMessage(textField.getDOMNode(), false);
+
+      textField.setProps({ value: 'failValidationValue' });
+      jest.runOnlyPendingTimers();
+
+      expect(validationCallCount).toEqual(0);
+      assertErrorMessage(textField.getDOMNode(), false);
     });
 
     it('should trigger validation only on focus', () => {
@@ -431,6 +495,41 @@ describe('TextField', () => {
     expect(textField.getDOMNode().querySelector('textarea')!.value).toEqual('initial value');
   });
 
+  it('should update value when defaultValue changes and value prop is not set', () => {
+    const defaultValue1 = 'default value 1';
+    const defaultValue2 = 'default value 2';
+
+    const textField = mount(<TextField defaultValue={defaultValue1} />);
+    expect(textField.getDOMNode().querySelector('input')).toBeTruthy();
+    expect(textField.getDOMNode().querySelector('input')!.value).toEqual(defaultValue1);
+
+    textField.setProps({ defaultValue: defaultValue2 });
+    expect(textField.getDOMNode().querySelector('input')).toBeTruthy();
+    expect(textField.getDOMNode().querySelector('input')!.value).toEqual(defaultValue2);
+
+    textField.setProps({ defaultValue: undefined });
+    expect(textField.getDOMNode().querySelector('input')).toBeTruthy();
+    expect(textField.getDOMNode().querySelector('input')!.value).toEqual('');
+  });
+
+  it('should not update value when defaultValue changes and value prop is set', () => {
+    const defaultValue1 = 'default value 1';
+    const defaultValue2 = 'default value 2';
+    const testValue = 'test value';
+
+    const textField = mount(<TextField defaultValue={defaultValue1} />);
+    expect(textField.getDOMNode().querySelector('input')).toBeTruthy();
+    expect(textField.getDOMNode().querySelector('input')!.value).toEqual(defaultValue1);
+
+    textField.setProps({ value: testValue, defaultValue: defaultValue2 });
+    expect(textField.getDOMNode().querySelector('input')).toBeTruthy();
+    expect(textField.getDOMNode().querySelector('input')!.value).toEqual(testValue);
+
+    textField.setProps({ defaultValue: undefined });
+    expect(textField.getDOMNode().querySelector('input')).toBeTruthy();
+    expect(textField.getDOMNode().querySelector('input')!.value).toEqual(testValue);
+  });
+
   it('can render description text', () => {
     const testDescription = 'A custom description';
     const textField = mount(<TextField description={testDescription} />);
@@ -451,16 +550,16 @@ describe('TextField', () => {
     expect(callCount).toEqual(1);
   });
 
-  it('should call onChanged handler for input change', () => {
+  it('should call onChange handler for input change', () => {
     let callCount = 0;
-    const onChangedSpy = (value: string) => {
+    const onChangeSpy = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, value: string) => {
       callCount++;
     };
 
     const textField = mount(
       <TextField
         defaultValue="initial value"
-        onChanged={onChangedSpy}
+        onChange={onChangeSpy}
         // tslint:disable-next-line:jsx-no-lambda
         onGetErrorMessage={value => (value.length > 0 ? '' : 'error')}
       />
@@ -478,13 +577,13 @@ describe('TextField', () => {
     expect(callCount).toEqual(2);
   });
 
-  it('should not call onChanged when initial value is undefined and input change is an empty string', () => {
+  it('should not call onChange when initial value is undefined and input change is an empty string', () => {
     let callCount = 0;
-    const onChangedSpy = (value: string) => {
+    const onChangeSpy = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, value: string) => {
       callCount++;
     };
 
-    const textField = mount(<TextField onChanged={onChangedSpy} />);
+    const textField = mount(<TextField onChange={onChangeSpy} />);
 
     expect(callCount).toEqual(0);
     const inputDOM = textField.getDOMNode().querySelector('input') as Element;
@@ -492,6 +591,28 @@ describe('TextField', () => {
     ReactTestUtils.Simulate.input(inputDOM, mockEvent(''));
     ReactTestUtils.Simulate.change(inputDOM, mockEvent(''));
     expect(callCount).toEqual(0);
+  });
+
+  it('should call onChange with a persisted event', () => {
+    let textFieldTarget: any = null;
+    const onChangeSpy = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, value: string) => {
+      textFieldTarget = ev.target;
+    };
+
+    const textFieldOne = mount(<TextField onChange={onChangeSpy} />);
+    const textFieldTwo = mount(<TextField onChange={onChangeSpy} />);
+
+    const inputDOMOne = textFieldOne.getDOMNode().querySelector('input') as Element;
+    const inputDOMTwo = textFieldTwo.getDOMNode().querySelector('input') as Element;
+
+    const valueOne = 'textfield one';
+    const valueTwo = 'textfield two';
+
+    ReactTestUtils.Simulate.input(inputDOMOne, mockEvent(valueOne));
+    expect(textFieldTarget!.value).toEqual(valueOne);
+
+    ReactTestUtils.Simulate.change(inputDOMTwo, mockEvent(valueTwo));
+    expect(textFieldTarget!.value).toEqual(valueTwo);
   });
 
   it('should select a range of text', () => {

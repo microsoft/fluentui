@@ -83,7 +83,7 @@ export class DetailsListBasicExample extends React.Component<
             onChange={this._onShowItemIndexInViewChanged}
           />
         </div>
-        <TextField label="Filter by name:" onChanged={this._onChanged} />
+        <TextField label="Filter by name:" onChange={this._onChange} />
         <MarqueeSelection selection={this._selection}>
           <DetailsList
             componentRef={this._detailsList}
@@ -96,7 +96,6 @@ export class DetailsListBasicExample extends React.Component<
             ariaLabelForSelectionColumn="Toggle selection"
             ariaLabelForSelectAllCheckbox="Toggle selection for all items"
             onItemInvoked={this._onItemInvoked}
-            useReducedRowRenderer={true}
           />
         </MarqueeSelection>
       </div>
@@ -123,7 +122,7 @@ export class DetailsListBasicExample extends React.Component<
     }
   }
 
-  private _onChanged = (text: any): void => {
+  private _onChange = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text: string): void => {
     this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items });
   };
 

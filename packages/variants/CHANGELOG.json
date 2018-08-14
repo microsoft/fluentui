@@ -2,6 +2,63 @@
   "name": "@uifabric/variants",
   "entries": [
     {
+      "version": "6.3.0",
+      "tag": "@uifabric/variants_v6.3.0",
+      "date": "Mon, 13 Aug 2018 03:43:25 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "30ce67f0d1eda4736015ba73968a21388ac58324",
+            "comment": "adds opacity function to variants"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.48.0 <7.0.0` to `>=6.49.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.2.0",
+      "tag": "@uifabric/variants_v6.2.0",
+      "date": "Fri, 03 Aug 2018 10:25:59 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "7264474f10852c0e4d6f6431c52b019659546abc",
+            "comment": "add bodyStandoutBackground default values to variants"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.44.0 <7.0.0` to `>=6.45.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.1.0",
+      "tag": "@uifabric/variants_v6.1.0",
+      "date": "Thu, 02 Aug 2018 10:23:19 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "fc25cf3ddddafc7d92382ac4af2d110db554ed9d",
+            "comment": "Add variantThemeType enums and utility function to apply variant theme"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.43.0 <7.0.0` to `>=6.44.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.0.6",
       "tag": "@uifabric/variants_v6.0.6",
       "date": "Mon, 23 Jul 2018 10:28:08 GMT",

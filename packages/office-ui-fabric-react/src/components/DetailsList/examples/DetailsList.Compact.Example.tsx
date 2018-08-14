@@ -67,7 +67,7 @@ export class DetailsListCompactExample extends React.Component<
     return (
       <div>
         <div>{selectionDetails}</div>
-        <TextField label="Filter by name:" onChanged={this._onChanged} />
+        <TextField label="Filter by name:" onChange={this._onChange} />
         <MarqueeSelection selection={this._selection}>
           <DetailsList
             items={items}
@@ -78,7 +78,6 @@ export class DetailsListCompactExample extends React.Component<
             selectionPreservedOnEmptyClick={true}
             onItemInvoked={this._onItemInvoked}
             compact={true}
-            useReducedRowRenderer={true}
           />
         </MarqueeSelection>
       </div>
@@ -98,7 +97,7 @@ export class DetailsListCompactExample extends React.Component<
     }
   }
 
-  private _onChanged = (text: any): void => {
+  private _onChange = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text: string): void => {
     this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items });
   };
 

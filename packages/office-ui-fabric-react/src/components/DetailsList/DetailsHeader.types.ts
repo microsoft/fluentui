@@ -6,7 +6,8 @@ import { IViewport } from '../../utilities/decorators/withViewport';
 import { ISelection, SelectionMode } from '../../utilities/selection/interfaces';
 import { ITheme, IStyle } from '../../Styling';
 import { DetailsHeaderBase } from './DetailsHeader.base';
-import { IColumn, DetailsListLayoutMode, IColumnReorderOptions } from './DetailsList.types';
+import { IColumn, DetailsListLayoutMode, IColumnReorderOptions, ColumnDragEndLocation } from './DetailsList.types';
+import { ICellStyleProps } from './DetailsRow.types';
 
 export interface IDetailsHeader {
   /** sets focus into the header */
@@ -84,13 +85,18 @@ export interface IDetailsHeaderProps extends React.Props<DetailsHeaderBase> {
   viewport?: IViewport;
 
   /** Column reordering options */
-  columnReorderOptions?: IColumnReorderOptions | null;
+  columnReorderOptions?: IColumnReorderOptions;
+
+  /** Column reordering options */
+  columnReorderProps?: IColumnReorderHeaderProps;
 
   /** Minimum pixels to be moved before dragging is registered */
   minimumPixelsForDrag?: number;
 
   /** Overriding class name */
   className?: string;
+
+  cellStyleProps?: ICellStyleProps;
 }
 
 export enum SelectAllVisibility {
@@ -111,6 +117,14 @@ export interface IColumnResizeDetails {
   columnIndex: number;
   originX?: number;
   columnMinWidth: number;
+}
+
+export interface IColumnReorderHeaderProps extends IColumnReorderOptions {
+  /** Callback to notify the column dragEnd event to List
+   * Need this to check whether the dragEnd has happened on
+   * corresponding list or outside of the list
+   */
+  onColumnDragEnd?: (props: { dropLocation?: ColumnDragEndLocation }, event: MouseEvent) => void;
 }
 
 export interface IDropHintDetails {
@@ -139,6 +153,8 @@ export type IDetailsHeaderStyleProps = Required<Pick<IDetailsHeaderProps, 'theme
 
     /** Whether checkbox is hidden  */
     isCheckboxHidden?: boolean;
+
+    cellStyleProps?: ICellStyleProps;
   };
 
 export interface IDetailsHeaderStyles {
@@ -148,26 +164,17 @@ export interface IDetailsHeaderStyles {
   cellIsCheck: IStyle;
   cellIsActionable: IStyle;
   cellIsEmpty: IStyle;
-  cell: IStyle;
-  gripperBarVerticalStyle: IStyle;
   cellSizer: IStyle;
   cellSizerStart: IStyle;
   cellSizerEnd: IStyle;
   cellIsResizing: IStyle;
+  cellIsGroupExpander: IStyle;
   collapseButton: IStyle;
-  iconOnlyHeader: IStyle;
-  nearIcon: IStyle;
-  sortIcon: IStyle;
-  filterChevron: IStyle;
-  cellTitle: IStyle;
-  cellName: IStyle;
   checkTooltip: IStyle;
-  cellTooltip: IStyle;
   sizingOverlay: IStyle;
-  borderWhileDragging: IStyle;
   dropHintCircleStyle: IStyle;
+  dropHintCaretStyle: IStyle;
   dropHintLineStyle: IStyle;
   dropHintStyle: IStyle;
-  borderAfterDropping: IStyle;
   accessibleLabel: IStyle;
 }

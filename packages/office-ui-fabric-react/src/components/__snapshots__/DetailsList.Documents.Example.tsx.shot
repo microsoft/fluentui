@@ -48,9 +48,9 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
           }
     >
       <button
+        aria-checked={false}
         aria-disabled={undefined}
-        aria-label="Enable Compact Mode"
-        aria-pressed={false}
+        aria-label={undefined}
         checked={false}
         className=
             ms-Toggle-background
@@ -103,6 +103,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
         id="Toggle0"
         onChange={[Function]}
         onClick={[Function]}
+        role="switch"
         type="button"
       >
         <div
@@ -152,7 +153,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               padding-top: 0;
               user-select: none;
             }
-        htmlFor="Toggle0"
       >
         Normal
       </label>
@@ -204,9 +204,9 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
           }
     >
       <button
+        aria-checked={false}
         aria-disabled={undefined}
-        aria-label="Enable Modal Selection"
-        aria-pressed={false}
+        aria-label={undefined}
         checked={false}
         className=
             ms-Toggle-background
@@ -259,6 +259,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
         id="Toggle1"
         onChange={[Function]}
         onClick={[Function]}
+        role="switch"
         type="button"
       >
         <div
@@ -308,7 +309,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               padding-top: 0;
               user-select: none;
             }
-        htmlFor="Toggle1"
       >
         Normal
       </label>

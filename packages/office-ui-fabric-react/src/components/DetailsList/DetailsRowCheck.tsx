@@ -13,6 +13,7 @@ const getClassNames = classNamesFunction<IDetailsRowCheckStyleProps, IDetailsRow
 
 const DetailsRowCheckBase = (props: IDetailsRowCheckProps) => {
   const {
+    isVisible = false,
     canSelect = false,
     isSelected = false,
     anySelected = false,
@@ -41,6 +42,7 @@ const DetailsRowCheckBase = (props: IDetailsRowCheckProps) => {
     anySelected,
     className,
     isHeader,
+    isVisible,
     compact
   });
 

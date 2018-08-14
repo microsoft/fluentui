@@ -1,4 +1,4 @@
-import { IStyleProps } from '../Text/createComponent';
+import { IThemedProps } from '../../Foundation';
 import { IStackProps, IStackStyles } from './Stack.types';
 
 const nameMap: { [key: string]: string } = {
@@ -6,32 +6,47 @@ const nameMap: { [key: string]: string } = {
   end: 'flex-end'
 };
 
-export const styles = (props: IStyleProps<IStackProps, IStackStyles>): IStackStyles => {
-  const { fill, align, justify, maxWidth, vertical, grow, margin, padding } = props;
+export const styles = (props: IThemedProps<IStackProps>): IStackStyles => {
+  const {
+    fillHorizontal,
+    fillVertical,
+    maxWidth,
+    maxHeight,
+    horizontal,
+    grow,
+    margin,
+    padding,
+    horizontalAlignment,
+    verticalAlignment
+  } = props;
 
   return {
     root: [
       {
         display: 'flex',
-        flexDirection: vertical ? 'column' : 'row',
+        flexDirection: horizontal ? 'row' : 'column',
         flexWrap: 'nowrap',
-        width: fill && !vertical ? '100%' : 'auto',
-        height: fill && vertical ? '100%' : 'auto',
+        width: fillHorizontal ? '100%' : 'auto',
+        height: fillVertical ? '100%' : 'auto',
         maxWidth,
+        maxHeight,
         margin,
-        padding
+        padding,
+        boxSizing: 'border-box'
       },
       grow && {
         flexGrow: grow === true ? 1 : grow,
         overflow: 'hidden'
       },
-      align && {
-        alignItems: nameMap[align] || align
+      horizontalAlignment && {
+        [horizontal ? 'justifyContent' : 'alignItems']: nameMap[horizontalAlignment] || horizontalAlignment
       },
-      justify && {
-        justifyContent: nameMap[justify] || justify
+      verticalAlignment && {
+        [horizontal ? 'alignItems' : 'justifyContent']: nameMap[verticalAlignment] || verticalAlignment
       },
       props.className
     ]
+    // TODO: this cast may be hiding some potential issues with styling and name
+    //        lookups and should be removed
   } as IStackStyles;
 };

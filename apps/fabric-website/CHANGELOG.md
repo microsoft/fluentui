@@ -1,6 +1,28 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Mon, 23 Jul 2018 10:28:08 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Aug 2018 10:26:09 GMT and should not be manually modified.
+
+## 6.4.1
+Fri, 10 Aug 2018 10:26:09 GMT
+
+### Patches
+
+- Fixed bug where searchbox appeared in pages it wasn't supposed to.
+- Prettier cleanup.
+
+## 6.4.0
+Fri, 03 Aug 2018 10:25:59 GMT
+
+### Minor changes
+
+- Added Nav categories, filter highlighting, and alphabetization of components
+
+## 6.3.1
+Fri, 27 Jul 2018 10:25:39 GMT
+
+### Patches
+
+- Added @uifabric/experiments dependency to fabric-website
 
 ## 6.3.0
 Mon, 23 Jul 2018 10:28:08 GMT

@@ -15,9 +15,9 @@ export class CheckBase extends BaseComponent<ICheckProps, {}> {
 
   public shouldComponentUpdate(newProps: ICheckProps): boolean {
     return (
-      this.props.className !== newProps.className ||
       this.props.checked !== newProps.checked ||
-      this.props.theme !== newProps.theme
+      this.props.theme !== newProps.theme ||
+      this.props.className !== newProps.className
     );
   }
 

@@ -16,7 +16,6 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
           font-size: 12px;
           font-weight: 400;
           justify-content: flex-start;
-          line-height: 17px;
           margin-top: 20px;
         }
     style={undefined}
@@ -101,13 +100,13 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               }
               .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
-                bottom: 1px;
+                bottom: -1px;
                 content: "";
-                left: 1px;
+                left: -1px;
                 outline: 1px solid #666666;
                 position: absolute;
-                right: 1px;
-                top: 1px;
+                right: -1px;
+                top: -1px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: white-on-black){& {
@@ -181,13 +180,13 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               }
               .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
-                bottom: 1px;
+                bottom: -1px;
                 content: "";
-                left: 1px;
+                left: -1px;
                 outline: 1px solid #666666;
                 position: absolute;
-                right: 1px;
-                top: 1px;
+                right: -1px;
+                top: -1px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: white-on-black){& {
@@ -247,7 +246,6 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
           font-size: 12px;
           font-weight: 400;
           justify-content: flex-start;
-          line-height: 17px;
           margin-top: 20px;
         }
     style={undefined}
@@ -332,13 +330,13 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               }
               .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
-                bottom: 1px;
+                bottom: -1px;
                 content: "";
-                left: 1px;
+                left: -1px;
                 outline: 1px solid #666666;
                 position: absolute;
-                right: 1px;
-                top: 1px;
+                right: -1px;
+                top: -1px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: white-on-black){& {
@@ -407,7 +405,6 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
           font-size: 12px;
           font-weight: 400;
           justify-content: flex-start;
-          line-height: 17px;
           margin-top: 20px;
         }
     style={undefined}
@@ -492,13 +489,13 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               }
               .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
-                bottom: 1px;
+                bottom: -1px;
                 content: "";
-                left: 1px;
+                left: -1px;
                 outline: 1px solid #666666;
                 position: absolute;
-                right: 1px;
-                top: 1px;
+                right: -1px;
+                top: -1px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: white-on-black){& {
@@ -561,13 +558,13 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               }
               .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
-                bottom: 1px;
+                bottom: -1px;
                 content: "";
-                left: 1px;
+                left: -1px;
                 outline: 1px solid #666666;
                 position: absolute;
-                right: 1px;
-                top: 1px;
+                right: -1px;
+                top: -1px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: white-on-black){& {
@@ -630,13 +627,13 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               }
               .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
-                bottom: 1px;
+                bottom: -1px;
                 content: "";
-                left: 1px;
+                left: -1px;
                 outline: 1px solid #666666;
                 position: absolute;
-                right: 1px;
-                top: 1px;
+                right: -1px;
+                top: -1px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: white-on-black){& {

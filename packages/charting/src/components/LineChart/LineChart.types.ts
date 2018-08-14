@@ -1,5 +1,5 @@
-import { ITheme, IStyle } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IDataPoint } from '../../types/IDataPoint';
 export { IDataPoint } from '../../types/IDataPoint';
 
@@ -9,7 +9,7 @@ export interface ILineChartProps {
   /**
    * Data to render in the chart.
    */
-  data?: IDataPoint[];
+  data?: IDataPoint[][];
 
   /**
    * Width of the chart.
@@ -29,7 +29,7 @@ export interface ILineChartProps {
   /**
    * Color for all the lines in the chart.
    */
-  color?: string;
+  colors?: string[];
 
   /**
    * Label to apply to the whole chart.

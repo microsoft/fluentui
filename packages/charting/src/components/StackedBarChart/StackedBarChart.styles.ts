@@ -1,41 +1,34 @@
 import { IStackedBarChartStyleProps, IStackedBarChartStyles } from './StackedBarChart.types';
 
 export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartStyles => {
-  const { className, theme, width, height, barHeight } = props;
+  const { className, width, barHeight } = props;
 
-  const chartWidth = width + 30;
-  const chartPadding = 30;
-  const chartHeight = height;
+  const chartWidth = width;
+  const chartHeight = barHeight;
   return {
     root: [
       'ms-StackedBarChart',
       {
-        width: chartWidth + 2 * chartPadding
+        width: chartWidth
+      },
+      {
+        display: 'flex',
+        flexDirection: 'column'
       },
       className
     ],
-    chart: [
-      {
-        padding: chartPadding,
-        width: chartWidth,
-        height: chartHeight
-      }
-    ],
-    chartTitle: [
-      {
-        textAlign: 'center',
-        ...theme.fonts.mediumPlus
-      }
-    ],
-    bars: [
-      {
-        transform: `translate(0px, 0px)`
-      }
-    ],
-    legend: [
-      {
-        transform: `translate(20px, ${barHeight! + 30}px)`
-      }
-    ]
+    chart: {
+      width: chartWidth,
+      height: chartHeight
+    },
+    chartTitle: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      marginBottom: '5px',
+      fontSize: '12px'
+    },
+    legendContainer: {
+      paddingTop: '4px'
+    }
   };
 };

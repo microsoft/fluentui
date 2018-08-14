@@ -13,6 +13,7 @@ import {
 import { CheckboxVisibility } from './DetailsList.types';
 
 import { IDetailsRowStyleProps, IDetailsRowStyles } from './DetailsRow.types';
+import { DEFAULT_CELL_STYLE_PROPS, getStyles as getRowStyles } from './DetailsRow.styles';
 
 const getRowClassNames = classNamesFunction<IDetailsRowStyleProps, IDetailsRowStyles>();
 
@@ -20,9 +21,9 @@ const getClassNames = classNamesFunction<IShimmeredDetailsListStyleProps, IShimm
 
 const SHIMMER_INITIAL_ITEMS = 10;
 const DEFAULT_SHIMMER_HEIGHT = 7;
+const SHIMMER_LINE_VS_CELL_WIDTH_RATIO = 0.95;
 
 // This values are matching values from ./DetailsRow.css
-const DEFAULT_SIDE_PADDING = 8;
 const DEFAULT_ROW_HEIGHT = 42;
 const COMPACT_ROW_HEIGHT = 32;
 
@@ -69,10 +70,19 @@ export class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsLis
 
   private _onRenderShimmerPlaceholder = (index: number, rowProps: IDetailsRowProps): React.ReactNode => {
     const { onRenderCustomPlaceholder, compact } = this.props;
-    const { selectionMode, checkboxVisibility, theme, styles } = rowProps;
+    const { selectionMode, checkboxVisibility } = rowProps;
+
+    const theme = this.props.theme!;
+
     const showCheckbox = selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden;
-    const rowClassNames = getRowClassNames(styles, {
-      theme: theme!
+
+    const rowStyleProps = {
+      ...rowProps,
+      theme: theme
+    };
+
+    const rowClassNames = getRowClassNames(getRowStyles(rowStyleProps), {
+      theme: theme
     });
 
     const placeholderElements: React.ReactNode = onRenderCustomPlaceholder
@@ -89,17 +99,21 @@ export class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsLis
   };
 
   private _renderDefaultShimmerPlaceholder = (rowProps: IDetailsRowProps): React.ReactNode => {
-    const { columns, compact } = rowProps;
+    const { columns, compact, cellStyleProps = DEFAULT_CELL_STYLE_PROPS } = rowProps;
     const shimmerElementsRow: JSX.Element[] = [];
     const gapHeight: number = compact ? COMPACT_ROW_HEIGHT : DEFAULT_ROW_HEIGHT;
 
     columns.map((column, columnIdx) => {
       const shimmerElements: IShimmerElement[] = [];
-      const groupWidth: number = DEFAULT_SIDE_PADDING * 2 + column.calculatedWidth!;
+      const groupWidth: number =
+        cellStyleProps.cellLeftPadding +
+        cellStyleProps.cellRightPadding +
+        column.calculatedWidth! +
+        (column.isPadded ? cellStyleProps.cellExtraRightPadding : 0);
 
       shimmerElements.push({
         type: ShimmerElementType.gap,
-        width: DEFAULT_SIDE_PADDING,
+        width: cellStyleProps.cellLeftPadding,
         height: gapHeight
       });
 
@@ -111,18 +125,21 @@ export class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsLis
         });
         shimmerElements.push({
           type: ShimmerElementType.gap,
-          width: DEFAULT_SIDE_PADDING,
+          width: cellStyleProps.cellRightPadding,
           height: gapHeight
         });
       } else {
         shimmerElements.push({
           type: ShimmerElementType.line,
-          width: column.calculatedWidth! - DEFAULT_SIDE_PADDING * 3,
+          width: column.calculatedWidth! * SHIMMER_LINE_VS_CELL_WIDTH_RATIO,
           height: DEFAULT_SHIMMER_HEIGHT
         });
         shimmerElements.push({
           type: ShimmerElementType.gap,
-          width: DEFAULT_SIDE_PADDING * 4,
+          width:
+            cellStyleProps.cellRightPadding +
+            (column.calculatedWidth! - column.calculatedWidth! * SHIMMER_LINE_VS_CELL_WIDTH_RATIO) +
+            (column.isPadded ? cellStyleProps.cellExtraRightPadding : 0),
           height: gapHeight
         });
       }

@@ -35,5 +35,6 @@ export const GroupedListPageProps: IDocPageProps = {
   bestPractices: '',
   dos: '',
   donts: '',
-  isHeaderVisible: true
+  isHeaderVisible: true,
+  isFeedbackVisible: true
 };

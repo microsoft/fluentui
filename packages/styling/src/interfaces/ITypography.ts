@@ -1,51 +1,73 @@
+import { IFontWeight } from '../MergeStyles';
+
+/**
+ * @internal This is an experimental interface and will be changed post design review.
+ */
 export interface IFontFamilies {
   default: string;
   monospace: string;
-  [key: string]: string;
 }
 
+/**
+ * @internal This is an experimental interface and will be changed post design review.
+ */
 export interface IFontSizes {
-  tiny: string;
+  mini: string;
   xSmall: string;
   small: string;
+  smallPlus: string;
   medium: string;
+  mediumPlus: string;
   large: string;
   xLarge: string;
   xxLarge: string;
-  xxxLarge: string;
   mega: string;
-  [key: string]: string;
 }
 
+/**
+ * @internal This is an experimental interface and will be changed post design review.
+ */
 export interface IFontWeights {
-  light: number | string;
-  regular: number | string;
-  semibold: number | string;
-  bold: number | string;
-  [key: string]: number | string;
+  default: IFontWeight;
+  light: IFontWeight;
+  regular: IFontWeight;
+  semibold: IFontWeight;
+  bold: IFontWeight;
 }
 
-export interface IFontType {
+/**
+ * @internal This is an experimental interface and will be changed post design review.
+ */
+export interface IFontVariant {
   fontFamily: keyof IFontFamilies | string;
   fontSize: keyof IFontSizes | number | string;
   fontWeight: keyof IFontWeights | number;
 }
 
-export interface IFontTypes {
-  default: Partial<IFontType>;
-  disabled: Partial<IFontType>;
-  caption: Partial<IFontType>;
-  h1: Partial<IFontType>;
-  h2: Partial<IFontType>;
-  h3: Partial<IFontType>;
-  h4: Partial<IFontType>;
-  h5: Partial<IFontType>;
-  [key: string]: Partial<IFontType>;
+/**
+ * @internal This is an experimental interface and will be changed post design review.
+ */
+export interface IFontVariants {
+  default: Partial<IFontVariant>;
+  caption: Partial<IFontVariant>;
+  h1: Partial<IFontVariant>;
+  h2: Partial<IFontVariant>;
+  h3: Partial<IFontVariant>;
+  h4: Partial<IFontVariant>;
+  h5: Partial<IFontVariant>;
 }
 
+/**
+ * @internal This is an experimental interface and will be changed post design review.
+ */
 export interface ITypography {
   families: IFontFamilies;
   sizes: IFontSizes;
   weights: IFontWeights;
-  types: IFontTypes;
+  variants: IFontVariants;
 }
+
+/**
+ * Used in IPartialTheme so that user-defined themes can override selected typography properties
+ */
+export type IPartialTypography = { [P in keyof ITypography]?: Partial<ITypography[P]> };

@@ -100,6 +100,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         headerClassName: 'DetailsListExample-header--FileIcon',
         className: 'DetailsListExample-cell--FileIcon',
         iconClassName: 'DetailsListExample-Header-FileTypeIcon',
+        ariaLabel: 'Column operations for File type',
         iconName: 'Page',
         isIconOnly: true,
         fieldName: 'name',
@@ -120,6 +121,8 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         isResizable: true,
         isSorted: true,
         isSortedDescending: false,
+        sortAscendingAriaLabel: 'Sorted A to Z',
+        sortDescendingAriaLabel: 'Sorted Z to A',
         onColumnClick: this._onColumnClick,
         data: 'string',
         isPadded: true
@@ -207,7 +210,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
           offText="Normal"
         />
         <div>{selectionDetails}</div>
-        <TextField label="Filter by name:" onChanged={this._onChangeText} />
+        <TextField label="Filter by name:" onChange={this._onChangeText} />
         <MarqueeSelection selection={this._selection}>
           <DetailsList
             items={items}
@@ -221,7 +224,6 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
             selectionPreservedOnEmptyClick={true}
             onItemInvoked={this._onItemInvoked}
             enterModalSelectionOnTouch={true}
-            useReducedRowRenderer={true}
           />
         </MarqueeSelection>
       </div>
@@ -242,7 +244,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
     this.setState({ isModalSelection: checked });
   };
 
-  private _onChangeText = (text: any): void => {
+  private _onChangeText = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text: string): void => {
     this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items });
   };
 

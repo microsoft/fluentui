@@ -1,19 +1,19 @@
-import { Customizations } from '@uifabric/utilities';
+import { Customizations, merge } from '@uifabric/utilities';
 import { IPalette, ISemanticColors, ITheme, IPartialTheme } from '../interfaces/index';
+import { ITypography, IPartialTypography, IFontVariant } from '../interfaces/ITypography';
 import { DefaultFontStyles } from './DefaultFontStyles';
 import { DefaultPalette } from './DefaultPalette';
 import { DefaultTypography } from './DefaultTypography';
 import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
-import { IFontType } from '../interfaces/ITypography';
 
-let _theme: ITheme = {
+let _theme: ITheme = createTheme({
   palette: DefaultPalette,
   semanticColors: _makeSemanticColorsFromPalette(DefaultPalette, false, false),
   fonts: DefaultFontStyles,
   isInverted: false,
   typography: DefaultTypography,
   disableGlobalClassNames: false
-};
+});
 let _onThemeChangeCallbacks: Array<(theme: ITheme) => void> = [];
 
 export const ThemeSettingName = 'theme';
@@ -108,21 +108,21 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
     ...theme.semanticColors
   };
 
-  const typography = { ...DefaultTypography, ...theme.typography };
+  const typography = merge<ITypography>({}, DefaultTypography, theme.typography as ITypography);
+  const { variants } = typography;
 
-  const { types } = typography;
-  for (const typeName in types) {
-    if (types.hasOwnProperty(typeName)) {
-      const type = types[typeName];
+  for (const variantName in variants) {
+    if (variants.hasOwnProperty(variantName)) {
+      const variant = variants[variantName];
 
-      if (type.fontFamily && typography.families[type.fontFamily]) {
-        type.fontFamily = typography.families[type.fontFamily];
+      if (variant.fontFamily && typography.families[variant.fontFamily]) {
+        variant.fontFamily = typography.families[variant.fontFamily];
       }
-      if (type.fontSize && typography.sizes[type.fontSize]) {
-        type.fontSize = typography.sizes[type.fontSize];
+      if (variant.fontSize && typography.sizes[variant.fontSize]) {
+        variant.fontSize = typography.sizes[variant.fontSize];
       }
-      if (type.fontWeight && typography.families[type.fontWeight]) {
-        type.fontWeight = typography.families[type.fontWeight];
+      if (variant.fontWeight && typography.weights[variant.fontWeight]) {
+        variant.fontWeight = typography.weights[variant.fontWeight];
       }
     }
   }
@@ -136,7 +136,7 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
     semanticColors: newSemanticColors,
     isInverted: !!theme.isInverted,
     disableGlobalClassNames: !!theme.disableGlobalClassNames,
-    typography: typography
+    typography: typography as ITypography
   };
 }
 
@@ -145,6 +145,7 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
 function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depComments: boolean): ISemanticColors {
   let toReturn: ISemanticColors = {
     bodyBackground: p.white,
+    bodyStandoutBackground: p.white,
     bodyFrameBackground: p.white,
     bodyFrameDivider: p.neutralLight,
     bodyText: p.neutralPrimary,
@@ -158,6 +159,7 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     disabledSubtext: p.neutralQuaternary,
 
     focusBorder: p.black,
+    variantBorder: p.neutralLight,
 
     errorText: !isInverted ? p.redDark : '#ff5f5f',
     warningText: !isInverted ? '#333333' : '#ffffff',
@@ -181,11 +183,22 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     buttonBackgroundChecked: p.neutralTertiaryAlt,
     buttonBackgroundHovered: p.neutralLight,
     buttonBackgroundCheckedHovered: p.neutralLight,
+    buttonBackgroundPressed: p.neutralLight,
     buttonBorder: 'transparent',
     buttonText: p.neutralPrimary,
     buttonTextHovered: p.black,
     buttonTextChecked: p.neutralDark,
     buttonTextCheckedHovered: p.black,
+    buttonTextPressed: p.neutralDark,
+    buttonTextDisabled: p.neutralQuaternary,
+    buttonBorderDisabled: 'transparent',
+    primaryButtonBackground: p.themePrimary,
+    primaryButtonBackgroundHovered: p.themeDarkAlt,
+    primaryButtonBackgroundPressed: p.themeDark,
+    primaryButtonBorder: 'transparent',
+    primaryButtonText: p.white,
+    primaryButtonTextHovered: p.white,
+    primaryButtonTextPressed: p.white,
 
     menuItemBackgroundHovered: p.neutralLighter,
     menuIcon: p.themePrimary,
@@ -200,6 +213,8 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     listHeaderBackgroundHovered: p.neutralLighter,
     listHeaderBackgroundPressed: p.neutralLight,
 
+    actionLink: p.neutralPrimary,
+    actionLinkHovered: p.neutralDark,
     link: p.themePrimary,
     linkHovered: p.themeDarker,
 

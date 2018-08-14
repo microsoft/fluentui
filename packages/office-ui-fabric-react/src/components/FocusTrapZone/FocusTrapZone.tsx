@@ -15,24 +15,13 @@ import { IFocusTrapZone, IFocusTrapZoneProps } from './FocusTrapZone.types';
 
 export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implements IFocusTrapZone {
   private static _focusStack: FocusTrapZone[] = [];
-  private static _clickStack: FocusTrapZone[] = [];
 
   private _root = createRef<HTMLDivElement>();
   private _previouslyFocusedElementOutsideTrapZone: HTMLElement;
   private _previouslyFocusedElementInTrapZone?: HTMLElement;
-  private _isInFocusStack = false;
-  private _isInClickStack = false;
 
   public componentWillMount(): void {
-    const { isClickableOutsideFocusTrap = false, forceFocusInsideTrap = true } = this.props;
-    if (forceFocusInsideTrap) {
-      this._isInFocusStack = true;
-      FocusTrapZone._focusStack.push(this);
-    }
-    if (!isClickableOutsideFocusTrap) {
-      this._isInClickStack = true;
-      FocusTrapZone._clickStack.push(this);
-    }
+    FocusTrapZone._focusStack.push(this);
   }
 
   public componentDidMount(): void {
@@ -70,17 +59,9 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     const { ignoreExternalFocusing } = this.props;
 
     this._events.dispose();
-    if (this._isInFocusStack || this._isInClickStack) {
-      const filter = (value: FocusTrapZone) => {
-        return this !== value;
-      };
-      if (this._isInFocusStack) {
-        FocusTrapZone._focusStack = FocusTrapZone._focusStack.filter(filter);
-      }
-      if (this._isInClickStack) {
-        FocusTrapZone._clickStack = FocusTrapZone._clickStack.filter(filter);
-      }
-    }
+    FocusTrapZone._focusStack = FocusTrapZone._focusStack.filter((value: FocusTrapZone) => {
+      return this !== value;
+    });
 
     const activeElement = document.activeElement as HTMLElement;
     if (
@@ -210,7 +191,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   }
 
   private _forceClickInTrap(ev: MouseEvent): void {
-    if (FocusTrapZone._clickStack.length && this === FocusTrapZone._clickStack[FocusTrapZone._clickStack.length - 1]) {
+    if (FocusTrapZone._focusStack.length && this === FocusTrapZone._focusStack[FocusTrapZone._focusStack.length - 1]) {
       const clickedElement = ev.target as HTMLElement;
 
       if (clickedElement && !elementContains(this._root.current, clickedElement)) {

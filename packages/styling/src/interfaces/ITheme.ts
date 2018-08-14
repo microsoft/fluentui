@@ -1,13 +1,14 @@
 import { IPalette } from './IPalette';
 import { IFontStyles } from './IFontStyles';
 import { ISemanticColors } from './ISemanticColors';
-import { ITypography } from './ITypography';
+import { ITypography, IPartialTypography } from './ITypography';
 
 export interface ITheme {
   palette: IPalette;
   fonts: IFontStyles;
   semanticColors: ISemanticColors;
   isInverted: boolean;
+
   /**
    * This setting is for a very narrow use case and you probably don't need to worry about,
    * unless you share a environment with others that also use fabric.
@@ -17,6 +18,7 @@ export interface ITheme {
    * Customizer will not get the global styles applied to them.
    */
   disableGlobalClassNames: boolean;
+
   /**
    * @internal
    * The typography property is still in an experimental phase. The intent is the have it
@@ -26,11 +28,10 @@ export interface ITheme {
   typography: ITypography;
 }
 
-export interface IPartialTheme {
-  palette?: Partial<IPalette>;
-  fonts?: Partial<IFontStyles>;
-  semanticColors?: Partial<ISemanticColors>;
-  isInverted?: boolean;
-  disableGlobalClassNames?: boolean;
-  typography?: Partial<ITypography>;
-}
+export type IPartialTheme = {
+  [P in keyof Pick<
+    ITheme,
+    'palette' | 'fonts' | 'semanticColors' | 'isInverted' | 'disableGlobalClassNames'
+  >]?: Partial<ITheme[P]>
+} &
+  { [P in keyof Pick<ITheme, 'typography'>]?: IPartialTypography };

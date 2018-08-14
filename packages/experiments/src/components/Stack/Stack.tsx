@@ -1,32 +1,47 @@
 import * as React from 'react';
-import { createComponent, IViewProps, IPropsWithStyles } from '../Text/createComponent';
+import { createStatelessComponent, IStyleableComponent, IViewComponentProps } from '../../Foundation';
 import StackItem from './StackItem/StackItem';
 import { IStackItemProps, IStackItemStyles } from './StackItem/StackItem.types';
 import { IStackProps, IStackStyles } from './Stack.types';
 import { styles } from './Stack.styles';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-const StackItemType = (<StackItem /> as React.ReactElement<IStackItemProps> & {
-  styles?:
-    | Partial<IStackItemStyles>
-    | ((props: IPropsWithStyles<IStackItemProps, IStackItemStyles>) => Partial<IStackItemStyles>);
-}).type;
+const StackItemType = (<StackItem /> as React.ReactElement<IStackItemProps> &
+  IStyleableComponent<IStackItemProps, IStackItemStyles>).type;
 
-const view = (props: IViewProps<IStackProps, IStackStyles>) => {
-  const { renderAs: RootType = 'div', classNames, gap, vertical, collapseItems } = props;
+const view = (props: IViewComponentProps<IStackProps, IStackStyles>) => {
+  const { renderAs: RootType = 'div', classNames, gap, horizontal, shrinkItems } = props;
 
-  const children: React.ReactChild[] = React.Children.map(
+  const stackChildren: (React.ReactChild | null)[] = React.Children.map(
     props.children,
     (child: React.ReactElement<IStackItemProps>, index: number) => {
+      if (!child) {
+        return null;
+      }
+
       const defaultItemProps: IStackItemProps = {
         gap: index > 0 ? gap : 0,
-        vertical,
-        collapse: collapseItems
+        horizontal,
+        shrink: shrinkItems,
+        className: child.props ? child.props.className : undefined
       };
 
       if (child.type === StackItemType) {
+        // If child is a StackItem, we need to pass down the className of ITS first child to the StackItem for mergeStylesSet to work
+        const children = child.props ? child.props.children : undefined;
+        const stackItemFirstChildren = React.Children.toArray(children) as React.ReactElement<{ className?: string }>[];
+        const stackItemFirstChild = stackItemFirstChildren && stackItemFirstChildren[0];
+
+        // pass down both the className on the StackItem as well as the className on its first child
+        let mergedClassName = defaultItemProps.className;
+        if (stackItemFirstChild && stackItemFirstChild.props && stackItemFirstChild.props.className) {
+          mergedClassName = mergeStyles(mergedClassName, stackItemFirstChild.props.className);
+        }
+
         return React.cloneElement(child, {
           ...defaultItemProps,
-          ...child.props
+          ...child.props,
+          className: mergedClassName
         });
       }
 
@@ -34,29 +49,22 @@ const view = (props: IViewProps<IStackProps, IStackStyles>) => {
     }
   );
 
-  return <RootType className={classNames.root}>{children}</RootType>;
+  return <RootType className={classNames.root}>{stackChildren}</RootType>;
 };
 
-export const Stack: React.StatelessComponent<
-  IStackProps & {
-    styles?: Partial<IStackStyles> | ((props: IPropsWithStyles<IStackProps, IStackStyles>) => Partial<IStackStyles>);
-  }
-> & {
-  Item: React.StatelessComponent<
-    IStackItemProps & {
-      styles?:
-        | Partial<IStackItemStyles>
-        | ((props: IPropsWithStyles<IStackItemProps, IStackItemStyles>) => Partial<IStackItemStyles>);
-    }
-  >;
-} = createComponent({
+const StackStatics = {
+  Item: StackItem,
+  defaultProps: {}
+};
+type IStackStatics = typeof StackStatics;
+
+export const Stack: React.StatelessComponent<IStackProps> & {
+  Item: React.StatelessComponent<IStackItemProps>;
+} = createStatelessComponent<IStackProps, IStackStyles, IStackStatics>({
   displayName: 'Stack',
   styles,
   view,
-  statics: {
-    Item: StackItem,
-    defaultProps: {}
-  }
+  statics: StackStatics
 });
 
 export default Stack;

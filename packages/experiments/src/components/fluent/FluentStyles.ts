@@ -1,9 +1,6 @@
 import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
 import { NeutralColors } from './FluentColors';
-import {
-  IChoiceGroupOptionStyleProps,
-  IChoiceGroupOptionStyles
-} from 'office-ui-fabric-react/lib/components/ChoiceGroup/ChoiceGroupOption';
+import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { FontSizes } from './FluentType';
 import { Depths } from './FluentDepths';
 
@@ -25,14 +22,12 @@ const BreadcrumbStyles = {
 const PrimaryButtonStyles = {
   root: {
     borderRadius: fluentBorderRadius
-    // boxShadow: Depths.depth4
   }
 };
 
 const CompoundButtonStyles = {
   root: {
     borderRadius: fluentBorderRadius
-    // boxShadow: Depths.depth4
   }
 };
 
@@ -40,10 +35,11 @@ const DefaultButtonStyles = {
   root: {
     borderRadius: fluentBorderRadius,
     backgroundColor: '#fff',
-    border: `1px solid ${NeutralColors.gray20}`
+    border: `1px solid ${NeutralColors.gray110}`
   },
   rootHovered: {
-    backgroundColor: '#f3f2f1'
+    backgroundColor: '#f3f2f1',
+    border: `1px solid ${NeutralColors.gray110}`
   }
 };
 
@@ -67,13 +63,6 @@ const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGr
           }
         ],
         ':after': [
-          {
-            top: 4,
-            left: 4,
-            width: 12,
-            height: 12,
-            borderWidth: 6
-          },
           checked &&
             (hasIcon || hasImage) && {
               top: radioButtonSpacing + radioButtonInnerSize,

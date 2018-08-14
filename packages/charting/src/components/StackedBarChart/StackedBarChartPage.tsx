@@ -3,8 +3,14 @@ import * as React from 'react';
 import { ComponentPage, ExampleCard, IComponentDemoPageProps, PropertiesTableSet } from '@uifabric/example-app-base';
 
 import { StackedBarChartBasicExample } from './examples/StackedBarChart.Basic.Example';
+import { StackedBarChartMultiExample } from './examples/StackedBarChart.Multi.Example';
+import { MultiStackedBarChartExample } from './examples/MultiStackedBarChart.Example';
 
 const StackedBarChartBasicExampleCode = require('!raw-loader!@uifabric/charting/src/components/StackedBarChart/examples/StackedBarChart.Basic.Example.tsx') as string;
+
+const StackedBarChartMultiExampleCode = require('!raw-loader!@uifabric/charting/src/components/StackedBarChart/examples/StackedBarChart.Multi.Example.tsx') as string;
+
+const MultiStackedBarChartExampleCode = require('!raw-loader!@uifabric/charting/src/components/StackedBarChart/examples/MultiStackedBarChart.Example.tsx') as string;
 
 export class StackedBarChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -16,6 +22,12 @@ export class StackedBarChartPage extends React.Component<IComponentDemoPageProps
           <div>
             <ExampleCard title="StackedBarChart" code={StackedBarChartBasicExampleCode}>
               <StackedBarChartBasicExample />
+            </ExampleCard>
+            <ExampleCard title="StackedBarChart" code={StackedBarChartMultiExampleCode}>
+              <StackedBarChartMultiExample />
+            </ExampleCard>
+            <ExampleCard title="MultipleStackedBarCharts" code={MultiStackedBarChartExampleCode}>
+              <MultiStackedBarChartExample />
             </ExampleCard>
           </div>
         }
