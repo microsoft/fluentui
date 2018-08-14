@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 14 Aug 2018 00:01:11 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Aug 2018 10:27:33 GMT and should not be manually modified.
+
+## 6.49.2
+Tue, 14 Aug 2018 10:27:33 GMT
+
+### Patches
+
+- autogenerate codepenable examples for fabric examples tagged with @codepen 
+- DetailsList: in single select mode maintain role and index, and remove onclick
 
 ## 6.49.1
 Tue, 14 Aug 2018 00:01:11 GMT

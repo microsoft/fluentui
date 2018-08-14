@@ -1,14 +1,14 @@
 {
   "name": "@uifabric/dashboard",
-  "version": "0.15.0",
+  "version": "0.15.1",
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
-    "@uifabric/charting": "^0.14.0",
+    "@uifabric/charting": "^0.14.1",
     "@uifabric/example-app-base": ">=6.7.2 <7.0.0",
-    "@uifabric/experiments": ">=6.23.2 <7.0.0",
+    "@uifabric/experiments": ">=6.23.3 <7.0.0",
     "auto-fontsize": "^1.0.9",
     "css-loader": "^0.15.1",
-    "office-ui-fabric-react": ">=6.49.1 <7.0.0",
+    "office-ui-fabric-react": ">=6.49.2 <7.0.0",
     "react-grid-layout": "samiyaakhtar/react-grid-layout",
     "style-loader": "^0.21.0"
   },
@@ -32,7 +32,7 @@
     "@types/react-test-renderer": "^16.0.0",
     "@types/react-dom": "16.0.5",
     "@types/webpack-env": "1.13.0",
-    "@uifabric/jest-serializer-merge-styles": ">=6.0.3 <7.0.0",
+    "@uifabric/jest-serializer-merge-styles": ">=6.0.4 <7.0.0",
     "enzyme": "^3.4.1",
     "enzyme-adapter-react-16": "^1.2.0",
     "office-ui-fabric-react-tslint": ">=6.0.0 <7.0.0",

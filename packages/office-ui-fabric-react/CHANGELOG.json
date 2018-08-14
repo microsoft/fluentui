@@ -2,6 +2,39 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.49.2",
+      "tag": "office-ui-fabric-react_v6.49.2",
+      "date": "Tue, 14 Aug 2018 10:27:33 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Avital Baral <avitalbaral99@gmail.com>",
+            "commit": "cf0f728d0b28540b7a42aa9121a840605ee04670",
+            "comment": "autogenerate codepenable examples for fabric examples tagged with @codepen "
+          },
+          {
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "d18300a133e90f2a65ebe63f79c242875e0b0e11",
+            "comment": "DetailsList: in single select mode maintain role and index, and remove onclick"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=6.0.2 <7.0.0` to `>=6.0.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.14.0 <7.0.0` to `>=6.14.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=6.0.3 <7.0.0` to `>=6.0.4 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/webpack-utils\" from `>=0.7.1 <1.0.0` to `>=0.7.2 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.49.1",
       "tag": "office-ui-fabric-react_v6.49.1",
       "date": "Tue, 14 Aug 2018 00:01:11 GMT",

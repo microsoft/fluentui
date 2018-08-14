@@ -2,6 +2,34 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.15.1",
+      "tag": "@uifabric/dashboard_v0.15.1",
+      "date": "Tue, 14 Aug 2018 10:27:33 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Avital Baral <avitalbaral99@gmail.com>",
+            "commit": "cf0f728d0b28540b7a42aa9121a840605ee04670",
+            "comment": "disabling codepen task"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.14.0` to `^0.14.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.23.2 <7.0.0` to `>=6.23.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.49.1 <7.0.0` to `>=6.49.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=6.0.3 <7.0.0` to `>=6.0.4 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.15.0",
       "tag": "@uifabric/dashboard_v0.15.0",
       "date": "Tue, 14 Aug 2018 00:01:11 GMT",
