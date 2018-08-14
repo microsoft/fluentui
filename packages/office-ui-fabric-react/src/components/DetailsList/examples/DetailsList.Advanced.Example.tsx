@@ -124,6 +124,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
         <DetailsList
           setKey="items"
           items={items as any[]}
+          selection={this._selection}
           groups={groups}
           columns={columns}
           checkboxVisibility={checkboxVisibility}
@@ -441,10 +442,27 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
   };
 
   private _onItemContextMenu = (item: any, index: number, ev: MouseEvent): boolean => {
-    if ((ev.target as HTMLElement).nodeName === 'A') {
-      return true;
+    const contextualMenuProps: IContextualMenuProps = {
+      target: ev.target as HTMLElement,
+      items: [
+        {
+          key: 'text',
+          name: `${this._selection.getSelectedCount()} selected`
+        }
+      ],
+      onDismiss: () => {
+        this.setState({
+          contextualMenuProps: undefined
+        });
+      }
+    };
+
+    if (index > -1) {
+      this.setState({
+        contextualMenuProps: contextualMenuProps
+      });
     }
-    console.log('Item context menu invoked', item, index);
+
     return false;
   };
 
