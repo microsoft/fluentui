@@ -235,9 +235,9 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderProps, IDetai
                 key="__checkbox"
                 className={classNames.cellIsCheck}
                 aria-labelledby={`${this._id}-check`}
-                onClick={this._onSelectAllClicked}
-                aria-colindex={!isCheckboxHidden ? 1 : undefined}
-                role={!isCheckboxHidden ? 'columnheader' : undefined}
+                onClick={!isCheckboxHidden ? this._onSelectAllClicked : undefined}
+                aria-colindex={1}
+                role={'columnheader'}
               >
                 {onRenderColumnHeaderTooltip(
                   {

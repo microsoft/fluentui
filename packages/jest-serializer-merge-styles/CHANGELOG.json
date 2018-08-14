@@ -2,6 +2,20 @@
   "name": "@uifabric/jest-serializer-merge-styles",
   "entries": [
     {
+      "version": "6.0.4",
+      "tag": "@uifabric/jest-serializer-merge-styles_v6.0.4",
+      "date": "Tue, 14 Aug 2018 10:27:33 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Avital Baral <avitalbaral99@gmail.com>",
+            "commit": "cf0f728d0b28540b7a42aa9121a840605ee04670",
+            "comment": "disabling codepen task"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.0.3",
       "tag": "@uifabric/jest-serializer-merge-styles_v6.0.3",
       "date": "Thu, 14 Jun 2018 20:52:57 GMT",

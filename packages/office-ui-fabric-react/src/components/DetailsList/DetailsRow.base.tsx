@@ -207,7 +207,6 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowProps, IDetailsRowS
       isSelected,
       canSelect: !isContentUnselectable,
       anySelected: isSelectionModal,
-      isCheckVisible: checkboxVisibility === CheckboxVisibility.always,
       checkboxCellClassName,
       droppingClassName,
       className,
@@ -264,7 +263,8 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowProps, IDetailsRowS
               canSelect,
               compact,
               className: classNames.check,
-              theme
+              theme,
+              isVisible: checkboxVisibility === CheckboxVisibility.always
             })}
           </div>
         )}

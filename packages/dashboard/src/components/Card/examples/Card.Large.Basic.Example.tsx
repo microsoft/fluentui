@@ -132,10 +132,10 @@ export class LargeCardBasicExample extends React.Component<{}, {}> {
         priority: Priority.Priority1,
         cardContentType: CardContentType.Chart,
         content: {
-          chartLabel: 'My first chart!',
+          chartLabels: ['My first chart!'],
           chartType: ChartType.HorizontalBarChart,
           dataPoints: datapoints,
-          colors: ['red', 'yellow']
+          legendColors: [{ legendText: 'first', legendColor: 'red' }, { legendText: 'second', legendColor: 'yellow' }]
         }
       }
     ];

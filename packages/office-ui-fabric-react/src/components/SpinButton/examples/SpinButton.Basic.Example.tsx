@@ -1,3 +1,4 @@
+// @codepen
 import * as React from 'react';
 import { SpinButton } from 'office-ui-fabric-react/lib/SpinButton';
 
