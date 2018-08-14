@@ -279,23 +279,23 @@ function _isPageActive(page: INavPage): boolean {
   return false;
 }
 
-function _hasActiveGrandchild(childPage: INavPage): boolean {
-  let hasActiveGrandchild = false;
+function _hasActiveGrandchild(childPage: INavPage) {
+  let hasActiveChild;
 
   childPage.pages.forEach(grandchildPage => {
     if (_isPageActive(grandchildPage)) {
-      hasActiveGrandchild = _hasActiveGrandchild(grandchildPage);
+      hasActiveChild = true;
     }
     if (grandchildPage.pages) {
-      hasActiveGrandchild = _hasActiveGrandchild(grandchildPage);
+      _hasActiveGrandchild(grandchildPage) ? (hasActiveChild = true) : null;
     }
   });
 
-  return hasActiveGrandchild;
+  return hasActiveChild;
 }
 
 function _hasActiveChild(page: INavPage): boolean {
-  let hasActiveChild: boolean = false;
+  let hasActiveChild = false;
 
   if (page.pages) {
     page.pages.forEach(childPage => {
@@ -303,29 +303,8 @@ function _hasActiveChild(page: INavPage): boolean {
         hasActiveChild = true;
       }
 
-      // Is a grandchild page active?
-      // @todo: This logic is the same as above. Could be simplified by moving
-      //        into another function, which would support many levels of nav.
       if (childPage.pages) {
-        childPage.pages.forEach(grandchildPage => {
-          if (_isPageActive(grandchildPage)) {
-            hasActiveChild = true;
-          }
-          if (grandchildPage.pages) {
-            grandchildPage.pages.forEach(thirdLevelChild => {
-              if (_isPageActive(thirdLevelChild)) {
-                hasActiveChild = true;
-              }
-              if (thirdLevelChild.pages) {
-                thirdLevelChild.pages.forEach(fourthLevelChild => {
-                  if (_isPageActive(fourthLevelChild)) {
-                    hasActiveChild = true;
-                  }
-                });
-              }
-            });
-          }
-        });
+        _hasActiveGrandchild(childPage) ? (hasActiveChild = true) : null;
       }
     });
   }
