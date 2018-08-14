@@ -1,16 +1,35 @@
-import { IStyle, IPalette, ISemanticColors } from '../../Styling';
+import { ISemanticTextColors } from '../../Styling';
 import { IThemedProps } from '../../Foundation';
 import { ITextProps, ITextStyles } from './Text.types';
 
 export const TextStyles = (props: IThemedProps<ITextProps>): ITextStyles => {
-  const { className, inline, theme, wrap, variant, family, weight, size, color, hoverColor } = props;
-  const { palette, semanticColors, typography } = theme;
+  const { as, className, inline, theme, wrap, variant, family, weight, size, color, hoverColor } = props;
+  const { semanticColors, typography } = theme;
+  const variantObject = typography.variants[variant!] || typography.variants.default;
 
   return {
     root: [
-      typography.variants[variant!] as IStyle,
       {
-        display: inline ? 'inline' : 'block'
+        display: inline ? 'inline' : as === 'td' ? 'table-cell' : 'block',
+        fontFamily: variantObject.family,
+        fontSize: variantObject.size,
+        // tslint:disable-next-line:no-any
+        fontWeight: variantObject.weight as any,
+        color: variantObject.color,
+        selectors: {
+          ':hover': {
+            color: variantObject.hoverColor
+          },
+          // ':active': {
+          //   color: variantObject.activeColor
+          // },
+          // ':visited': {
+          //   color: variantObject.visitedColor
+          // },
+          '[aria-disabled=true]': {
+            color: variantObject.disabledColor
+          }
+        }
       },
       family && {
         // TODO: How are language specific font families configured?
@@ -23,12 +42,12 @@ export const TextStyles = (props: IThemedProps<ITextProps>): ITextStyles => {
         fontWeight: typography.weights[weight]
       },
       color && {
-        color: semanticColors[color as keyof ISemanticColors] || palette[color as keyof IPalette] || color
+        color: semanticColors[color as keyof ISemanticTextColors]
       },
       hoverColor && {
         selectors: {
           ':hover': {
-            color: semanticColors[color as keyof ISemanticColors] || palette[color as keyof IPalette] || color
+            color: semanticColors[hoverColor as keyof ISemanticTextColors]
           }
         }
       },

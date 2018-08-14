@@ -28,6 +28,11 @@ export interface IStackProps extends IStyleableComponent<IStackProps, IStackStyl
   className?: string;
 
   /**
+   * Inline styling.
+   */
+  style?: React.CSSProperties;
+
+  /**
    * Whether to render Stack child elements horizontally.
    */
   horizontal?: boolean;

@@ -97,7 +97,7 @@ function runTask(task) {
         .then(() => logEndTask(packageName, task, taskStartTime))
         .catch(e => {
           hasFailures = true;
-          logEndTask(packageName, task, taskStartTime, e);
+          logEndTask(packageName, task, taskStartTime, e.error || e);
         })
   );
 }
