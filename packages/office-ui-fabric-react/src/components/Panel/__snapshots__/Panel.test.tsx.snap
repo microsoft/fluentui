@@ -69,7 +69,6 @@ exports[`Panel Renders Panel correctly 1`] = `
             bottom: 0px;
             overflow-x: hidden;
             overflow-y: auto;
-            pointer-events: auto;
             position: absolute;
             right: 0px;
             top: 0px;
@@ -83,11 +82,14 @@ exports[`Panel Renders Panel correctly 1`] = `
             pointer-events: auto;
             width: 340px;
           }
-          @media (min-width: 768px){& {
+          $root & {
+            pointer-events: auto;
+          }
+          @media (min-width: 768px){$root & {
             left: 48px;
             width: auto;
           }
-          @media (min-width: 1366px){& {
+          @media (min-width: 1366px){$root & {
             left: 428px;
           }
       onFocusCapture={[Function]}
