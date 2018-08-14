@@ -1,6 +1,13 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Fri, 10 Aug 2018 10:26:08 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Aug 2018 00:01:11 GMT and should not be manually modified.
+
+## 0.14.0
+Tue, 14 Aug 2018 00:01:11 GMT
+
+### Minor changes
+
+- Updating StackedBar Chart desgin, MultiStackedBarChart and Legend components
 
 ## 0.13.1
 Fri, 10 Aug 2018 10:26:08 GMT

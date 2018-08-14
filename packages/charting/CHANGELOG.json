@@ -2,6 +2,25 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.14.0",
+      "tag": "@uifabric/charting_v0.14.0",
+      "date": "Tue, 14 Aug 2018 00:01:11 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Veerash Ayyagari <veeray@microsoft.com>",
+            "commit": "e92728afcd6c9c467f3b6d9346db9b6c524dae2d",
+            "comment": "Updating StackedBar Chart desgin, MultiStackedBarChart and Legend components"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.49.0 <7.0.0` to `>=6.49.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.13.1",
       "tag": "@uifabric/charting_v0.13.1",
       "date": "Fri, 10 Aug 2018 10:26:08 GMT",

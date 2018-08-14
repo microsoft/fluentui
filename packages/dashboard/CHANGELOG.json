@@ -2,6 +2,31 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.15.0",
+      "tag": "@uifabric/dashboard_v0.15.0",
+      "date": "Tue, 14 Aug 2018 00:01:11 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Veerash Ayyagari <veeray@microsoft.com>",
+            "commit": "e92728afcd6c9c467f3b6d9346db9b6c524dae2d",
+            "comment": "Implement new design for StackedBarChart, New components MultiStackedBarChart and Legend. Update Card component to render new components"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.13.1` to `^0.14.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.23.1 <7.0.0` to `>=6.23.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.49.0 <7.0.0` to `>=6.49.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.14.1",
       "tag": "@uifabric/dashboard_v0.14.1",
       "date": "Mon, 13 Aug 2018 03:43:25 GMT",
