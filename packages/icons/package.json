@@ -19,7 +19,8 @@
   "disabledTasks": [
     "sass",
     "karma",
-    "jest"
+    "jest",
+    "build-codepen-examples"
   ],
   "devDependencies": {
     "office-ui-fabric-react-tslint": ">=6.0.0 <7.0.0"

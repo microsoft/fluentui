@@ -8,6 +8,7 @@ import { SearchBoxSmallExample } from './examples/SearchBox.Small.Example';
 import { SearchBoxStatus } from './SearchBox.checklist';
 
 const SearchBoxFullSizeExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.FullSize.Example.tsx') as string;
+const SearchBoxFullSizeExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/SearchBox/SearchBox.FullSize.Example.Codepen.txt') as string;
 const SearchBoxUnderlinedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.Underlined.Example.tsx') as string;
 const SearchBoxDisabledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.Disabled.Example.tsx') as string;
 const SearchBoxSmallExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.Small.Example.tsx') as string;
@@ -22,7 +23,8 @@ export const SearchBoxPageProps: IDocPageProps = {
     {
       title: 'Default SearchBox',
       code: SearchBoxFullSizeExampleCode,
-      view: <SearchBoxFullSizeExample />
+      view: <SearchBoxFullSizeExample />,
+      codepenJS: SearchBoxFullSizeExampleCodepen
     },
     {
       title: 'Underlined SearchBox',
