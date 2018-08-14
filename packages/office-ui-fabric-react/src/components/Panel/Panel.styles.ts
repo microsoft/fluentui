@@ -2,8 +2,7 @@ import { IPanelStyleProps, IPanelStyles, PanelType } from './Panel.types';
 import {
   AnimationClassNames,
   AnimationVariables,
-  FontSizes,
-  // IconFontSizes,
+  DefaultFontStyles,
   getGlobalClassNames,
   ScreenWidthMinMedium,
   ScreenWidthMinXLarge,
@@ -293,8 +292,8 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
     ],
     headerText: [
       classNames.headerText,
+      DefaultFontStyles.xLarge,
       {
-        fontSize: FontSizes.xLarge,
         color: palette.neutralPrimary,
         lineHeight: '32px',
         margin: 0
