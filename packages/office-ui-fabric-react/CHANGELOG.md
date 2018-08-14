@@ -1,6 +1,40 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 10 Aug 2018 10:26:09 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Aug 2018 10:27:33 GMT and should not be manually modified.
+
+## 6.49.2
+Tue, 14 Aug 2018 10:27:33 GMT
+
+### Patches
+
+- autogenerate codepenable examples for fabric examples tagged with @codepen 
+- DetailsList: in single select mode maintain role and index, and remove onclick
+
+## 6.49.1
+Tue, 14 Aug 2018 00:01:11 GMT
+
+### Patches
+
+- Fixes checkbox visibility flag in detailslist
+- KeytipLayer Styles: Changed 1px to 0px to hide span
+- TextField: For uncontrolled scenarios, update value when defaultValue changes.
+- Coachmark: Export from index file for use in CodePens.
+- onRender callbacks of PersonaDetail can also be used to wrap the default behaviour
+
+## 6.49.0
+Mon, 13 Aug 2018 03:43:25 GMT
+
+### Minor changes
+
+- new button semantic slots
+- adds opacity function to variants
+- Uniformly export component "Base" implementations.
+
+### Patches
+
+- Improves high contrast mode styles for calendar
+- Adding updateDragInfo for DragEnd event
+- Updating the documentation pages for components to enable the feedback section.
 
 ## 6.48.0
 Fri, 10 Aug 2018 10:26:09 GMT

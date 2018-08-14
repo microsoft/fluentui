@@ -9,6 +9,7 @@ import { DialogStatus } from './Dialog.checklist';
 const DialogBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.Basic.Example.tsx') as string;
 const DialogLargeHeaderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.LargeHeader.Example.tsx') as string;
 const DialogBlockingExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.Blocking.Example.tsx') as string;
+const DialogBlockingExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Dialog/Dialog.Blocking.Example.Codepen.txt') as string;
 
 export const DialogPageProps: IDocPageProps = {
   title: 'Dialog',
@@ -47,7 +48,8 @@ export const DialogPageProps: IDocPageProps = {
           </p>
           <DialogBlockingExample />
         </>
-      )
+      ),
+      codepenJS: DialogBlockingExampleCodepen
     }
   ],
   propertiesTablesSources: [
