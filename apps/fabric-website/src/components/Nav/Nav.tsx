@@ -279,21 +279,6 @@ function _isPageActive(page: INavPage): boolean {
   return false;
 }
 
-function _hasActiveGrandchild(childPage: INavPage) {
-  let hasActiveChild;
-
-  childPage.pages.forEach(grandchildPage => {
-    if (_isPageActive(grandchildPage)) {
-      hasActiveChild = true;
-    }
-    if (grandchildPage.pages) {
-      _hasActiveGrandchild(grandchildPage) ? (hasActiveChild = true) : null;
-    }
-  });
-
-  return hasActiveChild;
-}
-
 function _hasActiveChild(page: INavPage): boolean {
   let hasActiveChild = false;
 
@@ -304,7 +289,7 @@ function _hasActiveChild(page: INavPage): boolean {
       }
 
       if (childPage.pages) {
-        _hasActiveGrandchild(childPage) ? (hasActiveChild = true) : null;
+        _hasActiveChild(childPage) ? (hasActiveChild = true) : null;
       }
     });
   }
