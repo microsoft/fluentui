@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Fri, 10 Aug 2018 10:26:09 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Aug 2018 10:27:33 GMT and should not be manually modified.
+
+## 6.7.4
+Tue, 14 Aug 2018 10:27:33 GMT
+
+### Patches
+
+- autogenerate codepenable examples for fabric examples tagged with @codepen
 
 ## 6.7.3
 Fri, 10 Aug 2018 10:26:08 GMT
