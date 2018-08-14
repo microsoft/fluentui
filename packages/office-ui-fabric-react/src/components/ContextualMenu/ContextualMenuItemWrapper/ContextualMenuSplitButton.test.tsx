@@ -1,13 +1,12 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { IContextualMenuItemStyles, IContextualMenuItem } from '../ContextualMenuItem.types';
+import { IContextualMenuItem, IMenuItemClassNames } from '../ContextualMenuItem.types';
 import { ContextualMenuSplitButton } from './ContextualMenuSplitButton';
-import { IProcessedStyleSet } from '@uifabric/styling/lib/MergeStyles';
 
 describe('ContextualMenuSplitButton', () => {
   describe('creates a normal split button', () => {
     let menuItem: IContextualMenuItem;
-    let menuClassNames: IProcessedStyleSet<IContextualMenuItemStyles>;
+    let menuClassNames: IMenuItemClassNames;
 
     beforeEach(() => {
       menuItem = { key: '123' };
@@ -30,7 +29,7 @@ describe('ContextualMenuSplitButton', () => {
   });
 });
 
-function getMenuItemClassNames(): IProcessedStyleSet<IContextualMenuItemStyles> {
+function getMenuItemClassNames(): IMenuItemClassNames {
   return {
     item: 'item',
     divider: '---',

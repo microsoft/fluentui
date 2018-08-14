@@ -3,16 +3,14 @@ jest.mock('../../utilities/contextualMenu');
 import * as React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
 import { ContextualMenuItemBase } from './ContextualMenuItem.base';
-import { IContextualMenuItemProps, IContextualMenuItem } from './ContextualMenuItem.types';
-import { IContextualMenuItemStyles } from './ContextualMenuItem.types';
+import { IContextualMenuItemProps, IContextualMenuItem, IMenuItemClassNames } from './ContextualMenuItem.types';
 import { hasSubmenu } from '../../utilities/contextualMenu/index';
-import { IProcessedStyleSet } from '@uifabric/styling/lib/MergeStyles';
 
 describe('ContextMenuItemChildren', () => {
   describe('when a checkmark icon', () => {
     let onCheckmarkClick: jest.Mock;
     let menuItem: IContextualMenuItem;
-    let menuClassNames: IProcessedStyleSet<IContextualMenuItemStyles>;
+    let menuClassNames: IMenuItemClassNames;
     let wrapper: ShallowWrapper<IContextualMenuItemProps, {}>;
 
     beforeEach(() => {
@@ -51,7 +49,7 @@ describe('ContextMenuItemChildren', () => {
   describe('when it has icons', () => {
     describe('when it has iconProps', () => {
       let menuItem: IContextualMenuItem;
-      let menuClassNames: IProcessedStyleSet<IContextualMenuItemStyles>;
+      let menuClassNames: IMenuItemClassNames;
       let wrapper: ShallowWrapper<IContextualMenuItemProps, {}>;
 
       beforeEach(() => {
@@ -70,7 +68,7 @@ describe('ContextMenuItemChildren', () => {
 
     describe('when it doesnt have iconProps', () => {
       let menuItem: IContextualMenuItem;
-      let menuClassNames: IProcessedStyleSet<IContextualMenuItemStyles>;
+      let menuClassNames: IMenuItemClassNames;
       let wrapper: ShallowWrapper<IContextualMenuItemProps, {}>;
 
       beforeEach(() => {
@@ -90,7 +88,7 @@ describe('ContextMenuItemChildren', () => {
 
   describe('when it has a sub menu', () => {
     let menuItem: IContextualMenuItem;
-    let menuClassNames: IProcessedStyleSet<IContextualMenuItemStyles>;
+    let menuClassNames: IMenuItemClassNames;
     let wrapper: ShallowWrapper<IContextualMenuItemProps, {}>;
 
     beforeEach(() => {
@@ -109,7 +107,7 @@ describe('ContextMenuItemChildren', () => {
   });
 });
 
-function getMenuItemClassNames(): IProcessedStyleSet<IContextualMenuItemStyles> {
+function getMenuItemClassNames(): IMenuItemClassNames {
   return {
     item: 'item',
     divider: '---',
