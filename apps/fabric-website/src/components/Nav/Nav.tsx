@@ -189,13 +189,8 @@ export class Nav extends React.Component<INavProps, INavState> {
 
   private _getSearchBox() {
     return (
-      <div className={css(styles.searchBox)}>
-        <SearchBox
-          placeholder="Filter Components"
-          underlined={true}
-          styles={searchBoxStyles}
-          onChange={this._onChangeQuery.bind(this)}
-        />
+      <div className={styles.searchBox}>
+        <SearchBox placeholder="Filter components" underlined styles={searchBoxStyles} onChange={this._onChangeQuery} />
         <IconButton
           iconProps={{ iconName: 'filter' }}
           style={{ color: 'white', marginLeft: '5px' }}
@@ -206,13 +201,13 @@ export class Nav extends React.Component<INavProps, INavState> {
                 key: 'categories',
                 text: 'Categories',
                 iconProps: { iconName: 'org' },
-                onClick: this._setCategories.bind(this)
+                onClick: this._setCategories
               },
               {
                 key: 'alphabetized',
                 text: 'A to Z',
                 iconProps: { iconName: 'Ascending' },
-                onClick: this._setAlphabetized.bind(this)
+                onClick: this._setAlphabetized
               }
             ]
           }}
@@ -230,7 +225,7 @@ export class Nav extends React.Component<INavProps, INavState> {
     });
   };
 
-  private _onChangeQuery(newValue): void {
+  private _onChangeQuery = newValue => {
     this.setState({
       searchQuery: newValue,
       filterState: false
@@ -240,21 +235,21 @@ export class Nav extends React.Component<INavProps, INavState> {
         filterState: this.state.defaultFilterState
       });
     }
-  }
+  };
 
-  private _setCategories(): void {
+  private _setCategories = (): void => {
     this.setState({
       defaultFilterState: true,
       filterState: true
     });
-  }
+  };
 
-  private _setAlphabetized(): void {
+  private _setAlphabetized = (): void => {
     this.setState({
       defaultFilterState: false,
       filterState: false
     });
-  }
+  };
 }
 
 // A tag used for resolving links.
