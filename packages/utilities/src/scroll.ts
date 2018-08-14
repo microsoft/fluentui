@@ -17,7 +17,68 @@ const DisabledScrollClassName = mergeStyles({
  */
 export const DATA_IS_SCROLLABLE_ATTRIBUTE = 'data-is-scrollable';
 
-const disableIosBodyScroll = (event: Event) => {
+const _makeElementScrollAllower = () => {
+  let _previousClientY = 0;
+  let _element: Element | null = null;
+
+  // remember the clientY for future calls of _preventOverscrolling
+  const _saveClientY = (event: TouchEvent): void => {
+    if (event.targetTouches.length === 1) {
+      _previousClientY = event.targetTouches[0].clientY;
+    }
+  };
+
+  // prevent the body from scrolling when the user attempts
+  // to scroll past the top or bottom of the element
+  const _preventOverscrolling = (event: TouchEvent): void => {
+    // only respond to a single-finger touch
+    if (event.targetTouches.length !== 1) {
+      return;
+    }
+
+    // prevent the body touchmove handler from firing
+    // so that scrolling is allowed within the element
+    event.stopPropagation();
+
+    if (!_element) {
+      return;
+    }
+
+    const clientY = event.targetTouches[0].clientY - _previousClientY;
+
+    // if the element is scrolled to the top,
+    // prevent the user from scrolling up
+    if (_element.scrollTop === 0 && clientY > 0) {
+      event.preventDefault();
+    }
+
+    // if the element is scrolled to the bottom,
+    // prevent the user from scrolling down
+    if (_element.scrollHeight - _element.scrollTop <= _element.clientHeight && clientY < 0) {
+      event.preventDefault();
+    }
+  };
+
+  return (element: HTMLElement | null): void => {
+    if (!element) {
+      return;
+    }
+
+    element.style.overflowY = 'scroll';
+    element.addEventListener('touchstart', _saveClientY);
+    element.addEventListener('touchmove', _preventOverscrolling);
+
+    _element = element;
+  };
+};
+
+/**
+ * Allows the user to scroll within a element,
+ * while preventing the user from scrolling the body
+ */
+export const allowScrollOnElement = _makeElementScrollAllower();
+
+const _disableIosBodyScroll = (event: TouchEvent) => {
   event.preventDefault();
 };
 
@@ -31,9 +92,7 @@ export function disableBodyScroll(): void {
 
   if (doc && doc.body && !_bodyScrollDisabledCount) {
     doc.body.classList.add(DisabledScrollClassName);
-
-    // disable body scroll on ios
-    doc.ontouchmove = disableIosBodyScroll;
+    doc.body.addEventListener('touchmove', _disableIosBodyScroll, { passive: false, capture: false });
   }
 
   _bodyScrollDisabledCount++;
@@ -50,7 +109,7 @@ export function enableBodyScroll(): void {
 
     if (doc && doc.body && _bodyScrollDisabledCount === 1) {
       doc.body.classList.remove(DisabledScrollClassName);
-      doc.removeEventListener('ontouchmove', disableIosBodyScroll);
+      doc.body.removeEventListener('touchmove', _disableIosBodyScroll);
     }
 
     _bodyScrollDisabledCount--;

@@ -8,7 +8,8 @@ import {
   getNativeProps,
   getRTL,
   createRef,
-  elementContains
+  elementContains,
+  allowScrollOnElement
 } from '../../Utilities';
 import { FocusTrapZone } from '../FocusTrapZone/index';
 import { IPanel, IPanelProps, PanelType } from './Panel.types';
@@ -191,13 +192,18 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
                 focusTrapZoneProps && !focusTrapZoneProps.isClickableOutsideFocusTrap ? false : true
               }
             >
-              <div className={css('ms-Panel-commands')} data-is-visible={true}>
-                {onRenderNavigation(this.props, this._onRenderNavigation)}
-              </div>
-              <div className={css('ms-Panel-contentInner', styles.contentInner)}>
-                {header}
-                {onRenderBody(this.props, this._onRenderBody)}
-                {onRenderFooter(this.props, this._onRenderFooter)}
+              <div
+                ref={this._allowScrollOnPanel}
+                className={css('ms-Panel-scrollableContent', styles.scrollableContent)}
+              >
+                <div className={css('ms-Panel-commands')} data-is-visible={true}>
+                  {onRenderNavigation(this.props, this._onRenderNavigation)}
+                </div>
+                <div className={css('ms-Panel-contentInner', styles.contentInner)}>
+                  {header}
+                  {onRenderBody(this.props, this._onRenderBody)}
+                  {onRenderFooter(this.props, this._onRenderFooter)}
+                </div>
               </div>
             </FocusTrapZone>
           </div>
@@ -237,6 +243,13 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
       }
     }
   };
+
+  // Allow the user to scroll within the panel but not on the body
+  private _allowScrollOnPanel(elt: HTMLDivElement | null): void {
+    if (elt) {
+      allowScrollOnElement(elt);
+    }
+  }
 
   private _shouldListenForOuterClick(props: IPanelProps): boolean {
     return !!props.isBlocking && !!props.isOpen;
