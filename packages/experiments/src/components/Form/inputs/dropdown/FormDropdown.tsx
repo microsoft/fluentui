@@ -35,7 +35,7 @@ export class FormDropdown extends FormBaseInput<DropdownValue, IFormDropdownProp
           ? this.props.dropdownProps.options[0].key
           : undefined;
 
-      currentValue = propsValue || firstOption || undefined;
+      currentValue = propsValue !== undefined ? propsValue : firstOption;
     }
 
     this.state = {
