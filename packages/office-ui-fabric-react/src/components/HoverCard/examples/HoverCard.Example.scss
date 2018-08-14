@@ -1,0 +1,19 @@
+@import '../../../common/common';
+
+:global {
+  .hoverCardExample-compactCard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .hoverCardExample-expandedCard {
+    padding: 16px 24px;
+  }
+
+  .HoverCard-item:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}

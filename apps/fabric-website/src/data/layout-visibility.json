@@ -1,0 +1,377 @@
+{
+  "headers": ["Class", "SM", "MD", "LG", "XL", "XXL", "XXXL"],
+  "data": [
+    [
+      {
+        "value": "hiddenSm"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      }
+    ],
+    [
+      {
+        "value": "hiddenMd"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      }
+    ],
+    [
+      {
+        "value": "hiddenMdDown"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      }
+    ],
+    [
+      {
+        "value": "hiddenMdUp"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      }
+    ],
+    [
+      {
+        "value": "hiddenLg"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      }
+    ],
+    [
+      {
+        "value": "hiddenLgDown"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      }
+    ],
+    [
+      {
+        "value": "hiddenLgUp"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      }
+    ],
+    [
+      {
+        "value": "hiddenXl"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      }
+    ],
+    [
+      {
+        "value": "hiddenXlDown"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      }
+    ],
+    [
+      {
+        "value": "hiddenXlUp"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      }
+    ],
+    [
+      {
+        "value": "hiddenXxl"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      }
+    ],
+    [
+      {
+        "value": "hiddenXxlDown"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      }
+    ],
+    [
+      {
+        "value": "hiddenXxlUp"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      }
+    ],
+    [
+      {
+        "value": "hiddenXxxl"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": "",
+        "html": "<i class='ms-Icon ms-Icon--CheckMark ms-fontColor-green'></i>"
+      },
+      {
+        "value": ""
+      }
+    ]
+  ]
+}

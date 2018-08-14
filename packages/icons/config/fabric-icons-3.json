@@ -1,0 +1,413 @@
+{
+  "fontName": "fabric-icons-3",
+  "fontFamilyName": "FabricMDL2Icons-3",
+  "excludeGlyphs": false,
+  "excludeThirdPartyIcons": true,
+  "chunkSubsets": true,
+  "hashFontFileName": true,
+  "subsetChunkSettings": {
+    "maxSubsetSize": 100
+  },
+  "glyphs": [
+    {
+      "name": "WorkFlow",
+      "unicode": "EA01"
+    },
+    {
+      "name": "HourGlass",
+      "unicode": "EA03"
+    },
+    {
+      "name": "StoreLogoMed20",
+      "unicode": "EA04"
+    },
+    {
+      "name": "TimeSheet",
+      "unicode": "EA05"
+    },
+    {
+      "name": "TriangleSolid",
+      "unicode": "EA08"
+    },
+    {
+      "name": "VideoSolid",
+      "unicode": "EA0C"
+    },
+    {
+      "name": "RainShowersNight",
+      "unicode": "EA0F"
+    },
+    {
+      "name": "SnowShowerNight",
+      "unicode": "EA11"
+    },
+    {
+      "name": "Teamwork",
+      "unicode": "EA12"
+    },
+    {
+      "name": "HailNight",
+      "unicode": "EA13"
+    },
+    {
+      "name": "PeopleAdd",
+      "unicode": "EA15"
+    },
+    {
+      "name": "Glasses",
+      "unicode": "EA16"
+    },
+    {
+      "name": "DateTime2",
+      "unicode": "EA17"
+    },
+    {
+      "name": "Shield",
+      "unicode": "EA18"
+    },
+    {
+      "name": "Header1",
+      "unicode": "EA19"
+    },
+    {
+      "name": "PageAdd",
+      "unicode": "EA1A"
+    },
+    {
+      "name": "NumberedList",
+      "unicode": "EA1C"
+    },
+    {
+      "name": "PowerBILogo",
+      "unicode": "EA1E"
+    },
+    {
+      "name": "Info2",
+      "unicode": "EA1F"
+    },
+    {
+      "name": "MusicInCollectionFill",
+      "unicode": "EA36"
+    },
+    {
+      "name": "Asterisk",
+      "unicode": "EA38"
+    },
+    {
+      "name": "ErrorBadge",
+      "unicode": "EA39"
+    },
+    {
+      "name": "CircleFill",
+      "unicode": "EA3B"
+    },
+    {
+      "name": "Record2",
+      "unicode": "EA3F"
+    },
+    {
+      "name": "AllAppsMirrored",
+      "unicode": "EA40"
+    },
+    {
+      "name": "BookmarksMirrored",
+      "unicode": "EA41"
+    },
+    {
+      "name": "BulletedListMirrored",
+      "unicode": "EA42"
+    },
+    {
+      "name": "CaretHollowMirrored",
+      "unicode": "EA45"
+    },
+    {
+      "name": "CaretSolidMirrored",
+      "unicode": "EA46"
+    },
+    {
+      "name": "ChromeBackMirrored",
+      "unicode": "EA47"
+    },
+    {
+      "name": "ClosePaneMirrored",
+      "unicode": "EA49"
+    },
+    {
+      "name": "DockLeftMirrored",
+      "unicode": "EA4C"
+    },
+    {
+      "name": "DoubleChevronLeftMedMirrored",
+      "unicode": "EA4D"
+    },
+    {
+      "name": "HelpMirrored",
+      "unicode": "EA51"
+    },
+    {
+      "name": "ImportMirrored",
+      "unicode": "EA52"
+    },
+    {
+      "name": "ListMirrored",
+      "unicode": "EA55"
+    },
+    {
+      "name": "MailForwardMirrored",
+      "unicode": "EA56"
+    },
+    {
+      "name": "MailReplyMirrored",
+      "unicode": "EA57"
+    },
+    {
+      "name": "MailReplyAllMirrored",
+      "unicode": "EA58"
+    },
+    {
+      "name": "OpenPaneMirrored",
+      "unicode": "EA5B"
+    },
+    {
+      "name": "ParkingLocationMirrored",
+      "unicode": "EA5E"
+    },
+    {
+      "name": "SendMirrored",
+      "unicode": "EA63"
+    },
+    {
+      "name": "ShowResultsMirrored",
+      "unicode": "EA65"
+    },
+    {
+      "name": "ThumbnailViewMirrored",
+      "unicode": "EA67"
+    },
+    {
+      "name": "Devices3",
+      "unicode": "EA6C"
+    },
+    {
+      "name": "Lightbulb",
+      "unicode": "EA80"
+    },
+    {
+      "name": "StatusTriangle",
+      "unicode": "EA82"
+    },
+    {
+      "name": "VolumeDisabled",
+      "unicode": "EA85"
+    },
+    {
+      "name": "Puzzle",
+      "unicode": "EA86"
+    },
+    {
+      "name": "EmojiNeutral",
+      "unicode": "EA87"
+    },
+    {
+      "name": "EmojiDisappointed",
+      "unicode": "EA88"
+    },
+    {
+      "name": "HomeSolid",
+      "unicode": "EA8A"
+    },
+    {
+      "name": "Ringer",
+      "unicode": "EA8F"
+    },
+    {
+      "name": "PDF",
+      "unicode": "EA90"
+    },
+    {
+      "name": "HeartBroken",
+      "unicode": "EA92"
+    },
+    {
+      "name": "StoreLogo16",
+      "unicode": "EA96"
+    },
+    {
+      "name": "MultiSelectMirrored",
+      "unicode": "EA98"
+    },
+    {
+      "name": "Broom",
+      "unicode": "EA99"
+    },
+    {
+      "name": "Cocktails",
+      "unicode": "EA9D"
+    },
+    {
+      "name": "Wines",
+      "unicode": "EABF"
+    },
+    {
+      "name": "Articles",
+      "unicode": "EAC1"
+    },
+    {
+      "name": "Cycling",
+      "unicode": "EAC7"
+    },
+    {
+      "name": "DietPlanNotebook",
+      "unicode": "EAC8"
+    },
+    {
+      "name": "Pill",
+      "unicode": "EACB"
+    },
+    {
+      "name": "ExerciseTracker",
+      "unicode": "EACC"
+    },
+    {
+      "name": "HandsFree",
+      "unicode": "EAD0"
+    },
+    {
+      "name": "Medical",
+      "unicode": "EAD4"
+    },
+    {
+      "name": "Running",
+      "unicode": "EADA"
+    },
+    {
+      "name": "Weights",
+      "unicode": "EADB"
+    },
+    {
+      "name": "Trackers",
+      "unicode": "EADF"
+    },
+    {
+      "name": "AddNotes",
+      "unicode": "EAE3"
+    },
+    {
+      "name": "AllCurrency",
+      "unicode": "EAE4"
+    },
+    {
+      "name": "BarChart4",
+      "unicode": "EAE7"
+    },
+    {
+      "name": "CirclePlus",
+      "unicode": "EAEE"
+    },
+    {
+      "name": "Coffee",
+      "unicode": "EAEF"
+    },
+    {
+      "name": "Cotton",
+      "unicode": "EAF3"
+    },
+    {
+      "name": "Market",
+      "unicode": "EAFC"
+    },
+    {
+      "name": "Money",
+      "unicode": "EAFD"
+    },
+    {
+      "name": "PieDouble",
+      "unicode": "EB04"
+    },
+    {
+      "name": "PieSingle",
+      "unicode": "EB05"
+    },
+    {
+      "name": "RemoveFilter",
+      "unicode": "EB08"
+    },
+    {
+      "name": "Savings",
+      "unicode": "EB0B"
+    },
+    {
+      "name": "Sell",
+      "unicode": "EB0C"
+    },
+    {
+      "name": "StockDown",
+      "unicode": "EB0F"
+    },
+    {
+      "name": "StockUp",
+      "unicode": "EB11"
+    },
+    {
+      "name": "Lamp",
+      "unicode": "EB19"
+    },
+    {
+      "name": "Source",
+      "unicode": "EB1B"
+    },
+    {
+      "name": "MSNVideos",
+      "unicode": "EB1C"
+    },
+    {
+      "name": "Cricket",
+      "unicode": "EB1E"
+    },
+    {
+      "name": "Golf",
+      "unicode": "EB1F"
+    },
+    {
+      "name": "Baseball",
+      "unicode": "EB20"
+    },
+    {
+      "name": "Soccer",
+      "unicode": "EB21"
+    },
+    {
+      "name": "MoreSports",
+      "unicode": "EB22"
+    },
+    {
+      "name": "AutoRacing",
+      "unicode": "EB24"
+    },
+    {
+      "name": "CollegeHoops",
+      "unicode": "EB25"
+    },
+    {
+      "name": "CollegeFootball",
+      "unicode": "EB26"
+    },
+    {
+      "name": "ProFootball",
+      "unicode": "EB27"
+    },
+    {
+      "name": "ProHockey",
+      "unicode": "EB28"
+    },
+    {
+      "name": "Rugby",
+      "unicode": "EB2D"
+    },
+    {
+      "name": "SubstitutionsIn",
+      "unicode": "EB31"
+    }
+  ]
+}

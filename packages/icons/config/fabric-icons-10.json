@@ -1,0 +1,413 @@
+{
+  "fontName": "fabric-icons-10",
+  "fontFamilyName": "FabricMDL2Icons-10",
+  "excludeGlyphs": false,
+  "excludeThirdPartyIcons": true,
+  "chunkSubsets": true,
+  "hashFontFileName": true,
+  "subsetChunkSettings": {
+    "maxSubsetSize": 100
+  },
+  "glyphs": [
+    {
+      "name": "CPlusPlus",
+      "unicode": "F2F4"
+    },
+    {
+      "name": "FSharpLanguage",
+      "unicode": "F2F5"
+    },
+    {
+      "name": "FSharp",
+      "unicode": "F2F6"
+    },
+    {
+      "name": "TypeScriptLanguage",
+      "unicode": "F2F7"
+    },
+    {
+      "name": "PythonLanguage",
+      "unicode": "F2F8"
+    },
+    {
+      "name": "PY",
+      "unicode": "F2F9"
+    },
+    {
+      "name": "CoffeeScript",
+      "unicode": "F2FA"
+    },
+    {
+      "name": "MarkDownLanguage",
+      "unicode": "F2FB"
+    },
+    {
+      "name": "FullWidth",
+      "unicode": "F2FE"
+    },
+    {
+      "name": "FullWidthEdit",
+      "unicode": "F2FF"
+    },
+    {
+      "name": "Plug",
+      "unicode": "F300"
+    },
+    {
+      "name": "PlugSolid",
+      "unicode": "F301"
+    },
+    {
+      "name": "PlugConnected",
+      "unicode": "F302"
+    },
+    {
+      "name": "PlugDisconnected",
+      "unicode": "F303"
+    },
+    {
+      "name": "UnlockSolid",
+      "unicode": "F304"
+    },
+    {
+      "name": "Variable",
+      "unicode": "F305"
+    },
+    {
+      "name": "Parameter",
+      "unicode": "F306"
+    },
+    {
+      "name": "CommentUrgent",
+      "unicode": "F307"
+    },
+    {
+      "name": "Storyboard",
+      "unicode": "F308"
+    },
+    {
+      "name": "DiffInline",
+      "unicode": "F309"
+    },
+    {
+      "name": "DiffSideBySide",
+      "unicode": "F30A"
+    },
+    {
+      "name": "ImageDiff",
+      "unicode": "F30B"
+    },
+    {
+      "name": "ImagePixel",
+      "unicode": "F30C"
+    },
+    {
+      "name": "FileBug",
+      "unicode": "F30D"
+    },
+    {
+      "name": "FileCode",
+      "unicode": "F30E"
+    },
+    {
+      "name": "FileComment",
+      "unicode": "F30F"
+    },
+    {
+      "name": "BusinessHoursSign",
+      "unicode": "F310"
+    },
+    {
+      "name": "FileImage",
+      "unicode": "F311"
+    },
+    {
+      "name": "FileSymlink",
+      "unicode": "F312"
+    },
+    {
+      "name": "AutoFillTemplate",
+      "unicode": "F313"
+    },
+    {
+      "name": "WorkItem",
+      "unicode": "F314"
+    },
+    {
+      "name": "WorkItemBug",
+      "unicode": "F315"
+    },
+    {
+      "name": "LogRemove",
+      "unicode": "F316"
+    },
+    {
+      "name": "ColumnOptions",
+      "unicode": "F317"
+    },
+    {
+      "name": "Packages",
+      "unicode": "F318"
+    },
+    {
+      "name": "BuildIssue",
+      "unicode": "F319"
+    },
+    {
+      "name": "AssessmentGroup",
+      "unicode": "F31A"
+    },
+    {
+      "name": "VariableGroup",
+      "unicode": "F31B"
+    },
+    {
+      "name": "FullHistory",
+      "unicode": "F31C"
+    },
+    {
+      "name": "SingleColumnEdit",
+      "unicode": "F321"
+    },
+    {
+      "name": "DoubleColumnEdit",
+      "unicode": "F322"
+    },
+    {
+      "name": "TripleColumnEdit",
+      "unicode": "F323"
+    },
+    {
+      "name": "ColumnLeftTwoThirdsEdit",
+      "unicode": "F324"
+    },
+    {
+      "name": "ColumnRightTwoThirdsEdit",
+      "unicode": "F325"
+    },
+    {
+      "name": "StreamLogo",
+      "unicode": "F329"
+    },
+    {
+      "name": "PassiveAuthentication",
+      "unicode": "F32A"
+    },
+    {
+      "name": "AlertSolid",
+      "unicode": "F331"
+    },
+    {
+      "name": "MegaphoneSolid",
+      "unicode": "F332"
+    },
+    {
+      "name": "TaskSolid",
+      "unicode": "F333"
+    },
+    {
+      "name": "ConfigurationSolid",
+      "unicode": "F334"
+    },
+    {
+      "name": "BugSolid",
+      "unicode": "F335"
+    },
+    {
+      "name": "CrownSolid",
+      "unicode": "F336"
+    },
+    {
+      "name": "Trophy2Solid",
+      "unicode": "F337"
+    },
+    {
+      "name": "QuickNoteSolid",
+      "unicode": "F338"
+    },
+    {
+      "name": "ConstructionConeSolid",
+      "unicode": "F339"
+    },
+    {
+      "name": "PageListSolid",
+      "unicode": "F33A"
+    },
+    {
+      "name": "PageListMirroredSolid",
+      "unicode": "F33B"
+    },
+    {
+      "name": "StarburstSolid",
+      "unicode": "F33C"
+    },
+    {
+      "name": "ReadingModeSolid",
+      "unicode": "F33D"
+    },
+    {
+      "name": "SadSolid",
+      "unicode": "F33E"
+    },
+    {
+      "name": "HealthSolid",
+      "unicode": "F33F"
+    },
+    {
+      "name": "ShieldSolid",
+      "unicode": "F340"
+    },
+    {
+      "name": "GiftBoxSolid",
+      "unicode": "F341"
+    },
+    {
+      "name": "ShoppingCartSolid",
+      "unicode": "F342"
+    },
+    {
+      "name": "MailSolid",
+      "unicode": "F343"
+    },
+    {
+      "name": "ChatSolid",
+      "unicode": "F344"
+    },
+    {
+      "name": "RibbonSolid",
+      "unicode": "F345"
+    },
+    {
+      "name": "FinancialSolid",
+      "unicode": "F346"
+    },
+    {
+      "name": "FinancialMirroredSolid",
+      "unicode": "F347"
+    },
+    {
+      "name": "HeadsetSolid",
+      "unicode": "F348"
+    },
+    {
+      "name": "PermissionsSolid",
+      "unicode": "F349"
+    },
+    {
+      "name": "ParkingSolid",
+      "unicode": "F34A"
+    },
+    {
+      "name": "ParkingMirroredSolid",
+      "unicode": "F34B"
+    },
+    {
+      "name": "DiamondSolid",
+      "unicode": "F34C"
+    },
+    {
+      "name": "AsteriskSolid",
+      "unicode": "F34D"
+    },
+    {
+      "name": "OfflineStorageSolid",
+      "unicode": "F34E"
+    },
+    {
+      "name": "BankSolid",
+      "unicode": "F34F"
+    },
+    {
+      "name": "DecisionSolid",
+      "unicode": "F350"
+    },
+    {
+      "name": "Parachute",
+      "unicode": "F351"
+    },
+    {
+      "name": "ParachuteSolid",
+      "unicode": "F352"
+    },
+    {
+      "name": "FiltersSolid",
+      "unicode": "F353"
+    },
+    {
+      "name": "ColorSolid",
+      "unicode": "F354"
+    },
+    {
+      "name": "ReviewSolid",
+      "unicode": "F355"
+    },
+    {
+      "name": "ReviewRequestSolid",
+      "unicode": "F356"
+    },
+    {
+      "name": "ReviewRequestMirroredSolid",
+      "unicode": "F357"
+    },
+    {
+      "name": "ReviewResponseSolid",
+      "unicode": "F358"
+    },
+    {
+      "name": "FeedbackRequestSolid",
+      "unicode": "F359"
+    },
+    {
+      "name": "FeedbackRequestMirroredSolid",
+      "unicode": "F35A"
+    },
+    {
+      "name": "FeedbackResponseSolid",
+      "unicode": "F35B"
+    },
+    {
+      "name": "WorkItemBar",
+      "unicode": "F35C"
+    },
+    {
+      "name": "WorkItemBarSolid",
+      "unicode": "F35D"
+    },
+    {
+      "name": "Separator",
+      "unicode": "F35E"
+    },
+    {
+      "name": "NavigateExternalInline",
+      "unicode": "F35F"
+    },
+    {
+      "name": "PlanView",
+      "unicode": "F360"
+    },
+    {
+      "name": "TimelineMatrixView",
+      "unicode": "F361"
+    },
+    {
+      "name": "EngineeringGroup",
+      "unicode": "F362"
+    },
+    {
+      "name": "ProjectCollection",
+      "unicode": "F363"
+    },
+    {
+      "name": "CaretBottomRightCenter8",
+      "unicode": "F364"
+    },
+    {
+      "name": "CaretBottomLeftCenter8",
+      "unicode": "F365"
+    },
+    {
+      "name": "CaretTopRightCenter8",
+      "unicode": "F366"
+    }
+  ]
+}

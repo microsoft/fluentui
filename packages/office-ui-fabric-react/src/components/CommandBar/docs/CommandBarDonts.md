@@ -1,0 +1,3 @@
+- Fill the command bar completely from left to right.
+- Use icons only for commands in larger widths.
+- Display more than 2-3 items on the right side of the bar (or left side in left to right experiences).

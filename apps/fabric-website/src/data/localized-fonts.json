@@ -1,0 +1,280 @@
+{
+  "headers": ["Language", "Code", "Font Stack"],
+  "data": [
+    [
+      {
+        "value": "Western European (default)"
+      },
+      {
+        "value": "N/A"
+      },
+      {
+        "value": "'Segoe UI Web Regular', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif"
+      }
+    ],
+    [
+      {
+        "value": "Japanese"
+      },
+      {
+        "value": "ja-JP"
+      },
+      {
+        "value": "YuGothic, 'Meiryo UI', Meiryo, 'MS Pgothic', Osaka, 'Segoe UI', Tahoma, Arial, sans-serif"
+      }
+    ],
+    [
+      {
+        "value": "Korean"
+      },
+      {
+        "value": "ko-KR"
+      },
+      {
+        "value": "'Malgun Gothic', Gulim, 'Segoe UI', Tahoma, Arial, sans-serif"
+      }
+    ],
+    [
+      {
+        "value": "Chinese (simplified)"
+      },
+      {
+        "value": "ch-ZHS"
+      },
+      {
+        "value": "'Microsoft Yahei', Verdana, Simsun, 'Segoe UI', Tahoma, Arial, sans-serif"
+      }
+    ],
+    [
+      {
+        "value": "Chinese (traditional)"
+      },
+      {
+        "value": "ch-ZHT"
+      },
+      {
+        "value": "'Microsoft Jhenghei', Pmingliu, 'Segoe UI', Tahoma, Arial, sans-serif"
+      }
+    ],
+    [
+      {
+        "value": "Hindi"
+      },
+      {
+        "value": "hi-IN"
+      },
+      {
+        "value": "'Nirmala UI', 'Segoe UI', Tahoma, Arial, sans-serif"
+      }
+    ],
+    [
+      {
+        "value": "Thai"
+      },
+      {
+        "value": "th-TH"
+      },
+      {
+        "value": "'Leelawadee UI Regular', 'Kmer UI', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif"
+      }
+    ],
+    [
+      {
+        "value": "Arabic"
+      },
+      {
+        "value": "ar"
+      },
+      {
+        "value": "'Segoe UI Regular Arabic', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif"
+      }
+    ],
+    [
+      {
+        "value": "Bulgarian"
+      },
+      {
+        "value": "bg-BG"
+      },
+      {
+        "value": "'Segoe UI Regular Cyrillic', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif"
+      }
+    ],
+    [
+      {
+        "value": "Czech"
+      },
+      {
+        "value": "cs-CZ"
+      },
+      {
+        "value": "'Segoe UI Regular EastEuropean', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif"
+      }
+    ],
+    [
+      {
+        "value": "Estonian"
+      },
+      {
+        "value": "et-EE"
+      },
+      {
+        "value": "'Segoe UI Regular EastEuropean', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif"
+      }
+    ],
+    [
+      {
+        "value": "Croatian"
+      },
+      {
+        "value": "hr-HR"
+      },
+      {
+        "value": "'Segoe UI Regular EastEuropean', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif"
+      }
+    ],
+    [
+      {
+        "value": "Hungarian"
+      },
+      {
+        "value": "hu-HU"
+      },
+      {
+        "value": "'Segoe UI Regular EastEuropean', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif"
+      }
+    ],
+    [
+      {
+        "value": "Lithuanian"
+      },
+      {
+        "value": "lt-LT"
+      },
+      {
+        "value": "'Segoe UI Regular EastEuropean', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif"
+      }
+    ],
+    [
+      {
+        "value": "Latvian (Lettish)"
+      },
+      {
+        "value": "lv-LV"
+      },
+      {
+        "value": "'Segoe UI Regular EastEuropean', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif"
+      }
+    ],
+    [
+      {
+        "value": "Polish"
+      },
+      {
+        "value": "pl-PL"
+      },
+      {
+        "value": "'Segoe UI Regular EastEuropean', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif"
+      }
+    ],
+    [
+      {
+        "value": "Serbian"
+      },
+      {
+        "value": "lt-sr-SP"
+      },
+      {
+        "value": "'Segoe UI Regular EastEuropean', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif"
+      }
+    ],
+    [
+      {
+        "value": "Russian"
+      },
+      {
+        "value": "ru-RU"
+      },
+      {
+        "value": "'Segoe UI Regular Cyrillic', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif"
+      }
+    ],
+    [
+      {
+        "value": "Ukrainian"
+      },
+      {
+        "value": "uk-UA"
+      },
+      {
+        "value": "'Segoe UI Regular Cyrillic', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif"
+      }
+    ],
+    [
+      {
+        "value": "Turkish"
+      },
+      {
+        "value": "tr-TR"
+      },
+      {
+        "value": "'Segoe UI Regular EastEuropean', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif"
+      }
+    ],
+    [
+      {
+        "value": "Slovak"
+      },
+      {
+        "value": "sk-SK"
+      },
+      {
+        "value": "'Segoe UI Regular EastEuropean', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif"
+      }
+    ],
+    [
+      {
+        "value": "Kazakh"
+      },
+      {
+        "value": "kk-KZ"
+      },
+      {
+        "value": "'Segoe UI Regular EastEuropean', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif"
+      }
+    ],
+    [
+      {
+        "value": "Greek"
+      },
+      {
+        "value": "el-GR"
+      },
+      {
+        "value": "'Segoe UI Regular Greek', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif"
+      }
+    ],
+    [
+      {
+        "value": "Hebrew"
+      },
+      {
+        "value": "he-IL"
+      },
+      {
+        "value": "'Segoe UI Regular Hebrew', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif"
+      }
+    ],
+    [
+      {
+        "value": "Vietnamese"
+      },
+      {
+        "value": "vi-VN"
+      },
+      {
+        "value": "'Segoe UI Regular Vietnamese', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif"
+      }
+    ]
+  ]
+}

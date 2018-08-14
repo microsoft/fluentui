@@ -1,0 +1,430 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Stack accepts custom className on child items 1`] = `
+<div
+  className=
+
+      {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: auto;
+        width: auto;
+      }
+>
+  <span
+    className=
+
+        {
+          background: red;
+          flex-shrink: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+  >
+    Item 1
+  </span>
+  <div
+    className=
+
+        {
+          background: red;
+          flex-shrink: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+  >
+    Item 2
+  </div>
+</div>
+`;
+
+exports[`Stack renders Stack with StackItems correctly 1`] = `
+<div
+  className=
+
+      {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: auto;
+        width: auto;
+      }
+>
+  <span
+    className=
+
+        {
+          flex-shrink: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+  >
+    Item 1
+  </span>
+  <span
+    className=
+
+        {
+          flex-shrink: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+  >
+    Item 2
+  </span>
+</div>
+`;
+
+exports[`Stack renders Stack with a gap correctly 1`] = `
+<div
+  className=
+
+      {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: auto;
+        width: auto;
+      }
+>
+  <span
+    className=
+
+        {
+          flex-shrink: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+  >
+    Item 1
+  </span>
+  <span
+    className=
+
+        {
+          flex-shrink: 0;
+          margin-top: 10px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+  >
+    Item 2
+  </span>
+</div>
+`;
+
+exports[`Stack renders Stack with grow correctly 1`] = `
+<div
+  className=
+
+      {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: auto;
+        width: auto;
+      }
+>
+  <div
+    className=
+
+        {
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-grow: 5;
+          flex-shrink: 0;
+          flex-wrap: nowrap;
+          height: auto;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          width: auto;
+        }
+  >
+    <span
+      className=
+
+          {
+            flex-shrink: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+    >
+      Item 1
+    </span>
+  </div>
+  <div
+    className=
+
+        {
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-grow: 2;
+          flex-shrink: 0;
+          flex-wrap: nowrap;
+          height: auto;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          width: auto;
+        }
+  >
+    <span
+      className=
+
+          {
+            flex-shrink: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+    >
+      Item 2
+    </span>
+  </div>
+  <div
+    className=
+
+        {
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-grow: 1;
+          flex-shrink: 0;
+          flex-wrap: nowrap;
+          height: auto;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          width: auto;
+        }
+  >
+    <span
+      className=
+
+          {
+            flex-shrink: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+    >
+      Item 3
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Stack renders Stack with shrinking StackItems correctly 1`] = `
+<div
+  className=
+
+      {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: auto;
+        width: auto;
+      }
+>
+  <span
+    className=
+
+        {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+  >
+    Item 1
+  </span>
+  <span
+    className=
+
+        {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+  >
+    Item 2
+  </span>
+</div>
+`;
+
+exports[`Stack renders Stack with vertical and horizontal alignment correctly 1`] = `
+<div
+  className=
+
+      {
+        align-items: flex-start;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: auto;
+        justify-content: flex-end;
+        width: auto;
+      }
+>
+  <div
+    className=
+
+        {
+          flex-shrink: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+  >
+    Item 1
+  </div>
+  <div
+    className=
+
+        {
+          flex-shrink: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+  >
+    Item 2
+  </div>
+</div>
+`;
+
+exports[`Stack renders Stack with vertical and horizontal fill correctly 1`] = `
+<div
+  className=
+
+      {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: 100%;
+        width: 100%;
+      }
+>
+  <div
+    className=
+
+        {
+          flex-shrink: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+  >
+    Item 1
+  </div>
+  <div
+    className=
+
+        {
+          flex-shrink: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+  >
+    Item 2
+  </div>
+</div>
+`;
+
+exports[`Stack renders horizontal Stack correctly 1`] = `
+<div
+  className=
+
+      {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        height: auto;
+        width: auto;
+      }
+>
+  <div
+    className=
+
+        {
+          flex-shrink: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+  >
+    Item 1
+  </div>
+  <div
+    className=
+
+        {
+          flex-shrink: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+  >
+    Item 2
+  </div>
+</div>
+`;
+
+exports[`Stack renders vertical Stack correctly 1`] = `
+<div
+  className=
+
+      {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: auto;
+        width: auto;
+      }
+>
+  <div
+    className=
+
+        {
+          flex-shrink: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+  >
+    Item 1
+  </div>
+  <div
+    className=
+
+        {
+          flex-shrink: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+  >
+    Item 2
+  </div>
+</div>
+`;

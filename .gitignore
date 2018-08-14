@@ -42,6 +42,8 @@ node_modules
 temp
 lib
 lib-amd
+lib-commonjs
+lib-es2015
 coverage
 dist
 npm-debug.log
@@ -88,5 +90,28 @@ typings/webparts
 # Configs that contain sensitive information
 TDSDeployConfig.json
 
-#ftp config
+# FTP config
 ftpconfig.json
+
+# Package output folder
+package
+
+# Log files from building
+*.log
+
+# Dependency change files generated from npmx aka rush
+package-deps.json
+
+# Non Essential Visual testing files.
+**/office-ui-fabric-react/visualtests/results/*.png
+**/office-ui-fabric-react/failures/*.png
+
+common/temp
+
+# Gulp cache
+gulp-cache
+
+# NPM debug logs
+npm-debug.log.*
+
+package-lock.json
