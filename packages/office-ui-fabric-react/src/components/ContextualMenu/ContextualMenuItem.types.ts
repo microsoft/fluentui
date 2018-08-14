@@ -135,7 +135,7 @@ export interface IContextualMenuItem {
     iconClassName?: string,
     subMenuClassName?: string,
     primaryDisabled?: boolean
-  ) => IProcessedStyleSet<IContextualMenuItemStyles>;
+  ) => IMenuItemClassNames;
 
   /**
    * Method to provide the classnames to style the Vertical Divider of a split button inside a menu. Default value is the getVerticalDividerClassnames func defined in ContextualMenu.classnames
@@ -275,7 +275,7 @@ export interface IContextualMenuItemProps extends React.HTMLAttributes<IContextu
   /**
    * Classnames for different aspects of a menu item
    */
-  classNames: IProcessedStyleSet<IContextualMenuItemStyles>;
+  classNames: IMenuItemClassNames;
 
   /**
    * Index of the item
@@ -356,3 +356,6 @@ export interface IContextualMenuItemStyles extends IButtonStyles {
   splitMenu: IStyle;
   linkContentMenu: IStyle;
 }
+
+/** @deprecated in favor of mergeStyles API. */
+export interface IMenuItemClassNames extends IProcessedStyleSet<IContextualMenuItemStyles> {}

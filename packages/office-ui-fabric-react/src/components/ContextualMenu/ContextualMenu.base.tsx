@@ -8,7 +8,8 @@ import {
 import {
   IContextualMenuItemStyles,
   IContextualMenuItem,
-  IContextualMenuItemStyleProps
+  IContextualMenuItemStyleProps,
+  IMenuItemClassNames
 } from './ContextualMenuItem.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection, IFocusZoneProps, FocusZoneTabbableElements } from '../../FocusZone';
@@ -395,6 +396,9 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     const subMenuIconClassName = item.submenuIconProps ? item.submenuIconProps.className : '';
 
     let itemClassNames;
+
+    // IContextualMenuItem#getItemClassNames for backwards compatibility
+    // otherwise uses mergeStyles for class names.
     if (item.getItemClassNames) {
       itemClassNames = item.getItemClassNames(
         this.props.theme!,
@@ -459,7 +463,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
   private _renderSectionItem(
     item: IContextualMenuItem,
-    menuClassNames: IProcessedStyleSet<IContextualMenuItemStyles>,
+    menuClassNames: IMenuItemClassNames,
     index: number,
     hasCheckmarks: boolean,
     hasIcons: boolean
@@ -507,7 +511,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   private _renderListItem(
     content: React.ReactNode,
     key: string | number,
-    classNames: IProcessedStyleSet<IContextualMenuItemStyles>,
+    classNames: IMenuItemClassNames,
     title?: string
   ) {
     return (
@@ -519,7 +523,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
   private _renderSeparator(
     index: number,
-    classNames: IProcessedStyleSet<IContextualMenuItemStyles>,
+    classNames: IMenuItemClassNames,
     top?: boolean,
     fromSection?: boolean
   ): React.ReactNode {
@@ -537,7 +541,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
   private _renderNormalItem(
     item: IContextualMenuItem,
-    classNames: IProcessedStyleSet<IContextualMenuItemStyles>,
+    classNames: IMenuItemClassNames,
     index: number,
     focusableElementIndex: number,
     totalItemCount: number,
@@ -589,7 +593,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
   private _renderHeaderMenuItem(
     item: IContextualMenuItem,
-    classNames: IProcessedStyleSet<IContextualMenuItemStyles>,
+    classNames: IMenuItemClassNames,
     index: number,
     hasCheckmarks: boolean,
     hasIcons: boolean
@@ -611,7 +615,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
   private _renderAnchorMenuItem(
     item: IContextualMenuItem,
-    classNames: IProcessedStyleSet<IContextualMenuItemStyles>,
+    classNames: IMenuItemClassNames,
     index: number,
     focusableElementIndex: number,
     totalItemCount: number,
@@ -648,7 +652,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
   private _renderButtonItem(
     item: IContextualMenuItem,
-    classNames: IProcessedStyleSet<IContextualMenuItemStyles>,
+    classNames: IMenuItemClassNames,
     index: number,
     focusableElementIndex: number,
     totalItemCount: number,
@@ -687,7 +691,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
   private _renderSplitButton(
     item: IContextualMenuItem,
-    classNames: IProcessedStyleSet<IContextualMenuItemStyles>,
+    classNames: IMenuItemClassNames,
     index: number,
     focusableElementIndex: number,
     totalItemCount: number,
