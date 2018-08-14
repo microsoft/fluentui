@@ -130,12 +130,16 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
           checkboxVisibility={checkboxVisibility}
           layoutMode={layoutMode}
           isHeaderVisible={isHeaderVisible}
-          selectionMode={selectionMode}
           constrainMode={constrainMode}
           groupProps={groupProps}
           enterModalSelectionOnTouch={true}
           onItemInvoked={this._onItemInvoked}
           onItemContextMenu={this._onItemContextMenu}
+          selectionZoneProps={{
+            selection: this._selection,
+            disableAutoSelectOnInputElements: true,
+            selectionMode: selectionMode
+          }}
           ariaLabelForListHeader="Column headers. Use menus to perform column operations like sort and filter"
           ariaLabelForSelectAllCheckbox="Toggle selection for all items"
           ariaLabelForSelectionColumn="Toggle selection"
