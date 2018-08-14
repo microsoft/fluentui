@@ -1,11 +1,11 @@
 {
   "changes": [
     {
+      "comment": "",
       "packageName": "@uifabric/fabric-website",
-      "comment": "Adds new Shimmer component to fabric-website.",
-      "type": "minor"
+      "type": "none"
     }
   ],
   "packageName": "@uifabric/fabric-website",
-  "email": "v-vibr@microsoft.com"
+  "email": "v-jescla@microsoft.com"
 }

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/variants
 
-This log was last generated on Mon, 16 Jul 2018 11:28:06 GMT and should not be manually modified.
+This log was last generated on Sat, 11 Aug 2018 01:52:57 GMT and should not be manually modified.
+
+## 5.6.0
+Sat, 11 Aug 2018 01:52:57 GMT
+
+### Minor changes
+
+- adds variantThemeType.ts and getVariant() function to variants.ts to handle variant control; adds changeOpacity() function to variants.ts to handle opacity control in semantic slot settings; adds semantic slots and fallback values to variants.ts
 
 ## 5.5.4
 Mon, 16 Jul 2018 11:28:06 GMT

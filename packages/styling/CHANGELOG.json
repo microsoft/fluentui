@@ -2,6 +2,25 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "5.32.0",
+      "tag": "@uifabric/styling_v5.32.0",
+      "date": "Sat, 11 Aug 2018 01:52:57 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "07329c5a3ca4a11fd9bb86f4f249456f643aff2a",
+            "comment": "adds button semantic slots"
+          },
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "3d328b236fca0289f8b8a356c73e4952e2b77567",
+            "comment": "adds 4 new semantic slots, based on designs from SP-Client events webpart, and with approval from Philip Kuo; actionLink, actionLinkHovered, cardBackground, variantBorder"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.31.2",
       "tag": "@uifabric/styling_v5.31.2",
       "date": "Mon, 16 Jul 2018 11:28:06 GMT",
