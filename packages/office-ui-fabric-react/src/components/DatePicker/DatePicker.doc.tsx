@@ -10,6 +10,7 @@ import { DatePickerBoundedExample } from './examples/DatePicker.Bounded.Example'
 import { DatePickerStatus } from './DatePicker.checklist';
 
 const DatePickerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Basic.Example.tsx') as string;
+const DatePickerBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/DatePicker/DatePicker.Basic.Example.Codepen.txt') as string;
 const DatePickerWeekNumbersExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.WeekNumbers.Example.tsx') as string;
 const DatePickerRequiredExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Required.Example.tsx') as string;
 const DatePickerInputExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Input.Example.tsx') as string;
@@ -26,7 +27,8 @@ export const DatePickerPageProps: IDocPageProps = {
     {
       title: 'Default DatePicker',
       code: DatePickerBasicExampleCode,
-      view: <DatePickerBasicExample />
+      view: <DatePickerBasicExample />,
+      codepenJS: DatePickerBasicExampleCodepen
     },
     {
       title: 'DatePicker with week numbers',
@@ -61,5 +63,6 @@ export const DatePickerPageProps: IDocPageProps = {
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/DatePicker/docs/DatePickerDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/DatePicker/docs/DatePickerDonts.md'),
-  isHeaderVisible: true
+  isHeaderVisible: true,
+  isFeedbackVisible: true
 };

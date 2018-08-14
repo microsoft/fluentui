@@ -33,5 +33,6 @@ export const PeoplePickerPageProps: IDocPageProps = {
   donts: require<
     string
   >('!raw-loader!office-ui-fabric-react/src/components/pickers/PeoplePicker/docs/PeoplePickerDonts.md'),
-  isHeaderVisible: true
+  isHeaderVisible: true,
+  isFeedbackVisible: true
 };

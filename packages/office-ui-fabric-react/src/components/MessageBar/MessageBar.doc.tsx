@@ -5,6 +5,7 @@ import { IDocPageProps } from '../../common/DocPage.types';
 import { MessageBarStatus } from './MessageBar.checklist';
 
 const MessageBarBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/MessageBar/examples/MessageBar.Basic.Example.tsx') as string;
+const MessageBarBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/MessageBar/MessageBar.Basic.Example.Codepen.txt') as string;
 
 export const MessageBarPageProps: IDocPageProps = {
   title: 'MessageBar',
@@ -16,7 +17,8 @@ export const MessageBarPageProps: IDocPageProps = {
     {
       title: 'Various MessageBar types',
       code: MessageBarBasicExampleCode,
-      view: <MessageBarBasicExample />
+      view: <MessageBarBasicExample />,
+      codepenJS: MessageBarBasicExampleCodepen
     }
   ],
   propertiesTablesSources: [
@@ -26,5 +28,6 @@ export const MessageBarPageProps: IDocPageProps = {
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/MessageBar/docs/MessageBarDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/MessageBar/docs/MessageBarDonts.md'),
-  isHeaderVisible: true
+  isHeaderVisible: true,
+  isFeedbackVisible: true
 };
