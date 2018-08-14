@@ -36,6 +36,7 @@ exports[`Button renders CompoundButton correctly 1`] = `
         text-decoration: none;
         user-select: none;
         vertical-align: top;
+        width: 100%;
       }
       &::-moz-focus-inner {
         border: 0;
