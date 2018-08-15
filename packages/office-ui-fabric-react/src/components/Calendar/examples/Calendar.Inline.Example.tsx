@@ -1,3 +1,4 @@
+// @codepen
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { addDays, getDateRangeArray } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
@@ -101,9 +102,8 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
             Date boundary:
             <span>
               {' '}
-              {this.props.minDate ? this.props.minDate.toLocaleDateString() : 'Not set'}-{this.props.maxDate
-                ? this.props.maxDate.toLocaleDateString()
-                : 'Not set'}
+              {this.props.minDate ? this.props.minDate.toLocaleDateString() : 'Not set'}-
+              {this.props.maxDate ? this.props.maxDate.toLocaleDateString() : 'Not set'}
             </span>
           </div>
         )}

@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Adding updateDragInfo for DragEnd event",
+      "comment": "DetailsList: remove related section from demo page",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "laxmika@microsoft.com"
+  "email": "naethell@microsoft.com"
 }

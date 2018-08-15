@@ -379,9 +379,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
           aria-label={ariaLabelForGrid}
           aria-rowcount={rowCount}
           aria-colcount={
-            (selectAllVisibility !== SelectAllVisibility.none && selectAllVisibility !== SelectAllVisibility.hidden
-              ? 1
-              : 0) + (adjustedColumns ? adjustedColumns.length : 0)
+            (selectAllVisibility !== SelectAllVisibility.none ? 1 : 0) + (adjustedColumns ? adjustedColumns.length : 0)
           }
           aria-readonly="true"
         >
@@ -442,7 +440,9 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
                     items={items}
                     onRenderCell={this._onRenderCell}
                     selection={selection}
-                    selectionMode={selectionMode}
+                    selectionMode={
+                      checkboxVisibility !== CheckboxVisibility.hidden ? selectionMode : SelectionMode.none
+                    }
                     dragDropEvents={dragDropEvents}
                     dragDropHelper={dragDropHelper as DragDropHelper}
                     eventsToRegister={rowElementEventMap}

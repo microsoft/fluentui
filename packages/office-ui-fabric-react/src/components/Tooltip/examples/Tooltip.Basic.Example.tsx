@@ -1,3 +1,4 @@
+// @codepen
 import * as React from 'react';
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
