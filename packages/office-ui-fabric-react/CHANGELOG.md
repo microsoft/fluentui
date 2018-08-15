@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 14 Aug 2018 10:27:33 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Aug 2018 10:26:31 GMT and should not be manually modified.
+
+## 6.49.3
+Wed, 15 Aug 2018 10:26:31 GMT
+
+### Patches
+
+- adding a npm run codepen command to allow for local codepen webpack-dev-server
 
 ## 6.49.2
 Tue, 14 Aug 2018 10:27:33 GMT

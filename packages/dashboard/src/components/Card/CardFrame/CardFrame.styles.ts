@@ -56,7 +56,7 @@ export const getStyles = (props: ICardFrameProps): ICardFrameStyles => {
       overflow: 'hidden',
       padding: '9px 16px 12px 16px',
       fontSize: fontSize ? fontSize : '14px',
-      fontFamily: fontFamily ? fontFamily : 'Segoe UI Semibold',
+      fontFamily: fontFamily ? fontFamily : 'SegoeUI-SemiBold-final',
       display: 'inline-block',
       selectors: {
         a: {

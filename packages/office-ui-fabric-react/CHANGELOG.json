@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.49.3",
+      "tag": "office-ui-fabric-react_v6.49.3",
+      "date": "Wed, 15 Aug 2018 10:26:31 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "182790df2902159af516ec47b5068523b8cdf725",
+            "comment": "adding a npm run codepen command to allow for local codepen webpack-dev-server"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.49.2",
       "tag": "office-ui-fabric-react_v6.49.2",
       "date": "Tue, 14 Aug 2018 10:27:33 GMT",
