@@ -1,8 +1,7 @@
 ﻿/* tslint:disable */
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
-import { INavLink, INavLinkGroup } from 'office-ui-fabric-react/lib/components/Nav';
-import { INavState } from 'office-ui-fabric-react/lib/components/Nav/Nav.base';
+import { INavLink, INavLinkGroup, INavState } from 'office-ui-fabric-react/lib/Nav';
 /* tslint:enable */
 
 export enum NavGroupType {
@@ -133,6 +132,16 @@ export interface INavStyleProps {
   hasChildren?: boolean;
 
   /**
+   * has group name
+   */
+  hasGroupName?: boolean;
+
+  /**
+   * has child be selected boolean
+   */
+  isChildLinkSelected?: boolean;
+
+  /**
    * nesting level of the nav item in the nav tree
    */
   nestingLevel?: number;
@@ -158,6 +167,11 @@ export interface INavStyles {
    * Style set for the nav item root
    */
   navItemRoot: IStyle;
+
+  /**
+   * Style set for the bar marker in the nav item
+   */
+  navItemBarMarker: IStyle;
 
   /**
    * Style set for the icon column in the nav item
@@ -197,7 +211,7 @@ export interface INavStyles {
   /**
    * Style set for the group name in nav group separator
    */
-  navGroupSeparatorGroupName: IStyle;
+  navGroupSeparatorHeaderGroupName: IStyle;
 
   /**
    * Style set for the nav toggler which toggles expanded and slim nav
@@ -250,4 +264,9 @@ export interface INavLinkProps extends React.AllHTMLAttributes<HTMLAnchorElement
    * CSS class for the icon part of the nav link
    */
   iconClassName?: string;
+
+  /**
+   * CSS class for the bar marker part of the nav link
+   */
+  barClassName?: string;
 }

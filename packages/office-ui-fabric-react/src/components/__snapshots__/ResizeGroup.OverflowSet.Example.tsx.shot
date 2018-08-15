@@ -53,7 +53,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -206,7 +206,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -359,7 +359,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -512,7 +512,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -665,7 +665,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -818,7 +818,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -971,7 +971,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -1124,7 +1124,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -1277,7 +1277,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -1430,7 +1430,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -1583,7 +1583,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -1736,7 +1736,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -1889,7 +1889,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -2042,7 +2042,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -2195,7 +2195,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -2348,7 +2348,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -2501,7 +2501,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -2654,7 +2654,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -2807,7 +2807,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -2960,7 +2960,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -3183,13 +3183,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
       onClick={[Function]}
       onFocus={[Function]}
       role="checkbox"
+      title={undefined}
       type="button"
     >
       <label
         className=
             ms-Checkbox-label
             {
-              align-items: center;
+              align-items: flex-start;
               cursor: pointer;
               display: flex;
               margin-bottom: 0;
@@ -3258,6 +3259,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               {
                 color: #333333;
                 font-size: 14px;
+                line-height: 20px;
                 margin-bottom: 0;
                 margin-left: 4px;
                 margin-right: 4px;
@@ -3345,13 +3347,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
       onClick={[Function]}
       onFocus={[Function]}
       role="checkbox"
+      title={undefined}
       type="button"
     >
       <label
         className=
             ms-Checkbox-label
             {
-              align-items: center;
+              align-items: flex-start;
               cursor: pointer;
               display: flex;
               margin-bottom: 0;
@@ -3420,6 +3423,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               {
                 color: #333333;
                 font-size: 14px;
+                line-height: 20px;
                 margin-bottom: 0;
                 margin-left: 4px;
                 margin-right: 4px;
@@ -3507,13 +3511,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
       onClick={[Function]}
       onFocus={[Function]}
       role="checkbox"
+      title={undefined}
       type="button"
     >
       <label
         className=
             ms-Checkbox-label
             {
-              align-items: center;
+              align-items: flex-start;
               cursor: pointer;
               display: flex;
               margin-bottom: 0;
@@ -3582,6 +3587,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               {
                 color: #333333;
                 font-size: 14px;
+                line-height: 20px;
                 margin-bottom: 0;
                 margin-left: 4px;
                 margin-right: 4px;

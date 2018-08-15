@@ -156,7 +156,7 @@ export class DashboardGridLayoutCardExample extends React.Component<{}, {}> {
         content: {
           chartLabel: 'My first chart!',
           chartType: ChartType.VerticalBarChart,
-          data: datapoints,
+          dataPoints: datapoints,
           colors: ['red', 'yellow']
         }
       }
@@ -169,7 +169,7 @@ export class DashboardGridLayoutCardExample extends React.Component<{}, {}> {
         content: {
           chartLabel: 'My first chart!',
           chartType: ChartType.VerticalBarChart,
-          data: datapoints,
+          dataPoints: datapoints,
           colors: ['red', 'yellow']
         }
       }

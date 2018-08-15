@@ -2,6 +2,44 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "6.7.2",
+      "tag": "@uifabric/example-app-base_v6.7.2",
+      "date": "Fri, 10 Aug 2018 10:26:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "anavilohia <anavi.lohia@utexas.edu>",
+            "commit": "34a0e9d620cd391e545332e17c5c93494a7a8618",
+            "comment": "Added optional feedback section for component pages"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.47.2 <7.0.0` to `>=6.48.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.7.1",
+      "tag": "@uifabric/example-app-base_v6.7.1",
+      "date": "Wed, 08 Aug 2018 10:25:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "34847367691054a6f0ad0b41299ddb640fb9c397",
+            "comment": "Autodoc: improve regex to handle certain edge cases of declaring interfaces."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.47.0 <7.0.0` to `>=6.47.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.7.0",
       "tag": "@uifabric/example-app-base_v6.7.0",
       "date": "Tue, 24 Jul 2018 10:24:36 GMT",

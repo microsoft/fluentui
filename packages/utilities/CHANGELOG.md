@@ -1,6 +1,28 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 27 Jul 2018 10:25:39 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Aug 2018 10:27:33 GMT and should not be manually modified.
+
+## 6.14.1
+Tue, 14 Aug 2018 10:27:33 GMT
+
+### Patches
+
+- disabling codepen task
+
+## 6.14.0
+Mon, 13 Aug 2018 03:43:25 GMT
+
+### Minor changes
+
+- Customizer should allow for nesting. Right now, `settings` provided have the reverse precendence expected; the outer-most Customizer wins over an inner one. This is completely backwards. Fixing to be correct.
+
+## 6.13.0
+Fri, 10 Aug 2018 10:26:09 GMT
+
+### Minor changes
+
+- Customizable: add optional flag to allow customizer styles to be merged with component styles prop rather than overriding component styles
+- Adding merge helper for deep merging.
 
 ## 6.12.1
 Fri, 27 Jul 2018 10:25:39 GMT

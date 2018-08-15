@@ -37,7 +37,6 @@ import { DetailsListNavigatingFocusExample } from './examples/DetailsList.Naviga
 const DetailsListNavigatingFocusExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.NavigatingFocus.Example.tsx') as string;
 
 import { DetailsListShimmerExample } from './examples/DetailsList.Shimmer.Example';
-import { Link } from '../../Link';
 const DetailsListShimmerExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Shimmer.Example.tsx') as string;
 
 import { DetailsListCustomFooterExample } from './examples/DetailsList.CustomFooter.Example';
@@ -56,39 +55,6 @@ export const DetailsListPageProps: IDocPageProps = {
       view: <DetailsListDocumentsExample />
     }
   ],
-  related: (
-    <div>
-      <ul className="ComponentPage-variantsList">
-        <li>
-          <Link href="/#/components/detailslist/basic">Basic</Link>
-        </li>
-        <li>
-          <Link href="/#/components/detailslist/compact">Compact</Link>
-        </li>
-        <li>
-          <Link href="/#/components/detailslist/grouped">Grouped</Link>
-        </li>
-        <li>
-          <Link href="/#/components/detailslist/customitemcolumns">Custom Item Columns</Link>
-        </li>
-        <li>
-          <Link href="/#/components/detailslist/customitemrows">Custom Item Rows</Link>
-        </li>
-        <li>
-          <Link href="/#/components/detailslist/customgroupheaders">Custom Group Headers</Link>
-        </li>
-        <li>
-          <Link href="/#/components/detailslist/variablerowheights">Variable Row Heights</Link>
-        </li>
-        <li>
-          <Link href="/#/components/detailslist/draganddrop">Drag &amp; Drop</Link>
-        </li>
-        <li>
-          <Link href="/#/components/detailslist/innernavigation">Inner Navigation</Link>
-        </li>
-      </ul>
-    </div>
-  ),
   propertiesTablesSources: [
     require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/DetailsList.types.ts')
   ],
@@ -108,7 +74,8 @@ function generateProps(example: { title: string; code: string; view: JSX.Element
     componentUrl:
       'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList',
     examples: [example],
-    isHeaderVisible: false
+    isHeaderVisible: false,
+    isFeedbackVisible: true
   };
 }
 

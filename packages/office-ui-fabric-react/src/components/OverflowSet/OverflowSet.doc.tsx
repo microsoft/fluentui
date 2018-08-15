@@ -43,5 +43,6 @@ export const OverflowSetPageProps: IDocPageProps = {
   dos: '',
   donts: '',
   isHeaderVisible: true,
+  isFeedbackVisible: true,
   allowNativeProps: true
 };

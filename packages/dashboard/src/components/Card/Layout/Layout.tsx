@@ -95,14 +95,24 @@ export class Layout extends React.Component<ILayoutProps> {
                 break;
               }
               case CardContentType.Chart: {
-                const { chartLabel, colors, barWidth, data, chartType } = cardContent.content as IChartProps;
+                const {
+                  chartLabels,
+                  legendColors,
+                  barWidth,
+                  data,
+                  chartType,
+                  dataPoints,
+                  compactChartWidth
+                } = cardContent.content as IChartProps;
                 contentArea.push(
                   <Chart
-                    chartLabel={chartLabel}
+                    chartLabels={chartLabels}
                     chartType={chartType}
-                    colors={colors}
+                    legendColors={legendColors}
                     barWidth={barWidth}
                     data={data}
+                    dataPoints={dataPoints}
+                    compactChartWidth={compactChartWidth}
                     width={this._getChartWidth(cardContentList.length)}
                     height={this._getChartHeight(cardContentList.length)}
                   />

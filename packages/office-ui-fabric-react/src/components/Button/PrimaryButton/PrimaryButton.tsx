@@ -3,7 +3,7 @@ import { BaseComponent, customizable, nullRender } from '../../../Utilities';
 import { DefaultButton } from '../DefaultButton/DefaultButton';
 import { IButtonProps } from '../Button.types';
 
-@customizable('PrimaryButton', ['theme', 'styles'])
+@customizable('PrimaryButton', ['theme', 'styles'], true)
 export class PrimaryButton extends BaseComponent<IButtonProps, {}> {
   /**
    * Set this BaseComponent._skipComponentRefResolution to true, bypassing resolution of componentRef.

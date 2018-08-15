@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { IDataPoint } from './StackedBarChart.types';
-
-import { IProcessedStyleSet, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-
+import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+
+import { Legend } from '../Legend/Legend';
+
+import { IDataPoint, ILegendDataItem } from './StackedBarChart.types';
 import { IStackedBarChartProps, IStackedBarChartStyleProps, IStackedBarChartStyles } from './StackedBarChart.types';
 
 const getClassNames = classNamesFunction<IStackedBarChartStyleProps, IStackedBarChartStyles>();
@@ -11,68 +12,74 @@ const getClassNames = classNamesFunction<IStackedBarChartStyleProps, IStackedBar
 export class StackedBarChartBase extends React.Component<IStackedBarChartProps, {}> {
   public static defaultProps: Partial<IStackedBarChartProps> = {
     data: [],
-    width: 500,
-    height: 50,
-    barHeight: 35
+    width: 394,
+    barHeight: 16,
+    hideNumberDisplay: false,
+    hideLegend: false
   };
   private _colors: string[];
   private _classNames: IProcessedStyleSet<IStackedBarChartStyles>;
+
   constructor(props: IStackedBarChartProps) {
     super(props);
-    const { theme, className, styles, width, height, barHeight } = this.props;
+    const { theme, className, styles, width, barHeight } = props;
 
     const { palette } = theme!;
     this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     this._classNames = getClassNames(styles!, {
       theme: theme!,
       width: width!,
-      height: height!,
-      className,
-      barHeight
+      barHeight: barHeight!,
+      className
     });
   }
   public render(): JSX.Element {
-    const { data, width, height, barHeight } = this.props;
+    const { data, width, barHeight, chartTitle, hideNumberDisplay, hideLegend } = this.props;
 
-    const bars = this._createBars(data!, height!, width!, barHeight!);
-
+    const bars = this._createBars(data!, width!, barHeight!);
     const legendBar = this._createLegendBars(data!);
 
-    if (data!.length > 2) {
-      return (
-        <div className={this._classNames.root}>
-          {this.props.chartTitle && <p className={this._classNames.chartTitle}>{this.props.chartTitle}</p>}
-          <svg className={this._classNames.chart}>
-            <g className={this._classNames.bars}>{bars}</g>
-          </svg>
-          <ul className={this._classNames.legend}>{legendBar}</ul>
-        </div>
-      );
-    } else {
-      const total = data!.map((item: IDataPoint) => item.y).reduce((a: number, b: number) => a + b, 0);
-      const { chartTitle } = this.props;
-      return (
-        <div className={this._classNames.root}>
-          <div className={this._classNames.chartTitle}>
-            <div className={this._classNames.subTitle}>
-              <strong>{chartTitle}</strong>
+    const showRatio = hideNumberDisplay === false && data!.length === 2;
+    const showNumber = hideNumberDisplay === false && data!.length === 1;
+    let total = 0;
+    if (showRatio === true) {
+      total = data!.reduce((acc: number, value: IDataPoint) => acc + value.y, 0);
+    }
+
+    const showLegend = hideLegend === false && data!.length > 2;
+
+    return (
+      <div className={this._classNames.root}>
+        <div className={this._classNames.chartTitle}>
+          {chartTitle && (
+            <div>
+              <strong>{this.props.chartTitle}</strong>
             </div>
-            <div className={this._classNames.value}>
+          )}
+          {showRatio && (
+            <div>
               <strong>{data![0].y}</strong>/{total}
             </div>
-          </div>
-          <svg className={this._classNames.chart}>
-            <g className={this._classNames.bars}>{bars}</g>
-          </svg>
+          )}
+          {showNumber && (
+            <div>
+              <strong>{data![0].y}</strong>
+            </div>
+          )}
         </div>
-      );
-    }
+
+        <svg className={this._classNames.chart}>
+          <g>{bars}</g>
+        </svg>
+        {showLegend && <div className={this._classNames.legendContainer}>{legendBar}</div>}
+      </div>
+    );
   }
 
-  private _createBars(data: IDataPoint[], height: number, width: number, barHeight: number): JSX.Element[] {
+  private _createBars(data: IDataPoint[], width: number, barHeight: number): JSX.Element[] {
     let prevWidth = 0;
     const barWidths = [0];
-    const total = data.map((item: IDataPoint) => item.y).reduce((a: number, b: number) => a + b, 0);
+    const total = data.reduce((acc: number, point: IDataPoint) => acc + point.y, 0);
     const bars = data.map((point: IDataPoint, index: number) => {
       const value = (point.y / total) * width;
       prevWidth = prevWidth + value;
@@ -92,21 +99,14 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     return bars;
   }
 
-  private _createLegendBars(data: IDataPoint[]): JSX.Element[] {
-    const bars = data.map((point: IDataPoint, index: number) => {
-      const itemStyle = {
-        backgroundColor: this._colors[index % this._colors.length],
-        height: '0px',
-        width: '0px',
-        padding: '5px'
+  private _createLegendBars(data: IDataPoint[]): JSX.Element {
+    const legendDataItems: ILegendDataItem[] = data.map((point: IDataPoint, index: number) => {
+      return {
+        legendText: point.x,
+        legendColor: this._colors[index % this._colors.length]
       };
-      return (
-        <li key={index} className={this._classNames.legendBar}>
-          <span className={mergeStyles(itemStyle)} />
-          <span className={this._classNames.legendText}>{point.x}</span>
-        </li>
-      );
     });
-    return bars;
+
+    return <Legend renderData={legendDataItems} />;
   }
 }

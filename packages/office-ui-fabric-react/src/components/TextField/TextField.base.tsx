@@ -137,18 +137,17 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
       }
 
       this._id = newProps.id || this._id;
-      this._latestValue = newProps.value;
-      this.setState(
-        {
-          value: newProps.value || DEFAULT_STATE_VALUE,
-          errorMessage: ''
-        } as ITextFieldState,
-        () => {
-          this._adjustInputHeight();
-        }
-      );
+      this._setValue(newProps.value);
 
-      this._delayedValidate(newProps.value);
+      const { validateOnFocusIn, validateOnFocusOut } = newProps;
+      if (!(validateOnFocusIn || validateOnFocusOut)) {
+        this._delayedValidate(newProps.value);
+      }
+    }
+
+    // If component is not currently controlled and defaultValue changes, set value to new defaultValue.
+    if (newProps.defaultValue !== this.props.defaultValue && newProps.value === undefined) {
+      this._setValue(newProps.defaultValue);
     }
   }
 
@@ -298,6 +297,19 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
     if (this._textElement.current) {
       (this._textElement.current as HTMLInputElement).setSelectionRange(start, end);
     }
+  }
+
+  private _setValue(value?: string) {
+    this._latestValue = value;
+    this.setState(
+      {
+        value: value || DEFAULT_STATE_VALUE,
+        errorMessage: ''
+      } as ITextFieldState,
+      () => {
+        this._adjustInputHeight();
+      }
+    );
   }
 
   private _onFocus(ev: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>): void {

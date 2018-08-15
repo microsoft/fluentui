@@ -1,6 +1,118 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 03 Aug 2018 10:25:59 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Aug 2018 10:26:31 GMT and should not be manually modified.
+
+## 6.49.3
+Wed, 15 Aug 2018 10:26:31 GMT
+
+### Patches
+
+- adding a npm run codepen command to allow for local codepen webpack-dev-server
+
+## 6.49.2
+Tue, 14 Aug 2018 10:27:33 GMT
+
+### Patches
+
+- autogenerate codepenable examples for fabric examples tagged with @codepen 
+- DetailsList: in single select mode maintain role and index, and remove onclick
+
+## 6.49.1
+Tue, 14 Aug 2018 00:01:11 GMT
+
+### Patches
+
+- Fixes checkbox visibility flag in detailslist
+- KeytipLayer Styles: Changed 1px to 0px to hide span
+- TextField: For uncontrolled scenarios, update value when defaultValue changes.
+- Coachmark: Export from index file for use in CodePens.
+- onRender callbacks of PersonaDetail can also be used to wrap the default behaviour
+
+## 6.49.0
+Mon, 13 Aug 2018 03:43:25 GMT
+
+### Minor changes
+
+- new button semantic slots
+- adds opacity function to variants
+- Uniformly export component "Base" implementations.
+
+### Patches
+
+- Improves high contrast mode styles for calendar
+- Adding updateDragInfo for DragEnd event
+- Updating the documentation pages for components to enable the feedback section.
+
+## 6.48.0
+Fri, 10 Aug 2018 10:26:09 GMT
+
+### Minor changes
+
+- Coachmark: Add onDismiss
+- CommandBar: OnClick now properly passes item as well as event
+
+### Patches
+
+- ColorPicker: Update color rectangle when hue value changes
+- autogenerate codepenable examples for fabric examples tagged with @codepen 
+- ComboBox cannot clear value when allowFreeForm enabled. Should trigger onChanged when value is cleared
+- Update components using customizer (including Button variations) to concatenate customizer and component style sets
+- Added optional feedback section for component pages
+- Link: Fix focus border text clipping.
+- TextField: Respect validateOnFocus props when props change.
+- ColorPicker: Limit decimal points shown for alpha.
+- ' Added 2 callback functions for dragstart and drag end events to get the telemetry logs in ODSP-Next'
+- Changing the drophint ICON
+- default render behaviour can be used along with onRenderCoin in Persona component
+- Prettier cleanup.
+- Removed unnecessary heading roles, and added aria-level to those requiring them
+- HoverCard: Adds more documentation and adds a focus stop on root to eliminate an edge case when target is not provided the focus listener was not firing at all.
+- ShimmeredDetailsList: replace a hard coded multiplier with a ratio constant and modify some math logic.
+
+## 6.47.2
+Thu, 09 Aug 2018 10:31:30 GMT
+
+### Patches
+
+- Checkbox: Now aligns to spec when text wraps to multiple lines (#5816).
+- ChoiceGroup: Set data-is-focusable attribute so that FocusTrapZone can detect correct focusable elements
+- DetailsList: Fix all examples by disabling row renderer optimization.
+
+## 6.47.1
+Wed, 08 Aug 2018 10:25:08 GMT
+
+### Patches
+
+- Layer: Fix layer customizability regression introduced in #5569 - which also broke the official Layer example.
+- Fix a class of bad imports that breaks AMD.
+- Fixes a bug in drag and drop detaillist column not showing a gripper
+- Dropdown: use item text for title if title is not provided
+- Button should not have any html tag as children. In IE the inner html, would not render. 
+- Panel: Don't force focus in trap if isHiddenOnDismiss is set and panel is closed
+
+## 6.47.0
+Tue, 07 Aug 2018 10:22:32 GMT
+
+### Minor changes
+
+- Minor documentation and type name fixes
+- Add new toggle prop to correclty use aria-pressed attribute as needed.
+
+### Patches
+
+- Fix line height scrollbar issue in ActivityItem
+- Dropdown: You can no longer use the arrow keys to change the selected items in a  disabled Dropdown. (#5738)
+- CommandBar: Disabled buttons are now focusable by default due to menubar role
+- Fix bug in ChoiceGroup that errors on Array.find as it does not exist in IE11
+- Add Modal component to index entry file.
+- Fixing Shimmer implementation in DetailsList.
+
+## 6.46.0
+Mon, 06 Aug 2018 10:27:53 GMT
+
+### Minor changes
+
+- TextField: Add onChange prop and deprecate onChanged
 
 ## 6.45.0
 Fri, 03 Aug 2018 10:25:59 GMT

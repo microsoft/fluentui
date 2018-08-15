@@ -10,6 +10,7 @@ import { ButtonAnchorExample } from './examples/Button.Anchor.Example';
 import { ButtonScreenReaderExample } from './examples/Button.ScreenReader.Example';
 import { ButtonSwapExample } from './examples/Button.Swap.Example';
 import { ButtonSplitExample, ButtonSplitCustomExample } from './examples/Button.Split.Example';
+import { ButtonToggleExample } from './examples/Button.Toggle.Example';
 import { IDocPageProps, ChecklistStatus } from '../../common/DocPage.types';
 export { ChecklistStatus };
 
@@ -23,6 +24,7 @@ const ButtonScreenReaderExampleCode = require('!raw-loader!office-ui-fabric-reac
 const ButtonContextualMenuExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.ContextualMenu.Example.tsx') as string;
 const ButtonSwapExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Swap.Example.tsx') as string;
 const ButtonSplitExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Split.Example.tsx') as string;
+const ButtonToggleExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Toggle.Example.tsx') as string;
 
 export interface IButtonDocPageProps {
   areButtonsDisabled: boolean;
@@ -96,6 +98,11 @@ export const ButtonPageProps = (props: IButtonDocPageProps): IDocPageProps => ({
       title: 'Custom Split Button',
       code: ButtonSplitExampleCode,
       view: <ButtonSplitCustomExample disabled={props.areButtonsDisabled} checked={props.areButtonsChecked} />
+    },
+    {
+      title: 'Toggle Button',
+      code: ButtonToggleExampleCode,
+      view: <ButtonToggleExample disabled={props.areButtonsDisabled} checked={props.areButtonsChecked} />
     }
   ],
 
@@ -108,5 +115,6 @@ export const ButtonPageProps = (props: IButtonDocPageProps): IDocPageProps => ({
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/docs/ButtonDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/docs/ButtonDonts.md'),
   isHeaderVisible: true,
+  isFeedbackVisible: true,
   componentStatus: ButtonStatus
 });

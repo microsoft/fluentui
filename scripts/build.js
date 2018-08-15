@@ -27,10 +27,11 @@ const buildStartTime = new Date().getTime();
 const TASKS_WITH_PREREQUISITES = [
   ['copy', null],
   ['sass', 'copy'],
-  ['lint-imports', 'sass'],
-  ['ts', 'lint-imports'],
-  ['tslint', 'lint-imports'],
-  ['jest', 'lint-imports'],
+  ['ts', 'sass'],
+  ['tslint', 'sass'],
+  ['jest', 'sass'],
+  ['lint-imports', 'ts'],
+  ['build-codepen-examples', 'ts'],
   ['webpack', 'ts']
 ];
 
@@ -46,7 +47,7 @@ const taskMap = loadTaskFunctions(getAllTasks());
  *  or otherwise
  * the tasks disabled in the package.json.
  */
-const disabledTasks = getDisabledTasks(process, package.disabledTasks);
+const disabledTasks = getDisabledTasks(process, getDefaultDisabledTasks());
 
 // Get the first tasks to execute, these are the tasks without prerequisite.
 const firstTasks = getNextTasks(null, disabledTasks);
@@ -69,6 +70,27 @@ executeTasks(firstTasks)
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //// Build helper functions
 /////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ * Disable tasks in one of two ways:
+ * - run `npm run build --npm-install-mode`
+ * - run `npm run build no-jest no-tslint`
+ */
+function getDefaultDisabledTasks() {
+  let disabled = package.disabledTasks || [];
+
+  if (process.argv.indexOf('--npm-install-mode') > -1) {
+    disabled = [...disabled, 'jest', 'tslint', 'lint-imports'];
+  }
+
+  (process.argv.filter(tasks => tasks.startsWith('no-')) || []).forEach(task => {
+    const skippedTask = task.replace('no-', '');
+    if (disabled.indexOf(skippedTask) < 0) {
+      disabled.push(skippedTask);
+    }
+  });
+
+  return disabled;
+}
 
 function executeTasks(tasks) {
   return Promise.all(
@@ -168,9 +190,8 @@ function first(values) {
 }
 
 function getDisabledTasks(process, defaultDisabled = []) {
-  if (process.argv.length >= 3 && process.argv[2].indexOf('--') === -1) {
-    const tasksToRun = process.argv.slice(2);
-
+  const tasksToRun = process.argv.slice(2).filter(tasks => !tasks.startsWith('no-'));
+  if (process.argv.length >= 3 && process.argv[2].indexOf('--') === -1 && tasksToRun.length > 0) {
     return getAllTasks().filter(task => tasksToRun.indexOf(task) === -1);
   }
 

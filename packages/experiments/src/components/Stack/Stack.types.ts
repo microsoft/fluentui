@@ -1,28 +1,96 @@
 import { IStyle } from '../../Styling';
 import { IStyleableComponent } from '../../Foundation';
 
+export type Alignment =
+  | 'start'
+  | 'end'
+  | 'center'
+  | 'space-between'
+  | 'space-around'
+  | 'space-evenly'
+  | 'baseline'
+  | 'stretch';
+
+export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
+
+// contains the members of IStackProps that are common to both VerticalStack and HorizontalStack
+export type IPartialStackProps = Omit<IStackProps, 'verticalAlignment' | 'horizontalAlignment' | 'horizontal'>;
+
 export interface IStackProps extends IStyleableComponent<IStackProps, IStackStyles> {
+  /**
+   * How to render the Stack.
+   */
   renderAs?: string | React.ReactType<IStackProps>;
+
+  /**
+   * CSS class name used to style the Stack.
+   */
   className?: string;
 
-  fill?: boolean;
-  collapseItems?: boolean;
+  /**
+   * Whether to render Stack child elements horizontally.
+   */
+  horizontal?: boolean;
 
-  inline?: boolean;
-  vertical?: boolean;
+  /**
+   * How to align Stack child elements horizontally (along the x-axis).
+   */
+  horizontalAlignment?: Alignment;
 
+  /**
+   * How to align Stack child elements vertically (along the y-axis).
+   */
+  verticalAlignment?: Alignment;
+
+  /**
+   * Whether the Stack should take up 100% of the width of its parent.
+   */
+  fillHorizontal?: boolean;
+
+  /**
+   * Whether the Stack should take up 100% of the height of its parent.
+   */
+  fillVertical?: boolean;
+
+  /**
+   * Whether Stack child elements should shrink to fit the available space.
+   */
+  shrinkItems?: boolean;
+
+  /**
+   * How much to grow the Stack in proportion to its siblings.
+   */
   grow?: boolean | number | 'inherit' | 'initial' | 'unset';
-  wrap?: boolean;
 
+  /**
+   * Spacing between Stack child elements.
+   */
   gap?: number;
-  align?: 'center' | 'start' | 'baseline' | 'stretch' | 'end';
-  justify?: 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly';
 
+  /**
+   * Maximum width of the Stack.
+   */
   maxWidth?: number | string;
+
+  /**
+   * Maximum height of the Stack.
+   */
+  maxHeight?: number | string;
+
+  /**
+   * Padding of the Stack.
+   */
   padding?: number | string;
+
+  /**
+   * Margin of the Stack.
+   */
   margin?: number | string;
 }
 
 export interface IStackStyles {
+  /**
+   * Style set for the root element.
+   */
   root: IStyle;
 }

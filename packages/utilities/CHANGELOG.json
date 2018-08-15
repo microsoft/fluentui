@@ -2,6 +2,58 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.14.1",
+      "tag": "@uifabric/utilities_v6.14.1",
+      "date": "Tue, 14 Aug 2018 10:27:33 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Avital Baral <avitalbaral99@gmail.com>",
+            "commit": "cf0f728d0b28540b7a42aa9121a840605ee04670",
+            "comment": "disabling codepen task"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=6.0.3 <7.0.0` to `>=6.0.4 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.14.0",
+      "tag": "@uifabric/utilities_v6.14.0",
+      "date": "Mon, 13 Aug 2018 03:43:25 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "3d0df820eec602f90ef5a4876f16f16f68965b32",
+            "comment": "Customizer should allow for nesting. Right now, `settings` provided have the reverse precendence expected; the outer-most Customizer wins over an inner one. This is completely backwards. Fixing to be correct."
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.13.0",
+      "tag": "@uifabric/utilities_v6.13.0",
+      "date": "Fri, 10 Aug 2018 10:26:09 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "b77f3bdfe3c4ae9c1b51f297921c23038de5f2ac",
+            "comment": "Customizable: add optional flag to allow customizer styles to be merged with component styles prop rather than overriding component styles"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "904f08478a0113198d8004ba757b9a82a6b6da8a",
+            "comment": "Adding merge helper for deep merging."
+          }
+        ]
+      }
+    },
+    {
       "version": "6.12.1",
       "tag": "@uifabric/utilities_v6.12.1",
       "date": "Fri, 27 Jul 2018 10:25:39 GMT",

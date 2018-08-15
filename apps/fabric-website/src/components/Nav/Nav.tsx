@@ -22,6 +22,28 @@ export interface INavState {
   filterState: boolean;
 }
 
+const searchBoxStyles = {
+  root: {
+    marginBottom: '5px',
+    width: '152px',
+    backgroundColor: 'transparent'
+  },
+  iconContainer: {
+    display: 'none'
+  },
+  field: {
+    backgroundColor: 'transparent',
+    color: 'white'
+  },
+  clearButton: {
+    selectors: {
+      '.ms-Button': {
+        color: 'white'
+      }
+    }
+  }
+};
+
 export class Nav extends React.Component<INavProps, INavState> {
   constructor(props: INavProps) {
     super(props);
@@ -51,7 +73,7 @@ export class Nav extends React.Component<INavProps, INavState> {
     );
   }
 
-  private _renderLinkList(pages: INavPage[], isSubMenu: boolean): React.ReactElement<{}> {
+  private _renderLinkList(pages: INavPage[], isSubMenu: boolean, title?: string): React.ReactElement<{}> {
     const { filterState } = this.state;
 
     const links = pages
@@ -71,6 +93,7 @@ export class Nav extends React.Component<INavProps, INavState> {
 
     return (
       <ul className={css(styles.links, isSubMenu ? styles.isSubMenu : '')} aria-label="Main website navigation">
+        {title === 'Components' ? this._getSearchBox() : ''}
         {links}
       </ul>
     );
@@ -93,7 +116,7 @@ export class Nav extends React.Component<INavProps, INavState> {
     }
   }
 
-  private _renderSortedLinks(pages: INavPage[]): React.ReactElement<{}> {
+  private _renderSortedLinks(pages: INavPage[], title: string): React.ReactElement<{}> {
     const links: INavPage[] = [];
     pages.map((page: INavPage) => page.pages.map((link: INavPage) => links.push(link)));
     links.sort((l1, l2) => {
@@ -105,7 +128,7 @@ export class Nav extends React.Component<INavProps, INavState> {
       return 0;
     });
 
-    return this._renderLinkList(links, true);
+    return this._renderLinkList(links, true, title);
   }
 
   private _renderLink(page: INavPage, linkIndex: number): React.ReactElement<{}> {
@@ -113,16 +136,15 @@ export class Nav extends React.Component<INavProps, INavState> {
     const title = page.title === 'Fabric' ? 'Home page' : page.title;
     const childLinks =
       page.pages && title === 'Components' && !this.state.filterState
-        ? this._renderSortedLinks(page.pages)
+        ? this._renderSortedLinks(page.pages, title)
         : page.pages
-          ? this._renderLinkList(page.pages, true)
+          ? this._renderLinkList(page.pages, true, title)
           : null;
     const { searchQuery } = this.state;
-    const searchRegEx = new RegExp(searchQuery, 'i');
     const text = page.title;
     let linkText = <>{text}</>;
-
     let matchIndex;
+
     // Highlight search query within link.
     if (!!searchQuery && page.isFilterable) {
       matchIndex = text.toLowerCase().indexOf(searchQuery.toLowerCase());
@@ -143,7 +165,6 @@ export class Nav extends React.Component<INavProps, INavState> {
 
     return (
       <span>
-        {this._getSearchBox(title)}
         <li
           className={css(
             styles.link,
@@ -166,60 +187,33 @@ export class Nav extends React.Component<INavProps, INavState> {
     );
   }
 
-  private _getSearchBox(val) {
-    if (val === 'Components') {
-      return (
-        <div style={{ display: 'flex' }}>
-          <SearchBox
-            placeholder="Filter Components"
-            underlined={true}
-            styles={{
-              root: {
-                marginBottom: '5px',
-                width: '152px',
-                backgroundColor: 'transparent'
+  private _getSearchBox() {
+    return (
+      <div className={styles.searchBox}>
+        <SearchBox placeholder="Filter components" underlined styles={searchBoxStyles} onChange={this._onChangeQuery} />
+        <IconButton
+          iconProps={{ iconName: 'filter' }}
+          style={{ color: 'white', marginLeft: '5px' }}
+          menuIconProps={{ iconName: '' }}
+          menuProps={{
+            items: [
+              {
+                key: 'categories',
+                text: 'Categories',
+                iconProps: { iconName: 'org' },
+                onClick: this._setCategories
               },
-              iconContainer: {
-                display: 'none'
-              },
-              field: {
-                backgroundColor: 'transparent',
-                color: 'white'
-              },
-              clearButton: {
-                selectors: {
-                  '.ms-Button': {
-                    color: 'white'
-                  }
-                }
+              {
+                key: 'alphabetized',
+                text: 'A to Z',
+                iconProps: { iconName: 'Ascending' },
+                onClick: this._setAlphabetized
               }
-            }}
-            onChange={this._onChangeQuery.bind(this)}
-          />
-          <IconButton
-            iconProps={{ iconName: 'filter' }}
-            style={{ color: 'white', marginLeft: '5px' }}
-            menuIconProps={{ iconName: '' }}
-            menuProps={{
-              items: [
-                {
-                  key: 'categories',
-                  text: 'Categories',
-                  iconProps: { iconName: 'org' },
-                  onClick: this._setCategories.bind(this)
-                },
-                {
-                  key: 'alphabetized',
-                  text: 'A to Z',
-                  iconProps: { iconName: 'Ascending' },
-                  onClick: this._setAlphabetized.bind(this)
-                }
-              ]
-            }}
-          />
-        </div>
-      );
-    }
+            ]
+          }}
+        />
+      </div>
+    );
   }
 
   private _onLinkClick = (ev: React.MouseEvent<{}>) => {
@@ -231,7 +225,7 @@ export class Nav extends React.Component<INavProps, INavState> {
     });
   };
 
-  private _onChangeQuery(newValue): void {
+  private _onChangeQuery = newValue => {
     this.setState({
       searchQuery: newValue,
       filterState: false
@@ -241,21 +235,21 @@ export class Nav extends React.Component<INavProps, INavState> {
         filterState: this.state.defaultFilterState
       });
     }
-  }
+  };
 
-  private _setCategories(): void {
+  private _setCategories = (): void => {
     this.setState({
       defaultFilterState: true,
       filterState: true
     });
-  }
+  };
 
-  private _setAlphabetized(): void {
+  private _setAlphabetized = (): void => {
     this.setState({
       defaultFilterState: false,
       filterState: false
     });
-  }
+  };
 }
 
 // A tag used for resolving links.
@@ -286,7 +280,7 @@ function _isPageActive(page: INavPage): boolean {
 }
 
 function _hasActiveChild(page: INavPage): boolean {
-  let hasActiveChild: boolean = false;
+  let hasActiveChild = false;
 
   if (page.pages) {
     page.pages.forEach(childPage => {
@@ -294,15 +288,8 @@ function _hasActiveChild(page: INavPage): boolean {
         hasActiveChild = true;
       }
 
-      // Is a grandchild page active?
-      // @todo: This logic is the same as above. Could be simplified by moving
-      //        into another function, which would support many levels of nav.
       if (childPage.pages) {
-        childPage.pages.forEach(grandchildPage => {
-          if (_isPageActive(grandchildPage)) {
-            hasActiveChild = true;
-          }
-        });
+        _hasActiveChild(childPage) ? (hasActiveChild = true) : null;
       }
     });
   }

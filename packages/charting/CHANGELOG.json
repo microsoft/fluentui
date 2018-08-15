@@ -2,6 +2,94 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.14.1",
+      "tag": "@uifabric/charting_v0.14.1",
+      "date": "Tue, 14 Aug 2018 10:27:33 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Avital Baral <avitalbaral99@gmail.com>",
+            "commit": "cf0f728d0b28540b7a42aa9121a840605ee04670",
+            "comment": "disabling codepen task"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=6.0.2 <7.0.0` to `>=6.0.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.49.1 <7.0.0` to `>=6.49.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=6.0.3 <7.0.0` to `>=6.0.4 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.14.0",
+      "tag": "@uifabric/charting_v0.14.0",
+      "date": "Tue, 14 Aug 2018 00:01:11 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Veerash Ayyagari <veeray@microsoft.com>",
+            "commit": "e92728afcd6c9c467f3b6d9346db9b6c524dae2d",
+            "comment": "Updating StackedBar Chart desgin, MultiStackedBarChart and Legend components"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.49.0 <7.0.0` to `>=6.49.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.13.1",
+      "tag": "@uifabric/charting_v0.13.1",
+      "date": "Fri, 10 Aug 2018 10:26:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "bad1b057cb2ce459e48067c2b9a5e19b49dad96c",
+            "comment": "Charting: change svg boxSizing to content-box"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.47.2 <7.0.0` to `>=6.48.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.7.1 <7.0.0` to `>=6.7.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.13.0",
+      "tag": "@uifabric/charting_v0.13.0",
+      "date": "Wed, 08 Aug 2018 10:25:07 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "081268ecf1b88f6428fbd99ac6faae490de5c398",
+            "comment": "Adding multiple line chart implementation to existing single line chart."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.47.0 <7.0.0` to `>=6.47.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.7.0 <7.0.0` to `>=6.7.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.12.0",
       "tag": "@uifabric/charting_v0.12.0",
       "date": "Wed, 01 Aug 2018 10:25:51 GMT",

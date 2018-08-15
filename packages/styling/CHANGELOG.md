@@ -1,6 +1,21 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Fri, 03 Aug 2018 10:25:59 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Aug 2018 03:43:25 GMT and should not be manually modified.
+
+## 6.16.0
+Mon, 13 Aug 2018 03:43:25 GMT
+
+### Minor changes
+
+- new button semantic slots
+- adds opacity function to variants
+
+## 6.15.0
+Fri, 10 Aug 2018 10:26:09 GMT
+
+### Minor changes
+
+- Updating `ITypography` interface with improvements. Note this is an experimental interface we're working on.
 
 ## 6.14.0
 Fri, 03 Aug 2018 10:25:59 GMT
