@@ -47,7 +47,7 @@ const taskMap = loadTaskFunctions(getAllTasks());
  *  or otherwise
  * the tasks disabled in the package.json.
  */
-const disabledTasks = getDisabledTasks(process, package.disabledTasks);
+const disabledTasks = getDisabledTasks(process, getDefaultDisabledTasks());
 
 // Get the first tasks to execute, these are the tasks without prerequisite.
 const firstTasks = getNextTasks(null, disabledTasks);
@@ -70,6 +70,16 @@ executeTasks(firstTasks)
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //// Build helper functions
 /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function getDefaultDisabledTasks() {
+  let disabled = package.disabledTasks || [];
+
+  if (process.env.NPM_INSTALL_MODE) {
+    disabled = [...disabled, 'jest', 'tslint', 'lint-imports'];
+  }
+
+  return disabled;
+}
 
 function executeTasks(tasks) {
   return Promise.all(
@@ -169,9 +179,8 @@ function first(values) {
 }
 
 function getDisabledTasks(process, defaultDisabled = []) {
-  if (process.argv.length >= 3 && process.argv[2].indexOf('--') === -1) {
-    const tasksToRun = process.argv.slice(2);
-
+  const tasksToRun = process.argv.slice(2).filter(tasks => !tasks.startsWith('no-'));
+  if (process.argv.length >= 3 && process.argv[2].indexOf('--') === -1 && tasksToRun.length > 0) {
     return getAllTasks().filter(task => tasksToRun.indexOf(task) === -1);
   }
 

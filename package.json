@@ -10,11 +10,11 @@
   "scripts": {
     "_rushInstall": "node node_modules/@microsoft/rush/bin/rush install -c",
     "_rushBuild": "node node_modules/@microsoft/rush/bin/rush build",
-    "_rushBuildToFabric": "node node_modules/@microsoft/rush/bin/rush build --to @uifabric/fabric-website-resources --verbose",
+    "_rushBuildToFabric": "node node_modules/@microsoft/rush/bin/rush build --to @uifabric/fabric-website-resources",
     "_rushRebuild": "node node_modules/@microsoft/rush/bin/rush rebuild --production --verbose --lint",
     "_rushRebuildCi": "node node_modules/@microsoft/rush/bin/rush rebuild --verbose --lint",
     "_rushRebuildFast": "node node_modules/@microsoft/rush/bin/rush rebuild",
-    "postinstall": "npm run _rushInstall && npm run _rushBuildToFabric",
+    "postinstall": "npm run _rushInstall && cross-env NPM_INSTALL_MODE=1 npm run _rushBuildToFabric",
     "test": "npm run _rushBuild",
     "vrtest": "cd apps && cd vr-tests && npm run screener",
     "start": "cd apps && cd fabric-website-resources && npm start",
@@ -37,6 +37,7 @@
   "license": "MIT",
   "devDependencies": {
     "@microsoft/rush": "4.3.0",
+    "cross-env": "^5.2.0",
     "husky": "^0.14.3",
     "lint-staged": "^7.0.5"
   },
