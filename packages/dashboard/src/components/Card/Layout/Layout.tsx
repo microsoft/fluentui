@@ -32,6 +32,7 @@ export class Layout extends React.Component<ILayoutProps> {
       contentArea!,
       classNames.contentLayout,
       classNames.contentArea1,
+      classNames.dataVizLastUpdatedOn,
       classNames.contentArea2,
       cardSize
     );
@@ -50,7 +51,10 @@ export class Layout extends React.Component<ILayoutProps> {
     e.stopPropagation();
   };
 
-  private _generateContentElement(cardContentList: ICardContentDetails[]): JSX.Element[] {
+  private _generateContentElement(
+    cardContentList: ICardContentDetails[],
+    dataVizLastUpdateClassName: string
+  ): JSX.Element[] {
     const contentArea: JSX.Element[] = [];
     // This works because we have priority is defined in enum as numbers if it is string this will not work
     for (const priority in Priority) {
@@ -102,20 +106,24 @@ export class Layout extends React.Component<ILayoutProps> {
                   data,
                   chartType,
                   dataPoints,
-                  compactChartWidth
+                  compactChartWidth,
+                  chartUpdatedOn
                 } = cardContent.content as IChartProps;
                 contentArea.push(
-                  <Chart
-                    chartLabels={chartLabels}
-                    chartType={chartType}
-                    legendColors={legendColors}
-                    barWidth={barWidth}
-                    data={data}
-                    dataPoints={dataPoints}
-                    compactChartWidth={compactChartWidth}
-                    width={this._getChartWidth(cardContentList.length)}
-                    height={this._getChartHeight(cardContentList.length)}
-                  />
+                  <React.Fragment>
+                    {chartUpdatedOn && <div className={dataVizLastUpdateClassName}>{chartUpdatedOn}</div>}
+                    <Chart
+                      chartLabels={chartLabels}
+                      chartType={chartType}
+                      legendColors={legendColors}
+                      barWidth={barWidth}
+                      data={data}
+                      dataPoints={dataPoints}
+                      compactChartWidth={compactChartWidth}
+                      width={this._getChartWidth(cardContentList.length)}
+                      height={this._getChartHeight(cardContentList.length)}
+                    />
+                  </React.Fragment>
                 );
                 break;
               }
@@ -171,6 +179,7 @@ export class Layout extends React.Component<ILayoutProps> {
     cardContentList: ICardContentDetails[],
     contentLayoutClassName: string,
     contentArea1ClassName: string,
+    dataVizLastUpdateClassName: string,
     contentArea2ClassName: string,
     cardSize: CardSize
   ): JSX.Element | null {
@@ -178,7 +187,7 @@ export class Layout extends React.Component<ILayoutProps> {
       return null;
     }
 
-    const contentAreaContents = this._generateContentElement(cardContentList);
+    const contentAreaContents = this._generateContentElement(cardContentList, dataVizLastUpdateClassName);
     if (contentAreaContents.length === 0) {
       return null;
     }

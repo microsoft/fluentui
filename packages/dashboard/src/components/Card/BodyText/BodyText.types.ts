@@ -2,9 +2,14 @@ import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 
 export interface IBodyTextStyles {
   /**
-   * Style for the subheader text.
+   * Style for root container
    */
   root: IStyle;
+
+  /**
+   * Style for the subheader text.
+   */
+  subHeaderText: IStyle;
 
   /**
    * Style for the body text

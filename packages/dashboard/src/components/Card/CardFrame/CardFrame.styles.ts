@@ -10,13 +10,11 @@ export const getStyles = (props: ICardFrameProps): ICardFrameStyles => {
     root: {
       boxShadow: '1px 1px 1px 1px #cdcdcd',
       height: '100%',
-      overflow: 'hidden',
       display: 'flex',
       flexDirection: 'column'
     },
     cardTitleBox: {
       height: cardTitleBox,
-      overflow: 'hidden',
       borderBottom: '1px solid',
       borderBottomColor: seperatorColor ? seperatorColor : 'rgba(0,0,0,0.1)',
       borderTopLeftRadius: '2px',
