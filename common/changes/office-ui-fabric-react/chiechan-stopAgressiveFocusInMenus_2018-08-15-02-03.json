@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "BaseButton: Remove us unncessary putting focus on the split button we toggle a menu",
+      "comment": "BaseButton: Remove unnecessary putting focus on the split button we toggle a menu",
       "type": "patch"
     }
   ],
