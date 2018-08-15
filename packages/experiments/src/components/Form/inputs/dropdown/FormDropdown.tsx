@@ -23,7 +23,7 @@ export class FormDropdown extends FormBaseInput<DropdownValue, IFormDropdownProp
       // If multiSelect is set to true the currentValue should be an array.
       if (Array.isArray(propsValue)) {
         currentValue = propsValue;
-      } else if (propsValue !== undefined) {
+      } else if (propsValue) {
         // tslint:disable-next-line:no-any
         currentValue = [propsValue] as any[];
       } else {
@@ -74,7 +74,7 @@ export class FormDropdown extends FormBaseInput<DropdownValue, IFormDropdownProp
       let value = this.state.currentValue as any[];
       const selected = !!option.selected;
 
-      if (value === undefined) {
+      if (!value) {
         value = [];
       }
 
