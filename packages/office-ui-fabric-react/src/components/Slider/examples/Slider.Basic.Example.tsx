@@ -23,7 +23,7 @@ export class SliderBasicExample extends React.Component<
           <Slider
             label="Basic example:"
             min={1}
-            max={6}
+            max={3}
             step={1}
             defaultValue={2}
             showValue={true}
@@ -53,7 +53,7 @@ export class SliderBasicExample extends React.Component<
             <Slider
               label="Basic example:"
               min={1}
-              max={6}
+              max={3}
               step={1}
               defaultValue={2}
               showValue={true}
