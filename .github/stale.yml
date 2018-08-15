@@ -1,7 +1,7 @@
 # Configuration for probot-stale - https://github.com/probot/stale
 
 # Number of days of inactivity before an Issue or Pull Request becomes stale
-daysUntilStale: 60
+daysUntilStale: 360
 
 # Number of days of inactivity before a stale Issue or Pull Request is closed.
 # Set to false to disable. If disabled, issues still need to be closed manually, but will remain marked as stale.
@@ -9,10 +9,11 @@ daysUntilClose: 14
 
 # Issues or Pull Requests with these labels will never be considered stale. Set to `[]` to disable
 exemptLabels:
-  - "Priority 0"
-  - "Priority 1"
-  - "Needs: discussion"
-  - "Needs: revisit"
+  - "Priority 0: Blocking"
+  - "Priority 1: ASAP"
+  - "Needs: Discussion 🙋"
+  - "Needs: Revisit 🔁"
+  - "Type: Bug 🐛"
 
 # Set to true to ignore issues in a project (defaults to false)
 exemptProjects: false
@@ -25,7 +26,7 @@ staleLabel: no-recent-activity
 
 # Comment to post when marking as stale. Set to `false` to disable
 markComment: >
-  This issue has been automatically marked as stale because it has not activity for **30 days**. It will be closed if no further activity occurs **within 14 days of this comment**. Thank you for your contributions to Fabric React!
+  This issue has been automatically marked as stale because it has not activity for **60 days**. It will be closed if no further activity occurs **within 14 days of this comment**. Thank you for your contributions to Fabric React!
 
   [Why am I receiving this notification?](https://github.com/OfficeDev/office-ui-fabric-react/wiki/FAQ#q-why-do-i-get-the-stalebot-messages-why-is-my-issue-marked-as-stale)
 

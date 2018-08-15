@@ -1,22 +1,8 @@
 import * as React from 'react';
 import { IColumn } from './DetailsList.types';
 import { BaseComponent, css } from '../../Utilities';
-import * as stylesImport from './DetailsRow.scss';
-const styles: any = stylesImport;
-
-const INNER_PADDING = 16; // Account for padding around the cell.
-const ISPADDED_WIDTH = 24;
-
-export interface IDetailsRowFieldsProps {
-  componentRef?: () => void;
-  item: any;
-  itemIndex: number;
-  columnStartIndex: number;
-  columns: IColumn[];
-  compact?: boolean;
-  onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => any;
-  shimmer?: boolean;
-}
+import { IDetailsRowFieldsProps } from './DetailsRowFields.types';
+import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 
 export interface IDetailsRowFieldsState {
   cellContent: React.ReactNode[];
@@ -34,38 +20,43 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
   }
 
   public render(): JSX.Element {
-    const { columns, columnStartIndex, shimmer } = this.props;
+    const { columns, columnStartIndex, shimmer, rowClassNames, cellStyleProps = DEFAULT_CELL_STYLE_PROPS } = this.props;
+
     const { cellContent } = this.state;
 
     return (
-      <div
-        className={css('ms-DetailsRow-fields', styles.fields)}
-        data-automationid="DetailsRowFields"
-        role="presentation"
-      >
-        {columns.map((column, columnIndex) => (
-          <div
-            key={columnIndex}
-            role={column.isRowHeader ? 'rowheader' : 'gridcell'}
-            aria-colindex={columnIndex + columnStartIndex + 1}
-            className={css(
-              'ms-DetailsRow-cell',
-              styles.cell,
-              column.className,
-              column.isMultiline && 'is-multiline',
-              column.isRowHeader && styles.isRowHeader,
-              column.isPadded && styles.isPadded,
-              column.isMultiline && styles.isMultiline,
-              column.isIconOnly && shimmer && styles.shimmerIconPlaceholder,
-              shimmer && styles.shimmer
-            )}
-            style={{ width: column.calculatedWidth! + INNER_PADDING + (column.isPadded ? ISPADDED_WIDTH : 0) }}
-            data-automationid="DetailsRowCell"
-            data-automation-key={column.key}
-          >
-            {cellContent[columnIndex]}
-          </div>
-        ))}
+      <div className={rowClassNames.fields} data-automationid="DetailsRowFields" role="presentation">
+        {columns.map((column, columnIndex) => {
+          const width: string | number =
+            typeof column.calculatedWidth === 'undefined'
+              ? 'auto'
+              : column.calculatedWidth +
+                cellStyleProps.cellLeftPadding +
+                cellStyleProps.cellRightPadding +
+                (column.isPadded ? cellStyleProps.cellExtraRightPadding : 0);
+
+          return (
+            <div
+              key={columnIndex}
+              role={column.isRowHeader ? 'rowheader' : 'gridcell'}
+              aria-colindex={columnIndex + columnStartIndex + 1}
+              className={css(
+                column.className,
+                column.isMultiline && rowClassNames.isMultiline,
+                column.isRowHeader && rowClassNames.isRowHeader,
+                column.isIconOnly && shimmer && rowClassNames.shimmerIconPlaceholder,
+                shimmer && rowClassNames.shimmer,
+                rowClassNames.cell,
+                column.isPadded ? rowClassNames.cellPadded : rowClassNames.cellUnpadded
+              )}
+              style={{ width }}
+              data-automationid="DetailsRowCell"
+              data-automation-key={column.key}
+            >
+              {cellContent[columnIndex]}
+            </div>
+          );
+        })}
       </div>
     );
   }

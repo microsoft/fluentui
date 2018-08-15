@@ -7,6 +7,7 @@ import { DropdownErrorExample } from './examples/Dropdown.Error.Example';
 import { DropdownStatus } from './Dropdown.checklist';
 
 const DropdownBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Basic.Example.tsx') as string;
+const DropdownBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Dropdown/Dropdown.Basic.Example.Codepen.txt') as string;
 const DropdownCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Custom.Example.tsx') as string;
 const DropdownErrorExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Error.Example.tsx') as string;
 
@@ -20,7 +21,8 @@ export const DropdownPageProps: IDocPageProps = {
     {
       title: 'Dropdown',
       code: DropdownBasicExampleCode,
-      view: <DropdownBasicExample />
+      view: <DropdownBasicExample />,
+      codepenJS: DropdownBasicExampleCodepen
     },
     {
       title: 'Customized Dropdown',
@@ -44,5 +46,6 @@ export const DropdownPageProps: IDocPageProps = {
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Dropdown/docs/DropdownDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Dropdown/docs/DropdownDonts.md'),
   isHeaderVisible: true,
+  isFeedbackVisible: true,
   allowNativeProps: true
 };

@@ -15,6 +15,7 @@ import { ContextualMenuWithCustomMenuItemExample } from './examples/ContextualMe
 import { ContextualMenuStatus } from './ContextualMenu.checklist';
 
 const ContextualMenuBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Basic.Example.tsx') as string;
+const ContextualMenuBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/ContextualMenu/ContextualMenu.Basic.Example.Codepen.txt') as string;
 const ContextualMenuIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Icon.Example.tsx') as string;
 const ContextualMenuIconSecondaryTextExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Icon.SecondaryText.Example.tsx') as string;
 const ContextualMenuSectionExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Section.Example.tsx') as string;
@@ -35,7 +36,8 @@ export const ContextualMenuPageProps: IDocPageProps = {
     {
       title: 'Default ContextualMenu',
       code: ContextualMenuBasicExampleCode,
-      view: <ContextualMenuBasicExample />
+      view: <ContextualMenuBasicExample />,
+      codepenJS: ContextualMenuBasicExampleCodepen
     },
     {
       title: 'ContextualMenu with icons',
@@ -100,5 +102,6 @@ export const ContextualMenuPageProps: IDocPageProps = {
   donts: require<
     string
   >('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/docs/ContextualMenuDonts.md'),
-  isHeaderVisible: true
+  isHeaderVisible: true,
+  isFeedbackVisible: true
 };

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { customizable } from '../../Utilities';
 import {
   IColorCellProps,
   IColorPickerGridCellProps,
@@ -18,7 +17,6 @@ const getClassNames = classNamesFunction<IColorPickerGridCellStyleProps, IColorP
 
 class ColorCell extends GridCell<IColorCellProps, IGridCellProps<IColorCellProps>> {}
 
-@customizable('ColorPickerGridCell', ['theme', 'styles'])
 export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCellProps, {}> {
   public static defaultProps = {
     circle: true,

@@ -11,6 +11,7 @@ exports[`CommandBar renders commands correctly 1`] = `
       }
 >
   <div
+    data-automation-id="visibleContent"
     style={
       Object {
         "position": "fixed",
@@ -139,6 +140,12 @@ exports[`CommandBar renders commands correctly 1`] = `
             data-is-focusable={true}
             disabled={undefined}
             name="asdf"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -263,6 +270,12 @@ exports[`CommandBar renders commands correctly 1`] = `
             data-is-focusable={true}
             disabled={undefined}
             name="asdf"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div

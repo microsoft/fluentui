@@ -77,6 +77,11 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
       data-is-focusable={true}
       disabled={undefined}
       onClick={[Function]}
+      onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
       type="button"
     >
       <div
@@ -161,9 +166,9 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
             }
       >
         <button
+          aria-checked={false}
           aria-disabled={undefined}
-          aria-label="Focus Trap Zone"
-          aria-pressed={false}
+          aria-label={undefined}
           className=
               ms-Toggle-background
               {
@@ -215,6 +220,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
           id="Toggle3"
           onChange={[Function]}
           onClick={[Function]}
+          role="switch"
           type="button"
         >
           <div
@@ -264,7 +270,6 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                 padding-top: 0;
                 user-select: none;
               }
-          htmlFor="Toggle3"
         >
           Off
         </label>
@@ -345,6 +350,11 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
         data-is-focusable={true}
         disabled={undefined}
         onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
         type="button"
       >
         <div
@@ -429,9 +439,9 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
               }
         >
           <button
+            aria-checked={false}
             aria-disabled={undefined}
-            aria-label="Focus Trap Zone"
-            aria-pressed={false}
+            aria-label={undefined}
             className=
                 ms-Toggle-background
                 {
@@ -483,6 +493,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
             id="Toggle7"
             onChange={[Function]}
             onClick={[Function]}
+            role="switch"
             type="button"
           >
             <div
@@ -532,7 +543,6 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                   padding-top: 0;
                   user-select: none;
                 }
-            htmlFor="Toggle7"
           >
             Off
           </label>
@@ -613,6 +623,11 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -697,9 +712,9 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                 }
           >
             <button
+              aria-checked={false}
               aria-disabled={undefined}
-              aria-label="Focus Trap Zone"
-              aria-pressed={false}
+              aria-label={undefined}
               className=
                   ms-Toggle-background
                   {
@@ -751,6 +766,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
               id="Toggle11"
               onChange={[Function]}
               onClick={[Function]}
+              role="switch"
               type="button"
             >
               <div
@@ -800,7 +816,6 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                     padding-top: 0;
                     user-select: none;
                   }
-              htmlFor="Toggle11"
             >
               Off
             </label>
@@ -882,6 +897,11 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -966,9 +986,9 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                 }
           >
             <button
+              aria-checked={false}
               aria-disabled={undefined}
-              aria-label="Focus Trap Zone"
-              aria-pressed={false}
+              aria-label={undefined}
               className=
                   ms-Toggle-background
                   {
@@ -1020,6 +1040,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
               id="Toggle15"
               onChange={[Function]}
               onClick={[Function]}
+              role="switch"
               type="button"
             >
               <div
@@ -1069,7 +1090,6 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                     padding-top: 0;
                     user-select: none;
                   }
-              htmlFor="Toggle15"
             >
               Off
             </label>
@@ -1152,6 +1172,11 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
         data-is-focusable={true}
         disabled={undefined}
         onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
         type="button"
       >
         <div
@@ -1236,9 +1261,9 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
               }
         >
           <button
+            aria-checked={false}
             aria-disabled={undefined}
-            aria-label="Focus Trap Zone"
-            aria-pressed={false}
+            aria-label={undefined}
             className=
                 ms-Toggle-background
                 {
@@ -1290,6 +1315,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
             id="Toggle19"
             onChange={[Function]}
             onClick={[Function]}
+            role="switch"
             type="button"
           >
             <div
@@ -1339,7 +1365,6 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                   padding-top: 0;
                   user-select: none;
                 }
-            htmlFor="Toggle19"
           >
             Off
           </label>
@@ -1419,6 +1444,11 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
     data-is-focusable={true}
     disabled={undefined}
     onClick={[Function]}
+    onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
     type="button"
   >
     <div

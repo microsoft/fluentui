@@ -5,12 +5,40 @@ import {
   HighContrastSelector,
   ScreenWidthMaxSmall,
   getScreenSelector,
-  getFocusStyle
+  getFocusStyle,
+  getGlobalClassNames
 } from '../../Styling';
 import { IMessageBarStyleProps, IMessageBarStyles, MessageBarType } from './MessageBar.types';
 
+const GlobalClassNames = {
+  root: 'ms-MessageBar',
+  error: 'ms-MessageBar--error',
+  blocked: 'ms-MessageBar--blocked',
+  severeWarning: 'ms-MessageBar--severeWarning',
+  success: 'ms-MessageBar--success',
+  warning: 'ms-MessageBar--warning',
+  multiline: 'ms-MessageBar-multiline',
+  singleline: 'ms-MessageBar-singleline',
+  dismissalSingleLine: 'ms-MessageBar-dismissalSingleLine',
+  expandingSingleLine: 'ms-MessageBar-expandingSingleLine',
+  content: 'ms-MessageBar-content',
+  iconContainer: 'ms-MessageBar-icon',
+  text: 'ms-MessageBar-text',
+  innerText: 'ms-MessageBar-innerText',
+  dismissSingleLine: 'ms-MessageBar-dismissSingleLine',
+  expandSingleLine: 'ms-MessageBar-expandSingleLine',
+  dismissal: 'ms-MessageBar-dismissal',
+  expand: 'ms-MessageBar-expand',
+  actions: 'ms-MessageBar-actions',
+  actionsSingleline: 'ms-MessageBar-actionsSingleLine'
+};
+
 // Returns the background color of the MessageBar root element based on the type of MessageBar.
-const getRootBackground = (messageBarType: MessageBarType | undefined, palette: IPalette, semanticColors: ISemanticColors): string => {
+const getRootBackground = (
+  messageBarType: MessageBarType | undefined,
+  palette: IPalette,
+  semanticColors: ISemanticColors
+): string => {
   switch (messageBarType) {
     case MessageBarType.error:
     case MessageBarType.blocked:
@@ -26,7 +54,11 @@ const getRootBackground = (messageBarType: MessageBarType | undefined, palette: 
 };
 
 // Returns the icon color based on the type of MessageBar.
-const getIconColor = (messageBarType: MessageBarType | undefined, palette: IPalette, semanticColors: ISemanticColors): string => {
+const getIconColor = (
+  messageBarType: MessageBarType | undefined,
+  palette: IPalette,
+  semanticColors: ISemanticColors
+): string => {
   switch (messageBarType) {
     case MessageBarType.error:
     case MessageBarType.blocked:
@@ -46,11 +78,20 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
 
   const SmallScreenSelector = getScreenSelector(0, ScreenWidthMaxSmall);
 
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
   const dismissalAndExpandIconStyle: IStyle = {
     fontSize: 12,
     height: 12,
     lineHeight: '12px',
     color: palette.neutralPrimary
+  };
+
+  const dismissalAndExpandSingleLineStyle: IStyle = {
+    display: 'flex',
+    selectors: {
+      '& .ms-Button-icon': dismissalAndExpandIconStyle
+    }
   };
 
   const dismissalAndExpandStyle: IStyle = {
@@ -68,18 +109,19 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
     }
   };
 
-  const dismissalAndExpandSingleLineStyle: IStyle = {
-    display: 'flex',
-    selectors: {
-      '& .ms-Button-icon': dismissalAndExpandIconStyle
-    }
-  };
-
   const focusStyle = getFocusStyle(theme, 0, 'relative', undefined, palette.black);
 
   return {
     root: [
-      'ms-MessageBar',
+      classNames.root,
+      messageBarType === MessageBarType.error && classNames.error,
+      messageBarType === MessageBarType.blocked && classNames.blocked,
+      messageBarType === MessageBarType.severeWarning && classNames.severeWarning,
+      messageBarType === MessageBarType.success && classNames.success,
+      messageBarType === MessageBarType.warning && classNames.warning,
+      isMultiline ? classNames.multiline : classNames.singleline,
+      !isMultiline && onDismiss && classNames.dismissalSingleLine,
+      !isMultiline && truncated && classNames.expandingSingleLine,
       {
         background: getRootBackground(messageBarType, palette, semanticColors),
         color: palette.neutralPrimary,
@@ -120,7 +162,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
       className
     ],
     content: [
-      'ms-MessageBar-content',
+      classNames.content,
       {
         display: 'flex',
         lineHeight: 'normal',
@@ -156,7 +198,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
       }
     ],
     iconContainer: [
-      'ms-MessageBar-icon',
+      classNames.iconContainer,
       {
         fontSize: 16,
         minWidth: 16,
@@ -177,7 +219,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
       color: getIconColor(messageBarType, palette, semanticColors)
     },
     text: [
-      'ms-MessageBar-Text',
+      classNames.text,
       {
         minWidth: 0,
         display: 'flex',
@@ -199,24 +241,25 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         }
       },
       isMultiline &&
-      actions && {
-        marginBottom: 8,
-        selectors: {
-          [SmallScreenSelector]: {
-            marginBottom: 0
+        actions && {
+          marginBottom: 8,
+          selectors: {
+            [SmallScreenSelector]: {
+              marginBottom: 0
+            }
           }
-        }
-      },
+        },
       !isMultiline &&
-      actions && {
-        selectors: {
-          [SmallScreenSelector]: {
-            marginBottom: 0
+        actions && {
+          selectors: {
+            [SmallScreenSelector]: {
+              marginBottom: 0
+            }
           }
         }
-      }
     ],
     innerText: [
+      classNames.innerText,
       {
         lineHeight: 16,
         selectors: {
@@ -239,24 +282,25 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         whiteSpace: 'nowrap'
       },
       !isMultiline &&
-      !truncated && {
-        selectors: {
-          [SmallScreenSelector]: {
-            overflow: 'visible',
-            whiteSpace: 'pre-wrap'
+        !truncated && {
+          selectors: {
+            [SmallScreenSelector]: {
+              overflow: 'visible',
+              whiteSpace: 'pre-wrap'
+            }
           }
-        }
-      },
+        },
       expandSingleLine && {
         overflow: 'visible',
         whiteSpace: 'pre-wrap'
       }
     ],
-    dismissal: ['ms-MessageBar-dismissal', dismissalAndExpandStyle, focusStyle],
-    expand: ['ms-MessageBar-expand', dismissalAndExpandStyle, focusStyle],
-    dismissSingleLine: ['ms-MessageBar-dismissSingleLine', dismissalAndExpandSingleLineStyle],
-    expandSingleLine: ['ms-MessageBar-expandSingleLine', dismissalAndExpandSingleLineStyle],
+    dismissSingleLine: [classNames.dismissSingleLine, dismissalAndExpandSingleLineStyle],
+    expandSingleLine: [classNames.expandSingleLine, dismissalAndExpandSingleLineStyle],
+    dismissal: [classNames.dismissal, dismissalAndExpandStyle, focusStyle],
+    expand: [classNames.expand, dismissalAndExpandStyle, focusStyle],
     actions: [
+      isMultiline ? classNames.actions : classNames.actionsSingleline,
       {
         display: 'flex',
         flexGrow: 0,

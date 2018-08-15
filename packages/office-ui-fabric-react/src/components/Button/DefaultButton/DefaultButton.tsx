@@ -4,12 +4,12 @@ import { BaseComponent, customizable, nullRender } from '../../../Utilities';
 import { IButtonProps } from '../Button.types';
 import { getStyles } from './DefaultButton.styles';
 
-@customizable('DefaultButton', ['theme', 'styles'])
+@customizable('DefaultButton', ['theme', 'styles'], true)
 export class DefaultButton extends BaseComponent<IButtonProps, {}> {
   /**
    * Tell BaseComponent to bypass resolution of componentRef.
    */
-  protected _shouldUpdateComponentRef = false;
+  protected _skipComponentRefResolution = true;
 
   public render(): JSX.Element {
     const { primary = false, styles, theme } = this.props;

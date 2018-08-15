@@ -19,7 +19,8 @@ module.exports = resources.createConfig(BUNDLE_NAME, IS_PRODUCTION, {
   resolve: {
     alias: {
       '@uifabric/charting/src': path.join(__dirname, 'src'),
-      '@uifabric/charting/lib': path.join(__dirname, 'lib')
+      '@uifabric/charting/lib': path.join(__dirname, 'lib'),
+      '@uifabric/charting': path.join(__dirname, 'lib')
     }
   }
 });

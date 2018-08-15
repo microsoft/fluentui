@@ -51,6 +51,7 @@ exports[`Component Examples renders SearchBox.Disabled.Example.tsx correctly 1`]
     onFocusCapture={[Function]}
   >
     <div
+      aria-hidden={true}
       className=
           ms-SearchBox-iconContainer
           {
@@ -93,7 +94,7 @@ exports[`Component Examples renders SearchBox.Disabled.Example.tsx correctly 1`]
       className=
           ms-SearchBox-field
           {
-            background-color: #ffffff;
+            background-color: transparent;
             border: none;
             box-shadow: none;
             box-sizing: border-box;
@@ -182,6 +183,7 @@ exports[`Component Examples renders SearchBox.Disabled.Example.tsx correctly 1`]
     onFocusCapture={[Function]}
   >
     <div
+      aria-hidden={true}
       className=
           ms-SearchBox-iconContainer
           {
@@ -224,7 +226,7 @@ exports[`Component Examples renders SearchBox.Disabled.Example.tsx correctly 1`]
       className=
           ms-SearchBox-field
           {
-            background-color: #ffffff;
+            background-color: transparent;
             border: none;
             box-shadow: none;
             box-sizing: border-box;

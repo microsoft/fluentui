@@ -76,6 +76,12 @@ exports[`Button renders ActionButton correctly 1`] = `
       }
   data-is-focusable={true}
   disabled={undefined}
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  onKeyPress={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  onMouseUp={[Function]}
   type="button"
 >
   <div
@@ -193,6 +199,10 @@ exports[`Button renders CommandBarButton correctly 1`] = `
   disabled={undefined}
   onClick={[Function]}
   onKeyDown={[Function]}
+  onKeyPress={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  onMouseUp={[Function]}
   type="button"
 >
   <div
@@ -370,6 +380,12 @@ exports[`Button renders CompoundButton correctly 1`] = `
       }
   data-is-focusable={true}
   disabled={undefined}
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  onKeyPress={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  onMouseUp={[Function]}
   type="button"
 >
   <div
@@ -505,6 +521,12 @@ exports[`Button renders DefaultButton correctly 1`] = `
       }
   data-is-focusable={true}
   disabled={undefined}
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  onKeyPress={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  onMouseUp={[Function]}
   type="button"
 >
   <div
@@ -614,6 +636,12 @@ exports[`Button renders IconButton correctly 1`] = `
       }
   data-is-focusable={true}
   disabled={undefined}
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  onKeyPress={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  onMouseUp={[Function]}
   title="Emoji"
   type="button"
 >
@@ -734,6 +762,12 @@ exports[`Button renders a DefaultButton with a keytip correctly 1`] = `
   data-ktp-execute-target="ktp-a"
   data-ktp-target="ktp-a"
   disabled={undefined}
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  onKeyPress={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  onMouseUp={[Function]}
   type="button"
 >
   <div

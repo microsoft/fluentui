@@ -1,5 +1,4 @@
 import * as React from 'react';
-import './ThemeGeneratorPage.global.scss';
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 
 import { loadTheme } from 'office-ui-fabric-react/lib/Styling';
@@ -104,8 +103,8 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
             Fabric React's styling package, see the{' '}
             <a className={'themeGeneratorPageLink'} href={stylingUrl}>
               documentation
-            </a>.
-            <br />
+            </a>
+            .<br />
             As you modify one of the three base colors, the theme will update automatically based on predefined rules.
             You can modify each individual slot below as well.
           </p>

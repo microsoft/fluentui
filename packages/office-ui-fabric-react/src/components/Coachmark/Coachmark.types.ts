@@ -1,17 +1,22 @@
-import * as React from 'react';
-import { Coachmark } from './Coachmark';
 import { ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.styles';
-import { IPositioningContainerTypes } from './PositioningContainer/PositioningContainer.types';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IPositioningContainerProps } from './PositioningContainer/PositioningContainer.types';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { Coachmark } from './Coachmark';
+import { ITeachingBubble } from '../../TeachingBubble';
 
-export interface ICoachmark {}
+export interface ICoachmark {
+  /**
+   * Forces the Coachmark to dismiss
+   */
+  dismiss?: (ev?: any) => void;
+}
 
-export interface ICoachmarkTypes extends React.Props<Coachmark> {
+export interface ICoachmarkProps extends React.Props<Coachmark> {
   /**
    * Optional callback to access the ICoachmark interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ICoachmark | null) => void;
+  componentRef?: IRefObject<ICoachmark>;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules
@@ -24,14 +29,15 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
   target: HTMLElement | string | null;
 
   /**
-   * Props to pass to the PositioningContainer component.  Specific the `directionalHint` to indicate which edge the
-   * Coachmark/TeachingBubble should live.
+   * Props to pass to the PositioningContainer component. Specify the `directionalHint` to indicate
+   * on which edge the Coachmark/TeachingBubble should be positioned.
    * @default directionalHint: DirectionalHint.bottomAutoEdge
    */
-  positioningContainerProps?: IPositioningContainerTypes;
+  positioningContainerProps?: IPositioningContainerProps;
 
   /**
    * Whether or not to force the Coachmark/TeachingBubble content to fit within the window bounds.
+   * @default true
    */
   isPositionForced?: boolean;
 
@@ -114,4 +120,48 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
    * Beacon color two.
    */
   beaconColorTwo?: string;
+
+  /**
+   * Text to announce to screen reader / narrator when Coachmark is displayed
+   */
+  ariaAlertText?: string;
+
+  /**
+   * Ref for TeachingBubble
+   */
+  teachingBubbleRef?: ITeachingBubble;
+
+  /**
+   *  Defines the element id referencing the element containing label text for Coachmark.
+   */
+  ariaLabelledBy?: string;
+
+  /**
+   * Defines the element id referencing the element containing the description for the Coachmark.
+   */
+  ariaDescribedBy?: string;
+
+  /**
+   *  Defines the text content for the ariaLabelledBy element
+   */
+  ariaLabelledByText?: string;
+
+  /**
+   * Defines the text content for the ariaDescribedBy element
+   */
+  ariaDescribedByText?: string;
+
+  /**
+   * If true then the Coachmark will not dismiss when it loses focus
+   * @default false
+   */
+  preventDismissOnLostFocus?: boolean;
+
+  /**
+   * Callback when the Coachmark tries to close.
+   */
+  onDismiss?: (ev?: any) => void;
 }
+
+/** @deprecated */
+export type ICoachmarkTypes = ICoachmarkProps;

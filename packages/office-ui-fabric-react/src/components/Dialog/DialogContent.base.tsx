@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, customizable } from '../../Utilities';
+import { BaseComponent, classNamesFunction } from '../../Utilities';
 import { DialogType, IDialogContentProps, IDialogContentStyleProps, IDialogContentStyles } from './DialogContent.types';
 import { IconButton } from '../../Button';
 import { DialogFooter } from './DialogFooter';
@@ -7,7 +7,6 @@ import { withResponsiveMode } from '../../utilities/decorators/withResponsiveMod
 
 const getClassNames = classNamesFunction<IDialogContentStyleProps, IDialogContentStyles>();
 
-@customizable('DialogContent', ['theme', 'styles'])
 @withResponsiveMode
 export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
   public static defaultProps: IDialogContentProps = {
@@ -56,11 +55,13 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
     return (
       <div className={classNames.content}>
         <div className={classNames.header}>
-          <p className={classNames.title} id={titleId} role="heading">
+          <p className={classNames.title} id={titleId} role="heading" aria-level={2}>
             {title}
           </p>
           <div className={classNames.topButton}>
-            {this.props.topButtonsProps!.map((props, index) => <IconButton key={props.uniqueId || index} {...props} />)}
+            {this.props.topButtonsProps!.map((props, index) => (
+              <IconButton key={props.uniqueId || index} {...props} />
+            ))}
             {(type === DialogType.close || (showCloseButton && type !== DialogType.largeHeader)) && (
               <IconButton
                 className={classNames.button}

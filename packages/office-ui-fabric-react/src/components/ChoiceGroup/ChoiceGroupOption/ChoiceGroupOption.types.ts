@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ITheme, IStyle } from '../../../Styling';
-import { IStyleFunctionOrObject } from '../../../Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
 import { IChoiceGroupOption } from '../../ChoiceGroup/ChoiceGroup.types';
 
 export type OnFocusCallback = (
@@ -17,7 +17,7 @@ export interface IChoiceGroupOptionProps extends IChoiceGroupOption {
    * Optional callback to access the IChoiceGroup interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IChoiceGroupOption) => void;
+  componentRef?: IRefObject<IChoiceGroupOption>;
 
   /**
    * A callback for receiving a notification when the choice has been changed.

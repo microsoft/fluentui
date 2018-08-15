@@ -79,10 +79,6 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
             & .ms-Label {
               display: inline-block;
               font-size: 14px;
-              padding-bottom: 0;
-              padding-left: 26px;
-              padding-right: 0;
-              padding-top: 0;
             }
       >
         <div
@@ -107,6 +103,7 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
                   top: 0px;
                   width: 100%;
                 }
+            data-is-focusable={true}
             disabled={undefined}
             id="ChoiceGroup0-day"
             name="ChoiceGroup0"
@@ -255,12 +252,6 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
                     text-overflow: ellipsis;
                     white-space: pre-wrap;
                   }
-                  & .ms-Label {
-                    padding-bottom: 0px;
-                    padding-left: 0px;
-                    padding-right: 0px;
-                    padding-top: 0px;
-                  }
               style={
                 Object {
                   "maxWidth": 64,
@@ -302,10 +293,6 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
             & .ms-Label {
               display: inline-block;
               font-size: 14px;
-              padding-bottom: 0;
-              padding-left: 26px;
-              padding-right: 0;
-              padding-top: 0;
             }
       >
         <div
@@ -330,6 +317,7 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
                   top: 0px;
                   width: 100%;
                 }
+            data-is-focusable={false}
             disabled={undefined}
             id="ChoiceGroup0-week"
             name="ChoiceGroup0"
@@ -478,12 +466,6 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
                     text-overflow: ellipsis;
                     white-space: pre-wrap;
                   }
-                  & .ms-Label {
-                    padding-bottom: 0px;
-                    padding-left: 0px;
-                    padding-right: 0px;
-                    padding-top: 0px;
-                  }
               style={
                 Object {
                   "maxWidth": 64,
@@ -525,10 +507,6 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
             & .ms-Label {
               display: inline-block;
               font-size: 14px;
-              padding-bottom: 0;
-              padding-left: 26px;
-              padding-right: 0;
-              padding-top: 0;
             }
       >
         <div
@@ -553,6 +531,7 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
                   top: 0px;
                   width: 100%;
                 }
+            data-is-focusable={false}
             disabled={true}
             id="ChoiceGroup0-month"
             name="ChoiceGroup0"
@@ -694,12 +673,6 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
                     position: relative;
                     text-overflow: ellipsis;
                     white-space: pre-wrap;
-                  }
-                  & .ms-Label {
-                    padding-bottom: 0px;
-                    padding-left: 0px;
-                    padding-right: 0px;
-                    padding-top: 0px;
                   }
               style={
                 Object {

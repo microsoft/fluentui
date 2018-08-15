@@ -123,9 +123,10 @@ describe('Button', () => {
         </DefaultButton>
       );
       renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
-      expect(renderedDOM.getAttribute('aria-label') === null);
-      expect(renderedDOM.getAttribute('aria-labelledby') === null);
-      expect(renderedDOM.getAttribute('aria-describedby') === null);
+      expect(renderedDOM.getAttribute('aria-label')).toBeNull();
+      expect(renderedDOM.getAttribute('aria-labelledby')).toBeNull();
+      expect(renderedDOM.getAttribute('aria-describedby')).toBeNull();
+      expect(renderedDOM.getAttribute('aria-pressed')).toBeNull();
 
       button = ReactTestUtils.renderIntoDocument<any>(
         <DefaultButton href="http://www.microsoft.com" target="_blank" aria-label="MyLabel">
@@ -133,9 +134,11 @@ describe('Button', () => {
         </DefaultButton>
       );
       renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
-      expect(renderedDOM.getAttribute('aria-label') === 'MyLabel');
-      expect(renderedDOM.getAttribute('aria-labelledby') === null);
-      expect(renderedDOM.getAttribute('aria-describedby') === null);
+      // TODO: test has been failing for some time but former tests were incorrectly written.
+      //        needs to be updated with correct expected behavior.
+      // expect(renderedDOM.getAttribute('aria-label')).toEqual('MyLabel');
+      expect(renderedDOM.getAttribute('aria-labelledby')).toBeNull();
+      expect(renderedDOM.getAttribute('aria-describedby')).toBeNull();
 
       button = ReactTestUtils.renderIntoDocument<any>(
         <DefaultButton href="http://www.microsoft.com" target="_blank" aria-labelledby="someid">
@@ -143,9 +146,8 @@ describe('Button', () => {
         </DefaultButton>
       );
       renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
-      expect(renderedDOM.getAttribute('aria-label') === 'MyLabel');
-      expect(renderedDOM.getAttribute('aria-labelledby') === 'someid');
-      expect(renderedDOM.getAttribute('aria-describedby') === null);
+      expect(renderedDOM.getAttribute('aria-labelledby')).toEqual('someid');
+      expect(renderedDOM.getAttribute('aria-describedby')).toBeNull();
 
       button = ReactTestUtils.renderIntoDocument<any>(
         <DefaultButton
@@ -158,9 +160,13 @@ describe('Button', () => {
         </DefaultButton>
       );
       renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
-      expect(renderedDOM.getAttribute('aria-label') === null);
-      expect(renderedDOM.getAttribute('aria-labelledby') === renderedDOM.querySelector(`.ms-Button-label`).id);
-      expect(renderedDOM.getAttribute('aria-describedby') === renderedDOM.querySelector('.some-screenreader-class').id);
+      expect(renderedDOM.getAttribute('aria-label')).toBeNull();
+      // TODO: test has been failing for some time but former tests were incorrectly written.
+      //        needs to be updated with correct expected behavior.
+      // expect(renderedDOM.getAttribute('aria-labelledby')).toEqual(renderedDOM.querySelector(`.ms-Button-label`).id);
+      expect(renderedDOM.getAttribute('aria-describedby')).toEqual(
+        renderedDOM.querySelector('.some-screenreader-class').id
+      );
 
       button = ReactTestUtils.renderIntoDocument<any>(
         <IconButton
@@ -170,9 +176,11 @@ describe('Button', () => {
         />
       );
       renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
-      expect(renderedDOM.getAttribute('aria-label') === null);
-      expect(renderedDOM.getAttribute('aria-labelledby') === null);
-      expect(renderedDOM.getAttribute('aria-describedby') === renderedDOM.querySelector('.some-screenreader-class').id);
+      expect(renderedDOM.getAttribute('aria-label')).toBeNull();
+      expect(renderedDOM.getAttribute('aria-labelledby')).toBeNull();
+      expect(renderedDOM.getAttribute('aria-describedby')).toEqual(
+        renderedDOM.querySelector('.some-screenreader-class').id
+      );
 
       button = ReactTestUtils.renderIntoDocument<any>(
         <CompoundButton secondaryText="Some awesome description" ariaDescription="Description on icon button">
@@ -180,9 +188,66 @@ describe('Button', () => {
         </CompoundButton>
       );
       renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
-      expect(renderedDOM.getAttribute('aria-label') === null);
-      expect(renderedDOM.getAttribute('aria-labelledby') === renderedDOM.querySelector('.ms-Button-label').id);
-      expect(renderedDOM.getAttribute('aria-describedby') === renderedDOM.querySelector('.ms-Button-description').id);
+      expect(renderedDOM.getAttribute('aria-label')).toBeNull();
+      // TODO: test has been failing for some time but former tests were incorrectly written.
+      //        needs to be updated with correct expected behavior.
+      // expect(renderedDOM.getAttribute('aria-labelledby')).toEqual(renderedDOM.querySelector('.ms-Button-label').id);
+      // expect(renderedDOM.getAttribute('aria-describedby')).toEqual(renderedDOM.querySelector('.ms-Button-description').id);
+
+      button = ReactTestUtils.renderIntoDocument<any>(<DefaultButton toggle={true}>Hello</DefaultButton>);
+      renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+      expect(renderedDOM.getAttribute('aria-pressed')).toEqual('false');
+
+      button = ReactTestUtils.renderIntoDocument<any>(
+        <DefaultButton toggle={true} checked={true}>
+          Hello
+        </DefaultButton>
+      );
+      renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+      expect(renderedDOM.getAttribute('aria-pressed')).toEqual('true');
+
+      button = ReactTestUtils.renderIntoDocument<any>(
+        <DefaultButton
+          toggle={true}
+          split={true}
+          onClick={alertClicked}
+          menuProps={{
+            items: [
+              {
+                key: 'emailMessage',
+                text: 'Email message',
+                iconProps: { iconName: 'Mail' }
+              }
+            ]
+          }}
+        >
+          Hello
+        </DefaultButton>
+      );
+      renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+      expect(renderedDOM.getAttribute('aria-pressed')).toEqual('false');
+
+      button = ReactTestUtils.renderIntoDocument<any>(
+        <DefaultButton
+          toggle={true}
+          checked={true}
+          split={true}
+          onClick={alertClicked}
+          menuProps={{
+            items: [
+              {
+                key: 'emailMessage',
+                text: 'Email message',
+                iconProps: { iconName: 'Mail' }
+              }
+            ]
+          }}
+        >
+          Hello
+        </DefaultButton>
+      );
+      renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+      expect(renderedDOM.getAttribute('aria-pressed')).toEqual('true');
     });
 
     describe('with menuProps', () => {
@@ -640,6 +705,149 @@ describe('Button', () => {
         });
         expect(didClick).toEqual(false);
       });
+
+      it('A disabled Button does not respond to input events', () => {
+        const renderedDOM: HTMLElement = renderIntoDocument(
+          <DefaultButton
+            disabled={true}
+            data-automation-id="test"
+            text="Create account"
+            split={false}
+            onClick={setTrue}
+            onKeyPress={setTrue}
+            onKeyUp={setTrue}
+            onKeyDown={setTrue}
+            onMouseDown={setTrue}
+            onMouseUp={setTrue}
+          />
+        );
+
+        ReactTestUtils.Simulate.click(renderedDOM);
+        ReactTestUtils.Simulate.keyDown(renderedDOM, {
+          which: KeyCodes.down,
+          altKey: true
+        });
+        ReactTestUtils.Simulate.keyUp(renderedDOM, {
+          which: KeyCodes.down,
+          altKey: true
+        });
+        ReactTestUtils.Simulate.keyPress(renderedDOM, {
+          which: KeyCodes.down,
+          altKey: true
+        });
+        ReactTestUtils.Simulate.mouseDown(renderedDOM, {
+          type: 'mousedown',
+          clientX: 0,
+          clientY: 0
+        });
+
+        ReactTestUtils.Simulate.mouseUp(renderedDOM, {
+          type: 'mouseup',
+          clientX: 0,
+          clientY: 0
+        });
+        expect(didClick).toEqual(false);
+      });
+      it('A focusable disabled button does not respond to input events', () => {
+        const renderedDOM: HTMLElement = renderIntoDocument(
+          <DefaultButton
+            disabled={true}
+            allowDisabledFocus={true}
+            data-automation-id="test"
+            text="Create account"
+            split={false}
+            onClick={setTrue}
+            onKeyPress={setTrue}
+            onKeyUp={setTrue}
+            onKeyDown={setTrue}
+            onMouseDown={setTrue}
+            onMouseUp={setTrue}
+          />
+        );
+
+        ReactTestUtils.Simulate.click(renderedDOM);
+        ReactTestUtils.Simulate.keyDown(renderedDOM, {
+          which: KeyCodes.down,
+          altKey: true
+        });
+        ReactTestUtils.Simulate.keyUp(renderedDOM, {
+          which: KeyCodes.down,
+          altKey: true
+        });
+        ReactTestUtils.Simulate.keyPress(renderedDOM, {
+          which: KeyCodes.down,
+          altKey: true
+        });
+        ReactTestUtils.Simulate.mouseDown(renderedDOM, {
+          type: 'mousedown',
+          clientX: 0,
+          clientY: 0
+        });
+
+        ReactTestUtils.Simulate.mouseUp(renderedDOM, {
+          type: 'mouseup',
+          clientX: 0,
+          clientY: 0
+        });
+        expect(didClick).toEqual(false);
+      });
+      it('A focusable disabled menu button does not respond to input events', () => {
+        const renderedDOM: HTMLElement = renderIntoDocument(
+          <DefaultButton
+            disabled={true}
+            allowDisabledFocus={true}
+            data-automation-id="test"
+            text="Create account"
+            split={false}
+            onClick={setTrue}
+            onKeyPress={setTrue}
+            onKeyUp={setTrue}
+            onKeyDown={setTrue}
+            onMouseDown={setTrue}
+            onMouseUp={setTrue}
+            menuProps={{
+              items: [
+                {
+                  key: 'emailMessage',
+                  text: 'Email message',
+                  iconProps: { iconName: 'Mail' }
+                },
+                {
+                  key: 'calendarEvent',
+                  text: 'Calendar event',
+                  iconProps: { iconName: 'Calendar' }
+                }
+              ]
+            }}
+          />
+        );
+
+        ReactTestUtils.Simulate.click(renderedDOM);
+        ReactTestUtils.Simulate.keyDown(renderedDOM, {
+          which: KeyCodes.down,
+          altKey: true
+        });
+        ReactTestUtils.Simulate.keyUp(renderedDOM, {
+          which: KeyCodes.down,
+          altKey: true
+        });
+        ReactTestUtils.Simulate.keyPress(renderedDOM, {
+          which: KeyCodes.down,
+          altKey: true
+        });
+        ReactTestUtils.Simulate.mouseDown(renderedDOM, {
+          type: 'mousedown',
+          clientX: 0,
+          clientY: 0
+        });
+
+        ReactTestUtils.Simulate.mouseUp(renderedDOM, {
+          type: 'mouseup',
+          clientX: 0,
+          clientY: 0
+        });
+        expect(didClick).toEqual(false);
+      });
     });
 
     describe('with contextual menu', () => {
@@ -679,8 +887,8 @@ describe('Button', () => {
         const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement(null, 'Button Text');
 
         expect(contextualMenuElement).not.toBeNull();
-        expect(contextualMenuElement.getAttribute('aria-label') === null);
-        expect(contextualMenuElement.getAttribute('aria-labelledBy') !== null);
+        expect(contextualMenuElement.getAttribute('aria-label')).toBeNull();
+        expect(contextualMenuElement.getAttribute('aria-labelledBy')).toBeDefined();
       });
 
       it('If button has a text child, contextual menu has aria-labelledBy attribute set', () => {
@@ -691,16 +899,16 @@ describe('Button', () => {
         );
 
         expect(contextualMenuElement).not.toBeNull();
-        expect(contextualMenuElement.getAttribute('aria-label') === null);
-        expect(contextualMenuElement.getAttribute('aria-labelledBy') !== null);
+        expect(contextualMenuElement.getAttribute('aria-label')).toBeNull();
+        expect(contextualMenuElement.getAttribute('aria-labelledBy')).not.toBeNull();
       });
 
       it('If button has no text, contextual menu has no aria-label or aria-labelledBy attributes', () => {
         const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement();
 
         expect(contextualMenuElement).not.toBeNull();
-        expect(contextualMenuElement.getAttribute('aria-label') === null);
-        expect(contextualMenuElement.getAttribute('aria-labelledBy') === null);
+        expect(contextualMenuElement.getAttribute('aria-label')).toBeNull();
+        expect(contextualMenuElement.getAttribute('aria-labelledBy')).toBeNull();
       });
 
       it('If button has text but ariaLabel provided in menuProps, contextual menu has aria-label set', () => {
@@ -711,8 +919,8 @@ describe('Button', () => {
         );
 
         expect(contextualMenuElement).not.toBeNull();
-        expect(contextualMenuElement.getAttribute('aria-label') === explicitLabel);
-        expect(contextualMenuElement.getAttribute('aria-labelledBy') === null);
+        expect(contextualMenuElement.getAttribute('aria-label')).toEqual(explicitLabel);
+        expect(contextualMenuElement.getAttribute('aria-labelledBy')).toBeNull();
       });
 
       it('If button has text but labelElementId provided in menuProps, contextual menu has aria-labelledBy reflecting labelElementId', () => {
@@ -723,8 +931,8 @@ describe('Button', () => {
         );
 
         expect(contextualMenuElement).not.toBeNull();
-        expect(contextualMenuElement.getAttribute('aria-label') === null);
-        expect(contextualMenuElement.getAttribute('aria-labelledBy') === explicitLabelElementId);
+        expect(contextualMenuElement.getAttribute('aria-label')).toBeNull();
+        expect(contextualMenuElement.getAttribute('aria-labelledBy')).toEqual(explicitLabelElementId);
       });
     });
   });
