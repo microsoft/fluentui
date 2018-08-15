@@ -40,7 +40,7 @@ const getDlpLineItemStyles = (): IDlpLineItemStyles => {
   return {
     dlpLineItemContainer: {
       display: 'flex',
-      paddingBottom: 16,
+      paddingBottom: 12,
       alignItems: 'flex-end',
       justifyContent: 'flex-end'
     },

@@ -21,9 +21,14 @@ export const getStyles = (): IRecommendationStyles => ({
   }),
   recommendationTextContainer: mergeStyles(flexDisplayStyle, {
     flexDirection: 'column',
+    justifyContent: 'space-between',
     marginRight: containerSpaceMargin
   }),
-  recommendationVisualizationContainer: flexDisplayStyle,
+  recommendationVisualizationContainer: mergeStyles(flexDisplayStyle, {
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'center'
+  }),
   recommendationHeader: {
     fontSize: largeFontSize,
     fontFamily: commonFontFamily,
@@ -33,14 +38,14 @@ export const getStyles = (): IRecommendationStyles => ({
       p: {
         margin: '0px'
       }
-    },
-    marginBottom: '22px'
+    }
   },
   recommendationContent: {
     fontSize: regularFontSize,
     fontFamily: commonFontFamily,
     color: recommendationBaseColor,
     display: 'flex',
+    justifyContent: 'flex-start',
     flexWrap: 'wrap',
     maxHeight: '80px',
     textOverflow: 'ellipsis',
