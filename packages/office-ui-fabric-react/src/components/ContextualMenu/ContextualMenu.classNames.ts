@@ -3,14 +3,6 @@ import { ITheme, mergeStyleSets } from '../../Styling';
 import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
 import { memoizeFunction } from '../../Utilities';
 
-export interface IContextualMenuClassNames {
-  container: string;
-  root: string;
-  list: string;
-  header: string;
-  title: string;
-}
-
 export interface IMenuItemClassNames {
   item: string;
   divider: string;
