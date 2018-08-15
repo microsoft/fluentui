@@ -326,34 +326,131 @@ export interface IContextualMenuItemStyleProps {
    */
   className?: string;
 
-  // Insert ContextualMenuItem style props below
+  /**
+   * Whether or not the menu item is disabled.
+   */
   disabled: boolean;
+
+  /**
+   * Whether or not the menu item is expanded.
+   */
   expanded: boolean;
+
+  /**
+   * Whether or not the menu item is checked.
+   */
   checked: boolean;
+
+  /**
+   * Indicates if a menu item is an anchor link.
+   */
   isAnchorLink: boolean;
+
+  /**
+   * Indicates if the icon used is of the known set of icons.
+   */
   knownIcon: boolean;
+
+  /**
+   * The optional class name to apply to the item element.
+   */
   itemClassName?: string;
+
+  /**
+   * The optional class name to apply to the divider element.
+   */
   dividerClassName?: string;
+
+  /**
+   * The optional class name to apply to the icon element.
+   */
   iconClassName?: string;
+
+  /**
+   * The optional class name to apply to the sub-menu if present.
+   */
   subMenuClassName?: string;
+
+  /**
+   * Whether or not the primary section of a split menu item is disabled.
+   */
   primaryDisabled?: boolean;
 }
 
 export interface IContextualMenuItemStyles extends IButtonStyles {
+  /**
+   * Styles for a menu item that is an anchor link.
+   */
   item: IStyle;
+
+  /**
+   * Styles for a divider item of a ContextualMenu.
+   */
   divider: IStyle;
+
+  /**
+   * Styles for the root element of a menu item.
+   */
   root: IStyle;
+
+  /**
+   * Styles for the content inside the button/link of the menuItem.
+   */
   linkContent: IStyle;
+
+  /**
+   * Styles for a menu item that is an anchor link.
+   */
   anchorLink: IStyle;
+
+  /**
+   * Styles for the icon element of a menu item.
+   */
   icon: IStyle;
+
+  /**
+   * Default icon color style for known icons.
+   */
   iconColor: IStyle;
+
+  /**
+   * Default style for checkmark icons.
+   */
   checkmarkIcon: IStyle;
+
+  /**
+   * Styles for the submenu icon of a menu item.
+   */
   subMenuIcon: IStyle;
+
+  /**
+   * Styles for the label of a menu item.
+   */
   label: IStyle;
+
+  /**
+   * Styles for the secondary text of a menu item.
+   */
   secondaryText: IStyle;
+
+  /**
+   * Styles for the container of a split menu item.
+   */
   splitContainer: IStyle;
+
+  /**
+   * Styles for the primary portion of a split menu item.
+   */
   splitPrimary: IStyle;
+
+  /**
+   * Styles for the menu portion of a split menu item.
+   */
   splitMenu: IStyle;
+
+  /**
+   * Styles for a menu item that is a link.
+   */
   linkContentMenu: IStyle;
 }
 
