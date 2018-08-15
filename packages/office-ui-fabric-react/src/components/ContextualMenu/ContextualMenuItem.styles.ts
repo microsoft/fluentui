@@ -67,6 +67,19 @@ export const getStyles = (props: IContextualMenuItemStyleProps): IContextualMenu
     }
   };
 
+  const rootExpanded: IStyle = {
+    backgroundColor: semanticColors.menuItemBackgroundChecked,
+    color: semanticColors.bodyTextChecked,
+    selectors: {
+      [HighContrastSelector]: {
+        backgroundColor: 'Highlight',
+        borderColor: 'Highlight',
+        color: 'HighlightText',
+        MsHighContrastAdjust: 'none'
+      }
+    }
+  };
+
   const rootDisabled: IStyle = {
     color: semanticColors.disabledBodyText,
     cursor: 'default',
@@ -270,10 +283,10 @@ export const getStyles = (props: IContextualMenuItemStyleProps): IContextualMenu
       {
         width: 32
       },
-      checked && [classNames.isChecked, rootChecked],
-      (disabled || primaryDisabled) && [classNames.isChecked, rootDisabled],
-      !(disabled || primaryDisabled) &&
-        !checked && [
+      expanded && ['is-expanded', rootExpanded],
+      disabled && ['is-disabled', rootDisabled],
+      !disabled &&
+        !expanded && [
           {
             selectors: {
               ':hover': rootHovered,
