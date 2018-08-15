@@ -8,8 +8,7 @@ import {
 import {
   IContextualMenuItemStyles,
   IContextualMenuItem,
-  IContextualMenuItemStyleProps,
-  IMenuItemClassNames
+  IContextualMenuItemStyleProps
 } from './ContextualMenuItem.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection, IFocusZoneProps, FocusZoneTabbableElements } from '../../FocusZone';
@@ -40,6 +39,10 @@ import {
   ContextualMenuAnchor
 } from './ContextualMenuItemWrapper/index';
 import { IProcessedStyleSet } from '@uifabric/styling/lib/MergeStyles';
+import {
+  IMenuItemClassNames,
+  IContextualMenuClassNames
+} from 'office-ui-fabric-react/lib/components/ContextualMenu/ContextualMenu.classNames';
 
 const getClassNames = classNamesFunction<IContextualMenuStyleProps, IContextualMenuStyles>();
 
@@ -105,7 +108,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
   private _adjustedFocusZoneProps: IFocusZoneProps;
 
-  private _classNames: IProcessedStyleSet<IContextualMenuStyles>;
+  private _classNames: IProcessedStyleSet<IContextualMenuStyles> | IContextualMenuClassNames;
 
   constructor(props: IContextualMenuProps) {
     super(props);

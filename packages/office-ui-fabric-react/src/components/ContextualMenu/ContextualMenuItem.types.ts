@@ -1,4 +1,4 @@
-import { ITheme, IStyle, IProcessedStyleSet } from '../../Styling';
+import { ITheme, IStyle } from '../../Styling';
 import { IRefObject, IRenderFunction } from '../../Utilities';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/components/Button';
 import { IVerticalDividerClassNames } from 'office-ui-fabric-react/lib/Divider';
@@ -6,6 +6,7 @@ import { IStyleFunctionOrObject } from '@uifabric/utilities';
 import { ContextualMenuItemType, IContextualMenuProps, IContextualMenuSection } from './ContextualMenu.types';
 import { IIconProps } from '../Icon/Icon.types';
 import { IKeytipProps } from '../Keytip/Keytip.types';
+import { IMenuItemClassNames } from 'office-ui-fabric-react/lib/components/ContextualMenu/ContextualMenu.classNames';
 
 export interface IContextualMenuItem {
   /**
@@ -356,6 +357,3 @@ export interface IContextualMenuItemStyles extends IButtonStyles {
   splitMenu: IStyle;
   linkContentMenu: IStyle;
 }
-
-/** @deprecated in favor of mergeStyles API. */
-export interface IMenuItemClassNames extends IProcessedStyleSet<IContextualMenuItemStyles> {}

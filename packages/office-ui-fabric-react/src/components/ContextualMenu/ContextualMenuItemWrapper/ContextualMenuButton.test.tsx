@@ -1,7 +1,8 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { IContextualMenuItem, IMenuItemClassNames } from '../ContextualMenuItem.types';
+import { IContextualMenuItem } from '../ContextualMenuItem.types';
 import { ContextualMenuButton } from './ContextualMenuButton';
+import { IMenuItemClassNames } from 'office-ui-fabric-react/lib/components/ContextualMenu/ContextualMenu.classNames';
 
 describe('ContextualMenuButton', () => {
   describe('creates a normal button', () => {
@@ -43,9 +44,6 @@ function getMenuItemClassNames(): IMenuItemClassNames {
     splitContainer: 'splitContainer',
     splitPrimary: 'splitPrimary',
     splitMenu: 'splitMenu',
-    linkContentMenu: 'linkContentMenu',
-    anchorLink: 'anchorLink',
-    iconColor: 'iconColor',
-    subComponentStyles: {}
+    linkContentMenu: 'linkContentMenu'
   };
 }
