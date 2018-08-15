@@ -6,7 +6,6 @@ import { IStyleFunctionOrObject } from '@uifabric/utilities';
 import { ContextualMenuItemType, IContextualMenuProps, IContextualMenuSection } from './ContextualMenu.types';
 import { IIconProps } from '../Icon/Icon.types';
 import { IKeytipProps } from '../Keytip/Keytip.types';
-import { IMenuItemClassNames } from 'office-ui-fabric-react/lib/components/ContextualMenu/ContextualMenu.classNames';
 
 export interface IContextualMenuItem {
   /**
@@ -356,4 +355,21 @@ export interface IContextualMenuItemStyles extends IButtonStyles {
   splitPrimary: IStyle;
   splitMenu: IStyle;
   linkContentMenu: IStyle;
+}
+
+/** @deprecated in favor of mergeStyles API. */
+export interface IMenuItemClassNames {
+  item: string;
+  divider: string;
+  root: string;
+  linkContent: string;
+  icon: string;
+  checkmarkIcon: string;
+  subMenuIcon: string;
+  label: string;
+  secondaryText: string;
+  splitContainer: string;
+  splitPrimary: string;
+  splitMenu: string;
+  linkContentMenu: string;
 }

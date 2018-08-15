@@ -1,8 +1,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { IContextualMenuItem } from '../ContextualMenuItem.types';
+import { IContextualMenuItem, IMenuItemClassNames } from '../ContextualMenuItem.types';
 import { ContextualMenuSplitButton } from './ContextualMenuSplitButton';
-import { IMenuItemClassNames } from 'office-ui-fabric-react/lib/components/ContextualMenu/ContextualMenu.classNames';
 
 describe('ContextualMenuSplitButton', () => {
   describe('creates a normal split button', () => {
