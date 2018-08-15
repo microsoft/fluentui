@@ -7,7 +7,6 @@ import { IRefObject, IBaseProps, IPoint, IRectangle, IRenderFunction, IStyleFunc
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 export { DirectionalHint } from '../../common/DirectionalHint';
 import { IContextualMenuItemProps, IContextualMenuItem } from './ContextualMenuItem.types';
-import { IContextualMenuClassNames } from 'office-ui-fabric-react/lib/components/ContextualMenu/ContextualMenu.classNames';
 
 export enum ContextualMenuItemType {
   Normal = 0,
@@ -301,4 +300,13 @@ export interface IContextualMenuStyles {
    * Styles for the list that contains all menuItems.
    */
   list: IStyle;
+}
+
+/** @deprecated in favor of mergeStyles API. */
+export interface IContextualMenuClassNames {
+  container: string;
+  root: string;
+  list: string;
+  header: string;
+  title: string;
 }
