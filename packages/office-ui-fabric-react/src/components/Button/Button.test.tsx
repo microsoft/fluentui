@@ -195,10 +195,14 @@ describe('Button', () => {
         const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
 
         expect(renderedDOM.getAttribute('aria-label')).toBeNull();
+
         expect(renderedDOM.getAttribute('aria-labelledby')).toEqual(renderedDOM.querySelector(`.ms-Button-label`).id);
+        expect(renderedDOM.getAttribute('aria-labelledby')).toBeDefined();
+
         expect(renderedDOM.getAttribute('aria-describedby')).toEqual(
           renderedDOM.querySelector('.some-screenreader-class').id
         );
+        expect(renderedDOM.getAttribute('aria-describedby')).toBeDefined();
       });
 
       it('applies aria-describedby to an IconButton', () => {
@@ -212,10 +216,14 @@ describe('Button', () => {
         const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
 
         expect(renderedDOM.getAttribute('aria-label')).toBeNull();
+
         expect(renderedDOM.getAttribute('aria-labelledby')).toBeNull();
+        expect(renderedDOM.getAttribute('aria-labelledby')).toBeDefined();
+
         expect(renderedDOM.getAttribute('aria-describedby')).toEqual(
           renderedDOM.querySelector('.some-screenreader-class').id
         );
+        expect(renderedDOM.getAttribute('aria-describedby')).toBeDefined();
       });
 
       it('applies aria-labelledby and aria-describedby to a CompoundButton with ariaDescription', () => {
@@ -231,10 +239,14 @@ describe('Button', () => {
         const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
 
         expect(renderedDOM.getAttribute('aria-label')).toBeNull();
+
         expect(renderedDOM.getAttribute('aria-labelledby')).toEqual(renderedDOM.querySelector('.ms-Button-label').id);
+        expect(renderedDOM.getAttribute('aria-labelledby')).toBeDefined();
+
         expect(renderedDOM.getAttribute('aria-describedby')).toEqual(
           renderedDOM.querySelector('.some-screenreader-class').id
         );
+        expect(renderedDOM.getAttribute('aria-describedby')).toBeDefined();
       });
 
       it('applies aria-labelledby and aria-describedby to a CompoundButton with secondaryText and no ariaDescription', () => {
@@ -244,10 +256,14 @@ describe('Button', () => {
         const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
 
         expect(renderedDOM.getAttribute('aria-label')).toBeNull();
+
         expect(renderedDOM.getAttribute('aria-labelledby')).toEqual(renderedDOM.querySelector('.ms-Button-label').id);
+        expect(renderedDOM.getAttribute('aria-labelledby')).toBeDefined();
+
         expect(renderedDOM.getAttribute('aria-describedby')).toEqual(
           renderedDOM.querySelector('.ms-Button-description').id
         );
+        expect(renderedDOM.getAttribute('aria-describedby')).toBeDefined();
       });
 
       it('does not apply aria-pressed to an unchecked button', () => {
