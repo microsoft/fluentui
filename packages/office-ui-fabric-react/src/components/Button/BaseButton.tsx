@@ -446,10 +446,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   };
 
   private _onToggleMenu = (shouldFocusOnContainer: boolean): void => {
-    if (this._splitButtonContainer.current) {
-      this._splitButtonContainer.current.focus();
-    }
-
     const currentMenuProps = this.state.menuProps;
     if (this.props.persistMenu) {
       currentMenuProps && currentMenuProps.hidden ? this._openMenu(shouldFocusOnContainer) : this._dismissMenu();
