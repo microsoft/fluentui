@@ -74,7 +74,7 @@ executeTasks(firstTasks)
 function getDefaultDisabledTasks() {
   let disabled = package.disabledTasks || [];
 
-  if (process.env.NPM_INSTALL_MODE) {
+  if (process.argv.indexOf('--npm-install-mode') > -1) {
     disabled = [...disabled, 'jest', 'tslint', 'lint-imports'];
   }
 
