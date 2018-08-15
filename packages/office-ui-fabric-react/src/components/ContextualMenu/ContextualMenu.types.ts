@@ -271,8 +271,6 @@ export interface IContextualMenuStyleProps {
    * Accept custom classNames
    */
   className?: string;
-
-  // Insert ContextualMenu style props below
 }
 
 export interface IContextualMenuStyles {
