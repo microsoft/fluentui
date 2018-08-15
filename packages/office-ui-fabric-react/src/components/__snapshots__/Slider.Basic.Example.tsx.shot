@@ -50,7 +50,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
       >
         <button
           aria-label="Basic example:"
-          aria-valuemax={6}
+          aria-valuemax={3}
           aria-valuemin={1}
           aria-valuenow={2}
           aria-valuetext={undefined}
@@ -166,7 +166,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
 
               style={
                 Object {
-                  "left": "20%",
+                  "left": "50%",
                 }
               }
             />
@@ -183,7 +183,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
                   }
               style={
                 Object {
-                  "width": "20%",
+                  "width": "50%",
                 }
               }
             />
@@ -200,7 +200,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
                   }
               style={
                 Object {
-                  "width": "80%",
+                  "width": "50%",
                 }
               }
             />
@@ -716,7 +716,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
         >
           <button
             aria-label="Basic example:"
-            aria-valuemax={6}
+            aria-valuemax={3}
             aria-valuemin={1}
             aria-valuenow={2}
             aria-valuetext={undefined}
@@ -842,7 +842,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
 
                 style={
                   Object {
-                    "bottom": "20%",
+                    "bottom": "50%",
                   }
                 }
               />
@@ -859,7 +859,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
                     }
                 style={
                   Object {
-                    "height": "20%",
+                    "height": "50%",
                   }
                 }
               />
@@ -876,7 +876,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
                     }
                 style={
                   Object {
-                    "height": "80%",
+                    "height": "50%",
                   }
                 }
               />
