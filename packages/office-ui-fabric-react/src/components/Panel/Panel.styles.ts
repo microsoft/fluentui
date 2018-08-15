@@ -162,7 +162,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
             borderRight: `1px solid ${palette.neutralLight}`,
             pointerEvents: 'auto',
             width: panelSize.width.sm,
-            boxShadow: '-30px, 0px, 30px, -30px, .2',
+            boxShadow: '-30px 0px 30px -30px rgba(0,0,0,0.2)',
             left: 'auto'
           },
           '$root &': [
