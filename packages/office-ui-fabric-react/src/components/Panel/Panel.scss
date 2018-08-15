@@ -68,6 +68,7 @@ $CommandBarHeight: 44px;
     border-right: 1px solid $ms-color-neutralLight;
     pointer-events: auto;
     width: $Panel-width-sm;
+    max-width: $Panel-width-sm;
     @include ms-drop-shadow(-30px, 0px, 30px, -30px, .2);
     @include ms-left(auto);
   }
