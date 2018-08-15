@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { IContextualMenuItem } from '../ContextualMenu.types';
-import { IMenuItemClassNames } from '../ContextualMenu.classNames';
+import { IContextualMenuItem, IMenuItemClassNames } from '../ContextualMenuItem.types';
 import { ContextualMenuButton } from './ContextualMenuButton';
 
 describe('ContextualMenuButton', () => {
