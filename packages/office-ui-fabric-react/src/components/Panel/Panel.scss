@@ -68,7 +68,6 @@ $CommandBarHeight: 44px;
     border-right: 1px solid $ms-color-neutralLight;
     pointer-events: auto;
     width: $Panel-width-sm;
-    max-width: $Panel-width-sm;
     @include ms-drop-shadow(-30px, 0px, 30px, -30px, .2);
     @include ms-left(auto);
   }
@@ -79,11 +78,9 @@ $CommandBarHeight: 44px;
 .root.rootIsSmall {
   .main {
     width: $Panel-width-xs;
-    max-width: $Panel-width-xs;
 
     @media (min-width: $ms-screen-min-md) {
       width: $Panel-width-sm;
-      max-width: $Panel-width-sm;
     }
   }
 }
@@ -95,7 +92,6 @@ $CommandBarHeight: 44px;
     @include ms-right(auto);
     @include ms-left(0);
     width: $Panel-width-xs;
-    max-width: $Panel-width-xs;
     @include ms-drop-shadow(30px, 0px, 30px, -30px, .2);
   }
 }
@@ -130,7 +126,6 @@ $CommandBarHeight: 44px;
     @media (min-width: $ms-screen-min-xl) {
       @include ms-left(auto);
       width: $Panel-width-md;
-      max-width: $Panel-width-md;
     }
   }
 }
@@ -152,7 +147,6 @@ $CommandBarHeight: 44px;
     @media (min-width: $ms-screen-min-xxl) {
       @include ms-left(auto);
       width: $Panel-width-lg;
-      max-width: $Panel-width-lg;
     }
   }
 }
@@ -171,6 +165,7 @@ $CommandBarHeight: 44px;
 //
 .root.rootIsCustom {
   .main {
+    max-width: 100vw;
     @media (min-width: $ms-screen-min-xl) {
       @include ms-left(auto);
     }
