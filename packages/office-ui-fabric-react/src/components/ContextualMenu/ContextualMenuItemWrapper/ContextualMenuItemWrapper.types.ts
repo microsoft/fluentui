@@ -1,7 +1,6 @@
-import { IContextualMenuItem, IContextualMenuItemProps } from '../../../ContextualMenu';
+import { IContextualMenuItem, IContextualMenuItemProps, IMenuItemClassNames } from '../../../ContextualMenu';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
 import { IRefObject } from '../../../Utilities';
-import { IMenuItemClassNames } from 'office-ui-fabric-react/lib/components/ContextualMenu/ContextualMenu.classNames';
 
 export interface IContextualMenuItemWrapperProps extends React.Props<IContextualMenuItem> {
   /**

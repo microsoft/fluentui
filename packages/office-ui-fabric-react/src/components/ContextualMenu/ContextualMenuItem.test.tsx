@@ -3,9 +3,8 @@ jest.mock('../../utilities/contextualMenu');
 import * as React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
 import { ContextualMenuItemBase } from './ContextualMenuItem.base';
-import { IContextualMenuItemProps, IContextualMenuItem } from './ContextualMenuItem.types';
+import { IContextualMenuItemProps, IContextualMenuItem, IMenuItemClassNames } from './ContextualMenuItem.types';
 import { hasSubmenu } from '../../utilities/contextualMenu/index';
-import { IMenuItemClassNames } from 'office-ui-fabric-react/lib/components/ContextualMenu/ContextualMenu.classNames';
 
 describe('ContextMenuItemChildren', () => {
   describe('when a checkmark icon', () => {

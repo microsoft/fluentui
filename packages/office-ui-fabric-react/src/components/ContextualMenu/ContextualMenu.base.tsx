@@ -40,7 +40,6 @@ import {
   ContextualMenuAnchor
 } from './ContextualMenuItemWrapper/index';
 import { IProcessedStyleSet } from '@uifabric/styling/lib/MergeStyles';
-import { IMenuItemClassNames } from 'office-ui-fabric-react/lib/components/ContextualMenu/ContextualMenu.classNames';
 
 const getClassNames = classNamesFunction<IContextualMenuStyleProps, IContextualMenuStyles>();
 

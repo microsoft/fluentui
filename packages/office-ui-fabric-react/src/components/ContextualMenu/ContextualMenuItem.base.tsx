@@ -2,9 +2,8 @@ import * as React from 'react';
 import { hasSubmenu, getIsChecked } from '../../utilities/contextualMenu/index';
 import { BaseComponent, getRTL } from '../../Utilities';
 import { Icon } from '../../Icon';
-import { IContextualMenuItemProps, IContextualMenuItemStyles } from './ContextualMenuItem.types';
+import { IContextualMenuItemProps, IContextualMenuItemStyles, IMenuItemClassNames } from './ContextualMenuItem.types';
 import { IProcessedStyleSet } from '@uifabric/styling';
-import { IMenuItemClassNames } from 'office-ui-fabric-react/lib/components/ContextualMenu/ContextualMenu.classNames';
 
 export class ContextualMenuItemBase extends BaseComponent<IContextualMenuItemProps, {}> {
   private _classNames: IProcessedStyleSet<IContextualMenuItemStyles> | IMenuItemClassNames;
