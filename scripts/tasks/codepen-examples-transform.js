@@ -32,13 +32,6 @@ function transform(file, api) {
   const j = api.jscodeshift;
   let source = j(recast.parse(file.source, { parser: { parse } }));
 
-  //remove react import
-  source = source
-    .find(j.ImportDeclaration, node => node.source.value == 'react')
-    .remove()
-    .toSource();
-  source = j(recast.parse(source, { parser: { parse } }));
-
   //remove css imports
   source = source
     .find(j.ImportDeclaration, node => node.source.value.endsWith('.scss'))
@@ -61,7 +54,10 @@ function transform(file, api) {
   let identifiers = [];
   imports.forEach(p => {
     p.node.specifiers.forEach(spec => {
-      identifiers.push(spec.local.loc.identifierName);
+      const identifier = spec.local.loc.identifierName;
+      if (identifier.toLowerCase() != 'react') {
+        identifiers.push(identifier);
+      }
     });
   });
 
@@ -72,11 +68,17 @@ function transform(file, api) {
 
   let parsedAttachedWindowString = parseRaw(attachedWindowString);
 
+  source = source
+    .find(j.ImportDeclaration, node => node.source.value.toLowerCase() == 'react')
+    .remove()
+    .insertBefore(parsedAttachedWindowString)
+    .toSource();
+  source = j(recast.parse(source, { parser: { parse } }));
+
   // remove the rest of the import declarations
   source = source
     .find(j.ImportDeclaration)
     .remove()
-    .insertBefore(parsedAttachedWindowString)
     .toSource();
   source = j(recast.parse(source, { parser: { parse } }));
 

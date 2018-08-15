@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/webpack-utils",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "description": "Office UI Fabric utilities for Webpack bundler.",
   "sideEffects": false,
   "repository": {
@@ -17,7 +17,8 @@
   "disabledTasks": [
     "copy",
     "karma",
-    "webpack"
+    "webpack",
+    "build-codepen-examples"
   ],
   "devDependencies": {
     "@types/jest": "23.0.0",

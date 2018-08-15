@@ -157,6 +157,16 @@ storiesOf('DetailsList', module)
       isHeaderVisible={true}
     />
   ))
+  .add('Grouped with Checkbox Hidden', () => (
+    <DetailsList
+      items={items}
+      groups={groups}
+      columns={columns}
+      layoutMode={DetailsListLayoutMode.justified}
+      checkboxVisibility={CheckboxVisibility.hidden}
+      isHeaderVisible={true}
+    />
+  ))
   .add('Checkbox Visible Always', () => (
     <DetailsList
       items={items}

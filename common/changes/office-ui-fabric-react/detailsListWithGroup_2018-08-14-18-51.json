@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsList: in single select mode maintain role and index, and remove onclick",
+      "comment": "DetailsList: selectionMode for groups is none if checkboxvisibility is hidden",
       "type": "patch"
     }
   ],

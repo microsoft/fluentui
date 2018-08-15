@@ -1,6 +1,20 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Tue, 14 Aug 2018 00:01:11 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Aug 2018 10:26:31 GMT and should not be manually modified.
+
+## 0.15.2
+Wed, 15 Aug 2018 10:26:31 GMT
+
+### Patches
+
+- Changing font for components in card
+
+## 0.15.1
+Tue, 14 Aug 2018 10:27:33 GMT
+
+### Patches
+
+- disabling codepen task
 
 ## 0.15.0
 Tue, 14 Aug 2018 00:01:11 GMT

@@ -5,6 +5,7 @@ import { IDocPageProps } from '../../common/DocPage.types';
 import { ToggleStatus } from './Toggle.checklist';
 
 const ToggleBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Toggle/examples/Toggle.Basic.Example.tsx') as string;
+const ToggleBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Toggle/Toggle.Basic.Example.Codepen.txt') as string;
 
 export const TogglePageProps: IDocPageProps = {
   title: 'Toggle',
@@ -16,7 +17,8 @@ export const TogglePageProps: IDocPageProps = {
     {
       title: 'Default Toggles',
       code: ToggleBasicExampleCode,
-      view: <ToggleBasicExample />
+      view: <ToggleBasicExample />,
+      codepenJS: ToggleBasicExampleCodepen
     }
   ],
   propertiesTablesSources: [

@@ -30,6 +30,7 @@
     "json-loader": "^0.5.7",
     "mustache": "^2.3.0",
     "node-sass": "^4.5.3",
+    "ngrok": "^3.0.1",
     "open": "^0.0.5",
     "postcss": "^6.0.9",
     "postcss-loader": "^2.0.9",

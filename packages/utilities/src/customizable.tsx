@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Customizations } from './Customizations';
 import { hoistStatics } from './hoistStatics';
 import { CustomizerContext, ICustomizerContext } from './Customizer';
+import { concatStyleSets } from '@uifabric/merge-styles';
 
 export function customizable(
   scope: string,
@@ -37,9 +38,17 @@ export function customizable(
         return (
           <CustomizerContext.Consumer>
             {(context: ICustomizerContext) => {
-              const defaultProps = Customizations.getSettings(fields, scope, context.customizations);
+              const defaultProps = Customizations.getSettings(fields, scope, this.context.customizations);
+
               // tslint:disable-next-line:no-any
-              return <ComposedComponent {...defaultProps} {...this.props as any} />;
+              const componentProps = this.props as any;
+
+              if (concatStyles) {
+                const mergedStyles = concatStyleSets(defaultProps.styles, componentProps.styles);
+                return <ComposedComponent {...defaultProps} {...componentProps} styles={mergedStyles} />;
+              }
+
+              return <ComposedComponent {...defaultProps} {...componentProps} />;
             }}
           </CustomizerContext.Consumer>
         );
