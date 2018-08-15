@@ -2,6 +2,20 @@
   "name": "@uifabric/webpack-utils",
   "entries": [
     {
+      "version": "0.7.2",
+      "tag": "@uifabric/webpack-utils_v0.7.2",
+      "date": "Tue, 14 Aug 2018 10:27:33 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Avital Baral <avitalbaral99@gmail.com>",
+            "commit": "cf0f728d0b28540b7a42aa9121a840605ee04670",
+            "comment": "exposing codepen examples, disabling codepen tasks in packages != ouifr"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.7.1",
       "tag": "@uifabric/webpack-utils_v0.7.1",
       "date": "Mon, 16 Jul 2018 10:27:18 GMT",

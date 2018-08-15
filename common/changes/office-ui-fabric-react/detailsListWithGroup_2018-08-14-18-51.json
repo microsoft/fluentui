@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Improves high contrast mode styles for calendar",
+      "comment": "DetailsList: selectionMode for groups is none if checkboxvisibility is hidden",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "kisiebel@microsoft.com"
+  "email": "naethell@microsoft.com"
 }

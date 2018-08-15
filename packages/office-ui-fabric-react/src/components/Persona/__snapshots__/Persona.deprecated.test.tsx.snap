@@ -495,9 +495,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
             text-overflow: ellipsis;
             white-space: nowrap;
           }
-    >
-      
-    </div>
+    />
     <div
       className=
           ms-Persona-secondaryText

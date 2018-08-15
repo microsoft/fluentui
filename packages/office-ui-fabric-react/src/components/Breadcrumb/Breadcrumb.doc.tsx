@@ -7,6 +7,7 @@ import { IDocPageProps } from '../../common/DocPage.types';
 
 const BreadcrumbBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/examples/Breadcrumb.Basic.Example.tsx') as string;
 const BreadcrumbStaticExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/examples/Breadcrumb.Static.Example.tsx') as string;
+const BreadcrumbStaticExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Breadcrumb/Breadcrumb.Static.Example.Codepen.txt') as string;
 export const BreadcrumbPageProps: IDocPageProps = {
   title: 'Breadcrumb',
   componentName: 'Breadcrumb',
@@ -22,7 +23,8 @@ export const BreadcrumbPageProps: IDocPageProps = {
     {
       title: 'Breadcrumb with static width ',
       code: BreadcrumbStaticExampleCode,
-      view: <BreadcrumbStaticExample />
+      view: <BreadcrumbStaticExample />,
+      codepenJS: BreadcrumbStaticExampleCodepen
     }
   ],
   propertiesTablesSources: [

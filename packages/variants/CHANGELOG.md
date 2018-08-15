@@ -1,6 +1,13 @@
 # Change Log - @uifabric/variants
 
-This log was last generated on Fri, 03 Aug 2018 10:25:59 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Aug 2018 03:43:25 GMT and should not be manually modified.
+
+## 6.3.0
+Mon, 13 Aug 2018 03:43:25 GMT
+
+### Minor changes
+
+- adds opacity function to variants
 
 ## 6.2.0
 Fri, 03 Aug 2018 10:25:59 GMT

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Fri, 10 Aug 2018 10:26:09 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Aug 2018 10:27:33 GMT and should not be manually modified.
+
+## 0.2.5
+Tue, 14 Aug 2018 10:27:33 GMT
+
+### Patches
+
+- disabling codepen task
 
 ## 0.2.4
 Fri, 10 Aug 2018 10:26:09 GMT

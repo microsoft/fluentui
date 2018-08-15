@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/jest-serializer-merge-styles",
-  "version": "6.0.3",
+  "version": "6.0.4",
   "description": "Jest serializer for merge-styles.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -20,7 +20,8 @@
   "disabledTasks": [
     "copy",
     "sass",
-    "karma"
+    "karma",
+    "build-codepen-examples"
   ],
   "devDependencies": {
     "@types/jest": "23.0.0",

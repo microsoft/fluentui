@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Updating the documentation pages for components to enable the feedback section.",
+      "comment": "DetailsList: remove related section from demo page",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "t-anlohi@microsoft.com"
+  "email": "naethell@microsoft.com"
 }
