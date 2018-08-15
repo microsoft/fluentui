@@ -6,13 +6,15 @@ import {
   DashboardSectionMapping,
   DashboardGridBreakpointLayouts,
   DashboardGridSectionLayout,
+  IAction,
   ICard,
   ICardContentDetails,
-  IAction,
   ISection,
   IThumbnailItemProps,
   Priority
 } from '@uifabric/dashboard';
+import { ILegendDataItem } from '@uifabric/charting';
+import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 const cardFrameContent = {
   cardTitle: 'Example Card',
@@ -69,6 +71,12 @@ const actions: IAction[] = [
   }
 ];
 
+const colors: ILegendDataItem[] = [
+  { legendText: 'first', legendColor: DefaultPalette.yellow },
+  { legendText: 'second', legendColor: DefaultPalette.blue },
+  { legendText: 'third', legendColor: DefaultPalette.red }
+];
+
 const contentAreaList: ICardContentDetails[] = [
   {
     priority: Priority.Priority1,
@@ -118,10 +126,10 @@ const largeContentAreaList: ICardContentDetails[] = [
     priority: Priority.Priority1,
     cardContentType: CardContentType.Chart,
     content: {
-      chartLabel: 'My first chart!',
+      chartLabels: ['My first chart!'],
       chartType: ChartType.VerticalBarChart,
       dataPoints: datapoints,
-      colors: ['red', 'yellow']
+      legendColors: colors
     }
   }
 ];
@@ -131,10 +139,10 @@ const mediumTallContentAreaList: ICardContentDetails[] = [
     priority: Priority.Priority1,
     cardContentType: CardContentType.Chart,
     content: {
-      chartLabel: 'My first chart!',
+      chartLabels: ['My first chart!'],
       chartType: ChartType.VerticalBarChart,
       dataPoints: datapoints,
-      colors: ['green', 'yellow']
+      legendColors: colors
     }
   }
 ];

@@ -34,7 +34,7 @@ export class DashboardGridLayoutPage extends React.Component<IComponentDemoPageP
               <DashboardGridLayoutCardExample />
             </ExampleCard>
             <ExampleCard
-              title="DashboardGridLayout with sections"
+              title="DashboardGridLayout with collapsible sections (work in progress)"
               isScrollable={true}
               isOptIn={true}
               code={DashboardGridLayoutSectionsExampleCode}
