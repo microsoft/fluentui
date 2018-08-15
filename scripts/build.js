@@ -70,13 +70,24 @@ executeTasks(firstTasks)
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //// Build helper functions
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-
+/**
+ * Disable tasks in one of two ways:
+ * - run `npm run build --npm-install-mode`
+ * - run `npm run build no-jest no-tslint`
+ */
 function getDefaultDisabledTasks() {
   let disabled = package.disabledTasks || [];
 
   if (process.argv.indexOf('--npm-install-mode') > -1) {
     disabled = [...disabled, 'jest', 'tslint', 'lint-imports'];
   }
+
+  (process.argv.filter(tasks => tasks.startsWith('no-')) || []).forEach(task => {
+    const skippedTask = task.replace('no-', '');
+    if (disabled.indexOf(skippedTask) < 0) {
+      disabled.push(skippedTask);
+    }
+  });
 
   return disabled;
 }
