@@ -2,11 +2,12 @@ import * as React from 'react';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { IFocusZoneProps } from '../../FocusZone';
 import { ICalloutProps } from '../../Callout';
-import { ITheme, IStyle, IProcessedStyleSet } from '../../Styling';
+import { ITheme, IStyle } from '../../Styling';
 import { IRefObject, IBaseProps, IPoint, IRectangle, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 export { DirectionalHint } from '../../common/DirectionalHint';
 import { IContextualMenuItemProps, IContextualMenuItem } from './ContextualMenuItem.types';
+import { IContextualMenuClassNames } from 'office-ui-fabric-react/lib/components/ContextualMenu/ContextualMenu.classNames';
 
 export enum ContextualMenuItemType {
   Normal = 0,
@@ -301,6 +302,3 @@ export interface IContextualMenuStyles {
    */
   list: IStyle;
 }
-
-/** @deprecated in favor of mergeStyles API. */
-export interface IContextualMenuClassNames extends IProcessedStyleSet<IContextualMenuStyles> {}
