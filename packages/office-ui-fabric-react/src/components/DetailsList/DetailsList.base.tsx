@@ -440,7 +440,9 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
                     items={items}
                     onRenderCell={this._onRenderCell}
                     selection={selection}
-                    selectionMode={selectionMode}
+                    selectionMode={
+                      checkboxVisibility !== CheckboxVisibility.hidden ? selectionMode : SelectionMode.none
+                    }
                     dragDropEvents={dragDropEvents}
                     dragDropHelper={dragDropHelper as DragDropHelper}
                     eventsToRegister={rowElementEventMap}
