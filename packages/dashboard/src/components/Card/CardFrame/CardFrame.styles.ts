@@ -11,6 +11,7 @@ export const getStyles = (props: ICardFrameProps): ICardFrameStyles => {
       boxShadow: '1px 1px 1px 1px #cdcdcd',
       height: '100%',
       display: 'flex',
+      overflow: 'hidden',
       flexDirection: 'column'
     },
     cardTitleBox: {
@@ -75,7 +76,7 @@ export const getStyles = (props: ICardFrameProps): ICardFrameStyles => {
     },
     layout: {
       display: 'flex',
-      flex: 1,
+      flex: '1 1 auto',
       padding: '0 16px 16px 16px'
     }
   };
