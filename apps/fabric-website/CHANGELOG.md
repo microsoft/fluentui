@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 10 Aug 2018 10:26:09 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Aug 2018 10:26:31 GMT and should not be manually modified.
+
+## 6.4.2
+Wed, 15 Aug 2018 10:26:31 GMT
+
+### Patches
+
+- Fixed the bug where the searchbox didn't appear and when clicking any detailslist child the nav would disappear
 
 ## 6.4.1
 Fri, 10 Aug 2018 10:26:09 GMT

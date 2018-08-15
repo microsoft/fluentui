@@ -2,6 +2,25 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.15.2",
+      "tag": "@uifabric/dashboard_v0.15.2",
+      "date": "Wed, 15 Aug 2018 10:26:31 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "cc8abe60aa0d261c48e4ffdb596ed0b6352e8dd4",
+            "comment": "Changing font for components in card"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.49.2 <7.0.0` to `>=6.49.3 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.15.1",
       "tag": "@uifabric/dashboard_v0.15.1",
       "date": "Tue, 14 Aug 2018 10:27:33 GMT",

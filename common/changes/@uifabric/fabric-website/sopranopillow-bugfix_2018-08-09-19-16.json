@@ -1,9 +1,0 @@
-{
-  "changes": [{
-    "packageName": "@uifabric/fabric-website",
-    "comment": "Fixed the bug where the searchbox didn't appear and when clicking any detailslist child the nav would disappear",
-    "type": "patch"
-  }],
-  "packageName": "@uifabric/fabric-website",
-  "email": "'esteban.230@hotmail.com'"
-}
