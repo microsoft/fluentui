@@ -46,6 +46,7 @@ export class MultiStackedBarChartExample extends React.Component<{}, {}> {
       chartLabels: ['Monitored', 'Unmonitored'],
       chartType: ChartType.StackedBarChart,
       data: points,
+      barHeight: 8,
       chartUpdatedOn: 'Updated 6:20 pm today',
       compactChartWidth: 394,
       legendColors: colors
@@ -54,7 +55,7 @@ export class MultiStackedBarChartExample extends React.Component<{}, {}> {
     const textContent = {
       subHeaderText: 'Edit data loss prevention policies',
       bodyText:
-        'Information based on your data loss prevention (DLP) policies may take upto 24 hours to appear in this activity report'
+        'Information based on your data loss prevention (DLP) policies may take up to 24 hours to appear in this activity report'
     };
 
     const contentAreaList = [

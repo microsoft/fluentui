@@ -103,6 +103,7 @@ export class Layout extends React.Component<ILayoutProps> {
                   chartLabels,
                   legendColors,
                   barWidth,
+                  barHeight,
                   data,
                   chartType,
                   dataPoints,
@@ -117,6 +118,7 @@ export class Layout extends React.Component<ILayoutProps> {
                       chartType={chartType}
                       legendColors={legendColors}
                       barWidth={barWidth}
+                      barHeight={barHeight}
                       data={data}
                       dataPoints={dataPoints}
                       compactChartWidth={compactChartWidth}
