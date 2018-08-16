@@ -18,7 +18,7 @@ import { getStyles } from './Legends.styles';
 const getClassNames = classNamesFunction<ILegendStyleProps, ILegendsStyles>();
 let classNames = getClassNames(getStyles!, {});
 
-interface ILegendState {
+export interface ILegendState {
   selectedLegend: string;
   selectedState: boolean;
   hoverState: boolean;
