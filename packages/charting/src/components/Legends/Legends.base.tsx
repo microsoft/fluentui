@@ -6,16 +6,18 @@ import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { OverflowSet, IOverflowSetItemProps } from 'office-ui-fabric-react/lib/OverflowSet';
-import {
-  ILegend,
-  ILegendsProps,
-  ILegendsStyles,
-  ILegendStyleProps,
-  ILegendOverflowData,
-  ILegendItem
-} from './Legends.types';
+import { ILegend, ILegendsProps, ILegendsStyles, ILegendStyleProps, ILegendOverflowData } from './Legends.types';
 
 const getClassNames = classNamesFunction<ILegendStyleProps, ILegendsStyles>();
+
+// This is an internal interface used for rendering the legends with unique key
+export interface ILegendItem {
+  name?: string;
+  title: string;
+  action: VoidFunction;
+  color: string;
+  key: number;
+}
 
 export interface ILegendState {
   selectedLegend: string;
