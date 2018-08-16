@@ -5,6 +5,7 @@ import {
   classNamesFunction,
   createRef,
   elementContains,
+  focusFirstChild,
   getDocument,
   IRectangle,
   KeyCodes,
@@ -27,7 +28,7 @@ import {
   ICoachmarkStyles,
   ICoachmarkStyleProps
 } from './Coachmark.styles';
-import { FocusTrapZone } from '../../FocusTrapZone';
+import { FocusZone } from '../../FocusZone';
 
 const getClassNames = classNamesFunction<ICoachmarkStyleProps, ICoachmarkStyles>();
 
@@ -131,6 +132,7 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> i
   private _translateAnimationContainer = createRef<HTMLDivElement>();
   private _ariaAlertContainer = createRef<HTMLDivElement>();
   private _positioningContainer = createRef<IPositioningContainer>();
+  private _focusZone = createRef<FocusZone>();
 
   /**
    * The target element the mouse would be in
@@ -238,7 +240,7 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> i
                     color={color}
                   />
                 )}
-                <FocusTrapZone isClickableOutsideFocusTrap={true}>
+                <FocusZone componentRef={this._focusZone} isCircularNavigation={true}>
                   <div
                     className={classNames.entityHost}
                     tabIndex={-1}
@@ -267,7 +269,7 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> i
                       {children}
                     </div>
                   </div>
-                </FocusTrapZone>
+                </FocusZone>
               </div>
             </div>
           </div>
@@ -319,7 +321,7 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> i
 
         this._addListeners();
 
-        // We dont want to the user to immediatley trigger the coachmark when it's opened
+        // We don't want to the user to immediately trigger the Coachmark when it's opened
         this._async.setTimeout(() => {
           this._addProximityHandler(this.props.mouseProximityOffset);
         }, this.props.delayBeforeMouseOpen!);
@@ -334,6 +336,11 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> i
             }
           }, 0);
         }
+        this._async.setTimeout(() => {
+          if (this._focusZone.current) {
+            this._focusZone.current.focus();
+          }
+        }, 1000);
       }
     );
   }
@@ -528,10 +535,8 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> i
         (): void => {
           // Need setTimeout to trigger narrator
           this._async.setTimeout(() => {
-            if (this.props.teachingBubbleRef) {
-              this.props.teachingBubbleRef.focus();
-            }
-          }, 500);
+            focusFirstChild(this._entityInnerHostElement.current!);
+          }, 1000);
 
           if (this.props.onAnimationOpenEnd) {
             this.props.onAnimationOpenEnd();

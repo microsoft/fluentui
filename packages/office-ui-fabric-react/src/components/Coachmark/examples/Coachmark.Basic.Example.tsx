@@ -31,7 +31,6 @@ export interface ICoachmarkBasicExampleStyles {
 
 export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExampleState> {
   private _targetButton = createRef<HTMLDivElement>();
-  private _teachingBubbleContent: ITeachingBubble;
 
   public constructor(props: {}) {
     super(props);
@@ -106,15 +105,12 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
               directionalHint: this.state.coachmarkPosition
             }}
             ariaAlertText="A Coachmark has appeared"
-            teachingBubbleRef={this._teachingBubbleContent}
             ariaDescribedBy={'coachmark-desc1'}
             ariaLabelledBy={'coachmark-label1'}
             ariaDescribedByText={'Press enter or alt + C to open the Coachmark notification'}
             ariaLabelledByText={'Coachmark notification'}
-            onDismiss={this._onDismiss}
           >
             <TeachingBubbleContent
-              componentRef={this._teachingBubbleRef}
               headline="Example Title"
               hasCloseIcon={true}
               closeButtonAriaLabel="Close"
@@ -148,9 +144,5 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
     this.setState({
       isCoachmarkVisible: !this.state.isCoachmarkVisible
     });
-  };
-
-  private _teachingBubbleRef = (component: ITeachingBubble): void => {
-    this._teachingBubbleContent = component;
   };
 }
