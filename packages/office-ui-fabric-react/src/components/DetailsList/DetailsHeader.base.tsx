@@ -238,6 +238,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderProps, IDetai
                 onClick={!isCheckboxHidden ? this._onSelectAllClicked : undefined}
                 aria-colindex={1}
                 role={'columnheader'}
+                aria-hidden={isCheckboxHidden ? true : undefined}
               >
                 {onRenderColumnHeaderTooltip(
                   {
