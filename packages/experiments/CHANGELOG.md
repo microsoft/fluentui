@@ -1,6 +1,228 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 29 Jun 2018 10:24:05 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Aug 2018 10:26:16 GMT and should not be manually modified.
+
+## 6.24.0
+Thu, 16 Aug 2018 10:26:16 GMT
+
+### Minor changes
+
+- Adding support for drop-downs with multiple selection to the FormDropdown component.
+
+## 6.23.3
+Tue, 14 Aug 2018 10:27:33 GMT
+
+### Patches
+
+- disabling codepen task
+
+## 6.23.2
+Tue, 14 Aug 2018 00:01:11 GMT
+
+*Version update only*
+
+## 6.23.1
+Mon, 13 Aug 2018 03:43:25 GMT
+
+### Patches
+
+- Remove utilities index file.
+
+## 6.23.0
+Fri, 10 Aug 2018 10:26:08 GMT
+
+### Minor changes
+
+- Stack: render vertically by default, add horizontalAlignment, verticalAlignment, fillHorizontal, fillVertical properties
+- Updating `Text` component with fixes to make it usable.
+
+### Patches
+
+- Inject customizations into Foundation. Add contextual theming and styling examples.
+
+## 6.22.6
+Wed, 08 Aug 2018 10:25:07 GMT
+
+### Patches
+
+- Fix bad imports that break AMD.
+- Implement base state class and controlled vs. uncontrolled behavior.
+- Stack: merge the className of a StackItem with the className of its first child
+
+## 6.22.5
+Mon, 06 Aug 2018 10:27:53 GMT
+
+### Patches
+
+- Fixing Stack to allow for classNames through Stack.Item
+
+## 6.22.4
+Fri, 03 Aug 2018 10:25:59 GMT
+
+### Patches
+
+- Added export to index
+
+## 6.22.3
+Thu, 02 Aug 2018 10:23:19 GMT
+
+### Patches
+
+- Updated border color on rest state of button, added borders to other states and reverted change to radio button selection dot.
+
+## 6.22.2
+Wed, 01 Aug 2018 10:25:51 GMT
+
+### Patches
+
+- Improvements to CollapsibleSection and new examples.
+
+## 6.22.1
+Mon, 30 Jul 2018 10:27:11 GMT
+
+### Patches
+
+- FormDropdown: allow options prop to flow to the underlying Dropdown component.
+
+## 6.22.0
+Fri, 27 Jul 2018 10:25:39 GMT
+
+### Minor changes
+
+- Added TextField to FluentStyles
+
+### Patches
+
+- added export for collapsible section and foundation
+
+## 6.21.0
+Thu, 26 Jul 2018 10:28:51 GMT
+
+### Minor changes
+
+- Updates Fluent styles for Dialog and ComoboBox
+
+## 6.20.0
+Wed, 25 Jul 2018 03:20:34 GMT
+
+### Minor changes
+
+- Make stack grow be more flexible
+
+## 6.19.1
+Tue, 24 Jul 2018 10:24:36 GMT
+
+*Version update only*
+
+## 6.19.0
+Mon, 23 Jul 2018 10:28:08 GMT
+
+### Minor changes
+
+- Text: use existing theming
+- Addressing bad imports.
+
+## 6.18.3
+Fri, 20 Jul 2018 10:25:21 GMT
+
+*Version update only*
+
+## 6.18.2
+Thu, 19 Jul 2018 21:25:32 GMT
+
+*Version update only*
+
+## 6.18.1
+Thu, 19 Jul 2018 19:04:38 GMT
+
+*Version update only*
+
+## 6.18.0
+Thu, 19 Jul 2018 10:23:34 GMT
+
+### Minor changes
+
+- Fluent Styles for ComboBox and Dialog
+
+## 6.17.0
+Wed, 18 Jul 2018 10:25:50 GMT
+
+### Minor changes
+
+- Fix typing errors
+
+## 6.16.0
+Tue, 17 Jul 2018 10:28:40 GMT
+
+### Minor changes
+
+- Removing most `@customizable` decorator usage. This change should reduce extra React dom elements from being created. Also updating `componentRef` resolution to support `React.createRef()` usage.
+
+## 6.15.1
+Mon, 16 Jul 2018 10:27:18 GMT
+
+*Version update only*
+
+## 6.15.0
+Fri, 13 Jul 2018 21:32:37 GMT
+
+### Minor changes
+
+- Reverting the TypeScript bump, to un
+- Card: disable dragging of card everywhere but title bar
+- Added FluentStyles for Panel, TextField, ContextualMenu, and ComboBox
+- Moved nav, recommendation and card to m365-admin package
+
+## 6.13.6
+Thu, 12 Jul 2018 10:29:30 GMT
+
+### Patches
+
+- Consume horizontal bar chart in card, fix bad import 
+
+## 6.13.5
+Tue, 10 Jul 2018 21:54:07 GMT
+
+### Patches
+
+- Update to latest Fluent depths/shadows
+
+## 6.13.4
+Mon, 09 Jul 2018 18:08:32 GMT
+
+### Patches
+
+- Remove createComponent utility and use Foundation package.
+- changing imports for charts in react DashboardCard to point to correct package
+- Update to latest Fluent depths
+
+## 6.13.2
+Fri, 06 Jul 2018 10:23:46 GMT
+
+### Patches
+
+- css changes for action bar
+
+## 6.13.1
+Tue, 03 Jul 2018 17:41:15 GMT
+
+### Patches
+
+- Minor tweak to FormDropdown component to make it compatible with tightened Dropdown API
+
+## 6.13.0
+Tue, 03 Jul 2018 10:23:19 GMT
+
+### Minor changes
+
+- Stack: clean up file structure
+
+## 6.12.2
+Mon, 02 Jul 2018 10:21:36 GMT
+
+### Patches
+
+- css changes for action bar
 
 ## 6.12.1
 Fri, 29 Jun 2018 10:24:05 GMT

@@ -1,18 +1,43 @@
 /* tslint:disable-next-line:no-unused-variable */
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { setRTL } from '../../Utilities';
+import { setRTL, IRenderFunction } from '../../Utilities';
 import { Persona } from './Persona';
 import { mount, ReactWrapper } from 'enzyme';
 import { getIcon } from '../../Styling';
+import { IPersonaSharedProps, IPersonaProps, PersonaPresence, PersonaSize } from '../../index';
+import { TestImages } from 'office-ui-fabric-react/lib/common/TestImages';
 
 const testImage1x1 =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
 const STYLES = {
   green: '.ms-Persona-initials--green',
   initials: '.ms-Persona-initials',
+  primaryText: '.ms-Persona-primaryText',
   black: '.ms-Persona-initials--black',
   red: '.ms-Persona-initials--red'
+};
+
+/**
+ * function to override the default onRender callbacks
+ */
+export const wrapPersona = (
+  example: IPersonaSharedProps
+): ((coinProps: IPersonaProps, defaultRenderer: IRenderFunction<IPersonaProps>) => JSX.Element | null) => {
+  return (coinProps, defaultCoinRenderer): JSX.Element | null => {
+    return defaultCoinRenderer(coinProps);
+  };
+};
+
+const examplePersona: IPersonaSharedProps = {
+  imageUrl: TestImages.personaMale,
+  imageInitials: 'SV',
+  text: 'Swapnil Vaibhav',
+  secondaryText: 'Software Engineer',
+  tertiaryText: 'In a meeting',
+  optionalText: 'Available at 4:00pm',
+  size: PersonaSize.size100,
+  presence: PersonaPresence.blocked
 };
 
 describe('Persona', () => {
@@ -44,6 +69,19 @@ describe('Persona', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders correctly with onRender callback', () => {
+    const component = renderer.create(
+      <Persona
+        {...examplePersona}
+        onRenderPrimaryText={wrapPersona(examplePersona)}
+        onRenderSecondaryText={wrapPersona(examplePersona)}
+        onRenderTertiaryText={wrapPersona(examplePersona)}
+      />
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   describe('initials and colors', () => {
     it('calculates an expected initials in LTR if one was not specified', () => {
       let wrapper = mount(<Persona text="Kat Larrson" />);
@@ -62,6 +100,12 @@ describe('Persona', () => {
       result = wrapper.find(STYLES.initials);
       expect(result).toHaveLength(1);
       expect(result.text()).toEqual('45');
+      wrapper.unmount();
+
+      wrapper = mount(<Persona text="Swapnil Vaibhav" />);
+      result = wrapper.find(STYLES.primaryText);
+      expect(result).toHaveLength(1);
+      expect(result.text()).toEqual('Swapnil Vaibhav');
       wrapper.unmount();
 
       wrapper = mount(<Persona text="+1 (555) 6789" />);

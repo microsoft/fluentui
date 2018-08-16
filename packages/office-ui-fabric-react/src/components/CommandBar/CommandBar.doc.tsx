@@ -30,7 +30,7 @@ export const CommandBarPageProps: IDocPageProps = {
       view: <CommandBarBasicExample {...cmdBarParamsTextAndIcons} />
     },
     {
-      title: 'CommandBar custom buttons',
+      title: 'CommandBar custom buttons and overflow menu',
       code: CommandBarButtonAsExampleCode,
       view: <CommandBarButtonAsExample {...cmdBarParamsTextAndIcons} />
     }
@@ -43,5 +43,6 @@ export const CommandBarPageProps: IDocPageProps = {
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/CommandBar/docs/CommandBarDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/CommandBar/docs/CommandBarDonts.md'),
-  isHeaderVisible: true
+  isHeaderVisible: true,
+  isFeedbackVisible: true
 };

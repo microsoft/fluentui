@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IRenderFunction } from '../../Utilities';
+import { IRefObject, IRenderFunction } from '../../Utilities';
 import { ICalloutProps } from '../../Callout';
 import { IPanelProps } from '../../Panel';
 import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.types';
@@ -9,7 +9,7 @@ export interface ISelectableDroppableTextProps<T> extends React.HTMLAttributes<T
    * Optional callback to access the ISelectableDroppableText interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: T | null) => void;
+  componentRef?: IRefObject<T>;
 
   /**
    * Descriptive label for the ISelectableDroppableText

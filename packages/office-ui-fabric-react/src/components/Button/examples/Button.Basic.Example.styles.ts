@@ -1,10 +1,6 @@
 import { IStyle } from '../../../Styling';
 
-export interface IButtonBasicExampleStyleProps {
-  /**
-   * 404 No Style Props Found
-   */
-}
+export type IButtonBasicExampleStyleProps = {};
 
 export interface IButtonBasicExampleStyles {
   example?: IStyle;

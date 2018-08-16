@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IEditSectionProps, ComponentPageSection } from './EditSection.types';
+import { IEditSectionProps } from './EditSection.types';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
 
@@ -11,14 +11,13 @@ export class EditSection extends React.Component<IEditSectionProps, {}> {
       return null;
     }
 
-    const { title, section: sectionIndex, url } = this.props;
-    const section = ComponentPageSection[sectionIndex!];
+    const { section, title, url } = this.props;
     const readableSection = this._getReadableSection();
 
     return (
       <TooltipHost
         key={`${title}-${section}-editButton`}
-        content={`Edit ${title} ${readableSection} on GitHub`}
+        content={`Edit ${title} ${readableSection}`}
         id={`${title}-${section}-editButtonHost`}
       >
         <IconButton
@@ -33,18 +32,16 @@ export class EditSection extends React.Component<IEditSectionProps, {}> {
   }
 
   private _getReadableSection(): string {
-    const { section: sectionIndex, readableSection: readableSectionProp } = this.props;
-    if (readableSectionProp) {
-      return readableSectionProp;
+    if (this.props.readableSection) {
+      return this.props.readableSection;
     }
-
-    const section = ComponentPageSection[sectionIndex!];
+    const { section } = this.props;
     let readableSection = section;
-    switch (sectionIndex) {
-      case ComponentPageSection.BestPractices:
+    switch (section) {
+      case 'BestPractices':
         readableSection = 'Best Practices';
         break;
-      case ComponentPageSection.Donts:
+      case 'Donts':
         readableSection = "Don'ts";
         break;
       default:

@@ -6,7 +6,7 @@ const MS_CHECKBOX_TRANSITION_DURATION = '200ms';
 const MS_CHECKBOX_TRANSITION_TIMING = 'cubic-bezier(.4, 0, .23, 1)';
 
 export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
-  const { className, theme, reversed, checked, disabled } = props;
+  const { className, theme, reversed, checked, disabled, isUsingCustomLabelRender } = props;
   const { semanticColors } = theme;
   const checkmarkFontColor = semanticColors.inputForegroundChecked;
   const checkmarkFontColorCheckedDisabled = semanticColors.disabledBackground;
@@ -44,11 +44,23 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
       !disabled && [
         !checked && {
           selectors: {
-            ':hover .ms-Checkbox-checkbox': { borderColor: checkboxBorderHoveredColor },
+            ':hover .ms-Checkbox-checkbox': {
+              borderColor: checkboxBorderHoveredColor,
+              selectors: {
+                [HighContrastSelector]: {
+                  borderColor: 'Highlight'
+                }
+              }
+            },
             ':focus .ms-Checkbox-checkbox': { borderColor: checkboxBorderHoveredColor },
             ':hover .ms-Checkbox-checkmark': {
               color: checkmarkFontColorHovered,
-              opacity: '1'
+              opacity: '1',
+              selectors: {
+                [HighContrastSelector]: {
+                  color: 'Highlight'
+                }
+              }
             }
           }
         },
@@ -65,12 +77,20 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
             [HighContrastSelector]: {
               selectors: {
                 ':hover .ms-Checkbox-checkbox': {
-                  background: 'WindowText',
-                  borderColor: 'WindowText'
+                  background: 'Window',
+                  borderColor: 'Highlight'
                 },
                 ':focus .ms-Checkbox-checkbox': {
-                  background: 'WindowText',
-                  borderColor: 'WindowText'
+                  background: 'Highlight'
+                },
+                ':focus:hover .ms-Checkbox-checkbox': {
+                  background: 'Highlight'
+                },
+                ':focus:hover .ms-Checkbox-checkmark': {
+                  color: 'Window'
+                },
+                ':hover .ms-Checkbox-checkmark': {
+                  color: 'Highlight'
                 }
               }
             }
@@ -90,7 +110,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
       {
         display: 'flex',
         margin: '0 -4px',
-        alignItems: 'center',
+        alignItems: isUsingCustomLabelRender ? 'center' : 'flex-start',
         cursor: disabled ? 'default' : 'pointer',
         position: 'relative',
         userSelect: 'none',
@@ -128,8 +148,8 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
           borderColor: checkboxBorderColorChecked,
           selectors: {
             [HighContrastSelector]: {
-              background: 'WindowText',
-              borderColor: 'WindowText'
+              background: 'Highlight',
+              borderColor: 'Highlight'
             }
           }
         },
@@ -160,7 +180,8 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
       {
         color: disabled ? checkboxTextColorDisabled : checkboxTextColor,
         margin: '0 4px',
-        fontSize: FontSizes.medium
+        fontSize: FontSizes.medium,
+        lineHeight: '20px'
       }
     ]
   };

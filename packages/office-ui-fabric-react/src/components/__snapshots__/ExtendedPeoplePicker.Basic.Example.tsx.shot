@@ -33,13 +33,15 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
           className="ms-BasePicker-text"
           role="list"
         >
-          <div>
+          <div
+            data-is-focusable={true}
+          >
             TO:
           </div>
           <input
             aria-activedescendant={undefined}
             aria-controls="selected-suggestion-alert"
-            aria-expanded="true"
+            aria-expanded={false}
             aria-haspopup="true"
             aria-label="People Picker"
             aria-owns="suggestion-list"
@@ -113,9 +115,9 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
           }
     >
       <button
+        aria-checked={false}
         aria-disabled={undefined}
-        aria-label="Controlled component"
-        aria-pressed={false}
+        aria-label={undefined}
         className=
             ms-Toggle-background
             {
@@ -167,6 +169,7 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
         id="Toggle1"
         onChange={[Function]}
         onClick={[Function]}
+        role="switch"
         type="button"
       >
         <div

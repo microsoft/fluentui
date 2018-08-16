@@ -31,5 +31,6 @@ export const ColorPickerPageProps: IDocPageProps = {
   bestPractices: '',
   dos: '',
   donts: '',
-  isHeaderVisible: true
+  isHeaderVisible: true,
+  isFeedbackVisible: true
 };

@@ -90,13 +90,10 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
   private _calendar = createRef<ICalendar>();
   private _datePickerDiv = createRef<HTMLDivElement>();
   private _textField = createRef<ITextField>();
-  private _preventFocusOpeningPicker: boolean;
 
   constructor(props: IDatePickerProps) {
     super(props);
     this.state = this._getDefaultState();
-
-    this._preventFocusOpeningPicker = false;
   }
 
   public componentWillReceiveProps(nextProps: IDatePickerProps): void {
@@ -190,7 +187,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
             onFocus={this._onTextFieldFocus}
             onBlur={this._onTextFieldBlur}
             onClick={this._onTextFieldClick}
-            onChanged={this._onTextFieldChanged}
+            onChange={this._onTextFieldChanged}
             errorMessage={errorMessage}
             placeholder={placeholder}
             borderless={borderless}
@@ -287,11 +284,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
     }
 
     if (!this.props.allowTextInput) {
-      if (!this._preventFocusOpeningPicker) {
-        this._showDatePickerPopup();
-      } else {
-        this._preventFocusOpeningPicker = false;
-      }
+      this._showDatePickerPopup();
     }
   };
 
@@ -299,7 +292,10 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
     this._validateTextInput();
   };
 
-  private _onTextFieldChanged = (newValue: string): void => {
+  private _onTextFieldChanged = (
+    ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
+    newValue: string
+  ): void => {
     if (this.props.allowTextInput) {
       if (this.state.isDatePickerShown) {
         this._dismissDatePickerPopup();
@@ -358,7 +354,6 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
 
   private _showDatePickerPopup(): void {
     if (!this.state.isDatePickerShown) {
-      this._preventFocusOpeningPicker = true;
       this.setState({
         isDatePickerShown: true,
         errorMessage: ''
@@ -380,7 +375,6 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
    * Callback for closing the calendar callout
    */
   private _calendarDismissed = (): void => {
-    this._preventFocusOpeningPicker = true;
     this._dismissDatePickerPopup();
     // don't need to focus the text box, if necessary the focusTrapZone will do it
   };

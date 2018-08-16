@@ -1,9 +1,7 @@
 import * as React from 'react';
-import { IStyleFunction, classNamesFunction } from '../../../Utilities';
+import { IStyleFunction, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-
 import { Overlay } from '../Overlay';
-
 import { getStyles, IOverlayExampleStyles } from './Overlay.Example.styles';
 
 export interface IOverlayDarkExampleProps {
@@ -25,7 +23,7 @@ export class OverlayDarkExample extends React.Component<
   public render(): JSX.Element {
     const { isOverlayVisible } = this.state;
     const getClassNames = classNamesFunction<{}, IOverlayExampleStyles>();
-    const classNames = getClassNames(getStyles);
+    const classNames = getClassNames(getStyles, {});
 
     return (
       <div>

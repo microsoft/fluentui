@@ -6,7 +6,7 @@ import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { List, ScrollToMode } from 'office-ui-fabric-react/lib/List';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import './List.Scrolling.Example.scss';
-import { Checkbox } from '../../..';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 
 export interface IListScrollingExampleProps {
   items: any[];
@@ -62,7 +62,7 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
         />
         <div>
           Scroll item index:
-          <TextField value={this.state.selectedIndex.toString(10)} onChanged={this._onChangeText} />
+          <TextField value={this.state.selectedIndex.toString(10)} onChange={this._onChangeText} />
         </div>
         <div>
           <Checkbox
@@ -102,7 +102,7 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
     return h;
   }
 
-  private _onChangeText = (value: any): void => {
+  private _onChangeText = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, value: string): void => {
     this._scroll(parseInt(value, 10) || 0, this.state.scrollToMode);
   };
 

@@ -5,10 +5,29 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
   className="docs-TextFieldErrorExample"
 >
   <div
-    className="ms-TextField"
+    className=
+        ms-TextField
+        {
+          box-shadow: none;
+          box-sizing: border-box;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          border-width: 2px;
+        }
   >
     <div
-      className="ms-TextField-wrapper"
+      className=
+          ms-TextField-wrapper
+
     >
       <label
         className=
@@ -30,17 +49,84 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
               word-wrap: break-word;
             }
         htmlFor="TextField0"
+        required={undefined}
       >
         TextField with a string-based validator. Hint: the length of the input string must be less than 3.
       </label>
       <div
-        className="ms-TextField-fieldGroup"
+        className=
+            ms-TextField-fieldGroup
+            {
+              align-items: stretch;
+              background: #ffffff;
+              border: 1px solid #a6a6a6;
+              box-shadow: none;
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: row;
+              height: 32px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+            }
+            &:-ms-clear {
+              display: none;
+            }
+            &:hover {
+              border-color: #212121;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+            }
+            &::placeholder {
+              color: #666666;
+              opacity: 1;
+            }
+            &:-ms-input-placeholder {
+              color: #666666;
+              opacity: 1;
+            }
       >
         <input
           aria-describedby={undefined}
           aria-invalid={false}
           aria-label={undefined}
-          className="ms-TextField-field"
+          className=
+              ms-TextField-field
+              {
+                background-color: transparent;
+                background: none;
+                border-radius: 0px;
+                border: none;
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #333333;
+                font-size: 14px;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                min-width: 0px;
+                outline: 0px;
+                padding-bottom: 0;
+                padding-left: 12px;
+                padding-right: 12px;
+                padding-top: 0;
+                text-overflow: ellipsis;
+                width: 100%;
+              }
+              &:active, &:focus, &:hover {
+                outline: 0px;
+              }
+              &::placeholder {
+                color: #666666;
+              }
           id="TextField0"
           onBlur={[Function]}
           onChange={[Function]}
@@ -54,10 +140,29 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
     </div>
   </div>
   <div
-    className="ms-TextField"
+    className=
+        ms-TextField
+        {
+          box-shadow: none;
+          box-sizing: border-box;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          border-width: 2px;
+        }
   >
     <div
-      className="ms-TextField-wrapper"
+      className=
+          ms-TextField-wrapper
+
     >
       <label
         className=
@@ -79,17 +184,84 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
               word-wrap: break-word;
             }
         htmlFor="TextField2"
+        required={undefined}
       >
         TextField with a Promise-based validator. Hint: the length of the input string must be less than 3.
       </label>
       <div
-        className="ms-TextField-fieldGroup"
+        className=
+            ms-TextField-fieldGroup
+            {
+              align-items: stretch;
+              background: #ffffff;
+              border: 1px solid #a6a6a6;
+              box-shadow: none;
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: row;
+              height: 32px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+            }
+            &:-ms-clear {
+              display: none;
+            }
+            &:hover {
+              border-color: #212121;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+            }
+            &::placeholder {
+              color: #666666;
+              opacity: 1;
+            }
+            &:-ms-input-placeholder {
+              color: #666666;
+              opacity: 1;
+            }
       >
         <input
           aria-describedby={undefined}
           aria-invalid={false}
           aria-label={undefined}
-          className="ms-TextField-field"
+          className=
+              ms-TextField-field
+              {
+                background-color: transparent;
+                background: none;
+                border-radius: 0px;
+                border: none;
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #333333;
+                font-size: 14px;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                min-width: 0px;
+                outline: 0px;
+                padding-bottom: 0;
+                padding-left: 12px;
+                padding-right: 12px;
+                padding-top: 0;
+                text-overflow: ellipsis;
+                width: 100%;
+              }
+              &:active, &:focus, &:hover {
+                outline: 0px;
+              }
+              &::placeholder {
+                color: #666666;
+              }
           id="TextField2"
           onBlur={[Function]}
           onChange={[Function]}
@@ -103,10 +275,34 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
     </div>
   </div>
   <div
-    className="ms-TextField"
+    className=
+        ms-TextField
+        {
+          box-shadow: none;
+          box-sizing: border-box;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          border-width: 2px;
+        }
   >
     <div
-      className="ms-TextField-wrapper"
+      className=
+          ms-TextField-wrapper
+          {
+            border-color: #a80000;
+          }
+          &:focus, &:hover {
+            border-color: #a80000;
+          }
     >
       <label
         className=
@@ -128,17 +324,88 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
               word-wrap: break-word;
             }
         htmlFor="TextField4"
+        required={undefined}
       >
         TextField with a string-based validator. Hint: the length of the input string must be less than 3.
       </label>
       <div
-        className="ms-TextField-fieldGroup"
+        className=
+            ms-TextField-fieldGroup
+            {
+              align-items: stretch;
+              background: #ffffff;
+              border-color: #a80000;
+              border: 1px solid #a6a6a6;
+              box-shadow: none;
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: row;
+              height: 32px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+            }
+            &:-ms-clear {
+              display: none;
+            }
+            &:hover {
+              border-color: #212121;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+            }
+            &::placeholder {
+              color: #666666;
+              opacity: 1;
+            }
+            &:-ms-input-placeholder {
+              color: #666666;
+              opacity: 1;
+            }
+            &:focus, &:hover {
+              border-color: #a80000;
+            }
       >
         <input
           aria-describedby="TextFieldDescription5"
           aria-invalid={true}
           aria-label={undefined}
-          className="ms-TextField-field"
+          className=
+              ms-TextField-field
+              {
+                background-color: transparent;
+                background: none;
+                border-radius: 0px;
+                border: none;
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #333333;
+                font-size: 14px;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                min-width: 0px;
+                outline: 0px;
+                padding-bottom: 0;
+                padding-left: 12px;
+                padding-right: 12px;
+                padding-top: 0;
+                text-overflow: ellipsis;
+                width: 100%;
+              }
+              &:active, &:focus, &:hover {
+                outline: 0px;
+              }
+              &::placeholder {
+                color: #666666;
+              }
           id="TextField4"
           onBlur={[Function]}
           onChange={[Function]}
@@ -159,10 +426,29 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
     </span>
   </div>
   <div
-    className="ms-TextField"
+    className=
+        ms-TextField
+        {
+          box-shadow: none;
+          box-sizing: border-box;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          border-width: 2px;
+        }
   >
     <div
-      className="ms-TextField-wrapper"
+      className=
+          ms-TextField-wrapper
+
     >
       <label
         className=
@@ -184,17 +470,84 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
               word-wrap: break-word;
             }
         htmlFor="TextField6"
+        required={undefined}
       >
         TextField with a string-based validator. Hint: the length of the input string must be less than 3.
       </label>
       <div
-        className="ms-TextField-fieldGroup"
+        className=
+            ms-TextField-fieldGroup
+            {
+              align-items: stretch;
+              background: #ffffff;
+              border: 1px solid #a6a6a6;
+              box-shadow: none;
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: row;
+              height: 32px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+            }
+            &:-ms-clear {
+              display: none;
+            }
+            &:hover {
+              border-color: #212121;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+            }
+            &::placeholder {
+              color: #666666;
+              opacity: 1;
+            }
+            &:-ms-input-placeholder {
+              color: #666666;
+              opacity: 1;
+            }
       >
         <input
           aria-describedby={undefined}
           aria-invalid={false}
           aria-label={undefined}
-          className="ms-TextField-field"
+          className=
+              ms-TextField-field
+              {
+                background-color: transparent;
+                background: none;
+                border-radius: 0px;
+                border: none;
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #333333;
+                font-size: 14px;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                min-width: 0px;
+                outline: 0px;
+                padding-bottom: 0;
+                padding-left: 12px;
+                padding-right: 12px;
+                padding-top: 0;
+                text-overflow: ellipsis;
+                width: 100%;
+              }
+              &:active, &:focus, &:hover {
+                outline: 0px;
+              }
+              &::placeholder {
+                color: #666666;
+              }
           id="TextField6"
           onBlur={[Function]}
           onChange={[Function]}
@@ -208,10 +561,29 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
     </div>
   </div>
   <div
-    className="ms-TextField"
+    className=
+        ms-TextField
+        {
+          box-shadow: none;
+          box-sizing: border-box;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          border-width: 2px;
+        }
   >
     <div
-      className="ms-TextField-wrapper"
+      className=
+          ms-TextField-wrapper
+
     >
       <label
         className=
@@ -233,17 +605,84 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
               word-wrap: break-word;
             }
         htmlFor="TextField8"
+        required={undefined}
       >
         TextField with a Promise-based validator. Hint: the length of the input string must be less than 3.
       </label>
       <div
-        className="ms-TextField-fieldGroup"
+        className=
+            ms-TextField-fieldGroup
+            {
+              align-items: stretch;
+              background: #ffffff;
+              border: 1px solid #a6a6a6;
+              box-shadow: none;
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: row;
+              height: 32px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+            }
+            &:-ms-clear {
+              display: none;
+            }
+            &:hover {
+              border-color: #212121;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+            }
+            &::placeholder {
+              color: #666666;
+              opacity: 1;
+            }
+            &:-ms-input-placeholder {
+              color: #666666;
+              opacity: 1;
+            }
       >
         <input
           aria-describedby={undefined}
           aria-invalid={false}
           aria-label={undefined}
-          className="ms-TextField-field"
+          className=
+              ms-TextField-field
+              {
+                background-color: transparent;
+                background: none;
+                border-radius: 0px;
+                border: none;
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #333333;
+                font-size: 14px;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                min-width: 0px;
+                outline: 0px;
+                padding-bottom: 0;
+                padding-left: 12px;
+                padding-right: 12px;
+                padding-top: 0;
+                text-overflow: ellipsis;
+                width: 100%;
+              }
+              &:active, &:focus, &:hover {
+                outline: 0px;
+              }
+              &::placeholder {
+                color: #666666;
+              }
           id="TextField8"
           onBlur={[Function]}
           onChange={[Function]}
@@ -257,10 +696,34 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
     </div>
   </div>
   <div
-    className="ms-TextField"
+    className=
+        ms-TextField
+        {
+          box-shadow: none;
+          box-sizing: border-box;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          border-width: 2px;
+        }
   >
     <div
-      className="ms-TextField-wrapper"
+      className=
+          ms-TextField-wrapper
+          {
+            border-color: #a80000;
+          }
+          &:focus, &:hover {
+            border-color: #a80000;
+          }
     >
       <label
         className=
@@ -282,17 +745,88 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
               word-wrap: break-word;
             }
         htmlFor="TextField10"
+        required={undefined}
       >
         TextField has both description and error message.
       </label>
       <div
-        className="ms-TextField-fieldGroup"
+        className=
+            ms-TextField-fieldGroup
+            {
+              align-items: stretch;
+              background: #ffffff;
+              border-color: #a80000;
+              border: 1px solid #a6a6a6;
+              box-shadow: none;
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: row;
+              height: 32px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+            }
+            &:-ms-clear {
+              display: none;
+            }
+            &:hover {
+              border-color: #212121;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+            }
+            &::placeholder {
+              color: #666666;
+              opacity: 1;
+            }
+            &:-ms-input-placeholder {
+              color: #666666;
+              opacity: 1;
+            }
+            &:focus, &:hover {
+              border-color: #a80000;
+            }
       >
         <input
           aria-describedby="TextFieldDescription11"
           aria-invalid={true}
           aria-label={undefined}
-          className="ms-TextField-field"
+          className=
+              ms-TextField-field
+              {
+                background-color: transparent;
+                background: none;
+                border-radius: 0px;
+                border: none;
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #333333;
+                font-size: 14px;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                min-width: 0px;
+                outline: 0px;
+                padding-bottom: 0;
+                padding-left: 12px;
+                padding-right: 12px;
+                padding-top: 0;
+                text-overflow: ellipsis;
+                width: 100%;
+              }
+              &:active, &:focus, &:hover {
+                outline: 0px;
+              }
+              &::placeholder {
+                color: #666666;
+              }
           id="TextField10"
           onBlur={[Function]}
           onChange={[Function]}
@@ -308,7 +842,12 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
       id="TextFieldDescription11"
     >
       <span
-        className="ms-TextField-description"
+        className=
+            ms-TextField-description
+            {
+              color: #666666;
+              font-size: 11px;
+            }
       >
         This field has description and error message both under the input box.
       </span>
@@ -318,10 +857,29 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
     </span>
   </div>
   <div
-    className="ms-TextField"
+    className=
+        ms-TextField
+        {
+          box-shadow: none;
+          box-sizing: border-box;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          border-width: 2px;
+        }
   >
     <div
-      className="ms-TextField-wrapper"
+      className=
+          ms-TextField-wrapper
+
     >
       <label
         className=
@@ -343,17 +901,84 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
               word-wrap: break-word;
             }
         htmlFor="TextField12"
+        required={undefined}
       >
         TextField with a string-based validator. Hint: the length of the input string must be less than 3.
       </label>
       <div
-        className="ms-TextField-fieldGroup"
+        className=
+            ms-TextField-fieldGroup
+            {
+              align-items: stretch;
+              background: #ffffff;
+              border: 1px solid #a6a6a6;
+              box-shadow: none;
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: row;
+              height: 32px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+            }
+            &:-ms-clear {
+              display: none;
+            }
+            &:hover {
+              border-color: #212121;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+            }
+            &::placeholder {
+              color: #666666;
+              opacity: 1;
+            }
+            &:-ms-input-placeholder {
+              color: #666666;
+              opacity: 1;
+            }
       >
         <input
           aria-describedby={undefined}
           aria-invalid={false}
           aria-label={undefined}
-          className="ms-TextField-field"
+          className=
+              ms-TextField-field
+              {
+                background-color: transparent;
+                background: none;
+                border-radius: 0px;
+                border: none;
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #333333;
+                font-size: 14px;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                min-width: 0px;
+                outline: 0px;
+                padding-bottom: 0;
+                padding-left: 12px;
+                padding-right: 12px;
+                padding-top: 0;
+                text-overflow: ellipsis;
+                width: 100%;
+              }
+              &:active, &:focus, &:hover {
+                outline: 0px;
+              }
+              &::placeholder {
+                color: #666666;
+              }
           id="TextField12"
           onBlur={[Function]}
           onChange={[Function]}
@@ -368,10 +993,29 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
     </div>
   </div>
   <div
-    className="ms-TextField"
+    className=
+        ms-TextField
+        {
+          box-shadow: none;
+          box-sizing: border-box;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          border-width: 2px;
+        }
   >
     <div
-      className="ms-TextField-wrapper"
+      className=
+          ms-TextField-wrapper
+
     >
       <label
         className=
@@ -393,17 +1037,84 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
               word-wrap: break-word;
             }
         htmlFor="TextField14"
+        required={undefined}
       >
         TextField that validates only on focus and blur. Hint: the length of the input string must be less than 3.
       </label>
       <div
-        className="ms-TextField-fieldGroup"
+        className=
+            ms-TextField-fieldGroup
+            {
+              align-items: stretch;
+              background: #ffffff;
+              border: 1px solid #a6a6a6;
+              box-shadow: none;
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: row;
+              height: 32px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+            }
+            &:-ms-clear {
+              display: none;
+            }
+            &:hover {
+              border-color: #212121;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+            }
+            &::placeholder {
+              color: #666666;
+              opacity: 1;
+            }
+            &:-ms-input-placeholder {
+              color: #666666;
+              opacity: 1;
+            }
       >
         <input
           aria-describedby={undefined}
           aria-invalid={false}
           aria-label={undefined}
-          className="ms-TextField-field"
+          className=
+              ms-TextField-field
+              {
+                background-color: transparent;
+                background: none;
+                border-radius: 0px;
+                border: none;
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #333333;
+                font-size: 14px;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                min-width: 0px;
+                outline: 0px;
+                padding-bottom: 0;
+                padding-left: 12px;
+                padding-right: 12px;
+                padding-top: 0;
+                text-overflow: ellipsis;
+                width: 100%;
+              }
+              &:active, &:focus, &:hover {
+                outline: 0px;
+              }
+              &::placeholder {
+                color: #666666;
+              }
           id="TextField14"
           onBlur={[Function]}
           onChange={[Function]}
@@ -418,10 +1129,29 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
     </div>
   </div>
   <div
-    className="ms-TextField"
+    className=
+        ms-TextField
+        {
+          box-shadow: none;
+          box-sizing: border-box;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          border-width: 2px;
+        }
   >
     <div
-      className="ms-TextField-wrapper"
+      className=
+          ms-TextField-wrapper
+
     >
       <label
         className=
@@ -443,17 +1173,84 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
               word-wrap: break-word;
             }
         htmlFor="TextField16"
+        required={undefined}
       >
         TextField that validates only on blur. Hint: the length of the input string must be less than 3.
       </label>
       <div
-        className="ms-TextField-fieldGroup"
+        className=
+            ms-TextField-fieldGroup
+            {
+              align-items: stretch;
+              background: #ffffff;
+              border: 1px solid #a6a6a6;
+              box-shadow: none;
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: row;
+              height: 32px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+            }
+            &:-ms-clear {
+              display: none;
+            }
+            &:hover {
+              border-color: #212121;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+            }
+            &::placeholder {
+              color: #666666;
+              opacity: 1;
+            }
+            &:-ms-input-placeholder {
+              color: #666666;
+              opacity: 1;
+            }
       >
         <input
           aria-describedby={undefined}
           aria-invalid={false}
           aria-label={undefined}
-          className="ms-TextField-field"
+          className=
+              ms-TextField-field
+              {
+                background-color: transparent;
+                background: none;
+                border-radius: 0px;
+                border: none;
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #333333;
+                font-size: 14px;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                min-width: 0px;
+                outline: 0px;
+                padding-bottom: 0;
+                padding-left: 12px;
+                padding-right: 12px;
+                padding-top: 0;
+                text-overflow: ellipsis;
+                width: 100%;
+              }
+              &:active, &:focus, &:hover {
+                outline: 0px;
+              }
+              &::placeholder {
+                color: #666666;
+              }
           id="TextField16"
           onBlur={[Function]}
           onChange={[Function]}
@@ -468,10 +1265,43 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
     </div>
   </div>
   <div
-    className="ms-TextField ms-TextField--underlined undefined"
+    className=
+        ms-TextField
+        ms-TextField--underlined
+        {
+          border: 0px solid #a6a6a6;
+          box-shadow: none;
+          box-sizing: border-box;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          border-width: 2px;
+        }
+        &:hover {
+          border-color: #212121;
+        }
   >
     <div
-      className="ms-TextField-wrapper"
+      className=
+          ms-TextField-wrapper
+          {
+            border-bottom-color: inherit;
+            border-bottom-style: solid;
+            border-bottom-width: 1px;
+            display: flex;
+            width: 100%;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover {
+            border-color: Highlight;
+          }
     >
       <label
         className=
@@ -481,29 +1311,103 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
               box-sizing: border-box;
               color: #333333;
               display: block;
+              font-size: 14px;
+              height: 32px;
+              line-height: 22px;
               margin-bottom: 0px;
               margin-left: 0px;
-              margin-right: 0px;
+              margin-right: 8px;
               margin-top: 0px;
               overflow-wrap: break-word;
               padding-bottom: 5px;
-              padding-left: 0;
-              padding-right: 0;
+              padding-left: 12px;
+              padding-right: 0px;
               padding-top: 5px;
               word-wrap: break-word;
             }
         htmlFor="TextField18"
+        required={undefined}
       >
         Underlined TextField
       </label>
       <div
-        className="ms-TextField-fieldGroup"
+        className=
+            ms-TextField-fieldGroup
+            {
+              align-items: stretch;
+              background: #ffffff;
+              border-width: 0px;
+              border: 1px solid #a6a6a6;
+              box-shadow: none;
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: row;
+              flex: 1 1 0px;
+              height: 32px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+              text-align: left;
+            }
+            &:-ms-clear {
+              display: none;
+            }
+            &:hover {
+              border-color: #212121;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+            }
+            &::placeholder {
+              color: #666666;
+              opacity: 1;
+            }
+            &:-ms-input-placeholder {
+              color: #666666;
+              opacity: 1;
+            }
       >
         <input
           aria-describedby={undefined}
           aria-invalid={false}
           aria-label={undefined}
-          className="ms-TextField-field"
+          className=
+              ms-TextField-field
+              {
+                background-color: transparent;
+                background: none;
+                border-radius: 0px;
+                border: none;
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #333333;
+                font-size: 14px;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                min-width: 0px;
+                outline: 0px;
+                padding-bottom: 0;
+                padding-left: 12px;
+                padding-right: 12px;
+                padding-top: 0;
+                text-align: left;
+                text-overflow: ellipsis;
+                width: 100%;
+              }
+              &:active, &:focus, &:hover {
+                outline: 0px;
+              }
+              &::placeholder {
+                color: #666666;
+              }
           id="TextField18"
           onBlur={[Function]}
           onChange={[Function]}
@@ -517,10 +1421,34 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
     </div>
   </div>
   <div
-    className="ms-TextField"
+    className=
+        ms-TextField
+        {
+          box-shadow: none;
+          box-sizing: border-box;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          border-width: 2px;
+        }
   >
     <div
-      className="ms-TextField-wrapper"
+      className=
+          ms-TextField-wrapper
+          {
+            border-color: #a80000;
+          }
+          &:focus, &:hover {
+            border-color: #a80000;
+          }
     >
       <label
         className=
@@ -542,17 +1470,88 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
               word-wrap: break-word;
             }
         htmlFor="TextField20"
+        required={undefined}
       >
         TextField that uses the errorMessage property to set an error state.
       </label>
       <div
-        className="ms-TextField-fieldGroup"
+        className=
+            ms-TextField-fieldGroup
+            {
+              align-items: stretch;
+              background: #ffffff;
+              border-color: #a80000;
+              border: 1px solid #a6a6a6;
+              box-shadow: none;
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: row;
+              height: 32px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+            }
+            &:-ms-clear {
+              display: none;
+            }
+            &:hover {
+              border-color: #212121;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+            }
+            &::placeholder {
+              color: #666666;
+              opacity: 1;
+            }
+            &:-ms-input-placeholder {
+              color: #666666;
+              opacity: 1;
+            }
+            &:focus, &:hover {
+              border-color: #a80000;
+            }
       >
         <input
           aria-describedby="TextFieldDescription21"
           aria-invalid={false}
           aria-label={undefined}
-          className="ms-TextField-field"
+          className=
+              ms-TextField-field
+              {
+                background-color: transparent;
+                background: none;
+                border-radius: 0px;
+                border: none;
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #333333;
+                font-size: 14px;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                min-width: 0px;
+                outline: 0px;
+                padding-bottom: 0;
+                padding-left: 12px;
+                padding-right: 12px;
+                padding-top: 0;
+                text-overflow: ellipsis;
+                width: 100%;
+              }
+              &:active, &:focus, &:hover {
+                outline: 0px;
+              }
+              &::placeholder {
+                color: #666666;
+              }
           id="TextField20"
           onBlur={[Function]}
           onChange={[Function]}
@@ -577,10 +1576,30 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
     className="NumberTextField"
   >
     <div
-      className="ms-TextField NumberTextField-textField"
+      className=
+          ms-TextField
+          NumberTextField-textField
+          {
+            box-shadow: none;
+            box-sizing: border-box;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: relative;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            border-width: 2px;
+          }
     >
       <div
-        className="ms-TextField-wrapper"
+        className=
+            ms-TextField-wrapper
+
       >
         <label
           className=
@@ -602,17 +1621,84 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
                 word-wrap: break-word;
               }
           htmlFor="TextField22"
+          required={undefined}
         >
           Number TextField with valid initial value
         </label>
         <div
-          className="ms-TextField-fieldGroup"
+          className=
+              ms-TextField-fieldGroup
+              {
+                align-items: stretch;
+                background: #ffffff;
+                border: 1px solid #a6a6a6;
+                box-shadow: none;
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: row;
+                height: 32px;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+                position: relative;
+              }
+              &:-ms-clear {
+                display: none;
+              }
+              &:hover {
+                border-color: #212121;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+              }
+              &::placeholder {
+                color: #666666;
+                opacity: 1;
+              }
+              &:-ms-input-placeholder {
+                color: #666666;
+                opacity: 1;
+              }
         >
           <input
             aria-describedby={undefined}
             aria-invalid={false}
             aria-label={undefined}
-            className="ms-TextField-field"
+            className=
+                ms-TextField-field
+                {
+                  background-color: transparent;
+                  background: none;
+                  border-radius: 0px;
+                  border: none;
+                  box-shadow: none;
+                  box-sizing: border-box;
+                  color: #333333;
+                  font-size: 14px;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  min-width: 0px;
+                  outline: 0px;
+                  padding-bottom: 0;
+                  padding-left: 12px;
+                  padding-right: 12px;
+                  padding-top: 0;
+                  text-overflow: ellipsis;
+                  width: 100%;
+                }
+                &:active, &:focus, &:hover {
+                  outline: 0px;
+                }
+                &::placeholder {
+                  color: #666666;
+                }
             id="TextField22"
             onBlur={[Function]}
             onChange={[Function]}
@@ -749,10 +1835,35 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
     className="NumberTextField"
   >
     <div
-      className="ms-TextField NumberTextField-textField"
+      className=
+          ms-TextField
+          NumberTextField-textField
+          {
+            box-shadow: none;
+            box-sizing: border-box;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: relative;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            border-width: 2px;
+          }
     >
       <div
-        className="ms-TextField-wrapper"
+        className=
+            ms-TextField-wrapper
+            {
+              border-color: #a80000;
+            }
+            &:focus, &:hover {
+              border-color: #a80000;
+            }
       >
         <label
           className=
@@ -774,17 +1885,88 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
                 word-wrap: break-word;
               }
           htmlFor="TextField27"
+          required={undefined}
         >
           Number TextField with invalid initial value
         </label>
         <div
-          className="ms-TextField-fieldGroup"
+          className=
+              ms-TextField-fieldGroup
+              {
+                align-items: stretch;
+                background: #ffffff;
+                border-color: #a80000;
+                border: 1px solid #a6a6a6;
+                box-shadow: none;
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: row;
+                height: 32px;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+                position: relative;
+              }
+              &:-ms-clear {
+                display: none;
+              }
+              &:hover {
+                border-color: #212121;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+              }
+              &::placeholder {
+                color: #666666;
+                opacity: 1;
+              }
+              &:-ms-input-placeholder {
+                color: #666666;
+                opacity: 1;
+              }
+              &:focus, &:hover {
+                border-color: #a80000;
+              }
         >
           <input
             aria-describedby="TextFieldDescription28"
             aria-invalid={true}
             aria-label={undefined}
-            className="ms-TextField-field"
+            className=
+                ms-TextField-field
+                {
+                  background-color: transparent;
+                  background: none;
+                  border-radius: 0px;
+                  border: none;
+                  box-shadow: none;
+                  box-sizing: border-box;
+                  color: #333333;
+                  font-size: 14px;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  min-width: 0px;
+                  outline: 0px;
+                  padding-bottom: 0;
+                  padding-left: 12px;
+                  padding-right: 12px;
+                  padding-top: 0;
+                  text-overflow: ellipsis;
+                  width: 100%;
+                }
+                &:active, &:focus, &:hover {
+                  outline: 0px;
+                }
+                &::placeholder {
+                  color: #666666;
+                }
             id="TextField27"
             onBlur={[Function]}
             onChange={[Function]}

@@ -1,16 +1,16 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, createRef } from '../../Utilities';
+import * as stylesImport from './BaseFloatingPicker.scss';
+import { BaseComponent, createRef, css, KeyCodes } from '../../Utilities';
 import { Callout, DirectionalHint } from '../../Callout';
-import { ISuggestionModel } from '../../Pickers';
 import {
   IBaseFloatingPicker,
   IBaseFloatingPickerProps,
   IBaseFloatingPickerSuggestionProps
 } from './BaseFloatingPicker.types';
+import { ISuggestionModel } from '../../Pickers';
 import { ISuggestionsControlProps } from './Suggestions/Suggestions.types';
 import { SuggestionsControl } from './Suggestions/SuggestionsControl';
 import { SuggestionsStore } from './Suggestions/SuggestionsStore';
-import * as stylesImport from './BaseFloatingPicker.scss';
 // tslint:disable-next-line:no-any
 const styles: any = stylesImport;
 
@@ -31,7 +31,6 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
   protected SuggestionsControlOfProperType: new (props: ISuggestionsControlProps<T>) => SuggestionsControl<
     T
   > = SuggestionsControl as new (props: ISuggestionsControlProps<T>) => SuggestionsControl<T>;
-  protected loadingTimer: number | undefined;
   // tslint:disable-next-line:no-any
   protected currentPromise: PromiseLike<any>;
 
@@ -76,7 +75,11 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
         queryString: queryString
       });
 
-      this.showPicker(true /*updateValue*/);
+      if (this.props.onInputChanged) {
+        (this.props.onInputChanged as (filter: string) => void)(queryString);
+      }
+
+      this.updateValue(queryString);
     }
   };
 
@@ -100,13 +103,9 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
     });
 
     // Update the suggestions if updateValue == true
+    const value = this.props.inputElement ? this.props.inputElement.value : '';
     if (updateValue) {
-      const value = this.props.inputElement ? this.props.inputElement.value : '';
-      if (value === '') {
-        this.updateSuggestionWithZeroState();
-      } else {
-        this.updateValue(value);
-      }
+      this.updateValue(value);
     }
   };
 
@@ -122,6 +121,12 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
 
   public componentWillUnmount(): void {
     this._unbindFromInputElement();
+  }
+
+  public componentWillReceiveProps(newProps: P): void {
+    if (newProps.suggestionItems) {
+      this.updateSuggestions(newProps.suggestionItems);
+    }
   }
 
   public completeSuggestion = (): void => {
@@ -179,11 +184,11 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
   }
 
   protected updateValue(updatedValue: string): void {
-    if (this.props.onInputChanged) {
-      (this.props.onInputChanged as (filter: string) => void)(updatedValue);
+    if (updatedValue === '') {
+      this.updateSuggestionWithZeroState();
+    } else {
+      this._onResolveSuggestions(updatedValue);
     }
-
-    this._onResolveSuggestions(updatedValue);
   }
 
   protected updateSuggestionWithZeroState(): void {
@@ -196,44 +201,23 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
     }
   }
 
-  protected updateSuggestionsList(suggestions: T[] | PromiseLike<T[]>, updatedValue?: string): void {
+  protected updateSuggestionsList(suggestions: T[] | PromiseLike<T[]>): void {
     const suggestionsArray: T[] = suggestions as T[];
     const suggestionsPromiseLike: PromiseLike<T[]> = suggestions as PromiseLike<T[]>;
 
     // Check to see if the returned value is an array, if it is then just pass it into the next function.
     // If the returned value is not an array then check to see if it's a promise or PromiseLike. If it is then resolve it asynchronously.
     if (Array.isArray(suggestionsArray)) {
-      if (updatedValue !== undefined) {
-        this.resolveNewValue(updatedValue, suggestionsArray);
-      } else {
-        this.updateSuggestions(suggestionsArray, true /*forceUpdate*/);
-      }
+      this.updateSuggestions(suggestionsArray, true /*forceUpdate*/);
     } else if (suggestionsPromiseLike && suggestionsPromiseLike.then) {
-      this._updateSuggestionsVisible(updatedValue !== undefined && updatedValue !== '');
-
       // Ensure that the promise will only use the callback if it was the most recent one.
       const promise: PromiseLike<T[]> = (this.currentPromise = suggestionsPromiseLike);
       promise.then((newSuggestions: T[]) => {
         if (promise === this.currentPromise) {
-          if (updatedValue !== undefined) {
-            this.resolveNewValue(updatedValue, newSuggestions);
-          } else {
-            this.updateSuggestions(newSuggestions);
-
-            this._updateSuggestionsVisible(newSuggestions.length > 0);
-          }
-          if (this.loadingTimer) {
-            this._async.clearTimeout(this.loadingTimer);
-            this.loadingTimer = undefined;
-          }
+          this.updateSuggestions(newSuggestions, true /*forceUpdate*/);
         }
       });
     }
-  }
-
-  protected resolveNewValue(updatedValue: string, suggestions: T[]): void {
-    this.updateSuggestions(suggestions);
-    this._updateSuggestionsVisible(updatedValue !== '');
   }
 
   protected onChange(item: T): void {
@@ -244,6 +228,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
 
   protected onSuggestionClick = (ev: React.MouseEvent<HTMLElement>, item: T, index: number): void => {
     this.onChange(item);
+    this._updateSuggestionsVisible(false /*shouldShow*/);
   };
 
   protected onSuggestionRemove = (ev: React.MouseEvent<HTMLElement>, item: T, index: number): void => {
@@ -318,8 +303,9 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
       this.props.selectedItems
     );
 
+    this._updateSuggestionsVisible(true /*shouldShow*/);
     if (suggestions !== null) {
-      this.updateSuggestionsList(suggestions, updatedValue);
+      this.updateSuggestionsList(suggestions);
     }
   }
 

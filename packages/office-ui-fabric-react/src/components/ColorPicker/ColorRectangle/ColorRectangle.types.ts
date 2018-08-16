@@ -1,14 +1,14 @@
 import { ITheme, IStyle } from '../../../Styling';
-import { IStyleFunctionOrObject } from '../../../Utilities';
+import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
 import { IColor } from '../../../utilities/color/colors';
 
 export interface IColorRectangle {}
 
-export interface IColorRectangleProps {
+export interface IColorRectangleProps extends IBaseProps<IColorRectangle> {
   /**
    * Gets the component ref.
    */
-  componentRef?: (component: IColorRectangle | null) => void;
+  componentRef?: IRefObject<IColorRectangle>;
 
   /**
    * Current color of the rectangle.

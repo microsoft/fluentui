@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, DelayedRender, getId, customizable, classNamesFunction } from '../../Utilities';
+import { BaseComponent, DelayedRender, getId, classNamesFunction } from '../../Utilities';
 import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
 import { IMessageBarProps, IMessageBarStyleProps, IMessageBarStyles, MessageBarType } from './MessageBar.types';
@@ -12,7 +12,6 @@ export interface IMessageBarState {
   expandSingleLine?: boolean;
 }
 
-@customizable('MessageBar', ['theme'])
 export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarState> {
   public static defaultProps: IMessageBarProps = {
     messageBarType: MessageBarType.info,
@@ -40,12 +39,12 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
       showContent: false,
       expandSingleLine: false
     };
-
-    this._classNames = this._getClassNames();
   }
 
   public render(): JSX.Element {
     const { isMultiline } = this.props;
+
+    this._classNames = this._getClassNames();
 
     return isMultiline ? this._renderMultiLine() : this._renderSingleLine();
   }
@@ -119,7 +118,10 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
 
   private _renderSingleLine(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
     return (
-      <div className={this._classNames.root}>
+      <div
+        className={this._classNames.root}
+        aria-expanded={!this.props.actions && this.props.truncated ? this.state.expandSingleLine : undefined}
+      >
         <div className={this._classNames.content}>
           {this._getIconSpan()}
           {this._renderInnerText()}
@@ -132,8 +134,6 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
   }
 
   private _renderInnerText(): JSX.Element {
-    this._classNames = this._getClassNames();
-
     return (
       <div className={this._classNames.text} id={this.state.labelId}>
         <span className={this._classNames.innerText} role="status" aria-live={this._getAnnouncementPriority()}>

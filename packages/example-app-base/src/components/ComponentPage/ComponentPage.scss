@@ -4,11 +4,10 @@ $componentPageColor: #0f8387;
 $componentPagePadding: 50px;
 $componentPageDividingMargin: 40px;
 $componentSubHeadMargin: 24px;
-$dosColor: #177D3E;
-$dontColor: #A61E22;
+$dosColor: #177d3e;
+$dontColor: #a61e22;
 
 :global {
-
   .ComponentPage {
     background-color: $ms-color-white;
     overflow: hidden;
@@ -50,7 +49,7 @@ $dontColor: #A61E22;
     flex-direction: column;
     justify-content: space-between;
 
-    @media(min-width: $ms-screen-min-xl) {
+    @media (min-width: $ms-screen-min-xl) {
       flex-direction: row;
     }
   }
@@ -106,7 +105,8 @@ $dontColor: #A61E22;
       margin-bottom: 12px;
     }
 
-    a, a:visited {
+    a,
+    a:visited {
       @include ms-font-l;
       text-decoration: none;
     }
@@ -122,7 +122,8 @@ $dontColor: #A61E22;
   .ComponentPage-bestPracticesSection,
   .ComponentPage-variantsSection,
   .ComponentPage-implementationExamplesSection,
-  .ComponentPage-implementationSection {
+  .ComponentPage-implementationSection,
+  .ComponentPage-feedbackSection {
     padding: $componentPagePadding;
   }
 
@@ -143,6 +144,14 @@ $dontColor: #A61E22;
 
     &:hover {
       color: $ms-color-neutralLight;
+    }
+  }
+
+  .ComponentPage-variantsList {
+    @include ms-padding-left(18px);
+
+    li {
+      list-style: disc;
     }
   }
 
@@ -214,5 +223,4 @@ $dontColor: #A61E22;
     padding-left: $componentPagePadding;
     padding-right: $componentPagePadding;
   }
-
 }

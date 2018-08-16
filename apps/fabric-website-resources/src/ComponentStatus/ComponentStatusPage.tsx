@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ComponentPage, IComponentPageSection, PageMarkdown } from '@uifabric/example-app-base';
-import { Link } from 'office-ui-fabric-react/lib/components/Link';
+import { Link } from 'office-ui-fabric-react/lib/Link';
 import { AllComponentsStatus } from './AllComponents.checklist';
 import { ComponentStatusInfoState, IComponentStatusInfoState, InformationLink } from './ComponentStatusState';
 import { ComponentStatus } from './ComponentStatus';

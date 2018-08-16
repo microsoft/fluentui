@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css, classNamesFunction } from '../../../Utilities';
+import { css, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { ActivityItem } from '../ActivityItem';
 import { getStyles, IActivityItemExampleStyleProps, IActivityItemExampleStyles } from './ActivityItem.Example.styles';
 import { Icon } from '../../../Icon';
@@ -8,7 +8,7 @@ import { Link } from '../../../Link';
 export class ActivityItemBasicExample extends React.Component<React.Props<ActivityItemBasicExample>, {}> {
   public render(): JSX.Element {
     const getClassNames = classNamesFunction<IActivityItemExampleStyleProps, IActivityItemExampleStyles>();
-    const classNames = getClassNames(getStyles);
+    const classNames = getClassNames(getStyles, {});
 
     // tslint:disable:jsx-no-lambda
     const activityItemExamples = [

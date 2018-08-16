@@ -16,7 +16,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
           font-size: 12px;
           font-weight: 400;
           justify-content: flex-start;
-          line-height: 17px;
           margin-top: 20px;
         }
     style={undefined}
@@ -145,6 +144,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               {
                 background-color: transparent;
                 background: none;
+                border-bottom: 1px solid transparent;
                 border: none;
                 color: #0078d4;
                 cursor: pointer;
@@ -171,14 +171,23 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               }
               .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
-                bottom: 1px;
+                bottom: -1px;
                 content: "";
-                left: 1px;
+                left: -1px;
                 outline: 1px solid #666666;
                 position: absolute;
-                right: 1px;
-                top: 1px;
+                right: -1px;
+                top: -1px;
                 z-index: 1;
+              }
+              @media screen and (-ms-high-contrast: white-on-black){& {
+                color: #FFFF00;
+              }
+              @media screen and (-ms-high-contrast: black-on-white){& {
+                color: #00009F;
+              }
+              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -246,7 +255,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
           font-size: 12px;
           font-weight: 400;
           justify-content: flex-start;
-          line-height: 17px;
           margin-top: 20px;
         }
     style={undefined}
@@ -328,53 +336,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               <span>
                 JM
               </span>
-            </div>
-            <div
-              className=
-                  ms-Image
-                  ms-Persona-image
-                  {
-                    border-radius: 50%;
-                    border: 0px;
-                    height: 16px;
-                    left: 0px;
-                    margin-right: 10px;
-                    overflow: hidden;
-                    perspective: 1px;
-                    position: absolute;
-                    top: 0px;
-                    width: 16px;
-                  }
-              style={
-                Object {
-                  "height": undefined,
-                  "width": undefined,
-                }
-              }
-            >
-              <img
-                alt=""
-                className=
-                    ms-Image-image
-                    ms-Image-image--cover
-                    ms-Image-image--portrait
-                    is-notLoaded
-                    is-fadeIn
-                    {
-                      display: block;
-                      height: auto;
-                      left: 50% /* @noflip */;
-                      opacity: 0;
-                      position: absolute;
-                      top: 50%;
-                      transform: translate(-50%,-50%);
-                      width: 100%;
-                    }
-                onError={[Function]}
-                onLoad={[Function]}
-                role={undefined}
-                src={undefined}
-              />
             </div>
           </div>
         </div>
@@ -484,6 +445,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               {
                 background-color: transparent;
                 background: none;
+                border-bottom: 1px solid transparent;
                 border: none;
                 color: #0078d4;
                 cursor: pointer;
@@ -510,14 +472,23 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               }
               .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
-                bottom: 1px;
+                bottom: -1px;
                 content: "";
-                left: 1px;
+                left: -1px;
                 outline: 1px solid #666666;
                 position: absolute;
-                right: 1px;
-                top: 1px;
+                right: -1px;
+                top: -1px;
                 z-index: 1;
+              }
+              @media screen and (-ms-high-contrast: white-on-black){& {
+                color: #FFFF00;
+              }
+              @media screen and (-ms-high-contrast: black-on-white){& {
+                color: #00009F;
+              }
+              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -543,6 +514,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               {
                 background-color: transparent;
                 background: none;
+                border-bottom: 1px solid transparent;
                 border: none;
                 color: #0078d4;
                 cursor: pointer;
@@ -569,14 +541,23 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               }
               .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
-                bottom: 1px;
+                bottom: -1px;
                 content: "";
-                left: 1px;
+                left: -1px;
                 outline: 1px solid #666666;
                 position: absolute;
-                right: 1px;
-                top: 1px;
+                right: -1px;
+                top: -1px;
                 z-index: 1;
+              }
+              @media screen and (-ms-high-contrast: white-on-black){& {
+                color: #FFFF00;
+              }
+              @media screen and (-ms-high-contrast: black-on-white){& {
+                color: #00009F;
+              }
+              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -602,6 +583,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               {
                 background-color: transparent;
                 background: none;
+                border-bottom: 1px solid transparent;
                 border: none;
                 color: #0078d4;
                 cursor: pointer;
@@ -628,14 +610,23 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               }
               .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
-                bottom: 1px;
+                bottom: -1px;
                 content: "";
-                left: 1px;
+                left: -1px;
                 outline: 1px solid #666666;
                 position: absolute;
-                right: 1px;
-                top: 1px;
+                right: -1px;
+                top: -1px;
                 z-index: 1;
+              }
+              @media screen and (-ms-high-contrast: white-on-black){& {
+                color: #FFFF00;
+              }
+              @media screen and (-ms-high-contrast: black-on-white){& {
+                color: #00009F;
+              }
+              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -682,7 +673,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
           font-size: 12px;
           font-weight: 400;
           justify-content: flex-start;
-          line-height: 17px;
           margin-top: 20px;
         }
     style={undefined}
@@ -761,53 +751,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               <span>
                 RL
               </span>
-            </div>
-            <div
-              className=
-                  ms-Image
-                  ms-Persona-image
-                  {
-                    border-radius: 50%;
-                    border: 0px;
-                    height: 16px;
-                    left: 0px;
-                    margin-right: 10px;
-                    overflow: hidden;
-                    perspective: 1px;
-                    position: absolute;
-                    top: 0px;
-                    width: 16px;
-                  }
-              style={
-                Object {
-                  "height": undefined,
-                  "width": undefined,
-                }
-              }
-            >
-              <img
-                alt=""
-                className=
-                    ms-Image-image
-                    ms-Image-image--cover
-                    ms-Image-image--portrait
-                    is-notLoaded
-                    is-fadeIn
-                    {
-                      display: block;
-                      height: auto;
-                      left: 50% /* @noflip */;
-                      opacity: 0;
-                      position: absolute;
-                      top: 50%;
-                      transform: translate(-50%,-50%);
-                      width: 100%;
-                    }
-                onError={[Function]}
-                onLoad={[Function]}
-                role={undefined}
-                src={undefined}
-              />
             </div>
           </div>
         </div>
@@ -991,6 +934,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               {
                 background-color: transparent;
                 background: none;
+                border-bottom: 1px solid transparent;
                 border: none;
                 color: #0078d4;
                 cursor: pointer;
@@ -1017,14 +961,23 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               }
               .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
-                bottom: 1px;
+                bottom: -1px;
                 content: "";
-                left: 1px;
+                left: -1px;
                 outline: 1px solid #666666;
                 position: absolute;
-                right: 1px;
-                top: 1px;
+                right: -1px;
+                top: -1px;
                 z-index: 1;
+              }
+              @media screen and (-ms-high-contrast: white-on-black){& {
+                color: #FFFF00;
+              }
+              @media screen and (-ms-high-contrast: black-on-white){& {
+                color: #00009F;
+              }
+              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -1050,6 +1003,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               {
                 background-color: transparent;
                 background: none;
+                border-bottom: 1px solid transparent;
                 border: none;
                 color: #0078d4;
                 cursor: pointer;
@@ -1076,14 +1030,23 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               }
               .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
-                bottom: 1px;
+                bottom: -1px;
                 content: "";
-                left: 1px;
+                left: -1px;
                 outline: 1px solid #666666;
                 position: absolute;
-                right: 1px;
-                top: 1px;
+                right: -1px;
+                top: -1px;
                 z-index: 1;
+              }
+              @media screen and (-ms-high-contrast: white-on-black){& {
+                color: #FFFF00;
+              }
+              @media screen and (-ms-high-contrast: black-on-white){& {
+                color: #00009F;
+              }
+              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -1133,7 +1096,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
           font-size: 12px;
           font-weight: 400;
           justify-content: flex-start;
-          line-height: 17px;
           margin-top: 20px;
         }
     style={undefined}
@@ -1212,53 +1174,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               <span>
                 JC
               </span>
-            </div>
-            <div
-              className=
-                  ms-Image
-                  ms-Persona-image
-                  {
-                    border-radius: 50%;
-                    border: 0px;
-                    height: 16px;
-                    left: 0px;
-                    margin-right: 10px;
-                    overflow: hidden;
-                    perspective: 1px;
-                    position: absolute;
-                    top: 0px;
-                    width: 16px;
-                  }
-              style={
-                Object {
-                  "height": undefined,
-                  "width": undefined,
-                }
-              }
-            >
-              <img
-                alt=""
-                className=
-                    ms-Image-image
-                    ms-Image-image--cover
-                    ms-Image-image--portrait
-                    is-notLoaded
-                    is-fadeIn
-                    {
-                      display: block;
-                      height: auto;
-                      left: 50% /* @noflip */;
-                      opacity: 0;
-                      position: absolute;
-                      top: 50%;
-                      transform: translate(-50%,-50%);
-                      width: 100%;
-                    }
-                onError={[Function]}
-                onLoad={[Function]}
-                role={undefined}
-                src={undefined}
-              />
             </div>
           </div>
         </div>
@@ -1393,53 +1308,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 AL
               </span>
             </div>
-            <div
-              className=
-                  ms-Image
-                  ms-Persona-image
-                  {
-                    border-radius: 50%;
-                    border: 0px;
-                    height: 16px;
-                    left: 0px;
-                    margin-right: 10px;
-                    overflow: hidden;
-                    perspective: 1px;
-                    position: absolute;
-                    top: 0px;
-                    width: 16px;
-                  }
-              style={
-                Object {
-                  "height": undefined,
-                  "width": undefined,
-                }
-              }
-            >
-              <img
-                alt=""
-                className=
-                    ms-Image-image
-                    ms-Image-image--cover
-                    ms-Image-image--portrait
-                    is-notLoaded
-                    is-fadeIn
-                    {
-                      display: block;
-                      height: auto;
-                      left: 50% /* @noflip */;
-                      opacity: 0;
-                      position: absolute;
-                      top: 50%;
-                      transform: translate(-50%,-50%);
-                      width: 100%;
-                    }
-                onError={[Function]}
-                onLoad={[Function]}
-                role={undefined}
-                src={undefined}
-              />
-            </div>
           </div>
         </div>
         <div
@@ -1545,6 +1413,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               {
                 background-color: transparent;
                 background: none;
+                border-bottom: 1px solid transparent;
                 border: none;
                 color: #0078d4;
                 cursor: pointer;
@@ -1571,14 +1440,23 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               }
               .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
-                bottom: 1px;
+                bottom: -1px;
                 content: "";
-                left: 1px;
+                left: -1px;
                 outline: 1px solid #666666;
                 position: absolute;
-                right: 1px;
-                top: 1px;
+                right: -1px;
+                top: -1px;
                 z-index: 1;
+              }
+              @media screen and (-ms-high-contrast: white-on-black){& {
+                color: #FFFF00;
+              }
+              @media screen and (-ms-high-contrast: black-on-white){& {
+                color: #00009F;
+              }
+              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -1604,6 +1482,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               {
                 background-color: transparent;
                 background: none;
+                border-bottom: 1px solid transparent;
                 border: none;
                 color: #0078d4;
                 cursor: pointer;
@@ -1630,14 +1509,23 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               }
               .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
-                bottom: 1px;
+                bottom: -1px;
                 content: "";
-                left: 1px;
+                left: -1px;
                 outline: 1px solid #666666;
                 position: absolute;
-                right: 1px;
-                top: 1px;
+                right: -1px;
+                top: -1px;
                 z-index: 1;
+              }
+              @media screen and (-ms-high-contrast: white-on-black){& {
+                color: #FFFF00;
+              }
+              @media screen and (-ms-high-contrast: black-on-white){& {
+                color: #00009F;
+              }
+              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;

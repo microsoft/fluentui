@@ -20,7 +20,7 @@ import {
   SelectionMode,
   buildColumns
 } from 'office-ui-fabric-react/lib/DetailsList';
-import { createListItems, isGroupable } from '../../../utilities/exampleData';
+import { createListItems, isGroupable } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import './DetailsList.Advanced.Example.scss';
 
 const DEFAULT_ITEM_LIMIT = 5;
@@ -119,22 +119,27 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
       <div className="ms-DetailsListAdvancedExample">
         <CommandBar items={this._getCommandItems()} />
 
-        {isGrouped ? <TextField label="Group Item Limit" onChanged={this._onItemLimitChanged} /> : null}
+        {isGrouped ? <TextField label="Group Item Limit" onChange={this._onItemLimitChanged} /> : null}
 
         <DetailsList
           setKey="items"
           items={items as any[]}
+          selection={this._selection}
           groups={groups}
           columns={columns}
           checkboxVisibility={checkboxVisibility}
           layoutMode={layoutMode}
           isHeaderVisible={isHeaderVisible}
-          selectionMode={selectionMode}
           constrainMode={constrainMode}
           groupProps={groupProps}
           enterModalSelectionOnTouch={true}
           onItemInvoked={this._onItemInvoked}
           onItemContextMenu={this._onItemContextMenu}
+          selectionZoneProps={{
+            selection: this._selection,
+            disableAutoSelectOnInputElements: true,
+            selectionMode: selectionMode
+          }}
           ariaLabelForListHeader="Column headers. Use menus to perform column operations like sort and filter"
           ariaLabelForSelectAllCheckbox="Toggle selection for all items"
           ariaLabelForSelectionColumn="Toggle selection"
@@ -217,7 +222,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     });
   };
 
-  private _onItemLimitChanged = (value: string): void => {
+  private _onItemLimitChanged = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, value: string): void => {
     let newValue = parseInt(value, 10);
     if (isNaN(newValue)) {
       newValue = DEFAULT_ITEM_LIMIT;
@@ -441,10 +446,27 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
   };
 
   private _onItemContextMenu = (item: any, index: number, ev: MouseEvent): boolean => {
-    if ((ev.target as HTMLElement).nodeName === 'A') {
-      return true;
+    const contextualMenuProps: IContextualMenuProps = {
+      target: ev.target as HTMLElement,
+      items: [
+        {
+          key: 'text',
+          name: `${this._selection.getSelectedCount()} selected`
+        }
+      ],
+      onDismiss: () => {
+        this.setState({
+          contextualMenuProps: undefined
+        });
+      }
+    };
+
+    if (index > -1) {
+      this.setState({
+        contextualMenuProps: contextualMenuProps
+      });
     }
-    console.log('Item context menu invoked', item, index);
+
     return false;
   };
 

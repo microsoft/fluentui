@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage } from '@uifabric/example-app-base';
+import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 
-import { TextBasicExample } from './examples/Text.Basic.Example';
-const TextBasicExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Text/examples/Text.Basic.Example.tsx') as string;
+import { TextRampExample } from './examples/Text.Ramp.Example';
+const TextRampExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Text/examples/Text.Ramp.Example.tsx') as string;
 
 export class TextPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -12,12 +12,16 @@ export class TextPage extends React.Component<IComponentDemoPageProps, {}> {
         componentName="Text"
         exampleCards={
           <div>
-            <ExampleCard title="Basic Text Component Example" code={TextBasicExampleCode}>
-              <TextBasicExample />
+            <ExampleCard title="Text Ramps" code={TextRampExampleCode}>
+              <TextRampExample />
             </ExampleCard>
           </div>
         }
-        propertiesTables={<div />}
+        propertiesTables={
+          <PropertiesTableSet
+            sources={[require<string>('!raw-loader!@uifabric/experiments/src/components/Text/Text.tsx')]}
+          />
+        }
         overview={<div />}
         bestPractices={<div />}
         dos={

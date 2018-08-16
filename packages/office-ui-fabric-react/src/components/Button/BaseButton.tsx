@@ -97,10 +97,10 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       iconProps,
       menuIconProps,
       styles,
-      text,
       checked,
       variantClassName,
       theme,
+      toggle,
       getClassNames
     } = this.props;
 
@@ -147,6 +147,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       ]
     );
 
+    // Check for ariaLabel passed in via Button props, and fall back to aria-label passed in via native props
+    const resolvedAriaLabel = ariaLabel || (nativeProps as any)['aria-label'];
+
     // Check for ariaDescription, secondaryText or aria-describedby in the native props to determine source of aria-describedby
     // otherwise default to undefined so property does not appear in output.
     let ariaDescribedBy = undefined;
@@ -164,11 +167,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     // set the labelledby element. Otherwise, the button is labeled implicitly by the descendent
     // text on the button (if it exists). Never set both aria-label and aria-labelledby.
     let ariaLabelledBy = undefined;
-    if (!ariaLabel) {
+    if (!resolvedAriaLabel) {
       if ((nativeProps as any)['aria-labelledby']) {
         ariaLabelledBy = (nativeProps as any)['aria-labelledby'];
       } else if (ariaDescribedBy) {
-        ariaLabelledBy = text ? _labelId : undefined;
+        ariaLabelledBy = this._hasText() ? _labelId : undefined;
       }
     }
 
@@ -187,12 +190,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       onMouseDown: this._onMouseDown,
       onMouseUp: this._onMouseUp,
       onClick: this._onClick,
-      'aria-label': ariaLabel,
+      'aria-label': resolvedAriaLabel,
       'aria-labelledby': ariaLabelledBy,
       'aria-describedby': ariaDescribedBy,
       'aria-disabled': isPrimaryButtonDisabled,
       'data-is-focusable': dataIsFocusable,
-      'aria-pressed': checked
+      'aria-pressed': toggle ? !!checked : undefined // aria-pressed attribute should only be present for toggle buttons
     });
 
     if (ariaHidden) {
@@ -203,8 +206,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       return this._onRenderSplitButtonContent(tag, buttonProps);
     } else if (this.props.menuProps) {
       assign(buttonProps, {
-        onKeyDown: this._onMenuKeyDown,
-        onClick: this._onMenuClick,
         'aria-expanded': this._isExpanded,
         'aria-owns': this.state.menuProps ? this._labelId + '-menu' : null,
         'aria-haspopup': true
@@ -411,6 +412,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _onRenderMenu = (menuProps: IContextualMenuProps): JSX.Element => {
     const { onDismiss = this._dismissMenu } = menuProps;
 
+    const MenuType = this.props.menuAs || (ContextualMenu as React.ReactType<IContextualMenuProps>);
+
     // the accessible menu label (accessible name) has a relationship to the button.
     // If the menu props do not specify an explicit value for aria-label or aria-labelledBy,
     // AND the button has text, we'll set the menu aria-labelledBy to the text element id.
@@ -419,7 +422,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
 
     return (
-      <ContextualMenu
+      <MenuType
         id={this._labelId + '-menu'}
         directionalHint={DirectionalHint.bottomLeftEdge}
         {...menuProps}
@@ -478,7 +481,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       checked,
       getSplitButtonClassNames,
       primaryDisabled,
-      menuProps
+      menuProps,
+      toggle
     } = this.props;
     let { keytipProps } = this.props;
 
@@ -511,7 +515,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
             aria-disabled={disabled}
             aria-haspopup={true}
             aria-expanded={this._isExpanded}
-            aria-pressed={this.props.checked}
+            aria-pressed={toggle ? !!checked : undefined} // aria-pressed attribute should only be present for toggle buttons
             aria-describedby={mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])}
             className={classNames && classNames.splitButtonContainer}
             onKeyDown={this._onSplitButtonContainerKeyDown}
@@ -597,8 +601,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     if (this.props.disabled && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space)) {
       ev.preventDefault();
       ev.stopPropagation();
-    } else if (!this.props.disabled && this.props.onKeyDown !== undefined) {
-      this.props.onKeyDown(ev); // not cancelling event because it's not disabled
+    } else if (!this.props.disabled) {
+      if (this.props.menuProps) {
+        this._onMenuKeyDown(ev);
+      } else if (this.props.onKeyDown !== undefined) {
+        this.props.onKeyDown(ev); // not cancelling event because it's not disabled
+      }
     }
   };
 
@@ -627,8 +635,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   };
 
   private _onClick = (ev: React.MouseEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>) => {
-    if (!this.props.disabled && this.props.onClick !== undefined) {
-      this.props.onClick(ev); // not cancelling event because it's not disabled
+    if (!this.props.disabled) {
+      if (this.props.menuProps) {
+        this._onMenuClick(ev);
+      } else if (this.props.onClick !== undefined) {
+        this.props.onClick(ev); // not cancelling event because it's not disabled
+      }
     }
   };
 
@@ -718,7 +730,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     return false;
   }
 
-  private _onMenuClick = (ev: React.MouseEvent<HTMLDivElement | HTMLAnchorElement>) => {
+  private _onMenuClick = (ev: React.MouseEvent<HTMLDivElement | HTMLButtonElement | HTMLAnchorElement>) => {
     const { onMenuClick } = this.props;
     if (onMenuClick) {
       onMenuClick(ev, this);

@@ -19,7 +19,8 @@ module.exports = resources.createServeConfig({
   resolve: {
     alias: {
       '@uifabric/charting/src': path.join(__dirname, 'src'),
-      '@uifabric/charting/lib': path.join(__dirname, 'src'),
+      '@uifabric/charting/lib': path.join(__dirname, 'lib'),
+      '@uifabric/charting': path.join(__dirname, 'lib'),
       'Props.ts.js': 'Props',
       'Example.tsx.js': 'Example'
     }
