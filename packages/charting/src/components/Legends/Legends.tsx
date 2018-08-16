@@ -4,6 +4,7 @@ import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { HoverCard, IExpandingCardProps } from 'office-ui-fabric-react/lib/HoverCard';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
+import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 import { OverflowSet, IOverflowSetItemProps } from 'office-ui-fabric-react/lib/OverflowSet';
 import {
   ILegend,
@@ -176,7 +177,7 @@ export class Legends extends React.Component<ILegendsProps, ILegendState> {
     } else if (this.state.selectedLegend === 'none' || this.state.selectedLegend === title) {
       legendColor = color;
     } else {
-      legendColor = '#FFFFFF';
+      legendColor = DefaultPalette.white;
     }
     return legendColor;
   }

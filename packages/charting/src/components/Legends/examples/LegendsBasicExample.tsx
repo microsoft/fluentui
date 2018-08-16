@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { Legends } from '../Legends';
+import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export class LegendBasicExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     const legends = [
       {
         title: 'Legend 1',
-        color: 'blue',
+        color: DefaultPalette.blue,
         action: () => {
           console.log('click from LegendsPage');
           alert('Legend1 clicked');
@@ -14,21 +15,21 @@ export class LegendBasicExample extends React.Component<{}, {}> {
       },
       {
         title: 'Legend 2',
-        color: 'red',
+        color: DefaultPalette.red,
         action: () => {
           alert('Legend2 clicked');
         }
       },
       {
         title: 'Legend 3',
-        color: 'green',
+        color: DefaultPalette.green,
         action: () => {
           alert('Legend3 clicked');
         }
       },
       {
         title: 'Legend 4',
-        color: 'blue',
+        color: DefaultPalette.yellow,
         action: () => {
           alert('Legend4 clicked');
         }
