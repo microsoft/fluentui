@@ -165,6 +165,7 @@ $CommandBarHeight: 44px;
 //
 .root.rootIsCustom {
   .main {
+    max-width: 100vw;
     @media (min-width: $ms-screen-min-xl) {
       @include ms-left(auto);
     }
