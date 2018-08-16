@@ -1,4 +1,5 @@
-import { IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface ILegendOverflowData {
   primary: ILegend[];
@@ -65,6 +66,8 @@ export interface ILegendItem {
 }
 
 export interface ILegendStyleProps {
+  theme?: ITheme;
+  className?: string;
   colorOnSelectedState?: string;
   borderColor?: string;
   overflow?: boolean;
@@ -75,4 +78,19 @@ export interface ILegendsProps {
    * Prop that takes list of legends
    */
   legends: ILegend[];
+
+  /**
+   * Additional CSS class(es) to apply to the legneds component.
+   */
+  className?: string;
+
+  /**
+   * Theme (provided through customization.)
+   */
+  theme?: ITheme;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  styles?: IStyleFunctionOrObject<ILegendStyleProps, ILegendsStyles>;
 }

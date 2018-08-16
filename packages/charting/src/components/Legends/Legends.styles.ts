@@ -1,12 +1,17 @@
 import { ILegendsStyles, ILegendStyleProps } from './Legends.types';
 
 export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
+  const { className, theme } = props;
+  const { palette } = theme!;
   return {
-    root: {
-      whiteSpace: 'nowrap',
-      width: '100%',
-      alignItems: 'center'
-    },
+    root: [
+      {
+        whiteSpace: 'nowrap',
+        width: '100%',
+        alignItems: 'center'
+      },
+      className
+    ],
     legend: {
       display: 'flex',
       alignItems: 'center',
@@ -20,15 +25,15 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
       backgroundColor: props.colorOnSelectedState,
       marginRight: '8px',
       border: '1px solid',
-      borderColor: props.borderColor ? props.borderColor : '#000000'
+      borderColor: props.borderColor ? props.borderColor : palette.black
     },
     text: {
       fontSize: '12px',
       lineHeight: '14px',
       fontFamily: 'Segoe UI',
       marginRight: '16px',
-      color: '#000000',
-      opacity: props.colorOnSelectedState === '#FFFFFF' ? '0.6' : ''
+      color: palette.black,
+      opacity: props.colorOnSelectedState === palette.white ? '0.6' : ''
     },
     hoverChange: {
       width: '12px',
@@ -36,11 +41,11 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
       backgroundColor: 'white',
       marginRight: '8px',
       border: '1px solid',
-      borderColor: props.borderColor ? props.borderColor : '#000000'
+      borderColor: props.borderColor ? props.borderColor : palette.black
     },
     overflowIndicationTextStyle: {
       cursor: 'pointer',
-      color: '#0078D4',
+      color: palette.themePrimary,
       fontFamily: 'Segoe UI',
       fontSize: '12px',
       lineHeight: '14px'
