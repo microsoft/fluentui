@@ -15,21 +15,7 @@ export const TextStyles = (props: IThemedProps<ITextProps>): ITextStyles => {
         fontSize: variantObject.size,
         // tslint:disable-next-line:no-any
         fontWeight: variantObject.weight as any,
-        color: variantObject.color,
-        selectors: {
-          ':hover': {
-            color: variantObject.hoverColor
-          },
-          // ':active': {
-          //   color: variantObject.activeColor
-          // },
-          // ':visited': {
-          //   color: variantObject.visitedColor
-          // },
-          '[aria-disabled=true]': {
-            color: variantObject.disabledColor
-          }
-        }
+        color: variantObject.color
       },
       family && {
         // TODO: How are language specific font families configured?
