@@ -160,7 +160,7 @@ export interface ICalendarProps extends React.Props<Calendar> {
    * When clicking on "Today", select the date and close the calendar.
    * @defaultvalue false
    */
-  selectDateOnClick?: DayOfWeek;
+  selectDateOnClick?: boolean;
 }
 
 export interface ICalendarStrings {
