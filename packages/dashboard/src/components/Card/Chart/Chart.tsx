@@ -45,7 +45,11 @@ export class Chart extends React.Component<IChartInternalProps, {}> {
   }
 
   public render(): JSX.Element {
-    switch (this.props.chartType) {
+    return this._getChartByType(this.props.chartType);
+  }
+
+  private _getChartByType = (chartType: ChartType): JSX.Element => {
+    switch (chartType) {
       case ChartType.VerticalBarChart: {
         return (
           <VerticalBarChart
@@ -107,7 +111,7 @@ export class Chart extends React.Component<IChartInternalProps, {}> {
         return this._getStackedBarChart();
       }
     }
-  }
+  };
 
   private _getHeight(): number {
     switch (this.props.height) {

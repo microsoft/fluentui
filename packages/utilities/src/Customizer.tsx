@@ -76,6 +76,7 @@ export class Customizer extends BaseComponent<ICustomizerProps> {
   public componentDidMount(): void {
     Customizations.observe(this._onCustomizationChange);
   }
+
   public componentWillUnmount(): void {
     Customizations.unobserve(this._onCustomizationChange);
   }
