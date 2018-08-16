@@ -40,6 +40,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/Donutchart'
         },
         {
+          component: require<any>('../components/Legends/LegendsPage').LegendsPage,
+          key: 'Legends',
+          name: 'Legends',
+          url: '#/examples/Legends'
+        },
+        {
           component: require<any>('../components/StackedBarChart/StackedBarChartPage').StackedBarChartPage,
           key: 'StackedBarChart',
           name: 'StackedBarChart',
