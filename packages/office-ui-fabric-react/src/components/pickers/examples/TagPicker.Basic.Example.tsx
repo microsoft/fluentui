@@ -24,9 +24,6 @@ const _testTags = [
   'yellow'
 ].map(item => ({ key: item, name: item }));
 
-const getTags = () => _testTags;
-const getTagName = (tag: any) => tag.name;
-
 export class TagPickerBasicExample extends BaseComponent<{}, ITagPickerDemoPageState> {
   private _picker: TagPicker;
 
@@ -80,15 +77,6 @@ export class TagPickerBasicExample extends BaseComponent<{}, ITagPickerDemoPageS
             onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
             'aria-label': 'Tag Picker'
           }}
-        />
-        <br />
-        Testing in IE
-        <TagPicker onResolveSuggestions={getTags} onEmptyInputFocus={getTags} getTextFromItem={getTagName} />
-        <TagPicker
-          onResolveSuggestions={getTags}
-          onEmptyInputFocus={getTags}
-          getTextFromItem={getTagName}
-          inputProps={{ placeholder: 'Search...' }}
         />
       </div>
     );
