@@ -74,8 +74,7 @@ export class Customizer extends BaseComponent<ICustomizerProps, ICustomizerConte
 
   public static childContextTypes: {
     customizations: PropTypes.Requireable<{}>;
-  } =
-    Customizer.contextTypes;
+  } = Customizer.contextTypes;
 
   // tslint:disable-next-line:no-any
   constructor(props: ICustomizerProps, context: any) {

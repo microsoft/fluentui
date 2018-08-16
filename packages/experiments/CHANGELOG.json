@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.24.0",
+      "tag": "@uifabric/experiments_v6.24.0",
+      "date": "Thu, 16 Aug 2018 10:26:16 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "riosn-n <33673026+riosn-n@users.noreply.github.com>",
+            "commit": "7a330d2b880fcbed859cb3fc57be273167408cf4",
+            "comment": "Adding support for drop-downs with multiple selection to the FormDropdown component."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.49.3 <7.0.0` to `>=6.49.4 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.23.3",
       "tag": "@uifabric/experiments_v6.23.3",
       "date": "Tue, 14 Aug 2018 10:27:33 GMT",

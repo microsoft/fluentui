@@ -49,7 +49,8 @@ export const getThumbnailItemStyles = (): IThumbnailItemStyles => {
           backgroundColor: 'transparent',
           marginLeft: '68px',
           maxHeight: '52px',
-          overflow: 'hidden'
+          overflow: 'hidden',
+          width: '100%'
         }
       }
     }

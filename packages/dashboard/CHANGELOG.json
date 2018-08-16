@@ -2,6 +2,43 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.15.3",
+      "tag": "@uifabric/dashboard_v0.15.3",
+      "date": "Thu, 16 Aug 2018 10:26:16 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Veerash Ayyagari <veeray@microsoft.com>",
+            "commit": "ac239d0449e8600733f19eac995d5bbaedfda17b",
+            "comment": "Various styling fixes for Dashboard cards"
+          },
+          {
+            "author": "exchangeadmin <yuz@microsoft.com>",
+            "commit": "524d779656299162c622ffa85694c44a4d1987ec",
+            "comment": "update leftNav style change"
+          },
+          {
+            "author": "exchangeadmin <yuz@microsoft.com>",
+            "commit": "524d779656299162c622ffa85694c44a4d1987ec",
+            "comment": "fix leftNav styling bugs"
+          },
+          {
+            "author": "exchangeadmin <yuz@microsoft.com>",
+            "commit": "524d779656299162c622ffa85694c44a4d1987ec",
+            "comment": "patch leftNav styling per PM feedback"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.23.3 <7.0.0` to `>=6.24.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.49.3 <7.0.0` to `>=6.49.4 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.15.2",
       "tag": "@uifabric/dashboard_v0.15.2",
       "date": "Wed, 15 Aug 2018 10:26:31 GMT",
