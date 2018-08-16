@@ -38,7 +38,7 @@ export function customizable(
         return (
           <CustomizerContext.Consumer>
             {(context: ICustomizerContext) => {
-              const defaultProps = Customizations.getSettings(fields, scope, this.context.customizations);
+              const defaultProps = Customizations.getSettings(fields, scope, context.customizations);
 
               // tslint:disable-next-line:no-any
               const componentProps = this.props as any;
