@@ -40,6 +40,22 @@ export class NavExample extends React.Component<{}, {}> {
             target: '_blank',
             key: 'key6',
             icon: 'DietPlanNotebook'
+          },
+          {
+            name: 'Test nodes - test nodes',
+            url: 'http://example.com',
+            isExpanded: false,
+            icon: 'Home',
+            key: 'key17',
+            links: [
+              { name: 'Activity', url: 'http://msn.com', key: 'key18' },
+              {
+                name: 'News - test with long name to show ellipse',
+                url: 'http://msn.com',
+                target: '_blank',
+                key: 'key19'
+              }
+            ]
           }
         ],
         groupType: NavGroupType.MenuGroup
@@ -86,7 +102,7 @@ export class NavExample extends React.Component<{}, {}> {
 
     return (
       <div>
-        <NavToggler groups={navLinkGroups} dataHint="LeftNav" enableCustomization={true} selectedKey="key2" />
+        <NavToggler groups={navLinkGroups} dataHint="LeftNav" enableCustomization={true} selectedKey="key3" />
       </div>
     );
   }

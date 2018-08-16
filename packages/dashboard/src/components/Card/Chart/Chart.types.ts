@@ -77,6 +77,12 @@ export interface IChartProps {
   compactChartWidth?: number;
 
   /**
+   * text to display when the chart
+   * was last updated
+   */
+  chartUpdatedOn?: string;
+
+  /**
    * Width of each stroke in the line chart
    */
   strokeWidth?: number;
