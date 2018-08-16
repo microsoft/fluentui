@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Replaced black with violet in the personacoin pallette to avoid potential offensive personacoin combinations",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "mariust@microsoft.com"
+}
