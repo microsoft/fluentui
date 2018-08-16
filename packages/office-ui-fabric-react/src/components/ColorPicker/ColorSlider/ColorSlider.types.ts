@@ -37,6 +37,11 @@ export interface IColorSliderProps extends IBaseProps<IColorSlider> {
   /**
    * Callback issued when the value changes.
    */
+  onChange?: (event: React.MouseEvent<HTMLElement>, newValue?: number) => void;
+
+  /**
+   * @deprecated Use onChange instead.
+   */
   onChanged?: (newValue: number) => void;
 
   /**
