@@ -44,12 +44,14 @@ function getInitialsColorFromName(displayName: string | undefined): PersonaIniti
   return color;
 }
 
+const blueColor = '#2D89EF';
+
 function personaInitialsColorToHexCode(personaInitialsColor: PersonaInitialsColor): string {
   switch (personaInitialsColor) {
     case PersonaInitialsColor.lightBlue:
       return '#6BA5E7';
     case PersonaInitialsColor.blue:
-      return '#2D89EF';
+      return blueColor;
     case PersonaInitialsColor.darkBlue:
       return '#2B5797';
     case PersonaInitialsColor.teal:
@@ -79,6 +81,8 @@ function personaInitialsColorToHexCode(personaInitialsColor: PersonaInitialsColo
     case PersonaInitialsColor.transparent:
       return 'transparent';
   }
+
+  return blueColor;
 }
 
 export function initialsColorPropToColorCode(props: IPersonaProps): string {
