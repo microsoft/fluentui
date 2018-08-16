@@ -651,7 +651,7 @@ exports[`TextField renders multiline TextField correctly with errorMessage 1`] =
     id="TextFieldDescription1"
   >
     <div
-      aria-live="assertive"
+      role="alert"
     />
   </span>
 </div>
@@ -884,7 +884,7 @@ exports[`TextField renders multiline TextField correctly with props affecting st
     id="TextFieldDescription1"
   >
     <div
-      aria-live="assertive"
+      role="alert"
     />
   </span>
 </div>
@@ -1119,7 +1119,7 @@ exports[`TextField should resepect user component and subcomponent styling 1`] =
     id="TextFieldDescription1"
   >
     <div
-      aria-live="assertive"
+      role="alert"
     />
   </span>
 </div>
