@@ -299,8 +299,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     }
   };
 
-  private _onGotoToday = (selectDateOnClick: boolean): void => {
-    const { dateRangeType, firstDayOfWeek, today, workWeekDays } = this.props;
+  private _onGotoToday = (): void => {
+    const { dateRangeType, firstDayOfWeek, today, workWeekDays, selectDateOnClick } = this.props;
 
     if (selectDateOnClick) {
       // When using Defaultprops, TypeScript doesn't know that React is going to inject defaults
@@ -314,13 +314,13 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
   };
 
   private _onGotoTodayClick = (ev: React.MouseEvent<HTMLElement>): void => {
-    this._onGotoToday(false /*selectDateOnClick*/);
+    this._onGotoToday();
   };
 
   private _onGotoTodayKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     if (ev.which === KeyCodes.enter) {
       ev.preventDefault();
-      this._onGotoToday(false /*selectDateOnClick*/);
+      this._onGotoToday();
     }
   };
 
