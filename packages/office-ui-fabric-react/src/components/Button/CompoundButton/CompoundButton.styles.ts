@@ -14,7 +14,8 @@ export const getStyles = memoizeFunction(
         maxWidth: '280px',
         minHeight: '72px',
         height: 'auto',
-        padding: '20px'
+        padding: '20px',
+        width: '100%'
       },
 
       flexContainer: {
