@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 15 Aug 2018 10:26:31 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Aug 2018 10:26:16 GMT and should not be manually modified.
+
+## 6.49.4
+Thu, 16 Aug 2018 10:26:16 GMT
+
+### Patches
+
+- Button: fix aria properties so that unit tests pass
+- DetailsList: selectionMode for groups is none if checkboxvisibility is hidden
+- DetailsList: remove related section from demo page
+- FocusZone: Fix Tabbing behavior when in RTL
+- Panel: change click listener to mousedown listener so that Panels aren't dismissed on mouseup
+- Ensure SelectionZone selects item before opening context menu
 
 ## 6.49.3
 Wed, 15 Aug 2018 10:26:31 GMT

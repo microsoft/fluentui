@@ -2,6 +2,45 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.49.4",
+      "tag": "office-ui-fabric-react_v6.49.4",
+      "date": "Thu, 16 Aug 2018 10:26:16 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "a6430b14d1d8d3a392cb26e7bb5920f366e551ec",
+            "comment": "Button: fix aria properties so that unit tests pass"
+          },
+          {
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "46d3ac40105ffdc297cd2fe554a26b4d9401ee04",
+            "comment": "DetailsList: selectionMode for groups is none if checkboxvisibility is hidden"
+          },
+          {
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "51fad52381d8988b35fe9d6c4d92736fa6d9d424",
+            "comment": "DetailsList: remove related section from demo page"
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "0f567e05952c6b50c691df2fb72d100b5e525d9e",
+            "comment": "FocusZone: Fix Tabbing behavior when in RTL"
+          },
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "b507b626458c172a92e37db6aa255fa78bf6c71e",
+            "comment": "Panel: change click listener to mousedown listener so that Panels aren't dismissed on mouseup"
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "a2d559165c4159e0c80678e97baf66b2b8b04981",
+            "comment": "Ensure SelectionZone selects item before opening context menu"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.49.3",
       "tag": "office-ui-fabric-react_v6.49.3",
       "date": "Wed, 15 Aug 2018 10:26:31 GMT",

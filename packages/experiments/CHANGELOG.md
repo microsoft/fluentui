@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 14 Aug 2018 10:27:33 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Aug 2018 10:26:16 GMT and should not be manually modified.
+
+## 6.24.0
+Thu, 16 Aug 2018 10:26:16 GMT
+
+### Minor changes
+
+- Adding support for drop-downs with multiple selection to the FormDropdown component.
 
 ## 6.23.3
 Tue, 14 Aug 2018 10:27:33 GMT
