@@ -56,15 +56,6 @@ export interface ILegend {
   color: string;
 }
 
-// This is an internal interface used for rendering the legends with unique key
-export interface ILegendItem {
-  name?: string;
-  title: string;
-  action: VoidFunction;
-  color: string;
-  key: number;
-}
-
 export interface ILegendStyleProps {
   theme?: ITheme;
   className?: string;
