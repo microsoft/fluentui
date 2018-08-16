@@ -454,6 +454,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   private _onToggleMenu = (shouldFocusOnContainer: boolean): void => {
     const currentMenuProps = this.state.menuProps;
+    if (this._splitButtonContainer.current) {
+      this._splitButtonContainer.current.focus();
+    }
     let shouldFocusOnMount = true;
     if (this.props.menuProps && this.props.menuProps.shouldFocusOnMount === false) {
       shouldFocusOnMount = false;

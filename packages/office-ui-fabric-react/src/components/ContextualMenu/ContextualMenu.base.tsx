@@ -163,13 +163,9 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
       // apply the correct focus. Without the setTimeout, we end up focusing the correct thing, and then React wants
       // to reset the focus back to the thing it thinks should have been focused.
       // Note: Cannot be replaced by this._async.setTimout because those will be removed by the time this is called.
-      setTimeout(() => {
-        this._previousActiveElement && this._previousActiveElement!.focus();
-      }, 0);
-    }
-
-    if (this.props.onMenuDismissed) {
-      this.props.onMenuDismissed(this.props);
+      setTimeout(() => this._focusPreviousElement(), 0);
+    } else {
+      this.props.onMenuDismissed && this.props.onMenuDismissed(this.props);
     }
 
     this._events.dispose();
@@ -1102,5 +1098,10 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
   private _onPointerAndTouchEvent = (ev: React.TouchEvent<HTMLElement> | PointerEvent) => {
     this._cancelSubMenuTimer();
+  };
+
+  private _focusPreviousElement = (): void => {
+    this._previousActiveElement && this._previousActiveElement!.focus();
+    this.props.onMenuDismissed && this.props.onMenuDismissed(this.props);
   };
 }
