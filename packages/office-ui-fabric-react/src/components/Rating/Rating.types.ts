@@ -48,6 +48,11 @@ export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
   /**
    * Callback when the rating has changed
    */
+  onChange?: (event: React.FocusEvent<HTMLElement>, rating?: number) => void;
+
+  /**
+   * @deprecated Use onChange instead.
+   */
   onChanged?: (rating: number) => void;
 
   /**
