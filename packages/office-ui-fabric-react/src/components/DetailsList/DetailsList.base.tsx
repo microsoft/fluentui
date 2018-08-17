@@ -315,7 +315,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       minimumPixelsForDrag,
       getGroupHeight,
       styles,
-      theme
+      theme,
+      cellStyleProps = DEFAULT_CELL_STYLE_PROPS
     } = this.props;
     const { adjustedColumns, isCollapsed, isSizing, isSomeGroupExpanded } = this.state;
     const { _selection: selection, _dragDropHelper: dragDropHelper } = this;
@@ -408,7 +409,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
                   viewport: viewport,
                   columnReorderProps: columnReorderProps,
                   minimumPixelsForDrag: minimumPixelsForDrag,
-                  cellStyleProps: DEFAULT_CELL_STYLE_PROPS
+                  cellStyleProps: cellStyleProps
                 },
                 this._onRenderDetailsHeader
               )}

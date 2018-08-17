@@ -153,6 +153,12 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
    * @defaultvalue [Monday,Tuesday,Wednesday,Thursday,Friday]
    */
   workWeekDays?: DayOfWeek[];
+
+  /**
+   * When clicking on "Today", select the date and close the calendar.
+   * @defaultvalue false
+   */
+  selectDateOnClick?: boolean;
 }
 
 export interface ICalendarStrings {

@@ -1,6 +1,5 @@
 import { IPalette, ISemanticColors, ITheme, IPartialTheme, createTheme } from 'office-ui-fabric-react/lib/Styling';
 import { VariantThemeType } from './variantThemeType';
-import { IColor, updateA, getColorFromString } from 'office-ui-fabric-react/lib/utilities/color/colors';
 
 function makeThemeFromPartials(
   originalTheme: IPartialTheme,
@@ -14,22 +13,6 @@ function makeThemeFromPartials(
       semanticColors: { ...originalTheme.semanticColors, ...partialSemantic }
     }
   });
-}
-
-/**
- * Returns a RGBA string with opacity.
- *
- * @export
- * @param {string} inputColor the hex color string that needs opacity applied to it
- * @param {number} opacity the opacity to be applied - ex. 0.5 opacity (50%) should be passed in as 50
- * @returns {string} the RGBA color string
- */
-function changeOpacity(inputColor: string, opacity: number): string {
-  const newColor: IColor | undefined = getColorFromString(inputColor);
-  if (!newColor) {
-    return inputColor;
-  }
-  return updateA(newColor, opacity).str;
 }
 
 /**
@@ -185,7 +168,7 @@ export function getSoftVariant(theme: IPartialTheme): ITheme {
     variantBorder: !fullTheme.isInverted ? p.neutralLight : p.neutralLighterAlt,
 
     buttonBackground: !fullTheme.isInverted ? p.themeLighterAlt : p.themeLight,
-    buttonBackgroundHovered: !fullTheme.isInverted ? p.themeLighter : changeOpacity(p.themeTertiary, 50),
+    buttonBackgroundHovered: !fullTheme.isInverted ? p.themeLighter : p.themeTertiary,
     // buttonBackgroundHovered: !fullTheme.isInverted
     //   ? p.themeLighter
     // : updateA(getColorFromString(p.themeTertiary), 50).str,

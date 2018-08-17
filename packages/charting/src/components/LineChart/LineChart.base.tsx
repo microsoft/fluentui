@@ -21,24 +21,10 @@ export class LineChartBase extends React.Component<ILineChartProps, {}> {
   private _colors: string[];
   private _classNames: IProcessedStyleSet<ILineChartStyles>;
 
-  constructor(props: ILineChartProps) {
-    super(props);
-
-    this._points = this.props.data || [];
-
-    this._width = this.props.width || 600;
-    this._height = this.props.height || 350;
-    this._lineWidth = 15;
-    this._yAxisTickCount = this.props.yAxisTickCount || 5;
-    this._strokeWidth = this.props.strokeWidth || 2;
-
-    const { theme } = this.props;
-    const { palette } = theme!;
-    this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
-  }
-
   public render(): JSX.Element {
-    const isNumeric = typeof this._points[0][0].x === 'number';
+    this._adjustProps();
+
+    const isNumeric = this._points.length > 0 && this._points[0].length > 0 && typeof this._points[0][0].x === 'number';
 
     const xAxis = isNumeric ? this._createNumericXAxis() : this._createStringXAxis();
     const yAxis = this._createYAxis();
@@ -62,6 +48,20 @@ export class LineChartBase extends React.Component<ILineChartProps, {}> {
         </svg>
       </div>
     );
+  }
+
+  private _adjustProps(): void {
+    this._points = this.props.data || [];
+
+    this._width = this.props.width || 600;
+    this._height = this.props.height || 350;
+    this._lineWidth = 15;
+    this._yAxisTickCount = this.props.yAxisTickCount || 5;
+    this._strokeWidth = this.props.strokeWidth || 2;
+
+    const { theme } = this.props;
+    const { palette } = theme!;
+    this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
   }
 
   private _setXAxis(node: SVGGElement | null, xAxis: numericAxis | stringAxis): void {

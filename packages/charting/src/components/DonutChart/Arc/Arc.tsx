@@ -9,10 +9,11 @@ export class Arc extends React.Component<IArcProps, {}> {
     arc: shape.arc()
   };
 
-  public updateChart = (newProps: IArcProps) => {
+  public updateChart(newProps: IArcProps): void {
     newProps.arc.innerRadius(newProps.innerRadius);
     newProps.arc.outerRadius(newProps.outerRadius);
-  };
+  }
+
   public componentWillMount(): void {
     this.updateChart(this.props);
   }
