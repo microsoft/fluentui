@@ -151,7 +151,7 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
       id="TextFieldDescription1"
     >
       <div
-        aria-live="assertive"
+        role="alert"
       />
     </span>
   </div>
@@ -279,7 +279,7 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
       id="TextFieldDescription3"
     >
       <div
-        aria-live="assertive"
+        role="alert"
       />
     </span>
   </div>
@@ -457,7 +457,7 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
       id="TextFieldDescription5"
     >
       <div
-        aria-live="assertive"
+        role="alert"
       />
     </span>
   </div>
@@ -613,7 +613,7 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
       id="TextFieldDescription7"
     >
       <div
-        aria-live="assertive"
+        role="alert"
       />
     </span>
   </div>

@@ -226,7 +226,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
           <span id={this._descriptionId}>
             {onRenderDescription(this.props, this._onRenderDescription)}
             {errorMessage && (
-              <div aria-live="assertive">
+              <div role="alert">
                 <DelayedRender>
                   <p className={this._classNames.errorMessage}>
                     <span data-automation-id="error-message">{errorMessage}</span>
