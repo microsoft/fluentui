@@ -42,9 +42,9 @@ export class CardFrame extends React.Component<ICardFrameProps, {}> {
         <div className={classNames.cardTitleBox}>
           <div className={classNames.cardTitleEllipsisButton}>
             <IconButton
-              menuIconProps={{ iconName: 'MoreVertical' }}
+              menuIconProps={{ iconName: 'More' }}
               split={false}
-              aria-roledescription={'More OverflowActions'}
+              aria-label={'More'}
               menuProps={{
                 items: cardDropDownOptions
               }}
