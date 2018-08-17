@@ -163,6 +163,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
       disabled,
       iconClass,
       iconProps,
+      inputClassName,
       label,
       multiline,
       required,
@@ -195,7 +196,8 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
       resizable,
       hasIcon: !!iconProps,
       underlined,
-      iconClass
+      iconClass,
+      inputClassName
     });
 
     // If a custom description render function is supplied then treat description as always available.
