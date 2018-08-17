@@ -453,10 +453,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   };
 
   private _onToggleMenu = (shouldFocusOnContainer: boolean): void => {
-    if (this._splitButtonContainer.current) {
-      this._splitButtonContainer.current.focus();
-    }
-
     const currentMenuProps = this.state.menuProps;
     let shouldFocusOnMount = true;
     if (this.props.menuProps && this.props.menuProps.shouldFocusOnMount === false) {
@@ -523,6 +519,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
             onClick={!disabled && !primaryDisabled ? this._onSplitButtonPrimaryClick : undefined}
             tabIndex={!disabled || allowDisabledFocus ? 0 : undefined}
             aria-roledescription={buttonProps['aria-roledescription']}
+            onFocusCapture={this._onSplitContainerFocusCapture}
           >
             <span style={{ display: 'flex' }}>
               {this._onRenderContent(tag, buttonProps)}
@@ -534,6 +531,14 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       </KeytipData>
     );
   }
+
+  private _onSplitContainerFocusCapture = (ev: React.FocusEvent<HTMLDivElement>) => {
+    if (this.props.onSplitContainerFocusCapture) {
+      this.props.onSplitContainerFocusCapture(ev);
+    }
+    // stops the event from propagating so focus remains on the SplitButton Container
+    ev.stopPropagation();
+  };
 
   private _onSplitButtonPrimaryClick = (ev: React.MouseEvent<HTMLDivElement>) => {
     if (this._isExpanded) {
