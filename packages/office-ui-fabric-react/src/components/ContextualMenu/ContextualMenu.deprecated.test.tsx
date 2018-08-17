@@ -1,16 +1,24 @@
 import * as React from 'react';
+import { mount } from 'enzyme';
 import { Promise } from 'es6-promise';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { KeyCodes, createRef } from '../../Utilities';
 import { FocusZoneDirection } from '../../FocusZone';
-
+import * as WarnUtil from '@uifabric/utilities/lib-commonjs/warn';
 import { IContextualMenuProps } from './ContextualMenu.types';
 import { ContextualMenu } from './ContextualMenu';
 import { canAnyMenuItemsCheck } from './ContextualMenu.base';
 import { ContextualMenuItemType } from './ContextualMenu.types';
 import { IContextualMenuRenderItem, IContextualMenuItem } from './ContextualMenuItem.types';
+import { ITheme } from '@uifabric/styling';
 
 describe('ContextualMenu', () => {
+  beforeAll(() => {
+    jest.spyOn(WarnUtil, 'warnDeprecations').mockImplementation(() => {
+      /** no impl **/
+    });
+  });
+
   afterEach(() => {
     for (let i = 0; i < document.body.children.length; i++) {
       if (document.body.children[i].tagName === 'DIV') {
@@ -33,6 +41,34 @@ describe('ContextualMenu', () => {
     const menuList = document.querySelector('.ms-ContextualMenu-list') as HTMLUListElement;
 
     expect(menuList.scrollHeight).toBeLessThanOrEqual(menuList.offsetHeight);
+  });
+
+  it('includes the classNames on ContextualMenuItem(s)', () => {
+    const items: IContextualMenuItem[] = [{ name: 'Test 1', key: 'Test1' }];
+
+    const getMenuClassNames = (_theme: ITheme, _className?: string) => {
+      return {
+        container: 'containerFoo',
+        root: 'rootFoo',
+        list: 'listFoo',
+        header: 'headerFoo',
+        title: 'titleFoo'
+      };
+    };
+
+    const wrapper = mount(<ContextualMenu items={items} getMenuClassNames={getMenuClassNames} />);
+
+    const container = wrapper.find('.ms-ContextualMenu-container').at(0);
+    const rootEl = wrapper.find('.ms-ContextualMenu').at(0);
+    const list = wrapper.find('.ms-ContextualMenu-list').at(0);
+    const header = wrapper.filter('.ms-ContextualMenu-header').at(0);
+    const title = wrapper.find('.ms-ContextualMenu-title').at(0);
+
+    expect(container.props().className).toContain('.containerFoo');
+    expect(rootEl.props().className).toContain('.rootFoo');
+    expect(list.props().className).toContain('.listFoo');
+    expect(header.props().className).toContain('.headerFoo');
+    expect(title.props().className).toContain('.titleFoo');
   });
 
   it('closes on left arrow if it is a submenu', () => {
