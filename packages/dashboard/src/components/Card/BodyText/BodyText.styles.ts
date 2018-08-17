@@ -19,7 +19,8 @@ export const getStyles = (): IBodyTextStyles => {
       fontSize: '12px',
       paddingTop: '8px',
       flexWrap: 'wrap',
-      color: '#000000'
+      color: '#000000',
+      width: '85%'
     }
   };
 };
