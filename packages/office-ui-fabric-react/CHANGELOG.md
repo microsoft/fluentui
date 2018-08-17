@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sat, 11 Aug 2018 01:52:57 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Aug 2018 11:25:01 GMT and should not be manually modified.
+
+## 5.121.0
+Fri, 17 Aug 2018 11:25:01 GMT
+
+### Minor changes
+
+- ShimmeredDetailsList: adding a wrapper for DetailsList when want to use Shimmer with it.
 
 ## 5.120.0
 Sat, 11 Aug 2018 01:52:57 GMT
