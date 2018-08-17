@@ -11,5 +11,3 @@ export const DetailsList = styled<IDetailsListProps, IDetailsListStyleProps, IDe
   undefined,
   { scope: 'DetailsList' }
 );
-
-export * from './DetailsList.base';
