@@ -143,6 +143,15 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> i
   constructor(props: ICoachmarkProps) {
     super(props);
 
+    this._warnDeprecations({
+      teachingBubbleRef: undefined,
+      collapsed: 'isCollapsed',
+      beakWidth: undefined,
+      beakHeight: undefined,
+      width: undefined,
+      height: undefined
+    });
+
     // Set defaults for state
     this.state = {
       isCollapsed: props.isCollapsed!,
@@ -535,7 +544,9 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> i
         (): void => {
           // Need setTimeout to trigger narrator
           this._async.setTimeout(() => {
-            focusFirstChild(this._entityInnerHostElement.current!);
+            if (this._entityInnerHostElement.current) {
+              focusFirstChild(this._entityInnerHostElement.current);
+            }
           }, 1000);
 
           if (this.props.onAnimationOpenEnd) {
