@@ -1495,3 +1495,5 @@ export const enum IconNames {
   OfficeChatSolid = 'OfficeChatSolid',
   MailSchedule = 'MailSchedule'
 }
+
+export type IconNamesInput = keyof typeof IconNames;
