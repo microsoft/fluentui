@@ -11,7 +11,7 @@ import { ILegend, ILegendsProps, ILegendsStyles, ILegendStyleProps, ILegendOverf
 const getClassNames = classNamesFunction<ILegendStyleProps, ILegendsStyles>();
 
 // This is an internal interface used for rendering the legends with unique key
-export interface ILegendItem {
+interface ILegendItem {
   name?: string;
   title: string;
   action: VoidFunction;
