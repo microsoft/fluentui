@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsList: selectionMode for groups is none if checkboxvisibility is hidden",
+      "comment": "Panel: remove selected media queries to ensure that custom panels are always right-aligned",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "naethell@microsoft.com"
+  "email": "kakje@microsoft.com"
 }

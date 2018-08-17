@@ -21,7 +21,8 @@ storiesOf('Panel', module)
   .add('Medium right', () => <Panel type={PanelType.medium} headerText="Medium" />)
   .add('Large right', () => <Panel type={PanelType.large} headerText="Large" />)
   .add('Large fixed right', () => <Panel type={PanelType.largeFixed} headerText="Large fixed" />)
-  .add('Extra large right', () => <Panel type={PanelType.extraLarge} headerText="Extra Large" />);
+  .add('Extra large right', () => <Panel type={PanelType.extraLarge} headerText="Extra Large" />)
+  .add('Custom', () => <Panel type={PanelType.custom} headerText="Custom" customWidth="200vw" />);
 
 storiesOf('Panel', module)
   .addDecorator(FabricDecorator)

@@ -40,7 +40,7 @@ const getDlpLineItemStyles = (): IDlpLineItemStyles => {
   return {
     dlpLineItemContainer: {
       display: 'flex',
-      paddingBottom: 16,
+      paddingBottom: 12,
       alignItems: 'flex-end',
       justifyContent: 'flex-end'
     },
@@ -180,7 +180,7 @@ export class RecommendationDlpExample extends React.Component<{}, IRecommendatio
     const recommendationBarTitle = 'Recommended based on your DLP Policies';
     const recommendationDescriptionHeader = 'Protect your sensitive info';
     // tslint:disable-next-line:max-line-length
-    const recommendationDescription = `Some sensitive information types aren't currently protected and could be shared accidentally. We recommend adding a new data loss prevention (DLP) policy to protect this data.`;
+    const recommendationDescription = `Some sensitive information types aren't currently monotired and could be shared accidentally. We recommend creating a data loss prevention (DLP) policy to detect when items containing this sensitive info are shared with people outside your org.`;
     const visualizationHeaderText = 'Unprotected Items';
 
     return this.state.dismissed === true ? null : (

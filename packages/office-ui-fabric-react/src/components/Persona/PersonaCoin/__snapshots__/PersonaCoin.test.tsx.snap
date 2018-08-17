@@ -445,7 +445,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
         className=
             ms-Persona-initials
             {
-              background-color: #1D1D1D;
+              background-color: #5E4B8B;
               border-radius: 50%;
               color: #ffffff;
               font-size: 17px;
@@ -1396,7 +1396,7 @@ exports[`PersonaCoin renders correctly with text 1`] = `
       className=
           ms-Persona-initials
           {
-            background-color: #1D1D1D;
+            background-color: #5E4B8B;
             border-radius: 50%;
             color: #ffffff;
             font-size: 17px;
@@ -1452,7 +1452,7 @@ exports[`PersonaCoin renders the initials before the image is loaded 1`] = `
       className=
           ms-Persona-initials
           {
-            background-color: #1D1D1D;
+            background-color: #5E4B8B;
             border-radius: 50%;
             color: #ffffff;
             font-size: 17px;

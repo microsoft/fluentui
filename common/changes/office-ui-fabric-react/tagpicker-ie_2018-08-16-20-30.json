@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsList: remove related section from demo page",
+      "comment": "Autofill: prevent onInputChange from being called on IE11 inputs with a placeholder",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "naethell@microsoft.com"
+  "email": "kakje@microsoft.com"
 }

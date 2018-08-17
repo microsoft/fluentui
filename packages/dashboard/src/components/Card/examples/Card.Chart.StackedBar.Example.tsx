@@ -48,7 +48,9 @@ export class StackedBarChartExample extends React.Component<{}, {}> {
       chartLabels: ['Stacked bar chart with two data points'],
       chartType: ChartType.StackedBarChart,
       dataPoints: points,
-      legendColors: colors
+      compactChartWidth: 394,
+      legendColors: colors,
+      chartUpdatedOn: 'Updated 6:20 pm today'
     };
 
     const chartContent2 = {
@@ -56,7 +58,8 @@ export class StackedBarChartExample extends React.Component<{}, {}> {
       chartType: ChartType.StackedBarChart,
       dataPoints: multiplePoints,
       compactChartWidth: 394,
-      legendColors: multipleColors
+      legendColors: multipleColors,
+      chartUpdatedOn: 'Updated 6:20 pm today'
     };
 
     const contentAreaList = [
@@ -73,8 +76,7 @@ export class StackedBarChartExample extends React.Component<{}, {}> {
     ];
 
     const header = {
-      headerText: 'Header Text ',
-      annotationText: 'Annotation Text '
+      headerText: 'Header Text '
     };
 
     return (
