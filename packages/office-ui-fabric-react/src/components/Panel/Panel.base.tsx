@@ -235,12 +235,14 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     const { closeButtonAriaLabel, hasCloseButton } = props;
     const theme = getTheme();
     if (hasCloseButton) {
+      // TODO -Issue #5689: Comment in once Button is converted to mergeStyles
       // const iconButtonStyles = this._classNames.subComponentStyles
       // ? (this._classNames.subComponentStyles.iconButton as IStyleFunctionOrObject<IButtonStyleProps, IButtonStyles>)
       // : undefined;
       return (
         <div className={this._classNames.navigation}>
           <IconButton
+            // TODO -Issue #5689: Comment in once Button is converted to mergeStyles
             // className={iconButtonStyles}
             styles={{
               root: {

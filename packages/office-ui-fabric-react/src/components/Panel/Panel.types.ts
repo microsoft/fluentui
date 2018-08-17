@@ -360,14 +360,15 @@ export interface IPanelStyleProps {
   headerClassName?: string;
 }
 
-export interface IPanelSubComponentStyles {
-  /**
-   * Styling for Icon child component.
-   */
-  // TODO: this should be the interface once we're on TS 2.9.2 but otherwise causes errors in 2.8.4
-  // icon: IStyleFunctionOrObject<IIconStyleProps, IIconStyles>;
-  icon: IStyleFunctionOrObject<any, any>;
-}
+// TODO -Issue #5689: Comment in once Button is converted to mergeStyles
+// export interface IPanelSubComponentStyles {
+//   /**
+//    * Styling for Icon child component.
+//    */
+//   // TODO: this should be the interface once we're on TS 2.9.2 but otherwise causes errors in 2.8.4
+//   // button: IStyleFunctionOrObject<IButtonStyleProps, IButtonStyles>;
+//   button: IStyleFunctionOrObject<any, any>;
+// }
 
 export interface IPanelStyles {
   /**
@@ -435,6 +436,7 @@ export interface IPanelStyles {
    */
   footerInner: IStyle;
 
+  // TODO -Issue #5689: Comment in once Button is converted to mergeStyles
   /**
    * Styling for subcomponents.
    */

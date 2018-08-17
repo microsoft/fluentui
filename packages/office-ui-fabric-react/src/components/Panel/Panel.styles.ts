@@ -9,6 +9,7 @@ import {
   ScreenWidthMinXXLarge,
   ScreenWidthMinUhfMobile
 } from '../../Styling';
+// TODO -Issue #5689: Comment in once Button is converted to mergeStyles
 // import { IStyleFunctionOrObject } from '../../Utilities';
 // import { IButtonStyles, IButtonStyleProps } from '../../Button';
 
@@ -67,8 +68,7 @@ const sharedPaddingStyles = {
   }
 };
 
-// // TODO: Once Button is converted to mergeStyles this code should be ready to go along with the comment
-// // on line 242 of Panel.base.tsx
+// // TODO -Issue #5689: Comment in once Button is converted to mergeStyles
 // function getIconButtonStyles(props: IPanelStyleProps): IStyleFunctionOrObject<IButtonStyleProps, IButtonStyles> {
 //   const { theme } = props;
 //   return () => ({
@@ -176,7 +176,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
               right: 'auto',
               left: 0,
               width: panelSize.width.xs,
-              boxShadow: '30px, 0px, 30px, -30px, .2'
+              boxShadow: '30px 0px 30px -30px rgba(0,0,0,0.2)'
             },
             type === PanelType.smallFixedFar && {
               width: panelSize.width.xs,
