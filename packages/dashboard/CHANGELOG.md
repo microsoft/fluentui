@@ -1,6 +1,13 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Thu, 16 Aug 2018 10:26:16 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Aug 2018 10:26:39 GMT and should not be manually modified.
+
+## 0.15.4
+Fri, 17 Aug 2018 10:26:39 GMT
+
+### Patches
+
+- ThumbnailList click target size issue fix
 
 ## 0.15.3
 Thu, 16 Aug 2018 10:26:16 GMT

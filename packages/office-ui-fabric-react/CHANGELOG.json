@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.50.0",
+      "tag": "office-ui-fabric-react_v6.50.0",
+      "date": "Fri, 17 Aug 2018 10:26:39 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "ElianaLiberman <40306431+ElianaLiberman@users.noreply.github.com>",
+            "commit": "76eac480037ace06c7aceef668914b6b0a6b2e19",
+            "comment": "Date is no longer selected when click on 'Today'. That behavior is still allowed passing a boolean argument"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "8234e8783d56b5c903e69b8229ec9b57373b2815",
+            "comment": "ChoiceGroup: Fix bug that errors on Array.find as it does not exist in IE11."
+          },
+          {
+            "author": "Marius Tennøe <mariust@outlook.com>",
+            "commit": "026e7cf827b43f76625668c55c2006f4c9e39c96",
+            "comment": "Replaced black with violet in the personacoin pallette to avoid potential offensive personacoin combinations"
+          },
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "b80c36efd5924481ef97a3c49c7499d0c7ad95dc",
+            "comment": "Panel: add max-width to fixed Panel width styles"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.49.4",
       "tag": "office-ui-fabric-react_v6.49.4",
       "date": "Thu, 16 Aug 2018 10:26:16 GMT",

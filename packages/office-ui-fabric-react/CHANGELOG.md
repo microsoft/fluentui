@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 16 Aug 2018 10:26:16 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Aug 2018 10:26:39 GMT and should not be manually modified.
+
+## 6.50.0
+Fri, 17 Aug 2018 10:26:39 GMT
+
+### Minor changes
+
+- Date is no longer selected when click on 'Today'. That behavior is still allowed passing a boolean argument
+
+### Patches
+
+- ChoiceGroup: Fix bug that errors on Array.find as it does not exist in IE11.
+- Replaced black with violet in the personacoin pallette to avoid potential offensive personacoin combinations
+- Panel: add max-width to fixed Panel width styles
 
 ## 6.49.4
 Thu, 16 Aug 2018 10:26:16 GMT

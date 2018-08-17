@@ -2,6 +2,25 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.15.4",
+      "tag": "@uifabric/dashboard_v0.15.4",
+      "date": "Fri, 17 Aug 2018 10:26:39 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "8292367ae90d78c0267bb4510f829ec294a4f23e",
+            "comment": "ThumbnailList click target size issue fix"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.49.4 <7.0.0` to `>=6.50.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.15.3",
       "tag": "@uifabric/dashboard_v0.15.3",
       "date": "Thu, 16 Aug 2018 10:26:16 GMT",
