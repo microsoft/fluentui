@@ -162,7 +162,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       dropdownWidth: 'useComboBoxAsMenuWidth'
     });
 
-    this._warnDeprecations({ value: 'text' });
+    this._warnDeprecations({
+      value: 'text',
+      onChanged: 'onChange'
+    });
 
     this._id = props.id || getId('ComboBox');
 
@@ -812,7 +815,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     submitPendingValueEvent: any,
     searchDirection: SearchDirection = SearchDirection.none
   ): void {
-    const { onChanged, onPendingValueChanged } = this.props;
+    const { onChange, onChanged, onPendingValueChanged } = this.props;
     const { currentOptions } = this.state;
     let { selectedIndices } = this.state;
 
@@ -862,7 +865,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         this._hasPendingValue = false;
       }
 
-      // Did the creator give us an onChanged callback?
+      if (onChange) {
+        onChange(submitPendingValueEvent, option, index, undefined);
+      }
+
       if (onChanged) {
         onChanged(option, index, undefined, submitPendingValueEvent);
       }
@@ -957,7 +963,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * Submit a pending value if there is one
    */
   private _submitPendingValue(submitPendingValueEvent: any): void {
-    const { onChanged, allowFreeform, autoComplete } = this.props;
+    const { onChange, onChanged, allowFreeform, autoComplete } = this.props;
     const {
       currentPendingValue,
       currentPendingValueValidIndex,
@@ -998,8 +1004,15 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         }
       }
 
-      if (onChanged) {
-        onChanged(undefined, undefined, currentPendingValue, submitPendingValueEvent);
+      if (onChange || onChanged) {
+        if (onChange) {
+          // trigger onChange to clear value
+          onChange(submitPendingValueEvent, undefined, undefined, currentPendingValue);
+        }
+        if (onChanged) {
+          // trigger onChanged to clear value
+          onChanged(undefined, undefined, currentPendingValue, submitPendingValueEvent);
+        }
       } else {
         // If we are not controlled, create a new option
         const newOption: IComboBoxOption = { key: currentPendingValue, text: currentPendingValue };
@@ -1015,9 +1028,15 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           selectedIndices: selectedIndices
         });
       }
-    } else if (allowFreeform && currentPendingValue === '' && onChanged) {
-      // trigger onChanged to clear value
-      onChanged(undefined, undefined, currentPendingValue, submitPendingValueEvent);
+    } else if (allowFreeform && currentPendingValue === '' && (onChange || onChanged)) {
+      if (onChange) {
+        // trigger onChange to clear value
+        onChange(submitPendingValueEvent, undefined, undefined, currentPendingValue);
+      }
+      if (onChanged) {
+        // trigger onChanged to clear value
+        onChanged(undefined, undefined, currentPendingValue, submitPendingValueEvent);
+      }
     } else if (currentPendingValueValidIndex >= 0) {
       // Since we are not allowing freeform, we must have a matching
       // to be able to update state
