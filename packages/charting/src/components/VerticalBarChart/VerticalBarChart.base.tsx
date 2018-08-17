@@ -29,7 +29,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   public render(): JSX.Element {
     this._adjustProps();
 
-    const isNumeric = typeof this._points[0].x === 'number';
+    const isNumeric = this._points.length > 0 && typeof this._points[0].x === 'number';
 
     const xAxis = isNumeric ? this._createNumericXAxis() : this._createStringXAxis();
     const yAxis = this._createYAxis();

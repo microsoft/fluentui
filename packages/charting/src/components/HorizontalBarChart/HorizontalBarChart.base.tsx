@@ -28,7 +28,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   public render(): JSX.Element {
     this._adjustProps();
 
-    const isNumeric = typeof this._points[0].x === 'number';
+    const isNumeric = this._points.length > 0 && typeof this._points[0].x === 'number';
 
     const xAxis = this._createNumericXAxis(isNumeric);
     const yAxis = isNumeric ? this._createYAxis() : this._createStringYAxis();
