@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "BaseButton: Remove unnecessary putting focus on the split button we toggle a menu",
+      "comment": "BaseButton: Add onFocusCapture to the split button container to focus the container instead of doing it in the menu onClick",
       "type": "patch"
     }
   ],
