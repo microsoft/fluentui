@@ -283,11 +283,6 @@ export interface IButtonProps
    * @deprecated Use 'secondaryText' instead.
    */
   description?: IStyle;
-
-  /**
-   * Callback for when the split button container has a onFocus capture event
-   */
-  onSplitContainerFocusCapture?: (ev?: React.FocusEvent<HTMLElement>) => void;
 }
 
 export enum ElementType {

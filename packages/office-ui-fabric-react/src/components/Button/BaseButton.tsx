@@ -533,11 +533,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   private _onSplitContainerFocusCapture = (ev: React.FocusEvent<HTMLDivElement>) => {
-    if (this.props.onSplitContainerFocusCapture) {
-      this.props.onSplitContainerFocusCapture(ev);
-    }
-    // stops the event from propagating so focus remains on the SplitButton Container
-    ev.stopPropagation();
+    // We should never be able to focus the individual buttons in a split button. Focus
+    // should always remain on the container.
+    this._splitButtonContainer.current && this._splitButtonContainer.current.focus();
   };
 
   private _onSplitButtonPrimaryClick = (ev: React.MouseEvent<HTMLDivElement>) => {
