@@ -28,7 +28,7 @@ export const getThumbnailItemStyles = (): IThumbnailItemStyles => {
   return {
     root: {
       overflow: 'hidden',
-      paddingBottom: '16px',
+      marginBottom: '16px',
       minHeight: '52px',
       maxHeight: '52px'
     },
