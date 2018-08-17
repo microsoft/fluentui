@@ -12,6 +12,7 @@ export class PieChartBase extends React.Component<IPieChartProps, {}> {
     height: 350
   };
   private _classNames: IProcessedStyleSet<IPieChartStyles>;
+
   public render(): JSX.Element {
     const { data, width, height, colors } = this.props;
 

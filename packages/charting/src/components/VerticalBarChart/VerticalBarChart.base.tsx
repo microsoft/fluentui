@@ -26,35 +26,14 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   private _colors: string[];
   private _classNames: IProcessedStyleSet<IVerticalBarChartStyles>;
 
-  constructor(props: IVerticalBarChartProps) {
-    super(props);
-
-    this._points = this.props.data || [];
-
-    this._width = this.props.width || 600;
-    this._height = this.props.height || 350;
-    this._barWidth = this.props.barWidth || 15;
-    this._yAxisTickCount = this.props.yAxisTickCount || 5;
-
-    const { theme } = this.props;
-    const { palette } = theme!;
-    this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.blueDark];
-  }
-
   public render(): JSX.Element {
-    const isNumeric = typeof this._points[0].x === 'number';
+    this._adjustProps();
+
+    const isNumeric = this._points.length > 0 && typeof this._points[0].x === 'number';
 
     const xAxis = isNumeric ? this._createNumericXAxis() : this._createStringXAxis();
     const yAxis = this._createYAxis();
     const bars = isNumeric ? this._createNumericBars() : this._createStringBars();
-
-    const { theme, className, styles } = this.props;
-    this._classNames = getClassNames(styles!, {
-      theme: theme!,
-      width: this._width,
-      height: this._height,
-      className
-    });
 
     return (
       <div className={this._classNames.root}>
@@ -66,6 +45,26 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         </svg>
       </div>
     );
+  }
+
+  private _adjustProps(): void {
+    this._points = this.props.data || [];
+
+    this._width = this.props.width || 600;
+    this._height = this.props.height || 350;
+    this._barWidth = this.props.barWidth || 15;
+    this._yAxisTickCount = this.props.yAxisTickCount || 5;
+
+    const { theme, className, styles } = this.props;
+    const { palette } = theme!;
+    this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.blueDark];
+
+    this._classNames = getClassNames(styles!, {
+      theme: theme!,
+      width: this._width,
+      height: this._height,
+      className
+    });
   }
 
   private _setXAxis(node: SVGGElement | null, xAxis: numericAxis | stringAxis): void {
