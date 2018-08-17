@@ -8,7 +8,8 @@ import {
   getNativeProps,
   getRTL,
   createRef,
-  elementContains
+  elementContains,
+  isIOS
 } from '../../Utilities';
 import { FocusTrapZone } from '../FocusTrapZone/index';
 import { IPanel, IPanelProps, PanelType } from './Panel.types';
