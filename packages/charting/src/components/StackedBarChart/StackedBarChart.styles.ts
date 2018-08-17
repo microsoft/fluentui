@@ -13,27 +13,6 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
       },
       className
     ],
-    // chart: [
-    //   {
-    //     width: chartWidth,
-    //     height: chartHeight,
-    //     boxSizing: 'content-box',
-    //     overflow: 'visible'
-    //   }
-    // ],
-    // chartTitle: [
-    //   {
-    //     display: 'flex'
-    //   }
-    // ],
-    // bars: [],
-    // legend: [
-    //   {
-    //     display: 'flex',
-    //     flexDirection: 'column'
-    //   },
-    //   className
-    // ],
     chart: {
       width: chartWidth,
       height: chartHeight
