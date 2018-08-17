@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 17 Aug 2018 10:26:39 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Aug 2018 15:00:40 GMT and should not be manually modified.
+
+## 6.50.1
+Fri, 17 Aug 2018 15:00:40 GMT
+
+### Patches
+
+- Decouple ShimmeredDetailsList from DetailsList
 
 ## 6.50.0
 Fri, 17 Aug 2018 10:26:39 GMT

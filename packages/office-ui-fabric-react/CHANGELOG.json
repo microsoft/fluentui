@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.50.1",
+      "tag": "office-ui-fabric-react_v6.50.1",
+      "date": "Fri, 17 Aug 2018 15:00:40 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "5fcee6bd719ae7d94493ac40bd8d86e8df981a7b",
+            "comment": "Decouple ShimmeredDetailsList from DetailsList"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.50.0",
       "tag": "office-ui-fabric-react_v6.50.0",
       "date": "Fri, 17 Aug 2018 10:26:39 GMT",
