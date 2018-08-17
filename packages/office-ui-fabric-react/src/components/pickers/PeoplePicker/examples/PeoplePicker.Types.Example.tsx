@@ -113,7 +113,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
             selectedKey={this.state.currentPicker}
             onChanged={this._dropDownSelected}
           />
-          <Toggle label="Delay Suggestion Results" defaultChecked={false} onChanged={this._toggleDelayResultsChange} />
+          <Toggle label="Delay Suggestion Results" defaultChecked={false} onChange={this._toggleDelayResultsChange} />
         </div>
         <PrimaryButton text="Set focus" onClick={this._onSetFocusButtonClicked} />
       </div>
@@ -415,7 +415,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     return personas.filter(persona => !this._listContainsPersona(persona, possibleDupes));
   }
 
-  private _toggleDelayResultsChange = (toggleState: boolean): void => {
+  private _toggleDelayResultsChange = (ev: React.MouseEvent<HTMLElement>, toggleState: boolean): void => {
     this.setState({ delayResults: toggleState });
   };
 
