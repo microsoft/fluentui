@@ -162,11 +162,11 @@ export interface IBasePickerSuggestionsProps {
    */
   noResultsFoundText?: string;
   /**
-   * ClassName for the picker.
+   * Suggestions root Class Name.
    */
   className?: string;
   /**
-   * Classname for the suggestion box.
+   * Classname for the suggestion list.
    */
   suggestionsClassName?: string;
   /**

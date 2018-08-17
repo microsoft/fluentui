@@ -307,7 +307,9 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
       suggestionsItemClassName,
       resultsMaximumNumber,
       showRemoveButtons,
-      suggestionsContainerAriaLabel
+      suggestionsContainerAriaLabel,
+      suggestionsListId,
+      suggestionsClassName
     } = this.props;
     let { suggestions } = this.props;
     const TypedSuggestionsItem = this.SuggestionsItemOfProperType;
@@ -318,9 +320,9 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
 
     return (
       <div
-        className={css('ms-Suggestions-container', styles.suggestionsContainer)}
-        id="suggestion-list"
-        role="list"
+        className={css('ms-Suggestions-container', styles.suggestionsContainer, suggestionsClassName)}
+        id={suggestionsListId}
+        role="listbox"
         aria-label={suggestionsContainerAriaLabel}
       >
         {suggestions.map((suggestion, index) => (
@@ -329,11 +331,11 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
             // tslint:disable-next-line:no-string-literal
             key={(suggestion.item as any)['key'] ? (suggestion.item as any)['key'] : index}
             id={'sug-' + index}
-            role="listitem"
+            aria-selected={suggestion.selected}
+            role="option"
             aria-label={suggestion.ariaLabel}
           >
             <TypedSuggestionsItem
-              id={'sug-item' + index}
               suggestionModel={suggestion}
               RenderSuggestion={onRenderSuggestion as any}
               onClick={this._onClickTypedSuggestionsItem(suggestion.item, index)}
