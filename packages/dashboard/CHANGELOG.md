@@ -1,6 +1,44 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Mon, 13 Aug 2018 03:43:25 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Aug 2018 10:26:39 GMT and should not be manually modified.
+
+## 0.15.4
+Fri, 17 Aug 2018 10:26:39 GMT
+
+### Patches
+
+- ThumbnailList click target size issue fix
+
+## 0.15.3
+Thu, 16 Aug 2018 10:26:16 GMT
+
+### Patches
+
+- Various styling fixes for Dashboard cards
+- update leftNav style change
+- fix leftNav styling bugs
+- patch leftNav styling per PM feedback
+
+## 0.15.2
+Wed, 15 Aug 2018 10:26:31 GMT
+
+### Patches
+
+- Changing font for components in card
+
+## 0.15.1
+Tue, 14 Aug 2018 10:27:33 GMT
+
+### Patches
+
+- disabling codepen task
+
+## 0.15.0
+Tue, 14 Aug 2018 00:01:11 GMT
+
+### Minor changes
+
+- Implement new design for StackedBarChart, New components MultiStackedBarChart and Legend. Update Card component to render new components
 
 ## 0.14.1
 Mon, 13 Aug 2018 03:43:25 GMT

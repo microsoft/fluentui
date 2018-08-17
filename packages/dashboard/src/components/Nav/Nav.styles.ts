@@ -17,6 +17,7 @@ const navFontSize = 14;
 const navTextColor = '#FFF';
 const navWidth = 280;
 const navCollapsedWidth = 48;
+const shortenedIconWidth = 38;
 const navFloatingWidth = 230;
 const navItemHeight = 48;
 const navChildItemHeight = 32;
@@ -62,7 +63,6 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
     navItemRoot: {
       height: !!nestingLevel && nestingLevel > 0 ? navChildItemHeight : navItemHeight,
       cursor: 'pointer',
-      backgroundColor: isSelected ? navItemSelectedColor : 'inherit',
       paddingLeft: !!nestingLevel && nestingLevel > 0 ? nestingLevel * navItemIndentSize : 'inherit',
 
       selectors: {
@@ -72,21 +72,22 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
       }
     },
     navItemBarMarker: {
-      position: 'absolute',
-      marginLeft: !!nestingLevel && nestingLevel > 0 && !hasChildren ? '-9px' : '6px',
+      marginLeft: !!nestingLevel && nestingLevel > 0 && !hasChildren ? '-10px' : '6px',
+      marginRight: !!nestingLevel && nestingLevel > 0 && !hasChildren ? '8px' : '0px',
       marginTop: !!nestingLevel && nestingLevel > 0 ? '7px' : '12px',
       width: '2px',
       height: !!nestingLevel && nestingLevel > 0 ? '18px' : '24px',
       backgroundColor: '#0078D4',
-      display: isSelected || isChildLinkSelected ? 'block' : 'none',
+      display: isSelected || isChildLinkSelected ? 'inline-block' : 'none',
       borderWidth: 0
     },
     navItemIconColumn: {
-      width: navCollapsedWidth,
+      width: isSelected || isChildLinkSelected ? shortenedIconWidth : navCollapsedWidth,
       fontSize: '16px',
       lineHeight: !!nestingLevel && nestingLevel > 0 ? navChildItemHeight : navItemHeight,
       textAlign: 'center',
-      color: '#000000'
+      color: '#000000',
+      verticalAlign: 'top'
     },
     navItemNameColumn: {
       width: '100%',
@@ -126,7 +127,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
     navFloatingItemRoot: {
       height: !!nestingLevel && nestingLevel > 0 ? navChildItemHeight : navItemHeight,
       cursor: 'pointer',
-      backgroundColor: !!nestingLevel && nestingLevel > 0 && isSelected ? navItemSelectedColor : 'inherit',
+      backgroundColor: navBackgroundColor,
       paddingLeft: !!nestingLevel && nestingLevel > 0 ? nestingLevel * navItemIndentSize : 'inherit',
       selectors: {
         ':hover': {
@@ -154,7 +155,6 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
     navToggler: {
       height: navItemHeight,
       cursor: 'pointer',
-      backgroundColor: 'inherit',
       selectors: {
         ':hover': {
           backgroundColor: navItemHoverColor

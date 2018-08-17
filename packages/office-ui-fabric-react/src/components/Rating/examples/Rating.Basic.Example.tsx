@@ -1,3 +1,4 @@
+// @codepen
 import * as React from 'react';
 import { Rating, RatingSize } from 'office-ui-fabric-react/lib/Rating';
 import { getTheme, createTheme, ITheme } from 'office-ui-fabric-react/lib/Styling';

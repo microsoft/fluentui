@@ -315,7 +315,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       minimumPixelsForDrag,
       getGroupHeight,
       styles,
-      theme
+      theme,
+      cellStyleProps = DEFAULT_CELL_STYLE_PROPS
     } = this.props;
     const { adjustedColumns, isCollapsed, isSizing, isSomeGroupExpanded } = this.state;
     const { _selection: selection, _dragDropHelper: dragDropHelper } = this;
@@ -379,9 +380,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
           aria-label={ariaLabelForGrid}
           aria-rowcount={rowCount}
           aria-colcount={
-            (selectAllVisibility !== SelectAllVisibility.none && selectAllVisibility !== SelectAllVisibility.hidden
-              ? 1
-              : 0) + (adjustedColumns ? adjustedColumns.length : 0)
+            (selectAllVisibility !== SelectAllVisibility.none ? 1 : 0) + (adjustedColumns ? adjustedColumns.length : 0)
           }
           aria-readonly="true"
         >
@@ -410,7 +409,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
                   viewport: viewport,
                   columnReorderProps: columnReorderProps,
                   minimumPixelsForDrag: minimumPixelsForDrag,
-                  cellStyleProps: DEFAULT_CELL_STYLE_PROPS
+                  cellStyleProps: cellStyleProps
                 },
                 this._onRenderDetailsHeader
               )}
@@ -442,7 +441,9 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
                     items={items}
                     onRenderCell={this._onRenderCell}
                     selection={selection}
-                    selectionMode={selectionMode}
+                    selectionMode={
+                      checkboxVisibility !== CheckboxVisibility.hidden ? selectionMode : SelectionMode.none
+                    }
                     dragDropEvents={dragDropEvents}
                     dragDropHelper={dragDropHelper as DragDropHelper}
                     eventsToRegister={rowElementEventMap}

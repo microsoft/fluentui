@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Mon, 13 Aug 2018 03:43:25 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Aug 2018 10:27:33 GMT and should not be manually modified.
+
+## 6.14.1
+Tue, 14 Aug 2018 10:27:33 GMT
+
+### Patches
+
+- disabling codepen task
 
 ## 6.14.0
 Mon, 13 Aug 2018 03:43:25 GMT

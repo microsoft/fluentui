@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "TextField: For uncontrolled scenarios, update value when defaultValue changes.",
+      "comment": "TextField: Fix application of inputClassName lost when component was converted to JS styling.",
       "type": "patch"
     }
   ],

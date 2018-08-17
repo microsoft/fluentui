@@ -391,6 +391,7 @@ export const AppState: IAppState = {
                 {
                   title: 'Basic',
                   url: '#/components/detailslist/basic',
+                  isFilterable: true,
                   component: () => <LoadingComponent title="Basic DetailsList" />,
                   getComponent: cb =>
                     require.ensure([], require =>
@@ -403,6 +404,7 @@ export const AppState: IAppState = {
                 {
                   title: 'Compact',
                   url: '#/components/detailslist/compact',
+                  isFilterable: true,
                   component: () => <LoadingComponent title="Compact DetailsList" />,
                   getComponent: cb =>
                     require.ensure([], require =>
@@ -415,6 +417,7 @@ export const AppState: IAppState = {
                 {
                   title: 'Grouped',
                   url: '#/components/detailslist/grouped',
+                  isFilterable: true,
                   component: () => <LoadingComponent title="Grouped DetailsList" />,
                   getComponent: cb =>
                     require.ensure([], require =>
@@ -427,6 +430,7 @@ export const AppState: IAppState = {
                 {
                   title: 'Custom Item Columns',
                   url: '#/components/detailslist/customitemcolumns',
+                  isFilterable: true,
                   component: () => <LoadingComponent title="Custom Item Columns DetailsList" />,
                   getComponent: cb =>
                     require.ensure([], require =>
@@ -439,6 +443,7 @@ export const AppState: IAppState = {
                 {
                   title: 'Custom Item Rows',
                   url: '#/components/detailslist/customitemrows',
+                  isFilterable: true,
                   component: () => <LoadingComponent title="Custom Item Rows DetailsList" />,
                   getComponent: cb =>
                     require.ensure([], require =>
@@ -451,6 +456,7 @@ export const AppState: IAppState = {
                 {
                   title: 'Custom Footer',
                   url: '#/components/detailslist/customfooter',
+                  isFilterable: true,
                   component: () => <LoadingComponent title="Custom Footer DetailsList" />,
                   getComponent: cb =>
                     require.ensure([], require =>
@@ -463,6 +469,7 @@ export const AppState: IAppState = {
                 {
                   title: 'Custom Group Headers',
                   url: '#/components/detailslist/customgroupheaders',
+                  isFilterable: true,
                   component: () => <LoadingComponent title="Custom Group Headers DetailsList" />,
                   getComponent: cb =>
                     require.ensure([], require =>
@@ -475,6 +482,7 @@ export const AppState: IAppState = {
                 {
                   title: 'Variable Row Heights',
                   url: '#/components/detailslist/variablerowheights',
+                  isFilterable: true,
                   component: () => <LoadingComponent title="Variable Row Heights DetailsList" />,
                   getComponent: cb =>
                     require.ensure([], require =>
@@ -487,6 +495,7 @@ export const AppState: IAppState = {
                 {
                   title: 'Drag & Drop',
                   url: '#/components/detailslist/draganddrop',
+                  isFilterable: true,
                   component: () => <LoadingComponent title="Drag &amp; Drop DetailsList" />,
                   getComponent: cb =>
                     require.ensure([], require =>
@@ -499,6 +508,7 @@ export const AppState: IAppState = {
                 {
                   title: 'Inner Navigation',
                   url: '#/components/detailslist/innernavigation',
+                  isFilterable: true,
                   component: () => <LoadingComponent title="Inner Navigation DetailsList" />,
                   getComponent: cb =>
                     require.ensure([], require =>

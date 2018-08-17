@@ -97,7 +97,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       iconProps,
       menuIconProps,
       styles,
-      text,
       checked,
       variantClassName,
       theme,
@@ -148,6 +147,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       ]
     );
 
+    // Check for ariaLabel passed in via Button props, and fall back to aria-label passed in via native props
+    const resolvedAriaLabel = ariaLabel || (nativeProps as any)['aria-label'];
+
     // Check for ariaDescription, secondaryText or aria-describedby in the native props to determine source of aria-describedby
     // otherwise default to undefined so property does not appear in output.
     let ariaDescribedBy = undefined;
@@ -165,11 +167,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     // set the labelledby element. Otherwise, the button is labeled implicitly by the descendent
     // text on the button (if it exists). Never set both aria-label and aria-labelledby.
     let ariaLabelledBy = undefined;
-    if (!ariaLabel) {
+    if (!resolvedAriaLabel) {
       if ((nativeProps as any)['aria-labelledby']) {
         ariaLabelledBy = (nativeProps as any)['aria-labelledby'];
       } else if (ariaDescribedBy) {
-        ariaLabelledBy = text ? _labelId : undefined;
+        ariaLabelledBy = this._hasText() ? _labelId : undefined;
       }
     }
 
@@ -188,7 +190,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       onMouseDown: this._onMouseDown,
       onMouseUp: this._onMouseUp,
       onClick: this._onClick,
-      'aria-label': ariaLabel,
+      'aria-label': resolvedAriaLabel,
       'aria-labelledby': ariaLabelledBy,
       'aria-describedby': ariaDescribedBy,
       'aria-disabled': isPrimaryButtonDisabled,

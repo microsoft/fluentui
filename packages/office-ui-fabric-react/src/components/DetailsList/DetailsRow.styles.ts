@@ -408,6 +408,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
       }
     ],
     isMultiline: [
+      defaultCellStyles,
       {
         whiteSpace: 'normal',
         wordBreak: 'break-word',

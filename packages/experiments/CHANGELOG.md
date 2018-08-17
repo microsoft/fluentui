@@ -1,6 +1,25 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 13 Aug 2018 03:43:25 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Aug 2018 10:26:16 GMT and should not be manually modified.
+
+## 6.24.0
+Thu, 16 Aug 2018 10:26:16 GMT
+
+### Minor changes
+
+- Adding support for drop-downs with multiple selection to the FormDropdown component.
+
+## 6.23.3
+Tue, 14 Aug 2018 10:27:33 GMT
+
+### Patches
+
+- disabling codepen task
+
+## 6.23.2
+Tue, 14 Aug 2018 00:01:11 GMT
+
+*Version update only*
 
 ## 6.23.1
 Mon, 13 Aug 2018 03:43:25 GMT
