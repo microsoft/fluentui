@@ -3,9 +3,7 @@ jest.mock('../../utilities/contextualMenu');
 import * as React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
 import { ContextualMenuItemBase } from './ContextualMenuItem.base';
-import { IContextualMenuItemProps } from './ContextualMenuItem.types';
-import { IContextualMenuItem } from './ContextualMenu.types';
-import { IMenuItemClassNames } from './ContextualMenu.classNames';
+import { IContextualMenuItemProps, IContextualMenuItem, IMenuItemClassNames } from './ContextualMenuItem.types';
 import { hasSubmenu } from '../../utilities/contextualMenu/index';
 
 describe('ContextMenuItemChildren', () => {

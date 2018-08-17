@@ -9,7 +9,8 @@ import {
 import {
   IContextualMenuItemStyles,
   IContextualMenuItem,
-  IContextualMenuItemStyleProps
+  IContextualMenuItemStyleProps,
+  IMenuItemClassNames
 } from './ContextualMenuItem.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection, IFocusZoneProps, FocusZoneTabbableElements } from '../../FocusZone';
