@@ -3,6 +3,10 @@ import { IBodyTextStyles } from './BodyText.types';
 export const getStyles = (): IBodyTextStyles => {
   return {
     root: {
+      display: 'flex',
+      flexDirection: 'column'
+    },
+    subHeaderText: {
       fontFamily: 'Segoe UI',
       fontWeight: 'bold',
       lineHeight: '16px',
@@ -13,8 +17,9 @@ export const getStyles = (): IBodyTextStyles => {
       fontFamily: 'Segoe UI',
       lineHeight: '14px',
       fontSize: '12px',
-      color: '#000000',
-      opacity: 0.6
+      paddingTop: '8px',
+      flexWrap: 'wrap',
+      color: '#000000'
     }
   };
 };

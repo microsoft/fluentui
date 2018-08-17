@@ -40,7 +40,11 @@ describe('TextField', () => {
   }
 
   it('renders TextField correctly', () => {
-    const component = renderer.create(<TextField label="Label" />);
+    const className = 'testClassName';
+    const inputClassName = 'testInputClassName';
+    const component = renderer.create(
+      <TextField label="Label" className={className} inputClassName={inputClassName} />
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

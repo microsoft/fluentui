@@ -4,6 +4,7 @@ exports[`TextField renders TextField correctly 1`] = `
 <div
   className=
       ms-TextField
+      testClassName
       {
         box-shadow: none;
         box-sizing: border-box;
@@ -96,6 +97,7 @@ exports[`TextField renders TextField correctly 1`] = `
         aria-label={undefined}
         className=
             ms-TextField-field
+            testInputClassName
             {
               background-color: transparent;
               background: none;

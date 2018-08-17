@@ -77,6 +77,11 @@ export interface ILayoutStyles {
   contentArea1: IStyle;
 
   /**
+   * Style for dataviz last updated on
+   */
+  dataVizLastUpdatedOn: IStyle;
+
+  /**
    * Style set for card content2(Area2)
    */
   contentArea2: IStyle;

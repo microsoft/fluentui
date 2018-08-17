@@ -64,7 +64,8 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
     hasIcon,
     resizable,
     hasErrorMessage,
-    iconClass
+    iconClass,
+    inputClassName
   } = props;
 
   const { semanticColors, palette } = theme;
@@ -329,7 +330,8 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
             padding: '0 11px 0 11px'
           }
         }
-      }
+      },
+      inputClassName
     ],
     icon: [
       multiline && {

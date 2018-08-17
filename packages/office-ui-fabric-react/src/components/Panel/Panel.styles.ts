@@ -229,15 +229,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
               }
             },
             type === PanelType.custom && {
-              selectors: {
-                ['@media (min-width: ' + ScreenWidthMinUhfMobile + 'px)']: {
-                  left: panelSize.margin.md,
-                  width: 'auto'
-                },
-                ['@media (min-width: ' + ScreenWidthMinXLarge + 'px)']: {
-                  left: 'auto'
-                }
-              }
+              maxWidth: '100vw'
             }
           ]
         }

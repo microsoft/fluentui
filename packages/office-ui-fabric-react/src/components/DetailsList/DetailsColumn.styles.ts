@@ -120,7 +120,13 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
       }
     ],
 
-    iconClassName: [nearIconStyle, iconClassName],
+    iconClassName: [
+      {
+        color: colors.iconForegroundColor,
+        opacity: 1
+      },
+      iconClassName
+    ],
 
     filterChevron: [
       classNames.filterChevron,

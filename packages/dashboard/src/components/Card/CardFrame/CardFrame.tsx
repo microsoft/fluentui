@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { ICardFrameProps, ICardFrameStyles, ICardDropDownOption } from './CardFrame.types';
-import { IconButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { getStyles } from './CardFrame.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { IOverflowSetItemProps, OverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
-import { customOverflowStyle } from './CardFrame.styles';
+import { IOverflowSetItemProps } from 'office-ui-fabric-react/lib/OverflowSet';
 
 export class CardFrame extends React.Component<ICardFrameProps, {}> {
   constructor(props: ICardFrameProps) {
@@ -42,10 +41,13 @@ export class CardFrame extends React.Component<ICardFrameProps, {}> {
       <div className={classNames.root}>
         <div className={classNames.cardTitleBox}>
           <div className={classNames.cardTitleEllipsisButton}>
-            <OverflowSet
-              overflowItems={cardDropDownOptions}
-              onRenderOverflowButton={this._onRenderOverflowButton}
-              onRenderItem={this._onRenderItem}
+            <IconButton
+              menuIconProps={{ iconName: 'More' }}
+              split={false}
+              aria-label={'More'}
+              menuProps={{
+                items: cardDropDownOptions
+              }}
             />
           </div>
           <div className={classNames.cardTitle}>
@@ -54,29 +56,6 @@ export class CardFrame extends React.Component<ICardFrameProps, {}> {
         </div>
         <div className={classNames.layout}>{this.props.children}</div>
       </div>
-    );
-  }
-
-  private _onRenderItem(item: IOverflowSetItemProps): JSX.Element {
-    return (
-      <IconButton
-        menuIconProps={{ iconName: item.icon }}
-        onClick={item.onClick}
-        title={item.title}
-        ariaLabel={item.ariaLabel}
-      />
-    );
-  }
-
-  private _onRenderOverflowButton(overflowItems: IOverflowSetItemProps[] | undefined): JSX.Element {
-    return (
-      <DefaultButton
-        menuIconProps={{ iconName: 'More' }}
-        menuProps={{ items: overflowItems! }}
-        ariaLabel="Card options"
-        title="Card options"
-        styles={customOverflowStyle}
-      />
     );
   }
 }
