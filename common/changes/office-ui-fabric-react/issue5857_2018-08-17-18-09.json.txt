@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsList width calculation is not currently taking into account grouping depth >1. This fixes that.",
+      "comment": "DetailsList: Account for grouping depth of more than one in width calculation.",
       "type": "patch"
     }
   ],
