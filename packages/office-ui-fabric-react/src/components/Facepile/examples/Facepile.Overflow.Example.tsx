@@ -58,7 +58,7 @@ export class FacepileOverflowExample extends React.Component<{}, IFacepileOverfl
               { key: OverflowButtonType.downArrow, text: OverflowButtonType[OverflowButtonType.downArrow] },
               { key: OverflowButtonType.more, text: OverflowButtonType[OverflowButtonType.more] }
             ]}
-            onChanged={this._onChangeType}
+            onChange={this._onChangeType}
           />
         </div>
       </div>
@@ -74,7 +74,7 @@ export class FacepileOverflowExample extends React.Component<{}, IFacepileOverfl
     );
   };
 
-  private _onChangeType = (value: IDropdownOption): void => {
+  private _onChangeType = (event: React.FormEvent<HTMLDivElement>, value: IDropdownOption): void => {
     this.setState(
       (prevState: IFacepileOverflowExampleState): IFacepileOverflowExampleState => {
         prevState.overflowButtonType = value.key as OverflowButtonType;

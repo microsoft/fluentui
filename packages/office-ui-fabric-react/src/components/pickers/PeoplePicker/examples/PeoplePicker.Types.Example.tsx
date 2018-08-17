@@ -111,7 +111,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
               { key: 7, text: 'Controlled Picker' }
             ]}
             selectedKey={this.state.currentPicker}
-            onChanged={this._dropDownSelected}
+            onChange={this._dropDownSelected}
           />
           <Toggle label="Delay Suggestion Results" defaultChecked={false} onChange={this._toggleDelayResultsChange} />
         </div>
@@ -419,7 +419,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     this.setState({ delayResults: toggleState });
   };
 
-  private _dropDownSelected = (option: IDropdownOption): void => {
+  private _dropDownSelected = (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
     this.setState({ currentPicker: option.key });
   };
 
