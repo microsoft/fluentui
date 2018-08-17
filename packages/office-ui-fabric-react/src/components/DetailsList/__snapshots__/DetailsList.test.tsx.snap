@@ -85,6 +85,7 @@ exports[`DetailsList renders List correctly 1`] = `
         >
           <div
             aria-colindex={1}
+            aria-hidden={undefined}
             aria-labelledby="header0-check"
             className=
                 ms-DetailsHeader-cell
@@ -661,6 +662,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
         >
           <div
             aria-colindex={1}
+            aria-hidden={undefined}
             aria-labelledby="header6-check"
             className=
                 ms-DetailsHeader-cell
@@ -1237,6 +1239,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
         >
           <div
             aria-colindex={1}
+            aria-hidden={undefined}
             aria-labelledby="header3-check"
             className=
                 ms-DetailsHeader-cell
