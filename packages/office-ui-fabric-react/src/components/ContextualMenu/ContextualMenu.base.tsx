@@ -115,6 +115,10 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
       subMenuId: getId('ContextualMenu')
     };
 
+    this._warnDeprecations({
+      getMenuClassNames: 'styles'
+    });
+
     this._isFocusingPreviousElement = false;
     this._isScrollIdle = true;
     this._processingExpandCollapseKeyOnly = false;
