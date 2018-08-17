@@ -15,7 +15,7 @@ const COLOR_SWATCHES_LOOKUP: PersonaInitialsColor[] = [
   PersonaInitialsColor.pink,
   PersonaInitialsColor.magenta,
   PersonaInitialsColor.purple,
-  PersonaInitialsColor.black,
+  PersonaInitialsColor.violet,
   PersonaInitialsColor.teal,
   PersonaInitialsColor.blue,
   PersonaInitialsColor.darkBlue,
@@ -44,14 +44,12 @@ function getInitialsColorFromName(displayName: string | undefined): PersonaIniti
   return color;
 }
 
-const blueColor = '#2D89EF';
-
 function personaInitialsColorToHexCode(personaInitialsColor: PersonaInitialsColor): string {
   switch (personaInitialsColor) {
     case PersonaInitialsColor.lightBlue:
       return '#6BA5E7';
     case PersonaInitialsColor.blue:
-      return blueColor;
+      return '#2D89EF';
     case PersonaInitialsColor.darkBlue:
       return '#2B5797';
     case PersonaInitialsColor.teal:
@@ -70,8 +68,8 @@ function personaInitialsColorToHexCode(personaInitialsColor: PersonaInitialsColo
       return '#7E3878';
     case PersonaInitialsColor.purple:
       return '#603CBA';
-    case PersonaInitialsColor.violet:
-      return '#5E4B8B';
+    case PersonaInitialsColor.black:
+      return '#1D1D1D';
     case PersonaInitialsColor.orange:
       return '#DA532C';
     case PersonaInitialsColor.red:
@@ -80,9 +78,9 @@ function personaInitialsColorToHexCode(personaInitialsColor: PersonaInitialsColo
       return '#B91D47';
     case PersonaInitialsColor.transparent:
       return 'transparent';
+    case PersonaInitialsColor.violet:
+      return '#5E4B8B';
   }
-
-  return blueColor;
 }
 
 export function initialsColorPropToColorCode(props: IPersonaProps): string {
