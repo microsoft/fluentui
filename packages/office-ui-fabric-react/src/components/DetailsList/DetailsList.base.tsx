@@ -578,6 +578,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
   private _onHeaderKeyDown(ev: React.KeyboardEvent<HTMLElement>): void {
     if (ev.which === KeyCodes.down) {
       if (this._focusZone.current && this._focusZone.current.focus()) {
+        // select the first item in list after down arrow key event
+        this._selection.setIndexSelected(0, true, false);
         ev.preventDefault();
         ev.stopPropagation();
       }
@@ -915,7 +917,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
   }
 
   /**
-   * Call back function when an element in FocusZone becomes active. It will transalate it into item
+   * Call back function when an element in FocusZone becomes active. It will translate it into item
    * and call onActiveItemChanged callback if specified.
    *
    * @private
