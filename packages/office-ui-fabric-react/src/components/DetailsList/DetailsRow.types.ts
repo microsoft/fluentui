@@ -51,12 +51,12 @@ export interface IDetailsRowProps extends IBaseProps<IDetailsRow> {
   /**
    * Selection mode
    */
-  selectionMode: SelectionMode;
+  selectionMode?: SelectionMode;
 
   /**
    * Selection from utilities
    */
-  selection: ISelection;
+  selection?: ISelection;
 
   /**
    * A list of events to register

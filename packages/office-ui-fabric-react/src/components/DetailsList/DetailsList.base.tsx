@@ -176,20 +176,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
   }
 
   public componentWillUnmount(): void {
-    const { onScroll } = this.props;
-    if (onScroll && this._root.current) {
-      this._root.current.removeEventListener('scroll', this._onScroll);
-    }
-
     if (this._dragDropHelper) {
       this._dragDropHelper.dispose();
-    }
-  }
-
-  public componentDidMount(): void {
-    const { onScroll } = this.props;
-    if (onScroll && this._root.current) {
-      this._root.current.addEventListener('scroll', this._onScroll);
     }
   }
 
@@ -968,14 +956,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     return itemKey;
   }
 
-  private _onScroll = (e: Event): void => {
-    const { onScroll } = this.props;
-    if (onScroll) {
-      onScroll(e);
-    }
-  };
-
-  private _getDetailsFooterProps(): IDetailsFooterProps | undefined {
+  private _getDetailsFooterProps(): IDetailsFooterProps {
     const { adjustedColumns: columns } = this.state;
     const detailsFooterProps: IDetailsFooterProps = {
       columns: columns as IColumn[],

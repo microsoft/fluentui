@@ -256,11 +256,6 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   enterModalSelectionOnTouch?: boolean;
 
   /**
-   * On horizontal scroll event listener
-   */
-  onScroll?: (e?: Event) => void;
-
-  /**
    * Options for column re-order using drag and drop
    */
   columnReorderOptions?: IColumnReorderOptions;
