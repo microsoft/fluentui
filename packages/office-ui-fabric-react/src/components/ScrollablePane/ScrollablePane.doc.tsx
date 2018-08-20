@@ -19,12 +19,14 @@ export const ScrollablePanePageProps: IDocPageProps = {
     {
       title: 'Default',
       code: ScrollablePaneDefaultExampleCode,
-      view: <ScrollablePaneDefaultExample />
+      view: <ScrollablePaneDefaultExample />,
+      isScrollable: false
     },
     {
       title: 'DetailsList Locked Header',
       code: ScrollablePaneDetailsListExampleCode,
-      view: <ScrollablePaneDetailsListExample />
+      view: <ScrollablePaneDetailsListExample />,
+      isScrollable: false
     }
   ],
   propertiesTablesSources: [
