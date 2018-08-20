@@ -2,8 +2,8 @@ import * as React from 'react';
 import { GroupedList, IGroup, IGroupDividerProps } from 'office-ui-fabric-react/lib/components/GroupedList/index';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { Link } from 'office-ui-fabric-react/lib/Link';
-import { createListItems, createGroups } from '../../../utilities/exampleData';
-import { FontClassNames } from '../../../Styling';
+import { createListItems, createGroups } from 'office-ui-fabric-react/lib/utilities/exampleData';
+import { FontClassNames } from 'office-ui-fabric-react/lib/Styling';
 import './GroupedList.Custom.Example.scss';
 
 let _items: any[];
@@ -47,9 +47,7 @@ export class GroupedListCustomExample extends React.Component {
     return (
       <div className={css('ms-GroupedListExample-header', FontClassNames.xLarge)}>
         This is a custom header for {props.group!.name}
-        &nbsp; (
-        <Link onClick={toggleCollapse}>{props.group!.isCollapsed ? 'Expand' : 'Collapse'}</Link>
-        )
+        &nbsp; (<Link onClick={toggleCollapse}>{props.group!.isCollapsed ? 'Expand' : 'Collapse'}</Link>)
       </div>
     );
   }

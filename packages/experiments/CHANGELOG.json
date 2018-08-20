@@ -2,6 +2,951 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.24.1",
+      "tag": "@uifabric/experiments_v6.24.1",
+      "date": "Mon, 20 Aug 2018 10:26:10 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.14.1` to `^0.15.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.50.1 <7.0.0` to `>=6.50.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.24.0",
+      "tag": "@uifabric/experiments_v6.24.0",
+      "date": "Thu, 16 Aug 2018 10:26:16 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "riosn-n <33673026+riosn-n@users.noreply.github.com>",
+            "commit": "7a330d2b880fcbed859cb3fc57be273167408cf4",
+            "comment": "Adding support for drop-downs with multiple selection to the FormDropdown component."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.49.3 <7.0.0` to `>=6.49.4 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.23.3",
+      "tag": "@uifabric/experiments_v6.23.3",
+      "date": "Tue, 14 Aug 2018 10:27:33 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Avital Baral <avitalbaral99@gmail.com>",
+            "commit": "cf0f728d0b28540b7a42aa9121a840605ee04670",
+            "comment": "disabling codepen task"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.14.0` to `^0.14.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `>=6.0.1 <7.0.0` to `>=6.0.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.2.4 <1.0.0` to `>=0.2.5 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=6.0.2 <7.0.0` to `>=6.0.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.49.1 <7.0.0` to `>=6.49.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=6.0.3 <7.0.0` to `>=6.0.4 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.23.2",
+      "tag": "@uifabric/experiments_v6.23.2",
+      "date": "Tue, 14 Aug 2018 00:01:11 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.13.1` to `^0.14.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.49.0 <7.0.0` to `>=6.49.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.23.1",
+      "tag": "@uifabric/experiments_v6.23.1",
+      "date": "Mon, 13 Aug 2018 03:43:25 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "06d20af3b6f9e79d28208bddc8659bd5d51d923f",
+            "comment": "Remove utilities index file."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.48.0 <7.0.0` to `>=6.49.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.23.0",
+      "tag": "@uifabric/experiments_v6.23.0",
+      "date": "Fri, 10 Aug 2018 10:26:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "e70852b93ca71d709fcf64c1973bb9bf1ff659bf",
+            "comment": "Inject customizations into Foundation. Add contextual theming and styling examples."
+          }
+        ],
+        "minor": [
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "5e4f88f517cc31a13a77bb264ca959302cba3cab",
+            "comment": "Stack: render vertically by default, add horizontalAlignment, verticalAlignment, fillHorizontal, fillVertical properties"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "904f08478a0113198d8004ba757b9a82a6b6da8a",
+            "comment": "Updating `Text` component with fixes to make it usable."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.13.0` to `^0.13.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.2.3 <1.0.0` to `>=0.2.4 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.47.2 <7.0.0` to `>=6.48.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.7.1 <7.0.0` to `>=6.7.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.22.6",
+      "tag": "@uifabric/experiments_v6.22.6",
+      "date": "Wed, 08 Aug 2018 10:25:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "4d32614144c1ee0b904746f615ae245bb47348ce",
+            "comment": "Fix bad imports that break AMD."
+          },
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "e33aed2e672ab52018f934d146517b0dfff9f84d",
+            "comment": "Implement base state class and controlled vs. uncontrolled behavior."
+          },
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "c1873c1a4acf1f2719615427053c4a0b36a7a31f",
+            "comment": "Stack: merge the className of a StackItem with the className of its first child"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.12.0` to `^0.13.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.2.2 <1.0.0` to `>=0.2.3 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.47.0 <7.0.0` to `>=6.47.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.7.0 <7.0.0` to `>=6.7.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.22.5",
+      "tag": "@uifabric/experiments_v6.22.5",
+      "date": "Mon, 06 Aug 2018 10:27:53 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "3c75e3a77a2ea5314d299577f59d2e93f2ec2ec7",
+            "comment": "Fixing Stack to allow for classNames through Stack.Item"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.45.0 <7.0.0` to `>=6.46.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.22.4",
+      "tag": "@uifabric/experiments_v6.22.4",
+      "date": "Fri, 03 Aug 2018 10:25:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Esteban Munoz <esteban.230@hotmail.com>",
+            "commit": "420660ceabe54da10ac52351dc9e7433024493b7",
+            "comment": "Added export to index"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.2.1 <1.0.0` to `>=0.2.2 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.44.0 <7.0.0` to `>=6.45.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.22.3",
+      "tag": "@uifabric/experiments_v6.22.3",
+      "date": "Thu, 02 Aug 2018 10:23:19 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Ben Truelove <betrue@microsoft.com>",
+            "commit": "cb1ee8fbe9cc03f792e4c9c284667d2c35bbc420",
+            "comment": "Updated border color on rest state of button, added borders to other states and reverted change to radio button selection dot."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.2.0 <1.0.0` to `>=0.2.1 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.43.0 <7.0.0` to `>=6.44.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.22.2",
+      "tag": "@uifabric/experiments_v6.22.2",
+      "date": "Wed, 01 Aug 2018 10:25:51 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "a6e83781f6720a39c24f6ee58f9ad27e11d4fde2",
+            "comment": "Improvements to CollapsibleSection and new examples."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.11.1` to `^0.12.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.1.0 <1.0.0` to `>=0.2.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.42.0 <7.0.0` to `>=6.43.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.22.1",
+      "tag": "@uifabric/experiments_v6.22.1",
+      "date": "Mon, 30 Jul 2018 10:27:11 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "riosn-n <33673026+riosn-n@users.noreply.github.com>",
+            "commit": "4081d8cfc98d7e6cd6cac5f669e2920c7e9d884f",
+            "comment": "FormDropdown: allow options prop to flow to the underlying Dropdown component."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.11.0` to `^0.11.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.41.0 <7.0.0` to `>=6.41.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.22.0",
+      "tag": "@uifabric/experiments_v6.22.0",
+      "date": "Fri, 27 Jul 2018 10:25:39 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Esteban Munoz <esteban.230@hotmail.com>",
+            "commit": "313c5cd21a9dcf435528e83693d75a7fedeeb015",
+            "comment": "added export for collapsible section and foundation"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "c981bcef80bd0855fbbad0418ce7ffbceaa71258",
+            "comment": "Added TextField to FluentStyles"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.40.0 <7.0.0` to `>=6.41.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.21.0",
+      "tag": "@uifabric/experiments_v6.21.0",
+      "date": "Thu, 26 Jul 2018 10:28:51 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "3e0407f92e1c79dc137ebc0bc82139d7a1bcddd1",
+            "comment": "Updates Fluent styles for Dialog and ComoboBox"
+          }
+        ],
+        "none": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "d056d71f1ad27733e8e6027301c1d83aaf0ccffc",
+            "comment": "Comment out unused test."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.39.2 <7.0.0` to `>=6.40.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.20.0",
+      "tag": "@uifabric/experiments_v6.20.0",
+      "date": "Wed, 25 Jul 2018 03:20:34 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "546f0418fcdf56ad6d55af4141c2ac744cc473a6",
+            "comment": "Make stack grow be more flexible"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.10.0` to `^0.11.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.39.1 <7.0.0` to `>=6.39.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.19.1",
+      "tag": "@uifabric/experiments_v6.19.1",
+      "date": "Tue, 24 Jul 2018 10:24:36 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.9.0` to `^0.10.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.39.0 <7.0.0` to `>=6.39.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.6.0 <7.0.0` to `>=6.7.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.19.0",
+      "tag": "@uifabric/experiments_v6.19.0",
+      "date": "Mon, 23 Jul 2018 10:28:08 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "c2cfa6c609fe5c531491a4a9a8eb613b0063c96d",
+            "comment": "Text: use existing theming"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "28242c40916d14cef3d555d18f4df69454163e87",
+            "comment": "Addressing bad imports."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.3.0` to `^0.9.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.0.3 <1.0.0` to `>=0.1.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.38.2 <7.0.0` to `>=6.39.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.5.2 <7.0.0` to `>=6.6.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.18.3",
+      "tag": "@uifabric/experiments_v6.18.3",
+      "date": "Fri, 20 Jul 2018 10:25:21 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.38.1 <7.0.0` to `>=6.38.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.7.0` to `^0.8.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.18.2",
+      "tag": "@uifabric/experiments_v6.18.2",
+      "date": "Thu, 19 Jul 2018 21:25:32 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.6.0` to `^0.7.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.18.1",
+      "tag": "@uifabric/experiments_v6.18.1",
+      "date": "Thu, 19 Jul 2018 19:04:38 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.38.0 <7.0.0` to `>=6.38.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.5.0` to `^0.6.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.5.1 <7.0.0` to `>=6.5.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.18.0",
+      "tag": "@uifabric/experiments_v6.18.0",
+      "date": "Thu, 19 Jul 2018 10:23:34 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "536e4cc40d3a74298ddc4caf87060339467a4be6",
+            "comment": "Fluent Styles for ComboBox and Dialog"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.37.1 <7.0.0` to `>=6.38.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.4.0` to `^0.5.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.17.0",
+      "tag": "@uifabric/experiments_v6.17.0",
+      "date": "Wed, 18 Jul 2018 10:25:50 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "99545224cefac2af3edb13ce7b038ac1d14f3d38",
+            "comment": "Fix typing errors"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.37.0 <7.0.0` to `>=6.37.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.3.0` to `^0.4.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.5.0 <7.0.0` to `>=6.5.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.16.0",
+      "tag": "@uifabric/experiments_v6.16.0",
+      "date": "Tue, 17 Jul 2018 10:28:40 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "5d0930647e631482b6016e0017aae0b5167b9f13",
+            "comment": "Removing most `@customizable` decorator usage. This change should reduce extra React dom elements from being created. Also updating `componentRef` resolution to support `React.createRef()` usage."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.36.0 <7.0.0` to `>=6.37.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.2.0` to `^0.3.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.4.0 <7.0.0` to `>=6.5.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.15.1",
+      "tag": "@uifabric/experiments_v6.15.1",
+      "date": "Mon, 16 Jul 2018 10:27:18 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.35.0 <7.0.0` to `>=6.36.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.1.0` to `^0.2.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.3.0 <7.0.0` to `>=6.4.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.15.0",
+      "tag": "@uifabric/experiments_v6.15.0",
+      "date": "Fri, 13 Jul 2018 21:32:37 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "83486db0dd8f831599dd75f37b32878efac45ca0",
+            "comment": "Reverting the TypeScript bump, to un"
+          },
+          {
+            "author": "Samiya <samiyaakhtar7@gmail.com>",
+            "commit": "bac02c5d4d306edeba272f71d8ab6536c6ed54b5",
+            "comment": "Card: disable dragging of card everywhere but title bar"
+          },
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "743df17c295fac6878edc3ea825f17555f6767e9",
+            "comment": "Added FluentStyles for Panel, TextField, ContextualMenu, and ComboBox"
+          },
+          {
+            "author": "Samiya <samiyaakhtar7@gmail.com>",
+            "commit": "13e6890cc675f00607b96c9f2928537f0f9ac231",
+            "comment": "Moved nav, recommendation and card to m365-admin package"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.33.1 <7.0.0` to `>=6.35.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.0.4` to `^0.1.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.2.1 <7.0.0` to `>=6.3.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.13.6",
+      "tag": "@uifabric/experiments_v6.13.6",
+      "date": "Thu, 12 Jul 2018 10:29:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Samiya <samiyaakhtar7@gmail.com>",
+            "commit": "dc5bb9989e59d83f8d82fe1bebb02caedd469a35",
+            "comment": "Consume horizontal bar chart in card, fix bad import "
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.33.0 <7.0.0` to `>=6.33.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.13.5",
+      "tag": "@uifabric/experiments_v6.13.5",
+      "date": "Tue, 10 Jul 2018 21:54:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Mike Wheaton <miwhea@microsoft.com>",
+            "commit": "5b241ca474578dbe803f5d3f81fdeab537632962",
+            "comment": "Update to latest Fluent depths/shadows"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.30.0 <7.0.0` to `>=6.31.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.13.4",
+      "tag": "@uifabric/experiments_v6.13.4",
+      "date": "Mon, 09 Jul 2018 18:08:32 GMT",
+      "comments": {
+        "none": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "02b1b5e75e61a6e773bcad6ece06acf59a45eb0d",
+            "comment": "No changes."
+          }
+        ],
+        "patch": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "4e506157895212eca6345c65ba3c234c77c36ee6",
+            "comment": "Remove createComponent utility and use Foundation package."
+          },
+          {
+            "author": "nulikartik <nulikarthik@gmail.com>",
+            "commit": "ac6af199ee9c0f0bff7a3c553a51c770689d96eb",
+            "comment": "changing imports for charts in react DashboardCard to point to correct package"
+          },
+          {
+            "author": "Mike Wheaton <miwhea@microsoft.com>",
+            "commit": "c3cd70a3788eafe9382d555681407198bfc97313",
+            "comment": "Update to latest Fluent depths"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.27.0 <7.0.0` to `>=6.29.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.0.0 <1.0.0` to `>=0.0.3 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.13.2",
+      "tag": "@uifabric/experiments_v6.13.2",
+      "date": "Fri, 06 Jul 2018 10:23:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "nulikartik <nulikarthik@gmail.com>",
+            "commit": "cf11cb70b89e66dcc3e440f8148e83840f3d963f",
+            "comment": "css changes for action bar"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.25.4 <7.0.0` to `>=6.26.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.13.1",
+      "tag": "@uifabric/experiments_v6.13.1",
+      "date": "Tue, 03 Jul 2018 17:41:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "98b5219c62242c1ba7e09e647be2fb370b20d0b4",
+            "comment": "Minor tweak to FormDropdown component to make it compatible with tightened Dropdown API"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.25.0 <7.0.0` to `>=6.25.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.13.0",
+      "tag": "@uifabric/experiments_v6.13.0",
+      "date": "Tue, 03 Jul 2018 10:23:19 GMT",
+      "comments": {
+        "none": [
+          {
+            "author": "Samiya <samiyaakhtar7@gmail.com>",
+            "commit": "841d7a62a74f094e79f4cac794f9e251028d5079",
+            "comment": "Consumed charts in dashboard cards and fixed styling issues, updating example in dgl"
+          }
+        ],
+        "minor": [
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "affa5a5a4bf511f3348f863d80eb8aa2631fbcbe",
+            "comment": "Stack: clean up file structure"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.0.3` to `^0.0.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `>=6.0.0 <7.0.0` to `>=6.0.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.12.2",
+      "tag": "@uifabric/experiments_v6.12.2",
+      "date": "Mon, 02 Jul 2018 10:21:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "nulikartik <nulikarthik@gmail.com>",
+            "commit": "ce352819b9e71108a1dca4260334b26aba664192",
+            "comment": "css changes for action bar"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.23.0 <7.0.0` to `>=6.24.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.12.1",
+      "tag": "@uifabric/experiments_v6.12.1",
+      "date": "Fri, 29 Jun 2018 10:24:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "91b260ccb577245ad9e0a52e208ba6bfe478c040",
+            "comment": "TileList: Adds a fading out overlay over the Shimmer Tiles."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.22.0 <7.0.0` to `>=6.23.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.12.0",
+      "tag": "@uifabric/experiments_v6.12.0",
+      "date": "Wed, 27 Jun 2018 23:59:19 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "92b37c87c2eba06e0009386756c3b1bc2e74c182",
+            "comment": "Change toggle style values from ems to px"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.21.0 <7.0.0` to `>=6.21.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=6.0.1 <7.0.0` to `>=6.0.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.11.0",
+      "tag": "@uifabric/experiments_v6.11.0",
+      "date": "Wed, 27 Jun 2018 17:22:20 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "e69df30fa07f6d5b92895dfdd317927142418217",
+            "comment": "fluent style updates per design feedback"
+          },
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "2607a2f0ae9b6bfd3d1599ed9fd35e44c51f6427",
+            "comment": "Revert toggle border-width to pre-Fluent width"
+          },
+          {
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "761e732516fd4dd6b9772d1dbdce7e2558da868f",
+            "comment": "Prototype of Stack and Text components"
+          }
+        ],
+        "patch": [
+          {
+            "author": "nulikartik <nulikarthik@gmail.com>",
+            "commit": "e01d9a3db228e42d73263e6c60a973074a9d7663",
+            "comment": "CardDidMount callback for making api calls, additional ref incase there is a use case where there is no state, compoundButtonStack  size variation and gridList component v1.1 changes"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.20.0 <7.0.0` to `>=6.21.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.10.1",
+      "tag": "@uifabric/experiments_v6.10.1",
+      "date": "Tue, 26 Jun 2018 10:27:47 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "4408e0c62fd912d829a07e7067d7c14416a1bc7d",
+            "comment": "Re-export ShimmerTile in its original location for 5.0 compat"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.19.0 <7.0.0` to `>=6.20.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.10.0",
+      "tag": "@uifabric/experiments_v6.10.0",
+      "date": "Fri, 22 Jun 2018 16:21:15 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "f226e6c68cfa686a81c3ef39716614dcdc70602b",
+            "comment": "Toggle component fluent example set up in experiments"
+          },
+          {
+            "author": "Veerash Ayyagari <veeray@microsoft.com>",
+            "commit": "f805f49025d67fe0a43c2bd89e99a4fe5ee03c59",
+            "comment": "M365 Common Recommendation control including examples with Image Illustration and Data Viz"
+          }
+        ],
+        "none": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "cda2baf135c55c04e5e51475ff17df572acfdd6c",
+            "comment": "Update snapshots."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.18.1 <7.0.0` to `>=6.18.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.9.0",
+      "tag": "@uifabric/experiments_v6.9.0",
+      "date": "Thu, 21 Jun 2018 19:27:25 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "nulikartik <nulikarthik@gmail.com>",
+            "commit": "17cc28536baa952248de7f4a816dc772408f9338",
+            "comment": "CardDidMount callback for making api calls, additional ref incase there is a use case where there is no state, compoundButtonStack  size variation and gridList component v1.1 changes"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Mike Wheaton <miwhea@microsoft.com>",
+            "commit": "31f042b5d099eca7fa342b20725912f6a8c59fc7",
+            "comment": "Add Fluent type ramp, update color names"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.18.0 <7.0.0` to `>=6.18.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.8.0",
+      "tag": "@uifabric/experiments_v6.8.0",
+      "date": "Wed, 20 Jun 2018 23:33:29 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "321551862495dc8c4fe354a03c342d6a2b3f35b2",
+            "comment": "Updated ChoiceGroup FluentStyles to include 'checked' style prop"
+          },
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "511225a4f7fc48803b5298c1373570d162af1b7d",
+            "comment": "Added Checkbox and ChoiceGroup to Fluent Styles Page"
+          },
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "6e7427f50b650edcc7fdf721cd8d9857d7db2a6d",
+            "comment": "label fluentstyles"
+          },
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "4b9645c5346b79ace2df9476169562cdcae43d7b",
+            "comment": "Added examples for Rating and Slider to FluentStyles page - no style changes"
+          },
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "3560bb38daa7c358680551af1134a671c61cf1dc",
+            "comment": "expose Nav to teams not using npm"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.17.0 <7.0.0` to `>=6.18.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.7.0",
       "tag": "@uifabric/experiments_v6.7.0",
       "date": "Wed, 20 Jun 2018 10:25:55 GMT",

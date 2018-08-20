@@ -167,7 +167,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
           aria-disabled={true}
           aria-label={undefined}
           aria-labelledby={undefined}
-          aria-pressed={false}
+          aria-pressed={undefined}
           checked={false}
           className=
               ms-Button
@@ -237,6 +237,10 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
               }
           data-is-focusable={false}
           disabled={true}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
@@ -290,7 +294,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
           aria-disabled={true}
           aria-label={undefined}
           aria-labelledby={undefined}
-          aria-pressed={false}
+          aria-pressed={undefined}
           checked={false}
           className=
               ms-Button
@@ -360,6 +364,10 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
               }
           data-is-focusable={false}
           disabled={true}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}

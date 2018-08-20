@@ -2,7 +2,7 @@ import * as React from 'react';
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { HoverCard, IExpandingCardProps } from 'office-ui-fabric-react/lib/HoverCard';
 import { DetailsList, buildColumns, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
-import { createListItems } from '../../../utilities/exampleData';
+import { createListItems } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import './HoverCard.Example.scss';
 
 let _items: any[];
@@ -29,7 +29,12 @@ export class HoverCardBasicExample extends BaseComponent<{}, IHoverCardExampleSt
 
     return (
       <div>
-        <p> Hover over location of a row item to see the card </p>
+        <p>
+          Hover over the <i>location</i> cell of a row item to see the card or use the keyboard to navigate to it.
+        </p>
+        <p>
+          When using the keyboard to tab to it, the card will open but navigation inside of it will not be available.
+        </p>
         <DetailsList setKey="hoverSet" items={items!} columns={columns} onRenderItemColumn={this._onRenderItemColumn} />
       </div>
     );
@@ -45,9 +50,7 @@ export class HoverCardBasicExample extends BaseComponent<{}, IHoverCardExampleSt
     if (column.key === 'location') {
       return (
         <HoverCard id="myID1" expandingCardProps={expandingCardProps} instantOpenOnClick={true}>
-          <div className="HoverCard-item" data-is-focusable={true}>
-            {item.location}
-          </div>
+          <div className="HoverCard-item">{item.location}</div>
         </HoverCard>
       );
     }

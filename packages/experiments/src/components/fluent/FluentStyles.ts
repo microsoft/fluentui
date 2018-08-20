@@ -1,49 +1,16 @@
 import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
 import { NeutralColors } from './FluentColors';
+import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from 'office-ui-fabric-react/lib/ChoiceGroup';
+import { FontSizes } from './FluentType';
+import { Depths } from './FluentDepths';
 
-/** Definitions for Depth, or shadow, levels. */
-const FluentDepthLevels = {
-  /**
-   * Level 0 of Fluent Depth system.
-   * Recommended uses: Surfaces.
-   * */
-  Level0: '0 0 0 0 transparent',
-
-  /**
-   * Level 1 of Fluent Depth system.
-   * Recommended uses: Buttons, Cards, Grid items, List items.
-   * */
-  Level1: '0 2px 4px -0.75px rgba(0, 0, 0, 0.1)',
-
-  /**
-   * Level 2 of Fluent Depth system.
-   * Recommended uses: Command Bar, Contextual Menus.
-   * */
-  Level2: '0 4px 8px -1px rgba(0, 0, 0, 0.1)',
-
-  /**
-   * Level 3 of Fluent Depth system.
-   * Recommended uses: Teaching Callouts, Search Results, Dropdowns, Hover cards, Tooltips.
-   * */
-  Level3: '0 8px 10px -2px rgba(0, 0, 0, 0.1)',
-
-  /**
-   * Level 4 of Fluent Depth system.
-   * Recommended uses: Panels, Dialogs.
-   * */
-  Level4: '0 16px 18px -4px rgba(0, 0, 0, 0.1)'
-};
-
-// const LinkStyles = {
-//   root: {
-//     // Styles
-//   }
-// };
+const fluentBorderRadius = '2px';
 
 const BreadcrumbStyles = {
   itemLink: {
-    fontSize: '18px',
+    fontSize: FontSizes.size18,
     fontWeight: 400,
+    color: NeutralColors.gray130,
     selectors: {
       '&:last-child': {
         fontWeight: 600
@@ -54,68 +21,134 @@ const BreadcrumbStyles = {
 
 const PrimaryButtonStyles = {
   root: {
-    borderRadius: '2px'
-    // boxShadow: FluentDepthLevels.Level1
+    borderRadius: fluentBorderRadius
   }
 };
 
 const CompoundButtonStyles = {
   root: {
-    borderRadius: '2px'
-    // boxShadow: FluentDepthLevels.Level1
+    borderRadius: fluentBorderRadius
   }
 };
 
 const DefaultButtonStyles = {
   root: {
-    borderRadius: '2px',
+    borderRadius: fluentBorderRadius,
     backgroundColor: '#fff',
-    border: `1px solid ${NeutralColors.gray20}`
+    border: `1px solid ${NeutralColors.gray110}`
   },
   rootHovered: {
-    backgroundColor: '#f3f2f1'
+    backgroundColor: '#f3f2f1',
+    border: `1px solid ${NeutralColors.gray110}`
   }
 };
 
 const CheckboxStyles = {
   checkbox: {
-    borderRadius: '2px'
-    // borderColor: GrayColors.gray160
+    borderRadius: fluentBorderRadius
   }
 };
 
-const ChoiceGroupOptionStyles = {
-  field: {
-    selectors: {
-      ':after': [
-        {
-          top: 4,
-          left: 4,
-          width: 12,
-          height: 12,
-          borderWidth: 6
-        }
-        // @todo
-        // checked &&
-        // (hasIcon || hasImage) && {
-        //   top: radioButtonSpacing + radioButtonInnerSize,
-        //   right: radioButtonSpacing + radioButtonInnerSize,
-        //   left: 'auto' // To reset the value of 'left' to its default value, so that 'right' works
-        // }
-      ]
+const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOptionStyles => {
+  const { checked, disabled, hasIcon, hasImage } = props;
+  const radioButtonSpacing = 1;
+  const radioButtonInnerSize = 6;
+  return {
+    field: {
+      selectors: {
+        ':before': [
+          disabled && {
+            backgroundColor: NeutralColors.white,
+            borderColor: NeutralColors.gray60
+          }
+        ],
+        ':after': [
+          checked &&
+            (hasIcon || hasImage) && {
+              top: radioButtonSpacing + radioButtonInnerSize,
+              right: radioButtonSpacing + radioButtonInnerSize,
+              left: 'auto' // To reset the value of 'left' to its default value, so that 'right' works
+            },
+          checked &&
+            disabled && {
+              borderColor: NeutralColors.gray60
+            }
+        ]
+      }
     }
+  };
+};
+
+const ComboBoxStyles = {
+  root: {
+    borderRadius: fluentBorderRadius // the bound input box
+  },
+  callout: {
+    borderRadius: `0 0 ${fluentBorderRadius} ${fluentBorderRadius}`,
+    overflow: 'hidden',
+    boxShadow: Depths.depth8
   }
 };
 
 const DialogStyles = {
   main: {
-    boxShadow: FluentDepthLevels.Level4
+    selectors: {
+      '.ms-Modal.ms-Dialog &': {
+        boxShadow: Depths.depth64,
+        borderRadius: fluentBorderRadius
+      }
+    }
   }
 };
 
 const DialogContentStyles = {
   title: {
+    fontSize: FontSizes.size20,
+    fontWeight: FontWeights.semibold,
+    padding: '16px',
+    lineHeight: 'normal'
+  },
+  topButton: {
+    padding: '16px 10px 0 0'
+  },
+  inner: {
+    padding: '0 16px 16px'
+  },
+  subText: {
+    fontWeight: FontWeights.regular
+  }
+};
+
+const DialogFooterStyles = {
+  actions: {
+    margin: '16px 0 0'
+  }
+};
+
+const LabelStyles = {
+  root: {
     fontWeight: FontWeights.semibold
+  }
+};
+
+const TextFieldStyles = {
+  fieldGroup: {
+    borderRadius: fluentBorderRadius
+  }
+};
+
+const ToggleStyles = {
+  pill: {
+    width: '40px',
+    height: '20px',
+    borderRadius: '10px',
+    padding: '0 4px'
+  },
+  thumb: {
+    width: '12px',
+    height: '12px',
+    borderRadius: '12px',
+    borderColor: 'transparent'
   }
 };
 
@@ -124,9 +157,6 @@ export const FluentStyles = {
   Breadcrumb: {
     styles: BreadcrumbStyles
   },
-  // Link: {
-  //   styles: LinkStyles
-  // },
   PrimaryButton: {
     styles: PrimaryButtonStyles
   },
@@ -142,33 +172,25 @@ export const FluentStyles = {
   ChoiceGroupOption: {
     styles: ChoiceGroupOptionStyles
   },
+  ComboBox: {
+    styles: ComboBoxStyles
+  },
   Dialog: {
     styles: DialogStyles
   },
   DialogContent: {
     styles: DialogContentStyles
+  },
+  DialogFooter: {
+    styles: DialogFooterStyles
+  },
+  Label: {
+    styles: LabelStyles
+  },
+  TextField: {
+    styles: TextFieldStyles
+  },
+  Toggle: {
+    styles: ToggleStyles
   }
 };
-
-// export class FluentStylesBasicExample extends React.Component<{}, {}> {
-//   public render(): JSX.Element {
-//     return (
-//       <div>
-//         <h2>Link</h2>
-//         <h3>Current theme</h3>
-//         <FluentThemeLinkExample />
-//         <h3>Fluent theme</h3>
-//         <Customizer scopedSettings={{ ...FluentStyles }}>
-//           <FluentThemeLinkExample />
-//         </Customizer>
-//         <h2>Buttons</h2>
-//         <h3>Current theme</h3>
-//         <FluentThemeButtonExample />
-//         <h3>Fluent theme</h3>
-//         <Customizer scopedSettings={{ ...FluentStyles }}>
-//           <FluentThemeButtonExample />
-//         </Customizer>
-//       </div>
-//     );
-//   }
-// }

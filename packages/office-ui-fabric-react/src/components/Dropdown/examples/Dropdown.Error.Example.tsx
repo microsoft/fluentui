@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
-import { BaseComponent } from '../../../Utilities';
+import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import './Dropdown.Basic.Example.scss';
 
 export class DropdownErrorExample extends BaseComponent<{}, {}> {

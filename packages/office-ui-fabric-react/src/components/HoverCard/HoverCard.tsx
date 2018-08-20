@@ -18,7 +18,9 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
     cardOpenDelay: 500,
     cardDismissDelay: 100,
     expandedCardOpenDelay: 1500,
-    instantOpenOnClick: false
+    instantOpenOnClick: false,
+    setInitialFocus: false,
+    openHotKey: KeyCodes.c
   };
 
   // The wrapping div that gets the hover events
@@ -90,6 +92,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
         className={mergeStyles(this._styles.host)}
         ref={this._hoverCard}
         aria-describedby={setAriaDescribedBy && isHoverCardVisible ? hoverCardId : undefined}
+        data-is-focusable={!Boolean(this.props.target)}
       >
         {children}
         {isHoverCardVisible && (
@@ -97,7 +100,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
             {...getNativeProps(this.props, divProperties)}
             id={hoverCardId}
             trapFocus={!!this.props.trapFocus}
-            firstFocus={openMode === OpenCardMode.hotKey || openMode === OpenCardMode.hover}
+            firstFocus={this.props.setInitialFocus || openMode === OpenCardMode.hotKey}
             targetElement={this._getTargetElement()}
             onEnter={this._cardOpen}
             onLeave={this._executeCardDimiss}
@@ -130,7 +133,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
 
   // Show HoverCard
   private _cardOpen = (ev: MouseEvent): void => {
-    if (this._shouldBlockHoverCard() || (ev.type === 'keydown' && !(ev.which === KeyCodes.c))) {
+    if (this._shouldBlockHoverCard() || (ev.type === 'keydown' && !(ev.which === this.props.openHotKey))) {
       return;
     }
     this._async.clearTimeout(this._dismissTimerId);

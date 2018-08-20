@@ -12,6 +12,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
       normalize,
       {
         color: palette.neutralPrimary,
+        backgroundColor: semanticColors.inputBackground,
         display: 'flex',
         flexDirection: 'row',
         flexWrap: 'nowrap',
@@ -127,13 +128,13 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
       'ms-SearchBox-field',
       normalize,
       {
+        backgroundColor: 'transparent',
         border: 'none',
         outline: 'none',
         fontWeight: 'inherit',
         fontFamily: 'inherit',
         fontSize: 'inherit',
         color: palette.neutralPrimary,
-        backgroundColor: semanticColors.inputBackground,
         flex: '1 1 0px',
         overflow: 'hidden',
         textOverflow: 'ellipsis',

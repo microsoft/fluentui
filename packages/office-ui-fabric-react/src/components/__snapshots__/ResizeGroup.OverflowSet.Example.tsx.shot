@@ -15,6 +15,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
     role="tabpanel"
   >
     <div
+      data-automation-id="visibleContent"
       style={
         Object {
           "position": "fixed",
@@ -52,7 +53,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -119,7 +120,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -200,7 +206,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -267,7 +273,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -348,7 +359,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -415,7 +426,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -496,7 +512,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -563,7 +579,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -644,7 +665,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -711,7 +732,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -792,7 +818,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -859,7 +885,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -940,7 +971,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -1007,7 +1038,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -1088,7 +1124,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -1155,7 +1191,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -1236,7 +1277,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -1303,7 +1344,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -1384,7 +1430,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -1451,7 +1497,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -1532,7 +1583,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -1599,7 +1650,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -1680,7 +1736,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -1747,7 +1803,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -1828,7 +1889,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -1895,7 +1956,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -1976,7 +2042,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -2043,7 +2109,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -2124,7 +2195,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -2191,7 +2262,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -2272,7 +2348,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -2339,7 +2415,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -2420,7 +2501,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -2487,7 +2568,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -2568,7 +2654,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -2635,7 +2721,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -2716,7 +2807,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -2783,7 +2874,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -2864,7 +2960,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-pressed={false}
+            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -2931,7 +3027,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
             data-is-focusable={true}
             disabled={undefined}
-            onClick={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
             type="button"
           >
             <div
@@ -3055,12 +3156,18 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           &:hover .ms-Checkbox-checkbox {
             border-color: #212121;
           }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+            border-color: Highlight;
+          }
           &:focus .ms-Checkbox-checkbox {
             border-color: #212121;
           }
           &:hover .ms-Checkbox-checkmark {
             color: #a6a6a6;
             opacity: 1;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+            color: Highlight;
           }
           &:hover .ms-Checkbox-text {
             color: #333333;
@@ -3076,15 +3183,16 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
       onClick={[Function]}
       onFocus={[Function]}
       role="checkbox"
+      title={undefined}
       type="button"
     >
       <label
         className=
             ms-Checkbox-label
             {
-              align-items: center;
+              align-items: flex-start;
               cursor: pointer;
-              display: inline-flex;
+              display: flex;
               margin-bottom: 0;
               margin-left: -4px;
               margin-right: -4px;
@@ -3151,6 +3259,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               {
                 color: #333333;
                 font-size: 14px;
+                line-height: 20px;
                 margin-bottom: 0;
                 margin-left: 4px;
                 margin-right: 4px;
@@ -3211,12 +3320,18 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           &:hover .ms-Checkbox-checkbox {
             border-color: #212121;
           }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+            border-color: Highlight;
+          }
           &:focus .ms-Checkbox-checkbox {
             border-color: #212121;
           }
           &:hover .ms-Checkbox-checkmark {
             color: #a6a6a6;
             opacity: 1;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+            color: Highlight;
           }
           &:hover .ms-Checkbox-text {
             color: #333333;
@@ -3232,15 +3347,16 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
       onClick={[Function]}
       onFocus={[Function]}
       role="checkbox"
+      title={undefined}
       type="button"
     >
       <label
         className=
             ms-Checkbox-label
             {
-              align-items: center;
+              align-items: flex-start;
               cursor: pointer;
-              display: inline-flex;
+              display: flex;
               margin-bottom: 0;
               margin-left: -4px;
               margin-right: -4px;
@@ -3307,6 +3423,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               {
                 color: #333333;
                 font-size: 14px;
+                line-height: 20px;
                 margin-bottom: 0;
                 margin-left: 4px;
                 margin-right: 4px;
@@ -3367,12 +3484,18 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           &:hover .ms-Checkbox-checkbox {
             border-color: #212121;
           }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+            border-color: Highlight;
+          }
           &:focus .ms-Checkbox-checkbox {
             border-color: #212121;
           }
           &:hover .ms-Checkbox-checkmark {
             color: #a6a6a6;
             opacity: 1;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+            color: Highlight;
           }
           &:hover .ms-Checkbox-text {
             color: #333333;
@@ -3388,15 +3511,16 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
       onClick={[Function]}
       onFocus={[Function]}
       role="checkbox"
+      title={undefined}
       type="button"
     >
       <label
         className=
             ms-Checkbox-label
             {
-              align-items: center;
+              align-items: flex-start;
               cursor: pointer;
-              display: inline-flex;
+              display: flex;
               margin-bottom: 0;
               margin-left: -4px;
               margin-right: -4px;
@@ -3463,6 +3587,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               {
                 color: #333333;
                 font-size: 14px;
+                line-height: 20px;
                 margin-bottom: 0;
                 margin-left: 4px;
                 margin-right: 4px;
@@ -3477,7 +3602,9 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
       className={undefined}
     >
       <div
-        className="ms-Dropdown-container"
+        className=
+            ms-Dropdown-container
+
       >
         <label
           className=
@@ -3487,8 +3614,8 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 box-shadow: none;
                 box-sizing: border-box;
                 color: #333333;
-                display: block;
-                margin-bottom: 0px;
+                display: inline-block;
+                margin-bottom: 8px;
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
@@ -3511,13 +3638,95 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           aria-disabled={undefined}
           aria-expanded="false"
           aria-label={undefined}
-          aria-live="assertive"
+          aria-labelledby="Dropdown64-label"
           aria-owns={undefined}
-          className="ms-Dropdown"
+          className=
+              ms-Dropdown
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #333333;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                outline: 0px;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+                position: relative;
+                user-select: none;
+              }
+              &:hover .ms-Dropdown-title {
+                border-color: #212121;
+                color: #212121;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
+                border-color: Highlight;
+              }
+              &:focus .ms-Dropdown-title {
+                border-color: #0078d4;
+                color: #212121;
+              }
+              @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
+                background-color: Highlight;
+                border-color: Highlight;
+                color: Highlight;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
+                -ms-high-contrast-adjust: none;
+              }
+              &:active .ms-Dropdown-title {
+                border-color: #005a9e;
+                color: #212121;
+              }
+              @media screen and (-ms-high-contrast: active){&:active .ms-Dropdown-title {
+                border-color: Highlight;
+              }
+              &:hover .ms-Dropdown-caretDown {
+                color: #212121;
+              }
+              &:focus .ms-Dropdown-caretDown {
+                color: #212121;
+              }
+              @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
+                color: HighlightText;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-caretDown {
+                -ms-high-contrast-adjust: none;
+              }
+              &:active .ms-Dropdown-caretDown {
+                color: #212121;
+              }
+              &:hover .ms-Dropdown-titleIsPlaceHolder {
+                color: #666666;
+              }
+              &:focus .ms-Dropdown-titleIsPlaceHolder {
+                color: #666666;
+              }
+              &:active .ms-Dropdown-titleIsPlaceHolder {
+                color: #666666;
+              }
+              &:hover .ms-Dropdown-title--hasError {
+                border-color: #a80000;
+              }
+              &:active .ms-Dropdown-title--hasError {
+                border-color: #a80000;
+              }
+              &:focus .ms-Dropdown-title--hasError {
+                border-color: #a80000;
+              }
           data-is-focusable={true}
           id="Dropdown64"
           onBlur={[Function]}
           onClick={[Function]}
+          onFocus={[Function]}
           onKeyDown={[Function]}
           onKeyUp={[Function]}
           role="listbox"
@@ -3526,16 +3735,53 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           <span
             aria-atomic={true}
             aria-label="20"
-            className="ms-Dropdown-title"
+            aria-live="off"
+            aria-posinset={1}
+            aria-selected={true}
+            aria-setsize={7}
+            className=
+                ms-Dropdown-title
+                {
+                  background-color: #ffffff;
+                  border-color: #a6a6a6;
+                  border-style: solid;
+                  border-width: 1px;
+                  box-shadow: none;
+                  box-sizing: border-box;
+                  cursor: pointer;
+                  display: block;
+                  height: 32px;
+                  line-height: 30px;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  overflow: hidden;
+                  padding-bottom: 0;
+                  padding-left: 12px;
+                  padding-right: 32px;
+                  padding-top: 0;
+                  position: relative;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
             id="Dropdown64-option"
-            role="listbox"
+            role="option"
           >
             <span>
               20
             </span>
           </span>
           <span
-            className="ms-Dropdown-caretDownWrapper"
+            className=
+                ms-Dropdown-caretDownWrapper
+                {
+                  height: 32px;
+                  line-height: 30px;
+                  position: absolute;
+                  right: 12px;
+                  top: 1px;
+                }
           >
             <i
               aria-hidden={true}
@@ -3544,10 +3790,13 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
+                    color: #666666;
                     display: inline-block;
                     font-family: "FabricMDL2Icons";
+                    font-size: 12px;
                     font-style: normal;
                     font-weight: normal;
+                    pointer-events: none;
                     speak: none;
                   }
               data-icon-name="ChevronDown"

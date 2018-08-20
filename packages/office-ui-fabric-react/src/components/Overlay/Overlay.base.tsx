@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   BaseComponent,
-  customizable,
   classNamesFunction,
   getNativeProps,
   divProperties,
@@ -12,7 +11,6 @@ import { IOverlayProps, IOverlayStyleProps, IOverlayStyles } from './Overlay.typ
 
 const getClassNames = classNamesFunction<IOverlayStyleProps, IOverlayStyles>();
 
-@customizable('Overlay', ['theme', 'styles'])
 export class OverlayBase extends BaseComponent<IOverlayProps, {}> {
   public componentDidMount(): void {
     disableBodyScroll();

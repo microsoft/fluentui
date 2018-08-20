@@ -97,10 +97,10 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       iconProps,
       menuIconProps,
       styles,
-      text,
       checked,
       variantClassName,
       theme,
+      toggle,
       getClassNames
     } = this.props;
 
@@ -147,6 +147,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       ]
     );
 
+    // Check for ariaLabel passed in via Button props, and fall back to aria-label passed in via native props
+    const resolvedAriaLabel = ariaLabel || (nativeProps as any)['aria-label'];
+
     // Check for ariaDescription, secondaryText or aria-describedby in the native props to determine source of aria-describedby
     // otherwise default to undefined so property does not appear in output.
     let ariaDescribedBy = undefined;
@@ -164,11 +167,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     // set the labelledby element. Otherwise, the button is labeled implicitly by the descendent
     // text on the button (if it exists). Never set both aria-label and aria-labelledby.
     let ariaLabelledBy = undefined;
-    if (!ariaLabel) {
+    if (!resolvedAriaLabel) {
       if ((nativeProps as any)['aria-labelledby']) {
         ariaLabelledBy = (nativeProps as any)['aria-labelledby'];
       } else if (ariaDescribedBy) {
-        ariaLabelledBy = text ? _labelId : undefined;
+        ariaLabelledBy = this._hasText() ? _labelId : undefined;
       }
     }
 
@@ -181,12 +184,18 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       className: this._classNames.root,
       ref: this._buttonElement,
       disabled: isPrimaryButtonDisabled && !allowDisabledFocus,
-      'aria-label': ariaLabel,
+      onKeyDown: this._onKeyDown,
+      onKeyPress: this._onKeyPress,
+      onKeyUp: this._onKeyUp,
+      onMouseDown: this._onMouseDown,
+      onMouseUp: this._onMouseUp,
+      onClick: this._onClick,
+      'aria-label': resolvedAriaLabel,
       'aria-labelledby': ariaLabelledBy,
       'aria-describedby': ariaDescribedBy,
       'aria-disabled': isPrimaryButtonDisabled,
       'data-is-focusable': dataIsFocusable,
-      'aria-pressed': checked
+      'aria-pressed': toggle ? !!checked : undefined // aria-pressed attribute should only be present for toggle buttons
     });
 
     if (ariaHidden) {
@@ -197,8 +206,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       return this._onRenderSplitButtonContent(tag, buttonProps);
     } else if (this.props.menuProps) {
       assign(buttonProps, {
-        onKeyDown: this._onMenuKeyDown,
-        onClick: this._onMenuClick,
         'aria-expanded': this._isExpanded,
         'aria-owns': this.state.menuProps ? this._labelId + '-menu' : null,
         'aria-haspopup': true
@@ -405,6 +412,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _onRenderMenu = (menuProps: IContextualMenuProps): JSX.Element => {
     const { onDismiss = this._dismissMenu } = menuProps;
 
+    const MenuType = this.props.menuAs || (ContextualMenu as React.ReactType<IContextualMenuProps>);
+
     // the accessible menu label (accessible name) has a relationship to the button.
     // If the menu props do not specify an explicit value for aria-label or aria-labelledBy,
     // AND the button has text, we'll set the menu aria-labelledBy to the text element id.
@@ -413,7 +422,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
 
     return (
-      <ContextualMenu
+      <MenuType
         id={this._labelId + '-menu'}
         directionalHint={DirectionalHint.bottomLeftEdge}
         {...menuProps}
@@ -446,15 +455,17 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   };
 
   private _onToggleMenu = (shouldFocusOnContainer: boolean): void => {
-    if (this._splitButtonContainer.current) {
-      this._splitButtonContainer.current.focus();
-    }
-
     const currentMenuProps = this.state.menuProps;
+    let shouldFocusOnMount = true;
+    if (this.props.menuProps && this.props.menuProps.shouldFocusOnMount === false) {
+      shouldFocusOnMount = false;
+    }
     if (this.props.persistMenu) {
-      currentMenuProps && currentMenuProps.hidden ? this._openMenu(shouldFocusOnContainer) : this._dismissMenu();
+      currentMenuProps && currentMenuProps.hidden
+        ? this._openMenu(shouldFocusOnContainer, shouldFocusOnMount)
+        : this._dismissMenu();
     } else {
-      currentMenuProps ? this._dismissMenu() : this._openMenu(shouldFocusOnContainer);
+      currentMenuProps ? this._dismissMenu() : this._openMenu(shouldFocusOnContainer, shouldFocusOnMount);
     }
   };
 
@@ -466,7 +477,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       checked,
       getSplitButtonClassNames,
       primaryDisabled,
-      menuProps
+      menuProps,
+      toggle
     } = this.props;
     let { keytipProps } = this.props;
 
@@ -499,7 +511,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
             aria-disabled={disabled}
             aria-haspopup={true}
             aria-expanded={this._isExpanded}
-            aria-pressed={this.props.checked}
+            aria-pressed={toggle ? !!checked : undefined} // aria-pressed attribute should only be present for toggle buttons
             aria-describedby={mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])}
             className={classNames && classNames.splitButtonContainer}
             onKeyDown={this._onSplitButtonContainerKeyDown}
@@ -509,6 +521,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
             onClick={!disabled && !primaryDisabled ? this._onSplitButtonPrimaryClick : undefined}
             tabIndex={!disabled || allowDisabledFocus ? 0 : undefined}
             aria-roledescription={buttonProps['aria-roledescription']}
+            onFocusCapture={this._onSplitContainerFocusCapture}
           >
             <span style={{ display: 'flex' }}>
               {this._onRenderContent(tag, buttonProps)}
@@ -520,6 +533,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       </KeytipData>
     );
   }
+
+  private _onSplitContainerFocusCapture = (ev: React.FocusEvent<HTMLDivElement>) => {
+    // We should never be able to focus the individual buttons in a split button. Focus
+    // should always remain on the container.
+    this._splitButtonContainer.current && this._splitButtonContainer.current.focus();
+  };
 
   private _onSplitButtonPrimaryClick = (ev: React.MouseEvent<HTMLDivElement>) => {
     if (this._isExpanded) {
@@ -580,12 +599,52 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     );
   }
 
-  private _onMouseDown = (ev: React.MouseEvent<BaseButton>) => {
-    if (this.props.onMouseDown) {
-      this.props.onMouseDown(ev);
+  private _onKeyDown = (ev: React.KeyboardEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>) => {
+    // explicity cancelling event so click won't fire after this
+    if (this.props.disabled && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space)) {
+      ev.preventDefault();
+      ev.stopPropagation();
+    } else if (!this.props.disabled) {
+      if (this.props.menuProps) {
+        this._onMenuKeyDown(ev);
+      } else if (this.props.onKeyDown !== undefined) {
+        this.props.onKeyDown(ev); // not cancelling event because it's not disabled
+      }
     }
+  };
 
-    ev.preventDefault();
+  private _onKeyUp = (ev: React.KeyboardEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>) => {
+    if (!this.props.disabled && this.props.onKeyUp !== undefined) {
+      this.props.onKeyUp(ev); // not cancelling event because it's not disabled
+    }
+  };
+
+  private _onKeyPress = (ev: React.KeyboardEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>) => {
+    if (!this.props.disabled && this.props.onKeyPress !== undefined) {
+      this.props.onKeyPress(ev); // not cancelling event because it's not disabled
+    }
+  };
+
+  private _onMouseUp = (ev: React.MouseEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>) => {
+    if (!this.props.disabled && this.props.onMouseUp !== undefined) {
+      this.props.onMouseUp(ev); // not cancelling event because it's not disabled
+    }
+  };
+
+  private _onMouseDown = (ev: React.MouseEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>) => {
+    if (!this.props.disabled && this.props.onMouseDown !== undefined) {
+      this.props.onMouseDown(ev); // not cancelling event because it's not disabled
+    }
+  };
+
+  private _onClick = (ev: React.MouseEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>) => {
+    if (!this.props.disabled) {
+      if (this.props.menuProps) {
+        this._onMenuClick(ev);
+      } else if (this.props.onClick !== undefined) {
+        this.props.onClick(ev); // not cancelling event because it's not disabled
+      }
+    }
   };
 
   private _onSplitButtonContainerKeyDown = (ev: React.KeyboardEvent<HTMLDivElement>) => {
@@ -674,7 +733,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     return false;
   }
 
-  private _onMenuClick = (ev: React.MouseEvent<HTMLDivElement | HTMLAnchorElement>) => {
+  private _onMenuClick = (ev: React.MouseEvent<HTMLDivElement | HTMLButtonElement | HTMLAnchorElement>) => {
     const { onMenuClick } = this.props;
     if (onMenuClick) {
       onMenuClick(ev, this);

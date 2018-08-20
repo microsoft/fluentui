@@ -43,10 +43,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             & .ms-Label {
               display: inline-block;
               font-size: 14px;
-              padding-bottom: 0;
               padding-left: 26px;
-              padding-right: 0;
-              padding-top: 0;
             }
       >
         <div
@@ -65,6 +62,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
                   top: 8px;
                 }
             data-automation-id="auto1"
+            data-is-focusable={true}
             disabled={undefined}
             id="ChoiceGroup0-1"
             name="ChoiceGroup0"
@@ -159,10 +157,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             & .ms-Label {
               display: inline-block;
               font-size: 14px;
-              padding-bottom: 0;
               padding-left: 26px;
-              padding-right: 0;
-              padding-top: 0;
             }
       >
         <div
@@ -180,6 +175,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
                   position: absolute;
                   top: 8px;
                 }
+            data-is-focusable={false}
             disabled={undefined}
             id="ChoiceGroup0-2"
             name="ChoiceGroup0"
@@ -274,10 +270,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             & .ms-Label {
               display: inline-block;
               font-size: 14px;
-              padding-bottom: 0;
               padding-left: 26px;
-              padding-right: 0;
-              padding-top: 0;
             }
       >
         <div
@@ -295,6 +288,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
                   position: absolute;
                   top: 8px;
                 }
+            data-is-focusable={false}
             disabled={undefined}
             id="ChoiceGroup0-3"
             name="ChoiceGroup0"

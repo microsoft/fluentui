@@ -2,7 +2,7 @@ import * as React from 'react';
 import { css, getDocument } from 'office-ui-fabric-react/lib/Utilities';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { MessageBar } from 'office-ui-fabric-react/lib/MessageBar';
-import { EditSection, ComponentPageSection } from '../EditSection';
+import { EditSection } from '../EditSection/index';
 import './ComponentPage.scss';
 
 export interface IComponentPageSection {
@@ -11,23 +11,44 @@ export interface IComponentPageSection {
 }
 
 export interface IComponentPageProps {
+  /** Component Title **/
   title: string;
+  /** Component Name **/
   componentName: string;
+  /** Component examples **/
   exampleCards?: JSX.Element;
+  /** Array of implementation examples, displayed in the order defined */
   implementationExampleCards?: JSX.Element;
+  /** Component properties table(s) **/
   propertiesTables?: JSX.Element;
+  /** Component best practices **/
   bestPractices?: JSX.Element;
+  /** Component dos **/
   dos?: JSX.Element;
+  /** Component donts **/
   donts?: JSX.Element;
-  overview: JSX.Element;
+  /** Component overview **/
+  overview?: JSX.Element;
+  /** Related link */
   related?: JSX.Element;
+  /** Header visibility flag */
   isHeaderVisible?: boolean;
+  /** Badges visibility flag **/
   areBadgesVisible?: boolean;
+  /** className of the component being documented */
   className?: string;
+  /** Status of the component; e.g. keyboard accessible */
   componentStatus?: JSX.Element;
+  /** Pass through other sections for ComponentPage */
   otherSections?: IComponentPageSection[];
+  /** Allows native props */
   allowNativeProps?: boolean | string;
+  /** Native props root element */
   nativePropsElement?: string | string[] | undefined;
+  /** Includes the feedback section **/
+  isFeedbackVisible?: boolean;
+  /** Feedback section with GitHub issues **/
+  feedback?: JSX.Element;
 
   /**
    * Link to the Component root folder on GitHub.
@@ -88,27 +109,12 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
           {this._pageHeader()}
           <div className="ComponentPage-body">
             {this._getComponentStatusBadges()}
-            <div className="ComponentPage-overviewSection">
-              <div className="ComponentPage-overviewSectionHeader">
-                <h2 className="ComponentPage-subHeading" id="Overview">
-                  Overview
-                </h2>
-                <EditSection
-                  title={this.props.title}
-                  section={ComponentPageSection.Overview}
-                  sectionContent={this.props.overview}
-                  url={this._getURL('Overview', this.props.editOverviewUrl)}
-                />
-              </div>
-              <div className="ComponentPage-overviewSectionContent">
-                <div className="ComponentPage-overview">{overview}</div>
-                {this._getRelatedComponents()}
-              </div>
-            </div>
+            {this._getOverview()}
             {this._getDosAndDonts()}
             {this._getVariants()}
             {this._getImplementationExamples()}
             {this._getPropertiesTable()}
+            {this._getFeedback()}
             {this.props.otherSections &&
               this.props.otherSections.map((componentPageSection: IComponentPageSection) => {
                 return this._getSection(componentPageSection);
@@ -137,7 +143,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     if (bestPractices && dos && donts) {
       links.push(
         <div className="ComponentPage-navLink" key="nav-link">
-          <Link {...{ href: this._baseUrl + '#BestPractices' }}>Best Practices</Link>
+          <Link href={this._baseUrl + '#BestPractices'}>Best Practices</Link>
         </div>
       );
     }
@@ -145,32 +151,34 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     return (
       <div className="ComponentPage-navigation">
         <div className="ComponentPage-navLink">
-          <Link {...{ href: this._baseUrl + '#Overview' }}>Overview</Link>
+          <Link href={this._baseUrl + '#Overview'}>Overview</Link>
         </div>
         {links}
         {this.props.exampleCards && (
           <div className="ComponentPage-navLink">
-            <Link {...{ href: this._baseUrl + '#Variants' }}>Variants</Link>
+            <Link href={this._baseUrl + '#Variants'}>Variants</Link>
           </div>
         )}
         {this.props.implementationExampleCards && (
           <div className="ComponentPage-navLink">
-            <Link {...{ href: this._baseUrl + '#ImplementationExamples' }}>Implementation Examples</Link>
+            <Link href={this._baseUrl + '#ImplementationExamples'}>Implementation Examples</Link>
           </div>
         )}
         {this.props.propertiesTables && (
           <div className="ComponentPage-navLink">
-            <Link {...{ href: this._baseUrl + '#Implementation' }}>Implementation</Link>
+            <Link href={this._baseUrl + '#Implementation'}>Implementation</Link>
+          </div>
+        )}
+        {this.props.isFeedbackVisible && (
+          <div className="ComponentPage-navLink">
+            <Link href={this._baseUrl + '#Feedback'}>Feedback</Link>
           </div>
         )}
         {this.props.otherSections &&
           this.props.otherSections.map((componentPageSection: IComponentPageSection, index: number) => {
             return (
               <div key={index + 'class'} className="ComponentPage-navLink">
-                <Link
-                  key={index + componentPageSection.title}
-                  {...{ href: this._baseUrl + '#' + componentPageSection.title }}
-                >
+                <Link key={index + componentPageSection.title} href={this._baseUrl + '#' + componentPageSection.title}>
                   {componentPageSection.title}
                 </Link>
               </div>
@@ -246,10 +254,13 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
 
       return (
         <MessageBar>
-          <strong>Native Props Allowed{componentString}</strong> - all HTML attributes native to the {elementString},
-          including all aria and custom data attributes, can be applied as native props on{componentString || (
-            <> this component</>
-          )}.
+          <strong>
+            Native Props Allowed
+            {componentString}
+          </strong>{' '}
+          - all HTML attributes native to the {elementString}, including all aria and custom data attributes, can be
+          applied as native props on
+          {componentString || <> this component</>}.
         </MessageBar>
       );
     }
@@ -278,7 +289,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
             <h2 className="ComponentPage-subHeading">Best Practices</h2>
             <EditSection
               title={this.props.title}
-              section={ComponentPageSection.BestPractices}
+              section={'BestPractices'}
               sectionContent={this.props.bestPractices}
               url={this._getURL('BestPractices', this.props.editBestPracticesUrl)}
             />
@@ -296,7 +307,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
               <h3>Do</h3>
               <EditSection
                 title={this.props.title}
-                section={ComponentPageSection.Dos}
+                section={'Dos'}
                 sectionContent={this.props.dos}
                 url={this._getURL('Dos', this.props.editDosUrl)}
               />
@@ -309,7 +320,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
               <h3>Don&rsquo;t</h3>
               <EditSection
                 title={this.props.title}
-                section={ComponentPageSection.Donts}
+                section={'Donts'}
                 sectionContent={this.props.donts}
                 url={this._getURL('Donts', this.props.editDontsUrl)}
               />
@@ -327,11 +338,18 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
   }
 
   private _getVariants(): JSX.Element | undefined {
+    // We want to show the "Variants" header if the header is present since it has a relative anchor to it
+    // or we have more than one example JSX element to render.
+    const hasVariants = this.props.isHeaderVisible || !!this.props.exampleCards!.props.children.length;
+
+    // If only one variant then use its title as the header text, otherwise use "Variants".
+    const headerText = hasVariants ? 'Variants' : this.props.title;
+
     if (this.props.exampleCards) {
       return (
         <div className="ComponentPage-variantsSection">
           <h2 className="ComponentPage-subHeading ComponentPage-variantsTitle" id="Variants">
-            Variants
+            {headerText}
           </h2>
           {this.props.exampleCards}
         </div>
@@ -356,9 +374,50 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     return undefined;
   }
 
+  private _getFeedback(): JSX.Element | undefined {
+    if (this.props.isFeedbackVisible) {
+      return (
+        <div className="ComponentPage-feedbackSection">
+          <h2 className="ComponentPage-subHeading ComponentPage-variantsTitle" id="Feedback">
+            Feedback
+          </h2>
+          {this.props.feedback}
+        </div>
+      );
+    }
+
+    return undefined;
+  }
+
   private _getComponentStatusBadges(): JSX.Element | undefined {
     if (this.props.componentStatus && this.props.areBadgesVisible) {
       return <div className="ComponentPage-componentStatusSection">{this.props.componentStatus}</div>;
+    }
+
+    return undefined;
+  }
+
+  private _getOverview(): JSX.Element | undefined {
+    if (this.props.overview) {
+      return (
+        <div className="ComponentPage-overviewSection">
+          <div className="ComponentPage-overviewSectionHeader">
+            <h2 className="ComponentPage-subHeading" id="Overview">
+              Overview
+            </h2>
+            <EditSection
+              title={this.props.title}
+              section={'Overview'}
+              sectionContent={this.props.overview}
+              url={this._getURL('Overview', this.props.editOverviewUrl)}
+            />
+          </div>
+          <div className="ComponentPage-overviewSectionContent">
+            <div className="ComponentPage-overview">{this.props.overview}</div>
+            {this._getRelatedComponents()}
+          </div>
+        </div>
+      );
     }
 
     return undefined;

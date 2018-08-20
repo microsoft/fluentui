@@ -1,4 +1,5 @@
 import { IPalette, ISemanticColors, ITheme, IPartialTheme, createTheme } from 'office-ui-fabric-react/lib/Styling';
+import { VariantThemeType } from './variantThemeType';
 
 function makeThemeFromPartials(
   originalTheme: IPartialTheme,
@@ -15,10 +16,32 @@ function makeThemeFromPartials(
 }
 
 /**
- * A variant where the background soft shade of the neutral color. Most other colors remain unchanged.
+ * Returns the specified variant theme for the given theme.
+ * Do not generate a variant from a variant, the results will be ugly.
  *
  * @export
- * @param {IPartialTheme} theme the theme for which to build a variant for
+ * @param {IPartialTheme} theme the theme to build a variant for
+ * @param {VariantThemeType} variant the variant type designation
+ * @returns {ITheme} the variant theme
+ */
+export function getVariant(theme: IPartialTheme, variant: VariantThemeType): ITheme {
+  switch (variant) {
+    case VariantThemeType.Neutral:
+      return getNeutralVariant(theme);
+    case VariantThemeType.Soft:
+      return getSoftVariant(theme);
+    case VariantThemeType.Strong:
+      return getStrongVariant(theme);
+    default:
+      return createTheme(theme);
+  }
+}
+
+/**
+ * A variant where the background is a soft shade of the neutral color. Most other colors remain unchanged.
+ *
+ * @export
+ * @param {IPartialTheme} theme the theme to build a variant for
  * @returns {ITheme} the variant theme
  */
 export function getNeutralVariant(theme: IPartialTheme): ITheme {
@@ -59,7 +82,27 @@ export function getNeutralVariant(theme: IPartialTheme): ITheme {
 
   const partialSemantic: Partial<ISemanticColors> = {
     bodyBackground: p.neutralLighter,
-    bodyFrameBackground: !fullTheme.isInverted ? p.neutralLight : p.neutralLighterAlt
+    bodyStandoutBackground: p.neutralLight,
+    bodyFrameBackground: !fullTheme.isInverted ? p.neutralLight : p.neutralLighter,
+    bodyFrameDivider: !fullTheme.isInverted ? p.neutralLight : p.neutralQuaternary,
+    variantBorder: !fullTheme.isInverted ? p.neutralQuaternaryAlt : p.neutralLighterAlt,
+
+    buttonBackground: p.neutralLighter,
+    buttonBackgroundHovered: p.neutralLight,
+    buttonBackgroundPressed: p.neutralQuaternaryAlt,
+    buttonBorder: p.neutralSecondary,
+    buttonText: p.neutralPrimary,
+    buttonTextHovered: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary,
+    buttonTextPressed: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary,
+    buttonTextDisabled: p.neutralQuaternary,
+    buttonBorderDisabled: p.neutralQuaternary,
+    primaryButtonBackground: p.themePrimary,
+    primaryButtonBackgroundHovered: p.themeDarkAlt,
+    primaryButtonBackgroundPressed: p.themeDark,
+    primaryButtonBorder: 'transparent',
+    primaryButtonText: p.white,
+    primaryButtonTextHovered: p.white,
+    primaryButtonTextPressed: p.white
   };
 
   return makeThemeFromPartials(theme, partialPalette, partialSemantic);
@@ -69,7 +112,7 @@ export function getNeutralVariant(theme: IPartialTheme): ITheme {
  * A variant where the background is a soft version of the primary color. Most other colors remain unchanged.
  *
  * @export
- * @param {IPartialTheme} theme the theme for which to build a variant for
+ * @param {IPartialTheme} theme the theme to build a variant for
  * @returns {ITheme} the variant theme
  */
 export function getSoftVariant(theme: IPartialTheme): ITheme {
@@ -111,15 +154,38 @@ export function getSoftVariant(theme: IPartialTheme): ITheme {
 
   const partialSemantic: Partial<ISemanticColors> = {
     bodyBackground: !fullTheme.isInverted ? p.themeLighterAlt : p.themeLight,
-    bodyFrameBackground: p.themeLighter, // this will always be the darker shade as compared to bodyBackground
+    bodyStandoutBackground: !fullTheme.isInverted ? p.themeLighter : p.themeTertiary,
+    bodyFrameBackground: !fullTheme.isInverted ? p.themeLighter : p.themeLight,
+    bodyFrameDivider: !fullTheme.isInverted ? p.themeLighter : p.themeTertiary,
 
     inputBorder: p.themeLighter,
     // inputBorderHovered: p.neutralPrimary,
     inputBackground: p.themeLighter,
     // inputBackgroundChecked: p.themePrimary,
     // inputBackgroundCheckedHovered: p.themeDarkAlt,
-    inputForegroundChecked: p.themeLighter
+    inputForegroundChecked: p.themeLighter,
     // inputFocusBorderAlt: p.themePrimary,
+    variantBorder: !fullTheme.isInverted ? p.neutralLight : p.neutralLighterAlt,
+
+    buttonBackground: !fullTheme.isInverted ? p.themeLighterAlt : p.themeLight,
+    buttonBackgroundHovered: !fullTheme.isInverted ? p.themeLighter : p.themeTertiary,
+    // buttonBackgroundHovered: !fullTheme.isInverted
+    //   ? p.themeLighter
+    // : updateA(getColorFromString(p.themeTertiary), 50).str,
+    buttonBackgroundPressed: !fullTheme.isInverted ? p.themeLight : p.themeTertiary,
+    buttonBorder: p.neutralSecondary,
+    buttonText: !fullTheme.isInverted ? p.neutralPrimary : p.themePrimary,
+    buttonTextHovered: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary,
+    buttonTextPressed: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary,
+    buttonTextDisabled: !fullTheme.isInverted ? p.themeLight : p.themeTertiary,
+    buttonBorderDisabled: !fullTheme.isInverted ? p.themeLight : p.themeTertiary,
+    primaryButtonBackground: p.themePrimary,
+    primaryButtonBackgroundHovered: p.themeDarkAlt,
+    primaryButtonBackgroundPressed: p.themeDark,
+    primaryButtonBorder: 'transparent',
+    primaryButtonText: p.white,
+    primaryButtonTextHovered: p.white,
+    primaryButtonTextPressed: p.white
   };
 
   return makeThemeFromPartials(theme, partialPalette, partialSemantic);
@@ -132,7 +198,7 @@ export function getSoftVariant(theme: IPartialTheme): ITheme {
  * The primary color becomes shades of the background.
  *
  * @export
- * @param {IPartialTheme} theme the theme for which to build a variant for
+ * @param {IPartialTheme} theme the theme to build a variant for
  * @returns {ITheme} the variant theme
  */
 export function getStrongVariant(theme: IPartialTheme): ITheme {
@@ -176,7 +242,9 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
 
   const partialSemantic: Partial<ISemanticColors> = {
     bodyBackground: p.themePrimary,
-    bodyFrameBackground: !fullTheme.isInverted ? p.themeDarkAlt : p.themeSecondary,
+    bodyStandoutBackground: p.themeDarkAlt,
+    bodyFrameBackground: !fullTheme.isInverted ? p.themeDarkAlt : p.themePrimary,
+    bodyFrameDivider: !fullTheme.isInverted ? p.themeDarkAlt : p.themeTertiary,
 
     bodyText: p.white,
     bodySubtext: p.white,
@@ -186,8 +254,26 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
     inputBackground: p.themeDark,
     inputBackgroundChecked: p.white,
     // inputBackgroundCheckedHovered: p.themePrimary,
-    inputForegroundChecked: p.themeDark
+    inputForegroundChecked: p.themeDark,
     // inputFocusBorderAlt: p.themePrimary,
+    variantBorder: p.themeDark,
+
+    buttonBackground: p.white,
+    buttonBackgroundHovered: !fullTheme.isInverted ? p.themeLighter : p.themeLight,
+    buttonBackgroundPressed: !fullTheme.isInverted ? p.themeLight : p.themeTertiary,
+    buttonBorder: 'transparent',
+    buttonText: !fullTheme.isInverted ? p.themePrimary : p.neutralPrimary,
+    buttonTextHovered: !fullTheme.isInverted ? p.themePrimary : p.neutralPrimary,
+    buttonTextPressed: !fullTheme.isInverted ? p.themePrimary : p.neutralPrimary,
+    buttonTextDisabled: !fullTheme.isInverted ? p.themeLight : p.themeTertiary,
+    buttonBorderDisabled: !fullTheme.isInverted ? p.themeLight : p.themeTertiary,
+    primaryButtonBackground: p.themePrimary,
+    primaryButtonBackgroundHovered: p.themeDarkAlt,
+    primaryButtonBackgroundPressed: p.themeDark,
+    primaryButtonBorder: p.white,
+    primaryButtonText: p.white,
+    primaryButtonTextHovered: p.white,
+    primaryButtonTextPressed: p.white
   };
 
   // Strong variant is unique here, we've redefined the entire palette and are

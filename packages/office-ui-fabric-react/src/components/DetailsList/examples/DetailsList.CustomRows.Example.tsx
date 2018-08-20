@@ -6,7 +6,7 @@ import {
   IDetailsRowCheckProps
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
-import { createListItems } from '../../../utilities/exampleData';
+import { createListItems } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import './DetailsListExample.scss';
 
 let _items: any[];

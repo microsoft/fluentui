@@ -145,9 +145,14 @@ export class LayoutPage extends React.Component<any, any> {
             (ms-Grid-col). Utility classes (ms-sm6) specify how large each column should be on small, medium, and large
             devices. The columns in a row should add up to 12 for each device size.
           </p>
+          <p>
+            Newer versions of Fabric require the <code>dir</code> attribute to be set to specify how the content should
+            be rendered (whether left-to-right, <code>ltr</code>, or right-to-left, <code>rtl</code>
+            ).
+          </p>
         </div>
         <CodeBlock language="html" isLightTheme={true}>
-          {`<div class="ms-Grid">
+          {`<div class="ms-Grid" dir="ltr">
   <div class="ms-Grid-row">
     <div class="ms-Grid-col ms-sm6 ms-md4 ms-lg2">A</div>
     <div class="ms-Grid-col ms-sm6 ms-md8 ms-lg10">B</div>

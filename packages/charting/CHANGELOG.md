@@ -1,6 +1,85 @@
-# Change Log - @uifabric/experiments
+# Change Log - @uifabric/charting
 
-This log was last generated on Fri, 11 May 2018 04:21:29 GMT and should not be manually modified.
+This log was last generated on Mon, 20 Aug 2018 10:26:10 GMT and should not be manually modified.
+
+## 0.15.0
+Mon, 20 Aug 2018 10:26:10 GMT
+
+### Minor changes
+
+- Charting: allow components to render dynamic data
+- Adding legends as a seperate component with examples. Legends component has a  shows all the legends in a single row. If  it does not have space to show the rest of the legends it puts them in a overflow hover card.
+
+## 0.14.1
+Tue, 14 Aug 2018 10:27:33 GMT
+
+### Patches
+
+- disabling codepen task
+
+## 0.14.0
+Tue, 14 Aug 2018 00:01:11 GMT
+
+### Minor changes
+
+- Updating StackedBar Chart desgin, MultiStackedBarChart and Legend components
+
+## 0.13.1
+Fri, 10 Aug 2018 10:26:08 GMT
+
+### Patches
+
+- Charting: change svg boxSizing to content-box
+
+## 0.13.0
+Wed, 08 Aug 2018 10:25:07 GMT
+
+### Minor changes
+
+- Adding multiple line chart implementation to existing single line chart.
+
+## 0.12.0
+Wed, 01 Aug 2018 10:25:51 GMT
+
+### Minor changes
+
+- Adding stacked chart with variants, updating stacked chart to use common IDataPoint
+
+## 0.11.1
+Mon, 30 Jul 2018 10:27:11 GMT
+
+### Patches
+
+- Fixing bad imports and broken theming in some charts
+
+## 0.11.0
+Wed, 25 Jul 2018 03:20:34 GMT
+
+### Minor changes
+
+- Addressing bad imports.
+- Removing most `@customizable` decorator usage. This change should reduce extra React dom elements from being created. Also updating `componentRef` resolution to support `React.createRef()` usage.
+
+### Patches
+
+- Update typings to not use deprecated types.
+- Add Pie and Donut Chart to charting package
+- Change  package.json file
+- Adding Stacked Bar chart
+
+## 0.0.4
+Tue, 03 Jul 2018 10:23:19 GMT
+
+### Patches
+
+- Add ! mark for typed props
+
+## 0.0.3
+Mon, 02 Jul 2018 10:21:36 GMT
+
+### Patches
+
+- Initial publish.
 
 ## 5.38.2
 Fri, 11 May 2018 04:21:29 GMT

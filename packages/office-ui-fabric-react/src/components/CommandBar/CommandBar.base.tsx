@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { BaseComponent, css, customizable, nullRender } from '../../Utilities';
+import { BaseComponent, css, nullRender } from '../../Utilities';
 import {
   ICommandBar,
   ICommandBarItemProps,
@@ -12,7 +12,6 @@ import { IOverflowSet, OverflowSet } from '../../OverflowSet';
 import { IResizeGroup, ResizeGroup } from '../../ResizeGroup';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { classNamesFunction, createRef } from '../../Utilities';
-
 import { CommandBarButton, IButtonProps } from '../../Button';
 import { TooltipHost } from '../../Tooltip';
 
@@ -41,7 +40,6 @@ export interface ICommandBarData {
   cacheKey: string;
 }
 
-@customizable('CommandBar', ['theme', 'styles'])
 export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implements ICommandBar {
   public static defaultProps: ICommandBarProps = {
     items: [],
@@ -164,16 +162,18 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       return item.onRender(item, () => undefined);
     }
     const commandButtonProps: ICommandBarItemProps = {
+      allowDisabledFocus: true,
       ...item,
       styles: { root: { height: '100%' }, ...item.buttonStyles },
       className: css('ms-CommandBarItem-link', item.className),
-      text: !item.iconOnly ? itemText : '',
-      menuProps: item.subMenuProps
+      text: !item.iconOnly ? itemText : undefined,
+      menuProps: item.subMenuProps,
+      onClick: this._onButtonClick(item)
     };
 
     if (item.iconOnly && itemText !== undefined) {
       return (
-        <TooltipHost content={itemText}>
+        <TooltipHost content={itemText} {...item.tooltipHostProps}>
           <CommandButtonType {...commandButtonProps as IButtonProps} />
         </TooltipHost>
       );
@@ -182,17 +182,34 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     return <CommandButtonType {...commandButtonProps as IButtonProps} />;
   };
 
+  private _onButtonClick(item: ICommandBarItemProps): (ev: React.MouseEvent<HTMLButtonElement>) => void {
+    return ev => {
+      // inactive is deprecated. remove check in 7.0
+      if (item.inactive) {
+        return;
+      }
+      if (item.onClick) {
+        item.onClick(ev, item);
+      }
+    };
+  }
+
   private _onRenderOverflowButton = (overflowItems: ICommandBarItemProps[]): JSX.Element => {
     const {
       overflowButtonAs: OverflowButtonType = CommandBarButton,
       overflowButtonProps = {} // assure that props is not empty
     } = this.props;
 
+    const combinedOverflowItems: ICommandBarItemProps[] = [
+      ...(overflowButtonProps.menuProps ? overflowButtonProps.menuProps.items : []),
+      ...overflowItems
+    ];
+
     const overflowProps: IButtonProps = {
       ...overflowButtonProps,
       styles: { menuIcon: { fontSize: '17px' }, ...overflowButtonProps.styles },
       className: css('ms-CommandBar-overflowButton', overflowButtonProps.className),
-      menuProps: { items: overflowItems, ...overflowButtonProps.menuProps },
+      menuProps: { ...overflowButtonProps.menuProps, items: combinedOverflowItems },
       menuIconProps: { iconName: 'More', ...overflowButtonProps.menuIconProps }
     };
 

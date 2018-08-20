@@ -1,6 +1,20 @@
 # Change Log - @uifabric/icons
 
-This log was last generated on Tue, 05 Jun 2018 00:44:30 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Aug 2018 10:27:33 GMT and should not be manually modified.
+
+## 6.0.3
+Tue, 14 Aug 2018 10:27:33 GMT
+
+### Patches
+
+- disabling codepen task
+
+## 6.0.2
+Wed, 27 Jun 2018 23:59:19 GMT
+
+### Patches
+
+- Republish to address issue #5353
 
 ## 6.0.1
 Tue, 05 Jun 2018 00:44:30 GMT
