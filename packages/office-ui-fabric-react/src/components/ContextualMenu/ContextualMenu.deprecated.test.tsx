@@ -1,16 +1,24 @@
 import * as React from 'react';
+import { mount } from 'enzyme';
 import { Promise } from 'es6-promise';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { KeyCodes, createRef } from '../../Utilities';
 import { FocusZoneDirection } from '../../FocusZone';
-
+import * as WarnUtil from '@uifabric/utilities/lib-commonjs/warn';
 import { IContextualMenuProps } from './ContextualMenu.types';
 import { ContextualMenu } from './ContextualMenu';
 import { canAnyMenuItemsCheck } from './ContextualMenu.base';
 import { ContextualMenuItemType } from './ContextualMenu.types';
-import { IContextualMenuRenderItem, IContextualMenuItem } from './ContextualMenuItem.types';
+import { IContextualMenuRenderItem, IContextualMenuItem, IMenuItemClassNames } from './ContextualMenuItem.types';
+import { ITheme } from '@uifabric/styling';
 
 describe('ContextualMenu', () => {
+  beforeAll(() => {
+    jest.spyOn(WarnUtil, 'warnDeprecations').mockImplementation(() => {
+      /** no impl **/
+    });
+  });
+
   afterEach(() => {
     for (let i = 0; i < document.body.children.length; i++) {
       if (document.body.children[i].tagName === 'DIV') {
@@ -33,6 +41,150 @@ describe('ContextualMenu', () => {
     const menuList = document.querySelector('.ms-ContextualMenu-list') as HTMLUListElement;
 
     expect(menuList.scrollHeight).toBeLessThanOrEqual(menuList.offsetHeight);
+  });
+
+  it('includes the classNames on ContextualMenuItem(s)', () => {
+    const items: IContextualMenuItem[] = [{ name: 'Test 1', key: 'Test1' }];
+
+    const getClassNames = (_theme: ITheme, _className?: string) => {
+      return {
+        container: 'containerFoo',
+        root: 'rootFoo',
+        list: 'listFoo',
+        header: 'headerFoo',
+        title: 'titleFoo'
+      };
+    };
+
+    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(
+      <ContextualMenu items={items} getMenuClassNames={getClassNames} />
+    );
+
+    const container = document.querySelector('.containerFoo') as HTMLElement;
+    const rootEl = document.querySelector('.rootFoo') as HTMLElement;
+    const list = document.querySelector('.listFoo') as HTMLElement;
+    const header = document.querySelector('.headerFoo') as HTMLElement;
+    const title = document.querySelector('.titleFoo') as HTMLElement;
+
+    expect(container).toBeDefined();
+    expect(rootEl).toBeDefined();
+    expect(list).toBeDefined();
+    expect(header).toBeDefined();
+    expect(title).toBeDefined();
+  });
+
+  it('applies in-line style property if present on ContextualMenuItem', () => {
+    const items: IContextualMenuItem[] = [{ name: 'Test 1', key: 'Test1', style: { background: 'red' } }];
+
+    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
+
+    const menuItem = document.querySelector('.ms-ContextualMenu-link') as HTMLButtonElement;
+
+    expect(menuItem.style.background).toEqual('red');
+  });
+
+  it('applies getItemClassNames property if present on ContextualMenuItem', () => {
+    const customClassNames = (): IMenuItemClassNames => {
+      return {
+        item: 'itemFoo',
+        divider: 'dividerFoo',
+        root: 'rootFoo',
+        linkContent: 'linkFoo',
+        icon: 'iconFoo',
+        checkmarkIcon: 'checkmarkIconFoo',
+        subMenuIcon: 'subMenuIconFoo',
+        label: 'labelFoo',
+        secondaryText: 'secondaryTextFoo',
+        splitContainer: 'splitContainerFoo',
+        splitPrimary: 'splitPrimaryFoo',
+        splitMenu: 'splitMenuFoo',
+        linkContentMenu: 'linkContentMenuFoo'
+      };
+    };
+
+    const items: IContextualMenuItem[] = [
+      {
+        key: 'newItem',
+        text: 'New',
+        split: true,
+        onClick: () => console.log('New clicked'),
+        getItemClassNames: customClassNames,
+        subMenuProps: {
+          items: [
+            {
+              key: 'share',
+              text: 'Share'
+            }
+          ]
+        }
+      },
+      {
+        key: 'divider_1',
+        itemType: ContextualMenuItemType.Divider,
+        getItemClassNames: customClassNames
+      },
+      {
+        key: 'Later Today',
+        iconProps: {
+          iconName: 'Clock'
+        },
+        text: 'Later Today',
+        secondaryText: '7:00 PM',
+        getItemClassNames: customClassNames
+      },
+      {
+        key: 'edit',
+        text: 'Edit',
+        canCheck: true,
+        isChecked: false,
+        onClick: () => console.log('Edit clicked'),
+        getItemClassNames: customClassNames
+      },
+      {
+        key: 'linkWithTarget',
+        text: 'Link new window',
+        href: 'http://bing.com',
+        target: '_blank',
+        getItemClassNames: customClassNames
+      },
+      {
+        key: 'disabled',
+        text: 'Disabled item',
+        disabled: true,
+        onClick: () => console.error('Disabled item should not be clickable.'),
+        getItemClassNames: customClassNames
+      }
+    ];
+
+    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
+
+    const itemEl = document.querySelector('.itemFoo') as HTMLElement;
+    const dividerEl = document.querySelector('.dividerFoo') as HTMLElement;
+    const rootEl = document.querySelector('.rootFoo') as HTMLElement;
+    const linkContentEl = document.querySelector('.linkFoo') as HTMLElement;
+    const iconEl = document.querySelector('.iconFoo') as HTMLElement;
+    const checkmarkIconEl = document.querySelector('.checkmarkIconFoo') as HTMLElement;
+    const subMenuIconEl = document.querySelector('.subMenuIconFoo') as HTMLElement;
+    const labelEl = document.querySelector('.labelFoo') as HTMLElement;
+    const secondaryTextEl = document.querySelector('.secondaryTextFoo') as HTMLElement;
+    const splitContainerEl = document.querySelector('.splitContainerFoo') as HTMLElement;
+    const splitPrimaryEl = document.querySelector('.splitPrimaryFoo') as HTMLElement;
+    const splitMenuEl = document.querySelector('.splitMenuFoo') as HTMLElement;
+    const linkContentMenuEl = document.querySelector('.linkContentMenuFoo') as HTMLElement;
+
+    expect(itemEl.classList.contains('itemFoo')).toBeTruthy();
+    expect(dividerEl.classList.contains('dividerFoo')).toBeTruthy();
+    expect(rootEl.classList.contains('rootFoo')).toBeTruthy();
+    expect(linkContentEl.classList.contains('linkFoo')).toBeTruthy();
+    expect(labelEl.classList.contains('labelFoo')).toBeTruthy();
+    expect(iconEl.classList.contains('iconFoo')).toBeTruthy();
+    expect(checkmarkIconEl.classList.contains('checkmarkIconFoo')).toBeTruthy();
+    expect(subMenuIconEl.classList.contains('subMenuIconFoo')).toBeTruthy();
+    expect(secondaryTextEl.classList.contains('secondaryTextFoo')).toBeTruthy();
+    expect(splitContainerEl.classList.contains('splitContainerFoo')).toBeTruthy();
+    expect(splitPrimaryEl.classList.contains('splitPrimaryFoo')).toBeTruthy();
+    expect(splitMenuEl.classList.contains('splitMenuFoo')).toBeTruthy();
+    expect(linkContentMenuEl.classList.contains('linkContentMenuFoo')).toBeTruthy();
   });
 
   it('closes on left arrow if it is a submenu', () => {
