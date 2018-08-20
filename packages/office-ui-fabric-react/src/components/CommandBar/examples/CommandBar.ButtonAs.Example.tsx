@@ -7,7 +7,7 @@ import { DirectionalHint } from 'office-ui-fabric-react/lib/components/Callout';
 export class CommandBarButtonAsExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     const customButton = (props: IButtonProps) => {
-      const buttonOnMouseClick: IButtonProps['onClick'] = ev => alert(`${props.text} clicked`);
+      const buttonOnMouseClick = () => alert(`${props.text} clicked`);
       return (
         <CommandBarButton
           {...props}
