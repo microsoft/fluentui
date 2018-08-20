@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 17 Aug 2018 15:00:40 GMT and should not be manually modified.
+This log was last generated on Mon, 20 Aug 2018 10:26:10 GMT and should not be manually modified.
+
+## 6.50.2
+Mon, 20 Aug 2018 10:26:10 GMT
+
+### Patches
+
+- Don't left-pad DetailsColumn header icons
+- DetailsList: add aria-hidden to select all checkbox in single selectionmode
+- TextField: Fix application of inputClassName lost when component was converted to JS styling.
+- Use role="alert" instead of aria-live="assertive" on error message container for TextField.
+- remove unnecessary export in detailslist
+- Panel: remove selected media queries to ensure that custom panels are always right-aligned
+- Autofill: prevent onInputChange from being called on IE11 inputs with a placeholder
 
 ## 6.50.1
 Fri, 17 Aug 2018 15:00:40 GMT

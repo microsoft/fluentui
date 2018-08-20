@@ -1,6 +1,14 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Fri, 17 Aug 2018 10:26:39 GMT and should not be manually modified.
+This log was last generated on Mon, 20 Aug 2018 10:26:10 GMT and should not be manually modified.
+
+## 0.15.5
+Mon, 20 Aug 2018 10:26:10 GMT
+
+### Patches
+
+- Replaced the OverflowSet with IconButton and removed the paddingBottom css in ThumbnailList added the  marign Bottom css.
+- minor css changes to body text and recommendation styles
 
 ## 0.15.4
 Fri, 17 Aug 2018 10:26:39 GMT

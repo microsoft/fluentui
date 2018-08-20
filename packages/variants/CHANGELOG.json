@@ -2,6 +2,25 @@
   "name": "@uifabric/variants",
   "entries": [
     {
+      "version": "6.4.0",
+      "tag": "@uifabric/variants_v6.4.0",
+      "date": "Mon, 20 Aug 2018 10:26:10 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "7257dbf0bbaf4f4243dbf0759639e6a8d04645e2",
+            "comment": "removes opacity function and import from color utilities from variants.ts"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.50.1 <7.0.0` to `>=6.50.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.3.0",
       "tag": "@uifabric/variants_v6.3.0",
       "date": "Mon, 13 Aug 2018 03:43:25 GMT",

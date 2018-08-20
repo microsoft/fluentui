@@ -2,6 +2,50 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.50.2",
+      "tag": "office-ui-fabric-react_v6.50.2",
+      "date": "Mon, 20 Aug 2018 10:26:10 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "9a96023a1a0d96601834a207ca71eda690a7696f",
+            "comment": "Don't left-pad DetailsColumn header icons"
+          },
+          {
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "fa1dd5315f51288ed865f1889ad9931cb36985b5",
+            "comment": "DetailsList: add aria-hidden to select all checkbox in single selectionmode"
+          },
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "2b78d201a285b31c1ffd3a3b97f28e5bc59987c3",
+            "comment": "TextField: Fix application of inputClassName lost when component was converted to JS styling."
+          },
+          {
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "b8536e17bf567bfee61abdc1493ea5f0f937028c",
+            "comment": "Use role=\"alert\" instead of aria-live=\"assertive\" on error message container for TextField."
+          },
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "43891e7eb389207e5ae6da3198abf7d01e9c72db",
+            "comment": "remove unnecessary export in detailslist"
+          },
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "5e746d1e53bcc5a22a37dbcbe86f0ee29f637386",
+            "comment": "Panel: remove selected media queries to ensure that custom panels are always right-aligned"
+          },
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "4ab70f3f71cbeff9c04e823fd7dfe4456f8363ba",
+            "comment": "Autofill: prevent onInputChange from being called on IE11 inputs with a placeholder"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.50.1",
       "tag": "office-ui-fabric-react_v6.50.1",
       "date": "Fri, 17 Aug 2018 15:00:40 GMT",
