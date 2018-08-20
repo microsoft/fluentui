@@ -176,7 +176,6 @@ describe('Pickers', () => {
           onEmptyInputFocus={resolveSuggestions}
           onRenderItem={onRenderItem}
           onRenderSuggestionsItem={basicSuggestionRenderer}
-          itemLimit={0}
         />,
         root
       ) as TypedBasePicker;
@@ -187,7 +186,7 @@ describe('Pickers', () => {
 
       expect(suggestions).toBeDefined();
       const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
-      expect(suggestionOptions.length).toEqual(13);
+      expect(suggestionOptions.length).toEqual(15);
       expect(picker.items.length).toEqual(0);
 
       ReactDOM.unmountComponentAtNode(root);
