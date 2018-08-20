@@ -20,6 +20,8 @@ export interface IGroupHeaderState {
 }
 
 export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderState> {
+  private readonly groupHeaderCheckboxButtonAriaLabel: string = 'group checkbox button';
+
   constructor(props: IGroupDividerProps) {
     super(props);
 
@@ -82,7 +84,7 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
             <button
               type='button'
               className={ css('ms-GroupHeader-check', styles.check) }
-              aria-label='group checkbox button'
+              aria-label={this.groupHeaderCheckboxButtonAriaLabel}
               data-selection-toggle={ true }
               onClick={ this._onToggleSelectGroupClick }
             >
