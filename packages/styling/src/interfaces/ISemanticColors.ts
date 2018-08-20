@@ -156,7 +156,8 @@ export interface ISemanticColors {
   variantBorderHovered: string;
 
   /**
-   * Background color for default/empty state graphical elements, eg icons, placeholder graphics, etc.
+   * Background color for default/empty state graphical elements; eg default icons, empty section that
+   * needs user to fill in content, placeholder graphics, empty seats, etc.
    */
   defaultStateBackground: string;
 
