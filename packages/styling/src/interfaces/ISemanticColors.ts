@@ -158,7 +158,7 @@ export interface ISemanticColors {
   /**
    * Background color for default/empty state graphical elements, eg icons, placeholder graphics, etc.
    */
-  emptyStateBackground: string;
+  defaultStateBackground: string;
 
   //// Invariants - slots that rarely change color theme-to-theme because the color has meaning
 

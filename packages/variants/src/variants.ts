@@ -87,7 +87,7 @@ export function getNeutralVariant(theme: IPartialTheme): ITheme {
     bodyFrameDivider: !fullTheme.isInverted ? p.neutralLight : p.neutralQuaternary,
     variantBorder: !fullTheme.isInverted ? p.neutralQuaternaryAlt : p.neutralLighterAlt,
     variantBorderHovered: p.neutralTertiary,
-    emptyStateBackground: p.neutralQuaternaryAlt,
+    defaultStateBackground: p.neutralQuaternaryAlt,
 
     buttonBackground: p.neutralLighter,
     buttonBackgroundHovered: p.neutralLight,
@@ -169,7 +169,7 @@ export function getSoftVariant(theme: IPartialTheme): ITheme {
     // inputFocusBorderAlt: p.themePrimary,
     variantBorder: !fullTheme.isInverted ? p.neutralLight : p.neutralLighterAlt,
     variantBorderHovered: p.neutralTertiary,
-    emptyStateBackground: !fullTheme.isInverted ? p.themeLight : p.themeTertiary,
+    defaultStateBackground: !fullTheme.isInverted ? p.themeLight : p.themeTertiary,
 
     buttonBackground: !fullTheme.isInverted ? p.themeLighterAlt : p.themeLight,
     buttonBackgroundHovered: !fullTheme.isInverted ? p.themeLighter : p.themeTertiary,
@@ -262,7 +262,7 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
     // inputFocusBorderAlt: p.themePrimary,
     variantBorder: p.themeDark,
     variantBorderHovered: p.themeDarker,
-    emptyStateBackground: p.themeDark,
+    defaultStateBackground: p.themeDark,
 
     buttonBackground: p.white,
     buttonBackgroundHovered: !fullTheme.isInverted ? p.themeLighter : p.themeLight,
