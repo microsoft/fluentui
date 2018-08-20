@@ -4,6 +4,7 @@ import { CommandButton, IconButton, IButton } from '../../../Button';
 import { Spinner } from '../../../Spinner';
 import { ISuggestionItemProps, ISuggestionsProps } from './Suggestions.types';
 import * as stylesImport from './Suggestions.scss';
+import { suggestionsSpinner } from 'office-ui-fabric-react/lib/components/FloatingPicker/Suggestions/SuggestionsControl.scss';
 const styles: any = stylesImport;
 
 export enum SuggestionActionType {
@@ -300,7 +301,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
     }
   }
 
-  private _renderSuggestions(): JSX.Element {
+  private _renderSuggestions(): JSX.Element | null {
     const {
       onRenderSuggestion,
       removeSuggestionAriaLabel,
@@ -316,6 +317,10 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
 
     if (resultsMaximumNumber) {
       suggestions = suggestions.slice(0, resultsMaximumNumber);
+    }
+
+    if (suggestions.length === 0) {
+      return null;
     }
 
     return (
