@@ -17,7 +17,7 @@ const navFontSize = 14;
 const navTextColor = '#FFF';
 const navWidth = 280;
 const navCollapsedWidth = 48;
-const shortenedIconWidth = 38;
+const shortenedIconWidth = 32;
 const navFloatingWidth = 230;
 const navItemHeight = 48;
 const navChildItemHeight = 32;
@@ -28,6 +28,7 @@ const navGroupSeparatorWithGroupNameHeight = 70;
 const navItemWithChildBgColor = '#CCCCCC';
 const navItemSelectedColor = '#B7B7B7';
 const navItemIndentSize = 50;
+const navFloatingItemIndentSize = 20;
 
 export const getStyles = (props: INavStyleProps): INavStyles => {
   const { isSelected, hasChildren, nestingLevel, isCollapsed, scrollTop, isChildLinkSelected, hasGroupName } = props;
@@ -68,6 +69,9 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
       selectors: {
         ':hover': {
           backgroundColor: hasChildren ? navItemWithChildBgColor : navItemHoverColor
+        },
+        ':active': {
+          backgroundColor: navItemSelectedColor
         }
       }
     },
@@ -91,6 +95,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
     },
     navItemNameColumn: {
       width: '100%',
+      marginLeft: isChildLinkSelected ? '8px' : '0px',
       lineHeight: !!nestingLevel && nestingLevel > 0 ? navChildItemHeight : navItemHeight,
       verticalAlign: 'top',
       display: 'inline-block',
@@ -114,7 +119,6 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
         marginTop: -navItemHeight - (!!scrollTop && scrollTop > 0 ? scrollTop : 0),
         width: navFloatingWidth,
         color: navTextColor,
-        backgroundColor: hasChildren ? navItemWithChildBgColor : navItemHoverColor,
         selectors: {
           a: {
             width: '100%',
@@ -127,11 +131,14 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
     navFloatingItemRoot: {
       height: !!nestingLevel && nestingLevel > 0 ? navChildItemHeight : navItemHeight,
       cursor: 'pointer',
-      backgroundColor: navBackgroundColor,
-      paddingLeft: !!nestingLevel && nestingLevel > 0 ? nestingLevel * navItemIndentSize : 'inherit',
+      backgroundColor: !(nestingLevel && nestingLevel > 0) ? navItemHoverColor : navBackgroundColor,
+      paddingLeft: navFloatingItemIndentSize,
       selectors: {
         ':hover': {
-          backgroundColor: !!nestingLevel && nestingLevel > 0 ? navItemHoverColor : 'unset'
+          backgroundColor: !!nestingLevel && nestingLevel > 0 ? navItemHoverColor : 'navItemHoverColor'
+        },
+        ':active': {
+          backgroundColor: navItemSelectedColor
         }
       }
     },
