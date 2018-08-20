@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { assign, buttonProperties, getNativeProps, KeyCodes, mergeAriaAttributeValues } from '../../../Utilities';
 import { ContextualMenuItem } from '../ContextualMenuItem';
-import { IContextualMenuItem } from '../ContextualMenuItem.types';
-import { getSplitButtonVerticalDividerClassNames, IMenuItemClassNames } from '../ContextualMenu.classNames';
+import { IContextualMenuItem, IMenuItemClassNames } from '../ContextualMenuItem.types';
+import { getSplitButtonVerticalDividerClassNames } from '../ContextualMenu.classNames';
 import { KeytipData } from '../../../KeytipData';
 import { isItemDisabled, hasSubmenu } from '../../../utilities/contextualMenu/index';
 import { VerticalDivider } from '../../../Divider';

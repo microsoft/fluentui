@@ -1,6 +1,6 @@
 import { ITheme, IStyle } from '../../Styling';
 import { IRefObject, IRenderFunction } from '../../Utilities';
-import { IButtonStyles } from 'office-ui-fabric-react/lib/components/Button';
+import { IButtonStyles } from '../../Button';
 import { IVerticalDividerClassNames } from 'office-ui-fabric-react/lib/Divider';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { ContextualMenuItemType, IContextualMenuProps, IContextualMenuSection } from './ContextualMenu.types';
@@ -118,9 +118,7 @@ export interface IContextualMenuItem {
   subMenuProps?: IContextualMenuProps;
 
   /**
-   * Method to provide the classnames to style the individual items inside a menu. Default value is the getItemClassnames func
-   * defined in ContextualMenu.classnames.
-   * @default getItemClassNames
+   * Method to provide the classnames to style the individual items inside a menu.
    * @deprecated Use `styles` prop of `IContextualMenuItemProps` to leverage mergeStyle API.
    */
   getItemClassNames?: (

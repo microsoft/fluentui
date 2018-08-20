@@ -195,9 +195,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
   title?: string;
 
   /**
-   * Method to provide the classnames to style the contextual menu. Default value is the getMenuClassnames func
-   * defined in ContextualMenu.classnames.
-   * @default getContextualMenuClassNames
+   * Method to provide the classnames to style the contextual menu.
    * @deprecated Use `styles` prop of `IContextualMenuProps` to leverage mergeStyle API.
    */
   getMenuClassNames?: (theme: ITheme, className?: string) => IContextualMenuClassNames;
