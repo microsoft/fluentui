@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { mount } from 'enzyme';
 import { Promise } from 'es6-promise';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { KeyCodes, createRef } from '../../Utilities';
@@ -9,14 +8,34 @@ import { IContextualMenuProps } from './ContextualMenu.types';
 import { ContextualMenu } from './ContextualMenu';
 import { canAnyMenuItemsCheck } from './ContextualMenu.base';
 import { ContextualMenuItemType } from './ContextualMenu.types';
-import { IContextualMenuRenderItem, IContextualMenuItem } from './ContextualMenuItem.types';
+import { IContextualMenuRenderItem, IContextualMenuItem, IMenuItemClassNames } from './ContextualMenuItem.types';
 import { ITheme } from '@uifabric/styling';
+
+let customClassNames: () => IMenuItemClassNames;
 
 describe('ContextualMenu', () => {
   beforeAll(() => {
     jest.spyOn(WarnUtil, 'warnDeprecations').mockImplementation(() => {
       /** no impl **/
     });
+
+    customClassNames = (): IMenuItemClassNames => {
+      return {
+        item: 'itemFoo',
+        divider: 'dividerFoo',
+        root: 'rootFoo',
+        linkContent: 'linkFoo',
+        icon: 'iconFoo',
+        checkmarkIcon: 'checkmarkIconFoo',
+        subMenuIcon: 'subMenuIconFoo',
+        label: 'labelFoo',
+        secondaryText: 'secondaryTextFoo',
+        splitContainer: 'splitContainerFoo',
+        splitPrimary: 'splitPrimaryFoo',
+        splitMenu: 'splitMenuFoo',
+        linkContentMenu: 'linkContentMenuFoo'
+      };
+    };
   });
 
   afterEach(() => {
@@ -46,7 +65,7 @@ describe('ContextualMenu', () => {
   it('includes the classNames on ContextualMenuItem(s)', () => {
     const items: IContextualMenuItem[] = [{ name: 'Test 1', key: 'Test1' }];
 
-    const getMenuClassNames = (_theme: ITheme, _className?: string) => {
+    const getClassNames = (_theme: ITheme, _className?: string) => {
       return {
         container: 'containerFoo',
         root: 'rootFoo',
@@ -56,19 +75,167 @@ describe('ContextualMenu', () => {
       };
     };
 
-    const wrapper = mount(<ContextualMenu items={items} getMenuClassNames={getMenuClassNames} />);
+    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(
+      <ContextualMenu items={items} getMenuClassNames={getClassNames} />
+    );
 
-    const container = wrapper.find('.ms-ContextualMenu-container').at(0);
-    const rootEl = wrapper.find('.ms-ContextualMenu').at(0);
-    const list = wrapper.find('.ms-ContextualMenu-list').at(0);
-    const header = wrapper.filter('.ms-ContextualMenu-header').at(0);
-    const title = wrapper.find('.ms-ContextualMenu-title').at(0);
+    const container = document.querySelector('.containerFoo') as HTMLElement;
+    const rootEl = document.querySelector('.rootFoo') as HTMLElement;
+    const list = document.querySelector('.listFoo') as HTMLElement;
+    const header = document.querySelector('.headerFoo') as HTMLElement;
+    const title = document.querySelector('.titleFoo') as HTMLElement;
 
-    expect(container.props().className).toContain('.containerFoo');
-    expect(rootEl.props().className).toContain('.rootFoo');
-    expect(list.props().className).toContain('.listFoo');
-    expect(header.props().className).toContain('.headerFoo');
-    expect(title.props().className).toContain('.titleFoo');
+    expect(container).toBeDefined();
+    expect(rootEl).toBeDefined();
+    expect(list).toBeDefined();
+    expect(header).toBeDefined();
+    expect(title).toBeDefined();
+  });
+
+  it('applies in-line style property if present on ContextualMenuItem', () => {
+    const items: IContextualMenuItem[] = [{ name: 'Test 1', key: 'Test1', style: { background: 'red' } }];
+
+    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
+
+    const menuItem = document.querySelector('.ms-ContextualMenu-link') as HTMLButtonElement;
+
+    expect(menuItem.style.background).toEqual('red');
+  });
+
+  it('applies getItemClassNames for split menu items', () => {
+    const items: IContextualMenuItem[] = [
+      {
+        key: 'newItem',
+        text: 'New',
+        split: true,
+        onClick: () => console.log('New clicked'),
+        getItemClassNames: customClassNames,
+        subMenuProps: {
+          items: [
+            {
+              key: 'share',
+              text: 'Share'
+            }
+          ]
+        }
+      }
+    ];
+
+    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
+
+    const splitContainerEl = document.querySelector('.splitContainerFoo') as HTMLElement;
+    const splitPrimaryEl = document.querySelector('.splitPrimaryFoo') as HTMLElement;
+    const splitMenuEl = document.querySelector('.splitMenuFoo') as HTMLElement;
+    const subMenuIconEl = document.querySelector('.subMenuIconFoo') as HTMLElement;
+    const linkContentMenuEl = document.querySelector('.linkContentMenuFoo') as HTMLElement;
+
+    expect(splitContainerEl.classList.contains('splitContainerFoo')).toBeTruthy();
+    expect(splitPrimaryEl.classList.contains('splitPrimaryFoo')).toBeTruthy();
+    expect(splitMenuEl.classList.contains('splitMenuFoo')).toBeTruthy();
+    expect(subMenuIconEl.classList.contains('subMenuIconFoo')).toBeTruthy();
+    expect(linkContentMenuEl.classList.contains('linkContentMenuFoo')).toBeTruthy();
+  });
+
+  it('applies getItemClassNames for checkable menu items', () => {
+    const items = [
+      {
+        key: 'edit',
+        text: 'Edit',
+        canCheck: true,
+        isChecked: false,
+        onClick: () => console.log('Edit clicked'),
+        getItemClassNames: customClassNames
+      }
+    ];
+
+    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
+
+    const checkmarkIconEl = document.querySelector('.checkmarkIconFoo') as HTMLElement;
+
+    expect(checkmarkIconEl.classList.contains('checkmarkIconFoo')).toBeTruthy();
+  });
+
+  it('applies getItemClassNames for menu items with icons', () => {
+    const items = [
+      {
+        key: 'Later Today',
+        iconProps: {
+          iconName: 'Clock'
+        },
+        text: 'Later Today',
+        secondaryText: '7:00 PM',
+        getItemClassNames: customClassNames
+      }
+    ];
+
+    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
+
+    const iconEl = document.querySelector('.iconFoo') as HTMLElement;
+
+    expect(iconEl.classList.contains('iconFoo')).toBeTruthy();
+  });
+
+  it('applies getItemClassNames for divider menu items', () => {
+    const items = [
+      {
+        key: 'Later Today',
+        text: 'Later Today'
+      },
+      {
+        key: 'divider_1',
+        itemType: ContextualMenuItemType.Divider,
+        getItemClassNames: customClassNames
+      }
+    ];
+
+    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
+
+    const dividerEl = document.querySelector('.dividerFoo') as HTMLElement;
+
+    expect(dividerEl.classList.contains('dividerFoo')).toBeTruthy();
+  });
+
+  it('applies getItemClassNames for menu items with secondary text', () => {
+    const items = [
+      {
+        key: 'Later Today',
+        iconProps: {
+          iconName: 'Clock'
+        },
+        text: 'Later Today',
+        secondaryText: '7:00 PM',
+        getItemClassNames: customClassNames
+      }
+    ];
+
+    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
+
+    const secondaryTextEl = document.querySelector('.secondaryTextFoo') as HTMLElement;
+
+    expect(secondaryTextEl.classList.contains('secondaryTextFoo')).toBeTruthy();
+  });
+
+  it('applies getItemClassNames property if present on ContextualMenuItem', () => {
+    const items: IContextualMenuItem[] = [
+      {
+        key: 'newItem',
+        text: 'New',
+        onClick: () => console.log('New clicked'),
+        getItemClassNames: customClassNames
+      }
+    ];
+
+    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
+
+    const itemEl = document.querySelector('.itemFoo') as HTMLElement;
+    const rootEl = document.querySelector('.rootFoo') as HTMLElement;
+    const linkContentEl = document.querySelector('.linkFoo') as HTMLElement;
+    const labelEl = document.querySelector('.labelFoo') as HTMLElement;
+
+    expect(itemEl.classList.contains('itemFoo')).toBeTruthy();
+    expect(rootEl.classList.contains('rootFoo')).toBeTruthy();
+    expect(linkContentEl.classList.contains('linkFoo')).toBeTruthy();
+    expect(labelEl.classList.contains('labelFoo')).toBeTruthy();
   });
 
   it('closes on left arrow if it is a submenu', () => {

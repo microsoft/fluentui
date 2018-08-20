@@ -395,7 +395,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     const dividerClassName = item.itemType === ContextualMenuItemType.Divider ? item.className : undefined;
     const subMenuIconClassName = item.submenuIconProps ? item.submenuIconProps.className : '';
 
-    let itemClassNames;
+    let itemClassNames: IMenuItemClassNames;
 
     // IContextualMenuItem#getItemClassNames for backwards compatibility
     // otherwise uses mergeStyles for class names.
