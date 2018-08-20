@@ -92,15 +92,11 @@ export function getNeutralVariant(theme: IPartialTheme): ITheme {
   const partialSemantic: Partial<ISemanticColors> = {
     bodyBackground: p.neutralLighter,
     bodyStandoutBackground: p.neutralLight,
-    bodyFrameBackground: !fullTheme.isInverted
-      ? p.neutralLight
-      : p.neutralLighter,
-    bodyFrameDivider: !fullTheme.isInverted
-      ? p.neutralLight
-      : p.neutralQuaternary,
-    variantBorder: !fullTheme.isInverted
-      ? p.neutralQuaternaryAlt
-      : p.neutralLighterAlt,
+    bodyFrameBackground: !fullTheme.isInverted ? p.neutralLight : p.neutralLighter,
+    bodyFrameDivider: !fullTheme.isInverted ? p.neutralLight : p.neutralQuaternary,
+    variantBorder: !fullTheme.isInverted ? p.neutralQuaternaryAlt : p.neutralLighterAlt,
+    variantBorderHovered: p.neutralTertiary,
+    defaultStateBackground: p.neutralQuaternaryAlt,
 
     buttonBackground: p.neutralLighter,
     buttonBackgroundHovered: p.neutralLight,
@@ -185,6 +181,8 @@ export function getSoftVariant(theme: IPartialTheme): ITheme {
     inputForegroundChecked: p.themeLighter,
     // inputFocusBorderAlt: p.themePrimary,
     variantBorder: !fullTheme.isInverted ? p.neutralLight : p.neutralLighterAlt,
+    variantBorderHovered: p.neutralTertiary,
+    defaultStateBackground: !fullTheme.isInverted ? p.themeLight : p.themeTertiary,
 
     buttonBackground: !fullTheme.isInverted ? p.themeLighterAlt : p.themeLight,
     buttonBackgroundHovered: !fullTheme.isInverted ? p.themeLighter : p.themeTertiary,
@@ -277,6 +275,8 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
     inputForegroundChecked: p.themeDark,
     // inputFocusBorderAlt: p.themePrimary,
     variantBorder: p.themeDark,
+    variantBorderHovered: p.themeDarker,
+    defaultStateBackground: p.themeDark,
 
     buttonBackground: p.white,
     buttonBackgroundHovered: !fullTheme.isInverted
