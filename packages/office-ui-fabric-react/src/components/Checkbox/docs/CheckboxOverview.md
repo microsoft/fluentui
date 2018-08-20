@@ -1,9 +1,12 @@
-A Checkbox is a UI element that allows users to switch between two mutually exclusive options (checked or unchecked, on or off) through a single click or tap. It can also be used to indicate a subordinate setting or preference when paired with another control.
+A Checkbox is a UI element that allows users to switch between two mutually exclusive options (checked or unchecked) through a single click or tap, but require further action, such as a save or commit, to have effect on the system.
 
-A Checkbox is used to select or deselect action items. It can be used for a single item or for a list of multiple items that a user can choose from. The control has two selection states: unselected and selected.
+Nest a Checkbox under a control when that parent control will determine the applicability or availability of the child Checkbox.
 
-Use a single Checkbox for a subordinate setting, such as with a "Remember me?" login scenario or with a terms of service agreement.
+Use multiple Checkboxes within the same group when a user may choose one or more items from a group of choices that do not affect the other choices.
 
-For a binary choice, the main difference between a Checkbox and a toggle switch is that the Checkbox is for status and the toggle switch is for action. You can delay committing a Checkbox interaction (as part of a form submit, for example), while you should immediately commit a toggle switch interaction. Also, only Checkboxes allow for multi-selection.
+## Choosing between Toggle and Checkbox
 
-Use multiple Checkboxes for multi-select scenarios in which a user chooses one or more items from a group of choices that are not mutually exclusive.
+For some actions, either a Toggle or a Checkbox might work. To decide which control would work better, follow these tips:
+
+- Use a Toggle for binary settings when changes become effective immediately after the user changes them.
+- Use a Checkbox when the user has to perform extra steps for changes to be effective. For example, if the user must click a "Submit", "Next", "Ok" button to apply changes, use a Checkbox.
