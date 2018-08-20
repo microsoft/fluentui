@@ -15,7 +15,7 @@ export const getStyles = (props: ICardHeaderProps): ICardHeaderStyles => {
     headerText: {
       fontSize: fontSize === FontSize.medium ? '16px' : '28px',
       lineHeight: fontSize === FontSize.medium ? '21px' : '36px',
-      fontFamily: 'Segoe UI Semibold',
+      fontFamily: 'SegoeUI-SemiBold-final',
       whiteSpace: 'noWrap',
       textOverflow: 'ellipsis',
       overflow: 'hidden',

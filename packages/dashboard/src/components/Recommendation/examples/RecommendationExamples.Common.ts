@@ -1,8 +1,8 @@
-import { IStyle } from '@uifabric/experiments/lib/Styling';
+import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 
 export const baseFontFamily = 'Segoe UI';
-export const wrappingContainerWidth = 876;
-export const wrappingContainerHeight = 296;
+export const wrappingContainerWidth = 771;
+export const wrappingContainerHeight = 272;
 export const regularFontWeight = 'bold';
 export const regularFontSize = 12;
 export const largeFontSize = 14;

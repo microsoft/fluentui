@@ -585,7 +585,7 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
       id="TextFieldDescription7"
     >
       <div
-        aria-live="assertive"
+        role="alert"
       />
     </span>
   </div>

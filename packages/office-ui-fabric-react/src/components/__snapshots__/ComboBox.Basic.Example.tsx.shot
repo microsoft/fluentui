@@ -190,7 +190,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
         aria-hidden={true}
         aria-label={undefined}
         aria-labelledby={undefined}
-        aria-pressed={false}
+        aria-pressed={undefined}
         checked={false}
         className=
             ms-Button
@@ -632,7 +632,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
         aria-hidden={true}
         aria-label={undefined}
         aria-labelledby={undefined}
-        aria-pressed={false}
+        aria-pressed={undefined}
         checked={false}
         className=
             ms-Button
@@ -949,7 +949,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
         aria-hidden={true}
         aria-label={undefined}
         aria-labelledby={undefined}
-        aria-pressed={false}
+        aria-pressed={undefined}
         checked={false}
         className=
             ms-Button
@@ -1266,7 +1266,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
         aria-hidden={true}
         aria-label={undefined}
         aria-labelledby={undefined}
-        aria-pressed={false}
+        aria-pressed={undefined}
         checked={false}
         className=
             ms-Button
@@ -1583,7 +1583,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
         aria-hidden={true}
         aria-label={undefined}
         aria-labelledby={undefined}
-        aria-pressed={false}
+        aria-pressed={undefined}
         checked={false}
         className=
             ms-Button
@@ -1900,7 +1900,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
         aria-hidden={true}
         aria-label={undefined}
         aria-labelledby={undefined}
-        aria-pressed={false}
+        aria-pressed={undefined}
         checked={false}
         className=
             ms-Button
@@ -2217,7 +2217,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
         aria-hidden={true}
         aria-label={undefined}
         aria-labelledby={undefined}
-        aria-pressed={false}
+        aria-pressed={undefined}
         checked={false}
         className=
             ms-Button
@@ -2504,7 +2504,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
         aria-hidden={true}
         aria-label={undefined}
         aria-labelledby={undefined}
-        aria-pressed={false}
+        aria-pressed={undefined}
         checked={false}
         className=
             ms-Button
@@ -2802,7 +2802,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
         aria-hidden={true}
         aria-label={undefined}
         aria-labelledby={undefined}
-        aria-pressed={false}
+        aria-pressed={undefined}
         checked={false}
         className=
             ms-Button
@@ -3117,7 +3117,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
         aria-hidden={true}
         aria-label={undefined}
         aria-labelledby={undefined}
-        aria-pressed={false}
+        aria-pressed={undefined}
         checked={false}
         className=
             ms-Button
@@ -3434,7 +3434,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
         aria-hidden={true}
         aria-label={undefined}
         aria-labelledby={undefined}
-        aria-pressed={false}
+        aria-pressed={undefined}
         checked={false}
         className=
             ms-Button

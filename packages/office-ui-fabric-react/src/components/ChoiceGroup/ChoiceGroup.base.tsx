@@ -1,13 +1,8 @@
 import * as React from 'react';
 import { Label } from '../../Label';
-import {
-  IChoiceGroupOptionProps,
-  ChoiceGroupOption,
-  OnFocusCallback,
-  OnChangeCallback
-} from './ChoiceGroupOption/index';
+import { ChoiceGroupOption, OnFocusCallback, OnChangeCallback } from './ChoiceGroupOption/index';
 import { IChoiceGroupOption, IChoiceGroupProps, IChoiceGroupStyleProps, IChoiceGroupStyles } from './ChoiceGroup.types';
-import { BaseComponent, classNamesFunction, createRef, getId } from '../../Utilities';
+import { BaseComponent, classNamesFunction, createRef, getId, find } from '../../Utilities';
 
 const getClassNames = classNamesFunction<IChoiceGroupStyleProps, IChoiceGroupStyles>();
 
@@ -69,6 +64,12 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
 
     const ariaLabelledBy = label ? this._id + '-label' : (this.props as any)['aria-labelledby'];
 
+    // In cases where no option is checked, set focusable to first enabled option so that ChoiceGroup remains focusable.
+    // If no options are enabled, ChoiceGroup is not focusable. If any option is checked, do not set keyDefaultFocusable.
+    const firstEnabledOption =
+      disabled || options === undefined ? undefined : find(options, option => !option.disabled);
+    const keyDefaultFocusable = keyChecked === undefined && firstEnabledOption ? firstEnabledOption.key : undefined;
+
     return (
       // Need to assign role application on containing div because JAWS doesn't call OnKeyDown without this role
       <div role="application" className={classNames.applicationRole}>
@@ -80,10 +81,11 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
           )}
           <div className={classNames.flexContainer}>
             {options!.map((option: IChoiceGroupOption) => {
-              const innerOptionProps: IChoiceGroupOptionProps = {
+              const innerOptionProps = {
                 ...option,
                 focused: option.key === keyFocused,
                 checked: option.key === keyChecked,
+                'data-is-focusable': option.key === keyChecked || option.key === keyDefaultFocusable ? true : false,
                 disabled: option.disabled || disabled,
                 id: `${this._id}-${option.key}`,
                 labelId: `${this._labelId}-${option.key}`,
@@ -134,7 +136,7 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
     this.changedVars[key]
       ? this.changedVars[key]
       : (this.changedVars[key] = (evt, option: IChoiceGroupOption) => {
-          const { onChanged, onChange, selectedKey, options } = this.props;
+          const { onChanged, onChange, selectedKey, options = [] } = this.props;
 
           // Only manage state in uncontrolled scenarios.
           if (selectedKey === undefined) {
@@ -143,7 +145,7 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
             });
           }
 
-          const originalOption = options!.find((value: IChoiceGroupOption) => value.key === key);
+          const originalOption = find(options, (value: IChoiceGroupOption) => value.key === key);
 
           // TODO: onChanged deprecated, remove else if after 07/17/2017 when onChanged has been removed.
           if (onChange) {
@@ -158,7 +160,9 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
       return props.selectedKey;
     }
 
-    const optionsChecked = props.options!.filter((option: IChoiceGroupOption) => {
+    const { options = [] } = props;
+
+    const optionsChecked = options.filter((option: IChoiceGroupOption) => {
       return option.checked;
     });
 

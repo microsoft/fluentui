@@ -10,11 +10,11 @@
   "scripts": {
     "_rushInstall": "node node_modules/@microsoft/rush/bin/rush install -c",
     "_rushBuild": "node node_modules/@microsoft/rush/bin/rush build",
-    "_rushBuildToFabric": "node node_modules/@microsoft/rush/bin/rush build --to @uifabric/fabric-website-resources --verbose",
+    "_rushBuildToFabric": "node node_modules/@microsoft/rush/bin/rush build --to @uifabric/fabric-website-resources",
     "_rushRebuild": "node node_modules/@microsoft/rush/bin/rush rebuild --production --verbose --lint",
     "_rushRebuildCi": "node node_modules/@microsoft/rush/bin/rush rebuild --verbose --lint",
     "_rushRebuildFast": "node node_modules/@microsoft/rush/bin/rush rebuild",
-    "postinstall": "npm run _rushInstall && npm run _rushBuildToFabric",
+    "postinstall": "npm run _rushInstall && npm run _rushBuildToFabric -- --npm-install-mode",
     "test": "npm run _rushBuild",
     "vrtest": "cd apps && cd vr-tests && npm run screener",
     "start": "cd apps && cd fabric-website-resources && npm start",
@@ -31,7 +31,8 @@
     "update-snapshots": "cd packages/office-ui-fabric-react && npm run update-snapshots",
     "precommit": "lint-staged",
     "check-for-changed-files": "node ./scripts/check-for-modified-files.js",
-    "prettier": "node scripts/prettier.js"
+    "prettier": "node scripts/prettier.js",
+    "codepen": "cd packages/office-ui-fabric-react && node ../../scripts/local-codepen.js"
   },
   "license": "MIT",
   "devDependencies": {
@@ -40,7 +41,7 @@
     "lint-staged": "^7.0.5"
   },
   "lint-staged": {
-    "*.{ts,tsx}": [
+    "!(apps/vr-test)/**/*.{ts,tsx}|*.{ts,tsx}": [
       "node ./scripts/lint-staged/prettier",
       "node ./scripts/lint-staged/tslint",
       "git add"

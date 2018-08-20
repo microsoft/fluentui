@@ -2,6 +2,56 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "6.16.0",
+      "tag": "@uifabric/styling_v6.16.0",
+      "date": "Mon, 13 Aug 2018 03:43:25 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "30ce67f0d1eda4736015ba73968a21388ac58324",
+            "comment": "new button semantic slots"
+          },
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "30ce67f0d1eda4736015ba73968a21388ac58324",
+            "comment": "adds opacity function to variants"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.13.0 <7.0.0` to `>=6.14.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.15.0",
+      "tag": "@uifabric/styling_v6.15.0",
+      "date": "Fri, 10 Aug 2018 10:26:09 GMT",
+      "comments": {
+        "none": [
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "44f04f02e959d405eb73c5f723a34342bdea7f13",
+            "comment": "Theme: add unit tests to ensure that createTheme does not modify DefaultTypography"
+          }
+        ],
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "904f08478a0113198d8004ba757b9a82a6b6da8a",
+            "comment": "Updating `ITypography` interface with improvements. Note this is an experimental interface we're working on."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.12.1 <7.0.0` to `>=6.13.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.14.0",
       "tag": "@uifabric/styling_v6.14.0",
       "date": "Fri, 03 Aug 2018 10:25:59 GMT",

@@ -5,9 +5,17 @@ about: Found a bug in Fabric? Please let us know.
 ---
 <!-- Use this template for bug/error reporting only -->
 
+### Please provide a reproduction of the bug in a codepen:
+ 
+<!-- See https://codepen.io/FabricReact/ for a starting template -->
+<!-- See http://codepen.io/dzearing/pens/public/?grid_type=list for a variety of examples -->
+
 ### Bug Report 
  
-- __Package version(s)__: (fill this out)
+ <!-- 
+  ** If using the website, note that the website is often behind. You can find the current version the website uses at the home page (i.e. at the landing page of uifabric.io).
+ -->
+- __Package version(s)__: (fill this out) 
 - __Browser and OS versions__: (fill this out if relevant)
  
 #### Priorities and help requested:
@@ -30,7 +38,3 @@ Products/sites affected: (if applicable)
  
 <!-- fill this out -->
  
-### If applicable, please provide a codepen repro:
- 
-<!-- See https://codepen.io/FabricReact/ for a starting template -->
-<!-- See http://codepen.io/dzearing/pens/public/?grid_type=list for a variety of examples -->

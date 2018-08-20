@@ -6,7 +6,8 @@
     "clean": "",
     "build": "node -v",
     "code-style": "node -v",
-    "bundlesize": "bundlesize --debug"
+    "bundlesize": "bundlesize --debug",
+    "test": "jest"
   },
   "devDependencies": {
     "@microsoft/api-extractor": "^4.2.6",
@@ -14,6 +15,7 @@
     "@microsoft/loader-load-themed-styles": "^1.6.0",
     "@uifabric/merge-styles": ">=6.7.0 <7.0.0",
     "autoprefixer": "^7.1.5",
+    "babylon": "^7.0.0-beta.47",
     "bundlesize": "^0.15.2",
     "chalk": "^2.1.0",
     "command-line-args": "^4.0.7",
@@ -24,9 +26,11 @@
     "glob": "^7.1.2",
     "gzip-size": "^3.0.0",
     "jest": "^23.1.0",
+    "jscodeshift": "^0.5.0",
     "json-loader": "^0.5.7",
     "mustache": "^2.3.0",
     "node-sass": "^4.5.3",
+    "ngrok": "^3.0.1",
     "open": "^0.0.5",
     "postcss": "^6.0.9",
     "postcss-loader": "^2.0.9",

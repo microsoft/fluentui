@@ -4,7 +4,7 @@ import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 export interface IStackedBarChart {}
 import { IDataPoint } from '../../types/IDataPoint';
 
-export { IDataPoint } from '../../types/IDataPoint';
+export { IDataPoint, ILegendDataItem } from '../../types';
 
 export interface IStackedBarChartProps {
   /**
@@ -18,14 +18,24 @@ export interface IStackedBarChartProps {
   width?: number;
 
   /**
-   * Height of the chart.
-   */
-  height?: number;
-
-  /**
    * Height of each bar in the chart.
    */
   barHeight?: number;
+
+  /**
+   * Do not show the legend at the bottom of chart
+   * when there are more than two datapoints
+   *
+   * @default false
+   */
+  hideLegend?: boolean;
+
+  /**
+   * Do not show number/ratio on top of bar
+   *
+   * @default false
+   */
+  hideNumberDisplay?: boolean;
 
   /**
    * Colors from which to select the color of each bar.
@@ -70,11 +80,6 @@ export interface IStackedBarChartStyleProps {
   width: number;
 
   /**
-   * Height of the chart.
-   */
-  height: number;
-
-  /**
    * Height of bar in the chart.
    */
   barHeight?: number;
@@ -97,27 +102,7 @@ export interface IStackedBarChartStyles {
   chartTitle: IStyle;
 
   /**
-   * Style for the element containing all the bars in the chart.
+   * Style for the legend container div
    */
-  bars: IStyle;
-  /**
-   * Style for the element containing all the Legends in the chart.
-   */
-  legend: IStyle;
-  /**
-   * Style for the element subTitle.
-   */
-  subTitle: IStyle;
-  /**
-   * Style for the element value.
-   */
-  value: IStyle;
-  /**
-   * Style for the legend  bars.
-   */
-  legendBar: IStyle;
-  /**
-   * Style for the legend text.
-   */
-  legendText: IStyle;
+  legendContainer: IStyle;
 }

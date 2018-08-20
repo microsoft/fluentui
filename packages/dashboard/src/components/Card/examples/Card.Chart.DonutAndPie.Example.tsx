@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IDataPoint } from '@uifabric/charting';
+import { IDataPoint, ILegendDataItem } from '@uifabric/charting';
 import { Card, CardContentType, CardSize, ChartType, ICardProps, Priority } from '@uifabric/dashboard';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
@@ -26,27 +26,31 @@ export class DonutAndPieChartExample extends React.Component<{}, {}> {
     };
 
     const points: IDataPoint[] = [{ y: 50, x: 'A' }, { y: 25, x: 'B' }, { y: 25, x: 'C' }];
-    const colors: string[] = [DefaultPalette.green, DefaultPalette.blue, DefaultPalette.red];
+    const colors: ILegendDataItem[] = [
+      { legendText: 'A', legendColor: DefaultPalette.green },
+      { legendText: 'B', legendColor: DefaultPalette.blue },
+      { legendText: 'C', legendColor: DefaultPalette.red }
+    ];
 
     const contentAreaList = [
       {
         priority: Priority.Priority1,
         cardContentType: CardContentType.Chart,
         content: {
-          chartLabel: 'Donut Chart',
+          chartLabels: ['Donut Chart'],
           chartType: ChartType.DonutChart,
-          data: points,
-          colors: colors
+          dataPoints: points,
+          legendColors: colors
         }
       },
       {
         priority: Priority.Priority2,
         cardContentType: CardContentType.Chart,
         content: {
-          chartLabel: 'Pie Chart',
+          chartLabels: ['Pie Chart'],
           chartType: ChartType.PieChart,
-          data: points,
-          colors: colors
+          dataPoints: points,
+          legendColors: colors
         }
       }
     ];

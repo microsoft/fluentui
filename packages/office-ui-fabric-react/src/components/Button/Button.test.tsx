@@ -113,76 +113,225 @@ describe('Button', () => {
       expect(renderedDOM.tagName).toEqual('A');
     });
 
-    it('applies the correct aria attributes', () => {
-      let button: any;
-      let renderedDOM: any;
+    describe('aria attributes', () => {
+      it('does not apply aria attributes that are not passed in', () => {
+        const button: any = ReactTestUtils.renderIntoDocument<any>(
+          <DefaultButton href="http://www.microsoft.com" target="_blank">
+            Hello
+          </DefaultButton>
+        );
+        const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
 
-      button = ReactTestUtils.renderIntoDocument<any>(
-        <DefaultButton href="http://www.microsoft.com" target="_blank">
-          Hello
-        </DefaultButton>
-      );
-      renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
-      expect(renderedDOM.getAttribute('aria-label') === null);
-      expect(renderedDOM.getAttribute('aria-labelledby') === null);
-      expect(renderedDOM.getAttribute('aria-describedby') === null);
+        expect(renderedDOM.getAttribute('aria-label')).toBeNull();
+        expect(renderedDOM.getAttribute('aria-labelledby')).toBeNull();
+        expect(renderedDOM.getAttribute('aria-describedby')).toBeNull();
+        expect(renderedDOM.getAttribute('aria-pressed')).toBeNull();
+      });
 
-      button = ReactTestUtils.renderIntoDocument<any>(
-        <DefaultButton href="http://www.microsoft.com" target="_blank" aria-label="MyLabel">
-          Hello
-        </DefaultButton>
-      );
-      renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
-      expect(renderedDOM.getAttribute('aria-label') === 'MyLabel');
-      expect(renderedDOM.getAttribute('aria-labelledby') === null);
-      expect(renderedDOM.getAttribute('aria-describedby') === null);
+      it('overrides native aria-label with Button ariaLabel', () => {
+        const button: any = ReactTestUtils.renderIntoDocument<any>(
+          <DefaultButton
+            href="http://www.microsoft.com"
+            target="_blank"
+            aria-label="NativeLabel"
+            ariaLabel="ButtonLabel"
+          >
+            Hello
+          </DefaultButton>
+        );
+        const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
 
-      button = ReactTestUtils.renderIntoDocument<any>(
-        <DefaultButton href="http://www.microsoft.com" target="_blank" aria-labelledby="someid">
-          Hello
-        </DefaultButton>
-      );
-      renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
-      expect(renderedDOM.getAttribute('aria-label') === 'MyLabel');
-      expect(renderedDOM.getAttribute('aria-labelledby') === 'someid');
-      expect(renderedDOM.getAttribute('aria-describedby') === null);
+        expect(renderedDOM.getAttribute('aria-label')).toEqual('ButtonLabel');
+        expect(renderedDOM.getAttribute('aria-labelledby')).toBeNull();
+        expect(renderedDOM.getAttribute('aria-describedby')).toBeNull();
+      });
 
-      button = ReactTestUtils.renderIntoDocument<any>(
-        <DefaultButton
-          href="http://www.microsoft.com"
-          target="_blank"
-          ariaDescription="This description is not visible"
-          styles={{ screenReaderText: 'some-screenreader-class' }}
-        >
-          Hello
-        </DefaultButton>
-      );
-      renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
-      expect(renderedDOM.getAttribute('aria-label') === null);
-      expect(renderedDOM.getAttribute('aria-labelledby') === renderedDOM.querySelector(`.ms-Button-label`).id);
-      expect(renderedDOM.getAttribute('aria-describedby') === renderedDOM.querySelector('.some-screenreader-class').id);
+      it('applies aria-label', () => {
+        const button: any = ReactTestUtils.renderIntoDocument<any>(
+          <DefaultButton href="http://www.microsoft.com" target="_blank" aria-label="MyLabel">
+            Hello
+          </DefaultButton>
+        );
+        const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
 
-      button = ReactTestUtils.renderIntoDocument<any>(
-        <IconButton
-          iconProps={{ iconName: 'Emoji2' }}
-          ariaDescription="Description on icon button"
-          styles={{ screenReaderText: 'some-screenreader-class' }}
-        />
-      );
-      renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
-      expect(renderedDOM.getAttribute('aria-label') === null);
-      expect(renderedDOM.getAttribute('aria-labelledby') === null);
-      expect(renderedDOM.getAttribute('aria-describedby') === renderedDOM.querySelector('.some-screenreader-class').id);
+        expect(renderedDOM.getAttribute('aria-label')).toEqual('MyLabel');
+        expect(renderedDOM.getAttribute('aria-labelledby')).toBeNull();
+        expect(renderedDOM.getAttribute('aria-describedby')).toBeNull();
+      });
 
-      button = ReactTestUtils.renderIntoDocument<any>(
-        <CompoundButton secondaryText="Some awesome description" ariaDescription="Description on icon button">
-          And this is the label
-        </CompoundButton>
-      );
-      renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
-      expect(renderedDOM.getAttribute('aria-label') === null);
-      expect(renderedDOM.getAttribute('aria-labelledby') === renderedDOM.querySelector('.ms-Button-label').id);
-      expect(renderedDOM.getAttribute('aria-describedby') === renderedDOM.querySelector('.ms-Button-description').id);
+      it('applies aria-labelledby', () => {
+        const button: any = ReactTestUtils.renderIntoDocument<any>(
+          <DefaultButton href="http://www.microsoft.com" target="_blank" aria-labelledby="someid">
+            Hello
+          </DefaultButton>
+        );
+        const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
+
+        expect(renderedDOM.getAttribute('aria-labelledby')).toEqual('someid');
+        expect(renderedDOM.getAttribute('aria-describedby')).toBeNull();
+      });
+
+      it('does not apply aria-labelledby to a button with no text', () => {
+        const button: any = ReactTestUtils.renderIntoDocument<any>(
+          <DefaultButton href="http://www.microsoft.com" target="_blank" aria-describedby="someid" />
+        );
+        const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
+
+        expect(renderedDOM.getAttribute('aria-labelledby')).toBeNull();
+        expect(renderedDOM.getAttribute('aria-describedby')).toEqual('someid');
+      });
+
+      it('applies aria-labelledby and aria-describedby', () => {
+        const button: any = ReactTestUtils.renderIntoDocument<any>(
+          <DefaultButton
+            href="http://www.microsoft.com"
+            target="_blank"
+            ariaDescription="This description is not visible"
+            styles={{ screenReaderText: 'some-screenreader-class' }}
+          >
+            Hello
+          </DefaultButton>
+        );
+        const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
+
+        expect(renderedDOM.getAttribute('aria-label')).toBeNull();
+
+        expect(renderedDOM.getAttribute('aria-labelledby')).toEqual(renderedDOM.querySelector(`.ms-Button-label`).id);
+        expect(renderedDOM.getAttribute('aria-labelledby')).toBeDefined();
+
+        expect(renderedDOM.getAttribute('aria-describedby')).toEqual(
+          renderedDOM.querySelector('.some-screenreader-class').id
+        );
+        expect(renderedDOM.getAttribute('aria-describedby')).toBeDefined();
+      });
+
+      it('applies aria-describedby to an IconButton', () => {
+        const button: any = ReactTestUtils.renderIntoDocument<any>(
+          <IconButton
+            iconProps={{ iconName: 'Emoji2' }}
+            ariaDescription="Description on icon button"
+            styles={{ screenReaderText: 'some-screenreader-class' }}
+          />
+        );
+        const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
+
+        expect(renderedDOM.getAttribute('aria-label')).toBeNull();
+
+        expect(renderedDOM.getAttribute('aria-labelledby')).toBeNull();
+        expect(renderedDOM.getAttribute('aria-labelledby')).toBeDefined();
+
+        expect(renderedDOM.getAttribute('aria-describedby')).toEqual(
+          renderedDOM.querySelector('.some-screenreader-class').id
+        );
+        expect(renderedDOM.getAttribute('aria-describedby')).toBeDefined();
+      });
+
+      it('applies aria-labelledby and aria-describedby to a CompoundButton with ariaDescription', () => {
+        const button: any = ReactTestUtils.renderIntoDocument<any>(
+          <CompoundButton
+            secondaryText="Some awesome description"
+            ariaDescription="Description on icon button"
+            styles={{ screenReaderText: 'some-screenreader-class' }}
+          >
+            And this is the label
+          </CompoundButton>
+        );
+        const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
+
+        expect(renderedDOM.getAttribute('aria-label')).toBeNull();
+
+        expect(renderedDOM.getAttribute('aria-labelledby')).toEqual(renderedDOM.querySelector('.ms-Button-label').id);
+        expect(renderedDOM.getAttribute('aria-labelledby')).toBeDefined();
+
+        expect(renderedDOM.getAttribute('aria-describedby')).toEqual(
+          renderedDOM.querySelector('.some-screenreader-class').id
+        );
+        expect(renderedDOM.getAttribute('aria-describedby')).toBeDefined();
+      });
+
+      it('applies aria-labelledby and aria-describedby to a CompoundButton with secondaryText and no ariaDescription', () => {
+        const button: any = ReactTestUtils.renderIntoDocument<any>(
+          <CompoundButton secondaryText="Some awesome description">And this is the label</CompoundButton>
+        );
+        const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
+
+        expect(renderedDOM.getAttribute('aria-label')).toBeNull();
+
+        expect(renderedDOM.getAttribute('aria-labelledby')).toEqual(renderedDOM.querySelector('.ms-Button-label').id);
+        expect(renderedDOM.getAttribute('aria-labelledby')).toBeDefined();
+
+        expect(renderedDOM.getAttribute('aria-describedby')).toEqual(
+          renderedDOM.querySelector('.ms-Button-description').id
+        );
+        expect(renderedDOM.getAttribute('aria-describedby')).toBeDefined();
+      });
+
+      it('does not apply aria-pressed to an unchecked button', () => {
+        const button: any = ReactTestUtils.renderIntoDocument<any>(<DefaultButton toggle={true}>Hello</DefaultButton>);
+        const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
+
+        expect(renderedDOM.getAttribute('aria-pressed')).toEqual('false');
+      });
+
+      it('applies aria-pressed to a checked button', () => {
+        const button: any = ReactTestUtils.renderIntoDocument<any>(
+          <DefaultButton toggle={true} checked={true}>
+            Hello
+          </DefaultButton>
+        );
+        const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
+
+        expect(renderedDOM.getAttribute('aria-pressed')).toEqual('true');
+      });
+
+      it('does not apply aria-pressed to an unchecked split button', () => {
+        const button: any = ReactTestUtils.renderIntoDocument<any>(
+          <DefaultButton
+            toggle={true}
+            split={true}
+            onClick={alertClicked}
+            menuProps={{
+              items: [
+                {
+                  key: 'emailMessage',
+                  text: 'Email message',
+                  iconProps: { iconName: 'Mail' }
+                }
+              ]
+            }}
+          >
+            Hello
+          </DefaultButton>
+        );
+        const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
+
+        expect(renderedDOM.getAttribute('aria-pressed')).toEqual('false');
+      });
+
+      it('applies aria-pressed to a checked split button', () => {
+        const button: any = ReactTestUtils.renderIntoDocument<any>(
+          <DefaultButton
+            toggle={true}
+            checked={true}
+            split={true}
+            onClick={alertClicked}
+            menuProps={{
+              items: [
+                {
+                  key: 'emailMessage',
+                  text: 'Email message',
+                  iconProps: { iconName: 'Mail' }
+                }
+              ]
+            }}
+          >
+            Hello
+          </DefaultButton>
+        );
+        const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
+
+        expect(renderedDOM.getAttribute('aria-pressed')).toEqual('true');
+      });
     });
 
     describe('with menuProps', () => {
@@ -822,8 +971,8 @@ describe('Button', () => {
         const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement(null, 'Button Text');
 
         expect(contextualMenuElement).not.toBeNull();
-        expect(contextualMenuElement.getAttribute('aria-label') === null);
-        expect(contextualMenuElement.getAttribute('aria-labelledBy') !== null);
+        expect(contextualMenuElement.getAttribute('aria-label')).toBeNull();
+        expect(contextualMenuElement.getAttribute('aria-labelledBy')).toBeDefined();
       });
 
       it('If button has a text child, contextual menu has aria-labelledBy attribute set', () => {
@@ -834,16 +983,16 @@ describe('Button', () => {
         );
 
         expect(contextualMenuElement).not.toBeNull();
-        expect(contextualMenuElement.getAttribute('aria-label') === null);
-        expect(contextualMenuElement.getAttribute('aria-labelledBy') !== null);
+        expect(contextualMenuElement.getAttribute('aria-label')).toBeNull();
+        expect(contextualMenuElement.getAttribute('aria-labelledBy')).not.toBeNull();
       });
 
       it('If button has no text, contextual menu has no aria-label or aria-labelledBy attributes', () => {
         const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement();
 
         expect(contextualMenuElement).not.toBeNull();
-        expect(contextualMenuElement.getAttribute('aria-label') === null);
-        expect(contextualMenuElement.getAttribute('aria-labelledBy') === null);
+        expect(contextualMenuElement.getAttribute('aria-label')).toBeNull();
+        expect(contextualMenuElement.getAttribute('aria-labelledBy')).toBeNull();
       });
 
       it('If button has text but ariaLabel provided in menuProps, contextual menu has aria-label set', () => {
@@ -854,8 +1003,8 @@ describe('Button', () => {
         );
 
         expect(contextualMenuElement).not.toBeNull();
-        expect(contextualMenuElement.getAttribute('aria-label') === explicitLabel);
-        expect(contextualMenuElement.getAttribute('aria-labelledBy') === null);
+        expect(contextualMenuElement.getAttribute('aria-label')).toEqual(explicitLabel);
+        expect(contextualMenuElement.getAttribute('aria-labelledBy')).toBeNull();
       });
 
       it('If button has text but labelElementId provided in menuProps, contextual menu has aria-labelledBy reflecting labelElementId', () => {
@@ -866,8 +1015,8 @@ describe('Button', () => {
         );
 
         expect(contextualMenuElement).not.toBeNull();
-        expect(contextualMenuElement.getAttribute('aria-label') === null);
-        expect(contextualMenuElement.getAttribute('aria-labelledBy') === explicitLabelElementId);
+        expect(contextualMenuElement.getAttribute('aria-label')).toBeNull();
+        expect(contextualMenuElement.getAttribute('aria-labelledBy')).toEqual(explicitLabelElementId);
       });
     });
   });

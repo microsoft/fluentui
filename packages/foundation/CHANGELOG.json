@@ -2,6 +2,53 @@
   "name": "@uifabric/foundation",
   "entries": [
     {
+      "version": "0.2.5",
+      "tag": "@uifabric/foundation_v0.2.5",
+      "date": "Tue, 14 Aug 2018 10:27:33 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Avital Baral <avitalbaral99@gmail.com>",
+            "commit": "cf0f728d0b28540b7a42aa9121a840605ee04670",
+            "comment": "disabling codepen task"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=6.0.3 <7.0.0` to `>=6.0.4 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.2.4",
+      "tag": "@uifabric/foundation_v0.2.4",
+      "date": "Fri, 10 Aug 2018 10:26:09 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "e70852b93ca71d709fcf64c1973bb9bf1ff659bf",
+            "comment": "Add support for contextual theming and styling."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.2.3",
+      "tag": "@uifabric/foundation_v0.2.3",
+      "date": "Wed, 08 Aug 2018 10:25:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "e33aed2e672ab52018f934d146517b0dfff9f84d",
+            "comment": "Align createComponent naming with React terminology."
+          }
+        ]
+      }
+    },
+    {
       "version": "0.2.2",
       "tag": "@uifabric/foundation_v0.2.2",
       "date": "Fri, 03 Aug 2018 10:25:59 GMT",

@@ -2,6 +2,58 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.4.2",
+      "tag": "@uifabric/fabric-website_v6.4.2",
+      "date": "Wed, 15 Aug 2018 10:26:31 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Esteban Munoz <esteban.230@hotmail.com>",
+            "commit": "e637e29b6f3614fa2a4a16b2fea8c71534f97ce7",
+            "comment": "Fixed the bug where the searchbox didn't appear and when clicking any detailslist child the nav would disappear"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.49.2 <7.0.0` to `>=6.49.3 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.4.1",
+      "tag": "@uifabric/fabric-website_v6.4.1",
+      "date": "Fri, 10 Aug 2018 10:26:09 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Esteban Munoz <esteban.230@hotmail.com>",
+            "commit": "4f6c97b2cce87cc92f8ac62bbc8ec8597e4eece0",
+            "comment": "Fixed bug where searchbox appeared in pages it wasn't supposed to."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "904f08478a0113198d8004ba757b9a82a6b6da8a",
+            "comment": "Prettier cleanup."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `>=6.7.2 <7.0.0` to `>=6.7.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.7.1 <7.0.0` to `>=6.7.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.22.6 <7.0.0` to `>=6.23.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.47.2 <7.0.0` to `>=6.48.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.4.0",
       "tag": "@uifabric/fabric-website_v6.4.0",
       "date": "Fri, 03 Aug 2018 10:25:59 GMT",

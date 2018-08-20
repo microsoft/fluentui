@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createComponent, IViewComponentProps, IStyleableComponent } from '../../Foundation';
+import { createStatelessComponent, IViewComponentProps, IStyleableComponent } from '../../Foundation';
 import { CollapsibleSection, ICollapsibleSectionProps, ICollapsibleSectionStyles } from '../../CollapsibleSection';
 import { IAccordionProps, IAccordionStyles } from './Accordion.types';
 import { styles } from './Accordion.styles';
@@ -39,7 +39,7 @@ type IAccordionStatics = typeof AccordionStatics;
 
 export const Accordion: React.StatelessComponent<IAccordionProps> & {
   Item: React.StatelessComponent<ICollapsibleSectionProps>;
-} = createComponent<ICollapsibleSectionProps, ICollapsibleSectionStyles, IAccordionStatics>({
+} = createStatelessComponent<ICollapsibleSectionProps, ICollapsibleSectionStyles, IAccordionStatics>({
   displayName: 'Accordion',
   styles,
   view,

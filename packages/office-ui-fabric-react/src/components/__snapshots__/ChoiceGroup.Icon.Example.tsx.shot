@@ -76,7 +76,7 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
               padding-left: 0px;
               position: relative;
             }
-            & .ms-Label {
+            & .ms-ChoiceFieldLabel {
               display: inline-block;
               font-size: 14px;
             }
@@ -103,6 +103,7 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
                   top: 0px;
                   width: 100%;
                 }
+            data-is-focusable={true}
             disabled={undefined}
             id="ChoiceGroup0-day"
             name="ChoiceGroup0"
@@ -141,7 +142,7 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
                 &:hover {
                   border-color: #c8c8c8;
                 }
-                &:hover .ms-Label {
+                &:hover .ms-ChoiceFieldLabel {
                   color: #000000;
                 }
                 &:hover:before {
@@ -151,7 +152,7 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
                 &:focus {
                   border-color: #c8c8c8;
                 }
-                &:focus .ms-Label {
+                &:focus .ms-ChoiceFieldLabel {
                   color: #000000;
                 }
                 &:focus:before {
@@ -258,7 +259,7 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
               }
             >
               <span
-                className="ms-Label"
+                className="ms-ChoiceFieldLabel"
                 id="ChoiceGroupLabel1-day"
               >
                 Day
@@ -289,7 +290,7 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
               padding-left: 0px;
               position: relative;
             }
-            & .ms-Label {
+            & .ms-ChoiceFieldLabel {
               display: inline-block;
               font-size: 14px;
             }
@@ -316,6 +317,7 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
                   top: 0px;
                   width: 100%;
                 }
+            data-is-focusable={false}
             disabled={undefined}
             id="ChoiceGroup0-week"
             name="ChoiceGroup0"
@@ -354,7 +356,7 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
                 &:hover {
                   border-color: #c8c8c8;
                 }
-                &:hover .ms-Label {
+                &:hover .ms-ChoiceFieldLabel {
                   color: #000000;
                 }
                 &:hover:before {
@@ -364,7 +366,7 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
                 &:focus {
                   border-color: #c8c8c8;
                 }
-                &:focus .ms-Label {
+                &:focus .ms-ChoiceFieldLabel {
                   color: #000000;
                 }
                 &:focus:before {
@@ -471,7 +473,7 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
               }
             >
               <span
-                className="ms-Label"
+                className="ms-ChoiceFieldLabel"
                 id="ChoiceGroupLabel1-week"
               >
                 Week
@@ -502,7 +504,7 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
               padding-left: 0px;
               position: relative;
             }
-            & .ms-Label {
+            & .ms-ChoiceFieldLabel {
               display: inline-block;
               font-size: 14px;
             }
@@ -529,6 +531,7 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
                   top: 0px;
                   width: 100%;
                 }
+            data-is-focusable={false}
             disabled={true}
             id="ChoiceGroup0-month"
             name="ChoiceGroup0"
@@ -601,7 +604,7 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
                   transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                   width: 0px;
                 }
-                & .ms-Label {
+                & .ms-ChoiceFieldLabel {
                   color: #c8c8c8;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -678,7 +681,7 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
               }
             >
               <span
-                className="ms-Label"
+                className="ms-ChoiceFieldLabel"
                 id="ChoiceGroupLabel1-month"
               >
                 Month

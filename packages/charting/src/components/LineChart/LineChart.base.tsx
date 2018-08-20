@@ -12,33 +12,19 @@ type numericAxis = D3Axis<number | { valueOf(): number }>;
 type stringAxis = D3Axis<string>;
 
 export class LineChartBase extends React.Component<ILineChartProps, {}> {
-  private _points: IDataPoint[];
+  private _points: IDataPoint[][];
   private _width: number;
   private _height: number;
   private _lineWidth: number;
   private _strokeWidth: number;
   private _yAxisTickCount: number;
-  private _color: string;
+  private _colors: string[];
   private _classNames: IProcessedStyleSet<ILineChartStyles>;
 
-  constructor(props: ILineChartProps) {
-    super(props);
-
-    this._points = this.props.data || [];
-
-    this._width = this.props.width || 600;
-    this._height = this.props.height || 350;
-    this._lineWidth = 15;
-    this._yAxisTickCount = this.props.yAxisTickCount || 5;
-    this._strokeWidth = this.props.strokeWidth || 2;
-
-    const { theme } = this.props;
-    const { palette } = theme!;
-    this._color = this.props.color || palette.blue;
-  }
-
   public render(): JSX.Element {
-    const isNumeric = typeof this._points[0].x === 'number';
+    this._adjustProps();
+
+    const isNumeric = this._points.length > 0 && this._points[0].length > 0 && typeof this._points[0][0].x === 'number';
 
     const xAxis = isNumeric ? this._createNumericXAxis() : this._createStringXAxis();
     const yAxis = this._createYAxis();
@@ -64,6 +50,20 @@ export class LineChartBase extends React.Component<ILineChartProps, {}> {
     );
   }
 
+  private _adjustProps(): void {
+    this._points = this.props.data || [];
+
+    this._width = this.props.width || 600;
+    this._height = this.props.height || 350;
+    this._lineWidth = 15;
+    this._yAxisTickCount = this.props.yAxisTickCount || 5;
+    this._strokeWidth = this.props.strokeWidth || 2;
+
+    const { theme } = this.props;
+    const { palette } = theme!;
+    this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
+  }
+
   private _setXAxis(node: SVGGElement | null, xAxis: numericAxis | stringAxis): void {
     if (node === null) {
       return;
@@ -85,7 +85,9 @@ export class LineChartBase extends React.Component<ILineChartProps, {}> {
   }
 
   private _createNumericXAxis(): numericAxis {
-    const xMax = d3Max(this._points, (point: IDataPoint) => point.x as number)!;
+    const xMax = d3Max(this._points, (point: IDataPoint[]) => {
+      return d3Max(point, (item: IDataPoint) => item.x as number);
+    })!;
     const xAxisScale = d3ScaleLinear()
       .domain([0, xMax])
       .range([0, this._width]);
@@ -95,14 +97,16 @@ export class LineChartBase extends React.Component<ILineChartProps, {}> {
 
   private _createStringXAxis(): stringAxis {
     const xAxisScale = d3ScaleBand()
-      .domain(this._points.map((point: IDataPoint) => point.x as string))
+      .domain(this._points[0].map((point: IDataPoint) => point.x as string))
       .range([0, this._width]);
-    const xAxis = d3AxisBottom(xAxisScale).tickFormat((x: string, index: number) => this._points[index].x as string);
+    const xAxis = d3AxisBottom(xAxisScale).tickFormat((x: string, index: number) => this._points[0][index].x as string);
     return xAxis;
   }
 
   private _createYAxis(): numericAxis {
-    const yMax = d3Max(this._points, (point: IDataPoint) => point.y)!;
+    const yMax = d3Max(this._points, (point: IDataPoint[]) => {
+      return d3Max(point, (item: IDataPoint) => item.y);
+    })!;
     const yAxisScale = d3ScaleLinear()
       .domain([0, yMax])
       .range([this._height, 0]);
@@ -111,8 +115,12 @@ export class LineChartBase extends React.Component<ILineChartProps, {}> {
   }
 
   private _createNumericLines(): JSX.Element[] {
-    const xMax = d3Max(this._points, (point: IDataPoint) => point.x as number)!;
-    const yMax = d3Max(this._points, (point: IDataPoint) => point.y)!;
+    const xMax = d3Max(this._points, (point: IDataPoint[]) => {
+      return d3Max(point, (item: IDataPoint) => item.x as number);
+    })!;
+    const yMax = d3Max(this._points, (point: IDataPoint[]) => {
+      return d3Max(point, (item: IDataPoint) => item.y);
+    })!;
 
     const xLineScale = d3ScaleLinear()
       .domain([0, xMax])
@@ -122,45 +130,55 @@ export class LineChartBase extends React.Component<ILineChartProps, {}> {
       .range([0, this._height]);
 
     const lines = [];
-    for (let i = 1; i < this._points.length; i++) {
-      lines.push(
-        <line
-          x1={xLineScale(this._points[i - 1].x as number)}
-          y1={this._height - yLineScale(this._points[i - 1].y)}
-          x2={xLineScale(this._points[i].x as number)}
-          y2={this._height - yLineScale(this._points[i].y)}
-          strokeWidth={this._strokeWidth}
-          stroke={this._color}
-        />
-      );
+
+    for (let i = 0; i < this._points.length; i++) {
+      for (let j = 1; j < this._points[i].length; j++) {
+        lines.push(
+          <line
+            key={i + '_' + j}
+            x1={xLineScale(this._points[i][j - 1].x as number)}
+            y1={this._height - yLineScale(this._points[i][j - 1].y)}
+            x2={xLineScale(this._points[i][j].x as number)}
+            y2={this._height - yLineScale(this._points[i][j].y)}
+            strokeWidth={this._strokeWidth}
+            stroke={this._colors[i]}
+          />
+        );
+      }
     }
 
     return lines;
   }
 
   private _createStringLines(): JSX.Element[] {
-    const yMax = d3Max(this._points, (point: IDataPoint) => point.y)!;
+    const yMax = d3Max(this._points, (point: IDataPoint[]) => {
+      return d3Max(point, (item: IDataPoint) => item.y);
+    })!;
 
-    const endpointDistance = 0.5 * (this._width / this._points.length);
+    const endpointDistance = 0.5 * (this._width / this._points[0].length);
     const xLineScale = d3ScaleLinear()
-      .domain([0, this._points.length - 1])
+      .domain([0, this._points[0].length - 1])
       .range([endpointDistance - 0.5 * this._lineWidth, this._width - endpointDistance - 0.5 * this._lineWidth]);
     const yLineScale = d3ScaleLinear()
       .domain([0, yMax])
       .range([0, this._height]);
 
     const lines = [];
-    for (let i = 1; i < this._points.length; i++) {
-      lines.push(
-        <line
-          x1={xLineScale(i - 1)}
-          y1={this._height - yLineScale(this._points[i - 1].y)}
-          x2={xLineScale(i)}
-          y2={this._height - yLineScale(this._points[i].y)}
-          strokeWidth={this._strokeWidth}
-          stroke={this._color}
-        />
-      );
+
+    for (let i = 0; i < this._points.length; i++) {
+      for (let j = 1; j < this._points[i].length; j++) {
+        lines.push(
+          <line
+            key={i + '_' + j}
+            x1={xLineScale(j - 1)}
+            y1={this._height - yLineScale(this._points[i][j - 1].y)}
+            x2={xLineScale(j)}
+            y2={this._height - yLineScale(this._points[i][j].y)}
+            strokeWidth={this._strokeWidth}
+            stroke={this._colors[i]}
+          />
+        );
+      }
     }
 
     return lines;

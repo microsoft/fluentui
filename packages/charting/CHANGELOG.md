@@ -1,6 +1,42 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Wed, 01 Aug 2018 10:25:51 GMT and should not be manually modified.
+This log was last generated on Mon, 20 Aug 2018 10:26:10 GMT and should not be manually modified.
+
+## 0.15.0
+Mon, 20 Aug 2018 10:26:10 GMT
+
+### Minor changes
+
+- Charting: allow components to render dynamic data
+- Adding legends as a seperate component with examples. Legends component has a  shows all the legends in a single row. If  it does not have space to show the rest of the legends it puts them in a overflow hover card.
+
+## 0.14.1
+Tue, 14 Aug 2018 10:27:33 GMT
+
+### Patches
+
+- disabling codepen task
+
+## 0.14.0
+Tue, 14 Aug 2018 00:01:11 GMT
+
+### Minor changes
+
+- Updating StackedBar Chart desgin, MultiStackedBarChart and Legend components
+
+## 0.13.1
+Fri, 10 Aug 2018 10:26:08 GMT
+
+### Patches
+
+- Charting: change svg boxSizing to content-box
+
+## 0.13.0
+Wed, 08 Aug 2018 10:25:07 GMT
+
+### Minor changes
+
+- Adding multiple line chart implementation to existing single line chart.
 
 ## 0.12.0
 Wed, 01 Aug 2018 10:25:51 GMT

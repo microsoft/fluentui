@@ -34,7 +34,7 @@ const _columns: IColumn[] = [
     isIconOnly: false
   }
 ];
-const _columnReorderOptions = {
+const _columnReorderProps = {
   frozenColumnCountFromStart: 1,
   handleColumnReorder: this._dummyFunction
 };
@@ -69,13 +69,12 @@ describe('DetailsHeader', () => {
         layoutMode={DetailsListLayoutMode.fixedColumns}
         columns={_columns}
         onColumnResized={onColumnResized}
-        columnReorderOptions={_columnReorderOptions}
+        columnReorderProps={_columnReorderProps}
       />
     );
 
-    const headerBase = wrapper.find('DetailsHeaderBase').instance();
     const sizerElement = wrapper.find('[data-sizer-index=0]').getDOMNode();
-    const header: any = headerRef.current;
+    const header: any = headerRef.current!;
 
     // Trigger a mousedown, which validates that the ref to focuszone is hooking up events.
     EventGroup.raise(
@@ -90,11 +89,11 @@ describe('DetailsHeader', () => {
 
     // Validate we go into resize mode.
     expect(sizerElement.classList.contains('is-resizing')).toBe(true);
-    expect(!!headerBase.state.isSizing).toBe(false);
+    expect(!!header.state.isSizing).toBe(false);
 
     // Mouse move 1 pixel to the right to get into sizing mode.
     wrapper.simulate('mousemove', { clientX: 1 });
-    expect(!!headerBase.state.isSizing).toBe(true);
+    expect(!!header.state.isSizing).toBe(true);
 
     // The header is 200; move mouse 100 to the right, the header should be 300.
     header._onSizerMouseMove({ clientX: 100 });
@@ -106,7 +105,7 @@ describe('DetailsHeader', () => {
 
     // Complete sizing.
     header._onSizerMouseUp();
-    expect(!!headerBase.state.isSizing).toBe(false);
+    expect(!!header.state.isSizing).toBe(false);
   });
 
   it('renders accessible labels', () => {

@@ -1,29 +1,43 @@
 import { IDonutChartStyleProps, IDonutChartStyles } from './DonutChart.types';
 
 export const getStyles = (props: IDonutChartStyleProps): IDonutChartStyles => {
-  const { className, width, height, legendX, legendY } = props;
-
-  const chartWidth = width;
-  const chartHeight = height;
+  const { className, height, width } = props;
 
   return {
     root: [
       'ms-DonutChart',
       {
-        width: chartWidth,
-        height: chartHeight,
-        textAlign: 'center'
+        textAlign: 'center',
+        display: 'flex',
+        flexDirection: 'column',
+        width: width
       },
       className
     ],
     chart: {
-      width: chartHeight,
-      height: chartHeight
+      width: height,
+      height: height,
+      boxSizing: 'content-box',
+      overflow: 'visible'
     },
     legend: [
       {
-        transform: `translate( ${legendX}px,
-          ${legendY}px)`
+        display: 'flex',
+        width: height,
+        justifyContent: 'space-evenly'
+      }
+    ],
+    legendItem: [
+      {
+        display: 'flex',
+        alignItems: 'center'
+      }
+    ],
+    legendBox: [
+      {
+        width: 10,
+        height: 10,
+        marginRight: 5
       }
     ]
   };

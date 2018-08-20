@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/variants",
+      "comment": "adds variantBorderHovered and emptyStateBackground semantic slots to theme and variants logic",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/variants",
+  "email": "v-jescla@microsoft.com"
+}

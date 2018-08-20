@@ -97,10 +97,10 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       iconProps,
       menuIconProps,
       styles,
-      text,
       checked,
       variantClassName,
       theme,
+      toggle,
       getClassNames
     } = this.props;
 
@@ -147,6 +147,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       ]
     );
 
+    // Check for ariaLabel passed in via Button props, and fall back to aria-label passed in via native props
+    const resolvedAriaLabel = ariaLabel || (nativeProps as any)['aria-label'];
+
     // Check for ariaDescription, secondaryText or aria-describedby in the native props to determine source of aria-describedby
     // otherwise default to undefined so property does not appear in output.
     let ariaDescribedBy = undefined;
@@ -164,11 +167,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     // set the labelledby element. Otherwise, the button is labeled implicitly by the descendent
     // text on the button (if it exists). Never set both aria-label and aria-labelledby.
     let ariaLabelledBy = undefined;
-    if (!ariaLabel) {
+    if (!resolvedAriaLabel) {
       if ((nativeProps as any)['aria-labelledby']) {
         ariaLabelledBy = (nativeProps as any)['aria-labelledby'];
       } else if (ariaDescribedBy) {
-        ariaLabelledBy = text ? _labelId : undefined;
+        ariaLabelledBy = this._hasText() ? _labelId : undefined;
       }
     }
 
@@ -187,12 +190,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       onMouseDown: this._onMouseDown,
       onMouseUp: this._onMouseUp,
       onClick: this._onClick,
-      'aria-label': ariaLabel,
+      'aria-label': resolvedAriaLabel,
       'aria-labelledby': ariaLabelledBy,
       'aria-describedby': ariaDescribedBy,
       'aria-disabled': isPrimaryButtonDisabled,
       'data-is-focusable': dataIsFocusable,
-      'aria-pressed': checked
+      'aria-pressed': toggle ? !!checked : undefined // aria-pressed attribute should only be present for toggle buttons
     });
 
     if (ariaHidden) {
@@ -452,10 +455,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   };
 
   private _onToggleMenu = (shouldFocusOnContainer: boolean): void => {
-    if (this._splitButtonContainer.current) {
-      this._splitButtonContainer.current.focus();
-    }
-
     const currentMenuProps = this.state.menuProps;
     let shouldFocusOnMount = true;
     if (this.props.menuProps && this.props.menuProps.shouldFocusOnMount === false) {
@@ -478,7 +477,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       checked,
       getSplitButtonClassNames,
       primaryDisabled,
-      menuProps
+      menuProps,
+      toggle
     } = this.props;
     let { keytipProps } = this.props;
 
@@ -511,7 +511,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
             aria-disabled={disabled}
             aria-haspopup={true}
             aria-expanded={this._isExpanded}
-            aria-pressed={this.props.checked}
+            aria-pressed={toggle ? !!checked : undefined} // aria-pressed attribute should only be present for toggle buttons
             aria-describedby={mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])}
             className={classNames && classNames.splitButtonContainer}
             onKeyDown={this._onSplitButtonContainerKeyDown}
@@ -521,6 +521,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
             onClick={!disabled && !primaryDisabled ? this._onSplitButtonPrimaryClick : undefined}
             tabIndex={!disabled || allowDisabledFocus ? 0 : undefined}
             aria-roledescription={buttonProps['aria-roledescription']}
+            onFocusCapture={this._onSplitContainerFocusCapture}
           >
             <span style={{ display: 'flex' }}>
               {this._onRenderContent(tag, buttonProps)}
@@ -532,6 +533,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       </KeytipData>
     );
   }
+
+  private _onSplitContainerFocusCapture = (ev: React.FocusEvent<HTMLDivElement>) => {
+    // We should never be able to focus the individual buttons in a split button. Focus
+    // should always remain on the container.
+    this._splitButtonContainer.current && this._splitButtonContainer.current.focus();
+  };
 
   private _onSplitButtonPrimaryClick = (ev: React.MouseEvent<HTMLDivElement>) => {
     if (this._isExpanded) {

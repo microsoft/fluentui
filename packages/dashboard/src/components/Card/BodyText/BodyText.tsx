@@ -13,8 +13,8 @@ export class BodyText extends React.Component<IBodyTextProps> {
     const getClassNames = classNamesFunction<IBodyTextProps, IBodyTextStyles>();
     const classNames = getClassNames(getStyles, {});
     return (
-      <div>
-        <div className={classNames.root}>{this.props.subHeaderText}</div>
+      <div className={classNames.root}>
+        <div className={classNames.subHeaderText}>{this.props.subHeaderText}</div>
         <div className={classNames.bodyText}>{this.props.bodyText}</div>
       </div>
     );

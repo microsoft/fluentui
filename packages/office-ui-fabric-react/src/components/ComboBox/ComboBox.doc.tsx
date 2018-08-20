@@ -6,6 +6,7 @@ import { ComboBoxCustomStyledExample } from './examples/ComboBox.CustomStyled.Ex
 import { ComboBoxStatus } from './ComboBox.checklist';
 
 const ComboBoxBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ComboBox/examples/ComboBox.Basic.Example.tsx') as string;
+const ComboBoxBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/ComboBox/ComboBox.Basic.Example.Codepen.txt') as string;
 const ComboBoxCustomStyledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ComboBox/examples/ComboBox.CustomStyled.Example.tsx') as string;
 
 export const ComboBoxPageProps: IDocPageProps = {
@@ -18,7 +19,8 @@ export const ComboBoxPageProps: IDocPageProps = {
     {
       title: 'ComboBox',
       code: ComboBoxBasicExampleCode,
-      view: <ComboBoxBasicExample />
+      view: <ComboBoxBasicExample />,
+      codepenJS: ComboBoxBasicExampleCodepen
     },
     {
       title: 'ComboBoxCustomStyled',
@@ -34,5 +36,6 @@ export const ComboBoxPageProps: IDocPageProps = {
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/ComboBox/docs/ComboBoxDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/ComboBox/docs/ComboBoxDonts.md'),
   isHeaderVisible: true,
+  isFeedbackVisible: true,
   allowNativeProps: true
 };

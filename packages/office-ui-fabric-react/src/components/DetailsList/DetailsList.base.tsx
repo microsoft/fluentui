@@ -20,10 +20,16 @@ import {
   IDetailsListProps,
   IDetailsListStyles,
   IDetailsListStyleProps,
-  IDetailsGroupRenderProps
+  IDetailsGroupRenderProps,
+  ColumnDragEndLocation
 } from '../DetailsList/DetailsList.types';
 import { DetailsHeader } from '../DetailsList/DetailsHeader';
-import { IDetailsHeader, SelectAllVisibility, IDetailsHeaderProps } from '../DetailsList/DetailsHeader.types';
+import {
+  IDetailsHeader,
+  SelectAllVisibility,
+  IDetailsHeaderProps,
+  IColumnReorderHeaderProps
+} from '../DetailsList/DetailsHeader.types';
 import { IDetailsFooterProps } from '../DetailsList/DetailsFooter.types';
 import { DetailsRowBase } from '../DetailsList/DetailsRow.base';
 import { DetailsRow } from '../DetailsList/DetailsRow';
@@ -114,6 +120,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     this._onContentKeyDown = this._onContentKeyDown.bind(this);
     this._onRenderCell = this._onRenderCell.bind(this);
     this._onGroupExpandStateChanged = this._onGroupExpandStateChanged.bind(this);
+    this._onColumnDragEnd = this._onColumnDragEnd.bind(this);
 
     this.state = {
       focusedItemIndex: -1,
@@ -305,11 +312,11 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       onShouldVirtualize,
       enableShimmer,
       viewport,
-      columnReorderOptions,
       minimumPixelsForDrag,
       getGroupHeight,
       styles,
-      theme
+      theme,
+      cellStyleProps = DEFAULT_CELL_STYLE_PROPS
     } = this.props;
     const { adjustedColumns, isCollapsed, isSizing, isSomeGroupExpanded } = this.state;
     const { _selection: selection, _dragDropHelper: dragDropHelper } = this;
@@ -345,6 +352,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     } = this.props;
 
     const detailsFooterProps = this._getDetailsFooterProps();
+    const columnReorderProps = this._getColumnReorderProps();
 
     const rowCount = (isHeaderVisible ? 1 : 0) + GetGroupCount(groups) + (items ? items.length : 0);
 
@@ -372,9 +380,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
           aria-label={ariaLabelForGrid}
           aria-rowcount={rowCount}
           aria-colcount={
-            (selectAllVisibility !== SelectAllVisibility.none && selectAllVisibility !== SelectAllVisibility.hidden
-              ? 1
-              : 0) + (adjustedColumns ? adjustedColumns.length : 0)
+            (selectAllVisibility !== SelectAllVisibility.none ? 1 : 0) + (adjustedColumns ? adjustedColumns.length : 0)
           }
           aria-readonly="true"
         >
@@ -401,9 +407,9 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
                   selectAllVisibility: selectAllVisibility,
                   collapseAllVisibility: groupProps && groupProps.collapseAllVisibility,
                   viewport: viewport,
-                  columnReorderOptions: columnReorderOptions,
+                  columnReorderProps: columnReorderProps,
                   minimumPixelsForDrag: minimumPixelsForDrag,
-                  cellStyleProps: DEFAULT_CELL_STYLE_PROPS
+                  cellStyleProps: cellStyleProps
                 },
                 this._onRenderDetailsHeader
               )}
@@ -435,7 +441,9 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
                     items={items}
                     onRenderCell={this._onRenderCell}
                     selection={selection}
-                    selectionMode={selectionMode}
+                    selectionMode={
+                      checkboxVisibility !== CheckboxVisibility.hidden ? selectionMode : SelectionMode.none
+                    }
                     dragDropEvents={dragDropEvents}
                     dragDropHelper={dragDropHelper as DragDropHelper}
                     eventsToRegister={rowElementEventMap}
@@ -570,6 +578,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
   private _onHeaderKeyDown(ev: React.KeyboardEvent<HTMLElement>): void {
     if (ev.which === KeyCodes.down) {
       if (this._focusZone.current && this._focusZone.current.focus()) {
+        // select the first item in list after down arrow key event
+        this._selection.setIndexSelected(0, true, false);
         ev.preventDefault();
         ev.stopPropagation();
       }
@@ -646,6 +656,27 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     });
     if (this._groupedList.current) {
       this._groupedList.current.toggleCollapseAll(collapsed);
+    }
+  }
+
+  private _onColumnDragEnd(props: { dropLocation?: ColumnDragEndLocation }, event: MouseEvent): void {
+    const { columnReorderOptions } = this.props;
+    let finalDropLocation: ColumnDragEndLocation = ColumnDragEndLocation.outside;
+    if (columnReorderOptions && columnReorderOptions.onDragEnd) {
+      if (props.dropLocation && props.dropLocation !== ColumnDragEndLocation.header) {
+        finalDropLocation = props.dropLocation;
+      } else if (this._root.current) {
+        const clientRect = this._root.current.getBoundingClientRect();
+        if (
+          event.clientX > clientRect.left &&
+          event.clientX < clientRect.right &&
+          event.clientY > clientRect.top &&
+          event.clientY < clientRect.bottom
+        ) {
+          finalDropLocation = ColumnDragEndLocation.surface;
+        }
+      }
+      columnReorderOptions.onDragEnd(finalDropLocation);
     }
   }
 
@@ -886,7 +917,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
   }
 
   /**
-   * Call back function when an element in FocusZone becomes active. It will transalate it into item
+   * Call back function when an element in FocusZone becomes active. It will translate it into item
    * and call onActiveItemChanged callback if specified.
    *
    * @private
@@ -957,6 +988,17 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       ...detailsFooterProps
     };
   }
+
+  private _getColumnReorderProps(): IColumnReorderHeaderProps | undefined {
+    const { columnReorderOptions } = this.props;
+    if (columnReorderOptions) {
+      return {
+        ...columnReorderOptions,
+        onColumnDragEnd: this._onColumnDragEnd
+      };
+    }
+  }
+
   private _getGroupProps(detailsGroupProps: IDetailsGroupRenderProps): IGroupRenderProps {
     const {
       onRenderFooter: onRenderDetailsGroupFooter,

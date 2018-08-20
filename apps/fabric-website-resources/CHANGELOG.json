@@ -2,6 +2,108 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "version": "6.7.4",
+      "tag": "@uifabric/fabric-website-resources_v6.7.4",
+      "date": "Tue, 14 Aug 2018 10:27:33 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Avital Baral <avitalbaral99@gmail.com>",
+            "commit": "cf0f728d0b28540b7a42aa9121a840605ee04670",
+            "comment": "autogenerate codepenable examples for fabric examples tagged with @codepen"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=6.0.2 <7.0.0` to `>=6.0.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.14.0 <7.0.0` to `>=6.14.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=6.0.3 <7.0.0` to `>=6.0.4 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.49.1 <7.0.0` to `>=6.49.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.7.3",
+      "tag": "@uifabric/fabric-website-resources_v6.7.3",
+      "date": "Fri, 10 Aug 2018 10:26:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Avital Baral <avitalbaral99@gmail.com>",
+            "commit": "172afbf5208fa1295a349d14eae716a14e16328c",
+            "comment": "autogenerate codepenable examples for fabric examples tagged with @codepen"
+          },
+          {
+            "author": "anavilohia <anavi.lohia@utexas.edu>",
+            "commit": "34a0e9d620cd391e545332e17c5c93494a7a8618",
+            "comment": "Added optional feedback section for component pages"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.7.1 <7.0.0` to `>=6.7.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.14.0 <7.0.0` to `>=6.15.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.12.1 <7.0.0` to `>=6.13.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.47.2 <7.0.0` to `>=6.48.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.7.2",
+      "tag": "@uifabric/fabric-website-resources_v6.7.2",
+      "date": "Wed, 08 Aug 2018 10:25:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "4d32614144c1ee0b904746f615ae245bb47348ce",
+            "comment": "Fix bad imports that break AMD."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.7.0 <7.0.0` to `>=6.7.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.47.0 <7.0.0` to `>=6.47.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.7.1",
+      "tag": "@uifabric/fabric-website-resources_v6.7.1",
+      "date": "Tue, 07 Aug 2018 10:22:32 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "9110f7bf9e5169d0742dda7210da761ccdfd8e87",
+            "comment": "Fix duplicate nav key"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.46.0 <7.0.0` to `>=6.47.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.7.0",
       "tag": "@uifabric/fabric-website-resources_v6.7.0",
       "date": "Mon, 30 Jul 2018 10:27:11 GMT",
