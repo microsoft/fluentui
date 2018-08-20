@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { CommandBar, ICommandBarItemProps } from 'office-ui-fabric-react/lib/CommandBar';
 import { CommandBarButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { DirectionalHint } from 'office-ui-fabric-react/lib/components/Callout';
 
 export class CommandBarButtonAsExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
@@ -13,6 +14,7 @@ export class CommandBarButtonAsExample extends React.Component<{}, {}> {
           onClick={buttonOnMouseClick}
           styles={{
             ...props.styles,
+            textContainer: { fontSize: 18 },
             icon: { color: 'red' }
           }}
         />
@@ -26,13 +28,9 @@ export class CommandBarButtonAsExample extends React.Component<{}, {}> {
             menuProps: {
               items: [], // Items must be passed for typesafety, but commandBar will determine items rendered in overflow
               isBeakVisible: true,
-              beakWidth: 10,
+              beakWidth: 20,
               gapSpace: 10,
-              styles: {
-                root: {
-                  background: '#eee'
-                }
-              }
+              directionalHint: DirectionalHint.topCenter
             }
           }}
           buttonAs={customButton}
