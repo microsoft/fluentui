@@ -333,18 +333,20 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
 
     this._changeSelectionData = null;
 
+    const newValue = getMaskDisplay(this.props.mask, this._maskCharData, this.props.maskChar);
+
     this.setState({
-      displayValue: getMaskDisplay(this.props.mask, this._maskCharData, this.props.maskChar),
+      displayValue: newValue,
       maskCursorPosition: cursorPos
     });
 
     // Perform onChange/d after input has been processed. Return value is expected to be the displayed text
     if (this.props.onChange) {
-      this.props.onChange(ev, displayValue);
+      this.props.onChange(ev, newValue);
     }
 
     if (this.props.onChanged) {
-      this.props.onChanged(displayValue);
+      this.props.onChanged(newValue);
     }
   }
 
