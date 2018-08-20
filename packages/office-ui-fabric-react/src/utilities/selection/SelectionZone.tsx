@@ -66,7 +66,6 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   private _isShiftPressed: boolean;
   private _isMetaPressed: boolean;
   private _isTabPressed: boolean;
-  private _isDownArrowPressed: boolean;
   private _shouldHandleFocus: boolean;
   private _shouldHandleFocusTimeoutId: number | undefined;
   private _isTouch: boolean;
@@ -146,12 +145,10 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     const target = ev.target as HTMLElement;
     const { selection } = this.props;
     const isToggleModifierPressed = this._isCtrlPressed || this._isMetaPressed;
-    // we should select an item if the focus originates from an arrow down keyboard event
-    const isDownArrowPressed = this._isDownArrowPressed;
 
     const selectionMode = this._getSelectionMode();
 
-    if ((this._shouldHandleFocus || isDownArrowPressed) && selectionMode !== SelectionMode.none) {
+    if (this._shouldHandleFocus && selectionMode !== SelectionMode.none) {
       const isToggle = this._hasAttribute(target, SELECTION_TOGGLE_ATTRIBUTE_NAME);
       const itemRoot = this._findItemRoot(target);
 
@@ -528,7 +525,6 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
 
     const keyCode = (ev as React.KeyboardEvent<HTMLElement>).keyCode;
     this._isTabPressed = keyCode ? keyCode === KeyCodes.tab : false;
-    this._isDownArrowPressed = keyCode ? keyCode === KeyCodes.down : false;
   }
 
   private _findItemRoot(target: HTMLElement): HTMLElement | undefined {
