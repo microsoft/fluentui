@@ -1,5 +1,5 @@
 import { IContextualMenuItemStyleProps, IContextualMenuItemStyles } from './ContextualMenuItem.types';
-import { HighContrastSelector, getFocusStyle, FontSizes, getGlobalClassNames, IStyle } from '@uifabric/styling';
+import { HighContrastSelector, getFocusStyle, FontSizes, getGlobalClassNames, IStyle } from '../../Styling';
 
 const GlobalClassNames = {
   item: 'ms-ContextualMenu-item',

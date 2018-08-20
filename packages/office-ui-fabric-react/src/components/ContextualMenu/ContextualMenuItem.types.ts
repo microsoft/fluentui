@@ -2,7 +2,7 @@ import { ITheme, IStyle } from '../../Styling';
 import { IRefObject, IRenderFunction } from '../../Utilities';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/components/Button';
 import { IVerticalDividerClassNames } from 'office-ui-fabric-react/lib/Divider';
-import { IStyleFunctionOrObject } from '@uifabric/utilities';
+import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { ContextualMenuItemType, IContextualMenuProps, IContextualMenuSection } from './ContextualMenu.types';
 import { IIconProps } from '../Icon/Icon.types';
 import { IKeytipProps } from '../Keytip/Keytip.types';
