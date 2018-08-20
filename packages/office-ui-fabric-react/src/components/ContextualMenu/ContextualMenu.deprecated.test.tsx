@@ -9,7 +9,6 @@ import { ContextualMenu } from './ContextualMenu';
 import { canAnyMenuItemsCheck } from './ContextualMenu.base';
 import { ContextualMenuItemType } from './ContextualMenu.types';
 import { IContextualMenuRenderItem, IContextualMenuItem, IMenuItemClassNames } from './ContextualMenuItem.types';
-import { ITheme } from '@uifabric/styling';
 
 let customClassNames: () => IMenuItemClassNames;
 
@@ -65,7 +64,7 @@ describe('ContextualMenu', () => {
   it('includes the classNames on ContextualMenuItem(s)', () => {
     const items: IContextualMenuItem[] = [{ name: 'Test 1', key: 'Test1' }];
 
-    const getClassNames = (_theme: ITheme, _className?: string) => {
+    const getClassNames = () => {
       return {
         container: 'containerFoo',
         root: 'rootFoo',
@@ -137,7 +136,7 @@ describe('ContextualMenu', () => {
   });
 
   it('applies getItemClassNames for checkable menu items', () => {
-    const items = [
+    const items: IContextualMenuItem[] = [
       {
         key: 'edit',
         text: 'Edit',
@@ -156,7 +155,7 @@ describe('ContextualMenu', () => {
   });
 
   it('applies getItemClassNames for menu items with icons', () => {
-    const items = [
+    const items: IContextualMenuItem[] = [
       {
         key: 'Later Today',
         iconProps: {
@@ -176,7 +175,7 @@ describe('ContextualMenu', () => {
   });
 
   it('applies getItemClassNames for divider menu items', () => {
-    const items = [
+    const items: IContextualMenuItem[] = [
       {
         key: 'Later Today',
         text: 'Later Today'
@@ -196,7 +195,7 @@ describe('ContextualMenu', () => {
   });
 
   it('applies getItemClassNames for menu items with secondary text', () => {
-    const items = [
+    const items: IContextualMenuItem[] = [
       {
         key: 'Later Today',
         iconProps: {
