@@ -108,6 +108,7 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   theme?: ITheme;
 }
 
+// ICommandBarItemProps extends IContextualMenuItem and adds a few CommandBar specific props
 export interface ICommandBarItemProps extends IContextualMenuItem {
   /**
    * Remove text when button is not in the overflow

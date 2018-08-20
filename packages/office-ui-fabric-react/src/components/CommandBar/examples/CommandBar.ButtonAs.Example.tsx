@@ -1,20 +1,16 @@
 import * as React from 'react';
 
-import { CommandBar, ICommandBarProps } from 'office-ui-fabric-react/lib/CommandBar';
+import { CommandBar, ICommandBarItemProps } from 'office-ui-fabric-react/lib/CommandBar';
 import { CommandBarButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 
-export class CommandBarButtonAsExample extends React.Component<ICommandBarProps, {}> {
-  constructor(props: ICommandBarProps) {
-    super(props);
-  }
-
+export class CommandBarButtonAsExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     const customButton = (props: IButtonProps) => {
-      const buttonOnMouseEnter = () => console.log(`${props.text} hovered`);
+      const buttonOnMouseClick: IButtonProps['onClick'] = ev => alert(`${props.text} clicked`);
       return (
         <CommandBarButton
-          onMouseEnter={buttonOnMouseEnter}
           {...props}
+          onClick={buttonOnMouseClick}
           styles={{
             ...props.styles,
             icon: { color: 'red' }
@@ -22,8 +18,6 @@ export class CommandBarButtonAsExample extends React.Component<ICommandBarProps,
         />
       );
     };
-
-    const { items, overflowItems, farItems } = this.props;
 
     return (
       <div>
@@ -33,7 +27,12 @@ export class CommandBarButtonAsExample extends React.Component<ICommandBarProps,
               items: [], // Items must be passed for typesafety, but commandBar will determine items rendered in overflow
               isBeakVisible: true,
               beakWidth: 10,
-              gapSpace: 10
+              gapSpace: 10,
+              styles: {
+                root: {
+                  background: '#eee'
+                }
+              }
             }
           }}
           buttonAs={customButton}
@@ -46,3 +45,108 @@ export class CommandBarButtonAsExample extends React.Component<ICommandBarProps,
     );
   }
 }
+
+// Data for CommandBar
+const items: ICommandBarItemProps[] = [
+  {
+    key: 'newItem',
+    name: 'New',
+    cacheKey: 'myCacheKey', // changing this key will invalidate this items cache
+    iconProps: {
+      iconName: 'Add'
+    },
+    ariaLabel: 'New. Use left and right arrow keys to navigate',
+    subMenuProps: {
+      items: [
+        {
+          key: 'emailMessage',
+          name: 'Email message',
+          iconProps: {
+            iconName: 'Mail'
+          },
+          ['data-automation-id']: 'newEmailButton'
+        },
+        {
+          key: 'calendarEvent',
+          name: 'Calendar event',
+          iconProps: {
+            iconName: 'Calendar'
+          }
+        }
+      ]
+    }
+  },
+  {
+    key: 'upload',
+    name: 'Upload',
+    iconProps: {
+      iconName: 'Upload'
+    },
+    href: 'https://dev.office.com/fabric',
+    ['data-automation-id']: 'uploadButton'
+  },
+  {
+    key: 'share',
+    name: 'Share',
+    iconProps: {
+      iconName: 'Share'
+    }
+  },
+  {
+    key: 'download',
+    name: 'Download',
+    iconProps: {
+      iconName: 'Download'
+    }
+  }
+];
+
+const overflowItems: ICommandBarItemProps[] = [
+  {
+    key: 'move',
+    name: 'Move to...',
+    iconProps: {
+      iconName: 'MoveToFolder'
+    }
+  },
+  {
+    key: 'copy',
+    name: 'Copy to...',
+    iconProps: {
+      iconName: 'Copy'
+    }
+  },
+  {
+    key: 'rename',
+    name: 'Rename...',
+    iconProps: {
+      iconName: 'Edit'
+    }
+  }
+];
+
+const farItems: ICommandBarItemProps[] = [
+  {
+    key: 'sort',
+    name: 'Sort',
+    iconProps: {
+      iconName: 'SortLines'
+    }
+  },
+  {
+    key: 'tile',
+    name: 'Grid view',
+    iconProps: {
+      iconName: 'Tiles'
+    },
+    iconOnly: true
+  },
+  {
+    key: 'info',
+    name: 'Info',
+    iconProps: {
+      iconName: 'Info'
+    },
+    iconOnly: true
+  }
+];
