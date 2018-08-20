@@ -150,6 +150,16 @@ export interface ISemanticColors {
    */
   variantBorder: string;
 
+  /**
+   * Hover color of border that provides contrast between an element, such as a card, and an emphasized background.
+   */
+  variantBorderHovered: string;
+
+  /**
+   * Background color for default/empty state graphical elements, eg icons, placeholder graphics, etc.
+   */
+  emptyStateBackground: string;
+
   //// Invariants - slots that rarely change color theme-to-theme because the color has meaning
 
   /**
