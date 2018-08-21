@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.24.2",
+      "tag": "@uifabric/experiments_v6.24.2",
+      "date": "Tue, 21 Aug 2018 10:28:16 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "7b880a779a88574e9fd805a82077e59d85760fbd",
+            "comment": "Experiments: fix TextPage require path after a file extension change."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.50.2 <7.0.0` to `>=6.51.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.24.1",
       "tag": "@uifabric/experiments_v6.24.1",
       "date": "Mon, 20 Aug 2018 10:26:10 GMT",

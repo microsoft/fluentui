@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 20 Aug 2018 10:26:10 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Aug 2018 10:28:16 GMT and should not be manually modified.
+
+## 6.24.2
+Tue, 21 Aug 2018 10:28:16 GMT
+
+### Patches
+
+- Experiments: fix TextPage require path after a file extension change.
 
 ## 6.24.1
 Mon, 20 Aug 2018 10:26:10 GMT

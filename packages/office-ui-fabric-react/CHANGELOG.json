@@ -2,6 +2,52 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.51.0",
+      "tag": "office-ui-fabric-react_v6.51.0",
+      "date": "Tue, 21 Aug 2018 10:28:16 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Josh Chang <coralbue@gmail.com>",
+            "commit": "16b26d26c96cd5e5e2357493a71e4c522623655e",
+            "comment": "BaseButton: Add onFocusCapture to the split button container to focus the container instead of doing it in the menu onClick"
+          },
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "9d35388c28d425292f7f9729b3b6930bc269573d",
+            "comment": "ChoiceGroup: change styles so that label styles do not apply to Label components in onRenderField"
+          },
+          {
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "eb8a15573c926c613d12a665fd6e5257455794ee",
+            "comment": "DetailsList: select first row on down arrow key event"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "a9878d29db805343eed98e1e2c53722a0154a371",
+            "comment": "MaskedTextField: onChange now returns the displayed value vs the entered value"
+          },
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "bef47b722afeb6529a70894fadff44d213c9f3aa",
+            "comment": "Sticky: Fix an edge case causing Sticky footer to wrongly re-calculate it's height."
+          }
+        ],
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "3399908ef83f9b2db6171796062c3ba8e8fb5b7a",
+            "comment": "adds variantBorderHovered and emptyStateBackground semantic slots to theme and variants logic"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.16.0 <7.0.0` to `>=6.17.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.50.2",
       "tag": "office-ui-fabric-react_v6.50.2",
       "date": "Mon, 20 Aug 2018 10:26:10 GMT",
