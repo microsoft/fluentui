@@ -6,7 +6,6 @@ Some real-world applications of the component include copying, uploading, deleti
 
 ## Use cases
 
-***
 ### Updated actions being executed
 Small operations like editing text, or deletion that are short enough that they do not require a status during progress.
 
