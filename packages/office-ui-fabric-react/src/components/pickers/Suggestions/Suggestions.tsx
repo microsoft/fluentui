@@ -4,7 +4,6 @@ import { CommandButton, IconButton, IButton } from '../../../Button';
 import { Spinner } from '../../../Spinner';
 import { ISuggestionItemProps, ISuggestionsProps } from './Suggestions.types';
 import * as stylesImport from './Suggestions.scss';
-import { suggestionsSpinner } from 'office-ui-fabric-react/lib/components/FloatingPicker/Suggestions/SuggestionsControl.scss';
 const styles: any = stylesImport;
 
 export enum SuggestionActionType {
