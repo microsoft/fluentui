@@ -71,6 +71,7 @@ export class DatePickerBoundedExample extends React.Component<{}, IDatePickerReq
           minDate={minDate}
           maxDate={maxDate}
           allowTextInput={true}
+          allFocusable={true}
         />
       </div>
     );
