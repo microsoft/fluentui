@@ -2,6 +2,20 @@
   "name": "@uifabric/variants",
   "entries": [
     {
+      "version": "5.7.0",
+      "tag": "@uifabric/variants_v5.7.0",
+      "date": "Tue, 21 Aug 2018 11:25:20 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "846739dc957ae4be8bf5fdabda8cd58e7a3df274",
+            "comment": "removes opacity function and import from color utilities from variants.ts"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.6.0",
       "tag": "@uifabric/variants_v5.6.0",
       "date": "Sat, 11 Aug 2018 01:52:57 GMT",

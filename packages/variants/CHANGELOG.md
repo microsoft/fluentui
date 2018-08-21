@@ -1,6 +1,13 @@
 # Change Log - @uifabric/variants
 
-This log was last generated on Sat, 11 Aug 2018 01:52:57 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Aug 2018 11:25:20 GMT and should not be manually modified.
+
+## 5.7.0
+Tue, 21 Aug 2018 11:25:20 GMT
+
+### Minor changes
+
+- removes opacity function and import from color utilities from variants.ts
 
 ## 5.6.0
 Sat, 11 Aug 2018 01:52:57 GMT
