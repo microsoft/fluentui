@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 21 Aug 2018 10:28:16 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Aug 2018 20:36:27 GMT and should not be manually modified.
+
+## 6.51.1
+Tue, 21 Aug 2018 20:36:27 GMT
+
+### Patches
+
+- Sticky: Fix logic when Sticky on first render is at most top position to get it sorted properly.
 
 ## 6.51.0
 Tue, 21 Aug 2018 10:28:16 GMT

@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.24.3",
+      "tag": "@uifabric/experiments_v6.24.3",
+      "date": "Tue, 21 Aug 2018 20:36:27 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "riosn-n <33673026+riosn-n@users.noreply.github.com>",
+            "commit": "59276033edb69b6e845dde243fa3e9fce2bc0f19",
+            "comment": "Adding required validator support for the FormDropdown in multi-select mode."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.51.0 <7.0.0` to `>=6.51.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.24.2",
       "tag": "@uifabric/experiments_v6.24.2",
       "date": "Tue, 21 Aug 2018 10:28:16 GMT",

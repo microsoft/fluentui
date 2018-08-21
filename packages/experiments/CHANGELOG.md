@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 21 Aug 2018 10:28:16 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Aug 2018 20:36:27 GMT and should not be manually modified.
+
+## 6.24.3
+Tue, 21 Aug 2018 20:36:27 GMT
+
+### Patches
+
+- Adding required validator support for the FormDropdown in multi-select mode.
 
 ## 6.24.2
 Tue, 21 Aug 2018 10:28:16 GMT
