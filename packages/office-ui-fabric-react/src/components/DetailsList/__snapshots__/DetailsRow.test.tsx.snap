@@ -1643,7 +1643,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
         border-bottom: 1px solid #f4f4f4;
         box-sizing: border-box;
         color: #767676;
-        display: flex;
+        display: inline-flex;
         min-height: 42px;
         min-width: 100%;
         outline: transparent;
