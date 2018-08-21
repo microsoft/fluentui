@@ -26,11 +26,23 @@ export interface IBasePickerState {
   selectedIndices?: number[];
 }
 
-export interface IPickerAriaIds {
+/**
+ * Aria id's for internal picker components
+ */
+export type IPickerAriaIds = {
+  /**
+   * Aria id for selected suggestion alert component
+   */
   selectedSuggestionAlert: string;
+  /**
+   * Aria id for selected items container component
+   */
   selectedItems: string;
+  /**
+   * Aria id for suggestions list component
+   */
   suggestionList: string;
-}
+};
 
 export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBasePickerState>
   implements IBasePicker<T> {
@@ -809,9 +821,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
     const selectedSuggestionAlertId: string | undefined = this.props.enableSelectedSuggestionAlert
       ? this._ariaMap.selectedSuggestionAlert
       : '';
-    const suggestionsAvailable: string | undefined = this.state.suggestionsVisible
-      ? this._ariaMap.suggestionList
-      : '';
+    const suggestionsAvailable: string | undefined = this.state.suggestionsVisible ? this._ariaMap.suggestionList : '';
 
     return (
       <div ref={this.root}>
