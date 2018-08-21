@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import { CommandBarButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
-import { DirectionalHint } from 'office-ui-fabric-react/lib/components/Callout';
+import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 
 export class CommandBarButtonAsExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
