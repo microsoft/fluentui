@@ -156,6 +156,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                 aria-label={dateTimeFormatter.formatMonthYear(navigatedDate, strings)}
                 role="button"
                 tabIndex={0}
+                data-is-focusable={true}
               >
                 {dateTimeFormatter.formatMonthYear(navigatedDate, strings)}
               </div>
@@ -171,7 +172,8 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                 className={css('ms-DatePicker-prevMonth js-prevMonth', styles.prevMonth, {
                   ['ms-DatePicker-prevMonth--disabled ' + styles.prevMonthIsDisabled]: !prevMonthInBounds
                 })}
-                disabled={!prevMonthInBounds}
+                disabled={false} // !prevMonthInBounds}
+                aria-disabled={!prevMonthInBounds}
                 onClick={prevMonthInBounds ? this._onSelectPrevMonth : undefined}
                 onKeyDown={prevMonthInBounds ? this._onPrevMonthKeyDown : undefined}
                 aria-controls={dayPickerId}
@@ -188,7 +190,8 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                 className={css('ms-DatePicker-nextMonth js-nextMonth', styles.nextMonth, {
                   ['ms-DatePicker-nextMonth--disabled ' + styles.nextMonthIsDisabled]: !nextMonthInBounds
                 })}
-                disabled={!nextMonthInBounds}
+                disabled={false} // !nextMonthInBounds}
+                aria-disabled={!nextMonthInBounds}
                 onClick={nextMonthInBounds ? this._onSelectNextMonth : undefined}
                 onKeyDown={nextMonthInBounds ? this._onNextMonthKeyDown : undefined}
                 aria-controls={dayPickerId}
@@ -230,11 +233,12 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                 {strings.shortDays.map((val, index) => (
                   <th
                     className={css('ms-DatePicker-weekday', styles.weekday)}
-                    role="grid"
+                    role="gridcell"
                     scope="col"
                     key={index}
                     title={strings.days[(index + firstDayOfWeek) % DAYS_IN_WEEK]}
                     aria-label={strings.days[(index + firstDayOfWeek) % DAYS_IN_WEEK]}
+                    data-is-focusable={true}
                   >
                     {strings.shortDays[(index + firstDayOfWeek) % DAYS_IN_WEEK]}
                   </th>
@@ -246,7 +250,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               onMouseUp={dateRangeType !== DateRangeType.Day ? this._onTableMouseUp : undefined}
             >
               {weeks!.map((week, weekIndex) => (
-                <tr key={weekNumbers ? weekNumbers[weekIndex] : weekIndex} role="row">
+                <tr key={weekNumbers ? weekNumbers[weekIndex] : weekIndex}>
                   {showWeekNumbers &&
                     weekNumbers && (
                       <th
@@ -337,7 +341,8 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                           aria-selected={day.isInBounds ? day.isSelected : undefined}
                           data-is-focusable={day.isInBounds ? true : undefined}
                           ref={element => this._setDayRef(element, day, isNavigatedDate)}
-                          disabled={!day.isInBounds}
+                          disabled={false} // !day.isInBounds}
+                          aria-disabled={!day.isInBounds}
                         >
                           <span aria-hidden="true">{dateTimeFormatter.formatDay(day.originalDate)}</span>
                         </button>
