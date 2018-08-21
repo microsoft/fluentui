@@ -16,7 +16,7 @@ import { ScrollablePane, IScrollablePane, ScrollbarVisibility } from 'office-ui-
 import { Sticky, StickyPositionType } from 'office-ui-fabric-react/lib/Sticky';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { lorem } from 'office-ui-fabric-react/lib/utilities/exampleData';
-import { SelectionMode } from 'office-ui-fabric-react/lib/utilities/selection';
+import { SelectionMode } from 'office-ui-fabric-react/lib/utilities/selection/index';
 
 const _columns: IColumn[] = [
   {
