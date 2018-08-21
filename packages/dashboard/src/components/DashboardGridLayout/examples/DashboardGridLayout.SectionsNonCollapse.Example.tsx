@@ -13,6 +13,7 @@ import {
   IThumbnailItemProps,
   Priority
 } from '@uifabric/dashboard';
+import { Layout, Layouts } from 'react-grid-layout';
 import { ILegendDataItem } from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
@@ -152,12 +153,15 @@ const header = {
   annotationText: 'Annotation Text '
 };
 
-export interface IDashboardGridLayoutSectionsExampleState {
+export interface IDashboardGridLayoutSectionsNoncollapsibleExampleState {
   sectionMapping: DashboardSectionMapping;
   layouts: DashboardGridBreakpointLayouts;
 }
 
-export class DashboardGridLayoutSectionsExample extends React.Component<{}, IDashboardGridLayoutSectionsExampleState> {
+export class DashboardGridLayoutSectionsNoncollapsibleExample extends React.Component<
+  {},
+  IDashboardGridLayoutSectionsNoncollapsibleExampleState
+> {
   constructor(props: {}) {
     super(props);
     this.state = {
@@ -178,7 +182,7 @@ export class DashboardGridLayoutSectionsExample extends React.Component<{}, IDas
         sections={this._sections()}
         cards={this._cards()}
         onSectionChange={this._onSectionChange}
-        isCollapsible={true}
+        onLayoutChange={this._onLayoutChange}
       />
     );
   }
@@ -255,6 +259,13 @@ export class DashboardGridLayoutSectionsExample extends React.Component<{}, IDas
       ...this.state,
       sectionMapping: newMapping
     });
+  };
+
+  private _onLayoutChange = (currentLayout: Layout[], allLayouts: Layouts): void => {
+    console.log('currentLayout', currentLayout);
+    // save allLayouts to your storage
+    const jsonToSave = JSON.stringify(allLayouts);
+    console.log('jsonToSave', jsonToSave);
   };
 
   private _getLayout(): DashboardGridBreakpointLayouts {

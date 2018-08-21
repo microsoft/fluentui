@@ -19,7 +19,6 @@ export class SectionPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={[require<string>('!raw-loader!@uifabric/dashboard/src/components/Section/Section.types.ts')]}
-            // renderOnly={['IDashboardGridLayoutProps', 'DashboardGridBreakpointLayouts', 'IDashboardCardLayout']}
           />
         }
         overview={<div>This component creates a section title for dashboard grid layout</div>}

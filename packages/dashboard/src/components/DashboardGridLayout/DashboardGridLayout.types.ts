@@ -24,14 +24,6 @@ export type DashboardSectionMapping = {
   [id: string]: string[];
 };
 
-export type LayoutMapping = {
-  /**
-   * Layout key to its layout mapping with height and width
-   * to use while expanding
-   */
-  [id: string]: Layout;
-};
-
 export interface IDashboardCardLayout {
   /**
    * A string corresponding to the component key
@@ -106,6 +98,18 @@ export interface IDashboardGridLayoutProps {
   onBreakPointChange?(newBreakpoint: string, newCols: number): void;
 }
 
+export interface IDashboardGridLayoutState {
+  /**
+   * All layouts for different breakpoints
+   */
+  layouts: Layouts;
+
+  /**
+   * The current layout used in the UI
+   */
+  currentLayout: Layout[];
+}
+
 export interface IDashboardGridSectionLayoutProps extends IDashboardGridLayoutProps {
   /**
    * The sections
@@ -118,8 +122,21 @@ export interface IDashboardGridSectionLayoutProps extends IDashboardGridLayoutPr
   cards: ICard[];
 
   /**
+   * if the section is collapsible
+   * @default false
+   */
+  isCollapsible?: boolean;
+
+  /**
    * On section change. Not implemented yet
    * @param newMapping
    */
   onSectionChange?(newMapping: DashboardSectionMapping): void;
+}
+
+export interface IDashboardGridSectionLayoutState extends IDashboardGridLayoutState {
+  /**
+   * The section key to card key mapping
+   */
+  sectionMapping: DashboardSectionMapping;
 }

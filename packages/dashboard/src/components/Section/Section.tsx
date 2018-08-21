@@ -1,18 +1,11 @@
 import * as React from 'react';
-import { ISectionProps, ISectionStyles } from './Section.types';
+import { ISectionProps, ISectionStyles, ISectionState } from './Section.types';
 import { getStyles } from './Section.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { OverflowSet, IOverflowSetItemProps } from 'office-ui-fabric-react/lib/OverflowSet';
 
-require('style-loader!css-loader!./Section.css');
-
-export class Section extends React.PureComponent<
-  ISectionProps,
-  {
-    expanded: boolean;
-  }
-> {
+export class Section extends React.PureComponent<ISectionProps, ISectionState> {
   constructor(props: ISectionProps) {
     super(props);
     this.state = {
@@ -34,11 +27,14 @@ export class Section extends React.PureComponent<
       >
         {this.props.title}
         <div className={classNames.actions}>
-          <IconButton
-            menuIconProps={{ iconName: this.state.expanded ? 'ChevronDownSmall' : 'ChevronUpSmall' }}
-            onClick={this._onCollapseExpandToggled}
-            className={classNames.actionButton}
-          />
+          {this.props.onCollapseExpand !== null &&
+            this.props.onCollapseExpand !== undefined && (
+              <IconButton
+                menuIconProps={{ iconName: this.state.expanded ? 'ChevronDownSmall' : 'ChevronUpSmall' }}
+                onClick={this._onCollapseExpandToggled}
+                className={classNames.actionButton}
+              />
+            )}
           <OverflowSet
             overflowItems={this._getOverflowSetOptions()}
             onRenderOverflowButton={this._onRenderOverflowButton}

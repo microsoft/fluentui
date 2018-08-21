@@ -11,7 +11,8 @@ export const getStyles = (): ISectionStyles => {
       width: '100%',
       backgroundColor: 'transparent',
       padding: '13px',
-      position: 'relative'
+      position: 'relative',
+      boxShadow: 'none !important' // override the box shadow from react grid layout
     },
     actions: {
       position: 'absolute',

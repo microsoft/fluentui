@@ -3,10 +3,12 @@ import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet
 import { DashboardGridLayoutExample } from './examples/DashboardGridLayout.Example';
 import { DashboardGridLayoutCardExample } from './examples/DashboardGridLayout.Card.Example';
 import { DashboardGridLayoutSectionsExample } from './examples/DashboardGridLayout.Sections.Example';
+import { DashboardGridLayoutSectionsNoncollapsibleExample } from './examples/DashboardGridLayout.SectionsNonCollapse.Example';
 import { DashboardGridLayoutDragApiExample } from './examples/DashboardGridLayout.DragApi.Example';
 const DashboardGridLayoutExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/DashboardGridLayout/examples/DashboardGridLayout.Example.tsx') as string;
 const DashboardGridLayoutCardExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/DashboardGridLayout/examples/DashboardGridLayout.Card.Example.tsx') as string;
 const DashboardGridLayoutSectionsExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/DashboardGridLayout/examples/DashboardGridLayout.Sections.Example.tsx') as string;
+const DashboardGridLayoutSectionsNoncollapsibleExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/DashboardGridLayout/examples/DashboardGridLayout.SectionsNonCollapse.Example.tsx') as string;
 const DashboardGridLayoutDragApiExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/DashboardGridLayout/examples/DashboardGridLayout.DragApi.Example.tsx') as string;
 
 export class DashboardGridLayoutPage extends React.Component<IComponentDemoPageProps, {}> {
@@ -32,6 +34,14 @@ export class DashboardGridLayoutPage extends React.Component<IComponentDemoPageP
               code={DashboardGridLayoutCardExampleCode}
             >
               <DashboardGridLayoutCardExample />
+            </ExampleCard>
+            <ExampleCard
+              title="DashboardGridLayout with non-collapsible sections"
+              isScrollable={true}
+              isOptIn={true}
+              code={DashboardGridLayoutSectionsNoncollapsibleExampleCode}
+            >
+              <DashboardGridLayoutSectionsNoncollapsibleExample />
             </ExampleCard>
             <ExampleCard
               title="DashboardGridLayout with collapsible sections (work in progress)"

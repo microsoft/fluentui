@@ -49,6 +49,13 @@ export interface ISection extends ISectionProps {
   keysOfCard: string[];
 }
 
+export interface ISectionState {
+  /**
+   * if section is expanded
+   */
+  expanded: boolean;
+}
+
 export interface ISectionStyles {
   root: IStyle;
   actions: IStyle;

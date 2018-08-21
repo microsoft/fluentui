@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Responsive, WidthProvider, Layout, Layouts } from 'react-grid-layout';
 import {
   IDashboardGridLayoutProps,
+  IDashboardGridLayoutState,
   IDashboardGridLayoutStyles,
   IDashboardCardLayout
 } from './DashboardGridLayout.types';
@@ -41,10 +42,19 @@ const sizes: { [P in CardSize]: { w: number; h: number } } = {
   section: { w: 4, h: 1 }
 };
 
-export class DashboardGridLayout extends React.Component<IDashboardGridLayoutProps, {}> {
+export class DashboardGridLayout extends React.Component<IDashboardGridLayoutProps, IDashboardGridLayoutState> {
+  constructor(props: IDashboardGridLayoutProps) {
+    super(props);
+
+    this.state = {
+      layouts: this._createLayout(),
+      currentLayout: []
+    };
+  }
+
   public render(): JSX.Element {
     const getClassNames = classNamesFunction<IDashboardGridLayoutProps, IDashboardGridLayoutStyles>();
-    const classNames = getClassNames(getStyles!);
+    const classNames = getClassNames(getStyles!, {});
 
     return (
       <ResponsiveReactGridLayout
@@ -56,9 +66,9 @@ export class DashboardGridLayout extends React.Component<IDashboardGridLayoutPro
         containerPadding={[0, 0]}
         isResizable={this.props.isResizable || false}
         rowHeight={rowHeight}
-        layouts={this._createLayout()}
+        layouts={this.state.layouts}
         verticalCompact={true}
-        onLayoutChange={this.props.onLayoutChange}
+        onLayoutChange={this._onLayoutChanged}
         onBreakpointChange={this.props.onBreakPointChange}
         dragApiRef={this.props.dragApi}
         {...this.props}
@@ -67,6 +77,17 @@ export class DashboardGridLayout extends React.Component<IDashboardGridLayoutPro
       </ResponsiveReactGridLayout>
     );
   }
+
+  private _onLayoutChanged = (currentLayout: Layout[], allLayouts: Layouts) => {
+    this.setState({
+      ...this.state,
+      layouts: allLayouts,
+      currentLayout: currentLayout
+    });
+    if (this.props.onLayoutChange) {
+      this.props.onLayoutChange(currentLayout, allLayouts);
+    }
+  };
 
   private _updateLayoutsFromLayout = (layouts: Layouts, layout: Layout[], key: string) => {
     switch (key) {

@@ -2,10 +2,10 @@ import * as React from 'react';
 import { Responsive, WidthProvider, Layout, Layouts } from 'react-grid-layout';
 import {
   IDashboardGridSectionLayoutProps,
+  IDashboardGridSectionLayoutState,
   IDashboardGridLayoutStyles,
   IDashboardCardLayout,
-  DashboardSectionMapping,
-  LayoutMapping
+  DashboardSectionMapping
 } from './DashboardGridLayout.types';
 import { ICard, CardSize } from '../Card/Card.types';
 import { ISection } from '../Section/Section.types';
@@ -45,16 +45,9 @@ const sizes: { [P in CardSize]: { w: number; h: number } } = {
   section: { w: 4, h: 1 }
 };
 
-const layoutMapping: LayoutMapping = {}; // TODO: refactor into state
-
 export class DashboardGridSectionLayout extends React.Component<
   IDashboardGridSectionLayoutProps,
-  {
-    layouts: Layouts;
-    currentLayout: Layout[];
-    layoutBeforeCollapse: Layouts;
-    sectionMapping: DashboardSectionMapping;
-  }
+  IDashboardGridSectionLayoutState
 > {
   private _sectionKeys: string[] = [];
   private _cardSizes: { [key: string]: CardSize } = {};
@@ -65,7 +58,6 @@ export class DashboardGridSectionLayout extends React.Component<
     this.state = {
       layouts: layout,
       currentLayout: this._getFirstDefinedLayout(layout),
-      layoutBeforeCollapse: layout,
       sectionMapping: {}
     };
 
@@ -127,7 +119,6 @@ export class DashboardGridSectionLayout extends React.Component<
           sectionMapping[currentSectionKey] = [];
 
           for (let j = 0; j < this.state.currentLayout.length; j++) {
-            this._saveLayoutMapping(this.state.currentLayout[j]);
             if (
               this.state.currentLayout[j].y >= sections[i].y &&
               // either this is the last section, or y smaller than the next section
@@ -141,9 +132,6 @@ export class DashboardGridSectionLayout extends React.Component<
           }
         }
         // TODO on section change
-        // if (this.props.onSectionChange) {
-        //   this.props.onSectionChange(sectionMapping);
-        // }
         this.setState({
           ...this.state,
           sectionMapping: sectionMapping
@@ -272,16 +260,6 @@ export class DashboardGridSectionLayout extends React.Component<
   };
 
   /**
-   * TODO: refactor to state and invoke call back function
-   */
-  private _saveLayoutMapping = (layout: Layout) => {
-    const key = layout.i === undefined ? '' : layout.i;
-    if (layout.w > 0 && layout.h > 0) {
-      layoutMapping[key] = JSON.parse(JSON.stringify(layout));
-    }
-  };
-
-  /**
    * return the list of layout for sections, sorted vertically
    */
   private _getSections = (): Layout[] => {
@@ -338,7 +316,7 @@ export class DashboardGridSectionLayout extends React.Component<
           key={section.key}
           id={section.id}
           title={section.title}
-          onCollapseExpand={this._onExpandCollapseToggled}
+          onCollapseExpand={this.props.isCollapsible ? this._onExpandCollapseToggled : undefined}
         />
       );
       result = result.concat(self._renderCards(section.keysOfCard));
@@ -391,7 +369,7 @@ export class DashboardGridSectionLayout extends React.Component<
   };
 
   /**
-   * Translate size to w and h value, return a Layout object for react-grid-layout
+   * Translate card size to w and h value, return a Layout object for react-grid-layout
    */
   private _createLayoutFromProp(layoutProp: IDashboardCardLayout): Layout {
     return {
@@ -415,7 +393,12 @@ export class DashboardGridSectionLayout extends React.Component<
         }
         const layout: Layout[] = [];
         for (let i = 0; i < value.length; i++) {
-          layout.push(this._createLayoutFromProp(value[i]));
+          const layoutElement = this._createLayoutFromProp(value[i]);
+          if (i === 0) {
+            // this means it is the first section header and dont allow card to be moved before the first section
+            layoutElement.static = true;
+          }
+          layout.push(layoutElement);
         }
         this._updateLayoutsFromLayout(layouts, layout, key);
       }
