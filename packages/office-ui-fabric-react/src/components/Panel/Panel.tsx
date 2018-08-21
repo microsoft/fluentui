@@ -40,6 +40,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
 
   private _panel = createRef<HTMLDivElement>();
   private _content = createRef<HTMLDivElement>();
+  private _scrollableContent: HTMLDivElement | null;
 
   constructor(props: IPanelProps) {
     super(props);
@@ -56,6 +57,8 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
       isAnimating: false,
       id: getId('Panel')
     };
+
+    this._allowScrollOnPanel = this._allowScrollOnPanel.bind(this);
   }
 
   public componentDidMount(): void {
@@ -89,6 +92,10 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
         this.dismiss();
       }
     }
+  }
+
+  public componentWillUnmount() {
+    this._events.dispose();
   }
 
   public render(): JSX.Element | null {
@@ -247,7 +254,11 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
   // Allow the user to scroll within the panel but not on the body
   private _allowScrollOnPanel(elt: HTMLDivElement | null): void {
     if (elt) {
-      allowScrollOnElement(elt);
+      this._scrollableContent = elt;
+      allowScrollOnElement(this._scrollableContent, this._events);
+    } else {
+      this._events.off(this._scrollableContent);
+      this._scrollableContent = null;
     }
   }
 

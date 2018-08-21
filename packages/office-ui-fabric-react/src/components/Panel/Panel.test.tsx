@@ -3,7 +3,6 @@ import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
 
 import { Panel } from './Panel';
-import { PanelType } from './Panel.types';
 
 let div: HTMLElement;
 

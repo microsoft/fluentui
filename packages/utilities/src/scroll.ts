@@ -1,5 +1,6 @@
 import { getDocument } from './dom';
 import { mergeStyles } from '@uifabric/merge-styles';
+import { EventGroup } from './EventGroup';
 
 let _scrollbarWidth: number;
 let _bodyScrollDisabledCount = 0;
@@ -59,14 +60,14 @@ const _makeElementScrollAllower = () => {
     }
   };
 
-  return (element: HTMLElement | null): void => {
+  return (element: HTMLElement | null, events: EventGroup): void => {
     if (!element) {
       return;
     }
 
     element.style.overflowY = 'auto';
-    element.addEventListener('touchstart', _saveClientY);
-    element.addEventListener('touchmove', _preventOverscrolling);
+    events.on(element, 'touchstart', _saveClientY);
+    events.on(element, 'touchmove', _preventOverscrolling);
 
     _element = element;
   };
