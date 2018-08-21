@@ -40,7 +40,7 @@ import {
   ContextualMenuButton,
   ContextualMenuAnchor
 } from './ContextualMenuItemWrapper/index';
-import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
+import { IProcessedStyleSet } from '../../Styling';
 
 const getClassNames = classNamesFunction<IContextualMenuStyleProps, IContextualMenuStyles>();
 

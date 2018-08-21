@@ -3,7 +3,7 @@ import { hasSubmenu, getIsChecked } from '../../utilities/contextualMenu/index';
 import { BaseComponent, getRTL } from '../../Utilities';
 import { Icon } from '../../Icon';
 import { IContextualMenuItemProps, IContextualMenuItemStyles, IMenuItemClassNames } from './ContextualMenuItem.types';
-import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
+import { IProcessedStyleSet } from '../../Styling';
 
 export class ContextualMenuItemBase extends BaseComponent<IContextualMenuItemProps, {}> {
   private _classNames: IProcessedStyleSet<IContextualMenuItemStyles> | IMenuItemClassNames;
