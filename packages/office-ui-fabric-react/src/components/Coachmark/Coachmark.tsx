@@ -28,7 +28,7 @@ import {
   ICoachmarkStyles,
   ICoachmarkStyleProps
 } from './Coachmark.styles';
-import { FocusZone } from '../../FocusZone';
+import { FocusTrapZone } from '../../FocusTrapZone';
 
 const getClassNames = classNamesFunction<ICoachmarkStyleProps, ICoachmarkStyles>();
 
@@ -132,7 +132,7 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> i
   private _translateAnimationContainer = createRef<HTMLDivElement>();
   private _ariaAlertContainer = createRef<HTMLDivElement>();
   private _positioningContainer = createRef<IPositioningContainer>();
-  private _focusZone = createRef<FocusZone>();
+  private _focusTrapZone = createRef<FocusTrapZone>();
 
   /**
    * The target element the mouse would be in
@@ -249,7 +249,11 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> i
                     color={color}
                   />
                 )}
-                <FocusZone componentRef={this._focusZone} isCircularNavigation={true}>
+                <FocusTrapZone
+                  componentRef={this._focusTrapZone}
+                  isClickableOutsideFocusTrap={true}
+                  forceFocusInsideTrap={false}
+                >
                   <div
                     className={classNames.entityHost}
                     tabIndex={-1}
@@ -278,7 +282,7 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> i
                       {children}
                     </div>
                   </div>
-                </FocusZone>
+                </FocusTrapZone>
               </div>
             </div>
           </div>
@@ -346,8 +350,8 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> i
           }, 0);
         }
         this._async.setTimeout(() => {
-          if (this._focusZone.current) {
-            this._focusZone.current.focus();
+          if (this._focusTrapZone.current) {
+            this._focusTrapZone.current.focus();
           }
         }, 1000);
       }
