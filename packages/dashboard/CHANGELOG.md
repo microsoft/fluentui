@@ -1,6 +1,31 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Wed, 15 Aug 2018 10:26:31 GMT and should not be manually modified.
+This log was last generated on Mon, 20 Aug 2018 10:26:10 GMT and should not be manually modified.
+
+## 0.15.5
+Mon, 20 Aug 2018 10:26:10 GMT
+
+### Patches
+
+- Replaced the OverflowSet with IconButton and removed the paddingBottom css in ThumbnailList added the  marign Bottom css.
+- minor css changes to body text and recommendation styles
+
+## 0.15.4
+Fri, 17 Aug 2018 10:26:39 GMT
+
+### Patches
+
+- ThumbnailList click target size issue fix
+
+## 0.15.3
+Thu, 16 Aug 2018 10:26:16 GMT
+
+### Patches
+
+- Various styling fixes for Dashboard cards
+- update leftNav style change
+- fix leftNav styling bugs
+- patch leftNav styling per PM feedback
 
 ## 0.15.2
 Wed, 15 Aug 2018 10:26:31 GMT

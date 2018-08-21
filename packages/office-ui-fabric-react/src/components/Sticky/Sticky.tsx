@@ -201,7 +201,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       // Can sticky bottom if the scrollablePane - total sticky footer height is smaller than the sticky's distance from the top of the pane
       if (this.canStickyBottom && container.clientHeight - footerStickyContainer.offsetHeight <= this.distanceFromTop) {
         isStickyBottom =
-          this.distanceFromTop - container.scrollTop >
+          this.distanceFromTop - container.scrollTop >=
           this._getStickyDistanceFromTopForFooter(container, footerStickyContainer);
       }
 

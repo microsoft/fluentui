@@ -383,6 +383,9 @@ export enum PersonaInitialsColor {
   pink = 8,
   magenta = 9,
   purple = 10,
+  /**
+   * Black is a color that can result in offensive persona coins with some initials combinations, so it can only be set with overrides
+   */
   black = 11,
   orange = 12,
   /**
@@ -394,5 +397,6 @@ export enum PersonaInitialsColor {
    * Transparent is not intended to be used with typical initials due to accessibility issues.
    * Its primary use is for overflow buttons, so it is considered a reserved color and can only be set with overrides.
    */
-  transparent = 15
+  transparent = 15,
+  violet = 16
 }

@@ -315,7 +315,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       minimumPixelsForDrag,
       getGroupHeight,
       styles,
-      theme
+      theme,
+      cellStyleProps = DEFAULT_CELL_STYLE_PROPS
     } = this.props;
     const { adjustedColumns, isCollapsed, isSizing, isSomeGroupExpanded } = this.state;
     const { _selection: selection, _dragDropHelper: dragDropHelper } = this;
@@ -408,7 +409,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
                   viewport: viewport,
                   columnReorderProps: columnReorderProps,
                   minimumPixelsForDrag: minimumPixelsForDrag,
-                  cellStyleProps: DEFAULT_CELL_STYLE_PROPS
+                  cellStyleProps: cellStyleProps
                 },
                 this._onRenderDetailsHeader
               )}
@@ -577,6 +578,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
   private _onHeaderKeyDown(ev: React.KeyboardEvent<HTMLElement>): void {
     if (ev.which === KeyCodes.down) {
       if (this._focusZone.current && this._focusZone.current.focus()) {
+        // select the first item in list after down arrow key event
+        this._selection.setIndexSelected(0, true, false);
         ev.preventDefault();
         ev.stopPropagation();
       }
@@ -914,7 +917,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
   }
 
   /**
-   * Call back function when an element in FocusZone becomes active. It will transalate it into item
+   * Call back function when an element in FocusZone becomes active. It will translate it into item
    * and call onActiveItemChanged callback if specified.
    *
    * @private

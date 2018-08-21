@@ -2,6 +2,180 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.51.0",
+      "tag": "office-ui-fabric-react_v6.51.0",
+      "date": "Tue, 21 Aug 2018 10:28:16 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Josh Chang <coralbue@gmail.com>",
+            "commit": "16b26d26c96cd5e5e2357493a71e4c522623655e",
+            "comment": "BaseButton: Add onFocusCapture to the split button container to focus the container instead of doing it in the menu onClick"
+          },
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "9d35388c28d425292f7f9729b3b6930bc269573d",
+            "comment": "ChoiceGroup: change styles so that label styles do not apply to Label components in onRenderField"
+          },
+          {
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "eb8a15573c926c613d12a665fd6e5257455794ee",
+            "comment": "DetailsList: select first row on down arrow key event"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "a9878d29db805343eed98e1e2c53722a0154a371",
+            "comment": "MaskedTextField: onChange now returns the displayed value vs the entered value"
+          },
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "bef47b722afeb6529a70894fadff44d213c9f3aa",
+            "comment": "Sticky: Fix an edge case causing Sticky footer to wrongly re-calculate it's height."
+          }
+        ],
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "3399908ef83f9b2db6171796062c3ba8e8fb5b7a",
+            "comment": "adds variantBorderHovered and emptyStateBackground semantic slots to theme and variants logic"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.16.0 <7.0.0` to `>=6.17.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.50.2",
+      "tag": "office-ui-fabric-react_v6.50.2",
+      "date": "Mon, 20 Aug 2018 10:26:10 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "9a96023a1a0d96601834a207ca71eda690a7696f",
+            "comment": "Don't left-pad DetailsColumn header icons"
+          },
+          {
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "fa1dd5315f51288ed865f1889ad9931cb36985b5",
+            "comment": "DetailsList: add aria-hidden to select all checkbox in single selectionmode"
+          },
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "2b78d201a285b31c1ffd3a3b97f28e5bc59987c3",
+            "comment": "TextField: Fix application of inputClassName lost when component was converted to JS styling."
+          },
+          {
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "b8536e17bf567bfee61abdc1493ea5f0f937028c",
+            "comment": "Use role=\"alert\" instead of aria-live=\"assertive\" on error message container for TextField."
+          },
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "43891e7eb389207e5ae6da3198abf7d01e9c72db",
+            "comment": "remove unnecessary export in detailslist"
+          },
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "5e746d1e53bcc5a22a37dbcbe86f0ee29f637386",
+            "comment": "Panel: remove selected media queries to ensure that custom panels are always right-aligned"
+          },
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "4ab70f3f71cbeff9c04e823fd7dfe4456f8363ba",
+            "comment": "Autofill: prevent onInputChange from being called on IE11 inputs with a placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.50.1",
+      "tag": "office-ui-fabric-react_v6.50.1",
+      "date": "Fri, 17 Aug 2018 15:00:40 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "5fcee6bd719ae7d94493ac40bd8d86e8df981a7b",
+            "comment": "Decouple ShimmeredDetailsList from DetailsList"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.50.0",
+      "tag": "office-ui-fabric-react_v6.50.0",
+      "date": "Fri, 17 Aug 2018 10:26:39 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "ElianaLiberman <40306431+ElianaLiberman@users.noreply.github.com>",
+            "commit": "76eac480037ace06c7aceef668914b6b0a6b2e19",
+            "comment": "Date is no longer selected when click on 'Today'. That behavior is still allowed passing a boolean argument"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "8234e8783d56b5c903e69b8229ec9b57373b2815",
+            "comment": "ChoiceGroup: Fix bug that errors on Array.find as it does not exist in IE11."
+          },
+          {
+            "author": "Marius Tennøe <mariust@outlook.com>",
+            "commit": "026e7cf827b43f76625668c55c2006f4c9e39c96",
+            "comment": "Replaced black with violet in the personacoin pallette to avoid potential offensive personacoin combinations"
+          },
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "b80c36efd5924481ef97a3c49c7499d0c7ad95dc",
+            "comment": "Panel: add max-width to fixed Panel width styles"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.49.4",
+      "tag": "office-ui-fabric-react_v6.49.4",
+      "date": "Thu, 16 Aug 2018 10:26:16 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "a6430b14d1d8d3a392cb26e7bb5920f366e551ec",
+            "comment": "Button: fix aria properties so that unit tests pass"
+          },
+          {
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "46d3ac40105ffdc297cd2fe554a26b4d9401ee04",
+            "comment": "DetailsList: selectionMode for groups is none if checkboxvisibility is hidden"
+          },
+          {
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "51fad52381d8988b35fe9d6c4d92736fa6d9d424",
+            "comment": "DetailsList: remove related section from demo page"
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "0f567e05952c6b50c691df2fb72d100b5e525d9e",
+            "comment": "FocusZone: Fix Tabbing behavior when in RTL"
+          },
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "b507b626458c172a92e37db6aa255fa78bf6c71e",
+            "comment": "Panel: change click listener to mousedown listener so that Panels aren't dismissed on mouseup"
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "a2d559165c4159e0c80678e97baf66b2b8b04981",
+            "comment": "Ensure SelectionZone selects item before opening context menu"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.49.3",
       "tag": "office-ui-fabric-react_v6.49.3",
       "date": "Wed, 15 Aug 2018 10:26:31 GMT",

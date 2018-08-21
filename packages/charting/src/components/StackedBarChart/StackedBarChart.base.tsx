@@ -20,20 +20,8 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
   private _colors: string[];
   private _classNames: IProcessedStyleSet<IStackedBarChartStyles>;
 
-  constructor(props: IStackedBarChartProps) {
-    super(props);
-    const { theme, className, styles, width, barHeight } = props;
-
-    const { palette } = theme!;
-    this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
-    this._classNames = getClassNames(styles!, {
-      theme: theme!,
-      width: width!,
-      barHeight: barHeight!,
-      className
-    });
-  }
   public render(): JSX.Element {
+    this._adjustProps();
     const { data, width, barHeight, chartTitle, hideNumberDisplay, hideLegend } = this.props;
 
     const bars = this._createBars(data!, width!, barHeight!);
@@ -74,6 +62,19 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         {showLegend && <div className={this._classNames.legendContainer}>{legendBar}</div>}
       </div>
     );
+  }
+
+  private _adjustProps(): void {
+    const { theme, className, styles, width, barHeight } = this.props;
+
+    const { palette } = theme!;
+    this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
+    this._classNames = getClassNames(styles!, {
+      theme: theme!,
+      width: width!,
+      barHeight: barHeight!,
+      className
+    });
   }
 
   private _createBars(data: IDataPoint[], width: number, barHeight: number): JSX.Element[] {

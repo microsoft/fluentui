@@ -8,6 +8,4 @@ export * from './DetailsRow.base';
 export * from './DetailsRow.types';
 export * from './DetailsRowCheck';
 export * from './DetailsRowCheck.types';
-export * from './ShimmeredDetailsList';
-export * from './ShimmeredDetailsList.base';
 export * from './DetailsFooter.types';
