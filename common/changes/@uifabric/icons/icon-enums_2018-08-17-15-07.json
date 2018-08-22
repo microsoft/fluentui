@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/icons",
+      "comment": "Add IconNamesInput alongside IconNames const enum",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/icons",
+  "email": "tmichon@microsoft.com"
+}

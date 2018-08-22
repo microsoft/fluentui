@@ -1,6 +1,28 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 20 Aug 2018 10:26:10 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Aug 2018 20:36:27 GMT and should not be manually modified.
+
+## 6.51.1
+Tue, 21 Aug 2018 20:36:27 GMT
+
+### Patches
+
+- Sticky: Fix logic when Sticky on first render is at most top position to get it sorted properly.
+
+## 6.51.0
+Tue, 21 Aug 2018 10:28:16 GMT
+
+### Minor changes
+
+- adds variantBorderHovered and emptyStateBackground semantic slots to theme and variants logic
+
+### Patches
+
+- BaseButton: Add onFocusCapture to the split button container to focus the container instead of doing it in the menu onClick
+- ChoiceGroup: change styles so that label styles do not apply to Label components in onRenderField
+- DetailsList: select first row on down arrow key event
+- MaskedTextField: onChange now returns the displayed value vs the entered value
+- Sticky: Fix an edge case causing Sticky footer to wrongly re-calculate it's height.
 
 ## 6.50.2
 Mon, 20 Aug 2018 10:26:10 GMT

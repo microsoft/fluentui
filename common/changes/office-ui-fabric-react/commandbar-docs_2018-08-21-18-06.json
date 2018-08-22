@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsList: select first row on down arrow key event",
+      "comment": "CommandBar: Update documentation page",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "naethell@microsoft.com"
+  "email": "mgodbolt@microsoft.com"
 }

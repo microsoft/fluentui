@@ -2,6 +2,28 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.15.6",
+      "tag": "@uifabric/dashboard_v0.15.6",
+      "date": "Tue, 21 Aug 2018 20:36:27 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "exchangeadmin <yuz@microsoft.com>",
+            "commit": "d87dcdd496f0a4e8890b978a089b0676e4273073",
+            "comment": "fix leftNav styles per PM feedback"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.24.2 <7.0.0` to `>=6.24.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.51.0 <7.0.0` to `>=6.51.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.15.5",
       "tag": "@uifabric/dashboard_v0.15.5",
       "date": "Mon, 20 Aug 2018 10:26:10 GMT",
