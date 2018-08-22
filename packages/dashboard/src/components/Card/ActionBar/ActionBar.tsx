@@ -31,7 +31,6 @@ export class ActionBar extends React.Component<IActionBarProps, {}> {
       const actionItem: IActionItem = {
         title: action.title,
         action: action.action,
-        primary: action.primary,
         key: index
       };
       dataItems.push(actionItem);
