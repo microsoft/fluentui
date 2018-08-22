@@ -98,18 +98,6 @@ export interface IDashboardGridLayoutProps {
   onBreakPointChange?(newBreakpoint: string, newCols: number): void;
 }
 
-export interface IDashboardGridLayoutState {
-  /**
-   * All layouts for different breakpoints
-   */
-  layouts: Layouts;
-
-  /**
-   * The current layout used in the UI
-   */
-  currentLayout: Layout[];
-}
-
 export interface IDashboardGridSectionLayoutProps extends IDashboardGridLayoutProps {
   /**
    * The sections
@@ -128,15 +116,8 @@ export interface IDashboardGridSectionLayoutProps extends IDashboardGridLayoutPr
   isCollapsible?: boolean;
 
   /**
-   * On section change. Not implemented yet
+   * On section change.
    * @param newMapping
    */
-  onSectionChange?(newMapping: DashboardSectionMapping): void;
-}
-
-export interface IDashboardGridSectionLayoutState extends IDashboardGridLayoutState {
-  /**
-   * The section key to card key mapping
-   */
-  sectionMapping: DashboardSectionMapping;
+  onSectionChange?(currentLayout: Layout[], allLayouts: Layouts, sectionMapping?: DashboardSectionMapping): void;
 }

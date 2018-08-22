@@ -148,14 +148,15 @@ const mediumTallContentAreaList: ICardContentDetails[] = [
   }
 ];
 
-const header = {
-  headerText: 'Header Text ',
-  annotationText: 'Annotation Text '
+const getHeader = (name: string) => {
+  return {
+    headerText: 'Card ' + name,
+    annotationText: 'Annotation Text '
+  };
 };
 
 export interface IDashboardGridLayoutSectionsNoncollapsibleExampleState {
   sectionMapping: DashboardSectionMapping;
-  layouts: DashboardGridBreakpointLayouts;
 }
 
 export class DashboardGridLayoutSectionsNoncollapsibleExample extends React.Component<
@@ -169,8 +170,7 @@ export class DashboardGridLayoutSectionsNoncollapsibleExample extends React.Comp
         section1: ['0', '1'],
         section2: ['2'],
         section3: ['3', '4']
-      },
-      layouts: this._getLayout()
+      }
     };
   }
 
@@ -182,7 +182,6 @@ export class DashboardGridLayoutSectionsNoncollapsibleExample extends React.Comp
         sections={this._sections()}
         cards={this._cards()}
         onSectionChange={this._onSectionChange}
-        onLayoutChange={this._onLayoutChange}
       />
     );
   }
@@ -216,14 +215,14 @@ export class DashboardGridLayoutSectionsNoncollapsibleExample extends React.Comp
       {
         key: '0',
         cardFrameContent: cardFrameContent,
-        header: header,
+        header: getHeader('0'),
         cardContentList: contentAreaList,
         cardSize: CardSize.small
       },
       {
         key: '1',
         cardFrameContent: cardFrameContent,
-        header: header,
+        header: getHeader('1'),
         cardContentList: mediumTallContentAreaList,
         cardSize: CardSize.mediumTall,
         actions: actions
@@ -231,14 +230,14 @@ export class DashboardGridLayoutSectionsNoncollapsibleExample extends React.Comp
       {
         key: '2',
         cardFrameContent: cardFrameContent,
-        header: header,
+        header: getHeader('2'),
         cardContentList: contentAreaList,
         cardSize: CardSize.small
       },
       {
         key: '3',
         cardFrameContent: cardFrameContent,
-        header: header,
+        header: getHeader('3'),
         cardContentList: contentAreaList,
         cardSize: CardSize.mediumWide,
         actions: actions
@@ -246,7 +245,7 @@ export class DashboardGridLayoutSectionsNoncollapsibleExample extends React.Comp
       {
         key: '4',
         cardFrameContent: cardFrameContent,
-        header: header,
+        header: getHeader('4'),
         cardContentList: largeContentAreaList,
         cardSize: CardSize.large,
         actions: actions
@@ -254,18 +253,20 @@ export class DashboardGridLayoutSectionsNoncollapsibleExample extends React.Comp
     ];
   }
 
-  private _onSectionChange = (newMapping: DashboardSectionMapping): void => {
+  private _onSectionChange = (
+    currentLayout: Layout[],
+    allLayouts: Layouts,
+    sectionMapping: DashboardSectionMapping
+  ): void => {
+    console.log('nonCollapse-currentLayout', currentLayout);
+    console.log('nonCollapse-sectionMapping', sectionMapping);
     this.setState({
       ...this.state,
-      sectionMapping: newMapping
+      sectionMapping: sectionMapping
     });
-  };
-
-  private _onLayoutChange = (currentLayout: Layout[], allLayouts: Layouts): void => {
-    console.log('currentLayout', currentLayout);
-    // save allLayouts to your storage
-    const jsonToSave = JSON.stringify(allLayouts);
-    console.log('jsonToSave', jsonToSave);
+    // For storing the information to local storage:
+    // - this.state.sectionMapping, save to storage.
+    // - transform allLayouts (for all breakpoints) to type of DashboardGridBreakpointLayouts and save to storage.
   };
 
   private _getLayout(): DashboardGridBreakpointLayouts {

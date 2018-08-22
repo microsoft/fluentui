@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Responsive, WidthProvider, Layout, Layouts } from 'react-grid-layout';
 import {
   IDashboardGridSectionLayoutProps,
-  IDashboardGridSectionLayoutState,
   IDashboardGridLayoutStyles,
   IDashboardCardLayout,
   DashboardSectionMapping
@@ -45,23 +44,20 @@ const sizes: { [P in CardSize]: { w: number; h: number } } = {
   section: { w: 4, h: 1 }
 };
 
-export class DashboardGridSectionLayout extends React.Component<
-  IDashboardGridSectionLayoutProps,
-  IDashboardGridSectionLayoutState
-> {
+export class DashboardGridSectionLayout extends React.Component<IDashboardGridSectionLayoutProps, {}> {
+  /** the list of all section keys */
   private _sectionKeys: string[] = [];
+  /** the size dictionary of all cards. Used to recorver the card size on expand */
   private _cardSizes: { [key: string]: CardSize } = {};
+  /** the current layout given the current browser viewport */
+  private _currentLayout: Layout[];
+  /** the section id to card ids mapping */
+  private _sectionMapping: DashboardSectionMapping = {};
 
   constructor(props: IDashboardGridSectionLayoutProps) {
     super(props);
-    const layout = this._createLayout();
-    this.state = {
-      layouts: layout,
-      currentLayout: this._getFirstDefinedLayout(layout),
-      sectionMapping: {}
-    };
-
-    this._processSections();
+    this._currentLayout = this._getFirstDefinedLayout(this._createLayout());
+    this._sectionMapping = this._processSections();
     this._sectionKeys = this.props.sections.map((section: ISection) => section.key);
     this.props.cards.forEach((card: ICard) => {
       this._cardSizes[card.key] = card.cardSize;
@@ -81,7 +77,7 @@ export class DashboardGridSectionLayout extends React.Component<
         containerPadding={[0, 0]}
         isResizable={this.props.isResizable || false}
         rowHeight={rowHeight}
-        layouts={this.state.layouts}
+        layouts={this._createLayout()}
         verticalCompact={true}
         onLayoutChange={this._onLayoutChanged}
         onBreakpointChange={this.props.onBreakPointChange}
@@ -93,51 +89,49 @@ export class DashboardGridSectionLayout extends React.Component<
     );
   }
 
+  /**
+   * On layout changed
+   */
   private _onLayoutChanged = (currentLayout: Layout[], allLayouts: Layouts) => {
-    this.setState({
-      ...this.state,
-      layouts: allLayouts,
-      currentLayout: currentLayout
-    });
-    this._processSections();
-    if (this.props.onLayoutChange) {
-      this.props.onLayoutChange(currentLayout, allLayouts);
+    this._currentLayout = currentLayout;
+    this._sectionMapping = this._processSections();
+    if (this.props.onSectionChange) {
+      this.props.onSectionChange(currentLayout, allLayouts, this._sectionMapping);
     }
   };
 
   /**
    * process the sections when layout is changed.
    */
-  private _processSections(): void {
-    if (this.state.currentLayout) {
+  private _processSections(): DashboardSectionMapping {
+    if (this._currentLayout) {
       const sections: Layout[] = this._getSections();
-      const sectionMapping: DashboardSectionMapping = {};
+      const newsectionMapping: DashboardSectionMapping = {};
 
       if (sections.length > 0) {
         for (let i = 0; i < sections.length; i++) {
           const currentSectionKey = String(sections[i].i);
-          sectionMapping[currentSectionKey] = [];
+          newsectionMapping[currentSectionKey] = [];
 
-          for (let j = 0; j < this.state.currentLayout.length; j++) {
+          for (let j = 0; j < this._currentLayout.length; j++) {
             if (
-              this.state.currentLayout[j].y >= sections[i].y &&
+              this._currentLayout[j].y >= sections[i].y &&
               // either this is the last section, or y smaller than the next section
-              (!sections[i + 1] || this.state.currentLayout[j].y < sections[i + 1].y) &&
+              (!sections[i + 1] || this._currentLayout[j].y < sections[i + 1].y) &&
               currentSectionKey !== undefined &&
-              currentSectionKey !== this.state.currentLayout[j].i &&
-              !this._isSection(this.state.currentLayout[j])
+              currentSectionKey !== this._currentLayout[j].i &&
+              !this._isSection(this._currentLayout[j])
             ) {
-              sectionMapping[currentSectionKey].push(String(this.state.currentLayout[j].i));
+              newsectionMapping[currentSectionKey].push(String(this._currentLayout[j].i));
             }
           }
         }
-        // TODO on section change
-        this.setState({
-          ...this.state,
-          sectionMapping: sectionMapping
-        });
+
+        return newsectionMapping;
       }
     }
+
+    return {};
   }
 
   /** on expand/collapse section
@@ -145,7 +139,7 @@ export class DashboardGridSectionLayout extends React.Component<
    * @param key the key of the section clicked
    */
   private _onExpandCollapseToggled = (expanded: boolean, key: string): void => {
-    if (this.state.sectionMapping && key in this.state.sectionMapping) {
+    if (this._sectionMapping && key in this._sectionMapping) {
       this._expandCollapseLayoutsUnderSection(expanded, key);
     }
   };
@@ -176,7 +170,7 @@ export class DashboardGridSectionLayout extends React.Component<
     if (!this._isLastSection(sectionKey)) {
       delta = this._currentSectionHeight(sectionKey);
     }
-    const newLayOut = JSON.parse(JSON.stringify(this.state.currentLayout)); // deep clone
+    const newLayOut = JSON.parse(JSON.stringify(this._currentLayout)); // deep clone
 
     if (expanded) {
       // if current expanded, toggle to collapse
@@ -205,11 +199,8 @@ export class DashboardGridSectionLayout extends React.Component<
       for (const [k, _] of Object.entries(this.props.layout)) {
         this._updateLayoutsFromLayout(newLayouts, newLayOut, k);
       }
-      this.setState({
-        ...this.state,
-        layouts: newLayouts,
-        currentLayout: newLayOut
-      });
+
+      // TODO update parent state with new layout
     }
   }
 
@@ -219,10 +210,10 @@ export class DashboardGridSectionLayout extends React.Component<
    * @param key the key of the section
    */
   private _currentSectionHeight(key: string): number {
-    const currentSectionY = this.state.currentLayout.filter((layout: Layout) => {
+    const currentSectionY = this._currentLayout.filter((layout: Layout) => {
       return layout.i === key;
     })[0].y;
-    const nextSectionY = this.state.currentLayout.filter((layout: Layout) => {
+    const nextSectionY = this._currentLayout.filter((layout: Layout) => {
       return layout.i === this._sectionKeys[this._sectionKeys.indexOf(key) + 1];
     })[0].y;
 
@@ -264,10 +255,10 @@ export class DashboardGridSectionLayout extends React.Component<
    */
   private _getSections = (): Layout[] => {
     const layouts: Layout[] = [];
-    if (this.state.currentLayout) {
-      for (let i = 0; i < this.state.currentLayout.length; i++) {
-        if (this._isSection(this.state.currentLayout[i])) {
-          layouts.push(this.state.currentLayout[i]);
+    if (this._currentLayout) {
+      for (let i = 0; i < this._currentLayout.length; i++) {
+        if (this._isSection(this._currentLayout[i])) {
+          layouts.push(this._currentLayout[i]);
         }
       }
     }
@@ -283,7 +274,7 @@ export class DashboardGridSectionLayout extends React.Component<
   };
 
   /**
-   * Given a layout object, determin if it is a section
+   * Given a layout object, determine if it is a section
    */
   private _isSection(layout: Layout): boolean {
     return this._sectionKeys.indexOf(String(layout.i)) > -1;

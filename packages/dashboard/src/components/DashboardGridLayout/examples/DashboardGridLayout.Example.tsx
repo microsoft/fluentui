@@ -22,10 +22,7 @@ export class DashboardGridLayoutExample extends React.Component<{}, {}> {
   }
 
   private _onLayoutChange = (currentLayout: Layout[], allLayouts: Layouts): void => {
-    console.log('currentLayout', currentLayout);
-    // save allLayouts to your storage
-    const jsonToSave = JSON.stringify(allLayouts);
-    console.log('jsonToSave', jsonToSave);
+    // save allLayouts to your storage in the type of DashboardGridBreakpointLayouts
   };
 
   private _generateLayout(): DashboardGridBreakpointLayouts {

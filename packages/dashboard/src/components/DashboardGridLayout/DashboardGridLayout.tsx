@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Responsive, WidthProvider, Layout, Layouts } from 'react-grid-layout';
 import {
   IDashboardGridLayoutProps,
-  IDashboardGridLayoutState,
   IDashboardGridLayoutStyles,
   IDashboardCardLayout
 } from './DashboardGridLayout.types';
@@ -42,16 +41,7 @@ const sizes: { [P in CardSize]: { w: number; h: number } } = {
   section: { w: 4, h: 1 }
 };
 
-export class DashboardGridLayout extends React.Component<IDashboardGridLayoutProps, IDashboardGridLayoutState> {
-  constructor(props: IDashboardGridLayoutProps) {
-    super(props);
-
-    this.state = {
-      layouts: this._createLayout(),
-      currentLayout: []
-    };
-  }
-
+export class DashboardGridLayout extends React.Component<IDashboardGridLayoutProps, {}> {
   public render(): JSX.Element {
     const getClassNames = classNamesFunction<IDashboardGridLayoutProps, IDashboardGridLayoutStyles>();
     const classNames = getClassNames(getStyles!, {});
@@ -66,7 +56,7 @@ export class DashboardGridLayout extends React.Component<IDashboardGridLayoutPro
         containerPadding={[0, 0]}
         isResizable={this.props.isResizable || false}
         rowHeight={rowHeight}
-        layouts={this.state.layouts}
+        layouts={this._createLayout()}
         verticalCompact={true}
         onLayoutChange={this._onLayoutChanged}
         onBreakpointChange={this.props.onBreakPointChange}
@@ -79,11 +69,6 @@ export class DashboardGridLayout extends React.Component<IDashboardGridLayoutPro
   }
 
   private _onLayoutChanged = (currentLayout: Layout[], allLayouts: Layouts) => {
-    this.setState({
-      ...this.state,
-      layouts: allLayouts,
-      currentLayout: currentLayout
-    });
     if (this.props.onLayoutChange) {
       this.props.onLayoutChange(currentLayout, allLayouts);
     }

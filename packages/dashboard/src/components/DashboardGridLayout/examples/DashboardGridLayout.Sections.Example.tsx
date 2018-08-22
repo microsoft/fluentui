@@ -13,6 +13,7 @@ import {
   IThumbnailItemProps,
   Priority
 } from '@uifabric/dashboard';
+import { Layout, Layouts } from 'react-grid-layout';
 import { ILegendDataItem } from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
@@ -147,14 +148,15 @@ const mediumTallContentAreaList: ICardContentDetails[] = [
   }
 ];
 
-const header = {
-  headerText: 'Header Text ',
-  annotationText: 'Annotation Text '
+const getHeader = (name: string) => {
+  return {
+    headerText: 'Collapsible Section Card ' + name,
+    annotationText: 'Annotation Text '
+  };
 };
 
 export interface IDashboardGridLayoutSectionsExampleState {
   sectionMapping: DashboardSectionMapping;
-  layouts: DashboardGridBreakpointLayouts;
 }
 
 export class DashboardGridLayoutSectionsExample extends React.Component<{}, IDashboardGridLayoutSectionsExampleState> {
@@ -165,8 +167,7 @@ export class DashboardGridLayoutSectionsExample extends React.Component<{}, IDas
         section1: ['0', '1'],
         section2: ['2'],
         section3: ['3', '4']
-      },
-      layouts: this._getLayout()
+      }
     };
   }
 
@@ -212,14 +213,14 @@ export class DashboardGridLayoutSectionsExample extends React.Component<{}, IDas
       {
         key: '0',
         cardFrameContent: cardFrameContent,
-        header: header,
+        header: getHeader('0'),
         cardContentList: contentAreaList,
         cardSize: CardSize.small
       },
       {
         key: '1',
         cardFrameContent: cardFrameContent,
-        header: header,
+        header: getHeader('1'),
         cardContentList: mediumTallContentAreaList,
         cardSize: CardSize.mediumTall,
         actions: actions
@@ -227,14 +228,14 @@ export class DashboardGridLayoutSectionsExample extends React.Component<{}, IDas
       {
         key: '2',
         cardFrameContent: cardFrameContent,
-        header: header,
+        header: getHeader('2'),
         cardContentList: contentAreaList,
         cardSize: CardSize.small
       },
       {
         key: '3',
         cardFrameContent: cardFrameContent,
-        header: header,
+        header: getHeader('3'),
         cardContentList: contentAreaList,
         cardSize: CardSize.mediumWide,
         actions: actions
@@ -242,7 +243,7 @@ export class DashboardGridLayoutSectionsExample extends React.Component<{}, IDas
       {
         key: '4',
         cardFrameContent: cardFrameContent,
-        header: header,
+        header: getHeader('4'),
         cardContentList: largeContentAreaList,
         cardSize: CardSize.large,
         actions: actions
@@ -250,11 +251,18 @@ export class DashboardGridLayoutSectionsExample extends React.Component<{}, IDas
     ];
   }
 
-  private _onSectionChange = (newMapping: DashboardSectionMapping): void => {
+  private _onSectionChange = (
+    currentLayout: Layout[],
+    allLayouts: Layouts,
+    sectionMapping: DashboardSectionMapping
+  ): void => {
     this.setState({
       ...this.state,
-      sectionMapping: newMapping
+      sectionMapping: sectionMapping
     });
+    // For storing the information to local storage:
+    // - this.state.sectionMapping, save to storage.
+    // - transform allLayouts (for all breakpoints) to type of DashboardGridBreakpointLayouts and save to storage.
   };
 
   private _getLayout(): DashboardGridBreakpointLayouts {
