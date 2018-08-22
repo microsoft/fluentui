@@ -1,7 +1,3 @@
-import { IColumn } from './DetailsList.types';
-import { ISelection } from '../../utilities/selection/index';
-export interface IDetailsFooterProps {
-  columns?: IColumn[];
-  groupNestingDepth?: number;
-  selection?: ISelection;
-}
+import { IDetailsItemProps } from './DetailsRow.types';
+
+export interface IDetailsFooterProps extends IDetailsItemProps {}

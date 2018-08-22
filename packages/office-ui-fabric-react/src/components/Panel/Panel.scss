@@ -192,18 +192,20 @@ $CommandBarHeight: 44px;
   justify-content: flex-end;
 }
 
+.scrollableContent {
+  height: 100%;
+}
+
 // Scrollable content area
 .contentInner {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  overflow-y: hidden;
   display: flex;
   flex-direction: column;
+
+  min-height: 100%;
+
   .rootHasCloseButton & {
     top: $CommandBarHeight;
+    min-height: calc(100% - #{$CommandBarHeight});
   }
 
   -webkit-overflow-scrolling: touch;

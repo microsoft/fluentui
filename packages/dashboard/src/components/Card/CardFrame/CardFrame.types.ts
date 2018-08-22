@@ -100,4 +100,9 @@ export interface ICardFrameStyles {
    * Style for card frame layout(children)
    */
   layout: IStyle;
+
+  /**
+   * Style for ellipsis button for the overflowmenu
+   */
+  ellipsisButtonStyle: IStyle;
 }
