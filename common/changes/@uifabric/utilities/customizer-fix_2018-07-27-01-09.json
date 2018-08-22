@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/utilities",
+      "comment": "Customizer: moving to use React 16 context.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/utilities",
+  "email": "dzearing@microsoft.com"
+}

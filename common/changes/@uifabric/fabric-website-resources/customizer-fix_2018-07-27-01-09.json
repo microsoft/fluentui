@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/fabric-website-resources",
+      "comment": "Updating serve config to respect oufr imports.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/fabric-website-resources",
+  "email": "dzearing@microsoft.com"
+}
