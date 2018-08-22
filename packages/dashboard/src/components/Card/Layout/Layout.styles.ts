@@ -4,7 +4,7 @@ import { CardSize } from '../Card.types';
 export const getStyles = (props: ILayoutProps): ILayoutStyles => {
   const { cardSize, header } = props;
   const isMediumTall: boolean = cardSize === CardSize.mediumTall;
-  const isHeaderPresent: boolean = header === undefined;
+  const isHeaderPresent: boolean = header !== undefined;
   return {
     root: {
       width: '100%',
