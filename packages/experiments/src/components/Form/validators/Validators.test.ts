@@ -68,8 +68,11 @@ describe('Simple form validators test', () => {
     expect(Validators.required(customMessage)(null)).toEqual(customMessage);
     expect(Validators.required(customMessage)(undefined)).toEqual(customMessage);
     expect(Validators.required(customMessage)('')).toEqual(customMessage);
+    expect(Validators.required(customMessage)([])).toEqual(customMessage);
 
     expect(Validators.required(customMessage)(0)).toBeFalsy();
     expect(Validators.required(customMessage)('HelloWorld')).toBeFalsy();
+    expect(Validators.required(customMessage)([1, 2, 3])).toBeFalsy();
+    expect(Validators.required(customMessage)(['a', 'b', 'c'])).toBeFalsy();
   });
 });

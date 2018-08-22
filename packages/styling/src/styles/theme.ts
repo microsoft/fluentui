@@ -160,6 +160,8 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
 
     focusBorder: p.black,
     variantBorder: p.neutralLight,
+    variantBorderHovered: p.neutralTertiary,
+    defaultStateBackground: p.neutralLight,
 
     errorText: !isInverted ? p.redDark : '#ff5f5f',
     warningText: !isInverted ? '#333333' : '#ffffff',

@@ -19,7 +19,7 @@ export class TextPage extends React.Component<IComponentDemoPageProps, {}> {
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={[require<string>('!raw-loader!@uifabric/experiments/src/components/Text/Text.tsx')]}
+            sources={[require<string>('!raw-loader!@uifabric/experiments/src/components/Text/Text.ts')]}
           />
         }
         overview={<div />}

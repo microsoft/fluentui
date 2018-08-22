@@ -9,7 +9,7 @@ export namespace Validators {
   export function required(errorMessage: string): (value?: any | null) => string | undefined {
     'use strict';
     return (value?: any): string | undefined => {
-      if (value === null || value === undefined || value === '') {
+      if (value === null || value === undefined || value === '' || (Array.isArray(value) && value.length === 0)) {
         return errorMessage;
       }
     };

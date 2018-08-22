@@ -475,7 +475,7 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
       id="TextFieldDescription7"
     >
       <div
-        aria-live="assertive"
+        role="alert"
       />
     </span>
   </div>

@@ -306,7 +306,7 @@ exports[`Button renders CompoundButton correctly 1`] = `
   aria-describedby="id__14"
   aria-disabled={undefined}
   aria-label={undefined}
-  aria-labelledby={undefined}
+  aria-labelledby="id__13"
   aria-pressed={undefined}
   className=
       ms-Button

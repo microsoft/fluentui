@@ -11,10 +11,6 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
       {
         width: chartWidth
       },
-      {
-        display: 'flex',
-        flexDirection: 'column'
-      },
       className
     ],
     chart: {

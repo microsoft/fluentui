@@ -85,6 +85,7 @@ exports[`DetailsList renders List correctly 1`] = `
         >
           <div
             aria-colindex={1}
+            aria-hidden={undefined}
             aria-labelledby="header0-check"
             className=
                 ms-DetailsHeader-cell
@@ -661,6 +662,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
         >
           <div
             aria-colindex={1}
+            aria-hidden={undefined}
             aria-labelledby="header6-check"
             className=
                 ms-DetailsHeader-cell
@@ -1237,6 +1239,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
         >
           <div
             aria-colindex={1}
+            aria-hidden={undefined}
             aria-labelledby="header3-check"
             className=
                 ms-DetailsHeader-cell
@@ -2759,7 +2762,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         box-sizing: border-box;
                                         color: #767676;
                                         cursor: default;
-                                        display: flex;
+                                        display: inline-flex;
                                         min-height: 42px;
                                         min-width: 100%;
                                         outline: transparent;
@@ -2951,7 +2954,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         box-sizing: border-box;
                                         color: #767676;
                                         cursor: default;
-                                        display: flex;
+                                        display: inline-flex;
                                         min-height: 42px;
                                         min-width: 100%;
                                         outline: transparent;
@@ -3365,7 +3368,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         box-sizing: border-box;
                                         color: #767676;
                                         cursor: default;
-                                        display: flex;
+                                        display: inline-flex;
                                         min-height: 42px;
                                         min-width: 100%;
                                         outline: transparent;
@@ -3557,7 +3560,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         box-sizing: border-box;
                                         color: #767676;
                                         cursor: default;
-                                        display: flex;
+                                        display: inline-flex;
                                         min-height: 42px;
                                         min-width: 100%;
                                         outline: transparent;
@@ -3749,7 +3752,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         box-sizing: border-box;
                                         color: #767676;
                                         cursor: default;
-                                        display: flex;
+                                        display: inline-flex;
                                         min-height: 42px;
                                         min-width: 100%;
                                         outline: transparent;

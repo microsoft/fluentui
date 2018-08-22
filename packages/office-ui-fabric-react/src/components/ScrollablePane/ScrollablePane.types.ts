@@ -38,6 +38,8 @@ export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement |
    * Sets the initial scroll position of the ScrollablePane
    */
   initialScrollPosition?: number;
+
+  scrollbarVisibility?: ScrollbarVisibility;
 }
 
 export interface IScrollablePaneStyleProps {
@@ -50,6 +52,8 @@ export interface IScrollablePaneStyleProps {
    * Accept custom classNames
    */
   className?: string;
+
+  scrollbarVisibility?: IScrollablePaneProps['scrollbarVisibility'];
 
   // Insert ScrollablePane style props below
 }
@@ -75,4 +79,9 @@ export interface IScrollablePaneStyles {
    * Style set for the contentContainer element.
    */
   contentContainer: IStyle;
+}
+
+export const enum ScrollbarVisibility {
+  auto = 'auto',
+  always = 'always'
 }

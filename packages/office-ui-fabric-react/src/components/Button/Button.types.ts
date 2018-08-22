@@ -409,6 +409,11 @@ export interface IButtonStyles {
   label?: IStyle;
 
   /**
+   * Style override for the text content when the button is hovered.
+   */
+  labelHovered?: IStyle;
+
+  /**
    * Style override for the text content when the button is disabled.
    */
   labelDisabled?: IStyle;

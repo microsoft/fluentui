@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "6.17.0",
+      "tag": "@uifabric/styling_v6.17.0",
+      "date": "Tue, 21 Aug 2018 10:28:16 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "3399908ef83f9b2db6171796062c3ba8e8fb5b7a",
+            "comment": "adds variantBorderHovered and emptyStateBackground semantic slots to theme and variants logic"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.16.0",
       "tag": "@uifabric/styling_v6.16.0",
       "date": "Mon, 13 Aug 2018 03:43:25 GMT",

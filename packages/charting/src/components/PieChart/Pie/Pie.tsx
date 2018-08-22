@@ -19,8 +19,8 @@ export class Pie extends React.Component<IPieProps, {}> {
 
   constructor(props: IPieProps) {
     super(props);
-    this.colors = scale.scaleOrdinal().range(this.props.colors!);
   }
+
   public arcGenerator = (d: IArcData, i: number): JSX.Element => {
     return (
       <LabeledArc
@@ -35,13 +35,15 @@ export class Pie extends React.Component<IPieProps, {}> {
 
   public render(): JSX.Element {
     // const getClassNames = classNamesFunction<IPieProps, IPieStyles>();
-    const { pie } = this.props;
+    const { pie, colors, data, width, height } = this.props;
 
-    const piechart = pie(this.props.data),
-      translate = `translate(${this.props.width / 2}, ${this.props.height / 2})`;
+    this.colors = scale.scaleOrdinal().range(colors!);
+
+    const piechart = pie(data),
+      translate = `translate(${width / 2}, ${height / 2})`;
 
     return (
-      <svg width={this.props.width} height={this.props.height}>
+      <svg width={width} height={height}>
         <g transform={translate}>{piechart.map((d: IArcData, i: number) => this.arcGenerator(d, i))}</g>
       </svg>
     );

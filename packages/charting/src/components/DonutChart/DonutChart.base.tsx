@@ -4,7 +4,7 @@ import { IDonutChartProps, IDonutChartStyleProps, IDonutChartStyles } from './Do
 import { Pie } from './Pie/Pie';
 import { IDataPoint } from './DonutChart.types';
 import * as scale from 'd3-scale';
-import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
+import { IProcessedStyleSet, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 const getClassNames = classNamesFunction<IDonutChartStyleProps, IDonutChartStyles>();
 
@@ -12,26 +12,23 @@ export class DonutChartBase extends React.Component<IDonutChartProps, {}> {
   public static defaultProps: Partial<IDonutChartProps> = {
     data: [],
     width: 394,
-    height: 196,
-    legendX: 27.81,
-    legendY: 182
+    height: 196
   };
   private _classNames: IProcessedStyleSet<IDonutChartStyles>;
-  private colors: scale.ScaleOrdinal<string | number, {}>;
+  private _colors: scale.ScaleOrdinal<string | number, {}>;
+
   public render(): JSX.Element {
     const { data, width, height, colors } = this.props;
-    this.colors = scale.scaleOrdinal().range(this.props.colors!);
+    this._colors = scale.scaleOrdinal().range(this.props.colors!);
 
-    const { theme, className, styles, legendX, legendY } = this.props;
+    const { theme, className, styles } = this.props;
     this._classNames = getClassNames(styles!, {
       theme: theme!,
       width: width!,
       height: height!,
-      className,
-      legendX: legendX,
-      legendY: legendY
+      className
     });
-    const legendBar = this._createLegendBars(data!);
+    const legendBars = this._createLegendBars(data!);
     const radius = Math.min(width!, height!) / 2;
     const outerRadius = radius - 10;
     const innerRadius = 40;
@@ -47,20 +44,29 @@ export class DonutChartBase extends React.Component<IDonutChartProps, {}> {
             data={data!}
             colors={colors!}
           />
-          <g className={this._classNames.legend}>{legendBar}</g>
         </svg>
+        <div className={this._classNames.legend}>{legendBars}</div>
       </div>
     );
   }
+
   private _createLegendBars(data: IDataPoint[]): JSX.Element[] {
     const bars = data.map((point: IDataPoint, index: number) => {
+      const color = this._colors(index) as string;
+
+      const boxClass = mergeStyles(this._classNames.legendBox, {
+        background: color
+      });
+
+      const textClass = mergeStyles({
+        color: color
+      });
+
       return (
-        <g key={index}>
-          <rect x={index * 61} y={0} width={12} height={12} fill={`${this.colors(index)}`} />
-          <text x={15 + index * 61} width={61} height={16} y={12} fill={`${this.colors(index)}`}>
-            {point.x}
-          </text>
-        </g>
+        <div key={index} className={this._classNames.legendItem}>
+          <div className={boxClass} />
+          <span className={textClass}>{point.x}</span>
+        </div>
       );
     });
     return bars;

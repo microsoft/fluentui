@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsList: remove related section from demo page",
+      "comment": "DetailsList: Account for grouping depth of more than one in width calculation.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "naethell@microsoft.com"
+  "email": "jeffking@gmail.com"
 }
