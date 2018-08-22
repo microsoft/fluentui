@@ -201,7 +201,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               >
                 <Icon iconName={rightNavigationIcon} />
               </button>
-              {showCloseButton ? (
+              {showCloseButton && (
                 <button
                   className={css('ms-DatePicker-closeButton js-closeButton', styles.closeButton)}
                   onClick={this._onClose}
@@ -211,8 +211,6 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                 >
                   <Icon iconName={closeNavigationIcon} />
                 </button>
-              ) : (
-                ''
               )}
             </div>
           </div>
