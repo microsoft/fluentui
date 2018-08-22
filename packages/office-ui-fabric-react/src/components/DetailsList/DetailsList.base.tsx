@@ -801,10 +801,10 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     props: IDetailsListProps,
     firstIndex: number
   ): IColumn[] {
-    const { selectionMode, checkboxVisibility, groups } = props;
+    const { selectionMode, checkboxVisibility } = props;
     const rowCheckWidth =
       selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden ? CHECKBOX_WIDTH : 0;
-    const groupExpandWidth = groups ? GROUP_EXPAND_WIDTH : 0;
+    const groupExpandWidth = this._getGroupNestingDepth() * GROUP_EXPAND_WIDTH;
     let totalWidth = 0; // offset because we have one less inner padding.
     const availableWidth = viewportWidth - (rowCheckWidth + groupExpandWidth);
     const adjustedColumns: IColumn[] = newColumns.map((column, i) => {
