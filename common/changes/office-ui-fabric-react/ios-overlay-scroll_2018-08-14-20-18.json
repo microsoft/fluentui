@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Panel: add max-width to fixed Panel width styles",
+      "comment": "Modal, Panel: allow scrolling within Modal and Panel while disabling scrolling on the body (ios)",
       "type": "patch"
     }
   ],

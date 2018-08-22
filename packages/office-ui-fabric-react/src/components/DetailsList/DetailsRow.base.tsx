@@ -197,7 +197,7 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowProps, IDetailsRowS
       : '';
     const ariaLabel = getRowAriaLabel ? getRowAriaLabel(item) : undefined;
     const ariaDescribedBy = getRowAriaDescribedBy ? getRowAriaDescribedBy(item) : undefined;
-    const canSelect = selection.canSelectItem!(item);
+    const canSelect = !!selection && selection.canSelectItem!(item, itemIndex);
     const isContentUnselectable = selectionMode === SelectionMode.multiple;
     const showCheckbox = selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden;
     const ariaSelected = selectionMode === SelectionMode.none ? undefined : isSelected;
@@ -333,8 +333,8 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowProps, IDetailsRowS
     const { itemIndex, selection } = props;
 
     return {
-      isSelected: selection.isIndexSelected(itemIndex),
-      isSelectionModal: !!selection.isModal && selection.isModal()
+      isSelected: !!selection && selection.isIndexSelected(itemIndex),
+      isSelectionModal: !!selection && !!selection.isModal && selection.isModal()
     };
   }
 
@@ -351,7 +351,9 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowProps, IDetailsRowS
   private _onToggleSelection(): void {
     const { selection } = this.props;
 
-    selection.toggleIndexSelected(this.props.itemIndex);
+    if (selection && this.props.itemIndex > -1) {
+      selection.toggleIndexSelected(this.props.itemIndex);
+    }
   }
 
   private _onRootRef = (focusZone: FocusZone): void => {

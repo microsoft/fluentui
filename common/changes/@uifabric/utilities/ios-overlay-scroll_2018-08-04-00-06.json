@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/utilities",
+      "comment": "Scroll: disable ios body scrolling in disableBodyScroll",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/utilities",
+  "email": "kakje@microsoft.com"
+}

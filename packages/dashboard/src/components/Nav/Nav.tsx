@@ -134,10 +134,11 @@ class NavComponent extends NavBase {
     }
 
     const linkText = this.getLinkText(link, this.props.showMore);
-    const isChildLinkSelected = this.isChildLinkSelected(link);
 
     // if allowed, auto expand if the child is selected
-    link.isExpanded = link.disableAutoExpand ? link.isExpanded : isChildLinkSelected;
+    // per PM/Dsigner feedback, let user to control expand/collapse state, so comment out next line.
+    // const isChildLinkSelected = this.isChildLinkSelected(link);
+    // link.isExpanded = link.disableAutoExpand ? link.isExpanded : isChildLinkSelected;
 
     // enable auto expand until the next manual expand disables the auto expand
     link.disableAutoExpand = true;

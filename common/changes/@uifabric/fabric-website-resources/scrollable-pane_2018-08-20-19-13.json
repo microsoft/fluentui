@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/fabric-website-resources",
+      "comment": "Allow examples to provide their own scroll mechanic",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/fabric-website-resources",
+  "email": "tmichon@microsoft.com"
+}

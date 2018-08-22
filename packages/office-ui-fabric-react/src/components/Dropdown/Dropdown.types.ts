@@ -14,7 +14,7 @@ export interface IDropdown {
   focus: (shouldOpenOnFocus?: boolean) => void;
 }
 
-export interface IDropdownProps extends ISelectableDroppableTextProps<HTMLDivElement> {
+export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown> {
   /**
    * Input placeholder text. Displayed until option is selected.
    */

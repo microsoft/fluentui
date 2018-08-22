@@ -3,13 +3,13 @@ import * as React from 'react';
 import { ComponentPage, ExampleCard, IComponentDemoPageProps, PropertiesTableSet } from '@uifabric/example-app-base';
 
 import { StackedBarChartBasicExample } from './examples/StackedBarChart.Basic.Example';
-import { StackedBarChartMultiExample } from './examples/StackedBarChart.Multi.Example';
+import { StackedBarChartMultipleExample } from './examples/StackedBarChart.Multiple.Example';
+import { StackedBarChartDynamicExample } from './examples/StackedBarChart.Dynamic.Example';
 import { MultiStackedBarChartExample } from './examples/MultiStackedBarChart.Example';
 
 const StackedBarChartBasicExampleCode = require('!raw-loader!@uifabric/charting/src/components/StackedBarChart/examples/StackedBarChart.Basic.Example.tsx') as string;
-
-const StackedBarChartMultiExampleCode = require('!raw-loader!@uifabric/charting/src/components/StackedBarChart/examples/StackedBarChart.Multi.Example.tsx') as string;
-
+const StackedBarChartMultipleExampleCode = require('!raw-loader!@uifabric/charting/src/components/StackedBarChart/examples/StackedBarChart.Multiple.Example.tsx') as string;
+const StackedBarChartDynamicExampleCode = require('!raw-loader!@uifabric/charting/src/components/StackedBarChart/examples/StackedBarChart.Dynamic.Example.tsx') as string;
 const MultiStackedBarChartExampleCode = require('!raw-loader!@uifabric/charting/src/components/StackedBarChart/examples/MultiStackedBarChart.Example.tsx') as string;
 
 export class StackedBarChartPage extends React.Component<IComponentDemoPageProps, {}> {
@@ -20,13 +20,16 @@ export class StackedBarChartPage extends React.Component<IComponentDemoPageProps
         componentName="StackedBarChartExample"
         exampleCards={
           <div>
-            <ExampleCard title="StackedBarChart" code={StackedBarChartBasicExampleCode}>
+            <ExampleCard title="StackedBarChart basic" code={StackedBarChartBasicExampleCode}>
               <StackedBarChartBasicExample />
             </ExampleCard>
-            <ExampleCard title="StackedBarChart" code={StackedBarChartMultiExampleCode}>
-              <StackedBarChartMultiExample />
+            <ExampleCard title="StackedBarChart with multiple data points" code={StackedBarChartMultipleExampleCode}>
+              <StackedBarChartMultipleExample />
             </ExampleCard>
-            <ExampleCard title="MultipleStackedBarCharts" code={MultiStackedBarChartExampleCode}>
+            <ExampleCard title="StackedBarChart dynamic" code={StackedBarChartDynamicExampleCode}>
+              <StackedBarChartDynamicExample />
+            </ExampleCard>
+            <ExampleCard title="Multiple StackedBarCharts" code={MultiStackedBarChartExampleCode}>
               <MultiStackedBarChartExample />
             </ExampleCard>
           </div>

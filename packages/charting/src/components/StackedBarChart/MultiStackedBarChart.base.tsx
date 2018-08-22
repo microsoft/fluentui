@@ -18,10 +18,6 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   private _defaultPaletteColors: string[];
   private _classNames: IProcessedStyleSet<IMultiStackedBarChartStyles>;
 
-  constructor(props: IMultiStackedBarChartProps) {
-    super(props);
-  }
-
   public render(): JSX.Element {
     const { data, chartTitles, legendData, theme } = this.props;
 

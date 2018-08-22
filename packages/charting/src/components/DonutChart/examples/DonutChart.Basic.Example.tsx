@@ -1,6 +1,6 @@
 import * as React from 'react';
-
 import { DonutChart, IDonutChartProps } from '@uifabric/charting/lib/DonutChart';
+import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export class DonutChartBasicExample extends React.Component<IDonutChartProps, {}> {
   constructor(props: IDonutChartProps) {
@@ -8,12 +8,8 @@ export class DonutChartBasicExample extends React.Component<IDonutChartProps, {}
   }
 
   public render(): JSX.Element {
-    return <div>{this._basicExample()}</div>;
-  }
-
-  private _basicExample(): JSX.Element {
     const points = [{ y: 50, x: 'A' }, { y: 25, x: 'B' }, { y: 25, x: 'C' }];
-    const colors = ['#FF5733', '#176213', '#193BBD'];
+    const colors = [DefaultPalette.red, DefaultPalette.blueLight, DefaultPalette.greenLight];
     return <DonutChart data={points} colors={colors} />;
   }
 }
