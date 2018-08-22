@@ -2,6 +2,25 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.15.7",
+      "tag": "@uifabric/dashboard_v0.15.7",
+      "date": "Wed, 22 Aug 2018 05:10:19 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "898e167120bcb0891d4d22fb1b1ee500e83197be",
+            "comment": "css fixes for card"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.51.1 <7.0.0` to `>=6.52.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.15.6",
       "tag": "@uifabric/dashboard_v0.15.6",
       "date": "Tue, 21 Aug 2018 20:36:27 GMT",

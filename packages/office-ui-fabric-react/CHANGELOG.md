@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 21 Aug 2018 20:36:27 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Aug 2018 05:10:19 GMT and should not be manually modified.
+
+## 6.52.0
+Wed, 22 Aug 2018 05:10:19 GMT
+
+### Minor changes
+
+- Button: Added labelHovered and fixed menuIconCheckedHovered ButtonStyles
+
+### Patches
+
+- CommandBar: Update documentation page
+- Adding role="Grid" so that VoiceOver within Safari works for Calendar and DatePicker
 
 ## 6.51.1
 Tue, 21 Aug 2018 20:36:27 GMT
