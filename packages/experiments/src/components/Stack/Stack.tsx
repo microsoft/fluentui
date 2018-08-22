@@ -10,7 +10,17 @@ const StackItemType = (<StackItem /> as React.ReactElement<IStackItemProps> &
   IStyleableComponentProps<IStackItemProps, IStackItemStyles>).type;
 
 const view = (props: IViewComponentProps<IStackProps, IStackStyles>) => {
-  const { renderAs: RootType = 'div', classNames, gap, horizontal, shrinkItems, ...rest } = props;
+  const {
+    renderAs: RootType = 'div',
+    classNames,
+    gap,
+    horizontal,
+    shrinkItems,
+    verticalAlignment,
+    horizontalAlignment,
+    grow,
+    ...rest
+  } = props;
 
   const stackChildren: (React.ReactChild | null)[] = React.Children.map(
     props.children,
