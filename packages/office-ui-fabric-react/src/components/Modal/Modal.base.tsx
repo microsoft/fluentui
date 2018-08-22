@@ -40,7 +40,6 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       isOpen: props.isOpen,
       isVisible: props.isOpen
     };
-    this._allowScrollOnModal = this._allowScrollOnModal.bind(this);
   }
 
   public componentWillReceiveProps(newProps: IModalProps): void {
@@ -76,10 +75,6 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
         isVisible: true
       });
     }
-  }
-
-  public componentWillUnmount() {
-    this._events.dispose();
   }
 
   public render(): JSX.Element | null {
@@ -157,15 +152,14 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
   }
 
   // Allow the user to scroll within the modal but not on the body
-  private _allowScrollOnModal(elt: HTMLDivElement | null): void {
+  private _allowScrollOnModal = (elt: HTMLDivElement | null): void => {
     if (elt) {
-      this._scrollableContent = elt;
-      allowScrollOnElement(this._scrollableContent, this._events);
+      allowScrollOnElement(elt, this._events);
     } else {
       this._events.off(this._scrollableContent);
-      this._scrollableContent = null;
     }
-  }
+    this._scrollableContent = elt;
+  };
 
   // Watch for completed animations and set the state
   private _onModalClose(): void {

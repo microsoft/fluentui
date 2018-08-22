@@ -57,8 +57,6 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
       isAnimating: false,
       id: getId('Panel')
     };
-
-    this._allowScrollOnPanel = this._allowScrollOnPanel.bind(this);
   }
 
   public componentDidMount(): void {
@@ -92,10 +90,6 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
         this.dismiss();
       }
     }
-  }
-
-  public componentWillUnmount() {
-    this._events.dispose();
   }
 
   public render(): JSX.Element | null {
@@ -252,15 +246,14 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
   };
 
   // Allow the user to scroll within the panel but not on the body
-  private _allowScrollOnPanel(elt: HTMLDivElement | null): void {
+  private _allowScrollOnPanel = (elt: HTMLDivElement | null): void => {
     if (elt) {
-      this._scrollableContent = elt;
-      allowScrollOnElement(this._scrollableContent, this._events);
+      allowScrollOnElement(elt, this._events);
     } else {
       this._events.off(this._scrollableContent);
-      this._scrollableContent = null;
     }
-  }
+    this._scrollableContent = elt;
+  };
 
   private _shouldListenForOuterClick(props: IPanelProps): boolean {
     return !!props.isBlocking && !!props.isOpen;
