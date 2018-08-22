@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Sat, 11 Aug 2018 01:52:57 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Aug 2018 11:23:37 GMT and should not be manually modified.
+
+## 5.33.0
+Wed, 22 Aug 2018 11:23:37 GMT
+
+### Minor changes
+
+- adds variantBorderHovered and emptyStateBackground semantic slots to theme and variants logic
 
 ## 5.32.0
 Sat, 11 Aug 2018 01:52:57 GMT

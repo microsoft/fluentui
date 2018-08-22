@@ -1,6 +1,13 @@
 # Change Log - @uifabric/variants
 
-This log was last generated on Tue, 21 Aug 2018 11:25:20 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Aug 2018 11:23:37 GMT and should not be manually modified.
+
+## 5.8.0
+Wed, 22 Aug 2018 11:23:37 GMT
+
+### Minor changes
+
+- adds variantBorderHovered and emptyStateBackground semantic slots to theme and variants logic
 
 ## 5.7.0
 Tue, 21 Aug 2018 11:25:20 GMT
