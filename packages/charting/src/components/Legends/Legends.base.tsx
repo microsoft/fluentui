@@ -60,7 +60,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     this.props.legends.map((legend: ILegend, index: number) => {
       const legendItem: ILegendItem = {
         title: legend.title,
-        action: legend.action,
+        action: legend.action!,
         color: legend.color,
         key: index
       };

@@ -48,7 +48,7 @@ export interface ILegend {
   /**
    * Defines the function that is executed on clicking this legend
    */
-  action: VoidFunction;
+  action?: VoidFunction;
 
   /**
    * The color for the legend

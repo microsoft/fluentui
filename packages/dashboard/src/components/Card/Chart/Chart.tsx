@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { IChartInternalProps, ChartType, ChartHeight, ChartWidth } from './Chart.types';
-import { HorizontalBarChart } from '@uifabric/charting/lib/HorizontalBarChart';
-import { LineChart } from '@uifabric/charting/lib/LineChart';
-import { VerticalBarChart } from '@uifabric/charting/lib/VerticalBarChart';
-import { DonutChart } from '@uifabric/charting/lib/DonutChart';
-import { PieChart } from '@uifabric/charting/lib/PieChart';
 import {
-  StackedBarChart,
+  DonutChart,
+  HorizontalBarChart,
   IDataPoint,
   ILegendDataItem,
-  MultiStackedBarChart
-} from '@uifabric/charting/lib/StackedBarChart';
+  LineChart,
+  MultiStackedBarChart,
+  PieChart,
+  StackedBarChart,
+  VerticalBarChart
+} from '@uifabric/charting';
 
 export class Chart extends React.Component<IChartInternalProps, {}> {
   public static defaultProps = {
@@ -136,26 +136,16 @@ export class Chart extends React.Component<IChartInternalProps, {}> {
   }
 
   private _getStackedBarChart = (): JSX.Element => {
-    if (this._isMultiBarChart === true) {
+    if (this.props.chartData!.length > 1) {
       return (
         <MultiStackedBarChart
-          data={this.props.data!}
-          chartTitles={this.props.chartLabels!}
+          data={this.props.chartData!}
           barHeight={this.props.barHeight}
-          legendData={this.props.legendColors}
-          width={this._getWidth()}
+          hideRatio={this.props.hideRatio}
         />
       );
     }
 
-    return (
-      <StackedBarChart
-        data={this._singleChartDataPoints}
-        chartTitle={this._chartLabel}
-        colors={this._colors}
-        width={this._getWidth()}
-        barHeight={this.props.barHeight}
-      />
-    );
+    return <StackedBarChart data={this.props.chartData![0]} barHeight={this.props.barHeight} />;
   };
 }
