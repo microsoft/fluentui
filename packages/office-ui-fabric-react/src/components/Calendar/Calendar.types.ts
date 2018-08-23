@@ -242,7 +242,7 @@ export interface ICalendarIconStrings {
 
   /**
    * Close icon
-   * @defaultvalue  'ChromeClose'
+   * @defaultvalue  'CalculatorMultiply'
    */
   closeIcon?: string;
 }

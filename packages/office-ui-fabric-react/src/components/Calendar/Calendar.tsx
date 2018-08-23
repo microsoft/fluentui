@@ -16,7 +16,7 @@ const styles: any = stylesImport;
 
 const leftArrow = 'Up';
 const rightArrow = 'Down';
-const closeIcon = 'ChromeClose';
+const closeIcon = 'CalculatorMultiply';
 const iconStrings: ICalendarIconStrings = {
   leftNavigation: leftArrow,
   rightNavigation: rightArrow,
