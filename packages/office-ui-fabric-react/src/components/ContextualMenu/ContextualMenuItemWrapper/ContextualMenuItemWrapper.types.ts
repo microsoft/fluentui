@@ -1,5 +1,4 @@
-import { IContextualMenuItem, IContextualMenuItemProps } from '../../../ContextualMenu';
-import { IMenuItemClassNames } from '../ContextualMenu.classNames';
+import { IContextualMenuItem, IContextualMenuItemProps, IMenuItemClassNames } from '../../../ContextualMenu';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
 import { IRefObject } from '../../../Utilities';
 
