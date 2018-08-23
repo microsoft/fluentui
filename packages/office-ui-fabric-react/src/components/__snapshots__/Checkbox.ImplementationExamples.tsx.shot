@@ -4,10 +4,10 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
 <div>
   <button
     aria-checked={false}
-    aria-describedby="descriptionID"
+    aria-describedby={undefined}
     aria-disabled={undefined}
     aria-label={undefined}
-    aria-labelledby={undefined}
+    aria-labelledby="descriptionID"
     aria-posinset={undefined}
     aria-setsize={undefined}
     className=
@@ -169,7 +169,7 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
     className="screenReaderOnly"
     id="descriptionID"
   >
-    Uncontroller checkbox description
+    Uncontrolled checkbox description
   </label>
   <button
     aria-checked={true}

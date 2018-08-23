@@ -40,10 +40,10 @@ export class FluentStylesCheckboxExample extends React.Component<{}, ICheckboxBa
             }
           }}
           styles={checkboxStyles}
-          ariaDescribedBy={'descriptionID'}
+          ariaLabelledBy={'descriptionID'}
         />
         <label id="descriptionID" className="screenReaderOnly">
-          Uncontroller checkbox description
+          Uncontrolled checkbox description
         </label>
 
         <Checkbox
