@@ -7,12 +7,12 @@ function makeThemeFromPartials(
   partialSemantic: Partial<ISemanticColors>
 ): ITheme {
   // Create variant palette
-  let VariantTheme = createTheme({ palette: { ...originalTheme.palette, ...partialPalette } });
+  let variantTheme = createTheme({ palette: { ...originalTheme.palette, ...partialPalette } });
   // Change semantic colors to use updated variant palette values
-  VariantTheme.semanticColors = { ...VariantTheme.semanticColors, ...partialSemantic };
+  variantTheme.semanticColors = { ...variantTheme.semanticColors, ...partialSemantic };
   // Fill in the rest of the theme
-  VariantTheme = { ...originalTheme, ...VariantTheme, semanticColors: VariantTheme.semanticColors };
-  return VariantTheme;
+  variantTheme = { ...originalTheme, ...variantTheme, semanticColors: variantTheme.semanticColors };
+  return variantTheme;
 }
 
 /**
@@ -283,12 +283,8 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
   // effectively inverting the theme. Thus, do not mix in the original theme's value
   // for the palette and semanticColors, since they will not work well "inverted",
   // instead, use the new palette and then generate semanticColors from scratch.
-  return createTheme({
-    ...theme,
-    ...{
-      palette: partialPalette,
-      semanticColors: partialSemantic,
-      isInverted: !theme.isInverted
-    }
-  });
+  let variantTheme = createTheme({ palette: { ...fullTheme.palette, ...partialPalette } });
+  variantTheme.semanticColors = { ...variantTheme.semanticColors, ...partialSemantic };
+  variantTheme = { ...fullTheme, ...variantTheme, semanticColors: variantTheme.semanticColors };
+  return variantTheme;
 }
