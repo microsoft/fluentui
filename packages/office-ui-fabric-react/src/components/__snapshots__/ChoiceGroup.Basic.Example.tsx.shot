@@ -83,7 +83,6 @@ exports[`Component Examples renders ChoiceGroup.Basic.Example.tsx correctly 1`] 
 
           >
             <input
-              aria-labelledby="ChoiceGroupLabel1-A"
               checked={false}
               className=
                   ms-ChoiceField-input
@@ -197,7 +196,6 @@ exports[`Component Examples renders ChoiceGroup.Basic.Example.tsx correctly 1`] 
 
           >
             <input
-              aria-labelledby="ChoiceGroupLabel1-B"
               checked={true}
               className=
                   ms-ChoiceField-input
@@ -321,7 +319,6 @@ exports[`Component Examples renders ChoiceGroup.Basic.Example.tsx correctly 1`] 
 
           >
             <input
-              aria-labelledby="ChoiceGroupLabel1-C"
               checked={false}
               className=
                   ms-ChoiceField-input
@@ -431,7 +428,6 @@ exports[`Component Examples renders ChoiceGroup.Basic.Example.tsx correctly 1`] 
 
           >
             <input
-              aria-labelledby="ChoiceGroupLabel1-D"
               checked={false}
               className=
                   ms-ChoiceField-input
