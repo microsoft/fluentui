@@ -29,6 +29,7 @@
     "@types/jest": "23.0.0",
     "@types/enzyme": "3.1.13",
     "@types/enzyme-adapter-react-16": "1.0.3",
+    "@types/prop-types": "^15.5.3",
     "@types/webpack-env": "1.13.0",
     "@uifabric/example-app-base": ">=6.7.2 <7.0.0",
     "@uifabric/jest-serializer-merge-styles": ">=6.0.4 <7.0.0",
