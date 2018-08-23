@@ -1,6 +1,17 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Thu, 23 Aug 2018 10:28:17 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Aug 2018 18:39:08 GMT and should not be manually modified.
+
+## 0.16.0
+Thu, 23 Aug 2018 18:39:08 GMT
+
+### Minor changes
+
+- Add an example dashboard with collasable sections.
+
+### Patches
+
+- Rolling back primary action funtionality of action bar
 
 ## 0.15.8
 Thu, 23 Aug 2018 10:28:17 GMT

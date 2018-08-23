@@ -2,6 +2,27 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.16.0",
+      "tag": "@uifabric/dashboard_v0.16.0",
+      "date": "Thu, 23 Aug 2018 18:39:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "0f6c8f38ba0af3fac00c87a48911a46db6804885",
+            "comment": "Rolling back primary action funtionality of action bar"
+          }
+        ],
+        "minor": [
+          {
+            "author": "caradong <caradong1122@gmail.com>",
+            "commit": "ffabb20ac4b6342fb043e2a32beb4a40e93f6c0e",
+            "comment": "Add an example dashboard with collasable sections."
+          }
+        ]
+      }
+    },
+    {
       "version": "0.15.8",
       "tag": "@uifabric/dashboard_v0.15.8",
       "date": "Thu, 23 Aug 2018 10:28:17 GMT",
