@@ -6,13 +6,13 @@ function makeThemeFromPartials(
   partialPalette: Partial<IPalette>,
   partialSemantic: Partial<ISemanticColors>
 ): ITheme {
-  return createTheme({
-    ...originalTheme,
-    ...{
-      palette: { ...originalTheme.palette, ...partialPalette },
-      semanticColors: { ...originalTheme.semanticColors, ...partialSemantic }
-    }
-  });
+  // Create variant palette
+  let VariantTheme = createTheme({ palette: { ...originalTheme.palette, ...partialPalette } });
+  // Change semantic colors to use updated variant palette values
+  VariantTheme.semanticColors = { ...VariantTheme.semanticColors, ...partialSemantic };
+  // Fill in the rest of the theme
+  VariantTheme = { ...originalTheme, ...VariantTheme, semanticColors: VariantTheme.semanticColors };
+  return VariantTheme;
 }
 
 /**
@@ -173,9 +173,6 @@ export function getSoftVariant(theme: IPartialTheme): ITheme {
 
     buttonBackground: !fullTheme.isInverted ? p.themeLighterAlt : p.themeLight,
     buttonBackgroundHovered: !fullTheme.isInverted ? p.themeLighter : p.themeTertiary,
-    // buttonBackgroundHovered: !fullTheme.isInverted
-    //   ? p.themeLighter
-    // : updateA(getColorFromString(p.themeTertiary), 50).str,
     buttonBackgroundPressed: !fullTheme.isInverted ? p.themeLight : p.themeTertiary,
     buttonBorder: p.neutralSecondary,
     buttonText: !fullTheme.isInverted ? p.neutralPrimary : p.themePrimary,
