@@ -42,8 +42,7 @@ export const getStyles = (props: IContextualMenuStyleProps): IContextualMenuStyl
       {
         listStyleType: 'none',
         margin: '0',
-        padding: '0',
-        lineHeight: '0'
+        padding: '0'
       }
     ],
     header: [
