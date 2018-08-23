@@ -23,6 +23,9 @@ export interface IChartDataPoint {
    */
   data?: number;
 
+  /**
+   * onClick action for each datapoint in the chart
+   */
   onClick?: VoidFunction;
 
   /**

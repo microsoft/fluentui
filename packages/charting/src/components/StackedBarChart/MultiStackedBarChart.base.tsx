@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
-import { ILegend, Legends } from '@uifabric/charting';
+import { ILegend, Legends } from '../Legends/index';
 import {
   IChartDataPoint,
   IChartProps,
@@ -51,10 +51,6 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     );
   }
 
-  private _legendClicked(): void {
-    alert('Legend clicked');
-  }
-
   private _getLegendData = (data: IChartProps[], hideRatio: boolean[]): ILegend[] => {
     const actions: ILegend[] = [];
     data.map((singleChartData: IChartProps, index: number) => {
@@ -63,8 +59,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           singleChartData.chartData!.map((dataPoint: IChartDataPoint) => {
             const action: ILegend = {
               title: dataPoint.legend!,
-              color: dataPoint.color!,
-              action: this._legendClicked
+              color: dataPoint.color!
             };
             actions.push(action);
           });
@@ -73,8 +68,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         singleChartData.chartData!.map((dataPoint: IChartDataPoint) => {
           const action: ILegend = {
             title: dataPoint.legend!,
-            color: dataPoint.color!,
-            action: this._legendClicked
+            color: dataPoint.color!
           };
           actions.push(action);
         });

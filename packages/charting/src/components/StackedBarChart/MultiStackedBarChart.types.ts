@@ -4,8 +4,7 @@ import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface IMultiStackedBarChartProps {
   /**
-   * An array of datapoints , each datapoint
-   * renders a stacked bar chart
+   * An array of chart data points for the multistacked bar chart
    */
   data?: IChartProps[];
 

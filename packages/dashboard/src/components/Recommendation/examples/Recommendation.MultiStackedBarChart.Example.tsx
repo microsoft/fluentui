@@ -28,10 +28,10 @@ const DlpVisualization = () => {
 
   const firstChartPoints: IChartDataPoint[] = [
     { legend: 'Debit card numbers (EU and USA)', data: 40, color: DefaultPalette.blue },
-    { legend: 'Passport numbers (USA)', data: 23, color: DefaultPalette.green },
-    { legend: 'Social security numbers', data: 35, color: DefaultPalette.yellow },
-    { legend: 'Credit card numbers', data: 87, color: DefaultPalette.blueLight },
-    { legend: 'Tax identification numbers (USA)', data: 87, color: DefaultPalette.black }
+    { legend: 'Passport numbers (USA)', data: 23, color: DefaultPalette.red },
+    { legend: 'Social security numbers', data: 35, color: DefaultPalette.blueLight },
+    { legend: 'Credit card numbers', data: 87, color: DefaultPalette.green },
+    { legend: 'Tax identification numbers (USA)', data: 87, color: DefaultPalette.yellow }
   ];
 
   const secondChartPoints: IChartDataPoint[] = [

@@ -38,8 +38,8 @@ export class MultiStackedBarChartExample extends React.Component<{}, {}> {
       { legend: 'Debit card numbers (EU and USA)', data: 40, color: DefaultPalette.red },
       { legend: 'Passport numbers (USA)', data: 23, color: DefaultPalette.green },
       { legend: 'Social security numbers', data: 35, color: DefaultPalette.yellow },
-      { legend: 'Credit card numbers', data: 87, color: DefaultPalette.blueLight },
-      { legend: 'Tax identification numbers (USA)', data: 87, color: DefaultPalette.black }
+      { legend: 'Credit card numbers', data: 87, color: DefaultPalette.blue },
+      { legend: 'Tax identification numbers (USA)', data: 87, color: DefaultPalette.purple }
     ];
 
     const secondChartPoints: IChartDataPoint[] = [

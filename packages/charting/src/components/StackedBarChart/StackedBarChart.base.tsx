@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { ILegend, Legends } from '@uifabric/charting';
+import { ILegend, Legends } from '../Legends/index';
 import { IChartDataPoint, IChartProps } from './index';
 import { IStackedBarChartProps, IStackedBarChartStyleProps, IStackedBarChartStyles } from './StackedBarChart.types';
 
@@ -85,8 +85,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       // mapping data to the format Legends component needs
       const legend: ILegend = {
         title: point.legend!,
-        color: color,
-        action: this._legendClickAction
+        color: color
       };
       legendDataItems.push(legend);
       if (index > 0) {
@@ -100,9 +99,5 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     });
     const legends = <Legends legends={legendDataItems} />;
     return [bars, legends];
-  }
-
-  private _legendClickAction(): void {
-    alert('legend clicked');
   }
 }
