@@ -69,7 +69,7 @@ export class TilesListMediaExample extends React.Component<{}, ITilesListMediaEx
         <Toggle
           label="Enable Modal Selection"
           checked={this.state.isModalSelection}
-          onChanged={this._onToggleIsModalSelection}
+          onChange={this._onToggleIsModalSelection}
           onText="Modal"
           offText="Normal"
         />
@@ -82,7 +82,7 @@ export class TilesListMediaExample extends React.Component<{}, ITilesListMediaEx
     );
   }
 
-  private _onToggleIsModalSelection = (checked: boolean): void => {
+  private _onToggleIsModalSelection = (event: React.MouseEvent<HTMLElement>, checked: boolean): void => {
     this._selection.setModal(checked);
   };
 

@@ -294,6 +294,7 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
       data-is-focusable={true}
       id="Dropdown2"
       onBlur={[Function]}
+      onChange={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}

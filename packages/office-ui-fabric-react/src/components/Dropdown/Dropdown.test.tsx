@@ -140,17 +140,17 @@ describe('Dropdown', () => {
       }
     });
 
-    it('issues the onChanged callback when the selected item is different', () => {
+    it('issues the onChange callback when the selected item is different', () => {
       const container = document.createElement('div');
       let dropdownRoot: HTMLElement | undefined;
 
       document.body.appendChild(container);
 
-      const onChangedSpy = jasmine.createSpy('onChanged');
+      const onChangeSpy = jasmine.createSpy('onChange');
 
       try {
         ReactDOM.render(
-          <Dropdown label="testgroup" defaultSelectedKey="1" onChanged={onChangedSpy} options={DEFAULT_OPTIONS} />,
+          <Dropdown label="testgroup" defaultSelectedKey="1" onChange={onChangeSpy} options={DEFAULT_OPTIONS} />,
           container
         );
         dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
@@ -160,7 +160,7 @@ describe('Dropdown', () => {
         const secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"]') as HTMLElement;
         ReactTestUtils.Simulate.click(secondItemElement);
       } finally {
-        expect(onChangedSpy).toHaveBeenCalledWith(DEFAULT_OPTIONS[2], 2);
+        expect(onChangeSpy).toHaveBeenCalledWith(expect.anything(), DEFAULT_OPTIONS[2], 2);
       }
     });
 
@@ -205,17 +205,17 @@ describe('Dropdown', () => {
       expect((dropdown.current as DropdownBase).state.selectedIndices).toEqual([selectedKey]);
     });
 
-    it('issues the onChanged callback when the selected item is different', () => {
+    it('does not issue the onChange callback when the selected item is not different', () => {
       const container = document.createElement('div');
       let dropdownRoot: HTMLElement | undefined;
 
       document.body.appendChild(container);
 
-      const onChangedSpy = jasmine.createSpy('onChanged');
+      const onChangeSpy = jasmine.createSpy('onChange');
 
       try {
         ReactDOM.render(
-          <Dropdown label="testgroup" defaultSelectedKey="1" onChanged={onChangedSpy} options={DEFAULT_OPTIONS} />,
+          <Dropdown label="testgroup" defaultSelectedKey="1" onChange={onChangeSpy} options={DEFAULT_OPTIONS} />,
           container
         );
         dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
@@ -225,7 +225,7 @@ describe('Dropdown', () => {
         const secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="1"]') as HTMLElement;
         ReactTestUtils.Simulate.click(secondItemElement);
       } finally {
-        expect(onChangedSpy).not.toHaveBeenCalled();
+        expect(onChangeSpy).not.toHaveBeenCalled();
       }
     });
 

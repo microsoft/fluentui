@@ -36,11 +36,11 @@ describe('Toggle', () => {
 
   it('can call the callback on a change of toggle', () => {
     let isToggledValue;
-    const callback = (isToggled: boolean) => {
+    const callback = (ev: React.MouseEvent<HTMLElement>, isToggled: boolean) => {
       isToggledValue = isToggled;
     };
 
-    const component = mount<React.ReactInstance>(<Toggle label="Label" onChanged={callback} />);
+    const component = mount<React.ReactInstance>(<Toggle label="Label" onChange={callback} />);
 
     expect(
       component

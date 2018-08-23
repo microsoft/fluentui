@@ -54,7 +54,7 @@ export default class BoxExample extends React.Component<React.HTMLAttributes<HTM
           <Toggle
             componentRef={this._setRef}
             checked={isChecked}
-            onChanged={this._onFocusTrapZoneToggleChanged}
+            onChange={this._onFocusTrapZoneToggleChanged}
             label="Focus Trap Zone"
             onText="On"
             offText="Off"
@@ -87,7 +87,7 @@ export default class BoxExample extends React.Component<React.HTMLAttributes<HTM
     });
   };
 
-  private _onFocusTrapZoneToggleChanged = (isChecked: boolean): void => {
+  private _onFocusTrapZoneToggleChanged = (ev: React.MouseEvent<HTMLElement>, isChecked: boolean): void => {
     this.setState(
       {
         isChecked: isChecked

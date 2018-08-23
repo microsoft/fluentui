@@ -99,7 +99,7 @@ export class KeytipsButtonExample extends React.Component<{}, IKeytipsButtonExam
           onText={'Enabled'}
           offText={'Disabled'}
           defaultChecked={!this.state.btnDisabled}
-          onChanged={this._toggleDisabled}
+          onChange={this._toggleDisabled}
         />
         <DefaultButton
           keytipProps={keytipMap.DisabledButton}
@@ -113,7 +113,7 @@ export class KeytipsButtonExample extends React.Component<{}, IKeytipsButtonExam
     );
   }
 
-  private _toggleDisabled = (checked: boolean) => {
+  private _toggleDisabled = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ btnDisabled: !checked });
   };
 }
