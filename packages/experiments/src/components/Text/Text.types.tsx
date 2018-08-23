@@ -1,4 +1,4 @@
-import { IStyle, IPalette, ISemanticColors } from '../../Styling';
+import { IStyle, IPalette, ISemanticTextColors } from '../../Styling';
 import { IStyleableComponentProps } from '../../Foundation';
 import { IFontVariants, IFontFamilies, IFontSizes, IFontWeights } from '../../Styling';
 
@@ -23,6 +23,11 @@ export interface ITextProps extends IStyleableComponentProps<ITextProps, ITextSt
   className?: string;
 
   /**
+   * Inline styling.
+   */
+  style?: React.CSSProperties;
+
+  /**
    * Optional font type for Text.
    */
   variant?: keyof IFontVariants;
@@ -45,12 +50,12 @@ export interface ITextProps extends IStyleableComponentProps<ITextProps, ITextSt
   /**
    * Optional font color for Text.
    */
-  color?: keyof IPalette | keyof ISemanticColors;
+  color?: keyof IPalette | keyof ISemanticTextColors;
 
   /**
    * Optional color for hovered text.
    */
-  hoverColor?: keyof IPalette | keyof ISemanticColors;
+  hoverColor?: keyof IPalette | keyof ISemanticTextColors;
 
   /**
    * Whether the text is displayed as an inline element.

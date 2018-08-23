@@ -30,38 +30,43 @@ export const DefaultFontWeights: IFontWeights = {
 
 export const DefaultFontVariants: IFontVariants = {
   default: {
-    fontFamily: 'default',
-    fontSize: 'medium',
-    fontWeight: 'default'
+    family: 'default',
+    size: 'medium',
+    weight: 'default'
   },
 
   caption: {
-    fontSize: 'xSmall'
+    size: 'xSmall'
   },
 
   h1: {
-    fontSize: 'mega',
-    fontWeight: 'light'
+    size: 'mega',
+    weight: 'light'
   },
 
   h2: {
-    fontSize: 'xxLarge',
-    fontWeight: 'light'
+    size: 'xxLarge',
+    weight: 'light'
   },
 
   h3: {
-    fontSize: 'xLarge',
-    fontWeight: 'light'
+    size: 'xLarge',
+    weight: 'light'
   },
 
   h4: {
-    fontSize: 'large',
-    fontWeight: 'light'
+    size: 'large',
+    weight: 'light'
   },
 
   h5: {
-    fontSize: 'mediumPlus',
-    fontWeight: 'light'
+    size: 'mediumPlus',
+    weight: 'light'
+  },
+
+  link: {
+    color: 'link',
+    hoverColor: 'linkHovered'
   }
 };
 
