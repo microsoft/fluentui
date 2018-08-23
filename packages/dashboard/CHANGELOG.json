@@ -2,6 +2,43 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.15.8",
+      "tag": "@uifabric/dashboard_v0.15.8",
+      "date": "Thu, 23 Aug 2018 10:28:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "d130ec1682661fe761bf34a190679f2d300b3032",
+            "comment": "font changes for card components"
+          },
+          {
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "88178d149047bc9fda9b15301aa45e90c87e4147",
+            "comment": "header css fix"
+          },
+          {
+            "author": "exchangeadmin <yuz@microsoft.com>",
+            "commit": "3dba457de0e6d9481879b24e9e756dbd24ca89d5",
+            "comment": "fix leftNav styles per PM feedback"
+          },
+          {
+            "author": "exchangeadmin <yuz@microsoft.com>",
+            "commit": "3dba457de0e6d9481879b24e9e756dbd24ca89d5",
+            "comment": "revert the change for expand behavior"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.24.3 <7.0.0` to `>=6.25.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.52.0 <7.0.0` to `>=6.53.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.15.7",
       "tag": "@uifabric/dashboard_v0.15.7",
       "date": "Wed, 22 Aug 2018 05:10:19 GMT",

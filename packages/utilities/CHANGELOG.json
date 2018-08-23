@@ -2,6 +2,32 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.15.0",
+      "tag": "@uifabric/utilities_v6.15.0",
+      "date": "Thu, 23 Aug 2018 10:28:17 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "e4daa37b59065e1d90b91ac728b3e3c7e52d9e77",
+            "comment": "Customizer: moving to use React 16 context."
+          },
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "882a50c5ae8d6e4521b21842d5f68723ba4f9d2e",
+            "comment": "Scroll: allow scrolling within a target element"
+          }
+        ],
+        "patch": [
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "882a50c5ae8d6e4521b21842d5f68723ba4f9d2e",
+            "comment": "Scroll: disable ios body scrolling in disableBodyScroll"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.14.1",
       "tag": "@uifabric/utilities_v6.14.1",
       "date": "Tue, 14 Aug 2018 10:27:33 GMT",

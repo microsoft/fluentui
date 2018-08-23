@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 21 Aug 2018 20:36:27 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Aug 2018 10:28:17 GMT and should not be manually modified.
+
+## 6.25.0
+Thu, 23 Aug 2018 10:28:17 GMT
+
+### Minor changes
+
+- Adjusting foundation usage, using new React 16 context.
 
 ## 6.24.3
 Tue, 21 Aug 2018 20:36:27 GMT

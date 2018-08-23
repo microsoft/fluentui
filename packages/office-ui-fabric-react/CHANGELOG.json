@@ -2,6 +2,47 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.53.0",
+      "tag": "office-ui-fabric-react_v6.53.0",
+      "date": "Thu, 23 Aug 2018 10:28:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "e4daa37b59065e1d90b91ac728b3e3c7e52d9e77",
+            "comment": "Check: adjusting shouldComponentUpdate to not ignore theme changes."
+          },
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "882a50c5ae8d6e4521b21842d5f68723ba4f9d2e",
+            "comment": "Modal, Panel: allow scrolling within Modal and Panel while disabling scrolling on the body (ios)"
+          },
+          {
+            "author": "Jeff King <jeffking@gmail.com>",
+            "commit": "5de588170db70ab50b080a3ec4794fd0a95d180b",
+            "comment": "DetailsList: Account for grouping depth of more than one in width calculation."
+          }
+        ],
+        "minor": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "f032d31e401e9d7ef300224569129db698447632",
+            "comment": "Pickers: A variety of accessibility and bug fixes"
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "e4e90ac74e1eb66844765437438bfb7cfa0df03c",
+            "comment": "Fix Scrollable scroll syncing and header/footer alignment"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.14.1 <7.0.0` to `>=6.15.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.52.0",
       "tag": "office-ui-fabric-react_v6.52.0",
       "date": "Wed, 22 Aug 2018 05:10:19 GMT",
