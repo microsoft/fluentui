@@ -20,31 +20,31 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     this._adjustProps();
     const { data, barHeight, hideNumberDisplay, hideLegend, theme } = this.props;
     const { palette } = theme!;
-    const bars = this._createBarsAndLegends(data, barHeight!, palette);
-    const showRatio = hideNumberDisplay === false && data.chartData!.length === 2;
-    const showNumber = hideNumberDisplay === false && data.chartData!.length === 1;
+    const bars = this._createBarsAndLegends(data!, barHeight!, palette);
+    const showRatio = hideNumberDisplay === false && data!.chartData!.length === 2;
+    const showNumber = hideNumberDisplay === false && data!.chartData!.length === 1;
     let total = 0;
     if (showRatio === true) {
-      total = data.chartData!.reduce((acc: number, value: IChartDataPoint) => acc + (value.data ? value.data : 0), 0);
+      total = data!.chartData!.reduce((acc: number, value: IChartDataPoint) => acc + (value.data ? value.data : 0), 0);
     }
 
-    const showLegend = hideLegend === false && data.chartData!.length > 2;
+    const showLegend = hideLegend === false && data!.chartData!.length > 2;
     return (
       <div className={this._classNames.root}>
         <div className={this._classNames.chartTitle}>
-          {data.chartTitle && (
+          {data!.chartTitle && (
             <div>
-              <strong>{data.chartTitle}</strong>
+              <strong>{data!.chartTitle}</strong>
             </div>
           )}
           {showRatio && (
             <div>
-              <strong>{data.chartData![0].data}</strong>/{total}
+              <strong>{data!.chartData![0].data}</strong>/{total}
             </div>
           )}
           {showNumber && (
             <div>
-              <strong>{data.chartData![0].data}</strong>
+              <strong>{data!.chartData![0].data}</strong>
             </div>
           )}
         </div>

@@ -7,7 +7,7 @@ export interface IMultiStackedBarChartProps {
    * An array of datapoints , each datapoint
    * renders a stacked bar chart
    */
-  data: IChartProps[];
+  data?: IChartProps[];
 
   /**
    * Width of bar chart

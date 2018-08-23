@@ -21,12 +21,12 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   public render(): JSX.Element {
     const { data, theme, hideRatio } = this.props;
     this._adjustProps();
-    const legends = this._getLegendData(data, hideRatio!);
+    const legends = this._getLegendData(data!, hideRatio!);
     this._renderLegend = data ? true : false;
     const { palette } = theme!;
     return (
       <div className={this._classNames.root}>
-        {data.map((points: IChartProps, index: number) => {
+        {data!.map((points: IChartProps, index: number) => {
           let currentFlagShowRatio = hideRatio ? (hideRatio[index] !== undefined ? hideRatio[index] : false) : false;
           if (points.chartData!.length === 0) {
             points.chartData!.push({ legend: '', data: 100, color: palette.neutralTertiaryAlt });

@@ -8,7 +8,7 @@ export interface IStackedBarChartProps {
   /**
    * Data to render in the chart.
    */
-  data: IChartProps;
+  data?: IChartProps;
 
   /**
    * Width of the chart.
