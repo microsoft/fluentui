@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/dashboard",
+      "comment": "Add an example dashboard with collasable sections.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/dashboard",
+  "email": "yudon@microsoft.com"
+}
