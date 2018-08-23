@@ -1,21 +1,21 @@
 import { IStackedBarChartStyleProps, IStackedBarChartStyles } from './StackedBarChart.types';
 
 export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartStyles => {
-  const { className, width, barHeight } = props;
-
-  const chartWidth = width;
-  const chartHeight = barHeight;
+  const { className, width, barHeight, isMultiStackedBarChart } = props;
   return {
     root: [
       'ms-StackedBarChart',
       {
-        width: chartWidth
+        width: width ? width : '100%',
+        display: 'flex',
+        flexDirection: 'column'
       },
       className
     ],
     chart: {
-      width: chartWidth,
-      height: chartHeight
+      width: '100%',
+      height: barHeight,
+      marginBottom: isMultiStackedBarChart ? '' : '13px'
     },
     chartTitle: {
       display: 'flex',

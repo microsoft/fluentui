@@ -11,3 +11,34 @@ export interface IDataPoint {
    */
   y: number;
 }
+
+export interface IChartDataPoint {
+  /**
+   * Legend text for the datapoint in the chart
+   */
+  legend?: string;
+
+  /**
+   * data the datapoint in the chart
+   */
+  data?: number;
+
+  onClick?: VoidFunction;
+
+  /**
+   * color for the legend in the chart
+   */
+  color?: string;
+}
+
+export interface IChartProps {
+  /**
+   * chart title for the chart
+   */
+  chartTitle?: string;
+
+  /**
+   * data for the points in the chart
+   */
+  chartData?: IChartDataPoint[];
+}

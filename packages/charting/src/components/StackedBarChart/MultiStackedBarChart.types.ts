@@ -1,4 +1,4 @@
-import { IDataPoint, ILegendDataItem } from './StackedBarChart.types';
+import { IChartProps } from './index';
 import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 
@@ -7,13 +7,7 @@ export interface IMultiStackedBarChartProps {
    * An array of datapoints , each datapoint
    * renders a stacked bar chart
    */
-  data: IDataPoint[][];
-
-  /**
-   * An array of bar chart titles, each title in the
-   * order is applicable to each bar chart
-   */
-  chartTitles: string[];
+  data: IChartProps[];
 
   /**
    * Width of bar chart
@@ -27,11 +21,6 @@ export interface IMultiStackedBarChartProps {
   barHeight?: number;
 
   /**
-   * Data for rendering the legend
-   */
-  legendData?: ILegendDataItem[];
-
-  /**
    * Additional CSS class(es) to apply to the StackedBarChart.
    */
   className?: string;
@@ -40,6 +29,11 @@ export interface IMultiStackedBarChartProps {
    * Theme (provided through customization.)
    */
   theme?: ITheme;
+
+  /**
+   * This property tells whether to show ratio on top of stacked bar chart or not.
+   */
+  hideRatio?: boolean[];
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
