@@ -2,6 +2,20 @@
   "name": "@uifabric/icons",
   "entries": [
     {
+      "version": "6.1.0",
+      "tag": "@uifabric/icons_v6.1.0",
+      "date": "Wed, 22 Aug 2018 05:10:19 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "25a03949d97b792d4d32e8cb6931bfc8b861e9c9",
+            "comment": "Add IconNamesInput alongside IconNames const enum"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.0.3",
       "tag": "@uifabric/icons_v6.0.3",
       "date": "Tue, 14 Aug 2018 10:27:33 GMT",

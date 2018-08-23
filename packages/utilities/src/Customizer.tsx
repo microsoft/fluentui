@@ -1,11 +1,17 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import { BaseComponent, IBaseProps } from './BaseComponent';
-import { ICustomizations, Settings, SettingsFunction } from './Customizations';
+import { Customizations, ICustomizations, Settings, SettingsFunction } from './Customizations';
 
 export interface ICustomizerContext {
   customizations: ICustomizations;
 }
+
+export const CustomizerContext = React.createContext<ICustomizerContext>({
+  customizations: {
+    settings: {},
+    scopedSettings: {}
+  }
+});
 
 export type ICustomizerProps = IBaseProps &
   Partial<{
@@ -54,7 +60,8 @@ export type ICustomizerProps = IBaseProps &
 
 /**
  * The Customizer component allows for default props to be mixed into components which
- * are decorated with the customizable() decorator. This enables injection scenarios like:
+ * are decorated with the customizable() decorator, or use the styled HOC. This enables
+ * injection scenarios like:
  *
  * 1. render svg icons instead of the icon font within all buttons
  * 2. inject a custom theme object into a component
@@ -65,39 +72,31 @@ export type ICustomizerProps = IBaseProps &
  *
  * @public
  */
-export class Customizer extends BaseComponent<ICustomizerProps, ICustomizerContext> {
-  public static contextTypes: {
-    customizations: PropTypes.Requireable<{}>;
-  } = {
-    customizations: PropTypes.object
-  };
-
-  public static childContextTypes: {
-    customizations: PropTypes.Requireable<{}>;
-  } = Customizer.contextTypes;
-
-  // tslint:disable-next-line:no-any
-  constructor(props: ICustomizerProps, context: any) {
-    super(props);
-
-    this.state = this._getCustomizations(props, context);
+export class Customizer extends BaseComponent<ICustomizerProps> {
+  public componentDidMount(): void {
+    Customizations.observe(this._onCustomizationChange);
   }
 
-  public getChildContext(): ICustomizerContext {
-    return this.state;
-  }
-
-  // tslint:disable-next-line:no-any
-  public componentWillReceiveProps(newProps: any, newContext: any): void {
-    this.setState(this._getCustomizations(newProps, newContext));
+  public componentWillUnmount(): void {
+    Customizations.unobserve(this._onCustomizationChange);
   }
 
   public render(): React.ReactElement<{}> {
-    return React.Children.only(this.props.children);
+    return (
+      <CustomizerContext.Consumer>
+        {(parentContext: ICustomizerContext) => {
+          const newContext = this._getCustomizations(this.props, parentContext);
+
+          return <CustomizerContext.Provider value={newContext}>{this.props.children}</CustomizerContext.Provider>;
+        }}
+      </CustomizerContext.Consumer>
+    );
   }
 
-  private _getCustomizations(props: ICustomizerProps, context: ICustomizerContext): ICustomizerContext {
-    const { customizations = { settings: {}, scopedSettings: {} } } = context;
+  private _onCustomizationChange = () => this.forceUpdate();
+
+  private _getCustomizations(props: ICustomizerProps, parentContext: ICustomizerContext): ICustomizerContext {
+    const { customizations = { settings: {}, scopedSettings: {} } } = parentContext || {};
 
     return {
       customizations: {

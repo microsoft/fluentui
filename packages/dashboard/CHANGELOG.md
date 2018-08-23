@@ -1,6 +1,56 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Thu, 16 Aug 2018 10:26:16 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Aug 2018 18:39:08 GMT and should not be manually modified.
+
+## 0.16.0
+Thu, 23 Aug 2018 18:39:08 GMT
+
+### Minor changes
+
+- Add an example dashboard with collasable sections.
+
+### Patches
+
+- Rolling back primary action funtionality of action bar
+
+## 0.15.8
+Thu, 23 Aug 2018 10:28:17 GMT
+
+### Patches
+
+- font changes for card components
+- header css fix
+- fix leftNav styles per PM feedback
+- revert the change for expand behavior
+
+## 0.15.7
+Wed, 22 Aug 2018 05:10:19 GMT
+
+### Patches
+
+- css fixes for card
+
+## 0.15.6
+Tue, 21 Aug 2018 20:36:27 GMT
+
+### Patches
+
+- fix leftNav styles per PM feedback
+
+## 0.15.5
+Mon, 20 Aug 2018 10:26:10 GMT
+
+### Patches
+
+- Replaced the OverflowSet with IconButton and removed the paddingBottom css in ThumbnailList added the  marign Bottom css.
+- minor css changes to body text and recommendation styles
+
+## 0.15.4
+Fri, 17 Aug 2018 10:26:39 GMT
+
+### Patches
+
+- ThumbnailList click target size issue fix
 
 ## 0.15.3
 Thu, 16 Aug 2018 10:26:16 GMT

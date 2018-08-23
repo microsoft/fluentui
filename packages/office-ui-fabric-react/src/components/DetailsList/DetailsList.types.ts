@@ -10,7 +10,7 @@ import { IDetailsFooterProps } from './DetailsFooter.types';
 import { IWithViewportProps, IViewport } from '../../utilities/decorators/withViewport';
 import { IList, IListProps, ScrollToMode } from '../List/index';
 import { ITheme, IStyle } from '../../Styling';
-import { ICellStyleProps } from './DetailsRow.types';
+import { ICellStyleProps, IDetailsItemProps } from './DetailsRow.types';
 
 export { IDetailsHeaderProps };
 
@@ -83,6 +83,9 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
 
   /** Optional override properties to render groups. The definition for IGroupRenderProps can be found under the GroupedList component. */
   groupProps?: IDetailsGroupRenderProps;
+
+  /** Optional override for the indent width used for group nesting. */
+  indentWidth?: number;
 
   /** Optional selection model to track selection state.  */
   selection?: ISelection;
@@ -254,11 +257,6 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    * Whether or not the selection zone should enter modal state on touch.
    */
   enterModalSelectionOnTouch?: boolean;
-
-  /**
-   * On horizontal scroll event listener
-   */
-  onScroll?: (e?: Event) => void;
 
   /**
    * Options for column re-order using drag and drop
@@ -607,8 +605,4 @@ export interface IDetailsGroupRenderProps extends IGroupRenderProps {
   onRenderHeader?: IRenderFunction<IDetailsGroupDividerProps>;
 }
 
-export interface IDetailsGroupDividerProps extends IGroupDividerProps {
-  columns?: IColumn[];
-  groupNestingDepth?: number;
-  selection?: ISelection;
-}
+export interface IDetailsGroupDividerProps extends IGroupDividerProps, IDetailsItemProps {}

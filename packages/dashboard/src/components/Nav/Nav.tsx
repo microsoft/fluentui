@@ -134,13 +134,13 @@ class NavComponent extends NavBase {
     }
 
     const linkText = this.getLinkText(link, this.props.showMore);
-    const isChildLinkSelected = this.isChildLinkSelected(link);
 
     // if allowed, auto expand if the child is selected
+    const isChildLinkSelected = this.isChildLinkSelected(link);
     link.isExpanded = link.disableAutoExpand ? link.isExpanded : isChildLinkSelected;
 
     // enable auto expand until the next manual expand disables the auto expand
-    link.disableAutoExpand = true;
+    link.disableAutoExpand = false;
 
     return (
       <li role="listitem" key={link.key || linkIndex} title={linkText}>

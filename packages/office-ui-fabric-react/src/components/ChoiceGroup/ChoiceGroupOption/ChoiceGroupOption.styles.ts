@@ -93,7 +93,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
 
   const fieldHoverOrFocusProperties = {
     selectors: {
-      '.ms-Label': {
+      '.ms-ChoiceFieldLabel': {
         color: semanticColors.bodyTextChecked
       },
       ':before': {
@@ -210,7 +210,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
         position: 'relative',
         marginTop: 8,
         selectors: {
-          '.ms-Label': {
+          '.ms-ChoiceFieldLabel': {
             fontSize: FontSizes.medium,
             display: 'inline-block'
           }
@@ -219,7 +219,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
       !hasIcon &&
         !hasImage && {
           selectors: {
-            '.ms-Label': {
+            '.ms-ChoiceFieldLabel': {
               paddingLeft: '26px'
             }
           }
@@ -307,7 +307,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
       disabled && {
         cursor: 'default',
         selectors: {
-          '.ms-Label': {
+          '.ms-ChoiceFieldLabel': {
             color: semanticColors.disabledBodyText
           },
           [HighContrastSelector]: {

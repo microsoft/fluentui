@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { ICardFrameProps, ICardFrameStyles, ICardDropDownOption } from './CardFrame.types';
-import { IconButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { getStyles } from './CardFrame.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { IOverflowSetItemProps, OverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
-import { customOverflowStyle } from './CardFrame.styles';
+import { IOverflowSetItemProps } from 'office-ui-fabric-react/lib/OverflowSet';
+import { Link } from 'office-ui-fabric-react/lib/Link';
 
 export class CardFrame extends React.Component<ICardFrameProps, {}> {
   constructor(props: ICardFrameProps) {
@@ -13,14 +13,13 @@ export class CardFrame extends React.Component<ICardFrameProps, {}> {
 
   public render(): JSX.Element {
     const getClassNames = classNamesFunction<ICardFrameProps, ICardFrameStyles>();
-    const { fontFamily, fontSize, cardTitle, seperatorColor, titleTextColor, href, disableDrag } = this.props;
+    const { fontFamily, fontSize, cardTitle, seperatorColor, titleTextColor, disableDrag } = this.props;
     const classNames = getClassNames(getStyles, {
       cardTitle,
       fontFamily,
       fontSize,
       seperatorColor,
       titleTextColor,
-      href,
       disableDrag
     });
     const overflowItems: ICardDropDownOption[] | undefined = this.props.cardDropDownOptions;
@@ -38,45 +37,41 @@ export class CardFrame extends React.Component<ICardFrameProps, {}> {
         cardDropDownOptions.push(cardDropDownOption);
       });
     }
+    const href = this.props.href === undefined ? '#' : this.props.href;
     return (
       <div className={classNames.root}>
         <div className={classNames.cardTitleBox}>
-          <div className={classNames.cardTitleEllipsisButton}>
-            <OverflowSet
-              overflowItems={cardDropDownOptions}
-              onRenderOverflowButton={this._onRenderOverflowButton}
-              onRenderItem={this._onRenderItem}
-            />
-          </div>
           <div className={classNames.cardTitle}>
-            <a href={this.props.href}>{cardTitle}</a>
+            <Link
+              styles={{
+                root: { fontFamily: 'Segoe UI', fontWeight: '600', fontSize: '14px !important', lineHeight: '16px' }
+              }}
+              href={href}
+              disabled={href === '#'}
+            >
+              {cardTitle}
+            </Link>
+          </div>
+          <div className={classNames.cardTitleEllipsisButton}>
+            <IconButton
+              className={classNames.ellipsisButtonStyle}
+              menuIconProps={{ iconName: 'More' }}
+              split={false}
+              aria-label={'More'}
+              menuProps={{
+                items: cardDropDownOptions
+              }}
+              styles={{
+                root: { width: '100%', height: '100%' },
+                rootHovered: { background: '#979797', color: '#000000' },
+                rootPressed: { background: '#979797', color: '#000000' },
+                rootExpanded: { color: '#000000' }
+              }}
+            />
           </div>
         </div>
         <div className={classNames.layout}>{this.props.children}</div>
       </div>
-    );
-  }
-
-  private _onRenderItem(item: IOverflowSetItemProps): JSX.Element {
-    return (
-      <IconButton
-        menuIconProps={{ iconName: item.icon }}
-        onClick={item.onClick}
-        title={item.title}
-        ariaLabel={item.ariaLabel}
-      />
-    );
-  }
-
-  private _onRenderOverflowButton(overflowItems: IOverflowSetItemProps[] | undefined): JSX.Element {
-    return (
-      <DefaultButton
-        menuIconProps={{ iconName: 'More' }}
-        menuProps={{ items: overflowItems! }}
-        ariaLabel="Card options"
-        title="Card options"
-        styles={customOverflowStyle}
-      />
     );
   }
 }

@@ -24,6 +24,11 @@ export const NavLink: React.SFC<INavLinkProps> = (props: INavLinkProps) => {
     computedTextWidth.width = 'calc(100% - 48px)';
   }
 
+  const fixedIconWidth: IStyle = {
+    width: '48px',
+    display: props.rightIconName === 'OpenInNewWindow' ? 'none' : 'inline-block'
+  };
+
   return (
     <a
       id={props.id}
@@ -42,7 +47,9 @@ export const NavLink: React.SFC<INavLinkProps> = (props: INavLinkProps) => {
         {props.content ? (
           <div className={mergeStyles(props.textClassName, computedTextWidth)}>{props.content}</div>
         ) : null}
-        {props.rightIconName ? <Icon iconName={props.rightIconName} className={props.iconClassName} /> : null}
+        {props.rightIconName ? (
+          <Icon iconName={props.rightIconName} className={mergeStyles(props.iconClassName, fixedIconWidth)} />
+        ) : null}
       </div>
     </a>
   );

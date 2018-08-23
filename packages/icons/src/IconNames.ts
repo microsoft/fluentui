@@ -1346,8 +1346,8 @@ export const enum IconNames {
   HalfCircle = 'HalfCircle',
   QuarterCircle = 'QuarterCircle',
   ThreeQuarterCircle = 'ThreeQuarterCircle',
-  SixPointStar = '6PointStar',
-  TwelvePointStar = '12PointStar',
+  SixPointStar = 'SixPointStar',
+  TwelvePointStar = 'TwelvePointStar',
   ArrangeBringToFront = 'ArrangeBringToFront',
   ArrangeSendToBack = 'ArrangeSendToBack',
   ArrangeSendBackward = 'ArrangeSendBackward',
@@ -1495,3 +1495,5 @@ export const enum IconNames {
   OfficeChatSolid = 'OfficeChatSolid',
   MailSchedule = 'MailSchedule'
 }
+
+export type IconNamesInput = keyof typeof IconNames;
