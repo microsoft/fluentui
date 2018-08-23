@@ -1,5 +1,5 @@
 import { IFontWeight } from '../MergeStyles';
-import { ISemanticTextColors } from './ISemanticColors';
+import { ISemanticTextColors } from './ISemanticTextColors';
 
 /**
  * @internal This is an experimental interface and will be changed post design review.
