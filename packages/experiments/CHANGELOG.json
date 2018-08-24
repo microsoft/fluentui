@@ -2,6 +2,35 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.26.0",
+      "tag": "@uifabric/experiments_v6.26.0",
+      "date": "Fri, 24 Aug 2018 10:26:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "137fbcef0a2c118db0097f38075427a41c769ca0",
+            "comment": "Replace usage of deprecated onChanged prop with onChange"
+          }
+        ],
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "f0d8c9072cdcdef320ef8c2564dec4a24daaa58b",
+            "comment": "Text: now defaults to the default variant, added support for more styling options, adjusted how color is pulled, updated example."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.15.0` to `^0.16.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.53.0 <7.0.0` to `>=6.54.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.25.0",
       "tag": "@uifabric/experiments_v6.25.0",
       "date": "Thu, 23 Aug 2018 10:28:17 GMT",

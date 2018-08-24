@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 23 Aug 2018 10:28:17 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Aug 2018 10:26:08 GMT and should not be manually modified.
+
+## 6.15.1
+Fri, 24 Aug 2018 10:26:08 GMT
+
+### Patches
+
+- Fix @types/prop-types being inconsistently restrictive.
 
 ## 6.15.0
 Thu, 23 Aug 2018 10:28:17 GMT

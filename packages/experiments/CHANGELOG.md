@@ -1,6 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 23 Aug 2018 10:28:17 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Aug 2018 10:26:08 GMT and should not be manually modified.
+
+## 6.26.0
+Fri, 24 Aug 2018 10:26:08 GMT
+
+### Minor changes
+
+- Text: now defaults to the default variant, added support for more styling options, adjusted how color is pulled, updated example.
+
+### Patches
+
+- Replace usage of deprecated onChanged prop with onChange
 
 ## 6.25.0
 Thu, 23 Aug 2018 10:28:17 GMT

@@ -2,6 +2,45 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.54.0",
+      "tag": "office-ui-fabric-react_v6.54.0",
+      "date": "Fri, 24 Aug 2018 10:26:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "7092f478f8d1eab4a3fa39c11874e2a9dd9b882f",
+            "comment": "ChoiceGroup: remove aria-labelledby to prevent accessibility bugs with custom onRenderLabel"
+          },
+          {
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "b37ca62e680fd228575f393293b0ecf7703b9c49",
+            "comment": "ContextualMenu: remove line-height 0 styling for lists"
+          },
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "0b20b876f152cc69147617e9b848feaa2dbb71df",
+            "comment": "Fix @types/prop-types being inconsistently restrictive."
+          }
+        ],
+        "minor": [
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "137fbcef0a2c118db0097f38075427a41c769ca0",
+            "comment": "ColorSlider, ComboBox, Dropdown, Rating, Toggle: add onChange and deprecate onChanged"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.17.0 <7.0.0` to `>=6.18.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.15.0 <7.0.0` to `>=6.15.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.53.0",
       "tag": "office-ui-fabric-react_v6.53.0",
       "date": "Thu, 23 Aug 2018 10:28:17 GMT",

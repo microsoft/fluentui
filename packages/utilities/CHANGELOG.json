@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.15.1",
+      "tag": "@uifabric/utilities_v6.15.1",
+      "date": "Fri, 24 Aug 2018 10:26:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "0b20b876f152cc69147617e9b848feaa2dbb71df",
+            "comment": "Fix @types/prop-types being inconsistently restrictive."
+          }
+        ]
+      }
+    },
+    {
       "version": "6.15.0",
       "tag": "@uifabric/utilities_v6.15.0",
       "date": "Thu, 23 Aug 2018 10:28:17 GMT",
