@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import { DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { TeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
-import { ChoiceGroup, IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
 
 export interface ITeachingBubbleBasicExampleState {
   isTeachingBubbleVisible?: boolean;
@@ -51,33 +50,6 @@ export class TeachingBubbleBasicExample extends React.Component<{}, ITeachingBub
               onDismiss={this._onDismiss}
               headline="Discover what’s trending around you"
             >
-              <ChoiceGroup
-                defaultSelectedKey="B"
-                options={[
-                  {
-                    key: 'A',
-                    text: 'Option A',
-                    'data-automation-id': 'auto1'
-                  } as IChoiceGroupOption,
-                  {
-                    key: 'B',
-                    text: 'Option B'
-                  },
-                  {
-                    key: 'C',
-                    text: 'Option C',
-                    disabled: true
-                  },
-                  {
-                    key: 'D',
-                    text: 'Option D',
-                    disabled: true
-                  }
-                ]}
-                onChange={this._onChange}
-                label="Pick one"
-                required={true}
-              />
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam
               magni harum non?
             </TeachingBubble>
