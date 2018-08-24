@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { IStyle } from 'office-ui-fabric-react';
-import { IStyleableComponentProps, IThemedProps } from '../../Foundation';
+import { IStyleableComponent, IStyleableComponentProps, IThemedProps } from '../../Foundation';
 import { RefObject } from '../../Utilities';
 
 import { ICollapsibleSectionTitleProps } from './CollapsibleSectionTitle.types';
 
 export interface ICollapsibleSectionProps
-  extends IStyleableComponentProps<ICollapsibleSectionProps, ICollapsibleSectionStyles> {
+  extends IStyleableComponent<ICollapsibleSectionProps, ICollapsibleSectionStyles> {
   /**
    * Additional class name to provide on the root element.
    */
