@@ -252,6 +252,18 @@ $isPaddedMargin: 24px;
   background: $ms-color-white;
 }
 
+.dropHintCaretStyle {
+  display:inline-block;
+  visibility: hidden;
+  position: absolute;
+  top: 22px;
+  left: -7.5px;
+  font-size: 16px;
+  color: $ms-color-themePrimary;
+  overflow: visible;
+  z-Index: 10;
+}
+
 .dropHintLineStyle{
   display: inline-block;
   visibility:hidden;

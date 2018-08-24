@@ -580,12 +580,13 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
   private _renderDropHint(dropHintIndex: number): JSX.Element {
     return (
       <div key={ 'dropHintKey' } className={ styles.dropHintStyle } id={ `columnDropHint_${dropHintIndex}` }>
-        <div
-          key={ `dropHintCircleKey` }
+        <Icon
+          key={ `dropHintCaretKey` }
           aria-hidden={ true }
           data-is-focusable={ false }
           data-sizer-index={ dropHintIndex }
-          className={ css('ms-DetailsHeader-dropHintCircleStyle', styles.dropHintCircleStyle) }
+          className={ css('ms-DetailsHeader-dropHintCaretStyle', styles.dropHintCaretStyle) }
+          iconName={ 'CaretUpSolid8' }
         />
         <div
           key={ `dropHintLineKey` }
