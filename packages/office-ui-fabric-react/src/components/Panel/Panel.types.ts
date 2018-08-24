@@ -1,5 +1,4 @@
 import * as React from 'react';
-// import { Panel } from './Panel';
 import { PanelBase } from './Panel.base';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IStyle, ITheme } from '../../Styling';
@@ -400,6 +399,11 @@ export interface IPanelStyles {
    * Style for the Body and Footer container element.
    */
   contentInner: IStyle;
+
+  /**
+   * Style for the scrollable content area container element.
+   */
+  scrollableContent: IStyle;
 
   /**
    * Style for the close button container element.

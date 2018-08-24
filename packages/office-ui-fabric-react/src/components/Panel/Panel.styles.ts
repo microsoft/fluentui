@@ -18,6 +18,7 @@ const GlobalClassNames = {
   main: 'ms-Panel-main',
   commands: 'ms-Panel-commands',
   contentInner: 'ms-Panel-contentInner',
+  scrollableContent: 'ms-Panel-scrollableContent',
   navigation: 'ms-Panel-navigation',
   closeButton: 'ms-Panel-closeButton ms-PanelAction-close',
   header: 'ms-Panel-header',
@@ -244,20 +245,22 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
     contentInner: [
       classNames.contentInner,
       {
-        position: 'absolute',
-        top: 0,
-        bottom: 0,
-        left: 0,
-        right: 0,
-        overflowY: 'hidden',
         display: 'flex',
         flexDirection: 'column',
+        minHeight: '100%',
         WebkitOverflowScrolling: 'touch',
         /* Force hw accelleration on scrollable region */
         transform: 'translateZ(0)'
       },
       hasCloseButton && {
-        top: commandBarHeight
+        top: commandBarHeight,
+        minHeight: `calc(100% - ${commandBarHeight})`
+      }
+    ],
+    scrollableContent: [
+      classNames.scrollableContent,
+      {
+        height: '100%'
       }
     ],
     navigation: [
