@@ -50,12 +50,12 @@ export interface ITextProps extends IStyleableComponent<ITextProps, ITextStyles>
   /**
    * Optional font color for Text.
    */
-  color?: keyof IPalette | keyof ISemanticTextColors;
+  color?: keyof IPalette | keyof ISemanticColors;
 
   /**
    * Optional color for hovered text.
    */
-  hoverColor?: keyof IPalette | keyof ISemanticTextColors;
+  hoverColor?: keyof IPalette | keyof ISemanticColors;
 
   /**
    * Whether the text is displayed as an inline element.
