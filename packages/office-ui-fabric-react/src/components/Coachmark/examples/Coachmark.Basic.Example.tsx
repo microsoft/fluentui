@@ -89,7 +89,7 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
               { key: 'M', text: 'Right Center', data: DirectionalHint.rightCenter },
               { key: 'N', text: 'Right Bottom Edge', data: DirectionalHint.rightBottomEdge }
             ]}
-            onChanged={this._onDropdownChange}
+            onChange={this._onDropdownChange}
           />
         </div>
 
@@ -138,7 +138,7 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
     });
   };
 
-  private _onDropdownChange = (option: IDropdownOption): void => {
+  private _onDropdownChange = (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
     this.setState({
       coachmarkPosition: option.data
     });

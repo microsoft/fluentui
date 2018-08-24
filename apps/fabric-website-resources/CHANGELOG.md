@@ -1,6 +1,24 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Tue, 14 Aug 2018 10:27:33 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Aug 2018 10:26:08 GMT and should not be manually modified.
+
+## 6.8.1
+Fri, 24 Aug 2018 10:26:08 GMT
+
+### Patches
+
+- Fix @types/prop-types being inconsistently restrictive.
+
+## 6.8.0
+Thu, 23 Aug 2018 10:28:17 GMT
+
+### Minor changes
+
+- Allow examples to provide their own scroll mechanic
+
+### Patches
+
+- Updating serve config to respect oufr imports.
 
 ## 6.7.4
 Tue, 14 Aug 2018 10:27:33 GMT

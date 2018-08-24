@@ -10,6 +10,7 @@ export interface IColorSliderProps {
   value?: number;
   thumbColor?: string;
   overlayStyle?: any;
+  onChange?: (event: React.MouseEvent<HTMLElement>, newValue?: number) => void;
   onChanged?: (newValue: number) => void;
 
   className?: string;
@@ -34,6 +35,10 @@ export class ColorSliderBase extends BaseComponent<IColorSliderProps, IColorSlid
 
   constructor(props: IColorSliderProps) {
     super(props);
+
+    this._warnDeprecations({
+      onChanged: 'onChange'
+    });
 
     const { value } = this.props;
 
@@ -93,7 +98,7 @@ export class ColorSliderBase extends BaseComponent<IColorSliderProps, IColorSlid
       return;
     }
 
-    const { onChanged, minValue, maxValue } = this.props;
+    const { onChange, onChanged, minValue, maxValue } = this.props;
     const rectSize = this._root.current.getBoundingClientRect();
 
     const currentPercentage = (ev.clientX - rectSize.left) / rectSize.width;
@@ -103,6 +108,10 @@ export class ColorSliderBase extends BaseComponent<IColorSliderProps, IColorSlid
       isAdjusting: true,
       currentValue: newValue
     });
+
+    if (onChange) {
+      onChange(ev, newValue);
+    }
 
     if (onChanged) {
       onChanged(newValue);

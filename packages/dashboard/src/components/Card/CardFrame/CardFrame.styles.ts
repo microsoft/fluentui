@@ -38,7 +38,7 @@ export const getStyles = (props: ICardFrameProps): ICardFrameStyles => {
       flex: 1,
       padding: '9px 16px 12px 16px',
       fontSize: fontSize ? fontSize : '14px',
-      fontFamily: fontFamily ? fontFamily : 'SegoeUI',
+      fontFamily: fontFamily ? fontFamily : 'Segoe UI',
       fontWeight: 600,
       display: 'inline-block',
       selectors: {

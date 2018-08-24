@@ -5,6 +5,7 @@ import {
   IComponentOptions,
   IViewComponentProps,
   IStateComponent,
+  IStyleableComponent,
   IStyleableComponentProps,
   IStylingProviders,
   IThemedComponent,
@@ -12,7 +13,7 @@ import {
 } from '@uifabric/foundation';
 export { IStateComponentProps } from '@uifabric/foundation';
 import { IProcessedStyleSet, IStyleSet } from './Styling';
-import { Customizations, CustomizerContext, ICustomizations } from './Utilities';
+import { Customizations, CustomizableContextTypes, ICustomizations } from './Utilities';
 
 // Centralize Foundation interaction for use throughout this package. These convenience types provide types
 //  that are global for all of OUFR, such as ITheme and IProcessedStyleSet.
@@ -24,12 +25,11 @@ export type IViewComponentProps<TProps, TStyleSet extends IStyleSet<TStyleSet>> 
   TProps,
   IProcessedStyleSet<TStyleSet>
 >;
-
 /**
  * Required properties for styleable components.
  */
+export type IStyleableComponent<TProps, TStyleSet> = IStyleableComponent<TProps, TStyleSet, ITheme>;
 export type IStyleableComponentProps<TProps, TStyleSet> = IStyleableComponentProps<TProps, TStyleSet, ITheme>;
-
 /**
  * Required properties for themed components.
  */
@@ -45,7 +45,7 @@ type IContextCustomization = { customizations: ICustomizations };
 const providers: IStylingProviders<any, any, any, IContextCustomization, ITheme> = {
   mergeStyleSets,
   getCustomizations,
-  CustomizerContext
+  CustomizableContextTypes
 };
 
 /**
@@ -54,7 +54,7 @@ const providers: IStylingProviders<any, any, any, IContextCustomization, ITheme>
  * @param {IComponentOptions} options
  */
 export function createStatelessComponent<
-  TComponentProps extends IStyleableComponentProps<TComponentProps, TStyleSet, ITheme>,
+  TComponentProps extends IStyleableComponent<TComponentProps, TStyleSet, ITheme>,
   TStyleSet extends IStyleSet<TStyleSet>,
   TStatics = {}
 >(
@@ -77,7 +77,7 @@ export function createStatelessComponent<
  * @param {IStateComponent} state
  */
 export function createComponent<
-  TComponentProps extends IStyleableComponentProps<TViewProps, TStyleSet, ITheme>,
+  TComponentProps extends IStyleableComponent<TViewProps, TStyleSet, ITheme>,
   TViewProps,
   TStyleSet extends IStyleSet<TStyleSet>,
   TStatics = {}

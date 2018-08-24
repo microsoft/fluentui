@@ -11,22 +11,27 @@ export enum CardSize {
   /**
    * Option for selecting small card
    */
-  small,
+  small = 'small',
 
   /**
    * Option for selecting Medium Tall card
    */
-  mediumTall,
+  mediumTall = 'mediumTall',
 
   /**
    * Option for selecting Medium Wide card
    */
-  mediumWide,
+  mediumWide = 'mediumWide',
 
   /**
    * Option for selecting Large card
    */
-  large
+  large = 'large',
+
+  /**
+   * Option for selecting section title
+   */
+  section = 'section'
 }
 
 /**
@@ -133,6 +138,13 @@ export interface ICardProps {
    * @default false
    */
   disableDrag?: boolean;
+}
+
+export interface ICard extends ICardProps {
+  /**
+   * The card key, which must be unique within the dashboard
+   */
+  key: string;
 }
 
 export interface ICardState {

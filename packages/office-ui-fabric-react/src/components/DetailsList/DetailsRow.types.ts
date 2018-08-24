@@ -16,7 +16,7 @@ export interface IDetailsItemProps {
   /**
    * Column metadata
    */
-  columns: IColumn[];
+  columns?: IColumn[];
 
   /**
    * Nesting depth of a grouping
@@ -54,7 +54,7 @@ export interface IDetailsItemProps {
   cellStyleProps?: ICellStyleProps;
 }
 
-export interface IDetailsRowProps extends IBaseProps<IDetailsRow>, IDetailsItemProps {
+export interface IDetailsRowBaseProps extends IBaseProps<IDetailsRow>, IDetailsItemProps {
   /**
    * Theme provided by styled() function
    */
@@ -165,6 +165,23 @@ export interface IDetailsRowProps extends IBaseProps<IDetailsRow>, IDetailsItemP
    * @default false
    */
   useReducedRowRenderer?: boolean;
+}
+
+export interface IDetailsRowProps extends IDetailsRowBaseProps {
+  /**
+   * Column metadata
+   */
+  columns: IColumn[];
+
+  /**
+   * Selection from utilities
+   */
+  selection: ISelection;
+
+  /**
+   * Selection mode
+   */
+  selectionMode: SelectionMode;
 }
 
 export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & {

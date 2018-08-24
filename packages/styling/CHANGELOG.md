@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 21 Aug 2018 10:28:16 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Aug 2018 10:26:08 GMT and should not be manually modified.
+
+## 6.18.0
+Fri, 24 Aug 2018 10:26:08 GMT
+
+### Minor changes
+
+- Adjustments to the internal typography interfaces.
 
 ## 6.17.0
 Tue, 21 Aug 2018 10:28:16 GMT

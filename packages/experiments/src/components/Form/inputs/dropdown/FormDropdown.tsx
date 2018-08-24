@@ -58,7 +58,7 @@ export class FormDropdown extends FormBaseInput<DropdownValue, IFormDropdownProp
         {...this.props.dropdownProps}
         // These props cannot be overridden
         key={this.props.inputKey}
-        onChanged={this._onChanged}
+        onChange={this._onChange}
         {...(currentValue && Array.isArray(currentValue)
           ? { selectedKeys: currentValue }
           : { selectedKey: currentValue })}
@@ -66,7 +66,7 @@ export class FormDropdown extends FormBaseInput<DropdownValue, IFormDropdownProp
     );
   }
 
-  private _onChanged = (option: IDropdownOption): void => {
+  private _onChange = (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
     const { dropdownProps } = this.props;
 
     if (dropdownProps && dropdownProps.multiSelect) {

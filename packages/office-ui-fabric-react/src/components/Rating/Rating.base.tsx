@@ -44,6 +44,10 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
   constructor(props: IRatingProps) {
     super(props);
 
+    this._warnDeprecations({
+      onChanged: 'onChange'
+    });
+
     this._id = getId('Rating');
     this._min = this.props.allowZeroStars ? 0 : 1;
     if (this.props.min !== undefined && this.props.min !== 1) {
@@ -146,7 +150,12 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
         rating: value
       } as IRatingState);
 
-      const { onChanged } = this.props;
+      const { onChange, onChanged } = this.props;
+
+      if (onChange) {
+        onChange(ev, value);
+      }
+
       if (onChanged) {
         onChanged(value);
       }

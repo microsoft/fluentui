@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
-
-import { Legend } from '../Legend/Legend';
-
-import { IMultiStackedBarChartProps, IMultiStackedBarChartStyles } from './MultiStackedBarChart.types';
-import { IDataPoint, ILegendDataItem } from './StackedBarChart.types';
-import { StackedBarChart } from './StackedBarChart';
+import { ILegend, Legends } from '../Legends/index';
+import {
+  IChartDataPoint,
+  IChartProps,
+  IMultiStackedBarChartProps,
+  IMultiStackedBarChartStyles,
+  StackedBarChart
+} from './index';
 
 const getClassNames = classNamesFunction<{}, IMultiStackedBarChartStyles>();
 
@@ -14,21 +16,21 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   private _width: number;
   private _barHeight: number;
   private _renderLegend: boolean | undefined;
-  private _blankBarColor: string;
-  private _defaultPaletteColors: string[];
   private _classNames: IProcessedStyleSet<IMultiStackedBarChartStyles>;
 
   public render(): JSX.Element {
-    const { data, chartTitles, legendData, theme } = this.props;
-
+    const { data, theme, hideRatio } = this.props;
     this._adjustProps();
-
+    const legends = this._getLegendData(data!, hideRatio!);
+    this._renderLegend = data ? true : false;
+    const { palette } = theme!;
     return (
       <div className={this._classNames.root}>
-        {data.map((points: IDataPoint[], index: number) => {
-          const colors = this._getColorsForStackedBarChart(points);
-          if (points.length === 0) {
-            points.push({ x: '', y: 100 });
+        {data!.map((points: IChartProps, index: number) => {
+          let currentFlagShowRatio = hideRatio ? (hideRatio[index] !== undefined ? hideRatio[index] : false) : false;
+          if (points.chartData!.length === 0) {
+            points.chartData!.push({ legend: '', data: 100, color: palette.neutralTertiaryAlt });
+            currentFlagShowRatio = true;
           }
           return (
             <div key={index} className={this._classNames.items}>
@@ -36,55 +38,53 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
                 barHeight={this._barHeight}
                 width={this._width}
                 theme={theme}
-                chartTitle={chartTitles[index]}
-                colors={colors}
                 data={points}
                 hideLegend={true}
-                hideNumberDisplay={true}
+                hideNumberDisplay={currentFlagShowRatio}
+                isMultiStackedBarChart={true}
               />
             </div>
           );
         })}
-        {this._renderLegend && <Legend renderData={legendData!} />}
+        {this._renderLegend && <Legends legends={legends} />}
       </div>
     );
   }
 
-  private _adjustProps = (): void => {
-    const { theme, className, styles, width, barHeight, legendData } = this.props;
-    const { palette } = theme!;
+  private _getLegendData = (data: IChartProps[], hideRatio: boolean[]): ILegend[] => {
+    const actions: ILegend[] = [];
+    data.map((singleChartData: IChartProps, index: number) => {
+      if (singleChartData.chartData!.length < 3) {
+        if (hideRatio && hideRatio[index]) {
+          singleChartData.chartData!.map((dataPoint: IChartDataPoint) => {
+            const action: ILegend = {
+              title: dataPoint.legend!,
+              color: dataPoint.color!
+            };
+            actions.push(action);
+          });
+        }
+      } else {
+        singleChartData.chartData!.map((dataPoint: IChartDataPoint) => {
+          const action: ILegend = {
+            title: dataPoint.legend!,
+            color: dataPoint.color!
+          };
+          actions.push(action);
+        });
+      }
+    });
+    return actions;
+  };
 
-    this._width = width || 500;
+  private _adjustProps = (): void => {
+    const { theme, className, styles, width, barHeight } = this.props;
     this._barHeight = barHeight || 16;
-    this._renderLegend = legendData && legendData.length > 0;
-    this._blankBarColor = palette.neutralTertiaryAlt;
-    this._defaultPaletteColors = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     this._classNames = getClassNames(styles!, {
       theme: theme!,
-      width: this._width,
+      width: width,
       className,
       barHeight: this._barHeight
     });
-  };
-
-  private _getColorsForStackedBarChart = (points: IDataPoint[]): string[] => {
-    if (points.length === 0) {
-      return [this._blankBarColor];
-    }
-
-    if (this._renderLegend === true) {
-      const { legendData } = this.props;
-      const paletteColorSize = this._defaultPaletteColors.length;
-      return points.map((point: IDataPoint, index: number) => {
-        const legendIdx = legendData!.findIndex((legendItem: ILegendDataItem) => legendItem.legendText === point.x);
-        if (legendIdx > -1) {
-          return legendData![legendIdx].legendColor;
-        } else {
-          return this._defaultPaletteColors[index % paletteColorSize];
-        }
-      });
-    }
-
-    return this._defaultPaletteColors;
   };
 }

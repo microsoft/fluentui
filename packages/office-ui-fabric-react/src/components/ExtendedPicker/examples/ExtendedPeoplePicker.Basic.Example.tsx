@@ -168,7 +168,7 @@ export class ExtendedPeoplePickerTypesExample extends React.Component<{}, IPeopl
     return (
       <div>
         {this._renderExtendedPicker()}
-        <Toggle label="Controlled component" defaultChecked={false} onChanged={this._toggleControlledComponent} />
+        <Toggle label="Controlled component" defaultChecked={false} onChange={this._toggleControlledComponent} />
         <PrimaryButton text="Set focus" onClick={this._onSetFocusButtonClicked} />
       </div>
     );
@@ -199,7 +199,7 @@ export class ExtendedPeoplePickerTypesExample extends React.Component<{}, IPeopl
     );
   }
 
-  private _toggleControlledComponent = (toggleState: boolean): void => {
+  private _toggleControlledComponent = (ev: React.MouseEvent<HTMLElement>, toggleState: boolean): void => {
     this.setState({ controlledComponent: toggleState });
   };
 

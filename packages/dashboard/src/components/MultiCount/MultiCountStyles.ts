@@ -9,7 +9,7 @@ export const getStyles = (props: IMultiCountStyleProps): IMultiCountStyles => {
       alignItems: 'baseline'
     },
     bodyText: {
-      fontFamily: 'SegoeUI',
+      fontFamily: 'Segoe UI',
       fontWeight: 600,
       overflow: 'hidden',
       textOverflow: 'ellipsis',
