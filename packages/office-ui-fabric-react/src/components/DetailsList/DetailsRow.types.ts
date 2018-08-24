@@ -12,7 +12,49 @@ import { IDetailsRowFieldsProps } from './DetailsRowFields.types';
 
 export interface IDetailsRow {}
 
-export interface IDetailsRowProps extends IBaseProps<IDetailsRow> {
+export interface IDetailsItemProps {
+  /**
+   * Column metadata
+   */
+  columns: IColumn[];
+
+  /**
+   * Nesting depth of a grouping
+   */
+  groupNestingDepth?: number;
+
+  /**
+   * How much to indent
+   */
+  indentWidth?: number | undefined;
+
+  /**
+   * Selection from utilities
+   */
+  selection?: ISelection | undefined;
+
+  /**
+   * Selection mode
+   */
+  selectionMode?: SelectionMode | undefined;
+
+  /**
+   * View port of the virtualized list
+   */
+  viewport?: IViewport | undefined;
+
+  /**
+   * Checkbox visibility
+   */
+  checkboxVisibility?: CheckboxVisibility | undefined;
+
+  /**
+   * Rules for rendering column cells.
+   */
+  cellStyleProps?: ICellStyleProps;
+}
+
+export interface IDetailsRowProps extends IBaseProps<IDetailsRow>, IDetailsItemProps {
   /**
    * Theme provided by styled() function
    */
@@ -39,24 +81,9 @@ export interface IDetailsRowProps extends IBaseProps<IDetailsRow> {
   itemIndex: number;
 
   /**
-   * Column metadata
-   */
-  columns: IColumn[];
-
-  /**
    * Whether to render in compact mode
    */
   compact?: boolean;
-
-  /**
-   * Selection mode
-   */
-  selectionMode: SelectionMode;
-
-  /**
-   * Selection from utilities
-   */
-  selection: ISelection;
 
   /**
    * A list of events to register
@@ -92,26 +119,6 @@ export interface IDetailsRowProps extends IBaseProps<IDetailsRow> {
    * Helper for the drag and drop
    */
   dragDropHelper?: IDragDropHelper;
-
-  /**
-   * Nesting depth of a grouping
-   */
-  groupNestingDepth?: number;
-
-  /**
-   * How much to indent
-   */
-  indentWidth?: number;
-
-  /**
-   * View port of the virtualized list
-   */
-  viewport?: IViewport;
-
-  /**
-   * Checkbox visibility
-   */
-  checkboxVisibility?: CheckboxVisibility;
 
   /**
    * Collapse all visibility
@@ -158,8 +165,6 @@ export interface IDetailsRowProps extends IBaseProps<IDetailsRow> {
    * @default false
    */
   useReducedRowRenderer?: boolean;
-
-  cellStyleProps?: ICellStyleProps;
 }
 
 export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & {

@@ -4,11 +4,12 @@ import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 
 import { KeyCodes, resetIds } from '../../Utilities';
 import { Dropdown } from './Dropdown';
-import { DropdownMenuItemType, IDropdownOption } from './Dropdown.types';
+import { DropdownBase } from './Dropdown.base';
+import { DropdownMenuItemType, IDropdownOption, IDropdown } from './Dropdown.types';
 
 const DEFAULT_OPTIONS: IDropdownOption[] = [
   { key: 'Header1', text: 'Header 1', itemType: DropdownMenuItemType.Header },
@@ -139,17 +140,17 @@ describe('Dropdown', () => {
       }
     });
 
-    it('issues the onChanged callback when the selected item is different', () => {
+    it('issues the onChange callback when the selected item is different', () => {
       const container = document.createElement('div');
       let dropdownRoot: HTMLElement | undefined;
 
       document.body.appendChild(container);
 
-      const onChangedSpy = jasmine.createSpy('onChanged');
+      const onChangeSpy = jasmine.createSpy('onChange');
 
       try {
         ReactDOM.render(
-          <Dropdown label="testgroup" defaultSelectedKey="1" onChanged={onChangedSpy} options={DEFAULT_OPTIONS} />,
+          <Dropdown label="testgroup" defaultSelectedKey="1" onChange={onChangeSpy} options={DEFAULT_OPTIONS} />,
           container
         );
         dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
@@ -159,7 +160,7 @@ describe('Dropdown', () => {
         const secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"]') as HTMLElement;
         ReactTestUtils.Simulate.click(secondItemElement);
       } finally {
-        expect(onChangedSpy).toHaveBeenCalledWith(DEFAULT_OPTIONS[2], 2);
+        expect(onChangeSpy).toHaveBeenCalledWith(expect.anything(), DEFAULT_OPTIONS[2], 2);
       }
     });
 
@@ -190,37 +191,31 @@ describe('Dropdown', () => {
     it('sets the selected item even when key is number 0', () => {
       const options = [{ key: 0, text: 'item1' }, { key: 1, text: 'item2' }];
       const selectedKey = 0;
+      const dropdown = React.createRef<IDropdown>();
 
-      const wrapper = shallow(<Dropdown options={options} />);
+      const wrapper = mount(<Dropdown componentRef={dropdown} options={options} />);
 
-      // Use .dive() because Dropdown is a decorated component
-      let state = wrapper
-        .dive() // styled
-        .dive() // withResponsiveMode
-        .state('selectedIndices');
-      expect(state).toEqual([]);
+      expect((dropdown.current as DropdownBase).state.selectedIndices).toEqual([]);
 
       const newProps = { options, selectedKey };
+
       wrapper.setProps(newProps);
       wrapper.update();
-      state = wrapper
-        .dive()
-        .dive()
-        .state('selectedIndices');
-      expect(state).toEqual([selectedKey]);
+
+      expect((dropdown.current as DropdownBase).state.selectedIndices).toEqual([selectedKey]);
     });
 
-    it('issues the onChanged callback when the selected item is different', () => {
+    it('does not issue the onChange callback when the selected item is not different', () => {
       const container = document.createElement('div');
       let dropdownRoot: HTMLElement | undefined;
 
       document.body.appendChild(container);
 
-      const onChangedSpy = jasmine.createSpy('onChanged');
+      const onChangeSpy = jasmine.createSpy('onChange');
 
       try {
         ReactDOM.render(
-          <Dropdown label="testgroup" defaultSelectedKey="1" onChanged={onChangedSpy} options={DEFAULT_OPTIONS} />,
+          <Dropdown label="testgroup" defaultSelectedKey="1" onChange={onChangeSpy} options={DEFAULT_OPTIONS} />,
           container
         );
         dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
@@ -230,7 +225,7 @@ describe('Dropdown', () => {
         const secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="1"]') as HTMLElement;
         ReactTestUtils.Simulate.click(secondItemElement);
       } finally {
-        expect(onChangedSpy).not.toHaveBeenCalled();
+        expect(onChangeSpy).not.toHaveBeenCalled();
       }
     });
 
@@ -378,23 +373,17 @@ describe('Dropdown', () => {
     it('sets the selected items even when key is number 0', () => {
       const options = [{ key: 0, text: 'item1' }, { key: 1, text: 'item2' }];
       const selectedKeys = [0, 1];
-
-      const wrapper = shallow(<Dropdown multiSelect options={options} />);
+      const dropdown = React.createRef<IDropdown>();
+      const wrapper = mount(<Dropdown multiSelect componentRef={dropdown} options={options} />);
 
       // Use .dive() because Dropdown is a decorated component
-      let state = wrapper
-        .dive() // styled
-        .dive() // withresponsivemode
-        .state('selectedIndices');
+      let state = (dropdown.current as DropdownBase).state.selectedIndices;
       expect(state).toEqual([]);
 
       const newProps = { options, selectedKeys };
       wrapper.setProps(newProps);
       wrapper.update();
-      state = wrapper
-        .dive()
-        .dive()
-        .state('selectedIndices');
+      state = (dropdown.current as DropdownBase).state.selectedIndices;
       expect(state).toEqual(selectedKeys);
     });
 

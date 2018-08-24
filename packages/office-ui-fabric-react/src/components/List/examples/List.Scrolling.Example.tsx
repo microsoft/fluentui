@@ -58,7 +58,7 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
             { key: 'bottom', text: 'Bottom' },
             { key: 'center', text: 'Center' }
           ]}
-          onChanged={this._onDropdownChanged}
+          onChange={this._onDropdownChange}
         />
         <div>
           Scroll item index:
@@ -106,7 +106,7 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
     this._scroll(parseInt(value, 10) || 0, this.state.scrollToMode);
   };
 
-  private _onDropdownChanged = (option: IDropdownOption) => {
+  private _onDropdownChange = (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption) => {
     let scrollMode = this.state.scrollToMode;
     switch (option.key) {
       case 'auto':

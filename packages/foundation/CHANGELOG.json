@@ -2,6 +2,20 @@
   "name": "@uifabric/foundation",
   "entries": [
     {
+      "version": "0.3.0",
+      "tag": "@uifabric/foundation_v0.3.0",
+      "date": "Thu, 23 Aug 2018 10:28:17 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "e4daa37b59065e1d90b91ac728b3e3c7e52d9e77",
+            "comment": "Adjusting foundation usage, using new React 16 context."
+          }
+        ]
+      }
+    },
+    {
       "version": "0.2.5",
       "tag": "@uifabric/foundation_v0.2.5",
       "date": "Tue, 14 Aug 2018 10:27:33 GMT",

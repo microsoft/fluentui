@@ -268,14 +268,6 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
 
   @autobind
   private _onInputChange(ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, value: string) {
-    if (this.props.onChange) {
-      this.props.onChange(ev, value);
-    }
-
-    if (this.props.onChanged) {
-      this.props.onChanged(value);
-    }
-
     if (!this._changeSelectionData) {
       return;
     }
@@ -341,10 +333,21 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
 
     this._changeSelectionData = null;
 
+    const newValue = getMaskDisplay(this.props.mask, this._maskCharData, this.props.maskChar);
+
     this.setState({
-      displayValue: getMaskDisplay(this.props.mask, this._maskCharData, this.props.maskChar),
+      displayValue: newValue,
       maskCursorPosition: cursorPos
     });
+
+    // Perform onChange/d after input has been processed. Return value is expected to be the displayed text
+    if (this.props.onChange) {
+      this.props.onChange(ev, newValue);
+    }
+
+    if (this.props.onChanged) {
+      this.props.onChanged(newValue);
+    }
   }
 
   @autobind

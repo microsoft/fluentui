@@ -30,7 +30,6 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
       disabled,
       checked,
       id,
-      labelId,
       styles,
       name,
       onRenderField = this._onRenderField
@@ -61,7 +60,6 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
             onChange={this._onChange.bind(this, this.props)}
             onFocus={this._onFocus.bind(this, this.props)}
             onBlur={this._onBlur.bind(this, this.props)}
-            aria-labelledby={labelId}
             {...getNativeProps(this.props, inputProperties)}
           />
           {onRenderField(this.props, this._onRenderField)}
@@ -133,7 +131,7 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
 
   private _onRenderLabel = (props: IChoiceGroupOptionProps): JSX.Element => {
     return (
-      <span id={props.labelId} className="ms-Label">
+      <span id={props.labelId} className="ms-ChoiceFieldLabel">
         {props.text}
       </span>
     );

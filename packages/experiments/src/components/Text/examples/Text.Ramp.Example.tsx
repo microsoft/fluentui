@@ -1,8 +1,12 @@
 import * as React from 'react';
 import { Text, VerticalStack } from '@uifabric/experiments';
-import { IFontVariants, IFontSizes, IFontWeights, IFontFamilies } from '@uifabric/experiments/lib/Styling';
-import { ISemanticColors, IPalette, ITheme } from '@uifabric/experiments/lib/Styling';
-import { createStatelessComponent } from '@uifabric/experiments/lib/Foundation';
+import { IFontVariants, IFontSizes, IFontWeights, IFontFamilies, IStyle } from '@uifabric/experiments/lib/Styling';
+import { ISemanticTextColors, IPalette, ITheme } from '@uifabric/experiments/lib/Styling';
+import {
+  createStatelessComponent,
+  IStyleableComponentProps,
+  IViewComponentProps
+} from '@uifabric/experiments/lib/Foundation';
 
 const TestText = 'The quick brown fox jumped over the lazy dog.';
 
@@ -18,7 +22,8 @@ const Variants: ISetting<keyof IFontVariants>[] = [
   { name: 'h2', usage: 'h2' },
   { name: 'h3', usage: 'h3' },
   { name: 'h4', usage: 'h4' },
-  { name: 'h5', usage: 'h5' }
+  { name: 'h5', usage: 'h5' },
+  { name: 'link', usage: 'link' }
 ];
 
 const Sizes: ISetting<keyof IFontSizes>[] = [
@@ -44,13 +49,22 @@ const Weights: ISetting<keyof IFontWeights>[] = [
 
 const Families: ISetting<keyof IFontFamilies>[] = [{ name: 'default', usage: '' }, { name: 'monospace', usage: '' }];
 
-const Colors: ISetting<keyof ISemanticColors | keyof IPalette>[] = [
-  { name: 'themePrimary', usage: '' },
+const Colors: ISetting<keyof ISemanticTextColors | keyof IPalette>[] = [
   { name: 'bodyText', usage: '' },
-  { name: 'errorText', usage: '' }
+  { name: 'link', usage: '' },
+  { name: 'linkHovered', usage: '' },
+  { name: 'actionLink', usage: '' },
+  { name: 'actionLinkHovered', usage: '' }
 ];
 
-interface ITableProps {
+interface ITableStyles {
+  root: IStyle;
+  table: IStyle;
+  header: IStyle;
+}
+
+// Note I intuitively tried to extend IStyleableComponentProps... this was confusing.
+interface ITableProps extends IStyleableComponentProps<ITableProps, ITableStyles> {
   className?: string;
   title: string;
   headers: string[];
@@ -58,15 +72,17 @@ interface ITableProps {
   theme?: ITheme;
 }
 
-const Table = createStatelessComponent<ITableProps, {}, {}>({
-  view: (props: ITableProps) => (
+const Table = createStatelessComponent<ITableProps, ITableStyles>({
+  view: (props: IViewComponentProps<ITableProps, ITableStyles>) => (
     <VerticalStack className={props.className} gap={20}>
       <Text variant="h3">{props.title}</Text>
-      <table>
+      <table className={props.classNames.table}>
         <thead>
-          <tr>
+          <tr className={props.classNames.header}>
             {props.headers.map((header: string) => (
-              <td key={header}>{header}</td>
+              <Text key={header} as="td" weight="bold">
+                {header}
+              </Text>
             ))}
           </tr>
         </thead>
@@ -76,7 +92,12 @@ const Table = createStatelessComponent<ITableProps, {}, {}>({
   ),
   displayName: 'Table',
   styles: {
-    table: {}
+    table: {
+      borderCollapse: 'collapse'
+    },
+    header: {
+      borderBottom: '1px solid black'
+    }
   }
 });
 
@@ -87,13 +108,17 @@ interface ITableRowProps {
 const TableRow: React.StatelessComponent<ITableRowProps> = (props: ITableRowProps) => (
   <tr>
     {props.cells.map((cell: string) => (
-      <td key={cell}>{cell}</td>
+      <Text as="td" key={cell}>
+        {cell}
+      </Text>
     ))}
   </tr>
 );
 
 export const TextRampExample = () => (
   <VerticalStack gap={40}>
+    <Text>Default text should render using the "default" variant.</Text>
+
     <Table title="Variants" headers={['Variant', 'Example', 'Usage']}>
       {Variants.map((setting: ISetting<keyof IFontVariants>) => (
         <TableRow
@@ -103,7 +128,7 @@ export const TextRampExample = () => (
             <Text key={setting.name + 'text'} variant={setting.name}>
               {TestText}
             </Text>,
-            setting.usage
+            <Text key={setting.name + 'usage'}>setting.usage</Text>
           ]}
         />
       ))}
@@ -155,7 +180,7 @@ export const TextRampExample = () => (
     </Table>
 
     <Table title="Colors" headers={['Color', 'Example']}>
-      {Colors.map((setting: ISetting<keyof ISemanticColors | keyof IPalette>) => (
+      {Colors.map((setting: ISetting<keyof ISemanticTextColors | keyof IPalette>) => (
         <TableRow
           key={setting.name}
           cells={[

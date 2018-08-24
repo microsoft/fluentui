@@ -321,6 +321,8 @@ exports[`Stack renders Stack with vertical and horizontal fill correctly 1`] = `
         height: 100%;
         width: 100%;
       }
+  fillHorizontal={true}
+  fillVertical={true}
 >
   <div
     className=

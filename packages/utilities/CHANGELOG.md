@@ -1,6 +1,18 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 14 Aug 2018 10:27:33 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Aug 2018 10:28:17 GMT and should not be manually modified.
+
+## 6.15.0
+Thu, 23 Aug 2018 10:28:17 GMT
+
+### Minor changes
+
+- Customizer: moving to use React 16 context.
+- Scroll: allow scrolling within a target element
+
+### Patches
+
+- Scroll: disable ios body scrolling in disableBodyScroll
 
 ## 6.14.1
 Tue, 14 Aug 2018 10:27:33 GMT

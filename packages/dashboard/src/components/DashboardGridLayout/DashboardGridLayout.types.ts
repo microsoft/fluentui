@@ -1,31 +1,8 @@
 import { Breakpoints, Layout, Layouts } from 'react-grid-layout';
+import { ISection } from '../Section/Section.types';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { DragApiRefObject } from 'react-grid-layout';
-
-/**
- * Size of the card
- */
-export enum Size {
-  /**
-   * Option for selecting small card
-   */
-  small = 'small',
-
-  /**
-   * Option for selecting Medium Tall card
-   */
-  mediumTall = 'mediumTall',
-
-  /**
-   * Option for selecting Medium Wide card
-   */
-  mediumWide = 'mediumWide',
-
-  /**
-   * Option for selecting Large card
-   */
-  large = 'large'
-}
+import { ICard, CardSize } from '../Card/Card.types';
 
 export interface IDashboardGridLayoutStyles {
   root: IStyle;
@@ -36,6 +13,15 @@ export type DashboardGridBreakpointLayouts = {
    * Layout dictionary for every breakpoint
    */
   [P in Breakpoints]?: IDashboardCardLayout[]
+};
+
+export type DashboardSectionMapping = {
+  /**
+   * Key to key mapping for sections
+   * Key: section key
+   * Value: List of cards keys that are under this section
+   */
+  [id: string]: string[];
 };
 
 export interface IDashboardCardLayout {
@@ -57,7 +43,7 @@ export interface IDashboardCardLayout {
   /**
    * Size of card
    */
-  size: Size;
+  size: CardSize;
 
   /**
    * Static elements can't be moved or dragged
@@ -110,4 +96,28 @@ export interface IDashboardGridLayoutProps {
    * Calls back with breakpoint and new number of columns
    */
   onBreakPointChange?(newBreakpoint: string, newCols: number): void;
+}
+
+export interface IDashboardGridSectionLayoutProps extends IDashboardGridLayoutProps {
+  /**
+   * The sections
+   */
+  sections: ISection[];
+
+  /**
+   * THe cards
+   */
+  cards: ICard[];
+
+  /**
+   * if the section is collapsible
+   * @default false
+   */
+  isCollapsible?: boolean;
+
+  /**
+   * On section change.
+   * @param newMapping
+   */
+  onSectionChange?(currentLayout: Layout[], allLayouts: Layouts, sectionMapping?: DashboardSectionMapping): void;
 }

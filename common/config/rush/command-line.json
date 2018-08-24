@@ -17,6 +17,11 @@
       "optionType": "flag",
       "description": "Builds with linting.",
       "associatedCommands": ["build", "rebuild"]
+    },
+    "--npm-install-mode": {
+      "optionType": "flag",
+      "description": "Skips tasks that are irrelevant during npm install",
+      "associatedCommands": ["build", "rebuild"]
     }
   }
 }

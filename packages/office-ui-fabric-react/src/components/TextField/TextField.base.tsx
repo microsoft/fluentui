@@ -163,6 +163,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
       disabled,
       iconClass,
       iconProps,
+      inputClassName,
       label,
       multiline,
       required,
@@ -195,7 +196,8 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
       resizable,
       hasIcon: !!iconProps,
       underlined,
-      iconClass
+      iconClass,
+      inputClassName
     });
 
     // If a custom description render function is supplied then treat description as always available.
@@ -224,7 +226,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
           <span id={this._descriptionId}>
             {onRenderDescription(this.props, this._onRenderDescription)}
             {errorMessage && (
-              <div aria-live="assertive">
+              <div role="alert">
                 <DelayedRender>
                   <p className={this._classNames.errorMessage}>
                     <span data-automation-id="error-message">{errorMessage}</span>

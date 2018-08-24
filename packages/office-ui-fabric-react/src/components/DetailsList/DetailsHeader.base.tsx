@@ -238,6 +238,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderProps, IDetai
                 onClick={!isCheckboxHidden ? this._onSelectAllClicked : undefined}
                 aria-colindex={1}
                 role={'columnheader'}
+                aria-hidden={isCheckboxHidden ? true : undefined}
               >
                 {onRenderColumnHeaderTooltip(
                   {
@@ -651,7 +652,9 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderProps, IDetai
   private _onSelectAllClicked = (): void => {
     const { selection } = this.props;
 
-    selection.toggleAllSelected();
+    if (selection) {
+      selection.toggleAllSelected();
+    }
   };
 
   private _onRootMouseDown = (ev: MouseEvent): void => {
@@ -832,7 +835,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderProps, IDetai
   };
 
   private _onSelectionChanged(): void {
-    const isAllSelected = this.props.selection.isAllSelected();
+    const isAllSelected = !!this.props.selection && this.props.selection.isAllSelected();
 
     if (this.state.isAllSelected !== isAllSelected) {
       this.setState({

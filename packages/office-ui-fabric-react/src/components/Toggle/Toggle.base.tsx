@@ -21,7 +21,11 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
       checked: 'defaultChecked'
     });
 
-    this._warnDeprecations({ onAriaLabel: 'ariaLabel', offAriaLabel: undefined });
+    this._warnDeprecations({
+      onAriaLabel: 'ariaLabel',
+      offAriaLabel: undefined,
+      onChanged: 'onChange'
+    });
 
     this.state = {
       checked: !!(props.checked || props.defaultChecked)
@@ -118,7 +122,7 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
   }
 
   private _onClick = (ev: React.MouseEvent<HTMLElement>) => {
-    const { disabled, checked: checkedProp, onChanged, onClick } = this.props;
+    const { disabled, checked: checkedProp, onChange, onChanged, onClick } = this.props;
     const { checked } = this.state;
 
     if (!disabled) {
@@ -127,6 +131,10 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
         this.setState({
           checked: !checked
         });
+      }
+
+      if (onChange) {
+        onChange(ev, !checked);
       }
 
       if (onChanged) {
