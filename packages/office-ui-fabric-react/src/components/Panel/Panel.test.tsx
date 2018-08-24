@@ -2,8 +2,8 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
 
+import { PanelBase } from './Panel.base';
 import { Panel } from './Panel';
-
 let div: HTMLElement;
 
 // Mock Layer since it otherwise shows nothing in snapshot tests
@@ -45,8 +45,8 @@ describe('Panel', () => {
         dismissedCalled = true;
       };
 
-      const panel: Panel = ReactDOM.render(
-        <Panel isOpen={true} onDismiss={setDismissTrue} onDismissed={setDismissedTrue} />,
+      const panel: PanelBase = ReactDOM.render(
+        <PanelBase isOpen={true} onDismiss={setDismissTrue} onDismissed={setDismissedTrue} />,
         div
       ) as any;
 
