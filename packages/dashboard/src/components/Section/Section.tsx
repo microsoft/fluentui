@@ -19,12 +19,7 @@ export class Section extends React.PureComponent<ISectionProps, ISectionState> {
     /* In order to use this within RGL, it needs to have style and className props */
     // tslint:disable:jsx-ban-props
     return (
-      <div
-        onMouseDown={this._onMouseDown}
-        className={'widget-number ' + this.props.className + ' ' + classNames.root}
-        key={this.props.id}
-        style={this.props.style}
-      >
+      <div className={this.props.className + ' ' + classNames.root} style={this.props.style}>
         {this.props.title}
         <div className={classNames.actions}>
           {this.props.onCollapseExpand !== null &&
@@ -81,9 +76,5 @@ export class Section extends React.PureComponent<ISectionProps, ISectionState> {
     if (this.props.onCollapseExpand) {
       this.props.onCollapseExpand(this.state.expanded, this.props.id);
     }
-  };
-
-  private _onMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.stopPropagation();
   };
 }

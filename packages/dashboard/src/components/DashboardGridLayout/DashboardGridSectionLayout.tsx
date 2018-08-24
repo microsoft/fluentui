@@ -56,9 +56,9 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridSe
 
   constructor(props: IDashboardGridSectionLayoutProps) {
     super(props);
+    this._sectionKeys = this.props.sections.map((section: ISection) => section.key);
     this._currentLayout = this._getFirstDefinedLayout(this._createLayout());
     this._sectionMapping = this._processSections();
-    this._sectionKeys = this.props.sections.map((section: ISection) => section.key);
     this.props.cards.forEach((card: ICard) => {
       this._cardSizes[card.key] = card.cardSize;
     });
@@ -163,7 +163,9 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridSe
     });
 
     impactedSections.forEach((section: ISection) => {
-      impactedKeys = impactedKeys.concat(section.keysOfCard);
+      if (section.keysOfCard) {
+        impactedKeys = impactedKeys.concat(section.keysOfCard);
+      }
     });
 
     let delta = 0;
@@ -310,7 +312,9 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridSe
           onCollapseExpand={this.props.isCollapsible ? this._onExpandCollapseToggled : undefined}
         />
       );
-      result = result.concat(self._renderCards(section.keysOfCard));
+      if (section.keysOfCard) {
+        result = result.concat(self._renderCards(section.keysOfCard));
+      }
     });
 
     return result;
@@ -388,6 +392,9 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridSe
           if (i === 0) {
             // this means it is the first section header and dont allow card to be moved before the first section
             layoutElement.static = true;
+          }
+          if (this._sectionKeys.indexOf(value[i].i) > -1) {
+            layoutElement.isDraggable = false;
           }
           layout.push(layoutElement);
         }
