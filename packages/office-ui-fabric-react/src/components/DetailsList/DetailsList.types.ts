@@ -384,6 +384,11 @@ export interface IColumn {
   onRender?: (item?: any, index?: number, column?: IColumn) => any;
 
   /**
+   * can be used to wrap the existing functionality of column divider
+   */
+  onRenderDivider?: (columnIndex: number, defaultRenderer: Function) => any;
+
+  /**
    * Determines if the column is filtered, and if so shows a filter icon.
    */
   isFiltered?: boolean;

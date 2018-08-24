@@ -297,7 +297,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderProps, IDetai
               isDropped={this._onDropIndexInfo.targetIndex === columnIndex}
               cellStyleProps={this.props.cellStyleProps}
             />,
-            column.isResizable && this._renderColumnSizer(columnIndex)
+            this._renderColumnDivider(columnIndex)
           ];
         })}
         {columnReorderProps && frozenColumnCountFromEnd === 0 && this._renderDropHint(columns.length)}
@@ -575,13 +575,13 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderProps, IDetai
     }
   }
 
-  private _renderColumnSizer(columnIndex: number): JSX.Element {
+  private _renderColumnSizer = (columnIndex: number): JSX.Element | null => {
     const { columns } = this.props;
     const column = this.props.columns[columnIndex];
     const { columnResizeDetails } = this.state;
     const classNames = this._classNames;
 
-    return (
+    return column.isResizable ? (
       <div
         key={`${column.key}_sizer`}
         aria-hidden={true}
@@ -599,7 +599,16 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderProps, IDetai
         )}
         onDoubleClick={this._onSizerDoubleClick.bind(this, columnIndex)}
       />
-    );
+    ) : null;
+  };
+
+  private _renderColumnDivider(columnIndex: number): JSX.Element | null {
+    const { columns } = this.props;
+    const column = columns[columnIndex];
+    const { onRenderDivider } = column;
+    return onRenderDivider
+      ? onRenderDivider(columnIndex, this._renderColumnSizer)
+      : this._renderColumnSizer(columnIndex);
   }
 
   private _renderDropHint(dropHintIndex: number): JSX.Element {
