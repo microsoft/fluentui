@@ -198,14 +198,14 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         <Toggle
           label="Enable Compact Mode"
           checked={isCompactMode}
-          onChanged={this._onChangeCompactMode}
+          onChange={this._onChangeCompactMode}
           onText="Compact"
           offText="Normal"
         />
         <Toggle
           label="Enable Modal Selection"
           checked={this.state.isModalSelection}
-          onChanged={this._onChangeModalSelection}
+          onChange={this._onChangeModalSelection}
           onText="Modal"
           offText="Normal"
         />
@@ -236,11 +236,11 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
     }
   }
 
-  private _onChangeCompactMode = (checked: boolean): void => {
+  private _onChangeCompactMode = (ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
     this.setState({ isCompactMode: checked });
   };
 
-  private _onChangeModalSelection = (checked: boolean): void => {
+  private _onChangeModalSelection = (ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
     this.setState({ isModalSelection: checked });
   };
 

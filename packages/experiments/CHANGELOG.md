@@ -1,6 +1,57 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 14 Aug 2018 10:27:33 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Aug 2018 17:02:14 GMT and should not be manually modified.
+
+## 6.27.0
+Fri, 24 Aug 2018 17:02:14 GMT
+
+### Minor changes
+
+- Reverting Customizer React 16 context change.
+
+## 6.26.0
+Fri, 24 Aug 2018 10:26:08 GMT
+
+### Minor changes
+
+- Text: now defaults to the default variant, added support for more styling options, adjusted how color is pulled, updated example.
+
+### Patches
+
+- Replace usage of deprecated onChanged prop with onChange
+
+## 6.25.0
+Thu, 23 Aug 2018 10:28:17 GMT
+
+### Minor changes
+
+- Adjusting foundation usage, using new React 16 context.
+
+## 6.24.3
+Tue, 21 Aug 2018 20:36:27 GMT
+
+### Patches
+
+- Adding required validator support for the FormDropdown in multi-select mode.
+
+## 6.24.2
+Tue, 21 Aug 2018 10:28:16 GMT
+
+### Patches
+
+- Experiments: fix TextPage require path after a file extension change.
+
+## 6.24.1
+Mon, 20 Aug 2018 10:26:10 GMT
+
+*Version update only*
+
+## 6.24.0
+Thu, 16 Aug 2018 10:26:16 GMT
+
+### Minor changes
+
+- Adding support for drop-downs with multiple selection to the FormDropdown component.
 
 ## 6.23.3
 Tue, 14 Aug 2018 10:27:33 GMT

@@ -1,5 +1,5 @@
 import { FileTypeIconMap } from './FileTypeIconMap';
-import { FileIconType } from './FileIconType';
+import { FileIconType, FileIconTypeInput } from './FileIconType';
 
 let _extensionToIconName: { [key: string]: string };
 
@@ -25,7 +25,7 @@ export interface IFileTypeIconOptions {
    * file type icons that are not associated with a file extension,
    * such as folder.
    */
-  type?: FileIconType;
+  type?: FileIconTypeInput;
   /**
    * The size of the icon in pixels. Defaults to 16.
    */

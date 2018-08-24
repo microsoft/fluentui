@@ -254,6 +254,11 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
    * @param newValue The new value from the input
    */
   private _updateValue = (newValue: string) => {
+    // Only proceed if the value is nonempty and is different from the old value
+    // This is to work around the fact that, in IE 11, inputs with a placeholder fire an onInput event on focus
+    if (!newValue && newValue === this._value) {
+      return;
+    }
     this._value = this.props.onInputChange ? this.props.onInputChange(newValue) : newValue;
     this.setState(
       {

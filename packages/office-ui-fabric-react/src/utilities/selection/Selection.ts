@@ -4,7 +4,7 @@ import { EventGroup } from '../../Utilities';
 export interface ISelectionOptions {
   onSelectionChanged?: () => void;
   getKey?: (item: IObjectWithKey, index?: number) => string | number;
-  canSelectItem?: (item: IObjectWithKey) => boolean;
+  canSelectItem?: (item: IObjectWithKey, index?: number) => boolean;
   selectionMode?: SelectionMode;
 }
 
@@ -13,7 +13,7 @@ export class Selection implements ISelection {
   public readonly mode: SelectionMode;
 
   private _getKey: (item: IObjectWithKey, index?: number) => string | number;
-  private _canSelectItem: (item: IObjectWithKey) => boolean;
+  private _canSelectItem: (item: IObjectWithKey, index?: number) => boolean;
 
   private _changeEventSuppressionCount: number;
   private _items: IObjectWithKey[];
@@ -55,8 +55,12 @@ export class Selection implements ISelection {
     this.setItems([], true);
   }
 
-  public canSelectItem(item: IObjectWithKey): boolean {
-    return this._canSelectItem(item);
+  public canSelectItem(item: IObjectWithKey, index?: number): boolean {
+    if (typeof index === 'number' && index < 0) {
+      return false;
+    }
+
+    return this._canSelectItem(item, index);
   }
 
   public getKey(item: IObjectWithKey, index?: number): string {

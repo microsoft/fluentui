@@ -15,7 +15,7 @@ const COLOR_SWATCHES_LOOKUP: PersonaInitialsColor[] = [
   PersonaInitialsColor.pink,
   PersonaInitialsColor.magenta,
   PersonaInitialsColor.purple,
-  PersonaInitialsColor.black,
+  PersonaInitialsColor.violet,
   PersonaInitialsColor.teal,
   PersonaInitialsColor.blue,
   PersonaInitialsColor.darkBlue,
@@ -78,6 +78,8 @@ function personaInitialsColorToHexCode(personaInitialsColor: PersonaInitialsColo
       return '#B91D47';
     case PersonaInitialsColor.transparent:
       return 'transparent';
+    case PersonaInitialsColor.violet:
+      return '#5E4B8B';
   }
 }
 

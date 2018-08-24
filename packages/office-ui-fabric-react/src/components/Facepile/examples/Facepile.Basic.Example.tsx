@@ -63,7 +63,7 @@ export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExam
               { key: PersonaSize.size32, text: PersonaSize[PersonaSize.size32] },
               { key: PersonaSize.size40, text: PersonaSize[PersonaSize.size40] }
             ]}
-            onChanged={this._onChangePersonaSize}
+            onChange={this._onChangePersonaSize}
           />
           <Checkbox
             className={exampleStyles.exampleCheckbox}
@@ -94,7 +94,7 @@ export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExam
     );
   };
 
-  private _onChangePersonaSize = (value: IDropdownOption): void => {
+  private _onChangePersonaSize = (event: React.FormEvent<HTMLDivElement>, value: IDropdownOption): void => {
     this.setState(
       (prevState: IFacepileBasicExampleState): IFacepileBasicExampleState => {
         prevState.personaSize = value.key as PersonaSize;

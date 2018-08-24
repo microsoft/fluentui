@@ -65,7 +65,7 @@ export default class BoxNoClickExample extends React.Component<
         <Toggle
           componentRef={this._setRef}
           checked={isToggled}
-          onChanged={this._onFocusTrapZoneToggleChanged}
+          onChange={this._onFocusTrapZoneToggleChanged}
           label="Focus Trap Zone"
           onText="On"
           offText="Off"
@@ -97,7 +97,7 @@ export default class BoxNoClickExample extends React.Component<
     });
   };
 
-  private _onFocusTrapZoneToggleChanged = (isToggled: boolean): void => {
+  private _onFocusTrapZoneToggleChanged = (ev: React.MouseEvent<HTMLElement>, isToggled: boolean): void => {
     this.setState(
       {
         isToggled: isToggled

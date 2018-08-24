@@ -15,12 +15,8 @@ export class Pie extends React.Component<IPieProps, {}> {
         return d.y;
       })
   };
-  private colors: scale.ScaleOrdinal<string | number, {}>;
+  private _colors: scale.ScaleOrdinal<string | number, {}>;
 
-  constructor(props: IPieProps) {
-    super(props);
-    this.colors = scale.scaleOrdinal().range(this.props.colors!);
-  }
   public arcGenerator = (d: IArcData, i: number): JSX.Element => {
     return (
       <Arc
@@ -28,16 +24,18 @@ export class Pie extends React.Component<IPieProps, {}> {
         data={d}
         innerRadius={this.props.innerRadius}
         outerRadius={this.props.outerRadius}
-        color={`${this.colors(i)}`}
+        color={`${this._colors(i)}`}
       />
     );
   };
 
   public render(): JSX.Element {
-    const { pie } = this.props;
+    const { pie, colors, data, width, height } = this.props;
 
-    const piechart = pie(this.props.data),
-      translate = `translate(${this.props.width / 2}, ${this.props.height / 2})`;
+    this._colors = scale.scaleOrdinal().range(colors!);
+
+    const piechart = pie(data),
+      translate = `translate(${width / 2}, ${height / 2})`;
 
     return (
       <svg width={this.props.width} height={this.props.height}>

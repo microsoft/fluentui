@@ -68,7 +68,9 @@ exports[`Modal renders Modal correctly 1`] = `
       onFocusCapture={[Function]}
       onKeyDown={[Function]}
     >
-      Test Content
+      <div>
+        Test Content
+      </div>
     </div>
   </div>
 </div>
