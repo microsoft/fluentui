@@ -1,14 +1,14 @@
 import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
-import { IDataPoint } from '../../types/IDataPoint';
-export { IDataPoint } from '../../types/IDataPoint';
+
 export interface IDonutChart {}
+import { IChartProps } from './index';
 
 export interface IDonutChartProps {
   /**
    * Data to render in the chart.
    */
-  data?: IDataPoint[];
+  data?: IChartProps;
 
   /**
    * Width of the donut.
@@ -21,14 +21,14 @@ export interface IDonutChartProps {
   height?: number;
 
   /**
-   * colors to render in the chart.
-   */
-  colors?: string[];
-
-  /**
    * Additional CSS class(es) to apply to the DonutChart.
    */
   className?: string;
+
+  /**
+   * inner radius for donut size
+   */
+  innerRadius?: number;
 
   /**
    * Theme (provided through customization.)
@@ -74,4 +74,8 @@ export interface IDonutChartStyles {
    * Style set for the colored box in each legend item
    */
   legendBox: IStyle;
+
+  legendContainer: {
+    paddingTop: '4px';
+  };
 }

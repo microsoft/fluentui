@@ -2,37 +2,36 @@ import * as React from 'react';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IDonutChartProps, IDonutChartStyleProps, IDonutChartStyles } from './DonutChart.types';
 import { Pie } from './Pie/Pie';
-import { IDataPoint } from './DonutChart.types';
+import { ILegend, Legends } from '@uifabric/charting';
 import * as scale from 'd3-scale';
-import { IProcessedStyleSet, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
+import { IChartDataPoint, IChartProps } from './index';
 
 const getClassNames = classNamesFunction<IDonutChartStyleProps, IDonutChartStyles>();
 
 export class DonutChartBase extends React.Component<IDonutChartProps, {}> {
   public static defaultProps: Partial<IDonutChartProps> = {
-    data: [],
     width: 394,
     height: 196
   };
+  public _colors: scale.ScaleOrdinal<string, {}>;
   private _classNames: IProcessedStyleSet<IDonutChartStyles>;
-  private _colors: scale.ScaleOrdinal<string | number, {}>;
 
   public render(): JSX.Element {
-    const { data, width, height, colors } = this.props;
-    this._colors = scale.scaleOrdinal().range(this.props.colors!);
+    const { data, width, height } = this.props;
 
-    const { theme, className, styles } = this.props;
+    const { theme, className, styles, innerRadius } = this.props;
+    const { palette } = theme!;
     this._classNames = getClassNames(styles!, {
       theme: theme!,
       width: width!,
       height: height!,
       className
     });
-    const legendBars = this._createLegendBars(data!);
+    const legendBars = this._createLegends(data!, palette);
     const radius = Math.min(width!, height!) / 2;
     const outerRadius = radius - 10;
-    const innerRadius = 40;
-
+    const chartData = data && data.chartData;
     return (
       <div className={this._classNames.root}>
         <svg className={this._classNames.chart}>
@@ -40,35 +39,32 @@ export class DonutChartBase extends React.Component<IDonutChartProps, {}> {
             width={height!}
             height={height! - 20}
             outerRadius={outerRadius}
-            innerRadius={innerRadius}
-            data={data!}
-            colors={colors!}
+            innerRadius={innerRadius!}
+            data={chartData!}
           />
         </svg>
-        <div className={this._classNames.legend}>{legendBars}</div>
+        <div className={this._classNames.legendContainer}>{legendBars}</div>
       </div>
     );
   }
 
-  private _createLegendBars(data: IDataPoint[]): JSX.Element[] {
-    const bars = data.map((point: IDataPoint, index: number) => {
-      const color = this._colors(index) as string;
-
-      const boxClass = mergeStyles(this._classNames.legendBox, {
-        background: color
-      });
-
-      const textClass = mergeStyles({
-        color: color
-      });
-
-      return (
-        <div key={index} className={this._classNames.legendItem}>
-          <div className={boxClass} />
-          <span className={textClass}>{point.x}</span>
-        </div>
-      );
+  private _createLegends(data: IChartProps, palette: IPalette): JSX.Element {
+    const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
+    const legendDataItems = data.chartData!.map((point: IChartDataPoint, index: number) => {
+      const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
+      // mapping data to the format Legends component needs
+      const legend: ILegend = {
+        title: point.legend!,
+        color: color,
+        action: this._legendClickAction
+      };
+      return legend;
     });
-    return bars;
+    const legends = <Legends legends={legendDataItems} />;
+    return legends;
+  }
+
+  private _legendClickAction(): void {
+    alert('legend clicked');
   }
 }

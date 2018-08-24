@@ -1,5 +1,5 @@
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { IDataPoint } from '../DonutChart.types';
+import { IChartDataPoint } from '../index';
 
 export interface IPieProps {
   /**
@@ -21,11 +21,7 @@ export interface IPieProps {
   /**
    * Data to render in the Pie.
    */
-  data: IDataPoint[];
-  /**
-   * colors to render in the Pie.
-   */
-  colors?: string[];
+  data: IChartDataPoint[];
   /**
    * shape for pie.
    */

@@ -3,6 +3,7 @@ import * as shape from 'd3-shape';
 import { IArcProps, IArcStyles } from './Arc.types';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { getStyles } from './Arc.styles';
+// import { HoverCard, IExpandingCardProps } from 'office-ui-fabric-react/lib/HoverCard';
 
 export class Arc extends React.Component<IArcProps, {}> {
   public static defaultProps: Partial<IArcProps> = {
@@ -26,6 +27,7 @@ export class Arc extends React.Component<IArcProps, {}> {
     const { color, arc } = this.props;
     const getClassNames = classNamesFunction<IArcProps, IArcStyles>();
     const classNames = getClassNames(getStyles, { color });
+
     return <path d={arc(this.props.data)} className={classNames.root} />;
   }
 }

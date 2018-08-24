@@ -39,6 +39,9 @@ export const getStyles = (props: IDonutChartStyleProps): IDonutChartStyles => {
         height: 10,
         marginRight: 5
       }
-    ]
+    ],
+    legendContainer: {
+      paddingTop: '4px'
+    }
   };
 };
