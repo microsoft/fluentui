@@ -44,6 +44,13 @@ export interface ISpinButtonState {
    * The calculated precision for the value.
    */
   precision: number;
+
+  /**
+   * When a typed value is validated and committed by some means other than onBlur, this should be true
+   * to prevent a duplicate submission if onBlur immediately follows the commit. It should be set to false
+   * When the value input changes again, whether by typing or spinning, or when onBlur finally occurs
+   */
+  submissionPending: boolean;
 }
 
 @customizable('SpinButton', ['theme', 'styles'], true)
@@ -86,7 +93,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       isFocused: false,
       value: value,
       keyboardSpinDirection: KeyboardSpinDirection.notSpinning,
-      precision
+      precision,
+      submissionPending: false
     };
 
     this._currentStepFunctionHandle = -1;
@@ -259,7 +267,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
 
   private _onBlur = (ev: React.FocusEvent<HTMLInputElement>): void => {
     this._validate(ev);
-    this.setState({ isFocused: false });
+    this.setState({ isFocused: false, submissionPending: false });
     if (this.props.onBlur) {
       this.props.onBlur(ev);
     }
@@ -272,9 +280,9 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     return this.props.value === undefined ? this.state.value : this.props.value;
   }
 
-  private _onValidate = (value: string): string | void => {
+  private _onValidate = (value: string, keyBoardEvent?: React.KeyboardEvent<HTMLElement>): string | void => {
     if (this.props.onValidate) {
-      return this.props.onValidate(value);
+      return this.props.onValidate(value, keyBoardEvent);
     } else {
       return this._defaultOnValidate(value);
     }
@@ -340,14 +348,15 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * in the input (not when changed via the buttons)
    * @param event - the event that fired
    */
-  private _validate = (event: React.FocusEvent<HTMLInputElement>): void => {
+  private _validate = (event: React.FocusEvent<HTMLInputElement> | React.KeyboardEvent<HTMLInputElement>): void => {
     const element: HTMLInputElement = event.target as HTMLInputElement;
     const value: string = element.value;
-    if (this.state.value !== undefined) {
-      const newValue = this._onValidate!(value);
+    if (this.state.value !== undefined && !this.state.submissionPending) {
+      const kbEvent: React.KeyboardEvent<HTMLElement> = event as React.KeyboardEvent<HTMLElement>;
+      const newValue = this._onValidate!(value, kbEvent);
       if (newValue) {
         this._lastValidValue = newValue;
-        this.setState({ value: newValue });
+        this.setState({ value: newValue, submissionPending: true });
       }
     }
   };
@@ -362,7 +371,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     const value: string = element.value;
 
     this.setState({
-      value: value
+      value: value,
+      submissionPending: false
     });
   };
 
@@ -380,7 +390,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     const newValue: string | void = stepFunction(this.state.value);
     if (newValue) {
       this._lastValidValue = newValue;
-      this.setState({ value: newValue });
+      this.setState({ value: newValue, submissionPending: false });
     }
 
     if (this._spinningByMouse !== shouldSpin) {
@@ -414,7 +424,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * the value when up or down arrow are depressed
    * @param event - the keyboardEvent that was fired
    */
-  private _handleKeyDown = (event: React.KeyboardEvent<HTMLElement>): void => {
+  private _handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>): void => {
     // eat the up and down arrow keys to keep focus in the spinButton
     // (especially when a spinButton is inside of a FocusZone)
     if (event.which === KeyCodes.up || event.which === KeyCodes.down) {
@@ -429,19 +439,26 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
 
     let spinDirection = KeyboardSpinDirection.notSpinning;
 
-    if (event.which === KeyCodes.up) {
-      spinDirection = KeyboardSpinDirection.up;
-      this._updateValue(false /* shouldSpin */, this._initialStepDelay, this._onIncrement!);
-    } else if (event.which === KeyCodes.down) {
-      spinDirection = KeyboardSpinDirection.down;
-      this._updateValue(false /* shouldSpin */, this._initialStepDelay, this._onDecrement!);
-    } else if (event.which === KeyCodes.enter) {
-      event.currentTarget.blur();
-      this.focus();
-    } else if (event.which === KeyCodes.escape) {
-      if (this.state.value !== this._lastValidValue) {
-        this.setState({ value: this._lastValidValue });
-      }
+    switch (event.which) {
+      case KeyCodes.up:
+        spinDirection = KeyboardSpinDirection.up;
+        this._updateValue(false /* shouldSpin */, this._initialStepDelay, this._onIncrement!);
+        break;
+      case KeyCodes.down:
+        spinDirection = KeyboardSpinDirection.down;
+        this._updateValue(false /* shouldSpin */, this._initialStepDelay, this._onDecrement!);
+        break;
+      case KeyCodes.enter:
+      case KeyCodes.tab:
+        this._validate(event);
+        break;
+      case KeyCodes.escape:
+        if (this.state.value !== this._lastValidValue) {
+          this.setState({ value: this._lastValidValue });
+        }
+        break;
+      default:
+        break;
     }
 
     // style the increment/decrement button to look active
