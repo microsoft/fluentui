@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 24 Aug 2018 14:45:24 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Aug 2018 17:02:14 GMT and should not be manually modified.
+
+## 6.55.0
+Fri, 24 Aug 2018 17:02:14 GMT
+
+### Minor changes
+
+- Reverting Customizer React 16 context change, while we dig into the Layer portal conversion first. As it is moving to React 16 breaks layer theming, which we believe can only be fixed if we move to portals (which has other issues to investigate.)
 
 ## 6.54.1
 Fri, 24 Aug 2018 14:45:24 GMT
