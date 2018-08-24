@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ITheme, IStyle } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
-import { IButtonProps } from '../Button';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { IButtonProps } from '../../Button';
 
 export interface ISearchBox {
   /**
@@ -20,7 +20,7 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
    * Optional callback to access the ISearchBox interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ISearchBox | null) => void;
+  componentRef?: IRefObject<ISearchBox>;
 
   /**
    * Placeholder for the search box.

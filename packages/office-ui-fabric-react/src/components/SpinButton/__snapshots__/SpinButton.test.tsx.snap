@@ -153,7 +153,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
         aria-disabled={undefined}
         aria-label={undefined}
         aria-labelledby={undefined}
-        aria-pressed={false}
+        aria-pressed={undefined}
         checked={false}
         className=
             ms-Button
@@ -225,6 +225,10 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
             }
         data-is-focusable={false}
         disabled={undefined}
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
         onMouseDown={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
@@ -277,7 +281,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
         aria-disabled={undefined}
         aria-label={undefined}
         aria-labelledby={undefined}
-        aria-pressed={false}
+        aria-pressed={undefined}
         checked={false}
         className=
             ms-Button
@@ -349,6 +353,10 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
             }
         data-is-focusable={false}
         disabled={undefined}
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
         onMouseDown={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}

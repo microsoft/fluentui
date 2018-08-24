@@ -33,6 +33,7 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             align-items: stretch;
+            background-color: #ffffff;
             border: 1px solid #a6a6a6;
             box-shadow: none;
             box-sizing: border-box;
@@ -68,6 +69,7 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
       onFocusCapture={[Function]}
     >
       <div
+        aria-hidden={true}
         className=
             ms-SearchBox-iconContainer
             {
@@ -110,7 +112,7 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
         className=
             ms-SearchBox-field
             {
-              background-color: #ffffff;
+              background-color: transparent;
               border: none;
               box-shadow: none;
               box-sizing: border-box;
@@ -235,6 +237,10 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
       disabled={undefined}
       onClick={[Function]}
       onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
       type="button"
     >
       <div
@@ -409,6 +415,12 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
           }
       data-is-focusable={true}
       disabled={undefined}
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
       type="button"
     >
       <div
@@ -555,6 +567,12 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
           }
       data-is-focusable={true}
       disabled={undefined}
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
       type="button"
     >
       <div
@@ -706,6 +724,10 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
       disabled={undefined}
       onClick={[Function]}
       onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
       type="button"
     >
       <div

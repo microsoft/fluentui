@@ -1,19 +1,19 @@
 import * as React from 'react';
-import { Image } from '../../Image';
-import { Icon } from '../../Icon';
-import { IClassNames } from '@uifabric/utilities/lib/IClassNames';
+import { Image } from '../../../Image';
+import { Icon } from '../../../Icon';
 import {
   IChoiceGroupOptionProps,
   IChoiceGroupOptionStyleProps,
   IChoiceGroupOptionStyles
 } from './ChoiceGroupOption.types';
 import { BaseComponent, classNamesFunction, getNativeProps, inputProperties, createRef } from '../../../Utilities';
+import { IProcessedStyleSet } from '../../../Styling';
 
 const getClassNames = classNamesFunction<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>();
 
 export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps, any> {
   private _inputElement = createRef<HTMLInputElement>();
-  private _classNames: IClassNames<IChoiceGroupOptionStyles>;
+  private _classNames: IProcessedStyleSet<IChoiceGroupOptionStyles>;
 
   constructor(props: IChoiceGroupOptionProps) {
     super(props);
@@ -30,7 +30,6 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
       disabled,
       checked,
       id,
-      labelId,
       styles,
       name,
       onRenderField = this._onRenderField
@@ -61,7 +60,6 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
             onChange={this._onChange.bind(this, this.props)}
             onFocus={this._onFocus.bind(this, this.props)}
             onBlur={this._onBlur.bind(this, this.props)}
-            aria-labelledby={labelId}
             {...getNativeProps(this.props, inputProperties)}
           />
           {onRenderField(this.props, this._onRenderField)}
@@ -133,7 +131,7 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
 
   private _onRenderLabel = (props: IChoiceGroupOptionProps): JSX.Element => {
     return (
-      <span id={props.labelId} className="ms-Label">
+      <span id={props.labelId} className="ms-ChoiceFieldLabel">
         {props.text}
       </span>
     );

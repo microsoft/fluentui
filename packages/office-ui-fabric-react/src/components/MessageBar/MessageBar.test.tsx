@@ -3,6 +3,7 @@ import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 
 import { MessageBar } from './MessageBar';
+import { MessageBarType } from './MessageBar.types';
 
 describe('MessageBar', () => {
   const noop = () => {
@@ -13,6 +14,16 @@ describe('MessageBar', () => {
     const component = renderer.create(<MessageBar>Message</MessageBar>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('can reflect props changes', () => {
+    const wrapper = mount(<MessageBar messageBarType={MessageBarType.success} />);
+
+    expect(wrapper.find('.ms-MessageBar--success').length).toEqual(1);
+    wrapper.setProps({ messageBarType: MessageBarType.error });
+
+    expect(wrapper.find('.ms-MessageBar--success').length).toEqual(0);
+    expect(wrapper.find('.ms-MessageBar--error').length).toEqual(1);
   });
 
   describe('dismiss', () => {

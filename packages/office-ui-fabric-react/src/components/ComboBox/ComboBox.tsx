@@ -99,7 +99,7 @@ class ComboBoxOptionWrapper extends React.Component<IComboBoxOptionWrapperProps,
   }
 }
 
-@customizable('ComboBox', ['theme', 'styles'])
+@customizable('ComboBox', ['theme', 'styles'], true)
 export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   public static defaultProps: IComboBoxProps = {
     options: [],
@@ -162,7 +162,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       dropdownWidth: 'useComboBoxAsMenuWidth'
     });
 
-    this._warnDeprecations({ value: 'text' });
+    this._warnDeprecations({
+      value: 'text',
+      onChanged: 'onChange'
+    });
 
     this._id = props.id || getId('ComboBox');
 
@@ -229,16 +232,17 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       this._async.setTimeout(() => this._scrollIntoView(), 0);
     }
 
-    // If we are open or we are just closed, shouldFocusAfterClose is set,
-    // are focused but we are not the activeElement set focus on the input
+    // if an action is taken that put focus in the ComboBox
+    // and If we are open or we are just closed, shouldFocusAfterClose is set,
+    // but we are not the activeElement set focus on the input
     if (
-      isOpen ||
-      (prevState.isOpen &&
-        !isOpen &&
-        this._focusInputAfterClose &&
-        focused &&
-        this._autofill.current &&
-        document.activeElement !== this._autofill.current.inputElement)
+      focused &&
+      (isOpen ||
+        (prevState.isOpen &&
+          !isOpen &&
+          this._focusInputAfterClose &&
+          this._autofill.current &&
+          document.activeElement !== this._autofill.current.inputElement))
     ) {
       this.focus(undefined /*shouldOpenOnFocus*/, true /*useFocusAsync*/);
     }
@@ -811,7 +815,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     submitPendingValueEvent: any,
     searchDirection: SearchDirection = SearchDirection.none
   ): void {
-    const { onChanged, onPendingValueChanged } = this.props;
+    const { onChange, onChanged, onPendingValueChanged } = this.props;
     const { currentOptions } = this.state;
     let { selectedIndices } = this.state;
 
@@ -861,7 +865,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         this._hasPendingValue = false;
       }
 
-      // Did the creator give us an onChanged callback?
+      if (onChange) {
+        onChange(submitPendingValueEvent, option, index, undefined);
+      }
+
       if (onChanged) {
         onChanged(option, index, undefined, submitPendingValueEvent);
       }
@@ -925,10 +932,19 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // Do nothing if the blur is coming from something
     // inside the comboBox root or the comboBox menu since
     // it we are not really bluring from the whole comboBox
+    let relatedTarget = event.relatedTarget;
+    if (event.relatedTarget === null) {
+      // In IE11, due to lack of support, event.relatedTarget is always
+      // null making every onBlur call to be "outside" of the ComboBox
+      // even when it's not. Using document.activeElement is another way
+      // for us to be able to get what the relatedTarget without relying
+      // on the event
+      relatedTarget = document.activeElement;
+    }
     if (
-      event.relatedTarget &&
-      ((this._root.current && this._root.current.contains(event.relatedTarget as HTMLElement)) ||
-        (this._comboBoxMenu.current && this._comboBoxMenu.current.contains(event.relatedTarget as HTMLElement)))
+      relatedTarget &&
+      ((this._root.current && this._root.current.contains(relatedTarget as HTMLElement)) ||
+        (this._comboBoxMenu.current && this._comboBoxMenu.current.contains(relatedTarget as HTMLElement)))
     ) {
       event.preventDefault();
       event.stopPropagation();
@@ -947,7 +963,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * Submit a pending value if there is one
    */
   private _submitPendingValue(submitPendingValueEvent: any): void {
-    const { onChanged, allowFreeform, autoComplete } = this.props;
+    const { onChange, onChanged, allowFreeform, autoComplete } = this.props;
     const {
       currentPendingValue,
       currentPendingValueValidIndex,
@@ -988,8 +1004,15 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         }
       }
 
-      if (onChanged) {
-        onChanged(undefined, undefined, currentPendingValue, submitPendingValueEvent);
+      if (onChange || onChanged) {
+        if (onChange) {
+          // trigger onChange to clear value
+          onChange(submitPendingValueEvent, undefined, undefined, currentPendingValue);
+        }
+        if (onChanged) {
+          // trigger onChanged to clear value
+          onChanged(undefined, undefined, currentPendingValue, submitPendingValueEvent);
+        }
       } else {
         // If we are not controlled, create a new option
         const newOption: IComboBoxOption = { key: currentPendingValue, text: currentPendingValue };
@@ -1004,6 +1027,15 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           currentOptions: newOptions,
           selectedIndices: selectedIndices
         });
+      }
+    } else if (allowFreeform && currentPendingValue === '' && (onChange || onChanged)) {
+      if (onChange) {
+        // trigger onChange to clear value
+        onChange(submitPendingValueEvent, undefined, undefined, currentPendingValue);
+      }
+      if (onChanged) {
+        // trigger onChanged to clear value
+        onChanged(undefined, undefined, currentPendingValue, submitPendingValueEvent);
       }
     } else if (currentPendingValueValidIndex >= 0) {
       // Since we are not allowing freeform, we must have a matching
@@ -1029,13 +1061,18 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       useComboBoxAsMenuWidth
     } = props;
 
+    const comboBoxMenuWidth =
+      useComboBoxAsMenuWidth && this._comboBoxWrapper.current
+        ? this._comboBoxWrapper.current.clientWidth + 2
+        : undefined;
+
     return (
       <Callout
         isBeakVisible={false}
         gapSpace={0}
         doNotLayer={false}
         directionalHint={DirectionalHint.bottomLeftEdge}
-        directionalHintFixed={true}
+        directionalHintFixed={false}
         {...calloutProps}
         className={css(this._classNames.callout, calloutProps ? calloutProps.className : undefined)}
         target={this._comboBoxWrapper.current}
@@ -1044,10 +1081,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         setInitialFocus={false}
         calloutWidth={
           useComboBoxAsMenuWidth && this._comboBoxWrapper.current
-            ? this._comboBoxWrapper.current.clientWidth + 2
+            ? comboBoxMenuWidth && comboBoxMenuWidth
             : dropdownWidth
         }
-        calloutMaxWidth={dropdownMaxWidth}
+        calloutMaxWidth={dropdownMaxWidth ? dropdownMaxWidth : comboBoxMenuWidth}
       >
         <div className={this._classNames.optionsContainerWrapper} ref={this._comboBoxMenu}>
           {(onRenderList as any)({ ...props }, this._onRenderList)}
@@ -1105,7 +1142,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const { onRenderOption = this._onRenderOptionContent } = this.props;
 
     return (
-      <div key={item.key} className={this._classNames.header} role="heading">
+      <div key={item.key} className={this._classNames.header}>
         {onRenderOption(item, this._onRenderOptionContent)}
       </div>
     );
@@ -1322,16 +1359,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * Handles dismissing (cancelling) the menu
    */
   private _onDismiss = (): void => {
+    // close the menu
+    this._setOpenStateAndFocusOnClose(false /* isOpen */, false /* focusInputAfterClose */);
+
     // reset the selected index
-    // to the last valud state
+    // to the last value state
     this._resetSelectedIndex();
-
-    // close the menu and focus the input
-    this.setState({ isOpen: false });
-
-    if (this._autofill.current && this._focusInputAfterClose) {
-      this._autofill.current.focus();
-    }
   };
 
   /**
@@ -1501,9 +1534,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     }
 
     // Notify when there is a new pending index/value. Also, if there is a pending value, it needs to send undefined.
-    if (newPendingIndex !== undefined || newPendingValue || this._hasPendingValue) {
+    if (newPendingIndex !== undefined || newPendingValue !== undefined || this._hasPendingValue) {
       onPendingValueChanged(
-        newPendingIndex ? currentOptions[newPendingIndex] : undefined,
+        newPendingIndex !== undefined ? currentOptions[newPendingIndex] : undefined,
         newPendingIndex,
         newPendingValue
       );
@@ -1805,6 +1838,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     if (!disabled) {
       this._setOpenStateAndFocusOnClose(!isOpen, false /* focusInputAfterClose */);
+      this.setState({ focused: true });
     }
   };
 

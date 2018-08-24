@@ -1,20 +1,62 @@
 {
   "name": "@uifabric/file-type-icons",
   "entries": [
-      {
-        "version": "6.0.0",
-        "tag": "@uifabric/file-type-icons_v0.7.2",
-        "date": "Mon, 15 Jun 2018 00:44:30 GMT",
-        "comments": {
-          "major": [
-            {
-              "author": "Cliff Koh <cliff.koh@microsoft.com>",
-              "commit": "b74b5764e4feb9be13f7c31d731e4d801eeb8358",
-              "comment": "Major bump to 6.0.0 for consistency."
-            }
-          ]
-        }
-      },
+    {
+      "version": "6.1.0",
+      "tag": "@uifabric/file-type-icons_v6.1.0",
+      "date": "Wed, 22 Aug 2018 05:10:19 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "25a03949d97b792d4d32e8cb6931bfc8b861e9c9",
+            "comment": "Add FileIconTypeInput alongside FileIconType const enum"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.2",
+      "tag": "@uifabric/file-type-icons_v6.0.2",
+      "date": "Tue, 14 Aug 2018 10:27:33 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Avital Baral <avitalbaral99@gmail.com>",
+            "commit": "cf0f728d0b28540b7a42aa9121a840605ee04670",
+            "comment": "disabling codepen task"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.1",
+      "tag": "@uifabric/file-type-icons_v6.0.1",
+      "date": "Tue, 03 Jul 2018 10:23:19 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Bryan Watts <brwatt@microsoft.com>",
+            "commit": "3538fae806f2dffe317fb72e3f7df8cc03061fff",
+            "comment": "Bump variants and file-type-icons packages to restore amd build output"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.0",
+      "tag": "@uifabric/file-type-icons_v0.7.2",
+      "date": "Mon, 15 Jun 2018 00:44:30 GMT",
+      "comments": {
+        "major": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "b74b5764e4feb9be13f7c31d731e4d801eeb8358",
+            "comment": "Major bump to 6.0.0 for consistency."
+          }
+        ]
+      }
+    },
     {
       "version": "0.7.2",
       "tag": "@uifabric/file-type-icons_v0.7.2",

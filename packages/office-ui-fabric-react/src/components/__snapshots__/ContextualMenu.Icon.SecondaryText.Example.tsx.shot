@@ -79,6 +79,10 @@ exports[`Component Examples renders ContextualMenu.Icon.SecondaryText.Example.ts
     id="ContextualMenuButton2"
     onClick={[Function]}
     onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
     type="button"
   >
     <div

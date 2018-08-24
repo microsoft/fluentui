@@ -47,5 +47,6 @@ export const KeytipsPageProps: IDocPageProps = {
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Keytip/docs/KeytipDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Keytip/docs/KeytipDonts.md'),
-  isHeaderVisible: true
+  isHeaderVisible: true,
+  isFeedbackVisible: true
 };

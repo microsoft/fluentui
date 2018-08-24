@@ -1,9 +1,19 @@
 import * as React from 'react';
 
-import { BaseComponent, css, divProperties, getId, getNativeProps, getRTL, createRef } from '../../Utilities';
+import {
+  BaseComponent,
+  css,
+  divProperties,
+  getId,
+  getNativeProps,
+  getRTL,
+  createRef,
+  elementContains,
+  allowScrollOnElement
+} from '../../Utilities';
 import { FocusTrapZone } from '../FocusTrapZone/index';
 import { IPanel, IPanelProps, PanelType } from './Panel.types';
-import { Layer } from '../Layer/Layer';
+import { Layer } from '../../Layer';
 import { Overlay } from '../../Overlay';
 import { Popup } from '../../Popup';
 import { IconButton } from '../../Button';
@@ -28,7 +38,9 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     type: PanelType.smallFixedFar
   };
 
+  private _panel = createRef<HTMLDivElement>();
   private _content = createRef<HTMLDivElement>();
+  private _scrollableContent: HTMLDivElement | null;
 
   constructor(props: IPanelProps) {
     super(props);
@@ -50,8 +62,23 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
   public componentDidMount(): void {
     this._events.on(window, 'resize', this._updateFooterPosition);
 
+    if (this._shouldListenForOuterClick(this.props)) {
+      this._events.on(document.body, 'mousedown', this._dismissOnOuterClick, true);
+    }
+
     if (this.props.isOpen) {
       this.open();
+    }
+  }
+
+  public componentDidUpdate(previousProps: IPanelProps): void {
+    const shouldListenOnOuterClick = this._shouldListenForOuterClick(this.props);
+    const previousShouldListenOnOuterClick = this._shouldListenForOuterClick(previousProps);
+
+    if (shouldListenOnOuterClick && !previousShouldListenOnOuterClick) {
+      this._events.on(document.body, 'mousedown', this._dismissOnOuterClick, true);
+    } else if (!shouldListenOnOuterClick && previousShouldListenOnOuterClick) {
+      this._events.off(document.body, 'mousedown', this._dismissOnOuterClick, true);
     }
   }
 
@@ -126,6 +153,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
         >
           <div
             {...nativeProps}
+            ref={this._panel}
             className={css(
               'ms-Panel',
               styles.root,
@@ -147,7 +175,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
             {overlay}
             <FocusTrapZone
               ignoreExternalFocusing={ignoreExternalFocusing}
-              forceFocusInsideTrap={forceFocusInsideTrap}
+              forceFocusInsideTrap={isHiddenOnDismiss && !isOpen ? false : forceFocusInsideTrap}
               firstFocusableSelector={firstFocusableSelector}
               {...focusTrapZoneProps}
               className={css(
@@ -165,13 +193,18 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
                 focusTrapZoneProps && !focusTrapZoneProps.isClickableOutsideFocusTrap ? false : true
               }
             >
-              <div className={css('ms-Panel-commands')} data-is-visible={true}>
-                {onRenderNavigation(this.props, this._onRenderNavigation)}
-              </div>
-              <div className={css('ms-Panel-contentInner', styles.contentInner)}>
-                {header}
-                {onRenderBody(this.props, this._onRenderBody)}
-                {onRenderFooter(this.props, this._onRenderFooter)}
+              <div
+                ref={this._allowScrollOnPanel}
+                className={css('ms-Panel-scrollableContent', styles.scrollableContent)}
+              >
+                <div className={css('ms-Panel-commands')} data-is-visible={true}>
+                  {onRenderNavigation(this.props, this._onRenderNavigation)}
+                </div>
+                <div className={css('ms-Panel-contentInner', styles.contentInner)}>
+                  {header}
+                  {onRenderBody(this.props, this._onRenderBody)}
+                  {onRenderFooter(this.props, this._onRenderFooter)}
+                </div>
               </div>
             </FocusTrapZone>
           </div>
@@ -211,6 +244,20 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
       }
     }
   };
+
+  // Allow the user to scroll within the panel but not on the body
+  private _allowScrollOnPanel = (elt: HTMLDivElement | null): void => {
+    if (elt) {
+      allowScrollOnElement(elt, this._events);
+    } else {
+      this._events.off(this._scrollableContent);
+    }
+    this._scrollableContent = elt;
+  };
+
+  private _shouldListenForOuterClick(props: IPanelProps): boolean {
+    return !!props.isBlocking && !!props.isOpen;
+  }
 
   private _onRenderNavigation = (props: IPanelProps): JSX.Element | null => {
     const { closeButtonAriaLabel, hasCloseButton } = props;
@@ -255,6 +302,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
             className={css('ms-Panel-headerText', styles.headerText, headerClassName)}
             id={headerTextId}
             role="heading"
+            aria-level={2}
           >
             {headerText}
           </p>
@@ -296,6 +344,20 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
       this.setState({
         isFooterSticky: height < innerHeight ? true : false
       });
+    }
+  }
+
+  private _dismissOnOuterClick(ev: any): void {
+    const panel = this._panel.current;
+    if (this.state.isOpen && panel) {
+      if (!elementContains(panel, ev.target)) {
+        if (this.props.onOuterClick) {
+          this.props.onOuterClick();
+          ev.preventDefault();
+        } else {
+          this.dismiss();
+        }
+      }
     }
   }
 

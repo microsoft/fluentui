@@ -9,7 +9,7 @@ import {
   IColumn
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { lorem } from '../../../utilities/exampleData';
+import { lorem } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import './DetailsListExample.scss';
 
 let _items: IDocument[] = [];
@@ -100,6 +100,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         headerClassName: 'DetailsListExample-header--FileIcon',
         className: 'DetailsListExample-cell--FileIcon',
         iconClassName: 'DetailsListExample-Header-FileTypeIcon',
+        ariaLabel: 'Column operations for File type',
         iconName: 'Page',
         isIconOnly: true,
         fieldName: 'name',
@@ -120,6 +121,8 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         isResizable: true,
         isSorted: true,
         isSortedDescending: false,
+        sortAscendingAriaLabel: 'Sorted A to Z',
+        sortDescendingAriaLabel: 'Sorted Z to A',
         onColumnClick: this._onColumnClick,
         data: 'string',
         isPadded: true
@@ -195,19 +198,19 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         <Toggle
           label="Enable Compact Mode"
           checked={isCompactMode}
-          onChanged={this._onChangeCompactMode}
+          onChange={this._onChangeCompactMode}
           onText="Compact"
           offText="Normal"
         />
         <Toggle
           label="Enable Modal Selection"
           checked={this.state.isModalSelection}
-          onChanged={this._onChangeModalSelection}
+          onChange={this._onChangeModalSelection}
           onText="Modal"
           offText="Normal"
         />
         <div>{selectionDetails}</div>
-        <TextField label="Filter by name:" onChanged={this._onChangeText} />
+        <TextField label="Filter by name:" onChange={this._onChangeText} />
         <MarqueeSelection selection={this._selection}>
           <DetailsList
             items={items}
@@ -233,15 +236,15 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
     }
   }
 
-  private _onChangeCompactMode = (checked: boolean): void => {
+  private _onChangeCompactMode = (ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
     this.setState({ isCompactMode: checked });
   };
 
-  private _onChangeModalSelection = (checked: boolean): void => {
+  private _onChangeModalSelection = (ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
     this.setState({ isModalSelection: checked });
   };
 
-  private _onChangeText = (text: any): void => {
+  private _onChangeText = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text: string): void => {
     this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items });
   };
 

@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { ISuggestionModel } from './SuggestionsController';
-import { IRenderFunction, KeyCodes } from '../../../Utilities';
+import { IRefObject, IRenderFunction, KeyCodes } from '../../../Utilities';
 import { IPersonaProps } from '../../Persona/Persona.types';
 
 export interface ISuggestionsProps<T> extends React.Props<any> {
   /**
    * Gets the component ref.
    */
-  componentRef?: () => void;
+  componentRef?: IRefObject<{}>;
 
   /**
    * How the suggestion should look in the suggestion list.
@@ -54,9 +54,13 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
    */
   createGenericItem?: () => void;
   /**
-   * The CSS classname of the suggestions list.
+   * The CSS classname of the suggestions root.
    */
   className?: string;
+  /**
+   * The CSS classname of the suggestionslist
+   */
+  suggestionsClassName?: string;
   /**
    * The text that should appear if there is a search error.
    */
@@ -135,10 +139,16 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
    * An ARIA label to use for the buttons to remove individual suggestions.
    */
   removeSuggestionAriaLabel?: string;
+
+  /**
+   * The string that will be used as the suggestionsListId. Will be used by the basepicker to keep track of the list
+   * for aria.
+   */
+  suggestionsListId?: string;
 }
 
 export interface ISuggestionItemProps<T> {
-  componentRef?: () => void;
+  componentRef?: IRefObject<{}>;
   suggestionModel: ISuggestionModel<T>;
   RenderSuggestion: (item: T, suggestionItemProps?: ISuggestionItemProps<T>) => JSX.Element;
   onClick: (ev: React.MouseEvent<HTMLButtonElement>) => void;

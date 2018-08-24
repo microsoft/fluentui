@@ -7,13 +7,14 @@ exports[`Suggestions renders a list properly 1`] = `
   <div
     aria-label={undefined}
     className="ms-Suggestions-container"
-    id="suggestion-list"
-    role="list"
+    id={undefined}
+    role="listbox"
   >
     <div
       aria-label={undefined}
+      aria-selected={true}
       id="sug-0"
-      role="listitem"
+      role="option"
     >
       <div
         className="ms-Suggestions-item is-suggested undefined"
@@ -95,6 +96,11 @@ exports[`Suggestions renders a list properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -119,8 +125,9 @@ exports[`Suggestions renders a list properly 1`] = `
     </div>
     <div
       aria-label={undefined}
+      aria-selected={false}
       id="sug-1"
-      role="listitem"
+      role="option"
     >
       <div
         className="ms-Suggestions-item"
@@ -202,6 +209,11 @@ exports[`Suggestions renders a list properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -226,8 +238,9 @@ exports[`Suggestions renders a list properly 1`] = `
     </div>
     <div
       aria-label={undefined}
+      aria-selected={false}
       id="sug-2"
-      role="listitem"
+      role="option"
     >
       <div
         className="ms-Suggestions-item"
@@ -309,6 +322,11 @@ exports[`Suggestions renders a list properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -333,8 +351,9 @@ exports[`Suggestions renders a list properly 1`] = `
     </div>
     <div
       aria-label={undefined}
+      aria-selected={false}
       id="sug-3"
-      role="listitem"
+      role="option"
     >
       <div
         className="ms-Suggestions-item"
@@ -416,6 +435,11 @@ exports[`Suggestions renders a list properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -440,8 +464,9 @@ exports[`Suggestions renders a list properly 1`] = `
     </div>
     <div
       aria-label={undefined}
+      aria-selected={false}
       id="sug-4"
-      role="listitem"
+      role="option"
     >
       <div
         className="ms-Suggestions-item"
@@ -523,6 +548,11 @@ exports[`Suggestions renders a list properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -547,8 +577,9 @@ exports[`Suggestions renders a list properly 1`] = `
     </div>
     <div
       aria-label={undefined}
+      aria-selected={false}
       id="sug-5"
-      role="listitem"
+      role="option"
     >
       <div
         className="ms-Suggestions-item"
@@ -630,6 +661,11 @@ exports[`Suggestions renders a list properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -654,8 +690,9 @@ exports[`Suggestions renders a list properly 1`] = `
     </div>
     <div
       aria-label={undefined}
+      aria-selected={false}
       id="sug-6"
-      role="listitem"
+      role="option"
     >
       <div
         className="ms-Suggestions-item"
@@ -737,6 +774,11 @@ exports[`Suggestions renders a list properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -761,8 +803,9 @@ exports[`Suggestions renders a list properly 1`] = `
     </div>
     <div
       aria-label={undefined}
+      aria-selected={false}
       id="sug-7"
-      role="listitem"
+      role="option"
     >
       <div
         className="ms-Suggestions-item"
@@ -844,6 +887,11 @@ exports[`Suggestions renders a list properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -868,8 +916,9 @@ exports[`Suggestions renders a list properly 1`] = `
     </div>
     <div
       aria-label={undefined}
+      aria-selected={false}
       id="sug-8"
-      role="listitem"
+      role="option"
     >
       <div
         className="ms-Suggestions-item"
@@ -951,6 +1000,11 @@ exports[`Suggestions renders a list properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -975,8 +1029,9 @@ exports[`Suggestions renders a list properly 1`] = `
     </div>
     <div
       aria-label={undefined}
+      aria-selected={false}
       id="sug-9"
-      role="listitem"
+      role="option"
     >
       <div
         className="ms-Suggestions-item"
@@ -1058,6 +1113,11 @@ exports[`Suggestions renders a list properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -1082,8 +1142,9 @@ exports[`Suggestions renders a list properly 1`] = `
     </div>
     <div
       aria-label={undefined}
+      aria-selected={false}
       id="sug-10"
-      role="listitem"
+      role="option"
     >
       <div
         className="ms-Suggestions-item"
@@ -1165,6 +1226,11 @@ exports[`Suggestions renders a list properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -1189,8 +1255,9 @@ exports[`Suggestions renders a list properly 1`] = `
     </div>
     <div
       aria-label={undefined}
+      aria-selected={false}
       id="sug-11"
-      role="listitem"
+      role="option"
     >
       <div
         className="ms-Suggestions-item"
@@ -1272,6 +1339,11 @@ exports[`Suggestions renders a list properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -1296,8 +1368,9 @@ exports[`Suggestions renders a list properly 1`] = `
     </div>
     <div
       aria-label={undefined}
+      aria-selected={false}
       id="sug-12"
-      role="listitem"
+      role="option"
     >
       <div
         className="ms-Suggestions-item"
@@ -1379,6 +1452,11 @@ exports[`Suggestions renders a list properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -1403,8 +1481,9 @@ exports[`Suggestions renders a list properly 1`] = `
     </div>
     <div
       aria-label={undefined}
+      aria-selected={false}
       id="sug-13"
-      role="listitem"
+      role="option"
     >
       <div
         className="ms-Suggestions-item"
@@ -1486,6 +1565,11 @@ exports[`Suggestions renders a list properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -1510,8 +1594,9 @@ exports[`Suggestions renders a list properly 1`] = `
     </div>
     <div
       aria-label={undefined}
+      aria-selected={false}
       id="sug-14"
-      role="listitem"
+      role="option"
     >
       <div
         className="ms-Suggestions-item"
@@ -1593,6 +1678,11 @@ exports[`Suggestions renders a list properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -1631,13 +1721,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
   <div
     aria-label={undefined}
     className="ms-Suggestions-container"
-    id="suggestion-list"
-    role="list"
+    id={undefined}
+    role="listbox"
   >
     <div
       aria-label={undefined}
+      aria-selected={false}
       id="sug-0"
-      role="listitem"
+      role="option"
     >
       <div
         className="ms-Suggestions-item"
@@ -1719,6 +1810,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -1743,8 +1839,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
     </div>
     <div
       aria-label={undefined}
+      aria-selected={false}
       id="sug-1"
-      role="listitem"
+      role="option"
     >
       <div
         className="ms-Suggestions-item"
@@ -1826,6 +1923,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -1850,8 +1952,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
     </div>
     <div
       aria-label={undefined}
+      aria-selected={false}
       id="sug-2"
-      role="listitem"
+      role="option"
     >
       <div
         className="ms-Suggestions-item"
@@ -1933,6 +2036,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -1957,8 +2065,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
     </div>
     <div
       aria-label={undefined}
+      aria-selected={false}
       id="sug-3"
-      role="listitem"
+      role="option"
     >
       <div
         className="ms-Suggestions-item"
@@ -2040,6 +2149,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -2064,8 +2178,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
     </div>
     <div
       aria-label={undefined}
+      aria-selected={false}
       id="sug-4"
-      role="listitem"
+      role="option"
     >
       <div
         className="ms-Suggestions-item"
@@ -2147,6 +2262,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -2171,8 +2291,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
     </div>
     <div
       aria-label={undefined}
+      aria-selected={false}
       id="sug-5"
-      role="listitem"
+      role="option"
     >
       <div
         className="ms-Suggestions-item"
@@ -2254,6 +2375,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -2278,8 +2404,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
     </div>
     <div
       aria-label={undefined}
+      aria-selected={false}
       id="sug-6"
-      role="listitem"
+      role="option"
     >
       <div
         className="ms-Suggestions-item"
@@ -2361,6 +2488,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -2385,8 +2517,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
     </div>
     <div
       aria-label={undefined}
+      aria-selected={false}
       id="sug-7"
-      role="listitem"
+      role="option"
     >
       <div
         className="ms-Suggestions-item"
@@ -2468,6 +2601,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -2492,8 +2630,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
     </div>
     <div
       aria-label={undefined}
+      aria-selected={true}
       id="sug-8"
-      role="listitem"
+      role="option"
     >
       <div
         className="ms-Suggestions-item is-suggested undefined"
@@ -2575,6 +2714,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -2599,8 +2743,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
     </div>
     <div
       aria-label={undefined}
+      aria-selected={false}
       id="sug-9"
-      role="listitem"
+      role="option"
     >
       <div
         className="ms-Suggestions-item"
@@ -2682,6 +2827,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -2706,8 +2856,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
     </div>
     <div
       aria-label={undefined}
+      aria-selected={false}
       id="sug-10"
-      role="listitem"
+      role="option"
     >
       <div
         className="ms-Suggestions-item"
@@ -2789,6 +2940,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -2813,8 +2969,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
     </div>
     <div
       aria-label={undefined}
+      aria-selected={false}
       id="sug-11"
-      role="listitem"
+      role="option"
     >
       <div
         className="ms-Suggestions-item"
@@ -2896,6 +3053,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -2920,8 +3082,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
     </div>
     <div
       aria-label={undefined}
+      aria-selected={false}
       id="sug-12"
-      role="listitem"
+      role="option"
     >
       <div
         className="ms-Suggestions-item"
@@ -3003,6 +3166,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -3027,8 +3195,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
     </div>
     <div
       aria-label={undefined}
+      aria-selected={false}
       id="sug-13"
-      role="listitem"
+      role="option"
     >
       <div
         className="ms-Suggestions-item"
@@ -3110,6 +3279,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div
@@ -3134,8 +3308,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
     </div>
     <div
       aria-label={undefined}
+      aria-selected={false}
       id="sug-14"
-      role="listitem"
+      role="option"
     >
       <div
         className="ms-Suggestions-item"
@@ -3217,6 +3392,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           type="button"
         >
           <div

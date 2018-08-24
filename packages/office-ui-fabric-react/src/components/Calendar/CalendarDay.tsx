@@ -207,6 +207,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
             aria-multiselectable="false"
             aria-labelledby={monthAndYearId}
             aria-activedescendant={activeDescendantId}
+            role="grid"
           >
             <thead>
               <tr>
@@ -280,13 +281,11 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                               dateRangeType === DateRangeType.Day,
                             ['ms-DatePicker-day--highlighted ' + styles.dayIsHighlighted]:
                               day.isSelected && dateRangeType === DateRangeType.Day,
-                            ['ms-DatePicker-day--disabled ' + styles.dayIsDisabled]: !day.isInBounds,
                             ['ms-DatePicker-day--infocus ' + styles.dayIsFocused]: day.isInBounds && day.isInMonth,
                             ['ms-DatePicker-day--outfocus ' + styles.dayIsUnfocused]: day.isInBounds && !day.isInMonth
                           }
                         )}
                         ref={element => this._setDayCellRef(element, day, isNavigatedDate)}
-                        onClick={day.isInBounds ? day.onSelected : undefined}
                         onMouseOver={
                           dateRangeType !== DateRangeType.Day
                             ? this._onDayMouseOver(day.originalDate, weekIndex, dayIndex, dateRangeType)
@@ -307,22 +306,26 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                             ? this._onDayMouseUp(day.originalDate, weekIndex, dayIndex, dateRangeType)
                             : undefined
                         }
+                        role={'gridcell'}
                       >
-                        <div
-                          key={day.key + 'div'}
-                          className={css(styles.day, {
+                        <button
+                          key={day.key + 'button'}
+                          className={css(styles.day, 'ms-DatePicker-day-button', {
+                            ['ms-DatePicker-day--disabled ' + styles.dayIsDisabled]: !day.isInBounds,
                             ['ms-DatePicker-day--today ' + styles.dayIsToday]: day.isToday
                           })}
-                          role={'gridcell'}
+                          role={'button'}
                           onKeyDown={this._onDayKeyDown(day.originalDate, weekIndex, dayIndex)}
+                          onClick={day.isInBounds ? day.onSelected : undefined}
                           aria-label={dateTimeFormatter.formatMonthDayYear(day.originalDate, strings)}
                           id={isNavigatedDate ? activeDescendantId : undefined}
                           aria-selected={day.isInBounds ? day.isSelected : undefined}
                           data-is-focusable={day.isInBounds ? true : undefined}
                           ref={element => this._setDayRef(element, day, isNavigatedDate)}
+                          disabled={!day.isInBounds}
                         >
                           <span aria-hidden="true">{dateTimeFormatter.formatDay(day.originalDate)}</span>
-                        </div>
+                        </button>
                       </td>
                     );
                   })}
@@ -485,7 +488,11 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     dayIndex: number
   ): ((ev: React.KeyboardEvent<HTMLElement>) => void) => {
     return (ev: React.KeyboardEvent<HTMLElement>): void => {
-      this._navigateMonthEdge(ev, originalDate, weekIndex, dayIndex);
+      if (ev.which === KeyCodes.enter) {
+        this._onSelectDate(originalDate);
+      } else {
+        this._navigateMonthEdge(ev, originalDate, weekIndex, dayIndex);
+      }
     };
   };
 

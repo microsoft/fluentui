@@ -21,7 +21,7 @@ export const ShimmerPageProps: IDocPageProps = {
   title: 'Shimmer',
   componentName: 'ShimmerExample',
   componentUrl:
-    'https://githubcom/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Shimmer',
+    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Shimmer',
   examples: [
     {
       title: "Shimmer with basic elements using the 'shimmerElements' prop",
@@ -39,7 +39,7 @@ export const ShimmerPageProps: IDocPageProps = {
       view: <ShimmerLoadDataExample />
     },
     {
-      title: 'Details List with 500 items simulating loading data in async manner and having Shimmer enabled.',
+      title: 'Shimmered Details List with 500 items simulating loading data in async manner.',
       code: ShimmerApplicationExampleCode,
       view: <ShimmerApplicationExample />
     },
@@ -57,5 +57,6 @@ export const ShimmerPageProps: IDocPageProps = {
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Shimmer/docs/ShimmerDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Shimmer/docs/ShimmerDonts.md'),
   isHeaderVisible: true,
+  isFeedbackVisible: true,
   componentStatus: ShimmerStatus
 };

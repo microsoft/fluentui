@@ -12,6 +12,7 @@ exports[`Component Examples renders FloatingPeoplePicker.Basic.Example.tsx corre
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             align-items: stretch;
+            background-color: #ffffff;
             border: 1px solid #a6a6a6;
             box-shadow: none;
             box-sizing: border-box;
@@ -47,6 +48,7 @@ exports[`Component Examples renders FloatingPeoplePicker.Basic.Example.tsx corre
       onFocusCapture={[Function]}
     >
       <div
+        aria-hidden={true}
         className=
             ms-SearchBox-iconContainer
             {
@@ -89,7 +91,7 @@ exports[`Component Examples renders FloatingPeoplePicker.Basic.Example.tsx corre
         className=
             ms-SearchBox-field
             {
-              background-color: #ffffff;
+              background-color: transparent;
               border: none;
               box-shadow: none;
               box-sizing: border-box;

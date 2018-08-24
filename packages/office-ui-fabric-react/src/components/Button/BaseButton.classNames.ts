@@ -38,7 +38,8 @@ export const getBaseButtonClassNames = memoizeFunction(
           {
             selectors: {
               ':hover .ms-Button-icon': styles.iconExpandedHovered,
-              ':hover .ms-Button-menuIcon': styles.rootExpandedHovered,
+              // menuIcon falls back to rootExpandedHovered to support original behavior
+              ':hover .ms-Button-menuIcon': styles.menuIconExpandedHovered || styles.rootExpandedHovered,
               ':hover': styles.rootExpandedHovered
             }
           }
@@ -49,6 +50,7 @@ export const getBaseButtonClassNames = memoizeFunction(
           !checked && {
             selectors: {
               ':hover': styles.rootHovered,
+              ':hover .ms-Button-label': styles.labelHovered,
               ':hover .ms-Button-icon': styles.iconHovered,
               ':hover .ms-Button-description': styles.descriptionHovered,
               ':hover .ms-Button-menuIcon': styles.menuIconHovered,
@@ -94,15 +96,7 @@ export const getBaseButtonClassNames = memoizeFunction(
               ':active': styles.menuIconPressed
             }
           },
-        isExpanded && [
-          'is-expanded',
-          styles.menuIconExpanded,
-          {
-            selectors: {
-              ':hover': styles.menuIconExpandedHovered
-            }
-          }
-        ]
+        isExpanded && ['is-expanded', styles.menuIconExpanded]
       ],
       description: [
         'ms-Button-description',

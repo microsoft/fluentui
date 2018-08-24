@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
-import { BaseComponent, getId, KeyCodes, customizable, classNamesFunction, createRef } from '../../Utilities';
+import { BaseComponent, getId, KeyCodes, classNamesFunction, createRef } from '../../Utilities';
 
 import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
@@ -13,7 +13,6 @@ export interface ISearchBoxState {
   id?: string;
 }
 
-@customizable('SearchBox', ['theme', 'styles'])
 export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
   public static defaultProps: Pick<ISearchBoxProps, 'disableAnimation' | 'clearButtonProps'> = {
     disableAnimation: false,
@@ -78,7 +77,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
 
     return (
       <div ref={this._rootElement} className={classNames.root} onFocusCapture={this._onFocusCapture}>
-        <div className={classNames.iconContainer} onClick={this._onClickFocus}>
+        <div className={classNames.iconContainer} onClick={this._onClickFocus} aria-hidden={true}>
           <Icon className={classNames.icon} iconName="Search" />
         </div>
         <input
@@ -180,7 +179,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
         break;
 
       case KeyCodes.enter:
-        if (this.props.onSearch && this.state.value!.length > 0) {
+        if (this.props.onSearch) {
           this.props.onSearch(this.state.value);
         }
         break;

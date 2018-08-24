@@ -3,7 +3,7 @@ import { BaseButton } from './BaseButton';
 import { Button } from './Button';
 import { IButtonClassNames } from './BaseButton.classNames';
 import { ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
-import { IRenderFunction, KeyCodes } from '../../Utilities';
+import { IRefObject, IRenderFunction, KeyCodes, IComponentAs } from '../../Utilities';
 import { IContextualMenuProps } from '../../ContextualMenu';
 import { IIconProps } from '../../Icon';
 import { IStyle, ITheme } from '../../Styling';
@@ -36,7 +36,7 @@ export interface IButtonProps
    * Optional callback to access the IButton interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IButton | null) => void;
+  componentRef?: IRefObject<IButton>;
 
   /**
    * If provided, this component will be rendered as an anchor.
@@ -84,6 +84,12 @@ export interface IButtonProps
    * Whether the button is checked
    */
   checked?: boolean;
+
+  /**
+   * Whether button is a toggle button with distinct on and off states. This should be true for buttons that permanently
+   * change state when a press event finishes, such as a volume mute button.
+   */
+  toggle?: boolean;
 
   /**
    * If provided, additional class name to provide on the root element.
@@ -179,9 +185,15 @@ export interface IButtonProps
   onRenderMenuIcon?: IRenderFunction<IButtonProps>;
 
   /**
-   * Custom render function for button menu
+   * Deprecated at v6.3.2, to be removed at >= v7.0.0. Use menuAs instead.
+   * @deprecated
    */
   onRenderMenu?: IRenderFunction<IContextualMenuProps>;
+
+  /**
+   * Render a custom menu in place of the normal one.
+   */
+  menuAs?: IComponentAs<IContextualMenuProps>;
 
   /**
    * Description of the action this button takes.
@@ -395,6 +407,11 @@ export interface IButtonStyles {
    * Style for the text content of the button.
    */
   label?: IStyle;
+
+  /**
+   * Style override for the text content when the button is hovered.
+   */
+  labelHovered?: IStyle;
 
   /**
    * Style override for the text content when the button is disabled.

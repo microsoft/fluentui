@@ -93,7 +93,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
 
   const fieldHoverOrFocusProperties = {
     selectors: {
-      '.ms-Label': {
+      '.ms-ChoiceFieldLabel': {
         color: semanticColors.bodyTextChecked
       },
       ':before': {
@@ -210,13 +210,20 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
         position: 'relative',
         marginTop: 8,
         selectors: {
-          '.ms-Label': {
+          '.ms-ChoiceFieldLabel': {
             fontSize: FontSizes.medium,
-            padding: '0 0 0 26px',
             display: 'inline-block'
           }
         }
       },
+      !hasIcon &&
+        !hasImage && {
+          selectors: {
+            '.ms-ChoiceFieldLabel': {
+              paddingLeft: '26px'
+            }
+          }
+        },
       hasImage && 'ms-ChoiceField--image',
       hasIcon && 'ms-ChoiceField--icon',
       (hasIcon || hasImage) && {
@@ -300,7 +307,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
       disabled && {
         cursor: 'default',
         selectors: {
-          '.ms-Label': {
+          '.ms-ChoiceFieldLabel': {
             color: semanticColors.disabledBodyText
           },
           [HighContrastSelector]: {
@@ -355,12 +362,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
         whiteSpace: 'pre-wrap',
         textOverflow: 'ellipsis',
         fontSize: FontSizes.medium,
-        fontWeight: FontWeights.regular,
-        selectors: {
-          '.ms-Label': {
-            padding: 0
-          }
-        }
+        fontWeight: FontWeights.regular
       }
     ]
   };

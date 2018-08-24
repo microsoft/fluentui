@@ -59,7 +59,15 @@ ReactDOM.render(<PrimaryButton>I am a button.</PrimaryButton>, document.body.fir
 Fabric React supports all evergreen browsers, with IE 11 as the min-bar version of Internet Explorer. See the [browser support doc](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Browser-Support) for more information.
 
 ## Right-to-left support
-All components can render in LTR or RTL, depending on the `dir` attribute set on the html page. (`dir="rtl"` will flip the direction of everything.
+All components can render in LTR or RTL, depending on the `dir` attribute set on the `html` element. (`dir="rtl"` will flip the direction of everything.
+
+You can also import the `setRTL` api to manually set it, if you don't have control over what gets renders for the `html` element. Example:
+
+```tsx
+import { setRTL } from 'office-ui-fabric-react/lib/Utilities';
+
+setRTL(true);
+```
 
 ## Server-side rendering
 

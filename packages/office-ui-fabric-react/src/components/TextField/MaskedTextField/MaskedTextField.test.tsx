@@ -252,8 +252,15 @@ describe('MaskedTextField', () => {
   });
 
   it('should ignore overflowed characters', () => {
+    let onChangeValue;
     const component = mount(
-      <MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" value="123-456-7890" />
+      <MaskedTextField
+        // tslint:disable-next-line jsx-no-lambda
+        onChange={(ev, newValue) => (onChangeValue = newValue)}
+        label="With input mask"
+        mask="m\ask: (999) 999 - 9999"
+        value="123-456-7890"
+      />
     );
 
     const input = component.find('input'),
@@ -266,5 +273,6 @@ describe('MaskedTextField', () => {
     inputDOM.setSelectionRange(23, 23);
     input.simulate('change', mockEvent('mask: (123) 456 - 78901'));
     expect(inputDOM.value).toEqual('mask: (123) 456 - 7890');
+    expect(onChangeValue).toEqual('mask: (123) 456 - 7890');
   });
 });

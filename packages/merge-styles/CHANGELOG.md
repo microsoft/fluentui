@@ -1,6 +1,59 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Wed, 20 Jun 2018 10:25:55 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Jul 2018 10:27:11 GMT and should not be manually modified.
+
+## 6.7.0
+Mon, 30 Jul 2018 10:27:11 GMT
+
+### Minor changes
+
+- Change IProcessedStyleSet typings to be easier to consume - subcomponentStyles is now always present so consumers do not have to check for presence even when it is fully expected that it is there.
+
+### Patches
+
+- formatting change
+
+## 6.6.0
+Thu, 26 Jul 2018 10:28:51 GMT
+
+### Minor changes
+
+- Add resize rule to IRawStyleBase.
+
+## 6.5.1
+Thu, 19 Jul 2018 21:25:32 GMT
+
+### Patches
+
+- `mergeStyleSet` is able to take falsey values again and handle it correctly in all cases.
+
+## 6.5.0
+Wed, 18 Jul 2018 10:25:50 GMT
+
+### Minor changes
+
+- Add support for style functions and improve documentation/typings.
+
+## 6.4.0
+Fri, 13 Jul 2018 21:32:37 GMT
+
+### Minor changes
+
+- Reverting the TypeScript bump, to un
+
+## 6.2.3
+Tue, 10 Jul 2018 21:54:07 GMT
+
+### Patches
+
+- Refining the merge-styles fix from yesterday to check for ownerDocument changes, which is a more correct comparison to work around the Chrome "window not resetting" issue.
+
+## 6.2.2
+Tue, 10 Jul 2018 05:05:15 GMT
+
+### Patches
+
+- If the singleton `Stylesheet` instance originated from another window, reset the instance. Workaround for an unexplained Chrome issue where the singleton was still accessible after a page refresh.
 
 ## 6.2.1
 Wed, 20 Jun 2018 10:25:55 GMT

@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { IGroup, IGroupDividerProps, IGroupRenderProps } from './GroupedList.types';
+import { IGroup, IGroupDividerProps, IGroupRenderProps, IGroupedListStyles } from './GroupedList.types';
 
 import { IDragDropContext, IDragDropEvents, IDragDropHelper } from '../../utilities/dragdrop/index';
 
-import { BaseComponent, IRenderFunction, IDisposable, createRef } from '../../Utilities';
+import { BaseComponent, IRenderFunction, IDisposable, createRef, IClassNames } from '../../Utilities';
 
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/index';
 
@@ -15,12 +15,12 @@ import { List } from '../../List';
 import { IDragDropOptions } from './../../utilities/dragdrop/interfaces';
 import { assign, css } from '../../Utilities';
 import { IViewport } from '../../utilities/decorators/withViewport';
-import * as stylesImport from './GroupedList.scss';
 import { IListProps } from '../List/index';
 
-const styles: any = stylesImport;
-
 export interface IGroupedListSectionProps extends React.Props<GroupedListSection> {
+  /** GroupedList resolved class names */
+  groupedListClassNames?: IClassNames<IGroupedListStyles>;
+
   /**
    * Gets the component ref.
    */
@@ -175,7 +175,8 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       onRenderGroupHeader = this._onRenderGroupHeader,
       onRenderGroupShowAll = this._onRenderGroupShowAll,
       onRenderGroupFooter = this._onRenderGroupFooter,
-      onShouldVirtualize
+      onShouldVirtualize,
+      groupedListClassNames
     } = this.props;
     const { isSelected } = this.state;
     const renderCount = group && getGroupItemLimit ? getGroupItemLimit(group) : Infinity;
@@ -202,7 +203,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     return (
       <div
         ref={this._root}
-        className={css('ms-GroupedList-group', styles.group, this._getDroppingClassName())}
+        className={css(groupedListClassNames && groupedListClassNames.group, this._getDroppingClassName())}
         role="presentation"
       >
         {onRenderGroupHeader(groupHeaderProps, this._onRenderGroupHeader)}
@@ -415,10 +416,13 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
    */
   private _getDroppingClassName(): string {
     let { isDropping } = this.state;
-    const { group } = this.props;
+    const { group, groupedListClassNames } = this.props;
 
     isDropping = !!(group && isDropping);
 
-    return css(isDropping && DEFAULT_DROPPING_CSS_CLASS, isDropping && styles.groupIsDropping);
+    return css(
+      isDropping && DEFAULT_DROPPING_CSS_CLASS,
+      isDropping && groupedListClassNames && groupedListClassNames.groupIsDropping
+    );
   }
 }

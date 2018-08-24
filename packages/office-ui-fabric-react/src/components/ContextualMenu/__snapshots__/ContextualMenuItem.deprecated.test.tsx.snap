@@ -2,9 +2,8 @@
 
 exports[`ContextMenuItemChildren when a checkmark icon renders the component with the checkmark 1`] = `
 ShallowWrapper {
-  "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <ContextualMenuItem
+  Symbol(enzyme.__unrendered__): <ContextualMenuItemBase
     classNames={
       Object {
         "checkmarkIcon": "checkmarkIcon",
@@ -124,17 +123,24 @@ ShallowWrapper {
     "adapter": ReactSixteenAdapter {
       "options": Object {
         "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getSnapshotBeforeUpdate": true,
+        },
       },
     },
+    "attachTo": undefined,
+    "hydrateIn": undefined,
   },
 }
 `;
 
 exports[`ContextMenuItemChildren when it has a sub menu renders the menu icon 1`] = `
 ShallowWrapper {
-  "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <ContextualMenuItem
+  Symbol(enzyme.__unrendered__): <ContextualMenuItemBase
     classNames={
       Object {
         "checkmarkIcon": "checkmarkIcon",
@@ -275,17 +281,24 @@ ShallowWrapper {
     "adapter": ReactSixteenAdapter {
       "options": Object {
         "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getSnapshotBeforeUpdate": true,
+        },
       },
     },
+    "attachTo": undefined,
+    "hydrateIn": undefined,
   },
 }
 `;
 
 exports[`ContextMenuItemChildren when it has icons when it doesnt have iconProps renders the icon with iconName 1`] = `
 ShallowWrapper {
-  "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <ContextualMenuItem
+  Symbol(enzyme.__unrendered__): <ContextualMenuItemBase
     classNames={
       Object {
         "checkmarkIcon": "checkmarkIcon",
@@ -397,17 +410,24 @@ ShallowWrapper {
     "adapter": ReactSixteenAdapter {
       "options": Object {
         "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getSnapshotBeforeUpdate": true,
+        },
       },
     },
+    "attachTo": undefined,
+    "hydrateIn": undefined,
   },
 }
 `;
 
 exports[`ContextMenuItemChildren when it has icons when it has iconProps renders the icon 1`] = `
 ShallowWrapper {
-  "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <ContextualMenuItem
+  Symbol(enzyme.__unrendered__): <ContextualMenuItemBase
     classNames={
       Object {
         "checkmarkIcon": "checkmarkIcon",
@@ -556,8 +576,16 @@ ShallowWrapper {
     "adapter": ReactSixteenAdapter {
       "options": Object {
         "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getSnapshotBeforeUpdate": true,
+        },
       },
     },
+    "attachTo": undefined,
+    "hydrateIn": undefined,
   },
 }
 `;

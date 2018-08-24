@@ -102,7 +102,7 @@ describe('ComboBox', () => {
         label="testgroup"
         options={DEFAULT_OPTIONS}
         allowFreeform={true}
-        onChanged={returnUndefined}
+        onChange={returnUndefined}
         componentRef={setRef}
       />
     );
@@ -342,6 +342,33 @@ describe('ComboBox', () => {
     expect(wrapper.find('.is-open').length).toEqual(1);
   });
 
+  it('onPendingValueChanged triggers for all indexes', () => {
+    let comboBoxRoot;
+    let inputElement: ReactWrapper<React.InputHTMLAttributes<any>, any>;
+    const indexSeen: number[] = [];
+    const pendingValueChangedHandler = (option?: IComboBoxOption, index?: number, value?: string) => {
+      if (index !== undefined) {
+        indexSeen.push(index);
+      }
+    };
+    const wrapper = mount(
+      <ComboBox
+        label="testgroup"
+        options={DEFAULT_OPTIONS}
+        defaultSelectedKey="1"
+        allowFreeform={true}
+        onPendingValueChanged={pendingValueChangedHandler}
+      />
+    );
+    comboBoxRoot = wrapper.find('.ms-ComboBox');
+    inputElement = comboBoxRoot.find('input');
+    inputElement.simulate('input', { target: { value: 'f' } });
+    inputElement.simulate('keydown', { which: KeyCodes.down });
+    inputElement.simulate('keydown', { which: KeyCodes.up });
+    expect(indexSeen).toContain(0);
+    expect(indexSeen).toContain(1);
+  });
+
   it('Can type a complete option with autocomplete and allowFreeform on and submit it', () => {
     let updatedOption;
     let updatedIndex;
@@ -357,7 +384,7 @@ describe('ComboBox', () => {
         autoComplete="on"
         allowFreeform={true}
         // tslint:disable-next-line:jsx-no-lambda
-        onChanged={(option?: IComboBoxOption, index?: number) => {
+        onChange={(event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => {
           updatedOption = option;
           updatedIndex = index;
           executionCount++;
@@ -390,5 +417,30 @@ describe('ComboBox', () => {
       expect(callout.classList.contains('ms-ComboBox-callout')).toBeTruthy();
       expect(callout.classList.contains('foo')).toBeTruthy();
     }, 0);
+  });
+
+  it('Can clear text in controlled case with autoComplete off and allowFreeform on', () => {
+    let updatedText;
+    const wrapper = mount(
+      <ComboBox
+        label="testgroup"
+        options={DEFAULT_OPTIONS}
+        autoComplete="off"
+        allowFreeform={true}
+        text="hikari"
+        // tslint:disable-next-line:jsx-no-lambda
+        onChange={(event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => {
+          updatedText = value;
+        }}
+      />
+    );
+
+    const input = wrapper.find('input');
+    (input.instance() as any).value = '';
+    input.simulate('input', { target: { value: '' } });
+    input.simulate('keydown', { which: KeyCodes.enter });
+    wrapper.update();
+
+    expect(updatedText).toEqual('');
   });
 });

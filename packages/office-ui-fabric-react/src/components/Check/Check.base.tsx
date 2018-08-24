@@ -1,19 +1,24 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, customizable } from '../../Utilities';
-import { ICheckProps, ICheckStyleProps, ICheckStyles } from './Check.types';
+import { BaseComponent } from '../../Utilities';
+import { ICheckProps } from './Check.types';
 import { Icon } from '../../Icon';
 import { getStyles } from './Check.styles';
+import { classNamesFunction } from '../../Utilities';
+import { ICheckStyleProps, ICheckStyles } from './Check.types';
 
 const getClassNames = classNamesFunction<ICheckStyleProps, ICheckStyles>();
 
-@customizable('Check', ['theme', 'styles'])
 export class CheckBase extends BaseComponent<ICheckProps, {}> {
   public static defaultProps: ICheckProps = {
     checked: false
   };
 
   public shouldComponentUpdate(newProps: ICheckProps): boolean {
-    return this.props.checked !== newProps.checked;
+    return (
+      this.props.checked !== newProps.checked ||
+      this.props.theme !== newProps.theme ||
+      this.props.className !== newProps.className
+    );
   }
 
   public render(): JSX.Element {

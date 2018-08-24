@@ -3,7 +3,9 @@ import { max as d3Max } from 'd3-array';
 import { axisLeft as d3AxisLeft, axisBottom as d3AxisBottom, Axis as D3Axis } from 'd3-axis';
 import { scaleBand as d3ScaleBand, scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
-import { classNamesFunction, customizable, IClassNames } from '../../Utilities';
+import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
+
 import {
   IVerticalBarChartProps,
   IVerticalBarChartStyleProps,
@@ -15,7 +17,6 @@ const getClassNames = classNamesFunction<IVerticalBarChartStyleProps, IVerticalB
 type numericAxis = D3Axis<number | { valueOf(): number }>;
 type stringAxis = D3Axis<string>;
 
-@customizable('VerticalBarChart', ['theme', 'styles'])
 export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps, {}> {
   private _points: IDataPoint[];
   private _width: number;
@@ -23,37 +24,16 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   private _barWidth: number;
   private _yAxisTickCount: number;
   private _colors: string[];
-  private _classNames: IClassNames<IVerticalBarChartStyles>;
-
-  constructor(props: IVerticalBarChartProps) {
-    super(props);
-
-    this._points = this.props.data || [];
-
-    this._width = this.props.width || 600;
-    this._height = this.props.height || 350;
-    this._barWidth = this.props.barWidth || 15;
-    this._yAxisTickCount = this.props.yAxisTickCount || 5;
-
-    const { theme } = this.props;
-    const { palette } = theme!;
-    this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.blueDark];
-  }
+  private _classNames: IProcessedStyleSet<IVerticalBarChartStyles>;
 
   public render(): JSX.Element {
-    const isNumeric = typeof this._points[0].x === 'number';
+    this._adjustProps();
+
+    const isNumeric = this._points.length > 0 && typeof this._points[0].x === 'number';
 
     const xAxis = isNumeric ? this._createNumericXAxis() : this._createStringXAxis();
     const yAxis = this._createYAxis();
     const bars = isNumeric ? this._createNumericBars() : this._createStringBars();
-
-    const { theme, className, styles } = this.props;
-    this._classNames = getClassNames(styles!, {
-      theme: theme!,
-      width: this._width,
-      height: this._height,
-      className
-    });
 
     return (
       <div className={this._classNames.root}>
@@ -65,6 +45,26 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         </svg>
       </div>
     );
+  }
+
+  private _adjustProps(): void {
+    this._points = this.props.data || [];
+
+    this._width = this.props.width || 600;
+    this._height = this.props.height || 350;
+    this._barWidth = this.props.barWidth || 15;
+    this._yAxisTickCount = this.props.yAxisTickCount || 5;
+
+    const { theme, className, styles } = this.props;
+    const { palette } = theme!;
+    this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.blueDark];
+
+    this._classNames = getClassNames(styles!, {
+      theme: theme!,
+      width: this._width,
+      height: this._height,
+      className
+    });
   }
 
   private _setXAxis(node: SVGGElement | null, xAxis: numericAxis | stringAxis): void {

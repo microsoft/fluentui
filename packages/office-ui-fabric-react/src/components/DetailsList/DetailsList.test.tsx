@@ -4,7 +4,7 @@ import { mount } from 'enzyme';
 
 import { DetailsList } from './DetailsList';
 
-import { IDetailsList, IColumn } from './DetailsList.types';
+import { IDetailsList, IColumn, DetailsListLayoutMode, CheckboxVisibility } from './DetailsList.types';
 
 // Populate mock items for testing
 function mockItems(count: number): any {
@@ -33,6 +33,72 @@ describe('DetailsList', () => {
         skipViewportMeasures={true}
         // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
+      />
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders List in fixed constrained layout correctly', () => {
+    DetailsList.prototype.componentDidMount = jest.fn();
+
+    const component = renderer.create(
+      <DetailsList
+        items={mockItems(5)}
+        // tslint:disable-next-line:jsx-no-lambda
+        onRenderRow={() => null}
+        layoutMode={DetailsListLayoutMode.fixedColumns}
+        skipViewportMeasures={true}
+        // tslint:disable-next-line:jsx-no-lambda
+        onShouldVirtualize={() => false}
+      />
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders List in compact mode correctly', () => {
+    DetailsList.prototype.componentDidMount = jest.fn();
+
+    const component = renderer.create(
+      <DetailsList
+        items={mockItems(5)}
+        // tslint:disable-next-line:jsx-no-lambda
+        onRenderRow={() => null}
+        compact={true}
+        skipViewportMeasures={true}
+        // tslint:disable-next-line:jsx-no-lambda
+        onShouldVirtualize={() => false}
+      />
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders List with hidden checkboxes correctly', () => {
+    DetailsList.prototype.componentDidMount = jest.fn();
+
+    const component = renderer.create(
+      <DetailsList
+        items={mockItems(5)}
+        skipViewportMeasures={true}
+        // tslint:disable-next-line:jsx-no-lambda
+        onShouldVirtualize={() => false}
+        groups={[
+          {
+            key: 'group0',
+            name: 'Group 0',
+            startIndex: 0,
+            count: 2
+          },
+          {
+            key: 'group1',
+            name: 'Group 1',
+            startIndex: 2,
+            count: 3
+          }
+        ]}
+        checkboxVisibility={CheckboxVisibility.hidden}
       />
     );
     const tree = component.toJSON();

@@ -3,7 +3,7 @@ import { ISelectableOption } from '../../utilities/selectableOption/SelectableOp
 import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/SelectableDroppableText.types';
 import { IStyle, ITheme } from '../../Styling';
 import { IButtonStyles } from '../../Button';
-import { IRenderFunction } from '../../Utilities';
+import { IRefObject, IRenderFunction } from '../../Utilities';
 import { IComboBoxClassNames } from './ComboBox.classNames';
 import { IKeytipProps } from '../../Keytip';
 
@@ -43,7 +43,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * Optional callback to access the IComboBox interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IComboBox | null) => void;
+  componentRef?: IRefObject<IComboBox>;
 
   /**
    * Collection of options for this ComboBox
@@ -51,10 +51,15 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   options: IComboBoxOption[];
 
   /**
-   * Callback issues when either:
+   * Callback issued when either:
    * 1) the selected option changes
    * 2) a manually edited value is submitted. In this case there may not be a matched option if allowFreeform is also true
    *    (and hence only value would be true, the other parameter would be null in this case)
+   */
+  onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
+
+  /**
+   * @deprecated Use onChange instead.
    */
   onChanged?: (option?: IComboBoxOption, index?: number, value?: string, submitPendingValueEvent?: any) => void;
 
