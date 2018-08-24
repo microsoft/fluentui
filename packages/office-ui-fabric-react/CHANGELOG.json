@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.54.1",
+      "tag": "office-ui-fabric-react_v6.54.1",
+      "date": "Fri, 24 Aug 2018 14:45:24 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "439ec62c71139c1e81c447d9b1c3c018818822d7",
+            "comment": "Prevent breaking change in DetailsItemProps"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.54.0",
       "tag": "office-ui-fabric-react_v6.54.0",
       "date": "Fri, 24 Aug 2018 10:26:08 GMT",

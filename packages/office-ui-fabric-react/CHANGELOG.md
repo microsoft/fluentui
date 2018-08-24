@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 24 Aug 2018 10:26:08 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Aug 2018 14:45:24 GMT and should not be manually modified.
+
+## 6.54.1
+Fri, 24 Aug 2018 14:45:24 GMT
+
+### Patches
+
+- Prevent breaking change in DetailsItemProps
 
 ## 6.54.0
 Fri, 24 Aug 2018 10:26:08 GMT
