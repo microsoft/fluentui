@@ -313,7 +313,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
         borderBottom: `1px solid ${neutralLighter}`,
         background: colors.defaultBackgroundColor,
         color: colors.defaultMetaTextColor,
-        display: 'flex',
+        display: 'inline-flex', // This ensures that the row always tries to consume is minimum width and does not compress.
         minWidth: '100%',
         minHeight: values.rowHeight,
         whiteSpace: 'nowrap',

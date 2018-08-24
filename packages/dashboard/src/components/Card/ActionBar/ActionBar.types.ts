@@ -29,11 +29,6 @@ export interface IAction {
    * Defines the function that is executed on clicking this action
    */
   action: VoidFunction;
-
-  /**
-   * Defines whether or not this button is primary
-   */
-  primary?: boolean;
 }
 
 // This is an internal interface used for rendering the action button with unique key

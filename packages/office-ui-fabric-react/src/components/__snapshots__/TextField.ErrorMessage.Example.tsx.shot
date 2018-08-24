@@ -421,7 +421,7 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
       id="TextFieldDescription5"
     >
       <div
-        aria-live="assertive"
+        role="alert"
       />
     </span>
   </div>
@@ -852,7 +852,7 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
         This field has description and error message both under the input box.
       </span>
       <div
-        aria-live="assertive"
+        role="alert"
       />
     </span>
   </div>
@@ -1568,7 +1568,7 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
       id="TextFieldDescription21"
     >
       <div
-        aria-live="assertive"
+        role="alert"
       />
     </span>
   </div>
@@ -1982,7 +1982,7 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
         id="TextFieldDescription28"
       >
         <div
-          aria-live="assertive"
+          role="alert"
         />
       </span>
     </div>

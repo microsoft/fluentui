@@ -40,7 +40,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
               min-height: 26px;
               position: relative;
             }
-            & .ms-Label {
+            & .ms-ChoiceFieldLabel {
               display: inline-block;
               font-size: 14px;
               padding-left: 26px;
@@ -84,13 +84,13 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
                   user-select: none;
                   vertical-align: top;
                 }
-                &:hover .ms-Label {
+                &:hover .ms-ChoiceFieldLabel {
                   color: #000000;
                 }
                 &:hover:before {
                   border-color: #212121;
                 }
-                &:focus .ms-Label {
+                &:focus .ms-ChoiceFieldLabel {
                   color: #000000;
                 }
                 &:focus:before {
@@ -131,7 +131,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             htmlFor="ChoiceGroup0-1"
           >
             <span
-              className="ms-Label"
+              className="ms-ChoiceFieldLabel"
               id="ChoiceGroupLabel1-1"
             >
               1
@@ -154,7 +154,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
               min-height: 26px;
               position: relative;
             }
-            & .ms-Label {
+            & .ms-ChoiceFieldLabel {
               display: inline-block;
               font-size: 14px;
               padding-left: 26px;
@@ -197,13 +197,13 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
                   user-select: none;
                   vertical-align: top;
                 }
-                &:hover .ms-Label {
+                &:hover .ms-ChoiceFieldLabel {
                   color: #000000;
                 }
                 &:hover:before {
                   border-color: #212121;
                 }
-                &:focus .ms-Label {
+                &:focus .ms-ChoiceFieldLabel {
                   color: #000000;
                 }
                 &:focus:before {
@@ -244,7 +244,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             htmlFor="ChoiceGroup0-2"
           >
             <span
-              className="ms-Label"
+              className="ms-ChoiceFieldLabel"
               id="ChoiceGroupLabel1-2"
             >
               2
@@ -267,7 +267,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
               min-height: 26px;
               position: relative;
             }
-            & .ms-Label {
+            & .ms-ChoiceFieldLabel {
               display: inline-block;
               font-size: 14px;
               padding-left: 26px;
@@ -310,13 +310,13 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
                   user-select: none;
                   vertical-align: top;
                 }
-                &:hover .ms-Label {
+                &:hover .ms-ChoiceFieldLabel {
                   color: #000000;
                 }
                 &:hover:before {
                   border-color: #212121;
                 }
-                &:focus .ms-Label {
+                &:focus .ms-ChoiceFieldLabel {
                   color: #000000;
                 }
                 &:focus:before {
@@ -357,7 +357,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             htmlFor="ChoiceGroup0-3"
           >
             <span
-              className="ms-Label"
+              className="ms-ChoiceFieldLabel"
               id="ChoiceGroupLabel1-3"
             >
               3

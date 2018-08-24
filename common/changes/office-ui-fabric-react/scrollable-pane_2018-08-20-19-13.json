@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Don't left-pad DetailsColumn header icons",
-      "type": "patch"
+      "comment": "Fix Scrollable scroll syncing and header/footer alignment",
+      "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",

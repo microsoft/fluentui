@@ -130,6 +130,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
           checkboxVisibility={checkboxVisibility}
           layoutMode={layoutMode}
           isHeaderVisible={isHeaderVisible}
+          selectionMode={selectionMode}
           constrainMode={constrainMode}
           groupProps={groupProps}
           enterModalSelectionOnTouch={true}

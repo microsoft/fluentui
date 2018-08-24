@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Panel: remove selected media queries to ensure that custom panels are always right-aligned",
+      "comment": "Check: adjusting shouldComponentUpdate to not ignore theme changes.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "kakje@microsoft.com"
+  "email": "dzearing@microsoft.com"
 }

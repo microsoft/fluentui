@@ -57,7 +57,7 @@ export interface IDetailsListState {
   focusedItemIndex: number;
   lastWidth?: number;
   lastSelectionMode?: SelectionMode;
-  adjustedColumns?: IColumn[];
+  adjustedColumns: IColumn[];
   isCollapsed?: boolean;
   isSizing?: boolean;
   isDropping?: boolean;
@@ -176,20 +176,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
   }
 
   public componentWillUnmount(): void {
-    const { onScroll } = this.props;
-    if (onScroll && this._root.current) {
-      this._root.current.removeEventListener('scroll', this._onScroll);
-    }
-
     if (this._dragDropHelper) {
       this._dragDropHelper.dispose();
-    }
-  }
-
-  public componentDidMount(): void {
-    const { onScroll } = this.props;
-    if (onScroll && this._root.current) {
-      this._root.current.addEventListener('scroll', this._onScroll);
     }
   }
 
@@ -292,6 +280,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       dragDropEvents,
       groups,
       groupProps,
+      indentWidth,
       items,
       isHeaderVisible,
       layoutMode,
@@ -409,7 +398,9 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
                   viewport: viewport,
                   columnReorderProps: columnReorderProps,
                   minimumPixelsForDrag: minimumPixelsForDrag,
-                  cellStyleProps: cellStyleProps
+                  cellStyleProps: cellStyleProps,
+                  checkboxVisibility,
+                  indentWidth
                 },
                 this._onRenderDetailsHeader
               )}
@@ -524,6 +515,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       checkboxCellClassName,
       groupProps,
       useReducedRowRenderer,
+      indentWidth,
       cellStyleProps = DEFAULT_CELL_STYLE_PROPS
     } = this.props;
     const collapseAllVisibility = groupProps && groupProps.collapseAllVisibility;
@@ -553,6 +545,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       checkButtonAriaLabel: checkButtonAriaLabel,
       checkboxCellClassName: checkboxCellClassName,
       useReducedRowRenderer: useReducedRowRenderer,
+      indentWidth,
       cellStyleProps: cellStyleProps
     };
 
@@ -578,6 +571,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
   private _onHeaderKeyDown(ev: React.KeyboardEvent<HTMLElement>): void {
     if (ev.which === KeyCodes.down) {
       if (this._focusZone.current && this._focusZone.current.focus()) {
+        // select the first item in list after down arrow key event
+        this._selection.setIndexSelected(0, true, false);
         ev.preventDefault();
         ev.stopPropagation();
       }
@@ -706,7 +701,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     newProps: IDetailsListProps,
     forceUpdate?: boolean,
     resizingColumnIndex?: number
-  ): IColumn[] | undefined {
+  ): IColumn[] {
     const { items: newItems, layoutMode, selectionMode } = newProps;
     let { columns: newColumns } = newProps;
     let { width: viewportWidth } = newProps.viewport!;
@@ -722,7 +717,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
         lastSelectionMode === selectionMode &&
         (!columns || newColumns === columns)
       ) {
-        return undefined;
+        return [];
       }
     } else {
       viewportWidth = this.props.viewport!.width;
@@ -799,10 +794,10 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     props: IDetailsListProps,
     firstIndex: number
   ): IColumn[] {
-    const { selectionMode, checkboxVisibility, groups } = props;
+    const { selectionMode, checkboxVisibility } = props;
     const rowCheckWidth =
       selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden ? CHECKBOX_WIDTH : 0;
-    const groupExpandWidth = groups ? GROUP_EXPAND_WIDTH : 0;
+    const groupExpandWidth = this._getGroupNestingDepth() * GROUP_EXPAND_WIDTH;
     let totalWidth = 0; // offset because we have one less inner padding.
     const availableWidth = viewportWidth - (rowCheckWidth + groupExpandWidth);
     const adjustedColumns: IColumn[] = newColumns.map((column, i) => {
@@ -915,7 +910,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
   }
 
   /**
-   * Call back function when an element in FocusZone becomes active. It will transalate it into item
+   * Call back function when an element in FocusZone becomes active. It will translate it into item
    * and call onActiveItemChanged callback if specified.
    *
    * @private
@@ -968,22 +963,20 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     return itemKey;
   }
 
-  private _onScroll = (e: Event): void => {
-    const { onScroll } = this.props;
-    if (onScroll) {
-      onScroll(e);
-    }
-  };
-
-  private _getDetailsFooterProps(): IDetailsFooterProps | undefined {
+  private _getDetailsFooterProps(): IDetailsFooterProps {
     const { adjustedColumns: columns } = this.state;
-    const detailsFooterProps: IDetailsFooterProps = {
-      columns: columns as IColumn[],
-      groupNestingDepth: this._getGroupNestingDepth(),
-      selection: this._selection
-    };
+
+    const { viewport, checkboxVisibility, indentWidth, cellStyleProps = DEFAULT_CELL_STYLE_PROPS } = this.props;
+
     return {
-      ...detailsFooterProps
+      columns: columns,
+      groupNestingDepth: this._getGroupNestingDepth(),
+      selection: this._selection,
+      selectionMode: this.props.selectionMode,
+      viewport: viewport,
+      checkboxVisibility,
+      indentWidth,
+      cellStyleProps
     };
   }
 
@@ -1003,6 +996,13 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       onRenderHeader: onRenderDetailsGroupHeader
     } = detailsGroupProps;
     const { adjustedColumns: columns } = this.state;
+    const {
+      selectionMode,
+      viewport,
+      cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
+      checkboxVisibility,
+      indentWidth
+    } = this.props;
     const groupNestingDepth = this._getGroupNestingDepth();
     const onRenderFooter = onRenderDetailsGroupFooter
       ? (props: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
@@ -1011,7 +1011,12 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
               ...props,
               columns: columns,
               groupNestingDepth: groupNestingDepth,
-              selection: this._selection
+              indentWidth,
+              selection: this._selection,
+              selectionMode: selectionMode,
+              viewport: viewport,
+              checkboxVisibility,
+              cellStyleProps
             },
             defaultRender
           );
@@ -1025,7 +1030,12 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
               ...props,
               columns: columns,
               groupNestingDepth: groupNestingDepth,
-              selection: this._selection
+              indentWidth,
+              selection: this._selection,
+              selectionMode: selectionMode,
+              viewport: viewport,
+              checkboxVisibility,
+              cellStyleProps
             },
             defaultRender
           );

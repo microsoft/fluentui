@@ -133,7 +133,7 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
 
   private _onRenderLabel = (props: IChoiceGroupOptionProps): JSX.Element => {
     return (
-      <span id={props.labelId} className="ms-Label">
+      <span id={props.labelId} className="ms-ChoiceFieldLabel">
         {props.text}
       </span>
     );

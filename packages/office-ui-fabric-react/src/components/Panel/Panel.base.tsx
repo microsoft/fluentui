@@ -8,7 +8,8 @@ import {
   getNativeProps,
   getRTL,
   createRef,
-  elementContains
+  elementContains,
+  allowScrollOnElement
 } from '../../Utilities';
 import { IProcessedStyleSet, getTheme, IconFontSizes } from '../../Styling';
 import { FocusTrapZone } from '../FocusTrapZone/index';
@@ -39,6 +40,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
   private _panel = createRef<HTMLDivElement>();
   private _content = createRef<HTMLDivElement>();
   private _classNames: IProcessedStyleSet<IPanelStyles>;
+  private _scrollableContent: HTMLDivElement | null;
 
   constructor(props: IPanelProps) {
     super(props);
@@ -180,13 +182,15 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
                 focusTrapZoneProps && !focusTrapZoneProps.isClickableOutsideFocusTrap ? false : true
               }
             >
-              <div className={_classNames.commands} data-is-visible={true}>
-                {onRenderNavigation(this.props, this._onRenderNavigation)}
-              </div>
-              <div className={_classNames.contentInner}>
-                {header}
-                {onRenderBody(this.props, this._onRenderBody)}
-                {onRenderFooter(this.props, this._onRenderFooter)}
+              <div ref={this._allowScrollOnPanel} className={_classNames.scrollableContent}>
+                <div className={_classNames.commands} data-is-visible={true}>
+                  {onRenderNavigation(this.props, this._onRenderNavigation)}
+                </div>
+                <div className={_classNames.contentInner}>
+                  {header}
+                  {onRenderBody(this.props, this._onRenderBody)}
+                  {onRenderFooter(this.props, this._onRenderFooter)}
+                </div>
               </div>
             </FocusTrapZone>
           </div>
@@ -225,6 +229,16 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
         this.props.onDismiss();
       }
     }
+  };
+
+  // Allow the user to scroll within the panel but not on the body
+  private _allowScrollOnPanel = (elt: HTMLDivElement | null): void => {
+    if (elt) {
+      allowScrollOnElement(elt, this._events);
+    } else {
+      this._events.off(this._scrollableContent);
+    }
+    this._scrollableContent = elt;
   };
 
   private _shouldListenForOuterClick(props: IPanelProps): boolean {

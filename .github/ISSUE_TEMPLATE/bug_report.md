@@ -5,6 +5,11 @@ about: Found a bug in Fabric? Please let us know.
 ---
 <!-- Use this template for bug/error reporting only -->
 
+### Please provide a reproduction of the bug in a codepen:
+ 
+<!-- See https://codepen.io/FabricReact/ for a starting template -->
+<!-- See http://codepen.io/dzearing/pens/public/?grid_type=list for a variety of examples -->
+
 ### Bug Report 
  
  <!-- 
@@ -33,7 +38,3 @@ Products/sites affected: (if applicable)
  
 <!-- fill this out -->
  
-### If applicable, please provide a codepen repro:
- 
-<!-- See https://codepen.io/FabricReact/ for a starting template -->
-<!-- See http://codepen.io/dzearing/pens/public/?grid_type=list for a variety of examples -->

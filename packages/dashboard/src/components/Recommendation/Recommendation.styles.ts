@@ -47,7 +47,6 @@ export const getStyles = (): IRecommendationStyles => ({
     display: 'flex',
     justifyContent: 'flex-start',
     flexWrap: 'wrap',
-    maxHeight: '80px',
     textOverflow: 'ellipsis',
     overflow: 'hidden',
     wordWrap: 'break-word'

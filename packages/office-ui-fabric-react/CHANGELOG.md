@@ -1,6 +1,53 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 17 Aug 2018 15:00:40 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Aug 2018 05:10:19 GMT and should not be manually modified.
+
+## 6.52.0
+Wed, 22 Aug 2018 05:10:19 GMT
+
+### Minor changes
+
+- Button: Added labelHovered and fixed menuIconCheckedHovered ButtonStyles
+
+### Patches
+
+- CommandBar: Update documentation page
+- Adding role="Grid" so that VoiceOver within Safari works for Calendar and DatePicker
+
+## 6.51.1
+Tue, 21 Aug 2018 20:36:27 GMT
+
+### Patches
+
+- Sticky: Fix logic when Sticky on first render is at most top position to get it sorted properly.
+
+## 6.51.0
+Tue, 21 Aug 2018 10:28:16 GMT
+
+### Minor changes
+
+- adds variantBorderHovered and emptyStateBackground semantic slots to theme and variants logic
+
+### Patches
+
+- BaseButton: Add onFocusCapture to the split button container to focus the container instead of doing it in the menu onClick
+- ChoiceGroup: change styles so that label styles do not apply to Label components in onRenderField
+- DetailsList: select first row on down arrow key event
+- MaskedTextField: onChange now returns the displayed value vs the entered value
+- Sticky: Fix an edge case causing Sticky footer to wrongly re-calculate it's height.
+
+## 6.50.2
+Mon, 20 Aug 2018 10:26:10 GMT
+
+### Patches
+
+- Don't left-pad DetailsColumn header icons
+- DetailsList: add aria-hidden to select all checkbox in single selectionmode
+- TextField: Fix application of inputClassName lost when component was converted to JS styling.
+- Use role="alert" instead of aria-live="assertive" on error message container for TextField.
+- remove unnecessary export in detailslist
+- Panel: remove selected media queries to ensure that custom panels are always right-aligned
+- Autofill: prevent onInputChange from being called on IE11 inputs with a placeholder
 
 ## 6.50.1
 Fri, 17 Aug 2018 15:00:40 GMT

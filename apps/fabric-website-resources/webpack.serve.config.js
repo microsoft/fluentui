@@ -15,6 +15,7 @@ module.exports = resources.createServeConfig({
 
   resolve: {
     alias: {
+      'office-ui-fabric-react$': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
       'office-ui-fabric-react/src': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
       'office-ui-fabric-react/lib/codepen': path.resolve(
         __dirname,
