@@ -964,7 +964,7 @@ export interface IRawStyleBase extends IRawFontStyle {
    * See CSS jusitfy-self property
    * https://www.w3.org/TR/css-align-3/#propdef-justify-self
    */
-  justifySelf:
+  justifySelf?:
     | ICSSRule
     | 'auto'
     | 'normal'
