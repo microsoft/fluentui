@@ -4,12 +4,11 @@ import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 
 import { KeyCodes, resetIds } from '../../Utilities';
 import { Dropdown } from './Dropdown';
-import { DropdownBase } from './Dropdown.base';
-import { DropdownMenuItemType, IDropdownOption, IDropdown } from './Dropdown.types';
+import { DropdownMenuItemType, IDropdownOption } from './Dropdown.types';
 
 const DEFAULT_OPTIONS: IDropdownOption[] = [
   { key: 'Header1', text: 'Header 1', itemType: DropdownMenuItemType.Header },
@@ -191,18 +190,24 @@ describe('Dropdown', () => {
     it('sets the selected item even when key is number 0', () => {
       const options = [{ key: 0, text: 'item1' }, { key: 1, text: 'item2' }];
       const selectedKey = 0;
-      const dropdown = React.createRef<IDropdown>();
 
-      const wrapper = mount(<Dropdown componentRef={dropdown} options={options} />);
+      const wrapper = shallow(<Dropdown options={options} />);
 
-      expect((dropdown.current as DropdownBase).state.selectedIndices).toEqual([]);
+      // Use .dive() because Dropdown is a decorated component
+      let state = wrapper
+        .dive() // styled
+        .dive() // withResponsiveMode
+        .state('selectedIndices');
+      expect(state).toEqual([]);
 
       const newProps = { options, selectedKey };
-
       wrapper.setProps(newProps);
       wrapper.update();
-
-      expect((dropdown.current as DropdownBase).state.selectedIndices).toEqual([selectedKey]);
+      state = wrapper
+        .dive()
+        .dive()
+        .state('selectedIndices');
+      expect(state).toEqual([selectedKey]);
     });
 
     it('does not issue the onChange callback when the selected item is not different', () => {
@@ -373,17 +378,23 @@ describe('Dropdown', () => {
     it('sets the selected items even when key is number 0', () => {
       const options = [{ key: 0, text: 'item1' }, { key: 1, text: 'item2' }];
       const selectedKeys = [0, 1];
-      const dropdown = React.createRef<IDropdown>();
-      const wrapper = mount(<Dropdown multiSelect componentRef={dropdown} options={options} />);
+
+      const wrapper = shallow(<Dropdown multiSelect options={options} />);
 
       // Use .dive() because Dropdown is a decorated component
-      let state = (dropdown.current as DropdownBase).state.selectedIndices;
+      let state = wrapper
+        .dive() // styled
+        .dive() // withresponsivemode
+        .state('selectedIndices');
       expect(state).toEqual([]);
 
       const newProps = { options, selectedKeys };
       wrapper.setProps(newProps);
       wrapper.update();
-      state = (dropdown.current as DropdownBase).state.selectedIndices;
+      state = wrapper
+        .dive()
+        .dive()
+        .state('selectedIndices');
       expect(state).toEqual(selectedKeys);
     });
 
