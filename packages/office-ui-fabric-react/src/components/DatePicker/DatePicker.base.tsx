@@ -50,7 +50,8 @@ const DEFAULT_STRINGS: IDatePickerStrings = {
   prevMonthAriaLabel: 'Go to previous month',
   nextMonthAriaLabel: 'Go to next month',
   prevYearAriaLabel: 'Go to previous year',
-  nextYearAriaLabel: 'Go to next year'
+  nextYearAriaLabel: 'Go to next year',
+  closeButtonAriaLabel: 'Close date picker'
 };
 
 export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerState> implements IDatePicker {
@@ -84,7 +85,8 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
     showWeekNumbers: false,
     firstWeekOfYear: FirstWeekOfYear.FirstDay,
     showGoToToday: true,
-    dateTimeFormatter: undefined
+    dateTimeFormatter: undefined,
+    showCloseButton: false
   };
 
   private _calendar = createRef<ICalendar>();
@@ -161,6 +163,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
       borderless,
       minDate,
       maxDate,
+      showCloseButton,
       calendarProps
     } = this.props;
     const { isDatePickerShown, formattedDate, selectedDate, errorMessage } = this.state;
@@ -235,6 +238,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
                 minDate={minDate}
                 maxDate={maxDate}
                 componentRef={this._calendar}
+                showCloseButton={showCloseButton}
               />
             </FocusTrapZone>
           </Callout>
