@@ -212,9 +212,20 @@ export interface IRawStyleBase extends IRawFontStyle {
   alignItems?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch';
 
   /**
-   * Allows the default alignment to be overridden for individual flex items.
+   * Aligns the box (as the alignment subject) within its containing block (as the alignment container)
+   * along the block/column/cross axis of the alignment container.
+   *
+   * See CSS align-self property
+   * https://www.w3.org/TR/css-align-3/#propdef-align-self
    */
-  alignSelf?: ICSSRule | 'auto' | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch';
+  alignSelf?:
+    | ICSSRule
+    | 'auto'
+    | 'normal'
+    | 'stretch'
+    | ICSSBaselinePositionRule
+    | ICSSOverflowPositionRule
+    | ICSSSelfPositionRule;
 
   /**
    * This property allows precise alignment of elements, such as graphics, that do not
