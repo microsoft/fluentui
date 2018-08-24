@@ -1,6 +1,193 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 09 Aug 2018 10:31:30 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Aug 2018 17:02:14 GMT and should not be manually modified.
+
+## 6.55.0
+Fri, 24 Aug 2018 17:02:14 GMT
+
+### Minor changes
+
+- Reverting Customizer React 16 context change, while we dig into the Layer portal conversion first. As it is moving to React 16 breaks layer theming, which we believe can only be fixed if we move to portals (which has other issues to investigate.)
+
+## 6.54.1
+Fri, 24 Aug 2018 14:45:24 GMT
+
+### Patches
+
+- Prevent breaking change in DetailsItemProps
+
+## 6.54.0
+Fri, 24 Aug 2018 10:26:08 GMT
+
+### Minor changes
+
+- ColorSlider, ComboBox, Dropdown, Rating, Toggle: add onChange and deprecate onChanged
+
+### Patches
+
+- ChoiceGroup: remove aria-labelledby to prevent accessibility bugs with custom onRenderLabel
+- ContextualMenu: remove line-height 0 styling for lists
+- Fix @types/prop-types being inconsistently restrictive.
+
+## 6.53.0
+Thu, 23 Aug 2018 10:28:17 GMT
+
+### Minor changes
+
+- Pickers: A variety of accessibility and bug fixes
+- Fix Scrollable scroll syncing and header/footer alignment
+
+### Patches
+
+- Check: adjusting shouldComponentUpdate to not ignore theme changes.
+- Modal, Panel: allow scrolling within Modal and Panel while disabling scrolling on the body (ios)
+- DetailsList: Account for grouping depth of more than one in width calculation.
+
+## 6.52.0
+Wed, 22 Aug 2018 05:10:19 GMT
+
+### Minor changes
+
+- Button: Added labelHovered and fixed menuIconCheckedHovered ButtonStyles
+
+### Patches
+
+- CommandBar: Update documentation page
+- Adding role="Grid" so that VoiceOver within Safari works for Calendar and DatePicker
+
+## 6.51.1
+Tue, 21 Aug 2018 20:36:27 GMT
+
+### Patches
+
+- Sticky: Fix logic when Sticky on first render is at most top position to get it sorted properly.
+
+## 6.51.0
+Tue, 21 Aug 2018 10:28:16 GMT
+
+### Minor changes
+
+- adds variantBorderHovered and emptyStateBackground semantic slots to theme and variants logic
+
+### Patches
+
+- BaseButton: Add onFocusCapture to the split button container to focus the container instead of doing it in the menu onClick
+- ChoiceGroup: change styles so that label styles do not apply to Label components in onRenderField
+- DetailsList: select first row on down arrow key event
+- MaskedTextField: onChange now returns the displayed value vs the entered value
+- Sticky: Fix an edge case causing Sticky footer to wrongly re-calculate it's height.
+
+## 6.50.2
+Mon, 20 Aug 2018 10:26:10 GMT
+
+### Patches
+
+- Don't left-pad DetailsColumn header icons
+- DetailsList: add aria-hidden to select all checkbox in single selectionmode
+- TextField: Fix application of inputClassName lost when component was converted to JS styling.
+- Use role="alert" instead of aria-live="assertive" on error message container for TextField.
+- remove unnecessary export in detailslist
+- Panel: remove selected media queries to ensure that custom panels are always right-aligned
+- Autofill: prevent onInputChange from being called on IE11 inputs with a placeholder
+
+## 6.50.1
+Fri, 17 Aug 2018 15:00:40 GMT
+
+### Patches
+
+- Decouple ShimmeredDetailsList from DetailsList
+
+## 6.50.0
+Fri, 17 Aug 2018 10:26:39 GMT
+
+### Minor changes
+
+- Date is no longer selected when click on 'Today'. That behavior is still allowed passing a boolean argument
+
+### Patches
+
+- ChoiceGroup: Fix bug that errors on Array.find as it does not exist in IE11.
+- Replaced black with violet in the personacoin pallette to avoid potential offensive personacoin combinations
+- Panel: add max-width to fixed Panel width styles
+
+## 6.49.4
+Thu, 16 Aug 2018 10:26:16 GMT
+
+### Patches
+
+- Button: fix aria properties so that unit tests pass
+- DetailsList: selectionMode for groups is none if checkboxvisibility is hidden
+- DetailsList: remove related section from demo page
+- FocusZone: Fix Tabbing behavior when in RTL
+- Panel: change click listener to mousedown listener so that Panels aren't dismissed on mouseup
+- Ensure SelectionZone selects item before opening context menu
+
+## 6.49.3
+Wed, 15 Aug 2018 10:26:31 GMT
+
+### Patches
+
+- adding a npm run codepen command to allow for local codepen webpack-dev-server
+
+## 6.49.2
+Tue, 14 Aug 2018 10:27:33 GMT
+
+### Patches
+
+- autogenerate codepenable examples for fabric examples tagged with @codepen 
+- DetailsList: in single select mode maintain role and index, and remove onclick
+
+## 6.49.1
+Tue, 14 Aug 2018 00:01:11 GMT
+
+### Patches
+
+- Fixes checkbox visibility flag in detailslist
+- KeytipLayer Styles: Changed 1px to 0px to hide span
+- TextField: For uncontrolled scenarios, update value when defaultValue changes.
+- Coachmark: Export from index file for use in CodePens.
+- onRender callbacks of PersonaDetail can also be used to wrap the default behaviour
+
+## 6.49.0
+Mon, 13 Aug 2018 03:43:25 GMT
+
+### Minor changes
+
+- new button semantic slots
+- adds opacity function to variants
+- Uniformly export component "Base" implementations.
+
+### Patches
+
+- Improves high contrast mode styles for calendar
+- Adding updateDragInfo for DragEnd event
+- Updating the documentation pages for components to enable the feedback section.
+
+## 6.48.0
+Fri, 10 Aug 2018 10:26:09 GMT
+
+### Minor changes
+
+- Coachmark: Add onDismiss
+- CommandBar: OnClick now properly passes item as well as event
+
+### Patches
+
+- ColorPicker: Update color rectangle when hue value changes
+- autogenerate codepenable examples for fabric examples tagged with @codepen 
+- ComboBox cannot clear value when allowFreeForm enabled. Should trigger onChanged when value is cleared
+- Update components using customizer (including Button variations) to concatenate customizer and component style sets
+- Added optional feedback section for component pages
+- Link: Fix focus border text clipping.
+- TextField: Respect validateOnFocus props when props change.
+- ColorPicker: Limit decimal points shown for alpha.
+- ' Added 2 callback functions for dragstart and drag end events to get the telemetry logs in ODSP-Next'
+- Changing the drophint ICON
+- default render behaviour can be used along with onRenderCoin in Persona component
+- Prettier cleanup.
+- Removed unnecessary heading roles, and added aria-level to those requiring them
+- HoverCard: Adds more documentation and adds a focus stop on root to eliminate an edge case when target is not provided the focus listener was not firing at all.
+- ShimmeredDetailsList: replace a hard coded multiplier with a ratio constant and modify some math logic.
 
 ## 6.47.2
 Thu, 09 Aug 2018 10:31:30 GMT

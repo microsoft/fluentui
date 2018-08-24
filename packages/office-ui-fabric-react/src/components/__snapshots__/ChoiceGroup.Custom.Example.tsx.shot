@@ -71,7 +71,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                 min-height: 26px;
                 position: relative;
               }
-              & .ms-Label {
+              & .ms-ChoiceFieldLabel {
                 display: inline-block;
                 font-size: 14px;
                 padding-left: 26px;
@@ -83,7 +83,6 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
 
           >
             <input
-              aria-labelledby="ChoiceGroupLabel1-A"
               checked={false}
               className=
                   ms-ChoiceField-input
@@ -117,13 +116,13 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                       user-select: none;
                       vertical-align: top;
                     }
-                    &:hover .ms-Label {
+                    &:hover .ms-ChoiceFieldLabel {
                       color: #000000;
                     }
                     &:hover:before {
                       border-color: #212121;
                     }
-                    &:focus .ms-Label {
+                    &:focus .ms-ChoiceFieldLabel {
                       color: #000000;
                     }
                     &:focus:before {
@@ -164,7 +163,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                 htmlFor="ChoiceGroup0-A"
               >
                 <span
-                  className="ms-Label"
+                  className="ms-ChoiceFieldLabel"
                   id="ChoiceGroupLabel1-A"
                 >
                   Mark displayed items as read after
@@ -368,7 +367,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                 min-height: 26px;
                 position: relative;
               }
-              & .ms-Label {
+              & .ms-ChoiceFieldLabel {
                 display: inline-block;
                 font-size: 14px;
                 padding-left: 26px;
@@ -380,7 +379,6 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
 
           >
             <input
-              aria-labelledby="ChoiceGroupLabel1-B"
               checked={true}
               className=
                   ms-ChoiceField-input
@@ -412,13 +410,13 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                     user-select: none;
                     vertical-align: top;
                   }
-                  &:hover .ms-Label {
+                  &:hover .ms-ChoiceFieldLabel {
                     color: #000000;
                   }
                   &:hover:before {
                     border-color: #106ebe;
                   }
-                  &:focus .ms-Label {
+                  &:focus .ms-ChoiceFieldLabel {
                     color: #000000;
                   }
                   &:focus:before {
@@ -469,7 +467,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
               htmlFor="ChoiceGroup0-B"
             >
               <span
-                className="ms-Label"
+                className="ms-ChoiceFieldLabel"
                 id="ChoiceGroupLabel1-B"
               >
                 Option B
@@ -492,7 +490,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                 min-height: 26px;
                 position: relative;
               }
-              & .ms-Label {
+              & .ms-ChoiceFieldLabel {
                 display: inline-block;
                 font-size: 14px;
                 padding-left: 26px;
@@ -504,7 +502,6 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
 
           >
             <input
-              aria-labelledby="ChoiceGroupLabel1-C"
               checked={false}
               className=
                   ms-ChoiceField-input
@@ -570,7 +567,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                     transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                     width: 0px;
                   }
-                  & .ms-Label {
+                  & .ms-ChoiceFieldLabel {
                     color: #c8c8c8;
                   }
                   @media screen and (-ms-high-contrast: active){& {
@@ -579,7 +576,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
               htmlFor="ChoiceGroup0-C"
             >
               <span
-                className="ms-Label"
+                className="ms-ChoiceFieldLabel"
                 id="ChoiceGroupLabel1-C"
               >
                 Option C
@@ -602,7 +599,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                 min-height: 26px;
                 position: relative;
               }
-              & .ms-Label {
+              & .ms-ChoiceFieldLabel {
                 display: inline-block;
                 font-size: 14px;
                 padding-left: 26px;
@@ -614,7 +611,6 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
 
           >
             <input
-              aria-labelledby="ChoiceGroupLabel1-D"
               checked={false}
               className=
                   ms-ChoiceField-input
@@ -645,13 +641,13 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                     user-select: none;
                     vertical-align: top;
                   }
-                  &:hover .ms-Label {
+                  &:hover .ms-ChoiceFieldLabel {
                     color: #000000;
                   }
                   &:hover:before {
                     border-color: #212121;
                   }
-                  &:focus .ms-Label {
+                  &:focus .ms-ChoiceFieldLabel {
                     color: #000000;
                   }
                   &:focus:before {
@@ -692,7 +688,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
               htmlFor="ChoiceGroup0-D"
             >
               <span
-                className="ms-Label"
+                className="ms-ChoiceFieldLabel"
                 id="ChoiceGroupLabel1-D"
               >
                 Option D

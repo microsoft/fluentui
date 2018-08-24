@@ -85,7 +85,26 @@ export function getNeutralVariant(theme: IPartialTheme): ITheme {
     bodyStandoutBackground: p.neutralLight,
     bodyFrameBackground: !fullTheme.isInverted ? p.neutralLight : p.neutralLighter,
     bodyFrameDivider: !fullTheme.isInverted ? p.neutralLight : p.neutralQuaternary,
-    variantBorder: !fullTheme.isInverted ? p.neutralQuaternaryAlt : p.neutralLighterAlt
+    variantBorder: !fullTheme.isInverted ? p.neutralQuaternaryAlt : p.neutralLighterAlt,
+    variantBorderHovered: p.neutralTertiary,
+    defaultStateBackground: p.neutralQuaternaryAlt,
+
+    buttonBackground: p.neutralLighter,
+    buttonBackgroundHovered: p.neutralLight,
+    buttonBackgroundPressed: p.neutralQuaternaryAlt,
+    buttonBorder: p.neutralSecondary,
+    buttonText: p.neutralPrimary,
+    buttonTextHovered: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary,
+    buttonTextPressed: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary,
+    buttonTextDisabled: p.neutralQuaternary,
+    buttonBorderDisabled: p.neutralQuaternary,
+    primaryButtonBackground: p.themePrimary,
+    primaryButtonBackgroundHovered: p.themeDarkAlt,
+    primaryButtonBackgroundPressed: p.themeDark,
+    primaryButtonBorder: 'transparent',
+    primaryButtonText: p.white,
+    primaryButtonTextHovered: p.white,
+    primaryButtonTextPressed: p.white
   };
 
   return makeThemeFromPartials(theme, partialPalette, partialSemantic);
@@ -148,7 +167,29 @@ export function getSoftVariant(theme: IPartialTheme): ITheme {
     // inputBackgroundCheckedHovered: p.themeDarkAlt,
     inputForegroundChecked: p.themeLighter,
     // inputFocusBorderAlt: p.themePrimary,
-    variantBorder: !fullTheme.isInverted ? p.neutralLight : p.neutralLighterAlt
+    variantBorder: !fullTheme.isInverted ? p.neutralLight : p.neutralLighterAlt,
+    variantBorderHovered: p.neutralTertiary,
+    defaultStateBackground: !fullTheme.isInverted ? p.themeLight : p.themeTertiary,
+
+    buttonBackground: !fullTheme.isInverted ? p.themeLighterAlt : p.themeLight,
+    buttonBackgroundHovered: !fullTheme.isInverted ? p.themeLighter : p.themeTertiary,
+    // buttonBackgroundHovered: !fullTheme.isInverted
+    //   ? p.themeLighter
+    // : updateA(getColorFromString(p.themeTertiary), 50).str,
+    buttonBackgroundPressed: !fullTheme.isInverted ? p.themeLight : p.themeTertiary,
+    buttonBorder: p.neutralSecondary,
+    buttonText: !fullTheme.isInverted ? p.neutralPrimary : p.themePrimary,
+    buttonTextHovered: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary,
+    buttonTextPressed: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary,
+    buttonTextDisabled: !fullTheme.isInverted ? p.themeLight : p.themeTertiary,
+    buttonBorderDisabled: !fullTheme.isInverted ? p.themeLight : p.themeTertiary,
+    primaryButtonBackground: p.themePrimary,
+    primaryButtonBackgroundHovered: p.themeDarkAlt,
+    primaryButtonBackgroundPressed: p.themeDark,
+    primaryButtonBorder: 'transparent',
+    primaryButtonText: p.white,
+    primaryButtonTextHovered: p.white,
+    primaryButtonTextPressed: p.white
   };
 
   return makeThemeFromPartials(theme, partialPalette, partialSemantic);
@@ -219,7 +260,26 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
     // inputBackgroundCheckedHovered: p.themePrimary,
     inputForegroundChecked: p.themeDark,
     // inputFocusBorderAlt: p.themePrimary,
-    variantBorder: p.themeDark
+    variantBorder: p.themeDark,
+    variantBorderHovered: p.themeDarker,
+    defaultStateBackground: p.themeDark,
+
+    buttonBackground: p.white,
+    buttonBackgroundHovered: !fullTheme.isInverted ? p.themeLighter : p.themeLight,
+    buttonBackgroundPressed: !fullTheme.isInverted ? p.themeLight : p.themeTertiary,
+    buttonBorder: 'transparent',
+    buttonText: !fullTheme.isInverted ? p.themePrimary : p.neutralPrimary,
+    buttonTextHovered: !fullTheme.isInverted ? p.themePrimary : p.neutralPrimary,
+    buttonTextPressed: !fullTheme.isInverted ? p.themePrimary : p.neutralPrimary,
+    buttonTextDisabled: !fullTheme.isInverted ? p.themeLight : p.themeTertiary,
+    buttonBorderDisabled: !fullTheme.isInverted ? p.themeLight : p.themeTertiary,
+    primaryButtonBackground: p.themePrimary,
+    primaryButtonBackgroundHovered: p.themeDarkAlt,
+    primaryButtonBackgroundPressed: p.themeDark,
+    primaryButtonBorder: p.white,
+    primaryButtonText: p.white,
+    primaryButtonTextHovered: p.white,
+    primaryButtonTextPressed: p.white
   };
 
   // Strong variant is unique here, we've redefined the entire palette and are

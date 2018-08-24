@@ -26,44 +26,44 @@ export class StackHorizontalAlignExample extends React.Component<IStackExamplePr
       <VerticalStack gap={5}>
         <Text size="xSmall">Left-aligned</Text>
         <HorizontalStack horizontalAlign="left" gap={10} padding={padding} className={style}>
-          <Text size="tiny">Item One</Text>
-          <Text size="tiny">Item Two</Text>
-          <Text size="tiny">Item Three</Text>
+          <Text size="mini">Item One</Text>
+          <Text size="mini">Item Two</Text>
+          <Text size="mini">Item Three</Text>
         </HorizontalStack>
 
         <Text size="xSmall">Horizontally centered</Text>
         <HorizontalStack horizontalAlign="center" gap={10} padding={padding} className={style}>
-          <Text size="tiny">Item One</Text>
-          <Text size="tiny">Item Two</Text>
-          <Text size="tiny">Item Three</Text>
+          <Text size="mini">Item One</Text>
+          <Text size="mini">Item Two</Text>
+          <Text size="mini">Item Three</Text>
         </HorizontalStack>
 
         <Text size="xSmall">Right-aligned</Text>
         <HorizontalStack horizontalAlign="right" gap={10} padding={padding} className={style}>
-          <Text size="tiny">Item One</Text>
-          <Text size="tiny">Item Two</Text>
-          <Text size="tiny">Item Three</Text>
+          <Text size="mini">Item One</Text>
+          <Text size="mini">Item Two</Text>
+          <Text size="mini">Item Three</Text>
         </HorizontalStack>
 
         <Text size="xSmall">Horizontal space around items</Text>
         <HorizontalStack horizontalAlign="space-around" padding={padding} className={style}>
-          <Text size="tiny">Item One</Text>
-          <Text size="tiny">Item Two</Text>
-          <Text size="tiny">Item Three</Text>
+          <Text size="mini">Item One</Text>
+          <Text size="mini">Item Two</Text>
+          <Text size="mini">Item Three</Text>
         </HorizontalStack>
 
         <Text size="xSmall">Horizontal space between items</Text>
         <HorizontalStack horizontalAlign="space-between" padding={padding} className={style}>
-          <Text size="tiny">Item One</Text>
-          <Text size="tiny">Item Two</Text>
-          <Text size="tiny">Item Three</Text>
+          <Text size="mini">Item One</Text>
+          <Text size="mini">Item Two</Text>
+          <Text size="mini">Item Three</Text>
         </HorizontalStack>
 
         <Text size="xSmall">Items horizontally evenly spaced</Text>
         <HorizontalStack horizontalAlign="space-evenly" padding={padding} className={style}>
-          <Text size="tiny">Item One</Text>
-          <Text size="tiny">Item Two</Text>
-          <Text size="tiny">Item Three</Text>
+          <Text size="mini">Item One</Text>
+          <Text size="mini">Item Two</Text>
+          <Text size="mini">Item Three</Text>
         </HorizontalStack>
       </VerticalStack>
     );

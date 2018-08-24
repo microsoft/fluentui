@@ -137,21 +137,17 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
       }
 
       this._id = newProps.id || this._id;
-      this._latestValue = newProps.value;
-      this.setState(
-        {
-          value: newProps.value || DEFAULT_STATE_VALUE,
-          errorMessage: ''
-        } as ITextFieldState,
-        () => {
-          this._adjustInputHeight();
-        }
-      );
+      this._setValue(newProps.value);
 
       const { validateOnFocusIn, validateOnFocusOut } = newProps;
       if (!(validateOnFocusIn || validateOnFocusOut)) {
         this._delayedValidate(newProps.value);
       }
+    }
+
+    // If component is not currently controlled and defaultValue changes, set value to new defaultValue.
+    if (newProps.defaultValue !== this.props.defaultValue && newProps.value === undefined) {
+      this._setValue(newProps.defaultValue);
     }
   }
 
@@ -167,6 +163,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
       disabled,
       iconClass,
       iconProps,
+      inputClassName,
       label,
       multiline,
       required,
@@ -199,7 +196,8 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
       resizable,
       hasIcon: !!iconProps,
       underlined,
-      iconClass
+      iconClass,
+      inputClassName
     });
 
     // If a custom description render function is supplied then treat description as always available.
@@ -228,7 +226,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
           <span id={this._descriptionId}>
             {onRenderDescription(this.props, this._onRenderDescription)}
             {errorMessage && (
-              <div aria-live="assertive">
+              <div role="alert">
                 <DelayedRender>
                   <p className={this._classNames.errorMessage}>
                     <span data-automation-id="error-message">{errorMessage}</span>
@@ -301,6 +299,19 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
     if (this._textElement.current) {
       (this._textElement.current as HTMLInputElement).setSelectionRange(start, end);
     }
+  }
+
+  private _setValue(value?: string) {
+    this._latestValue = value;
+    this.setState(
+      {
+        value: value || DEFAULT_STATE_VALUE,
+        errorMessage: ''
+      } as ITextFieldState,
+      () => {
+        this._adjustInputHeight();
+      }
+    );
   }
 
   private _onFocus(ev: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>): void {

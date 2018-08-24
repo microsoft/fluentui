@@ -58,5 +58,6 @@ export const FocusTrapZonePageProps: IDocPageProps = {
   dos: '',
   donts: '',
   isHeaderVisible: true,
+  isFeedbackVisible: true,
   allowNativeProps: true
 };

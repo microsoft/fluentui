@@ -1,6 +1,35 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Fri, 03 Aug 2018 10:25:59 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Aug 2018 10:26:08 GMT and should not be manually modified.
+
+## 6.18.0
+Fri, 24 Aug 2018 10:26:08 GMT
+
+### Minor changes
+
+- Adjustments to the internal typography interfaces.
+
+## 6.17.0
+Tue, 21 Aug 2018 10:28:16 GMT
+
+### Minor changes
+
+- adds variantBorderHovered and emptyStateBackground semantic slots to theme and variants logic
+
+## 6.16.0
+Mon, 13 Aug 2018 03:43:25 GMT
+
+### Minor changes
+
+- new button semantic slots
+- adds opacity function to variants
+
+## 6.15.0
+Fri, 10 Aug 2018 10:26:09 GMT
+
+### Minor changes
+
+- Updating `ITypography` interface with improvements. Note this is an experimental interface we're working on.
 
 ## 6.14.0
 Fri, 03 Aug 2018 10:25:59 GMT

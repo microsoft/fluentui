@@ -1,6 +1,13 @@
 # Change Log - @uifabric/webpack-utils
 
-This log was last generated on Mon, 16 Jul 2018 10:27:18 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Aug 2018 10:27:33 GMT and should not be manually modified.
+
+## 0.7.2
+Tue, 14 Aug 2018 10:27:33 GMT
+
+### Patches
+
+- exposing codepen examples, disabling codepen tasks in packages != ouifr
 
 ## 0.7.1
 Mon, 16 Jul 2018 10:27:18 GMT

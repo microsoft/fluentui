@@ -1,4 +1,4 @@
-import { IDataPoint } from '@uifabric/charting/lib/VerticalBarChart';
+import { IChartProps as IChartingProps, IDataPoint, ILegendDataItem } from '@uifabric/charting/lib/StackedBarChart';
 
 export enum ChartType {
   DonutChart,
@@ -37,12 +37,12 @@ export interface IChartProps {
   /**
    * Label to apply to the whole chart.
    */
-  chartLabel?: string;
+  chartLabels?: string[];
 
   /**
    * Colors from which to select the color of each bar.
    */
-  colors?: string[];
+  legendColors?: ILegendDataItem[];
 
   /**
    * Width of each bar in the chart (only for vertical bar chart)
@@ -65,9 +65,32 @@ export interface IChartProps {
   data?: IDataPoint[][];
 
   /**
+   * Data for the dataviz
+   */
+  chartData?: IChartingProps[];
+
+  /**
+   * This property tells whether to show ratio on top of stacked bar chart or not.
+   */
+  hideRatio?: boolean[];
+
+  /**
    * Type of chart to render
    */
   chartType: ChartType;
+
+  /**
+   * custom width for a compact chart
+   *
+   * @default 250
+   */
+  compactChartWidth?: number;
+
+  /**
+   * text to display when the chart
+   * was last updated
+   */
+  chartUpdatedOn?: string;
 
   /**
    * Width of each stroke in the line chart

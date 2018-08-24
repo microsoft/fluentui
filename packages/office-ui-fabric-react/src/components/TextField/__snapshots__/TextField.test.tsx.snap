@@ -4,6 +4,7 @@ exports[`TextField renders TextField correctly 1`] = `
 <div
   className=
       ms-TextField
+      testClassName
       {
         box-shadow: none;
         box-sizing: border-box;
@@ -96,6 +97,7 @@ exports[`TextField renders TextField correctly 1`] = `
         aria-label={undefined}
         className=
             ms-TextField-field
+            testInputClassName
             {
               background-color: transparent;
               background: none;
@@ -651,7 +653,7 @@ exports[`TextField renders multiline TextField correctly with errorMessage 1`] =
     id="TextFieldDescription1"
   >
     <div
-      aria-live="assertive"
+      role="alert"
     />
   </span>
 </div>
@@ -884,7 +886,7 @@ exports[`TextField renders multiline TextField correctly with props affecting st
     id="TextFieldDescription1"
   >
     <div
-      aria-live="assertive"
+      role="alert"
     />
   </span>
 </div>
@@ -1119,7 +1121,7 @@ exports[`TextField should resepect user component and subcomponent styling 1`] =
     id="TextFieldDescription1"
   >
     <div
-      aria-live="assertive"
+      role="alert"
     />
   </span>
 </div>

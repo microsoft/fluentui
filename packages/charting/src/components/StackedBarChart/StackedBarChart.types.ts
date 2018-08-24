@@ -2,15 +2,13 @@ import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface IStackedBarChart {}
-import { IDataPoint } from '../../types/IDataPoint';
-
-export { IDataPoint } from '../../types/IDataPoint';
+import { IChartProps } from './index';
 
 export interface IStackedBarChartProps {
   /**
    * Data to render in the chart.
    */
-  data?: IDataPoint[];
+  data?: IChartProps;
 
   /**
    * Width of the chart.
@@ -18,24 +16,24 @@ export interface IStackedBarChartProps {
   width?: number;
 
   /**
-   * Height of the chart.
-   */
-  height?: number;
-
-  /**
    * Height of each bar in the chart.
    */
   barHeight?: number;
 
   /**
-   * Colors from which to select the color of each bar.
+   * Do not show the legend at the bottom of chart
+   * when there are more than two datapoints
+   *
+   * @default false
    */
-  colors?: string[];
+  hideLegend?: boolean;
 
   /**
-   * Title to apply to the whole chart.
+   * Do not show number/ratio on top of bar
+   *
+   * @default false
    */
-  chartTitle?: string;
+  hideNumberDisplay?: boolean;
 
   /**
    * Additional CSS class(es) to apply to the StackedBarChart.
@@ -51,6 +49,8 @@ export interface IStackedBarChartProps {
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IStackedBarChartStyleProps, IStackedBarChartStyles>;
+
+  isMultiStackedBarChart?: boolean;
 }
 
 export interface IStackedBarChartStyleProps {
@@ -70,14 +70,11 @@ export interface IStackedBarChartStyleProps {
   width: number;
 
   /**
-   * Height of the chart.
-   */
-  height: number;
-
-  /**
    * Height of bar in the chart.
    */
   barHeight?: number;
+
+  isMultiStackedBarChart?: boolean;
 }
 
 export interface IStackedBarChartStyles {
@@ -97,27 +94,7 @@ export interface IStackedBarChartStyles {
   chartTitle: IStyle;
 
   /**
-   * Style for the element containing all the bars in the chart.
+   * Style for the legend container div
    */
-  bars: IStyle;
-  /**
-   * Style for the element containing all the Legends in the chart.
-   */
-  legend: IStyle;
-  /**
-   * Style for the element subTitle.
-   */
-  subTitle: IStyle;
-  /**
-   * Style for the element value.
-   */
-  value: IStyle;
-  /**
-   * Style for the legend  bars.
-   */
-  legendBar: IStyle;
-  /**
-   * Style for the legend text.
-   */
-  legendText: IStyle;
+  legendContainer: IStyle;
 }

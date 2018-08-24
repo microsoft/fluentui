@@ -102,7 +102,7 @@ describe('ComboBox', () => {
         label="testgroup"
         options={DEFAULT_OPTIONS}
         allowFreeform={true}
-        onChanged={returnUndefined}
+        onChange={returnUndefined}
         componentRef={setRef}
       />
     );
@@ -384,7 +384,7 @@ describe('ComboBox', () => {
         autoComplete="on"
         allowFreeform={true}
         // tslint:disable-next-line:jsx-no-lambda
-        onChanged={(option?: IComboBoxOption, index?: number) => {
+        onChange={(event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => {
           updatedOption = option;
           updatedIndex = index;
           executionCount++;
@@ -424,14 +424,14 @@ describe('ComboBox', () => {
     const wrapper = mount(
       <ComboBox
         label="testgroup"
-        options={ DEFAULT_OPTIONS }
+        options={DEFAULT_OPTIONS}
         autoComplete="off"
-        allowFreeform={ true }
+        allowFreeform={true}
         text="hikari"
         // tslint:disable-next-line:jsx-no-lambda
-        onChanged={ (option?: IComboBoxOption, index?: number, value?: string) => {
+        onChange={(event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => {
           updatedText = value;
-        } }
+        }}
       />
     );
 

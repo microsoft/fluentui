@@ -1,51 +1,30 @@
 import { IStackedBarChartStyleProps, IStackedBarChartStyles } from './StackedBarChart.types';
 
 export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartStyles => {
-  const { className, width, height } = props;
-
-  const chartWidth = width;
-  const chartPadding = 10;
-  const chartHeight = height;
+  const { className, width, barHeight, isMultiStackedBarChart } = props;
   return {
     root: [
       'ms-StackedBarChart',
       {
-        width: chartWidth + 2 * chartPadding
+        width: width ? width : '100%',
+        display: 'flex',
+        flexDirection: 'column'
       },
       className
     ],
-    chart: [
-      {
-        padding: chartPadding,
-        width: chartWidth,
-        height: chartHeight,
-        boxSizing: 'content-box'
-      }
-    ],
-    chartTitle: [
-      {
-        padding: chartPadding,
-        display: 'flex'
-      }
-    ],
-    bars: [],
-    legend: [
-      {
-        listStyle: 'none',
-        display: 'flex',
-        flexWrap: 'wrap',
-        paddingLeft: '30px',
-        paddingRight: '30px'
-      }
-    ],
-    subTitle: [{ width: '100%' }],
-    value: [
-      {
-        width: '100%',
-        textAlign: 'right'
-      }
-    ],
-    legendBar: [{ display: 'flex', padding: '10px 10px 0px 0px' }],
-    legendText: [{ marginTop: '-5px', paddingLeft: '5px' }]
+    chart: {
+      width: '100%',
+      height: barHeight,
+      marginBottom: isMultiStackedBarChart ? '' : '13px'
+    },
+    chartTitle: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      marginBottom: '5px',
+      fontSize: '12px'
+    },
+    legendContainer: {
+      paddingTop: '4px'
+    }
   };
 };

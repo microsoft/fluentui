@@ -3,11 +3,13 @@ import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet
 import {
   RecommendationBasicExample,
   RecommendationDlpExample,
-  RecommendationPasswordSettingsExample
+  RecommendationPasswordSettingsExample,
+  RecommendationMultiStackedBarChartExample
 } from './examples/index';
 const RecommendationExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Recommendation/examples/Recommendation.Basic.Example.tsx') as string;
 
 const DlpRecommendationCode = require('!raw-loader!@uifabric/dashboard/src/components/Recommendation/examples/Recommendation.DLP.Example.tsx') as string;
+const DlpStackedBarChartCode = require('!raw-loader!@uifabric/dashboard/src/components/Recommendation/examples/Recommendation.MultiStackedBarChart.Example.tsx') as string;
 
 const PasswordSettingsRecommendationCode = require('!raw-loader!@uifabric/dashboard/src/components/Recommendation/examples/Recommendation.PasswordSettings.Example.tsx') as string;
 
@@ -24,6 +26,9 @@ export class RecommendationPage extends React.Component<IComponentDemoPageProps,
             </ExampleCard>
             <ExampleCard title="DLP Recommendation Card (Data Visualization Example)" code={DlpRecommendationCode}>
               <RecommendationDlpExample />
+            </ExampleCard>
+            <ExampleCard title="DLP Recommendation Card (StackedBarChart Example)" code={DlpStackedBarChartCode}>
+              <RecommendationMultiStackedBarChartExample />
             </ExampleCard>
             <ExampleCard
               title="Password Settings Recommendation Card (Image Illustration Example)"

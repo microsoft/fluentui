@@ -45,5 +45,6 @@ export const NavPageProps: IDocPageProps = {
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Nav/docs/NavDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Nav/docs/NavDonts.md'),
-  isHeaderVisible: true
+  isHeaderVisible: true,
+  isFeedbackVisible: true
 };

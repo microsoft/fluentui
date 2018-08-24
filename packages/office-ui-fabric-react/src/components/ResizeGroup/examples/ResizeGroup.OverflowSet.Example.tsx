@@ -110,7 +110,7 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
             <Dropdown
               label="Number of items to render"
               selectedKey={numberOfItems.toString()}
-              onChanged={this._onNumberOfItemsChanged}
+              onChange={this._onNumberOfItemsChanged}
               options={[
                 { key: '20', text: '20' },
                 { key: '30', text: '30' },
@@ -169,7 +169,7 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
     this.setState({ buttonsChecked: checked });
   };
 
-  private _onNumberOfItemsChanged = (option: IDropdownOption): void => {
+  private _onNumberOfItemsChanged = (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
     this.setState({ numberOfItems: parseInt(option.text, 10) });
   };
 }

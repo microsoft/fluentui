@@ -71,6 +71,8 @@ export interface IDocPageProps {
     /** Working example of the example */
     view: JSX.Element;
 
+    isScrollable?: boolean;
+
     /** JS String for codepen of the example */
     codepenJS?: string;
   }[];
