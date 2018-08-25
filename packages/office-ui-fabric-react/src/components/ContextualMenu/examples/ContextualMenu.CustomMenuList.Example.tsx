@@ -71,6 +71,8 @@ export class ContextualMenuWithCustomMenuListExample extends React.Component<
     super(props);
 
     this._renderMenuList = this._renderMenuList.bind(this);
+    this._onAbort = this._onAbort.bind(this);
+    this._onChange = this._onChange.bind(this);
 
     this.state = {
       items: ITEMS
