@@ -2,7 +2,7 @@ import * as React from 'react';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IDonutChartProps, IDonutChartStyleProps, IDonutChartStyles } from './DonutChart.types';
 import { Pie } from './Pie/Pie';
-import { ILegend, Legends } from '@uifabric/charting';
+import { ILegend, Legends } from '../Legends/index';
 import * as scale from 'd3-scale';
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { IChartDataPoint, IChartProps } from './index';
