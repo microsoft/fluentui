@@ -144,15 +144,14 @@ export function createComponent<
       //    merging user props and processed props together. This ensures all props are passed properly to view,
       //    including children and styles.
       const propStyles = processedProps.styles || userProps.styles;
-      const themedProps: TProcessedProps = { ...rest, ...(userProps as any), ...(processedProps as any) };
+      const mergedProps: TProcessedProps = { ...rest, ...(processedProps as any), ...(userProps as any) };
       const viewProps: IViewComponentProps<TProcessedProps, TProcessedStyleSet> = {
-        ...(processedProps as any),
-        ...(userProps as any),
+        ...(mergedProps as any),
         ...{
           classNames: providers.mergeStyleSets(
-            _evaluateStyle(themedProps, options.styles),
-            _evaluateStyle(themedProps, contextStyles),
-            _evaluateStyle(themedProps, propStyles)
+            _evaluateStyle(mergedProps, options.styles),
+            _evaluateStyle(mergedProps, contextStyles),
+            _evaluateStyle(mergedProps, propStyles)
           )
         }
       };
@@ -199,14 +198,14 @@ export function createStatelessComponent<
 
     const content = (processedProps: TProcessedProps) => {
       const { styles: propStyles } = processedProps;
-      const themedProps: TProcessedProps = { ...rest, ...(processedProps as any) };
+      const mergedProps: TProcessedProps = { ...rest, ...(processedProps as any) };
       const viewProps: IViewComponentProps<TProcessedProps, TProcessedStyleSet> = {
-        ...(processedProps as any),
+        ...(mergedProps as any),
         ...{
           classNames: providers.mergeStyleSets(
-            _evaluateStyle(themedProps, options.styles),
-            _evaluateStyle(themedProps, contextStyles),
-            _evaluateStyle(themedProps, propStyles)
+            _evaluateStyle(mergedProps, options.styles),
+            _evaluateStyle(mergedProps, contextStyles),
+            _evaluateStyle(mergedProps, propStyles)
           )
         }
       };
