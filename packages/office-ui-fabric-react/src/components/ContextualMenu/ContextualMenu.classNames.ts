@@ -1,5 +1,5 @@
 import { getDividerClassNames } from '../Divider/VerticalDivider.classNames';
-import { getMenuItemStyles } from './ContextualMenu.cnstyles';
+import { getMenuItemStyles, getStyles as getContextualMenuStyles } from './ContextualMenu.cnstyles';
 import { ITheme, mergeStyleSets, getGlobalClassNames } from '../../Styling';
 import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
 import { memoizeFunction } from '../../Utilities';
@@ -42,6 +42,31 @@ export const getSplitButtonVerticalDividerClassNames = memoizeFunction(
         height: 16,
         width: 1
       }
+    });
+  }
+);
+
+export const getContextualMenuClassNames = memoizeFunction(
+  (theme: ITheme, className?: string): IContextualMenuClassNames => {
+    const styles = getContextualMenuStyles(theme);
+
+    return mergeStyleSets({
+      container: [
+        'ms-ContextualMenu-container',
+        styles.container,
+        className,
+        [
+          {
+            selectors: {
+              ':focus': { outline: 0 }
+            }
+          }
+        ]
+      ],
+      root: ['ms-ContextualMenu is-open', styles.root],
+      list: ['ms-ContextualMenu-list is-open', styles.list],
+      header: ['ms-ContextualMenu-header', styles.header],
+      title: styles.title
     });
   }
 );

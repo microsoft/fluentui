@@ -8,7 +8,11 @@ import {
 } from './ContextualMenu.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection, IFocusZoneProps, FocusZoneTabbableElements } from '../../FocusZone';
-import { IMenuItemClassNames, IContextualMenuClassNames } from './ContextualMenu.classNames';
+import {
+  IMenuItemClassNames,
+  IContextualMenuClassNames,
+  getContextualMenuClassNames
+} from './ContextualMenu.classNames';
 
 import {
   assign,
@@ -213,7 +217,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
       calloutProps,
       onRenderSubMenu = this._onRenderSubMenu,
       focusZoneProps,
-      getMenuClassNames
+      getMenuClassNames = getContextualMenuClassNames
     } = this.props;
 
     this._classNames = getMenuClassNames
