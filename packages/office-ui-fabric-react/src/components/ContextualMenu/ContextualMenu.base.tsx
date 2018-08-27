@@ -8,7 +8,8 @@ import {
 } from './ContextualMenu.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection, IFocusZoneProps, FocusZoneTabbableElements } from '../../FocusZone';
-import { IMenuItemClassNames, getItemClassNames } from './ContextualMenu.classNames';
+import { IMenuItemClassNames, IContextualMenuClassNames } from './ContextualMenu.classNames';
+
 import {
   assign,
   BaseComponent,
@@ -20,7 +21,6 @@ import {
   getLastFocusable,
   getRTL,
   getWindow,
-  IClassNames,
   IPoint,
   KeyCodes,
   shouldWrapFocus
@@ -35,8 +35,13 @@ import {
   ContextualMenuButton,
   ContextualMenuAnchor
 } from './ContextualMenuItemWrapper/index';
+import { IProcessedStyleSet } from '../../Styling';
+import { IContextualMenuItemStyleProps, IContextualMenuItemStyles } from './ContextualMenuItem.types';
+
+import { getItemClassNames as getItemStyles } from './ContextualMenu.classNames';
 
 const getClassNames = classNamesFunction<IContextualMenuStyleProps, IContextualMenuStyles>();
+const getItemClassNames = classNamesFunction<IContextualMenuItemStyleProps, IContextualMenuItemStyles>();
 
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;
@@ -98,7 +103,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
   private _adjustedFocusZoneProps: IFocusZoneProps;
 
-  private _classNames: IClassNames<IContextualMenuStyles>;
+  private _classNames: IProcessedStyleSet<IContextualMenuStyles> | IContextualMenuClassNames;
 
   constructor(props: IContextualMenuProps) {
     super(props);
@@ -107,6 +112,10 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
       contextualMenuItems: undefined,
       subMenuId: getId('ContextualMenu')
     };
+
+    this._warnDeprecations({
+      getMenuClassNames: 'styles'
+    });
 
     this._isFocusingPreviousElement = false;
     this._isScrollIdle = true;
@@ -382,20 +391,40 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     // We only send a dividerClassName when the item to be rendered is a divider. For all other cases, the default divider style is used.
     const dividerClassName = item.itemType === ContextualMenuItemType.Divider ? item.className : undefined;
     const subMenuIconClassName = item.submenuIconProps ? item.submenuIconProps.className : '';
-    const getTheItemClassNames = item.getItemClassNames || getItemClassNames;
-    const itemClassNames = getTheItemClassNames(
-      this.props.theme!,
-      isItemDisabled(item),
-      this.state.expandedMenuItemKey === item.key,
-      !!getIsChecked(item),
-      !!item.href,
-      iconProps.iconName !== 'None',
-      item.className,
-      dividerClassName,
-      iconProps.className,
-      subMenuIconClassName,
-      item.primaryDisabled
-    );
+
+    let itemClassNames: IMenuItemClassNames;
+
+    // IContextualMenuItem#getItemClassNames for backwards compatibility
+    // otherwise uses mergeStyles for class names.
+    if (item.getItemClassNames) {
+      itemClassNames = item.getItemClassNames(
+        this.props.theme!,
+        isItemDisabled(item),
+        this.state.expandedMenuItemKey === item.key,
+        !!getIsChecked(item),
+        !!item.href,
+        iconProps.iconName !== 'None',
+        item.className,
+        dividerClassName,
+        iconProps.className,
+        subMenuIconClassName,
+        item.primaryDisabled
+      );
+    } else {
+      itemClassNames = getItemClassNames(getItemStyles, {
+        theme: this.props.theme!,
+        disabled: isItemDisabled(item),
+        expanded: this.state.expandedMenuItemKey === item.key,
+        checked: !!getIsChecked(item),
+        isAnchorLink: !!item.href,
+        knownIcon: iconProps.iconName !== 'None',
+        itemClassName: item.className,
+        dividerClassName,
+        iconClassName: iconProps.className,
+        subMenuClassName: subMenuIconClassName,
+        primaryDisabled: item.primaryDisabled
+      });
+    }
 
     if (item.text === '-' || item.name === '-') {
       item.itemType = ContextualMenuItemType.Divider;

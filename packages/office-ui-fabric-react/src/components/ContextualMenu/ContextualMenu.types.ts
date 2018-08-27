@@ -202,7 +202,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
   /**
    * Method to provide the classnames to style the contextual menu. Default value is the getMenuClassnames func
    * defined in ContextualMenu.classnames.
-   * @default getContextualMenuClassNames
+   * @deprecated Use `styles` prop of `IContextualMenuProps` to leverage mergeStyle API.
    */
   getMenuClassNames?: (theme: ITheme, className?: string) => IContextualMenuClassNames;
 
@@ -351,9 +351,8 @@ export interface IContextualMenuItem {
   subMenuProps?: IContextualMenuProps;
 
   /**
-   * Method to provide the classnames to style the individual items inside a menu. Default value is the getItemClassnames func
-   * defined in ContextualMenu.classnames.
-   * @default getItemClassNames
+   * Method to provide the classnames to style the individual items inside a menu.
+   * @deprecated Use `styles` prop of `IContextualMenuItemProps` to leverage mergeStyle API.
    */
   getItemClassNames?: (
     theme: ITheme,
@@ -390,6 +389,7 @@ export interface IContextualMenuItem {
   /**
    * Additional styles to apply to the menu item
    * @defaultvalue undefined
+   * @deprecated in favor of mergeStyles API.
    */
   style?: React.CSSProperties;
 
