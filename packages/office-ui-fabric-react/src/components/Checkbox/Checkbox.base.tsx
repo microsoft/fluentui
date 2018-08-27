@@ -68,7 +68,8 @@ export class CheckboxBase extends BaseComponent<ICheckboxProps, ICheckboxState> 
       ariaPositionInSet,
       ariaSetSize,
       keytipProps,
-      title
+      title,
+      id
     } = this.props;
 
     const isChecked = checked === undefined ? this.state.isChecked : checked;
@@ -94,7 +95,7 @@ export class CheckboxBase extends BaseComponent<ICheckboxProps, ICheckboxState> 
             disabled={disabled}
             ref={this._checkBox}
             name={name}
-            id={this._id}
+            id={id ? id : this._id}
             role="checkbox"
             type="button"
             title={title}
