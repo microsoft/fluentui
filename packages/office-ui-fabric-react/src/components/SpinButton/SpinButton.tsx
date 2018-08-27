@@ -44,13 +44,6 @@ export interface ISpinButtonState {
    * The calculated precision for the value.
    */
   precision: number;
-
-  /**
-   * When a typed value is validated and committed by some means other than onBlur, this should be true
-   * to prevent a duplicate submission if onBlur immediately follows the commit. It should be set to false
-   * When the value input changes again, whether by typing or spinning, or when onBlur finally occurs
-   */
-  submissionPending: boolean;
 }
 
 @customizable('SpinButton', ['theme', 'styles'], true)
@@ -71,6 +64,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   private _labelId: string;
   private _lastValidValue: string;
   private _spinningByMouse: boolean;
+  private _valueToValidate: string | undefined; // To avoid duplicate validations/submissions
 
   private _currentStepFunctionHandle: number;
   private _initialStepDelay = 400;
@@ -93,14 +87,14 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       isFocused: false,
       value: value,
       keyboardSpinDirection: KeyboardSpinDirection.notSpinning,
-      precision,
-      submissionPending: false
+      precision
     };
 
     this._currentStepFunctionHandle = -1;
     this._labelId = getId('Label');
     this._inputId = getId('input');
     this._spinningByMouse = false;
+    this._valueToValidate = undefined;
   }
 
   /**
@@ -267,7 +261,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
 
   private _onBlur = (ev: React.FocusEvent<HTMLInputElement>): void => {
     this._validate(ev);
-    this.setState({ isFocused: false, submissionPending: false });
+    this.setState({ isFocused: false });
     if (this.props.onBlur) {
       this.props.onBlur(ev);
     }
@@ -280,9 +274,9 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     return this.props.value === undefined ? this.state.value : this.props.value;
   }
 
-  private _onValidate = (value: string, keyBoardEvent?: React.KeyboardEvent<HTMLElement>): string | void => {
+  private _onValidate = (value: string, event?: React.SyntheticEvent<HTMLElement>): string | void => {
     if (this.props.onValidate) {
-      return this.props.onValidate(value, keyBoardEvent);
+      return this.props.onValidate(value, event);
     } else {
       return this._defaultOnValidate(value);
     }
@@ -349,14 +343,16 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * @param event - the event that fired
    */
   private _validate = (event: React.FocusEvent<HTMLInputElement> | React.KeyboardEvent<HTMLInputElement>): void => {
-    const element: HTMLInputElement = event.target as HTMLInputElement;
-    const value: string = element.value;
-    if (this.state.value !== undefined && !this.state.submissionPending) {
-      const kbEvent: React.KeyboardEvent<HTMLElement> = event as React.KeyboardEvent<HTMLElement>;
-      const newValue = this._onValidate!(value, kbEvent);
+    if (
+      this.state.value !== undefined &&
+      this._valueToValidate !== undefined &&
+      this._valueToValidate !== this._lastValidValue
+    ) {
+      const newValue = this._onValidate!(this._valueToValidate, event);
       if (newValue) {
         this._lastValidValue = newValue;
-        this.setState({ value: newValue, submissionPending: true });
+        this._valueToValidate = undefined;
+        this.setState({ value: newValue });
       }
     }
   };
@@ -369,10 +365,9 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   private _onInputChange = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     const element: HTMLInputElement = event.target as HTMLInputElement;
     const value: string = element.value;
-
+    this._valueToValidate = value;
     this.setState({
-      value: value,
-      submissionPending: false
+      value: value
     });
   };
 
@@ -390,7 +385,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     const newValue: string | void = stepFunction(this.state.value);
     if (newValue) {
       this._lastValidValue = newValue;
-      this.setState({ value: newValue, submissionPending: false });
+      this.setState({ value: newValue });
     }
 
     if (this._spinningByMouse !== shouldSpin) {
