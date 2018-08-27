@@ -43,7 +43,7 @@ const highContrastItemAndTitleStateMixin: IRawStyle = {
     [HighContrastSelector]: {
       backgroundColor: 'Highlight',
       borderColor: 'Highlight',
-      color: 'Highlight'
+      color: 'HighlightText'
     },
     ...highContrastAdjustMixin
   }
