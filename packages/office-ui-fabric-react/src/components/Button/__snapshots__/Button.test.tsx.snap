@@ -16,7 +16,6 @@ exports[`Button renders ActionButton correctly 1`] = `
         -webkit-font-smoothing: antialiased;
         background-color: transparent;
         border-radius: 0px;
-        border: none;
         box-sizing: border-box;
         color: #333333;
         cursor: pointer;
@@ -582,7 +581,6 @@ exports[`Button renders IconButton correctly 1`] = `
         -webkit-font-smoothing: antialiased;
         background-color: transparent;
         border-radius: 0px;
-        border: none;
         box-sizing: border-box;
         cursor: pointer;
         display: inline-block;

@@ -340,7 +340,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: none;
                 box-sizing: border-box;
                 cursor: pointer;
                 display: inline-block;
@@ -461,7 +460,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: none;
                 box-sizing: border-box;
                 cursor: pointer;
                 display: inline-block;
@@ -582,7 +580,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: none;
                 box-sizing: border-box;
                 cursor: pointer;
                 display: inline-block;

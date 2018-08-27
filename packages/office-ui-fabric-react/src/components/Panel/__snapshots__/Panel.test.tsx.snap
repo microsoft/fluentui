@@ -135,7 +135,6 @@ exports[`Panel renders Panel correctly 1`] = `
                     -webkit-font-smoothing: antialiased;
                     background-color: transparent;
                     border-radius: 0px;
-                    border: none;
                     box-sizing: border-box;
                     color: #666666;
                     cursor: pointer;
