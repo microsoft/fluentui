@@ -1,5 +1,6 @@
 import { IContextualMenuStyleProps, IContextualMenuStyles } from './ContextualMenu.types';
 import { getGlobalClassNames, FontWeights } from '../../Styling';
+import { ContextualMenuItemHeight } from './ContextualMenu.cnstyles';
 
 const GlobalClassNames = {
   root: 'ms-ContextualMenu',
@@ -15,8 +16,6 @@ export const getStyles = (props: IContextualMenuStyleProps): IContextualMenuStyl
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const { palette, fonts, semanticColors } = theme;
-
-  const ContextualMenuItemHeight = '32px';
 
   return {
     root: [
