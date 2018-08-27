@@ -8,7 +8,7 @@ export const IsFocusVisibleClassName = 'ms-Fabric--isFocusVisible';
  *
  * 1. Subscribes keydown and mousedown events. (It will only do it once per window,
  *    so it's safe to call this method multiple times.)
- * 2. When the user presses directional keyboard keys, adds the 'is-focusVisible' classname
+ * 2. When the user presses directional keyboard keys, adds the 'ms-Fabric--isFocusVisible' classname
  *    to the document body.
  * 3. When the user clicks a mouse button, we remove the classname if it exists.
  *
