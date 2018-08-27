@@ -170,6 +170,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             background-color: transparent;
             border-radius: 0px;
+            border: none;
             box-sizing: border-box;
             color: #666666;
             cursor: default;
@@ -461,6 +462,7 @@ exports[`ComboBox renders a ComboBox with a Keytip correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             background-color: transparent;
             border-radius: 0px;
+            border: none;
             box-sizing: border-box;
             color: #666666;
             cursor: default;
