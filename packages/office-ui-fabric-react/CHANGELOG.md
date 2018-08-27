@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 22 Aug 2018 11:23:37 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Aug 2018 11:28:29 GMT and should not be manually modified.
+
+## 5.122.1
+Mon, 27 Aug 2018 11:28:29 GMT
+
+### Patches
+
+- 'Cherry picking drophint ICON changes for column drag and drop'
 
 ## 5.122.0
 Wed, 22 Aug 2018 11:23:37 GMT
