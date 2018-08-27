@@ -51,7 +51,7 @@
     "@uifabric/foundation": ">=0.4.0 <1.0.0",
     "@uifabric/icons": ">=6.1.0 <7.0.0",
     "deep-assign": "^2.0.0",
-    "office-ui-fabric-react": ">=6.55.0 <7.0.0",
+    "office-ui-fabric-react": ">=6.56.0 <7.0.0",
     "tslib": "^1.7.1"
   },
   "peerDependencies": {

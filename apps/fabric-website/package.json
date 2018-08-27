@@ -45,7 +45,7 @@
     "@uifabric/icons": ">=6.1.0 <7.0.0",
     "color-functions": "1.1.0",
     "json-loader": "^0.5.7",
-    "office-ui-fabric-react": ">=6.55.0 <7.0.0",
+    "office-ui-fabric-react": ">=6.56.0 <7.0.0",
     "tslib": "^1.7.1"
   }
 }

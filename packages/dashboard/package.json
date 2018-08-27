@@ -8,7 +8,7 @@
     "@uifabric/experiments": ">=6.27.0 <7.0.0",
     "auto-fontsize": "^1.0.9",
     "css-loader": "^0.15.1",
-    "office-ui-fabric-react": ">=6.55.0 <7.0.0",
+    "office-ui-fabric-react": ">=6.56.0 <7.0.0",
     "react-grid-layout": "samiyaakhtar/react-grid-layout",
     "style-loader": "^0.21.0"
   },

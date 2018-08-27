@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 24 Aug 2018 17:02:14 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Aug 2018 10:27:43 GMT and should not be manually modified.
+
+## 6.56.0
+Mon, 27 Aug 2018 10:27:43 GMT
+
+### Minor changes
+
+- Adds an optional close button to the DatePicker
+- Convert all SCSS styles in panel to JS Styles
 
 ## 6.55.0
 Fri, 24 Aug 2018 17:02:14 GMT

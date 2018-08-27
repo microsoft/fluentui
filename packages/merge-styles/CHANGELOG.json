@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.8.0",
+      "tag": "@uifabric/merge-styles_v6.8.0",
+      "date": "Mon, 27 Aug 2018 10:27:43 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "redoz <redoz@redoz.com>",
+            "commit": "74e6bf8a7a78dc703193473bc0395511929ef72b",
+            "comment": "Adds support for 'justifySelf' which is needed to align items in CSS Grid."
+          }
+        ]
+      }
+    },
+    {
       "version": "6.7.0",
       "tag": "@uifabric/merge-styles_v6.7.0",
       "date": "Mon, 30 Jul 2018 10:27:11 GMT",
