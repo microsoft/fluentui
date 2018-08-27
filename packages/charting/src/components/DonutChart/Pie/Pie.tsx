@@ -3,6 +3,7 @@ import * as shape from 'd3-shape';
 import { IPieProps } from './Pie.types';
 import { Arc } from '../Arc/Arc';
 import { IArcData } from '../Arc/Arc.types';
+import { IChartDataPoint } from '../index';
 
 export class Pie extends React.Component<IPieProps, {}> {
   public static defaultProps: Partial<IPieProps> = {
@@ -14,11 +15,23 @@ export class Pie extends React.Component<IPieProps, {}> {
         return d.data;
       })
   };
+  constructor(props: IPieProps) {
+    super(props);
+    this._hoverCallback = this._hoverCallback.bind(this);
+  }
 
   public arcGenerator = (d: IArcData, i: number): JSX.Element => {
     const color = d && d.data && d.data.color;
     return (
-      <Arc key={i} data={d} innerRadius={this.props.innerRadius} outerRadius={this.props.outerRadius} color={color!} />
+      <Arc
+        key={i}
+        data={d}
+        innerRadius={this.props.innerRadius}
+        outerRadius={this.props.outerRadius}
+        color={color!}
+        hoverOnCallback={this._hoverCallback}
+        hoverLeaveCallback={this.props.hoverLeaveCallback}
+      />
     );
   };
 
@@ -33,5 +46,8 @@ export class Pie extends React.Component<IPieProps, {}> {
         <g transform={translate}>{piechart.map((d: IArcData, i: number) => this.arcGenerator(d, i))}</g>
       </svg>
     );
+  }
+  private _hoverCallback(data: IChartDataPoint): void {
+    this.props.hoverOnCallback!(data);
   }
 }

@@ -49,6 +49,7 @@ export interface ILegend {
    * Defines the function that is executed on clicking this legend
    */
   action?: VoidFunction;
+  onHover?: Function;
 
   /**
    * The color for the legend
@@ -79,6 +80,10 @@ export interface ILegendsProps {
    * Theme (provided through customization.)
    */
   theme?: ITheme;
+
+  onHover?: Function;
+
+  onHoverLeave?: Function;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.

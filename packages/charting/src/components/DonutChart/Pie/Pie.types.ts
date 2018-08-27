@@ -27,6 +27,9 @@ export interface IPieProps {
    */
   // tslint:disable:no-any
   pie?: any;
+
+  hoverOnCallback?: Function;
+  hoverLeaveCallback?: Function;
 }
 
 export interface IPieStyles {

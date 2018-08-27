@@ -78,4 +78,5 @@ export interface IDonutChartStyles {
   legendContainer: {
     paddingTop: '4px';
   };
+  hover: IStyle;
 }

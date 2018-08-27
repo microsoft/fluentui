@@ -42,6 +42,14 @@ export const getStyles = (props: IDonutChartStyleProps): IDonutChartStyles => {
     ],
     legendContainer: {
       paddingTop: '4px'
+    },
+    hover: {
+      height: '76px',
+      width: '143px',
+      fontSize: '28px',
+      color: '#0078D7',
+      fontFamily: 'Segoe UI',
+      fontWeight: 'bold'
     }
   };
 };

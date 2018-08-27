@@ -149,6 +149,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   };
 
   private _onLeave = () => {
+    this.props.onHoverLeave!();
     if (!this.state.selectedState) {
       this.setState({ hoverState: false, selectedLegend: 'none' });
     }
@@ -170,6 +171,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       this._onClick(legend);
     };
     const onHoverHandler = () => {
+      this.props.onHover!(legend.title);
       this._onHoverOverLegend(legend);
     };
     return (

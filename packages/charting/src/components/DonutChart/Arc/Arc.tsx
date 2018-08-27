@@ -3,19 +3,18 @@ import * as shape from 'd3-shape';
 import { IArcProps, IArcStyles } from './Arc.types';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { getStyles } from './Arc.styles';
-import { Callout } from 'office-ui-fabric-react/lib/Callout';
+import { IChartDataPoint } from '../index';
 
 export class Arc extends React.Component<IArcProps, { isCalloutVisible: boolean }> {
   public static defaultProps: Partial<IArcProps> = {
     arc: shape.arc()
   };
-  private _hoverCard: SVGPathElement | null;
+  // private _hoverCard: SVGPathElement | null;
   constructor(props: IArcProps) {
     super(props);
     this.state = {
       isCalloutVisible: false
     };
-    this._hoverOn = this._hoverOn.bind(this);
     this._hoverOff = this._hoverOff.bind(this);
   }
 
@@ -40,35 +39,20 @@ export class Arc extends React.Component<IArcProps, { isCalloutVisible: boolean 
     return (
       <g>
         <path
+          id={'donutchart' + this.props.data!.data.legend + this.props.data!.data.data}
           d={arc(this.props.data)}
           className={classNames.root}
-          onMouseOver={this._hoverOn}
+          onMouseOver={this._hoverOn.bind(this, this.props.data!.data)}
           onMouseLeave={this._hoverOff}
-          ref={(hoverCard: SVGPathElement | null) => (this._hoverCard = hoverCard)}
+          // ref={(hoverCard: SVGPathElement | null) => (this._hoverCard = hoverCard)}
         />
-        {this.state.isCalloutVisible ? (
-          <Callout
-            target={this._hoverCard}
-            className="ms-CalloutExample-callout"
-            coverTarget={true}
-            isBeakVisible={false}
-            gapSpace={0}
-          >
-            <div className={classNames.hover}>
-              <p className="ms-CalloutExample-title">{this.props.data!.data.data}</p>
-            </div>
-            <div className="ms-CalloutExample-inner">
-              <div className="ms-CalloutExample-content" />
-            </div>
-          </Callout>
-        ) : null}
       </g>
     );
   }
-  private _hoverOn(): void {
-    this.setState({ isCalloutVisible: true });
+  private _hoverOn(data: IChartDataPoint): void {
+    this.props.hoverOnCallback!(data);
   }
   private _hoverOff(): void {
-    this.setState({ isCalloutVisible: false });
+    this.props.hoverLeaveCallback!();
   }
 }

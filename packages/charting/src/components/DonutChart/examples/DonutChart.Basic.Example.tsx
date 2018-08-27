@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DonutChart, IDonutChartProps, IChartProps, IChartDataPoint } from '@uifabric/charting/lib/DonutChart';
+import { DonutChart, IDonutChartProps, IChartProps, IChartDataPoint } from '../../DonutChart';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export class DonutChartBasicExample extends React.Component<IDonutChartProps, {}> {
@@ -9,7 +9,7 @@ export class DonutChartBasicExample extends React.Component<IDonutChartProps, {}
 
   public render(): JSX.Element {
     const points: IChartDataPoint[] = [
-      { legend: 'first', data: 40, color: DefaultPalette.blue },
+      { legend: 'first', data: 20, color: DefaultPalette.blue },
       { legend: 'second', data: 20, color: DefaultPalette.red }
     ];
 

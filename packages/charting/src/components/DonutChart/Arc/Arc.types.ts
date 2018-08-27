@@ -24,6 +24,10 @@ export interface IArcProps {
    * Color for the Arc.
    */
   color: string;
+
+  hoverOnCallback?: Function;
+
+  hoverLeaveCallback?: Function;
 }
 
 export interface IArcData {
