@@ -25,7 +25,7 @@ function getChoiceGroupFocusStyle(palette: Partial<IPalette>, hasIconOrImage?: b
     'is-inFocus',
     {
       selectors: {
-        '.ms-Fabric.is-focusVisible &': {
+        '.ms-Fabric--isFocusVisible &': {
           position: 'relative',
           outline: 'transparent',
           selectors: {
