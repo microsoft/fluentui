@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/merge-styles",
+      "comment": "Adds missing CSS property values for 'align-self' in `IRawStyle` type definition.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/merge-styles",
+  "email": "patrik@themediaexchange.nl"
+}
