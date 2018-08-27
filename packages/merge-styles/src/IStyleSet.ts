@@ -6,7 +6,7 @@ export type Diff<T extends keyof any, U extends keyof any> = ({ [P in T]: P } &
 
 export type Omit<U, K extends keyof U> = Pick<U, Diff<keyof U, K>>;
 
-export type TrimToFunction<T> = T extends (...args: any[]) => any ? T : never;
+export type TrimToFunction<T> = T extends (...args: any[]) => any ? T : () => T;
 
 /**
  * A style set is a dictionary of display areas to IStyle objects.
