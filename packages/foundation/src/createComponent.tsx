@@ -74,7 +74,6 @@ export interface IStylingProviders<TViewProps, TStyleSet, TProcessedStyleSet, TC
   mergeStyleSets: (...styles: (Partial<TStyleSet> | undefined)[]) => TProcessedStyleSet;
   getCustomizations: (scope: string, context: TContext) => IStyleableComponent<TViewProps, TStyleSet, TTheme>;
   // TODO: remove any if possible
-  // tslint:disable-next-line:no-any
   CustomizableContextTypes: any;
 }
 
@@ -145,19 +144,18 @@ export function createComponent<
       //    merging user props and processed props together. This ensures all props are passed properly to view,
       //    including children and styles.
       const propStyles = processedProps.styles || userProps.styles;
-      const themedProps: TProcessedProps = Object.assign({}, rest, userProps, processedProps);
-      const viewProps: IViewComponentProps<TProcessedProps, TProcessedStyleSet> = Object.assign(
-        {},
-        processedProps,
-        userProps,
-        {
+      const themedProps: TProcessedProps = { ...rest, ...(userProps as any), ...(processedProps as any) };
+      const viewProps: IViewComponentProps<TProcessedProps, TProcessedStyleSet> = {
+        ...(processedProps as any),
+        ...(userProps as any),
+        ...{
           classNames: providers.mergeStyleSets(
             _evaluateStyle(themedProps, options.styles),
             _evaluateStyle(themedProps, contextStyles),
             _evaluateStyle(themedProps, propStyles)
           )
         }
-      );
+      };
 
       // TODO: consider rendering view as JSX component with display name in debug mode to aid in debugging
       return options.view(viewProps);
@@ -169,7 +167,7 @@ export function createComponent<
   result.contextTypes = providers.CustomizableContextTypes;
   result.displayName = options.displayName;
 
-  Object.assign(result, options.statics);
+  _assignStatics(result, options.statics);
 
   // Later versions of TypeSript should allow us to merge objects in a type safe way and avoid this cast.
   return result as React.StatelessComponent<TComponentProps> & TStatics;
@@ -201,14 +199,17 @@ export function createStatelessComponent<
 
     const content = (processedProps: TProcessedProps) => {
       const { styles: propStyles } = processedProps;
-      const themedProps: TProcessedProps = Object.assign({}, rest, processedProps);
-      const viewProps: IViewComponentProps<TProcessedProps, TProcessedStyleSet> = Object.assign({}, processedProps, {
-        classNames: providers.mergeStyleSets(
-          _evaluateStyle(themedProps, options.styles),
-          _evaluateStyle(themedProps, contextStyles),
-          _evaluateStyle(themedProps, propStyles)
-        )
-      });
+      const themedProps: TProcessedProps = { ...rest, ...(processedProps as any) };
+      const viewProps: IViewComponentProps<TProcessedProps, TProcessedStyleSet> = {
+        ...(processedProps as any),
+        ...{
+          classNames: providers.mergeStyleSets(
+            _evaluateStyle(themedProps, options.styles),
+            _evaluateStyle(themedProps, contextStyles),
+            _evaluateStyle(themedProps, propStyles)
+          )
+        }
+      };
 
       // TODO: consider rendering view as JSX component with display name in debug mode to aid in debugging
       return options.view(viewProps);
@@ -219,10 +220,31 @@ export function createStatelessComponent<
 
   result.contextTypes = providers.CustomizableContextTypes;
   result.displayName = options.displayName;
-  Object.assign(result, options.statics);
+
+  _assignStatics(result, options.statics);
 
   // Later versions of TypeSript should allow us to merge objects in a type safe way and avoid this cast.
   return result as React.StatelessComponent<TComponentProps> & TStatics;
+}
+
+/**
+ * Basic Object.assign helper for applying source object to target.
+ * @param target Target object to merge into.
+ * @param source Source object that will be mixed into target.
+ * @returns Resulting merged target.
+ */
+function _assignStatics(target: any, source: any): any {
+  target = target || {};
+
+  if (source) {
+    for (const propName in source) {
+      if (source.hasOwnProperty(propName)) {
+        target[propName] = source[propName];
+      }
+    }
+  }
+
+  return target;
 }
 
 /**
