@@ -143,15 +143,18 @@ export function createComponent<
       // The approach here is to allow state components to provide only the props they care about, automatically
       //    merging user props and processed props together. This ensures all props are passed properly to view,
       //    including children and styles.
+      // TODO: Should 'rest' props from customizations pass onto view? They are not currently.
+      //          (items like theme seem like they shouldn't)
       const propStyles = processedProps.styles || userProps.styles;
-      const mergedProps: TProcessedProps = { ...rest, ...(processedProps as any), ...(userProps as any) };
+      const styleProps: TProcessedProps = { ...rest, ...(processedProps as any), ...(userProps as any) };
       const viewProps: IViewComponentProps<TProcessedProps, TProcessedStyleSet> = {
-        ...(mergedProps as any),
+        ...(processedProps as any),
+        ...(userProps as any),
         ...{
           classNames: providers.mergeStyleSets(
-            _evaluateStyle(mergedProps, options.styles),
-            _evaluateStyle(mergedProps, contextStyles),
-            _evaluateStyle(mergedProps, propStyles)
+            _evaluateStyle(styleProps, options.styles),
+            _evaluateStyle(styleProps, contextStyles),
+            _evaluateStyle(styleProps, propStyles)
           )
         }
       };
@@ -197,15 +200,17 @@ export function createStatelessComponent<
     const { styles: contextStyles, ...rest } = settings;
 
     const content = (processedProps: TProcessedProps) => {
+      // TODO: Should 'rest' props from customizations pass onto view? They are not currently.
+      //          (items like theme seem like they shouldn't)
       const { styles: propStyles } = processedProps;
-      const mergedProps: TProcessedProps = { ...rest, ...(processedProps as any) };
+      const styleProps: TProcessedProps = { ...rest, ...(processedProps as any) };
       const viewProps: IViewComponentProps<TProcessedProps, TProcessedStyleSet> = {
-        ...(mergedProps as any),
+        ...(processedProps as any),
         ...{
           classNames: providers.mergeStyleSets(
-            _evaluateStyle(mergedProps, options.styles),
-            _evaluateStyle(mergedProps, contextStyles),
-            _evaluateStyle(mergedProps, propStyles)
+            _evaluateStyle(styleProps, options.styles),
+            _evaluateStyle(styleProps, contextStyles),
+            _evaluateStyle(styleProps, propStyles)
           )
         }
       };
