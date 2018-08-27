@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/styling",
-      "comment": "Adjustments to the internal typography interfaces.",
+      "comment": "Added ScreenWidthMinUhfMobile constant",
       "type": "minor"
     }
   ],
   "packageName": "@uifabric/styling",
-  "email": "dzearing@microsoft.com"
+  "email": "v-brgarl@microsoft.com"
 }

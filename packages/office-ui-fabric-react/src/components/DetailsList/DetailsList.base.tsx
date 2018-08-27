@@ -288,7 +288,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       onItemContextMenu,
       onColumnHeaderClick,
       onColumnHeaderContextMenu,
-      selectionMode,
+      selectionMode = this._selection.mode,
       selectionPreservedOnEmptyClick,
       selectionZoneProps,
       ariaLabel,
@@ -378,10 +378,10 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
               onRenderDetailsHeader(
                 {
                   componentRef: this._header,
-                  selectionMode: selectionMode!,
+                  selectionMode: selectionMode,
                   layoutMode: layoutMode!,
                   selection: selection,
-                  columns: adjustedColumns as IColumn[],
+                  columns: adjustedColumns,
                   onColumnClick: onColumnHeaderClick,
                   onColumnContextMenu: onColumnHeaderContextMenu,
                   onColumnResized: this._onColumnResized,
@@ -966,13 +966,19 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
   private _getDetailsFooterProps(): IDetailsFooterProps {
     const { adjustedColumns: columns } = this.state;
 
-    const { viewport, checkboxVisibility, indentWidth, cellStyleProps = DEFAULT_CELL_STYLE_PROPS } = this.props;
+    const {
+      viewport,
+      checkboxVisibility,
+      indentWidth,
+      cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
+      selectionMode = this._selection.mode
+    } = this.props;
 
     return {
       columns: columns,
       groupNestingDepth: this._getGroupNestingDepth(),
       selection: this._selection,
-      selectionMode: this.props.selectionMode,
+      selectionMode: selectionMode,
       viewport: viewport,
       checkboxVisibility,
       indentWidth,

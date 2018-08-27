@@ -2,6 +2,25 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "6.18.0",
+      "tag": "@uifabric/styling_v6.18.0",
+      "date": "Fri, 24 Aug 2018 10:26:08 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "f0d8c9072cdcdef320ef8c2564dec4a24daaa58b",
+            "comment": "Adjustments to the internal typography interfaces."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.15.0 <7.0.0` to `>=6.15.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.17.0",
       "tag": "@uifabric/styling_v6.17.0",
       "date": "Tue, 21 Aug 2018 10:28:16 GMT",

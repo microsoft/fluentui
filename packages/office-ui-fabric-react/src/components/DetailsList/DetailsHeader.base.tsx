@@ -3,7 +3,7 @@ import { findDOMNode } from 'react-dom';
 import { BaseComponent, css, getRTL, getId, KeyCodes, IRenderFunction, createRef, IClassNames } from '../../Utilities';
 import {
   IColumn,
-  IDetailsHeaderProps,
+  IDetailsHeaderBaseProps,
   IColumnDragDropDetails,
   ColumnDragEndLocation,
   IColumnReorderOptions
@@ -32,6 +32,8 @@ const getClassNames = classNamesFunction<IDetailsHeaderStyleProps, IDetailsHeade
 const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
 const MOUSEMOVE_PRIMARY_BUTTON = 1; // for mouse move event we are using ev.buttons property, 1 means left button
 
+const NO_COLUMNS: IColumn[] = [];
+
 export interface IDetailsHeader {
   focus: () => boolean;
 }
@@ -44,7 +46,7 @@ export interface IDetailsHeaderState {
   isAllCollapsed?: boolean;
 }
 
-export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderProps, IDetailsHeaderState>
+export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, IDetailsHeaderState>
   implements IDetailsHeader {
   public static defaultProps = {
     selectAllVisibility: SelectAllVisibility.visible,
@@ -67,7 +69,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderProps, IDetai
     sourceIndex: number;
     targetIndex: number;
   };
-  constructor(props: IDetailsHeaderProps) {
+  constructor(props: IDetailsHeaderBaseProps) {
     super(props);
     this._columnReorderProps =
       props.columnReorderProps ||
@@ -120,7 +122,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderProps, IDetai
     }
   }
 
-  public componentDidUpdate(prevProps: IDetailsHeaderProps): void {
+  public componentDidUpdate(prevProps: IDetailsHeaderBaseProps): void {
     this._columnReorderProps =
       this.props.columnReorderProps ||
       (this.props.columnReorderOptions && getLegacyColumnReorderProps(this.props.columnReorderOptions));
@@ -139,10 +141,9 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderProps, IDetai
     }
 
     if (this.props !== prevProps && this._onDropIndexInfo.sourceIndex >= 0 && this._onDropIndexInfo.targetIndex >= 0) {
-      if (
-        prevProps.columns[this._onDropIndexInfo.sourceIndex].key ===
-        this.props.columns[this._onDropIndexInfo.targetIndex].key
-      ) {
+      const { columns: previousColumns = NO_COLUMNS } = prevProps;
+      const { columns = NO_COLUMNS } = this.props;
+      if (previousColumns[this._onDropIndexInfo.sourceIndex].key === columns[this._onDropIndexInfo.targetIndex].key) {
         this._onDropIndexInfo = {
           sourceIndex: Number.MIN_SAFE_INTEGER,
           targetIndex: Number.MIN_SAFE_INTEGER
@@ -151,7 +152,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderProps, IDetai
     }
   }
 
-  public componentWillReceiveProps(newProps: IDetailsHeaderProps): void {
+  public componentWillReceiveProps(newProps: IDetailsHeaderBaseProps): void {
     const { groupNestingDepth } = this.state;
 
     if (newProps.groupNestingDepth !== groupNestingDepth) {
@@ -168,7 +169,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderProps, IDetai
 
   public render(): JSX.Element {
     const {
-      columns,
+      columns = NO_COLUMNS,
       ariaLabel,
       ariaLabelForSelectAllCheckbox,
       selectAllVisibility,
@@ -432,7 +433,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderProps, IDetai
   }
 
   private _getDropHintPositions = (): void => {
-    const { columns } = this.props;
+    const { columns = NO_COLUMNS } = this.props;
     const columnReorderProps = this._columnReorderProps;
     let prevX = 0;
     let prevMid = 0;
@@ -497,7 +498,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderProps, IDetai
           return;
         }
       }
-      const { columns } = this.props;
+      const { columns = NO_COLUMNS } = this.props;
       const columnReorderProps = this._columnReorderProps;
       const frozenColumnCountFromStart =
         columnReorderProps && columnReorderProps.frozenColumnCountFromStart
@@ -576,8 +577,8 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderProps, IDetai
   }
 
   private _renderColumnSizer(columnIndex: number): JSX.Element {
-    const { columns } = this.props;
-    const column = this.props.columns[columnIndex];
+    const { columns = NO_COLUMNS } = this.props;
+    const column = columns[columnIndex];
     const { columnResizeDetails } = this.state;
     const classNames = this._classNames;
 
@@ -640,7 +641,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderProps, IDetai
    * @param {React.MouseEvent} ev (mouse double click event)
    */
   private _onSizerDoubleClick(columnIndex: number, ev: React.MouseEvent<HTMLElement>): void {
-    const { onColumnAutoResized, columns } = this.props;
+    const { onColumnAutoResized, columns = NO_COLUMNS } = this.props;
     if (onColumnAutoResized) {
       onColumnAutoResized(columns[columnIndex], columnIndex);
     }
@@ -660,7 +661,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderProps, IDetai
   private _onRootMouseDown = (ev: MouseEvent): void => {
     const columnIndexAttr = (ev.target as HTMLElement).getAttribute('data-sizer-index');
     const columnIndex = Number(columnIndexAttr);
-    const { columns } = this.props;
+    const { columns = NO_COLUMNS } = this.props;
 
     if (columnIndexAttr === null || ev.button !== MOUSEDOWN_PRIMARY_BUTTON) {
       // Ignore anything except the primary button.
@@ -698,7 +699,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderProps, IDetai
 
   private _onRootKeyDown = (ev: KeyboardEvent): void => {
     const { columnResizeDetails, isSizing } = this.state;
-    const { columns, onColumnResized } = this.props;
+    const { columns = NO_COLUMNS, onColumnResized } = this.props;
 
     const columnIndexAttr = (ev.target as HTMLElement).getAttribute('data-sizer-index');
 
@@ -771,7 +772,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderProps, IDetai
       // but firefox doesn't support it, so we set the default value when it is not defined.
       buttons
     } = ev;
-    const { onColumnIsSizingChanged, onColumnResized, columns } = this.props;
+    const { onColumnIsSizingChanged, onColumnResized, columns = NO_COLUMNS } = this.props;
     const { columnResizeDetails } = this.state;
 
     if (buttons !== undefined && buttons !== MOUSEMOVE_PRIMARY_BUTTON) {
@@ -821,7 +822,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderProps, IDetai
    * @param {React.MouseEvent} ev (mouse up event)
    */
   private _onSizerMouseUp = (ev: React.MouseEvent<HTMLElement>): void => {
-    const { columns, onColumnIsSizingChanged } = this.props;
+    const { columns = NO_COLUMNS, onColumnIsSizingChanged } = this.props;
     const { columnResizeDetails } = this.state;
 
     this.setState({
