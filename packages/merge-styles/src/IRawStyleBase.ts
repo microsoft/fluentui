@@ -9,6 +9,15 @@ export type ICSSPercentageRule = string;
 // See CSS 3 <length> type https://drafts.csswg.org/css-values-3/#lengths
 export type ICSSPixelUnitRule = string | number;
 
+// See CSS <baseline-position> type https://www.w3.org/TR/css-align-3/#typedef-baseline-position
+export type ICSSBaselinePositionRule = 'baseline' | 'last baseline' | 'first baseline';
+
+// See CSS <overflow-position> type https://www.w3.org/TR/css-align-3/#typedef-overflow-position
+export type ICSSOverflowPositionRule = 'safe' | 'unsafe';
+
+// See CSS <self-position> type https://www.w3.org/TR/css-align-3/#typedef-self-position
+export type ICSSSelfPositionRule = 'center' | 'start' | 'end' | 'self-start' | 'self-end' | 'flex-start' | 'flex-end';
+
 export type IFontWeight =
   | ICSSRule
   | 'normal'
@@ -947,6 +956,24 @@ export interface IRawStyleBase extends IRawFontStyle {
    * https://www.w3.org/TR/css-flexbox-1/#justify-content-property
    */
   justifyContent?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly';
+
+  /**
+   * Justifies the box (as the alignment subject) within its containing block (as the alignment container)
+   * along the inline/row/main axis of the alignment container.
+   *
+   * See CSS jusitfy-self property
+   * https://www.w3.org/TR/css-align-3/#propdef-justify-self
+   */
+  justifySelf?:
+    | ICSSRule
+    | 'auto'
+    | 'normal'
+    | 'stretch'
+    | ICSSBaselinePositionRule
+    | ICSSOverflowPositionRule
+    | ICSSSelfPositionRule
+    | 'left'
+    | 'right';
 
   /**
    * Sets the left position of an element relative to the nearest anscestor that is set
