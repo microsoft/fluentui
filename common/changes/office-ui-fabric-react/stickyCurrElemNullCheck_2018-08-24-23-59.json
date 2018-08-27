@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ContextualMenu: remove line-height 0 styling for lists",
+      "comment": "Sticky: null check for currElem",
       "type": "patch"
     }
   ],

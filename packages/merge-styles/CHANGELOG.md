@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Mon, 30 Jul 2018 10:27:11 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Aug 2018 10:27:43 GMT and should not be manually modified.
+
+## 6.8.0
+Mon, 27 Aug 2018 10:27:43 GMT
+
+### Minor changes
+
+- Adds support for 'justifySelf' which is needed to align items in CSS Grid.
 
 ## 6.7.0
 Mon, 30 Jul 2018 10:27:11 GMT

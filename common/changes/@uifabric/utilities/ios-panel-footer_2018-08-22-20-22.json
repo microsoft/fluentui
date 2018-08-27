@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/utilities",
+      "comment": "Add mobileDetector to detect iOS devices",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/utilities",
+  "email": "kakje@microsoft.com"
+}

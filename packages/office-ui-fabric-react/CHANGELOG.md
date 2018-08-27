@@ -1,6 +1,41 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 23 Aug 2018 10:28:17 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Aug 2018 10:27:43 GMT and should not be manually modified.
+
+## 6.56.0
+Mon, 27 Aug 2018 10:27:43 GMT
+
+### Minor changes
+
+- Adds an optional close button to the DatePicker
+- Convert all SCSS styles in panel to JS Styles
+
+## 6.55.0
+Fri, 24 Aug 2018 17:02:14 GMT
+
+### Minor changes
+
+- Reverting Customizer React 16 context change, while we dig into the Layer portal conversion first. As it is moving to React 16 breaks layer theming, which we believe can only be fixed if we move to portals (which has other issues to investigate.)
+
+## 6.54.1
+Fri, 24 Aug 2018 14:45:24 GMT
+
+### Patches
+
+- Prevent breaking change in DetailsItemProps
+
+## 6.54.0
+Fri, 24 Aug 2018 10:26:08 GMT
+
+### Minor changes
+
+- ColorSlider, ComboBox, Dropdown, Rating, Toggle: add onChange and deprecate onChanged
+
+### Patches
+
+- ChoiceGroup: remove aria-labelledby to prevent accessibility bugs with custom onRenderLabel
+- ContextualMenu: remove line-height 0 styling for lists
+- Fix @types/prop-types being inconsistently restrictive.
 
 ## 6.53.0
 Thu, 23 Aug 2018 10:28:17 GMT

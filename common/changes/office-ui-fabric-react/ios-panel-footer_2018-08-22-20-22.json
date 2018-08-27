@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ChoiceGroup: remove aria-labelledby to prevent accessibility bugs with custom onRenderLabel",
+      "comment": "Panel: set the content height to window.innerHeight on iOS",
       "type": "patch"
     }
   ],

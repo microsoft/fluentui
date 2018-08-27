@@ -254,7 +254,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     let currElem = this.root;
 
     if (currElem) {
-      while (currElem.offsetParent !== container) {
+      while (currElem && currElem.offsetParent !== container) {
         distance += currElem.offsetTop;
         currElem = currElem.offsetParent as HTMLDivElement;
       }
