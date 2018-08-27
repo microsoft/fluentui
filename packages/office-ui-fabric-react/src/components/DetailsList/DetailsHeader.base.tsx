@@ -576,7 +576,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     }
   }
 
-  private _renderColumnSizer(columnIndex: number): JSX.Element | null {
+  private _renderColumnSizer = (columnIndex: number): JSX.Element | null => {
     const { columns = NO_COLUMNS } = this.props;
     const column = columns[columnIndex];
     const { columnResizeDetails } = this.state;
@@ -601,10 +601,10 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
         onDoubleClick={this._onSizerDoubleClick.bind(this, columnIndex)}
       />
     ) : null;
-  }
+  };
 
   private _renderColumnDivider(columnIndex: number): JSX.Element | null {
-    const { columns } = this.props;
+    const { columns = NO_COLUMNS } = this.props;
     const column = columns[columnIndex];
     const { onRenderDivider } = column;
     return onRenderDivider
