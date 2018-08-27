@@ -228,18 +228,18 @@ export function createStatelessComponent<
 }
 
 /**
- * Basic Object.assign helper for applying source object to target.
+ * Basic Object.assign helper for applying statics to target.
  * @param target Target object to merge into.
- * @param source Source object that will be mixed into target.
+ * @param statics Statics object that will be mixed into target.
  * @returns Resulting merged target.
  */
-function _assignStatics(target: any, source: any): any {
+function _assignStatics(target: any, statics: any): any {
   target = target || {};
 
-  if (source) {
-    for (const propName in source) {
-      if (source.hasOwnProperty(propName)) {
-        target[propName] = source[propName];
+  if (statics) {
+    for (const propName in statics) {
+      if (statics.hasOwnProperty(propName)) {
+        target[propName] = statics[propName];
       }
     }
   }
