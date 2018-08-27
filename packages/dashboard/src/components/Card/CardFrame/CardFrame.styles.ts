@@ -13,6 +13,7 @@ export const getStyles = (props: ICardFrameProps): ICardFrameStyles => {
       flexDirection: 'column'
     },
     cardTitleBox: {
+      alignItems: 'center',
       display: 'flex',
       flexDirection: 'row',
       width: '100%',
@@ -36,7 +37,7 @@ export const getStyles = (props: ICardFrameProps): ICardFrameStyles => {
     cardTitle: {
       overflow: 'hidden',
       flex: 1,
-      padding: '9px 16px 12px 16px',
+      paddingLeft: '16px',
       fontSize: fontSize ? fontSize : '14px',
       fontFamily: fontFamily ? fontFamily : 'Segoe UI',
       fontWeight: 600,
