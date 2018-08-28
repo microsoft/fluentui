@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { __assign } from 'tslib';
 
 /**
  * Props contract for themed components.
@@ -169,7 +170,7 @@ export function createComponent<
   result.contextTypes = providers.CustomizableContextTypes;
   result.displayName = options.displayName;
 
-  _assignStatics(result, options.statics);
+  __assign(result, options.statics);
 
   // Later versions of TypeSript should allow us to merge objects in a type safe way and avoid this cast.
   return result as React.StatelessComponent<TComponentProps> & TStatics;
@@ -225,30 +226,10 @@ export function createStatelessComponent<
   result.contextTypes = providers.CustomizableContextTypes;
   result.displayName = options.displayName;
 
-  _assignStatics(result, options.statics);
+  __assign(result, options.statics);
 
   // Later versions of TypeSript should allow us to merge objects in a type safe way and avoid this cast.
   return result as React.StatelessComponent<TComponentProps> & TStatics;
-}
-
-/**
- * Basic Object.assign helper for applying statics to target.
- * @param target Target object to merge into.
- * @param statics Statics object that will be mixed into target.
- * @returns Resulting merged target.
- */
-function _assignStatics(target: any, statics: any): any {
-  target = target || {};
-
-  if (statics) {
-    for (const propName in statics) {
-      if (statics.hasOwnProperty(propName)) {
-        target[propName] = statics[propName];
-      }
-    }
-  }
-
-  return target;
 }
 
 /**
