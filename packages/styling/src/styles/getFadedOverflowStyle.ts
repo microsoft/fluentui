@@ -8,19 +8,54 @@ export interface IRGB {
   b: number;
 }
 
+const DEFAULT_HEIGHT = '50%';
 const DEFAULT_WIDTH = 20;
-const DEFAULT_HEIGHT = '4em';
 const DEFAULT_COLOR = '#ffffff';
 
 /**
- * Generates a style which can be used to gracefully fade out an overflowing content by defining an :after style.
- * Requires the target to have position set to relative and textOverflow set to clip (no ellipsis).
+ * - Generates a style which can be used to gracefully fade out an overflowing content by defining an :after style.
+ * - Apply it to the target:after selector for all different combination of states the parent might have (normal, hover, selected, focus)
+ * - Requires the target to have position set to relative and overflow set to hidden.
  *
+ * @example
+ * ```tsx
+ * // Assuming the following DOM structure:
+ * <div className={classNames.parent}>
+ *   <span className={classNames.target}>Overflown Content</span>
+ * </div>
+ * ```
+ * ```ts
+ * // This is how the style set would look in Component.styles.ts
+ * const {bodyBackground, hoverBackground} = theme.semanticColors;
+ *
+ * const styles = {
+ *   parent: [
+ *     backgroundColor: bodyBackground,
+ *     selectors: {
+ *       '&:hover: {
+ *         backgroundColor: hoverBackground
+ *       },
+ *       '$target:after': {
+ *         ...getFadedOverflowStyle(theme, bodyBackground)
+ *       },
+ *       '&:hover $target:after': {
+ *         ...getFadedOverflowStyle(theme, hoverBackground)
+ *       }
+ *     }
+ *   ],
+ *   target: [
+ *     width: '100%',
+ *     display: 'inline-block',
+ *     position: 'relative',
+ *     overflow: 'hidden'
+ *   ]
+ * }
+ * ```
  * @param theme - The theme object to use.
  * @param color - The background color to fade out to. Defaults to theme.semanticColors.bodyBackground.
  * @param direction - The direction of the overflow. Defaults to horizontal.
  * @param width - The width of the fading overflow. Vertical direction defaults it to 100% vs 20px when horizontal.
- * @param height - The Height of the fading overflow. Vertical direction defaults it to 4em vs 100% when horizontal.
+ * @param height - The Height of the fading overflow. Vertical direction defaults it to 50% vs 100% when horizontal.
  * @returns The style object.
  */
 export function getFadedOverflowStyle(
@@ -35,25 +70,17 @@ export function getFadedOverflowStyle(
   const gradientDirection = direction === 'vertical' ? 'to bottom' : 'to right'; // mergeStyles take care of RTL direction.
 
   return {
-    overflow: 'hidden',
-    width: '100%',
-    display: 'inline-block',
-    position: 'relative',
+    content: '""',
+    position: 'absolute',
+    right: 0,
+    bottom: 0,
+    width: width,
+    height: height,
+    pointerEvents: 'none',
+    backgroundImage: `linear-gradient(${gradientDirection}, ${rgba} 0%, ${color} 100%)`,
     selectors: {
-      '&:after': {
-        content: '""',
-        position: 'absolute',
-        right: 0,
-        bottom: 0,
-        width: width,
-        height: height,
-        pointerEvents: 'none',
-        backgroundImage: `linear-gradient(${gradientDirection}, ${rgba} 0%, ${color} 100%)`,
-        selectors: {
-          [HighContrastSelector]: {
-            backgroundImage: 'none'
-          }
-        }
+      [HighContrastSelector]: {
+        backgroundImage: 'none'
       }
     }
   };
