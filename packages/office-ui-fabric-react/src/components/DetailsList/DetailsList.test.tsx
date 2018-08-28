@@ -22,7 +22,7 @@ function mockData(count: number, isColumn: boolean = false, customDivider: boole
         ..._data,
         key: `column_key_${i}`,
         ariaLabel: `column_${i}`,
-        onRenderDivider: customDivider ? iconColumnDivider : columnDividerWrapper
+        onRenderDivider: customDivider ? customColumnDivider : columnDividerWrapper
       };
     }
     data.push(_data);
@@ -36,7 +36,8 @@ function columnDividerWrapper(columnIndex: number, defaultRenderer: Function): a
   return defaultRenderer(columnIndex);
 }
 
-function iconColumnDivider(columnIndex: number, defaultRenderer: Function): any {
+// Using a bar sign as a custom divider along with the default divider
+function customColumnDivider(columnIndex: number, defaultRenderer: Function): any {
   return (
     <React.Fragment key={`divider_${columnIndex}`}>
       <span>|</span>
