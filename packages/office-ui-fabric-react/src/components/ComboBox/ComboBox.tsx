@@ -1784,7 +1784,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   };
 
   private _onOptionMouseEnter(index: number): void {
-    if (!this._isScrollIdle || !this._gotMouseMove) {
+    if (this._shouldIgnoreMouseEvent()) {
       return;
     }
 
@@ -1794,9 +1794,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   private _onOptionMouseMove(index: number): void {
-    if (!this._gotMouseMove) {
-      this._gotMouseMove = true;
-    }
+    this._gotMouseMove = true;
 
     if (!this._isScrollIdle || this.state.currentPendingValueValidIndexOnHover === index) {
       return;
@@ -1808,7 +1806,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   private _onOptionMouseLeave = () => {
-    if (!this._isScrollIdle || !this._gotMouseMove) {
+    if (this._shouldIgnoreMouseEvent()) {
       return;
     }
 
@@ -1816,6 +1814,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       currentPendingValueValidIndexOnHover: HoverStatus.clearAll
     });
   };
+
+  private _shouldIgnoreMouseEvent(): boolean {
+    return !this._isScrollIdle || !this._gotMouseMove;
+  }
 
   /**
    * Handle dismissing the menu and

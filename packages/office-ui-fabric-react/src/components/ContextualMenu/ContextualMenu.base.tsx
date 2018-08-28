@@ -728,7 +728,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   };
 
   private _onMenuFocusCapture = (ev: React.FocusEvent<HTMLElement>) => {
-    if (this.props.delayUpdateFocusOnHover && !this._shouldUpdateFocusOnMouseEvent) {
+    if (this.props.delayUpdateFocusOnHover) {
       this._shouldUpdateFocusOnMouseEvent = true;
     }
   };
@@ -827,7 +827,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   };
 
   private _onItemMouseEnterBase = (item: any, ev: React.MouseEvent<HTMLElement>, target?: HTMLElement): void => {
-    if (!this._isScrollIdle || !this._gotMouseMove) {
+    if (this._shouldIgnoreMouseEvent()) {
       return;
     }
 
@@ -855,8 +855,13 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
     this._updateFocusOnMouseEvent(item, ev, target);
   };
+
+  private _shouldIgnoreMouseEvent(): boolean {
+    return !this._isScrollIdle || !this._gotMouseMove;
+  }
+
   private _onMouseItemLeave = (item: any, ev: React.MouseEvent<HTMLElement>): void => {
-    if (!this._isScrollIdle || !this._gotMouseMove) {
+    if (this._shouldIgnoreMouseEvent()) {
       return;
     }
 
