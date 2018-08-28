@@ -85,6 +85,7 @@ export function getFadedOverflowStyle(
   };
 }
 
+// TODO consider moving this to a separate module along with some more color functions from OUFR/utilities.
 /**
  * Helper function to convert a string hex color to an RGB object.
  *
