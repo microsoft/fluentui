@@ -203,7 +203,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               -webkit-font-smoothing: antialiased;
               background-color: transparent;
               border-radius: 0px;
-              border: 1px solid transparent;
+              border: none;
               box-sizing: border-box;
               color: #666666;
               cursor: default;
@@ -647,7 +647,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               -webkit-font-smoothing: antialiased;
               background-color: transparent;
               border-radius: 0px;
-              border: 1px solid transparent;
+              border: none;
               box-sizing: border-box;
               color: #666666;
               cursor: default;
@@ -966,7 +966,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               -webkit-font-smoothing: antialiased;
               background-color: transparent;
               border-radius: 0px;
-              border: 1px solid transparent;
+              border: none;
               box-sizing: border-box;
               color: #666666;
               cursor: default;
@@ -1285,7 +1285,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               -webkit-font-smoothing: antialiased;
               background-color: transparent;
               border-radius: 0px;
-              border: 1px solid transparent;
+              border: none;
               box-sizing: border-box;
               color: #666666;
               cursor: default;
@@ -1604,7 +1604,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               -webkit-font-smoothing: antialiased;
               background-color: transparent;
               border-radius: 0px;
-              border: 1px solid transparent;
+              border: none;
               box-sizing: border-box;
               color: #666666;
               cursor: default;
@@ -1923,7 +1923,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               -webkit-font-smoothing: antialiased;
               background-color: transparent;
               border-radius: 0px;
-              border: 1px solid transparent;
+              border: none;
               box-sizing: border-box;
               color: #666666;
               cursor: default;
@@ -2242,7 +2242,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               -webkit-font-smoothing: antialiased;
               background-color: transparent;
               border-radius: 0px;
-              border: 1px solid transparent;
+              border: none;
               box-sizing: border-box;
               color: #666666;
               cursor: default;
@@ -2531,7 +2531,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               -webkit-font-smoothing: antialiased;
               background-color: transparent;
               border-radius: 0px;
-              border: 1px solid transparent;
+              border: none;
               box-sizing: border-box;
               color: #666666;
               cursor: default;
@@ -2831,7 +2831,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               background-color: #f4f4f4;
               border-color: #f4f4f4;
               border-radius: 0px;
-              border: 1px solid transparent;
+              border: none;
               box-sizing: border-box;
               color: #a6a6a6;
               cursor: default;
@@ -3147,7 +3147,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               -webkit-font-smoothing: antialiased;
               background-color: transparent;
               border-radius: 0px;
-              border: 1px solid transparent;
+              border: none;
               box-sizing: border-box;
               color: #666666;
               cursor: default;
@@ -3467,7 +3467,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               -webkit-font-smoothing: antialiased;
               background-color: transparent;
               border-radius: 0px;
-              border: 1px solid transparent;
+              border: none;
               box-sizing: border-box;
               color: #666666;
               cursor: default;

@@ -1394,7 +1394,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 2`] = `
               -webkit-font-smoothing: antialiased;
               background-color: transparent;
               border-radius: 0px;
-              border: 1px solid transparent;
+              border: none;
               box-sizing: border-box;
               cursor: pointer;
               display: inline-block;

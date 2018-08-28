@@ -14,7 +14,8 @@ export const getStyles = memoizeFunction(
         padding: DEFAULT_PADDING,
         height: DEFAULT_BUTTON_HEIGHT,
         color: theme.palette.neutralPrimary,
-        backgroundColor: 'transparent'
+        backgroundColor: 'transparent',
+        border: 'none'
       },
 
       rootHovered: {
