@@ -31,7 +31,7 @@ export class Pie extends React.Component<IPieProps, {}> {
         color={color!}
         hoverOnCallback={this._hoverCallback}
         hoverLeaveCallback={this.props.hoverLeaveCallback}
-        uniqLineText={this.props.uniqLineText}
+        uniqText={this.props.uniqText}
       />
     );
   };

@@ -23,7 +23,7 @@ export class DonutChartBase extends React.Component<
   public _colors: scale.ScaleOrdinal<string, {}>;
   private _classNames: IProcessedStyleSet<IDonutChartStyles>;
   private _rootElem: HTMLElement | null;
-  private _uniqLineText: string;
+  private _uniqText: string;
   constructor(props: IDonutChartProps) {
     super(props);
     this.state = {
@@ -35,7 +35,7 @@ export class DonutChartBase extends React.Component<
     };
     this._hoverCallback = this._hoverCallback.bind(this);
     this._hoverLeave = this._hoverLeave.bind(this);
-    this._uniqLineText =
+    this._uniqText =
       '_Pie_' +
       Math.random()
         .toString(36)
@@ -75,12 +75,12 @@ export class DonutChartBase extends React.Component<
             data={chartData!}
             hoverOnCallback={this._hoverCallback}
             hoverLeaveCallback={this._hoverLeave}
-            uniqText={this._uniqLineText}
+            uniqText={this._uniqText}
           />
         </svg>
         {this.state.showHover ? (
           <Callout
-            target={'#' + this._uniqLineText + this.state.legend + this.state.value}
+            target={'#' + this._uniqText + this.state.legend + this.state.value}
             coverTarget={true}
             isBeakVisible={false}
             directionalHint={DirectionalHint.bottomRightEdge}
