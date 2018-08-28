@@ -9,7 +9,7 @@ import {
   ICardContentDetails,
   IChartProps,
   Priority
-} from '../../Card';
+} from '@uifabric/dashboard';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export class DonutChartExample extends React.Component<{}, {}> {
