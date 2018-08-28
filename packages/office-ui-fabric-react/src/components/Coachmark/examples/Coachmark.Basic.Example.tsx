@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Coachmark } from '../Coachmark';
-import { ITeachingBubble, TeachingBubbleContent } from 'office-ui-fabric-react/lib/TeachingBubble';
+import { TeachingBubbleContent } from 'office-ui-fabric-react/lib/TeachingBubble';
 import { DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
