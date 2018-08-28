@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { __assign } from 'tslib';
+import { assign } from './utilities';
 
 /**
  * Props contract for themed components.
@@ -170,7 +170,7 @@ export function createComponent<
   result.contextTypes = providers.CustomizableContextTypes;
   result.displayName = options.displayName;
 
-  __assign(result, options.statics);
+  assign(result, options.statics);
 
   // Later versions of TypeSript should allow us to merge objects in a type safe way and avoid this cast.
   return result as React.StatelessComponent<TComponentProps> & TStatics;
@@ -226,7 +226,7 @@ export function createStatelessComponent<
   result.contextTypes = providers.CustomizableContextTypes;
   result.displayName = options.displayName;
 
-  __assign(result, options.statics);
+  assign(result, options.statics);
 
   // Later versions of TypeSript should allow us to merge objects in a type safe way and avoid this cast.
   return result as React.StatelessComponent<TComponentProps> & TStatics;
