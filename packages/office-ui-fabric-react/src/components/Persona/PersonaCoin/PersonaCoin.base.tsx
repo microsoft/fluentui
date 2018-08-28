@@ -153,6 +153,11 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
       showUnknownPersonaCoin
     } = this.props;
 
+    // Render the Image component only if an image URL is provided
+    if (!imageUrl) {
+      return null;
+    }
+
     const size = this.props.size as PersonaSize;
 
     const classNames = getClassNames(styles, {
@@ -161,9 +166,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
       showUnknownPersonaCoin
     });
 
-    // return Image if imageUrl is present
-    // this check will stop from rendering an empty img tag
-    return imageUrl ? (
+    return (
       <Image
         className={classNames.image}
         imageFit={ImageFit.cover}
@@ -175,7 +178,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
         shouldStartVisible={imageShouldStartVisible}
         onLoadingStateChange={this._onPhotoLoadingStateChange}
       />
-    ) : null;
+    );
   };
 
   /**
