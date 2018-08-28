@@ -13,15 +13,15 @@ const DEFAULT_WIDTH = 20;
 const DEFAULT_COLOR = '#ffffff';
 
 /**
- * - Generates a style which can be used to gracefully fade out an overflowing content by defining an :after style.
- * - Apply it to the target:after selector for all different combination of states the parent might have (normal, hover, selected, focus)
+ * - Generates a style used to fade out an overflowing content by defining a style for an :after pseudo element.
+ * - Apply it to the :after selector for all combination of states the parent of content might have (normal, hover, selected, focus).
  * - Requires the target to have position set to relative and overflow set to hidden.
  *
  * @example
  * ```tsx
- * // Assuming the following DOM structure:
+ * // Assuming the following DOM structure and the different background colors coming from the parent holding the content.
  * <div className={classNames.parent}>
- *   <span className={classNames.target}>Overflown Content</span>
+ *   <span className={classNames.content}>Overflown Content</span>
  * </div>
  * ```
  * ```ts
@@ -35,15 +35,15 @@ const DEFAULT_COLOR = '#ffffff';
  *       '&:hover: {
  *         backgroundColor: hoverBackground
  *       },
- *       '$target:after': {
+ *       '$content:after': {
  *         ...getFadedOverflowStyle(theme, bodyBackground)
  *       },
- *       '&:hover $target:after': {
+ *       '&:hover $content:after': {
  *         ...getFadedOverflowStyle(theme, hoverBackground)
  *       }
  *     }
  *   ],
- *   target: [
+ *   content: [
  *     width: '100%',
  *     display: 'inline-block',
  *     position: 'relative',
