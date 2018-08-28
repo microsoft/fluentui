@@ -10,7 +10,6 @@ export interface IRGB {
 
 const DEFAULT_HEIGHT = '50%';
 const DEFAULT_WIDTH = 20;
-const DEFAULT_COLOR = '#ffffff';
 
 /**
  * - Generates a style used to fade out an overflowing content by defining a style for an :after pseudo element.
@@ -60,7 +59,7 @@ const DEFAULT_COLOR = '#ffffff';
  */
 export function getFadedOverflowStyle(
   theme: ITheme,
-  color: string = theme.semanticColors ? theme.semanticColors.bodyBackground : DEFAULT_COLOR,
+  color: string = theme.semanticColors.bodyBackground,
   direction: 'horizontal' | 'vertical' = 'horizontal',
   width: string | number = getDefaultValue('width', direction),
   height: string | number = getDefaultValue('height', direction)
