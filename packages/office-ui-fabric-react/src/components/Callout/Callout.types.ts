@@ -5,7 +5,7 @@ import { ICalloutPositionedInfo } from '../../utilities/positioning';
 
 export interface ICallout {}
 
-export interface ICalloutProps {
+export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the ICallout interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Mon, 27 Aug 2018 10:27:43 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Aug 2018 10:23:58 GMT and should not be manually modified.
+
+## 6.8.1
+Tue, 28 Aug 2018 10:23:58 GMT
+
+### Patches
+
+- Adds missing CSS property values for 'align-self' in `IRawStyle` type definition and corrects CSS property values for 'justify-self' in 'IRawStyle'
 
 ## 6.8.0
 Mon, 27 Aug 2018 10:27:43 GMT

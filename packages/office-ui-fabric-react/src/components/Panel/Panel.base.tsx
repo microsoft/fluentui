@@ -9,7 +9,8 @@ import {
   getRTL,
   createRef,
   elementContains,
-  allowScrollOnElement
+  allowScrollOnElement,
+  isIOS
 } from '../../Utilities';
 import { IProcessedStyleSet, getTheme, IconFontSizes } from '../../Styling';
 import { FocusTrapZone } from '../FocusTrapZone/index';
@@ -235,6 +236,9 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
   private _allowScrollOnPanel = (elt: HTMLDivElement | null): void => {
     if (elt) {
       allowScrollOnElement(elt, this._events);
+      if (isIOS()) {
+        elt.style.height = window.innerHeight + 'px';
+      }
     } else {
       this._events.off(this._scrollableContent);
     }
