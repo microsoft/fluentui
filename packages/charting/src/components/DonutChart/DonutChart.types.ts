@@ -59,24 +59,12 @@ export interface IDonutChartStyles {
    * Style for the chart.
    */
   chart?: IStyle;
-
   /**
-   * Style set for the Pie component Legend
+   * Style for the legend container.
    */
-  legend: IStyle;
-
+  legendContainer: IStyle;
   /**
-   * Style set for each legend item
+   * Style for the callout.
    */
-  legendItem: IStyle;
-
-  /**
-   * Style set for the colored box in each legend item
-   */
-  legendBox: IStyle;
-
-  legendContainer: {
-    paddingTop: '4px';
-  };
-  hover: IStyle;
+  callOut: IStyle;
 }

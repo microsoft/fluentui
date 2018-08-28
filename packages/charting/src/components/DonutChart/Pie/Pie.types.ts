@@ -30,6 +30,8 @@ export interface IPieProps {
 
   hoverOnCallback?: Function;
   hoverLeaveCallback?: Function;
+
+  uniqLineText?: string;
 }
 
 export interface IPieStyles {

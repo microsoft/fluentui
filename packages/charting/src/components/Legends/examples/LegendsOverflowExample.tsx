@@ -11,6 +11,9 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
         action: () => {
           console.log('click from LegendsPage');
           alert('Legend1 clicked');
+        },
+        hoverAction: () => {
+          console.log('Hover action');
         }
       },
       {
@@ -18,6 +21,9 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
         color: DefaultPalette.green,
         action: () => {
           alert('Legend2 clicked');
+        },
+        hoverAction: () => {
+          console.log('Hover action');
         }
       },
       {
@@ -25,6 +31,9 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
         color: DefaultPalette.yellow,
         action: () => {
           alert('Legend3 clicked');
+        },
+        hoverAction: () => {
+          console.log('Hover action');
         }
       },
       {
@@ -32,6 +41,9 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
         color: DefaultPalette.blue,
         action: () => {
           alert('Legend4 clicked');
+        },
+        hoverAction: () => {
+          console.log('Hover action');
         }
       },
       {
@@ -39,6 +51,9 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
         color: DefaultPalette.purpleLight,
         action: () => {
           alert('Legend5 clicked');
+        },
+        hoverAction: () => {
+          console.log('Hover action');
         }
       },
       {
@@ -46,6 +61,9 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
         color: DefaultPalette.orange,
         action: () => {
           alert('Legend6 clicked');
+        },
+        hoverAction: () => {
+          console.log('Hover action');
         }
       },
       {
@@ -53,6 +71,9 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
         color: DefaultPalette.magenta,
         action: () => {
           alert('Legend7 clicked');
+        },
+        hoverAction: () => {
+          console.log('Hover action');
         }
       },
       {
@@ -60,6 +81,9 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
         color: DefaultPalette.themeDark,
         action: () => {
           alert('Legend8 clicked');
+        },
+        hoverAction: () => {
+          console.log('Hover action');
         }
       },
       {
@@ -67,6 +91,9 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
         color: DefaultPalette.redDark,
         action: () => {
           alert('Legend9 clicked');
+        },
+        hoverAction: () => {
+          console.log('Hover action');
         }
       },
       {
@@ -74,6 +101,9 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
         color: DefaultPalette.blueMid,
         action: () => {
           alert('Legend10 clicked');
+        },
+        hoverAction: () => {
+          console.log('Hover action');
         }
       },
       {
@@ -81,6 +111,9 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
         color: DefaultPalette.blackTranslucent40,
         action: () => {
           alert('Legend11 clicked');
+        },
+        hoverAction: () => {
+          console.log('Hover action');
         }
       },
       {
@@ -88,6 +121,9 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
         color: DefaultPalette.greenDark,
         action: () => {
           alert('Legend12 clicked');
+        },
+        hoverAction: () => {
+          console.log('Hover action');
         }
       },
       {
@@ -95,6 +131,9 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
         color: DefaultPalette.yellowLight,
         action: () => {
           alert('Legend13 clicked');
+        },
+        hoverAction: () => {
+          console.log('Hover action');
         }
       },
       {
@@ -102,6 +141,9 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
         color: DefaultPalette.magentaLight,
         action: () => {
           alert('Legend14 clicked');
+        },
+        hoverAction: () => {
+          console.log('Hover action');
         }
       },
       {
@@ -109,6 +151,9 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
         color: DefaultPalette.purpleDark,
         action: () => {
           alert('Legend15 clicked');
+        },
+        hoverAction: () => {
+          console.log('Hover action');
         }
       },
       {
@@ -116,6 +161,9 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
         color: DefaultPalette.blueMid,
         action: () => {
           alert('Legend16 clicked');
+        },
+        hoverAction: () => {
+          console.log('Hover action');
         }
       },
       {
@@ -123,6 +171,9 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
         color: DefaultPalette.accent,
         action: () => {
           alert('Legend17 clicked');
+        },
+        hoverAction: () => {
+          console.log('Hover action');
         }
       }
     ];

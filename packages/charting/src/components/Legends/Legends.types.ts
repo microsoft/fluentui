@@ -49,7 +49,16 @@ export interface ILegend {
    * Defines the function that is executed on clicking this legend
    */
   action?: VoidFunction;
-  onHover?: Function;
+
+  /**
+   * Defines the function that is executed upon hovering over the legend
+   */
+  hoverAction?: VoidFunction;
+
+  /**
+   * Defines the function that is executed upon moving the mouse away from the legend
+   */
+  onMouseOutAction?: VoidFunction;
 
   /**
    * The color for the legend
@@ -80,10 +89,6 @@ export interface ILegendsProps {
    * Theme (provided through customization.)
    */
   theme?: ITheme;
-
-  onHover?: Function;
-
-  onHoverLeave?: Function;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.

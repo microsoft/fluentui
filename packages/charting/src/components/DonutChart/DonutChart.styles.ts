@@ -1,55 +1,36 @@
 import { IDonutChartStyleProps, IDonutChartStyles } from './DonutChart.types';
 
 export const getStyles = (props: IDonutChartStyleProps): IDonutChartStyles => {
-  const { className, height, width } = props;
+  const { className, width, height } = props;
 
   return {
     root: [
       'ms-DonutChart',
       {
-        textAlign: 'center',
         display: 'flex',
         flexDirection: 'column',
-        width: width
+        width: '100%',
+        height: '100%'
       },
       className
     ],
     chart: {
-      width: height,
+      width: width,
       height: height,
       boxSizing: 'content-box',
-      overflow: 'visible'
+      overflow: 'visible',
+      alignmentAdjust: 'center'
     },
-    legend: [
-      {
-        display: 'flex',
-        width: height,
-        justifyContent: 'space-evenly'
-      }
-    ],
-    legendItem: [
-      {
-        display: 'flex',
-        alignItems: 'center'
-      }
-    ],
-    legendBox: [
-      {
-        width: 10,
-        height: 10,
-        marginRight: 5
-      }
-    ],
     legendContainer: {
-      paddingTop: '4px'
+      paddingTop: '16px'
     },
-    hover: {
-      height: '76px',
-      width: '143px',
-      fontSize: '28px',
+    callOut: {
+      padding: '10px 16px 10px 16px',
+      fontSize: '12px',
       color: '#0078D7',
       fontFamily: 'Segoe UI',
-      fontWeight: 'bold'
+      fontWeight: 'bold',
+      backgroundColor: 'white'
     }
   };
 };

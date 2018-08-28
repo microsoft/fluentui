@@ -6,74 +6,89 @@ import { ILegend, Legends } from '../Legends/index';
 import * as scale from 'd3-scale';
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { IChartDataPoint, IChartProps } from './index';
-import { Callout } from 'office-ui-fabric-react/lib/Callout';
+import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 
 const getClassNames = classNamesFunction<IDonutChartStyleProps, IDonutChartStyles>();
 
 export class DonutChartBase extends React.Component<
   IDonutChartProps,
-  { showHover: boolean; value: string | undefined; legend: string | undefined }
+  {
+    showHover: boolean;
+    value: string | undefined;
+    legend: string | undefined;
+    _width: number | undefined;
+    _height: number | undefined;
+  }
 > {
-  public static defaultProps: Partial<IDonutChartProps> = {
-    width: 394,
-    height: 196
-  };
   public _colors: scale.ScaleOrdinal<string, {}>;
   private _classNames: IProcessedStyleSet<IDonutChartStyles>;
+  private _rootElem: HTMLElement | null;
+  private _uniqLineText: string;
   constructor(props: IDonutChartProps) {
     super(props);
     this.state = {
       showHover: false,
       value: '',
-      legend: ''
+      legend: '',
+      _width: this.props.width,
+      _height: this.props.height
     };
-    this._legendClickAction = this._legendClickAction.bind(this);
     this._hoverCallback = this._hoverCallback.bind(this);
     this._hoverLeave = this._hoverLeave.bind(this);
-    this._onHover = this._onHover.bind(this);
-    this._hoverLeave = this._hoverLeave.bind(this);
+    this._uniqLineText =
+      '_Pie_' +
+      Math.random()
+        .toString(36)
+        .substring(7);
+  }
+  public componentDidMount(): void {
+    this.setState({
+      _width: this._rootElem!.offsetWidth,
+      _height: this._rootElem!.offsetHeight - 32
+    });
   }
   public render(): JSX.Element {
-    const { data, width, height } = this.props;
+    const { data } = this.props;
+    const { _width, _height } = this.state;
 
     const { theme, className, styles, innerRadius } = this.props;
     const { palette } = theme!;
     this._classNames = getClassNames(styles!, {
       theme: theme!,
-      width: width!,
-      height: height!,
+      width: _width!,
+      height: _height!,
       className
     });
     const legendBars = this._createLegends(data!, palette);
-    const radius = Math.min(width!, height!) / 2;
-    const outerRadius = radius - 10;
+    const radius = Math.min(_width!, _height!) / 2;
+    const box = Math.min(_width!, _height!);
+    const outerRadius = radius;
     const chartData = data && data.chartData;
     return (
-      <div className={this._classNames.root}>
-        <svg className={this._classNames.chart}>
+      <div className={this._classNames.root} ref={(rootElem: HTMLElement | null) => (this._rootElem = rootElem)}>
+        <svg className={this._classNames.chart} ref={(node: SVGElement | null) => this._setViewBox(node)}>
           <Pie
-            width={height!}
-            height={height! - 20}
+            width={box}
+            height={box}
             outerRadius={outerRadius}
             innerRadius={innerRadius!}
             data={chartData!}
             hoverOnCallback={this._hoverCallback}
             hoverLeaveCallback={this._hoverLeave}
+            uniqLineText={this._uniqLineText}
           />
         </svg>
         {this.state.showHover ? (
           <Callout
-            target={'#donutchart' + this.state.legend + this.state.value}
-            className="ms-CalloutExample-callout"
+            target={'#' + this._uniqLineText + this.state.legend + this.state.value}
             coverTarget={true}
             isBeakVisible={false}
-            gapSpace={0}
+            directionalHint={DirectionalHint.bottomRightEdge}
+            gapSpace={5}
+            className={this._classNames.callOut}
           >
-            <div className={this._classNames.hover}>
-              <p className="ms-CalloutExample-title">{this.state.value}</p>
-            </div>
-            <div className="ms-CalloutExample-inner">
-              <div className="ms-CalloutExample-content" />
+            <div className="ms-CalloutExample-content">
+              <span>{this.state.value}</span>
             </div>
           </Callout>
         ) : null}
@@ -82,24 +97,47 @@ export class DonutChartBase extends React.Component<
     );
   }
 
+  private _setViewBox(node: SVGElement | null): void {
+    if (node === null) {
+      return;
+    }
+
+    const widthVal = node.parentElement ? node.parentElement.clientWidth : this.state._width;
+
+    const heightVal =
+      node.parentElement && node.parentElement.offsetHeight > this.state._height!
+        ? node.parentElement.offsetHeight
+        : this.state._height;
+    const viewbox = `0 0 ${widthVal!} ${heightVal!}`;
+    node.setAttribute('viewBox', viewbox);
+  }
   private _createLegends(data: IChartProps, palette: IPalette): JSX.Element {
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
-    const legendDataItems = data.chartData!.map((point: IChartDataPoint, index: number) => {
-      const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
-      // mapping data to the format Legends component needs
-      const legend: ILegend = {
-        title: point.legend!,
-        color: color,
-        action: this._legendClickAction
-      };
-      return legend;
-    });
-    const legends = <Legends legends={legendDataItems} onHover={this._onHover} onHoverLeave={this._hoverLeave} />;
+    const legendDataItems =
+      data &&
+      data!.chartData!.map((point: IChartDataPoint, index: number) => {
+        const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
+        // mapping data to the format Legends component needs
+        const legend: ILegend = {
+          title: point.legend!,
+          color: color,
+          hoverAction: () => {
+            this.setState({
+              showHover: true,
+              value: point.data!.toString(),
+              legend: point.legend!
+            });
+          },
+          onMouseOutAction: () => {
+            this.setState({
+              showHover: false
+            });
+          }
+        };
+        return legend;
+      });
+    const legends = <Legends legends={legendDataItems} />;
     return legends;
-  }
-
-  private _legendClickAction(): void {
-    console.log('hello legend clicked');
   }
 
   private _hoverCallback(data: IChartDataPoint): void {
@@ -108,19 +146,6 @@ export class DonutChartBase extends React.Component<
       value: data.data!.toString(),
       legend: data.legend
     });
-  }
-
-  private _onHover(title: string): void {
-    // tslint:disable:no-any
-    const itemData =
-      this.props.data &&
-      this.props.data.chartData!.find((item: any) => {
-        if (item.legend === title) {
-          return item;
-        }
-      });
-    const value: string | undefined = `${itemData!.data}`;
-    this.setState({ showHover: true, value: value, legend: title });
   }
 
   private _hoverLeave(): void {

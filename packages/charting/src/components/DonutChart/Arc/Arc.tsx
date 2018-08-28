@@ -39,7 +39,7 @@ export class Arc extends React.Component<IArcProps, { isCalloutVisible: boolean 
     return (
       <g>
         <path
-          id={'donutchart' + this.props.data!.data.legend + this.props.data!.data.data}
+          id={this.props.uniqLineText! + this.props.data!.data.legend + this.props.data!.data.data}
           d={arc(this.props.data)}
           className={classNames.root}
           onMouseOver={this._hoverOn.bind(this, this.props.data!.data)}

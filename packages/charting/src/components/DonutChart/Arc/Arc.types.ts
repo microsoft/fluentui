@@ -28,6 +28,7 @@ export interface IArcProps {
   hoverOnCallback?: Function;
 
   hoverLeaveCallback?: Function;
+  uniqLineText?: string;
 }
 
 export interface IArcData {

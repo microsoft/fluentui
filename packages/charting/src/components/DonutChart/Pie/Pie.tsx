@@ -31,6 +31,7 @@ export class Pie extends React.Component<IPieProps, {}> {
         color={color!}
         hoverOnCallback={this._hoverCallback}
         hoverLeaveCallback={this.props.hoverLeaveCallback}
+        uniqLineText={this.props.uniqLineText}
       />
     );
   };
@@ -41,11 +42,7 @@ export class Pie extends React.Component<IPieProps, {}> {
     const piechart = pie(data),
       translate = `translate(${width / 2}, ${height / 2})`;
 
-    return (
-      <svg width={this.props.width} height={this.props.height}>
-        <g transform={translate}>{piechart.map((d: IArcData, i: number) => this.arcGenerator(d, i))}</g>
-      </svg>
-    );
+    return <g transform={translate}>{piechart.map((d: IArcData, i: number) => this.arcGenerator(d, i))}</g>;
   }
   private _hoverCallback(data: IChartDataPoint): void {
     this.props.hoverOnCallback!(data);
