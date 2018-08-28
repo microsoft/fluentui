@@ -35,6 +35,7 @@ const DayPickerStrings: IDatePickerStrings = {
   nextMonthAriaLabel: 'Go to next month',
   prevYearAriaLabel: 'Go to previous year',
   nextYearAriaLabel: 'Go to next year',
+  closeButtonAriaLabel: 'Close date picker',
 
   isRequiredErrorMessage: 'Field is required.',
 

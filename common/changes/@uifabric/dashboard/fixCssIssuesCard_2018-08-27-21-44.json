@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "@uifabric/dashboard",
-      "comment": "Making changes to dashboard card component to consume stacked bar chart with new data point.",
-      "type": "minor"
+      "comment": "css fixes for card component in dashboard package",
+      "type": "patch"
     }
   ],
   "packageName": "@uifabric/dashboard",

@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Replace usage of deprecated onChanged prop with onChange",
+      "comment": "Experiments: Add theming examples page for documentation and to prep for testing schemes.",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/experiments",
-  "email": "kakje@microsoft.com"
+  "email": "jagore@microsoft.com"
 }

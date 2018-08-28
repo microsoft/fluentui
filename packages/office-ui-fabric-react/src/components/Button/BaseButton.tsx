@@ -581,7 +581,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       allowDisabledFocus: allowDisabledFocus,
       onClick: this._onMenuClick,
       menuProps: undefined,
-      iconProps: menuIconProps,
+      iconProps: { ...menuIconProps, className: this._classNames.menuIcon },
       ariaLabel: splitButtonAriaLabel,
       'aria-haspopup': true,
       'aria-expanded': this._isExpanded,

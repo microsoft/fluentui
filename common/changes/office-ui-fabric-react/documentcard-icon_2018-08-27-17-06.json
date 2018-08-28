@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix @types/prop-types being inconsistently restrictive.",
+      "comment": "updates to view count icon spacing to spec in documentcard",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "cliff.koh@microsoft.com"
+  "email": "kchau@microsoft.com"
 }

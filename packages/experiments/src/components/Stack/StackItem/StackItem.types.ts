@@ -1,7 +1,7 @@
 import { IStyle } from '../../../Styling';
-import { IStyleableComponentProps } from '../../../Foundation';
+import { IStyleableComponent } from '../../../Foundation';
 
-export interface IStackItemProps extends IStyleableComponentProps<IStackItemProps, IStackItemStyles> {
+export interface IStackItemProps extends IStyleableComponent<IStackItemProps, IStackItemStyles> {
   /**
    * CSS class name used to style the StackItem.
    */

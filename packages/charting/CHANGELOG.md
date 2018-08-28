@@ -1,6 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Mon, 20 Aug 2018 10:26:10 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Aug 2018 10:26:08 GMT and should not be manually modified.
+
+## 0.16.0
+Fri, 24 Aug 2018 10:26:08 GMT
+
+### Minor changes
+
+- Making stacked bar chart flex and consume new legends component in it
+
+### Patches
+
+- Fix @types/prop-types being inconsistently restrictive.
 
 ## 0.15.0
 Mon, 20 Aug 2018 10:26:10 GMT

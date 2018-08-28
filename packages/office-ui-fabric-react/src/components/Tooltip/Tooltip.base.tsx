@@ -52,7 +52,7 @@ export class TooltipBase extends BaseComponent<ITooltipProps, any> {
         directionalHint={directionalHint}
         directionalHintForRTL={directionalHintForRTL}
         {...calloutProps}
-        {...getNativeProps(this.props, divProperties)}
+        {...getNativeProps(this.props, divProperties, ['id'])} // omitting ID due to it being used in the div below
         className={this._classNames.root}
       >
         <div
