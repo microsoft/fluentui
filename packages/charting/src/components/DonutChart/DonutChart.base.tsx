@@ -75,7 +75,7 @@ export class DonutChartBase extends React.Component<
             data={chartData!}
             hoverOnCallback={this._hoverCallback}
             hoverLeaveCallback={this._hoverLeave}
-            uniqLineText={this._uniqLineText}
+            uniqText={this._uniqLineText}
           />
         </svg>
         {this.state.showHover ? (

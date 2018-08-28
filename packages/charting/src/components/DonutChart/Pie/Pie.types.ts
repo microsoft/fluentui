@@ -27,11 +27,18 @@ export interface IPieProps {
    */
   // tslint:disable:no-any
   pie?: any;
-
+  /**
+   * Defines the function that is executed upon hovering over the legend
+   */
   hoverOnCallback?: Function;
+  /**
+   * Defines the function that is executed upon hovering Leave the legend
+   */
   hoverLeaveCallback?: Function;
-
-  uniqLineText?: string;
+  /**
+   * Uniq string for chart
+   */
+  uniqText?: string;
 }
 
 export interface IPieStyles {
