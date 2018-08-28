@@ -1,6 +1,14 @@
 # Change Log - @uifabric/variants
 
-This log was last generated on Wed, 22 Aug 2018 11:23:37 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Aug 2018 11:24:56 GMT and should not be manually modified.
+
+## 5.9.0
+Tue, 28 Aug 2018 11:24:56 GMT
+
+### Minor changes
+
+- fixes makeThemeFromPartials function to create theme in steps, so palette can be updated, then the updated palette informs the creation of the semantic slots, then the re st of the theme is filled in'
+- cherry picked for 5.0
 
 ## 5.8.0
 Wed, 22 Aug 2018 11:23:37 GMT
