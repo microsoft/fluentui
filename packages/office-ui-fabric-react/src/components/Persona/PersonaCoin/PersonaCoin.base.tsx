@@ -106,36 +106,36 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
 
     const shouldRenderInitials = Boolean(
       !this.state.isImageLoaded &&
-        ((showInitialsUntilImageLoads && imageUrl) || !imageUrl || this.state.isImageError || hideImage)
+      ((showInitialsUntilImageLoads && imageUrl) || !imageUrl || this.state.isImageError || hideImage)
     );
 
     return (
       <div {...divProps} className={classNames.coin}>
         {// Render PersonaCoin if size is not size10
-        size !== PersonaSize.size10 && size !== PersonaSize.tiny ? (
-          <div {...coinProps} className={classNames.imageArea} style={coinSizeStyle}>
-            {shouldRenderInitials && (
-              <div
-                className={mergeStyles(
-                  classNames.initials,
-                  !showUnknownPersonaCoin && { backgroundColor: initialsColorPropToColorCode(this.props) }
-                )}
-                style={coinSizeStyle}
-                aria-hidden="true"
-              >
-                {onRenderInitials(this.props, this._onRenderInitials)}
-              </div>
-            )}
-            {imageUrl && !hideImage && onRenderCoin(this.props, this._onRenderCoin)}
-            <PersonaPresence {...personaPresenceProps} />
-          </div>
-        ) : // Otherwise, render just PersonaPresence.
-        this.props.presence ? (
-          <PersonaPresence {...personaPresenceProps} />
-        ) : (
-          // Just render Contact Icon if there isn't a Presence prop.
-          <Icon iconName="Contact" className={classNames.size10WithoutPresenceIcon} />
-        )}
+          size !== PersonaSize.size10 && size !== PersonaSize.tiny ? (
+            <div {...coinProps} className={classNames.imageArea} style={coinSizeStyle}>
+              {shouldRenderInitials && (
+                <div
+                  className={mergeStyles(
+                    classNames.initials,
+                    !showUnknownPersonaCoin && { backgroundColor: initialsColorPropToColorCode(this.props) }
+                  )}
+                  style={coinSizeStyle}
+                  aria-hidden="true"
+                >
+                  {onRenderInitials(this.props, this._onRenderInitials)}
+                </div>
+              )}
+              {!hideImage && onRenderCoin(this.props, this._onRenderCoin)}
+              <PersonaPresence {...personaPresenceProps} />
+            </div>
+          ) : // Otherwise, render just PersonaPresence.
+            this.props.presence ? (
+              <PersonaPresence {...personaPresenceProps} />
+            ) : (
+                // Just render Contact Icon if there isn't a Presence prop.
+                <Icon iconName="Contact" className={classNames.size10WithoutPresenceIcon} />
+              )}
         {this.props.children}
       </div>
     );
@@ -161,7 +161,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
       showUnknownPersonaCoin
     });
 
-    return (
+    return imageUrl ? (
       <Image
         className={classNames.image}
         imageFit={ImageFit.cover}
@@ -173,7 +173,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
         shouldStartVisible={imageShouldStartVisible}
         onLoadingStateChange={this._onPhotoLoadingStateChange}
       />
-    );
+    ) : null;
   };
 
   /**
