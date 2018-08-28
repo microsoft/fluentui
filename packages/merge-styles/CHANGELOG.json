@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.8.1",
+      "tag": "@uifabric/merge-styles_v6.8.1",
+      "date": "Tue, 28 Aug 2018 10:23:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Patrik Husfloen <redoz@redoz.com>",
+            "commit": "a7a8c2aea7ae67a64693a2c3538d91dcac3b26ff",
+            "comment": "Adds missing CSS property values for 'align-self' in `IRawStyle` type definition and corrects CSS property values for 'justify-self' in 'IRawStyle'"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.8.0",
       "tag": "@uifabric/merge-styles_v6.8.0",
       "date": "Mon, 27 Aug 2018 10:27:43 GMT",

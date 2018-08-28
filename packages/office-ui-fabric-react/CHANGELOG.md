@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 27 Aug 2018 10:27:43 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Aug 2018 10:23:58 GMT and should not be manually modified.
+
+## 6.57.0
+Tue, 28 Aug 2018 10:23:58 GMT
+
+### Minor changes
+
+- Callout: Pass divProperties into root
+
+### Patches
+
+- Adding a missing passthrough of the menuicon style from base button to split menu icon
+- updates to view count icon spacing to spec in documentcard
+- Panel: set the content height to window.innerHeight on iOS
+- Sticky: null check for currElem
 
 ## 6.56.0
 Mon, 27 Aug 2018 10:27:43 GMT

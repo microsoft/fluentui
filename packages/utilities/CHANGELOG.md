@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 24 Aug 2018 17:02:14 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Aug 2018 10:23:58 GMT and should not be manually modified.
+
+## 6.17.0
+Tue, 28 Aug 2018 10:23:58 GMT
+
+### Minor changes
+
+- Add mobileDetector to detect iOS devices
 
 ## 6.16.0
 Fri, 24 Aug 2018 17:02:14 GMT
