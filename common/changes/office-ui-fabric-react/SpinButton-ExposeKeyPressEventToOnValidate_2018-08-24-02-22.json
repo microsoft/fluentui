@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Expose keyPress event used to commit manually entered value to OnValidate callback so consumers can handle focus in an accessible way",
+      "comment": "Expose the event that triggers the commit of a manually entered value to OnValidate callback so consumers can handle focus transitions in an accessible way",
       "type": "minor"
     }
   ],
