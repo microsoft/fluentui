@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/merge-styles",
+      "comment": "The IProcessedStyleSet type now correctly infers the types of subComponentStyles properties.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/merge-styles",
+  "email": "nimelriansc2@gmail.com"
+}
