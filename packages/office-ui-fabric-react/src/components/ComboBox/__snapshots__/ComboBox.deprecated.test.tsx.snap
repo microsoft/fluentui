@@ -121,8 +121,10 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
       className=
           ms-ComboBox-Input
           {
+            background-color: #ffffff;
             border-style: none;
             box-sizing: border-box;
+            color: #333333;
             font: inherit;
             height: 28px;
             outline: none;
@@ -413,8 +415,10 @@ exports[`ComboBox renders a ComboBox with a Keytip correctly 1`] = `
       className=
           ms-ComboBox-Input
           {
+            background-color: #ffffff;
             border-style: none;
             box-sizing: border-box;
+            color: #333333;
             font: inherit;
             height: 28px;
             outline: none;
