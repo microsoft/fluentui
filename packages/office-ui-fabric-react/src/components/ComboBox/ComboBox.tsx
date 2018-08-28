@@ -51,7 +51,7 @@ export interface IComboBoxState {
 
   // when taking input, this will store
   // the actual text that is being entered
-  currentPendingValue: string;
+  currentPendingValue: string | undefined;
 }
 
 enum SearchDirection {
@@ -184,7 +184,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       suggestedDisplayValue: '',
       currentOptions: this.props.options,
       currentPendingValueValidIndex: -1,
-      currentPendingValue: '',
+      currentPendingValue: undefined,
       currentPendingValueValidIndexOnHover: HoverStatus.default
     };
   }
@@ -528,7 +528,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           index = currentPendingValueValidIndex;
         }
         displayValues.push(
-          currentPendingValue !== ''
+          currentPendingValue !== undefined
             ? currentPendingValue
             : this._indexWithinBounds(currentOptions, index)
               ? currentOptions[index].text
@@ -556,7 +556,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         // Since we are allowing freeform, if there is currently a nonempty pending value, use that
         // otherwise use the index determined above (falling back to '' if we did not get a valid index)
         displayValues.push(
-          currentPendingValue !== ''
+          currentPendingValue !== undefined
             ? currentPendingValue
             : this._indexWithinBounds(currentOptions, index)
               ? currentOptions[index].text
@@ -627,11 +627,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    */
   private _processInputChangeWithFreeform(updatedValue: string): void {
     const { currentOptions } = this.state;
-
-    // if the new value is empty, nothing needs to be done
-    if (updatedValue === '') {
-      return;
-    }
 
     // Remember the original value and then,
     // make the value lowercase for comparison
@@ -986,11 +981,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         // where the total length is equal to pending option length OR
         // the live value in the underlying input matches the pending option; update the state
         if (
-          currentPendingValue.toLocaleLowerCase() === pendingOptionText ||
+          (currentPendingValue && currentPendingValue.toLocaleLowerCase() === pendingOptionText) ||
           ((autoComplete &&
-            pendingOptionText.indexOf(currentPendingValue.toLocaleLowerCase()) === 0 &&
+            pendingOptionText.indexOf(currentPendingValue ? currentPendingValue.toLocaleLowerCase() : '') === 0 &&
             (this._autofill.current &&
               this._autofill.current.isValueSelected &&
+              currentPendingValue &&
               currentPendingValue.length +
                 (this._autofill.current.selectionEnd! - this._autofill.current.selectionStart!) ===
                 pendingOptionText.length)) ||
@@ -1015,7 +1011,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         }
       } else {
         // If we are not controlled, create a new option
-        const newOption: IComboBoxOption = { key: currentPendingValue, text: currentPendingValue };
+        const newOption: IComboBoxOption = { key: currentPendingValue || '', text: currentPendingValue || '' };
         const newOptions: IComboBoxOption[] = [...currentOptions, newOption];
         if (selectedIndices) {
           if (!this.props.multiSelect) {
