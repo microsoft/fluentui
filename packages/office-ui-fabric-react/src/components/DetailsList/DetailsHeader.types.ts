@@ -6,13 +6,14 @@ import { ITheme, IStyle } from '../../Styling';
 import { DetailsHeaderBase } from './DetailsHeader.base';
 import { IColumn, DetailsListLayoutMode, IColumnReorderOptions, ColumnDragEndLocation } from './DetailsList.types';
 import { ICellStyleProps, IDetailsItemProps } from './DetailsRow.types';
+import { ISelection, SelectionMode } from '../../utilities/selection/index';
 
 export interface IDetailsHeader {
   /** sets focus into the header */
   focus: () => boolean;
 }
 
-export interface IDetailsHeaderProps extends React.Props<DetailsHeaderBase>, IDetailsItemProps {
+export interface IDetailsHeaderBaseProps extends React.Props<DetailsHeaderBase>, IDetailsItemProps {
   /** Theme from the Higher Order Component */
   theme?: ITheme;
 
@@ -75,6 +76,23 @@ export interface IDetailsHeaderProps extends React.Props<DetailsHeaderBase>, IDe
 
   /** Overriding class name */
   className?: string;
+}
+
+export interface IDetailsHeaderProps extends IDetailsHeaderBaseProps {
+  /**
+   * Column metadata
+   */
+  columns: IColumn[];
+
+  /**
+   * Selection from utilities
+   */
+  selection: ISelection;
+
+  /**
+   * Selection mode
+   */
+  selectionMode: SelectionMode;
 }
 
 export enum SelectAllVisibility {

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Thu, 23 Aug 2018 10:28:17 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Aug 2018 17:02:14 GMT and should not be manually modified.
+
+## 0.4.0
+Fri, 24 Aug 2018 17:02:14 GMT
+
+### Minor changes
+
+- Reverting Customizer React 16 context change.
 
 ## 0.3.0
 Thu, 23 Aug 2018 10:28:17 GMT

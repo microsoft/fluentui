@@ -4,7 +4,7 @@ import { IFontVariants, IFontSizes, IFontWeights, IFontFamilies, IStyle } from '
 import { ISemanticTextColors, IPalette, ITheme } from '@uifabric/experiments/lib/Styling';
 import {
   createStatelessComponent,
-  IStyleableComponentProps,
+  IStyleableComponent,
   IViewComponentProps
 } from '@uifabric/experiments/lib/Foundation';
 
@@ -64,7 +64,7 @@ interface ITableStyles {
 }
 
 // Note I intuitively tried to extend IStyleableComponentProps... this was confusing.
-interface ITableProps extends IStyleableComponentProps<ITableProps, ITableStyles> {
+interface ITableProps extends IStyleableComponent<ITableProps, ITableStyles> {
   className?: string;
   title: string;
   headers: string[];

@@ -47,7 +47,7 @@
   }
 
   .preview {
-    border-bottom: none;   // Remove the usual border from the preview
+    border-bottom: none; // Remove the usual border from the preview
     max-height: 106px;
     max-width: 144px;
 
@@ -68,16 +68,15 @@
   }
 
   .title {
-      padding: 12px 16px 8px 16px;
-      @include ms-font-m-plus;
-      line-height: 16px;
+    padding: 12px 16px 8px 16px;
+    @include ms-font-m-plus;
+    line-height: 16px;
   }
 
   .activity {
     padding-bottom: 12px;
   }
 }
-
 
 /** Actions **/
 $ms-DocumentCardActions-actionSize: 34px;
@@ -113,14 +112,13 @@ $ms-DocumentCardActions-verticalPadding: 4px;
 .views {
   @include text-align(right);
   line-height: $ms-DocumentCardActions-actionSize;
-
-  :global(.ms-Icon) {
-    @include ms-margin-right(4px);
-    font-size: $ms-icon-size-m;
-    vertical-align: top;
-  }
 }
 
+.viewsIcon {
+  @include ms-margin-right(8px);
+  font-size: $ms-icon-size-m;
+  vertical-align: top;
+}
 
 /** Activity **/
 $ms-DocumentCardActivity-horizontalPadding: 16px;
@@ -139,7 +137,10 @@ $ms-DocumentCardActivity-personaTextGutter: 8px;
   }
 
   .activityDetails {
-    @include ms-left($ms-DocumentCardActivity-horizontalPadding + ($ms-DocumentCardActivity-imageSize * 1.5) + $ms-DocumentCardActivity-personaTextGutter);
+    @include ms-left(
+      $ms-DocumentCardActivity-horizontalPadding + ($ms-DocumentCardActivity-imageSize * 1.5) +
+        $ms-DocumentCardActivity-personaTextGutter
+    );
   }
 }
 
@@ -169,11 +170,17 @@ $ms-DocumentCardActivity-personaTextGutter: 8px;
 }
 
 .activityDetails {
-  @include ms-left($ms-DocumentCardActivity-horizontalPadding + $ms-DocumentCardActivity-imageSize + $ms-DocumentCardActivity-personaTextGutter);
+  @include ms-left(
+    $ms-DocumentCardActivity-horizontalPadding + $ms-DocumentCardActivity-imageSize +
+      $ms-DocumentCardActivity-personaTextGutter
+  );
   height: $ms-DocumentCardActivity-imageSize;
   position: absolute;
   top: $ms-DocumentCardActivity-verticalPadding;
-  width: calc(100% - #{$ms-DocumentCardActivity-horizontalPadding + $ms-DocumentCardActivity-imageSize + $ms-DocumentCardActivity-personaTextGutter + $ms-DocumentCardActivity-horizontalPadding});
+  width: calc(
+    100% - #{$ms-DocumentCardActivity-horizontalPadding + $ms-DocumentCardActivity-imageSize +
+      $ms-DocumentCardActivity-personaTextGutter + $ms-DocumentCardActivity-horizontalPadding}
+  );
 }
 
 .name,
@@ -211,7 +218,6 @@ $ms-DocumentCardActivity-personaTextGutter: 8px;
   }
 }
 
-
 /** Preview **/
 .preview {
   border-bottom: 1px solid $ms-color-neutralLight;
@@ -227,7 +233,7 @@ $ms-DocumentCardActivity-personaTextGutter: 8px;
 .previewIconContainer {
   display: flex;
   align-items: center;
-  justify-content: center
+  justify-content: center;
 }
 
 .icon {

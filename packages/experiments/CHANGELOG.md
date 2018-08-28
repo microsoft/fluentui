@@ -1,6 +1,20 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 24 Aug 2018 10:26:08 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Aug 2018 10:23:58 GMT and should not be manually modified.
+
+## 6.27.1
+Tue, 28 Aug 2018 10:23:58 GMT
+
+### Patches
+
+- Experiments: Add theming examples page for documentation and to prep for testing schemes.
+
+## 6.27.0
+Fri, 24 Aug 2018 17:02:14 GMT
+
+### Minor changes
+
+- Reverting Customizer React 16 context change.
 
 ## 6.26.0
 Fri, 24 Aug 2018 10:26:08 GMT

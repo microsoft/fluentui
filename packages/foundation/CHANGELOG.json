@@ -2,6 +2,20 @@
   "name": "@uifabric/foundation",
   "entries": [
     {
+      "version": "0.4.0",
+      "tag": "@uifabric/foundation_v0.4.0",
+      "date": "Fri, 24 Aug 2018 17:02:14 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "63835ddd705e2350aa025ea69b041f28a3be5e19",
+            "comment": "Reverting Customizer React 16 context change."
+          }
+        ]
+      }
+    },
+    {
       "version": "0.3.0",
       "tag": "@uifabric/foundation_v0.3.0",
       "date": "Thu, 23 Aug 2018 10:28:17 GMT",

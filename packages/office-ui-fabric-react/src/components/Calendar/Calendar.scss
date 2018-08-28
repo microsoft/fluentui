@@ -290,6 +290,7 @@ $Calendar-dayPicker-margin: 10px;
   align-self: flex-end;
 }
 
+.closeButton,
 .prevMonth,
 .nextMonth,
 .prevYear,
@@ -469,6 +470,7 @@ $Calendar-dayPicker-margin: 10px;
     line-height: $Calendar-day;
     font-size: $ms-font-size-s;
   } // Reduce the size of arrows to change month/year.
+  .closeButton,
   .prevMonth,
   .nextMonth,
   .prevYear,
@@ -647,6 +649,7 @@ $Calendar-dayPicker-margin: 10px;
   width: auto;
 }
 
+.closeButton,
 .nextMonth,
 .prevMonth,
 .nextYear,

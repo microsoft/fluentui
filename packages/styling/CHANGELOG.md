@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Fri, 24 Aug 2018 10:26:08 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Aug 2018 10:27:43 GMT and should not be manually modified.
+
+## 6.19.0
+Mon, 27 Aug 2018 10:27:43 GMT
+
+### Minor changes
+
+- Added ScreenWidthMinUhfMobile constant
 
 ## 6.18.0
 Fri, 24 Aug 2018 10:26:08 GMT

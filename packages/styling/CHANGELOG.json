@@ -2,6 +2,25 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "6.19.0",
+      "tag": "@uifabric/styling_v6.19.0",
+      "date": "Mon, 27 Aug 2018 10:27:43 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "55d59941b04c97f4e40cd4f8cb197289279185a0",
+            "comment": "Added ScreenWidthMinUhfMobile constant"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.7.0 <7.0.0` to `>=6.8.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.18.0",
       "tag": "@uifabric/styling_v6.18.0",
       "date": "Fri, 24 Aug 2018 10:26:08 GMT",
