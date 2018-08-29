@@ -3,7 +3,7 @@
 exports[`Checkbox renders Checkbox correctly 1`] = `
 <button
   aria-checked={false}
-  aria-describedby="descriptionID"
+  aria-describedby={undefined}
   aria-disabled={undefined}
   aria-label={undefined}
   aria-labelledby={undefined}
