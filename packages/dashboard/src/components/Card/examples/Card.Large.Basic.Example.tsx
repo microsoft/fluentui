@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { IChartProps as IChartingProps } from '@uifabric/charting';
 import {
   Card,
   CardContentType,
@@ -6,6 +7,7 @@ import {
   ChartType,
   IAction,
   ICardProps,
+  IChartProps,
   IGridRow,
   IGridColumn,
   GridColumnContentType,
@@ -93,26 +95,45 @@ export class LargeCardBasicExample extends React.Component<{}, {}> {
     const isHeaderVisible = false;
 
     const actionButtonText = 'more';
-
-    const datapoints = [
-      { x: 0, y: 10 },
-      { x: 6, y: 18 },
-      { x: 12, y: 36 },
-      { x: 21, y: 20 },
-      { x: 29, y: 46 },
-      { x: 34, y: 25 },
-      { x: 40, y: 13 },
-      { x: 48, y: 43 },
-      { x: 57, y: 30 },
-      { x: 64, y: 45 },
-      { x: 72, y: 12 },
-      { x: 78, y: 50 },
-      { x: 85, y: 25 },
-      { x: 90, y: 43 },
-      { x: 96, y: 22 },
-      { x: 100, y: 19 }
+    const data: IChartingProps[] = [
+      {
+        chartTitle: 'one',
+        chartData: [{ legend: 'one', data: 13888, color: '#0078D4' }]
+      },
+      {
+        chartTitle: 'two',
+        chartData: [{ legend: 'two', data: 800, color: '#13A89E' }]
+      },
+      {
+        chartTitle: 'three',
+        chartData: [{ legend: 'three', data: 8888, color: '#9D02D7' }]
+      },
+      {
+        chartTitle: 'four',
+        chartData: [{ legend: 'four', data: 15888, color: '#79B3DC' }]
+      },
+      {
+        chartTitle: 'five',
+        chartData: [{ legend: 'five', data: 11444, color: '#9198C2' }]
+      },
+      {
+        chartTitle: 'six',
+        chartData: [{ legend: 'six', data: 14000, color: '#00AE56' }]
+      },
+      {
+        chartTitle: 'seven',
+        chartData: [{ legend: 'seven', data: 9855, color: '#0078D7' }]
+      },
+      {
+        chartTitle: 'eight',
+        chartData: [{ legend: 'eight', data: 4250, color: '#0B6A0B' }]
+      }
     ];
 
+    const chartContent: IChartProps = {
+      chartType: ChartType.StackedBarChart,
+      chartData: data
+    };
     const contentAreaList = [
       {
         priority: Priority.Priority2,
@@ -131,12 +152,7 @@ export class LargeCardBasicExample extends React.Component<{}, {}> {
       {
         priority: Priority.Priority1,
         cardContentType: CardContentType.Chart,
-        content: {
-          chartLabels: ['My first chart!'],
-          chartType: ChartType.HorizontalBarChart,
-          dataPoints: datapoints,
-          legendColors: [{ legendText: 'first', legendColor: 'red' }, { legendText: 'second', legendColor: 'yellow' }]
-        }
+        content: chartContent
       }
     ];
 
