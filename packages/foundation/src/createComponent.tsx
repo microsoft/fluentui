@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { assign } from './utilities';
 
 /**
  * Props contract for themed components.
@@ -74,7 +75,6 @@ export interface IStylingProviders<TViewProps, TStyleSet, TProcessedStyleSet, TC
   mergeStyleSets: (...styles: (Partial<TStyleSet> | undefined)[]) => TProcessedStyleSet;
   getCustomizations: (scope: string, context: TContext) => IStyleableComponent<TViewProps, TStyleSet, TTheme>;
   // TODO: remove any if possible
-  // tslint:disable-next-line:no-any
   CustomizableContextTypes: any;
 }
 
@@ -144,20 +144,21 @@ export function createComponent<
       // The approach here is to allow state components to provide only the props they care about, automatically
       //    merging user props and processed props together. This ensures all props are passed properly to view,
       //    including children and styles.
+      // TODO: Should 'rest' props from customizations pass onto view? They are not currently.
+      //          (items like theme seem like they shouldn't)
       const propStyles = processedProps.styles || userProps.styles;
-      const themedProps: TProcessedProps = Object.assign({}, rest, userProps, processedProps);
-      const viewProps: IViewComponentProps<TProcessedProps, TProcessedStyleSet> = Object.assign(
-        {},
-        processedProps,
-        userProps,
-        {
+      const styleProps: TProcessedProps = { ...rest, ...(processedProps as any), ...(userProps as any) };
+      const viewProps: IViewComponentProps<TProcessedProps, TProcessedStyleSet> = {
+        ...(processedProps as any),
+        ...(userProps as any),
+        ...{
           classNames: providers.mergeStyleSets(
-            _evaluateStyle(themedProps, options.styles),
-            _evaluateStyle(themedProps, contextStyles),
-            _evaluateStyle(themedProps, propStyles)
+            _evaluateStyle(styleProps, options.styles),
+            _evaluateStyle(styleProps, contextStyles),
+            _evaluateStyle(styleProps, propStyles)
           )
         }
-      );
+      };
 
       // TODO: consider rendering view as JSX component with display name in debug mode to aid in debugging
       return options.view(viewProps);
@@ -169,7 +170,7 @@ export function createComponent<
   result.contextTypes = providers.CustomizableContextTypes;
   result.displayName = options.displayName;
 
-  Object.assign(result, options.statics);
+  assign(result, options.statics);
 
   // Later versions of TypeSript should allow us to merge objects in a type safe way and avoid this cast.
   return result as React.StatelessComponent<TComponentProps> & TStatics;
@@ -200,15 +201,20 @@ export function createStatelessComponent<
     const { styles: contextStyles, ...rest } = settings;
 
     const content = (processedProps: TProcessedProps) => {
+      // TODO: Should 'rest' props from customizations pass onto view? They are not currently.
+      //          (items like theme seem like they shouldn't)
       const { styles: propStyles } = processedProps;
-      const themedProps: TProcessedProps = Object.assign({}, rest, processedProps);
-      const viewProps: IViewComponentProps<TProcessedProps, TProcessedStyleSet> = Object.assign({}, processedProps, {
-        classNames: providers.mergeStyleSets(
-          _evaluateStyle(themedProps, options.styles),
-          _evaluateStyle(themedProps, contextStyles),
-          _evaluateStyle(themedProps, propStyles)
-        )
-      });
+      const styleProps: TProcessedProps = { ...rest, ...(processedProps as any) };
+      const viewProps: IViewComponentProps<TProcessedProps, TProcessedStyleSet> = {
+        ...(processedProps as any),
+        ...{
+          classNames: providers.mergeStyleSets(
+            _evaluateStyle(styleProps, options.styles),
+            _evaluateStyle(styleProps, contextStyles),
+            _evaluateStyle(styleProps, propStyles)
+          )
+        }
+      };
 
       // TODO: consider rendering view as JSX component with display name in debug mode to aid in debugging
       return options.view(viewProps);
@@ -219,7 +225,8 @@ export function createStatelessComponent<
 
   result.contextTypes = providers.CustomizableContextTypes;
   result.displayName = options.displayName;
-  Object.assign(result, options.statics);
+
+  assign(result, options.statics);
 
   // Later versions of TypeSript should allow us to merge objects in a type safe way and avoid this cast.
   return result as React.StatelessComponent<TComponentProps> & TStatics;

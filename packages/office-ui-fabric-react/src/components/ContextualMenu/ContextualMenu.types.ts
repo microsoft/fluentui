@@ -238,6 +238,14 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
    * once the ContextualMenu is visible.
    */
   hidden?: boolean;
+
+  /**
+   * If true, the contextual menu will not be updated until
+   * focus enters the menu via other means. This will only result
+   * in different behavior when shouldFocusOnMount = false
+   * @default null
+   */
+  delayUpdateFocusOnHover?: boolean;
 }
 
 export interface IContextualMenuItem {

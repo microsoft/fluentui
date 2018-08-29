@@ -22,7 +22,7 @@ export interface ITeachingBubbleProps
   extends React.Props<TeachingBubbleBase | TeachingBubbleContentBase>,
     IAccessiblePopupProps {
   /**
-   * Optional callback to access the ISlider interface. Use this instead of ref for accessing
+   * Optional callback to access the ITeachingBubble interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
   componentRef?: IRefObject<ITeachingBubble>;

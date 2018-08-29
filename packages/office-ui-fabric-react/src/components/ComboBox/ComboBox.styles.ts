@@ -311,6 +311,8 @@ export const getStyles = memoizeFunction(
       rootDisallowFreeForm: {},
 
       input: {
+        backgroundColor: ComboBoxRootBackground,
+        color: ComboBoxRootTextColor,
         boxSizing: 'border-box',
         width: '100%',
         height: '28px',

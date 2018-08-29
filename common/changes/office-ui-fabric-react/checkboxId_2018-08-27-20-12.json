@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Callout: Pass divProperties into root",
-      "type": "minor"
+      "comment": "Checkbox: use id passed in if provided",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "mgodbolt@microsoft.com"
+  "email": "naethell@microsoft.com"
 }

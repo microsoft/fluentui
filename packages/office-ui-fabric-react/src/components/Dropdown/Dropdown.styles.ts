@@ -298,6 +298,6 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
         textAlign: 'left'
       }
     ],
-    subComponentStyles: { label: { root: { display: 'inline-block', marginBottom: 8 } } }
+    subComponentStyles: { label: { root: { display: 'inline-block' } } }
   };
 };

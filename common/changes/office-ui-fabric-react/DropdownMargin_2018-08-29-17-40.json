@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Panel: set the content height to window.innerHeight on iOS",
+      "comment": "Remove unnecessary margin on dropdown",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "kakje@microsoft.com"
+  "email": "savannahkbourgeois@gmail.com"
 }

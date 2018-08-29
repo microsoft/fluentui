@@ -18,7 +18,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             box-sizing: border-box;
             color: #333333;
             display: inline-block;
-            margin-bottom: 8px;
+            margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
             margin-top: 0px;
@@ -351,7 +351,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             box-sizing: border-box;
             color: #333333;
             display: inline-block;
-            margin-bottom: 8px;
+            margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
             margin-top: 0px;
@@ -555,7 +555,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             box-sizing: border-box;
             color: #333333;
             display: inline-block;
-            margin-bottom: 8px;
+            margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
             margin-top: 0px;
@@ -764,7 +764,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             box-sizing: border-box;
             color: #333333;
             display: inline-block;
-            margin-bottom: 8px;
+            margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
             margin-top: 0px;
@@ -970,7 +970,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             box-sizing: border-box;
             color: #333333;
             display: inline-block;
-            margin-bottom: 8px;
+            margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
             margin-top: 0px;
@@ -1179,7 +1179,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             box-sizing: border-box;
             color: #333333;
             display: inline-block;
-            margin-bottom: 8px;
+            margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
             margin-top: 0px;

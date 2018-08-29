@@ -1,16 +1,22 @@
 import * as React from 'react';
-import { Legends } from '../Legends';
+import { Legends, ILegend } from '../index';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export class LegendBasicExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
-    const legends = [
+    const legends: ILegend[] = [
       {
-        title: 'Legend 1',
+        title: 'fsd 1',
         color: DefaultPalette.blue,
         action: () => {
           console.log('click from LegendsPage');
           alert('Legend1 clicked');
+        },
+        onMouseOutAction: () => {
+          console.log('On mouse out action');
+        },
+        hoverAction: () => {
+          console.log('hover action');
         }
       },
       {
@@ -18,6 +24,9 @@ export class LegendBasicExample extends React.Component<{}, {}> {
         color: DefaultPalette.red,
         action: () => {
           alert('Legend2 clicked');
+        },
+        hoverAction: () => {
+          console.log('hover action');
         }
       },
       {
@@ -25,6 +34,9 @@ export class LegendBasicExample extends React.Component<{}, {}> {
         color: DefaultPalette.green,
         action: () => {
           alert('Legend3 clicked');
+        },
+        hoverAction: () => {
+          console.log('hover action');
         }
       },
       {
@@ -32,6 +44,9 @@ export class LegendBasicExample extends React.Component<{}, {}> {
         color: DefaultPalette.yellow,
         action: () => {
           alert('Legend4 clicked');
+        },
+        hoverAction: () => {
+          console.log('hover action');
         }
       }
     ];
