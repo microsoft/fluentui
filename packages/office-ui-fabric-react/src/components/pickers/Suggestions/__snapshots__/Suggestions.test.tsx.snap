@@ -33,7 +33,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 color: #333333;
                 cursor: pointer;
@@ -139,7 +139,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 color: #333333;
                 cursor: pointer;
@@ -245,7 +245,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 color: #333333;
                 cursor: pointer;
@@ -351,7 +351,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 color: #333333;
                 cursor: pointer;
@@ -457,7 +457,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 color: #333333;
                 cursor: pointer;
@@ -563,7 +563,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 color: #333333;
                 cursor: pointer;
@@ -669,7 +669,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 color: #333333;
                 cursor: pointer;
@@ -775,7 +775,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 color: #333333;
                 cursor: pointer;
@@ -881,7 +881,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 color: #333333;
                 cursor: pointer;
@@ -987,7 +987,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 color: #333333;
                 cursor: pointer;
@@ -1093,7 +1093,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 color: #333333;
                 cursor: pointer;
@@ -1199,7 +1199,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 color: #333333;
                 cursor: pointer;
@@ -1305,7 +1305,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 color: #333333;
                 cursor: pointer;
@@ -1411,7 +1411,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 color: #333333;
                 cursor: pointer;
@@ -1517,7 +1517,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 color: #333333;
                 cursor: pointer;
@@ -1642,7 +1642,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 color: #333333;
                 cursor: pointer;
@@ -1748,7 +1748,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 color: #333333;
                 cursor: pointer;
@@ -1854,7 +1854,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 color: #333333;
                 cursor: pointer;
@@ -1960,7 +1960,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 color: #333333;
                 cursor: pointer;
@@ -2066,7 +2066,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 color: #333333;
                 cursor: pointer;
@@ -2172,7 +2172,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 color: #333333;
                 cursor: pointer;
@@ -2278,7 +2278,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 color: #333333;
                 cursor: pointer;
@@ -2384,7 +2384,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 color: #333333;
                 cursor: pointer;
@@ -2490,7 +2490,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 color: #333333;
                 cursor: pointer;
@@ -2596,7 +2596,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 color: #333333;
                 cursor: pointer;
@@ -2702,7 +2702,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 color: #333333;
                 cursor: pointer;
@@ -2808,7 +2808,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 color: #333333;
                 cursor: pointer;
@@ -2914,7 +2914,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 color: #333333;
                 cursor: pointer;
@@ -3020,7 +3020,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 color: #333333;
                 cursor: pointer;
@@ -3126,7 +3126,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 color: #333333;
                 cursor: pointer;
