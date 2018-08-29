@@ -13,6 +13,7 @@ import {
   GridColumnContentType,
   Priority
 } from '@uifabric/dashboard';
+import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export class LargeCardBasicExample extends React.Component<{}, {}> {
   constructor(props: ICardProps) {
@@ -98,35 +99,35 @@ export class LargeCardBasicExample extends React.Component<{}, {}> {
     const data: IChartingProps[] = [
       {
         chartTitle: 'one',
-        chartData: [{ legend: 'one', data: 13888, color: '#0078D4' }]
+        chartData: [{ legend: 'one', data: 13888, color: DefaultPalette.tealDark }]
       },
       {
         chartTitle: 'two',
-        chartData: [{ legend: 'two', data: 800, color: '#13A89E' }]
+        chartData: [{ legend: 'two', data: 800, color: DefaultPalette.purple }]
       },
       {
         chartTitle: 'three',
-        chartData: [{ legend: 'three', data: 8888, color: '#9D02D7' }]
+        chartData: [{ legend: 'three', data: 8888, color: DefaultPalette.redDark }]
       },
       {
         chartTitle: 'four',
-        chartData: [{ legend: 'four', data: 15888, color: '#79B3DC' }]
+        chartData: [{ legend: 'four', data: 15888, color: DefaultPalette.themeDarkAlt }]
       },
       {
         chartTitle: 'five',
-        chartData: [{ legend: 'five', data: 11444, color: '#9198C2' }]
+        chartData: [{ legend: 'five', data: 11444, color: DefaultPalette.themePrimary }]
       },
       {
         chartTitle: 'six',
-        chartData: [{ legend: 'six', data: 14000, color: '#00AE56' }]
+        chartData: [{ legend: 'six', data: 14000, color: DefaultPalette.whiteTranslucent40 }]
       },
       {
         chartTitle: 'seven',
-        chartData: [{ legend: 'seven', data: 9855, color: '#0078D7' }]
+        chartData: [{ legend: 'seven', data: 9855, color: DefaultPalette.accent }]
       },
       {
         chartTitle: 'eight',
-        chartData: [{ legend: 'eight', data: 4250, color: '#0B6A0B' }]
+        chartData: [{ legend: 'eight', data: 4250, color: DefaultPalette.blueLight }]
       }
     ];
 
