@@ -33,8 +33,8 @@ export class DonutChartBase extends React.Component<
       showHover: false,
       value: '',
       legend: '',
-      _width: this.props.width! || 200,
-      _height: this.props.height! || 200
+      _width: this.props.width || 200,
+      _height: this.props.height || 200
     };
     this._hoverCallback = this._hoverCallback.bind(this);
     this._hoverLeave = this._hoverLeave.bind(this);
