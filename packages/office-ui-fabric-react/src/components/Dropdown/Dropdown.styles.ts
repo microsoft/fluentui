@@ -43,7 +43,12 @@ const highContrastItemAndTitleStateMixin: IRawStyle = {
     [HighContrastSelector]: {
       backgroundColor: 'Highlight',
       borderColor: 'Highlight',
-      color: 'Highlight'
+      color: 'HighlightText',
+      selectors: {
+        ':hover': {
+          color: 'HighlightText' // overrides the hover styling for buttons that are also selected
+        }
+      }
     },
     ...highContrastAdjustMixin
   }

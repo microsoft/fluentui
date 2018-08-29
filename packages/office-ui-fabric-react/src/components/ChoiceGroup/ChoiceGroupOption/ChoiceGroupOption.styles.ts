@@ -1,4 +1,5 @@
 import { FontSizes, FontWeights, HighContrastSelector, IStyle, IPalette, getGlobalClassNames } from '../../../Styling';
+import { IsFocusVisibleClassName } from '../../../Utilities';
 import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from './ChoiceGroupOption.types';
 
 const GlobalClassNames = {
@@ -25,7 +26,7 @@ function getChoiceGroupFocusStyle(palette: Partial<IPalette>, hasIconOrImage?: b
     'is-inFocus',
     {
       selectors: {
-        '.ms-Fabric.is-focusVisible &': {
+        [`.${IsFocusVisibleClassName} &`]: {
           position: 'relative',
           outline: 'transparent',
           selectors: {

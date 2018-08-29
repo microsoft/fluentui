@@ -138,14 +138,14 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
       className=
           ms-ChoiceField-wrapper
           is-inFocus
-          .ms-Fabric.is-focusVisible & {
+          .ms-Fabric--isFocusVisible & {
             outline: transparent;
             position: relative;
           }
-          .ms-Fabric.is-focusVisible &::-moz-focus-inner {
+          .ms-Fabric--isFocusVisible &::-moz-focus-inner {
             border: 0px;
           }
-          .ms-Fabric.is-focusVisible &:after {
+          .ms-Fabric--isFocusVisible &:after {
             border: 1px solid #333333;
             bottom: -2px;
             content: "";
@@ -155,7 +155,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             right: -2px;
             top: -2px;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:after {
+          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:after {
             border-color: WindowText;
             border-width: 2px;
           }
@@ -270,14 +270,14 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
       className=
           ms-ChoiceField-wrapper
           is-inFocus
-          .ms-Fabric.is-focusVisible & {
+          .ms-Fabric--isFocusVisible & {
             outline: transparent;
             position: relative;
           }
-          .ms-Fabric.is-focusVisible &::-moz-focus-inner {
+          .ms-Fabric--isFocusVisible &::-moz-focus-inner {
             border: 0px;
           }
-          .ms-Fabric.is-focusVisible &:after {
+          .ms-Fabric--isFocusVisible &:after {
             border: 1px solid #333333;
             bottom: -2px;
             content: "";
@@ -287,7 +287,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             right: -2px;
             top: -2px;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:after {
+          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:after {
             border-color: WindowText;
             border-width: 2px;
           }
@@ -856,14 +856,14 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
       className=
           ms-ChoiceField-wrapper
           is-inFocus
-          .ms-Fabric.is-focusVisible & {
+          .ms-Fabric--isFocusVisible & {
             outline: transparent;
             position: relative;
           }
-          .ms-Fabric.is-focusVisible &::-moz-focus-inner {
+          .ms-Fabric--isFocusVisible &::-moz-focus-inner {
             border: 0px;
           }
-          .ms-Fabric.is-focusVisible &:after {
+          .ms-Fabric--isFocusVisible &:after {
             border: 1px solid #666666;
             bottom: -2px;
             content: "";
@@ -873,7 +873,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             right: -2px;
             top: -2px;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:after {
+          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:after {
             border-color: WindowText;
             border-width: 1px;
           }
