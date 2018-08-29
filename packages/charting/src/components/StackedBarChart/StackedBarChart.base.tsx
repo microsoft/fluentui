@@ -108,7 +108,6 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       theme: theme!,
       width: width!,
       barHeight: barHeight!,
-      isMultiStackedBarChart: isMultiStackedBarChart,
       className
     });
   }
@@ -147,9 +146,16 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       }
       value = (pointData / total) * 100;
       startingPoint.push(prevPosition);
+      const isSelected = this.state.legendSelected === point.legend!;
+      const styles = this.props.styles;
+      this._classNames = getClassNames(styles!, {
+        isSelected: isSelected,
+        isChartSelected: this.state.isCalloutVisible
+      });
       return (
         <g
           key={index}
+          className={this._classNames.opacityChangeOnHover}
           ref={(e: SVGGElement) => {
             this._refCallback(e, legend.title);
           }}

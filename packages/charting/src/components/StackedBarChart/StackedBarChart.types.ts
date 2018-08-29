@@ -57,7 +57,7 @@ export interface IStackedBarChartStyleProps {
   /**
    * Theme (provided through customization.)
    */
-  theme: ITheme;
+  theme?: ITheme;
 
   /**
    * Additional CSS class(es) to apply to the StackedBarChart.
@@ -67,16 +67,27 @@ export interface IStackedBarChartStyleProps {
   /**
    * Width of the chart.
    */
-  width: number;
+  width?: number;
 
   /**
    * Height of bar in the chart.
    */
   barHeight?: number;
 
-  isMultiStackedBarChart?: boolean;
-
+  /**
+   * prop to show data of the chart with appropriate legend color
+   */
   legendColor?: string;
+
+  /**
+   * prop to check if the chart is selcted or hovered upon to determine opacity
+   */
+  isSelected?: boolean;
+
+  /**
+   * prop to check which specific section of the stacked bar chart is selected or hovered upon
+   */
+  isChartSelected?: boolean;
 }
 
 export interface IStackedBarChartStyles {
@@ -114,4 +125,9 @@ export interface IStackedBarChartStyles {
    * Style for the root of the hover card
    */
   hoverCardRoot: IStyle;
+
+  /**
+   * Style to change the opacity of bars in dataviz when we hover on a single bar or legends
+   */
+  opacityChangeOnHover: IStyle;
 }

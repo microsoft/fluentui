@@ -2,7 +2,7 @@ import { IMultiStackedBarChartStyles } from '@uifabric/charting/lib/StackedBarCh
 import { IMultiStackedBarChartStyleProps } from './MultiStackedBarChart.types';
 
 export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleProps): IMultiStackedBarChartStyles => {
-  const { className, width, barHeight, legendColor } = props;
+  const { className, width, barHeight, legendColor, isSelected, isChartSelected } = props;
   return {
     root: [
       'ms-StackedBarChart',
@@ -18,7 +18,7 @@ export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleP
     },
     chart: {
       width: '100%',
-      height: barHeight
+      height: barHeight ? barHeight : 16
     },
     chartTitle: {
       display: 'flex',
@@ -50,6 +50,9 @@ export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleP
       paddingRight: '22px',
       paddingTop: '15px',
       paddingBottom: '8px'
+    },
+    opacityChangeOnHover: {
+      opacity: isChartSelected ? (isSelected ? '' : '0.6') : ''
     }
   };
 };

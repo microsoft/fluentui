@@ -1,7 +1,7 @@
 import { IStackedBarChartStyleProps, IStackedBarChartStyles } from './StackedBarChart.types';
 
 export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartStyles => {
-  const { className, width, barHeight, isMultiStackedBarChart, legendColor } = props;
+  const { className, width, barHeight, legendColor, isSelected, isChartSelected } = props;
   return {
     root: [
       'ms-StackedBarChart',
@@ -14,8 +14,8 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
     ],
     chart: {
       width: '100%',
-      height: barHeight,
-      marginBottom: isMultiStackedBarChart ? '' : '13px'
+      height: barHeight ? barHeight : 16,
+      marginBottom: '13px'
     },
     chartTitle: {
       display: 'flex',
@@ -43,6 +43,9 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
       paddingRight: '22px',
       paddingTop: '15px',
       paddingBottom: '8px'
+    },
+    opacityChangeOnHover: {
+      opacity: isChartSelected ? (isSelected ? '' : '0.6') : ''
     }
   };
 };
