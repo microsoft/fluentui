@@ -51,10 +51,15 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   options: IComboBoxOption[];
 
   /**
-   * Callback issues when either:
+   * Callback issued when either:
    * 1) the selected option changes
    * 2) a manually edited value is submitted. In this case there may not be a matched option if allowFreeform is also true
    *    (and hence only value would be true, the other parameter would be null in this case)
+   */
+  onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
+
+  /**
+   * @deprecated Use onChange instead.
    */
   onChanged?: (option?: IComboBoxOption, index?: number, value?: string, submitPendingValueEvent?: any) => void;
 

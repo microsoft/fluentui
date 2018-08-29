@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { concatStyleSets, IStyleSet, IStyleFunctionOrObject, IConcatenatedStyleSet } from '@uifabric/merge-styles';
-import { Customizations } from './Customizations';
-import { CustomizerContext, ICustomizerContext } from './Customizer';
+import { IStyleFunction } from './IStyleFunction';
+import { CustomizableContextTypes } from './customizable';
+import { Customizations, ICustomizations } from './Customizations';
 
 export interface IPropsWithStyles<TStyleProps, TStyleSet extends IStyleSet<TStyleSet>> {
   styles?: IStyleFunctionOrObject<TStyleProps, TStyleSet>;
@@ -48,26 +49,24 @@ export function styled<
   getProps?: (props: TComponentProps) => Partial<TComponentProps>,
   customizable?: ICustomizableProps
 ): (props: TComponentProps) => JSX.Element {
-  const Wrapped: React.StatelessComponent<TComponentProps> = (componentProps: TComponentProps) => {
+  const Wrapped: React.StatelessComponent<TComponentProps> = (
+    componentProps: TComponentProps,
+    context: { customizations: ICustomizations }
+  ) => {
     customizable = customizable || { scope: '', fields: undefined };
 
     const { scope, fields = DefaultFields } = customizable;
+    const settings = Customizations.getSettings(fields, scope, context.customizations);
+    const { styles: customizedStyles, ...rest } = settings;
+    const styles = (styleProps: TStyleProps) =>
+      _resolve(styleProps, baseStyles, customizedStyles, componentProps.styles);
 
-    return (
-      <CustomizerContext.Consumer>
-        {(context: ICustomizerContext) => {
-          const settings = Customizations.getSettings(fields, scope, context.customizations);
-          const { styles: customizedStyles, ...rest } = settings;
-          const styles = (styleProps: TStyleProps) =>
-            _resolve(styleProps, baseStyles, customizedStyles, componentProps.styles);
+    const additionalProps = getProps ? getProps(componentProps) : undefined;
 
-          const additionalProps = getProps ? getProps(componentProps) : undefined;
-          return <Component {...rest} {...additionalProps} {...componentProps} styles={styles} />;
-        }}
-      </CustomizerContext.Consumer>
-    );
+    return <Component {...rest} {...additionalProps} {...componentProps} styles={styles} />;
   };
 
+  Wrapped.contextTypes = CustomizableContextTypes;
   Wrapped.displayName = `Styled${Component.displayName || Component.name}`;
 
   return Wrapped as (props: TComponentProps) => JSX.Element;

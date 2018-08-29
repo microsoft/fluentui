@@ -29,7 +29,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
 
     >
       <input
-        aria-labelledby={undefined}
         checked={undefined}
         className=
             ms-ChoiceField-input
@@ -162,7 +161,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           }
     >
       <input
-        aria-labelledby={undefined}
         checked={undefined}
         className=
             ms-ChoiceField-input
@@ -295,7 +293,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           }
     >
       <input
-        aria-labelledby={undefined}
         checked={true}
         className=
             ms-ChoiceField-input
@@ -418,7 +415,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
 
     >
       <input
-        aria-labelledby={undefined}
         checked={undefined}
         className=
             ms-ChoiceField-input
@@ -527,7 +523,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
 
     >
       <input
-        aria-labelledby={undefined}
         checked={true}
         className=
             ms-ChoiceField-input
@@ -651,7 +646,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
 
     >
       <input
-        aria-labelledby={undefined}
         checked={undefined}
         className=
             ms-ChoiceField-input
@@ -885,7 +879,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           }
     >
       <input
-        aria-labelledby={undefined}
         checked={undefined}
         className=
             ms-ChoiceField-input
@@ -1098,7 +1091,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
 
     >
       <input
-        aria-labelledby={undefined}
         checked={true}
         className=
             ms-ChoiceField-input
@@ -1322,7 +1314,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
 
     >
       <input
-        aria-labelledby={undefined}
         checked={undefined}
         className=
             ms-ChoiceField-input

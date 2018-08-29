@@ -68,7 +68,12 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
   disabled?: boolean;
 
   /**
-   * onchange callback.
+   * Callback issued when the value changes.
+   */
+  onChange?: (event: React.MouseEvent<HTMLElement>, checked?: boolean) => void;
+
+  /**
+   * @deprecated Use onChange instead.
    */
   onChanged?: (checked: boolean) => void;
 

@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Check: adjusting shouldComponentUpdate to not ignore theme changes.",
+      "comment": "Checkbox: use id passed in if provided",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "dzearing@microsoft.com"
+  "email": "naethell@microsoft.com"
 }

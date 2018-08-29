@@ -3725,6 +3725,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           data-is-focusable={true}
           id="Dropdown64"
           onBlur={[Function]}
+          onChange={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}

@@ -194,6 +194,11 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker> {
    * Callback that runs after DatePicker's menu (Calendar) is closed
    */
   onAfterMenuDismiss?: () => void;
+
+  /**
+   * Whether the CalendarDay close button should be shown or not.
+   */
+  showCloseButton?: boolean;
 }
 
 export interface IDatePickerStrings {
@@ -260,6 +265,11 @@ export interface IDatePickerStrings {
    * Aria-label for the "next year" button.
    */
   nextYearAriaLabel?: string;
+
+  /**
+   * Aria-label for the "close" button.
+   */
+  closeButtonAriaLabel?: string;
 }
 export interface IDatePickerStyleProps {
   /**

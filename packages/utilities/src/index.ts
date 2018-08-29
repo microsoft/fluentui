@@ -38,6 +38,7 @@ export * from './language';
 export * from './math';
 export * from './memoize';
 export * from './merge';
+export * from './mobileDetector';
 export * from './object';
 export * from './overflow';
 export * from './properties';

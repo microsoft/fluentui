@@ -2,15 +2,13 @@ import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface IStackedBarChart {}
-import { IDataPoint } from '../../types/IDataPoint';
-
-export { IDataPoint, ILegendDataItem } from '../../types';
+import { IChartProps } from './index';
 
 export interface IStackedBarChartProps {
   /**
    * Data to render in the chart.
    */
-  data?: IDataPoint[];
+  data?: IChartProps;
 
   /**
    * Width of the chart.
@@ -38,16 +36,6 @@ export interface IStackedBarChartProps {
   hideNumberDisplay?: boolean;
 
   /**
-   * Colors from which to select the color of each bar.
-   */
-  colors?: string[];
-
-  /**
-   * Title to apply to the whole chart.
-   */
-  chartTitle?: string;
-
-  /**
    * Additional CSS class(es) to apply to the StackedBarChart.
    */
   className?: string;
@@ -61,6 +49,8 @@ export interface IStackedBarChartProps {
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IStackedBarChartStyleProps, IStackedBarChartStyles>;
+
+  isMultiStackedBarChart?: boolean;
 }
 
 export interface IStackedBarChartStyleProps {
@@ -83,6 +73,8 @@ export interface IStackedBarChartStyleProps {
    * Height of bar in the chart.
    */
   barHeight?: number;
+
+  isMultiStackedBarChart?: boolean;
 }
 
 export interface IStackedBarChartStyles {

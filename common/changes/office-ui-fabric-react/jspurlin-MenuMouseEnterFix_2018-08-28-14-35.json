@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Menu/ComboBox/Dropdown: Make the mouse being under a menu item not move focus until after a mouseMove is seen",
+      "type": "minor"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "jspurlin@microsoft.com"
+}

@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/dashboard",
-      "comment": "font changes for card components",
+      "comment": "Add Donut chart with legends",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/dashboard",
-  "email": "nulikarthik@gmail.com"
+  "email": "gorigarajesh@gmail.com"
 }

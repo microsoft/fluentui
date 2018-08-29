@@ -1,11 +1,11 @@
 {
   "changes": [
     {
+      "comment": "",
       "packageName": "@uifabric/fabric-website-resources",
-      "comment": "Allow examples to provide their own scroll mechanic",
-      "type": "minor"
+      "type": "none"
     }
   ],
   "packageName": "@uifabric/fabric-website-resources",
-  "email": "tmichon@microsoft.com"
+  "email": "dzearing@microsoft.com"
 }
