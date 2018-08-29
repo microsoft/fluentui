@@ -10,7 +10,7 @@ storiesOf('DatePicker', module)
   .addDecorator(FabricDecoratorFixedWidth)
   .addDecorator(story => (
     <Screener
-      steps={ new Screener.Steps()
+      steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-DatePicker')
         .snapshot('hover datepicker', { cropTo: '.testWrapper' })
@@ -24,12 +24,18 @@ storiesOf('DatePicker', module)
         .end()
       }
     >
-      { story() }
+      {story()}
     </Screener>
   ))
   .add('Root', () => (
     <DatePicker
-      value={ date }
+      value={date}
+    />
+  ))
+  .add('Underlined', () => (
+    <DatePicker
+      value={date}
+      underlined
     />
   ))
   ;
