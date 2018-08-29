@@ -1,4 +1,5 @@
 import { IRawStyle, HighContrastSelector } from '../../Styling';
+import { IsFocusVisibleClassName } from '../../Utilities';
 import { IColorPickerGridCellStyleProps, IColorPickerGridCellStyles } from './ColorPickerGridCell.types';
 
 const ACTIVE_BORDER_COLOR = '#969696';
@@ -37,8 +38,8 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
         height: 40,
         selectors: {
           [HighContrastSelector]: { border: 'none' },
-          '.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after': { border: 'none' },
-          '.ms-Fabric--isFocusVisible &:focus $svg': getSvgSelectorStyles(theme.palette.neutralQuaternaryAlt, false),
+          [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus::after`]: { border: 'none' },
+          [`.${IsFocusVisibleClassName} &:focus $svg`]: getSvgSelectorStyles(theme.palette.neutralQuaternaryAlt, false),
           ':hover $svg': getSvgSelectorStyles(theme.palette.neutralQuaternaryAlt, true),
           ':focus $svg': getSvgSelectorStyles(theme.palette.neutralQuaternaryAlt, false),
           ':active $svg': getSvgSelectorStyles(ACTIVE_BORDER_COLOR, false)
