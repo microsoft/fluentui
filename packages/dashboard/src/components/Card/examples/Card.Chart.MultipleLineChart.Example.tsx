@@ -1,6 +1,15 @@
 import * as React from 'react';
-import { IDataPoint, ILegendDataItem } from '@uifabric/charting';
-import { Card, CardContentType, CardSize, ChartType, ICardProps, Priority } from '@uifabric/dashboard';
+import { IChartProps as IChartingProps, ILineChartPoints } from '@uifabric/charting';
+import {
+  Card,
+  CardContentType,
+  CardSize,
+  ChartType,
+  ICardProps,
+  ICardContentDetails,
+  IChartProps,
+  Priority
+} from '../../../index';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export class MultipleLineChartExample extends React.Component<{}, {}> {
@@ -10,7 +19,7 @@ export class MultipleLineChartExample extends React.Component<{}, {}> {
 
   public render(): JSX.Element {
     const cardFrameContent = {
-      cardTitle: 'Multiple Line chart example',
+      cardTitle: 'Multi Line chart example',
       cardDropDownOptions: [
         {
           key: 'Remove',
@@ -24,72 +33,82 @@ export class MultipleLineChartExample extends React.Component<{}, {}> {
         }
       ]
     };
-
-    const points: IDataPoint[][] = [
-      [
-        { x: 0, y: 10 },
-        { x: 5, y: 18 },
-        { x: 10, y: 24 },
-        { x: 15, y: 25 },
-        { x: 20, y: 15 },
-        { x: 25, y: 30 },
-        { x: 30, y: 18 },
-        { x: 35, y: 32 },
-        { x: 40, y: 29 },
-        { x: 45, y: 43 },
-        { x: 50, y: 45 }
-      ],
-      [
-        { x: 0, y: 18 },
-        { x: 5, y: 20 },
-        { x: 10, y: 40 },
-        { x: 15, y: 30 },
-        { x: 20, y: 18 },
-        { x: 22, y: 20 },
-        { x: 35, y: 40 },
-        { x: 40, y: 30 },
-        { x: 42, y: 18 },
-        { x: 43, y: 20 },
-        { x: 45, y: 40 },
-        { x: 50, y: 30 }
-      ],
-      [
-        { x: 0, y: 20 },
-        { x: 5, y: 15 },
-        { x: 10, y: 30 },
-        { x: 15, y: 35 },
-        { x: 20, y: 30 },
-        { x: 22, y: 15 },
-        { x: 35, y: 30 },
-        { x: 40, y: 27 },
-        { x: 42, y: 29 },
-        { x: 43, y: 35 },
-        { x: 45, y: 40 },
-        { x: 50, y: 42 }
-      ]
-    ];
-    const colors: ILegendDataItem[] = [
-      { legendText: 'first', legendColor: DefaultPalette.yellow },
-      { legendText: 'second', legendColor: DefaultPalette.blue },
-      { legendText: 'third', legendColor: DefaultPalette.red }
-    ];
-
-    const contentAreaList = [
+    const points: ILineChartPoints[] = [
       {
-        priority: Priority.Priority2,
+        data: [
+          { x: '28/08', y: 10 },
+          { x: '29/08', y: 18 },
+          { x: '30/08', y: 24 },
+          { x: '31/08', y: 25 },
+          { x: '01/09', y: 15 },
+          { x: '02/09', y: 30 },
+          { x: '03/09', y: 18 },
+          { x: '04/09', y: 32 },
+          { x: '05/09', y: 29 },
+          { x: '06/09', y: 43 },
+          { x: '07/09', y: 45 }
+        ],
+        legend: 'First',
+        color: DefaultPalette.blue
+      },
+      {
+        data: [
+          { x: '28/08', y: 18 },
+          { x: '29/08', y: 20 },
+          { x: '30/08', y: 40 },
+          { x: '31/08', y: 30 },
+          { x: '01/09', y: 18 },
+          { x: '02/09', y: 20 },
+          { x: '03/09', y: 40 },
+          { x: '04/09', y: 30 },
+          { x: '05/09', y: 18 },
+          { x: '06/09', y: 40 },
+          { x: '07/09', y: 30 }
+        ],
+        legend: 'Second',
+        color: DefaultPalette.green
+      },
+      {
+        data: [
+          { x: '28/08', y: 20 },
+          { x: '29/08', y: 15 },
+          { x: '30/08', y: 30 },
+          { x: '31/08', y: 35 },
+          { x: '01/09', y: 30 },
+          { x: '02/09', y: 15 },
+          { x: '03/09', y: 30 },
+          { x: '04/09', y: 27 },
+          { x: '05/09', y: 29 },
+          { x: '06/09', y: 35 },
+          { x: '07/09', y: 42 }
+        ],
+        legend: 'Third',
+        color: DefaultPalette.red
+      }
+    ];
+
+    const firstChartData: IChartingProps[] = [
+      {
+        chartTitle: 'Line Chart',
+        lineChartData: points
+      }
+    ];
+
+    const chartContent1: IChartProps = {
+      chartType: ChartType.LineChart,
+      chartData: firstChartData
+    };
+
+    const contentAreaList: ICardContentDetails[] = [
+      {
+        priority: Priority.Priority1,
         cardContentType: CardContentType.Chart,
-        content: {
-          chartLabels: ['Line chart example'],
-          chartType: ChartType.LineChart,
-          data: points,
-          legendColors: colors
-        }
+        content: chartContent1
       }
     ];
 
     const header = {
-      headerText: 'Header Text ',
-      annotationText: 'Annotation Text '
+      headerText: 'Header Text '
     };
 
     return (
@@ -97,7 +116,7 @@ export class MultipleLineChartExample extends React.Component<{}, {}> {
         cardFrameContent={cardFrameContent}
         header={header}
         cardContentList={contentAreaList}
-        cardSize={CardSize.large}
+        cardSize={CardSize.mediumWide}
       />
     );
   }

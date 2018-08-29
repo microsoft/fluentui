@@ -1,11 +1,9 @@
 import { ILineChartStyleProps, ILineChartStyles } from './LineChart.types';
 
 export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
-  const { className, theme, width, height } = props;
+  const { className, theme, width, height, color } = props;
 
-  const chartWidth = width + 30;
-  const chartPadding = 20;
-  const chartHeight = height + 10;
+  const chartPadding = 30;
   const xOffset = 30;
   const yOffset = 20;
 
@@ -14,14 +12,15 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
       'ms-LineChart',
       className,
       {
-        width: chartWidth + 2 * chartPadding
+        display: 'flex',
+        width: '100%',
+        height: '100%',
+        flexDirection: 'column'
       }
     ],
     chart: [
       {
         padding: chartPadding,
-        width: chartWidth,
-        height: chartHeight,
         boxSizing: 'content-box'
       }
     ],
@@ -44,17 +43,55 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
     ],
     yAxisTicks: [
       {
-        transform: 'scaleX(-1)'
+        transform: `scaleX(-${width / 6 + 10})`,
+        stroke: 'grey'
       }
     ],
     yAxisDomain: [
       {
-        transform: 'scaleX(-1)'
+        transform: 'scaleX(0)'
+      }
+    ],
+    xAxisDomain: [
+      {
+        transform: 'scaleY(0)'
+      }
+    ],
+    xAxisText: [
+      {
+        transform: `translate(0px,13px)`
       }
     ],
     lines: [
       {
         transform: `translate(${xOffset}px, 0px)`
+      }
+    ],
+    legendContainer: [
+      {
+        marginTop: '10px',
+        paddingLeft: '20%'
+      }
+    ],
+    hover: [
+      {
+        height: '76px',
+        width: '143px',
+        fontSize: '28px',
+        color: '#0078D7',
+        fontFamily: 'Segoe UI',
+        fontWeight: 'bold'
+      }
+    ],
+    calloutPadding: [
+      {
+        padding: '10px 16px 10px 16px',
+        backgroundColor: 'white',
+        fontSize: '28px',
+        color: color !== '' ? `${color}` : `black`,
+        fontFamily: 'Segoe UI',
+        fontWeight: 'bold',
+        border: color !== '' ? `1px solid ${color}` : `unset`
       }
     ]
   };
