@@ -24,7 +24,8 @@ export const getStyles = memoizeFunction((
       padding: '0 4px',
       width: '32px',
       height: '32px',
-      backgroundColor: 'transparent'
+      backgroundColor: 'transparent',
+      border: 'none'
     },
 
     rootHovered: {
