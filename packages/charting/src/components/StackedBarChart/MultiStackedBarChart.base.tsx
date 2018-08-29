@@ -2,10 +2,16 @@ import * as React from 'react';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { ILegend, Legends } from '../Legends/index';
-import { IChartDataPoint, IChartProps, IMultiStackedBarChartProps, IMultiStackedBarChartStyles } from './index';
+import {
+  IChartDataPoint,
+  IChartProps,
+  IMultiStackedBarChartProps,
+  IMultiStackedBarChartStyles,
+  IMultiStackedBarChartStyleProps
+} from './index';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 
-const getClassNames = classNamesFunction<{}, IMultiStackedBarChartStyles>();
+const getClassNames = classNamesFunction<IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles>();
 
 export interface IRefArrayData {
   legendText?: string;
@@ -102,6 +108,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       const isSelected = this.state.legendSelected === point.legend!;
       const styles = this.props.styles;
       this._classNames = getClassNames(styles!, {
+        theme: this.props.theme!,
         isSelected: isSelected,
         isChartSelected: this.state.isCalloutVisible
       });

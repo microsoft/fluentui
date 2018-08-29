@@ -57,7 +57,7 @@ export interface IStackedBarChartStyleProps {
   /**
    * Theme (provided through customization.)
    */
-  theme?: ITheme;
+  theme: ITheme;
 
   /**
    * Additional CSS class(es) to apply to the StackedBarChart.

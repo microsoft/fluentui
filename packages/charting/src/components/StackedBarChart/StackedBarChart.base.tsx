@@ -102,7 +102,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
   }
 
   private _adjustProps(): void {
-    const { theme, className, styles, width, barHeight, isMultiStackedBarChart } = this.props;
+    const { theme, className, styles, width, barHeight } = this.props;
     this._classNames = getClassNames(styles!, {
       legendColor: this.state.color,
       theme: theme!,
@@ -149,6 +149,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       const isSelected = this.state.legendSelected === point.legend!;
       const styles = this.props.styles;
       this._classNames = getClassNames(styles!, {
+        theme: this.props.theme!,
         isSelected: isSelected,
         isChartSelected: this.state.isCalloutVisible
       });

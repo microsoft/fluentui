@@ -2,7 +2,7 @@ import { IMultiStackedBarChartStyles } from '@uifabric/charting/lib/StackedBarCh
 import { IMultiStackedBarChartStyleProps } from './MultiStackedBarChart.types';
 
 export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleProps): IMultiStackedBarChartStyles => {
-  const { className, width, barHeight, legendColor, isSelected, isChartSelected } = props;
+  const { className, width, barHeight, legendColor, isSelected, isChartSelected, theme } = props;
   return {
     root: [
       'ms-StackedBarChart',
@@ -39,7 +39,7 @@ export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleP
       lineHeight: '14px'
     },
     hoverCardDataStyles: {
-      color: legendColor === '' ? '#000000' : legendColor,
+      color: legendColor === '' ? theme.palette.black : legendColor,
       fontSize: '28px',
       fontFamily: 'Segoe UI',
       fontWeight: 'bold',
@@ -52,7 +52,7 @@ export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleP
       paddingBottom: '8px'
     },
     opacityChangeOnHover: {
-      opacity: isChartSelected ? (isSelected ? '' : '0.6') : ''
+      opacity: isChartSelected && isSelected ? '0.6' : ''
     }
   };
 };
