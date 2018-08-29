@@ -75,6 +75,4 @@ export interface IArcStyles {
    * Style set for the card header component root
    */
   root: IStyle;
-
-  hover: IStyle;
 }

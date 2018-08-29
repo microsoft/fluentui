@@ -9,11 +9,10 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
         title: 'Legend 1',
         color: DefaultPalette.red,
         action: () => {
-          console.log('click from LegendsPage');
           alert('Legend1 clicked');
         },
         hoverAction: () => {
-          console.log('Hover action');
+          console.log('Hover action for legend1');
         }
       },
       {
@@ -23,7 +22,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
           alert('Legend2 clicked');
         },
         hoverAction: () => {
-          console.log('Hover action');
+          console.log('Hover action for legend2');
         }
       },
       {
@@ -33,7 +32,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
           alert('Legend3 clicked');
         },
         hoverAction: () => {
-          console.log('Hover action');
+          console.log('Hover action for legend3');
         }
       },
       {
@@ -43,7 +42,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
           alert('Legend4 clicked');
         },
         hoverAction: () => {
-          console.log('Hover action');
+          console.log('Hover action for legend4');
         }
       },
       {
@@ -53,7 +52,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
           alert('Legend5 clicked');
         },
         hoverAction: () => {
-          console.log('Hover action');
+          console.log('Hover action for legend5');
         }
       },
       {
@@ -63,7 +62,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
           alert('Legend6 clicked');
         },
         hoverAction: () => {
-          console.log('Hover action');
+          console.log('Hover action for legend6');
         }
       },
       {
@@ -73,7 +72,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
           alert('Legend7 clicked');
         },
         hoverAction: () => {
-          console.log('Hover action');
+          console.log('Hover action for legend7');
         }
       },
       {
@@ -83,7 +82,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
           alert('Legend8 clicked');
         },
         hoverAction: () => {
-          console.log('Hover action');
+          console.log('Hover action for legend8');
         }
       },
       {
@@ -93,7 +92,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
           alert('Legend9 clicked');
         },
         hoverAction: () => {
-          console.log('Hover action');
+          console.log('Hover action for legend9');
         }
       },
       {
@@ -103,7 +102,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
           alert('Legend10 clicked');
         },
         hoverAction: () => {
-          console.log('Hover action');
+          console.log('Hover action for legend10');
         }
       },
       {
@@ -113,7 +112,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
           alert('Legend11 clicked');
         },
         hoverAction: () => {
-          console.log('Hover action');
+          console.log('Hover action for legend11');
         }
       },
       {
@@ -123,7 +122,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
           alert('Legend12 clicked');
         },
         hoverAction: () => {
-          console.log('Hover action');
+          console.log('Hover action for legend12');
         }
       },
       {
@@ -133,7 +132,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
           alert('Legend13 clicked');
         },
         hoverAction: () => {
-          console.log('Hover action');
+          console.log('Hover action for legend13');
         }
       },
       {
@@ -143,7 +142,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
           alert('Legend14 clicked');
         },
         hoverAction: () => {
-          console.log('Hover action');
+          console.log('Hover action for legend14');
         }
       },
       {
@@ -153,7 +152,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
           alert('Legend15 clicked');
         },
         hoverAction: () => {
-          console.log('Hover action');
+          console.log('Hover action for legend15');
         }
       },
       {
@@ -163,7 +162,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
           alert('Legend16 clicked');
         },
         hoverAction: () => {
-          console.log('Hover action');
+          console.log('Hover action for legend16');
         }
       },
       {
@@ -173,7 +172,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
           alert('Legend17 clicked');
         },
         hoverAction: () => {
-          console.log('Hover action');
+          console.log('Hover action for legend17');
         }
       }
     ];

@@ -9,7 +9,6 @@ export class Arc extends React.Component<IArcProps, { isCalloutVisible: boolean 
   public static defaultProps: Partial<IArcProps> = {
     arc: shape.arc()
   };
-  // private _hoverCard: SVGPathElement | null;
   constructor(props: IArcProps) {
     super(props);
     this.state = {
@@ -39,12 +38,11 @@ export class Arc extends React.Component<IArcProps, { isCalloutVisible: boolean 
     return (
       <g>
         <path
-          id={this.props.uniqText! + this.props.data!.data.legend + this.props.data!.data.data}
+          id={this.props.uniqText! + this.props.data!.data.legend!.replace(/\s+/, '') + this.props.data!.data.data}
           d={arc(this.props.data)}
           className={classNames.root}
           onMouseOver={this._hoverOn.bind(this, this.props.data!.data)}
           onMouseLeave={this._hoverOff}
-          // ref={(hoverCard: SVGPathElement | null) => (this._hoverCard = hoverCard)}
         />
       </g>
     );

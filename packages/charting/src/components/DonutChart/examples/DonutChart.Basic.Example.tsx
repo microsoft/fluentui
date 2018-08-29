@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DonutChart, IDonutChartProps, IChartProps, IChartDataPoint } from '@uifabric/charting/lib/DonutChart';
+import { DonutChart, IDonutChartProps, IChartProps, IChartDataPoint } from '../../DonutChart';
 import { DefaultPalette, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 export class DonutChartBasicExample extends React.Component<IDonutChartProps, {}> {
@@ -26,7 +26,7 @@ export class DonutChartBasicExample extends React.Component<IDonutChartProps, {}
     const style = { height: '150px', width: '150px' };
     return (
       <div className={mergeStyles(style)}>
-        <DonutChart data={data} innerRadius={20} />
+        <DonutChart data={data} innerRadius={30} />
       </div>
     );
   }

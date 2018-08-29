@@ -1,8 +1,8 @@
 import { IDonutChartStyleProps, IDonutChartStyles } from './DonutChart.types';
 
 export const getStyles = (props: IDonutChartStyleProps): IDonutChartStyles => {
-  const { className, width, height } = props;
-
+  const { className, width, height, theme } = props;
+  const { palette } = theme;
   return {
     root: [
       'ms-DonutChart',
@@ -27,7 +27,7 @@ export const getStyles = (props: IDonutChartStyleProps): IDonutChartStyles => {
     callOut: {
       padding: '10px 16px 10px 16px',
       fontSize: '12px',
-      color: '#0078D7',
+      color: palette.blue,
       fontFamily: 'Segoe UI',
       fontWeight: 'bold',
       backgroundColor: 'white'
