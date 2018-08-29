@@ -27,8 +27,7 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
       paddingTop: '4px'
     },
     hoverCardTextStyles: {
-      fontFamily: 'Segoe UI',
-      fontSize: '12px',
+      ...theme.fonts.medium,
       lineHeight: '14px'
     },
     hoverCardDataStyles: {
