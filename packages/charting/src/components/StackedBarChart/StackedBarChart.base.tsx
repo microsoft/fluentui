@@ -85,19 +85,17 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         <svg className={this._classNames.chart}>
           <g>{bars[0]}</g>
           {isCalloutVisible ? (
-            <div>
-              <Callout
-                gapSpace={0}
-                target={this.state.refSelected}
-                setInitialFocus={true}
-                directionalHint={DirectionalHint.topRightEdge}
-              >
-                <div className={this._classNames.hoverCardRoot}>
-                  <div className={this._classNames.hoverCardTextStyles}>{this.state.legendSelected}</div>
-                  <div className={this._classNames.hoverCardDataStyles}>{this.state.dataForHoverCard}</div>
-                </div>
-              </Callout>
-            </div>
+            <Callout
+              gapSpace={0}
+              target={this.state.refSelected}
+              setInitialFocus={true}
+              directionalHint={DirectionalHint.topRightEdge}
+            >
+              <div className={this._classNames.hoverCardRoot}>
+                <div className={this._classNames.hoverCardTextStyles}>{this.state.legendSelected}</div>
+                <div className={this._classNames.hoverCardDataStyles}>{this.state.dataForHoverCard}</div>
+              </div>
+            </Callout>
           ) : null}
         </svg>
         {showLegend && <div className={this._classNames.legendContainer}>{bars[1]}</div>}
