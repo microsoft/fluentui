@@ -463,12 +463,11 @@ exports[`Component Examples renders Button.CommandBar.Example.tsx correctly 1`] 
             <i
               aria-hidden={true}
               className=
-                  ms-Button-icon
                   ms-Button-menuIcon
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    color: #333333;
+                    color: #666666;
                     display: inline-block;
                     flex-shrink: 0;
                     font-family: "FabricMDL2Icons";
