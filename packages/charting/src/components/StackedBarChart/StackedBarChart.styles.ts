@@ -45,7 +45,7 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
       paddingBottom: '8px'
     },
     opacityChangeOnHover: {
-      opacity: isChartSelected && isSelected ? '0.6' : ''
+      opacity: isChartSelected ? (isSelected ? '' : '0.6') : ''
     }
   };
 };

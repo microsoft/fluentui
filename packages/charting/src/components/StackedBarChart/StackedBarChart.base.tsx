@@ -47,7 +47,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
 
   public render(): JSX.Element {
     this._adjustProps();
-    const { data, barHeight, hideNumberDisplay, hideLegend, theme } = this.props;
+    const { data, barHeight, hideNumberDisplay, hideLegend, theme, styles } = this.props;
     const { palette } = theme!;
     const bars = this._createBarsAndLegends(data!, barHeight!, palette);
     const showRatio = hideNumberDisplay === false && data!.chartData!.length === 2;
@@ -58,6 +58,10 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     }
     const showLegend = hideLegend === false && data!.chartData!.length > 2;
     const { isCalloutVisible } = this.state;
+    this._classNames = getClassNames(styles!, {
+      legendColor: this.state.color,
+      theme: theme!
+    });
     return (
       <div className={this._classNames.root}>
         <div className={this._classNames.chartTitle}>

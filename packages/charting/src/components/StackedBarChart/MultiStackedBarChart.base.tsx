@@ -49,7 +49,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   }
 
   public render(): JSX.Element {
-    const { barHeight, data, theme, hideRatio } = this.props;
+    const { barHeight, data, theme, hideRatio, styles } = this.props;
     this._adjustProps();
     const { palette } = theme!;
     const legends = this._getLegendData(data!, hideRatio!, palette);
@@ -58,25 +58,27 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       const singleChartBars = this._createBarsAndLegends(singleChartData!, barHeight!, palette, hideRatio![index]);
       bars.push(<div key={index}>{singleChartBars}</div>);
     });
+    this._classNames = getClassNames(styles!, {
+      legendColor: this.state.color,
+      theme: theme!
+    });
     const { isCalloutVisible } = this.state;
     return (
       <div className={this._classNames.root}>
         {bars}
         {legends}
         {isCalloutVisible ? (
-          <div>
-            <Callout
-              gapSpace={0}
-              target={this.state.refSelected}
-              setInitialFocus={true}
-              directionalHint={DirectionalHint.topRightEdge}
-            >
-              <div className={this._classNames.hoverCardRoot}>
-                <div className={this._classNames.hoverCardTextStyles}>{this.state.legendSelected}</div>
-                <div className={this._classNames.hoverCardDataStyles}>{this.state.dataForHoverCard}</div>
-              </div>
-            </Callout>
-          </div>
+          <Callout
+            gapSpace={0}
+            target={this.state.refSelected}
+            setInitialFocus={true}
+            directionalHint={DirectionalHint.topRightEdge}
+          >
+            <div className={this._classNames.hoverCardRoot}>
+              <div className={this._classNames.hoverCardTextStyles}>{this.state.legendSelected}</div>
+              <div className={this._classNames.hoverCardDataStyles}>{this.state.dataForHoverCard}</div>
+            </div>
+          </Callout>
         ) : null}
       </div>
     );
