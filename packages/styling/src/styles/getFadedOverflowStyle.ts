@@ -1,6 +1,5 @@
 import { IRawStyle } from '@uifabric/merge-styles';
-import { HighContrastSelector } from './CommonStyles';
-import { ITheme } from '../interfaces';
+import { ITheme, ISemanticColors, IPalette } from '../interfaces/index';
 
 export interface IRGB {
   r: number;
@@ -25,20 +24,23 @@ const DEFAULT_WIDTH = 20;
  * ```
  * ```ts
  * // This is how the style set would look in Component.styles.ts
- * const {bodyBackground, hoverBackground} = theme.semanticColors;
+ * const { bodyBackground } = theme.semanticColors;
+ * const { neutralLighter } = theme.palette;
+ *
+ * // The second argument of getFadedOverflowStyle function is a string representing a key of ISemanticColors or IPalette.
  *
  * const styles = {
  *   parent: [
  *     backgroundColor: bodyBackground,
  *     selectors: {
  *       '&:hover: {
- *         backgroundColor: hoverBackground
+ *         backgroundColor: neutralLighter
  *       },
  *       '$content:after': {
- *         ...getFadedOverflowStyle(theme, bodyBackground)
+ *         ...getFadedOverflowStyle(theme, 'bodyBackground')
  *       },
  *       '&:hover $content:after': {
- *         ...getFadedOverflowStyle(theme, hoverBackground)
+ *         ...getFadedOverflowStyle(theme, 'neutralLighter')
  *       }
  *     }
  *   ],
@@ -51,7 +53,7 @@ const DEFAULT_WIDTH = 20;
  * }
  * ```
  * @param theme - The theme object to use.
- * @param color - The background color to fade out to. Defaults to theme.semanticColors.bodyBackground.
+ * @param color - The background color to fade out to. Accepts only keys of ISemanticColors or IPalette. Defaults to 'bodyBackground'.
  * @param direction - The direction of the overflow. Defaults to horizontal.
  * @param width - The width of the fading overflow. Vertical direction defaults it to 100% vs 20px when horizontal.
  * @param height - The Height of the fading overflow. Vertical direction defaults it to 50% vs 100% when horizontal.
@@ -59,13 +61,19 @@ const DEFAULT_WIDTH = 20;
  */
 export function getFadedOverflowStyle(
   theme: ITheme,
-  color: string = theme.semanticColors.bodyBackground,
+  color: keyof ISemanticColors | keyof IPalette = 'bodyBackground',
   direction: 'horizontal' | 'vertical' = 'horizontal',
   width: string | number = getDefaultValue('width', direction),
   height: string | number = getDefaultValue('height', direction)
 ): IRawStyle {
-  const rgbColor: IRGB = hex2rgb(color);
-  const rgba = `rgba(${rgbColor.r}, ${rgbColor.g}, ${rgbColor.b}, 0)`; // opacity = 0 for starting color of gradient.
+  // Get the color value string from the theme semanticColors or palette.
+  const colorValue: string =
+    theme.semanticColors[color as keyof ISemanticColors] || theme.palette[color as keyof IPalette];
+  // Get the red, green, blue values of the colorValue.
+  const rgbColor: IRGB = color2rgb(colorValue);
+  // Apply opacity 0 to serve as a start color of the gradient.
+  const rgba = `rgba(${rgbColor.r}, ${rgbColor.g}, ${rgbColor.b}, 0)`;
+  // Get the direction of the gradient.
   const gradientDirection = direction === 'vertical' ? 'to bottom' : 'to right'; // mergeStyles take care of RTL direction.
 
   return {
@@ -76,12 +84,7 @@ export function getFadedOverflowStyle(
     width: width,
     height: height,
     pointerEvents: 'none',
-    backgroundImage: `linear-gradient(${gradientDirection}, ${rgba} 0%, ${color} 100%)`,
-    selectors: {
-      [HighContrastSelector]: {
-        backgroundImage: 'none'
-      }
-    }
+    backgroundImage: `linear-gradient(${gradientDirection}, ${rgba} 0%, ${colorValue} 100%)`
   };
 }
 
@@ -89,13 +92,32 @@ export function getFadedOverflowStyle(
 /**
  * Helper function to convert a string hex color to an RGB object.
  *
- * @param color - Color to be converted from hex to rgba.
+ * @param colorValue - Color to be converted from hex to rgba.
  */
-function hex2rgb(color: string): IRGB {
+function color2rgb(colorValue: string): IRGB {
+  if (colorValue[0] === '#') {
+    // If it's a hex code
+    return {
+      r: parseInt(colorValue.slice(1, 3), 16),
+      g: parseInt(colorValue.slice(3, 5), 16),
+      b: parseInt(colorValue.slice(5, 7), 16)
+    };
+  } else if (colorValue.indexOf('rgba(') === 0) {
+    // If it's an rgba color string
+    colorValue = colorValue.match(/rgba\(([^)]+)\)/)![1];
+    const parts = colorValue.split(/ *, */).map(Number);
+
+    return {
+      r: parts[0],
+      g: parts[1],
+      b: parts[2]
+    };
+  }
+  // The only remaining possibility is transparent.
   return {
-    r: parseInt(color.slice(1, 3), 16),
-    g: parseInt(color.slice(3, 5), 16),
-    b: parseInt(color.slice(5, 7), 16)
+    r: 255,
+    g: 255,
+    b: 255
   };
 }
 
