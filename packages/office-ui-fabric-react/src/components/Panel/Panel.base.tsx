@@ -220,7 +220,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
         this.props.onDismiss(ev);
       }
 
-      if (!ev || (ev && ev.defaultPrevented)) {
+      if (!ev || (ev && !ev.defaultPrevented)) {
         this.setState(
           {
             isOpen: false,
