@@ -315,7 +315,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     const { iconProps } = this.props;
 
     if (iconProps) {
-      return <Icon className={this._classNames.icon} {...iconProps} />;
+      if (iconProps.className) {
+        const { className, ...rest } = iconProps;
+        return <Icon className={css(this._classNames.icon, className)} {...rest} />;
+      }
+      return <Icon {...iconProps} className={this._classNames.icon} />;
     }
     return null;
   };

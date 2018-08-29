@@ -285,10 +285,12 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             <i
               aria-hidden={true}
               className=
+                  ms-Button-icon
                   ms-Button-menuIcon
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
+                    color: #333333;
                     display: inline-block;
                     flex-shrink: 0;
                     font-family: "FabricMDL2Icons";
@@ -608,10 +610,12 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             <i
               aria-hidden={true}
               className=
+                  ms-Button-icon
                   ms-Button-menuIcon
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
+                    color: #ffffff;
                     display: inline-block;
                     flex-shrink: 0;
                     font-family: "FabricMDL2Icons";
@@ -924,6 +928,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             <i
               aria-hidden={true}
               className=
+                  ms-Button-icon
                   ms-Button-menuIcon
                   {
                     -moz-osx-font-smoothing: grayscale;
@@ -1242,6 +1247,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             <i
               aria-hidden={true}
               className=
+                  ms-Button-icon
                   ms-Button-menuIcon
                   {
                     -moz-osx-font-smoothing: grayscale;
@@ -1557,6 +1563,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 2`] = `
           <i
             aria-hidden={true}
             className=
+                ms-Button-icon
                 ms-Button-menuIcon
                 {
                   -moz-osx-font-smoothing: grayscale;
