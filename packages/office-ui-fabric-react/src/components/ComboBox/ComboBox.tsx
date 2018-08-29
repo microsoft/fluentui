@@ -640,11 +640,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   private _processInputChangeWithFreeform(updatedValue: string): void {
     const { currentOptions } = this.state;
     updatedValue = this._removeZeroWidthSpaces(updatedValue);
+    let newCurrentPendingValueValidIndex = -1;
 
     // if the new value is empty, see if we have an exact match
     // and then set the pending info
     if (updatedValue === '') {
-      let newCurrentPendingValueValidIndex = -1;
       const items = currentOptions
         .map((item, index) => {
           return { ...item, index };
@@ -671,7 +671,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     updatedValue = updatedValue.toLocaleLowerCase();
 
     let newSuggestedDisplayValue = '';
-    let newCurrentPendingValueValidIndex = -1;
 
     // If autoComplete is on, attempt to find a match from the available options
     if (this.props.autoComplete === 'on') {
@@ -1009,7 +1008,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     if (allowFreeform) {
       // if currentPendingValue is null or undefined the user did not submit anything
       // (not even empty because we would have stored that as the pending value)
-      if (currentPendingValue == null || currentPendingValue == undefined) {
+      if (currentPendingValue === null || currentPendingValue === undefined) {
         return;
       }
 
