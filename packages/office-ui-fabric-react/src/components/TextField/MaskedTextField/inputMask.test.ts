@@ -165,8 +165,8 @@ describe('inputMask', () => {
       { value: '3', format: /[0-9]/, displayIndex: 2 }
     ];
 
-    const result = insertString(maskedValues, 2, '1');
+    const result = insertString(maskedValues, 3, '1');
 
-    expect(result).toEqual(2);
+    expect(result).toEqual(3);
   });
 });
