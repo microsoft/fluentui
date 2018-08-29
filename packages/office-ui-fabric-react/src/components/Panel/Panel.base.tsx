@@ -219,20 +219,18 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       if (this.props.onDismiss) {
         this.props.onDismiss(ev);
       }
-    }
 
-    const eventDefaultPrevented = !ev || (ev && ev.defaultPrevented);
-
-    if (this.state.isOpen && eventDefaultPrevented) {
-      this.setState(
-        {
-          isOpen: false,
-          isAnimating: true
-        },
-        () => {
-          this._async.setTimeout(this._onTransitionComplete, 200);
-        }
-      );
+      if (!ev || (ev && ev.defaultPrevented)) {
+        this.setState(
+          {
+            isOpen: false,
+            isAnimating: true
+          },
+          () => {
+            this._async.setTimeout(this._onTransitionComplete, 200);
+          }
+        );
+      }
     }
   };
 

@@ -68,6 +68,7 @@ export interface IPanelProps extends React.Props<PanelBase> {
 
   /**
    * A callback function for when the panel is closed, before the animation completes.
+   * If the panel should NOT be dismissed based on some keyboard event, then simply call ev.preventDefault() on it
    */
   onDismiss?: (ev?: React.KeyboardEvent<HTMLElement>) => void;
 
