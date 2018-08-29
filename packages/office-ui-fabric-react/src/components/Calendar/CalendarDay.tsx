@@ -59,6 +59,7 @@ export interface ICalendarDayProps extends React.Props<CalendarDay> {
   minDate?: Date;
   maxDate?: Date;
   workWeekDays?: DayOfWeek[];
+  showCloseButton?: boolean;
 }
 
 export interface ICalendarDayState {
@@ -84,6 +85,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
 
     this._onSelectNextMonth = this._onSelectNextMonth.bind(this);
     this._onSelectPrevMonth = this._onSelectPrevMonth.bind(this);
+    this._onClose = this._onClose.bind(this);
   }
 
   public componentWillReceiveProps(nextProps: ICalendarDayProps): void {
@@ -105,12 +107,14 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       firstWeekOfYear,
       dateTimeFormatter,
       minDate,
-      maxDate
+      maxDate,
+      showCloseButton
     } = this.props;
     const dayPickerId = getId('DatePickerDay-dayPicker');
     const monthAndYearId = getId('DatePickerDay-monthAndYear');
     const leftNavigationIcon = navigationIcons.leftNavigation;
     const rightNavigationIcon = navigationIcons.rightNavigation;
+    const closeNavigationIcon = navigationIcons.closeIcon;
     const weekNumbers = showWeekNumbers
       ? getWeekNumbersInMonth(weeks!.length, firstDayOfWeek, firstWeekOfYear, navigatedDate)
       : null;
@@ -197,6 +201,17 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               >
                 <Icon iconName={rightNavigationIcon} />
               </button>
+              {showCloseButton && (
+                <button
+                  className={css('ms-DatePicker-closeButton js-closeButton', styles.closeButton)}
+                  onClick={this._onClose}
+                  onKeyDown={this._onCloseButtonKeyDown}
+                  aria-label={strings.closeButtonAriaLabel}
+                  role="button"
+                >
+                  <Icon iconName={closeNavigationIcon} />
+                </button>
+              )}
             </div>
           </div>
         </div>
@@ -685,6 +700,12 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     this.props.onNavigateDate(addMonths(this.props.navigatedDate, -1), false);
   };
 
+  private _onClose = (): void => {
+    if (this.props.onDismiss) {
+      this.props.onDismiss();
+    }
+  };
+
   private _onHeaderSelect = (): void => {
     const { onHeaderSelect } = this.props;
     if (onHeaderSelect) {
@@ -708,6 +729,12 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   private _onNextMonthKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     if (ev.which === KeyCodes.enter) {
       this._onKeyDown(this._onSelectNextMonth, ev);
+    }
+  };
+
+  private _onCloseButtonKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
+    if (ev.which === KeyCodes.enter) {
+      this._onKeyDown(this._onClose, ev);
     }
   };
 

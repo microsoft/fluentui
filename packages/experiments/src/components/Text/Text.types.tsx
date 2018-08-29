@@ -23,6 +23,11 @@ export interface ITextProps extends IStyleableComponent<ITextProps, ITextStyles>
   className?: string;
 
   /**
+   * Inline styling.
+   */
+  style?: React.CSSProperties;
+
+  /**
    * Optional font type for Text.
    */
   variant?: keyof IFontVariants;

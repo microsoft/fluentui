@@ -1,6 +1,48 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Tue, 21 Aug 2018 20:36:27 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Aug 2018 10:23:58 GMT and should not be manually modified.
+
+## 0.17.1
+Tue, 28 Aug 2018 10:23:58 GMT
+
+### Patches
+
+- css fixes for card component in dashboard package
+
+## 0.17.0
+Fri, 24 Aug 2018 10:26:08 GMT
+
+### Minor changes
+
+- Making changes to dashboard card component to consume stacked bar chart with new data point.
+
+## 0.16.0
+Thu, 23 Aug 2018 18:39:08 GMT
+
+### Minor changes
+
+- Add an example dashboard with collasable sections.
+
+### Patches
+
+- Rolling back primary action funtionality of action bar
+
+## 0.15.8
+Thu, 23 Aug 2018 10:28:17 GMT
+
+### Patches
+
+- font changes for card components
+- header css fix
+- fix leftNav styles per PM feedback
+- revert the change for expand behavior
+
+## 0.15.7
+Wed, 22 Aug 2018 05:10:19 GMT
+
+### Patches
+
+- css fixes for card
 
 ## 0.15.6
 Tue, 21 Aug 2018 20:36:27 GMT

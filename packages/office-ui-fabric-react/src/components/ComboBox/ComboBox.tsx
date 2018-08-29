@@ -151,6 +151,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   // forced back to the input
   private _focusInputAfterClose: boolean;
 
+  // Flag for when we get the first mouseMove
+  private _gotMouseMove: boolean;
+
   constructor(props: IComboBoxProps) {
     super(props);
 
@@ -162,7 +165,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       dropdownWidth: 'useComboBoxAsMenuWidth'
     });
 
-    this._warnDeprecations({ value: 'text' });
+    this._warnDeprecations({
+      value: 'text',
+      onChanged: 'onChange'
+    });
 
     this._id = props.id || getId('ComboBox');
 
@@ -171,6 +177,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     this._isScrollIdle = true;
     this._processingTouch = false;
     this._processingExpandCollapseKeyOnly = false;
+    this._gotMouseMove = false;
 
     const initialSelectedIndices: number[] = this._getSelectedIndices(props.options, selectedKeys);
 
@@ -812,7 +819,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     submitPendingValueEvent: any,
     searchDirection: SearchDirection = SearchDirection.none
   ): void {
-    const { onChanged, onPendingValueChanged } = this.props;
+    const { onChange, onChanged, onPendingValueChanged } = this.props;
     const { currentOptions } = this.state;
     let { selectedIndices } = this.state;
 
@@ -862,7 +869,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         this._hasPendingValue = false;
       }
 
-      // Did the creator give us an onChanged callback?
+      if (onChange) {
+        onChange(submitPendingValueEvent, option, index, undefined);
+      }
+
       if (onChanged) {
         onChanged(option, index, undefined, submitPendingValueEvent);
       }
@@ -957,7 +967,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * Submit a pending value if there is one
    */
   private _submitPendingValue(submitPendingValueEvent: any): void {
-    const { onChanged, allowFreeform, autoComplete } = this.props;
+    const { onChange, onChanged, allowFreeform, autoComplete } = this.props;
     const {
       currentPendingValue,
       currentPendingValueValidIndex,
@@ -998,8 +1008,15 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         }
       }
 
-      if (onChanged) {
-        onChanged(undefined, undefined, currentPendingValue, submitPendingValueEvent);
+      if (onChange || onChanged) {
+        if (onChange) {
+          // trigger onChange to clear value
+          onChange(submitPendingValueEvent, undefined, undefined, currentPendingValue);
+        }
+        if (onChanged) {
+          // trigger onChanged to clear value
+          onChanged(undefined, undefined, currentPendingValue, submitPendingValueEvent);
+        }
       } else {
         // If we are not controlled, create a new option
         const newOption: IComboBoxOption = { key: currentPendingValue, text: currentPendingValue };
@@ -1015,9 +1032,15 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           selectedIndices: selectedIndices
         });
       }
-    } else if (allowFreeform && currentPendingValue === '' && onChanged) {
-      // trigger onChanged to clear value
-      onChanged(undefined, undefined, currentPendingValue, submitPendingValueEvent);
+    } else if (allowFreeform && currentPendingValue === '' && (onChange || onChanged)) {
+      if (onChange) {
+        // trigger onChange to clear value
+        onChange(submitPendingValueEvent, undefined, undefined, currentPendingValue);
+      }
+      if (onChanged) {
+        // trigger onChanged to clear value
+        onChanged(undefined, undefined, currentPendingValue, submitPendingValueEvent);
+      }
     } else if (currentPendingValueValidIndex >= 0) {
       // Since we are not allowing freeform, we must have a matching
       // to be able to update state
@@ -1055,6 +1078,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         directionalHint={DirectionalHint.bottomLeftEdge}
         directionalHintFixed={false}
         {...calloutProps}
+        onLayerMounted={this._onLayerMounted}
         className={css(this._classNames.callout, calloutProps ? calloutProps.className : undefined)}
         target={this._comboBoxWrapper.current}
         onDismiss={this._onDismiss}
@@ -1073,6 +1097,14 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         {onRenderLowerContent(this.props, this._onRenderLowerContent)}
       </Callout>
     );
+  };
+
+  private _onLayerMounted = () => {
+    this._gotMouseMove = false;
+
+    if (this.props.calloutProps && this.props.calloutProps.onLayerMounted) {
+      this.props.calloutProps.onLayerMounted();
+    }
   };
 
   // Render List of items
@@ -1752,7 +1784,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   };
 
   private _onOptionMouseEnter(index: number): void {
-    if (!this._isScrollIdle) {
+    if (this._shouldIgnoreMouseEvent()) {
       return;
     }
 
@@ -1762,6 +1794,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   private _onOptionMouseMove(index: number): void {
+    this._gotMouseMove = true;
+
     if (!this._isScrollIdle || this.state.currentPendingValueValidIndexOnHover === index) {
       return;
     }
@@ -1772,7 +1806,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   private _onOptionMouseLeave = () => {
-    if (!this._isScrollIdle) {
+    if (this._shouldIgnoreMouseEvent()) {
       return;
     }
 
@@ -1780,6 +1814,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       currentPendingValueValidIndexOnHover: HoverStatus.clearAll
     });
   };
+
+  private _shouldIgnoreMouseEvent(): boolean {
+    return !this._isScrollIdle || !this._gotMouseMove;
+  }
 
   /**
    * Handle dismissing the menu and

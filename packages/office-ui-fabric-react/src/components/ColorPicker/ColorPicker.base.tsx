@@ -68,7 +68,7 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
             minValue={0}
             maxValue={MAX_COLOR_HUE}
             value={color.h}
-            onChanged={this._onHChanged}
+            onChange={this._onHChanged}
           />
           {!this.props.alphaSliderHidden && (
             <ColorSlider
@@ -78,7 +78,7 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
               minValue={0}
               maxValue={100}
               value={color.a}
-              onChanged={this._onAChanged}
+              onChange={this._onAChanged}
             />
           )}
           <table className={classNames.table} cellPadding="0" cellSpacing="0">
@@ -157,11 +157,11 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
     this._updateColor(updateSV(this.state.color, s, v));
   };
 
-  private _onHChanged = (h: number): void => {
+  private _onHChanged = (ev: React.MouseEvent<HTMLElement>, h: number): void => {
     this._updateColor(updateH(this.state.color, h));
   };
 
-  private _onAChanged = (a: number): void => {
+  private _onAChanged = (ev: React.MouseEvent<HTMLElement>, a: number): void => {
     this._updateColor(updateA(this.state.color, a));
   };
 

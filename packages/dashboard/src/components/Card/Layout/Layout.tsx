@@ -27,7 +27,7 @@ export class Layout extends React.Component<ILayoutProps> {
   public render(): JSX.Element {
     const getClassNames = classNamesFunction<ILayoutProps, ILayoutStyles>();
     const { header, contentArea, actions, cardSize } = this.props;
-    const classNames = getClassNames(getStyles, { cardSize });
+    const classNames = getClassNames(getStyles, { cardSize, header });
     const content: JSX.Element | null = this._generateContentArea(
       contentArea!,
       classNames.contentLayout,
@@ -104,6 +104,8 @@ export class Layout extends React.Component<ILayoutProps> {
                   legendColors,
                   barWidth,
                   barHeight,
+                  chartData,
+                  hideRatio,
                   data,
                   chartType,
                   dataPoints,
@@ -117,6 +119,8 @@ export class Layout extends React.Component<ILayoutProps> {
                       chartLabels={chartLabels}
                       chartType={chartType}
                       legendColors={legendColors}
+                      chartData={chartData}
+                      hideRatio={hideRatio}
                       barWidth={barWidth}
                       barHeight={barHeight}
                       data={data}

@@ -1,4 +1,5 @@
 import { IFontWeight } from '../MergeStyles';
+import { ISemanticTextColors } from './ISemanticTextColors';
 
 /**
  * @internal This is an experimental interface and will be changed post design review.
@@ -39,17 +40,21 @@ export interface IFontWeights {
  * @internal This is an experimental interface and will be changed post design review.
  */
 export interface IFontVariant {
-  fontFamily: keyof IFontFamilies | string;
-  fontSize: keyof IFontSizes | number | string;
-  fontWeight: keyof IFontWeights | number;
+  family: keyof IFontFamilies | string;
+  size: keyof IFontSizes | number | string;
+  weight: keyof IFontWeights | number;
+  color?: keyof ISemanticTextColors;
+  hoverColor?: keyof ISemanticTextColors;
+  disabledColor?: keyof ISemanticTextColors;
 }
 
 /**
  * @internal This is an experimental interface and will be changed post design review.
  */
 export interface IFontVariants {
-  default: Partial<IFontVariant>;
+  default: IFontVariant;
   caption: Partial<IFontVariant>;
+  link: Partial<IFontVariant>;
   h1: Partial<IFontVariant>;
   h2: Partial<IFontVariant>;
   h3: Partial<IFontVariant>;

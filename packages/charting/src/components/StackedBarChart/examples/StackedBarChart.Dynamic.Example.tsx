@@ -1,15 +1,14 @@
 import * as React from 'react';
-import { StackedBarChart, IStackedBarChartProps } from '@uifabric/charting/lib/StackedBarChart';
-import { IDataPoint } from '@uifabric/charting/lib/types/IDataPoint';
+import { IChartProps, StackedBarChart, IStackedBarChartProps } from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
 export interface IExampleState {
-  dynamicData: IDataPoint[];
+  dynamicData: IChartProps;
   colors: string[];
 }
 
-export class StackedBarChartDynamicExample extends React.Component<IStackedBarChartProps, IExampleState> {
+export class StackedBarChartDynamicExample extends React.Component<{}, IExampleState> {
   private _colors = [
     [
       DefaultPalette.blueMid,
@@ -49,7 +48,15 @@ export class StackedBarChartDynamicExample extends React.Component<IStackedBarCh
   constructor(props: IStackedBarChartProps) {
     super(props);
     this.state = {
-      dynamicData: [{ x: 'first', y: 40 }, { x: 'second', y: 23 }, { x: 'third', y: 35 }, { x: 'fourth', y: 87 }],
+      dynamicData: {
+        chartTitle: 'Stacked Bar chart',
+        chartData: [
+          { legend: 'first', data: 40, color: DefaultPalette.blueLight },
+          { legend: 'second', data: 23, color: DefaultPalette.yellow },
+          { legend: 'third', data: 35, color: DefaultPalette.neutralSecondary },
+          { legend: 'fourth', data: 87, color: DefaultPalette.greenLight }
+        ]
+      },
       colors: [
         DefaultPalette.blueLight,
         DefaultPalette.yellow,
@@ -65,7 +72,7 @@ export class StackedBarChartDynamicExample extends React.Component<IStackedBarCh
   public render(): JSX.Element {
     return (
       <div>
-        <StackedBarChart data={this.state.dynamicData} chartTitle={'Stacked Bar chart'} colors={this.state.colors} />
+        <StackedBarChart data={this.state.dynamicData} />
         <DefaultButton text="Change data" onClick={this._changeData} />
         <DefaultButton text="Change colors" onClick={this._changeColors} />
       </div>
@@ -74,18 +81,29 @@ export class StackedBarChartDynamicExample extends React.Component<IStackedBarCh
 
   private _changeData(): void {
     this.setState({
-      dynamicData: [
-        { x: 'first', y: this._randomY() },
-        { x: 'second', y: this._randomY() },
-        { x: 'third', y: this._randomY() },
-        { x: 'fourth', y: this._randomY() }
-      ]
+      dynamicData: {
+        chartTitle: 'Stacked Bar chart',
+        chartData: [
+          { legend: 'first', data: this._randomY() },
+          { legend: 'second', data: this._randomY() },
+          { legend: 'third', data: this._randomY() },
+          { legend: 'fourth', data: this._randomY() }
+        ]
+      }
     });
   }
 
   private _changeColors(): void {
     this.setState({
-      colors: [this._randomColor(0), this._randomColor(1), this._randomColor(2), this._randomColor(3)]
+      dynamicData: {
+        chartTitle: 'Stacked Bar chart',
+        chartData: [
+          { legend: 'first', data: 40, color: this._randomColor(0) },
+          { legend: 'second', data: 23, color: this._randomColor(1) },
+          { legend: 'third', data: 35, color: this._randomColor(2) },
+          { legend: 'fourth', data: 87, color: this._randomColor(3) }
+        ]
+      }
     });
   }
 

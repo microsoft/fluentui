@@ -9,7 +9,7 @@ export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleP
       {
         display: 'flex',
         flexDirection: 'column',
-        width: width
+        width: width ? width : '100%'
       },
       className
     ],

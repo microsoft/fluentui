@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { ILegendDataItem, MultiStackedBarChart } from '@uifabric/charting';
+import { IChartProps, IChartDataPoint, MultiStackedBarChart } from '@uifabric/charting';
 import { IStyle, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
@@ -26,30 +26,34 @@ const DlpVisualization = () => {
   const getClassNames = classNamesFunction<{}, IMultiSBCVisualizationStyles>();
   const classNames = getClassNames(getMultiSBCVisualizationStyles!);
 
-  const points = [
-    [
-      { x: 'Debit card numbers (EU and USA)', y: 40 },
-      { x: 'Passport numbers (USA)', y: 23 },
-      { x: 'Social security numbers', y: 35 },
-      { x: 'Credit card numbers', y: 87 },
-      { x: 'Tax identification numbers (USA)', y: 87 }
-    ],
-    []
+  const firstChartPoints: IChartDataPoint[] = [
+    { legend: 'Debit card numbers (EU and USA)', data: 40, color: DefaultPalette.blue },
+    { legend: 'Passport numbers (USA)', data: 23, color: DefaultPalette.red },
+    { legend: 'Social security numbers', data: 35, color: DefaultPalette.blueLight },
+    { legend: 'Credit card numbers', data: 87, color: DefaultPalette.green },
+    { legend: 'Tax identification numbers (USA)', data: 87, color: DefaultPalette.yellow }
   ];
 
-  const colors: ILegendDataItem[] = [
-    { legendText: 'Debit card numbers (EU and USA)', legendColor: DefaultPalette.blueLight },
-    { legendText: 'Passport numbers (USA)', legendColor: DefaultPalette.blue },
-    { legendText: 'Social security numbers', legendColor: DefaultPalette.blueMid },
-    { legendText: 'Credit card numbers', legendColor: DefaultPalette.red },
-    { legendText: 'Tax identification numbers (USA)', legendColor: DefaultPalette.black }
+  const secondChartPoints: IChartDataPoint[] = [
+    { legend: 'Phone Numbers', data: 40, color: DefaultPalette.blue },
+    { legend: 'Credit card Numbers', data: 23, color: DefaultPalette.purpleLight },
+    { legend: 'Asset Numbers', data: 35, color: DefaultPalette.orangeLight }
   ];
 
-  const chartTitles: string[] = ['Monitored', 'Unmonitored'];
+  const data: IChartProps[] = [
+    {
+      chartTitle: 'Monitored',
+      chartData: firstChartPoints
+    },
+    {
+      chartTitle: 'Unmonitored',
+      chartData: secondChartPoints
+    }
+  ];
 
   return (
     <div className={classNames.visualizationContainer}>
-      <MultiStackedBarChart data={points} legendData={colors} chartTitles={chartTitles} width={394} />;
+      <MultiStackedBarChart data={data} />
     </div>
   );
 };

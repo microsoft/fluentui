@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Adding role=\"Grid\" so that VoiceOver within Safari works for Calendar and DatePicker",
+      "comment": "Checkbox: use id passed in if provided",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "github@woofton.net"
+  "email": "naethell@microsoft.com"
 }
