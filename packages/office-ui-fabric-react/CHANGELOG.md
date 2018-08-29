@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 27 Aug 2018 11:28:29 GMT and should not be manually modified.
+This log was last generated on Wed, 29 Aug 2018 11:23:45 GMT and should not be manually modified.
+
+## 5.122.2
+Wed, 29 Aug 2018 11:23:45 GMT
+
+### Patches
+
+- dragStart callback will be in sync with browser, instaed of calling it in mousemove
 
 ## 5.122.1
 Mon, 27 Aug 2018 11:28:29 GMT
