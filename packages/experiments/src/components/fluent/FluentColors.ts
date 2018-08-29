@@ -39,8 +39,9 @@ export namespace NeutralColors {
 
 export namespace SharedColors {
   export const pinkRed10 = '#750b1c';
-  export const red30 = '#a4262c';
+  export const red20 = '#a4262c';
   export const red10 = '#d13438';
+  export const redOrange20 = '#603d30';
   export const redOrange10 = '#da3b01';
   export const orange30 = '#8e562e';
   export const orange20 = '#ca5010';
@@ -52,12 +53,14 @@ export namespace SharedColors {
   export const green20 = '#0b6a0b';
   export const green10 = '#498205';
   export const greenCyan10 = '#00ad56';
+  export const cyan40 = '#005e50';
   export const cyan30 = '#005b70';
   export const cyan20 = '#038387';
   export const cyan10 = '#00b7c3';
   export const cyanBlue20 = '#004e8c';
   export const cyanBlue10 = '#0078d4';
   export const blue10 = '#4f6bed';
+  export const blueMagenta40 = '#373277';
   export const blueMagenta30 = '#5c2e91';
   export const blueMagenta20 = '#8764b8';
   export const blueMagenta10 = '#8378de';

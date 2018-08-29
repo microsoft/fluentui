@@ -1,6 +1,13 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Fri, 24 Aug 2018 10:26:08 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Aug 2018 10:23:58 GMT and should not be manually modified.
+
+## 0.17.1
+Tue, 28 Aug 2018 10:23:58 GMT
+
+### Patches
+
+- css fixes for card component in dashboard package
 
 ## 0.17.0
 Fri, 24 Aug 2018 10:26:08 GMT

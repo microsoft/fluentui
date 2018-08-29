@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Panel: set the content height to window.innerHeight on iOS",
+      "comment": "Checkbox: use id passed in if provided",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "kakje@microsoft.com"
+  "email": "naethell@microsoft.com"
 }

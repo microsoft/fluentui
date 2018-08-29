@@ -87,14 +87,7 @@ export class Chart extends React.Component<IChartInternalProps, {}> {
         );
       }
       case ChartType.DonutChart: {
-        return (
-          <DonutChart
-            data={this._singleChartDataPoints}
-            colors={this._colors}
-            width={this._getWidth()}
-            height={this._getHeight()}
-          />
-        );
+        return <DonutChart data={this.props.chartData![0]} innerRadius={40} />;
       }
       case ChartType.PieChart: {
         return (

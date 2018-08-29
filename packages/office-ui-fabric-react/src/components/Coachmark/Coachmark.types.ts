@@ -128,6 +128,7 @@ export interface ICoachmarkProps extends React.Props<Coachmark> {
 
   /**
    * Ref for TeachingBubble
+   * @deprecated Coachmark uses focusFirstChild utility instead to focus on TeachingBubbleContent
    */
   teachingBubbleRef?: ITeachingBubble;
 

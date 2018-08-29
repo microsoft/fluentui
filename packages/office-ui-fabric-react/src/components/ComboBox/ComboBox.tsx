@@ -151,6 +151,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   // forced back to the input
   private _focusInputAfterClose: boolean;
 
+  // Flag for when we get the first mouseMove
+  private _gotMouseMove: boolean;
+
   constructor(props: IComboBoxProps) {
     super(props);
 
@@ -174,6 +177,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     this._isScrollIdle = true;
     this._processingTouch = false;
     this._processingExpandCollapseKeyOnly = false;
+    this._gotMouseMove = false;
 
     const initialSelectedIndices: number[] = this._getSelectedIndices(props.options, selectedKeys);
 
@@ -1074,6 +1078,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         directionalHint={DirectionalHint.bottomLeftEdge}
         directionalHintFixed={false}
         {...calloutProps}
+        onLayerMounted={this._onLayerMounted}
         className={css(this._classNames.callout, calloutProps ? calloutProps.className : undefined)}
         target={this._comboBoxWrapper.current}
         onDismiss={this._onDismiss}
@@ -1092,6 +1097,14 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         {onRenderLowerContent(this.props, this._onRenderLowerContent)}
       </Callout>
     );
+  };
+
+  private _onLayerMounted = () => {
+    this._gotMouseMove = false;
+
+    if (this.props.calloutProps && this.props.calloutProps.onLayerMounted) {
+      this.props.calloutProps.onLayerMounted();
+    }
   };
 
   // Render List of items
@@ -1771,7 +1784,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   };
 
   private _onOptionMouseEnter(index: number): void {
-    if (!this._isScrollIdle) {
+    if (this._shouldIgnoreMouseEvent()) {
       return;
     }
 
@@ -1781,6 +1794,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   private _onOptionMouseMove(index: number): void {
+    this._gotMouseMove = true;
+
     if (!this._isScrollIdle || this.state.currentPendingValueValidIndexOnHover === index) {
       return;
     }
@@ -1791,7 +1806,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   private _onOptionMouseLeave = () => {
-    if (!this._isScrollIdle) {
+    if (this._shouldIgnoreMouseEvent()) {
       return;
     }
 
@@ -1799,6 +1814,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       currentPendingValueValidIndexOnHover: HoverStatus.clearAll
     });
   };
+
+  private _shouldIgnoreMouseEvent(): boolean {
+    return !this._isScrollIdle || !this._gotMouseMove;
+  }
 
   /**
    * Handle dismissing the menu and
