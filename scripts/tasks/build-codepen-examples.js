@@ -1,10 +1,9 @@
-module.exports = function(filter) {
+module.exports = function() {
   const path = require('path');
   const transformer = require('./codepen-examples-transform');
   const glob = require('glob');
-  const files = glob
-    .sync(path.resolve(__dirname, '../../packages/*/src/components/**/examples/*Example*.tsx'))
-    .filter(name => (filter ? name.indexOf(filter) > -1 : name));
+  const files = glob.sync(path.resolve(__dirname, '../../packages/*/src/components/**/examples/*Example*.tsx'));
+
   const jscodeshift = require('jscodeshift');
   const fs = require('fs');
   const async = require('async');
@@ -48,10 +47,6 @@ module.exports = function(filter) {
 };
 
 // This is run as a CLI when we do 'npm start' - otherwise, it is simply a module to be run by build.js as a task
-//
-// You can also test out a transform by running ./scripts/build-codepen-examples.js Chedckbox
-// This will run the CLI tool in a one off basis on the examples that match a certain pattern
 if (require.main == module) {
-  const args = process.argv.slice(2);
-  module.exports(args ? args[0] : null);
+  module.exports();
 }
