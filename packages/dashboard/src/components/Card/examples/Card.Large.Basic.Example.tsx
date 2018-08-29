@@ -119,7 +119,7 @@ export class LargeCardBasicExample extends React.Component<{}, {}> {
       },
       {
         chartTitle: 'six',
-        chartData: [{ legend: 'six', data: 14000, color: DefaultPalette.whiteTranslucent40 }]
+        chartData: [{ legend: 'six', data: 14000, color: DefaultPalette.magentaLight }]
       },
       {
         chartTitle: 'seven',

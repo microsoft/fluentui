@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
-import { StackedBarChart } from '@uifabric/charting';
+import { StackedBarChart } from '../../StackedBarChart';
 import { IChartProps, IHorizontalBarChartProps, IHorizontalBarChartStyles } from './index';
 
 const getClassNames = classNamesFunction<{}, IHorizontalBarChartStyles>();
