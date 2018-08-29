@@ -71,7 +71,7 @@ export class DonutChartBase extends React.Component<
       <div className={this._classNames.root} ref={(rootElem: HTMLElement | null) => (this._rootElem = rootElem)}>
         <svg className={this._classNames.chart} ref={(node: SVGElement | null) => this._setViewBox(node)}>
           <Pie
-            width={box}
+            width={box + 32}
             height={box}
             outerRadius={outerRadius}
             innerRadius={innerRadius!}
