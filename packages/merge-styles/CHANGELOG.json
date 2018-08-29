@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.8.2",
+      "tag": "@uifabric/merge-styles_v6.8.2",
+      "date": "Wed, 29 Aug 2018 10:28:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Sebastian K <nimelriansc2@gmail.com>",
+            "commit": "9f187d80f21fed6c0983066184a0fd73a6a43e64",
+            "comment": "The IProcessedStyleSet type now correctly infers the types of subComponentStyles properties."
+          }
+        ]
+      }
+    },
+    {
       "version": "6.8.1",
       "tag": "@uifabric/merge-styles_v6.8.1",
       "date": "Tue, 28 Aug 2018 10:23:58 GMT",

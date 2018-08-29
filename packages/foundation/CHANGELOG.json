@@ -2,6 +2,20 @@
   "name": "@uifabric/foundation",
   "entries": [
     {
+      "version": "0.4.1",
+      "tag": "@uifabric/foundation_v0.4.1",
+      "date": "Wed, 29 Aug 2018 10:28:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "f7243f460a94ed1825ae4b1a1b85eecbaf731e5c",
+            "comment": "Remove Object.assign usage to fix IE11 issues."
+          }
+        ]
+      }
+    },
+    {
       "version": "0.4.0",
       "tag": "@uifabric/foundation_v0.4.0",
       "date": "Fri, 24 Aug 2018 17:02:14 GMT",
