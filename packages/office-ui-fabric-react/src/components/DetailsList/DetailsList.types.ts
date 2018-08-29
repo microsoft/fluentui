@@ -384,7 +384,7 @@ export interface IColumn {
   onRender?: (item?: any, index?: number, column?: IColumn) => any;
 
   /**
-   * can be used to wrap the existing functionality of column divider
+   * If provider, can be used to render a custom column header divider
    */
   onRenderDivider?: (columnIndex: number, defaultRenderer: Function) => any;
 
