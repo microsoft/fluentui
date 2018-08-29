@@ -7,7 +7,7 @@ import './ContextualMenuExample.scss';
 import {
   IContextualMenuListProps,
   IContextualMenuItem
-} from 'office-ui-fabric-react/lib/components/ContextualMenu/ContextualMenu.types';
+} from 'office-ui-fabric-react/lib/ContextualMenu';
 import { IRenderFunction } from '@uifabric/utilities';
 
 const ITEMS: IContextualMenuItem[] = [
