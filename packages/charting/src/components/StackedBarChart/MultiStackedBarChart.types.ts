@@ -55,6 +55,16 @@ export interface IMultiStackedBarChartStyleProps {
    * Width of the chart.
    */
   width: number;
+
+  /**
+   * barHeight for each chart
+   */
+  barHeight?: number;
+
+  /**
+   * color of the datapoint legend
+   */
+  legendColor?: string;
 }
 
 export interface IMultiStackedBarChartStyles {
@@ -64,7 +74,37 @@ export interface IMultiStackedBarChartStyles {
   root: IStyle;
 
   /**
+   * Styling for the root container of each chart in the multistacked bar chart
+   */
+  singleChartRoot: IStyle;
+
+  /**
    * Styling for each item in the container
    */
   items: IStyle;
+
+  /**
+   * Styling for each svg in the multistacked bar chart
+   */
+  chart: IStyle;
+
+  /**
+   * Styling for chart title of the stacked bar chart
+   */
+  chartTitle: IStyle;
+
+  /**
+   * Style for the legend card title displayed in the hover card
+   */
+  hoverCardTextStyles: IStyle;
+
+  /**
+   * Style for the data displayed in the hover card
+   */
+  hoverCardDataStyles: IStyle;
+
+  /**
+   * Style for the root of the hover card
+   */
+  hoverCardRoot: IStyle;
 }

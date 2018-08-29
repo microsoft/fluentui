@@ -75,6 +75,8 @@ export interface IStackedBarChartStyleProps {
   barHeight?: number;
 
   isMultiStackedBarChart?: boolean;
+
+  legendColor?: string;
 }
 
 export interface IStackedBarChartStyles {
@@ -97,4 +99,19 @@ export interface IStackedBarChartStyles {
    * Style for the legend container div
    */
   legendContainer: IStyle;
+
+  /**
+   * Style for the legend card title displayed in the hover card
+   */
+  hoverCardTextStyles: IStyle;
+
+  /**
+   * Style for the data displayed in the hover card
+   */
+  hoverCardDataStyles: IStyle;
+
+  /**
+   * Style for the root of the hover card
+   */
+  hoverCardRoot: IStyle;
 }

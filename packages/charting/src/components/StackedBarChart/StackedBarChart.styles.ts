@@ -1,7 +1,7 @@
 import { IStackedBarChartStyleProps, IStackedBarChartStyles } from './StackedBarChart.types';
 
 export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartStyles => {
-  const { className, width, barHeight, isMultiStackedBarChart } = props;
+  const { className, width, barHeight, isMultiStackedBarChart, legendColor } = props;
   return {
     root: [
       'ms-StackedBarChart',
@@ -25,6 +25,24 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
     },
     legendContainer: {
       paddingTop: '4px'
+    },
+    hoverCardTextStyles: {
+      fontFamily: 'Segoe UI',
+      fontSize: '12px',
+      lineHeight: '14px'
+    },
+    hoverCardDataStyles: {
+      color: legendColor === '' ? '#000000' : legendColor,
+      fontSize: '28px',
+      fontFamily: 'Segoe UI',
+      fontWeight: 'bold',
+      lineHeight: '31px'
+    },
+    hoverCardRoot: {
+      paddingLeft: '16px',
+      paddingRight: '22px',
+      paddingTop: '15px',
+      paddingBottom: '8px'
     }
   };
 };
