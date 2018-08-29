@@ -10,7 +10,8 @@ import { farItems, items, overflowItems } from 'office-ui-fabric-react/lib/compo
 
 import { HorizontalStack, VerticalStack, IStackProps, IStackStyles } from '@uifabric/experiments/lib/Stack';
 import { Text } from '@uifabric/experiments/lib/Text';
-import { CollapsibleSectionRecursiveExample } from '@uifabric/experiments/lib/components/CollapsibleSection/examples/CollapsibleSection.Recursive.Example';
+import { CollapsibleSectionRecursiveExample } from 
+  '@uifabric/experiments/lib/components/CollapsibleSection/examples/CollapsibleSection.Recursive.Example';
 import { IThemedProps } from '../../Foundation';
 import {
   defaultTheme,
