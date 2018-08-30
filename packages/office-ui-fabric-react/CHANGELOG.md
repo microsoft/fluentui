@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 29 Aug 2018 11:23:45 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Aug 2018 11:28:40 GMT and should not be manually modified.
+
+## 5.122.3
+Thu, 30 Aug 2018 11:28:40 GMT
+
+### Patches
+
+- Remove borders from buttons (in a variant theme) that should not have borders.
 
 ## 5.122.2
 Wed, 29 Aug 2018 11:23:45 GMT

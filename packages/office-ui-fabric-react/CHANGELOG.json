@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.122.3",
+      "tag": "office-ui-fabric-react_v5.122.3",
+      "date": "Thu, 30 Aug 2018 11:28:40 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "e326de8007d70cb8a93d6e43971abefe413f7fd6",
+            "comment": "Remove borders from buttons (in a variant theme) that should not have borders."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.122.2",
       "tag": "office-ui-fabric-react_v5.122.2",
       "date": "Wed, 29 Aug 2018 11:23:45 GMT",
