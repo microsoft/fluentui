@@ -1412,9 +1412,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    */
   private _resetSelectedIndex(): void {
     const { currentOptions } = this.state;
-    if (this._autofill.current) {
-      this._autofill.current.clear();
-    }
+
     this._clearPendingInfo();
 
     const selectedIndex: number = this._getFirstSelectedIndex();
@@ -1588,6 +1586,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     switch (ev.which) {
       case KeyCodes.enter:
+        if (this._autofill.current && this._autofill.current.inputElement) {
+          this._autofill.current.inputElement.select();
+        }
+
         this._submitPendingValue(ev);
         if (this.props.multiSelect && isOpen) {
           this.setState({
