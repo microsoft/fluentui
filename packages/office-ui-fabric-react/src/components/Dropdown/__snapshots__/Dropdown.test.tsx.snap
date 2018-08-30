@@ -51,7 +51,10 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
         @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
           background-color: Highlight;
           border-color: Highlight;
-          color: Highlight;
+          color: HighlightText;
+        }
+        @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title:hover {
+          color: HighlightText;
         }
         @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
           -ms-high-contrast-adjust: none;
@@ -232,7 +235,10 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
         @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
           background-color: Highlight;
           border-color: Highlight;
-          color: Highlight;
+          color: HighlightText;
+        }
+        @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title:hover {
+          color: HighlightText;
         }
         @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
           -ms-high-contrast-adjust: none;

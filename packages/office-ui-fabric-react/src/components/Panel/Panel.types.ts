@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Panel } from './Panel';
-import { IRefObject, IRenderFunction } from '../../Utilities';
+import { PanelBase } from './Panel.base';
+import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import { IStyle, ITheme } from '../../Styling';
 import { ILayerProps } from '../../Layer';
 import { IFocusTrapZoneProps } from '../../FocusTrapZone';
 
@@ -13,9 +14,9 @@ export interface IPanel {
   /**
    * Forces the panel to dismiss.
    */
-  dismiss: () => void;
+  dismiss: (ev?: React.KeyboardEvent<HTMLElement>) => void;
 }
-export interface IPanelProps extends React.Props<Panel> {
+export interface IPanelProps extends React.Props<PanelBase> {
   /**
    * Optional callback to access the IPanel interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -67,8 +68,9 @@ export interface IPanelProps extends React.Props<Panel> {
 
   /**
    * A callback function for when the panel is closed, before the animation completes.
+   * If the panel should NOT be dismissed based on some keyboard event, then simply call ev.preventDefault() on it
    */
-  onDismiss?: () => void;
+  onDismiss?: (ev?: React.KeyboardEvent<HTMLElement>) => void;
 
   /**
    * A callback function which is called after the Panel is dismissed and the animation is complete.
@@ -76,7 +78,18 @@ export interface IPanelProps extends React.Props<Panel> {
   onDismissed?: () => void;
 
   /**
-   * Additional styling options.
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  styles?: IStyleFunctionOrObject<IPanelStyleProps, IPanelStyles>;
+
+  /**
+   * Theme provided by High-Order Component.
+   */
+  theme?: ITheme;
+
+  /**
+   * Additional css class to apply to the Panel
+   * @defaultvalue undefined
    */
   className?: string;
 
@@ -283,4 +296,154 @@ export enum PanelType {
    * XXLarge: 643px width, 40px Left/Right padding
    */
   custom = 7
+}
+
+export interface IPanelStyleProps {
+  /**
+   * Theme provided by High-Order Component.
+   */
+  theme: ITheme;
+
+  /**
+   * Accept custom classNames
+   */
+  className?: string;
+
+  /**
+   * Is Panel open
+   */
+  isOpen?: boolean;
+
+  /**
+   * Is animation currently running
+   */
+  isAnimating?: boolean;
+
+  /**
+   * Is panel on right side
+   */
+  isOnRightSide?: boolean;
+
+  /**
+   * Is panel hidden on dismiss
+   */
+  isHiddenOnDismiss?: boolean;
+
+  /**
+   * Classname for FocusTrapZone element
+   */
+  focusTrapZoneClassName?: string;
+
+  /**
+   * Determines if content should stretch to fill available space putting footer at the bottom of the page
+   */
+  isFooterAtBottom?: boolean;
+
+  /**
+   * Based on state value setting footer to sticky or not
+   */
+  isFooterSticky?: boolean;
+
+  /**
+   * Panel has close button
+   */
+  hasCloseButton?: boolean;
+
+  /**
+   * Type of the panel.
+   */
+  type?: PanelType;
+
+  /**
+   * Optional parameter to provider the class name for header text
+   */
+  headerClassName?: string;
+}
+
+// TODO -Issue #5689: Comment in once Button is converted to mergeStyles
+// export interface IPanelSubComponentStyles {
+//   /**
+//    * Styling for Icon child component.
+//    */
+//   // TODO: this should be the interface once we're on TS 2.9.2 but otherwise causes errors in 2.8.4
+//   // button: IStyleFunctionOrObject<IButtonStyleProps, IButtonStyles>;
+//   button: IStyleFunctionOrObject<any, any>;
+// }
+
+export interface IPanelStyles {
+  /**
+   * Style for the root element.
+   */
+  root: IStyle;
+
+  /**
+   * Style for the overlay element.
+   */
+  overlay: IStyle;
+
+  /**
+   * Style for the hidden element.
+   */
+  hiddenPanel: IStyle;
+
+  /**
+   * Style for the main section element.
+   */
+  main: IStyle;
+
+  /**
+   * Style for the navigation container element.
+   */
+  commands: IStyle;
+
+  /**
+   * Style for the Body and Footer container element.
+   */
+  contentInner: IStyle;
+
+  /**
+   * Style for the scrollable content area container element.
+   */
+  scrollableContent: IStyle;
+
+  /**
+   * Style for the close button container element.
+   */
+  navigation: IStyle;
+
+  /**
+   * Style for the close button IconButton element.
+   */
+  closeButton: IStyle;
+
+  /**
+   * Style for the header container div element.
+   */
+  header: IStyle;
+
+  /**
+   * Style for the header inner p element.
+   */
+  headerText: IStyle;
+
+  /**
+   * Style for the body div element.
+   */
+  content: IStyle;
+
+  /**
+   * Style for the footer div element.
+   */
+  footer: IStyle;
+
+  /**
+   * Style for the inner footer div element.
+   */
+  footerInner: IStyle;
+
+  // TODO -Issue #5689: Comment in once Button is converted to mergeStyles
+  /**
+   * Styling for subcomponents.
+   */
+  // subComponentStyles: IPanelSubComponentStyles;
 }

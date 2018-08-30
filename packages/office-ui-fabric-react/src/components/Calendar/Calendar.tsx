@@ -16,9 +16,11 @@ const styles: any = stylesImport;
 
 const leftArrow = 'Up';
 const rightArrow = 'Down';
+const closeIcon = 'CalculatorMultiply';
 const iconStrings: ICalendarIconStrings = {
   leftNavigation: leftArrow,
-  rightNavigation: rightArrow
+  rightNavigation: rightArrow,
+  closeIcon: closeIcon
 };
 const defaultWorkWeekDays: DayOfWeek[] = [
   DayOfWeek.Monday,
@@ -75,7 +77,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     firstWeekOfYear: FirstWeekOfYear.FirstDay,
     dateTimeFormatter: dateTimeFormatterCallbacks,
     showSixWeeksByDefault: false,
-    workWeekDays: defaultWorkWeekDays
+    workWeekDays: defaultWorkWeekDays,
+    showCloseButton: false
   };
 
   private _dayPicker = createRef<ICalendarDay>();
@@ -139,7 +142,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
       navigationIcons,
       minDate,
       maxDate,
-      className
+      className,
+      showCloseButton
     } = this.props;
     const { selectedDate, navigatedDayDate, navigatedMonthDate, isMonthPickerVisible, isDayPickerVisible } = this.state;
     const onHeaderSelect = showMonthPickerAsOverlay ? this._onHeaderSelect : undefined;
@@ -192,6 +196,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                     maxDate={maxDate}
                     workWeekDays={this.props.workWeekDays}
                     componentRef={this._dayPicker}
+                    showCloseButton={showCloseButton}
                   />
                 )}
                 {isDayPickerVisible && isMonthPickerVisible && <div className={styles.divider} />}

@@ -1,5 +1,5 @@
 import { CollapsibleSectionView } from './CollapsibleSection.view';
-import { getStyles as styles } from './CollapsibleSection.styles';
+import { collapsibleSectionStyles } from './CollapsibleSection.styles';
 import { createComponent, createStatelessComponent } from '../../Foundation';
 import { CollapsibleSectionState } from './CollapsibleSection.state';
 
@@ -17,7 +17,7 @@ export const CollapsibleSection: React.StatelessComponent<ICollapsibleSectionPro
   {
     displayName: 'CollapsibleSection',
     view: CollapsibleSectionView,
-    styles
+    styles: collapsibleSectionStyles
   },
   CollapsibleSectionState
 );
@@ -29,5 +29,5 @@ export const CollapsibleSectionStateless: React.StatelessComponent<ICollapsibleS
 >({
   displayName: 'CollapsibleSection',
   view: CollapsibleSectionView,
-  styles
+  styles: collapsibleSectionStyles
 });

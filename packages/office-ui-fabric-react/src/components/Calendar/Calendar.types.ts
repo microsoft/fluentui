@@ -159,6 +159,11 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
    * @defaultvalue false
    */
   selectDateOnClick?: boolean;
+
+  /**
+   * Whether the close button should be shown or not
+   */
+  showCloseButton?: boolean;
 }
 
 export interface ICalendarStrings {
@@ -212,6 +217,11 @@ export interface ICalendarStrings {
   nextYearAriaLabel?: string;
 
   /**
+   * Aria-label for the "close" button.
+   */
+  closeButtonAriaLabel?: string;
+
+  /**
    * Aria-label format string for the week number header. Should have 1 string param e.g. "week number {0}"
    */
   weekNumberFormatString?: string;
@@ -229,6 +239,12 @@ export interface ICalendarIconStrings {
    * @defaultvalue  'Down'
    */
   rightNavigation?: string;
+
+  /**
+   * Close icon
+   * @defaultvalue  'CalculatorMultiply'
+   */
+  closeIcon?: string;
 }
 
 export interface ICalendarFormatDateCallbacks {

@@ -97,9 +97,11 @@ export interface ISpinButtonProps {
 
   /**
    * This callback is triggered when the value inside the SpinButton should be validated.
+   * @param value: The value entered in the SpinButton to validate
+   * @param event: The event that triggered this validate, if any. (For accessibility)
    * @return {string | void} If a string is returned, it will be used as the value of the SpinButton.
    */
-  onValidate?: (value: string) => string | void;
+  onValidate?: (value: string, event?: React.SyntheticEvent<HTMLElement>) => string | void;
 
   /**
    * This callback is triggered when the increment button is pressed or if the user presses up arrow with focus on the input of the spinButton

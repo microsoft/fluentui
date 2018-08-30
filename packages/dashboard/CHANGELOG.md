@@ -1,6 +1,28 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Fri, 24 Aug 2018 10:26:08 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Aug 2018 19:26:04 GMT and should not be manually modified.
+
+## 0.17.3
+Thu, 30 Aug 2018 19:26:04 GMT
+
+### Patches
+
+- fix leftNav styles per PM feedback
+- revert the change for expand behavior
+
+## 0.17.2
+Thu, 30 Aug 2018 10:32:49 GMT
+
+### Patches
+
+- Add Donut chart with legends
+
+## 0.17.1
+Tue, 28 Aug 2018 10:23:58 GMT
+
+### Patches
+
+- css fixes for card component in dashboard package
 
 ## 0.17.0
 Fri, 24 Aug 2018 10:26:08 GMT

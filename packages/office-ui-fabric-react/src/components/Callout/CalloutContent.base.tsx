@@ -11,7 +11,9 @@ import {
   getWindow,
   getDocument,
   css,
-  createRef
+  createRef,
+  getNativeProps,
+  divProperties
 } from '../../Utilities';
 import {
   positionCallout,
@@ -192,6 +194,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     const content = (
       <div ref={this._hostElement} className={this._classNames.container} style={visibilityStyle}>
         <div
+          {...getNativeProps(this.props, divProperties)}
           className={css(this._classNames.root, positions && positions.targetEdge && ANIMATIONS[positions.targetEdge!])}
           style={positions ? positions.elementPosition : OFF_SCREEN_STYLE}
           tabIndex={-1} // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.

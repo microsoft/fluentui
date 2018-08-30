@@ -5,11 +5,11 @@ import {
   IHorizontalBarChartStyles
 } from './HorizontalBarChart.types';
 import { HorizontalBarChartBase } from './HorizontalBarChart.base';
-import { getStyles } from './HorizontalBarChart.styles';
+import { getHorizontalBarChartStyles } from './HorizontalBarChart.styles';
 
 // Create a HorizontalBarChart variant which uses these default styles and this styled subcomponent.
 export const HorizontalBarChart = styled<
   IHorizontalBarChartProps,
   IHorizontalBarChartStyleProps,
   IHorizontalBarChartStyles
->(HorizontalBarChartBase, getStyles);
+>(HorizontalBarChartBase, getHorizontalBarChartStyles);

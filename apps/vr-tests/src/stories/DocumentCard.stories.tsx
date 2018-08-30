@@ -9,7 +9,8 @@ import {
   DocumentCardTitle,
   DocumentCardActivity,
   DocumentCardType,
-  ImageFit
+  ImageFit,
+  DocumentCardActions
 } from 'office-ui-fabric-react';
 
 import { TestImages } from '../common/TestImages';
@@ -25,7 +26,7 @@ let previewProps = {
       width: 318,
       height: 196
     }
-  ],
+  ]
 };
 
 let previewPropsCompact = {
@@ -58,60 +59,62 @@ let previewPropsCompact = {
       previewImageSrc: TestImages.documentPreview,
       iconSrc: TestImages.iconPpt,
       width: 144
-    },
-  ],
+    }
+  ]
 };
 
 let DocActivity = (
   <DocumentCardActivity
-    activity='Created a few minutes ago'
-    people={
-      [
-        { name: 'Annie Lindqvist', profileImageSrc: TestImages.personaFemale }
-      ]
-    }
+    activity="Created a few minutes ago"
+    people={[{ name: 'Annie Lindqvist', profileImageSrc: TestImages.personaFemale }]}
   />
 );
 
 storiesOf('DocumentCard', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
-    <Screener
-      steps={ new Screener.Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .end()
-      }
-    >
-      { story() }
-    </Screener>
+    <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
   ))
   .add('Root', () => (
-    <DocumentCard onClickHref='http://bing.com'>
-      <DocumentCardPreview { ...previewProps } />
+    <DocumentCard onClickHref="http://bing.com">
+      <DocumentCardPreview {...previewProps} />
       <DocumentCardTitle
-        title='Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_it_needs_truncating.pptx'
-        shouldTruncate={ true }
+        title="Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_it_needs_truncating.pptx"
+        shouldTruncate={true}
       />
-      { DocActivity }
+      {DocActivity}
     </DocumentCard>
   ))
   .add('Not truncated', () => (
-    <DocumentCard onClickHref='http://bing.com'>
-      <DocumentCardPreview { ...previewProps } />
+    <DocumentCard onClickHref="http://bing.com">
+      <DocumentCardPreview {...previewProps} />
       <DocumentCardTitle
-        title='Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_it_needs_truncating.pptx'
-        shouldTruncate={ false }
+        title="Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_it_needs_truncating.pptx"
+        shouldTruncate={false}
       />
-      { DocActivity }
+      {DocActivity}
     </DocumentCard>
   ))
   .add('Compact', () => (
-    <DocumentCard type={ DocumentCardType.compact } onClickHref='http://bing.com'>
-      <DocumentCardPreview { ...previewPropsCompact } />
-      <DocumentCardTitle
-        title='4 files were uploaded'
-        shouldTruncate={ true }
+    <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
+      <DocumentCardPreview {...previewPropsCompact} />
+      <DocumentCardTitle title="4 files were uploaded" shouldTruncate={true} />
+      {DocActivity}
+    </DocumentCard>
+  ))
+  .add('With Views', () => (
+    <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
+      <DocumentCardPreview {...previewPropsCompact} />
+      <DocumentCardTitle title="4 files were uploaded" shouldTruncate={true} />
+      {DocActivity}
+      <DocumentCardActions
+        actions={[
+          {
+            iconProps: { iconName: 'Share' },
+            ariaLabel: 'share action'
+          }
+        ]}
+        views={432}
       />
-      { DocActivity }
-    </DocumentCard >
+    </DocumentCard>
   ));

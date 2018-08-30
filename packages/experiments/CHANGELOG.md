@@ -1,6 +1,37 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 24 Aug 2018 10:26:08 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Aug 2018 19:26:04 GMT and should not be manually modified.
+
+## 6.28.1
+Thu, 30 Aug 2018 19:26:04 GMT
+
+*Version update only*
+
+## 6.28.0
+Thu, 30 Aug 2018 10:32:49 GMT
+
+### Minor changes
+
+- TagPicker added as a Form input component.
+- Update Shared palette colors
+
+### Patches
+
+- Corrected some Checkbox implementations - should use 'aria-labelledby' instead of 'aria-describedby'
+
+## 6.27.1
+Tue, 28 Aug 2018 10:23:58 GMT
+
+### Patches
+
+- Experiments: Add theming examples page for documentation and to prep for testing schemes.
+
+## 6.27.0
+Fri, 24 Aug 2018 17:02:14 GMT
+
+### Minor changes
+
+- Reverting Customizer React 16 context change.
 
 ## 6.26.0
 Fri, 24 Aug 2018 10:26:08 GMT
