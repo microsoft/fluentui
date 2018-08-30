@@ -42,12 +42,12 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
               aria-colindex={columnIndex + columnStartIndex + 1}
               className={css(
                 column.className,
-                column.isMultiline && rowClassNames.isMultiline,
                 column.isRowHeader && rowClassNames.isRowHeader,
                 column.isIconOnly && shimmer && rowClassNames.shimmerIconPlaceholder,
                 shimmer && rowClassNames.shimmer,
                 rowClassNames.cell,
-                column.isPadded ? rowClassNames.cellPadded : rowClassNames.cellUnpadded
+                column.isPadded ? rowClassNames.cellPadded : rowClassNames.cellUnpadded,
+                column.isMultiline && rowClassNames.isMultiline
               )}
               style={{ width }}
               data-automationid="DetailsRowCell"
