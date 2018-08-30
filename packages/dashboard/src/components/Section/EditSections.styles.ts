@@ -15,15 +15,15 @@ export const getStyles = (): IEditSectionsStyles => {
       color: 'black'
     },
     addButton: {
-      color: 'black',
+      color: '#000000',
       margin: '12px 0'
     },
     saveButton: {
-      color: 'black',
+      color: '#000000',
       margin: '12px 0'
     },
     cancelButton: {
-      color: 'black',
+      color: '#000000',
       margin: '12px 0'
     }
   };

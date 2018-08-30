@@ -76,6 +76,9 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridSe
         layouts={this._createLayout()}
         verticalCompact={true}
         onLayoutChange={this._onLayoutChanged}
+        onDrag={this.props.onDrag}
+        onDragStart={this.props.onDragStart}
+        onDragStop={this.props.onDragStop}
         onBreakpointChange={this.props.onBreakPointChange}
         dragApiRef={this.props.dragApi}
         {...this.props}

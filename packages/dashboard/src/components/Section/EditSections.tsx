@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction, KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
 import { Dialog, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { ActionButton } from 'office-ui-fabric-react/lib/Button';
@@ -32,7 +32,7 @@ export class EditSections extends React.PureComponent<IEditSectionsProps, IEditS
     const classNames = getClassNames(getStyles!);
 
     return (
-      <div className={classNames.root}>
+      <div className={classNames.root} onKeyDown={this._onKeyDown}>
         <div className={classNames.rightAlignedFlexContainer}>
           <ActionButton
             {...this.props.saveButtonProps}
@@ -104,6 +104,26 @@ export class EditSections extends React.PureComponent<IEditSectionsProps, IEditS
       </div>
     );
   }
+
+  /**
+   * Handles key down
+   */
+  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
+    switch (ev.which) {
+      case KeyCodes.escape:
+        this._handleEscKey();
+        break;
+    }
+  };
+
+  /**
+   * cancel edit on esc key press
+   */
+  private _handleEscKey = (): void => {
+    if (this.props.onCancel) {
+      this.props.onCancel();
+    }
+  };
 
   /**
    * should disable all the section in dashboard

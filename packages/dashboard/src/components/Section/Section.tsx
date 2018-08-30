@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ISectionProps, ISectionStyles, ISectionState, ISectionStyleProps } from './Section.types';
-import { SectionTitleTextField } from './sectionTitleTextField';
+import { SectionTitleTextField } from './SectionTitleTextField';
 import { getStyles } from './Section.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
@@ -63,32 +63,36 @@ export class Section extends React.PureComponent<ISectionProps, ISectionState> {
               }}
             />
           )}
-          {this.props.isEditMode && (
-            <IconButton
-              {...this.props.renameSectionButtonProps}
-              onClick={this._onClickRename}
-              disabled={this.props.disabled}
-              styles={{
-                root: classNames.actionButton,
-                rootDisabled: classNames.actionButtonDisabled,
-                rootHovered: classNames.actionButtonHovered,
-                rootPressed: classNames.actionButtonPressed
-              }}
-            />
-          )}
-          {this.props.isEditMode && (
-            <IconButton
-              {...this.props.deleteSectionButtonProps}
-              onClick={this._onClickDelete}
-              disabled={this.props.disabled}
-              styles={{
-                root: classNames.actionButton,
-                rootDisabled: classNames.actionButtonDisabled,
-                rootHovered: classNames.actionButtonHovered,
-                rootPressed: classNames.actionButtonPressed
-              }}
-            />
-          )}
+          {/* the rename button */}
+          {this.props.isEditMode &&
+            !this.props.disabled && (
+              <IconButton
+                {...this.props.renameSectionButtonProps}
+                onClick={this._onClickRename}
+                disabled={this.props.disabled}
+                styles={{
+                  root: classNames.actionButton,
+                  rootDisabled: classNames.actionButtonDisabled,
+                  rootHovered: classNames.actionButtonHovered,
+                  rootPressed: classNames.actionButtonPressed
+                }}
+              />
+            )}
+          {/* the delete button */}
+          {this.props.isEditMode &&
+            !this.props.disabled && (
+              <IconButton
+                {...this.props.deleteSectionButtonProps}
+                onClick={this._onClickDelete}
+                disabled={this.props.disabled}
+                styles={{
+                  root: classNames.actionButton,
+                  rootDisabled: classNames.actionButtonDisabled,
+                  rootHovered: classNames.actionButtonHovered,
+                  rootPressed: classNames.actionButtonPressed
+                }}
+              />
+            )}
           {!this.props.isEditMode &&
             this.props.removeTitle && (
               <OverflowSet

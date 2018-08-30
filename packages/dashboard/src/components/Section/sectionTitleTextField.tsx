@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { elementContains } from 'office-ui-fabric-react/lib/Utilities';
+import { elementContains, KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 
 export interface ISectionTitleTextFieldProps {
@@ -42,7 +42,7 @@ export class SectionTitleTextField extends React.Component<ISectionTitleTextFiel
   public render(): JSX.Element {
     return (
       <FocusTrapZone className={this.props.className}>
-        <div ref={this._hostElement}>
+        <div ref={this._hostElement} onKeyDown={this._onKeyDown}>
           <TextField
             borderless
             placeholder={this.props.placeHolder}
@@ -57,6 +57,18 @@ export class SectionTitleTextField extends React.Component<ISectionTitleTextFiel
       </FocusTrapZone>
     );
   }
+
+  /**
+   * on key down. Save the title when enter is pressed
+   */
+  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
+    if (ev.which === KeyCodes.enter) {
+      ev.preventDefault();
+      if (this.props.updateSectionTitle) {
+        this.props.updateSectionTitle(this.props.id, this.state.input);
+      }
+    }
+  };
 
   /**
    * update the the input when user type
