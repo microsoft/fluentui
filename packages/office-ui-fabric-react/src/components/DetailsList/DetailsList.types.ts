@@ -285,6 +285,11 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    * handled separately from normal theme styling, but they are passed to the styling system.
    */
   cellStyleProps?: ICellStyleProps;
+
+  /**
+   * Whether or not to disable the built-in SelectionZone, so the host component can provide its own.
+   */
+  disableSelectionZone?: boolean;
 }
 
 export interface IColumn {
