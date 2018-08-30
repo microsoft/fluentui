@@ -1,10 +1,14 @@
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+import { IDialogContentProps } from 'office-ui-fabric-react/lib/Dialog';
+import { IModalProps } from 'office-ui-fabric-react/lib/Modal';
+import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { Layout, Layouts } from 'react-grid-layout';
 import { DashboardGridBreakpointLayouts } from '../DashboardGridLayout/DashboardGridLayout.types';
 
 export interface ISectionProps {
   /**
-   * Key for section in dashboard-grid-layout
+   * The unique id for section in dashboard
    */
   id: string;
 
@@ -21,18 +25,50 @@ export interface ISectionProps {
   /**
    * Styling
    */
-  style?: React.CSSProperties;
+  style?: IStyleFunctionOrObject<ISectionStyleProps, ISectionStyles>;
 
   /**
-   * String for removing section, pass in only if remove is allowed
+   * String for removing section, pass in only if remove is allowed when section is displayed in dashboard
    */
   removeTitle?: string;
-
   /**
-   * Is in the edit section mode
+   * Is in the edit section mode?
    * @default false
    */
   isEditMode?: boolean;
+
+  /**
+   * Is in the renaming section mode?
+   * @default false
+   */
+  isRenaming?: boolean;
+
+  /**
+   * Is in the adding section mode?
+   * @default false
+   */
+  isAdding?: boolean;
+
+  /**
+   * Is the section disabled? if yes, drag, rename delete etc., are disabled
+   * @default false
+   */
+  disabled?: boolean;
+
+  /**
+   * The row height used for react grid layout
+   */
+  rowHeight?: number;
+
+  /**
+   * The rename/edit button prop in the section
+   */
+  renameSectionButtonProps?: IButtonProps;
+
+  /**
+   * The delete button prop in the section
+   */
+  deleteSectionButtonProps?: IButtonProps;
 
   /**
    * Handler when collapse expand is toggled
@@ -41,20 +77,42 @@ export interface ISectionProps {
 
   /**
    * Handler for deleting section
+   * @param key the key of section being deleted
    */
   onDelete?(key: string): void;
+
+  /**
+   * Handler for renaming section button click
+   * @param key the key of section being renamed
+   */
+  onRename?(key: string): void;
+
+  /**
+   * Update the title of section being renamed
+   * @param key the key of section being renamed
+   * @param title the new title
+   */
+  updateSectionTitle?(key: string, title: string): void;
+}
+
+export interface ISectionStyleProps {
+  /**
+   * Is the section disabled? if yes, drag, rename, delete etc., are disabled
+   * @default false
+   */
+  disabled?: boolean;
+
+  /**
+   * The row height used for React-Grid-Layout
+   */
+  rowHeight?: number;
 }
 
 export interface ISection extends ISectionProps {
   /**
-   * The unique key for item in dashboard
+   * Card ids in this section
    */
-  key: string;
-
-  /**
-   * keys of cards for this section
-   */
-  keysOfCard: string[];
+  cardIds?: string[];
 }
 
 export interface ISectionState {
@@ -66,34 +124,30 @@ export interface ISectionState {
 
 export interface ISectionStyles {
   root: IStyle;
+  sectionTitle: IStyle;
+  editTitleTextField: IStyle;
   actions: IStyle;
   actionButton: IStyle;
+  actionButtonDisabled: IStyle;
+  actionButtonHovered: IStyle;
+  actionButtonPressed: IStyle;
 }
 
 export interface IEditSectionsProps {
   /**
-   * The text label of add button
+   * The sections
    */
-  addButtonLabel?: string;
+  sections: ISection[];
+
   /**
    * If add button is disabled
    */
   addButtonDisabled?: boolean;
 
   /**
-   * The text label of save button
-   */
-  saveButtonLabel?: string;
-
-  /**
    * If save button is disabled
    */
   saveButtonDisabled?: boolean;
-
-  /**
-   * The text label of cancel button
-   */
-  cancelButtonLabel?: string;
 
   /**
    * Describes the layout of the section to display for every breakpoint
@@ -106,16 +160,104 @@ export interface IEditSectionsProps {
    */
   isDraggable?: boolean;
 
-  onAddSection?(): void;
+  /**
+   * The default title for new section
+   */
+  defaultSectionTitle?: string;
 
   /**
-   * Callback so you can save the layout.
+   * The default id for adding new section
+   */
+  defaultNewSectionId?: string;
+
+  /**
+   * The row height used for React-Grid-Layout
+   */
+  rowHeight?: number;
+
+  /**
+   * The add button prop
+   */
+  addButtonProps?: IButtonProps;
+
+  /**
+   * The cancel button prop
+   */
+  cancelButtonProps?: IButtonProps;
+
+  /**
+   * The cancel button prop
+   */
+  saveButtonProps?: IButtonProps;
+
+  /**
+   * The content for delete section dialog
+   */
+  deleteSectionDialogContentProps?: IDialogContentProps;
+
+  /**
+   * The modal property of the delete section dialog
+   */
+  deleteSectionDialogModelProps?: IModalProps;
+
+  /**
+   * The remove button prop in delete section dialog
+   */
+  deleteSectionDilaogRemoveButtonProps?: IButtonProps;
+
+  /**
+   * The cencel button prop in delete section dialog
+   */
+  deleteSectionDilaogCancelButtonProps?: IButtonProps;
+
+  /**
+   * The rename/edit button prop in the section
+   */
+  renameSectionButtonProps?: IButtonProps;
+
+  /**
+   * The delete button prop in the section
+   */
+  deleteSectionButtonProps?: IButtonProps;
+
+  /**
+   * On add a new section.
+   */
+  onAddSection?(title: string): void;
+
+  /**
+   * Callback to save the layout.
    */
   onLayoutChange?(currentLayout: Layout[], allLayouts: Layouts): void;
+
+  /**
+   * Handler for deleting section
+   * @param the key of section being deleted
+   */
+  onDeleteSection?(key: string): void;
+
+  /**
+   * Handler when renaming section button is clicked
+   * @param the key of section being renamed
+   */
+  onRenameSectionClick?(key: string): void;
+
+  /**
+   * Handler when the title of the section in edit is updated
+   * @param key the key of section being renamed
+   * @param title the new title
+   */
+  onUpdateSectionTitle?(key: string, title: string): void;
+
+  /**
+   * Callback when click on cancel button
+   */
+  onCancel?(): void;
 }
 
 export interface IEditSectionsStyles {
   root: IStyle;
+  icon: IStyle;
   addButton: IStyle;
   saveButton: IStyle;
   cancelButton: IStyle;

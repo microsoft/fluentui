@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
-import { SectionBasicExample } from './examples/Section.Basic.Example';
 import { EditSectionsExample } from './examples/EditSections.Example';
-const SectionBasicExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Section/examples/Section.Basic.Example.tsx') as string;
 const EditSectionsExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Section/examples/EditSections.Example.tsx') as string;
 
 export class SectionPage extends React.Component<IComponentDemoPageProps, {}> {
@@ -13,9 +11,6 @@ export class SectionPage extends React.Component<IComponentDemoPageProps, {}> {
         componentName="Section"
         exampleCards={
           <div>
-            <ExampleCard title="Section" isScrollable={true} isOptIn={true} code={SectionBasicExampleCode}>
-              <SectionBasicExample />
-            </ExampleCard>
             <ExampleCard title="Edit Sections" isScrollable={true} isOptIn={true} code={EditSectionsExampleCode}>
               <EditSectionsExample />
             </ExampleCard>
