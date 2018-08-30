@@ -14,6 +14,8 @@ export type __ReduceToFunction<T> = T extends (...args: any[]) => any ? T : neve
  *
  * Note: the commmented segment is the right expression but it is buggy in 2.8.2. Once Fabric upgrades to Typescript 3,
  *  we should uncomment the commented segmment below as well as uncomment the test in mergeStyleSets.test.ts.
+ *
+ * See https://github.com/OfficeDev/office-ui-fabric-react/issues/6124.
  */
 export type __MapToFunctionType<T> = /*[T] extends [IStyleSet<any>] ? (...args: any[]) => T :*/ __ReduceToFunction<T>;
 
