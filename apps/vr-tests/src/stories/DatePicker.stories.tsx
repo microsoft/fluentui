@@ -43,12 +43,6 @@ storiesOf('DatePicker', module)
       allowTextInput
     />
   ))
-  .add('Disabled', () => (
-    <DatePicker
-      value={date}
-      disabled
-    />
-  ))
   .add('Required', () => (
     <DatePicker
       value={date}
@@ -59,13 +53,6 @@ storiesOf('DatePicker', module)
     <DatePicker
       value={date}
       underlined
-    />
-  ))
-  .add('Underlined and Disabled', () => (
-    <DatePicker
-      value={date}
-      underlined
-      disabled
     />
   ))
   .add('Underlined and Required', () => (
