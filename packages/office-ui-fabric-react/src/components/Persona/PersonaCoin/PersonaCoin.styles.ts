@@ -108,7 +108,7 @@ export const getStyles = (props: IPersonaCoinStyleProps): IPersonaCoinStyles => 
         color: props.showUnknownPersonaCoin ? unknownPersonaFontColor : palette.white,
         fontSize: FontSizes.large,
         fontWeight: FontWeights.regular,
-        lineHeight: dimension,
+        lineHeight: dimension === 48 ? 46 : dimension, // copying the logic for the dimensions; defaulted to 46 for size48
         verticalAlign: 'middle',
         height: dimension,
 
@@ -132,7 +132,7 @@ export const getStyles = (props: IPersonaCoinStyleProps): IPersonaCoinStyles => 
       },
 
       dimension >= 32 &&
-        dimension < 72 && {
+        dimension < 48 && {
           fontSize: FontSizes.medium
         },
 

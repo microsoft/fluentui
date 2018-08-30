@@ -74,6 +74,7 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
               font-weight: 400;
               height: 48px;
               line-height: 46px;
+              vertical-align: middle;
             }
             @media screen and (-ms-high-contrast: active){& {
               -ms-high-contrast-adjust: none;
@@ -255,14 +256,14 @@ exports[`Persona renders Persona correctly with image 1`] = `
             {
               border-radius: 50%;
               border: 0px;
-              height: 100%;
+              height: 48px;
               left: 0px;
               margin-right: 10px;
               overflow: hidden;
               perspective: 1px;
               position: absolute;
               top: 0px;
-              width: 100%;
+              width: 48px;
             }
         style={
           Object {
@@ -452,6 +453,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
               font-weight: 400;
               height: 48px;
               line-height: 46px;
+              vertical-align: middle;
             }
             @media screen and (-ms-high-contrast: active){& {
               -ms-high-contrast-adjust: none;
@@ -623,6 +625,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
               font-weight: 400;
               height: 48px;
               line-height: 46px;
+              vertical-align: middle;
             }
             @media screen and (-ms-high-contrast: active){& {
               -ms-high-contrast-adjust: none;
@@ -1061,14 +1064,14 @@ exports[`PersonaCoin does not render the initials when showInitialsUntilImageLoa
           {
             border-radius: 50%;
             border: 0px;
-            height: 100%;
+            height: 48px;
             left: 0px;
             margin-right: 10px;
             overflow: hidden;
             perspective: 1px;
             position: absolute;
             top: 0px;
-            width: 100%;
+            width: 48px;
           }
       style={
         Object {
@@ -1143,6 +1146,7 @@ exports[`PersonaCoin renders correctly 1`] = `
             font-weight: 400;
             height: 48px;
             line-height: 46px;
+            vertical-align: middle;
           }
           @media screen and (-ms-high-contrast: active){& {
             -ms-high-contrast-adjust: none;
@@ -1209,14 +1213,14 @@ exports[`PersonaCoin renders correctly with image 1`] = `
           {
             border-radius: 50%;
             border: 0px;
-            height: 100%;
+            height: 48px;
             left: 0px;
             margin-right: 10px;
             overflow: hidden;
             perspective: 1px;
             position: absolute;
             top: 0px;
-            width: 100%;
+            width: 48px;
           }
       style={
         Object {
@@ -1291,6 +1295,7 @@ exports[`PersonaCoin renders correctly with onRender callback 1`] = `
             font-weight: 400;
             height: 100px;
             line-height: 100px;
+            vertical-align: middle;
           }
           @media screen and (-ms-high-contrast: active){& {
             -ms-high-contrast-adjust: none;
@@ -1347,6 +1352,7 @@ exports[`PersonaCoin renders correctly with provided initials 1`] = `
             font-weight: 400;
             height: 48px;
             line-height: 46px;
+            vertical-align: middle;
           }
           @media screen and (-ms-high-contrast: active){& {
             -ms-high-contrast-adjust: none;
@@ -1403,6 +1409,7 @@ exports[`PersonaCoin renders correctly with text 1`] = `
             font-weight: 400;
             height: 48px;
             line-height: 46px;
+            vertical-align: middle;
           }
           @media screen and (-ms-high-contrast: active){& {
             -ms-high-contrast-adjust: none;
@@ -1459,6 +1466,7 @@ exports[`PersonaCoin renders the initials before the image is loaded 1`] = `
             font-weight: 400;
             height: 48px;
             line-height: 46px;
+            vertical-align: middle;
           }
           @media screen and (-ms-high-contrast: active){& {
             -ms-high-contrast-adjust: none;
@@ -1480,14 +1488,14 @@ exports[`PersonaCoin renders the initials before the image is loaded 1`] = `
           {
             border-radius: 50%;
             border: 0px;
-            height: 100%;
+            height: 48px;
             left: 0px;
             margin-right: 10px;
             overflow: hidden;
             perspective: 1px;
             position: absolute;
             top: 0px;
-            width: 100%;
+            width: 48px;
           }
       style={
         Object {

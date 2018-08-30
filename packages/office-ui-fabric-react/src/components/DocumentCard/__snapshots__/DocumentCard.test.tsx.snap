@@ -66,6 +66,7 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
                     font-weight: 400;
                     height: 32px;
                     line-height: 32px;
+                    vertical-align: middle;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     -ms-high-contrast-adjust: none;

@@ -77,6 +77,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
                 font-weight: 400;
                 height: 40px;
                 line-height: 40px;
+                vertical-align: middle;
               }
               @media screen and (-ms-high-contrast: active){& {
                 -ms-high-contrast-adjust: none;
@@ -271,6 +272,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
                 font-weight: 400;
                 height: 72px;
                 line-height: 72px;
+                vertical-align: middle;
               }
               @media screen and (-ms-high-contrast: active){& {
                 -ms-high-contrast-adjust: none;
