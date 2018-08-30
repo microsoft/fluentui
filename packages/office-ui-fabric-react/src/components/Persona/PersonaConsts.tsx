@@ -30,49 +30,28 @@ export const sizeBoolean = (size: PersonaSize) => ({
   isSize28: size === PersonaSize.size28 || size === PersonaSize.extraSmall,
   isSize32: size === PersonaSize.size32,
   isSize40: size === PersonaSize.size40 || size === PersonaSize.small,
-  isSize48: size === PersonaSize.size48,
+  isSize48: size === PersonaSize.size48 || size === PersonaSize.regular,
   isSize72: size === PersonaSize.size72 || size === PersonaSize.large,
   isSize100: size === PersonaSize.size100 || size === PersonaSize.extraLarge
 });
 
-export const personaSizeToInt = (size: PersonaSize): number => {
-  switch (size) {
-    case PersonaSize.size10:
-    case PersonaSize.tiny:
-      return 10;
-
-    case PersonaSize.size16:
-      return 16;
-
-    case PersonaSize.extraExtraSmall:
-    case PersonaSize.size24:
-      return 24;
-
-    case PersonaSize.extraSmall:
-    case PersonaSize.size28:
-      return 28;
-
-    case PersonaSize.size32:
-      return 32;
-
-    case PersonaSize.small:
-    case PersonaSize.size40:
-      return 40;
-
-    case PersonaSize.size48:
-      return 48;
-
-    case PersonaSize.large:
-    case PersonaSize.size72:
-      return 72;
-
-    case PersonaSize.extraLarge:
-    case PersonaSize.size100:
-      return 100;
-
-    default:
-      return 48;
-  }
+export const sizeToPixels: { [key: number]: number } = {
+  [PersonaSize.tiny]: 10,
+  [PersonaSize.extraExtraSmall]: 24,
+  [PersonaSize.extraSmall]: 28,
+  [PersonaSize.small]: 40,
+  [PersonaSize.regular]: 48,
+  [PersonaSize.large]: 72,
+  [PersonaSize.extraLarge]: 100,
+  [PersonaSize.size10]: 10,
+  [PersonaSize.size16]: 16,
+  [PersonaSize.size24]: 24,
+  [PersonaSize.size28]: 28,
+  [PersonaSize.size32]: 32,
+  [PersonaSize.size40]: 40,
+  [PersonaSize.size48]: 48,
+  [PersonaSize.size72]: 72,
+  [PersonaSize.size100]: 100
 };
 
 export const presenceBoolean = (presence: PersonaPresence) => ({

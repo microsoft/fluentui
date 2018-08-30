@@ -1,6 +1,6 @@
 import { IPersonaCoinStyleProps, IPersonaCoinStyles, PersonaSize } from '../Persona.types';
 import { HighContrastSelector, FontSizes, FontWeights, getGlobalClassNames } from '../../../Styling';
-import { sizeBoolean, personaSizeToInt } from '../PersonaConsts';
+import { sizeBoolean, sizeToPixels } from '../PersonaConsts';
 
 const GlobalClassNames = {
   coin: 'ms-Persona-coin',
@@ -30,7 +30,7 @@ export const getStyles = (props: IPersonaCoinStyleProps): IPersonaCoinStyles => 
   // Static colors used when displaying 'unknown persona' coin
   const unknownPersonaBackgroundColor = palette.neutralLight;
   const unknownPersonaFontColor = palette.redDark;
-  const dimension = Math.max(coinSize! || 0, personaSizeToInt(props.size as PersonaSize));
+  const dimension = coinSize || (props.size && sizeToPixels[props.size]) || 48;
 
   return {
     coin: [
@@ -66,7 +66,7 @@ export const getStyles = (props: IPersonaCoinStyleProps): IPersonaCoinStyles => 
         width: dimension
       },
 
-      size.isSize10 && {
+      dimension <= 10 && {
         overflow: 'visible',
         background: 'transparent',
         height: 0,
@@ -88,7 +88,7 @@ export const getStyles = (props: IPersonaCoinStyleProps): IPersonaCoinStyles => 
         perspective: '1px'
       },
 
-      size.isSize10 && {
+      dimension <= 10 && {
         overflow: 'visible',
         background: 'transparent',
         height: 0,
