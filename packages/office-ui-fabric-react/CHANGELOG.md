@@ -1,6 +1,25 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 29 Aug 2018 10:28:42 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Aug 2018 10:32:49 GMT and should not be manually modified.
+
+## 6.59.0
+Thu, 30 Aug 2018 10:32:49 GMT
+
+### Minor changes
+
+- Add the ability to disable the built-in SelectionMode in DetailsList
+- Menu/ComboBox/Dropdown: Make the mouse being under a menu item not move focus until after a mouseMove is seen
+
+### Patches
+
+- Checkbox: use id passed in if provided
+- ChoiceGroup: have ChoiceGroupOption style use new ms-Fabric--isFocusVisible class
+- Dropdown: color changed to HighlightText
+- Remove unnecessary margin on dropdown
+- Allow MaskedTextField to backspace to the beginning when the mask is all numbers
+- Corrected some Checkbox implementations - should use 'aria-labelledby' instead of 'aria-describedby'
+- make escape key do prevent default first before calling ondismiss callback
+- BaseButton: iconProps className takes precedence if it exists in icon render
 
 ## 6.58.0
 Wed, 29 Aug 2018 10:28:42 GMT

@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.17.1",
+      "tag": "@uifabric/utilities_v6.17.1",
+      "date": "Thu, 30 Aug 2018 10:32:49 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "03c9afa72b5906b1c9d15459d01af974da32a1f5",
+            "comment": "Replace comment reference to old ms-Fabric is-focusVisible with ms-Fabric--isFocusVisible"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.17.0",
       "tag": "@uifabric/utilities_v6.17.0",
       "date": "Tue, 28 Aug 2018 10:23:58 GMT",

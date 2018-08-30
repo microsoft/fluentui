@@ -2,6 +2,25 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.16.1",
+      "tag": "@uifabric/charting_v0.16.1",
+      "date": "Thu, 30 Aug 2018 10:32:49 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "587d4db9328046df754dfeeeb5d4221e9effb932",
+            "comment": "Donut chart with legends and hover behavior "
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.58.0 <7.0.0` to `>=6.59.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.16.0",
       "tag": "@uifabric/charting_v0.16.0",
       "date": "Fri, 24 Aug 2018 10:26:08 GMT",

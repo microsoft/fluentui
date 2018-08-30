@@ -2,6 +2,75 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.59.0",
+      "tag": "office-ui-fabric-react_v6.59.0",
+      "date": "Thu, 30 Aug 2018 10:32:49 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "826737a14367738d2e5734a39593c6ef6666869f",
+            "comment": "Checkbox: use id passed in if provided"
+          },
+          {
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "03c9afa72b5906b1c9d15459d01af974da32a1f5",
+            "comment": "ChoiceGroup: have ChoiceGroupOption style use new ms-Fabric--isFocusVisible class"
+          },
+          {
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "a76bdf862a960f26a9419a56f15801a9acb0b333",
+            "comment": "Dropdown: color changed to HighlightText"
+          },
+          {
+            "author": "SavannahBourgeois <42548121+SavannahBourgeois@users.noreply.github.com>",
+            "commit": "49c54e22ddf65fe34540b0432e5d18f81128b9d7",
+            "comment": "Remove unnecessary margin on dropdown"
+          },
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "bb9199807bcac0ab6bcf4793930fc59d46701491",
+            "comment": "Allow MaskedTextField to backspace to the beginning when the mask is all numbers"
+          },
+          {
+            "author": "HalcyonPride <goodguyjosh@outlook.com>",
+            "commit": "31428f129d1b9c91072a43cf0fc8d9f9e972ab9c",
+            "comment": "Corrected some Checkbox implementations - should use 'aria-labelledby' instead of 'aria-describedby'"
+          },
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "cf0f67f63c12a78915d9e0328d3a2b057b1abad4",
+            "comment": "make escape key do prevent default first before calling ondismiss callback"
+          },
+          {
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "b1962afa1ddbbe18cf20db8aa025689793c2c460",
+            "comment": "BaseButton: iconProps className takes precedence if it exists in icon render"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "83dcf9eba5fd7d152dfa8180bc88bf53dc917c89",
+            "comment": "Add the ability to disable the built-in SelectionMode in DetailsList"
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "f476aa80a93b0a69dbe5066a858840e6fdfb0aca",
+            "comment": "Menu/ComboBox/Dropdown: Make the mouse being under a menu item not move focus until after a mouseMove is seen"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.19.0 <7.0.0` to `>=6.20.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.17.0 <7.0.0` to `>=6.17.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.58.0",
       "tag": "office-ui-fabric-react_v6.58.0",
       "date": "Wed, 29 Aug 2018 10:28:42 GMT",
