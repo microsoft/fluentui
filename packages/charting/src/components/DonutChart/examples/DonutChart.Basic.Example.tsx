@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DonutChart, IDonutChartProps, IChartProps, IChartDataPoint } from '../../DonutChart';
-import { DefaultPalette, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export class DonutChartBasicExample extends React.Component<IDonutChartProps, {}> {
   constructor(props: IDonutChartProps) {
@@ -20,11 +20,6 @@ export class DonutChartBasicExample extends React.Component<IDonutChartProps, {}
       chartTitle: chartTitle,
       chartData: points
     };
-    const style = { height: '150px', width: '150px' };
-    return (
-      // <div className={mergeStyles(style)}>
-      <DonutChart data={data} innerRadius={30} />
-      // </div>
-    );
+    return <DonutChart data={data} innerRadius={30} />;
   }
 }
