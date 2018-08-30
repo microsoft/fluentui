@@ -201,6 +201,17 @@ export interface ISpinButtonProps {
   ariaSetSize?: number;
 
   /**
+   * Sets the aria-valuenow of the spin button. The component must be
+   * controlled by the creator who tracks the value of the spin button externally.
+   */
+  ariaValueNow?: number;
+  /*
+   * Sets the aria-valuetext of the spin button. The component must be
+   * controlled by the creator who tracks the value of the spin button externally.
+   */
+  ariaValueText?: string;
+
+  /**
    * Optional keytip for this spin button
    */
   keytipProps?: IKeytipProps;

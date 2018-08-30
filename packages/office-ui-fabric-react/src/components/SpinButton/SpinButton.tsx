@@ -131,6 +131,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       theme,
       ariaPositionInSet,
       ariaSetSize,
+      ariaValueNow,
+      ariaValueText,
       keytipProps
     } = this.props;
 
@@ -172,8 +174,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
                 autoComplete="off"
                 role="spinbutton"
                 aria-labelledby={label && this._labelId}
-                aria-valuenow={!isNaN(Number(value)) ? Number(value) : undefined}
-                aria-valuetext={isNaN(Number(value)) ? value : undefined}
+                aria-valuenow={ariaValueNow ? ariaValueNow : !isNaN(Number(value)) ? Number(value) : undefined}
+                aria-valuetext={ariaValueText ? ariaValueText : isNaN(Number(value)) ? value : undefined}
                 aria-valuemin={min}
                 aria-valuemax={max}
                 aria-describedby={keytipAttributes['aria-describedby']}
