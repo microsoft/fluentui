@@ -26,7 +26,42 @@ storiesOf('DatePicker', module)
       {story()}
     </Screener>
   ))
-  .add('Root', () => <DatePicker value={date} />);
+  .add('Root', () => (
+    <DatePicker
+      value={date}
+    />
+  ))
+  .add('Placeholder', () => (
+    <DatePicker
+      value={date}
+      placeholder="Enter date"
+    />
+  ))
+  .add('Allow text input', () => (
+    <DatePicker
+      value={date}
+      allowTextInput
+    />
+  ))
+  .add('Required', () => (
+    <DatePicker
+      value={date}
+      isRequired
+    />
+  ))
+  .add('Underlined', () => (
+    <DatePicker
+      value={date}
+      underlined
+    />
+  ))
+  .add('Underlined and Required', () => (
+    <DatePicker
+      value={date}
+      underlined
+      isRequired
+    />
+  ));
 
 storiesOf('DatePicker - No Month Option', module)
   .addDecorator(FabricDecoratorFixedWidth)
