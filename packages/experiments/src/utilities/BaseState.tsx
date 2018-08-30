@@ -70,6 +70,7 @@ export class BaseStateComponent<TComponentProps, TViewProps> extends BaseCompone
   }
 
   protected getTransformProps(): TViewProps {
+    // TODO: this should only return configured transform props, not entire state
     return this.state;
   }
 

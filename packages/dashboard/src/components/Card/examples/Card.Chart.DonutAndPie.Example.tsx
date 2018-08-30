@@ -34,16 +34,6 @@ export class DonutAndPieChartExample extends React.Component<{}, {}> {
 
     const contentAreaList = [
       {
-        priority: Priority.Priority1,
-        cardContentType: CardContentType.Chart,
-        content: {
-          chartLabels: ['Donut Chart'],
-          chartType: ChartType.DonutChart,
-          dataPoints: points,
-          legendColors: colors
-        }
-      },
-      {
         priority: Priority.Priority2,
         cardContentType: CardContentType.Chart,
         content: {

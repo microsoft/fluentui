@@ -106,7 +106,7 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
 
   public componentDidUpdate() {
     // Move the cursor to the start of the mask format on update
-    if (this.state.maskCursorPosition) {
+    if (this.state.maskCursorPosition !== undefined) {
       this._textField.setSelectionRange(this.state.maskCursorPosition, this.state.maskCursorPosition);
     }
   }

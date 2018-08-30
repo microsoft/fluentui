@@ -13,10 +13,32 @@ export type ICSSPixelUnitRule = string | number;
 export type ICSSBaselinePositionRule = 'baseline' | 'last baseline' | 'first baseline';
 
 // See CSS <overflow-position> type https://www.w3.org/TR/css-align-3/#typedef-overflow-position
-export type ICSSOverflowPositionRule = 'safe' | 'unsafe';
-
 // See CSS <self-position> type https://www.w3.org/TR/css-align-3/#typedef-self-position
-export type ICSSSelfPositionRule = 'center' | 'start' | 'end' | 'self-start' | 'self-end' | 'flex-start' | 'flex-end';
+export type ICSSOverflowAndSelfPositionRule =
+  // <self-position>
+  | 'center'
+  | 'start'
+  | 'end'
+  | 'self-start'
+  | 'self-end'
+  | 'flex-start'
+  | 'flex-end'
+  // <self-position> prefixed with <overflow-position> value 'safe'
+  | 'safe center'
+  | 'safe start'
+  | 'safe end'
+  | 'safe self-start'
+  | 'safe self-end'
+  | 'safe flex-start'
+  | 'safe flex-end'
+  // <self-position> prefixed with <overflow-position> value 'unsafe'
+  | 'unsafe center'
+  | 'unsafe start'
+  | 'unsafe end'
+  | 'unsafe self-start'
+  | 'unsafe self-end'
+  | 'unsafe flex-start'
+  | 'unsafe flex-end';
 
 export type IFontWeight =
   | ICSSRule
@@ -212,9 +234,13 @@ export interface IRawStyleBase extends IRawFontStyle {
   alignItems?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch';
 
   /**
-   * Allows the default alignment to be overridden for individual flex items.
+   * Aligns the box (as the alignment subject) within its containing block (as the alignment container)
+   * along the block/column/cross axis of the alignment container.
+   *
+   * See CSS align-self property
+   * https://www.w3.org/TR/css-align-3/#propdef-align-self
    */
-  alignSelf?: ICSSRule | 'auto' | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch';
+  alignSelf?: ICSSRule | 'auto' | 'normal' | 'stretch' | ICSSBaselinePositionRule | ICSSOverflowAndSelfPositionRule;
 
   /**
    * This property allows precise alignment of elements, such as graphics, that do not
@@ -970,10 +996,15 @@ export interface IRawStyleBase extends IRawFontStyle {
     | 'normal'
     | 'stretch'
     | ICSSBaselinePositionRule
-    | ICSSOverflowPositionRule
-    | ICSSSelfPositionRule
+    | ICSSOverflowAndSelfPositionRule
     | 'left'
-    | 'right';
+    | 'right'
+    // prefixed with <overflow-position> value 'safe'
+    | 'safe left'
+    | 'safe right'
+    // prefixed with <overflow-position> value 'unsafe'
+    | 'unsafe left'
+    | 'unsafe right';
 
   /**
    * Sets the left position of an element relative to the nearest anscestor that is set

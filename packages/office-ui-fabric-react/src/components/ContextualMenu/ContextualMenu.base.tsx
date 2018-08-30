@@ -95,6 +95,8 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   private _isScrollIdle: boolean;
   private _scrollIdleTimeoutId: number | undefined;
   private _processingExpandCollapseKeyOnly: boolean;
+  private _shouldUpdateFocusOnMouseEvent: boolean;
+  private _gotMouseMove: boolean;
 
   private _adjustedFocusZoneProps: IFocusZoneProps;
 
@@ -111,6 +113,8 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     this._isFocusingPreviousElement = false;
     this._isScrollIdle = true;
     this._processingExpandCollapseKeyOnly = false;
+    this._shouldUpdateFocusOnMouseEvent = !this.props.delayUpdateFocusOnHover;
+    this._gotMouseMove = false;
   }
 
   public dismiss = (ev?: any, dismissAll?: boolean) => {
@@ -135,6 +139,13 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
           ? (this._targetWindow.document.activeElement as HTMLElement)
           : null;
       }
+    }
+    if (newProps.delayUpdateFocusOnHover !== this.props.delayUpdateFocusOnHover) {
+      // update shouldUpdateFocusOnMouseEvent to follow what was passed in
+      this._shouldUpdateFocusOnMouseEvent = !newProps.delayUpdateFocusOnHover;
+
+      // If shouldUpdateFocusOnMouseEvent is false, we need to reset gotMouseMove to false
+      this._gotMouseMove = this._shouldUpdateFocusOnMouseEvent && this._gotMouseMove;
     }
   }
 
@@ -301,6 +312,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
             tabIndex={shouldFocusOnContainer ? 0 : -1}
             onKeyDown={this._onMenuKeyDown}
             onKeyUp={this._onKeyUp}
+            onFocusCapture={this._onMenuFocusCapture}
           >
             {title && <div className={this._classNames.title}> {title} </div>}
             {items && items.length ? (
@@ -343,6 +355,8 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
   private _onMenuOpened() {
     this._events.on(this._targetWindow, 'resize', this.dismiss);
+    this._shouldUpdateFocusOnMouseEvent = !this.props.delayUpdateFocusOnHover;
+    this._gotMouseMove = false;
     this.props.onMenuOpened && this.props.onMenuOpened(this.props);
   }
 
@@ -352,6 +366,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
       this._async.setTimeout(() => {
         this._previousActiveElement && this._previousActiveElement!.focus();
       }, 0);
+    this._shouldUpdateFocusOnMouseEvent = !this.props.delayUpdateFocusOnHover;
   }
 
   /**
@@ -712,6 +727,12 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     );
   };
 
+  private _onMenuFocusCapture = (ev: React.FocusEvent<HTMLElement>) => {
+    if (this.props.delayUpdateFocusOnHover) {
+      this._shouldUpdateFocusOnMouseEvent = true;
+    }
+  };
+
   private _onKeyUp = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
     return this._keyHandler(ev, this._shouldHandleKeyUp, true /* dismissAllMenus */);
   };
@@ -806,7 +827,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   };
 
   private _onItemMouseEnterBase = (item: any, ev: React.MouseEvent<HTMLElement>, target?: HTMLElement): void => {
-    if (!this._isScrollIdle) {
+    if (this._shouldIgnoreMouseEvent()) {
       return;
     }
 
@@ -815,6 +836,14 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
   private _onItemMouseMoveBase = (item: any, ev: React.MouseEvent<HTMLElement>, target: HTMLElement): void => {
     const targetElement = ev.currentTarget as HTMLElement;
+
+    // Always do this check to make sure we record
+    // a mouseMove if needed (even if we are timed out)
+    if (this._shouldUpdateFocusOnMouseEvent) {
+      this._gotMouseMove = true;
+    } else {
+      return;
+    }
 
     if (
       !this._isScrollIdle ||
@@ -826,8 +855,13 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
     this._updateFocusOnMouseEvent(item, ev, target);
   };
+
+  private _shouldIgnoreMouseEvent(): boolean {
+    return !this._isScrollIdle || !this._gotMouseMove;
+  }
+
   private _onMouseItemLeave = (item: any, ev: React.MouseEvent<HTMLElement>): void => {
-    if (!this._isScrollIdle) {
+    if (this._shouldIgnoreMouseEvent()) {
       return;
     }
 
