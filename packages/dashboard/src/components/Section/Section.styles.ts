@@ -48,7 +48,7 @@ export const getStyles = (props: ISectionStyleProps): ISectionStyles => {
     },
     actionButtonHovered: {
       backgroundColor: '#D0D0D0',
-      color: 'black'
+      color: '#000000'
     },
     actionButtonPressed: {
       backgroundColor: '#979797'
