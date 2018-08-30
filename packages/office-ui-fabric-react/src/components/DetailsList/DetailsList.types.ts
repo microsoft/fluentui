@@ -11,7 +11,7 @@ import { IWithViewportProps, IViewport } from '../../utilities/decorators/withVi
 import { IList, IListProps, ScrollToMode } from '../List/index';
 import { ITheme, IStyle } from '../../Styling';
 import { ICellStyleProps, IDetailsItemProps } from './DetailsRow.types';
-import { IDetailsColumnProps } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsColumn';
+import { IDetailsColumnProps } from './DetailsColumn';
 
 export { IDetailsHeaderProps, IDetailsRowBaseProps, IDetailsHeaderBaseProps, IDetailsFooterBaseProps };
 
