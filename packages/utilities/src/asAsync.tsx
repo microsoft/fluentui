@@ -9,6 +9,16 @@ interface IAsAsyncState<TProps> {
 }
 
 /**
+ * If possible, use a WeakMap to maintain a cache of loaded components.
+ * This can be used to synchronously render components that have already been loaded,
+ * rather than having to wait for at least one async tick.
+ */
+const syncModuleCache =
+  typeof WeakMap !== 'undefined'
+    ? new WeakMap<() => Promise<any>, React.ComponentType<any>>() // tslint:disable-line:no-any
+    : undefined;
+
+/**
  * Represents the surface of a module which has a default export.
  */
 export interface IModuleWithDefault<T> {
@@ -57,14 +67,19 @@ export function asAsync<TProps, TOwnProps = IAsAsyncProps>(
   load: () => Promise<React.ComponentType<TProps> | IModuleWithDefault<React.ComponentType<TProps>>>,
   mapAsyncProps?: (props: TOwnProps) => IAsAsyncProps
 ): React.ComponentType<TProps & TOwnProps> {
-  class Async extends React.Component<TProps & TOwnProps, IAsAsyncState<TProps>> {
+  class Async extends React.PureComponent<TProps & TOwnProps, IAsAsyncState<TProps>> {
     private _isDisposed?: boolean;
 
     constructor(props: TProps & TOwnProps) {
       super(props);
 
       this.state = {
-        ...(mapAsyncProps ? mapAsyncProps(this.props as Readonly<TOwnProps>) : defaultMapAsyncProps(this.props))
+        ...(mapAsyncProps ? mapAsyncProps(this.props as Readonly<TOwnProps>) : defaultMapAsyncProps(this.props)),
+        ...(syncModuleCache && syncModuleCache.has(load)
+          ? {
+              component: syncModuleCache.get(load)
+            }
+          : {})
       };
     }
 
@@ -76,6 +91,10 @@ export function asAsync<TProps, TOwnProps = IAsAsyncProps>(
 
         if (this._isDisposed) {
           return;
+        }
+
+        if (syncModuleCache) {
+          syncModuleCache.set(load, component);
         }
 
         this.setState({
