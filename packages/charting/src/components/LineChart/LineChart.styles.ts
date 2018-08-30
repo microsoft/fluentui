@@ -2,6 +2,7 @@ import { ILineChartStyleProps, ILineChartStyles } from './LineChart.types';
 
 export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
   const { className, theme, width, height, color } = props;
+  const { palette } = theme!;
 
   const chartPadding = 30;
   const xOffset = 30;
@@ -73,22 +74,12 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
         paddingLeft: '20%'
       }
     ],
-    hover: [
-      {
-        height: '76px',
-        width: '143px',
-        fontSize: '28px',
-        color: '#0078D7',
-        fontFamily: 'Segoe UI',
-        fontWeight: 'bold'
-      }
-    ],
     calloutPadding: [
       {
         padding: '10px 16px 10px 16px',
-        backgroundColor: 'white',
+        backgroundColor: palette.white,
         fontSize: '28px',
-        color: color !== '' ? `${color}` : `black`,
+        color: color !== '' ? `${color}` : palette.black,
         fontFamily: 'Segoe UI',
         fontWeight: 'bold',
         border: color !== '' ? `1px solid ${color}` : `unset`
