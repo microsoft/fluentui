@@ -74,7 +74,6 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
               font-weight: 400;
               height: 48px;
               line-height: 46px;
-              vertical-align: middle;
             }
             @media screen and (-ms-high-contrast: active){& {
               -ms-high-contrast-adjust: none;
@@ -453,7 +452,6 @@ exports[`Persona renders Persona correctly with initials 1`] = `
               font-weight: 400;
               height: 48px;
               line-height: 46px;
-              vertical-align: middle;
             }
             @media screen and (-ms-high-contrast: active){& {
               -ms-high-contrast-adjust: none;
@@ -625,7 +623,6 @@ exports[`Persona renders Persona correctly with no props 1`] = `
               font-weight: 400;
               height: 48px;
               line-height: 46px;
-              vertical-align: middle;
             }
             @media screen and (-ms-high-contrast: active){& {
               -ms-high-contrast-adjust: none;

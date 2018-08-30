@@ -112,7 +112,6 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
                   font-weight: 400;
                   height: 16px;
                   line-height: 16px;
-                  vertical-align: middle;
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   -ms-high-contrast-adjust: none;
@@ -391,7 +390,6 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
                   font-weight: 400;
                   height: 16px;
                   line-height: 16px;
-                  vertical-align: middle;
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   -ms-high-contrast-adjust: none;
@@ -554,7 +552,6 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                   font-weight: 400;
                   height: 16px;
                   line-height: 16px;
-                  vertical-align: middle;
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   -ms-high-contrast-adjust: none;
@@ -708,7 +705,6 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                   font-weight: 400;
                   height: 16px;
                   line-height: 16px;
-                  vertical-align: middle;
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   -ms-high-contrast-adjust: none;
@@ -835,7 +831,6 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
                   font-weight: 400;
                   height: 32px;
                   line-height: 32px;
-                  vertical-align: middle;
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   -ms-high-contrast-adjust: none;
@@ -1080,7 +1075,6 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                   font-weight: 400;
                   height: 16px;
                   line-height: 16px;
-                  vertical-align: middle;
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   -ms-high-contrast-adjust: none;
@@ -1214,7 +1208,6 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                   font-weight: 400;
                   height: 16px;
                   line-height: 16px;
-                  vertical-align: middle;
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   -ms-high-contrast-adjust: none;

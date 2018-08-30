@@ -38,7 +38,6 @@ exports[`PersonaCoin renders correctly 1`] = `
             font-weight: 400;
             height: 48px;
             line-height: 46px;
-            vertical-align: middle;
           }
           @media screen and (-ms-high-contrast: active){& {
             -ms-high-contrast-adjust: none;
@@ -187,7 +186,6 @@ exports[`PersonaCoin renders correctly with provided initials 1`] = `
             font-weight: 400;
             height: 48px;
             line-height: 46px;
-            vertical-align: middle;
           }
           @media screen and (-ms-high-contrast: active){& {
             -ms-high-contrast-adjust: none;
@@ -244,7 +242,6 @@ exports[`PersonaCoin renders correctly with text 1`] = `
             font-weight: 400;
             height: 48px;
             line-height: 46px;
-            vertical-align: middle;
           }
           @media screen and (-ms-high-contrast: active){& {
             -ms-high-contrast-adjust: none;

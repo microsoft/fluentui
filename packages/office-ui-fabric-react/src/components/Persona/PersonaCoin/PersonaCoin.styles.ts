@@ -109,7 +109,6 @@ export const getStyles = (props: IPersonaCoinStyleProps): IPersonaCoinStyles => 
         fontSize: FontSizes.large,
         fontWeight: FontWeights.regular,
         lineHeight: dimension === 48 ? 46 : dimension, // copying the logic for the dimensions; defaulted to 46 for size48
-        verticalAlign: 'middle',
         height: dimension,
 
         selectors: {

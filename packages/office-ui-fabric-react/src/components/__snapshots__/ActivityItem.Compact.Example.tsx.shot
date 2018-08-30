@@ -301,7 +301,6 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
                     font-weight: 400;
                     height: 16px;
                     line-height: 16px;
-                    vertical-align: middle;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     -ms-high-contrast-adjust: none;
@@ -455,7 +454,6 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
                     font-weight: 400;
                     height: 16px;
                     line-height: 16px;
-                    vertical-align: middle;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     -ms-high-contrast-adjust: none;
