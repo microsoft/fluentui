@@ -1,6 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 30 Aug 2018 10:32:49 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Aug 2018 19:26:04 GMT and should not be manually modified.
+
+## 0.17.0
+Thu, 30 Aug 2018 19:26:04 GMT
+
+### Minor changes
+
+- Adding hovercard for stacked and multistacked bar chart which show related data in the hover card. Created interaction between legends, stacked and multistacked bar chart. The legends are clickable  and upon  clicking on a legends that respective data point lits up  compared to others. This helps users understand the chart and visualze better. Added opacity to charts upon interaction
+
+### Patches
+
+- Donut chart align issues fixed
 
 ## 0.16.1
 Thu, 30 Aug 2018 10:32:49 GMT

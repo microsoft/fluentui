@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ComboBox: Update ComboBox to allow for empty string to be submitted",
+      "comment": "ComboBox: update isOptionSelected logic to take into acount updated values for currentPendingValue",
       "type": "patch"
     }
   ],

@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 30 Aug 2018 10:32:49 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Aug 2018 19:26:04 GMT and should not be manually modified.
+
+## 6.60.0
+Thu, 30 Aug 2018 19:26:04 GMT
+
+### Minor changes
+
+- Addresses #6041. Added onRenderMenuList to ContextualMenu. Added default _onRenderMenuList with IContextualMenuProps. Updated docs with an example of a ContextualMenu with custom MenuList with searchbox.
+
+### Patches
+
+- add overflow hidden to hide scroll from calendar holder
+- ComboBox: Update ComboBox to allow for empty string to be submitted
+- onRenderCoin to be called irrespective of imageUrl being present or not
 
 ## 6.59.0
 Thu, 30 Aug 2018 10:32:49 GMT

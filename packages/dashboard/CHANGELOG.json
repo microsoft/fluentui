@@ -2,6 +2,36 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.17.3",
+      "tag": "@uifabric/dashboard_v0.17.3",
+      "date": "Thu, 30 Aug 2018 19:26:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "exchangeadmin <yuz@microsoft.com>",
+            "commit": "4fccc717866db44589e309b38580a9073b81dc94",
+            "comment": "fix leftNav styles per PM feedback"
+          },
+          {
+            "author": "exchangeadmin <yuz@microsoft.com>",
+            "commit": "4fccc717866db44589e309b38580a9073b81dc94",
+            "comment": "revert the change for expand behavior"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.16.1` to `^0.17.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.28.0 <7.0.0` to `>=6.28.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.59.0 <7.0.0` to `>=6.60.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.17.2",
       "tag": "@uifabric/dashboard_v0.17.2",
       "date": "Thu, 30 Aug 2018 10:32:49 GMT",

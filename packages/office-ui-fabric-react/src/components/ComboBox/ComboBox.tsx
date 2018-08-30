@@ -1300,7 +1300,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     return currentPendingValueValidIndexOnHover >= 0
       ? currentPendingValueValidIndexOnHover
-      : currentPendingValueValidIndex >= 0 || (includeCurrentPendingValue && currentPendingValue !== '')
+      : currentPendingValueValidIndex >= 0 ||
+        (includeCurrentPendingValue && (currentPendingValue !== null && currentPendingValue !== undefined))
         ? currentPendingValueValidIndex
         : this.props.multiSelect
           ? 0

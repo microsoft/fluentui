@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.60.0",
+      "tag": "office-ui-fabric-react_v6.60.0",
+      "date": "Thu, 30 Aug 2018 19:26:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "f0a0cfc2f64043d2dde244fd343a6f8a184ad2fb",
+            "comment": "add overflow hidden to hide scroll from calendar holder"
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "491fb1b63c1c8b2554a9e5b5ccf4328e90e919e4",
+            "comment": "ComboBox: Update ComboBox to allow for empty string to be submitted"
+          },
+          {
+            "author": "Swapnil Vaibhav <swapnil.vaibhav@microsoft.com>",
+            "commit": "17a81b0c69a5023663b955cb71851b21cac7a164",
+            "comment": "onRenderCoin to be called irrespective of imageUrl being present or not"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Bas Timmermans <blrtimmermans@gmail.com>",
+            "commit": "1ba06fedaccf9c0048f6e096f0eae0dc5a2c57a5",
+            "comment": "Addresses #6041. Added onRenderMenuList to ContextualMenu. Added default _onRenderMenuList with IContextualMenuProps. Updated docs with an example of a ContextualMenu with custom MenuList with searchbox."
+          }
+        ]
+      }
+    },
+    {
       "version": "6.59.0",
       "tag": "office-ui-fabric-react_v6.59.0",
       "date": "Thu, 30 Aug 2018 10:32:49 GMT",
