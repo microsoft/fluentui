@@ -1,6 +1,8 @@
 import { mergeStyleSets } from './mergeStyleSets';
 import { Stylesheet, InjectionMode } from './Stylesheet';
-import { IStyle, IStyleSet, IStyleFunctionOrObject } from '.';
+import { IStyleSet } from './IStyleSet';
+import { IStyleFunctionOrObject } from './IStyleFunction';
+import { IStyle } from './IStyle';
 
 const _stylesheet: Stylesheet = Stylesheet.getInstance();
 
@@ -245,11 +247,11 @@ describe('mergeStyleSets', () => {
         background: 'red'
       },
       subComponentStyles: {
-        button: {
+        button: () => ({
           root: {
             background: 'green'
           }
-        }
+        })
       }
     });
 
