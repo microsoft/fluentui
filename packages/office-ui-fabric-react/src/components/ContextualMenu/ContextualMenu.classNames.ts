@@ -4,6 +4,7 @@ import { ITheme, mergeStyleSets, getGlobalClassNames } from '../../Styling';
 import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
 import { memoizeFunction } from '../../Utilities';
 import { IContextualMenuItemStyles, IContextualMenuItemStyleProps } from './ContextualMenuItem.types';
+import { IsFocusVisibleClassName } from '@uifabric/utilities';
 
 /**
  * @deprecated in favor of mergeStyles API.
@@ -97,8 +98,8 @@ export const getItemClassNames = memoizeFunction(
               selectors: {
                 ':hover': styles.rootHovered,
                 ':active': styles.rootPressed,
-                '.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover': styles.rootFocused,
-                '.ms-Fabric--isFocusVisible &:hover': { background: 'inherit;' }
+                [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus:hover`]: styles.rootFocused,
+                [`.${IsFocusVisibleClassName} &:hover`]: { background: 'inherit;' }
               }
             }
           ],
@@ -114,8 +115,8 @@ export const getItemClassNames = memoizeFunction(
               selectors: {
                 ':hover': styles.rootHovered,
                 ':active': styles.rootPressed,
-                '.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover': styles.rootFocused,
-                '.ms-Fabric--isFocusVisible &:hover': { background: 'inherit;' }
+                [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus:hover`]: styles.rootFocused,
+                [`.${IsFocusVisibleClassName} &:hover`]: { background: 'inherit;' }
               }
             }
           ]
@@ -133,8 +134,8 @@ export const getItemClassNames = memoizeFunction(
               selectors: {
                 ':hover': styles.rootHovered,
                 ':active': styles.rootPressed,
-                '.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover': styles.rootFocused,
-                '.ms-Fabric--isFocusVisible &:hover': { background: 'inherit;' }
+                [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus:hover`]: styles.rootFocused,
+                [`.${IsFocusVisibleClassName} &:hover`]: { background: 'inherit;' }
               }
             }
           ]
@@ -171,7 +172,7 @@ export const getItemClassNames = memoizeFunction(
           !checked && [
             {
               selectors: {
-                '.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover': styles.rootFocused
+                [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus:hover`]: styles.rootFocused
               }
             }
           ]
