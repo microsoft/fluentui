@@ -1,4 +1,3 @@
-
 import * as React from 'react';
 
 interface IAsAsyncState<TProps> {
@@ -38,7 +37,7 @@ export interface IAsAsyncProps {
  * This overload accepts a module with a default export for the component.
  */
 export function asAsync<TProps, TOwnProps = IAsAsyncProps>(
-  load: () => Promise<{ default: React.ComponentType<TProps>; }>,
+  load: () => Promise<{ default: React.ComponentType<TProps> }>,
   mapAsyncProps?: (props: TOwnProps) => IAsAsyncProps
 ): React.ComponentType<TProps & TOwnProps>;
 /**
@@ -52,13 +51,15 @@ export function asAsync<TProps, TOwnProps = IAsAsyncProps>(
   mapAsyncProps?: (props: TOwnProps) => IAsAsyncProps
 ): React.ComponentType<TProps & TOwnProps>;
 /**
- * Implementatio of asAsync.
+ * Implementation of asAsync.
  */
 export function asAsync<TProps, TOwnProps = IAsAsyncProps>(
   load: () => Promise<React.ComponentType<TProps> | IModuleWithDefault<React.ComponentType<TProps>>>,
   mapAsyncProps?: (props: TOwnProps) => IAsAsyncProps
 ): React.ComponentType<TProps & TOwnProps> {
   class Async extends React.Component<TProps & TOwnProps, IAsAsyncState<TProps>> {
+    private _isDisposed?: boolean;
+
     constructor(props: TProps & TOwnProps) {
       super(props);
 
@@ -71,10 +72,20 @@ export function asAsync<TProps, TOwnProps = IAsAsyncProps>(
       // Resolve the component during this lifecycle method so
       // if the promise resolves synchronously, setState does not trigger another update.
       try {
+        const component = getModuleDefaultOrModule(await load());
+
+        if (this._isDisposed) {
+          return;
+        }
+
         this.setState({
-          component: getModuleDefaultOrModule(await load())
+          component: component
         });
       } catch (e) {
+        if (this._isDisposed) {
+          return;
+        }
+
         this.setState({
           error: e instanceof Error ? e : new Error(`${e}`)
         });
@@ -88,26 +99,15 @@ export function asAsync<TProps, TOwnProps = IAsAsyncProps>(
     }
 
     public render(): JSX.Element | null {
-      const {
-        component: Component,
-        placeholder = null
-      } = this.state;
+      const { component: Component, placeholder = null } = this.state;
 
-      return Component ?
-        (
-          <Component { ...this.props } />
-        ) :
-        placeholder;
+      return Component ? <Component {...this.props} /> : placeholder;
     }
 
     public componentDidUpdate(previousProps: IAsAsyncProps, previousState: IAsAsyncState<TProps>): void {
-      const {
-        error,
-        onLoad,
-        onError
-      } = this.state;
+      const { error, onLoad, onError, component } = this.state;
 
-      if (!previousState.component && this.state.component) {
+      if (!previousState.component && component) {
         if (onLoad) {
           onLoad();
         }
@@ -119,17 +119,17 @@ export function asAsync<TProps, TOwnProps = IAsAsyncProps>(
         }
       }
     }
+
+    public componentWillUnmount(): void {
+      this._isDisposed = true;
+    }
   }
 
   return Async;
 }
 
 function defaultMapAsyncProps(props: IAsAsyncProps): IAsAsyncProps {
-  const {
-    placeholder,
-    onLoad,
-    onError
-  } = props;
+  const { placeholder, onLoad, onError } = props;
 
   return {
     placeholder,
