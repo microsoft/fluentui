@@ -10,7 +10,7 @@ storiesOf('DatePicker', module)
   .addDecorator(FabricDecoratorFixedWidth)
   .addDecorator(story => (
     <Screener
-      steps={ new Screener.Steps()
+      steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-DatePicker')
         .snapshot('hover datepicker', { cropTo: '.testWrapper' })
@@ -21,15 +21,31 @@ storiesOf('DatePicker', module)
         .snapshot('hover day', { cropTo: '.ms-Layer' })
         .hover('.ms-DatePicker-monthOption')
         .snapshot('hover month', { cropTo: '.ms-Layer' })
-        .end()
-      }
+        .end()}
     >
-      { story() }
+      {story()}
     </Screener>
   ))
-  .add('Root', () => (
-    <DatePicker
-      value={ date }
-    />
+  .add('Root', () => <DatePicker value={date} />);
+
+storiesOf('DatePicker - No Month Option', module)
+  .addDecorator(FabricDecoratorFixedWidth)
+  .addDecorator(story => (
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .hover('.ms-DatePicker')
+        .snapshot('hover datepicker', { cropTo: '.testWrapper' })
+        .click('.ms-DatePicker')
+        .hover('.ms-DatePicker')
+        .snapshot('click', { cropTo: '.ms-Layer' })
+        .hover('.ms-DatePicker-day')
+        .snapshot('hover day', { cropTo: '.ms-Layer' })
+        .end()}
+    >
+      {story()}
+    </Screener>
   ))
-  ;
+  .add('Show Month as Overlay and no Go To Today', () => (
+    <DatePicker value={date} showGoToToday={false} showMonthPickerAsOverlay={true} />
+  ));
