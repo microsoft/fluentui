@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DonutChart, IDonutChartProps, IChartProps, IChartDataPoint } from '@uifabric/charting/lib/DonutChart';
+import { DonutChart, IDonutChartProps, IChartProps, IChartDataPoint } from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
