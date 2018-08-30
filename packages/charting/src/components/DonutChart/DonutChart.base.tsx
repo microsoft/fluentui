@@ -64,15 +64,14 @@ export class DonutChartBase extends React.Component<
     });
     const legendBars = this._createLegends(data!, palette);
     const radius = Math.min(_width!, _height!) / 2;
-    const box = Math.min(_width!, _height!);
     const outerRadius = radius;
     const chartData = data && data.chartData;
     return (
       <div className={this._classNames.root} ref={(rootElem: HTMLElement | null) => (this._rootElem = rootElem)}>
         <svg className={this._classNames.chart} ref={(node: SVGElement | null) => this._setViewBox(node)}>
           <Pie
-            width={box + 32}
-            height={box}
+            width={_width!}
+            height={_height!}
             outerRadius={outerRadius}
             innerRadius={innerRadius!}
             data={chartData!}

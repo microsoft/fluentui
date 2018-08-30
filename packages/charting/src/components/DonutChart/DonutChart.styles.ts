@@ -7,6 +7,7 @@ export const getStyles = (props: IDonutChartStyleProps): IDonutChartStyles => {
     root: [
       'ms-DonutChart',
       {
+        alignItems: 'center',
         display: 'flex',
         flexDirection: 'column',
         width: '100%',
