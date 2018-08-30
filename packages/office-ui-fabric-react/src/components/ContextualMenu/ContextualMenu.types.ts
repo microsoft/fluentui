@@ -544,7 +544,7 @@ export interface IContextualMenuStyleProps {
   // Insert ContextualMenu style props below
 }
 
-export interface IContextualMenuStyles extends IButtonStyles {
+export interface IContextualMenuStyles {
   /**
    * Style override for the contextual menu title.
    */
