@@ -35,11 +35,10 @@ import {
   ContextualMenuButton,
   ContextualMenuAnchor
 } from './ContextualMenuItemWrapper/index';
-import { IProcessedStyleSet } from '../../Styling';
+import { IProcessedStyleSet, mergeStyleSets } from '../../Styling';
 import { IContextualMenuItemStyleProps, IContextualMenuItemStyles } from './ContextualMenuItem.types';
 
 import { getItemClassNames as getItemStyles } from './ContextualMenu.classNames';
-import { mergeStyleSets } from '@uifabric/styling';
 
 const getClassNames = classNamesFunction<IContextualMenuStyleProps, IContextualMenuStyles>();
 const getContextualMenuItemClassNames = classNamesFunction<IContextualMenuItemStyleProps, IContextualMenuItemStyles>();

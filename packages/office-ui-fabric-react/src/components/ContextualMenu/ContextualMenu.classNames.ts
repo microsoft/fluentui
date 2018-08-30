@@ -2,9 +2,8 @@ import { getDividerClassNames } from '../Divider/VerticalDivider.classNames';
 import { getMenuItemStyles } from './ContextualMenu.cnstyles';
 import { ITheme, mergeStyleSets, getGlobalClassNames } from '../../Styling';
 import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
-import { memoizeFunction } from '../../Utilities';
+import { memoizeFunction, IsFocusVisibleClassName } from '../../Utilities';
 import { IContextualMenuItemStyles, IContextualMenuItemStyleProps } from './ContextualMenuItem.types';
-import { IsFocusVisibleClassName } from '@uifabric/utilities';
 
 /**
  * @deprecated in favor of mergeStyles API.
