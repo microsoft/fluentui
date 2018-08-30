@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/charting",
+      "comment": "Adding hovercard for stacked and multistacked bar chart which show related data in the hover card. Created interaction between legends, stacked and multistacked bar chart. The legends are clickable  and upon  clicking on a legends that respective data point lits up  compared to others. This helps users understand the chart and visualze better. Added opacity to charts upon interaction",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/charting",
+  "email": "nulikarthik@gmail.com"
+}
