@@ -5,8 +5,8 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
   const { palette } = theme!;
 
   const chartPadding = 30;
-  const xOffset = 30;
-  const yOffset = 20;
+  const scalingVal = 0.3;
+  const xOffset = 20;
 
   return {
     root: [
@@ -33,18 +33,18 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
     ],
     xAxis: [
       {
-        transform: `translate(${xOffset}px, ${height}px)`
+        transform: `translate(-${width * scalingVal}px, ${height}px) scaleX(1.5)`
       }
     ],
     xAxisTicks: [],
     yAxis: [
       {
-        transform: `translate(${yOffset}px, 0px)`
+        transform: `translate(-${width * scalingVal}px, 0px)`
       }
     ],
     yAxisTicks: [
       {
-        transform: `scaleX(-${width / 6 + 10})`,
+        transform: `scaleX(-${width * scalingVal - xOffset})`,
         stroke: 'grey'
       }
     ],
@@ -65,13 +65,13 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
     ],
     lines: [
       {
-        transform: `translate(${xOffset}px, 0px)`
+        transform: `translate(-${width * 0.3}px, 0px) scaleX(1.5)`
       }
     ],
     legendContainer: [
       {
         marginTop: '10px',
-        paddingLeft: '20%'
+        paddingLeft: '5%'
       }
     ],
     calloutPadding: [
