@@ -205,6 +205,7 @@ export interface ISpinButtonProps {
    * controlled by the creator who tracks the value of the spin button externally.
    */
   ariaValueNow?: number;
+
   /*
    * Sets the aria-valuetext of the spin button. The component must be
    * controlled by the creator who tracks the value of the spin button externally.
