@@ -10,7 +10,12 @@ import { IWithResponsiveModeState } from '../../utilities/decorators/withRespons
 import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
 export { DirectionalHint } from '../../common/DirectionalHint';
 import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
-import { IContextualMenuItemProps, IContextualMenuRenderItem } from './ContextualMenuItem.types';
+import {
+  IContextualMenuItemProps,
+  IContextualMenuRenderItem,
+  IContextualMenuItemStyleProps,
+  IContextualMenuItemStyles
+} from './ContextualMenuItem.types';
 import { IKeytipProps } from '../../Keytip';
 
 export enum ContextualMenuItemType {
@@ -369,6 +374,11 @@ export interface IContextualMenuItem {
   ) => IMenuItemClassNames;
 
   /**
+   * Call to provide customized styling that will layer on top of the variant rules
+   */
+  styles?: IStyleFunctionOrObject<IContextualMenuItemStyleProps, IContextualMenuItemStyles>;
+
+  /**
    * Method to provide the classnames to style the Vertical Divider of a split button inside a menu. Default value is the getVerticalDividerClassnames func defined in ContextualMenu.classnames
    * @default getSplitButtonVerticalDividerClassNames
    */
@@ -534,7 +544,7 @@ export interface IContextualMenuStyleProps {
   // Insert ContextualMenu style props below
 }
 
-export interface IContextualMenuStyles {
+export interface IContextualMenuStyles extends IButtonStyles {
   /**
    * Style override for the contextual menu title.
    */

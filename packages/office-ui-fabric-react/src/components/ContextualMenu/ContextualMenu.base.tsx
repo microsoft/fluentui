@@ -39,9 +39,10 @@ import { IProcessedStyleSet } from '../../Styling';
 import { IContextualMenuItemStyleProps, IContextualMenuItemStyles } from './ContextualMenuItem.types';
 
 import { getItemClassNames as getItemStyles } from './ContextualMenu.classNames';
+import { mergeStyleSets } from '@uifabric/styling';
 
 const getClassNames = classNamesFunction<IContextualMenuStyleProps, IContextualMenuStyles>();
-const getItemClassNames = classNamesFunction<IContextualMenuItemStyleProps, IContextualMenuItemStyles>();
+const getContextualMenuItemClassNames = classNamesFunction<IContextualMenuItemStyleProps, IContextualMenuItemStyles>();
 
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;
@@ -388,6 +389,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   ): React.ReactNode {
     const renderedItems: React.ReactNode[] = [];
     const iconProps = item.iconProps || { iconName: 'None' };
+    const { getItemClassNames, styles } = item;
     // We only send a dividerClassName when the item to be rendered is a divider. For all other cases, the default divider style is used.
     const dividerClassName = item.itemType === ContextualMenuItemType.Divider ? item.className : undefined;
     const subMenuIconClassName = item.submenuIconProps ? item.submenuIconProps.className : '';
@@ -396,8 +398,8 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
     // IContextualMenuItem#getItemClassNames for backwards compatibility
     // otherwise uses mergeStyles for class names.
-    if (item.getItemClassNames) {
-      itemClassNames = item.getItemClassNames(
+    if (getItemClassNames) {
+      itemClassNames = getItemClassNames(
         this.props.theme!,
         isItemDisabled(item),
         this.state.expandedMenuItemKey === item.key,
@@ -411,7 +413,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
         item.primaryDisabled
       );
     } else {
-      itemClassNames = getItemClassNames(getItemStyles, {
+      const itemStyleProps: IContextualMenuItemStyleProps = {
         theme: this.props.theme!,
         disabled: isItemDisabled(item),
         expanded: this.state.expandedMenuItemKey === item.key,
@@ -423,7 +425,14 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
         iconClassName: iconProps.className,
         subMenuClassName: subMenuIconClassName,
         primaryDisabled: item.primaryDisabled
-      });
+      };
+
+      // We need to generate default styles then override if styles are provided
+      // since the ContextualMenu currently handles item classNames.
+      itemClassNames = mergeStyleSets(
+        getContextualMenuItemClassNames(getItemStyles, itemStyleProps),
+        getContextualMenuItemClassNames(styles, itemStyleProps)
+      );
     }
 
     if (item.text === '-' || item.name === '-') {

@@ -2,6 +2,7 @@ import { IContextualMenuItem } from './ContextualMenu.types';
 import { IMenuItemClassNames } from './ContextualMenu.classNames';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { IButtonStyles } from '../../Button';
 
 export interface IContextualMenuRenderItem {
   /**
@@ -153,7 +154,7 @@ export interface IContextualMenuItemStyleProps {
   primaryDisabled?: boolean;
 }
 
-export interface IContextualMenuItemStyles {
+export interface IContextualMenuItemStyles extends IButtonStyles {
   /**
    * Style for the root element.
    */
