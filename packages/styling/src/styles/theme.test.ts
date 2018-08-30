@@ -39,10 +39,10 @@ describe('theme.typography', () => {
       typography: {
         variants: {
           default: {
-            fontFamily: 'monospacej',
-            fontSize: 'small',
-            fontWeight: 'bold',
-            color: 'themePrimary'
+            family: 'monospace',
+            size: 'small',
+            weight: 'bold',
+            color: 'link'
           }
         }
       }
@@ -50,21 +50,21 @@ describe('theme.typography', () => {
 
     const newTheme = createTheme(userTheme);
 
-    expect(newTheme.typography.variants.default.fontSize).toEqual(DefaultTypography.sizes.small);
+    expect(newTheme.typography.variants.default.size).toEqual(DefaultTypography.sizes.small);
   });
 
   it('updates the variants when sizes are adjusted', () => {
     const userTheme = {
       typography: {
         sizes: {
-          [DefaultTypography.variants.default.fontSize!]: '100px'
+          [DefaultTypography.variants.default.size!]: '100px'
         }
       }
     } as IPartialTheme;
 
     const newTheme = createTheme(userTheme);
 
-    expect(newTheme.typography.variants.default.fontSize).toEqual('100px');
+    expect(newTheme.typography.variants.default.size).toEqual('100px');
   });
 
   it('does not modify DefaultTypography when given a theme with no typography', () => {

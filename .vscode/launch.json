@@ -52,8 +52,8 @@
       "request": "launch",
       "program": "${workspaceRoot}/scripts/build.js",
       "stopOnEntry": false,
-      "args": ["webpack", "--", "--production"],
-      "cwd": "${workspaceRoot}/apps/fabric-website",
+      "args": ["tslint"],
+      "cwd": "${workspaceRoot}/packages/styling",
       "runtimeExecutable": null,
       "runtimeArgs": ["--nolazy", "--debug"],
       "env": {

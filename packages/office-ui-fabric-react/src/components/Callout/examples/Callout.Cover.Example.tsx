@@ -52,7 +52,7 @@ export class CalloutCoverExample extends React.Component<{}, ICalloutCoverExampl
             label="Directional hint"
             selectedKey={directionalHint!}
             options={DIRECTION_OPTIONS}
-            onChanged={this._onDirectionalChanged}
+            onChange={this._onDirectionalChanged}
           />
         </div>
         <div className="ms-CalloutCoverExample-buttonArea" ref={menuButton => (this._menuButtonElement = menuButton)}>
@@ -92,7 +92,7 @@ export class CalloutCoverExample extends React.Component<{}, ICalloutCoverExampl
     });
   }
 
-  private _onDirectionalChanged(option: IDropdownOption): void {
+  private _onDirectionalChanged(event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void {
     this.setState({
       directionalHint: option.key as number
     });

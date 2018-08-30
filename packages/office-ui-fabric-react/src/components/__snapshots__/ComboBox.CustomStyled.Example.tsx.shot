@@ -153,8 +153,10 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
         className=
             ms-ComboBox-Input
             {
+              background-color: #ffffff;
               border-style: none;
               box-sizing: border-box;
+              color: #333333;
               font: inherit;
               height: 28px;
               outline: none;
@@ -203,7 +205,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
               -webkit-font-smoothing: antialiased;
               background-color: transparent;
               border-radius: 0px;
-              border: 1px solid transparent;
+              border: none;
               box-sizing: border-box;
               color: #666666;
               cursor: default;

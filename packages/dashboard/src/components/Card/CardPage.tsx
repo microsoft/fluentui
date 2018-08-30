@@ -5,6 +5,7 @@ import { MediumTallCardBasicExample } from './examples/Card.MediumTall.Basic.Exa
 import { MediumWideCardBasicExample } from './examples/Card.MediumWide.Basic.Example';
 import { LargeCardBasicExample } from './examples/Card.Large.Basic.Example';
 import { DonutAndPieChartExample } from './examples/Card.Chart.DonutAndPie.Example';
+import { DonutChartExample } from './examples/Card.Chart.Donut.Example';
 import { LineAndVerticalBarChartExample } from './examples/Card.Chart.LineAndVerticalBar.Example';
 import { MultiCountExample } from './examples/Card.MultiCount.Example';
 import { StackedBarChartExample } from './examples/Card.Chart.StackedBar.Example';
@@ -15,6 +16,8 @@ const MediumTallCardExampleCode = require('!raw-loader!@uifabric/dashboard/src/c
 const MediumWideCardExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.MediumWide.Basic.Example.tsx') as string;
 const LargeCardExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.Large.Basic.Example.tsx') as string;
 const DonutAndPieChartExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.Chart.DonutAndPie.Example.tsx') as string;
+
+const DonutChartExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.Chart.Donut.Example.tsx') as string;
 const LineAndVerticalBarChartExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.Chart.LineAndVerticalBar.Example.tsx') as string;
 const MultiCountExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.MultiCount.Example.tsx') as string;
 const StackedBarChartExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.Chart.StackedBar.Example.tsx') as string;
@@ -40,6 +43,9 @@ export class CardPage extends React.Component<{}, {}> {
             </ExampleCard>
             <ExampleCard title="Large Card" code={LargeCardExampleCode}>
               <LargeCardBasicExample />
+            </ExampleCard>
+            <ExampleCard title="Large Card" code={DonutChartExampleCode}>
+              <DonutChartExample />
             </ExampleCard>
             <ExampleCard title="Donut and pie chart example" code={DonutAndPieChartExampleCode}>
               <DonutAndPieChartExample />

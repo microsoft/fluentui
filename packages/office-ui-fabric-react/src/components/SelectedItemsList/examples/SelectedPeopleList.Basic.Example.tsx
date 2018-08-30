@@ -38,14 +38,14 @@ export class PeopleSelectedItemsListExample extends React.Component<{}, IPeopleS
   public render(): JSX.Element {
     return (
       <div className={'ms-BasePicker-text'}>
-        <Toggle label="Controlled component" defaultChecked={false} onChanged={this._toggleControlledComponent} />
+        <Toggle label="Controlled component" defaultChecked={false} onChange={this._toggleControlledComponent} />
         <PrimaryButton text="Add another item" onClick={this._onAddItemButtonClicked} />
         {this._renderExtendedPicker()}
       </div>
     );
   }
 
-  private _toggleControlledComponent = (toggleState: boolean): void => {
+  private _toggleControlledComponent = (ev: React.MouseEvent<HTMLElement>, toggleState: boolean): void => {
     this.setState({ controlledComponent: toggleState });
   };
 

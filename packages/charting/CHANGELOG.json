@@ -2,6 +2,32 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.16.0",
+      "tag": "@uifabric/charting_v0.16.0",
+      "date": "Fri, 24 Aug 2018 10:26:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "0b20b876f152cc69147617e9b848feaa2dbb71df",
+            "comment": "Fix @types/prop-types being inconsistently restrictive."
+          }
+        ],
+        "minor": [
+          {
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "6f7f7ec5dd90edcac6a6a7bb2a4e2003465eb22e",
+            "comment": "Making stacked bar chart flex and consume new legends component in it"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.53.0 <7.0.0` to `>=6.54.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.15.0",
       "tag": "@uifabric/charting_v0.15.0",
       "date": "Mon, 20 Aug 2018 10:26:10 GMT",

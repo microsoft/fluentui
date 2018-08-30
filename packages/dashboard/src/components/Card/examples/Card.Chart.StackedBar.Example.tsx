@@ -1,6 +1,15 @@
 import * as React from 'react';
-import { IDataPoint, ILegendDataItem } from '@uifabric/charting';
-import { Card, CardContentType, CardSize, ChartType, ICardProps, Priority } from '@uifabric/dashboard';
+import { IChartProps as IChartingProps } from '@uifabric/charting';
+import {
+  Card,
+  CardContentType,
+  CardSize,
+  ChartType,
+  ICardProps,
+  ICardContentDetails,
+  IChartProps,
+  Priority
+} from '@uifabric/dashboard';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export class StackedBarChartExample extends React.Component<{}, {}> {
@@ -25,44 +34,47 @@ export class StackedBarChartExample extends React.Component<{}, {}> {
       ]
     };
 
-    const points: IDataPoint[] = [{ x: 'first', y: 40 }, { x: 'second', y: 23 }];
-    const colors: ILegendDataItem[] = [
-      { legendText: 'first', legendColor: DefaultPalette.accent },
-      { legendText: 'second', legendColor: DefaultPalette.red }
+    const firstChartData: IChartingProps[] = [
+      {
+        chartTitle: 'Monitored',
+        chartData: [
+          { legend: 'Legend 1 text', data: 40, color: DefaultPalette.accent },
+          { legend: 'Legend 2 text', data: 23, color: DefaultPalette.green },
+          { legend: 'Legend 3 text', data: 35, color: DefaultPalette.orange },
+          { legend: 'Legend 4 text', data: 87, color: DefaultPalette.blue }
+        ]
+      }
     ];
 
-    const multiplePoints = [
-      { x: 'first Lorem Ipsum is simply dummy text', y: 40 },
-      { x: 'second', y: 23 },
-      { x: 'third Lorem Ipsum is simply dummy text of the printing', y: 35 },
-      { x: 'fourth', y: 87 }
-    ];
-    const multipleColors: ILegendDataItem[] = [
-      { legendText: 'first Lorem Ipsum is simply dummy text', legendColor: DefaultPalette.accent },
-      { legendText: 'second', legendColor: DefaultPalette.red },
-      { legendText: 'third Lorem Ipsum is simply dummy text of the printing', legendColor: DefaultPalette.orange },
-      { legendText: 'fourth', legendColor: DefaultPalette.green }
+    const secondChartData: IChartingProps[] = [
+      {
+        chartTitle: 'UnMonitored',
+        chartData: [
+          { legend: 'first Lorem Ipsum is simply dummy text', data: 40, color: DefaultPalette.blueLight },
+          { legend: 'second', data: 23, color: DefaultPalette.red },
+          {
+            legend: 'third Lorem Ipsum is simply dummy text of the printing',
+            data: 35,
+            color: DefaultPalette.purpleLight
+          },
+          { legend: 'fourth', data: 87, color: DefaultPalette.green }
+        ]
+      }
     ];
 
-    const chartContent1 = {
-      chartLabels: ['Stacked bar chart with two data points'],
+    const chartContent1: IChartProps = {
       chartType: ChartType.StackedBarChart,
-      dataPoints: points,
-      compactChartWidth: 394,
-      legendColors: colors,
+      chartData: firstChartData,
       chartUpdatedOn: 'Updated 6:20 pm today'
     };
 
-    const chartContent2 = {
-      chartLabels: ['Stacked bar chart with multiple points'],
+    const chartContent2: IChartProps = {
       chartType: ChartType.StackedBarChart,
-      dataPoints: multiplePoints,
-      compactChartWidth: 394,
-      legendColors: multipleColors,
+      chartData: secondChartData,
       chartUpdatedOn: 'Updated 6:20 pm today'
     };
 
-    const contentAreaList = [
+    const contentAreaList: ICardContentDetails[] = [
       {
         priority: Priority.Priority1,
         cardContentType: CardContentType.Chart,

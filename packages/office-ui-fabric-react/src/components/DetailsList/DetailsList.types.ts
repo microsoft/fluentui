@@ -4,15 +4,15 @@ import { ISelection, SelectionMode, ISelectionZoneProps } from '../../utilities/
 import { IRefObject, IBaseProps, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IDragDropEvents, IDragDropContext } from './../../utilities/dragdrop/index';
 import { IGroup, IGroupRenderProps, IGroupDividerProps } from '../GroupedList/index';
-import { IDetailsRowProps } from '../DetailsList/DetailsRow';
-import { IDetailsHeaderProps } from './DetailsHeader';
-import { IDetailsFooterProps } from './DetailsFooter.types';
+import { IDetailsRowProps, IDetailsRowBaseProps } from '../DetailsList/DetailsRow';
+import { IDetailsHeaderProps, IDetailsHeaderBaseProps } from './DetailsHeader';
+import { IDetailsFooterProps, IDetailsFooterBaseProps } from './DetailsFooter.types';
 import { IWithViewportProps, IViewport } from '../../utilities/decorators/withViewport';
 import { IList, IListProps, ScrollToMode } from '../List/index';
 import { ITheme, IStyle } from '../../Styling';
 import { ICellStyleProps, IDetailsItemProps } from './DetailsRow.types';
 
-export { IDetailsHeaderProps };
+export { IDetailsHeaderProps, IDetailsRowBaseProps, IDetailsHeaderBaseProps, IDetailsFooterBaseProps };
 
 export interface IDetailsList extends IList {
   /**
@@ -285,6 +285,11 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    * handled separately from normal theme styling, but they are passed to the styling system.
    */
   cellStyleProps?: ICellStyleProps;
+
+  /**
+   * Whether or not to disable the built-in SelectionZone, so the host component can provide its own.
+   */
+  disableSelectionZone?: boolean;
 }
 
 export interface IColumn {
