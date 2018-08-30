@@ -76,12 +76,7 @@ export class Chart extends React.Component<IChartInternalProps, {}> {
       }
       case ChartType.HorizontalBarChart: {
         return (
-          <HorizontalBarChart
-            data={this.props.chartData!}
-            width={this._getWidth()}
-            barHeight={this.props.barHeight}
-            total={1600}
-          />
+          <HorizontalBarChart data={this.props.chartData!} width={this._getWidth()} barHeight={this.props.barHeight} />
         );
       }
       case ChartType.DonutChart: {

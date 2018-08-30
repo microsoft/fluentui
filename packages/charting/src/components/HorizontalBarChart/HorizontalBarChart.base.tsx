@@ -1,42 +1,60 @@
 import * as React from 'react';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
-import { StackedBarChart } from '../../StackedBarChart';
-import { IChartProps, IHorizontalBarChartProps, IHorizontalBarChartStyles } from './index';
+import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
+import { IChartProps, IHorizontalBarChartProps, IHorizontalBarChartStyles, IChartDataPoint } from './index';
 
 const getClassNames = classNamesFunction<{}, IHorizontalBarChartStyles>();
 
 export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartProps, {}> {
-  private _width: number;
   private _barHeight: number;
   private _classNames: IProcessedStyleSet<IHorizontalBarChartStyles>;
 
   public render(): JSX.Element {
-    const { data, theme, total } = this.props;
+    const { data, theme } = this.props;
     this._adjustProps();
     const { palette } = theme!;
     let datapoint: number | undefined = 0;
     return (
       <div className={this._classNames.root}>
         {data!.map((points: IChartProps, index: number) => {
-          if (points.chartData && points.chartData![0] && points.chartData![0].data) {
-            datapoint = points.chartData![0].data;
+          if (points.chartData && points.chartData![0] && points.chartData![0].horizentalBarChartdata!.x) {
+            datapoint = points.chartData![0].horizentalBarChartdata!.x;
           } else {
-            points.chartData!.push({ legend: '', data: 0, color: palette.neutralTertiaryAlt });
+            points.chartData!.push({
+              legend: '',
+              horizentalBarChartdata: { x: 0, y: 0 },
+              color: palette.neutralTertiaryAlt
+            });
             datapoint = 0;
           }
-          points.chartData!.push({ legend: '', data: total! - datapoint!, color: palette.neutralTertiaryAlt });
+          points.chartData!.push({
+            legend: '',
+            horizentalBarChartdata: {
+              x: points.chartData![0].horizentalBarChartdata!.y - datapoint!,
+              y: points.chartData![0].horizentalBarChartdata!.y
+            },
+            color: palette.neutralTertiaryAlt
+          });
+          const bars = this._createBars(points!, palette);
           return (
             <div key={index} className={this._classNames.items}>
-              <StackedBarChart
-                barHeight={this._barHeight}
-                width={this._width}
-                theme={theme}
-                data={points}
-                hideLegend={true}
-                hideNumberDisplay={false}
-                isHorizontalBarChart={true}
-              />
+              <div className={this._classNames.items}>
+                <div className={this._classNames.chartTitle}>
+                  {points!.chartTitle && (
+                    <div>
+                      <strong>{points!.chartTitle}</strong>
+                    </div>
+                  )}
+                  <div>
+                    <strong>
+                      {points!.chartData![0].horizentalBarChartdata!.x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                    </strong>
+                  </div>
+                </div>
+                <svg className={this._classNames.chart}>
+                  <g>{bars}</g>
+                </svg>
+              </div>
             </div>
           );
         })}
@@ -54,4 +72,37 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       barHeight: this._barHeight
     });
   };
+
+  private _createBars(data: IChartProps, palette: IPalette): JSX.Element[] {
+    const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
+    // calculating starting point of each bar and it's range
+    const startingPoint: number[] = [];
+    const total = data.chartData!.reduce(
+      (acc: number, point: IChartDataPoint) =>
+        acc + (point.horizentalBarChartdata!.x ? point.horizentalBarChartdata!.x : 0),
+      0
+    );
+    let prevPosition = 0;
+    let value = 0;
+    const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {
+      const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
+      const pointData = point.horizentalBarChartdata!.x ? point.horizentalBarChartdata!.x : 0;
+      if (index > 0) {
+        prevPosition += value;
+      }
+      value = (pointData / total) * 100;
+      startingPoint.push(prevPosition);
+      return (
+        <rect
+          key={index}
+          x={startingPoint[index] + '%'}
+          y={0}
+          width={value + '%'}
+          height={this._barHeight}
+          fill={color}
+        />
+      );
+    });
+    return bars;
+  }
 }

@@ -99,35 +99,39 @@ export class LargeCardBasicExample extends React.Component<{}, {}> {
     const data: IChartingProps[] = [
       {
         chartTitle: 'one',
-        chartData: [{ legend: 'one', data: 13888, color: DefaultPalette.tealDark }]
+        chartData: [{ legend: 'one', horizentalBarChartdata: { x: 1543, y: 15000 }, color: DefaultPalette.tealDark }]
       },
       {
         chartTitle: 'two',
-        chartData: [{ legend: 'two', data: 800, color: DefaultPalette.purple }]
+        chartData: [{ legend: 'two', horizentalBarChartdata: { x: 800, y: 15000 }, color: DefaultPalette.purple }]
       },
       {
         chartTitle: 'three',
-        chartData: [{ legend: 'three', data: 8888, color: DefaultPalette.redDark }]
+        chartData: [{ legend: 'three', horizentalBarChartdata: { x: 8888, y: 15000 }, color: DefaultPalette.redDark }]
       },
       {
         chartTitle: 'four',
-        chartData: [{ legend: 'four', data: 15888, color: DefaultPalette.themeDarkAlt }]
+        chartData: [
+          { legend: 'four', horizentalBarChartdata: { x: 15888, y: 15000 }, color: DefaultPalette.themeDarkAlt }
+        ]
       },
       {
         chartTitle: 'five',
-        chartData: [{ legend: 'five', data: 11444, color: DefaultPalette.themePrimary }]
+        chartData: [
+          { legend: 'five', horizentalBarChartdata: { x: 11444, y: 15000 }, color: DefaultPalette.themePrimary }
+        ]
       },
       {
         chartTitle: 'six',
-        chartData: [{ legend: 'six', data: 14000, color: DefaultPalette.magentaLight }]
+        chartData: [{ legend: 'six', horizentalBarChartdata: { x: 14000, y: 15000 }, color: DefaultPalette.greenDark }]
       },
       {
         chartTitle: 'seven',
-        chartData: [{ legend: 'seven', data: 9855, color: DefaultPalette.accent }]
+        chartData: [{ legend: 'seven', horizentalBarChartdata: { x: 9855, y: 15000 }, color: DefaultPalette.accent }]
       },
       {
         chartTitle: 'eight',
-        chartData: [{ legend: 'eight', data: 4250, color: DefaultPalette.blueLight }]
+        chartData: [{ legend: 'eight', horizentalBarChartdata: { x: 4250, y: 15000 }, color: DefaultPalette.blueLight }]
       }
     ];
 

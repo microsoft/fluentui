@@ -11,11 +11,6 @@ export interface IHorizontalBarChartProps {
   /**
    * Width of bar chart
    */
-  total: number;
-
-  /**
-   * Width of bar chart
-   */
   width?: number;
 
   /**
@@ -72,4 +67,13 @@ export interface IHorizontalBarChartStyles {
    * Styling for each item in the container
    */
   items: IStyle;
+  /**
+   * Style for the chart.
+   */
+  chart: IStyle;
+
+  /**
+   * Style for the chart Title.
+   */
+  chartTitle: IStyle;
 }

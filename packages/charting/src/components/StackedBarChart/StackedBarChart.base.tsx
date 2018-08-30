@@ -18,11 +18,11 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
 
   public render(): JSX.Element {
     this._adjustProps();
-    const { data, barHeight, hideNumberDisplay, hideLegend, theme, isHorizontalBarChart } = this.props;
+    const { data, barHeight, hideNumberDisplay, hideLegend, theme } = this.props;
     const { palette } = theme!;
     const bars = this._createBarsAndLegends(data!, barHeight!, palette);
-    const showRatio = hideNumberDisplay === false && data!.chartData!.length === 2 && isHorizontalBarChart === false;
-    const showNumber = (hideNumberDisplay === false && data!.chartData!.length === 1) || isHorizontalBarChart === true;
+    const showRatio = hideNumberDisplay === false && data!.chartData!.length === 2;
+    const showNumber = hideNumberDisplay === false && data!.chartData!.length === 1;
     let total = 0;
     if (showRatio === true) {
       total = data!.chartData!.reduce((acc: number, value: IChartDataPoint) => acc + (value.data ? value.data : 0), 0);
@@ -44,7 +44,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           )}
           {showNumber && (
             <div>
-              <strong>{data!.chartData![0].data!.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</strong>
+              <strong>{data!.chartData![0].data}</strong>
             </div>
           )}
         </div>

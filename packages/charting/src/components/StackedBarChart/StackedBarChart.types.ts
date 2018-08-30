@@ -51,8 +51,6 @@ export interface IStackedBarChartProps {
   styles?: IStyleFunctionOrObject<IStackedBarChartStyleProps, IStackedBarChartStyles>;
 
   isMultiStackedBarChart?: boolean;
-
-  isHorizontalBarChart?: boolean;
 }
 
 export interface IStackedBarChartStyleProps {
