@@ -17,21 +17,21 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     return (
       <div className={this._classNames.root}>
         {data!.map((points: IChartProps, index: number) => {
-          if (points.chartData && points.chartData![0] && points.chartData![0].horizentalBarChartdata!.x) {
-            datapoint = points.chartData![0].horizentalBarChartdata!.x;
+          if (points.chartData && points.chartData![0] && points.chartData![0].horizontalBarChartdata!.x) {
+            datapoint = points.chartData![0].horizontalBarChartdata!.x;
           } else {
             points.chartData!.push({
               legend: '',
-              horizentalBarChartdata: { x: 0, y: 0 },
+              horizontalBarChartdata: { x: 0, y: 0 },
               color: palette.neutralTertiaryAlt
             });
             datapoint = 0;
           }
           points.chartData!.push({
             legend: '',
-            horizentalBarChartdata: {
-              x: points.chartData![0].horizentalBarChartdata!.y - datapoint!,
-              y: points.chartData![0].horizentalBarChartdata!.y
+            horizontalBarChartdata: {
+              x: points.chartData![0].horizontalBarChartdata!.y - datapoint!,
+              y: points.chartData![0].horizontalBarChartdata!.y
             },
             color: palette.neutralTertiaryAlt
           });
@@ -47,7 +47,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                   )}
                   <div>
                     <strong>
-                      {points!.chartData![0].horizentalBarChartdata!.x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                      {points!.chartData![0].horizontalBarChartdata!.x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                     </strong>
                   </div>
                 </div>
@@ -79,14 +79,14 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     const startingPoint: number[] = [];
     const total = data.chartData!.reduce(
       (acc: number, point: IChartDataPoint) =>
-        acc + (point.horizentalBarChartdata!.x ? point.horizentalBarChartdata!.x : 0),
+        acc + (point.horizontalBarChartdata!.x ? point.horizontalBarChartdata!.x : 0),
       0
     );
     let prevPosition = 0;
     let value = 0;
     const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {
       const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
-      const pointData = point.horizentalBarChartdata!.x ? point.horizentalBarChartdata!.x : 0;
+      const pointData = point.horizontalBarChartdata!.x ? point.horizontalBarChartdata!.x : 0;
       if (index > 0) {
         prevPosition += value;
       }
