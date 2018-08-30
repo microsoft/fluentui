@@ -4,7 +4,7 @@ exports[`Component Examples renders Checkbox.Basic.Example.tsx correctly 1`] = `
 <div>
   <button
     aria-checked={false}
-    aria-describedby="descriptionID"
+    aria-describedby={undefined}
     aria-disabled={undefined}
     aria-label={undefined}
     aria-labelledby={undefined}

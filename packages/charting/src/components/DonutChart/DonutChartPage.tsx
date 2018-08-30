@@ -19,11 +19,9 @@ export class DonutChartPage extends React.Component<IComponentDemoPageProps, {}>
             <ExampleCard title="DonutChart basic" code={DonutChartBasicExampleCode}>
               <DonutChartBasicExample />
             </ExampleCard>
-            '
             <ExampleCard title="DonutChart dynamic" code={DonutChartDynamicExampleCode}>
               <DonutChartDynamicExample />
             </ExampleCard>
-            '
           </div>
         }
         propertiesTables={
