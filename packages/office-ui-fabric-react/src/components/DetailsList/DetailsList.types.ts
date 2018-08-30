@@ -11,6 +11,7 @@ import { IWithViewportProps, IViewport } from '../../utilities/decorators/withVi
 import { IList, IListProps, ScrollToMode } from '../List/index';
 import { ITheme, IStyle } from '../../Styling';
 import { ICellStyleProps, IDetailsItemProps } from './DetailsRow.types';
+import { IDetailsColumnProps } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsColumn';
 
 export { IDetailsHeaderProps, IDetailsRowBaseProps, IDetailsHeaderBaseProps, IDetailsFooterBaseProps };
 
@@ -386,7 +387,7 @@ export interface IColumn {
   /**
    * If provider, can be used to render a custom column header divider
    */
-  onRenderDivider?: (columnIndex: number, defaultRenderer: Function) => any;
+  onRenderDivider?: IRenderFunction<IDetailsColumnProps>;
 
   /**
    * Determines if the column is filtered, and if so shows a filter icon.

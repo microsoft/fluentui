@@ -17,7 +17,7 @@ import { DetailsRowCheck } from './DetailsRowCheck';
 import { ITooltipHostProps } from '../../Tooltip';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
 import { IDragDropOptions, DragDropHelper } from '../../utilities/dragdrop/index';
-import { DetailsColumn } from '../../components/DetailsList/DetailsColumn';
+import { DetailsColumn, IDetailsColumnProps } from '../../components/DetailsList/DetailsColumn';
 import {
   IColumnResizeDetails,
   SelectAllVisibility,
@@ -576,7 +576,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     }
   }
 
-  private _renderColumnSizer = (columnIndex: number): JSX.Element | null => {
+  private _renderColumnSizer = ({ columnIndex }: IDetailsColumnProps): JSX.Element | null => {
     const { columns = NO_COLUMNS } = this.props;
     const column = columns[columnIndex];
     const { columnResizeDetails } = this.state;
@@ -608,8 +608,8 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     const column = columns[columnIndex];
     const { onRenderDivider } = column;
     return onRenderDivider
-      ? onRenderDivider(columnIndex, this._renderColumnSizer)
-      : this._renderColumnSizer(columnIndex);
+      ? onRenderDivider({ column, columnIndex }, this._renderColumnSizer)
+      : this._renderColumnSizer({ column, columnIndex });
   }
 
   private _renderDropHint(dropHintIndex: number): JSX.Element {
