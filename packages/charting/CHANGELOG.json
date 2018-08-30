@@ -2,6 +2,32 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.17.0",
+      "tag": "@uifabric/charting_v0.17.0",
+      "date": "Thu, 30 Aug 2018 19:26:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "BalakrishnaReddyPolu <polu.balakrishna96@gmail.com>",
+            "commit": "fbb85d1d6749858e095f60902327ca73013f862d",
+            "comment": "Donut chart align issues fixed"
+          }
+        ],
+        "minor": [
+          {
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "afa584366a41b0d25698c737f9e039f1af5792ce",
+            "comment": "Adding hovercard for stacked and multistacked bar chart which show related data in the hover card. Created interaction between legends, stacked and multistacked bar chart. The legends are clickable  and upon  clicking on a legends that respective data point lits up  compared to others. This helps users understand the chart and visualze better. Added opacity to charts upon interaction"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.59.0 <7.0.0` to `>=6.60.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.16.1",
       "tag": "@uifabric/charting_v0.16.1",
       "date": "Thu, 30 Aug 2018 10:32:49 GMT",

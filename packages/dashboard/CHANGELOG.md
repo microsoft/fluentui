@@ -1,6 +1,14 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Thu, 30 Aug 2018 10:32:49 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Aug 2018 19:26:04 GMT and should not be manually modified.
+
+## 0.17.3
+Thu, 30 Aug 2018 19:26:04 GMT
+
+### Patches
+
+- fix leftNav styles per PM feedback
+- revert the change for expand behavior
 
 ## 0.17.2
 Thu, 30 Aug 2018 10:32:49 GMT
