@@ -57,6 +57,7 @@ const GlobalClassNames = {
   linkContent: 'ms-ContextualMenu-linkContent',
   linkContentMenu: 'ms-ContextualMenu-linkContent',
   icon: 'ms-ContextualMenu-icon',
+  iconColor: 'ms-ContextualMenu-iconColor',
   checkmarkIcon: 'ms-ContextualMenu-checkmarkIcon',
   subMenuIcon: 'ms-ContextualMenu-submenuIcon',
   label: 'ms-ContextualMenu-itemText',
@@ -151,18 +152,13 @@ export const getItemClassNames = memoizeFunction(
       ],
       icon: [
         classNames.icon,
-        knownIcon && 'ms-ContextualMenu-iconColor ' && styles.iconColor,
+        knownIcon && styles.iconColor,
         styles.icon,
         iconClassName,
         disabled && [classNames.isDisabled, styles.iconDisabled]
       ],
       iconColor: styles.iconColor,
-      checkmarkIcon: [
-        classNames.checkmarkIcon,
-        knownIcon && 'ms-ContextualMenu-checkmarkIcon ' && styles.checkmarkIcon,
-        styles.icon,
-        iconClassName
-      ],
+      checkmarkIcon: [classNames.checkmarkIcon, knownIcon && styles.checkmarkIcon, styles.icon, iconClassName],
       subMenuIcon: [classNames.subMenuIcon, styles.subMenuIcon, subMenuClassName],
       label: [classNames.label, styles.label],
       secondaryText: [classNames.secondaryText, styles.secondaryText],
