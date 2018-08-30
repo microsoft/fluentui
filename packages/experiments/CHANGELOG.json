@@ -2,6 +2,40 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.28.0",
+      "tag": "@uifabric/experiments_v6.28.0",
+      "date": "Thu, 30 Aug 2018 10:32:49 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "HalcyonPride <goodguyjosh@outlook.com>",
+            "commit": "31428f129d1b9c91072a43cf0fc8d9f9e972ab9c",
+            "comment": "Corrected some Checkbox implementations - should use 'aria-labelledby' instead of 'aria-describedby'"
+          }
+        ],
+        "minor": [
+          {
+            "author": "riosn-n <33673026+riosn-n@users.noreply.github.com>",
+            "commit": "59784ab1e49ff177b3d4a18ce600dd40254b2232",
+            "comment": "TagPicker added as a Form input component."
+          },
+          {
+            "author": "Mike Wheaton <mike@mikewheaton.ca>",
+            "commit": "ab61565425b99bb11400bbbd633e81e444521719",
+            "comment": "Update Shared palette colors"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.16.0` to `^0.16.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.58.0 <7.0.0` to `>=6.59.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.27.1",
       "tag": "@uifabric/experiments_v6.27.1",
       "date": "Tue, 28 Aug 2018 10:23:58 GMT",

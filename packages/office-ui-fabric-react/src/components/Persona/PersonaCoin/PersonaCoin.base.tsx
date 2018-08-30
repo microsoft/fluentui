@@ -126,7 +126,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
                 {onRenderInitials(this.props, this._onRenderInitials)}
               </div>
             )}
-            {imageUrl && !hideImage && onRenderCoin(this.props, this._onRenderCoin)}
+            {!hideImage && onRenderCoin(this.props, this._onRenderCoin)}
             <PersonaPresence {...personaPresenceProps} />
           </div>
         ) : // Otherwise, render just PersonaPresence.
@@ -152,6 +152,11 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
       theme,
       showUnknownPersonaCoin
     } = this.props;
+
+    // Render the Image component only if an image URL is provided
+    if (!imageUrl) {
+      return null;
+    }
 
     const size = this.props.size as PersonaSize;
 

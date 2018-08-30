@@ -1,6 +1,13 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Fri, 24 Aug 2018 10:26:08 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Aug 2018 10:32:49 GMT and should not be manually modified.
+
+## 0.16.1
+Thu, 30 Aug 2018 10:32:49 GMT
+
+### Patches
+
+- Donut chart with legends and hover behavior 
 
 ## 0.16.0
 Fri, 24 Aug 2018 10:26:08 GMT

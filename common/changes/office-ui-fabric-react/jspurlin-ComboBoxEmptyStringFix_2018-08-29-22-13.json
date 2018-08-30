@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Checkbox: use id passed in if provided",
+      "comment": "ComboBox: Update ComboBox to allow for empty string to be submitted",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "naethell@microsoft.com"
+  "email": "jspurlin@microsoft.com"
 }

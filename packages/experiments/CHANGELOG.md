@@ -1,6 +1,18 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 28 Aug 2018 10:23:58 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Aug 2018 10:32:49 GMT and should not be manually modified.
+
+## 6.28.0
+Thu, 30 Aug 2018 10:32:49 GMT
+
+### Minor changes
+
+- TagPicker added as a Form input component.
+- Update Shared palette colors
+
+### Patches
+
+- Corrected some Checkbox implementations - should use 'aria-labelledby' instead of 'aria-describedby'
 
 ## 6.27.1
 Tue, 28 Aug 2018 10:23:58 GMT
