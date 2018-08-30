@@ -101,6 +101,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
       theme: theme!,
       className: coinProps && coinProps.className ? coinProps.className : className,
       size,
+      coinSize,
       showUnknownPersonaCoin
     });
 

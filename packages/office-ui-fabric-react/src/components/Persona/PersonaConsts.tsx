@@ -35,6 +35,46 @@ export const sizeBoolean = (size: PersonaSize) => ({
   isSize100: size === PersonaSize.size100 || size === PersonaSize.extraLarge
 });
 
+export const personaSizeToInt = (size: PersonaSize): number => {
+  switch (size) {
+    case PersonaSize.size10:
+    case PersonaSize.tiny:
+      return 10;
+
+    case PersonaSize.size16:
+      return 16;
+
+    case PersonaSize.extraExtraSmall:
+    case PersonaSize.size24:
+      return 24;
+
+    case PersonaSize.extraSmall:
+    case PersonaSize.size28:
+      return 28;
+
+    case PersonaSize.size32:
+      return 32;
+
+    case PersonaSize.small:
+    case PersonaSize.size40:
+      return 40;
+
+    case PersonaSize.size48:
+      return 48;
+
+    case PersonaSize.large:
+    case PersonaSize.size72:
+      return 72;
+
+    case PersonaSize.extraLarge:
+    case PersonaSize.size100:
+      return 100;
+
+    default:
+      return 48;
+  }
+};
+
 export const presenceBoolean = (presence: PersonaPresence) => ({
   isAvailable: presence === PersonaPresence.online,
   isAway: presence === PersonaPresence.away,
