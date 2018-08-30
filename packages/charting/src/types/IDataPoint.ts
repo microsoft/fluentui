@@ -40,7 +40,7 @@ export interface IChartDataPoint {
   /**
    * data the datapoint in the chart
    */
-  horizontalBarChartdata?: IHorizontalDataPoint;
+  horizontalBarChartData?: IHorizontalDataPoint;
 
   /**
    * onClick action for each datapoint in the chart
