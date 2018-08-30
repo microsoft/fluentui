@@ -26,7 +26,7 @@ export const getStyles = (props: ICardFrameProps): ICardFrameStyles => {
       transition: 'background-color .2s,color .2s,margin .2s,padding .2s,border-color .2s',
       selectors: {
         ':hover': {
-          backgroundColor: '#eaeaea'
+          backgroundColor: disableDrag ? '' : '#eaeaea'
         }
       }
     },
