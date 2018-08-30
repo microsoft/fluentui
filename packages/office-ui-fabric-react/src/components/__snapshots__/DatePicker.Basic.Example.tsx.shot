@@ -68,22 +68,11 @@ exports[`Component Examples renders DatePicker.Basic.Example.tsx correctly 1`] =
                   padding-top: 0px;
                   position: relative;
                 }
-                &:-ms-clear {
-                  display: none;
-                }
                 &:hover {
                   border-color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
-                }
-                &::placeholder {
-                  color: #666666;
-                  opacity: 1;
-                }
-                &:-ms-input-placeholder {
-                  color: #666666;
-                  opacity: 1;
                 }
           >
             <input
@@ -119,8 +108,16 @@ exports[`Component Examples renders DatePicker.Basic.Example.tsx correctly 1`] =
                   &:active, &:focus, &:hover {
                     outline: 0px;
                   }
+                  &::-ms-clear {
+                    display: none;
+                  }
                   &::placeholder {
                     color: #666666;
+                    opacity: 1;
+                  }
+                  &:-ms-input-placeholder {
+                    color: #666666;
+                    opacity: 1;
                   }
               disabled={undefined}
               id="TextField0"
@@ -184,7 +181,7 @@ exports[`Component Examples renders DatePicker.Basic.Example.tsx correctly 1`] =
             box-sizing: border-box;
             color: #333333;
             display: inline-block;
-            margin-bottom: 8px;
+            margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
             margin-top: 0px;
@@ -246,7 +243,10 @@ exports[`Component Examples renders DatePicker.Basic.Example.tsx correctly 1`] =
           @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
             background-color: Highlight;
             border-color: Highlight;
-            color: Highlight;
+            color: HighlightText;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title:hover {
+            color: HighlightText;
           }
           @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
             -ms-high-contrast-adjust: none;

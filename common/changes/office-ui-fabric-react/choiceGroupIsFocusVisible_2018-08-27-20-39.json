@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "ChoiceGroup: have ChoiceGroupOption style use new ms-Fabric--isFocusVisible class",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "naethell@microsoft.com"
+}

@@ -2,6 +2,123 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.58.0",
+      "tag": "office-ui-fabric-react_v6.58.0",
+      "date": "Wed, 29 Aug 2018 10:28:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "6616c9cf8daaea4079decd8f2fdb738d7002b784",
+            "comment": "Make ComboBox input color themeable"
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "f40423b9678f21161c03c201ca51adddafe54fbd",
+            "comment": "Fix status indicators on icon-only column headers"
+          },
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "e36c0bd08f99cb716e468a730ccf8ebd1f0070f5",
+            "comment": "Coachmark: Fix inability to focus on inputs when Coachmark is active"
+          },
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "209e74f4f8e5c75e6a691d49f97ea91ee46ebf5c",
+            "comment": "Buttons: remove borders on buttons without borders"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "2cff3b05af749308ec016cc727fbd828ff18f365",
+            "comment": "Textfield: fixed ie only styles regarding clear button"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Ryan Psenski <rpsenski@microsoft.com>",
+            "commit": "54e244d8461ec56ad2ffb65984473ce528160e32",
+            "comment": "Expose the event that triggers the commit of a manually entered value to OnValidate callback so consumers can handle focus transitions in an accessible way"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.8.1 <7.0.0` to `>=6.8.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.57.0",
+      "tag": "office-ui-fabric-react_v6.57.0",
+      "date": "Tue, 28 Aug 2018 10:23:58 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "0a8c7f53d2a89444c2cae0d722f64a5c54527f14",
+            "comment": "Callout: Pass divProperties into root"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "65b4dea059ea56e5b3895f6a191c26028c2aaf29",
+            "comment": "Adding a missing passthrough of the menuicon style from base button to split menu icon"
+          },
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "6b52a326bcb4af244d884451e9157afceec6a542",
+            "comment": "updates to view count icon spacing to spec in documentcard"
+          },
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "3fb8e9d98632b11d38d079989c3e44c137d04e5c",
+            "comment": "Panel: set the content height to window.innerHeight on iOS"
+          },
+          {
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "c0cef2680cc99b41f92f2f66bd528a605a0cc2a3",
+            "comment": "Sticky: null check for currElem"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.8.0 <7.0.0` to `>=6.8.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.16.0 <7.0.0` to `>=6.17.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.56.0",
+      "tag": "office-ui-fabric-react_v6.56.0",
+      "date": "Mon, 27 Aug 2018 10:27:43 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "kisiebel <40902158+kisiebel@users.noreply.github.com>",
+            "commit": "93338ea11b72bfc91b6b589feb193a78df5d1327",
+            "comment": "Adds an optional close button to the DatePicker"
+          },
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "55d59941b04c97f4e40cd4f8cb197289279185a0",
+            "comment": "Convert all SCSS styles in panel to JS Styles"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.7.0 <7.0.0` to `>=6.8.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.18.0 <7.0.0` to `>=6.19.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.55.0",
       "tag": "office-ui-fabric-react_v6.55.0",
       "date": "Fri, 24 Aug 2018 17:02:14 GMT",

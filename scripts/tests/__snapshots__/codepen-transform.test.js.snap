@@ -1,10 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Codepen Transform correctly transforms code examples with class exports 1`] = `
-"let {
-	TextField,
-	MaskedTextField,
-	Fabric } = window.Fabric;
+"let { TextField, MaskedTextField, Fabric } = window.Fabric;
 
 class TextFieldBasicExample extends React.Component<any, any> {
   public render(): JSX.Element {
@@ -21,21 +18,13 @@ class TextFieldBasicExample extends React.Component<any, any> {
   }
 }
 
-ReactDOM.render(<TextFieldBasicExample/>,document.getElementById(\\"content\\"));"
+ReactDOM.render(<TextFieldBasicExample />, document.getElementById('content'));
+"
 `;
 
 exports[`Codepen Transform correctly transforms code examples with variable exports 1`] = `
-"let {
-	Label,
-	Fabric } = window.Fabric;
+"let { Label, Fabric } = window.Fabric;
 
-const LabelBasicExample = () => (
-  <div>
-    <Label>I'm a Label</Label>
-    <Label disabled={true}>I'm a disabled Label</Label>
-    <Label required={true}>I'm a required Label</Label>
-  </div>
-);
-
-ReactDOM.render(<LabelBasicExample/>,document.getElementById(\\"content\\"));"
+ReactDOM.render(<LabelBasicExample />, document.getElementById('content'));
+"
 `;

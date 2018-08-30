@@ -16,7 +16,7 @@ export class CheckboxBasicExample extends React.Component<{}, ICheckboxBasicExam
   public render(): JSX.Element {
     return (
       <div>
-        <Checkbox label="Standard checkbox" onChange={this._onCheckboxChange} ariaDescribedBy={'descriptionID'} />
+        <Checkbox label="Standard checkbox" onChange={this._onCheckboxChange} />
       </div>
     );
   }

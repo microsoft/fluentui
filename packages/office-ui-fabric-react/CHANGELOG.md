@@ -1,6 +1,43 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 24 Aug 2018 17:02:14 GMT and should not be manually modified.
+This log was last generated on Wed, 29 Aug 2018 10:28:42 GMT and should not be manually modified.
+
+## 6.58.0
+Wed, 29 Aug 2018 10:28:42 GMT
+
+### Minor changes
+
+- Expose the event that triggers the commit of a manually entered value to OnValidate callback so consumers can handle focus transitions in an accessible way
+
+### Patches
+
+- Make ComboBox input color themeable
+- Fix status indicators on icon-only column headers
+- Coachmark: Fix inability to focus on inputs when Coachmark is active
+- Buttons: remove borders on buttons without borders
+- Textfield: fixed ie only styles regarding clear button
+
+## 6.57.0
+Tue, 28 Aug 2018 10:23:58 GMT
+
+### Minor changes
+
+- Callout: Pass divProperties into root
+
+### Patches
+
+- Adding a missing passthrough of the menuicon style from base button to split menu icon
+- updates to view count icon spacing to spec in documentcard
+- Panel: set the content height to window.innerHeight on iOS
+- Sticky: null check for currElem
+
+## 6.56.0
+Mon, 27 Aug 2018 10:27:43 GMT
+
+### Minor changes
+
+- Adds an optional close button to the DatePicker
+- Convert all SCSS styles in panel to JS Styles
 
 ## 6.55.0
 Fri, 24 Aug 2018 17:02:14 GMT

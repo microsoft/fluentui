@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { IViewComponentProps } from '../../Foundation';
 import { IStyleFunction } from '../../Utilities';
+import { Text } from '../../Text';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { ICollapsibleSectionTitleProps, ICollapsibleSectionTitleStyles } from './CollapsibleSectionTitle.types';
-import { Icon } from 'office-ui-fabric-react';
 
 /**
  * @deprecated
@@ -24,7 +25,7 @@ export const CollapsibleSectionTitleView = (
       onKeyDown={props.onKeyDown}
     >
       {!props.chevronDisabled && <Icon className={props.classNames.icon} iconName="ChevronDown" />}
-      <span className={props.classNames.text}>{props.text}</span>
+      <Text className={props.classNames.text}>{props.text}</Text>
     </button>
   );
 };
