@@ -65,6 +65,9 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   private _sizePosCache: DropdownSizePosCache = new DropdownSizePosCache();
   private _classNames: IProcessedStyleSet<IDropdownStyles>;
 
+  // Flag for when we get the first mouseMove
+  private _gotMouseMove: boolean;
+
   constructor(props: IDropdownProps) {
     super(props);
 
@@ -126,6 +129,8 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
 
   public componentDidUpdate(prevProps: IDropdownProps, prevState: IDropdownState) {
     if (prevState.isOpen === true && this.state.isOpen === false) {
+      this._gotMouseMove = false;
+
       if (this._dropDown.current) {
         this._dropDown.current.focus();
       }
@@ -618,7 +623,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   };
 
   private _onItemMouseEnter(item: any, ev: React.MouseEvent<HTMLElement>): void {
-    if (!this._isScrollIdle) {
+    if (this._shouldIgnoreMouseEvent()) {
       return;
     }
 
@@ -628,6 +633,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
 
   private _onItemMouseMove(item: any, ev: React.MouseEvent<HTMLElement>): void {
     const targetElement = ev.currentTarget as HTMLElement;
+    this._gotMouseMove = true;
 
     if (!this._isScrollIdle || document.activeElement === targetElement) {
       return;
@@ -637,7 +643,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   }
 
   private _onMouseItemLeave = (item: any, ev: React.MouseEvent<HTMLElement>): void => {
-    if (!this._isScrollIdle) {
+    if (this._shouldIgnoreMouseEvent()) {
       return;
     }
 
@@ -658,6 +664,10 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
       }
     }
   };
+
+  private _shouldIgnoreMouseEvent(): boolean {
+    return !this._isScrollIdle || !this._gotMouseMove;
+  }
 
   private _onDismiss = (): void => {
     this.setState({ isOpen: false });

@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Panel: set the content height to window.innerHeight on iOS",
+      "comment": "ComboBox: Update ComboBox to allow for empty string to be submitted",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "kakje@microsoft.com"
+  "email": "jspurlin@microsoft.com"
 }

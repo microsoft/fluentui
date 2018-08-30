@@ -3,6 +3,7 @@ module.exports = function() {
   const transformer = require('./codepen-examples-transform');
   const glob = require('glob');
   const files = glob.sync(path.resolve(__dirname, '../../packages/*/src/components/**/examples/*Example*.tsx'));
+
   const jscodeshift = require('jscodeshift');
   const fs = require('fs');
   const async = require('async');

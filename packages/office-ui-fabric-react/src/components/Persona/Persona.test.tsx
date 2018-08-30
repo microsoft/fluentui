@@ -22,10 +22,15 @@ const STYLES = {
  * function to override the default onRender callbacks
  */
 export const wrapPersona = (
-  example: IPersonaSharedProps
+  example: IPersonaSharedProps,
+  shouldWrapPersonaCoin: boolean = false
 ): ((coinProps: IPersonaProps, defaultRenderer: IRenderFunction<IPersonaProps>) => JSX.Element | null) => {
   return (coinProps, defaultCoinRenderer): JSX.Element | null => {
-    return defaultCoinRenderer(coinProps);
+    return shouldWrapPersonaCoin ? (
+      <span id="persona-coin-container">{defaultCoinRenderer(coinProps)}</span>
+    ) : (
+      defaultCoinRenderer(coinProps)
+    );
   };
 };
 
@@ -65,6 +70,16 @@ describe('Persona', () => {
 
   it('renders Persona correctly with UnknownPersona coin', () => {
     const component = renderer.create(<Persona text="Kat Larrson" showUnknownPersonaCoin={true} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders Persona which calls onRenderCoin callback without imageUrl', () => {
+    // removing imageUrl prop from example
+    const { imageUrl, ...exampleWithoutImage } = examplePersona;
+    const component = renderer.create(
+      <Persona {...exampleWithoutImage} onRenderCoin={wrapPersona(exampleWithoutImage, true)} />
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

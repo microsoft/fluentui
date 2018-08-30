@@ -1,6 +1,54 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 27 Aug 2018 10:27:43 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Aug 2018 10:32:49 GMT and should not be manually modified.
+
+## 6.59.0
+Thu, 30 Aug 2018 10:32:49 GMT
+
+### Minor changes
+
+- Add the ability to disable the built-in SelectionMode in DetailsList
+- Menu/ComboBox/Dropdown: Make the mouse being under a menu item not move focus until after a mouseMove is seen
+
+### Patches
+
+- Checkbox: use id passed in if provided
+- ChoiceGroup: have ChoiceGroupOption style use new ms-Fabric--isFocusVisible class
+- Dropdown: color changed to HighlightText
+- Remove unnecessary margin on dropdown
+- Allow MaskedTextField to backspace to the beginning when the mask is all numbers
+- Corrected some Checkbox implementations - should use 'aria-labelledby' instead of 'aria-describedby'
+- make escape key do prevent default first before calling ondismiss callback
+- BaseButton: iconProps className takes precedence if it exists in icon render
+
+## 6.58.0
+Wed, 29 Aug 2018 10:28:42 GMT
+
+### Minor changes
+
+- Expose the event that triggers the commit of a manually entered value to OnValidate callback so consumers can handle focus transitions in an accessible way
+
+### Patches
+
+- Make ComboBox input color themeable
+- Fix status indicators on icon-only column headers
+- Coachmark: Fix inability to focus on inputs when Coachmark is active
+- Buttons: remove borders on buttons without borders
+- Textfield: fixed ie only styles regarding clear button
+
+## 6.57.0
+Tue, 28 Aug 2018 10:23:58 GMT
+
+### Minor changes
+
+- Callout: Pass divProperties into root
+
+### Patches
+
+- Adding a missing passthrough of the menuicon style from base button to split menu icon
+- updates to view count icon spacing to spec in documentcard
+- Panel: set the content height to window.innerHeight on iOS
+- Sticky: null check for currElem
 
 ## 6.56.0
 Mon, 27 Aug 2018 10:27:43 GMT

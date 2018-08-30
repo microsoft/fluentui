@@ -242,22 +242,11 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
               padding-top: 0px;
               position: relative;
             }
-            &:-ms-clear {
-              display: none;
-            }
             &:hover {
               border-color: #212121;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
-            }
-            &::placeholder {
-              color: #666666;
-              opacity: 1;
-            }
-            &:-ms-input-placeholder {
-              color: #666666;
-              opacity: 1;
             }
       >
         <input
@@ -291,8 +280,16 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
               &:active, &:focus, &:hover {
                 outline: 0px;
               }
+              &::-ms-clear {
+                display: none;
+              }
               &::placeholder {
                 color: #666666;
+                opacity: 1;
+              }
+              &:-ms-input-placeholder {
+                color: #666666;
+                opacity: 1;
               }
           id="TextField1"
           onBlur={[Function]}

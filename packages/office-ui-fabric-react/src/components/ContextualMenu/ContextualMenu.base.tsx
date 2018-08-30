@@ -3,6 +3,7 @@ import {
   IContextualMenuProps,
   IContextualMenuItem,
   ContextualMenuItemType,
+  IContextualMenuListProps,
   IContextualMenuStyleProps,
   IContextualMenuStyles
 } from './ContextualMenu.types';
@@ -21,6 +22,7 @@ import {
   getLastFocusable,
   getRTL,
   getWindow,
+  IRenderFunction,
   IPoint,
   KeyCodes,
   shouldWrapFocus
@@ -100,6 +102,8 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   private _isScrollIdle: boolean;
   private _scrollIdleTimeoutId: number | undefined;
   private _processingExpandCollapseKeyOnly: boolean;
+  private _shouldUpdateFocusOnMouseEvent: boolean;
+  private _gotMouseMove: boolean;
 
   private _adjustedFocusZoneProps: IFocusZoneProps;
 
@@ -120,6 +124,8 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     this._isFocusingPreviousElement = false;
     this._isScrollIdle = true;
     this._processingExpandCollapseKeyOnly = false;
+    this._shouldUpdateFocusOnMouseEvent = !this.props.delayUpdateFocusOnHover;
+    this._gotMouseMove = false;
   }
 
   public dismiss = (ev?: any, dismissAll?: boolean) => {
@@ -144,6 +150,13 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
           ? (this._targetWindow.document.activeElement as HTMLElement)
           : null;
       }
+    }
+    if (newProps.delayUpdateFocusOnHover !== this.props.delayUpdateFocusOnHover) {
+      // update shouldUpdateFocusOnMouseEvent to follow what was passed in
+      this._shouldUpdateFocusOnMouseEvent = !newProps.delayUpdateFocusOnHover;
+
+      // If shouldUpdateFocusOnMouseEvent is false, we need to reset gotMouseMove to false
+      this._gotMouseMove = this._shouldUpdateFocusOnMouseEvent && this._gotMouseMove;
     }
   }
 
@@ -212,6 +225,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
       theme,
       calloutProps,
       onRenderSubMenu = this._onRenderSubMenu,
+      onRenderMenuList = this._onRenderMenuList,
       focusZoneProps,
       getMenuClassNames
     } = this.props;
@@ -271,7 +285,6 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
     // The menu should only return if items were provided, if no items were provided then it should not appear.
     if (items && items.length > 0) {
-      let indexCorrection = 0;
       let totalItemCount = 0;
       for (const item of items) {
         if (item.itemType !== ContextualMenuItemType.Divider && item.itemType !== ContextualMenuItemType.Header) {
@@ -310,6 +323,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
             tabIndex={shouldFocusOnContainer ? 0 : -1}
             onKeyDown={this._onMenuKeyDown}
             onKeyUp={this._onKeyUp}
+            onFocusCapture={this._onMenuFocusCapture}
           >
             {title && <div className={this._classNames.title}> {title} </div>}
             {items && items.length ? (
@@ -319,26 +333,15 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
                 isCircularNavigation={true}
                 handleTabKey={FocusZoneTabbableElements.all}
               >
-                <ul className={this._classNames.list} onKeyDown={this._onKeyDown} onKeyUp={this._onKeyUp}>
-                  {items.map((item, index) => {
-                    const menuItem = this._renderMenuItem(
-                      item,
-                      index,
-                      indexCorrection,
-                      totalItemCount,
-                      hasCheckmarks,
-                      hasIcons
-                    );
-                    if (
-                      item.itemType !== ContextualMenuItemType.Divider &&
-                      item.itemType !== ContextualMenuItemType.Header
-                    ) {
-                      const indexIncrease = item.customOnRenderListLength ? item.customOnRenderListLength : 1;
-                      indexCorrection += indexIncrease;
-                    }
-                    return menuItem;
-                  })}
-                </ul>
+                {onRenderMenuList(
+                  {
+                    items,
+                    totalItemCount,
+                    hasCheckmarks,
+                    hasIcons
+                  },
+                  this._onRenderMenuList
+                )}
               </FocusZone>
             ) : null}
             {submenuProps && onRenderSubMenu(submenuProps, this._onRenderSubMenu)}
@@ -352,6 +355,8 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
   private _onMenuOpened() {
     this._events.on(this._targetWindow, 'resize', this.dismiss);
+    this._shouldUpdateFocusOnMouseEvent = !this.props.delayUpdateFocusOnHover;
+    this._gotMouseMove = false;
     this.props.onMenuOpened && this.props.onMenuOpened(this.props);
   }
 
@@ -361,6 +366,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
       this._async.setTimeout(() => {
         this._previousActiveElement && this._previousActiveElement!.focus();
       }, 0);
+    this._shouldUpdateFocusOnMouseEvent = !this.props.delayUpdateFocusOnHover;
   }
 
   /**
@@ -377,6 +383,32 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   private _onRenderSubMenu(subMenuProps: IContextualMenuProps) {
     return <ContextualMenu {...subMenuProps} />;
   }
+
+  private _onRenderMenuList = (
+    menuListProps: IContextualMenuListProps,
+    defaultRender?: IRenderFunction<IContextualMenuListProps>
+  ): JSX.Element => {
+    let indexCorrection = 0;
+    return (
+      <ul className={this._classNames.list} onKeyDown={this._onKeyDown} onKeyUp={this._onKeyUp}>
+        {menuListProps.items.map((item, index) => {
+          const menuItem = this._renderMenuItem(
+            item,
+            index,
+            indexCorrection,
+            menuListProps.totalItemCount,
+            menuListProps.hasCheckmarks,
+            menuListProps.hasIcons
+          );
+          if (item.itemType !== ContextualMenuItemType.Divider && item.itemType !== ContextualMenuItemType.Header) {
+            const indexIncrease = item.customOnRenderListLength ? item.customOnRenderListLength : 1;
+            indexCorrection += indexIncrease;
+          }
+          return menuItem;
+        })}
+      </ul>
+    );
+  };
 
   private _renderMenuItem(
     item: IContextualMenuItem,
@@ -749,6 +781,12 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     );
   };
 
+  private _onMenuFocusCapture = (ev: React.FocusEvent<HTMLElement>) => {
+    if (this.props.delayUpdateFocusOnHover) {
+      this._shouldUpdateFocusOnMouseEvent = true;
+    }
+  };
+
   private _onKeyUp = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
     return this._keyHandler(ev, this._shouldHandleKeyUp, true /* dismissAllMenus */);
   };
@@ -843,7 +881,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   };
 
   private _onItemMouseEnterBase = (item: any, ev: React.MouseEvent<HTMLElement>, target?: HTMLElement): void => {
-    if (!this._isScrollIdle) {
+    if (this._shouldIgnoreMouseEvent()) {
       return;
     }
 
@@ -852,6 +890,14 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
   private _onItemMouseMoveBase = (item: any, ev: React.MouseEvent<HTMLElement>, target: HTMLElement): void => {
     const targetElement = ev.currentTarget as HTMLElement;
+
+    // Always do this check to make sure we record
+    // a mouseMove if needed (even if we are timed out)
+    if (this._shouldUpdateFocusOnMouseEvent) {
+      this._gotMouseMove = true;
+    } else {
+      return;
+    }
 
     if (
       !this._isScrollIdle ||
@@ -863,8 +909,13 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
     this._updateFocusOnMouseEvent(item, ev, target);
   };
+
+  private _shouldIgnoreMouseEvent(): boolean {
+    return !this._isScrollIdle || !this._gotMouseMove;
+  }
+
   private _onMouseItemLeave = (item: any, ev: React.MouseEvent<HTMLElement>): void => {
-    if (!this._isScrollIdle) {
+    if (this._shouldIgnoreMouseEvent()) {
       return;
     }
 
