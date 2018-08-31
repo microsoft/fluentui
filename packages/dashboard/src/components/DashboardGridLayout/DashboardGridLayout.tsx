@@ -56,6 +56,9 @@ export class DashboardGridLayout extends React.Component<IDashboardGridLayoutPro
         rowHeight={rowHeight}
         layouts={this._createLayout()}
         verticalCompact={true}
+        onDrag={this.props.onDrag}
+        onDragStart={this.props.onDragStart}
+        onDragStop={this.props.onDragStop}
         onLayoutChange={this.props.onLayoutChange}
         onBreakpointChange={this.props.onBreakPointChange}
         dragApiRef={this.props.dragApi}
