@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 30 Aug 2018 19:26:04 GMT and should not be manually modified.
+This log was last generated on Fri, 31 Aug 2018 10:27:35 GMT and should not be manually modified.
+
+## 6.61.0
+Fri, 31 Aug 2018 10:27:35 GMT
+
+### Minor changes
+
+- SpinButton: Add aria-valuenow and aria-valuetext for controller spin buttons
+- DatePicker: add optional underlined prop for TextField
+
+### Patches
+
+- ComboBox: update isOptionSelected logic to take into acount updated values for currentPendingValue
+- added ability for personacoin to be arbitrarily sized for initials
 
 ## 6.60.0
 Thu, 30 Aug 2018 19:26:04 GMT

@@ -2,6 +2,30 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.17.1",
+      "tag": "@uifabric/charting_v0.17.1",
+      "date": "Fri, 31 Aug 2018 10:27:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "6a6dd2b8e40c3776794f0b27bcfae02f2aac78ed",
+            "comment": "Fixes the usage of renamed variable"
+          },
+          {
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "14abadd85b7786805d5c85a1c7d5a7e010df52cb",
+            "comment": "horizontal bar chart modified according to figma "
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.60.0 <7.0.0` to `>=6.61.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.17.0",
       "tag": "@uifabric/charting_v0.17.0",
       "date": "Thu, 30 Aug 2018 19:26:04 GMT",
