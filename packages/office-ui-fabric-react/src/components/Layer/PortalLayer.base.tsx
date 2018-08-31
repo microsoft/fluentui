@@ -80,17 +80,78 @@ export class PortalLayerBase extends BaseComponent<ILayerProps, {}> {
 
   public render(): React.ReactNode {
     const classNames = this._getClassNames();
+    const { eventBubblingEnabled } = this.props;
 
     return (
       <span className="ms-layer" ref={this._rootElement}>
         {this._layerElement &&
           ReactDOM.createPortal(
-            <Fabric className={classNames.content}>{this.props.children}</Fabric>,
+            eventBubblingEnabled ? (
+              <Fabric className={classNames.content}>{this.props.children}</Fabric>
+            ) : (
+              <Fabric
+                className={classNames.content}
+                onClick={this._filterEvent}
+                onContextMenu={this._filterEvent}
+                onDoubleClick={this._filterEvent}
+                onDrag={this._filterEvent}
+                onDragEnd={this._filterEvent}
+                onDragEnter={this._filterEvent}
+                onDragExit={this._filterEvent}
+                onDragLeave={this._filterEvent}
+                onDragOver={this._filterEvent}
+                onDragStart={this._filterEvent}
+                onDrop={this._filterEvent}
+                onMouseDown={this._filterEvent}
+                onMouseEnter={this._filterEvent}
+                onMouseLeave={this._filterEvent}
+                onMouseMove={this._filterEvent}
+                onMouseOver={this._filterEvent}
+                onMouseOut={this._filterEvent}
+                onMouseUp={this._filterEvent}
+                onKeyDown={this._filterEvent}
+                onKeyPress={this._filterEvent}
+                onKeyUp={this._filterEvent}
+                onFocus={this._filterEvent}
+                onBlur={this._filterEvent}
+                onChange={this._filterEvent}
+                onInput={this._filterEvent}
+                onInvalid={this._filterEvent}
+                onSubmit={this._filterEvent}
+              >
+                {this.props.children}
+              </Fabric>
+            ),
             this._layerElement
           )}
       </span>
     );
   }
+
+  /**
+   * Helper to stop events from bubbling up out of Layer.
+   */
+  private _filterEvent = (ev: React.SyntheticEvent<HTMLElement>): void => {
+    // TODO: need to make a general comment about changed behavior since this will also affect onMouseEnter handlers in apps
+    // TODO: search for onMouseEnter handlers and spotfix (such as Tooltip containing a component with a Layer)
+    //        multiple issues:
+    //          1) onMouseEnter should be ignored when target is in portal
+    //          2) tooltip does not hide when hovering over portal content (onMouseLeave not generated)
+    // We should just be able to check ev.bubble here and only stop events that are bubbling up. However, even though mouseenter and
+    //    mouseleave do NOT bubble up, they are showing up as bubbling. Therefore we stop events based on event name rather than ev.bubble.
+    if (ev.type !== 'mouseenter' && ev.type !== 'mouseleave') {
+      console.log(
+        `PortalLayerBase._onEvent: ${ev.type} bubbles=${ev.bubbles}, nativeBubbles=${ev.nativeEvent.bubbles} stopped`
+      );
+      ev.stopPropagation();
+    } else {
+      console.log(
+        `PortalLayerBase._onEvent: ${ev.type} bubbles=${ev.bubbles}, nativeBubbles=${
+          ev.nativeEvent.bubbles
+        } NOT stopped`
+      );
+    }
+  };
 
   private _getClassNames() {
     const { className, styles, theme } = this.props;

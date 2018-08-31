@@ -678,6 +678,32 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
                     margin-top: 0px;
                     overflow: visible;
                   }
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              onContextMenu={[Function]}
+              onDoubleClick={[Function]}
+              onDrag={[Function]}
+              onDragEnd={[Function]}
+              onDragEnter={[Function]}
+              onDragExit={[Function]}
+              onDragLeave={[Function]}
+              onDragOver={[Function]}
+              onDragStart={[Function]}
+              onDrop={[Function]}
+              onFocus={[Function]}
+              onInput={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+              onMouseUp={[Function]}
+              onSubmit={[Function]}
             >
               <div
                 className=
