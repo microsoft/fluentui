@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Fri, 24 Aug 2018 10:26:08 GMT and should not be manually modified.
+This log was last generated on Fri, 31 Aug 2018 20:48:42 GMT and should not be manually modified.
+
+## 6.8.2
+Fri, 31 Aug 2018 20:48:42 GMT
+
+### Patches
+
+- Invoke ES6 Promise polyfill in local dev site root for IE compat
 
 ## 6.8.1
 Fri, 24 Aug 2018 10:26:08 GMT

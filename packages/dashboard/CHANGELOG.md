@@ -1,6 +1,13 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Fri, 31 Aug 2018 17:27:00 GMT and should not be manually modified.
+This log was last generated on Fri, 31 Aug 2018 20:48:42 GMT and should not be manually modified.
+
+## 0.17.6
+Fri, 31 Aug 2018 20:48:42 GMT
+
+### Patches
+
+- Removed hover effect from dashboard card title when dragging is disabled
 
 ## 0.17.5
 Fri, 31 Aug 2018 17:27:00 GMT
