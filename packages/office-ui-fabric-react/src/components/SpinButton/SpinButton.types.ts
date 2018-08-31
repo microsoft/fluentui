@@ -203,6 +203,19 @@ export interface ISpinButtonProps {
   ariaSetSize?: number;
 
   /**
+   * Sets the aria-valuenow of the spin button. The component must be
+   * controlled by the creator who controls the value externally.
+   * ariaValueNow would be the numeric form of value.
+   */
+  ariaValueNow?: number;
+
+  /*
+   * Sets the aria-valuetext of the spin button. The component must be
+   * controlled by the creator who controls the values externally.
+   */
+  ariaValueText?: string;
+
+  /**
    * Optional keytip for this spin button
    */
   keytipProps?: IKeytipProps;

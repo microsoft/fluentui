@@ -214,20 +214,22 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     }
   }
 
-  public dismiss = (): void => {
+  public dismiss = (ev?: React.KeyboardEvent<HTMLElement>): void => {
     if (this.state.isOpen) {
-      this.setState(
-        {
-          isOpen: false,
-          isAnimating: true
-        },
-        () => {
-          this._async.setTimeout(this._onTransitionComplete, 200);
-        }
-      );
-
       if (this.props.onDismiss) {
-        this.props.onDismiss();
+        this.props.onDismiss(ev);
+      }
+
+      if (!ev || (ev && !ev.defaultPrevented)) {
+        this.setState(
+          {
+            isOpen: false,
+            isAnimating: true
+          },
+          () => {
+            this._async.setTimeout(this._onTransitionComplete, 200);
+          }
+        );
       }
     }
   };

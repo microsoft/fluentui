@@ -3,12 +3,8 @@ import * as React from 'react';
 import { ComponentPage, ExampleCard, IComponentDemoPageProps, PropertiesTableSet } from '@uifabric/example-app-base';
 
 import { HorizontalBarChartBasicExample } from './examples/HorizontalBarChart.Basic.Example';
-import { HorizontalBarChartStyledExample } from './examples/HorizontalBarChart.Styled.Example';
-import { HorizontalBarChartDynamicExample } from './examples/HorizontalBarChart.Dynamic.Example';
 
 const HorizontalBarChartBasicExampleCode = require('!raw-loader!@uifabric/charting/src/components/HorizontalBarChart/examples/HorizontalBarChart.Basic.Example.tsx') as string;
-const HorizontalBarChartStyledExampleCode = require('!raw-loader!@uifabric/charting/src/components/HorizontalBarChart/examples/HorizontalBarChart.Styled.Example.tsx') as string;
-const HorizontalBarChartDynamicExampleCode = require('!raw-loader!@uifabric/charting/src/components/HorizontalBarChart/examples/HorizontalBarChart.Dynamic.Example.tsx') as string;
 
 export class HorizontalBarChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -20,12 +16,6 @@ export class HorizontalBarChartPage extends React.Component<IComponentDemoPagePr
           <div>
             <ExampleCard title="HorizontalBarChart basic" code={HorizontalBarChartBasicExampleCode}>
               <HorizontalBarChartBasicExample />
-            </ExampleCard>
-            <ExampleCard title="HorizontalBarChart styled" code={HorizontalBarChartStyledExampleCode}>
-              <HorizontalBarChartStyledExample />
-            </ExampleCard>
-            <ExampleCard title="HorizontalBarChart dynamic" code={HorizontalBarChartDynamicExampleCode}>
-              <HorizontalBarChartDynamicExample />
             </ExampleCard>
           </div>
         }

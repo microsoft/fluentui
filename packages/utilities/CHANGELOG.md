@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 28 Aug 2018 10:23:58 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Aug 2018 10:32:49 GMT and should not be manually modified.
+
+## 6.17.1
+Thu, 30 Aug 2018 10:32:49 GMT
+
+### Patches
+
+- Replace comment reference to old ms-Fabric is-focusVisible with ms-Fabric--isFocusVisible
 
 ## 6.17.0
 Tue, 28 Aug 2018 10:23:58 GMT

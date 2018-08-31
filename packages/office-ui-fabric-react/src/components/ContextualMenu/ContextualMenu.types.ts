@@ -210,6 +210,11 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
   onRenderSubMenu?: IRenderFunction<IContextualMenuProps>;
 
   /**
+   * Method to override the render of the list of menu items.
+   */
+  onRenderMenuList?: IRenderFunction<IContextualMenuListProps>;
+
+  /**
    * Delay (in milliseconds) to wait before expanding / dismissing a submenu on mouseEnter or mouseLeave
    */
   subMenuHoverDelay?: number;
@@ -246,6 +251,13 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
    * @default null
    */
   delayUpdateFocusOnHover?: boolean;
+}
+
+export interface IContextualMenuListProps {
+  items: IContextualMenuItem[];
+  totalItemCount: number;
+  hasCheckmarks: boolean;
+  hasIcons: boolean;
 }
 
 export interface IContextualMenuItem {

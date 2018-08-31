@@ -51,7 +51,7 @@ export interface IComboBoxState {
 
   // when taking input, this will store
   // the actual text that is being entered
-  currentPendingValue: string;
+  currentPendingValue?: string;
 }
 
 enum SearchDirection {
@@ -185,10 +185,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       isOpen: false,
       selectedIndices: initialSelectedIndices,
       focused: false,
-      suggestedDisplayValue: '',
+      suggestedDisplayValue: undefined,
       currentOptions: this.props.options,
       currentPendingValueValidIndex: -1,
-      currentPendingValue: '',
+      currentPendingValue: undefined,
       currentPendingValueValidIndexOnHover: HoverStatus.default
     };
   }
@@ -473,8 +473,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       return null;
     }
 
-    if (this._currentVisibleValue && this._currentVisibleValue !== '' && comboBox.value !== this._currentVisibleValue) {
-      return this._currentVisibleValue;
+    const visibleValue = this._normalizeToString(this._currentVisibleValue);
+    if (comboBox.value !== visibleValue) {
+      // If visibleValue is empty, make it a zero width space.
+      // If we did not do that, the empty string would not get used
+      // potentially resulting in an unexpected value being used
+      return visibleValue || '​';
     }
 
     return comboBox.value;
@@ -525,14 +529,14 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const displayValues = [];
 
     if (this.props.multiSelect) {
-      // MUlti-select
+      // Multi-select
       if (focused) {
         let index = -1;
         if (autoComplete === 'on' && currentPendingIndexValid) {
           index = currentPendingValueValidIndex;
         }
         displayValues.push(
-          currentPendingValue !== ''
+          currentPendingValue !== null && currentPendingValue !== undefined
             ? currentPendingValue
             : this._indexWithinBounds(currentOptions, index)
               ? currentOptions[index].text
@@ -542,7 +546,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         for (let idx = 0; selectedIndices && idx < selectedIndices.length; idx++) {
           const index: number = selectedIndices[idx];
           displayValues.push(
-            this._indexWithinBounds(currentOptions, index) ? currentOptions[index].text : suggestedDisplayValue
+            this._indexWithinBounds(currentOptions, index)
+              ? currentOptions[index].text
+              : this._normalizeToString(suggestedDisplayValue)
           );
         }
       }
@@ -557,10 +563,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           index = currentPendingValueValidIndex;
         }
 
-        // Since we are allowing freeform, if there is currently a nonempty pending value, use that
+        // Since we are allowing freeform, if there is currently a pending value, use that
         // otherwise use the index determined above (falling back to '' if we did not get a valid index)
         displayValues.push(
-          currentPendingValue !== ''
+          currentPendingValue !== null && currentPendingValue !== undefined
             ? currentPendingValue
             : this._indexWithinBounds(currentOptions, index)
               ? currentOptions[index].text
@@ -575,10 +581,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           // raw pending value, otherwise remember
           // the matched option's index
           index = currentPendingValueValidIndex;
-          displayValues.push(currentPendingValue);
+          displayValues.push(this._normalizeToString(currentPendingValue));
         } else {
           displayValues.push(
-            this._indexWithinBounds(currentOptions, index) ? currentOptions[index].text : suggestedDisplayValue
+            this._indexWithinBounds(currentOptions, index)
+              ? currentOptions[index].text
+              : this._normalizeToString(suggestedDisplayValue)
           );
         }
       }
@@ -631,9 +639,29 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    */
   private _processInputChangeWithFreeform(updatedValue: string): void {
     const { currentOptions } = this.state;
+    updatedValue = this._removeZeroWidthSpaces(updatedValue);
+    let newCurrentPendingValueValidIndex = -1;
 
-    // if the new value is empty, nothing needs to be done
+    // if the new value is empty, see if we have an exact match
+    // and then set the pending info
     if (updatedValue === '') {
+      const items = currentOptions
+        .map((item, index) => {
+          return { ...item, index };
+        })
+        .filter(
+          option =>
+            option.itemType !== SelectableOptionMenuItemType.Header &&
+            option.itemType !== SelectableOptionMenuItemType.Divider
+        )
+        .filter(option => this._getPreviewText(option) === updatedValue);
+
+      // if we found a match remember the index
+      if (items.length === 1) {
+        newCurrentPendingValueValidIndex = items[0].index;
+      }
+
+      this._setPendingInfo(updatedValue, newCurrentPendingValueValidIndex, updatedValue);
       return;
     }
 
@@ -643,7 +671,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     updatedValue = updatedValue.toLocaleLowerCase();
 
     let newSuggestedDisplayValue = '';
-    let newCurrentPendingValueValidIndex = -1;
 
     // If autoComplete is on, attempt to find a match from the available options
     if (this.props.autoComplete === 'on') {
@@ -686,7 +713,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         )
         .filter(option => this._getPreviewText(option).toLocaleLowerCase() === updatedValue);
 
-      // if we fould a match remember the index
+      // if we found a match remember the index
       if (items.length === 1) {
         newCurrentPendingValueValidIndex = items[0].index;
       }
@@ -704,6 +731,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   private _processInputChangeWithoutFreeform(updatedValue: string): void {
     const { currentPendingValue, currentPendingValueValidIndex, currentOptions } = this.state;
 
+    updatedValue = this._removeZeroWidthSpaces(updatedValue);
     if (this.props.autoComplete === 'on') {
       // If autoComplete is on while allow freeform is off,
       // we will remember the keypresses and build up a string to attempt to match
@@ -718,7 +746,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         if (this._lastReadOnlyAutoCompleteChangeTimeoutId !== undefined) {
           this._async.clearTimeout(this._lastReadOnlyAutoCompleteChangeTimeoutId);
           this._lastReadOnlyAutoCompleteChangeTimeoutId = undefined;
-          updatedValue = currentPendingValue + updatedValue;
+          updatedValue = this._normalizeToString(currentPendingValue) + updatedValue;
         }
 
         const originalUpdatedValue: string = updatedValue;
@@ -976,9 +1004,14 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     } = this.state;
     let { selectedIndices } = this.state;
 
-    // If we allow freeform and we have a pending value, we
-    // need to handle that
-    if (allowFreeform && currentPendingValue !== '') {
+    // If we allow freeform we need to handle that
+    if (allowFreeform) {
+      // if currentPendingValue is null or undefined the user did not submit anything
+      // (not even empty because we would have stored that as the pending value)
+      if (currentPendingValue === null || currentPendingValue === undefined) {
+        return;
+      }
+
       // Check to see if the user typed an exact match
       if (this._indexWithinBounds(currentOptions, currentPendingValueValidIndex)) {
         const pendingOptionText: string = this._getPreviewText(
@@ -1019,7 +1052,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         }
       } else {
         // If we are not controlled, create a new option
-        const newOption: IComboBoxOption = { key: currentPendingValue, text: currentPendingValue };
+        const newOption: IComboBoxOption = {
+          key: currentPendingValue || getId(),
+          text: this._normalizeToString(currentPendingValue)
+        };
         const newOptions: IComboBoxOption[] = [...currentOptions, newOption];
         if (selectedIndices) {
           if (!this.props.multiSelect) {
@@ -1031,15 +1067,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           currentOptions: newOptions,
           selectedIndices: selectedIndices
         });
-      }
-    } else if (allowFreeform && currentPendingValue === '' && (onChange || onChanged)) {
-      if (onChange) {
-        // trigger onChange to clear value
-        onChange(submitPendingValueEvent, undefined, undefined, currentPendingValue);
-      }
-      if (onChanged) {
-        // trigger onChanged to clear value
-        onChanged(undefined, undefined, currentPendingValue, submitPendingValueEvent);
       }
     } else if (currentPendingValueValidIndex >= 0) {
       // Since we are not allowing freeform, we must have a matching
@@ -1273,7 +1300,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     return currentPendingValueValidIndexOnHover >= 0
       ? currentPendingValueValidIndexOnHover
-      : currentPendingValueValidIndex >= 0 || (includeCurrentPendingValue && currentPendingValue !== '')
+      : currentPendingValueValidIndex >= 0 ||
+        (includeCurrentPendingValue && (currentPendingValue !== null && currentPendingValue !== undefined))
         ? currentPendingValueValidIndex
         : this.props.multiSelect
           ? 0
@@ -1412,9 +1440,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    */
   private _resetSelectedIndex(): void {
     const { currentOptions } = this.state;
-    if (this._autofill.current) {
-      this._autofill.current.clear();
-    }
+
     this._clearPendingInfo();
 
     const selectedIndex: number = this._getFirstSelectedIndex();
@@ -1434,11 +1460,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * Clears the pending info state
    */
   private _clearPendingInfo(): void {
-    this._setPendingInfo(
-      '' /* suggestedDisplayValue */,
-      -1 /* currentPendingValueValidIndex */,
-      '' /* currentPendingValue */
-    );
+    this._setPendingInfo();
   }
 
   /**
@@ -1448,12 +1470,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @param suggestedDisplayValue - new suggest display value to set
    */
   private _setPendingInfo(
-    currentPendingValue: string,
-    currentPendingValueValidIndex: number,
-    suggestedDisplayValue: string
+    currentPendingValue?: string,
+    currentPendingValueValidIndex: number = -1,
+    suggestedDisplayValue?: string
   ): void {
     this.setState({
-      currentPendingValue: currentPendingValue,
+      currentPendingValue: currentPendingValue && this._removeZeroWidthSpaces(currentPendingValue),
       currentPendingValueValidIndex: currentPendingValueValidIndex,
       suggestedDisplayValue: suggestedDisplayValue,
       currentPendingValueValidIndexOnHover: HoverStatus.default
@@ -1588,6 +1610,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     switch (ev.which) {
       case KeyCodes.enter:
+        if (this._autofill.current && this._autofill.current.inputElement) {
+          this._autofill.current.inputElement.select();
+        }
+
         this._submitPendingValue(ev);
         if (this.props.multiSelect && isOpen) {
           this.setState({
@@ -1995,5 +2021,14 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   // when the useAriaLabelAsText prop is set to true
   private _getPreviewText(item: IComboBoxOption): string {
     return item.useAriaLabelAsText && item.ariaLabel ? item.ariaLabel : item.text;
+  }
+
+  private _normalizeToString(value?: string): string {
+    return value || '';
+  }
+
+  private _removeZeroWidthSpaces(value: string): string {
+    // remove any zero width space characters
+    return value.replace(RegExp('​', 'g'), '');
   }
 }

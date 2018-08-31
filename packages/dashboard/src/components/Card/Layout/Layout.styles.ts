@@ -25,7 +25,7 @@ export const getStyles = (props: ILayoutProps): ILayoutStyles => {
       flex: 1
     },
     contentArea1: {
-      margin: isMediumTall ? '0 16px 12px 0' : '0 12px 16px 0',
+      margin: isMediumTall ? '0 0px 13px 0' : '0 12px 16px 0',
       flex: isMediumTall ? '0 1 auto' : 1,
       flexDirection: 'column',
       overflow: 'hidden'
@@ -37,7 +37,7 @@ export const getStyles = (props: ILayoutProps): ILayoutStyles => {
       fontWeight: 600
     },
     contentArea2: {
-      margin: isMediumTall ? '0px 16px 16px 0' : '0 0 16px 12px',
+      margin: isMediumTall ? '13px 0px 16px 0' : '0px 0px 16px 12px',
       flex: isMediumTall ? '0 1 auto' : 1,
       overflow: 'hidden'
     },

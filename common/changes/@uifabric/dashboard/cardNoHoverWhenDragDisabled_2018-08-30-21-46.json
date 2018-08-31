@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/dashboard",
-      "comment": "Add Donut chart with legends",
+      "comment": "Removed hover effect from dashboard card title when dragging is disabled",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/dashboard",
-  "email": "gorigarajesh@gmail.com"
+  "email": "kevcha@microsoft.com"
 }

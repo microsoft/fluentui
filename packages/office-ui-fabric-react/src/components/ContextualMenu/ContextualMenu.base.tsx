@@ -3,6 +3,7 @@ import {
   IContextualMenuProps,
   IContextualMenuItem,
   ContextualMenuItemType,
+  IContextualMenuListProps,
   IContextualMenuStyleProps,
   IContextualMenuStyles
 } from './ContextualMenu.types';
@@ -21,6 +22,7 @@ import {
   getRTL,
   getWindow,
   IClassNames,
+  IRenderFunction,
   IPoint,
   KeyCodes,
   shouldWrapFocus
@@ -214,6 +216,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
       theme,
       calloutProps,
       onRenderSubMenu = this._onRenderSubMenu,
+      onRenderMenuList = this._onRenderMenuList,
       focusZoneProps,
       getMenuClassNames
     } = this.props;
@@ -273,7 +276,6 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
     // The menu should only return if items were provided, if no items were provided then it should not appear.
     if (items && items.length > 0) {
-      let indexCorrection = 0;
       let totalItemCount = 0;
       for (const item of items) {
         if (item.itemType !== ContextualMenuItemType.Divider && item.itemType !== ContextualMenuItemType.Header) {
@@ -322,26 +324,15 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
                 isCircularNavigation={true}
                 handleTabKey={FocusZoneTabbableElements.all}
               >
-                <ul className={this._classNames.list} onKeyDown={this._onKeyDown} onKeyUp={this._onKeyUp}>
-                  {items.map((item, index) => {
-                    const menuItem = this._renderMenuItem(
-                      item,
-                      index,
-                      indexCorrection,
-                      totalItemCount,
-                      hasCheckmarks,
-                      hasIcons
-                    );
-                    if (
-                      item.itemType !== ContextualMenuItemType.Divider &&
-                      item.itemType !== ContextualMenuItemType.Header
-                    ) {
-                      const indexIncrease = item.customOnRenderListLength ? item.customOnRenderListLength : 1;
-                      indexCorrection += indexIncrease;
-                    }
-                    return menuItem;
-                  })}
-                </ul>
+                {onRenderMenuList(
+                  {
+                    items,
+                    totalItemCount,
+                    hasCheckmarks,
+                    hasIcons
+                  },
+                  this._onRenderMenuList
+                )}
               </FocusZone>
             ) : null}
             {submenuProps && onRenderSubMenu(submenuProps, this._onRenderSubMenu)}
@@ -383,6 +374,32 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   private _onRenderSubMenu(subMenuProps: IContextualMenuProps) {
     return <ContextualMenu {...subMenuProps} />;
   }
+
+  private _onRenderMenuList = (
+    menuListProps: IContextualMenuListProps,
+    defaultRender?: IRenderFunction<IContextualMenuListProps>
+  ): JSX.Element => {
+    let indexCorrection = 0;
+    return (
+      <ul className={this._classNames.list} onKeyDown={this._onKeyDown} onKeyUp={this._onKeyUp}>
+        {menuListProps.items.map((item, index) => {
+          const menuItem = this._renderMenuItem(
+            item,
+            index,
+            indexCorrection,
+            menuListProps.totalItemCount,
+            menuListProps.hasCheckmarks,
+            menuListProps.hasIcons
+          );
+          if (item.itemType !== ContextualMenuItemType.Divider && item.itemType !== ContextualMenuItemType.Header) {
+            const indexIncrease = item.customOnRenderListLength ? item.customOnRenderListLength : 1;
+            indexCorrection += indexIncrease;
+          }
+          return menuItem;
+        })}
+      </ul>
+    );
+  };
 
   private _renderMenuItem(
     item: IContextualMenuItem,
