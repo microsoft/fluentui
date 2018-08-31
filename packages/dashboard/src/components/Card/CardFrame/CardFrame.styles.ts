@@ -37,6 +37,7 @@ export const getStyles = (props: ICardFrameProps): ICardFrameStyles => {
     cardTitle: {
       overflow: 'hidden',
       flex: 1,
+      lineHeight: '18px',
       paddingLeft: '16px',
       fontSize: fontSize ? fontSize : '14px',
       fontFamily: fontFamily ? fontFamily : 'Segoe UI',
