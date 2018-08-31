@@ -420,7 +420,9 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   ): React.ReactNode {
     const renderedItems: React.ReactNode[] = [];
     const iconProps = item.iconProps || { iconName: 'None' };
-    const { getItemClassNames, styles } = item;
+    const { getItemClassNames, itemProps } = item;
+    const styles = itemProps ? itemProps.styles : undefined;
+
     // We only send a dividerClassName when the item to be rendered is a divider. For all other cases, the default divider style is used.
     const dividerClassName = item.itemType === ContextualMenuItemType.Divider ? item.className : undefined;
     const subMenuIconClassName = item.submenuIconProps ? item.submenuIconProps.className : '';
@@ -636,6 +638,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     hasIcons: boolean
   ): React.ReactNode {
     const { contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem } = this.props;
+    const { itemProps } = item;
 
     return (
       <div className={this._classNames.header} style={item.style}>
@@ -645,6 +648,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
           index={index}
           onCheckmarkClick={hasCheckmarks ? this._onItemClick : undefined}
           hasIcons={hasIcons}
+          {...itemProps}
         />
       </div>
     );
