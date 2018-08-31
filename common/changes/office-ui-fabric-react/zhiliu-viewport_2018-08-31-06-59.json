@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "onRenderCoin to be called irrespective of imageUrl being present or not",
+      "comment": "fix re-render caused by view port resize observer",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "svaibhav@microsoft.com"
+  "email": "zhiliu@microsoft.com"
 }

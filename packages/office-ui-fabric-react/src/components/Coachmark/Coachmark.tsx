@@ -239,16 +239,17 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> i
           <div className={classNames.translateAnimationContainer} ref={this._translateAnimationContainer}>
             <div className={classNames.scaleAnimationLayer}>
               <div className={classNames.rotateAnimationLayer}>
-                {this._positioningContainer.current && (
-                  <Beak
-                    left={beakLeft}
-                    top={beakTop}
-                    right={beakRight}
-                    bottom={beakBottom}
-                    direction={this._beakDirection}
-                    color={color}
-                  />
-                )}
+                {this._positioningContainer.current &&
+                  isCollapsed && (
+                    <Beak
+                      left={beakLeft}
+                      top={beakTop}
+                      right={beakRight}
+                      bottom={beakBottom}
+                      direction={this._beakDirection}
+                      color={color}
+                    />
+                  )}
                 <FocusTrapZone
                   componentRef={this._focusTrapZone}
                   isClickableOutsideFocusTrap={true}

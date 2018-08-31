@@ -1,6 +1,39 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 30 Aug 2018 10:32:49 GMT and should not be manually modified.
+This log was last generated on Fri, 31 Aug 2018 17:27:00 GMT and should not be manually modified.
+
+## 6.61.1
+Fri, 31 Aug 2018 17:27:00 GMT
+
+### Patches
+
+- ComboBox: Fix clearing the comboBox on escape
+
+## 6.61.0
+Fri, 31 Aug 2018 10:27:35 GMT
+
+### Minor changes
+
+- SpinButton: Add aria-valuenow and aria-valuetext for controller spin buttons
+- DatePicker: add optional underlined prop for TextField
+
+### Patches
+
+- ComboBox: update isOptionSelected logic to take into acount updated values for currentPendingValue
+- added ability for personacoin to be arbitrarily sized for initials
+
+## 6.60.0
+Thu, 30 Aug 2018 19:26:04 GMT
+
+### Minor changes
+
+- Addresses #6041. Added onRenderMenuList to ContextualMenu. Added default _onRenderMenuList with IContextualMenuProps. Updated docs with an example of a ContextualMenu with custom MenuList with searchbox.
+
+### Patches
+
+- add overflow hidden to hide scroll from calendar holder
+- ComboBox: Update ComboBox to allow for empty string to be submitted
+- onRenderCoin to be called irrespective of imageUrl being present or not
 
 ## 6.59.0
 Thu, 30 Aug 2018 10:32:49 GMT

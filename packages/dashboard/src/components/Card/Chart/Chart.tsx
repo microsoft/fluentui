@@ -11,6 +11,7 @@ import {
   StackedBarChart,
   VerticalBarChart
 } from '@uifabric/charting';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 export class Chart extends React.Component<IChartInternalProps, {}> {
   public static defaultProps = {
@@ -63,27 +64,11 @@ export class Chart extends React.Component<IChartInternalProps, {}> {
         );
       }
       case ChartType.LineChart: {
-        return (
-          <LineChart
-            data={this.props.data}
-            width={this._getWidth()}
-            height={this._getHeight()}
-            strokeWidth={this.props.strokeWidth}
-            chartLabel={this._chartLabel}
-            colors={this._colors}
-          />
-        );
+        return this._getLineChart();
       }
       case ChartType.HorizontalBarChart: {
         return (
-          <HorizontalBarChart
-            data={this._singleChartDataPoints}
-            width={this._getWidth()}
-            height={this._getHeight()}
-            barHeight={this.props.barHeight}
-            chartLabel={this._chartLabel}
-            colors={this._colors}
-          />
+          <HorizontalBarChart data={this.props.chartData!} width={this._getWidth()} barHeight={this.props.barHeight} />
         );
       }
       case ChartType.DonutChart: {
@@ -140,5 +125,18 @@ export class Chart extends React.Component<IChartInternalProps, {}> {
     }
 
     return <StackedBarChart data={this.props.chartData![0]} barHeight={this.props.barHeight} />;
+  };
+
+  private _getLineChart = (): JSX.Element => {
+    return (
+      <div className={mergeStyles({ width: this._getWidth(), height: this._getHeight() })}>
+        <LineChart
+          data={this.props.chartData![0]}
+          strokeWidth={this.props.strokeWidth}
+          width={this._getWidth()}
+          height={this._getHeight()}
+        />
+      </div>
+    );
   };
 }

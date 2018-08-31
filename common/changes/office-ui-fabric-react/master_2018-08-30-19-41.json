@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ComboBox: Update ComboBox to allow for empty string to be submitted",
+      "comment": "Coachmark - only show beak if it is collapsed",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "jspurlin@microsoft.com"
+  "email": "kchau@microsoft.com"
 }
