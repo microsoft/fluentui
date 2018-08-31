@@ -1,8 +1,14 @@
 import * as React from 'react';
 import { LineChart, ILineChartProps } from '@uifabric/charting/lib/LineChart';
 import { customizable } from 'office-ui-fabric-react/lib/Utilities';
-import { IDataPoint } from '@uifabric/charting/lib/types/IDataPoint';
+import { IChartProps, ILineChartPoints } from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+
+interface IRootStyles {
+  height: string;
+  width: string;
+}
 
 @customizable('HorizontalBarChartBasicExample', ['theme', 'styles'])
 export class LineChartStyledExample extends React.Component<ILineChartProps, {}> {
@@ -18,20 +24,29 @@ export class LineChartStyledExample extends React.Component<ILineChartProps, {}>
     const { theme } = this.props;
     const { palette, fonts } = theme!;
 
-    const points: IDataPoint[][] = [
-      [
-        { x: 'One', y: 5 },
-        { x: 'Two', y: 10 },
-        { x: 'Three', y: 5 },
-        { x: 'Four', y: 20 },
-        { x: 'Five', y: 18 },
-        { x: 'Six', y: 5 },
-        { x: 'Seven', y: 10 },
-        { x: 'Eight', y: 5 },
-        { x: 'Nine', y: 20 },
-        { x: 'Ten', y: 18 }
-      ]
+    const points: ILineChartPoints[] = [
+      {
+        data: [
+          { x: 'One', y: 5 },
+          { x: 'Two', y: 10 },
+          { x: 'Three', y: 5 },
+          { x: 'Four', y: 20 },
+          { x: 'Five', y: 18 },
+          { x: 'Six', y: 5 },
+          { x: 'Seven', y: 10 },
+          { x: 'Eight', y: 5 },
+          { x: 'Nine', y: 20 },
+          { x: 'Ten', y: 18 }
+        ],
+        legend: 'Week',
+        color: DefaultPalette.blue
+      }
     ];
+
+    const data: IChartProps = {
+      chartTitle: 'Line Chart',
+      lineChartData: points
+    };
 
     const axisStyle = {
       stroke: palette.purpleDark
@@ -43,9 +58,6 @@ export class LineChartStyledExample extends React.Component<ILineChartProps, {}>
 
     const customStyles = () => {
       return {
-        chart: {
-          paddingBottom: '45px'
-        },
         chartLabel: {
           color: palette.orange,
           ...fonts.large
@@ -65,17 +77,19 @@ export class LineChartStyledExample extends React.Component<ILineChartProps, {}>
 
     const colors = [DefaultPalette.blue];
 
+    const rootStyle: IRootStyles = { width: '700px', height: '300px' };
+
     return (
-      <LineChart
-        data={points}
-        width={900}
-        height={500}
-        yAxisTickCount={6}
-        styles={customStyles}
-        colors={colors}
-        chartLabel={'Chart with Axis Labels and Custom Styles'}
-        strokeWidth={4}
-      />
+      <div className={mergeStyles(rootStyle)}>
+        <LineChart
+          data={data}
+          yAxisTickCount={6}
+          styles={customStyles}
+          colors={colors}
+          chartLabel={'Chart with Axis Labels and Custom Styles'}
+          strokeWidth={4}
+        />
+      </div>
     );
   }
 }

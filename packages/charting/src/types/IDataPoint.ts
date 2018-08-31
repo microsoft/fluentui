@@ -53,6 +53,21 @@ export interface IChartDataPoint {
   color?: string;
 }
 
+export interface ILineChartPoints {
+  /**
+   * Legend text for the datapoint in the chart
+   */
+  legend: string;
+  /**
+   * data the datapoint in the chart
+   */
+  data: IDataPoint[];
+  /**
+   * color for the legend in the chart
+   */
+  color: string;
+}
+
 export interface IChartProps {
   /**
    * chart title for the chart
@@ -63,4 +78,9 @@ export interface IChartProps {
    * data for the points in the chart
    */
   chartData?: IChartDataPoint[];
+
+  /**
+   * data for the points in the line chart
+   */
+  lineChartData?: ILineChartPoints[];
 }
