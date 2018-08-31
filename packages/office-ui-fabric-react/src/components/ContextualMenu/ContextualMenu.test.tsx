@@ -1216,7 +1216,13 @@ describe('ContextualMenu', () => {
     };
 
     const items: IContextualMenuItem[] = [
-      { text: 'TestText 1', key: 'TestKey1', canCheck: true, isChecked: true, styles: getCustomItemStyles },
+      {
+        text: 'TestText 1',
+        key: 'TestKey1',
+        canCheck: true,
+        isChecked: true,
+        itemProps: { styles: getCustomItemStyles }
+      },
       { text: 'TestText 2', key: 'TestKey2', canCheck: true, isChecked: true },
       { text: 'TestText 3', key: 'TestKey3', canCheck: true, isChecked: true },
       { text: 'TestText 4', key: 'TestKey4', canCheck: true, isChecked: true }
