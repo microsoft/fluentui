@@ -68,7 +68,14 @@ exports[`Modal renders Modal correctly 1`] = `
       onFocusCapture={[Function]}
       onKeyDown={[Function]}
     >
-      <div>
+      <div
+        className=
+            ms-Modal-scrollableContent
+            {
+              flex-grow: 1;
+              overflow-y: auto;
+            }
+      >
         Test Content
       </div>
     </div>
