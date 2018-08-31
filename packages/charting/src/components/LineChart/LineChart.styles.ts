@@ -2,7 +2,8 @@ import { ILineChartStyleProps, ILineChartStyles } from './LineChart.types';
 
 export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
   const { className, theme, width, height, color } = props;
-  const { palette } = theme!;
+  const { palette, fonts } = theme!;
+  console.log('fonts', fonts);
 
   const chartPadding = 30;
   const scalingVal = 0.3;
@@ -11,13 +12,13 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
   return {
     root: [
       'ms-LineChart',
-      className,
       {
         display: 'flex',
         width: '100%',
         height: '100%',
         flexDirection: 'column'
-      }
+      },
+      className
     ],
     chart: [
       {
@@ -65,7 +66,7 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
     ],
     lines: [
       {
-        transform: `translate(-${width * 0.3}px, 0px) scaleX(1.5)`
+        transform: `translate(-${width * scalingVal}px, 0px) scaleX(1.5)`
       }
     ],
     legendContainer: [
@@ -78,9 +79,9 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
       {
         padding: '10px 16px 10px 16px',
         backgroundColor: palette.white,
-        fontSize: '28px',
+        fontSize: fonts.xxLarge.fontSize,
         color: color !== '' ? `${color}` : palette.black,
-        fontFamily: 'Segoe UI',
+        fontFamily: fonts.xxLarge.fontFamily,
         fontWeight: 'bold',
         border: color !== '' ? `1px solid ${color}` : `unset`
       }
