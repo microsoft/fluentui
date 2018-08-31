@@ -2,6 +2,25 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.17.6",
+      "tag": "@uifabric/dashboard_v0.17.6",
+      "date": "Fri, 31 Aug 2018 20:48:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Kevin Chan <2591766+chankev@users.noreply.github.com>",
+            "commit": "0acba8d5369c2ea420eba6995d0676069d885a3f",
+            "comment": "Removed hover effect from dashboard card title when dragging is disabled"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.61.1 <7.0.0` to `>=6.61.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.17.5",
       "tag": "@uifabric/dashboard_v0.17.5",
       "date": "Fri, 31 Aug 2018 17:27:00 GMT",
