@@ -1,6 +1,14 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Fri, 31 Aug 2018 10:27:35 GMT and should not be manually modified.
+This log was last generated on Fri, 31 Aug 2018 17:27:00 GMT and should not be manually modified.
+
+## 0.17.5
+Fri, 31 Aug 2018 17:27:00 GMT
+
+### Patches
+
+- css issues for card
+- change datapoints for line chart
 
 ## 0.17.4
 Fri, 31 Aug 2018 10:27:35 GMT

@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 31 Aug 2018 10:27:35 GMT and should not be manually modified.
+This log was last generated on Fri, 31 Aug 2018 17:27:00 GMT and should not be manually modified.
+
+## 6.61.1
+Fri, 31 Aug 2018 17:27:00 GMT
+
+### Patches
+
+- ComboBox: Fix clearing the comboBox on escape
 
 ## 6.61.0
 Fri, 31 Aug 2018 10:27:35 GMT

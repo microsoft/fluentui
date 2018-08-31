@@ -2,6 +2,25 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.17.2",
+      "tag": "@uifabric/charting_v0.17.2",
+      "date": "Fri, 31 Aug 2018 17:27:00 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "BalakrishnaReddyPolu <polu.balakrishna96@gmail.com>",
+            "commit": "1c84d1b2c747517daa845d5ca768be847e058e7b",
+            "comment": "add legends and hover behaviour for line chart"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.61.0 <7.0.0` to `>=6.61.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.17.1",
       "tag": "@uifabric/charting_v0.17.1",
       "date": "Fri, 31 Aug 2018 10:27:35 GMT",
