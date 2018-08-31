@@ -31,7 +31,7 @@ function mockData(count: number, isColumn: boolean = false, customDivider: boole
   return data;
 }
 
-// Wrapper function which simple calls the defaultRenderer with the correesponding params
+// Wrapper function which calls the defaultRenderer with the corresponding params
 function columnDividerWrapper(columnIndex: number, defaultRenderer: Function): any {
   return defaultRenderer(columnIndex);
 }
