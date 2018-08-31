@@ -5,6 +5,7 @@ import { mount } from 'enzyme';
 import { DetailsList } from './DetailsList';
 
 import { IDetailsList, IColumn, DetailsListLayoutMode, CheckboxVisibility } from './DetailsList.types';
+import { IDetailsColumnProps } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsColumn';
 
 // Populate mock data for testing
 function mockData(count: number, isColumn: boolean = false, customDivider: boolean = false): any {
@@ -32,16 +33,22 @@ function mockData(count: number, isColumn: boolean = false, customDivider: boole
 }
 
 // Wrapper function which calls the defaultRenderer with the corresponding params
-function columnDividerWrapper(columnIndex: number, defaultRenderer: Function): any {
-  return defaultRenderer(columnIndex);
+function columnDividerWrapper(
+  iDetailsColumnProps: IDetailsColumnProps,
+  defaultRenderer: (props?: IDetailsColumnProps) => JSX.Element | null
+): any {
+  return defaultRenderer(iDetailsColumnProps);
 }
 
 // Using a bar sign as a custom divider along with the default divider
-function customColumnDivider(columnIndex: number, defaultRenderer: Function): any {
+function customColumnDivider(
+  iDetailsColumnProps: IDetailsColumnProps,
+  defaultRenderer: (props?: IDetailsColumnProps) => JSX.Element | null
+): any {
   return (
-    <React.Fragment key={`divider_${columnIndex}`}>
+    <React.Fragment key={`divider_${iDetailsColumnProps.columnIndex}`}>
       <span>|</span>
-      {defaultRenderer(columnIndex)}
+      {defaultRenderer(iDetailsColumnProps)}
     </React.Fragment>
   );
 }
