@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/dashboard",
+      "comment": "Expose React Grid Layout Drag APIs in Dashboard Grid Layout",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/dashboard",
+  "email": "raghurk@microsoft.com"
+}
