@@ -49,4 +49,23 @@ describe('SearchBox', () => {
     component.find('input').simulate('keydown', { which: KeyCodes.enter });
     expect(searchExecuted).toEqual(true);
   });
+
+  it('has a default icon with empty iconProps', () => {
+    const component = mount(<SearchBox iconProps={{}} />);
+    const searchIcon = '';
+    expect(component.find('i').text()).toEqual(searchIcon);
+  });
+
+  it('supports overriding the icon iconName', () => {
+    const component = mount(
+      <SearchBox
+        iconProps={{
+          iconName: 'Filter'
+        }}
+      />
+    );
+
+    const filterIcon = '';
+    expect(component.find('i').text()).toEqual(filterIcon);
+  });
 });
