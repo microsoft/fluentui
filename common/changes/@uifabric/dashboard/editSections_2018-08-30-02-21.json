@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/dashboard",
+      "comment": "Add edit section common control and examples",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/dashboard",
+  "email": "yudon@microsoft.com"
+}
