@@ -5,16 +5,15 @@ import {
   IDashboardGridLayoutStyles,
   IDashboardCardLayout
 } from './DashboardGridLayout.types';
-import { CardSize } from '../Card/Card.types';
 import { getStyles } from './DashboardGridLayout.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { CardSizeToWidthHeight } from '../../utilities/DashboardGridLayoutUtils';
 
 require('style-loader!css-loader!react-grid-layout/css/styles.css');
 require('style-loader!css-loader!react-resizable/css/styles.css');
 require('style-loader!css-loader!./DashboardGridLayout.css');
 
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
-const rowHeight = 56;
 const breakpoints = {
   lg: 1920,
   md: 1366,
@@ -33,15 +32,16 @@ const cols = {
   xxxs: 1
 };
 
-const sizes: { [P in CardSize]: { w: number; h: number } } = {
-  small: { w: 1, h: 4 },
-  mediumTall: { w: 1, h: 8 },
-  mediumWide: { w: 2, h: 4 },
-  large: { w: 2, h: 8 },
-  section: { w: 4, h: 1 }
-};
-
 export class DashboardGridLayout extends React.Component<IDashboardGridLayoutProps, {}> {
+  /** The default row height used for React-Grid-Layout */
+  public static defaultProps: Partial<IDashboardGridLayoutProps> = {
+    rowHeight: 50
+  };
+
+  constructor(props: IDashboardGridLayoutProps) {
+    super(props);
+  }
+
   public render(): JSX.Element {
     const getClassNames = classNamesFunction<IDashboardGridLayoutProps, IDashboardGridLayoutStyles>();
     const classNames = getClassNames(getStyles!, {});
@@ -55,7 +55,7 @@ export class DashboardGridLayout extends React.Component<IDashboardGridLayoutPro
         margin={[24, 24]}
         containerPadding={[0, 0]}
         isResizable={this.props.isResizable || false}
-        rowHeight={rowHeight}
+        rowHeight={this.props.rowHeight}
         layouts={this._createLayout()}
         verticalCompact={true}
         onLayoutChange={this._onLayoutChanged}
@@ -99,8 +99,8 @@ export class DashboardGridLayout extends React.Component<IDashboardGridLayoutPro
       i: layoutProp.i,
       x: layoutProp.x,
       y: layoutProp.y,
-      w: sizes[layoutProp.size].w,
-      h: sizes[layoutProp.size].h,
+      w: CardSizeToWidthHeight[layoutProp.size].w,
+      h: CardSizeToWidthHeight[layoutProp.size].h,
       static: layoutProp.static === undefined ? false : layoutProp.static,
       isDraggable: layoutProp.disableDrag === undefined ? true : !layoutProp.disableDrag,
       isResizable: layoutProp.isResizable === undefined ? true : layoutProp.isResizable
