@@ -55,7 +55,11 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
         formattedData = Math.floor(data);
       }
       const changeIconIndicator =
-        AnnotationType[row.type] === 'neutral' ? '' : AnnotationType[row.type] === 'positive' ? 'FlickDown' : 'FlickUp';
+        AnnotationType[row.type] === AnnotationType.neutral
+          ? ''
+          : AnnotationType[row.type] === AnnotationType.positive
+            ? 'FlickDown'
+            : 'FlickUp';
       const getClassNames = classNamesFunction<IMultiCountProps, IMultiCountStyles>();
       const classNames = getClassNames(
         getStyles({
@@ -126,7 +130,11 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
 
   private _onRenderCompactCard = (data: IMultiCountRow): JSX.Element => {
     const changeIconIndicator =
-      AnnotationType[data.type] === 'neutral' ? '' : AnnotationType[data.type] === 'positive' ? 'FlickDown' : 'FlickUp';
+      AnnotationType[data.type] === AnnotationType.neutral
+        ? ''
+        : AnnotationType[data.type] === AnnotationType.positive
+          ? 'FlickDown'
+          : 'FlickUp';
     const getClassNames = classNamesFunction<IMultiCountProps, IMultiCountStyles>();
     const classNames = getClassNames(
       getStyles({

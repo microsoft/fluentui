@@ -31,17 +31,17 @@ export enum AnnotationType {
   /**
    * Indicates a positive change, displays a up arrow
    */
-  positive,
+  positive = 'positive',
 
   /**
    * Indicates no change, no icon is displayed
    */
-  neutral,
+  neutral = 'neutral',
 
   /**
    * Indicates a negative change, displays a down arrow
    */
-  negative
+  negative = 'negative'
 }
 
 export interface IMultiCountStyleProps {
