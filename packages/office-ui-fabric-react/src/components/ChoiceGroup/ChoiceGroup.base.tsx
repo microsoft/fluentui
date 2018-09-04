@@ -113,17 +113,16 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
     const { options } = this.props;
     if (options) {
       for (const option of options) {
-        const myElement = document.getElementById(`${this._id}-${option.key}`);
-        if (myElement && myElement.getAttribute('data-is-focusable') === 'true') {
-          myElement.focus(); // focus on checked or default focusable key
+        const elementToFocus = document.getElementById(`${this._id}-${option.key}`);
+        if (elementToFocus && elementToFocus.getAttribute('data-is-focusable') === 'true') {
+          elementToFocus.focus(); // focus on checked or default focusable key
           return;
         }
       }
       const firstOption = options[0];
       const firstElement = document.getElementById(`${this._id}-${firstOption.key}`);
       if (firstElement) {
-        // focus on first option if there is no checked key
-        firstElement.focus();
+        firstElement.focus(); // focus on first option if there is no checked key
         return;
       }
     }
