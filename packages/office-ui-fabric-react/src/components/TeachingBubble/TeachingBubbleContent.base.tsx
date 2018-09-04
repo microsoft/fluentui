@@ -89,9 +89,15 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
     if (headline) {
       headerContent = (
         <div className={classNames.header}>
-          <p className={classNames.headline} id={ariaLabelledBy}>
-            {headline}
-          </p>
+          {typeof children === 'string' ? (
+            <p className={classNames.headline} id={ariaLabelledBy}>
+              {headline}
+            </p>
+          ) : (
+            <div className={classNames.headline} id={ariaLabelledBy}>
+              {headline}
+            </div>
+          )}
         </div>
       );
     }
@@ -99,9 +105,15 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
     if (children) {
       bodyContent = (
         <div className={classNames.body}>
-          <p className={classNames.subText} id={ariaDescribedBy}>
-            {children}
-          </p>
+          {typeof children === 'string' ? (
+            <p className={classNames.subText} id={ariaDescribedBy}>
+              {children}
+            </p>
+          ) : (
+            <div className={classNames.subText} id={ariaDescribedBy}>
+              {children}
+            </div>
+          )}
         </div>
       );
     }
