@@ -389,7 +389,7 @@ export interface IContextualMenuItem {
   ) => IMenuItemClassNames;
 
   /**
-   * Call to provide customized styling that will layer on top of the variant rules
+   * Optional IContextualMenuItemProps overrides to customize behaviors such as item styling via `styles`.
    */
   itemProps?: Partial<IContextualMenuItemProps>;
 
