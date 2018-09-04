@@ -1,12 +1,10 @@
 import * as React from 'react';
-import { DonutChart, IDonutChartProps } from '@uifabric/charting/lib/DonutChart';
+import { DonutChart, IDonutChartProps, IChartProps, IChartDataPoint } from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
-import { IDataPoint } from '@uifabric/charting/lib/types/IDataPoint';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
 export interface IExampleState {
-  dynamicData: IDataPoint[];
-  colors: string[];
+  dynamicData: IChartDataPoint[];
 }
 
 export class DonutChartDynamicExample extends React.Component<IDonutChartProps, IExampleState> {
@@ -26,12 +24,11 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
   constructor(props: IDonutChartProps) {
     super(props);
     this.state = {
-      dynamicData: [{ x: 'A', y: 25 }, { x: 'B', y: 10 }, { x: 'C', y: 60 }, { x: 'D', y: 5 }],
-      colors: [
-        DefaultPalette.blueLight,
-        DefaultPalette.purpleLight,
-        DefaultPalette.yellowLight,
-        DefaultPalette.neutralSecondary
+      dynamicData: [
+        { legend: 'first', data: 40, color: DefaultPalette.blueLight },
+        { legend: 'second', data: 20, color: DefaultPalette.purpleLight },
+        { legend: 'third', data: 30, color: DefaultPalette.yellowLight },
+        { legend: 'fourth', data: 10, color: DefaultPalette.neutralSecondary }
       ]
     };
 
@@ -40,9 +37,15 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
   }
 
   public render(): JSX.Element {
+    const chartTitle = 'Stacked Bar chart example';
+
+    const data: IChartProps = {
+      chartTitle: chartTitle,
+      chartData: this.state.dynamicData
+    };
     return (
       <div>
-        <DonutChart data={this.state.dynamicData} colors={this.state.colors} />
+        <DonutChart data={data} innerRadius={40} />
         <DefaultButton text="Change data" onClick={this._changeData} />
         <DefaultButton text="Change colors" onClick={this._changeColors} />
       </div>
@@ -56,13 +59,23 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
     const d = 100 - a - b - c;
 
     this.setState({
-      dynamicData: [{ x: 'A', y: a }, { x: 'B', y: b }, { x: 'C', y: c }, { x: 'D', y: d }]
+      dynamicData: [
+        { legend: 'first', data: a, color: DefaultPalette.blueLight },
+        { legend: 'second', data: b, color: DefaultPalette.purpleLight },
+        { legend: 'third', data: c, color: DefaultPalette.yellowLight },
+        { legend: 'fourth', data: d, color: DefaultPalette.neutralSecondary }
+      ]
     });
   }
 
   private _changeColors(): void {
     this.setState({
-      colors: [this._randomColor(0), this._randomColor(1), this._randomColor(2), this._randomColor(3)]
+      dynamicData: [
+        { legend: 'first', data: 40, color: this._randomColor(0) },
+        { legend: 'second', data: 20, color: this._randomColor(1) },
+        { legend: 'third', data: 30, color: this._randomColor(2) },
+        { legend: 'fourth', data: 10, color: this._randomColor(3) }
+      ]
     });
   }
 

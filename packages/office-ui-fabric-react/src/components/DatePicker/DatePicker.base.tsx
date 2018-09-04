@@ -86,7 +86,8 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
     firstWeekOfYear: FirstWeekOfYear.FirstDay,
     showGoToToday: true,
     dateTimeFormatter: undefined,
-    showCloseButton: false
+    showCloseButton: false,
+    underlined: false
   };
 
   private _calendar = createRef<ICalendar>();
@@ -164,7 +165,8 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
       minDate,
       maxDate,
       showCloseButton,
-      calendarProps
+      calendarProps,
+      underlined
     } = this.props;
     const { isDatePickerShown, formattedDate, selectedDate, errorMessage } = this.state;
 
@@ -203,6 +205,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
             value={formattedDate}
             componentRef={this._textField}
             role={'button'}
+            underlined={underlined}
           />
         </div>
         {isDatePickerShown && (

@@ -1804,14 +1804,14 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               {
                 border-radius: 50%;
                 border: 0px;
-                height: 100%;
+                height: 48px;
                 left: 0px;
                 margin-right: 10px;
                 overflow: hidden;
                 perspective: 1px;
                 position: absolute;
                 top: 0px;
-                width: 100%;
+                width: 48px;
               }
           style={
             Object {

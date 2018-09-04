@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Sticky: null check for currElem",
+      "comment": "Modal, Panel: make scrollable content styles customizable via className or styles props",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "naethell@microsoft.com"
+  "email": "kakje@microsoft.com"
 }

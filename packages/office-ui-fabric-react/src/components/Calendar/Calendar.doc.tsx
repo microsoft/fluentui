@@ -201,6 +201,20 @@ export const CalendarPageProps: IDocPageProps = {
           buttonString={'Click for Overlayed Day Picker and Month Picker'}
         />
       )
+    },
+    {
+      title: 'Calendar with overlayed month picker launched from a button without show go to today button',
+      code: CalendarButtonExampleCode,
+
+      view: (
+        <CalendarButtonExample
+          showMonthPickerAsOverlay={true}
+          showGoToToday={false}
+          highlightCurrentMonth={false}
+          highlightSelectedMonth={true}
+          buttonString={'Click for Overlayed Day Picker and Month Picker without go to today button'}
+        />
+      )
     }
   ],
   propertiesTablesSources: [

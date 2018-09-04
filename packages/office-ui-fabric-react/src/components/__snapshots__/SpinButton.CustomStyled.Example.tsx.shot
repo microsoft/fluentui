@@ -165,7 +165,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 color: #333333;
                 cursor: default;
@@ -293,7 +293,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 color: #333333;
                 cursor: default;

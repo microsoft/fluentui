@@ -13,6 +13,7 @@ export const getStyles = (props: ICardFrameProps): ICardFrameStyles => {
       flexDirection: 'column'
     },
     cardTitleBox: {
+      alignItems: 'center',
       display: 'flex',
       flexDirection: 'row',
       width: '100%',
@@ -25,7 +26,7 @@ export const getStyles = (props: ICardFrameProps): ICardFrameStyles => {
       transition: 'background-color .2s,color .2s,margin .2s,padding .2s,border-color .2s',
       selectors: {
         ':hover': {
-          backgroundColor: '#eaeaea'
+          backgroundColor: disableDrag ? '' : '#eaeaea'
         }
       }
     },
@@ -36,7 +37,8 @@ export const getStyles = (props: ICardFrameProps): ICardFrameStyles => {
     cardTitle: {
       overflow: 'hidden',
       flex: 1,
-      padding: '9px 16px 12px 16px',
+      lineHeight: '19px',
+      paddingLeft: '16px',
       fontSize: fontSize ? fontSize : '14px',
       fontFamily: fontFamily ? fontFamily : 'Segoe UI',
       fontWeight: 600,

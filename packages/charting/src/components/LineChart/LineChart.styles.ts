@@ -1,27 +1,28 @@
 import { ILineChartStyleProps, ILineChartStyles } from './LineChart.types';
 
 export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
-  const { className, theme, width, height } = props;
+  const { className, theme, width, height, color } = props;
+  const { palette, fonts } = theme!;
+  console.log('fonts', fonts);
 
-  const chartWidth = width + 30;
-  const chartPadding = 20;
-  const chartHeight = height + 10;
-  const xOffset = 30;
-  const yOffset = 20;
+  const chartPadding = 30;
+  const scalingVal = 0.3;
+  const xOffset = 20;
 
   return {
     root: [
       'ms-LineChart',
-      className,
       {
-        width: chartWidth + 2 * chartPadding
-      }
+        display: 'flex',
+        width: '100%',
+        height: '100%',
+        flexDirection: 'column'
+      },
+      className
     ],
     chart: [
       {
         padding: chartPadding,
-        width: chartWidth,
-        height: chartHeight,
         boxSizing: 'content-box'
       }
     ],
@@ -33,28 +34,56 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
     ],
     xAxis: [
       {
-        transform: `translate(${xOffset}px, ${height}px)`
+        transform: `translate(-${width * scalingVal}px, ${height}px) scaleX(1.5)`
       }
     ],
     xAxisTicks: [],
     yAxis: [
       {
-        transform: `translate(${yOffset}px, 0px)`
+        transform: `translate(-${width * scalingVal}px, 0px)`
       }
     ],
     yAxisTicks: [
       {
-        transform: 'scaleX(-1)'
+        transform: `scaleX(-${width * scalingVal - xOffset})`,
+        stroke: 'grey'
       }
     ],
     yAxisDomain: [
       {
-        transform: 'scaleX(-1)'
+        transform: 'scaleX(0)'
+      }
+    ],
+    xAxisDomain: [
+      {
+        transform: 'scaleY(0)'
+      }
+    ],
+    xAxisText: [
+      {
+        transform: `translate(0px,13px)`
       }
     ],
     lines: [
       {
-        transform: `translate(${xOffset}px, 0px)`
+        transform: `translate(-${width * scalingVal}px, 0px) scaleX(1.5)`
+      }
+    ],
+    legendContainer: [
+      {
+        marginTop: '10px',
+        paddingLeft: '5%'
+      }
+    ],
+    calloutPadding: [
+      {
+        padding: '10px 16px 10px 16px',
+        backgroundColor: palette.white,
+        fontSize: fonts.xxLarge.fontSize,
+        color: color !== '' ? `${color}` : palette.black,
+        fontFamily: fonts.xxLarge.fontFamily,
+        fontWeight: 'bold',
+        border: color !== '' ? `1px solid ${color}` : `unset`
       }
     ]
   };

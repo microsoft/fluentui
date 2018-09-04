@@ -42,10 +42,10 @@ export class CheckboxImplementationExamples extends React.Component<{}, ICheckbo
             }
           }}
           styles={checkboxStyles}
-          ariaDescribedBy={'descriptionID'}
+          ariaLabelledBy={'labelID'}
         />
-        <label id="descriptionID" className="screenReaderOnly">
-          Uncontroller checkbox description
+        <label id="labelID" className="screenReaderOnly">
+          Uncontrolled checkbox label
         </label>
 
         <Checkbox

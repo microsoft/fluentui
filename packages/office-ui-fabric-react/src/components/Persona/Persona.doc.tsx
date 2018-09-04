@@ -36,7 +36,8 @@ export const PersonaPageProps: IDocPageProps = {
     {
       title: 'Persona with initials',
       code: PersonaInitialsExampleCode,
-      view: <PersonaInitialsExample />
+      view: <PersonaInitialsExample />,
+      isScrollable: false
     },
     {
       title: 'Rendering custom persona text',
