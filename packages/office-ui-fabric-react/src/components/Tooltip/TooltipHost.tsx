@@ -121,7 +121,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
   }
 
   // Show Tooltip
-  private _onTooltipMouseEnter = (ev: React.MouseEvent<HTMLElement>): void => {
+  private _onTooltipMouseEnter = (ev: any): void => {
     const { overflowMode } = this.props;
 
     if (overflowMode !== undefined) {
