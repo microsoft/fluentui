@@ -97,7 +97,9 @@ exports[`Panel renders Panel correctly 1`] = `
         className=
             ms-Panel-scrollableContent
             {
+              flex-grow: 1;
               height: 100%;
+              overflow-y: auto;
             }
       >
         <div

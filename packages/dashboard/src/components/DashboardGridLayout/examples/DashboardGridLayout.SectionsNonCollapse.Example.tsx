@@ -187,25 +187,22 @@ export class DashboardGridLayoutSectionsNoncollapsibleExample extends React.Comp
   }
 
   private _sections(): ISection[] {
-    const keys = ['section1', 'section2', 'section3'];
+    const ids = ['section1', 'section2', 'section3'];
     return [
       {
-        key: keys[0],
-        id: keys[0],
+        id: ids[0],
         title: 'This is the first section',
-        keysOfCard: this.state.sectionMapping[keys[0]]
+        cardIds: this.state.sectionMapping[ids[0]]
       },
       {
-        key: keys[1],
-        id: keys[1],
+        id: ids[1],
         title: 'This is the second section',
-        keysOfCard: this.state.sectionMapping[keys[1]]
+        cardIds: this.state.sectionMapping[ids[1]]
       },
       {
-        key: keys[2],
-        id: keys[2],
+        id: ids[2],
         title: 'This is the third section',
-        keysOfCard: this.state.sectionMapping[keys[2]]
+        cardIds: this.state.sectionMapping[ids[2]]
       }
     ];
   }
@@ -213,14 +210,14 @@ export class DashboardGridLayoutSectionsNoncollapsibleExample extends React.Comp
   private _cards(): ICard[] {
     return [
       {
-        key: '0',
+        id: '0',
         cardFrameContent: cardFrameContent,
         header: getHeader('0'),
         cardContentList: contentAreaList,
         cardSize: CardSize.small
       },
       {
-        key: '1',
+        id: '1',
         cardFrameContent: cardFrameContent,
         header: getHeader('1'),
         cardContentList: mediumTallContentAreaList,
@@ -228,14 +225,14 @@ export class DashboardGridLayoutSectionsNoncollapsibleExample extends React.Comp
         actions: actions
       },
       {
-        key: '2',
+        id: '2',
         cardFrameContent: cardFrameContent,
         header: getHeader('2'),
         cardContentList: contentAreaList,
         cardSize: CardSize.small
       },
       {
-        key: '3',
+        id: '3',
         cardFrameContent: cardFrameContent,
         header: getHeader('3'),
         cardContentList: contentAreaList,
@@ -243,7 +240,7 @@ export class DashboardGridLayoutSectionsNoncollapsibleExample extends React.Comp
         actions: actions
       },
       {
-        key: '4',
+        id: '4',
         cardFrameContent: cardFrameContent,
         header: getHeader('4'),
         cardContentList: largeContentAreaList,
