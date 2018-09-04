@@ -11,7 +11,7 @@ interface IVirtualElement extends HTMLElement {
   };
 }
 
-const dataPortalAttribute = 'data-portal-element';
+export const dataPortalAttribute = 'data-portal-element';
 
 /**
  * Sets the virtual parent of an element.
@@ -214,10 +214,10 @@ export function setPortalAttribute(element: HTMLElement): void {
   element.setAttribute(dataPortalAttribute, 'true');
 }
 
-// TODO: add tests
 /**
- * Determine whether a target is within a portal from perspective of optional parent.
- * (If both parent and child are within the same portal this function will return false.)
+ * Determine whether a target is within a portal from perspective of root or optional parent.
+ * If parent is not in target's hierarchy, parent defaults to root.
+ * If both parent and child are within the same portal this function will return false.
  */
 export function portalContainsElement(target: HTMLElement, parent?: HTMLElement): boolean {
   let elementMatch = findElementRecursive(
