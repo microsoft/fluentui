@@ -9,6 +9,7 @@ import {
   customizable,
   getDocument,
   createRef,
+  setPortalAttribute,
   setVirtualParent
 } from '../../Utilities';
 import { registerLayer, getDefaultTarget, unregisterLayer } from './Layer.notification';
@@ -176,6 +177,7 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
 
         this._layerElement = doc.createElement('div');
         this._layerElement.className = classNames.root!;
+        setPortalAttribute(this._layerElement);
 
         host.appendChild(this._layerElement);
       }
