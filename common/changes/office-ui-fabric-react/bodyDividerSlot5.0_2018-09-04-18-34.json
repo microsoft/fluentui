@@ -3,7 +3,7 @@
     {
       "packageName": "office-ui-fabric-react",
       "comment": "Change bodyDivider value from neutralTertiaryAlt back to neutralLight",
-      "type": "minor"
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
