@@ -10,7 +10,7 @@ exports[`DetailsHeader can render 1`] = `
       ms-DetailsHeader
       {
         background: #ffffff;
-        border-bottom: 1px solid #c8c8c8;
+        border-bottom: 1px solid #eaeaea;
         box-sizing: content-box;
         cursor: default;
         display: inline-block;
@@ -888,7 +888,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
       ms-DetailsHeader
       {
         background: #ffffff;
-        border-bottom: 1px solid #c8c8c8;
+        border-bottom: 1px solid #eaeaea;
         box-sizing: content-box;
         cursor: default;
         display: inline-block;
