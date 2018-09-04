@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.63.0",
+      "tag": "office-ui-fabric-react_v6.63.0",
+      "date": "Tue, 04 Sep 2018 10:27:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "3a8236aa84bd27032247269ec6ba7533ffdc482c",
+            "comment": "DetailsList: only use role button when onColumnClick prop is defined"
+          }
+        ],
+        "minor": [
+          {
+            "author": "blandine <blandine.descamps@gmail.com>",
+            "commit": "7b9f8ed12ff69e619a7975f878ce6f5558d5e0e4",
+            "comment": "add onBlur on Slider"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.62.0",
       "tag": "office-ui-fabric-react_v6.62.0",
       "date": "Mon, 03 Sep 2018 10:25:31 GMT",
