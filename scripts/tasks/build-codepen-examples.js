@@ -1,4 +1,4 @@
-module.exports = function () {
+module.exports = function() {
   const path = require('path');
   const transformer = require('./codepen-examples-transform');
   const glob = require('glob');
@@ -13,7 +13,7 @@ module.exports = function () {
     async.eachLimit(
       files,
       5,
-      function (file, callback) {
+      function(file, callback) {
         const fileSource = fs.readFileSync(file).toString();
 
         if (fileSource.indexOf('@codepen') >= 0) {
@@ -30,14 +30,12 @@ module.exports = function () {
             mkdirp.sync(dirPath);
           }
 
-          console.log(path.dirname(file));
-          console.log(path.join(dirPath, exampleName + '.Codepen.txt'));
           fs.writeFileSync(path.join(dirPath, exampleName + '.Codepen.txt'), transformResult);
         }
 
         callback();
       },
-      function (err) {
+      function(err) {
         if (err) {
           reject();
         } else {
