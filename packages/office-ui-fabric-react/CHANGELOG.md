@@ -1,6 +1,45 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 30 Aug 2018 19:26:04 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Sep 2018 10:25:31 GMT and should not be manually modified.
+
+## 6.62.0
+Mon, 03 Sep 2018 10:25:31 GMT
+
+### Minor changes
+
+- Added optional 'iconProps' property to SearchBox component.
+
+### Patches
+
+- Sticky placeholders should ignore pointer events when state is non-sticky
+
+## 6.61.2
+Fri, 31 Aug 2018 20:48:42 GMT
+
+### Patches
+
+- Coachmark - only show beak if it is collapsed
+- fix re-render caused by view port resize observer
+
+## 6.61.1
+Fri, 31 Aug 2018 17:27:00 GMT
+
+### Patches
+
+- ComboBox: Fix clearing the comboBox on escape
+
+## 6.61.0
+Fri, 31 Aug 2018 10:27:35 GMT
+
+### Minor changes
+
+- SpinButton: Add aria-valuenow and aria-valuetext for controller spin buttons
+- DatePicker: add optional underlined prop for TextField
+
+### Patches
+
+- ComboBox: update isOptionSelected logic to take into acount updated values for currentPendingValue
+- added ability for personacoin to be arbitrarily sized for initials
 
 ## 6.60.0
 Thu, 30 Aug 2018 19:26:04 GMT

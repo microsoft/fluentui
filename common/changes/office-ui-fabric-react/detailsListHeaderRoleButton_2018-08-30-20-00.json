@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "added ability for personacoin to be arbitrarily sized for initials",
+      "comment": "DetailsList: only use role button when onColumnClick prop is defined",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "kchau@microsoft.com"
+  "email": "naethell@microsoft.com"
 }

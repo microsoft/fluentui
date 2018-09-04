@@ -142,9 +142,9 @@ export interface ICardProps {
 
 export interface ICard extends ICardProps {
   /**
-   * The card key, which must be unique within the dashboard
+   * The card id, which must be unique within the dashboard
    */
-  key: string;
+  id: string;
 }
 
 export interface ICardState {

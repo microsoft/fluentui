@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "@uifabric/dashboard",
-      "comment": "change datapoint for horizontal bar chart ",
-      "type": "patch"
+      "comment": "Add edit section common control and examples",
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/dashboard",

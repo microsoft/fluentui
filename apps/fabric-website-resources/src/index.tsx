@@ -1,3 +1,5 @@
+require('es6-promise/auto');
+
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { App, AppDefinition } from './AppDefinition';
