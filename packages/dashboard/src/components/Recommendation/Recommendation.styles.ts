@@ -7,6 +7,7 @@ const commonFontFamily = 'Segoe UI';
 const commonFontWeight = 'bold';
 const largeFontSize = 26;
 const regularFontSize = 12;
+const regularLineHeight = 14;
 const containerSpaceMargin = 22;
 const flexDisplayStyle: IStyle = {
   display: 'flex',
@@ -42,6 +43,7 @@ export const getStyles = (): IRecommendationStyles => ({
   },
   recommendationContent: {
     fontSize: regularFontSize,
+    lineHeight: regularLineHeight,
     fontFamily: commonFontFamily,
     color: recommendationBaseColor,
     display: 'flex',
