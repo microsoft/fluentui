@@ -3,12 +3,13 @@ import { IsFocusVisibleClassName } from '../../Utilities';
 import { IColorPickerGridCellStyleProps, IColorPickerGridCellStyles } from './ColorPickerGridCell.types';
 
 const ACTIVE_BORDER_COLOR = '#969696';
+const SVG_BORDER_WIDTH = 4;
 
 function getSvgSelectorStyles(borderColor: string, isHover: boolean): IRawStyle {
   return {
     width: 12,
     height: 12,
-    border: '4px solid',
+    border: `${SVG_BORDER_WIDTH}px solid`,
     borderColor: borderColor,
     boxShadow: isHover ? 'none' : '0 0 0 1px #969696',
     padding: 4,
@@ -52,6 +53,9 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
             border: '1px solid',
             borderColor: theme.palette.neutralTertiary,
             margin: 4
+          },
+          ':hover $svg': {
+            border: `${SVG_BORDER_WIDTH + 1}px solid` // include 1px extra border white swatch has to avoid shift on :hover
           }
         }
       },
