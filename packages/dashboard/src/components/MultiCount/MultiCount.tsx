@@ -135,7 +135,7 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
       })
     );
     return (
-      <div id="content" className={classNames.hoverCardRoot}>
+      <div className={classNames.hoverCardRoot}>
         <div className={classNames.hoverCardText}>
           <div className={classNames.hoverCardBodyText}>{data.bodyText}</div>
           <div className={classNames.icon}>
