@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Label } from '../../Label';
 import { ChoiceGroupOption, OnFocusCallback, OnChangeCallback } from './ChoiceGroupOption/index';
 import { IChoiceGroupOption, IChoiceGroupProps, IChoiceGroupStyleProps, IChoiceGroupStyles } from './ChoiceGroup.types';
-import { BaseComponent, classNamesFunction, createRef, getId, find } from '../../Utilities';
+import { BaseComponent, classNamesFunction, getId, find } from '../../Utilities';
 
 const getClassNames = classNamesFunction<IChoiceGroupStyleProps, IChoiceGroupStyles>();
 
@@ -20,7 +20,6 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
 
   private _id: string;
   private _labelId: string;
-  private _inputElement = createRef<HTMLInputElement>();
   private focusedVars: { [key: string]: OnFocusCallback } = {};
   private changedVars: { [key: string]: OnChangeCallback } = {};
 
@@ -43,9 +42,9 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
 
   public componentWillReceiveProps(newProps: IChoiceGroupProps): void {
     const newKeyChecked = this._getKeyChecked(newProps);
-    const oldKeyCheched = this._getKeyChecked(this.props);
+    const oldKeyChecked = this._getKeyChecked(this.props);
 
-    if (newKeyChecked !== oldKeyCheched) {
+    if (newKeyChecked !== oldKeyChecked) {
       this.setState({
         keyChecked: newKeyChecked!
       });
@@ -110,8 +109,14 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
   }
 
   public focus() {
-    if (this._inputElement.current) {
-      this._inputElement.current.focus();
+    if (this.props.options) {
+      for (const option of this.props.options) {
+        const myElement = document.getElementById(`${this._id}-${option.key}`);
+        if (myElement && myElement.getAttribute('data-is-focusable') === 'true') {
+          myElement.focus();
+          break;
+        }
+      }
     }
   }
 
