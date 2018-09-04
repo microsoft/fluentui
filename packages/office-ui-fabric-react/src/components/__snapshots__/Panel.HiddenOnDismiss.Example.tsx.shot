@@ -245,7 +245,9 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
               className=
                   ms-Panel-scrollableContent
                   {
+                    flex-grow: 1;
                     height: 100%;
+                    overflow-y: auto;
                   }
             >
               <div
@@ -283,7 +285,7 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                           -webkit-font-smoothing: antialiased;
                           background-color: transparent;
                           border-radius: 0px;
-                          border: 1px solid transparent;
+                          border: none;
                           box-sizing: border-box;
                           color: #666666;
                           cursor: pointer;
