@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/dashboard",
-      "comment": "Removed hover effect from dashboard card title when dragging is disabled",
+      "comment": "css issues for card",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/dashboard",
-  "email": "kevcha@microsoft.com"
+  "email": "polu.balakrishna96@gmail.com"
 }

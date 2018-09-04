@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Coachmark - only show beak if it is collapsed",
+      "comment": "Modal, Panel: make scrollable content styles customizable via className or styles props",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "kchau@microsoft.com"
+  "email": "kakje@microsoft.com"
 }
