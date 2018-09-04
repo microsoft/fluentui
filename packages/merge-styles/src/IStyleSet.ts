@@ -6,7 +6,18 @@ export type Diff<T extends keyof any, U extends keyof any> = ({ [P in T]: P } &
 
 export type Omit<U, K extends keyof U> = Pick<U, Diff<keyof U, K>>;
 
-export type TrimToFunction<T> = T extends (...args: any[]) => any ? T : () => T;
+export type __ReduceToFunction<T> = T extends (...args: any[]) => any ? T : never;
+
+/**
+ * Helper function whose role is supposed to express that regardless if T is a style object or style function,
+ * it will always map to a style function.
+ *
+ * Note: the commmented segment is the right expression but it is buggy in 2.8.2. Once Fabric upgrades to Typescript 3,
+ *  we should uncomment the commented segmment below as well as uncomment the test in mergeStyleSets.test.ts.
+ *
+ * See https://github.com/OfficeDev/office-ui-fabric-react/issues/6124.
+ */
+export type __MapToFunctionType<T> = /*[T] extends [IStyleSet<any>] ? (...args: any[]) => T :*/ __ReduceToFunction<T>;
 
 /**
  * A style set is a dictionary of display areas to IStyle objects.
@@ -36,6 +47,6 @@ export type IProcessedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
   [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: string
 } & {
   subComponentStyles: {
-    [P in keyof TStyleSet['subComponentStyles']]: TrimToFunction<TStyleSet['subComponentStyles'][P]>
+    [P in keyof TStyleSet['subComponentStyles']]: __MapToFunctionType<TStyleSet['subComponentStyles'][P]>
   };
 };

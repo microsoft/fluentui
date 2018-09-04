@@ -2,6 +2,25 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.18.0",
+      "tag": "@uifabric/dashboard_v0.18.0",
+      "date": "Tue, 04 Sep 2018 10:27:15 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "783e47e83d391c6d31e40613e25dc7acfcde5649",
+            "comment": "Add edit section common control and examples"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.62.0 <7.0.0` to `>=6.63.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.17.6",
       "tag": "@uifabric/dashboard_v0.17.6",
       "date": "Fri, 31 Aug 2018 20:48:42 GMT",

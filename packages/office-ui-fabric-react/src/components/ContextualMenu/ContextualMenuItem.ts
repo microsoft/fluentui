@@ -5,7 +5,7 @@ import {
   IContextualMenuItemStyles
 } from './ContextualMenuItem.types';
 import { ContextualMenuItemBase } from './ContextualMenuItem.base';
-import { getStyles } from './ContextualMenuItem.styles';
+import { getItemClassNames as getStyles } from './ContextualMenu.classNames';
 
 /**
  * ContextualMenuItem description

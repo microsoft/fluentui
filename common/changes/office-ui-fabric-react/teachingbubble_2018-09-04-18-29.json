@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Sticky placeholders should ignore pointer events when state is non-sticky",
+      "comment": "use div and instead of p if teachingbubble content isn't a string",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "shagra@microsoft.com"
+  "email": "kchau@microsoft.com"
 }

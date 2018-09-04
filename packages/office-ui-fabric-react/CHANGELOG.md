@@ -1,6 +1,28 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 31 Aug 2018 20:48:42 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Sep 2018 10:27:15 GMT and should not be manually modified.
+
+## 6.63.0
+Tue, 04 Sep 2018 10:27:15 GMT
+
+### Minor changes
+
+- add onBlur on Slider
+
+### Patches
+
+- DetailsList: only use role button when onColumnClick prop is defined
+
+## 6.62.0
+Mon, 03 Sep 2018 10:25:31 GMT
+
+### Minor changes
+
+- Added optional 'iconProps' property to SearchBox component.
+
+### Patches
+
+- Sticky placeholders should ignore pointer events when state is non-sticky
 
 ## 6.61.2
 Fri, 31 Aug 2018 20:48:42 GMT
