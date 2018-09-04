@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Layer: Use React Portals if available",
+      "comment": "Layer: Now use React Portals.",
       "type": "minor"
     }
   ],
