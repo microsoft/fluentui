@@ -51,7 +51,7 @@ exports[`DetailsList renders List correctly 1`] = `
               ms-DetailsHeader
               {
                 background: #ffffff;
-                border-bottom: 1px solid #c8c8c8;
+                border-bottom: 1px solid #eaeaea;
                 box-sizing: content-box;
                 cursor: default;
                 display: inline-block;
@@ -628,7 +628,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
               ms-DetailsHeader
               {
                 background: #ffffff;
-                border-bottom: 1px solid #c8c8c8;
+                border-bottom: 1px solid #eaeaea;
                 box-sizing: content-box;
                 cursor: default;
                 display: inline-block;
@@ -1205,7 +1205,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
               ms-DetailsHeader
               {
                 background: #ffffff;
-                border-bottom: 1px solid #c8c8c8;
+                border-bottom: 1px solid #eaeaea;
                 box-sizing: content-box;
                 cursor: default;
                 display: inline-block;
@@ -2165,7 +2165,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
               ms-DetailsHeader
               {
                 background: #ffffff;
-                border-bottom: 1px solid #c8c8c8;
+                border-bottom: 1px solid #eaeaea;
                 box-sizing: content-box;
                 cursor: default;
                 display: inline-block;
