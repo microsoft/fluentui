@@ -25,7 +25,7 @@ import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { createListItems, isGroupable } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import './DetailsList.Advanced.Example.scss';
 import { IDetailsColumnProps } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsColumn';
-import { Checkbox } from '../../..';
+import { Checkbox } from '../../../Checkbox';
 
 const DEFAULT_ITEM_LIMIT = 5;
 const PAGING_SIZE = 10;
