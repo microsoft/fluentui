@@ -23,6 +23,7 @@ describe('Tooltip', () => {
   it('renders default Tooltip correctly', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
     const ReactDOM = require('react-dom');
+    const createPortal = ReactDOM.createPortal;
     ReactDOM.createPortal = jest.fn(element => {
       return element;
     });
@@ -31,7 +32,7 @@ describe('Tooltip', () => {
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
 
-    ReactDOM.createPortal.mockClear();
+    ReactDOM.createPortal = createPortal;
   });
 
   it('uses default documented properties', () => {

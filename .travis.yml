@@ -5,7 +5,6 @@ script:
   - if [ $TRAVIS_BRANCH == "master" ] && [ $TRAVIS_PULL_REQUEST != "false" ];
     then npm run checkchange;
     fi
-  - npm list
   - npm run buildci
   - npm run bundlesize
   - npm run vrtest
