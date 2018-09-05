@@ -3,7 +3,6 @@ import { ILineChartStyleProps, ILineChartStyles } from './LineChart.types';
 export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
   const { className, theme, width, height, color } = props;
   const { palette, fonts } = theme!;
-  console.log('palette', palette);
 
   const chartPadding = 30;
   const scalingVal = 0.3;
