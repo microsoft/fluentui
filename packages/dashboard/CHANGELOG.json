@@ -2,6 +2,58 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.19.0",
+      "tag": "@uifabric/dashboard_v0.19.0",
+      "date": "Wed, 05 Sep 2018 10:29:25 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "BalakrishnaReddyPolu <polu.balakrishna96@gmail.com>",
+            "commit": "eb3887d9a6886c783b0abe015aabe2f0a186eccf",
+            "comment": "css issues for card"
+          },
+          {
+            "author": "BalakrishnaReddyPolu <polu.balakrishna96@gmail.com>",
+            "commit": "eb3887d9a6886c783b0abe015aabe2f0a186eccf",
+            "comment": "Added 19px lineHeight to card header text"
+          },
+          {
+            "author": "exchangeadmin <yuz@microsoft.com>",
+            "commit": "5ca37d1fc22afecbde83bee0cbb1b64206a1b370",
+            "comment": "fix leftNav styles per PM feedback"
+          },
+          {
+            "author": "exchangeadmin <yuz@microsoft.com>",
+            "commit": "5ca37d1fc22afecbde83bee0cbb1b64206a1b370",
+            "comment": "revert the change for expand behavior"
+          },
+          {
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "d891a1353799c61f99f1f7897cd38724de00627c",
+            "comment": "Update Recommendation Header text resize mechanism and description text line height"
+          }
+        ],
+        "minor": [
+          {
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "aa27d6b109acb3d727563ccc1b8a14d4dfd75bdf",
+            "comment": "Adding hover behaviour for Multicount component and onClick listener on each row of the Multicount component"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.17.2` to `^0.17.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.28.1 <7.0.0` to `>=6.28.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.63.0 <7.0.0` to `>=6.64.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.18.0",
       "tag": "@uifabric/dashboard_v0.18.0",
       "date": "Tue, 04 Sep 2018 10:27:15 GMT",

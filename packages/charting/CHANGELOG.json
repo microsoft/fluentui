@@ -2,6 +2,25 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.17.3",
+      "tag": "@uifabric/charting_v0.17.3",
+      "date": "Wed, 05 Sep 2018 10:29:25 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "BalakrishnaReddyPolu <polu.balakrishna96@gmail.com>",
+            "commit": "97d8bebb7f6c1e9075de23fe7bc989fc024fa649",
+            "comment": "Donut chart align issues fixed"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.63.0 <7.0.0` to `>=6.64.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.17.2",
       "tag": "@uifabric/charting_v0.17.2",
       "date": "Fri, 31 Aug 2018 17:27:00 GMT",

@@ -1,6 +1,14 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 30 Aug 2018 19:26:04 GMT and should not be manually modified.
+This log was last generated on Wed, 05 Sep 2018 10:29:25 GMT and should not be manually modified.
+
+## 6.28.2
+Wed, 05 Sep 2018 10:29:25 GMT
+
+### Patches
+
+- nav fix
+- improve nav per designer feedback
 
 ## 6.28.1
 Thu, 30 Aug 2018 19:26:04 GMT
