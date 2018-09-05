@@ -1,1 +1,2 @@
 - Allow users to choose any combination of options when several Checkboxes are grouped together.
+- Keep Checkboxes square, not round, to help users know that they are using a Checkbox, not a radio button.
