@@ -119,12 +119,6 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
           return;
         }
       }
-      const firstOption = options[0];
-      const firstElement = document.getElementById(`${this._id}-${firstOption.key}`);
-      if (firstElement) {
-        firstElement.focus(); // focus on first option if there is no checked key
-        return;
-      }
     }
     if (this._inputElement.current) {
       this._inputElement.current.focus();
