@@ -11,7 +11,7 @@ interface IVirtualElement extends HTMLElement {
   };
 }
 
-export const dataPortalAttribute = 'data-portal-element';
+export const DATA_PORTAL_ATTRIBUTE = 'data-portal-element';
 
 /**
  * Sets the virtual parent of an element.
@@ -211,7 +211,7 @@ export function getRect(element: HTMLElement | Window | null): IRectangle | unde
  * @param element Element to mark as a portal.
  */
 export function setPortalAttribute(element: HTMLElement): void {
-  element.setAttribute(dataPortalAttribute, 'true');
+  element.setAttribute(DATA_PORTAL_ATTRIBUTE, 'true');
 }
 
 /**
@@ -220,11 +220,11 @@ export function setPortalAttribute(element: HTMLElement): void {
  * If both parent and child are within the same portal this function will return false.
  */
 export function portalContainsElement(target: HTMLElement, parent?: HTMLElement): boolean {
-  let elementMatch = findElementRecursive(
+  const elementMatch = findElementRecursive(
     target,
-    (testElement: HTMLElement) => parent === testElement || testElement.hasAttribute(dataPortalAttribute)
+    (testElement: HTMLElement) => parent === testElement || testElement.hasAttribute(DATA_PORTAL_ATTRIBUTE)
   );
-  return elementMatch !== null && elementMatch.hasAttribute(dataPortalAttribute);
+  return elementMatch !== null && elementMatch.hasAttribute(DATA_PORTAL_ATTRIBUTE);
 }
 
 /**

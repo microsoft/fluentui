@@ -1,5 +1,5 @@
 import {
-  dataPortalAttribute,
+  DATA_PORTAL_ATTRIBUTE,
   elementContains,
   getDocument,
   getParent,
@@ -69,9 +69,9 @@ describe('getDocument', () => {
 describe('setPortalAttribute', () => {
   it('sets attribute', () => {
     let testDiv = document.createElement('div');
-    expect(testDiv.getAttribute(dataPortalAttribute)).toBeFalsy();
+    expect(testDiv.getAttribute(DATA_PORTAL_ATTRIBUTE)).toBeFalsy();
     setPortalAttribute(testDiv);
-    expect(testDiv.getAttribute(dataPortalAttribute)).toBeTruthy();
+    expect(testDiv.getAttribute(DATA_PORTAL_ATTRIBUTE)).toBeTruthy();
   });
 });
 
@@ -92,7 +92,7 @@ describe('portalContainsElement', () => {
     setPortalAttribute(portal);
   });
 
-  it('works correctly', () => {
+  it('works with and without parent specified', () => {
     root.appendChild(parent);
     parent.appendChild(portal);
     portal.appendChild(leaf);

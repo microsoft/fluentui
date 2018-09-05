@@ -104,6 +104,7 @@ describe('Component Examples', () => {
   const realToLocaleDateString = global.Date.prototype.toLocaleDateString;
   const constantDate = new Date(Date.UTC(2017, 0, 6, 4, 41, 20));
   const files: string[] = glob.sync(path.resolve(process.cwd(), 'src/components/**/examples/*Example*.tsx'));
+  const createPortal = ReactDOM.createPortal;
 
   beforeAll(() => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
@@ -141,6 +142,9 @@ describe('Component Examples', () => {
 
   afterAll(() => {
     jest.restoreAllMocks();
+
+    ReactDOM.createPortal = createPortal;
+
     global.Date = realDate;
     global.Date.prototype.toLocaleString = realToLocaleString;
     global.Date.prototype.toLocaleTimeString = realToLocaleTimeString;
