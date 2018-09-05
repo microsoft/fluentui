@@ -520,11 +520,17 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     // If the user passed is a value prop, use that
     // unless we are open and have a valid current pending index
-    if (!(isOpen && currentPendingIndexValid) && (text && !currentPendingValue)) {
+    if (
+      !(isOpen && currentPendingIndexValid) &&
+      (text && (currentPendingValue === null || currentPendingValue === undefined))
+    ) {
       return text;
     }
 
-    if (!(isOpen && currentPendingIndexValid) && (value && !currentPendingValue)) {
+    if (
+      !(isOpen && currentPendingIndexValid) &&
+      (value && (currentPendingValue === null || currentPendingValue === undefined))
+    ) {
       return value;
     }
 
@@ -1469,10 +1475,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * Clears the pending info state
    */
   private _clearPendingInfo(): void {
-    if (this._processingClearPendingInfo) {
-      return;
-    }
-
     this._processingClearPendingInfo = true;
     this.setState(
       {
