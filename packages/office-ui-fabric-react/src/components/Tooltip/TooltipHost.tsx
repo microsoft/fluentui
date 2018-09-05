@@ -131,10 +131,8 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
       }
     }
 
-    // TODO: should pass in targetElement as parent here. update PR and example
-    // TODO: add tests for when Tooltip and target are in same layer
-    if (ev.target && portalContainsElement(ev.target as HTMLElement)) {
-      // Do not show tooltip when target is inside a portal.
+    if (ev.target && portalContainsElement(ev.target as HTMLElement, this._getTargetElement())) {
+      // Do not show tooltip when target is inside a portal relative to TooltipHost.
       return;
     }
 

@@ -102,11 +102,11 @@ describe('Layer', () => {
     const expectedStopPropagationCount = testEvents.length;
     let stopPropagationCount = 0;
 
-    // Debug code for figuring out which events are firing on test failures:
-    // const eventObject = (event: string) => { return { stopPropagation: () => { stopPropagationCount++; console.log(event); } }; };
     const eventObject = (event: string) => {
       return {
         stopPropagation: () => {
+          // Debug code for figuring out which events are firing on test failures:
+          // console.log(event);
           stopPropagationCount++;
         }
       };
@@ -136,11 +136,11 @@ describe('Layer', () => {
     const targetClassName = 'ms-Layer-content';
     let stopPropagationCount = 0;
 
-    // Debug code for figuring out which events are firing on test failures:
-    // const eventObject = (event: string) => { return { stopPropagation: () => { stopPropagationCount++; console.log(event); } }; };
     const eventObject = (event: string) => {
       return {
         stopPropagation: () => {
+          // Debug code for figuring out which events are firing on test failures:
+          // console.log(event);
           stopPropagationCount++;
         }
       };
