@@ -46,7 +46,6 @@ export enum AnnotationType {
 
 export interface IMultiCountStyleProps {
   color?: string;
-  iconName?: string;
   annotationTextFontSize?: string;
   annotationTextColor?: string;
   bodyTextFontSize?: string;
