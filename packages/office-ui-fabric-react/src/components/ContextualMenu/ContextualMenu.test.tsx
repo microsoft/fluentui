@@ -4,11 +4,11 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import { KeyCodes, createRef } from '../../Utilities';
 import { FocusZoneDirection } from '../../FocusZone';
 
-import { IContextualMenuProps } from './ContextualMenu.types';
+import { IContextualMenuProps, IContextualMenuStyles } from './ContextualMenu.types';
 import { ContextualMenu } from './ContextualMenu';
 import { canAnyMenuItemsCheck } from './ContextualMenu.base';
 import { IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.types';
-import { IContextualMenuRenderItem } from './ContextualMenuItem.types';
+import { IContextualMenuRenderItem, IContextualMenuItemStyles } from './ContextualMenuItem.types';
 import { LayerBase as Layer } from '../Layer/Layer.base';
 
 describe('ContextualMenu', () => {
@@ -1173,5 +1173,65 @@ describe('ContextualMenu', () => {
         expect(menuDismissed).toEqual(true);
       });
     });
+  });
+
+  it('applies styles prop for menu if provided', () => {
+    const items: IContextualMenuItem[] = [
+      { text: 'TestText 1', key: 'TestKey1', canCheck: true, isChecked: true },
+      { text: 'TestText 2', key: 'TestKey2', canCheck: true, isChecked: true },
+      { text: 'TestText 3', key: 'TestKey3', canCheck: true, isChecked: true },
+      { text: 'TestText 4', key: 'TestKey4', canCheck: true, isChecked: true }
+    ];
+
+    const getCustomStyles = (): IContextualMenuStyles => {
+      return {
+        container: 'containerFoo',
+        root: 'rootFoo',
+        list: 'listFoo',
+        header: 'headerFoo',
+        title: 'titleFoo'
+      };
+    };
+
+    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} styles={getCustomStyles} />);
+
+    const container = document.querySelector('.containerFoo') as HTMLElement;
+    const rootEl = document.querySelector('.rootFoo') as HTMLElement;
+    const list = document.querySelector('.listFoo') as HTMLElement;
+    const header = document.querySelector('.ms-ContextualMenu-header') as HTMLElement;
+    const title = document.querySelector('.ms-ContextualMenu-title') as HTMLElement;
+
+    expect(container).toBeDefined();
+    expect(rootEl).toBeDefined();
+    expect(list).toBeDefined();
+    expect(header).toBeDefined();
+    expect(title).toBeDefined();
+  });
+
+  it('applies styles per ContextualMenuItem if provided', () => {
+    const getCustomItemStyles = (): Partial<IContextualMenuItemStyles> => {
+      return {
+        linkContent: 'linkContentFoo'
+      };
+    };
+
+    const items: IContextualMenuItem[] = [
+      {
+        text: 'TestText 1',
+        key: 'TestKey1',
+        canCheck: true,
+        isChecked: true,
+        itemProps: { styles: getCustomItemStyles }
+      },
+      { text: 'TestText 2', key: 'TestKey2', canCheck: true, isChecked: true },
+      { text: 'TestText 3', key: 'TestKey3', canCheck: true, isChecked: true },
+      { text: 'TestText 4', key: 'TestKey4', canCheck: true, isChecked: true }
+    ];
+
+    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
+
+    const customLinkContentEls = document.querySelectorAll('.linkContentFoo') as NodeListOf<HTMLElement>;
+
+    expect(customLinkContentEls.length).toBe(1);
   });
 });

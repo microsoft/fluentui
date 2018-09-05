@@ -1,6 +1,22 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 04 Sep 2018 10:27:15 GMT and should not be manually modified.
+This log was last generated on Wed, 05 Sep 2018 10:29:25 GMT and should not be manually modified.
+
+## 6.64.0
+Wed, 05 Sep 2018 10:29:25 GMT
+
+### Minor changes
+
+- Change bodyDivider value from neutralTertiaryAlt back to neutralLight
+- Mark unused "toggled" prop of IButtonProps as deprecated.
+- Deprecate classNames for ContextualMenu & ContextualMenuItem in favor of mergeStyles API via styles props.
+
+### Patches
+
+- onRenderDivider props added to DetailsList to wrap the existing behaviour of column divider of lists
+- Modal, Panel: make scrollable content styles customizable via className or styles props
+- use div and instead of p if teachingbubble content isn't a string
+- Fix 'npm run generate' issue
 
 ## 6.63.0
 Tue, 04 Sep 2018 10:27:15 GMT

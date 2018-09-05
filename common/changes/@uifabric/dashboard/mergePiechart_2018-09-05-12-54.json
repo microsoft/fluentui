@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/dashboard",
-      "comment": "Added 19px lineHeight to card header text",
+      "comment": "merge donut and piechart and added in dashboard package",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/dashboard",
-  "email": "polu.balakrishna96@gmail.com"
+  "email": "gorigarajesh@gmail.com"
 }

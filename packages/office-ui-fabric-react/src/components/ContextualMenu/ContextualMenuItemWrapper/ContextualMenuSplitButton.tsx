@@ -120,6 +120,9 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
       'data-is-focusable': false,
       'aria-hidden': true
     } as IContextualMenuItem;
+
+    const { itemProps: itemComponentProps } = item;
+
     return (
       <button {...getNativeProps(itemProps, buttonProperties)}>
         <ChildrenRenderer
@@ -129,6 +132,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
           index={index}
           onCheckmarkClick={hasCheckmarks && onItemClick ? onItemClick.bind(this, item) : undefined}
           hasIcons={hasIcons}
+          {...itemComponentProps}
         />
       </button>
     );
@@ -175,6 +179,8 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
       'aria-hidden': true
     });
 
+    const { itemProps: itemComponentProps } = item;
+
     return (
       <button {...buttonProps}>
         <ChildrenRenderer
@@ -187,6 +193,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
           dismissSubMenu={dismissSubMenu}
           dismissMenu={dismissMenu}
           getSubmenuTarget={this._getSubmenuTarget}
+          {...itemComponentProps}
         />
       </button>
     );
