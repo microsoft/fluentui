@@ -1,8 +1,9 @@
 import { IGroupFooterStyleProps, IGroupFooterStyles } from './GroupFooter.types';
-import { getGlobalClassNames } from '../../Styling';
+import { getGlobalClassNames, FontSizes } from '../../Styling';
 
 const GlobalClassNames = {
-  root: 'ms-groupFooter'
+  root: 'ms-groupFooter',
+  link: 'ms-Link'
 };
 
 export const getStyles = (props: IGroupFooterStyleProps): IGroupFooterStyles => {
@@ -14,7 +15,12 @@ export const getStyles = (props: IGroupFooterStyleProps): IGroupFooterStyles => 
       classNames.root,
       {
         position: 'relative',
-        padding: '5px 38px'
+        padding: '5px 38px',
+        selectors: {
+          [`:global(.${classNames.link}`]: {
+            fontSize: FontSizes.small
+          }
+        }
       },
       className
     ]
