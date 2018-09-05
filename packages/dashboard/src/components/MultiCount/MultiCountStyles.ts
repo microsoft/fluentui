@@ -53,8 +53,7 @@ export const getStyles = (props: IMultiCountStyleProps): IMultiCountStyles => {
       display: 'flex',
       flexDirection: 'row',
       paddingLeft: '16px',
-      paddingBottom: '3px',
-      paddingTop: '35px'
+      paddingBottom: '3px'
     },
     hoverCardData: {
       fontFamily: 'Segoe UI',
@@ -77,6 +76,16 @@ export const getStyles = (props: IMultiCountStyleProps): IMultiCountStyles => {
     hoverCardBodyText: {
       marginRight: '16px',
       fontFamily: 'Segoe UI'
+    },
+    customMessage: {
+      fontSize: '10px',
+      lineHeight: '12px',
+      fontFamily: 'Segoe UI',
+      fontWeight: 600,
+      marginTop: '13px',
+      marginLeft: '16px',
+      marginBottom: '8px',
+      opacity: '0.6'
     }
   };
 };
