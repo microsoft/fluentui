@@ -68,7 +68,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
     this._warnDeprecations({
       rootProps: undefined,
-      description: 'secondaryText'
+      description: 'secondaryText',
+      toggled: 'checked'
     });
     this._labelId = getId();
     this._descriptionId = getId();

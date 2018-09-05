@@ -1,6 +1,14 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 30 Aug 2018 10:32:49 GMT and should not be manually modified.
+This log was last generated on Wed, 05 Sep 2018 10:29:25 GMT and should not be manually modified.
+
+## 6.17.2
+Wed, 05 Sep 2018 10:29:25 GMT
+
+### Patches
+
+- Scroll: add flex-grow: 1 to scrollable content elements
+- Scroll: remove inline styles from scrollable content elements
 
 ## 6.17.1
 Thu, 30 Aug 2018 10:32:49 GMT

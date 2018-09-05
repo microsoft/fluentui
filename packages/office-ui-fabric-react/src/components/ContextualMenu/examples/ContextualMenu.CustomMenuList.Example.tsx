@@ -4,10 +4,7 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import './ContextualMenuExample.scss';
-import {
-  IContextualMenuListProps,
-  IContextualMenuItem
-} from 'office-ui-fabric-react/lib/ContextualMenu';
+import { IContextualMenuListProps, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { IRenderFunction } from '@uifabric/utilities';
 
 const ITEMS: IContextualMenuItem[] = [

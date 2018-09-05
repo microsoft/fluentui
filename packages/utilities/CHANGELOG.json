@@ -2,6 +2,30 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.17.2",
+      "tag": "@uifabric/utilities_v6.17.2",
+      "date": "Wed, 05 Sep 2018 10:29:25 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "da7fc2b7254cf643749949ac1f5f8605f2477b81",
+            "comment": "Scroll: add flex-grow: 1 to scrollable content elements"
+          },
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "da7fc2b7254cf643749949ac1f5f8605f2477b81",
+            "comment": "Scroll: remove inline styles from scrollable content elements"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.8.2 <7.0.0` to `>=6.8.3 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.17.1",
       "tag": "@uifabric/utilities_v6.17.1",
       "date": "Thu, 30 Aug 2018 10:32:49 GMT",

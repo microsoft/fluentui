@@ -624,8 +624,8 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                 }
             style={
               Object {
-                "height": undefined,
-                "width": undefined,
+                "height": 16,
+                "width": 16,
               }
             }
           >
@@ -1137,8 +1137,8 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                 }
             style={
               Object {
-                "height": undefined,
-                "width": undefined,
+                "height": 16,
+                "width": 16,
               }
             }
           >
@@ -1270,8 +1270,8 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                 }
             style={
               Object {
-                "height": undefined,
-                "width": undefined,
+                "height": 16,
+                "width": 16,
               }
             }
           >

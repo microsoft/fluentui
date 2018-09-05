@@ -2,6 +2,33 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.28.2",
+      "tag": "@uifabric/experiments_v6.28.2",
+      "date": "Wed, 05 Sep 2018 10:29:25 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "exchangeadmin <yuz@microsoft.com>",
+            "commit": "5ca37d1fc22afecbde83bee0cbb1b64206a1b370",
+            "comment": "nav fix"
+          },
+          {
+            "author": "exchangeadmin <yuz@microsoft.com>",
+            "commit": "5ca37d1fc22afecbde83bee0cbb1b64206a1b370",
+            "comment": "improve nav per designer feedback"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.17.2` to `^0.17.3`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.63.0 <7.0.0` to `>=6.64.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.28.1",
       "tag": "@uifabric/experiments_v6.28.1",
       "date": "Thu, 30 Aug 2018 19:26:04 GMT",

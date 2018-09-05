@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/dashboard",
-      "comment": "change datapoint for horizontal bar chart ",
+      "comment": "patch",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/dashboard",
-  "email": "gorigarajesh@gmail.com"
+  "email": "raghurk@microsoft.com"
 }

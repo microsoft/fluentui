@@ -1,6 +1,51 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Thu, 30 Aug 2018 19:26:04 GMT and should not be manually modified.
+This log was last generated on Wed, 05 Sep 2018 10:29:25 GMT and should not be manually modified.
+
+## 0.19.0
+Wed, 05 Sep 2018 10:29:25 GMT
+
+### Minor changes
+
+- Adding hover behaviour for Multicount component and onClick listener on each row of the Multicount component
+
+### Patches
+
+- css issues for card
+- Added 19px lineHeight to card header text
+- fix leftNav styles per PM feedback
+- revert the change for expand behavior
+- Update Recommendation Header text resize mechanism and description text line height
+
+## 0.18.0
+Tue, 04 Sep 2018 10:27:15 GMT
+
+### Minor changes
+
+- Add edit section common control and examples
+
+## 0.17.6
+Fri, 31 Aug 2018 20:48:42 GMT
+
+### Patches
+
+- Removed hover effect from dashboard card title when dragging is disabled
+
+## 0.17.5
+Fri, 31 Aug 2018 17:27:00 GMT
+
+### Patches
+
+- css issues for card
+- change datapoints for line chart
+
+## 0.17.4
+Fri, 31 Aug 2018 10:27:35 GMT
+
+### Patches
+
+- Fixes the usage of renamed variable
+- change datapoint for horizontal bar chart 
 
 ## 0.17.3
 Thu, 30 Aug 2018 19:26:04 GMT

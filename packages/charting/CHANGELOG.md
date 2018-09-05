@@ -1,6 +1,28 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 30 Aug 2018 19:26:04 GMT and should not be manually modified.
+This log was last generated on Wed, 05 Sep 2018 10:29:25 GMT and should not be manually modified.
+
+## 0.17.3
+Wed, 05 Sep 2018 10:29:25 GMT
+
+### Patches
+
+- Donut chart align issues fixed
+
+## 0.17.2
+Fri, 31 Aug 2018 17:27:00 GMT
+
+### Patches
+
+- add legends and hover behaviour for line chart
+
+## 0.17.1
+Fri, 31 Aug 2018 10:27:35 GMT
+
+### Patches
+
+- Fixes the usage of renamed variable
+- horizontal bar chart modified according to figma 
 
 ## 0.17.0
 Thu, 30 Aug 2018 19:26:04 GMT
