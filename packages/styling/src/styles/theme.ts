@@ -203,6 +203,7 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     buttonBackgroundHovered: p.neutralLight,
     buttonBackgroundCheckedHovered: p.neutralLight,
     buttonBackgroundPressed: p.neutralLight,
+    buttonBackgroundDisabled: p.neutralLight,
     buttonBorder: 'transparent',
     buttonText: p.neutralPrimary,
     buttonTextHovered: p.black,
