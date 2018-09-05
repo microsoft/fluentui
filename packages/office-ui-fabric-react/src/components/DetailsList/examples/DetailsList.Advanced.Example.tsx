@@ -2,12 +2,8 @@ import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
-import {
-  IContextualMenuProps,
-  IContextualMenuItem,
-  DirectionalHint,
-  ContextualMenu
-} from 'office-ui-fabric-react/lib/ContextualMenu';
+import { IContextualMenuProps, IContextualMenuItem, DirectionalHint, ContextualMenu } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import {
   CheckboxVisibility,
   ColumnActionsMode,
@@ -20,8 +16,11 @@ import {
   SelectionMode,
   buildColumns
 } from 'office-ui-fabric-react/lib/DetailsList';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { createListItems, isGroupable } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import './DetailsList.Advanced.Example.scss';
+import { IDetailsColumnProps } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsColumn';
+import { Checkbox } from '../../..';
 
 const DEFAULT_ITEM_LIMIT = 5;
 const PAGING_SIZE = 10;
@@ -46,11 +45,15 @@ export interface IDetailsListAdvancedExampleState {
   selectionMode?: SelectionMode;
   sortedColumnKey?: string;
   selectionCount: number;
+  isCalloutVisible: boolean[];
+  showRenderDividerView: boolean;
 }
 
 export class DetailsListAdvancedExample extends React.Component<{}, IDetailsListAdvancedExampleState> {
   private _isFetchingItems: boolean;
   private _selection: Selection;
+  private _menuButtonElement: any[];
+  private _indexButton: number;
 
   constructor(props: {}) {
     super(props);
@@ -58,6 +61,8 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     if (!_items) {
       _items = createListItems(ITEMS_COUNT);
     }
+    this._menuButtonElement = [];
+    this._indexButton = -1;
 
     this._selection = new Selection({
       onSelectionChanged: this._onItemsSelectionChanged
@@ -65,6 +70,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     this._selection.setItems(_items, false);
 
     this.state = {
+      isCalloutVisible: [],
       items: _items,
       selectionCount: 0,
       groups: undefined,
@@ -74,15 +80,8 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
       selectionMode: SelectionMode.multiple,
       canResizeColumns: true,
       checkboxVisibility: CheckboxVisibility.onHover,
-      columns: this._buildColumns(
-        _items,
-        true,
-        this._onColumnClick,
-        '',
-        undefined,
-        undefined,
-        this._onColumnContextMenu
-      ),
+      columns: this._buildColumns(_items, true, this._onColumnClick, '', undefined, undefined, this._onColumnContextMenu),
+      showRenderDividerView: false,
       contextualMenuProps: undefined,
       sortedColumnKey: 'name',
       isSortedDescending: false,
@@ -121,10 +120,15 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
 
     return (
       <div className="ms-DetailsListAdvancedExample">
-        <CommandBar
-          items={this._getCommandItems()}
-          farItems={[{ key: 'count', text: `${this.state.selectionCount} selected` }]}
-        />
+        <CommandBar items={this._getCommandItems()} farItems={[{ key: 'count', text: `${this.state.selectionCount} selected` }]} />
+        <div>
+          <Checkbox
+            label="Show on render divider feature on column header divider"
+            checked={this.state.showRenderDividerView}
+            onChange={this._onRenderDividerCheckboxChange}
+          />
+          <br />
+        </div>
 
         {isGrouped ? <TextField label="Group Item Limit" onChange={this._onItemLimitChanged} /> : null}
 
@@ -158,6 +162,90 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
       </div>
     );
   }
+
+  private _onRenderDividerCheckboxChange = (event: React.FormEvent<HTMLInputElement>, showRenderDividerView: boolean): void => {
+    const { columns = [] } = this.state;
+    for (let i = 0; i < columns.length; i++) {
+      // based on the state of checkbox, either adding the onRenderDivider callback or removing it
+      if (showRenderDividerView) {
+        columns[i] = {
+          ...columns[i],
+          onRenderDivider: this._onRenderDivider
+        };
+      } else {
+        const { onRenderDivider, ..._column } = columns[i];
+        columns[i] = _column;
+      }
+    }
+    this.setState({
+      showRenderDividerView,
+      columns
+    });
+  };
+
+  private _onCalloutDismiss = (index: number): void => {
+    const { isCalloutVisible } = this.state;
+    isCalloutVisible[index] = false;
+    this.setState({
+      isCalloutVisible
+    });
+  };
+
+  private _onCalloutDismissForIndex = (index: number): any => {
+    return () => this._onCalloutDismiss(index);
+  };
+
+  private _onMouseAction = (index: number): void => {
+    const { isCalloutVisible } = this.state;
+    // for positioning of the Callout
+    this._indexButton = index;
+    isCalloutVisible[index] = !isCalloutVisible[index];
+    this.setState({
+      isCalloutVisible
+    });
+  };
+
+  private _onMouseActionForIndex = (index: number): any => {
+    return () => this._onMouseAction(index);
+  };
+
+  private _onRenderDivider = (
+    iDetailsColumnProps: IDetailsColumnProps,
+    defaultRenderer: (props?: IDetailsColumnProps) => JSX.Element | null
+  ): JSX.Element => {
+    const { columnIndex } = iDetailsColumnProps;
+    return (
+      <React.Fragment key={`divider-wrapper-${columnIndex}`}>
+        <span className="ms-DetailsHeader-divider">{defaultRenderer(iDetailsColumnProps)}</span>
+        <span ref={(component: any) => (this._menuButtonElement[columnIndex] = component)}>
+          <Icon
+            iconName="BoxAdditionSolid"
+            style={{ fontSize: 20 }}
+            onClick={this._onMouseActionForIndex(columnIndex)}
+            className="ms-DetailsHeader-divider-icon"
+          />
+        </span>
+        <Callout
+          beakWidth={1}
+          className="ms-CalloutExample-callout"
+          ariaLabelledBy={'callout-label-1'}
+          ariaDescribedBy={'callout-description-1'}
+          role={'alertdialog'}
+          gapSpace={0}
+          target={this._menuButtonElement[this._indexButton]}
+          onDismiss={this._onCalloutDismissForIndex(columnIndex)}
+          setInitialFocus={true}
+          hidden={!this.state.isCalloutVisible[columnIndex]}
+        >
+          <div className="ms-CalloutExample-header">
+            <p className="ms-CalloutExample-title" id={'callout-label-1'}>
+              Divider #{columnIndex + 1}
+            </p>
+          </div>
+        </Callout>
+      </React.Fragment>
+    );
+  };
 
   private _onDataMiss(index: number): void {
     index = Math.floor(index / PAGING_SIZE) * PAGING_SIZE;
@@ -202,13 +290,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
 
     this.setState({
       canResizeColumns: canResizeColumns,
-      columns: this._buildColumns(
-        items as any[],
-        canResizeColumns,
-        this._onColumnClick,
-        sortedColumnKey,
-        isSortedDescending
-      )
+      columns: this._buildColumns(items as any[], canResizeColumns, this._onColumnClick, sortedColumnKey, isSortedDescending)
     });
   };
 
@@ -241,15 +323,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
   };
 
   private _getCommandItems = (): IContextualMenuItem[] => {
-    const {
-      canResizeColumns,
-      checkboxVisibility,
-      constrainMode,
-      isHeaderVisible,
-      isLazyLoaded,
-      layoutMode,
-      selectionMode
-    } = this.state;
+    const { canResizeColumns, checkboxVisibility, constrainMode, isHeaderVisible, isLazyLoaded, layoutMode, selectionMode } = this.state;
 
     return [
       {
@@ -501,22 +575,12 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
   };
 
   private _onSortColumn = (key: string, isSortedDescending: boolean): void => {
-    const sortedItems = _items
-      .slice(0)
-      .sort((a: any, b: any) => ((isSortedDescending ? a[key] < b[key] : a[key] > b[key]) ? 1 : -1));
+    const sortedItems = _items.slice(0).sort((a: any, b: any) => ((isSortedDescending ? a[key] < b[key] : a[key] > b[key]) ? 1 : -1));
 
     this.setState({
       items: sortedItems,
       groups: undefined,
-      columns: this._buildColumns(
-        sortedItems,
-        true,
-        this._onColumnClick,
-        key,
-        isSortedDescending,
-        undefined,
-        this._onColumnContextMenu
-      ),
+      columns: this._buildColumns(sortedItems, true, this._onColumnClick, key, isSortedDescending, undefined, this._onColumnContextMenu),
       isSortedDescending: isSortedDescending,
       sortedColumnKey: key
     });
@@ -650,14 +714,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     groupedColumnKey?: string,
     onColumnContextMenu?: (column: IColumn, ev: React.MouseEvent<HTMLElement>) => any
   ) {
-    const columns = buildColumns(
-      items,
-      canResizeColumns,
-      onColumnClick,
-      sortedColumnKey,
-      isSortedDescending,
-      groupedColumnKey
-    );
+    const columns = buildColumns(items, canResizeColumns, onColumnClick, sortedColumnKey, isSortedDescending, groupedColumnKey);
 
     columns.forEach(column => {
       column.onColumnContextMenu = onColumnContextMenu;
