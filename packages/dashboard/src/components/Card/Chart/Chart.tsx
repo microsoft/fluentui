@@ -7,7 +7,6 @@ import {
   ILegendDataItem,
   LineChart,
   MultiStackedBarChart,
-  PieChart,
   StackedBarChart,
   VerticalBarChart
 } from '@uifabric/charting';
@@ -75,15 +74,7 @@ export class Chart extends React.Component<IChartInternalProps, {}> {
         return <DonutChart data={this.props.chartData![0]} innerRadius={40} />;
       }
       case ChartType.PieChart: {
-        return (
-          <PieChart
-            data={this._singleChartDataPoints}
-            chartTitle={this._chartLabel}
-            colors={this._colors}
-            width={this._getWidth()}
-            height={this._getHeight()}
-          />
-        );
+        return <DonutChart data={this.props.chartData![0]} innerRadius={0} />;
       }
       case ChartType.StackedBarChart: {
         return this._getStackedBarChart();

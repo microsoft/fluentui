@@ -1,7 +1,7 @@
 import { Breakpoints, Layout, Layouts } from 'react-grid-layout';
 import { ISection } from '../Section/Section.types';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { DragApiRefObject } from 'react-grid-layout';
+import { DragApiRefObject, ItemCallback } from 'react-grid-layout';
 import { ICard, CardSize } from '../Card/Card.types';
 
 export interface IDashboardGridLayoutStyles {
@@ -87,6 +87,21 @@ export interface IDashboardGridLayoutProps {
    * @default false
    */
   isResizable?: boolean;
+
+  /**
+   * Calls when drag starts.
+   */
+  onDragStart?: ItemCallback;
+
+  /**
+   * Calls on each drag movement.
+   */
+  onDrag?: ItemCallback;
+
+  /**
+   * Calls when drag is complete.
+   */
+  onDragStop?: ItemCallback;
 
   /**
    * The row height used for React-Grid-Layout, if not provided, the default value is used

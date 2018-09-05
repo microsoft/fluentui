@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { AnnotationType, IMultiCountProps, IMultiCountRow, IMultiCountStyles } from './MultiCount.types';
 import { getStyles } from './MultiCountStyles';
+import { positiveChangeState } from './PositiveChangeState';
+import { negativeStateChange } from './NegativeStateChange';
+import { noStateChange } from './NoStateChange';
 
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-
 import { HoverCard, IExpandingCardProps, ExpandingCardMode } from 'office-ui-fabric-react/lib/HoverCard';
 
 export interface IMultiCountState {
@@ -56,15 +57,14 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
       }
       const changeIconIndicator =
         AnnotationType[row.type] === AnnotationType.neutral
-          ? ''
+          ? noStateChange
           : AnnotationType[row.type] === AnnotationType.positive
-            ? 'FlickDown'
-            : 'FlickUp';
+            ? negativeStateChange
+            : positiveChangeState;
       const getClassNames = classNamesFunction<IMultiCountProps, IMultiCountStyles>();
       const classNames = getClassNames(
         getStyles({
           color: row.color,
-          iconName: changeIconIndicator,
           annotationTextFontSize: annotationTextFontSize,
           annotationTextColor: annotationTextColor,
           bodyTextColor: bodyTextColor,
@@ -79,6 +79,10 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
         renderData: row,
         mode: ExpandingCardMode.compact,
         styles: {
+          root: {
+            width: 'auto',
+            height: 'auto'
+          },
           compactCard: {
             width: 'auto',
             height: 'auto'
@@ -101,7 +105,7 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
             </div>
             <div className={classNames.annotationText}>
               <span className={classNames.icon}>
-                <Icon iconName={changeIconIndicator} />
+                <img src={changeIconIndicator} />
               </span>
               <span className={classNames.annotationText}>{row.annotaionText}</span>
             </div>
@@ -131,23 +135,23 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
   private _onRenderCompactCard = (data: IMultiCountRow): JSX.Element => {
     const changeIconIndicator =
       AnnotationType[data.type] === AnnotationType.neutral
-        ? ''
+        ? noStateChange
         : AnnotationType[data.type] === AnnotationType.positive
-          ? 'FlickDown'
-          : 'FlickUp';
+          ? negativeStateChange
+          : positiveChangeState;
     const getClassNames = classNamesFunction<IMultiCountProps, IMultiCountStyles>();
     const classNames = getClassNames(
       getStyles({
-        color: data.color,
-        iconName: changeIconIndicator
+        color: data.color
       })
     );
     return (
       <div className={classNames.hoverCardRoot}>
+        <div />
         <div className={classNames.hoverCardText}>
           <div className={classNames.hoverCardBodyText}>{data.bodyText}</div>
           <div className={classNames.icon}>
-            <Icon iconName={changeIconIndicator} />
+            <img src={changeIconIndicator} />
           </div>
           <div className={classNames.hoverCardAnnotationText}>{data.annotaionText}</div>
         </div>
