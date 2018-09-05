@@ -17,7 +17,7 @@ export const getStyles = (props: IGroupFooterStyleProps): IGroupFooterStyles => 
         position: 'relative',
         padding: '5px 38px',
         selectors: {
-          [`:global(.${classNames.link}`]: {
+          [`& :global(.${classNames.link}`]: {
             fontSize: FontSizes.small
           }
         }
