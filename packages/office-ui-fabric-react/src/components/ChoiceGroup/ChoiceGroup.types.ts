@@ -72,7 +72,7 @@ export interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | H
   onRenderField?: IRenderFunction<IChoiceGroupOption>;
 
   /**
-   * Optional override of option render
+   * Optional override of label render
    */
   onRenderLabel?: (option: IChoiceGroupOption) => JSX.Element;
 

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ITheme, IStyle } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IButtonProps } from '../../Button';
+import { IIconProps } from '../../Icon';
 
 export interface ISearchBox {
   /**
@@ -87,6 +88,11 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
    * The props for the clear button.
    */
   clearButtonProps?: IButtonProps;
+
+  /**
+   * The props for the icon.
+   */
+  iconProps?: Pick<IIconProps, Exclude<keyof IIconProps, 'className'>>;
 
   /**
    * Whether or not the SearchBox is underlined.

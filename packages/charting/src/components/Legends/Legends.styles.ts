@@ -25,7 +25,8 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
       backgroundColor: props.colorOnSelectedState,
       marginRight: '8px',
       border: '1px solid',
-      borderColor: props.borderColor ? props.borderColor : palette.black
+      borderColor: props.borderColor ? props.borderColor : palette.black,
+      opacity: props.colorOnSelectedState === palette.white ? '0.6' : ''
     },
     text: {
       fontSize: '12px',

@@ -66,7 +66,7 @@ export class DetailsListDragDropExample extends React.Component<
         <Toggle
           label={'Enable Column Reorder'}
           checked={isColumnReorderEnabled}
-          onChanged={this._onChangeColumnReorderEnabled}
+          onChange={this._onChangeColumnReorderEnabled}
           onText={'Enabled'}
           offText={'Disabled'}
         />
@@ -136,7 +136,7 @@ export class DetailsListDragDropExample extends React.Component<
     this.setState({ frozenColumnCountFromEnd: text });
   };
 
-  private _onChangeColumnReorderEnabled = (checked: boolean): void => {
+  private _onChangeColumnReorderEnabled = (ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
     this.setState({ isColumnReorderEnabled: checked });
   };
 

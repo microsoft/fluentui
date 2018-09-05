@@ -1,11 +1,16 @@
 import { styled } from '../../Utilities';
-import { IDetailsHeaderProps, IDetailsHeaderStyleProps, IDetailsHeaderStyles } from './DetailsHeader.types';
+import {
+  IDetailsHeaderProps,
+  IDetailsHeaderBaseProps,
+  IDetailsHeaderStyleProps,
+  IDetailsHeaderStyles
+} from './DetailsHeader.types';
 import { DetailsHeaderBase } from './DetailsHeader.base';
 import { getStyles } from './DetailsHeader.styles';
 
-export { IDetailsHeaderProps };
+export { IDetailsHeaderProps, IDetailsHeaderBaseProps };
 
-export const DetailsHeader = styled<IDetailsHeaderProps, IDetailsHeaderStyleProps, IDetailsHeaderStyles>(
+export const DetailsHeader = styled<IDetailsHeaderBaseProps, IDetailsHeaderStyleProps, IDetailsHeaderStyles>(
   DetailsHeaderBase,
   getStyles,
   undefined,

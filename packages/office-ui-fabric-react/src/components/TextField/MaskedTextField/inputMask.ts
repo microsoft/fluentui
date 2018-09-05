@@ -220,11 +220,14 @@ export function clearPrev(maskCharData: IMaskValue[], selectionStart: number): I
  * @return The displayIndex of the next format character
  */
 export function insertString(maskCharData: IMaskValue[], selectionStart: number, newString: string): number {
-  let stringIndex = 0,
-    nextIndex = 0;
+  let stringIndex = 0;
+  let nextIndex = 0;
+  let isStringInserted = false;
+
   // Iterate through _maskCharData finding values with a displayIndex after the specified range start
   for (let i = 0; i < maskCharData.length && stringIndex < newString.length; i++) {
     if (maskCharData[i].displayIndex >= selectionStart) {
+      isStringInserted = true;
       nextIndex = maskCharData[i].displayIndex;
       // Find the next character in the newString that matches the format
       while (stringIndex < newString.length) {
@@ -243,5 +246,6 @@ export function insertString(maskCharData: IMaskValue[], selectionStart: number,
       }
     }
   }
-  return nextIndex;
+
+  return isStringInserted ? nextIndex : selectionStart;
 }

@@ -1,11 +1,11 @@
 import { styled } from '../../Utilities';
-import { IDetailsRowProps, IDetailsRowStyleProps, IDetailsRowStyles } from './DetailsRow.types';
+import { IDetailsRowProps, IDetailsRowBaseProps, IDetailsRowStyleProps, IDetailsRowStyles } from './DetailsRow.types';
 import { DetailsRowBase } from './DetailsRow.base';
 import { getStyles } from './DetailsRow.styles';
 
-export { IDetailsRowProps };
+export { IDetailsRowProps, IDetailsRowBaseProps };
 
-export const DetailsRow = styled<IDetailsRowProps, IDetailsRowStyleProps, IDetailsRowStyles>(
+export const DetailsRow = styled<IDetailsRowBaseProps, IDetailsRowStyleProps, IDetailsRowStyles>(
   DetailsRowBase,
   getStyles,
   undefined,

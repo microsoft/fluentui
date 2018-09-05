@@ -2,6 +2,117 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.17.2",
+      "tag": "@uifabric/utilities_v6.17.2",
+      "date": "Wed, 05 Sep 2018 10:29:25 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "da7fc2b7254cf643749949ac1f5f8605f2477b81",
+            "comment": "Scroll: add flex-grow: 1 to scrollable content elements"
+          },
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "da7fc2b7254cf643749949ac1f5f8605f2477b81",
+            "comment": "Scroll: remove inline styles from scrollable content elements"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.8.2 <7.0.0` to `>=6.8.3 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.17.1",
+      "tag": "@uifabric/utilities_v6.17.1",
+      "date": "Thu, 30 Aug 2018 10:32:49 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "03c9afa72b5906b1c9d15459d01af974da32a1f5",
+            "comment": "Replace comment reference to old ms-Fabric is-focusVisible with ms-Fabric--isFocusVisible"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.17.0",
+      "tag": "@uifabric/utilities_v6.17.0",
+      "date": "Tue, 28 Aug 2018 10:23:58 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "3fb8e9d98632b11d38d079989c3e44c137d04e5c",
+            "comment": "Add mobileDetector to detect iOS devices"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.8.0 <7.0.0` to `>=6.8.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.16.0",
+      "tag": "@uifabric/utilities_v6.16.0",
+      "date": "Fri, 24 Aug 2018 17:02:14 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "63835ddd705e2350aa025ea69b041f28a3be5e19",
+            "comment": "Reverting Customizer React 16 context change."
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.15.1",
+      "tag": "@uifabric/utilities_v6.15.1",
+      "date": "Fri, 24 Aug 2018 10:26:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "0b20b876f152cc69147617e9b848feaa2dbb71df",
+            "comment": "Fix @types/prop-types being inconsistently restrictive."
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.15.0",
+      "tag": "@uifabric/utilities_v6.15.0",
+      "date": "Thu, 23 Aug 2018 10:28:17 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "e4daa37b59065e1d90b91ac728b3e3c7e52d9e77",
+            "comment": "Customizer: moving to use React 16 context."
+          },
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "882a50c5ae8d6e4521b21842d5f68723ba4f9d2e",
+            "comment": "Scroll: allow scrolling within a target element"
+          }
+        ],
+        "patch": [
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "882a50c5ae8d6e4521b21842d5f68723ba4f9d2e",
+            "comment": "Scroll: disable ios body scrolling in disableBodyScroll"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.14.1",
       "tag": "@uifabric/utilities_v6.14.1",
       "date": "Tue, 14 Aug 2018 10:27:33 GMT",

@@ -10,7 +10,7 @@ exports[`DetailsHeader can render 1`] = `
       ms-DetailsHeader
       {
         background: #ffffff;
-        border-bottom: 1px solid #c8c8c8;
+        border-bottom: 1px solid #eaeaea;
         box-sizing: content-box;
         cursor: default;
         display: inline-block;
@@ -373,7 +373,7 @@ exports[`DetailsHeader can render 1`] = `
         id="header0-a"
         onClick={[Function]}
         onContextMenu={[Function]}
-        role="button"
+        role={undefined}
       >
         <span
           className=
@@ -566,7 +566,7 @@ exports[`DetailsHeader can render 1`] = `
         id="header0-b"
         onClick={[Function]}
         onContextMenu={[Function]}
-        role="button"
+        role={undefined}
       >
         <span
           className=
@@ -781,7 +781,7 @@ exports[`DetailsHeader can render 1`] = `
         id="header0-c"
         onClick={[Function]}
         onContextMenu={[Function]}
-        role="button"
+        role={undefined}
       >
         <span
           className=
@@ -888,7 +888,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
       ms-DetailsHeader
       {
         background: #ffffff;
-        border-bottom: 1px solid #c8c8c8;
+        border-bottom: 1px solid #eaeaea;
         box-sizing: content-box;
         cursor: default;
         display: inline-block;
@@ -1251,7 +1251,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         id="header4-a"
         onClick={[Function]}
         onContextMenu={[Function]}
-        role="button"
+        role={undefined}
       >
         <span
           className=
@@ -1444,7 +1444,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         id="header4-b"
         onClick={[Function]}
         onContextMenu={[Function]}
-        role="button"
+        role={undefined}
       >
         <span
           className=
@@ -1683,7 +1683,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         id="header4-c"
         onClick={[Function]}
         onContextMenu={[Function]}
-        role="button"
+        role={undefined}
       >
         <span
           className=

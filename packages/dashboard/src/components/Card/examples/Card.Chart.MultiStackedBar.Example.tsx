@@ -1,6 +1,15 @@
 import * as React from 'react';
-import { IDataPoint, ILegendDataItem } from '@uifabric/charting';
-import { Card, CardContentType, CardSize, ChartType, ICardProps, Priority } from '@uifabric/dashboard';
+import { IChartProps as IChartingProps, IChartDataPoint } from '@uifabric/charting';
+import {
+  Card,
+  CardContentType,
+  CardSize,
+  ChartType,
+  IChartProps,
+  ICardContentDetails,
+  ICardProps,
+  Priority
+} from '@uifabric/dashboard';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export class MultiStackedBarChartExample extends React.Component<{}, {}> {
@@ -25,49 +34,53 @@ export class MultiStackedBarChartExample extends React.Component<{}, {}> {
       ]
     };
 
-    const points: IDataPoint[][] = [
-      [
-        { x: 'Debit card numbers (EU and USA)', y: 40 },
-        { x: 'Passport numbers (USA)', y: 23 },
-        { x: 'Social security numbers', y: 35 }
-      ],
-      [{ x: 'Credit card numbers', y: 87 }, { x: 'Tax identification numbers (USA)', y: 87 }]
+    const firstChartPoints: IChartDataPoint[] = [
+      { legend: 'Debit card numbers (EU and USA)', data: 40, color: DefaultPalette.red },
+      { legend: 'Passport numbers (USA)', data: 23, color: DefaultPalette.green },
+      { legend: 'Social security numbers', data: 35, color: DefaultPalette.yellow },
+      { legend: 'Credit card numbers', data: 87, color: DefaultPalette.blue },
+      { legend: 'Tax identification numbers (USA)', data: 87, color: DefaultPalette.purple }
     ];
 
-    const colors: ILegendDataItem[] = [
-      { legendText: 'Debit card numbers (EU and USA)', legendColor: DefaultPalette.blueLight },
-      { legendText: 'Passport numbers (USA)', legendColor: DefaultPalette.blue },
-      { legendText: 'Social security numbers', legendColor: DefaultPalette.blueMid },
-      { legendText: 'Credit card numbers', legendColor: DefaultPalette.red },
-      { legendText: 'Tax identification numbers (USA)', legendColor: DefaultPalette.black }
+    const secondChartPoints: IChartDataPoint[] = [
+      { legend: 'Phone Numbers', data: 40, color: DefaultPalette.blue },
+      { legend: 'Credit card Numbers', data: 23, color: DefaultPalette.green },
+      { legend: 'Asset Numbers', data: 35, color: DefaultPalette.yellow }
     ];
 
-    const chartContent = {
-      chartLabels: ['Monitored', 'Unmonitored'],
+    const data: IChartingProps[] = [
+      {
+        chartTitle: 'Monitored',
+        chartData: firstChartPoints
+      },
+      {
+        chartTitle: 'Unmonitored',
+        chartData: secondChartPoints
+      }
+    ];
+
+    const chartContent1: IChartProps = {
       chartType: ChartType.StackedBarChart,
-      data: points,
-      barHeight: 8,
-      chartUpdatedOn: 'Updated 6:20 pm today',
-      compactChartWidth: 394,
-      legendColors: colors
+      chartData: data,
+      chartUpdatedOn: 'Updated 6:20 pm today'
     };
 
-    const textContent = {
-      subHeaderText: 'Edit data loss prevention policies',
-      bodyText:
-        'Information based on your data loss prevention (DLP) policies may take up to 24 hours to appear in this activity report'
+    const chartContent2: IChartProps = {
+      chartType: ChartType.StackedBarChart,
+      chartData: data,
+      chartUpdatedOn: 'Updated 6:20 pm today'
     };
 
-    const contentAreaList = [
+    const contentAreaList: ICardContentDetails[] = [
       {
         priority: Priority.Priority1,
         cardContentType: CardContentType.Chart,
-        content: chartContent
+        content: chartContent1
       },
       {
         priority: Priority.Priority2,
-        cardContentType: CardContentType.BodyText,
-        content: textContent
+        cardContentType: CardContentType.Chart,
+        content: chartContent2
       }
     ];
 

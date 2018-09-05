@@ -664,4 +664,44 @@ describe('SpinButton', () => {
 
     expect(onValidate).toBeCalled();
   });
+
+  it(`should pass KeyCode ${KeyCodes.enter} to onValidate handler`, () => {
+    let keyCode;
+    const onValidate: jest.Mock = jest.fn((value, event) => {
+      keyCode = event.which;
+      return value;
+    });
+    const exampleNewValue = '99';
+
+    const renderedDOM: HTMLElement = renderIntoDocument(<SpinButton label="label" onValidate={onValidate} />);
+
+    const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
+    ReactTestUtils.Simulate.focus(inputDOM);
+    ReactTestUtils.Simulate.input(inputDOM, mockEvent(String(exampleNewValue)));
+    ReactTestUtils.Simulate.keyDown(inputDOM, { which: KeyCodes.enter });
+    expect(keyCode).toEqual(KeyCodes.enter);
+    expect(onValidate).toBeCalled();
+    ReactTestUtils.Simulate.blur(inputDOM);
+    expect(onValidate).toHaveBeenCalledTimes(1);
+  });
+
+  it('onValidate is not called again on enter key press until the input changes', () => {
+    const onValidate: jest.Mock = jest.fn((value, event) => {
+      return value;
+    });
+    const exampleNewValue = '99';
+    const exampleChangedValue = '10';
+
+    const renderedDOM: HTMLElement = renderIntoDocument(<SpinButton label="label" onValidate={onValidate} />);
+
+    const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
+    ReactTestUtils.Simulate.input(inputDOM, mockEvent(String(exampleNewValue)));
+    ReactTestUtils.Simulate.keyDown(inputDOM, { which: KeyCodes.enter });
+    expect(onValidate).toHaveBeenCalledTimes(1);
+    ReactTestUtils.Simulate.keyDown(inputDOM, { which: KeyCodes.enter });
+    expect(onValidate).toHaveBeenCalledTimes(1);
+    ReactTestUtils.Simulate.input(inputDOM, mockEvent(String(exampleChangedValue)));
+    ReactTestUtils.Simulate.keyDown(inputDOM, { which: KeyCodes.enter });
+    expect(onValidate).toHaveBeenCalledTimes(2);
+  });
 });

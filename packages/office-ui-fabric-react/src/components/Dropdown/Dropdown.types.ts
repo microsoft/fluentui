@@ -14,7 +14,7 @@ export interface IDropdown {
   focus: (shouldOpenOnFocus?: boolean) => void;
 }
 
-export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown> {
+export interface IDropdownProps extends ISelectableDroppableTextProps<HTMLDivElement> {
   /**
    * Input placeholder text. Displayed until option is selected.
    */
@@ -26,7 +26,12 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown>
   options: IDropdownOption[];
 
   /**
-   * Callback issues when the selected option changes
+   * Callback issued when the selected option changes.
+   */
+  onChange?: (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption, index?: number) => void;
+
+  /**
+   * @deprecated Use onChange instead.
    */
   onChanged?: (option: IDropdownOption, index?: number) => void;
 

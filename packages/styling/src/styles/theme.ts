@@ -1,5 +1,5 @@
 import { Customizations, merge } from '@uifabric/utilities';
-import { IPalette, ISemanticColors, ITheme, IPartialTheme } from '../interfaces/index';
+import { IPalette, ISemanticColors, ITheme, IPartialTheme, ISemanticTextColors } from '../interfaces/index';
 import { ITypography, IPartialTypography, IFontVariant } from '../interfaces/ITypography';
 import { DefaultFontStyles } from './DefaultFontStyles';
 import { DefaultPalette } from './DefaultPalette';
@@ -113,17 +113,19 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
 
   for (const variantName in variants) {
     if (variants.hasOwnProperty(variantName)) {
-      const variant = variants[variantName];
+      const variant: IFontVariant = {
+        ...variants.default,
+        ...variants[variantName]
+      };
 
-      if (variant.fontFamily && typography.families[variant.fontFamily]) {
-        variant.fontFamily = typography.families[variant.fontFamily];
-      }
-      if (variant.fontSize && typography.sizes[variant.fontSize]) {
-        variant.fontSize = typography.sizes[variant.fontSize];
-      }
-      if (variant.fontWeight && typography.weights[variant.fontWeight]) {
-        variant.fontWeight = typography.weights[variant.fontWeight];
-      }
+      variant.family = _expandFrom(variant.family, typography.families);
+      variant.size = _expandFrom(variant.size, typography.sizes);
+      variant.weight = _expandFrom(variant.weight, typography.weights);
+      variant.color = _expandFrom(variant.color, newSemanticColors);
+      variant.hoverColor = _expandFrom(variant.hoverColor, newSemanticColors);
+      variant.disabledColor = _expandFrom(variant.disabledColor, newSemanticColors);
+
+      variants[variantName] = variant;
     }
   }
 
@@ -140,6 +142,21 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
   };
 }
 
+/**
+ * Helper to pull a given property name from a given set of sources, in order, if available. Otherwise returns the property name.
+ */
+function _expandFrom<TRetVal, TMapType>(propertyName: string | TRetVal | undefined, ...maps: TMapType[]): TRetVal {
+  if (propertyName) {
+    for (const map of maps) {
+      if (map[propertyName as string]) {
+        return map[propertyName as string];
+      }
+    }
+  }
+
+  return propertyName as TRetVal;
+}
+
 // Generates all the semantic slot colors based on the Fabric palette.
 // We'll use these as fallbacks for semantic slots that the passed in theme did not define.
 function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depComments: boolean): ISemanticColors {
@@ -151,7 +168,7 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     bodyText: p.neutralPrimary,
     bodyTextChecked: p.black,
     bodySubtext: p.neutralSecondary,
-    bodyDivider: p.neutralTertiaryAlt,
+    bodyDivider: p.neutralLight,
 
     disabledBackground: p.neutralLighter,
     disabledText: p.neutralTertiary,
@@ -186,6 +203,7 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     buttonBackgroundHovered: p.neutralLight,
     buttonBackgroundCheckedHovered: p.neutralLight,
     buttonBackgroundPressed: p.neutralLight,
+    buttonBackgroundDisabled: p.neutralLight,
     buttonBorder: 'transparent',
     buttonText: p.neutralPrimary,
     buttonTextHovered: p.black,

@@ -30,6 +30,7 @@ export class PersonaInitialsExample extends React.Component<any, any> {
         <Persona {...examplePersona} text="خسرو رحیمی" />
         <Persona {...personaWithInitials} initialsColor={PersonaInitialsColor.lightBlue} />
         <Persona {...personaWithInitials} initialsColor={PersonaInitialsColor.teal} />
+        <Persona {...personaWithInitials} initialsColor={PersonaInitialsColor.teal} coinSize={150} />
       </div>
     );
   }
