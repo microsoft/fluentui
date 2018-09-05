@@ -18,7 +18,8 @@ export const getStyles = (props: IMultiCountStyleProps): IMultiCountStyles => {
       flex: 1,
       alignItems: 'baseline',
       opacity: hoveredText === '' ? '' : hoveredText === currentText ? '' : '0.6',
-      cursor: href ? 'pointer' : 'default'
+      cursor: href ? 'pointer' : 'default',
+      lineHeight: 'normal'
     },
     bodyText: {
       fontFamily: 'Segoe UI',
@@ -61,7 +62,8 @@ export const getStyles = (props: IMultiCountStyleProps): IMultiCountStyles => {
       fontSize: '28px',
       lineHeight: '33px',
       color: props.color,
-      paddingLeft: '16px'
+      paddingLeft: '16px',
+      paddingBottom: '8px'
     },
     hoverCardRoot: {
       display: 'flex',

@@ -10,13 +10,15 @@ import { HoverCard, IExpandingCardProps, ExpandingCardMode } from 'office-ui-fab
 
 export interface IMultiCountState {
   hoveredText: string;
+  hoverCardHeight: number;
 }
 
 export class MultiCount extends React.Component<IMultiCountProps, IMultiCountState> {
   constructor(props: IMultiCountProps) {
     super(props);
     this.state = {
-      hoveredText: ''
+      hoveredText: '',
+      hoverCardHeight: 0
     };
   }
 
@@ -84,6 +86,7 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
         })
       );
       const expandingCardProps: IExpandingCardProps = {
+        compactCardHeight: this.state.hoverCardHeight,
         onRenderCompactCard: this._onRenderCompactCard,
         renderData: [row, customMessage],
         mode: ExpandingCardMode.compact,
@@ -127,12 +130,16 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
 
   private _hoverStateUpdate = (hoverKey: string, hoverState: boolean): void => {
     if (hoverState) {
-      this.setState({
-        hoveredText: hoverKey
-      });
+      setTimeout(() => {
+        this.setState({
+          hoveredText: hoverKey,
+          hoverCardHeight: document.getElementsByClassName('hoverCardRoot')[0].clientHeight
+        });
+      }, 10);
     } else {
       this.setState({
-        hoveredText: ''
+        hoveredText: '',
+        hoverCardHeight: 0
       });
     }
   };
@@ -156,7 +163,7 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
       })
     );
     return (
-      <div className={classNames.hoverCardRoot}>
+      <div className={classNames.hoverCardRoot + ' hoverCardRoot'}>
         <div className={classNames.customMessage}>{data[1]}</div>
         <div className={classNames.hoverCardText}>
           <div className={classNames.hoverCardBodyText}>{data[0].bodyText}</div>
