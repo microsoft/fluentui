@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/styling",
+      "comment": "Updates button slots with correct pre-fluent palette values and scss fallbacks",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/styling",
+  "email": "v-jescla@microsoft.com"
+}
