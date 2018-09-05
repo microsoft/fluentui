@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Thu, 30 Aug 2018 10:32:49 GMT and should not be manually modified.
+This log was last generated on Wed, 05 Sep 2018 10:29:25 GMT and should not be manually modified.
+
+## 6.21.0
+Wed, 05 Sep 2018 10:29:25 GMT
+
+### Minor changes
+
+- Change bodyDivider value from neutralTertiaryAlt back to neutralLight
 
 ## 6.20.0
 Thu, 30 Aug 2018 10:32:49 GMT
