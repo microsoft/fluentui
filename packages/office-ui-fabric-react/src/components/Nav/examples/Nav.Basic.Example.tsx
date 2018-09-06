@@ -26,7 +26,7 @@ export class NavBasicExample extends React.Component<any, any> {
                       key: 'key1'
                     },
                     {
-                      name: 'News',
+                      name: 'MSN',
                       url: 'http://msn.com',
                       key: 'key2'
                     }

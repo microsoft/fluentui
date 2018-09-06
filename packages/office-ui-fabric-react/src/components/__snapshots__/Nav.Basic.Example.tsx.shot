@@ -561,7 +561,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                           display: block;
                           position: relative;
                         }
-                    name="News"
+                    name="MSN"
                   >
                     <a
                       aria-describedby="id__9"
@@ -657,7 +657,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       onMouseUp={[Function]}
                       rel={undefined}
                       target={undefined}
-                      title="News"
+                      title="MSN"
                     >
                       <div
                         className=
@@ -713,7 +713,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                               }
                           id="id__9"
                         >
-                          News
+                          MSN
                         </span>
                         <div
                           className=
@@ -728,7 +728,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                                 vertical-align: middle;
                               }
                         >
-                          News
+                          MSN
                         </div>
                       </div>
                     </a>
