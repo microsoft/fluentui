@@ -2,11 +2,6 @@
 
 exports[`Button renders ActionButton correctly 1`] = `
 <button
-  aria-describedby={undefined}
-  aria-disabled={undefined}
-  aria-label={undefined}
-  aria-labelledby={undefined}
-  aria-pressed={undefined}
   className=
       ms-Button
       ms-Button--action
@@ -75,7 +70,6 @@ exports[`Button renders ActionButton correctly 1`] = `
         color: #004578;
       }
   data-is-focusable={true}
-  disabled={undefined}
   onClick={[Function]}
   onKeyDown={[Function]}
   onKeyPress={[Function]}
@@ -123,14 +117,9 @@ exports[`Button renders ActionButton correctly 1`] = `
 
 exports[`Button renders CommandBarButton correctly 1`] = `
 <button
-  aria-describedby={undefined}
-  aria-disabled={undefined}
   aria-expanded={false}
   aria-haspopup={true}
-  aria-label={undefined}
-  aria-labelledby={undefined}
   aria-owns={null}
-  aria-pressed={undefined}
   className=
       ms-Button
       ms-Button--commandBar
@@ -196,7 +185,6 @@ exports[`Button renders CommandBarButton correctly 1`] = `
         color: #000000;
       }
   data-is-focusable={true}
-  disabled={undefined}
   onClick={[Function]}
   onKeyDown={[Function]}
   onKeyPress={[Function]}
@@ -304,10 +292,7 @@ exports[`Button renders CommandBarButton correctly 1`] = `
 exports[`Button renders CompoundButton correctly 1`] = `
 <button
   aria-describedby="id__14"
-  aria-disabled={undefined}
-  aria-label={undefined}
   aria-labelledby="id__13"
-  aria-pressed={undefined}
   className=
       ms-Button
       ms-Button--compound
@@ -379,7 +364,6 @@ exports[`Button renders CompoundButton correctly 1`] = `
         color: inherit;
       }
   data-is-focusable={true}
-  disabled={undefined}
   onClick={[Function]}
   onKeyDown={[Function]}
   onKeyPress={[Function]}
@@ -451,11 +435,6 @@ exports[`Button renders CompoundButton correctly 1`] = `
 
 exports[`Button renders DefaultButton correctly 1`] = `
 <button
-  aria-describedby={undefined}
-  aria-disabled={undefined}
-  aria-label={undefined}
-  aria-labelledby={undefined}
-  aria-pressed={undefined}
   className=
       ms-Button
       ms-Button--default
@@ -520,7 +499,6 @@ exports[`Button renders DefaultButton correctly 1`] = `
         color: #212121;
       }
   data-is-focusable={true}
-  disabled={undefined}
   onClick={[Function]}
   onKeyDown={[Function]}
   onKeyPress={[Function]}
@@ -569,11 +547,7 @@ exports[`Button renders DefaultButton correctly 1`] = `
 
 exports[`Button renders IconButton correctly 1`] = `
 <button
-  aria-describedby={undefined}
-  aria-disabled={undefined}
   aria-label="Emoji"
-  aria-labelledby={undefined}
-  aria-pressed={undefined}
   className=
       ms-Button
       ms-Button--icon
@@ -635,7 +609,6 @@ exports[`Button renders IconButton correctly 1`] = `
         color: #0078d4;
       }
   data-is-focusable={true}
-  disabled={undefined}
   onClick={[Function]}
   onKeyDown={[Function]}
   onKeyPress={[Function]}
@@ -691,10 +664,6 @@ exports[`Button renders IconButton correctly 1`] = `
 exports[`Button renders a DefaultButton with a keytip correctly 1`] = `
 <button
   aria-describedby=" ktp-layer-id ktp-a"
-  aria-disabled={undefined}
-  aria-label={undefined}
-  aria-labelledby={undefined}
-  aria-pressed={undefined}
   className=
       ms-Button
       ms-Button--default
@@ -761,7 +730,6 @@ exports[`Button renders a DefaultButton with a keytip correctly 1`] = `
   data-is-focusable={true}
   data-ktp-execute-target="ktp-a"
   data-ktp-target="ktp-a"
-  disabled={undefined}
   onClick={[Function]}
   onKeyDown={[Function]}
   onKeyPress={[Function]}

@@ -7,7 +7,6 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
       {
         position: relative;
       }
-  style={undefined}
 >
   <div
     className=
@@ -48,9 +47,6 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
     tabIndex={-1}
   >
     <div
-      aria-describedby={undefined}
-      aria-label={undefined}
-      aria-labelledby={undefined}
       className=
           ms-Callout-main
           {
@@ -61,8 +57,6 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
             position: relative;
           }
       onKeyDown={[Function]}
-      onScroll={undefined}
-      role={undefined}
       style={
         Object {
           "maxHeight": 750,
@@ -72,8 +66,6 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
     >
       <div>
         <div
-          aria-describedby={undefined}
-          aria-labelledby={undefined}
           className=
               ms-TeachingBubble-content
               {
@@ -121,7 +113,6 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
                       margin-right: 0px;
                       margin-top: 0px;
                     }
-                id={undefined}
               >
                 Test Content
               </p>
@@ -136,8 +127,6 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
 
 exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
 <div
-  aria-describedby={undefined}
-  aria-labelledby={undefined}
   className=
       ms-TeachingBubble-content
       {
@@ -188,7 +177,6 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
               margin-right: 0px;
               margin-top: 0px;
             }
-        id={undefined}
       >
         Test Title
       </p>
@@ -212,7 +200,6 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
               margin-right: 0px;
               margin-top: 0px;
             }
-        id={undefined}
       >
         Content
       </p>
@@ -223,8 +210,6 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
 
 exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`] = `
 <div
-  aria-describedby={undefined}
-  aria-labelledby={undefined}
   className=
       ms-TeachingBubble-content
       {
@@ -275,7 +260,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               margin-right: 0px;
               margin-top: 0px;
             }
-        id={undefined}
       >
         Test Title
       </p>
@@ -299,7 +283,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               margin-right: 0px;
               margin-top: 0px;
             }
-        id={undefined}
       >
         Content
       </p>
@@ -315,11 +298,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
           }
     >
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         className=
             ms-Button
             ms-Button--primary
@@ -412,7 +390,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               font-weight: 400;
             }
         data-is-focusable={true}
-        disabled={undefined}
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}
@@ -458,11 +435,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
         </div>
       </button>
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         className=
             ms-Button
             ms-Button--default
@@ -544,7 +516,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               border-color: #ffffff;
             }
         data-is-focusable={true}
-        disabled={undefined}
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}
@@ -592,11 +563,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
     </div>
   </div>
   <button
-    aria-describedby={undefined}
-    aria-disabled={undefined}
-    aria-label={undefined}
-    aria-labelledby={undefined}
-    aria-pressed={undefined}
     className=
         ms-Button
         ms-Button--icon
@@ -663,14 +629,12 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
           color: #0078d4;
         }
     data-is-focusable={true}
-    disabled={undefined}
     onClick={[Function]}
     onKeyDown={[Function]}
     onKeyPress={[Function]}
     onKeyUp={[Function]}
     onMouseDown={[Function]}
     onMouseUp={[Function]}
-    title={undefined}
     type="button"
   >
     <div
@@ -719,8 +683,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
 
 exports[`TeachingBubble renders TeachingBubbleContent with condensed headline correctly 1`] = `
 <div
-  aria-describedby={undefined}
-  aria-labelledby={undefined}
   className=
       ms-TeachingBubble-content
       {
@@ -771,7 +733,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
               margin-right: 0px;
               margin-top: 0px;
             }
-        id={undefined}
       >
         Test Title
       </p>
@@ -795,7 +756,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
               margin-right: 0px;
               margin-top: 0px;
             }
-        id={undefined}
       >
         Content
       </p>
@@ -806,8 +766,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
 
 exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] = `
 <div
-  aria-describedby={undefined}
-  aria-labelledby={undefined}
   className=
       ms-TeachingBubble-content
       {
@@ -845,7 +803,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
       }
     >
       <img
-        alt={undefined}
         className=
             ms-Image-image
             ms-Image-image--portrait
@@ -857,7 +814,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
             }
         onError={[Function]}
         onLoad={[Function]}
-        role={undefined}
         src="test image url"
       />
     </div>
@@ -895,7 +851,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
               margin-right: 0px;
               margin-top: 0px;
             }
-        id={undefined}
       >
         Test Title
       </p>
@@ -919,7 +874,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
               margin-right: 0px;
               margin-top: 0px;
             }
-        id={undefined}
       >
         Content
       </p>
@@ -930,8 +884,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
 
 exports[`TeachingBubble renders TeachingBubbleContent with small headline correctly 1`] = `
 <div
-  aria-describedby={undefined}
-  aria-labelledby={undefined}
   className=
       ms-TeachingBubble-content
       {
@@ -985,7 +937,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
               margin-right: 0px;
               margin-top: 0px;
             }
-        id={undefined}
       >
         Test Title
       </p>
@@ -1009,7 +960,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
               margin-right: 0px;
               margin-top: 0px;
             }
-        id={undefined}
       >
         Content
       </p>

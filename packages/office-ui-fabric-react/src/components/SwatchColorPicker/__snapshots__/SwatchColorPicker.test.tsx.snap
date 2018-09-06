@@ -2,8 +2,6 @@
 
 exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
 <div
-  aria-describedby={undefined}
-  aria-labelledby={undefined}
   className=
       ms-FocusZone
       ms-swatchColorPickerBodyContainer
@@ -20,8 +18,6 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
   role="presentation"
 >
   <table
-    aria-posinset={undefined}
-    aria-setsize={undefined}
     className=
 
         {
@@ -51,11 +47,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
             aria-label="green"
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             aria-selected={false}
             className=
                 ms-Button
@@ -191,7 +183,6 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
             data-index={0}
             data-is-focusable={true}
-            disabled={undefined}
             id="swatchColorPicker1-a-0"
             onClick={[Function]}
             onFocus={[Function]}
@@ -254,11 +245,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
             aria-label="orange"
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             aria-selected={false}
             className=
                 ms-Button
@@ -394,7 +381,6 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
             data-index={1}
             data-is-focusable={true}
-            disabled={undefined}
             id="swatchColorPicker1-b-1"
             onClick={[Function]}
             onFocus={[Function]}
@@ -457,11 +443,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
             aria-label="blue"
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             aria-selected={false}
             className=
                 ms-Button
@@ -597,7 +579,6 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
             data-index={2}
             data-is-focusable={true}
-            disabled={undefined}
             id="swatchColorPicker1-c-2"
             onClick={[Function]}
             onFocus={[Function]}
@@ -660,11 +641,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
             aria-label="red"
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             aria-selected={false}
             className=
                 ms-Button
@@ -800,7 +777,6 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
             data-index={3}
             data-is-focusable={true}
-            disabled={undefined}
             id="swatchColorPicker1-d-3"
             onClick={[Function]}
             onFocus={[Function]}
@@ -867,11 +843,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
             aria-label="green"
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             aria-selected={false}
             className=
                 ms-Button
@@ -1007,7 +979,6 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
             data-index={4}
             data-is-focusable={true}
-            disabled={undefined}
             id="swatchColorPicker1-g-4"
             onClick={[Function]}
             onFocus={[Function]}
@@ -1070,11 +1041,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
             aria-label="orange"
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             aria-selected={false}
             className=
                 ms-Button
@@ -1210,7 +1177,6 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
             data-index={5}
             data-is-focusable={true}
-            disabled={undefined}
             id="swatchColorPicker1-h-5"
             onClick={[Function]}
             onFocus={[Function]}
@@ -1273,11 +1239,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
             aria-label="blue"
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             aria-selected={false}
             className=
                 ms-Button
@@ -1413,7 +1375,6 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
             data-index={6}
             data-is-focusable={true}
-            disabled={undefined}
             id="swatchColorPicker1-i-6"
             onClick={[Function]}
             onFocus={[Function]}
@@ -1476,11 +1437,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
             aria-label="red"
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             aria-selected={false}
             className=
                 ms-Button
@@ -1616,7 +1573,6 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
             data-index={7}
             data-is-focusable={true}
-            disabled={undefined}
             id="swatchColorPicker1-j-7"
             onClick={[Function]}
             onFocus={[Function]}
@@ -1683,11 +1639,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
             aria-label="black"
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             aria-selected={false}
             className=
                 ms-Button
@@ -1823,7 +1775,6 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
             data-index={8}
             data-is-focusable={true}
-            disabled={undefined}
             id="swatchColorPicker1-k-8"
             onClick={[Function]}
             onFocus={[Function]}
@@ -1886,11 +1837,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
             aria-label="grey"
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             aria-selected={false}
             className=
                 ms-Button
@@ -2026,7 +1973,6 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
             data-index={9}
             data-is-focusable={true}
-            disabled={undefined}
             id="swatchColorPicker1-l-9"
             onClick={[Function]}
             onFocus={[Function]}
@@ -2089,11 +2035,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
             aria-label="purple"
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             aria-selected={false}
             className=
                 ms-Button
@@ -2229,7 +2171,6 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
             data-index={10}
             data-is-focusable={true}
-            disabled={undefined}
             id="swatchColorPicker1-m-10"
             onClick={[Function]}
             onFocus={[Function]}
@@ -2292,11 +2233,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
             aria-label="yellow"
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             aria-selected={false}
             className=
                 ms-Button
@@ -2432,7 +2369,6 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
             data-index={11}
             data-is-focusable={true}
-            disabled={undefined}
             id="swatchColorPicker1-n-11"
             onClick={[Function]}
             onFocus={[Function]}

@@ -50,10 +50,6 @@ exports[`Component Examples renders ProgressIndicator.Indeterminate.Example.tsx 
           }
     />
     <div
-      aria-valuemax={undefined}
-      aria-valuemin={undefined}
-      aria-valuenow={undefined}
-      aria-valuetext={undefined}
       className=
           ms-ProgressIndicator-progressBar
           {

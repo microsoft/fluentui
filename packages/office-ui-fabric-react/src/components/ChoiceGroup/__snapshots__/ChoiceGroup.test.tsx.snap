@@ -62,7 +62,6 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
                 }
             data-automation-id="auto1"
             data-is-focusable={true}
-            disabled={undefined}
             id="ChoiceGroup0-1"
             name="ChoiceGroup0"
             onBlur={[Function]}
@@ -174,7 +173,6 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
                   top: 8px;
                 }
             data-is-focusable={false}
-            disabled={undefined}
             id="ChoiceGroup0-2"
             name="ChoiceGroup0"
             onBlur={[Function]}
@@ -286,7 +284,6 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
                   top: 8px;
                 }
             data-is-focusable={false}
-            disabled={undefined}
             id="ChoiceGroup0-3"
             name="ChoiceGroup0"
             onBlur={[Function]}

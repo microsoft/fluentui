@@ -76,11 +76,9 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
                 }
           >
             <input
-              aria-describedby={undefined}
               aria-expanded={false}
               aria-haspopup="true"
               aria-invalid={false}
-              aria-label={undefined}
               className=
                   ms-TextField-field
                   {
@@ -119,7 +117,6 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
                     color: #666666;
                     opacity: 1;
                   }
-              disabled={undefined}
               id="TextField0"
               onBlur={[Function]}
               onChange={[Function]}
@@ -194,18 +191,14 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
           }
       htmlFor="Dropdown2"
       id="Dropdown2-label"
-      required={undefined}
     >
       Select the first day of the week
     </label>
     <div
       aria-activedescendant="Dropdown2-option"
       aria-describedby="Dropdown2-option"
-      aria-disabled={undefined}
       aria-expanded="false"
-      aria-label={undefined}
       aria-labelledby="Dropdown2-label"
-      aria-owns={undefined}
       className=
           ms-Dropdown
           {
