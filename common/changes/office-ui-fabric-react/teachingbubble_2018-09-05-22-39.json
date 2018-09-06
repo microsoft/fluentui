@@ -1,11 +1,11 @@
 {
   "changes": [
     {
+      "comment": "",
       "packageName": "office-ui-fabric-react",
-      "comment": "add buttonBackgroundDisabled semantic slot",
-      "type": "minor"
+      "type": "none"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "v-jescla@microsoft.com"
+  "email": "kchau@microsoft.com"
 }

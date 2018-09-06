@@ -69,9 +69,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
               aria-disabled={undefined}
               aria-label={undefined}
               aria-labelledby={undefined}
-              aria-posinset={1}
               aria-pressed={undefined}
-              aria-setsize={3}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -228,9 +226,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
               aria-disabled={undefined}
               aria-label={undefined}
               aria-labelledby={undefined}
-              aria-posinset={2}
               aria-pressed={undefined}
-              aria-setsize={3}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -390,9 +386,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
               aria-label={undefined}
               aria-labelledby={undefined}
               aria-owns={null}
-              aria-posinset={3}
               aria-pressed={undefined}
-              aria-setsize={3}
               className=
                   ms-Button
                   ms-Button--commandBar

@@ -66,9 +66,7 @@ export class Chart extends React.Component<IChartInternalProps, {}> {
         return this._getLineChart();
       }
       case ChartType.HorizontalBarChart: {
-        return (
-          <HorizontalBarChart data={this.props.chartData!} width={this._getWidth()} barHeight={this.props.barHeight} />
-        );
+        return <HorizontalBarChart data={this.props.chartData!} barHeight={this.props.barHeight} />;
       }
       case ChartType.DonutChart: {
         return <DonutChart data={this.props.chartData![0]} innerRadius={40} />;

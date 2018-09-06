@@ -2,6 +2,55 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.20.0",
+      "tag": "@uifabric/dashboard_v0.20.0",
+      "date": "Thu, 06 Sep 2018 10:28:35 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "caradong <caradong1122@gmail.com>",
+            "commit": "94d24139ee600a5b533a64a9abc586c47425c2cb",
+            "comment": "add export"
+          },
+          {
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "420bd52b6566b9cdac59c432c1a2299705d6ecba",
+            "comment": "changing fabric icons to SVG's."
+          }
+        ],
+        "patch": [
+          {
+            "author": "BalakrishnaReddyPolu <polu.balakrishna96@gmail.com>",
+            "commit": "0523228decb733e261fda01478e40a3aa82db7ba",
+            "comment": "gird list text overflow css issue "
+          },
+          {
+            "author": "Raghuraman Krishnamurthy <raghurk@microsoft.com>",
+            "commit": "aae02b0e1d0b0f4cefe36279756372543c418d75",
+            "comment": "patch"
+          },
+          {
+            "author": "Raghuraman Krishnamurthy <raghurk@microsoft.com>",
+            "commit": "e7724d52044d2c71789d5ffc0977f847408f965e",
+            "comment": "Fix content area clipping in card because of overflow set to hidden"
+          },
+          {
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "8fffe8444e45be992bf80db917d456d6ff6d18b2",
+            "comment": "merge donut and piechart and added in dashboard package"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.17.3` to `^0.17.4`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.64.0 <7.0.0` to `>=6.65.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.19.0",
       "tag": "@uifabric/dashboard_v0.19.0",
       "date": "Wed, 05 Sep 2018 10:29:25 GMT",

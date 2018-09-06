@@ -1,6 +1,21 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Wed, 05 Sep 2018 10:29:25 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Sep 2018 10:28:35 GMT and should not be manually modified.
+
+## 0.20.0
+Thu, 06 Sep 2018 10:28:35 GMT
+
+### Minor changes
+
+- add export
+- changing fabric icons to SVG's.
+
+### Patches
+
+- gird list text overflow css issue 
+- patch
+- Fix content area clipping in card because of overflow set to hidden
+- merge donut and piechart and added in dashboard package
 
 ## 0.19.0
 Wed, 05 Sep 2018 10:29:25 GMT

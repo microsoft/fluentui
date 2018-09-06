@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/dashboard",
-      "comment": "gird list text overflow css issue ",
-      "type": "patch"
+      "comment": "add save prop to edit sections control",
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/dashboard",
-  "email": "polu.balakrishna96@gmail.com"
+  "email": "yudon@microsoft.com"
 }
