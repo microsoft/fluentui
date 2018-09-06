@@ -278,8 +278,8 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
     primaryButtonBackgroundPressed: !fullTheme.isInverted ? p.themeLight : p.themeTertiary,
     primaryButtonBorder: 'transparent',
     primaryButtonText: !fullTheme.isInverted ? p.themePrimary : p.neutralPrimary,
-    primaryButtonTextHovered: !fullTheme.isInverted ? p.themePrimary : p.neutralPrimary,
-    primaryButtonTextPressed: !fullTheme.isInverted ? p.themePrimary : p.neutralPrimary
+    primaryButtonTextHovered: !fullTheme.isInverted ? p.themeDark : p.neutralPrimary,
+    primaryButtonTextPressed: !fullTheme.isInverted ? p.themeDark : p.neutralPrimary
   };
 
   // Strong variant is unique here, we've redefined the entire palette and are
