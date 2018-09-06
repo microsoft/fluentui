@@ -1,12 +1,13 @@
 import * as React from 'react';
-import { Nav, INavProps } from 'office-ui-fabric-react/lib/Nav';
+import { Nav, INavLink } from 'office-ui-fabric-react/lib/Nav';
 import './Nav.Basic.Example.scss';
 
 export class NavBasicExample extends React.Component<any, any> {
-  constructor(props: INavProps) {
-    super(props);
-    this._onClickHandler = this._onClickHandler.bind(this);
-  }
+  public onLinkClick = (ev: React.MouseEvent<HTMLElement>, item?: INavLink) => {
+    if (item && item.name === 'Edit') {
+      alert('edit link clicked');
+    }
+  };
 
   public render(): JSX.Element {
     return (
@@ -39,34 +40,24 @@ export class NavBasicExample extends React.Component<any, any> {
                 {
                   name: 'Edit',
                   url: 'http://cnn.com',
-                  onClick: this._onClickHandler2,
                   icon: 'Edit',
                   key: 'key8'
                 },
                 {
                   name: 'Delete',
                   url: 'http://cnn.com',
-                  onClick: this._onClickHandler2,
                   iconProps: { iconName: 'Delete' },
                   key: 'key9'
                 }
               ]
             }
           ]}
+          onLinkClick={this.onLinkClick}
           expandedStateText={'expanded'}
           collapsedStateText={'collapsed'}
           selectedKey={'key3'}
         />
       </div>
     );
-  }
-
-  private _onClickHandler(e: React.MouseEvent<HTMLElement>): false {
-    alert('test');
-    return false;
-  }
-
-  private _onClickHandler2(e: React.MouseEvent<HTMLElement>): false {
-    return false;
   }
 }
