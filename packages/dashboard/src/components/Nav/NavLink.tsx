@@ -1,32 +1,26 @@
 import * as React from 'react';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import { INavLinkProps } from './Nav.types';
+import { INavStyles, INavLinkProps, INavStyleProps } from './Nav.types';
+import { getStyles } from './Nav.styles';
 import { IStyle, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 /**
  * Represents a composed link in the Nav component.
  */
+
+const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();
+
 export const NavLink: React.SFC<INavLinkProps> = (props: INavLinkProps) => {
   if (!props) {
     return null;
   }
 
-  const computedTextWidth: IStyle = {
-    // 100px to accomodate left and right icons (48px each)
-    width: 'calc(100% - 96px)'
-  };
-
-  if (!props.rightIconName && !props.leftIconName) {
-    // no icons, take full with to text
-    computedTextWidth.width = '100%';
-  } else if (!props.leftIconName || !props.rightIconName) {
-    // 48px to the left or right icon
-    computedTextWidth.width = 'calc(100% - 48px)';
-  }
+  // const { styles } = props;
+  const classNames = getClassNames(getStyles);
 
   const fixedIconWidth: IStyle = {
-    width: '48px',
-    display: props.rightIconName === 'OpenInNewWindow' ? 'none' : 'inline-block'
+    display: props.rightIconName === 'OpenInNewWindow' ? 'none' : 'flex'
   };
 
   return (
@@ -40,17 +34,22 @@ export const NavLink: React.SFC<INavLinkProps> = (props: INavLinkProps) => {
       aria-label={props.ariaLabel}
       aria-expanded={props.ariaExpanded}
       role={props.role}
+      className={classNames.navItemRoot}
     >
-      <div className={props.rootClassName} aria-hidden="true">
-        <hr className={props.barClassName} />
-        {props.leftIconName ? <Icon iconName={props.leftIconName} className={props.iconClassName} /> : null}
-        {props.content ? (
-          <div className={mergeStyles(props.textClassName, computedTextWidth)}>{props.content}</div>
-        ) : null}
-        {props.rightIconName ? (
-          <Icon iconName={props.rightIconName} className={mergeStyles(props.iconClassName, fixedIconWidth)} />
-        ) : null}
-      </div>
+      {props.leftIconName ? (
+        <div className={classNames.iconWrapper} aria-hidden="true">
+          <div className={classNames.navItemBarMarker} />
+          <Icon iconName={props.leftIconName} className={classNames.navItemIcon} />
+        </div>
+      ) : null}
+
+      {props.content ? <div className={classNames.navItemText}>{props.content}</div> : null}
+
+      {props.rightIconName ? (
+        <div className={classNames.iconWrapper}>
+          <Icon iconName={props.rightIconName} className={mergeStyles(classNames.navItemIcon, fixedIconWidth)} />
+        </div>
+      ) : null}
     </a>
   );
 };

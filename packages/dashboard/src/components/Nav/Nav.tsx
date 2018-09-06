@@ -127,8 +127,6 @@ class NavComponent extends NavBase {
         rootClassName={classNames.navItemRoot}
         leftIconName={leftIconName}
         rightIconName={rightIconName}
-        textClassName={classNames.navItemNameColumn}
-        iconClassName={classNames.navItemIconColumn}
         barClassName={classNames.navItemBarMarker}
       />
     );

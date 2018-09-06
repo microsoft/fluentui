@@ -186,12 +186,12 @@ export interface INavStyles {
   /**
    * Style set for the icon column in the nav item
    */
-  navItemIconColumn: IStyle;
+  navItemIcon: IStyle;
 
   /**
    * Style set for the name column in the nav item
    */
-  navItemNameColumn: IStyle;
+  navItemText: IStyle;
 
   /**
    * Style set for the slim version of nav item
@@ -224,9 +224,9 @@ export interface INavStyles {
   navGroupSeparatorHeaderGroupName: IStyle;
 
   /**
-   * Style set for the nav toggler which toggles expanded and slim nav
+   * Style for navLink icons
    */
-  navToggler: IStyle;
+  iconWrapper: IStyle;
 }
 
 export interface INavLinkProps extends React.AllHTMLAttributes<HTMLAnchorElement> {

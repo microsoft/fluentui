@@ -178,8 +178,6 @@ class SlimNavComponent extends NavBase {
         onClick={this._onLinkClicked.bind(this, link)}
         rootClassName={classNames.navFloatingItemRoot}
         rightIconName={rightIconName}
-        textClassName={classNames.navItemNameColumn}
-        iconClassName={classNames.navItemIconColumn}
         barClassName={classNames.navItemBarMarker}
       />
     );
@@ -266,7 +264,6 @@ class SlimNavComponent extends NavBase {
           onClick={onClickHandler}
           rootClassName={classNames.navItemRoot}
           leftIconName={link.icon}
-          iconClassName={classNames.navItemIconColumn}
           barClassName={classNames.navItemBarMarker}
         />
         {this._renderFloatingNav(link, linkIndex)}
