@@ -1,10 +1,10 @@
-
 @import '~office-ui-fabric-react/src/common/common';
 
 .signalField {
   &,
   &.compact {
     display: inline-flex;
+    text-decoration: none !important;
   }
 
   &.wide {
