@@ -40,14 +40,19 @@
     "lint-staged": "^7.0.5"
   },
   "lint-staged": {
-    "!(apps/vr-test)/**/*.{ts,tsx}|*.{ts,tsx}": [
-      "node ./scripts/lint-staged/prettier",
-      "node ./scripts/lint-staged/tslint",
-      "git add"
-    ],
-    "*.js": [
-      "node ./scripts/lint-staged/prettier",
-      "git add"
+    "linters": {
+      "!(apps/vr-test)/**/*.{ts,tsx}|*.{ts,tsx}": [
+        "node ./scripts/lint-staged/prettier",
+        "node ./scripts/lint-staged/tslint",
+        "git add"
+      ],
+      "*.js": [
+        "node ./scripts/lint-staged/prettier",
+        "git add"
+      ]
+    },
+    "ignore": [
+      "common/scripts/*.js"
     ]
   }
 }
