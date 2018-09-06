@@ -556,7 +556,6 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> i
       this._entityInnerHostElement.current.addEventListener(
         'transitionend',
         (): void => {
-          console.log('testing here');
           // Need setTimeout to trigger narrator
           this._async.setTimeout(() => {
             if (this._entityInnerHostElement.current) {
