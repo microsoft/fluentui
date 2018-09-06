@@ -18,6 +18,7 @@ export class DonutChartBase extends React.Component<
     legend: string | undefined;
     _width: number | undefined;
     _height: number | undefined;
+    activeLegend: string;
   }
 > {
   public static defaultProps: Partial<IDonutChartProps> = {
@@ -34,7 +35,8 @@ export class DonutChartBase extends React.Component<
       value: '',
       legend: '',
       _width: this.props.width || 200,
-      _height: this.props.height || 200
+      _height: this.props.height || 200,
+      activeLegend: ''
     };
     this._hoverCallback = this._hoverCallback.bind(this);
     this._hoverLeave = this._hoverLeave.bind(this);
@@ -78,6 +80,7 @@ export class DonutChartBase extends React.Component<
             hoverOnCallback={this._hoverCallback}
             hoverLeaveCallback={this._hoverLeave}
             uniqText={this._uniqText}
+            activeArc={this.state.activeLegend}
           />
         </svg>
         {this.state.showHover ? (
@@ -110,7 +113,7 @@ export class DonutChartBase extends React.Component<
       node.parentElement && node.parentElement.offsetHeight > this.state._height!
         ? node.parentElement.offsetHeight
         : this.state._height;
-    const viewbox = `0 0 ${widthVal!} ${heightVal!}`;
+    const viewbox = `0 0 ${widthVal!} ${heightVal!}`;
     node.setAttribute('viewBox', viewbox);
   }
   private _createLegends(data: IChartProps, palette: IPalette): JSX.Element {
@@ -124,6 +127,11 @@ export class DonutChartBase extends React.Component<
           title: point.legend!,
           color: color,
           hoverAction: () => {
+            if (this.state.activeLegend !== point.legend || this.state.activeLegend === '') {
+              this.setState({ activeLegend: point.legend! });
+            } else {
+              this.setState({ activeLegend: point.legend });
+            }
             this.setState({
               showHover: true,
               value: point.data!.toString(),
@@ -132,7 +140,8 @@ export class DonutChartBase extends React.Component<
           },
           onMouseOutAction: () => {
             this.setState({
-              showHover: false
+              showHover: false,
+              activeLegend: ''
             });
           }
         };
