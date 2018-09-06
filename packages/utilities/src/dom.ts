@@ -216,8 +216,10 @@ export function setPortalAttribute(element: HTMLElement): void {
 
 /**
  * Determine whether a target is within a portal from perspective of root or optional parent.
- * If parent is not in target's hierarchy, parent defaults to root.
+ * This function only works against portal components that use the setPortalAttribute function.
  * If both parent and child are within the same portal this function will return false.
+ * @param target Element to query portal containment status of.
+ * @param parent Optional parent perspective. Search for containing portal stops at parent (or root if parent is undefined or invalid.)
  */
 export function portalContainsElement(target: HTMLElement, parent?: HTMLElement): boolean {
   const elementMatch = findElementRecursive(
