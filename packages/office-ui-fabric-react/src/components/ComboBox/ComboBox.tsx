@@ -154,6 +154,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   // Flag for when we get the first mouseMove
   private _gotMouseMove: boolean;
 
+  private _processingClearPendingInfo: boolean;
+
   constructor(props: IComboBoxProps) {
     super(props);
 
@@ -178,6 +180,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     this._processingTouch = false;
     this._processingExpandCollapseKeyOnly = false;
     this._gotMouseMove = false;
+    this._processingClearPendingInfo = false;
 
     const initialSelectedIndices: number[] = this._getSelectedIndices(props.options, selectedKeys);
 
@@ -317,7 +320,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const { isOpen, focused, suggestedDisplayValue } = this.state;
     this._currentVisibleValue = this._getVisibleValue();
 
-    const divProps = getNativeProps(this.props, divProperties);
+    const divProps = getNativeProps(this.props, divProperties, ['onChange', 'value']);
 
     const hasErrorMessage = errorMessage && errorMessage.length > 0 ? true : false;
 
@@ -517,11 +520,17 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     // If the user passed is a value prop, use that
     // unless we are open and have a valid current pending index
-    if (!(isOpen && currentPendingIndexValid) && (text && !currentPendingValue)) {
+    if (
+      !(isOpen && currentPendingIndexValid) &&
+      (text && (currentPendingValue === null || currentPendingValue === undefined))
+    ) {
       return text;
     }
 
-    if (!(isOpen && currentPendingIndexValid) && (value && !currentPendingValue)) {
+    if (
+      !(isOpen && currentPendingIndexValid) &&
+      (value && (currentPendingValue === null || currentPendingValue === undefined))
+    ) {
       return value;
     }
 
@@ -1004,6 +1013,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     } = this.state;
     let { selectedIndices } = this.state;
 
+    // Do not submit any pending value if we
+    // have already initiated clearing the pending info
+    if (this._processingClearPendingInfo) {
+      return;
+    }
+
     // If we allow freeform we need to handle that
     if (allowFreeform) {
       // if currentPendingValue is null or undefined the user did not submit anything
@@ -1460,8 +1475,21 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * Clears the pending info state
    */
   private _clearPendingInfo(): void {
-    this._setPendingInfo();
+    this._processingClearPendingInfo = true;
+    this.setState(
+      {
+        currentPendingValue: undefined,
+        currentPendingValueValidIndex: -1,
+        suggestedDisplayValue: undefined,
+        currentPendingValueValidIndexOnHover: HoverStatus.default
+      },
+      this._onAfterClearPendingInfo
+    );
   }
+
+  private _onAfterClearPendingInfo = () => {
+    this._processingClearPendingInfo = false;
+  };
 
   /**
    * Set the pending info
@@ -1474,6 +1502,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     currentPendingValueValidIndex: number = -1,
     suggestedDisplayValue?: string
   ): void {
+    if (this._processingClearPendingInfo) {
+      return;
+    }
+
     this.setState({
       currentPendingValue: currentPendingValue && this._removeZeroWidthSpaces(currentPendingValue),
       currentPendingValueValidIndex: currentPendingValueValidIndex,
