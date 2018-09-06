@@ -17,7 +17,7 @@ export const getStyles = (props: IMultiCountStyleProps): IMultiCountStyles => {
       flexDirection: 'row',
       flex: 1,
       alignItems: 'baseline',
-      opacity: hoveredText === '' ? '' : hoveredText === currentText ? '' : '0.6',
+      opacity: hoveredText === '' ? '' : hoveredText === currentText ? '' : '0.1',
       cursor: href ? 'pointer' : 'default',
       lineHeight: 'normal'
     },
