@@ -155,7 +155,7 @@ function _makeSemanticColorsFromPalette(
     bodyText: p.neutralPrimary,
     bodyTextChecked: p.black,
     bodySubtext: p.neutralSecondary,
-    bodyDivider: p.neutralTertiaryAlt,
+    bodyDivider: p.neutralLight,
 
     disabledBackground: p.neutralLighter,
     disabledText: p.neutralTertiary,
@@ -198,6 +198,7 @@ function _makeSemanticColorsFromPalette(
     buttonBackgroundHovered: p.neutralLight,
     buttonBackgroundCheckedHovered: p.neutralLight,
     buttonBackgroundPressed: p.neutralLight,
+    buttonBackgroundDisabled: p.neutralLight,
     buttonBorder: 'transparent',
     buttonText: p.neutralPrimary,
     buttonTextHovered: p.black,

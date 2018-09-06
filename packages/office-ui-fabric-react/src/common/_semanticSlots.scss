@@ -7,7 +7,7 @@ $bodyFrameDividerColor: "[theme:bodyFrameDivider, default: #eaeaea]";
 $bodyTextColor: "[theme:bodyText, default: #333333]";
 $bodyTextCheckedColor: "[theme:bodyTextChecked, default: #000000]";
 $bodySubtextColor: "[theme:bodySubtext, default: #666666]";
-$bodyDividerColor: "[theme:bodyDivider, default: #c8c8c8]";
+$bodyDividerColor: "[theme:bodyDivider, default: #eaeaea]";
 
 $actionLinkColor: "[theme:actionLink, default: #333333]";
 $actionLinkHoveredColor: "[theme:actionLinkHovered, default: #212121]";
@@ -19,10 +19,10 @@ $disabledTextColor: "[theme:disabledText, default: #a6a6a6]";
 $disabledBodyTextColor: "[theme:disabledText, default: #c8c8c8]";
 $disabledSubtextColor: "[theme:disabledSubtext, default: #dadada]";
 
-$focusBorderColor: '[theme:focusBorder, default: #000000]';
-$variantBorderColor: '[theme:variantBorder, default: #eaeaea]';
-$variantBorderHoveredColor: '[theme:variantBorderHovered, default: #a6a6a6]';
-$defaultStateBackgroundColor: '[theme:defaultStateBackground, default: #eaeaea]';
+$focusBorderColor: "[theme:focusBorder, default: #000000]";
+$variantBorderColor: "[theme:variantBorder, default: #eaeaea]";
+$variantBorderHoveredColor: "[theme:variantBorderHovered, default: #a6a6a6]";
+$defaultStateBackgroundColor: "[theme:defaultStateBackground, default: #eaeaea]";
 
 $errorTextColor: "[theme:errorText, default: #a80000]";
 $warningTextColor: "[theme:warningText, default: #333333]";
@@ -49,6 +49,7 @@ $buttonBackgroundHoveredColor: "[theme:buttonBackgroundHovered, default: #eaeaea
 $buttonBackgroundCheckedColor: "[theme:buttonBackgroundChecked, default: #c8c8c8]";
 $buttonBackgroundCheckedHoveredColor: "[theme:buttonBackgroundCheckedHovered, default: #eaeaea]";
 $buttonBackgroundPressedColor: "[theme:buttonBackgroundPressed, default: #eaeaea]";
+$buttonBackgroundDisabledColor: "[theme:buttonBackgroundDisabled, default: #eaeaea]";
 $buttonBorderColor: "[theme:buttonBorder, default: transparent]";
 $buttonTextColor: "[theme:buttonText, default: #333333]";
 $buttonTextHoveredColor: "[theme:buttonTextHovered, default: #000000]";
