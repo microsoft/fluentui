@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Fix on hover underline issue for signal icon in Tiles view",
+      "comment": "Tiles: Fix on hover underline issue for signal icon in Tiles view",
       "type": "patch"
     }
   ],
