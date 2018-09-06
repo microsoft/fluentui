@@ -19,6 +19,7 @@ export class DonutChartBase extends React.Component<
     _width: number | undefined;
     _height: number | undefined;
     activeLegend: string;
+    color: string | undefined;
   }
 > {
   public static defaultProps: Partial<IDonutChartProps> = {
@@ -36,7 +37,8 @@ export class DonutChartBase extends React.Component<
       legend: '',
       _width: this.props.width || 200,
       _height: this.props.height || 200,
-      activeLegend: ''
+      activeLegend: '',
+      color: ''
     };
     this._hoverCallback = this._hoverCallback.bind(this);
     this._hoverLeave = this._hoverLeave.bind(this);
@@ -62,6 +64,7 @@ export class DonutChartBase extends React.Component<
       theme: theme!,
       width: _width!,
       height: _height!,
+      color: this.state.color!,
       className
     });
     const legendBars = this._createLegends(data!, palette);
@@ -135,7 +138,8 @@ export class DonutChartBase extends React.Component<
             this.setState({
               showHover: true,
               value: point.data!.toString(),
-              legend: point.legend!
+              legend: point.legend!,
+              color: point.color!
             });
           },
           onMouseOutAction: () => {
@@ -155,7 +159,8 @@ export class DonutChartBase extends React.Component<
     this.setState({
       showHover: true,
       value: data.data!.toString(),
-      legend: data.legend
+      legend: data.legend,
+      color: data.color!
     });
   }
 
