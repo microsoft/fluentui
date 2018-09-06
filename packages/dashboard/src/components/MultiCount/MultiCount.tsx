@@ -93,11 +93,17 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
         styles: {
           root: {
             width: 'auto',
-            height: 'auto'
+            height: 'auto',
+            margin: 0
           },
           compactCard: {
             width: 'auto',
-            height: 'auto'
+            height: 'auto',
+            margin: 0
+          },
+          expandedCard: {
+            width: 0,
+            margin: 0
           }
         }
       };

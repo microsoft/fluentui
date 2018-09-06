@@ -72,7 +72,6 @@ export const getStyles = (props: IMultiCountStyleProps): IMultiCountStyles => {
     },
     hoverCardAnnotationText: {
       marginLeft: '16px',
-      marginRight: '16px',
       fontFamily: 'Segoe UI'
     },
     hoverCardBodyText: {
