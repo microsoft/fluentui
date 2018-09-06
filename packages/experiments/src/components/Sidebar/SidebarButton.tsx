@@ -8,9 +8,9 @@ import * as React from 'react';
 import { getSidebarButtonStyles } from './SidebarButton.styles';
 
 export class SidebarButton extends BaseComponent<IButtonProps, {}> {
-    public render(): JSX.Element {
-        const { styles, theme } = this.props;
+  public render(): JSX.Element {
+    const { styles, theme } = this.props;
 
-        return <DefaultButton {...this.props} styles={getSidebarButtonStyles(theme, styles)} />;
-    }
+    return <DefaultButton {...this.props} styles={getSidebarButtonStyles(theme, styles)} />;
+  }
 }
