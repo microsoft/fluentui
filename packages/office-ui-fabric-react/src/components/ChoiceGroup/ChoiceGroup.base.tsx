@@ -43,9 +43,9 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
 
   public componentWillReceiveProps(newProps: IChoiceGroupProps): void {
     const newKeyChecked = this._getKeyChecked(newProps);
-    const oldKeyCheched = this._getKeyChecked(this.props);
+    const oldKeyChecked = this._getKeyChecked(this.props);
 
-    if (newKeyChecked !== oldKeyCheched) {
+    if (newKeyChecked !== oldKeyChecked) {
       this.setState({
         keyChecked: newKeyChecked!
       });
@@ -114,6 +114,16 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
   }
 
   public focus() {
+    const { options } = this.props;
+    if (options) {
+      for (const option of options) {
+        const elementToFocus = document.getElementById(`${this._id}-${option.key}`);
+        if (elementToFocus && elementToFocus.getAttribute('data-is-focusable') === 'true') {
+          elementToFocus.focus(); // focus on checked or default focusable key
+          return;
+        }
+      }
+    }
     if (this._inputElement.current) {
       this._inputElement.current.focus();
     }
