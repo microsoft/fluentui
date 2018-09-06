@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 30 Aug 2018 11:28:40 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Sep 2018 11:26:20 GMT and should not be manually modified.
+
+## 5.122.4
+Thu, 06 Sep 2018 11:26:20 GMT
+
+### Patches
+
+- Change bodyDivider value from neutralTertiaryAlt back to neutralLight
 
 ## 5.122.3
 Thu, 30 Aug 2018 11:28:40 GMT
