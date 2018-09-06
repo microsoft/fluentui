@@ -82,7 +82,7 @@ export interface IStackedBarChartStyleProps {
   /**
    * prop to check if the chart is selcted or hovered upon to determine opacity
    */
-  isSelected?: boolean;
+  shouldHighlight?: boolean;
 
   /**
    * prop to check which specific section of the stacked bar chart is selected or hovered upon
