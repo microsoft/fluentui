@@ -136,7 +136,7 @@ export class LargeCardBasicExample extends React.Component<{}, {}> {
     ];
 
     const chartContent: IChartProps = {
-      chartType: ChartType.StackedBarChart,
+      chartType: ChartType.HorizontalBarChart,
       chartData: data
     };
     const contentAreaList = [

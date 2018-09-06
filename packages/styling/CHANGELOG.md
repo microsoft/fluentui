@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Wed, 05 Sep 2018 10:29:25 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Sep 2018 10:28:35 GMT and should not be manually modified.
+
+## 6.22.0
+Thu, 06 Sep 2018 10:28:35 GMT
+
+### Minor changes
+
+- add buttonBackgroundDisabled semantic slot
 
 ## 6.21.0
 Wed, 05 Sep 2018 10:29:25 GMT

@@ -62,7 +62,11 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
       optionsContainIconOrImage: options!.some(option => Boolean(option.iconProps || option.imageSrc))
     });
 
-    const ariaLabelledBy = label ? this._id + '-label' : (this.props as any)['aria-labelledby'];
+    const ariaLabelledBy = this.props.ariaLabelledBy
+      ? this.props.ariaLabelledBy
+      : label
+        ? this._id + '-label'
+        : (this.props as any)['aria-labelledby'];
 
     // In cases where no option is checked, set focusable to first enabled option so that ChoiceGroup remains focusable.
     // If no options are enabled, ChoiceGroup is not focusable. If any option is checked, do not set keyDefaultFocusable.

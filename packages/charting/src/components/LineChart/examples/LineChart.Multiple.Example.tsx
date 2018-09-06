@@ -87,7 +87,6 @@ export class LineChartMultipleExample extends React.Component<ILineChartProps, {
       stroke: palette.purpleDark
     };
     const textStyle = {
-      fill: palette.purpleDark,
       fontSize: '12px'
     };
 

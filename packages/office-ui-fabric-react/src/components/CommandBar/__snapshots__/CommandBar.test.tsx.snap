@@ -68,9 +68,7 @@ exports[`CommandBar renders commands correctly 1`] = `
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-posinset={1}
             aria-pressed={undefined}
-            aria-setsize={2}
             className=
                 ms-Button
                 ms-Button--commandBar
@@ -197,9 +195,7 @@ exports[`CommandBar renders commands correctly 1`] = `
             aria-disabled={undefined}
             aria-label={undefined}
             aria-labelledby={undefined}
-            aria-posinset={2}
             aria-pressed={undefined}
-            aria-setsize={2}
             className=
                 ms-Button
                 ms-Button--commandBar

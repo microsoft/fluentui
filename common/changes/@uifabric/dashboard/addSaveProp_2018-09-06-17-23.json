@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/dashboard",
-      "comment": "changing fabric icons to SVG's.",
+      "comment": "add save prop to edit sections control",
       "type": "minor"
     }
   ],
   "packageName": "@uifabric/dashboard",
-  "email": "nulikarthik@gmail.com"
+  "email": "yudon@microsoft.com"
 }

@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/dashboard",
-      "comment": "patch",
+      "comment": "fix example for horizontalBarChart",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/dashboard",
-  "email": "raghurk@microsoft.com"
+  "email": "gorigarajesh@gmaill.com"
 }

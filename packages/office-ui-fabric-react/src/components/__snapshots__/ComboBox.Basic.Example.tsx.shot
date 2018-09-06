@@ -2952,7 +2952,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
     className="ms-ComboBox-container "
     id="Basicdrop5"
     onBlur={[Function]}
-    onChange={[Function]}
     onFocus={[Function]}
   >
     <label
@@ -3272,7 +3271,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
     className="ms-ComboBox-container "
     id="Basicdrop5"
     onBlur={[Function]}
-    onChange={[Function]}
     onFocus={[Function]}
   >
     <label
