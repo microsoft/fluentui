@@ -70,9 +70,7 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
               aria-label="New. Use left and right arrow keys to navigate"
               aria-labelledby={undefined}
               aria-owns={null}
-              aria-posinset={1}
               aria-pressed={undefined}
-              aria-setsize={5}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -259,9 +257,7 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
               aria-disabled={undefined}
               aria-label={undefined}
               aria-labelledby={undefined}
-              aria-posinset={2}
               aria-pressed={undefined}
-              aria-setsize={5}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -420,9 +416,7 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
               aria-disabled={undefined}
               aria-label={undefined}
               aria-labelledby={undefined}
-              aria-posinset={3}
               aria-pressed={undefined}
-              aria-setsize={5}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -580,9 +574,7 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
               aria-disabled={undefined}
               aria-label={undefined}
               aria-labelledby={undefined}
-              aria-posinset={4}
               aria-pressed={undefined}
-              aria-setsize={5}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -743,9 +735,7 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
               aria-label={undefined}
               aria-labelledby={undefined}
               aria-owns={null}
-              aria-posinset={5}
               aria-pressed={undefined}
-              aria-setsize={5}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -891,9 +881,7 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
               aria-disabled={undefined}
               aria-label={undefined}
               aria-labelledby={undefined}
-              aria-posinset={1}
               aria-pressed={undefined}
-              aria-setsize={3}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -1059,9 +1047,7 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                 aria-disabled={undefined}
                 aria-label={undefined}
                 aria-labelledby={undefined}
-                aria-posinset={2}
                 aria-pressed={undefined}
-                aria-setsize={3}
                 className=
                     ms-Button
                     ms-Button--commandBar
@@ -1204,9 +1190,7 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                 aria-disabled={undefined}
                 aria-label={undefined}
                 aria-labelledby={undefined}
-                aria-posinset={3}
                 aria-pressed={undefined}
-                aria-setsize={3}
                 className=
                     ms-Button
                     ms-Button--commandBar

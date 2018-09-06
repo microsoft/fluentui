@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "6.22.0",
+      "tag": "@uifabric/styling_v6.22.0",
+      "date": "Thu, 06 Sep 2018 10:28:35 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "78bd90844a740a239037b55ee4f783350ba9437d",
+            "comment": "add buttonBackgroundDisabled semantic slot"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.21.0",
       "tag": "@uifabric/styling_v6.21.0",
       "date": "Wed, 05 Sep 2018 10:29:25 GMT",

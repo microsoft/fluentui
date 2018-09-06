@@ -2,6 +2,25 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.17.4",
+      "tag": "@uifabric/charting_v0.17.4",
+      "date": "Thu, 06 Sep 2018 10:28:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "BalakrishnaReddyPolu <polu.balakrishna96@gmail.com>",
+            "commit": "d204b73fbaf920e161ff9b37bd2b5c703192fa2b",
+            "comment": "Line chart hover issue , css for x-axis text"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.64.0 <7.0.0` to `>=6.65.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.17.3",
       "tag": "@uifabric/charting_v0.17.3",
       "date": "Wed, 05 Sep 2018 10:29:25 GMT",
