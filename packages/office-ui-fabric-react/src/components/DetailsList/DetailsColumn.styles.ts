@@ -120,7 +120,13 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
       }
     ],
 
-    iconClassName: [nearIconStyle, iconClassName],
+    iconClassName: [
+      {
+        color: colors.iconForegroundColor,
+        opacity: 1
+      },
+      iconClassName
+    ],
 
     filterChevron: [
       classNames.filterChevron,
@@ -141,7 +147,14 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
         alignItems: 'stretch',
         boxSizing: 'border-box',
         overflow: 'hidden',
-        padding: `0 ${cellStyleProps.cellRightPadding}px 0 ${cellStyleProps.cellLeftPadding}px`
+        padding: `0 ${cellStyleProps.cellRightPadding}px 0 ${cellStyleProps.cellLeftPadding}px`,
+        ...(isIconOnly
+          ? {
+              alignContent: 'flex-end',
+              maxHeight: '100%',
+              flexWrap: 'wrap-reverse'
+            }
+          : {})
       }
     ],
 

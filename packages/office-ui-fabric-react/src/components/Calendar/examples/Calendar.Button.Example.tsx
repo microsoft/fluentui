@@ -42,6 +42,7 @@ export interface ICalendarButtonExampleProps {
   highlightSelectedMonth?: boolean;
   buttonString?: string;
   showMonthPickerAsOverlay?: boolean;
+  showGoToToday?: boolean;
 }
 
 export class CalendarButtonExample extends React.Component<ICalendarButtonExampleProps, ICalendarButtonExampleState> {
@@ -49,6 +50,7 @@ export class CalendarButtonExample extends React.Component<ICalendarButtonExampl
     showMonthPickerAsOverlay: false,
     isDayPickerVisible: true,
     isMonthPickerVisible: true,
+    showGoToToday: true,
     buttonString: 'Click for Calendar'
   };
 
@@ -99,6 +101,7 @@ export class CalendarButtonExample extends React.Component<ICalendarButtonExampl
                 highlightCurrentMonth={this.props.highlightCurrentMonth}
                 highlightSelectedMonth={this.props.highlightSelectedMonth}
                 showMonthPickerAsOverlay={this.props.showMonthPickerAsOverlay}
+                showGoToToday={this.props.showGoToToday}
               />
             </FocusTrapZone>
           </Callout>

@@ -102,7 +102,7 @@ describe('ComboBox', () => {
         label="testgroup"
         options={DEFAULT_OPTIONS}
         allowFreeform={true}
-        onChanged={returnUndefined}
+        onChange={returnUndefined}
         componentRef={setRef}
       />
     );
@@ -231,6 +231,156 @@ describe('ComboBox', () => {
       />
     );
     wrapper.find('input').simulate('keydown', { which: 'f' });
+    wrapper.update();
+    expect(wrapper.find('input').props().value).toEqual('One');
+  });
+
+  it('Can insert an empty string in uncontrolled case with autoComplete and allowFreeform on', () => {
+    const wrapper = mount(
+      <ComboBox
+        label="testgroup"
+        defaultSelectedKey="1"
+        options={DEFAULT_OPTIONS2}
+        autoComplete="on"
+        allowFreeform={true}
+      />
+    );
+    (wrapper.find('input').instance() as any).value = '';
+    wrapper.find('input').simulate('input', { target: { value: '' } });
+    wrapper.find('input').simulate('keydown', { which: KeyCodes.enter });
+    wrapper.update();
+    expect(wrapper.find('input').props().value).toEqual('');
+  });
+
+  it('Cannot insert an empty string in uncontrolled case with autoComplete on and allowFreeform off', () => {
+    const wrapper = mount(
+      <ComboBox
+        label="testgroup"
+        defaultSelectedKey="1"
+        options={DEFAULT_OPTIONS2}
+        autoComplete="on"
+        allowFreeform={false}
+      />
+    );
+
+    (wrapper.find('input').instance() as any).value = '';
+    wrapper.find('input').simulate('input', { target: { value: '' } });
+    wrapper.find('input').simulate('keydown', { which: KeyCodes.enter });
+    wrapper.update();
+    expect(wrapper.find('input').props().value).toEqual('One');
+  });
+
+  it('Can insert an empty string in uncontrolled case with autoComplete off and allowFreeform on', () => {
+    const wrapper = mount(
+      <ComboBox
+        label="testgroup"
+        defaultSelectedKey="1"
+        options={DEFAULT_OPTIONS2}
+        autoComplete="off"
+        allowFreeform={true}
+      />
+    );
+    (wrapper.find('input').instance() as any).value = '';
+    wrapper.find('input').simulate('input', { target: { value: '' } });
+    wrapper.find('input').simulate('keydown', { which: KeyCodes.enter });
+    wrapper.update();
+    expect(wrapper.find('input').props().value).toEqual('');
+  });
+
+  it('Cannot insert an empty string in uncontrolled case with autoComplete and allowFreeform off', () => {
+    const wrapper = mount(
+      <ComboBox
+        label="testgroup"
+        defaultSelectedKey="1"
+        options={DEFAULT_OPTIONS2}
+        autoComplete="off"
+        allowFreeform={false}
+      />
+    );
+    (wrapper.find('input').instance() as any).value = '';
+    wrapper.find('input').simulate('input', { target: { value: '' } });
+    wrapper.find('input').simulate('keydown', { which: KeyCodes.enter });
+    wrapper.update();
+    expect(wrapper.find('input').props().value).toEqual('One');
+  });
+
+  // jeremy
+
+  it('Can insert an empty string after removing a pending value in uncontrolled case with autoComplete and allowFreeform on', () => {
+    const wrapper = mount(
+      <ComboBox
+        label="testgroup"
+        defaultSelectedKey="1"
+        options={DEFAULT_OPTIONS2}
+        autoComplete="on"
+        allowFreeform={true}
+      />
+    );
+
+    (wrapper.find('input').instance() as any).value = 'f';
+    wrapper.find('input').simulate('input', { target: { value: 'f' } });
+    (wrapper.find('input').instance() as any).value = '';
+    wrapper.find('input').simulate('input', { target: { value: '' } });
+    wrapper.find('input').simulate('keydown', { which: KeyCodes.enter });
+    wrapper.update();
+    expect(wrapper.find('input').props().value).toEqual('');
+  });
+
+  it('Cannot insert an empty string after removing a pending value in uncontrolled case with autoComplete on and allowFreeform off', () => {
+    const wrapper = mount(
+      <ComboBox
+        label="testgroup"
+        defaultSelectedKey="1"
+        options={DEFAULT_OPTIONS2}
+        autoComplete="on"
+        allowFreeform={false}
+      />
+    );
+
+    (wrapper.find('input').instance() as any).value = 'f';
+    wrapper.find('input').simulate('input', { target: { value: 'f' } });
+    (wrapper.find('input').instance() as any).value = '';
+    wrapper.find('input').simulate('input', { target: { value: '' } });
+    wrapper.find('input').simulate('keydown', { which: KeyCodes.enter });
+    wrapper.update();
+    expect(wrapper.find('input').props().value).toEqual('Foo');
+  });
+
+  it('Can insert an empty string after removing a pending value in uncontrolled case with autoComplete off and allowFreeform on', () => {
+    const wrapper = mount(
+      <ComboBox
+        label="testgroup"
+        defaultSelectedKey="1"
+        options={DEFAULT_OPTIONS2}
+        autoComplete="off"
+        allowFreeform={true}
+      />
+    );
+
+    (wrapper.find('input').instance() as any).value = 'f';
+    wrapper.find('input').simulate('input', { target: { value: 'f' } });
+    (wrapper.find('input').instance() as any).value = '';
+    wrapper.find('input').simulate('input', { target: { value: '' } });
+    wrapper.find('input').simulate('keydown', { which: KeyCodes.enter });
+    wrapper.update();
+    expect(wrapper.find('input').props().value).toEqual('');
+  });
+
+  it('Cannot insert an empty string after removing a pending value in uncontrolled case with autoComplete and allowFreeform off', () => {
+    const wrapper = mount(
+      <ComboBox
+        label="testgroup"
+        defaultSelectedKey="1"
+        options={DEFAULT_OPTIONS2}
+        autoComplete="off"
+        allowFreeform={false}
+      />
+    );
+    (wrapper.find('input').instance() as any).value = 'f';
+    wrapper.find('input').simulate('input', { target: { value: 'f' } });
+    (wrapper.find('input').instance() as any).value = '';
+    wrapper.find('input').simulate('input', { target: { value: '' } });
+    wrapper.find('input').simulate('keydown', { which: KeyCodes.enter });
     wrapper.update();
     expect(wrapper.find('input').props().value).toEqual('One');
   });
@@ -384,7 +534,7 @@ describe('ComboBox', () => {
         autoComplete="on"
         allowFreeform={true}
         // tslint:disable-next-line:jsx-no-lambda
-        onChanged={(option?: IComboBoxOption, index?: number) => {
+        onChange={(event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => {
           updatedOption = option;
           updatedIndex = index;
           executionCount++;
@@ -429,7 +579,7 @@ describe('ComboBox', () => {
         allowFreeform={true}
         text="hikari"
         // tslint:disable-next-line:jsx-no-lambda
-        onChanged={(option?: IComboBoxOption, index?: number, value?: string) => {
+        onChange={(event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => {
           updatedText = value;
         }}
       />

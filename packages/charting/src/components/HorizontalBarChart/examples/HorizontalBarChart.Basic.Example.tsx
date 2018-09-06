@@ -1,110 +1,48 @@
 import * as React from 'react';
-import { HorizontalBarChart, IHorizontalBarChartProps } from '@uifabric/charting/lib/HorizontalBarChart';
-import { customizable } from 'office-ui-fabric-react/lib/Utilities';
-@customizable('HorizontalBarChartBasicExample', ['theme', 'styles'])
-export class HorizontalBarChartBasicExample extends React.Component<IHorizontalBarChartProps, {}> {
-  constructor(props: IHorizontalBarChartProps) {
-    super(props);
-  }
+import { HorizontalBarChart, IChartProps } from '@uifabric/charting';
+import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
-  public render(): JSX.Element {
-    return (
-      <div>
-        {this._basicExample()}
-        <hr />
-        {this._styledExample()}
-      </div>
-    );
-  }
+export const HorizontalBarChartBasicExample: React.SFC<{}> = () => {
+  const hideRatio: boolean[] = [true, false];
 
-  private _basicExample(): JSX.Element {
-    const points = [
-      { x: 7, y: 0 },
-      { x: 6, y: 18 },
-      { x: 12, y: 36 },
-      { x: 21, y: 20 },
-      { x: 29, y: 46 },
-      { x: 34, y: 25 },
-      { x: 40, y: 13 },
-      { x: 48, y: 43 },
-      { x: 57, y: 30 },
-      { x: 64, y: 45 },
-      { x: 72, y: 12 },
-      { x: 78, y: 50 },
-      { x: 85, y: 25 },
-      { x: 90, y: 43 },
-      { x: 96, y: 22 },
-      { x: 100, y: 19 }
-    ];
+  const data: IChartProps[] = [
+    {
+      chartTitle: 'one',
+      chartData: [{ legend: 'one', horizontalBarChartdata: { x: 1543, y: 15000 }, color: DefaultPalette.tealDark }]
+    },
+    {
+      chartTitle: 'two',
+      chartData: [{ legend: 'two', horizontalBarChartdata: { x: 800, y: 15000 }, color: DefaultPalette.purple }]
+    },
+    {
+      chartTitle: 'three',
+      chartData: [{ legend: 'three', horizontalBarChartdata: { x: 8888, y: 15000 }, color: DefaultPalette.redDark }]
+    },
+    {
+      chartTitle: 'four',
+      chartData: [
+        { legend: 'four', horizontalBarChartdata: { x: 15888, y: 15000 }, color: DefaultPalette.themeDarkAlt }
+      ]
+    },
+    {
+      chartTitle: 'five',
+      chartData: [
+        { legend: 'five', horizontalBarChartdata: { x: 11444, y: 15000 }, color: DefaultPalette.themePrimary }
+      ]
+    },
+    {
+      chartTitle: 'six',
+      chartData: [{ legend: 'six', horizontalBarChartdata: { x: 14000, y: 15000 }, color: DefaultPalette.greenDark }]
+    },
+    {
+      chartTitle: 'seven',
+      chartData: [{ legend: 'seven', horizontalBarChartdata: { x: 9855, y: 15000 }, color: DefaultPalette.accent }]
+    },
+    {
+      chartTitle: 'eight',
+      chartData: [{ legend: 'eight', horizontalBarChartdata: { x: 4250, y: 15000 }, color: DefaultPalette.blueLight }]
+    }
+  ];
 
-    return <HorizontalBarChart data={points} chartLabel={'Basic Chart with Numeric Axes'} />;
-  }
-
-  private _styledExample(): JSX.Element {
-    const { theme } = this.props;
-    const { palette, fonts } = theme!;
-
-    const points = [
-      { x: 'One', y: 20 },
-      { x: 'Two', y: 48 },
-      { x: 'Three', y: 30 },
-      { x: 'Four', y: 40 },
-      { x: 'Five', y: 13 },
-      { x: 'Six', y: 60 },
-      { x: 'Seven', y: 60 },
-      { x: 'Eight', y: 57 },
-      { x: 'Nine', y: 14 },
-      { x: 'Ten', y: 35 },
-      { x: 'Eleven', y: 21 },
-      { x: 'Twelve', y: 60 },
-      { x: 'Thirteen', y: 60 },
-      { x: 'Fourteen', y: 52 },
-      { x: 'Fifteen', y: 23 }
-    ];
-
-    const axisStyle = {
-      stroke: palette.orange
-    };
-    const textStyle = {
-      fill: palette.orangeLight,
-      fontSize: '12px'
-    };
-
-    const customStyles = () => {
-      return {
-        chart: {
-          paddingBottom: '45px'
-        },
-        chartLabel: {
-          color: palette.orange,
-          ...fonts.large
-        },
-        xAxisDomain: axisStyle,
-        xAxisTicks: axisStyle,
-        xAxisText: {
-          transform: 'rotateZ(-40deg)',
-          textAnchor: 'end',
-          ...textStyle
-        },
-        yAxisDomain: axisStyle,
-        yAxisTicks: axisStyle,
-        yAxisText: textStyle
-      };
-    };
-
-    const customColors = [palette.greenLight, palette.green, palette.greenDark];
-
-    return (
-      <HorizontalBarChart
-        data={points}
-        width={800}
-        height={400}
-        barHeight={15}
-        yAxisTickCount={6}
-        styles={customStyles}
-        colors={customColors}
-        chartLabel={'Chart with Axis Labels and Custom Styles'}
-      />
-    );
-  }
-}
+  return <HorizontalBarChart data={data} hideRatio={hideRatio} width={600} />;
+};

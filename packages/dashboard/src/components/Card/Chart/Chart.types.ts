@@ -1,4 +1,4 @@
-import { IDataPoint, ILegendDataItem } from '@uifabric/charting/lib/StackedBarChart';
+import { IChartProps as IChartingProps, IDataPoint, ILegendDataItem } from '@uifabric/charting/lib/StackedBarChart';
 
 export enum ChartType {
   DonutChart,
@@ -63,6 +63,16 @@ export interface IChartProps {
    * Data to render for multiple charts.
    */
   data?: IDataPoint[][];
+
+  /**
+   * Data for the dataviz
+   */
+  chartData?: IChartingProps[];
+
+  /**
+   * This property tells whether to show ratio on top of stacked bar chart or not.
+   */
+  hideRatio?: boolean[];
 
   /**
    * Type of chart to render

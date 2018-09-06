@@ -1,25 +1,21 @@
 import { IStackedBarChartStyleProps, IStackedBarChartStyles } from './StackedBarChart.types';
 
 export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartStyles => {
-  const { className, width, barHeight } = props;
-
-  const chartWidth = width;
-  const chartHeight = barHeight;
+  const { className, width, barHeight, legendColor, isSelected, isChartSelected, theme } = props;
   return {
     root: [
       'ms-StackedBarChart',
       {
-        width: chartWidth
-      },
-      {
+        width: width ? width : '100%',
         display: 'flex',
         flexDirection: 'column'
       },
       className
     ],
     chart: {
-      width: chartWidth,
-      height: chartHeight
+      width: '100%',
+      height: barHeight ? barHeight : 16,
+      marginBottom: '13px'
     },
     chartTitle: {
       display: 'flex',
@@ -29,6 +25,26 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
     },
     legendContainer: {
       paddingTop: '4px'
+    },
+    hoverCardTextStyles: {
+      ...theme.fonts.medium,
+      lineHeight: '14px'
+    },
+    hoverCardDataStyles: {
+      color: legendColor === '' ? theme.palette.black : legendColor,
+      fontSize: '28px',
+      fontFamily: 'Segoe UI',
+      fontWeight: 'bold',
+      lineHeight: '31px'
+    },
+    hoverCardRoot: {
+      paddingLeft: '16px',
+      paddingRight: '22px',
+      paddingTop: '15px',
+      paddingBottom: '8px'
+    },
+    opacityChangeOnHover: {
+      opacity: isChartSelected ? (isSelected ? '' : '0.6') : ''
     }
   };
 };

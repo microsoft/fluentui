@@ -1,6 +1,34 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Mon, 30 Jul 2018 10:27:11 GMT and should not be manually modified.
+This log was last generated on Wed, 05 Sep 2018 10:29:25 GMT and should not be manually modified.
+
+## 6.8.3
+Wed, 05 Sep 2018 10:29:25 GMT
+
+### Patches
+
+- Improve a DX issue with IProcessedStyleSet typings. (issue #6124)
+
+## 6.8.2
+Wed, 29 Aug 2018 10:28:42 GMT
+
+### Patches
+
+- The IProcessedStyleSet type now correctly infers the types of subComponentStyles properties.
+
+## 6.8.1
+Tue, 28 Aug 2018 10:23:58 GMT
+
+### Patches
+
+- Adds missing CSS property values for 'align-self' in `IRawStyle` type definition and corrects CSS property values for 'justify-self' in 'IRawStyle'
+
+## 6.8.0
+Mon, 27 Aug 2018 10:27:43 GMT
+
+### Minor changes
+
+- Adds support for 'justifySelf' which is needed to align items in CSS Grid.
 
 ## 6.7.0
 Mon, 30 Jul 2018 10:27:11 GMT

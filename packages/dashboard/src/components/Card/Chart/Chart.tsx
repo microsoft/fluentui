@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { IChartInternalProps, ChartType, ChartHeight, ChartWidth } from './Chart.types';
-import { HorizontalBarChart } from '@uifabric/charting/lib/HorizontalBarChart';
-import { LineChart } from '@uifabric/charting/lib/LineChart';
-import { VerticalBarChart } from '@uifabric/charting/lib/VerticalBarChart';
-import { DonutChart } from '@uifabric/charting/lib/DonutChart';
-import { PieChart } from '@uifabric/charting/lib/PieChart';
 import {
-  StackedBarChart,
+  DonutChart,
+  HorizontalBarChart,
   IDataPoint,
   ILegendDataItem,
-  MultiStackedBarChart
-} from '@uifabric/charting/lib/StackedBarChart';
+  LineChart,
+  MultiStackedBarChart,
+  StackedBarChart,
+  VerticalBarChart
+} from '@uifabric/charting';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 export class Chart extends React.Component<IChartInternalProps, {}> {
   public static defaultProps = {
@@ -63,49 +63,18 @@ export class Chart extends React.Component<IChartInternalProps, {}> {
         );
       }
       case ChartType.LineChart: {
-        return (
-          <LineChart
-            data={this.props.data}
-            width={this._getWidth()}
-            height={this._getHeight()}
-            strokeWidth={this.props.strokeWidth}
-            chartLabel={this._chartLabel}
-            colors={this._colors}
-          />
-        );
+        return this._getLineChart();
       }
       case ChartType.HorizontalBarChart: {
         return (
-          <HorizontalBarChart
-            data={this._singleChartDataPoints}
-            width={this._getWidth()}
-            height={this._getHeight()}
-            barHeight={this.props.barHeight}
-            chartLabel={this._chartLabel}
-            colors={this._colors}
-          />
+          <HorizontalBarChart data={this.props.chartData!} width={this._getWidth()} barHeight={this.props.barHeight} />
         );
       }
       case ChartType.DonutChart: {
-        return (
-          <DonutChart
-            data={this._singleChartDataPoints}
-            colors={this._colors}
-            width={this._getWidth()}
-            height={this._getHeight()}
-          />
-        );
+        return <DonutChart data={this.props.chartData![0]} innerRadius={40} />;
       }
       case ChartType.PieChart: {
-        return (
-          <PieChart
-            data={this._singleChartDataPoints}
-            chartTitle={this._chartLabel}
-            colors={this._colors}
-            width={this._getWidth()}
-            height={this._getHeight()}
-          />
-        );
+        return <DonutChart data={this.props.chartData![0]} innerRadius={0} />;
       }
       case ChartType.StackedBarChart: {
         return this._getStackedBarChart();
@@ -136,26 +105,29 @@ export class Chart extends React.Component<IChartInternalProps, {}> {
   }
 
   private _getStackedBarChart = (): JSX.Element => {
-    if (this._isMultiBarChart === true) {
+    if (this.props.chartData!.length > 1) {
       return (
         <MultiStackedBarChart
-          data={this.props.data!}
-          chartTitles={this.props.chartLabels!}
+          data={this.props.chartData!}
           barHeight={this.props.barHeight}
-          legendData={this.props.legendColors}
-          width={this._getWidth()}
+          hideRatio={this.props.hideRatio}
         />
       );
     }
 
+    return <StackedBarChart data={this.props.chartData![0]} barHeight={this.props.barHeight} />;
+  };
+
+  private _getLineChart = (): JSX.Element => {
     return (
-      <StackedBarChart
-        data={this._singleChartDataPoints}
-        chartTitle={this._chartLabel}
-        colors={this._colors}
-        width={this._getWidth()}
-        barHeight={this.props.barHeight}
-      />
+      <div className={mergeStyles({ width: this._getWidth(), height: this._getHeight() })}>
+        <LineChart
+          data={this.props.chartData![0]}
+          strokeWidth={this.props.strokeWidth}
+          width={this._getWidth()}
+          height={this._getHeight()}
+        />
+      </div>
     );
   };
 }

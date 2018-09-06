@@ -30,10 +30,29 @@ export const sizeBoolean = (size: PersonaSize) => ({
   isSize28: size === PersonaSize.size28 || size === PersonaSize.extraSmall,
   isSize32: size === PersonaSize.size32,
   isSize40: size === PersonaSize.size40 || size === PersonaSize.small,
-  isSize48: size === PersonaSize.size48,
+  isSize48: size === PersonaSize.size48 || size === PersonaSize.regular,
   isSize72: size === PersonaSize.size72 || size === PersonaSize.large,
   isSize100: size === PersonaSize.size100 || size === PersonaSize.extraLarge
 });
+
+export const sizeToPixels: { [key: number]: number } = {
+  [PersonaSize.tiny]: 10,
+  [PersonaSize.extraExtraSmall]: 24,
+  [PersonaSize.extraSmall]: 28,
+  [PersonaSize.small]: 40,
+  [PersonaSize.regular]: 48,
+  [PersonaSize.large]: 72,
+  [PersonaSize.extraLarge]: 100,
+  [PersonaSize.size10]: 10,
+  [PersonaSize.size16]: 16,
+  [PersonaSize.size24]: 24,
+  [PersonaSize.size28]: 28,
+  [PersonaSize.size32]: 32,
+  [PersonaSize.size40]: 40,
+  [PersonaSize.size48]: 48,
+  [PersonaSize.size72]: 72,
+  [PersonaSize.size100]: 100
+};
 
 export const presenceBoolean = (presence: PersonaPresence) => ({
   isAvailable: presence === PersonaPresence.online,

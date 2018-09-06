@@ -51,7 +51,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
               ms-DetailsHeader
               {
                 background: #ffffff;
-                border-bottom: 1px solid #c8c8c8;
+                border-bottom: 1px solid #eaeaea;
                 box-sizing: content-box;
                 cursor: default;
                 display: inline-block;
@@ -85,6 +85,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
         >
           <div
             aria-colindex={1}
+            aria-hidden={undefined}
             aria-labelledby="header0-check"
             className=
                 ms-DetailsHeader-cell
@@ -413,7 +414,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 id="header0-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
-                role="button"
+                role={undefined}
               >
                 <span
                   className=
@@ -549,7 +550,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 id="header0-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
-                role="button"
+                role={undefined}
               >
                 <span
                   className=
@@ -685,7 +686,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 id="header0-value"
                 onClick={[Function]}
                 onContextMenu={[Function]}
-                role="button"
+                role={undefined}
               >
                 <span
                   className=
@@ -862,7 +863,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
               ms-DetailsHeader
               {
                 background: #ffffff;
-                border-bottom: 1px solid #c8c8c8;
+                border-bottom: 1px solid #eaeaea;
                 box-sizing: content-box;
                 cursor: default;
                 display: inline-block;
@@ -896,6 +897,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
         >
           <div
             aria-colindex={1}
+            aria-hidden={undefined}
             aria-labelledby="header9-check"
             className=
                 ms-DetailsHeader-cell
@@ -1224,7 +1226,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 id="header9-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
-                role="button"
+                role={undefined}
               >
                 <span
                   className=
@@ -1360,7 +1362,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 id="header9-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
-                role="button"
+                role={undefined}
               >
                 <span
                   className=
@@ -1496,7 +1498,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 id="header9-value"
                 onClick={[Function]}
                 onContextMenu={[Function]}
-                role="button"
+                role={undefined}
               >
                 <span
                   className=
@@ -1641,7 +1643,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
         border-bottom: 1px solid #f4f4f4;
         box-sizing: border-box;
         color: #767676;
-        display: flex;
+        display: inline-flex;
         min-height: 42px;
         min-width: 100%;
         outline: transparent;
@@ -2197,7 +2199,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
               ms-DetailsHeader
               {
                 background: #ffffff;
-                border-bottom: 1px solid #c8c8c8;
+                border-bottom: 1px solid #eaeaea;
                 box-sizing: content-box;
                 cursor: default;
                 display: inline-block;
@@ -2231,6 +2233,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
         >
           <div
             aria-colindex={1}
+            aria-hidden={undefined}
             aria-labelledby="header3-check"
             className=
                 ms-DetailsHeader-cell
@@ -2559,7 +2562,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 id="header3-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
-                role="button"
+                role={undefined}
               >
                 <span
                   className=
@@ -2695,7 +2698,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 id="header3-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
-                role="button"
+                role={undefined}
               >
                 <span
                   className=
@@ -2831,7 +2834,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 id="header3-value"
                 onClick={[Function]}
                 onContextMenu={[Function]}
-                role="button"
+                role={undefined}
               >
                 <span
                   className=
@@ -3008,7 +3011,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
               ms-DetailsHeader
               {
                 background: #ffffff;
-                border-bottom: 1px solid #c8c8c8;
+                border-bottom: 1px solid #eaeaea;
                 box-sizing: content-box;
                 cursor: default;
                 display: inline-block;
@@ -3042,6 +3045,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
         >
           <div
             aria-colindex={1}
+            aria-hidden={undefined}
             aria-labelledby="header6-check"
             className=
                 ms-DetailsHeader-cell
@@ -3370,7 +3374,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 id="header6-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
-                role="button"
+                role={undefined}
               >
                 <span
                   className=
@@ -3506,7 +3510,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 id="header6-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
-                role="button"
+                role={undefined}
               >
                 <span
                   className=
@@ -3642,7 +3646,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 id="header6-value"
                 onClick={[Function]}
                 onContextMenu={[Function]}
-                role="button"
+                role={undefined}
               >
                 <span
                   className=

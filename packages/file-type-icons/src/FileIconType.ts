@@ -12,3 +12,5 @@ export const enum FileIconType {
   listItem = 4,
   sharedFolder = 5
 }
+
+export type FileIconTypeInput = 1 | 2 | 3 | 4 | 5;

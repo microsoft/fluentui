@@ -10,7 +10,7 @@ import {
 import { IContextualMenuStyles, IMenuItemStyles } from './ContextualMenu.types';
 import { memoizeFunction } from '../../Utilities';
 
-const ContextualMenuItemHeight = '32px';
+export const CONTEXTUAL_MENU_ITEM_HEIGHT = '32px';
 
 const getItemHighContrastStyles = memoizeFunction(
   (): IRawStyle => {
@@ -53,12 +53,12 @@ export const getMenuItemStyles = memoizeFunction(
         getFocusStyle(theme),
         fonts.medium,
         {
-          color: 'inherit',
+          color: semanticColors.bodyText,
           backgroundColor: 'transparent',
           border: 'none',
           width: '100%',
-          height: ContextualMenuItemHeight,
-          lineHeight: ContextualMenuItemHeight,
+          height: CONTEXTUAL_MENU_ITEM_HEIGHT,
+          lineHeight: CONTEXTUAL_MENU_ITEM_HEIGHT,
           display: 'block',
           cursor: 'pointer',
           padding: '0px 6px',
@@ -132,7 +132,7 @@ export const getMenuItemStyles = memoizeFunction(
       icon: {
         display: 'inline-block',
         minHeight: '1px',
-        maxHeight: ContextualMenuItemHeight,
+        maxHeight: CONTEXTUAL_MENU_ITEM_HEIGHT,
         width: '14px',
         margin: '0 4px',
         verticalAlign: 'middle',
@@ -172,8 +172,8 @@ export const getMenuItemStyles = memoizeFunction(
         }
       },
       subMenuIcon: {
-        height: ContextualMenuItemHeight,
-        lineHeight: ContextualMenuItemHeight,
+        height: CONTEXTUAL_MENU_ITEM_HEIGHT,
+        lineHeight: CONTEXTUAL_MENU_ITEM_HEIGHT,
         textAlign: 'center',
         display: 'inline-block',
         verticalAlign: 'middle',
@@ -184,7 +184,7 @@ export const getMenuItemStyles = memoizeFunction(
         getFocusStyle(theme),
         {
           display: 'flex',
-          height: ContextualMenuItemHeight,
+          height: CONTEXTUAL_MENU_ITEM_HEIGHT,
           flexWrap: 'nowrap',
           justifyContent: 'center',
           alignItems: 'center'
@@ -231,8 +231,8 @@ export const getStyles = memoizeFunction(
           background: 'none',
           backgroundColor: 'transparent',
           border: 'none',
-          height: ContextualMenuItemHeight,
-          lineHeight: ContextualMenuItemHeight,
+          height: CONTEXTUAL_MENU_ITEM_HEIGHT,
+          lineHeight: CONTEXTUAL_MENU_ITEM_HEIGHT,
           cursor: 'default',
           padding: '0px 6px',
           userSelect: 'none',

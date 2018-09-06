@@ -218,6 +218,8 @@ export interface IButtonProps
 
   /**
    * Any custom data the developer wishes to associate with the menu item.
+   *
+   * @deprecated unused, use `checked` if setting state.
    */
   toggled?: boolean;
 
@@ -407,6 +409,11 @@ export interface IButtonStyles {
    * Style for the text content of the button.
    */
   label?: IStyle;
+
+  /**
+   * Style override for the text content when the button is hovered.
+   */
+  labelHovered?: IStyle;
 
   /**
    * Style override for the text content when the button is disabled.

@@ -17,7 +17,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           min-height: 26px;
           position: relative;
         }
-        & .ms-Label {
+        & .ms-ChoiceFieldLabel {
           display: inline-block;
           font-size: 14px;
           padding-left: 26px;
@@ -29,7 +29,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
 
     >
       <input
-        aria-labelledby={undefined}
         checked={undefined}
         className=
             ms-ChoiceField-input
@@ -59,13 +58,13 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               user-select: none;
               vertical-align: top;
             }
-            &:hover .ms-Label {
+            &:hover .ms-ChoiceFieldLabel {
               color: #000000;
             }
             &:hover:before {
               border-color: #212121;
             }
-            &:focus .ms-Label {
+            &:focus .ms-ChoiceFieldLabel {
               color: #000000;
             }
             &:focus:before {
@@ -106,7 +105,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         htmlFor={undefined}
       >
         <span
-          className="ms-Label"
+          className="ms-ChoiceFieldLabel"
           id={undefined}
         >
           Option A
@@ -129,7 +128,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           min-height: 26px;
           position: relative;
         }
-        & .ms-Label {
+        & .ms-ChoiceFieldLabel {
           display: inline-block;
           font-size: 14px;
           padding-left: 26px;
@@ -139,14 +138,14 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
       className=
           ms-ChoiceField-wrapper
           is-inFocus
-          .ms-Fabric.is-focusVisible & {
+          .ms-Fabric--isFocusVisible & {
             outline: transparent;
             position: relative;
           }
-          .ms-Fabric.is-focusVisible &::-moz-focus-inner {
+          .ms-Fabric--isFocusVisible &::-moz-focus-inner {
             border: 0px;
           }
-          .ms-Fabric.is-focusVisible &:after {
+          .ms-Fabric--isFocusVisible &:after {
             border: 1px solid #333333;
             bottom: -2px;
             content: "";
@@ -156,13 +155,12 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             right: -2px;
             top: -2px;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:after {
+          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:after {
             border-color: WindowText;
             border-width: 2px;
           }
     >
       <input
-        aria-labelledby={undefined}
         checked={undefined}
         className=
             ms-ChoiceField-input
@@ -192,13 +190,13 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               user-select: none;
               vertical-align: top;
             }
-            &:hover .ms-Label {
+            &:hover .ms-ChoiceFieldLabel {
               color: #000000;
             }
             &:hover:before {
               border-color: #212121;
             }
-            &:focus .ms-Label {
+            &:focus .ms-ChoiceFieldLabel {
               color: #000000;
             }
             &:focus:before {
@@ -239,7 +237,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         htmlFor={undefined}
       >
         <span
-          className="ms-Label"
+          className="ms-ChoiceFieldLabel"
           id={undefined}
         >
           Option B
@@ -262,7 +260,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           min-height: 26px;
           position: relative;
         }
-        & .ms-Label {
+        & .ms-ChoiceFieldLabel {
           display: inline-block;
           font-size: 14px;
           padding-left: 26px;
@@ -272,14 +270,14 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
       className=
           ms-ChoiceField-wrapper
           is-inFocus
-          .ms-Fabric.is-focusVisible & {
+          .ms-Fabric--isFocusVisible & {
             outline: transparent;
             position: relative;
           }
-          .ms-Fabric.is-focusVisible &::-moz-focus-inner {
+          .ms-Fabric--isFocusVisible &::-moz-focus-inner {
             border: 0px;
           }
-          .ms-Fabric.is-focusVisible &:after {
+          .ms-Fabric--isFocusVisible &:after {
             border: 1px solid #333333;
             bottom: -2px;
             content: "";
@@ -289,13 +287,12 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             right: -2px;
             top: -2px;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:after {
+          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:after {
             border-color: WindowText;
             border-width: 2px;
           }
     >
       <input
-        aria-labelledby={undefined}
         checked={true}
         className=
             ms-ChoiceField-input
@@ -326,13 +323,13 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               user-select: none;
               vertical-align: top;
             }
-            &:hover .ms-Label {
+            &:hover .ms-ChoiceFieldLabel {
               color: #000000;
             }
             &:hover:before {
               border-color: #106ebe;
             }
-            &:focus .ms-Label {
+            &:focus .ms-ChoiceFieldLabel {
               color: #000000;
             }
             &:focus:before {
@@ -383,7 +380,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         htmlFor={undefined}
       >
         <span
-          className="ms-Label"
+          className="ms-ChoiceFieldLabel"
           id={undefined}
         >
           Option C
@@ -406,7 +403,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           min-height: 26px;
           position: relative;
         }
-        & .ms-Label {
+        & .ms-ChoiceFieldLabel {
           display: inline-block;
           font-size: 14px;
           padding-left: 26px;
@@ -418,7 +415,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
 
     >
       <input
-        aria-labelledby={undefined}
         checked={undefined}
         className=
             ms-ChoiceField-input
@@ -483,7 +479,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 0px;
             }
-            & .ms-Label {
+            & .ms-ChoiceFieldLabel {
               color: #c8c8c8;
             }
             @media screen and (-ms-high-contrast: active){& {
@@ -492,7 +488,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         htmlFor={undefined}
       >
         <span
-          className="ms-Label"
+          className="ms-ChoiceFieldLabel"
           id={undefined}
         >
           Option D
@@ -515,7 +511,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           min-height: 26px;
           position: relative;
         }
-        & .ms-Label {
+        & .ms-ChoiceFieldLabel {
           display: inline-block;
           font-size: 14px;
           padding-left: 26px;
@@ -527,7 +523,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
 
     >
       <input
-        aria-labelledby={undefined}
         checked={true}
         className=
             ms-ChoiceField-input
@@ -601,7 +596,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             @media screen and (-ms-high-contrast: active){&:after {
               border-color: Highlight;
             }
-            & .ms-Label {
+            & .ms-ChoiceFieldLabel {
               color: #c8c8c8;
             }
             @media screen and (-ms-high-contrast: active){& {
@@ -610,7 +605,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         htmlFor={undefined}
       >
         <span
-          className="ms-Label"
+          className="ms-ChoiceFieldLabel"
           id={undefined}
         >
           Option E
@@ -640,7 +635,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           padding-left: 0px;
           position: relative;
         }
-        & .ms-Label {
+        & .ms-ChoiceFieldLabel {
           display: inline-block;
           font-size: 14px;
         }
@@ -651,7 +646,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
 
     >
       <input
-        aria-labelledby={undefined}
         checked={undefined}
         className=
             ms-ChoiceField-input
@@ -705,7 +699,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             &:hover {
               border-color: #c8c8c8;
             }
-            &:hover .ms-Label {
+            &:hover .ms-ChoiceFieldLabel {
               color: #000000;
             }
             &:hover:before {
@@ -715,7 +709,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             &:focus {
               border-color: #c8c8c8;
             }
-            &:focus .ms-Label {
+            &:focus .ms-ChoiceFieldLabel {
               color: #000000;
             }
             &:focus:before {
@@ -822,7 +816,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           }
         >
           <span
-            className="ms-Label"
+            className="ms-ChoiceFieldLabel"
             id={undefined}
           >
             Option F
@@ -853,7 +847,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           padding-left: 0px;
           position: relative;
         }
-        & .ms-Label {
+        & .ms-ChoiceFieldLabel {
           display: inline-block;
           font-size: 14px;
         }
@@ -862,14 +856,14 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
       className=
           ms-ChoiceField-wrapper
           is-inFocus
-          .ms-Fabric.is-focusVisible & {
+          .ms-Fabric--isFocusVisible & {
             outline: transparent;
             position: relative;
           }
-          .ms-Fabric.is-focusVisible &::-moz-focus-inner {
+          .ms-Fabric--isFocusVisible &::-moz-focus-inner {
             border: 0px;
           }
-          .ms-Fabric.is-focusVisible &:after {
+          .ms-Fabric--isFocusVisible &:after {
             border: 1px solid #666666;
             bottom: -2px;
             content: "";
@@ -879,13 +873,12 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             right: -2px;
             top: -2px;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:after {
+          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:after {
             border-color: WindowText;
             border-width: 1px;
           }
     >
       <input
-        aria-labelledby={undefined}
         checked={undefined}
         className=
             ms-ChoiceField-input
@@ -939,7 +932,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             &:hover {
               border-color: #c8c8c8;
             }
-            &:hover .ms-Label {
+            &:hover .ms-ChoiceFieldLabel {
               color: #000000;
             }
             &:hover:before {
@@ -949,7 +942,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             &:focus {
               border-color: #c8c8c8;
             }
-            &:focus .ms-Label {
+            &:focus .ms-ChoiceFieldLabel {
               color: #000000;
             }
             &:focus:before {
@@ -1056,7 +1049,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           }
         >
           <span
-            className="ms-Label"
+            className="ms-ChoiceFieldLabel"
             id={undefined}
           >
             Option G
@@ -1087,7 +1080,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           padding-left: 0px;
           position: relative;
         }
-        & .ms-Label {
+        & .ms-ChoiceFieldLabel {
           display: inline-block;
           font-size: 14px;
         }
@@ -1098,7 +1091,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
 
     >
       <input
-        aria-labelledby={undefined}
         checked={true}
         className=
             ms-ChoiceField-input
@@ -1153,7 +1145,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             &:hover {
               border-color: #005a9e;
             }
-            &:hover .ms-Label {
+            &:hover .ms-ChoiceFieldLabel {
               color: #000000;
             }
             &:hover:before {
@@ -1163,7 +1155,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             &:focus {
               border-color: #005a9e;
             }
-            &:focus .ms-Label {
+            &:focus .ms-ChoiceFieldLabel {
               color: #000000;
             }
             &:focus:before {
@@ -1280,7 +1272,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           }
         >
           <span
-            className="ms-Label"
+            className="ms-ChoiceFieldLabel"
             id={undefined}
           >
             Option H
@@ -1311,7 +1303,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           padding-left: 0px;
           position: relative;
         }
-        & .ms-Label {
+        & .ms-ChoiceFieldLabel {
           display: inline-block;
           font-size: 14px;
         }
@@ -1322,7 +1314,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
 
     >
       <input
-        aria-labelledby={undefined}
         checked={undefined}
         className=
             ms-ChoiceField-input
@@ -1410,7 +1401,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 0px;
             }
-            & .ms-Label {
+            & .ms-ChoiceFieldLabel {
               color: #c8c8c8;
             }
             @media screen and (-ms-high-contrast: active){& {
@@ -1487,7 +1478,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           }
         >
           <span
-            className="ms-Label"
+            className="ms-ChoiceFieldLabel"
             id={undefined}
           >
             Option I

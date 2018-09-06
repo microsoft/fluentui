@@ -71,6 +71,16 @@ export interface INavProps {
    * The state "showMore" stays in the parent NavToggler component to keep show more/less state of Nav and SlimNav component in sync.
    */
   onShowMoreLinkClicked?(ev: React.MouseEvent<HTMLElement>): void;
+
+  /**
+   * (Optional) callback for the parent component when the nav node is toggled between expanded and collapsed state
+   */
+  onNavNodeExpandedCallback?(nodeKey: string, isExpanded: boolean): void;
+
+  /**
+   * (Optional) callback for the parent component when the edit nav node is clicked
+   */
+  onEditLeftNavClickedCallback?(): void;
 }
 
 export interface INavState extends INavState {

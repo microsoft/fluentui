@@ -2,15 +2,13 @@ import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface IStackedBarChart {}
-import { IDataPoint } from '../../types/IDataPoint';
-
-export { IDataPoint, ILegendDataItem } from '../../types';
+import { IChartProps } from './index';
 
 export interface IStackedBarChartProps {
   /**
    * Data to render in the chart.
    */
-  data?: IDataPoint[];
+  data?: IChartProps;
 
   /**
    * Width of the chart.
@@ -38,16 +36,6 @@ export interface IStackedBarChartProps {
   hideNumberDisplay?: boolean;
 
   /**
-   * Colors from which to select the color of each bar.
-   */
-  colors?: string[];
-
-  /**
-   * Title to apply to the whole chart.
-   */
-  chartTitle?: string;
-
-  /**
    * Additional CSS class(es) to apply to the StackedBarChart.
    */
   className?: string;
@@ -61,6 +49,8 @@ export interface IStackedBarChartProps {
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IStackedBarChartStyleProps, IStackedBarChartStyles>;
+
+  isMultiStackedBarChart?: boolean;
 }
 
 export interface IStackedBarChartStyleProps {
@@ -77,12 +67,27 @@ export interface IStackedBarChartStyleProps {
   /**
    * Width of the chart.
    */
-  width: number;
+  width?: number;
 
   /**
    * Height of bar in the chart.
    */
   barHeight?: number;
+
+  /**
+   * prop to show data of the chart with appropriate legend color
+   */
+  legendColor?: string;
+
+  /**
+   * prop to check if the chart is selcted or hovered upon to determine opacity
+   */
+  isSelected?: boolean;
+
+  /**
+   * prop to check which specific section of the stacked bar chart is selected or hovered upon
+   */
+  isChartSelected?: boolean;
 }
 
 export interface IStackedBarChartStyles {
@@ -105,4 +110,24 @@ export interface IStackedBarChartStyles {
    * Style for the legend container div
    */
   legendContainer: IStyle;
+
+  /**
+   * Style for the legend card title displayed in the hover card
+   */
+  hoverCardTextStyles: IStyle;
+
+  /**
+   * Style for the data displayed in the hover card
+   */
+  hoverCardDataStyles: IStyle;
+
+  /**
+   * Style for the root of the hover card
+   */
+  hoverCardRoot: IStyle;
+
+  /**
+   * Style to change the opacity of bars in dataviz when we hover on a single bar or legends
+   */
+  opacityChangeOnHover: IStyle;
 }
