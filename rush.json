@@ -5,6 +5,11 @@
   "repository": {
     "url": "https://github.com/OfficeDev/office-ui-fabric-react.git"
   },
+  "eventHooks": {
+    "postRushInstall": [
+      "node scripts/install-husky.js"
+    ]
+  },
   "nodeSupportedVersionRange": ">=6.9.0 <10.0.0",
   "projects": [
     {

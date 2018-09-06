@@ -29,16 +29,12 @@
     "create-component": "node scripts/create-component.js",
     "checkchange": "node common/scripts/install-run-rush.js change -v",
     "update-snapshots": "cd packages/office-ui-fabric-react && npm run update-snapshots",
-    "precommit": "lint-staged",
     "check-for-changed-files": "node ./scripts/check-for-modified-files.js",
     "prettier": "node scripts/prettier.js",
-    "codepen": "cd packages/office-ui-fabric-react && node ../../scripts/local-codepen.js"
+    "codepen": "cd packages/office-ui-fabric-react && node ../../scripts/local-codepen.js",
+    "precommit": "node scripts/node_modules/lint-staged/index.js"
   },
   "license": "MIT",
-  "devDependencies": {
-    "husky": "^0.14.3",
-    "lint-staged": "^7.0.5"
-  },
   "lint-staged": {
     "linters": {
       "!(apps/vr-test)/**/*.{ts,tsx}|*.{ts,tsx}": [
