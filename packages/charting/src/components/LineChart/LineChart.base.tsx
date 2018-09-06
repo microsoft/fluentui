@@ -25,7 +25,8 @@ export class LineChartBase extends React.Component<
     _width: number;
     _height: number;
     isCalloutVisible: boolean;
-    hoverValue: string | number | Date | null;
+    hoverYValue: string | number | null;
+    hoverXValue: string | number | null;
     activeLine: string;
     activeLegend: string;
     lineColor: string;
@@ -45,7 +46,8 @@ export class LineChartBase extends React.Component<
       _width: this.props.width || 600,
       _height: this.props.height || 350,
       isCalloutVisible: false,
-      hoverValue: '',
+      hoverYValue: '',
+      hoverXValue: '',
       activeLine: '',
       activeLegend: '',
       lineColor: ''
@@ -110,8 +112,9 @@ export class LineChartBase extends React.Component<
             className={this._classNames.calloutPadding}
             directionalHint={DirectionalHint.rightTopEdge}
           >
-            <div>
-              <span>{this.state.hoverValue}</span>
+            <div className={this._classNames.calloutContentRoot}>
+              <span className={this._classNames.calloutContentX}>{this.state.hoverXValue}</span>
+              <span className={this._classNames.calloutContentY}>{this.state.hoverYValue}</span>
             </div>
           </Callout>
         ) : null}
@@ -120,18 +123,25 @@ export class LineChartBase extends React.Component<
   }
 
   private _hoverOn(
-    hoverValue: string | number | Date | null,
+    hoverYValue: string | number | null,
+    hoverXValue: string | number | null,
     activeLine: string,
     lineColor: string,
     isHoverShow: boolean
   ): void {
     if (isHoverShow) {
-      this.setState({ isCalloutVisible: true, hoverValue: hoverValue, activeLine: activeLine, lineColor: lineColor });
+      this.setState({
+        isCalloutVisible: true,
+        hoverYValue: hoverYValue,
+        hoverXValue: hoverXValue,
+        activeLine: activeLine,
+        lineColor: lineColor
+      });
     }
   }
   private _hoverOff(isHoverShow: boolean): void {
     if (isHoverShow) {
-      this.setState({ isCalloutVisible: false, hoverValue: '', activeLine: '', lineColor: '' });
+      this.setState({ isCalloutVisible: false, hoverYValue: '', hoverXValue: '', activeLine: '', lineColor: '' });
     }
   }
 
@@ -185,7 +195,7 @@ export class LineChartBase extends React.Component<
         ? node.parentElement.offsetHeight
         : this.state._height;
 
-    node.setAttribute('viewBox', `0 0 ${widthVal} ${heightVal}`);
+    node.setAttribute('viewBox', `0 0 ${widthVal * 0.7} ${heightVal}`);
   }
 
   private _setYAxis(node: SVGElement | null, yAxis: numericAxis | stringAxis): void {
@@ -279,7 +289,14 @@ export class LineChartBase extends React.Component<
           <line
             id={keyVal}
             key={keyVal}
-            onMouseOver={this._hoverOn.bind(this, this._points[i].data[j - 1].y, keyVal, lineColor, isHoverShow)}
+            onMouseOver={this._hoverOn.bind(
+              this,
+              this._points[i].data[j - 1].y,
+              this._points[i].data[j - 1].x,
+              keyVal,
+              lineColor,
+              isHoverShow
+            )}
             onMouseLeave={this._hoverOff.bind(this, isHoverShow)}
             x1={xLineScale(this._points[i].data[j - 1].x as number)}
             y1={this.state._height - yLineScale(this._points[i].data[j - 1].y)}
@@ -326,7 +343,14 @@ export class LineChartBase extends React.Component<
           <line
             id={keyVal}
             key={keyVal}
-            onMouseOver={this._hoverOn.bind(this, this._points[i].data[j - 1].y, keyVal, lineColor, isHoverShow)}
+            onMouseOver={this._hoverOn.bind(
+              this,
+              this._points[i].data[j - 1].y,
+              this._points[i].data[j - 1].x,
+              keyVal,
+              lineColor,
+              isHoverShow
+            )}
             onMouseLeave={this._hoverOff.bind(this, isHoverShow)}
             x1={xLineScale(j - 1)}
             y1={this.state._height - yLineScale(this._points[i].data[j - 1].y)}
