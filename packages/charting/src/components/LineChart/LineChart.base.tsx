@@ -266,9 +266,12 @@ export class LineChartBase extends React.Component<
 
     for (let i = 0; i < this._points.length; i++) {
       const legendVal: string = this._points[i].legend;
-      const opacity: number = this.state.activeLegend === legendVal || this.state.activeLegend === '' ? 1 : 0.1;
-      const isHoverShow: boolean =
-        this.state.activeLegend === legendVal || this.state.activeLegend === '' ? true : false;
+      let opacity = 0.1;
+      let isHoverShow = false;
+      if (this.state.activeLegend === legendVal || this.state.activeLegend === '') {
+        opacity = 1;
+        isHoverShow = true;
+      }
       const lineColor: string = this._points[i].color;
       for (let j = 1; j < this._points[i].data.length; j++) {
         const keyVal = this._uniqLineText + i + '_' + j;
@@ -310,9 +313,12 @@ export class LineChartBase extends React.Component<
 
     for (let i = 0; i < this._points.length; i++) {
       const legendVal: string = this._points[i].legend;
-      const opacity: number = this.state.activeLegend === legendVal || this.state.activeLegend === '' ? 1 : 0.1;
-      const isHoverShow: boolean =
-        this.state.activeLegend === legendVal || this.state.activeLegend === '' ? true : false;
+      let opacity = 0.1;
+      let isHoverShow = false;
+      if (this.state.activeLegend === legendVal || this.state.activeLegend === '') {
+        opacity = 1;
+        isHoverShow = true;
+      }
       const lineColor: string = this._points[i].color;
       for (let j = 1; j < this._points[i].data.length; j++) {
         const keyVal = this._uniqLineText + i + '_' + j;
