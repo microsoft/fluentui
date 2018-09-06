@@ -1,7 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import { CommandBarBase } from './CommandBar.base';
-import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 
 import { CommandBar } from './CommandBar';

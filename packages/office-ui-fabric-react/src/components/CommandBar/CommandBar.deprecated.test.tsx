@@ -1,12 +1,8 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import { CommandBarBase } from './CommandBar.base';
-import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 
 import { CommandBar } from './CommandBar';
 import { mount } from 'enzyme';
-import { IContextualMenuItem } from '../../ContextualMenu';
 
 describe('CommandBar', () => {
   afterEach(() => {
