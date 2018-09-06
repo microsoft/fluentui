@@ -156,7 +156,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       const styles = this.props.styles;
       let shouldHighlight = true;
       if (this.state.isLegendHovered || this.state.isLegendSelected) {
-        shouldHighlight = this.state.selectedLegendTitle === point.legend ? true : false;
+        shouldHighlight = this.state.selectedLegendTitle === point.legend;
       }
       this._classNames = getClassNames(styles!, {
         theme: this.props.theme!,
