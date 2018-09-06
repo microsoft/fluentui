@@ -20,10 +20,11 @@ export const getClassNames = memoizeFunction(
     disabled: boolean,
     isFocused: boolean,
     keyboardSpinDirection: KeyboardSpinDirection,
-    labelPosition: Position = Position.start
+    labelPosition: Position = Position.start,
+    className: string | undefined = undefined
   ): ISpinButtonClassNames => {
     return {
-      root: mergeStyles(styles.root),
+      root: mergeStyles(styles.root, className),
       labelWrapper: mergeStyles(styles.labelWrapper, _getStyleForLabelBasedOnPosition(labelPosition, styles)),
       icon: mergeStyles(styles.icon, disabled && styles.iconDisabled),
       label: mergeStyles(styles.label, disabled && styles.labelDisabled),

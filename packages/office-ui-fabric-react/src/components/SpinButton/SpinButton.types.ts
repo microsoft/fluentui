@@ -149,7 +149,8 @@ export interface ISpinButtonProps {
     disabled: boolean,
     isFocused: boolean,
     keyboardSpinDirection: KeyboardSpinDirection,
-    labelPosition?: Position
+    labelPosition?: Position,
+    className?: string
   ) => ISpinButtonClassNames;
 
   /**
