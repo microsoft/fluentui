@@ -3,7 +3,7 @@
     {
       "packageName": "office-ui-fabric-react",
       "comment": "adding viewport to IDetailsFooterProps",
-      "type": "patch"
+      "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
