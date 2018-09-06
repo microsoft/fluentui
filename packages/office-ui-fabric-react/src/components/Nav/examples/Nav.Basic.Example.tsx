@@ -4,8 +4,8 @@ import './Nav.Basic.Example.scss';
 
 export class NavBasicExample extends React.Component<any, any> {
   public onLinkClick = (ev: React.MouseEvent<HTMLElement>, item?: INavLink) => {
-    if (item && item.name === 'Edit') {
-      alert('edit link clicked');
+    if (item && item.name === 'News') {
+      alert('News link clicked');
     }
   };
 
@@ -38,16 +38,10 @@ export class NavBasicExample extends React.Component<any, any> {
                 { name: 'Notebook', url: 'http://msn.com', key: 'key5' },
                 { name: 'Long Name Test for ellipse', url: 'http://msn.com', key: 'key6' },
                 {
-                  name: 'Edit',
+                  name: 'News',
                   url: 'http://cnn.com',
-                  icon: 'Edit',
+                  icon: 'News',
                   key: 'key8'
-                },
-                {
-                  name: 'Delete',
-                  url: 'http://cnn.com',
-                  iconProps: { iconName: 'Delete' },
-                  key: 'key9'
                 }
               ]
             }
