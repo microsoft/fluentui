@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/charting",
+      "comment": "Adding temporary fix for hovercard. This fix scales the hover card size based upon the content inside it",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/charting",
+  "email": "nulikarthik@gmail.com"
+}
