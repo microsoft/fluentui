@@ -77,6 +77,16 @@ export interface IDashboardGridLayoutProps {
   dragApi?: DragApiRefObject;
 
   /**
+   * # of cols. This is a breakpoint -> cols map, e.g. {lg: 12, md: 10, ...}
+   */
+  cols?: { [P in Breakpoints]: number };
+
+  /**
+   * the px value of break points
+   */
+  breakpoints?: { [P in Breakpoints]: number };
+
+  /**
    * Whether items in this grid should be draggable or not
    * @default true
    */
@@ -110,21 +120,9 @@ export interface IDashboardGridLayoutProps {
   rowHeight?: number;
 
   /**
-   * Callback so you can save the layout.
-   */
-  onLayoutChange?(currentLayout: Layout[], allLayouts: Layouts): void;
-
-  /**
-   * Calls back with breakpoint and new number of columns
-   */
-  onBreakPointChange?(newBreakpoint: string, newCols: number): void;
-}
-
-export interface IDashboardGridSectionLayoutProps extends IDashboardGridLayoutProps {
-  /**
    * The sections
    */
-  sections: ISection[];
+  sections?: ISection[];
 
   /**
    * The cards definition. Either use cards or cardNodes to pass in the card definitions.
@@ -141,6 +139,16 @@ export interface IDashboardGridSectionLayoutProps extends IDashboardGridLayoutPr
    * @default false
    */
   isCollapsible?: boolean;
+
+  /**
+   * Callback so you can save the layout.
+   */
+  onLayoutChange?(currentLayout: Layout[], allLayouts: Layouts): void;
+
+  /**
+   * Callback with breakpoint and new number of columns
+   */
+  onBreakPointChange?(newBreakpoint: string, newCols: number): void;
 
   /**
    * On section change.
