@@ -1,6 +1,14 @@
 # Change Log - @uifabric/variants
 
-This log was last generated on Tue, 28 Aug 2018 11:24:56 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Sep 2018 01:32:10 GMT and should not be manually modified.
+
+## 5.10.0
+Fri, 07 Sep 2018 01:32:10 GMT
+
+### Minor changes
+
+- Updates button slots with correct pre-fluent palette values and scss fallbacks
+- add buttonBackgroundDisabled semantic slot
 
 ## 5.9.0
 Tue, 28 Aug 2018 11:24:56 GMT

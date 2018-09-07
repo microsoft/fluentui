@@ -2,6 +2,30 @@
   "name": "@uifabric/variants",
   "entries": [
     {
+      "version": "5.10.0",
+      "tag": "@uifabric/variants_v5.10.0",
+      "date": "Fri, 07 Sep 2018 01:32:10 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "bded61c48dac02e7f7dc50b8276ec912327224c6",
+            "comment": "Updates button slots with correct pre-fluent palette values and scss fallbacks"
+          },
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "6e45f444c56510050df017746042ca41f6410cc6",
+            "comment": "add buttonBackgroundDisabled semantic slot"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.122.4 <6.0.0` to `>=5.123.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.9.0",
       "tag": "@uifabric/variants_v5.9.0",
       "date": "Tue, 28 Aug 2018 11:24:56 GMT",
