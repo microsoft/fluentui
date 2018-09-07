@@ -4,7 +4,6 @@
   &,
   &.compact {
     display: inline-flex;
-    text-decoration: none !important;
   }
 
   &.wide {
@@ -14,6 +13,10 @@
 
   max-width: 100%;
   flex-direction: row nowrap;
+}
+
+.signalFieldBefore {
+  margin: 0 4px;
 }
 
 .signalFieldValue {
