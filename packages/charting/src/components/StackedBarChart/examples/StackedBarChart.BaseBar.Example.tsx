@@ -18,6 +18,6 @@ export class StackedBarChartBaseBarExample extends React.Component<{}, {}> {
       chartData: points
     };
 
-    return <StackedBarChart data={data} barBackgroundColor={'#deecf9'} />;
+    return <StackedBarChart data={data} barBackgroundColor={DefaultPalette.neutralTertiary} />;
   }
 }
