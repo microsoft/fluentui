@@ -109,6 +109,9 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   private _onClick = (legend: ILegend): void => {
     if (this.state.selectedState === true && this.state.selectedLegend === legend.title) {
       this.setState({ selectedLegend: 'none', selectedState: false });
+      if (legend.action) {
+        legend.action();
+      }
     } else {
       this.setState({ selectedState: true, selectedLegend: legend.title });
       if (legend.action) {
@@ -195,13 +198,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       this._onLeave(legend);
     };
     return (
-      <div
-        key={index}
-        className={classNames.legend}
-        onClick={onClickHandler}
-        onMouseOver={onHoverHandler}
-        onMouseOut={onMouseOut}
-      >
+      <div key={index} className={classNames.legend} onClick={onClickHandler} onMouseOver={onHoverHandler} onMouseOut={onMouseOut}>
         <div className={classNames.rect} />
         <div className={classNames.text}>{legend.title}</div>
       </div>

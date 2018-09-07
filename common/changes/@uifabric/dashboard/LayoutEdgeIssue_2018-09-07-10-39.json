@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/dashboard",
-      "comment": "fix example for horizontalBarChart",
+      "comment": "ContentArea is croped in Edge browser",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/dashboard",
-  "email": "gorigarajesh@gmaill.com"
+  "email": "polu.balakrishna96@gmail.com"
 }

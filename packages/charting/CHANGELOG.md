@@ -1,6 +1,13 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 06 Sep 2018 10:28:35 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Sep 2018 16:29:48 GMT and should not be manually modified.
+
+## 0.18.0
+Fri, 07 Sep 2018 16:29:48 GMT
+
+### Minor changes
+
+- Changing interaction behaviour of Multistacked and stacked bar chart. Changing styling and opacity of bar upon interaction between legends and chart.
 
 ## 0.17.4
 Thu, 06 Sep 2018 10:28:35 GMT

@@ -2,6 +2,43 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.21.0",
+      "tag": "@uifabric/dashboard_v0.21.0",
+      "date": "Fri, 07 Sep 2018 16:29:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "caradong <caradong1122@gmail.com>",
+            "commit": "a38aedb01a7478399585028c1c64180e664e2f99",
+            "comment": "allow dashboard section control to take JSX elements as child member"
+          },
+          {
+            "author": "caradong <caradong1122@gmail.com>",
+            "commit": "ee7b418434910910b269a1f137d46c1a08b0db61",
+            "comment": "add save prop to edit sections control"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "8d8af3cc2bf992b1cc5b4a1151778c0e9300335b",
+            "comment": "fix example for horizontalBarChart"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.17.4` to `^0.18.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.28.2 <7.0.0` to `>=6.28.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.65.0 <7.0.0` to `>=6.66.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.20.0",
       "tag": "@uifabric/dashboard_v0.20.0",
       "date": "Thu, 06 Sep 2018 10:28:35 GMT",

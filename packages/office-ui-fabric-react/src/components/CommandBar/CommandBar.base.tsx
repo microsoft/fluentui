@@ -1,13 +1,7 @@
 import * as React from 'react';
 
 import { BaseComponent, css, nullRender } from '../../Utilities';
-import {
-  ICommandBar,
-  ICommandBarItemProps,
-  ICommandBarProps,
-  ICommandBarStyleProps,
-  ICommandBarStyles
-} from './CommandBar.types';
+import { ICommandBar, ICommandBarItemProps, ICommandBarProps, ICommandBarStyleProps, ICommandBarStyles } from './CommandBar.types';
 import { IOverflowSet, OverflowSet } from '../../OverflowSet';
 import { IResizeGroup, ResizeGroup } from '../../ResizeGroup';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
@@ -142,7 +136,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     const commandButtonProps: ICommandBarItemProps = {
       allowDisabledFocus: true,
       ...item,
-      styles: { root: { height: '100%' }, ...item.buttonStyles },
+      styles: { root: { height: '100%' }, label: { whiteSpace: 'nowrap' }, ...item.buttonStyles },
       className: css('ms-CommandBarItem-link', item.className),
       text: !item.iconOnly ? itemText : undefined,
       menuProps: item.subMenuProps,
