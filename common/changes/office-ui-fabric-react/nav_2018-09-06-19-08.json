@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "Updates the example for Nav to use a more updated click handler pattern",
+      "packageName": "office-ui-fabric-react",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "kchau@microsoft.com"
+}
