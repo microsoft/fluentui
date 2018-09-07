@@ -120,15 +120,13 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
 
     return (
       <div className="ms-DetailsListAdvancedExample">
+        <Checkbox
+          label="Show on render divider feature on column header divider"
+          checked={this.state.showRenderDividerView}
+          onChange={this._onRenderDividerCheckboxChange}
+        />
+        <br />
         <CommandBar items={this._getCommandItems()} farItems={[{ key: 'count', text: `${this.state.selectionCount} selected` }]} />
-        <div>
-          <Checkbox
-            label="Show on render divider feature on column header divider"
-            checked={this.state.showRenderDividerView}
-            onChange={this._onRenderDividerCheckboxChange}
-          />
-          <br />
-        </div>
 
         {isGrouped ? <TextField label="Group Item Limit" onChange={this._onItemLimitChanged} /> : null}
 
