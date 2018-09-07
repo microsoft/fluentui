@@ -1,14 +1,6 @@
 import { IDropdownStyles, IDropdownStyleProps } from './Dropdown.types';
 import { IStyleFunction } from '../../Utilities';
-import {
-  FontSizes,
-  FontWeights,
-  HighContrastSelector,
-  IRawStyle,
-  IStyle,
-  getGlobalClassNames,
-  normalize
-} from '../../Styling';
+import { FontSizes, FontWeights, HighContrastSelector, IRawStyle, IStyle, getGlobalClassNames, normalize } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-Dropdown-container',
@@ -43,7 +35,12 @@ const highContrastItemAndTitleStateMixin: IRawStyle = {
     [HighContrastSelector]: {
       backgroundColor: 'Highlight',
       borderColor: 'Highlight',
-      color: 'Highlight'
+      color: 'HighlightText',
+      selectors: {
+        ':hover': {
+          color: 'HighlightText' // overrides the hover styling for buttons that are also selected
+        }
+      }
     },
     ...highContrastAdjustMixin
   }
@@ -58,17 +55,7 @@ const highContrastBorderState: IRawStyle = {
 };
 
 export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = props => {
-  const {
-    theme,
-    hasError,
-    className,
-    isOpen,
-    disabled,
-    required,
-    isRenderingPlaceholder,
-    panelClassName,
-    calloutClassName
-  } = props;
+  const { theme, hasError, className, isOpen, disabled, required, isRenderingPlaceholder, panelClassName, calloutClassName } = props;
 
   if (!theme) {
     throw new Error('theme is undefined or null in base Dropdown getStyles function.');
@@ -298,6 +285,6 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
         textAlign: 'left'
       }
     ],
-    subComponentStyles: { label: { root: { display: 'inline-block', marginBottom: 8 } } }
+    subComponentStyles: { label: { root: { display: 'inline-block' } } }
   };
 };

@@ -40,10 +40,10 @@ export class FluentStylesCheckboxExample extends React.Component<{}, ICheckboxBa
             }
           }}
           styles={checkboxStyles}
-          ariaDescribedBy={'descriptionID'}
+          ariaLabelledBy={'labelID'}
         />
-        <label id="descriptionID" className="screenReaderOnly">
-          Uncontroller checkbox description
+        <label id="labelID" className="screenReaderOnly">
+          Uncontrolled checkbox label
         </label>
 
         <Checkbox
@@ -63,12 +63,7 @@ export class FluentStylesCheckboxExample extends React.Component<{}, ICheckboxBa
           styles={checkboxStyles}
         />
 
-        <Checkbox
-          label="Controlled checkbox"
-          checked={isChecked}
-          onChange={this._onControlledCheckboxChange}
-          styles={checkboxStyles}
-        />
+        <Checkbox label="Controlled checkbox" checked={isChecked} onChange={this._onControlledCheckboxChange} styles={checkboxStyles} />
 
         <Checkbox label="Checkbox rendered with boxSide &quot;end&quot;" boxSide="end" styles={checkboxStyles} />
 

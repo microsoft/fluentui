@@ -150,13 +150,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
 
     let overlay;
     if (isBlocking && isOpen) {
-      overlay = (
-        <Overlay
-          className={_classNames.overlay}
-          isDarkThemed={false}
-          onClick={isLightDismiss ? onLightDismissClick : undefined}
-        />
-      );
+      overlay = <Overlay className={_classNames.overlay} isDarkThemed={false} onClick={isLightDismiss ? onLightDismissClick : undefined} />;
     }
 
     const header = onRenderHeader(this.props, this._onRenderHeader, headerTextId);
@@ -179,9 +173,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
               className={_classNames.main}
               style={customWidthStyles}
               elementToFocusOnDismiss={elementToFocusOnDismiss}
-              isClickableOutsideFocusTrap={
-                focusTrapZoneProps && !focusTrapZoneProps.isClickableOutsideFocusTrap ? false : true
-              }
+              isClickableOutsideFocusTrap={focusTrapZoneProps && !focusTrapZoneProps.isClickableOutsideFocusTrap ? false : true}
             >
               <div ref={this._allowScrollOnPanel} className={_classNames.scrollableContent}>
                 <div className={_classNames.commands} data-is-visible={true}>
@@ -214,20 +206,22 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     }
   }
 
-  public dismiss = (): void => {
+  public dismiss = (ev?: React.KeyboardEvent<HTMLElement>): void => {
     if (this.state.isOpen) {
-      this.setState(
-        {
-          isOpen: false,
-          isAnimating: true
-        },
-        () => {
-          this._async.setTimeout(this._onTransitionComplete, 200);
-        }
-      );
-
       if (this.props.onDismiss) {
-        this.props.onDismiss();
+        this.props.onDismiss(ev);
+      }
+
+      if (!ev || (ev && !ev.defaultPrevented)) {
+        this.setState(
+          {
+            isOpen: false,
+            isAnimating: true
+          },
+          () => {
+            this._async.setTimeout(this._onTransitionComplete, 200);
+          }
+        );
       }
     }
   };

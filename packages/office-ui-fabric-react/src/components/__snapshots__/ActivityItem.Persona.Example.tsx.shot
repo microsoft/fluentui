@@ -388,8 +388,8 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                   }
               style={
                 Object {
-                  "height": undefined,
-                  "width": undefined,
+                  "height": 16,
+                  "width": 16,
                 }
               }
             >
@@ -800,8 +800,8 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                   }
               style={
                 Object {
-                  "height": undefined,
-                  "width": undefined,
+                  "height": 16,
+                  "width": 16,
                 }
               }
             >
@@ -877,8 +877,8 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                   }
               style={
                 Object {
-                  "height": undefined,
-                  "width": undefined,
+                  "height": 16,
+                  "width": 16,
                 }
               }
             >
@@ -1223,8 +1223,8 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                   }
               style={
                 Object {
-                  "height": undefined,
-                  "width": undefined,
+                  "height": 16,
+                  "width": 16,
                 }
               }
             >
@@ -1356,8 +1356,8 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                   }
               style={
                 Object {
-                  "height": undefined,
-                  "width": undefined,
+                  "height": 16,
+                  "width": 16,
                 }
               }
             >

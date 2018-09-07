@@ -1,51 +1,22 @@
 import * as React from 'react';
-import { Responsive, WidthProvider, Layout, Layouts } from 'react-grid-layout';
+import { Layout, Layouts } from 'react-grid-layout';
 import {
-  IDashboardGridSectionLayoutProps,
   IDashboardGridLayoutStyles,
   IDashboardCardLayout,
-  DashboardSectionMapping
+  DashboardSectionMapping,
+  IDashboardGridLayoutProps
 } from './DashboardGridLayout.types';
+import { DashboardGridLayoutBase } from './DashboardGridLayoutBase';
 import { ICard, CardSize } from '../Card/Card.types';
 import { ISection } from '../Section/Section.types';
 import { Card } from '../Card/Card';
 import { Section } from '../Section/Section';
 import { getStyles } from './DashboardGridLayout.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-require('style-loader!css-loader!react-grid-layout/css/styles.css');
-require('style-loader!css-loader!react-resizable/css/styles.css');
-require('style-loader!css-loader!./DashboardGridLayout.css');
+import { CardSizeToWidthHeight, getFirstDefinedDashboardLayout, getFirstDefinedLayout } from '../../utilities/DashboardGridLayoutUtils';
 
-const ResponsiveReactGridLayout = WidthProvider(Responsive);
-const rowHeight = 50;
-const breakpoints = {
-  lg: 1920,
-  md: 1366,
-  sm: 1024,
-  xs: 640,
-  xxs: 480,
-  xxxs: 320
-};
-
-const cols = {
-  lg: 4,
-  md: 4,
-  sm: 3,
-  xs: 2,
-  xxs: 1,
-  xxxs: 1
-};
-
-const sizes: { [P in CardSize]: { w: number; h: number } } = {
-  small: { w: 1, h: 4 },
-  mediumTall: { w: 1, h: 8 },
-  mediumWide: { w: 2, h: 4 },
-  large: { w: 2, h: 8 },
-  section: { w: 4, h: 1 }
-};
-
-export class DashboardGridSectionLayout extends React.Component<IDashboardGridSectionLayoutProps, {}> {
-  /** the list of all section keys */
+export class DashboardGridSectionLayout extends React.Component<IDashboardGridLayoutProps, {}> {
+  /** the list of all section ids */
   private _sectionKeys: string[] = [];
   /** the size dictionary of all cards. Used to recorver the card size on expand */
   private _cardSizes: { [key: string]: CardSize } = {};
@@ -54,38 +25,29 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridSe
   /** the section id to card ids mapping */
   private _sectionMapping: DashboardSectionMapping = {};
 
-  constructor(props: IDashboardGridSectionLayoutProps) {
+  constructor(props: IDashboardGridLayoutProps) {
     super(props);
-    this._currentLayout = this._getFirstDefinedLayout(this._createLayout());
+    this._sectionKeys = this.props.sections ? this.props.sections.map((section: ISection) => section.id) : [];
+    this._currentLayout = getFirstDefinedLayout(this._createLayout());
     this._sectionMapping = this._processSections();
-    this._sectionKeys = this.props.sections.map((section: ISection) => section.key);
-    this.props.cards.forEach((card: ICard) => {
-      this._cardSizes[card.key] = card.cardSize;
-    });
+    if (this.props.cards) {
+      this.props.cards.forEach((card: ICard) => {
+        this._cardSizes[card.id] = card.cardSize;
+      });
+    } else if (this.props.layout) {
+      getFirstDefinedDashboardLayout(this.props.layout).forEach((layout: IDashboardCardLayout) => {
+        this._cardSizes[layout.i!] = layout.size;
+      });
+    }
   }
 
   public render(): JSX.Element {
-    const getClassNames = classNamesFunction<IDashboardGridSectionLayoutProps, IDashboardGridLayoutStyles>();
+    const getClassNames = classNamesFunction<IDashboardGridLayoutProps, IDashboardGridLayoutStyles>();
     const classNames = getClassNames(getStyles!);
     return (
-      <ResponsiveReactGridLayout
-        isDraggable={this.props.isDraggable || true}
-        breakpoints={breakpoints}
-        cols={cols}
-        className={classNames.root}
-        margin={[24, 24]}
-        containerPadding={[0, 0]}
-        isResizable={this.props.isResizable || false}
-        rowHeight={rowHeight}
-        layouts={this._createLayout()}
-        verticalCompact={true}
-        onLayoutChange={this._onLayoutChanged}
-        onBreakpointChange={this.props.onBreakPointChange}
-        dragApiRef={this.props.dragApi}
-        {...this.props}
-      >
-        {this._renderAllSections()}
-      </ResponsiveReactGridLayout>
+      <DashboardGridLayoutBase createRGLLayouts={this._createLayout} onLayoutChange={this._onLayoutChanged} {...this.props}>
+        {this._renderAllSections(classNames.section)}
+      </DashboardGridLayoutBase>
     );
   }
 
@@ -150,20 +112,26 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridSe
    * @param sectionKey the key of the section clicked
    */
   private _expandCollapseLayoutsUnderSection(expanded: boolean, sectionKey: string): void {
+    if (this.props.sections) {
+      return;
+    }
+
     const sectionsAfterCurrentSection = this._sectionKeys.slice(this._sectionKeys.indexOf(sectionKey) + 1);
-    const impactedSections: ISection[] = this.props.sections.filter((section: ISection) => {
-      return sectionsAfterCurrentSection.indexOf(section.key) > -1;
+    const impactedSections: ISection[] = this.props.sections!.filter((section: ISection) => {
+      return sectionsAfterCurrentSection.indexOf(section.id) > -1;
     });
-    const cardKeysOfCurrentSection = this.props.sections.filter((section: ISection) => {
-      return section.key === sectionKey;
-    })[0].keysOfCard;
+    const cardKeysOfCurrentSection = this.props.sections!.filter((section: ISection) => {
+      return section.id === sectionKey;
+    })[0].cardIds;
 
     let impactedKeys: string[] = impactedSections.map((section: ISection) => {
-      return section.key;
+      return section.id;
     });
 
     impactedSections.forEach((section: ISection) => {
-      impactedKeys = impactedKeys.concat(section.keysOfCard);
+      if (section.cardIds) {
+        impactedKeys = impactedKeys.concat(section.cardIds);
+      }
     });
 
     let delta = 0;
@@ -171,11 +139,10 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridSe
       delta = this._currentSectionHeight(sectionKey);
     }
     const newLayOut = JSON.parse(JSON.stringify(this._currentLayout)); // deep clone
-
     if (expanded) {
       // if current expanded, toggle to collapse
       for (let i = 0; i < Object.keys(newLayOut).length; i++) {
-        if (cardKeysOfCurrentSection.indexOf(String(newLayOut[i].i)) > -1) {
+        if (cardKeysOfCurrentSection && cardKeysOfCurrentSection.indexOf(String(newLayOut[i].i)) > -1) {
           newLayOut[i].h = 0;
           newLayOut[i].w = 0;
         } else if (impactedKeys.indexOf(String(newLayOut[i].i)) > -1) {
@@ -185,9 +152,9 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridSe
     } else {
       for (let j = 0; j < Object.keys(newLayOut).length; j++) {
         const currentCardKey = String(newLayOut[j].i);
-        if (cardKeysOfCurrentSection.indexOf(currentCardKey) > -1) {
-          newLayOut[j].h = sizes[this._cardSizes[currentCardKey]].h;
-          newLayOut[j].w = sizes[this._cardSizes[currentCardKey]].w;
+        if (cardKeysOfCurrentSection && cardKeysOfCurrentSection.indexOf(currentCardKey) > -1) {
+          newLayOut[j].h = CardSizeToWidthHeight[this._cardSizes[currentCardKey]].h;
+          newLayOut[j].w = CardSizeToWidthHeight[this._cardSizes[currentCardKey]].w;
         } else if (impactedKeys.indexOf(currentCardKey) > -1) {
           this._moveVertically(newLayOut[j], delta, false);
         }
@@ -217,7 +184,7 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridSe
       return layout.i === this._sectionKeys[this._sectionKeys.indexOf(key) + 1];
     })[0].y;
 
-    const sectionHeaderHeight = sizes[CardSize.section].h;
+    const sectionHeaderHeight = CardSizeToWidthHeight[CardSize.section].h;
 
     return nextSectionY - currentSectionY - sectionHeaderHeight;
   }
@@ -280,61 +247,58 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridSe
     return this._sectionKeys.indexOf(String(layout.i)) > -1;
   }
 
-  /**
-   * TODO: should return the correct layout based on view port
-   */
-  private _getFirstDefinedLayout(layouts: Layouts): Layout[] {
-    if (layouts.lg) {
-      return layouts.lg;
-    } else if (layouts.md) {
-      return layouts.md;
-    } else if (layouts.sm) {
-      return layouts.sm;
-    } else if (layouts.xs) {
-      return layouts.xs;
-    } else if (layouts.xxs) {
-      return layouts.xxs;
-    }
-    return [];
-  }
-
-  private _renderAllSections(): JSX.Element[] {
+  private _renderAllSections(sectionClass: string): JSX.Element[] {
     let result: JSX.Element[] = [];
     const self = this;
-    this.props.sections.forEach((section: ISection) => {
-      result = result.concat(
-        <Section
-          key={section.key}
-          id={section.id}
-          title={section.title}
-          onCollapseExpand={this.props.isCollapsible ? this._onExpandCollapseToggled : undefined}
-        />
-      );
-      result = result.concat(self._renderCards(section.keysOfCard));
-    });
+    if (this.props.sections) {
+      this.props.sections.forEach((section: ISection) => {
+        result = result.concat(
+          <div key={section.id} className={sectionClass}>
+            <Section
+              key={section.id}
+              id={section.id}
+              title={section.title}
+              disabled={true}
+              onCollapseExpand={this.props.isCollapsible ? this._onExpandCollapseToggled : undefined}
+            />
+          </div>
+        );
+        if (section.cardIds) {
+          result = result.concat(self._renderCards(section.cardIds));
+        }
+      });
+    }
 
     return result;
   }
 
   private _renderCards(keys: string[]): JSX.Element[] {
-    const result: JSX.Element[] = [];
-    const cardsOfSection = this.props.cards.filter((card: ICard) => {
-      return keys.indexOf(card.key) > -1;
-    });
-    cardsOfSection.forEach((card: ICard) => {
-      result.push(
-        <div key={card.key}>
-          <Card
-            key={card.key}
-            cardFrameContent={card.cardFrameContent}
-            header={card.header}
-            actions={card.actions}
-            cardContentList={card.cardContentList}
-            cardSize={card.cardSize}
-          />
-        </div>
-      );
-    });
+    let result: JSX.Element[] = [];
+    if (this.props.cards) {
+      // cards are provided as card definition objects
+      const cardsOfSection = this.props.cards.filter((card: ICard) => {
+        return keys.indexOf(card.id) > -1;
+      });
+      cardsOfSection.forEach((card: ICard) => {
+        result.push(
+          <div key={card.id}>
+            <Card
+              key={card.id}
+              cardFrameContent={card.cardFrameContent}
+              header={card.header}
+              actions={card.actions}
+              cardContentList={card.cardContentList}
+              cardSize={card.cardSize}
+            />
+          </div>
+        );
+      });
+    } else if (this.props.cardNodes) {
+      // cards are provided as elements
+      result = this.props.cardNodes.filter((card: JSX.Element) => {
+        return keys.indexOf(String(card.key)) > -1;
+      });
+    }
 
     return result;
   }
@@ -367,15 +331,15 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridSe
       i: layoutProp.i,
       x: layoutProp.x,
       y: layoutProp.y,
-      w: sizes[layoutProp.size].w,
-      h: sizes[layoutProp.size].h,
+      w: CardSizeToWidthHeight[layoutProp.size].w,
+      h: CardSizeToWidthHeight[layoutProp.size].h,
       static: layoutProp.static === undefined ? false : layoutProp.static,
       isDraggable: layoutProp.disableDrag === undefined ? true : !layoutProp.disableDrag,
       isResizable: layoutProp.isResizable === undefined ? true : layoutProp.isResizable
     };
   }
 
-  private _createLayout(): Layouts {
+  private _createLayout = (): Layouts => {
     const layouts: Layouts = {};
     if (this.props.layout) {
       for (const [key, value] of Object.entries(this.props.layout)) {
@@ -386,8 +350,11 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridSe
         for (let i = 0; i < value.length; i++) {
           const layoutElement = this._createLayoutFromProp(value[i]);
           if (i === 0) {
-            // this means it is the first section header and dont allow card to be moved before the first section
+            // this means it is the first section header and don't allow card to be moved before the first section
             layoutElement.static = true;
+          }
+          if (this._sectionKeys.indexOf(value[i].i) > -1) {
+            layoutElement.isDraggable = false;
           }
           layout.push(layoutElement);
         }
@@ -396,5 +363,5 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridSe
     }
 
     return layouts;
-  }
+  };
 }

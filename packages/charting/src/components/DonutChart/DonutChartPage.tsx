@@ -19,17 +19,13 @@ export class DonutChartPage extends React.Component<IComponentDemoPageProps, {}>
             <ExampleCard title="DonutChart basic" code={DonutChartBasicExampleCode}>
               <DonutChartBasicExample />
             </ExampleCard>
-            '
             <ExampleCard title="DonutChart dynamic" code={DonutChartDynamicExampleCode}>
               <DonutChartDynamicExample />
             </ExampleCard>
-            '
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet
-            sources={[require<string>('!raw-loader!@uifabric/charting/src/components/DonutChart/DonutChart.types.ts')]}
-          />
+          <PropertiesTableSet sources={[require<string>('!raw-loader!@uifabric/charting/src/components/DonutChart/DonutChart.types.ts')]} />
         }
         /* tslint:disable:max-line-length */
         overview={

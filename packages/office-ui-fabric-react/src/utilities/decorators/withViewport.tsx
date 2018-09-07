@@ -39,6 +39,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
     }
 
     public componentDidMount(): void {
+      const { skipViewportMeasures } = this.props as IWithViewportProps;
       this._onAsyncResize = this._async.debounce(this._onAsyncResize, RESIZE_DELAY, {
         leading: false
       });
@@ -46,14 +47,16 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
       const window = getWindow();
       const viewportElement = this._root.current;
 
-      if (window && (window as any).ResizeObserver) {
+      // ResizeObserver seems always fire even window is not resized. This is
+      // particularly bad when skipViewportMeasures is set when optimizing fixed layout lists.
+      // It will measure and update and re-render the entire list after list is fully rendered.
+      // So fallback to listen to resize event when skipViewportMeasures is set.
+      if (!skipViewportMeasures && window && (window as any).ResizeObserver) {
         this._viewportResizeObserver = new (window as any).ResizeObserver(this._onAsyncResize);
         this._viewportResizeObserver.observe(viewportElement);
       } else {
         this._events.on(window, 'resize', this._onAsyncResize);
       }
-
-      const { skipViewportMeasures } = this.props as IWithViewportProps;
 
       if (!skipViewportMeasures) {
         this._updateViewport();
@@ -75,9 +78,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
 
       return (
         <div className="ms-Viewport" ref={this._root} style={{ minWidth: 1, minHeight: 1 }}>
-          {isViewportVisible && (
-            <ComposedComponent ref={this._updateComposedComponentRef} viewport={viewport} {...this.props as any} />
-          )}
+          {isViewportVisible && <ComposedComponent ref={this._updateComposedComponentRef} viewport={viewport} {...this.props as any} />}
         </div>
       );
     }
@@ -103,8 +104,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
         }
       };
 
-      const isSizeChanged =
-        (clientRect && clientRect.width) !== viewport!.width || (scrollRect && scrollRect.height) !== viewport!.height;
+      const isSizeChanged = (clientRect && clientRect.width) !== viewport!.width || (scrollRect && scrollRect.height) !== viewport!.height;
 
       if (isSizeChanged && this._resizeAttempts < MAX_RESIZE_ATTEMPTS && clientRect && scrollRect) {
         this._resizeAttempts++;

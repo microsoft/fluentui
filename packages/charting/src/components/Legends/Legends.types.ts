@@ -51,6 +51,16 @@ export interface ILegend {
   action?: VoidFunction;
 
   /**
+   * Defines the function that is executed upon hovering over the legend
+   */
+  hoverAction?: VoidFunction;
+
+  /**
+   * Defines the function that is executed upon moving the mouse away from the legend
+   */
+  onMouseOutAction?: VoidFunction;
+
+  /**
    * The color for the legend
    */
   color: string;

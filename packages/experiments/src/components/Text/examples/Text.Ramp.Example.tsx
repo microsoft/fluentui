@@ -2,11 +2,7 @@ import * as React from 'react';
 import { Text, VerticalStack } from '@uifabric/experiments';
 import { IFontVariants, IFontSizes, IFontWeights, IFontFamilies, IStyle } from '@uifabric/experiments/lib/Styling';
 import { ISemanticTextColors, IPalette, ITheme } from '@uifabric/experiments/lib/Styling';
-import {
-  createStatelessComponent,
-  IStyleableComponent,
-  IViewComponentProps
-} from '@uifabric/experiments/lib/Foundation';
+import { createStatelessComponent, IStyleableComponentProps, IViewComponentProps } from '@uifabric/experiments/lib/Foundation';
 
 const TestText = 'The quick brown fox jumped over the lazy dog.';
 
@@ -64,7 +60,7 @@ interface ITableStyles {
 }
 
 // Note I intuitively tried to extend IStyleableComponentProps... this was confusing.
-interface ITableProps extends IStyleableComponent<ITableProps, ITableStyles> {
+interface ITableProps extends IStyleableComponentProps<ITableProps, ITableStyles> {
   className?: string;
   title: string;
   headers: string[];

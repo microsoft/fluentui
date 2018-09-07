@@ -2,6 +2,47 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "version": "6.8.3",
+      "tag": "@uifabric/fabric-website-resources_v6.8.3",
+      "date": "Fri, 07 Sep 2018 22:04:50 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "888f598942757c715181a1441457f1c7d5611c73",
+            "comment": "Updating serve config to respect oufr imports."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.18.0 <7.0.0` to `>=6.19.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.66.0 <7.0.0` to `>=6.66.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.8.2",
+      "tag": "@uifabric/fabric-website-resources_v6.8.2",
+      "date": "Fri, 31 Aug 2018 20:48:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "19771d4c27b598a73f9e94b8b125ecc820a3243f",
+            "comment": "Invoke ES6 Promise polyfill in local dev site root for IE compat"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.61.1 <7.0.0` to `>=6.61.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.8.1",
       "tag": "@uifabric/fabric-website-resources_v6.8.1",
       "date": "Fri, 24 Aug 2018 10:26:08 GMT",

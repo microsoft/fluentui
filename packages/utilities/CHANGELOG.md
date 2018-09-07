@@ -1,6 +1,35 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 28 Aug 2018 10:23:58 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Sep 2018 22:04:50 GMT and should not be manually modified.
+
+## 6.19.0
+Fri, 07 Sep 2018 22:04:50 GMT
+
+### Minor changes
+
+- Customizer: moving to use React 16 context.
+
+## 6.18.0
+Fri, 07 Sep 2018 16:29:48 GMT
+
+### Minor changes
+
+- Add helpers for setting and detecting portals
+
+## 6.17.2
+Wed, 05 Sep 2018 10:29:25 GMT
+
+### Patches
+
+- Scroll: add flex-grow: 1 to scrollable content elements
+- Scroll: remove inline styles from scrollable content elements
+
+## 6.17.1
+Thu, 30 Aug 2018 10:32:49 GMT
+
+### Patches
+
+- Replace comment reference to old ms-Fabric is-focusVisible with ms-Fabric--isFocusVisible
 
 ## 6.17.0
 Tue, 28 Aug 2018 10:23:58 GMT

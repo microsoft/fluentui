@@ -1,5 +1,5 @@
 import { IStyle, IPalette, ISemanticColors } from '../../Styling';
-import { IStyleableComponent } from '../../Foundation';
+import { IStyleableComponentProps } from '../../Foundation';
 import { IFontVariants, IFontFamilies, IFontSizes, IFontWeights } from '../../Styling';
 
 // Styles for the component
@@ -11,7 +11,7 @@ export interface ITextStyles {
 }
 
 // Inputs to the component
-export interface ITextProps extends IStyleableComponent<ITextProps, ITextStyles> {
+export interface ITextProps extends IStyleableComponentProps<ITextProps, ITextStyles> {
   /**
    * Optionaly render the component as another component type or primative.
    */

@@ -60,7 +60,8 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
       labelText,
       theme,
       clearButtonProps,
-      disableAnimation
+      disableAnimation,
+      iconProps
     } = this.props;
     const { value, hasFocus, id } = this.state;
     const placeholderValue = labelText === undefined ? placeholder : labelText;
@@ -78,7 +79,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
     return (
       <div ref={this._rootElement} className={classNames.root} onFocusCapture={this._onFocusCapture}>
         <div className={classNames.iconContainer} onClick={this._onClickFocus} aria-hidden={true}>
-          <Icon className={classNames.icon} iconName="Search" />
+          <Icon iconName="Search" {...iconProps} className={classNames.icon} />
         </div>
         <input
           id={id}

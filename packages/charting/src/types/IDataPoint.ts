@@ -12,6 +12,20 @@ export interface IDataPoint {
   y: number;
 }
 
+export interface IHorizontalDataPoint {
+  /**
+   * Independent value of the data point, rendered along the x-axis.
+   * If x is a number, then each y-coordinate is plotted at its x-coordinate.
+   * If x is a string, then the data is evenly spaced along the x-axis.
+   */
+  x: number;
+
+  /**
+   * Dependent value of the data point, rendered along the y-axis.
+   */
+  y: number;
+}
+
 export interface IChartDataPoint {
   /**
    * Legend text for the datapoint in the chart
@@ -24,6 +38,11 @@ export interface IChartDataPoint {
   data?: number;
 
   /**
+   * data the datapoint in the chart
+   */
+  horizontalBarChartdata?: IHorizontalDataPoint;
+
+  /**
    * onClick action for each datapoint in the chart
    */
   onClick?: VoidFunction;
@@ -32,6 +51,21 @@ export interface IChartDataPoint {
    * color for the legend in the chart
    */
   color?: string;
+}
+
+export interface ILineChartPoints {
+  /**
+   * Legend text for the datapoint in the chart
+   */
+  legend: string;
+  /**
+   * data the datapoint in the chart
+   */
+  data: IDataPoint[];
+  /**
+   * color for the legend in the chart
+   */
+  color: string;
 }
 
 export interface IChartProps {
@@ -44,4 +78,9 @@ export interface IChartProps {
    * data for the points in the chart
    */
   chartData?: IChartDataPoint[];
+
+  /**
+   * data for the points in the line chart
+   */
+  lineChartData?: ILineChartPoints[];
 }

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
-import { SectionBasicExample } from './examples/Section.Basic.Example';
-const SectionBasicExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Section/examples/Section.Basic.Example.tsx') as string;
+import { EditSectionsExample } from './examples/EditSections.Example';
+const EditSectionsExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Section/examples/EditSections.Example.tsx') as string;
 
 export class SectionPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -11,17 +11,15 @@ export class SectionPage extends React.Component<IComponentDemoPageProps, {}> {
         componentName="Section"
         exampleCards={
           <div>
-            <ExampleCard title="Section" isScrollable={true} isOptIn={true} code={SectionBasicExampleCode}>
-              <SectionBasicExample />
+            <ExampleCard title="Edit Sections" isScrollable={true} isOptIn={true} code={EditSectionsExampleCode}>
+              <EditSectionsExample />
             </ExampleCard>
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet
-            sources={[require<string>('!raw-loader!@uifabric/dashboard/src/components/Section/Section.types.ts')]}
-          />
+          <PropertiesTableSet sources={[require<string>('!raw-loader!@uifabric/dashboard/src/components/Section/Section.types.ts')]} />
         }
-        overview={<div>This component creates a section title for dashboard grid layout</div>}
+        overview={<div>Sections and edit sections</div>}
         bestPractices={<div />}
         dos={
           <div>

@@ -35,8 +35,8 @@ export const AppDefinition: IAppDefinition = {
         },
         {
           component: require<any>('../components/Section/SectionPage').SectionPage,
-          key: 'Section',
-          name: 'Section',
+          key: 'EditSection',
+          name: 'EditSection',
           url: '#/examples/section'
         },
         {

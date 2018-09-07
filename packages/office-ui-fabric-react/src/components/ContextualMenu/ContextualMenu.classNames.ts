@@ -1,9 +1,13 @@
 import { getDividerClassNames } from '../Divider/VerticalDivider.classNames';
-import { getMenuItemStyles, getStyles as getContextualMenuStyles } from './ContextualMenu.cnstyles';
-import { ITheme, mergeStyleSets } from '../../Styling';
+import { getMenuItemStyles } from './ContextualMenu.cnstyles';
+import { ITheme, mergeStyleSets, getGlobalClassNames } from '../../Styling';
 import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
-import { memoizeFunction } from '../../Utilities';
+import { memoizeFunction, IsFocusVisibleClassName } from '../../Utilities';
+import { IContextualMenuItemStyles, IContextualMenuItemStyleProps } from './ContextualMenuItem.types';
 
+/**
+ * @deprecated in favor of mergeStyles API.
+ */
 export interface IContextualMenuClassNames {
   container: string;
   root: string;
@@ -12,6 +16,9 @@ export interface IContextualMenuClassNames {
   title: string;
 }
 
+/**
+ * @deprecated in favor of mergeStyles API.
+ */
 export interface IMenuItemClassNames {
   item: string;
   divider: string;
@@ -39,68 +46,66 @@ export const getSplitButtonVerticalDividerClassNames = memoizeFunction(
   }
 );
 
-export const getContextualMenuClassNames = memoizeFunction(
-  (theme: ITheme, className?: string): IContextualMenuClassNames => {
-    const styles = getContextualMenuStyles(theme);
+const GlobalClassNames = {
+  item: 'ms-ContextualMenu-item',
+  divider: 'ms-ContextualMenu-divider',
+  root: 'ms-ContextualMenu-link',
+  isChecked: 'is-checked',
+  isExpanded: 'is-expanded',
+  isDisabled: 'is-disabled',
+  linkContent: 'ms-ContextualMenu-linkContent',
+  linkContentMenu: 'ms-ContextualMenu-linkContent',
+  icon: 'ms-ContextualMenu-icon',
+  iconColor: 'ms-ContextualMenu-iconColor',
+  checkmarkIcon: 'ms-ContextualMenu-checkmarkIcon',
+  subMenuIcon: 'ms-ContextualMenu-submenuIcon',
+  label: 'ms-ContextualMenu-itemText',
+  secondaryText: 'ms-ContextualMenu-secondaryText'
+};
 
-    return mergeStyleSets({
-      container: [
-        'ms-ContextualMenu-container',
-        styles.container,
-        className,
-        [
-          {
-            selectors: {
-              ':focus': { outline: 0 }
-            }
-          }
-        ]
-      ],
-      root: ['ms-ContextualMenu is-open', styles.root],
-      list: ['ms-ContextualMenu-list is-open', styles.list],
-      header: ['ms-ContextualMenu-header', styles.header],
-      title: styles.title
-    });
-  }
-);
-
+// TODO: Audit perf. impact of and potentially remove memoizeFunction.
+//       https://github.com/OfficeDev/office-ui-fabric-react/issues/5534
 export const getItemClassNames = memoizeFunction(
-  (
-    theme: ITheme,
-    disabled: boolean,
-    expanded: boolean,
-    checked: boolean,
-    isAnchorLink: boolean,
-    knownIcon: boolean,
-    itemClassName?: string,
-    dividerClassName?: string,
-    iconClassName?: string,
-    subMenuClassName?: string,
-    primaryDisabled?: boolean
-  ): IMenuItemClassNames => {
+  (props: IContextualMenuItemStyleProps): IContextualMenuItemStyles => {
+    const {
+      theme,
+      disabled,
+      expanded,
+      checked,
+      isAnchorLink,
+      knownIcon,
+      itemClassName,
+      dividerClassName,
+      iconClassName,
+      subMenuClassName,
+      primaryDisabled,
+      className
+    } = props;
     const styles = getMenuItemStyles(theme);
+    const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
     return mergeStyleSets({
-      item: ['ms-ContextualMenu-item', styles.item, itemClassName],
-      divider: ['ms-ContextualMenu-divider', styles.divider, dividerClassName],
+      item: [classNames.item, styles.item, itemClassName],
+      divider: [classNames.divider, styles.divider, dividerClassName],
       root: [
-        'ms-ContextualMenu-link',
+        classNames.root,
         styles.root,
-        checked && ['is-checked', styles.rootChecked],
+        checked && [classNames.isChecked, styles.rootChecked],
         isAnchorLink && styles.anchorLink,
-        expanded && ['is-expanded', styles.rootExpanded],
-        disabled && ['is-disabled', styles.rootDisabled],
+        expanded && [classNames.isExpanded, styles.rootExpanded],
+        disabled && [classNames.isDisabled, styles.rootDisabled],
         !disabled &&
           !expanded && [
             {
               selectors: {
                 ':hover': styles.rootHovered,
                 ':active': styles.rootPressed,
-                '.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover': styles.rootFocused,
-                '.ms-Fabric--isFocusVisible &:hover': { background: 'inherit;' }
+                [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus:hover`]: styles.rootFocused,
+                [`.${IsFocusVisibleClassName} &:hover`]: { background: 'inherit;' }
               }
             }
-          ]
+          ],
+        className
       ],
       splitPrimary: [
         styles.root,
@@ -112,8 +117,8 @@ export const getItemClassNames = memoizeFunction(
               selectors: {
                 ':hover': styles.rootHovered,
                 ':active': styles.rootPressed,
-                '.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover': styles.rootFocused,
-                '.ms-Fabric--isFocusVisible &:hover': { background: 'inherit;' }
+                [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus:hover`]: styles.rootFocused,
+                [`.${IsFocusVisibleClassName} &:hover`]: { background: 'inherit;' }
               }
             }
           ]
@@ -131,43 +136,40 @@ export const getItemClassNames = memoizeFunction(
               selectors: {
                 ':hover': styles.rootHovered,
                 ':active': styles.rootPressed,
-                '.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover': styles.rootFocused,
-                '.ms-Fabric--isFocusVisible &:hover': { background: 'inherit;' }
+                [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus:hover`]: styles.rootFocused,
+                [`.${IsFocusVisibleClassName} &:hover`]: { background: 'inherit;' }
               }
             }
           ]
       ],
-      linkContent: ['ms-ContextualMenu-linkContent', styles.linkContent],
+      anchorLink: styles.anchorLink,
+      linkContent: [classNames.linkContent, styles.linkContent],
       linkContentMenu: [
-        'ms-ContextualMenu-linkContent',
+        classNames.linkContentMenu,
         styles.linkContent,
         {
           justifyContent: 'center'
         }
       ],
       icon: [
-        'ms-ContextualMenu-icon',
-        knownIcon && 'ms-ContextualMenu-iconColor ' && styles.iconColor,
+        classNames.icon,
+        knownIcon && styles.iconColor,
         styles.icon,
         iconClassName,
-        disabled && ['is-disabled', styles.iconDisabled]
+        disabled && [classNames.isDisabled, styles.iconDisabled]
       ],
-      checkmarkIcon: [
-        'ms-ContextualMenu-checkmarkIcon',
-        knownIcon && 'ms-ContextualMenu-checkmarkIcon ' && styles.checkmarkIcon,
-        styles.icon,
-        iconClassName
-      ],
-      subMenuIcon: ['ms-ContextualMenu-submenuIcon', styles.subMenuIcon, subMenuClassName],
-      label: ['ms-ContextualMenu-itemText', styles.label],
-      secondaryText: ['ms-ContextualMenu-secondaryText', styles.secondaryText],
+      iconColor: styles.iconColor,
+      checkmarkIcon: [classNames.checkmarkIcon, knownIcon && styles.checkmarkIcon, styles.icon, iconClassName],
+      subMenuIcon: [classNames.subMenuIcon, styles.subMenuIcon, subMenuClassName],
+      label: [classNames.label, styles.label],
+      secondaryText: [classNames.secondaryText, styles.secondaryText],
       splitContainer: [
         styles.splitButtonFlexContainer,
         !disabled &&
           !checked && [
             {
               selectors: {
-                '.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover': styles.rootFocused
+                [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus:hover`]: styles.rootFocused
               }
             }
           ]
