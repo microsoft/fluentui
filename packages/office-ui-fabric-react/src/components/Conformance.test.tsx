@@ -1,5 +1,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
+import * as glob from 'glob';
+import * as path from 'path';
 
 // Common props required by List-based components in order for tests to pass
 const listProps = {
@@ -142,8 +144,6 @@ describe('Conformance', () => {
     });
   });
 
-  const glob = require('glob');
-  const path = require('path');
   const files: string[] = glob.sync(path.resolve(process.cwd(), 'src/components/**/*.ts*')).filter((file: string) => {
     const componentName = path.basename(path.dirname(file));
     const fileName = path.basename(file);
