@@ -140,9 +140,16 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
   }
 
   public componentDidUpdate(prevProps: IDatePickerProps, prevState: IDatePickerState) {
-    // If DatePicker's menu (Calendar) is closed, run onAfterMenuDismiss
-    if (this.props.onAfterMenuDismiss && prevState.isDatePickerShown && !this.state.isDatePickerShown) {
-      this.props.onAfterMenuDismiss();
+    if (prevState.isDatePickerShown && !this.state.isDatePickerShown) {
+      // In browsers like IE, textfield gets unfocused when datepicker is collapsed
+      if (this.props.allowTextInput) {
+        this._async.requestAnimationFrame(() => this.focus());
+      }
+
+      // If DatePicker's menu (Calendar) is closed, run onAfterMenuDismiss
+      if (this.props.onAfterMenuDismiss) {
+        this.props.onAfterMenuDismiss();
+      }
     }
   }
 
@@ -217,7 +224,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
         {isDatePickerShown && (
           <Callout
             id={calloutId}
-            role="dialog"
+            role="listbox"
             ariaLabel={pickerAriaLabel}
             isBeakVisible={false}
             className={classNames.callout}
