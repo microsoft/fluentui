@@ -1,6 +1,24 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 06 Sep 2018 10:28:35 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Sep 2018 22:04:50 GMT and should not be manually modified.
+
+## 0.19.0
+Fri, 07 Sep 2018 22:04:50 GMT
+
+### Minor changes
+
+- Adding temporary fix for hovercard. This fix scales the hover card size based upon the content inside it
+
+### Patches
+
+- donut chart arc sectors selected arc show and remaining arcs decrease opacity
+
+## 0.18.0
+Fri, 07 Sep 2018 16:29:48 GMT
+
+### Minor changes
+
+- Changing interaction behaviour of Multistacked and stacked bar chart. Changing styling and opacity of bar upon interaction between legends and chart.
 
 ## 0.17.4
 Thu, 06 Sep 2018 10:28:35 GMT

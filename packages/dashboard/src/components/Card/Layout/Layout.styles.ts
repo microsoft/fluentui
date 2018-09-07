@@ -19,7 +19,6 @@ export const getStyles = (props: ILayoutProps): ILayoutStyles => {
     },
     contentAreaLayout: {
       display: 'flex',
-      paddingBottom: '16px',
       marginTop: isHeaderPresent ? '30px' : '32px',
       overflow: 'hidden',
       flex: 1

@@ -41,6 +41,10 @@ export interface IArcProps {
    * Uniq string for chart
    */
   uniqText?: string;
+  /**
+   * Active Arc for chart
+   */
+  activeArc?: string;
 }
 
 export interface IArcData {

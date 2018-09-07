@@ -1,8 +1,8 @@
 import { IStyle, RefObject } from 'office-ui-fabric-react';
-import { IStyleableComponent, IThemedProps } from '../../Foundation';
+import { IStyleableComponentProps, IThemedProps } from '../../Foundation';
 
 export interface ICollapsibleSectionTitleProps
-  extends IStyleableComponent<ICollapsibleSectionTitleProps, ICollapsibleSectionTitleStyles> {
+  extends IStyleableComponentProps<ICollapsibleSectionTitleProps, ICollapsibleSectionTitleStyles> {
   focusElementRef?: RefObject<HTMLElement>;
   /**
    * Collapsed state of body associated with this component.

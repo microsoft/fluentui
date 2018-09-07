@@ -25,6 +25,11 @@ export interface IMultiCountProps {
    * color for the body text
    */
   bodyTextColor?: string;
+
+  /**
+   * custom message for the multicount
+   */
+  customMessage?: string;
 }
 
 export enum AnnotationType {
@@ -142,4 +147,9 @@ export interface IMultiCountStyles {
    * Style for annotation text displayedin the hover card
    */
   hoverCardAnnotationText: IStyle;
+
+  /**
+   * Style for the custom message
+   */
+  customMessage: IStyle;
 }

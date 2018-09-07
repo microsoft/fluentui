@@ -2,6 +2,25 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "6.23.0",
+      "tag": "@uifabric/styling_v6.23.0",
+      "date": "Fri, 07 Sep 2018 16:29:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "8f69ab057f4e33b12713807228607386781c9a57",
+            "comment": "Updates button slots with correct pre-fluent palette values and scss fallbacks"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.17.2 <7.0.0` to `>=6.18.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.22.0",
       "tag": "@uifabric/styling_v6.22.0",
       "date": "Thu, 06 Sep 2018 10:28:35 GMT",

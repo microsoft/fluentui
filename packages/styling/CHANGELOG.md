@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Thu, 06 Sep 2018 10:28:35 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Sep 2018 16:29:48 GMT and should not be manually modified.
+
+## 6.23.0
+Fri, 07 Sep 2018 16:29:48 GMT
+
+### Minor changes
+
+- Updates button slots with correct pre-fluent palette values and scss fallbacks
 
 ## 6.22.0
 Thu, 06 Sep 2018 10:28:35 GMT
