@@ -14,9 +14,6 @@ import { Section } from '../Section/Section';
 import { getStyles } from './DashboardGridLayout.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { CardSizeToWidthHeight, getFirstDefinedDashboardLayout, getFirstDefinedLayout } from '../../utilities/DashboardGridLayoutUtils';
-require('style-loader!css-loader!react-grid-layout/css/styles.css');
-require('style-loader!css-loader!react-resizable/css/styles.css');
-require('style-loader!css-loader!./DashboardGridLayout.css');
 
 export class DashboardGridSectionLayout extends React.Component<IDashboardGridLayoutProps, {}> {
   /** the list of all section ids */
