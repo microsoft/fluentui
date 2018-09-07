@@ -93,10 +93,10 @@ export class DonutChartBase extends React.Component<
             isBeakVisible={false}
             directionalHint={DirectionalHint.bottomRightEdge}
             gapSpace={5}
-            className={this._classNames.callOut}
           >
-            <div className="ms-CalloutExample-content">
-              <span>{this.state.value}</span>
+            <div className={this._classNames.hoverCardRoot}>
+              <div className={this._classNames.hoverCardTextStyles}>{this.state.legend}</div>
+              <div className={this._classNames.hoverCardDataStyles}>{this.state.value}</div>
             </div>
           </Callout>
         ) : null}
