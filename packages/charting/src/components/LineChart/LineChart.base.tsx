@@ -195,7 +195,7 @@ export class LineChartBase extends React.Component<
         ? node.parentElement.offsetHeight
         : this.state._height;
 
-    node.setAttribute('viewBox', `0 0 ${widthVal * 0.7} ${heightVal}`);
+    node.setAttribute('viewBox', `0 0 ${widthVal} ${heightVal}`);
   }
 
   private _setYAxis(node: SVGElement | null, yAxis: numericAxis | stringAxis): void {

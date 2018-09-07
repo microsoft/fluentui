@@ -107,7 +107,8 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
       {
         fontSize: fonts.small.fontSize,
         fontFamily: fonts.small.fontFamily,
-        lineHeight: '14px'
+        lineHeight: '14px',
+        marginBottom: '2.9px'
       }
     ],
     calloutContentY: [
