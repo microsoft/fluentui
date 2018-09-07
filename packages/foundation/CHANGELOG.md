@@ -1,6 +1,13 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Wed, 29 Aug 2018 10:28:42 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Sep 2018 22:04:50 GMT and should not be manually modified.
+
+## 0.5.0
+Fri, 07 Sep 2018 22:04:50 GMT
+
+### Minor changes
+
+- Adjusting foundation usage, using new React 16 context.
 
 ## 0.4.1
 Wed, 29 Aug 2018 10:28:42 GMT

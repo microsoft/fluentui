@@ -2,6 +2,53 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.22.0",
+      "tag": "@uifabric/dashboard_v0.22.0",
+      "date": "Fri, 07 Sep 2018 22:04:50 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "1d10ba6d7f7027ee8206cbfed28cdcdf13cd5605",
+            "comment": "updating card title line height"
+          },
+          {
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "ea5f5cb6e774c4b8979334d00ebe7c973d4fbd05",
+            "comment": "Changing color of card title upon hover and active state"
+          },
+          {
+            "author": "BalakrishnaReddyPolu <polu.balakrishna96@gmail.com>",
+            "commit": "52941c5ccf6688e22902a232b7c3b9602d53b116",
+            "comment": "ContentArea is croped in Edge browser"
+          }
+        ],
+        "minor": [
+          {
+            "author": "caradong <caradong1122@gmail.com>",
+            "commit": "5a46343c015e67b20faf7dab5b6bbb001612f1d7",
+            "comment": "create base class for dashboard layout "
+          },
+          {
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "03b2b78222499101b9e67cf1ece88f1a624984cd",
+            "comment": "Adding necessary override styles to scale hovercard size as per content. Introducing time delay without which override is not possible.  This is temporary solution suggested by Fabric folks until they fix the bug in hovercard component."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.18.0` to `^0.19.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.28.3 <7.0.0` to `>=6.29.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.66.0 <7.0.0` to `>=6.66.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.21.0",
       "tag": "@uifabric/dashboard_v0.21.0",
       "date": "Fri, 07 Sep 2018 16:29:48 GMT",

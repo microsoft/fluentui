@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 07 Sep 2018 16:29:48 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Sep 2018 22:04:50 GMT and should not be manually modified.
+
+## 6.19.0
+Fri, 07 Sep 2018 22:04:50 GMT
+
+### Minor changes
+
+- Customizer: moving to use React 16 context.
 
 ## 6.18.0
 Fri, 07 Sep 2018 16:29:48 GMT

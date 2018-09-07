@@ -2,6 +2,31 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.29.0",
+      "tag": "@uifabric/experiments_v6.29.0",
+      "date": "Fri, 07 Sep 2018 22:04:50 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "888f598942757c715181a1441457f1c7d5611c73",
+            "comment": "Adjusting foundation usage, using new React 16 context."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.18.0` to `^0.19.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.4.1 <1.0.0` to `>=0.5.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.66.0 <7.0.0` to `>=6.66.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.28.3",
       "tag": "@uifabric/experiments_v6.28.3",
       "date": "Fri, 07 Sep 2018 16:29:48 GMT",
