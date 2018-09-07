@@ -65,7 +65,6 @@ const _makeElementScrollAllower = () => {
       return;
     }
 
-    element.style.overflowY = 'auto';
     events.on(element, 'touchstart', _saveClientY);
     events.on(element, 'touchmove', _preventOverscrolling);
 

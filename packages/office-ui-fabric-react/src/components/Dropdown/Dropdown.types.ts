@@ -6,9 +6,7 @@ import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { IKeytipProps } from '../../Keytip';
 import { ILabelStyleProps } from '../../Label';
 
-export {
-  SelectableOptionMenuItemType as DropdownMenuItemType
-} from '../../utilities/selectableOption/SelectableOption.types';
+export { SelectableOptionMenuItemType as DropdownMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 
 export interface IDropdown {
   focus: (shouldOpenOnFocus?: boolean) => void;
@@ -28,7 +26,7 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<HTMLDivEle
   /**
    * Callback issued when the selected option changes.
    */
-  onChange?: (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption, index?: number) => void;
+  onChange?: (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption, index?: number) => void;
 
   /**
    * @deprecated Use onChange instead.

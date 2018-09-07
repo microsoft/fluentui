@@ -218,6 +218,8 @@ export interface IButtonProps
 
   /**
    * Any custom data the developer wishes to associate with the menu item.
+   *
+   * @deprecated unused, use `checked` if setting state.
    */
   toggled?: boolean;
 

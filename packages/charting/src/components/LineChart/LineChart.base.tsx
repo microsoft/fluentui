@@ -6,13 +6,7 @@ import { select as d3Select } from 'd3-selection';
 import { ILegend, Legends } from '../Legends/index';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
-import {
-  ILineChartProps,
-  ILineChartStyleProps,
-  ILineChartStyles,
-  IDataPoint,
-  ILineChartPoints
-} from './LineChart.types';
+import { ILineChartProps, ILineChartStyleProps, ILineChartStyles, IDataPoint, ILineChartPoints } from './LineChart.types';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 
 const getClassNames = classNamesFunction<ILineChartStyleProps, ILineChartStyles>();
@@ -62,7 +56,6 @@ export class LineChartBase extends React.Component<
     const { theme } = this.props;
     const { palette } = theme!;
     this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
-    this._hoverOff = this._hoverOff.bind(this);
   }
 
   public componentDidMount(): void {
@@ -120,11 +113,15 @@ export class LineChartBase extends React.Component<
     );
   }
 
-  private _hoverOn(hoverValue: string | number | Date | null, activeLine: string, lineColor: string): void {
-    this.setState({ isCalloutVisible: true, hoverValue: hoverValue, activeLine: activeLine, lineColor: lineColor });
+  private _hoverOn(hoverValue: string | number | Date | null, activeLine: string, lineColor: string, isHoverShow: boolean): void {
+    if (isHoverShow) {
+      this.setState({ isCalloutVisible: true, hoverValue: hoverValue, activeLine: activeLine, lineColor: lineColor });
+    }
   }
-  private _hoverOff(): void {
-    this.setState({ isCalloutVisible: false, hoverValue: '', activeLine: '', lineColor: '' });
+  private _hoverOff(isHoverShow: boolean): void {
+    if (isHoverShow) {
+      this.setState({ isCalloutVisible: false, hoverValue: '', activeLine: '', lineColor: '' });
+    }
   }
 
   private _createLegends(data: ILineChartPoints[], palette: IPalette): JSX.Element {
@@ -173,9 +170,7 @@ export class LineChartBase extends React.Component<
     const widthVal = node.parentElement ? node.parentElement.clientWidth : this.state._width;
 
     const heightVal =
-      node.parentElement && node.parentElement.offsetHeight > this.state._height
-        ? node.parentElement.offsetHeight
-        : this.state._height;
+      node.parentElement && node.parentElement.offsetHeight > this.state._height ? node.parentElement.offsetHeight : this.state._height;
 
     node.setAttribute('viewBox', `0 0 ${widthVal} ${heightVal}`);
   }
@@ -259,6 +254,7 @@ export class LineChartBase extends React.Component<
     for (let i = 0; i < this._points.length; i++) {
       const legendVal: string = this._points[i].legend;
       const opacity: number = this.state.activeLegend === legendVal || this.state.activeLegend === '' ? 1 : 0.1;
+      const isHoverShow: boolean = this.state.activeLegend === legendVal || this.state.activeLegend === '' ? true : false;
       const lineColor: string = this._points[i].color;
       for (let j = 1; j < this._points[i].data.length; j++) {
         const keyVal = this._uniqLineText + i + '_' + j;
@@ -266,8 +262,8 @@ export class LineChartBase extends React.Component<
           <line
             id={keyVal}
             key={keyVal}
-            onMouseOver={this._hoverOn.bind(this, this._points[i].data[j - 1].y, keyVal, lineColor)}
-            onMouseLeave={this._hoverOff}
+            onMouseOver={this._hoverOn.bind(this, this._points[i].data[j - 1].y, keyVal, lineColor, isHoverShow)}
+            onMouseLeave={this._hoverOff.bind(this, isHoverShow)}
             x1={xLineScale(this._points[i].data[j - 1].x as number)}
             y1={this.state._height - yLineScale(this._points[i].data[j - 1].y)}
             x2={xLineScale(this._points[i].data[j].x as number)}
@@ -301,6 +297,7 @@ export class LineChartBase extends React.Component<
     for (let i = 0; i < this._points.length; i++) {
       const legendVal: string = this._points[i].legend;
       const opacity: number = this.state.activeLegend === legendVal || this.state.activeLegend === '' ? 1 : 0.1;
+      const isHoverShow: boolean = this.state.activeLegend === legendVal || this.state.activeLegend === '' ? true : false;
       const lineColor: string = this._points[i].color;
       for (let j = 1; j < this._points[i].data.length; j++) {
         const keyVal = this._uniqLineText + i + '_' + j;
@@ -308,8 +305,8 @@ export class LineChartBase extends React.Component<
           <line
             id={keyVal}
             key={keyVal}
-            onMouseOver={this._hoverOn.bind(this, this._points[i].data[j - 1].y, keyVal, lineColor)}
-            onMouseLeave={this._hoverOff}
+            onMouseOver={this._hoverOn.bind(this, this._points[i].data[j - 1].y, keyVal, lineColor, isHoverShow)}
+            onMouseLeave={this._hoverOff.bind(this, isHoverShow)}
             x1={xLineScale(j - 1)}
             y1={this.state._height - yLineScale(this._points[i].data[j - 1].y)}
             x2={xLineScale(j)}

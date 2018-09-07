@@ -63,9 +63,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
             aria-posinset={focusableElementIndex + 1}
             aria-setsize={totalItemCount}
             onMouseEnter={this._onItemMouseEnterPrimary}
-            onMouseLeave={
-              onItemMouseLeave ? onItemMouseLeave.bind(this, { ...item, subMenuProps: null, items: null }) : undefined
-            }
+            onMouseLeave={onItemMouseLeave ? onItemMouseLeave.bind(this, { ...item, subMenuProps: null, items: null }) : undefined}
             onMouseMove={this._onItemMouseMovePrimary}
             onKeyDown={this._onItemKeyDown}
             onClick={this._executeItemClick}
@@ -120,6 +118,9 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
       'data-is-focusable': false,
       'aria-hidden': true
     } as IContextualMenuItem;
+
+    const { itemProps: itemComponentProps } = item;
+
     return (
       <button {...getNativeProps(itemProps, buttonProperties)}>
         <ChildrenRenderer
@@ -129,23 +130,18 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
           index={index}
           onCheckmarkClick={hasCheckmarks && onItemClick ? onItemClick.bind(this, item) : undefined}
           hasIcons={hasIcons}
+          {...itemComponentProps}
         />
       </button>
     );
   }
 
   private _renderSplitDivider(item: IContextualMenuItem) {
-    const getDividerClassNames =
-      item.getSplitButtonVerticalDividerClassNames || getSplitButtonVerticalDividerClassNames;
+    const getDividerClassNames = item.getSplitButtonVerticalDividerClassNames || getSplitButtonVerticalDividerClassNames;
     return <VerticalDivider getClassNames={getDividerClassNames} />;
   }
 
-  private _renderSplitIconButton(
-    item: IContextualMenuItem,
-    classNames: IMenuItemClassNames,
-    index: number,
-    keytipAttributes: any
-  ) {
+  private _renderSplitIconButton(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, keytipAttributes: any) {
     const {
       contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem,
       onItemMouseLeave,
@@ -175,6 +171,8 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
       'aria-hidden': true
     });
 
+    const { itemProps: itemComponentProps } = item;
+
     return (
       <button {...buttonProps}>
         <ChildrenRenderer
@@ -187,6 +185,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
           dismissSubMenu={dismissSubMenu}
           dismissMenu={dismissMenu}
           getSubmenuTarget={this._getSubmenuTarget}
+          {...itemComponentProps}
         />
       </button>
     );

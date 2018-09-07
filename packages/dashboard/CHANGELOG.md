@@ -1,6 +1,43 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Fri, 31 Aug 2018 20:48:42 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Sep 2018 10:28:35 GMT and should not be manually modified.
+
+## 0.20.0
+Thu, 06 Sep 2018 10:28:35 GMT
+
+### Minor changes
+
+- add export
+- changing fabric icons to SVG's.
+
+### Patches
+
+- gird list text overflow css issue 
+- patch
+- Fix content area clipping in card because of overflow set to hidden
+- merge donut and piechart and added in dashboard package
+
+## 0.19.0
+Wed, 05 Sep 2018 10:29:25 GMT
+
+### Minor changes
+
+- Adding hover behaviour for Multicount component and onClick listener on each row of the Multicount component
+
+### Patches
+
+- css issues for card
+- Added 19px lineHeight to card header text
+- fix leftNav styles per PM feedback
+- revert the change for expand behavior
+- Update Recommendation Header text resize mechanism and description text line height
+
+## 0.18.0
+Tue, 04 Sep 2018 10:27:15 GMT
+
+### Minor changes
+
+- Add edit section common control and examples
 
 ## 0.17.6
 Fri, 31 Aug 2018 20:48:42 GMT

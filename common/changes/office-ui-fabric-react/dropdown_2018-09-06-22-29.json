@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Sticky placeholders should ignore pointer events when state is non-sticky",
+      "comment": "adjust dropdownprops onchange to be more in line with the div element onchange attrib",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "shagra@microsoft.com"
+  "email": "kchau@microsoft.com"
 }
