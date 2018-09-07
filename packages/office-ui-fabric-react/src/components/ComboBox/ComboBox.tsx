@@ -970,6 +970,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       // if currentPendingValue is null or undefined the user did not submit anything
       // (not even empty because we would have stored that as the pending value)
       if (currentPendingValue === null || currentPendingValue === undefined) {
+        // if a user did not type anything they may just hovered over an item
+        if (currentPendingValueValidIndexOnHover >= 0) {
+          this._setSelectedIndex(currentPendingValueValidIndexOnHover, submitPendingValueEvent);
+          this._clearPendingInfo();
+        }
+
         return;
       }
 
