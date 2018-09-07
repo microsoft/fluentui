@@ -23,14 +23,7 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
   }
 
   public render(): JSX.Element {
-    const {
-      multiCountRows,
-      annotationTextFontSize,
-      annotationTextColor,
-      bodyTextFontSize,
-      bodyTextColor,
-      customMessage
-    } = this.props;
+    const { multiCountRows, annotationTextFontSize, annotationTextColor, bodyTextFontSize, bodyTextColor, customMessage } = this.props;
     const data: JSX.Element[] = this.getGeneratedData(
       multiCountRows,
       annotationTextFontSize,
