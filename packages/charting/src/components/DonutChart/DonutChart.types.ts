@@ -36,11 +36,6 @@ export interface IDonutChartProps {
   theme?: ITheme;
 
   /**
-   * color for hover font color
-   */
-  color?: string;
-
-  /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IDonutChartStyleProps, IDonutChartStyles>;
@@ -51,8 +46,32 @@ export interface IDonutChartProps {
   strokeWidth?: number;
 }
 
-export type IDonutChartStyleProps = Required<Pick<IDonutChartProps, 'theme' | 'width' | 'height' | 'color'>> &
-  Pick<IDonutChartProps, 'className'>;
+export interface IDonutChartStyleProps {
+  /**
+   * Theme (provided through customization.)
+   */
+  theme: ITheme;
+
+  /**
+   * Additional CSS class(es) to apply to the Donut chart.
+   */
+  className?: string;
+
+  /**
+   * Height of the donut.
+   */
+  height?: number;
+
+  /**
+   * Width of the donut.
+   */
+  width: number;
+
+  /**
+   * color for hover font color
+   */
+  color?: string;
+}
 
 export interface IDonutChartStyles {
   /**
