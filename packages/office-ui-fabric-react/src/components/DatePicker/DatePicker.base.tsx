@@ -6,7 +6,7 @@ import {
   IDatePickerStyleProps,
   IDatePickerStyles
 } from './DatePicker.types';
-import { BaseComponent, KeyCodes, createRef, classNamesFunction } from '../../Utilities';
+import { BaseComponent, KeyCodes, createRef, classNamesFunction, getId } from '../../Utilities';
 import { Calendar, ICalendar, DayOfWeek } from '../../Calendar';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { Callout } from '../../Callout';
@@ -178,14 +178,23 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
       isDatePickerShown
     });
 
+    const textFieldId = getId('DatePicker-TextField');
+    const calloutId = getId('DatPicker-Callout');
+
     return (
       <div className={classNames.root}>
-        <div ref={this._datePickerDiv}>
+        <div
+          ref={this._datePickerDiv}
+          role="combobox"
+          aria-expanded={isDatePickerShown}
+          aria-haspopup="true"
+          aria-owns={textFieldId}
+        >
           <TextField
+            id={textFieldId}
             label={label}
             ariaLabel={ariaLabel}
-            aria-haspopup="true"
-            aria-expanded={isDatePickerShown}
+            aria-controls={isDatePickerShown ? calloutId : undefined}
             required={isRequired}
             disabled={disabled}
             onKeyDown={this._onTextFieldKeyDown}
@@ -204,12 +213,12 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
             readOnly={!allowTextInput}
             value={formattedDate}
             componentRef={this._textField}
-            role={'button'}
             underlined={underlined}
           />
         </div>
         {isDatePickerShown && (
           <Callout
+            id={calloutId}
             role="dialog"
             ariaLabel={pickerAriaLabel}
             isBeakVisible={false}
