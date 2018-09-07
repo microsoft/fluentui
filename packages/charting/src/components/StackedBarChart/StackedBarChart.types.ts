@@ -51,6 +51,11 @@ export interface IStackedBarChartProps {
   styles?: IStyleFunctionOrObject<IStackedBarChartStyleProps, IStackedBarChartStyles>;
 
   isMultiStackedBarChart?: boolean;
+
+  /**
+   * Color setting of bar background color, this will show while all data points value is 0
+   */
+  barBackgroundColor?: string;
 }
 
 export interface IStackedBarChartStyleProps {
