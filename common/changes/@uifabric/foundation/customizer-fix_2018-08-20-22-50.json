@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "Adjusting foundation usage, using new React 16 context.",
+      "packageName": "@uifabric/foundation",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/foundation",
+  "email": "dzearing@microsoft.com"
+}

@@ -1,6 +1,33 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Wed, 05 Sep 2018 10:29:25 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Sep 2018 16:29:48 GMT and should not be manually modified.
+
+## 0.21.0
+Fri, 07 Sep 2018 16:29:48 GMT
+
+### Minor changes
+
+- allow dashboard section control to take JSX elements as child member
+- add save prop to edit sections control
+
+### Patches
+
+- fix example for horizontalBarChart
+
+## 0.20.0
+Thu, 06 Sep 2018 10:28:35 GMT
+
+### Minor changes
+
+- add export
+- changing fabric icons to SVG's.
+
+### Patches
+
+- gird list text overflow css issue 
+- patch
+- Fix content area clipping in card because of overflow set to hidden
+- merge donut and piechart and added in dashboard package
 
 ## 0.19.0
 Wed, 05 Sep 2018 10:29:25 GMT

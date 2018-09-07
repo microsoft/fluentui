@@ -1,7 +1,7 @@
 import { Breakpoints, Layout, Layouts } from 'react-grid-layout';
 import { ISection } from '../Section/Section.types';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { DragApiRefObject } from 'react-grid-layout';
+import { DragApiRefObject, ItemCallback } from 'react-grid-layout';
 import { ICard, CardSize } from '../Card/Card.types';
 
 export interface IDashboardGridLayoutStyles {
@@ -89,6 +89,21 @@ export interface IDashboardGridLayoutProps {
   isResizable?: boolean;
 
   /**
+   * Calls when drag starts.
+   */
+  onDragStart?: ItemCallback;
+
+  /**
+   * Calls on each drag movement.
+   */
+  onDrag?: ItemCallback;
+
+  /**
+   * Calls when drag is complete.
+   */
+  onDragStop?: ItemCallback;
+
+  /**
    * The row height used for React-Grid-Layout, if not provided, the default value is used
    * @default 50
    */
@@ -112,9 +127,14 @@ export interface IDashboardGridSectionLayoutProps extends IDashboardGridLayoutPr
   sections: ISection[];
 
   /**
-   * THe cards
+   * The cards definition. Either use cards or cardNodes to pass in the card definitions.
    */
-  cards: ICard[];
+  cards?: ICard[];
+
+  /**
+   * Alternative to provide card definition. Either use cards or cardNodes to pass in the card definitions.
+   */
+  cardNodes?: JSX.Element[];
 
   /**
    * if the section is collapsible

@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.18.0",
+      "tag": "@uifabric/utilities_v6.18.0",
+      "date": "Fri, 07 Sep 2018 16:29:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "a0d0b91a56f7671d26179abf47aaf1569e087650",
+            "comment": "Add helpers for setting and detecting portals"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.17.2",
       "tag": "@uifabric/utilities_v6.17.2",
       "date": "Wed, 05 Sep 2018 10:29:25 GMT",

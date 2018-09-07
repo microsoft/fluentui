@@ -46,7 +46,6 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     overflowItems: []
   };
 
-  private _setSize: number;
   private _overflowSet = createRef<IOverflowSet>();
   private _resizeGroup = createRef<IResizeGroup>();
   private _classNames: { [key in keyof ICommandBarStyles]: string };
@@ -71,7 +70,6 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       cacheKey: ''
     };
 
-    this._setAriaPosinset(commandBarData);
     this._classNames = getClassNames(styles!, { theme: theme!, className });
 
     return (
@@ -94,26 +92,6 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
 
   public remeasure(): void {
     this._resizeGroup.current && this._resizeGroup.current.remeasure();
-  }
-
-  private _setAriaPosinset(data: ICommandBarData): ICommandBarData {
-    this._setSize = data.primaryItems.length + (data.overflowItems.length > 0 ? 1 : 0);
-
-    data.primaryItems = data.primaryItems.map((item, i, array) => {
-      item['aria-posinset'] = i + 1;
-      item['aria-setsize'] = this._setSize;
-      return item;
-    });
-
-    if (data.farItems) {
-      data.farItems = data.farItems.map((item, i, array) => {
-        item['aria-posinset'] = i + 1;
-        item['aria-setsize'] = array.length;
-        return item;
-      });
-    }
-
-    return data;
   }
 
   private _onRenderData = (data: ICommandBarData): JSX.Element => {
@@ -164,7 +142,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     const commandButtonProps: ICommandBarItemProps = {
       allowDisabledFocus: true,
       ...item,
-      styles: { root: { height: '100%' }, ...item.buttonStyles },
+      styles: { root: { height: '100%' }, label: { whiteSpace: 'nowrap' }, ...item.buttonStyles },
       className: css('ms-CommandBarItem-link', item.className),
       text: !item.iconOnly ? itemText : undefined,
       menuProps: item.subMenuProps,
@@ -213,13 +191,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       menuIconProps: { iconName: 'More', ...overflowButtonProps.menuIconProps }
     };
 
-    return (
-      <OverflowButtonType
-        aria-posinset={this._setSize}
-        aria-setsize={this._setSize}
-        {...overflowProps as IButtonProps}
-      />
-    );
+    return <OverflowButtonType {...overflowProps as IButtonProps} />;
   };
 
   private _computeCacheKey(data: ICommandBarData): string {
@@ -249,15 +221,15 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       overflowItems = [movedItem, ...overflowItems];
       primaryItems = shiftOnReduce ? primaryItems.slice(1) : primaryItems.slice(0, -1);
 
-      const newData = this._setAriaPosinset({ ...data, primaryItems, overflowItems });
-
-      cacheKey = this._computeCacheKey(newData);
+      data.primaryItems = primaryItems;
+      data.overflowItems = overflowItems;
+      cacheKey = this._computeCacheKey(data);
 
       if (onDataReduced) {
         onDataReduced(movedItem);
       }
 
-      return { ...newData, cacheKey };
+      return { ...data, cacheKey };
     }
 
     return undefined;
@@ -277,14 +249,15 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       // if shiftOnReduce, movedItem goes first, otherwise, last.
       primaryItems = shiftOnReduce ? [movedItem, ...primaryItems] : [...primaryItems, movedItem];
 
-      const newData = this._setAriaPosinset({ ...data, primaryItems, overflowItems });
-      cacheKey = this._computeCacheKey(newData);
+      data.primaryItems = primaryItems;
+      data.overflowItems = overflowItems;
+      cacheKey = this._computeCacheKey(data);
 
       if (onDataGrown) {
         onDataGrown(movedItem);
       }
 
-      return { ...newData, cacheKey };
+      return { ...data, cacheKey };
     }
 
     return undefined;
