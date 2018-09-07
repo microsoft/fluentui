@@ -7,6 +7,7 @@ import { IWithResponsiveModeState } from '../../utilities/decorators/withRespons
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { ICSSRule, ICSSPixelUnitRule } from '@uifabric/merge-styles/lib/IRawStyleBase';
 
 export interface IDialog {}
 
@@ -141,6 +142,18 @@ export interface IDialogProps extends React.Props<DialogBase>, IWithResponsiveMo
    * @deprecated Pass through via modalProps.subtitleAriaId instead
    */
   ariaDescribedById?: string;
+
+  /**
+   * Sets the minimum width of the dialog. It limits the width property to be not
+   * smaller than the value specified in min-width.
+   */
+  minWidth?: ICSSRule | ICSSPixelUnitRule;
+
+  /**
+   * Sets the maximum width for the dialog. It limits the width property to be larger
+   * than the value specified in max-width.
+   */
+  maxWidth?: ICSSRule | ICSSPixelUnitRule;
 }
 
 export interface IDialogStyleProps {
@@ -176,13 +189,13 @@ export interface IDialogStyleProps {
    * Default min-width for the dialog box.
    * @defaultvalue '288px'
    */
-  dialogDefaultMinWidth?: string;
+  dialogDefaultMinWidth?: string | ICSSRule | ICSSPixelUnitRule;
 
   /**
    * Default max-width for the dialog box.
    * @defaultvalue '340px'
    */
-  dialogDefaultMaxWidth?: string;
+  dialogDefaultMaxWidth?: string | ICSSRule | ICSSPixelUnitRule;
 }
 
 export interface IDialogStyles {
