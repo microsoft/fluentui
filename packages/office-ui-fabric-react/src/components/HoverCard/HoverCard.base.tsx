@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { BaseComponent, divProperties, getNativeProps, getId, KeyCodes, getDocument, createRef } from '../../Utilities';
-import { mergeStyles } from '../../Styling';
 
-import { IHoverCardProps, IHoverCardStyles } from './HoverCard.types';
+import { BaseComponent, divProperties, getNativeProps, getId, KeyCodes, getDocument, createRef, classNamesFunction } from '../../Utilities';
+import { IHoverCardProps, IHoverCardStyles, IHoverCardStyleProps } from './HoverCard.types';
 import { ExpandingCard } from './ExpandingCard';
 import { ExpandingCardMode, OpenCardMode } from './ExpandingCard.types';
-import { getStyles } from './HoverCard.styles';
+
+const getClassNames = classNamesFunction<IHoverCardStyleProps, IHoverCardStyles>();
 
 export interface IHoverCardState {
   isHoverCardVisible?: boolean;
@@ -13,7 +13,7 @@ export interface IHoverCardState {
   openMode?: OpenCardMode;
 }
 
-export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
+export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardState> {
   public static defaultProps = {
     cardOpenDelay: 500,
     cardDismissDelay: 100,
@@ -29,7 +29,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
   private _openTimerId: number;
   private _currentMouseTarget: EventTarget | null;
 
-  private _styles: IHoverCardStyles;
+  private _classNames: { [key in keyof IHoverCardStyles]: string };
 
   // Constructor
   constructor(props: IHoverCardProps) {
@@ -81,15 +81,18 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
 
   // Render
   public render(): JSX.Element {
-    const { expandingCardProps, children, id, setAriaDescribedBy = true, styles: customStyles } = this.props;
+    const { expandingCardProps, children, id, setAriaDescribedBy = true, styles: customStyles, theme, className } = this.props;
     const { isHoverCardVisible, mode, openMode } = this.state;
     const hoverCardId = id || getId('hoverCard');
 
-    this._styles = getStyles(customStyles);
+    this._classNames = getClassNames(customStyles, {
+      theme: theme!,
+      className
+    });
 
     return (
       <div
-        className={mergeStyles(this._styles.host)}
+        className={this._classNames.host}
         ref={this._hoverCard}
         aria-describedby={setAriaDescribedBy && isHoverCardVisible ? hoverCardId : undefined}
         data-is-focusable={!Boolean(this.props.target)}

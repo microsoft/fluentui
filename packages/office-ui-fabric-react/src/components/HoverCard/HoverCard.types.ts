@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { HoverCard } from './HoverCard';
+
 import { IExpandingCardProps } from './ExpandingCard.types';
-import { IStyle } from '../../Styling';
-import { IRefObject, KeyCodes } from '../../Utilities';
+import { IStyle, ITheme } from '../../Styling';
+import { IRefObject, KeyCodes, IStyleFunctionOrObject } from '../../Utilities';
 
 export interface IHoverCard {}
 
 /**
  * HoverCard component props.
  */
-export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement | HoverCard> {
+export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the IHoverCardHost interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -60,7 +60,7 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement | H
   /**
    * Custom styles for this component
    */
-  styles?: IHoverCardStyles;
+  styles?: IStyleFunctionOrObject<IHoverCardStyleProps, IHoverCardStyles>;
 
   /**
    * Optional target element to tag hover card on
@@ -98,6 +98,28 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement | H
    * @default 'KeyCodes.c'
    */
   openHotKey?: KeyCodes;
+
+  /**
+   * Additional CSS class(es) to apply to the Shimmer container.
+   */
+  className?: string;
+
+  /**
+   * Theme provided by higher order component.
+   */
+  theme?: ITheme;
+}
+
+export interface IHoverCardStyleProps {
+  /**
+   * Theme provided by High-Order Component.
+   */
+  theme: ITheme;
+
+  /**
+   * Accept custom classNames
+   */
+  className?: string;
 }
 
 export interface IHoverCardStyles {
