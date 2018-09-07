@@ -7,7 +7,7 @@ const commonFontFamily = 'Segoe UI';
 const commonFontWeight = 'bold';
 const largeFontSize = 28;
 const regularFontSize = 12;
-const regularLineHeight = 14;
+const regularLineHeight = 18;
 const containerSpaceMargin = 22;
 const flexDisplayStyle: IStyle = {
   display: 'flex',
