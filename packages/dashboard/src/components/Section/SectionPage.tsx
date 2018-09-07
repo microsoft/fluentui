@@ -17,9 +17,7 @@ export class SectionPage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet
-            sources={[require<string>('!raw-loader!@uifabric/dashboard/src/components/Section/Section.types.ts')]}
-          />
+          <PropertiesTableSet sources={[require<string>('!raw-loader!@uifabric/dashboard/src/components/Section/Section.types.ts')]} />
         }
         overview={<div>Sections and edit sections</div>}
         bestPractices={<div />}

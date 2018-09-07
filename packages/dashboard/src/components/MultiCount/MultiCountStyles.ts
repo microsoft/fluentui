@@ -1,16 +1,7 @@
 import { IMultiCountStyles, IMultiCountStyleProps } from './MultiCount.types';
 
 export const getStyles = (props: IMultiCountStyleProps): IMultiCountStyles => {
-  const {
-    annotationTextColor,
-    annotationTextFontSize,
-    bodyTextFontSize,
-    bodyTextColor,
-    color,
-    currentText,
-    hoveredText,
-    href
-  } = props;
+  const { annotationTextColor, annotationTextFontSize, bodyTextFontSize, bodyTextColor, color, currentText, hoveredText, href } = props;
   return {
     root: {
       display: 'flex',

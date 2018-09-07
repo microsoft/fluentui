@@ -104,13 +104,7 @@ export class Chart extends React.Component<IChartInternalProps, {}> {
 
   private _getStackedBarChart = (): JSX.Element => {
     if (this.props.chartData!.length > 1) {
-      return (
-        <MultiStackedBarChart
-          data={this.props.chartData!}
-          barHeight={this.props.barHeight}
-          hideRatio={this.props.hideRatio}
-        />
-      );
+      return <MultiStackedBarChart data={this.props.chartData!} barHeight={this.props.barHeight} hideRatio={this.props.hideRatio} />;
     }
 
     return <StackedBarChart data={this.props.chartData![0]} barHeight={this.props.barHeight} />;

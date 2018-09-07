@@ -1,10 +1,6 @@
 import * as React from 'react';
 import { Responsive, WidthProvider, Layout, Layouts } from 'react-grid-layout';
-import {
-  IDashboardGridLayoutProps,
-  IDashboardGridLayoutStyles,
-  IDashboardCardLayout
-} from './DashboardGridLayout.types';
+import { IDashboardGridLayoutProps, IDashboardGridLayoutStyles, IDashboardCardLayout } from './DashboardGridLayout.types';
 import { getStyles } from './DashboardGridLayout.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { CardSizeToWidthHeight } from '../../utilities/DashboardGridLayoutUtils';

@@ -70,8 +70,7 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
 
     // In cases where no option is checked, set focusable to first enabled option so that ChoiceGroup remains focusable.
     // If no options are enabled, ChoiceGroup is not focusable. If any option is checked, do not set keyDefaultFocusable.
-    const firstEnabledOption =
-      disabled || options === undefined ? undefined : find(options, option => !option.disabled);
+    const firstEnabledOption = disabled || options === undefined ? undefined : find(options, option => !option.disabled);
     const keyDefaultFocusable = keyChecked === undefined && firstEnabledOption ? firstEnabledOption.key : undefined;
 
     return (

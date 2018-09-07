@@ -1,14 +1,6 @@
 /* tslint:disable */
 import * as React from 'react';
-import {
-  ICustomNavLinkGroup,
-  INavProps,
-  INavState,
-  INavLink,
-  INavStyleProps,
-  INavStyles,
-  NavGroupType
-} from './Nav.types';
+import { ICustomNavLinkGroup, INavProps, INavState, INavLink, INavStyleProps, INavStyles, NavGroupType } from './Nav.types';
 import { getStyles } from './Nav.styles';
 import { NavBase } from './NavBase';
 import { styled, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
@@ -125,11 +117,7 @@ class SlimNavComponent extends NavBase {
 
     if (this._prevFloatingNav === currentFloatingNav) {
       // toggle the floating nav
-      if (
-        currentFloatingNav.style &&
-        currentFloatingNav.style.display &&
-        currentFloatingNav.style.display === 'block'
-      ) {
+      if (currentFloatingNav.style && currentFloatingNav.style.display && currentFloatingNav.style.display === 'block') {
         currentFloatingNav.removeAttribute('style');
       } else {
         currentFloatingNav.setAttribute('style', 'display: block');
@@ -242,8 +230,7 @@ class SlimNavComponent extends NavBase {
     const { styles, showMore, onShowMoreLinkClicked, dataHint } = this.props;
     const classNames = getClassNames(styles!, { isSelected, hasChildren });
     const linkText = this.getLinkText(link, showMore);
-    const onClickHandler =
-      link.isShowMoreLink && onShowMoreLinkClicked ? onShowMoreLinkClicked : this._onLinkClicked.bind(this, link);
+    const onClickHandler = link.isShowMoreLink && onShowMoreLinkClicked ? onShowMoreLinkClicked : this._onLinkClicked.bind(this, link);
 
     return (
       <li

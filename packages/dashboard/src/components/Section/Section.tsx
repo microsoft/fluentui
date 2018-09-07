@@ -118,14 +118,7 @@ export class Section extends React.PureComponent<ISectionProps, ISectionState> {
   };
 
   private _onRenderOverflowItem(item: IOverflowSetItemProps): JSX.Element {
-    return (
-      <IconButton
-        menuIconProps={{ iconName: item.icon }}
-        onClick={item.onClick}
-        title={item.title}
-        ariaLabel={item.ariaLabel}
-      />
-    );
+    return <IconButton menuIconProps={{ iconName: item.icon }} onClick={item.onClick} title={item.title} ariaLabel={item.ariaLabel} />;
   }
 
   private _onRenderOverflowButton(overflowItems: IOverflowSetItemProps[] | undefined): JSX.Element {
