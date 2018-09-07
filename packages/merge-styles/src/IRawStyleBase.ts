@@ -65,6 +65,25 @@ export type IFontWeight =
   | '900'
   | 900;
 
+export type IMixBlendModes =
+  | ICSSRule
+  | 'normal'
+  | 'multiply'
+  | 'screen'
+  | 'overlay'
+  | 'darken'
+  | 'lighten'
+  | 'color-dodge'
+  | 'color-burn'
+  | 'hard-light'
+  | 'soft-light'
+  | 'difference'
+  | 'exclusion'
+  | 'hue'
+  | 'saturation'
+  | 'color'
+  | 'luminosity';
+
 /**
  * The base font style.
  */
@@ -1180,6 +1199,11 @@ export interface IRawStyleBase extends IRawFontStyle {
   minWidth?: ICSSRule | ICSSPixelUnitRule;
 
   /**
+   * The mix-blend-mode CSS property describes how an element's content should blend
+   * with the content of the element's direct parent and the element's background.
+   */
+  mixBlendMode?: ICSSRule | IMixBlendModes;
+  /**
    * Specifies the transparency of an element.
    * See CSS 3 opacity property https://drafts.csswg.org/css-color-3/#opacity
    */
@@ -1268,6 +1292,24 @@ export interface IRawStyleBase extends IRawFontStyle {
    */
   padding?: ICSSRule | ICSSPixelUnitRule;
 
+  paddingBlockEnd?: ICSSRule | ICSSPixelUnitRule;
+  /**
+   * The padding-block-start CSS property defines the logical block start padding
+   * of an element, which maps to a physical padding depending on the element's
+   * writing mode, directionality, and text orientation. It corresponds to the
+   * padding-top, padding-right, padding-bottom, or padding-left property depending
+   * on the values defined for writing-mode, direction, and text-orientation.
+   */
+  paddingBlockStart?: ICSSRule | ICSSPixelUnitRule;
+
+  /**
+   * The padding-left CSS property of an element sets the padding space required on the
+   * left side of an element. The padding area is the space between the content of the
+   * element and its border. Contrary to margin-left values, negative values of
+   * padding-left are invalid.
+   */
+  paddingLeft?: ICSSRule | ICSSPixelUnitRule;
+
   /**
    * The padding-bottom CSS property of an element sets the padding space required on
    * the bottom of an element. The padding area is the space between the content of the
@@ -1277,12 +1319,30 @@ export interface IRawStyleBase extends IRawFontStyle {
   paddingBottom?: ICSSRule | ICSSPixelUnitRule;
 
   /**
-   * The padding-left CSS property of an element sets the padding space required on the
-   * left side of an element. The padding area is the space between the content of the
-   * element and its border. Contrary to margin-left values, negative values of
-   * padding-left are invalid.
+   * The padding-inline-end CSS property defines the logical inline end padding of an element,
+   * which maps to a physical padding depending on the element's writing mode, directionality,
+   * and text orientation. It corresponds to the padding-top, padding-right, padding-bottom,
+   * or padding-left property depending on the values defined for writing-mode, direction,
+   * and text-orientation.
    */
-  paddingLeft?: ICSSRule | ICSSPixelUnitRule;
+  paddingInlineEnd?: ICSSRule | ICSSPixelUnitRule;
+
+  /**
+   * The padding-inline-start CSS property defines the logical inline start padding of
+   * an element, which maps to a physical padding depending on the element's writing mode,
+   * directionality, and text orientation. It corresponds to the padding-top, padding-right,
+   * padding-bottom, or padding-left property depending on the values defined for writing-mode,
+   * direction, and text-orientation.
+   */
+  paddingInlineStart?: ICSSRule | ICSSPixelUnitRule;
+
+  /**
+   * The padding-block-end CSS property defines the logical block end padding
+   * of an element, which maps to a physical padding depending on the element's
+   * writing mode, directionality, and text orientation. It corresponds to the
+   * padding-top, padding-right, padding-bottom, or padding-left property
+   * depending on the values defined for writing-mode, direction, and text-orientation.
+   */
 
   /**
    * The padding-right CSS property of an element sets the padding space required on the
