@@ -2,6 +2,92 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.66.0",
+      "tag": "office-ui-fabric-react_v6.66.0",
+      "date": "Fri, 07 Sep 2018 16:29:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Alicia Drummond <adrum@microsoft.com>",
+            "commit": "be437e2d62da100df7a0075e188af8fd947c1359",
+            "comment": "Add white-space: nowrap to CommandBar Button labels"
+          },
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "afb5aaa4fef31015318c4cf8f08544720d3ba53f",
+            "comment": "ChoiceGroup to add a customizable ariaLabelledBy prop"
+          },
+          {
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "be6a6d478e450a652c078eb7ee864dc327ba079f",
+            "comment": "ChoiceGroup: have focus method take into account selectedKey"
+          },
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "75968b4a3bb3cab9c2cc958181f4328da589b30c",
+            "comment": "adjust dropdownprops onchange to be more in line with the div element onchange attrib"
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "ae416c14ef120b07ce5d5050fad22f44d661a10c",
+            "comment": "ComboBox: Fix pressing ENTER after just hovering over item when freeform (and there's no pending value)"
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "7c75774029a1b28ad8a2269b1a497e3193d4e3cf",
+            "comment": "ComboBox: Allow 0 as a valid selectedKey/defaultSelectedKey"
+          },
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "9b13032be04135a5f6326756a3243efa6df3d0b9",
+            "comment": "Updates the example for Nav to use a more updated click handler pattern"
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "15c68f5319f3f69a89c0bfd7a344c00811bf6d83",
+            "comment": "Fix issue where deleting all selected items wouldn't update selection"
+          },
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "71e84f2f5fb739eb75499975fa3f69c85333fa0a",
+            "comment": "allow custom classnames to be passed thru to spinbutton"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "8f69ab057f4e33b12713807228607386781c9a57",
+            "comment": "Updates button slots with correct pre-fluent palette values and scss fallbacks"
+          },
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "a0d0b91a56f7671d26179abf47aaf1569e087650",
+            "comment": "Layer: Add optional event blocking. Tooltip: Detect targets in portals."
+          },
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "a0d0b91a56f7671d26179abf47aaf1569e087650",
+            "comment": "Layer: Now use React Portals."
+          }
+        ],
+        "none": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "7de209139a21265654b4f58a84a877df9daeed97",
+            "comment": "Fix snapshot file"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.22.0 <7.0.0` to `>=6.23.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.17.2 <7.0.0` to `>=6.18.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.65.0",
       "tag": "office-ui-fabric-react_v6.65.0",
       "date": "Thu, 06 Sep 2018 10:28:35 GMT",
