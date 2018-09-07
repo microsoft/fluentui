@@ -46,6 +46,10 @@ const requiredProps: { [key: string]: any } = {
   ResizeGroup: {
     onRenderData: () => null
   },
+  SelectedPeopleList: {
+    onRenderItem: () => <div key="TestItem" />,
+    selectedItems: ['TestItem']
+  },
   Suggestions: {
     suggestions: []
   },
@@ -91,8 +95,7 @@ const excludedComponents: string[] = [
   'PersonaPresence', // className is not injected
   'PositioningContainer', // className is not injected
   'Rating', // className is not injected
-  'SelectedItemsList', // weird exports
-  'SelectedPeopleList', // component is null
+  'SelectedPeopleList', // does not accept className
   'ShimmerCircle', // className is not injected
   'ShimmerElementsGroup', // className is not injected
   'ShimmerLine', // className is not injected
@@ -112,12 +115,17 @@ const mockNodeComponents = ['ScrollablePane'];
  *
  * If you are here and are getting a failure due to a component you recently added,
  *    here are some options:
+ *
  *    1) Is the test failing due to a runtime error in the component, or is the component null?
  *       The component may require certain props in order to render. Consider adding the props to the
  *       requiredProps object above.
+ *
  *    2) Does the component inject its className prop onto an element other than the root?
  *       Consider adding the class name of the element where the className prop is injected
  *       to the classNameSelectors list above.
+ *
+ *    3) Does the component use refs? It may need DOM nodes to be mocked.
+ *       Consider adding the component name to the mockNodeComponents list above.
  *
  * In any case, adding your component to the exclusion list is discouraged as this will make regression
  *    harder to catch.
