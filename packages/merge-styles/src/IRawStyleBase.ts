@@ -1203,6 +1203,7 @@ export interface IRawStyleBase extends IRawFontStyle {
    * with the content of the element's direct parent and the element's background.
    */
   mixBlendMode?: ICSSRule | IMixBlendModes;
+
   /**
    * Specifies the transparency of an element.
    * See CSS 3 opacity property https://drafts.csswg.org/css-color-3/#opacity
