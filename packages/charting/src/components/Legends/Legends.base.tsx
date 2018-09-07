@@ -109,6 +109,9 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   private _onClick = (legend: ILegend): void => {
     if (this.state.selectedState === true && this.state.selectedLegend === legend.title) {
       this.setState({ selectedLegend: 'none', selectedState: false });
+      if (legend.action) {
+        legend.action();
+      }
     } else {
       this.setState({ selectedState: true, selectedLegend: legend.title });
       if (legend.action) {

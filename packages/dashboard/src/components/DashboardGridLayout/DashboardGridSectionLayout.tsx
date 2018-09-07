@@ -12,7 +12,7 @@ import { Card } from '../Card/Card';
 import { Section } from '../Section/Section';
 import { getStyles } from './DashboardGridLayout.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { CardSizeToWidthHeight } from '../../utilities/DashboardGridLayoutUtils';
+import { CardSizeToWidthHeight, getFirstDefinedDashboardLayout, getFirstDefinedLayout } from '../../utilities/DashboardGridLayoutUtils';
 require('style-loader!css-loader!react-grid-layout/css/styles.css');
 require('style-loader!css-loader!react-resizable/css/styles.css');
 require('style-loader!css-loader!./DashboardGridLayout.css');
@@ -53,11 +53,17 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridSe
   constructor(props: IDashboardGridSectionLayoutProps) {
     super(props);
     this._sectionKeys = this.props.sections.map((section: ISection) => section.id);
-    this._currentLayout = this._getFirstDefinedLayout(this._createLayout());
+    this._currentLayout = getFirstDefinedLayout(this._createLayout());
     this._sectionMapping = this._processSections();
-    this.props.cards.forEach((card: ICard) => {
-      this._cardSizes[card.id] = card.cardSize;
-    });
+    if (this.props.cards) {
+      this.props.cards.forEach((card: ICard) => {
+        this._cardSizes[card.id] = card.cardSize;
+      });
+    } else if (this.props.layout) {
+      getFirstDefinedDashboardLayout(this.props.layout).forEach((layout: IDashboardCardLayout) => {
+        this._cardSizes[layout.i!] = layout.size;
+      });
+    }
   }
 
   public render(): JSX.Element {
@@ -278,24 +284,6 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridSe
     return this._sectionKeys.indexOf(String(layout.i)) > -1;
   }
 
-  /**
-   * TODO: should return the correct layout based on view port
-   */
-  private _getFirstDefinedLayout(layouts: Layouts): Layout[] {
-    if (layouts.lg) {
-      return layouts.lg;
-    } else if (layouts.md) {
-      return layouts.md;
-    } else if (layouts.sm) {
-      return layouts.sm;
-    } else if (layouts.xs) {
-      return layouts.xs;
-    } else if (layouts.xxs) {
-      return layouts.xxs;
-    }
-    return [];
-  }
-
   private _renderAllSections(sectionClass: string): JSX.Element[] {
     let result: JSX.Element[] = [];
     const self = this;
@@ -320,24 +308,32 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridSe
   }
 
   private _renderCards(keys: string[]): JSX.Element[] {
-    const result: JSX.Element[] = [];
-    const cardsOfSection = this.props.cards.filter((card: ICard) => {
-      return keys.indexOf(card.id) > -1;
-    });
-    cardsOfSection.forEach((card: ICard) => {
-      result.push(
-        <div key={card.id}>
-          <Card
-            key={card.id}
-            cardFrameContent={card.cardFrameContent}
-            header={card.header}
-            actions={card.actions}
-            cardContentList={card.cardContentList}
-            cardSize={card.cardSize}
-          />
-        </div>
-      );
-    });
+    let result: JSX.Element[] = [];
+    if (this.props.cards) {
+      // cards are provided as card definition objects
+      const cardsOfSection = this.props.cards.filter((card: ICard) => {
+        return keys.indexOf(card.id) > -1;
+      });
+      cardsOfSection.forEach((card: ICard) => {
+        result.push(
+          <div key={card.id}>
+            <Card
+              key={card.id}
+              cardFrameContent={card.cardFrameContent}
+              header={card.header}
+              actions={card.actions}
+              cardContentList={card.cardContentList}
+              cardSize={card.cardSize}
+            />
+          </div>
+        );
+      });
+    } else if (this.props.cardNodes) {
+      // cards are provided as elements
+      result = this.props.cardNodes.filter((card: JSX.Element) => {
+        return keys.indexOf(String(card.key)) > -1;
+      });
+    }
 
     return result;
   }
@@ -389,7 +385,7 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridSe
         for (let i = 0; i < value.length; i++) {
           const layoutElement = this._createLayoutFromProp(value[i]);
           if (i === 0) {
-            // this means it is the first section header and dont allow card to be moved before the first section
+            // this means it is the first section header and don't allow card to be moved before the first section
             layoutElement.static = true;
           }
           if (this._sectionKeys.indexOf(value[i].i) > -1) {

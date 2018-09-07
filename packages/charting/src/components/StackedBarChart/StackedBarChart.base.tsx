@@ -16,10 +16,12 @@ export interface IRefArrayData {
 export interface IStackedBarChartState {
   isCalloutVisible: boolean;
   refArray: IRefArrayData[];
-  legendSelected: string;
+  selectedLegendTitle: string;
   refSelected: SVGGElement | null | undefined;
   dataForHoverCard: number;
   color: string;
+  isLegendHovered: boolean;
+  isLegendSelected: boolean;
 }
 
 export class StackedBarChartBase extends React.Component<IStackedBarChartProps, IStackedBarChartState> {
@@ -36,13 +38,16 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     this.state = {
       isCalloutVisible: false,
       refArray: [],
-      legendSelected: '',
+      selectedLegendTitle: '',
       refSelected: null,
       dataForHoverCard: 0,
-      color: ''
+      color: '',
+      isLegendHovered: false,
+      isLegendSelected: false
     };
     this._onLeave = this._onLeave.bind(this);
     this._refCallback = this._refCallback.bind(this);
+    this._onBarLeave = this._onBarLeave.bind(this);
   }
 
   public render(): JSX.Element {
@@ -92,7 +97,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
               directionalHint={DirectionalHint.topRightEdge}
             >
               <div className={this._classNames.hoverCardRoot}>
-                <div className={this._classNames.hoverCardTextStyles}>{this.state.legendSelected}</div>
+                <div className={this._classNames.hoverCardTextStyles}>{this.state.selectedLegendTitle}</div>
                 <div className={this._classNames.hoverCardDataStyles}>{this.state.dataForHoverCard}</div>
               </div>
             </Callout>
@@ -133,7 +138,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         title: point.legend!,
         color: color,
         action: () => {
-          this._onHover(point.legend!, pointData, color);
+          this._onClick(point.legend!, pointData, color);
         },
         hoverAction: () => {
           this._onHover(point.legend!, pointData, color);
@@ -148,12 +153,14 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       }
       value = (pointData / total) * 100;
       startingPoint.push(prevPosition);
-      const isSelected = this.state.legendSelected === point.legend!;
       const styles = this.props.styles;
+      let shouldHighlight = true;
+      if (this.state.isLegendHovered || this.state.isLegendSelected) {
+        shouldHighlight = this.state.selectedLegendTitle === point.legend;
+      }
       this._classNames = getClassNames(styles!, {
         theme: this.props.theme!,
-        isSelected: isSelected,
-        isChartSelected: this.state.isCalloutVisible
+        shouldHighlight: shouldHighlight
       });
       return (
         <g
@@ -162,8 +169,8 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           ref={(e: SVGGElement) => {
             this._refCallback(e, legend.title);
           }}
-          onMouseOver={this._onHover.bind(this, point.legend!, pointData, color)}
-          onMouseLeave={this._onLeave}
+          onMouseOver={this._onBarHover.bind(this, point.legend!, pointData, color)}
+          onMouseLeave={this._onBarLeave}
         >
           <rect key={index} x={startingPoint[index] + '%'} y={0} width={value + '%'} height={barHeight} fill={color} />
         </g>
@@ -177,31 +184,67 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     this.state.refArray.push({ legendText: legendTitle, refElement: element });
   }
 
+  private _onClick(customMessage: string, pointData: number, color: string): void {
+    if (this.state.isLegendSelected) {
+      if (this.state.selectedLegendTitle === customMessage) {
+        this.setState({
+          isLegendSelected: false,
+          selectedLegendTitle: customMessage,
+          isLegendHovered: true
+        });
+      } else {
+        this.setState({
+          selectedLegendTitle: customMessage
+        });
+      }
+    } else {
+      this.setState({
+        isLegendSelected: true,
+        selectedLegendTitle: customMessage
+      });
+    }
+  }
+
   private _onHover(customMessage: string, pointData: number, color: string): void {
-    if (!this.state.isCalloutVisible || this.state.legendSelected !== customMessage) {
+    if (this.state.isLegendSelected === false) {
+      this.setState({
+        isLegendHovered: true,
+        selectedLegendTitle: customMessage
+      });
+    }
+  }
+
+  private _onLeave(): void {
+    if (this.state.isLegendSelected === false) {
+      this.setState({
+        isLegendHovered: false,
+        selectedLegendTitle: ''
+      });
+    }
+  }
+
+  private _onBarHover(customMessage: string, pointData: number, color: string): void {
+    if (
+      this.state.isLegendSelected === false ||
+      (this.state.isLegendSelected && this.state.selectedLegendTitle === customMessage)
+    ) {
       const refArray = this.state.refArray;
       const currentHoveredElement = refArray.find(
         (currentElement: IRefArrayData) => currentElement.legendText === customMessage
       );
       this.setState({
-        isCalloutVisible: true,
         refSelected: currentHoveredElement!.refElement,
-        legendSelected: customMessage,
+        isCalloutVisible: true,
+        selectedLegendTitle: customMessage,
         dataForHoverCard: pointData,
         color: color
       });
     }
   }
 
-  private _onLeave(): void {
-    if (this.state.isCalloutVisible) {
-      this.setState({
-        isCalloutVisible: false,
-        refSelected: null,
-        legendSelected: '',
-        dataForHoverCard: 0,
-        color: ''
-      });
-    }
+  private _onBarLeave(): void {
+    this.setState({
+      isCalloutVisible: false
+    });
   }
 }

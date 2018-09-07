@@ -48,16 +48,6 @@ export interface ISelectableDroppableTextProps<T> extends React.HTMLAttributes<T
   options?: any;
 
   /**
-   * Callback issued when the selected option changes.
-   */
-  onChange?: (event: React.FormEvent<T>, option?: ISelectableOption, index?: number) => void;
-
-  /**
-   * @deprecated Use onChange instead.
-   */
-  onChanged?: (option: ISelectableOption, index?: number) => void;
-
-  /**
    * Optional custom renderer for the ISelectableDroppableText container
    */
   onRenderContainer?: IRenderFunction<ISelectableDroppableTextProps<T>>;
