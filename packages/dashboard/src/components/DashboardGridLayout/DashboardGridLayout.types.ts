@@ -139,13 +139,14 @@ export interface IDashboardGridLayoutProps {
    * @default false
    */
   isCollapsible?: boolean;
+
   /**
    * Callback so you can save the layout.
    */
   onLayoutChange?(currentLayout: Layout[], allLayouts: Layouts): void;
 
   /**
-   * Calls back with breakpoint and new number of columns
+   * Callback with breakpoint and new number of columns
    */
   onBreakPointChange?(newBreakpoint: string, newCols: number): void;
 

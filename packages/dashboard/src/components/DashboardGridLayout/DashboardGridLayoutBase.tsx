@@ -24,7 +24,7 @@ export interface IDashboardGridLayoutBaseProps extends IDashboardGridLayoutProps
 export class DashboardGridLayoutBase extends React.Component<IDashboardGridLayoutBaseProps, {}> {
   /** The default props used for React-Grid-Layout */
   public static defaultProps: Partial<IDashboardGridLayoutBaseProps> = {
-    rowHeight: 50,
+    rowHeight: 56,
     cols: {
       lg: 4,
       md: 4,
