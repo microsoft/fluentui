@@ -171,8 +171,6 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
       onSubmit={[Function]}
     >
       <div
-        aria-describedby={undefined}
-        aria-label={undefined}
         aria-labelledby="Panel3-headerText"
         className=
 
@@ -203,7 +201,6 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
           type={1}
         >
           <div
-            aria-labelledby={undefined}
             className=
                 ms-Panel-main
                 {
@@ -264,11 +261,6 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                       }
                 >
                   <button
-                    aria-describedby={undefined}
-                    aria-disabled={undefined}
-                    aria-label={undefined}
-                    aria-labelledby={undefined}
-                    aria-pressed={undefined}
                     className=
                         ms-Button
                         ms-Button--icon
@@ -334,7 +326,6 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                         }
                     data-is-focusable={true}
                     data-is-visible={true}
-                    disabled={undefined}
                     onClick={[Function]}
                     onKeyDown={[Function]}
                     onKeyPress={[Function]}
