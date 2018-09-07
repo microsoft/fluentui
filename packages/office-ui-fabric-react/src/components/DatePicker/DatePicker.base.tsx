@@ -178,7 +178,6 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
       isDatePickerShown
     });
 
-    const textFieldId = getId('DatePicker-TextField');
     const calloutId = getId('DatPicker-Callout');
 
     return (
@@ -188,10 +187,9 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
           role="combobox"
           aria-expanded={isDatePickerShown}
           aria-haspopup="true"
-          aria-owns={textFieldId}
+          aria-owns={calloutId}
         >
           <TextField
-            id={textFieldId}
             label={label}
             ariaLabel={ariaLabel}
             aria-controls={isDatePickerShown ? calloutId : undefined}
@@ -219,7 +217,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
         {isDatePickerShown && (
           <Callout
             id={calloutId}
-            role="dialog"
+            role="listbox"
             ariaLabel={pickerAriaLabel}
             isBeakVisible={false}
             className={classNames.callout}
