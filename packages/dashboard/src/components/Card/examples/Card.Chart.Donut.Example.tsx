@@ -1,15 +1,6 @@
 import * as React from 'react';
 import { IChartProps as IChartingProps } from '@uifabric/charting';
-import {
-  Card,
-  CardContentType,
-  CardSize,
-  ChartType,
-  ICardProps,
-  ICardContentDetails,
-  IChartProps,
-  Priority
-} from '@uifabric/dashboard';
+import { Card, CardContentType, CardSize, ChartType, ICardProps, ICardContentDetails, IChartProps, Priority } from '@uifabric/dashboard';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export class DonutChartExample extends React.Component<{}, {}> {
@@ -85,13 +76,6 @@ export class DonutChartExample extends React.Component<{}, {}> {
       headerText: 'Donut Chart and Pie chart '
     };
 
-    return (
-      <Card
-        cardFrameContent={cardFrameContent}
-        header={header}
-        cardContentList={contentAreaList}
-        cardSize={CardSize.large}
-      />
-    );
+    return <Card cardFrameContent={cardFrameContent} header={header} cardContentList={contentAreaList} cardSize={CardSize.large} />;
   }
 }

@@ -90,12 +90,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         <svg className={this._classNames.chart}>
           <g>{bars[0]}</g>
           {isCalloutVisible ? (
-            <Callout
-              gapSpace={0}
-              target={this.state.refSelected}
-              setInitialFocus={true}
-              directionalHint={DirectionalHint.topRightEdge}
-            >
+            <Callout gapSpace={0} target={this.state.refSelected} setInitialFocus={true} directionalHint={DirectionalHint.topRightEdge}>
               <div className={this._classNames.hoverCardRoot}>
                 <div className={this._classNames.hoverCardTextStyles}>{this.state.selectedLegendTitle}</div>
                 <div className={this._classNames.hoverCardDataStyles}>{this.state.dataForHoverCard}</div>
@@ -124,10 +119,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     const legendDataItems: ILegend[] = [];
     // calculating starting point of each bar and it's range
     const startingPoint: number[] = [];
-    const total = data.chartData!.reduce(
-      (acc: number, point: IChartDataPoint) => acc + (point.data ? point.data : 0),
-      0
-    );
+    const total = data.chartData!.reduce((acc: number, point: IChartDataPoint) => acc + (point.data ? point.data : 0), 0);
     let prevPosition = 0;
     let value = 0;
     const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {
@@ -224,14 +216,9 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
   }
 
   private _onBarHover(customMessage: string, pointData: number, color: string): void {
-    if (
-      this.state.isLegendSelected === false ||
-      (this.state.isLegendSelected && this.state.selectedLegendTitle === customMessage)
-    ) {
+    if (this.state.isLegendSelected === false || (this.state.isLegendSelected && this.state.selectedLegendTitle === customMessage)) {
       const refArray = this.state.refArray;
-      const currentHoveredElement = refArray.find(
-        (currentElement: IRefArrayData) => currentElement.legendText === customMessage
-      );
+      const currentHoveredElement = refArray.find((currentElement: IRefArrayData) => currentElement.legendText === customMessage);
       this.setState({
         refSelected: currentHoveredElement!.refElement,
         isCalloutVisible: true,
