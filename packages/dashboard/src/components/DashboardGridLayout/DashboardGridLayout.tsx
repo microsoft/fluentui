@@ -1,10 +1,6 @@
 import * as React from 'react';
 import { Responsive, WidthProvider, Layout, Layouts } from 'react-grid-layout';
-import {
-  IDashboardGridLayoutProps,
-  IDashboardGridLayoutStyles,
-  IDashboardCardLayout
-} from './DashboardGridLayout.types';
+import { IDashboardGridLayoutProps, IDashboardGridLayoutStyles, IDashboardCardLayout } from './DashboardGridLayout.types';
 import { getStyles } from './DashboardGridLayout.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { CardSizeToWidthHeight } from '../../utilities/DashboardGridLayoutUtils';
@@ -59,6 +55,9 @@ export class DashboardGridLayout extends React.Component<IDashboardGridLayoutPro
         layouts={this._createLayout()}
         verticalCompact={true}
         onLayoutChange={this._onLayoutChanged}
+        onDrag={this.props.onDrag}
+        onDragStart={this.props.onDragStart}
+        onDragStop={this.props.onDragStop}
         onBreakpointChange={this.props.onBreakPointChange}
         dragApiRef={this.props.dragApi}
         {...this.props}

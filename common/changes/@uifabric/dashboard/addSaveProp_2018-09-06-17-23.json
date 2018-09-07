@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/dashboard",
-      "comment": "revert the change for expand behavior",
-      "type": "patch"
+      "comment": "add save prop to edit sections control",
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/dashboard",
-  "email": "yuz@microsoft.com"
+  "email": "yudon@microsoft.com"
 }

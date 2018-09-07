@@ -9,7 +9,6 @@ import { ContextualMenu } from './ContextualMenu';
 import { canAnyMenuItemsCheck } from './ContextualMenu.base';
 import { IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.types';
 import { IContextualMenuRenderItem, IContextualMenuItemStyles } from './ContextualMenuItem.types';
-import { LayerBase as Layer } from '../Layer/Layer.base';
 
 describe('ContextualMenu', () => {
   afterEach(() => {
@@ -49,9 +48,7 @@ describe('ContextualMenu', () => {
       spyCalled = true;
     };
 
-    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(
-      <ContextualMenu items={items} isSubMenu={true} onDismiss={onDismissSpy} />
-    );
+    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} isSubMenu={true} onDismiss={onDismissSpy} />);
 
     const menuList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
     ReactTestUtils.Simulate.keyDown(menuList, { which: KeyCodes.left });
@@ -842,58 +839,6 @@ describe('ContextualMenu', () => {
     }).catch(done());
   });
 
-  it('ContextualMenu menuOpened callback is called only when menu is available', () => {
-    let layerMounted = false;
-    let menuMounted = false;
-    let menuMountedFirst = false;
-    let layerMountedFirst = false;
-
-    // Alter the Layer's prototype so that we can confirm that it mounts before the contextualmenu mounts.
-    /* tslint:disable:no-function-expression */
-    Layer.prototype.componentDidMount = (function(componentDidMount): () => void {
-      return function(): void {
-        if (menuMounted) {
-          menuMountedFirst = true;
-        }
-        layerMounted = true;
-        return componentDidMount.call(this);
-      };
-    })(Layer.prototype.componentDidMount);
-    /* tslint:enable:no-function-expression */
-
-    const items: IContextualMenuItem[] = [
-      {
-        name: 'TestText 1',
-        key: 'TestKey1',
-        className: 'testkey1'
-      },
-      {
-        name: 'TestText 2',
-        key: 'TestKey2'
-      }
-    ];
-
-    const onMenuOpened = (): void => {
-      if (layerMounted) {
-        layerMountedFirst = true;
-      }
-      menuMounted = true;
-    };
-
-    ReactTestUtils.renderIntoDocument<HTMLDivElement>(
-      <div>
-        <button id="target" style={{ top: '10px', left: '10px', height: '0', width: '0px' }}>
-          {' '}
-          target{' '}
-        </button>
-        <ContextualMenu target="#target" items={items} onMenuOpened={onMenuOpened} />
-      </div>
-    );
-    expect(menuMounted).toEqual(true);
-    expect(layerMountedFirst).toEqual(true);
-    expect(menuMountedFirst).toEqual(false);
-  });
-
   it('merges callout classNames', () => {
     ReactTestUtils.renderIntoDocument<IContextualMenuProps>(
       <ContextualMenu
@@ -971,9 +916,7 @@ describe('ContextualMenu', () => {
     ];
     const customRenderer = jest.fn(() => null);
 
-    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(
-      <ContextualMenu items={items} contextualMenuItemAs={customRenderer} />
-    );
+    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} contextualMenuItemAs={customRenderer} />);
 
     const menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
     ReactTestUtils.Simulate.click(menuItem);
@@ -1017,11 +960,7 @@ describe('ContextualMenu', () => {
           key: 'Item 3',
           sectionProps: {
             key: 'Section1',
-            items: [
-              { text: 'Item 1', key: 'Item 1' },
-              { text: 'Item 2', key: 'Item 2', canCheck: true },
-              { text: 'Item 3', key: 'Item 3' }
-            ]
+            items: [{ text: 'Item 1', key: 'Item 1' }, { text: 'Item 2', key: 'Item 2', canCheck: true }, { text: 'Item 3', key: 'Item 3' }]
           }
         }
       ];

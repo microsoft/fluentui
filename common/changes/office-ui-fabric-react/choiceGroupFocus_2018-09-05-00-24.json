@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix 'npm run generate' issue",
+      "comment": "ChoiceGroup: have focus method take into account selectedKey",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "timto@corp.microsoft.com"
+  "email": "naethell@microsoft.com"
 }

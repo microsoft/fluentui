@@ -1,17 +1,7 @@
 import { IMultiCountStyles, IMultiCountStyleProps } from './MultiCount.types';
 
 export const getStyles = (props: IMultiCountStyleProps): IMultiCountStyles => {
-  const {
-    annotationTextColor,
-    annotationTextFontSize,
-    bodyTextFontSize,
-    bodyTextColor,
-    color,
-    currentText,
-    hoveredText,
-    iconName,
-    href
-  } = props;
+  const { annotationTextColor, annotationTextFontSize, bodyTextFontSize, bodyTextColor, color, currentText, hoveredText, href } = props;
   return {
     root: {
       display: 'flex',
@@ -48,9 +38,7 @@ export const getStyles = (props: IMultiCountStyleProps): IMultiCountStyles => {
     },
     icon: {
       width: '12px',
-      height: '12px',
-      display: iconName === '' ? 'none' : '',
-      color: iconName === 'FlickUp' ? '#ED0000' : '#6BB700'
+      height: '12px'
     },
     hoverCardText: {
       display: 'flex',
@@ -78,7 +66,7 @@ export const getStyles = (props: IMultiCountStyleProps): IMultiCountStyles => {
       fontFamily: 'Segoe UI'
     },
     hoverCardBodyText: {
-      marginRight: iconName === '' ? 'none' : '16px',
+      marginRight: '16px',
       fontFamily: 'Segoe UI'
     }
   };

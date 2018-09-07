@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/styling",
-      "comment": "Change bodyDivider value from neutralTertiaryAlt back to neutralLight",
+      "comment": "Updates button slots with correct pre-fluent palette values and scss fallbacks",
       "type": "minor"
     }
   ],

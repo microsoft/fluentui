@@ -7,7 +7,6 @@ import {
   ILegendDataItem,
   LineChart,
   MultiStackedBarChart,
-  PieChart,
   StackedBarChart,
   VerticalBarChart
 } from '@uifabric/charting';
@@ -67,23 +66,13 @@ export class Chart extends React.Component<IChartInternalProps, {}> {
         return this._getLineChart();
       }
       case ChartType.HorizontalBarChart: {
-        return (
-          <HorizontalBarChart data={this.props.chartData!} width={this._getWidth()} barHeight={this.props.barHeight} />
-        );
+        return <HorizontalBarChart data={this.props.chartData!} barHeight={this.props.barHeight} />;
       }
       case ChartType.DonutChart: {
         return <DonutChart data={this.props.chartData![0]} innerRadius={40} />;
       }
       case ChartType.PieChart: {
-        return (
-          <PieChart
-            data={this._singleChartDataPoints}
-            chartTitle={this._chartLabel}
-            colors={this._colors}
-            width={this._getWidth()}
-            height={this._getHeight()}
-          />
-        );
+        return <DonutChart data={this.props.chartData![0]} innerRadius={0} />;
       }
       case ChartType.StackedBarChart: {
         return this._getStackedBarChart();
@@ -115,13 +104,7 @@ export class Chart extends React.Component<IChartInternalProps, {}> {
 
   private _getStackedBarChart = (): JSX.Element => {
     if (this.props.chartData!.length > 1) {
-      return (
-        <MultiStackedBarChart
-          data={this.props.chartData!}
-          barHeight={this.props.barHeight}
-          hideRatio={this.props.hideRatio}
-        />
-      );
+      return <MultiStackedBarChart data={this.props.chartData!} barHeight={this.props.barHeight} hideRatio={this.props.hideRatio} />;
     }
 
     return <StackedBarChart data={this.props.chartData![0]} barHeight={this.props.barHeight} />;
