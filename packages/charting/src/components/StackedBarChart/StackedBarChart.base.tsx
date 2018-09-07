@@ -47,9 +47,9 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
 
   public render(): JSX.Element {
     this._adjustProps();
-    const { data, barHeight, hideNumberDisplay, hideLegend, theme, styles } = this.props;
+    const { data, barHeight, hideNumberDisplay, hideLegend, theme, styles, barBackgroundColor } = this.props;
     const { palette } = theme!;
-    const bars = this._createBarsAndLegends(data!, barHeight!, palette);
+    const bars = this._createBarsAndLegends(data!, barHeight!, palette, barBackgroundColor);
     const showRatio = hideNumberDisplay === false && data!.chartData!.length === 2;
     const showNumber = hideNumberDisplay === false && data!.chartData!.length === 1;
     let total = 0;
@@ -114,7 +114,12 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     });
   }
 
-  private _createBarsAndLegends(data: IChartProps, barHeight: number, palette: IPalette): [JSX.Element[], JSX.Element] {
+  private _createBarsAndLegends(
+    data: IChartProps,
+    barHeight: number,
+    palette: IPalette,
+    barBackgroundColor?: string
+  ): [JSX.Element[], JSX.Element] {
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     const legendDataItems: ILegend[] = [];
     // calculating starting point of each bar and it's range
@@ -132,15 +137,24 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       const legend: ILegend = {
         title: point.legend!,
         color: color,
-        action: () => {
-          this._onHover(point.legend!, pointData, color);
-        },
-        hoverAction: () => {
-          this._onHover(point.legend!, pointData, color);
-        },
-        onMouseOutAction: () => {
-          this._onLeave();
-        }
+        action:
+          total > 0
+            ? () => {
+                this._onHover(point.legend!, pointData, color);
+              }
+            : undefined,
+        hoverAction:
+          total > 0
+            ? () => {
+                this._onHover(point.legend!, pointData, color);
+              }
+            : undefined,
+        onMouseOutAction:
+          total > 0
+            ? () => {
+                this._onLeave();
+              }
+            : undefined
       };
       legendDataItems.push(legend);
       if (index > 0) {
@@ -169,8 +183,22 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         </g>
       );
     });
+
     const legends = <Legends legends={legendDataItems} />;
-    return [bars, legends];
+    return [
+      total === 0
+        ? [this._generateEmptyBar(barHeight, barBackgroundColor ? barBackgroundColor : palette.neutralTertiary)]
+        : bars,
+      legends
+    ];
+  }
+
+  private _generateEmptyBar(barHeight: number, color: string): JSX.Element {
+    return (
+      <g key={0} className={this._classNames.opacityChangeOnHover}>
+        <rect key={0} x={'0%'} y={0} width={'100%'} height={barHeight} fill={color} />
+      </g>
+    );
   }
 
   private _refCallback(element: SVGGElement, legendTitle: string): void {

@@ -6,11 +6,13 @@ import { StackedBarChartBasicExample } from './examples/StackedBarChart.Basic.Ex
 import { StackedBarChartMultipleExample } from './examples/StackedBarChart.Multiple.Example';
 import { StackedBarChartDynamicExample } from './examples/StackedBarChart.Dynamic.Example';
 import { MultiStackedBarChartExample } from './examples/MultiStackedBarChart.Example';
+import { StackedBarChartBaseBarExample } from './examples/StackedBarChart.BaseBar.Example';
 
 const StackedBarChartBasicExampleCode = require('!raw-loader!@uifabric/charting/src/components/StackedBarChart/examples/StackedBarChart.Basic.Example.tsx') as string;
 const StackedBarChartMultipleExampleCode = require('!raw-loader!@uifabric/charting/src/components/StackedBarChart/examples/StackedBarChart.Multiple.Example.tsx') as string;
 const StackedBarChartDynamicExampleCode = require('!raw-loader!@uifabric/charting/src/components/StackedBarChart/examples/StackedBarChart.Dynamic.Example.tsx') as string;
 const MultiStackedBarChartExampleCode = require('!raw-loader!@uifabric/charting/src/components/StackedBarChart/examples/MultiStackedBarChart.Example.tsx') as string;
+const StackedBarChartBaseBarExampleCode = require('!raw-loader!@uifabric/charting/src/components/StackedBarChart/examples/StackedBarChart.BaseBar.Example.tsx') as string;
 
 export class StackedBarChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -22,6 +24,9 @@ export class StackedBarChartPage extends React.Component<IComponentDemoPageProps
           <div>
             <ExampleCard title="StackedBarChart basic" code={StackedBarChartBasicExampleCode}>
               <StackedBarChartBasicExample />
+            </ExampleCard>
+            <ExampleCard title="StackBarChart Empty" code={StackedBarChartBaseBarExampleCode}>
+              <StackedBarChartBaseBarExample />
             </ExampleCard>
             <ExampleCard title="StackedBarChart with multiple data points" code={StackedBarChartMultipleExampleCode}>
               <StackedBarChartMultipleExample />
