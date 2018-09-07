@@ -1,6 +1,20 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Fri, 07 Sep 2018 16:29:48 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Sep 2018 22:04:50 GMT and should not be manually modified.
+
+## 0.22.0
+Fri, 07 Sep 2018 22:04:50 GMT
+
+### Minor changes
+
+- create base class for dashboard layout 
+- Adding necessary override styles to scale hovercard size as per content. Introducing time delay without which override is not possible.  This is temporary solution suggested by Fabric folks until they fix the bug in hovercard component.
+
+### Patches
+
+- updating card title line height
+- Changing color of card title upon hover and active state
+- ContentArea is croped in Edge browser
 
 ## 0.21.0
 Fri, 07 Sep 2018 16:29:48 GMT

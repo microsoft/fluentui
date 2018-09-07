@@ -2,6 +2,32 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.19.0",
+      "tag": "@uifabric/charting_v0.19.0",
+      "date": "Fri, 07 Sep 2018 22:04:50 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "8f0c1b4c91586d468b67d44f21dc653c92f80109",
+            "comment": "donut chart arc sectors selected arc show and remaining arcs decrease opacity"
+          }
+        ],
+        "minor": [
+          {
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "c356a8ae818e4da115d8d62a705a226e88fd6f3b",
+            "comment": "Adding temporary fix for hovercard. This fix scales the hover card size based upon the content inside it"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.66.0 <7.0.0` to `>=6.66.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.18.0",
       "tag": "@uifabric/charting_v0.18.0",
       "date": "Fri, 07 Sep 2018 16:29:48 GMT",
