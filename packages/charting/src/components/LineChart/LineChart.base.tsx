@@ -74,7 +74,7 @@ export class LineChartBase extends React.Component<
   }
 
   public render(): JSX.Element {
-    const isNumeric = typeof this._points[0] && this._points[0].data[0].x === 'number';
+    const isNumeric = typeof this._points[0] && this._points[0].data[0]!.x === 'number';
 
     const xAxis = isNumeric ? this._createNumericXAxis() : this._createStringXAxis();
     const yAxis = this._createYAxis();
@@ -230,11 +230,11 @@ export class LineChartBase extends React.Component<
     return dataPointsArray;
   }
   private _createStringXAxis(): stringAxis {
-    const dataArray: string[] = this._points[0].data.map((point: IDataPoint) => point.x as string);
+    const dataArray: string[] = this._points[0]!.data!.map((point: IDataPoint) => point.x as string);
     const indexRange = Math.ceil(dataArray.length / 4);
 
     const xAxisScale = d3ScaleBand()
-      .domain(this._points[0].data.map((point: IDataPoint) => point.x as string))
+      .domain(this._points[0]!.data!.map((point: IDataPoint) => point.x as string))
       .range([0, this.state._width]);
     const xAxis = d3AxisBottom(xAxisScale).tickValues([
       dataArray[0],
@@ -318,9 +318,9 @@ export class LineChartBase extends React.Component<
       return d3Max(point.data, (item: IDataPoint) => item.y);
     })!;
 
-    const endpointDistance = 0.5 * (this.state._width / this._points[0].data.length);
+    const endpointDistance = 0.5 * (this.state._width / this._points[0]!.data!.length);
     const xLineScale = d3ScaleLinear()
-      .domain([0, this._points[0].data.length - 1])
+      .domain([0, this._points[0]!.data!.length - 1])
       .range([endpointDistance - 0.5 * this._lineWidth, this.state._width - endpointDistance - 0.5 * this._lineWidth]);
     const yLineScale = d3ScaleLinear()
       .domain([0, yMax])
