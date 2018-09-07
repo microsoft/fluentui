@@ -217,7 +217,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
         {isDatePickerShown && (
           <Callout
             id={calloutId}
-            role="listbox"
+            role="dialog"
             ariaLabel={pickerAriaLabel}
             isBeakVisible={false}
             className={classNames.callout}
