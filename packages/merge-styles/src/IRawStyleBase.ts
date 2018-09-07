@@ -1292,7 +1292,15 @@ export interface IRawStyleBase extends IRawFontStyle {
    */
   padding?: ICSSRule | ICSSPixelUnitRule;
 
+  /**
+   * The padding-block-end CSS property defines the logical block end padding
+   * of an element, which maps to a physical padding depending on the element's
+   * writing mode, directionality, and text orientation. It corresponds to the
+   * padding-top, padding-right, padding-bottom, or padding-left property
+   * depending on the values defined for writing-mode, direction, and text-orientation.
+   */
   paddingBlockEnd?: ICSSRule | ICSSPixelUnitRule;
+
   /**
    * The padding-block-start CSS property defines the logical block start padding
    * of an element, which maps to a physical padding depending on the element's
@@ -1335,14 +1343,6 @@ export interface IRawStyleBase extends IRawFontStyle {
    * direction, and text-orientation.
    */
   paddingInlineStart?: ICSSRule | ICSSPixelUnitRule;
-
-  /**
-   * The padding-block-end CSS property defines the logical block end padding
-   * of an element, which maps to a physical padding depending on the element's
-   * writing mode, directionality, and text orientation. It corresponds to the
-   * padding-top, padding-right, padding-bottom, or padding-left property
-   * depending on the values defined for writing-mode, direction, and text-orientation.
-   */
 
   /**
    * The padding-right CSS property of an element sets the padding space required on the
