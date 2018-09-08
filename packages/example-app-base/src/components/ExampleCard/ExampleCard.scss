@@ -19,12 +19,13 @@
   }
 
   .ExampleCard-toggleButtons {
-    display: block;
+    display: flex;
     @include float(right);
 
     .ms-Button.ExampleCard-codeButton {
       @include ms-margin-right(0);
       background: none;
+      background-color: transparent;
       border: 1px solid $ms-color-neutralTertiary;
       border-bottom: 0;
       border-top-left-radius: 4px;
@@ -53,16 +54,18 @@
   }
 
   .ExampleCard-example {
-    -webkit-overflow-scrolling: touch;
-    max-height: 80vh;
-    overflow-x: hidden;
-    overflow-y: auto;
-    padding: 20px 0;
-    position: relative;
-  }
+    &.is-scrollable {
+      -webkit-overflow-scrolling: touch;
+      max-height: 80vh;
+      overflow-x: hidden;
+      overflow-y: auto;
+      padding: 20px 4px;
+      position: relative;
+    }
 
-  .ExampleCard-example.is-right-aligned {
-    @include text-align(right);
+    &.is-right-aligned {
+      @include text-align(right);
+    }
   }
 
   .ExampleCard-code {
@@ -110,7 +113,7 @@
 
     h4 {
       @include ms-font-l;
-      color: #177D3E;
+      color: #177d3e;
     }
   }
 
@@ -120,8 +123,7 @@
 
     h4 {
       @include ms-font-l;
-      color: #A61E22;
+      color: #a61e22;
     }
   }
-
 }

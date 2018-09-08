@@ -35,6 +35,16 @@
     "labelColorClass": "ms-fontColor-black"
   },
   {
+    "name": "neutralQuaternary",
+    "value": "#d0d0d0",
+    "labelColorClass": "ms-fontColor-black"
+  },
+  {
+    "name": "neutralQuaternaryAlt",
+    "value": "#dadada",
+    "labelColorClass": "ms-fontColor-black"
+  },
+  {
     "name": "neutralLight",
     "value": "#eaeaea",
     "labelColorClass": "ms-fontColor-black"

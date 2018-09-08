@@ -2,7 +2,11 @@
 
 exports[`Image renders Image correctly 1`] = `
 <div
-  className="ms-Image"
+  className=
+      ms-Image
+      {
+        overflow: hidden;
+      }
   style={
     Object {
       "height": undefined,
@@ -12,7 +16,15 @@ exports[`Image renders Image correctly 1`] = `
 >
   <img
     alt={undefined}
-    className="ms-Image-image ms-Image-image--portrait undefined is-notLoaded is-fadeIn"
+    className=
+        ms-Image-image
+        ms-Image-image--portrait
+        is-notLoaded
+        is-fadeIn
+        {
+          display: block;
+          opacity: 0;
+        }
     onError={[Function]}
     onLoad={[Function]}
     role={undefined}

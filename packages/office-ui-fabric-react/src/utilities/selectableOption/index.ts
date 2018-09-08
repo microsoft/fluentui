@@ -1,2 +1,2 @@
-export * from './SelectableOption.Props';
-export * from './SelectableDroppableText.Props';
+export * from './SelectableOption.types';
+export * from './SelectableDroppableText.types';

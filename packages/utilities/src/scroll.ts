@@ -1,8 +1,13 @@
 import { getDocument } from './dom';
-import * as styles from './scroll.scss';
+import { mergeStyles } from '@uifabric/merge-styles';
+import { EventGroup } from './EventGroup';
 
 let _scrollbarWidth: number;
 let _bodyScrollDisabledCount = 0;
+
+const DisabledScrollClassName = mergeStyles({
+  overflow: 'hidden !important' as 'hidden'
+});
 
 /**
  * Placing this attribute on scrollable divs optimizes detection to know
@@ -13,6 +18,70 @@ let _bodyScrollDisabledCount = 0;
  */
 export const DATA_IS_SCROLLABLE_ATTRIBUTE = 'data-is-scrollable';
 
+const _makeElementScrollAllower = () => {
+  let _previousClientY = 0;
+  let _element: Element | null = null;
+
+  // remember the clientY for future calls of _preventOverscrolling
+  const _saveClientY = (event: TouchEvent): void => {
+    if (event.targetTouches.length === 1) {
+      _previousClientY = event.targetTouches[0].clientY;
+    }
+  };
+
+  // prevent the body from scrolling when the user attempts
+  // to scroll past the top or bottom of the element
+  const _preventOverscrolling = (event: TouchEvent): void => {
+    // only respond to a single-finger touch
+    if (event.targetTouches.length !== 1) {
+      return;
+    }
+
+    // prevent the body touchmove handler from firing
+    // so that scrolling is allowed within the element
+    event.stopPropagation();
+
+    if (!_element) {
+      return;
+    }
+
+    const clientY = event.targetTouches[0].clientY - _previousClientY;
+
+    // if the element is scrolled to the top,
+    // prevent the user from scrolling up
+    if (_element.scrollTop === 0 && clientY > 0) {
+      event.preventDefault();
+    }
+
+    // if the element is scrolled to the bottom,
+    // prevent the user from scrolling down
+    if (_element.scrollHeight - _element.scrollTop <= _element.clientHeight && clientY < 0) {
+      event.preventDefault();
+    }
+  };
+
+  return (element: HTMLElement | null, events: EventGroup): void => {
+    if (!element) {
+      return;
+    }
+
+    events.on(element, 'touchstart', _saveClientY);
+    events.on(element, 'touchmove', _preventOverscrolling);
+
+    _element = element;
+  };
+};
+
+/**
+ * Allows the user to scroll within a element,
+ * while preventing the user from scrolling the body
+ */
+export const allowScrollOnElement = _makeElementScrollAllower();
+
+const _disableIosBodyScroll = (event: TouchEvent) => {
+  event.preventDefault();
+};
+
 /**
  * Disables the body scrolling.
  *
@@ -22,7 +91,8 @@ export function disableBodyScroll(): void {
   let doc = getDocument();
 
   if (doc && doc.body && !_bodyScrollDisabledCount) {
-    doc.body.classList.add(styles.scrollDisabled);
+    doc.body.classList.add(DisabledScrollClassName);
+    doc.body.addEventListener('touchmove', _disableIosBodyScroll, { passive: false, capture: false });
   }
 
   _bodyScrollDisabledCount++;
@@ -38,7 +108,8 @@ export function enableBodyScroll(): void {
     let doc = getDocument();
 
     if (doc && doc.body && _bodyScrollDisabledCount === 1) {
-      doc.body.classList.remove(styles.scrollDisabled);
+      doc.body.classList.remove(DisabledScrollClassName);
+      doc.body.removeEventListener('touchmove', _disableIosBodyScroll);
     }
 
     _bodyScrollDisabledCount--;
@@ -75,7 +146,7 @@ export function getScrollbarWidth(): number {
  *
  * @public
  */
-export function findScrollableParent(startingElement: HTMLElement): HTMLElement | null {
+export function findScrollableParent(startingElement: HTMLElement | null): HTMLElement | null {
   let el: HTMLElement | null = startingElement;
 
   // First do a quick scan for the scrollable attribute.

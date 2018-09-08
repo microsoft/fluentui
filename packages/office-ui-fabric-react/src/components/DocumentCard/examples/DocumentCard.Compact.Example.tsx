@@ -10,8 +10,8 @@ import {
 import { TestImages } from '../../../common/TestImages';
 
 export class DocumentCardCompactExample extends React.Component<any, any> {
-  public render() {
-    let previewProps: IDocumentCardPreviewProps = {
+  public render(): JSX.Element {
+    const previewProps: IDocumentCardPreviewProps = {
       getOverflowDocumentCountText: (overflowCount: number) => `+${overflowCount} more`,
       previewImages: [
         {
@@ -41,11 +41,11 @@ export class DocumentCardCompactExample extends React.Component<any, any> {
           previewImageSrc: TestImages.documentPreview,
           iconSrc: TestImages.iconPpt,
           width: 144
-        },
-      ],
+        }
+      ]
     };
 
-    let previewPropsUsingIcon: IDocumentCardPreviewProps = {
+    const previewPropsUsingIcon: IDocumentCardPreviewProps = {
       previewImages: [
         {
           previewIconProps: { iconName: 'OpenFile', styles: { root: { fontSize: 42, color: '#ffffff' } } },
@@ -54,63 +54,65 @@ export class DocumentCardCompactExample extends React.Component<any, any> {
       ]
     };
 
+    const previewOutlookUsingIcon: IDocumentCardPreviewProps = {
+      previewImages: [
+        {
+          previewIconProps: { iconName: 'OutlookLogo', styles: { root: { fontSize: 42, color: '#0078d7' } } },
+          previewIconContainerClass: 'ms-DocumentCardPreview-iconContainer2',
+          width: 144
+        }
+      ]
+    };
+
     return (
       <div>
-        <DocumentCard type={ DocumentCardType.compact } onClickHref='http://bing.com'>
-          <DocumentCardPreview { ...previewProps } />
-          <div className='ms-DocumentCard-details'>
-            <DocumentCardTitle
-              title='4 files were uploaded'
-              shouldTruncate={ true }
-            />
+        <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
+          <DocumentCardPreview {...previewProps} />
+          <div className="ms-DocumentCard-details">
+            <DocumentCardTitle title="4 files were uploaded" shouldTruncate={true} />
             <DocumentCardActivity
-              activity='Created a few minutes ago'
-              people={
-                [
-                  { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale }
-                ]
-              }
+              activity="Created a few minutes ago"
+              people={[{ name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale }]}
             />
           </div>
         </DocumentCard>
         <p />
-        <DocumentCard type={ DocumentCardType.compact } onClickHref='http://bing.com'>
-          <DocumentCardPreview previewImages={ [previewProps.previewImages[0]] } />
-          <div className='ms-DocumentCard-details'>
-            <DocumentCardTitle
-              title='Revenue stream proposal fiscal year 2016 version02.pptx'
-              shouldTruncate={ true }
-            />
+        <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
+          <DocumentCardPreview previewImages={[previewProps.previewImages[0]]} />
+          <div className="ms-DocumentCard-details">
+            <DocumentCardTitle title="Revenue stream proposal fiscal year 2016 version02.pptx" shouldTruncate={true} />
             <DocumentCardActivity
-              activity='Created a few minutes ago'
-              people={
-                [
-                  { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale }
-                ]
-              }
+              activity="Created a few minutes ago"
+              people={[{ name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale }]}
             />
           </div>
         </DocumentCard>
         <p />
-        <DocumentCard type={ DocumentCardType.compact } onClickHref='http://bing.com'>
-          <DocumentCardPreview { ...previewPropsUsingIcon } />
-          <div className='ms-DocumentCard-details'>
+        <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
+          <DocumentCardPreview {...previewPropsUsingIcon} />
+          <div className="ms-DocumentCard-details">
+            <DocumentCardTitle title="View and share files" shouldTruncate={true} />
+            <DocumentCardActivity
+              activity="Created a few minutes ago"
+              people={[{ name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale }]}
+            />
+          </div>
+        </DocumentCard>
+        <p />
+        <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
+          <DocumentCardPreview {...previewOutlookUsingIcon} />
+          <div className="ms-DocumentCard-details">
             <DocumentCardTitle
-              title='View and share files'
-              shouldTruncate={ true }
+              title="Conversation about anual report from SharePoint conference"
+              shouldTruncate={true}
             />
             <DocumentCardActivity
-              activity='Created a few minutes ago'
-              people={
-                [
-                  { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale }
-                ]
-              }
+              activity="Sent a few minutes ago"
+              people={[{ name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale }]}
             />
           </div>
         </DocumentCard>
       </div>
     );
   }
-
 }

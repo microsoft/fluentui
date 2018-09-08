@@ -1,4 +1,4 @@
-@import './semanticColorVariables';
+@import './semanticSlots';
 
 @mixin focus-clear() {
   &::-moz-focus-inner {
@@ -14,7 +14,7 @@
 
 @mixin focus($onFocus: true) {
   @if $onFocus {
-    :global(.ms-Fabric.is-focusVisible) &:focus {
+    :global(.ms-Fabric--isFocusVisible) &:focus {
       @content;
     }
   }
@@ -23,7 +23,7 @@
   }
 }
 
-@mixin focus-border($padding: 0, $color: $focusedBorderColor, $thickness: 1px, $onFocus: true, $position: relative) {
+@mixin focus-border($padding: 0, $color: $focusBorderColor, $thickness: 1px, $onFocus: true, $position: relative) {
   @include focus-clear();
 
   & {
@@ -39,7 +39,7 @@
 }
 
 // When focus is set using the keyboard, apply an outline.
-@mixin after-outline ($padding: 0, $color: $focusedBorderColor, $thickness: 1px) {
+@mixin after-outline ($padding: 0, $color: $focusBorderColor, $thickness: 1px) {
     content: '';
     position: absolute;
     top: $padding;
@@ -57,7 +57,7 @@
 
 // When focus is set using the keyboard, apply an outline.
 @mixin focus-outline {
-  :global(.ms-Fabric.is-focusVisible) &:focus {
-    outline: 1px solid $focusedBorderColor;
+  :global(.ms-Fabric--isFocusVisible) &:focus {
+    outline: 1px solid $focusBorderColor;
   }
 }

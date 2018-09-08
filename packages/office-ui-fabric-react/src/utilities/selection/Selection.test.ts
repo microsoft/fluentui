@@ -1,14 +1,13 @@
 import { Selection } from './Selection';
 import { IObjectWithKey } from './interfaces';
 
-let setA = [{ key: 'a' }, { key: 'b' }, { key: 'c' }];
-let setB = [{ key: 'a' }, { key: 'd' }, { key: 'b' }];
+const setA = [{ key: 'a' }, { key: 'b' }, { key: 'c' }];
+const setB = [{ key: 'a' }, { key: 'd' }, { key: 'b' }];
 
 describe('Selection', () => {
-
   it('fires change events only when selection changes occur', () => {
     let changeCount = 0;
-    let selection = new Selection({ onSelectionChanged: () => changeCount++ });
+    const selection = new Selection({ onSelectionChanged: () => changeCount++ });
 
     selection.setItems(setA, false);
     expect(changeCount).toEqual(0);
@@ -53,7 +52,7 @@ describe('Selection', () => {
 
   it('returns false on isAllSelected when no items are selectable', () => {
     let changeEvents = 0;
-    let selection = new Selection({
+    const selection = new Selection({
       canSelectItem: (item: IObjectWithKey) => false,
       onSelectionChanged: () => changeEvents++
     });
@@ -71,7 +70,7 @@ describe('Selection', () => {
 
   it('resets unselectable count on setting new items', () => {
     let canSelect = false;
-    let selection = new Selection({
+    const selection = new Selection({
       canSelectItem: (item: IObjectWithKey) => canSelect
     });
 
@@ -86,4 +85,25 @@ describe('Selection', () => {
     expect(selection.isAllSelected()).toEqual(true);
   });
 
+  it('notifies consumers when all items are selected and some are removed', () => {
+    let changeCount = 0;
+    const selection = new Selection({ onSelectionChanged: () => changeCount++ });
+
+    selection.setItems(setA);
+
+    selection.setAllSelected(true);
+
+    expect(changeCount).toEqual(1);
+    expect(selection.getSelectedCount()).toEqual(3);
+
+    selection.setItems([{ key: 'a' }, { key: 'b' }], false);
+
+    expect(changeCount).toEqual(2);
+    expect(selection.getSelectedCount()).toEqual(2);
+
+    selection.setItems([], false);
+
+    expect(changeCount).toEqual(3);
+    expect(selection.getSelectedCount()).toEqual(0);
+  });
 });

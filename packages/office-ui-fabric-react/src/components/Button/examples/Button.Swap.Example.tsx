@@ -1,11 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-
-import {
-  autobind
-} from 'office-ui-fabric-react/lib/Utilities';
+import { css, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { getStyles, IButtonBasicExampleStyleProps, IButtonBasicExampleStyles } from './Button.Basic.Example.styles';
 import { DefaultButton, PrimaryButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
-import { Label } from 'office-ui-fabric-react/lib/Label';
 
 export interface IButtonSwapExampleState {
   isPrimary: boolean;
@@ -15,8 +12,8 @@ export class ButtonSwapExample extends React.Component<IButtonProps, IButtonSwap
   private buttonRef: HTMLElement | null;
   private hasFocus: boolean;
 
-  public constructor() {
-    super();
+  public constructor(props: IButtonProps) {
+    super(props);
 
     this.hasFocus = false;
     this.buttonRef = null;
@@ -38,48 +35,34 @@ export class ButtonSwapExample extends React.Component<IButtonProps, IButtonSwap
     }
   }
 
-  public render() {
-    let { isPrimary } = this.state;
-    let { disabled, checked } = this.props;
-    let text = 'Swap';
+  public render(): JSX.Element {
+    const { isPrimary } = this.state;
+    const { disabled, checked } = this.props;
+    const text = 'Swap';
 
     // determine which button to render
-    let button = isPrimary
-      ? (
-        <PrimaryButton
-          ref={ this._setButtonRef }
-          disabled={ disabled }
-          checked={ checked }
-          onClick={ this._onClick }
-        >
-          { text }
-        </PrimaryButton>
-      ) : (
-        <DefaultButton
-          ref={ this._setButtonRef }
-          disabled={ disabled }
-          checked={ checked }
-          onClick={ this._onClick }
-        >
-          { text }
-        </DefaultButton>
-      );
-
-    return (
-      <div className='ms-BasicButtonsExample'>
-        { button }
-      </div>
+    const button = isPrimary ? (
+      <PrimaryButton ref={this._setButtonRef} disabled={disabled} checked={checked} onClick={this._onClick}>
+        {text}
+      </PrimaryButton>
+    ) : (
+      <DefaultButton ref={this._setButtonRef} disabled={disabled} checked={checked} onClick={this._onClick}>
+        {text}
+      </DefaultButton>
     );
+
+    const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
+    const classNames = getClassNames(getStyles, {});
+
+    return <div className={css(classNames.example)}>{button}</div>;
   }
 
-  @autobind
-  private _setButtonRef(ref: any): void {
+  private _setButtonRef = (ref: any): void => {
     this.buttonRef = ReactDOM.findDOMNode(ref) as HTMLElement;
-  }
+  };
 
-  @autobind
-  private _onClick(): void {
+  private _onClick = (): void => {
     // change the button type on click
     this.setState({ isPrimary: !this.state.isPrimary });
-  }
+  };
 }

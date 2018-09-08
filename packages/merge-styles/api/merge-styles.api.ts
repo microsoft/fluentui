@@ -1,5 +1,5 @@
 // @public
-export function concatStyleSets < T extends object >(...args: (T | false | null | undefined)[]): T;
+export function concatStyleSets<T extends object>(...args: (T | false | null | undefined)[]): T;
 
 // @public
 export function fontFace(font: IFontFace): void;
@@ -8,7 +8,7 @@ export function fontFace(font: IFontFace): void;
 interface IExtendedRawStyle extends IRawStyle {
   displayName?: string;
   selectors?: {
-    [ key: string ]: IStyle;
+    [key: string]: IStyle;
   }
 }
 
@@ -161,8 +161,8 @@ interface IRawStyle extends IRawFontStyle {
   maskBorderWidth?: ICSSRule | ICSSPixelUnitRule;
   maskClip?: ICSSRule | string;
   maskOrigin?: ICSSRule | string;
-  maxFontSize?: ICSSRule | string;
-  maxHeight?: ICSSRule | string;
+  maxFontSize?: ICSSRule | ICSSPixelUnitRule;
+  maxHeight?: ICSSRule | ICSSPixelUnitRule;
   maxWidth?: ICSSRule | ICSSPixelUnitRule;
   minHeight?: ICSSRule | ICSSPixelUnitRule;
   minWidth?: ICSSRule | ICSSPixelUnitRule;
@@ -282,7 +282,7 @@ export function keyframes(timeline: { [key: string]: {} }): string;
 export function mergeStyles(...args: (IStyle | IStyle[] | false | null | undefined)[]): string;
 
 // @public
-export function mergeStyleSets < T extends object >(...cssSets: (T | false | null | undefined)[]): {[P in keyof T]?: string };
+export function mergeStyleSets<T extends object>(...cssSets: (T | false | null | undefined)[]): {[P in keyof T]?: string };
 
 // @public
 class Stylesheet {

@@ -1,16 +1,20 @@
 import * as React from 'react'; // tslint:disable-line:no-unused-variable
 import * as PropTypes from 'prop-types';
 import './Layer.Example.scss';
-import '../../../common/_exampleStyles.scss';
+import 'office-ui-fabric-react/lib/common/_exampleStyles.scss';
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { Layer } from 'office-ui-fabric-react/lib/Layer';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
-import { AnimationClassNames } from '../../../Styling';
-import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
+import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
+import * as exampleStylesImport from 'office-ui-fabric-react/lib/common/_exampleStyles.scss';
 const exampleStyles: any = exampleStylesImport;
 
-export class LayerContentExample extends BaseComponent<any, any> {
+export class LayerContentExample extends BaseComponent<
+  {},
+  {
+    time: string;
+  }
+> {
   public static contextTypes = {
     message: PropTypes.string
   };
@@ -19,35 +23,38 @@ export class LayerContentExample extends BaseComponent<any, any> {
     message: string;
   };
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
     this.state = {
       time: new Date().toLocaleTimeString()
     };
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     this._async.setInterval(() => this.setState({ time: new Date().toLocaleTimeString() }), 1000);
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
-      <div className={ 'LayerExample-content ' + AnimationClassNames.scaleUpIn100 }>
-        <div className='LayerExample-textContent'>{ this.context.message }</div>
-        <div>{ this.state.time }</div>
+      <div className={'LayerExample-content ' + AnimationClassNames.scaleUpIn100}>
+        <div className="LayerExample-textContent">{this.context.message}</div>
+        <div>{this.state.time}</div>
       </div>
-
     );
   }
 }
-export class LayerBasicExample extends BaseComponent<any, any> {
-
+export class LayerBasicExample extends BaseComponent<
+  {},
+  {
+    showLayer: boolean;
+  }
+> {
   public static childContextTypes = {
     message: PropTypes.string
   };
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
     this.state = {
       showLayer: false
     };
@@ -55,37 +62,34 @@ export class LayerBasicExample extends BaseComponent<any, any> {
 
   public getChildContext() {
     return {
-      'message': 'Hello world.'
+      message: 'Hello world.'
     };
   }
 
-  public render() {
-    let { showLayer } = this.state;
+  public render(): JSX.Element {
+    const { showLayer } = this.state;
 
     return (
       <div>
-
         <Checkbox
-          className={ exampleStyles.exampleCheckbox }
-          label='Wrap the content box belowed in a Layer'
-          checked={ showLayer }
-          onChange={ this._onChange }
+          className={exampleStyles.exampleCheckbox}
+          label="Wrap the content box belowed in a Layer"
+          checked={showLayer}
+          onChange={this._onChange}
         />
 
-        { showLayer ? (
+        {showLayer ? (
           <Layer>
             <LayerContentExample />
           </Layer>
         ) : (
-            <LayerContentExample />
-          ) }
-
+          <LayerContentExample />
+        )}
       </div>
     );
   }
 
-  @autobind
-  private _onChange(ev: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean): void {
+  private _onChange = (ev: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean): void => {
     this.setState({ showLayer: checked });
-  }
+  };
 }

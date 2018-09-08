@@ -1,3 +1,4 @@
 export * from './DatePicker';
-export * from './DatePicker.Props';
-export * from '../Calendar/Calendar.Props';
+export * from './DatePicker.base';
+export * from './DatePicker.types';
+export * from '../Calendar/Calendar.types';

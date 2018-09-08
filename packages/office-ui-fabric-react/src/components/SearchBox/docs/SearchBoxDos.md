@@ -1,0 +1,9 @@
+- Use placeholder text in the SearchBox to describe what users can search for.
+- Example: "Search"; "Search files"; "Search site"
+- Once the user has clicked into the SearchBox but hasn’t entered input yet, use "hint text" to communicate search scope.
+- Examples: "Try searching for a PDFs"; "Search contacts list"; "Type to find \<content type\>"
+- Provide autocomplete suggestions to help the user search quickly. These suggestions can be from past searches or auto-completions of the user's query text.
+- Provide autocomplete suggestions where there are strong matches to the user's query that the user may want to view immediately.
+- Use a visual separator to define a group of a similar or conceptually aligned autocomplete suggestions.
+- If possible, provide a preview (e.g. image, title, etc.) for autocomplete suggestions to help the user quickly determine if the suggested result is what they were searching for.
+- Use the Underlined SearchBox for CommandBars.

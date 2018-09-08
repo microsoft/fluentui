@@ -1,0 +1,33 @@
+{
+  "name": "@uifabric/jest-serializer-merge-styles",
+  "version": "6.0.4",
+  "description": "Jest serializer for merge-styles.",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "sideEffects": false,
+  "typings": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "node ../../scripts/build.js",
+    "clean": "node ../../scripts/clean.js",
+    "code-style": "node ../../scripts/code-style.js",
+    "start-test": "node ../../scripts/start-test.js"
+  },
+  "disabledTasks": [
+    "copy",
+    "sass",
+    "karma",
+    "build-codepen-examples"
+  ],
+  "devDependencies": {
+    "@types/jest": "23.0.0",
+    "office-ui-fabric-react-tslint": ">=6.0.0 <7.0.0"
+  },
+  "dependencies": {
+    "@uifabric/merge-styles": ">=6.8.3 <7.0.0"
+  }
+}

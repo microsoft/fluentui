@@ -2,14 +2,12 @@ import * as React from 'react';
 import { css, BaseComponent, IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
 import * as stylesImport from './PageHeader.module.scss';
 const styles: any = stylesImport;
-import { getPageRouteFromState } from '../../utilities/pageroute';
+import AttachedScrollUtility from '../../utilities/AttachedScrollUtility';
+import { getPathMinusLastHash } from '../../utilities/pageroute';
 import { PageHeaderLink } from '../../components/PageHeaderLink/PageHeaderLink';
-
-const FULL_HEADER_HEIGHT = 236;
-const ATTACHED_HEADER_HEIGHT = 128;
+import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 
 export interface IPageHeaderProps extends IBaseProps {
-
   /**
    * The title of the current page.
    * @default 'Page title'
@@ -47,6 +45,8 @@ export interface IPageHeaderState {
    * The section title area is in a collapsed state.
    */
   isAttached: boolean;
+  headerBottom: string;
+  headerTop: string;
 }
 
 export class PageHeader extends BaseComponent<IPageHeaderProps, IPageHeaderState> {
@@ -56,87 +56,91 @@ export class PageHeader extends BaseComponent<IPageHeaderProps, IPageHeaderState
   };
 
   private _attachedScrollThreshold: number;
+  private _appContent: HTMLDivElement;
+  private _appContentRect: ClientRect;
 
   constructor(props: IPageHeaderProps) {
     super(props);
 
     this.state = {
-      isAttached: false
+      isAttached: false,
+      headerBottom: 'unset',
+      headerTop: '0'
     };
-
   }
 
-  public componentDidMount() {
-
+  public componentDidMount(): void {
     // Only attach the header if there are in-page nav items
     if (this.props.links) {
       this._events.on(window, 'scroll', this._onScroll, true);
-      this._calculateAttachedScrollThreshold();
+      this._appContent = document.querySelector('[data-app-content-div]');
+      this._attachedScrollThreshold = AttachedScrollUtility.calculateAttachedScrollThreshold();
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     let { pageTitle, links, backgroundColor, backgroundImage } = this.props;
     let { isAttached } = this.state;
-    let baseRoute: string = getPageRouteFromState(
-      this.props.pageTitle
-    );
-
-    let backgroundStyle;
-    if (backgroundColor) {
-      backgroundStyle = {
-        backgroundColor: backgroundColor,
-      };
-    }
-
-    if (backgroundImage) {
-      backgroundStyle.backgroundImage = backgroundImage;
-    }
-
     let inPageNav;
+    let backgroundStyle = {
+      bottom: this.state.headerBottom,
+      top: this.state.headerTop,
+      backgroundColor: backgroundColor,
+      backgroundImage: backgroundImage
+    };
+
     if (links) {
       inPageNav = (
-        <nav className={ styles.pageNav } aria-label='In page navigation'>
-          <ul>
-            { links.map((link, linkIndex) => (
-              <li key={ linkIndex }>
-                <PageHeaderLink href={ baseRoute + '#' + link.location } text={ link.text } />
-              </li>
-              // <li key={ linkIndex }><a>{ link.text }</a></li>
-            )) }
-          </ul>
-        </nav>
+        <FocusZone>
+          <nav className={styles.pageNav} aria-label="In page navigation">
+            <ul>
+              {links.map((link, linkIndex) => (
+                <li key={linkIndex}>
+                  <PageHeaderLink href={this._getPagePath(link)} text={link.text} />
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </FocusZone>
       );
     }
 
     return (
-      <div className={ css(styles.pageHeader,
-        isAttached ? styles.isAttached : ''
-      ) } style={ backgroundStyle }>
-        <div className={ styles.content } style={ backgroundStyle }>
-          <h1 className={ styles.pageTitle }>{ pageTitle }</h1>
-          { inPageNav }
+      <div className={css(styles.pageHeader, isAttached ? styles.isAttached : '')} style={backgroundStyle}>
+        <div className={styles.content} style={backgroundStyle}>
+          <h1 className={styles.pageTitle}>{pageTitle}</h1>
+          {inPageNav}
         </div>
       </div>
     );
   }
 
   private _onScroll() {
-    let { isAttached } = this.state;
+    let { isAttached, headerBottom, headerTop } = this.state;
+    this._appContentRect = this._appContent && this._appContent.getBoundingClientRect();
+    isAttached = AttachedScrollUtility.shouldComponentAttach(isAttached, this._attachedScrollThreshold);
 
-    if (window.scrollY >= this._attachedScrollThreshold) {
-      isAttached = true;
+    if (this._appContent && this._appContentRect.bottom < AttachedScrollUtility.attachedHeaderHeight) {
+      // This causes the header to bump into the footer instead of overlapping it, usually on narrow screens.
+      headerBottom = (window.innerHeight - this._appContentRect.bottom).toString();
+      headerTop = 'unset';
     } else {
-      isAttached = false;
+      headerBottom = 'unset';
+      headerTop = '0';
     }
 
     this.setState({
-      isAttached: isAttached
+      isAttached: isAttached,
+      headerBottom: headerBottom,
+      headerTop: headerTop
     });
   }
 
-  private _calculateAttachedScrollThreshold() {
-    let attachedScrollThreshold = FULL_HEADER_HEIGHT - ATTACHED_HEADER_HEIGHT;
-    this._attachedScrollThreshold = attachedScrollThreshold;
+  private _getPagePath(link): string {
+    let path = location.hash;
+    // This makes sure that location hash changes don't append
+    path = getPathMinusLastHash(path);
+
+    return path + '#' + link.location;
   }
 }

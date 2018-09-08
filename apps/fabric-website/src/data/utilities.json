@@ -1,8 +1,5 @@
 {
-  "headers": [
-    "Class",
-    "Result"
-  ],
+  "headers": ["Class", "Result"],
   "data": [
     [
       {
@@ -17,7 +14,8 @@
         "value": "ms-borderBox"
       },
       {
-        "value": "Set the value of 'box-sizing' to 'border-box', so that the element's padding and border are included in its width."
+        "value":
+          "Set the value of 'box-sizing' to 'border-box', so that the element's padding and border are included in its width."
       }
     ],
     [
@@ -57,7 +55,8 @@
         "value": "ms-borderBase"
       },
       {
-        "value": "Applies a solid, 1px wide border to the element. A border color class can then be used to set a color for the border."
+        "value":
+          "Applies a solid, 1px wide border to the element. A border color class can then be used to set a color for the border."
       }
     ],
     [
@@ -65,7 +64,8 @@
         "value": "ms-normalize"
       },
       {
-        "value": "Sets a variety of baseline styles for the element. This helper applies 'border-box' box sizing, removes any margins and padding, and removes box shadow."
+        "value":
+          "Sets a variety of baseline styles for the element. This helper applies 'border-box' box sizing, removes any margins and padding, and removes box shadow."
       }
     ]
   ]

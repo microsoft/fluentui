@@ -6,6 +6,10 @@
   flex-wrap: nowrap;
 }
 
+.rootVertical {
+  flex-direction: column;
+}
+
 .item {
   flex-shrink: 0;
   display: inherit;

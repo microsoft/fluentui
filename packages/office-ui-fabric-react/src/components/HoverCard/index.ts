@@ -1,5 +1,5 @@
 export * from './ExpandingCard';
-export * from './ExpandingCard.Props';
+export * from './ExpandingCard.types';
 export * from './HoverCard';
-export * from './HoverCard.Props';
+export * from './HoverCard.types';
 export * from '../../common/DirectionalHint';

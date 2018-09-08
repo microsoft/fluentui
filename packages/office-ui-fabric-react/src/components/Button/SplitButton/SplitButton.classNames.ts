@@ -1,6 +1,6 @@
 import { memoizeFunction } from '../../../Utilities';
 import { mergeStyles } from '../../../Styling';
-import { IButtonStyles } from '../Button.Props';
+import { IButtonStyles } from '../Button.types';
 
 export interface ISplitButtonClassNames {
   root?: string;
@@ -10,40 +10,44 @@ export interface ISplitButtonClassNames {
   divider?: string;
 }
 
-export const getClassNames = memoizeFunction((
-  styles: IButtonStyles,
-  disabled: boolean,
-  expanded: boolean,
-  checked: boolean,
-): ISplitButtonClassNames => {
-  return {
+export const getClassNames = memoizeFunction(
+  (styles: IButtonStyles, disabled: boolean, expanded: boolean, checked: boolean): ISplitButtonClassNames => {
+    return {
+      root: mergeStyles(
+        styles.splitButtonMenuButton,
+        expanded && [styles.splitButtonMenuButtonExpanded],
+        disabled && [styles.splitButtonMenuButtonDisabled],
+        checked && !disabled && [styles.splitButtonMenuButtonChecked]
+      ),
 
-    root: mergeStyles(
-      styles.splitButtonMenuButton,
-      expanded && [
-        styles.splitButtonMenuButtonExpanded
-      ],
-      disabled && [
-        styles.splitButtonMenuButtonDisabled
-      ],
-      checked && !disabled && [
-        styles.splitButtonMenuButtonChecked
-      ]
-    ),
+      splitButtonContainer: mergeStyles(
+        styles.splitButtonContainer,
+        checked &&
+          !disabled && [
+            styles.splitButtonContainerChecked,
+            {
+              selectors: {
+                ':hover': styles.splitButtonContainerCheckedHovered
+              }
+            }
+          ],
+        !disabled &&
+          !checked && [
+            {
+              selectors: {
+                ':hover': styles.splitButtonContainerHovered,
+                ':focus': styles.splitButtonContainerFocused
+              }
+            }
+          ],
+        disabled && styles.splitButtonContainerDisabled
+      ),
 
-    splitButtonContainer: mergeStyles(
-      styles.splitButtonContainer,
-      disabled && styles.splitButtonContainerDisabled
-    ),
+      icon: mergeStyles(styles.splitButtonMenuIcon, disabled && styles.splitButtonMenuIconDisabled),
 
-    icon: mergeStyles(
-      styles.splitButtonMenuIcon,
-      disabled && styles.splitButtonMenuIconDisabled
-    ),
+      flexContainer: mergeStyles(styles.splitButtonFlexContainer),
 
-    flexContainer: mergeStyles(styles.splitButtonFlexContainer),
-
-    divider: mergeStyles(styles.splitButtonDivider)
-
-  };
-});
+      divider: mergeStyles(styles.splitButtonDivider)
+    };
+  }
+);

@@ -1,4 +1,4 @@
-import { ChecklistStatus } from '../../demo/ComponentStatus/ComponentStatus.Props';
+import { ChecklistStatus } from '../../common/DocPage.types';
 
 export const CalloutStatus = {
   keyboardAccessibilitySupport: ChecklistStatus.unknown,

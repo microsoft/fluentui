@@ -14,44 +14,42 @@ enum Months {
   Oct = 9,
   Nov = 10,
   Dec = 11
-
 }
 describe('DateMath', () => {
-
   it('can add days', () => {
-    let startDate = new Date(2016, Months.Apr, 1);
-    let result = DateMath.addDays(startDate, 5);
-    let expected = new Date(2016, Months.Apr, 6);
+    const startDate = new Date(2016, Months.Apr, 1);
+    const result = DateMath.addDays(startDate, 5);
+    const expected = new Date(2016, Months.Apr, 6);
 
     expect(result.getTime()).toEqual(expected.getTime());
   });
 
   it('can add days across a month boundary', () => {
-    let startDate = new Date(2016, Months.Mar, 30);
-    let result = DateMath.addDays(startDate, 5);
-    let expected = new Date(2016, Months.Apr, 4);
+    const startDate = new Date(2016, Months.Mar, 30);
+    const result = DateMath.addDays(startDate, 5);
+    const expected = new Date(2016, Months.Apr, 4);
 
     expect(result.getTime()).toEqual(expected.getTime());
   });
 
   it('can add days across multiple month boundaries', () => {
-    let startDate = new Date(2016, Months.Mar, 31);
-    let result = DateMath.addDays(startDate, 65);
-    let expected = new Date(2016, Months.Jun, 4);
+    const startDate = new Date(2016, Months.Mar, 31);
+    const result = DateMath.addDays(startDate, 65);
+    const expected = new Date(2016, Months.Jun, 4);
 
     expect(result.getTime()).toEqual(expected.getTime());
   });
 
   it('can add days across leap day boundaries', () => {
-    let startDate = new Date(2016, Months.Feb, 28);
-    let result = DateMath.addDays(startDate, 2);
-    let expected = new Date(2016, Months.Mar, 1);
+    const startDate = new Date(2016, Months.Feb, 28);
+    const result = DateMath.addDays(startDate, 2);
+    const expected = new Date(2016, Months.Mar, 1);
 
     expect(result.getTime()).toEqual(expected.getTime());
   });
 
   it('can add months', () => {
-    let startDate = new Date(2015, Months.Dec, 31);
+    const startDate = new Date(2015, Months.Dec, 31);
 
     let result = DateMath.addMonths(startDate, 1);
     let expected = new Date(2016, Months.Jan, 31);
@@ -127,39 +125,39 @@ describe('DateMath', () => {
   });
 
   it('can subtract days', () => {
-    let startDate = new Date(2016, Months.Apr, 30);
-    let result = DateMath.addDays(startDate, -5);
-    let expected = new Date(2016, Months.Apr, 25);
+    const startDate = new Date(2016, Months.Apr, 30);
+    const result = DateMath.addDays(startDate, -5);
+    const expected = new Date(2016, Months.Apr, 25);
 
     expect(result.getTime()).toEqual(expected.getTime());
   });
 
   it('can subtract days across a month boundry', () => {
-    let startDate = new Date(2016, Months.Apr, 1);
-    let result = DateMath.addDays(startDate, -5);
-    let expected = new Date(2016, Months.Mar, 27);
+    const startDate = new Date(2016, Months.Apr, 1);
+    const result = DateMath.addDays(startDate, -5);
+    const expected = new Date(2016, Months.Mar, 27);
 
     expect(result.getTime()).toEqual(expected.getTime());
   });
 
   it('can subtract days across multiple month boundaries', () => {
-    let startDate = new Date(2016, Months.Jul, 4);
-    let result = DateMath.addDays(startDate, -65);
-    let expected = new Date(2016, Months.Apr, 30);
+    const startDate = new Date(2016, Months.Jul, 4);
+    const result = DateMath.addDays(startDate, -65);
+    const expected = new Date(2016, Months.Apr, 30);
 
     expect(result.getTime()).toEqual(expected.getTime());
   });
 
   it('can subtract days across leap day boundaries', () => {
-    let startDate = new Date(2016, Months.Mar, 1);
-    let result = DateMath.addDays(startDate, -2);
-    let expected = new Date(2016, Months.Feb, 28);
+    const startDate = new Date(2016, Months.Mar, 1);
+    const result = DateMath.addDays(startDate, -2);
+    const expected = new Date(2016, Months.Feb, 28);
 
     expect(result.getTime()).toEqual(expected.getTime());
   });
 
   it('can subtract months', () => {
-    let startDate = new Date(2016, Months.Dec, 31);
+    const startDate = new Date(2016, Months.Dec, 31);
 
     let result = DateMath.addMonths(startDate, -12);
     let expected = new Date(2015, Months.Dec, 31);
@@ -269,7 +267,7 @@ describe('DateMath', () => {
   });
 
   it('can get date range array', () => {
-    let date = new Date(2017, 2, 16);
+    const date = new Date(2017, 2, 16);
 
     // Date range: day
     let dateRangeArray = DateMath.getDateRangeArray(date, DateRangeType.Day, DayOfWeek.Sunday);
@@ -277,18 +275,207 @@ describe('DateMath', () => {
     expect(DateMath.compareDates(dateRangeArray[0], date)).toBe(true);
 
     // Date range: week
-    let expectedDates = Array(7).map((val, i) => new Date(2017, 2, 12 + i));
+    let expectedDates = Array(7).map((val: undefined, i: number) => new Date(2017, 2, 12 + i));
     dateRangeArray = DateMath.getDateRangeArray(date, DateRangeType.Week, DayOfWeek.Sunday);
-    Array(7).forEach((val, i) => expect(DateMath.compareDates(dateRangeArray[i], date)).toBe(true));
+    Array(7).forEach((val: undefined, i: number) =>
+      expect(DateMath.compareDates(dateRangeArray[i], expectedDates[i])).toBe(true)
+    );
+
+    // Date range: work week
+    const workWeekDays = [DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Thursday, DayOfWeek.Friday];
+    expectedDates = [new Date(2017, 2, 13), new Date(2017, 2, 14), new Date(2017, 2, 16), new Date(2017, 2, 17)];
+    dateRangeArray = DateMath.getDateRangeArray(date, DateRangeType.Week, DayOfWeek.Sunday, workWeekDays);
+    Array(4).forEach((val: undefined, i: number) =>
+      expect(DateMath.compareDates(dateRangeArray[i], expectedDates[i])).toBe(true)
+    );
+
+    // work week defaults
+    expectedDates = [
+      new Date(2017, 2, 13),
+      new Date(2017, 2, 14),
+      new Date(2017, 2, 15),
+      new Date(2017, 2, 16),
+      new Date(2017, 2, 17)
+    ];
+    dateRangeArray = DateMath.getDateRangeArray(date, DateRangeType.Week, DayOfWeek.Sunday);
+    Array(4).forEach((val: undefined, i: number) =>
+      expect(DateMath.compareDates(dateRangeArray[i], expectedDates[i])).toBe(true)
+    );
 
     // Date range: month
-    expectedDates = Array(31).map((val, i) => new Date(2017, 2, 1 + i));
+    expectedDates = Array(31).map((val: undefined, i: number) => new Date(2017, 2, 1 + i));
     dateRangeArray = DateMath.getDateRangeArray(date, DateRangeType.Month, DayOfWeek.Sunday);
-    Array(31).forEach((val, i) => expect(DateMath.compareDates(dateRangeArray[i], date)).toBe(true));
+    Array(31).forEach((val: undefined, i: number) =>
+      expect(DateMath.compareDates(dateRangeArray[i], expectedDates[i])).toBe(true)
+    );
 
     // First day of week: Tuesday
-    expectedDates = Array(7).map((val, i) => new Date(2017, 2, 14 + i));
+    expectedDates = Array(7).map((val: undefined, i: number) => new Date(2017, 2, 14 + i));
     dateRangeArray = DateMath.getDateRangeArray(date, DateRangeType.Week, DayOfWeek.Tuesday);
-    Array(7).forEach((val, i) => expect(DateMath.compareDates(dateRangeArray[i], date)).toBe(true));
+    Array(7).forEach((val: undefined, i: number) => expect(DateMath.compareDates(dateRangeArray[i], date)).toBe(true));
+  });
+
+  // Generating week numbers array per month
+  it('can calculate week numbers from selected date', () => {
+    // firstDayOfWeek is Monday, firstWeekOfYear is firstFullWeek
+    let date = new Date(2017, 0, 4);
+    let result = DateMath.getWeekNumbersInMonth(6, 1, 1, date);
+    let expected = 52;
+    expect(result[0]).toEqual(expected);
+
+    // firstDayOfWeek is Sunday, firstWeekOfYear is firstFullWeek
+    date = new Date(2000, 11, 31);
+    result = DateMath.getWeekNumbersInMonth(6, 0, 1, date);
+    expected = 53;
+    expect(result[5]).toEqual(expected);
+
+    // firstDayOfWeek is Sunday, firstWeekOfYear is firstFullWeek
+    date = new Date(2010, 0, 1);
+    result = DateMath.getWeekNumbersInMonth(6, 0, 1, date);
+    expected = 52;
+    expect(result[0]).toEqual(expected);
+
+    // firstDayOfWeek is Sunday, firstWeekOfYear is firstFourDayWeek
+    date = new Date(2018, 11, 31);
+    result = DateMath.getWeekNumbersInMonth(6, 0, 2, date);
+    expected = 1;
+    expect(result[5]).toEqual(expected);
+  });
+
+  // First week of year set to FirstWeekOfYear.FirstDay
+  it('can calculate week numbers - option 0', () => {
+    // firstDayOfWeek is Sunday
+    let date1 = new Date(2018, 0, 1);
+    let result = DateMath.getWeekNumber(date1, 0, 0);
+    let expected = 1;
+    expect(result).toEqual(expected);
+
+    // firstDayOfWeek is Sunday
+    date1 = new Date(2010, 0, 1);
+    result = DateMath.getWeekNumber(date1, 0, 0);
+    expected = 1;
+    expect(result).toEqual(expected);
+
+    // firstDayOfWeek is Sunday
+    date1 = new Date(2019, 0, 1);
+    result = DateMath.getWeekNumber(date1, 0, 0);
+    expected = 1;
+    expect(result).toEqual(expected);
+
+    // firstDayOfWeek is Monday
+    date1 = new Date(2010, 11, 31);
+    result = DateMath.getWeekNumber(date1, 1, 0);
+    expected = 53;
+    expect(result).toEqual(expected);
+  });
+
+  // First week of year set to FirstWeekOfYear.FirstFullWeek
+  it('can calculate week numbers - option 1', () => {
+    // firstDayOfWeek is Sunday
+    let date1 = new Date(2018, 0, 1);
+    let result = DateMath.getWeekNumber(date1, 0, 1);
+    let expected = 53;
+    expect(result).toEqual(expected);
+
+    // firstDayOfWeek is Sunday
+    date1 = new Date(2017, 11, 31);
+    result = DateMath.getWeekNumber(date1, 0, 1);
+    expected = 53;
+    expect(result).toEqual(expected);
+
+    // firstDayOfWeek is Sunday
+    date1 = new Date(2010, 11, 31);
+    result = DateMath.getWeekNumber(date1, 0, 1);
+    expected = 52;
+    expect(result).toEqual(expected);
+
+    // firstDayOfWeek is Monday
+    date1 = new Date(2011, 0, 1);
+    result = DateMath.getWeekNumber(date1, 1, 1);
+    expected = 52;
+    expect(result).toEqual(expected);
+
+    // firstDayOfWeek is Sunday
+    date1 = new Date(2021, 0, 1);
+    result = DateMath.getWeekNumber(date1, 0, 1);
+    expected = 52;
+    expect(result).toEqual(expected);
+
+    // firstDayOfWeek is Monday
+    date1 = new Date(2021, 0, 1);
+    result = DateMath.getWeekNumber(date1, 1, 1);
+    expected = 52;
+    expect(result).toEqual(expected);
+  });
+
+  // First week of year set to FirstWeekOfYear.FirstFourDayWeek
+  it('can calculate week numbers - option 2', () => {
+    // firstDayOfWeek is Sunday
+    let date1 = new Date(2019, 0, 5);
+    let result = DateMath.getWeekNumber(date1, 0, 2);
+    let expected = 1;
+    expect(result).toEqual(expected);
+
+    // firstDayOfWeek is Sunday
+    date1 = new Date(2018, 0, 6);
+    result = DateMath.getWeekNumber(date1, 0, 2);
+    expected = 1;
+    expect(result).toEqual(expected);
+
+    // firstDayOfWeek is Sunday
+    date1 = new Date(2014, 11, 31);
+    result = DateMath.getWeekNumber(date1, 0, 2);
+    expected = 53;
+    expect(result).toEqual(expected);
+
+    // firstDayOfWeek is Sunday
+    date1 = new Date(2015, 0, 1);
+    result = DateMath.getWeekNumber(date1, 0, 2);
+    expected = 53;
+    expect(result).toEqual(expected);
+
+    // firstDayOfWeek is Sunday
+    date1 = new Date(2010, 11, 31);
+    result = DateMath.getWeekNumber(date1, 0, 2);
+    expected = 52;
+    expect(result).toEqual(expected);
+
+    // firstDayOfWeek is Monday
+    date1 = new Date(2011, 0, 1);
+    result = DateMath.getWeekNumber(date1, 1, 2);
+    expected = 52;
+    expect(result).toEqual(expected);
+
+    // firstDayOfWeek is Sunday
+    date1 = new Date(2021, 0, 1);
+    result = DateMath.getWeekNumber(date1, 0, 2);
+    expected = 53;
+    expect(result).toEqual(expected);
+
+    // firstDayOfWeek is Monday
+    date1 = new Date(2021, 0, 1);
+    result = DateMath.getWeekNumber(date1, 1, 2);
+    expected = 53;
+    expect(result).toEqual(expected);
+  });
+
+  it('can get the month start and end', () => {
+    const date = new Date('Dec 15 2017');
+
+    // First day of month
+    expect(DateMath.compareDates(new Date('Dec 1 2017'), DateMath.getMonthStart(date))).toBe(true);
+
+    // Last day of month
+    expect(DateMath.compareDates(new Date('Dec 31 2017'), DateMath.getMonthEnd(date))).toBe(true);
+  });
+
+  it('can get the year start and end', () => {
+    const date = new Date('Dec 15 2017');
+
+    // First day of year
+    expect(DateMath.compareDates(new Date('Jan 1 2017'), DateMath.getYearStart(date))).toBe(true);
+
+    // Last day of year
+    expect(DateMath.compareDates(new Date('Dec 31 2017'), DateMath.getYearEnd(date))).toBe(true);
   });
 });

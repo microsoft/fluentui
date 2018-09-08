@@ -1,2 +1,3 @@
 export * from './GroupedList';
-export * from './GroupedList.Props';
+export * from './GroupedList.base';
+export * from './GroupedList.types';

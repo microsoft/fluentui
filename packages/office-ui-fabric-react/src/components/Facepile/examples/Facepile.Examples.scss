@@ -3,7 +3,19 @@
     max-width: 300px;
 
     .control {
-      padding-top: 8px;
+      padding-top: 20px;
+    }
+    .ms-Dropdown-container,
+    .ms-Slider {
+      margin: 10px 0 10px 0;
+    }
+
+    .ms-Dropdown-container .ms-Label {
+      padding-top: 0;
+    }
+
+    .ms-Checkbox {
+      padding-top: 15px;
     }
   }
 }

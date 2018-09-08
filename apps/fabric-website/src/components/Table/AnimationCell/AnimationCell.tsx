@@ -10,17 +10,18 @@ export class AnimationCell extends React.Component<IAnimationCellProps, {}> {
     super(props);
   }
 
-  public render() {
+  public render(): JSX.Element {
     const name = this.props.data[0].value;
     const animClass = this.props.data[1].value;
 
     return (
-      <div className={ `AnimationExample ${animClass}` }
-        data-class={ animClass }
-        aria-label={ `Visual Animation Example for ${name}` }
-        onClick={ this._doAnimation }
+      <div
+        className={`AnimationExample ${animClass}`}
+        data-class={animClass}
+        aria-label={`Visual Animation Example for ${name}`}
+        onClick={this._doAnimation}
       >
-        <div className='AnimationExample-content' aria-hidden='true'>
+        <div className="AnimationExample-content" aria-hidden="true">
           <hr />
           <hr />
           <hr />
@@ -29,7 +30,7 @@ export class AnimationCell extends React.Component<IAnimationCellProps, {}> {
           <hr />
           <hr />
         </div>
-        <div className='animationExample_panel ms-bg-color-themePrimary' data-class={ animClass } />
+        <div className="animationExample_panel ms-bg-color-themePrimary" data-class={animClass} />
       </div>
     );
   }

@@ -24,16 +24,29 @@
 
     &:hover {
       background: $ms-color-neutralTertiaryAlt;
+
+      @include high-contrast {
+        background: Highlight;
+        color: HighlightText;
+      }
     }
 
     @include high-contrast {
-      border: 1px solid WindowText;
+      background: Highlight;
+      color: HighlightText;
+      -ms-high-contrast-adjust: none;
     }
 
     .closeButton {
       &:hover {
         background: $ms-color-neutralTertiary;
         color: $ms-color-neutralPrimary;
+      }
+    }
+
+    .itemButton {
+      @include high-contrast {
+        color: HighlightText;
       }
     }
   }
@@ -48,8 +61,9 @@
   }
 }
 
-.searchMoreButton {
+.actionButton {
   background: none;
+  background-color: transparent;
   border: 0;
   cursor: pointer;
   margin: 0;
@@ -78,6 +92,10 @@
   :global(.ms-Button-label) {
     @include margin(0, 4px, 0, 9px);
   }
+}
+
+.buttonSelected {
+  background-color: $ms-color-themeLight;
 }
 
 .suggestionsTitle {
@@ -121,16 +139,27 @@
   }
 }
 
-.itemButton {
-  height: 100%;
+.itemButton.itemButton {
   width: 100%;
-  padding: 7px 12px;
+  padding: 0px;
+
+  /* once this is converted to js css, then specificity won't be an issue. */
+  height: 100%;
+
+  @include high-contrast {
+    color: WindowText;
+  }
 }
 
-.closeButton {
+.closeButton.closeButton {
+  /* once this is converted to js css, then specificity won't be an issue. */
   padding: 0 4px;
   height: auto;
   width: 32px;
+
+  @include high-contrast {
+    color: WindowText;
+  }
 
   &:hover {
     background: $ms-color-neutralTertiaryAlt;

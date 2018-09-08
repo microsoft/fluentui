@@ -1,0 +1,5 @@
+- Use Dialogs for quick, actionable interactions, such as making a choice or needing the user to provide information.
+- When possible, try a non-blocking Dialog before resorting to a blocking Dialog.
+- Only include information needed to help users make a decision.
+- Button text should reflect the actions available to the user (e.g. save, delete).
+- Validate that the user's entries are acceptable before closing the Dialog. Show an inline validation error near the field they must correct.

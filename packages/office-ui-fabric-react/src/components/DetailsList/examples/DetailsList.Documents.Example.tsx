@@ -1,51 +1,50 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import {
   DetailsList,
   DetailsListLayoutMode,
   Selection,
+  SelectionMode,
   IColumn
 } from 'office-ui-fabric-react/lib/DetailsList';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { lorem } from '@uifabric/example-app-base';
+import { lorem } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import './DetailsListExample.scss';
 
 let _items: IDocument[] = [];
 
-const fileIcons: { name: string; }[] = [
-  { 'name': 'accdb' },
-  { 'name': 'csv' },
-  { 'name': 'docx' },
-  { 'name': 'dotx' },
-  { 'name': 'mpp' },
-  { 'name': 'mpt' },
-  { 'name': 'odp' },
-  { 'name': 'ods' },
-  { 'name': 'odt' },
-  { 'name': 'one' },
-  { 'name': 'onepkg' },
-  { 'name': 'onetoc' },
-  { 'name': 'potx' },
-  { 'name': 'ppsx' },
-  { 'name': 'pptx' },
-  { 'name': 'pub' },
-  { 'name': 'vsdx' },
-  { 'name': 'vssx' },
-  { 'name': 'vstx' },
-  { 'name': 'xls' },
-  { 'name': 'xlsx' },
-  { 'name': 'xltx' },
-  { 'name': 'xsn' }
+const fileIcons: { name: string }[] = [
+  { name: 'accdb' },
+  { name: 'csv' },
+  { name: 'docx' },
+  { name: 'dotx' },
+  { name: 'mpp' },
+  { name: 'mpt' },
+  { name: 'odp' },
+  { name: 'ods' },
+  { name: 'odt' },
+  { name: 'one' },
+  { name: 'onepkg' },
+  { name: 'onetoc' },
+  { name: 'potx' },
+  { name: 'ppsx' },
+  { name: 'pptx' },
+  { name: 'pub' },
+  { name: 'vsdx' },
+  { name: 'vssx' },
+  { name: 'vstx' },
+  { name: 'xls' },
+  { name: 'xlsx' },
+  { name: 'xltx' },
+  { name: 'xsn' }
 ];
 
 export interface IDetailsListDocumentsExampleState {
   columns: IColumn[];
   items: IDocument[];
   selectionDetails: string;
+  isModalSelection: boolean;
   isCompactMode: boolean;
 }
 
@@ -76,7 +75,10 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         let fileName: string = lorem(2).replace(/\W/g, '');
         let userName: string = lorem(2).replace(/[^a-zA-Z ]/g, '');
         fileName = fileName.charAt(0).toUpperCase() + fileName.slice(1).concat(`.${randomFileType.docType}`);
-        userName = userName.split(' ').map((name: string) => name.charAt(0).toUpperCase() + name.slice(1)).join(' ');
+        userName = userName
+          .split(' ')
+          .map((name: string) => name.charAt(0).toUpperCase() + name.slice(1))
+          .join(' ');
         _items.push({
           name: fileName,
           value: fileName,
@@ -98,18 +100,15 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         headerClassName: 'DetailsListExample-header--FileIcon',
         className: 'DetailsListExample-cell--FileIcon',
         iconClassName: 'DetailsListExample-Header-FileTypeIcon',
+        ariaLabel: 'Column operations for File type',
         iconName: 'Page',
         isIconOnly: true,
         fieldName: 'name',
         minWidth: 16,
         maxWidth: 16,
+        onColumnClick: this._onColumnClick,
         onRender: (item: IDocument) => {
-          return (
-            <img
-              src={ item.iconName }
-              className={ 'DetailsListExample-documentIconImage' }
-            />
-          );
+          return <img src={item.iconName} className={'DetailsListExample-documentIconImage'} />;
         }
       },
       {
@@ -122,6 +121,8 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         isResizable: true,
         isSorted: true,
         isSortedDescending: false,
+        sortAscendingAriaLabel: 'Sorted A to Z',
+        sortDescendingAriaLabel: 'Sorted Z to A',
         onColumnClick: this._onColumnClick,
         data: 'string',
         isPadded: true
@@ -136,13 +137,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         onColumnClick: this._onColumnClick,
         data: 'number',
         onRender: (item: IDocument) => {
-          return (
-            <span
-              data-is-focusable={ true }
-            >
-              { item.dateModified }
-            </span>
-          );
+          return <span>{item.dateModified}</span>;
         },
         isPadded: true
       },
@@ -153,16 +148,11 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         minWidth: 70,
         maxWidth: 90,
         isResizable: true,
+        isCollapsable: true,
         data: 'string',
         onColumnClick: this._onColumnClick,
         onRender: (item: IDocument) => {
-          return (
-            <span
-              data-is-focusable={ true }
-            >
-              { item.modifiedBy }
-            </span>
-          );
+          return <span>{item.modifiedBy}</span>;
         },
         isPadded: true
       },
@@ -173,81 +163,96 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         minWidth: 70,
         maxWidth: 90,
         isResizable: true,
+        isCollapsable: true,
         data: 'number',
         onColumnClick: this._onColumnClick,
         onRender: (item: IDocument) => {
-          return (
-            <span
-              data-is-focusable={ true }
-            >
-              { item.fileSize }
-            </span>
-          );
+          return <span>{item.fileSize}</span>;
         }
-      },
+      }
     ];
 
     this._selection = new Selection({
-      onSelectionChanged: () => this.setState({ selectionDetails: this._getSelectionDetails() })
+      onSelectionChanged: () => {
+        this.setState({
+          selectionDetails: this._getSelectionDetails(),
+          isModalSelection: this._selection.isModal()
+        });
+      }
     });
 
     this.state = {
       items: _items,
       columns: _columns,
       selectionDetails: this._getSelectionDetails(),
+      isModalSelection: this._selection.isModal(),
       isCompactMode: false
     };
   }
 
   public render() {
-    let { columns, isCompactMode, items, selectionDetails } = this.state;
+    const { columns, isCompactMode, items, selectionDetails } = this.state;
 
     return (
       <div>
         <Toggle
-          label='Enable Compact Mode'
-          checked={ isCompactMode }
-          onChanged={ this._onChangeToggle }
-          onText='Compact'
-          offText='Normal'
+          label="Enable Compact Mode"
+          checked={isCompactMode}
+          onChange={this._onChangeCompactMode}
+          onText="Compact"
+          offText="Normal"
         />
-        <div>{ selectionDetails }</div>
-        <TextField
-          label='Filter by name:'
-          onChanged={ this._onChangeText }
+        <Toggle
+          label="Enable Modal Selection"
+          checked={this.state.isModalSelection}
+          onChange={this._onChangeModalSelection}
+          onText="Modal"
+          offText="Normal"
         />
-        <MarqueeSelection selection={ this._selection }>
+        <div>{selectionDetails}</div>
+        <TextField label="Filter by name:" onChange={this._onChangeText} />
+        <MarqueeSelection selection={this._selection}>
           <DetailsList
-            items={ items }
-            compact={ isCompactMode }
-            columns={ columns }
-            setKey='set'
-            layoutMode={ DetailsListLayoutMode.justified }
-            isHeaderVisible={ true }
-            selection={ this._selection }
-            selectionPreservedOnEmptyClick={ true }
-            onItemInvoked={ this._onItemInvoked }
+            items={items}
+            compact={isCompactMode}
+            columns={columns}
+            selectionMode={this.state.isModalSelection ? SelectionMode.multiple : SelectionMode.none}
+            setKey="set"
+            layoutMode={DetailsListLayoutMode.justified}
+            isHeaderVisible={true}
+            selection={this._selection}
+            selectionPreservedOnEmptyClick={true}
+            onItemInvoked={this._onItemInvoked}
+            enterModalSelectionOnTouch={true}
           />
         </MarqueeSelection>
       </div>
     );
   }
 
-  @autobind
-  private _onChangeToggle(checked: boolean): void {
-    this.setState({ isCompactMode: checked });
+  public componentDidUpdate(previousProps: any, previousState: IDetailsListDocumentsExampleState) {
+    if (previousState.isModalSelection !== this.state.isModalSelection) {
+      this._selection.setModal(this.state.isModalSelection);
+    }
   }
 
-  @autobind
-  private _onChangeText(text: any): void {
+  private _onChangeCompactMode = (ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
+    this.setState({ isCompactMode: checked });
+  };
+
+  private _onChangeModalSelection = (ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
+    this.setState({ isModalSelection: checked });
+  };
+
+  private _onChangeText = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text: string): void => {
     this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items });
-  }
+  };
 
   private _onItemInvoked(item: any): void {
     alert(`Item invoked: ${item.name}`);
   }
 
-  private _randomDate(start: Date, end: Date): { value: number; dateFormatted: string; } {
+  private _randomDate(start: Date, end: Date): { value: number; dateFormatted: string } {
     const date: Date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
     const dateData = {
       value: date.valueOf(),
@@ -256,7 +261,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
     return dateData;
   }
 
-  private _randomFileIcon(): { docType: string; url: string; } {
+  private _randomFileIcon(): { docType: string; url: string } {
     const docType: string = fileIcons[Math.floor(Math.random() * fileIcons.length) + 0].name;
     return {
       docType,
@@ -264,7 +269,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
     };
   }
 
-  private _randomFileSize(): { value: string; rawSize: number; } {
+  private _randomFileSize(): { value: string; rawSize: number } {
     const fileSize: number = Math.floor(Math.random() * 100) + 30;
     return {
       value: `${fileSize} KB`,
@@ -273,7 +278,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
   }
 
   private _getSelectionDetails(): string {
-    let selectionCount = this._selection.getSelectedCount();
+    const selectionCount = this._selection.getSelectedCount();
 
     switch (selectionCount) {
       case 0:
@@ -285,12 +290,11 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
     }
   }
 
-  @autobind
-  private _onColumnClick(ev: React.MouseEvent<HTMLElement>, column: IColumn) {
+  private _onColumnClick = (ev: React.MouseEvent<HTMLElement>, column: IColumn): void => {
     const { columns, items } = this.state;
     let newItems: IDocument[] = items.slice();
-    let newColumns: IColumn[] = columns.slice();
-    let currColumn: IColumn = newColumns.filter((currCol: IColumn, idx: number) => {
+    const newColumns: IColumn[] = columns.slice();
+    const currColumn: IColumn = newColumns.filter((currCol: IColumn, idx: number) => {
       return column.key === currCol.key;
     })[0];
     newColumns.forEach((newCol: IColumn) => {
@@ -302,15 +306,14 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         newCol.isSortedDescending = true;
       }
     });
-    newItems = this._sortItems(newItems, currColumn.fieldName, currColumn.isSortedDescending);
+    newItems = this._sortItems(newItems, currColumn.fieldName || '', currColumn.isSortedDescending);
     this.setState({
       columns: newColumns,
       items: newItems
     });
-  }
+  };
 
-  @autobind
-  private _sortItems(items: IDocument[], sortBy: string, descending = false): IDocument[] {
+  private _sortItems = (items: IDocument[], sortBy: string, descending = false): IDocument[] => {
     if (descending) {
       return items.sort((a: IDocument, b: IDocument) => {
         if (a[sortBy] < b[sortBy]) {
@@ -332,5 +335,5 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         return 0;
       });
     }
-  }
+  };
 }

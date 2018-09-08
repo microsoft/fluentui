@@ -1,6 +1,6 @@
+// @codepen
 import * as React from 'react';
 import { ChoiceGroup, IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
 /**
  * Interface for ChoiceGroupBasicExample state.
@@ -9,9 +9,9 @@ export interface IChoiceGroupBasicExampleState {
   imageKey: string;
 }
 
-export class ChoiceGroupBasicExample extends React.Component<any, IChoiceGroupBasicExampleState> {
-  constructor() {
-    super();
+export class ChoiceGroupBasicExample extends React.Component<{}, IChoiceGroupBasicExampleState> {
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
       imageKey: ''
@@ -22,8 +22,8 @@ export class ChoiceGroupBasicExample extends React.Component<any, IChoiceGroupBa
     return (
       <div>
         <ChoiceGroup
-          defaultSelectedKey='B'
-          options={ [
+          defaultSelectedKey="B"
+          options={[
             {
               key: 'A',
               text: 'Option A',
@@ -31,7 +31,7 @@ export class ChoiceGroupBasicExample extends React.Component<any, IChoiceGroupBa
             } as IChoiceGroupOption,
             {
               key: 'B',
-              text: 'Option B',
+              text: 'Option B'
             },
             {
               key: 'C',
@@ -43,17 +43,16 @@ export class ChoiceGroupBasicExample extends React.Component<any, IChoiceGroupBa
               text: 'Option D',
               disabled: true
             }
-          ] }
-          onChange={ this._onChange }
-          label='Pick one'
-          required={ true }
+          ]}
+          onChange={this._onChange}
+          label="Pick one"
+          required={true}
         />
       </div>
     );
   }
 
-  @autobind
-  private _onChange(ev: React.FormEvent<HTMLInputElement>, option: any) {
+  private _onChange = (ev: React.FormEvent<HTMLInputElement>, option: any): void => {
     console.dir(option);
-  }
+  };
 }

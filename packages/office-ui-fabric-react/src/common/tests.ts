@@ -1,8 +1,18 @@
 /** Jest test setup file. */
 
-import { setIconOptions } from '@uifabric/styling';
+import { configure } from 'enzyme';
+import { initializeIcons } from '@uifabric/icons';
+import * as Adapter from 'enzyme-adapter-react-16';
 
-// Suppress icon warnings.
-setIconOptions({
-  warnOnMissingIcons: false
-});
+// Initialize icons.
+initializeIcons('');
+
+// Mock requestAnimationFrame for React 16+.
+declare const global: { requestAnimationFrame: (cb: () => void) => void };
+
+global.requestAnimationFrame = (callback: () => void) => {
+  setTimeout(callback, 0);
+};
+
+// Configure enzyme.
+configure({ adapter: new Adapter() });

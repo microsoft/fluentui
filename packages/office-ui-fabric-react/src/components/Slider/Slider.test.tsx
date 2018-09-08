@@ -1,41 +1,29 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
-
-import * as ReactDOM from 'react-dom';
-import * as ReactTestUtils from 'react-dom/test-utils';
-
+import * as renderer from 'react-test-renderer';
+import { mount } from 'enzyme';
 import { Slider } from './Slider';
-import { ISlider } from './Slider.Props';
+import { ISlider } from './Slider.types';
 
 describe('Slider', () => {
-
-  it('renders a slider', () => {
-    let component = ReactTestUtils.renderIntoDocument(
-      <Slider label='slider' />
-    );
-    let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-    let labelElement = renderedDOM.querySelector('.ms-Label') as HTMLElement;
-
-    expect(labelElement.textContent).toEqual('slider');
+  it('renders correctly', () => {
+    const component = renderer.create(<Slider label="I am a slider" />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
   });
 
   it('can slide to default min/max and execute onChange', () => {
     let changedValue;
-    let onChange = (val: any) => {
+
+    const onChange = (val: any) => {
       changedValue = val;
     };
-    let component = ReactTestUtils.renderIntoDocument<React.ReactInstance>(
-      <Slider
-        onChange={ onChange }
-      />
-    );
 
-    let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-    let sliderLine = renderedDOM.querySelector('.ms-Slider-line') as HTMLElement;
-    let sliderThumb = renderedDOM.querySelector('.ms-Slider-slideBox') as HTMLElement;
+    const wrapper = mount(<Slider onChange={onChange} />);
 
-    sliderLine.getBoundingClientRect = () => ({
+    const sliderLine = wrapper.find('.ms-Slider-line');
+    const sliderThumb = wrapper.find('.ms-Slider-slideBox');
+
+    sliderLine.getDOMNode().getBoundingClientRect = () => ({
       left: 0,
       top: 0,
       right: 100,
@@ -44,7 +32,7 @@ describe('Slider', () => {
       height: 40
     });
 
-    ReactTestUtils.Simulate.mouseDown(sliderThumb, {
+    sliderThumb.simulate('mousedown', {
       type: 'mousedown',
       clientX: 100,
       clientY: 0
@@ -53,7 +41,7 @@ describe('Slider', () => {
     // Default max is 10.
     expect(changedValue).toEqual(10);
 
-    ReactTestUtils.Simulate.mouseDown(sliderThumb, {
+    sliderThumb.simulate('mousedown', {
       type: 'mousedown',
       clientX: 0,
       clientY: 0
@@ -64,27 +52,31 @@ describe('Slider', () => {
   });
 
   it('has type=button on all buttons', () => {
-    let component = ReactTestUtils.renderIntoDocument<React.ReactInstance>(
-      <Slider />
-    );
+    const component = mount(<Slider />);
 
-    let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-    let allButtons = renderedDOM.querySelectorAll('button');
-
-    for (let i = 0; i < allButtons.length; i++) {
-      let button = allButtons[i];
-
-      expect(button.getAttribute('type')).toEqual('button');
-    }
+    component.find('button').forEach(button => {
+      expect(button.prop('type')).toEqual('button');
+    });
   });
 
-  it('can read the current value', () => {
-    let slider: ISlider | undefined;
+  it('can provide the current value', () => {
+    const slider = React.createRef<ISlider>();
 
-    ReactTestUtils.renderIntoDocument(
-      // tslint:disable-next-line:jsx-no-lambda
-      <Slider label='slider' defaultValue={ 12 } min={ 0 } max={ 100 } componentRef={ s => slider = s } />
-    );
-    expect(slider!.value).toEqual(12);
+    mount(<Slider label="slider" defaultValue={12} min={0} max={100} componentRef={slider} />);
+    expect(slider.current!.value).toEqual(12);
+  });
+
+  it('renders correct aria-valuetext', () => {
+    let component = mount(<Slider />);
+
+    expect(component.find('.ms-Slider-slideBox').prop('aria-valuetext')).toBeUndefined();
+
+    const values = ['small', 'medium', 'large'];
+    const selected = 1;
+    const getTextValue = (value: number) => values[value];
+
+    component = mount(<Slider value={selected} ariaValueText={getTextValue} />);
+
+    expect(component.find('.ms-Slider-slideBox').prop('aria-valuetext')).toEqual(values[selected]);
   });
 });

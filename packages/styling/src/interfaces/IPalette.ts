@@ -78,6 +78,11 @@ export interface IPalette {
   neutralSecondary: string;
 
   /**
+   * Color code for neutralSecondaryAlt.
+   */
+  neutralSecondaryAlt: string;
+
+  /**
    * Color code for neutralTertiary.
    */
   neutralTertiary: string;
@@ -122,6 +127,11 @@ export interface IPalette {
    * This is the page background.
    */
   white: string;
+
+  /**
+   * Color code for whiteTranslucent40
+   */
+  whiteTranslucent40: string;
 
   /**
    * Color code for yellow.

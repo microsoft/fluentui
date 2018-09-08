@@ -1,2 +1,2 @@
 export * from './ActivityItem';
-export * from './ActivityItem.Props';
+export * from './ActivityItem.types';

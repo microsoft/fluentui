@@ -9,18 +9,61 @@ export type ICSSPercentageRule = string;
 // See CSS 3 <length> type https://drafts.csswg.org/css-values-3/#lengths
 export type ICSSPixelUnitRule = string | number;
 
+// See CSS <baseline-position> type https://www.w3.org/TR/css-align-3/#typedef-baseline-position
+export type ICSSBaselinePositionRule = 'baseline' | 'last baseline' | 'first baseline';
+
+// See CSS <overflow-position> type https://www.w3.org/TR/css-align-3/#typedef-overflow-position
+// See CSS <self-position> type https://www.w3.org/TR/css-align-3/#typedef-self-position
+export type ICSSOverflowAndSelfPositionRule =
+  // <self-position>
+  | 'center'
+  | 'start'
+  | 'end'
+  | 'self-start'
+  | 'self-end'
+  | 'flex-start'
+  | 'flex-end'
+  // <self-position> prefixed with <overflow-position> value 'safe'
+  | 'safe center'
+  | 'safe start'
+  | 'safe end'
+  | 'safe self-start'
+  | 'safe self-end'
+  | 'safe flex-start'
+  | 'safe flex-end'
+  // <self-position> prefixed with <overflow-position> value 'unsafe'
+  | 'unsafe center'
+  | 'unsafe start'
+  | 'unsafe end'
+  | 'unsafe self-start'
+  | 'unsafe self-end'
+  | 'unsafe flex-start'
+  | 'unsafe flex-end';
+
 export type IFontWeight =
-  ICSSRule |
-  'normal' | 'bold' | 'bolder' | 'lighter' |
-  '100' | 100 |
-  '200' | 200 |
-  '300' | 300 |
-  '400' | 400 |
-  '500' | 500 |
-  '600' | 600 |
-  '700' | 700 |
-  '800' | 800 |
-  '900' | 900;
+  | ICSSRule
+  | 'normal'
+  | 'bold'
+  | 'bolder'
+  | 'lighter'
+  | '100'
+  | 100
+  | '200'
+  | 200
+  | '300'
+  | 300
+  | '400'
+  | 400
+  | '500'
+  | 500
+  | '600'
+  | 600
+  | '700'
+  | 700
+  | '800'
+  | 800
+  | '900'
+  | 900;
 
 /**
  * The base font style.
@@ -54,18 +97,18 @@ export interface IRawFontStyle {
    * See CSS 3 font-size property https://www.w3.org/TR/css-fonts-3/#propdef-font-size
    */
   fontSize?:
-  | ICSSRule
-  | 'xx-small'
-  | 'x-small'
-  | 'small'
-  | 'medium'
-  | 'large'
-  | 'x-large'
-  | 'xx-large'
-  | 'larger'
-  | 'smaller'
-  | ICSSPixelUnitRule
-  | ICSSPercentageRule;
+    | ICSSRule
+    | 'xx-small'
+    | 'x-small'
+    | 'small'
+    | 'medium'
+    | 'large'
+    | 'x-large'
+    | 'xx-large'
+    | 'larger'
+    | 'smaller'
+    | ICSSPixelUnitRule
+    | ICSSPercentageRule;
 
   /**
    * The font-size-adjust property adjusts the font-size of the fallback fonts defined
@@ -83,16 +126,16 @@ export interface IRawFontStyle {
    * https://drafts.csswg.org/css-fonts-3/#propdef-font-stretch
    */
   fontStretch?:
-  | ICSSRule
-  | 'normal'
-  | 'ultra-condensed'
-  | 'extra-condensed'
-  | 'condensed'
-  | 'semi-condensed'
-  | 'semi-expanded'
-  | 'expanded'
-  | 'extra-expanded'
-  | 'ultra-expanded';
+    | ICSSRule
+    | 'normal'
+    | 'ultra-condensed'
+    | 'extra-condensed'
+    | 'condensed'
+    | 'semi-condensed'
+    | 'semi-expanded'
+    | 'expanded'
+    | 'extra-expanded'
+    | 'ultra-expanded';
 
   /**
    * The font-style property allows normal, italic, or oblique faces to be selected.
@@ -174,6 +217,11 @@ export interface IRawStyleBase extends IRawFontStyle {
   WebkitFontSmoothing?: 'none' | 'antialiased' | 'grayscale' | 'subpixel-antialiased';
 
   /**
+   * (Webkit specific) momentum scrolling on iOS devices
+   */
+  WebkitOverflowScrolling?: 'auto' | 'touch';
+
+  /**
    * Aligns a flex container's lines within the flex container when there is extra space
    * in the cross-axis, similar to how justify-content aligns individual items within the main-axis.
    */
@@ -186,9 +234,13 @@ export interface IRawStyleBase extends IRawFontStyle {
   alignItems?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch';
 
   /**
-   * Allows the default alignment to be overridden for individual flex items.
+   * Aligns the box (as the alignment subject) within its containing block (as the alignment container)
+   * along the block/column/cross axis of the alignment container.
+   *
+   * See CSS align-self property
+   * https://www.w3.org/TR/css-align-3/#propdef-align-self
    */
-  alignSelf?: ICSSRule | 'auto' | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch';
+  alignSelf?: ICSSRule | 'auto' | 'normal' | 'stretch' | ICSSBaselinePositionRule | ICSSOverflowAndSelfPositionRule;
 
   /**
    * This property allows precise alignment of elements, such as graphics, that do not
@@ -207,6 +259,14 @@ export interface IRawStyleBase extends IRawFontStyle {
    * value of the alignment-baseline property.
    */
   alignmentBaseline?: ICSSRule | string;
+
+  /**
+   * The animation CSS property is a shorthand property for the various animation properties:
+   * `animation-name`, `animation-duration`, `animation-timing-function`, `animation-delay`,
+   * `animation-iteration-count`, `animation-direction`, `animation-fill-mode`, and
+   * `animation-play-state`.
+   */
+  animation?: ICSSRule | string;
 
   /**
    * Defines a length of time to elapse before an animation starts, allowing an animation to begin execution some time after it is applied.
@@ -289,6 +349,16 @@ export interface IRawStyleBase extends IRawFontStyle {
   backgroundBlendMode?: ICSSRule | string;
 
   /**
+   * The background-clip CSS property specifies if an element's background, whether a
+   * <color> or an <image>, extends underneath its border.
+   *
+   * \* Does not work in IE
+   *
+   * \* The `text` value is experimental and should not be used in production code.
+   */
+  backgroundClip?: ICSSRule | 'border-box' | 'padding-box' | 'content-box' | 'text';
+
+  /**
    * Sets the background color of an element.
    */
   backgroundColor?: ICSSRule | string;
@@ -319,6 +389,11 @@ export interface IRawStyleBase extends IRawFontStyle {
    * have been sized and positioned
    */
   backgroundRepeat?: ICSSRule | string;
+
+  /**
+   * Sets the size of background images
+   */
+  backgroundSize?: ICSSRule | string;
 
   /**
    * Shorthand property that defines the different properties of all four sides of an
@@ -909,6 +984,29 @@ export interface IRawStyleBase extends IRawFontStyle {
   justifyContent?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly';
 
   /**
+   * Justifies the box (as the alignment subject) within its containing block (as the alignment container)
+   * along the inline/row/main axis of the alignment container.
+   *
+   * See CSS jusitfy-self property
+   * https://www.w3.org/TR/css-align-3/#propdef-justify-self
+   */
+  justifySelf?:
+    | ICSSRule
+    | 'auto'
+    | 'normal'
+    | 'stretch'
+    | ICSSBaselinePositionRule
+    | ICSSOverflowAndSelfPositionRule
+    | 'left'
+    | 'right'
+    // prefixed with <overflow-position> value 'safe'
+    | 'safe left'
+    | 'safe right'
+    // prefixed with <overflow-position> value 'unsafe'
+    | 'unsafe left'
+    | 'unsafe right';
+
+  /**
    * Sets the left position of an element relative to the nearest anscestor that is set
    * to position absolute, relative, or fixed.
    */
@@ -1053,14 +1151,14 @@ export interface IRawStyleBase extends IRawFontStyle {
    * used when the text-align-last property is set to size. It controls allowed
    * adjustments of font-size to fit line content.
    */
-  maxFontSize?: ICSSRule | string;
+  maxFontSize?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * Sets the maximum height for an element. It prevents the height of the element to
    *  exceed the specified value. If min-height is specified and is greater than
    * max-height, max-height is overridden.
    */
-  maxHeight?: ICSSRule | string;
+  maxHeight?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * Sets the maximum width for an element. It limits the width property to be larger
@@ -1299,6 +1397,12 @@ export interface IRawStyleBase extends IRawFontStyle {
   regionFragment?: ICSSRule | string;
 
   /**
+   * The resize CSS sets whether an element is resizable, and if so, in which direction(s).
+   */
+
+  resize?: ICSSRule | 'none' | 'both' | 'horizontal' | 'vertical' | 'block' | 'inline';
+
+  /**
    * The rest-after property determines how long a speech media agent should pause after
    * presenting an element's main content, before presenting that element's exit cue
    * sound. It may be replaced by the shorthand property rest, which sets rest time
@@ -1364,6 +1468,12 @@ export interface IRawStyleBase extends IRawFontStyle {
    * sequence of digits, punctuation as pauses in speech or named punctuation characters.
    */
   speakAs?: ICSSRule | string;
+
+  /**
+   * The stroke property in CSS is for adding a border to SVG shapes.
+   * See SVG 1.1 https://www.w3.org/TR/SVG/painting.html#Stroke
+   */
+  stroke?: ICSSRule | string;
 
   /**
    * SVG: Specifies the opacity of the outline on the current object.

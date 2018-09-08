@@ -1,0 +1,129 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pickers BasePicker renders BasePicker correctly 1`] = `
+<div
+  className="ms-BasePicker"
+  onKeyDown={[Function]}
+>
+  <div
+    aria-describedby={undefined}
+    aria-labelledby={undefined}
+    className="ms-FocusZone"
+    data-focuszone-id="FocusZone1"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+    role="presentation"
+  >
+    <div
+      className="ms-SelectionZone"
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onDoubleClick={[Function]}
+      onFocusCapture={[Function]}
+      onKeyDown={[Function]}
+      onKeyDownCapture={[Function]}
+      onMouseDown={[Function]}
+      onMouseDownCapture={[Function]}
+      role="presentation"
+    >
+      <div
+        className="ms-BasePicker-text"
+        role="list"
+      >
+        <span
+          id="selected-items-id__0"
+        />
+        <input
+          aria-activedescendant={undefined}
+          aria-autocomplete="both"
+          aria-controls=" "
+          aria-describedby="selected-items-id__0"
+          aria-expanded={false}
+          aria-haspopup="true"
+          aria-owns={undefined}
+          autoCapitalize="off"
+          autoComplete="off"
+          className="ms-BasePicker-input"
+          data-lpignore={true}
+          disabled={undefined}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onCompositionEnd={[Function]}
+          onCompositionStart={[Function]}
+          onFocus={[Function]}
+          onInput={[Function]}
+          onKeyDown={[Function]}
+          role="combobox"
+          value=""
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Pickers TagPicker renders TagPicker correctly 1`] = `
+<div
+  className="ms-BasePicker"
+  onKeyDown={[Function]}
+>
+  <div
+    aria-describedby={undefined}
+    aria-labelledby={undefined}
+    className="ms-FocusZone"
+    data-focuszone-id="FocusZone70"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+    role="presentation"
+  >
+    <div
+      className="ms-SelectionZone"
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onDoubleClick={[Function]}
+      onFocusCapture={[Function]}
+      onKeyDown={[Function]}
+      onKeyDownCapture={[Function]}
+      onMouseDown={[Function]}
+      onMouseDownCapture={[Function]}
+      role="presentation"
+    >
+      <div
+        className="ms-BasePicker-text"
+        role="list"
+      >
+        <span
+          id="selected-items-id__69"
+        />
+        <input
+          aria-activedescendant={undefined}
+          aria-autocomplete="both"
+          aria-controls=" "
+          aria-describedby="selected-items-id__69"
+          aria-expanded={false}
+          aria-haspopup="true"
+          aria-owns={undefined}
+          autoCapitalize="off"
+          autoComplete="off"
+          className="ms-BasePicker-input"
+          data-lpignore={true}
+          disabled={undefined}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onCompositionEnd={[Function]}
+          onCompositionStart={[Function]}
+          onFocus={[Function]}
+          onInput={[Function]}
+          onKeyDown={[Function]}
+          role="combobox"
+          value=""
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

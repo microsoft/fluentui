@@ -2,11 +2,11 @@
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
+import { FabricDecoratorFixedWidth } from '../utilities';
 import { SpinButton } from 'office-ui-fabric-react';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 
-let props = {
+const props = {
   defaultValue: '0',
   label: 'Basic SpinButton:',
   min: 0,
@@ -15,7 +15,7 @@ let props = {
 };
 
 storiesOf('SpinButton', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(FabricDecoratorFixedWidth)
   .addDecorator(story => (
     <Screener
       steps={ new Screener.Steps()
@@ -36,21 +36,21 @@ storiesOf('SpinButton', module)
     </Screener>
   )).add('Root', () => (
     <SpinButton
-      {...props}
+      { ...props }
     />
   )).add('Disabled', () => (
     <SpinButton
-      {...props}
+      { ...props }
       disabled
     />
   )).add('With icon', () => (
     <SpinButton
-      {...props}
-      iconProps={ { iconName: 'IncreaseIndentLegacy' } }
+      { ...props }
+      iconProps={ { iconName: 'IncreaseIndentLegacy', } }
     />
   )).add('Label at end', () => (
     <SpinButton
-      {...props}
+      { ...props }
       labelPosition={ Position.end }
     />
   ));

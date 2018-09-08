@@ -1,4 +1,4 @@
-import { IStyle } from './IStyle';
+import { IStyle, IStyleBaseArray } from './IStyle';
 import { Stylesheet } from './Stylesheet';
 
 /**
@@ -7,7 +7,7 @@ import { Stylesheet } from './Stylesheet';
  */
 export function extractStyleParts(
   ...args: (IStyle | IStyle[] | false | null | undefined)[]
-): { classes: string[], objects: IStyle[] } {
+): { classes: string[]; objects: IStyleBaseArray } {
   const classes: string[] = [];
   const objects: {}[] = [];
   const stylesheet = Stylesheet.getInstance();
@@ -16,11 +16,19 @@ export function extractStyleParts(
     for (const arg of argsList) {
       if (arg) {
         if (typeof arg === 'string') {
-          const translatedArgs = stylesheet.argsFromClassName(arg);
-          if (translatedArgs) {
-            objects.push(translatedArgs);
+          if (arg.indexOf(' ') >= 0) {
+            _processArgs(arg.split(' '));
           } else {
-            classes.push(arg);
+            const translatedArgs = stylesheet.argsFromClassName(arg);
+
+            if (translatedArgs) {
+              _processArgs(translatedArgs);
+            } else {
+              // Avoid adding the same class twice.
+              if (classes.indexOf(arg) === -1) {
+                classes.push(arg);
+              }
+            }
           }
         } else if (Array.isArray(arg)) {
           _processArgs(arg);

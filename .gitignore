@@ -42,7 +42,8 @@ node_modules
 temp
 lib
 lib-amd
-lib-es6
+lib-commonjs
+lib-es2015
 coverage
 dist
 npm-debug.log

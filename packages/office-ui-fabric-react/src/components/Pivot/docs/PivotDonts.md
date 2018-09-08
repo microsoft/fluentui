@@ -1,0 +1,3 @@
+- Don’t use on pages which doesn’t scroll.
+- Don’t use the Pivot to link to a new page.
+- Don’t use the Pivot to link to hidden content.

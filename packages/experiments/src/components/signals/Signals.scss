@@ -1,21 +1,14 @@
 
 @import '~office-ui-fabric-react/src/common/common';
 
-.signal {
-  display: inline-block;
-  margin: 0 4px;
-  position: relative;
+/*
+Note: For icon alignment, please only use relative positioning in em units.
+Do not change the flex alignment or justification, or use vertical-alignment.
+It is important that Signals scale based on font-size and do not interfere with alternate alignment
+settings used by the parent control.
+*/
 
-  &:first-child {
-    @include margin-left(0);
-  }
-
-  &:last-child {
-    @include margin-right(0);
-  }
-}
-
-.newItem {
+.newSignal {
   width: 0;
   height: 1em;
   position: relative;
@@ -31,9 +24,9 @@
 .newIcon {
   position: absolute;
   bottom: 100%;
-  @include right(-1px);
+  @include right(-0.15em);
   font-size: 0.66em;
-  margin-bottom: -0.75em;
+  margin-bottom: -0.9em;
 }
 
 .comments {
@@ -56,11 +49,11 @@
 }
 
 .trending {
-  color: #006257;
+  color: $ms-color-green;
 }
 
 .blocked {
-  color: #a80000;
+  color: $ms-color-redDark;
 }
 
 .warning {
@@ -69,17 +62,42 @@
 
 .shared {
   color: $ms-color-neutralSecondary;
-  top: 0.1em;
+
+  .selected & {
+    color: $ms-color-black;
+  }
+}
+
+.lock {
+  color: $ms-color-neutralSecondary;
+
+  .selected & {
+    color: $ms-color-black;
+  }
 }
 
 .missingMetadata {
-  color: $ms-color-themeDarker;
+  color: #cf3902;
+}
+
+.youCheckedOut {
+  color: $ms-color-redDark;
+}
+
+.someoneCheckedOut {
+  color: $ms-color-neutralSecondary;
+
+  .selected & {
+    color: $ms-color-black;
+  }
+}
+
+.awaitingApproval {
+  color: #ad3100;
 }
 
 .mention {
   position: relative;
-
-  top: 0.2em;
 
   color: $ms-color-themePrimary;
 
@@ -88,24 +106,66 @@
   }
 }
 
-.signal {
-  transition: color 0.2s linear;
+.unseenEdit {
+  color: $ms-color-themePrimary;
 
-  .dark &,
-  .dark.selected {
-    color: $ms-color-white;
+  .selected & {
+    color: $ms-color-themeDark;
   }
 }
 
-.signalField {
-  display: inline-flex;
-  max-width: 100%;
-  flex-direction: row nowrap;
+.unseenReply {
+  color: $ms-color-themePrimary;
+
+  .selected & {
+    color: $ms-color-themeDark;
+  }
 }
 
-.signalFieldValue {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  text-align: left;
+i.unseenReply {
+  top: 0.25em;
+}
+
+.emailed {
+  color: $ms-color-themePrimary;
+
+  .selected & {
+    color: $ms-color-themeDark;
+  }
+}
+
+i.emailed {
+  top: 0.25em;
+}
+
+.malwareDetected {
+  color: $ms-color-redDark;
+}
+
+.readOnly {
+  color: $ms-color-neutralSecondary;
+
+  .selected & {
+    color: $ms-color-black;
+  }
+}
+
+.external {
+  color: $ms-color-neutralSecondary;
+
+  .selected & {
+    color: $ms-color-black;
+  }
+}
+
+.record {
+  color: $ms-color-neutralSecondary;
+
+  .selected & {
+    color: $ms-color-black;
+  }
+}
+
+.liveEdit {
+  display: none; // Not implemented.
 }

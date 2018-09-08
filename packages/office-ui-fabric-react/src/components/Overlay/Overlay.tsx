@@ -1,41 +1,8 @@
-import * as React from 'react';
-import {
-  BaseComponent,
-  css,
-  getNativeProps,
-  divProperties,
-  enableBodyScroll,
-  disableBodyScroll
-} from '../../Utilities';
-import { IOverlayProps } from './Overlay.Props';
+import { styled } from '../../Utilities';
+import { IOverlayProps, IOverlayStyleProps, IOverlayStyles } from './Overlay.types';
+import { OverlayBase } from './Overlay.base';
+import { getStyles } from './Overlay.styles';
 
-import * as stylesImport from './Overlay.scss';
-const styles: any = stylesImport;
-
-export class Overlay extends BaseComponent<IOverlayProps, {}> {
-
-  public componentDidMount() {
-    disableBodyScroll();
-  }
-
-  public componentWillUnmount() {
-    enableBodyScroll();
-  }
-
-  public render() {
-    let { isDarkThemed, className } = this.props;
-    let divProps = getNativeProps(this.props, divProperties);
-
-    let modifiedClassName = css(
-      'ms-Overlay',
-      styles.root,
-      className,
-      {
-        ['ms-Overlay--dark ' + styles.rootIsDark]: isDarkThemed,
-      });
-
-    return (
-      <div { ...divProps } className={ modifiedClassName } />
-    );
-  }
-}
+export const Overlay = styled<IOverlayProps, IOverlayStyleProps, IOverlayStyles>(OverlayBase, getStyles, undefined, {
+  scope: 'Overlay'
+});

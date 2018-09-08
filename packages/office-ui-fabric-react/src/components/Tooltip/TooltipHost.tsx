@@ -1,19 +1,18 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import {
   BaseComponent,
-  autobind,
   css,
   divProperties,
   getNativeProps,
   getId,
   assign,
-  hasOverflow
+  hasOverflow,
+  createRef,
+  portalContainsElement
 } from '../../Utilities';
-import { ITooltipHostProps, TooltipOverflowMode } from './TooltipHost.Props';
+import { ITooltipHostProps, TooltipOverflowMode } from './TooltipHost.types';
 import { Tooltip } from './Tooltip';
-import { TooltipDelay } from './Tooltip.Props';
+import { TooltipDelay } from './Tooltip.types';
 
 import * as stylesImport from './TooltipHost.scss';
 const styles: any = stylesImport;
@@ -28,7 +27,11 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
   };
 
   // The wrapping div that gets the hover events
-  private _tooltipHost: HTMLElement;
+  private _tooltipHost = createRef<HTMLDivElement>();
+
+  // The ID of the setTimeout that will eventually close the tooltip if the
+  // the tooltip isn't hovered over.
+  private _closingTimer = -1;
 
   // Constructor
   constructor(props: ITooltipHostProps) {
@@ -40,50 +43,66 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
   }
 
   // Render
-  public render() {
+  public render(): JSX.Element {
     const {
       calloutProps,
-      tooltipProps,
-      content,
       children,
+      content,
+      delay,
       directionalHint,
       directionalHintForRTL,
-      delay,
+      hostClassName,
       id,
       setAriaDescribedBy = true,
-      hostClassName
+      tooltipProps
     } = this.props;
     const { isTooltipVisible } = this.state;
     const tooltipId = id || getId('tooltip');
+    const isContentPresent = !!(
+      content ||
+      (tooltipProps && tooltipProps.onRenderContent && tooltipProps.onRenderContent())
+    );
+    const showTooltip = isTooltipVisible && isContentPresent;
+    const ariaDescribedBy = setAriaDescribedBy && isTooltipVisible && isContentPresent ? tooltipId : undefined;
+
     return (
       <div
-        className={ css('ms-TooltipHost', styles.host, hostClassName) }
-        ref={ this._resolveRef('_tooltipHost') }
-        { ...{ onFocusCapture: this._onTooltipMouseEnter } }
-        { ...{ onBlurCapture: this._onTooltipMouseLeave } }
-        onMouseEnter={ this._onTooltipMouseEnter }
-        onMouseLeave={ this._onTooltipMouseLeave }
-        aria-describedby={ setAriaDescribedBy && isTooltipVisible && content ? tooltipId : undefined }
+        className={css('ms-TooltipHost', styles.host, hostClassName)}
+        ref={this._tooltipHost}
+        {...{ onFocusCapture: this._onTooltipMouseEnter }}
+        {...{ onBlurCapture: this._hideTooltip }}
+        onMouseEnter={this._onTooltipMouseEnter}
+        onMouseLeave={this._onTooltipMouseLeave}
+        aria-describedby={ariaDescribedBy}
       >
-        { children }
-        { isTooltipVisible && (
+        {children}
+        {showTooltip && (
           <Tooltip
-            id={ tooltipId }
-            delay={ delay }
-            content={ content }
-            targetElement={ this._getTargetElement() }
-            directionalHint={ directionalHint }
-            directionalHintForRTL={ directionalHintForRTL }
-            calloutProps={ assign(calloutProps, { onDismiss: this._onTooltipCallOutDismiss }) }
-            { ...getNativeProps(this.props, divProperties) }
-            { ...tooltipProps }
+            id={tooltipId}
+            delay={delay}
+            content={content}
+            targetElement={this._getTargetElement()}
+            directionalHint={directionalHint}
+            directionalHintForRTL={directionalHintForRTL}
+            calloutProps={assign({}, calloutProps, {
+              onMouseEnter: this._onTooltipMouseEnter,
+              onMouseLeave: this._onTooltipMouseLeave
+            })}
+            onMouseEnter={this._onTooltipMouseEnter}
+            onMouseLeave={this._onTooltipMouseLeave}
+            {...getNativeProps(this.props, divProperties)}
+            {...tooltipProps}
           />
-        ) }
+        )}
       </div>
     );
   }
 
-  private _getTargetElement(): HTMLElement {
+  private _getTargetElement(): HTMLElement | undefined {
+    if (!this._tooltipHost.current) {
+      return undefined;
+    }
+
     const { overflowMode } = this.props;
 
     // Select target element based on overflow mode. For parent mode, you want to position the tooltip relative
@@ -91,19 +110,18 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
     if (overflowMode !== undefined) {
       switch (overflowMode) {
         case TooltipOverflowMode.Parent:
-          return this._tooltipHost.parentElement!;
+          return this._tooltipHost.current.parentElement!;
 
         case TooltipOverflowMode.Self:
-          return this._tooltipHost;
+          return this._tooltipHost.current;
       }
     }
 
-    return this._tooltipHost;
+    return this._tooltipHost.current;
   }
 
   // Show Tooltip
-  @autobind
-  private _onTooltipMouseEnter(ev: any) {
+  private _onTooltipMouseEnter = (ev: any): void => {
     const { overflowMode } = this.props;
 
     if (overflowMode !== undefined) {
@@ -113,25 +131,43 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
       }
     }
 
+    if (ev.target && portalContainsElement(ev.target as HTMLElement, this._getTargetElement())) {
+      // Do not show tooltip when target is inside a portal relative to TooltipHost.
+      return;
+    }
+
     this._toggleTooltip(true);
-  }
+    this._clearDismissTimer();
+  };
 
   // Hide Tooltip
-  @autobind
-  private _onTooltipMouseLeave(ev: any) {
-    this._toggleTooltip(false);
-  }
+  private _onTooltipMouseLeave = (ev: any): void => {
+    if (this.props.closeDelay) {
+      this._clearDismissTimer();
+
+      this._closingTimer = this._async.setTimeout(() => {
+        this._toggleTooltip(false);
+      }, this.props.closeDelay);
+    } else {
+      this._toggleTooltip(false);
+    }
+  };
+
+  private _clearDismissTimer = (): void => {
+    this._async.clearTimeout(this._closingTimer);
+  };
 
   // Hide Tooltip
-  @autobind
-  private _onTooltipCallOutDismiss() {
+  private _hideTooltip = (): void => {
     this._toggleTooltip(false);
-  }
+  };
 
-  private _toggleTooltip(isTooltipVisible: boolean) {
-    this.setState(
-      { isTooltipVisible },
-      () => this.props.onTooltipToggle &&
-        this.props.onTooltipToggle(this.state.isTooltipVisible));
+  private _toggleTooltip(isTooltipVisible: boolean): void {
+    if (this.state.isTooltipVisible !== isTooltipVisible) {
+      this.setState(
+        { isTooltipVisible },
+        () => this.props.onTooltipToggle && this.props.onTooltipToggle(this.state.isTooltipVisible)
+      );
+    }
   }
 }

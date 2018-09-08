@@ -1,11 +1,6 @@
 import * as React from 'react';
-import { IDocumentCardProps, DocumentCardType } from './DocumentCard.Props';
-import {
-  BaseComponent,
-  KeyCodes,
-  autobind,
-  css
-} from '../../Utilities';
+import { IDocumentCardProps, DocumentCardType } from './DocumentCard.types';
+import { BaseComponent, KeyCodes, css } from '../../Utilities';
 import * as stylesImport from './DocumentCard.scss';
 const styles: any = stylesImport;
 
@@ -22,9 +17,9 @@ export class DocumentCard extends BaseComponent<IDocumentCardProps, any> {
     });
   }
 
-  public render() {
-    let { onClick, onClickHref, children, className, type, accentColor } = this.props;
-    let actionable = (onClick || onClickHref) ? true : false;
+  public render(): JSX.Element {
+    const { onClick, onClickHref, children, className, type, accentColor } = this.props;
+    const actionable = onClick || onClickHref ? true : false;
 
     // Override the border color if an accent color was provided (compact card only)
     let style;
@@ -35,48 +30,43 @@ export class DocumentCard extends BaseComponent<IDocumentCardProps, any> {
     }
 
     // if this element is actionable it should have an aria role
-    let role = actionable ? (onClick ? 'button' : 'link') : undefined;
-    let tabIndex = actionable ? 0 : undefined;
+    const role = actionable ? (onClick ? 'button' : 'link') : undefined;
+    const tabIndex = actionable ? 0 : undefined;
 
     return (
       <div
-        tabIndex={ tabIndex }
-        role={ role }
-        className={
-          css(
-            'ms-DocumentCard',
-            styles.root,
-            {
-              ['ms-DocumentCard--actionable ' + styles.rootIsActionable]: actionable,
-              ['ms-DocumentCard--compact ' + styles.rootIsCompact]: type === DocumentCardType.compact ? true : false
-            },
-            className
-          )
-        }
-        onKeyDown={ actionable ? this._onKeyDown : undefined }
-        onClick={ actionable ? this._onClick : undefined }
-        style={ style }
+        tabIndex={tabIndex}
+        role={role}
+        className={css(
+          'ms-DocumentCard',
+          styles.root,
+          {
+            ['ms-DocumentCard--actionable ' + styles.rootIsActionable]: actionable,
+            ['ms-DocumentCard--compact ' + styles.rootIsCompact]: type === DocumentCardType.compact ? true : false
+          },
+          className
+        )}
+        onKeyDown={actionable ? this._onKeyDown : undefined}
+        onClick={actionable ? this._onClick : undefined}
+        style={style}
       >
-        { children }
+        {children}
       </div>
     );
   }
 
-  @autobind
-  private _onClick(ev: React.MouseEvent<HTMLElement>): void {
+  private _onClick = (ev: React.MouseEvent<HTMLElement>): void => {
     this._onAction(ev);
-  }
+  };
 
-  @autobind
-  private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>): void {
+  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
       this._onAction(ev);
     }
-  }
+  };
 
-  @autobind
-  private _onAction(ev: React.SyntheticEvent<HTMLElement>): void {
-    let { onClick, onClickHref } = this.props;
+  private _onAction = (ev: React.SyntheticEvent<HTMLElement>): void => {
+    const { onClick, onClickHref } = this.props;
 
     if (onClick) {
       onClick(ev);
@@ -86,5 +76,5 @@ export class DocumentCard extends BaseComponent<IDocumentCardProps, any> {
       ev.preventDefault();
       ev.stopPropagation();
     }
-  }
+  };
 }

@@ -26,6 +26,7 @@ $Header-fabricWebsiteHeaderColor: #272630;
     display: inline-block;
     vertical-align: top;
     color: white;
+    border-radius: 0;
   }
 
   .Header-title {
@@ -46,6 +47,7 @@ $Header-fabricWebsiteHeaderColor: #272630;
     position: relative;
     text-decoration: none;
     background: none;
+    background-color: transparent;
     border: none;
     padding: 0;
     padding: 0px 10px;

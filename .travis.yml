@@ -1,7 +1,11 @@
 language: node_js
 node_js:
-  - '7'
+  - '8'
 script:
-  - npm run buildfast
+  - if [ $TRAVIS_BRANCH == "master" ] && [ $TRAVIS_PULL_REQUEST != "false" ];
+    then npm run checkchange;
+    fi
+  - npm run buildci
   - npm run bundlesize
   - npm run vrtest
+  - npm run check-for-changed-files

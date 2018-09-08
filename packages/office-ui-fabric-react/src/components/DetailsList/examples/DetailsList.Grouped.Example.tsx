@@ -1,11 +1,12 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
+import { BaseComponent, createRef } from 'office-ui-fabric-react/lib/Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import { DetailsList } from 'office-ui-fabric-react/lib/DetailsList';
+import { IDetailsList, DetailsList, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import './DetailsList.Grouped.Example.scss';
 
-let _columns = [
+const _columns = [
   {
     key: 'name',
     name: 'Name',
@@ -22,7 +23,7 @@ let _columns = [
     maxWidth: 200
   }
 ];
-let _items = [
+const _items = [
   {
     key: 'a',
     name: 'a',
@@ -50,27 +51,48 @@ let _items = [
   }
 ];
 
-export class DetailsListGroupedExample extends React.Component<any, any> {
-  constructor() {
-    super();
+export class DetailsListGroupedExample extends BaseComponent<
+  {},
+  {
+    items: {}[];
+    showItemIndexInView: boolean;
+  }
+> {
+  private _root = createRef<IDetailsList>();
+
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
-      items: _items
+      items: _items,
+      showItemIndexInView: false
     };
   }
 
+  public componentWillUnmount() {
+    if (this.state.showItemIndexInView) {
+      const itemIndexInView = this._root!.current!.getStartItemIndexInView();
+      alert('unmounting, getting first item index that was in view: ' + itemIndexInView);
+    }
+  }
+
   public render() {
-    let { items } = this.state;
+    const { items } = this.state;
 
     return (
-      <Fabric className='foo'>
-        <DefaultButton
-          onClick={ this._addItem }
-          text='Add an item'
-        />
+      <Fabric className="DetailsList-grouped-example">
+        <div>
+          <Checkbox
+            label="Show index of the first item in view when unmounting"
+            checked={this.state.showItemIndexInView}
+            onChange={this._onShowItemIndexInViewChanged}
+          />
+        </div>
+        <DefaultButton onClick={this._addItem} text="Add an item" />
         <DetailsList
-          items={ items }
-          groups={ [
+          componentRef={this._root}
+          items={items}
+          groups={[
             {
               key: 'groupred0',
               name: 'By "red"',
@@ -87,30 +109,59 @@ export class DetailsListGroupedExample extends React.Component<any, any> {
               key: 'groupblue2',
               name: 'By "blue"',
               startIndex: 2,
-              count: 3
+              count: items.length - 2
             }
-          ] }
-          columns={ _columns }
-          ariaLabelForSelectAllCheckbox='Toggle selection for all items'
-          ariaLabelForSelectionColumn='Toggle selection'
-          groupProps={ {
+          ]}
+          columns={_columns}
+          ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+          ariaLabelForSelectionColumn="Toggle selection"
+          groupProps={{
             showEmptyGroups: true
-          } }
+          }}
+          onRenderItemColumn={this._onRenderColumn}
         />
       </Fabric>
     );
   }
 
-  private _addItem() {
-    let items = this.state.items;
+  private _addItem = (): void => {
+    const items = this.state.items;
 
-    this.setState({
-      items: items.concat([{
-        key: 'item-' + items.length,
-        name: 'New item ' + items.length,
-        color: 'blue'
-      }])
-    });
+    this.setState(
+      {
+        items: items.concat([
+          {
+            key: 'item-' + items.length,
+            name: 'New item ' + items.length,
+            color: 'blue'
+          }
+        ])
+      },
+      () => {
+        if (this._root.current) {
+          this._root.current.focusIndex(items.length, true);
+        }
+      }
+    );
+  };
+
+  private _onRenderColumn(item: any, index: number, column: IColumn) {
+    let value = item && column && column.fieldName ? item[column.fieldName] : '';
+
+    if (value === null || value === undefined) {
+      value = '';
+    }
+
+    return (
+      <div className={'grouped-example-column'} data-is-focusable={true}>
+        {value}
+      </div>
+    );
   }
 
+  private _onShowItemIndexInViewChanged = (event: React.FormEvent<HTMLInputElement>, checked: boolean): void => {
+    this.setState({
+      showItemIndexInView: checked
+    });
+  };
 }

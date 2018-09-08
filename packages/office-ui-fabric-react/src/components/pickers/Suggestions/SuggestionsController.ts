@@ -14,11 +14,13 @@ export class SuggestionsController<T> {
     this.currentIndex = -1;
   }
 
-  public updateSuggestions(newSuggestions: T[], selectedIndex?: number) {
+  public updateSuggestions(newSuggestions: T[], selectedIndex?: number): void {
     if (newSuggestions && newSuggestions.length > 0) {
       this.suggestions = this.convertSuggestionsToSuggestionItems(newSuggestions);
-      this.currentIndex = 0;
-      if (selectedIndex !== undefined) {
+      this.currentIndex = selectedIndex ? selectedIndex : 0;
+      if (selectedIndex! === -1) {
+        this.currentSuggestion = undefined;
+      } else if (selectedIndex !== undefined) {
         this.suggestions[selectedIndex].selected = true;
         this.currentSuggestion = this.suggestions[selectedIndex];
       }
@@ -34,10 +36,10 @@ export class SuggestionsController<T> {
    */
   public nextSuggestion(): boolean {
     if (this.suggestions && this.suggestions.length) {
-      if (this.currentIndex < (this.suggestions.length - 1)) {
+      if (this.currentIndex < this.suggestions.length - 1) {
         this.setSelectedSuggestion(this.currentIndex + 1);
         return true;
-      } else if (this.currentIndex === (this.suggestions.length - 1)) {
+      } else if (this.currentIndex === this.suggestions.length - 1) {
         this.setSelectedSuggestion(0);
         return true;
       }
@@ -79,24 +81,24 @@ export class SuggestionsController<T> {
     return this.currentSuggestion ? true : false;
   }
 
-  public removeSuggestion(index: number) {
+  public removeSuggestion(index: number): void {
     this.suggestions.splice(index, 1);
   }
 
-  public createGenericSuggestion(itemToConvert: ISuggestionModel<T>) {
-    let itemToAdd = this.convertSuggestionsToSuggestionItems([itemToConvert])[0];
+  public createGenericSuggestion(itemToConvert: ISuggestionModel<T> | T) {
+    const itemToAdd = this.convertSuggestionsToSuggestionItems([itemToConvert])[0];
     this.currentSuggestion = itemToAdd;
   }
 
-  public convertSuggestionsToSuggestionItems(suggestions: any[]): ISuggestionModel<T>[] {
-    let converted: ISuggestionModel<T>[] = [];
-    suggestions.forEach((suggestion: any) => converted.push({ item: suggestion, selected: false, ariaLabel: suggestion.name || suggestion.primaryText }));
-    return converted;
+  public convertSuggestionsToSuggestionItems(suggestions: Array<ISuggestionModel<T> | T>): ISuggestionModel<T>[] {
+    return Array.isArray(suggestions) ? suggestions.map(this._ensureSuggestionModel) : [];
   }
 
   public deselectAllSuggestions(): void {
-    this.currentIndex = -1;
-    this.suggestions[this.currentIndex].selected = false;
+    if (this.currentIndex > -1) {
+      this.suggestions[this.currentIndex].selected = false;
+      this.currentIndex = -1;
+    }
   }
 
   public setSelectedSuggestion(index: number): void {
@@ -114,4 +116,20 @@ export class SuggestionsController<T> {
       this.currentSuggestion = this.suggestions[index];
     }
   }
+
+  private _isSuggestionModel = (value: ISuggestionModel<T> | T): value is ISuggestionModel<T> => {
+    return (<ISuggestionModel<T>>value).item !== undefined;
+  };
+
+  private _ensureSuggestionModel = (suggestion: ISuggestionModel<T> | T): ISuggestionModel<T> => {
+    if (this._isSuggestionModel(suggestion)) {
+      return suggestion as ISuggestionModel<T>;
+    } else {
+      return {
+        item: suggestion,
+        selected: false,
+        ariaLabel: (<any>suggestion).name || (<any>suggestion).primaryText
+      } as ISuggestionModel<T>;
+    }
+  };
 }

@@ -1,7 +1,10 @@
-
 /*
-  Retreive the route URL for a page in a group from the the AppState
+  Retreive the route URL for a page without the string after the last hash.
 */
-export function getPageRouteFromState(pageName: string): string {
-  return '';
+export function getPathMinusLastHash(path: string): string {
+  const hashIndex = path.lastIndexOf('#');
+  if (hashIndex > 0) {
+    path = path.substr(0, hashIndex);
+  }
+  return path;
 }

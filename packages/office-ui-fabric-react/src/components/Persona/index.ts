@@ -1,4 +1,5 @@
 export * from './Persona';
-export * from './Persona.Props';
+export * from './Persona.base';
+export * from './Persona.types';
+export * from './PersonaCoin/index';
 export * from './PersonaConsts';
-export * from './PersonaCoin';

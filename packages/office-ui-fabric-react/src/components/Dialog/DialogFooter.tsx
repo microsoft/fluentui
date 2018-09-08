@@ -1,22 +1,11 @@
-import * as React from 'react';
-import { BaseComponent, css } from '../../Utilities';
-import * as stylesImport from './Dialog.scss';
-const styles: any = stylesImport;
+import { styled } from '../../Utilities';
+import { IDialogFooterProps, IDialogFooterStyleProps, IDialogFooterStyles } from './DialogFooter.types';
+import { DialogFooterBase } from './DialogFooter.base';
+import { getStyles } from './DialogFooter.styles';
 
-export class DialogFooter extends BaseComponent<any, any> {
-  public render() {
-    return (
-      <div className={ css('ms-Dialog-actions', styles.actions) }>
-        <div className={ css('ms-Dialog-actionsRight', styles.actionsRight) }>
-          { this._renderChildrenAsActions() }
-        </div>
-      </div>
-    );
-  }
-
-  private _renderChildrenAsActions() {
-    return React.Children.map(this.props.children, child =>
-      <span className={ css('ms-Dialog-action', styles.action) }>{ child }</span>
-    );
-  }
-}
+export const DialogFooter = styled<IDialogFooterProps, IDialogFooterStyleProps, IDialogFooterStyles>(
+  DialogFooterBase,
+  getStyles,
+  undefined,
+  { scope: 'DialogFooter' }
+);

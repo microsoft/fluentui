@@ -1,9 +1,9 @@
-
 @import '~office-ui-fabric-react/src/common/common';
 
 .listCell {
   display: block;
   margin: 0;
+  border-color: $ms-color-white;
 }
 
 .listPage {
@@ -40,6 +40,23 @@
   align-items: flex-start;
   justify-content: flex-start;
   align-content: flex-start;
+}
+
+.shimmeredList {
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(
+      to bottom,
+      transparent 30%,
+      $ms-color-whiteTranslucent40 65%,
+      $ms-color-white 100%
+    );
+  }
 }
 
 .none {

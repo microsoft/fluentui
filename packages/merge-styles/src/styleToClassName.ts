@@ -22,11 +22,7 @@ function getDisplayName(rules?: { [key: string]: IRawStyle }): string | undefine
   return rootStyle ? (rootStyle as IRawStyle).displayName : undefined;
 }
 
-function extractRules(
-  args: IStyle[],
-  rules: IRuleSet = { __order: [] },
-  currentSelector: string = '&'
-): IRuleSet {
+function extractRules(args: IStyle[], rules: IRuleSet = { __order: [] }, currentSelector: string = '&'): IRuleSet {
   const stylesheet = Stylesheet.getInstance();
   let currentRules: IDictionary | undefined = rules[currentSelector] as IDictionary;
 
@@ -42,14 +38,14 @@ function extractRules(
       const expandedRules = stylesheet.argsFromClassName(arg);
 
       if (expandedRules) {
-        extractRules(expandedRules, rules);
+        extractRules(expandedRules, rules, currentSelector);
       }
       // Else if the arg is an array, we need to recurse in.
     } else if (Array.isArray(arg)) {
       extractRules(arg, rules, currentSelector);
     } else {
       // tslint:disable-next-line:no-any
-      for (const prop in (arg as any)) {
+      for (const prop in arg as any) {
         if (prop === 'selectors') {
           // tslint:disable-next-line:no-any
           const selectors: { [key: string]: IStyle } = (arg as any).selectors;
@@ -58,7 +54,9 @@ function extractRules(
             if (selectors.hasOwnProperty(newSelector)) {
               const selectorValue = selectors[newSelector];
 
-              if (newSelector.indexOf('@media') === 0) {
+              if (newSelector.indexOf(':global(') === 0) {
+                newSelector = newSelector.replace(/:global\(|\)$/g, '');
+              } else if (newSelector.indexOf('@media') === 0) {
                 newSelector = newSelector + '{' + currentSelector;
               } else if (newSelector.indexOf(':') === 0) {
                 newSelector = currentSelector + newSelector;
@@ -86,12 +84,8 @@ function extractRules(
   return rules;
 }
 
-function expandQuads(
-  currentRules: IDictionary,
-  name: string,
-  value: string
-): void {
-  const parts = (typeof value === 'string') ? value.split(' ') : [value];
+function expandQuads(currentRules: IDictionary, name: string, value: string): void {
+  const parts = typeof value === 'string' ? value.split(' ') : [value];
 
   currentRules[name + 'Top'] = parts[0];
   currentRules[name + 'Right'] = parts[1] || parts[0];
@@ -108,7 +102,7 @@ function getKeyForRules(rules: IRuleSet): string | undefined {
     const rulesForSelector = rules[selector];
 
     for (const propName in rulesForSelector) {
-      if (rulesForSelector.hasOwnProperty(propName)) {
+      if (rulesForSelector.hasOwnProperty(propName) && rulesForSelector[propName] !== undefined) {
         hasProps = true;
         serialized.push(propName, rulesForSelector[propName]);
       }
@@ -126,7 +120,7 @@ export function serializeRuleEntries(ruleEntries: { [key: string]: string | numb
   const allEntries: (string | number)[] = [];
 
   for (const entry in ruleEntries) {
-    if (ruleEntries.hasOwnProperty(entry) && entry !== DISPLAY_NAME) {
+    if (ruleEntries.hasOwnProperty(entry) && entry !== DISPLAY_NAME && ruleEntries[entry] !== undefined) {
       allEntries.push(entry, ruleEntries[entry]);
     }
   }
@@ -171,10 +165,7 @@ export function styleToRegistration(...args: IStyle[]): IRegistration | undefine
       const rulesToInsert: string[] = [];
 
       for (const selector of rules.__order) {
-        rulesToInsert.push(
-          selector,
-          serializeRuleEntries(rules[selector])
-        );
+        rulesToInsert.push(selector, serializeRuleEntries(rules[selector]));
       }
       registration.rulesToInsert = rulesToInsert;
     }
@@ -183,10 +174,7 @@ export function styleToRegistration(...args: IStyle[]): IRegistration | undefine
   }
 }
 
-export function applyRegistration(
-  registration: IRegistration,
-  classMap?: { [key: string]: string }
-): void {
+export function applyRegistration(registration: IRegistration, classMap?: { [key: string]: string }): void {
   const stylesheet = Stylesheet.getInstance();
   const { className, key, args, rulesToInsert } = registration;
 
@@ -198,28 +186,25 @@ export function applyRegistration(
         let selector = rulesToInsert[i];
 
         // Fix selector using map.
-        selector = selector.replace(/(&)|\$([\w-]+)\b/g, (match: string, amp: string, cn: string): string => {
-          if (amp) {
-            return '.' + registration.className;
-          } else if (cn) {
-            return '.' + ((classMap && classMap[cn]) || cn);
+        selector = selector.replace(
+          /(&)|\$([\w-]+)\b/g,
+          (match: string, amp: string, cn: string): string => {
+            if (amp) {
+              return '.' + registration.className;
+            } else if (cn) {
+              return '.' + ((classMap && classMap[cn]) || cn);
+            }
+            return '';
           }
-          return '';
-        });
+        );
 
         // Insert. Note if a media query, we must close the query with a final bracket.
-        const processedRule = `${selector}{${rules}}${(selector.indexOf('@media') === 0) ? '}' : ''}`;
+        const processedRule = `${selector}{${rules}}${selector.indexOf('@media') === 0 ? '}' : ''}`;
 
         stylesheet.insertRule(processedRule);
       }
     }
-    stylesheet.cacheClassName(
-      className!,
-      key!,
-      args!,
-      rulesToInsert
-    );
-
+    stylesheet.cacheClassName(className!, key!, args!, rulesToInsert);
   }
 }
 

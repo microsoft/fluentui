@@ -1,1 +1,1 @@
-export * from '@uifabric/utilities/lib/index';
+export * from '@uifabric/utilities';

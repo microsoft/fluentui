@@ -12,10 +12,10 @@ export class PageHeaderLink extends React.Component<IPageHeaderLink, {}> {
   private scrollDistance;
 
   private _els: {
-    link?: HTMLAnchorElement
+    link?: HTMLAnchorElement;
   } = {};
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     this._eventListener = this._eventListener.bind(this);
     this._getBreakpoint = this._getBreakpoint.bind(this);
     this._els.link.addEventListener('click', this._eventListener);
@@ -23,9 +23,17 @@ export class PageHeaderLink extends React.Component<IPageHeaderLink, {}> {
     this._getBreakpoint();
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
-      <a ref={ (a) => { this._els.link = a; } } href={ this.props.href } data-title={ this.props.text }>{ this.props.text }</a>
+      <a
+        ref={a => {
+          this._els.link = a;
+        }}
+        href={this.props.href}
+        data-title={this.props.text}
+      >
+        {this.props.text}
+      </a>
     );
   }
 
@@ -41,29 +49,33 @@ export class PageHeaderLink extends React.Component<IPageHeaderLink, {}> {
     }
   }
 
-  private _eventListener(event) {
+  private _eventListener(event): void {
     event.preventDefault();
     history.pushState({}, '', this._els.link.getAttribute('href'));
+    let navigatorUserAgent = navigator.userAgent.toLowerCase();
     let hash = this._extractAnchorLink(window.location.hash);
-    if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
+    if (navigatorUserAgent.indexOf('firefox') > -1) {
       hash = decodeURI(hash);
     }
     let el = document.getElementById(hash);
     let elRect = el.getBoundingClientRect();
     let bodySTop = document.body.scrollTop;
-    let currentScrollPosition;
+    let currentScrollPosition = bodySTop + elRect.top;
+    let scrollTarget: HTMLBodyElement | HTMLHtmlElement = document.querySelector('body');
 
-    currentScrollPosition = bodySTop + elRect.top;
+    if (
+      navigatorUserAgent.indexOf('firefox') > -1 ||
+      (navigatorUserAgent.indexOf('chrome') > -1 && navigatorUserAgent.indexOf('edge') < 0)
+    ) {
+      currentScrollPosition += window.scrollY;
+      scrollTarget = document.querySelector('html');
+    }
 
     if (currentScrollPosition < 0) {
       currentScrollPosition = 0;
     }
 
-    let scrollTarget = (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) ?
-      document.querySelector('html') :
-      document.querySelector('body');
-
-    Animate.scrollTo(scrollTarget as HTMLElement, {
+    Animate.scrollTo(scrollTarget, {
       duration: 0.3,
       top: currentScrollPosition - this.scrollDistance
     });
@@ -71,7 +83,7 @@ export class PageHeaderLink extends React.Component<IPageHeaderLink, {}> {
 
   private _extractAnchorLink(path) {
     let split = path.split('#');
-    let cleanedSplit = split.filter((value) => {
+    let cleanedSplit = split.filter(value => {
       if (value === '') {
         return false;
       } else {

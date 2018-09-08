@@ -14,23 +14,25 @@ const version = require('./package.json').version;
 const isProduction = process.argv.indexOf('--production') > -1;
 const minFileNamePart = isProduction ? '.min' : '';
 const entryPointFilename = 'fabric-sitev5';
+const devServer = {
+  host: HOST_NAME,
+  disableHostCheck: true,
+  port: 4324
+};
 
 module.exports = resources.createServeConfig({
   entry: './src/root.tsx',
   output: {
     filename: entryPointFilename + '.js',
     path: path.join(__dirname, 'dist'),
-    publicPath: '/dist/',
+    publicPath: 'http://' + HOST_NAME + ':' + devServer.port + '/dist/',
     chunkFilename: `${entryPointFilename}-${version}-[name]${minFileNamePart}.js`
   },
 
-  devServer: {
-    host: HOST_NAME,
-    disableHostCheck: true
-  },
+  devServer: devServer,
 
   externals: {
-    'react': 'React',
+    react: 'React',
     'react-dom': 'ReactDOM'
   },
 
@@ -43,8 +45,5 @@ module.exports = resources.createServeConfig({
     }
   },
 
-  plugins: [
-    new WriteFilePlugin()
-  ]
-
+  plugins: [new WriteFilePlugin()]
 });

@@ -21,23 +21,21 @@ Example of returning markup that is `themePrimary` colored using the `medium` fo
 
 ```tsx
 import {
-  colorClassNames,
-  fontClassNames
+  ColorClassNames,
+  FontClassNames
 } from '@uifabric/styling';
 
 function renderHtml() {
   return (
     `<div class="${ [
-      colorClassNames.themePrimary,
-      fontClassNamed.medium
+      ColorClassNames.themePrimary,
+      FontClassNamed.medium
       ].join(' ') }">Hello world!</div>`
   );
 }
 ```
 
-There are a number of classes available under `colorClassNames`, `fontClassNames`, `AnimationClassNames`, and `iconClassNames` exports. See the [available classes](#availableClasses) below.
-
-Using animations works the same way:
+There are a number of classes available under `ColorClassNames`, `FontClassNames`, and `AnimationClassNames` exports.
 
 ```tsx
 import {
@@ -51,41 +49,6 @@ function renderHtml() {
 }
 ```
 
-Rendering icons is also simplified:
-
-```tsx
-import {
-  classNames
-} from '@uifabric/styling';
-
-function renderHtml() {
-  return (
-    `<i class="${ classNames.icons.snow }" />`
-  );
-}
-```
-
-# Usage via JavaScript styling libraries (Glamor, Aphrodite)
-
-If you need access to the raw JavaScript style objects so that you can mix them into other classes and use via a css library such as Glamor or Aphrodite, you can access the raw classes like so:
-
-```tsx
-import {
-  styles
-} from '@uifabric/styling';
-import { css } from 'glamor';
-
-function renderHtml() {
-  let className = css({
-    ...styles.fonts.large,
-    background: 'red'
-  });
-  return (
-    `<div class="${ css(styles.fonts.large, { background: 'red' }) }">Hello!</div>`
-  );
-}
-```
-
 
 # Overriding the theme colors
 
@@ -94,9 +57,9 @@ The default palette of colors matches the default Fabric core styling convention
 ```tsx
 import {
   loadTheme({
-    colors: {
+    palette: {
       themePrimary: 'red',
-      themeSeconary: 'blue'
+      themeSecondary: 'blue'
     }
   });
 }
@@ -104,34 +67,4 @@ import {
 
 If you override theme settings, you need to do this before accessing theme colors. Otherwise you won't get a notification that the theme changed.
 
-# Available classes
-<a name="availableClasses"></a>
 
-## Colors (classNames.colors members)
-
-Members of `classNames.colors`:
-
-| Name | Description |
-|------|-------------|
-
-## Fonts
-
-Members of `classNames.fonts`:
-
-| Name | Description |
-|------|-------------|
-
-
-## Animations (classNames.animations members)
-
-Members of `classNames.animations`:
-
-| Name | Description |
-|------|-------------|
-
-## Icons (classNames.icons members)
-
-Members of `classNames.icons`:
-
-| Name | Description |
-|------|-------------|

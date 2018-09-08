@@ -25,12 +25,12 @@ storiesOf('SearchBox', module)
     </Screener>
   )).add('Root', () => (
     <Fabric style={ { display: 'flex' } }>
-      <div className='testWrapper' style={ { padding: '10px', overflow: 'hidden' } }>
-        <SearchBox />
+      <div className='testWrapper' style={ { padding: '10px', overflow: 'hidden', width: '300px' } }>
+        <SearchBox placeholder='Search' />
       </div>
     </Fabric>
   )).add('Full', () => (
     <Fabric className='testWrapper'>
-      <SearchBox />
+      <SearchBox placeholder='Search' />
     </Fabric>
   ));

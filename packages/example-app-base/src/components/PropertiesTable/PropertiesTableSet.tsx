@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IProperty, PropertyType } from '../../utilities/parser/index';
 import { PropertiesTable } from './PropertiesTable';
-import { IPropertiesTableSetProps } from './PropertiesTableSet.Props';
+import { IPropertiesTableSetProps } from './PropertiesTableSet.types';
 import { parse } from '../../utilities/parser/index';
 
 export interface IPropertiesTableSetState {
@@ -17,9 +17,9 @@ export class PropertiesTableSet extends React.Component<IPropertiesTableSetProps
 
     if (sources) {
       src = '';
-      sources.forEach((source: string) => src += source);
+      sources.forEach((source: string) => (src += source));
     } else if (componentPath && componentName) {
-      src = require(componentPath + componentName + '.Props.ts');
+      src = require(componentPath + componentName + '.types.ts');
     } else {
       throw new Error('PropertiesTableSet was used without source or a componentPath/name');
     }
@@ -40,19 +40,15 @@ export class PropertiesTableSet extends React.Component<IPropertiesTableSetProps
   public renderEach(): JSX.Element[] {
     return this.state.properties.map((item: IProperty) => (
       <PropertiesTable
-        key={ item.propertyName }
-        title={ item.name === ('I' + this.props.componentName) ? (this.props.componentName + ' class') : item.propertyName }
-        properties={ item.property }
-        renderAsEnum={ item.propertyType === PropertyType.enum }
+        key={item.propertyName}
+        title={item.name === 'I' + this.props.componentName ? this.props.componentName + ' class' : item.propertyName}
+        properties={item.property}
+        renderAsEnum={item.propertyType === PropertyType.enum}
       />
     ));
   }
 
   public render(): JSX.Element {
-    return (
-      <div>
-        { this.renderEach() }
-      </div>
-    );
+    return <div>{this.renderEach()}</div>;
   }
 }

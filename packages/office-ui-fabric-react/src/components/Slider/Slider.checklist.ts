@@ -1,4 +1,4 @@
-import { ChecklistStatus } from '../../demo/ComponentStatus/ComponentStatus.Props';
+import { ChecklistStatus } from '../../common/DocPage.types';
 
 export const SliderStatus = {
   keyboardAccessibilitySupport: ChecklistStatus.unknown,

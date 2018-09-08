@@ -1,0 +1,5 @@
+- Don't use generic labels like "Ok," especially in the case of an error; errors are never "Ok."
+- Don’t place the default focus on a button that destroys data. Instead, place the default focus on the button that performs the "safe act" and retains the content (i.e. "Save") or cancels the action (i.e. "Cancel").
+- Don’t use a button to navigate to another place, use a link instead. The exception is in a wizard where "Back" and "Next" buttons may be used.
+- Don’t put too much text in a button - try to keep the length of your text to a minimum.
+- Don't put anything other than text in a button.

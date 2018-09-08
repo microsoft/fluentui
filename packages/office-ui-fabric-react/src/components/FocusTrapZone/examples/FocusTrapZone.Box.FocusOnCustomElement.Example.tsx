@@ -1,8 +1,5 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
-import { autobind } from '../../../Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 import { Link } from 'office-ui-fabric-react/lib/Link';
@@ -20,94 +17,86 @@ export default class BoxExample extends React.Component<React.HTMLAttributes<HTM
     super(props);
 
     this.state = {
-      isChecked: false,
+      isChecked: false
     };
   }
 
   public render() {
-    let { isChecked } = this.state;
-    const className: string = 'shouldFocus input';
+    const { isChecked } = this.state;
+    const className = 'shouldFocus input';
 
     return (
       <div>
-        <DefaultButton
-          onClick={ this._onButtonClickHandler }
-          text='Go to Trap Zone'
-        />
-        { (() => {
+        <DefaultButton onClick={this._onButtonClickHandler} text="Go to Trap Zone" />
+        {(() => {
           if (isChecked) {
-            return (
-              <FocusTrapZone firstFocusableSelector={ className }>
-                { this._internalContents() }
-              </FocusTrapZone>
-            );
+            return <FocusTrapZone firstFocusableSelector={className}>{this._internalContents()}</FocusTrapZone>;
           } else {
-            return (
-              <div>
-                { this._internalContents() }
-              </div>
-            );
+            return <div>{this._internalContents()}</div>;
           }
-        })() }
+        })()}
       </div>
     );
   }
 
   private _internalContents() {
-    let { isChecked } = this.state;
+    const { isChecked } = this.state;
 
     return (
-      <div className='ms-FocusTrapZoneBoxExample'>
-        <TextField label='Default TextField' placeholder='Input inside Focus Trap Zone' className='' />
-        <Link href='' className='' >Hyperlink inside FocusTrapZone</Link><br /><br />
-        <div className='shouldFocus input'>
+      <div className="ms-FocusTrapZoneBoxExample">
+        <TextField label="Default TextField" placeholder="Input inside Focus Trap Zone" className="" />
+        <Link href="" className="">
+          Hyperlink inside FocusTrapZone
+        </Link>
+        <br />
+        <br />
+        <div className="shouldFocus input">
           <Toggle
-            componentRef={ this._setRef }
-            checked={ isChecked }
-            onChanged={ this._onFocusTrapZoneToggleChanged }
-            label='Focus Trap Zone'
-            onText='On'
-            offText='Off'
+            componentRef={this._setRef}
+            checked={isChecked}
+            onChange={this._onFocusTrapZoneToggleChanged}
+            label="Focus Trap Zone"
+            onText="On"
+            offText="Off"
           />
         </div>
-        { (() => {
+        {(() => {
           if (isChecked) {
             return (
               <DefaultButton
-                description='Exit Focus Trap Zone'
-                onClick={ this._onExitButtonClickHandler }
-                text='Exit Focus Trap Zone'
+                secondaryText="Exit Focus Trap Zone"
+                onClick={this._onExitButtonClickHandler}
+                text="Exit Focus Trap Zone"
               />
             );
           }
-        })() }
+        })()}
       </div>
     );
   }
 
-  @autobind
-  private _onButtonClickHandler() {
+  private _onButtonClickHandler = (): void => {
     this.setState({
       isChecked: true
     });
-  }
+  };
 
-  @autobind
-  private _onExitButtonClickHandler() {
+  private _onExitButtonClickHandler = (): void => {
     this.setState({
       isChecked: false
     });
-  }
+  };
 
-  @autobind
-  private _onFocusTrapZoneToggleChanged(isChecked: boolean) {
-    this.setState({
-      isChecked: isChecked
-    }, () => this._toggle.focus());
-  }
+  private _onFocusTrapZoneToggleChanged = (ev: React.MouseEvent<HTMLElement>, isChecked: boolean): void => {
+    this.setState(
+      {
+        isChecked: isChecked
+      },
+      () => this._toggle.focus()
+    );
+  };
 
-  @autobind
-  private _setRef(toggle: IToggle): void {
+  private _setRef = (toggle: IToggle): void => {
     this._toggle = toggle;
-  }
+  };
 }

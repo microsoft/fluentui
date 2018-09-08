@@ -12,7 +12,7 @@ const people: (IPersonaProps & { key: string | number })[] = [
     key: 1,
     imageUrl: TestImages.personaFemale,
     imageInitials: 'PV',
-    primaryText: 'Annie Lindqvist',
+    text: 'Annie Lindqvist',
     secondaryText: 'Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
@@ -22,7 +22,7 @@ const people: (IPersonaProps & { key: string | number })[] = [
     key: 2,
     imageUrl: TestImages.personaMale,
     imageInitials: 'AR',
-    primaryText: 'Aaron Reid',
+    text: 'Aaron Reid',
     secondaryText: 'Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
@@ -32,7 +32,7 @@ const people: (IPersonaProps & { key: string | number })[] = [
     key: 3,
     imageUrl: TestImages.personaMale,
     imageInitials: 'AL',
-    primaryText: 'Alex Lundberg',
+    text: 'Alex Lundberg',
     secondaryText: 'Software Developer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
@@ -42,7 +42,57 @@ const people: (IPersonaProps & { key: string | number })[] = [
     key: 4,
     imageUrl: TestImages.personaMale,
     imageInitials: 'RK',
-    primaryText: 'Roko Kolar',
+    text: 'Roko Kolar',
+    secondaryText: 'Financial Analyst',
+    tertiaryText: 'In a meeting',
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.offline
+  },
+  {
+    key: 5,
+    imageUrl: TestImages.personaMale,
+    imageInitials: 'RK',
+    text: 'Alex Lundberg1',
+    secondaryText: 'Financial Analyst',
+    tertiaryText: 'In a meeting',
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.offline
+  },
+  {
+    key: 6,
+    imageUrl: TestImages.personaMale,
+    imageInitials: 'RK',
+    text: 'Alex Lundberg2',
+    secondaryText: 'Financial Analyst',
+    tertiaryText: 'In a meeting',
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.offline
+  },
+  {
+    key: 7,
+    imageUrl: TestImages.personaMale,
+    imageInitials: 'RK',
+    text: 'Alex Lundberg2',
+    secondaryText: 'Financial Analyst',
+    tertiaryText: 'In a meeting',
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.offline
+  },
+  {
+    key: 8,
+    imageUrl: TestImages.personaMale,
+    imageInitials: 'RK',
+    text: 'Alex Lundberg3',
+    secondaryText: 'Financial Analyst',
+    tertiaryText: 'In a meeting',
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.offline
+  },
+  {
+    key: 9,
+    imageUrl: TestImages.personaMale,
+    imageInitials: 'RK',
+    text: 'Alex Lundberg4',
     secondaryText: 'Financial Analyst',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
@@ -60,9 +110,9 @@ const suggestionProps = {
   suggestionsContainerAriaLabel: 'Suggested contacts'
 };
 
-let getTextFromItem = (persona: IPersonaProps): string => persona.primaryText as string;
+const getTextFromItem = (persona: IPersonaProps): string => persona.text as string;
 
-let getPeople = () => people;
+const getPeople = () => people;
 
 // Pickers that are 'disabled' are added before the Screener decorator because css classes for suggestion items won't exist
 storiesOf('PeoplePicker', module)
@@ -96,7 +146,21 @@ storiesOf('PeoplePicker', module)
       pickerSuggestionsProps={ suggestionProps }
       disabled
     />
-  ))
+  )).add('Normal with text', () => (
+    <Screener
+      steps={ new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .setValue('.ms-BasePicker-input', 'a')
+        .snapshot('suggestion: "a"')
+        .end() }>
+      <NormalPeoplePicker
+        onResolveSuggestions={ getPeople }
+        onEmptyInputFocus={ getPeople }
+        getTextFromItem={ getTextFromItem }
+        className={ 'ms-PeoplePicker' }
+        pickerSuggestionsProps={ suggestionProps }
+      />
+    </Screener>))
   .addDecorator(story => (
     <Screener
       steps={ new Screener.Steps()
