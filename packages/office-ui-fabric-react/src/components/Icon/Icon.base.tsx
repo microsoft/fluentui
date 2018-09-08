@@ -6,6 +6,7 @@ import { Image } from '../Image/Image';
 import { ImageLoadState } from '../Image/Image.types';
 import { getNativeProps, htmlElementProperties, BaseComponent, classNamesFunction } from '../../Utilities';
 import { getIcon } from '../../Styling';
+import { getRTL } from '../../Utilities';
 
 export interface IIconState {
   imageLoadError: boolean;
@@ -22,10 +23,12 @@ export class IconBase extends BaseComponent<IIconProps, IIconState> {
   }
 
   public render() {
-    const { ariaLabel, className, styles, iconName, imageErrorAs } = this.props;
+    const { ariaLabel, className, styles, iconName, iconNameMirrored, imageErrorAs } = this.props;
     const isPlaceholder = typeof iconName === 'string' && iconName.length === 0;
     const isImage = this.props.iconType === IconType.image || this.props.iconType === IconType.Image;
-    const { iconClassName, children } = this._getIconContent(iconName);
+    const iconDirName = getRTL() && iconNameMirrored ? iconNameMirrored : iconName;
+
+    const { iconClassName, children } = this._getIconContent(iconDirName);
 
     const classNames = getClassNames(styles, {
       className,

@@ -17,7 +17,9 @@ export const BlockedSignal: Signal = (props: ISignalProps): JSX.Element => {
 };
 
 export const MissingMetadataSignal: Signal = (props: ISignalProps): JSX.Element => {
-  return <IconSignal {...props} signalClass={SignalsStyles.missingMetadata} iconName="info" />;
+  return (
+    <IconSignal {...props} signalClass={SignalsStyles.missingMetadata} iconName="tagUnknown12" iconNameMirrored="tagUnknown12Mirror" />
+  );
 };
 
 export const WarningSignal: Signal = (props: ISignalProps): JSX.Element => {
@@ -117,7 +119,7 @@ export const ExternalSignal: Signal = (props: ISignalProps): JSX.Element => {
 };
 
 type IIconSignalProps = ISignalProps &
-  Pick<IIconProps, 'iconName'> & {
+  Pick<IIconProps, 'iconName' | 'iconNameMirrored'> & {
     /**
      * The class name to use for the Signal type.
      */
@@ -131,7 +133,5 @@ type IIconSignalProps = ISignalProps &
 function IconSignal(props: IIconSignalProps): JSX.Element {
   const { ariaLabel, className, signalClass, ...spanProps } = props;
 
-  return (
-    <Icon {...spanProps} ariaLabel={props.ariaLabel} className={css(SignalStyles.signal, signalClass, className)} />
-  );
+  return <Icon {...spanProps} ariaLabel={props.ariaLabel} className={css(SignalStyles.signal, signalClass, className)} />;
 }
