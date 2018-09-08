@@ -68,7 +68,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
     this._warnDeprecations({
       rootProps: undefined,
-      description: 'secondaryText'
+      description: 'secondaryText',
+      toggled: 'checked'
     });
     this._labelId = getId();
     this._descriptionId = getId();
@@ -315,7 +316,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     const { iconProps } = this.props;
 
     if (iconProps) {
-      return <Icon {...iconProps} className={this._classNames.icon} />;
+      const { className, ...rest } = iconProps;
+
+      return <Icon className={css(this._classNames.icon, className)} {...rest} />;
     }
     return null;
   };

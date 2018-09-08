@@ -1,6 +1,43 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 28 Aug 2018 10:23:58 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Sep 2018 22:04:50 GMT and should not be manually modified.
+
+## 6.29.0
+Fri, 07 Sep 2018 22:04:50 GMT
+
+### Minor changes
+
+- Adjusting foundation usage, using new React 16 context.
+
+## 6.28.3
+Fri, 07 Sep 2018 16:29:48 GMT
+
+*Version update only*
+
+## 6.28.2
+Wed, 05 Sep 2018 10:29:25 GMT
+
+### Patches
+
+- nav fix
+- improve nav per designer feedback
+
+## 6.28.1
+Thu, 30 Aug 2018 19:26:04 GMT
+
+*Version update only*
+
+## 6.28.0
+Thu, 30 Aug 2018 10:32:49 GMT
+
+### Minor changes
+
+- TagPicker added as a Form input component.
+- Update Shared palette colors
+
+### Patches
+
+- Corrected some Checkbox implementations - should use 'aria-labelledby' instead of 'aria-describedby'
 
 ## 6.27.1
 Tue, 28 Aug 2018 10:23:58 GMT

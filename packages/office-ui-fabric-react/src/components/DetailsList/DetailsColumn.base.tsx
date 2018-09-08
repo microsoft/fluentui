@@ -96,7 +96,12 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
                   aria-labelledby={column.isIconOnly ? undefined : `${parentId}-${column.key}-name `}
                   className={classNames.cellTitle}
                   data-is-focusable={column.columnActionsMode !== ColumnActionsMode.disabled}
-                  role={column.columnActionsMode !== ColumnActionsMode.disabled ? 'button' : undefined}
+                  role={
+                    column.columnActionsMode !== ColumnActionsMode.disabled &&
+                    (column.onColumnClick !== undefined || this.props.onColumnClick !== undefined)
+                      ? 'button'
+                      : undefined
+                  }
                   aria-describedby={
                     this.props.onRenderColumnHeaderTooltip || this._hasAccessibleLabel()
                       ? `${parentId}-${column.key}-tooltip`

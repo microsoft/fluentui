@@ -1,7 +1,8 @@
 import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
-import { IDataPoint } from '../../types/IDataPoint';
-export { IDataPoint } from '../../types/IDataPoint';
+import { IChartProps } from '../../types/IDataPoint';
+
+export { IChartProps, IDataPoint, ILineChartPoints } from '../../types/IDataPoint';
 
 export interface ILineChart {}
 
@@ -9,7 +10,7 @@ export interface ILineChartProps {
   /**
    * Data to render in the chart.
    */
-  data?: IDataPoint[][];
+  data?: IChartProps;
 
   /**
    * Width of the chart.
@@ -62,6 +63,7 @@ export interface ILineChartStyleProps {
   className?: string;
   width: number;
   height: number;
+  color: string;
 }
 
 export interface ILineChartStyles {
@@ -124,4 +126,19 @@ export interface ILineChartStyles {
    * Style for the element containing all the lines in the chart.
    */
   lines?: IStyle;
+
+  /**
+   * Style for legend container
+   */
+  legendContainer?: IStyle;
+
+  /**
+   * line hover box css
+   */
+  hover?: IStyle;
+
+  /**
+   * styles for callout in line chart
+   */
+  calloutPadding?: IStyle;
 }

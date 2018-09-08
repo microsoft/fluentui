@@ -133,14 +133,24 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       theme,
       ariaPositionInSet,
       ariaSetSize,
-      keytipProps
+      ariaValueNow,
+      ariaValueText,
+      keytipProps,
+      className
     } = this.props;
 
     const { isFocused, value, keyboardSpinDirection } = this.state;
 
     const classNames = this.props.getClassNames
-      ? this.props.getClassNames(theme!, !!disabled, !!isFocused, keyboardSpinDirection, labelPosition)
-      : getClassNames(getStyles(theme!, customStyles), !!disabled, !!isFocused, keyboardSpinDirection, labelPosition);
+      ? this.props.getClassNames(theme!, !!disabled, !!isFocused, keyboardSpinDirection, labelPosition, className)
+      : getClassNames(
+          getStyles(theme!, customStyles),
+          !!disabled,
+          !!isFocused,
+          keyboardSpinDirection,
+          labelPosition,
+          className
+        );
 
     return (
       <div className={classNames.root}>
@@ -174,8 +184,14 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
                 autoComplete="off"
                 role="spinbutton"
                 aria-labelledby={label && this._labelId}
-                aria-valuenow={!isNaN(Number(value)) ? Number(value) : undefined}
-                aria-valuetext={isNaN(Number(value)) ? value : undefined}
+                aria-valuenow={
+                  ariaValueNow !== undefined && !isNaN(ariaValueNow)
+                    ? ariaValueNow
+                    : !isNaN(Number(value))
+                      ? Number(value)
+                      : undefined
+                }
+                aria-valuetext={ariaValueText ? ariaValueText : isNaN(Number(value)) ? value : undefined}
                 aria-valuemin={min}
                 aria-valuemax={max}
                 aria-describedby={keytipAttributes['aria-describedby']}

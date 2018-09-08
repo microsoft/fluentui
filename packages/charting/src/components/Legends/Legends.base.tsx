@@ -15,6 +15,8 @@ interface ILegendItem {
   name?: string;
   title: string;
   action: VoidFunction;
+  hoverAction: VoidFunction;
+  onMouseOutAction: VoidFunction;
   color: string;
   key: number;
 }
@@ -23,6 +25,7 @@ export interface ILegendState {
   selectedLegend: string;
   selectedState: boolean;
   hoverState: boolean;
+  hoverCardHeight: number;
 }
 export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   private _classNames: IProcessedStyleSet<ILegendsStyles>;
@@ -32,7 +35,8 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     this.state = {
       selectedLegend: 'none',
       selectedState: false,
-      hoverState: false
+      hoverState: false,
+      hoverCardHeight: 0
     };
   }
 
@@ -61,6 +65,8 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       const legendItem: ILegendItem = {
         title: legend.title,
         action: legend.action!,
+        hoverAction: legend.hoverAction!,
+        onMouseOutAction: legend.onMouseOutAction!,
         color: legend.color,
         key: index
       };
@@ -105,8 +111,14 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   private _onClick = (legend: ILegend): void => {
     if (this.state.selectedState === true && this.state.selectedLegend === legend.title) {
       this.setState({ selectedLegend: 'none', selectedState: false });
+      if (legend.action) {
+        legend.action();
+      }
     } else {
       this.setState({ selectedState: true, selectedLegend: legend.title });
+      if (legend.action) {
+        legend.action();
+      }
     }
   };
 
@@ -116,7 +128,8 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       const hoverCardElement = this._renderButton(legend, index, true);
       overflowHoverCardLegends.push(hoverCardElement);
     });
-    return <div>{overflowHoverCardLegends}</div>;
+    const hoverCardData = <div className="hoverCardRoot">{overflowHoverCardLegends}</div>;
+    return hoverCardData;
   };
 
   private _renderOverflowItems = (legends: ILegend[]) => {
@@ -126,9 +139,23 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     });
     const renderOverflowData: IExpandingCardProps = { renderData: legends };
     const expandingCardProps: IExpandingCardProps = {
+      compactCardHeight: this.state.hoverCardHeight + 16,
       onRenderCompactCard: this._onRenderCompactCard,
       renderData: renderOverflowData,
-      mode: 0
+      mode: 0,
+      styles: {
+        root: {
+          width: 'auto',
+          height: 'auto'
+        },
+        compactCard: {
+          width: 'auto',
+          height: 'auto'
+        },
+        expandedCard: {
+          width: 0
+        }
+      }
     };
     const { theme, className, styles } = this.props;
     const classNames = getClassNames(styles!, {
@@ -136,26 +163,48 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       className
     });
     return (
-      <HoverCard expandingCardProps={expandingCardProps}>
-        <div className={classNames.overflowIndicationTextStyle}>{items.length} more</div>
+      <HoverCard expandingCardProps={expandingCardProps} cardOpenDelay={10}>
+        <div className={classNames.overflowIndicationTextStyle} onMouseOver={this._calculateHoverCardLength}>
+          {items.length} more
+        </div>
       </HoverCard>
     );
+  };
+
+  private _calculateHoverCardLength = () => {
+    setTimeout(() => {
+      if (document.getElementsByClassName('hoverCardRoot')[0]) {
+        this.setState({ hoverCardHeight: document.getElementsByClassName('hoverCardRoot')[0].clientHeight });
+      }
+    }, 20);
   };
 
   private _onHoverOverLegend = (legend: ILegend) => {
     if (!this.state.selectedState) {
       this.setState({ hoverState: true, selectedLegend: legend.title });
+      if (legend.hoverAction) {
+        legend.hoverAction();
+      }
     }
   };
 
-  private _onLeave = () => {
+  private _onLeave = (legend: ILegend) => {
     if (!this.state.selectedState) {
       this.setState({ hoverState: false, selectedLegend: 'none' });
+      if (legend.onMouseOutAction) {
+        legend.onMouseOutAction();
+      }
     }
   };
 
   private _renderButton = (data: IOverflowSetItemProps, index?: number, overflow?: boolean) => {
-    const legend: ILegend = { title: data.title, color: data.color, action: data.action };
+    const legend: ILegend = {
+      title: data.title,
+      color: data.color,
+      action: data.action,
+      hoverAction: data.hoverAction,
+      onMouseOutAction: data.onMouseOutAction
+    };
     const color = this._getColor(legend.title, legend.color);
     const { theme, className, styles } = this.props;
     const classNames = getClassNames(styles!, {
@@ -172,14 +221,11 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     const onHoverHandler = () => {
       this._onHoverOverLegend(legend);
     };
+    const onMouseOut = () => {
+      this._onLeave(legend);
+    };
     return (
-      <div
-        key={index}
-        className={classNames.legend}
-        onClick={onClickHandler}
-        onMouseOver={onHoverHandler}
-        onMouseOut={this._onLeave}
-      >
+      <div key={index} className={classNames.legend} onClick={onClickHandler} onMouseOver={onHoverHandler} onMouseOut={onMouseOut}>
         <div className={classNames.rect} />
         <div className={classNames.text}>{legend.title}</div>
       </div>

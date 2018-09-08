@@ -44,7 +44,20 @@ export class CardFrame extends React.Component<ICardFrameProps, {}> {
           <div className={classNames.cardTitle}>
             <Link
               styles={{
-                root: { fontFamily: 'Segoe UI', fontWeight: '600', fontSize: '14px !important', lineHeight: '16px' }
+                root: {
+                  fontFamily: 'Segoe UI',
+                  fontWeight: '600',
+                  fontSize: '14px !important',
+                  lineHeight: '19px',
+                  selectors: {
+                    ':hover': {
+                      color: '#0078D4'
+                    },
+                    ':active': {
+                      color: '#004578 !important'
+                    }
+                  }
+                }
               }}
               href={href}
               disabled={href === '#'}

@@ -1,23 +1,43 @@
 import * as React from 'react';
 import { AnnotationType, IMultiCountProps, IMultiCountRow, IMultiCountStyles } from './MultiCount.types';
 import { getStyles } from './MultiCountStyles';
+import { positiveChangeState } from './PositiveChangeState';
+import { negativeStateChange } from './NegativeStateChange';
+import { noStateChange } from './NoStateChange';
 
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { HoverCard, IExpandingCardProps, ExpandingCardMode } from 'office-ui-fabric-react/lib/HoverCard';
 
-export class MultiCount extends React.Component<IMultiCountProps, {}> {
+export interface IMultiCountState {
+  hoveredText: string;
+  hoverCardHeight: number;
+}
+
+export class MultiCount extends React.Component<IMultiCountProps, IMultiCountState> {
   constructor(props: IMultiCountProps) {
     super(props);
+    this.state = {
+      hoveredText: '',
+      hoverCardHeight: 0
+    };
   }
 
   public render(): JSX.Element {
-    const { multiCountRows, annotationTextFontSize, annotationTextColor, bodyTextFontSize, bodyTextColor } = this.props;
+    const {
+      multiCountRows,
+      annotationTextFontSize,
+      annotationTextColor,
+      bodyTextFontSize,
+      bodyTextColor,
+      customMessage
+    } = this.props;
     const data: JSX.Element[] = this.getGeneratedData(
       multiCountRows,
       annotationTextFontSize,
       annotationTextColor,
       bodyTextFontSize,
-      bodyTextColor
+      bodyTextColor,
+      customMessage
     );
     return <div>{data}</div>;
   }
@@ -27,7 +47,8 @@ export class MultiCount extends React.Component<IMultiCountProps, {}> {
     annotationTextFontSize?: string,
     annotationTextColor?: string,
     bodyTextFontSize?: string,
-    bodyTextColor?: string
+    bodyTextColor?: string,
+    customMessage?: string
   ): JSX.Element[] {
     const formattedRows: JSX.Element[] = [];
     const units = ['', 'k', 'm', 'b'];
@@ -46,33 +67,119 @@ export class MultiCount extends React.Component<IMultiCountProps, {}> {
         formattedData = Math.floor(data);
       }
       const changeIconIndicator =
-        AnnotationType[row.type] === 'neutral' ? '' : AnnotationType[row.type] === 'positive' ? 'FlickDown' : 'FlickUp';
+        AnnotationType[row.type] === AnnotationType.neutral
+          ? noStateChange
+          : AnnotationType[row.type] === AnnotationType.positive
+            ? negativeStateChange
+            : positiveChangeState;
       const getClassNames = classNamesFunction<IMultiCountProps, IMultiCountStyles>();
       const classNames = getClassNames(
         getStyles({
           color: row.color,
-          iconName: changeIconIndicator,
           annotationTextFontSize: annotationTextFontSize,
           annotationTextColor: annotationTextColor,
           bodyTextColor: bodyTextColor,
-          bodyTextFontSize: bodyTextFontSize
+          bodyTextFontSize: bodyTextFontSize,
+          hoveredText: this.state.hoveredText,
+          currentText: row.data + row.bodyText + row.annotaionText,
+          href: row.href
         })
       );
+      const expandingCardProps: IExpandingCardProps = {
+        compactCardHeight: this.state.hoverCardHeight,
+        onRenderCompactCard: this._onRenderCompactCard,
+        renderData: [row, customMessage],
+        mode: ExpandingCardMode.compact,
+        styles: {
+          root: {
+            width: 'auto',
+            height: 'auto',
+            margin: 0
+          },
+          compactCard: {
+            width: 'auto',
+            height: 'auto',
+            margin: 0
+          },
+          expandedCard: {
+            width: 0,
+            margin: 0
+          }
+        }
+      };
+      const hoverKey = row.data + row.bodyText + row.annotaionText;
       formattedRows.push(
-        <div key={index} className={classNames.root}>
-          <div className={classNames.bodyText}>
-            <span className={classNames.data}>{formattedData + units[indexForUnits]}</span>
-            <span>{row.bodyText}</span>
+        <HoverCard
+          key={index}
+          expandingCardProps={expandingCardProps}
+          instantOpenOnClick={true}
+          onCardHide={this._hoverStateUpdate.bind(this, hoverKey, false)}
+          onCardVisible={this._hoverStateUpdate.bind(this, hoverKey, true)}
+        >
+          <div key={index} className={classNames.root} onClick={this._redirectToUrl.bind(this, row.href)}>
+            <div className={classNames.bodyText}>
+              <span className={classNames.data}>{formattedData + units[indexForUnits]}</span>
+              <span>{row.bodyText}</span>
+            </div>
+            <div className={classNames.annotationText}>
+              <span className={classNames.icon}>
+                <img src={changeIconIndicator} />
+              </span>
+              <span className={classNames.annotationText}>{row.annotaionText}</span>
+            </div>
           </div>
-          <div className={classNames.annotationText}>
-            <span className={classNames.icon}>
-              <Icon iconName={changeIconIndicator} />
-            </span>
-            <span className={classNames.annotationText}>{row.annotaionText}</span>
-          </div>
-        </div>
+        </HoverCard>
       );
     });
     return formattedRows;
   }
+
+  private _hoverStateUpdate = (hoverKey: string, hoverState: boolean): void => {
+    if (hoverState) {
+      setTimeout(() => {
+        this.setState({
+          hoveredText: hoverKey,
+          hoverCardHeight: document.getElementsByClassName('hoverCardRoot')[0].clientHeight
+        });
+      }, 10);
+    } else {
+      this.setState({
+        hoveredText: '',
+        hoverCardHeight: 0
+      });
+    }
+  };
+
+  private _redirectToUrl(href: string | undefined): void {
+    href ? (window.location.href = href) : '';
+  }
+
+  // tslint:disable-next-line:no-any
+  private _onRenderCompactCard = (data: any): JSX.Element => {
+    const changeIconIndicator =
+      AnnotationType[data[0].type] === AnnotationType.neutral
+        ? noStateChange
+        : AnnotationType[data[0].type] === AnnotationType.positive
+          ? negativeStateChange
+          : positiveChangeState;
+    const getClassNames = classNamesFunction<IMultiCountProps, IMultiCountStyles>();
+    const classNames = getClassNames(
+      getStyles({
+        color: data[0].color
+      })
+    );
+    return (
+      <div className={classNames.hoverCardRoot + ' hoverCardRoot'}>
+        <div className={classNames.customMessage}>{data[1]}</div>
+        <div className={classNames.hoverCardText}>
+          <div className={classNames.hoverCardBodyText}>{data[0].bodyText}</div>
+          <div className={classNames.icon}>
+            <img src={changeIconIndicator} />
+          </div>
+          <div className={classNames.hoverCardAnnotationText}>{data[0].annotaionText}</div>
+        </div>
+        <div className={classNames.hoverCardData}>{data[0].data.toLocaleString()}</div>
+      </div>
+    );
+  };
 }

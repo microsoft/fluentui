@@ -55,13 +55,19 @@ class NavComponent extends NavBase {
     if (hasChildren) {
       // show child links
       link.isExpanded = !link.isExpanded;
-      // disable auto expand based on selected key prop, instead allow to toggle child links
-      link.disableAutoExpand = true;
 
       nextState.isLinkExpandStateChanged = true;
+
+      if (!!this.props.onNavNodeExpandedCallback && link.key) {
+        this.props.onNavNodeExpandedCallback(link.key, link.isExpanded);
+      }
     } else if (link.onClick) {
-      // if there is a onClick defined, call it
-      link.onClick(ev, link);
+      if (!!this.props.onEditLeftNavClickedCallback && link.key && link.key === 'EditNavLink') {
+        this.props.onEditLeftNavClickedCallback();
+      } else {
+        // if there is a onClick defined, call it
+        link.onClick(ev, link);
+      }
     }
 
     this.setState(nextState);
@@ -134,13 +140,6 @@ class NavComponent extends NavBase {
     }
 
     const linkText = this.getLinkText(link, this.props.showMore);
-
-    // if allowed, auto expand if the child is selected
-    const isChildLinkSelected = this.isChildLinkSelected(link);
-    link.isExpanded = link.disableAutoExpand ? link.isExpanded : isChildLinkSelected;
-
-    // enable auto expand until the next manual expand disables the auto expand
-    link.disableAutoExpand = false;
 
     return (
       <li role="listitem" key={link.key || linkIndex} title={linkText}>

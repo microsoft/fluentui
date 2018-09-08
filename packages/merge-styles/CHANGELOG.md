@@ -1,6 +1,20 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Tue, 28 Aug 2018 10:23:58 GMT and should not be manually modified.
+This log was last generated on Wed, 05 Sep 2018 10:29:25 GMT and should not be manually modified.
+
+## 6.8.3
+Wed, 05 Sep 2018 10:29:25 GMT
+
+### Patches
+
+- Improve a DX issue with IProcessedStyleSet typings. (issue #6124)
+
+## 6.8.2
+Wed, 29 Aug 2018 10:28:42 GMT
+
+### Patches
+
+- The IProcessedStyleSet type now correctly infers the types of subComponentStyles properties.
 
 ## 6.8.1
 Tue, 28 Aug 2018 10:23:58 GMT

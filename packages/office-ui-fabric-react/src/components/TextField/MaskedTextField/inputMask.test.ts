@@ -157,4 +157,16 @@ describe('inputMask', () => {
     expect(values[7].value).toEqual('8');
     expect(result).toEqual(33);
   });
+
+  it('insertString will keep index at the end even if the value is entered passed the end', () => {
+    const maskedValues = [
+      { value: '1', format: /[0-9]/, displayIndex: 0 },
+      { value: '2', format: /[0-9]/, displayIndex: 1 },
+      { value: '3', format: /[0-9]/, displayIndex: 2 }
+    ];
+
+    const result = insertString(maskedValues, 3, '1');
+
+    expect(result).toEqual(3);
+  });
 });
