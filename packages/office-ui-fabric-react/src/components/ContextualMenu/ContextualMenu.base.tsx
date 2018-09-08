@@ -588,12 +588,10 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     hasIcons: boolean
   ): React.ReactNode {
     if (item.onRender) {
-      return [
-        item.onRender(
-          { 'aria-posinset': focusableElementIndex + 1, 'aria-setsize': totalItemCount, ...item },
-          this.dismiss
-        )
-      ];
+      return item.onRender(
+        { 'aria-posinset': focusableElementIndex + 1, 'aria-setsize': totalItemCount, ...item },
+        this.dismiss
+      );
     }
     if (item.href) {
       return this._renderAnchorMenuItem(
