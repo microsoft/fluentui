@@ -3,6 +3,19 @@ import * as renderer from 'react-test-renderer';
 import * as glob from 'glob';
 import * as path from 'path';
 
+/**
+ * These tests verify that Fabric components fulfill the following conditions:
+ *
+ *    1) The component accepts a className prop.
+ *    2) The component applies the className prop to some DOM element.
+ *
+ * The need for a className prop is motivated by the Stack component.
+ * In order for a Stack component to style its children,
+ *    each child component within a Stack must accept and apply a className prop.
+ *
+ * Any conditions that Fabric components should fulfill can be added to this test suite.
+ */
+
 // Common props required by List-based components in order for tests to pass
 const listProps = {
   items: [],
