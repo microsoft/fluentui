@@ -62,12 +62,12 @@ export interface IBaseExtendedPickerProps<T> {
   /**
    * Function that specifies how the floating picker will appear.
    */
-  onRenderFloatingPicker: (props: IBaseFloatingPickerProps<T>) => JSX.Element;
+  onRenderFloatingPicker?: (props: IBaseFloatingPickerProps<T>) => JSX.Element;
 
   /**
    * Function that specifies how the floating picker will appear.
    */
-  onRenderSelectedItems: (props: IBaseSelectedItemsListProps<T>) => JSX.Element;
+  onRenderSelectedItems?: (props: IBaseSelectedItemsListProps<T>) => JSX.Element;
 
   /**
    * Floating picker properties

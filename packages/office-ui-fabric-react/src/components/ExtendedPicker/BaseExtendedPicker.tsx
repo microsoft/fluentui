@@ -167,13 +167,18 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
 
   protected renderSelectedItemsList(): JSX.Element {
     const onRenderSelectedItems = this.props.onRenderSelectedItems;
-    return onRenderSelectedItems({
+    const selectedItemsProps = {
       componentRef: this.selectedItemsList,
       selection: this.selection,
       selectedItems: this.props.selectedItems ? this.props.selectedItems : undefined,
       onItemsDeleted: this.props.selectedItems ? this.props.onItemsRemoved : undefined,
       ...this.selectedItemsListProps
-    });
+    };
+
+    if (onRenderSelectedItems) {
+      return onRenderSelectedItems(selectedItemsListProps);
+    }
+    return <SelectedPeopleList {...selectedItemsListProps} />;
   }
 
   protected onInputChange = (value: string): void => {
