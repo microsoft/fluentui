@@ -149,7 +149,7 @@ export class DonutChartBase extends React.Component<
         };
         return legend;
       });
-    const legends = <Legends legends={legendDataItems} centerLegends={true} />;
+    const legends = <Legends legends={legendDataItems} centerLegends />;
     return legends;
   }
 
